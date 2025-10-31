@@ -48,9 +48,9 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 5.  Enter the semantic version number you wish to use for the updated profile and select **Confirm**.
 
-6.  Select **Add New Pack**.
+6.  Select **Add New Pack**. The search field appears.
 
-7.  In the search field, search for and select the **Spectro Kubernetes Dashboard** pack. Ensure that you are selecting
+7.  Search for and select the **Spectro Kubernetes Dashboard** pack. Ensure that you are selecting
     the FIPS version if the Profile is FIPS-based.
 
     ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
@@ -71,12 +71,12 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
     :::warning
 
-         For FIPS deployments, be aware of the following configuration options that must be applied:
-             - In private cloud, enable proxy mode.
-             - In public cloud, enable direct mode.
-             - In private clusters of public cloud, enable vpn and proxy mode.
+         For FIPS deployments, be aware of the following required configuration options:
+             - In private cloud, enable `Proxied` mode.
+             - In public cloud, enable `Direct` mode.
+             - In private clusters of public cloud, enable `Proxied` mode and enable your VPN between the private and public clouds.
 
-         Additionally, if the cluster already has nginx ingress running, disable nginx from Presets.
+         Additionally, if the cluster already has Nginx ingress running, disable Nginx from Presets.
 
     :::
 
