@@ -238,7 +238,7 @@ export PASSWORD=<user-name-password>
 ```
 
 Next, issue the command below to create the `user-data` file using the exported token and user information. The
-`#cloud-config` header is required by the cloud-init standard. 
+`#cloud-config` header is required by the cloud-init standard.
 
 ```shell
 cat << EOF > user-data
