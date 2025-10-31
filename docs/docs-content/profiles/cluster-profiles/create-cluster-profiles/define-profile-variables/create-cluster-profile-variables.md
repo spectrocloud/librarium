@@ -52,12 +52,15 @@ guide to learn how to create a cluster profile.
 
 6.  Optionally, enter a variable **Description**.
 
-7.  Select the **Input type** of the variable. You can choose between **Text** and **Dropdown**. The default input type
-    is **Text**.
+7.  Select the **Input type** of the variable. You can choose between **Text**, **Dropdown** and **Multiline**. The
+    default input type is **Text**.
 
     :::info
 
-    The dropdown input type is currently not supported in [Local UI](../../../../clusters/edge/local-ui/local-ui.md).
+    The dropdown and multiline input types are currently not supported in
+    [Local UI](../../../../clusters/edge/local-ui/local-ui.md).
+
+    Additionally, the multiline input type is limited to a maximum of 10000 characters.
 
     :::
 
@@ -65,13 +68,20 @@ guide to learn how to create a cluster profile.
 
     | **Format** | **Description**                                                                                        |
     | ---------- | ------------------------------------------------------------------------------------------------------ |
-    | String     | Custom text input.                                                                                     |
+    | String     | Custom text input. This is the only format available for the multiline input type.                     |
     | Number     | Any numeric type, such as integers and floating point numbers.                                         |
     | Boolean    | `true` or `false`. Values that evaluate to `true` or `false`, such as 1 and 0, are not accepted.       |
     | Version    | Version value that follows the [Semantic Versioning](https://semver.org/) convention, such as `x.y.z`. |
     | IPv4       | Valid representation of an IPv4 address.                                                               |
     | IPv4 CIDR  | A CIDR block of IP addresses that follow the IPv4 standard.                                            |
     | IPv6       | Valid representation of an IPv6 address.                                                               |
+    | Base64     | Strings encoded in the Base64 up to a maximum size of 8KB.                                             |
+
+    :::info
+
+    We recommend using the Base64 type to save your encoded secrets as profile variable values.
+
+    :::
 
 9.  If you selected **Dropdown** for the **Input type** in step 7, select **Add dropdown option**. The following table
     describes the available configuration fields. You must provide at least one dropdown option.
