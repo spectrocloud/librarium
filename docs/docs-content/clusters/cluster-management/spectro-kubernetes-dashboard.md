@@ -42,7 +42,8 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 2.  From the left main menu, select **Clusters**. Select the cluster you want to provision the Spectro Kubernetes
     Dashboard on.
 
-3. Select the **Profile** tab and select the profile your desired cluster is using. If you are using the FIPS Spectro Kubernetes Dashboard, all profile layers (that is, OS, Kubernetes, network, and storage) must be FIPS compliant.  
+3.  Select the **Profile** tab and select the profile your desired cluster is using. If you are using the FIPS Spectro
+    Kubernetes Dashboard, all profile layers (that is, OS, Kubernetes, network, and storage) must be FIPS compliant.
 
 4.  From the version drop-down menu, select **Create new version**.
 
