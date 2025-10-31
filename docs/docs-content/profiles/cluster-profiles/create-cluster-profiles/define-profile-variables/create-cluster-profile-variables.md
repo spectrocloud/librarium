@@ -75,7 +75,7 @@ guide to learn how to create a cluster profile.
     | IPv4       | Valid representation of an IPv4 address.                                                               |
     | IPv4 CIDR  | A CIDR block of IP addresses that follow the IPv4 standard.                                            |
     | IPv6       | Valid representation of an IPv6 address.                                                               |
-    | Base64     | Strings encoded in Base64 up to a maximum size of 8 KB.                                             |
+    | Base64     | Strings encoded in Base64 up to a maximum size of 8 KB.                                                |
 
     :::tip
 
