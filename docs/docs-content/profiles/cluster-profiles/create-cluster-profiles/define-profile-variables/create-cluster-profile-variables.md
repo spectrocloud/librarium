@@ -52,7 +52,7 @@ guide to learn how to create a cluster profile.
 
 6.  Optionally, enter a variable **Description**.
 
-7.  Select the **Input type** of the variable. You can choose between **Text**, **Dropdown** and **Multiline**. The
+7.  Select the **Input type** of the variable. You can choose between **Text**, **Dropdown**, and **Multiline**. The
     default input type is **Text**.
 
     :::info
@@ -75,9 +75,9 @@ guide to learn how to create a cluster profile.
     | IPv4       | Valid representation of an IPv4 address.                                                               |
     | IPv4 CIDR  | A CIDR block of IP addresses that follow the IPv4 standard.                                            |
     | IPv6       | Valid representation of an IPv6 address.                                                               |
-    | Base64     | Strings encoded in the Base64 up to a maximum size of 8KB.                                             |
+    | Base64     | Strings encoded in Base64 up to a maximum size of 8 KB.                                             |
 
-    :::info
+    :::tip
 
     We recommend using the Base64 type to save your encoded secrets as profile variable values.
 
