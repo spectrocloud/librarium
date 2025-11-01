@@ -63,7 +63,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build Packs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: "build-packs"
           path: |
@@ -73,7 +73,7 @@ jobs:
           retention-days: 7
 
       - name: Upload Built Security Bulletins
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: "security-bulletins"
           path: .docusaurus/security-bulletins/default/data.json
