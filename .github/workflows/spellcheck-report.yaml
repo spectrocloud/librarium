@@ -86,7 +86,7 @@ jobs:
 
       - name: Upload Vale Results
         if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: "vale-spellcheck-results"
           path: vale-spellcheck-results.txt
