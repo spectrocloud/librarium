@@ -71,7 +71,7 @@ jobs:
 
 
       - name: Backport Action
-        uses: sqren/backport-github-action@v9.5.1
+        uses: sqren/backport-github-action@v10.2.0
         with:
         # We are using a PAT token through our Vault Operator to address the issue of PR workflows not being triggered.
         # Refer to issue https://github.com/sqren/backport-github-action/issues/79 for more details.
