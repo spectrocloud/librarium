@@ -39,6 +39,11 @@ tags: ["release-notes"]
   This method is only available for self-hosted Palette and Palette VerteX instances deployed on Amazon EKS clusters.
   Refer to the [Add AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) guide for more information.
 
+- [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  now support the multiline input type and the Base64 format. This improvement allows users to leverage cluster profile
+  variables for use cases such as saving multiline YAML specifications and storing encoded keys for use during cluster
+  creation.
+
 #### Improvements
 
 - Project tags are now displayed in the **Project Overview** page and the **Tenant Admin > Projects** page in Palette.
