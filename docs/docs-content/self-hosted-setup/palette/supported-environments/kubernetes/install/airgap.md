@@ -19,7 +19,7 @@ cluster has the necessary network connectivity for self-hosted Palette to operat
 
 :::warning
 
-Complete the [Environment Setup](../setup/airgap/environment-setup.md) steps before proceeding with the installation.
+Complete the [Environment Setup](../setup/airgap/airgap.md) steps before proceeding with the installation.
 
 :::
 

@@ -917,7 +917,7 @@ let redirects = [
   },
   {
     from: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
-    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/environment-setup/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/",
   },
   {
     from: [
@@ -1114,7 +1114,7 @@ let redirects = [
       "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
       "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/",
     ],
-    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/environment-setup/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/",
   },
   {
     from: "/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/",

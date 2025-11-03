@@ -29,7 +29,6 @@ This guide is for preparing your airgap environment only. For instructions on in
 <PartialsComponent
   category="self-hosted"
   name="setup-steps"
-  edition="Palette"
-  install="vmware"
+  edition="palette"
   requirementsURL="/self-hosted-setup/palette/supported-environments/vmware/install#kubernetes-requirements"
 />

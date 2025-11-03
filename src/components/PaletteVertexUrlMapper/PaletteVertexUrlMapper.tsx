@@ -25,14 +25,19 @@ export default function PaletteVertexUrlMapper(props: ComponentProperties) {
 
   const isPalette = normalizedEdition === "palette";
 
+  // If using custom paths, return them directly without prepending baseUrl
+  if (palettePath && vertexPath) {
+    const mappedUrl = isPalette ? palettePath : vertexPath;
+    return <VersionedLink url={mappedUrl} text={text} />;
+  }
+
   // Construct base URL with optional installation method
   let baseUrl = `/self-hosted-setup/${isPalette ? "palette" : "vertex"}`;
   if (normalizedInstall) {
     baseUrl += `/supported-environments/${normalizedInstall}`;
   }
 
-  const mappedUrl =
-    palettePath && vertexPath ? `${baseUrl}${isPalette ? palettePath : vertexPath}` : `${baseUrl}${url}`;
+  const mappedUrl = `${baseUrl}${url}`;
 
   return <VersionedLink url={mappedUrl} text={text} />;
 }

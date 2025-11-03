@@ -15,7 +15,12 @@ keywords: ["self-hosted", "vertex", "management", "scar"]
 
 ## Prerequisites
 
-<PartialsComponent category="self-hosted" name="scar-migration-prerequisites" edition="VerteX" />
+<PartialsComponent
+  category="self-hosted"
+  name="scar-migration-prerequisites"
+  edition="vertex"
+  version="Palette VerteX"
+/>
 
 ## Migrate SCAR
 

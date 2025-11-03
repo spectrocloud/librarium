@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Airgap Environment"
-title: "Airgap Environment"
+sidebar_label: "Set Up Airgap Environment"
+title: "Set Up Airgap Environment"
 description: "Prepare to install your self-hosted, airgapped Palette instance in VMware vSphere."
 icon: ""
 hide_table_of_contents: false

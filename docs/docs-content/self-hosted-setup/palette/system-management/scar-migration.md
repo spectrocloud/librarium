@@ -15,7 +15,7 @@ keywords: ["self-hosted", "management", "scar"]
 
 ## Prerequisites
 
-<PartialsComponent category="self-hosted" name="scar-migration-prerequisites" edition="Palette" />
+<PartialsComponent category="self-hosted" name="scar-migration-prerequisites" edition="palette" version="Palette" />
 
 ## Migrate SCAR
 

@@ -722,7 +722,10 @@ Partials may be organised in any further subfolders as required. For example, yo
 `_partials/public-cloud/_palette_setup.mdx`.
 
 In order to aid with organisation and categorization, partials must have a `partial_category` and `partial_name` defined
-in their frontmatter:
+in their frontmatter. Individual values assigned for `partial_category` and `partial_name` do not have to be unique, but
+the _combination_ of the two must be unique to identify the correct partial. For example, you can have multiple partials
+with a `partial_category` of `public-cloud` and multiple partials with a `partial_name` of `palette-setup`, but only
+_one_ can have _both_ a `partial_category` of `public-cloud` _and_ a `partial_name` of `palette-setup`.
 
 ```mdx
 ---
@@ -733,13 +736,13 @@ partial_name: palette-setup
 This is how you set up Palette in {props.cloud}.
 ```
 
-Partials are customized using properties which can be read using the `{props.propertyName}` syntax.
+Partials are customized by defining properties, which can be accessed with the `{props.propertyName}` syntax.
 
 Once your partial has been created, run the `make generate-partials` command to make your partial available for use.
 This command will also be invoked during the `make start` and `make build` commands.
 
 Finally, you can reference your partial in any `*.md` file by using the `PartialsComponent`, together with the specified
-category and name of the partial:
+category and name of the partial. Note that the properties `category` and `name` are _always_ required.
 
 ```md
 <PartialsComponent
@@ -797,9 +800,13 @@ within partials to change the base path of the URL to either `/self-hosted-setup
 and, if applicable, point to a particular installation method. The component has the following props:
 
 - `edition` - The edition of the URL. This can be either `palette` or `vertex`. The component uses this value to
-  determine the base URL.
+  determine the base URL. Values are _not_ case sensitive.
 - `text` - The text to display for the link.
 - `url` - The path to append to the base URL.
+  - To redirect to the base `/self-hosted-setup/palette` or `/self-hosted-setup/vertex` URL, use `url=""`.
+  - When referencing a heading or anchor within a file, append `/#anchor-here` to the end of the file path. For example,
+    use `url="/system-management/account-management/#system-administrators`. Note that adding `/` after the anchor
+    allows the link to work but does not route to the correct header.
 
 Below is an example of how to use the component within a partial:
 
@@ -807,7 +814,7 @@ Below is an example of how to use the component within a partial:
 - System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the
   <PaletteVertexUrlMapper
     edition={props.edition}
-    text="System Administrators"
+    text="Account Management"
     url="/system-management/account-management"
   />
   page to learn more about system administrator roles.
@@ -832,10 +839,14 @@ In cases where Palette and Vertex pages have different URLs beyond the base path
 following props:
 
 - `edition` - The edition of the URL. This can be either `palette` or `vertex`. The component uses this value to
-  determine the base URL.
+  determine whether to route the link to the defined `palettePath` or `vertexPath`.
 - `text` - The text to display for the link.
-- `palettePath` - The Palette path to append to the base URL.
-- `vertexPath` - The VerteX path to append to the base URL.
+- `palettePath` - The full self-hosted Palette path. Using `palettePath` prevents the base URL `/self-hosted-setup/`
+  from being appended; therefore, you must use the full path.
+  - When referencing a heading or anchor within a file, append `/#anchor-here` to the end of the file path.
+- `vertexPath` - The full self-hosted Palette VerteX path. Using `vertexPath` prevents the base URL
+  `/self-hosted-setup/` from being appended; therefore, you must use the full path.
+  - When referencing a heading or anchor within a file, append `/#anchor-here` to the end of the file path.
 
 Below is an example of how to use the component when the URLs are different:
 
@@ -843,7 +854,7 @@ Below is an example of how to use the component when the URLs are different:
 - System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the
   <PaletteVertexUrlMapper
     edition={props.edition}
-    text="System Administrators"
+    text="Account Management"
     palettePath="/system-management/account-management"
     vertexPath="/system-management-vertex/account-management"
   />
@@ -860,12 +871,12 @@ The `PaletteVertexUrlMapper` component also supports the optional `install` prop
 for self-hosted Palette and Palette VerteX.
 
 - `install` - The installation method. Can be `kubernetes`, `vmware`, or `management-appliance`. When provided, the
-  component appends `/supported-environments/{install-method}` to the base URL path.
+  component appends `/supported-environments/{install-method}` to the base URL path. Values are _not_ case sensitive.
 
 When the `install` prop is provided, the URL is constructed as follows:
 
 ```
-/self-hosted-setup/{palette|vertex}/supported-environments/{install-method}/{url}
+/self-hosted-setup/{edition}/supported-environments/{install-method}/{url}
 ```
 
 Below is an example of how to use the component with the `install` prop within the partial `.mdx` file:

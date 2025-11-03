@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Non-Airgap Environment"
-title: "Non-Airgap Environment"
+sidebar_label: "Set Up Non-Airgap Environment"
+title: "Set Up Non-Airgap Environment"
 description:
   "No prior setup is needed when installing self-hosted Palette on VMware vSphere with internet connectivity."
 icon: ""

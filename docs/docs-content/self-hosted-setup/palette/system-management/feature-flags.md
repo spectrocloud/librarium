@@ -17,7 +17,7 @@ keywords: ["self-hosted", "management", "feature-flags"]
 
 ## Prerequisites
 
-<PartialsComponent category="self-hosted" name="feature-flags-prerequisites" edition="palette" />
+<PartialsComponent category="self-hosted" name="feature-flags-prerequisites" edition="palette" version="Palette" />
 
 ## Enable a Feature
 

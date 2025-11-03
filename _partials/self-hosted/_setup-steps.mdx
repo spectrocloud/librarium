@@ -31,9 +31,9 @@ partial_name: setup-steps
 
   :::
 
-- Review the required vSphere <PaletteVertexUrlMapper text="permissions" edition={props.edition} install={props.install} url="/setup/non-airgap/vmware-system-requirements/" /> and ensure you have
+- Review the required vSphere <PaletteVertexUrlMapper text="permissions" edition={props.edition} url="/supported-environments/vmware/setup/airgap/vmware-system-requirements/" /> and ensure you have
   created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains
-  when provisioning workloads that require persistent storage. Refer to <VersionedLink text="Zone Tagging" edition={props.edition} install={props.install} url="/setup/non-airgap/vmware-system-requirements/#zone-tagging" /> for information.
+  when provisioning workloads that require persistent storage. Refer to <PaletteVertexUrlMapper text="Zone Tagging" edition={props.edition} url="/supported-environments/vmware/setup/airgap/vmware-system-requirements/#zone-tagging" /> for information.
 
 - The following artifacts must be available in the root home directory of the RHEL airgap VM. You can download the files
   in a system with internet access and then transfer them to your airgap environment. Contact your {props.edition} support
@@ -397,7 +397,7 @@ command below to start the installation.
     palette ec install
     ```
 
-Complete all the Palette CLI steps outlined in the <PaletteVertexUrlMapper edition={props.edition} text="Install" url="/vmware/install/airgap/" /> guide from the RHEL VM.
+Complete all the Palette CLI steps outlined in the <PaletteVertexUrlMapper edition={props.edition} text="Install" url="/supported-environments/vmware/install/airgap/" /> guide from the RHEL VM.
 
 :::info
 

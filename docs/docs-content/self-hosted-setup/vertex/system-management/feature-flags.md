@@ -17,7 +17,12 @@ keywords: ["self-hosted", "vertex", "management", "feature-flags"]
 
 ## Prerequisites
 
-<PartialsComponent category="self-hosted" name="feature-flags-prerequisites" edition="vertex" />
+<PartialsComponent
+  category="self-hosted"
+  name="feature-flags-prerequisites"
+  edition="vertex"
+  version="Palette VerteX"
+/>
 
 ## Enable a Feature
 

@@ -29,6 +29,6 @@ This guide is for preparing your airgap environment only. For instructions on in
 <PartialsComponent
   category="self-hosted"
   name="setup-steps"
-  edition="VerteX"
+  edition="vertex"
   requirementsURL="/self-hosted-setup/vertex/supported-environments/vmware/install#kubernetes-requirements"
 />
