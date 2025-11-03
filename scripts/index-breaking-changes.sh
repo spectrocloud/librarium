@@ -111,6 +111,23 @@ add_breaking_changes_body() {
     return
   fi
 
+  # Extract link text: [text](...)
+  link_text=$(
+    printf '%s\n' "$new_line" \
+    | grep -E '\[[^]]+\]\([^)]*\)' \
+    | sed -n -E 's/.*\[([^]]*)\]\(((<[^>]+>)|([^ )][^)]*))( "([^"]*)")?\).*/\1/p'
+  )
+
+  # Extract URL (supports <angle-bracket URLs> and optional "title")
+  link_url=$(
+    printf '%s\n' "$new_line" \
+    | grep -E '\[[^]]+\]\([^)]*\)' \
+    | sed -n -E 's/.*\[[^]]*\]\(((<[^>]+>)|([^ )][^)]*))( "([^"]*)")?\).*/\1/p' \
+    | sed -E 's/^<([^>]+)>$/\1/'   # drop angle brackets if present
+  )
+
+  echo "Found link: [$link_text]($link_url)"
+
   # Loop: replace one Markdown link per pass, repeat until none remain
   while :; do
     # Extract prefix, first match, and suffix using awk (portable on macOS)
@@ -126,7 +143,6 @@ add_breaking_changes_body() {
         }
       }' <<< "$new_line"
     )
-    echo "Inside link processing loop... $prefix, $match, $suffix"
 
     # No match -> we're done
     [[ -n "$match" ]] || break
