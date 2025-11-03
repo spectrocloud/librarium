@@ -16,8 +16,8 @@ partial_name: eks-pod-identity-validate
    export KUBECONFIG=/path/to/kubeconfig/file
    ```
 
-5. Issue the following `kubectl` command to verify that the EKS Pod Identity webhook has mutated the `spectro-hubble`
-   and `palette-identity` pods correctly.
+5. Issue the following `kubectl` commands to verify that EKS Pod Identity has set the required environment variables for the `spectro-hubble`
+   and `palette-identity` pods.
 
    ```bash
    kubectl get pods --namespace hubble-system --selector app=spectro-hubble -ojsonpath='{.items[0].spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
