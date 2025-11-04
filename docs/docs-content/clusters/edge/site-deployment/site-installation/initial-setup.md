@@ -33,7 +33,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
 ## Set up Edge Host
 
-1. Power up the Edge host. The GRand Unified Bootloader (GRUB) screen displays the following options. Do not make any
+1. Power on the Edge host. The GRand Unified Bootloader (GRUB) screen displays the following options. Do not make any
    input and allow Palette to choose the boot option automatically.
 
    :::warning
