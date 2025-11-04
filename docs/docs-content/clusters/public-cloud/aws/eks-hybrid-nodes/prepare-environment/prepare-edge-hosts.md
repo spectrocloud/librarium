@@ -831,7 +831,7 @@ required Edge artifacts.
 15. Provision your edge hosts using the installer ISO created in the `build` directory. You can use the following
     sections to help you:
 
-    - [Provision Virtual Machines](/tutorials/clusters/edge/deploy-cluster/#provision-virtual-machines)
+    - [Provision Virtual Machines](/tutorials/clusters/edge/deploy-cluster/#provision-edge-virtual-machines)
     - [Installation on Bare Metal](../../../../edge/site-deployment/stage.md)
 
 Ensure your edge hosts are fully provisioned, configured, and active before performing [validation](#validate-1).

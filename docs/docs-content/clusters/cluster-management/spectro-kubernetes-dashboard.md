@@ -15,7 +15,7 @@ cluster itself. For more information about the Kubernetes Dashboard, visit the
 
 <!-- prettier-ignore-start -->
 
-The Spectro Kubernetes Dashboard is available as a
+The Spectro Kubernetes Dashboard is available as a non-FIPS and FIPS 
 <VersionedLink text="pack" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> that can be added to your cluster
 profile. The pack reduces the complexity of deploying the standard Kubernetes Dashboard by creating required resources
 and roles.
@@ -37,36 +37,49 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 ## Enablement
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left main menu, select **Clusters**. Select the cluster you want to provision the Spectro Kubernetes
-   Dashboard on.
+2.  From the left main menu, select **Clusters**. Select the cluster you want to provision the Spectro Kubernetes
+    Dashboard on.
 
-3. Select the **Profile** tab and select the profile your desired cluster is using.
+3.  Select the **Profile** tab and select the profile your desired cluster is using. If you are using the FIPS Spectro
+    Kubernetes Dashboard, all profile layers must be FIPS compliant.
 
-4. From the version drop-down menu, select **Create new version**.
+4.  From the version drop-down menu, select **Create new version**.
 
-5. Enter the semantic version number you wish to use for the updated profile and select **Confirm**.
+5.  Enter the semantic version number you wish to use for the updated profile and select **Confirm**.
 
-6. Select **Add New Pack**.
+6.  Select **Add New Pack**. The search field appears.
 
-7. In the search field, search for and select the **Spectro Kubernetes Dashboard** pack.
+7.  Search for and select the **Spectro Kubernetes Dashboard** pack. Ensure that you are selecting the FIPS version if
+    the Profile is FIPS-based.
 
-   ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
+    ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
 
-8. Select the most recent version and **Confirm** your changes.
+8.  Select the most recent version and **Confirm** your changes.
 
-   :::info
+    :::info
 
-   Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must remove
-   the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The Spectro
-   Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the upgrade
-   process.
+    Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must
+    remove the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The
+    Spectro Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the
+    replacement process.
 
-   :::
+    :::
 
-9. Leave the default values for the **Spectro Kubernetes Dashboard** pack and select **Confirm & Create** on the pack
-   customization screen.
+9.  Leave the default values for the **Spectro Kubernetes Dashboard** pack and select **Confirm & Create** on the pack
+    customization screen.
+
+    :::warning
+
+         For FIPS deployments, be aware of the following required configuration options:
+             - In private cloud, enable `Proxied` mode.
+             - In public cloud, enable `Direct` mode.
+             - In private clusters of public cloud, enable `Proxied` mode and ensure your VPN is enabled between the private and public clouds.
+
+         Additionally, if the cluster already has Nginx ingress running, disable Nginx from Presets.
+
+    :::
 
 10. The profile overview screen reflects that the `spectro-k8s-dashboard` pack is now part of your cluster profile.
     Select **Save Changes**.
