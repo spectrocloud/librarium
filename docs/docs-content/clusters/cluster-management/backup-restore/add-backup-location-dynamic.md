@@ -33,9 +33,9 @@ You can use the same AWS account in which you deploy your Kubernetes cluster to 
 You can also use a different AWS account to add an S3 bucket as the backup location. Select the tab below that best
 matches your use case.
 
-- [Single Cloud Account with AWS STS](#single-cloud-account-with-aws-sts)
+- [Single Cloud Account with AWS STS](#single-cloud-account-with-aws-sts) <!-- omit in toc -->
 
-- [Multiple Cloud Accounts with AWS STS](#multiple-cloud-accounts-with-aws-sts)
+- [Multiple Cloud Accounts with AWS STS](#multiple-cloud-accounts-with-aws-sts) <!-- omit in toc -->
 
 ## Single Cloud Account with AWS STS
 
@@ -45,9 +45,8 @@ cloud account.
 ### Prerequisites
 
 - If you are using a self-hosted Palette or Vertex instance, you must configure an AWS account at the instance-level to
-  allow tenants to add AWS accounts using STS. For more information, refer to
-  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
-  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
+  allow tenants to add AWS accounts using STS. For more information, refer to the
+  [Add AWS Accounts Using STS](../../public-cloud/aws/add-aws-accounts/configure-aws-sts-account.md) guide.
 
 - Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to
   self-hosted Palette and Palette VerteX customers. Palette SaaS in hosted in an AWS environment.
@@ -208,7 +207,8 @@ A multi-cloud account scenario requires you to perform the following authenticat
 
 1. Grant Palette access to the cluster in AWS Account A. When you register a primary cloud account in Palette, you
    authenticate and authorize Palette to deploy clusters in the cloud account. Check out the
-   [Add AWS Account](../../public-cloud/aws/add-aws-accounts.md) to guidance on how to add an AWS account in Palette.
+   [Add AWS Account](../../public-cloud/aws/add-aws-accounts/add-aws-accounts.md) to guidance on how to add an AWS
+   account in Palette.
 
 2. Give Palette permission to use the S3 buckets in AWS Account B. Set the bucket permissions and link them to an IAM
    role. Then, update the IAM role to let Palette assume it.
@@ -222,9 +222,8 @@ multiple cloud accounts.
 ### Prerequisites
 
 - If you are using a self-hosted Palette or Vertex instance, you must configure an AWS account at the instance-level to
-  allow tenants to add AWS accounts using STS. For more information, refer to
-  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
-  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
+  allow tenants to add AWS accounts using STS. For more information, refer to the
+  [Add AWS Accounts Using STS](../../public-cloud/aws/add-aws-accounts/configure-aws-sts-account.md) guide.
 
 - Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to
   self-hosted Palette and Palette VerteX customers. Palette SaaS is hosted in an AWS environment.

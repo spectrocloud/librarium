@@ -15,7 +15,7 @@ tags: ["cluster templates", "templates", "policies"]
 :::
 
 Cluster templates are reusable blueprints that define and enforce the desired state and lifecycle of clusters deployed
-with Palette or [Palette VerteX](../vertex/vertex.md).
+with Palette or [Palette VerteX](../self-hosted-setup/vertex/vertex.md).
 
 Unlike [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md), which define the cluster's software stack
 (including OS, Kubernetes distribution, network, storage, and add‑ons), cluster templates are a higher level abstraction

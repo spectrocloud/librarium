@@ -20,7 +20,7 @@ and policies in other clusters.
 
 ## Prerequisites
 
-- The **ClusterTemplate** [feature flag](../enterprise-version/system-management/feature-flags.md) enabled.
+- The **ClusterTemplate** [feature flag](../self-hosted-setup/palette/system-management/feature-flags.md) enabled.
 
 - The `clusterTemplate.delete` permission to delete cluster templates. Refer to our
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more

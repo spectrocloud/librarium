@@ -29,9 +29,10 @@ cluster on an as-need basis.
 ### Debug Steps
 
 For multi-tenant and dedicated SaaS instances, perform cleanup on any applicable PCGs. For
-[self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md), clean up
-any applicable PCGs as well as your management plane cluster if you have used the Palette
-[System Private Gateway](../clusters/pcg/architecture.md#system-private-gateway) to deploy clusters.
+[self-hosted Palette](../self-hosted-setup/palette/palette.md) and
+[Palette VerteX](../self-hosted-setup/vertex/vertex.md), clean up any applicable PCGs as well as your management plane
+cluster if you have used the Palette [System Private Gateway](../clusters/pcg/architecture.md#system-private-gateway) to
+deploy clusters.
 
 <Tabs>
 
@@ -106,7 +107,7 @@ any applicable PCGs as well as your management plane cluster if you have used th
 <TabItem label="System Private Gateway" value="system">
 
 1. Log in to your Palette or Palette VerteX
-   [system console](../enterprise-version/system-management/system-management.md#access-the-system-console).
+   [system console](../self-hosted-setup/palette/system-management/system-management.md#access-the-system-console).
 
 2. From the left main menu, select **Enterprise Cluster**.
 
@@ -275,7 +276,7 @@ to Palette 4.7.
 <TabItem label="System Private Gateway" value="system">
 
 1. Log in to your Palette or Palette VerteX
-   [system console](../enterprise-version/system-management/system-management.md#access-the-system-console).
+   [system console](../self-hosted-setup/palette/system-management/system-management.md#access-the-system-console).
 
 2. From the left main menu, select **Enterprise Cluster**.
 

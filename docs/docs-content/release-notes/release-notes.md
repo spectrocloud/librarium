@@ -24,7 +24,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 <!-- prettier-ignore-start -->
 
 - Fixed an issue that caused pods belonging to the <VersionedLink text="Piraeus Operator" url="/integrations/?pack=piraeus-csi" /> pack to go into an `Unknown` state after scaling [Edge clusters](../clusters/edge/edge.md).
-- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../vertex/vertex.md).
+- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../self-hosted-setup/vertex/vertex.md).
 
 <!-- prettier-ignore-end -->
 
@@ -77,13 +77,21 @@ The following components have been updated for Palette version 4.7.27.
 
 <!-- prettier-ignore-start -->
 
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use the following components internally:
+- The [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md) have now been updated to use the following components internally:
 
   - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.32.8
   - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.30.2
   - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.9.0
   - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.67-rev1
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../self-hosted-setup/vertex/vertex.md).
 
 <!-- prettier-ignore-end -->
 
@@ -158,8 +166,8 @@ The following components have been updated for Palette version 4.7.27.
 
 <!-- prettier-ignore-start -->
 
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now automatically
+- [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md) now automatically
   delete the `provider_extract` directory after deployment, removing unused files. Additionally, Palette and VerteX
   management appliance now use <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.32.8 and <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-operator" /> 2.9.0 internally.
 
@@ -185,7 +193,7 @@ The following components have been updated for Palette version 4.7.27.
   [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
 
 - Fixed an issue that prevented the deletion of [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed in
-  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts.md).
+  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts/add-aws-accounts.md).
 
 #### Deprecations and Removals
 
@@ -549,8 +557,8 @@ The following component updates are applicable to this release:
 #### Features
 
 - <TpBadge /> Palette and VerteX Management Appliance now support Secure Boot. Refer to the [Palette Management
-  Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for further configuration
-  information.
+  Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) guide for
+  further configuration information.
 - <TpBadge /> Palette and VerteX Management Appliance now support single node installation. We do not recommend this
   setup for production environments.
 
@@ -563,7 +571,7 @@ The following component updates are applicable to this release:
 #### Bug Fixes
 
 - Fixed an issue that caused the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to leave open connections after VM migrations.
-- Fixed an issue that incorrectly allowed the creation of [EKS Fargate](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html) in [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud-account-us).
+- Fixed an issue that incorrectly allowed the creation of [EKS Fargate](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html) in [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts/add-aws-accounts.md#aws-govcloud-account-us).
 - Fixed an issue where, on Azure IaaS clusters created using a Palette version prior to 4.6.32, scaling worker node pools did not attach newly created nodes to an outbound load balancer after upgrading to Palette version 4.6.32 or later and the cluster's Palette Agent version to 4.6.7 or later.
 - Fixed an issue that caused manifest layers creating using [Crossplane](../automation/crossplane/crossplane.md) to display incorrectly in the Palette UI.
 - Fixed an issue that caused [EKS nodes](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) customized with the `AL2_x86_64` AMI label to be incorrectly configured with Amazon Linux 2023 (AL2023).
@@ -860,11 +868,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 #### Bug Fixes
 
 - Fixed an issue that caused errors on message broker pods after upgrading
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to version 4.7.4 or later.
+  [self-hosted Palette](../self-hosted-setup/palette/palette.md) installations to version 4.7.4 or later.
 - Fixed an issue that caused validation errors to appear when
   [adding an Amazon ECR](../registries-and-packs/registries/oci-registry/add-oci-packs.md) hosted in
   [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html) to Palette.
-- Fixed an issue that caused [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to allow
+- Fixed an issue that caused [self-hosted Palette](../self-hosted-setup/palette/palette.md) installations to allow
 passing open redirects in URLs using the `returnTo` parameter.
 <!-- prettier-ignore-start -->
 - Fixed an issue that caused multiple repeated creations and reconciliations of
@@ -1124,19 +1132,20 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- <TpBadge /> The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)
-  is a new method to install self-hosted Palette in your infrastructure environment. It provides a simple and efficient
-  way to deploy Palette using an ISO file. The Palette Management Appliance is available for VMware, Bare Metal, and
-  Machine as a Service (MAAS) environments.
+- <TpBadge /> The [Palette Management
+  Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) is a new
+  method to install self-hosted Palette in your infrastructure environment. It provides a simple and efficient way to
+  deploy Palette using an ISO file. The Palette Management Appliance is available for VMware, Bare Metal, and Machine as
+  a Service (MAAS) environments.
 
 - <TpBadge /> The [Artifact Studio](../downloads/artifact-studio.md) is a new platform for obtaining bundles, packs, and
   installers relating to Palette Enterprise and Palette VerteX. It provides a single source for these artifacts, which
   you can download and then upload to your registries.
 
-- [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports the configuration of a classification
+- [Self-hosted Palette](../self-hosted-setup/palette/palette.md) now supports the configuration of a classification
   banner. System administrators can set the banner text and color through the
-  [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
-  [Banners](../enterprise-version/system-management/login-banner.md) guide for further guidance.
+  [system console](../self-hosted-setup/palette/system-management/system-management.md#system-console). Refer to the
+  [Banners](../self-hosted-setup/palette/system-management/login-banner.md) guide for further guidance.
 
 - All ZST bundles, ISO files, and images in Spectro Cloud-owned registries are now signed using
   [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable,
@@ -1306,8 +1315,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - Configuration adjustments have been made to improve the compatibility of the
   [Virtual Machine Orchestrator](../vm-management/vm-management.md) with
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) installations. This includes the ability to
-  configure a private CA certificate for secure communication. Refer to the
+  [self-hosted Palette](../self-hosted-setup/palette/palette.md) installations. This includes the ability to configure a
+  private CA certificate for secure communication. Refer to the
   [Configure Private CA Certificate](../vm-management/configure-private-ca-certificate.md) guide for more details.
 
 - The KubeVirt version in use is now v1.5.0. Other components of the VMO pack have also been upgraded, enhancing system

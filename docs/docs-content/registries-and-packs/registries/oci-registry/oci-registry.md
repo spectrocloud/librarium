@@ -42,8 +42,8 @@ To add an OCI registry to Palette, refer to the respective guide for the OCI-typ
 If you are using self-hosted Palette or Palette VerteX, you can add an OCI registry at the system level scope. All
 tenants can use the OCI registry once it is added to the system-level scope. To learn how to add an OCI registry at the
 system level scope, refer to the
-[Self-Hosted Add Registry](../../../enterprise-version/system-management/add-registry.md) guide or the
-[VerteX Add Registry](../../../vertex/system-management/add-registry.md) guide.
+[Self-Hosted Add Registry](../../../self-hosted-setup/palette/system-management/add-registry.md) guide or the
+[VerteX Add Registry](../../../self-hosted-setup/vertex/system-management/add-registry.md) guide.
 
 :::
 

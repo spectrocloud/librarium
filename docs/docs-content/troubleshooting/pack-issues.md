@@ -13,10 +13,11 @@ The following are common scenarios that you may encounter when using Packs.
 ## Scenario - Pods with NamespaceLabels are Stuck on Deployment
 
 When deploying a workload cluster with packs that declare `namespaceLabels`, the associated Pods never start if the
-cluster was deployed via self-hosted [Palette](../enterprise-version/enterprise-version.md) or
-[Palette VerteX](../vertex/vertex.md) or if the `palette-agent` ConfigMap has `data.feature.workloads: disable`. This is
-due to the necessary labels not being applied to the target namespace, resulting in the namespace lacking the elevated
-privileges the Pods require and the Kubernetes’ PodSecurity admission blocks the Pods.
+cluster was deployed via self-hosted [Palette](../self-hosted-setup/palette/palette.md) or
+[Palette VerteX](../self-hosted-setup/vertex/vertex.md) or if the `palette-agent` ConfigMap has
+`data.feature.workloads: disable`. This is due to the necessary labels not being applied to the target namespace,
+resulting in the namespace lacking the elevated privileges the Pods require and the Kubernetes’ PodSecurity admission
+blocks the Pods.
 
 To resolve this issue, force-apply the PodSecurity policies directly to the namespace of the affected Pods.
 

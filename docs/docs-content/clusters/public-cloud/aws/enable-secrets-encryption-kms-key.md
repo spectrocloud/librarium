@@ -18,7 +18,7 @@ wizard's **Cluster Config** page for EKS.
 
 ## Prerequisites
 
-- An AWS account added to Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
+- An AWS account added to Palette. Review [Add AWS Account](./add-aws-accounts/add-aws-accounts.md) for guidance.
 
 - IAM user or role has attached policies listed in [Required IAM Policies](required-iam-policies.md).
 
