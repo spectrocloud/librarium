@@ -128,7 +128,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
    **Enter** to apply the change.
 
 9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
-   specify a search domain. Press **Enter** to apply the change.
+   specify a search domain. Press **ENTER** to apply the change.
 
 10. After you are satisfied with the configurations, navigate to **Logout** and press **Enter** to complete the
     configuration.
