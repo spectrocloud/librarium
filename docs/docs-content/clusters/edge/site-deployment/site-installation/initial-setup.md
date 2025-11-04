@@ -72,7 +72,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    :::info
 
-   You can also use `/opt/spectrocloud/bin/palette-tui` to access the TUI after completing the initial setup if you need
+   You can also use the command `/opt/spectrocloud/bin/palette-tui` to access the TUI after completing the initial setup if you need
    to review or adjust any configuration. However, once you deploy a cluster on the Edge host, the TUI remains available
    for validation purposes only, and configuration editing is restricted.
 
