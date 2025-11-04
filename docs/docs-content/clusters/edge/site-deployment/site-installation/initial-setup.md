@@ -65,7 +65,7 @@ it manually.
    - Agent version
    - Local UI link
    - Palette endpoint
-   - QR code for registration link (if you provided the link in the `stylus.site.registrationURL` parameter of
+   - QR code for Palette registration (if you provided the value in the `stylus.site.registrationURL` parameter of
      [user data](../../edge-configuration/installer-reference.md))
 
    If you are accessing the Edge host with an SSH connection, you can issue the command
