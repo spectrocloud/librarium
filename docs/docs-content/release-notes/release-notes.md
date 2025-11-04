@@ -25,11 +25,9 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 - The [Artifact Studio](../downloads/artifact-studio.md) packs list has been consolidated to display a single tile for
   all versions of packs and pack display names have been enhanced. This leads to an improved user experience.
 
-### Bug Fixes
-
 ### Packs
 
-### Pack Notes
+#### Pack Notes
 
 <!-- prettier-ignore-start -->
 
