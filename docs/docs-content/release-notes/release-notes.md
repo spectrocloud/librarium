@@ -60,7 +60,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
-- The Terminal User Interface (TUI) is now enabled by default, displays a new landing page with system information, and supports VLAN configuration. For more details, refer to [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md). The `stylus.includeTui` flag in `user-data` is deprecated.
+- The Terminal User Interface (TUI) is now enabled by default, displays a new landing page with system information, and
+  supports VLAN configuration. For more details, refer to
+  [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
+  The `stylus.includeTui` flag in `user-data` is deprecated.
 
 #### Improvements
 
