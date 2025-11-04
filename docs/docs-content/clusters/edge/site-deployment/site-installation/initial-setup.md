@@ -84,7 +84,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, the TUI
    displays the **Create User** page. This allows you to create an Operating System (OS) user with the necessary
-   permissions to operate Palette. Enter a username and password to create a new user and press the Enter key to
+   permissions to operate Palette. Enter a username and password to create a new user and press the **ENTER** key to
    progress to the next screen.
 
    :::info
