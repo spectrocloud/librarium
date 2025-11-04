@@ -56,8 +56,8 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    - Palette TUI version
    - Platform or virtualization environment
-   - Central Processing Unit (CPU) type and count
-   - Total system Random Access Memory (RAM)
+   - Central processing unit (CPU) type and count
+   - Total system random access memory (RAM)
    - Host name
    - Host unique identifier (UID)
    - IP address
@@ -84,7 +84,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
    For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
    If you did not configure a user in your `user-data` file during EdgeForge or provide site user data, the TUI displays
-   the **Create User** page. This allows you to create an Operating System (OS) user with the necessary permissions to
+   the **Create User** page. This allows you to create an OS user with the necessary permissions to
    operate Palette. Enter a username and password to create a new user and press the **ENTER** key to progress to the
    next screen.
 
@@ -104,7 +104,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
    keys to switch between fields. When you make a change, press **ENTER** to apply the change.
 
 6. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
-   automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible IP
+   automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR) block of an adapter's possible IP
    address is displayed in the **Network Adapter** screen without selecting an individual adapter.
 
    On the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
