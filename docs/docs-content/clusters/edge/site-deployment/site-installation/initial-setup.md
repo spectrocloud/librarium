@@ -68,13 +68,17 @@ it manually.
    - QR code for Palette registration (if you provided the value in the `stylus.site.registrationURL` parameter of
      [user data](../../edge-configuration/installer-reference.md))
 
-   If you are accessing the Edge host with an SSH connection, you can issue the command
-   `/opt/spectrocloud/bin/palette-tui` to launch the TUI. The TUI remains available after the initial configuration for
-   validation and read-only status checks. Configuration editing from the TUI after installation is restricted.
+   When accessing the Edge host with an SSH connection, you can issue the command `/opt/spectrocloud/bin/palette-tui` to launch the TUI.
 
-3. Press **F2** to customize the settings.
+   :::info
+   
+   You can also use `/opt/spectrocloud/bin/palette-tui` to access the TUI after completing the initial setup if you need to review or adjust any configuration. However, once you deploy a cluster on the Edge host, the TUI remains available for validation purposes only, and configuration editing is restricted.
+   
+   :::
 
-4. If you configured a user in your **user-data** file in the EdgeForge step, the TUI displays the **User Login** page.
+4. Press **F2** to customize the settings.
+
+5. If you configured a user in your **user-data** file in the EdgeForge step, the TUI displays the **User Login** page.
    For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, the TUI
@@ -90,14 +94,14 @@ it manually.
 
    :::
 
-5. Next, the terminal displays a console for you to provide hostname and network configurations to the Edge host.
+6. Next, the terminal displays a console for you to provide hostname and network configurations to the Edge host.
 
    ![A terminal user interface showing displaying network configuration options](/clusters_site-installation_initial-setup_tui_4.8.webp)
 
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
    switch between fields. When you make a change, press **Enter** to apply the change.
 
-6. In **Network Adapter**, select a network adapter you'd like to configure. By default, the network adapters request an
+7. In **Network Adapter**, select a network adapter you'd like to configure. By default, the network adapters request an
    IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible
    IP address is displayed in the **Network Adapter** screen without selecting an individual adapter.
 
@@ -113,19 +117,19 @@ it manually.
 
    :::
 
-7. In the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
+8. In the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
    logically segment network traffic on the same physical network interface, providing network isolation and enhanced
    traffic management. If you assign a VLAN ID, the Edge host tags all outgoing packets from that adapter with the
    specified VLAN identifier.
 
-8. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
+9. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
    largest size, in bytes, of a packet that can be sent over a network interface without needing to be fragmented. Press
    **Enter** to apply the change.
 
-9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
+10. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
    specify a search domain. Press **Enter** to apply the change.
 
-10. After you are satisfied with the configurations, navigate to **Logout** and press **Enter** to complete the
+11. After you are satisfied with the configurations, navigate to **Logout** and press **Enter** to complete the
     configuration.
 
 ## Validate
