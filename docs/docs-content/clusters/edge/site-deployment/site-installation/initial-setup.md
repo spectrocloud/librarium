@@ -9,7 +9,7 @@ tags: ["edge"]
 
 When you boot an Edge host, the Terminal User Interface (TUI) launches automatically and allows you to configure the
 host and its network environment. This includes the configuration of an OS user, machine hostname, IP address, Virtual
-Local Area Network (VLAN), and DNS server. These settings persist even after you reset the host.
+Local Area Network (VLAN), and Domain Name System (DNS) server. These settings persist even after you reset the host.
 
 You may already have specified some of these configurations in the `user-data` file in the EdgeForge process or have
 supplied them with site-specific `user-data`, and can either keep them as they are or update them during this step.
