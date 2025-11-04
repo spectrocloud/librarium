@@ -51,6 +51,31 @@ partial_name: eks-pod-identity-prerequisites
   - The [required IAM policies](/clusters/public-cloud/aws/required-iam-policies/) must be assigned to the IAM role created for Palette (for
     example, `SpectroCloudRole`).
 
+    - In addition to the required IAM policies, the following policies must also be assigned to the IAM role created for
+      Palette.
+
+      ```json
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "eks:ListPodIdentityAssociations",
+              "eks:CreatePodIdentityAssociation",
+              "eks:DeletePodIdentityAssociation"
+            ],
+            "Resource": "*"
+          },
+          {
+            "Effect": "Allow",
+            "Action": ["iam:PassRole"],
+            "Resource": "*"
+          }
+        ]
+      }
+      ```
+
   - The following policies must be assigned to the IAM role created for the Palette Hubble service (for example,
     `SpectroCloudHubbleRole`).
 
