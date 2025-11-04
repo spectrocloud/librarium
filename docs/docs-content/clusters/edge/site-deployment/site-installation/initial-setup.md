@@ -19,7 +19,7 @@ For more information about EdgeForge and site user data, refer to
 :::warning
 
 When upgrading an Edge host from an Agent version earlier than 4.3, the initial TUI configuration wizard does not start
-automatically. To launch the setup manually, issue the command /opt/spectrocloud/bin/palette-tui in the terminal.
+automatically. To launch the setup manually, issue the command `/opt/spectrocloud/bin/palette-tui` in the terminal.
 
 :::
 
