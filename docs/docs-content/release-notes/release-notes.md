@@ -32,6 +32,13 @@ tags: ["release-notes"]
 
 #### Features
 
+- [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) is now a supported
+  authentication method for AWS cloud accounts. This secure authentication mechanism allows Kubernetes pods to assume
+  IAM roles with temporary, automatically refreshed credentials, eliminating the need for long-lived AWS credentials.
+
+  This method is only available for self-hosted Palette and Palette VerteX instances deployed on Amazon EKS clusters.
+  Refer to the [Add AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) guide for more information.
+
 - [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
   now support the multiline input type and the Base64 format. This improvement allows users to leverage cluster profile
   variables for use cases such as saving multiline YAML specifications and storing encoded keys for use during cluster
