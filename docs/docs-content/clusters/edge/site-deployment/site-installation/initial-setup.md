@@ -12,8 +12,8 @@ host and its network environment. This includes the configuration of an OS user,
 Local Area Network (VLAN), and Domain Name System (DNS) server. These settings persist even after you reset the host.
 
 You may already have specified some of these configurations in the `user-data` file in the EdgeForge process or have
-supplied them with site-specific `user-data`, and can either keep them as they are or update them during this step.
-For more information about EdgeForge and site user data, refer to
+supplied them with site-specific `user-data`, and can either keep them as they are or update them during this step. For
+more information about EdgeForge and site user data, refer to
 [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md) and [Apply Site User Data](./site-user-data.md).
 
 :::warning
@@ -72,8 +72,9 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    :::info
 
-   You can also use the command `/opt/spectrocloud/bin/palette-tui` to access the TUI after completing the initial setup if you need
-   to review or adjust any configuration. However, once you deploy a cluster on the Edge host, the TUI can only be used for validation purposes; editing configurations is not allowed.
+   You can also use the command `/opt/spectrocloud/bin/palette-tui` to access the TUI after completing the initial setup
+   if you need to review or adjust any configuration. However, once you deploy a cluster on the Edge host, the TUI can
+   only be used for validation purposes; editing configurations is not allowed.
 
    :::
 
@@ -82,10 +83,10 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 4. If you configured a user in your `user-data` file in the EdgeForge step, the TUI displays the **User Login** page.
    For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
-   If you did not configure a user in your `user-data` file during EdgeForge or provide site user data, the TUI
-   displays the **Create User** page. This allows you to create an Operating System (OS) user with the necessary
-   permissions to operate Palette. Enter a username and password to create a new user and press the **ENTER** key to
-   progress to the next screen.
+   If you did not configure a user in your `user-data` file during EdgeForge or provide site user data, the TUI displays
+   the **Create User** page. This allows you to create an Operating System (OS) user with the necessary permissions to
+   operate Palette. Enter a username and password to create a new user and press the **ENTER** key to progress to the
+   next screen.
 
    :::info
 
@@ -99,12 +100,12 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    ![A terminal user interface showing displaying network configuration options](/clusters_site-installation_initial-setup_tui_4.8.webp)
 
-   Check the existing hostname and, optionally, change it to a new one. Use the **TAB** key or the up and down arrow keys to
-   switch between fields. When you make a change, press **ENTER** to apply the change.
+   Check the existing hostname and, optionally, change it to a new one. Use the **TAB** key or the up and down arrow
+   keys to switch between fields. When you make a change, press **ENTER** to apply the change.
 
-6. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an
-   IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible
-   IP address is displayed in the **Network Adapter** screen without selecting an individual adapter.
+6. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
+   automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible IP
+   address is displayed in the **Network Adapter** screen without selecting an individual adapter.
 
    On the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
    IP instead of DHCP. In Static IP mode, you need to provide a static IP address, subnet mask, as well as the address
