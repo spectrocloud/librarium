@@ -33,9 +33,11 @@ latest minor version available.
 
 :::
 
-| **Source Version** | **Target Version** | **Support** |
-| ------------------ | ------------------ | ----------- |
-| 4.7.3              | 4.7.15             | :x:         |
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.15       |       4.7.27       | :white_check_mark: |
+|       4.7.3        |       4.7.27       |        :x:         |
+|       4.7.3        |       4.7.15       |        :x:         |
 
 ## Prerequisites
 

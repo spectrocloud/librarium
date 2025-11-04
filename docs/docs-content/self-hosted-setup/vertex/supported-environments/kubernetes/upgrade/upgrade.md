@@ -53,6 +53,249 @@ latest minor version available.
 
 :::
 
+<Tabs>
+<TabItem label="VMware" value="VMware">
+
+**4.7.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.21       |       4.7.27       | :white_check_mark: |
+|       4.7.20       |       4.7.27       | :white_check_mark: |
+|       4.7.16       |       4.7.27       | :white_check_mark: |
+|       4.7.16       |       4.7.20       | :white_check_mark: |
+|       4.7.15       |       4.7.27       | :white_check_mark: |
+|       4.7.15       |       4.7.20       | :white_check_mark: |
+|       4.7.3        |       4.7.27       | :white_check_mark: |
+|       4.7.3        |       4.7.20       | :white_check_mark: |
+|       4.7.3        |       4.7.15       | :white_check_mark: |
+|       4.6.41       |       4.7.27       | :white_check_mark: |
+|       4.6.41       |       4.7.20       | :white_check_mark: |
+|       4.6.41       |       4.7.15       | :white_check_mark: |
+|       4.6.41       |       4.7.3        | :white_check_mark: |
+|       4.6.6        |       4.7.15       | :white_check_mark: |
+
+**4.6.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.6.41       |       4.6.43       | :white_check_mark: |
+|       4.6.36       |       4.6.43       | :white_check_mark: |
+|       4.6.36       |       4.6.41       | :white_check_mark: |
+|       4.6.32       |       4.6.43       | :white_check_mark: |
+|       4.6.32       |       4.6.41       | :white_check_mark: |
+|       4.6.32       |       4.6.34       | :white_check_mark: |
+|       4.6.28       |       4.6.43       | :white_check_mark: |
+|       4.6.28       |       4.6.41       | :white_check_mark: |
+|       4.6.28       |       4.6.34       | :white_check_mark: |
+|       4.6.28       |       4.6.32       | :white_check_mark: |
+|       4.6.26       |       4.6.43       | :white_check_mark: |
+|       4.6.26       |       4.6.41       | :white_check_mark: |
+|       4.6.26       |       4.6.34       | :white_check_mark: |
+|       4.6.26       |       4.6.32       | :white_check_mark: |
+|       4.6.25       |       4.6.43       | :white_check_mark: |
+|       4.6.25       |       4.6.41       | :white_check_mark: |
+|       4.6.25       |       4.6.34       | :white_check_mark: |
+|       4.6.25       |       4.6.32       | :white_check_mark: |
+|       4.6.24       |       4.6.43       | :white_check_mark: |
+|       4.6.24       |       4.6.41       | :white_check_mark: |
+|       4.6.24       |       4.6.34       | :white_check_mark: |
+|       4.6.24       |       4.6.32       | :white_check_mark: |
+|       4.6.23       |       4.6.43       | :white_check_mark: |
+|       4.6.23       |       4.6.41       | :white_check_mark: |
+|       4.6.23       |       4.6.34       | :white_check_mark: |
+|       4.6.23       |       4.6.32       | :white_check_mark: |
+|       4.6.23       |       4.6.28       | :white_check_mark: |
+|       4.6.23       |       4.6.24       | :white_check_mark: |
+|       4.6.18       |       4.6.43       | :white_check_mark: |
+|       4.6.18       |       4.6.41       | :white_check_mark: |
+|       4.6.18       |       4.6.34       | :white_check_mark: |
+|       4.6.18       |       4.6.32       | :white_check_mark: |
+|       4.6.18       |       4.6.28       | :white_check_mark: |
+|       4.6.18       |       4.6.24       | :white_check_mark: |
+|       4.6.18       |       4.6.23       | :white_check_mark: |
+|       4.6.13       |       4.6.43       | :white_check_mark: |
+|       4.6.13       |       4.6.41       | :white_check_mark: |
+|       4.6.13       |       4.6.34       | :white_check_mark: |
+|       4.6.13       |       4.6.32       | :white_check_mark: |
+|       4.6.13       |       4.6.28       | :white_check_mark: |
+|       4.6.13       |       4.6.24       | :white_check_mark: |
+|       4.6.13       |       4.6.23       | :white_check_mark: |
+|       4.6.13       |       4.6.18       | :white_check_mark: |
+|       4.6.12       |       4.6.43       | :white_check_mark: |
+|       4.6.12       |       4.6.41       | :white_check_mark: |
+|       4.6.12       |       4.6.34       | :white_check_mark: |
+|       4.6.12       |       4.6.32       | :white_check_mark: |
+|       4.6.12       |       4.6.28       | :white_check_mark: |
+|       4.6.12       |       4.6.24       | :white_check_mark: |
+|       4.6.12       |       4.6.23       | :white_check_mark: |
+|       4.6.12       |       4.6.18       | :white_check_mark: |
+|       4.6.12       |       4.6.13       | :white_check_mark: |
+|       4.6.9        |       4.6.43       | :white_check_mark: |
+|       4.6.9        |       4.6.41       | :white_check_mark: |
+|       4.6.9        |       4.6.34       | :white_check_mark: |
+|       4.6.9        |       4.6.32       | :white_check_mark: |
+|       4.6.9        |       4.6.28       | :white_check_mark: |
+|       4.6.9        |       4.6.24       | :white_check_mark: |
+|       4.6.9        |       4.6.23       | :white_check_mark: |
+|       4.6.9        |       4.6.18       | :white_check_mark: |
+|       4.6.9        |       4.6.13       | :white_check_mark: |
+|       4.6.9        |       4.6.12       | :white_check_mark: |
+|       4.6.8        |       4.6.43       | :white_check_mark: |
+|       4.6.8        |       4.6.41       | :white_check_mark: |
+|       4.6.8        |       4.6.34       | :white_check_mark: |
+|       4.6.8        |       4.6.32       | :white_check_mark: |
+|       4.6.8        |       4.6.28       | :white_check_mark: |
+|       4.6.8        |       4.6.24       | :white_check_mark: |
+|       4.6.8        |       4.6.23       | :white_check_mark: |
+|       4.6.8        |       4.6.18       | :white_check_mark: |
+|       4.6.8        |       4.6.13       | :white_check_mark: |
+|       4.6.8        |       4.6.12       | :white_check_mark: |
+|       4.6.8        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.43       | :white_check_mark: |
+|       4.6.7        |       4.6.41       | :white_check_mark: |
+|       4.6.7        |       4.6.34       | :white_check_mark: |
+|       4.6.7        |       4.6.32       | :white_check_mark: |
+|       4.6.7        |       4.6.28       | :white_check_mark: |
+|       4.6.7        |       4.6.24       | :white_check_mark: |
+|       4.6.7        |       4.6.23       | :white_check_mark: |
+|       4.6.7        |       4.6.18       | :white_check_mark: |
+|       4.6.7        |       4.6.13       | :white_check_mark: |
+|       4.6.7        |       4.6.12       | :white_check_mark: |
+|       4.6.7        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.43       | :white_check_mark: |
+|       4.6.6        |       4.6.41       | :white_check_mark: |
+|       4.6.6        |       4.6.34       | :white_check_mark: |
+|       4.6.6        |       4.6.32       | :white_check_mark: |
+|       4.6.6        |       4.6.28       | :white_check_mark: |
+|       4.6.6        |       4.6.24       | :white_check_mark: |
+|       4.6.6        |       4.6.23       | :white_check_mark: |
+|       4.6.6        |       4.6.18       | :white_check_mark: |
+|       4.6.6        |       4.6.13       | :white_check_mark: |
+|       4.6.6        |       4.6.12       | :white_check_mark: |
+|       4.6.6        |       4.6.9        | :white_check_mark: |
+|       4.6.6        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.7        | :white_check_mark: |
+|       4.5.23       |       4.6.43       | :white_check_mark: |
+|       4.5.23       |       4.6.41       | :white_check_mark: |
+|       4.5.23       |       4.6.34       | :white_check_mark: |
+|       4.5.23       |       4.6.32       | :white_check_mark: |
+|       4.5.23       |       4.6.28       | :white_check_mark: |
+|       4.5.23       |       4.6.24       | :white_check_mark: |
+|       4.5.23       |       4.6.23       | :white_check_mark: |
+|       4.5.23       |       4.6.18       | :white_check_mark: |
+|       4.5.21       |       4.6.43       | :white_check_mark: |
+|       4.5.21       |       4.6.41       | :white_check_mark: |
+|       4.5.21       |       4.6.34       | :white_check_mark: |
+|       4.5.21       |       4.6.32       | :white_check_mark: |
+|       4.5.21       |       4.6.28       | :white_check_mark: |
+|       4.5.21       |       4.6.24       | :white_check_mark: |
+|       4.5.21       |       4.6.23       | :white_check_mark: |
+|       4.5.21       |       4.6.18       | :white_check_mark: |
+|       4.5.21       |       4.6.13       | :white_check_mark: |
+|       4.5.21       |       4.6.12       | :white_check_mark: |
+|       4.5.21       |       4.6.9        | :white_check_mark: |
+|       4.5.21       |       4.6.8        | :white_check_mark: |
+|       4.5.21       |       4.6.7        | :white_check_mark: |
+|       4.5.21       |       4.6.6        | :white_check_mark: |
+|       4.5.20       |       4.6.43       | :white_check_mark: |
+|       4.5.20       |       4.6.41       | :white_check_mark: |
+|       4.5.20       |       4.6.34       | :white_check_mark: |
+|       4.5.20       |       4.6.32       | :white_check_mark: |
+|       4.5.20       |       4.6.28       | :white_check_mark: |
+|       4.5.20       |       4.6.24       | :white_check_mark: |
+|       4.5.20       |       4.6.23       | :white_check_mark: |
+|       4.5.20       |       4.6.18       | :white_check_mark: |
+|       4.5.20       |       4.6.13       | :white_check_mark: |
+|       4.5.20       |       4.6.12       | :white_check_mark: |
+|       4.5.20       |       4.6.9        | :white_check_mark: |
+|       4.5.20       |       4.6.8        | :white_check_mark: |
+|       4.5.20       |       4.6.7        | :white_check_mark: |
+|       4.5.20       |       4.6.6        | :white_check_mark: |
+|       4.4.24       |       4.6.43       | :white_check_mark: |
+|       4.4.24       |       4.6.41       | :white_check_mark: |
+|       4.4.24       |       4.6.34       | :white_check_mark: |
+|       4.4.24       |       4.6.32       | :white_check_mark: |
+|       4.4.24       |       4.6.28       | :white_check_mark: |
+|       4.4.24       |       4.6.24       | :white_check_mark: |
+|       4.4.24       |       4.6.23       | :white_check_mark: |
+
+**4.5.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.5.21       |       4.5.23       | :white_check_mark: |
+|       4.5.20       |       4.5.23       | :white_check_mark: |
+|       4.5.20       |       4.5.21       | :white_check_mark: |
+|       4.5.15       |       4.5.23       | :white_check_mark: |
+|       4.5.15       |       4.5.21       | :white_check_mark: |
+|       4.5.15       |       4.5.20       | :white_check_mark: |
+|       4.5.11       |       4.5.23       | :white_check_mark: |
+|       4.5.11       |       4.5.21       | :white_check_mark: |
+|       4.5.11       |       4.5.20       | :white_check_mark: |
+|       4.5.11       |       4.5.15       | :white_check_mark: |
+|       4.5.8        |       4.5.23       | :white_check_mark: |
+|       4.5.8        |       4.5.21       | :white_check_mark: |
+|       4.5.8        |       4.5.20       | :white_check_mark: |
+|       4.5.8        |       4.5.15       | :white_check_mark: |
+|       4.5.8        |       4.5.11       | :white_check_mark: |
+|       4.5.4        |       4.5.23       | :white_check_mark: |
+|       4.5.4        |       4.5.21       | :white_check_mark: |
+|       4.5.4        |       4.5.20       | :white_check_mark: |
+|       4.5.4        |       4.5.15       | :white_check_mark: |
+|       4.5.4        |       4.5.11       | :white_check_mark: |
+|       4.5.4        |       4.5.8        | :white_check_mark: |
+|       4.4.24       |       4.5.23       | :white_check_mark: |
+|       4.4.20       |       4.5.23       | :white_check_mark: |
+|       4.4.20       |       4.5.21       | :white_check_mark: |
+|       4.4.20       |       4.5.20       | :white_check_mark: |
+|       4.4.20       |       4.5.15       | :white_check_mark: |
+|       4.4.20       |       4.5.11       | :white_check_mark: |
+|       4.4.20       |       4.5.8        | :white_check_mark: |
+|       4.4.20       |       4.5.4        | :white_check_mark: |
+
+**4.4.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.4.20       |       4.4.23       | :white_check_mark: |
+|       4.4.18       |       4.4.23       | :white_check_mark: |
+|       4.4.18       |       4.4.20       | :white_check_mark: |
+|       4.4.14       |       4.4.23       | :white_check_mark: |
+|       4.4.14       |       4.4.20       | :white_check_mark: |
+|       4.4.14       |       4.4.18       | :white_check_mark: |
+|       4.4.11       |       4.4.23       | :white_check_mark: |
+|       4.4.11       |       4.4.20       | :white_check_mark: |
+|       4.4.11       |       4.4.18       | :white_check_mark: |
+|       4.4.11       |       4.4.14       | :white_check_mark: |
+|       4.4.6        |       4.4.23       | :white_check_mark: |
+|       4.4.6        |       4.4.20       | :white_check_mark: |
+|       4.4.6        |       4.4.18       | :white_check_mark: |
+|       4.4.6        |       4.4.14       | :white_check_mark: |
+|       4.4.6        |       4.4.11       | :white_check_mark: |
+|       4.3.6        |       4.4.23       | :white_check_mark: |
+|       4.3.6        |       4.4.20       | :white_check_mark: |
+|       4.3.6        |       4.4.18       | :white_check_mark: |
+|       4.3.6        |       4.4.14       | :white_check_mark: |
+|       4.3.6        |       4.4.11       | :white_check_mark: |
+|       4.3.6        |       4.4.6        | :white_check_mark: |
+
+**4.3.x and Prior**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.2.13       |       4.3.6        | :white_check_mark: |
+|       4.2.7        |       4.2.13       | :white_check_mark: |
+|       4.1.x        |       4.3.6        |        :x:         |
+|       4.1.12       |       4.2.7        | :white_check_mark: |
+|       4.1.12       |       4.1.13       | :white_check_mark: |
+|       4.1.7        |       4.2.7        | :white_check_mark: |
+
+</TabItem>
+
+<TabItem label="Kubernetes" value="Kubernetes">
+
 **4.7.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
@@ -64,7 +307,6 @@ latest minor version available.
 |       4.6.41       |       4.7.20       | :white_check_mark: |
 |       4.6.41       |       4.7.15       | :white_check_mark: |
 |       4.6.41       |       4.7.3        | :white_check_mark: |
-|       4.6.6        |       4.7.15       | :white_check_mark: |
 
 **4.6.x**
 
@@ -268,3 +510,21 @@ latest minor version available.
 |       4.1.x        |       4.3.6        |        :x:         |
 |       4.1.12       |       4.2.7        | :white_check_mark: |
 |       4.1.7        |       4.2.7        | :white_check_mark: |
+
+</TabItem>
+
+<TabItem value="management-appliance" label="Palette Management Appliance" >
+
+:::preview
+
+:::
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.15       |       4.7.27       | :white_check_mark: |
+|       4.7.3        |       4.7.27       |        :x:         |
+|       4.7.3        |       4.7.15       |        :x:         |
+
+</TabItem>
+
+</Tabs>
