@@ -102,7 +102,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
    switch between fields. When you make a change, press **Enter** to apply the change.
 
-6. In **Network Adapter**, select a network adapter you'd like to configure. By default, the network adapters request an
+6. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an
    IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible
    IP address is displayed in the **Network Adapter** screen without selecting an individual adapter.
 
