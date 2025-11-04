@@ -18,9 +18,8 @@ For more information about EdgeForge and site user data, refer to
 
 :::warning
 
-When upgrading an Edge host from an Agent version earlier than 4.3, the initial configuration does not get triggered. If
-you want to perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui` in the terminal to trigger
-it manually.
+When upgrading an Edge host from an Agent version earlier than 4.3, the initial TUI configuration wizard does not start automatically.
+To launch the setup manually, issue the command /opt/spectrocloud/bin/palette-tui in the terminal.
 
 :::
 
@@ -108,7 +107,7 @@ it manually.
    IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible
    IP address is displayed in the **Network Adapter** screen without selecting an individual adapter.
 
-   In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
+   On the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
    IP instead of DHCP. In Static IP mode, you need to provide a static IP address, subnet mask, as well as the address
    of the default gateway. Specifying a static IP removes the existing DHCP settings.
 
@@ -120,7 +119,7 @@ it manually.
 
    :::
 
-7. In the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
+7. On the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
    logically segment network traffic on the same physical network interface, providing network isolation and enhanced
    traffic management. If you assign a VLAN ID, the Edge host tags all outgoing packets from that adapter with the
    specified VLAN identifier.
