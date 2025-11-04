@@ -113,7 +113,7 @@ Agent mode binaries cannot be downloaded at this time.
 
    :::
 
-   ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_artifact-studio-build-bundle-4-7-a.webp)
+   ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_artifact-studio-build-bundle-4-7-45.webp)
 
 3. On the **Select Product** page, select either **Palette Enterprise Appliance** or **Palette Vertex Appliance**.
 
@@ -234,7 +234,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
 2. In the **Create pack bundle** section, select **Browse Packs**.
 
-   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs-4-7-a.webp)
+   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs-4-7-45.webp)
 
 3. On the left menu, choose any applicable pack filters, such as **Product**, product **Version**, **Cloud type**, and
    **Layer type**. Beside the search bar are additional filters: infrastructure type (**AMD64** or **ARM64**), and FIPS
