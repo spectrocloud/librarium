@@ -7,8 +7,9 @@ sidebar_position: 15
 tags: ["edge"]
 ---
 
-When you boot an Edge host, the Terminal User Interface (TUI) launches automatically and allows you to configure the host and its network environment.
-This includes the configuration of an OS user, machine hostname, IP address, Virtual Local Area Network (VLAN), and DNS server. These settings persist even after you reset the host.
+When you boot an Edge host, the Terminal User Interface (TUI) launches automatically and allows you to configure the
+host and its network environment. This includes the configuration of an OS user, machine hostname, IP address, Virtual
+Local Area Network (VLAN), and DNS server. These settings persist even after you reset the host.
 
 You may already have specified some of these configurations in the **user-data** file in the EdgeForge process or have
 supplied them with site-specific **user-data**, and can either keep them as they are or update them during this step.
@@ -17,8 +18,9 @@ For more information about EdgeForge and site user data, refer to
 
 :::warning
 
-When upgrading an Edge host from an Agent version earlier than 4.3, the initial configuration does not get triggered. If you want to
-perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui` in the terminal to trigger it manually.
+When upgrading an Edge host from an Agent version earlier than 4.3, the initial configuration does not get triggered. If
+you want to perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui` in the terminal to trigger
+it manually.
 
 :::
 
@@ -32,8 +34,8 @@ perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui`
 
 ## Set up Edge Host
 
-1. Power up the Edge host. The GRand Unified Bootloader (GRUB) screen displays the following options. Do not make
-   any input and allow Palette to choose the boot option automatically.
+1. Power up the Edge host. The GRand Unified Bootloader (GRUB) screen displays the following options. Do not make any
+   input and allow Palette to choose the boot option automatically.
 
    :::warning
 
@@ -50,7 +52,9 @@ perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui`
    | Palette eXtended Kubernetes - Edge Reset        | This option wipes all data and resets the Edge host to the state after a fresh installation. The difference between this option and the recovery option is that the reset option wipes all application data and the Palette agent will be active after a reset. This will not affect the registration if the Edge host is already registered. |
    | Palette eXtended Kubernetes - Edge Registration | This option boots the Edge host to the registration phase. For more information, refer to [Edge Host Registration](../../site-deployment/site-installation/edge-host-registration.md).                                                                                                                                                        |
 
-2. When you start the Edge host, the Palette TUI landing page opens automatically and displays the following system information:
+2. When you start the Edge host, the Palette TUI landing page opens automatically and displays the following system
+   information:
+
    - Palette TUI version
    - Platform or virtualization environment
    - Central Processing Unit (CPU) type and count
@@ -61,9 +65,12 @@ perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui`
    - Agent version
    - Local UI link
    - Palette endpoint
-   - QR code for registration link (if you provided the link in the `stylus.site.registrationURL` parameter of [user data](../../edge-configuration/installer-reference.md))
+   - QR code for registration link (if you provided the link in the `stylus.site.registrationURL` parameter of
+     [user data](../../edge-configuration/installer-reference.md))
 
-   If you are accessing the Edge host with an SSH connection, you can issue the command `/opt/spectrocloud/bin/palette-tui` to launch the TUI. The TUI remains available after the initial configuration for validation and read-only status checks. Configuration editing from the TUI after installation is restricted.
+   If you are accessing the Edge host with an SSH connection, you can issue the command
+   `/opt/spectrocloud/bin/palette-tui` to launch the TUI. The TUI remains available after the initial configuration for
+   validation and read-only status checks. Configuration editing from the TUI after installation is restricted.
 
 3. Press **F2** to customize the settings.
 
@@ -91,14 +98,13 @@ perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui`
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
    switch between fields. When you make a change, press **Enter** to apply the change.
 
-6. In **Network Adapter**, select a network adapter you'd like to configure. By default, the network adapters
-   request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an
-   adapter's possible IP address is displayed in the **Network Adapter** screen without selecting an individual
-   adapter.
+6. In **Network Adapter**, select a network adapter you'd like to configure. By default, the network adapters request an
+   IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible
+   IP address is displayed in the **Network Adapter** screen without selecting an individual adapter.
 
    In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
-   IP instead of DHCP. In Static IP mode, you need to provide a static IP address, subnet mask, as well as the
-   address of the default gateway. Specifying a static IP removes the existing DHCP settings.
+   IP instead of DHCP. In Static IP mode, you need to provide a static IP address, subnet mask, as well as the address
+   of the default gateway. Specifying a static IP removes the existing DHCP settings.
 
    :::warning
 
@@ -108,16 +114,20 @@ perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui`
 
    :::
 
-7. In the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to logically segment network traffic on the same physical network interface, providing network isolation and enhanced traffic management. If you assign a VLAN ID, the Edge host tags all outgoing packets from that adapter with the specified VLAN identifier.
+7. In the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
+   logically segment network traffic on the same physical network interface, providing network isolation and enhanced
+   traffic management. If you assign a VLAN ID, the Edge host tags all outgoing packets from that adapter with the
+   specified VLAN identifier.
 
-8. Additionally, you can specify the Maximum Transmission Unit (MTU) for your
-   network adapter. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface
-   without needing to be fragmented. Press **Enter** to apply the change.
+8. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
+   largest size, in bytes, of a packet that can be sent over a network interface without needing to be fragmented. Press
+   **Enter** to apply the change.
 
 9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
    specify a search domain. Press **Enter** to apply the change.
 
-10. After you are satisfied with the configurations, navigate to **Logout** and press **Enter** to complete the configuration.
+10. After you are satisfied with the configurations, navigate to **Logout** and press **Enter** to complete the
+    configuration.
 
 ## Validate
 
