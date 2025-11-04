@@ -1,0 +1,41 @@
+---
+partial_category: self-hosted
+partial_name: size-guidelines-helm-cli
+---
+
+This section lists resource requirements for {props.edition} for various capacity levels. In {props.edition}, the terms _small_,
+_medium_, and _large_ are used to describe the instance size of worker pools that Palette is installed on. The following
+table lists the resource requirements for each size.
+
+<br />
+
+:::warning
+
+The recommended maximum number of deployed nodes and clusters in the environment should not be exceeded. We have tested
+the performance of {props.edition} with the recommended maximum number of deployed nodes and clusters. Exceeding these limits
+can negatively impact performance and result in instability. The active workload limit refers to the maximum number of
+active nodes and pods at any given time.
+
+:::
+
+<br />
+
+| **Size**             | **Total Nodes** | **Node CPU** | **Node Memory** | **Node Storage** | **MongoDB Node Storage Limit** | **MongoDB Node Memory Limit** | **MongoDB Node CPU Limit** | **Total Deployed Workload Cluster Nodes** | **Deployed Clusters with 10 Nodes** |
+| -------------------- | --------- | ------- | ---------- | ----------- | ------------------------- | ------------------------ | --------------------- | ------------------------ | ----------------------------------- |
+| Small                | 3         | 8       | 16 GB      | 60 GB       | 20 GB                     | 4 GB                     | 2                     | 1000                     | 100                                 |
+| Medium (Recommended) | 3         | 16      | 32 GB      | 100 GB      | 60 GB                     | 8 GB                     | 4                     | 3000                     | 300                                 |
+| Large                | 3         | 32      | 64 GB      | 120 GB      | 80 GB                     | 12 GB                    | 6                     | 5000                     | 500                                 |
+
+:::info
+
+The Spectro manifest requires approximately 10 GB of storage. {props.edition} deployed clusters use the manifest to identify what images to pull for each microservice that makes up {props.edition}.
+
+:::
+
+#### Instance Sizing
+
+| **Configuration**    | **Active Workload Limit**                         |
+| -------------------- | ------------------------------------------------- |
+| Small                | Up to 1000 nodes each with 30 pods (30,000 pods)  |
+| Medium (Recommended) | Up to 3000 nodes each with 30 pods (90,000 pods)  |
+| Large                | Up to 5000 nodes each with 30 pods (150,000 pods) |
