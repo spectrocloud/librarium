@@ -7,10 +7,8 @@ sidebar_position: 15
 tags: ["edge"]
 ---
 
-When you boot up an Edge host for the first time after installation, if you enabled initial configuration in the user
-data, you will be prompted to configure the Edge host and its network environment in a Terminal User Interface (TUI).
-This includes the configuration of an OS user, machine hostname, IP address, and DNS server. These settings will persist
-even after you reset the host.
+When you boot an Edge host, the Terminal User Interface (TUI) launches automatically and allows you to configure the host and its network environment.
+This includes the configuration of an OS user, machine hostname, IP address, Virtual Local Area Network (VLAN), and DNS server. These settings persist even after you reset the host.
 
 You may already have specified some of these configurations in the **user-data** file in the EdgeForge process or have
 supplied them with site-specific **user-data**, and can either keep them as they are or update them during this step.
@@ -19,8 +17,8 @@ For more information about EdgeForge and site user data, refer to
 
 :::warning
 
-If you are upgrading to 4.3 from an older version, the initial configuration does not get triggered. If you want to
-perform the setup, you can issue the command `palette-tui` in the terminal to trigger it manually.
+When upgrading an Edge host from an Agent version earlier than 4.3, the initial configuration does not get triggered. If you want to
+perform the setup, you can issue the command `/opt/spectrocloud/bin/palette-tui` in the terminal to trigger it manually.
 
 :::
 
@@ -30,14 +28,11 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 
 - The Edge host must not have an active cluster deployed on it.
 
-- The Edge installer ISO used to install Palette on the Edge host must
-  [enable initial configuration](../../edge-configuration/installer-reference.md#palette-agent-parameters).
-
 - A keyboard or another input device connected to the Edge host.
 
 ## Set up Edge Host
 
-1. Power up the Edge host. The GRand Unified Bootloader (GRUB) screen will display the following options. Do not make
+1. Power up the Edge host. The GRand Unified Bootloader (GRUB) screen displays the following options. Do not make
    any input and allow Palette to choose the boot option automatically.
 
    :::warning
@@ -55,14 +50,25 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    | Palette eXtended Kubernetes - Edge Reset        | This option wipes all data and resets the Edge host to the state after a fresh installation. The difference between this option and the recovery option is that the reset option wipes all application data and the Palette agent will be active after a reset. This will not affect the registration if the Edge host is already registered. |
    | Palette eXtended Kubernetes - Edge Registration | This option boots the Edge host to the registration phase. For more information, refer to [Edge Host Registration](../../site-deployment/site-installation/edge-host-registration.md).                                                                                                                                                        |
 
-2. If this is the first time you've started the Edge host since installation, you will be automatically directed to the
-   TUI. If you are accessing the Edge host with an SSH connection, you can issue the command `palette-tui` to bring up
-   the TUI. You can also use the same command to bring up the TUI if you have gone through the initial setup in the TUI
-   and want to change any configuration. However, you can only do this before you have deployed a cluster on the Edge
-   host.
+2. When you start the Edge host, the Palette TUI landing page opens automatically and displays the following system information:
+   - Palette TUI version
+   - Platform or virtualization environment
+   - Central Processing Unit (CPU) type and count
+   - Total system Random Access Memory (RAM)
+   - Host name
+   - Host unique identifier (UID)
+   - IP address
+   - Agent version
+   - Local UI link
+   - Palette endpoint
+   - QR code for registration link (if you provided the link in the `stylus.site.registrationURL` parameter of [user data](../../edge-configuration/installer-reference.md))
 
-3. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
-   automatically and you will be asked to log in instead. For more information, refer to
+   If you are accessing the Edge host with an SSH connection, you can issue the command `/opt/spectrocloud/bin/palette-tui` to launch the TUI. The TUI remains available after the initial configuration for validation and read-only status checks. Configuration editing from the TUI after installation is restricted.
+
+3. Press **F2** to customize the settings.
+
+4. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
+   automatically, and you will be asked to log in instead. For more information, refer to
    [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, a terminal
@@ -78,21 +84,21 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 
    :::
 
-4. Next, the terminal will display a console for you to provide hostname and network configurations to the Edge host.
+5. Next, the terminal displays a console for you to provide hostname and network configurations to the Edge host.
 
-   ![A terminal user interface showing displaying network configuration options](/cluster_edge_site-deployment_installation_initial-setup_tui.webp)
+   ![A terminal user interface showing displaying network configuration options](/clusters_site-installation_initial-setup_tui_4.8.webp)
 
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
    switch between fields. When you make a change, press **Enter** to apply the change.
 
-5. In **Host Network Adapters**, select a network adapter you'd like to configure. By default, the network adapters
+6. In **Network Adapter**, select a network adapter you'd like to configure. By default, the network adapters
    request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an
-   adapter's possible IP address is displayed in the **Host Network Adapters** screen without selecting an individual
+   adapter's possible IP address is displayed in the **Network Adapter** screen without selecting an individual
    adapter.
 
    In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
-   IP instead of DHCP. In Static IP mode, you will need to provide a static IP address, subnet mask, as well as the
-   address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
+   IP instead of DHCP. In Static IP mode, you need to provide a static IP address, subnet mask, as well as the
+   address of the default gateway. Specifying a static IP removes the existing DHCP settings.
 
    :::warning
 
@@ -102,14 +108,16 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 
    :::
 
-6. In the configuration page of each network adapter, you can also specify the Maximum Transmission Unit (MTU) for your
+7. In the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to logically segment network traffic on the same physical network interface, providing network isolation and enhanced traffic management. If you assign a VLAN ID, the Edge host tags all outgoing packets from that adapter with the specified VLAN identifier.
+
+8. Additionally, you can specify the Maximum Transmission Unit (MTU) for your
    network adapter. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface
    without needing to be fragmented. Press **Enter** to apply the change.
 
-7. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
+9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
    specify a search domain. Press **Enter** to apply the change.
 
-8. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
+10. After you are satisfied with the configurations, navigate to **Logout** and press **Enter** to complete the configuration.
 
 ## Validate
 
