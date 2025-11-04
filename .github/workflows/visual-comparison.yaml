@@ -145,7 +145,7 @@ jobs:
         uses: Wandalen/wretry.action@v3
         with: 
           attempt_limit: 3
-          action: actions/download-artifact@v5
+          action: actions/download-artifact@v6
           with: |
             name: build
             path: build
@@ -187,7 +187,7 @@ jobs:
           attempt_delay: 60000 # 1 minute
     
     - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v6
       with:
         path: all-blob-reports
         pattern: blob-report-*
@@ -232,7 +232,7 @@ jobs:
         echo "HTML_REPORT_URL_PATH=reports/$BRANCH_SAFE/${{ github.run_id }}/${{ github.run_attempt }}" >> $GITHUB_ENV
 
     - name: Download zipped HTML report
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v6
       with:
         name: report
         path: ${{ env.HTML_REPORT_URL_PATH }}
