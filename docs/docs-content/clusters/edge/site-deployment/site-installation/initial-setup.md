@@ -125,7 +125,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
 8. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
    largest size, in bytes, of a packet that can be sent over a network interface without needing to be fragmented. Press
-   **Enter** to apply the change.
+   **ENTER** to apply the change.
 
 9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
    specify a search domain. Press **ENTER** to apply the change.
