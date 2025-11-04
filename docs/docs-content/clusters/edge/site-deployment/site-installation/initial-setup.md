@@ -77,7 +77,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    :::
 
-3. Press **F2** to customize the settings.
+3. Press **F2** to customize your settings.
 
 4. If you configured a user in your **user-data** file in the EdgeForge step, the TUI displays the **User Login** page.
    For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
