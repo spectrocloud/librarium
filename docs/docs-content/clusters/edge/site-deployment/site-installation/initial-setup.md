@@ -11,8 +11,8 @@ When you boot an Edge host, the Terminal User Interface (TUI) launches automatic
 host and its network environment. This includes the configuration of an OS user, machine hostname, IP address, Virtual
 Local Area Network (VLAN), and DNS server. These settings persist even after you reset the host.
 
-You may already have specified some of these configurations in the **user-data** file in the EdgeForge process or have
-supplied them with site-specific **user-data**, and can either keep them as they are or update them during this step.
+You may already have specified some of these configurations in the `user-data` file in the EdgeForge process or have
+supplied them with site-specific `user-data`, and can either keep them as they are or update them during this step.
 For more information about EdgeForge and site user data, refer to
 [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md) and [Apply Site User Data](./site-user-data.md).
 
@@ -79,10 +79,10 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
 3. Press **F2** to customize your settings.
 
-4. If you configured a user in your **user-data** file in the EdgeForge step, the TUI displays the **User Login** page.
+4. If you configured a user in your `user-data` file in the EdgeForge step, the TUI displays the **User Login** page.
    For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
-   If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, the TUI
+   If you did not configure a user in your `user-data` file during EdgeForge or provide site user data, the TUI
    displays the **Create User** page. This allows you to create an Operating System (OS) user with the necessary
    permissions to operate Palette. Enter a username and password to create a new user and press the **ENTER** key to
    progress to the next screen.
