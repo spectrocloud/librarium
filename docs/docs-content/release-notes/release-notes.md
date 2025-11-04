@@ -11,6 +11,306 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 31, 2025 - Component Updates {#component-updates-2025-44}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.29.
+
+### Improvements
+
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) now has improved command help and examples.
+
+### Bug Fixes
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused pods belonging to the <VersionedLink text="Piraeus Operator" url="/integrations/?pack=piraeus-csi" /> pack to go into an `Unknown` state after scaling [Edge clusters](../clusters/edge/edge.md).
+- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../vertex/vertex.md).
+
+<!-- prettier-ignore-end -->
+
+### Packs
+
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 2.14.0      |
+| AWS Cluster Autoscaler Helm  | Add-on     | :white_check_mark: | :x:                | 1.34.1      |
+| Flannel                      | CNI        | :white_check_mark: | :white_check_mark: | 0.27.4      |
+| Flux2                        | Add-on     | :white_check_mark: | :x:                | 2.17.0      |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.1       |
+| Falco                        | Add-on     | :x:                | :white_check_mark: | 6.3.0       |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
+| Portworx                     | Add-on     | :white_check_mark: | :x:                | 3.4.1       |
+| Portworx                     | CSI        | :white_check_mark: | :x:                | 3.4.1       |
+| Spectro Kubernetes Dashboard | Add-on     | :x:                | :white_check_mark: | 7.11.1      |
+
+## October 27, 2025 - Release 4.7.29
+
+### Bug Fixes
+
+- Fixed an issue that caused the incorrect configuration of NTP servers on new and existing
+  [MAAS clusters](../clusters/data-center/maas/maas.md).
+
+## October 24, 2025 - Component Updates {#component-updates-2025-43}
+
+The following components have been updated for Palette version 4.7.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.2  |
+
+### Improvements
+
+- The `aws_access_key` of the
+  [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
+  is now deprecated. The secure alternative to this field is the sensitive `aws_secured_access_key` field.
+
+- The
+  [`spectrocloud_registry` Terraform data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
+  now has the `sync_status` read-only field. This field provides the synchronization status of Helm registries.
+
+- The
+  [`spectrocloud_cluster_maas` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  now supports the specification of NTP servers through the `ntp_servers` field, allowing users to specify a list of NTP
+  servers to use instead of the machine image's default NTP server list.
+
+<!-- prettier-ignore-start -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use the following components internally:
+
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.32.8
+  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.30.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.9.0
+  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.67-rev1
+
+<!-- prettier-ignore-end -->
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- Beginning with 0.17.0, the
+  <VersionedLink text="External Secrets Operator" url="/integrations/packs/?pack=external-secrets-operator" /> pack no
+  longer supports `apiVersion: v1beta1`. Manifests related to this pack that specify `apiVersion: v1beta1` cannot be
+  used to create or update Kubernetes objects after upgrading the pack to version 0.17.0 or later. Update your manifests
+  to use `apiVersion: v1` to successfully create objects after upgrading your pack version.
+
+<!-- prettier-ignore-start -->
+
+| Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| ArgoCD                    | Add-on | :white_check_mark: | :x:                | 8.6.0       |
+| AWS EFS                   | CSI    | :white_check_mark: | :x:                | 2.1.13      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.20.2      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.16.2      |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.14.4      |
+| Nginx                     | Add-on | :white_check_mark: | :x:                | 1.13.3      |
+| Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark: | 2.9.1       |
+| Tigera Operator           | CNI    | :white_check_mark: | :x:                | 3.30.3      |
+| Ubuntu MAAS               | OS     | :white_check_mark: | :x:                | 24.04       |
+
+## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.7.c}
+
+#### Breaking Changes {#breaking-changes-4.7.c}
+
+- Palette and VerteX [password policies](../tenant-settings/password-policy.md) are now capped to a maximum of 128
+  characters. This change applies only to new passwords.
+
+#### Features
+
+- [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  now support the drop-down input type. This improvement allows users to enforce the configuration of cluster profile
+  variables using predefined values only, reducing input errors and enhancing cluster profile validation.
+
+#### Improvements
+
+- When viewing project platform settings in Palette, the
+  [Cluster Auto Remediation](../clusters/cluster-management/platform-settings/cluster-auto-remediation.md) settings are
+  now correctly labeled as an override to the tenant-level settings.
+
+- Palette supports encryption at host of your Azure Kubernetes cluster using
+  [End-to-End encryption with platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+  This ensures that encryption starts on the VM host itself, including temporary disks, operating system (OS), and data
+  disk caches. Refer to the Azure Encryption At Host for Azure IaaS guide for further information.
+
+- Velero has been upgraded to version 1.16, which is used internally by Palette for backing up and restoring clusters.
+  Existing clusters with backups configured will be automatically updated to Velero version 1.16, ensuring continuous
+  access to backup and restore functionality. Refer to the
+  [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
+  and restore tools in Palette.
+
+- When creating Azure IaaS clusters, you can disable automatic creation of route table entries for pod-to-pod
+  communication using the `cloud.cloudControllerManager.configureCloudRoutes` parameter. This improvement is useful when
+  using Calico or Cilium Container Network Interfaces (CNIs), which support pod networking across nodes by default
+  without requiring these route tables and entries. Refer to the
+  [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md#deploy-an-azure-cluster)
+  guide for more information.
+
+<!-- prettier-ignore-start -->
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now automatically
+  delete the `provider_extract` directory after deployment, removing unused files. Additionally, Palette and VerteX
+  management appliance now use <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.32.8 and <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-operator" /> 2.9.0 internally.
+
+<!-- prettier-ignore-end -->
+
+- New cluster groups now default to a newer version of vCluster,
+  [version 0.27.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  cluster groups will continue to use older versions. If you want to use a newer version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented the
+  [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) from
+  successfully upgrading several resources in the `konveyor-forklift` namespace.
+
+- Fixed an issue that caused a public NAT gateway to be incorrectly provisioned for
+  [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) configured to use private networks.
+
+- Fixed an issue that prevented the [Azure Service Operator (ASO)](https://azure.github.io/azure-service-operator/) from
+  attaching the worker pool subnet to the NAT Gateway for
+  [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) using static placement.
+
+- Fixed an issue that prevented the deletion of [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed in
+  [AWS secret regions](../clusters/public-cloud/aws/add-aws-accounts.md).
+
+#### Deprecations and Removals
+
+- [OpenStack](../clusters/data-center/openstack.md) support in Palette is now deprecated and will be removed in a future
+  release. After removal, you will no longer be able to create and manage OpenStack clusters, cluster profiles, cloud
+  accounts, or Private Cloud Gateways. We recommend migrating your workloads to another supported
+  [Data Center environment](../clusters/data-center/data-center.md).
+
+- [EKS-optimized Amazon Linux 2 (AL2) AMIs](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html)
+  will be disabled in Palette from January 10, 2026 and removed on April 4, 2026. When disabled, you will no longer be
+  able to select the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create
+  new worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches
+  after the removal date. Refer to our
+  [Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
+  guide for help with migrating workloads.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.27 Palette release is 4.7.16.
+
+:::
+
+#### Features
+
+<!-- prettier-ignore-start -->
+
+- Overlay networks are exiting Tech Preview status and are now production-ready. They are now supported for the following cluster types. Refer to our [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#supported-clusters) guide for a comprehensive list of supported cluster combinations.
+  
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - FIPS, single and multi-node clusters
+  - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> -  Agent Mode and Appliance Mode, centrally managed clusters
+
+<!-- prettier-ignore-end -->
+
+- Local UI now supports configurable rate limiting and account lockout to protect against repeated failed login
+  attempts. By default, Local UI applies an increasing delay after three consecutive failed login attempts and
+  temporarily blocks access after five failures for 15 minutes. These settings can be customized in the `user-data` file
+  for Edge hosts built with Palette agent version 4.7.15 or later. For more information, refer to the
+  `stylus.localUI.login` parameters description in the
+  [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters).
+
+#### Improvements
+
+- [Overlay network](../clusters/edge/networking/vxlan-overlay.md) has now exited Tech Preview and is ready for
+  production workloads.
+- Remote shell access to an Edge host can now be enabled in Palette only if the parameter
+  `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
+  registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.15 or later.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented DNS server details from displaying correctly in
+  [LocalUI](../clusters/edge/local-ui/local-ui.md).
+- Fixed an issue that caused errors related to the `containerd-sync` service to appear in the logs of
+  [LocalUI](../clusters/edge/local-ui/local-ui.md) clusters.
+- Fixed an issue that caused the incorrect update of the successfully installed pack statuses on
+  [Edge clusters](../clusters/edge/edge.md) following an initial installation failure.
+- Fixed an issue that caused Kubernetes upgrades from 1.30.x to 1.31.x to stall on
+  [Edge clusters](../clusters/edge/edge.md).
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.7.c) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+- Terraform version 0.25.1 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.25.1 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+#### Improvements
+
+- The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+  now allows the specification of registry name in the cluster profile pack specification. This attribute can be used
+  instead of `registry_uid` for better readability.
+
+- The
+  [`spectrocloud_registry` Terraform data source](hhttps://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/registry)
+  now supports the `type` attribute. This improvement allows users to filter packs based on registry type.
+
+- The
+  [`spectrocloud_virtual_machine` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
+  now provides [bootloader support](https://kubevirt.io/user-guide/compute/virtual_hardware/).
+
+### Packs
+
+#### CNI
+
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.20.3      |
+| Cilium             | 1.18.1      |
+
+#### Add-on Packs
+
+| Pack Name             | New Version |
+| --------------------- | ----------- |
+| Calico Network Policy | 3.30.3      |
+| Kong                  | 2.52.0      |
+| Prometheus Agent      | 27.39.0     |
+| Prometheus - Grafana  | 77.13.0     |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+| Calico    | 3.30.3      |
+| Cilium    | 1.17.6      |
+
 ## October 10, 2025 - Component Updates {#component-updates-2025-41}
 
 The following components have been updated for Palette version 4.7.20 - 4.7.23.

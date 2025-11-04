@@ -98,11 +98,9 @@ Use the following steps to provision a new AWS cluster:
 
    To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
 
-7. Click **Add Cluster Profile**, select a cluster profile and click **Next**. Palette displays the cluster profile
-   layers.
+7. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   All pack parameters contain default values from the cluster profile.
+8. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 9. Provide the AWS cloud account and placement information.
 

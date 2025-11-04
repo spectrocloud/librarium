@@ -364,11 +364,9 @@ The following steps need to be performed to provision a new OpenStack cluster:
 1. Provide basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the VMs
    deployed on the cloud/data center environments.
 
-2. Select a Cluster Profile created for the OpenStack environment. The profile definition will be used as the cluster
-   construction template.
+2. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-3. Review and override Pack Parameters as desired. By default, Parameters for all packs are set with values defined in
-   the Cluster Profile.
+3. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 4. Provide an OpenStack Cloud account and placement information.
 

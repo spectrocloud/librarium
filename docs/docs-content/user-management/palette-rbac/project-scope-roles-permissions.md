@@ -266,12 +266,15 @@ review the permissions associated with each Project role, click on the role name
 - cluster.update
 - clusterGroup.get
 - clusterGroup.list
-- clusterProfile.get
-- clusterProfile.list
+- clusterPair.create
 - clusterPair.delete
 - clusterPair.get
 - clusterPair.list
 - clusterPair.update
+- clusterProfile.get
+- clusterProfile.list
+- clusterTemplate.get
+- clusterTemplate.list
 - dnsMapping.create
 - dnsMapping.delete
 - dnsMapping.get
@@ -281,9 +284,9 @@ review the permissions associated with each Project role, click on the role name
 - edgehost.delete
 - edgehost.get
 - edgehost.list
-- edgehost.update
 - edgehost.sshUpdate
 - edgehost.sshUserUpdate
+- edgehost.update
 - location.create
 - location.delete
 - location.get
@@ -305,6 +308,8 @@ review the permissions associated with each Project role, click on the role name
 - privateGateway.list
 - project.get
 - project.list
+- spcPolicy.get
+- spcPolicy.list
 - sshKey.create
 - sshKey.delete
 - sshKey.get
@@ -352,8 +357,13 @@ review the permissions associated with each Project role, click on the role name
 - cluster.update
 - clusterGroup.get
 - clusterGroup.list
+- clusterPair.get
+- clusterPair.list
+- clusterPair.update
 - clusterProfile.get
 - clusterProfile.list
+- clusterTemplate.get
+- clusterTemplate.list
 - dnsMapping.get
 - dnsMapping.list
 - dnsMapping.update
@@ -376,6 +386,8 @@ review the permissions associated with each Project role, click on the role name
 - privateGateway.list
 - project.get
 - project.list
+- spcPolicy.get
+- spcPolicy.list
 - sshKey.get
 - sshKey.list
 - sshKey.update
@@ -411,8 +423,12 @@ review the permissions associated with each Project role, click on the role name
 - cluster.list
 - clusterGroup.get
 - clusterGroup.list
+- clusterPair.get
+- clusterPair.list
 - clusterProfile.get
 - clusterProfile.list
+- clusterTemplate.get
+- clusterTemplate.list
 - dnsMapping.get
 - dnsMapping.list
 - edgehost.get
@@ -429,6 +445,8 @@ review the permissions associated with each Project role, click on the role name
 - privateGateway.list
 - project.get
 - project.list
+- spcPolicy.get
+- spcPolicy.list
 - sshKey.get
 - sshKey.list
 - virtualCloudconfig.get
@@ -500,6 +518,8 @@ review the permissions associated with each Project role, click on the role name
 </AccordionPanel>
 </Accordion>
 
+<br />
+
 ### Project
 
 | Role Name      | Description                                                                                                                     |
@@ -544,6 +564,7 @@ review the permissions associated with each Project role, click on the role name
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
+- clusterPair.create
 - clusterPair.delete
 - clusterPair.get
 - clusterPair.list
@@ -554,6 +575,11 @@ review the permissions associated with each Project role, click on the role name
 - clusterProfile.list
 - clusterProfile.publish
 - clusterProfile.update
+- clusterTemplate.create
+- clusterTemplate.delete
+- clusterTemplate.get
+- clusterTemplate.list
+- clusterTemplate.update
 - dnsMapping.create
 - dnsMapping.delete
 - dnsMapping.get
@@ -563,9 +589,9 @@ review the permissions associated with each Project role, click on the role name
 - edgehost.delete
 - edgehost.get
 - edgehost.list
-- edgehost.update
 - edgehost.sshUpdate
 - edgehost.sshUserUpdate
+- edgehost.update
 - location.create
 - location.delete
 - location.get
@@ -591,6 +617,11 @@ review the permissions associated with each Project role, click on the role name
 - project.get
 - project.list
 - project.update
+- spcPolicy.create
+- spcPolicy.delete
+- spcPolicy.get
+- spcPolicy.list
+- spcPolicy.update
 - sshKey.create
 - sshKey.delete
 - sshKey.get
@@ -633,7 +664,7 @@ review the permissions associated with each Project role, click on the role name
 - workspace.update
 
 </AccordionPanel>
-<AccordionPanel title="Project Editior">
+<AccordionPanel title="Project Editor">
 
 - appDeployment.get
 - appDeployment.list
@@ -656,18 +687,22 @@ review the permissions associated with each Project role, click on the role name
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
+- clusterPair.get
+- clusterPair.list
+- clusterPair.update
 - clusterProfile.get
 - clusterProfile.list
 - clusterProfile.publish
 - clusterProfile.update
+- clusterTemplate.get
+- clusterTemplate.list
+- clusterTemplate.update
 - dnsMapping.get
 - dnsMapping.list
 - dnsMapping.update
 - edgehost.get
 - edgehost.list
 - edgehost.update
-- edgehost.sshUpdate
-- edgehost.sshUserUpdate
 - location.get
 - location.list
 - location.update
@@ -686,6 +721,9 @@ review the permissions associated with each Project role, click on the role name
 - project.get
 - project.list
 - project.update
+- spcPolicy.get
+- spcPolicy.list
+- spcPolicy.update
 - sshKey.get
 - sshKey.list
 - sshKey.update
@@ -732,8 +770,12 @@ review the permissions associated with each Project role, click on the role name
 - cluster.list
 - clusterGroup.get
 - clusterGroup.list
+- clusterPair.get
+- clusterPair.list
 - clusterProfile.get
 - clusterProfile.list
+- clusterTemplate.get
+- clusterTemplate.list
 - dnsMapping.get
 - dnsMapping.list
 - edgehost.get
@@ -750,6 +792,8 @@ review the permissions associated with each Project role, click on the role name
 - privateGateway.list
 - project.get
 - project.list
+- spcPolicy.get
+- spcPolicy.list
 - sshKey.get
 - sshKey.list
 - virtualCloudconfig.get
@@ -914,12 +958,10 @@ review the permissions associated with each Project role, click on the role name
 - virtualMachine.update
 
 </AccordionPanel>
-<AccordionPanel title="Virtual Machine Operator">
+<AccordionPanel title="Virtual Machine Power User">
 
 - project.get
 - virtualMachine.clone
-- virtualMachine.create
-- virtualMachine.delete
 - virtualMachine.get
 - virtualMachine.list
 - virtualMachine.migrate

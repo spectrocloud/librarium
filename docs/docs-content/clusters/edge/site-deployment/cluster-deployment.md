@@ -21,8 +21,8 @@ refer to [Create Cluster with Local UI](../local-ui/cluster-management/create-cl
 
 Select the workflow that best fits your needs.
 
-- [Create an Edge Native Host Cluster](#create-an-edge-native-host-cluster)
-- [Add an Edge Host to a Host Cluster](#add-an-edge-host-to-a-host-cluster)
+- [Create an Edge Native Host Cluster](#create-an-edge-native-host-cluster) <!-- omit in toc -->
+- [Add an Edge Host to a Host Cluster](#add-an-edge-host-to-a-host-cluster) <!-- omit in toc -->
 
 ## Create an Edge Native Host Cluster
 
@@ -46,6 +46,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 - One or more registered Edge host. For more information about Edge host registration, refer to
   [Edge Host Registration](./site-installation/edge-host-registration.md).
+- An [Edge Native](./model-profile.md) cluster profile.
 - If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
 - One IP address is required for the cluster's Virtual IP (VIP) address .
 - At least one IP address is required for each Edge host.
@@ -84,11 +85,9 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 5. Give the cluster a name, description, and tags. Click on **Next**.
 
-6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the
-   [Create Edge Native Cluster Profile](./model-profile.md) guide. Click on **Next** after you have selected a cluster
-   profile.
+6. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-7. Review your cluster profile values and make changes as needed. Click on **Next**.
+7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 8. Provide the host cluster with the Virtual IP (VIP) address used by the physical site. Ensure that this VIP is not in
    a CIDR range that cannot routed through a proxy. In addition, ensure that this VIP does not overlap with any IP

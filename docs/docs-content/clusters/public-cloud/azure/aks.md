@@ -69,7 +69,7 @@ to learn more about the ports used for communication.
 
 3.  From the left **Main Menu** select **Clusters** > **Add New Cluster** > **Deploy New Cluster**.
 
-4.  Under **Cloud**, select **Azure** and click **Start Azure Configuration**.
+4.  Under **Public Clouds**, select **Azure AKS** and click **Start Azure AKS Configuration**.
 
 5.  Fill out the following basic information and click **Next**.
 
@@ -80,104 +80,125 @@ to learn more about the ports used for communication.
     | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.              |
     | **Cloud Account** | If you have already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Azure account information. |
 
-6.  Under **Managed Kubernetes**, select **Azure AKS** and select your Azure AKS cluster profile.
+6.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-<!-- prettier-ignore-start -->
+        - Certain features, such as Pod and Service CIDRs, managed identity platforms, and more, require additional modifications to your cluster profile. Expand the appropriate panel for more information.
 
-7.  Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
-    YAML editor that displays when you click on **Values** after selecting a layer.
+            <details>
+            <summary> AKS Add-On Profile </summary>
 
-    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
-    pack additional details for more information.
+            If you want to add a custom AKS add-on profile, populate the following configuration template and add the configuration
+            to your Kubernetes cluster profile layer.
 
-    :::warning
+                ```yaml
+                managedControlPlane:
+                  addonProfiles:
+                    - name: add-on
+                      enabled: true
+                      config:
+                        mapString: string
+                ```
 
-    All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
-    Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
+                Consider the following example configuration for `omsagent` for reference, where `logAnalyticsWorkspaceResourceID` is the Log Analytics workspace resource ID, in the format `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}`.
 
-    :::
+                  ```yaml
+                  managedControlPlane:
+                    addonProfiles:
+                      - name: omsagent
+                        enabled: true
+                        config:
+                          logAnalyticsWorkspaceResourceID: "<log-analytics-workspace-resource-id>"
+                  ```
 
-<!-- prettier-ignore-end -->
+            </details>
 
-8.  If you want to configure Pod and Service CIDR, populate the following configuration template and add the
-    configuration to your Kubernetes cluster profile layer.
+            <details>
 
-    ```yaml
-    pack:
-      podCIDR: "<pod-cidr>"
-      serviceClusterIpRange: "<service-cidr>"
-    ```
+            <summary> Azure Managed Identity </summary>
 
-9.  If you want to [use a managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity), populate
-    the following configuration template and add the configuration to your Kubernetes cluster profile layer.
+            If you want to [use a managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity), populate
+            the following configuration template and add the configuration to your Kubernetes cluster profile layer.
 
-    - `providerID` – User-assigned identity ID in the format
-      `azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`
+            Replace `providerID` with your user-assigned identity ID in the format of `azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`.
 
-      ```yaml
-      managedControlPlane:
-        userAssignedIdentities:
-          - providerID: "<provider-id>"
-          - providerID: "<provider-id-2>"
-      ```
+                  ```yaml
+                  managedControlPlane:
+                    userAssignedIdentities:
+                      - providerID: "<provider-id>"
+                      - providerID: "<provider-id-2>"
+                  ```
 
-10. If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following
-    configuration template and add the configuration to your Kubernetes cluster profile layer.
+            </details>
 
-    ```yaml
-    managedControlPlane:
-      aadProfile:
-        managed: true
-        adminGroupObjectIDs:
-          - <admin-group-object-id>
-          - <admin-group-object-id-2>
-    ```
+            <details>
+            <summary> Microsoft Entra ID </summary>
 
-    Additionally, if you want to disable
-    [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
-    `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
-    `managedControlPlane.aadProfile` section.
+            If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following configuration
+            template and add the configuration to your Kubernetes cluster profile layer.
 
-    ```yaml {7}
-    managedControlPlane:
-      aadProfile:
-        managed: true
-        adminGroupObjectIDs:
-          - <admin-group-object-id>
-          - <admin-group-object-id-2>
-        disableLocalAccounts: true
-    ```
+                ```yaml
+                managedControlPlane:
+                  aadProfile:
+                    managed: true
+                    adminGroupObjectIDs:
+                      - <admin-group-object-id>
+                      - <admin-group-object-id-2>
+                ```
 
-11. If you want to add a custom AKS add-on profile, populate the following configuration template and add the
-    configuration to your Kubernetes cluster profile layer.
+                Additionally, if you want to disable
+                [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
+                `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
+                `managedControlPlane.aadProfile` section.
 
-    ```yaml
-    managedControlPlane:
-      addonProfiles:
-        - name: add-on
-          enabled: true
-          config:
-            mapString: string
-    ```
+                ```yaml {7}
+                managedControlPlane:
+                  aadProfile:
+                    managed: true
+                    adminGroupObjectIDs:
+                      - <admin-group-object-id>
+                      - <admin-group-object-id-2>
+                    disableLocalAccounts: true
+                ```
 
-    Consider the following example configuration for `omsagent` for reference, where:
+            </details>
 
-    - `logAnalyticsWorkspaceResourceID` is the Log Analytics workspace resource ID, in the format
-      `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}`
+            <details>
+            <summary> OpenID Connect (OIDC)</summary>
 
-      ```yaml
-      managedControlPlane:
-        addonProfiles:
-          - name: omsagent
-            enabled: true
-            config:
-              logAnalyticsWorkspaceResourceID: "<log-analytics-workspace-resource-id>"
-      ```
+            <!-- prettier-ignore-start -->
 
-12. Click **Next** to continue.
+            You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for more information.
 
-13. Configure your Azure AKS cluster using the following table for reference.
+            :::warning
+
+            All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
+            Kubernetes role to users and groups, refer to
+            [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
+
+            :::
+
+            <!-- prettier-ignore-end -->
+
+            </details>
+
+            <details>
+
+            <summary> Pod and Service CIDR </summary>
+
+            If you want to configure Pod and Service CIDR, populate the following configuration template and add the
+            configuration to your Kubernetes cluster profile layer.
+
+                ```yaml
+                pack:
+                  podCIDR: "<pod-cidr>"
+                  serviceClusterIpRange: "<service-cidr>"
+                ```
+
+            </details>
+
+7.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+
+8.  Configure your Azure AKS cluster using the following table for reference.
 
     :::warning
 
@@ -211,9 +232,9 @@ to learn more about the ports used for communication.
     | **Control Plane Subnet**   | Select the control plane subnet.                            |
     | **Worker Subnet**          | Select the worker network.                                  |
 
-14. Click **Next** to continue.
+9.  Click **Next** to continue.
 
-15. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+10. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     #### System Node Pool
@@ -274,14 +295,14 @@ to learn more about the ports used for communication.
     | **Managed disk**  | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
     | **Disk size**     | You can choose disk size based on your requirements. The default size is **60**.                                                                                                                                                                                                                                                                                                                                                     |
 
-16. Click **Next** to continue.
+11. Click **Next** to continue.
 
-17. Specify your preferred **OS Patching Schedule**.
+12. Specify your preferred **OS Patching Schedule**.
 
-18. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+13. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-19. Schedule any backups you want Palette to perform. Review
+14. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
 <!-- prettier-ignore-start -->

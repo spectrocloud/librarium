@@ -61,10 +61,13 @@ Follow the steps below to deploy a Nutanix cluster.
     | **Tags**          | Assign any desired cluster tags.                          |
     | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**.  |
 
-7.  Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
+7.  <PartialsComponent
+      category="cluster-templates"
+      name="profile-vs-template"
+      additional_info="Ensure the OS and Kubernetes packs remain empty."
+    />
 
-8.  Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML
-    files that display when you select the network and storage layers. Click **Next** when you are done.
+8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 9.  In the **Cluster Configuration Macros** pane, enter values that apply to your Nutanix cloud environment and, if
     necessary, adjust the **Cluster configuration** YAML file to configure your cluster. Click **Next** when you are

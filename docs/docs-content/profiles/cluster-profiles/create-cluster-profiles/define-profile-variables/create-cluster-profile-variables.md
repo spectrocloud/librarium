@@ -52,7 +52,16 @@ guide to learn how to create a cluster profile.
 
 6.  Optionally, enter a variable **Description**.
 
-7.  Select the data format for the variable. The following table describes available data formats.
+7.  Select the **Input type** of the variable. You can choose between **Text** and **Dropdown**. The default input type
+    is **Text**.
+
+    :::info
+
+    The dropdown input type is currently not supported in [Local UI](../../../../clusters/edge/local-ui/local-ui.md).
+
+    :::
+
+8.  Select the data format for the variable. The following table describes available data formats.
 
     | **Format** | **Description**                                                                                        |
     | ---------- | ------------------------------------------------------------------------------------------------------ |
@@ -64,28 +73,39 @@ guide to learn how to create a cluster profile.
     | IPv4 CIDR  | A CIDR block of IP addresses that follow the IPv4 standard.                                            |
     | IPv6       | Valid representation of an IPv6 address.                                                               |
 
-8.  Optionally, configure additional data validation. The following table describes the available parameters.
+9.  If you selected **Dropdown** for the **Input type** in step 7, select **Add dropdown option**. The following table
+    describes the available configuration fields. You must provide at least one dropdown option.
 
-    | **Parameter**           | **Description**                                                                                                                                                                                                                                 |
-    | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Custom input validation | Validate the cluster profile variable definition against a regular expression based on the [regexp](https://pkg.go.dev/regexp) engine.                                                                                                          |
-    | Required                | Require a value for the cluster profile variable.                                                                                                                                                                                               |
-    | Default value           | Set a default value for the cluster profile variable.                                                                                                                                                                                           |
-    | Mask value              | Mask the cluster profile variable with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values. |
-    | Hidden                  | Hide the cluster profile variable during cluster deployment. If the variable is both hidden and required, it must have a default value set.                                                                                                     |
-    | Read-only               | Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set.                                                                                                            |
+    | **Field**       | **Description**                                                                                           |
+    | --------------- | --------------------------------------------------------------------------------------------------------- |
+    | **Value**       | Value of the dropdown option. This field is required.                                                     |
+    | **Label**       | Display name for the dropdown option. If no label is provided, the **Value** is used as the display name. |
+    | **Description** | Long form description of the dropdown option.                                                             |
 
-9.  As you make changes in the **Create variable** pane, the **Preview** field is updated, mirroring how the field will
+    Repeat this step for every dropdown option you want to add.
+
+10. Optionally, configure additional data validation. The following table describes the available parameters.
+
+    | **Parameter**               | **Description**                                                                                                                                                                                                                                 |
+    | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Custom input validation** | Validate the cluster profile variable definition against a regular expression based on the [regexp](https://pkg.go.dev/regexp) engine.                                                                                                          |
+    | **Required**                | Require a value for the cluster profile variable.                                                                                                                                                                                               |
+    | **Default value**           | Set a default value for the cluster profile variable. If the **Input type** is **Dropdown**, a default value must be specified using one of the configured dropdown options.                                                                    |
+    | **Mask value**              | Mask the cluster profile variable with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values. |
+    | **Hidden**                  | Hide the cluster profile variable during cluster deployment. If the variable is both hidden and required, it must have a default value set.                                                                                                     |
+    | **Read-only**               | Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set.                                                                                                            |
+
+11. As you make changes in the **Create variable** pane, the **Preview** field is updated, mirroring how the field will
     look and behave when deploying and updating clusters. When you are satisfied, **Create** the variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
-10. Navigate to the YAML configuration of the profile layer to which you want to add the variable. In the upper-right
+12. Navigate to the YAML configuration of the profile layer to which you want to add the variable. In the upper-right
     corner of its YAML configuration editor, select **Variables**.
 
-11. Next to the variable you want to add, select the **Copy to clipboard** icon to copy its name.
+13. Next to the variable you want to add, select the **Copy to clipboard** icon to copy its name.
 
-12. Paste the variable in the `parameter: '{{.spectro.var.variable_name}}'` format. You _must_ wrap each profile
+14. Paste the variable in the `parameter: '{{.spectro.var.variable_name}}'` format. You _must_ wrap each profile
     variable in single quotes (`'`) to properly validate the schema. Select **Confirm Updates** when finished.
 
     Alternatively, you can start typing `{{.spectro.var.}}` in the YAML configuration editor, and Palette will list the
@@ -111,7 +131,7 @@ guide to learn how to create a cluster profile.
 
     :::
 
-13. Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile
+15. Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile
     layers. Remember to choose **Confirm Updates** when you are finished with each layer, and select **Save Changes**
     when you are finished modifying your profile.
 
@@ -145,8 +165,9 @@ the infrastructure provider; however, when cluster profile variables are configu
 always be an additional **Profile Config** window displayed prior to deploying the cluster. To learn more about
 deploying clusters, visit our [Getting Started](../../../../getting-started/getting-started.md) series.
 
-Note that in the below example, we entered `amazing-hello-universe-namespace` for the namespace of the Hello Universe
-application.
+Note that in the below example, `amazing-hello-universe-namespace` is the namespace of the Hello Universe application.
+The `Calico: Network CIDR` and `Kubecost: Frontend ImagePullPolicy` variables have the dropdown input type. You can
+select any configured dropdown option for the cluster.
 
 ![Deploying a cluster and configuring cluster profile variables on the Profile Config window.](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_create-cluster-profile-variable-profile-config.webp)
 

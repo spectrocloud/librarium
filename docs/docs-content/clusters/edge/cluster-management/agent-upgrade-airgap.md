@@ -93,7 +93,7 @@ If you already know the agent version you want to use for your cluster, you can 
          - image: "container://us-docker.pkg.dev/palette-images/edge/stylus-linux-amd64:v<versionNumber>"
 
    options:
-     system.uri: ttl.sh/ubuntu:k3s-1.29.5-v4.5.8-palette-demo
+     system.uri: spectrocloud/ubuntu:k3s-1.29.5-v4.5.8-palette-demo
 
    stylusPackage: container://us-docker.pkg.dev/palette-images/edge/stylus-linux-amd64:v<versionNumber>
    ```

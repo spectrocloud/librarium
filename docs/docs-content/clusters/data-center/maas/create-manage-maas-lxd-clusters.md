@@ -72,9 +72,9 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 
 7.  From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
 
-8.  Select the cluster profile for your MAAS cluster.
+8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  Review and override pack parameters as desired. Select **Next**.
+9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 10. Select a **Domain** from the drop-down menu.
 
@@ -82,6 +82,14 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
     Control Planes** switch. Select **Next**.
 
     ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+
+    :::warning
+
+    We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time.
+    If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
+    **Cluster Config** step.
+
+    :::
 
 12. Configure the control plane and, optionally, worker node pools.
 
@@ -136,9 +144,9 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 7.  From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
 
-8.  Select the cluster profile for your MAAS cluster.
+8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  Review and override pack parameters as desired. Select **Next**.
+9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 10. Select a **Domain** from the drop-down menu.
 

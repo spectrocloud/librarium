@@ -86,7 +86,10 @@ For more information on KubeVirt feature gates, refer to the
 
 Palette automatically assigns unique Media Access Control (MAC) addresses to VMs when you create them through the
 Palette UI, API, or [Terraform](../automation/terraform/terraform.md). The MAC address always starts with a prefix that
-is either `02`, `06`, `0A`, or `0E`. The remaining part of the MAC address is generated randomly.
+is either `02`, `06`, `0A`, or `0E`. The next two octets are generated from a hash of the cluster GUID. It is important
+to ensure the remaining three octets are unique for the scope of the VMO cluster. Refer to
+[this guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-networking/mac-addresses/mac-address-generation/range-based-mac-address-allocation.html)
+for more information on MAC address assignment in vCenter.
 
 ### Specify a MAC Address
 

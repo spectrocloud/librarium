@@ -61,6 +61,12 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
   :::
 
+- Access to an image registry and permissions to push images. This page uses a public
+  [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private
+  registry, refer to the
+  [Deploy Cluster with a Private Provider Registry](../../site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide for instructions on how to configure the credentials.
+
 - A [VerteX](/docs/docs-content/vertex/vertex.md) or Palette account. Refer to
   [Palette VerteX](/docs/docs-content/vertex/vertex.md#access-palette-vertex) for information on how to set up a VerteX
   account.
@@ -143,17 +149,25 @@ workaround.
 9. When the build finishes, issue `docker images` and confirm there is an image named `rhel-byoi-fips:latest`. This is
    the base image that you will use to build provider images and the Edge installer ISO later on.
 
-10. Tag the image with a repository that is accessible by your Linux machine. For example, the following command uses
-    the publicly accessible `ttl.sh` repository.
+10. Tag the image with a repository in a registry that is accessible by your Linux machine. For example, the following
+    command uses a Docker registry named `spectrocloud` and the `rhel/rhel-byoi-fips` repository.
 
     ```shell
-    docker tag rhel-byoi-fips:latest ttl.sh/rhel/rhel-byoi-fips:latest
+    docker tag rhel-byoi-fips:latest spectrocloud/rhel/rhel-byoi-fips:latest
     ```
 
-11. Push the image to the repository.
+11. Log in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
+    command.
 
     ```shell
-    docker push ttl.sh/rhel/rhel-byoi-fips:latest
+    docker login
+    ```
+
+12. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
+    cluster deployment.
+
+    ```shell
+    docker push spectrocloud/rhel/rhel-byoi-fips:latest
     ```
 
 </TabItem>
@@ -177,17 +191,25 @@ workaround.
 9. When the build finishes, issue `docker images` and confirm there is an image named `ubuntu-focal-fips:latest`. This
    is the base image that you will use to build provider images and the Edge installer ISO later on.
 
-10. Tag the image with a repository that is accessible by your Linux machine. For example, use the publicly accessible
-    `ttl.sh` repository.
+10. Tag the image with a repository in a registry that is accessible by your Linux machine. For example, the following
+    command uses a Docker registry named `spectrocloud` and the `ubuntu-focal-fips` repository.
 
     ```shell
-    docker tag ubuntu-focal-fips:latest ttl.sh/ubuntu/ubuntu-focal-fips:latest
+    docker tag ubuntu-focal-fips:latest spectrocloud/ubuntu-focal-fips:latest
     ```
 
-11. Push the image to the repository.
+11. Log in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
+    command.
 
     ```shell
-    docker push ttl.sh/ubuntu/ubuntu-focal-fips:latest
+    docker login
+    ```
+
+12. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
+    cluster deployment.
+
+    ```shell
+    docker push spectrocloud/ubuntu-focal-fips:latest
     ```
 
 </TabItem>

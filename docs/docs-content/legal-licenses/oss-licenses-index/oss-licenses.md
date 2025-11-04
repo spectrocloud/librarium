@@ -284,7 +284,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/dimchansky/utfbom                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/disintegration/imaging                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/diskfs/go-diskfs                                                                   | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/distribution/distribution/v3                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/distribution/reference                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/djherbis/times                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/docker/cli                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -645,10 +644,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/spectrocloud-labs/prompts-tui                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/cluster-api-provider-maas                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/go-i18n/v2                                                            | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/spectrocloud/hexternal                                                             | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/spectrocloud/maas-client-go                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/palette-sdk-go                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| github.com/spectrocloud/reach                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/system-upgrade-controller/pkg/apis                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spf13/afero                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spf13/cast                                                                         | [MIT](https://opensource.org/license/mit/)                                |
@@ -765,7 +762,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | golang.org/x/tools                                                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | gomodules.xyz/jsonpatch/v2                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | google.golang.org/api                                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
-| google.golang.org/appengine                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | google.golang.org/genproto                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | google.golang.org/genproto/googleapis/api                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | google.golang.org/genproto/googleapis/rpc                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -924,6 +920,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | sigs.k8s.io/randfill                                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/release-utils                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/structured-merge-diff/v4                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| sigs.k8s.io/structured-merge-diff/v6                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/yaml                                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | styled-components                                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | subscriptions-transport-ws                                                                    | [MIT](https://opensource.org/license/mit/)                                |

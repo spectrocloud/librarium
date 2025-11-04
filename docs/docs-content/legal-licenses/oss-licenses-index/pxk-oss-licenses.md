@@ -201,6 +201,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/google/btree                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/google/cadvisor                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/google/cel-go                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/google/certtostore                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/google/deck                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/google/gnostic-models                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/google/go-cmp                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/google/pprof                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -216,7 +218,13 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/grpc-ecosystem/go-grpc-prometheus                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/grpc-ecosystem/grpc-gateway/v2                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/grpc-ecosystem/grpc-opentracing                                             | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/hashicorp/cronexpr                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/hashicorp/errwrap                                                           | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
+| github.com/hashicorp/go-cleanhttp                                                      | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
+| github.com/hashicorp/go-multierror                                                     | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
+| github.com/hashicorp/go-rootcerts                                                      | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
 | github.com/hashicorp/go-version                                                        | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
+| github.com/hashicorp/nomad/api                                                         | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
 | github.com/inconshreveable/mousetrap                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/infobloxopen/go-trees                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/insomniacslk/dhcp                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
@@ -256,6 +264,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/mistifyio/go-zfs/v3                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/mitchellh/go-homedir                                                        | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/mitchellh/go-wordwrap                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/mitchellh/mapstructure                                                      | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/moby/ipvs                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/moby/locker                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/moby/spdystream                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -323,11 +332,11 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/soheilhy/cmux                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/spf13/cobra                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/spf13/pflag                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/StackExchange/wmi                                                           | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/stefanberger/go-pkcs11uri                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/stoewer/go-strcase                                                          | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/stretchr/objx                                                               | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/stretchr/testify                                                            | [MIT](https://opensource.org/license/mit/)                  |
-| github.com/syndtr/gocapability                                                         | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
 | github.com/tchap/go-patricia/v2                                                        | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/tetratelabs/wazero                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/tinylib/msgp                                                                | [MIT](https://opensource.org/license/mit/)                  |
@@ -377,7 +386,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | go.uber.org/atomic                                                                     | [MIT](https://opensource.org/license/mit/)                  |
 | go.uber.org/automaxprocs                                                               | [MIT](https://opensource.org/license/mit/)                  |
 | go.uber.org/goleak                                                                     | [MIT](https://opensource.org/license/mit/)                  |
-| go.uber.org/mock                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.uber.org/multierr                                                                   | [MIT](https://opensource.org/license/mit/)                  |
 | go.uber.org/zap                                                                        | [MIT](https://opensource.org/license/mit/)                  |
 | go.yaml.in/yaml/v2                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |

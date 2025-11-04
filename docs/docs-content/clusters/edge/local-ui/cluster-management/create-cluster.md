@@ -22,20 +22,24 @@ management.
 
 - For hosts that are deployed in agent mode, all hosts must share the same Operating System (OS).
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+
 - For multi-node clusters, do not use the
   <VersionedLink text="Local Path Provisioner Pack" url="/integrations/packs/?pack=csi-local-path-provisioner" />. This
   is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
   with the local path provisioner.
 
-- Locally managed multi-node clusters deployed in [agent mode](../../../../deployment-modes/agent-mode/agent-mode.md) do not support network overlay.
+<!-- prettier-ignore-end -->
 
 ## Prerequisites
 
-- If your hosts are deployed in agent mode, ensure that your hosts use `systemd-networkd` and `systemd-resolved` for
-  interface and DNS management. Refer to
+- (Agent Mode only) By default, Edge hosts deployed using
+  [Appliance Mode](../../../../deployment-modes/appliance-mode/appliance-mode.md) use `systemd-networkd` for interface
+  management and `systemd-resolved` for DNS resolution in overlay networks. If using
+  [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md), you must confirm that `systemd-networkd` and
+  `systemd-resolved` are installed on your Edge hosts and properly configured. Refer to our
   [Configure networkd to Prepare Host for Overlay Network](../../../../deployment-modes/agent-mode/overlay-preparation.md)
-  for more information.
+  guide for more information.
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 

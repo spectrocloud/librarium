@@ -69,22 +69,18 @@ Ensure the following requirements are met before you attempt to deploy a cluster
    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the computing environments. Example: `region:us-central1` or `zone:us-central1-a`. |
    | **Cloud Account** | If you already added your GCP account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your GCP account information.                            |
 
-7. Click **Add Cluster Profile**, select a cluster profile, and click **Next**. Palette displays the cluster profile
-   layers.
+7. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   By default, the pack parameters contain values from the cluster profile.
+8. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-9. Click **Next** to continue.
+9. Fill out the following parameters, and click **Next** when you are done.
 
-10. Fill out the following parameters, and click **Next** when you are done.
+   | Parameter   | Description                                                   |
+   | ----------- | ------------------------------------------------------------- |
+   | **Project** | The project to which the cluster belongs.                     |
+   | **Region**  | Choose the desired GCP region in which to deploy the cluster. |
 
-    | Parameter   | Description                                                   |
-    | ----------- | ------------------------------------------------------------- |
-    | **Project** | The project to which the cluster belongs.                     |
-    | **Region**  | Choose the desired GCP region in which to deploy the cluster. |
-
-11. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
+10. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
     number of nodes. Configure the worker node pool. The minimum number of CPUs and amount of memory depend on your
     cluster profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and
     across all worker pools.
@@ -97,11 +93,11 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
     :::
 
-12. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on
+11. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on
     existing clusters. Review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more.
     Toggle the **Taint** button to create a label.
 
-13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
+12. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
     parameters.
 
     | **Parameter** | **Description**                                                                                                                          |
@@ -118,12 +114,12 @@ Ensure the following requirements are met before you attempt to deploy a cluster
     | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                  |
     | **NoExecute**        | New pods will not be scheduled on the node, and existing pods on the node will be evicted if they do not tolerate the taint. |
 
-14. Click **Next** after configuring the node pool.
+13. Click **Next** after configuring the node pool.
 
-15. The **Settings** page is where you can configure the patching schedule, security scans, backup settings, and set up
+14. The **Settings** page is where you can configure the patching schedule, security scans, backup settings, and set up
     Role Based Access Control (RBAC). Review cluster settings and make changes if needed. Click **Validate**.
 
-16. Review the settings summary and click **Finish Configuration** to deploy the cluster. Be aware that provisioning GKE
+15. Review the settings summary and click **Finish Configuration** to deploy the cluster. Be aware that provisioning GKE
     clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 You can monitor cluster deployment progress on the cluster details page.
