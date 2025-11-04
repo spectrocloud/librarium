@@ -110,13 +110,19 @@ cluster templates.
 9.  When finished, **Confirm** your schedule.
 
 10. Your schedule appears in the **Upgrade schedule** section of the **Basic information** window. If you would like to
-    add additional schedules, select **Add Schedule**, and repeat steps 5 - 10; otherwise, select **Next**.
+    add additional schedules, select **Add Schedule**, and repeat steps 5 - 10. When you are finished adding schedules,
+    select **Next**.
 
-    :::tip
+    :::info
 
-    Each template can be linked to one maintenance policy only. All schedules attached to a maintenance policy are
-    initiated on the attached clusters during the specified upgrade window. If you do not want all schedules applied to
-    certain clusters, consider making another maintenance policy and attaching it to a separate cluster template.
+    - If you have multiple schedules for the same maintenance policy, the upgrade windows cannot overlap. For example,
+      if one schedule begins at 8:00 AM on Sunday with an upgrade window of three hours, and another schedule begins at
+      10:00 AM on Sunday with an upgrade window of three hours, the upgrade window overlaps at 10:00 AM, and you will
+      receive an error when attempting to **Finalize** your maintenance policy.
+
+    - Each template can be linked to one maintenance policy only. All schedules attached to a maintenance policy are
+      initiated on the attached clusters during the specified upgrade window. If you do not want all schedules applied
+      to certain clusters, consider making another maintenance policy and attaching it to a separate cluster template.
 
     :::
 
