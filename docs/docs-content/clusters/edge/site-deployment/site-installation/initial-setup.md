@@ -95,7 +95,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    :::
 
-5. Next, the terminal displays a console for you to provide hostname and network configurations to the Edge host.
+5. The terminal displays a console for you to provide hostname and network configurations to the Edge host.
 
    ![A terminal user interface showing displaying network configuration options](/clusters_site-installation_initial-setup_tui_4.8.webp)
 
