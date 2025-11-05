@@ -126,67 +126,47 @@ add_breaking_changes_body() {
     | sed -E 's/^<([^>]+)>$/\1/'   # drop angle brackets if present
   )
 
-  echo "Found link: [$link_text]($link_url)"
+  if [ -z "$link_text" ] || [ -z "$link_url" ]; then
+    # No links found, just append the line as is
+    echo "$new_line" >> "$filename"
+    return
+  fi
 
-  # Loop: replace one Markdown link per pass, repeat until none remain
-  while :; do
-    # Extract prefix, first match, and suffix using awk (portable on macOS)
-    IFS=$'\n' read -r prefix match suffix < <(
-      awk '{
-        if (match($0, /\[[^]]+\]\([^)]*\)/)) {
-          pre = substr($0, 1, RSTART-1)
-          m   = substr($0, RSTART, RLENGTH)
-          post= substr($0, RSTART+RLENGTH)
-          print pre "\n" m "\n" post
-        } else {
-          print ""; print ""; print ""
-        }
-      }' <<< "$new_line"
-    )
+  if [[ $link_url == http* || $link_url == *.webp ]]; then
+    # It's an external image link, just append the line as is
+    echo "$new_line" >> "$filename"
+    return
+  fi
 
-    # No match -> we're done
-    [[ -n "$match" ]] || break
+  # Start the link replacement process
+  prefix="${new_line%%\[*}"  # Text before the link
+  suffix="${new_line#*\)}"   # Text after the link
+  clean_link="$link_url"
 
-    # Pull link_text and full_link from the matched [text](target)
-    link_text=$(echo "$match"   | sed -E 's/^\[([^]]+)\]\(.*\)$/\1/')
-    full_link=$(echo "$match"   | sed -E 's/^\[[^]]+\]\(([^)]*)\)$/\1/')
-    echo "Found link: [$link_text]($full_link)"
+  # Strip leading ../ or /
+  [[ $clean_link == ../* ]] && clean_link="${clean_link:3}"
+  [[ $clean_link == /*  ]] && clean_link="${clean_link:1}"
 
-    # Default: keep the original match (so we always advance the loop)
-    replacement="$match"
+  # Drop #fragment
+  clean_link="${clean_link%%#*}"
 
-    # Only transform if not external (http/https) and not an image ending in .webp
-    if [[ $full_link != http* && $full_link != *.webp ]]; then
-      # Normalize path
-      clean_link="$full_link"
+  # Drop .md / .mdx extensions
+  clean_link="${clean_link%.md}"
+  clean_link="${clean_link%.mdx}"
 
-      # Strip leading ../ or /
-      [[ $clean_link == ../* ]] && clean_link="${clean_link:3}"
-      [[ $clean_link == /*  ]] && clean_link="${clean_link:1}"
+  # Remove duplicate last segment if it equals previous (e.g., foo/foo.md)
+  IFS='/' read -r -a segments <<< "$clean_link"
+  len=${#segments[@]}
+  if (( len >= 2 )) && [[ "${segments[len-1]}" == "${segments[len-2]}" ]]; then
+    unset 'segments[len-1]'
+    clean_link=$(IFS='/'; echo "${segments[*]}")
+  fi
 
-      # Drop #fragment
-      clean_link="${clean_link%%#*}"
+  replacement="[$link_text]($legacy_domain/$clean_link)"
+  echo "Replacing link in breaking changes: $link_url -> $legacy_domain/$clean_link"
 
-      # Drop .md / .mdx extensions
-      clean_link="${clean_link%.md}"
-      clean_link="${clean_link%.mdx}"
-
-      # Remove duplicate last segment if it equals previous (e.g., foo/foo.md)
-      IFS='/' read -r -a segments <<< "$clean_link"
-      len=${#segments[@]}
-      if (( len >= 2 )) && [[ "${segments[len-1]}" == "${segments[len-2]}" ]]; then
-        unset 'segments[len-1]'
-        clean_link=$(IFS='/'; echo "${segments[*]}")
-      fi
-
-      link_url="$legacy_domain/$clean_link"
-      echo "Transforming link: [$link_text]($full_link) -> <$link_url>"
-      replacement="<VersionedLink text=\"$link_text\" url=\"$link_url\" />"
-    fi
-
-    # Rebuild the line, advancing past the processed match
-    new_line="${prefix}${replacement}${suffix}"
-  done
+  # Rebuild the line
+  new_line="${prefix}${replacement}${suffix}"
 
   echo "$new_line" >> "$filename"
 }
