@@ -86,7 +86,7 @@ Check out the following sections to learn about all the new features and improve
   the key value. Moving forward, Palette will not store the API key value in the database but instead retain metadata
   about the key. Ensure you store the API key value in a secure location after its creation, as the value will not be
   retrievable from Palette. To learn more about API keys, refer to the
-  [API Key](user-management//authentication/api-key/api-key.md) documentation.
+  [API Key](user-management/authentication/api-key/api-key.md) documentation.
 
 #### Features
 
