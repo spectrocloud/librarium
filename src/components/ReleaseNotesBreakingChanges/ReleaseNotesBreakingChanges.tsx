@@ -177,7 +177,7 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
   };
 
   const customSelectStyles: StylesConfig<VersionOption, false> = {
-    control: (provided: any, state: any) => ({
+    control: (provided, state) => ({
       ...provided,
       background: "var(--custom-release-notes-background-color)",
       color: "var(--custom-release-notes-background-font-color)",
@@ -185,24 +185,24 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
       cursor: state.isDisabled ? "not-allowed" : "default",
       opacity: state.isDisabled ? 0.6 : 1,
     }),
-    container: (provided: any, state: any) => ({
+    container: (provided, state) => ({
       ...provided,
       cursor: state.isDisabled ? "not-allowed" : "default",
     }),
-    valueContainer: (provided: any, state: any) => ({
+    valueContainer: (provided, state) => ({
       ...provided,
       cursor: state.isDisabled ? "not-allowed" : "default",
     }),
-    menu: (provided: any) => ({
+    menu: (provided) => ({
       ...provided,
       marginTop: "0",
       backgroundColor: "var(--custom-release-notes-menu-padding)",
     }),
-    singleValue: (provided: any) => ({
+    singleValue: (provided) => ({
       ...provided,
       color: "var(--custom-release-notes-background-font-color)",
     }),
-    option: (provided: any, state: any) => ({
+    option: (provided, state) => ({
       ...provided,
       borderRadius: "0.25rem",
       color: "var(--custom-release-notes-option-font-color)",
