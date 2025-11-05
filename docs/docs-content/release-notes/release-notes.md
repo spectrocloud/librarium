@@ -11,6 +11,39 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 31, 2025 - Component Updates {#component-updates-2025-44}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.29.
+
+### Improvements
+
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) now has improved command help and examples.
+
+### Bug Fixes
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused pods belonging to the <VersionedLink text="Piraeus Operator" url="/integrations/?pack=piraeus-csi" /> pack to go into an `Unknown` state after scaling [Edge clusters](../clusters/edge/edge.md).
+- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../vertex/vertex.md).
+
+<!-- prettier-ignore-end -->
+
+### Packs
+
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 2.14.0      |
+| AWS Cluster Autoscaler Helm  | Add-on     | :white_check_mark: | :x:                | 1.34.1      |
+| Flannel                      | CNI        | :white_check_mark: | :white_check_mark: | 0.27.4      |
+| Flux2                        | Add-on     | :white_check_mark: | :x:                | 2.17.0      |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.1       |
+| Falco                        | Add-on     | :x:                | :white_check_mark: | 6.3.0       |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
+| Portworx                     | Add-on     | :white_check_mark: | :x:                | 3.4.1       |
+| Portworx                     | CSI        | :white_check_mark: | :x:                | 3.4.1       |
+| Spectro Kubernetes Dashboard | Add-on     | :x:                | :white_check_mark: | 7.11.1      |
+
 ## October 27, 2025 - Release 4.7.29
 
 ### Bug Fixes
