@@ -1,13 +1,14 @@
 import React, { useEffect, useState, FunctionComponent, useMemo } from "react";
 import styles from "./ReleaseNotesBreakingChanges.module.scss";
 import Versions from "./versions.json";
-import Select, { components, OptionProps } from "react-select";
+import Select, { components, OptionProps, StylesConfig } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import Admonition from "@theme/Admonition";
 import Link from "@docusaurus/Link";
 import PartialsComponent from "../PartialsComponent";
+import * as partialsExports from "@site/_partials";
 
 interface VersionOption {
   label: string;
@@ -28,7 +29,9 @@ interface Module {
 
 const externalDomainURL = "legacy.docs.spectrocloud.com";
 
-interface CustomOptionProps extends OptionProps<VersionOption, false> {}
+type CustomOptionProps = OptionProps<VersionOption, false>;
+
+const partials: Modules = partialsExports as unknown as Modules;
 
 const CustomOption: React.FC<CustomOptionProps> = (props) => {
   const {
@@ -96,11 +99,10 @@ function getVersionsFromFile(): string[] {
 }
 
 function getBreakingChangesBetweenVersions(from: string, to: string): string[] {
-  let breakingVersionsList: string[] = [];
-  const module: Modules = require("@site/_partials");
-  const partialKeys: string[] = Object.keys(module);
-  partialKeys.map(function (pkey) {
-    const currentPartial: Module = module[pkey];
+  const breakingVersionsList: string[] = [];
+  const partialKeys: string[] = Object.keys(partials);
+  partialKeys.map(function (key) {
+    const currentPartial: Module = partials[key];
     const catFrontMatter = currentPartial.frontMatter.partial_category;
     const nameFrontMatter = currentPartial.frontMatter.partial_name.toString();
     if (catFrontMatter == "breaking-changes" && isVersionInRange(nameFrontMatter, from, to)) {
@@ -174,7 +176,7 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
     localStorage.setItem("selectedToVersion", selectedOption?.value ?? "");
   };
 
-  const customSelectStyles = {
+  const customSelectStyles: StylesConfig<VersionOption, false> = {
     control: (provided: any, state: any) => ({
       ...provided,
       background: "var(--custom-release-notes-background-color)",
