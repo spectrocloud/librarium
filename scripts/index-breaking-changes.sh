@@ -11,7 +11,7 @@ ARCHIVE_FILE_PATH="archiveVersions.json"
 
 # Where to place worktrees (unique per run)
 WORKTREES_DIR="$(mktemp -d -t librarium-worktrees-XXXXXX)"
-echo "Using worktrees dir: $WORKTREES_DIR"
+echo "ℹ️ Using worktrees dir: $WORKTREES_DIR"
 
 cleanup() {
   echo "🧹 Cleaning up worktrees..."
@@ -163,8 +163,6 @@ add_breaking_changes_body() {
   fi
 
   replacement="[$link_text]($legacy_domain/$clean_link)"
-  echo "Replacing link in breaking changes: $link_url -> $legacy_domain/$clean_link"
-
   # Rebuild the line
   new_line="${prefix}${replacement}${suffix}"
 
