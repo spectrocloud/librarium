@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Import utility functions
+source scripts/index-breaking-changes-utils.sh
+
 set -e
 
 DOCS_ROOT="$(git rev-parse --show-toplevel)"
@@ -19,163 +22,6 @@ cleanup() {
   rm -rf "$WORKTREES_DIR" || true
 }
 trap cleanup EXIT
-
-# Function to create partials file for breaking changes
-# Params:
-# $1 - release number, example: 4.0.0
-create_partials_file () {
-  release_number=$1
-  replaced=$(echo "$release_number" | tr '.' '_')  # Replace dots with underscores as they cause errors in partials
-  filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
-
-  # Create the directory if it doesn't exist
-  mkdir -p $BREAKING_CHANGES_PARTIALS_PATH
-
-  # Create file if it doesn't exist
-  if [ ! -f "$filename" ]; then
-    {
-      echo "---"
-      echo "partial_category: breaking-changes"
-      echo "partial_name: $release_number"
-      echo "---"
-      echo ""
-    } >> "$filename"
-  fi
-}
-
-# Function to find legacy domain from archiveVersions.json
-# Outputs: a single matching legacy domain
-# $1 - release version, example: v4.5.3
-# $2 - worktree path
-find_legacy_domain() {
-  release_version=$1
-  wt_path=$2
-  popd >/dev/null  # leave the worktree to look up file
-
-  # release_version like "4.7.10"
-  local release_maj; release_maj=$(echo "$release_version" | cut -d . -f1)
-  local release_min; release_min=$(echo "$release_version" | cut -d . -f2)
-
-  # Read key/value as TSV (array) and keep the loop in the current shell
-  while IFS=$'\t' read -r name url; do
-    # name like "v4.7.x" or "v3.4.x and prior"
-    local entry_maj; entry_maj=$(echo "$name" | cut -d . -f1 | sed 's/^v//')
-    local entry_min; entry_min=$(echo "$name" | cut -d . -f2)
-
-    if [[ "$release_maj" == "$entry_maj" && "$release_min" == "$entry_min" ]]; then
-      echo "$url"
-      return 0   # exits the surrounding function as intended
-    fi
-  done < <(jq -r 'to_entries[] | [.key, .value] | @tsv' "$ARCHIVE_FILE_PATH")
-
-  pushd "$wt_path" >/dev/null # re-enter the worktree
-
-}
-
-# Function to save the partials file to the main repo
-# Params:
-# $1 - release number, example: 4.0.0
-# $2 - worktree path
-# $3 - source directory
-# $4 - destination directory
-persist_partials_file_main_repo() {
-    release_number=$1
-    wt_path=$2
-    src_dir=$3
-    dest_dir=$4
-
-    replaced=$(echo "$release_number" | tr '.' '_')
-    filename="$src_dir/br_$replaced.mdx"
-    
-    popd >/dev/null  # leave the worktree to save the file to the main repo
-    cp "$wt_path/$filename" "$dest_dir/$filename"
-    pushd "$wt_path" >/dev/null # re-enter the worktree
-}
-
-# Function to add breaking changes body to the partials file
-# Params:
-# $1 - release number, example: 4.0.0
-# $2 - body text of the breaking change
-# $3 - worktree path
-add_breaking_changes_body() {
-  release_number=$1
-  replaced=$(echo "$release_number" | tr '.' '_')
-  filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
-  new_line=$2
-  wt_path=$3
-  legacy_domain=$(find_legacy_domain "$release_number" "$wt_path")
-
-  # If line is empty just append it and return
-  if [ -z "$new_line" ]; then
-    echo >> "$filename"   # ensures file ends with a newline
-    return
-  fi
-
-  # Extract link text: [text](...)
-  link_text=$(
-    printf '%s\n' "$new_line" \
-    | grep -E '\[[^]]+\]\([^)]*\)' \
-    | sed -n -E 's/.*\[([^]]*)\]\(((<[^>]+>)|([^ )][^)]*))( "([^"]*)")?\).*/\1/p'
-  )
-
-  # Extract URL (supports <angle-bracket URLs> and optional "title")
-  link_url=$(
-    printf '%s\n' "$new_line" \
-    | grep -E '\[[^]]+\]\([^)]*\)' \
-    | sed -n -E 's/.*\[[^]]*\]\(((<[^>]+>)|([^ )][^)]*))( "([^"]*)")?\).*/\1/p' \
-    | sed -E 's/^<([^>]+)>$/\1/'   # drop angle brackets if present
-  )
-
-  if [ -z "$link_text" ] || [ -z "$link_url" ]; then
-    # No links found, just append the line as is
-    echo "$new_line" >> "$filename"
-    return
-  fi
-
-  if [[ $link_url == http* || $link_url == *.webp ]]; then
-    # It's an external image link, just append the line as is
-    echo "$new_line" >> "$filename"
-    return
-  fi
-
-  # Start the link replacement process
-  prefix="${new_line%%\[*}"  # Text before the link
-  suffix="${new_line#*\)}"   # Text after the link
-  clean_link="$link_url"
-
-  # Strip leading ../ or /
-  [[ $clean_link == ../* ]] && clean_link="${clean_link:3}"
-  [[ $clean_link == /*  ]] && clean_link="${clean_link:1}"
-
-  # Drop #fragment
-  clean_link="${clean_link%%#*}"
-
-  # Drop .md / .mdx extensions
-  clean_link="${clean_link%.md}"
-  clean_link="${clean_link%.mdx}"
-
-  # Remove duplicate last segment if it equals previous (e.g., foo/foo.md)
-  IFS='/' read -r -a segments <<< "$clean_link"
-  len=${#segments[@]}
-  if (( len >= 2 )) && [[ "${segments[len-1]}" == "${segments[len-2]}" ]]; then
-    unset 'segments[len-1]'
-    clean_link=$(IFS='/'; echo "${segments[*]}")
-  fi
-
-  replacement="[$link_text]($legacy_domain/$clean_link)"
-  # Rebuild the line
-  new_line="${prefix}${replacement}${suffix}"
-
-  echo "$new_line" >> "$filename"
-}
-
-# Function to clean up files by removing multiple blank lines.
-clean_files() {
-  for file in $BREAKING_CHANGES_PARTIALS_PATH/*.mdx; do
-    # Replace multiple blank lines with a single blank line
-    awk 'NF { blank=0 } !NF { if (!blank) print ""; blank=1; next } { print }' "$file" > tmpfile && mv tmpfile "$file"
-  done
-}
 
 # If ALL_VERSIONS_PATH file and BREAKING_CHANGES_PARTIALS_PATH directory already exist, skip the entire script.
 # This is to speed up local development where we don't need to re-index every time.
@@ -216,6 +62,8 @@ for branch in $branches; do
   pushd "$wt_path" >/dev/null
 
   in_breaking_changes=false
+  component_updates_range=""
+  component_updates_identifier=""
   release_number=""
   # Variable to hold the current buffer text so that we can collapse versioned links on same line.
   buffer=""
@@ -225,9 +73,9 @@ for branch in $branches; do
   while IFS= read -r line; do
     # If the line is an H2 that contains "Release", we extract the number and begin processing.
     if echo "$line" | grep -q "##.*Release"; then
-      # If we were already processing a release and file, copy it to the current working directory.
-      if [ -n "$release_number" ] && [ "$partial_created" == "true" ]; then
-        persist_partials_file_main_repo "$release_number" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+      # If we were already processing a file, copy it to the current working directory.
+      if [ "$partial_created" == "true" ]; then
+        persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
         partial_created=false
       fi
 
@@ -239,6 +87,9 @@ for branch in $branches; do
         sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' |  # Extract last version in range
         sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/'               # Extract version if no range
       )
+      ## Reset component updates tracking variables for new release.
+      component_updates_identifier=""
+      component_updates_range=""
 
       popd >/dev/null  # leave the worktree to write to the file in the the main repo
       echo "\"$release_number\"," >> "$ALL_VERSIONS_PATH"
@@ -249,24 +100,59 @@ for branch in $branches; do
       continue
     fi
 
+    if echo "$line" | grep -qE '^##[[:space:]]+.*\bComponent Updates\b'; then
+      # If we were already processing a file, copy it to the current working directory.
+      if [ "$partial_created" == "true" ]; then
+        persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+        partial_created=false
+      fi
+
+      # Use the heading identifier as the unique key for component updates.
+      component_updates_identifier=$(echo "$line" | grep -Eo '\{#[^}]+\}' | tr -d '{}' | cut -c2-)
+
+      # Reset release number as we are in component updates now.
+      release_number=""
+      # New component updates section, set breaking changes to false.
+      in_breaking_changes=false
+      continue
+    fi
+
+    # THIS PHRASING MUST MATCH EXACTLY TO CATCH THE COMPONENT UPDATES RANGE.
+    # I HAVE NO OTHER WAY TO UNIQUELY IDENTIFY THIS LINE.
+    if [ -n "$component_updates_identifier" ] && echo "$line" | grep -qE '^The following components have been updated for Palette version [0-9]+(\.[0-9]+){2}([[:space:]]*[-–—][[:space:]]*[0-9]+(\.[0-9]+){2})?\.$'; then
+      component_updates_range=$(
+        echo "$line" |
+        grep -Eo '[0-9]+(\.[0-9]+){2}([[:space:]]*[-–—][[:space:]]*[0-9]+(\.[0-9]+){2})?'
+      )
+      continue 
+    fi
+
     # Find any breaking changes headings if we have detected the version heading.
     # Breaking changes MUST be H3 or more.
-    if [ -n "$release_number" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking changes'; then
+    if [ -n "$release_number" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking Changes'; then
       in_breaking_changes=true
-      create_partials_file $release_number
+      create_partials_file "$BREAKING_CHANGES_PARTIALS_PATH" "$release_number"
       partial_created=true
       continue
     fi
-    
-    if [ -n "$release_number" ] && $in_breaking_changes; then
+
+    # Also check for component updates breaking changes sections.
+    if [ -n "$component_updates_identifier" ] && [ -n "$component_updates_range" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking Changes'; then
+      in_breaking_changes=true
+      create_partials_file_component_updates "$BREAKING_CHANGES_PARTIALS_PATH" "$component_updates_identifier" "$component_updates_range"
+      partial_created=true
+      continue
+    fi
+
+    if [ "$in_breaking_changes" == "true" ]; then
       # If the line is empty, write the buffer then add it to the body as is without more processing.
       if [ -z "$line" ]; then
         # Flush the buffer if it has content.
         if [ -n "$buffer" ]; then
-          add_breaking_changes_body "$release_number" "$buffer" "$wt_path"
+          add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
           buffer=""
         fi
-        add_breaking_changes_body "$release_number" "$line" "$wt_path"
+        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
         continue
       fi
 
@@ -275,7 +161,7 @@ for branch in $branches; do
         in_breaking_changes=false
         # Flush the buffer if it has content.
         if [ -n "$buffer" ]; then
-          add_breaking_changes_body "$release_number" "$buffer" "$wt_path"
+          add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
           buffer=""
         fi
         continue
@@ -290,13 +176,13 @@ for branch in $branches; do
           in_code_section="true"
         fi
 
-        add_breaking_changes_body "$release_number" "$line" "$wt_path"
+        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
         continue
       fi
 
       # Don't strip any spacing or collapse lines while we are in the code section.
       if $in_code_section; then
-        add_breaking_changes_body "$release_number" "$line" "$wt_path"
+        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
         continue
       fi
 
@@ -328,7 +214,7 @@ for branch in $branches; do
         else 
           # Not a VersionedLink line so we need to flush the buffer if it has content.
           if [ -n "$buffer" ]; then
-            add_breaking_changes_body "$release_number" "$buffer" "$wt_path"
+            add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
             buffer=""
           fi
           # Normal line. Set the line as the buffer so it is ready for the next versioned link.
@@ -341,8 +227,8 @@ for branch in $branches; do
   done < "$wt_path/$release_notes_path"
 
   # If we finished the file and have a left over partial, copy it to the current working directory.
-  if [ -n "$release_number" ] && [ "$partial_created" == "true" ]; then
-    persist_partials_file_main_repo "$release_number" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+  if [ "$partial_created" == "true" ]; then
+    persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
     partial_created=false
   fi
 
@@ -352,7 +238,7 @@ for branch in $branches; do
   git worktree remove --force "$wt_path"
 done
 
-clean_files
+clean_files $BREAKING_CHANGES_PARTIALS_PATH
 
 # Remove the last comma from the ALL_VERSIONS_PATH file
 sed '$s/,\s*$//' $ALL_VERSIONS_PATH > temp && mv temp $ALL_VERSIONS_PATH
