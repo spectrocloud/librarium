@@ -44,6 +44,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | Cilium Tetragon     | Add-on | :white_check_mark: | :x:                | 1.6.0       |
 | Flannel             | CNI    | :x:                | :white_check_mark: | 0.27.4      |
 | Karpenter           | Add-on | :x:                | :white_check_mark: | 1.8.1       |
+| Longhorn              | CSI    | :white_check_mark: | :white_check_mark:                | 1.10.0      |
 | Multus              | CNI    | :white_check_mark: | :x:                | 2.2.21      |
 | Nvidia GPU Operator | Add-on | :white_check_mark: | :x:                | 25.10.0     |
 | Prometheus Agent    | Add-on | :white_check_mark: | :x:                | 27.4.11     |
