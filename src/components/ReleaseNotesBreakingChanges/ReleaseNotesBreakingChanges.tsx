@@ -213,7 +213,7 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
     }),
   };
 
-  const legacy = isLegacy(externalDomainURL, useIsBrowser()); 
+  const legacy = isLegacy(externalDomainURL, useIsBrowser());
   if (legacy) {
     return (
       <Admonition type="tip">
@@ -297,12 +297,12 @@ export function isLegacy(url: string, isBrowser: boolean): boolean {
 
   // Regex: matches versions like 4.6.x, 5.7.x, 12.34.x
   const versionPattern = /\d+\.\d+\.x/;
-  
+
   // If URL contains version pattern like 5.7.x, treat it as legacy
   if (versionPattern.test(url)) {
     return true;
   }
-  
+
   const currentDomain = window.location.hostname;
   // Otherwise, compare against the current domain
   return currentDomain.includes(url);
