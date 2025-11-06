@@ -14,12 +14,9 @@ export default function VersionedLink(props: ComponentProperties) {
     );
   }
   if (props.url.includes("https") || props.url.includes("http")) {
-    // In theory, this doesn't need to be used for legacy links, but we need these to be allowed for the breaking changes finder to work correctly.
-    if (!props.url.includes("legacy.docs.spectrocloud.com")) {
-      throw new Error(
-        "Versioned links should not be used for external URLs. Please use the default markdown syntax instead."
-      );
-    }
+    throw new Error(
+      "Versioned links should not be used for external URLs. Please use the default markdown syntax instead."
+    );
   }
 
   // Component mode of versioned link detected without versioning
