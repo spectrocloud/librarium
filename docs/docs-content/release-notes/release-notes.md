@@ -20,6 +20,12 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 - The [Artifact Studio](../downloads/artifact-studio.md) packs list has been consolidated to display a single tile for
   all versions of packs and pack display names have been enhanced. This leads to an improved user experience.
 
+### Bug Fixes
+
+- Fixed an issue that caused the
+  [`spectrocloud_macros` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/macros)
+  to fail to fetch the correct workspace.
+
 ### Packs
 
 #### Pack Notes
