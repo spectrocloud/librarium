@@ -239,8 +239,8 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
   if (legacy) {
     return (
       <Admonition type="tip">
-        To find breaking changes between releases, check out the most recent
-        <Link href="https://docs.spectrocloud.com/release-notes/breaking-changes"> Palette breaking changes.</Link>.
+        To find breaking changes between releases, check out the latest
+        <Link href="https://docs.spectrocloud.com/release-notes/breaking-changes"> Find Breaking Changes</Link> page.
       </Admonition>
     );
   }
