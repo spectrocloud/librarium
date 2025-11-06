@@ -135,7 +135,9 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     return (
       <Admonition type="tip">
         <p>
-          Looking for breaking changes that might impact your Palette upgrade? Visit the <Link href="https://docs.spectrocloud.com/release-notes/breaking-changes">Find Breaking Changes</Link> page for a filtered view of relevant updates.
+          Looking for breaking changes that might impact your Palette upgrade? Visit the{" "}
+          <Link href="https://docs.spectrocloud.com/release-notes/breaking-changes">Find Breaking Changes</Link> page
+          for a filtered view of relevant updates.
           <br />
           <br />
           To view release notes for a specific Palette version, use the version selector below.
