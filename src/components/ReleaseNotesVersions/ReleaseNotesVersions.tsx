@@ -135,8 +135,10 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     return (
       <Admonition type="tip">
         <p>
-          Are you looking for the release notes for a specific version of Palette? Use the version selector below to
-          navigate to the release notes of the desired version.
+          Looking for breaking changes that might impact your Palette upgrade? Visit the <Link href="https://docs.spectrocloud.com/release-notes/breaking-changes">Find Breaking Changes</Link> page for a filtered view of relevant updates.
+          <br />
+          <br />
+          To view release notes for a specific Palette version, use the version selector below.
         </p>
         <div className={styles.dropdownContainer}>
           <label htmlFor={selectInputId} style={srOnly}>
