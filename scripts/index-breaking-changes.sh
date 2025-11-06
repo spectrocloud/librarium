@@ -64,6 +64,7 @@ for branch in $branches; do
   in_breaking_changes=false
   component_updates_range=""
   component_updates_identifier=""
+  component_updates_title=""
   release_number=""
   # Variable to hold the current buffer text so that we can collapse versioned links on same line.
   buffer=""
@@ -89,6 +90,7 @@ for branch in $branches; do
       )
       ## Reset component updates tracking variables for new release.
       component_updates_identifier=""
+      component_updates_title=""
       component_updates_range=""
 
       popd >/dev/null  # leave the worktree to write to the file in the the main repo
@@ -109,6 +111,7 @@ for branch in $branches; do
 
       # Use the heading identifier as the unique key for component updates.
       component_updates_identifier=$(echo "$line" | grep -Eo '\{#[^}]+\}' | tr -d '{}' | cut -c2-)
+      component_updates_title=$(echo "$line" | grep -Eo '^##[[:space:]]+[A-Za-z]+[[:space:]][0-9]{1,2},[[:space:]][0-9]{4}' | cut -c4-)
 
       # Reset release number as we are in component updates now.
       release_number=""
@@ -139,7 +142,7 @@ for branch in $branches; do
     # Also check for component updates breaking changes sections.
     if [ -n "$component_updates_identifier" ] && [ -n "$component_updates_range" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking Changes'; then
       in_breaking_changes=true
-      create_partials_file_component_updates "$BREAKING_CHANGES_PARTIALS_PATH" "$component_updates_identifier" "$component_updates_range"
+      create_partials_file_component_updates "$BREAKING_CHANGES_PARTIALS_PATH" "$component_updates_identifier" "$component_updates_range" "$component_updates_title"
       partial_created=true
       continue
     fi

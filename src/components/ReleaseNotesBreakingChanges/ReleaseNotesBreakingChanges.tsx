@@ -43,6 +43,18 @@ const CustomOption: React.FC<CustomOptionProps> = (props) => {
 };
 
 function compareVersions(a: string, b: string, direction: "ASC" | "DESC" = "DESC"): number {
+  // Handle component-updates-* versions by extracting the starting version of the range
+  if (a.includes("component-updates-")) {
+    const range = a.split("-RANGE-")[1] ?? ""; // "4.7.20-4.7.23"
+    const [rangeFrom, _] = range.split("-");
+    a = rangeFrom;
+  }
+  if (b.includes("component-updates-")) {
+    const range = b.split("-RANGE-")[1] ?? ""; // "4.7.20-4.7.23"
+    const [rangeFrom, _] = range.split("-");
+    b = rangeFrom;
+  }
+
   const aParts = a.split(".").map(Number);
   const bParts = b.split(".").map(Number);
 
@@ -105,8 +117,17 @@ function getBreakingChangesBetweenVersions(from: string, to: string): string[] {
     const currentPartial: Module = partials[key];
     const catFrontMatter = currentPartial.frontMatter.partial_category;
     const nameFrontMatter = currentPartial.frontMatter.partial_name.toString();
-    if (catFrontMatter == "breaking-changes" && isVersionInRange(nameFrontMatter, from, to)) {
-      breakingVersionsList.push(nameFrontMatter);
+    if (catFrontMatter == "breaking-changes"){
+      if (nameFrontMatter.includes("component-updates-")) {
+        const range = nameFrontMatter.split("-RANGE-")[1] ?? ""; // "4.7.20-4.7.23"
+        const [rangeFrom, rangeTo] = range.split("-");
+        if (isVersionInRange(rangeFrom, from, to) || isVersionInRange(rangeTo, from, to)){
+          breakingVersionsList.push(nameFrontMatter);
+        }
+      }
+      else if (isVersionInRange(nameFrontMatter, from, to)) {
+        breakingVersionsList.push(nameFrontMatter);
+      }
     }
   });
 
@@ -280,7 +301,7 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
           ) : (
             breakingVersionsList.map((version) => (
               <div key={version}>
-                <div className={styles.breakingChangeTitle}>{version}</div>
+                <div className={styles.breakingChangeTitle}>{version.includes("component-updates-") ? `${(version.split("TITLE-{")[1]?.split("}")[0] ?? "").trim()} - Component Updates`.trim() : version}</div>
                 <PartialsComponent category="breaking-changes" name={version} />
               </div>
             ))

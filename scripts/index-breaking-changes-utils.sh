@@ -30,10 +30,12 @@ create_partials_file () {
 # $1 - breaking changes partials path
 # $2 - component updates identifier, example: component-updates-october-2025-41
 # $3 - component updates range, example: 4.7.21 - 4.7.23
+# $4 - component updates title, example: October 31, 2025
 create_partials_file_component_updates () {
   breaking_changes_partials_path=$1
   component_updates_identifier=$2
-  component_updates_range=$3
+  component_updates_range=$(echo "$3" | tr -d ' ') # Remove spaces from range
+  component_updates_title=$4
   filename="$breaking_changes_partials_path/br_component_updates_$component_updates_identifier.mdx"
 
   # Create the directory if it doesn't exist
@@ -44,7 +46,7 @@ create_partials_file_component_updates () {
     {
       echo "---"
       echo "partial_category: breaking-changes"
-      echo "partial_name: $component_updates_identifier-RANGE-$component_updates_range"
+      echo "partial_name: $component_updates_identifier-TITLE-{$component_updates_title}-RANGE-$component_updates_range"
       echo "---"
       echo ""
     } >> "$filename"
