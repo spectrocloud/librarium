@@ -15,11 +15,6 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.X  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.X  |
-
 ### Improvements
 
 - The [Artifact Studio](../downloads/artifact-studio.md) packs list has been consolidated to display a single tile for
@@ -37,14 +32,16 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 | Pack Name           | Layer  | Non-FIPS           | FIPS               | New Version |
 | ------------------- | ------ | ------------------ | ------------------ | ----------- |
-| AWS VPC CNI         | CNI    | :white_check_mark: | :x:                | 1.20.4      |
+| AWS VPC CNI (Helm)  | CNI    | :white_check_mark: | :x:                | 1.20.4      |
 | Azure Disk          | CSI    | :white_check_mark: | :x:                | 1.33.5      |
 | Calico              | CNI    | :white_check_mark: | :x:                | 3.31.0      |
 | Cilium              | CNI    | :white_check_mark: | :x:                | 1.18.1-rev1 |
 | Cilium Tetragon     | Add-on | :white_check_mark: | :x:                | 1.6.0       |
 | Flannel             | CNI    | :x:                | :white_check_mark: | 0.27.4      |
 | Karpenter           | Add-on | :x:                | :white_check_mark: | 1.8.1       |
+| Longhorn            | CSI    | :white_check_mark: | :white_check_mark: | 1.10.0      |
 | Multus              | CNI    | :white_check_mark: | :x:                | 2.2.21      |
+| Nvidia GPU Operator | Add-on | :white_check_mark: | :x:                | 25.10.0     |
 | Prometheus Agent    | Add-on | :white_check_mark: | :x:                | 27.4.11     |
 | Prometheus Operator | Add-on | :white_check_mark: | :x:                | 78.3.0      |
 
