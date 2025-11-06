@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["release-notes"]
 ---
 
-This page lists breaking changes introduced across Palette and Palette VerteX releases. This list can be used as
+This page lists breaking changes introduced across Palette and Palette VerteX releases. Use this list as
 guidance for upgrading dedicated SaaS or [self-hosted Palette](../enterprise-version/enterprise-version.md) and
 [Palette VerteX](../vertex/vertex.md) installations.
 
