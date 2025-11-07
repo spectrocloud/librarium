@@ -53,7 +53,7 @@ misdirect writes within `/proc`, potentially allowing:
 
 - Update cloud-managed clusters (EKS, GKE, and AKS) integrated with Palette Enterprise or Palette VerteX with patches
   from their respective cloud providers as soon as they become available.
-- Patched OS images for other clusters will be available in future releases. Upgrade the latest Kubernetes patch
+- Patched OS images for other clusters will be available in future releases. Upgrade to the latest Kubernetes patch
   versions as soon as they are available.
 - Patch for the Edge clusters will be available in future releases. Upgrade the clusters to the patched versions as soon
   as they are available.
