@@ -19,7 +19,7 @@ additional details regarding vulnerabilities and offering remediation steps.
 - **Applicable Deployments**:
   - Workload Clusters:
     - cloud-managed clusters: EKS, GKE, and AKS
-    - Palette-managed clusters: PXK, RKE2, and K3s
+    - Kubernetes distributions: PXK, RKE2, and K3s
   - Palette deployments:
     - SaaS Palette
     - self-hosted Palette
