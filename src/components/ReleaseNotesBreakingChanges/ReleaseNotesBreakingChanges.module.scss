@@ -1,0 +1,47 @@
+.breakingChangesContainer {
+  border-radius: 0.5rem;
+  background-color: var(--custom-breaking-changes-background-color);
+  padding: 1rem 2rem;
+  color: var(--custom-release-notes-summary-color);
+  margin: 1rem 0 1.5rem 0;
+}
+
+.breakingChangesTextContainer {
+  border-radius: 0.5rem;
+  color: var(--custom-release-notes-summary-color);
+  margin: 1rem 0 1.5rem 0;
+}
+
+.dropdownContainer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.dropdownGroupFirst {
+  display: flex;
+  flex-direction: row;
+  padding-right: 1rem;
+}
+
+.arrowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.dropdownLabel {
+  padding: 8px 8px 8px 0;
+}
+
+.dropdownGroupSecond {
+  display: flex;
+  flex-direction: row;
+  padding: 0 1rem;
+}
+
+.breakingChangeTitle {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}

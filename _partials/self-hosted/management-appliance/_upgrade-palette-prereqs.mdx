@@ -21,11 +21,11 @@ partial_name: upgrade-palette-prereqs
 
 - Check that your upgrade path is supported by referring to the <PaletteVertexUrlMapper edition={props.edition} text="Supported Upgrade Paths" url="/upgrade#supported-upgrade-paths"/>.
 
-- If upgrading from version **4.7.15**, you must run an additional script to prepare {props.version} for the upgrade.
+- If upgrading from version **4.7.15**, you must run an additional script before upgrading {props.version}. This script changes the access mode of the `zot` deployment's PersistentVolumeClaim (PVC) from `RWX` (ReadWriteMany) to `RWO` (ReadWriteOnce), which is required for the upgrade process.
 
   <details>
 
-  <summary> Click to expand the instructions for the script </summary>
+  <summary> Click to expand the instructions for the 4.7.15 script </summary>
 
   1. Log in to Local UI of the leader node of your Palette management cluster. For example, `https://<palette-leader-node-ip>:5080`.
 
@@ -301,5 +301,223 @@ partial_name: upgrade-palette-prereqs
       NAME                READY   STATUS    RESTARTS   AGE
       zot-c96cb7b-hspd2   1/1     Running   0          5m3s
       ```
+
+  </details>
+
+- If upgrading from version **4.7.27**, you must run an additional script before upgrading {props.version}. This script ensures the `linstor-lvm-storage` StorageClass has correct parameters and safely recreates the PVC while preserving data.
+
+  <details>
+
+  <summary> Click to expand the instructions for the 4.7.27 script </summary>
+
+  1. Log in to Local UI of the leader node of your Palette management cluster. For example, `https://<palette-leader-node-ip>:5080`.
+
+  2. From the left main menu, click **Cluster**.
+
+  3. On the **Overview** tab, within the **Environment** section, click the link for the **Admin Kubeconfig File** to download the kubeconfig file.
+
+  4. On your local machine, ensure you have `kubectl` installed and set the `KUBECONFIG` environment variable to point to the file.
+
+     ```bash
+     export KUBECONFIG=/path/to/downloaded/kubeconfig/file
+     ```
+
+  5. Use the following command to create a script named `recreate.sh`.
+
+     The script ensures that the `linstor-lvm-storage` StorageClass has the correct parameters (`resourceGroup: lvm-ha` and `placementCount: 3`). If the StorageClass does not exist or has different parameters, it recreates it. Then, it safely recreates a specified PVC to bind to a new PV while preserving data, handling deployments with `volumeBindingMode=WaitForFirstConsumer` by scaling down the deployment first.
+
+     ```bash
+     cat > recreate.sh <<'SCRIPT'
+     #!/bin/bash
+     # Recreate a PVC with updated StorageClass configuration
+     # Ensures the linstor-lvm-storage StorageClass exists with correct parameters,
+     # then recreates the specified PVC which may bind to a new PV.
+     # Safely handles volumeBindingMode=WaitForFirstConsumer by scaling down the deployment first.
+
+     set -euo pipefail
+
+     NAMESPACE=${1:-zot-system}
+     PVC_NAME=${2:-zot-pvc}
+     DEPLOY_NAME=${3:-zot}
+
+
+     #!/bin/bash
+     set -e
+
+     SC_NAME="linstor-lvm-storage"
+
+     echo "Checking for existing StorageClass '$SC_NAME'..."
+
+     if kubectl get storageclass $SC_NAME >/dev/null 2>&1; then
+       echo "StorageClass '$SC_NAME' exists. Checking parameters..."
+
+       CURRENT_RG=$(kubectl get storageclass $SC_NAME -o jsonpath='{.parameters.resourceGroup}')
+       CURRENT_PC=$(kubectl get storageclass $SC_NAME -o jsonpath='{.parameters.placementCount}')
+
+       if [[ "$CURRENT_RG" == "lvm-ha" && "$CURRENT_PC" == "3" ]]; then
+         echo "✅ StorageClass already has resourceGroup='lvm-ha' and placementCount='3'. Skipping re-creation."
+       else
+         echo "StorageClass parameters differ (resourceGroup=$CURRENT_RG, placementCount=$CURRENT_PC). Recreating..."
+         kubectl delete storageclass $SC_NAME
+         echo "Recreating StorageClass '$SC_NAME'..."
+         cat <<EOF | kubectl apply -f -
+     apiVersion: storage.k8s.io/v1
+     kind: StorageClass
+     metadata:
+       name: $SC_NAME
+       annotations:
+         storageclass.kubernetes.io/is-default-class: "false"
+         helm.sh/hook: post-install,post-upgrade
+     provisioner: linstor.csi.linbit.com
+     parameters:
+       placementCount: "3"
+       resourceGroup: "lvm-ha"
+       storagePool: "lvm-thin"
+     reclaimPolicy: Delete
+     volumeBindingMode: WaitForFirstConsumer
+     allowVolumeExpansion: true
+     EOF
+         echo "✅ StorageClass '$SC_NAME' updated."
+       fi
+     else
+       echo "StorageClass not found. Creating new one..."
+       cat <<EOF | kubectl apply -f -
+     apiVersion: storage.k8s.io/v1
+     kind: StorageClass
+     metadata:
+       name: $SC_NAME
+       annotations:
+         storageclass.kubernetes.io/is-default-class: "false"
+         helm.sh/hook: post-install,post-upgrade
+     provisioner: linstor.csi.linbit.com
+     parameters:
+       placementCount: "3"
+       resourceGroup: "lvm-ha"
+       storagePool: "lvm-thin"
+     reclaimPolicy: Delete
+     volumeBindingMode: WaitForFirstConsumer
+     allowVolumeExpansion: true
+     EOF
+       echo "✅ StorageClass '$SC_NAME' created."
+     fi
+
+     echo "Getting PV bound to PVC '${PVC_NAME}' in namespace '${NAMESPACE}'..."
+     PV_NAME=$(kubectl get pvc -n "${NAMESPACE}" "${PVC_NAME}" -o jsonpath='{.spec.volumeName}' 2>/dev/null || true)
+     if [ -z "${PV_NAME}" ]; then
+       echo "❌ PVC '${PVC_NAME}' not found or not bound to any PV."
+       exit 1
+     fi
+     echo "Found PV: ${PV_NAME}"
+
+     echo "Scaling down deployment '${DEPLOY_NAME}' to release PVC..."
+     kubectl scale deploy "${DEPLOY_NAME}" -n "${NAMESPACE}" --replicas=0 || true
+
+     echo "Deleting PVC '${PVC_NAME}' (PV data will be retained)..."
+     kubectl delete pvc -n "${NAMESPACE}" "${PVC_NAME}" --ignore-not-found
+
+     STORAGE=$(kubectl get pv "${PV_NAME}" -o jsonpath='{.spec.capacity.storage}')
+     ACCESSMODES=$(kubectl get pv "${PV_NAME}" -o jsonpath='{.spec.accessModes[0]}')
+
+     echo "Recreating PVC '${PVC_NAME}' bound to existing PV '${PV_NAME}'..."
+     cat <<EOF | kubectl apply -f -
+     apiVersion: v1
+     kind: PersistentVolumeClaim
+     metadata:
+       name: ${PVC_NAME}
+       namespace: ${NAMESPACE}
+     spec:
+       accessModes:
+         - ${ACCESSMODES}
+       storageClassName: linstor-lvm-storage
+       resources:
+         requests:
+           storage: ${STORAGE}
+     EOF
+
+     echo "Scaling deployment '${DEPLOY_NAME}' back up..."
+     kubectl scale deploy "${DEPLOY_NAME}" -n "${NAMESPACE}" --replicas=1 || true
+
+     echo "Waiting for PVC '${PVC_NAME}' to rebind..."
+     for i in {1..30}; do
+       STATUS=$(kubectl get pvc -n "${NAMESPACE}" "${PVC_NAME}" -o jsonpath='{.status.phase}' 2>/dev/null || echo "")
+       if [[ "$STATUS" == "Bound" ]]; then
+         echo "✅ PVC successfully bound."
+         break
+       fi
+       sleep 2
+     done
+
+     # Get the new PV name after PVC is bound
+     NEW_PV_NAME=$(kubectl get pvc -n "${NAMESPACE}" "${PVC_NAME}" -o jsonpath='{.spec.volumeName}' 2>/dev/null || echo "")
+     if [ -z "${NEW_PV_NAME}" ]; then
+       echo "Warning: Could not determine new PV name."
+       NEW_PV_NAME="<check manually>"
+     fi
+
+     echo "Done!"
+     echo "✅ PVC '${PVC_NAME}' is bound to PV '${NEW_PV_NAME}' and data preserved."
+     echo "
+     Verify with:
+       kubectl get pvc -n ${NAMESPACE} ${PVC_NAME}
+       kubectl get pv ${NEW_PV_NAME}
+     "
+     SCRIPT
+     ```
+
+  6. Make the script executable.
+  
+     ```bash
+     chmod u+x recreate.sh
+     ```   
+
+  7. Use the following command to execute the script.
+
+     ```bash
+     ./recreate.sh
+     ```
+
+     ```shell hideClipboard title="Example output"
+     Checking for existing StorageClass 'linstor-lvm-storage'...
+     StorageClass 'linstor-lvm-storage' exists. Checking parameters...
+     ✅ StorageClass already has resourceGroup='lvm-ha' and placementCount='3'. Skipping re-creation.
+     Getting PV bound to PVC 'zot-pvc' in namespace 'zot-system'...
+     Found PV: pvc-3b7a8f9c-1d2e-4f5a-9b0c-1a2b3c4d5e6f
+     Scaling down deployment 'zot' to release PVC...
+     deployment.apps/zot scaled
+     Deleting PVC 'zot-pvc' (PV data will be retained)...
+     persistentvolumeclaim "zot-pvc" deleted
+     Recreating PVC 'zot-pvc' bound to existing PV 'pvc-3b7a8f9c-1d2e-4f5a-9b0c-1a2b3c4d5e6f'...
+     persistentvolumeclaim/zot-pvc created
+     Scaling deployment 'zot' back up...
+     deployment.apps/zot scaled
+     Waiting for PVC 'zot-pvc' to rebind...
+     ✅ PVC successfully bound.
+     Done!
+     ✅ PVC 'zot-pvc' is bound to PV 'pvc-7e9d2a10-4a6b-431f-b9e7-8c2d1f3a5b6c' and data preserved.
+
+     Verify with:
+       kubectl get pvc -n zot-system zot-pvc
+       kubectl get pv pvc-7e9d2a10-4a6b-431f-b9e7-8c2d1f3a5b6c
+     ```
+
+  8. Verify that the PVC and PV status is `Bound`.
+
+     ```bash
+     kubectl get pvc --namespace zot-system zot-pvc
+     ```
+
+     ```shell hideClipboard title="Example output"
+     NAME      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          VOLUMEATTRIBUTESCLASS   AGE
+     zot-pvc   Bound    pvc-7e9d2a10-4a6b-431f-b9e7-8c2d1f3a5b6c   300Gi      RWO            linstor-lvm-storage   <unset>                 5m30s
+     ```
+
+     ```bash
+     kubectl get pv pvc-7e9d2a10-4a6b-431f-b9e7-8c2d1f3a5b6c
+     ```
+
+     ```shell hideClipboard title="Example output"
+     NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                    STORAGECLASS          REASON   AGE
+     pvc-7e9d2a10-4a6b-431f-b9e7-8c2d1f3a5b6c   300Gi      RWO            Delete           Bound    zot-system/zot-pvc       linstor-lvm-storage            5m30s
+     ```
 
   </details>
