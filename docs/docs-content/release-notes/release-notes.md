@@ -15,6 +15,10 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
+| Component                                                                                                         | Version         |
+| ----------------------------------------------------------------------------------------------------------------- | --------------- |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.2-hotfix.1 |
+
 ### Improvements
 
 - The [Artifact Studio](../downloads/artifact-studio.md) packs list has been consolidated to display a single tile for
@@ -23,7 +27,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 ### Bug Fixes
 
 - Fixed an issue that caused the
-  [`spectrocloud_macros` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/macros)
+  [`spectrocloud_macros` Crossplane resource](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
   to fail to fetch the correct workspace.
 
 ### Packs
