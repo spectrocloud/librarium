@@ -68,9 +68,9 @@ the standard update process. Continuous compliance scans are enabled to identify
 - For Palette environments hosted on cloud-managed Kubernetes clusters (such as EKS), update the underlying clusters
   with patches provided by the respective cloud vendors.
 - For Palette environments deployed on customer-managed infrastructure, patched versions of Palette will be available in
-  future releases.
+  future releases. Upgrade your Palette environments to the patched versions as soon as they are available.
 - Patched Palette and VerteX appliance images downloaded from Artifact Studio will also be made available in future
-  releases.
+  releases. Use the updated appliance images when deploying or upgrading Palette and VerteX instances.
 
 #### Additional Recommended Workaround
 
@@ -84,7 +84,7 @@ the standard update process. Continuous compliance scans are enabled to identify
   - [Canonical Advisory](https://ubuntu.com/security/CVE-2025-31133)
   - [SUSE Advisory](https://www.suse.com/security/cve/CVE-2025-31133.html)
   - [Red Hat Advisory](https://access.redhat.com/security/cve/cve-2025-31133)
-  - [GitHub Security Advisory runc CVE-2025-31133, CVE-2025-52565, CVE-2025-52881](https://github.com/opencontainers/runc/security/advisories)
+  - [GitHub Security Advisory: `runc` CVE-2025-31133, CVE-2025-52565, CVE-2025-52881](https://github.com/opencontainers/runc/security/advisories)
 
 ## Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers
 
