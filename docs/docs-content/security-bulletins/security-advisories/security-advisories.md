@@ -61,7 +61,7 @@ writes within `/proc`, potentially allowing:
 #### SaaS Palette Deployments
 
 No customer action is required. Multi-tenant and dedicated SaaS environments are being reviewed and patched as part of
-the standard update process. Continuous compliance scans are enabled to identify unpatched nodes.
+the standard update process. Continuous compliance scans are enabled to identify nodes with pending patches.
 
 #### Self-Hosted Palette Deployments
 
