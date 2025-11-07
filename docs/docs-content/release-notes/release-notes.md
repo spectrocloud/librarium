@@ -11,6 +11,50 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 7, 2025 - Component Updates {#component-updates-2025-45}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.29.
+
+| Component                                                                                                         | Version         |
+| ----------------------------------------------------------------------------------------------------------------- | --------------- |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.2-hotfix.1 |
+
+### Improvements
+
+- The [Artifact Studio](../downloads/artifact-studio.md) packs list has been consolidated to display a single tile for
+  all versions of packs and pack display names have been enhanced. This leads to an improved user experience.
+
+### Bug Fixes
+
+- Fixed an issue that caused the
+  [`spectrocloud_macros` Crossplane resource](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  to fail to fetch the correct workspace.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack now allows the configuration of the `px-operator` image in the `pack.content.images` list.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name           | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------- | ------ | ------------------ | ------------------ | ----------- |
+| AWS VPC CNI (Helm)  | CNI    | :white_check_mark: | :x:                | 1.20.4      |
+| Azure Disk          | CSI    | :white_check_mark: | :x:                | 1.33.5      |
+| Calico              | CNI    | :white_check_mark: | :x:                | 3.31.0      |
+| Cilium              | CNI    | :white_check_mark: | :x:                | 1.18.1-rev1 |
+| Cilium Tetragon     | Add-on | :white_check_mark: | :x:                | 1.6.0       |
+| Flannel             | CNI    | :x:                | :white_check_mark: | 0.27.4      |
+| Karpenter           | Add-on | :x:                | :white_check_mark: | 1.8.1       |
+| Longhorn            | CSI    | :white_check_mark: | :white_check_mark: | 1.10.0      |
+| Multus              | CNI    | :white_check_mark: | :x:                | 2.2.21      |
+| Nvidia GPU Operator | Add-on | :white_check_mark: | :x:                | 25.10.0     |
+| Prometheus Agent    | Add-on | :white_check_mark: | :x:                | 27.4.11     |
+| Prometheus Operator | Add-on | :white_check_mark: | :x:                | 78.3.0      |
+
 ## October 31, 2025 - Component Updates {#component-updates-2025-44}
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
@@ -45,6 +89,13 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | Spectro Kubernetes Dashboard | Add-on     | :x:                | :white_check_mark: | 7.11.1      |
 
 ## October 27, 2025 - Release 4.7.29
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
+- [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -114,6 +165,14 @@ The following components have been updated for Palette version 4.7.27.
 | Ubuntu MAAS               | OS     | :white_check_mark: | :x:                | 24.04       |
 
 ## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
+- [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
+- [October 24, 2025 - Component Updates](#component-updates-2025-43) <!-- omit in toc -->
 
 ### Security Notices
 
