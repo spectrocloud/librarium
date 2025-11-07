@@ -11,7 +11,7 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
-## Security Advisory 005 - Runc Container Vulnerabilities Affecting Kubernetes Cluster Runtimes
+## Security Advisory 005 - `runc` Container Vulnerabilities Affecting Kubernetes Cluster Runtimes
 
 - **Release Date**: November 5, 2025
 - **Last Update**: November 6, 2025
@@ -38,13 +38,13 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 
 ### Summary
 
-The recently disclosed vulnerabilities in the runc container runtime involve unsafe handling of `/proc` writes during
-container initialization and mount operations. Attackers exploiting these vulnerabilities could cause runc to misdirect
+The recently disclosed vulnerabilities in the `runc` container runtime involve unsafe handling of `/proc` writes during
+container initialization and mount operations. Attackers exploiting these vulnerabilities could cause `runc` to misdirect
 writes within `/proc`, potentially allowing:
 
 - Execution of privileged host actions (for example, triggering `/proc/sysrq-trigger` to crash or hang the host).
 - Read or write access to sensitive host information that would normally be masked.
-- Disabling of AppArmor or SELinux confinement.
+- Disabling of AppArmor or Security-Enhanced Linux (SELinux) confinement.
 - Modification of kernel parameters (for example, `core_pattern`).
 
 ### Recommended Actions
