@@ -39,8 +39,8 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 ### Summary
 
 The recently disclosed vulnerabilities in the `runc` container runtime involve unsafe handling of `/proc` writes during
-container initialization and mount operations. Attackers exploiting these vulnerabilities could cause `runc` to misdirect
-writes within `/proc`, potentially allowing:
+container initialization and mount operations. Attackers exploiting these vulnerabilities could cause `runc` to
+misdirect writes within `/proc`, potentially allowing:
 
 - Execution of privileged host actions (for example, triggering `/proc/sysrq-trigger` to crash or hang the host).
 - Read or write access to sensitive host information that would normally be masked.
