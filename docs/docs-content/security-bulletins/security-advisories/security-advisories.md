@@ -11,6 +11,71 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+## Security Advisory 005 - Runc Container Vulnerabilities Affecting Kubernetes Cluster Runtimes
+
+- **Release Date**: November 5, 2025
+- **Last Update**: November 6, 2025
+- **Severity**: High
+- **Applicable Deployments**:
+   - Workload Clusters:
+      - cloud-managed clusters: EKS, GKE, and AKS
+      - Palette-managed clusters: PXK, RKE2, and K3s
+   - Palette deployments:
+      - SaaS Palette
+      - self-hosted Palette
+
+### Related CVEs
+
+Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed information about each CVE.
+
+- [CVE-2025-31133](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-31133/)
+- [CVE-2025-52565](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-52565/)
+- [CVE-2025-52881](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-52881/)
+
+### Timeline
+
+- **November 5, 2025**: First notified of vulnerabilities.
+
+### Summary
+
+The recently disclosed vulnerabilities in the runc container runtime involve unsafe handling of `/proc` writes during container initialization and mount operations. Attackers exploiting these vulnerabilities could cause runc to misdirect writes within `/proc`, potentially allowing:
+ - Execution of privileged host actions (for example, triggering `/proc/sysrq-trigger` to crash or hang the host).
+ - Read or write access to sensitive host information that would normally be masked.
+ - Disabling of AppArmor or SELinux confinement.
+ - Modification of kernel parameters (for example, `core_pattern`).
+
+### Recommended Actions
+
+#### Workload Clusters
+
+- Update cloud-managed clusters (EKS, GKE, and AKS) integrated with Palette Enterprise or Palette VerteX with patches from their respective cloud providers as soon as they become available.
+- Patched OS images for other clusters will be available in future releases. Upgrade the latest Kubernetes patch versions as soon as they are available.
+- Patch for the Edge clusters will be available in future releases. Upgrade the clusters to the patched versions as soon as they are available.
+
+
+#### SaaS Palette Deployments
+
+No customer action is required. Multi-tenant and dedicated SaaS environments are being reviewed and patched as part of the standard update process. Continuous compliance scans are enabled to identify unpatched nodes.
+
+#### Self-Hosted Palette Deployments
+
+- For Palette environments hosted on cloud-managed Kubernetes clusters (such as EKS), update the underlying clusters with patches provided by the respective cloud vendors.
+- For Palette environments deployed on customer-managed infrastructure, patched versions of Palette will be available in future releases.
+- Patched Palette and VerteX appliance images downloaded from Artifact Studio will also be made available in future releases.
+
+#### Additional Recommended Workaround
+
+- Avoid using untrusted or unverified container images.
+- Use rootless containers where possible to reduce the impact of potential runtime exploits.
+- Restrict container `sysctl` configurations and disable host access to `/proc/sysrq-trigger` and `/proc/sys/kernel/core_pattern` where feasible.
+- Reinforce Linux Security Module (LSM) enforcement and verify that AppArmor or SELinux profiles are correctly applied after applying patches.
+- For detailed guidance on this Advisory, refer to:
+  - [Canonical Advisory](https://ubuntu.com/security/CVE-2025-31133)
+  - [SUSE Advisory](https://www.suse.com/security/cve/CVE-2025-31133.html)
+  - [Red Hat Advisory](https://access.redhat.com/security/cve/cve-2025-31133)
+  - [GitHub Security Advisory runc CVE-2025-31133, CVE-2025-52565, CVE-2025-52881](https://github.com/opencontainers/runc/security/advisories)
+
+
 ## Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers
 
 - **Release Date**: September 11, 2025
