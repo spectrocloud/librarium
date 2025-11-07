@@ -244,7 +244,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
    your results further. Use the **Select option** drop-down menu to choose the desired version of your pack. Once
    selected, the pack appears in the **Selected items** pane on the right.
 
-   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads_artifact-studio-ind-packs-dl-4-7-2025-41.webp)
+   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-ind-packs-dl-4-7-2025-45.webp)
 
 5. Repeat step 4 until you have added all necessary packs. When finished, select the **I'm not a robot** reCAPTCHA
    checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the
