@@ -18,123 +18,129 @@ The information is organised as follows:
 
 The following table gives the namespace to pod mapping for Palette Tenant Cluster.
 
-| PALETTE NAMESPACES  | PODS                                                   |
-| ------------------- | ------------------------------------------------------ |
-| capi-webhook-system | capi-controller-manager-< UUID>                        |
-|                     | capi-kubeadm-bootstrap-controller-manager-< UUID >     |
-|                     | capi-kubeadm-control-plane-controller-manager-< UUID > |
-| cert-manager        | cert-manager-< UUID >                                  |
-|                     | cert-manager-cainjector-< UUID>                        |
-|                     | cert-manager-webhook-< UUID >                          |
-| cluster-< UUID >    | capi-controller-manager-< UUID >                       |
-|                     | capi-kubeadm-bootstrap-controller-manager-< UUID >     |
-|                     | capi-kubeadm-control-plane-controller-manager-< UUID > |
-|                     | capv-controller-manager-< UUID >                       |
-|                     | cluster-management-agent-< UUID >                      |
-|                     | metrics-server-< UUID >                                |
-|                     | palette-controller-manager-< UUID >                    |
-| kube-system         | calico-kube-controllers-< UUID >                       |
-|                     | calico-node-< UUID >                                   |
-|                     | coredns-< UUID >                                       |
-|                     | etcd-vmdynamictest-cp-< UUID >                         |
-|                     | kube-apiserver-vmdynamictest-cp-< UUID >               |
-|                     | kube-controller-manager-vmdynamictest-cp-< UUID >      |
-|                     | kube-proxy-< UUID >                                    |
-|                     | kube-scheduler-vmdynamictest-cp-< UUID >               |
-|                     | kube-vip-vmdynamictest-cp-< UUID >                     |
-| reach-system        | reach-controller-manager-< UUID >                      |
+| Palette Namespaces  | Pods                                                        |
+| ------------------- | ----------------------------------------------------------- |
+| capi-webhook-system | capi-controller-manager-<random-hash>                       |
+|                     | capi-kubeadm-bootstrap-controller-manager-<random-hash>     |
+|                     | capi-kubeadm-control-plane-controller-manager-<random-hash> |
+| cert-manager        | cert-manager-<random-hash>                                  |
+|                     | cert-manager-cainjector-<random-hash>                       |
+|                     | cert-manager-webhook-<random-hash>                          |
+| cluster-< UUID >    | capi-controller-manager-<random-hash>                       |
+|                     | capi-kubeadm-bootstrap-controller-manager-<random-hash>     |
+|                     | capi-kubeadm-control-plane-controller-manager-<random-hash> |
+|                     | capv-controller-manager-<random-hash>                       |
+|                     | cluster-management-agent-<random-hash>
+|                     | cluster-management-agent-lite-<random-hash>
+|                     | metrics-server-<random-hash>                                |
+|                     | palette-controller-manager-<random-hash>                    |
+|                     | palette-lite-controller-manager-<random-hash>               |
+| kube-system         | calico-kube-controllers-<random-hash>                       |
+|                     | calico-node-<random-hash>                                   |
+|                     | coredns-<random-hash>                                       |
+|                     | etcd-vmdynamictest-cp-<random-hash>                         |
+|                     | kube-apiserver-vmdynamictest-cp-<random-hash>               |
+|                     | kube-controller-manager-vmdynamictest-cp-<random-hash>      |
+|                     | kube-proxy-<random-hash>                                    |
+|                     | kube-scheduler-vmdynamictest-cp-<random-hash>               |
+|                     | kube-vip-vmdynamictest-cp-<random-hash>                     |
+| reach-system        | reach-controller-manager-<random-hash>                      |
 
 ## Palette PCG NameSpaces with Pods
 
 The following table gives the namespace to pod mapping for Palette vSphere Gateway.
 
-| PALETTE NAMESPACES  | PODS                                                   |
-| ------------------- | ------------------------------------------------------ |
-| capi-webhook-system | capi-controller-manager-< UUID >                       |
-|                     | capi-kubeadm-bootstrap-controller-manager-< UUID >     |
-|                     | capi-kubeadm-control-plane-controller-manager-< UUID > |
-|                     | capv-controller-manager-< UUID >                       |
-| cert-manager        | cert-manager-< UUID >                                  |
-|                     | cert-manager-cainjector-< UUID >                       |
-|                     | cert-manager-webhook-< UUID >                          |
-| cluster-< UUID >    | capi-controller-manager-< UUID >                       |
-|                     | capi-kubeadm-bootstrap-controller-manager-< UUID >     |
-|                     | capi-kubeadm-control-plane-controller-manager-< UUID > |
-|                     | capv-controller-manager-< UUID >                       |
-|                     | capv-static-ip-controller-manager-< UUID >             |
-|                     | cluster-management-agent-< UUID >                      |
-|                     | ipam-controller-manager-< UUID >                       |
-|                     | palette-controller-manager-< UUID >                    |
-| jet-system          | jet-< UUID >                                           |
-|                     | spectro-cloud-driver-< UUID >                          |
-| kube-system         | calico-kube-controllers-< UUID >                       |
-|                     | calico-node-< UUID >                                   |
-|                     | etcd-gateway1-cp-< UUID >                              |
-|                     | kube-apiserver-gateway1-cp-< UUID >                    |
-|                     | kube-controller-manager-gateway1-cp-< UUID >           |
-|                     | kube-proxy-< UUID >                                    |
-|                     | kube-scheduler-gateway1-cp-< UUID >                    |
-|                     | kube-vip-gateway1-cp-< UUID                            |
-|                     | vsphere-cloud-controller-manager-< UUID >              |
-|                     | vsphere-csi-controller-< UUID >                        |
-|                     | vsphere-csi-node-< UUID >                              |
-| reach-system        | reach-controller-manager-< UUID >                      |
+| Palette Namespaces  | Pods                                                        |
+| ------------------- | ----------------------------------------------------------- |
+| capi-webhook-system | capi-controller-manager-<random-hash>                       |
+|                     | capi-kubeadm-bootstrap-controller-manager-<random-hash>     |
+|                     | capi-kubeadm-control-plane-controller-manager-<random-hash> |
+|                     | capv-controller-manager-<random-hash>                       |
+| cert-manager        | cert-manager-<random-hash>                                  |
+|                     | cert-manager-cainjector-<random-hash>                       |
+|                     | cert-manager-webhook-<random-hash>                          |
+| cluster-< UUID >    | capi-controller-manager-<random-hash>                       |
+|                     | capi-kubeadm-bootstrap-controller-manager-<random-hash>     |
+|                     | capi-kubeadm-control-plane-controller-manager-<random-hash> |
+|                     | capv-controller-manager-<random-hash>                       |
+|                     | capv-static-ip-controller-manager-<random-hash>             |
+|                     | cluster-management-agent-<random-hash>                      |
+|                     | cluster-management-agent-lite-<random-hash>                 |
+|                     | ipam-controller-manager-<random-hash>                       |
+|                     | palette-controller-manager-<random-hash>                    |
+|                     | palette-lite-controller-manager-<random-hash>               |
+| jet-system          | jet-<random-hash>                                           |
+|                     | spectro-cloud-driver-<random-hash>                          |
+| kube-system         | calico-kube-controllers-<random-hash>                       |
+|                     | calico-node-<random-hash>                                   |
+|                     | etcd-gateway1-cp-<random-hash>                              |
+|                     | kube-apiserver-gateway1-cp-<random-hash>                    |
+|                     | kube-controller-manager-gateway1-cp-<random-hash>           |
+|                     | kube-proxy-<random-hash>                                    |
+|                     | kube-scheduler-gateway1-cp-<random-hash>                    |
+|                     | kube-vip-gateway1-cp-<random-hash>                          |
+|                     | vsphere-cloud-controller-manager-<random-hash>              |
+|                     | vsphere-csi-controller-<random-hash>                        |
+|                     | vsphere-csi-node-<random-hash>                              |
+| reach-system        | reach-controller-manager-<random-hash>                      |
 
 ## Enterprise NameSpaces with Pods
 
 The following table gives the namespace to pod mapping for Palette On-Prem Enterprise Clusters.
 
-| PALETTE NAMESPACES    | PODES                                                    |
-| --------------------- | -------------------------------------------------------- |
-| capi-webhook-system   | capi-controller-manager-< UUID >                         |
-|                       | capi-kubeadm-bootstrap-controller-manager-< UUID >       |
-|                       | capi-kubeadm-control-plane-controller-manager-< UUID >   |
-|                       | capv-controller-manager-< UUID >                         |
-|                       | ipam-controller-manager-< UUID >                         |
-| cert-manager          | cert-manager-< UUID >                                    |
-|                       | cert-manager-cainjector-< UUID >                         |
-|                       | cert-manager-webhook-< UUID >                            |
-| cluster-mgmt-< UUID > | capi-kubeadm-bootstrap-controller-manager-< UUID >       |
-|                       | capi-kubeadm-control-plane-controller-manager-< UUID >   |
-|                       | capv-controller-manager-< UUID >                         |
-|                       | capv-static-ip-controller-manager-9< UUID >              |
-|                       | cluster-management-agent-< UUID >                        |
-|                       | ipam-controller-manager-< UUID >                         |
-|                       | metrics-server-< UUID >                                  |
-|                       | palette-controller-manager-< UUID >                      |
-| cp-system             | spectro-cp-ui-< UUID >                                   |
-| hubble-system         | auth-< UUID >                                            |
-|                       | cloud-fb8< UUID >                                        |
-|                       | configserver-< UUID >                                    |
-|                       | event-< UUID >                                           |
-|                       | hashboard-< UUID >                                       |
-|                       | hutil-< UUID >                                           |
-|                       | mgmt-< UUID >                                            |
-|                       | mongo-0                                                  |
-|                       | mongo-1                                                  |
-|                       | mongo-2                                                  |
-|                       | packsync-1< UUID >                                       |
-|                       | spectrocluster-< UUID >                                  |
-|                       | system-< UUID >                                          |
-|                       | timeseries-< UUID >                                      |
-|                       | user-< UUID >                                            |
-| ingress-nginx         | ingress-nginx-admission-create-spwch                     |
-|                       | ingress-nginx-admission-patch-< UUID >                   |
-|                       | ingress-nginx-controller-< UUID >                        |
-| jet-system            | jet-< UUID >                                             |
-| kube-system           | calico-kube-controllers-< UUID >                         |
-|                       | calico-node-< UUID >                                     |
-|                       | calico-node-w< UUID >                                    |
-|                       | coredns-< UUID >                                         |
-|                       | etcd-vsphere-spectro-mgmt-cp-< UUID >                    |
-|                       | kube-apiserver-vsphere-spectro-mgmt-cp-< UUID >          |
-|                       | kube-controller-manager-vsphere-spectro-mgmt-cp-< UUID > |
-|                       | kube-proxy-bl< UUID >                                    |
-|                       | kube-proxy-l< UUID >                                     |
-|                       | kube-scheduler-vsphere-spectro-mgmt-cp-< UUID >          |
-|                       | kube-vip-vsphere-spectro-mgmt-cp-< UUID >                |
-|                       | vsphere-cloud-controller-manager-< UUID >                |
-|                       | vsphere-csi-controller-df< UUID >                        |
-|                       | vsphere-csi-node-< UUID >                                |
-|                       | vsphere-csi-node-rhm< UUID >                             |
-| ui-system             | spectro-ui-< UUID >                                      |
+| Palette Namespaces  | Pods                                                          |
+| ------------------- | ------------------------------------------------------------- |
+| capi-webhook-system | capi-controller-manager-<random-hash>                         |
+|                     | capi-kubeadm-bootstrap-controller-manager-<random-hash>       |
+|                     | capi-kubeadm-control-plane-controller-manager-<random-hash>   |
+|                     | capv-controller-manager-<random-hash>                         |
+|                     | ipam-controller-manager-<random-hash>                         |
+| cert-manager        | cert-manager-<random-hash>                                    |
+|                     | cert-manager-cainjector-<random-hash>                         |
+|                     | cert-manager-webhook-<random-hash>                            |
+| cluster-< UUID >    | capi-kubeadm-bootstrap-controller-manager-<random-hash>       |
+|                     | capi-kubeadm-control-plane-controller-manager-<random-hash>   |
+|                     | capv-controller-manager-<random-hash>                         |
+|                     | capv-static-ip-controller-manager-<random-hash>               |
+|                     | cluster-management-agent-<random-hash>                        |
+|                     | cluster-management-agent-lite-<random-hash>                   |
+|                     | ipam-controller-manager-<random-hash>                         |
+|                     | metrics-server-<random-hash>                                  |
+|                     | palette-controller-manager-<random-hash>                      |
+|                     | palette-lite-controller-manager-<random-hash>                 |
+| cp-system           | spectro-cp-ui-<random-hash>                                   |
+| hubble-system       | auth-<random-hash>                                            |
+|                     | cloud-<random-hash>                                           |
+|                     | configserver-<random-hash>                                    |
+|                     | event-<random-hash>                                           |
+|                     | hashboard-<random-hash>                                       |
+|                     | hutil-<random-hash>                                           |
+|                     | mgmt-<random-hash>                                            |
+|                     | mongo-0                                                       |
+|                     | mongo-1                                                       |
+|                     | mongo-2                                                       |
+|                     | packsync-1                                                    |
+|                     | spectrocluster-<random-hash>                                  |
+|                     | system-<random-hash>                                          |
+|                     | timeseries-<random-hash>                                      |
+|                     | user-<random-hash>                                            |
+| ingress-nginx       | ingress-nginx-admission-create-spwch-<random-hash>            |
+|                     | ingress-nginx-admission-patch-<random-hash>                   |
+|                     | ingress-nginx-controller-<random-hash>                        |
+| jet-system          | jet-<random-hash>                                             |
+| kube-system         | calico-kube-controllers-<random-hash>                         |
+|                     | calico-node-<random-hash>                                     |
+|                     | calico-node-<random-hash>                                     |
+|                     | coredns-<random-hash>                                         |
+|                     | etcd-vsphere-spectro-mgmt-cp-<random-hash>                    |
+|                     | kube-apiserver-vsphere-spectro-mgmt-cp-<random-hash>          |
+|                     | kube-controller-manager-vsphere-spectro-mgmt-cp-<random-hash> |
+|                     | kube-proxy-bl-<random-hash>                                   |
+|                     | kube-proxy-l-<random-hash>                                    |
+|                     | kube-scheduler-vsphere-spectro-mgmt-cp-<random-hash>          |
+|                     | kube-vip-vsphere-spectro-mgmt-cp-<random-hash>                |
+|                     | vsphere-cloud-controller-manager-<random-hash>                |
+|                     | vsphere-csi-controller-df-<random-hash>                       |
+|                     | vsphere-csi-node-<random-hash>                                |
+|                     | vsphere-csi-node-rhm-<random-hash>                            |
+| ui-system           | spectro-ui-<random-hash>                                      |
