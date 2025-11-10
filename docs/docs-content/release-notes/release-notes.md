@@ -21,6 +21,11 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.8.0}
 
+- When creating EKS clusters, the default **Amazon Machine Image (AMI) Type** is now Amazon Linux 2023 (AL2023) Standard
+  AMI. This change aligns with the [upcoming deprecation of Amazon Linux 2 (AL2) AMIs](./announcements.md#deprecations).
+  A deprecation warning now appears for AL2 AMIs in the **Amazon Machine Image (AMI) Type** drop-down menu within
+  [Cloud Configuration Settings](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings).
+
 - [System configuration API endpoints](/api/v1/system) can now only be accessed using privileged
   [authorization tokens](../user-management/authentication/authorization-token.md). These API endpoints expose critical
   system details, so access to them is strictly enforced. Users with general access authorization tokens are no longer
@@ -51,11 +56,6 @@ tags: ["release-notes"]
   [Project Tags](../tenant-settings/projects/projects.md#project-tags) section for more information.
 
 #### Deprecations and Removals
-
-- When creating EKS clusters, the default **Amazon Machine Image (AMI) Type** is now Amazon Linux 2023 (AL2023) Standard
-  AMI. This change aligns with the [upcoming deprecation of Amazon Linux 2 (AL2) AMIs](./announcements.md#deprecations).
-  A deprecation warning now appears for AL2 AMIs in the **Amazon Machine Image (AMI) Type** drop-down menu within
-  [Cloud Configuration Settings](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings).
 
 ### Edge
 
