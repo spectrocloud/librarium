@@ -28,9 +28,9 @@ additional details regarding vulnerabilities and offering remediation steps.
 
 Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed information about each CVE.
 
-- [CVE-2025-31133](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-31133/)
-- [CVE-2025-52565](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-52565/)
-- [CVE-2025-52881](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-52881/)
+- [CVE-2025-31133](https://nvd.nist.gov/vuln/detail/CVE-2025-31133)
+- [CVE-2025-52565](https://nvd.nist.gov/vuln/detail/CVE-2025-52565)
+- [CVE-2025-52881](https://nvd.nist.gov/vuln/detail/CVE-2025-52881)
 
 ### Timeline
 
