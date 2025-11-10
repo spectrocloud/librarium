@@ -141,6 +141,7 @@ partial_name: eks-pod-identity-prerequisites
   - The following policies must be assigned to the IAM role created for the Palette identity service (for example,
     `SpectroCloudIdentityRole`).
 
+    - Replace `<aws-account-id>` with your AWS account ID.
     - Replace `<role-name-for-palette-iam-role>` with the name of the IAM role created for Palette (for example,
       `SpectroCloudRole`).
 
@@ -151,25 +152,46 @@ partial_name: eks-pod-identity-prerequisites
       "Version": "2012-10-17",
       "Statement": [
         {
-          "Sid": "EKS Pod Identity Management",
+          "Sid": "EKSPodIdentityManagement",
           "Effect": "Allow",
           "Action": [
             "eks:ListPodIdentityAssociations",
             "eks:CreatePodIdentityAssociation",
             "eks:DeletePodIdentityAssociation"
           ],
-          "Resource": ["arn:aws:eks:*:*:cluster/*"]
+          "Resource": [
+            "*"
+          ]
         },
         {
-          "Sid": "IAM PassRole for Pod Identity",
+          "Sid": "EC2",
           "Effect": "Allow",
-          "Action": ["iam:PassRole"],
-          "Resource": ["arn:aws:iam::*:role/<role-name-for-palette-iam-role>"],
-          "Condition": {
-            "StringLike": {
-              "iam:PassedToService": "eks.amazonaws.com"
-            }
-          }
+          "Action": [
+            "ec2:DescribeInstances"
+          ],
+          "Resource": [
+            "*"
+          ]
+        },
+        {
+          "Sid": "IAM",
+          "Effect": "Allow",
+          "Action": [
+            "iam:GetRole"
+          ],
+          "Resource": [
+            "arn:aws:iam::<aws-account-id>:role/<role-name-for-palette-iam-role>"
+          ]
+        },
+        {
+          "Sid": "IAMPassRoleforPodIdentity",
+          "Effect": "Allow",
+          "Action": [
+            "iam:PassRole"
+          ],
+          "Resource": [
+            "arn:aws:iam::<aws-account-id>:role/<role-name-for-palette-iam-role>"
+          ]
         }
       ]
     }
