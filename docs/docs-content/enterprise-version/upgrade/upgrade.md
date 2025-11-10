@@ -36,6 +36,9 @@ Refer to the following tables for the supported self-hosted Palette upgrade path
 Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
 minor version available.
 
+Use the [Find Breaking Changes](../../release-notes/breaking-changes.md) page to list all the breaking changes between
+Palette versions. Ensure that you have addressed all changes before upgrading Palette.
+
 :::
 
 :::warning
