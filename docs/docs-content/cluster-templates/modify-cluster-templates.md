@@ -5,7 +5,7 @@ description:
   "Learn how to modify cluster templates, including cluster profile versions and policies, and trigger manual updates."
 hide_table_of_contents: false
 sidebar_position: 20
-toc_max_heading_level: 4
+toc_max_heading_level: 5
 tags: ["cluster templates"]
 ---
 
@@ -92,7 +92,7 @@ Use the **Policies** tab to perform the following actions:
   [infrastructure](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) or
   [full cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
-- Add or remove
+- Add, remove, or replace
   [add-on cluster profiles](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md).
 
 - Update the version of a linked cluster profile.
@@ -210,7 +210,7 @@ recommended way to configure environment-specific values per cluster, such as IP
 
 Variable values are assigned and propagated when you deploy a cluster using a cluster template. Once the cluster is
 deployed, the variables appear on the **Variable values** tab of your cluster template with an **Assignment** status of
-**Assigned**.
+**Assigned** and the **Running value** listed.
 
 ![Variables with a status of Assigned](/cluster-templates_variables-assigned.webp)
 
