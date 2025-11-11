@@ -11,6 +11,36 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 14, 2025 - Component Updates {#component-updates-2025-46}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.29.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.3  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.3  |
+
+### Improvements
+
+- <TpBadge /> The [`spectrocloud_cluster_aks` Terraform
+  resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks) and the
+  [`spectrocloud_cluster_eks` Terraform
+  resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks) now
+  offer cluster template support. Refer to the [Cluster Templates](../cluster-templates/cluster-templates.md) section
+  for further information.
+
+### Packs
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS | New Version |
+| ---------------------------- | ------ | ------------------ | ---- | ----------- |
+| ArgoCD                       | Add-on | :white_check_mark: | :x:  | 9.0.5       |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:  | 2.14.1      |
+| Elastic Operator             | Add-on | :white_check_mark: | :x:  | 3.2.0       |
+| Elastic Stack                | Add-on | :white_check_mark: | :x:  | 0.17.0      |
+| Calico Network Policy        | Add-on | :white_check_mark: | :x:  | 3.31.0      |
+| GCE Persistent Disk CSI      | CSI    | :white_check_mark: | :x:  | 1.20.0      |
+| Istio                        | Add-on | :white_check_mark: | :x:  | 1.27.3      |
+
 ## November 7, 2025 - Component Updates {#component-updates-2025-45}
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
@@ -94,6 +124,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 The following component updates are applicable to this release:
 
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
 - [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
 - [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 
@@ -170,6 +201,7 @@ The following components have been updated for Palette version 4.7.27.
 
 The following component updates are applicable to this release:
 
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
 - [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
 - [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 - [October 24, 2025 - Component Updates](#component-updates-2025-43) <!-- omit in toc -->
