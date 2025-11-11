@@ -398,7 +398,7 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
       Additionally, ensure that [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) is installed on
       this host.
 
-   2. Download the [Kubeconfig](../../cluster-management/kubeconfig.md) file of the cluster.
+   2. Download the [Kubeconfig](../../cluster-management/kubeconfig.md) file of the cluster..
 
    3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
@@ -409,28 +409,28 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
    4. If you are using AWS Secret cloud accounts, use the following command to set a custom endpoint. Replace the
       `<customized-endpoint-url>` placeholder with your own value.
 
-      ```
+      ```shell
       kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISO_URL="<customized-endpoint-url>"
       ```
 
       If you are using AWS Top Secret cloud accounts, use the following command to set a custom endpoint. Replace the
       `<customized-endpoint-url>` placeholder with your own value.
 
-      ```
+      ```shell
       kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISOB_URL="<customized-endpoint-url>"
       ```
 
    5. Verify that the change has been applied with the following command.
 
-      ```
-      kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
+      ```shell
+      kubectl --namespace hubble-system get deploy cloud -o jsonpath='{.spec.template.spec.containers[*].env}'
       ```
 
       ```hideClipboard title="Example output"
       [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
       ```
 
-  </details>
+   </details>
 
 6. Click the **Validate** button to validate the credentials.
 
