@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./VersionedLink.module.scss";
 
 interface ComponentProperties {
   text?: string;
@@ -20,8 +21,16 @@ export default function VersionedLink(props: ComponentProperties) {
 
   // Component mode of versioned link detected without versioning
   if (props.component != null) {
-    return <a href={props.url}>{props.component}</a>;
+    return (
+      <a className={styles.inlineVersionedLink} href={props.url}>
+        {props.component}
+      </a>
+    );
   }
 
-  return <a href={props.url}>{props.text}</a>;
+  return (
+    <a className={styles.inlineVersionedLink} href={props.url}>
+      {props.text}
+    </a>
+  );
 }
