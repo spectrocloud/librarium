@@ -416,13 +416,13 @@ installations.
 
       5. Verify that the change has been applied with the following command.
 
-        ```
-        kubectl --namespace hubble-system get deploy cloud -o jsonpath='{.spec.template.spec.containers[*].env}'
-        ```
+          ```
+          kubectl --namespace hubble-system get deploy cloud -o jsonpath='{.spec.template.spec.containers[*].env}'
+          ```
 
-        ```hideClipboard title="Example output"
-        [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
-        ```
+          ```hideClipboard title="Example output"
+          [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
+          ```
 
   </details>
 
