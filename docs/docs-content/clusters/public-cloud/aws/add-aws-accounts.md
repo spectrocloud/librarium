@@ -423,7 +423,7 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
    5. Verify that the change has been applied with the following command.
 
       ```shell
-      kubectl --namespace hubble-system get deploy cloud -o jsonpath='{.spec.template.spec.containers[*].env}'
+      kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
       ```
 
       ```hideClipboard title="Example output"
