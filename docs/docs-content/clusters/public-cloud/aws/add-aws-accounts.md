@@ -387,43 +387,48 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
    | **User Key**                       | Provide the private cryptographic key associated with the user certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                     |
 
    Palette provides default values for CAP/SCAP endpoints. Users can change these configurations on their
-   [self-hosted Palette](../../../enterprise-version/enterprise-version.md) or [Palette VerteX](../../../vertex/vertex.md)
-   installations.
+   [self-hosted Palette](../../../enterprise-version/enterprise-version.md) or
+   [Palette VerteX](../../../vertex/vertex.md) installations.
 
    <details>
 
-    <summary> Click here to learn how to provide custom CAP/SCAP endpoints. </summary>
+   <summary> Click here to learn how to provide custom CAP/SCAP endpoints. </summary>
 
-      1. Open a terminal window on a host that can connect to the Palette or Palette VerteX management cluster. Additionally, ensure that [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) is installed on this host.
+   1. Open a terminal window on a host that can connect to the Palette or Palette VerteX management cluster.
+      Additionally, ensure that [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) is installed on
+      this host.
 
-      2. Download the [Kubeconfig](../../cluster-management/kubeconfig.md) file of the cluster.
+   2. Download the [Kubeconfig](../../cluster-management/kubeconfig.md) file of the cluster.
 
-      3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
+   3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
-          ```shell
-          export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
-          ```
-      4. If you are using AWS Secret cloud accounts, use the following command to set a custom endpoint. Replace the `<customized-endpoint-url>` placeholder with your own value.
+      ```shell
+      export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
+      ```
 
-          ```
-          kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISO_URL="<customized-endpoint-url>"
-          ```
+   4. If you are using AWS Secret cloud accounts, use the following command to set a custom endpoint. Replace the
+      `<customized-endpoint-url>` placeholder with your own value.
 
-         If you are using AWS Top Secret cloud accounts, use the following command to set a custom endpoint. Replace the `<customized-endpoint-url>` placeholder with your own value.
+      ```
+      kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISO_URL="<customized-endpoint-url>"
+      ```
 
-          ```
-          kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISOB_URL="<customized-endpoint-url>"
-          ```
+      If you are using AWS Top Secret cloud accounts, use the following command to set a custom endpoint. Replace the
+      `<customized-endpoint-url>` placeholder with your own value.
 
-      5. Verify that the change has been applied with the following command.
+      ```
+      kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISOB_URL="<customized-endpoint-url>"
+      ```
 
-          ```
-          kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
-          ```
+   5. Verify that the change has been applied with the following command.
 
-          ```hideClipboard title="Example output"
-          [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
-          ```
+      ```
+      kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
+      ```
+
+      ```hideClipboard title="Example output"
+      [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
+      ```
 
   </details>
 
