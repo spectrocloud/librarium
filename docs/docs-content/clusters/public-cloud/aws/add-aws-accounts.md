@@ -379,12 +379,58 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
    | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Agency Name**                    | Enter the SCAP agency name.                                                                                                                                                                                                                                                                                                                                                                                           |
    | **Account Name**                   | Enter the SCAP account name or number.                                                                                                                                                                                                                                                                                                                                                                                |
-   | **CAP/SCAP Role Name**             | Enter the role name provided by the SCAP administrator. This role determines the AWS permissions granted to the account. Note that AWS Top Secret Cloud Access Portal (CAP) credentials are not supported at this time.                                                                                                                                                                                               |
+   | **CAP/SCAP Role Name**             | Enter the role name provided by the SCAP administrator. This role determines the AWS permissions granted to the account.                                                                                                                                                                                                                                                                                              |
    | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used. For example, if the initial role name is `DevOpsRole`, the full role name would be `PROJECT_DevOpsRole`.                                                                                                                                                                                                 |
    | **Permission Boundary (Optional)** | If you want to apply a permission boundary and limit the maximum permissions a role or user can have, provide the IAM policy ARN (for example, `arn:aws:iam::123456789012:policy/MyPermissionBoundaryPolicy`). Refer to the AWS [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) page for additional information on permission boundaries. |
    | **Certificate Authority**          | Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate.                                                                                                                                                                                                                            |
    | **User Certificate**               | Paste your user-issued digital certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                                                     |
    | **User Key**                       | Provide the private cryptographic key associated with the user certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                     |
+
+   Palette provides default values for CAP/SCAP endpoints. Users can change these configurations on their
+   [self-hosted Palette](../../../enterprise-version/enterprise-version.md) or
+   [Palette VerteX](../../../vertex/vertex.md) installations.
+
+   <details>
+
+   <summary> Click here to learn how to provide custom CAP/SCAP endpoints. </summary>
+
+   1. Open a terminal window on a host that can connect to the Palette or Palette VerteX management cluster.
+      Additionally, ensure that [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) is installed on
+      this host.
+
+   2. Download the [Kubeconfig](../../cluster-management/kubeconfig.md) file of the cluster..
+
+   3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
+
+      ```shell
+      export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
+      ```
+
+   4. If you are using AWS Secret cloud accounts, use the following command to set a custom endpoint. Replace the
+      `<customized-endpoint-url>` placeholder with your own value.
+
+      ```shell
+      kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISO_URL="<customized-endpoint-url>"
+      ```
+
+      If you are using AWS Top Secret cloud accounts, use the following command to set a custom endpoint. Replace the
+      `<customized-endpoint-url>` placeholder with your own value.
+
+      ```shell
+      kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISOB_URL="<customized-endpoint-url>"
+      ```
+
+   5. Verify that the change has been applied with the following command.
+
+      ```shell
+      kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
+      ```
+
+      ```hideClipboard title="Example output"
+      [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
+      ```
+
+   </details>
 
 6. Click the **Validate** button to validate the credentials.
 
