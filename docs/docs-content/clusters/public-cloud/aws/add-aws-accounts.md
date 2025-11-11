@@ -386,11 +386,12 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
    | **User Certificate**               | Paste your user-issued digital certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                                                     |
    | **User Key**                       | Provide the private cryptographic key associated with the user certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                     |
 
-Palette provides default values for CAP/SCAP endpoints. Users can change these configurations on their
-[self-hosted Palette](../../../enterprise-version/enterprise-version.md) or [Palette VerteX](../../../vertex/vertex.md)
-installations.
+   Palette provides default values for CAP/SCAP endpoints. Users can change these configurations on their
+   [self-hosted Palette](../../../enterprise-version/enterprise-version.md) or [Palette VerteX](../../../vertex/vertex.md)
+   installations.
 
-  <details>
+   <details>
+
     <summary> Click here to learn how to provide custom CAP/SCAP endpoints. </summary>
 
       1. Open a terminal window on a host that can connect to the Palette or Palette VerteX management cluster. Additionally, ensure that [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) is installed on this host.
@@ -417,7 +418,7 @@ installations.
       5. Verify that the change has been applied with the following command.
 
           ```
-          kubectl --namespace hubble-system get deploy cloud -o jsonpath='{.spec.template.spec.containers[*].env}'
+          kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
           ```
 
           ```hideClipboard title="Example output"
