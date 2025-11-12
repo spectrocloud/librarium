@@ -31,15 +31,25 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 ### Packs
 
-| Pack Name                    | Layer  | Non-FIPS           | FIPS | New Version |
-| ---------------------------- | ------ | ------------------ | ---- | ----------- |
-| ArgoCD                       | Add-on | :white_check_mark: | :x:  | 9.0.5       |
-| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:  | 2.14.1      |
-| Elastic Operator             | Add-on | :white_check_mark: | :x:  | 3.2.0       |
-| Elastic Stack                | Add-on | :white_check_mark: | :x:  | 0.17.0      |
-| Calico Network Policy        | Add-on | :white_check_mark: | :x:  | 3.31.0      |
-| GCE Persistent Disk CSI      | CSI    | :white_check_mark: | :x:  | 1.20.0      |
-| Istio                        | Add-on | :white_check_mark: | :x:  | 1.27.3      |
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Argo CD" url="/integrations/packs/?pack=argo-cd" /> pack version 9.0.5 no longer sets the `sync` default value on the `applicationsetcontroller.policy` field. The field now has an empty default value. Users must explicitly set the field value using the `argocd-cmd-params-cm` ConfigMap if they wish to keep the previous setting.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| ArgoCD                       | Add-on | :white_check_mark: | :x:                | 9.0.5       |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.14.1      |
+| Elastic Operator             | Add-on | :white_check_mark: | :x:                | 3.2.0       |
+| Elastic Stack                | Add-on | :white_check_mark: | :x:                | 0.17.0      |
+| Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.0      |
+| GCE Persistent Disk CSI      | CSI    | :white_check_mark: | :x:                | 1.20.0      |
+| Istio                        | Add-on | :white_check_mark: | :x:                | 1.27.3      |
+| Ubuntu (AWS)                 | OS     | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (AWS)                 | OS     | :white_check_mark: | :x:                | 24.04       |
 
 ## November 7, 2025 - Component Updates {#component-updates-2025-45}
 
