@@ -1,18 +1,18 @@
 ---
 sidebar_label: "Architecture"
 title: "Architecture"
-description: "Learn about the architecture used to support Cloud Stack clusters through Palette."
+description: "Learn about the architecture used to support CloudStack clusters through Palette."
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["data center", "cloud stack", "architecture"]
+tags: ["data center", "cloudstack", "architecture"]
 ---
 
 # Page to be updated. Placeholder!
 
 ## Overview
 
-Palette supports using VMware vSphere as a data center provider. You can deploy Kubernetes clusters to your vSphere
-environment using Palette. Below are some key features of the Palette VMware architecture:
+Palette supports using [Apache CloudStack](https://docs.cloudstack.apache.org/en/latest/conceptsandterminology/concepts.html#cloud-infrastructure-overview) as a data center provider. You can deploy Kubernetes clusters to your CloudStack
+environment using Palette. Below are some key features of the Palette CloudStack architecture:
 
 - Kubernetes nodes can be distributed across multiple-compute clusters, which serve as distinct fault domains.
 
@@ -61,11 +61,11 @@ Cloud Provider Interface documentation.
 
 :::
 
-Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through
-Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct
-zones in your environment. You can use vSphere
-[Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html)
-to create zones in your vSphere environment and assign them to vSphere objects.
+Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in CloudStack clusters through
+Palette if they have persistent storage needs. Use CloudStack tags on data centers and compute clusters to create distinct
+zones in your environment. You can use CloudStack
+[Tag Categories and Tags](https://docs.cloudstack.apache.org/en/latest/adminguide/management.html)
+to create zones in your CloudStack environment and assign them to CloudStack objects.
 
 The zone tags you assign to your vSphere objects, such as a data center and clusters are applied to the Kubernetes nodes
 you deploy through Palette into your vSphere environment. Kubernetes clusters deployed to other infrastructure
