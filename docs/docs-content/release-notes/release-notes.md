@@ -22,10 +22,12 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 ### Improvements
 
-- <TpBadge /> The Spectro Cloud Terraform resources [`spectrocloud_cluster_aks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks) and
-  [`spectrocloud_cluster_eks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks) now
-  support cluster templates. Refer to the [Cluster Templates](../cluster-templates/cluster-templates.md) section
-  for further information.
+- <TpBadge /> The Spectro Cloud Terraform resources
+  [`spectrocloud_cluster_aks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
+  and
+  [`spectrocloud_cluster_eks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  now support cluster templates. Refer to the [Cluster Templates](../cluster-templates/cluster-templates.md) section for
+  further information.
 
 ### Packs
 
