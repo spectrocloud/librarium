@@ -23,6 +23,12 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
 :::
 
+## Limitations
+
+- Depending on the console environment, the TUI may not display the full QR code for Palette registration. This issue
+  has been observed in the VMware vSphere web console, where limited console window size can cause the QR code to appear
+  partially truncated.
+
 ## Prerequisites
 
 - An Edge host installed with Edge Installer 4.3 or later.
