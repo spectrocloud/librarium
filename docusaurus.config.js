@@ -357,7 +357,6 @@ const config = {
         title: "",
         logo: {
           href: "/",
-          target: "self",
           width: 105,
           height: 48,
           alt: "Spectro cloud logo",
@@ -365,14 +364,6 @@ const config = {
           srcDark: "img/spectrocloud-logo-dark.svg?new=true",
         },
         items: [
-          {
-            to: "/",
-            type: "docSidebar",
-            sidebarId: "docSidebar",
-            label: "Docs",
-            position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
-          },
           {
             to: "/tutorials",
             type: "docSidebar",
@@ -385,6 +376,12 @@ const config = {
             to: "/api/introduction",
             label: "API",
             position: "left",
+          },
+          {
+            type: "html",
+            position: "right",
+            value:
+              '<a href="https://spectrocloud.com" target="_blank" rel="noopener noreferrer" aria-label="Go to Spectro Cloud homepage (opens in a new tab)">spectrocloud.com <span aria-hidden="true">↗</span></a>',
           },
           {
             href: "https://github.com/spectrocloud/librarium",
