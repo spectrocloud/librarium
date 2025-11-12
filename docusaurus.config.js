@@ -373,7 +373,6 @@ const config = {
         title: "",
         logo: {
           href: "/",
-          target: "self",
           width: 105,
           height: 48,
           alt: "Spectro cloud logo",
