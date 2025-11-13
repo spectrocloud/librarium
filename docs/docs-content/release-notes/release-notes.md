@@ -15,8 +15,8 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that caused ISO images created using CanvOS version 4.7.16 to fail to install on
-  [Edge clusters](../clusters/edge/edge.md) due to a partition related failure in [Kairos](http://kairos.io/).
+- Fixed an issue that prevented ISO images created using CanvOS version 4.7.16 from being installed on
+  [Edge clusters](../clusters/edge/edge.md) due to a partition-related failure in [Kairos](http://kairos.io/).
 
 ## November 7, 2025 - Component Updates {#component-updates-2025-45}
 
