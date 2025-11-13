@@ -37,11 +37,14 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 - <VersionedLink text="Argo CD" url="/integrations/packs/?pack=argo-cd" /> pack version 9.0.5 now sets the default value of `applicationsetcontroller.policy` to empty instead of `sync`. Users must explicitly set the field value using the `argocd-cmd-params-cm` ConfigMap to keep the previous setting.
 
+- Users can to now use Ubuntu 22.04 on [AWS clusters](../clusters/public-cloud/aws/aws.md) using the FIPS <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack version 1.33.5.
+
 <!-- prettier-ignore-end -->
 
 | Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
 | ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
 | ArgoCD                       | Add-on | :white_check_mark: | :x:                | 9.0.5       |
+| Amazon EBS CSI               | CSI    | :x:                | :white_check_mark: | 1.51.0      |
 | AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.14.1      |
 | Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.0      |
 | Elastic Operator             | Add-on | :white_check_mark: | :x:                | 3.2.0       |
