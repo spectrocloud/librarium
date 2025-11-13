@@ -41,18 +41,19 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 <!-- prettier-ignore-end -->
 
-| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
-| ArgoCD                       | Add-on | :white_check_mark: | :x:                | 9.0.5       |
-| Amazon EBS CSI               | CSI    | :x:                | :white_check_mark: | 1.51.0      |
-| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.14.1      |
-| Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.0      |
-| Elastic Operator             | Add-on | :white_check_mark: | :x:                | 3.2.0       |
-| Elastic Stack                | Add-on | :white_check_mark: | :x:                | 0.17.0      |
-| GCE Persistent Disk CSI      | CSI    | :white_check_mark: | :x:                | 1.20.0      |
-| Istio                        | Add-on | :white_check_mark: | :x:                | 1.27.3      |
-| Ubuntu (AWS)                 | OS     | :x:                | :white_check_mark: | 22.04       |
-| Ubuntu (AWS)                 | OS     | :white_check_mark: | :x:                | 24.04       |
+| Pack Name                                | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| ArgoCD                                   | Add-on     | :white_check_mark: | :x:                | 9.0.5       |
+| Amazon EBS CSI                           | CSI        | :x:                | :white_check_mark: | 1.51.0      |
+| AWS Application Loadbalancer             | Add-on     | :white_check_mark: | :x:                | 2.14.1      |
+| Calico Network Policy                    | Add-on     | :white_check_mark: | :x:                | 3.31.0      |
+| Elastic Operator                         | Add-on     | :white_check_mark: | :x:                | 3.2.0       |
+| Elastic Stack                            | Add-on     | :white_check_mark: | :x:                | 0.17.0      |
+| GCE Persistent Disk CSI                  | CSI        | :white_check_mark: | :x:                | 1.20.0      |
+| Istio                                    | Add-on     | :white_check_mark: | :x:                | 1.27.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Ubuntu (AWS)                             | OS         | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (AWS)                             | OS         | :white_check_mark: | :x:                | 24.04       |
 
 ## November 7, 2025 - Component Updates {#component-updates-2025-45}
 
