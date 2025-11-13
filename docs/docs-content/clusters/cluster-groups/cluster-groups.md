@@ -52,10 +52,13 @@ Learn how to create a cluster group by reviewing the [Create and Manage Cluster 
 
 <br />
 
-## Resources
+## Upgrade Cluster Groups
 
-- [Create and Manage Cluster Groups](create-cluster-group.md)
+The [vCluster version](https://www.vcluster.com/releases/en/changelog) may be updated in a Palette release, which can
+introduce breaking changes that affect newly created virtual clusters.
 
-- [Enable Disk Backup on Virtual Clusters](cluster-group-backups.md)
+To avoid disruptions, Palette locks the vCluster version for each cluster group, ensuring virtual clusters can still be
+provisioned successfully within existing groups, even across Palette updates.
 
-- [Set up Ingress for a Cluster Group](ingress-cluster-group.md)
+If you want to use the latest version of vCluster on your virtual clusters, you must prompt Palette to upgrade your
+cluster group at a time that suits you. Refer to [Upgrade Cluster Groups](vcluster-upgrades.md) for guidance.

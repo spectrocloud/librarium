@@ -55,6 +55,11 @@ tags: ["release-notes"]
   This improvement allows users to identify projects based on their tags. Refer to the
   [Project Tags](../tenant-settings/projects/projects.md#project-tags) section for more information.
 
+- Palette now provides the ability to upgrade the [vCluster version](https://www.vcluster.com/releases/en/changelog) of
+  your virtual clusters, allowing you to leverage newly introduced features without having to create new cluster groups
+  or migrate workloads. Refer to the [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) guide for
+  further information.
+
 #### Deprecations and Removals
 
 ### Edge
