@@ -11,7 +11,54 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 14, 2025 - Component Updates {#component-updates-2025-46}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.30.
+
+### Improvements
+
+- <TpBadge /> The Spectro Cloud Terraform resources
+  [`spectrocloud_cluster_aks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
+  and
+  [`spectrocloud_cluster_eks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  now support cluster templates. Refer to the [Cluster Templates](../cluster-templates/cluster-templates.md) section for
+  further information.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Argo CD" url="/integrations/packs/?pack=argo-cd" /> pack version 9.0.5 now sets the default value of `applicationsetcontroller.policy` to empty instead of `sync`. Users must explicitly set the field value using the `argocd-cmd-params-cm` ConfigMap to keep the previous setting.
+
+- Users can now use Ubuntu 22.04 on [AWS clusters](../clusters/public-cloud/aws/aws.md) using the FIPS <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack version 1.33.5. Refer to the <VersionedLink text="Ubuntu (AWS)" url="/integrations/packs/?pack=ubuntu-aws#enable-fips-mode-on-aws-ubuntu-2204" /> pack documentation to learn how to enable FIPS mode on Ubuntu 22.04.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                                | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| ArgoCD                                   | Add-on     | :white_check_mark: | :x:                | 9.0.5       |
+| Amazon EBS CSI                           | CSI        | :x:                | :white_check_mark: | 1.51.0      |
+| AWS Application Loadbalancer             | Add-on     | :white_check_mark: | :x:                | 2.14.1      |
+| Calico Network Policy                    | Add-on     | :white_check_mark: | :x:                | 3.31.0      |
+| Elastic Operator                         | Add-on     | :white_check_mark: | :x:                | 3.2.0       |
+| Elastic Stack                            | Add-on     | :white_check_mark: | :x:                | 0.17.0      |
+| GCE Persistent Disk CSI                  | CSI        | :white_check_mark: | :x:                | 1.20.0      |
+| Istio                                    | Add-on     | :white_check_mark: | :x:                | 1.27.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.5      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
+| Ubuntu (AWS)                             | OS         | :white_check_mark: | :x:                | 24.04       |
+| Ubuntu (AWS)                             | OS         | :x:                | :white_check_mark: | 22.04       |
+
 ## November 14, 2025 - Release 4.7.30
+
+The following component updates are applicable to this release:
+
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
+- [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
+- [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -103,6 +150,7 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
 The following component updates are applicable to this release:
 
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
 - [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
 - [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 
@@ -179,6 +227,7 @@ The following components have been updated for Palette version 4.7.27.
 
 The following component updates are applicable to this release:
 
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
 - [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
 - [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 - [October 24, 2025 - Component Updates](#component-updates-2025-43) <!-- omit in toc -->
