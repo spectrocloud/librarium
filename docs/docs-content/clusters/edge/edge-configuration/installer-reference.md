@@ -432,6 +432,67 @@ installation is complete.
 | `install.poweroff`                   | Whether to power off the Edge host after installation completes.                                                                                              | boolean                    | `false` |
 | `install.reboot`                     | Whether to reboot the Edge host after installation completes.                                                                                                 | boolean                    | `false` |
 
+:::info
+
+If you define multiple partitions, the installer allocates any remaining unallocated disk space to the last defined
+partition. This applies to partitions listed under both `install.partitions` and `install.extra-partitions`, in the
+order they appear. If you want all partitions to have fixed sizes, you must explicitly add a final partition to absorb
+the remaining unallocated space.
+
+<details>
+<summary>Examples</summary>
+
+In the example below, the `persistent` partition is fixed at 200 GiB (200,000 MiB). Because `data` is defined last, it
+receives its requested 100 GiB (100,000 MiB) plus any remaining unallocated space on the disk.
+
+```yaml
+#cloud-config
+install:
+  partitions:
+    persistent:
+      size: 200000 # size in MiB
+  extra-partitions:
+    - name: data
+      size: 100000 #size in MiB
+      fs: ext4
+      label: DATA_PARTITION
+```
+
+In the following configuration, because the `persistent` partition has no defined size, the installer assigns all
+remaining disk space to it after creating the `data` partition.
+
+```yaml
+#cloud-config
+install:
+  extra-partitions:
+    - name: data
+      size: 100000 #size in MiB
+      fs: ext4
+      label: DATA_PARTITION
+```
+
+If both partitions require fixed sizes, add a final `extra` partition to accommodate any leftover space.
+
+```yaml
+#cloud-config
+install:
+  partitions:
+    persistent:
+      size: 200000 #size in MiB
+  extra-partitions:
+    - name: data
+      size: 100000 #size in MiB
+      fs: ext4
+      label: DATA_PARTITION
+    - name: extra
+      size: 0
+      fs: ext4
+      label: EXTRA
+```
+
+</details>
+:::
+
 ## Cloud Init Stages
 
 Cloud init stages allow you to automates the initialization of your Edge hosts during various stages of the system boot
