@@ -15,7 +15,6 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
-
 ### Improvements
 
 - <TpBadge /> The Spectro Cloud Terraform resources
@@ -49,10 +48,9 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | Istio                                    | Add-on     | :white_check_mark: | :x:                | 1.27.3      |
 | Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.5      |
 | Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
-| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
 | Ubuntu (AWS)                             | OS         | :white_check_mark: | :x:                | 24.04       |
 | Ubuntu (AWS)                             | OS         | :x:                | :white_check_mark: | 22.04       |
-
 
 ## November 14, 2025 - Release 4.7.30
 
