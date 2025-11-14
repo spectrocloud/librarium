@@ -458,7 +458,8 @@ install:
       label: DATA_PARTITION
 ```
 
-In the following configuration, the `persistent` partition is not defined and therefore has no assigned size. The installer allocates all remaining disk space to the `persistent` partition after creating the `data` partition.
+In the following configuration, the `persistent` partition is not defined and therefore has no assigned size. The
+installer allocates all remaining disk space to the `persistent` partition after creating the `data` partition.
 
 ```yaml
 #cloud-config
