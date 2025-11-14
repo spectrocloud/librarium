@@ -5,10 +5,7 @@ partial_name: ubuntu
 
 :::info
 
-<!-- prettier-ignore -->
-
 Review the <VersionedLink text="Maintenance Policy" url="/integrations/maintenance-policy/#os-packs" /> page to learn about our pack update and deprecation schedules.
-
 
 :::
 
@@ -17,13 +14,12 @@ Review the <VersionedLink text="Maintenance Policy" url="/integrations/maintenan
 <Tabs queryString="parent">
 <TabItem label="22.04 LTS" value="22.04.x">
 
-<!-- prettier-ignore -->
+## Usage
 
 To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the <VersionedLink text="Create an Infrastructure Profile" url="/profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile" />
 guide to learn more.
 
-
-#### Add Custom Files
+### Add Custom Files
 
 You can create custom files that you define in the `files` section that precedes the `preKubeadmCommands` and
 `postKubeadmCommands` sections. The files are invoked during runtime.
@@ -101,63 +97,102 @@ many other security hardening features. Ubuntu Pro offers several more benefits 
 
 For more information, refer to the [Ubuntu Pro](https://ubuntu.com/pro) documentation from Canonical.
 
-You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu Pro, select Ubuntu as the OS layer for
-a cluster profile and expand the **Preset Menu** to reveal the Ubuntu Pro parameters.
-
-| Parameter        | Description                                                                                                                                                                                                                                                         | Default Value |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| **token**        | The Canonical subscription token for Ubuntu Pro. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to aquire a subscription token.                                                                                                         | `""`          |
-| **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more.                                                                                                                       | Disabled      |
-| **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details.                                                                                                                                  | Disabled      |
-| **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
-| **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more.                                                                  | Disabled      |
-| **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more.     | Disabled      |
+#### Enable Ubuntu Pro
 
 Use the following steps to enable Ubuntu Pro.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Profiles**.
+2. Navigate to the left main menu and select **Profiles**.
 
 3. Click on **Add Cluster Profile**.
 
-4. Fill out the input fields for **Name**, **Version**, **Description**, **Type** and **Tags**. Click on **Next** to
-   continue.
+4. Fill out the basic information for the cluster profile. Click **Next** to continue.
 
-5. Select the infrastructure provider and click on **Next**.
+5. Select the infrastructure provider and click **Next**.
 
-6. Select the OS layer and use the following information to find the Ubuntu pack:
+6. Select Ubuntu as the OS layer and click **Next**.
 
-- **Pack Type** - OS
+7. On the **Configure Pack** page, in **Pack Details**, click on the **\</\> Values** option to reveal the YAML editor and expand the **Presets** drawer.
 
-- **Registry** - Public Repo
+8. Click the **Ubuntu Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
-- **Pack Name** -Ubuntu
+9. Provide the Canonical subscription token for Ubuntu Pro in the **Token** field. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to acquire a subscription token.
 
-- **Pack Version** - 20.04 or 22.04
+10. Toggle options on or off to enable or disable the various Ubuntu Pro services. The following table describes each of the available options.
 
-7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the
-   **\</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+    | Parameter        | Description   | Default Value |
+    | ---------------- | ------------  | ------------- |
+    | **esm-infra**    | Expanded Security Maintenance (ESM) for Infrastructure. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
+    | **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
+    | **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
+    | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. | Disabled      |
+    | **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documentation for more details. | Disabled      |
+    | **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled      |
+    | **cc-eal**       | Common Criteria Evaluation Assurance Level (EAL) 2 certification for Ubuntu. Refer to the Ubuntu [Common Criteria](https://ubuntu.com/security/cc) documentation to learn more. | Disabled      |
+    | **usg**          | Ubuntu Security Guide (USG) for compliance hardening. Refer to the Ubuntu [USG](https://documentation.ubuntu.com/security/compliance/usg/) documentation to learn more. | Disabled      |
 
-![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
+11. Click the **Next layer** button to continue to the next layer.
 
-8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
+12. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
-9. Toggle options on or off to enable or disable the various Ubuntu Pro services.
+#### Enable FIPS Mode on AWS Ubuntu 22.04
 
-10. Click the **Next layer** button to continue to the next layer.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-11. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
+2. Navigate to the left main menu and select **Profiles**.
+
+3. Click on **Add Cluster Profile**.
+
+4. Fill out the basic information for the cluster profile. Click **Next** to continue.
+
+5. Select the infrastructure provider and click **Next**.
+
+6. Select **Ubuntu (AWS)** as the OS layer and click **Next**.
+
+7. On the **Configure Pack** page, in **Pack Details**, click on the **\</\> Values** option to reveal the YAML editor and expand the **Presets** drawer.
+
+8. Click the **Ubuntu Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
+
+9. Provide the Canonical subscription token for Ubuntu Pro in the **Token** field. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to acquire a subscription token.
+
+10. Click the toggles for the **fips** and **fips-updates** options to enable them.
+
+11. In the YAML editor, under the `kubeadmconfig.postKubeadmCommands` section, add the `--assume-yes` flags to the `pro enable fips` and `pro enable fips-updates` commands. Additionally, add the `reboot` command at the end of the section.
+
+    The following example shows the required configuration.
+
+    ```yaml {4-6}
+    kubeadmconfig:
+      postKubeadmCommands:
+        - pro attach <ubuntu-pro-token>
+        - pro enable fips --assume-yes
+        - pro enable fips-updates --assume-yes
+        - reboot
+    ```
+
+    When a cluster is deployed with these settings configured, Palette will automatically execute these commands on every node during bootstrap. These commands will perform the following actions.
+
+    - Attaches the system to Canonical's Ubuntu Pro service. 
+    - Enables the FIPS-certified kernel and crypto modules.
+    - Enables the FIPS updates for ongoing security updates on certified packages. This is recommended for production workloads.
+    - Reboots the node to apply the FIPS-certified kernel and modules.
+
+12. Click the **Next layer** button to continue to the next layer.
+
+13. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
 </TabItem>
 <TabItem label="20.04 LTS" value="20.04.x">
 
 <!-- prettier-ignore -->
 
+## Usage
+
 To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the <VersionedLink text="Create an Infrastructure Profile" url="/profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile" />
 guide to learn more.
 
-#### Add Custom Files
+### Add Custom Files
 
 You can create custom files that you define in the `files` section that precedes the `preKubeadmCommands` and
 `postKubeadmCommands` sections. The files are invoked during runtime.
@@ -241,53 +276,44 @@ many other security hardening features. Ubuntu Pro offers several more benefits 
 
 For more information, refer to the [Ubuntu Pro](https://ubuntu.com/pro) documentation from Canonical.
 
-You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu Pro, select Ubuntu as the OS for a
-cluster profile and expand the **Preset Menu** to reveal the Ubuntu Pro parameters.
-
-| Parameter        | Description                                                                                                                                                                                                                                                         | Default Value |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| **token**        | The Canonical subscription token for Ubuntu Pro. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to aquire a subscription token.                                                                                                         | `""`          |
-| **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more.                                                                                                                       | Disabled      |
-| **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details.                                                                                                                                  | Disabled      |
-| **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
-| **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more.                                                                  | Disabled      |
-| **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more.     | Disabled      |
+#### Enable Ubuntu Pro
 
 Use the following steps to enable Ubuntu Pro.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Profiles**.
+2. Navigate to the left main menu and select **Profiles**.
 
 3. Click on **Add Cluster Profile**.
 
-4. Fill out the input fields for **Name**, **Version**, **Description**, **Type** and **Tags**. Click on **Next** to
-   continue.
+4. Fill out the basic information for the cluster profile. Click **Next** to continue.
 
-5. Select the infrastructure provider and click on **Next**.
+5. Select the infrastructure provider and click **Next**.
 
-6. Select the OS layer and use the following information to find the Ubuntu pack:
+6. Select Ubuntu as the OS layer and click **Next**.
 
-- **Pack Type** - OS
+7. On the **Configure Pack** page, in **Pack Details**, click on the **\</\> Values** option to reveal the YAML editor and expand the **Presets** drawer.
 
-- **Registry** - Public Repo
+8. Click the **Ubuntu Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
-- **Pack Name** -Ubuntu
+9. Provide the Canonical subscription token for Ubuntu Pro in the **Token** field. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to acquire a subscription token.
 
-- **Pack Version** - 20.04 or 22.04
+10. Toggle options on or off to enable or disable the various Ubuntu Pro services. The following table describes each of the available options.
 
-7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the
-   **\</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+    | Parameter        | Description   | Default Value |
+    | ---------------- | ------------  | ------------- |
+    | **esm-infra**    | Expanded Security Maintenance (ESM) for Infrastructure. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
+    | **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
+    | **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
+    | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. | Disabled      |
+    | **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documentation for more details. | Disabled      |
+    | **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled      |
+    | **cc-eal**       | Common Criteria Evaluation Assurance Level (EAL) 2 certification for Ubuntu. Refer to the Ubuntu [Common Criteria](https://ubuntu.com/security/cc) documentation to learn more. | Disabled      |
+    | **usg**          | Ubuntu Security Guide (USG) for compliance hardening. Refer to the Ubuntu [USG](https://documentation.ubuntu.com/security/compliance/usg/) documentation to learn more. | Disabled      |
 
-![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
+11. Click the **Next layer** button to continue to the next layer.
 
-8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
-
-9. Toggle options on or off to enable or disable the various Ubuntu Pro services.
-
-10. Click the **Next layer** button to continue to the next layer.
-
-11. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
+12. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
 </TabItem>
 </Tabs>
