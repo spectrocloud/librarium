@@ -11,6 +11,15 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 14, 2025 - Release 4.7.30
+
+### Bug Fixes
+
+- Fixed an issue that prevented ISO images created using CanvOS version 4.7.16 from being installed on
+  [Edge clusters](../clusters/edge/edge.md) due to a partition-related failure in [Kairos](http://kairos.io/).
+- Fixed an issue that prevented the creation of Ubuntu 20.04 FIPS ISO images from being created using CanvOS version
+  4.7.16.
+
 ## November 7, 2025 - Component Updates {#component-updates-2025-45}
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
