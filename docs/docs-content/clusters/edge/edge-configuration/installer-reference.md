@@ -436,8 +436,7 @@ installation is complete.
 
 If you define multiple partitions, the installer allocates any remaining unallocated disk space to the last defined
 partition. This applies to partitions listed under both `install.partitions` and `install.extra-partitions`, in the
-order they appear. If you want all partitions to have fixed sizes, you must explicitly add a final partition to absorb
-the remaining unallocated space.
+order they appear. If you want all partitions to have fixed sizes, add a final partition to absorb the remaining unallocated space.
 
 <details>
 <summary>Examples</summary>
