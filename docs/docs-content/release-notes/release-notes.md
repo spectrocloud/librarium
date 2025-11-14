@@ -15,10 +15,6 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.3  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.3  |
 
 ### Improvements
 
@@ -51,9 +47,12 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | Elastic Stack                            | Add-on     | :white_check_mark: | :x:                | 0.17.0      |
 | GCE Persistent Disk CSI                  | CSI        | :white_check_mark: | :x:                | 1.20.0      |
 | Istio                                    | Add-on     | :white_check_mark: | :x:                | 1.27.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.5      |
 | Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
-| Ubuntu (AWS)                             | OS         | :x:                | :white_check_mark: | 22.04       |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13      |
 | Ubuntu (AWS)                             | OS         | :white_check_mark: | :x:                | 24.04       |
+| Ubuntu (AWS)                             | OS         | :x:                | :white_check_mark: | 22.04       |
+
 
 ## November 14, 2025 - Release 4.7.30
 
