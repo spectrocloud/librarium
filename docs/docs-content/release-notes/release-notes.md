@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## November 14, 2025 - Component Updates {#component-updates-2025-46}
 
-The following components have been updated for Palette version 4.7.27 - 4.7.29.
+The following components have been updated for Palette version 4.7.27 - 4.7.30.
 
 ### Improvements
 
@@ -53,6 +53,12 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | Ubuntu (AWS)                             | OS         | :x:                | :white_check_mark: | 22.04       |
 
 ## November 14, 2025 - Release 4.7.30
+
+The following component updates are applicable to this release:
+
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
+- [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
+- [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 
 ### Bug Fixes
 
