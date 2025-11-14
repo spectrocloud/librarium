@@ -107,13 +107,13 @@ Use the following steps to enable Ubuntu Pro.
 
 3. Click on **Add Cluster Profile**.
 
-4. Fill out the basic information for the cluster profile. Click **Next** to continue.
+4. Fill out the basic information for the cluster profile. Ensure you select **Full** or **Infrastructure** for the profile **Type**. Click **Next** to continue.
 
 5. Select the infrastructure provider and click **Next**.
 
 6. Select Ubuntu as the OS layer and click **Next**.
 
-7. On the **Configure Pack** page, in **Pack Details**, click on the **\</\> Values** option to reveal the YAML editor and expand the **Presets** drawer.
+7. On the **Configure Pack** page, in **Pack Details**, click on the **Values** option to reveal the YAML editor. Expand the **Presets** drawer.
 
 8. Click the **Ubuntu Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
@@ -144,19 +144,19 @@ Use the following steps to enable Ubuntu Pro.
 
 3. Click on **Add Cluster Profile**.
 
-4. Fill out the basic information for the cluster profile. Click **Next** to continue.
+4. Fill out the basic information for the cluster profile. Ensure you select **Full** or **Infrastructure** for the profile **Type**. Click **Next** to continue.
 
 5. Select the infrastructure provider and click **Next**.
 
 6. Select **Ubuntu (AWS)** as the OS layer and click **Next**.
 
-7. On the **Configure Pack** page, in **Pack Details**, click on the **\</\> Values** option to reveal the YAML editor and expand the **Presets** drawer.
+7. On the **Configure Pack** page, in **Pack Details**, click on the **Values** option to reveal the YAML editor. Expand the **Presets** drawer.
 
 8. Click the **Ubuntu Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
 9. Provide the Canonical subscription token for Ubuntu Pro in the **Token** field. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to acquire a subscription token.
 
-10. Click the toggles for the **fips** and **fips-updates** options to enable them.
+10. Enable the **fips** and **fips-updates** options.
 
 11. In the YAML editor, under the `kubeadmconfig.postKubeadmCommands` section, add the `--assume-yes` flags to the `pro enable fips` and `pro enable fips-updates` commands. Additionally, add the `reboot` command at the end of the section.
 
@@ -286,13 +286,13 @@ Use the following steps to enable Ubuntu Pro.
 
 3. Click on **Add Cluster Profile**.
 
-4. Fill out the basic information for the cluster profile. Click **Next** to continue.
+4. Fill out the basic information for the cluster profile. Ensure you select **Full** or **Infrastructure** for the profile **Type**. Click **Next** to continue.
 
 5. Select the infrastructure provider and click **Next**.
 
 6. Select Ubuntu as the OS layer and click **Next**.
 
-7. On the **Configure Pack** page, in **Pack Details**, click on the **\</\> Values** option to reveal the YAML editor and expand the **Presets** drawer.
+7. On the **Configure Pack** page, in **Pack Details**, click on the **Values** option to reveal the YAML editor. Expand the **Presets** drawer.
 
 8. Click the **Ubuntu Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
