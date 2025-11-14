@@ -458,7 +458,7 @@ install:
       label: DATA_PARTITION
 ```
 
-In the following configuration, the `persistent` partition has no defined size, and the installer assigns all remaining
+In the following configuration, the `persistent` partition is not defined and therefore has no assigned size. The installer allocates all remaining disk space to it after creating the `data` partition.
 disk space to it after creating the `data` partition.
 
 ```yaml
