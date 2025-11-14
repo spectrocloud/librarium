@@ -121,16 +121,16 @@ Use the following steps to enable Ubuntu Pro.
 
 10. Toggle options on or off to enable or disable the various Ubuntu Pro services. The following table describes each of the available options.
 
-    | Parameter        | Description   | Default Value |
-    | ---------------- | ------------  | ------------- |
-    | **esm-infra**    | Expanded Security Maintenance (ESM) for Infrastructure. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
-    | **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
-    | **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
-    | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. | Disabled      |
-    | **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documentation for more details. | Disabled      |
-    | **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled      |
-    | **cc-eal**       | Common Criteria Evaluation Assurance Level (EAL) 2 certification for Ubuntu. Refer to the Ubuntu [Common Criteria](https://ubuntu.com/security/cc) documentation to learn more. | Disabled      |
-    | **usg**          | Ubuntu Security Guide (USG) for compliance hardening. Refer to the Ubuntu [USG](https://documentation.ubuntu.com/security/compliance/usg/) documentation to learn more. | Disabled      |
+    | Parameter        | Description   |
+    | ---------------- | ------------  |
+    | **esm-infra**    | Expanded Security Maintenance (ESM) for Infrastructure. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. |
+    | **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. |
+    | **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. If you are using Ubuntu 22.04 on AWS IaaS clusters, refer to [Enable FIPS Mode on AWS Ubuntu 22.04](#enable-fips-mode-on-aws-ubuntu-22-04) as additional YAML configuration is required. |
+    | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. If you are using Ubuntu 22.04 on AWS IaaS clusters, refer to [Enable FIPS Mode on AWS Ubuntu 22.04](#enable-fips-mode-on-aws-ubuntu-22-04) as additional YAML configuration is required. |
+    | **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documentation for more details. |
+    | **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. |
+    | **cc-eal**       | Common Criteria Evaluation Assurance Level (EAL) 2 certification for Ubuntu. Refer to the Ubuntu [Common Criteria](https://ubuntu.com/security/cc) documentation to learn more. |
+    | **usg**          | Ubuntu Security Guide (USG) for compliance hardening. Refer to the Ubuntu [USG](https://documentation.ubuntu.com/security/compliance/usg/) documentation to learn more. |
 
 11. Click the **Next layer** button to continue to the next layer.
 
@@ -184,8 +184,6 @@ Use the following steps to enable Ubuntu Pro.
 
 </TabItem>
 <TabItem label="20.04 LTS" value="20.04.x">
-
-<!-- prettier-ignore -->
 
 ## Usage
 
@@ -270,7 +268,7 @@ many other security hardening features. Ubuntu Pro offers several more benefits 
 
 - Kernel Livepatch service to avoid reboots
 
-- FIPS 140-3 Level 1 certified crypto modules
+- FIPS 140-2 Level 1 certified crypto modules
 
 - Common Criteria EAL2
 
@@ -300,16 +298,16 @@ Use the following steps to enable Ubuntu Pro.
 
 10. Toggle options on or off to enable or disable the various Ubuntu Pro services. The following table describes each of the available options.
 
-    | Parameter        | Description   | Default Value |
-    | ---------------- | ------------  | ------------- |
-    | **esm-infra**    | Expanded Security Maintenance (ESM) for Infrastructure. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
-    | **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled      |
-    | **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
-    | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. | Disabled      |
-    | **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documentation for more details. | Disabled      |
-    | **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled      |
-    | **cc-eal**       | Common Criteria Evaluation Assurance Level (EAL) 2 certification for Ubuntu. Refer to the Ubuntu [Common Criteria](https://ubuntu.com/security/cc) documentation to learn more. | Disabled      |
-    | **usg**          | Ubuntu Security Guide (USG) for compliance hardening. Refer to the Ubuntu [USG](https://documentation.ubuntu.com/security/compliance/usg/) documentation to learn more. | Disabled      |
+    | Parameter        | Description   |
+    | ---------------- | ------------  |
+    | **esm-infra**    | Expanded Security Maintenance (ESM) for Infrastructure. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. |
+    | **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. |
+    | **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. |
+    | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. |
+    | **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documentation for more details. |
+    | **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. |
+    | **cc-eal**       | Common Criteria Evaluation Assurance Level (EAL) 2 certification for Ubuntu. Refer to the Ubuntu [Common Criteria](https://ubuntu.com/security/cc) documentation to learn more. |
+    | **usg**          | Ubuntu Security Guide (USG) for compliance hardening. Refer to the Ubuntu [USG](https://documentation.ubuntu.com/security/compliance/usg/) documentation to learn more. |
 
 11. Click the **Next layer** button to continue to the next layer.
 
