@@ -136,15 +136,49 @@ menu beside the cluster profile, and choose the version that contains the desire
 
 ![Updating the cluster profile version linked in a cluster template](/cluster-templates_modify-cluster-templates_update-profile-version.webp)
 
-When you are finished, **Save** your changes, or **Discard** your changes to revert your cluster profile stack to its
-previous state.
+Depending on the changes made to the updated cluster profile version and whether the cluster template is linked to a
+cluster, you have the option to either **Save** or **Review & Save** your changes:
+
+- If your template _is not_ linked to a cluster and you _have not_ modified a pack's YAML, the **Save** button appears.
+
+- If your template _is not_ linked to a cluster and you _have_ modified a pack's YAML, the **Review & Save** button
+  appears.
+
+- If your template _is_ linked to a cluster, if you have made _any_ variable- or YAML-related changes, the **Review &
+  Save** button appears.
+
+###### Review Changes Dialog
+
+Selecting **Review & Save** opens the **Review changes** dialog. The drawers displayed on the left depend on your
+changes:
+
+- Regardless of whether your cluster template is linked to a cluster, if you have modified a pack's YAML, a list of
+  modified packs appear. Select each pack to view the changes in read-only mode. Once you view a pack, the empty circle
+  changes to a check mark. If you need to make changes, you must modify the applicable cluster profile version. You
+  cannot select **Apply changes** until you have viewed each pack.
+
+- If your template _is_ linked to a cluster template and you have made _any_ variable-related changes, the **Profile
+  variables changes** panel appears. Use the search bar and drop-down menus to filter your changes. You can assign
+  values for new or updated variables either now or at a later time via the
+  [**Variable Values** Tab](#variable-values-tab). To update or assign values in batches, select the check box beside
+  each cluster, and choose **Assign new value**. If you do not assign a new value, the **Running value** is retained. A
+  New value cannot be assigned if the changes made to the variable definition do not affect the current value. Hover
+  over the icon preceding the **Running value** column for additional information on what variable changes were made.
+
+  ![Review changes dialog when updating cluster profile version of cluster template](/cluster-templates_modify-cluster-templates_review-changes.webp)
+
+  To view a list of removed variables and variables without definition changes, clear the **Show only new variables or
+  variables with a configuration change** check box. Values assigned are propagated to the applicable clusters during
+  the next upgrade window defined in the attached maintenance policy.
+
+If at any time you want to revert your cluster profile stack to its previous state, return to the **Policies** tab and
+**Discard** your changes. Once changes are applied, they cannot be discarded.
 
 :::warning
 
 If you attempt to update the cluster profile version when cluster profile variable values are in a **Pending** state,
-you will not be able to **Save** your changes, as the upgrade is blocked until all variable values are in an
-**Assigned** state. Refer to the [**Variable Values** Tab](#variable-values-tab) section of this guide for additional
-information.
+you will not be able to save your changes, as the upgrade is blocked until all variable values are in an **Assigned**
+state. Refer to the [**Variable Values** Tab](#variable-values-tab) section of this guide for additional information.
 
 :::
 
@@ -157,7 +191,8 @@ version cannot be linked to a cluster template if that profile version is alread
 attached to a cluster template.
 
 When you are finished, **Save** your changes, or **Discard** your changes to revert your cluster profile stack to its
-previous state.
+previous state. If your changes include cluster profile version updates and the cluster template is linked to a cluster,
+you must **Review & Save** your changes using the [**Review changes** dialog](#review-changes-dialog).
 
 :::info
 
@@ -174,7 +209,8 @@ choose **Replace** or **Remove**; alternatively, select the three-dot menu besid
 expanded **Linked profiles** panel and choose **Replace** or **Remove**.
 
 When you are finished, **Save** your changes, or **Discard** your changes to revert your cluster profile stack to its
-previous state.
+previous state. If your changes include cluster profile version updates and the cluster template is linked to a cluster,
+you must **Review & Save** your changes using the [**Review changes** dialog](#review-changes-dialog).
 
 :::info
 
@@ -230,15 +266,16 @@ Use the following table to help you determine which workflow to use when updatin
 #### Update Variables via the Variable Values Tab
 
 When you update the cluster profile version linked to a cluster template or add or remove a cluster profile containing
-variables, all variables enter a **Pending** state. Upon viewing your cluster or the cluster profile version linked to
-your cluster template, the banner **Action required: This cluster is managed by the template [name] and has unassigned
-profile variables** is displayed. Select the linked cluster template to view the list of cluster **Variable values**
-attached to your cluster template via cluster profiles.
+variables, any values that were not assigned in the [**Review changes** dialog](#review-changes-dialog) enter a
+**Pending** state. Upon viewing your cluster or the cluster profile version linked to your cluster template, the banner
+**Action required: This cluster is managed by the template [name] and has unassigned profile variables** is displayed.
+Select the linked cluster template to view the list of cluster **Variable values** attached to your cluster template via
+cluster profiles.
 
 ![Action required banner when viewing a cluster with pending variables](/cluster-templates_action-required.webp)
 
-Until you verify a **New Value** for all variables and all variables are in an **Assigned** state, clusters attached to
-the template will not update to the latest profile version, regardless of whether you wait until the next update window
+Until you verify a **New Value** for all variables in the cluster and all variables are in an **Assigned** state, the
+cluster will not update to the latest profile version, regardless of whether you wait until the next update window
 specified by the [maintenance policy](./create-cluster-template-policies/maintenance-policy.md) or initiate the update
 from the **Overview** tab using **Options > Upgrade now**.
 
@@ -266,6 +303,8 @@ template.
           choose **Assign new value**. Update the value and **Apply** your changes.
 
         :::info
+
+        DOUBLE CHECK THIS BECAUSE I CAN'T VERIFY IT RIGHT NOW.
 
         Even if you do not need to make any changes to the **New Value**, you must still confirm the value to use. To do so, mark the check box to the left of the cluster, and select **Assign new value**. If no default value is assigned, the field remains blank; otherwise, the default value is displayed, which may _not_ match the value currently being used in the cluster. Verify and enter the correct value, and select **Apply**.
 
