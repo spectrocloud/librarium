@@ -12,7 +12,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 <!-- prettier-ignore-start -->
 
 This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool to create a custom
-[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
+[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile. You can use either a Rocky Linux boot ISO or an existing Rocky Linux VM to create your image.
 
 <!-- prettier-ignore-end -->
 
@@ -22,25 +22,22 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 ## Prerequisites
 
-<Tabs>
+<Tabs groupId="image-base">
 
 <TabItem label="Rocky ISO" value="iso">
 
 - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
 
-- An existing Linux device with the following hardware resources available:
+- An existing Linux device used to execute commands and build your Rocky image. This device must have the following
+  resources available and the following software installed:
 
   - 4 CPUs
   - 8 GB of RAM
   - 50 GB of free disk space
-
-- The following software installed on your Linux device:
-
   - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
   - [curl](https://curl.se/docs/install.html)
-
-- (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your Rocky image. Custom
-  scripts are supported beginning with CAPI Image Builder version 4.6.23.
+  - (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your Rocky image. Custom
+    scripts are supported beginning with CAPI Image Builder version 4.6.23.
 
 </TabItem>
 
@@ -51,7 +48,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 - An existing Linux device used to execute commands and build your Rocky image. This device must have the following
   resources available and the following software installed:
 
-  - 4 CPU
+  - 4 CPUs
   - 8 GB of RAM
   - 50 GB of free disk space
   - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
@@ -81,27 +78,27 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
             1. On your Rocky Linux VM, add a `builder` user.
 
-            ```shell
-            sudo useradd builder
-            ```
+                ```shell
+                sudo useradd builder
+                ```
 
             2. Set the password for the `builder` user to `builder`.
 
-            ```shell
-            echo 'builder:builder' | sudo chpasswd
-            ```
+                ```shell
+                echo 'builder:builder' | sudo chpasswd
+                ```
 
             3. Assign passwordless sudo privileges to the `builder` user and assign the appropriate permissions.
 
-            ```shell
-            echo 'builder ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/builder
-            sudo chmod 0440 /etc/sudoers.d/builder
-            ```
+                ```shell
+                echo 'builder ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/builder
+                sudo chmod 0440 /etc/sudoers.d/builder
+                ```
 
-        </details>
+    </details>
 
   - SSH password authentication enabled in `/etc/ssh/sshd_config` by setting `PasswordAuthentication` to `yes`. You must
-    either restart `sshd` or reboot your system to update the configuration.
+    either restart `sshd` or reboot your system for the changes to take effect.
 
   - SSH password authentication enabled for `cloud-init` by setting `ssh_pwauth` to `true`. This is required to prevent
     `cloud-init` from overwriting `PasswordAuthentication yes` in `/etc/ssh/sshd_config` when booting the cloned VM. We
@@ -116,86 +113,253 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - [IPv4 packet forwarding](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional)
     enabled.
 
-  - Ensure `/tmp` is mounted to execute binaries or scripts.
+  - `firewalld` disabled.
 
         <details>
-        <summary> Check `/tmp` status </summary>
+
+            <summary> Check `firewalld` status </summary>
+
+              1. Check the status of `firewalld`. Note the `Active` status.
+
+                 ```shell
+                 systemctl status firewalld
+                 ```
+
+                 ```shell title="Example output" hideClipboard {3}
+                 ● firewalld.service - firewalld - dynamic firewall daemon
+                     Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset>
+                     Active: active (running) since Wed 2025-11-12 20:04:57 EST; 17min ago
+                         Docs: man:firewalld(1)
+                     Main PID: 960 (firewalld)
+                         Tasks: 2 (limit: 100604)
+                     Memory: 45.3M
+                     CGroup: /system.slice/firewalld.service
+                             └─960 /usr/libexec/platform-python -s /usr/sbin/firewalld --nofork --nopid
+                 ```
+
+              2. If you have a status of `Active: active`, disable `firewalld`.
+
+                 ```shell
+                 sudo systemctl disable --now firewalld
+                 ```
+
+                 ```shell title="Example output" hideClipboard
+                 Removed /etc/systemd/system/multi-user.target.wants/firewalld.service.
+                 Removed /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+                 ```
+
+              3. Confirm `firewalld` has a status of `Active: inactive`.
+
+                 ```shell
+                 systemctl status firewalld
+                 ```
+
+                 ```shell title="Example output" hideClipboard {3}
+                 ● firewalld.service - firewalld - dynamic firewall daemon
+                     Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
+                     Active: inactive (dead)
+                         Docs: man:firewalld(1)
+                 ```
+
         </details>
 
-        1. Check the mount status of the `/tmp` directory.
+  - `/tmp` mounted to execute binaries and scripts.
 
-            ```shell
-            mount | grep '/tmp'
-            ```
+          <details>
+          <summary> Check `/tmp` status </summary>
 
-            ```shell title="Example output" hideClipboard
-            /tmp on /sys type sysfs (rw,nosuid,nodev,noexec,relatime) LOOK AT THIS MORE
-            ```
+          1. Check the mount status of `/tmp`. Look for a status of `noexec`.
 
-            :::info
+              ```shell
+              mount | grep '/tmp'
+              ```
 
-            If you receive an error, where `/tmp` is not displayed in the mount output, it is likely because it is a regular directory on the filesystem and not a separate mount.
+              ```shell title="Example output" hideClipboard
+              tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noexec,relatime,size=2G)
+              ```
 
-            :::
+              :::tip
 
-        2. In the file `/etc/fstab`, edit the `/tmp` line to use `exec` instead of `noexec`.
+              If you receive an error, where `/tmp` is not displayed in the mount output, it is likely because it is a regular directory on the filesystem and not a separate mount.
 
-# Change: tmpfs /tmp tmpfs defaults,noexec,nosuid 0 0
+              Issue the following command to confirm the mount point of `/tmp`. If the `Mounted on` location is `/`, no action is required.
 
-# To: tmpfs /tmp tmpfs defaults,exec,nosuid 0 0
+              ```shell
+              df --human-readable /tmp
+              ```
 
-    - If your Rocky system has been hardened using a STIG security policy, you may need to remediate the following:
+              ```shell title="Example output" hideClipboard
+              Filesystem           Size  Used Avail Use% Mounted on
+              /dev/mapper/rl-root   70G  3.7G   67G   6% /
+              ```
 
-        - SELinux may prevent binaries from executing, including `cloud-init` scripts.
+              :::
 
-# Check SELinux status
+          2. If `/tmp` has a status of `noexec`, use your preferred text editor to edit the file `/etc/fstab` and set `/tmp` to `exec`.
 
-getenforce
+              ```shell
+              vi /etc/fstab
+              ```
 
-# If it's 'Enforcing' and causing issues, you can:
+              ```shell title="Example output" hideClipboard {9}
+              #
+              # Created by anaconda on Thu Nov  6 13:15:55 2025
+              #
+              /dev/mapper/rl-root                         /                       xfs     defaults                            0 0
+              UUID=3b068723-b40a-4c10-ac6d-00271cd4d3a4   /boot                   xfs     defaults                            0 0
+              UUID=F867-A7CE                              /boot/efi               vfat    umask=0077,shortname=winnt          0 2
+              /dev/mapper/rl-home                         /home                   xfs     defaults                            0 0
+              /dev/mapper/rl-swap                         none                    swap    defaults                            0 0
+              tmpfs                                       /tmp                    tmpfs   defaults,nosuid,nodev,exec,size=2G  0 0
+              ```
 
-# Option 1: Set to `permissive` mode (logs violations but doesn't block). Sets to permissive for current boot session only
+          3. Remount all filesystems in `/etc/fstab`.
 
-sudo setenforce 0
+              ```shell
+              sudo mount --all
+              ```
 
-# Option 2: Disable permanently (edit /etc/selinux/config)
+          4. Confirm the mount status of `/tmp` is set to `exec`.
 
-sudo vi /etc/selinux/config
+              ```shell
+              mount | grep '/tmp'
+              ```
 
-# Set: SELINUX=permissive or SELINUX=disabled
+              ```shell title="Example output" hideClipboard
+              tmpfs on /tmp type tmpfs (rw,nosuid,nodev,exec,relatime,size=2G)
+              ```
 
-        - `fapolicyd` may prevent application execution such as preventing `containerd-shim-runc-v2` from running (???)
+          </details>
 
-# Check if fapolicyd is running
+  - If your system has been hardened using a Security Technical Implementation Guide (STIG) policy, you may need to
+    remediate the following:
 
-sudo systemctl status fapolicyd
+            - SELinux may prevent binaries from executing, including `cloud-init` scripts. We recommend setting the SELinux
+              status to `permissive` or `disabled` until the image building process is complete.
 
-# If it's causing issues, you can disable it:
+              <details>
 
-sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
+              <summary> Check SELinux status </summary>
 
-    - Snapshot of VM created. This is required by the [vsphere-clone-builder](https://image-builder.sigs.k8s.io/capi/providers/vsphere#vsphere-clone-builder).
+                1.  Check the status of SELinux.
 
-  </TabItem>
+                    ```shell
+                    getenforce
+                    ```
 
-  </Tabs>
+                    ```shell title="Example output" hideClipboard
+                    Enforcing
+                    ```
+
+                2.  If the status is `Enforcing`, use your preferred text editor to open the SELinux config file and set `SELINUX`
+                    to either `permissive` or `disabled`.
+
+                        ```shell
+                        vi /etc/selinux/config
+                        ```
+
+                        ```shell title="Example output" hideClipboard {6}
+                        # This file controls the state of SELinux on the system.
+                        # SELINUX= can take one of these three values:
+                        #     enforcing - SELinux security policy is enforced.
+                        #     permissive - SELinux prints warnings instead of enforcing.
+                        #     disabled - No SELinux policy is loaded.
+                        SELINUX=permissive
+                        # SELINUXTYPE= can take one of these three values:
+                        #     targeted - Targeted processes are protected,
+                        #     minimum - Modification of targeted policy. Only selected processes are protected.
+                        #     mls - Multi Level Security protection.
+                        SELINUXTYPE=targeted
+                    ```
+
+              </details>
+
+    - `fapolicyd` may prevent certain applications from executing, such as `containerd-shim-runc-v2`. We recommend
+      disabling `fapolicyd` until the image building process is complete.
+
+            <details>
+
+            <summary> Check `fapolicyd` status </summary>
+
+              1. Check the status of `fapolicyd`. Note the `Active` status.
+
+                 ```shell
+                 systemctl status fapolicyd
+                 ```
+
+                 ```shell "Example output" hideClipboard {3}
+                 ● fapolicyd.service - File Access Policy Daemon
+                     Loaded: loaded (/usr/lib/systemd/system/fapolicyd.service; enabled; vendor preset: disabled)
+                     Active: active (running) since Sat 2025-11-15 08:39:30 EST; 2s ago
+                         Docs: man:fapolicyd(8)
+                     Process: 33431 ExecStart=/usr/sbin/fapolicyd (code=exited, status=0/SUCCESS)
+                     Process: 33406 ExecStartPre=/usr/sbin/fagenrules (code=exited, status=0/SUCCESS)
+                     Main PID: 33432 (fapolicyd)
+                         Tasks: 4 (limit: 100604)
+                     Memory: 54.0M
+                     CGroup: /system.slice/fapolicyd.service
+                             └─33432 /usr/sbin/fapolicyd
+                 ```
+
+              2. If you have a status of `Active: active`, disable `fapolicyd`.
+
+                 ```shell
+                 sudo systemctl disable --now fapolicyd
+                 ```
+
+                 ```shell title="Example output" hideClipboard
+                 Removed /etc/systemd/system/multi-user.target.wants/fapolicyd.service.
+                 ```
+
+              3. Confirm `fapolicyd` has a status of `Active: inactive`.
+
+                 ```shell
+                 systemctl status firewalld
+                 ```
+
+                 ```shell title="Example output" hideClipboard {3}
+                 ● fapolicyd.service - File Access Policy Daemon
+                    Loaded: loaded (/usr/lib/systemd/system/fapolicyd.service; disabled; vendor preset: disabled)
+                    Active: inactive (dead)
+                        Docs: man:fapolicyd(8)
+                 ```
+
+            </details>
+
+  - A snapshot of your VM created once all other prerequisites are met. This is required by the
+    [vsphere-clone-builder](https://image-builder.sigs.k8s.io/capi/providers/vsphere#vsphere-clone-builder).
+
+</TabItem>
+
+</Tabs>
 
 ## Build Custom Image
 
-<Tabs>
+<Tabs groupId="image-base">
 
 <TabItem label="Rocky ISO" value="iso">
 
-1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder image, replacing `<tag>` with
-    your desired CAPI Image Builder version. This guide uses version 4.6.23 as an example. Refer to the CAPI Image
-    Builder [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
+1.  Open a terminal session on your Linux machine and set your CAPI Image Builder version tag as a variable. This guide
+    uses version 4.6.23 as an example. Refer to the CAPI Image Builder
+    [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
 
-    <Tabs>
+        ```shell
+        CAPI_IMAGE_BUILDER_VERSION=<capi-image-builder-version-tag>
+        echo CAPI Image Builder version: $CAPI_IMAGE_BUILDER_VERSION
+        ```
+
+        ```shell title="Example output"
+        CAPI Image Builder version: v4.6.23
+        ```
+
+2.  Download the CAPI Image Builder image.
+
+    <Tabs groupId="container-tech">
 
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>
+        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
         ```
 
         Confirm that the image was downloaded correctly.
@@ -214,7 +378,7 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>
+        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
         ```
 
         Confirm that the image was downloaded correctly.
@@ -232,21 +396,20 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     </Tabs>
 
-2.  Create an `output` directory to store the image files and set the required permissions. Replace `<username>` with
-    your Linux username.
+3.  Create an `output` directory to store the image files and set the required permissions.
 
     ```shell
-    mkdir /home/<username>/output
-    chmod a+rwx /home/<username>/output
+    mkdir /home/$USER/output
+    chmod a+rwx /home/$USER/output
     ```
 
-3.  Navigate to the `output` directory. Replace `<username>` with your Linux username.
+4.  Navigate to the `output` directory.
 
     ```shell
-    cd /home/<username>/output
+    cd /home/$USER/output
     ```
 
-4.  Download the [Rocky Linux ISO file](https://download.rockylinux.org/pub/rocky/) into the `output` directory. Ensure
+5.  Download the [Rocky Linux ISO file](https://download.rockylinux.org/pub/rocky/) into the `output` directory. Ensure
     you download a `x86_64-dvd.iso` file and not a `x86_64-boot.iso` file.
 
     This guide uses Rocky 8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
@@ -256,7 +419,7 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
     curl https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso --output Rocky-8-latest-x86_64-dvd.iso
     ```
 
-5.  Calculate the SHA256 checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the
+6.  Calculate the SHA256 checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the
     output, as you will need it later.
 
     ```shell
@@ -269,13 +432,13 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
     642ada8a49dbeca8cca6543b31196019ee3d649a0163b5db0e646c7409364eeb  Rocky-8-latest-x86_64-dvd.iso
     ```
 
-6.  Download the `imageconfig` template file.
+7.  Download the `imageconfig` template file.
 
     ```shell
     curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
-7.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+8.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
     list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
@@ -284,9 +447,9 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
     fit your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS
     compliant, and more.
 
-    Use the example configuration below to configure a Rocky 8 CAPI image. Use the SHA256 checksum of the Rocky ISO from
-    step 5 of this guide for `<iso-checksum>`. Additionally, replace the VMware-related placeholders with the values
-    from your VMware vSphere environment.
+    The following example configuration configures a Rocky 8 CAPI image from a Rocky ISO. Use the SHA256 checksum of the
+    Rocky ISO from step 6 of this guide for `<iso-checksum>`. Additionally, replace the VMware-related placeholders with
+    the values from your VMware vSphere environment.
 
     ```text {4-5,9,13,19-22,30-31,38-46,64}
      # Define the OS type and version here
@@ -364,13 +527,13 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     :::tip
 
-    To build a FIPS-compliant image, set `image_type` to `fips`.
+    To build a FIPS-compliant image, keep the `image_type` set to `fips`.
 
     :::
 
     Once you are finished making changes, save and exit the file.
 
-8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
+9.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
     available beginning with CAPI Image Builder version 4.6.23. If any scripts are found in the relevant directories,
     they are copied to an Ansible playbook. If you do not want to add custom scripts, skip this step.
 
@@ -397,19 +560,17 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     </details>
 
-9.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
+10. Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
     variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The
     tool will then generate a Rocky 8 CAPI image from the VM and save it to the `output` directory.
 
-    Replace `<username>` with your Linux username and `<tag>` with your CAPI Image Builder version.
-
-        <Tabs>
+        <Tabs groupId="container-tech">
 
         <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID=$(docker run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+        BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
         ```
 
         </TabItem>
@@ -417,7 +578,7 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID=$(podman run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+        BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
         ```
 
         </TabItem>
@@ -451,20 +612,20 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
             3.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
                 variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
-                your VMware vSphere environment. Replace `<username>` with your Linux username and `<tag>` with your CAPI Image Builder version.
+                your VMware vSphere environment.
 
-                <Tabs>
+                <Tabs groupId="container-tech">
                 <TabItem value="Docker" label="Docker">
 
                  ```bash
-                 BUILD_ID=$(docker run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+                 BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
                  ```
                 </TabItem>
 
                 <TabItem value="Podman" label="Podman">
 
                  ```bash
-                 BUILD_ID=$(podman run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+                 BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
                  ```
 
                 </TabItem>
@@ -472,10 +633,10 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
             </details>
 
-10. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
+11. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
     added any custom scripts in step 8, the output will be displayed in the build log.
 
-        <Tabs>
+        <Tabs groupId="container-tech">
 
         <TabItem value="Docker" label="Docker">
 
@@ -501,9 +662,8 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     :::
 
-11. Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
-    specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is
-    deleted from VMware vSphere.
+12. Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
+    specified in the `imageconfig` file. For this example, the image is `rocky-8`.
 
     Issue the command below to confirm that the build files are present in the `output` directory, replacing `rocky-8`
     with your specified `image_name`, if different.
@@ -516,57 +676,50 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
         packer-manifest.json  rockylinux-8-kube-v1.30.4.mf  rockylinux-8-kube-v1.30.4.ovf rocky-8-disk-0.vmdk  rockylinux-8-kube-v1.30.4.ova  rocky-8.ovf rockylinux-8-kube-v1.30.4.ova.sha256
         ```
 
-12. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` defined in
-    the `imageconfig` in step 7 of this guide.
+13. Locate the new Rocky VM in your VMware vSphere environment. Right-click the VM and select **Clone > Clone to
+    Template**.
 
-    :::tip
+    :::info
 
-    You can also use the following steps to make the image available in a VMware vSphere environment that is not
-    connected to the one you used for building the image.
-
-    :::
-
-13. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built
-    in step 9 of this guide.
-
-14. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
-    `output` folder on your local machine. This guide uses `rockylinux-8-kube-v1.30.4.ova` as an example. Select
-    **Next** to continue.
-
-15. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.30.4`, and choose the folder you created
-    previously as the target location. Select **Next** to proceed.
-
-16. Choose a compute resource and select **Next**.
-
-17. Review the VM configuration, accept the license agreements, and select **Next**.
-
-18. Choose the storage location and network configuration and select **Next**. Then, select **Finish** to deploy the VM.
-
-    :::warning
-
-    It takes a while for the VM to deploy, approximately 45 minutes or more, depending on your internet connection. The
-    download of the OVA file takes the majority of the time. You can monitor the progress of this process in VMware
-    vSphere by looking at the **Recent Tasks** tab and filtering the **Task Name** column by `Deploy OVF Template`.
+    The locations and resources specified in the following steps do not have to match those defined in the `imageconfig`
+    file.
 
     :::
 
-19. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a Rocky 8
-    image template that you can reference during the cluster profile creation.
+14. Enter a **VM template name**, choose a location for the template, and select **Next**.
+
+15. Choose a compute resource and select **Next**.
+
+16. Choose a storage location and select **Next**.
+
+17. Review your template configurations and select **Finish** to convert the VM into a Rocky image template that you can
+    reference while creating your cluster profile.
 
 </TabItem>
 
 <TabItem label="Rocky VM" value="vm">
 
-1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder image, replacing `<tag>` with
-    your desired CAPI Image Builder version. This guide uses version 4.6.23 as an example. Refer to the CAPI Image
-    Builder [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
+1.  Open a terminal session on your Linux machine and set your CAPI Image Builder version tag as a variable. This guide
+    uses version 4.6.23 as an example. Refer to the CAPI Image Builder
+    [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
 
-    <Tabs>
+        ```shell
+        CAPI_IMAGE_BUILDER_VERSION=<capi-image-builder-version-tag>
+        echo CAPI Image Builder version: $CAPI_IMAGE_BUILDER_VERSION
+        ```
+
+        ```shell title="Example output"
+        CAPI Image Builder version: v4.6.23
+        ```
+
+2.  Download the CAPI Image Builder image.
+
+    <Tabs groupId="container-tech">
 
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>
+        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
         ```
 
         Confirm that the image was downloaded correctly.
@@ -585,7 +738,7 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>
+        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
         ```
 
         Confirm that the image was downloaded correctly.
@@ -603,27 +756,26 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     </Tabs>
 
-2.  Create an `output` directory to store the image files and set the required permissions. Replace `<username>` with
-    your Linux username.
+3.  Create an `output` directory to store the image files and set the required permissions.
 
     ```shell
-    mkdir /home/<username>/output
-    chmod a+rwx /home/<username>/output
+    mkdir /home/$USER/output
+    chmod a+rwx /home/$USER/output
     ```
 
-3.  Navigate to the `output` directory. Replace `<username>` with your Linux username.
+4.  Navigate to the `output` directory.
 
     ```shell
-    cd /home/<username>/output
+    cd /home/$USER/output
     ```
 
-4.  Download the `imageconfig` template file.
+5.  Download the `imageconfig` template file.
 
     ```shell
     curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
-5.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+6.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
     list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
@@ -718,7 +870,7 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     Once you are finished making changes, save and exit the file.
 
-6.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
+7.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
     available beginning with CAPI Image Builder version 4.6.23. If any scripts are found in the relevant directories,
     they are copied to an Ansible playbook. If you do not want to add custom scripts, skip this step.
 
@@ -745,36 +897,31 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     </details>
 
-7.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
+8.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
     variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The
     tool will then generate a Rocky 8 CAPI image from the VM and save it to the `output` directory.
 
-    Replace `<username>` with your Linux username and `<tag>` with your CAPI Image Builder version.
-
-        <Tabs>
+        <Tabs groupId="container-tech">
 
         <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID=$(docker run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+        BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
 
 
         # Sleep keeps packer from triggering the build until the RH line is removed
         BUILD_ID=$(docker run --net=host \
-        --volume /home/ubuntu/output:/home/imagebuilder/output \
+        --volume /home/$USER/output:/home/imagebuilder/output \
         --detach \
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23 \
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION\
         sleep infinity)
 
         # Patch the Ansible playbook to delete the task that checks for RHSM environment variables
         docker exec $BUILD_ID bash -c 'sed -i "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
 
-        # Now trigger the build
+        # Trigger the build
         docker exec $BUILD_ID make build-node-ova-vsphere-clone-rockylinux-8
-
-
-
         ```
 
         </TabItem>
@@ -782,7 +929,7 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID=$(podman run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+        BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
         ```
 
         </TabItem>
@@ -816,20 +963,20 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
             3.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
                 variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
-                your VMware vSphere environment. Replace `<username>` with your Linux username and `<tag>` with your CAPI Image Builder version.
+                your VMware vSphere environment.
 
-                <Tabs>
+                <Tabs groupId="container-tech">
                 <TabItem value="Docker" label="Docker">
 
                  ```bash
-                 BUILD_ID=$(docker run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+                 BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
                  ```
                 </TabItem>
 
                 <TabItem value="Podman" label="Podman">
 
                  ```bash
-                 BUILD_ID=$(podman run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+                 BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
                  ```
 
                 </TabItem>
@@ -837,10 +984,10 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
             </details>
 
-8.  Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
+9.  Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
     added any custom scripts in step 8, the output will be displayed in the build log.
 
-        <Tabs>
+        <Tabs groupId="container-tech">
 
         <TabItem value="Docker" label="Docker">
 
@@ -866,9 +1013,8 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
 
     :::
 
-9.  Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
-    specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is
-    deleted from VMware vSphere.
+10. Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
+    specified in the `imageconfig` file. For this example, the image is `rocky-8`.
 
     Issue the command below to confirm that the build files are present in the `output` directory, replacing `rocky-8`
     with your specified `image_name`, if different.
@@ -881,57 +1027,33 @@ sudo systemctl stop fapolicyd sudo systemctl disable fapolicyd
         packer-manifest.json  rockylinux-8-kube-v1.30.4.mf  rockylinux-8-kube-v1.30.4.ovf rocky-8-disk-0.vmdk  rockylinux-8-kube-v1.30.4.ova  rocky-8.ovf rockylinux-8-kube-v1.30.4.ova.sha256
         ```
 
-10. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` defined in
-    the `imageconfig` in step 7 of this guide.
+11. Locate the new Rocky VM in your VMware vSphere environment. Right-click the VM and select **Clone > Clone to
+    Template**.
 
-    :::tip
+    :::info
 
-    You can also use the following steps to make the image available in a VMware vSphere environment that is not
-    connected to the one you used for building the image.
-
-    :::
-
-11. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built
-    in step 9 of this guide.
-
-12. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
-    `output` folder on your local machine. This guide uses `rockylinux-8-kube-v1.30.4.ova` as an example. Select
-    **Next** to continue.
-
-13. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.30.4`, and choose the folder you created
-    previously as the target location. Select **Next** to proceed.
-
-14. Choose a compute resource and select **Next**.
-
-15. Review the VM configuration, accept the license agreements, and select **Next**.
-
-16. Choose the storage location and network configuration and select **Next**. Then, select **Finish** to deploy the VM.
-
-    :::warning
-
-    It takes a while for the VM to deploy, approximately 45 minutes or more, depending on your internet connection. The
-    download of the OVA file takes the majority of the time. You can monitor the progress of this process in VMware
-    vSphere by looking at the **Recent Tasks** tab and filtering the **Task Name** column by `Deploy OVF Template`.
+    The locations and resources specified in the following steps do not have to match those defined in the `imageconfig`
+    file.
 
     :::
 
-17. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a Rocky 8
-    image template that you can reference during the cluster profile creation.
+12. Enter a **VM template name**, choose a location for the template, and select **Next**.
+
+13. Choose a compute resource and select **Next**.
+
+14. Choose a storage location and select **Next**.
+
+15. Review your template configurations and select **Finish** to convert the VM into a Rocky image template that you can
+    reference while creating your cluster profile.
 
 </TabItem>
 
 </Tabs>
 
-### Validate
-
-1. Log in to the VMware vSphere environment and navigate to the **Inventory** view.
-
-2. Select the **VMs and Templates** tab and verify the custom Rocky 8 image is available.
-
 ## Create Cluster Profile
 
-The Rocky 8 image is now built and available in the VMware vSphere environment. You can use it to create a cluster
-profile and deploy a VMware host cluster.
+The Rocky image is now built and available in the VMware vSphere environment. You can use it to create a cluster profile
+and deploy a VMware host cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 2. From the left main menu, select **Profiles > Add Cluster Profile**.
