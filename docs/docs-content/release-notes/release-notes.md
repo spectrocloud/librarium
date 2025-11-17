@@ -105,7 +105,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
-- The new [Find Breaking Changes for Palette Upgrades](./breaking-changes.md) page contains an interactive component that allows users to list breaking changes between two Palette releases. You can use it as guidance for upgrading dedicated SaaS or self-hosted Palette and Palette VerteX installations.
+- The new [Find Breaking Changes for Palette Upgrades](./breaking-changes.md) page contains an interactive component
+  that allows users to list breaking changes between two Palette releases. You can use it as guidance for upgrading
+  dedicated SaaS or self-hosted Palette and Palette VerteX installations.
 
 ### Packs
 
