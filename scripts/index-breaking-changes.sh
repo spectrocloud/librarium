@@ -37,13 +37,10 @@ git fetch --prune --no-tags --depth=1 origin \
   '+refs/heads/version-*:refs/remotes/origin/version-*'
 
 # Get remote version branches (no locals, no HEAD), exclude version-3-4
-branches="$(
-  git for-each-ref \
-    --format='%(refname:strip=3)' \
-    --sort=refname \
-    --exclude='refs/remotes/origin/version-3-4' \
-    'refs/remotes/origin/version-*'
-)"
+branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
+  | grep -v '^HEAD$' \
+  | grep -v '^version-3-4$' \
+  | sort -u)"
 
 # Remove files for repeatable runs.
 rm -rf $BREAKING_CHANGES_PARTIALS_PATH
