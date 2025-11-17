@@ -60,6 +60,17 @@ tags: ["release-notes"]
   or migrate workloads. Refer to the [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) guide for
   further information.
 
+- Palette has now implemented a mechanism for evacuating and migrating the control planes
+  [MAAS clusters using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md), reducing
+  high-availability risks during host repaves. This improvement is critical for Day-2 lifecycle operations such as
+  upgrades or repaves.
+
+<!-- prettier-ignore-start -->
+
+- Certificate renewal for clusters provisioned using <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s"/> and <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> has been enhanced to support triggering externally from Kubernetes. This is applicable for both edge and public cloud clusters.
+
+<!-- prettier-ignore-end -->
+
 #### Deprecations and Removals
 
 ### Edge
