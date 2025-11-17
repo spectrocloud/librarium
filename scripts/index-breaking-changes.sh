@@ -31,13 +31,20 @@ if [ -f "$ALL_VERSIONS_PATH" ] && [ -d "$BREAKING_CHANGES_PARTIALS_PATH" ]; then
 fi
 
 # Fetch all branches from the remote
-git fetch --prune origin
+# Pull *only* version-* branches into refs/remotes/origin/, shallow, skip tags,
+# and explicitly exclude version-3-4 with a negative refspec.
+git fetch --prune --no-tags --depth=1 --filter=blob:none origin \
+  '+refs/heads/version-*:refs/remotes/origin/version-*' \
+  '^refs/heads/version-3-4'
 
 # Get remote version branches (no locals, no HEAD), exclude version-3-4
-branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
-  | grep -v '^HEAD$' \
-  | grep -v '^version-3-4$' \
-  | sort -u)"
+branches="$(
+  git for-each-ref \
+    --format='%(refname:strip=3)' \
+    --sort=refname \
+    --exclude='refs/remotes/origin/version-3-4' \
+    'refs/remotes/origin/version-*'
+)"
 
 # Remove files for repeatable runs.
 rm -rf $BREAKING_CHANGES_PARTIALS_PATH
