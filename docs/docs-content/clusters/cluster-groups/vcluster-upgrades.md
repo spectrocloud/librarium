@@ -68,9 +68,9 @@ new Palette release introduces a new vCluster version.
 4. Select **Settings**. The **Cluster Group Settings** pane appears.
 
 5. Select the **Settings** tab. The **Advanced Config** section containing the YAML virtual cluster configuration
-   appears. Check the vCluster version set in the **sync.statefulSet.image.tag** field.
+   appears. Check the vCluster version set in the `sync.statefulSet.image.tag` field.
 
-   ```yaml hideClipboard {14} title="Example configuration"
+   ```yaml hideClipboard {12} title="Example configuration"
    statefulSet:
      # Image is the image for the controlPlane statefulSet container
      image:

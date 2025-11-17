@@ -198,7 +198,7 @@ let redirects = [
   },
   {
     from: `/clusters/palette-virtual-clusters/migrate-virtual-clusters/`,
-    to: `/clusters/palette-virtual-clusters/`,
+    to: `/clusters/cluster-groups/vcluster-upgrades/`,
   },
   {
     from: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
