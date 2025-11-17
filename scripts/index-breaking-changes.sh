@@ -33,7 +33,7 @@ fi
 # Fetch all branches from the remote
 # Pull *only* version-* branches into refs/remotes/origin/, shallow, skip tags,
 # and explicitly exclude version-3-4 with a negative refspec.
-git fetch --prune --no-tags --depth=1 --filter=blob:none origin \
+git fetch --prune --no-tags --depth=1 origin \
   '+refs/heads/version-*:refs/remotes/origin/version-*' \
   '^refs/heads/version-3-4'
 
