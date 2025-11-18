@@ -21,11 +21,15 @@ partial_name: eks-pod-identity-enablement
 
 6. In Palette, paste the role ARN into the **ARN** field.
 
-7. (Optional) To set a
+7. Click the **Validate** button to validate the credentials.
+
+   The **Add IAM Policies** option appears after successful validation. You can leave this blank for the purposes of EKS Pod Identity
+   enablement, as the required IAM policies should have already been assigned to the IAM role created for Palette (for
+   example, `SpectroCloudRole`).
+
+9. (Optional) To set a
    [permission boundary](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html), click the
    **Add Permission Boundary** toggle and provide the ARN of a IAM policy or role in the **Permission Boundary ARN**
    field.
 
-8. Click the **Validate** button to validate the credentials.
-
-9. Click **Confirm** to create your AWS account.
+10. Click **Confirm** to create your AWS account.

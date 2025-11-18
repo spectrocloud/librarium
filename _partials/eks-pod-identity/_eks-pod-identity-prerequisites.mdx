@@ -5,9 +5,52 @@ partial_name: eks-pod-identity-prerequisites
 
 - Self-hosted Palette or Palette VerteX deployed on an Amazon EKS cluster with Kubernetes version 1.24 or later.
 
-  - The Palette or Palette VerteX stack must be deployed on
-    [managed node groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html), and not
-    self-managed nodes. This is required to obtain the cluster name using Instance Metadata Service (IMDS).
+  - A ConfigMap named `palette-global-config` must exist in the `kube-system` namespace with a `managementClusterName` key set to the EKS management cluster's name where Palette or Palette VerteX is deployed.
+
+    If this key is missing, the fallback mechanism will obtain the cluster's name using IMDS and EC2 tags, but for this to work, the cluster must have only [EKS managed node groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html) with a CNI plugin that does not block IMDS access from pods.
+
+    <details>
+
+    <summary> Click to display kubectl commands to check for and create the ConfigMap </summary>
+
+    1. Log in to the Local UI of the leader host of the Palette or Palette VerteX management cluster.
+
+    2. On the **Cluster** page, under **Environment**, click on the **Admin Kubeconfig File** to download it to your local machine.
+
+    3. On your local machine, open a terminal session and export the `KUBECONFIG` environment variable to point to the downloaded `kubeconfig` file.
+
+       ```bash
+       export KUBECONFIG=/path/to/downloaded/kubeconfig
+       ``` 
+    
+    4. Use the following kubectl command to check if the `palette-global-config` ConfigMap already exists.
+
+       ```bash
+       kubectl describe configmap palette-global-config --namespace kube-system
+       ```
+
+       If the ConfigMap exists, the output will be similar to the following example.
+
+       ```yaml hideClipboard
+       apiVersion: v1
+       kind: ConfigMap
+       metadata:
+         name: palette-global-config
+         namespace: kube-system
+       data:
+         managementClusterName: "palette-eks-management-cluster"
+       ```
+
+    5. If the ConfigMap does not exist, use the following kubectl command to create it. Replace
+       `<eks-management-cluster-name>` with the name of your EKS management cluster where Palette or Palette VerteX is deployed.
+
+       ```bash
+       kubectl create configmap palette-global-config \
+         --from-literal=managementClusterName="<eks-management-cluster-name>" \
+         --namespace kube-system
+       ```
+
+    </details>
 
   - The EKS Pod Identity Agent must be enabled on the Amazon EKS cluster. Refer to the
     [Set up the Amazon EKS Pod Identity Agent](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html)
