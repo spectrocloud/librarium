@@ -10,6 +10,49 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Velero Restore Fails with `runAsNonRoot` Validation Error
+
+On Edge Native clusters configured with Longhorn, restores of security-hardened applications such as Argo CD fail with
+application pods stuck in the `Init:CreateContainerConfigError` state, showing
+`Error: container has runAsNonRoot and image has non-numeric user (cnb), cannot verify user is non-root` on the
+`restore-wait` init container.
+
+This occurs because Velero is configured by default with `--default-volumes-to-fs-backup=true` on Edge Native clusters.
+During a restore, Velero injects a `restore-wait` init container that uses the image `velero-restore-helper`. That image
+runs as a non-numeric user (`cnb`), while the restored workload (for example, Argo CD) has a security context that
+includes `runAsNonRoot: true` but lacks an explicit numeric `runAsUser`. Kubernetes cannot verify that the user `cnb` is
+non-root without a numeric user ID, so it blocks the container from starting. As a result, the restore process remains
+stuck waiting for pod volume restores to complete.
+
+### Debug Steps
+
+To resolve this issue, explicitly configure a numeric non-root user ID for affected applications before taking backups.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**. Then select the profile of your cluster.
+
+3. Select the application whose restore failed (for example, Argo CD). Under **Pack Details**, choose **Values** to
+   display the `values.yaml` file.
+
+4. Add the following lines under `global.securityContext`.
+
+   ```yaml
+   runAsUser: 999
+   runAsGroup: 999
+   fsGroup: 999
+   ```
+
+   This configuration ensures Kubernetes can verify that the pod runs as a non-root user and allows the `restore-wait`
+   container to start successfully during restores.
+
+5. Save the changes as a new version of the cluster profile and update your cluster to use the updated profile. For more
+   information, refer to [Update a Cluster](../../clusters/cluster-management/cluster-updates.md).
+
+6. Create a new cluster backup, then restore it. For more information, refer to
+   [Create Cluster Backup](../../clusters/cluster-management/backup-restore/create-cluster-backup.md) and
+   [Restore Cluster Backup](../../clusters/cluster-management/backup-restore/create-cluster-backup.md).
+
 ## Scenario - CoreDNS Pods Stuck in `CrashLoopBackOff` Due to DNS Loop
 
 On Edge clusters whose hosts run Ubuntu 24.04 with a Unified Kernel Image (UKI), CoreDNS pods may enter the
