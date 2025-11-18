@@ -138,7 +138,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated.
+- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated. Users should migrat to the new Kgateway pack.
 
 - The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack version 1.16.2 now supports password auto-generation.
 
@@ -149,6 +149,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Crossplane                | Add-on | :white_check_mark: | :x:  | 2.0.1       |
 | External Secrets Operator | Add-on | :white_check_mark: | :x:  | 0.20.4      |
 | Flux2                     | Add-on | :white_check_mark: | :x:  | 2.17.1      |
+| Kgateway                  | Add-on | :white_check_mark: | :x:  | 2.2.1       |
 | Prometheus Agent          | Add-on | :white_check_mark: | :x:  | 27.42.1     |
 | Prometheus - Grafana      | Add-on | :white_check_mark: | :x:  | 79.0.1      |
 | Reloader                  | Add-on | :white_check_mark: | :x:  | 1.4.10      |

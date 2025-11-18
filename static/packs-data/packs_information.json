@@ -1010,5 +1010,9 @@
   {
     "name": "csi-dell-csm-operator",
     "description": "CSI Dell CSM Operator is a driver for Dell's storage solutions. It enables the use of Dell's high-performance storage systems as a storage backend for Kubernetes."
+  },
+  {
+    "name": "kgateway",
+    "description": "KGateway is a Kubernetes-native API gateway that simplifies traffic management, routing, and security for microservices. It integrates seamlessly with Kubernetes to provide scalable and efficient ingress,egress, and service-to-service communication."
   }
 ]
