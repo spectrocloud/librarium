@@ -134,11 +134,18 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
+<!-- prettier-ignore-start -->
+
+#### Deprecations and Removals
+
+- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated. Users should migrate to the new Kgateway pack. Refer to the [Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) blog for further information.
+
+<!-- prettier-ignore-end -->
+
 #### Pack Notes
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated. Users should migrat to the new Kgateway pack.
 
 - The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack version 1.16.2 now supports password auto-generation.
 
