@@ -1,0 +1,56 @@
+---
+partial_category: capi-image-builder
+partial_name: ssh-vm
+---
+
+Locate the new Rocky image VM in your VMware vSphere environment. Right-click the VM and select **Clone > Clone to
+Template**.
+
+:::tip
+
+Once the image is built, you can connect to the image via SSH. The following steps are based on guidance from the
+[Image Builder Book](https://image-builder.sigs.k8s.io/capi/providers/vsphere#accessing-remote-vms).
+
+<details>
+
+<summary> Connect to image VM with SSH </summary>
+
+    1. On a machine with [govc](https://github.com/vmware/govmomi/tree/main/govc) installed and configured with your
+        VMware vSphere credentials, clone the
+        [Kubernetes Image Builder repository](https://github.com/kubernetes-sigs/image-builder).
+
+    2. Navigate to the `capi` directory of the Kubernetes Image Builder repository.
+
+        ```shell
+        cd ./image-builder/images/capi/
+        ```
+
+    3. Run the Kubernetes Image Builder `image-govc-cloudinit.sh` script and pass in the `image_name` of your Rocky
+        image VM as specified in the `imageconfig` file. This creates a snapshot of the image and updates it with the
+        data located in the `cloudinit` directory. Ensure the VM is off before running the command.
+
+        ```shell
+        ./hack/image-govc-cloudinit.sh <image_name>
+        ```
+
+        ```shell title="Example output"
+        image-govc-cloudinit: creating snapshot 'new'
+        image-govc-cloudinit: initializing cloud-init data
+        image-govc-cloudinit: creating snapshot 'cloudinit'
+        ```
+
+    4. Set read-write permissions for the owner of the `id_rsa.capi` file.
+
+        ```shell
+        chmod 600 cloudinit/id_rsa.capi
+        ```
+
+    5. Power on the Rocky image VM.
+
+    6. Connect to the VM via SSH using your `id_rsa.capi` key. Replace `<vm-ip>` with the IP of your Rocky image VM.
+
+        ```shell
+        ssh -i cloudinit/id_rsa.capi capv@<vm-ip>
+        ```
+
+</details>
