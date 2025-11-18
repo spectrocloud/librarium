@@ -144,12 +144,12 @@ cluster, you have the option to either **Save** or **Review & Save** your change
 - If your template _is not_ linked to a cluster and you _have_ modified a pack's YAML, the **Review & Save** button
   appears.
 
-- If your template _is_ linked to a cluster, if you have made _any_ variable- or YAML-related changes, the **Review &
+- If your template _is_ linked to a cluster and you have made _any_ variable- or YAML-related changes, the **Review &
   Save** button appears.
 
 ###### Review Changes Dialog
 
-Selecting **Review & Save** opens the **Review changes** dialog. The drawers displayed on the left depend on your
+Selecting **Review & Save** opens the **Review changes** dialog. The items displayed on the left depend on your
 changes:
 
 - Regardless of whether your cluster template is linked to a cluster, if you have modified a pack's YAML, a list of
@@ -162,7 +162,7 @@ changes:
   values for new or updated variables either now or at a later time via the
   [**Variable Values** Tab](#variable-values-tab). To update or assign values in batches, select the check box beside
   each cluster, and choose **Assign new value**. If you do not assign a new value, the **Running value** is retained. A
-  New value cannot be assigned if the changes made to the variable definition do not affect the current value. Hover
+  new value cannot be assigned if the changes made to the variable definition do not affect the current value. Hover
   over the icon preceding the **Running value** column for additional information on what variable changes were made.
 
   ![Review changes dialog when updating cluster profile version of cluster template](/cluster-templates_modify-cluster-templates_review-changes.webp)
@@ -302,13 +302,6 @@ template.
         - To set the same value for multiple clusters, select the check box to the left of each applicable cluster, and
           choose **Assign new value**. Update the value and **Apply** your changes.
 
-        :::info
-
-        DOUBLE CHECK THIS BECAUSE I CAN'T VERIFY IT RIGHT NOW.
-
-        Even if you do not need to make any changes to the **New Value**, you must still confirm the value to use. To do so, mark the check box to the left of the cluster, and select **Assign new value**. If no default value is assigned, the field remains blank; otherwise, the default value is displayed, which may _not_ match the value currently being used in the cluster. Verify and enter the correct value, and select **Apply**.
-
-        :::
 
 6.  Once a new value is applied, the variable's **Assignment** status changes to **Assigned**, and the **New value**
     column is disabled. The updated value becomes the **Running value**. Repeat step 5 until all variables are

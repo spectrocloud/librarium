@@ -25,7 +25,7 @@ All clusters must be on the same cluster profile version, and all cluster profil
 state before they can be upgraded to the next cluster profile version. If a cluster is in the process of being deployed
 or two or more clusters deployed with the same template are on different cluster profile versions (such as in the case
 of incomplete [variable assignments](../modify-cluster-templates.md#variable-values-tab) or failure to upgrade during
-the upgrade window), further version upgrades and are blocked until all clusters are on the same version again. In this
+the upgrade window), the template enters a "partially applied" state, and further version upgrades and are blocked until all clusters are on the same version again. In this
 situation, you can either wait for the next upgrade window, at which time the system will attempt to upgrade the
 remaining clusters, or you can [force the upgrade](../modify-cluster-templates.md#overview-tab) using the **Upgrade
 now** button.
