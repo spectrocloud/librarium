@@ -65,13 +65,23 @@ tags: ["release-notes"]
   high-availability risks during host repaves. This improvement is critical for Day-2 lifecycle operations such as
   upgrades or repaves.
 
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now included the latest
+  Terminal User Interface (TUI). For more details, refer to
+  [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
+
 <!-- prettier-ignore-start -->
 
 - Certificate renewal for clusters provisioned using <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s"/> and <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> has been enhanced to support triggering externally from Kubernetes. This is applicable for both edge and public cloud clusters.
 
 <!-- prettier-ignore-end -->
 
-#### Deprecations and Removals
+#### Bug Fixes
+
+- Fixed an issue that caused
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) to sometimes create an
+  inconsistent number of LINSTOR resources.
 
 ### Edge
 
@@ -81,14 +91,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-#### Features
-
 #### Improvements
 
 - The Terminal User Interface (TUI) is now always enabled and features a new landing page that displays system
   information. It also adds support for configuring Virtual Local Area Networks (VLANs). The `stylus.includeTui` flag in
   `user-data` has been deprecated as a result of these changes. For more details, refer to
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
+
+- [CanvOS](https://github.com/spectrocloud/CanvOS) now provides support for FIPS-compiled Ubuntu 22.04. This is
+  specifically important for users who want to enforce FIPS 140-3 compliance.
 
 #### Bug Fixes
 
@@ -129,36 +140,19 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
+<!-- prettier-ignore-start -->
+
 - The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated.
 
-#### OS
+- The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack version 1.16.2 now supports password auto-generation.
 
-| Pack Name | New Version |
-| --------- | ----------- |
+<!-- prettier-ignore-end -->
 
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Deprecations and Removals
+| Pack Name                 | Layer  | Non-FIPS           | FIPS | New Version |
+| ------------------------- | ------ | ------------------ | ---- | ----------- |
+| Crossplane                | Add-on | :white_check_mark: | :x:  | 2.0.1       |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:  | 0.20.4      |
+| Flux2                     | Add-on | :white_check_mark: | :x:  | 2.17.1      |
+| Prometheus Agent          | Add-on | :white_check_mark: | :x:  | 27.42.1     |
+| Prometheus - Grafana      | Add-on | :white_check_mark: | :x:  | 79.0.1      |
+| Reloader                  | Add-on | :white_check_mark: | :x:  | 1.4.10      |
