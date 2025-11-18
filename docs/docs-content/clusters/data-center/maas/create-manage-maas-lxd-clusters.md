@@ -231,11 +231,14 @@ changing the CPU or memory requirements, or picking a different availability zon
 a rolling repave of the cluster nodes. To learn more about managing a MAAS cluster, refer to
 [Manage Clusters](../../cluster-management/cluster-updates.md).
 
-During rolling repave of host clusters, a node running an older version is removed and the LXD VMs deleted. The control plane components of the workload clusters may undergo a leader election process to pick a new leader on an LXD VM running on a different node. 
+During rolling repave of host clusters, a node running an older version is removed and the LXD VMs deleted. The control
+plane components of the workload clusters may undergo a leader election process to pick a new leader on an LXD VM
+running on a different node.
 
 :::warning
 
-It is critical that the host and workload clusters are configured for high availability with at least three nodes for each spread across different availability zones.
+It is critical that the host and workload clusters are configured for high availability with at least three nodes for
+each spread across different availability zones.
 
 :::
 
