@@ -60,19 +60,19 @@ tags: ["release-notes"]
   or migrate workloads. Refer to the [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) guide for
   further information.
 
-- Palette has implemented a mechanism for evacuating and migrating the control planes for
+- Palette has now implemented a mechanism for evacuating and migrating the control planes
   [MAAS clusters using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md), reducing
   high-availability risks during host repaves. This improvement is critical for Day-2 lifecycle operations such as
   upgrades or repaves.
 
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now include the latest
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now included the latest
   Terminal User Interface (TUI). For more details, refer to
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
 <!-- prettier-ignore-start -->
 
-- Certificate renewal for clusters provisioned using <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s"/> and <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> can now be triggered externally from Kubernetes. This is applicable for both Edge and public cloud clusters.
+- Certificate renewal for clusters provisioned using <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s"/> and <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> has been enhanced to support triggering externally from Kubernetes. This is applicable for both edge and public cloud clusters.
 
 <!-- prettier-ignore-end -->
 
@@ -99,7 +99,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
 - [CanvOS](https://github.com/spectrocloud/CanvOS) now provides support for FIPS-compiled Ubuntu 22.04. This is
-  important for users who want to enforce FIPS 140-3 compliance.
+  specifically important for users who want to enforce FIPS 140-3 compliance.
 
 ### VerteX
 
@@ -118,11 +118,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.25.X of the
+- Terraform version 0.25.4 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.25.X of the
+- Crossplane version 0.25.4 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
@@ -152,3 +152,5 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Prometheus Agent          | Add-on | :white_check_mark: | :x:  | 27.42.1     |
 | Prometheus - Grafana      | Add-on | :white_check_mark: | :x:  | 79.0.1      |
 | Reloader                  | Add-on | :white_check_mark: | :x:  | 1.4.10      |
+| Ubuntu (vSphere)          | OS     | :white_check_mark: | :x:  | 24.04       |
+| Ubuntu (Azure)            | OS     | :white_check_mark: | :x:  | 24.04       |
