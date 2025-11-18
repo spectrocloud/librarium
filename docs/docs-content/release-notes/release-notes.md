@@ -101,8 +101,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [CanvOS](https://github.com/spectrocloud/CanvOS) now provides support for FIPS-compiled Ubuntu 22.04. This is
   specifically important for users who want to enforce FIPS 140-3 compliance.
 
-#### Bug Fixes
-
 ### VerteX
 
 #### Features
@@ -127,8 +125,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - Crossplane version 0.25.X of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
-
-#### Improvements
 
 ### Docs and Education
 
