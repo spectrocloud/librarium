@@ -38,9 +38,11 @@ To resolve this issue, explicitly configure a numeric non-root user ID for affec
 4. Add the following lines under `global.securityContext`.
 
    ```yaml
-   runAsUser: 999
-   runAsGroup: 999
-   fsGroup: 999
+   global:
+     securityContext:
+       runAsUser: 999
+       runAsGroup: 999
+       fsGroup: 999
    ```
 
    This configuration ensures Kubernetes can verify that the pod runs as a non-root user and allows the `restore-wait`
