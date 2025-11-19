@@ -120,6 +120,10 @@ Your newly added AWS cloud account is listed under the AWS section.
 
 <PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS" />
 
+#### Limitations
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS" />
+
 #### Prerequisites
 
 <PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS" />
@@ -247,6 +251,10 @@ Your newly added AWS cloud account is listed under the AWS section.
 ### EKS Pod Identity
 
 <PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS US Gov" />
+
+#### Limitations
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS US Gov" />
 
 #### Prerequisites
 
@@ -458,6 +466,10 @@ newly added AWS cloud account is listed under the AWS section.
 ### EKS Pod Identity
 
 <PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS US Secret" />
+
+#### Limitations
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS US Secret" />
 
 #### Prerequisites
 
