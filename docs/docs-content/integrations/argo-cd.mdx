@@ -29,7 +29,7 @@ data "spectrocloud_pack" "argo_cd" {
 ```
 ## Edge Cluster Restore Configuration
 
-For successful restores on Edge Native clusters configured with Longhorn, set a numeric non-root user and group ID in the Argo CD pack `values.yaml` file under `global.securityContext`.
+For successful restores on Edge Native clusters configured with Longhorn, set numeric non-root IDs for the user, group, and filesystem group in the Argo CD pack `values.yaml` file under `global.securityContext`.
 
 ```yaml
 runAsUser: 999
