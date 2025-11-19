@@ -26,7 +26,7 @@ stuck waiting for pod volume restores to complete.
 
 ### Debug Steps
 
-To resolve this issue, explicitly configure a numeric non-root user ID for affected applications before taking backups.
+To resolve this issue, explicitly configure numeric non-root IDs for the user, group, and filesystem group for affected applications before taking backups.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
