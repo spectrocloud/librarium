@@ -51,7 +51,7 @@ To make changes to a linked cluster profile, you must
 [create a new version](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of the cluster
 profile and [update the version referenced](./modify-cluster-templates.md#update-cluster-profile-version) in the cluster
 template. This ensures that all clusters using the cluster template have identical software stacks, preventing
-configuration drift that can naturally occur with inline, on-the-fly updates, or by using varied cluster profile
+configuration drift that can naturally occur with inline, on-the-fly updates, or by using different cluster profile
 versions. Each cluster can be attached to only one cluster template at a time, further guarding against drift.
 
 A cluster profile version cannot be linked to a cluster template if that profile version is already being used by a

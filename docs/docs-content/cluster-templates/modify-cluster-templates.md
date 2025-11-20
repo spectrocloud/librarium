@@ -76,10 +76,14 @@ now** button is disabled while the upgrade is in progress.
 
 :::warning
 
-If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
-Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
-select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
-each variable before attempting the upgrade again.
+- If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
+  Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
+  select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
+  each variable before attempting the upgrade again.
+
+- If your changes require a cluster repave, you must
+  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
+  proceed.
 
 :::
 
@@ -138,38 +142,57 @@ profile, and choose the version that contains the desired changes.
 ![Updating the cluster profile version linked in a cluster template](/cluster-templates_modify-cluster-templates_update-profile-version.webp)
 
 Depending on the changes made to the updated cluster profile version and whether the cluster template is linked to a
-cluster, you have the option to either **Save** or **Review & Save** your changes:
+cluster, you have the option to either **Save** or **Review & Save** your changes.
 
-- If your template _is not_ linked to a cluster and you _have not_ modified a pack's YAML, the **Save** button appears.
-
-- If your template _is not_ linked to a cluster and you _have_ modified a pack's YAML, the **Review & Save** button
-  appears.
-
-- If your template _is_ linked to a cluster and you have made _any_ variable- or YAML-related changes, the **Review &
-  Save** button appears.
+| **Template Linked to Cluster** | **Pack YAML Changes** | **Variable Changes** | **Button Displayed**                        |
+| ------------------------------ | --------------------- | -------------------- | ------------------------------------------- |
+| :x:                            | :x:                   | :x:                  | **Save**                                    |
+| :x:                            | :x:                   | :white_check_mark:   | **Save**                                    |
+| :x:                            | :white_check_mark:    | :x:                  | [**Review & Save**](#review-changes-dialog) |
+| :x:                            | :white_check_mark:    | :white_check_mark:   | [**Review & Save**](#review-changes-dialog) |
+| :white_check_mark:             | :x:                   | :x:                  | **Save**                                    |
+| :white_check_mark:             | :x:                   | :white_check_mark:   | [**Review & Save**](#review-changes-dialog) |
+| :white_check_mark:             | :white_check_mark:    | :x:                  | [**Review & Save**](#review-changes-dialog) |
+| :white_check_mark:             | :white_check_mark:    | :white_check_mark:   | [**Review & Save**](#review-changes-dialog) |
 
 ###### Review Changes Dialog
 
-Selecting **Review & Save** opens the **Review changes** dialog. The items displayed on the left depend on your changes:
+Selecting **Review & Save** opens the **Review changes** dialog. The items displayed on the left depend on your changes.
 
-- Regardless of whether your cluster template is linked to a cluster, if you have modified a pack's YAML, a list of
-  modified packs appear. Select each pack to view the changes in read-only mode. Once you view a pack, the empty circle
-  changes to a check mark. If you need to make changes, you must modify the applicable cluster profile version. You
-  cannot select **Apply changes** until you have viewed each pack.
+| **Template Linked to Cluster** | **Pack YAML Changes** | **Variable Changes** | **Items Displayed**                                                                                |
+| ------------------------------ | --------------------- | -------------------- | -------------------------------------------------------------------------------------------------- |
+| :x:                            | :white_check_mark:    | :x:                  | - [Modified Packs](#modified-packs)                                                                |
+| :x:                            | :white_check_mark:    | :white_check_mark:   | - [Modified Packs](#modified-packs)                                                                |
+| :white_check_mark:             | :x:                   | :white_check_mark:   | - [Profile Variable Changes](#profile-variable-changes)                                            |
+| :white_check_mark:             | :white_check_mark:    | :x:                  | - [Modified Packs](#modified-packs)                                                                |
+| :white_check_mark:             | :white_check_mark:    | :white_check_mark:   | - [Modified Packs](#modified-packs) <br /> - [Profile Variable Changes](#profile-variable-changes) |
 
-- If your template _is_ linked to a cluster template and you have made _any_ variable-related changes, the **Profile
-  variables changes** panel appears. Use the search bar and drop-down menus to filter your changes. You can assign
-  values for new or updated variables either now or at a later time via the
-  [**Variable Values** Tab](#variable-values-tab). To update or assign values in batches, select the check box beside
-  each cluster, and choose **Assign new value**. If you do not assign a new value, the **Running value** is retained. A
-  new value cannot be assigned if the changes made to the variable definition do not affect the current value. Hover
-  over the icon preceding the **Running value** column for additional information on what variable changes were made.
+###### Modified Packs
 
-  ![Review changes dialog when updating cluster profile version of cluster template](/cluster-templates_modify-cluster-templates_review-changes.webp)
+Select each pack to view the changes in read-only mode. Once you view a pack, the empty circle changes to a check mark.
+If you need to make changes, you must modify the applicable cluster profile version. You cannot select **Apply changes**
+until you have viewed each pack.
 
-  To view a list of removed variables and variables without definition changes, clear the **Show only new variables or
-  variables with a configuration change** check box. Values assigned are propagated to the applicable clusters during
-  the next upgrade window defined in the attached maintenance policy.
+###### Profile Variable Changes
+
+Use the search bar and drop-down menus to filter your changes. To view a list of removed variables and variables without
+definition changes, clear the **Show only new variables or variables with a configuration change** check box.
+
+You can assign values for new or updated variables either now or at a later time via the
+[**Variable Values** Tab](#variable-values-tab). To update or assign values in batches, select the check box beside each
+cluster, and choose **Assign new value**. If you do not assign a new value, the **Running value** is retained.
+
+Values assigned are propagated to the applicable clusters during the next upgrade window defined in the attached
+maintenance policy.
+
+:::info
+
+A new value cannot be assigned if the changes made to the variable definition do not affect the current value. Hover
+over the icon preceding the **Running value** column for additional information on what variable changes were made.
+
+:::
+
+![Review changes dialog when updating cluster profile version of cluster template](/cluster-templates_modify-cluster-templates_review-changes.webp)
 
 If at any time you want to revert your cluster profile stack to its previous state, return to the **Policies** tab and
 **Discard** your changes. Once changes are applied, they cannot be discarded.
@@ -227,10 +250,14 @@ navigate to the **Overview** tab, and select **Options > Upgrade now**.
 
 :::warning
 
-If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
-Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
-select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
-each variable before attempting the upgrade again.
+- If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
+  Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
+  select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
+  each variable before attempting the upgrade again.
+
+- If your changes require a cluster repave, you must
+  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
+  proceed.
 
 :::
 
