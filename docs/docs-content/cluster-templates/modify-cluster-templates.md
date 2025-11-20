@@ -69,16 +69,17 @@ the template. This is caused when a cluster profile has been recently added to o
 the version of a cluster profile linked to a cluster template has been updated, but the upgrade window specified in the
 attached maintenance policy has not passed.
 
-To force cluster updates and bypass the scheduled maintenance window, select **Options > Upgrade now**.
+To force cluster updates and bypass the scheduled maintenance window, select **Options > Upgrade now**. The **Upgrade
+now** button is disabled while the upgrade is in progress.
 
 ![Manually updating clusters attached to a cluster template](/cluster-templates_modify-cluster-templates_upgrade-now.webp)
 
 :::warning
 
 If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
-Even if you attempt to force an upgrade, any clusters without pending variable assignments will _not_ be updated when
-you select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value**
-to each variable before attempting the upgrade again.
+Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
+select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
+each variable before attempting the upgrade again.
 
 :::
 
@@ -131,8 +132,8 @@ regardless of whether a cluster is or is not deployed using the cluster template
 
 ##### Update Cluster Profile Version
 
-To update the cluster profile version used for clusters deployed with the cluster template, expand the version drop-down
-menu beside the cluster profile, and choose the version that contains the desired changes.
+To update the cluster profile version linked to a cluster template, expand the version drop-down menu beside the cluster
+profile, and choose the version that contains the desired changes.
 
 ![Updating the cluster profile version linked in a cluster template](/cluster-templates_modify-cluster-templates_update-profile-version.webp)
 
@@ -149,8 +150,7 @@ cluster, you have the option to either **Save** or **Review & Save** your change
 
 ###### Review Changes Dialog
 
-Selecting **Review & Save** opens the **Review changes** dialog. The items displayed on the left depend on your
-changes:
+Selecting **Review & Save** opens the **Review changes** dialog. The items displayed on the left depend on your changes:
 
 - Regardless of whether your cluster template is linked to a cluster, if you have modified a pack's YAML, a list of
   modified packs appear. Select each pack to view the changes in read-only mode. Once you view a pack, the empty circle
@@ -228,9 +228,9 @@ navigate to the **Overview** tab, and select **Options > Upgrade now**.
 :::warning
 
 If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
-Even if you attempt to force an upgrade, the cluster will _not_ be updated when you select **Upgrade now**. Navigate to
-the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to each variable before attempting the
-upgrade again.
+Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
+select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
+each variable before attempting the upgrade again.
 
 :::
 
@@ -266,7 +266,7 @@ Use the following table to help you determine which workflow to use when updatin
 #### Update Variables via the Variable Values Tab
 
 When you update the cluster profile version linked to a cluster template or add or remove a cluster profile containing
-variables, any values that were not assigned in the [**Review changes** dialog](#review-changes-dialog) enter a
+variables, any required values that were not assigned in the [**Review changes** dialog](#review-changes-dialog) enter a
 **Pending** state. Upon viewing your cluster or the cluster profile version linked to your cluster template, the banner
 **Action required: This cluster is managed by the template [name] and has unassigned profile variables** is displayed.
 Select the linked cluster template to view the list of cluster **Variable values** attached to your cluster template via
@@ -301,7 +301,6 @@ template.
 
         - To set the same value for multiple clusters, select the check box to the left of each applicable cluster, and
           choose **Assign new value**. Update the value and **Apply** your changes.
-
 
 6.  Once a new value is applied, the variable's **Assignment** status changes to **Assigned**, and the **New value**
     column is disabled. The updated value becomes the **Running value**. Repeat step 5 until all variables are
