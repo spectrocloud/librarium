@@ -19,7 +19,7 @@ pods stuck in the `Init:CreateContainerConfigError` state, showing
 
 This occurs because Velero is configured by default with `--default-volumes-to-fs-backup=true` on Edge Native clusters.
 During a restore, Velero injects a `restore-wait` init container that uses the image `velero-restore-helper`. That image
-runs as a non-numeric user (`cnb`), while the restored workload (for example, Argo CD) has a security context that
+runs as a non-numeric user `cnb`, while the restored workload (for example, Argo CD) has a security context that
 includes `runAsNonRoot: true` but lacks an explicit numeric `runAsUser`. Kubernetes cannot verify that the user `cnb` is
 non-root without a numeric user ID, so it blocks the container from starting. As a result, the restore process remains
 stuck waiting for pod volume restores to complete.
