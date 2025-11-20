@@ -60,19 +60,19 @@ tags: ["release-notes"]
   or migrate workloads. Refer to the [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) guide for
   further information.
 
-- Palette has now implemented a mechanism for evacuating and migrating the control planes
+- Palette has now implemented a mechanism for evacuating and migrating the control planes for
   [MAAS clusters using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md), reducing
   high-availability risks during host repaves. This improvement is critical for Day-2 lifecycle operations such as
   upgrades or repaves.
 
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now included the latest
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now include the latest
   Terminal User Interface (TUI). For more details, refer to
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
 <!-- prettier-ignore-start -->
 
-- Certificate renewal for clusters provisioned using <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s"/> and <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> has been enhanced to support triggering externally from Kubernetes. This is applicable for both edge and public cloud clusters.
+- Certificate renewal for clusters provisioned using <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s"/> and <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> can now be triggered externally from Kubernetes. This is applicable for both Edge and public cloud clusters.
 
 <!-- prettier-ignore-end -->
 
@@ -92,14 +92,14 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-end -->
 
-- Fixed an issue that caused `ipclaim` resources to fail to be deleted during the repave of
+- Fixed an issue that prevented `ipclaim` resources from being deleted when repaving
   [VMware clusters](../clusters/data-center/vmware/vmware.md).
 
-- Fixed an issue that caused the Palette UI to fail to display metrics for
+- Fixed an issue that prevented the Palette UI from displaying metrics for
   [EKS clusters](../clusters/public-cloud/aws/eks.md) due to incorrect security group rules.
 
-- Fixed an issue that cause rotated IAM keys in [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
-  to fail update for deployed [AWS clusters](../clusters/public-cloud/aws/aws.md).
+- Fixed an issue that prevented rotated IAM keys in [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
+  from being updated on deployed [AWS clusters](../clusters/public-cloud/aws/aws.md).
 
 ### Edge
 
@@ -117,11 +117,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
 - [CanvOS](https://github.com/spectrocloud/CanvOS) now provides support for FIPS-compiled Ubuntu 22.04. This is
-  specifically important for users who want to enforce FIPS 140-3 compliance.
+  important for users who want to enforce FIPS 140-3 compliance.
 
 #### Bug Fixes
 
-- Fixed an issue that cause pack reconciliation to fail in
+- Fixed an issue that caused pack reconciliation to fail in
   [locally managed Edge clusters](../clusters/edge/local-ui/cluster-management/create-cluster.md#create-local-cluster)
   provisioned duplicate packs.
 
@@ -151,7 +151,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   now available.
 
 - <TpBadge /> The [Spectro Cloud Terraform
-  provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now provides support for
+  provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now supports
   [cluster templates](../cluster-templates/cluster-templates.md).
 
   - The `spectrocloud_cluster_config_policy` data source implements
@@ -162,7 +162,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The
   [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
-  now provides support for [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+  now supports [EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
 
 ### Docs and Education
 
@@ -201,5 +201,5 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Prometheus - Grafana      | Add-on | :white_check_mark: | :x:                | 79.0.1      |
 | Reloader                  | Add-on | :white_check_mark: | :x:                | 1.4.10      |
 | Spectro RBAC              | Add-on | :white_check_mark: | :x:                | 1.0.1       |
-| Ubuntu (vSphere)          | OS     | :white_check_mark: | :x:                | 24.04       |
 | Ubuntu (Azure)            | OS     | :white_check_mark: | :x:                | 24.04       |
+| Ubuntu (vSphere)          | OS     | :white_check_mark: | :x:                | 24.04       |

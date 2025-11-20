@@ -1013,6 +1013,6 @@
   },
   {
     "name": "kgateway",
-    "description": "KGateway is a Kubernetes-native API gateway that simplifies traffic management, routing, and security for microservices. It integrates seamlessly with Kubernetes to provide scalable and efficient ingress,egress, and service-to-service communication."
+    "description": "KGateway is a Kubernetes-native API gateway that simplifies traffic management, routing, and security for microservices. It integrates seamlessly with Kubernetes to provide scalable and efficient ingress, egress, and service-to-service communication."
   }
 ]
