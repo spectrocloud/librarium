@@ -3,7 +3,5 @@ partial_category: eks-pod-identity
 partial_name: eks-pod-identity-intro
 ---
 
-[EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) is a secure authentication
-mechanism that allows Kubernetes pods to assume IAM roles with temporary, automatically refreshed credentials. This
-eliminates the need for long-lived AWS credentials, addressing security concerns in highly regulated environments where
-organizations cannot use long-lived credentials.
+Palette supports [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html), which allows
+pods to securely access AWS services using short-lived credentials. This is achieved by associating an IAM role with a Kubernetes service account, enabling pods that use that service account to assume the IAM role and access AWS resources without needing to manage long-lived AWS credentials.
