@@ -162,7 +162,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The
   [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
-  now provide support for[EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+  now provides support for [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
 
 ### Docs and Education
 
