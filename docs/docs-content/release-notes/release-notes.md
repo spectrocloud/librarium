@@ -150,6 +150,20 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
+- <TpBadge /> The [Spectro Cloud Terraform
+  provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now provides support for
+  [cluster templates](../cluster-templates/cluster-templates.md).
+
+  - The `spectrocloud_cluster_config_policy` data source implements
+    [maintenance policies](../cluster-templates/create-cluster-template-policies/maintenance-policy.md).
+  - The `spectrocloud_cluster_config_template` data source implements
+    [cluster templates](../cluster-templates/create-cluster-templates.md).
+  - Cluster resources now have the `cluster_template` field to support the configuration of cluster templates.
+
+- The
+  [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
+  now provide support for[EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+
 ### Docs and Education
 
 - The new [Find Breaking Changes for Palette Upgrades](./breaking-changes.md) page contains an interactive component
@@ -171,17 +185,21 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 <!-- prettier-ignore-start -->
 
 - The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack version 1.16.2 now supports password auto-generation.
+- The <VersionedLink text="Spectro RBAC" url="/integrations/packs/?pack=spectro-rback" /> pack version 1.0.1 now supports CPU, memory, and storage resource quota specifications.
 
 <!-- prettier-ignore-end -->
 
-| Pack Name                 | Layer  | Non-FIPS           | FIPS | New Version |
-| ------------------------- | ------ | ------------------ | ---- | ----------- |
-| Crossplane                | Add-on | :white_check_mark: | :x:  | 2.0.1       |
-| External Secrets Operator | Add-on | :white_check_mark: | :x:  | 0.20.4      |
-| Flux2                     | Add-on | :white_check_mark: | :x:  | 2.17.1      |
-| Kgateway                  | Add-on | :white_check_mark: | :x:  | 2.2.1       |
-| Prometheus Agent          | Add-on | :white_check_mark: | :x:  | 27.42.1     |
-| Prometheus - Grafana      | Add-on | :white_check_mark: | :x:  | 79.0.1      |
-| Reloader                  | Add-on | :white_check_mark: | :x:  | 1.4.10      |
-| Ubuntu (vSphere)          | OS     | :white_check_mark: | :x:  | 24.04       |
-| Ubuntu (Azure)            | OS     | :white_check_mark: | :x:  | 24.04       |
+| Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI            | CSI    | :white_check_mark: | :x:                | 1.51.0      |
+| Calico                    | CNI    | :x:                | :white_check_mark: | 3.31.0      |
+| Crossplane                | Add-on | :white_check_mark: | :x:                | 2.0.1       |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.20.4      |
+| Flux2                     | Add-on | :white_check_mark: | :x:                | 2.17.1      |
+| Kgateway                  | Add-on | :white_check_mark: | :x:                | 2.2.1       |
+| Prometheus Agent          | Add-on | :white_check_mark: | :x:                | 27.42.1     |
+| Prometheus - Grafana      | Add-on | :white_check_mark: | :x:                | 79.0.1      |
+| Reloader                  | Add-on | :white_check_mark: | :x:                | 1.4.10      |
+| Spectro RBAC              | Add-on | :white_check_mark: | :x:                | 1.0.1       |
+| Ubuntu (vSphere)          | OS     | :white_check_mark: | :x:                | 24.04       |
+| Ubuntu (Azure)            | OS     | :white_check_mark: | :x:                | 24.04       |
