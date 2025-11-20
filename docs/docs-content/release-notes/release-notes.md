@@ -98,8 +98,9 @@ tags: ["release-notes"]
 - Fixed an issue that prevented the Palette UI from displaying metrics for
   [EKS clusters](../clusters/public-cloud/aws/eks.md) due to incorrect security group rules.
 
-- Fixed an issue that prevented rotated IAM keys in [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
-  from being updated on deployed [AWS clusters](../clusters/public-cloud/aws/aws.md).
+- Fixed an issue that prevented rotated IAM keys in
+  [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts.md) from being updated on deployed
+  [AWS clusters](../clusters/public-cloud/aws/aws.md).
 
 ### Edge
 
@@ -151,8 +152,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   now available.
 
 - <TpBadge /> The [Spectro Cloud Terraform
-  provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now supports
-  [cluster templates](../cluster-templates/cluster-templates.md).
+  provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now supports [cluster
+  templates](../cluster-templates/cluster-templates.md).
 
   - The `spectrocloud_cluster_config_policy` data source implements
     [maintenance policies](../cluster-templates/create-cluster-template-policies/maintenance-policy.md).
