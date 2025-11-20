@@ -144,28 +144,18 @@ profile, and choose the version that contains the desired changes.
 Depending on the changes made to the updated cluster profile version and whether the cluster template is linked to a
 cluster, you have the option to either **Save** or **Review & Save** your changes.
 
-| **Template Linked to Cluster** | **Pack YAML Changes** | **Variable Changes** | **Button Displayed**                        |
-| ------------------------------ | --------------------- | -------------------- | ------------------------------------------- |
-| :x:                            | :x:                   | :x:                  | **Save**                                    |
-| :x:                            | :x:                   | :white_check_mark:   | **Save**                                    |
-| :x:                            | :white_check_mark:    | :x:                  | [**Review & Save**](#review-changes-dialog) |
-| :x:                            | :white_check_mark:    | :white_check_mark:   | [**Review & Save**](#review-changes-dialog) |
-| :white_check_mark:             | :x:                   | :x:                  | **Save**                                    |
-| :white_check_mark:             | :x:                   | :white_check_mark:   | [**Review & Save**](#review-changes-dialog) |
-| :white_check_mark:             | :white_check_mark:    | :x:                  | [**Review & Save**](#review-changes-dialog) |
-| :white_check_mark:             | :white_check_mark:    | :white_check_mark:   | [**Review & Save**](#review-changes-dialog) |
-
-###### Review Changes Dialog
-
 Selecting **Review & Save** opens the **Review changes** dialog. The items displayed on the left depend on your changes.
 
-| **Template Linked to Cluster** | **Pack YAML Changes** | **Variable Changes** | **Items Displayed**                                                                                |
-| ------------------------------ | --------------------- | -------------------- | -------------------------------------------------------------------------------------------------- |
-| :x:                            | :white_check_mark:    | :x:                  | - [Modified Packs](#modified-packs)                                                                |
-| :x:                            | :white_check_mark:    | :white_check_mark:   | - [Modified Packs](#modified-packs)                                                                |
-| :white_check_mark:             | :x:                   | :white_check_mark:   | - [Profile Variable Changes](#profile-variable-changes)                                            |
-| :white_check_mark:             | :white_check_mark:    | :x:                  | - [Modified Packs](#modified-packs)                                                                |
-| :white_check_mark:             | :white_check_mark:    | :white_check_mark:   | - [Modified Packs](#modified-packs) <br /> - [Profile Variable Changes](#profile-variable-changes) |
+| **Template Linked to Cluster** | **Pack YAML Changes** | **Variable Changes** | **Button Displayed** | **Items Displayed**                                                                                |
+| ------------------------------ | --------------------- | -------------------- | -------------------- | -------------------------------------------------------------------------------------------------- |
+| :x:                            | :x:                   | :x:                  | **Save**             | N/A                                                                                                |
+| :x:                            | :x:                   | :white_check_mark:   | **Save**             | N/A                                                                                                |
+| :x:                            | :white_check_mark:    | :x:                  | **Review & Save**    | - [Modified Packs](#modified-packs)                                                                |
+| :x:                            | :white_check_mark:    | :white_check_mark:   | **Review & Save**    | - [Modified Packs](#modified-packs)                                                                |
+| :white_check_mark:             | :x:                   | :x:                  | **Save**             | N/A                                                                                                |
+| :white_check_mark:             | :x:                   | :white_check_mark:   | **Review & Save**    | - [Profile Variable Changes](#profile-variable-changes)                                            |
+| :white_check_mark:             | :white_check_mark:    | :x:                  | **Review & Save**    | - [Modified Packs](#modified-packs)                                                                |
+| :white_check_mark:             | :white_check_mark:    | :white_check_mark:   | **Review & Save**    | - [Modified Packs](#modified-packs) <br /> - [Profile Variable Changes](#profile-variable-changes) |
 
 ###### Modified Packs
 
@@ -215,7 +205,8 @@ attached to a cluster template.
 
 When you are finished, **Save** your changes, or **Discard** your changes to revert your cluster profile stack to its
 previous state. If your changes include cluster profile version updates and the cluster template is linked to a cluster,
-you must **Review & Save** your changes using the [**Review changes** dialog](#review-changes-dialog).
+you must **Review & Save** your changes. Refer to the [Update Cluster Profile Version](#update-cluster-profile-version)
+section for more information.
 
 :::info
 
@@ -233,7 +224,8 @@ expanded **Linked profiles** panel and choose **Replace** or **Remove**.
 
 When you are finished, **Save** your changes, or **Discard** your changes to revert your cluster profile stack to its
 previous state. If your changes include cluster profile version updates and the cluster template is linked to a cluster,
-you must **Review & Save** your changes using the [**Review changes** dialog](#review-changes-dialog).
+you must **Review & Save** your changes. Refer to the [Update Cluster Profile Version](#update-cluster-profile-version)
+section for more information.
 
 :::info
 
@@ -293,11 +285,11 @@ Use the following table to help you determine which workflow to use when updatin
 #### Update Variables via the Variable Values Tab
 
 When you update the cluster profile version linked to a cluster template or add or remove a cluster profile containing
-variables, any required values that were not assigned in the [**Review changes** dialog](#review-changes-dialog) enter a
-**Pending** state. Upon viewing your cluster or the cluster profile version linked to your cluster template, the banner
-**Action required: This cluster is managed by the template [name] and has unassigned profile variables** is displayed.
-Select the linked cluster template to view the list of cluster **Variable values** attached to your cluster template via
-cluster profiles.
+variables, any required values that were not assigned in the [**Profile variable changes**](#profile-variable-changes)
+panel enter a **Pending** state. Upon viewing your cluster or the cluster profile version linked to your cluster
+template, the banner **Action required: This cluster is managed by the template [name] and has unassigned profile
+variables** is displayed. Select the linked cluster template to view the list of cluster **Variable values** attached to
+your cluster template via cluster profiles.
 
 ![Action required banner when viewing a cluster with pending variables](/cluster-templates_action-required.webp)
 
