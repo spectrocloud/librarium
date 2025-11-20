@@ -83,11 +83,29 @@ tags: ["release-notes"]
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) to sometimes create an
   inconsistent number of LINSTOR resources.
 
+- Fixed an issue that caused some [self-hosted Palette](../enterprise-version/enterprise-version.md) and
+  [VerteX](../vertex/vertex.md) installations to fail to due to a Helm template rendering error.
+
+<!-- prettier-ignore-start -->
+
+ - Fixed an issue that caused Palette UI errors related to YAML marshalling when accepting cluster profile updates for cluster profiles configured using the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack.
+
+<!-- prettier-ignore-end -->
+
+- Fixed an issue that caused `ipclaim` resources to fail to be deleted during the repave of
+  [VMware clusters](../clusters/data-center/vmware/vmware.md).
+
+- Fixed an issue that caused the Palette UI to fail to display metrics for
+  [EKS clusters](../clusters/public-cloud/aws/eks.md) due to incorrect security group rules.
+
+- Fixed an issue that cause rotated IAM keys in [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
+  to fail update for deployed [AWS clusters](../clusters/public-cloud/aws/aws.md).
+
 ### Edge
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.X Palette release is 4.8.X.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.X Palette release is 4.8.2.
 
 :::
 
@@ -100,6 +118,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - [CanvOS](https://github.com/spectrocloud/CanvOS) now provides support for FIPS-compiled Ubuntu 22.04. This is
   specifically important for users who want to enforce FIPS 140-3 compliance.
+
+#### Bug Fixes
+
+- Fixed an issue that cause pack reconciliation to fail in
+  [locally managed Edge clusters](../clusters/edge/local-ui/cluster-management/create-cluster.md#create-local-cluster)
+  provisioned duplicate packs.
 
 ### VerteX
 
@@ -145,7 +169,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 #### Pack Notes
 
 <!-- prettier-ignore-start -->
-
 
 - The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack version 1.16.2 now supports password auto-generation.
 
