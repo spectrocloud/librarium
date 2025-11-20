@@ -11,6 +11,97 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 14, 2025 - Component Updates {#component-updates-2025-46}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.30.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Argo CD" url="/integrations/packs/?pack=argo-cd" /> pack version 9.0.5 now sets the default value of `applicationsetcontroller.policy` to empty instead of `sync`. Users must explicitly set the field value using the `argocd-cmd-params-cm` ConfigMap to keep the previous setting.
+
+- Users can now use Ubuntu 22.04 on [AWS clusters](../clusters/public-cloud/aws/aws.md) using the FIPS <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack version 1.33.5. Refer to the <VersionedLink text="Ubuntu (AWS)" url="/integrations/packs/?pack=ubuntu-aws#enable-fips-mode-on-aws-ubuntu-2204" /> pack documentation to learn how to enable FIPS mode on Ubuntu 22.04.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                                | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| ArgoCD                                   | Add-on     | :white_check_mark: | :x:                | 9.0.5       |
+| Amazon EBS CSI                           | CSI        | :x:                | :white_check_mark: | 1.51.0      |
+| AWS Application Loadbalancer             | Add-on     | :white_check_mark: | :x:                | 2.14.1      |
+| Calico Network Policy                    | Add-on     | :white_check_mark: | :x:                | 3.31.0      |
+| Elastic Operator                         | Add-on     | :white_check_mark: | :x:                | 3.2.0       |
+| Elastic Stack                            | Add-on     | :white_check_mark: | :x:                | 0.17.0      |
+| GCE Persistent Disk CSI                  | CSI        | :white_check_mark: | :x:                | 1.20.0      |
+| Istio                                    | Add-on     | :white_check_mark: | :x:                | 1.27.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.5      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Palette eXtended Kubernetes Edge (PXK-E) | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
+| Ubuntu (AWS)                             | OS         | :white_check_mark: | :x:                | 24.04       |
+| Ubuntu (AWS)                             | OS         | :x:                | :white_check_mark: | 22.04       |
+
+## November 14, 2025 - Release 4.7.30
+
+The following component updates are applicable to this release:
+
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
+- [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
+- [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
+
+### Bug Fixes
+
+- Fixed an issue that prevented ISO images created using CanvOS version 4.7.16 from being installed on
+  [Edge clusters](../clusters/edge/edge.md) due to a partition-related failure in [Kairos](http://kairos.io/).
+- Fixed an issue that prevented the creation of Ubuntu 20.04 FIPS ISO images from being created using CanvOS version
+  4.7.16.
+
+## November 7, 2025 - Component Updates {#component-updates-2025-45}
+
+The following components have been updated for Palette version 4.7.27 - 4.7.29.
+
+| Component                                                                                                         | Version         |
+| ----------------------------------------------------------------------------------------------------------------- | --------------- |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.2-hotfix.1 |
+
+### Improvements
+
+- The [Artifact Studio](../downloads/artifact-studio.md) packs list has been consolidated to display a single tile for
+  all versions of packs and pack display names have been enhanced. This leads to an improved user experience.
+
+### Bug Fixes
+
+- Fixed an issue that caused the
+  [`spectrocloud_macros` Crossplane resource](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  to fail to fetch the correct workspace.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack now allows the configuration of the `px-operator` image in the `pack.content.images` list.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name           | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------- | ------ | ------------------ | ------------------ | ----------- |
+| AWS VPC CNI (Helm)  | CNI    | :white_check_mark: | :x:                | 1.20.4      |
+| Azure Disk          | CSI    | :white_check_mark: | :x:                | 1.33.5      |
+| Calico              | CNI    | :white_check_mark: | :x:                | 3.31.0      |
+| Cilium              | CNI    | :white_check_mark: | :x:                | 1.18.1-rev1 |
+| Cilium Tetragon     | Add-on | :white_check_mark: | :x:                | 1.6.0       |
+| Flannel             | CNI    | :x:                | :white_check_mark: | 0.27.4      |
+| Karpenter           | Add-on | :x:                | :white_check_mark: | 1.8.1       |
+| Longhorn            | CSI    | :white_check_mark: | :white_check_mark: | 1.10.0      |
+| Multus              | CNI    | :white_check_mark: | :x:                | 2.2.21      |
+| Nvidia GPU Operator | Add-on | :white_check_mark: | :x:                | 25.10.0     |
+| Prometheus Agent    | Add-on | :white_check_mark: | :x:                | 27.4.11     |
+| Prometheus Operator | Add-on | :white_check_mark: | :x:                | 78.3.0      |
+
 ## October 31, 2025 - Component Updates {#component-updates-2025-44}
 
 The following components have been updated for Palette version 4.7.27 - 4.7.29.
@@ -45,6 +136,14 @@ The following components have been updated for Palette version 4.7.27 - 4.7.29.
 | Spectro Kubernetes Dashboard | Add-on     | :x:                | :white_check_mark: | 7.11.1      |
 
 ## October 27, 2025 - Release 4.7.29
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
+- [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
+- [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -114,6 +213,15 @@ The following components have been updated for Palette version 4.7.27.
 | Ubuntu MAAS               | OS     | :white_check_mark: | :x:                | 24.04       |
 
 ## October 19, 2025 - Release 4.7.27 {#release-notes-4.7.c}
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [November 14, 2025 - Component Updates](#component-updates-2025-46) <!-- omit in toc -->
+- [November 7, 2025 - Component Updates](#component-updates-2025-45) <!-- omit in toc -->
+- [October 31, 2025 - Component Updates](#component-updates-2025-44) <!-- omit in toc -->
+- [October 24, 2025 - Component Updates](#component-updates-2025-43) <!-- omit in toc -->
 
 ### Security Notices
 
