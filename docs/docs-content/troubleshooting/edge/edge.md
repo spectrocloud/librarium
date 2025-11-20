@@ -12,8 +12,8 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - Velero Restore Fails with `runAsNonRoot` Validation Error
 
-On Edge Native clusters, restores of security-hardened applications such as Argo CD may fail
-with affected application pods stuck in the `Init:CreateContainerConfigError` state, showing
+On Edge Native clusters, restores of security-hardened applications such as Argo CD may fail with affected application
+pods stuck in the `Init:CreateContainerConfigError` state, showing
 `Error: container has runAsNonRoot and image has non-numeric user (cnb), cannot verify user is non-root` on the
 `restore-wait` init container.
 
