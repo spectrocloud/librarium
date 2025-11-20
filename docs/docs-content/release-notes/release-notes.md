@@ -124,7 +124,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Fixed an issue that caused pack reconciliation to fail in
   [locally managed Edge clusters](../clusters/edge/local-ui/cluster-management/create-cluster.md#create-local-cluster)
-  provisioned duplicate packs.
+  provisioned with cluster profiles containing duplicate packs.
 
 ### VerteX
 
