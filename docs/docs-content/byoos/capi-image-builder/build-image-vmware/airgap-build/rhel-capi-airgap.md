@@ -593,6 +593,7 @@ The RHEL image is now built and available in the VMware vSphere environment. You
 and deploy a VMware host cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
+
 2. From the left main menu, select **Profiles > Add Cluster Profile**.
 
 3. In the **Basic Information** section, assign the cluster profile a **Name**, brief **Description**, and **Tags**.
@@ -602,13 +603,14 @@ and deploy a VMware host cluster.
 
 <!-- prettier-ignore-start -->
 
-5. Select the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" />  pack and provide the following values in the YAML configuration editor. Proceed to the **Next** layer when finished.
+5. Select the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack and
+   provide the following values in the YAML configuration editor. Proceed to the **Next** layer when finished.
 
-    | **Field** | **Description** |
-    | --- | --- | 
-    | `osImageOverride` | The path to your RHEL image template in your VMware vSphere environment. Example: `/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.4`. |
-    | `osName` | The type of operating system used in your image. Enter `rhel`. | 
-    | `osVersion` | The version of your operating system. Enter `8` or `9` depending on the `os_version` referenced in the `imageconfig` file (`rhel-8` or `rhel-9`). | 
+   | **Field**         | **Description**                                                                                                                                   |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `osImageOverride` | The path to your RHEL image template in your VMware vSphere environment. Example: `/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.4`.                   |
+   | `osName`          | The type of operating system used in your image. Enter `rhel`.                                                                                    |
+   | `osVersion`       | The version of your operating system. Enter `8` or `9` depending on the `os_version` referenced in the `imageconfig` file (`rhel-8` or `rhel-9`). |
 
    ```yaml hideClipboard title="Example YAML configuration"
    pack:
@@ -617,9 +619,11 @@ and deploy a VMware host cluster.
      osVersion: "8"
    ```
 
-6. Select the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />  pack. Ensure the **Pack Version** matches the `k8s_version` specified in the `imageconfig` file. Proceed to the **Next** layer.
+<!-- prettier-ignore-start -->
 
-<!-- prettier-ignore-end -->
+6. Select the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
+   pack. Ensure the **Pack Version** matches the `k8s_version` specified in the `imageconfig` file. Proceed to the
+   **Next** layer.
 
 7. Complete the remaining profile layers, making any changes necessary. When finished, select **Finish Configuration**
    to create your cluster profile. For additional information on creating cluster profiles, refer to our
