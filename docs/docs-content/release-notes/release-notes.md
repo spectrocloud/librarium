@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 22, 2025 - Release 4.8.X {#release-notes-4.8.0}
+## November 22, 2025 - Release 4.8.0 - 4.8.4 {#release-notes-4.8.0}
 
 ### Security Notices
 
@@ -177,7 +177,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
-- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated. Users should migrate to the new Kgateway pack. Refer to the [Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) blog for further information.
+- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated. Use the Kgateway pack as an alternative. Refer to the [Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) blog for further information.
 
 <!-- prettier-ignore-end -->
 
