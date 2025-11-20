@@ -136,8 +136,6 @@ Before you begin, ensure that you have the following prerequisites:
 
    #### Cloud Configuration
 
-<!-- prettier-ignore-start -->
-
    :::info
 
    If you are using the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" />
@@ -147,82 +145,57 @@ Before you begin, ensure that you have the following prerequisites:
 
    :::
 
-<!-- prettier-ignore-end -->
+   | Field Name | Description                                                      |
+   | ---------- | ---------------------------------------------------------------- |
+   | **CPU**    | The number of CPUs to allocate to the control plane nodes.       |
+   | **Memory** | The amount of memory to allocate to the control plane nodes.     |
+   | **Disk**   | The amount of disk space to allocate to the control plane nodes. |
 
-    | Field Name | Description                                                      |
-    | ---------- | ---------------------------------------------------------------- |
-    | **CPU**    | The number of CPUs to allocate to the control plane nodes.       |
-    | **Memory** | The amount of memory to allocate to the control plane nodes.     |
-    | **Disk**   | The amount of disk space to allocate to the control plane nodes. |
+   #### Fault Domain Configuration
 
-    #### Fault Domain Configuration
+   | Field Name          | Description                                             |
+   | ------------------- | ------------------------------------------------------- |
+   | **Compute Cluster** | The compute cluster to use for the control plane nodes. |
+   | **Resource Pool**   | The resource pool to use for the control plane nodes.   |
+   | **Datastore**       | The datastore to use for the control plane nodes.       |
+   | **Network**         | The network to use for the control plane nodes.         |
 
-    | Field Name          | Description                                             |
-    | ------------------- | ------------------------------------------------------- |
-    | **Compute Cluster** | The compute cluster to use for the control plane nodes. |
-    | **Resource Pool**   | The resource pool to use for the control plane nodes.   |
-    | **Datastore**       | The datastore to use for the control plane nodes.       |
-    | **Network**         | The network to use for the control plane nodes.         |
+   #### Network Configuration
 
-    #### Network Configuration
+   Depending on what option you selected for the **Network Type** field, the following fields are displayed.
 
-    Depending on what option you selected for the **Network Type** field, the following fields are displayed.
+   | Field Name        | Description                                                                                                                                                                                                                                                                                       | Network Type |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+   | **IPAM Pool**     | The IPAM pool to use for the control plane nodes. An IPAM pool is required to assign IP addresses to the nodes in the cluster. You can learn how to create an IPAM pool by following the steps in the [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide. | Static IP    |
+   | **Search Domain** | The search domain to assign the cluster nodes in. If no search domain is defined, click on the **Define DNS** button and specify the search domain. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add multiple DNS mappings to a PCG.            | DHCP         |
 
-    | Field Name        | Description                                                                                                                                                                                                                                                                                       | Network Type |
-    | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-    | **IPAM Pool**     | The IPAM pool to use for the control plane nodes. An IPAM pool is required to assign IP addresses to the nodes in the cluster. You can learn how to create an IPAM pool by following the steps in the [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide. | Static IP    |
-    | **Search Domain** | The search domain to assign the cluster nodes in. If no search domain is defined, click on the **Define DNS** button and specify the search domain. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add multiple DNS mappings to a PCG.            | DHCP         |
+   ### Worker Plane Pool Configuration
 
-    ### Worker Plane Pool Configuration
+   | Field Name                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Node Pool Name**              | The name of the control plane node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+   | **Enable Autoscaler**           | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. <br /> <br /> **NOTE:** Autoscaler is not supported for VMware vSphere clusters deployed using an [IP Address Management (IPAM) node pool](../../pcg/manage-pcg/create-manage-node-pool.md) with [static placement configured](../../pcg/deploy-pcg/vmware.md#static-placement-configuration). |
+   | **Node Repave Interval**        | The interval at which the worker nodes are repaved in seconds. Refer to the [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration) for additional information about repave behaviors.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | **Number of Nodes in the Pool** | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   | **Rolling Update**              | Choose between **Expand First** and **Contract First** to determine the order in which nodes are added or removed from the worker node pool. Expand first adds new nodes before removing old nodes. Contract first removes old nodes before adding new nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+   | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
-    | Field Name                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Node Pool Name**              | The name of the control plane node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | **Enable Autoscaler**           | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. <br /> <br /> **NOTE:** Autoscaler is not supported for VMware vSphere clusters deployed using an [IP Address Management (IPAM) node pool](../../pcg/manage-pcg/create-manage-node-pool.md) with [static placement configured](../../pcg/deploy-pcg/vmware.md#static-placement-configuration). |
-    | **Node Repave Interval**        | The interval at which the worker nodes are repaved in seconds. Refer to the [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration) for additional information about repave behaviors.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | **Number of Nodes in the Pool** | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-    | **Rolling Update**              | Choose between **Expand First** and **Contract First** to determine the order in which nodes are added or removed from the worker node pool. Expand first adds new nodes before removing old nodes. Contract first removes old nodes before adding new nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-    | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-    | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-
-    Click on the **Next** button when you are done.
-
-10. You can configure the following cluster management features now if needed, or you can do it later:
-
-    - OS Patching
-    - Schedule scans
-    - Schedule backups
-    - Role Based Access Control (RBAC)
-    - Location
-
-    #### OS Patching
-
-    Specify your preferred **OS Patching Schedule** for the cluster. Check out the
-    [OS Patching](../../cluster-management/os-patching.md) page to learn more about OS patching.
-
-    #### Scan Options
-
-    Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
-    Kubernetes configuration security, penetration testing, and conformance testing.
-
-    #### Backup Options
-
-    Schedule any backups you want Palette to perform. Review
-    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
-
-    #### RBAC Configuration
+   Click on the **Next** button when you are done.
 
 <!-- prettier-ignore-start -->
 
-    RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
-    RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+10. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
+    options. Refer to the applicable guide for additional information.
+
+    | **Left Menu Item** | **Additional Information** |
+    | --- | --- |
+    | **Manage machines** | [OS Patching](../../cluster-management/os-patching.md) |
+    | **Schedule scans** | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security) |
+    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) |
+    | **RBAC** | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 
 
 <!-- prettier-ignore-end -->
-
-    #### Location
-
-    Specify the location of the cluster. The cluster location is added to the project dashboard location map.
 
 11. Click on the **Validate** button and review the cluster configuration and settings summary.
 

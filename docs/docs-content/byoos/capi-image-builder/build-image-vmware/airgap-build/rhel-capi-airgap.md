@@ -619,7 +619,7 @@ and deploy a VMware host cluster.
      osVersion: "8"
    ```
 
-<!-- prettier-ignore-start -->
+<!-- prettier-ignore-end -->
 
 6. Select the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
    pack. Ensure the **Pack Version** matches the `k8s_version` specified in the `imageconfig` file. Proceed to the
