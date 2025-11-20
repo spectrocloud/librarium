@@ -17,6 +17,7 @@ dependencies.
 
 | Kubernetes Version | Dependencies Version                                                                        |
 | ------------------ | ------------------------------------------------------------------------------------------- |
+| 1.31.0             | `cni_version` = 1.3.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.28.0 |
 | 1.30.4             | `cni_version` = 1.3.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.28.0 |
 | 1.29.4             | `cni_version` = 1.3.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.28.0 |
 | 1.28.9             | `cni_version` = 1.2.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.26.0 |

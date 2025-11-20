@@ -41,7 +41,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   files on a system with internet access and then transfer them to your airgap environment.
 
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version 4.6.23 as an example.
+    of the tool. This guide uses version 4.6.24 as an example.
 
   - [Rocky Linux ISO](https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso) version 8
     or 9. Ensure you download the `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its
@@ -75,7 +75,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   files on a system with internet access and then transfer them to your airgap environment.
 
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version 4.6.23 as an example.
+    of the tool. This guide uses version 4.6.24 as an example.
 
   - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.30.4`
     as an example. Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) page
@@ -133,7 +133,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```text hideClipboard title="Example output" {1,3,5}
     -rw-r--r-- 1 root root  183310952 Nov 17 23:59 airgap-pack-kubernetes-1.30.4.bin
     drwx------ 2 root root       4096 Jun 30 14:37 bin
-    -rw-r--r-- 1 root root 3973587887 Oct 21 12:02 capi-image-builder-v4.6.23.tgz
+    -rw-r--r-- 1 root root 3973587887 Oct 21 12:02 capi-image-builder-v4.6.24.tgz
     drwxr-xr-x 2 root root       4096 Apr 12  2024 prep
     -rw-r--r-- 1 root root 1086324736 Nov 17 22:03 rocky-8-latest-x86_64-dvd.iso
     drwx------ 3 root root       4096 Apr  1  2024 snap
@@ -147,7 +147,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
 5.  Set your CAPI Image Builder version tag as a variable. The version must match the `capi-image-builder` compressed
-    tar file.
+    TAR file.
 
     ```shell
     CAPI_IMAGE_BUILDER_VERSION=<capi-image-builder-version-tag>
@@ -155,7 +155,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```shell title="Example output"
-    CAPI Image Builder version: v4.6.23
+    CAPI Image Builder version: v4.6.24
     ```
 
 6.  Extract the CAPI Image Builder file.
@@ -174,8 +174,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     -rw-rw-r-- 1 ubuntu ubuntu        928 Apr  8  2025 README
     -rwxr-xr-x 1 root   root    183310952 Nov 17 23:59 airgap-pack-kubernetes-1.30.4.bin
     drwx------ 2 root   root         4096 Jun 30 14:37 bin
-    -rw-rw-r-- 1 ubuntu ubuntu 2471340032 May 16  2025 capi-builder-v4.6.23.tar
-    -rw-r--r-- 1 root   root   3973587887 Oct 21 12:02 capi-image-builder-v4.6.23.tgz
+    -rw-rw-r-- 1 ubuntu ubuntu 2471340032 May 16  2025 capi-builder-v4.6.24.tar
+    -rw-r--r-- 1 root   root   3973587887 Oct 21 12:02 capi-image-builder-v4.6.24.tgz
     drwxrwxr-x 2 ubuntu ubuntu       4096 Aug 13  2024 kickstart
     drwxrwxr-x 3 ubuntu ubuntu       4096 Apr  8  2025 output
     drwxr-xr-x 2 root   root         4096 Apr 12  2024 prep
@@ -365,7 +365,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         </TabItem>
         </Tabs>
 
-15. Retag the CAPI Image Builder and Yum containers.
+15. Tag the CAPI Image Builder and Yum containers.
 
         <Tabs groupId="container-tech">
         <TabItem value="Docker" label="Docker">
@@ -397,7 +397,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                          TAG         IMAGE ID      CREATED       SIZE
-        localhost/capi-builder              v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        localhost/capi-builder              v4.6.24     2adff15eee2d  7 days ago    2.09GB
         localhost/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -409,7 +409,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                          TAG         IMAGE ID      CREATED       SIZE
-        localhost/capi-builder              v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        localhost/capi-builder              v4.6.24     2adff15eee2d  7 days ago    2.09GB
         localhost/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -655,7 +655,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```text hideClipboard title="Example output" {1,3}
     -rw-r--r-- 1 root root  183310952 Nov 17 23:59 airgap-pack-kubernetes-1.30.4.bin
     drwx------ 2 root root       4096 Jun 30 14:37 bin
-    -rw-r--r-- 1 root root 3973587887 Oct 21 12:02 capi-image-builder-v4.6.23.tgz
+    -rw-r--r-- 1 root root 3973587887 Oct 21 12:02 capi-image-builder-v4.6.24.tgz
     drwxr-xr-x 2 root root       4096 Apr 12  2024 prep
     drwx------ 3 root root       4096 Apr  1  2024 snap
     ```
@@ -668,7 +668,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
 5.  Set your CAPI Image Builder version tag as a variable. The version must match the `capi-image-builder` compressed
-    tar file.
+    TAR file.
 
     ```shell
     CAPI_IMAGE_BUILDER_VERSION=<capi-image-builder-version-tag>
@@ -676,7 +676,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```shell title="Example output"
-    CAPI Image Builder version: v4.6.23
+    CAPI Image Builder version: v4.6.24
     ```
 
 6.  Extract the CAPI Image Builder file.
@@ -695,8 +695,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     -rw-rw-r-- 1 ubuntu ubuntu        928 Apr  8  2025 README
     -rwxr-xr-x 1 root   root    183310952 Nov 17 23:59 airgap-pack-kubernetes-1.30.4.bin
     drwx------ 2 root   root         4096 Jun 30 14:37 bin
-    -rw-rw-r-- 1 ubuntu ubuntu 2471340032 May 16  2025 capi-builder-v4.6.23.tar
-    -rw-r--r-- 1 root   root   3973587887 Oct 21 12:02 capi-image-builder-v4.6.23.tgz
+    -rw-rw-r-- 1 ubuntu ubuntu 2471340032 May 16  2025 capi-builder-v4.6.24.tar
+    -rw-r--r-- 1 root   root   3973587887 Oct 21 12:02 capi-image-builder-v4.6.24.tgz
     drwxrwxr-x 2 ubuntu ubuntu       4096 Aug 13  2024 kickstart
     drwxrwxr-x 3 ubuntu ubuntu       4096 Apr  8  2025 output
     drwxr-xr-x 2 root   root         4096 Apr 12  2024 prep
@@ -881,7 +881,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         </TabItem>
         </Tabs>
 
-14. Retag the CAPI Image Builder and Yum containers.
+14. Tag the CAPI Image Builder and Yum containers.
 
         <Tabs groupId="container-tech">
         <TabItem value="Docker" label="Docker">
@@ -913,7 +913,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                          TAG         IMAGE ID      CREATED       SIZE
-        localhost/capi-builder              v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        localhost/capi-builder              v4.6.24     2adff15eee2d  7 days ago    2.09GB
         localhost/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -925,7 +925,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                          TAG         IMAGE ID      CREATED       SIZE
-        localhost/capi-builder              v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        localhost/capi-builder              v4.6.24     2adff15eee2d  7 days ago    2.09GB
         localhost/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 

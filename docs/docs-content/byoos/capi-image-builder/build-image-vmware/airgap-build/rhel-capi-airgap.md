@@ -40,7 +40,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   files on a system with internet access and then transfer them to your airgap environment.
 
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version 4.6.23 as an example.
+    of the tool. This guide uses version 4.6.24 as an example.
 
   - [RHEL ISO](https://developers.redhat.com/products/rhel/download) version `8.8`. Ensure you download the
     `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its SHA256 checksum available. This
@@ -91,7 +91,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```shell title="Example output"
-    CAPI Image Builder version: v4.6.23
+    CAPI Image Builder version: v4.6.24
     ```
 
 4.  Ensure all artifacts listed in the [Prerequisites](#prerequisites) section are available in the `root` home
@@ -102,7 +102,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```text hideClipboard title="Example output"
-    airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.23.tgz  prep
+    airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.24.tgz  prep
     rhel-8.8-x86_64-dvd.iso  snap
     ```
 
@@ -126,8 +126,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```shell hideClipboard title="Example output"
-    README  airgap-pack-kubernetes-1.30.5.bin  bin  capi-builder-v4.6.23.tar
-    capi-image-builder-v4.6.23.tgz  kickstart  output  prep  rhel-8.8-x86_64-dvd.iso
+    README  airgap-pack-kubernetes-1.30.5.bin  bin  capi-builder-v4.6.24.tar
+    capi-image-builder-v4.6.24.tgz  kickstart  output  prep  rhel-8.8-x86_64-dvd.iso
     rpmrepo  snap  yum-repo-v1.0.0.tar
     ```
 
@@ -324,7 +324,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.24     2adff15eee2d  7 days ago    2.09GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -336,7 +336,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.24     2adff15eee2d  7 days ago    2.09GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 

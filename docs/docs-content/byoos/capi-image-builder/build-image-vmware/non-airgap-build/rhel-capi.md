@@ -45,7 +45,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 ## Build Custom Image
 
 1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder, replacing `<tag>` with your
-    desired CAPI Image Builder version. This guide uses version 4.6.23 as an example. Refer to the CAPI Image Builder
+    desired CAPI Image Builder version. This guide uses version 4.6.24 as an example. Refer to the CAPI Image Builder
     [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
 
     <Tabs>
@@ -64,7 +64,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         ```text hideClipboard title="Example output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.24    2adff15eee2d   7 days ago    2.09GB
         ```
 
         </TabItem>
@@ -83,7 +83,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         ```text hideClipboard title="Example output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.24    2adff15eee2d   7 days ago    2.09GB
         ```
 
         </TabItem>

@@ -498,10 +498,9 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::info
 
-    The following commands provide a workaround for an existing issue that prevents builds from completing by
-    temporarily suspending the build and removing an erroneous task that checks for Red Hat Subscription Management
-    (RHSM) credentials. For the final command, replace `<os_version>` with the Rocky `os_version` referenced in the
-    `imageconfig` file (`rockylinux-8` or `rocklinux-9`).
+    The following commands provide a workaround for an existing issue by temporarily suspending the build and removing
+    an erroneous task that checks for Red Hat Subscription Management (RHSM) credentials. For the final command, replace
+    `<os_version>` with the Rocky `os_version` referenced in the `imageconfig` file (`rockylinux-8` or `rocklinux-9`).
 
     :::
 
@@ -512,7 +511,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```bash {4}
         BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
         BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION sleep infinity)
-        docker exec $BUILD_ID bash -c 'sed -i "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
+        docker exec $BUILD_ID bash --command 'sed --in-place "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
         docker exec $BUILD_ID make build-node-ova-vsphere-clone-<os_version>
         ```
 
@@ -523,7 +522,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```bash {4}
         BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
         BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION sleep infinity)
-        docker exec $BUILD_ID bash -c 'sed -i "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
+        docker exec $BUILD_ID bash --command 'sed --in-place "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
         docker exec $BUILD_ID make build-node-ova-vsphere-clone-<os_version>
         ```
 
@@ -560,10 +559,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
                 variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
                 your VMware vSphere environment.
 
-                Note that the following commands provide a workaround for an existing issue that prevents builds from completing by
-                temporarily suspending the build and removing an erroneous task that checks for RHSM credentials. For the final
-                command, replace `<os_version>` with the Rocky `os_version` referenced in the `imageconfig` file
-                (`rockylinux-8` or `rocklinux-9`).
+                Note that the following commands provide a workaround for an existing issue by temporarily suspending the build and removing an erroneous task that checks for Red Hat Subscription Management (RHSM) credentials. For the final command, replace `<os_version>` with the Rocky `os_version` referenced in the `imageconfig` file (`rockylinux-8` or `rocklinux-9`).
 
                 <Tabs groupId="container-tech">
                 <TabItem value="Docker" label="Docker">
@@ -571,7 +567,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
                  ```bash {4}
                     BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
                     BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION sleep infinity)
-                    docker exec $BUILD_ID bash -c 'sed -i "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
+                    docker exec $BUILD_ID bash --command 'sed --in-place "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
                     docker exec $BUILD_ID make build-node-ova-vsphere-clone-<os_version>
                  ```
                 </TabItem>
@@ -581,7 +577,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
                  ```bash
                     BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
                     BUILD_ID=$(podman run --net=host --volume /home/$USER/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION sleep infinity)
-                    docker exec $BUILD_ID bash -c 'sed -i "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
+                    docker exec $BUILD_ID bash --command 'sed --in-place "/Fail if RHSM_USER or RHSM_PASS/,/lookup.*RHSM_PASS.*length == 0/d" /home/imagebuilder/ansible/roles/setup/tasks/redhat.yml'
                     docker exec $BUILD_ID make build-node-ova-vsphere-clone-<os_version>
                  ```
 
