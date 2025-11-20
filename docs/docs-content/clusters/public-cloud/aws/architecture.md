@@ -95,7 +95,7 @@ tab.
 
 ### EKS Pod Identity Support
 
-Palette supports [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) is a secure
+Palette supports [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) as a secure
 authentication mechanism that allows Kubernetes pods to assume IAM roles with temporary, automatically refreshed
 credentials. This eliminates the need for long-lived AWS credentials, addressing security concerns in highly regulated
 environments where organizations cannot use long-lived credentials.
@@ -118,7 +118,7 @@ Find out how to implement EKS Pod Identity in the [Register and Manage AWS Accou
    [mutating admission webhook](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook))
    modifies the pod spec to inject environment variables. These variables instruct the AWS SDK to obtain credentials
    from the [EKS Pod Identity Agent](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html).
-4. The AWS SDK sends the request to the Pod Identity Agent, which calls the EKS authentication API to retrieve
+4. _(a & b)_ The AWS SDK sends the request to the Pod Identity Agent, which calls the EKS authentication API to retrieve
    short-lived credentials. The EKS Pod Identity API validates that the pod has a valid identity association.
 5. The EKS Pod Identity Agent returns the temporary credentials to the pod, allowing it to securely access AWS
    resources.
