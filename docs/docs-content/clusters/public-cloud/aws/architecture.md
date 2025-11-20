@@ -108,6 +108,8 @@ Find out how to implement EKS Pod Identity in the [Register and Manage AWS Accou
 
 #### Architecture Workflow
 
+_Architecture diagram courtesy of the [Amazon EKS Pod Identity: a new way for applications on EKS to obtain IAM credentials](https://aws.amazon.com/blogs/containers/amazon-eks-pod-identity-a-new-way-for-applications-on-eks-to-obtain-iam-credentials/) blog._
+
 ![EKS Pod Identity Architecture Workflow](/public-cloud_aws_architecture_eks-pod-identity_4-8.webp)
 
 1. IAM roles are manually created for Palette and two services, Hubble and the identity service, to define the AWS
