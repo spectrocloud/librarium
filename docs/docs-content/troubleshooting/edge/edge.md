@@ -31,7 +31,7 @@ applications before taking backups.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**. Then select the profile of your cluster.
+2. From the left main menu, select **Profiles**. Then select the profile of your cluster.
 
 3. Select the application whose restore failed (for example, Argo CD). Under **Pack Details**, choose **Values** to
    display the `values.yaml` file.
