@@ -62,53 +62,9 @@ partial_name: vm-prerequisites
 
   - firewalld disabled.
 
-        <details>
-
-            <summary> Check firewalld status </summary>
-
-              1. Check the status of `firewalld`. Note the `Active` status.
-
-                 ```shell
-                 systemctl status firewalld
-                 ```
-
-                 ```shell title="Example output" hideClipboard {3}
-                 ● firewalld.service - firewalld - dynamic firewall daemon
-                     Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset>
-                     Active: active (running) since Wed 2025-11-12 20:04:57 EST; 17min ago
-                         Docs: man:firewalld(1)
-                     Main PID: 960 (firewalld)
-                         Tasks: 2 (limit: 100604)
-                     Memory: 45.3M
-                     CGroup: /system.slice/firewalld.service
-                             └─960 /usr/libexec/platform-python -s /usr/sbin/firewalld --nofork --nopid
-                 ```
-
-              2. If you have a status of `Active: active`, disable `firewalld`.
-
-                 ```shell
-                 sudo systemctl disable --now firewalld
-                 ```
-
-                 ```shell title="Example output" hideClipboard
-                 Removed /etc/systemd/system/multi-user.target.wants/firewalld.service.
-                 Removed /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
-                 ```
-
-              3. Confirm `firewalld` has a status of `Active: inactive`.
-
-                 ```shell
-                 systemctl status firewalld
-                 ```
-
-                 ```shell title="Example output" hideClipboard {3}
-                 ● firewalld.service - firewalld - dynamic firewall daemon
-                     Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
-                     Active: inactive (dead)
-                         Docs: man:firewalld(1)
-                 ```
-
-        </details>
+      ```shell
+      sudo systemctl disable --now firewalld
+      ```
 
   - `/tmp` mounted to execute binaries and scripts.
 
@@ -148,10 +104,7 @@ partial_name: vm-prerequisites
               vi /etc/fstab
               ```
 
-              ```shell title="Example output" hideClipboard {9}
-              #
-              # Created by anaconda on Thu Nov  6 13:15:55 2025
-              #
+              ```shell title="Example output" hideClipboard {6}
               /dev/mapper/rl-root                         /                       xfs     defaults                            0 0
               UUID=3b068723-b40a-4c10-ac6d-00271cd4d3a4   /boot                   xfs     defaults                            0 0
               UUID=F867-A7CE                              /boot/efi               vfat    umask=0077,shortname=winnt          0 2
@@ -224,54 +177,9 @@ partial_name: vm-prerequisites
     - fapolicyd may prevent certain applications from executing, such as `containerd-shim-runc-v2`. We recommend
       disabling `fapolicyd` until the image building process is complete.
 
-            <details>
-
-            <summary> Check fapolicyd status </summary>
-
-              1. Check the status of `fapolicyd`. Note the `Active` status.
-
-                 ```shell
-                 systemctl status fapolicyd
-                 ```
-
-                 ```shell "Example output" hideClipboard {3}
-                 ● fapolicyd.service - File Access Policy Daemon
-                     Loaded: loaded (/usr/lib/systemd/system/fapolicyd.service; enabled; vendor preset: disabled)
-                     Active: active (running) since Sat 2025-11-15 08:39:30 EST; 2s ago
-                         Docs: man:fapolicyd(8)
-                     Process: 33431 ExecStart=/usr/sbin/fapolicyd (code=exited, status=0/SUCCESS)
-                     Process: 33406 ExecStartPre=/usr/sbin/fagenrules (code=exited, status=0/SUCCESS)
-                     Main PID: 33432 (fapolicyd)
-                         Tasks: 4 (limit: 100604)
-                     Memory: 54.0M
-                     CGroup: /system.slice/fapolicyd.service
-                             └─33432 /usr/sbin/fapolicyd
-                 ```
-
-              2. If you have a status of `Active: active`, disable `fapolicyd`.
-
-                 ```shell
-                 sudo systemctl disable --now fapolicyd
-                 ```
-
-                 ```shell title="Example output" hideClipboard
-                 Removed /etc/systemd/system/multi-user.target.wants/fapolicyd.service.
-                 ```
-
-              3. Confirm `fapolicyd` has a status of `Active: inactive`.
-
-                 ```shell
-                 systemctl status firewalld
-                 ```
-
-                 ```shell title="Example output" hideClipboard {3}
-                 ● fapolicyd.service - File Access Policy Daemon
-                    Loaded: loaded (/usr/lib/systemd/system/fapolicyd.service; disabled; vendor preset: disabled)
-                    Active: inactive (dead)
-                        Docs: man:fapolicyd(8)
-                 ```
-
-            </details>
+        ```shell
+        sudo systemctl disable --now fapolicyd
+        ```
 
   - A snapshot of your VM created once all other prerequisites are met. This is required by the
     [vsphere-clone-builder](https://image-builder.sigs.k8s.io/capi/providers/vsphere#vsphere-clone-builder).

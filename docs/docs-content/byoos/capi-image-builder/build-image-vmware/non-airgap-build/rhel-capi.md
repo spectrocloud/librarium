@@ -442,11 +442,11 @@ and deploy a VMware host cluster.
 5. Select the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack and
    provide the following values in the YAML configuration editor. Proceed to the **Next** layer when finished.
 
-   | **Field**         | **Description**                                                                                                                                   |
-   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `osImageOverride` | The path to your RHEL image template in your VMware vSphere environment. Example: `/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.4`.                   |
-   | `osName`          | The type of operating system used in your image. Enter `rhel`.                                                                                    |
-   | `osVersion`       | The version of your operating system. Enter `8` or `9` depending on the `os_version` referenced in the `imageconfig` file (`rhel-8` or `rhel-9`). |
+   | **Field**         | **Description**                                                                                                                                   | **Example** |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+   | `osImageOverride` | The path to your RHEL image template in your VMware vSphere environment.                  | `/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.4` |
+   | `osName`          | The type of operating system used in your image.                                                                                    | `rhel` | 
+   | `osVersion`       | The version of your operating system. Enter `8` or `9` depending on the RHEL `os_version` referenced in the `imageconfig` file. | `8` | 
 
    ```yaml hideClipboard title="Example YAML configuration"
    pack:

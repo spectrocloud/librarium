@@ -26,34 +26,12 @@ partial_name: build-custom-image-intro
         docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
         ```
 
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        docker images
-        ```
-
-        ```text hideClipboard title="Example output"
-        REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.24    2adff15eee2d   7 days ago    2.09GB
-        ```
-
         </TabItem>
 
         <TabItem value="Podman" label="Podman">
 
         ```shell
         podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
-        ```
-
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        podman images
-        ```
-
-        ```text hideClipboard title="Example output"
-        REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.24    2adff15eee2d   7 days ago    2.09GB
         ```
 
         </TabItem>
