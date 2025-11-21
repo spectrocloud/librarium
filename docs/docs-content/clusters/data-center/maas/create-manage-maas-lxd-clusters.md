@@ -109,7 +109,7 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 <!-- prettier-ignore-start -->
 
 13. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
-    options. Refer to applicable guide for additional information.
+    options. Refer to the applicable guide for additional information.
 
     | **Left Menu Item** | **Additional Information** |
     | --- | --- |
