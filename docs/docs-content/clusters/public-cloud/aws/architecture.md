@@ -93,6 +93,40 @@ tab.
   [NodeClaims](https://karpenter.sh/preview/concepts/nodeclaims/) or
   [Metrics](https://karpenter.sh/preview/reference/metrics/).
 
+### EKS Pod Identity Support
+
+Palette supports [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) as a secure
+authentication mechanism that allows Kubernetes pods to assume IAM roles with temporary, automatically refreshed
+credentials. This eliminates the need for long-lived AWS credentials, addressing security concerns in highly regulated
+environments where organizations cannot use long-lived credentials.
+
+Find out how to implement EKS Pod Identity in the [Register and Manage AWS Accounts](./add-aws-accounts.md) guide.
+
+#### Limitations
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" />
+
+#### Architecture Workflow
+
+_Architecture diagram courtesy of the
+[Amazon EKS Pod Identity: a new way for applications on EKS to obtain IAM credentials](https://aws.amazon.com/blogs/containers/amazon-eks-pod-identity-a-new-way-for-applications-on-eks-to-obtain-iam-credentials/)
+blog._
+
+![EKS Pod Identity Architecture Workflow](/public-cloud_aws_architecture_eks-pod-identity_4-8.webp)
+
+1. IAM roles are manually created for Palette and two services, Hubble and the identity service, to define the AWS
+   permissions each service requires.
+2. Pod identity associations are manually created to link each IAM role (Hubble and identity service) to its respective
+   Kubernetes service account.
+3. When a pod requests access to AWS resources, the EKS Pod Identity webhook (a
+   [mutating admission webhook](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook))
+   modifies the pod spec to inject environment variables. These variables instruct the AWS SDK to obtain credentials
+   from the [EKS Pod Identity Agent](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html).
+4. _(a & b)_ The AWS SDK sends the request to the Pod Identity Agent, which calls the EKS authentication API to retrieve
+   short-lived credentials. The EKS Pod Identity API validates that the pod has a valid identity association.
+5. The EKS Pod Identity Agent returns the temporary credentials to the pod, allowing it to securely access AWS
+   resources.
+
 ## AWS Instance Type and Pod Capacity
 
 Choose the instance type and the number of instances to be launched by calculating the number of expected pods. You
