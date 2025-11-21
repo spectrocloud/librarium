@@ -169,7 +169,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - Fixed an issue that caused the
   [`spectrocloud_cluster_group` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_group)
-  to fail to save cluster state when a LoadBalancer was configured.
+  to fail to save cluster state when a Loadbalancer was configured.
 
 ### Docs and Education
 
