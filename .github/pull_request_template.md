@@ -4,13 +4,13 @@ Before submitting your PR for review, please complete this checklist to ensure q
 
 ## Checklist
 
-- [ ] The **PR description** in the [Describe the Change](#-describe-the-change) section clearly explains what changed
-      and provides any additional context.
+- [ ] The **PR description** in the [Describe the Change](#-describe-the-change) section explains what changed and
+      provides any additional context.
 - [ ] A **Jira ticket** is provided in the [Jira Tickets](#-jira-tickets) section AND in the PR title. _If this PR has
       no corresponding Jira ticket, then please indicate so in this section._
 - [ ] **Preview links** are for all affected pages are provided in the [Changed Pages](#-changed-pages). _If this PR
       makes no user-facing changes, please indicate so in this section._
-- [ ] Conduct a **self-review** for your pages using your preview links — ensure grammar, clarity, and accuracy.
+- [ ] Conduct a **self-review** for your pages using your preview links. Verify grammar, clarity, and accuracy.
 - [ ] **Check formatting** for your pages
   - [ ] Verify indentations, admonitions, and tables (if applicable).
   - [ ] Verify all images display.
@@ -21,8 +21,8 @@ Before submitting your PR for review, please complete this checklist to ensure q
 - [ ] All **CI jobs** have completed successfully.
 - [ ] Add **Backport labels** if the change should be reflected in previous versions. _If required, remember to add the
       `auto-backport` label, as well as the `backport-version-**` labels._
-- [ ] **Outside review:** Does this PR require review outside of Docs? If yes, tag the appropriate reviewer (e.g.,
-      Engineering, Product, etc.)
+- [ ] **Outside review:** Does this PR require review outside of Docs? If yes, tag the appropriate reviewer (for
+      example, Engineering, Product, etc.)
 - [ ] Add the `notify-slack` label once this checklist has been completed. The team will be notified and review your PR.
 
 Good job! 👏👏👏
