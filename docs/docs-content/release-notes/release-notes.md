@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 22, 2025 - Release 4.8.X {#release-notes-4.8.0}
+## November 22, 2025 - Release 4.8.0 - 4.8.6 {#release-notes-4.8.0}
 
 ### Security Notices
 
@@ -60,17 +60,55 @@ tags: ["release-notes"]
   or migrate workloads. Refer to the [Upgrade Cluster Groups](../clusters/cluster-groups/vcluster-upgrades.md) guide for
   further information.
 
-#### Deprecations and Removals
+- Palette has now implemented a mechanism for evacuating and migrating the control planes for
+  [MAAS clusters using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md), reducing
+  high-availability risks during host repaves. This improvement is critical for Day-2 lifecycle operations such as
+  upgrades or repaves.
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now include the latest
+  Terminal User Interface (TUI). For more details, refer to
+  [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
+
+<!-- prettier-ignore-start -->
+
+- Certificate renewal for clusters provisioned using <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s"/> and <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> can now be triggered externally from Kubernetes. This is applicable for both Edge and public cloud clusters.
+
+<!-- prettier-ignore-end -->
+
+#### Bug Fixes
+
+- Fixed an issue that caused
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) to sometimes create an
+  inconsistent number of LINSTOR resources.
+
+- Fixed an issue that caused some [self-hosted Palette](../enterprise-version/enterprise-version.md) and
+  [VerteX](../vertex/vertex.md) installations to fail to due to a Helm template rendering error.
+
+<!-- prettier-ignore-start -->
+
+ - Fixed an issue that caused Palette UI errors related to YAML marshalling when accepting cluster profile updates for cluster profiles configured using the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack.
+
+<!-- prettier-ignore-end -->
+
+- Fixed an issue that prevented `ipclaim` resources from being deleted when repaving
+  [VMware clusters](../clusters/data-center/vmware/vmware.md).
+
+- Fixed an issue that prevented the Palette UI from displaying metrics for
+  [EKS clusters](../clusters/public-cloud/aws/eks.md) due to incorrect security group rules.
+
+- Fixed an issue that prevented rotated IAM keys in
+  [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts.md) from being updated on deployed
+  [AWS clusters](../clusters/public-cloud/aws/aws.md).
 
 ### Edge
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.X Palette release is 4.8.X.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.6 Palette release is 4.8.2.
 
 :::
-
-#### Features
 
 #### Improvements
 
@@ -79,7 +117,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   `user-data` has been deprecated as a result of these changes. For more details, refer to
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
+- [CanvOS](https://github.com/spectrocloud/CanvOS) now provides support for FIPS-compiled Ubuntu 22.04. This is
+  important for users who want to enforce FIPS 140-3 compliance.
+
 #### Bug Fixes
+
+- Fixed an issue that caused pack reconciliation to fail in
+  [locally managed Edge clusters](../clusters/edge/local-ui/cluster-management/create-cluster.md#create-local-cluster)
+  provisioned with cluster profiles containing duplicate packs.
 
 ### VerteX
 
@@ -98,15 +143,33 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.25.X of the
+- Terraform version 0.25.3 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.25.X of the
+- Crossplane version 0.25.3 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
-#### Improvements
+- <TpBadge /> The [Spectro Cloud Terraform
+  provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now supports [cluster
+  templates](../cluster-templates/cluster-templates.md).
+
+  - The `spectrocloud_cluster_config_policy` data source implements
+    [maintenance policies](../cluster-templates/create-cluster-template-policies/maintenance-policy.md).
+  - The `spectrocloud_cluster_config_template` data source implements
+    [cluster templates](../cluster-templates/create-cluster-templates.md).
+  - Cluster resources now have the `cluster_template` field to support the configuration of cluster templates.
+
+- The
+  [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
+  now supports [EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+
+#### Bug Fixes
+
+- Fixed an issue that caused the
+  [`spectrocloud_cluster_group` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_group)
+  to fail to save cluster state when a Loadbalancer was configured.
 
 ### Docs and Education
 
@@ -116,38 +179,34 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
-#### Pack Notes
-
-- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated.
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
+<!-- prettier-ignore-start -->
 
 #### Deprecations and Removals
+
+- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated. Use the Kgateway pack as an alternative. Refer to the [Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) blog for further information.
+
+<!-- prettier-ignore-end -->
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack version 1.16.2 now supports password auto-generation.
+- The <VersionedLink text="Spectro RBAC" url="/integrations/packs/?pack=spectro-rback" /> pack version 1.0.1 now supports CPU, memory, and storage resource quota specifications.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI            | CSI    | :white_check_mark: | :x:                | 1.51.0      |
+| Calico                    | CNI    | :x:                | :white_check_mark: | 3.31.0      |
+| Crossplane                | Add-on | :white_check_mark: | :x:                | 2.0.1       |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 0.20.4      |
+| Flux2                     | Add-on | :white_check_mark: | :x:                | 2.17.1      |
+| Kgateway                  | Add-on | :white_check_mark: | :x:                | 2.2.1       |
+| Prometheus Agent          | Add-on | :white_check_mark: | :x:                | 27.42.1     |
+| Prometheus - Grafana      | Add-on | :white_check_mark: | :x:                | 79.0.1      |
+| Reloader                  | Add-on | :white_check_mark: | :x:                | 1.4.10      |
+| Spectro RBAC              | Add-on | :white_check_mark: | :x:                | 1.0.1       |
+| Ubuntu (Azure)            | OS     | :white_check_mark: | :x:                | 24.04       |
+| Ubuntu (vSphere)          | OS     | :white_check_mark: | :x:                | 24.04       |
