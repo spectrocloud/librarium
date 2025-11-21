@@ -27,3 +27,14 @@ data "spectrocloud_pack" "argo_cd" {
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
+## Edge Cluster Restore Configuration
+
+For successful restores on Edge Native clusters, set numeric non-root IDs for the user, group, and filesystem group in the Argo CD pack `values.yaml` file under `global.securityContext`.
+
+```yaml title="Example"
+global:
+  securityContext:
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
+```
