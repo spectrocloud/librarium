@@ -435,6 +435,18 @@ partial_name: eks-pod-identity-prerequisites
           "Principal": {
             "AWS": "arn:aws:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
           },
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringLike": {
+              "sts:ExternalId": "<aws-management-cluster-region>/<aws-management-cluster-account-id>/<management-cluster-name>/*/palette-manager"
+            }
+          }
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
+          },
           "Action": "sts:TagSession"
         },
         {
