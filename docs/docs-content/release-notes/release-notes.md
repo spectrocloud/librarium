@@ -106,7 +106,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.X Palette release is 4.8.2.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.4 Palette release is 4.8.2.
 
 :::
 
@@ -164,6 +164,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - The
   [`spectrocloud_cloudaccount_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws)
   now supports [EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+
+#### Bug Fixes
+
+- Fixed an issue that caused the
+  [`spectrocloud_cluster_group` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_group)
+  to fail to save cluster state when a LoadBalancer was configured.
 
 ### Docs and Education
 
