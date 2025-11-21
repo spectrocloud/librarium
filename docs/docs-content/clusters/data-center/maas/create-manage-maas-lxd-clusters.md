@@ -231,11 +231,11 @@ changing the CPU or memory requirements, or picking a different availability zon
 a rolling repave of the cluster nodes. To learn more about managing a MAAS cluster, refer to
 [Manage Clusters](../../cluster-management/cluster-updates.md).
 
-:::danger
-
-Host cluster updates can cause critical disruptions in the workload clusters and should not be performed.
-
-:::
+Updating the host cluster causes a rolling repave across nodes. During the repave, nodes running older versions are
+removed, and the associated LXD VMs are deleted. If the leader node is deleted, the control plane components of the
+workload cluster undergo a new leader election process and choose a new leader on an LXD VM running on a different node.
+For this reason, it is _critical_ that the host and workload clusters are configured for high availability, consisting
+of at least three nodes per cluster, with the nodes spread across different availability zones.
 
 Workload cluster updates function the same as regular MAAS clusters. Instead of provisioning new bare-metal hosts, new
 LXD VMs are created for the control plane nodes.
