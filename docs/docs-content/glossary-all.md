@@ -249,9 +249,8 @@ upstream open source Kubernetes distribution.
 
 ## Palette Terminal User Interface (TUI)
 
-Palette TUI is a terminal user interface that allows users to configure host and network settings for their Edge hosts.
-Palette TUI is not enabled by default, and must have the `stylus.includeTui` parameter set to true for it to be enabled
-automatically.
+Palette TUI is a terminal user interface that is always enabled and allows users to configure host and network settings
+for their Edge hosts.
 
 ## Palette Upgrade Controller
 
