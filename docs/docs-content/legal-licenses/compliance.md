@@ -83,6 +83,4 @@ eligibility of Spectro Cloud, Inc., to receive technical data governed by the Te
 </div>
 
 Spectro Cloud’s achievement of the UK Cyber Essentials certification underscores our commitment to maintaining the
-highest standards of cybersecurity and data protection. This government-backed accreditation sets out a baseline level
-of security that all organizations should have in place to defend against the most common types of cyber attacks; things
-like phishing, malware, and hacking attempts exploiting poor configurations or weak passwords.
+highest standards of cybersecurity and data protection. This government-backed accreditation establishes a baseline level of security that all organizations should have in place to defend against the most common types of cyberattacks, including phishing, malware, and hacking attempts that exploit poor configurations or weak passwords.
