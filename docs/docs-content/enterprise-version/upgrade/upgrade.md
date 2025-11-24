@@ -53,6 +53,10 @@ health status of MongoDB ReplicaSet members, refer to our
 <Tabs>
 <TabItem label="VMware" value="VMware">
 
+**4.8**
+
+_To be announced._
+
 **4.7.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
