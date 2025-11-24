@@ -44,50 +44,50 @@ to use a private registry for images other the provider images, refer to
 
 ## Enablement
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Profiles**.
+2.  Navigate to the left **Main Menu** and select **Profiles**.
 
-3. If you already have an Edge cluster profile you want to deploy the cluster with, select that profile and select
-   **Create new version** to create a new version of the profile to save your changes.
+3.  If you already have an Edge cluster profile you want to deploy the cluster with, select that profile and select
+    **Create new version** to create a new version of the profile to save your changes.
 
-   Otherwise, click **Add new profile** to create a new cluster profile.
+    Otherwise, click **Add new profile** to create a new cluster profile.
 
-4. Select the OS layer of your cluster profile. If you are creating a new profile, you will get to configuring the OS
-   layer after filling out **Basic Information** and **Cloud Type**. You should choose the Bring Your Own OS (BYOOS)
-   pack for your OS layer.
+4.  Select the OS layer of your cluster profile. If you are creating a new profile, you will get to configuring the OS
+    layer after filling out **Basic Information** and **Cloud Type**. You should choose the Bring Your Own OS (BYOOS)
+    pack for your OS layer.
 
-5. Update the `system.uri` parameter in the pack editor for your OS layer. Use the custom OS image you created in the
-   EdgeForge process. Refer to the EdgeForge [Build Images](../../edgeforge-workflow/palette-canvos/palette-canvos.md)
-   guide if you are missing a custom OS image. The following is an example configuration using the BYOOS pack with a
-   custom OS image.
+5.  Update the `system.uri` parameter in the pack editor for your OS layer. Use the custom OS image you created in the
+    EdgeForge process. Refer to the EdgeForge [Build Images](../../edgeforge-workflow/palette-canvos/palette-canvos.md)
+    guide if you are missing a custom OS image. The following is an example configuration using the BYOOS pack with a
+    custom OS image.
 
-   ```yaml
-   pack:
-     content:
-       images:
-         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-         # - image: example.io/my-other-images/example:v1.0.0
-         # - image: example.io/my-super-other-images/example:v1.0.0
+    ```yaml
+    pack:
+      content:
+        images:
+          - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+          # - image: example.io/my-other-images/example:v1.0.0
+          # - image: example.io/my-super-other-images/example:v1.0.0
 
-   options:
-     system.uri: example.io/my-images/example-custom-os:v1.4.5
-   ```
+    options:
+      system.uri: example.io/my-images/example-custom-os:v1.4.5
+    ```
 
-   :::warning
+    :::warning
 
-   If you have specified registry credentials in the `registryCredentials` field in the user data file during the
-   EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
-   [EdgeForge - Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) and
-   [Installer Configuration](../../edge-configuration/installer-reference.md#multiple-external-registries).
+    If you have specified registry credentials in the `registryCredentials` field in the user data file during the
+    EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
+    [EdgeForge - Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) and
+    [Installer Configuration](../../edge-configuration/installer-reference.md#multiple-external-registries).
 
-   :::
-
+    :::
 
 6.  At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
-    to authenticate with your registry, as shown in the example below. The `providerCredentials.password` field is masked when you specify it in
-    the YAML file. You can also use a macro to store your credentials instead of providing it directly in the YAML file.
-    For more information, refer to [Macros Support](../../../cluster-management/macros.md).
+    to authenticate with your registry, as shown in the example below. The `providerCredentials.password` field is
+    masked when you specify it in the YAML file. You can also use a macro to store your credentials instead of providing
+    it directly in the YAML file. For more information, refer to
+    [Macros Support](../../../cluster-management/macros.md).
 
         ```yaml {7-8} title="Example"
         pack:
