@@ -11,6 +11,23 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 24, 2025 - Release 4.8.7
+
+### Improvements
+
+- The [VerteX](../vertex/vertex.md) UI has been upgraded to use
+  [Nginx](https://github.com/nginx/nginx/releases/tag/release-1.29.2) 1.29.2 and
+  [Alpine Linux](https://www.alpinelinux.org/releases/) 3.22.2.
+
+### Bug Fixes
+
+- Fixed an issue that caused errors with the internal MongoDB database when upgrading the
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md) installation from
+  4.7.29 to 4.8.6.
+- Fixed an issue that prevented [Edge cluster](../clusters/edge/edge.md) events from being displayed in the Palette
+  Events tab.
+- Fixed an issue that caused [VerteX](../vertex/vertex.md) 4.8.6 to fail to install due to crashing LINSTOR pods.
+
 ## November 22, 2025 - Release 4.8.0 - 4.8.6 {#release-notes-4.8.0}
 
 ### Security Notices
