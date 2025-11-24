@@ -143,11 +143,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.25.3 of the
+- Terraform version 0.26.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.25.3 of the
+- Crossplane version 0.26.0 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
@@ -191,7 +191,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack version 1.16.2 now supports password auto-generation.
 - The <VersionedLink text="Spectro RBAC" url="/integrations/packs/?pack=spectro-rback" /> pack version 1.0.1 now supports CPU, memory, and storage resource quota specifications.
 
 <!-- prettier-ignore-end -->
