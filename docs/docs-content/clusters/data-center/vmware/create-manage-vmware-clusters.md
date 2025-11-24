@@ -136,6 +136,15 @@ Before you begin, ensure that you have the following prerequisites:
 
    #### Cloud Configuration
 
+   :::info
+
+   If you are using the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" />
+   pack and referencing a VM created using the
+   [CAPI Image Builder](../../../byoos/capi-image-builder/build-image-vmware/build-image-vmware.md), the **CPU**,
+   **Memory**, and **Disk** fields must match the specs of the referenced VM.
+
+   :::
+
    | Field Name | Description                                                      |
    | ---------- | ---------------------------------------------------------------- |
    | **CPU**    | The number of CPUs to allocate to the control plane nodes.       |
@@ -174,42 +183,19 @@ Before you begin, ensure that you have the following prerequisites:
 
    Click on the **Next** button when you are done.
 
-10. You can configure the following cluster management features now if needed, or you can do it later:
-
-    - OS Patching
-    - Schedule scans
-    - Schedule backups
-    - Role Based Access Control (RBAC)
-    - Location
-
-    #### OS Patching
-
-    Specify your preferred **OS Patching Schedule** for the cluster. Check out the
-    [OS Patching](../../cluster-management/os-patching.md) page to learn more about OS patching.
-
-    #### Scan Options
-
-    Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
-    Kubernetes configuration security, penetration testing, and conformance testing.
-
-    #### Backup Options
-
-    Schedule any backups you want Palette to perform. Review
-    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
-
-    #### RBAC Configuration
-
 <!-- prettier-ignore-start -->
 
-    RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
-    RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+10. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
+    options. Refer to the applicable guide for additional information.
+
+    | **Left Menu Item** | **Additional Information** |
+    | --- | --- |
+    | **Manage machines** | [OS Patching](../../cluster-management/os-patching.md) |
+    | **Schedule scans** | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security) |
+    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) |
+    | **RBAC** | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 
 
 <!-- prettier-ignore-end -->
-
-    #### Location
-
-    Specify the location of the cluster. The cluster location is added to the project dashboard location map.
 
 11. Click on the **Validate** button and review the cluster configuration and settings summary.
 
