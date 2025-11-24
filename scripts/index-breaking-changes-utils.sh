@@ -209,13 +209,17 @@ add_breaking_changes_body() {
   fi
 
   # Start the link replacement process
-  prefix="${new_line%%\[*}"  # Text before the link
-  suffix="${new_line#*\)}"   # Text after the link
+  # prefix: everything before the first occurrence of "[$link_text]"
+  prefix="${new_line%%[[]"$link_text"[]]*}"
+  # suffix: everything after the first occurrence of "$link_url)"
+  suffix="${new_line#*"$link_url")}"
   clean_link="$link_url"
 
-  # Strip leading ../ or /
+  # Strip leading ./, ../ or /
   [[ $clean_link == ../* ]] && clean_link="${clean_link:3}"
   [[ $clean_link == /*  ]] && clean_link="${clean_link:1}"
+  # append /release-notes to link in this case since it is relative to release notes folder
+  [[ $clean_link == ./* ]] && clean_link="release-notes/${clean_link:2}"
 
   # Drop #fragment
   clean_link="${clean_link%%#*}"
