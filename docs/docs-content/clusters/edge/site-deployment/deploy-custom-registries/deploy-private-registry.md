@@ -86,8 +86,7 @@ to use a private registry for images other the provider images, refer to
 <!-- prettier-ignore-start -->
 
 6.  At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
-    to authenticate with your registry. For more information about the `providerCredentials` field, refer to
-    <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack page. The
+    to authenticate with your registry. The
     `providerCredentials.password` field will be masked when you provide it in the YAML file. You can also use a macro
     to store your credentials instead of providing it directly in the YAML file. For more information, refer to
     [Macros Support](../../../cluster-management/macros.md):
@@ -134,7 +133,7 @@ to use a private registry for images other the provider images, refer to
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select the cluster that is using the profile with the registry credentials.
 
