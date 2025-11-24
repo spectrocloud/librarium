@@ -306,6 +306,8 @@ partial_name: upgrade-palette-prereqs
 
 - If upgrading from version **4.7.27**, you must run an additional script before upgrading {props.version}. This script ensures the `linstor-lvm-storage` StorageClass has correct parameters and safely recreates the PVC while preserving data.
 
+  This script is _not_ required for single node deployments as it relates to high availability (HA) configurations only.
+
   <details>
 
   <summary> Click to expand the instructions for the 4.7.27 script </summary>
