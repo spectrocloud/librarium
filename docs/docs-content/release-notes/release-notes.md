@@ -27,6 +27,8 @@ tags: ["release-notes"]
 - Fixed an issue that prevented [Edge cluster](../clusters/edge/edge.md) events from being displayed in the Palette
   Events tab.
 - Fixed an issue that caused [VerteX](../vertex/vertex.md) 4.8.6 to fail to install due to crashing LINSTOR pods.
+- Fixed an issue that caused a duplicate CloudStack cloud type to appear in the custom cloud types API endpoint after
+  upgrading Palette to 4.8.6, resulting in API and validation conflicts.
 
 ## November 22, 2025 - Release 4.8.0 - 4.8.6 {#release-notes-4.8.0}
 
