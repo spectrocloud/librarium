@@ -15,7 +15,6 @@ function getLightLogoPath() {
   if (process.env.CUSTOM_LIGHT_LOGO && process.env.CUSTOM_LIGHT_LOGO.trim() === "true") {
     return "img/custom-light-logo.svg";
   }
-
   return "img/spectrocloud-logo-light.svg?new=true";
 }
 
@@ -24,7 +23,6 @@ function getDarkLogoPath() {
   if (process.env.CUSTOM_DARK_LOGO && process.env.CUSTOM_DARK_LOGO.trim() === "true") {
     return "img/custom-dark-logo.svg";
   }
-
   return "img/spectrocloud-logo-dark.svg?new=true";
 }
 
@@ -35,7 +33,6 @@ function showLastUpdateTime() {
   if (trimmedValue === "true") {
     return true;
   }
-
   return false;
 }
 
@@ -128,6 +125,7 @@ const config = {
     },
   },
   trailingSlash: true,
+  noIndex: true,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -141,8 +139,10 @@ const config = {
       useCssCascadeLayers: true, // Slightly decreases padding of admonitions when set to `true`.
     },
     experimental_faster: {
-      ssgWorkerThreads: false, // Set to 'false' as Netlify builds fail with this enabled.
-      swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
+      ssgWorkerThreads: false,
+      // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsLoader: false,
+      // Set to 'false' as Netlify builds fail with this enabled.
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
