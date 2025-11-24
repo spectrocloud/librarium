@@ -83,15 +83,13 @@ to use a private registry for images other the provider images, refer to
 
    :::
 
-<!-- prettier-ignore-start -->
 
 6.  At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
-    to authenticate with your registry. The `providerCredentials.password` field will be masked when you provide it in
+    to authenticate with your registry, as shown in the example below. The `providerCredentials.password` field is masked when you specify it in
     the YAML file. You can also use a macro to store your credentials instead of providing it directly in the YAML file.
-    For more information, refer to [Macros Support](../../../cluster-management/macros.md):
-    <!-- prettier-ignore-end -->
+    For more information, refer to [Macros Support](../../../cluster-management/macros.md).
 
-        ```yaml {7-8}
+        ```yaml {7-8} title="Example"
         pack:
           content:
             images:
