@@ -46,7 +46,7 @@ to use a private registry for images other the provider images, refer to
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2.  Navigate to the left **Main Menu** and select **Profiles**.
+2.  Navigate to the left main menu and select **Profiles**.
 
 3.  If you already have an Edge cluster profile you want to deploy the cluster with, select that profile and select
     **Create new version** to create a new version of the profile to save your changes.
@@ -83,7 +83,7 @@ to use a private registry for images other the provider images, refer to
 
     :::
 
-6.  At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
+6.  At the root level of YAML for your OS layer, add the `providerCredentials` field to specify the credentials you need
     to authenticate with your registry, as shown in the example below. The `providerCredentials.password` field is
     masked when you specify it in the YAML file. You can also use a macro to store your credentials instead of providing
     it directly in the YAML file. For more information, refer to
