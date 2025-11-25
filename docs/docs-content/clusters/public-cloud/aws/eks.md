@@ -456,7 +456,7 @@ To access an Amazon EKS cluster using the
 - Use the AWS IAM Authenticator to generate authentication tokens for your cluster.
 
   ```bash title="Example command"
-  aws-iam-authenticator token -i <cluster-name>
+  aws-iam-authenticator token --cluster-id <cluster-name>
   ```
 
 - Download the kubeconfig file for the Amazon EKS cluster from Palette. Refer to
