@@ -76,7 +76,7 @@ registry URL and the credentials needed to authenticate with the registry in the
     to authenticate with your registry, as shown in the example below. The `providerCredentials.password` field is
     masked when you specify it in the YAML file. You can also use a macro to store your credentials instead of providing
     it directly in the YAML file. For more information, refer to
-    [Macros Support](../../../cluster-management/macros.md).
+    [Macros Support](../../cluster-management/macros.md).
 
         ```yaml {7-8} title="Example"
         pack:
