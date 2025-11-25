@@ -74,7 +74,7 @@ to use a private registry for images other the provider images, refer to
       system.uri: example.io/my-images/example-custom-os:v1.4.5
     ```
 
- 6. :::warning
+6.  :::warning
 
     If you have specified registry credentials in the `registryCredentials` field in the user data file during the
     EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
