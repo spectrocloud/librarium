@@ -21,7 +21,7 @@ environment using Palette. Below are some key features of the Palette CloudStack
 
 - Support for IP address pool management for assigning blocks of IPs dedicated to clusters or projects.
 
-- A Private Cloud Gateway (PCG) must be setup within the VMware vSphere environment to communicate with the Palette
+- A Private Cloud Gateway (PCG) must be setup within the CloudStack environment to communicate with the Palette
   management platform and the VMware vCenter that installed in the private data center.
 
   The PCG facilitates communication between Palette and your infrastructure environment. The PCG is necessary in
