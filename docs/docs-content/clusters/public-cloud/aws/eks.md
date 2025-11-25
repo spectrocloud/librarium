@@ -397,13 +397,14 @@ You can validate your cluster is up and in **Running** state.
 ## Access EKS Cluster
 
 You can access your EKS cluster using the kubectl CLI with a kubeconfig file. Authentication is required, and the
-availability of the kubeconfig file through Palette depends on your chosen authentication method, as shown in the following table.
+availability of the kubeconfig file through Palette depends on your chosen authentication method, as shown in the
+following table.
 
 | **Authentication Method**    | **Kubeconfig Availability** |
-| ---------------------------- | ----------------------------------------- |
-| AWS IAM Authenticator Plugin | :white_check_mark:                        |
-| Default AWS Authentication   | :x:                                       |
-| Custom OIDC                  | :white_check_mark:                        |
+| ---------------------------- | --------------------------- |
+| AWS IAM Authenticator Plugin | :white_check_mark:          |
+| Default AWS Authentication   | :x:                         |
+| Custom OIDC                  | :white_check_mark:          |
 
 Based on your chosen authentication method, follow the instructions in the appropriate tab to access your Amazon EKS
 cluster through kubectl.
@@ -495,7 +496,8 @@ Once you have downloaded your kubeconfig, you can use kubectl to access your clu
 
 <TabItem label="Custom OIDC" value="Custom OIDC">
 
-To access an Amazon EKS cluster using a custom [OIDC](https://openid.net/developers/how-connect-works/) provider, follow these steps:
+To access an Amazon EKS cluster using a custom [OIDC](https://openid.net/developers/how-connect-works/) provider, follow
+these steps:
 
 <!-- prettier-ignore-start -->
 - Ensure your Amazon EKS cluster has an associated OIDC provider by configuring it in the Kubernetes layer.
