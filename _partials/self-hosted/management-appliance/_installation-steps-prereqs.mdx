@@ -110,6 +110,8 @@ partial_name: installation-steps-prereqs
 
   </details>
 
+- If you are using Proxmox Virtual Environment (VE) as the infrastructure provider for Palette, set the VM CPU type to `host`. The default setting in the Proxmox UI is typically different, and leaving it unchanged can result in MongoDB compatibility issues. For more information on CPU types, refer to the [Proxmox VE documentation](https://pve.proxmox.com/pve-docs/chapter-qm.html#_cpu_type). 
+
 - You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. If using an external registry, you will need to provide the following information during the Palette installation process.
 
   - The DNS/IP endpoint and port for the external registry.
