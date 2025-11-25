@@ -74,7 +74,7 @@ to use a private registry for images other the provider images, refer to
       system.uri: example.io/my-images/example-custom-os:v1.4.5
     ```
 
-    :::warning
+ 6. :::warning
 
     If you have specified registry credentials in the `registryCredentials` field in the user data file during the
     EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
@@ -83,7 +83,7 @@ to use a private registry for images other the provider images, refer to
 
     :::
 
-6.  At the root level of YAML for your OS layer, add the `providerCredentials` field to specify the credentials you need
+    At the root level of YAML for your OS layer, add the `providerCredentials` field to specify the credentials you need
     to authenticate with your registry, as shown in the example below. The `providerCredentials.password` field is
     masked when you specify it in the YAML file. You can also use a macro to store your credentials instead of providing
     it directly in the YAML file. For more information, refer to
