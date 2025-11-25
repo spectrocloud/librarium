@@ -379,66 +379,126 @@ You can validate your cluster is up and in **Running** state.
 
 ## Access EKS Cluster
 
-You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you
-will authenticate to your EKS cluster, you need to install the appropriate plugin. The table below lists the plugin
-required for two EKS deployment scenarios.
+You can access your EKS cluster using the kubectl CLI with a kubeconfig file. Authentication is required, and the
+availability of the kubeconfig file through Palette depends on your chosen authentication method, as shown in the
+following table.
 
-| **Scenario**                                              | **Plugin**                                                                        |
-| --------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Deploy EKS cluster with custom OIDC                       | [kubelogin](https://github.com/int128/kubelogin)                                  |
-| Deploy EKS cluster access with default AWS authentication | [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) |
+| **Authentication Method**    | **Kubeconfig Availability** |
+| ---------------------------- | --------------------------- |
+| AWS IAM Authenticator Plugin | :white_check_mark:          |
+| Default AWS Authentication   | :x:                         |
+| Custom OIDC                  | :white_check_mark:          |
 
-Select the appropriate tab for your deployment.
+Based on your chosen authentication method, follow the instructions in the appropriate tab to access your Amazon EKS
+cluster through kubectl.
 
-<Tabs queryString="oidc-authentication">
+<Tabs queryString="authentication-type">
 
-<TabItem label="AWS IAM" value="AWS IAM">
+<TabItem label="AWS IAM Authenticator Plugin" value="aws-iam-authenticator-plugin">
 
-To access an EKS cluster with default AWS authentication, you need to do the following:
+To access an Amazon EKS cluster using the
+[AWS IAM Authenticator plugin](https://github.com/kubernetes-sigs/aws-iam-authenticator), follow these steps:
 
-- Download the aws-iam-authenticator plugin, install it, and make it available in your system's `$PATH`. Refer to the
-  [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) GitHub repository for more
-  information.
-
-- Configure your AWS credentials. The aws-iam-authenticator plugin requires AWS credentials to access the cluster. Refer
-  to the
+- Configure your AWS CLI credentials. Refer to
   [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
-  reference guide.
+  for guidance.
 
-- Download the kubeconfig file from the cluster details page. Refer to the
-  [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+- Download and install the AWS IAM Authenticator plugin for your system. Refer to
+  [Installing the AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) for guidance.
+
+  <details>
+
+  <summary> Example steps to install </summary>
+
+  1. Download the binary from the
+     [GitHub releases page](https://github.com/kubernetes-sigs/aws-iam-authenticator/releases).
+
+  2. Move the binary to a directory included in your system's `PATH` and rename it to `aws-iam-authenticator`.
+
+     ```bash title="Example command"
+     sudo mv Downloads/aws-iam-authenticator_0.7.9_darwin_arm64 /usr/local/bin/aws-iam-authenticator
+     ```
+
+  3. Make the binary executable.
+
+     ```bash
+     sudo chmod +x /usr/local/bin/aws-iam-authenticator
+     ```
+
+  4. Verify the installation:
+
+     ```bash
+     aws-iam-authenticator --version
+     ```
+
+     ```shell hideClipboard title="Example output"
+     {"Version":"0.7.9","Commit":"19000d354fa0828012e45dc52039c73177f7cde8"}
+     ```
+
+  </details>
+
+- Download the kubeconfig file for the Amazon EKS cluster from Palette. Refer to
+  [Kubeconfig](../../cluster-management/kubeconfig.md) for guidance.
+
+Once you have downloaded your kubeconfig, you can use kubectl to access your cluster and apply manifests.
+
+</TabItem>
+
+<TabItem label="Default AWS Authentication" value="default-aws-authentication">
+
+To access an Amazon EKS cluster using the AWS CLI's built-in authentication, follow these steps:
+
+- Configure your AWS CLI credentials. Refer to
+  [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+  for guidance.
+
+- Ensure you have the following IAM permissions to download the kubeconfig and access the Amazon EKS cluster. Refer to
+  [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security-iam-id-based-policy-examples.html)
+  for guidance.
+
+  - `eks:DescribeCluster`
+  - `eks:AccessKubernetesApi`
+
+- Download the kubeconfig file from the Amazon EKS cluster using the AWS CLI. Refer to
+  [Connect kubectl to an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) for
+  guidance.
+
+  ```bash title="Example command"
+  aws eks update-kubeconfig --region <region> --name <cluster-name>
+  ```
+
+Once you have downloaded your kubeconfig, you can use kubectl to access your cluster and apply manifests.
 
 </TabItem>
 
 <TabItem label="Custom OIDC" value="Custom OIDC">
 
-To use custom OIDC, you need to do the following:
-
-- Install [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin for its ease of authentication. For
-  more information and to learn about other available helper applications, you can visit
-  [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/).
+To access an Amazon EKS cluster using a custom [OIDC](https://openid.net/developers/how-connect-works/) provider, follow
+these steps:
 
 <!-- prettier-ignore-start -->
-- Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the
-  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> guide.
+- Ensure your Amazon EKS cluster has an associated OIDC provider by configuring it in the Kubernetes layer.
+  Refer to the <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#configure-oidc-identity-provider" />
+  pack documentation for guidance.
+
+  - If you have not yet associated an OIDC provider with your cluster, use
+    [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin due to its ease of authentication.
 
 <!-- prettier-ignore-end -->
 
-<!-- prettier-ignore-start -->
-- Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups,
-  refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> for an example.
+- Ensure your OIDC user or group is mapped to an `admin` or `clusteradmin` Kubernetes RBAC Role or ClusterRole. To learn
+  how to map a Kubernetes role to users and groups, refer to
+  [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-<!-- prettier-ignore-end -->
+- Download the kubeconfig file for the Amazon EKS cluster from Palette. Refer to
+  [Kubeconfig](../../cluster-management/kubeconfig.md) for guidance.
 
-- Download the kubeconfig file from the cluster details page. Refer to the
-  [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+Once you have downloaded your kubeconfig and configured it to use your OIDC provider, you can use kubectl to access your
+cluster and apply manifests.
 
 </TabItem>
 
 </Tabs>
-
-Once you have the required plugin installed and kubeconfig file downloaded, you can use kubectl to access your cluster.
 
 :::tip
 
@@ -446,11 +506,9 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 :::
 
-## Resources
+## Next Steps
 
-- [Add AWS Account](add-aws-accounts.md)
-
-- [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+After deploying your EKS cluster, you may want to perform additional configuration tasks. Consider the following guides.
 
 - [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
@@ -458,10 +516,11 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [Configure Karpenter for EKS Clusters](configure-karpenter-eks-clusters.md)
 
-<!-- prettier-ignore-start -->
+- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+- [Cluster Management guides](../../cluster-management/cluster-management.md)
+
+<!-- prettier-ignore-start -->
+- <VersionedLink text="Kubernetes (EKS) pack documentation" url="/integrations/packs/?pack=kubernetes-eks" />
 
 <!-- prettier-ignore-end -->
-
-- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
