@@ -11,7 +11,7 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
-## Security Advisory 006 - Shai Hulud NPM Supply Chain Attack
+## Security Advisory 006 - Shai Hulud npm Supply Chain Attack
 
 - **Release Date**: November 26, 2025
 - **Last Updated**: November 26, 2025
