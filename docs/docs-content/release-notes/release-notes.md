@@ -16,8 +16,7 @@ tags: ["release-notes"]
 ### Improvements
 
 - The [VerteX](../vertex/vertex.md) UI has been upgraded to use
-  [Nginx](https://github.com/nginx/nginx/releases/tag/release-1.29.2) 1.29.2 and
-  [Alpine Linux](https://www.alpinelinux.org/releases/) 3.22.2.
+  [Nginx](https://github.com/nginx/nginx/releases/tag/release-1.29.2) 1.29.2.
 
 ### Bug Fixes
 
