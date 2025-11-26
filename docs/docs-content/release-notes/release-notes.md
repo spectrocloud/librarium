@@ -11,7 +11,47 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 28, 2025 - Component Updates {#component-updates-2025-48}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.8.
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use the following components internally:
+
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
+  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.0
+  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.9.1
+  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.82
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
+- Fixed an issue that prevented the [Palette CLI](../automation/palette-cli/palette-cli.md) from successfully deploying
+  [PCGs](../clusters/pcg/pcg.md) on environments where SSO is enabled.
+
+### Packs
+
+| Pack Name                 | Layer  | Non-FIPS           | FIPS | New Version |
+| ------------------------- | ------ | ------------------ | ---- | ----------- |
+| Amazon EFS                | CSI    | :white_check_mark: | :x:  | 2.1.14      |
+| Argo CD                   | CSI    | :white_check_mark: | :x:  | 9.1.0       |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:  | 1.0.0       |
+| GCE Persistent Disk CSI   | CSI    | :white_check_mark: | :x:  | 1.21.0      |
+| Istio                     | Add-on | :white_check_mark: | :x:  | 1.28.0      |
+| Karpenter                 | Add-on | :white_check_mark: | :x:  | 1.8.2       |
+| Nginx                     | Add-on | :white_check_mark: | :x:  | 1.14.0      |
+| Piraeus Operator          | CSI    | :white_check_mark: | :x:  | 2.9.1       |
+
 ## November 26, 2025 - Release 4.8.8
+
+The following component updates are applicable to this release:
+
+- [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 
 ### Improvements
 
@@ -30,6 +70,10 @@ tags: ["release-notes"]
   upgrading Palette to 4.8.6, resulting in API and validation conflicts.
 
 ## November 22, 2025 - Release 4.8.0 - 4.8.6 {#release-notes-4.8.0}
+
+The following component updates are applicable to this release:
+
+- [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 
 ### Security Notices
 
