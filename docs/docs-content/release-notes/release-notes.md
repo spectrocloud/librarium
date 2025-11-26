@@ -25,7 +25,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
   - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
   - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.0
   - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.9.1
-  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.82
 
 <!-- prettier-ignore-end -->
 
