@@ -9,10 +9,11 @@ tags: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 keywords: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 ---
 
-You can install Palette VerteX in a connected environment using the Palette Command Line Interface (CLI). The CLI
-provides you with an interactive experience that guides you through the installation process. You can invoke the Palette
-CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where
-Palette VerteX will be deployed.
+<PartialsComponent
+  category="self-hosted"
+  name="install-non-airgap-introduction"
+  version="Palette VerteX"
+/>
 
 ## Prerequisites
 
