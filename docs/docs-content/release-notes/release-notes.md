@@ -28,11 +28,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 
 <!-- prettier-ignore-end -->
 
-### Bug Fixes
-
-- Fixed an issue that prevented the [Palette CLI](../automation/palette-cli/palette-cli.md) from successfully deploying
-  [PCGs](../clusters/pcg/pcg.md) on environments where SSO is enabled.
-
 ### Packs
 
 | Pack Name                 | Layer  | Non-FIPS           | FIPS | New Version |
