@@ -23,6 +23,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 | Argo CD                   | CSI    | :white_check_mark: | :x:  | 9.1.0       |
 | External Secrets Operator | Add-on | :white_check_mark: | :x:  | 1.0.0       |
 | GCE Persistent Disk CSI   | CSI    | :white_check_mark: | :x:  | 1.21.0      |
+| GCE Persistent Disk CSI   | CSI    | :white_check_mark: | :x:  | 1.20.2      |
 | Istio                     | Add-on | :white_check_mark: | :x:  | 1.28.0      |
 | Karpenter                 | Add-on | :white_check_mark: | :x:  | 1.8.2       |
 | Nginx                     | Add-on | :white_check_mark: | :x:  | 1.14.0      |
