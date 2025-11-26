@@ -9,87 +9,20 @@ tags: ["self-hosted", "vmware", "non-airgap", "cli"]
 keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 ---
 
-Palette can be installed on VMware vSphere with internet connectivity or in an airgap environment. When you install
-Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere.
-Refer to [Access Palette](../../../palette.md#access-palette) for instructions on requesting repository access.
+<PartialsComponent
+  category="self-hosted"
+  name="install-non-airgap-introduction"
+  version="Palette"
+/>
 
 ## Prerequisites
 
-:::tip
-
-We recommend using the `--validate` flag with the `ec install` command to validate the installation. Check out the
-[Validate Environment](../../../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
-command for more information.
-
-:::
-
-- An AMD64 Linux environment with connectivity to the VMware vSphere environment.
-
-- [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
-  host.
-
-- Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
-
-- You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
-  between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
-  Refer to the [Palette CLI Encryption](../../../../../automation/palette-cli/palette-cli.md#encryption) section for
-  more information.
-
-- Review the required VMware vSphere [permissions](../setup/non-airgap/vmware-system-requirements.md). Ensure you have
-  created the proper custom roles and zone tags.
-
-- We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../install/install.md#size-guidelines) for additional sizing information.
-
-  - 8 CPUs per VM.
-
-  - 16 GB Memory per VM.
-
-  - 100 GB Disk Space per VM.
-
-- The following network ports must be accessible for Palette to operate successfully.
-
-  - TCP/443: Inbound to and outbound from the Palette management cluster.
-
-  - TCP/6443: Outbound traffic from the Palette management cluster to the deployed cluster's Kubernetes API server.
-
-- The network IP address range you specify during the installation must not overlap with any existing IP addresses in
-  your environment. The IP address range must also have connectivity to the VMware vSphere environment.
-
-- Ensure you have an SSL certificate that matches the domain name you will assign to Palette. You will need this to
-  enable HTTPS encryption for Palette. Reach out to your network administrator or security team to obtain the SSL
-  certificate. You need the following files:
-
-  - x509 SSL certificate file in base64 format.
-
-  - x509 SSL certificate key file in base64 format.
-
-  - x509 SSL certificate authority file in base64 format. This file is optional.
-
-- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
-  persistent storage. Refer to [Zone Tagging](../setup/non-airgap/vmware-system-requirements.md#zone-tagging) for
-  information.
-
-- Assigned IP addresses for application workload services, such as Load Balancer services.
-
-- Ensure Palette has access to the required domains and ports. Refer to the
-  [Required Domains](../install/install.md#proxy-requirements) section for more information.
-
-- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
-  annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
-  workload, modify the `storageClass` parameter. Check out the
-  [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
-  page to learn more about modifying StorageClasses.
-
-:::info
-
-Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
-require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into
-remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a
-PCG on VMware, check out our [VMware PCG](../../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
-
-:::
+<PartialsComponent
+  category="self-hosted"
+  name="install-non-airgap-prerequisites"
+  version="Palette"
+  sslwarning=""
+/>
 
 ## Deployment
 
@@ -134,6 +67,11 @@ Use the following steps to install Palette.
     export PALETTE_ENCRYPTION_PASSWORD=*************
     ```
 
+    The passphrase must be
+  between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
+  Refer to the [Palette CLI Encryption](../../../../../automation/palette-cli/palette-cli.md#encryption) section for
+  more information.
+
 6.  Issue the Palette `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration
     details and then initiates the installation. For more information about the `ec` subcommand, refer to
     [Palette Commands](../../../../../automation/palette-cli/commands/commands.md).
@@ -170,7 +108,7 @@ Use the following steps to install Palette.
     | **No Proxy**                      | You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`     |
     | **Proxy CA Certificate Filepath** | The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`. |
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
-    | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
+    | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. The network IP address range you specify during the installation must not overlap with any existing IP addresses in your environment. The IP address range must also have connectivity to the VMware vSphere environment.                                                                                                         |
 
 12. Choose the image registry configuration. By default, our support team will provide you with the credentials for the
     AWS ECR registry that contains the packs. Use the following table for guidance.
@@ -250,6 +188,15 @@ Use the following steps to install Palette.
     | **Medium**    | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 CPU limit and 8 GB memory limit.                                    |
     | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
     | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
+
+  We recommended the following resources for Palette. Refer to the
+  [Palette size guidelines](../install/install.md#size-guidelines) for additional sizing information.
+
+  - 8 CPUs per VM.
+
+  - 16 GB Memory per VM.
+
+  - 100 GB Disk Space per VM.
 
     #### Additional vSphere Machine Configuration
 
