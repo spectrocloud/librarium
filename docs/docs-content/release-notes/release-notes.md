@@ -15,19 +15,6 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
 
-### Improvements
-
-<!-- prettier-ignore-start -->
-
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use the following components internally:
-
-  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
-  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.0
-  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.9.1
-
-<!-- prettier-ignore-end -->
-
 ### Packs
 
 | Pack Name                 | Layer  | Non-FIPS           | FIPS | New Version |
@@ -39,6 +26,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 | Istio                     | Add-on | :white_check_mark: | :x:  | 1.28.0      |
 | Karpenter                 | Add-on | :white_check_mark: | :x:  | 1.8.2       |
 | Nginx                     | Add-on | :white_check_mark: | :x:  | 1.14.0      |
+| Piraeus CSI               | CSI    | :white_check_mark: | :x:  | 2.10.1      |
 | Piraeus Operator          | CSI    | :white_check_mark: | :x:  | 2.9.1       |
 
 ## November 26, 2025 - Release 4.8.8
