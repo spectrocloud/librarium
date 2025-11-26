@@ -11,6 +11,42 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+## Security Advisory 006 - Shai Hulud NPM Supply Chain Attack
+
+- **Release Date**: November 26, 2025
+- **Last Updated**: November 26, 2025
+- **Severity**: High
+
+### Summary
+
+On November 21, 2025, security researchers identified Shai Hulud 2.0, a newly uncovered strain of malware that has
+compromised more than 25,000 GitHub repositories. This variant introduces an advanced self-replicating architecture,
+enabling it to autonomously propagate across software projects and potentially embed itself within development
+workflows. Early analysis indicates that the malware is specifically engineered to exploit supply-chain trust mechanisms
+by modifying code artifacts at the repository level.
+
+Spectro Cloud products are not dependent on any of the npm packages affected by the incident. However, because many
+customers integrate external CI/CD toolchains with Spectro Cloud products, a compromise of those toolchains could allow
+malicious changes to flow through automation. Customers should scan their applications and integrations to assess the
+impact of this issue.
+
+Our security posture incorporates continuous scanning, automated policy enforcement, and rigorous supply-chain
+validation controls designed to detect and block malicious or tampered components before they enter our build or
+delivery pipelines. As part of our response, we are actively conducting comprehensive, end-to-end scans across all
+internal IT systems, developer environments, and managed SaaS deployments. These measures are ongoing, and we are
+prioritizing both accuracy and completeness in our investigation.
+
+We will continue to monitor evolving intelligence from security researchers, collaborate with our partners, and expand
+our internal investigations as new indicators of compromise are published. This advisory will be updated with additional
+findings as the investigation progresses.
+
+### References
+
+- [Reversing Labs - Shai-hulud npm attack: What you need to know](https://www.reversinglabs.com/blog/shai-hulud-worm-npm)
+- [Socket - Updated and Ongoing Supply Chain Attack Targets CrowdStrike npm Packages](https://socket.dev/blog/ongoing-supply-chain-attack-targets-crowdstrike-npm-packages)
+- [Step Security - Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised)
+- [Wiz - Shai-Hulud: Ongoing Package Supply Chain Worm Delivering Data-Stealing Malware](https://www.wiz.io/blog/shai-hulud-npm-supply-chain-attack)
+
 ## Security Advisory 005 - `runc` Container Vulnerabilities Affecting Kubernetes Cluster Runtimes
 
 - **Release Date**: November 5, 2025
