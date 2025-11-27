@@ -1,0 +1,42 @@
+---
+partial_category: self-hosted
+partial_name: install-vmware-prerequisites-first
+---
+
+- A physical or virtual Linux machine with AMD64 (also known as x86_64) processor architecture and network connectivity to your VMware vCenter environment.
+
+- The following software installed and available on the Linux host:
+
+  - [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime.
+
+  - Palette CLI. Refer to the [Palette CLI installation guideline](../../../../../../automation/palette-cli/install-palette-cli/#download-and-setup)
+
+- The required custom roles created according to the <PaletteVertexUrlMapper
+  edition={props.edition}
+  text="VMware System and Permission Requirements"
+  url="/supported-environments/vmware/setup/non-airgap/vmware-system-requirements/"
+  />.
+
+- Zone tagging configured in your vSphere environment. Refer to <PaletteVertexUrlMapper
+  edition={props.edition}
+  text="Zone Tagging"
+  url="/supported-environments/vmware/setup/non-airgap/vmware-system-requirements/#zone-tagging"
+  /> for more information.
+
+- The following network ports accessible:
+
+  - TCP/443: Inbound to and outbound from the {props.version} management cluster.
+
+  - TCP/6443: Outbound traffic from the {props.version} management cluster to the deployed cluster's Kubernetes API server.
+
+- An SSL certificate that matches the domain name you will assign to {props.version}. The certificate is required to
+  enable HTTPS encryption for {props.version}. Reach out to your network administrator or security team to obtain the SSL
+  certificate. The following files are required:
+
+  - x509 SSL certificate file in base64 format.
+
+  - x509 SSL certificate key file in base64 format.
+
+  Additionally, the following file is optional:
+
+  - x509 SSL certificate authority file in base64 format.
