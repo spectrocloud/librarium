@@ -17,7 +17,7 @@ cluster management through scaling, upgrades, and reconfiguration operations.
 
 :::info
 
-Palette has been performance tested with 30,000 edge nodes. We recommend that you don't exceed this limit.
+Palette has been performance tested with 30,000 edge nodes, and it is not recommended to exceed this limit.
 
 :::
 

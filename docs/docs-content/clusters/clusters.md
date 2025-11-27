@@ -26,7 +26,7 @@ following high-level tasks are performed as part of the cluster creation:
 
 :::info
 
-Palette has been performance tested with 10,000 clusters. We recommend that you don't exceed this limit.
+Palette has been performance tested with 10,000 clusters, and it is not recommended to exceed this limit.
 
 :::
 
