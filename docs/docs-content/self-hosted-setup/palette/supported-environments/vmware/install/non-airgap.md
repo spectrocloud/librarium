@@ -19,9 +19,15 @@ keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 
 <PartialsComponent
   category="self-hosted"
-  name="install-non-airgap-prerequisites"
+  name="install-vmware-prerequisites-first"
   version="Palette"
-  sslwarning=""
+  edition="palette"
+/>
+<PartialsComponent
+  category="self-hosted"
+  name="install-vmware-prerequisites-second"
+  version="Palette"
+  edition="palette"
 />
 
 ## Deployment

@@ -1,0 +1,27 @@
+---
+partial_category: self-hosted
+partial_name: install-vmware-prerequisites-second
+---
+
+- Assigned IP addresses for application workload services, such as Load Balancer.
+
+- {props.version}'s access to the required domains and ports. Refer to the <PaletteVertexUrlMapper
+  edition={props.edition}
+  text="Proxy Requirements"
+  url="supported-environments/vmware/install/#proxy-requirements"
+  /> section for more information.
+
+- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
+  annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
+  workload, modify the `storageClass` parameter. Refer to the
+  [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
+  page to learn more about modifying StorageClasses.
+
+  :::info
+
+  Self-hosted {props.version} installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
+  require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into
+  remote data centers that do not have a direct incoming connection from the {props.version} console. To learn how to install a
+  PCG on VMware, refer to the [VMware PCG](../../../../../../clusters/pcg/deploy-pcg/vmware/) guide.
+
+  :::
