@@ -9,11 +9,7 @@ tags: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 keywords: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 ---
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-non-airgap-introduction"
-  version="Palette VerteX"
-/>
+<PartialsComponent category="self-hosted" name="install-non-airgap-introduction" version="Palette VerteX" />
 
 ## Prerequisites
 

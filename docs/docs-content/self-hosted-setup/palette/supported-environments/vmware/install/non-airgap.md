@@ -9,11 +9,7 @@ tags: ["self-hosted", "vmware", "non-airgap", "cli"]
 keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 ---
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-non-airgap-introduction"
-  version="Palette"
-/>
+<PartialsComponent category="self-hosted" name="install-non-airgap-introduction" version="Palette" />
 
 ## Prerequisites
 
@@ -73,10 +69,10 @@ Use the following steps to install Palette.
     export PALETTE_ENCRYPTION_PASSWORD=*************
     ```
 
-    The passphrase must be
-  between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
-  Refer to the [Palette CLI Encryption](../../../../../automation/palette-cli/palette-cli.md#encryption) section for
-  more information.
+    The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit,
+    and a special character. Refer to the
+    [Palette CLI Encryption](../../../../../automation/palette-cli/palette-cli.md#encryption) section for more
+    information.
 
 6.  Issue the Palette `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration
     details and then initiates the installation. For more information about the `ec` subcommand, refer to
@@ -107,14 +103,14 @@ Use the following steps to install Palette.
 
     #### Environment Configuration
 
-    | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                               |
-    | :-------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                            |
-    | **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                              |
-    | **No Proxy**                      | You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`     |
-    | **Proxy CA Certificate Filepath** | The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`. |
-    | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
-    | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. The network IP address range you specify during the installation must not overlap with any existing IP addresses in your environment. The IP address range must also have connectivity to the VMware vSphere environment.                                                                                                         |
+    | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | :-------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                                                                                                                              |
+    | **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                                                                                                                                |
+    | **No Proxy**                      | You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`                                                                                                                       |
+    | **Proxy CA Certificate Filepath** | The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                                                                   |
+    | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                                                                                                                                       |
+    | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. The network IP address range you specify during the installation must not overlap with any existing IP addresses in your environment. The IP address range must also have connectivity to the VMware vSphere environment. |
 
 12. Choose the image registry configuration. By default, our support team will provide you with the credentials for the
     AWS ECR registry that contains the packs. Use the following table for guidance.
@@ -195,70 +191,70 @@ Use the following steps to install Palette.
     | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
     | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
-  We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../install/install.md#size-guidelines) for additional sizing information.
+We recommended the following resources for Palette. Refer to the
+[Palette size guidelines](../install/install.md#size-guidelines) for additional sizing information.
 
-  - 8 CPUs per VM.
+- 8 CPUs per VM.
 
-  - 16 GB Memory per VM.
+- 16 GB Memory per VM.
 
-  - 100 GB Disk Space per VM.
+- 100 GB Disk Space per VM.
 
-    #### Additional vSphere Machine Configuration
+  #### Additional vSphere Machine Configuration
 
-    | **Parameter**     | **Description**                                                                          |
-    | ----------------- | ---------------------------------------------------------------------------------------- |
-    | **Node Affinity** | Select the node affinity. Enter `y` to schedule all Palette pods on control plane nodes. |
+  | **Parameter**     | **Description**                                                                          |
+  | ----------------- | ---------------------------------------------------------------------------------------- |
+  | **Node Affinity** | Select the node affinity. Enter `y` to schedule all Palette pods on control plane nodes. |
 
-    The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the
-    remainder of the installation. The installation takes some time to complete.
+  The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the
+  remainder of the installation. The installation takes some time to complete.
 
-    The Palette CLI creates a file named `ec.yaml` that contains the information you provided the wizard, and its
-    location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
+  The Palette CLI creates a file named `ec.yaml` that contains the information you provided the wizard, and its location
+  is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
 
-    ```bash hideClipboard
-    ==== Enterprise Cluster config saved ====
-    Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
-    ```
+  ```bash hideClipboard
+  ==== Enterprise Cluster config saved ====
+  Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+  ```
 
-    :::tip
+  :::tip
 
-    If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
-    remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster
-    if you used a different name.
+  If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
+  remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster
+  if you used a different name.
 
-    ```bash
-    kind delete cluster spectro-mgmt-cluster
-    ```
+  ```bash
+  kind delete cluster spectro-mgmt-cluster
+  ```
 
-    Restart the install process by referencing the `ec.yaml` file that was created during the first installation
-    attempt. For example:
+  Restart the install process by referencing the `ec.yaml` file that was created during the first installation attempt.
+  For example:
 
-    ```bash
-    palette ec install --config-file /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
-    ```
+  ```bash
+  palette ec install --config-file /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+  ```
 
-    :::
+  :::
 
-    When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are
-    displayed in the terminal. You will use these to access the Palette system console.
+  When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed
+  in the terminal. You will use these to access the Palette system console.
 
-    ```bash hideClipboard
-    ===========================================
-    ==== Enterprise Cluster System Console ====
-    ===========================================
-    Console URL: https://10.10.100.0/system
-    Username:    ************
-    Password:    ************
+  ```bash hideClipboard
+  ===========================================
+  ==== Enterprise Cluster System Console ====
+  ===========================================
+  Console URL: https://10.10.100.0/system
+  Username:    ************
+  Password:    ************
 
-    The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
+  The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
 
-    It will take another ~30-45 minutes for the installation to complete.
+  It will take another ~30-45 minutes for the installation to complete.
 
-    You can monitor its progress via kubectl/k9s or by viewing the System Console.
+  You can monitor its progress via kubectl/k9s or by viewing the System Console.
 
-    export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
-    ```
+  export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
+  ```
 
 16. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
