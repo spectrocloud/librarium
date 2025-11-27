@@ -30,3 +30,32 @@ installation, carefully review the [Prerequisites](#prerequisites) section.
     between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
     Refer to the [Palette CLI Encryption](../../../automation/palette-cli/palette-cli.md#encryption) section for more
     information.
+
+- PCG IP address requirements:
+
+  - For a single-node deployment, one IP address must be available for the PCG, or three available IP addresses for a
+    three-node deployment. Refer to the [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.
+  - For three-node deployments, one IP address must be available for the Kubernetes API-server endpoint.
+  - One IP address reserved for cluster repave operations.
+  - One IP address for the Virtual IP (VIP).
+  - DNS can resolve the domain `api.spectrocloud.com`.
+
+- The PCG nodes must be deployed on an x86 Linux environment with a Docker daemon installed and a connection to Palette
+  and the CloudStack endpoint. The Palette CLI installation must be invoked on an up-to-date Linux system with the
+  x86-64 architecture.
+
+- The CloudStack user account used to deploy the PCG must have the following permissions:
+
+  - TBC
+
+## Deploy the PCG
+
+TBC
+
+## Validate
+
+TBC
+
+## Next Steps
+
+TBC
