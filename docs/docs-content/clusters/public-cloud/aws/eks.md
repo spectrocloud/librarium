@@ -29,6 +29,23 @@ guide for help with migrating workloads.
 
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
+  - If you are using EKS Pod Identity to authenticate Palette with your AWS account, and you want users to access the
+    kubeconfig file of EKS workload clusters, you must add these users to the `iamAuthenticatorConfig.mapUsers` section
+    of the Kubernetes layer of your AWS EKS cluster profiles.
+
+    As per the following example, these users must be added to the `system:masters` group to have admin access to the
+    cluster. Replace `<aws-account-id>`, `<username>`, and `<k8s-username>` with your AWS account ID, the IAM username,
+    and the desired Kubernetes username, respectively. Add additional users as needed.
+
+    ```yaml title="Configuration template"
+    iamAuthenticatorConfig:
+      mapUsers:
+        - userarn: arn:aws:iam::<aws-account-id>:user/<username>
+          username: <k8s-username>
+          groups:
+            - system:masters
+    ```
+
 <!-- prettier-ignore-start -->
 - An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose **EKS** as the **Managed
   Kubernetes** cloud type. Review
@@ -265,7 +282,7 @@ guide for help with migrating workloads.
 
     | **Parameter**               | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
     | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Static Placement**        | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VPCs, enable the **Static Placement** option, and provide the VPCID in the **VPCID** field that displays with this option enabled. If you are deploying your cluster in an [AWS Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, static placement is required. You will need to specify two subnets in different Availability Zones (AZs).                                                                                                                                                                                      |
+    | **Static Placement**        | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VPCs, toggle on the **Enable static placement (Optional)** option, and provide the VPC ID in the **Virtual Private Cloud (VPC) ID** field that displays with this option enabled. If you are deploying your cluster in an [AWS Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, static placement is required. You will need to specify two subnets in different Availability Zones (AZs).                                                                                                                                       |
     | **Region**                  | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | **SSH Key Pair Name**       | Choose the SSH key pair for the region you selected. This is required for dynamic placement and optional for static placement. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
     | **Cluster Endpoint Access** | This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. If you are deploying your cluster in an [AWS Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, use **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -303,13 +320,13 @@ guide for help with migrating workloads.
 
     #### Cloud Configuration Settings
 
-    | **Parameter**                                | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Instance Option**                          | Choose a pricing method:<br /><br />- **On-Demand** - Provides stable and uninterrupted compute capacity at a higher cost.<br />- **Spot** - Allows you to bid for unused EC2 capacity at a lower cost.<br />We recommend you base your choice on your application's requirements.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Instance Type**                            | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Amazon Machine Image (AMI) Type**          | Specify a base AMI to use for your worker nodes: <br /> - **AL2_x86_64** (used by default if none selected) <br /> - **AL2_x86_64_GPU** <br /> - **AL2023_x86_64_STANDARD** <br /> - **AL2023_x86_64_NEURON** <br /> - **AL2023_x86_64_NVIDIA** <br /><br /> The AMI type cannot be modified post-deployment. Refer to the <VersionedLink text="Node Customization" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization"/> section of the Kubernetes EKS pack for configurable options available for these AMIs. <br /><br /> If using an Amazon Linux 2023 (AL2023) AMI and using an AWS CSI pack such as Amazon EBS CSI, Amazon EFS CSI, or Amazon Cloud Native, you must configure IAM Roles for Service Accounts (IRSA). IRSA is also required if using the AWS Application Loadbalancer. Refer to the [Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI](../../../troubleshooting/cluster-deployment.md#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami) troubleshooting guide for further information. |
-    | **Enable Nodepool Customization (Optional)** | Activate additional node pool customization options: <br /><br />- **Amazon Machine Image (AMI) ID (Optional)** - Use a pre-configured VM image by providing the ID value of the AMI. The AMI ID can be updated post-deployment, but the base AMI type must always match the type specified in the **Amazon Machine Image (AMI) Type** field, and the AMI must be compatible with the Kubernetes version specified in the [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md). <br /><br /> **CAUTION:** If you do not specify an AMI ID, Palette will use the Amazon EKS AMI for the node pool. As such, any future updates to the underlying Amazon EKS AMI in Palette will trigger [cluster repaves](../../cluster-management/node-pool.md#repave-behavior-and-configuration). To avoid unexpected repaves, explicitly set the AMI ID. Refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html) for the latest AMI IDs. <br /><br />- **Disk Type (Optional)** - Specify the disk type to use.                   |
-    | **Root Disk size (GB)**                      | Choose a disk size based on your requirements. The default size is `60`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Parameter**                                | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Instance Option**                          | Choose a pricing method:<br /><br />- **On-Demand** - Provides stable and uninterrupted compute capacity at a higher cost.<br />- **Spot** - Allows you to bid for unused EC2 capacity at a lower cost.<br />We recommend you base your choice on your application's requirements.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Instance Type**                            | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Amazon Machine Image (AMI) Type**          | Specify a base AMI to use for your worker nodes: <br /> - **AL2_x86_64** [(pending deprecation)](../../../release-notes/announcements.md#deprecations) <br /> - **AL2_x86_64_GPU** [(pending deprecation)](../../../release-notes/announcements.md#deprecations) <br /> - **AL2023_x86_64_STANDARD** (default) <br /> - **AL2023_x86_64_NEURON** <br /> - **AL2023_x86_64_NVIDIA** <br /><br /> The AMI type cannot be modified post-deployment. Refer to the <VersionedLink text="Node Customization" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization"/> section of the Kubernetes EKS pack for configurable options available for these AMIs. <br /><br /> If using an Amazon Linux 2023 (AL2023) AMI and using an AWS CSI pack such as Amazon EBS CSI, Amazon EFS CSI, or Amazon Cloud Native, you must configure IAM Roles for Service Accounts (IRSA). IRSA is also required if using the AWS Application Loadbalancer. Refer to the [Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI](../../../troubleshooting/cluster-deployment.md#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami) troubleshooting guide for further information. |
+    | **Enable Nodepool Customization (Optional)** | Activate additional node pool customization options: <br /><br />- **Amazon Machine Image (AMI) ID (Optional)** - Use a pre-configured VM image by providing the ID value of the AMI. The AMI ID can be updated post-deployment, but the base AMI type must always match the type specified in the **Amazon Machine Image (AMI) Type** field, and the AMI must be compatible with the Kubernetes version specified in the [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md). <br /><br /> **CAUTION:** If you do not specify an AMI ID, Palette will use the Amazon EKS AMI for the node pool. As such, any future updates to the underlying Amazon EKS AMI in Palette will trigger [cluster repaves](../../cluster-management/node-pool.md#repave-behavior-and-configuration). To avoid unexpected repaves, explicitly set the AMI ID. Refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html) for the latest AMI IDs. <br /><br />- **Disk Type (Optional)** - Specify the disk type to use.                                                                                                                                                      |
+    | **Root Disk size (GB)**                      | Choose a disk size based on your requirements. The default size is `60`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
     #### Fargate Profiles
 
@@ -379,66 +396,126 @@ You can validate your cluster is up and in **Running** state.
 
 ## Access EKS Cluster
 
-You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you
-will authenticate to your EKS cluster, you need to install the appropriate plugin. The table below lists the plugin
-required for two EKS deployment scenarios.
+You can access your EKS cluster using the kubectl CLI with a kubeconfig file. Authentication is required, and the
+availability of the kubeconfig file through Palette depends on your chosen authentication method, as shown in the
+following table.
 
-| **Scenario**                                              | **Plugin**                                                                        |
-| --------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Deploy EKS cluster with custom OIDC                       | [kubelogin](https://github.com/int128/kubelogin)                                  |
-| Deploy EKS cluster access with default AWS authentication | [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) |
+| **Authentication Method**    | **Kubeconfig Availability** |
+| ---------------------------- | --------------------------- |
+| AWS IAM Authenticator Plugin | :white_check_mark:          |
+| Default AWS Authentication   | :x:                         |
+| Custom OIDC                  | :white_check_mark:          |
 
-Select the appropriate tab for your deployment.
+Based on your chosen authentication method, follow the instructions in the appropriate tab to access your Amazon EKS
+cluster through kubectl.
 
-<Tabs queryString="oidc-authentication">
+<Tabs queryString="authentication-type">
 
-<TabItem label="AWS IAM" value="AWS IAM">
+<TabItem label="AWS IAM Authenticator Plugin" value="aws-iam-authenticator-plugin">
 
-To access an EKS cluster with default AWS authentication, you need to do the following:
+To access an Amazon EKS cluster using the
+[AWS IAM Authenticator plugin](https://github.com/kubernetes-sigs/aws-iam-authenticator), follow these steps:
 
-- Download the aws-iam-authenticator plugin, install it, and make it available in your system's `$PATH`. Refer to the
-  [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) GitHub repository for more
-  information.
-
-- Configure your AWS credentials. The aws-iam-authenticator plugin requires AWS credentials to access the cluster. Refer
-  to the
+- Configure your AWS CLI credentials. Refer to
   [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
-  reference guide.
+  for guidance.
 
-- Download the kubeconfig file from the cluster details page. Refer to the
-  [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+- Download and install the AWS IAM Authenticator plugin for your system. Refer to
+  [Installing the AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) for guidance.
+
+  <details>
+
+  <summary> Example steps to install </summary>
+
+  1. Download the binary from the
+     [GitHub releases page](https://github.com/kubernetes-sigs/aws-iam-authenticator/releases).
+
+  2. Move the binary to a directory included in your system's `PATH` and rename it to `aws-iam-authenticator`.
+
+     ```bash title="Example command"
+     sudo mv Downloads/aws-iam-authenticator_0.7.9_darwin_arm64 /usr/local/bin/aws-iam-authenticator
+     ```
+
+  3. Make the binary executable.
+
+     ```bash
+     sudo chmod +x /usr/local/bin/aws-iam-authenticator
+     ```
+
+  4. Verify the installation:
+
+     ```bash
+     aws-iam-authenticator --version
+     ```
+
+     ```shell hideClipboard title="Example output"
+     {"Version":"0.7.9","Commit":"19000d354fa0828012e45dc52039c73177f7cde8"}
+     ```
+
+  </details>
+
+- Download the kubeconfig file for the Amazon EKS cluster from Palette. Refer to
+  [Kubeconfig](../../cluster-management/kubeconfig.md) for guidance.
+
+Once you have downloaded your kubeconfig, you can use kubectl to access your cluster and apply manifests.
+
+</TabItem>
+
+<TabItem label="Default AWS Authentication" value="default-aws-authentication">
+
+To access an Amazon EKS cluster using the AWS CLI's built-in authentication, follow these steps:
+
+- Configure your AWS CLI credentials. Refer to
+  [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+  for guidance.
+
+- Ensure you have the following IAM permissions to download the kubeconfig and access the Amazon EKS cluster. Refer to
+  [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security-iam-id-based-policy-examples.html)
+  for guidance.
+
+  - `eks:DescribeCluster`
+  - `eks:AccessKubernetesApi`
+
+- Download the kubeconfig file from the Amazon EKS cluster using the AWS CLI. Refer to
+  [Connect kubectl to an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) for
+  guidance.
+
+  ```bash title="Example command"
+  aws eks update-kubeconfig --region <region> --name <cluster-name>
+  ```
+
+Once you have downloaded your kubeconfig, you can use kubectl to access your cluster and apply manifests.
 
 </TabItem>
 
 <TabItem label="Custom OIDC" value="Custom OIDC">
 
-To use custom OIDC, you need to do the following:
-
-- Install [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin for its ease of authentication. For
-  more information and to learn about other available helper applications, you can visit
-  [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/).
+To access an Amazon EKS cluster using a custom [OIDC](https://openid.net/developers/how-connect-works/) provider, follow
+these steps:
 
 <!-- prettier-ignore-start -->
-- Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the
-  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> guide.
+- Ensure your Amazon EKS cluster has an associated OIDC provider by configuring it in the Kubernetes layer.
+  Refer to the <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#configure-oidc-identity-provider" />
+  pack documentation for guidance.
+
+  - If you have not yet associated an OIDC provider with your cluster, use
+    [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin due to its ease of authentication.
 
 <!-- prettier-ignore-end -->
 
-<!-- prettier-ignore-start -->
-- Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups,
-  refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> for an example.
+- Ensure your OIDC user or group is mapped to an `admin` or `clusteradmin` Kubernetes RBAC Role or ClusterRole. To learn
+  how to map a Kubernetes role to users and groups, refer to
+  [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-<!-- prettier-ignore-end -->
+- Download the kubeconfig file for the Amazon EKS cluster from Palette. Refer to
+  [Kubeconfig](../../cluster-management/kubeconfig.md) for guidance.
 
-- Download the kubeconfig file from the cluster details page. Refer to the
-  [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+Once you have downloaded your kubeconfig and configured it to use your OIDC provider, you can use kubectl to access your
+cluster and apply manifests.
 
 </TabItem>
 
 </Tabs>
-
-Once you have the required plugin installed and kubeconfig file downloaded, you can use kubectl to access your cluster.
 
 :::tip
 
@@ -446,11 +523,9 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 :::
 
-## Resources
+## Next Steps
 
-- [Add AWS Account](add-aws-accounts.md)
-
-- [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+After deploying your EKS cluster, you may want to perform additional configuration tasks. Consider the following guides.
 
 - [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
@@ -458,10 +533,11 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [Configure Karpenter for EKS Clusters](configure-karpenter-eks-clusters.md)
 
-<!-- prettier-ignore-start -->
+- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+- [Cluster Management guides](../../cluster-management/cluster-management.md)
+
+<!-- prettier-ignore-start -->
+- <VersionedLink text="Kubernetes (EKS) pack documentation" url="/integrations/packs/?pack=kubernetes-eks" />
 
 <!-- prettier-ignore-end -->
-
-- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).

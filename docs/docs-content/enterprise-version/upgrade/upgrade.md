@@ -53,6 +53,21 @@ health status of MongoDB ReplicaSet members, refer to our
 <Tabs>
 <TabItem label="VMware" value="VMware">
 
+**4.8**
+
+:::info
+
+After upgrading to 4.8.8, the Palette management cluster will appear to be **Unhealthy** in the Palette UI due to
+`mongodb-key-manager-manifest` errors. The cluster functionality is not affected and will return to **Healthy** after a
+few hours.
+
+:::
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.8        | :white_check_mark: |
+
 **4.7.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
@@ -292,6 +307,13 @@ health status of MongoDB ReplicaSet members, refer to our
 </TabItem>
 
 <TabItem label="Kubernetes" value="Kubernetes">
+
+**4.8**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.29       |       4.8.6        | :white_check_mark: |
+|       4.7.27       |       4.8.6        | :white_check_mark: |
 
 **4.7.x**
 

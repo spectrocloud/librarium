@@ -2398,6 +2398,780 @@
         }
       }
     },
+    "/v1/edge-mgmt/network/bonds": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List network bond interfaces",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List bonds",
+        "operationId": "V1NetworkBonds",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1BondList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/bonds/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Retrieve a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get bond",
+        "operationId": "V1NetworkBond",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Bond"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create or update a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create or update bond",
+        "operationId": "V1NetworkBondUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BondRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create bond",
+        "operationId": "V1NetworkBondCreate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BondRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete bond",
+        "operationId": "V1NetworkBondDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/bridges": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List all bridge interfaces",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List bridges",
+        "operationId": "V1NetworkBridges",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1BridgeList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/bridges/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Retrieve a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get bridge",
+        "operationId": "V1NetworkBridge",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Bridge"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create or update a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create or update bridge",
+        "operationId": "V1NetworkBridgeUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BridgeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create bridge",
+        "operationId": "V1NetworkBridgeCreate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BridgeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete bridge",
+        "operationId": "V1NetworkBridgeDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List network interfaces (NICs)",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List NICs",
+        "operationId": "V1NetworkInterfaces",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1NicSummaryList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get one network interface",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get NIC",
+        "operationId": "V1NetworkInterface",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1NicSummary"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces/{name}/config": {
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Update a network interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update NIC config",
+        "operationId": "V1NetworkInterfaceUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1NetworkInterfaceUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/vlans": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List VLAN interfaces",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List VLANs",
+        "operationId": "V1NetworkVLANs",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1VLANList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/vlans/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Retrieve a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get VLAN",
+        "operationId": "V1NetworkVLAN",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1VLAN"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create or update a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create or update VLAN",
+        "operationId": "V1NetworkVLANUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1VLANRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create VLAN",
+        "operationId": "V1NetworkVLANCreate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1VLANRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete VLAN",
+        "operationId": "V1NetworkVLANDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/settings": {
       "get": {
         "security": [
@@ -2875,6 +3649,256 @@
     },
     "v1BadRequest": {
       "description": "Bad request"
+    },
+    "v1Bond": {
+      "description": "Bond interface configuration",
+      "type": "object",
+      "properties": {
+        "configStatus": {
+          "description": "Detailed configuration status from networkctl",
+          "type": "string"
+        },
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "lacpTransmitRate": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "miiMonitorSec": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "description": "Status of the bond interface (up/down/applying/unknown)",
+          "type": "string"
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "transmitHashPolicy": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
+    "v1BondList": {
+      "description": "Collection of bond interfaces",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Bond"
+          }
+        }
+      }
+    },
+    "v1BondRequest": {
+      "description": "Bond interface request payload",
+      "type": "object",
+      "required": [
+        "members"
+      ],
+      "properties": {
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "lacpTransmitRate": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "miiMonitorSec": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "transmitHashPolicy": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Bridge": {
+      "description": "Bridge interface configuration",
+      "type": "object",
+      "properties": {
+        "bond": {
+          "description": "Name of the bond interface attached to this bridge",
+          "type": "string"
+        },
+        "configStatus": {
+          "description": "Detailed configuration status from networkctl",
+          "type": "string"
+        },
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the bridge interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Bridge interface name (e.g., br0)",
+          "type": "string"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "description": "Status of the bridge interface (up/down/applying/unknown)",
+          "type": "string"
+        },
+        "subnet": {
+          "description": "Subnet mask (for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        }
+      }
+    },
+    "v1BridgeList": {
+      "description": "Collection of bridge interfaces",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Bridge"
+          }
+        }
+      }
+    },
+    "v1BridgeRequest": {
+      "description": "Bridge interface request payload",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "bond": {
+          "description": "Name of the bond interface to attach to this bridge",
+          "type": "string"
+        },
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (required for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the bridge interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Bridge interface name (e.g., br0)",
+          "type": "string"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subnet": {
+          "description": "Subnet mask (required for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type. Default is dhcp.",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        }
+      }
     },
     "v1CA": {
       "type": "object",
@@ -4706,6 +5730,46 @@
         }
       }
     },
+    "v1NetworkInterfaceUpdateRequest": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
     "v1Nic": {
       "description": "Nic is the specification of the network interface card on the edge host.",
       "type": "object",
@@ -4733,6 +5797,63 @@
         },
         "subnet": {
           "type": "string"
+        }
+      }
+    },
+    "v1NicSummary": {
+      "type": "object",
+      "properties": {
+        "configStatus": {
+          "type": "string"
+        },
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "mac": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "status": {
+          "type": "string"
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NicSummaryList": {
+      "type": "object",
+      "properties": {
+        "interfaces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1NicSummary"
+          }
         }
       }
     },
@@ -5303,6 +6424,143 @@
       "properties": {
         "Authorization": {
           "description": "The token granting the authorization access to the user",
+          "type": "string"
+        }
+      }
+    },
+    "v1VLAN": {
+      "description": "VLAN interface configuration",
+      "type": "object",
+      "properties": {
+        "configStatus": {
+          "description": "Detailed configuration status from networkctl",
+          "type": "string"
+        },
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (required for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the VLAN interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "VLAN interface name (e.g., ens32.100 or bond0.100)",
+          "type": "string"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parentName": {
+          "description": "Parent interface name (NIC or Bond)",
+          "type": "string"
+        },
+        "parentType": {
+          "description": "Type of parent interface",
+          "type": "string",
+          "enum": [
+            "nic",
+            "bond"
+          ]
+        },
+        "status": {
+          "description": "Status of the VLAN interface (up/down/applying/unknown)",
+          "type": "string"
+        },
+        "subnet": {
+          "description": "Subnet mask (required for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "description": "VLAN ID (1-4094)",
+          "type": "string"
+        }
+      }
+    },
+    "v1VLANList": {
+      "description": "Collection of VLAN interfaces",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1VLAN"
+          }
+        }
+      }
+    },
+    "v1VLANRequest": {
+      "description": "VLAN interface request payload",
+      "type": "object",
+      "required": [
+        "parentName",
+        "parentType",
+        "vlanID"
+      ],
+      "properties": {
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (required for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the VLAN interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parentName": {
+          "description": "Parent interface name (NIC or Bond)",
+          "type": "string"
+        },
+        "parentType": {
+          "description": "Type of parent interface (nic or bond)",
+          "type": "string",
+          "enum": [
+            "nic",
+            "bond"
+          ]
+        },
+        "subnet": {
+          "description": "Subnet mask (required for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type. Default is dhcp.",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "description": "VLAN ID (1-4094)",
           "type": "string"
         }
       }
