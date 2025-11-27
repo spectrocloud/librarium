@@ -24,6 +24,12 @@ following high-level tasks are performed as part of the cluster creation:
 - Deployment of additional Add-ons such as Prometheus, Permissions Manager, or Vault, as specified in the Cluster
   Profile.
 
+:::info
+
+Palette has been performance tested with 10,000 clusters. We recommend that you don't exceed this limit.
+
+:::
+
 ## Images
 
 Palette provides Virtual Machine (VM) images for cluster-computing infrastructure out of the box for the most recent

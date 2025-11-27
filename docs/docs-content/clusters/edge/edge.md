@@ -67,6 +67,12 @@ it takes to deploy an Edge host.
 You can also review [third party integrations](third-party-integrations/third-party-integrations.md) with Edge to solve
 specific challenges with additional software.
 
+:::info
+
+Palette has been performance tested with 30,000 edge nodes. We recommend that you don't exceed this limit.
+
+:::
+
 ## Resources
 
 - [Edge Native Architecture](./architecture/architecture.md)
