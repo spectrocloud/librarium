@@ -15,6 +15,12 @@ and are managed by operators at remote sites.
 Palette provisions workload clusters on Edge hosts from the Palette management console. Palette also provides end-to-end
 cluster management through scaling, upgrades, and reconfiguration operations.
 
+:::info
+
+Palette has been performance tested with 30,000 edge nodes, and it is not recommended to exceed this limit.
+
+:::
+
 Edge computing brings computing and data storage closer to the source, reducing latency and bandwidth issues that result
 from central computing and improving overall application performance. Industries such as retail, restaurants,
 manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that
