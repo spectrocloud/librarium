@@ -76,7 +76,8 @@ OS layer.
   with the CA certificate.
 
 For guidance on configuring proxy CA certificates, refer to appropriate Palette CLI PCG deployment guide for
-[MAAS](./deploy-pcg/maas.md), [OpenStack](./deploy-pcg/openstack.md), or [VMware vSphere](./deploy-pcg/vmware.md).
+[MAAS](./deploy-pcg/maas.md), [OpenStack](./deploy-pcg/openstack.md), [VMware vSphere](./deploy-pcg/vmware.md), or
+[Apache CloudStack](./deploy-pcg/cloudstack.md).
 
 #### Existing Kubernetes Cluster
 
