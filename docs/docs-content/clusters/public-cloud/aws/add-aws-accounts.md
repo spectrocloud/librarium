@@ -28,7 +28,7 @@ an AWS cloud account in Palette. You can use any of the following authentication
 
   - [Static Access Credentials](#static-access-credentials-2)
   - [Secure Compliance Validation Credentials](#secure-compliance-validation-credentials)
-  - [EKS Pod Identity](#eks-pod-identity-2)
+  <!-- - [EKS Pod Identity](#eks-pod-identity-2) -->
 
 ## AWS Account
 
@@ -272,9 +272,9 @@ Your newly added AWS cloud account is listed under the AWS section.
 
 You can configure [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/) accounts in
 [Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your
-organization's compliance requirements, you can choose between standard authentication (standard access credentials),
-secure compliance validation using your SC2S Access Portal (SCAP) credentials, or EKS Pod Identity to register your AWS
-Secret Cloud account in Palette VerteX.
+organization's compliance requirements, you can choose between standard authentication (standard access credentials) or
+secure compliance validation using your SC2S Access Portal (SCAP) credentials to register your AWS Secret Cloud account
+in Palette VerteX.
 
 :::preview
 
@@ -463,7 +463,7 @@ You can verify that the account is available in Palette by reviewing the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your
 newly added AWS cloud account is listed under the AWS section.
 
-### EKS Pod Identity
+<!-- ### EKS Pod Identity
 
 <PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS US Secret" />
 
@@ -481,7 +481,7 @@ newly added AWS cloud account is listed under the AWS section.
 
 #### Validate
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS US Secret" />
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS US Secret" /> -->
 
 ## Next Steps
 
