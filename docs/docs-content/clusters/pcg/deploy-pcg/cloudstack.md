@@ -44,18 +44,70 @@ installation, carefully review the [Prerequisites](#prerequisites) section.
   and the CloudStack endpoint. The Palette CLI installation must be invoked on an up-to-date Linux system with the
   x86-64 architecture.
 
-- The CloudStack user account used to deploy the PCG must have the following permissions:
+- The CloudStack environment must have the following resources available:
 
-  - TBC
+  - A CloudStack project to host the PCG cluster.
+  - A CloudStack zone to deploy the PCG cluster into.
+  - A CloudStack network within the zone to host the PCG cluster.
+  - A CloudStack service offering to define the compute resources for the PCG nodes. Refer to the
+    [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.
 
-## Deploy the PCG
+- A CloudStack user account with the required permissions to deploy the PCG. Review the _TBC_ section to learn more
+  about the required permissions.
 
-TBC
+  - A CloudStack API key and Secret key for the user account that will be used to deploy the PCG. Refer to the
+    [Using API Key and Secret Key based Authentication](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#using-api-key-and-secret-key-based-authentication)
+    guide about API and Secret keys.
+
+- CloudStack SSH keys generated and available to the user account that will be used to deploy the PCG. Refer to the
+  [Using SSH Keys for Authentication](https://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#using-ssh-keys-for-authentication)
+  guide to learn how to create an SSH key pair.
+
+- The CloudStack API endpoint URL. For example, `https://cloudstack.example.com:8443/client/api` or
+  `https://management-server-ip:8080/client/api`.
+
+## Deploy PCG
+
+<PartialsComponent category="pcg" name="pcg-initial-installation" edition="CloudStack" />
+
+8. Provide the CloudStack account information when prompted by the Palette CLI.
+
+   | **Field**                        | **Description**                                                                                                                                          |
+   | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **CloudStack URL**               | Enter the CloudStack API endpoint URL. For example, `https://cloudstack.example.com:8443/client/api` or `https://management-server-ip:8080/client/api`.  |
+   | **CloudStack ApiKey**            | Enter the CloudStack API key for the user account that has permissions to deploy the PCG.                                                                |
+   | **CloudStack SecretKey**         | Enter the CloudStack Secret key for the user account that has permissions to deploy the PCG.                                                             |
+   | **CloudStack Domain (optional)** | Enter the CloudStack [domain](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains) name if applicable. Otherwise, leave blank. |
+
+9. Provide the CloudStack cluster configuration information when prompted by the Palette CLI.
+
+   | **Parameter**                                    | **Description**                                                                                                                                                                                                                                                                                                                    |
+   | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Project**                                      | Enter the name of the CloudStack project to deploy the PCG into.                                                                                                                                                                                                                                                                   |
+   | **Zone**                                         | Enter the name of the CloudStack zone to deploy the PCG into.                                                                                                                                                                                                                                                                      |
+   | **Network**                                      | Enter the name of the CloudStack network to host the PCG cluster.                                                                                                                                                                                                                                                                  |
+   | **SSH KeyPair**                                  | Enter the name of the CloudStack service offering that defines the compute resources for the PCG nodes. Refer to the [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.                                                                                                                              |
+   | **Sync with CKS(CloudStack Kubernetes Service)** | Enter `y` to synchronize the PCG with [CloudStack Kubernetes Service (CKS)](https://docs.cloudstack.apache.org/en/latest/plugins/cloudstack-kubernetes-service.html#cloudstack-kubernetes-service) if it is available in your CloudStack environment. Enter `n` if CKS is not available or you do not want to synchronize with it. |
+   | **Static Control Plane IP Address (optional)**   | Enter the static IP address for the control plane node of the PCG if you want to assign a fixed IP. Otherwise, leave blank.                                                                                                                                                                                                        |
+   | **Patch OS on boot**                             | Enter `y` to enable automatic OS patching when the PCG nodes boot. Enter `n` to disable automatic OS patching.                                                                                                                                                                                                                     |
+   | **Offering**                                     | Select the CloudStack service offering that defines the compute resources for the PCG nodes. Refer to the [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.                                                                                                                                         |
+
+10. Provide the PCG cluster size information when prompted by the Palette CLI.
+
+    | **Parameter**                           | **Description**                                                                                                                                                                                                                                     |
+    | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Number of nodes**                     | Select `1` for a single-node deployment or `3` for a high-availability (HA) deployment.                                                                                                                                                             |
+    | **Enable control plane node affinity?** | Enter `y` to enable control plane node affinity or `n` to disable it. If enabled, all Palette related pods (those in the `cluster-<uid>` namespace) will be deployed to control plane nodes only on all workload clusters created through this PCG. |
+
+11. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="CloudStack" />
+
+12. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
 
 ## Validate
 
-TBC
+<PartialsComponent category="pcg" name="pcg-validate" edition="CloudStack" />
 
 ## Next Steps
 
-TBC
+Learn how to create and manage CloudStack clusters using the deployed PCG by following the steps in the
+[Create and Manage CloudStack Clusters](../../data-center/cloudstack/cloudstack.md) guide.

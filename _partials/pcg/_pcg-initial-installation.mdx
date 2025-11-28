@@ -24,13 +24,15 @@ partial_name: pcg-initial-installation
     | **Allow Insecure Connection**  | Bypass x509 server Certificate Authority (CA) verification. Enter `y` if you are using a self-hosted Palette or Palette VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter `n`. |
     | **Spectro Cloud API Key**      | Enter your Palette API Key. Refer to the <VersionedLink text="Create API Key" url="/user-management/authentication/api-key/create-api-key" /> guide for more information.                                                                                                           |
     | **Spectro Cloud Organization** | Select your Palette organization name.                                                                                                                                                                                                                             |
-    | **Spectro Cloud Project**      | Select the project you want to register your {props.edition} account in.                                                                                                                                                                                                  |
+    | **Spectro Cloud Project**      | Select the Palette project you want to register your {props.edition} account in.                                                                                                                                                                                                  |
     | **Acknowledge**                | Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner.                                                                                                                                              |
 
     :::info
 
-    The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** file are encrypted and cannot be manually
-    updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the <VersionedLink text="PCG command" url="/automation/palette-cli/commands/pcg#update-passwords" /> reference page for more information.
+    After completing the `palette pcg install` steps, the configuration details are saved to a file named `pcg.yaml` in the `~/.palette/pcg/pcg-<date-time>` directory.
+    The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the `pcg.yaml` file are encrypted and cannot be manually updated. To change these values, use the
+    `palette pcg install --update-passwords` command. Refer to the <VersionedLink text="PCG command" url="/automation/palette-cli/commands/pcg#update-passwords" />
+    reference page for more information.
 
     :::
 
@@ -46,9 +48,9 @@ partial_name: pcg-initial-installation
     | **Management Plane Type**                            | Select **Palette** or **VerteX**.                                                                                                                                                                                                                                                          |
     | **Enable Ubuntu Pro (required for production)**      | Enter `y` if you want to use Ubuntu Pro and provide an Ubuntu Pro token. Otherwise, enter `n`.                                                                                                                                                                                      |
     | **Select an image registry type**                    | For a non-airgap installation, choose `Default` to pull images from public image registries. This requires an internet connection. For airgapped installations, select `Custom` and point to your airgap support VM or a custom internal registry that contains the required images. |
-    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the cloud account to only be available at the tenant admin scope.                                                                |
     | **Cloud Type**                                       | Select **{props.edition}**.                                                                                                                                                                                                                                                                  |
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG.                                                                                                                                                                                                                       |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the cloud account to only be available at the tenant admin scope.                                                                |
 
 5. If you want to configure your PCG to use a proxy network, complete the following fields, as appropriate.
 
