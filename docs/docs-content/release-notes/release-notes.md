@@ -11,7 +11,29 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 28, 2025 - Component Updates {#component-updates-2025-48}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.8.
+
+### Packs
+
+| Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EFS                | CSI    | :white_check_mark: | :x:                | 2.1.14      |
+| Argo CD                   | CSI    | :white_check_mark: | :x:                | 9.1.0       |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 1.0.0       |
+| GCE Persistent Disk CSI   | CSI    | :white_check_mark: | :x:                | 1.21.0      |
+| GCE Persistent Disk CSI   | CSI    | :white_check_mark: | :x:                | 1.20.2      |
+| Istio                     | Add-on | :white_check_mark: | :x:                | 1.28.0      |
+| Karpenter                 | Add-on | :white_check_mark: | :x:                | 1.8.2       |
+| Nginx                     | Add-on | :white_check_mark: | :x:                | 1.14.0      |
+| Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark: | 2.10.1      |
+
 ## November 26, 2025 - Release 4.8.8
+
+The following component updates are applicable to this release:
+
+- [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 
 ### Improvements
 
@@ -30,6 +52,10 @@ tags: ["release-notes"]
   upgrading Palette to 4.8.6, resulting in API and validation conflicts.
 
 ## November 22, 2025 - Release 4.8.0 - 4.8.6 {#release-notes-4.8.0}
+
+The following component updates are applicable to this release:
+
+- [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 
 ### Security Notices
 
