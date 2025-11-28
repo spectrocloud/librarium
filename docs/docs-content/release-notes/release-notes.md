@@ -27,8 +27,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 | Istio                     | Add-on | :white_check_mark: | :x:  | 1.28.0      |
 | Karpenter                 | Add-on | :white_check_mark: | :x:  | 1.8.2       |
 | Nginx                     | Add-on | :white_check_mark: | :x:  | 1.14.0      |
-| Piraeus CSI               | CSI    | :white_check_mark: | :x:  | 2.10.1      |
-| Piraeus Operator          | CSI    | :white_check_mark: | :x:  | 2.9.1       |
+| Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark:  | 2.10.1      |
 
 ## November 26, 2025 - Release 4.8.8
 
