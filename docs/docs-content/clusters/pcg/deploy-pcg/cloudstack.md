@@ -7,8 +7,8 @@ sidebar_position: 50
 tags: ["pcg", "cloudstack"]
 ---
 
-This guide provides you with the steps to deploy a PCG cluster to an Apache CloudStack environment. Before you begin the
-installation, carefully review the [Prerequisites](#prerequisites) section.
+This guide provides you with the steps to deploy a Palette Cloud Gateway (PCG) cluster to an Apache CloudStack
+environment. Before you begin the installation, carefully review the [Prerequisites](#prerequisites) section.
 
 ## Prerequisites
 
@@ -52,14 +52,16 @@ installation, carefully review the [Prerequisites](#prerequisites) section.
   - A CloudStack service offering to define the compute resources for the PCG nodes. Refer to the
     [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.
 
-- A CloudStack user account with the required permissions to deploy the PCG. Review the _TBC_ section to learn more
-  about the required permissions.
+- A CloudStack user account with the required permissions to deploy the PCG and workload clusters in the CloudStack
+  environment. Review [Required Permissions](../../data-center/cloudstack/required-permissions.md) to learn more about
+  the required permissions.
 
-  - A CloudStack API key and Secret key for the user account that will be used to deploy the PCG. Refer to the
+  - A CloudStack API key and Secret key for the user account used to deploy the PCG and workload clusters. Refer to the
     [Using API Key and Secret Key based Authentication](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#using-api-key-and-secret-key-based-authentication)
     guide about API and Secret keys.
 
-- CloudStack SSH keys generated and available to the user account that will be used to deploy the PCG. Refer to the
+- CloudStack SSH keys generated and available to the user account used to deploy the PCG and workload clusters. Refer to
+  the
   [Using SSH Keys for Authentication](https://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#using-ssh-keys-for-authentication)
   guide to learn how to create an SSH key pair.
 
