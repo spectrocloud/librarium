@@ -11,6 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 2, 2025 - Release 4.8.9
+
+### Bug Fixes
+
+- Fixed an issue that caused Palette's `cluster-management-agent` service to continually restart on
+  [Data Center clusters](../clusters/data-center/data-center.md) due to the duplicate CloudStack cloud type introduced
+  by Palette 4.8.6.
+
 ## November 28, 2025 - Component Updates {#component-updates-2025-48}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
