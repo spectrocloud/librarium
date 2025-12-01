@@ -16,8 +16,8 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that caused Palette's `cluster-management-agent` service to continually restart on
-  [data denter clusters](../clusters/data-center/data-center.md) due to a duplicate CloudStack cloud type introduced
-  by Palette 4.8.6.
+  [data denter clusters](../clusters/data-center/data-center.md) due to a duplicate CloudStack cloud type introduced by
+  Palette 4.8.6.
 
 ## November 28, 2025 - Component Updates {#component-updates-2025-48}
 
