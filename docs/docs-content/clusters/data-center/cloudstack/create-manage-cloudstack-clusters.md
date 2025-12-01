@@ -19,25 +19,24 @@ TBC
 efore you begin, ensure that you have the following prerequisites:
 
 - A Cloudstack user account with the necessary permissions to create and manage clusters. Refer to the
-  [Required Permissions](./permissions.md) page for more information.
+  [Required Permissions](./required-permissions.md) page for more information.
 
-
-- A Cloudstack account registered in Palette. VMware accounts are automatically registered when you deploy a Private Cloud
-  Gateway (PCG) in Palette. Check out the [Deploy a PCG](../../pcg/deploy-pcg/cloudstack.md) guide to learn how to deploy a
-  PCG.
+- A Cloudstack account registered in Palette. VMware accounts are automatically registered when you deploy a Private
+  Cloud Gateway (PCG) in Palette. Check out the [Deploy a PCG](../../pcg/deploy-pcg/cloudstack.md) guide to learn how to
+  deploy a PCG.
 
   :::info
 
   **LINUS DOUBLECHECK THIS FOR CLOUDSTCK**
 
-  If you have a self-hosted Palette or VerteX instance, you can use the System PCG instance that is deployed in a Cloudstack
-  environment. Refer to the [System PCG](../../pcg/architecture.md#system-private-gateway) to learn more about the
-  system PCG.
+  If you have a self-hosted Palette or VerteX instance, you can use the System PCG instance that is deployed in a
+  Cloudstack environment. Refer to the [System PCG](../../pcg/architecture.md#system-private-gateway) to learn more
+  about the system PCG.
 
   :::
 
-- A cluster profile for the Cloudstack environment. You can learn how to create a cluster profile by following the
-  steps in the
+- A cluster profile for the Cloudstack environment. You can learn how to create a cluster profile by following the steps
+  in the
   [Create a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
   guide.
 
@@ -51,7 +50,6 @@ efore you begin, ensure that you have the following prerequisites:
   - A search domain, also called DNS mapping, can be used to assign cluster nodes to a specific network, cluster, and
     data center. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add
     multiple DNS mappings to a PCG.
-
 
 ## Create a CloudStack Cluster
 
