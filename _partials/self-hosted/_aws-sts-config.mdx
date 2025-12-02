@@ -114,7 +114,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
    ```shell
    curl --request GET \
-     --url https://<palette-api-url>/v1/system/config/aws/account \
+     --url https://<palette-api-url>/v1/system/config/aws/sts/account \
      --header "Authorization: $TOKEN"
    ```
 
@@ -124,7 +124,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
    ```shell
    curl --request GET \
-     --url https://<palette-api-url>/v1/system/config/awsgov/account \
+     --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
      --header "Authorization: $TOKEN"
    ```
 
