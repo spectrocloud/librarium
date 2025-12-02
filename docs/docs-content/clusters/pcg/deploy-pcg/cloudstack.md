@@ -52,16 +52,15 @@ environment. Before you begin the installation, carefully review the [Prerequisi
   - A CloudStack service offering to define the compute resources for the PCG nodes. Refer to the
     [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.
 
-- A CloudStack user account with the required permissions to deploy the PCG and workload clusters in the CloudStack
-  environment. Review [Required Permissions](../../data-center/cloudstack/required-permissions.md) to learn more about
-  the required permissions.
+- A CloudStack user account with the required permissions to deploy the PCG in the CloudStack environment. Review
+  [Required Permissions](../../data-center/cloudstack/required-permissions.md) to learn more about the required
+  permissions.
 
-  - A CloudStack API key and Secret key for the user account used to deploy the PCG and workload clusters. Refer to the
+  - A CloudStack API key and Secret key for the user account used to deploy the PCG. Refer to the
     [Using API Key and Secret Key based Authentication](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#using-api-key-and-secret-key-based-authentication)
     guide about API and Secret keys.
 
-- CloudStack SSH keys generated and available to the user account used to deploy the PCG and workload clusters. Refer to
-  the
+- CloudStack SSH keys generated and available to the user account used to deploy the PCG. Refer to the
   [Using SSH Keys for Authentication](https://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#using-ssh-keys-for-authentication)
   guide to learn how to create an SSH key pair.
 
@@ -74,12 +73,12 @@ environment. Before you begin the installation, carefully review the [Prerequisi
 
 8. Provide the CloudStack account information when prompted by the Palette CLI.
 
-   | **Field**                        | **Description**                                                                                                                                          |
-   | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **CloudStack URL**               | Enter the CloudStack API endpoint URL. For example, `https://cloudstack.example.com:8443/client/api` or `https://management-server-ip:8080/client/api`.  |
-   | **CloudStack ApiKey**            | Enter the CloudStack API key for the user account that has permissions to deploy the PCG.                                                                |
-   | **CloudStack SecretKey**         | Enter the CloudStack Secret key for the user account that has permissions to deploy the PCG.                                                             |
-   | **CloudStack Domain (optional)** | Enter the CloudStack [domain](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains) name if applicable. Otherwise, leave blank. |
+   | **Field**                        | **Description**                                                                                                                                                                                                       |
+   | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **CloudStack URL**               | Enter the CloudStack API endpoint URL. For example, `https://cloudstack.example.com:8443/client/api` or `https://management-server-ip:8080/client/api`.                                                               |
+   | **CloudStack ApiKey**            | Enter the CloudStack API key for the user account that has permissions to deploy the PCG.                                                                                                                             |
+   | **CloudStack SecretKey**         | Enter the CloudStack Secret key for the user account that has permissions to deploy the PCG.                                                                                                                          |
+   | **CloudStack Domain (optional)** | If applicable, enter the CloudStack [domain](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains) name for the user account that has permissions to deploy the PCG. Otherwise, leave blank. |
 
 9. Provide the CloudStack cluster configuration information when prompted by the Palette CLI.
 

@@ -16,24 +16,10 @@ TBC
 
 ## Prerequisites
 
-efore you begin, ensure that you have the following prerequisites:
+Before you begin, ensure that you have the following prerequisites:
 
-- A Cloudstack user account with the necessary permissions to create and manage clusters. Refer to the
-  [Required Permissions](./required-permissions.md) page for more information.
-
-- A Cloudstack account registered in Palette. VMware accounts are automatically registered when you deploy a Private
-  Cloud Gateway (PCG) in Palette. Check out the [Deploy a PCG](../../pcg/deploy-pcg/cloudstack.md) guide to learn how to
-  deploy a PCG.
-
-  :::info
-
-  **LINUS DOUBLECHECK THIS FOR CLOUDSTCK**
-
-  If you have a self-hosted Palette or VerteX instance, you can use the System PCG instance that is deployed in a
-  Cloudstack environment. Refer to the [System PCG](../../pcg/architecture.md#system-private-gateway) to learn more
-  about the system PCG.
-
-  :::
+- A CloudStack account registered in Palette. Refer to the
+  [Add CloudStack Accounts to Palette](./add-cloudstack-accounts.md) guide to learn how to add CloudStack accounts.
 
 - A cluster profile for the Cloudstack environment. You can learn how to create a cluster profile by following the steps
   in the

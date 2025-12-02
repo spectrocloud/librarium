@@ -9,10 +9,11 @@ tags: ["data center", "cloudstack", "permissions"]
 ---
 
 When Palette creates and manages clusters in an Apache CloudStack environment, it requires certain permissions to
-perform actions such as creating, modifying, and deleting resources needed for cluster deployment and management. These
-permissions allow Palette to interact with the CloudStack API and manage the lifecycle of the clusters effectively. They
-are also needed to deploy the [Palette Cloud Gateway (PCG)](../../pcg/deploy-pcg/cloudstack.md) for your CloudStack
-environment.
+perform actions such as creating, modifying, and deleting resources needed for cluster deployment and management.
+
+These permissions allow Palette to interact with the CloudStack API and manage the lifecycle of the clusters
+effectively. They are also needed to deploy the [Palette Cloud Gateway (PCG)](../../pcg/deploy-pcg/cloudstack.md) for
+your CloudStack environment.
 
 ## Dynamic Permissions
 

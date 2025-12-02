@@ -13,6 +13,10 @@ For this to work, Palette uses a [Private Cloud Gateway (PCG)](../../pcg/pcg.md)
 the internal network to the Palette instance, ultimately bypassing the need to create firewall rules or other network
 configurations allowing external connections to the internal network.
 
+If you have a self-hosted Palette or VerteX instance, you can also use a System Private Gateway to connect to your
+CloudStack environment. Refer to the [System Private Gateway](../../pcg/architecture.md#system-private-gateway) guide to
+learn more.
+
 ## Get Started
 
 TBC
@@ -27,10 +31,14 @@ The following versions of Apache CloudStack are supported in Palette.
 
 ## Next Steps
 
-- [Architecture](architecture.md)
+- [Review architecture for CloudStack](architecture.md)
 
-- [Deploy a PCG in Apache CloudStack](../../pcg/deploy-pcg/cloudstack.md)
+- [Review required permissions for CloudStack](required-permissions.md)
 
-- [Required Permissions](required-permissions.md)
+- [Deploy a PCG in CloudStack](../../pcg/deploy-pcg/cloudstack.md) or use a
+  [System Private Gateway](../../pcg/architecture.md#system-private-gateway) if you have a self-hosted Palette or VerteX
+  instance with network connectivity to the CloudStack environment.
 
-- [Create and Manage CloudStack Clusters](create-manage-cloudstack-clusters.md)
+- [Add CloudStack accounts to Palette](./add-cloudstack-accounts.md)
+
+- [Create and manage CloudStack clusters](create-manage-cloudstack-clusters.md)
