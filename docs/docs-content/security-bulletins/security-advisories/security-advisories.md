@@ -31,7 +31,7 @@ with the same rigor applied to a confirmed incident to ensure the integrity of o
 The activity observed is consistent with the broader industry-wide attack pattern associated with Shai Hulud 2.0,
 specifically targeting development workflows and supply-chain trust pathways.
 
-#### Immediate Mitigation Actions Underway
+### Immediate Mitigation Actions Underway
 
 Our teams are working diligently to implement a comprehensive set of precautionary and containment measures. This
 includes rotating all credentials and secrets, reviewing our build and dependency processes, adding safeguards to
