@@ -39,7 +39,7 @@ strengthen our CI/CD workflows, and enhancing monitoring across our development 
 being taken out of an abundance of caution to ensure the continued security and integrity of our platform.
 
 We will continue to monitor evolving intelligence from security researchers, collaborate with our partners, and expand
-our internal investigations as new indicators of compromise are published. This Advisory will be updated with additional
+our internal investigations as new indicators of compromise are published. This advisory will be updated with additional
 findings as the investigation progresses.
 
 ### References
