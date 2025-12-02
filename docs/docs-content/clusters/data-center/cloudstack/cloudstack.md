@@ -7,7 +7,7 @@ tags: ["data center", "cloudstack"]
 ---
 
 Palette supports using [Apache CloudStack](https://cloudstack.apache.org/) as a data center provider. You can deploy
-Kubernetes clusters to your CloudStack environment using Palette.
+Kubernetes clusters to your CloudStack environment using Palette. The Cloudstack management environment could include Bare Metal (via IPMI), Hyper-V, Kernel-based Virtual Machine(KVM), Linux Containers (LXC), vSphere (via vCenter), Xenserver and Xen Project. 
 
 For this to work, Palette uses a [Private Cloud Gateway (PCG)](../../pcg/pcg.md), which creates a secure connection from
 the internal network to the Palette instance, ultimately bypassing the need to create firewall rules or other network
@@ -19,7 +19,20 @@ learn more.
 
 ## Get Started
 
-TBC
+To get started with Cloudstack as your target platform for deploying Kubernetes clusters, you need to deploy a PCG in your
+Cloudstack environment. The PCG acts as a bridge between your Cloudstack environment and Palette, enabling secure communication
+between the two. Start by reviewing the [Deploy a PCG in Cloudstack](../../pcg/deploy-pcg/cloudstack.md) guide.
+
+:::info
+
+If you are using a self-hosted Palette or VerteX instance, you can skip the PCG deployment and use the System PCG that
+is already available in the instance. Review the [System PCG](../../pcg/architecture.md#system-private-gateway) section
+of the PCG architecture page for more information.
+
+:::
+
+After you have deployed the PCG, you can proceed to create and manage VMware clusters in Palette. Refer to the
+[Create and Manage Cloudstack Clusters](create-manage-cloudstack-clusters.md) guide for detailed instructions.
 
 ## Supported Versions
 
