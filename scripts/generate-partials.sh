@@ -26,7 +26,8 @@ echo "// This file is generated. DO NOT EDIT!" >> index.ts
 find . -name "*.mdx" -print0 | while read -d $'\0' path
 do
     module_name=$(basename ${path} .mdx | tr -d '_' | tr -d '-')
-    echo "export * as ${module_name}${RANDOM} from '${path}';" >> index.ts
+    hash=$(echo -n "$path" | md5sum | cut -c1-8)
+    echo "export * as ${module_name}_${hash} from '$path';" >> index.ts
 done
 
 echo "Completed generation of _partials/index.ts."
