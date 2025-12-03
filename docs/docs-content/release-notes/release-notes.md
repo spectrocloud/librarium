@@ -33,7 +33,7 @@ tags: ["release-notes"]
   v2.9.0.
 
 - The default timeout of [Local UI](../clusters/edge/local-ui/local-ui.md) JWT tokens has been reduced to 15 minutes.
-  Additionally, tokens are now revoked on log out.
+  Additionally, tokens are now revoked upon log out.
 
 ### Bug Fixes
 
@@ -41,7 +41,7 @@ tags: ["release-notes"]
   retry logic for trust policy ConfigMaps.
 
 <!-- prettier-ignore-start -->
-- Fixed an issue that caused Day-2 operations to fail on Palette [Edge clusters](../clusters/edge/edge.md) configured
+- Fixed an issue that caused Day-2 operations to fail on Palette [Edge clusters](../clusters/edge/edge.md) configured with
 external provider registries in the <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)
 " url="/integrations/packs/?pack=edge-k8s"/> pack.
 <!-- prettier-ignore-end -->
