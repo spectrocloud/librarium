@@ -46,14 +46,6 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
 " url="/integrations/packs/?pack=edge-k8s"/> pack.
 <!-- prettier-ignore-end -->
 
-- Fixed an issue that caused stale UDP packets to be registered on [Edge clusters](../clusters/edge/edge.md) that have
-  been disconnected and later on reconnected to the network.
-
-- Fixed an issue that caused [VerteX](../vertex/vertex.md) 4.8.6 to fail to install due to crashing LINSTOR pods.
-
-- Fixed an issue that caused a duplicate CloudStack cloud type to appear in the custom cloud types API endpoint after
-  upgrading Palette to 4.8.6, resulting in API and validation conflicts.
-
 ## November 28, 2025 - Component Updates {#component-updates-2025-48}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
