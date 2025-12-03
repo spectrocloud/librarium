@@ -17,6 +17,7 @@ tags: ["release-notes"]
 
 - <TpBadge /> Palette now supports the cluster provisioning and management of CloudStack clusters. Refer to the
   CloudStack section for further information.
+
 - The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
   and [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
   now support CloudStack.
@@ -37,15 +38,19 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
-retry logic for trust policy ConfigMaps.
+  retry logic for trust policy ConfigMaps.
+
 <!-- prettier-ignore-start -->
 - Fixed an issue that caused Day-2 operations to fail on Palette [Edge clusters](../clusters/edge/edge.md) configured
 external provider registries in the <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)
 " url="/integrations/packs/?pack=edge-k8s"/> pack.
 <!-- prettier-ignore-end -->
+
 - Fixed an issue that caused stale UDP packets to be registered on [Edge clusters](../clusters/edge/edge.md) that have
   been disconnected and later on reconnected to the network.
+
 - Fixed an issue that caused [VerteX](../vertex/vertex.md) 4.8.6 to fail to install due to crashing LINSTOR pods.
+
 - Fixed an issue that caused a duplicate CloudStack cloud type to appear in the custom cloud types API endpoint after
   upgrading Palette to 4.8.6, resulting in API and validation conflicts.
 
