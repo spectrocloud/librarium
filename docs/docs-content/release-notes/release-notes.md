@@ -11,6 +11,46 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 20, 2025 - Component Updates {#component-updates-2025-49}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.8.
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) have now been updated to use <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.10.1 internally.
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Azure CNI" url="/integrations/packs/?pack=cni-azure"/> pack now supports the the overlay networking model using the **Overlay** preset.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EFS                   | Add-on | :white_check_mark: | :x:                | 2.1.15      |
+| AWS VPC CNI                  | Add-on | :x:                | :white_check_mark: | 1.20.4      |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.16.0      |
+| Azure Disk                   | CSI    | :white_check_mark: | :x:                | 1.33.6      |
+| Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.2      |
+| Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.2      |
+| KAI Scheduler                | Add-on | :white_check_mark: | :x:                | 0.10.0      |
+| Kuberay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
+| Open Policy Agent            | Add-on | :white_check_mark: | :x:                | 3.21.0      |
+| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.45.0     |
+| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.5.0      |
+| Ubuntu (GCP)                 | OS     | :white_check_mark: | :x:                | 24.04       |
+| Zot Registry                 | Add-on | :white_check_mark: | :white_check_mark: | 0.1.89      |
+
 ## November 28, 2025 - Component Updates {#component-updates-2025-48}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
