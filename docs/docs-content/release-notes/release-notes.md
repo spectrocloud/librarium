@@ -37,14 +37,12 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
-  retry logic for trust policy ConfigMaps.
-
+retry logic for trust policy ConfigMaps.
 <!-- prettier-ignore-start -->
 - Fixed an issue that caused Day-2 operations to fail on Palette [Edge clusters](../clusters/edge/edge.md) configured
-  external provider registries in the <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)
+external provider registries in the <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)
 " url="/integrations/packs/?pack=edge-k8s"/> pack.
 <!-- prettier-ignore-end -->
-
 - Fixed an issue that caused stale UDP packets to be registered on [Edge clusters](../clusters/edge/edge.md) that have
   been disconnected and later on reconnected to the network.
 - Fixed an issue that caused [VerteX](../vertex/vertex.md) 4.8.6 to fail to install due to crashing LINSTOR pods.
