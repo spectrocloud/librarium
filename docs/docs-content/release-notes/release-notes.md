@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## December 20, 2025 - Component Updates {#component-updates-2025-49}
+## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
 
@@ -22,12 +22,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 - The <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 2.10.1.
 
 <!-- prettier-ignore-end -->
-
-### Bug Fixes
-
-- Fixed an issue that caused add-on deployments provisioned through the
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
-  remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
 
 ### Packs
 
