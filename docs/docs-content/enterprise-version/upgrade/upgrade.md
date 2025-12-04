@@ -542,6 +542,9 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.8.8        |       4.8.9        | :white_check_mark: |
+|       4.7.29       |       4.8.9        | :white_check_mark: |
+|       4.7.27       |       4.8.9        | :white_check_mark: |
 |       4.7.29       |       4.8.8        | :white_check_mark: |
 |       4.7.27       |       4.8.8        | :white_check_mark: |
 
