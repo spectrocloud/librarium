@@ -11,6 +11,41 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 6, 2025 - Release 4.8.X
+
+### Improvements
+
+- <TpBadge /> Palette now supports the cluster provisioning and management of CloudStack clusters. Refer to the
+  CloudStack section for further information.
+
+- The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+  and [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  now support CloudStack.
+
+  - The `spectrocloud_cloudaccount_apache_cloudstack` data source supports the creation of CloudStack cloud accounts.
+  - The `spectrocloud_cluster_apache_cloudstack` resource supports configuration and deployment of CloudStack clusters.
+
+- The KubeVirt version used by the Palette [Virtual Machine Orchestrator](../vm-management/vm-management.md) is now
+  v1.6.2.
+
+- The `virt-v2v` version used by the Palette
+  [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
+  v2.9.0.
+
+- The default timeout of [Local UI](../clusters/edge/local-ui/local-ui.md) JWT tokens has been reduced to 15 minutes.
+  Additionally, tokens are now revoked upon log out.
+
+### Bug Fixes
+
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
+  retry logic for trust policy ConfigMaps.
+
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused Day-2 operations to fail on Palette [Edge clusters](../clusters/edge/edge.md) configured with
+external provider registries in the <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)
+" url="/integrations/packs/?pack=edge-k8s"/> pack.
+<!-- prettier-ignore-end -->
+
 ## November 28, 2025 - Component Updates {#component-updates-2025-48}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
