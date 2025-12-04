@@ -66,12 +66,12 @@
     "react-dom": "^19.1.1",
     "react-markdown": "10.1.0",
     "react-select": "^5.10.2",
-    "remark-gfm": "4.0.0",
+    "remark-gfm": "4.0.1",
     "sass": "^1.92.1",
     "semver": "^7.7.1"
   },
   "devDependencies": {
-    "@argos-ci/cli": "^2.4.2",
+    "@argos-ci/cli": "^3.2.1",
     "@argos-ci/playwright": "^5.0.4",
     "@playwright/test": "^1.56.0",
     "@semantic-release/changelog": "^6.0.1",
