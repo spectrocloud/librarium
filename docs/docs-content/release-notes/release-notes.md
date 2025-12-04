@@ -26,8 +26,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 ### Bug Fixes
 
 - Fixed an issue that caused add-on deployments provisioned through the
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
-  to remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
+  remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
 
 ### Packs
 
