@@ -15,7 +15,7 @@ Palette supports the AWS VPC CNI plugin for Kubernetes clusters running on Amazo
 
 ## Configure Pod CIDR
 
-Customers may want to configure a pod CIDR to maintain predictable, scalable, and conflict-free networking within their Kubernetes clusters. By selecting a custom pod CIDR range, they can ensure alignment with existing network policies, avoid overlaps with corporate or cloud VPC networks, and plan for future cluster growth.
+Configuring a pod CIDR helps maintain predictable, scalable, and conflict-free networking within Kubernetes clusters. By selecting a custom pod CIDR range, you can ensure alignment with existing network policies, avoid overlaps with corporate or cloud VPC networks, and plan for future cluster growth.
 
 Before deploying the CNI pack, make sure the following AWS resources are configured manually:
 
@@ -23,14 +23,14 @@ Before deploying the CNI pack, make sure the following AWS resources are configu
 - Three Availability Zones (AZs)
 - Three public subnets attached to a single public route table
 - Three private subnets attached to a single private route table
-- One NAT Gateway in a single AZ
+- One NAT gateway in a single AZ
 
 
-Once the above resources are created, you can proceed with the deployment of the CNI pack.
+Once the above resources are created, make the following adjustments to the pack's YAML before deploying the CNI pack.
 
 1. Provide your AWS account ID to all `account:` fields.
 
-2. Change the following environment variables in the `env` section of the pack. Refer to the [AWS VPC CNI documentation](https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables) for more details. 
+2. Change the following environment variables in the `env` section. Refer to the [AWS VPC CNI documentation](https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables) for more details. 
 
 ```yaml
 AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG: "true"
@@ -38,7 +38,7 @@ ENABLE_POD_ENI: "true"
 ENI_CONFIG_LABEL_DEF: "topology.kubernetes.io/zone"
 ```
 
-3. Provide the subnet IDs and security group IDs in the `eniConfig` section of the pack. Replace the placeholder values with your created subnet and security group IDs.
+3. Provide the subnet IDs and security group IDs in the `eniConfig` section. Replace the placeholder values with your created subnet and security group IDs.
 
 ```yaml
 eniConfig:
