@@ -54,7 +54,13 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
     This avoids exposing sensitive information in the command line.
 
-4. Issue the following command to invoke the {props.edition} API to configure the AWS account to your instance.
+4. Issue the following command to invoke the {props.edition} API to create and configure the AWS account to your instance.
+
+   :::info
+
+   To modify an existing AWS account, change `POST` to `PUT` in the curl statement.
+
+   :::
 
    <Tabs>
 
@@ -102,10 +108,28 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
 3. Issue the following command to make an API call that confirms that the credentials were configured successfully.
 
+   <Tabs>
+
+   <TabItem value="AWS">
+
    ```shell
    curl --request GET \
-     --url https://<palette-api-url>/v1/system/config/aws/account \
+     --url https://<palette-api-url>/v1/system/config/aws/sts/account \
      --header "Authorization: $TOKEN"
    ```
+
+   </TabItem>
+
+   <TabItem value="AWS GOV">
+
+   ```shell
+   curl --request GET \
+     --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
+     --header "Authorization: $TOKEN"
+   ```
+
+   </TabItem>
+
+   </Tabs>
 
    If you receive a response that contains the payload you configured, the configuration was successful.
