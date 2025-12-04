@@ -25,6 +25,11 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 
 ### Bug Fixes
 
+- Fixed an issue that caused add-on deployments provisioned through the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  would remain in an unrecoverable unhealthy state following a deployment error, despite the root cause having been
+  corrected.
+
 ### Packs
 
 #### Pack Notes
@@ -32,6 +37,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 <!-- prettier-ignore-start -->
 
 - The <VersionedLink text="Azure CNI" url="/integrations/packs/?pack=cni-azure"/> pack now supports the the overlay networking model using the **Overlay** preset.
+- The <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks"/> pack now supports the configuration of custom service CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> tab for further information.
+- The <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"/> now supports the configuration of custom pod CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> tab for further information.
 
 <!-- prettier-ignore-end -->
 
