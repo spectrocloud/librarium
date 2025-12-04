@@ -532,6 +532,15 @@ few hours.
 
 :::
 
+**4.8**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.8        | :white_check_mark: |
+
+**4.7**
+
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.7.15       |       4.7.27       | :white_check_mark: |
