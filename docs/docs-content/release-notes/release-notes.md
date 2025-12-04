@@ -36,7 +36,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Azure CNI" url="/integrations/packs/?pack=cni-azure"/> pack now supports the the overlay networking model using the **Overlay** preset.
+- The <VersionedLink text="Azure CNI" url="/integrations/packs/?pack=cni-azure"/> pack now supports the overlay networking model using the **Overlay** preset.
 - The <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks"/> pack now supports the configuration of custom service CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> tab for further information.
 - The <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"/> now supports the configuration of custom pod CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> tab for further information.
 
