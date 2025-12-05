@@ -10,9 +10,6 @@ on:
     # On the first of every month at 2 am
     - cron: '0 2 1 * *'
   workflow_dispatch:
-  push:
-    branches:
-      - "adjust-clean-up-unused-images-script"
 
 concurrency:
   group: clean-up-images-${{ github.ref }}
