@@ -273,6 +273,17 @@ clientConfig:
 
 </details>
 
+## Configure Service CIDR
+
+To specify a custom ClusterIP range for your Kubernetes services, override the default service IPv4 CIDR with your own CIDR. Replace the placeholder values with your own CIDR notation.
+
+```yaml
+pack:
+  #CIDR notation IP range from which to assign service cluster IPs
+  # Note : This must not overlap with any IP ranges assigned to nodes for pods.
+  serviceClusterIpRange: "<REPLACE_WITH_YOUR_CIDR>"
+```
+
 ## Node Customization
 
 The following sections relate to the customizable options within the `nodeCustomization.*` section. These options only

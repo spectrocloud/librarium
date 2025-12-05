@@ -11,7 +11,105 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 5, 2025 - Component Updates {#component-updates-2025-49}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.9.
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 2.10.1.
+
+<!-- prettier-ignore-end -->
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Azure CNI" url="/integrations/packs/?pack=cni-azure"/> pack now supports the overlay networking model using the **Overlay** preset.
+- The <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks"/> pack now supports the configuration of custom service CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> tab for further information.
+- The <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"/> pack now supports the configuration of custom pod CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> tab for further information.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EFS                   | Add-on | :white_check_mark: | :x:                | 2.1.15      |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.16.0      |
+| AWS VPC CNI                  | Add-on | :x:                | :white_check_mark: | 1.20.4      |
+| Azure Disk                   | CSI    | :white_check_mark: | :x:                | 1.33.6      |
+| Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.2      |
+| Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.2      |
+| KAI Scheduler                | Add-on | :white_check_mark: | :x:                | 0.10.0      |
+| Kuberay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
+| Open Policy Agent            | Add-on | :white_check_mark: | :x:                | 3.21.0      |
+| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.45.0     |
+| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.5.0      |
+| Ubuntu (GCP)                 | OS     | :white_check_mark: | :x:                | 24.04       |
+| Zot Registry                 | Add-on | :white_check_mark: | :white_check_mark: | 0.1.89      |
+
+## December 5, 2025 - Release 4.8.9
+
+The following component updates are applicable to this release:
+
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+
+### Bug Fixes
+
+- Fixed an issue that caused Palette's `cluster-management-agent` service to continually restart on
+  [data center clusters](../clusters/data-center/data-center.md) due to a duplicate CloudStack cloud type introduced by
+  Palette 4.8.6.
+
+## November 28, 2025 - Component Updates {#component-updates-2025-48}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.8.
+
+### Packs
+
+| Pack Name                 | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EFS                | CSI    | :white_check_mark: | :x:                | 2.1.14      |
+| Argo CD                   | CSI    | :white_check_mark: | :x:                | 9.1.0       |
+| External Secrets Operator | Add-on | :white_check_mark: | :x:                | 1.0.0       |
+| GCE Persistent Disk CSI   | CSI    | :white_check_mark: | :x:                | 1.21.0      |
+| GCE Persistent Disk CSI   | CSI    | :white_check_mark: | :x:                | 1.20.2      |
+| Istio                     | Add-on | :white_check_mark: | :x:                | 1.28.0      |
+| Karpenter                 | Add-on | :white_check_mark: | :x:                | 1.8.2       |
+| Nginx                     | Add-on | :white_check_mark: | :x:                | 1.14.0      |
+| Piraeus Operator          | CSI    | :white_check_mark: | :white_check_mark: | 2.10.1      |
+
+## November 26, 2025 - Release 4.8.8
+
+The following component updates are applicable to this release:
+
+- [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+
+### Improvements
+
+- The [VerteX](../vertex/vertex.md) UI has been upgraded to use
+  [Nginx](https://github.com/nginx/nginx/releases/tag/release-1.29.2) 1.29.2.
+
+### Bug Fixes
+
+- Fixed an issue that caused errors with the internal MongoDB database when upgrading the
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md) installation from
+  4.7.29 to 4.8.6.
+- Fixed an issue that prevented [Edge cluster](../clusters/edge/edge.md) events from being displayed in the Palette
+  Events tab.
+- Fixed an issue that caused [VerteX](../vertex/vertex.md) 4.8.6 to fail to install due to crashing LINSTOR pods.
+- Fixed an issue that caused a duplicate CloudStack cloud type to appear in the custom cloud types API endpoint after
+  upgrading Palette to 4.8.6, resulting in API and validation conflicts.
+
 ## November 22, 2025 - Release 4.8.0 - 4.8.6 {#release-notes-4.8.0}
+
+The following component updates are applicable to this release:
+
+- [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 
 ### Security Notices
 
