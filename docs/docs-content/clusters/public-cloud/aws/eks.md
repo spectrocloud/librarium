@@ -172,7 +172,7 @@ guide for help with migrating workloads.
   [Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI](../../../troubleshooting/pack-issues.md#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni)
   for full guidance.
 
-- If you need to override the default service IPv4 CIDR to use your own VPC and subnets, configure the service CIDR in the <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> pack and the pod CIDR in the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> pack.
+- If you need to override the default service CIDR, configure the service ClusterIP range in the <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> pack. Additionally, if you want to use your own VPC and subnets, configure the pod CIDR in the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> pack.
 
    Pods running on the control plane continue to receive IP addresses from the node CIDR range. The custom pod CIDR applies only to pods scheduled on worker nodes.
 
