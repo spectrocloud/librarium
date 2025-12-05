@@ -5,16 +5,17 @@
 const fs = require("fs");
 const sidebarFilePath = "./docs/api-content/api-docs/v1/sidebar.ts";
 
-let sidebarItems = [];
-if (fs.existsSync(sidebarFilePath)) {
-  sidebarItems = require(sidebarFilePath);
+function loadSidebar(path) {
+  if (!fs.existsSync(path)) return [];
+
+  const mod = require(path);
+  // Handle both CommonJS and ESM-style exports
+  return Array.isArray(mod) ? mod : mod.default || [];
 }
 
-let emcSidebarItems = [];
+const sidebarItems = loadSidebar(sidebarFilePath);
 const sidebarEmcFilePath = "./docs/api-content/api-docs/edge-v1/sidebar.ts";
-if (fs.existsSync(sidebarEmcFilePath)) {
-  emcSidebarItems = require(sidebarEmcFilePath);
-}
+const emcSidebarItems = loadSidebar(sidebarEmcFilePath);
 
 module.exports = {
   apiSidebar: [
