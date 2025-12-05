@@ -48,6 +48,9 @@ jobs:
       
       - run: npm ci
 
+      - name: Generate partials
+        run: make generate-partials
+    
       - name: Find unused images
         run: make find-unused-images
 
