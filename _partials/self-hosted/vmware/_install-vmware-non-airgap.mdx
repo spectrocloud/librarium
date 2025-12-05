@@ -1,41 +1,7 @@
 ---
-sidebar_label: "Install Non-Airgap Palette VerteX"
-title: "Install Non-Airgap Palette VerteX on VMware vSphere with Palette CLI"
-description: "Install non-airgap, self-hosted Palette VerteX on VMware vSphere using the Palette CLI."
-icon: ""
-sidebar_position: 20
-hide_table_of_contents: false
-tags: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
-keywords: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
+partial_category: self-hosted
+partial_name: install-vmware-non-airgap
 ---
-
-<PartialsComponent category="self-hosted" name="install-non-airgap-introduction" version="Palette VerteX" />
-
-## Prerequisites
-
-<PartialsComponent
-  category="self-hosted"
-  name="install-vmware-prerequisites-first"
-  version="Palette"
-  edition="palette"
-/>
-
-:::warning
-
-Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available in PEM
-format when using custom packs and an image registry. Otherwise, VerteX will not be able to pull packs and images from
-the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
-
-:::
-
-<PartialsComponent
-  category="self-hosted"
-  name="install-vmware-prerequisites-second"
-  version="Palette"
-  edition="palette"
-/>
-
-## Deployment
 
 1.  Log in to your vCenter environment.
 
@@ -275,28 +241,4 @@ the registry. The Palette CLI will prompt you to provide the CA certificate file
 
     :::
 
-    ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/self-hosted-setup_install_non-airgap_vertex-system-console_4-8.webp)
-
-## Validate
-
-Validate that a three-node Kubernetes cluster is launched and {props.version} is deployed on it.
-
-1. Log in to the vCenter Server by using vSphere Client.
-
-2. Navigate to your vSphere data center and locate your {props.version} VM instances. The VMs are prefixed with the `kind` cluster name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
-
-3. Open a web browser session, and use the IP address provided by the installer at the completion of the installation to connect to the {props.version} system console. Copy the IP address to the address bar and append `/system`.
-
-4. Log in using your credentials.
-
-5. A **Summary** page appears with a **Go to Tenant Management** button. After the initial installation, the **Summary** page displays that there are zero tenants.
-
-## Next Steps
-
-<PartialsComponent
-  category="self-hosted"
-  name="install-next-steps"
-  install="vmware"
-  edition="VerteX"
-  version="Palette VerteX"
-/>
+    ![Screenshot of the {props.version} system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)
