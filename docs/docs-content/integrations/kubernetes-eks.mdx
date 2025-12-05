@@ -275,13 +275,13 @@ clientConfig:
 
 ## Configure Service CIDR
 
-To use your own VPCs and subnets, override the default service IPv4 CIDR with your own CIDR.
+To use your own VPCs and subnets, override the default service IPv4 CIDR with your own CIDR. Replace the placeholder values with your own CIDR notation.
 
 ```yaml
 pack:
   #CIDR notation IP range from which to assign service cluster IPs
   # Note : This must not overlap with any IP ranges assigned to nodes for pods.
-  serviceClusterIpRange: "192.168.10.10/16"
+  serviceClusterIpRange: "<REPLACE_WITH_YOUR_CIDR>"
 ```
 
 ## Node Customization

@@ -174,6 +174,8 @@ guide for help with migrating workloads.
 
 - If you need to override the default service IPv4 CIDR to use your own VPC and subnets, configure the service CIDR in the <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> pack and the pod CIDR in the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> pack.
 
+   Pods running on the control plane will continue to receive IP addresses from the node CIDR range. The custom pod CIDR will apply only to pods scheduled on worker nodes.
+
 <!-- prettier-ignore-end -->
 
 - An EC2 key pair for the target region that provides a secure connection to your EC2 instances. A key pair is required
