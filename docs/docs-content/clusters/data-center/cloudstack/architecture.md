@@ -14,8 +14,6 @@ tags: ["data center", "cloudstack", "architecture"]
 Palette supports using [Apache CloudStack](https://docs.cloudstack.apache.org/en/latest/conceptsandterminology/concepts.html#cloud-infrastructure-overview) as a data center provider. You can deploy Kubernetes clusters to your CloudStack
 environment using Palette. Below are some key features of the Palette CloudStack architecture:
 
-- Kubernetes nodes can be distributed across multiple-compute clusters, which serve as distinct fault domains.
-
 - Support for static IP addresses, as well as DHCP. If you are using Dynamic Host Configuration Protocol (DHCP), Dynamic
   DNS is required.
 
@@ -29,7 +27,7 @@ environment using Palette. Below are some key features of the Palette CloudStack
   private network that blocks connections originating externally. The PCG connects to Palette, and acts as an endpoint,
   allowing you to target the environment when deploying clusters in Palette.
 
-  ![vmware_arch_oct_2020.webp](/clusters_vmware_architecture_arch-overview.webp)
+  ![vmware_arch_oct_2020.webp](/clusters_pcg_architecture_cloudstack_overview_diagram.webp)
 
 You can learn more in the [PCG Architecture](../../pcg/architecture.md) section.
 
