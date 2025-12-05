@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
-The following components have been updated for Palette version 4.8.6 - 4.8.8.
+The following components have been updated for Palette version 4.8.6 - 4.8.9.
 
 ### Improvements
 
@@ -51,6 +51,18 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 | Ubuntu (GCP)                 | OS     | :white_check_mark: | :x:                | 24.04       |
 | Zot Registry                 | Add-on | :white_check_mark: | :white_check_mark: | 0.1.89      |
 
+## December 5, 2025 - Release 4.8.9
+
+The following component updates are applicable to this release:
+
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+
+### Bug Fixes
+
+- Fixed an issue that caused Palette's `cluster-management-agent` service to continually restart on
+  [data center clusters](../clusters/data-center/data-center.md) due to a duplicate CloudStack cloud type introduced by
+  Palette 4.8.6.
+
 ## November 28, 2025 - Component Updates {#component-updates-2025-48}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
@@ -74,6 +86,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 
 ### Improvements
 
@@ -96,6 +109,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 
 ### Security Notices
 
