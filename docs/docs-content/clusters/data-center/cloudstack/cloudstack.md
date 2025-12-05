@@ -9,7 +9,7 @@ tags: ["data center", "cloudstack"]
 Palette supports using [Apache CloudStack](https://cloudstack.apache.org/) as a data center provider. You can deploy
 Kubernetes clusters to your CloudStack environment using Palette. 
 
-For this to work, Palette uses a [Private Cloud Gateway (PCG)](../../pcg/pcg.md), which creates a secure connection from
+To make this work, Palette will need a [Private Cloud Gateway (PCG)](../../pcg/pcg.md), which creates a secure connection from
 the internal network to the Palette instance, ultimately bypassing the need to create firewall rules or other network
 configurations allowing external connections to the internal network.
 

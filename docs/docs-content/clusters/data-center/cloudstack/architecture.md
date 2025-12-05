@@ -29,6 +29,8 @@ environment using Palette. The Cloudstack management environment could include B
 
   ![CloudStack VPC Static Flow](/clusters_pcg_architecture_cloudstack_overview_diagram.webp)
 
+- Support for Projects within a Domain.
+
 You can learn more in the [PCG Architecture](../../pcg/architecture.md) section.
 
 ## Projects

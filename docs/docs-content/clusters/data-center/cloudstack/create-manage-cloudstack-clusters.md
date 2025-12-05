@@ -26,16 +26,6 @@ Before you begin, ensure that you have the following prerequisites:
   [Create a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
   guide.
 
-- Depending on the network type you select for the cluster, you may need to create an IP Address Management (IPAM) pool
-  or define a search domain. Use the following guidelines to create an IPAM pool or define a search domain.
-
-  - An IP Address Management (IPAM) pool is required to assign static IP addresses to the nodes in the cluster. You can
-    learn how to create an IPAM pool by following the steps in the
-    [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide.
-
-  - A search domain, also called DNS mapping, can be used to assign cluster nodes to a specific network, cluster, and
-    data center. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add
-    multiple DNS mappings to a PCG.
 
 ## Create a CloudStack Cluster
 
@@ -61,17 +51,17 @@ Before you begin, ensure that you have the following prerequisites:
 
 7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-8. Fill out the VMware vSphere configuration details for the cluster. Refer to the table below to learn more about each
+8. Fill out the Apache CloudStack configuration details for the cluster. Refer to the table below to learn more about each
    option. Click **Next** to proceed.
 
    | Field Name                | Description                                                                                                                                                                                                 | Required |
    | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-   | **Zone**            | The VMware vSphere data center where the cluster and its nodes will be deployed.                                                                                                                            | Yes      |
-   | **Project Name**     | The folder in the data center where the cluster and its nodes will be deployed. Check the box **Append cluster name** if you want the cluster name appended to the folder name.                             | Yes      |
+   | **Zone**            | The Apache CloudStack physical environment the cluster will be created in.                                          | Yes      |
+   | **Project Name**     | The Project name within the Domain that the cluster will be created in.             | Yes      |
       | **SSH Key**               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
    | **Static placement**          | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
-   | **Sync cluster with CloudStack Kubernetes Service (CKS)**               | asdf | No       |
-   | **Update worker pools in parallel**           | asdf                                          | No       |
+   | **Sync cluster with CloudStack Kubernetes Service (CKS)**               | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting | No       |
+   | **Update worker pools in parallel**           | Palette can more efficiently manage workloads by updating multiple workpools simultaneously.                                         | No       |
 
 
 9. Configure the control plane and worker node pool configurations. Click **Next** to proceed.
@@ -98,8 +88,8 @@ Before you begin, ensure that you have the following prerequisites:
 
    | Field Name | Description                                                      |
    | ---------- | ---------------------------------------------------------------- |
-   | **Compute offering**    | The number of CPUs to allocate to the control plane nodes.       |
-   | **Networks (optional)** | The amount of memory to allocate to the control plane nodes.     |
+   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool.       |
+   | **Networks (optional)** | Select the guest network to use.    |
    
 
    ### Worker Plane Pool Configuration
@@ -112,10 +102,14 @@ Before you begin, ensure that you have the following prerequisites:
    | **Number of Nodes in the Pool** | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
    | **Rolling Update**              | Choose between **Expand First** and **Contract First** to determine the order in which nodes are added or removed from the worker node pool. Expand first adds new nodes before removing old nodes. Contract first removes old nodes before adding new nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
    | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-   | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                                                                                                                                                               | Field Name | Description                                                      |
+   | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.      |
+   
+#### Cloud Configuration    
+
+   | Field Name | Description                                                      |
    | ---------- | ---------------------------------------------------------------- |
-   | **Compute offering**    | The number of CPUs to allocate to the control plane nodes.       |
-   | **Networks (optional)** | The amount of memory to allocate to the control plane nodes.     |                                                                                                                                                           |
+   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool.       |
+   | **Networks (optional)** | Select the guest network to use.    |                                                                                                                                                    |
 
     You can click **Copy from Control Plane Pool** if you want to re-use the Control Plane Pool's **Compute offering** and **Networks**.
 
