@@ -8,7 +8,6 @@ icon: ""
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "palette"
-slug: /
 ---
 
 Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of

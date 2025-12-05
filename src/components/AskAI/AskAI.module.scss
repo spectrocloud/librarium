@@ -1,0 +1,29 @@
+.inputChangesContainer {
+  border-radius: 0.5rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.inputContainer {
+  background-color: var(--ifm-dropdown-background-color);
+  width: 100%;
+  border: 3px solid var(--ifm-color-primary);
+  border-radius: 0.5rem;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.icon {
+  font-size: 1.25rem;
+  color: var(--ifm-color-primary);
+}
+
+.input {
+  font-size: 1.25rem;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
