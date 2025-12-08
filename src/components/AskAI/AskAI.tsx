@@ -3,7 +3,6 @@ import styles from "./AskAI.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
 
-
 /**
  * Minimal typeable input component.
  * Just a controlled text input.
@@ -29,7 +28,6 @@ function TypeableInput({
     onEnter?.(value); // call handler when user clicks
   };
 
-
   return (
     <div className={styles.inputContainer}>
       <FontAwesomeIcon icon={faWandMagicSparkles} className={styles.icon} />
@@ -52,14 +50,18 @@ export function AskAI(): JSX.Element | null {
   const [text, setText] = React.useState("");
   return (
     <div className={styles.inputChangesContainer}>
-      <TypeableInput value={text} onChange={setText} placeholder="Ask AI to learn about Palette..." 
-      onEnter={(val) => {
-        // Open Kapa AI with the query
-        window.Kapa.open({
-          mode: "ai",
-          submit: true,
-        });
-      }} />
+      <TypeableInput
+        value={text}
+        onChange={setText}
+        placeholder="Ask AI to learn about Palette..."
+        onEnter={(val) => {
+          // Open Kapa AI with the query
+          window.Kapa.open({
+            mode: "ai",
+            submit: true,
+          });
+        }}
+      />
     </div>
   );
 }

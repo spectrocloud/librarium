@@ -9,9 +9,16 @@ sidebar_custom_props:
 slug: /
 ---
 
-Explore our guides and examples to get started with using Palette.
-
 <AskAI />
+
+This site provides you with guides, tutorials and reference materials to help you deploy, manage and scale Palette
+Kubernetes clusters across any environment. Palette's cluster profiles provide a declarative approach to cluster
+configuration, so that you can apply consistent update to complex production environments.
+
+Whether you’re a platform engineer, SRE or a product evaluator, the documentation site gives you everything you need to
+get started, understand architecture, and confidently maintain your Kubernetes infrastructure infrastructure.
+
+Explore our guides and examples to get started with using Palette.
 
 ## Next Steps
 

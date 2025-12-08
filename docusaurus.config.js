@@ -413,10 +413,10 @@ const config = {
             className: "header-github-link",
             "aria-label": "GitHub repository",
           },
-        {
-          type: "html",
-          position: "right",
-          value: `
+          {
+            type: "html",
+            position: "right",
+            value: `
             <button
               class="navbar-ai-button"
               type="button"
