@@ -100,12 +100,12 @@ Before you begin, ensure that you have the following prerequisites:
    | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
    | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
-#### Cloud Configuration
+   #### Cloud Configuration
 
-| Field Name              | Description                                                        |
-| ----------------------- | ------------------------------------------------------------------ | --- |
-| **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
-| **Networks (optional)** | Select the guest network to use.                                   |     |
+   | Field Name              | Description                                                        |
+   | ----------------------- | ------------------------------------------------------------------ | --- |
+   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
+   | **Networks (optional)** | Select the guest network to use.                                   |     |
 
     You can click **Copy from Control Plane Pool** if you want to re-use the Control Plane Pool's **Compute offering** and **Networks**.
 
