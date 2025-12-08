@@ -61,7 +61,7 @@ Before you begin, ensure that you have the following prerequisites:
       | **SSH Key**               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
    | **Static placement**          | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
    | **Sync cluster with CloudStack Kubernetes Service (CKS)**               | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting | No       |
-   | **Update worker pools in parallel**           | Palette can more efficiently manage workloads by updating multiple workpools simultaneously.                                         | No       |
+   | **Update worker pools in parallel**           | Palette can more efficiently manage workloads by updating multiple worker pools simultaneously.                                         | No       |
 
 
 9. Configure the control plane and worker node pool configurations. Click **Next** to proceed.

@@ -42,7 +42,7 @@ The following versions of Apache CloudStack are supported in Palette.
 | ----------- | ------------------------- |
 | 4.22        | :white_check_mark: or :x: |
 
-## Next Steps
+## Next Steps
 
 - [Review architecture for CloudStack](architecture.md)
 
