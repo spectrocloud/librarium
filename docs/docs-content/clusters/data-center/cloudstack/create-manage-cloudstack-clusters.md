@@ -97,13 +97,13 @@ TBC
    | **Rolling Update**              | Choose between **Expand First** and **Contract First** to determine the order in which nodes are added or removed from the worker node pool. Expand first adds new nodes before removing old nodes. Contract first removes old nodes before adding new nodes.                                                                                                                                                                                                              |
    | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                     |
    | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                             |
+
    #### Cloud Configuration
 
    | Field Name              | Description                                                        |
    | ----------------------- | ------------------------------------------------------------------ |
    | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
    | **Networks (optional)** | Select the guest network to use.                                   |
-
 
    You can click **Copy from Control Plane Pool** if you want to re-use the Control Plane Pool's **Compute offering**
    and **Networks**.
