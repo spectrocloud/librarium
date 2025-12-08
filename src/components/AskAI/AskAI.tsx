@@ -57,8 +57,8 @@ export function AskAI(): JSX.Element | null {
         onEnter={() => {
           // Open Kapa AI.
           // Skipping linting on the next line as getting the linter to pass is too complex.
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
           if (typeof window !== "undefined" && window.Kapa) {
+            // eslint-disable-next-line  @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             window.Kapa.open({
               mode: "ai",
               submit: true,
