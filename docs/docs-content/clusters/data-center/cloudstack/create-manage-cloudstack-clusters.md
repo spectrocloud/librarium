@@ -57,7 +57,7 @@ TBC
    | **Project Name**                                          | The Project name within the Domain that the cluster will be created in.                                                                                                                                     | Yes      |
    | **SSH Key**                                               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
    | **Static placement**                                      | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
-   | **Sync cluster with CloudStack Kubernetes Service (CKS)** | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting.                                                                                      | No       |
+   | **Sync cluster with CloudStack Kubernetes Service (CKS)** | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting.                                                                                     | No       |
    | **Update worker pools in parallel**                       | Palette can more efficiently manage workloads by updating multiple workpools simultaneously.                                                                                                                | No       |
 
 9. Configure the control plane and worker node pool configurations. Click **Next** to proceed.
@@ -156,7 +156,7 @@ kubeconfig file.
 
 ## Next Steps
 
-Now that you have a Kubernetes cluster deployed, you can deploy applications to CloudStack.
-We recommend you review the Day-2 responsibilities and become familiar with the cluster management tasks. Check out the
+Now that you have a Kubernetes cluster deployed, you can deploy applications to CloudStack. We recommend you review the
+Day-2 responsibilities and become familiar with the cluster management tasks. Check out the
 [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about Day-2
 responsibilities.
