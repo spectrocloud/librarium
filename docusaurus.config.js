@@ -413,6 +413,18 @@ const config = {
             className: "header-github-link",
             "aria-label": "GitHub repository",
           },
+        {
+          type: "html",
+          position: "right",
+          value: `
+            <button
+              class="button button--primary"
+              type="button"
+              onclick="window.Kapa && window.Kapa.open({ mode: 'ai', submit: true })"
+            >
+              Ask AI
+            </button>`,
+          },
           {
             type: "docsVersionDropdown",
             position: "left",

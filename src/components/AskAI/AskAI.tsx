@@ -7,12 +7,12 @@ import { faWandMagicSparkles } from "@fortawesome/free-solid-svg-icons";
 /**
  * Minimal typeable input component.
  * Just a controlled text input.
+ * This input is read-only until Kapa can handle the privacy notice screen.
  */
 type TypeableInputProps = {
   value: string;
   onChange: (val: string) => void;
   placeholder?: string;
-  disabled?: boolean;
   className?: string;
   name?: string;
   onEnter?: (val: string) => void;
@@ -22,16 +22,13 @@ function TypeableInput({
   value,
   onChange,
   placeholder = "Ask AI to learn about Palette...",
-  disabled = false,
   name,
   onEnter,
 }: TypeableInputProps) {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      onEnter?.(value); // call handler if provided
-    }
+  const handleClick = () => {
+    onEnter?.(value); // call handler when user clicks
   };
+
 
   return (
     <div className={styles.inputContainer}>
@@ -39,12 +36,13 @@ function TypeableInput({
       <input
         type="text"
         name={name}
-        disabled={disabled}
+        readOnly={true}
+        disabled={false}
         className={styles.input}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        onKeyDown={handleKeyDown}
+        onClick={handleClick}
       />
     </div>
   );
@@ -59,7 +57,6 @@ export function AskAI(): JSX.Element | null {
         // Open Kapa AI with the query
         window.Kapa.open({
           mode: "ai",
-          query: val,
           submit: true,
         });
       }} />
