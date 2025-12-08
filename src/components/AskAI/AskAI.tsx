@@ -56,11 +56,12 @@ export function AskAI(): JSX.Element | null {
         placeholder="Ask AI to learn about Palette..."
         onEnter={() => {
           // Open Kapa AI with the query
-        if (typeof window !== "undefined" && window.Kapa) {
-          window.Kapa.open({
-            mode: "ai",
-            submit: true,
-          });
+          if (typeof window !== "undefined" && window.Kapa) {
+            window.Kapa.open({
+              mode: "ai",
+              submit: true,
+            });
+          }
         }}
       />
     </div>
