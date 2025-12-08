@@ -16,7 +16,6 @@ TBC
 
 ## Prerequisites
 
-Before you begin, ensure that you have the following prerequisites:
 
 - A CloudStack account registered in Palette. Refer to the
   [Add CloudStack Accounts to Palette](./add-cloudstack-accounts.md) guide to learn how to add CloudStack accounts.
