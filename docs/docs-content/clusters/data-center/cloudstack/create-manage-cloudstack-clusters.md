@@ -102,7 +102,7 @@ TBC
 
    | Field Name              | Description                                                        |     |
    | ----------------------- | ------------------------------------------------------------------ | --- |
-   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
+   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |     |
    | **Networks (optional)** | Select the guest network to use.                                   |     |
 
    You can click **Copy from Control Plane Pool** if you want to re-use the Control Plane Pool's **Compute offering**
