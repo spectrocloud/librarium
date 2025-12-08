@@ -26,7 +26,6 @@ Before you begin, ensure that you have the following prerequisites:
   [Create a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
   guide.
 
-
 ## Create a CloudStack Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -40,29 +39,28 @@ Before you begin, ensure that you have the following prerequisites:
 5. Fill out the input fields. Use the table below to learn more about each input fields. Click on the **Next** button
    when you are done.
 
-   | Field Name        | Description                                                                                                                                                                     | Required |
-   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-   | **Cluster name**  | The name of the cluster.                                                                                                                                                        | Yes      |
-   | **Description**   | A brief description of the cluster.                                                                                                                                             | No       |
-   | **Tags**          | Tags to help you identify the cluster.                                                                                                                                          | No       |
+   | Field Name        | Description                                                                                                                                                                           | Required |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+   | **Cluster name**  | The name of the cluster.                                                                                                                                                              | Yes      |
+   | **Description**   | A brief description of the cluster.                                                                                                                                                   | No       |
+   | **Tags**          | Tags to help you identify the cluster.                                                                                                                                                | No       |
    | **Cloud Account** | The Apache CloudStack account to use for the cluster. If no account is available, ensure you [deployed a PCG](../../pcg/deploy-pcg/vmware.md) into the Apache CloudStack environment. | Yes      |
 
 6. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
 7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-8. Fill out the Apache CloudStack configuration details for the cluster. Refer to the table below to learn more about each
-   option. Click **Next** to proceed.
+8. Fill out the Apache CloudStack configuration details for the cluster. Refer to the table below to learn more about
+   each option. Click **Next** to proceed.
 
-   | Field Name                | Description                                                                                                                                                                                                 | Required |
-   | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-   | **Zone**            | The Apache CloudStack physical environment the cluster will be created in.                                          | Yes      |
-   | **Project Name**     | The Project name within the Domain that the cluster will be created in.             | Yes      |
-      | **SSH Key**               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
-   | **Static placement**          | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
-   | **Sync cluster with CloudStack Kubernetes Service (CKS)**               | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting | No       |
-   | **Update worker pools in parallel**           | Palette can more efficiently manage workloads by updating multiple worker pools simultaneously.                                         | No       |
-
+   | Field Name                                                | Description                                                                                                                                                                                                 | Required |
+   | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+   | **Zone**                                                  | The Apache CloudStack physical environment the cluster will be created in.                                                                                                                                  | Yes      |
+   | **Project Name**                                          | The Project name within the Domain that the cluster will be created in.                                                                                                                                     | Yes      |
+   | **SSH Key**                                               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
+   | **Static placement**                                      | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
+   | **Sync cluster with CloudStack Kubernetes Service (CKS)** | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting                                                                                      | No       |
+   | **Update worker pools in parallel**                       | Palette can more efficiently manage workloads by updating multiple workpools simultaneously.                                                                                                                | No       |
 
 9. Configure the control plane and worker node pool configurations. Click **Next** to proceed.
 
@@ -85,12 +83,10 @@ Before you begin, ensure that you have the following prerequisites:
 
    #### Cloud Configuration
 
-
-   | Field Name | Description                                                      |
-   | ---------- | ---------------------------------------------------------------- |
-   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool.       |
-   | **Networks (optional)** | Select the guest network to use.    |
-   
+   | Field Name              | Description                                                        |
+   | ----------------------- | ------------------------------------------------------------------ |
+   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
+   | **Networks (optional)** | Select the guest network to use.                                   |
 
    ### Worker Plane Pool Configuration
 
@@ -102,18 +98,18 @@ Before you begin, ensure that you have the following prerequisites:
    | **Number of Nodes in the Pool** | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
    | **Rolling Update**              | Choose between **Expand First** and **Contract First** to determine the order in which nodes are added or removed from the worker node pool. Expand first adds new nodes before removing old nodes. Contract first removes old nodes before adding new nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
    | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-   | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.      |
-   
-#### Cloud Configuration    
+   | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
-   | Field Name | Description                                                      |
-   | ---------- | ---------------------------------------------------------------- |
-   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool.       |
-   | **Networks (optional)** | Select the guest network to use.    |                                                                                                                                                    |
+#### Cloud Configuration
+
+| Field Name              | Description                                                        |
+| ----------------------- | ------------------------------------------------------------------ | --- |
+| **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
+| **Networks (optional)** | Select the guest network to use.                                   |     |
 
     You can click **Copy from Control Plane Pool** if you want to re-use the Control Plane Pool's **Compute offering** and **Networks**.
 
-   Click on the **Next** button when you are done.
+Click on the **Next** button when you are done.
 
 <!-- prettier-ignore-start -->
 
