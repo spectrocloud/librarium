@@ -55,7 +55,9 @@ export function AskAI(): JSX.Element | null {
         onChange={setText}
         placeholder="Ask AI to learn about Palette..."
         onEnter={() => {
-          // Open Kapa AI with the query
+          // Open Kapa AI.
+          // Skipping linting on the next line as getting the linter to pass is too complex.
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
           if (typeof window !== "undefined" && window.Kapa) {
             window.Kapa.open({
               mode: "ai",
