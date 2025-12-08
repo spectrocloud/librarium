@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Create and Manage CloudStack Clusters"
 title: "Create and Manage CloudStack Clusters"
-description: "Learn how to create and managed CloudStack clusters in Palette."
+description: "Learn how to create and manage CloudStack clusters in Palette."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["data center", "cloudstack"]
