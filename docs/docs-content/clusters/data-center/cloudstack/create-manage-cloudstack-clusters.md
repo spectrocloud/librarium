@@ -156,7 +156,7 @@ kubeconfig file.
 
 ## Next Steps
 
-Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters.
+Now that you have a Kubernetes cluster deployed, you can deploy applications to CloudStack.
 We recommend you review the Day-2 responsibilities and become familiar with the cluster management tasks. Check out the
 [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about Day-2
 responsibilities.
