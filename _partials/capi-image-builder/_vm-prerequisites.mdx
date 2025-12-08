@@ -1,0 +1,185 @@
+---
+partial_category: capi-image-builder
+partial_name: vm-prerequisites
+---
+
+- An existing VM with an OS of Rocky Linux 8 or 9 installed. This VM will be used as the base of your image and must
+  meet the following requirements:
+
+  - The following tools installed:
+
+    - [conntrack-tools](https://conntrack-tools.netfilter.org/)
+    - [cloud-init](https://cloud-init.io/)
+    - [cloud-utils-growpart](https://github.com/canonical/cloud-utils/)
+    - [iptables](https://linux.die.net/man/8/iptables)
+    - python2-pip
+    - [python3](https://www.python.org/downloads/)
+
+  - A user of `builder` with a password of `builder`. This is required by the
+    [vsphere-clone-builder](https://image-builder.sigs.k8s.io/capi/providers/vsphere#vsphere-clone-builder). The
+    `builder` user must be granted passwordless sudo privileges.
+
+    <details>
+
+    <summary> `builder` user and password privileges </summary>
+
+            1. On your Rocky Linux VM, add a `builder` user.
+
+                ```shell
+                sudo useradd builder
+                ```
+
+            2. Set the password for the `builder` user to `builder`.
+
+                ```shell
+                echo 'builder:builder' | sudo chpasswd
+                ```
+
+            3. Assign passwordless sudo privileges to the `builder` user and assign the appropriate permissions.
+
+                ```shell
+                echo 'builder ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/builder
+                sudo chmod 0440 /etc/sudoers.d/builder
+                ```
+
+    </details>
+
+  - SSH password authentication enabled in `/etc/ssh/sshd_config` by setting `PasswordAuthentication` to `yes`. You must
+    either restart `sshd` or reboot your system for the changes to take effect.
+
+  - SSH password authentication enabled for `cloud-init` by setting `ssh_pwauth` to `true`. This is required to prevent
+    `cloud-init` from overwriting `PasswordAuthentication yes` in `/etc/ssh/sshd_config` when booting the cloned VM. We
+    recommend creating a separate file that explicitly sets `ssh_pwauth: true`.
+
+        ```shell
+        sudo tee /etc/cloud/cloud.cfg.d/99-enable-ssh-pwauth.cfg << EOF
+        ssh_pwauth: true
+        EOF
+        ```
+
+  - [IPv4 packet forwarding](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional)
+    enabled.
+
+  - firewalld disabled.
+
+      ```shell
+      sudo systemctl disable --now firewalld
+      ```
+
+  - `/tmp` mounted to execute binaries and scripts.
+
+          <details>
+          <summary> Check `/tmp` status </summary>
+
+          1. Check the mount status of `/tmp`. Look for a status of `noexec`.
+
+              ```shell
+              mount | grep '/tmp'
+              ```
+
+              ```shell title="Example output" hideClipboard
+              tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noexec,relatime,size=2G)
+              ```
+
+              :::tip
+
+              If you receive an error, where `/tmp` is not displayed in the mount output, it is likely because it is a regular directory on the filesystem and not a separate mount.
+
+              Issue the following command to confirm the mount point of `/tmp`. If the `Mounted on` location is `/`, no action is required.
+
+              ```shell
+              df --human-readable /tmp
+              ```
+
+              ```shell title="Example output" hideClipboard
+              Filesystem           Size  Used Avail Use% Mounted on
+              /dev/mapper/rl-root   70G  3.7G   67G   6% /
+              ```
+
+              :::
+
+          2. If `/tmp` has a status of `noexec`, use your preferred text editor to edit the file `/etc/fstab` and set `/tmp` to `exec`.
+
+              ```shell
+              vi /etc/fstab
+              ```
+
+              ```shell title="Example output" hideClipboard {6}
+              /dev/mapper/rl-root                         /                       xfs     defaults                            0 0
+              UUID=3b068723-b40a-4c10-ac6d-00271cd4d3a4   /boot                   xfs     defaults                            0 0
+              UUID=F867-A7CE                              /boot/efi               vfat    umask=0077,shortname=winnt          0 2
+              /dev/mapper/rl-home                         /home                   xfs     defaults                            0 0
+              /dev/mapper/rl-swap                         none                    swap    defaults                            0 0
+              tmpfs                                       /tmp                    tmpfs   defaults,nosuid,nodev,exec,size=2G  0 0
+              ```
+
+          3. Remount all filesystems in `/etc/fstab`.
+
+              ```shell
+              sudo mount --all
+              ```
+
+          4. Confirm the mount status of `/tmp` is set to `exec`.
+
+              ```shell
+              mount | grep '/tmp'
+              ```
+
+              ```shell title="Example output" hideClipboard
+              tmpfs on /tmp type tmpfs (rw,nosuid,nodev,exec,relatime,size=2G)
+              ```
+
+          </details>
+
+  - If your system has been hardened using a Security Technical Implementation Guide (STIG) policy, you may need to
+    remediate the following:
+
+            - SELinux may prevent binaries from executing, including `cloud-init` scripts. We recommend setting the SELinux
+              status to `permissive` or `disabled` until the image building process is complete.
+
+              <details>
+
+              <summary> Check SELinux status </summary>
+
+                1.  Check the status of SELinux.
+
+                    ```shell
+                    getenforce
+                    ```
+
+                    ```shell title="Example output" hideClipboard
+                    Enforcing
+                    ```
+
+                2.  If the status is `Enforcing`, use your preferred text editor to open the SELinux config file and set `SELINUX`
+                    to either `permissive` or `disabled`.
+
+                        ```shell
+                        vi /etc/selinux/config
+                        ```
+
+                        ```shell title="Example output" hideClipboard {6}
+                        # This file controls the state of SELinux on the system.
+                        # SELINUX= can take one of these three values:
+                        #     enforcing - SELinux security policy is enforced.
+                        #     permissive - SELinux prints warnings instead of enforcing.
+                        #     disabled - No SELinux policy is loaded.
+                        SELINUX=permissive
+                        # SELINUXTYPE= can take one of these three values:
+                        #     targeted - Targeted processes are protected,
+                        #     minimum - Modification of targeted policy. Only selected processes are protected.
+                        #     mls - Multi Level Security protection.
+                        SELINUXTYPE=targeted
+                    ```
+
+              </details>
+
+    - fapolicyd may prevent certain applications from executing, such as `containerd-shim-runc-v2`. We recommend
+      disabling `fapolicyd` until the image building process is complete.
+
+        ```shell
+        sudo systemctl disable --now fapolicyd
+        ```
+
+  - A snapshot of your VM created once all other prerequisites are met. This is required by the
+    [vsphere-clone-builder](https://image-builder.sigs.k8s.io/capi/providers/vsphere#vsphere-clone-builder).

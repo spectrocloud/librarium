@@ -326,6 +326,14 @@ format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
 
+###@ Ensure webpconvert is installed
+
+install-webpconvert:
+	@command -v webpconvert >/dev/null 2>&1 || ( \
+		echo "webpconvert not found — installing globally..."; \
+		npm install -g webpconvert >/dev/null 2>&1 || (echo "Failed to install webpconvert" && exit 127) \
+	)
+
 ###@ Find unused images assets
 
 find-unused-images:
@@ -335,6 +343,7 @@ find-unused-images:
 ###@ Generate _partials/index.ts required to automatic partials usage.
 
 generate-partials: ## Generate
+	./scripts/index-breaking-changes.sh
 	./scripts/generate-partials.sh
 
 ###@ Fetch cached packs assets.

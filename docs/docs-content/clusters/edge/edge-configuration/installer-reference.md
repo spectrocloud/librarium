@@ -33,7 +33,7 @@ listed in alphabetical order.
 | `stylus.enableMultiNode`                                    | When set to `true`, the host can link with other nodes to form a multi-node cluster. For more information, refer to [Link Hosts](../local-ui/cluster-management/link-hosts.md).                                                                                                                                                                                                                        | boolean | `false`     |
 | `stylus.externalRegistries`                                 | Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to [Multiple External Registries](#multiple-external-registries) for more details.                                                                                                                                                                                                               | Object  | None        |
 | `stylus.featureGate`                                        | This parameter contains a comma-separated list of features you want to enable on your host.                                                                                                                                                                                                                                                                                                            | String  | `''`        |
-| `stylus.includeTui`                                         | Enable Palette TUI for initial Edge host configuration. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).                                                                                                                                                                                                                       | boolean | `false`     |
+| `stylus.includeTui`                                         | (Deprecated) Enable Palette TUI for initial Edge host configuration. This parameter has been deprecated, and Palette TUI is always enabled regardless of its value. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).                                                                                                           | boolean | `false`     |
 | `stylus.installationMode`                                   | (Deprecated) Allowed values are `connected` and `airgap`. `connected` means the Edge host is connected to Palette; `airgap` means the Edge host has no connection. This parameter has been deprecated and will be removed in an future release. Use the `stylus.managementMode` parameter instead.                                                                                                     | String  | `connected` |
 | `stylus.localUI.login.attemptsBeforeExponentialDelayStarts` | Number of consecutive failed Local UI login attempts before the exponential delay begins. After this threshold, each additional failed attempt doubles the wait time before the user can attempt to log in again. This parameter takes effect only when `stylus.localUI.login.disableRateLimiting` is set to `false` and is supported for Edge hosts built with Palette agent version 4.7.16 or later. | Integer | `3`         |
 | `stylus.localUI.login.disableRateLimiting`                  | When set to `false`, Local UI enforces a short delay after several consecutive failed login attempts and temporarily blocks the user's access. This parameter is supported for Edge hosts built with Palette agent version 4.7.16 or later.                                                                                                                                                            | boolean | `false`     |
@@ -431,6 +431,67 @@ installation is complete.
 | `install.extra-partitions[*].label`  | The label of the extra partition.                                                                                                                             | String                     | `''`    |
 | `install.poweroff`                   | Whether to power off the Edge host after installation completes.                                                                                              | boolean                    | `false` |
 | `install.reboot`                     | Whether to reboot the Edge host after installation completes.                                                                                                 | boolean                    | `false` |
+
+:::info
+
+If you define multiple partitions, the installer allocates any remaining unallocated disk space to the last defined
+partition. This applies to partitions listed under both `install.partitions` and `install.extra-partitions`, in the
+order they appear. If you want all partitions to have fixed sizes, add a final partition to absorb the remaining
+unallocated space.
+
+<details>
+<summary>Examples</summary>
+
+In the example below, the `persistent` partition is fixed at 200 GiB (200,000 MiB). Because `data` is defined last, it
+receives its requested 100 GiB (100,000 MiB) plus any remaining unallocated space on the disk.
+
+```yaml
+#cloud-config
+install:
+  partitions:
+    persistent:
+      size: 200000 # size in MiB
+  extra-partitions:
+    - name: data
+      size: 100000 #size in MiB
+      fs: ext4
+      label: DATA_PARTITION
+```
+
+In the following configuration, the `persistent` partition is not defined and therefore has no assigned size. The
+installer allocates all remaining disk space to the `persistent` partition after creating the `data` partition.
+
+```yaml
+#cloud-config
+install:
+  extra-partitions:
+    - name: data
+      size: 100000 #size in MiB
+      fs: ext4
+      label: DATA_PARTITION
+```
+
+If both partitions require fixed sizes, add a final `extra` partition to accommodate any leftover space.
+
+```yaml
+#cloud-config
+install:
+  partitions:
+    persistent:
+      size: 200000 #size in MiB
+  extra-partitions:
+    - name: data
+      size: 100000 #size in MiB
+      fs: ext4
+      label: DATA_PARTITION
+    - name: extra
+      size: 0
+      fs: ext4
+      label: EXTRA
+```
+
+</details>
+:::
 
 ## Cloud Init Stages
 

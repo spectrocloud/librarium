@@ -40,7 +40,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   files on a system with internet access and then transfer them to your airgap environment.
 
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version 4.6.23 as an example.
+    of the tool. This guide uses version 4.6.24 as an example.
 
   - [RHEL ISO](https://developers.redhat.com/products/rhel/download) version `8.8`. Ensure you download the
     `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its SHA256 checksum available. This
@@ -91,7 +91,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```shell title="Example output"
-    CAPI Image Builder version: v4.6.23
+    CAPI Image Builder version: v4.6.24
     ```
 
 4.  Ensure all artifacts listed in the [Prerequisites](#prerequisites) section are available in the `root` home
@@ -102,7 +102,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```text hideClipboard title="Example output"
-    airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.23.tgz  prep
+    airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.24.tgz  prep
     rhel-8.8-x86_64-dvd.iso  snap
     ```
 
@@ -126,8 +126,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```shell hideClipboard title="Example output"
-    README  airgap-pack-kubernetes-1.30.5.bin  bin  capi-builder-v4.6.23.tar
-    capi-image-builder-v4.6.23.tgz  kickstart  output  prep  rhel-8.8-x86_64-dvd.iso
+    README  airgap-pack-kubernetes-1.30.5.bin  bin  capi-builder-v4.6.24.tar
+    capi-image-builder-v4.6.24.tgz  kickstart  output  prep  rhel-8.8-x86_64-dvd.iso
     rpmrepo  snap  yum-repo-v1.0.0.tar
     ```
 
@@ -324,7 +324,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.24     2adff15eee2d  7 days ago    2.09GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -336,7 +336,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.24     2adff15eee2d  7 days ago    2.09GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -589,57 +589,47 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 ## Create Cluster Profile
 
-The RHEL 8 image is now built and available in the VMware vSphere environment. You can use it to create a cluster
-profile and deploy a VMware vSphere host cluster.
+The RHEL image is now built and available in the VMware vSphere environment. You can use it to create a cluster profile
+and deploy a VMware host cluster.
 
-1. Log in to your airgapped instance of Palette or VerteX.
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the left main menu, select **Profiles > Add Cluster Profile**.
 
 3. In the **Basic Information** section, assign the cluster profile a **Name**, brief **Description**, and **Tags**.
-   Choose **Full** for the profile **Type** and select **Next**.
+   Choose **Full** or **Infrastructure** for the profile **Type**, and select **Next**.
 
-4. In the **Cloud Type** section, choose **VMware vSphere** and select **Next**.
+4. In the **Cloud Type** section, choose **VMware vSphere**, and select **Next**.
 
-5. The **Profile Layers** section is where you specify the packs that compose the profile. For this guide, use the
-   following packs.
+<!-- prettier-ignore-start -->
 
-   | Pack Name                   | Version | Layer            |
-   | --------------------------- | ------- | ---------------- |
-   | BYOOS                       | 1.0.0   | Operating System |
-   | Palette eXtended Kubernetes | 1.30.5  | Kubernetes       |
-   | Cilium                      | 1.15.3  | Network          |
-   | vSphere CSI                 | 3.2.0   | Storage          |
+5. Select the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack and
+   provide the following values in the YAML configuration editor. Proceed to the **Next** layer when finished.
 
-    <!-- prettier-ignore-start -->
-
-   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
-   for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
-
-    <!-- prettier-ignore-end -->
+   | **Field**         | **Description**                                                                                                                                   | **Example** |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+   | `osImageOverride` | The path to your RHEL image template in your VMware vSphere environment.                  | `/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.4` |
+   | `osName`          | The type of operating system used in your image.                                                                                    | `rhel` | 
+   | `osVersion`       | The version of your operating system. Enter `8` or `9` depending on the RHEL `os_version` referenced in the `imageconfig` file. | `8` | 
 
    ```yaml hideClipboard title="Example YAML configuration"
    pack:
-     osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.5"
+     osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.4"
      osName: "rhel"
      osVersion: "8"
    ```
 
-   As you fill out the information for each layer, select **Next** to proceed.
+<!-- prettier-ignore-end -->
 
-   :::warning
+6. Select the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
+   pack. Ensure the **Pack Version** matches the `k8s_version` specified in the `imageconfig` file. Proceed to the
+   **Next** layer.
 
-   The Palette eXtended Kubernetes pack version must match the `k8s_version` specified in the `imageconfig` file.
-
-   :::
-
-6. Review the profile layers and select **Finish Configuration** to create the cluster profile.
-
-### Validate
-
-1. Log in to your airgapped instance of Palette or VerteX.
-
-2. From the left main menu, select **Profiles**. Verify that your new cluster profile is available.
+7. Complete the remaining profile layers, making any changes necessary. When finished, select **Finish Configuration**
+   to create your cluster profile. For additional information on creating cluster profiles, refer to our
+   [Create an Infrastructure Profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+   and [Create a Full Profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md)
+   guides.
 
 ## Next Steps
 

@@ -71,3 +71,19 @@ We maintain certification under the Joint Certification Program, a program betwe
 Defense and the U.S. Department of Defense, that helps to protect controlled Unclassified Military Critical Technical
 Data (MCTD) and technology from common adversaries. Our Joint Certification Program certification establishes the
 eligibility of Spectro Cloud, Inc., to receive technical data governed by the Technical Data Control Regulations (TCDR).
+
+## UK Cyber Essentials Certification
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <iframe
+    src="https://registry.blockmarktech.com/certificates/2f98929e-e319-4056-86f9-aac8657b930b/widget/?tooltip_position=bottom&theme=transparent"
+    style={{ border: "none", height: 180, width: 180 }}
+    title="Blockmark certificate widget"
+    loading="lazy"
+  />
+</div>
+
+Spectro Cloud’s achievement of the UK Cyber Essentials certification underscores our commitment to maintaining the
+highest standards of cybersecurity and data protection. This government-backed accreditation establishes a baseline
+level of security that all organizations should have in place to defend against the most common types of cyberattacks,
+including phishing, malware, and hacking attempts that exploit poor configurations or weak passwords.

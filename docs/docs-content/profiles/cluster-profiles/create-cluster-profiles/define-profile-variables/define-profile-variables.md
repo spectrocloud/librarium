@@ -54,8 +54,6 @@ For more information on how cluster profile variables interact with cluster temp
 
 - Nesting profile variables within macros or other profile variables is not supported.
 
-- Multi-line cluster profile variables are not supported.
-
 - The variable must satisfy any existing schema constraint defined in the pack. Refer to the
   [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
 
@@ -66,7 +64,7 @@ For more information on how cluster profile variables interact with cluster temp
   Palette SaaS, but their values can be edited in [Local UI](../../../../clusters/edge/local-ui/local-ui.md) prior to
   deploying a cluster.
 
-- The dropdown input type is not supported in Local UI.
+- Dropdown and multiline input types are not supported in Local UI.
 
 ## Next Steps
 

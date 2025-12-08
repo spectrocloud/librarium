@@ -51,10 +51,28 @@ Refer to the following tables for the supported upgrade paths for self-hosted Pa
 Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
 latest minor version available.
 
+Use the [Find Breaking Changes](../../../../../release-notes/breaking-changes.md) page to list all the breaking changes
+between Palette versions. Ensure that you have addressed all changes before upgrading Palette VerteX.
+
 :::
 
 <Tabs>
 <TabItem label="VMware" value="VMware">
+
+**4.8**
+
+:::info
+
+After upgrading to 4.8.8, the VerteX management cluster will appear to be **Unhealthy** in the VerteX UI due to
+`mongodb-key-manager-manifest` errors. The cluster functionality is not affected and will return to **Healthy** after a
+few hours.
+
+:::
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.8        | :white_check_mark: |
 
 **4.7.x**
 
@@ -518,6 +536,18 @@ latest minor version available.
 :::preview
 
 :::
+
+**4.8**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.8.8        |       4.8.9        | :white_check_mark: |
+|       4.7.29       |       4.8.9        | :white_check_mark: |
+|       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.9        | :white_check_mark: |
+|       4.7.27       |       4.8.8        | :white_check_mark: |
+
+**4.7**
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |

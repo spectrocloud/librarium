@@ -22,13 +22,13 @@ upgrade schedules, and upgrades can be [manually triggered](../modify-cluster-te
 defined schedule, giving you the flexibility to trigger upgrades across clusters whenever necessary.
 
 All clusters must be on the same cluster profile version, and all cluster profile variables must be in an **Assigned**
-state before they can be upgraded to the next cluster profile version. If some clusters fail to upgrade during the
-upgrade window, or if clusters deployed with the same template are on two different versions (such as in the case of
-incomplete [variable assignments](../modify-cluster-templates.md#variable-values-tab)), the template enters a "partially
-applied" state, and further version upgrades and are blocked until all clusters are on the same version again. In this
-situation, you can either wait for the next upgrade window, at which time the system will attempt to upgrade the
-remaining clusters, or you can [force the upgrade](../modify-cluster-templates.md#overview-tab) using the **Upgrade
-now** button.
+state before they can be upgraded to the next cluster profile version. If two or more clusters deployed with the same
+template are on different cluster profile versions (such as in the case of incomplete
+[variable assignments](../modify-cluster-templates.md#variable-values-tab) or failure to upgrade during the upgrade
+window), the template enters a "partially applied" state, and further version upgrades and are blocked until all
+clusters are on the same version again. In this situation, you can either wait for the next upgrade window, at which
+time the system will attempt to upgrade the remaining clusters, or you can
+[force the upgrade](../modify-cluster-templates.md#overview-tab) using the **Upgrade now** button.
 
 The following table discusses several upgrade scenarios, as well as the result.
 
@@ -110,13 +110,19 @@ cluster templates.
 9.  When finished, **Confirm** your schedule.
 
 10. Your schedule appears in the **Upgrade schedule** section of the **Basic information** window. If you would like to
-    add additional schedules, select **Add Schedule**, and repeat steps 5 - 10; otherwise, select **Next**.
+    add additional schedules, select **Add Schedule**, and repeat steps 5 - 10. When you are finished adding schedules,
+    select **Next**.
 
-    :::tip
+    :::info
 
-    Each template can be linked to one maintenance policy only. All schedules attached to a maintenance policy are
-    initiated on the attached clusters during the specified upgrade window. If you do not want all schedules applied to
-    certain clusters, consider making another maintenance policy and attaching it to a separate cluster template.
+    - If you have multiple schedules for the same maintenance policy, the upgrade windows cannot overlap. For example,
+      if one schedule begins at 8:00 AM on Sunday with a three-hour upgrade window, and another schedule begins at 10:00
+      AM on Sunday with a three-hour upgrade window, the upgrade windows overlap at 10:00 AM, and you will receive an
+      error when attempting to **Finalize** your maintenance policy.
+
+    - Each template can be linked to one maintenance policy only. All schedules attached to a maintenance policy are
+      initiated on the attached clusters during the specified upgrade window. If you do not want all schedules applied
+      to certain clusters, consider creating another maintenance policy and attaching it to a separate cluster template.
 
     :::
 
