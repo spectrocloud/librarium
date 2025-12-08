@@ -17,7 +17,7 @@ environment. Before you begin the installation, carefully review the [Prerequisi
 
   :::warning
 
-  The installation does not work with Single Sign-On (SSO) credentials. You must use an API key from a local tenant
+  The installation does not support Single Sign-On (SSO) credentials. You must use an API key from a local tenant
   admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no
   longer used to keep the PCG connected to Palette, so you can deactivate the account if desired.
 
