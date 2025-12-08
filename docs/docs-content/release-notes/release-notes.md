@@ -46,6 +46,58 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
 " url="/integrations/packs/?pack=edge-k8s"/> pack.
 <!-- prettier-ignore-end -->
 
+## December 5, 2025 - Component Updates {#component-updates-2025-49}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.9.
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 2.10.1.
+
+<!-- prettier-ignore-end -->
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Azure CNI" url="/integrations/packs/?pack=cni-azure"/> pack now supports the overlay networking model using the **Overlay** preset.
+- The <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks"/> pack now supports the configuration of custom service CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> tab for further information.
+- The <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"/> pack now supports the configuration of custom pod CIDRs. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> tab for further information.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EFS                   | Add-on | :white_check_mark: | :x:                | 2.1.15      |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.16.0      |
+| AWS VPC CNI                  | Add-on | :x:                | :white_check_mark: | 1.20.4      |
+| Azure Disk                   | CSI    | :white_check_mark: | :x:                | 1.33.6      |
+| Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.2      |
+| Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.2      |
+| KAI Scheduler                | Add-on | :white_check_mark: | :x:                | 0.10.0      |
+| Kuberay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
+| Open Policy Agent            | Add-on | :white_check_mark: | :x:                | 3.21.0      |
+| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.45.0     |
+| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.5.0      |
+| Ubuntu (GCP)                 | OS     | :white_check_mark: | :x:                | 24.04       |
+| Zot Registry                 | Add-on | :white_check_mark: | :white_check_mark: | 0.1.89      |
+
+## December 5, 2025 - Release 4.8.9
+
+The following component updates are applicable to this release:
+
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+
+### Bug Fixes
+
+- Fixed an issue that caused Palette's `cluster-management-agent` service to continually restart on
+  [data center clusters](../clusters/data-center/data-center.md) due to a duplicate CloudStack cloud type introduced by
+  Palette 4.8.6.
+
 ## November 28, 2025 - Component Updates {#component-updates-2025-48}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.8.
@@ -69,6 +121,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.8.
 The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 
 ### Improvements
 
@@ -91,6 +144,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
+- [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 
 ### Security Notices
 

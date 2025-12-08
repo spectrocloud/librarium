@@ -51,7 +51,7 @@ jobs:
 
 
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
@@ -59,7 +59,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - name: Determine branch name

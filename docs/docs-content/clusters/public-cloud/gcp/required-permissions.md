@@ -12,7 +12,7 @@ tags: ["public cloud", "gcp", "iam"]
 Ensure the following Google Cloud Platform (GCP) API services are enabled in your Google Cloud Platform (GCP) project to
 deploy a host cluster:
 
-- [Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest)
+- [Cloud Resource Manager API](https://docs.cloud.google.com/resource-manager/reference/rest)
 - [Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1)
 - [Kubernetes Engine API](https://cloud.google.com/kubernetes-engine/docs/reference/rest)
 
