@@ -35,9 +35,9 @@ After you have deployed the PCG, you can proceed to create and manage CloudStack
 
 The following versions of Apache CloudStack are supported in Palette.
 
-| **Version** | **Supported**             |
-| ----------- | ------------------------- |
-| 4.22        | :white_check_mark:|
+| **Version** | **Supported**      |
+| ----------- | ------------------ |
+| 4.22        | :white_check_mark: |
 
 ## Next Steps
 
