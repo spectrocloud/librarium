@@ -100,7 +100,7 @@ TBC
 
    #### Cloud Configuration
 
-   | Field Name              | Description                                                        |    |
+   | Field Name              | Description                                                        |     |
    | ----------------------- | ------------------------------------------------------------------ | --- |
    | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
    | **Networks (optional)** | Select the guest network to use.                                   |     |
