@@ -418,7 +418,7 @@ const config = {
           position: "right",
           value: `
             <button
-              class="button button--primary"
+              class="navbar-ai-button"
               type="button"
               onclick="window.Kapa && window.Kapa.open({ mode: 'ai', submit: true })"
             >
