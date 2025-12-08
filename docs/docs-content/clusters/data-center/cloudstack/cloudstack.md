@@ -37,7 +37,13 @@ The following versions of Apache CloudStack are supported in Palette.
 
 | **Version** | **Supported**      |
 | ----------- | ------------------ |
-| 4.22        | :white_check_mark: |
+| 4.19.3.0        | :white_check_mark: |
+
+The following versions of Apache Cloud API are supported in Palette.
+
+| **Version** | **Supported**      |
+| ----------- | ------------------ |
+| 0.6.1       | :white_check_mark: |
 
 ## Next Steps
 
