@@ -1,0 +1,1 @@
+docs/docs-content/release-notes/release-notes.md:47:3:Vale.Spelling:Did you really mean 'Kuberay'?

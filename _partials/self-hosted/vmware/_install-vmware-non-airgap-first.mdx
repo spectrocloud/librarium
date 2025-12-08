@@ -1,0 +1,25 @@
+---
+partial_category: self-hosted
+partial_name: install-vmware-non-airgap-first
+---
+
+1.  Log in to your vCenter environment.
+
+2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
+    user account you use to deploy the VerteX installation.
+
+3.  Find the OVA download URL corresponding to your {props.version} version in the
+        <PaletteVertexUrlMapper
+            edition={props.edition}
+            text="Kubernetes Requirements"
+            url="/supported-environments/vmware/install#kubernetes-requirements"
+        /> section. Use the identified URL to import
+    the OS and Kubernetes distribution OVA required for the install.
+4.  Place the OVA in the `spectro-templates` folder. Refer to the
+    [Import Items to a Content Library](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/import-content-library-item-from-a-url-h5-and-flex.html)
+    guide for information about importing an OVA in vCenter.
+
+    Alternatively, you can use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the
+    `spectro-templates` folder. Refer to the
+    [Deploy an OVF or OVA Template](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-ovf-templatesvsphere-vm-admin.html)
+    guide for more information about deploying an OVA in vCenter.

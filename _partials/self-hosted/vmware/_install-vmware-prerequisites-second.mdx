@@ -3,12 +3,13 @@ partial_category: self-hosted
 partial_name: install-vmware-prerequisites-second
 ---
 
-- Assigned IP addresses for application workload services, such as Load Balancer.
+- Assigned IP addresses for application workload services, such as load balancer.
 
-- {props.version}'s access to the required domains and ports. Refer to the <PaletteVertexUrlMapper
-  edition={props.edition}
-  text="Proxy Requirements"
-  url="supported-environments/vmware/install/#proxy-requirements"
+- {props.version}'s access to the required domains and ports. Refer to the
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="Proxy Requirements"
+    url="/supported-environments/vmware/install/#proxy-requirements"
   /> section for more information.
 
 - A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the

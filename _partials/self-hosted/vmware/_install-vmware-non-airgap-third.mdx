@@ -1,58 +1,11 @@
 ---
 partial_category: self-hosted
-partial_name: install-vmware-non-airgap
+partial_name: install-vmware-non-airgap-third
 ---
-
-1.  Log in to your vCenter environment.
-
-2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you use to deploy the VerteX installation.
-
-3.  Find the OVA download URL corresponding to your {props.version} version in the
-    [Kubernetes Requirements](../install/install.md#kubernetes-requirements) section. Use the identified URL to import
-    the Operating System and Kubernetes distribution OVA required for the install.
-4.  Place the OVA in the `spectro-templates` folder. Refer to the
-    [Import Items to a Content Library](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/import-content-library-item-from-a-url-h5-and-flex.html)
-    guide for information about importing an OVA in vCenter.
-
-    Alternatively, you can use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the
-    `spectro-templates` folder. Refer to the
-    [Deploy an OVF or OVA Template](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-ovf-templatesvsphere-vm-admin.html)
-    guide for more information about deploying an OVA in vCenter.
-
-    :::info
-
-    Refer to the [Additional OVAs](../../../../../downloads/palette-vertex/additional-ovas.md) page for a list of
-    additional OVAs you can download and upload to your vCenter environment.
-
-    :::
-
-5.  Append an `r_` prefix to the imported OVA name. If the name includes the `.ova` suffix, remove it. For example,
-    `r_u-2204-0-k-12813-0` is a valid OVA name. This naming convention is required for the installation process to
-    detect the OVA.
-
-6.  Open a terminal window and set your Palette CLI encryption passphrase value in an environment variable. The
-    passphrase must be eight to 32 characters long and include at least one uppercase letter, one lowercase letter, one
-    digit, and one special character. Refer to the
-    [Palette CLI Encryption](../../../../../automation/palette-cli/palette-cli.md#encryption) section for more
-    information.
-
-    Use the following command to set the passphrase. Replace `*************` with your passphrase.
-
-    ```shell
-    export PALETTE_ENCRYPTION_PASSWORD=*************
-    ```
-
-7.  The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the
-    video before you begin the installation process. Make sure to use values that are appropriate for your environment.
-    Use the three-dots menu in the lower right corner of the video to expand the video to full screen and to change the
-    playback speed.
-
-    <Video title="palette-cli-install" src="/videos/vertex-install.mp4"></Video>
 
 8.  Execute the `ec` command to launch the Palette CLI and begin the Enterprise cluster (EC) installation. The CLI walks
     you through the required configuration inputs and then proceeds with the installation. For more information about
-    the `ec` command, refer to [Palette Commands](../../../../../automation/palette-cli/commands/ec.md).
+    the `ec` command, refer to [Palette Commands](../../../../../../automation/palette-cli/commands/ec).
 
     ```bash
     palette ec install
@@ -64,19 +17,19 @@ partial_name: install-vmware-non-airgap
     palette ec install --validate
     ```
 
-    Refer to the [Validate Environment](../../../../../automation/palette-cli/commands/ec.md#validate-environment)
+    Refer to the [Validate Environment](../../../../../../automation/palette-cli/commands/ec/#validate-environment)
     section of the EC command for more information.
 
 10. At the **Management Plane Type** prompt, choose **{props.version}**.
 
-11. Select the desired OS you want to use for the installation. Review the table below for more information about each
+11. Select the OS you want to use for the installation. Review the table below for more information about each
     option.
 
 
     | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                                    |
     | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **ubuntu**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-3 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                                   |
-    | **rhel** | Red Hat Enterprise Linux (RHEL).                                                          | RHEL subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and Palette eXtended Kubernetes](../../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) page to learn how to create the required template. |
+    | **rhel** | Red Hat Enterprise Linux (RHEL).                                                          | RHEL subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and Palette eXtended Kubernetes](../../../../../../byoos/image-builder/build-image-vmware/rhel-pxk) page to learn how to create the required template. |
 
 12. Depending on your OS selection, the Palette CLI prompts you to provide the required information. For Ubuntu Pro, you
     need to provide your Ubuntu Pro token. For RHEL, you need to provide the path to the vSphere template and specify
@@ -112,7 +65,7 @@ partial_name: install-vmware-non-airgap
     | **Registry Region**                              | Enter the registry region. Use `us-west-2` unless told otherwise by our support team. This option is only available if you are using `OCI ECR`.                                                                                                                                                                         |
     | **ECR Registry is private?**                     | Type `y` as the `OCI ECR` registry requires credentials.                                                                                                                                                                                                                                                                |
     | **Pull images from public registries?**          | Type `y` to use a public registry for images.                                                                                                                                                                                                                                                                           |
-    | **Kind Cluster Name**                            | Enter a name for the temporary Kubernetes cluster (Kind) that {props.version} uses during the installation process. This cluster runs inside the {props.version} VM and is used only for bootstrapping system components. The name must be lowercase, contain no spaces, and does not need to match your final management cluster name. |
+    | **Kind Cluster Name**                            | Enter a name for the temporary Kubernetes cluster that {props.version} uses during the installation process. This cluster runs inside the {props.version} VM and is used only for bootstrapping system components. The name must be lowercase, contain no spaces, and does not need to match your final management cluster name. |
 
 16. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
     below.
@@ -135,7 +88,7 @@ partial_name: install-vmware-non-airgap
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                                                      |
     | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Datacenter**                                           | The installer automatically detects and retrieves the vSphere datacenter associated with your environment.                                                                                                                                                                                           |
-    | **VM Folder**                                            | Select the vSphere folder for the deployed {props.version}VM.                                                                                                                                                                                                                                             |
+    | **VM Folder**                                            | Select the vSphere folder for the deployed {props.version} VM.                                                                                                                                                                                                                                             |
     | **Image Template Folder**                                | Select the `spectro-templates` folder where you placed the OVA.                                                                                                                                                                                                                                      |
     | **Cluster for Fault Domain**                             | Select the cluster where you want to deploy {props.version}.                                                                                                                                                                                                                                               |
     | **Network**                                              | Select the network where you want to deploy {props.version}.                                                                                                                                                                                                                                               |
@@ -143,7 +96,7 @@ partial_name: install-vmware-non-airgap
     | **Select specific Datastore or use a VM Storage Policy** | Choose whether to place the VM on a specific vSphere datastore or to use a VM storage policy that automatically selects an appropriate datastore.                                                                                                                                                    |
     | **Datastore**                                            | Select the specific vSphere datastore where you want to deploy the {props.version} VM. This option appears when you choose to specify a datastore rather than use a VM storage policy.                                                                                                                     |
     | **Add another Fault Domain?**                            | Configure additional fault domains by selecting values for `Cluster for Fault Domain`, `Network`, `Resource Pool`, and storage type (`Select specific Datastore or use a VM Storage Policy`). When selecting a network, choose the network associated with your distributed switch if one is in use. |
-    | **NTP servers**                                          | If required, rovide a list of Network Time Protocol (NTP) servers, such as `pool.ntp.org`, to ensure accurate time synchronization for the deployed VMs.                                                                                                                                             |
+    | **NTP servers**                                          | If required, provide a list of Network Time Protocol (NTP) servers, such as `pool.ntp.org`, to ensure accurate time synchronization for the deployed VMs.                                                                                                                                             |
     | **Configure SSH public key(s)**                          | Provide one or more SSH public keys for accessing your {props.version} VMs. This option opens your system’s default text editor. On most Linux distributions, the default editor is vi. Refer to the [Basic vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) page to review vi commands.          |
 
 17. Specify the static IP pool used to assign IP addresses to VMs. The IP range must include at least five addresses.
@@ -160,7 +113,12 @@ partial_name: install-vmware-non-airgap
     | **Name server search suffixes** | An optional list of DNS search domains separated by commas.                                 |
 
 18. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
-    guidance.
+    guidance. Refer to the
+        <PaletteVertexUrlMapper
+            edition={props.edition}
+            text="Size Guidelines"
+            url="/supported-environments/vmware/install#size-guidelines"
+        /> for more information.
 
     #### vSphere Machine Configuration
 
@@ -175,7 +133,7 @@ partial_name: install-vmware-non-airgap
 
     | **Parameter**     | **Description**                                                                            |
     | ----------------- | ------------------------------------------------------------------------------------------ |
-    | **Node Affinity** | Select the node affinity. Enter `y` to schedule all [version] pods on control plane nodes. |
+    | **Node Affinity** | Select the node affinity. Enter `y` to schedule all {props.version} pods on control plane nodes. |
 
     The installer creates a local `kind` cluster to coordinate the rest of the installation, which may take some time.
 
@@ -188,7 +146,7 @@ partial_name: install-vmware-non-airgap
 
     :::tip
 
-    If an error occurs during installation, restart it. After choosing the OS, the installer detects an existing `kind` cluster and display the following message.
+    If an error occurs during the installation, restart it. After choosing the OS, the installer detects an existing `kind` cluster and display the following message.
     
     ```bash
     Existing kind cluster(s) [spectro-mgmt-cluster] detected. This may cause “too many open files” errors. Delete existing kind cluster(s) & proceed with Enterprise Cluster installation?
@@ -208,8 +166,8 @@ partial_name: install-vmware-non-airgap
 
     :::
 
-    When the installation is complete, the terminal displays the EC cosole URL and default credentials. Save this information to access the [version] System Console. The Palette CLI has the kubectl CLI included. You can find the kubectl binary in the **bin** directory of the Palette CLI configuration
-    directory, located at **~/.palette/bin/kubectl**.
+    When the installation is complete, the terminal displays the EC cosole URL and default credentials. Save this information to access the {props.version} System Console. The Palette CLI has the kubectl CLI included. You can find the kubectl binary in the `bin` directory of the Palette CLI configuration
+    directory, located at `~/.palette/bin/kubectl`.
 
     ```bash hideClipboard
     ================================================
@@ -218,20 +176,25 @@ partial_name: install-vmware-non-airgap
     Console URL: https://10.10.100.0/system
     Username:    ************
     Password:    ************
-    
     ```
 
     The installer automatically deletes the temporary `kind` cluster created during installation, along with its associated images.
 
 19. Log in to the system console using the credentials provided by the installer. After login,
     the console prompts you to create a new password. Enter a new password and save your changes. Refer to the
-    [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
-    documentation page to learn more about the password requirements.
+        <PaletteVertexUrlMapper
+            edition={props.edition}
+            text="password requirements"
+            url="/system-management/account-management/credentials/#password-requirements-and-security"
+        /> documentation page to learn more about the password requirements.
 
     Use the username `admin` and your new password to log in to the system console. You can create additional system
     administrator accounts and assign roles to users in the system console. Refer to the
-    [Account Management](../../../system-management/account-management/account-management.md) documentation page for
-    more information.
+        <PaletteVertexUrlMapper
+            edition={props.edition}
+            text="Account Management"
+            url="/system-management/account-management"
+        /> documentation page for more information.
 
     :::info
 
@@ -240,5 +203,3 @@ partial_name: install-vmware-non-airgap
     and proceed.
 
     :::
-
-    ![Screenshot of the {props.version} system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)

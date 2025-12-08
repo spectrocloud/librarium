@@ -333,24 +333,10 @@ We recommended the following resources for Palette. Refer to the
 
 ## Validate
 
-You can verify the installation is successful if you can access the system console using the IP address provided in
-Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
-
-You can also validate that a three-node Kubernetes cluster is launched and Palette is deployed on it.
-
-1. Log in to the vCenter Server by using vSphere Client.
-
-2. Navigate to your vSphere data center and locate your Palette VM instances. The VMs are prefixed with the name you
-   provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named
-   `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
-
-3. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the
-   installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
-
-4. Log in using your credentials.
-
-5. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial
-   installation, the **Summary** page shows there are zero tenants.
+<PartialsComponent
+  category="self-hosted"
+  name="install-non-airgap-validation"
+/>
 
 ## Next Steps
 
