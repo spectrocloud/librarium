@@ -12,7 +12,7 @@ tags: ["data center", "cloudstack", "architecture"]
 Palette supports using
 [Apache CloudStack](https://docs.cloudstack.apache.org/en/latest/conceptsandterminology/concepts.html#cloud-infrastructure-overview)
 as a data center provider. You can deploy Kubernetes clusters to your CloudStack environment using Palette. The
-Cloudstack management environment could include Bare Metal (via IPMI), Hyper-V, Kernel-based Virtual Machine(KVM), Linux
+CloudStack management environment could include Bare Metal (via IPMI), Hyper-V, Kernel-based Virtual Machine(KVM), Linux
 Containers (LXC), vSphere (via vCenter), Xenserver and Xen Project. Below are some key features of the Palette
 CloudStack architecture:
 
