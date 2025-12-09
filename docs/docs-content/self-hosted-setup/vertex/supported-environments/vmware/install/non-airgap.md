@@ -35,7 +35,7 @@ the registry. The Palette CLI will prompt you to provide the CA certificate file
   version="Palette VerteX"
 />
 
-## Deployment
+## Deploy
 
 <PartialsComponent
   category="self-hosted"
