@@ -22,7 +22,7 @@ keywords: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 
 :::warning
 
-Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available in PEM
+Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available in Privacy-Enhanced Mail (PEM)
 format when using custom packs and an image registry. Otherwise, VerteX will not be able to pull packs and images from
 the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
 
