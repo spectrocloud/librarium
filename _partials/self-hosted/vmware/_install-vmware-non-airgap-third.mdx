@@ -201,5 +201,11 @@ partial_name: install-vmware-non-airgap-third
     The first time you visit the {props.version} system console, a warning message about an untrusted SSL certificate may appear.
     This is expected, as you have not yet uploaded your SSL certificate to {props.version}. You can ignore this warning message
     and proceed.
+    Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Configure HTTPS Encryption"
+        url="/system-management/ssl-certificate-management"
+    /> page for instructions on how to upload the SSL certificate files to Palette.
 
     :::

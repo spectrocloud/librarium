@@ -27,7 +27,7 @@ guide for help with migrating workloads.
 
 - Access to an AWS cloud account.
 
-- Palette integration with AWS account. Review [Add AWS Account](./add-aws-accounts) for guidance.
+- Palette integration with AWS account. Review [Add AWS Account](../add-aws-accounts/add-aws-accounts.md) for guidance.
 
   - If you are using EKS Pod Identity to authenticate Palette with your AWS account, and you want users to access the
     kubeconfig file of EKS workload clusters, you must add these users to the `iamAuthenticatorConfig.mapUsers` section
