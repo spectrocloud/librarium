@@ -21,6 +21,23 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.8.a}
 
+- Users with the `cluster.delete` permission are no longer allowed to download cluster
+  [admin Kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This operation is now controlled using the
+  `cluster.adminKubeconfigDownload` permission, allowing system administrators with fine-grained control over cluster
+  admin access.
+
+  The `cluster.adminKubeconfigDownload` permission is part of the following system roles:
+
+  - [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin)
+  - [Tenant Project Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#project)
+  - [Project Admin](../user-management/palette-rbac/project-scope-roles-permissions.md#project)
+  - [Cluster Admin](../user-management/palette-rbac/project-scope-roles-permissions.md#cluster)
+  - [Resource Cluster Admin](../user-management/palette-rbac/resource-scope-roles-permissions.md#cluster)
+
+  Existing users with system roles that include the `cluster.delete` permission automatically receive the new
+  `cluster.adminKubeconfigDownload` permission. System administrators must grant the new permission manually to existing
+  users granted access through custom roles.
+
 #### Features
 
 #### Improvements
