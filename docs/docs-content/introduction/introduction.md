@@ -11,6 +11,8 @@ sidebar_custom_props:
 slug: /
 ---
 
+<AskAI />
+
 Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of
 any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center
 or the cloud.
