@@ -7,6 +7,10 @@ sidebar_position: 50
 tags: ["pcg", "cloudstack"]
 ---
 
+:::preview
+
+:::
+
 This guide provides you with the steps to deploy a Palette Cloud Gateway (PCG) cluster to an Apache CloudStack
 environment. Before you begin the installation, carefully review the [Prerequisites](#prerequisites) section.
 

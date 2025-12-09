@@ -7,6 +7,10 @@ sidebar_position: 20
 tags: ["data center", "cloudstack"]
 ---
 
+:::preview
+
+:::
+
 You can register Apache CloudStack accounts in Palette to create and manage Kubernetes clusters in your CloudStack
 environment.
 

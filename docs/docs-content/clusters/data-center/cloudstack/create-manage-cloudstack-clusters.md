@@ -7,6 +7,10 @@ sidebar_position: 20
 tags: ["data center", "cloudstack"]
 ---
 
+:::preview
+
+:::
+
 You can deploy Kubernetes clusters on Apache CloudStack using Palette. Use the following steps to create and manage
 CloudStack clusters in Palette.
 
