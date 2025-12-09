@@ -1,0 +1,211 @@
+---
+partial_category: self-hosted
+partial_name: install-vmware-non-airgap-third
+---
+
+8.  Execute the `ec` command to launch the Palette CLI and begin the Enterprise cluster (EC) installation. The CLI walks
+    you through the required configuration inputs and then proceeds with the installation. For more information about
+    the `ec` command, refer to [Palette Commands](../../../../../../automation/palette-cli/commands/ec).
+
+    ```bash
+    palette ec install
+    ```
+
+9.  Validate the installation.
+
+    ```bash
+    palette ec install --validate
+    ```
+
+    Refer to the [Validate Environment](../../../../../../automation/palette-cli/commands/ec/#validate-environment)
+    section of the EC command for more information.
+
+10. At the **Management Plane Type** prompt, choose **{props.version}**.
+
+11. Select the OS you want to use for the installation. Review the table below for more information about each
+    option.
+
+
+    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                                    |
+    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **ubuntu**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-3 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                                   |
+    | **rhel** | Red Hat Enterprise Linux (RHEL).                                                          | RHEL subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and Palette eXtended Kubernetes](../../../../../../byoos/image-builder/build-image-vmware/rhel-pxk) page to learn how to create the required template. |
+
+12. Depending on your OS selection, the Palette CLI prompts you to provide the required information. For Ubuntu Pro, you
+    need to provide your Ubuntu Pro token. For RHEL, you need to provide the path to the vSphere template and specify
+    the version.
+
+13. Choose `VMware vSphere` as the **Cloud Type**. This is the default option.
+
+14. When prompted, enter the information listed in the following table.
+
+    #### Environment Configuration
+
+    | **Parameter**        | **Description**                                                                                                                                                                                                                               |
+    | :------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **HTTPS Proxy**      | If your environment uses an HTTPS proxy, enter its URL. Otherwise, press **ENTER** to leave it blank. This setting is propagated to all EC nodes and all of its target cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`. |
+    | **HTTP Proxy**       | If your environment uses an HTTP proxy, enter its URL. Otherwise, press **ENTER** to leave it blank. This setting is propagated to all EC nodes and all of its target cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.   |
+    | **Pod CIDR**         | Enter the Classless Inter-Domain Routing (CIDR) range for pod IP addresses in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                  |
+    | **Service IP Range** | Enter the IP range for service IP addresses in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                             |
+
+15. Choose the image registry configuration. By default, our support team provides you with the credentials for the
+    Amazon Elastic Container Registry (ECR) that contains the packs. Use the following table for guidance.
+
+    #### Pack & Image Registry Configuration
+
+    | **Parameter**                                    | **Description**                                                                                                                                                                                                                                                                                                         |
+    | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` and `OCI ECR`. Select `OCI ECR` if you received credentials for Amazon ECR from support.                                                                                                                                                                         |
+    | **Registry Name**                                | Enter the name of the registry.                                                                                                                                                                                                                                                                                         |
+    | **Registry Endpoint**                            | Enter the registry endpoint.                                                                                                                                                                                                                                                                                            |
+    | **Registry Base Content Path**                   | Enter the registry base path. Specify the value `production-fips` if you are using the Palette AWS ECR registry.                                                                                                                                                                                                        |
+    | **Registry CA certificate Filepath**             | Specify the file path to the certificate authority. Use absolute paths.                                                                                                                                                                                                                                                 |
+    | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                                                                                                                                                                                       |
+    | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                                                                                                                                                                                       |
+    | **Registry Region**                              | Enter the registry region. Use `us-west-2` unless told otherwise by our support team. This option is only available if you are using `OCI ECR`.                                                                                                                                                                         |
+    | **ECR Registry is private?**                     | Type `y` as the `OCI ECR` registry requires credentials.                                                                                                                                                                                                                                                                |
+    | **Pull images from public registries?**          | Type `y` to use a public registry for images.                                                                                                                                                                                                                                                                           |
+    | **Kind Cluster Name**                            | Enter a name for the temporary Kubernetes cluster that {props.version} uses during the installation process. This cluster runs inside the {props.version} VM and is used only for bootstrapping system components. The name must be lowercase, contain no spaces, and does not need to match your final management cluster name. |
+
+16. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
+    below.
+
+    #### VMware vSphere Account Information
+
+    | **Parameter**                                             | **Description**                                                                                                                                                            |
+    | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **vSphere Endpoint**                                      | Enter a fully qualified domain name (FQDN) or IP address. Do not include a scheme or protocol prefix such as `https://`. Example: `vcenter.mycompany.com`.                 |
+    | **vSphere Username (with domain)**                        | VMware vSphere account username.                                                                                                                                           |
+    | **vSphere Password**                                      | VMware vSphere account password.                                                                                                                                           |
+    | **Allow Insecure Connection (Bypass x509 Verification)?** | Type `Y` to bypass X.509 verification when connecting to a VMware vSphere instance that uses self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`. |
+
+    #### VMware vSphere Cluster Configuration
+
+    This information determines where to deploy {props.version} within your VMware vSphere environment. The Palette CLI uses the
+    VMware credentials you enter to gather information about your environment and present you with corresponding
+    configuration choices.
+
+    | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                                                      |
+    | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Datacenter**                                           | The installer automatically detects and retrieves the vSphere datacenter associated with your environment.                                                                                                                                                                                           |
+    | **VM Folder**                                            | Select the vSphere folder for the deployed {props.version} VM.                                                                                                                                                                                                                                             |
+    | **Image Template Folder**                                | Select the `spectro-templates` folder where you placed the OVA.                                                                                                                                                                                                                                      |
+    | **Cluster for Fault Domain**                             | Select the cluster where you want to deploy {props.version}.                                                                                                                                                                                                                                               |
+    | **Network**                                              | Select the network where you want to deploy {props.version}.                                                                                                                                                                                                                                               |
+    | **Resource Pool**                                        | Select the resource pool where you want to deploy {props.version}.                                                                                                                                                                                                                                         |
+    | **Select specific Datastore or use a VM Storage Policy** | Choose whether to place the VM on a specific vSphere datastore or to use a VM storage policy that automatically selects an appropriate datastore.                                                                                                                                                    |
+    | **Datastore**                                            | Select the specific vSphere datastore where you want to deploy the {props.version} VM. This option appears when you choose to specify a datastore rather than use a VM storage policy.                                                                                                                     |
+    | **Add another Fault Domain?**                            | Configure additional fault domains by selecting values for `Cluster for Fault Domain`, `Network`, `Resource Pool`, and storage type (`Select specific Datastore or use a VM Storage Policy`). When selecting a network, choose the network associated with your distributed switch if one is in use. |
+    | **NTP servers**                                          | If required, provide a list of Network Time Protocol (NTP) servers, such as `pool.ntp.org`, to ensure accurate time synchronization for the deployed VMs.                                                                                                                                             |
+    | **Configure SSH public key(s)**                          | Provide one or more SSH public keys for accessing your {props.version} VMs. This option opens your system’s default text editor. On most Linux distributions, the default editor is vi. Refer to the [Basic vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) page to review vi commands.          |
+
+17. Specify the static IP pool used to assign IP addresses to VMs. The IP range must include at least five addresses.
+
+    #### Static Placement Configuration
+
+    | **Parameter**                   | **Description**                                                                             |
+    | ------------------------------- | ------------------------------------------------------------------------------------------- |
+    | **Start IP**                    | Enter the first address in the EC IP pool range.                                            |
+    | **End IP**                      | Enter the last address in the EC IP pool range.                                             |
+    | **Network Prefix**              | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
+    | **Gateway IP Address**          | Enter the IP address of the static IP gateway.                                              |
+    | **Name servers**                | A list of DNS name server IP addresses separated by commas.                                 |
+    | **Name server search suffixes** | An optional list of DNS search domains separated by commas.                                 |
+
+18. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
+    guidance. Refer to the
+        <PaletteVertexUrlMapper
+            edition={props.edition}
+            text="Size Guidelines"
+            url="/supported-environments/vmware/install#size-guidelines"
+        /> for more information.
+
+    #### vSphere Machine Configuration
+
+    | **Parameter** | **Description**                                                                                                                                                             |
+    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Small**     | Deploy VM nodes with 16 CPU, 32 GB memory, 60 GB storage. The database specs are 20 GB database with 4 CPU limit and 8 GB memory limit.                                     |
+    | **Medium**    | Deploy VM nodes with 32 CPU, 64 GB memory, 100 GB storage. The database specs are 60 GB database with 6 CPU limit and 12 GB memory limit.                                   |
+    | **Large**     | Deploy VM nodes with 64 CPU, 128 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                  |
+    | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you choose custom options, the Palette CLI prompts you to specify the CPU, memory, and storage amounts. |
+
+    #### Additional vSphere Machine Configuration
+
+    | **Parameter**     | **Description**                                                                            |
+    | ----------------- | ------------------------------------------------------------------------------------------ |
+    | **Node Affinity** | Select the node affinity. Enter `y` to schedule all {props.version} pods on control plane nodes. |
+
+    The installer creates a local `kind` cluster to coordinate the rest of the installation, which may take some time.
+
+    After completion, the installer generates an EC configuration file named `ec.yaml` based on your inputs and displays its location. Credentials and tokens in the file are encrypted.
+
+    ```bash hideClipboard
+    ==== Cluster config saved ====
+    Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    ```
+
+    :::tip
+
+    If an error occurs during the installation, restart it. After choosing the OS, the installer detects an existing `kind` cluster and display the following message.
+    
+    ```bash
+    Existing kind cluster(s) [spectro-mgmt-cluster] detected. This may cause “too many open files” errors. Delete existing kind cluster(s) & proceed with Enterprise Cluster installation?
+    ```
+
+    Respond with `Y` to delete the cluster and continue. Alternatively, you can delete the cluster manually using the following command.
+
+    ```bash
+    kind delete cluster spectro-mgmt-cluster
+    ```
+
+    Restart the install process by referencing the `ec.yaml` file that was created during the first installation attempt. The command below serves as an example.
+
+    ```bash
+    palette ec install --config-file /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    ```
+
+    :::
+
+    When the installation is complete, the terminal displays the EC console URL and default credentials. Save this information to access the {props.version} system console. The Palette CLI has the kubectl CLI included. You can find the kubectl binary in the `bin` directory of the Palette CLI configuration
+    directory, located at `~/.palette/bin/kubectl`.
+
+    ```bash hideClipboard
+    ================================================
+    ==== Enterprise Cluster validation complete ====
+    ================================================
+    Console URL: https://10.10.100.0/system
+    Username:    ************
+    Password:    ************
+    ```
+
+    The installer automatically deletes the temporary `kind` cluster created during installation, along with its associated images.
+
+19. Log in to the system console using the credentials provided by the installer. After login,
+    the console prompts you to create a new password. Enter a new password and save your changes. Refer to the
+        <PaletteVertexUrlMapper
+            edition={props.edition}
+            text="Manage User Credentials"
+            url="/system-management/account-management/credentials/#password-requirements-and-security"
+        /> documentation page to learn more about the password requirements.
+
+    Use the username `admin` and your new password to log in to the system console. You can create additional system
+    administrator accounts and assign roles to users in the system console. Refer to the
+        <PaletteVertexUrlMapper
+            edition={props.edition}
+            text="Account Management"
+            url="/system-management/account-management"
+        /> documentation page for more information.
+
+    :::info
+
+    The first time you visit the {props.version} system console, a warning message about an untrusted TLS certificate may appear.
+    This is expected, as you have not yet uploaded your TLS certificate to {props.version}. You can ignore this warning message
+    and proceed.
+    Palette is installed with a self-signed TLS certificate. To assign a different TLS certificate, you must upload the TLS certificate, TLS certificate key, and TLS certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Configure HTTPS Encryption"
+        url="/system-management/ssl-certificate-management"
+    /> page for instructions on how to upload the TLS certificate files to Palette.
+
+    :::

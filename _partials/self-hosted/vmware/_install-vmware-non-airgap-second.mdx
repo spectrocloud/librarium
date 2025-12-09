@@ -1,0 +1,25 @@
+---
+partial_category: self-hosted
+partial_name: install-vmware-non-airgap-second
+---
+
+5.  Append an `r_` prefix to the imported OVA name. If the name includes the `.ova` suffix, remove it. For example,
+    `r_u-2204-0-k-12813-0` is a valid OVA name. This naming convention is required for the installation process to
+    detect the OVA.
+
+6.  Open a terminal window and set your Palette CLI encryption passphrase value in an environment variable. The
+    passphrase must be eight to 32 characters long and include at least one uppercase letter, one lowercase letter, one
+    digit, and one special character. Refer to the
+    [Palette CLI Encryption](../../../../../../automation/palette-cli/#encryption) section for more
+    information.
+
+    Use the following command to set the passphrase. Replace `*************` with your passphrase.
+
+    ```shell
+    export PALETTE_ENCRYPTION_PASSWORD=*************
+    ```
+
+7.  The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the
+    video before you begin the installation process. Make sure to use values that are appropriate for your environment.
+    Use the three-dots menu in the lower right corner of the video to expand the video to full screen and to change the
+    playback speed.

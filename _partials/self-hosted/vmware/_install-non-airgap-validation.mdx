@@ -1,0 +1,15 @@
+---
+partial_category: self-hosted
+partial_name: install-non-airgap-validation
+---
+Validate that a three-node Kubernetes cluster is launched and {props.version} is deployed on it.
+
+1. Log in to the vCenter Server by using vSphere Client.
+
+2. Navigate to your vSphere data center and locate your {props.version} VM instances. The VMs are prefixed with the `kind` cluster name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
+
+3. Open a web browser session, and use the IP address provided by the installer at the completion of the installation to connect to the {props.version} system console. Copy the IP address to the address bar and append `/system`.
+
+4. Log in using your credentials.
+
+5. A **Summary** page appears with a **Go to Tenant Management** button. After the initial installation, the **Summary** page displays that there are zero tenants.
