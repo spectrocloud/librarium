@@ -333,10 +333,7 @@ We recommended the following resources for Palette. Refer to the
 
 ## Validate
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-non-airgap-validation"
-/>
+<PartialsComponent category="self-hosted" name="install-non-airgap-validation" />
 
 ## Next Steps
 

@@ -43,16 +43,13 @@ the registry. The Palette CLI will prompt you to provide the CA certificate file
   edition="VerteX"
   version="Palette VerteX"
 />
-    :::info
+:::info
 
     Refer to the [Additional OVAs](../../../../../../downloads/palette-vertex/additional-ovas) page for a list of additional OVAs you can download and upload to your vCenter environment.
 
     :::
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-vmware-non-airgap-second"
-/>
+<PartialsComponent category="self-hosted" name="install-vmware-non-airgap-second" />
 
 <Video title="palette-cli-install" src="/videos/vertex-install.mp4"></Video>
 
@@ -67,10 +64,7 @@ the registry. The Palette CLI will prompt you to provide the CA certificate file
 
 ## Validate
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-non-airgap-validation"
-/>
+<PartialsComponent category="self-hosted" name="install-non-airgap-validation" />
 
 ## Next Steps
 
