@@ -22,7 +22,7 @@ tags: ["release-notes"]
 #### Breaking Changes {#breaking-changes-4.8.a}
 
 - Users with the `cluster.delete` permission are no longer allowed to download cluster
-  [admin Kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This operation is now controlled using the
+  [admin kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This operation is now controlled using the
   `cluster.adminKubeconfigDownload` permission, allowing system administrators with fine-grained control over cluster
   admin access.
 
