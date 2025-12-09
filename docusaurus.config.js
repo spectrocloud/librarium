@@ -389,6 +389,18 @@ const config = {
             "aria-label": "GitHub repository",
           },
           {
+            type: "html",
+            position: "right",
+            value: `
+            <button
+              class="navbar-ai-button"
+              type="button"
+              onclick="window.Kapa && window.Kapa.open({ mode: 'ai', submit: true })"
+            >
+              Ask AI
+            </button>`,
+          },
+          {
             type: "docsVersionDropdown",
             position: "left",
             docsPluginId: "default",
