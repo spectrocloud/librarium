@@ -20,6 +20,7 @@ import Accordion from "@site/src/components/Accordion";
 import AccordionPanel from "@site/src/components/AccordionPanel";
 import RedirectPackPage from "@site/src/components/RedirectPackPage";
 import OsCveTable from "@site/src/components/OsCveTable/OsCveTable";
+import AskAI from "@site/src/components/AskAI/index";
 
 export default {
   ...MDXComponents,
@@ -44,4 +45,5 @@ export default {
   PaletteVertexUrlMapper,
   RedirectPackPage,
   OsCveTable,
+  AskAI,
 };
