@@ -251,7 +251,7 @@ We recommended the following resources for Palette. Refer to the
 
   It will take another ~30-45 minutes for the installation to complete.
 
-  You can monitor its progress via kubectl/k9s or by viewing the System Console.
+  You can monitor its progress via kubectl/k9s or by viewing the system console.
 
   export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
   ```
