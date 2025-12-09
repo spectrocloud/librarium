@@ -31,14 +31,14 @@ partial_name: install-vmware-prerequisites-first
 
   - TCP/6443: outbound traffic from the {props.version} management cluster to the deployed cluster's Kubernetes API server.
 
-- An SSL certificate that matches the domain name you want to assign to {props.version}. The certificate is required to
-  enable HTTPS encryption for {props.version}. Reach out to your network administrator or security team to obtain the SSL
+- An TLS certificate that matches the domain name you want to assign to {props.version}. The certificate is required to
+  enable HTTPS encryption for {props.version}. Reach out to your network administrator or security team to obtain the TLS
   certificate. The following files are required:
 
-  - x509 SSL certificate file in base64 format.
+  - x509 TLS certificate file in base64 format.
 
-  - x509 SSL certificate key file in base64 format.
+  - x509 TLS certificate key file in base64 format.
 
   Additionally, the following file is optional:
 
-  - x509 SSL certificate authority file in base64 format.
+  - x509 TLS certificate authority file in base64 format.
