@@ -7,8 +7,6 @@ sidebar_position: 10
 tags: ["data center", "cloudstack", "architecture"]
 ---
 
-## Overview
-
 :::preview
 
 :::
@@ -35,10 +33,6 @@ CloudStack architecture:
 
   ![CloudStack VPC Static Flow](/clusters_pcg_architecture_cloudstack_overview_diagram.webp)
 
-- Support for Projects within a Domain.
+- Support for Projects within a Domain. You can use Apache CloudStack projects to separate workload resources among different teams, as CloudStack tracks resource usage per project and per user.
 
 You can learn more in the [PCG Architecture](../../pcg/architecture.md) section.
-
-## Projects
-
-You can use Apache CloudStack projects to separate workloads to ...
