@@ -17,16 +17,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.X  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.X  |
-
-### Improvements
-
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 2.1.x.
-
-<!-- prettier-ignore-end -->
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.1  |
 
 ### Bug Fixes
 
@@ -46,9 +38,16 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 
 | Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
 | --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Azure Disk                  | Storage    | :white_check_mark: | :x:                | 1.33.7      |
+| External Secrets Operator   | Add-on     | :white_check_mark: | :x:                | 1.1.0       |
+| GCE Persistent Disk CSI     | Storage    | :white_check_mark: | :x:                | 1.22.4      |
 | Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
 | Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
 | Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 27.47.0     |
+| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 79.8.2      |
+| Volume Snapshot Controller  | Add-on     | :white_check_mark: | :x:                | 8.4.0       |
+| vSphere CSI                 | Storage    | :x:                | :white_check_mark: | 3.6.0       |
 
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
