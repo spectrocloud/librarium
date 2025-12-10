@@ -71,7 +71,7 @@ environment. Before you begin the installation, carefully review the [Prerequisi
 - The CloudStack API endpoint URL. For example, `https://cloudstack.example.com:8443/client/api` or
   `https://management-server-ip:8080/client/api`.
 
-- DNS must be able to resolve `api.spectrocloud.com` when using SaaS PCG.  
+- DNS must be able to resolve `api.spectrocloud.com` when using SaaS PCG.
 
 ## Deploy PCG
 
