@@ -141,7 +141,7 @@ partial_name: install-vmware-non-airgap-third
 
     ```bash hideClipboard
     ==== Cluster config saved ====
-    Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    Location: /home/ubuntu/.palette/ec/ec-20230706150945/ec.yaml
     ```
 
     :::tip
@@ -149,19 +149,16 @@ partial_name: install-vmware-non-airgap-third
     If an error occurs during the installation, restart it. After choosing the OS, the installer detects an existing `kind` cluster and display the following message.
     
     ```bash
-    Existing kind cluster(s) [spectro-mgmt-cluster] detected. This may cause “too many open files” errors. Delete existing kind cluster(s) & proceed with Enterprise Cluster installation?
+    Existing kind cluster(s) [spectro-mgmt-cluster] detected. This may cause “too many open files” errors.
+    Delete existing kind cluster(s) & proceed with Enterprise Cluster installation?
     ```
 
-    Respond with `Y` to delete the cluster and continue. Alternatively, you can delete the cluster manually using the following command.
-
-    ```bash
-    kind delete cluster spectro-mgmt-cluster
-    ```
+    Respond with `Y` to delete the cluster and continue.
 
     Restart the install process by referencing the `ec.yaml` file that was created during the first installation attempt. The command below serves as an example.
 
     ```bash
-    palette ec install --config-file /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    palette ec install --config-file /home/ubuntu/.palette/ec/ec-20230706150945/ec.yaml
     ```
 
     :::
