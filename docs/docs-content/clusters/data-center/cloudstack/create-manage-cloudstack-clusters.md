@@ -16,7 +16,10 @@ CloudStack clusters in Palette.
 
 ## Limitations
 
-TBC
+:::warn
+Creating and building clusters was done with KVM Hypervisor. These steps should be the same for other hypervisors but there may be variations. You may need to build your own images based on hypervisor type and image type that is supported by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) for guidance.
+
+:::
 
 ## Prerequisites
 
