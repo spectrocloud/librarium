@@ -11,6 +11,45 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 12, 2025 - Component Updates {#component-updates-2025-50}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.9.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.X  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.X  |
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 2.1.x.
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
+- Fixed an issue that caused add-on deployments provisioned through the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
+  remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Portworx with Operator" url="/integrations/?pack=csi-portworx-generic" /> version 3.4.1  now supports airgap installations.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.9.
@@ -56,6 +95,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 The following component updates are applicable to this release:
 
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -87,6 +127,7 @@ The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Improvements
 
@@ -110,6 +151,7 @@ The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Security Notices
 
