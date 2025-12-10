@@ -28,13 +28,8 @@ keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 
 ## Deploy
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-vmware-non-airgap-first"
-  version="Palette"
-  edition="palette"
-/>
-    :::info
+<PartialsComponent category="self-hosted" name="install-vmware-non-airgap-first" version="Palette" edition="palette" />
+:::info
 
     Refer to the [Additional OVAs](../../../../../../downloads/self-hosted-palette/additional-ovas) page for a list of additional OVAs you can download and upload to your vCenter environment.
 
@@ -44,12 +39,7 @@ keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 
 <Video title="palette-cli-install" src="/videos/palette-install.mp4"></Video>
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-vmware-non-airgap-third"
-  version="Palette"
-  edition="palette"
-/>
+<PartialsComponent category="self-hosted" name="install-vmware-non-airgap-third" version="Palette" edition="palette" />
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/self-hosted-setup_install_non-airgap_palette-system-console_4-8.webp)
 
