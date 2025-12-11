@@ -13,10 +13,19 @@ tags: ["release-notes"]
 
 ## December 6, 2025 - Release 4.8.X
 
-### Improvements
+#### Features
 
 - <TpBadge /> Palette now supports the cluster provisioning and management of CloudStack clusters. Refer to the
   CloudStack section for further information.
+
+- Terraform version 0.26.1 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- Crossplane version 0.26.1 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
 
 - The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
   and [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
@@ -24,6 +33,8 @@ tags: ["release-notes"]
 
   - The `spectrocloud_cloudaccount_apache_cloudstack` data source supports the creation of CloudStack cloud accounts.
   - The `spectrocloud_cluster_apache_cloudstack` resource supports configuration and deployment of CloudStack clusters.
+
+### Improvements
 
 - The KubeVirt version used by the Palette [Virtual Machine Orchestrator](../vm-management/vm-management.md) is now
   v1.6.2.
@@ -45,6 +56,25 @@ tags: ["release-notes"]
 external provider registries in the <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)
 " url="/integrations/packs/?pack=edge-k8s"/> pack.
 <!-- prettier-ignore-end -->
+
+- Fixed an issue that caused add-on deployments provisioned through the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
+  remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
+
+### Packs
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Azure Disk                  | Storage    | :white_check_mark: | :x:                | 1.33.7      |
+| External Secrets Operator   | Add-on     | :white_check_mark: | :x:                | 1.1.0       |
+| GCE Persistent Disk CSI     | Storage    | :white_check_mark: | :x:                | 1.22.4      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 27.47.0     |
+| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 79.8.2      |
+| Volume Snapshot Controller  | Add-on     | :white_check_mark: | :x:                | 8.4.0       |
+| vSphere CSI                 | Storage    | :x:                | :white_check_mark: | 3.6.0       |
 
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
