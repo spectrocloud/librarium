@@ -15,39 +15,10 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.8.6 - 4.8.9.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.1  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.1  |
-
-### Bug Fixes
-
-- Fixed an issue that caused add-on deployments provisioned through the
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
-  remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
-
-### Packs
-
-#### Pack Notes
-
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Portworx with Operator" url="/integrations/?pack=csi-portworx-generic" /> version 3.4.1  now supports airgap installations.
-
-<!-- prettier-ignore-end -->
-
-| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
-| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Azure Disk                  | Storage    | :white_check_mark: | :x:                | 1.33.7      |
-| External Secrets Operator   | Add-on     | :white_check_mark: | :x:                | 1.1.0       |
-| GCE Persistent Disk CSI     | Storage    | :white_check_mark: | :x:                | 1.22.4      |
-| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
-| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
-| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
-| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 27.47.0     |
-| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 79.8.2      |
-| Volume Snapshot Controller  | Add-on     | :white_check_mark: | :x:                | 8.4.0       |
-| vSphere CSI                 | Storage    | :x:                | :white_check_mark: | 3.6.0       |
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.10  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.10  |
 
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
