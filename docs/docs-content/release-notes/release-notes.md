@@ -61,7 +61,19 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
   remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
 
+<!-- prettier-ignore-start -->
+- Fixed an issue that prevented the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi"/> pack from being available to CloudStack clusters.
+<!-- prettier-ignore-end -->
+
 ### Packs
+
+#### Pack Notes
+
+- The following packs support CloudStack deployment:
+  - Ubuntu 24.04
+  - Palette eXtended Kubernetes versions 1.31.14, 1.32.10, and 1.33.6
+  - Calico 3.30.3-rev1
+  - CloudStack CSI 2.5.0
 
 | Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
 | --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
