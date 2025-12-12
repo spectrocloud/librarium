@@ -90,7 +90,6 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
 
 - Fixed an issue that prevented the **Delete** action from correctly displaying for [cluster templates](../cluster-templates/cluster-templates.md) in the Palette UI.
 
-- Fixed an issue that caused [`stylus`](../clusters/edge/edge-configuration/installer-reference.md) to incorrectly map image references.
 
 ### Packs
 
