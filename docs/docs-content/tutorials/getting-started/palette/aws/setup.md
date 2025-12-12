@@ -20,13 +20,12 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 - A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
-- A public [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account) account.
+- A public [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account) account with
+  the following settings:
 
-- An AWS account with an [IAM Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
-  [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
+  - Either an [IAM Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or an [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](../../../../clusters/public-cloud/aws/required-iam-policies.md)
-  assigned to the Palette IAM user or IAM role.
+  - The [required IAM policies](../../../../clusters/public-cloud/aws/required-iam-policies.md) assigned to the Palette IAM user or IAM role.
 
 ## Enablement
 
