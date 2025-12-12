@@ -20,6 +20,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.10  |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.10  |
 
+Review the active known issues that affect this component update on the [Known Issues](./known-issues.md) page.
+
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.9.
