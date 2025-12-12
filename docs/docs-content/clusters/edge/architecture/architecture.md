@@ -35,7 +35,9 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 ## Limitations
 
-- The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> pack does not
   support the following:
 
   - ARM64 architecture
@@ -44,29 +46,11 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   - [Network overlay](../networking/vxlan-overlay/) in locally managed Edge clusters.
   - High availability mode with one or two nodes.
 
+<!-- prettier-ignore-end -->
+
 - When scaling down a Palette Optimized Canonical Kubernetes cluster with two nodes, ensure you do not delete the leader
   node. In this configuration, one node is the leader (and voter), while the other is a spare. Deleting the leader will
   render the cluster inaccessible, as database updates are not replicated to the spare node.
-
-:::info
-
-The Palette Optimized Canonical Kubernetes distribution uses distributed SQLite (Dqlite) as its datastore. Each node
-assumes one of the following roles at any given time:
-
-- Voter - replication and leader election voting are enabled.
-- Stand-by - only replication is enabled.
-- Spare - neither replication nor election is enabled.
-
-Run the `k8s status` command on a control plane node to view the current roles of all nodes in the cluster.
-
-```bash hideClipboard title="Example output"
-cluster status:           ready
-control plane nodes:      10.10.216.81:6400 (voter), 10.10.217.4:6400 (voter), 10.10.220.115:6400 (voter)
-high availability:        yes
-datastore:                k8s-dqlite
-```
-
-:::
 
 ## Minimum Device Requirements
 
@@ -92,17 +76,11 @@ Palette provides the following distributions for edge installations.
 
 | Name                                                                                                        | Kubernetes Distribution | OS               | CNIs            | CSIs      |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------- | ---------------- | --------------- | --------- |
-| Palette Optimized K3s                                                                                       | K3s                     | openSUSE, Ubuntu | Calico, Flannel | Rook Ceph |
-| Palette Optimized RKE2                                                                                      | RKE2                    | openSUSE, Ubuntu | Calico, Flannel | Rook Ceph |
-| [Palette eXtended Kubernetes Edge (PXK-E)](../../../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) | CNCF                    | openSUSE, Ubuntu | Calico, Flannel | Rook Ceph |
-| Palette Optimized Canonical                                                                                 | Canonical Kubernetes    | Ubuntu           | Calico, Cilium  | Longhorn  |
+| <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />   | CNCF                    | openSUSE, Ubuntu | Calico, Flannel | Rook Ceph |
+| <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />                                                                                 | Canonical Kubernetes    | Ubuntu           | Calico, Cilium  | Longhorn  |
+| <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" />                                                                                          | K3s                     | openSUSE, Ubuntu | Calico, Flannel | Rook Ceph |
+| <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" />                                                                                       | RKE2                    | openSUSE, Ubuntu | Calico, Flannel | Rook Ceph |
 
-:::preview
-
-The **Palette Optimized Canonical** Kubernetes distribution is a Tech Preview feature and is subject to change. Do not
-use this feature in production workloads.
-
-:::
 
 ## Supported Configurations
 
@@ -113,7 +91,7 @@ table below describes these aspects and the available options.
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Management Mode                   | - Central: The site has a connection to Palette and is managed centrally via Palette Management Console<br/> - Local: The site does not have a connection to Palette and is managed locally.                                                                                                                                                                                                                                                                                              |
 | OS                                | - Ubuntu<br/>- OpenSUSE<br/>- Bring Your Own OS (BYOOS)                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Kubernetes Flavor                 | - Palette eXtended K8s for Edge FIPS (PXK-E) <br /> - Palette eXtended K8s for Edge (PXK-E) <br/> - Palette Optimized K3s <br/> - Palette Optimized RKE2<br/>- Palette Optimized Canonical                                                                                                                                                                                                                                                                                                |
+| Kubernetes Flavor                 | - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> (FIPS and non-FIPS) <br/> - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />  <br/> - <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" /> <br/>- <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" />                                                                                                                                                                                                                                                                                                |
 | Kubernetes Version                | - 1.26.x<br/>- 1.27.x<br/>- 1.28.x<br/>- 1.29.x<br/>- 1.30.x<br/>- 1.31.x<br/>- 1.32.x <br/>- 1.33.x                                                                                                                                                                                                                                                                                                                                                                                      |
 | FIPS Mode                         | - True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False                                                                                                                                                                                                                                                                                                                                                                             |
 | Edge Host Registration Mode       | - Manual: A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the user-data<br/>- QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. |
