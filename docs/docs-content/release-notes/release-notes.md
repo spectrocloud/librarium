@@ -11,6 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 12, 2025 - Component Updates {#component-updates-2025-50}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.9.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.10  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.10  |
+
+Review the active known issues that affect this component update on the [Known Issues](./known-issues.md) page.
+
+### Bug Fixes
+
+- Fixed an issue that caused [`stylus`](../clusters/edge/edge-configuration/installer-reference.md) to incorrectly map
+  some image references.
+
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.9.
@@ -44,7 +60,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 | Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.2      |
 | Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.2      |
 | KAI Scheduler                | Add-on | :white_check_mark: | :x:                | 0.10.0      |
-| Kuberay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
+| KubeRay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
 | Open Policy Agent            | Add-on | :white_check_mark: | :x:                | 3.21.0      |
 | Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.45.0     |
 | Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.5.0      |
@@ -56,6 +72,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 The following component updates are applicable to this release:
 
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -87,6 +104,7 @@ The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Improvements
 
@@ -110,6 +128,7 @@ The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Security Notices
 
