@@ -565,7 +565,7 @@ The `:::preview` admonition is a custom admonition configured in `docusaurus.con
 
 Unlike other admonition types, you do not need to enter content in the admonition block. By default, the Tech Preview
 admonition generates the message, "This is a Tech Preview feature and is subject to change. Do not use this feature in
-production workloads." This message is hardcoded using `/src/theme/Admonition/Type/TechPreview.js`. However, if you need
+production workloads." This message is hardcoded using `src/theme/Admonition/Type/TechPreview.js`. However, if you need
 to deviate from the template text, you can provide a custom message.
 
 ```mdx
@@ -578,14 +578,15 @@ Some **content** with _Markdown_ `syntax`.
 
 Files in `docs/docs-content` and `docs/api-content` are processed during the build phase. However, partials in the
 `_partials` directory are dynamically imported at runtime. Because of this, custom admonitions defined in
-`docusaurus.config.js` that are used in partials are not rendered; the custom admonition is simply ignored.
+`docusaurus.config.js` that are used in partials are not rendered, and the custom admonition is ignored.
 
 As a workaround, when using custom admonitions in partials, import and reference the admonition with JSX syntax.
 
-````mdx
+```mdx
 import AdmonitionTypeTechPreview from '@theme/Admonition/Type/TechPreview'; # Import below front matter
 
-<AdmonitionTypeTechPreview /> # Use instead of ::: ```
+<AdmonitionTypeTechPreview /> # Use instead of :::
+```
 
 Note that when used in partials, the default message cannot be overridden.
 
@@ -598,9 +599,8 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
-````
 
-Like `:::preview`, the Further Guidance admonition is custom admonition. To use this admonition in partials, you must
+Like Tech Preview, the Further Guidance admonition is a custom admonition. To use this admonition in partials, you must
 import and reference it with JSX syntax.
 
 ```mdx
