@@ -60,7 +60,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 | Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.2      |
 | Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.2      |
 | KAI Scheduler                | Add-on | :white_check_mark: | :x:                | 0.10.0      |
-| Kuberay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
+| KubeRay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
 | Open Policy Agent            | Add-on | :white_check_mark: | :x:                | 3.21.0      |
 | Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.45.0     |
 | Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.5.0      |
