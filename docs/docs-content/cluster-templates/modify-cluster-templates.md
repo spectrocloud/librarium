@@ -9,10 +9,6 @@ toc_max_heading_level: 5
 tags: ["cluster templates"]
 ---
 
-:::preview
-
-:::
-
 [Cluster templates](./cluster-templates.md) use [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and
 cluster [template policies](./create-cluster-template-policies/create-cluster-template-policies.md) to declaratively
 define and manage the software stack and lifecycle of clusters deployed with Palette. Since cluster templates are

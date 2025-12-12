@@ -7,10 +7,6 @@ sidebar_position: 0
 tags: ["cluster templates", "policies"]
 ---
 
-:::preview
-
-:::
-
 Policies are an integral part of cluster templates. While cluster profiles define the infrastructure and software stack
 for your clusters, cluster template policies are modular, reusable definitions that define how the cluster operates as
 well as its lifecycle. Policies are linked rather than embedded within cluster templates, allowing you to manage

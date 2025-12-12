@@ -40,6 +40,14 @@ tags: ["release-notes"]
 
 #### Features
 
+- [Cluster templates](../cluster-templates/cluster-templates.md) provide a new way to enforce consistent configurations
+  and prevent drift across multiple clusters. With cluster templates, you define and enforce the desired state and
+  lifecycle of clusters by combining [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) with
+  operational [policies](../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md) into
+  a single, reusable governance blueprint, allowing you to deploy, manage, and upgrade a synchronized fleet of clusters
+  with minimal effort. Refer to our [Cluster Templates](../cluster-templates/cluster-templates.md) guide for more
+  information.
+
 #### Improvements
 
 #### Deprecations and Removals
