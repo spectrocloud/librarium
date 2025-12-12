@@ -22,6 +22,11 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 
 Review the active known issues that affect this component update on the [Known Issues](./known-issues.md) page.
 
+### Bug Fixes
+
+- Fixed an issue that caused [`stylus`](../clusters/edge/edge-configuration/installer-reference.md) to incorrectly map
+  some image references.
+
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.9.
