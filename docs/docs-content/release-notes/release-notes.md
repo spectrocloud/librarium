@@ -46,6 +46,15 @@ tags: ["release-notes"]
 - The default timeout of [Local UI](../clusters/edge/local-ui/local-ui.md) JWT tokens has been reduced to 15 minutes.
   Additionally, tokens are now revoked upon log out.
 
+- The dependencies of the `imageswap` and `imageswap-init` Palette images were updated to the latest versions, ensuring
+  that they have the latest security patches. Additionally, the `ubuntu-systemd` image has been removed from Palette.
+
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 0.1.89.
+<!-- prettier-ignore-end -->
+
+- The performance of the `/clusterprofiles` [Palette API](/api/introduction) endpoint has been improved.
+
 ### Bug Fixes
 
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
@@ -64,6 +73,24 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
 <!-- prettier-ignore-start -->
 - Fixed an issue that prevented the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi"/> pack from being available to CloudStack clusters.
 <!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused `coredns` pods to continuously crash after rebooting clusters provisioned with <VersionedLink text="RKE2" url="/integrations/packs/?pack=kubernetes-rke2"/> and [Rocky Linux](https://rockylinux.org/).
+<!-- prettier-ignore-end -->
+
+- Fixed an issue that prevented [agent mode](../deployment-modes/agent-mode/agent-mode.md) from retaining network configurations after boot.
+
+- Fixed an issue that caused the [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) plans to fail due to `PodSecurity` violation errors.
+
+- Fixed an issue that caused [content bundle builds](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) configured on encrypted partitions to become stuck.
+
+- Fixed an issue that caused multiple versions of the `spectro-reach` image to be installed in [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md).
+
+- Fixed an issue that caused an incorrect version of the `palette-agent` image to be referenced by the Palette `ally` service.
+
+- Fixed an issue that prevented the **Delete** action from correctly displaying for [cluster templates](../cluster-templates/cluster-templates.md) in the Palette UI.
+
+- Fixed an issue that caused [`stylus`](../clusters/edge/edge-configuration/installer-reference.md) to incorrectly map image references.
 
 ### Packs
 
