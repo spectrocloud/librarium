@@ -37,6 +37,8 @@ Use the following URL to import your configuration into Postman:
 
 https://raw.githubusercontent.com/spectrocloud/librarium/version-4-8/docs/api-content/api-docs/palette-apis.json
 
+[](/static/apis/)
+
 1. Open the **Import** dialog.
 
 2. Select the **Link** tab and copy/paste the URL in the field as shown in the screenshot.
