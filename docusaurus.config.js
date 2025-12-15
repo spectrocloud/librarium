@@ -246,10 +246,9 @@ const config = {
         docsPluginId: "api",
         config: {
           palette: {
-            specPath: "docs/api-content/api-docs/v1/api.json",
+            specPath: "static/apis/v1/api.json",
             outputDir: "docs/api-content/api-docs/v1",
-            downloadUrl:
-              "https://github.com/spectrocloud/librarium/blob/master/docs/api-content/api-docs/palette-apis.json",
+            downloadUrl: "/apis/v1/palette-apis.json",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -259,10 +258,9 @@ const config = {
             hideSendButton: true,
           },
           emc: {
-            specPath: "docs/api-content/api-docs/edge-v1/emc-api.json",
+            specPath: "static/apis/edge-v1/emc-api.json",
             outputDir: "docs/api-content/api-docs/edge-v1",
-            downloadUrl:
-              "https://github.com/spectrocloud/librarium/blob/master/docs/api-content/api-docs/palette-apis.json",
+            downloadUrl: "/apis/edge-v1/emc-api.json",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
