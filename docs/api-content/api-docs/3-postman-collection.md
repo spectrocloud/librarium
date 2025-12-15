@@ -33,17 +33,16 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 
 ## Import the Postman Collection
 
-Use the following URL to import your configuration into Postman:
+Right-click the following URL and select **Save Link as** (in Safari, select **Download Linked Files As ...**) to
+download the Postman collection to your local machine.
 
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-2/docs/api-content/api-docs/palette-apis.json
+<FullUrlLink path="/apis/v1/palette-apis.json" />
 
-1. Open the **Import** dialog.
+1. Navigate to Postman on your computer and open the **Import** dialog.
 
-2. Select the **Link** tab and copy/paste the URL in the field as shown in the screenshot.
+2. Select the downloaded API specification file and click the **Continue** button.
 
-3. Click the **Continue** button.
-
-4. Click on the **Import** button.
+3. Click on the **Import** button.
 
 Postman imports your collection and lists it under Import Complete.
 
