@@ -50,6 +50,10 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- You can now add OCI Helm registries that do not require authentication to Palette. This allows you to leverage
+  publicly available OCI Helm Charts in your cluster profiles. Refer to the
+  [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide to learn how.
+
 #### Deprecations and Removals
 
 ### Edge
