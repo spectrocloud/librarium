@@ -18,9 +18,9 @@ CloudStack clusters in Palette.
 
 :::warning
 
-Creating and building clusters was done with KVM Hypervisor. These steps should be the same for other
-hypervisors but there may be variations. You may need to build your own images based on hypervisor type and image type
-that is supported by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) for guidance.
+Creating and building clusters was done with KVM Hypervisor. These steps should be the same for other hypervisors but
+there may be variations. You may need to build your own images based on hypervisor type and image type that is supported
+by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) for guidance.
 
 :::
 
@@ -34,42 +34,43 @@ that is supported by the hypervisor. Refer to the [CAPI Image Builder](../../../
   [Create a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
   guide.
 
-- A CloudStack template imported. This will be used to map the corresponding Ubuntu and Kubernetes versions defined in the cluster profile. 
+- A CloudStack template imported. This will be used to map the corresponding Ubuntu and Kubernetes versions defined in
+  the cluster profile.
 
   <details>
-    <summary>Importing a template</summary>
-        
-        In CloudStack console, navigate to **Images**. 
-        
-        Select **Templates** and click on **Register Template from URL**.
+  <summary>Importing a template</summary>
+      
+      In CloudStack console, navigate to **Images**. 
+      
+      Select **Templates** and click on **Register Template from URL**.
 
         Provide values for the fields below:
 
         | **Field** | **Description** |
         | --------- | --------------- |
-        | **URL** | Provide image template URL. The URL must end with `qcow2` when using KVM as the hypervisor. |  
-        | **Name** | Must follow the format `u-2404-0-k-1336-0`. | 
-        | **Description** | Optional. |  
-        | **Zone** | Specify the zone from the dropdown. | 
-        | **Domain** | Specify the domain from the dropdown. |  
-        | **Hypervisor** | Select **KVM** from the dropdown. |  
-        | **Format** | Select **QCOW2** from the dropdown. |  
-        | **OS type** | Select **Ubuntu 24.04 (64-bit)** from the dropdown. |  
-        | **Template type** | Select **USER** from the dropdown. |  
-        | **Extractable** | Leave default. |  
-        | **Dynamically scalable** | Leave default.| 
-        | **Public** | Select the checkbox. |  
-        | **Password enabled** | Leave default. | 
-        | **HVM** | Leave default. | 
+        | **URL** | Provide image template URL. The URL must end with `qcow2` when using KVM as the hypervisor. |
+        | **Name** | Must follow the format `u-2404-0-k-1336-0`. |
+        | **Description** | Optional. |
+        | **Zone** | Specify the zone from the dropdown. |
+        | **Domain** | Specify the domain from the dropdown. |
+        | **Hypervisor** | Select **KVM** from the dropdown. |
+        | **Format** | Select **QCOW2** from the dropdown. |
+        | **OS type** | Select **Ubuntu 24.04 (64-bit)** from the dropdown. |
+        | **Template type** | Select **USER** from the dropdown. |
+        | **Extractable** | Leave default. |
+        | **Dynamically scalable** | Leave default.|
+        | **Public** | Select the checkbox. |
+        | **Password enabled** | Leave default. |
+        | **HVM** | Leave default. |
 
         Click **OK**.
 
-        **Note:**  
-        Image name must follow the required format, and only one template with that name may exist per user. Duplicate names can cause CloudStack deployment failures. 
-        
+        **Note:**
+        Image name must follow the required format, and only one template with that name may exist per user. Duplicate names can cause CloudStack deployment failures.
+
         For example, user A imports an image named `u-2404-0-k-1336-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-1336-0` and user B will have two templates named `u-2404-0-k-1336-0`. When user B deploys a cluster using `u-2404-0-k-1336-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-1336-0, but got 2`.
 
-  </details>  
+  </details>
 
 ## Create a CloudStack Cluster
 
