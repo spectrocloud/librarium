@@ -7,10 +7,6 @@ sidebar_position: 10
 tags: ["cluster templates"]
 ---
 
-:::preview
-
-:::
-
 [Cluster templates](./cluster-templates.md) allow you to define and enforce the software and governance stack for a
 fleet of clusters. By referencing [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and operational
 [policies](./create-cluster-template-policies/create-cluster-template-policies.md), all while leveraging

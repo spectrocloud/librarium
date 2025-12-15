@@ -7,10 +7,6 @@ sidebar_position: 30
 tags: ["cluster templates"]
 ---
 
-:::preview
-
-:::
-
 To delete a cluster template that is attached to a cluster, you must first delete the cluster and then delete the
 template previously attached to the cluster. You cannot delete a cluster template that is linked to a cluster.
 

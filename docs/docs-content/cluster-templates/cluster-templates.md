@@ -10,10 +10,6 @@ sidebar_custom_props:
 tags: ["cluster templates", "templates", "policies"]
 ---
 
-:::preview
-
-:::
-
 Cluster templates are reusable blueprints that define and enforce the desired state and lifecycle of clusters deployed
 with Palette or [Palette VerteX](../vertex/vertex.md).
 

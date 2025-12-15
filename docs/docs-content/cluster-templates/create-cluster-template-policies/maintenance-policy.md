@@ -7,10 +7,6 @@ sidebar_position: 10
 tags: ["cluster templates", "policies"]
 ---
 
-:::preview
-
-:::
-
 A maintenance policy is a required component for [cluster templates](../cluster-templates.md). Maintenance policies
 determine when and how upgrades are executed on the cluster. Since clusters can be provisioned across multiple regions
 and time zones, upgrades are executed based on Coordinated Universal Time (UTC).
