@@ -1003,8 +1003,6 @@ its usage is as follows.
 
 Your page will now redirect to `/integrations/packs/?pack=myPack`.
 
-<<<<<<< HEAD
-=======
 ### Create link with full URL display
 
 You must use the `<FullUrlLink />` component to create a link that displays its full URL in text, as thi is currently
@@ -1078,7 +1076,6 @@ text.
 We use the `/static/scripts/kapa-shortcut.js` file to enable the **CTRL + I** keyboard shortcut for opening the Kapa
 widget. We wanted to use **CTRL + K**, but that space was taken up by Algolia.
 
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968))
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
