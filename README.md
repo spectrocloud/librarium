@@ -1003,6 +1003,19 @@ its usage is as follows.
 
 Your page will now redirect to `/integrations/packs/?pack=myPack`.
 
+### Create link with full URL display
+
+You must use the `<FullUrlLink />` component to create a link that displays its full URL in text, as thi is currently
+not supported by markdown.
+
+```mdx
+<FullUrlLink path="/apis/v1/palette-apis.json" />
+```
+
+Check out
+[Import the Postman Collection](/docs/api-content/api-docs/3-postman-collection.md#import-the-postman-collection) for an
+example.
+
 ## Our Kapa Widget Setup
 
 Kapa is our embedded AI assistant that helps users navigate documentation and find answers through natural-language

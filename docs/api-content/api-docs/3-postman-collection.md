@@ -35,9 +35,21 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 
 Use the following URL to import your configuration into Postman:
 
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-8/docs/api-content/api-docs/palette-apis.json
+<Tabs>
 
-[](/static/apis/)
+<TabItem label="Palette API V1" value="palette">
+
+<FullUrlLink path="/apis/v1/palette-apis.json" />
+
+</TabItem>
+
+<TabItem label="Edge Management API V1" value="edge">
+
+<FullUrlLink path="/apis/edge-v1/emc-api.json" />
+
+</TabItem>
+
+</Tabs>
 
 1. Open the **Import** dialog.
 
