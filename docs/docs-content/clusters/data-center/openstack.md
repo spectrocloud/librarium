@@ -415,16 +415,15 @@ The following steps need to be performed to provision a new OpenStack cluster:
 | **Availability Zones**                             | Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.                                                                                                                                                                                                                                                        |
 | **Disk Size**                                      | Provide the required storage size                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-6. Configure the cluster policies/features.
+6. <PartialsComponent category="clusters" name="cluster-settings" />
 
-   - Manage Machines
-   - Scan Policies
-   - Backup Policies
+7. Select **Validate** to review your cluster configurations and settings.
 
-7. Click to get details on [cluster management feature](../cluster-management/cluster-management.md).
+8. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available
-   to track progress.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Deleting an OpenStack Cluster
 

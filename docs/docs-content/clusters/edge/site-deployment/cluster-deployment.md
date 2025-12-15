@@ -209,14 +209,15 @@ you remove and re-add them back to the cluster.
 
 :::
 
-12. The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up
-    Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
+13. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. Review the settings summary and click on **Finish Configuration** to deploy the cluster.
+14. Select **Validate** to review your cluster configurations and settings.
 
-    After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the
-    installation progress in Palette. The cluster overview page displays a summary of the progress. Use the _Events_ tab
-    to review detailed logs.
+15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ### Validate
 

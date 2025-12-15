@@ -4,7 +4,7 @@ partial_name: profile-vs-template
 ---
 
 Choose between deploying your cluster using individual <VersionedLink text="cluster profiles" url="/profiles/cluster-profiles/" />
-or a single <VersionedLink text="cluster template" url="/cluster-templates" />. 
+or a single <VersionedLink text="cluster template" url="/cluster-templates" />.
 
 <Tabs>
 
@@ -18,9 +18,10 @@ or a single <VersionedLink text="cluster template" url="/cluster-templates" />.
     3. Review the layers of your cluster profile. Use the drop-down menus to select the appropriate cluster profile version, add necessary 
     <VersionedLink text="add-on profiles" url="/profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/" />, and make changes to YAML configuration files as needed. {props.additional_info} When finished, select **Next**.
 
-        :::tip
+        :::info
    
-        For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend <VersionedLink text="creating a new version of your cluster profile" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile" /> rather than making inline changes.
+        - Cluster profile versions linked to cluster templates cannot be used in the cluster profile workflow.
+        - For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend <VersionedLink text="creating a new version of your cluster profile" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile" /> rather than making inline changes.
 
         :::
 

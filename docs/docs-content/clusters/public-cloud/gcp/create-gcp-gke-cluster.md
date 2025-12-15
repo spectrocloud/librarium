@@ -116,13 +116,15 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 13. Click **Next** after configuring the node pool.
 
-14. The **Settings** page is where you can configure the patching schedule, security scans, backup settings, and set up
-    Role Based Access Control (RBAC). Review cluster settings and make changes if needed. Click **Validate**.
+14. <PartialsComponent category="clusters" name="cluster-settings" />
 
-15. Review the settings summary and click **Finish Configuration** to deploy the cluster. Be aware that provisioning GKE
-    clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
+15. Select **Validate** to review your cluster configurations and settings.
 
-You can monitor cluster deployment progress on the cluster details page.
+16. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 

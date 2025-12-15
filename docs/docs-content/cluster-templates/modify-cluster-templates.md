@@ -28,8 +28,6 @@ flexible, version-driven management.
 
 ## Prerequisites
 
-- The **ClusterTemplate** [feature flag](../enterprise-version/system-management/feature-flags.md) enabled.
-
 - The `clusterTemplate.update` permission to modify cluster templates. Refer to our
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
   information.
@@ -77,9 +75,8 @@ now** button is disabled while the upgrade is in progress.
   select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
   each variable before attempting the upgrade again.
 
-- If your changes require a cluster repave, you must
-  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
-  proceed.
+- If your changes require a cluster repave, the repave occurs during the next upgrade window; no
+  [repave approval](../clusters/cluster-management/node-pool.md#approve-cluster-repave) is required.
 
 :::
 
@@ -243,9 +240,8 @@ navigate to the **Overview** tab, and select **Options > Upgrade now**.
   select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
   each variable before attempting the upgrade again.
 
-- If your changes require a cluster repave, you must
-  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
-  proceed.
+- If your changes require a cluster repave, the repave occurs during the next upgrade window; no
+  [repave approval](../clusters/cluster-management/node-pool.md#approve-cluster-repave) is required.
 
 :::
 
