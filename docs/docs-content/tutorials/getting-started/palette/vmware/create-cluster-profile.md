@@ -127,11 +127,12 @@ Select the **Enable Hello Universe API** preset. The pack manifest changes accor
 ![Screenshot of pack presets](/getting-started/vmware/getting-started_create-cluster-profile_pack-presets.webp)
 
 The pack requires two values to be replaced for the authorization token and for the database password when using this
-preset. Replace these values with your own base64 encoded values. 
+preset. Replace these values with your own base64 encoded values.
 
 :::info
 
-The [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository provides a token that you can use.
+The [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer)
+repository provides a token that you can use.
 
 :::
 
