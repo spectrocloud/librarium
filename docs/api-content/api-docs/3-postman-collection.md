@@ -36,11 +36,7 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 Right-click the following URL and select **Save Link as** (in Safari, select **Download Linked Files As ...**) to
 download the Postman collection to your local machine.
 
-<<<<<<< HEAD
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-5/docs/api-content/api-docs/palette-apis.json
-=======
 <Tabs>
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968))
 
 <TabItem label="Palette API V1" value="palette">
 
