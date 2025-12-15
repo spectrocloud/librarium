@@ -1,7 +1,14 @@
 {
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
-  "schemes": ["http", "https"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
   "swagger": "2.0",
   "info": {
     "title": "Local Management APIs",
@@ -11,7 +18,9 @@
     "/v1/edge-mgmt/cluster": {
       "get": {
         "description": "Get the details of the cluster.",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get the details of the cluster.",
         "operationId": "v1ClusterConfig",
         "responses": {
@@ -43,7 +52,9 @@
       },
       "post": {
         "description": "Creates a cluster with the provided cluster configuration",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Creates a cluster with the provided cluster configuration",
         "operationId": "v1CreateCluster",
         "parameters": [
@@ -73,7 +84,9 @@
       },
       "delete": {
         "description": "Delete a cluster",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Delete a cluster",
         "operationId": "v1DeleteCluster",
         "responses": {
@@ -99,7 +112,9 @@
       },
       "patch": {
         "description": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
         "operationId": "v1PatchCluster",
         "deprecated": true,
@@ -132,7 +147,9 @@
     "/v1/edge-mgmt/cluster/applications": {
       "get": {
         "description": "list the details of the cluster’s packs.",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "list the details of the cluster’s packs.",
         "operationId": "v1ClusterApplications",
         "responses": {
@@ -166,7 +183,9 @@
     "/v1/edge-mgmt/cluster/certificates": {
       "get": {
         "description": "Get Cluster Certificates Info",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get Cluster Certificates Info",
         "operationId": "v1CertificateDetails",
         "responses": {
@@ -194,7 +213,9 @@
     "/v1/edge-mgmt/cluster/details": {
       "get": {
         "description": "Get Edge Cluster details",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get Edge Cluster details",
         "operationId": "v1ClusterGet",
         "responses": {
@@ -222,7 +243,9 @@
     "/v1/edge-mgmt/cluster/events": {
       "get": {
         "description": "List cluster events",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "List cluster events",
         "operationId": "v1GetClusterEvents",
         "parameters": [
@@ -256,18 +279,9 @@
     },
     "/v1/edge-mgmt/cluster/pair": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Creates a pairing request",
         "operationId": "v1ClusterPair",
         "parameters": [
@@ -298,18 +312,9 @@
     },
     "/v1/edge-mgmt/cluster/pair/details": {
       "get": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Get all existing pairing requests",
         "operationId": "v1ClusterPairDetails",
         "responses": {
@@ -336,18 +341,9 @@
     },
     "/v1/edge-mgmt/cluster/pair/reject": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Rejects a pairing request",
         "operationId": "v1ClusterPairReject",
         "responses": {
@@ -374,18 +370,9 @@
     },
     "/v1/edge-mgmt/cluster/pair/verify-connection": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Verifies whether all cluster hosts are able to connect to palette",
         "operationId": "v1ClusterPairVerifyConnection",
         "parameters": [
@@ -423,7 +410,9 @@
     "/v1/edge-mgmt/cluster/profiles": {
       "put": {
         "description": "Updates a cluster with the provided cluster configuration",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Updates a cluster with the provided cluster configuration",
         "operationId": "v1UpdateClusterProfiles",
         "parameters": [
@@ -455,7 +444,9 @@
     "/v1/edge-mgmt/cluster/profiles/variables/validate": {
       "post": {
         "description": "Validate cluster profile variables",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Validate cluster profile variables",
         "operationId": "v1ValidateClusterProfileVariables",
         "parameters": [
@@ -487,7 +478,9 @@
     "/v1/edge-mgmt/cluster/registry/content/details": {
       "get": {
         "description": "Get Harbor Content Details",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "List existing Harbor Content Details",
         "operationId": "v1HarborContentsDetails",
         "responses": {
@@ -503,7 +496,9 @@
     "/v1/edge-mgmt/cluster/registry/content/sync-status/details": {
       "get": {
         "description": "Get Harbor Content Sync Status",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "List Harbor Content Sync Status",
         "operationId": "v1HarborContentsSyncStatusDetails",
         "responses": {
@@ -519,7 +514,9 @@
     "/v1/edge-mgmt/cluster/registry/health": {
       "get": {
         "description": "Gets the harbor health status",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Gets the harbor health status",
         "operationId": "V1HarborHealth",
         "responses": {
@@ -541,7 +538,9 @@
     "/v1/edge-mgmt/cluster/renew-certificates": {
       "post": {
         "description": "Renew Cluster Certificates",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Renew Cluster Certificates",
         "operationId": "v1RenewCerts",
         "responses": {
@@ -563,7 +562,9 @@
     "/v1/edge-mgmt/cluster/settings": {
       "put": {
         "description": "Update cluster settings",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Update cluster settings",
         "operationId": "v1EdgeNativeClusterSettings",
         "parameters": [
@@ -601,7 +602,9 @@
     "/v1/edge-mgmt/cluster/{clusterName}": {
       "put": {
         "description": "Updates a cluster with the provided cluster configuration",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Updates a cluster with the provided cluster configuration",
         "operationId": "v1UpdateClusterConfig",
         "parameters": [
@@ -644,7 +647,9 @@
       },
       "patch": {
         "description": "Patch a cluster with the provided cluster configuration",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Patch a cluster with the provided cluster configuration",
         "operationId": "v1PatchClusterConfig",
         "parameters": [
@@ -689,15 +694,10 @@
     "/v1/edge-mgmt/clusters/archive/embedded/details": {
       "get": {
         "description": "parses the cluster-config archive.",
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
         "summary": "parses the cluster-config archive.",
-=======
-        "tags": ["edge-mgmt"],
-        "summary": "parses the preloaded cluster-config archive if it was included in the ISO.",
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "operationId": "V1ClusterConfigArchiveEmbedded",
         "responses": {
           "200": {
@@ -717,20 +717,10 @@
     },
     "/v1/edge-mgmt/clusters/archive/overridden/details": {
       "get": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "description": "parses the cluster-config archive if it exists.",
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "parses the cluster-config archive if it was uploaded as a standalone configuration.",
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "parses the cluster-config archive if it exists.",
         "operationId": "v1ClusterConfigArchiveOverriden",
         "responses": {
@@ -749,76 +739,11 @@
         }
       }
     },
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
     "/v1/edge-mgmt/clusters/current/machinepools": {
       "get": {
         "tags": [
           "edge-mgmt"
         ],
-=======
-    "/v1/edge-mgmt/clusters/archive/update": {
-      "delete": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Delete or reject the cluster update archive",
-        "tags": ["edge-mgmt"],
-        "summary": "Delete or reject the cluster update archive",
-        "operationId": "v1DeleteClusterUpdateArchive",
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/archive/update/details": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
-        "tags": ["edge-mgmt"],
-        "summary": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
-        "operationId": "v1ClusterConfigArchiveUpdate",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterConfigArchiveDetails"
-            }
-          },
-          "default": {
-            "description": "Error",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/current/machinepools": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Fetch the cluster node pool details including edge host details.",
         "operationId": "v1MachinePoolDetail",
         "responses": {
@@ -845,18 +770,9 @@
         }
       },
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Create a machine pool",
         "operationId": "v1ClusterMachinePoolCreate",
         "parameters": [
@@ -893,18 +809,9 @@
     },
     "/v1/edge-mgmt/clusters/current/machinepools/{poolName}": {
       "put": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Update machine pools",
         "operationId": "v1ClusterMachinePoolUpdate",
         "parameters": [
@@ -952,18 +859,9 @@
         }
       },
       "delete": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Delete machine pools",
         "operationId": "v1ClusterMachinePoolDelete",
         "parameters": [
@@ -997,18 +895,9 @@
         }
       },
       "patch": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Patch machine pools",
         "operationId": "v1ClusterMachinePoolPatch",
         "parameters": [
@@ -1059,7 +948,9 @@
     "/v1/edge-mgmt/clusters/current/machinepools/{poolName}/nodes/{nodeName}": {
       "delete": {
         "description": "Delete a node from the machine pool",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Delete a machine pool node",
         "operationId": "v1ClusterMachinePoolNodeDelete",
         "parameters": [
@@ -1103,7 +994,9 @@
     "/v1/edge-mgmt/clusters/current/nodes": {
       "get": {
         "description": "Get K8s Cluster Nodes",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "A list of the K8s Cluster Nodes",
         "operationId": "v1ClusterNodes",
         "responses": {
@@ -1125,7 +1018,9 @@
     "/v1/edge-mgmt/edgehosts/connectivity/ping": {
       "get": {
         "description": "Ping an endpoint",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Ping an endpoint",
         "operationId": "v1PingHost",
         "parameters": [
@@ -1154,7 +1049,9 @@
     "/v1/edge-mgmt/edgehosts/connectivity/traceroute": {
       "get": {
         "description": "Display route that IP packets take to a network host",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Display route that IP packets take to a network host",
         "operationId": "v1TraceRouteHost",
         "parameters": [
@@ -1183,7 +1080,9 @@
     "/v1/edge-mgmt/edgehosts/current": {
       "get": {
         "description": "Get edge host details",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get edge host info",
         "operationId": "v1EdgeHostInfo",
         "responses": {
@@ -1211,7 +1110,9 @@
     "/v1/edge-mgmt/edgehosts/current/actions/content/signing-public-key": {
       "get": {
         "description": "Get the base64 encoded key used to verify the signed content.",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get the public key used to verify the signed content.",
         "operationId": "V1GetContentSigningPublicKey",
         "responses": {
@@ -1245,7 +1146,9 @@
     "/v1/edge-mgmt/edgehosts/current/actions/reboot": {
       "post": {
         "description": "Reboot edge host",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Reboot edge host",
         "operationId": "v1EdgeHostActionReboot",
         "responses": {
@@ -1267,7 +1170,9 @@
     "/v1/edge-mgmt/edgehosts/current/actions/reset": {
       "post": {
         "description": "Reset edge host",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Reset edge host",
         "operationId": "v1EdgeHostActionReset",
         "responses": {
@@ -1295,7 +1200,9 @@
     "/v1/edge-mgmt/edgehosts/current/actions/shutdown": {
       "post": {
         "description": "Shutdown edge host",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Shutdown edge host",
         "operationId": "v1EdgeHostActionShutdown",
         "responses": {
@@ -1317,8 +1224,12 @@
     "/v1/edge-mgmt/edgehosts/current/actions/upload-clusterconfig": {
       "post": {
         "description": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
-        "consumes": ["multipart/form-data"],
-        "tags": ["edge-mgmt"],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
         "operationId": "V1ClusterConfigUpload",
         "parameters": [
@@ -1355,8 +1266,12 @@
     "/v1/edge-mgmt/edgehosts/current/actions/upload-content": {
       "post": {
         "description": "Uploads an archive file and extracts it to the required location on the edge host.",
-        "consumes": ["multipart/form-data"],
-        "tags": ["edge-mgmt"],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Uploads an archive file and extracts it to the required location on the edge host.",
         "operationId": "V1ContentUpload",
         "parameters": [
@@ -1392,18 +1307,9 @@
     },
     "/v1/edge-mgmt/edgehosts/current/audits": {
       "get": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Retrieves the list of audit logs",
         "operationId": "v1Audits",
         "parameters": [
@@ -1434,7 +1340,13 @@
             "in": "query"
           },
           {
-            "enum": ["create", "update", "delete", "activity", "action"],
+            "enum": [
+              "create",
+              "update",
+              "delete",
+              "activity",
+              "action"
+            ],
             "type": "string",
             "name": "actionType",
             "in": "query"
@@ -1486,8 +1398,13 @@
     "/v1/edge-mgmt/edgehosts/current/audits/download": {
       "get": {
         "description": "Download audit logs as a single compressed file",
-        "produces": ["application/x-tar", "application/json"],
-        "tags": ["edge-mgmt"],
+        "produces": [
+          "application/x-tar",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Download audit logs",
         "operationId": "v1AuditDownload",
         "responses": {
@@ -1527,18 +1444,9 @@
     },
     "/v1/edge-mgmt/edgehosts/current/audits/filters": {
       "get": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Retrieves the list of filter options to display on audit ui page",
         "operationId": "v1AuditFilter",
         "responses": {
@@ -1554,7 +1462,9 @@
     "/v1/edge-mgmt/edgehosts/current/configurations": {
       "get": {
         "description": "Get edge host configurations.",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get edge host configurations.",
         "operationId": "V1EdgeHostConfigurationsGet",
         "responses": {
@@ -1579,18 +1489,9 @@
         }
       },
       "put": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Update Edge Host configurations",
         "operationId": "V1EdgeHostConfigurationsUpdate",
         "parameters": [
@@ -1635,7 +1536,9 @@
     "/v1/edge-mgmt/edgehosts/current/configurations/status": {
       "get": {
         "description": "Edge host configurations status",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Edge host configurations status",
         "operationId": "v1EdgeHostConfigurationStatus",
         "responses": {
@@ -1657,8 +1560,13 @@
     "/v1/edge-mgmt/edgehosts/current/download-logs": {
       "get": {
         "description": "Downloads the logs of the edge host as a tar file.",
-        "produces": ["application/x-tar", "application/json"],
-        "tags": ["edge-mgmt"],
+        "produces": [
+          "application/x-tar",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Download edge host Logs",
         "operationId": "v1EdgeHostDownloadLogs",
         "responses": {
@@ -1687,7 +1595,9 @@
     "/v1/edge-mgmt/edgehosts/current/error-logs": {
       "get": {
         "description": "List last 'logCount' edge host error logs",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "List last 'logCount' edge host error logs",
         "operationId": "V1EdgeHostErrorLogs",
         "parameters": [
@@ -1724,7 +1634,9 @@
     "/v1/edge-mgmt/edgehosts/current/file-download/files": {
       "get": {
         "description": "Lists all the first level files from the '/var/log/files' directory.\n",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "List custom files from the '/var/log/files' directory",
         "operationId": "v1EdgeHostListCustomFiles",
         "responses": {
@@ -1758,8 +1670,13 @@
     "/v1/edge-mgmt/edgehosts/current/file-download/{filePath}": {
       "get": {
         "description": "Downloads a file from the `/var/log/files` directory. The file path is expected to be relative to the `/var/log/files` directory.\n",
-        "produces": ["application/octet-stream", "application/json"],
-        "tags": ["edge-mgmt"],
+        "produces": [
+          "application/octet-stream",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Download a custom file from the user-defined or default directory",
         "operationId": "v1EdgeHostCustomFileDownload",
         "parameters": [
@@ -1809,7 +1726,9 @@
     "/v1/edge-mgmt/edgehosts/current/generate-logs": {
       "post": {
         "description": "Start edge host log collection",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Start edge host log collection",
         "operationId": "v1EdgeHostGenerateLogs",
         "responses": {
@@ -1831,7 +1750,9 @@
     "/v1/edge-mgmt/edgehosts/current/generate-logs-status": {
       "get": {
         "description": "Edge host log collection status",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Edge host log collection status",
         "operationId": "v1EdgeHostGenerateLogsStatus",
         "responses": {
@@ -1852,18 +1773,9 @@
     },
     "/v1/edge-mgmt/edgehosts/current/link": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Link edge host to another edge host",
         "operationId": "v1EdgeHostLink",
         "parameters": [
@@ -1900,18 +1812,9 @@
     },
     "/v1/edge-mgmt/edgehosts/current/link/generate-token": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Generate a link token for linking edge hosts",
         "operationId": "v1EdgeHostLinkGenerateToken",
         "responses": {
@@ -1932,18 +1835,9 @@
     },
     "/v1/edge-mgmt/edgehosts/current/link/status": {
       "get": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Get the status of the edge host link",
         "operationId": "v1EdgeHostLinkStatus",
         "responses": {
@@ -1970,18 +1864,9 @@
     },
     "/v1/edge-mgmt/edgehosts/current/unlink": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Unlink edge host from other edge hosts",
         "operationId": "v1EdgeHostUnlink",
         "parameters": [
@@ -2016,18 +1901,9 @@
     },
     "/v1/edge-mgmt/edgehosts/current/uploaded-content/details": {
       "get": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "edge-mgmt"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["edge-mgmt"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Get metadata of last uploaded content archive file",
         "operationId": "v1UploadedContentDetails",
         "responses": {
@@ -2055,7 +1931,9 @@
     "/v1/edge-mgmt/edgehosts/current/userdata": {
       "get": {
         "description": "Get edge host userdata",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get edge host userdata",
         "operationId": "v1GetEdgeHostUserdata",
         "responses": {
@@ -2075,7 +1953,9 @@
       },
       "put": {
         "description": "Update edge host userdata",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Update edge host userdata",
         "operationId": "v1PutEdgeHostUserdata",
         "parameters": [
@@ -2105,7 +1985,9 @@
       },
       "post": {
         "description": "Update edge host userdata",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Update edge host userdata",
         "operationId": "v1PostEdgeHostUserdata",
         "parameters": [
@@ -2137,7 +2019,9 @@
     "/v1/edge-mgmt/events/lifecycle": {
       "get": {
         "description": "Get life cycle events of cluster and edge host",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get life cycle events of cluster and edge host",
         "operationId": "v1GetLifecycleEvents",
         "responses": {
@@ -2156,751 +2040,12 @@
         }
       }
     },
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
-=======
-    "/v1/edge-mgmt/network/bonds": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "List network bond interfaces",
-        "tags": ["edge-mgmt"],
-        "summary": "List bonds",
-        "operationId": "V1NetworkBonds",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1BondList"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/bonds/{name}": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Retrieve a bond interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Get bond",
-        "operationId": "V1NetworkBond",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Bond"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "put": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Create or update a bond interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Create or update bond",
-        "operationId": "V1NetworkBondUpdate",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1BondRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "400": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "post": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Create a bond interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Create bond",
-        "operationId": "V1NetworkBondCreate",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1BondRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "400": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "delete": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Delete a bond interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Delete bond",
-        "operationId": "V1NetworkBondDelete",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/bridges": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "List all bridge interfaces",
-        "tags": ["edge-mgmt"],
-        "summary": "List bridges",
-        "operationId": "V1NetworkBridges",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1BridgeList"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/bridges/{name}": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Retrieve a bridge interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Get bridge",
-        "operationId": "V1NetworkBridge",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Bridge"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "put": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Create or update a bridge interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Create or update bridge",
-        "operationId": "V1NetworkBridgeUpdate",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1BridgeRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "400": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "post": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Create a bridge interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Create bridge",
-        "operationId": "V1NetworkBridgeCreate",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1BridgeRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "400": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "delete": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Delete a bridge interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Delete bridge",
-        "operationId": "V1NetworkBridgeDelete",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/interfaces": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "List network interfaces (NICs)",
-        "tags": ["edge-mgmt"],
-        "summary": "List NICs",
-        "operationId": "V1NetworkInterfaces",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1NicSummaryList"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/interfaces/{name}": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Get one network interface",
-        "tags": ["edge-mgmt"],
-        "summary": "Get NIC",
-        "operationId": "V1NetworkInterface",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1NicSummary"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/interfaces/{name}/config": {
-      "put": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Update a network interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Update NIC config",
-        "operationId": "V1NetworkInterfaceUpdate",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1NetworkInterfaceUpdateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "400": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/vlans": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "List VLAN interfaces",
-        "tags": ["edge-mgmt"],
-        "summary": "List VLANs",
-        "operationId": "V1NetworkVLANs",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1VLANList"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/vlans/{name}": {
-      "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Retrieve a VLAN interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Get VLAN",
-        "operationId": "V1NetworkVLAN",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1VLAN"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "put": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Create or update a VLAN interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Create or update VLAN",
-        "operationId": "V1NetworkVLANUpdate",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1VLANRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "400": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "post": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Create a VLAN interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Create VLAN",
-        "operationId": "V1NetworkVLANCreate",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1VLANRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "400": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      },
-      "delete": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "description": "Delete a VLAN interface configuration",
-        "tags": ["edge-mgmt"],
-        "summary": "Delete VLAN",
-        "operationId": "V1NetworkVLANDelete",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
-            }
-          },
-          "404": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          },
-          "500": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Error"
-            }
-          }
-        }
-      }
-    },
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
     "/v1/edge-mgmt/settings": {
       "get": {
         "description": "Get general settings",
-        "tags": ["edge-mgmt"],
+        "tags": [
+          "edge-mgmt"
+        ],
         "summary": "Get general settings",
         "operationId": "v1Settings",
         "responses": {
@@ -2922,7 +2067,9 @@
     "/v1/ping": {
       "get": {
         "description": "Ping Service",
-        "tags": ["ping"],
+        "tags": [
+          "ping"
+        ],
         "summary": "Ping Service",
         "operationId": "V1Ping",
         "responses": {
@@ -2944,7 +2091,9 @@
     "/v1/users/current": {
       "get": {
         "description": "Get current logged in user's information",
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get current logged in user's information",
         "operationId": "V1CurrentUser",
         "responses": {
@@ -2964,7 +2113,9 @@
       },
       "patch": {
         "description": "Patches the current logged in user's configuration",
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Patches the current logged in user's configuration",
         "operationId": "v1PatchCurrentUser",
         "parameters": [
@@ -2996,7 +2147,9 @@
     "/v1/users/default/login": {
       "post": {
         "description": "Authenticates the user with the specified credentials",
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Authenticates the user with the specified credentials",
         "operationId": "V1UserLogin",
         "parameters": [
@@ -3047,18 +2200,9 @@
     },
     "/v1/users/default/logout": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "users"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["users"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Logs out the user from the system",
         "operationId": "V1UserLogout",
         "responses": {
@@ -3089,7 +2233,9 @@
     "/v1/users/default/password/reset": {
       "post": {
         "description": "Resets the user's password",
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Resets the user's password",
         "operationId": "V1UserPasswordReset",
         "parameters": [
@@ -3126,18 +2272,9 @@
     },
     "/v1/users/default/token/renewal": {
       "post": {
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
         "tags": [
           "users"
         ],
-=======
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": ["users"],
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         "summary": "Refreshes the authentication token of the user",
         "operationId": "V1UserTokenRenewal",
         "parameters": [
@@ -3205,7 +2342,10 @@
       "description": "Architecture type of the edge host",
       "type": "string",
       "default": "amd64",
-      "enum": ["arm64", "amd64"]
+      "enum": [
+        "arm64",
+        "amd64"
+      ]
     },
     "v1Audit": {
       "description": "Audit response payload",
@@ -3224,7 +2364,10 @@
       "properties": {
         "actorType": {
           "type": "string",
-          "enum": ["user", "system"]
+          "enum": [
+            "user",
+            "system"
+          ]
         },
         "uid": {
           "description": "id of actor",
@@ -3284,7 +2427,13 @@
       "properties": {
         "actionType": {
           "type": "string",
-          "enum": ["create", "update", "delete", "action", "activity"]
+          "enum": [
+            "create",
+            "update",
+            "delete",
+            "action",
+            "activity"
+          ]
         },
         "actor": {
           "$ref": "#/definitions/v1AuditActor"
@@ -3300,7 +2449,9 @@
     },
     "v1AuditsList": {
       "type": "object",
-      "required": ["items"],
+      "required": [
+        "items"
+      ],
       "properties": {
         "items": {
           "description": "List of audit message",
@@ -3332,243 +2483,6 @@
     "v1BadRequest": {
       "description": "Bad request"
     },
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
-=======
-    "v1Bond": {
-      "description": "Bond interface configuration",
-      "type": "object",
-      "properties": {
-        "configStatus": {
-          "description": "Detailed configuration status from networkctl",
-          "type": "string"
-        },
-        "gateway": {
-          "type": "string"
-        },
-        "ip": {
-          "type": "string"
-        },
-        "lacpTransmitRate": {
-          "type": "string"
-        },
-        "members": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "miiMonitorSec": {
-          "type": "string"
-        },
-        "mode": {
-          "type": "string"
-        },
-        "mtu": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nameservers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "status": {
-          "description": "Status of the bond interface (up/down/applying/unknown)",
-          "type": "string"
-        },
-        "subnet": {
-          "type": "string"
-        },
-        "transmitHashPolicy": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        },
-        "vlanID": {
-          "type": "string"
-        }
-      }
-    },
-    "v1BondList": {
-      "description": "Collection of bond interfaces",
-      "type": "object",
-      "properties": {
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1Bond"
-          }
-        }
-      }
-    },
-    "v1BondRequest": {
-      "description": "Bond interface request payload",
-      "type": "object",
-      "required": ["members"],
-      "properties": {
-        "gateway": {
-          "type": "string"
-        },
-        "ip": {
-          "type": "string"
-        },
-        "lacpTransmitRate": {
-          "type": "string"
-        },
-        "members": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "miiMonitorSec": {
-          "type": "string"
-        },
-        "mode": {
-          "type": "string"
-        },
-        "mtu": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nameservers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "subnet": {
-          "type": "string"
-        },
-        "transmitHashPolicy": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        },
-        "vlanID": {
-          "type": "string"
-        }
-      }
-    },
-    "v1Bridge": {
-      "description": "Bridge interface configuration",
-      "type": "object",
-      "properties": {
-        "bond": {
-          "description": "Name of the bond interface attached to this bridge",
-          "type": "string"
-        },
-        "configStatus": {
-          "description": "Detailed configuration status from networkctl",
-          "type": "string"
-        },
-        "gateway": {
-          "description": "Gateway IP address",
-          "type": "string"
-        },
-        "ip": {
-          "description": "IP address (for static type)",
-          "type": "string"
-        },
-        "mtu": {
-          "description": "MTU for the bridge interface",
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "Bridge interface name (e.g., br0)",
-          "type": "string"
-        },
-        "nameservers": {
-          "description": "DNS nameservers",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "status": {
-          "description": "Status of the bridge interface (up/down/applying/unknown)",
-          "type": "string"
-        },
-        "subnet": {
-          "description": "Subnet mask (for static type)",
-          "type": "string"
-        },
-        "type": {
-          "description": "Network configuration type",
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        }
-      }
-    },
-    "v1BridgeList": {
-      "description": "Collection of bridge interfaces",
-      "type": "object",
-      "properties": {
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1Bridge"
-          }
-        }
-      }
-    },
-    "v1BridgeRequest": {
-      "description": "Bridge interface request payload",
-      "type": "object",
-      "required": ["name"],
-      "properties": {
-        "bond": {
-          "description": "Name of the bond interface to attach to this bridge",
-          "type": "string"
-        },
-        "gateway": {
-          "description": "Gateway IP address",
-          "type": "string"
-        },
-        "ip": {
-          "description": "IP address (required for static type)",
-          "type": "string"
-        },
-        "mtu": {
-          "description": "MTU for the bridge interface",
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "Bridge interface name (e.g., br0)",
-          "type": "string"
-        },
-        "nameservers": {
-          "description": "DNS nameservers",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "subnet": {
-          "description": "Subnet mask (required for static type)",
-          "type": "string"
-        },
-        "type": {
-          "description": "Network configuration type. Default is dhcp.",
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        }
-      }
-    },
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
     "v1CA": {
       "type": "object",
       "properties": {
@@ -3899,7 +2813,12 @@
         "status": {
           "description": "current pairing status",
           "type": "string",
-          "enum": ["Pairing", "Paired", "Rejected", "Failed"]
+          "enum": [
+            "Pairing",
+            "Paired",
+            "Rejected",
+            "Failed"
+          ]
         }
       }
     },
@@ -4129,7 +3048,10 @@
       }
     },
     "v1Condition": {
-      "required": ["type", "status"],
+      "required": [
+        "type",
+        "status"
+      ],
       "properties": {
         "lastProbeTime": {
           "$ref": "#/definitions/v1Time"
@@ -4201,19 +3123,18 @@
     "v1Configuration": {
       "description": "Configuration status of the edge host.",
       "type": "string",
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
       "enum": [
         "Pending",
         "Inprogress",
         "Configured"
       ]
-=======
-      "enum": ["pending", "inprogress", "configured"]
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
     },
     "v1ConnectionMode": {
       "type": "string",
-      "enum": ["connected", "airgap"]
+      "enum": [
+        "connected",
+        "airgap"
+      ]
     },
     "v1ContentSigningKey": {
       "type": "object",
@@ -4304,7 +3225,12 @@
         },
         "state": {
           "type": "string",
-          "enum": ["Not Configured", "In Progress", "Configured", "Failed"]
+          "enum": [
+            "Not Configured",
+            "In Progress",
+            "Configured",
+            "Failed"
+          ]
         }
       }
     },
@@ -4337,7 +3263,12 @@
         },
         "status": {
           "type": "string",
-          "enum": ["Unknown", "InProgress", "Completed", "Failed"]
+          "enum": [
+            "Unknown",
+            "InProgress",
+            "Completed",
+            "Failed"
+          ]
         }
       }
     },
@@ -4420,7 +3351,10 @@
     "v1EdgeNativeCloudConfigSpec": {
       "description": "EdgeNativeCloudConfigSpec defines the desired state of EdgeNativeCloudConfig",
       "type": "object",
-      "required": ["clusterConfig", "machinePoolConfig"],
+      "required": [
+        "clusterConfig",
+        "machinePoolConfig"
+      ],
       "properties": {
         "clusterConfig": {
           "$ref": "#/definitions/v1EdgeNativeClusterConfig"
@@ -4567,13 +3501,18 @@
         "twoNodeCandidatePriority": {
           "description": "Set the edgehost candidate priority as primary or secondary, if the edgehost is nominated as two node candidate",
           "type": "string",
-          "enum": ["primary", "secondary"]
+          "enum": [
+            "primary",
+            "secondary"
+          ]
         }
       }
     },
     "v1EdgeNativeMachinePoolConfig": {
       "type": "object",
-      "required": ["hosts"],
+      "required": [
+        "hosts"
+      ],
       "properties": {
         "additionalLabels": {
           "description": "AdditionalLabels",
@@ -4732,7 +3671,9 @@
     },
     "v1Events": {
       "type": "object",
-      "required": ["items"],
+      "required": [
+        "items"
+      ],
       "properties": {
         "items": {
           "type": "array",
@@ -4798,7 +3739,12 @@
       "properties": {
         "contentType": {
           "type": "string",
-          "enum": ["image", "artifact", "chart", "pack"]
+          "enum": [
+            "image",
+            "artifact",
+            "chart",
+            "pack"
+          ]
         },
         "dateAdded": {
           "type": "string",
@@ -4820,7 +3766,12 @@
       "properties": {
         "contentType": {
           "type": "string",
-          "enum": ["image", "artifact", "chart", "pack"]
+          "enum": [
+            "image",
+            "artifact",
+            "chart",
+            "pack"
+          ]
         },
         "creationTimestamp": {
           "type": "string",
@@ -4844,7 +3795,11 @@
         },
         "status": {
           "type": "string",
-          "enum": ["pending", "completed", "failed"]
+          "enum": [
+            "pending",
+            "completed",
+            "failed"
+          ]
         },
         "target": {
           "type": "string"
@@ -4902,7 +3857,11 @@
         },
         "State": {
           "type": "string",
-          "enum": ["Healthy", "Unhealthy", "NotInstalled"]
+          "enum": [
+            "Healthy",
+            "Unhealthy",
+            "NotInstalled"
+          ]
         },
         "UsagePercentage": {
           "type": "string"
@@ -4948,18 +3907,28 @@
         },
         "status": {
           "type": "string",
-          "enum": ["Healthy", "Unhealthy"]
+          "enum": [
+            "Healthy",
+            "Unhealthy"
+          ]
         }
       }
     },
     "v1HttpPatch": {
       "type": "object",
-      "required": ["op", "path"],
+      "required": [
+        "op",
+        "path"
+      ],
       "properties": {
         "op": {
           "description": "The operation to be performed",
           "type": "string",
-          "enum": ["add", "remove", "replace"]
+          "enum": [
+            "add",
+            "remove",
+            "replace"
+          ]
         },
         "path": {
           "description": "A path to the pointer on which operation will be done",
@@ -5053,7 +4022,12 @@
         "status": {
           "description": "The status of the link operation",
           "type": "string",
-          "enum": ["Pending", "InProgress", "Completed", "Failed"]
+          "enum": [
+            "Pending",
+            "InProgress",
+            "Completed",
+            "Failed"
+          ]
         }
       }
     },
@@ -5133,7 +4107,9 @@
     },
     "v1Management": {
       "type": "object",
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "properties": {
         "edgeHostToken": {
           "description": "Edge host token. Required for remote management",
@@ -5161,13 +4137,6 @@
         }
       }
     },
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
-=======
-    "v1ManagementMode": {
-      "type": "string",
-      "enum": ["central", "local"]
-    },
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
     "v1Memory": {
       "type": "object",
       "properties": {
@@ -5276,7 +4245,9 @@
     },
     "v1NetworkInterface": {
       "type": "object",
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "properties": {
         "gateway": {
           "type": "string"
@@ -5294,48 +4265,13 @@
         "type": {
           "description": "Type of network interface (e.g., static, dhcp)",
           "type": "string",
-          "enum": ["static", "dhcp"]
+          "enum": [
+            "static",
+            "dhcp"
+          ]
         }
       }
     },
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
-=======
-    "v1NetworkInterfaceUpdateRequest": {
-      "type": "object",
-      "required": ["type"],
-      "properties": {
-        "gateway": {
-          "type": "string"
-        },
-        "ip": {
-          "type": "string"
-        },
-        "mtu": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nameservers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "x-omitempty": true
-        },
-        "subnet": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        },
-        "vlanID": {
-          "type": "string"
-        }
-      }
-    },
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
     "v1Nic": {
       "description": "Nic is the specification of the network interface card on the edge host.",
       "type": "object",
@@ -5366,63 +4302,6 @@
         }
       }
     },
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
-=======
-    "v1NicSummary": {
-      "type": "object",
-      "properties": {
-        "configStatus": {
-          "type": "string"
-        },
-        "gateway": {
-          "type": "string"
-        },
-        "ip": {
-          "type": "string"
-        },
-        "mac": {
-          "type": "string"
-        },
-        "mtu": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nameservers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "x-omitempty": true
-        },
-        "status": {
-          "type": "string"
-        },
-        "subnet": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        },
-        "vlanID": {
-          "type": "string"
-        }
-      }
-    },
-    "v1NicSummaryList": {
-      "type": "object",
-      "properties": {
-        "interfaces": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1NicSummary"
-          }
-        }
-      }
-    },
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
     "v1NoContent": {
       "description": "No Content"
     },
@@ -5460,7 +4339,12 @@
     },
     "v1NodeRole": {
       "type": "string",
-      "enum": ["init", "controlplane", "worker", "unknown"]
+      "enum": [
+        "init",
+        "controlplane",
+        "worker",
+        "unknown"
+      ]
     },
     "v1NotFound": {
       "description": "Resource not found"
@@ -5597,7 +4481,11 @@
       "properties": {
         "contentType": {
           "type": "string",
-          "enum": ["image", "artifact", "chart"]
+          "enum": [
+            "image",
+            "artifact",
+            "chart"
+          ]
         },
         "name": {
           "type": "string"
@@ -5794,7 +4682,13 @@
       "properties": {
         "kind": {
           "type": "string",
-          "enum": ["spectrocluster", "machine", "cloudconfig", "clusterprofile", "pack"]
+          "enum": [
+            "spectrocluster",
+            "machine",
+            "cloudconfig",
+            "clusterprofile",
+            "pack"
+          ]
         },
         "name": {
           "type": "string"
@@ -5836,23 +4730,21 @@
         },
         "installationMode": {
           "type": "string",
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
           "enum": [
             "airgap",
             "connected"
           ]
-=======
-          "enum": ["airgap", "connected"]
-        },
-        "managementMode": {
-          "$ref": "#/definitions/v1ManagementMode"
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
         }
       }
     },
     "v1State": {
       "type": "string",
-      "enum": ["Provisioning", "Running", "Deleting", "Error"]
+      "enum": [
+        "Provisioning",
+        "Running",
+        "Deleting",
+        "Error"
+      ]
     },
     "v1Taint": {
       "description": "Taint",
@@ -5860,7 +4752,11 @@
       "properties": {
         "effect": {
           "type": "string",
-          "enum": ["NoSchedule", "PreferNoSchedule", "NoExecute"]
+          "enum": [
+            "NoSchedule",
+            "PreferNoSchedule",
+            "NoExecute"
+          ]
         },
         "key": {
           "description": "The taint key to be applied to a node",
@@ -5898,7 +4794,10 @@
         "type": {
           "description": "update strategy, either ScaleOut or ScaleIn if empty, will default to RollingUpdateScaleOut",
           "type": "string",
-          "enum": ["RollingUpdateScaleOut", "RollingUpdateScaleIn"]
+          "enum": [
+            "RollingUpdateScaleOut",
+            "RollingUpdateScaleIn"
+          ]
         }
       }
     },
@@ -5965,130 +4864,6 @@
         }
       }
     },
-<<<<<<< HEAD:docs/api-content/api-docs/edge-v1/emc-api.json
-=======
-    "v1VLAN": {
-      "description": "VLAN interface configuration",
-      "type": "object",
-      "properties": {
-        "configStatus": {
-          "description": "Detailed configuration status from networkctl",
-          "type": "string"
-        },
-        "gateway": {
-          "description": "Gateway IP address",
-          "type": "string"
-        },
-        "ip": {
-          "description": "IP address (required for static type)",
-          "type": "string"
-        },
-        "mtu": {
-          "description": "MTU for the VLAN interface",
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "VLAN interface name (e.g., ens32.100 or bond0.100)",
-          "type": "string"
-        },
-        "nameservers": {
-          "description": "DNS nameservers",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "parentName": {
-          "description": "Parent interface name (NIC or Bond)",
-          "type": "string"
-        },
-        "parentType": {
-          "description": "Type of parent interface",
-          "type": "string",
-          "enum": ["nic", "bond"]
-        },
-        "status": {
-          "description": "Status of the VLAN interface (up/down/applying/unknown)",
-          "type": "string"
-        },
-        "subnet": {
-          "description": "Subnet mask (required for static type)",
-          "type": "string"
-        },
-        "type": {
-          "description": "Network configuration type",
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        },
-        "vlanID": {
-          "description": "VLAN ID (1-4094)",
-          "type": "string"
-        }
-      }
-    },
-    "v1VLANList": {
-      "description": "Collection of VLAN interfaces",
-      "type": "object",
-      "properties": {
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1VLAN"
-          }
-        }
-      }
-    },
-    "v1VLANRequest": {
-      "description": "VLAN interface request payload",
-      "type": "object",
-      "required": ["parentName", "parentType", "vlanID"],
-      "properties": {
-        "gateway": {
-          "description": "Gateway IP address",
-          "type": "string"
-        },
-        "ip": {
-          "description": "IP address (required for static type)",
-          "type": "string"
-        },
-        "mtu": {
-          "description": "MTU for the VLAN interface",
-          "type": "integer",
-          "format": "int64"
-        },
-        "nameservers": {
-          "description": "DNS nameservers",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "parentName": {
-          "description": "Parent interface name (NIC or Bond)",
-          "type": "string"
-        },
-        "parentType": {
-          "description": "Type of parent interface (nic or bond)",
-          "type": "string",
-          "enum": ["nic", "bond"]
-        },
-        "subnet": {
-          "description": "Subnet mask (required for static type)",
-          "type": "string"
-        },
-        "type": {
-          "description": "Network configuration type. Default is dhcp.",
-          "type": "string",
-          "enum": ["dhcp", "static"]
-        },
-        "vlanID": {
-          "description": "VLAN ID (1-4094)",
-          "type": "string"
-        }
-      }
-    },
->>>>>>> 9da47112e (docs: fix up broken postman links DOC-2421 (#8968)):static/apis/edge-v1/emc-api.json
     "v1ValidataVariable": {
       "type": "object",
       "properties": {
