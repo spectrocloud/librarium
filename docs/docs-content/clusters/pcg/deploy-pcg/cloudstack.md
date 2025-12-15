@@ -12,7 +12,7 @@ tags: ["pcg", "cloudstack"]
 :::
 
 This guide provides you with the steps to deploy a Palette Cloud Gateway (PCG) cluster to an Apache CloudStack
-environment. Before you begin the installation, carefully review the [Prerequisites](#prerequisites) section.
+environment using KVM as the hypervisor. Before you begin the installation, carefully review the [Prerequisites](#prerequisites) section.
 
 ## Prerequisites
 
@@ -72,6 +72,46 @@ environment. Before you begin the installation, carefully review the [Prerequisi
   `https://management-server-ip:8080/client/api`.
 
 - DNS must be able to resolve `api.spectrocloud.com` when using SaaS PCG.
+
+- A CloudStack template imported
+
+  <details>
+    <summary>Importing a template</summary>
+        
+        In CloudStack console, navigate to **Images**. 
+        
+        Select **Templates** and click on **Register Template from URL**.
+
+        Provide values for the fields below:
+
+        | **Field** | **Description** |
+        | --------- | --------------- |
+        | **URL** | Provide image template URL. The URL must end with `qcow2` when using KVM as the hypervisor. |  
+        | **Name** | Must follow the format `u-2404-0-k-1336-0`. | 
+        | **Description** | Optional. |  
+        | **Zone** | Specify the zone from the dropdown. | 
+        | **Domain** | Specify the domain from the dropdown. |  
+        | **Hypervisor** | Select **KVM** from the dropdown. |  
+        | **Format** | Select **QCOW2** from the dropdown. |  
+        | **OS type** | Select **Ubuntu 24.04 (64-bit)** from the dropdown. |  
+        | **Template type** | Select **USER** from the dropdown. |  
+        | **Extractable** | Leave default. |  
+        | **Dynamically scalable** | Leave default.| 
+        | **Public** | Select the checkbox. |  
+        | **Password enabled** | Leave default. | 
+        | **HVM** | Leave default. | 
+
+        Click **OK**.
+
+        **Note:**  
+        Image name must follow the required format, and only one template with that name may exist per user. Duplicate names can cause CloudStack deployment failures. 
+        
+        For example, user A imports an image named `u-2404-0-k-1336-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-1336-0` and user B will have two templates named `u-2404-0-k-1336-0`. When user B deploys a cluster using `u-2404-0-k-1336-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-1336-0, but got 2`.
+
+  </details>
+
+
+
 
 ## Deploy PCG
 
