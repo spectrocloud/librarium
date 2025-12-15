@@ -138,7 +138,7 @@ Follow the steps below to deploy a Nutanix cluster.
 
 12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. Select **Validate** to review your cluster configurations and settings.
+13. Select **Validate** to review your cluster configuration and settings.
 
 14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
