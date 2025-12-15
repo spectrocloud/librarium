@@ -33,7 +33,8 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 
 ## Import the Postman Collection
 
-Right-click the following URL and select **Save Link as** (in Safari, select **Download Linked Files As ...**) to download the Postman collection to your local machine.
+Right-click the following URL and select **Save Link as** (in Safari, select **Download Linked Files As ...**) to
+download the Postman collection to your local machine.
 
 <Tabs>
 
