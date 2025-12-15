@@ -38,7 +38,7 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
   the cluster profile.
 
       <details>
-      
+
       <summary> Importing a template </summary>
 
             In CloudStack console, navigate to **Images**. Select **Templates** and click on **Register Template from URL**.

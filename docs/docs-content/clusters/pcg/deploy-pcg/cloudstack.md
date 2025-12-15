@@ -77,7 +77,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 - A CloudStack template imported
 
       <details>
-      
+
       <summary> Importing a template </summary>
 
             In CloudStack console, navigate to **Images**. Select **Templates** and click on **Register Template from URL**.
@@ -109,7 +109,6 @@ environment using KVM as the hypervisor. Before you begin the installation, care
             For example, user A imports an image named `u-2404-0-k-1336-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-1336-0` and user B will have two templates named `u-2404-0-k-1336-0`. When user B deploys a cluster using `u-2404-0-k-1336-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-1336-0, but got 2`.
 
       </details>
-
 
 ## Deploy PCG
 
