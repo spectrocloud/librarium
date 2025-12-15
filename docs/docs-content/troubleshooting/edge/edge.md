@@ -10,6 +10,41 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Edge Host Reset Fails with Encrypted Persistent Partition
+
+Edge hosts using encrypted persistent partitions may fail to complete a reset. A limitation in Kairos version 3.5.3 prevents these partitions from being reinitialized during the reset workflow, resulting in the operation stopping prematurely.
+
+To address this issue, override the default reset behavior by supplying a custom `before-reset` stage through the user data. This ensures that the persistent partition is reformatted correctly before the reset workflow continues.
+
+Add the following configuration to the `user-data` file for the affected Edge host.
+
+```yaml
+#cloud-config
+reset:
+    reset-persistent: false
+stages:
+    before-reset:
+        - name: "reset persistent"
+          commands:
+            - |
+              #!/bin/bash
+              udevadm trigger --subsystem-match=block
+              udevadm trigger --type=all || udevadm trigger
+              udevadm settle
+              if [ -e /dev/disk/by-label/COS_PERSISTENT ]; then
+                echo "Persistent partition found"
+              else
+                echo "Persistent partition not found"
+                exit 0
+              fi
+
+              # umount persistent partition
+              umount /dev/disk/by-label/COS_PERSISTENT || true
+
+              # format persistent partition
+              mkfs.ext4 /dev/disk/by-label/COS_PERSISTENT -L COS_PERSISTENT
+```
+
 ## Scenario - Velero Restore Fails with `runAsNonRoot` Validation Error
 
 On Edge Native clusters, restores of security-hardened applications (such as Argo CD) may fail with the affected
