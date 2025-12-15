@@ -48,7 +48,7 @@ fs.readFile("docs/api-content/api-docs/v1/api.json", "utf8", (err, data) => {
     ];
 
     const result = JSON.stringify(jsonData, null, 2);
-    fs.writeFile("docs/api-content/api-docs/v1/api.json", result, "utf8", (err) => {
+    fs.writeFile("static/apis/v1/api.json", result, "utf8", (err) => {
       if (err) {
         console.error("Error writing to file:", err);
         return;
