@@ -77,11 +77,11 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 - A CloudStack template imported
 
   <details>
-  <summary>Importing a template</summary>
-      
-      In CloudStack console, navigate to **Images**. 
-      
-      Select **Templates** and click on **Register Template from URL**.
+<summary>Importing a template</summary>
+    
+    In CloudStack console, navigate to **Images**. 
+    
+    Select **Templates** and click on **Register Template from URL**.
 
         Provide values for the fields below:
 
