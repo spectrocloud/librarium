@@ -39,23 +39,21 @@ Use the following URL to import your configuration into Postman:
 
 <TabItem label="Palette API V1" value="palette">
 
-<FullUrlLink path="/apis/v1/palette-apis.json" />
+1. Download the Palette API V1 specification available at <FullUrlLink path="/apis/v1/palette-apis.json" />.
 
 </TabItem>
 
 <TabItem label="Edge Management API V1" value="edge">
 
-<FullUrlLink path="/apis/edge-v1/emc-api.json" />
+1. Download the Edge Management API V1 specification available at <FullUrlLink path="/apis/edge-v1/emc-api.json" />.
 
 </TabItem>
 
 </Tabs>
 
-1. Open the **Import** dialog.
+2. Navigate to Postman on your computer and open the **Import** dialog.
 
-2. Select the **Link** tab and copy/paste the URL in the field as shown in the screenshot.
-
-3. Click the **Continue** button.
+3. Select the downloaded API specification file and click the **Continue** button.
 
 4. Click on the **Import** button.
 
