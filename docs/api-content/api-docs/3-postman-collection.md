@@ -33,29 +33,29 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 
 ## Import the Postman Collection
 
-Use the following URL to import your configuration into Postman:
+Use the following URL to download the Postman collection to your local machine.
 
 <Tabs>
 
 <TabItem label="Palette API V1" value="palette">
 
-1. Download the Palette API V1 specification available at <FullUrlLink path="/apis/v1/palette-apis.json" />.
+<FullUrlLink path="/apis/v1/palette-apis.json" />
 
 </TabItem>
 
 <TabItem label="Edge Management API V1" value="edge">
 
-1. Download the Edge Management API V1 specification available at <FullUrlLink path="/apis/edge-v1/emc-api.json" />.
+<FullUrlLink path="/apis/edge-v1/emc-api.json" />
 
 </TabItem>
 
 </Tabs>
 
-2. Navigate to Postman on your computer and open the **Import** dialog.
+1. Navigate to Postman on your computer and open the **Import** dialog.
 
-3. Select the downloaded API specification file and click the **Continue** button.
+2. Select the downloaded API specification file and click the **Continue** button.
 
-4. Click on the **Import** button.
+3. Click on the **Import** button.
 
 Postman imports your collection and lists it under Import Complete. <br />
 
