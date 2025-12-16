@@ -95,7 +95,7 @@ registry you are adding.
 
 4. On the**OCI Registries** tab, select **Add New OCI Registry**.
 
-5. Enter the **Name** of the registry.  For **Provider** type, select **Helm**.
+5. Enter the **Name** of the registry. For **Provider** type, select **Helm**.
 
 6. For **OCI Authentication Type**, select **Basic**.
 
@@ -105,10 +105,10 @@ registry you are adding.
 
 8. Provide the registry URL in the **Endpoint** field.
 
-9. For **Base Content Path**, enter the base path to the repository in the
-   registry where the Helm Charts are stored. You can specify multiple base paths by pressing the **ENTER** key after each
-   path. Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such
-   as multiple projects in a Harbor registry.
+9. For **Base Content Path**, enter the base path to the repository in the registry where the Helm Charts are stored.
+   You can specify multiple base paths by pressing the **ENTER** key after each path. Providing multiple base paths is
+   useful when Helm Charts are stored in different directories or projects, such as multiple projects in a Harbor
+   registry.
 
 10. Leave the **Username** and **Password** fields empty.
 
