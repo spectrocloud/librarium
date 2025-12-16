@@ -65,7 +65,6 @@ environment.
    | **Domain**                       | Enter the CloudStack [domain](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains) name for the user account that has permissions to deploy workload clusters. |
    | **Allow Insecure Connection**    | Enable this option if you want to skip TLS certificate verification for your CloudStack environment.                                                                                     |
 
-
 5. After filling out the required information, click **Confirm** to add the CloudStack account to Palette.
 
 ## Validate
