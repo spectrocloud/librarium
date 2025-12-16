@@ -22,7 +22,7 @@ other network configurations allowing external connections to the internal netwo
 To get started with CloudStack as your target platform for deploying Kubernetes clusters, you need to deploy a PCG in
 your CloudStack environment. The PCG acts as a bridge between your CloudStack environment and Palette, enabling secure
 communication between the two. Start by reviewing the [Deploy a PCG in CloudStack](../../pcg/deploy-pcg/cloudstack.md)
-guide.
+guide and the [required permissions](required-permissions.md).
 
 :::info
 
