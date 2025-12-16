@@ -17,7 +17,7 @@ add registries that do not require authentication. OCI-compliant registries with
 
 ## Supported OCI Registries
 
-The following types of OCI registries are supported:
+The following table describes the types of OCI registries that are supported.
 
 | **Provider** | **Description**                  | **No Authentication** | **Basic** | **AWS ECR** |
 | ------------ | -------------------------------- | --------------------- | --------- | ----------- |
