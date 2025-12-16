@@ -18,7 +18,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4786 -->
 
 - <TpBadge /> Palette now supports the cluster provisioning and management of CloudStack clusters. Refer to the
-  CloudStack section for further information.
+  CloudStack section for further information. Review the active known issues that affect CloudStack on the [Known Issues](./known-issues.md) page.
 
 - Terraform version 0.26.1 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
