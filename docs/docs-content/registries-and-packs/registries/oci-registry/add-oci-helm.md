@@ -95,28 +95,28 @@ registry you are adding.
 
 4. On the**OCI Registries** tab, select **Add New OCI Registry**.
 
-6. Enter the **Name** of the registry.  For **Provider** type, select **Helm**.
+5. Enter the **Name** of the registry.  For **Provider** type, select **Helm**.
 
-7. For **OCI Authentication Type**, select **Basic**.
+6. For **OCI Authentication Type**, select **Basic**.
 
-8. Toggle the **Synchronization** option to enable or disable synchronization for the registry. To learn more about the
+7. Toggle the **Synchronization** option to enable or disable synchronization for the registry. To learn more about the
    synchronization behavior of Helm registries, refer to the [Helm Registry](../helm-charts.md#synchronization-behavior)
    resource.
 
-9. Provide the registry URL in the **Endpoint** field.
+8. Provide the registry URL in the **Endpoint** field.
 
-10. For **Base Content Path**, enter the base path to the repository in the
-    registry where the Helm Charts are stored. You can specify multiple base paths by pressing the **ENTER** key after each
-    path. Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such
-    as multiple projects in a Harbor registry.
+9. For **Base Content Path**, enter the base path to the repository in the
+   registry where the Helm Charts are stored. You can specify multiple base paths by pressing the **ENTER** key after each
+   path. Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such
+   as multiple projects in a Harbor registry.
 
-11. Leave the **Username** and **Password** fields empty.
+10. Leave the **Username** and **Password** fields empty.
 
-12. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
+11. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
     trusted CA, check the **Insecure Skip TLS Verify** box to skip verifying the x509 certificate, and click **Upload
     file** to upload the certificate.
 
-13. Click **Confirm** to add the registry.
+12. Click **Confirm** to add the registry.
 
 </TabItem>
 
