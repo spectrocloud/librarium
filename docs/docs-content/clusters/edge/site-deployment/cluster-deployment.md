@@ -84,30 +84,30 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 ### Create Cluster
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2.  Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Click on **Add New Cluster**.
+3.  Click on **Add New Cluster**.
 
-4. Choose **Edge Native** for the cluster type and click **Start Edge Native Configuration**.
+4.  Choose **Edge Native** for the cluster type and click **Start Edge Native Configuration**.
 
-5. Give the cluster a name, description, and tags. Click on **Next**.
+5.  Give the cluster a name, description, and tags. Click on **Next**.
 
-6. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
+6.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+7.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-8. Provide the host cluster with the Virtual IP (VIP) address used by the physical site. Ensure that this VIP is not in
-   a CIDR range that cannot routed through a proxy. In addition, ensure that this VIP does not overlap with any IP
-   address already used by other hosts in your network, including your Edge hosts.
+8.  Provide the host cluster with the Virtual IP (VIP) address used by the physical site. Ensure that this VIP is not in
+    a CIDR range that cannot routed through a proxy. In addition, ensure that this VIP does not overlap with any IP
+    address already used by other hosts in your network, including your Edge hosts.
 
-   You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of NTP
-   servers. Click on **Next**.
+    You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of
+    NTP servers. Click on **Next**.
 
-9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
-   the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
-   **Next**.
+9.  The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
+    the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
+    **Next**.
 
 10. (Optional) If you want to provision a two-node high availability cluster, check the **Enable Two-Node Capability**
     box to enable the two-node high availability architecture. This means you must have exactly two nodes in the control
@@ -150,73 +150,74 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
     following locations.
 
-  <Tabs>
+        <Tabs>
 
-  <TabItem value="calico" label="Calico">
+        <TabItem value="calico" label="Calico">
 
-    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and
-    set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
+          In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and
+          set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
 
-    ```yaml {11}
-    manifests:
-        calico:
-            ...
-            env:
-            # Additional env variables for calico-node
-            calicoNode:
-                #IPV6: "autodetect"
-                #FELIX_IPV6SUPPORT: "true"
-                #CALICO_IPV6POOL_NAT_OUTGOING: "true"
-                #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-                IP_AUTODETECTION_METHOD: "kubernetes-internal-ip"
-    ```
+          ```yaml {11}
+          manifests:
+              calico:
+                  ...
+                  env:
+                  # Additional env variables for calico-node
+                  calicoNode:
+                      #IPV6: "autodetect"
+                      #FELIX_IPV6SUPPORT: "true"
+                      #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+                      #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+                      IP_AUTODETECTION_METHOD: "kubernetes-internal-ip"
+          ```
 
-  </TabItem>
+        </TabItem>
 
-  <TabItem value="flannel" label="Flannel">
+        <TabItem value="flannel" label="Flannel">
 
-    In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
-    `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
-    if the NIC name of your control plane nodes is `eno32`.
+          In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
+          `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
+          if the NIC name of your control plane nodes is `eno32`.
 
-    ```yaml {8}
-    charts:
-        flannel:
-            ...
-            # flannel command arguments
-            args:
-            - "--ip-masq"
-            - "--kube-subnet-mgr"
-            - "--iface=eno32"
-    ```
+          ```yaml {8}
+          charts:
+              flannel:
+                  ...
+                  # flannel command arguments
+                  args:
+                  - "--ip-masq"
+                  - "--kube-subnet-mgr"
+                  - "--iface=eno32"
+          ```
 
-  </TabItem>
-  
-  <TabItem value="cilium" label="Cilium">
-    You do not need to make any adjustments to the Cilium pack.
-  </TabItem>
+        </TabItem>
 
-  <TabItem value="other" label="Other">
-    If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
-  </TabItem>
-  
-  </Tabs>
+        <TabItem value="cilium" label="Cilium">
+          You do not need to make any adjustments to the Cilium pack.
+        </TabItem>
 
-:::warning
+        <TabItem value="other" label="Other">
+          If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts.
+        </TabItem>
 
-After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless
-you remove and re-add them back to the cluster.
+        </Tabs>
 
-:::
+    :::warning
 
-12. The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up
-    Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
+    After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts
+    unless you remove and re-add them back to the cluster.
 
-13. Review the settings summary and click on **Finish Configuration** to deploy the cluster.
+    :::
 
-    After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the
-    installation progress in Palette. The cluster overview page displays a summary of the progress. Use the _Events_ tab
-    to review detailed logs.
+13. <PartialsComponent category="clusters" name="cluster-settings" />
+
+14. Select **Validate** to review your cluster configurations and settings.
+
+15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ### Validate
 

@@ -106,27 +106,15 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
     | **Availability zones** | Specify the Availability Zones.                                                                                                                                                                                                                               |
     | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
 
-<!-- prettier-ignore-start -->
+13. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
-    options. Refer to the applicable guide for additional information.
+14. Select **Validate** to review your cluster configurations and settings.
 
-    | **Left Menu Item** | **Additional Information** |
-    | --- | --- |
-    | **Manage machines** | [OS Patching](../../cluster-management/os-patching.md) |
-    | **Schedule scans** | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security) |
-    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) |
-    | **RBAC** | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 
-
-<!-- prettier-ignore-end -->
-
-14. Select **Validate** to review the cluster configuration and settings summary.
-
-15. Select **Finish Configuration** to deploy the cluster. Provisioning can take several minutes.
+15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
-The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Refer to the
-**Events** tab to monitor the deployment in real time.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ### Deploy a Workload Cluster with LXD VMs as Control Plane Nodes
 
@@ -170,8 +158,6 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
     | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. If you are using a hosted LXD-based control plane, the resource pool, availability zones, and tags must match. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
     | **Network Type**       | This option is only available when **Use LXD VMs** is enabled. Select **DHCP** or **Static IP**. For **Static IP**, select the **IP Address Management** drop-down menu, and choose the desired IP pool for the workload cluster.                                                                                                                                            |
 
-    <!-- prettier-ignore-start -->
-
     :::danger
 
     Ensure that your **Resource Pool**, **Availability Zones**, and **Tags** selections match the same values used for
@@ -182,25 +168,15 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
     ![Screenshot of Cloud Configuration section in Node pools configuration](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-cloud-config_4-7-b.webp)
 
-13. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
-    options. Refer to applicable guide for additional information.
+13. <PartialsComponent category="clusters" name="cluster-settings" />
 
-    | **Left Menu Item**   | **Additional Information**                                                                                                                                                                                        |
-    | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Manage machines**  | [OS Patching](../../cluster-management/os-patching.md)                                                                                                                                                            |
-    | **Schedule scans**   | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security)                                                                                                                             |
-    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md)                                                                                                                                   |
-    | **RBAC**             | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> |
+14. Select **Validate** to review your cluster configurations and settings.
 
-<!-- prettier-ignore-end -->
-
-14. Select **Validate** to review the cluster configuration and settings summary.
-
-15. Select **Finish Configuration** to deploy the cluster. Provisioning can take several minutes.
+15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
-The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Refer to the
-**Events** tab to monitor the deployment in real time.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 
