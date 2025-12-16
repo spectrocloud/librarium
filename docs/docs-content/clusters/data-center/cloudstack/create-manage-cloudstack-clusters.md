@@ -34,14 +34,15 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
   [Create a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
   guide.
 
-- An imported CloudStack template used to map to the Ubuntu or BYOOS image, and Kubernetes version defined in the cluster profile.
+- An imported CloudStack template used to map to the Ubuntu or BYOOS image, and Kubernetes version defined in the
+  cluster profile.
 
       <details>
 
       <summary> Importing a template </summary>
 
-            In CloudStack console, navigate to **Images**. 
-            
+            In CloudStack console, navigate to **Images**.
+
             Select **Templates** and click on **Register Template from URL**.
 
             Provide values for the fields below.
