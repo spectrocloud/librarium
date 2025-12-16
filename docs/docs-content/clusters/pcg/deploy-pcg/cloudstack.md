@@ -143,6 +143,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
     the `~/.palette/pcg/pcg-<date-time>` directory. The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the `pcg.yaml`
     file are encrypted and cannot be manually updated. To change these values, use the
     `palette pcg install --update-passwords` command. Refer to the
+
     <VersionedLink text="PCG command" url="/automation/palette-cli/commands/pcg#update-passwords" /> reference page for
     more information.
 
