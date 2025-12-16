@@ -10,6 +10,7 @@ vale/
 .dockerignore
 static/scripts/kapa-widget.bundle.js
 
+static/apis/**/*.json
 
 # Troublesome files
 tsconfig.json
