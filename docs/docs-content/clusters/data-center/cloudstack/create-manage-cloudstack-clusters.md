@@ -111,7 +111,6 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
    | **Sync cluster with CloudStack Kubernetes Service (CKS)** | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting.                                                                                     | No       |
    | **Update worker pools in parallel**                       | Palette can more efficiently manage workloads by updating multiple workpools simultaneously.                                                                                                                | No       |
 
-
 </TabItem>
 
 <TabItem label="PCG with Static Networking" value="pcg-static">
@@ -125,11 +124,10 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
    | **Project Name**                                          | The Project name within the Domain that the cluster will be created in.                                                                                                                                     | Yes      |
    | **SSH Key**                                               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
    | **Static placement**                                      | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
-   | **VPC**                                               | The VPC to use for the cluster. | Yes       |
-   | **Network**                                               | The Network to use for the cluster. | Yes      |
-   | **Control plane endpoint**                                               | The IP address for the Control plane.  | Yes       |
+   | **VPC**                                                   | The VPC to use for the cluster.                                                                                                                                                                             | Yes      |
+   | **Network**                                               | The Network to use for the cluster.                                                                                                                                                                         | Yes      |
+   | **Control plane endpoint**                                | The IP address for the Control plane.                                                                                                                                                                       | Yes      |
    | **Sync cluster with CloudStack Kubernetes Service (CKS)** | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting.                                                                                     | No       |
-
 
 </TabItem>
 
