@@ -74,7 +74,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 
 - DNS must be able to resolve `api.spectrocloud.com` when using SaaS PCG.
 
-- A CloudStack template imported
+- A CloudStack template imported.
 
       <details>
 
