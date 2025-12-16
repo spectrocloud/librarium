@@ -28,10 +28,9 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 - Depending on the console environment, the TUI may not display the full QR code for Palette registration. This issue
   has been observed in the VMware vSphere web console, where limited console window size can cause the QR code to appear
   partially truncated.
-- In Agent mode, the TUI only allows managing the VLAN settings that were created via it. The TUI displays the
-  pre-existing settings but does not allow editing or deletion of them. If you attempt to update a pre-existing network
-  setting via TUI, a new configuration will be created alongside the existing one, rather than replacing it. To manage
-  pre-existing configurations, use the original configuration methods such as `systemd-networkd`, Netplan, or
+- In Agent mode, modifying VLAN settings using the TUI is allowed only if the settings were created via the TUI. Pre-existing settings are read-only. If you attempt to update pre-existing network
+  settings via the TUI, a new configuration is created alongside the existing one. To manage
+  pre-existing configurations, use the original configuration method such as `systemd-networkd`, Netplan, or
   NetworkManager.
 
 ## Prerequisites
