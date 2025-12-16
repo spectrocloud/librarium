@@ -120,14 +120,10 @@ Use the following steps to provision a new AWS cluster:
    | **Control plane subnet** | Select the control plane network from the **drop-down Menu**.                  |
    | **Worker Network**       | Select the worker network from the **drop-down Menu**.                         |
 
-10. Configure the control plane and worker node pool. Specify availability zones, instance types,
-    [instance cost type](architecture.md#spot-instances), disk size, the number of nodes, and
-    [autoscaler support](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md),
-    as necessary. Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the
-    node pool configuration.
+10. Provide the following node pool and cloud configuration information for the control plane and worker node pools.
 
     The minimum number of CPUs and amount of memory depend on your cluster profile, but in general you need at least 4
-    CPUs and 4 GB of memory both in the control plane pool and across all worker pools.
+    CPUs and 4 GB of memory for each node in both the control plane pool and across all worker pools.
 
     :::info
 
@@ -137,38 +133,36 @@ Use the following steps to provision a new AWS cluster:
 
     :::
 
-11. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the
-    taint label can be edited, review the [Node Pool](../../cluster-management/node-pool.md) management page to learn
-    more. Toggle the **Taint** button to create a label.
+    #### Node Configuration Settings
 
-12. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
-    parameters:
+    | **Parameter**                          | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Node pool name**                     | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+    | **Enable Autoscaler**                  | _Only applicable to worker node pools._ Enable this option to allow the node pool to automatically scale based on workload demand using [autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md). When enabled, you need to provide values for the following parameters: <br /><br /> - **Minimum size** - The minimum number of nodes that should be maintained in the node pool. <br /> - **Maximum size** - The maximum number of nodes that can be created in the node pool.                                                                                                                                                                                                                                                             |
+    | **Node repave interval (Optional)**    | _Only applicable to worker node pools._ Specify the time interval in seconds at which nodes in the node pool are [repaved](../../cluster-management/node-pool.md#repave-behavior-and-configuration). The default value is `0`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Number of nodes in the pool**        | Specify the number of nodes in the node pool. For control plane pools, this number can be 1, 3, or 5. For worker node pools, this option is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | **Allow worker capability (Optional)** | _Only applicable to control plane pools._ Enable this option to allow the control plane nodes to also function as worker nodes. This is useful for small clusters where resource utilization needs to be optimized.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Rolling update**                     | _Only applicable to worker node pools._ - **Expand First** - When performing a rolling update, new nodes are added to the node pool before old nodes are removed. This helps ensure that there is always sufficient capacity to run workloads during the update process. <br /> - **Contract First** - Old nodes are removed from the pool before new nodes are added.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Additional Labels (Optional)**       | You can add optional labels to nodes in key-value format. For general information about applying labels, review the [Node Labels](../../cluster-management/node-labels.md) guide. Example: `"environment": "production"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | **Taints (Optional)**                  | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Taints and Tolerations](../../cluster-management/taints.md) guide to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the drop-down menu to choose one of the following **Effect** options: <br /><br /> - **NoSchedule** - Pods are not scheduled onto nodes with this taint. <br /> - **PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. <br /> - **NoExecute** - Existing pods on nodes with this taint are evicted. |
 
-    | **Parameter** | **Description**                                                                                     |
-    | ------------- | --------------------------------------------------------------------------------------------------- |
-    | **Key**       | Custom key for the taint.                                                                           |
-    | **Value**     | Custom value for the taint key.                                                                     |
-    | **Effect**    | Make the choice of effect from the drop-down menu. Review the effect table bellow for more details. |
+    #### Cloud Configuration Settings
 
-    #### Effect Table
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                            |
+    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Instance Option**                       | _Only applicable to worker node pools._ Choose a pricing method:<br /><br />- **On-Demand** - Provides stable and uninterrupted compute capacity at a higher cost.<br />- **Spot** - Allows you to bid for unused EC2 capacity at a lower cost.<br />We recommend you base your choice on your application's requirements. |
+    | **Instance Type**                         | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                            |
+    | **Availability Zones**                    | Select one or more availability zones for the node pool. Distributing nodes across multiple availability zones increases fault tolerance and availability.                                                                                                                                                                 |
+    | **Additional Security Groups (Optional)** | If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the node pool. Use the drop-down menu to select additional security groups.                                |
+    | **Root Disk size (GB)**                   | Choose a disk size based on your requirements. The default size is `60`.                                                                                                                                                                                                                                                   |
 
-    | **Parameter**        | **Description**                                                                                                                              |
-    | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **NoSchedule**       | A pod that cannot tolerate the node taint and should not be scheduled to the node.                                                           |
-    | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                                  |
-    | **NoExecute**        | New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted they do not tolerate the taint. |
+11. Click **Next**.
 
-13. If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS
-    [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker
-    group nodes. Use the **Additional Security Groups (Optional) drop-down Menu** to select additional security groups.
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-14. Click **Next**.
+13. Select **Validate** to review your cluster configurations and settings.
 
-15. <PartialsComponent category="clusters" name="cluster-settings" />
-
-16. Select **Validate** to review your cluster configurations and settings.
-
-17. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
