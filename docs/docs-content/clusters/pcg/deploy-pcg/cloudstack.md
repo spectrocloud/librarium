@@ -86,8 +86,8 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 
             | **Field** | **Description** |
             | --------- | --------------- |
-            | **URL** | Provide image template URL. The URL must end with `qcow2` when using KVM as the hypervisor. |
-            | **Name** | Must follow the format `u-2404-0-k-1336-0`. |
+            | **URL** | Provide the following image [template URL](https://cloudstackgoldenimage.s3.us-east-1.amazonaws.com/u-2404-0-k-13210-0.qcow2). The URL must end with `qcow2` when using KVM as the hypervisor. |
+            | **Name** | Must follow the format `u-2404-0-k-13210-0`. |
             | **Description** | Optional. |
             | **Zone** | Specify the zone from the dropdown. |
             | **Domain** | Specify the domain from the dropdown. |
@@ -104,9 +104,9 @@ environment using KVM as the hypervisor. Before you begin the installation, care
             Click **OK**.
 
             **Note:**
-            Image name must follow the required format, and only one template with that name may exist per user. Duplicate names can cause CloudStack deployment failures.
+            Image name must follow the required format, must be set **Public**, and only one template with that name may exist per user. Duplicate names can cause CloudStack functional issues and deployment failures.
 
-            For example, user A imports an image named `u-2404-0-k-1336-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-1336-0` and user B will have two templates named `u-2404-0-k-1336-0`. When user B deploys a cluster using `u-2404-0-k-1336-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-1336-0, but got 2`.
+            For example, user A imports an image named `u-2404-0-k-13210-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-13210-0` and user B will have two templates named `u-2404-0-k-13210-0`. When user B deploys a cluster using `u-2404-0-k-13210-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-13210-0, but got 2`.
 
       </details>
 

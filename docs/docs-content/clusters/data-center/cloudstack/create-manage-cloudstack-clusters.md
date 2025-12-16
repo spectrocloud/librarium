@@ -47,7 +47,7 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
 
             | **Field** | **Description** |
             | --------- | --------------- |
-            | **URL** | Provide image template URL. The URL must end with `qcow2` when using KVM as the hypervisor. |
+            | **URL** | Provide the following [Ubuntu template URL](https://cloudstackgoldenimage.s3.us-east-1.amazonaws.com/u-2404-0-k-13210-0.qcow2). The URL must end with `qcow2` when using KVM as the hypervisor, and must match the version of Ubuntu to be used in the Cluster Profile. If you are using BYOI, use the URL |
             | **Name** | Must follow the format `u-2404-0-k-1336-0`. |
             | **Description** | Optional. |
             | **Zone** | Specify the zone from the dropdown. |
@@ -65,7 +65,7 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
             Click **OK**.
 
             **Note:**
-            Image name must follow the required format, and only one template with that name may exist per user. Duplicate names can cause CloudStack deployment failures.
+            Image name must follow the required format, must be set **Public**, and only one template with that name may exist per user. Duplicate names can cause CloudStack functional issues and deployment failures.
 
             For example, user A imports an image named `u-2404-0-k-1336-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-1336-0` and user B will have two templates named `u-2404-0-k-1336-0`. When user B deploys a cluster using `u-2404-0-k-1336-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-1336-0, but got 2`.
 
@@ -95,6 +95,10 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
 
 7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
+<Tabs groupId="cluster-configuration-pcg">
+
+<TabItem label="PCG with Dynamic Network" value="pcg-dynamic">
+
 8. Fill out the Apache CloudStack configuration details for the cluster. Refer to the table below to learn more about
    each option. Click **Next** to proceed.
 
@@ -106,6 +110,30 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
    | **Static placement**                                      | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
    | **Sync cluster with CloudStack Kubernetes Service (CKS)** | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting.                                                                                     | No       |
    | **Update worker pools in parallel**                       | Palette can more efficiently manage workloads by updating multiple workpools simultaneously.                                                                                                                | No       |
+
+
+</TabItem>
+
+<TabItem label="PCG with Static Networking" value="pcg-static">
+
+8. Fill out the Apache CloudStack configuration details for the cluster. Refer to the table below to learn more about
+   each option. Click **Next** to proceed.
+
+   | Field Name                                                | Description                                                                                                                                                                                                 | Required |
+   | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+   | **Zone**                                                  | The Apache CloudStack physical environment the cluster will be created in.                                                                                                                                  | Yes      |
+   | **Project Name**                                          | The Project name within the Domain that the cluster will be created in.                                                                                                                                     | Yes      |
+   | **SSH Key**                                               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
+   | **Static placement**                                      | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
+   | **VPC**                                               | The VPC to use for the cluster. | Yes       |
+   | **Network**                                               | The Network to use for the cluster. | Yes      |
+   | **Control plane endpoint**                                               | The IP address for the Control plane.  | Yes       |
+   | **Sync cluster with CloudStack Kubernetes Service (CKS)** | To use this, the CloudStack Kubernetes Service must be enabled on the CloudStack management server in a Global Setting.                                                                                     | No       |
+
+
+</TabItem>
+
+</Tabs>
 
 9. Configure the control plane and worker node pool configurations. Click **Next** to proceed.
 
