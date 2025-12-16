@@ -64,7 +64,7 @@ environment.
    | **Secret Key**                   | Enter the CloudStack Secret key for the user account that has permissions to deploy workload clusters. Click **Validate** to verify the connection.                                      |
    | **Domain**                       | Enter the CloudStack [domain](https://docs.cloudstack.apache.org/en/latest/adminguide/accounts.html#domains) name for the user account that has permissions to deploy workload clusters. |
    | **Allow Insecure Connection**    | Enable this option if you want to skip TLS certificate verification for your CloudStack environment.                                                                                     |
-   | **CA Certificate**               | If your CloudStack environment uses a custom or self-signed TLS certificate, provide the CA certificate in PEM format.                                                                   |
+
 
 5. After filling out the required information, click **Confirm** to add the CloudStack account to Palette.
 

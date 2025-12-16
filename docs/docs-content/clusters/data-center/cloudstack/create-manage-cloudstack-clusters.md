@@ -34,21 +34,22 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
   [Create a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
   guide.
 
-- A CloudStack template imported. This will be used to map the corresponding Ubuntu and Kubernetes versions defined in
-  the cluster profile.
+- An imported CloudStack template used to map to the Ubuntu or BYOOS image, and Kubernetes version defined in the cluster profile.
 
       <details>
 
       <summary> Importing a template </summary>
 
-            In CloudStack console, navigate to **Images**. Select **Templates** and click on **Register Template from URL**.
+            In CloudStack console, navigate to **Images**. 
+            
+            Select **Templates** and click on **Register Template from URL**.
 
             Provide values for the fields below.
 
             | **Field** | **Description** |
             | --------- | --------------- |
-            | **URL** | Provide the following [Ubuntu template URL](https://cloudstackgoldenimage.s3.us-east-1.amazonaws.com/u-2404-0-k-13210-0.qcow2). The URL must end with `qcow2` when using KVM as the hypervisor, and must match the version of Ubuntu to be used in the Cluster Profile. If you are using BYOI, use the URL |
-            | **Name** | Must follow the format `u-2404-0-k-1336-0`. |
+            | **URL** | Provide the following [Ubuntu template URL](https://cloudstackgoldenimage.s3.us-east-1.amazonaws.com/u-2404-0-k-13210-0.qcow2) or the URL to your BYOOS. The URL must end with `qcow2` when using KVM as the hypervisor. |
+            | **Name** | Must follow the format `u-2404-0-k-13210-0`. |
             | **Description** | Optional. |
             | **Zone** | Specify the zone from the dropdown. |
             | **Domain** | Specify the domain from the dropdown. |
@@ -67,7 +68,7 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
             **Note:**
             Image name must follow the required format, must be set **Public**, and only one template with that name may exist per user. Duplicate names can cause CloudStack functional issues and deployment failures.
 
-            For example, user A imports an image named `u-2404-0-k-1336-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-1336-0` and user B will have two templates named `u-2404-0-k-1336-0`. When user B deploys a cluster using `u-2404-0-k-1336-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-1336-0, but got 2`.
+            For example, user A imports an image named `u-2404-0-k-13210-0` and sets it to **Public** availability. User B creates another template with the same name but does not mark it **Public**. User A will have one template named `u-2404-0-k-13210-0` and user B will have two templates named `u-2404-0-k-13210-0`. When user B deploys a cluster using `u-2404-0-k-13210-0`, the deployment will fail with a duplicate template error: `Reconciler error: expected 1 Template with name u-2404-0-k-13210-0, but got 2`.
 
       </details>
 

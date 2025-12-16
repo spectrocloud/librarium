@@ -112,7 +112,88 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 
 ## Deploy PCG
 
-<PartialsComponent category="pcg" name="pcg-initial-installation" edition="CloudStack" />
+1.  On your Linux host with the Palette CLI installed, open a terminal session.
+
+2.  Create a Palette CLI encryption passphrase and set it as an environment variable. Replace `<palette-cli-encryption-passphrase>` with your passphrase.
+
+    ```shell
+    export PALETTE_ENCRYPTION_PASSWORD=<palette-cli-encryption-passphrase>
+    ```
+
+3.  Issue the following command to authenticate your Palette CLI installation with Palette. When prompted, enter the required information. Refer to
+    the table below for information about each parameter.
+
+    ```shell
+    palette login
+    ```
+
+    | **Parameter**                  | **Description**                                                                                                                                                                                                                                                    |
+    | :----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Spectro Cloud Console**      | Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance.                                                                      |
+    | **Allow Insecure Connection**  | Bypass x509 server Certificate Authority (CA) verification. Enter `y` if you are using a self-hosted Palette or Palette VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter `n`. |
+    | **Spectro Cloud API Key**      | Enter your Palette API Key. Refer to the <VersionedLink text="Create API Key" url="/user-management/authentication/api-key/create-api-key" /> guide for more information.                                                                                                           |
+    | **Spectro Cloud Organization** | Select your Palette organization name.                                                                                                                                                                                                                             |
+    | **Spectro Cloud Project**      | Select the Palette project you want to register your {props.edition} account in.                                                                                                                                                                                                  |
+    | **Acknowledge**                | Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner.                                                                                                                                              |
+
+    :::info
+
+    After completing the `palette pcg install` steps, the configuration details are saved to a file named `pcg.yaml` in the `~/.palette/pcg/pcg-<date-time>` directory.
+    The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the `pcg.yaml` file are encrypted and cannot be manually updated. To change these values, use the
+    `palette pcg install --update-passwords` command. Refer to the <VersionedLink text="PCG command" url="/automation/palette-cli/commands/pcg#update-passwords" />
+    reference page for more information.
+
+    :::
+
+4.  Once you have authenticated your Palette CLI installation, start the PCG installer by issuing the following command. Refer to the
+    table below for information about each parameter.
+
+    ```bash
+    palette pcg install
+    ```
+
+    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                                                    |
+    | :--------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Management Plane Type**                            | Select **Palette** or **VerteX**.                                                                                                                                                                                                                                                          |
+    | **Enable Ubuntu Pro (required for production)**      | Enter `y` if you want to use Ubuntu Pro and provide an Ubuntu Pro token. Otherwise, enter `n`.                                                                                                                                                                                      |
+    | **Select an image registry type**                    | For a non-airgap installation, choose `Default` to pull images from public image registries. This requires an internet connection. For airgapped installations, select `Custom` and point to your airgap support VM or a custom internal registry that contains the required images. |
+    | **Cloud Type**                                       | Select **{props.edition}**.                                                                                                                                                                                                                                                                  |
+    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG.                                                                                                                                                                                                                       |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the cloud account to only be available at the tenant admin scope.                                                                |
+
+5. If you want to configure your PCG to use a proxy network, complete the following fields, as appropriate.
+
+    :::info
+
+    By default, proxy environment variables (`HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY`) configured during PCG installation are propagated to all PCG cluster nodes, as well as the nodes of all tenant workload clusters deployed with the PCG. However, proxy CA certificates are only propagated to PCG cluster nodes; they are not propagated the nodes of tenant workload clusters. 
+
+    :::
+
+    | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
+   | :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes in the cluster, as well as all tenant clusters using the PCG. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                   |
+   | **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes in the cluster, as well as all tenant clusters using the PCG. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                     |
+   
+6. Enter the following network details.
+
+   | **Parameter**        | **Description**                                                                                                                                                                                        |
+   | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Pod CIDR**         | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                |
+   | **Service IP Range** | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. |                                                                                                       |
+
+7. If you selected `Custom` for the image registry type, you are prompted to provide the following information.
+
+   | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
+   | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Registry Name**                                        | Assign a name to the custom registry.                                                                                                                                                                                                                              |
+   | **Registry Endpoint**                                    | Enter the endpoint or IP address for the custom registry. Example: `https://palette.example.com` or `https://10.10.1.0`.                                                                                                                                                 |
+   | **Registry Base Content Path**                           | Enter the base content path for the custom registry. Example: `spectro-images`.                                                                                                                                                                                          |
+   | **Configure Registry Mirror**                            | Customize the default mirror registry settings. Your system default text editor, such as Vi, will open and allow you to make any desired changes. When finished, save and exit the file.                   |
+   | **Allow Insecure Connection (Bypass x509 Verification)** | Bypass x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you receive a follow-up prompt asking you to provide the file path to the CA certificate. |
+   | **Registry CA certificate Filepath**                     | (Optional) Enter the CA certificate for the custom registry. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                               |
+   | **Registry Username**                                    | Enter the username for the custom registry.                                                                                                                                                                                                                              |
+   | **Password**                                             | Enter the password for the custom registry.                                                                                                                                                                                                                              |
+
 
 8. Provide the CloudStack account information when prompted by the Palette CLI.
 
@@ -135,6 +216,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
    | **Static Control Plane IP Address (optional)**   | Enter the static IP address for the control plane node of the PCG if you want to assign a fixed IP. Otherwise, leave blank.                                                                                                                                                                                                        |
    | **Patch OS on boot**                             | Enter `y` to enable automatic OS patching when the PCG nodes boot. Enter `n` to disable automatic OS patching.                                                                                                                                                                                                                     |
    | **Offering**                                     | Select the CloudStack service offering that defines the compute resources for the PCG nodes. Refer to the [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.                                                                                                                                         |
+   | **Disk Offering**                                     | Select the CloudStack service offering that defines the compute resources for the PCG nodes. Refer to the [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing. This option will be available based on the **Offering** template selected. |
 
 10. Provide the PCG cluster size information when prompted by the Palette CLI.
 
