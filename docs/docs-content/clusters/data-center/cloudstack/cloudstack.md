@@ -32,7 +32,8 @@ of the PCG architecture page for more information.
 
 :::
 
-After you have deployed the PCG, you can proceed to [add a CloudStack account](./add-cloudstack-accounts.md), which will enable you to [create and manage CloudStack clusters](./create-manage-cloudstack-clusters.md) in Palette.
+After you have deployed the PCG, you can proceed to [add a CloudStack account](./add-cloudstack-accounts.md), which will
+enable you to [create and manage CloudStack clusters](./create-manage-cloudstack-clusters.md) in Palette.
 
 ## Supported Versions
 
