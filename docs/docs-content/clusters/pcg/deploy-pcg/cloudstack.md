@@ -184,9 +184,9 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 6.  Enter the following network details.
 
     | **Parameter**        | **Description**                                                                                                                                                                                        |
-    | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
+    | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
     | **Pod CIDR**         | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                |
-    | **Service IP Range** | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. |     |
+    | **Service IP Range** | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. |
 
 7.  If you selected `Custom` for the image registry type, you are prompted to provide the following information.
 
