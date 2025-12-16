@@ -131,7 +131,7 @@ preset. Replace these values with your own base64 encoded values.
 
 :::info
 
-The [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer)
+The [hello-universe](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer)
 repository provides a token that you can use.
 
 :::
