@@ -145,7 +145,7 @@ VerteX.
 #### Limitations
 
 - You must use Palette VerteX to deploy clusters in Azure Government Secret cloud. Multi-tenant Palette SaaS and
-  self-hosted Palette instances do not support Azure Government Secret cloud.
+  self-hosted Palette instances are not supported.
 
 - Only [Azure IaaS clusters](./create-azure-cluster.md) can be deployed in Azure Government Secret cloud. AKS clusters
   are not supported.
@@ -168,8 +168,8 @@ VerteX.
   Government Secret cloud.
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
-  [Required Permissions](./required-permissions.md#iaas-static-placement) guide for more information.
+  provision compute, network, and security resources in the desired clouds and regions. This includes the required
+  permissions for [static placement](required-permissions.md#static-placement-iaas-static-placement).
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
