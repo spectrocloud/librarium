@@ -39,9 +39,9 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2069 -->
 
-- Fixed an issue that caused cluster operations performed at the same time as Terraform
+- Fixed an issue that caused certain Day-2 cluster operations to fail for clusters with the Terraform
   [`spectrocloud_addon_deployment`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/addon_deployment)
-  application to fail.
+  resource.
 
 ### Packs
 
