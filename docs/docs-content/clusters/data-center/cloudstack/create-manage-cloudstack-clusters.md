@@ -9,7 +9,8 @@ tags: ["data center", "cloudstack"]
 
 :::preview
 
-This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature is supported in self-hosted Palette only.
+This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature
+is supported in self-hosted Palette only.
 
 :::
 
@@ -26,10 +27,9 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
 
 :::
 
-
 ## Prerequisites
 
-- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled. 
+- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled.
 
 - A CloudStack account registered in Palette. Refer to the
   [Add CloudStack Accounts to Palette](./add-cloudstack-accounts.md) guide to learn how to add CloudStack accounts.

@@ -20,7 +20,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 
 ## Prerequisites
 
-- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled. 
+- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled.
 
 - A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   page for guidance.
