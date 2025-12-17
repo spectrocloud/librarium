@@ -35,7 +35,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 
 - Fixed an issue that caused duplicate cluster packs errors to appear when Terraform
   [`spectrocloud_cluster_profile`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
-  updates trigger API validation errors.
+  updates triggered API validation errors.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2069 -->
 
@@ -51,7 +51,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3350 -->
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbort"/> pack version 1.18.1 now supports the configuration of HTTP access. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=harbor&tab=custom"/> tab for further information. 
+- <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbort"/> pack version 1.18.1 now supports configuring HTTP access. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=harbor&tab=custom"/> tab for further information. 
 
 - Users can now use Ubuntu 22.04 on [VMware](../clusters/data-center/vmware/vmware.md), [Azure](../clusters/public-cloud/azure/azure-cloud.md), and [MAAS](../clusters/data-center/maas/maas.md) clusters using the FIPS <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack version 1.33.5.
 
