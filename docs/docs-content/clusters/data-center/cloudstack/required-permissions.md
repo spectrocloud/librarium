@@ -13,7 +13,9 @@ tags: ["data center", "cloudstack", "permissions"]
 This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature
 is supported in self-hosted Palette only.
 
-::: When Palette creates and manages clusters in an Apache CloudStack environment, it requires certain permissions to
+::: 
+
+When Palette creates and manages clusters in an Apache CloudStack environment, it requires certain permissions to
 perform actions such as creating, modifying, and deleting resources needed for cluster deployment and management.
 
 These permissions allow Palette to interact with the CloudStack API and manage the lifecycle of the clusters
