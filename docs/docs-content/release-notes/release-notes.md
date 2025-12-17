@@ -18,8 +18,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4786 -->
 
 - <TpBadge /> Palette now supports the cluster provisioning and management of CloudStack clusters. Refer to the
-  CloudStack section for further information. Review the active known issues that affect CloudStack on the [Known
-  Issues](./known-issues.md) page.
+  [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) section for further information. Review the active
+  known issues that affect CloudStack on the [Known Issues](./known-issues.md) page.
 
 - Terraform version 0.26.1 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
@@ -115,14 +115,14 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
 - Fixed an issue that caused Windows 25 server VMs to become inaccessible after being migrated using the [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9395 -->
-- Fixed an issue that caused the CloudStack PCG type to appear under **Tenant Settings** even though it was disabled using a system administration [feature flag](../enterprise-version/system-management/feature-flags.md).
+- Fixed an issue that caused the [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) PCG type to appear under **Tenant Settings** even though it was disabled using a system administration [feature flag](../enterprise-version/system-management/feature-flags.md).
 
 ### Packs
 
 #### Pack Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3334 -->
-- The following packs support CloudStack deployment:
+- The following packs support [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) deployment:
   - Ubuntu 24.04
   - Palette eXtended Kubernetes versions 1.31.14, 1.32.10, and 1.33.6
   - Calico 3.30.3-rev1
