@@ -10,8 +10,8 @@ sidebar_position: 10
 
 Palette and Palette VerteX integrate with multiple Azure environments to support diverse organizational needs, ranging
 from standard commercial deployments to highly regulated government workloads. Before deploying clusters, you must
-register your Azure cloud account so Palette or Palette VerteX can authenticate, provision, and manage resources on your
-behalf.
+register your Azure cloud account so that Palette or Palette VerteX can authenticate, provision, and manage resources on
+your behalf.
 
 The following table summarizes which Azure clouds are supported by Palette or Palette VerteX.
 
@@ -30,8 +30,7 @@ environment. Once registered, you can deploy clusters in your chosen Azure cloud
 
 Azure Commercial, also known as Azure Public Cloud, is the default option for most clusters deployed in Azure cloud.
 Adding your Azure Commercial account to Palette or Palette VerteX allows you to provision, manage, and scale clusters
-across a wide range of global regions with standard Azure services. This section discusses how to register your Azure
-Commercial account in Palette or Palette VerteX.
+across a wide range of global regions with standard Azure services.
 
 #### Prerequisites
 
@@ -80,8 +79,7 @@ Take the following steps to add an Azure Commercial cloud account in Palette or 
 [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) is a specialized cloud
 designed for U.S. government agencies and their partners, offering compliance with strict security and regulatory
 requirements. By adding your Azure Government account to Palette or Palette VerteX, you can deploy and manage clusters
-in environments that meet FedRAMP and other compliance standards. This section explains how to set up and register your
-Azure Government account to enable secure cluster operations.
+in environments that meet FedRAMP and other compliance standards.
 
 #### Prerequisites
 
@@ -135,8 +133,7 @@ Take the following steps to add an Azure Commercial cloud account in Palette or 
 [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security)
 is a highly restricted cloud environment designed for workloads that require classified data handling. Palette VerteX
 supports cluster deployments in Azure Government Secret cloud, providing flexibility for organizations that need to meet
-stringent security requirements. This section explains how to register an Azure Government Secret account with Palette
-VerteX.
+stringent security requirements.
 
 :::preview
 
@@ -169,7 +166,7 @@ VerteX.
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
   provision compute, network, and security resources in the desired clouds and regions. This includes the required
-  permissions for [static placement](required-permissions.md#static-placement-iaas-static-placement).
+  permissions for [static placement](required-permissions.md#iaas-static-placement).
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
