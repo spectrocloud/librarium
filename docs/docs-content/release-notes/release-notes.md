@@ -11,7 +11,71 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 19, 2025 - Component Updates {#component-updates-2025-51}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.12.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.2  |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2017 -->
+
+- The
+  [`spectrocloud_registry_oci` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/registry_oci)
+  now provides the `wait_for_sync` field, allowing users to configure Terraform to wait for the OCI registry to complete
+  its initial synchronization before marking the resource as created or updated.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2068 -->
+
+- Fixed an issue that caused duplicate cluster packs errors to appear when Terraform
+  [`spectrocloud_cluster_profile`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
+  updates trigger API validation errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2069 -->
+
+- Fixed an issue that caused cluster operations performed at the same time as Terraform
+  [`spectrocloud_addon_deployment`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/addon_deployment)
+  application to fail.
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3285 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3350 -->
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbort"/> pack version 1.18.1 now supports the configuration of HTTP access. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=harbor&tab=custom"/> tab for further information. 
+
+- Users can now use Ubuntu 22.04 on [VMware](../clusters/data-center/vmware/vmware.md), [Azure](../clusters/public-cloud/azure/azure-cloud.md), and [MAAS](../clusters/data-center/maas/maas.md") clusters using the FIPS <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack version 1.33.5.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3504 -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Harbor                       | Add-on | :white_check_mark: | :x:                | 1.18.1      |
+| Istio                        | Add-on | :white_check_mark: | :x:                | 1.28.1      |
+| Kong                         | Add-on | :white_check_mark: | :x:                | 3.0.0       |
+| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.49.0     |
+| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.11.0     |
+| Spectro Kubernetes Dashboard | Add-on | :white_check_mark: | :x:                | 7.13.0      |
+| Ubuntu (Azure)               | OS     | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (MAAS)                | OS     | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (vSphere)             | OS     | :x:                | :white_check_mark: | 22.04       |
+
 ## December 17, 2025 - Release 4.8.12
+
+The following component updates are applicable to this release:
+
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 #### Features
 
@@ -205,6 +269,7 @@ The following component updates are applicable to this release:
 
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -237,6 +302,7 @@ The following component updates are applicable to this release:
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 ### Improvements
 
@@ -261,6 +327,7 @@ The following component updates are applicable to this release:
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 ### Security Notices
 
