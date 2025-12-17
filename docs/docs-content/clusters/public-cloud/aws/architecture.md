@@ -181,6 +181,16 @@ use your existing server-bound software licenses. The **Dedicated Host** option 
 configuration page during cluster creation. This option allows you to specify the host resource group and any license
 configurations required for your deployment.
 
+You must ensure that the following prerequisites are met before using Dedicated Hosts for your worker nodes:
+
+- A license configuration created in AWS License Manager.
+- A Host Resource Group created in AWS License Manager with the license configuration associated.
+- Dedicated Host allocated to the Host Resource Group.
+- The desired instance type is supported on the Dedicated Host. Refer to the
+  [Amazon EC2 Dedicated Host instance capacity configurations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-limits.html)
+  for more information.
+- Ensure that the AMI licenses match the licenses associated with the Host Resource Group.
+
 ## Tags
 
 You can assign tags to clusters deployed to AWS. Tags can help you with user access control management and more
