@@ -1,0 +1,6700 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "Local Management APIs",
+    "version": "v1"
+  },
+  "paths": {
+    "/v1/edge-mgmt/cluster": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get the details of the cluster.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the details of the cluster.",
+        "operationId": "v1ClusterConfig",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Creates a cluster with the provided cluster configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Creates a cluster with the provided cluster configuration",
+        "operationId": "v1CreateCluster",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a cluster",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete a cluster",
+        "operationId": "v1DeleteCluster",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
+        "operationId": "v1PatchCluster",
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/applications": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "list the details of the cluster’s packs.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "list the details of the cluster’s packs.",
+        "operationId": "v1ClusterApplications",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterCurrentApplications"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/certificates": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get Cluster Certificates Info",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get Cluster Certificates Info",
+        "operationId": "v1CertificateDetails",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CertificateDetails"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get Edge Cluster details",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get Edge Cluster details",
+        "operationId": "v1ClusterGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Cluster"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1NotFound"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/events": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List cluster events",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List cluster events",
+        "operationId": "v1GetClusterEvents",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "namespace",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Events"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Creates a pairing request",
+        "operationId": "v1ClusterPair",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairMeta"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairInfoResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get all existing pairing requests",
+        "operationId": "v1ClusterPairDetails",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairDetailsResponse"
+            }
+          },
+          "404": {
+            "description": "Not found error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/reject": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Rejects a pairing request",
+        "operationId": "v1ClusterPairReject",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "404": {
+            "description": "Not found error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/verify-connection": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Verifies whether all cluster hosts are able to connect to palette",
+        "operationId": "v1ClusterPairVerifyConnection",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairMeta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairVerifiedConnectionResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/profiles": {
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Updates a cluster with the provided cluster configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Updates a cluster with the provided cluster configuration",
+        "operationId": "v1UpdateClusterProfiles",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfileConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/profiles/variables/validate": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Validate cluster profile variables",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Validate cluster profile variables",
+        "operationId": "v1ValidateClusterProfileVariables",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ValidateVariables"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ValidateVariablesResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/registry/content/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get Harbor Content Details",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List existing Harbor Content Details",
+        "operationId": "v1HarborContentsDetails",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1HarborContentsDetails"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/registry/content/sync-status/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get Harbor Content Sync Status",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List Harbor Content Sync Status",
+        "operationId": "v1HarborContentsSyncStatusDetails",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1HarborContentsSyncStatus"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/registry/health": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Gets the harbor health status",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Gets the harbor health status",
+        "operationId": "V1HarborHealth",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1HarborHealthDetails"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/renew-certificates": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Renew Cluster Certificates",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Renew Cluster Certificates",
+        "operationId": "v1RenewCerts",
+        "responses": {
+          "201": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/settings": {
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Update cluster settings",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update cluster settings",
+        "operationId": "v1EdgeNativeClusterSettings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeClusterSettings"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/{clusterName}": {
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Updates a cluster with the provided cluster configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Updates a cluster with the provided cluster configuration",
+        "operationId": "v1UpdateClusterConfig",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the cluster to be updated",
+            "name": "clusterName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Patch a cluster with the provided cluster configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Patch a cluster with the provided cluster configuration",
+        "operationId": "v1PatchClusterConfig",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the cluster to be patched",
+            "name": "clusterName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPatch"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/embedded/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "parses the cluster-config archive.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "parses the preloaded cluster-config archive if it was included in the ISO.",
+        "operationId": "V1ClusterConfigArchiveEmbedded",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfigArchiveDetails"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/overridden/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "parses the cluster-config archive if it was uploaded as a standalone configuration.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "parses the cluster-config archive if it exists.",
+        "operationId": "v1ClusterConfigArchiveOverriden",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfigArchiveDetails"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/update": {
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete or reject the cluster update archive",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete or reject the cluster update archive",
+        "operationId": "v1DeleteClusterUpdateArchive",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/update/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
+        "operationId": "v1ClusterConfigArchiveUpdate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfigArchiveDetails"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Fetch the cluster node pool details including edge host details.",
+        "operationId": "v1MachinePoolDetail",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create a machine pool",
+        "operationId": "v1ClusterMachinePoolCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "machine pool created",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}": {
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update machine pools",
+        "operationId": "v1ClusterMachinePoolUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+            }
+          },
+          {
+            "type": "string",
+            "description": "Name of the machine pool to be updated",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "machine pool configurations updated",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete machine pools",
+        "operationId": "v1ClusterMachinePoolDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the machine pool to be deleted",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Patch machine pools",
+        "operationId": "v1ClusterMachinePoolPatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1MachinePoolPatch"
+            }
+          },
+          {
+            "type": "string",
+            "description": "Name of the machine pool to be patched",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "machine pool configurations patched",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}/nodes/{nodeName}": {
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a node from the machine pool",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete a machine pool node",
+        "operationId": "v1ClusterMachinePoolNodeDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the machine pool",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Name of the node",
+            "name": "nodeName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/nodes": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get K8s Cluster Nodes",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "A list of the K8s Cluster Nodes",
+        "operationId": "v1ClusterNodes",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterNodes"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/connectivity/ping": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Ping an endpoint",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Ping an endpoint",
+        "operationId": "v1PingHost",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "endpoint",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1PingResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/connectivity/traceroute": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Display route that IP packets take to a network host",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Display route that IP packets take to a network host",
+        "operationId": "v1TraceRouteHost",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "endpoint",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TraceRouteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get edge host details",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get edge host info",
+        "operationId": "v1EdgeHostInfo",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostInfo"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/content/signing-public-key": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get the base64 encoded key used to verify the signed content.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the public key used to verify the signed content.",
+        "operationId": "V1GetContentSigningPublicKey",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ContentSigningKey"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/reboot": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Reboot edge host",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Reboot edge host",
+        "operationId": "v1EdgeHostActionReboot",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/reset": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Reset edge host",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Reset edge host",
+        "operationId": "v1EdgeHostActionReset",
+        "responses": {
+          "202": {
+            "description": "Accepted response with message",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/shutdown": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Shutdown edge host",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Shutdown edge host",
+        "operationId": "v1EdgeHostActionShutdown",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/upload-clusterconfig": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
+        "operationId": "V1ClusterConfigUpload",
+        "parameters": [
+          {
+            "type": "file",
+            "description": "The clusterconfig file to be uploaded.",
+            "name": "uploadFile",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "file",
+            "description": "The signature for the corresponding cluster config to be uploaded.",
+            "name": "signature",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully.",
+            "schema": {
+              "$ref": "#/definitions/uploadResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/upload-content": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Uploads an archive file and extracts it to the required location on the edge host.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Uploads an archive file and extracts it to the required location on the edge host.",
+        "operationId": "V1ContentUpload",
+        "parameters": [
+          {
+            "type": "file",
+            "description": "The archive file to be uploaded.",
+            "name": "uploadFile",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "file",
+            "description": "The signature for the corresponding archive file to be uploaded.",
+            "name": "signature",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully.",
+            "schema": {
+              "$ref": "#/definitions/uploadResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Retrieves the list of audit logs",
+        "operationId": "v1Audits",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "startTime",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "endTime",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Specify the user uid, to retrieve the specific user audit logs",
+            "name": "userUid",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Specify the resource name, to retrieve the specific resource audit logs",
+            "name": "resourceKind",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "create",
+              "update",
+              "delete",
+              "activity",
+              "action"
+            ],
+            "type": "string",
+            "name": "actionType",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token to paginate the subsequent data items",
+            "name": "continue",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AuditsList"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/v1NotFoundResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits/download": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Download audit logs as a single compressed file",
+        "produces": [
+          "application/x-tar",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Download audit logs",
+        "operationId": "v1AuditDownload",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "file",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string",
+                "description": "Specifies the filename for the downloaded file."
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/v1NotFoundResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits/filters": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Retrieves the list of filter options to display on audit ui page",
+        "operationId": "v1AuditFilter",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AuditFilterObect"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/configurations": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get edge host configurations.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get edge host configurations.",
+        "operationId": "V1EdgeHostConfigurationsGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostConfigurations"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update Edge Host configurations",
+        "operationId": "V1EdgeHostConfigurationsUpdate",
+        "parameters": [
+          {
+            "description": "Update Edge Host configurations.",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostConfigurations"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updating Edge Host configurations.",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/configurations/status": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Edge host configurations status",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Edge host configurations status",
+        "operationId": "v1EdgeHostConfigurationStatus",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostConfigurationStatus"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/download-logs": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Downloads the logs of the edge host as a tar file.",
+        "produces": [
+          "application/x-tar",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Download edge host Logs",
+        "operationId": "v1EdgeHostDownloadLogs",
+        "responses": {
+          "200": {
+            "description": "A tar file containing the logs of the edge host.",
+            "schema": {
+              "type": "file",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string",
+                "description": "Specifies the filename for the downloaded file."
+              }
+            }
+          },
+          "404": {
+            "description": "resource not found",
+            "schema": {
+              "$ref": "#/definitions/v1NotFoundResponseWithMessage"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/error-logs": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List last 'logCount' edge host error logs",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List last 'logCount' edge host error logs",
+        "operationId": "V1EdgeHostErrorLogs",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Number of logs to be fetched",
+            "name": "logCount",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Events"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/file-download/files": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Lists all the first level files from the '/var/log/files' directory.\n",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List custom files from the '/var/log/files' directory",
+        "operationId": "v1EdgeHostListCustomFiles",
+        "responses": {
+          "200": {
+            "description": "A list of files with metadata.",
+            "schema": {
+              "$ref": "#/definitions/v1FileMetadataList"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/file-download/{filePath}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Downloads a file from the `/var/log/files` directory. The file path is expected to be relative to the `/var/log/files` directory.\n",
+        "produces": [
+          "application/octet-stream",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Download a custom file from the user-defined or default directory",
+        "operationId": "v1EdgeHostCustomFileDownload",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Relative path of the file to download.",
+            "name": "filePath",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File downloaded successfully",
+            "schema": {
+              "type": "file",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string",
+                "description": "Specifies the filename for the downloaded file."
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Start edge host log collection",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Start edge host log collection",
+        "operationId": "v1EdgeHostGenerateLogs",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs-status": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Edge host log collection status",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Edge host log collection status",
+        "operationId": "v1EdgeHostGenerateLogsStatus",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostGenerateLogsStatus"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Link edge host to another edge host",
+        "operationId": "v1EdgeHostLink",
+        "parameters": [
+          {
+            "name": "LinkToken",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1LinkToken"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1LinkStatus"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link/generate-token": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Generate a link token for linking edge hosts",
+        "operationId": "v1EdgeHostLinkGenerateToken",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1LinkToken"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link/status": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the status of the edge host link",
+        "operationId": "v1EdgeHostLinkStatus",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1LinkStatus"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/unlink": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Unlink edge host from other edge hosts",
+        "operationId": "v1EdgeHostUnlink",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "peerId",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/uploaded-content/details": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get metadata of last uploaded content archive file",
+        "operationId": "v1UploadedContentDetails",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1UploadedContentDetails"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/userdata": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get edge host userdata",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get edge host userdata",
+        "operationId": "v1GetEdgeHostUserdata",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CloudInit"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Update edge host userdata",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update edge host userdata",
+        "operationId": "v1PutEdgeHostUserdata",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloudInit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accepted response with message",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Update edge host userdata",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update edge host userdata",
+        "operationId": "v1PostEdgeHostUserdata",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloudInit"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Accepted response with message",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/events/lifecycle": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get life cycle events of cluster and edge host",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get life cycle events of cluster and edge host",
+        "operationId": "v1GetLifecycleEvents",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1LifecycleEvents"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/bonds": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List network bond interfaces",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List bonds",
+        "operationId": "V1NetworkBonds",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1BondList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/bonds/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Retrieve a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get bond",
+        "operationId": "V1NetworkBond",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Bond"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create or update a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create or update bond",
+        "operationId": "V1NetworkBondUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BondRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create bond",
+        "operationId": "V1NetworkBondCreate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BondRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a bond interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete bond",
+        "operationId": "V1NetworkBondDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/bridges": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List all bridge interfaces",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List bridges",
+        "operationId": "V1NetworkBridges",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1BridgeList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/bridges/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Retrieve a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get bridge",
+        "operationId": "V1NetworkBridge",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Bridge"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create or update a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create or update bridge",
+        "operationId": "V1NetworkBridgeUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BridgeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create bridge",
+        "operationId": "V1NetworkBridgeCreate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BridgeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a bridge interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete bridge",
+        "operationId": "V1NetworkBridgeDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List network interfaces (NICs)",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List NICs",
+        "operationId": "V1NetworkInterfaces",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1NicSummaryList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get one network interface",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get NIC",
+        "operationId": "V1NetworkInterface",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1NicSummary"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces/{name}/config": {
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Update a network interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update NIC config",
+        "operationId": "V1NetworkInterfaceUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1NetworkInterfaceUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/vlans": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "List VLAN interfaces",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List VLANs",
+        "operationId": "V1NetworkVLANs",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1VLANList"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/network/vlans/{name}": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Retrieve a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get VLAN",
+        "operationId": "V1NetworkVLAN",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1VLAN"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create or update a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create or update VLAN",
+        "operationId": "V1NetworkVLANUpdate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1VLANRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Create a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create VLAN",
+        "operationId": "V1NetworkVLANCreate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1VLANRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Delete a VLAN interface configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete VLAN",
+        "operationId": "V1NetworkVLANDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/settings": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get general settings",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get general settings",
+        "operationId": "v1Settings",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Settings"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/ping": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Ping Service",
+        "tags": [
+          "ping"
+        ],
+        "summary": "Ping Service",
+        "operationId": "V1Ping",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Ping"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/current": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get current logged in user's information",
+        "tags": [
+          "users"
+        ],
+        "summary": "Get current logged in user's information",
+        "operationId": "V1CurrentUser",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UserSpec"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/v1InternalServerError"
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Patches the current logged in user's configuration",
+        "tags": [
+          "users"
+        ],
+        "summary": "Patches the current logged in user's configuration",
+        "operationId": "v1PatchCurrentUser",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UserSpec"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/default/login": {
+      "post": {
+        "description": "Authenticates the user with the specified credentials",
+        "tags": [
+          "users"
+        ],
+        "summary": "Authenticates the user with the specified credentials",
+        "operationId": "V1UserLogin",
+        "parameters": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Describes a way to set cookie from backend.",
+            "name": "setCookie",
+            "in": "query"
+          },
+          {
+            "type": "boolean",
+            "default": false,
+            "description": "Flag which if set to true will extend token timeout for the user to 24hrs and if not set will default to 2hrs",
+            "name": "extendedSession",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AuthLogin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1LoginSuccess"
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1BadRequest"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/v1InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/default/logout": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "users"
+        ],
+        "summary": "Logs out the user from the system",
+        "operationId": "V1UserLogout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1BadRequest"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/v1Unauthorized"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/v1InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/default/password/reset": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Resets the user's password",
+        "tags": [
+          "users"
+        ],
+        "summary": "Resets the user's password",
+        "operationId": "V1UserPasswordReset",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1PasswordResetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "$ref": "#/definitions/v1NoContent"
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1BadRequest"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/v1Unauthorized"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/default/token/renewal": {
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "users"
+        ],
+        "summary": "Refreshes the authentication token of the user",
+        "operationId": "V1UserTokenRenewal",
+        "parameters": [
+          {
+            "type": "boolean",
+            "default": false,
+            "description": "Flag which if set to true will extend token timeout for the user to 24hrs and if not set will default to 2hrs",
+            "name": "extendedSession",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UserToken"
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1BadRequest"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/v1Unauthorized"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/v1InternalServerError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "apiError": {
+      "type": "string"
+    },
+    "uploadResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "uploadPath": {
+          "type": "string"
+        }
+      }
+    },
+    "v1AcceptedResponseWithMessage": {
+      "description": "Accepted response with message",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ArchType": {
+      "description": "Architecture type of the edge host",
+      "type": "string",
+      "default": "amd64",
+      "enum": [
+        "arm64",
+        "amd64"
+      ]
+    },
+    "v1Audit": {
+      "description": "Audit response payload",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1AuditMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1AuditSpec"
+        }
+      }
+    },
+    "v1AuditActor": {
+      "description": "Audit actor object",
+      "properties": {
+        "actorType": {
+          "type": "string",
+          "enum": [
+            "user",
+            "system"
+          ]
+        },
+        "uid": {
+          "description": "id of actor",
+          "type": "string"
+        }
+      }
+    },
+    "v1AuditFilterObect": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "v1AuditMeta": {
+      "properties": {
+        "createTimestamp": {
+          "description": "CreationTimestamp is a timestamp representing the server time when this object was created.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "edgeHostId": {
+          "description": "edge host id",
+          "type": "string"
+        }
+      }
+    },
+    "v1AuditResourceReference": {
+      "description": "Audit resource object",
+      "properties": {
+        "kind": {
+          "description": "Audit resource type",
+          "type": "string"
+        },
+        "name": {
+          "description": "Audit resource name",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Audit resource id",
+          "type": "string"
+        }
+      }
+    },
+    "v1AuditSpec": {
+      "description": "Audit specifications",
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "create",
+            "update",
+            "delete",
+            "action",
+            "activity"
+          ]
+        },
+        "actor": {
+          "$ref": "#/definitions/v1AuditActor"
+        },
+        "message": {
+          "description": "Audit action message",
+          "type": "string"
+        },
+        "resource": {
+          "$ref": "#/definitions/v1AuditResourceReference"
+        }
+      }
+    },
+    "v1AuditsList": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "description": "List of audit message",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1Audit"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
+    },
+    "v1AuthLogin": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "description": "The user's password to authenticate user for system login",
+          "type": "string",
+          "format": "password"
+        },
+        "username": {
+          "description": "The username of the user trying to do system login",
+          "type": "string"
+        }
+      }
+    },
+    "v1BadRequest": {
+      "description": "Bad request"
+    },
+    "v1Bond": {
+      "description": "Bond interface configuration",
+      "type": "object",
+      "properties": {
+        "configStatus": {
+          "description": "Detailed configuration status from networkctl",
+          "type": "string"
+        },
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "lacpTransmitRate": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "miiMonitorSec": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "description": "Status of the bond interface (up/down/applying/unknown)",
+          "type": "string"
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "transmitHashPolicy": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
+    "v1BondList": {
+      "description": "Collection of bond interfaces",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Bond"
+          }
+        }
+      }
+    },
+    "v1BondRequest": {
+      "description": "Bond interface request payload",
+      "type": "object",
+      "required": [
+        "members"
+      ],
+      "properties": {
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "lacpTransmitRate": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "miiMonitorSec": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "transmitHashPolicy": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Bridge": {
+      "description": "Bridge interface configuration",
+      "type": "object",
+      "properties": {
+        "bond": {
+          "description": "Name of the bond interface attached to this bridge",
+          "type": "string"
+        },
+        "configStatus": {
+          "description": "Detailed configuration status from networkctl",
+          "type": "string"
+        },
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the bridge interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Bridge interface name (e.g., br0)",
+          "type": "string"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "description": "Status of the bridge interface (up/down/applying/unknown)",
+          "type": "string"
+        },
+        "subnet": {
+          "description": "Subnet mask (for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        }
+      }
+    },
+    "v1BridgeList": {
+      "description": "Collection of bridge interfaces",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Bridge"
+          }
+        }
+      }
+    },
+    "v1BridgeRequest": {
+      "description": "Bridge interface request payload",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "bond": {
+          "description": "Name of the bond interface to attach to this bridge",
+          "type": "string"
+        },
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (required for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the bridge interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "Bridge interface name (e.g., br0)",
+          "type": "string"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subnet": {
+          "description": "Subnet mask (required for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type. Default is dhcp.",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        }
+      }
+    },
+    "v1CA": {
+      "type": "object",
+      "properties": {
+        "childCerts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ChildCerts"
+          }
+        },
+        "expirationDate": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CPU": {
+      "type": "object",
+      "properties": {
+        "cores": {
+          "description": "Cpu cores defines the number of cpu cores on the edge host.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1CertificateDetails": {
+      "type": "object",
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1CA"
+          }
+        },
+        "earliestAutoRenewalTime": {
+          "type": "string"
+        },
+        "needsRenewal": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1ChildCerts": {
+      "type": "object",
+      "properties": {
+        "expirationDate": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CloudInit": {
+      "type": "object",
+      "properties": {
+        "hostName": {
+          "description": "Host name (optional)",
+          "type": "string"
+        },
+        "network": {
+          "description": "Network configuration",
+          "$ref": "#/definitions/v1NetworkConfig"
+        },
+        "registryCredentials": {
+          "$ref": "#/definitions/v1RegistryCredentials"
+        },
+        "stages": {
+          "description": "base64 encoded cloud init stages in yaml format",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Key-value pairs of tags",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "v1Management": {
+          "$ref": "#/definitions/v1Management"
+        }
+      }
+    },
+    "v1Cluster": {
+      "description": "Cluster provides details about cluster.",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1MetaData"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ClusterSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1ClusterStatus"
+        }
+      }
+    },
+    "v1ClusterConfigArchiveDetails": {
+      "type": "object",
+      "properties": {
+        "archiveUploadPath": {
+          "type": "string"
+        },
+        "clusterProfileDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterProfileDetail"
+          }
+        }
+      }
+    },
+    "v1ClusterConfiguration": {
+      "description": "v1ClusterConfiguration is the configuration required to create a cluster.",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1MetaData"
+        },
+        "spec": {
+          "type": "object",
+          "properties": {
+            "archiveUploadPath": {
+              "type": "string"
+            },
+            "cloudConfig": {
+              "$ref": "#/definitions/v1EdgeNativeCloudConfig"
+            },
+            "profileVariables": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1ProfileVariable"
+              }
+            },
+            "scheduleAt": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "v1ClusterCurrentApplications": {
+      "properties": {
+        "clusterProfileTemplates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterProfileTemplate"
+          }
+        }
+      }
+    },
+    "v1ClusterNode": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "edgeHostID": {
+          "type": "string"
+        },
+        "ipv4": {
+          "type": "string"
+        },
+        "kernelVersion": {
+          "type": "string"
+        },
+        "kubeletVersion": {
+          "type": "string"
+        },
+        "nodeHealth": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterNodeCondition"
+          }
+        },
+        "nodeName": {
+          "type": "string"
+        },
+        "nodeStatus": {
+          "$ref": "#/definitions/v1ClusterNodeCondition"
+        },
+        "operatingSystem": {
+          "type": "string"
+        },
+        "osImage": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterNodeCondition": {
+      "type": "object",
+      "properties": {
+        "conditionType": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterNodePool": {
+      "type": "object",
+      "properties": {
+        "archType": {
+          "$ref": "#/definitions/v1ArchType"
+        },
+        "isControlPlane": {
+          "type": "boolean"
+        },
+        "name": {
+          "description": "Name of the cluster node pool.",
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterNodePoolSpec": {
+      "description": "ClusterNodePool provides details about cluster node pool.",
+      "type": "object",
+      "properties": {
+        "hosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EdgeHost"
+          }
+        },
+        "pool": {
+          "$ref": "#/definitions/v1ClusterNodePool"
+        }
+      }
+    },
+    "v1ClusterNodePoolStatus": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterNodeStatus"
+          }
+        },
+        "pool": {
+          "$ref": "#/definitions/v1ClusterNodePool"
+        }
+      }
+    },
+    "v1ClusterNodeStatus": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "health": {
+          "$ref": "#/definitions/v1Health"
+        },
+        "ipv4": {
+          "type": "string"
+        },
+        "k8sVersion": {
+          "type": "string"
+        },
+        "nodeName": {
+          "type": "string"
+        },
+        "nodeState": {
+          "$ref": "#/definitions/v1State"
+        }
+      }
+    },
+    "v1ClusterNodes": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterNode"
+          }
+        }
+      }
+    },
+    "v1ClusterPairDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "insecure": {
+          "description": "Connect to palette insecurely",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "any custom message",
+          "type": "string"
+        },
+        "pairingUid": {
+          "description": "unique pairing uid",
+          "type": "string"
+        },
+        "paletteEndpoint": {
+          "description": "Palette endpoint to pair to",
+          "type": "string"
+        },
+        "registrationToken": {
+          "description": "Token used to authenticate pairing request to palette",
+          "type": "string"
+        },
+        "status": {
+          "description": "current pairing status",
+          "type": "string",
+          "enum": [
+            "Pairing",
+            "Paired",
+            "Rejected",
+            "Failed"
+          ]
+        }
+      }
+    },
+    "v1ClusterPairInfoResponse": {
+      "description": "Cluster Pair Info received from palette",
+      "type": "object",
+      "properties": {
+        "pairingUid": {
+          "description": "unique pairing uid",
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterPairMeta": {
+      "type": "object",
+      "properties": {
+        "insecure": {
+          "description": "Connect to palette insecurely",
+          "type": "boolean"
+        },
+        "paletteEndpoint": {
+          "description": "Palette endpoint to pair to",
+          "type": "string"
+        },
+        "registrationToken": {
+          "description": "Token used to authenticate pairing request to palette",
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterPairVerifiedConnectionResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "any custom message",
+          "type": "string"
+        },
+        "verified": {
+          "description": "whether all cluster hosts can connect to palette",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1ClusterPatch": {
+      "type": "object",
+      "properties": {
+        "clusterConfigPatches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HttpPatch"
+          }
+        }
+      }
+    },
+    "v1ClusterProfileConfiguration": {
+      "description": "v1ClusterProfileConfiguration is the configuration required to update a cluster's profiles.",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1MetaData"
+        },
+        "spec": {
+          "type": "object",
+          "properties": {
+            "archiveUploadPath": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "v1ClusterProfileDetail": {
+      "type": "object",
+      "properties": {
+        "packs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Pack"
+          }
+        },
+        "profileDescription": {
+          "type": "string"
+        },
+        "profileName": {
+          "type": "string"
+        },
+        "profileTags": {
+          "type": "string"
+        },
+        "profileType": {
+          "type": "string"
+        },
+        "profileUid": {
+          "type": "string"
+        },
+        "profileVersion": {
+          "type": "string"
+        },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Variable"
+          }
+        }
+      }
+    },
+    "v1ClusterProfileTemplate": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "packs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PackInfo"
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Variable"
+          }
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterSpec": {
+      "description": "ClusterSpec is the specification of the cluster.",
+      "type": "object",
+      "properties": {
+        "hostIDs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nodePools": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterNodePoolSpec"
+          }
+        },
+        "ntpServers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "overlayCIDR": {
+          "type": "string"
+        },
+        "sshKeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "vip": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterStatus": {
+      "description": "ClusterStatus provides the status of the cluster.",
+      "properties": {
+        "agentVersion": {
+          "type": "string"
+        },
+        "clusterConditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "clusterState": {
+          "$ref": "#/definitions/v1State"
+        },
+        "clusterStateReason": {
+          "type": "string"
+        },
+        "health": {
+          "$ref": "#/definitions/v1Health"
+        },
+        "isRebootPending": {
+          "type": "boolean",
+          "default": false
+        },
+        "k8sVersion": {
+          "type": "string"
+        },
+        "kubeconfig": {
+          "type": "string"
+        },
+        "nodePools": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterNodePoolStatus"
+          }
+        },
+        "ntpServersApplied": {
+          "type": "boolean",
+          "default": false,
+          "x-isnullable": false
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Service"
+          }
+        },
+        "sshKeysApplied": {
+          "type": "boolean",
+          "default": false,
+          "x-isnullable": false
+        }
+      }
+    },
+    "v1Condition": {
+      "required": [
+        "type",
+        "status"
+      ],
+      "properties": {
+        "lastProbeTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "lastTransitionTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "message": {
+          "description": "Human readable message indicating details about last transition.",
+          "type": "string"
+        },
+        "reason": {
+          "description": "Unique, one word reason for the condition's last transition.",
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ConditionCategoryOrder": {
+      "properties": {
+        "category": {
+          "description": "Name of the parent category for the conditions list.",
+          "type": "string"
+        },
+        "conditionsOrder": {
+          "description": "Order or sequence of all the conditions in this category.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConditionOrder"
+          }
+        },
+        "order": {
+          "description": "Order or sequence of the category in comparison to all the categories.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ConditionOrder": {
+      "properties": {
+        "order": {
+          "description": "Order or sequence of the condition in comparison to all the conditions.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "reason": {
+          "description": "Unique, one word reason for the condition's last transition.",
+          "type": "string"
+        },
+        "reasonLabel": {
+          "description": "Readable label for the reason.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of the condition.",
+          "type": "string"
+        },
+        "typeLabel": {
+          "description": "Readable label for the type.",
+          "type": "string"
+        }
+      }
+    },
+    "v1Configuration": {
+      "description": "Configuration status of the edge host.",
+      "type": "string",
+      "enum": [
+        "pending",
+        "inprogress",
+        "configured"
+      ]
+    },
+    "v1ConnectionMode": {
+      "type": "string",
+      "enum": [
+        "connected",
+        "airgap"
+      ]
+    },
+    "v1ContentSigningKey": {
+      "type": "object",
+      "properties": {
+        "creationTimestamp": {
+          "description": "CreationTimestamp is the timestamp when the resource was created.",
+          "$ref": "#/definitions/v1Time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "v1DNS": {
+      "type": "object",
+      "properties": {
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "searchDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1Disk": {
+      "description": "Disk is the specification of the disks on the edge host.",
+      "type": "object",
+      "properties": {
+        "controller": {
+          "type": "string"
+        },
+        "partitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Partition"
+          }
+        },
+        "size": {
+          "description": "Size in GB",
+          "type": "integer",
+          "format": "int32"
+        },
+        "vendor": {
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeHost": {
+      "type": "object",
+      "properties": {
+        "hostAddress": {
+          "type": "string"
+        },
+        "hostID": {
+          "type": "string"
+        },
+        "hostName": {
+          "type": "string"
+        },
+        "nic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Nic"
+          }
+        }
+      }
+    },
+    "v1EdgeHostConfigurationStatus": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Not Configured",
+            "In Progress",
+            "Configured",
+            "Failed"
+          ]
+        }
+      }
+    },
+    "v1EdgeHostConfigurations": {
+      "type": "object",
+      "properties": {
+        "caCerts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "httpProxy": {
+          "type": "string"
+        },
+        "httpsProxy": {
+          "type": "string"
+        },
+        "noProxy": {
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeHostGenerateLogsStatus": {
+      "description": "Edge host log collection status",
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "InProgress",
+            "Completed",
+            "Failed"
+          ]
+        }
+      }
+    },
+    "v1EdgeHostInfo": {
+      "description": "EdgeHostInfo is the information about the edge host.",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1MetaData"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1EdgeHostSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1EdgeHostStatus"
+        }
+      }
+    },
+    "v1EdgeHostSpec": {
+      "description": "EdgeHostSpec is the specification of the edge host.",
+      "type": "object",
+      "properties": {
+        "connectionMode": {
+          "$ref": "#/definitions/v1ConnectionMode"
+        },
+        "hardwareSpec": {
+          "$ref": "#/definitions/v1HardwareSpec"
+        },
+        "hostInfo": {
+          "$ref": "#/definitions/v1HostInfo"
+        },
+        "managementMode": {
+          "$ref": "#/definitions/v1ManagementMode"
+        },
+        "networkInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Nic"
+          }
+        },
+        "nodeRole": {
+          "$ref": "#/definitions/v1NodeRole"
+        },
+        "paletteEndpointURL": {
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeHostStatus": {
+      "description": "EdgeHostStatus is the status of the edge host.",
+      "type": "object",
+      "properties": {
+        "agentVersion": {
+          "type": "string"
+        },
+        "configurationStatus": {
+          "$ref": "#/definitions/v1Configuration"
+        },
+        "dns": {
+          "$ref": "#/definitions/v1DNS"
+        },
+        "hostName": {
+          "type": "string"
+        },
+        "isClusterPhase": {
+          "type": "boolean",
+          "default": false
+        },
+        "ntp": {
+          "$ref": "#/definitions/v1NTP"
+        }
+      }
+    },
+    "v1EdgeNativeCloudConfig": {
+      "description": "EdgeNativeCloudConfig is the Schema for the edgenativecloudconfigs API",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1EdgeNativeCloudConfigSpec"
+        }
+      }
+    },
+    "v1EdgeNativeCloudConfigSpec": {
+      "description": "EdgeNativeCloudConfigSpec defines the desired state of EdgeNativeCloudConfig",
+      "type": "object",
+      "required": [
+        "clusterConfig",
+        "machinePoolConfig"
+      ],
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1EdgeNativeClusterConfig"
+        },
+        "machinePoolConfig": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+          }
+        }
+      }
+    },
+    "v1EdgeNativeClusterConfig": {
+      "description": "EdgeNativeClusterConfig defines Edge Native Cluster specific Spec",
+      "type": "object",
+      "properties": {
+        "controlPlaneEndpoint": {
+          "description": "ControlPlaneEndpoint is the control plane endpoint, which can be an IP or FQDN",
+          "$ref": "#/definitions/v1EdgeNativeControlPlaneEndPoint"
+        },
+        "ntpServers": {
+          "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "overlayNetworkConfiguration": {
+          "description": "OverlayNetworkConfiguration is the configuration for the overlay network",
+          "$ref": "#/definitions/v1EdgeNativeOverlayNetworkConfiguration"
+        },
+        "sshKeys": {
+          "description": "SSHKeys specifies a list of ssh authorized keys to access the vms as a 'spectro' user",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "staticIp": {
+          "description": "StaticIP indicates if IP allocation type is static IP. DHCP is the default allocation type",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1EdgeNativeClusterSettings": {
+      "description": "EdgeNativeClusterSettings defines Edge Native Cluster specific settings",
+      "properties": {
+        "ntpServers": {
+          "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "sshKeys": {
+          "description": "SSHKeys specifies a list of ssh authorized keys to access the vms as a 'spectro' user",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "v1EdgeNativeControlPlaneEndPoint": {
+      "type": "object",
+      "properties": {
+        "ddnsSearchDomain": {
+          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint. If Host is already a DDNS FQDN, DDNSSearchDomain is not required",
+          "type": "string"
+        },
+        "host": {
+          "description": "Host is FQDN(DDNS) or IP",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type indicates DDNS or VIP",
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeNativeHost": {
+      "description": "EdgeNativeHost is the underlying appliance",
+      "type": "object",
+      "properties": {
+        "IsCandidateCaption": {
+          "description": "Is Edge host nominated as candidate",
+          "type": "boolean",
+          "default": false,
+          "x-omitempty": false
+        },
+        "caCert": {
+          "description": "CACert for TLS connections",
+          "type": "string"
+        },
+        "hostAddress": {
+          "description": "HostAddress is a FQDN or IP address of the Host",
+          "type": "string",
+          "default": ""
+        },
+        "hostName": {
+          "description": "Qualified name of host",
+          "type": "string",
+          "default": ""
+        },
+        "hostUid": {
+          "description": "HostUid is the ID of the EdgeHost",
+          "type": "string",
+          "default": ""
+        },
+        "networkInfo": {
+          "description": "List network interfaces of an EH",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Nic"
+          }
+        },
+        "nic": {
+          "description": "Edge native nic. (Depricated)",
+          "$ref": "#/definitions/v1Nic"
+        },
+        "nicName": {
+          "description": "Deprecated. Edge host nic name",
+          "type": "string"
+        },
+        "nodeInfo": {
+          "description": "node information if edgehost is part of a cluster",
+          "x-omitempty": true,
+          "$ref": "#/definitions/v1NodeInfo"
+        },
+        "staticIP": {
+          "description": "Deprecated. Edge host static IP",
+          "type": "string"
+        },
+        "tags": {
+          "description": "tags set via userdata.",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-omitempty": true
+        },
+        "twoNodeCandidatePriority": {
+          "description": "Set the edgehost candidate priority as primary or secondary, if the edgehost is nominated as two node candidate",
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary"
+          ]
+        }
+      }
+    },
+    "v1EdgeNativeMachinePoolConfig": {
+      "type": "object",
+      "required": [
+        "hosts"
+      ],
+      "properties": {
+        "additionalLabels": {
+          "description": "AdditionalLabels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalTags": {
+          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "hosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeHost"
+          }
+        },
+        "isControlPlane": {
+          "description": "whether this pool is for control plane",
+          "type": "boolean"
+        },
+        "labels": {
+          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
+        "maxSize": {
+          "description": "max size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "minSize": {
+          "description": "min size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "type": "integer",
+          "format": "int32"
+        },
+        "osType": {
+          "description": "the os type for the pool, must be supported by the provider",
+          "type": "string"
+        },
+        "size": {
+          "description": "size of the pool, number of machines",
+          "type": "integer",
+          "format": "int32"
+        },
+        "taints": {
+          "description": "master or worker taints",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          }
+        },
+        "updateStrategy": {
+          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut",
+          "$ref": "#/definitions/v1UpdateStrategy"
+        },
+        "useControlPlaneAsWorker": {
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1EdgeNativeOverlayNetworkConfiguration": {
+      "type": "object",
+      "properties": {
+        "cidr": {
+          "description": "CIDR is the CIDR of the overlay network",
+          "type": "string"
+        },
+        "enable": {
+          "description": "Enable is a flag to enable overlay network",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Event": {
+      "description": "Event information organized by tags",
+      "type": "object",
+      "properties": {
+        "involvedObject": {
+          "type": "object",
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "message": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "relatedObject": {
+          "type": "object",
+          "$ref": "#/definitions/v1RelatedObject"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "source": {
+          "type": "object",
+          "$ref": "#/definitions/v1EventSource"
+        }
+      }
+    },
+    "v1EventSource": {
+      "description": "Event source info",
+      "type": "object",
+      "properties": {
+        "component": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Events": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1Event"
+          }
+        }
+      }
+    },
+    "v1FileMetadata": {
+      "type": "object",
+      "properties": {
+        "creationTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "lastModifiedTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "size": {
+          "type": "string"
+        }
+      }
+    },
+    "v1FileMetadataList": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1FileMetadata"
+          }
+        }
+      }
+    },
+    "v1GPUDeviceSpec": {
+      "type": "object",
+      "properties": {
+        "addresses": {
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "gpuCount": {
+          "description": "GPU Count is the number of GPUs of this type",
+          "type": "integer",
+          "format": "int32"
+        },
+        "memory": {
+          "description": "Memory is the memory of the GPU",
+          "type": "string"
+        },
+        "migCapable": {
+          "description": "MIG Capable indicates if the GPU supports Multi-Instance GPU (MIG)",
+          "type": "boolean"
+        },
+        "migStrategy": {
+          "description": "MIG Strategy is the MIG strategy if MIG is enabled",
+          "type": "string"
+        },
+        "model": {
+          "description": "Model is the model of GPU, for a given vendor, for eg., TU104GL [Tesla T4]",
+          "type": "string"
+        },
+        "vendor": {
+          "description": "Vendor is the GPU vendor, for eg., NVIDIA or AMD",
+          "type": "string"
+        }
+      }
+    },
+    "v1HarborContentDetails": {
+      "type": "object",
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "enum": [
+            "image",
+            "artifact",
+            "chart",
+            "pack"
+          ]
+        },
+        "dateAdded": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1HarborContentSyncStatus": {
+      "type": "object",
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "enum": [
+            "image",
+            "artifact",
+            "chart",
+            "pack"
+          ]
+        },
+        "creationTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastSyncTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "completed",
+            "failed"
+          ]
+        },
+        "target": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1HarborContentsDetails": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HarborContentDetails"
+          }
+        }
+      }
+    },
+    "v1HarborContentsSyncStatus": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "pendingItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HarborContentSyncStatus"
+          }
+        },
+        "statusMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "v1HarborHealthDetails": {
+      "type": "object",
+      "properties": {
+        "DiskAvailable": {
+          "type": "string"
+        },
+        "DiskCapacity": {
+          "type": "string"
+        },
+        "DiskUsed": {
+          "type": "string"
+        },
+        "Message": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string",
+          "enum": [
+            "Healthy",
+            "Unhealthy",
+            "NotInstalled"
+          ]
+        },
+        "UsagePercentage": {
+          "type": "string"
+        }
+      }
+    },
+    "v1HardwareSpec": {
+      "description": "HardwareSpec is the specification of the hardware of the edge host.",
+      "type": "object",
+      "properties": {
+        "archType": {
+          "$ref": "#/definitions/v1ArchType"
+        },
+        "cpu": {
+          "$ref": "#/definitions/v1CPU"
+        },
+        "disks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Disk"
+          }
+        },
+        "gpus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1GPUDeviceSpec"
+          }
+        },
+        "memory": {
+          "$ref": "#/definitions/v1Memory"
+        },
+        "os": {
+          "$ref": "#/definitions/v1OS"
+        }
+      }
+    },
+    "v1Health": {
+      "description": "Health provides details about the resource health.",
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Healthy",
+            "Unhealthy"
+          ]
+        }
+      }
+    },
+    "v1HostInfo": {
+      "type": "object",
+      "properties": {
+        "hostState": {
+          "type": "string"
+        },
+        "hostType": {
+          "type": "string"
+        },
+        "secureBoot": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1HttpPatch": {
+      "type": "object",
+      "required": [
+        "op",
+        "path"
+      ],
+      "properties": {
+        "op": {
+          "description": "The operation to be performed",
+          "type": "string",
+          "enum": [
+            "add",
+            "remove",
+            "replace"
+          ]
+        },
+        "path": {
+          "description": "A path to the pointer on which operation will be done",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value to be used within the operations.",
+          "type": "object"
+        }
+      }
+    },
+    "v1InternalServerError": {
+      "description": "Internal Server Error"
+    },
+    "v1LifecycleEvents": {
+      "description": "events representing lifecycle of cluster and edge host",
+      "type": "object",
+      "properties": {
+        "clusterEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "edgeHostEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "expectedOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConditionCategoryOrder"
+          }
+        }
+      }
+    },
+    "v1LinkPeer": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v1EdgeHostInfo"
+        },
+        "contentSyncStatus": {
+          "description": "content sync status for the edge host",
+          "type": "string"
+        },
+        "health": {
+          "$ref": "#/definitions/v1Health"
+        },
+        "id": {
+          "description": "edge host id",
+          "type": "string"
+        },
+        "ip": {
+          "description": "edge host ip",
+          "type": "string"
+        },
+        "localUIPort": {
+          "description": "edge host local UI port",
+          "type": "string"
+        },
+        "nodeRole": {
+          "$ref": "#/definitions/v1NodeRole"
+        },
+        "overlayIP": {
+          "description": "edge host overlay ip",
+          "type": "string"
+        },
+        "role": {
+          "description": "edge host role",
+          "type": "string"
+        },
+        "status": {
+          "description": "edge host status",
+          "type": "string"
+        }
+      }
+    },
+    "v1LinkStatus": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "description": "The error message in case of failure",
+          "type": "string"
+        },
+        "peers": {
+          "description": "The list of peers linked to the edge host",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1LinkPeer"
+          }
+        },
+        "status": {
+          "description": "The status of the link operation",
+          "type": "string",
+          "enum": [
+            "Pending",
+            "InProgress",
+            "Completed",
+            "Failed"
+          ]
+        }
+      }
+    },
+    "v1LinkToken": {
+      "type": "object",
+      "properties": {
+        "interval": {
+          "description": "The refresh interval for the link token in seconds",
+          "type": "integer"
+        },
+        "remainingTime": {
+          "description": "The remaining time for the current link token to be valid in seconds",
+          "type": "integer"
+        },
+        "token": {
+          "description": "The link token to link the edge host in base64 encoded format",
+          "type": "string"
+        }
+      }
+    },
+    "v1ListMetaData": {
+      "description": "ListMeta describes metadata for the resource listing",
+      "type": "object",
+      "properties": {
+        "continue": {
+          "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "limit": {
+          "description": "Number of records feteched",
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "offset": {
+          "description": "The next offset for the pagination. Starting index for which next request will be placed.",
+          "type": "integer",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1LoginSuccess": {
+      "description": "System login success response",
+      "type": "object",
+      "properties": {
+        "IsFirstLogin": {
+          "description": "Flag to indicate if the user is logging in for the first time",
+          "type": "boolean"
+        },
+        "Token": {
+          "description": "System login token",
+          "$ref": "#/definitions/v1UserToken"
+        }
+      }
+    },
+    "v1MachinePoolPatch": {
+      "type": "object",
+      "properties": {
+        "machinePoolConfigPatches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HttpPatch"
+          }
+        }
+      }
+    },
+    "v1MachinePoolProperties": {
+      "description": "Machine pool specific properties",
+      "type": "object",
+      "properties": {
+        "archType": {
+          "description": "Architecture type of the pool. Default value is 'amd64'",
+          "x-omitempty": false,
+          "$ref": "#/definitions/v1ArchType"
+        }
+      }
+    },
+    "v1Management": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "edgeHostToken": {
+          "description": "Edge host token. Required for remote management",
+          "type": "string"
+        },
+        "insecure": {
+          "description": "Whether to allow insecure connections (optional)",
+          "type": "boolean"
+        },
+        "paletteEndpoint": {
+          "description": "URL for remote palette endpoint (optional)",
+          "type": "string"
+        },
+        "projectName": {
+          "description": "Project name (optional)",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/v1ManagementMode"
+        }
+      }
+    },
+    "v1ManagementMode": {
+      "type": "string",
+      "enum": [
+        "central",
+        "local"
+      ]
+    },
+    "v1Memory": {
+      "type": "object",
+      "properties": {
+        "sizeInMB": {
+          "description": "Memory size in bytes",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v1MetaData": {
+      "description": "MetaData defines the metadata for the resource.",
+      "type": "object",
+      "properties": {
+        "creationTimestamp": {
+          "description": "CreationTimestamp is the timestamp when the resource was created.",
+          "$ref": "#/definitions/v1Time"
+        },
+        "id": {
+          "description": "ID is the unique identifier of the resource.",
+          "type": "string"
+        },
+        "labels": {
+          "description": "Labels are key-value pairs that can be used to organize and categorize resources.\n",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "lastModifiedTimestamp": {
+          "description": "LastModifiedTimestamp is the timestamp when the resource was last modified.",
+          "$ref": "#/definitions/v1Time"
+        },
+        "name": {
+          "description": "Name is the name of the resource.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags is the list of tags associated with the resource.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "v1NTP": {
+      "type": "object",
+      "properties": {
+        "connectionRetrySec": {
+          "type": "string"
+        },
+        "fallbackNtpServers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ntpServers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pollIntervalMaxSec": {
+          "type": "string"
+        },
+        "pollIntervalMinSec": {
+          "type": "string"
+        },
+        "rootDistanceMaxSec": {
+          "type": "string"
+        },
+        "saveIntervalSec": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NetworkConfig": {
+      "type": "object",
+      "properties": {
+        "caCerts": {
+          "description": "List of CA certificates (optional)",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "httpProxy": {
+          "type": "string"
+        },
+        "httpsProxy": {
+          "type": "string"
+        },
+        "interfaces": {
+          "description": "Mapping of interface names to their configuration",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1NetworkInterface"
+          }
+        },
+        "noProxy": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NetworkInterface": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "gateway": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "nameserver": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "type": {
+          "description": "Type of network interface (e.g., static, dhcp)",
+          "type": "string",
+          "enum": [
+            "static",
+            "dhcp"
+          ]
+        }
+      }
+    },
+    "v1NetworkInterfaceUpdateRequest": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Nic": {
+      "description": "Nic is the specification of the network interface card on the edge host.",
+      "type": "object",
+      "properties": {
+        "dns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "macAddr": {
+          "type": "string"
+        },
+        "nicName": {
+          "type": "string"
+        },
+        "subnet": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NicSummary": {
+      "type": "object",
+      "properties": {
+        "configStatus": {
+          "type": "string"
+        },
+        "gateway": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "mac": {
+          "type": "string"
+        },
+        "mtu": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameservers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "status": {
+          "type": "string"
+        },
+        "subnet": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NicSummaryList": {
+      "type": "object",
+      "properties": {
+        "interfaces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1NicSummary"
+          }
+        }
+      }
+    },
+    "v1NoContent": {
+      "description": "No Content"
+    },
+    "v1NodeInfo": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "health": {
+          "$ref": "#/definitions/v1Health"
+        },
+        "ipv4": {
+          "type": "string"
+        },
+        "k8sVersion": {
+          "type": "string"
+        },
+        "nodeName": {
+          "type": "string"
+        },
+        "nodeState": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NodeRole": {
+      "type": "string",
+      "enum": [
+        "init",
+        "controlplane",
+        "worker",
+        "unknown"
+      ]
+    },
+    "v1NotFound": {
+      "description": "Resource not found"
+    },
+    "v1NotFoundResponseWithMessage": {
+      "description": "Resource not found with message",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "v1OS": {
+      "type": "object",
+      "properties": {
+        "family": {
+          "type": "string"
+        },
+        "kernel": {
+          "type": "string"
+        },
+        "kernelVersion": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ObjectMeta": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "creationTimestamp": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "deletionTimestamp": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "lastModifiedTimestamp": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "resourceVersion": {
+          "type": "string"
+        },
+        "selfLink": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ObjectReference": {
+      "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "API version of the referent.",
+          "type": "string"
+        },
+        "fieldPath": {
+          "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+          "type": "string"
+        },
+        "resourceVersion": {
+          "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
+          "type": "string"
+        },
+        "uid": {
+          "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+          "type": "string"
+        }
+      }
+    },
+    "v1Pack": {
+      "type": "object",
+      "properties": {
+        "logo": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "values": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PackCondition": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PackContent": {
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "enum": [
+            "image",
+            "artifact",
+            "chart"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "syncMsg": {
+          "type": "string"
+        },
+        "syncStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PackInfo": {
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PackCondition"
+          }
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PackContent"
+          }
+        },
+        "endTime": {
+          "type": "string"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "values": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Partition": {
+      "description": "Partition is the specification of the partitions on the disk.",
+      "type": "object",
+      "properties": {
+        "fileSystemType": {
+          "type": "string"
+        },
+        "freeSpace": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mountPoint": {
+          "type": "string"
+        },
+        "totalSpace": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "usedSpace": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1PasswordResetRequest": {
+      "type": "object",
+      "properties": {
+        "newPassword": {
+          "description": "The new password which will be set for the user",
+          "type": "string",
+          "format": "password"
+        },
+        "oldPassword": {
+          "description": "The old password which is required to authenticate the user",
+          "type": "string",
+          "format": "password"
+        }
+      }
+    },
+    "v1Ping": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PingResponse": {
+      "type": "object",
+      "properties": {
+        "pingHostStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Port": {
+      "description": "Port provides details about port.",
+      "type": "object",
+      "properties": {
+        "appProtocol": {
+          "description": "App protocol of the port.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the port.",
+          "type": "string"
+        },
+        "nodePort": {
+          "description": "NodePort number.",
+          "type": "integer"
+        },
+        "port": {
+          "description": "Port number.",
+          "type": "integer"
+        },
+        "protocol": {
+          "description": "Protocol of the port.",
+          "type": "string"
+        },
+        "targetPort": {
+          "description": "number or string of the target port .",
+          "type": "string"
+        }
+      }
+    },
+    "v1ProfileVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "profileUid": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RegistryCredentials": {
+      "type": "object",
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domain": {
+          "description": "Registry domain (optional)",
+          "type": "string"
+        },
+        "encodedPassword": {
+          "description": "Whether the password is encoded (optional, defaults to false)",
+          "type": "boolean"
+        },
+        "insecure": {
+          "description": "Whether to allow insecure registry connections (optional)",
+          "type": "boolean"
+        },
+        "password": {
+          "description": "Registry password (**masked in response**)",
+          "type": "string"
+        },
+        "repositoryName": {
+          "description": "Repository name (optional)",
+          "type": "string"
+        },
+        "username": {
+          "description": "Username for registry access (optional)",
+          "type": "string"
+        }
+      }
+    },
+    "v1RelatedObject": {
+      "description": "The object for which the event is related",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "spectrocluster",
+            "machine",
+            "cloudconfig",
+            "clusterprofile",
+            "pack"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Service": {
+      "description": "ClusterService provides details about services in cluster.",
+      "type": "object",
+      "properties": {
+        "host": {
+          "description": "Host of the service.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the service.",
+          "type": "string"
+        },
+        "ports": {
+          "description": "Ports of the service.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Port"
+          }
+        }
+      }
+    },
+    "v1Settings": {
+      "type": "object",
+      "properties": {
+        "featureFlags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
+        "installationMode": {
+          "type": "string",
+          "enum": [
+            "airgap",
+            "connected"
+          ]
+        },
+        "managementMode": {
+          "$ref": "#/definitions/v1ManagementMode"
+        }
+      }
+    },
+    "v1State": {
+      "type": "string",
+      "enum": [
+        "Provisioning",
+        "Running",
+        "Deleting",
+        "Error"
+      ]
+    },
+    "v1Taint": {
+      "description": "Taint",
+      "type": "object",
+      "properties": {
+        "effect": {
+          "type": "string",
+          "enum": [
+            "NoSchedule",
+            "PreferNoSchedule",
+            "NoExecute"
+          ]
+        },
+        "key": {
+          "description": "The taint key to be applied to a node",
+          "type": "string"
+        },
+        "timeAdded": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "value": {
+          "description": "The taint value corresponding to the taint key.",
+          "type": "string"
+        }
+      }
+    },
+    "v1Time": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "v1TraceRouteResponse": {
+      "type": "object",
+      "properties": {
+        "traceRouteStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Unauthorized": {
+      "description": "Unauthorized"
+    },
+    "v1UpdateStrategy": {
+      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "update strategy, either ScaleOut or ScaleIn if empty, will default to RollingUpdateScaleOut",
+          "type": "string",
+          "enum": [
+            "RollingUpdateScaleOut",
+            "RollingUpdateScaleIn"
+          ]
+        }
+      }
+    },
+    "v1UploadedContentDetails": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "description": "Name of last uploaded content archive file",
+          "type": "string"
+        },
+        "sha256Hash": {
+          "description": "Hash of last uploaded content archive file",
+          "type": "string"
+        },
+        "sizeInBytes": {
+          "description": "Size of last uploaded content archive file in bytes",
+          "type": "integer"
+        },
+        "sizeInGiB": {
+          "description": "Size of last uploaded content archive file in GiB",
+          "type": "number",
+          "format": "float"
+        },
+        "sizeInMiB": {
+          "description": "Size of last uploaded content archive file in MiB",
+          "type": "number",
+          "format": "float"
+        },
+        "uploadDateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v1UserSpec": {
+      "description": "Current user information",
+      "type": "object",
+      "properties": {
+        "disablePasswordUpdate": {
+          "description": "Flag to indicate if the user is allowed to update the password",
+          "type": "boolean",
+          "default": false
+        },
+        "sshKeys": {
+          "description": "Current user's ssh keys",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "userName": {
+          "description": "Current user's username",
+          "type": "string"
+        }
+      }
+    },
+    "v1UserToken": {
+      "description": "Authorization token response",
+      "type": "object",
+      "properties": {
+        "Authorization": {
+          "description": "The token granting the authorization access to the user",
+          "type": "string"
+        }
+      }
+    },
+    "v1VLAN": {
+      "description": "VLAN interface configuration",
+      "type": "object",
+      "properties": {
+        "configStatus": {
+          "description": "Detailed configuration status from networkctl",
+          "type": "string"
+        },
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (required for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the VLAN interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "VLAN interface name (e.g., ens32.100 or bond0.100)",
+          "type": "string"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parentName": {
+          "description": "Parent interface name (NIC or Bond)",
+          "type": "string"
+        },
+        "parentType": {
+          "description": "Type of parent interface",
+          "type": "string",
+          "enum": [
+            "nic",
+            "bond"
+          ]
+        },
+        "status": {
+          "description": "Status of the VLAN interface (up/down/applying/unknown)",
+          "type": "string"
+        },
+        "subnet": {
+          "description": "Subnet mask (required for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "description": "VLAN ID (1-4094)",
+          "type": "string"
+        }
+      }
+    },
+    "v1VLANList": {
+      "description": "Collection of VLAN interfaces",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1VLAN"
+          }
+        }
+      }
+    },
+    "v1VLANRequest": {
+      "description": "VLAN interface request payload",
+      "type": "object",
+      "required": [
+        "parentName",
+        "parentType",
+        "vlanID"
+      ],
+      "properties": {
+        "gateway": {
+          "description": "Gateway IP address",
+          "type": "string"
+        },
+        "ip": {
+          "description": "IP address (required for static type)",
+          "type": "string"
+        },
+        "mtu": {
+          "description": "MTU for the VLAN interface",
+          "type": "integer",
+          "format": "int64"
+        },
+        "nameservers": {
+          "description": "DNS nameservers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parentName": {
+          "description": "Parent interface name (NIC or Bond)",
+          "type": "string"
+        },
+        "parentType": {
+          "description": "Type of parent interface (nic or bond)",
+          "type": "string",
+          "enum": [
+            "nic",
+            "bond"
+          ]
+        },
+        "subnet": {
+          "description": "Subnet mask (required for static type)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Network configuration type. Default is dhcp.",
+          "type": "string",
+          "enum": [
+            "dhcp",
+            "static"
+          ]
+        },
+        "vlanID": {
+          "description": "VLAN ID (1-4094)",
+          "type": "string"
+        }
+      }
+    },
+    "v1ValidataVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "profileUid": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ValidateVariableResponse": {
+      "type": "object",
+      "properties": {
+        "isValid": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "profileName": {
+          "type": "string"
+        },
+        "profileUid": {
+          "type": "string"
+        },
+        "regex": {
+          "type": "string"
+        },
+        "validationFailureReason": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ValidateVariables": {
+      "description": "v1 Validate Variables is for validating the variables",
+      "type": "object",
+      "properties": {
+        "archiveUploadPath": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1MetaData"
+        },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ValidataVariable"
+          }
+        }
+      }
+    },
+    "v1ValidateVariablesResponse": {
+      "type": "object",
+      "properties": {
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ValidateVariableResponse"
+          }
+        }
+      }
+    },
+    "v1Variable": {
+      "type": "object",
+      "properties": {
+        "defaultValue": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "immutable": {
+          "type": "boolean"
+        },
+        "isSensitive": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "regex": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Authorization": {
+      "description": "JWT authorization token obtained using /v1/users/default/login API",
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "tags": [
+    {
+      "name": "edge-mgmt",
+      "x-displayName": "Edge Mgmt"
+    },
+    {
+      "name": "ping",
+      "x-displayName": "Ping"
+    },
+    {
+      "name": "users",
+      "x-displayName": "Users"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://edge-host-ip:5080"
+    }
+  ]
+}

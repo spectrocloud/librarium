@@ -10,7 +10,9 @@ DEVELOPER_PORTAL_LINKS=(
     "github\.com"
     "developer\.hashicorp\.com",
     "www\.packer\.io",
-    "www\.gnu\.org"
+    "www\.gnu\.org",
+    "socket\.dev",
+    "www\.freedesktop\.org"
 )
 LINKS_FILE="all_links.txt"
 BROKEN_LINKS_FILE="link_report_developer_portals.txt"

@@ -21,6 +21,8 @@ import Accordion from "@site/src/components/Accordion";
 import AccordionPanel from "@site/src/components/AccordionPanel";
 import RedirectPackPage from "@site/src/components/RedirectPackPage";
 import OsCveTable from "@site/src/components/OsCveTable/OsCveTable";
+import AskAI from "@site/src/components/AskAI/index";
+import FullUrlLink from "@site/src/components/FullUrlLink";
 
 export default {
   ...MDXComponents,
@@ -46,4 +48,6 @@ export default {
   RedirectPackPage,
   OsCveTable,
   ReleaseNotesBreakingChanges,
+  AskAI,
+  FullUrlLink,
 };

@@ -11,6 +11,154 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 17, 2025 - Release 4.8.12
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4786 -->
+
+- <TpBadge /> Palette now supports the cluster provisioning and management of CloudStack clusters. Refer to the
+  [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) section for further information. Review the active
+  known issues that affect CloudStack on the [Known Issues](./known-issues.md) page.
+
+- Terraform version 0.26.1 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- Crossplane version 0.26.1 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1986  https://spectrocloud.atlassian.net/browse/PLT-1995 -->
+
+- The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+  and [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  now support CloudStack.
+
+  - The `spectrocloud_cloudaccount_apache_cloudstack` data source supports the creation of CloudStack cloud accounts.
+  - The `spectrocloud_cluster_apache_cloudstack` resource supports configuration and deployment of CloudStack clusters.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8906 -->
+
+- The KubeVirt version used by the Palette [Virtual Machine Orchestrator](../vm-management/vm-management.md) is now
+  v1.6.2.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8172 -->
+
+- The `virt-v2v` version used by the Palette
+  [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
+  v2.9.0.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7479 -->
+
+- The default timeout of [Local UI](../clusters/edge/local-ui/local-ui.md) JWT tokens has been reduced to 15 minutes.
+  Additionally, tokens are now revoked upon log out.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5500 https://spectrocloud.atlassian.net/browse/PCP-5594 -->
+
+- The dependencies of the `imageswap` and `imageswap-init` Palette images were updated to the latest versions, ensuring
+  that they have the latest security patches. Additionally, the `ubuntu-systemd` image has been removed from Palette.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 https://spectrocloud.atlassian.net/browse/PAC-3435 -->
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 0.1.89.
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9158 -->
+- The performance of the `/clusterprofiles` [Palette API](/api/introduction) endpoint has been improved.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5551 -->
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
+  retry logic for trust policy ConfigMaps.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7790 -->
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused Day-2 operations to fail on Palette [Edge clusters](../clusters/edge/edge.md) configured with
+external provider registries in the <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)
+" url="/integrations/packs/?pack=edge-k8s"/> pack.
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2026 -->
+- Fixed an issue that caused add-on deployments provisioned through the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
+  remain in an unrecoverable, unhealthy state following a deployment error, even after fixing the root cause.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3502 -->
+<!-- prettier-ignore-start -->
+- Fixed an issue that prevented the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi"/> pack from being available to CloudStack clusters.
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7871 -->
+- Fixed an issue that prevented [agent mode](../deployment-modes/agent-mode/agent-mode.md) from retaining network configurations after boot.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9332 -->
+- Fixed an issue that caused the [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) plans to fail due to `PodSecurity` violation errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7817 -->
+- Fixed an issue that caused [content bundle builds](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) configured on encrypted partitions to become stuck.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5574 -->
+- Fixed an issue that caused multiple versions of the `spectro-reach` image to be installed in [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5573 -->
+- Fixed an issue that caused an incorrect version of the `palette-agent` image to be referenced by the Palette `ally` service.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9217 -->
+- Fixed an issue that prevented the **Delete** action from correctly displaying for [cluster templates](../cluster-templates/cluster-templates.md) in the Palette UI.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9350 -->
+- Fixed an issue that caused Windows 25 server VMs to become inaccessible after being migrated using the [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9395 -->
+- Fixed an issue that caused the [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) PCG type to appear under **Tenant Settings** even though it was disabled using a system administration [feature flag](../enterprise-version/system-management/feature-flags.md).
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3334 -->
+- The following packs support [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) deployment:
+  - Ubuntu 24.04
+  - Palette eXtended Kubernetes versions 1.31.14, 1.32.10, and 1.33.6
+  - Calico 3.30.3-rev1
+  - CloudStack CSI 2.5.0
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3492 https://spectrocloud.atlassian.net/browse/PAC-3445 -->
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Azure Disk                  | Storage    | :white_check_mark: | :x:                | 1.33.7      |
+| External Secrets Operator   | Add-on     | :white_check_mark: | :x:                | 1.1.0       |
+| GCE Persistent Disk CSI     | Storage    | :white_check_mark: | :x:                | 1.22.4      |
+| Nvidia GPU Operator         | Add-on     | :white_check_mark: | :x:                | 25.10.1     |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 27.47.0     |
+| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 79.8.2      |
+| Volume Snapshot Controller  | Add-on     | :white_check_mark: | :x:                | 8.4.0       |
+| vSphere CSI                 | Storage    | :white_check_mark: | :white_check_mark: | 3.6.0       |
+
+## December 12, 2025 - Component Updates {#component-updates-2025-50}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.9.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.10  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.10  |
+
+Review the active known issues that affect this component update on the [Known Issues](./known-issues.md) page.
+
+### Bug Fixes
+
+- Fixed an issue that caused [`stylus`](../clusters/edge/edge-configuration/installer-reference.md) to incorrectly map
+  some image references.
+
 ## December 5, 2025 - Component Updates {#component-updates-2025-49}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.9.
@@ -44,7 +192,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 | Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.2      |
 | Calico Network Policy        | Add-on | :white_check_mark: | :x:                | 3.31.2      |
 | KAI Scheduler                | Add-on | :white_check_mark: | :x:                | 0.10.0      |
-| Kuberay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
+| KubeRay Operator             | Add-on | :white_check_mark: | :x:                | 1.5.1       |
 | Open Policy Agent            | Add-on | :white_check_mark: | :x:                | 3.21.0      |
 | Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.45.0     |
 | Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.5.0      |
@@ -56,6 +204,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 The following component updates are applicable to this release:
 
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -87,6 +236,7 @@ The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Improvements
 
@@ -110,6 +260,7 @@ The following component updates are applicable to this release:
 
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
+- [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 
 ### Security Notices
 
