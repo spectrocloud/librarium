@@ -9,6 +9,9 @@ tags: ["pcg", "cloudstack"]
 
 :::preview
 
+This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature
+is supported in self-hosted Palette only.
+
 :::
 
 This guide provides you with the steps to deploy a Palette Cloud Gateway (PCG) cluster to an Apache CloudStack
@@ -16,6 +19,8 @@ environment using KVM as the hypervisor. Before you begin the installation, care
 [Prerequisites](#prerequisites) section.
 
 ## Prerequisites
+
+- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled.
 
 - A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   page for guidance.
@@ -161,7 +166,7 @@ environment using KVM as the hypervisor. Before you begin the installation, care
     | **Management Plane Type**                            | Select **Palette** or **VerteX**.                                                                                                                                                                                                                                                    |
     | **Enable Ubuntu Pro (required for production)**      | Enter `y` if you want to use Ubuntu Pro and provide an Ubuntu Pro token. Otherwise, enter `n`.                                                                                                                                                                                       |
     | **Select an image registry type**                    | For a non-airgap installation, choose `Default` to pull images from public image registries. This requires an internet connection. For airgapped installations, select `Custom` and point to your airgap support VM or a custom internal registry that contains the required images. |
-    | **Cloud Type**                                       | Select **{props.edition}**.                                                                                                                                                                                                                                                          |
+    | **Cloud Type**                                       | Select **CloudStack**.                                                                                                                                                                                                                                                               |
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG.                                                                                                                                                                                                                                                     |
     | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the cloud account to only be available at the tenant admin scope.                                                                  |
 
