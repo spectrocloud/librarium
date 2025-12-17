@@ -9,6 +9,9 @@ tags: ["data center", "cloudstack", "architecture"]
 
 :::preview
 
+This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature
+is supported in self-hosted Palette only.
+
 :::
 
 Palette supports using
