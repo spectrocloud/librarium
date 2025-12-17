@@ -11,7 +11,7 @@ partial_name: upgrade-palette-enablement
 
 <TabItem label="Local UI Method" value="local-ui-method"> */}
 
-1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser and log in. Under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
 
 2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
 
@@ -45,6 +45,16 @@ partial_name: upgrade-palette-enablement
 
 10. Click the **Update** drop-down menu and select **Review Changes**.
 
+    :::warning
+
+    Ensure that the configured Zot password matches the password that you used when
+    installing Palette Management Appliance.
+    You cannot access the Zot registry post-upgrade if the passwords do not match.
+
+    If you have forgotten your Zot password, you can connect to your Kubernetes cluster and retrieve it from the Zot secret.
+   
+    :::
+
 11. Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include the addition or removal of properties.
 
     :::warning
@@ -65,7 +75,7 @@ During the upgrade process, the {props.version} system and tenant consoles will 
 
 // The Palette CLI method is currently not working, so commenting this out until a future release.
 
-1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser and log in. Under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
 
 2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
 
@@ -181,7 +191,7 @@ When using an external registry, you must upload the content bundle to both the 
 
 :::
 
-1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser and log in. Under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
 
 2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
 

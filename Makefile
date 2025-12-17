@@ -55,7 +55,8 @@ deep-clean: ## Clean all artifacts
 clean-logos: ## Clean logos
 	rm -rf static/img/packs
 
-clean-versions: ## Clean Docusarus content versions
+## Bundled versioning has been removed, but keeping the clean steps for now to allow people to clean up local artifacts.
+clean-versions: ## Clean Docusaurus content versions
 	@echo "cleaning versions"
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs versioned_partials
 	git checkout -- docusaurus.config.js static/robots.txt
@@ -183,17 +184,6 @@ build-ci: ## Run npm build in CI environment
 			exit 1; \
 		fi; \
 	}
-	
-
-versions: ## Create Docusarus content versions
-	@echo "creating versions"
-	./scripts/versions.sh $(TMPDIR)
-
-
-versions-ci: ## Create Docusarus content versions in a GitHub Actions CI environment
-	@echo "creating versions"
-	./scripts/versions.sh $$RUNNER_TEMP
-
 
 api: ## Generate API docs
 	@echo "generating api docs"
@@ -336,6 +326,14 @@ format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
 
+###@ Ensure webpconvert is installed
+
+install-webpconvert:
+	@command -v webpconvert >/dev/null 2>&1 || ( \
+		echo "webpconvert not found — installing globally..."; \
+		npm install -g webpconvert >/dev/null 2>&1 || (echo "Failed to install webpconvert" && exit 127) \
+	)
+
 ###@ Find unused images assets
 
 find-unused-images:
@@ -345,6 +343,7 @@ find-unused-images:
 ###@ Generate _partials/index.ts required to automatic partials usage.
 
 generate-partials: ## Generate
+	./scripts/index-breaking-changes.sh
 	./scripts/generate-partials.sh
 
 ###@ Fetch cached packs assets.
@@ -362,6 +361,10 @@ generate-release-notes: ## Generate release notes only
 	./scripts/release/generate-release-notes.sh
 	make -s format > /dev/null 2>&1
 
+generate-component-updates: ## Generate component updates only
+	./scripts/release/generate-component-updates.sh
+	make -s format > /dev/null 2>&1
+
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-downloads.sh
@@ -372,20 +375,29 @@ generate-release: ## Generate all release files except release notes
 	make -s format > /dev/null 2>&1
 
 init-release:
-	grep -q "^export RELEASE_NAME=" .env || echo "\nexport RELEASE_NAME=" >> .env
-	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
-	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "\nexport RELEASE_PALETTE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "\nexport RELEASE_PALETTE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "\nexport RELEASE_EDGE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "\nexport RELEASE_EDGE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "\nexport RELEASE_REGISTRY_VERSION=" >> .env
-	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "\nexport RELEASE_SPECTRO_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
-	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_OVA_URL=" >> .env
-	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
-	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
-	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_PCG_KUBERNETES_VERSION=" >> .env	
+	grep -q "^# RELEASE NOTES" .env || echo "\n# RELEASE NOTES" >> .env
+	grep -q "^export RELEASE_NAME=" .env || echo "export RELEASE_NAME=" >> .env
+	grep -q "^export RELEASE_VERSION=" .env || echo "export RELEASE_VERSION=" >> .env
+	grep -q "^export RELEASE_DATE=" .env || echo "export RELEASE_DATE=" >> .env
+	grep -q "^export RELEASE_CANVOS=" .env || echo "export RELEASE_CANVOS=" >> .env
+	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
+	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
+	grep -q "^export RELEASE_COMPONENT_YEAR=" .env || echo "export RELEASE_COMPONENT_YEAR=" >> .env
+	grep -q "^export RELEASE_COMPONENT_WEEK=" .env || echo "export RELEASE_COMPONENT_WEEK=" >> .env
+	grep -q "^export RELEASE_COMPONENT_START_VERSION=" .env || echo "export RELEASE_COMPONENT_START_VERSION=" >> .env
+	grep -q "^export RELEASE_COMPONENT_END_VERSION=" .env || echo "export RELEASE_COMPONENT_END_VERSION=" >> .env
+	grep -q "^# OTHER RELEASE UPDATES" .env || echo "\n# OTHER RELEASE UPDATES" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "export RELEASE_EDGE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "export RELEASE_EDGE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
+	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "export RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "export RELEASE_VMWARE_OVA_URL=" >> .env
+	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "export RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
+	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "export RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "export RELEASE_PCG_KUBERNETES_VERSION=" >> .env
 
 ###@ Aloglia Indexing
 

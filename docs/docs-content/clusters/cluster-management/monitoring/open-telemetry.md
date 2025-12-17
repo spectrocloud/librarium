@@ -41,8 +41,8 @@ reducing duplication.
 ## Prerequisites
 
 - A Palette account.
-- Three or more healthy [VMware](../../data-center/vmware/vmware.md), [MAAS](../../data-center/maas/maas.md) or
-  [Edge](../../edge/edge.md) clusters.
+- Three or more healthy [Public Cloud](../../public-cloud/public-cloud.md),
+  [Data Center](../../data-center/data-center.md) or [Edge](../../edge/edge.md) clusters.
 - Network connectivity between the clusters.
 
 ## Deploy an OpenTelemetry Monitoring Stack
@@ -63,11 +63,11 @@ them to your deployed healthy clusters.
     Add the following packs in your cluster profile with customizations that suit your environment. Then, select
     **Next**.
 
-    | **Pack**     | **Version** | **Registry**           | **Customization**                                                                                                                                                                                                   |
-    | ------------ | ----------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | MetalLB      | 0.13.x      | Palette Registry (OCI) | Set an IP range that is available in your environment in the `manifests.metallb.addresses` field.                                                                                                                   |
-    | PostgreSQL   | 1.22.x      | Palette Registry (OCI) | No customization required.                                                                                                                                                                                          |
-    | Open Observe | 0.14.x      | Palette Registry (OCI) | Set a user email in the `charts.openobserve.auth.ZO_ROOT_USER_EMAIL` field or leave the default value of `admin@openobserve.dev`. Set a user password in the `charts.openobserve.auth.ZO_ROOT_USER_PASSWORD` field. |
+    | **Pack**     | **Version** | **Registry**           | **Customization**                                                                                                                                                                                                                                                          |
+    | ------------ | ----------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | MetalLB      | 0.13.x      | Palette Registry (OCI) | This pack is only required for Data Center and Edge clusters. Set an IP range that is available in your environment in the `manifests.metallb.addresses` field.                                                                                                            |
+    | PostgreSQL   | 1.22.x      | Palette Registry (OCI) | No customization required.                                                                                                                                                                                                                                                 |
+    | Open Observe | 0.14.x      | Palette Registry (OCI) | Set a user email in the `charts.openobserve.auth.ZO_ROOT_USER_EMAIL` field or leave the default value of `admin@openobserve.dev`. Set a user password in the `charts.openobserve.auth.ZO_ROOT_USER_PASSWORD` field. Set `charts.openobserve.config.ZO_LOCAL_MODE` to true. |
 
     Construct a Base64 encoding of the credentials you have configured in the format `useremail:password` in the Open
     Observe pack. For example, the string `admin@openobserve.dev:admin` is encoded to
@@ -75,6 +75,17 @@ them to your deployed healthy clusters.
 
     Review the configuration you have provided and click **Finish Configuration** to save your cluster profile. This
     profile configures and deploys the Open Observe dashboard.
+
+    :::tip
+
+    The Open Observe pack allows you to save metrics information on the pod or in an S3 bucket. This guide saves metrics
+    on the pod. Provide the following configurations if you want to persist your metrics to an existing S3 bucket.
+
+        - Set `charts.openobserve.config.ZO_LOCAL_MODE` to false.
+        - Fill in an access key in the field `charts.openobserve.auth.ZO_S3_ACCESS_KEY` and a secret key in the field `charts.openobserve.auth.ZO_S3_SECRET_KEY`.
+        - Fill in the region of your S3 bucket in the field `charts.openobserve.config.ZO_S3_REGION_NAME` and the name of your bucket in the field `charts.openobserve.config.ZO_S3_BUCKET_NAME`.
+
+    :::
 
 4.  Navigate to the left main menu and select **Clusters** to view the cluster profile page. Select one of the healthy
     clusters that you have deployed as a prerequisite to this guide. The **Overview** tab appears.
@@ -107,11 +118,22 @@ them to your deployed healthy clusters.
 
     | **Pack**       | **Version** | **Registry**           | **Customization**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
     | -------------- | ----------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | MetalLB        | 0.13.x      | Palette Registry (OCI) | Set an IP range that is available in your environment in the `manifests.metallb.addresses` field.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | Open Telemetry | 0.127.x     | Palette Registry (OCI) | Click **Presets**. Select **Enable** under the **central-collector** section and select **OpenObserve** under the **export** section. Replace the domain placeholder in the `charts.opentelemetry-collector.config.exporters.otlphttp/openobserve.endpoint` field with the service address of the exporter service you deployed in the [Create and Deploy the Exporter Cluster Profile](#create-and-deploy-the-exporter-cluster-profile) section. Replace the password placeholder in the `charts.opentelemetry-collector.config.exporters.otlphttp/openobserve.headers.Authorization` field with the Base64-encoded value you made a note of in Step 3 of the [Create and Deploy the Exporter Cluster Profile](#create-and-deploy-the-exporter-cluster-profile) section, keeping the prefix `Basic`. For example, `Basic YWRtaW5Ab3Blbm9ic2VydmUuZGV2OmFkbWl` uses the encoded sample value `admin@openobserve.dev:admin`. |
+    | MetalLB        | 0.13.x      | Palette Registry (OCI) | This pack is only required for Data Center and Edge clusters. Set an IP range that is available in your environment in the `manifests.metallb.addresses` field.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | Open Telemetry | 0.132.x     | Palette Registry (OCI) | Click **Presets**. Select **Enable** under the **central-collector** section and select **OpenObserve** under the **export** section. Replace the domain placeholder in the `charts.opentelemetry-collector.config.exporters.otlphttp/openobserve.endpoint` field with the service address of the exporter service you deployed in the [Create and Deploy the Exporter Cluster Profile](#create-and-deploy-the-exporter-cluster-profile) section. Replace the password placeholder in the `charts.opentelemetry-collector.config.exporters.otlphttp/openobserve.headers.Authorization` field with the Base64-encoded value you made a note of in Step 3 of the [Create and Deploy the Exporter Cluster Profile](#create-and-deploy-the-exporter-cluster-profile) section, keeping the prefix `Basic`. For example, `Basic YWRtaW5Ab3Blbm9ic2VydmUuZGV2OmFkbWl` uses the encoded sample value `admin@openobserve.dev:admin`. |
 
     Review the configuration you have provided and click **Finish Configuration** to save your cluster profile. This
     profile configures and deploys the Open Telemetry central collector.
+
+    :::info
+
+    The OpenTelemetry pack supports auto-instrumentation for Java, Python, Node.js, .NET and Go applications. This
+    capability allows you to collect traces, metrics, and logs from your applications without changing their source
+    code. You can enable the instrumentation by adding annotations to your workloads.
+
+    Refer to the <VersionedLink text="OpenTelemetry Collector" url="/integrations/packs/?pack=opentelemetry" /> pack
+    documentation for further details.
+
+    :::
 
 3.  Navigate to the left main menu and select **Clusters** to view the cluster profile page. Select one of the healthy
     clusters that you have deployed as a prerequisite to this guide. The **Overview** tab appears.
@@ -123,7 +145,7 @@ them to your deployed healthy clusters.
     configuration and click **Save**.
 
 4.  Select the **Overview** tab and monitor the progress of your add-on profile. This may take a few minutes. You will
-    find six services deployed once the add-on profile is correctly applied.
+    find five services deployed once the add-on profile is correctly applied.
 
     Make a note of the address of the services by copying the link under port **4317**.
 

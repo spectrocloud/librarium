@@ -1,0 +1,13 @@
+---
+partial_category: self-hosted
+partial_name: feature-flags-validate
+---
+
+Validation steps vary based on the feature enabled. In general, if you do not activate a feature, you cannot view any
+options related to the feature.
+
+For example, if you enable the **AwsSecretPartition** feature flag in Palette VerteX, the option **AWS US Secret** is
+available from the **Partition** drop-down menu at **Tenant Settings > Cloud Accounts > Add AWS Account**, and you can
+select your AWS Secret cloud account when deploying an EKS cluster. Likewise, if you do not enable the
+**AwsSecretPartition** feature flag, you do not have the option to register an AWS Secret cloud account and cannot
+deploy clusters to AWS Secret cloud.

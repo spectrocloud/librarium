@@ -361,72 +361,69 @@ OpenStack support is limited to the Kubernetes distribution <VersionedLink text=
 
 The following steps need to be performed to provision a new OpenStack cluster:
 
-1. Provide basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the VMs
-   deployed on the cloud/data center environments.
+1.  Provide basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the VMs
+    deployed on the cloud/data center environments.
 
-2. Select a Cluster Profile created for the OpenStack environment. The profile definition will be used as the cluster
-   construction template.
+2.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-3. Review and override Pack Parameters as desired. By default, Parameters for all packs are set with values defined in
-   the Cluster Profile.
+3.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-4. Provide an OpenStack Cloud account and placement information.
+4.  Provide an OpenStack Cloud account and placement information.
 
-   - **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be
-     preconfigured in project settings. An account is auto-created as part of the cloud gateway setup and is available
-     for provisioning of tenant clusters if permitted by the administrator.
-     - Domain
-     - Region
-     - Project
-     - SSH Key
-     - Placement
-       - If the user choice of placement is Static then:
-         - Network
-         - Subnet
-       - If the user choice of placement is NOT Static then:
-         - Subnet CIDR
-         - DNS Name Server
+    - **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be
+      preconfigured in project settings. An account is auto-created as part of the cloud gateway setup and is available
+      for provisioning of tenant clusters if permitted by the administrator.
+      - Domain
+      - Region
+      - Project
+      - SSH Key
+      - Placement
+        - If the user choice of placement is Static then:
+          - Network
+          - Subnet
+        - If the user choice of placement is NOT Static then:
+          - Subnet CIDR
+          - DNS Name Server
 
-5. Configure the control plane and worker node pools. Fill out the input fields in the **Add node pool** page. The
-   following table contains an explanation of the available input parameters.
+5.  Configure the control plane and worker node pools. Fill out the input fields in the **Add node pool** page. The
+    following table contains an explanation of the available input parameters.
 
-### Control Plane Pool
+    #### Control Plane Pool
 
-| **Parameter**                                      | **Description**                                                                                                                                                                                                     |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**                                           | A descriptive name for the node pool.                                                                                                                                                                               |
-| **Size**                                           | Number of VMs to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5.                                                                                                       |
-| **Allow worker capability**                        | Select this option for allowing workloads to be provisioned on control plane nodes.                                                                                                                                 |
-| **[Labels](../cluster-management/node-labels.md)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                            |
-| **[Taints](../cluster-management/taints.md)**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                      |
-| **Instance type**                                  | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                         |
-| **Availability Zones**                             | Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected. |
-| **Disk Size**                                      | Give the required storage size                                                                                                                                                                                      |
+             | **Parameter**                                      | **Description**                                                                                                                                                                                                     |
+             | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+             | **Name**                                           | A descriptive name for the node pool.                                                                                                                                                                               |
+             | **Size**                                           | Number of VMs to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5.                                                                                                       |
+             | **Allow worker capability**                        | Select this option for allowing workloads to be provisioned on control plane nodes.                                                                                                                                 |
+             | **[Labels](../cluster-management/node-labels.md)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                            |
+             | **[Taints](../cluster-management/taints.md)**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                      |
+             | **Instance type**                                  | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                         |
+             | **Availability Zones**                             | Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected. |
+             | **Disk Size**                                      | Give the required storage size                                                                                                                                                                                      |
 
-### Worker Pool
+    #### Worker Pool
 
-| **Parameter**                                      | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**                                           | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| **Enable Autoscaler**                              | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. |
-| **Size**                                           | Number of VMs to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                            |
-| **Rolling Update**                                 | Rolling update has two available options. The expand option launches a new node first, then shuts down old one. The contract option shuts down a old one first, then launches new one.                                                                                                                                                                                                                                                                                     |
-| **[Labels](../cluster-management/node-labels.md)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                                                                                                                                                                                                                                                                                   |
-| **[Taints](../cluster-management/taints.md)**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                                                                                                                                                                                                                                                                             |
-| **Instance type**                                  | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                                |
-| **Availability Zones**                             | Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.                                                                                                                                                                                                                                                        |
-| **Disk Size**                                      | Provide the required storage size                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+             | **Parameter**                                      | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+             | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+             | **Name**                                           | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+             | **Enable Autoscaler**                              | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. |
+             | **Size**                                           | Number of VMs to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                            |
+             | **Rolling Update**                                 | Rolling update has two available options. The expand option launches a new node first, then shuts down old one. The contract option shuts down a old one first, then launches new one.                                                                                                                                                                                                                                                                                     |
+             | **[Labels](../cluster-management/node-labels.md)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                                                                                                                                                                                                                                                                                   |
+             | **[Taints](../cluster-management/taints.md)**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                                                                                                                                                                                                                                                                             |
+             | **Instance type**                                  | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                                |
+             | **Availability Zones**                             | Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.                                                                                                                                                                                                                                                        |
+             | **Disk Size**                                      | Provide the required storage size                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-6. Configure the cluster policies/features.
+6.  <PartialsComponent category="clusters" name="cluster-settings" />
 
-   - Manage Machines
-   - Scan Policies
-   - Backup Policies
+7.  Select **Validate** to review your cluster configurations and settings.
 
-7. Click to get details on [cluster management feature](../cluster-management/cluster-management.md).
+8.  If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available
-   to track progress.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Deleting an OpenStack Cluster
 

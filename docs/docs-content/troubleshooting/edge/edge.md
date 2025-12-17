@@ -10,6 +10,137 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Velero Restore Fails with `runAsNonRoot` Validation Error
+
+On Edge Native clusters, restores of security-hardened applications (such as Argo CD) may fail with the affected
+application pods stuck in the `Init:CreateContainerConfigError` state, showing
+`Error: container has runAsNonRoot and image has non-numeric user (cnb), cannot verify user is non-root` on the
+`restore-wait` init container.
+
+This occurs because Velero is configured by default with `--default-volumes-to-fs-backup=true` on Edge Native clusters.
+During a restore, Velero injects a `restore-wait` init container that uses the image `velero-restore-helper`. That image
+runs as a non-numeric user `cnb`, while the restored workload (for example, Argo CD) has a security context that
+includes `runAsNonRoot: true` but lacks an explicit numeric `runAsUser`. Kubernetes cannot verify that the user `cnb` is
+non-root without a numeric user ID, so it blocks the container from starting. As a result, the restore process remains
+stuck waiting for pod volume restores to complete.
+
+### Debug Steps
+
+To resolve this issue, explicitly configure numeric non-root IDs for the user, group, and filesystem group for affected
+applications before taking backups.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Profiles**. Then select the profile of your cluster.
+
+3. Select the application whose restore failed (for example, Argo CD). Under **Pack Details**, choose **Values** to
+   display the `values.yaml` file.
+
+4. Add the following lines under `global.securityContext`.
+
+   ```yaml
+   global:
+     securityContext:
+       runAsUser: 999
+       runAsGroup: 999
+       fsGroup: 999
+   ```
+
+   This configuration ensures Kubernetes can verify that the pod runs as a non-root user and allows the `restore-wait`
+   container to start successfully during restores.
+
+5. Save the changes as a new version of the cluster profile and update your cluster to use the updated profile. For more
+   information, refer to [Update a Cluster](../../clusters/cluster-management/cluster-updates.md).
+
+6. Create a new cluster backup, then restore it. For more information, refer to
+   [Create Cluster Backup](../../clusters/cluster-management/backup-restore/create-cluster-backup.md) and
+   [Restore Cluster Backup](../../clusters/cluster-management/backup-restore/create-cluster-backup.md).
+
+## Scenario - CoreDNS Pods Stuck in `CrashLoopBackOff` Due to DNS Loop
+
+On Edge clusters whose hosts run Ubuntu 24.04 with a Unified Kernel Image (UKI), CoreDNS pods may enter the
+`CrashLoopBackOff` state with logs showing the following error.
+
+```shell
+[FATAL] plugin/loop: Loop (127.0.0.1:<ephemeral-port> -> :53) detected for zone "."...
+```
+
+This happens because `/etc/resolv.conf` is symlinked to `/run/systemd/resolve/stub-resolv.conf`, which lacks real DNS
+server entries and points to the local systemd stub `127.0.0.53`. Both `127.0.0.1` and `127.0.0.53` are localhost
+addresses, meaning they only communicate within the host and cannot access external DNS servers. As a result, CoreDNS
+forwards DNS queries to itself, creating a recursive loop.
+
+### Debug Steps
+
+1. Issue the following command to view the `/run/systemd/resolve/resolv.conf` file content.
+
+   ```bash
+   cat /run/systemd/resolve/resolv.conf
+   ```
+
+2. Verify that it lists at least one nameserver entry pointing to a real, reachable DNS server (not
+   `nameserver 127.0.0.53` or `nameserver 127.0.0.1`).
+
+3. Open CoreDNS ConfigMap.
+
+   ```bash
+   kubectl -n kube-system edit configmap coredns
+   ```
+
+4. Replace `forward . /etc/resolv.conf` with `forward . /run/systemd/resolve/resolv.conf` if this file contains at least
+   one nameserver other than `nameserver 127.0.0.53` or `nameserver 127.0.0.1`. Alternatively, if your environment
+   maintains another resolver file containing real DNS servers, use that file path instead.
+
+5. Issue the following command to restart CoreDNS pods.
+
+   ```bash
+   kubectl -n kube-system rollout restart deployment coredns
+   ```
+
+This will resolve the issue, ensuring CoreDNS and cluster DNS services operate as expected.
+
+## Scenario - `x509: certificate signed by unknown authority` Errors during Agent Mode Cluster Creation
+
+Agent mode Edge cluster creation may fail with logs showing the following error.
+
+```shell
+failed calling webhook "pod-registry.spectrocloud.com": tls: failed to verify certificate:
+x509: certificate signed by unknown authority ("Spectro Cloud")
+http: TLS handshake error ... remote error: tls: bad certificate
+```
+
+As a result, core components such as CNI, Harbor, and cluster controllers never start. All pods remain in **Pending** or
+**Failed** state. In the Local UI, packs display **Invalid date** in the **Started On** and **Completed On** fields.
+
+This issue occurs when the `stylus-webhook` agent admission webhook and its Transport Layer Security (TLS)
+`stylus-webhook-tls` secret are temporarily mismatched due to a timing issue during cluster bootstrap. As a result, the
+Kubernetes API server rejects the certificate as signed by an unknown authority, causing admission requests to fail.
+
+### Debug Steps
+
+1. Issue the following command on all cluster nodes to stop the Palette Agent operator service.
+
+   ```bash
+   systemctl stop spectro-stylus-operator
+   ```
+
+2. Issue the following commands on one of the control plane nodes to remove the mismatched webhook resources.
+
+   ```bash
+   kubectl delete secret --namespace spectro-system stylus-webhook-tls
+   kubectl delete svc --namespace spectro-system stylus-webhook
+   kubectl delete MutatingWebhookConfiguration stylus-webhook
+   ```
+
+3. Issue the following command on all cluster nodes to restart the Palette Agent operator service and regenerate a new,
+   consistent set of webhook resources.
+
+   ```bash
+   systemctl restart spectro-stylus-operator
+   ```
+
+This will resolve the issue, and cluster creation will proceed as expected.
+
 ## Scenario - `content-length: 0` Errors during Content Synchronization
 
 Unintended or non-graceful reboots during content bundle push operations can cause inconsistency in the primary
@@ -193,9 +324,13 @@ remove the container manually. The kubelet then restarts the component using the
 
 ## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
 
-When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes
+<!-- prettier-ignore-start -->
+
+When rebooting nodes in an Edge cluster using <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> deployed in a proxied environment, the nodes
 may fail to come back online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical
 pack to the `NO_PROXY` list in your Edge installer `user-data`.
+
+<!-- prettier-ignore-end -->
 
 ### Debug Steps
 

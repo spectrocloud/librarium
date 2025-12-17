@@ -5,7 +5,7 @@ description: "Learn about the predefined roles and permissions for the Tenant sc
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["user-management", "teanant", "rbac"]
+tags: ["user-management", "tenant", "rbac"]
 ---
 
 Palette provides the following Tenant roles out-of-the-box. These roles are predefined and cannot be modified. You can
@@ -63,6 +63,7 @@ review the permissions associated with each Tenant role, click on the role name 
 - cloudconfig.get
 - cloudconfig.list
 - cloudconfig.update
+- cluster.adminKubeconfigDownload
 - cluster.create
 - cluster.delete
 - cluster.get
@@ -74,6 +75,7 @@ review the permissions associated with each Tenant role, click on the role name 
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
+- clusterPair.create
 - clusterPair.delete
 - clusterPair.get
 - clusterPair.list
@@ -84,6 +86,11 @@ review the permissions associated with each Tenant role, click on the role name 
 - clusterProfile.list
 - clusterProfile.publish
 - clusterProfile.update
+- clusterTemplate.create
+- clusterTemplate.delete
+- clusterTemplate.get
+- clusterTemplate.list
+- clusterTemplate.update
 - dnsMapping.create
 - dnsMapping.delete
 - dnsMapping.get
@@ -98,9 +105,9 @@ review the permissions associated with each Tenant role, click on the role name 
 - edgehost.delete
 - edgehost.get
 - edgehost.list
-- edgehost.update
 - edgehost.sshUpdate
 - edgehost.sshUserUpdate
+- edgehost.update
 - filter.create
 - filter.delete
 - filter.get
@@ -141,6 +148,11 @@ review the permissions associated with each Tenant role, click on the role name 
 - role.get
 - role.list
 - role.update
+- spcPolicy.create
+- spcPolicy.delete
+- spcPolicy.get
+- spcPolicy.list
+- spcPolicy.update
 - sshKey.create
 - sshKey.delete
 - sshKey.get
@@ -211,8 +223,12 @@ review the permissions associated with each Tenant role, click on the role name 
 - cluster.list
 - clusterGroup.get
 - clusterGroup.list
+- clusterPair.get
+- clusterPair.list
 - clusterProfile.get
 - clusterProfile.list
+- clusterTemplate.get
+- clusterTemplate.list
 - dnsMapping.get
 - dnsMapping.list
 - edgeToken.get
@@ -235,6 +251,8 @@ review the permissions associated with each Tenant role, click on the role name 
 - project.list
 - role.get
 - role.list
+- spcPolicy.get
+- spcPolicy.list
 - sshKey.get
 - sshKey.list
 - team.get
@@ -354,6 +372,7 @@ review the permissions associated with each Tenant role, click on the role name 
 - cloudconfig.get
 - cloudconfig.list
 - cloudconfig.update
+- cluster.adminKubeconfigDownload
 - cluster.create
 - cluster.delete
 - cluster.get
@@ -365,6 +384,7 @@ review the permissions associated with each Tenant role, click on the role name 
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
+- clusterPair.create
 - clusterPair.delete
 - clusterPair.get
 - clusterPair.list
@@ -375,6 +395,11 @@ review the permissions associated with each Tenant role, click on the role name 
 - clusterProfile.list
 - clusterProfile.publish
 - clusterProfile.update
+- clusterTemplate.create
+- clusterTemplate.delete
+- clusterTemplate.get
+- clusterTemplate.list
+- clusterTemplate.update
 - dnsMapping.create
 - dnsMapping.delete
 - dnsMapping.get
@@ -389,9 +414,9 @@ review the permissions associated with each Tenant role, click on the role name 
 - edgehost.delete
 - edgehost.get
 - edgehost.list
-- edgehost.update
 - edgehost.sshUpdate
 - edgehost.sshUserUpdate
+- edgehost.update
 - filter.create
 - filter.delete
 - filter.get
@@ -427,6 +452,11 @@ review the permissions associated with each Tenant role, click on the role name 
 - project.get
 - project.list
 - project.update
+- spcPolicy.create
+- spcPolicy.delete
+- spcPolicy.get
+- spcPolicy.list
+- spcPolicy.update
 - sshKey.create
 - sshKey.delete
 - sshKey.get

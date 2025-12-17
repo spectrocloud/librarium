@@ -36,6 +36,9 @@ Refer to the following tables for the supported Palette VerteX upgrade paths for
 Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
 latest minor version available.
 
+Use the [Find Breaking Changes](../../release-notes/breaking-changes.md) page to list all the breaking changes between
+Palette versions. Ensure that you have addressed all changes before upgrading Palette VerteX.
+
 :::
 
 :::warning
@@ -50,43 +53,80 @@ health status of MongoDB ReplicaSet members, refer to our
 <Tabs>
 <TabItem label="VMware" value="VMware">
 
+**4.8**
+
+:::info
+
+After upgrading to 4.8.8, the VerteX management cluster will appear to be **Unhealthy** in the VerteX UI due to
+`mongodb-key-manager-manifest` errors. The cluster functionality is not affected and will return to **Healthy** after a
+few hours.
+
+:::
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.8        | :white_check_mark: |
+
 **4.7.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.7.3        |       4.7.13       | :white_check_mark: |
+|       4.7.21       |       4.7.27       | :white_check_mark: |
+|       4.7.20       |       4.7.27       | :white_check_mark: |
+|       4.7.16       |       4.7.27       | :white_check_mark: |
+|       4.7.16       |       4.7.20       | :white_check_mark: |
+|       4.7.15       |       4.7.27       | :white_check_mark: |
+|       4.7.15       |       4.7.20       | :white_check_mark: |
+|       4.7.3        |       4.7.27       | :white_check_mark: |
+|       4.7.3        |       4.7.20       | :white_check_mark: |
+|       4.7.3        |       4.7.15       | :white_check_mark: |
+|       4.6.41       |       4.7.27       | :white_check_mark: |
+|       4.6.41       |       4.7.20       | :white_check_mark: |
+|       4.6.41       |       4.7.15       | :white_check_mark: |
 |       4.6.41       |       4.7.3        | :white_check_mark: |
+|       4.6.6        |       4.7.15       | :white_check_mark: |
 
 **4.6.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.6.41       |       4.6.43       | :white_check_mark: |
+|       4.6.36       |       4.6.43       | :white_check_mark: |
 |       4.6.36       |       4.6.41       | :white_check_mark: |
+|       4.6.32       |       4.6.43       | :white_check_mark: |
 |       4.6.32       |       4.6.41       | :white_check_mark: |
 |       4.6.32       |       4.6.34       | :white_check_mark: |
+|       4.6.28       |       4.6.43       | :white_check_mark: |
 |       4.6.28       |       4.6.41       | :white_check_mark: |
 |       4.6.28       |       4.6.34       | :white_check_mark: |
 |       4.6.28       |       4.6.32       | :white_check_mark: |
+|       4.6.26       |       4.6.43       | :white_check_mark: |
 |       4.6.26       |       4.6.41       | :white_check_mark: |
 |       4.6.26       |       4.6.34       | :white_check_mark: |
 |       4.6.26       |       4.6.32       | :white_check_mark: |
+|       4.6.25       |       4.6.43       | :white_check_mark: |
 |       4.6.25       |       4.6.41       | :white_check_mark: |
 |       4.6.25       |       4.6.34       | :white_check_mark: |
 |       4.6.25       |       4.6.32       | :white_check_mark: |
+|       4.6.24       |       4.6.43       | :white_check_mark: |
 |       4.6.24       |       4.6.41       | :white_check_mark: |
 |       4.6.24       |       4.6.34       | :white_check_mark: |
 |       4.6.24       |       4.6.32       | :white_check_mark: |
+|       4.6.23       |       4.6.43       | :white_check_mark: |
 |       4.6.23       |       4.6.41       | :white_check_mark: |
 |       4.6.23       |       4.6.34       | :white_check_mark: |
 |       4.6.23       |       4.6.32       | :white_check_mark: |
 |       4.6.23       |       4.6.28       | :white_check_mark: |
 |       4.6.23       |       4.6.24       | :white_check_mark: |
+|       4.6.18       |       4.6.43       | :white_check_mark: |
 |       4.6.18       |       4.6.41       | :white_check_mark: |
 |       4.6.18       |       4.6.34       | :white_check_mark: |
 |       4.6.18       |       4.6.32       | :white_check_mark: |
 |       4.6.18       |       4.6.28       | :white_check_mark: |
 |       4.6.18       |       4.6.24       | :white_check_mark: |
 |       4.6.18       |       4.6.23       | :white_check_mark: |
+|       4.6.13       |       4.6.43       | :white_check_mark: |
 |       4.6.13       |       4.6.41       | :white_check_mark: |
 |       4.6.13       |       4.6.34       | :white_check_mark: |
 |       4.6.13       |       4.6.32       | :white_check_mark: |
@@ -94,6 +134,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.13       |       4.6.24       | :white_check_mark: |
 |       4.6.13       |       4.6.23       | :white_check_mark: |
 |       4.6.13       |       4.6.18       | :white_check_mark: |
+|       4.6.12       |       4.6.43       | :white_check_mark: |
 |       4.6.12       |       4.6.41       | :white_check_mark: |
 |       4.6.12       |       4.6.34       | :white_check_mark: |
 |       4.6.12       |       4.6.32       | :white_check_mark: |
@@ -102,6 +143,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.12       |       4.6.23       | :white_check_mark: |
 |       4.6.12       |       4.6.18       | :white_check_mark: |
 |       4.6.12       |       4.6.13       | :white_check_mark: |
+|       4.6.9        |       4.6.43       | :white_check_mark: |
 |       4.6.9        |       4.6.41       | :white_check_mark: |
 |       4.6.9        |       4.6.34       | :white_check_mark: |
 |       4.6.9        |       4.6.32       | :white_check_mark: |
@@ -111,6 +153,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.9        |       4.6.18       | :white_check_mark: |
 |       4.6.9        |       4.6.13       | :white_check_mark: |
 |       4.6.9        |       4.6.12       | :white_check_mark: |
+|       4.6.8        |       4.6.43       | :white_check_mark: |
 |       4.6.8        |       4.6.41       | :white_check_mark: |
 |       4.6.8        |       4.6.34       | :white_check_mark: |
 |       4.6.8        |       4.6.32       | :white_check_mark: |
@@ -121,6 +164,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.8        |       4.6.13       | :white_check_mark: |
 |       4.6.8        |       4.6.12       | :white_check_mark: |
 |       4.6.8        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.43       | :white_check_mark: |
 |       4.6.7        |       4.6.41       | :white_check_mark: |
 |       4.6.7        |       4.6.34       | :white_check_mark: |
 |       4.6.7        |       4.6.32       | :white_check_mark: |
@@ -132,6 +176,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.7        |       4.6.12       | :white_check_mark: |
 |       4.6.7        |       4.6.9        | :white_check_mark: |
 |       4.6.7        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.43       | :white_check_mark: |
 |       4.6.6        |       4.6.41       | :white_check_mark: |
 |       4.6.6        |       4.6.34       | :white_check_mark: |
 |       4.6.6        |       4.6.32       | :white_check_mark: |
@@ -144,6 +189,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.6        |       4.6.9        | :white_check_mark: |
 |       4.6.6        |       4.6.8        | :white_check_mark: |
 |       4.6.6        |       4.6.7        | :white_check_mark: |
+|       4.5.23       |       4.6.43       | :white_check_mark: |
 |       4.5.23       |       4.6.41       | :white_check_mark: |
 |       4.5.23       |       4.6.34       | :white_check_mark: |
 |       4.5.23       |       4.6.32       | :white_check_mark: |
@@ -151,6 +197,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.5.23       |       4.6.24       | :white_check_mark: |
 |       4.5.23       |       4.6.23       | :white_check_mark: |
 |       4.5.23       |       4.6.18       | :white_check_mark: |
+|       4.5.21       |       4.6.43       | :white_check_mark: |
 |       4.5.21       |       4.6.41       | :white_check_mark: |
 |       4.5.21       |       4.6.34       | :white_check_mark: |
 |       4.5.21       |       4.6.32       | :white_check_mark: |
@@ -164,6 +211,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.5.21       |       4.6.8        | :white_check_mark: |
 |       4.5.21       |       4.6.7        | :white_check_mark: |
 |       4.5.21       |       4.6.6        | :white_check_mark: |
+|       4.5.20       |       4.6.43       | :white_check_mark: |
 |       4.5.20       |       4.6.41       | :white_check_mark: |
 |       4.5.20       |       4.6.34       | :white_check_mark: |
 |       4.5.20       |       4.6.32       | :white_check_mark: |
@@ -177,6 +225,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.5.20       |       4.6.8        | :white_check_mark: |
 |       4.5.20       |       4.6.7        | :white_check_mark: |
 |       4.5.20       |       4.6.6        | :white_check_mark: |
+|       4.4.24       |       4.6.43       | :white_check_mark: |
 |       4.4.24       |       4.6.41       | :white_check_mark: |
 |       4.4.24       |       4.6.34       | :white_check_mark: |
 |       4.4.24       |       4.6.32       | :white_check_mark: |
@@ -263,39 +312,55 @@ health status of MongoDB ReplicaSet members, refer to our
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.7.3        |       4.7.13       | :white_check_mark: |
+|       4.7.16       |       4.7.20       | :white_check_mark: |
+|       4.7.15       |       4.7.20       | :white_check_mark: |
+|       4.7.3        |       4.7.20       | :white_check_mark: |
+|       4.7.3        |       4.7.15       | :white_check_mark: |
+|       4.6.41       |       4.7.20       | :white_check_mark: |
+|       4.6.41       |       4.7.15       | :white_check_mark: |
 |       4.6.41       |       4.7.3        | :white_check_mark: |
+|       4.6.6        |       4.7.15       | :white_check_mark: |
 
 **4.6.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.6.41       |       4.6.43       | :white_check_mark: |
+|       4.6.36       |       4.6.43       | :white_check_mark: |
 |       4.6.36       |       4.6.41       | :white_check_mark: |
+|       4.6.32       |       4.6.43       | :white_check_mark: |
 |       4.6.32       |       4.6.41       | :white_check_mark: |
 |       4.6.32       |       4.6.34       | :white_check_mark: |
+|       4.6.28       |       4.6.43       | :white_check_mark: |
 |       4.6.28       |       4.6.41       | :white_check_mark: |
 |       4.6.28       |       4.6.34       | :white_check_mark: |
 |       4.6.28       |       4.6.32       | :white_check_mark: |
+|       4.6.26       |       4.6.43       | :white_check_mark: |
 |       4.6.26       |       4.6.41       | :white_check_mark: |
 |       4.6.26       |       4.6.34       | :white_check_mark: |
 |       4.6.26       |       4.6.32       | :white_check_mark: |
+|       4.6.25       |       4.6.43       | :white_check_mark: |
 |       4.6.25       |       4.6.41       | :white_check_mark: |
 |       4.6.25       |       4.6.34       | :white_check_mark: |
 |       4.6.25       |       4.6.32       | :white_check_mark: |
+|       4.6.24       |       4.6.43       | :white_check_mark: |
 |       4.6.24       |       4.6.41       | :white_check_mark: |
 |       4.6.24       |       4.6.34       | :white_check_mark: |
 |       4.6.24       |       4.6.32       | :white_check_mark: |
+|       4.6.23       |       4.6.43       | :white_check_mark: |
 |       4.6.23       |       4.6.41       | :white_check_mark: |
 |       4.6.23       |       4.6.34       | :white_check_mark: |
 |       4.6.23       |       4.6.32       | :white_check_mark: |
 |       4.6.23       |       4.6.28       | :white_check_mark: |
 |       4.6.23       |       4.6.24       | :white_check_mark: |
+|       4.6.18       |       4.6.43       | :white_check_mark: |
 |       4.6.18       |       4.6.41       | :white_check_mark: |
 |       4.6.18       |       4.6.34       | :white_check_mark: |
 |       4.6.18       |       4.6.32       | :white_check_mark: |
 |       4.6.18       |       4.6.28       | :white_check_mark: |
 |       4.6.18       |       4.6.24       | :white_check_mark: |
 |       4.6.18       |       4.6.23       | :white_check_mark: |
+|       4.6.13       |       4.6.43       | :white_check_mark: |
 |       4.6.13       |       4.6.41       | :white_check_mark: |
 |       4.6.13       |       4.6.34       | :white_check_mark: |
 |       4.6.13       |       4.6.32       | :white_check_mark: |
@@ -303,6 +368,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.13       |       4.6.24       | :white_check_mark: |
 |       4.6.13       |       4.6.23       | :white_check_mark: |
 |       4.6.13       |       4.6.18       | :white_check_mark: |
+|       4.6.12       |       4.6.43       | :white_check_mark: |
 |       4.6.12       |       4.6.41       | :white_check_mark: |
 |       4.6.12       |       4.6.34       | :white_check_mark: |
 |       4.6.12       |       4.6.32       | :white_check_mark: |
@@ -311,6 +377,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.12       |       4.6.23       | :white_check_mark: |
 |       4.6.12       |       4.6.18       | :white_check_mark: |
 |       4.6.12       |       4.6.13       | :white_check_mark: |
+|       4.6.9        |       4.6.43       | :white_check_mark: |
 |       4.6.9        |       4.6.41       | :white_check_mark: |
 |       4.6.9        |       4.6.34       | :white_check_mark: |
 |       4.6.9        |       4.6.32       | :white_check_mark: |
@@ -320,6 +387,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.9        |       4.6.18       | :white_check_mark: |
 |       4.6.9        |       4.6.13       | :white_check_mark: |
 |       4.6.9        |       4.6.12       | :white_check_mark: |
+|       4.6.8        |       4.6.43       | :white_check_mark: |
 |       4.6.8        |       4.6.41       | :white_check_mark: |
 |       4.6.8        |       4.6.34       | :white_check_mark: |
 |       4.6.8        |       4.6.32       | :white_check_mark: |
@@ -330,6 +398,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.8        |       4.6.13       | :white_check_mark: |
 |       4.6.8        |       4.6.12       | :white_check_mark: |
 |       4.6.8        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.43       | :white_check_mark: |
 |       4.6.7        |       4.6.41       | :white_check_mark: |
 |       4.6.7        |       4.6.34       | :white_check_mark: |
 |       4.6.7        |       4.6.32       | :white_check_mark: |
@@ -341,6 +410,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.7        |       4.6.12       | :white_check_mark: |
 |       4.6.7        |       4.6.9        | :white_check_mark: |
 |       4.6.7        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.43       | :white_check_mark: |
 |       4.6.6        |       4.6.41       | :white_check_mark: |
 |       4.6.6        |       4.6.34       | :white_check_mark: |
 |       4.6.6        |       4.6.32       | :white_check_mark: |
@@ -353,6 +423,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.6.6        |       4.6.9        | :white_check_mark: |
 |       4.6.6        |       4.6.8        | :white_check_mark: |
 |       4.6.6        |       4.6.7        | :white_check_mark: |
+|       4.5.23       |       4.6.43       | :white_check_mark: |
 |       4.5.23       |       4.6.41       | :white_check_mark: |
 |       4.5.23       |       4.6.34       | :white_check_mark: |
 |       4.5.23       |       4.6.32       | :white_check_mark: |
@@ -360,6 +431,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.5.23       |       4.6.24       | :white_check_mark: |
 |       4.5.23       |       4.6.23       | :white_check_mark: |
 |       4.5.23       |       4.6.18       | :white_check_mark: |
+|       4.5.21       |       4.6.43       | :white_check_mark: |
 |       4.5.21       |       4.6.41       | :white_check_mark: |
 |       4.5.21       |       4.6.34       | :white_check_mark: |
 |       4.5.21       |       4.6.32       | :white_check_mark: |
@@ -373,6 +445,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.5.21       |       4.6.8        | :white_check_mark: |
 |       4.5.21       |       4.6.7        | :white_check_mark: |
 |       4.5.21       |       4.6.6        | :white_check_mark: |
+|       4.5.20       |       4.6.43       | :white_check_mark: |
 |       4.5.20       |       4.6.41       | :white_check_mark: |
 |       4.5.20       |       4.6.34       | :white_check_mark: |
 |       4.5.20       |       4.6.32       | :white_check_mark: |
@@ -386,6 +459,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.5.20       |       4.6.8        | :white_check_mark: |
 |       4.5.20       |       4.6.7        | :white_check_mark: |
 |       4.5.20       |       4.6.6        | :white_check_mark: |
+|       4.4.24       |       4.6.43       | :white_check_mark: |
 |       4.4.24       |       4.6.41       | :white_check_mark: |
 |       4.4.24       |       4.6.34       | :white_check_mark: |
 |       4.4.24       |       4.6.32       | :white_check_mark: |
@@ -458,9 +532,23 @@ health status of MongoDB ReplicaSet members, refer to our
 
 :::
 
-| **Source Version** | **Target Version** | **Support** |
-| :----------------: | :----------------: | :---------: |
-|       4.7.3        |       4.7.15       |     :x:     |
+**4.8**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.8.8        |       4.8.9        | :white_check_mark: |
+|       4.7.29       |       4.8.9        | :white_check_mark: |
+|       4.7.29       |       4.8.8        | :white_check_mark: |
+|       4.7.27       |       4.8.9        | :white_check_mark: |
+|       4.7.27       |       4.8.8        | :white_check_mark: |
+
+**4.7**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.7.15       |       4.7.27       | :white_check_mark: |
+|       4.7.3        |       4.7.27       |        :x:         |
+|       4.7.3        |       4.7.15       |        :x:         |
 
 </TabItem>
 

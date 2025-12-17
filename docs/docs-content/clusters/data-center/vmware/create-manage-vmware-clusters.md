@@ -10,6 +10,16 @@ tags: ["data center", "vmware"]
 You can deploy Kubernetes clusters on VMware vSphere using Palette. Use the following steps to create and manage VMware
 clusters in Palette.
 
+## Limitations
+
+- Autoscaling is not supported for VMware vSphere clusters deployed using an
+  [IP Address Management (IPAM) node pool](../../pcg/manage-pcg/create-manage-node-pool.md) with
+  [static placement configured](../../pcg/deploy-pcg/vmware.md#static-placement-configuration). To scale your cluster,
+  either use dynamic IP allocation or disable autoscaler and manually adjust your node pool size using your cluster's
+  **Nodes** tab. For more information on scaling clusters, refer to our
+  [Scale, Upgrade, and Secure Clusters](../../../tutorials/getting-started/palette/vmware/scale-secure-cluster.md#scale-a-cluster)
+  tutorial.
+
 ## Prerequisites
 
 Before you begin, ensure that you have the following prerequisites:
@@ -82,9 +92,9 @@ Before you begin, ensure that you have the following prerequisites:
    | **Tags**          | Tags to help you identify the cluster.                                                                                                                                          | No       |
    | **Cloud Account** | The VMware vSphere account to use for the cluster. If no account is available, ensure you [deployed a PCG](../../pcg/deploy-pcg/vmware.md) into the VMware vSphere environment. | Yes      |
 
-6. Select the cluster profile you want to use for the cluster. Click the **Next** to proceed.
+6. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-7. Modify any cluster profile layers as needed. Click **Next** to continue.
+7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 8. Fill out the VMware vSphere configuration details for the cluster. Refer to the table below to learn more about each
    option. Click **Next** to proceed.
@@ -126,6 +136,15 @@ Before you begin, ensure that you have the following prerequisites:
 
    #### Cloud Configuration
 
+   :::info
+
+   If you are using the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" />
+   pack and referencing a VM created using the
+   [CAPI Image Builder](../../../byoos/capi-image-builder/build-image-vmware/build-image-vmware.md), the **CPU**,
+   **Memory**, and **Disk** fields must match the specs of the referenced VM.
+
+   :::
+
    | Field Name | Description                                                      |
    | ---------- | ---------------------------------------------------------------- |
    | **CPU**    | The number of CPUs to allocate to the control plane nodes.       |
@@ -152,62 +171,27 @@ Before you begin, ensure that you have the following prerequisites:
 
    ### Worker Plane Pool Configuration
 
-   | Field Name                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-   | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Node Pool Name**              | The name of the control plane node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-   | **Enable Autoscaler**           | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. |
-   | **Node Repave Interval**        | The interval at which the worker nodes are repaved in seconds. Refer to the [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration) for additional information about repave behaviors.                                                                                                                                                                                                                                |
-   | **Number of Nodes in the Pool** | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                          |
-   | **Rolling Update**              | Choose between **Expand First** and **Contract First** to determine the order in which nodes are added or removed from the worker node pool. Expand first adds new nodes before removing old nodes. Contract first removes old nodes before adding new nodes.                                                                                                                                                                                                              |
-   | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                     |
-   | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                             |
+   | Field Name                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Node Pool Name**              | The name of the control plane node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+   | **Enable Autoscaler**           | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. <br /> <br /> **NOTE:** Autoscaler is not supported for VMware vSphere clusters deployed using an [IP Address Management (IPAM) node pool](../../pcg/manage-pcg/create-manage-node-pool.md) with [static placement configured](../../pcg/deploy-pcg/vmware.md#static-placement-configuration). |
+   | **Node Repave Interval**        | The interval at which the worker nodes are repaved in seconds. Refer to the [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration) for additional information about repave behaviors.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | **Number of Nodes in the Pool** | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   | **Rolling Update**              | Choose between **Expand First** and **Contract First** to determine the order in which nodes are added or removed from the worker node pool. Expand first adds new nodes before removing old nodes. Contract first removes old nodes before adding new nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+   | **Additional Labels**           | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | **Taints**                      | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
    Click on the **Next** button when you are done.
 
-10. You can configure the following cluster management features now if needed, or you can do it later:
+10. <PartialsComponent category="clusters" name="cluster-settings" />
 
-    - OS Patching
-    - Schedule scans
-    - Schedule backups
-    - Role Based Access Control (RBAC)
-    - Location
+11. Select **Validate** to review your cluster configurations and settings.
 
-    #### OS Patching
+12. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-    Specify your preferred **OS Patching Schedule** for the cluster. Check out the
-    [OS Patching](../../cluster-management/os-patching.md) page to learn more about OS patching.
-
-    #### Scan Options
-
-    Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
-    Kubernetes configuration security, penetration testing, and conformance testing.
-
-    #### Backup Options
-
-    Schedule any backups you want Palette to perform. Review
-    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
-
-    #### RBAC Configuration
-
-<!-- prettier-ignore-start -->
-
-    RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
-    RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
-
-<!-- prettier-ignore-end -->
-
-    #### Location
-
-    Specify the location of the cluster. The cluster location is added to the project dashboard location map.
-
-11. Click on the **Validate** button and review the cluster configuration and settings summary.
-
-12. Click **Finish Configuration** to deploy the cluster.
-
-The cluster deployment process is initiated. You can monitor the cluster deployment progress by navigating to the left
-**Main Menu** and selecting **Clusters**. Click on the cluster you just created to view the cluster details page. The
-**Cluster Status** field displays the current status of the cluster.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 

@@ -16,6 +16,16 @@ The following prerequisites must be met before deploying a cluster to AWS:
 
 - Access to an AWS cloud account
 
+  - AWS clusters deployed by Palette use the
+    [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
+    configuration specified in the EC2 account defaults. Refer to the
+    [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+    guide for further information.
+  - The AWS account used for IMDS configuration needs to be assigned the `ec2:GetInstanceMetadataDefaults` permission.
+    Clusters will be launched with `IMDSv2 (token optional)` enforcement if this permission is not assigned. Refer to
+    the [AWS reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html) guide
+    for further information.
+
 - You have added an AWS account in Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
 - An infrastructure cluster profile. Review
@@ -88,11 +98,9 @@ Use the following steps to provision a new AWS cluster:
 
    To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
 
-7. Click **Add Cluster Profile**, select a cluster profile and click **Next**. Palette displays the cluster profile
-   layers.
+7. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   All pack parameters contain default values from the cluster profile.
+8. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 9. Provide the AWS cloud account and placement information.
 
@@ -156,16 +164,15 @@ Use the following steps to provision a new AWS cluster:
 
 14. Click **Next**.
 
-15. Configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC).
-    Review the cluster settings and make changes if needed.
+15. <PartialsComponent category="clusters" name="cluster-settings" />
 
-16. Click **Validate** to continue.
+16. Select **Validate** to review your cluster configurations and settings.
 
-17. Review the summary and click **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take
-    15 - 30 minutes depending on the cluster profile and the node pool configuration.
+17. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the
-deployment progress.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 

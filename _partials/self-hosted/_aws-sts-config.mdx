@@ -35,52 +35,58 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
     --data '{
     "username": "**********",
     "password": "**********"
-    }' | jq ."Authorization")
+    }' | jq -r ."Authorization")
    ```
 
 3. Next, prepare a payload for the AWS account you want to configure. 
    Use the following JSON payload as a template and replace the `accessKey`, `secretKey`, and `accountId` fields with the AWS access key, secret key, and account ID of your AWS account.
 
-    ```json
-    CONFIG_JSON=$(cat <<EOF
-    {
-        "accessKey": "**********",
-        "secretKey": "**********",
-        "accountId": "123456789"
-    }
-    EOF
-    )
-    ```
+   ```json
+   CONFIG_JSON=$(cat <<EOF
+   {
+       "accessKey": "**********",
+       "secretKey": "**********",
+       "accountId": "123456789"
+   }
+   EOF
+   )
+   ```
 
     This avoids exposing sensitive information in the command line.
 
-2. Issue the following command to invoke the {props.edition} API to configure the AWS account to your instance.
+4. Issue the following command to invoke the {props.edition} API to create and configure the AWS account to your instance.
 
-    <Tabs>
+   :::info
 
-    <TabItem value="AWS">
+   To modify an existing AWS account, change `POST` to `PUT` in the curl statement.
 
-    ```bash
-    curl --request POST \
-        --url https://<palette-api-url>/v1/system/config/aws/sts/account \
-        --header 'Authorization: $TOKEN' \
-        --data '$CONFIG_JSON'
-    ```
+   :::
 
-    </TabItem>
+   <Tabs>
 
-    <TabItem value="AWS GOV">
+   <TabItem value="AWS">
 
-    ```bash
-    curl --request POST \
-        --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
-        --header 'Authorization: $TOKEN' \
-        --data  '$CONFIG_JSON'
-    ```
+   ```bash
+   curl --request POST \
+    --url https://<palette-api-url>/v1/system/config/aws/sts/account \
+    --header "Authorization: $TOKEN" \
+    --data "$CONFIG_JSON"
+   ```
 
-    </TabItem>
+   </TabItem>
 
-    </Tabs>
+   <TabItem value="AWS GOV">
+
+   ```bash
+   curl --request POST \
+    --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
+    --header "Authorization: $TOKEN" \
+    --data "$CONFIG_JSON"
+   ```
+
+   </TabItem>
+
+   </Tabs>
 
     
 ## Validate 
@@ -97,15 +103,33 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
     --data '{
     "password": "**********",
     "username": "**********"
-    }')
+    }' | jq -r ."Authorization")
+   ```
 
-2. Issue the following command to make an API call that confirms that the credentials were configured successfully.
+3. Issue the following command to make an API call that confirms that the credentials were configured successfully.
 
-    ```shell
-    curl --request GET \
-            --url https://<palette-api-url>/v1/system/config/aws/account \
-            --header 'Authorization: $TOKEN'
-    ```
+   <Tabs>
 
-    If you receive a response that contains the payload you configured, the configuration was successful.
+   <TabItem value="AWS">
 
+   ```shell
+   curl --request GET \
+     --url https://<palette-api-url>/v1/system/config/aws/sts/account \
+     --header "Authorization: $TOKEN"
+   ```
+
+   </TabItem>
+
+   <TabItem value="AWS GOV">
+
+   ```shell
+   curl --request GET \
+     --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
+     --header "Authorization: $TOKEN"
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   If you receive a response that contains the payload you configured, the configuration was successful.

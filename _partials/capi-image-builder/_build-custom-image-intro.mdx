@@ -1,0 +1,52 @@
+---
+partial_category: capi-image-builder
+partial_name: build-custom-image-intro
+---
+
+1.  Open a terminal session on your Linux machine and set your CAPI Image Builder version tag as a variable. This guide
+    uses version 4.6.24 as an example. Refer to the CAPI Image Builder
+    [Downloads](/downloads/capi-image-builder) page for the latest version.
+
+        ```shell
+        CAPI_IMAGE_BUILDER_VERSION=<capi-image-builder-version-tag>
+        echo CAPI Image Builder version: $CAPI_IMAGE_BUILDER_VERSION
+        ```
+
+        ```shell title="Example output"
+        CAPI Image Builder version: v4.6.24
+        ```
+
+2.  Download the CAPI Image Builder image.
+
+    <Tabs groupId="container-tech">
+
+        <TabItem value="Docker" label="Docker">
+
+        ```shell
+        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
+        ```
+
+        </TabItem>
+
+        <TabItem value="Podman" label="Podman">
+
+        ```shell
+        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
+        ```
+
+        </TabItem>
+
+    </Tabs>
+
+3.  Create an `output` directory to store the image files and set the required permissions.
+
+    ```shell
+    mkdir /home/$USER/output
+    chmod a+rwx /home/$USER/output
+    ```
+
+4.  Navigate to the `output` directory.
+
+    ```shell
+    cd /home/$USER/output
+    ```

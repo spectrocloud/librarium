@@ -159,14 +159,6 @@ artifacts at the same time.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 
-    :::preview
-
-    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
-    Do not use this feature in production workloads.
-
-    :::
-
 11. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
     `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove the
     Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.

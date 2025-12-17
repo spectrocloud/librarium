@@ -118,7 +118,7 @@ let redirects = [
   },
   {
     from: `/knowledgebase/how-to/reverse-proxy-dashboard/`,
-    to: `/clusters/cluster-management/kubernetes-dashboard/`,
+    to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
   },
   {
     from: `/devx/cluster-groups/`,
@@ -195,6 +195,10 @@ let redirects = [
   {
     from: `/clusters/brownfield-clusters/`,
     to: `/clusters/imported-clusters/`,
+  },
+  {
+    from: `/clusters/palette-virtual-clusters/migrate-virtual-clusters/`,
+    to: `/clusters/cluster-groups/vcluster-upgrades/`,
   },
   {
     from: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
@@ -958,6 +962,14 @@ let redirects = [
     to: "/downloads/offline-docs/",
   },
   { from: "/audit-logs/kube-api-audit-logging/", to: "/audit-logs/" },
+  {
+    from: `/clusters/cluster-management/kubernetes-dashboard/`,
+    to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
+  },
+  {
+    from: `/clusters/public-cloud/azure/azure-disk-encryption/`,
+    to: `/clusters/public-cloud/azure/azure-disk-storage-sse/`,
+  },
 ];
 
 if (packRedirects.length > 0) {

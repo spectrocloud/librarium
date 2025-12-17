@@ -7,14 +7,7 @@ partial_name: install-crossplane
     your cluster.
 
     ```bash
-    kubectl cluster-info --context <cluster-name>
-    ```
-
-    ```text hideClipboard title="Example output"
-    Kubernetes control plane is running at https://127.0.0.1:65306
-    CoreDNS is running at https://127.0.0.1:65306/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-
-    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+    kubectl config use-context <cluster-name>
     ```
 
 2.  Next, add the Crossplane Helm chart.
@@ -44,7 +37,7 @@ partial_name: install-crossplane
 
     ```bash hideClipboard title="Example output"
     NAME: crossplane
-    LAST DEPLOYED: Fri Aug  8 08:27:46 2025
+    LAST DEPLOYED: Wed Sep  3 14:08:39 2025
     NAMESPACE: crossplane-system
     STATUS: deployed
     REVISION: 1
@@ -54,8 +47,8 @@ partial_name: install-crossplane
 
     Chart Name: crossplane
     Chart Description: Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
-    Chart Version: 1.20.0
-    Chart Application Version: 1.20.0
+    Chart Version: 2.0.2
+    Chart Application Version: 2.0.2
 
     Kube Version: v1.33.1
     ```

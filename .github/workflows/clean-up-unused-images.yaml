@@ -37,17 +37,20 @@ jobs:
 
       - id: checkout
         name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Setup Nodejs
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
       
       - run: npm ci
 
+      - name: Generate partials
+        run: make generate-partials
+    
       - name: Find unused images
         run: make find-unused-images
 

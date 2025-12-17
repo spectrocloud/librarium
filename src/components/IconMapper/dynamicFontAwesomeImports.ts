@@ -1,6 +1,7 @@
 import { faCubes } from '@fortawesome/free-solid-svg-icons';
 import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { faPersonWalkingLuggage } from '@fortawesome/free-solid-svg-icons';
+import { faObjectUngroup } from '@fortawesome/free-solid-svg-icons';
 import { faObjectGroup } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -22,12 +23,14 @@ import { faTowerObservation } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
   "terminal": faTerminal,
   "person-walking-luggage": faPersonWalkingLuggage,
+  "object-ungroup": faObjectUngroup,
   "object-group": faObjectGroup,
   "envelope-open-text": faEnvelopeOpenText,
   "database": faDatabase,
@@ -49,5 +52,6 @@ export const fontAwesomeIcons = {
   "lock": faLock,
   "gears": faGears,
   "screwdriver-wrench": faScrewdriverWrench,
+  "flag": faFlag,
   "eye-slash": faEyeSlash
 };

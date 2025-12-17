@@ -65,9 +65,9 @@ function processSwaggerFile(filePath, baseUrl) {
 
 // List of Swagger files to process
 const swaggerFiles = [
-  { path: "docs/api-content/api-docs/v1/api.json", baseUrl: "https://api.spectrocloud.com" },
+  { path: "static/apis/v1/api.json", baseUrl: "https://api.spectrocloud.com" },
   // Add the path to your second Swagger file here
-  { path: "docs/api-content/api-docs/edge-v1/emc-api.json", baseUrl: "https://edge-host-ip:5080" },
+  { path: "static/apis/edge-v1/emc-api.json", baseUrl: "https://edge-host-ip:5080" },
 ];
 
 // Process each Swagger file

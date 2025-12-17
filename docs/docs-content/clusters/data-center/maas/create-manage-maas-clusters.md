@@ -63,12 +63,19 @@ section of the pack Additional Guidance for further information.
 
 7.  Select your MAAS cloud account from the **drop-down Menu** and click **Next**.
 
-8.  Select the cluster profile for your MAAS cluster.
+8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
-    values defined in the cluster profile.
+9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 10. Select a domain from the **Domain drop-down Menu** and click **Next**.
+
+    :::warning
+
+    We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time.
+    If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
+    **Cluster Config** step.
+
+    :::
 
 11. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
     node pools. For a description of input fields that are common across target platforms refer to the
@@ -97,15 +104,15 @@ section of the pack Additional Guidance for further information.
         provided tags. To learn more about MAAS tags, refer to the
         [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation.
 
-12. You can configure the following cluster management features now if needed, or you can do it later:
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-    - Manage machines
-    - Schedule scans
-    - Schedule backups
-    - Role-based access control (RBAC)
-    - Location
+13. Select **Validate** to review your cluster configurations and settings.
 
-13. Review settings and deploy the cluster.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 

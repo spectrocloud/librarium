@@ -82,7 +82,7 @@ spec:
       version: "v2" # custom version
       auth:
         # points to a secret that contains a vault token
-        # https://www.vaultproject.io/docs/auth/token
+        # https://developer.hashicorp.com/vault/docs/auth/token
         tokenSecretRef:
           name: "vault-token1" # Custom name and key
           key: "token1"

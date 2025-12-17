@@ -24,8 +24,19 @@ natively support IPAM and DHCP.
 
 You can create additional node pools to meet the requirements of your workloads, such as defining different node pools
 for different workloads, better managing the IP address utilization, or providing additional capacity. You can assign
-additional IPAM node pools when deploying a VMware vSphere cluster with a static IP network. This guide provides
-instructions on how to create an IPAM node pool for a PCG deployed in a VMware vSphere environment.
+additional IPAM node pools when deploying a VMware vSphere or a MAAS LXD cluster with a static IP network. This guide
+provides instructions on how to create an IPAM node pool for a PCG deployed in a VMware vSphere environment or for a
+MAAS LXD deployment.
+
+## Limitations
+
+- Autoscaling is not supported for [VMware vSphere clusters](../../data-center/vmware/create-manage-vmware-clusters.md)
+  deployed using an IPAM node pool with
+  [static placement configured](../deploy-pcg/vmware.md#static-placement-configuration). To scale your cluster, use
+  either use dynamic IP allocation or disable autoscaler and manually adjust your node pool size using your cluster's
+  **Nodes** tab. For more information on scaling clusters, refer to our
+  [Scale, Upgrade, and Secure Clusters](../../../tutorials/getting-started/palette/vmware/scale-secure-cluster.md#scale-a-cluster)
+  tutorial.
 
 ## Prerequisites
 
@@ -111,6 +122,9 @@ Use the following steps to validate that the node pool was created.
 
 6. The new node pool should be listed in the **Node Pools** section.
 
-To use the new node pool, you will need to
-[create a VMware vSphere cluster](../../data-center/vmware/create-manage-vmware-clusters.md) with a static IP network
-and assign the node pool when configuring the cluster control plane and worker nodes.
+To use the new node pool, you will need to create a
+[VMware vSphere cluster](../../data-center/vmware/create-manage-vmware-clusters.md) or
+[MAAS LXD workload cluster](../../data-center/maas/create-manage-maas-lxd-clusters.md) with a static IP network.
+
+For VMware vSphere clusters, assign the node pool when configuring the cluster control plane and worker nodes. For MAAS
+LXD workload clusters, assign the node pool only when configuring the worker nodes.

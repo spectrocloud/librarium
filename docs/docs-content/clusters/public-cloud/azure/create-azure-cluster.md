@@ -111,98 +111,132 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
 Take the following steps to deploy an Azure cluster.
 
-1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX.
+1.  Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX.
 
-2. Ensure you are in the correct project scope.
+2.  Ensure you are in the correct project scope.
 
-3. From the left main menu, select **Clusters > Create Cluster**.
+3.  From the left main menu, select **Clusters > Create Cluster**.
 
-4. In **Public Clouds**, under **Infrastructure Provider**, select **Azure IaaS**.
+4.  In **Public Clouds**, under **Infrastructure Provider**, select **Azure IaaS**.
 
-5. In the bottom-right corner, select **Start Azure IaaS Configuration**.
+5.  In the bottom-right corner, select **Start Azure IaaS Configuration**.
 
-6. Complete the following information. Select **Next** when finished.
+6.  Complete the following information. Select **Next** when finished.
 
-   | **Field**         | **Description**                                                                                                                                                                                                                                                                     |
-   | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Cluster Name**  | Enter a custom name for the cluster.                                                                                                                                                                                                                                                |
-   | **Description**   | (Optional) Provide context about the cluster.                                                                                                                                                                                                                                       |
-   | **Tags**          | (Optional) Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.                                                                                                          |
-   | **Cloud Account** | Select the appropriate Azure account under which to deploy the cluster. If the account is not there, select **Add New Account**, and provide your Azure account information. For more information, refer to our [Register and Manage Azure Cloud Accounts](./azure-cloud.md) guide. |
+    | **Field**         | **Description**                                                                                                                                                                                                                                                                     |
+    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Cluster Name**  | Enter a custom name for the cluster.                                                                                                                                                                                                                                                |
+    | **Description**   | (Optional) Provide context about the cluster.                                                                                                                                                                                                                                       |
+    | **Tags**          | (Optional) Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.                                                                                                          |
+    | **Cloud Account** | Select the appropriate Azure account under which to deploy the cluster. If the account is not there, select **Add New Account**, and provide your Azure account information. For more information, refer to our [Register and Manage Azure Cloud Accounts](./azure-cloud.md) guide. |
 
-7. Choose the appropriate Azure IaaS [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) and
-   select **Next**. Palette displays the cluster profile layers.
+7.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-8. Review the profile layers. Make changes to a layer's YAML configuration file as needed. When finished, select
-   **Next**.
+    - Certain features, such as clusters with static placement, deployed in Azure Government Secret cloud, and those
+      using custom OpenID Connect (OIDC), require additional modifications to your cluster profile. Expand the
+      appropriate panel for more information.
 
-   For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend
-   [updating](../../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) and
-   [versioning your cluster profile](../../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
-   rather than making inline changes.
+      <details>
 
-   :::warning
+      <summary> Static Placement </summary>
 
-   <PartialsComponent category="azure" name="azure-secret-layer-limitations" />
+      To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public
+      IPs created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
 
-   :::
+      ```yaml
+      cloud:
+        azure:
+          fullyPrivateAddressing: true
+      ```
 
-<!-- prettier-ignore-start -->
+      If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
+      balancers for the control plane and worker nodes and assign public IPs to them.
 
-9. To ensure that clusters with a [static placement](#static-placement-settings) remain fully private, with no public
-   IPs created for the control plane and worker nodes, add the following configuration to the Kubernetes layer of your
-   [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md).
+      Consider the following limitations:
 
-   <details>
+      - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster
+        must still have outbound access to the internet, including the
+        [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
+        container images.
 
-   <summary> Static Placement Kubernetes Configuration </summary>
+      - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
+        parameter value will result in errors until you return the value to its original configuration.
 
-   Add the following configuration to the Kubernetes layer of your
-   [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md).
+        Toggle the **Private API Server LB** option to enable the use of a Private API Server load balancer and specify
+        the [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want
+        to use. Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP
+        allocation methods. If you select **Static**, you must provide a valid IP address.
 
-   ```yaml
-   cloud:
-     azure:
-       fullyPrivateAddressing: true
-   ```
+     </details>
 
-   If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
-   balancers for the control plane and worker nodes and assign public IPs to them.
+     <details>
 
-   Consider the following limitations:
+         <summary>Azure Government Secret Cloud </summary>
 
-   - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
-     still have outbound access to the internet, including the
-     [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
-     container images.
+         <PartialsComponent category="azure" name="azure-secret-layer-limitations" />
 
-   - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
-     parameter value will result in errors until you return the value to its original configuration.
+     </details>
 
-   <br />
+     <details>
 
-   Toggle the **Private API Server LB** option to enable the use of a private API server load balancer and specify the
-   [private DNS zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) you want to use.
-   Only **Static** IP allocation is allowed, which requires a valid IP address.
+    <summary> OpenID Connect (OIDC)</summary>
 
-   </details>
+      <!-- prettier-ignore-start -->
 
-10.  To configure custom OpenID Connect (OIDC) for Azure clusters, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for further guidance.
+    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the
 
-        :::warning
+    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+    pack additional details for more information.
 
-        All the OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
-        Kubernetes role to users and groups, refer to
-        [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
+      <!-- prettier-ignore-end -->
 
-        :::
+    :::warning
 
-<!-- prettier-ignore-end -->
+    All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
+    Kubernetes role to users and groups, refer to
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-11. Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
-    ensure you also provide information listed in the [Static Placement Settings](#static-placement-settings) table. If
-    you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about
-    attaching custom storage to a cluster, refer to our [Azure Storage](../azure/architecture.md#azure-storage) section.
+    :::
+
+      </details>
+
+      <details>
+
+    <summary> Disable automatic route table creation for pod networking </summary>
+
+    By default, Palette creates route tables and route entries for pod networking.
+
+      <details>
+
+    <summary> Example route table entries </summary>
+
+    | Name                                                    | Address prefix | Next hop type    | Next hop IP address |
+    | ------------------------------------------------------- | -------------- | ---------------- | ------------------- |
+    | `az-iaas-cluster-cp-xfqnh____1921680024`                | 192.168.0.0/24 | VirtualAppliance | 10.0.0.4            |
+    | `az-iaas-cluster-worker-pool-2cst7-scwck____1921681024` | 192.168.1.0/24 | VirtualAppliance | 10.1.0.4            |
+
+      </details>
+
+    If you do not want Palette to create these route entries, add the following configuration to your Kubernetes layer.
+
+    ```yaml
+    cloud:
+      cloudControllerManager:
+        configureCloudRoutes: false
+    ```
+
+    These route tables and entries are typically needed for pod-to-pod communication if your Container Network
+    Interfaces (CNI) does not support this by default. However, Calico and Cilium CNIs support pod networking across
+    nodes by default without requiring these route tables and entries.
+
+      </details>
+
+8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+
+9.  Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
+    ensure you also provide information listed in the Static Placement Settings table. If you have custom storage
+    accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage
+    to a cluster, check out [Azure storage](../azure/architecture.md#azure-storage).
 
     :::warning
 
@@ -250,13 +284,13 @@ Take the following steps to deploy an Azure cluster.
     | **Parameter**                           | **Description**                                                                                                                                                                                                                                                                                                                                  |
     | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
     | **Resource Group for Private DNS Zone** | Select the Azure resource group that contains the private DNS zone you want to use for the private API server load balancer. The DNS zone resource group can be different from the cluster resource group. If left blank, Palette uses the cluster's **Resource Group**.                                                                         |
-    | **Private DNS zone (Optional)**         | (Optional) Select an existing private DNS zone that will hold the A record of the private endpoint. The options displayed in the drop-down depend on your **Resource Group for Private DNS Zone** selection. If left blank, Palette creates a new private DNS zone in the selected **Resource Group for Private DNS Zone**.                      |
+    | **Private DNS zone (Optional)**         | (Optional) Select an existing private DNS zone that will hold the **A** record of the private endpoint. The options displayed in the drop-down depend on your **Resource Group for Private DNS Zone** selection. If left blank, Palette creates a new private DNS zone in the selected **Resource Group for Private DNS Zone**.                  |
     | **IP Allocation Method**                | Choose how the load balancer virtual IP is assigned: <br /> <br /> - **Static** (default) - Choose a specific IP address for the load balancer that you supply in the **Static IP** field. <br /> - **Dynamic** (disabled) - Azure picks the next free address in the subnet. _This option is no longer supported. You must assign a static IP._ |
     | **Static IP**                           | The private, static IP address to use for the load balancer. The address must be unused and inside the subnet delegated for the private API server load balancer.                                                                                                                                                                                |
 
-12. Select **Next** to continue.
+10. Select **Next** to continue.
 
-13. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+11. Provide the following node pool and cloud configuration information. To learn more about node pools, review our
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     :::info
@@ -324,29 +358,20 @@ Take the following steps to deploy an Azure cluster.
     | **Disk size**          | Enter the size of the disk based on your requirements. The default size is 60 GB.                                                                                                                                                                                                                                                                                                                                                                                             |
     | **Availability zones** | Select the availability zones where you want to deploy your worker nodes. If you select multiple zones, Palette will distribute the nodes evenly across the chosen zones, provided sufficient capacity is available.                                                                                                                                                                                                                                                          |
 
-14. Select **Next** to continue.
+12. Select **Next** to continue.
 
-<!-- prettier-ignore-start -->
+13. <PartialsComponent category="clusters" name="cluster-settings" />
 
-15. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
-    options. Refer to applicable guide for additional information.
+14. Select **Validate** to review your cluster configurations and settings.
 
-    | **Left Menu Item** | **Additional Information** |
-    | --- | --- |
-    | **Manage machines** | [OS Patching](../../cluster-management/os-patching.md) |
-    | **Schedule scans** | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security) |
-    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) |
-    | **RBAC** | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 
-
-<!-- prettier-ignore-end -->
-
-16. Select **Validate** to review the cluster configuration and settings summary.
-
-17. Select **Finish Configuration** to deploy the cluster. Provisioning can take several minutes.
+15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
-The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Refer to the
-**Events** tab to monitor the deployment in real time.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
+
+To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs,
+refer to [Cluster Removal](../../cluster-management/remove-clusters.md).
 
 ## Validate
 

@@ -1,0 +1,62 @@
+---
+sidebar_label: "AWS VPC CNI (Helm)"
+title: "AWS VPC CNI (Helm)"
+description: "Learn about the AWS VPC CNI (Helm) integration and how you can use it with your host clusters."
+hide_table_of_contents: true
+type: "integration"
+category: ["cni", "amd64"]
+sidebar_class_name: "hide-from-sidebar"
+tags: ["packs", "cni", "network"]
+---
+
+<RedirectPackPage packName="cni-aws-vpc-eks-helm" />
+
+Palette supports the AWS VPC CNI plugin for Kubernetes clusters running on Amazon EKS. This integration allows you to leverage the native networking capabilities of AWS, providing high performance and scalability for your containerized applications.
+
+## Configure Pod CIDR
+
+Configuring a pod CIDR helps maintain predictable, scalable, and conflict-free networking within Kubernetes clusters. By selecting a custom pod CIDR range, you can ensure alignment with existing network policies, avoid overlaps with corporate or cloud VPC networks, and plan for future cluster growth.
+
+Before deploying the CNI pack, make sure the following AWS resources are configured manually:
+
+- A `10.0.0.0/16` CIDR block
+- Three Availability Zones (AZs)
+- Three public subnets attached to a single public route table
+- Three private subnets attached to a single private route table
+- One NAT gateway in a single AZ
+
+
+Once the above resources are created, make the following adjustments to the pack's YAML before deploying the CNI pack.
+
+1. Provide your AWS account ID to all `account:` fields.
+
+2. Change the following environment variables in the `env` section. Refer to the [AWS VPC CNI documentation](https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables) for more details. 
+
+```yaml
+AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG: "true"
+ENABLE_POD_ENI: "true"
+ENI_CONFIG_LABEL_DEF: "topology.kubernetes.io/zone"
+```
+
+3. Provide the subnet IDs and security group IDs in the `eniConfig` section. Replace the placeholder values with your created subnet and security group IDs.
+
+```yaml
+eniConfig:
+  # Specifies whether ENIConfigs should be created
+  create: true
+  region: '{{ .spectro.system.cloud.region }}'
+  subnets:
+      "{{ .spectro.system.cloud.region }}a":
+          id: subnet-<REPLACE_WITH_YOUR_SUBNET_ID>
+            securityGroups:
+            - sg-<REPLACE_WITH_YOUR_SECURITY_GROUP_ID>
+        "{{ .spectro.system.cloud.region }}b":
+            id: subnet-<REPLACE_WITH_YOUR_SUBNET_ID>
+            securityGroups:
+            - sg-<REPLACE_WITH_YOUR_SECURITY_GROUP_ID>
+        "{{ .spectro.system.cloud.region }}c":
+            id: subnet-<REPLACE_WITH_YOUR_SUBNET_ID>
+            securityGroups:
+            - sg-<REPLACE_WITH_YOUR_SECURITY_GROUP_ID>
+```
+

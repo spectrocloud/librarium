@@ -74,14 +74,12 @@ introduce breaking changes that affect newly created virtual clusters.
 To avoid disruptions, Palette locks the vCluster version for each cluster group, ensuring virtual clusters can still be
 provisioned successfully within existing groups, even across Palette updates.
 
-If you want to use the latest version of vCluster on your virtual clusters, you must create a new cluster group and
-migrate your workloads from your legacy clusters. Refer to
-[Migrate Virtual Cluster Workloads](../../clusters/palette-virtual-clusters/migrate-virtual-clusters.md) for guidance.
+If you want to use the latest version of vCluster on your virtual clusters, you must prompt Palette to upgrade your
+cluster group at a time that suits you. Refer to [Upgrade Cluster Groups](../cluster-groups/vcluster-upgrades.md) for
+guidance.
 
 ## Resources
 
 - [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md)
 
 - [Configure OIDC for Virtual Clusters](configure-oidc-virtual-cluster.md)
-
-- [Migrate Virtual Cluster Workloads](./migrate-virtual-clusters.md)

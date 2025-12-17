@@ -78,6 +78,9 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
   - x509 SSL certificate authority file in the base64 format.
 
+- Ensure the OS and Kubernetes cluster you are installing VerteX onto is FIPS-compliant. Otherwise, VerteX and its
+  operations will not be FIPS-compliant.
+
 - A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
   annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
   workload, modify the `storageClass` parameter. Check out the

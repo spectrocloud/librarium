@@ -9,7 +9,9 @@ tags: ["profiles", "cluster profiles"]
 
 Add-on cluster profiles offer a range of benefits for workload cluster deployments. These profiles provide enhanced
 functionality by allowing the addition of various layers such as system apps, authentication, security, monitoring,
-logging, ingress, and load balancers to the cluster.
+logging, ingress, and load balancers to the cluster. Since add-on cluster profiles do not contain the required OS,
+Kubernetes, network, and storage components, they must be used in tandem with an
+[infrastructure](../create-infrastructure-profile.md) or [full cluster profile](../create-full-profile.md).
 
 This capability allows you to customize and configure clusters based on specific requirements. Add-on cluster profiles
 follow a modular approach, making managing and maintaining cluster configurations more flexible. Add-on profiles also

@@ -51,9 +51,9 @@ In the **Basic information** section, insert the general information about the c
 
 ![Palette clusters basic information](/getting-started/gcp/getting-started_deploy-k8s-cluster_basic_info.webp)
 
-Click on **Add Cluster Profile**. A list is displayed of available profiles you can choose to deploy to GCP. Select the
-cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
-**gcp-profile**, and click on **Confirm**.
+On the **Cluster setup type** window, choose **Cluster Profiles > Add Cluster Profile**. A list is displayed of
+available profiles you can choose to deploy to GCP. Select the cluster profile you created in the
+[Create a Cluster Profile](./create-cluster-profile.md) tutorial, named **gcp-profile**, and click on **Confirm**.
 
 The **Cluster Profile** section displays all the layers in the cluster profile.
 

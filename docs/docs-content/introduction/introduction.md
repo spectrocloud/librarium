@@ -11,6 +11,8 @@ sidebar_custom_props:
 slug: /
 ---
 
+<AskAI />
+
 Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of
 any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center
 or the cloud.
@@ -29,7 +31,7 @@ Palette to deploy and update your Kubernetes clusters. This section contains han
 
 Palette VerteX edition is also available to meet the stringent requirements of regulated industries such as government
 and public sector organizations. Palette VerteX integrates Spectro Cloud’s Federal Information Processing Standards
-(FIPS) 140-2 cryptographic modules. To learn more about FIPS-enabled Palette, check out
+(FIPS) 140-3 cryptographic modules. To learn more about FIPS-enabled Palette, check out
 [Palette VerteX](../vertex/vertex.md).
 
 ![Palette product high level overview eager-load](/docs_introduction_product-overview.webp)

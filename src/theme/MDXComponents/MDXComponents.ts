@@ -13,6 +13,7 @@ import TOCInline from "@theme/TOCInline";
 import { TechnicalPreviewReleaseNote as TpBadge } from "@site/src/components/Badges";
 import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
+import ReleaseNotesBreakingChanges from "@site/src/components/ReleaseNotesBreakingChanges/index";
 import PartialsComponent from "@site/src/components/PartialsComponent";
 import VersionedLink from "@site/src/components/VersionedLink";
 import PaletteVertexUrlMapper from "@site/src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper";
@@ -20,6 +21,8 @@ import Accordion from "@site/src/components/Accordion";
 import AccordionPanel from "@site/src/components/AccordionPanel";
 import RedirectPackPage from "@site/src/components/RedirectPackPage";
 import OsCveTable from "@site/src/components/OsCveTable/OsCveTable";
+import AskAI from "@site/src/components/AskAI/index";
+import FullUrlLink from "@site/src/components/FullUrlLink";
 
 export default {
   ...MDXComponents,
@@ -44,4 +47,7 @@ export default {
   PaletteVertexUrlMapper,
   RedirectPackPage,
   OsCveTable,
+  ReleaseNotesBreakingChanges,
+  AskAI,
+  FullUrlLink,
 };

@@ -34,6 +34,7 @@ env:
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN:  ${{ secrets.DSO_AUTH_TOKEN }}
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
 jobs:
   run-ci:
@@ -70,15 +71,15 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - run: npm ci
@@ -87,7 +88,7 @@ jobs:
         run: make format
 
       - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v6
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "ci: auto-formatting prettier issues"
           branch: ${{ github.head_ref }}
@@ -98,20 +99,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - run: npm ci
-
-      - name: Versions on Release Branch Only
-        if: ${{ startsWith(github.head_ref, 'docs-rel-') }}
-        run: |
-          make versions
 
       - name: Build
         run: |

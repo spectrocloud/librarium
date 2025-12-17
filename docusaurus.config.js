@@ -39,16 +39,6 @@ function showLastUpdateTime() {
   return false;
 }
 
-/* IMPORTANT
-Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
-We also need to notify marketing about the script being added so that they can update the Usercentrics CMP.
-Marketing needs to know what to label the script as, for example Analytics, Marketing, etc. And, if it's essential or not.
-Essential scripts are always loaded, non-essential scripts are loaded based on user consent.
-This is used to identify the script for Usercentrics CMP.
-Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
-The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
-To learn more about attributes and values, visit https://docs.usercentrics.com/#/direct-implementation-guide?id=change-script-type-textjavascript-becomes-textplain
-*/
 // The list of all scripts to be loaded on the site.
 const allScripts = [
   {
@@ -68,49 +58,54 @@ const allScripts = [
     "data-consent-screen-title": "Privacy Notice",
     "data-consent-screen-disclaimer":
       "Thank you for using our chat service!  Information you submit through this chat is subject to our [Privacy Policy and Terms of Use](https://www.spectrocloud.com/privacy-policy) and will be processed by our service provider. Please do not enter sensitive information. Chat transcripts may be kept for future reference.",
+    "data-modal-example-questions":
+      "How do I get started with Palette?, What types of infrastructure can I deploy my cluster on?,What third-party packs integrate with a Palette cluster?",
+    "data-example-question-button-width": "565px",
+    "data-example-question-button-box-shadow": "1px",
     "data-consent-screen-accept-button-text": "Accept",
     "data-consent-screen-reject-button-text": "Decline",
     "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg",
     "data-modal-title": "Spectro Cloud - Ask Docs",
     "data-modal-disclaimer":
-      "This AI bot provides responses based solely on your input and the latest available version of Spectro Cloud’s public documentation. Its output is for informational purposes only and should not be considered official guidance. Please do not share any personally identifiable information (PII) or sensitive data. By using this service, you agree to our [Privacy Policy](https://www.spectrocloud.com/privacy-policy). \n\n Note that the bot does not have access to past versions of the documentation and cannot answer version-specific questions.",
+      "This AI bot provides responses based solely on your input and the latest available version of Spectro Cloud’s public documentation. Its output is for informational purposes only and should not be considered official guidance. Please do not share any personally identifiable information (PII) or sensitive data. By using this service, you agree to our [Privacy Policy](https://www.spectrocloud.com/privacy-policy). \n\n Note that the bot does not have access to past versions of the documentation and cannot answer version-specific questions. \n\n If you are not sure where to start, click on one of the example questions below.",
     "data-modal-x-offset": "0",
     "data-modal-y-offset": "0",
     "data-modal-with-overlay": "false",
     "data-modal-inner-flex-direction": "column",
     "data-modal-inner-justify-content": "end",
-    "data-modal-inner-max-width": "400px",
+    "data-modal-inner-max-width": "600px",
     "data-modal-inner-position-right": "20px",
     "data-modal-inner-position-bottom": "calc(2.5rem + 25px)",
     "data-button-height": "5rem",
     "data-button-width": "5rem",
     "data-button-text": "Ask AI",
     "data-conversation-button-icons-only": "true",
-    "data-modal-size": "80%",
+    "data-modal-size": "100%",
+    "data-modal-full-screen-on-mobile": "false",
     "data-modal-lock-scroll": "false",
     "data-modal-inner-position-left": "auto",
     async: true,
   },
   {
     src: "/scripts/fullstory.js",
-    type: "text/plain",
-    "data-usercentrics": "FullStory",
+    type: "text/javascript",
   },
   {
-    type: "text/plain",
+    type: "text/javascript",
     src: "/scripts/googleTagManager.js",
-    "data-usercentrics": "Google Tag Manager",
+    dataLayer: "GTM-T2F9ZMS",
   },
   {
-    src: "https://web.cmp.usercentrics.eu/ui/loader.js",
-    id: "usercentrics-cmp",
+    src: "https://cdn.seersco.com/banners/55793/23380/cb.js",
+    id: "seers-cmp",
     async: "true",
-    "data-ruleset-id": "hVYLQFO7M6I5k4",
+    "data-key": process.env.SEERS_CMP_KEY,
+    "data-name": "CookieXray",
     type: "text/javascript",
   },
 ];
 
-// Load only Kapa and Usercentrics for local development.
+// Load only Kapa and Seers for local development.
 const localScripts = [allScripts[1], allScripts[2], allScripts[5]];
 
 /** @type {import('@docusaurus/types').Config} */
@@ -127,7 +122,11 @@ const config = {
 
   onBrokenLinks: "throw",
   onBrokenAnchors: "throw",
-  onBrokenMarkdownLinks: "throw",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
+  },
   trailingSlash: true,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -162,21 +161,21 @@ const config = {
       tagName: "link",
       attributes: {
         rel: "preconnect",
-        href: "https://api.usercentrics.eu",
+        href: "https://cdn.seersco.com",
       },
     },
     {
       tagName: "link",
       attributes: {
         rel: "preconnect",
-        href: "https://app.usercentrics.eu",
+        href: "https://cdn-auth.seersco.com",
       },
     },
     {
       tagName: "link",
       attributes: {
         rel: "preload",
-        href: "app.usercentrics.eu/browser-ui/latest/loader.js",
+        href: "https://cdn.seersco.com/banners/55793/23380/cb.js",
         as: "script",
       },
     },
@@ -263,10 +262,9 @@ const config = {
         docsPluginId: "api",
         config: {
           palette: {
-            specPath: "docs/api-content/api-docs/v1/api.json",
+            specPath: "static/apis/v1/api.json",
             outputDir: "docs/api-content/api-docs/v1",
-            downloadUrl:
-              "https://github.com/spectrocloud/librarium/blob/master/docs/api-content/api-docs/palette-apis.json",
+            downloadUrl: "/apis/v1/palette-apis.json",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -276,10 +274,9 @@ const config = {
             hideSendButton: true,
           },
           emc: {
-            specPath: "docs/api-content/api-docs/edge-v1/emc-api.json",
+            specPath: "static/apis/edge-v1/emc-api.json",
             outputDir: "docs/api-content/api-docs/edge-v1",
-            downloadUrl:
-              "https://github.com/spectrocloud/librarium/blob/master/docs/api-content/api-docs/palette-apis.json",
+            downloadUrl: "/apis/edge-v1/emc-api.json",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -374,7 +371,6 @@ const config = {
         title: "",
         logo: {
           href: "/",
-          target: "self",
           width: 105,
           height: 48,
           alt: "Spectro cloud logo",
@@ -382,14 +378,6 @@ const config = {
           srcDark: getDarkLogoPath(),
         },
         items: [
-          {
-            to: "/",
-            type: "docSidebar",
-            sidebarId: "docSidebar",
-            label: "Docs",
-            position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
-          },
           {
             to: "/tutorials",
             type: "docSidebar",
@@ -412,10 +400,28 @@ const config = {
             position: "left",
           },
           {
+            type: "html",
+            position: "right",
+            value:
+              '<a href="https://spectrocloud.com" target="_blank" rel="noopener noreferrer" aria-label="Go to Spectro Cloud homepage (opens in a new tab)">spectrocloud.com <span aria-hidden="true">↗</span></a>',
+          },
+          {
             href: "https://github.com/spectrocloud/librarium",
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",
+          },
+          {
+            type: "html",
+            position: "right",
+            value: `
+            <button
+              class="navbar-ai-button"
+              type="button"
+              onclick="window.Kapa && window.Kapa.open({ mode: 'ai', submit: true })"
+            >
+              Ask AI
+            </button>`,
           },
           {
             type: "docsVersionDropdown",

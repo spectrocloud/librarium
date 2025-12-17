@@ -1,11 +1,26 @@
-#!/bin/bash
+#   original pre-commit file
+#  #!/bin/bash
+#   lint-staged
+#   npm run clean-api-docs
+#   make format-images
+#   make sanitize-ignore-file
+#   make check-branch-name -->
 
-lint-staged
+# .husky/pre-commit
+# code added by Linus as per ChatGPT suggestion
+# lint-staged by itself may not run on all systems
+# set -euo pipefail for better error handling. Specifically:
+# -e: exit immediately if a command exits with a non-zero status    
+# -u: treat unset variables as an error and exit immediately
+# -o pipefail: prevents errors in a pipeline from being masked
+# this should catch more errors during the pre-commit hook execution 
 
+#!/usr/bin/env bash
+set -eu pipefail    #removing -o for easier compatibility
+cd -- "$(git rev-parse --show-toplevel)"
+
+npm exec --yes lint-staged
 npm run clean-api-docs
-
 make format-images
-
 make sanitize-ignore-file
-
 make check-branch-name

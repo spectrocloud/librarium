@@ -70,11 +70,9 @@ Ensure the following requirements are met before you attempt to deploy a cluster
    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the computing environments. Example: `region:us-central1` or `zone:us-central1-a`. |
    | **Cloud Account** | If you already added your GCP account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your GCP account information.                            |
 
-7. Click **Add Cluster Profile**, select a cluster profile, and click **Next**. Palette displays the cluster profile
-   layers.
+7. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   By default, the pack parameters contain values from the cluster profile.
+8. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 9. Fill out the following parameters and click **Next** when you are done.
 
@@ -133,13 +131,15 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 13. Click **Next** after configuring the node pool.
 
-14. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role
-    Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click **Validate**.
+14. <PartialsComponent category="clusters" name="cluster-settings" />
 
-15. Review the settings summary and click **Finish Configuration** to deploy the cluster. Be aware that provisioning
-    IaaS clusters can take approximately 15 - 30 min depending on the cluster profile and the node pool configuration.
+15. Select **Validate** to review your cluster configurations and settings.
 
-You can monitor cluster deployment progress on the cluster details page.
+16. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 

@@ -89,7 +89,7 @@ your Edge hosts come from a trusted source. For more information about content b
 
    ```text {12}
     CUSTOM TAG=demo
-    IMAGE_REGISTRY=ttl.sh
+    IMAGE_REGISTRY=spectrocloud
     OS_DISTRIBUTION=ubuntu
     IMAGE REPO=$0S_DISTRIBUTION
     OS_VERSION=22.04

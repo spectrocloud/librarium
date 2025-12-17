@@ -61,10 +61,13 @@ Follow the steps below to deploy a Nutanix cluster.
     | **Tags**          | Assign any desired cluster tags.                          |
     | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**.  |
 
-7.  Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
+7.  <PartialsComponent
+      category="cluster-templates"
+      name="profile-vs-template"
+      additional_info="Ensure the OS and Kubernetes packs remain empty."
+    />
 
-8.  Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML
-    files that display when you select the network and storage layers. Click **Next** when you are done.
+8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 9.  In the **Cluster Configuration Macros** pane, enter values that apply to your Nutanix cloud environment and, if
     necessary, adjust the **Cluster configuration** YAML file to configure your cluster. Click **Next** when you are
@@ -133,13 +136,15 @@ Follow the steps below to deploy a Nutanix cluster.
 
 11. Click **Next** when you are done.
 
-12. Review the options for OS patching schedule, scanning, backups, and RBAC.
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. Click **Validate** and review the cluster configuration and settings summary.
+13. Select **Validate** to review your cluster configuration and settings.
 
-14. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of
-    the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to
-    complete.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ### Validate
 

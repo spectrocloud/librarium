@@ -11,3 +11,7 @@ value manually.
 PALETTE_CROSSPLANE_PROVIDER_VERSION=$(curl --silent https://api.github.com/repos/crossplane-contrib/provider-palette/releases/latest | jq --raw-output .tag_name)
 echo Palette Crossplane Provider Version: $PALETTE_CROSSPLANE_PROVIDER_VERSION
 ```
+
+```bash hideClipboard title="Example output"
+Palette Crossplane Provider Version: v0.24.4
+```

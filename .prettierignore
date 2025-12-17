@@ -6,10 +6,12 @@ src/deprecated
 vale/
 **/*.yaml
 **/*.yml
+**/*.mdx
 .dockerignore
 static/scripts/kapa-widget.bundle.js
 
 docs/api-content/**/*.json
+static/apis/**/*.json
 
 # Troublesome files
 tsconfig.json
@@ -17,6 +19,7 @@ src/components/IconMapper/dynamicFontAwesomeImports.*
 docs/docs-content/security-bulletins/cve-reports.md
 docs/docs-content/security-bulletins/reports/*.md
 .eslintignore
+.prettierrc
 
 # Ignore partials
 _partials/

@@ -49,6 +49,18 @@ different node. Refer to the following resources to learn about VM management.
 - [Update VM Configuration](./update-vm-configuration.md)
 - [Take Snapshot of VM](./take-snapshot-of-vm.md)
 
+<!-- prettier-ignore-start -->
+
+:::warning
+
+Ensure that you delete all virtual machines before removing the
+<VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
+from your cluster.
+
+:::
+
+<!-- prettier-ignore-end -->
+
 ## Advanced Topics
 
 Beyond the standard Virtual Machine (VM) operations such as deployment, clone, and migration, Palette Virtual Machine

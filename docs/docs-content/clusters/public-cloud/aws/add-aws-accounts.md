@@ -16,20 +16,24 @@ an AWS cloud account in Palette. You can use any of the following authentication
 
   - [Static Access Credentials](#static-access-credentials)
   - [Dynamic Access Credentials](#dynamic-access-credentials)
+  - [EKS Pod Identity](#eks-pod-identity)
 
 - AWS GovCloud (US)
 
   - [Static Access Credentials](#static-access-credentials-1)
   - [Dynamic Access Credentials](#dynamic-access-credentials-1)
+  - [EKS Pod Identity](#eks-pod-identity-1)
 
 - AWS Secret Cloud (SC2S) (US)
 
   - [Static Access Credentials](#static-access-credentials-2)
   - [Secure Compliance Validation Credentials](#secure-compliance-validation-credentials)
+  <!-- - [EKS Pod Identity](#eks-pod-identity-2) -->
 
 ## AWS Account
 
-This section provides guidance on creating an AWS account that uses static or dynamic access credentials.
+This section provides guidance on creating an AWS account that uses static or dynamic access credentials as well as EKS
+Pod Identity.
 
 ### Static Access Credentials
 
@@ -112,12 +116,32 @@ You can verify that the account is available in Palette by reviewing the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
 Your newly added AWS cloud account is listed under the AWS section.
 
+### EKS Pod Identity
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS" />
+
+#### Limitations
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS" />
+
+#### Prerequisites
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS" />
+
+#### Enablement
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-enablement" partition="AWS" />
+
+#### Validate
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS" />
+
 ## AWS GovCloud Account (US)
 
 Palette supports integration with
 [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc).
 Using Palette, you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance on
-creating an AWS GovCloud account that uses static or dynamic access credentials.
+creating an AWS GovCloud account that uses static or dynamic access credentials as well as EKS Pod Identity.
 
 ### Static Access Credentials
 
@@ -224,12 +248,33 @@ You can verify that the account is available in Palette by reviewing the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
 Your newly added AWS cloud account is listed under the AWS section.
 
+### EKS Pod Identity
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS US Gov" />
+
+#### Limitations
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS US Gov" />
+
+#### Prerequisites
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS US Gov" />
+
+#### Enablement
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-enablement" partition="AWS US Gov" />
+
+#### Validate
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS US Gov" />
+
 ## AWS Secret Cloud Account (US)
 
 You can configure [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/) accounts in
 [Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your
 organization's compliance requirements, you can choose between standard authentication (standard access credentials) or
-secure compliance validation using your SC2S Access Portal (SCAP) credentials.
+secure compliance validation using your SC2S Access Portal (SCAP) credentials to register your AWS Secret Cloud account
+in Palette VerteX.
 
 :::preview
 
@@ -344,12 +389,58 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
    | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Agency Name**                    | Enter the SCAP agency name.                                                                                                                                                                                                                                                                                                                                                                                           |
    | **Account Name**                   | Enter the SCAP account name or number.                                                                                                                                                                                                                                                                                                                                                                                |
-   | **CAP/SCAP Role Name**             | Enter the role name provided by the SCAP administrator. This role determines the AWS permissions granted to the account. Note that AWS Top Secret Cloud Access Portal (CAP) credentials are not supported at this time.                                                                                                                                                                                               |
+   | **CAP/SCAP Role Name**             | Enter the role name provided by the SCAP administrator. This role determines the AWS permissions granted to the account.                                                                                                                                                                                                                                                                                              |
    | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used. For example, if the initial role name is `DevOpsRole`, the full role name would be `PROJECT_DevOpsRole`.                                                                                                                                                                                                 |
    | **Permission Boundary (Optional)** | If you want to apply a permission boundary and limit the maximum permissions a role or user can have, provide the IAM policy ARN (for example, `arn:aws:iam::123456789012:policy/MyPermissionBoundaryPolicy`). Refer to the AWS [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) page for additional information on permission boundaries. |
    | **Certificate Authority**          | Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate.                                                                                                                                                                                                                            |
    | **User Certificate**               | Paste your user-issued digital certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                                                     |
    | **User Key**                       | Provide the private cryptographic key associated with the user certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                     |
+
+   Palette provides default values for CAP/SCAP endpoints. Users can change these configurations on their
+   [self-hosted Palette](../../../enterprise-version/enterprise-version.md) or
+   [Palette VerteX](../../../vertex/vertex.md) installations.
+
+   <details>
+
+   <summary> Click here to learn how to provide custom CAP/SCAP endpoints. </summary>
+
+   1. Open a terminal window on a host that can connect to the Palette or Palette VerteX management cluster.
+      Additionally, ensure that [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) is installed on
+      this host.
+
+   2. Download the [Kubeconfig](../../cluster-management/kubeconfig.md) file of the cluster..
+
+   3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
+
+      ```shell
+      export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
+      ```
+
+   4. If you are using AWS Secret cloud accounts, use the following command to set a custom endpoint. Replace the
+      `<customized-endpoint-url>` placeholder with your own value.
+
+      ```shell
+      kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISO_URL="<customized-endpoint-url>"
+      ```
+
+      If you are using AWS Top Secret cloud accounts, use the following command to set a custom endpoint. Replace the
+      `<customized-endpoint-url>` placeholder with your own value.
+
+      ```shell
+      kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISOB_URL="<customized-endpoint-url>"
+      ```
+
+   5. Verify that the change has been applied with the following command.
+
+      ```shell
+      kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
+      ```
+
+      ```hideClipboard title="Example output"
+      [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
+      ```
+
+   </details>
 
 6. Click the **Validate** button to validate the credentials.
 
@@ -371,6 +462,26 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
 You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your
 newly added AWS cloud account is listed under the AWS section.
+
+<!-- ### EKS Pod Identity
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-intro" partition="AWS US Secret" />
+
+#### Limitations
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS US Secret" />
+
+#### Prerequisites
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS US Secret" />
+
+#### Enablement
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-enablement" partition="AWS US Secret" />
+
+#### Validate
+
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS US Secret" /> -->
 
 ## Next Steps
 

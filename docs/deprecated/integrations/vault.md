@@ -10,14 +10,14 @@ logoUrl: "https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd
 tags: ["packs", "vault", "security"]
 ---
 
-[Vault](https://www.vaultproject.io/) helps secure, store, and tightly control access to tokens, passwords,
+[Vault](https://developer.hashicorp.com/vault) helps secure, store, and tightly control access to tokens, passwords,
 certificates, encryption keys for protecting secrets, and other sensitive data using a UI, CLI, or HTTP API.
 
 Vault integration has the following components:
 
 - Vault server
 - UI (optional).
-- [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (optional).
+- [Agent injector](https://developer.hashicorp.com/vault/docs/platform/k8s/injector/) (optional).
 
 ## Versions Supported
 
@@ -147,10 +147,10 @@ advantage of new features.
 
 ## References
 
-- [Vault Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/)
+- [Vault Agent injector](https://developer.hashicorp.com/vault/docs/platform/k8s/injector/)
 
 - [Injecting Vault Secrets Into Kubernetes Pods via a Sidecar - Blog](https://www.hashicorp.com/blog/injecting-vault-secrets-into-kubernetes-pods-via-a-sidecar/)
 
-- [Vault Agent Injector Examples](https://www.vaultproject.io/docs/platform/k8s/injector/examples/)
+- [Vault Agent Injector Examples](https://developer.hashicorp.com/vault/docs/platform/k8s/injector/examples/)
 
-- [Vault on Kubernetes Guide](https://www.vaultproject.io/docs/platform/k8s/helm/run)
+- [Vault on Kubernetes Guide](https://developer.hashicorp.com/vault/docs/platform/k8s/helm/run)

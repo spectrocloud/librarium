@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Security Advisory"
-title: "Security Advisory"
+sidebar_label: "Security Advisories"
+title: "Security Advisories"
 description: "Palette Security Advisories for Common Vulnerabilities and Exposures (CVEs)."
 icon: ""
 toc_max_heading_level: 4
@@ -10,6 +10,190 @@ tags: ["security", "cve", "advisories"]
 
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
+
+## Security Advisory 006.1 - Shai Hulud npm Supply Chain Attack - Supplemental Update
+
+- **Release Date**: December 1, 2025
+- **Last Updated**: December 2, 2025
+- **Severity**: High
+
+### Summary
+
+Following our [initial advisory](#security-advisory-006---shai-hulud-npm-supply-chain-attack) regarding the Shai Hulud
+2.0 supply-chain malware campaign on November 26, 2025, we are issuing the following supplemental update to provide
+additional transparency into our internal findings and response actions.
+
+As part of our comprehensive, end-to-end investigation, we have identified limited areas of impact within internal
+development and operational systems. At this time, we have **no evidence that any Spectro Cloud customer environments,
+products, or managed SaaS services have been compromised**. However, out of an abundance of caution, we are proceeding
+with the same rigor applied to a confirmed incident to ensure the integrity of our entire ecosystem.
+
+The activity observed is consistent with the broader industry-wide attack pattern associated with Shai Hulud 2.0,
+specifically targeting development workflows and supply-chain trust pathways.
+
+### Immediate Mitigation Actions Underway
+
+Our teams are working diligently to implement a comprehensive set of precautionary and containment measures. This
+includes rotating all credentials and secrets, reviewing our build and dependency processes, adding safeguards to
+strengthen our CI/CD workflows, and enhancing monitoring across our development and production systems. These steps are
+being taken out of an abundance of caution to ensure the continued security and integrity of our platform.
+
+We will continue to monitor evolving intelligence from security researchers, collaborate with our partners, and expand
+our internal investigations as new indicators of compromise are published. This advisory will be updated with additional
+findings as the investigation progresses.
+
+### References
+
+- [Reversing Labs - Shai-hulud npm attack: What you need to know](https://www.reversinglabs.com/blog/shai-hulud-worm-npm)
+- [Socket - Updated and Ongoing Supply Chain Attack Targets CrowdStrike npm Packages](https://socket.dev/blog/ongoing-supply-chain-attack-targets-crowdstrike-npm-packages)
+- [Step Security - Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised)
+- [Wiz - Shai-Hulud: Ongoing Package Supply Chain Worm Delivering Data-Stealing Malware](https://www.wiz.io/blog/shai-hulud-npm-supply-chain-attack)
+
+## Security Advisory 006 - Shai Hulud npm Supply Chain Attack
+
+- **Release Date**: November 26, 2025
+- **Last Updated**: November 26, 2025
+- **Severity**: High
+
+### Summary
+
+On November 21, 2025, security researchers identified Shai Hulud 2.0, a newly uncovered strain of malware that has
+compromised more than 25,000 GitHub repositories. This variant introduces an advanced self-replicating architecture,
+enabling it to autonomously propagate across software projects and potentially embed itself within development
+workflows. Early analysis indicates that the malware is specifically engineered to exploit supply-chain trust mechanisms
+by modifying code artifacts at the repository level.
+
+Spectro Cloud products are not dependent on any of the npm packages affected by the incident. However, because many
+customers integrate external CI/CD toolchains with Spectro Cloud products, a compromise of those toolchains could allow
+malicious changes to flow through automation. Customers should scan their applications and integrations to assess the
+impact of this issue.
+
+Our security posture incorporates continuous scanning, automated policy enforcement, and rigorous supply-chain
+validation controls designed to detect and block malicious or tampered components before they enter our build or
+delivery pipelines. As part of our response, we are actively conducting comprehensive, end-to-end scans across all
+internal IT systems, developer environments, and managed SaaS deployments. These measures are ongoing, and we are
+prioritizing both accuracy and completeness in our investigation.
+
+We will continue to monitor evolving intelligence from security researchers, collaborate with our partners, and expand
+our internal investigations as new indicators of compromise are published. This advisory will be updated with additional
+findings as the investigation progresses.
+
+### References
+
+- [Reversing Labs - Shai-hulud npm attack: What you need to know](https://www.reversinglabs.com/blog/shai-hulud-worm-npm)
+- [Socket - Updated and Ongoing Supply Chain Attack Targets CrowdStrike npm Packages](https://socket.dev/blog/ongoing-supply-chain-attack-targets-crowdstrike-npm-packages)
+- [Step Security - Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised)
+- [Wiz - Shai-Hulud: Ongoing Package Supply Chain Worm Delivering Data-Stealing Malware](https://www.wiz.io/blog/shai-hulud-npm-supply-chain-attack)
+
+## Security Advisory 005 - `runc` Container Vulnerabilities Affecting Kubernetes Cluster Runtimes
+
+- **Release Date**: November 5, 2025
+- **Last Update**: November 6, 2025
+- **Severity**: High
+- **Applicable Deployments**:
+  - Workload Clusters:
+    - cloud-managed clusters: EKS, GKE, and AKS
+    - Kubernetes distributions: PXK, RKE2, and K3s
+  - Palette deployments:
+    - SaaS Palette
+    - self-hosted Palette
+
+### Related CVEs
+
+- [CVE-2025-31133](https://nvd.nist.gov/vuln/detail/CVE-2025-31133)
+- [CVE-2025-52565](https://nvd.nist.gov/vuln/detail/CVE-2025-52565)
+- [CVE-2025-52881](https://nvd.nist.gov/vuln/detail/CVE-2025-52881)
+
+### Timeline
+
+- **November 5, 2025**: First notified of vulnerabilities.
+
+### Summary
+
+The recently disclosed vulnerabilities in the `runc` container runtime involve unsafe handling of `/proc` writes during
+container initialization and mount operations. Attackers exploiting these vulnerabilities could cause `runc` to
+misdirect writes within `/proc`, potentially allowing:
+
+- Execution of privileged host actions (for example, triggering `/proc/sysrq-trigger` to crash or hang the host).
+- Read or write access to sensitive host information that would normally be masked.
+- Disabling of AppArmor or Security-Enhanced Linux (SELinux) confinement.
+- Modification of kernel parameters (for example, `core_pattern`).
+
+### Recommended Actions
+
+#### Workload Clusters
+
+- Update cloud-managed clusters (EKS, GKE, and AKS) integrated with Palette Enterprise or Palette VerteX with patches
+  from their respective cloud providers as soon as they become available.
+- Patched OS images for other clusters will be available in future releases. Upgrade to the latest Kubernetes patch
+  versions as soon as they are available.
+- A patch for Edge clusters will be available in future releases. Upgrade clusters to the patched versions as soon as
+  they are available.
+
+#### SaaS Palette Deployments
+
+No customer action is required. Multi-tenant and dedicated SaaS environments are being reviewed and patched as part of
+the standard update process. Continuous compliance scans are enabled to identify nodes with pending patches.
+
+#### Self-Hosted Palette Deployments
+
+- For Palette environments hosted on cloud-managed Kubernetes clusters (such as EKS), update the underlying clusters
+  with patches provided by the respective cloud vendors.
+- For Palette environments deployed on customer-managed infrastructure, patched versions of Palette will be available in
+  future releases. Upgrade your Palette environments to the patched versions as soon as they are available.
+- Patched Palette and VerteX appliance images downloaded from Artifact Studio will also be made available in future
+  releases. Use the updated appliance images when deploying or upgrading Palette and VerteX instances.
+
+#### Additional Recommended Workaround
+
+- Avoid using untrusted or unverified container images.
+- Use rootless containers where possible to reduce the impact of potential runtime exploits.
+- Restrict container `sysctl` configurations and disable host access to `/proc/sysrq-trigger` and
+  `/proc/sys/kernel/core_pattern` where feasible.
+- Reinforce Linux Security Module (LSM) enforcement and verify that AppArmor or SELinux profiles are correctly applied
+  after applying patches.
+- For detailed guidance on this Advisory, refer to:
+  - [Canonical Advisory](https://ubuntu.com/security/CVE-2025-31133)
+  - [SUSE Advisory](https://www.suse.com/security/cve/CVE-2025-31133.html)
+  - [Red Hat Advisory](https://access.redhat.com/security/cve/cve-2025-31133)
+  - [GitHub Security Advisory: `runc` CVE-2025-31133, CVE-2025-52565, CVE-2025-52881](https://github.com/opencontainers/runc/security/advisories)
+
+## Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers
+
+- **Release Date**: September 11, 2025
+- **Last Updated**: September 11, 2025
+- **Severity**: High
+- **Applicable Deployments**: Self-Hosted Palette VerteX
+
+### Summary
+
+On September 11, 2025, Spectro Cloud became aware of a recently disclosed vulnerability related to the use of MongoDB
+servers configured for FIPS mode, in which MongoDB incorrectly allows the use of cryptographic algorithms from non-FIPS
+providers. This may allow client TLS connections to agree to use (negotiate) non-FIPS-compliant cryptographic algorithms
+even when FIPS mode is enabled on MongoDB. As a result, self-hosted Palette VerteX deployments running on a
+non-FIPS-compliant OS or Kubernetes cluster may allow negotiation of non-FIPS cryptographic algorithms.
+
+For additional information regarding this advisory, refer to
+[MongoDB Jira issue SERVER-109268](https://jira.mongodb.org/browse/SERVER-109268).
+
+### Applicable Deployments
+
+By default, Spectro Cloud enforces FIPS-only mode on the MongoDB container. Self-hosted Palette VerteX deployments, only
+when running on a non-FIPS-compliant OS or Kubernetes cluster, may allow negotiation of non-FIPS cryptographic
+algorithms.
+
+Self-hosted instances that meet the
+[FIPS prerequisite](../../vertex/install-palette-vertex/install-on-kubernetes/install.md#prerequisites) as outlined in
+our user documentation are not affected by this vulnerability.
+
+### Recommended Actions
+
+Customers should verify their Palette VerteX setup to ensure they are not affected. No additional action is required for
+customers with Palette VerteX installed on a FIPS-compliant OS or Kubernetes cluster.
+
+MongoDB will be upgraded to the latest version in the next Palette release. Affected customers should either take the
+appropriate actions to secure their environment to meet the FIPS prerequisite or upgrade their Palette VerteX
+installation following the next Palette release.
 
 ## Security Advisory 003 - Self-Deleting Nodes with OwnerReference
 
