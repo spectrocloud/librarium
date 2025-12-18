@@ -9,12 +9,17 @@ tags: ["data center", "cloudstack"]
 
 :::preview
 
+This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. This feature
+is supported in self-hosted Palette only.
+
 :::
 
 You can register Apache CloudStack accounts in Palette to create and manage Kubernetes clusters in your CloudStack
 environment.
 
 ## Prerequisites
+
+- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled.
 
 - An installed [Private Cloud Gateway (PCG)](../../pcg/pcg.md) that connects to your CloudStack environment. Review
   [Deploy a PCG in CloudStack](../../pcg/deploy-pcg/cloudstack.md) for guidance.
