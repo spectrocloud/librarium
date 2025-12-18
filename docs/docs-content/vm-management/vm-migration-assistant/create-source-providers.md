@@ -117,8 +117,7 @@ Machines (VMs) that need to be migrated.
     1. Download the VDDK image from the
        [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest).
 
-    2. Copy or move the VDDK image to another Linux environment inside your airgap environment. Use any approved method
-       to transfer the binary to the airgap environment.
+    2. Copy or move the VDDK image to another Linux environment inside your airgap environment.
 
     3. Log in to the Linux environment inside your airgap environment where you copied the VDDK image.
 
@@ -158,7 +157,7 @@ Machines (VMs) that need to be migrated.
        oras login <harbor-address> --username '<username>' --password '<password>'
        ```
 
-       If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to
+       If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to
        the `oras` command.
 
        ```shell
@@ -169,7 +168,7 @@ Machines (VMs) that need to be migrated.
 
        <TabItem label="AWS ECR" value="aws-ecr">
 
-       You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details
+       Acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details
        page, click on the **View push commands** button to access the command. Refer to the
        [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
        documentation for more information.
@@ -182,7 +181,7 @@ Machines (VMs) that need to be migrated.
        aws ecr get-login-password --region xxxxx | oras login --username <username> --password-stdin <aws-ecr-url>
        ```
 
-       For a public image repository, use the `docker` CLI instead of using `oras`. Replace `<username>` with your
+       For a public image repository, use the `docker` CLI instead of `oras`. Replace `<username>` with your
        registry username and `<aws-ecr-url>` with your registry URL. Enter your registry password when prompted.
 
        ```shell
@@ -263,7 +262,7 @@ Machines (VMs) that need to be migrated.
 
     <summary> Example Secret Creation </summary>
 
-    A Secret can be created by issuing the following command.
+    You can create a Secret by issuing the following command.
 
     ```shell
     kubectl create secret docker-registry vddk-image-pull-secret \
@@ -285,11 +284,11 @@ Machines (VMs) that need to be migrated.
     metadata:
       name: vddk-image-pull-secret
     data:
-      .dockerconfigjson: #base64 encoded dockerconfigjson
+      .dockerconfigjson: #base64-encoded dockerconfigjson
     type: kubernetes.io/dockerconfigjson
     ```
 
-    The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the command.
+    The `data.dockerconfigjson` value contains your registry credentials, which have been base64-encoded by the command.
 
     Alternatively, you can manually encode a `config.json` by issuing the following command.
 
@@ -339,13 +338,13 @@ Machines (VMs) that need to be migrated.
    | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Provider resource name**      | A unique name for your provider.                                                                                                                                                                                                                                           |
    | **Endpoint type**               | Select the type of endpoint to configure the connection. Choose **vCenter** if managing multiple hosts through a central server, or **ESXi** if connecting directly to a standalone host.                                                                                  |
-   | **URL**                         | Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                                      |
-   | **VDDK init image**             | Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. Ensure you specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`.                                                |
+   | **URL**                         | Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                                      |
+   | **VDDK init image**             | Provide the registry URL to the VDDK image. Specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`.                                                |
    | **Username**                    | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                                                                                                                                                                                   |
    | **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                                                                      |
-   | **Skip certificate validation** | Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting.                                                |
+   | **Skip certificate validation** | Enabling this option bypasses x509 certificate authority (CA) verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting.                                                |
    | **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                                                                  |
-   | **Convert Disk**                | When enabled, disk conversion is handled using virt-v2v. For example, if you're migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. |
+   | **Convert Disk**                | When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. |
 
 7. Click **Create Provider**. The provider details are then shown.
 

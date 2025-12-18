@@ -54,7 +54,7 @@ tags: ["release-notes"]
 
   As part of the upgrade, the
   [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
-  image is now a requirement for migrations. This image was previously optional but is now necessary for the migration
+  is now a requirement for migrations. This image was previously optional but is now necessary for the migration
   process. Refer to the [Create Source Providers](../vm-management/vm-migration-assistant/create-source-providers.md)
   guide for more information.
 
