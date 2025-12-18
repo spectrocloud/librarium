@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## December 17, 2025 - Release 4.8.12
 
-#### Features
+### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4786 -->
 
@@ -51,6 +51,12 @@ tags: ["release-notes"]
 - The `virt-v2v` version used by the Palette
   [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
   v2.9.0.
+
+  As part of the upgrade, the
+  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
+  is now a requirement for migrations. This image was previously optional but is now necessary for the migration
+  process. Refer to the [Create Source Providers](../vm-management/vm-migration-assistant/create-source-providers.md)
+  guide for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7479 -->
 
