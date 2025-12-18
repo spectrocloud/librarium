@@ -19,6 +19,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.2  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.2  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.13  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.13  |
 
 ### Bug Fixes
 
@@ -52,6 +54,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 
 | Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
 | ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Calico                       | CNI        | :x:                | :white_check_mark: | 3.31.2      |
 | Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.18.1      |
 | Istio                        | Add-on     | :white_check_mark: | :x:                | 1.28.1      |
 | Kong                         | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
