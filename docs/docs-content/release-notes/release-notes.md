@@ -20,15 +20,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.2  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.2  |
 
-### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2017 -->
-
-- The
-  [`spectrocloud_registry_oci` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/registry_oci)
-  now provides the `wait_for_sync` field, allowing users to configure Terraform to wait for the OCI registry to complete
-  its initial synchronization before marking the resource as created or updated.
-
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2068 -->
@@ -59,17 +50,18 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3504 -->
 
-| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
-| Harbor                       | Add-on | :white_check_mark: | :x:                | 1.18.1      |
-| Istio                        | Add-on | :white_check_mark: | :x:                | 1.28.1      |
-| Kong                         | Add-on | :white_check_mark: | :x:                | 3.0.0       |
-| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.49.0     |
-| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.11.0     |
-| Spectro Kubernetes Dashboard | Add-on | :white_check_mark: | :x:                | 7.13.0      |
-| Ubuntu (Azure)               | OS     | :x:                | :white_check_mark: | 22.04       |
-| Ubuntu (MAAS)                | OS     | :x:                | :white_check_mark: | 22.04       |
-| Ubuntu (vSphere)             | OS     | :x:                | :white_check_mark: | 22.04       |
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.18.1      |
+| Istio                        | Add-on     | :white_check_mark: | :x:                | 1.28.1      |
+| Kong                         | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
+| Kubernetes (AKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34        |
+| Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 27.49.0     |
+| Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 79.11.0     |
+| Spectro Kubernetes Dashboard | Add-on     | :white_check_mark: | :x:                | 7.13.0      |
+| Ubuntu (Azure)               | OS         | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (MAAS)                | OS         | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (vSphere)             | OS         | :x:                | :white_check_mark: | 22.04       |
 
 ## December 17, 2025 - Release 4.8.12
 
