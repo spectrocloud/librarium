@@ -11,6 +11,25 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December XX, 2025 - Release 4.8.XX
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+
+<!-- PCP-5639 -->
+
+- The process of deploying AWS EKS clusters using <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> has been streamlined. Users no longer need to disable the `kube-proxy` and `aws-node` DaemonSets or update the `charts.cilium.k8sServiceHost` parameter during deployment. Refer to [Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI](../troubleshooting/pack-issues.md#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni) for the updated deployment process.
+
+<!-- prettier-ignore-start -->
+
+### Bug Fixes
+
+<!-- PE-7738 -->
+
+- Fixed an issue where CoreDNS entered a crash loop after node reboots in Rocky Linux RKE2 FIPS clusters.
+
+
 ## December 17, 2025 - Release 4.8.12
 
 #### Features
