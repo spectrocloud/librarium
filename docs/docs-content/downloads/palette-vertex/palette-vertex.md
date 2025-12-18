@@ -16,8 +16,8 @@ self-hosted platform that you can install in your data centers or public cloud p
 
 Find the additional download links for Palette VerteX in this section.
 
-Refer to the [Palette VerteX documentation](../../vertex/install-palette-vertex/install-palette-vertex.md) for guidance
-on how to deploy Palette VerteX to your environment.
+Refer to the [Palette VerteX documentation](../../self-hosted-setup/vertex/vertex.md) for guidance on how to deploy
+Palette VerteX to your environment.
 
 ## Resources
 

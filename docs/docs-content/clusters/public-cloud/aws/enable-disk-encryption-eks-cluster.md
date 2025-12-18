@@ -20,7 +20,7 @@ workloads operating on the cluster, so ensure you have planned for this before p
 
 ## Prerequisites
 
-- An AWS account added to Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
+- An AWS account added to Palette. Review [Add AWS Account](./add-aws-accounts/add-aws-accounts.md) for guidance.
 
 - The IAM user or role used by Palette has the required policies attached as listed in
   [Required IAM Policies](required-iam-policies.md), including the

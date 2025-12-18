@@ -325,50 +325,6 @@ let redirects = [
     to: `/devx/services/service-listings/cockroach-db/`,
   },
   {
-    from: `/enterprise-version/on-prem-system-requirements/`,
-    to: `/enterprise-version/install-palette/`,
-  },
-  {
-    from: `/enterprise-version/deploying-the-platform-installer/`,
-    to: `/enterprise-version/install-palette/`,
-  },
-  {
-    from: `/enterprise-version/deploying-an-enterprise-cluster/`,
-    to: `/enterprise-version/install-palette/`,
-  },
-  {
-    from: `/enterprise-version/deploying-palette-with-helm/`,
-    to: `/enterprise-version/install-palette/install-on-kubernetes/install/`,
-  },
-  {
-    from: `/enterprise-version/helm-chart-install-reference/`,
-    to: `/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/`,
-  },
-  {
-    from: `/enterprise-version/system-console-dashboard/`,
-    to: `/enterprise-version/system-management/`,
-  },
-  {
-    from: `/enterprise-version/enterprise-cluster-management/`,
-    to: `/enterprise-version/system-management/`,
-  },
-  {
-    from: `/enterprise-version/monitoring/`,
-    to: `/enterprise-version/system-management/`,
-  },
-  {
-    from: `/enterprise-version/air-gap-repo/`,
-    to: `/enterprise-version/install-palette/`,
-  },
-  {
-    from: `/enterprise-version/reverse-proxy/`,
-    to: `/enterprise-version/system-management/reverse-proxy/`,
-  },
-  {
-    from: `/enterprise-version/ssl-certificate-management/`,
-    to: `/enterprise-version/system-management/ssl-certificate-management/`,
-  },
-  {
     from: `/clusters/cluster-management/palette-lock-cluster/`,
     to: `/clusters/cluster-management/platform-settings/`,
   },
@@ -429,31 +385,6 @@ let redirects = [
     from: "/projects/",
     to: "/tenant-settings/projects/",
   },
-  {
-    from: "/enterprise-version/install-palette/airgap/checklist/",
-    to: "/enterprise-version/install-palette/airgap/",
-  },
-  {
-    from: "/enterprise-version/install-palette/airgap/kubernetes-airgap-instructions/",
-    to: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
-  },
-  {
-    from: "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
-  },
-  {
-    from: "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
-  },
-  {
-    from: "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
-  },
-  {
-    from: "/vertex/install-palette-vertex/airgap/checklist/",
-    to: "/vertex/install-palette-vertex/airgap/",
-  },
-
   {
     from: "/terraform/",
     to: "/automation/terraform/",
@@ -609,14 +540,6 @@ let redirects = [
   {
     from: "/automation/palette-cli/commands/validator/",
     to: "/automation/palette-cli/commands/ec/",
-  },
-  {
-    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
-    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
-  },
-  {
-    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/legal-licenses/oss-licenses/",
@@ -969,6 +892,409 @@ let redirects = [
   {
     from: `/clusters/public-cloud/azure/azure-disk-encryption/`,
     to: `/clusters/public-cloud/azure/azure-disk-storage-sse/`,
+  },
+  // Self-hosted Palette/VerteX redirects for sidebar refactor
+  {
+    from: [
+      "/enterprise-version/",
+      "/enterprise-version/install-palette/",
+      "/enterprise-version/on-prem-system-requirements/",
+      "/enterprise-version/deploying-the-platform-installer/",
+      "/enterprise-version/deploying-an-enterprise-cluster/",
+      "/enterprise-version/air-gap-repo/",
+    ],
+    to: "/self-hosted-setup/palette/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-kubernetes/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes",
+  },
+  {
+    from: [
+      "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/",
+      "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/checklist/",
+      "/enterprise-version/install-palette/airgap/kubernetes-airgap-instructions/",
+      "/enterprise-version/install-palette/airgap/checklist/",
+      "/enterprise-version/install-palette/airgap/",
+    ],
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/",
+  },
+  {
+    from: [
+      "/enterprise-version/helm-chart-install-reference/",
+      "/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref/",
+    ],
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/setup/airgap/helm-reference/",
+  },
+  {
+    from: [
+      "/enterprise-version/deploying-palette-with-helm/",
+      "/enterprise-version/install-palette/install-on-kubernetes/install/",
+    ],
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/install/non-airgap/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/install/airgap",
+  },
+  {
+    from: "/enterprise-version/activate-installation/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/activate/",
+  },
+  {
+    from: "/enterprise-version/upgrade/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/upgrade/",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-k8s/non-airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/upgrade/non-airgap",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-k8s/airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/upgrade/airgap",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-kubernetes/uninstall/",
+    to: "/self-hosted-setup/palette/supported-environments/kubernetes/uninstall/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/non-airgap/vmware-system-requirements/",
+  },
+  {
+    from: [
+      "/enterprise-version/install-palette/install-on-vmware/airgap-install/",
+      "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/",
+      "/enterprise-version/install-palette/install-on-vmware/airgap-install/checklist/",
+    ],
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/airgap/",
+  },
+  {
+    from: [
+      "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
+      "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+      "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+    ],
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/airgap/ova/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/setup/airgap/rhel-vm/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/install/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/install/non-airgap/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/install/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/install/airgap",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-vmware/non-airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/upgrade/non-airgap/",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-vmware/airgap/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/upgrade/airgap/",
+  },
+  {
+    from: "/enterprise-version/install-palette/palette-management-appliance/",
+    to: "/self-hosted-setup/palette/supported-environments/management-appliance/",
+  },
+  {
+    from: "/enterprise-version/upgrade/palette-management-appliance/",
+    to: "/self-hosted-setup/palette/supported-environments/management-appliance/upgrade/",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-notes/",
+    to: "/self-hosted-setup/palette/supported-environments/vmware/upgrade/",
+  },
+  {
+    from: [
+      "/enterprise-version/system-management/",
+      "/enterprise-version/system-console-dashboard/",
+      "/enterprise-version/enterprise-cluster-management/",
+      "/enterprise-version/monitoring/",
+    ],
+    to: "/self-hosted-setup/palette/system-management/",
+  },
+  {
+    from: "/enterprise-version/system-management/account-management/",
+    to: "/self-hosted-setup/palette/system-management/account-management/",
+  },
+  {
+    from: "/enterprise-version/system-management/account-management/manage-system-accounts/",
+    to: "/self-hosted-setup/palette/system-management/account-management/manage-system-accounts/",
+  },
+  {
+    from: [
+      "/enterprise-version/system-management/account-management/credentials/",
+      "/enterprise-version/system-management/account-management/email/",
+    ],
+    to: "/self-hosted-setup/palette/system-management/account-management/credentials/",
+  },
+  {
+    from: "/enterprise-version/system-management/account-management/password-blocklist/",
+    to: "/self-hosted-setup/palette/system-management/account-management/password-blocklist/",
+  },
+  {
+    from: "/enterprise-version/system-management/backup-restore/",
+    to: "/self-hosted-setup/palette/system-management/backup-restore/",
+  },
+  {
+    from: "/enterprise-version/system-management/login-banner/",
+    to: "/self-hosted-setup/palette/system-management/login-banner/",
+  },
+  {
+    from: "/enterprise-version/system-management/change-cloud-config/",
+    to: "/self-hosted-setup/palette/system-management/change-cloud-config/",
+  },
+  {
+    from: "/enterprise-version/system-management/registry-override/",
+    to: "/self-hosted-setup/palette/system-management/registry-override/",
+  },
+  {
+    from: "/enterprise-version/system-management/feature-flags/",
+    to: "/self-hosted-setup/palette/system-management/feature-flags/",
+  },
+  {
+    from: "/enterprise-version/system-management/customize-interface/",
+    to: "/self-hosted-setup/palette/system-management/customize-interface/",
+  },
+  {
+    from: ["/enterprise-version/system-management/reverse-proxy/", "/enterprise-version/reverse-proxy/"],
+    to: "/self-hosted-setup/palette/system-management/reverse-proxy/",
+  },
+  {
+    from: "/enterprise-version/system-management/scar-migration/",
+    to: "/self-hosted-setup/palette/system-management/scar-migration/",
+  },
+  {
+    from: "/enterprise-version/system-management/smtp/",
+    to: "/self-hosted-setup/palette/system-management/smtp/",
+  },
+  {
+    from: [
+      "/enterprise-version/system-management/ssl-certificate-management/",
+      "/enterprise-version/ssl-certificate-management/",
+    ],
+    to: "/self-hosted-setup/palette/system-management/ssl-certificate-management/",
+  },
+  {
+    from: "/enterprise-version/system-management/add-registry/",
+    to: "/self-hosted-setup/palette/system-management/add-registry/",
+  },
+  {
+    from: "/enterprise-version/system-management/tenant-management/",
+    to: "/self-hosted-setup/palette/system-management/tenant-management/",
+  },
+  {
+    from: ["/vertex/", "/vertex/supported-platforms/", "/vertex/install-palette-vertex/", "/vertex/upgrade/"],
+    to: "/self-hosted-setup/vertex/",
+  },
+  {
+    from: ["/vertex/fips/", "/vertex/fips/fips-status-icons/", "/vertex/fips/fips-compliant-components/"],
+    to: "/self-hosted-setup/vertex/fips/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/",
+  },
+  {
+    from: [
+      "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
+      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
+      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/",
+    ],
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/setup/airgap/helm-reference/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/install/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/install/non-airgap/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/install/airgap/",
+  },
+  {
+    from: "/vertex/activate-installation/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/activate/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-k8s/non-airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/upgrade/non-airgap/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-k8s/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/upgrade/airgap/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/uninstall/",
+    to: "/self-hosted-setup/vertex/supported-environments/kubernetes/uninstall/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/non-airgap/vmware-system-requirements/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/install/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/install/non-airgap/",
+  },
+  {
+    from: [
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/",
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/",
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/checklist/",
+      "/vertex/install-palette-vertex/airgap/",
+      "/vertex/install-palette-vertex/airgap/checklist/",
+    ],
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/airgap/",
+  },
+  {
+    from: [
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+      "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
+    ],
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/airgap/ova/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/env-setup-vm-vertex/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/setup/airgap/rhel-vm/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/install/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/install/airgap/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-notes/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/upgrade/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-vmware/non-airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/upgrade/non-airgap/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-vmware/airgap/",
+    to: "/self-hosted-setup/vertex/supported-environments/vmware/upgrade/airgap/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/vertex-management-appliance/",
+    to: "/self-hosted-setup/vertex/supported-environments/management-appliance/",
+  },
+  {
+    from: "/vertex/upgrade/vertex-management-appliance/",
+    to: "/self-hosted-setup/vertex/supported-environments/management-appliance/upgrade/",
+  },
+  {
+    from: [
+      "/vertex/system-management/configure-aws-sts-account/",
+      "/enterprise-version/system-management/configure-aws-sts-account/",
+    ],
+    to: "/clusters/public-cloud/aws/add-aws-accounts/configure-aws-sts-account/",
+  },
+  {
+    from: "/vertex/system-management/",
+    to: "/self-hosted-setup/vertex/system-management/",
+  },
+  {
+    from: "/vertex/system-management/account-management/",
+    to: "/self-hosted-setup/vertex/system-management/account-management/",
+  },
+  {
+    from: "/vertex/system-management/account-management/manage-system-accounts/",
+    to: "/self-hosted-setup/vertex/system-management/account-management/manage-system-accounts/",
+  },
+  {
+    from: [
+      "/vertex/system-management/account-management/credentials/",
+      "/vertex/system-management/account-management/email/",
+    ],
+    to: "/self-hosted-setup/vertex/system-management/account-management/credentials/",
+  },
+  {
+    from: "/vertex/system-management/account-management/password-blocklist/",
+    to: "/self-hosted-setup/vertex/system-management/account-management/password-blocklist/",
+  },
+  {
+    from: "/vertex/system-management/login-banner/",
+    to: "/self-hosted-setup/vertex/system-management/login-banner/",
+  },
+  {
+    from: "/vertex/system-management/change-cloud-config/",
+    to: "/self-hosted-setup/vertex/system-management/change-cloud-config/",
+  },
+  {
+    from: "/vertex/system-management/feature-flags/",
+    to: "/self-hosted-setup/vertex/system-management/feature-flags/",
+  },
+  {
+    from: "/vertex/system-management/registry-override/",
+    to: "/self-hosted-setup/vertex/system-management/registry-override/",
+  },
+  {
+    from: "/vertex/system-management/customize-interface/",
+    to: "/self-hosted-setup/vertex/system-management/customize-interface/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/allow-cluster-import/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/allow-cluster-import/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs/",
+  },
+  {
+    from: "/vertex/system-management/enable-non-fips-settings/use-non-fips-features/",
+    to: "/self-hosted-setup/vertex/system-management/enable-non-fips-settings/use-non-fips-features/",
+  },
+  {
+    from: "/vertex/system-management/reverse-proxy/",
+    to: "/self-hosted-setup/vertex/system-management/reverse-proxy/",
+  },
+  {
+    from: "/vertex/system-management/scar-migration/",
+    to: "/self-hosted-setup/vertex/system-management/scar-migration/",
+  },
+  {
+    from: "/vertex/system-management/smtp/",
+    to: "/self-hosted-setup/vertex/system-management/smtp/",
+  },
+  {
+    from: "/vertex/system-management/ssl-certificate-management/",
+    to: "/self-hosted-setup/vertex/system-management/ssl-certificate-management/",
+  },
+  {
+    from: "/vertex/system-management/add-registry/",
+    to: "/self-hosted-setup/vertex/system-management/add-registry/",
+  },
+  {
+    from: "/vertex/system-management/tenant-management/",
+    to: "/self-hosted-setup/vertex/system-management/tenant-management/",
   },
 ];
 

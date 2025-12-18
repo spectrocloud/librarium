@@ -14,8 +14,9 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
 
 ## Prerequisites
 
-- A self-hosted Palette installation. Refer to the [Self-Hosted Palette](../enterprise-version/enterprise-version.md) or
-  [Palette VerteX](../vertex/vertex.md) guides for installation instructions.
+- A self-hosted Palette installation. Refer to the appropriate
+  [self-hosted Palette](../self-hosted-setup/palette/palette.md) or
+  [Palette VerteX](../self-hosted-setup/vertex/vertex.md) guide for installation instructions.
 
 - A workload cluster with VMO installed and configured. Refer to the [VMO](./vm-management.md) guide for details.
 

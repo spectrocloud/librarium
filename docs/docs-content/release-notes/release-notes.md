@@ -170,7 +170,15 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 2.10.1.
+- The <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> version used in the [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md) has been upgraded to 2.10.1.
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that prevented the FIPS-compliant version of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack from operating correctly on [Palette VerteX](../self-hosted-setup/vertex/vertex.md).
 
 <!-- prettier-ignore-end -->
 
@@ -243,17 +251,18 @@ The following component updates are applicable to this release:
 
 ### Improvements
 
-- The [VerteX](../vertex/vertex.md) UI has been upgraded to use
+- The [VerteX](../self-hosted-setup/vertex/vertex.md) UI has been upgraded to use
   [Nginx](https://github.com/nginx/nginx/releases/tag/release-1.29.2) 1.29.2.
 
 ### Bug Fixes
 
 - Fixed an issue that caused errors with the internal MongoDB database when upgrading the
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md) installation from
-  4.7.29 to 4.8.6.
+  [self-hosted Palette](../self-hosted-setup/palette/palette.md) or [VerteX](../self-hosted-setup/vertex/vertex.md)
+  installation from 4.7.29 to 4.8.6.
 - Fixed an issue that prevented [Edge cluster](../clusters/edge/edge.md) events from being displayed in the Palette
   Events tab.
-- Fixed an issue that caused [VerteX](../vertex/vertex.md) 4.8.6 to fail to install due to crashing LINSTOR pods.
+- Fixed an issue that caused [VerteX](../self-hosted-setup/vertex/vertex.md) 4.8.6 to fail to install due to crashing
+  LINSTOR pods.
 - Fixed an issue that caused a duplicate CloudStack cloud type to appear in the custom cloud types API endpoint after
   upgrading Palette to 4.8.6, resulting in API and validation conflicts.
 
@@ -294,7 +303,8 @@ The following component updates are applicable to this release:
   IAM roles with temporary, automatically refreshed credentials, eliminating the need for long-lived AWS credentials.
 
   This method is only available for self-hosted Palette and Palette VerteX instances deployed on Amazon EKS clusters.
-  Refer to the [Add AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) guide for more information.
+  Refer to the [Add AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts/add-aws-accounts.md) guide for more
+  information.
 
 - [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
   now support the multiline input type and the Base64 format. This improvement allows users to leverage cluster profile
@@ -317,9 +327,11 @@ The following component updates are applicable to this release:
   high-availability risks during host repaves. This improvement is critical for Day-2 lifecycle operations such as
   upgrades or repaves.
 
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now include the latest
-  Terminal User Interface (TUI). For more details, refer to
+- The
+  [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md)
+  and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)
+  now include the latest Terminal User Interface (TUI). For more details, refer to
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
 <!-- prettier-ignore-start -->
@@ -331,12 +343,13 @@ The following component updates are applicable to this release:
 #### Bug Fixes
 
 - Fixed an issue that caused
-  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) to sometimes create an
-  inconsistent number of LINSTOR resources.
+  [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md)
+  and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)
+  to sometimes create an inconsistent number of LINSTOR resources.
 
-- Fixed an issue that caused some [self-hosted Palette](../enterprise-version/enterprise-version.md) and
-  [VerteX](../vertex/vertex.md) installations to fail to due to a Helm template rendering error.
+- Fixed an issue that caused some [self-hosted Palette](../self-hosted-setup/palette/palette.md) and
+  [VerteX](../self-hosted-setup/vertex/vertex.md) installations to fail to due to a Helm template rendering error.
 
 <!-- prettier-ignore-start -->
 
@@ -351,7 +364,7 @@ The following component updates are applicable to this release:
   [EKS clusters](../clusters/public-cloud/aws/eks.md) due to incorrect security group rules.
 
 - Fixed an issue that prevented rotated IAM keys in
-  [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts.md) from being updated on deployed
+  [AWS cloud accounts](../clusters/public-cloud/aws/add-aws-accounts/add-aws-accounts.md) from being updated on deployed
   [AWS clusters](../clusters/public-cloud/aws/aws.md).
 
 ### Edge
