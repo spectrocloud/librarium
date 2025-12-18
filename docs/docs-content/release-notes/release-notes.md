@@ -69,11 +69,13 @@ tags: ["release-notes"]
   that they have the latest security patches. Additionally, the `ubuntu-systemd` image has been removed from Palette.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9158 -->
+
 - The performance of the `/clusterprofiles` [Palette API](/api/introduction) endpoint has been improved.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5551 -->
+
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
   retry logic for trust policy ConfigMaps.
 
