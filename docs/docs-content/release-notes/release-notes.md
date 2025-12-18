@@ -74,6 +74,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- prettier-ignore-end -->
 
+- [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
+  workloads.
+
 #### Bug Fixes
 
 ### VerteX
