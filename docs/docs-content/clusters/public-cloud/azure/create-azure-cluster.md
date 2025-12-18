@@ -4,6 +4,7 @@ title: "Create and Manage Azure IaaS Cluster"
 description: "Learn how to deploy and manage Azure clusters with Palette."
 hide_table_of_contents: false
 tags: ["public cloud", "azure"]
+toc_max_heading_level: 5
 sidebar_position: 20
 ---
 
@@ -19,40 +20,66 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
   parameter value will result in errors until you return the value to its original configuration.
 
+### Azure Government Secret Limitations
+
+    :::preview
+
+    :::
+
+- You must use Palette VerteX to deploy clusters in
+  [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud). Multi-tenant Palette SaaS and
+  self-hosted Palette instances are not supported.
+
+- Clusters deployed in [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud) must use
+  [static placement](#static-placement-settings) and a
+  [private API server load balancer](#private-api-server-lb-settings) with a static IP.
+
+<PartialsComponent category="azure" name="azure-secret-layer-limitations" />
+
 ## Prerequisites
 
-- Access to an Azure cloud account.
+- An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
+  provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
+  [Required Permissions](./required-permissions.md) guide for more information. If deploying a cluster to
+  [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud), you must have the required
+  permissions for [static placement](./required-permissions.md#iaas-static-placement).
 
-- Palette integration with Azure account. Review [Register and Manage Azure Cloud Account](azure-cloud.md) for guidance.
+- Palette integration with Azure account. Review the [Register and Manage Azure Cloud Account](./azure-cloud.md) guide
+  for more information.
 
 - A Secure Shell (SSH) key pre-configured in your Azure environment. Refer to the
   [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide for more information about creating and managing SSH keys
   in Palette.
 
-- An infrastructure cluster profile for Azure. Review
-  [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
-  for guidance.
+- An
+  [infrastructure cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  or [full cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) for
+  Azure.
 
 - To use custom storage accounts or containers, you must create them before you create your cluster. All custom storage
-  accounts and containers will be listed on the Cluster config page during the cluster creation process. For information
-  about use cases for custom storage, review [Azure Storage](./architecture.md#azure-storage).
+  accounts and containers will be listed on the **Cluster config** page during the cluster creation process. For
+  information about use cases for custom storage, review our [Azure Storage](./architecture.md#azure-storage)
+  documentation.
 
-  If you need help creating a custom storage account or container, check out the
+  If you need help creating a custom storage account or container, check out the Azure
   [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal)
-  guide or the [Manage Blob Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal).
+  or [Manage Blob Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal) guide.
+
+<!-- prettier-ignore-start -->
 
 - If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage
   resources in Azure when it provisions Kubernetes clusters. To use a VNet that Palette creates, ensure there is
   sufficient capacity in the preferred Azure region to create the following resources:
 
-  - Virtual CPU (vCPU)
-  - VNet
-  - Static Public IP addresses
-  - Virtual Network Interfaces
-  - Load Balancers
-  - Virtual Hard Disk (VHD)
-  - Managed Disks
-  - Virtual Network Address Translation (NAT) Gateway
+  - Virtual CPUs (vCPUs)
+  - VNets
+  - Static public IP addresses
+  - Virtual network interfaces
+  - Load balancers
+  - Virtual Hard Disks (VHDs)
+  - Managed disks
+  - Virtual Network Address Translation (NAT) gateways
+  <br />
 
   :::warning
 
@@ -62,260 +89,266 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
   :::
 
-- To enable the `fullyPrivateAddressing` parameter and use a Private API Server load balancer, you need a self-hosted
+<!-- prettier-ignore-end -->
+
+- To enable the `fullyPrivateAddressing` parameter and use a private API server load balancer, you need a self-hosted
   Private Cloud Gateway (PCG) deployed in Azure. Ensure the Azure cloud account selected is connected to a PCG. For more
   information on deploying PCGs, refer to [Private Cloud Gateway](../../pcg/pcg.md). To learn how to connect a PCG to an
   Azure cloud account, refer to the [Register and Manage Azure Cloud Account](./azure-cloud.md) guide.
 
-- A Private DNS Zone is required to use the Private API Server load balancer. You also need to ensure the virtual
+- A private DNS zone is required to use the private API server load balancer. You also need to ensure the virtual
   networks used for the cluster support
-  [Private DNS resolving](https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview). To learn more
-  about Private DNS Zones, refer to
-  [Private DNS Zones](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
+  [private DNS resolution](https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview). To learn more
+  about private DNS zones, refer to the Azure
+  [Private DNS Zones](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) guide.
 
-<!-- prettier-ignore -->
-- If you want to enable Azure Disk Storage Server-Side Encryption on your cluster, ensure you have created a Key Vault and Disk Encryption Set. Your cluster profile must also be configured to use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack, and have the **Azure Disk Encryption Set** preset enabled.
+<!-- prettier-ignore-start -->
 
-  Review [Azure Disk Storage Server-Side Encryption](./azure-disk-storage-sse.md) for guidance.
+- If you want to enable Azure Disk Encryption on your cluster, ensure you have created a Key Vault and Disk Encryption Set. Your cluster profile must also be configured to use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack and have the **Use Azure Disk Encryption** preset enabled. Review our [Azure Disk Encryption](./azure-disk-storage-sse.md) guide for more information.
+
+<!-- prettier-ignore-end -->
 
 ## Deploy an Azure Cluster
 
-Use the following steps to deploy an Azure cluster.
+Take the following steps to deploy an Azure cluster.
 
-1.  Log in to [Palette](https://console.spectrocloud.com).
+1.  Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX.
 
-2.  Ensure you are in the correct project scope.
+2.  From the left main menu, select **Clusters > Create Cluster**.
 
-3.  From the left **Main Menu**, select **Clusters** and click **Add New Cluster**.
+3.  In **Public Clouds**, under **Infrastructure Provider**, select **Azure IaaS**.
 
-4.  In **Public Clouds**, under **Infrastructure Provider**, select **Azure IaaS**.
+4.  In the bottom-right corner, select **Start Azure IaaS Configuration**.
 
-5.  In the bottom-right corner, click **Start Azure IaaS Configuration**.
+5.  Complete the following information. Select **Next** when finished.
 
-6.  Fill out the following basic information and click **Next**.
+    | **Field**         | **Description**                                                                                                                                                                                                                                                                     |
+    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Cluster Name**  | Enter a custom name for the cluster.                                                                                                                                                                                                                                                |
+    | **Description**   | (Optional) Provide context about the cluster.                                                                                                                                                                                                                                       |
+    | **Tags**          | (Optional) Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.                                                                                                          |
+    | **Cloud Account** | Select the appropriate Azure account under which to deploy the cluster. If the account is not there, select **Add New Account**, and provide your Azure account information. For more information, refer to our [Register and Manage Azure Cloud Accounts](./azure-cloud.md) guide. |
 
-    | **Field**         | **Description**                                                                                                                                                         |
-    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Cluster Name**  | A custom name for the cluster.                                                                                                                                          |
-    | **Description**   | Use the description to provide context about the cluster.                                                                                                               |
-    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.         |
-    | **Cloud Account** | If you already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Azure account information. |
+6.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-7.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
+        - Certain features require additional modifications to your cluster profile. Expand the
+          appropriate panel for more information.
 
-    - Certain features, such as clusters with static placement and those using custom OpenID Connect (OIDC), require
-      additional modifications to your cluster profile. Expand the appropriate panel for more information.
+          <details>
+          <summary> Static Placement </summary>
 
-      <details>
+          To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public
+          IPs created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
 
-      <summary> Static Placement </summary>
+          ```yaml
+          cloud:
+            azure:
+              fullyPrivateAddressing: true
+          ```
 
-      To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public
-      IPs created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
+          If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
+          balancers for the control plane and worker nodes and assign public IPs to them.
 
-      ```yaml
-      cloud:
-        azure:
-          fullyPrivateAddressing: true
-      ```
+          Consider the following limitations:
 
-      If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
-      balancers for the control plane and worker nodes and assign public IPs to them.
+          - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster
+            must still have outbound access to the internet, including the
+            [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
+            container images.
 
-      Consider the following limitations:
+          - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
+            parameter value will result in errors until you return the value to its original configuration.
 
-      - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster
-        must still have outbound access to the internet, including the
-        [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
-        container images.
+          <br />
 
-      - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
-        parameter value will result in errors until you return the value to its original configuration.
+          Toggle the **Private API Server LB** option to enable the use of a private API server load balancer and specify the [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) you want to use. Only Static IP allocation is allowed, which requires a valid IP address.
 
-        <br />
+          </details>
 
-        Toggle the **Private API Server LB** option to enable the use of a Private API Server load balancer and specify
-        the [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want
-        to use. Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP
-        allocation methods. If you select **Static**, you must provide a valid IP address.
+          <details>
 
-      </details>
+          <summary> OpenID Connect (OIDC)</summary>
 
-      <details>
+          You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for more information.
 
-      <summary> OpenID Connect (OIDC)</summary>
+          :::warning
 
-      <!-- prettier-ignore-start -->
+          All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
+          Kubernetes role to users and groups, refer to
+          [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-      You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the
-      <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
-      pack additional details for more information.
-      <!-- prettier-ignore-end -->
+          :::
 
-      :::warning
+          </details>
 
-      All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
-      Kubernetes role to users and groups, refer to
-      [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
+          <details>
 
-      :::
+          <summary>Azure Government Secret Cloud </summary>
 
-      </details>
+          <PartialsComponent category="azure" name="azure-secret-layer-limitations" />
 
-      <details>
+          </details>
 
-      <summary> Disable automatic route table creation for pod networking </summary>
+          <details>
 
-      By default, Palette creates route tables and route entries for pod networking.
+          <summary> Disable automatic route table creation for pod networking </summary>
 
-      <details>
+          By default, Palette creates route tables and route entries for pod networking. The following table lists example route table entries.
 
-      <summary> Example route table entries </summary>
+          | Name                                                    | Address prefix | Next hop type    | Next hop IP address |
+          | ------------------------------------------------------- | -------------- | ---------------- | ------------------- |
+          | `az-iaas-cluster-cp-xfqnh____1921680024`                | 192.168.0.0/24 | VirtualAppliance | 10.0.0.4            |
+          | `az-iaas-cluster-worker-pool-2cst7-scwck____1921681024` | 192.168.1.0/24 | VirtualAppliance | 10.1.0.4            |
 
-      | Name                                                    | Address prefix | Next hop type    | Next hop IP address |
-      | ------------------------------------------------------- | -------------- | ---------------- | ------------------- |
-      | `az-iaas-cluster-cp-xfqnh____1921680024`                | 192.168.0.0/24 | VirtualAppliance | 10.0.0.4            |
-      | `az-iaas-cluster-worker-pool-2cst7-scwck____1921681024` | 192.168.1.0/24 | VirtualAppliance | 10.1.0.4            |
+          If you do not want Palette to create these route entries, add the following configuration to your Kubernetes
+          layer.
 
-      </details>
+          ```yaml
+          cloud:
+            cloudControllerManager:
+              configureCloudRoutes: false
+          ```
 
-      If you do not want Palette to create these route entries, add the following configuration to your Kubernetes
-      layer.
+          These route tables and entries are typically needed for pod-to-pod communication if your Container Network
+          Interfaces (CNI) does not support this by default. However, Calico and Cilium CNIs support pod networking across
+          nodes by default without requiring these route tables and entries.
 
-      ```yaml
-      cloud:
-        cloudControllerManager:
-          configureCloudRoutes: false
-      ```
+          </details>
 
-      These route tables and entries are typically needed for pod-to-pod communication if your Container Network
-      Interfaces (CNI) does not support this by default. However, Calico and Cilium CNIs support pod networking across
-      nodes by default without requiring these route tables and entries.
+7.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-      </details>
-
-8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
-
-9.  Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
+8.  Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
     ensure you also provide information listed in the Static Placement Settings table. If you have custom storage
     accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage
     to a cluster, check out [Azure storage](../azure/architecture.md#azure-storage).
 
     :::warning
 
-    If you enable the **Disable Properties** setting when
-    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-    resources on your behalf. In this case, when creating clusters, you must manually specify their virtual network
-    subnets and security groups.
+    If you enabled the **Disable Properties** setting when [registering an Azure cloud account](./azure-cloud.md),
+    Palette cannot create network resources on your behalf. In this case, when creating clusters, you must manually
+    specify their virtual network subnets and security groups.
 
     :::
 
-    | **Parameter**             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-    | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Subscription**          | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Region**                | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-    | **Resource Group**        | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Storage Account**       | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | **Storage Container**     | Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | **SSH Key**               | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                                                                                                                                                            |
-    | **Static Placement**      | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different availability zones. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. <br /> <br /> Select **Static Placement** for clusters where you want to use your network proxy configurations. To learn more about proxy configurations, check out [Proxy Configuration](./architecture.md#proxy-configuration). |
-    | **Private API Server LB** | _This option is only available when deploying clusters through a [Self Hosted PCG](../../pcg/deploy-pcg-k8s.md)._ Configure a private API server load balancer to enable private connectivity to your Kubernetes cluster. When enabled, this exposes the Kubernetes control plane endpoint on an internal Azure load balancer. If enabling, provide the additional input values as listed in the [Private API Server LB Settings](#private-api-server-lb-settings) table.                                                                                                                                                                                                                                               |
+    | **Parameter**                    | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Subscription**                 | Choose the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Region**                       | Choose the Azure region to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | **Resource Group**               | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+    | **Storage account (Optional)**   | (Optional) Use a storage account, if desired. For information about custom storage use cases, refer to our [Azure Storage](../azure/architecture.md#azure-storage) documentation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | **Storage container (Optional)** | (Optional) Use a custom storage container, if desired. For information about custom storage use cases, refer to our [Azure Storage](../azure/architecture.md#azure-storage) documentation.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **SSH Key**                      | Select the public SSH key to use when connecting to the nodes. The SSH key pairs displayed are pulled from the Azure cloud account being used to deploy the cluster. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                                   |
+    | **Static Placement**             | (Optional) By default, Palette uses dynamic placement. Select this option to place resources into a pre-existing VNet, and complete the fields listed in the [Static Placement](#static-placement-settings) table. **Static Placement** must be enabled for clusters where you want to use network proxy configurations and for clusters deployed in [Azure Government Secret](../../../clusters/public-cloud/azure/azure-cloud.md) cloud. To learn more about proxy configurations, check out [Proxy Configuration](./architecture.md#proxy-configuration).                                                                                        |
+    | **Private API Server LB**        | (Optional) Select this option to configure a private API server load balancer and enable private connectivity to your Kubernetes cluster, and complete the fields listed in the [Private API Server LB Settings](#private-api-server-lb-settings) table. The option **Private API Server LB** exposes the Kubernetes control plane endpoint on an internal Azure load balancer. <br /> <br /> This option is available only when deploying clusters through a [self-hosted PCG](../../pcg/deploy-pcg-k8s.md). This option must be enabled if deploying clusters to [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud). |
 
-    #### Static Placement Settings
+    ### Static Placement Settings
 
     Each subnet allows you to specify the CIDR range and a security group.
 
-    | **Parameter**              | **Description**                                             |
-    | -------------------------- | ----------------------------------------------------------- |
-    | **Network Resource Group** | The logical container for grouping related Azure resources. |
-    | **Virtual Network**        | Select the VNet.                                            |
-    | **CIDR Block**             | Select the IP address CIDR range.                           |
-    | **Control Plane Subnet**   | Select the control plane subnet.                            |
-    | **Worker Subnet**          | Select the worker network.                                  |
+    | **Parameter**              | **Description**                                                    |
+    | -------------------------- | ------------------------------------------------------------------ |
+    | **Network Resource Group** | Select the logical container for grouping related Azure resources. |
+    | **Virtual Network**        | Select the VNet.                                                   |
+    | **CIDR Block**             | Select the IP address CIDR range.                                  |
+    | **Control Plane Subnet**   | Select the control plane subnet.                                   |
+    | **Worker Subnet**          | Select the worker network.                                         |
 
-    #### Private API Server LB Settings
+    ### Private API Server LB Settings
+
+    The option to enable a private API server load balancer is available only when deploying clusters through a
+    [self-hosted PCG](../../pcg/deploy-pcg-k8s.md).
 
     :::warning
 
-    Dynamic IP allocation is no longer supported for private API server load balancers. Select **Static** for **IP
-    Allocation Method** and enter an IP address in **Static IP**.
-
-    If you omit a static IP, cluster provisioning will fail.
+    **Private API Server LB** must be enabled if deploying clusters to
+    [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud).
 
     :::
 
-    | **Parameter**                           | **Description**                                                                                                                                                                                                                                                                                                                                                                        |
-    | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Resource Group for Private DNS Zone** | The Azure resource group that contains the **Private DNS zone** you want to use for the private API server load balancer. It can be different from the cluster’s own resource group. If you want to let Palette create a new **Private DNS zone**, ensure this field is set to the cluster’s resource group.                                                                           |
-    | **Private DNS zone (Optional)**         | The existing private DNS zone that will hold the **A** record of the private endpoint. After you choose a resource group, the dropdown lists the zones in that resource group. Select a zone from the list of available zones. To let Palette create a new zone, leave this field blank and ensure the **Resource Group for Private DNS Zone** is set to the cluster’s resource group. |
-    | **IP Allocation Method**                | How the load balancer virtual IP is assigned. <br /> - **Dynamic** (default) lets Azure pick the next free address in the subnet. _This option is no longer supported, you must assign a static IP._ <br /> - **Static** lets you choose a specific IP address for the load balancer that you supply in the **Static IP** field.                                                       |
-    | **Static IP**                           | The private IP address to use only when **IP Allocation Method** is set to **Static**. The address must be unused and inside the subnet delegated for the private API server load balancer.                                                                                                                                                                                            |
+    | **Parameter**                           | **Description**                                                                                                                                                                                                                                                                                                                                  |
+    | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Resource Group for Private DNS Zone** | Select the Azure resource group that contains the private DNS zone you want to use for the private API server load balancer. The DNS zone resource group can be different from the cluster resource group. If left blank, Palette uses the cluster's **Resource Group**.                                                                         |
+    | **Private DNS zone (Optional)**         | (Optional) Select an existing private DNS zone that will hold the **A** record of the private endpoint. The options displayed in the drop-down depend on your **Resource Group for Private DNS Zone** selection. If left blank, Palette creates a new private DNS zone in the selected **Resource Group for Private DNS Zone**.                  |
+    | **IP Allocation Method**                | Choose how the load balancer virtual IP is assigned: <br /> <br /> - **Static** (default) - Choose a specific IP address for the load balancer that you supply in the **Static IP** field. <br /> - **Dynamic** (disabled) - Azure picks the next free address in the subnet. _This option is no longer supported. You must assign a static IP._ |
+    | **Static IP**                           | The private, static IP address to use for the load balancer. The address must be unused and inside the subnet delegated for the private API server load balancer.                                                                                                                                                                                |
 
-10. Click **Next** to continue.
+9.  Select **Next** to continue.
 
-11. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+10. Provide the following node pool and cloud configuration information. To learn more about node pools, review our
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     :::info
 
-    By default, a control plane pool and one worker node pool are configured. You can add new worker pools to customize
-    certain worker nodes for specialized workloads. For example, the default worker pool can be configured with the
-    Standard_D2_v2 instance types for general-purpose workloads, and another worker pool with instance type
+    Palette configures one control plane pool and one worker node pool by default. You can add new worker pools to
+    customize certain worker nodes for specialized workloads. For example, the default worker pool can be configured
+    with the Standard_D2_v2 instance types for general-purpose workloads, and another worker pool with instance type
     Standard_NC12s_v3 can be configured for Graphics Processing Unit (GPU) workloads.
 
     :::
 
-    #### Control Plane Pool Configuration Settings
+    ### Control Plane Pool Configuration Settings
 
-    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-    | **Number of nodes in the pool** | Specify the number of nodes in the control plane pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-    | **Allow worker capability**     | Select this option to allow workloads to be provisioned on control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | **Additional Labels**           | You can add optional labels to nodes in key-value format. To learn more, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-    | **Taints**                      | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Taints and Tolerations](../../cluster-management/taints.md) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted. |
+    | **Parameter**                          | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Node pool name**                     | Enter a descriptive name for the control plane node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | **Number of nodes in the pool**        | Specify the number of nodes in the control plane pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | **Allow worker capability (Optional)** | (Optional) Allow workloads to be provisioned on control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Additional Labels (Optional)**       | (Optional) Add optional [node labels](../../cluster-management/node-labels.md) to nodes using key-value format. Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | **Taints (Optional)**                  | (Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select **Add New Taint** to create a taint label, and complete the following fields: <br /> <br /> - **Key** - Enter the key in the taint key-value pair. <br /> - **Value** - Enter the value in the taint key-value pair. <br /> - **Effect** - Choose from among the following **Effect** options: **NoSchedule**, **PreferNoSchedule**, and **NoExecute**. <br /> <br /> - **NoSchedule** - Pods are not scheduled onto nodes with this taint. <br /> - **PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. <br /> - **NoExecute** - Existing pods are evicted from nodes with this taint. <br /> <br /> Review our [Node Pool](../../cluster-management/node-pool.md) and [Taints and Tolerations](../../cluster-management/taints.md) guides to learn more. |
 
-    #### Cloud Configuration Settings for Control Plane Pool
+    #### Cloud Configuration Settings
 
-    | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Instance Type** | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                     |
-    | **Managed disk**  | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference |
-    | **Disk size**     | You can choose disk size based on your requirements. The default size is 60.                                                                                                                                                                                                                                                                                                                                                        |
+    | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Instance Type** | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Managed disk**  | Choose a storage option. Available options are **Standard SSD LRS**, **Standard LRS**, **Premium LRS**, and **Standard SSD ZRS**. Refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) and [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference pages for more information. |
+    | **Disk size**     | Enter the size of the disk based on your requirements. The default size is 60 GB.                                                                                                                                                                                                                                                                                                                                                                                             |
 
-    You can select **Remove** at right to remove the worker node if all you want is the control plane node.
+    ### Worker Pool Configuration Settings
 
-    #### Worker Pool Configuration Settings
+    :::tip
 
-    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-    | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Enable Autoscaler**           | Scale the worker pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling.                                                                                                                                                                                                                                                                                                              |
-    | **Number of nodes in the pool** | Specify the number of nodes in the worker pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | **Node repave interval**        | Optionally, you can specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the Kubeadm configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Rolling update**              | These options allow you to control the sequence of operations during a node pool update. Choose the **Expand first** option to add new nodes with updated configurations to the node pool before the existing nodes are removed. Choose **Contract first** to remove existing nodes from the node pool before the new nodes with updated configurations are added.                                                                                                                                                                                                                                                                                                                                                                                                                             |
-    | **Additional Labels**           | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-    | **Taints**                      | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. To learn more, review the [Node Pool](../../cluster-management/node-pool.md) management page and [Taints and Tolerations](../../cluster-management/taints.md) page. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted. |
+    Select **Remove** on the right side of the page to remove the worker node pool if you only want a control plane
+    pool.
 
-    #### Cloud Configuration Settings for Worker Pool
+    :::
 
-    You can copy cloud configuration settings from the control plane pool, but be aware that the instance type might not
-    get copied if it does not have accessible availability zones.
+    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Node pool name**                  | Enter a descriptive name for the worker node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | **Enable Autoscaler**               | Scale the worker pool horizontally based on its per-node workload counts. Enabling this option displays the fields **Minimum size** and **Maximum size**. <br /> <br /> - **Minimum size** - Specify the lower bound of nodes in the pool. <br /> - **Maximum size** - Specify the upper bound of nodes in the pool. <br /><br /> Setting the **Minimum size** and **Maximum size** to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling.                                                                                                                                                                                                                                                                                                                                 |
+    | **Node repave interval (Optional)** | (Optional) Specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the kubeadm configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Number of nodes in the pool**     | Specify the number of nodes in the worker pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Rolling update**                  | Control the sequence of operations during a node pool update. <br /><br /> - **Expand First** (default) - Add new nodes with updated configurations to the node pool before the existing nodes are removed. <br /> - **Contract First** - Remove existing nodes from the node pool before the new nodes with updated configurations are added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Additional Labels (Optional)**    | (Optional) Add optional [node labels](../../cluster-management/node-labels.md) to nodes using key-value format. Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | **Taints (Optional)**               | (Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select **Add New Taint** to create a taint label, and complete the following fields: <br /> <br /> - **Key** - Enter the key in the taint key-value pair. <br /> - **Value** - Enter the value in the taint key-value pair. <br /> - **Effect** - Choose from among the following **Effect** options: **NoSchedule**, **PreferNoSchedule**, and **NoExecute**. <br /> <br /> - **NoSchedule** - Pods are not scheduled onto nodes with this taint. <br /> - **PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. <br /> - **NoExecute** - Existing pods are evicted from nodes with this taint. <br /> <br /> Review our [Node Pool](../../cluster-management/node-pool.md) and [Taints and Tolerations](../../cluster-management/taints.md) guides to learn more. |
 
-    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                      |
-    | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Instance Type**      | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                      |
-    | **Managed disk**       | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
-    | **Disk size**          | You can choose disk size based on your requirements. The default size is 60.                                                                                                                                                                                                                                                                                                                                                         |
-    | **Availability zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so.                                                                                                                                                                                                                     |
+    #### Cloud Configuration Settings
 
-12. Click **Next** to continue.
+    :::tip
 
-13. <PartialsComponent category="clusters" name="cluster-settings" />
+    Select **Copy from Control Plane Pool** on the right side of the screen to copy the
+    [control plane's cloud configuration settings](#cloud-configuration-settings) to your worker node pool. Note that
+    the **Instance Type** may not be copied if it does not have accessible availability zones. If you select
+    **Availability zones** prior to selecting **Copy from Control Plane Pool**, the availability zones are cleared and
+    must be reselected.
 
-14. Select **Validate** to review your cluster configurations and settings.
+    :::
 
-15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Instance Type**      | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Managed disk**       | Choose a storage option. Available options are **Standard SSD LRS**, **Standard LRS**, **Premium LRS**, and **Standard SSD ZRS**. Refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) and [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference pages for more information. |
+    | **Disk size**          | Enter the size of the disk based on your requirements. The default size is 60 GB.                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Availability zones** | Select the availability zones where you want to deploy your worker nodes. If you select multiple zones, Palette will distribute the nodes evenly across the chosen zones, provided sufficient capacity is available.                                                                                                                                                                                                                                                          |
+
+11. Select **Next** to continue.
+
+12. <PartialsComponent category="clusters" name="cluster-settings" />
+
+13. Select **Validate** to review your cluster configurations and settings.
+
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
@@ -326,17 +359,25 @@ refer to [Cluster Removal](../../cluster-management/remove-clusters.md).
 
 ## Validate
 
-You can validate your cluster is up and in **Running** state.
+Use the following steps to You can validate your cluster is up and in **Running** state.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu**, select **Clusters**. The **Clusters** page displays a list of all available clusters
-   that Palette manages.
+3. From the left main menu, select **Clusters**. The **Clusters** page displays a list of all available clusters that
+   Palette manages.
 
-4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value
-   **Running**.
+4. Select the cluster you deployed. On the **Overview** tab, ensure the **Cluster Status** is **Running** and that the
+   cluster has a **Health** status of **Healthy**.
+
+## Next Steps
+
+Once your cluster is running, perform [Day-2](../../cluster-management/cluster-management.md) operations as needed,
+including [Kubernetes upgrades](../../cluster-management/cluster-updates.md),
+[node pool operations](../../cluster-management/node-pool.md), and
+[cluster profile updates](../../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md). For
+guidance on deleting your cluster, refer to our [Cluster Removal](../../cluster-management/remove-clusters.md) guide.
 
 <!--
 ## Configure Autoscaling in Azure Portal
@@ -377,23 +418,3 @@ A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autosc
 The link to access the Add Rules page is displayed within a caution message in the **Rules** section of the scale set resource page.
 
 ::: -->
-
-## Resources
-
-- [Register and Manage Azure Cloud Account](azure-cloud.md)
-
-- [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
-
-- [Azure Storage](../azure/architecture.md#azure-storage)
-
-- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
-
-<!-- prettier-ignore-start -->
-
-- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
-
-<!-- prettier-ignore-end -->
-
-<!-- - [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
-
-- [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) -->
