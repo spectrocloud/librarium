@@ -162,9 +162,9 @@ instances of t3.medium are needed to satisfy the resource requirement of an EKS 
 
 ## Instance Options
 
-You can specify different instance options for your worker nodes to optimize cost and performance. By default, worker
-pools are configured to use on-demand instances, which provide flexibility and reliability. However, Palette also
-supports the use of spot instances and dedicated hosts for worker nodes.
+You can specify different instance options for your nodes to optimize cost and performance. By default, node pools are
+configured to use on-demand instances, which provide flexibility and reliability. However, Palette also supports the use
+of spot instances and dedicated hosts.
 
 ### Spot Instances
 
@@ -175,7 +175,13 @@ spot instances and launches nodes, when the spot price falls in the specified ra
 
 ### Dedicated Hosts
 
-Palette supports launching worker nodes on AWS Dedicated Hosts. Dedicated Hosts are physical servers with EC2 instance
+:::info
+
+Dedicated Hosts are only supported in AWS IaaS clusters.
+
+:::
+
+Palette supports launching node pools on AWS Dedicated Hosts. Dedicated Hosts are physical servers with EC2 instance
 capacity fully dedicated to your use. This helps you address compliance requirements and reduce costs by allowing you to
 use your existing server-bound software licenses. The **Dedicated Host** option can be selected in the node
 configuration page during cluster creation. This option allows you to specify the host resource group and any license

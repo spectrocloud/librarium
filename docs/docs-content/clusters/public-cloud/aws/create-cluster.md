@@ -73,6 +73,18 @@ The following prerequisites must be met before deploying a cluster to AWS:
 
   :::
 
+- If you plan to use
+  [AWS Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) for your
+  cluster nodes, ensure you have the following prerequisites met:
+
+  - A license configuration created in AWS License Manager.
+  - A Host Resource Group created in AWS License Manager with the license configuration associated.
+  - Dedicated Host allocated to the Host Resource Group.
+  - The desired instance type is supported on the Dedicated Host. Refer to the
+    [Amazon EC2 Dedicated Host instance capacity configurations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-limits.html)
+    for more information.
+  - Ensure that the AMI licenses match the licenses associated with the Host Resource Group.
+
 ## Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS cluster:
@@ -81,7 +93,7 @@ Use the following steps to provision a new AWS cluster:
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
+3. From the left main menu, select **Clusters**, and click **Add New Cluster**.
 
 4. In **Public Clouds**, under **Infrastructure Provider**, select **AWS IaaS**.
 
@@ -94,7 +106,7 @@ Use the following steps to provision a new AWS cluster:
    | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                      |
    | **Description**   | Use the description to provide context about the cluster.                                                                                                                                           |
    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-east-1a` or `zone:vpc-private-us-east-1a`. |
-   | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your AWS account information.                                 |
+   | **Cloud Account** | If you already added your AWS account in Palette, select it from the drop-down menu. Otherwise, click **Add New Account** and add your AWS account information.                                     |
 
    To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
 
@@ -114,11 +126,11 @@ Use the following steps to provision a new AWS cluster:
 
    #### Static Placement
 
-   | Parameter                | Description                                                                    |
-   | ------------------------ | ------------------------------------------------------------------------------ |
-   | **VPCID**                | Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**. |
-   | **Control plane subnet** | Select the control plane network from the **drop-down Menu**.                  |
-   | **Worker Network**       | Select the worker network from the **drop-down Menu**.                         |
+   | Parameter                | Description                                                                |
+   | ------------------------ | -------------------------------------------------------------------------- |
+   | **VPCID**                | Select the Virtual Private Cloud (VPC) ID network from the drop-down menu. |
+   | **Control plane subnet** | Select the control plane network from the drop-down menu.                  |
+   | **Worker Network**       | Select the worker network from the drop-down menu.                         |
 
 10. Provide the following node pool and cloud configuration information for the control plane and worker node pools.
 
@@ -150,10 +162,10 @@ Use the following steps to provision a new AWS cluster:
 
     | **Parameter**                                              | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                        |
     | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Instance Option**                                        | _Only applicable to worker node pools._ Choose a pricing method: <br /><br /> - **On-Demand** - Provides stable and uninterrupted compute capacity at a higher cost. <br /> - **Spot** - Allows you to bid for unused EC2 capacity at a lower cost. <br /> - **Dedicated Hosts** - Use a dedicated host where you able to apply specific granular hardware configuration. <br /> We recommend you base your choice on your application's requirements. |
+    | **Instance Option**                                        | Choose a pricing method: <br /><br /> - **On-Demand** - Provides stable and uninterrupted compute capacity at a higher cost. <br /> - **Spot** - _Only available for worker node pools._ Allows you to bid for unused EC2 capacity at a lower cost. <br /> - **Dedicated Hosts** - Use a dedicated host where you able to apply specific granular hardware configuration. <br /> We recommend you base your choice on your application's requirements. |
     | **Maximum spot bid price (% of on-demand instance price)** | _Only applicable to worker node pools when **Spot** is selected as the **Instance Option**._ Specify the maximum percentage of the on-demand instance price that you are willing to pay for spot instances. For example, if you enter `30`, Palette will only provision spot instances when the spot price is less than or equal to 30% of the on-demand price.                                                                                        |
-    | **Host Resource Group**                                    | _Only applicable to worker node pools when **Dedicated Hosts** is selected as the **Instance Option**._ Select an existing host resource group from the drop-down menu.                                                                                                                                                                                                                                                                                |
-    | **License Configuration ARN**                              | _Only applicable to worker node pools when **Dedicated Hosts** is selected as the **Instance Option**._ Provide the Amazon Resource Name (ARN) for the license configuration if you plan to use your existing software licenses on the dedicated hosts.                                                                                                                                                                                                |
+    | **Host Resource Group**                                    | _Only applicable when **Dedicated Hosts** is selected as the **Instance Option**._ Select an existing host resource group from the drop-down menu.                                                                                                                                                                                                                                                                                                     |
+    | **License Configuration ARN**                              | _Only applicable when **Dedicated Hosts** is selected as the **Instance Option**._ Provide the Amazon Resource Name (ARN) for the license configuration if you plan to use your existing software licenses on the dedicated hosts.                                                                                                                                                                                                                     |
     | **Instance Type**                                          | Select the instance type to use for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                        |
     | **Availability Zones**                                     | Select one or more availability zones for the node pool. Distributing nodes across multiple availability zones increases fault tolerance and availability.                                                                                                                                                                                                                                                                                             |
     | **Additional Security Groups (Optional)**                  | If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the node pool. Use the drop-down menu to select additional security groups.                                                                                                                                                            |
@@ -177,7 +189,7 @@ You can validate that your cluster is up and available by reviewing the cluster 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and click **Clusters**.
+2. Navigate to the left main menu and click **Clusters**.
 
 3. The **Clusters** page contains a list of the available clusters Palette manages. Click on the cluster you want to
    review.
