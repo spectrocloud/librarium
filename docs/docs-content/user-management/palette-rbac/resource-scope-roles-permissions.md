@@ -48,6 +48,7 @@ review the permissions associated with each Resource role, click on the role nam
 - cloudconfig.get
 - cloudconfig.list
 - cloudconfig.update
+- cluster.adminKubeconfigDownload
 - cluster.delete
 - cluster.get
 - cluster.list

@@ -11,6 +11,139 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## January 17, 2025 - Release 4.8.X {#release-notes-4.8.a}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.8.a}
+
+#### Breaking Changes {#breaking-changes-4.8.a}
+
+- Users with the `cluster.delete` permission are no longer allowed to download cluster
+  [admin kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This operation is now controlled using the
+  `cluster.adminKubeconfigDownload` permission, allowing system administrators with fine-grained control over cluster
+  admin access.
+
+  The `cluster.adminKubeconfigDownload` permission is part of the following system roles:
+
+  - [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin)
+  - [Tenant Project Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#project)
+  - [Project Admin](../user-management/palette-rbac/project-scope-roles-permissions.md#project)
+  - [Cluster Admin](../user-management/palette-rbac/project-scope-roles-permissions.md#cluster)
+  - [Resource Cluster Admin](../user-management/palette-rbac/resource-scope-roles-permissions.md#cluster)
+
+  Existing users with system roles that include the `cluster.delete` permission automatically receive the new
+  `cluster.adminKubeconfigDownload` permission. System administrators must grant the new permission manually to existing
+  users granted access through custom roles.
+
+#### Features
+
+- [Cluster templates](../cluster-templates/cluster-templates.md) provide a new way to enforce consistent configurations
+  and prevent drift across multiple clusters. With cluster templates, you define and enforce the desired state and
+  lifecycle of clusters by combining [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) with
+  operational [policies](../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md) into
+  a single, reusable governance blueprint, allowing you to deploy, manage, and upgrade a synchronized fleet of clusters
+  with minimal effort. Refer to our [Cluster Templates](../cluster-templates/cluster-templates.md) guide for more
+  information.
+
+#### Improvements
+
+- You can now add OCI Helm registries that do not require authentication to Palette. This allows you to leverage
+  publicly available OCI Helm Charts in your cluster profiles. Refer to the
+  [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide to learn more.
+
+#### Deprecations and Removals
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.X Palette release is 4.8.X.
+
+:::
+
+#### Features
+
+#### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> pack has exited Tech Preview and is now ready for production workloads.
+
+<!-- prettier-ignore-end -->
+
+- [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
+  workloads.
+
+#### Bug Fixes
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.8.a) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+- Terraform version 0.26.X of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.26.X of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+#### Improvements
+
+### Docs and Education
+
+### Packs
+
+#### Pack Notes
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
 ## December 17, 2025 - Release 4.8.12
 
 ### Features

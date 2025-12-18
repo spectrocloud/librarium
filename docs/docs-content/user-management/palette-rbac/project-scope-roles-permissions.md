@@ -258,6 +258,7 @@ review the permissions associated with each Project role, click on the role name
 - cloudconfig.get
 - cloudconfig.list
 - cloudconfig.update
+- cluster.adminKubeconfigDownload
 - cluster.create
 - cluster.delete
 - cluster.get
@@ -553,6 +554,7 @@ review the permissions associated with each Project role, click on the role name
 - cloudconfig.get
 - cloudconfig.list
 - cloudconfig.update
+- cluster.adminKubeconfigDownload
 - cluster.create
 - cluster.delete
 - cluster.get

@@ -10,6 +10,10 @@ sidebar_position: 30
 Palette supports creating and managing Azure Kubernetes Service (AKS) clusters deployed to an Azure account. This guide
 explains how you can create an Azure AKS cluster managed by Palette.
 
+## Limitations
+
+- AKS clusters cannot be deployed in [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud).
+
 ## Prerequisites
 
 - An active Azure cloud account integrated with Palette. Review
@@ -202,10 +206,9 @@ to learn more about the ports used for communication.
 
     :::warning
 
-    If you enable the **Disable Properties** setting when
-    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-    resources on your behalf. In this case, every time you deploy a cluster, you must manually specify its virtual
-    network subnets and security groups.
+    If you enable the **Disable Properties** setting when [registering an Azure cloud account](./azure-cloud.md),
+    Palette cannot create network resources on your behalf. In this case, every time you deploy a cluster, you must
+    manually specify its virtual network subnets and security groups.
 
     :::
 
@@ -297,29 +300,15 @@ to learn more about the ports used for communication.
 
 11. Click **Next** to continue.
 
-12. Specify your preferred **OS Patching Schedule**.
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
-    Kubernetes configuration security, penetration testing, and conformance testing.
+13. Select **Validate** to review your cluster configurations and settings.
 
-14. Schedule any backups you want Palette to perform. Review
-    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-<!-- prettier-ignore-start -->
-
-20. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
-    to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
-    pack additional details for an example.
-
-<!-- prettier-ignore-end -->
-
-21. Click **Validate** and review the cluster configuration and settings summary.
-
-22. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
-
-The cluster details page contains the status and details of the deployment. Use this page to track the deployment
-progress.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs,
 refer to [Cluster Removal](../../cluster-management/remove-clusters.md).

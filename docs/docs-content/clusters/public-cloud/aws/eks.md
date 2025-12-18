@@ -354,34 +354,15 @@ guide for help with migrating workloads.
 
 11. Click **Next** to continue.
 
-12. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
-    Kubernetes configuration security, penetration testing, and conformance testing.
+13. Select **Validate** to review your cluster configurations and settings.
 
-14. Schedule any backups you want Palette to perform. Review
-    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-<!-- prettier-ignore-start -->
-
-16. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
-    RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
-
-<!-- prettier-ignore-end -->
-
-17. Click **Validate** and review the cluster configuration and settings summary.
-
-18. Click **Finish Configuration** to deploy the cluster.
-
-The displayed cluster details page contains the status and details of the deployment. Use this page to track the
-deployment progress.
-
-:::info
-
-Provisioning an AWS EKS clusters can take several minutes.
-
-:::
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 For information on how to access your cluster using the kubectl CLI, review [Access EKS Cluster](#access-eks-cluster).
 

@@ -164,16 +164,15 @@ Use the following steps to provision a new AWS cluster:
 
 14. Click **Next**.
 
-15. Configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC).
-    Review the cluster settings and make changes if needed.
+15. <PartialsComponent category="clusters" name="cluster-settings" />
 
-16. Click **Validate** to continue.
+16. Select **Validate** to review your cluster configurations and settings.
 
-17. Review the summary and click **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take
-    15 - 30 minutes depending on the cluster profile and the node pool configuration.
+17. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the
-deployment progress.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 

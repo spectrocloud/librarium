@@ -9,10 +9,6 @@ toc_max_heading_level: 5
 tags: ["cluster templates"]
 ---
 
-:::preview
-
-:::
-
 [Cluster templates](./cluster-templates.md) use [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and
 cluster [template policies](./create-cluster-template-policies/create-cluster-template-policies.md) to declaratively
 define and manage the software stack and lifecycle of clusters deployed with Palette. Since cluster templates are
@@ -31,8 +27,6 @@ flexible, version-driven management.
 ![Diagram showing how cluster templates reference profiles and policies as objects](/cluster-templates_modify-cluster-templates_cluster-template-links.webp)
 
 ## Prerequisites
-
-- The **ClusterTemplate** [feature flag](../enterprise-version/system-management/feature-flags.md) enabled.
 
 - The `clusterTemplate.update` permission to modify cluster templates. Refer to our
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
@@ -81,9 +75,8 @@ now** button is disabled while the upgrade is in progress.
   select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
   each variable before attempting the upgrade again.
 
-- If your changes require a cluster repave, you must
-  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
-  proceed.
+- If your changes require a cluster repave, the repave occurs during the next upgrade window; no
+  [repave approval](../clusters/cluster-management/node-pool.md#approve-cluster-repave) is required.
 
 :::
 
@@ -247,9 +240,8 @@ navigate to the **Overview** tab, and select **Options > Upgrade now**.
   select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
   each variable before attempting the upgrade again.
 
-- If your changes require a cluster repave, you must
-  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
-  proceed.
+- If your changes require a cluster repave, the repave occurs during the next upgrade window; no
+  [repave approval](../clusters/cluster-management/node-pool.md#approve-cluster-repave) is required.
 
 :::
 

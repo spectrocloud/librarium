@@ -7,10 +7,6 @@ sidebar_position: 30
 tags: ["cluster templates"]
 ---
 
-:::preview
-
-:::
-
 To delete a cluster template that is attached to a cluster, you must first delete the cluster and then delete the
 template previously attached to the cluster. You cannot delete a cluster template that is linked to a cluster.
 
@@ -19,8 +15,6 @@ delete a cluster template, the associated profiles and policies are _not_ delete
 and policies in other clusters.
 
 ## Prerequisites
-
-- The **ClusterTemplate** [feature flag](../enterprise-version/system-management/feature-flags.md) enabled.
 
 - The `clusterTemplate.delete` permission to delete cluster templates. Refer to our
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more

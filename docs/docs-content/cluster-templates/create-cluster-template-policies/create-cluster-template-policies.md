@@ -7,15 +7,11 @@ sidebar_position: 0
 tags: ["cluster templates", "policies"]
 ---
 
-:::preview
-
-:::
-
 Policies are an integral part of cluster templates. While cluster profiles define the infrastructure and software stack
 for your clusters, cluster template policies are modular, reusable definitions that define how the cluster operates as
 well as its lifecycle. Policies are linked rather than embedded within cluster templates, allowing you to manage
-policies independently; this includes updating and swapping them as needed to create a comprehensive governance stack
-for your clusters.
+policies independently; this includes updating and swapping policies as needed to create a comprehensive governance
+stack for your clusters.
 
 Currently, Palette supports [maintenance policies](maintenance-policy.md). Each cluster template can be linked to only
 one policy of each type. For example, while you can create multiple maintenance policies that you can update or swap as

@@ -7,10 +7,6 @@ sidebar_position: 10
 tags: ["cluster templates"]
 ---
 
-:::preview
-
-:::
-
 [Cluster templates](./cluster-templates.md) allow you to define and enforce the software and governance stack for a
 fleet of clusters. By referencing [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and operational
 [policies](./create-cluster-template-policies/create-cluster-template-policies.md), all while leveraging
@@ -24,8 +20,6 @@ allow environment overrides where necessary.
   template to an existing cluster and detaching clusters from cluster templates, are not supported at this time.
 
 ## Prerequisites
-
-- The **ClusterTemplate** [feature flag](../enterprise-version/system-management/feature-flags.md) enabled.
 
 - The `clusterTemplate.create` permission to create cluster templates. Refer to our
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more

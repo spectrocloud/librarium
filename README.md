@@ -511,6 +511,16 @@ Result
 
 ### Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance
 
+For guidance on using admonitions in our docs, refer to
+[Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
+
+To learn more about admonitions in Docusaurus, refer to the
+[Admonitions](https://docusaurus.io/docs/markdown-features/admonitions) guide.
+
+The content must have a new line at the beginning and at the end of the tag.
+
+#### Warning
+
 ```mdx
 :::warning
 
@@ -518,6 +528,8 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
+
+#### Info
 
 ```mdx
 :::info
@@ -527,6 +539,8 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
+#### Tip
+
 ```mdx
 :::tip
 
@@ -534,6 +548,8 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
+
+#### Danger
 
 ```mdx
 :::danger
@@ -543,6 +559,15 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
+#### Tech Preview
+
+The `:::preview` admonition is a custom admonition configured in `docusaurus.config.js` under `admonitions.keywords`.
+
+Unlike other admonition types, you do not need to enter content in the admonition block. By default, the Tech Preview
+admonition generates the message, "This is a Tech Preview feature and is subject to change. Do not use this feature in
+production workloads." This message is hardcoded using `src/theme/Admonition/Type/TechPreview.js`. However, if you need
+to deviate from the template text, you can provide a custom message.
+
 ```mdx
 :::preview
 
@@ -550,6 +575,22 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
+
+Files in `docs/docs-content` and `docs/api-content` are processed during the build phase. However, partials in the
+`_partials` directory are dynamically imported at runtime. Because of this, custom admonitions defined in
+`docusaurus.config.js` that are used in partials are not rendered, and the custom admonition is ignored.
+
+As a workaround, when using custom admonitions in partials, import and reference the admonition with JSX syntax.
+
+```mdx
+import AdmonitionTypeTechPreview from '@theme/Admonition/Type/TechPreview'; # Import below front matter
+
+<AdmonitionTypeTechPreview /> # Use instead of :::
+```
+
+Note that when used in partials, the default message cannot be overridden.
+
+#### Further Guidance
 
 ```mdx
 :::further
@@ -559,12 +600,14 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
-https://docusaurus.io/docs/markdown-features/admonitions
+Like Tech Preview, the Further Guidance admonition is a custom admonition. To use this admonition in partials, you must
+import and reference it with JSX syntax.
 
-The content must have a new line at the beginning and at the end of the tag.
+```mdx
+import AdmonitionTypeFurtherGuidance from '@theme/Admonition/Type/FurtherGuidance'; # Import below front matter
 
-For guidance on using admonitions, refer to
-[Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
+<AdmonitionTypeFurtherGuidance /> # Use instead of :::
+```
 
 ### Video
 

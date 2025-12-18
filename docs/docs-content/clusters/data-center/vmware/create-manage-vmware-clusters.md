@@ -183,27 +183,15 @@ Before you begin, ensure that you have the following prerequisites:
 
    Click on the **Next** button when you are done.
 
-<!-- prettier-ignore-start -->
+10. <PartialsComponent category="clusters" name="cluster-settings" />
 
-10. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
-    options. Refer to the applicable guide for additional information.
+11. Select **Validate** to review your cluster configurations and settings.
 
-    | **Left Menu Item** | **Additional Information** |
-    | --- | --- |
-    | **Manage machines** | [OS Patching](../../cluster-management/os-patching.md) |
-    | **Schedule scans** | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security) |
-    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) |
-    | **RBAC** | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 
+12. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-<!-- prettier-ignore-end -->
-
-11. Click on the **Validate** button and review the cluster configuration and settings summary.
-
-12. Click **Finish Configuration** to deploy the cluster.
-
-The cluster deployment process is initiated. You can monitor the cluster deployment progress by navigating to the left
-**Main Menu** and selecting **Clusters**. Click on the cluster you just created to view the cluster details page. The
-**Cluster Status** field displays the current status of the cluster.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 
