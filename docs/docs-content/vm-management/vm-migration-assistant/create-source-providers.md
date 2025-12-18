@@ -157,8 +157,8 @@ Machines (VMs) that need to be migrated.
        oras login <harbor-address> --username '<username>' --password '<password>'
        ```
 
-       If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to
-       the `oras` command.
+       If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to the `oras`
+       command.
 
        ```shell
        oras login <harbor-address> --insecure --username '<username>' --password '<password>'
@@ -168,8 +168,8 @@ Machines (VMs) that need to be migrated.
 
        <TabItem label="AWS ECR" value="aws-ecr">
 
-       Acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details
-       page, click on the **View push commands** button to access the command. Refer to the
+       Acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click
+       on the **View push commands** button to access the command. Refer to the
        [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
        documentation for more information.
 
@@ -181,8 +181,8 @@ Machines (VMs) that need to be migrated.
        aws ecr get-login-password --region xxxxx | oras login --username <username> --password-stdin <aws-ecr-url>
        ```
 
-       For a public image repository, use the `docker` CLI instead of `oras`. Replace `<username>` with your
-       registry username and `<aws-ecr-url>` with your registry URL. Enter your registry password when prompted.
+       For a public image repository, use the `docker` CLI instead of `oras`. Replace `<username>` with your registry
+       username and `<aws-ecr-url>` with your registry URL. Enter your registry password when prompted.
 
        ```shell
        aws ecr-public get-login-password --region xxxxx | docker login --username <username> --password-stdin <aws-ecr-url>
@@ -334,16 +334,16 @@ Machines (VMs) that need to be migrated.
 
    :::
 
-   | Setting                         | Description                                                                                                                                                                                                                                                                |
-   | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Provider resource name**      | A unique name for your provider.                                                                                                                                                                                                                                           |
-   | **Endpoint type**               | Select the type of endpoint to configure the connection. Choose **vCenter** if managing multiple hosts through a central server, or **ESXi** if connecting directly to a standalone host.                                                                                  |
-   | **URL**                         | Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                                      |
-   | **VDDK init image**             | Provide the registry URL to the VDDK image. Specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`.                                                |
-   | **Username**                    | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                                                                                                                                                                                   |
-   | **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                                                                      |
-   | **Skip certificate validation** | Enabling this option bypasses x509 certificate authority (CA) verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting.                                                |
-   | **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                                                                  |
+   | Setting                         | Description                                                                                                                                                                                                                                                                 |
+   | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Provider resource name**      | A unique name for your provider.                                                                                                                                                                                                                                            |
+   | **Endpoint type**               | Select the type of endpoint to configure the connection. Choose **vCenter** if managing multiple hosts through a central server, or **ESXi** if connecting directly to a standalone host.                                                                                   |
+   | **URL**                         | Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                            |
+   | **VDDK init image**             | Provide the registry URL to the VDDK image. Specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`.                                                                                                  |
+   | **Username**                    | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                                                                                                                                                                                    |
+   | **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                                                                       |
+   | **Skip certificate validation** | Enabling this option bypasses x509 certificate authority (CA) verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting.                         |
+   | **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                                                                   |
    | **Convert Disk**                | When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. |
 
 7. Click **Create Provider**. The provider details are then shown.
