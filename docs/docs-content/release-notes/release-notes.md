@@ -68,17 +68,14 @@ tags: ["release-notes"]
 - The dependencies of the `imageswap` and `imageswap-init` Palette images were updated to the latest versions, ensuring
   that they have the latest security patches. Additionally, the `ubuntu-systemd` image has been removed from Palette.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 https://spectrocloud.atlassian.net/browse/PAC-3435 -->
-<!-- prettier-ignore-start -->
-- The <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 0.1.89.
-<!-- prettier-ignore-end -->
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9158 -->
+
 - The performance of the `/clusterprofiles` [Palette API](/api/introduction) endpoint has been improved.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5551 -->
+
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
   retry logic for trust policy ConfigMaps.
 
