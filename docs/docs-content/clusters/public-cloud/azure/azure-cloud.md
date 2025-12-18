@@ -159,7 +159,7 @@ stringent security requirements.
 
 - A Palette VerteX instance with tenant admin access.
 
-- The **AzureUsSecretCloud** [feature flag](../../../vertex/system-management/feature-flags.md) enabled.
+- The **AzureUSSecretCloud** [feature flag](../../../vertex/system-management/feature-flags.md) enabled.
 
 - A [PCG](../../pcg/pcg.md) set up and registered with Palette VerteX. The PCG must have a connection to Azure
   Government Secret cloud.
