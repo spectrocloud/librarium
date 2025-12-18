@@ -80,8 +80,8 @@ as K3s and RKE2, or other redirect mechanism that you implement on your own to c
    git checkout v4.5.0
    ```
 
-4. In your `user-data` file, set `stylus.imageRedirectWebhook.enable` to `false`. This parameter defaults to true if
-   you do not explicitly set it to `false`.
+4. In your `user-data` file, set `stylus.imageRedirectWebhook.enable` to `false`. This parameter defaults to true if you
+   do not explicitly set it to `false`.
 
    ```yaml {7}
    #cloud-config

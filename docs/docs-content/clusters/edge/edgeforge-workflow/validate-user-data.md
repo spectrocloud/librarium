@@ -15,8 +15,8 @@ rebuild Edge artifacts due to user data errors. The following issues will be fla
 - Omission of the `#cloud-config` header.
 - Missing required fields or fields containing incorrect data types.
 
-This guide provides instructions on how to validate the `user-data` file manually without triggering an actual build. However,
-this process is also executed automatically when you build the Edge installer ISO.
+This guide provides instructions on how to validate the `user-data` file manually without triggering an actual build.
+However, this process is also executed automatically when you build the Edge installer ISO.
 
 ## Prerequisites
 

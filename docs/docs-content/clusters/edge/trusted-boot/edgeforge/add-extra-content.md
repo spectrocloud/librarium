@@ -75,8 +75,8 @@ formation and after. Because the content is placed in the persistent partitions,
    **overlay/files-iso** will be mounted at **/run/initramfs/live/** during installation, enabling the installer to copy
    files from there into place during installation.
 
-6. In your `user-data` file, add the following section, and replace `YOUR_FILE` with the name of the static binary file. If
-   you have multiple files, you should add multiple lines, one line for each file.
+6. In your `user-data` file, add the following section, and replace `YOUR_FILE` with the name of the static binary file.
+   If you have multiple files, you should add multiple lines, one line for each file.
 
    ```yaml {11}
    after-install:
@@ -94,8 +94,8 @@ formation and after. Because the content is placed in the persistent partitions,
          - if [ -e /dev/mapper/persistent ]; then cryptsetup close /dev/mapper/persistent; fi
    ```
 
-   For example, if you want to add `wget` and `ping`, you would put both binaries under `overlay/files-iso` and add
-   the following to your `user-data` file.
+   For example, if you want to add `wget` and `ping`, you would put both binaries under `overlay/files-iso` and add the
+   following to your `user-data` file.
 
    ```yaml {11}
    after-install:

@@ -7,9 +7,9 @@ tags: ["edge"]
 ---
 
 The Edge Installer is responsible for preparing the Edge host to be ready for assignment to cluster workloads. The Edge
-Installer supports the ability to specify a configuration file named `user-data`. You can use this configuration file
-to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly
-in your environment. For more information about all the available parameters in the installer configuration, refer to
+Installer supports the ability to specify a configuration file named `user-data`. You can use this configuration file to
+customize the installation and ensure your Edge host has all the required dependencies and settings to work properly in
+your environment. For more information about all the available parameters in the installer configuration, refer to
 [Installer Reference](./installer-reference.md).
 
 To better understand the Edge installation process, review the order of operations from installation to Edge host
@@ -30,8 +30,8 @@ registration.
 ![The boot order sequence, listing steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.webp)
 
 Palette Edge allows you to use cloud-init stages to declaratively configure your Operating System (OS) of your Edge host
-both using the installer configuration `user-data` file and in the OS pack. For more information about cloud-init stages, refer
-to [Cloud-init Stages](./cloud-init.md).
+both using the installer configuration `user-data` file and in the OS pack. For more information about cloud-init
+stages, refer to [Cloud-init Stages](./cloud-init.md).
 
 ## Edge Installer Configuration
 
