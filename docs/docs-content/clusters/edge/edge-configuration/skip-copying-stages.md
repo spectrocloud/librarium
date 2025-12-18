@@ -11,10 +11,10 @@ tags: ["edge"]
 
 Suppose you must add sensitive information, such as credentials, in your `user-data` file. In the Edge deployment
 lifecycle, you have two opportunities to apply user data to Edge hosts. The first is during the EdgeForge phase, where
-you create the Edge Installer ISO which contains the `user-data` file; the Edge installer will apply the user data
-to the Edge host during installation. The second opportunity is during the on-site deployment phase, where you can
-provide supplementary user data configurations if needed. The diagram below highlights the two mentioned phases in the
-Edge lifecycle.
+you create the Edge Installer ISO which contains the `user-data` file; the Edge installer will apply the user data to
+the Edge host during installation. The second opportunity is during the on-site deployment phase, where you can provide
+supplementary user data configurations if needed. The diagram below highlights the two mentioned phases in the Edge
+lifecycle.
 
 ![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.webp)
 
