@@ -130,7 +130,7 @@ customization.
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
    - `Earthfile` - Contains a series of commands to create target artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
-   - `user-data.template` - A sample user-data file.
+   - `user-data.template` - A sample `user-data` file.
 
 7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
@@ -219,7 +219,7 @@ customization.
     :::warning
 
     - If you haven't set a default project for the registration token, ensure that you provide the
-      `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+      `stylus.site.projectName` parameter with the value `Default` in your `user-data` file.
     - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
       replacing `<interface-name>` with the name of the network interface on your Edge host:
 
@@ -548,7 +548,7 @@ required Edge artifacts.
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
    - `Earthfile` - Contains a series of commands to create target artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
-   - `user-data.template` - A sample user-data file.
+   - `user-data.template` - A sample `user-data` file.
 
 7. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
    and OS distribution. The table below shows all arguments, their default value, and allowed values.
@@ -747,7 +747,7 @@ required Edge artifacts.
     :::warning
 
     If you haven't set a default project for the registration token, ensure that you provide the
-    `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+    `stylus.site.projectName` parameter with the value `Default` in the `user-data` file.
 
     :::
 

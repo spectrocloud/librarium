@@ -36,7 +36,7 @@ For more information, refer to [Deploy Cluster with Primary Registry](./deploy-p
 
 Provider images are always downloaded first by the Palette agent. You are required to provide the location of the
 provider image in the OS pack of your cluster profile. If an external registry is not specified in the
-[user data](../../edgeforge-workflow/prepare-user-data.md) during EdgeForge, provider images will be downloaded from the
+[`user-data`](../../edgeforge-workflow/prepare-user-data.md) file during EdgeForge, provider images will be downloaded from the
 provider image registry specified in the OS pack of the cluster profile.
 
 Palette supports downloading provider images from authenticated registries. If your cluster needs to download provider
@@ -52,7 +52,7 @@ registry_ as the registry from which all images used by the cluster will be down
 
 When an external registry is provided in the user data, the Palette agent will prepend the URL of the external registry
 to the URL of every image. For example, if your OS pack specified that the provider images be downloaded from
-`quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an external registry
+`quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your `user-data` file you have specified an external registry
 as `10.10.254.254:8000/spectro-images`, the Palette agent will automatically download the image using the tag
 `10.10.254.254:8000/spectro-images/quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the
 image in the original registry.
@@ -62,7 +62,7 @@ kube-controller-manager, which will be loaded directly from the provider image t
 another registry.
 
 If you want to use a private image registry for applications on your Edge cluster, you can instruct the Palette agent to
-download images from an _authenticated external registry_. You can specify an external registry in the user-data used to
+download images from an _authenticated external registry_. You can specify an external registry in the `user-data` file used to
 build your Edge Installer ISO. For more information on how to deploy a cluster with an authenticated external registry,
 refer to [Deploy Cluster with a Private External Registry](./deploy-external-registry.md).
 
