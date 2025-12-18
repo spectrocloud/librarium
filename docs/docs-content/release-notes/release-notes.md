@@ -106,6 +106,16 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+### Virtual Machine Orchestrator (VMO)
+
+- A
+  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
+  image is now required for VMware to VMO migrations using the
+  [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md). This image was previously
+  optional but is now necessary for the migration process. Refer to the
+  [Create Source Providers](../vm-management/vm-migration-assistant/create-source-providers.md) guide for more
+  information.
+
 ### Docs and Education
 
 ### Packs
@@ -420,16 +430,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - Fixed an issue that caused the
   [`spectrocloud_cluster_group` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_group)
   to fail to save cluster state when a Loadbalancer was configured.
-
-### Virtual Machine Orchestrator (VMO)
-
-- A
-  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
-  image is now required for VMware to VMO migrations using the
-  [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md). This image was previously
-  optional but is now necessary for the migration process. Refer to the
-  [Create Source Providers](../vm-management/vm-migration-assistant/create-source-providers.md) guide for more
-  information.
 
 ### Docs and Education
 
