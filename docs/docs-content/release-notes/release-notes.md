@@ -52,18 +52,18 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3504 -->
 
-| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Calico                       | CNI        | :x:                | :white_check_mark: | 3.31.2      |
-| Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.18.1      |
-| Istio                        | Add-on     | :white_check_mark: | :x:                | 1.28.1      |
-| Kong                         | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
-| Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 27.49.0     |
-| Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 79.11.0     |
-| Spectro Kubernetes Dashboard | Add-on     | :white_check_mark: | :x:                | 7.13.0      |
-| Ubuntu (Azure)               | OS         | :x:                | :white_check_mark: | 22.04       |
-| Ubuntu (MAAS)                | OS         | :x:                | :white_check_mark: | 22.04       |
-| Ubuntu (vSphere)             | OS         | :x:                | :white_check_mark: | 22.04       |
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Calico                       | CNI    | :x:                | :white_check_mark: | 3.31.2      |
+| Harbor                       | Add-on | :white_check_mark: | :x:                | 1.18.1      |
+| Istio                        | Add-on | :white_check_mark: | :x:                | 1.28.1      |
+| Kong                         | Add-on | :white_check_mark: | :x:                | 3.0.0       |
+| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.49.0     |
+| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.11.0     |
+| Spectro Kubernetes Dashboard | Add-on | :white_check_mark: | :x:                | 7.13.0      |
+| Ubuntu (Azure)               | OS     | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (MAAS)                | OS     | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (vSphere)             | OS     | :x:                | :white_check_mark: | 22.04       |
 
 ## December 17, 2025 - Release 4.8.12
 
