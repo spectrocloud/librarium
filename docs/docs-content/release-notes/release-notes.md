@@ -58,7 +58,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 | Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.18.1      |
 | Istio                        | Add-on     | :white_check_mark: | :x:                | 1.28.1      |
 | Kong                         | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
-| Kubernetes (AKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34        |
 | Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 27.49.0     |
 | Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 79.11.0     |
 | Spectro Kubernetes Dashboard | Add-on     | :white_check_mark: | :x:                | 7.13.0      |
