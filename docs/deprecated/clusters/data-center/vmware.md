@@ -52,7 +52,7 @@ Cloud Provider Interface documentation.
 Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through
 Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct
 zones in your environment. You can use vSphere
-[Tag Categories and Tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/vsphere-tags-host-management.html)
+[tag categories and tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/vsphere-tags-host-management.html)
 to create zones in your vSphere environment and assign them to vSphere objects.
 
 The zone tags you assign to your vSphere objects, such as a datacenter and clusters are applied to the Kubernetes nodes

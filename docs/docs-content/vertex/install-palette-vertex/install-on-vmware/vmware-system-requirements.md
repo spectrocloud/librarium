@@ -52,7 +52,7 @@ guide if you need help creating a custom role in vSphere. The required custom ro
 
 The user account you use to deploy VerteX must have access to both roles. Each vSphere object required by VerteX must
 have a
-[Permission](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/managing-permissions-for-vcenter-server.html)
+[permission](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/managing-permissions-for-vcenter-server.html)
 entry for the respective Spectro role. The following tables list the privileges required for the each custom role.
 
 :::info
@@ -93,7 +93,7 @@ Cloud Provider Interface documentation.
 Zone tagging is required to install VerteX and is helpful for Kubernetes workloads deployed in vSphere clusters through
 VerteX if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct
 zones in your environment. You can use vSphere
-[Tag Categories and Tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/vsphere-tags-host-management.html)
+[tag categories and tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/vsphere-tags-host-management.html)
 to create zones in your vSphere environment and assign them to vSphere objects.
 
 The zone tags you assign to your vSphere objects, such as a data center and clusters are applied to the Kubernetes nodes

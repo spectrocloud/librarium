@@ -100,7 +100,7 @@ guide if you need help creating a custom role in vSphere. The required custom ro
 
 The user account you use to deploy the PCG must have access to both roles. Each vSphere object required by Palette must
 have a
-[Permission](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/managing-permissions-for-vcenter-server.html)
+[permission](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/managing-permissions-for-vcenter-server.html)
 entry for the respective Spectro role. The following tables list the privileges required for each custom role.
 
 :::info
