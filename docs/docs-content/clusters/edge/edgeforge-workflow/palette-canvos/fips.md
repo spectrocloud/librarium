@@ -216,8 +216,8 @@ image with.
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                |
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
 
-14. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
-    following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
+14. Create a file named `user-data`. It must have the `#cloud-init` header at the top of the file. Ensure you have the
+    following blocks at the root level of the `user-data` file. Replace the value for `edgeHostToken` with your VerteX
     registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
     `kairos` and its password with your desired username and password.
 

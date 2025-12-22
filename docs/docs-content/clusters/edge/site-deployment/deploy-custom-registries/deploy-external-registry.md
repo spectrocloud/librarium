@@ -95,7 +95,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    cd CanvOS
    ```
 
-3. In the user data file, provide the URL and the credentials in `stylus.registryCredentials`. The following is an
+3. In the `user-data` file, provide the URL and the credentials in `stylus.registryCredentials`. The following is an
    example:
 
    ```yaml
