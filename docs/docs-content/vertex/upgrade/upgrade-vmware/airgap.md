@@ -84,7 +84,7 @@ one through four. Otherwise, start at step five.
 
    Once the OS and Kubernetes OVA is available in your **spectro-templates** directory, you can terminate its
    deployment. Refer to the
-   [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+   [Deploy an OVF or OVA Template](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-ovf-templatesvsphere-vm-admin.html)
    guide for more information on deploying OVAs in vCenter.
 
 5. In your terminal, use the following command template to SSH into the Palette VerteX airgap support VM. Enter the path
