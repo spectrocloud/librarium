@@ -104,5 +104,7 @@ stages:
         - subscription-manager register --username "myname" --password 'mypassword'
 ```
 
+</PointsOfInterest>
+
 The stage will execute as long as you have mounted the drive containing the `user-data` file. You must unmount the drive
 from the edge host after the device registers with Palette and before you deploy a Kubernetes cluster on the device.
