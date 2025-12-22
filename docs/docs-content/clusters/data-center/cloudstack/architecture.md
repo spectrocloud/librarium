@@ -18,7 +18,7 @@ Palette supports using
 [Apache CloudStack](https://docs.cloudstack.apache.org/en/latest/conceptsandterminology/concepts.html#cloud-infrastructure-overview)
 as a data center provider. You can deploy Kubernetes clusters to your CloudStack environment using Palette. The
 CloudStack management environment could include Bare Metal (via IPMI), Hyper-V, Kernel-based Virtual Machine(KVM), Linux
-Containers (LXC), vSphere (via vCenter), Xenserver and Xen Project. Below are some key features of the Palette
+Containers (LXC), vSphere (via vCenter), XenServer and Xen Project. Below are some key features of the Palette
 CloudStack architecture:
 
 - Support for static IP addresses, as well as DHCP. If you are using Dynamic Host Configuration Protocol (DHCP), Dynamic
