@@ -273,8 +273,11 @@ The Edge Management API endpoints are only available to airgapped Edge hosts wit
 
 :::
 
-You can find the Open API Swagger specification for the Edge Management API at the following location:
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-3/docs/api-content/api-docs/edge-v1/emc-api.json
+<!-- prettier-ignore-start -->
+
+You can find the Open API Swagger specification for the Edge Management API at the following location: <FullUrlLink path="/apis/edge-v1/emc-api.json" />
+
+<!-- prettier-ignore-end -->
 
 :::preview
 
