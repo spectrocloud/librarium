@@ -7,7 +7,7 @@ sidebar_position: 5
 tags: ["edge"]
 ---
 
-After preparing or modifying your **user-data** file, you can validate your user data before using it to build the Edge
+After preparing or modifying your `user-data` file, you can validate your user data before using it to build the Edge
 installer ISO. This allows you to be confident that your user data follows the expected schema and avoid having to
 rebuild Edge artifacts due to user data errors. The following issues will be flagged through validation:
 
@@ -15,8 +15,8 @@ rebuild Edge artifacts due to user data errors. The following issues will be fla
 - Omission of the `#cloud-config` header.
 - Missing required fields or fields containing incorrect data types.
 
-This guide provides instructions on how to validate the user data manually without triggering an actual build. However,
-this process is also executed automatically when you build the Edge installer ISO.
+This guide provides instructions on how to validate the `user-data` file manually without triggering an actual build.
+However, this process is also executed automatically when you build the Edge installer ISO.
 
 ## Prerequisites
 
@@ -27,9 +27,9 @@ this process is also executed automatically when you build the Edge installer IS
   uname -m
   ```
 
-- You have cloned the [**CanvOS** repository](https://github.com/spectrocloud/CanvOS.git).
+- You have cloned the [CanvOS repository](https://github.com/spectrocloud/CanvOS.git).
 
-- You have a file named **user-data** in your **CanvOS** directory. For more information on how to prepare the user-data
+- You have a file named `user-data` in your `CanvOS` directory. For more information on how to prepare the `user-data`
   file, refer to [Prepare User Data](./prepare-user-data.md).
 
 ## Validate User Data
@@ -38,7 +38,7 @@ this process is also executed automatically when you build the Edge installer IS
 
 <TabItem value="CanvOS">
 
-From the **CanvOS** directory, issue the following command.
+From the `CanvOS` directory, issue the following command.
 
 ```shell
 sudo ./earthly.sh +validate-user-data
@@ -49,7 +49,7 @@ sudo ./earthly.sh +validate-user-data
 <TabItem value="Palette Edge CLI">
 
 From the directory where the Palette Edge CLI executable is present, issue the following command. Replace
-`<path-to-user-data>` with the path to your user-data file. Refer to [Downloads](../../../downloads/cli-tools.md) to
+`<path-to-user-data>` with the path to your `user-data` file. Refer to [Downloads](../../../downloads/cli-tools.md) to
 download the Palette Edge CLI.
 
 ```shell
@@ -65,7 +65,7 @@ If the output is similar to the following, it means that the user data is valid 
 :::warning
 
 This only checks that the user data conforms to the expected schema and will not catch issues with the data itself. For
-example, if your user data contained an expired registration token, this will not be flagged by the validation script.
+example, if your user data contains an expired registration token, this will not be flagged by the validation script.
 
 :::
 
