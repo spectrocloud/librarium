@@ -502,7 +502,7 @@ after a reboot.
 ### Debug Steps
 
 1. Access the Edge host through the
-   [vSphere Web Console](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-92986CAA-4FDE-4AA0-A9E9-084FF9E03323.html).
+   [vSphere web console](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/open-the-html-5-remote-console.html).
 
 2. Issue the following command.
 
