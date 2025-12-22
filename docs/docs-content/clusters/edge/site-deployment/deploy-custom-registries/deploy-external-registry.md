@@ -95,7 +95,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    cd CanvOS
    ```
 
-3. In the user data file, provide the URL and the credentials in `stylus.registryCredentials`. The following is an
+3. In the `user-data` file, provide the URL and the credentials in `stylus.registryCredentials`. The following is an
    example:
 
    ```yaml
@@ -165,7 +165,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
     Registry configurations for K3s is written in a file called **registries.yaml**. You can use the cloud-init stages
     to create such a file and point it to the registry you want to load the images from. This can be done either in the
-    **user-data** file or the OS layer of the cluster profile. Refer to
+    `user-data` file or the OS layer of the cluster profile. Refer to
     [Cloud-init Stages](../../edge-configuration/cloud-init.md) for more information.
 
     Replace `example.artifactory.net` with the address of your registry and the auth argument under it with your
@@ -197,7 +197,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
     Registry configurations for RKE2 is written in a file called **registries.yaml**. You can use the cloud-init stages
     to create such a file and point it to the registry you want to load the images from. This can be done either in the
-    **user-data** file or the OS layer of the cluster profile. Refer to
+    `user-data` file or the OS layer of the cluster profile. Refer to
     [Cloud-init Stages](../../edge-configuration/cloud-init.md) for more information.
 
     Replace `example.artifactory.net` with the address of your registry and the auth argument under it with your
