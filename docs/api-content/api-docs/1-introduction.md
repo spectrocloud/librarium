@@ -274,7 +274,8 @@ information about Edge clusters, retrieve the list of available images on your E
 using embedded cluster definitions.
 
 You can find the Open API Swagger specification for the Edge Management API at the following location:
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-4/docs/api-content/api-docs/edge-v1/emc-api.json
+
+<FullUrlLink path="/apis/edge-v1/emc-api.json" />
 
 ### Authentication
 

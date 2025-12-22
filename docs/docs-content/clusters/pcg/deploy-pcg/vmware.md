@@ -87,7 +87,7 @@ Start by reviewing the required action items below:
 ### Create Required Roles
 
 Palette requires two custom roles to be created in vSphere before the PCG installation. Refer to the
-[Create a Custom Role](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html?hWord=N4IghgNiBcIE4HsIFMDOIC+Q)
+[Create a Custom Role](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/create-a-custom-role.html)
 guide if you need help creating a custom role in vSphere. The required custom roles are:
 
 - A root-level role with access to higher-level vSphere objects. This role is referred to as the _Spectro root role_.
@@ -100,13 +100,13 @@ guide if you need help creating a custom role in vSphere. The required custom ro
 
 The user account you use to deploy the PCG must have access to both roles. Each vSphere object required by Palette must
 have a
-[Permission](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-4B47F690-72E7-4861-A299-9195B9C52E71.html)
+[Permission](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/managing-permissions-for-vcenter-server.html)
 entry for the respective Spectro role. The following tables list the privileges required for each custom role.
 
 :::info
 
 For an in-depth explanation of vSphere authorization and permissions, check out the
-[Understanding Authorization in vSphere](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-74F53189-EF41-4AC1-A78E-D25621855800.html)
+[Understanding Authorization in vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/understanding-authorization-in-vsphere.html)
 resource.
 
 :::
@@ -147,7 +147,7 @@ Cloud Provider Interface documentation.
 Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through
 Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct
 zones in your environment. You can use vSphere
-[Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html)
+[Tag Categories and Tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/vsphere-tags-host-management.html)
 to create zones in your vSphere environment and assign them to vSphere objects.
 
 The zone tags you assign to your vSphere objects, such as a data center and clusters, are applied to the Kubernetes
