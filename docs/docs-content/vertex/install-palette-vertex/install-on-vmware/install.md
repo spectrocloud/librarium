@@ -134,7 +134,7 @@ Use the following steps to install Palette VerteX.
     [Kubernetes Requirements](../install-palette-vertex.md#kubernetes-requirements) section. Use the identified URL to
     import the Operating System and Kubernetes distribution OVA required for the install. Place the OVA in the
     `spectro-templates` folder. Refer to the
-    [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA)
+    [Import Items to a Content Library](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/import-content-library-item-from-a-url-h5-and-flex.html)
     guide for information about importing an OVA in vCenter.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
@@ -147,7 +147,7 @@ Use the following steps to install Palette VerteX.
     You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates`
     folder. Append the `r_` prefix, and remove the `.ova` suffix when assigning a name and target location. You can
     terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
-    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+    [Deploy an OVF or OVA Template](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-ovf-templatesvsphere-vm-admin.html)
     guide for more information about deploying an OVA in vCenter.
 
     :::
