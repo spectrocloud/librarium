@@ -60,7 +60,7 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
   - [Amazon EKS](https://repost.aws/knowledge-center/eks-http-proxy-containerd-automation)
   - [Azure AKS](https://learn.microsoft.com/en-us/azure/aks/http-proxy)
-  - [vSphere](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-configuration/GUID-7576FBBE-8B67-4D3F-B859-C9688E9442D7.html)
+  - [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/installing-and-configuring-vsphere-supervisor/configuring-and-managing-a-supervisor-cluster/configuring-http-proxy-settings-in-vsphere-with-tanzu.html)
 
     :::warning
 
