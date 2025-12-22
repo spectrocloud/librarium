@@ -39,7 +39,7 @@ Before you begin, ensure that you have the following prerequisites:
   You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates`
   folder. Append the `r_` prefix, and remove the `.ova` suffix when assigning a name and target location. You can
   terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
-  [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+  [Deploy an OVF or OVA Template](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-ovf-templatesvsphere-vm-admin.html)
   guide for more information about deploying an OVA in vCenter.
 
   :::
