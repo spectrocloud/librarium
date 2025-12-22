@@ -11,6 +11,7 @@ vale/
 static/scripts/kapa-widget.bundle.js
 
 docs/api-content/**/*.json
+static/apis/**/*.json
 
 # Troublesome files
 tsconfig.json
