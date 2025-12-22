@@ -247,8 +247,8 @@ workaround.
 
     :::
 
-15. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
-    following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
+15. Create a file named `user-data`. It must have the `#cloud-init` header at the top of the file. Ensure you have the
+    following blocks at the root level of the `user-data` file. Replace the value for `edgeHostToken` with your VerteX
     registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
     `kairos` and its password with your desired username and password.
 
@@ -319,7 +319,7 @@ workaround.
 Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
 
-17. Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
+18. Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
     the JSON object corresponding to your Kubernetes distribution.
 
     If you are using a tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
@@ -327,7 +327,7 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
     `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
     process and save storage space.
 
-18. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
+19. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
     provider images.
 
     ```shell

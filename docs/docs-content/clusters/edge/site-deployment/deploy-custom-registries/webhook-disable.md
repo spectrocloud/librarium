@@ -20,7 +20,7 @@ webhook and provides an example custom image pull configuration.
 ## What Happens When You Disable the Webhook
 
 When the agent webhook is disabled, the Palette agent will not redirect any image pull operation by default. This means
-that even if you specify an external registry in the **user-data**, the Palette agent will not pull images from that
+that even if you specify an external registry in the `user-data` file, the Palette agent will not pull images from that
 registry unless it is otherwise configured to do so. This also means that the Palette agent will not pull images from
 the local Harbor registry, even if the images are downloaded and stored in the registry, unless it is otherwise
 configured to do so. Disabling the webhook removes restrictions, but does place the burden of ensuring that images are
@@ -81,8 +81,8 @@ pull behavior.
    git checkout v4.5.0
    ```
 
-4. In your **user-data** file, set `stylus.imageRedirectWebhook.enable` to `false`. This parameter defaults to true if
-   you do not explicitly set it to `false`.
+4. In your `user-data` file, set `stylus.imageRedirectWebhook.enable` to `false`. This parameter defaults to true if you
+   do not explicitly set it to `false`.
 
    ```yaml {7}
    #cloud-config
