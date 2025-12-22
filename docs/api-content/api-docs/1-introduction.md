@@ -277,7 +277,7 @@ using embedded cluster definitions.
 
 You can find the Open API Swagger specification for the Edge Management API at the following location: <FullUrlLink path="/apis/edge-v1/emc-api.json" />
 
-<!--prettier-ignore-end -->
+<!-- prettier-ignore-end -->
 
 ### Authentication
 
