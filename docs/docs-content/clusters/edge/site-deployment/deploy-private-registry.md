@@ -65,7 +65,7 @@ registry URL and the credentials needed to authenticate with the registry in the
 
 6.  :::warning
 
-    If you have specified registry credentials in the `registryCredentials` field in the user data file during the
+    If you have specified registry credentials in the `registryCredentials` field in the `user-data` file during the
     EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
     [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md) and
     [Installer Configuration](../edge-configuration/installer-reference.md#external-registry).
