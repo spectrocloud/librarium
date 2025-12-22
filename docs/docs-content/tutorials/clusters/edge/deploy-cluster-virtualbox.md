@@ -158,7 +158,7 @@ version tag.
 ### Create User Data
 
 Once the **.arg** file is ready, the next step is to create a
-[**user-data**](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which allows you to provide
+[`user-data`](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which allows you to provide
 customized configuration to the Edge Installer ISO. In this tutorial, the file will be used to embed the Palette
 registration token, Palette endpoint, and Edge host login information into the Edge Installer ISO. The login credentials
 allow you to SSH into your Edge host.
@@ -169,7 +169,7 @@ Export your Palette registration token.
 export TOKEN=<your-palette-registration-token>
 ```
 
-Then, issue the command below to create the **user-data** file using the token.
+Then, issue the command below to create the `user-data` file using the token.
 
 ```bash
 cat << EOF > user-data
@@ -209,10 +209,10 @@ users:
 ### Build Edge Artifacts
 
 By default, Earthly builds multiple images with different K3s Kubernetes versions. You can exclude the image versions
-you do not need from the build process by deleting the lines under the `k3s` section in the **k8s_version.json** file.
+you do not need from the build process by deleting the lines under the `k3s` section in the `k8s_version.json` file.
 This will speed up the build process and reduce the amount of space that is required from your host machine.
 
-Open the **k8s_version.json** file with an editor of your choice.
+Open the `k8s_version.json` file with an editor of your choice.
 
 ```bash
 vi k8s_version.json

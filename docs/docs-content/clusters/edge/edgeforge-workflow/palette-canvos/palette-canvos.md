@@ -135,7 +135,7 @@ customization.
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
    - `Earthfile` - Contains a series of commands to create target artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
-   - `user-data.template` - A sample user-data file.
+   - `user-data.template` - A sample file containing user data.
 
 6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
@@ -222,29 +222,29 @@ customization.
    :::warning
 
    - If you haven't set a default project for the registration token, ensure that you provide the
-     `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+     `stylus.site.projectName` parameter with the value `Default` in your `user-data` file.
    - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
      replacing `<interface-name>` with the name of the network interface on your Edge host:
 
-     - Your host is a virtual machine.
-     - The virtual machine uses a VMXNET3 adapter.
-     - You are planning to use _one_ of the following in your Edge cluster:
+   - Your host is a virtual machine.
+   - The virtual machine uses a VMXNET3 adapter.
+   - You are planning to use _one_ of the following in your Edge cluster:
 
-       - An [overlay network](../../networking/vxlan-overlay.md).
-       - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
+     - An [overlay network](../../networking/vxlan-overlay.md).
+     - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
 
-     ```shell
-     stages:
-       initramfs:
-         - name: "Disable UDP segmentation"
-           commands:
-             - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
-             - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
-     ```
+   ```shell
+   stages:
+     initramfs:
+       - name: "Disable UDP segmentation"
+         commands:
+           - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+           - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+   ```
 
-     This is due to a
-     [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
-     which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+   This is due to a
+   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
 
    :::
 
@@ -576,7 +576,7 @@ git checkout v4.4.12
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
    - `Earthfile` - Contains a series of commands to create target artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
-   - `user-data.template` - A sample user-data file.
+   - `user-data.template` - A sample file containing user data.
 
 6. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
    and OS distribution. The table below shows all arguments, their default value, and allowed values.
@@ -764,7 +764,7 @@ git checkout v4.4.12
     :::warning
 
     If you haven't set a default project for the registration token, ensure that you provide the
-    `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+    `stylus.site.projectName` parameter with the value `Default` in the `user-data` file.
 
     :::
 

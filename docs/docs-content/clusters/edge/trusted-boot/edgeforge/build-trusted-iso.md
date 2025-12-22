@@ -12,7 +12,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 ## Limitation
 
 - Trusted Boot is only supported for clusters with a connection to a Palette instance. Therefore, you cannot set
-  `installationMode` to `airgap` in the **user-data** file.
+  `installationMode` to `airgap` in the `user-data` file.
 
 ## Prerequisites
 
