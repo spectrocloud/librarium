@@ -273,9 +273,11 @@ Palette instance. You can use Edge Management API endpoints to programmatically 
 information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters
 using embedded cluster definitions.
 
-You can find the Open API Swagger specification for the Edge Management API at the following location:
+<!-- prettier-ignore-start -->
 
-<FullUrlLink path="/apis/edge-v1/emc-api.json" />
+You can find the Open API Swagger specification for the Edge Management API at the following location: <FullUrlLink path="/apis/edge-v1/emc-api.json" />
+
+<!--prettier-ignore-end -->
 
 ### Authentication
 
