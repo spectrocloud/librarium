@@ -17,7 +17,7 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-start -->
 <!-- PCP-5639 -->
-- The process of deploying AWS EKS clusters using <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> has been streamlined. Users no longer need to disable the `kube-proxy` and `aws-node` DaemonSets or update the `charts.cilium.k8sServiceHost` parameter during deployment. Refer to [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#deploy-an-aws-eks-cluster) for the updated deployment process.
+- The process of deploying AWS EKS clusters using <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> has been streamlined. Users no longer need to disable the `kube-proxy` and `aws-node` DaemonSets or update the `charts.cilium.k8sServiceHost` parameter during deployment. Refer to [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) for the updated deployment process.
 
 <!-- prettier-ignore-end -->
 

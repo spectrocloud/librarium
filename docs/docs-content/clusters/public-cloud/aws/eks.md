@@ -165,15 +165,37 @@ guide for help with migrating workloads.
 
   </details>
 
-<!-- prettier-ignore-start -->
-- If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
-  for your EKS cluster, you must make additional modifications to the Cilium layer of your cluster profile. Refer to
-  [Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI](../../../troubleshooting/pack-issues.md#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni)
-  for full guidance.
+- Deploying EKS clusters with the <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> pack
+  requires using the **Replace Kube-Proxy With EBPF** preset and configuring additional values in the Cilium layer of
+  your cluster profile. Expand the following panel for the required values.
 
-- If you need to override the default service CIDR, configure the service ClusterIP range in the <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> pack. Additionally, if you want to use your own VPC and subnets, configure the pod CIDR in the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom"/> pack.
+      <details>
 
-   Pods running on the control plane continue to receive IP addresses from the node CIDR range. The custom pod CIDR applies only to pods scheduled on worker nodes.
+          <summary>Cilium **Replace Kube-Proxy With EBPF** configuration </summary>
+
+          | **Parameter**                                       | **Required Value** | **Description**                                                                                                                            |
+          | --------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+          | `charts.cilium.bpf.masquerade`                      | `false`            | Disables eBPF masquerading because AWS handles NAT and IP masquerading through the ENI interface.                                          |
+          | `charts.cilium.endpointRoutes.enabled`              | `true`             | Enables per-endpoint routing to allow direct pod-to-pod communication in ENI mode without encapsulation.                                   |
+          | `charts.cilium.eni.enabled`                         | `true`             | Enables AWS ENI integration for direct networking instead of using an overlay network.                                                     |
+          | `charts.cilium.ipam.mode`                           | `"eni"`            | Uses AWS ENI-based IP address management (IPAM) to allocate pod IPs directly from AWS VPC subnets.                                         |
+          | `charts.cilium.enableIPv4Masquerade`                | `false`            | Disables IPv4 masquerading for outgoing packets because AWS ENI mode provides direct pod-to-pod routing without NAT.                       |
+          | `charts.cilium.enableIPv6Masquerade`                | `false`            | Disables IPv6 masquerading for outgoing packets because AWS handles IPv6 routing without the need for masquerading.                        |
+          | `charts.cilium.kubeProxyReplacement`                | `"true"`           | Enables eBPF-based kube-proxy replacement because kube-proxy is disabled, and Cilium must handle service load balancing.                   |
+          | `charts.cilium.kubeProxyReplacementHealthzBindAddr` | `0.0.0.0:10256`    | Binds the health check service to `0.0.0.0:10256` for the kube-proxy replacement.                                                          |
+          | `charts.cilium.autoDirectNodeRoutes`                | `false`            | Disables automatic direct routing between nodes because AWS ENI mode already manages routing, making additional direct routes unnecessary. |
+          | `charts.cilium.routingMode`                         | `native`           | Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary.                        |
+
+      </details>
+
+- If you need to override the default service CIDR, configure the service ClusterIP range in the
+
+  <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom" /> pack.
+  Additionally, if you want to use your own VPC and subnets, configure the pod CIDR in the
+  <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom" /> pack.
+
+  Pods running on the control plane continue to receive IP addresses from the node CIDR range. The custom pod CIDR
+  applies only to pods scheduled on worker nodes.
 
 <!-- prettier-ignore-end -->
 
@@ -274,37 +296,10 @@ guide for help with migrating workloads.
 
     To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
 
-<!-- prettier-ignore-start -->
-
 7.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
     - You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Refer to the
       [Access EKS Cluster](#access-eks-cluster) section for additional guidance.
-
-    - Deploying EKS clusters with the <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> pack
-      requires you to use the **Replace Kube-Proxy With EBPF** preset and configure additional values in the Cilium
-      layer of your cluster profile. Expand the following panel for the required values.
-
-        <details>
-        
-        <summary>Cilium **Replace Kube-Proxy With EBPF** configuration </summary>
-
-            | **Parameter**                                       | **Required Value** | **Description**                                                                                                                            |
-            | --------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-            | `charts.cilium.bpf.masquerade`                      | `false`            | Disables eBPF masquerading because AWS handles NAT and IP masquerading through the ENI interface.                                          |
-            | `charts.cilium.endpointRoutes.enabled`              | `true`             | Enables per-endpoint routing to allow direct pod-to-pod communication in ENI mode without encapsulation.                                   |
-            | `charts.cilium.eni.enabled`                         | `true`             | Enables AWS ENI integration for direct networking instead of using an overlay network.                                                     |
-            | `charts.cilium.ipam.mode`                           | `"eni"`            | Uses AWS ENI-based IP address management (IPAM) to allocate pod IPs directly from AWS VPC subnets.                                         |
-            | `charts.cilium.enableIPv4Masquerade`                | `false`            | Disables IPv4 masquerading for outgoing packets because AWS ENI mode provides direct pod-to-pod routing without NAT.                       |
-            | `charts.cilium.enableIPv6Masquerade`                | `false`            | Disables IPv6 masquerading for outgoing packets because AWS handles IPv6 routing without the need for masquerading.                        |
-            | `charts.cilium.kubeProxyReplacement`                | `"true"`           | Enables eBPF-based kube-proxy replacement because kube-proxy is disabled, and Cilium must handle service load balancing.                   |
-            | `charts.cilium.kubeProxyReplacementHealthzBindAddr` | `0.0.0.0:10256`    | Binds the health check service to `0.0.0.0:10256` for the kube-proxy replacement.                                                          |
-            | `charts.cilium.autoDirectNodeRoutes`                | `false`            | Disables automatic direct routing between nodes because AWS ENI mode already manages routing, making additional direct routes unnecessary. |
-            | `charts.cilium.routingMode`                         | `native`           | Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary.                        |
-
-        </details>
-
-<!-- prettier-ignore-end -->
 
 8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
