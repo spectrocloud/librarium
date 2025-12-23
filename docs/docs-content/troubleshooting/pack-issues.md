@@ -375,66 +375,6 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
    user data and apply the changes. Refer to
    [Apply Site User Data](../clusters/edge/site-deployment/site-installation/site-user-data.md) for more information.
 
-## Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI
-
-<!-- prettier-ignore-start -->
-
-When deploying AWS EKS clusters using the <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/>
-pack, worker node provisioning fails due to the AWS VPC CNI and Cilium CNI clashing. This is because installation
-of the AWS VPC CNI cannot be disabled by default on EKS cluster nodes. To resolve this issue, you must configure specific values for certain parameters in the Cilium pack.
-
-<!-- prettier-ignore-end -->
-
-:::warning
-
-You must use a pre-created static VPC for EKS deployments using Cilium.
-
-:::
-
-### Debug Steps
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left main menu, select **Profiles**.
-
-3. On the **Profiles** page, select your EKS cluster profile that uses Cilium as the network pack.
-
-4. Select the Cilium layer to view the pack **Values** on the **Edit Pack** page.
-
-5. Expand the **Presets** drawer.
-
-6. In the **Kube-proxy replacement** section, select **Replace Kube-Proxy With EBPF**.
-
-7. Review the following parameters and adjust to the required values as needed.
-
-   | **Parameter**                                       | **Required Value** | **Description**                                                                                                                            |
-   | --------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-   | `charts.cilium.bpf.masquerade`                      | `false`            | Disables eBPF masquerading because AWS handles NAT and IP masquerading through the ENI interface.                                          |
-   | `charts.cilium.endpointRoutes.enabled`              | `true`             | Enables per-endpoint routing to allow direct pod-to-pod communication in ENI mode without encapsulation.                                   |
-   | `charts.cilium.eni.enabled`                         | `true`             | Enables AWS ENI integration for direct networking instead of using an overlay network.                                                     |
-   | `charts.cilium.ipam.mode`                           | `"eni"`            | Uses AWS ENI-based IP address management (IPAM) to allocate pod IPs directly from AWS VPC subnets.                                         |
-   | `charts.cilium.enableIPv4Masquerade`                | `false`            | Disables IPv4 masquerading for outgoing packets because AWS ENI mode provides direct pod-to-pod routing without NAT.                       |
-   | `charts.cilium.enableIPv6Masquerade`                | `false`            | Disables IPv6 masquerading for outgoing packets because AWS handles IPv6 routing without the need for masquerading.                        |
-   | `charts.cilium.kubeProxyReplacement`                | `"true"`           | Enables eBPF-based kube-proxy replacement because kube-proxy is disabled, and Cilium must handle service load balancing.                   |
-   | `charts.cilium.kubeProxyReplacementHealthzBindAddr` | `0.0.0.0:10256`    | Binds the health check service to `0.0.0.0:10256` for the kube-proxy replacement.                                                          |
-   | `charts.cilium.autoDirectNodeRoutes`                | `false`            | Disables automatic direct routing between nodes because AWS ENI mode already manages routing, making additional direct routes unnecessary. |
-   | `charts.cilium.routingMode`                         | `native`           | Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary.                        |
-
-8. Select **Confirm Updates** to return to the cluster profile overview page. Select **Save Changes**.
-
-9. In the top-right, select **Deploy > OK** to begin the cluster deployment process.
-
-10. Enter a unique **Name** for the cluster and choose the appropriate AWS **Cloud account**. Select **Next**.
-
-11. On the **Cluster Profile** page, select **Next**.
-
-12. On the **Cluster Config** page, ensure you select **Enable static placement (Optional)** and provide your AWS VPC
-    details.
-
-13. Configure your remaining cluster settings as needed and deploy your cluster. Refer to
-    [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#deploy-an-aws-eks-cluster) for additional
-    guidance.
-
 ## Scenario - Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades
 
 In clusters that use <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s"/> as the
