@@ -19,7 +19,7 @@ tags: ["release-notes"]
 <!-- PCP-5639 -->
 - The process of deploying AWS EKS clusters using <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> has been streamlined. Users no longer need to disable the `kube-proxy` and `aws-node` DaemonSets or update the `charts.cilium.k8sServiceHost` parameter during deployment. Refer to [Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI](../troubleshooting/pack-issues.md#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni) for the updated deployment process.
 
-<!-- prettier-ignore-start -->
+<!-- prettier-ignore-end -->
 
 <!-- PCP-5648 -->
 - Two subnets can now be configured for MAAS LXD workload clusters using the Kubernetes layer of your MAAS cluster profile:
