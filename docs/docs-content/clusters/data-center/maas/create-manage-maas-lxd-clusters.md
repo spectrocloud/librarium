@@ -146,6 +146,17 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
+    - To use two subnets, add the `cloud.maas.lxdVMSubnets` configuration to the Kubernetes layer of your cluster
+      profile. The first subnet must specify the preboot execution environment (PXE), used for the initial booting and
+      provisioning of LXD virtual machines, and the second must specify the subnet used to configure static IPs for
+      workload traffic.
+
+          ```yaml title="Example LXD subnet configuration" hideClipboard
+          cloud:
+            maas:
+              lxdVMSubnets: 10.11.160.0/24,10.10.128.0/18
+          ```
+
 9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
 10. Select a **Domain** from the drop-down menu.

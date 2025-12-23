@@ -16,19 +16,24 @@ tags: ["release-notes"]
 ### Improvements
 
 <!-- prettier-ignore-start -->
-
 <!-- PCP-5639 -->
-
 - The process of deploying AWS EKS clusters using <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> has been streamlined. Users no longer need to disable the `kube-proxy` and `aws-node` DaemonSets or update the `charts.cilium.k8sServiceHost` parameter during deployment. Refer to [Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI](../troubleshooting/pack-issues.md#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni) for the updated deployment process.
 
 <!-- prettier-ignore-start -->
 
+<!-- PCP-5648 -->
+- Two subnets can now be configured for MAAS LXD workload clusters using the Kubernetes layer of your MAAS cluster profile:
+  one for the preboot execution environment (PXE), used for the initial booting and provisioning of LXD virtual
+  machines, and one for an additional subnet, used to configure static IPs for workload traffic. Refer to
+  [Create and Manage MAAS Clusters Using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md#deploy-a-workload-cluster-with-lxd-vms-as-control-plane-nodes)
+  for more information.
+
 ### Bug Fixes
 
+<!-- PCP-5701 -->
+- Fixed an issue where cluster profile updates were not applied to clusters until restarting the `cluster-management-agent` pod.
 <!-- PE-7738 -->
-
 - Fixed an issue where CoreDNS entered a crash loop after node reboots in Rocky Linux RKE2 FIPS clusters.
-
 
 ## December 17, 2025 - Release 4.8.12
 
