@@ -1,0 +1,3 @@
+docs/docs-content/clusters/data-center/cloudstack/architecture.md:21:42:Vale.Spelling:Did you really mean 'Xenserver'?
+docs/docs-content/clusters/data-center/cloudstack/architecture.md:21:56:Vale.Spelling:Did you really mean 'Xen'?
+docs/docs-content/clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md:119:133:Vale.Spelling:Did you really mean 'workpools'?
