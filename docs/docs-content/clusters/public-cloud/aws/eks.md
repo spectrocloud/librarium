@@ -216,8 +216,9 @@ guide for help with migrating workloads.
 
       </details>
 
-- If you need to override the default service CIDR, configure the service ClusterIP range in the
+<!-- prettier-ignore-start -->
 
+- If you need to override the default service CIDR, configure the service ClusterIP range in the
   <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks&tab=custom" /> pack.
   Additionally, if you want to use your own VPC and subnets, configure the pod CIDR in the
   <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm&tab=custom" /> pack.
