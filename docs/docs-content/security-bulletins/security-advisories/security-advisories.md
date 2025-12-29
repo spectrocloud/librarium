@@ -16,7 +16,7 @@ additional details regarding vulnerabilities and offering remediation steps.
 - **Release Date**: December 26, 2025
 - **Last Updated**: December 29, 2025
 - **Severity**: Critical
-- **CVEs**: [CVE-2025-14847](https://www.cve.org/CVERecord?id=CVE-2025-14847)
+- **CVEs**: [CVE-2025-14847](https://nvd.nist.gov/vuln/detail/CVE-2025-14847)
 
 ### Summary
 
@@ -82,7 +82,7 @@ This advisory will be updated to reflect availability of the fixes described abo
 
 - [Common Vulnerabilities and Exposures (CVE) - CVE-2025-14847](https://www.cve.org/CVERecord?id=CVE-2025-14847)
 - [MongoDB Community Hub - Important MongoDB patch available](https://www.mongodb.com/community/forums/t/important-mongodb-patch-available/332977)
-- [National Vulnerability Database - CVE-2025-14847 Detail](https://nvd.nist.gov/vuln/detail/CVE-2025-14847)
+- [NIST: National Vulnerability Database - CVE-2025-14847 Detail](https://nvd.nist.gov/vuln/detail/CVE-2025-14847)
 - [Upwind - CVE-2025-14847: MongoDB zlib Compression Memory Disclosure](https://www.upwind.io/feed/cve-2025-14847-mongodb-zlib-memory-disclosure)
 
 ## Security Advisory 006.1 - Shai Hulud npm Supply Chain Attack - Supplemental Update
