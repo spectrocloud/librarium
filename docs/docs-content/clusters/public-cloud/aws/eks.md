@@ -167,24 +167,52 @@ guide for help with migrating workloads.
 
 - Deploying EKS clusters with the <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> pack
   requires using the **Replace Kube-Proxy With EBPF** preset and configuring additional values in the Cilium layer of
-  your cluster profile. Expand the following panel for the required values.
+  your cluster profile. The required configuration varies based on whether the cluster is deployed with dynamic or
+  static placement. Expand the following panel for the required configuration.
 
       <details>
 
           <summary>Cilium **Replace Kube-Proxy With EBPF** configuration </summary>
 
+          <Tabs>
+          <TabItem value="Dynamic" label="Dynamic">
+
           | **Parameter**                                       | **Required Value** | **Description**                                                                                                                            |
           | --------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-          | `charts.cilium.bpf.masquerade`                      | `false`            | Disables eBPF masquerading because AWS handles NAT and IP masquerading through the ENI interface.                                          |
           | `charts.cilium.endpointRoutes.enabled`              | `true`             | Enables per-endpoint routing to allow direct pod-to-pod communication in ENI mode without encapsulation.                                   |
           | `charts.cilium.eni.enabled`                         | `true`             | Enables AWS ENI integration for direct networking instead of using an overlay network.                                                     |
           | `charts.cilium.ipam.mode`                           | `"eni"`            | Uses AWS ENI-based IP address management (IPAM) to allocate pod IPs directly from AWS VPC subnets.                                         |
-          | `charts.cilium.enableIPv4Masquerade`                | `false`            | Disables IPv4 masquerading for outgoing packets because AWS ENI mode provides direct pod-to-pod routing without NAT.                       |
-          | `charts.cilium.enableIPv6Masquerade`                | `false`            | Disables IPv6 masquerading for outgoing packets because AWS handles IPv6 routing without the need for masquerading.                        |
+          | `charts.cilium.k8sServiceHost` | `#k8sServiceHost: "auto"` | Specifies the Kubernetes API server host address. This field must be disabled in lieu of `charts.cilium.k8sServiceHostRef`, which points to Palette's managed ConfigMap. |
+          | `charts.cilium.k8sServiceHostRef.key` | `k8s-service-host` | Specifies the key within Palette's managed `k8s-service-host` ConfigMap, which contains the Kubernetes API server endpoint. |
+          | `charts.cilium.k8sServiceHostRef.name` | `palette-cilium-config` |  Specifies the name of Palette's managed ConfigMap, which contains the Kubernetes API server endpoint. |
+          | `charts.cilium.k8sServicePort` | `"443"` | Specifies the Kubernetes API server port. Required when using `k8sServiceHostRef` for EKS clusters. |
           | `charts.cilium.kubeProxyReplacement`                | `"true"`           | Enables eBPF-based kube-proxy replacement because kube-proxy is disabled, and Cilium must handle service load balancing.                   |
           | `charts.cilium.kubeProxyReplacementHealthzBindAddr` | `0.0.0.0:10256`    | Binds the health check service to `0.0.0.0:10256` for the kube-proxy replacement.                                                          |
           | `charts.cilium.autoDirectNodeRoutes`                | `false`            | Disables automatic direct routing between nodes because AWS ENI mode already manages routing, making additional direct routes unnecessary. |
-          | `charts.cilium.routingMode`                         | `native`           | Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary.                        |
+          | `charts.cilium.routingMode`                         | `"native"`           | Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary.                        |
+
+          </TabItem>
+
+          <TabItem value="Static" label="Static">
+
+          | **Parameter**                                       | **Required Value** | **Description**                                                                                                                            |
+          | --------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+          | `charts.cilium.bpf.masquerade`                      | `true`            | Enables eBPF masquerading because AWS handles NAT and IP masquerading through the ENI interface.                                          |
+          | `charts.cilium.enableIPv4Masquerade` | `true` | Enables IPv4 masquerading for outgoing packets because AWS ENI mode provides direct pod-to-pod routing without NAT. |
+          | `charts.cilium.endpointRoutes.enabled`              | `true`             | Enables per-endpoint routing to allow direct pod-to-pod communication in ENI mode without encapsulation.                                   |
+          | `charts.cilium.eni.enabled`                         | `true`             | Enables AWS ENI integration for direct networking instead of using an overlay network.                                                     |
+          | `charts.cilium.ipam.mode`                           | `"eni"`            | Uses AWS ENI-based IP address management (IPAM) to allocate pod IPs directly from AWS VPC subnets.                                         |
+          | `charts.cilium.k8sServiceHost` | `#k8sServiceHost: "auto"` | Specifies the Kubernetes API server host address. This field must be disabled in lieu of `charts.cilium.k8sServiceHostRef`, which points to Palette's managed ConfigMap. |
+          | `charts.cilium.k8sServiceHostRef.key` | `k8s-service-host` | Specifies the key within Palette's managed `k8s-service-host` ConfigMap, which contains the Kubernetes API server endpoint. |
+          | `charts.cilium.k8sServiceHostRef.name` | `palette-cilium-config` |  Specifies the name of Palette's managed ConfigMap, which contains the Kubernetes API server endpoint. |
+          | `charts.cilium.k8sServicePort` | `"443"` | Specifies the Kubernetes API server port. Required when using `k8sServiceHostRef` for EKS clusters. |
+          | `charts.cilium.kubeProxyReplacement`                | `"true"`           | Enables eBPF-based kube-proxy replacement because kube-proxy is disabled, and Cilium must handle service load balancing.                   |
+          | `charts.cilium.kubeProxyReplacementHealthzBindAddr` | `0.0.0.0:10256`    | Binds the health check service to `0.0.0.0:10256` for the kube-proxy replacement.                                                          |
+          | `charts.cilium.autoDirectNodeRoutes`                | `false`            | Disables automatic direct routing between nodes because AWS ENI mode already manages routing, making additional direct routes unnecessary. |
+          | `charts.cilium.routingMode`                         | `"native"`           | Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary.                        |
+
+          </TabItem>
+          </Tabs>
 
       </details>
 
@@ -243,13 +271,12 @@ guide for help with migrating workloads.
 
   :::
 
-- If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and
-  storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred
-  AWS region to create the following resources. Note that Palette does not create these resources if you specify an
-  existing VPC.
+- If you do not provide your own VPC, Palette creates one for you with compute, network, and storage resources in AWS
+  when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the
+  following resources. Note that Palette does not create these resources if you specify an existing VPC.
 
   - Virtual CPU (vCPU)
-  - Virtual Private Cloud (VPC)
+  - VPC
   - Elastic IP
   - Internet Gateway
   - Elastic Load Balancers
@@ -259,8 +286,8 @@ guide for help with migrating workloads.
 
   :::info
 
-  To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private
-  Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS
+  To enable automated subnet discovery to create external load balancers, you need to add tags to the VPC public
+  subnets. For more information about tagging VPC networks, refer to the AWS
   [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide. Use the AWS
   Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName`
   with your cluster's name. To learn more about the Tag Editor, refer to the
@@ -309,7 +336,7 @@ guide for help with migrating workloads.
     | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Region**                             | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | **SSH Key Pair Name**                  | Choose the SSH key pair for the region you selected. This is required for dynamic placement and optional for static placement. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | **Enable static placement (Optional)** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted. <br /><br />If you want to place resources into pre-existing VPCs, toggle the **Enable static placement (Optional)** option, and provide the VPC ID in the **Virtual Private Cloud (VPC) ID** field that displays with this option enabled. <br /><br /> Static placement is required for EKS clusters deployed with <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> and clusters deployed in [AWS Secret Cloud](./add-aws-accounts.md#aws-secret-cloud-account-us). Azure Secret clusters require two subnets in different AZs.                                                |
+    | **Enable static placement (Optional)** | By default, Palette uses dynamic placement. This creates a new VPC for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted. <br /><br />If you want to place resources into pre-existing VPCs, toggle the **Enable static placement (Optional)** option, and provide the VPC ID in the **Virtual Private Cloud (VPC) ID** field that displays with this option enabled. <br /><br /> Static placement is required for EKS clusters deployed in [AWS Secret Cloud](./add-aws-accounts.md#aws-secret-cloud-account-us). Azure Secret clusters require two subnets in different AZs.                                                                                                                                                                                 |
     | **Cluster Endpoint Access**            | This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. If you are deploying your cluster in [AWS Secret Cloud](./add-aws-accounts.md#aws-secret-cloud-account-us), use **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
     | **Public Access CIDRs**                | This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
     | **Private Access CIDRs**               | This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint.<br /><br />To restrict network access, replace the pre-populated 0.0.0.0/0 with the IP address CIDR range that should be allowed access to the cluster endpoint. Only the IP addresses that are within the specified VPC CIDR range - and any other connected VPCs - will be able to reach the private endpoint. For example, while using `0.0.0.0/0` would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR `10.0.0.0/16` would limit traffic to an individual VPC. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide. |
