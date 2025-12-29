@@ -23,8 +23,84 @@ images required by the Edge Installer. Refer to the
 [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
 create a custom OS that includes all the required components for the Edge Installer.
 
-Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The
-`system.uri` parameter specifies the location of the BYOOS image.
+Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. 
+
+You can also set the following parameters in your pack YAML file.
+
+### Pack section 
+
+ If you do not set these parameters, the pack will use the default values. You must uncomment these values to change them. 
+
+| Parameter | Description | Type | Default |
+| --------- | ----------- | ---- | ------- |
+| `drainPods` | Drain pods during cluster upgrades. Set this value to `false` to skip draining. | string | `auto` |
+| `podSelector` | Specify pod selector options for draining specific pods | ?? | N/A |
+| `cordon` | Cordon the node before draining. This prevents new pods from being scheduled. |string  | `true` |
+| `timeout` | Maximum time (in seconds) to wait for the drain to complete. Set this parameter to 0 for no timeout. | integer | `60`  |
+| `gracePeriod` | Time (in seconds) allocated to each pod to terminate gracefully. Set this parameter to a negative value to use the pod's default time. | integer | `60` |
+| `ignoreDaemonSets` | Ignore DaemonSet-managed pods during drain | string | `true` |
+| `deleteLocalData` | Allow drain to proceed even if pods use `emptyDir`. Local data will be deleted. | string | `true` |
+| `force` | Force drain even if there are pods without controllers. | string | `true` |
+| `disableEviction` | Use delete instead of eviction, and bypass `PodDisruptionBudgets`. Use this parameter with caution.  | string | `false` |
+| `skipWaitForDeleteTimeout`| Skip waiting for a pod if its `DeletionTimestamp` is older than this parameter (in seconds). | integer | `60` |
+
+### Options section
+
+Set the location of the BYOOS image in this section. 
+
+| Parameter | Description | Type | Default |
+| --------- | ----------- | ---- | ------- |
+| `system.uri` | The location of the BYOOS image. This is the provider image url for appliance mode. Set this value to the appliance's image location. | string | "" |
+
+### providerCredentials section
+
+Set the location and credentials for your remote registry in this section. 
+
+| Parameter | Description | Type | Default |
+| --------- | ----------- | ---- | ------- |
+| `registry`  | The registry location for your provider images. This is prepended to the value in your `system.uri` setting.  | string | `example.com/spectro-images` | 
+| `user` | The username for the registry. | string | `user` | 
+| `password` | The password for the registry | string | `password` |
+| `certificates` | The security certificate for the registry, in PEM format. | string | xxx |
+
+<details>
+<summary>Example pack YAML file</summary>
+```yaml
+pack:
+  content:
+    images:
+      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'  # Uses the system URI from the options as the image for the pack
+  # Below config is default value, please uncomment if you want to modify default values
+  #drain:
+    #drainPods: auto     
+    #podSelector:        
+    #cordon: true        
+    #timeout: 60         
+    #gracePeriod: 60     
+    #ignoreDaemonSets: true  
+    #deleteLocalData: true   
+    #force: true             
+    #disableEviction: false  
+    #skipWaitForDeleteTimeout: 60 
+options:
+  system.uri: "" 
+
+providerCredentials: #4
+  registry: example.com/spectro-images  
+  user: user                
+  password: "password" 
+  certificates: | 
+    xxx
+
+# adding yip stages in os pack is the same as adding yip stages in the userdata.
+stages:
+  initramfs:                  # Stage name, typically for early boot/initramfs operations.
+    - name: Test stage        # Name of the step within the stage
+      commands: 
+        - echo "hello world"  # Command to execute; prints "hello world" for testing
+        
+```
+</details>
 
 ### Agent Mode
 
