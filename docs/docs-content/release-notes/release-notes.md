@@ -24,8 +24,7 @@ tags: ["release-notes"]
 <!-- PCP-5648 -->
 
 - Two subnets can now be configured for MAAS LXD workload clusters using the Kubernetes layer of your MAAS cluster
-  profile: one for the preboot execution environment (PXE), used for the initial booting and provisioning of LXD virtual
-  machines, and one for an additional subnet, used to configure static IPs for workload traffic. Refer to
+  profile. One subnet is designed for the preboot execution environment (PXE), which is used for the initial booting and provisioning of LXD virtual machines. The other subnet is used to configure static IP addresses for workload traffic. Refer to
   [Create and Manage MAAS Clusters Using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md#deploy-a-workload-cluster-with-lxd-vms-as-control-plane-nodes)
   for more information.
 
