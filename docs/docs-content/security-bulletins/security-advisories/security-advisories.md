@@ -67,7 +67,7 @@ prior compromise that grants an attacker network-level access to the underlying 
 deployment.
 
 While MongoDB has rated this vulnerability as _critical_, Spectro Cloud’s deployment architecture significantly limits
-exploitability, resulting in a _low_ practical risk to Palette Enterprise and VerteX customers.
+the exploitation surface, resulting in a _low_ practical risk to Palette Enterprise and VerteX customers.
 
 #### Implementation Plan
 
