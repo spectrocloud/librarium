@@ -12,7 +12,8 @@ DEVELOPER_PORTAL_LINKS=(
     "www\.packer\.io",
     "www\.gnu\.org",
     "socket\.dev",
-    "www\.freedesktop\.org"
+    "www\.freedesktop\.org",
+    "docs\.openstack\.org"
 )
 LINKS_FILE="all_links.txt"
 BROKEN_LINKS_FILE="link_report_developer_portals.txt"
