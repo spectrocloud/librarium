@@ -24,93 +24,60 @@ images required by the Edge Installer. Refer to the
 create a custom OS that includes all the required components for the Edge Installer.
 
 Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process.
+
 The following section provides the list of optional parameters you can customize in the pack YAML file.
 
 ### Optional Customizable Parameters
 
-#### `pack.drain` Section
+You can customize several sections of the pack YAML file. The `drain` and `options` section are included by default. 
 
-Brief section description
+In the `drain` section, uncomment the section and update any parameters that you want to change Otherwise, the default values will be used. 
 
- If you do not set these parameters, the pack will use the default values. You must uncomment these values to change them. 
+In the `options` section, set the `system.uri` parameter to the location of the BYOOS image for appliance mode.
 
-| Parameter | Description | Type | Default |
-| --------- | ----------- | ---- | ------- |
-| `drainPods` | Drain pods during cluster upgrades. Set this value to `false` to skip draining. | string | `auto` |
-| `podSelector` | Specify pod selector options for draining specific pods | object | `''` |
-| `cordon` | Cordon the node before draining. This prevents new pods from being scheduled. |string  | `true` |
-| `timeout` | Maximum time (in seconds) to wait for the drain to complete. Set this parameter to 0 for no timeout. | integer | `60`  |
-| `gracePeriod` | Time (in seconds) allocated to each pod to terminate gracefully. Set this parameter to a negative value to use the pod's default time. | integer | `60` |
-| `ignoreDaemonSets` | Ignore DaemonSet-managed pods during drain | string | `true` |
-| `deleteLocalData` | Allow drain to proceed even if pods use `emptyDir`. Local data will be deleted. | string | `true` |
-| `force` | Force drain even if there are pods without controllers. | string | `true` |
-| `disableEviction` | Use delete instead of eviction, and bypass `PodDisruptionBudgets`. Use this parameter with caution.  | string | `false` |
-| `skipWaitForDeleteTimeout`| Skip waiting for a pod if its `DeletionTimestamp` is older than this parameter (in seconds). | integer | `60` |
+To further customize your configuration, you can add the `providerCredentials` and `stages` sections. Add the `providerCredentials` section to add your remote registry's user credentials and information. Add the `stages` section to define YIP stages that run during the node boot process. This is similar to adding stages to your user data. Refer to the [Installer Referecne Cloud Init Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages) for more information. 
 
-### Options section
-
-Set the location of the BYOOS image in this section. 
-
-| Parameter | Description | Type | Default |
-| --------- | ----------- | ---- | ------- |
-| `system.uri` | The location of the BYOOS image. This is the provider image url for appliance mode. Set this value to the appliance's image location. | string | "" |
-
-#### `providerCredentials` section
-
-Set the location and credentials for your remote registry in this section. 
-
-| Parameter | Description | Type | Default |
-| --------- | ----------- | ---- | ------- |
-| `registry`  | The registry location for your provider images. This is prepended to the value in your `system.uri` setting.  | string | `example.com/spectro-images` | 
-| `user` | The username for the registry. | string | `user` | 
-| `password` | The password for the registry | string | `password` |
-| `certificates` | The security certificate for the registry, in PEM format. | string | xxx |
-
-#### `stages` Section
-
-Describe the following section, reference user-data (https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages)
-
-stages:
-  initramfs:                  # Stage name, typically for early boot/initramfs operations.
-    - name: Test stage        # Name of the step within the stage
-      commands: 
-        - echo "hello world"  # Command to execute; prints "hello world" for testing
 #### Configuration Example
 
+The following is an example YAML configuration file for your pack. 
+
 <summary>Example pack YAML file</summary>
+
 ```yaml
 pack:
   content:
     images:
-      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'  # Uses the system URI from the options as the image for the pack
-      
-  drain:
-    drainPods: auto     
-    podSelector:        
-    cordon: true        
-    timeout: 60         
-    gracePeriod: 60     
-    ignoreDaemonSets: true  
-    deleteLocalData: true   
-    force: true             
-    disableEviction: false  
-    skipWaitForDeleteTimeout: 60 
+      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'  # This parameter uses the value set in the options section as the image for the pack.
+  # If you do not set these parameters, the pack will use the default values. You must uncomment these values to change them. 
+  #drain:
+    #drainPods: auto     # Drain pods during cluster upgrades. Set this value to `false` to skip draining.
+    #podSelector:        # Specify the pod selector options for draining specific pods.
+    #cordon: true        # Cordon the node before draining. This prevents new pods from being scheduled.
+    #timeout: 60         # Maximum time (in seconds) to wait for drain to complete. Set this value to 0 for no timeout.
+    #gracePeriod: 60     #  Time (in seconds) allocated to each pod to terminate gracefully. Set this parameter to a negative value to use the pod's default time. 
+    #ignoreDaemonSets: true  # Ignore DaemonSet-managed pods during drain.
+    #deleteLocalData: true   # Allow drain to proceed even if pods use emptyDir. This will delete local data. 
+    #force: true             # Force drain even if there are pods without controllers.
+    #disableEviction: false  # Use delete instead of eviction, and bypass PodDisruptionBudgets. Use this parameter with caution.
+    #skipWaitForDeleteTimeout: 60 # Skip waiting for a pod if its DeletionTimestamp is older than this value (in seconds).
 options:
-  system.uri: "" # provider image url for appliance mode; should be set to the image location for the appliance
-  
-providerCredentials: #4
-  registry: example.com/spectro-images  
-  user: user                
-  password: "password" 
-  certificates: | 
+  system.uri: "" # The provider image url for appliance mode. Set this value to the appliance's image location.
+
+providerCredentials: 
+  registry: example.com/spectro-images  # The registry location for your provider images. This is prepended to the value in your system.uri setting. 
+  user: user                 # The username for the registry.
+  password: "password"       # The password for the registry.
+  certificates: |            # The security certificate for the registry, in PEM format.
     xxx
 
-
+# YIP stages behave the same whether they are defined in the OS pack or in user data.
 stages:
-  initramfs:
-    - name: Test stage
+  initramfs:                  # Stage name, typically for early boot/initramfs operations.
+    - name: Test stage        # The name of the step within the stage.
       commands: 
-        - echo "hello world"
+        - echo "hello world"  # The command to execute. Prints "hello world" for testing.
+
+```
         
 
 ### Agent Mode
