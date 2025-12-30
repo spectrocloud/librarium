@@ -23,18 +23,21 @@ images required by the Edge Installer. Refer to the
 [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
 create a custom OS that includes all the required components for the Edge Installer.
 
-Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. 
+Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process.
+The following section provides the list of optional parameters you can customize in the pack YAML file.
 
-You can also set the following parameters in your pack YAML file.
+### Optional Customizable Parameters
 
-### Pack section 
+#### `pack.drain` Section
+
+Brief section description
 
  If you do not set these parameters, the pack will use the default values. You must uncomment these values to change them. 
 
 | Parameter | Description | Type | Default |
 | --------- | ----------- | ---- | ------- |
 | `drainPods` | Drain pods during cluster upgrades. Set this value to `false` to skip draining. | string | `auto` |
-| `podSelector` | Specify pod selector options for draining specific pods | ?? | N/A |
+| `podSelector` | Specify pod selector options for draining specific pods | object | `''` |
 | `cordon` | Cordon the node before draining. This prevents new pods from being scheduled. |string  | `true` |
 | `timeout` | Maximum time (in seconds) to wait for the drain to complete. Set this parameter to 0 for no timeout. | integer | `60`  |
 | `gracePeriod` | Time (in seconds) allocated to each pod to terminate gracefully. Set this parameter to a negative value to use the pod's default time. | integer | `60` |
@@ -52,7 +55,7 @@ Set the location of the BYOOS image in this section.
 | --------- | ----------- | ---- | ------- |
 | `system.uri` | The location of the BYOOS image. This is the provider image url for appliance mode. Set this value to the appliance's image location. | string | "" |
 
-### providerCredentials section
+#### `providerCredentials` section
 
 Set the location and credentials for your remote registry in this section. 
 
@@ -63,28 +66,38 @@ Set the location and credentials for your remote registry in this section.
 | `password` | The password for the registry | string | `password` |
 | `certificates` | The security certificate for the registry, in PEM format. | string | xxx |
 
-<details>
+#### `stages` Section
+
+Describe the following section, reference user-data (https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages)
+
+stages:
+  initramfs:                  # Stage name, typically for early boot/initramfs operations.
+    - name: Test stage        # Name of the step within the stage
+      commands: 
+        - echo "hello world"  # Command to execute; prints "hello world" for testing
+#### Configuration Example
+
 <summary>Example pack YAML file</summary>
 ```yaml
 pack:
   content:
     images:
       - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'  # Uses the system URI from the options as the image for the pack
-  # Below config is default value, please uncomment if you want to modify default values
-  #drain:
-    #drainPods: auto     
-    #podSelector:        
-    #cordon: true        
-    #timeout: 60         
-    #gracePeriod: 60     
-    #ignoreDaemonSets: true  
-    #deleteLocalData: true   
-    #force: true             
-    #disableEviction: false  
-    #skipWaitForDeleteTimeout: 60 
+      
+  drain:
+    drainPods: auto     
+    podSelector:        
+    cordon: true        
+    timeout: 60         
+    gracePeriod: 60     
+    ignoreDaemonSets: true  
+    deleteLocalData: true   
+    force: true             
+    disableEviction: false  
+    skipWaitForDeleteTimeout: 60 
 options:
-  system.uri: "" 
-
+  system.uri: "" # provider image url for appliance mode; should be set to the image location for the appliance
+  
 providerCredentials: #4
   registry: example.com/spectro-images  
   user: user                
@@ -92,15 +105,13 @@ providerCredentials: #4
   certificates: | 
     xxx
 
-# adding yip stages in os pack is the same as adding yip stages in the userdata.
+
 stages:
-  initramfs:                  # Stage name, typically for early boot/initramfs operations.
-    - name: Test stage        # Name of the step within the stage
+  initramfs:
+    - name: Test stage
       commands: 
-        - echo "hello world"  # Command to execute; prints "hello world" for testing
+        - echo "hello world"
         
-```
-</details>
 
 ### Agent Mode
 
