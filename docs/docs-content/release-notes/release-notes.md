@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## December 30, 2025 - Release 4.8.15
+## December 30, 2025 - Release 4.8.16
 
 ### Improvements
 
