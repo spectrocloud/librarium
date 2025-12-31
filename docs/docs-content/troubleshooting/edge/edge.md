@@ -362,13 +362,9 @@ remove the container manually. The kubelet then restarts the component using the
 
 ## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
 
-<!-- prettier-ignore-start -->
-
-When rebooting nodes in an Edge cluster using <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> deployed in a proxied environment, the nodes
+When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes
 may fail to come back online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical
 pack to the `NO_PROXY` list in your Edge installer `user-data`.
-
-<!-- prettier-ignore-end -->
 
 ### Debug Steps
 
