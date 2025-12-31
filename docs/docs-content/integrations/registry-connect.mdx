@@ -1,0 +1,67 @@
+---
+sidebar_label: "Registry Connect"
+title: "Registry Connect"
+description: "Registry Connect pack in Palette Edge."
+hide_table_of_contents: true
+type: "registry"
+category: ["operating system", "amd64"]
+sidebar_class_name: "hide-from-sidebar"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image.webp"
+tags: ["packs", "registry", "edge"]
+---
+
+<RedirectPackPage packName="registry-connect" />
+
+### External Registries
+
+You can use external registries with the **Registry Connect** pack. The agent reads this pack before it deploys a cluster on edge hosts. If you set registry mapping rules in this pack, it will rewrite image references with the mapped images in the pack. 
+
+Modify your pack to configure the external registry details. 
+
+#### Global Registry Mapping
+
+Use the `all` parameter to remap all registries to a single remote location. The following example prepends to the original image location. 
+
+```yaml
+registry:
+  imageReplacementRules: |
+    "all": "example.registry.com/internal-images"
+```
+
+#### External Registry Mapping
+
+Use the `imageReplacementRules` parameter to remap calls to each registry to the specified external registry. 
+
+The following example shows how to remap each image location to another image located at `example.registry.com`. 
+
+
+```yaml
+- name: "only-external-registry-preset"
+    displayName: "External Registry"
+    group: "Registry"
+    remove:
+      - charts.registry-connect.config.certificates
+      - charts.registry-connect.config.registry
+      - charts.registry-connect.config.webhook
+      - charts.registry-connect.config.content
+    add: |
+      charts:
+        registry-connect:
+          config:
+            content:
+              sync:
+                enable: false
+            certificates:
+              - certificate:
+            
+            registry:
+              imageReplacementRules: |
+                "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+                "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+                "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+                "grc.io/spectro-images-public": "example.registry.com/internal-images"
+              credentials:
+                - domain: 10.10.10.10
+                  username: admin # you may provide value with 'username' key or you may use 'usernameRef' to refer
+                  password: ""
+```
