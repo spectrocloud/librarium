@@ -7,10 +7,11 @@ sidebar_position: 50
 tags: ["edge"]
 ---
 
-If your Edge host is deployed in an environment with custom networking requirements, such as segmented networks or shared physical interfaces, you can configure network settings directly from Local UI. Network
-configuration defines how the Edge host connects to physical and logical networks and can be adjusted both before and
-after the host joins a cluster. Local UI allows you to configure network interface controllers (NICs), virtual local
-area network (VLAN) interfaces, bonds, and bridges.
+If your Edge host is deployed in an environment with custom networking requirements, such as segmented networks or
+shared physical interfaces, you can configure network settings directly from Local UI. Network configuration defines how
+the Edge host connects to physical and logical networks and can be adjusted both before and after the host joins a
+cluster. Local UI allows you to configure network interface controllers (NICs), virtual local area network (VLAN)
+interfaces, bonds, and bridges.
 
 ## Limitations
 
@@ -166,9 +167,8 @@ area network (VLAN) interfaces, bonds, and bridges.
 
    Verify that a `default via <gateway-ip>` route exists and matches the **Gateway** value configured in Local UI.
 
-4. Validate DNS only when you explicitly configured it in Local UI. For DHCP configurations, DNS values may be
-   inherited automatically and you can ignore them. Use the following command. Replace `ens192` with the required
-   interface name.
+4. Validate DNS only when you explicitly configured it in Local UI. For DHCP configurations, DNS values may be inherited
+   automatically and you can ignore them. Use the following command. Replace `ens192` with the required interface name.
 
    ```shell
    resolvectl dns ens192
