@@ -13,6 +13,12 @@ the Edge host connects to physical and logical networks and can be adjusted both
 cluster. Local UI allows you to configure network interface controllers (NICs), virtual local area network (VLAN)
 interfaces, bonds, and bridges.
 
+:::warning
+
+Avoid modifying any settings associated with a NIC that is already in use within a cluster, as this can lead to irrecoverable failures.
+
+:::
+
 ## Limitations
 
 - In Agent mode, configuring network interfaces using Local UI is allowed only if the interfaces were created via Local
@@ -201,7 +207,7 @@ interfaces, bonds, and bridges.
    Verify the following:
 
    - The `Bonding Mode` matches the value configured in Local UI.
-   - The `Slave Interface` values match the `Member interface` values configured in Local UI.
+   - The `Slave Interface` values match the **Member interface** values configured in Local UI.
 
 6. If you configured bridges, validate their member interfaces. Use the following command.
 
