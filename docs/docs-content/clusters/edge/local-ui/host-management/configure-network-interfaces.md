@@ -57,8 +57,8 @@ irrecoverable failures.
 
 5. Provide the following information.
 
-   | Field       | Description                                                                                                                                                                                                                                             |
-   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Field           | Description                                                                                                                                                                                                                                             |
+   | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Config type** | Configuration type. The following options are available:<br /> - **DHCP** - automatically obtains Internet Protocol (IP) settings from a Dynamic Host Configuration Protocol (DHCP) server. <br /> - **Static** - uses manually configured IP settings. |
    | **MTU**         | Maximum transmission unit (MTU) defines the maximum packet size in bytes that can be transmitted on the interface without fragmentation. The default value is 1500.                                                                                     |
    | **IP Address**  | The unique Internet Protocol version 4 (IPv4) address used to identify the interface on the network. Only applicable for the **Static** configuration type.                                                                                             |
@@ -76,8 +76,8 @@ irrecoverable failures.
 
 3. Provide the following information.
 
-   | Field            | Description                                                                                                                                                                                              |
-   | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Field                | Description                                                                                                                                                                                              |
+   | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Parent type**      | Specifies the member interface type. The following options are available:<br /> - **NIC** - create the VLAN on a physical network interface . <br /> - **Bond** - create the VLAN on a bonded interface. |
    | **Member interface** | Specifies the parent interface (NIC or bond) on which the VLAN is created.                                                                                                                               |
    | **VLAN ID**          | The numeric identifier used to tag traffic for the VLAN. Must be a number between 1 and 4094.                                                                                                            |
@@ -98,9 +98,9 @@ irrecoverable failures.
 
 3. Provide the following information.
 
-   | Field                                    | Description                                                                                                                                                                                                                                      |
-   | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Name**                                     | Unique bond name.                                                                                                                                                                                                                   |
+   | Field                                        | Description                                                                                                                                                                                                                                      |
+   | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Name**                                     | Unique bond name.                                                                                                                                                                                                                                |
    | **Bond type**                                | Configuration type. The following options are available:<br /> - **DHCP** - automatically obtains IP settings from a DHCP server. <br /> - **Static** - uses manually configured IP settings.                                                    |
    | **Member interface**                         | Specifies the physical NICs that are grouped together to form the bond. All selected member interfaces participate in the bonded interface according to the selected bonding mode.                                                               |
    | **Bonding mode**                             | Defines how traffic is distributed across the member interfaces and how failover is handled. Review [Bonding modes](https://www.ibm.com/docs/en/linux-on-systems?topic=recommendations-bonding-modes) to learn more about the available options. |
@@ -121,9 +121,9 @@ irrecoverable failures.
 
 3. Provide the following information.
 
-   | Field            | Description                                                                                                                                                                                   |
-   | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**             | Unique bridge name.                                                                                                                                                              |
+   | Field                | Description                                                                                                                                                                                   |
+   | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**             | Unique bridge name.                                                                                                                                                                           |
    | **Member interface** | Specifies the interfaces that are attached to the bridge.                                                                                                                                     |
    | **Config type**      | Configuration type. The following options are available:<br /> - **DHCP** - automatically obtains IP settings from a DHCP server. <br /> - **Static** - uses manually configured IP settings. |
    | **MTU**              | Defines the maximum packet size in bytes that can be transmitted on the interface without fragmentation. The default value is 1500.                                                           |
