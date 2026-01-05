@@ -25,9 +25,7 @@ The following are architectural highlights of clusters deployed using agent mode
 
 ## Limitations
 
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> distribution does not
+- The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not
   support the following:
 
   - Non-Edge environments
@@ -36,7 +34,8 @@ The following are architectural highlights of clusters deployed using agent mode
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [Agent Mode](./agent-mode.md)
   - [Network overlay](../../clusters/edge/networking/vxlan-overlay.md) in locally managed Edge clusters.
-  - High availability mode with one or two nodes.
+
+<!-- prettier-ignore-start -->
 
 - Edge clusters deployed in agent mode with a Palette cluster agent version prior to 4.7.7 do not support upgrading to
   the following Kubernetes pack versions released in 4.7.20:
@@ -68,14 +67,16 @@ The following are architectural highlights of clusters deployed using agent mode
 
 Agent mode deployments support the following Kubernetes distributions:
 
-<!-- prettier-ignore-start -->
+- PXK-E
+- K3s
+- Canonical
 
-  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
-  - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />
-  - <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" />
-  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" />
+:::preview
 
-<!-- prettier-ignore-end -->
+The **Palette Optimized Canonical** distribution that supports Canonical Kubernetes is a Tech Preview feature and is
+subject to change. Do not use this feature in production workloads.
+
+:::
 
 ## Minimum Device Requirements
 

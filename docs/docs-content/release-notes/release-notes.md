@@ -68,12 +68,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> pack has exited Tech Preview and is now ready for production workloads.
-
-<!-- prettier-ignore-end -->
-
 - [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
   workloads.
 

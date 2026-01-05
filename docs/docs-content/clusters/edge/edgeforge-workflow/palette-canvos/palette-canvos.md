@@ -147,6 +147,14 @@ customization.
 
    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 
+   :::preview
+
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
+
+   :::
+
    Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
    convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
    `spectrocloud/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
@@ -589,6 +597,14 @@ required Edge artifacts.
 11. Issue the command below to create the `.arg` file containing the custom tag, image registry name, and openSUSE Leap
     OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
     [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+    :::preview
+
+    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
+    Do not use this feature in production workloads.
+
+    :::
 
     ```bash
     cat << EOF > .arg
