@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /librarium
 
@@ -7,7 +7,7 @@ ENV DISABLE_SECURITY_INTEGRATIONS=true
 
 COPY --chown=node . .
 
-RUN apk add --no-cache util-linux bash && \
+RUN apk add --no-cache util-linux bash git && \
     npm install @docusaurus/faster &&\
     npm ci && \
     chmod -R +x scripts 
