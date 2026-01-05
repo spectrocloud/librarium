@@ -12,13 +12,13 @@ tags: ["packs", "registry", "edge"]
 
 <RedirectPackPage packName="registry-connect" />
 
-### External Registries
+### Use External Image Registries
 
 You can use external registries with the **Registry Connect** pack. The agent reads this pack before it deploys a cluster on edge hosts. If you set registry mapping rules in this pack, it will rewrite image references with the mapped images in the pack. 
 
 Modify your pack to configure the external registry details. 
 
-#### Global Registry Mapping
+#### Rewrite All Image References
 
 Use the `all` parameter to remap all registries to a single remote location. The following example prepends to the original image location. 
 
@@ -28,7 +28,7 @@ registry:
     "all": "example.registry.com/internal-images"
 ```
 
-#### External Registry Mapping
+#### Rewrite Image References from Specific Registries
 
 Use the `imageReplacementRules` parameter to remap calls to each registry to the specified external registry. 
 
