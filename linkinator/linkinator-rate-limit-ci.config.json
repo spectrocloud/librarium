@@ -27,7 +27,8 @@
     "^https://www.gnu.org.*$$",
     "^https://socket.dev.*$$",
     "^https://www.freedesktop.org.*$$",
-    "^https://docs.openstack.org.*$$"
+    "^https://docs.openstack.org.*$$",
+    "^https://upwind.io.*$$"
   ],
   "verbosity": "error",
   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
