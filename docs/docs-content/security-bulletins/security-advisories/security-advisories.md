@@ -11,6 +11,80 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+## Security Advisory 007- MongoDB zlib Compression Memory
+
+- **Release Date**: December 26, 2025
+- **Last Updated**: December 29, 2025
+- **Severity**: Critical
+- **CVEs**: [CVE-2025-14847](https://nvd.nist.gov/vuln/detail/CVE-2025-14847)
+
+### Summary
+
+A critical unauthenticated vulnerability (CVE-2025-14847) was discovered in MongoDB Server’s handling of zlib-compressed
+network traffic. Under certain conditions, a remote attacker can cause the server to include uninitialized heap memory
+in its responses. Because this memory is drawn directly from the MongoDB process, the exposed data may contain fragments
+of previously processed requests, internal state, or other sensitive information.
+
+Exploitation requires no authentication. Any attacker with network access to a MongoDB instance that has compression
+enabled can potentially trigger the issue. As a result, internal process memory becomes observable to an external
+attacker, leading to unintended information disclosure.
+
+#### Affected Versions
+
+The following MongoDB Server versions are affected by CVE-2025-14847 when network compression is enabled:
+
+- 3.6.x
+- 4.0.x
+- 4.2.x
+- 4.4.0 - 4.4.29
+- 5.0.0 - 5.0.31
+- 6.0.0 - 6.0.26
+- 7.0.0 - 7.0.26
+- 8.0.0 - 8.0.16
+- 8.2.0 - 8.2.2
+
+#### Resolved Versions
+
+The vulnerability is resolved in the following MongoDB Server releases:
+
+- 4.4.30
+- 5.0.32
+- 6.0.27
+- 7.0.28
+- 8.0.17
+- 8.2.3
+
+### Mitigation
+
+Network-level isolation of MongoDB instances and restricting access to trusted internal components reduces exposure.
+Disabling network compression may further mitigate risk where feasible.
+
+### Impact for Spectro Cloud
+
+MongoDB is not directly exposed to the public internet in Palette Enterprise and Palette VerteX deployments.
+Consequently, this vulnerability is not exploitable under normal operating conditions. Exploitation would require a
+prior compromise that grants an attacker network-level access to the underlying infrastructure or cluster hosting the
+deployment.
+
+While MongoDB has rated this vulnerability as _critical_, Spectro Cloud’s deployment architecture significantly limits
+the exploitation surface, resulting in a _low_ practical risk to Palette Enterprise and VerteX customers.
+
+#### Implementation Plan
+
+- All managed SaaS instances have been upgraded to a version that includes the fix for this vulnerability. No further
+  action is required for these environments.
+- All self-hosted Palette and VerteX deployments running the latest release currently use MongoDB 7.0.26 and will be
+  upgraded to version 7.0.28.
+
+This advisory will be updated to reflect availability of the fixes described above.
+
+### Resources
+
+- [Common Vulnerabilities and Exposures (CVE) - CVE-2025-14847](https://www.cve.org/CVERecord?id=CVE-2025-14847)
+- [MongoDB Community Hub - Important MongoDB patch available](https://www.mongodb.com/community/forums/t/important-mongodb-patch-available/332977)
+- [NIST: National Vulnerability Database - CVE-2025-14847 Detail](https://nvd.nist.gov/vuln/detail/CVE-2025-14847)
+- [Upwind - CVE-2025-14847: MongoDB zlib Compression Memory Disclosure](https://www.upwind.io/feed/cve-2025-14847-mongodb-zlib-memory-disclosure)
+
 ## Security Advisory 006.1 - Shai Hulud npm Supply Chain Attack - Supplemental Update
 
 - **Release Date**: December 1, 2025
@@ -42,7 +116,7 @@ We will continue to monitor evolving intelligence from security researchers, col
 our internal investigations as new indicators of compromise are published. This advisory will be updated with additional
 findings as the investigation progresses.
 
-### References
+### Resources
 
 - [Reversing Labs - Shai-hulud npm attack: What you need to know](https://www.reversinglabs.com/blog/shai-hulud-worm-npm)
 - [Socket - Updated and Ongoing Supply Chain Attack Targets CrowdStrike npm Packages](https://socket.dev/blog/ongoing-supply-chain-attack-targets-crowdstrike-npm-packages)
@@ -78,7 +152,7 @@ We will continue to monitor evolving intelligence from security researchers, col
 our internal investigations as new indicators of compromise are published. This advisory will be updated with additional
 findings as the investigation progresses.
 
-### References
+### Resources
 
 - [Reversing Labs - Shai-hulud npm attack: What you need to know](https://www.reversinglabs.com/blog/shai-hulud-worm-npm)
 - [Socket - Updated and Ongoing Supply Chain Attack Targets CrowdStrike npm Packages](https://socket.dev/blog/ongoing-supply-chain-attack-targets-crowdstrike-npm-packages)

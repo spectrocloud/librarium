@@ -138,7 +138,115 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## December 30, 2025 - Release 4.8.16
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+<!-- PCP-5639 -->
+- The process of deploying AWS EKS clusters using <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> has been streamlined. Users no longer need to disable the `kube-proxy` and `aws-node` DaemonSets or update the `charts.cilium.k8sServiceHost` parameter during deployment. Refer to [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) for the updated deployment process.
+
+<!-- prettier-ignore-end -->
+
+<!-- PCP-5648 -->
+
+- Two subnets can now be configured for MAAS LXD workload clusters using the Kubernetes layer of your MAAS cluster
+  profile. One subnet is designed for the preboot execution environment (PXE), which is used for the initial booting and
+  provisioning of LXD virtual machines. The other subnet is used to configure static IP addresses for workload traffic.
+  Refer to
+  [Create and Manage MAAS Clusters Using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md#deploy-a-workload-cluster-with-lxd-vms-as-control-plane-nodes)
+  for more information.
+
+### Bug Fixes
+
+<!-- PCP-5701 -->
+
+- Fixed an issue where cluster profile updates were not applied to clusters until restarting the
+  `cluster-management-agent` pod.
+
+<!-- PE-7738 -->
+
+- Fixed an issue where CoreDNS entered a crash loop after node reboots in Rocky Linux RKE2 FIPS clusters.
+
+<!-- prettier-ignore-start -->
+<!-- PEM-9432 -->
+- Fixed a compatibility issue between the <VersionedLink text="Virtual Machine Orchestrator (VMO)" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> and <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> packs.
+<!-- prettier-ignore-end -->
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+<!-- PAC-3145 -->
+- <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks" /> pack version 1.33 is now available. Due to a [known issue](./known-issues.md), if configuring Palette as your Identity Provider (IdP), you must add `identityProviderConfigName: "eks-oidc"` to the Kubernetes layer of your cluster profile.
+
+    ```yaml {3}
+    managedControlPlane:
+      oidcIdentityProvider:
+        identityProviderConfigName: "eks-oidc"
+    ```
+<!-- prettier-ignore-end -->
+
+## December 19, 2025 - Component Updates {#component-updates-2025-51}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.12.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.2  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.12  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.12  |
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2068 -->
+
+- Fixed an issue that caused duplicate cluster packs errors to appear when Terraform
+  [`spectrocloud_cluster_profile`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
+  updates triggered API validation errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2069 -->
+
+- Fixed an issue that caused certain Day-2 cluster operations to fail for clusters with the Terraform
+  [`spectrocloud_addon_deployment`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/addon_deployment)
+  resource.
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3285 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3350 -->
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbort"/> pack version 1.18.1 now supports configuring HTTP access. Refer to the pack <VersionedLink text="Additional Details" url="/integrations/packs/?pack=harbor&tab=custom"/> tab for further information. 
+
+- Users can now use Ubuntu 22.04 on [VMware](../clusters/data-center/vmware/vmware.md), [Azure](../clusters/public-cloud/azure/azure-cloud.md), and [MAAS](../clusters/data-center/maas/maas.md) clusters using the FIPS <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack version 1.33.5.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3504 -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Calico                       | CNI    | :x:                | :white_check_mark: | 3.31.2      |
+| Harbor                       | Add-on | :white_check_mark: | :x:                | 1.18.1      |
+| Istio                        | Add-on | :white_check_mark: | :x:                | 1.28.1      |
+| Kong                         | Add-on | :white_check_mark: | :x:                | 3.0.0       |
+| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.49.0     |
+| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 79.11.0     |
+| Spectro Kubernetes Dashboard | Add-on | :white_check_mark: | :x:                | 7.13.0      |
+| Ubuntu (Azure)               | OS     | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (MAAS)                | OS     | :x:                | :white_check_mark: | 22.04       |
+| Ubuntu (vSphere)             | OS     | :x:                | :white_check_mark: | 22.04       |
+
 ## December 17, 2025 - Release 4.8.12
+
+The following component updates are applicable to this release:
+
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 #### Features
 
@@ -179,6 +287,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
   v2.9.0.
 
+  As part of the upgrade, the
+  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
+  is now a requirement for migrations. This image was previously optional but is now necessary for the migration
+  process. Refer to the [Create Source Providers](../vm-management/vm-migration-assistant/create-source-providers.md)
+  guide for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-7479 -->
 
 - The default timeout of [Local UI](../clusters/edge/local-ui/local-ui.md) JWT tokens has been reduced to 15 minutes.
@@ -189,17 +303,14 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - The dependencies of the `imageswap` and `imageswap-init` Palette images were updated to the latest versions, ensuring
   that they have the latest security patches. Additionally, the `ubuntu-systemd` image has been removed from Palette.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 https://spectrocloud.atlassian.net/browse/PAC-3435 -->
-<!-- prettier-ignore-start -->
-- The <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> version used in the [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) has been upgraded to 0.1.89.
-<!-- prettier-ignore-end -->
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9158 -->
+
 - The performance of the `/clusterprofiles` [Palette API](/api/introduction) endpoint has been improved.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5551 -->
+
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to fail to provision due to missing
   retry logic for trust policy ConfigMaps.
 
@@ -332,6 +443,7 @@ The following component updates are applicable to this release:
 
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -364,6 +476,7 @@ The following component updates are applicable to this release:
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 ### Improvements
 
@@ -388,6 +501,7 @@ The following component updates are applicable to this release:
 - [November 28, 2025 - Component Updates](#component-updates-2025-48) <!-- omit in toc -->
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
+- [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 
 ### Security Notices
 
