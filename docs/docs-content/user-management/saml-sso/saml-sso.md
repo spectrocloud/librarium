@@ -27,10 +27,8 @@ Palette can act as an Identity Provider (IDP) when <VersionedLink text="Palette 
 
 :::warning
 
-Palette enforces a strict one-to-one mapping between an SSO domain and a tenant.
-
-We recommend planning tenant boundaries around identity domains, using distinct SSO domains to enforce tenant
-separation.
+Palette enforces a strict one-to-one mapping between an SSO domain and a tenant. We recommend planning tenant boundaries
+around identity domains and using distinct SSO domains to enforce tenant separation.
 
 :::
 
