@@ -7,10 +7,15 @@ name: Ready for Review Slack Notification
 on:
   pull_request:
     types: [labeled]
+permissions:
+  pull-requests: write
 
+concurrency:
+  group: readyforreviewci-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  notify:
-    if: github.event.label.name == 'notify-slack'
+  notify-slack:
+    if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
     runs-on: ubuntu-latest
 
     steps:
@@ -92,28 +97,55 @@ jobs:
 
           echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
 
-      - name: Post to Slack
+      - name: Notify Slack
         if: steps.check.outputs.notified == 'false'
+        uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+         
           REVIEWERS: ${{ steps.pick.outputs.reviewers }}
-        run: |
-          PR_URL="${{ github.event.pull_request.html_url }}"
-          TITLE="${{ github.event.pull_request.title }}"
-          AUTHOR="${{ github.event.pull_request.user.login }}"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "#A020F0"
+          SLACK_MESSAGE: |
+            :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
+            Pinging: ${{ steps.pick.outputs.reviewers }}
 
-          payload=$(jq -n \
-            --arg text "*Ready for review:* <$PR_URL|$TITLE>\n*Author:* $AUTHOR\n*Reviewers:* $REVIEWERS" \
-            '{text: $text}')
-
-          curl -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK"
-
-      - name: Leave a comment to prevent duplicate notifications
+      - name: Create or Update Slack comment manually
         if: steps.check.outputs.notified == 'false'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -s -H "Authorization: token $GH_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"body":"Slack notified"}' \
-            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          BODY="✅ Slack reviewers notified at $TIMESTAMP \n <!-- slack-notified -->"
+          if [ -n "${{ steps.check.outputs.comment_id }}" ]; then
+            echo "Updating existing comment..."
+            curl -s -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
+              https://api.github.com/repos/${{ github.repository }}/issues/comments/${{ steps.check.outputs.comment_id }}
+          else
+            echo "Creating new comment..."
+            curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
+              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
+          fi
+
+      - name: Securely overwrite and delete reviewers.json
+        if: always()
+        run: |
+          if [ -f reviewers.json ]; then
+            echo "Shredding reviewers.json"
+            dd if=/dev/urandom of=reviewers.json bs=1 count=$(stat -c%s reviewers.json) conv=notrunc status=none
+            rm -f reviewers.json
+            echo "Secure deletion complete."
+          else
+            echo "No reviewers.json file to delete."
+          fi 
+      - name: Final Job Status Summary
+        if: always()
+        run: |
+          if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
+            echo "✅ Job completed: Slack was already notified (comment updated if needed)."
+          else
+            echo "✅ Job completed: Slack notification was posted successfully."
+          fi
