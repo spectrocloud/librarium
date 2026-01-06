@@ -16,7 +16,8 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 - When integrating with private Domain Name System (DNS) zones, AKS clusters created by Palette use a user-assigned
   managed identity instead of a system-assigned managed identity. This identity must have the
-  [`Microsoft.Network/privateDnsZones/read` permission](https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/networking#microsoftnetwork) in the required subscriptions. Check out
+  [`Microsoft.Network/privateDnsZones/read` permission](https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/networking#microsoftnetwork)
+  in the required subscriptions. Check out
   [What is managed identities for Azure resources?](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities)
   to learn more about user-assigned vs. system-assigned managed identities.
 
