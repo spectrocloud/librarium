@@ -1,11 +1,15 @@
 # This workflow posts to Slack when a PR is labeled with "notify-slack".
 # It notifies reviewers based on each reviewer's local-time window from reviewers.json.
 # It also prevents multiple Slack notifications for the same PR using a hidden PR comment marker.
+#
+# SECURITY NOTE:
+# - This workflow uses pull_request_target so it can comment on PRs from forks.
+# - Do NOT checkout the PR head in this workflow. This file intentionally does not use actions/checkout.
 
 name: Ready for Review Slack Notification
 
 'on':
-  pull_request:
+  pull_request_target:
     types: [labeled]
 
 permissions:
@@ -13,7 +17,8 @@ permissions:
   pull-requests: read
 
 concurrency:
-  group: readyforreviewci-${{ github.ref }}
+  # Prefer the PR number (stable) over github.ref for labeled events.
+  group: readyforreviewci-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
@@ -22,9 +27,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Decode reviewers.json secret
         env:
           REVIEWERS_JSON_B64: ${{ secrets.REVIEWER_CONFIG_B64 }}
@@ -37,10 +39,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MARKER: "<!-- slack-notified -->"
         run: |
-          COMMENTS_JSON="$(curl -fsSL \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments")"
+          COMMENTS_JSON="$(curl -fsSL             -H "Authorization: Bearer $GH_TOKEN"             -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments")"
 
           COMMENT_ID="$(echo "$COMMENTS_JSON" | jq -r --arg m "$MARKER" '
             [.[] | select(.body // "" | contains($m)) | .id][0] // ""')"
@@ -136,18 +135,10 @@ jobs:
 
           if [ -n "$COMMENT_ID" ]; then
             echo "Updating existing marker comment ($COMMENT_ID)..."
-            curl -fsSL -X PATCH \
-              -H "Authorization: Bearer $GH_TOKEN" \
-              -H "Accept: application/vnd.github+json" \
-              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
-              "https://api.github.com/repos/${{ github.repository }}/issues/comments/$COMMENT_ID" > /dev/null
+            curl -fsSL -X PATCH               -H "Authorization: Bearer $GH_TOKEN"               -H "Accept: application/vnd.github+json"               -d "$(jq -nc --arg body "$BODY" '{body: $body}')"               "https://api.github.com/repos/${{ github.repository }}/issues/comments/$COMMENT_ID" > /dev/null
           else
             echo "Creating new marker comment..."
-            curl -fsSL -X POST \
-              -H "Authorization: Bearer $GH_TOKEN" \
-              -H "Accept: application/vnd.github+json" \
-              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
-              "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" > /dev/null
+            curl -fsSL -X POST               -H "Authorization: Bearer $GH_TOKEN"               -H "Accept: application/vnd.github+json"               -d "$(jq -nc --arg body "$BODY" '{body: $body}')"               "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" > /dev/null
           fi
 
       - name: Securely overwrite and delete reviewers.json
