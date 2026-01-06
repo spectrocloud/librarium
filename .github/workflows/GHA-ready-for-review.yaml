@@ -27,7 +27,7 @@ jobs:
 
       - name: Decode reviewers.json secret
         env:
-          REVIEWERS_JSON_B64: ${{ secrets.REVIEWERS_JSON_B64 }}
+          REVIEWERS_JSON_B64: ${{ secrets.REVIEWER_CONFIG_B64 }}
         run: |
           echo "$REVIEWERS_JSON_B64" | base64 --decode > reviewers.json
 
