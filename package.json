@@ -31,7 +31,11 @@
     "**/*.{js,jsx,json,ts,tsx,md,mdx,css}": "npm run format"
   },
   "overrides": {
-    "react-live": ">=3.1.1 <4.0.0"
+    "react-live": ">=3.1.1 <4.0.0",
+    "sharp": "0.34.5",
+    "@docusaurus/lqip-loader": {
+      "sharp": "0.34.5"
+    }
   },
   "resolutions": {
     "react-live": ">=3.1.1 <4.0.0"
@@ -59,7 +63,9 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "docusaurus-theme-openapi-docs": "^4.5.1",
     "fuse.js": "^7.1.0",
+    "node-addon-api": "^8.5.0",
     "node-fetch": "^3.1.0",
+    "node-gyp": "^12.1.0",
     "p-ratelimit": "^1.0.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.1",
@@ -68,7 +74,8 @@
     "react-select": "^5.10.2",
     "remark-gfm": "4.0.1",
     "sass": "^1.92.1",
-    "semver": "^7.7.1"
+    "semver": "^7.7.1",
+    "sharp": "0.34.5"
   },
   "devDependencies": {
     "@argos-ci/cli": "^3.2.1",
@@ -102,7 +109,6 @@
     "jest-fetch-mock": "^3.0.3",
     "linkinator": "^6.1.4",
     "lint-staged": "^16.1.0",
-    "netlify-cli": "^23.12.3",
     "prettier": "3.5.3",
     "semantic-release": "^24.2.8",
     "test-links": "^0.0.1",
@@ -125,6 +131,6 @@
     ]
   },
   "engines": {
-    "node": ">=22.0"
+    "node": ">=20.0"
   }
 }
