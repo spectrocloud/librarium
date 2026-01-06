@@ -14,9 +14,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 - AKS clusters cannot be deployed in [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud).
 
-- Due to Palette’s cluster lifecycle, AKS clusters created by Palette use a user-assigned managed identity instead of a
-  system-assigned managed identity when integrating with Private DNS Zones. This identity should also have the
-  `Microsoft.Network/privateDnsZones/read` permission in the required subscriptions.
+- When integrating with private Domain Name System (DNS) zones, AKS clusters created by Palette use a user-assigned managed identity instead of a
+  system-assigned managed identity. This identity must have the
+  `Microsoft.Network/privateDnsZones/read` permission in the required subscriptions. Check out [What is managed identities for Azure resources?](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities) to learn more about user-assigned vs. system-assigned managed identities. 
 
 ## Prerequisites
 
@@ -61,20 +61,20 @@ explains how you can create an Azure AKS cluster managed by Palette.
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
 
-- Optionally, you can configure a private DNS zone in a dedicated resource group for an AKS cluster. The private DNS
-  zone must be linked to the cluster’s VNet to enable DNS resolution for private endpoints. If no Private DNS Zone is
+- If you configure a private DNS zone in a dedicated resource group for an AKS cluster, the private DNS
+  zone must be linked to the cluster’s VNet to enable DNS resolution for private endpoints. If no private DNS zone is
   provided, AKS creates a private DNS zone in the node resource group. Refer to the
   [Create a private Azure Kubernetes Service (AKS) cluster](https://learn.microsoft.com/en-us/azure/aks/private-clusters)
   guide for further information.
 
-  Review the following guidelines to create the DNS Zone and resource group before deploying your cluster.
+  Review the following guidelines to create a DNS zone and resource group before deploying your cluster.
 
   - For private AKS clusters, the private DNS zone used for the API server must be named
-    `private.<cluster-region>.azmk8s.io`. This naming convention is mandatory and applies regardless of whether the
+    `private.<cluster-region>.azmk8s.io`. This naming convention is mandatory regardless of whether the
     private DNS zone resides in a different resource group, region, or subscription, provided it is correctly linked to
     the cluster VNet.
 
-  - If the Private DNS Zone is located in a different subscription than the AKS cluster, both subscriptions must have
+  - If the private DNS zone is located in a different subscription than the AKS cluster, both subscriptions must have
     the `Microsoft.ContainerService` resource provider registered.
 
 :::warning
@@ -223,7 +223,7 @@ to learn more about the ports used for communication.
 
             <summary> Private DNS Zone </summary>
 
-            If you want to configure a private DNS Zone, update the following configuration in the Kubernetes cluster profile layer. Replace the placeholders with your subscription ID, resource group ID, user assigned identity name, and cluster region.
+            To configure a private DNS zone, update the following configuration in the Kubernetes layer of your cluster profile. Replace the placeholders with your subscription ID, resource group ID, user assigned identity name, and cluster region.
 
                 ```yaml
                 managedControlPlane:
