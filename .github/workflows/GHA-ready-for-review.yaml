@@ -168,5 +168,5 @@ jobs:
           if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
             echo "✅ Job completed: Slack was already notified (marker comment exists)."
           else
-            echo "✅ Job completed: Slack notification was posted and marker comment upserted."
+            echo "✅ Job completed: Slack notification was posted and marker comment updated."
           fi
