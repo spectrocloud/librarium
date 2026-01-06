@@ -128,7 +128,7 @@ jobs:
             :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
             Pinging: ${{ steps.pick.outputs.reviewers }}
 
-      - name: Upsert Slack marker comment
+      - name: Create or Update Slack marker comment manually
         if: steps.check.outputs.notified == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -175,7 +175,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
-            echo "✅ Job completed: Slack was already notified (marker comment exists)."
+            echo "✅ Job completed: Slack was already notified (comment updated if needed)."
           else
-            echo "✅ Job completed: Slack notification was posted and marker comment upserted."
+            echo "✅ Job completed: Slack notification was posted successfully."
           fi
