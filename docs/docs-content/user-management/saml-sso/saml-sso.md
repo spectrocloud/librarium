@@ -25,6 +25,15 @@ Palette can act as an Identity Provider (IDP) when <VersionedLink text="Palette 
 
 ## OIDC Limitations
 
+:::warning
+
+Palette enforces a strict one-to-one mapping between an SSO domain and a tenant.
+
+We recommend planning tenant boundaries around identity domains, using distinct SSO domains to enforce tenant
+separation.
+
+:::
+
 Palette [API keys](../authentication/api-key/api-key.md) that belong to Palette users removed from the organization
 through OIDC/SAML are not automatically removed. We recommend that you remove these keys to ensure that they are no
 longer used. You can programmatically remove the API keys using the REST API or the Palette SDK. Check out the
