@@ -10,6 +10,44 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Edge Host Reset Fails with Encrypted Persistent Partition
+
+Edge hosts using encrypted persistent partitions may fail to complete a reset. A limitation in Kairos version 3.5.3
+prevents these partitions from being reinitialized during the reset workflow, resulting in the operation stopping
+prematurely.
+
+To address this issue, override the default reset behavior by supplying a custom `before-reset` stage through the user
+data. This ensures that the persistent partition is reformatted correctly before the reset workflow continues.
+
+Add the following configuration to the `user-data` file for the affected Edge host.
+
+```yaml
+#cloud-config
+reset:
+  reset-persistent: false
+stages:
+  before-reset:
+    - name: "reset persistent"
+      commands:
+        - |
+          #!/bin/bash
+          udevadm trigger --subsystem-match=block
+          udevadm trigger --type=all || udevadm trigger
+          udevadm settle
+          if [ -e /dev/disk/by-label/COS_PERSISTENT ]; then
+            echo "Persistent partition found"
+          else
+            echo "Persistent partition not found"
+            exit 0
+          fi
+
+          # umount persistent partition
+          umount /dev/disk/by-label/COS_PERSISTENT || true
+
+          # format persistent partition
+          mkfs.ext4 /dev/disk/by-label/COS_PERSISTENT -L COS_PERSISTENT
+```
+
 ## Scenario - Velero Restore Fails with `runAsNonRoot` Validation Error
 
 On Edge Native clusters, restores of security-hardened applications (such as Argo CD) may fail with the affected
@@ -324,13 +362,9 @@ remove the container manually. The kubelet then restarts the component using the
 
 ## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
 
-<!-- prettier-ignore-start -->
-
-When rebooting nodes in an Edge cluster using <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> deployed in a proxied environment, the nodes
+When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes
 may fail to come back online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical
 pack to the `NO_PROXY` list in your Edge installer `user-data`.
-
-<!-- prettier-ignore-end -->
 
 ### Debug Steps
 
@@ -468,7 +502,7 @@ after a reboot.
 ### Debug Steps
 
 1. Access the Edge host through the
-   [vSphere Web Console](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-92986CAA-4FDE-4AA0-A9E9-084FF9E03323.html).
+   [vSphere web console](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/open-the-html-5-remote-console.html).
 
 2. Issue the following command.
 

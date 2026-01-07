@@ -130,7 +130,7 @@ customization.
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
    - `Earthfile` - Contains a series of commands to create target artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
-   - `user-data.template` - A sample user-data file.
+   - `user-data.template` - A sample file containing user data.
 
 7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
@@ -146,6 +146,14 @@ customization.
    tag.
 
    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+   :::preview
+
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
+
+   :::
 
    Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
    convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
@@ -211,7 +219,7 @@ customization.
     :::warning
 
     - If you haven't set a default project for the registration token, ensure that you provide the
-      `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+      `stylus.site.projectName` parameter with the value `Default` in your `user-data` file.
     - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
       replacing `<interface-name>` with the name of the network interface on your Edge host:
 
@@ -540,7 +548,7 @@ required Edge artifacts.
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
    - `Earthfile` - Contains a series of commands to create target artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
-   - `user-data.template` - A sample user-data file.
+   - `user-data.template` - A sample file containing user data.
 
 7. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
    and OS distribution. The table below shows all arguments, their default value, and allowed values.
@@ -589,6 +597,14 @@ required Edge artifacts.
 11. Issue the command below to create the `.arg` file containing the custom tag, image registry name, and openSUSE Leap
     OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
     [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+    :::preview
+
+    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
+    Do not use this feature in production workloads.
+
+    :::
 
     ```bash
     cat << EOF > .arg
@@ -731,7 +747,7 @@ required Edge artifacts.
     :::warning
 
     If you haven't set a default project for the registration token, ensure that you provide the
-    `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+    `stylus.site.projectName` parameter with the value `Default` in the `user-data` file.
 
     :::
 

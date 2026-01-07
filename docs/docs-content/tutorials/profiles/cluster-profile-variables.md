@@ -33,10 +33,10 @@ with Microsoft Azure or Google Cloud Platform (GCP).
   workflow. Refer to the [Create a Palette API Key ](../getting-started/palette/aws/setup.md#create-a-palette-api-key)
   guide for further instructions.
 - A public cloud account registered in Palette. Refer to
-  [AWS](../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
-  [Azure](../../../clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account) or
-  [Google Cloud](../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a cloud
-  account.
+  [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
+  [Azure](../../clusters/public-cloud/azure/azure-cloud.md) or
+  [Google Cloud](../../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a
+  cloud account.
 - An SSH key available in the region where you plan to deploy the cluster.
 - Ensure that the [Palette Community Registry](../../registries-and-packs/registries/registries.md#default-registries)
   is available in your Palette environment. Refer to the
