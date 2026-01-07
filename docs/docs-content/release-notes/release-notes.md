@@ -50,7 +50,7 @@ tags: ["release-notes"]
 
 - [AWS Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) are now
   supported for AWS IaaS clusters. This feature allows you to launch your cluster nodes on physical servers that are
-  dedicated to your use, providing additional isolation and compliance benefits. Refer to the
+  dedicated for your use, providing additional isolation and compliance benefits. Refer to the
   [Create and Manage AWS IaaS Cluster](../clusters/public-cloud/aws/create-cluster.md) and
   [AWS Architecture](../clusters/public-cloud/aws/architecture.md#dedicated-hosts) guides for more information.
 
