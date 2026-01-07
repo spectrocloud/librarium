@@ -100,43 +100,20 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
-### Docs and Education
-
 ### Packs
 
 #### Pack Notes
 
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
 
 #### Deprecations and Removals
+
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack versions 1.1.0, 1.7.1, and 1.9.1 are now deprecated. Upgrade your workloads to use <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack version 1.19.1.
+
+<!-- prettier-ignore-end -->
 
 ## December 30, 2025 - Release 4.8.16
 
