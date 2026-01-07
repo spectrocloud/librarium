@@ -22,7 +22,7 @@ partial_name: installation-steps-prereqs
 
   - Two disks per node.
 
-    - The first disk must be 300 GB minimum and 500 GB is recommended. This disk is used for the {props.version} ISO stack.
+    - The installation disk must be 300 GB minimum and 500 GB is recommended. This disk is used for the {props.version} ISO stack.
 
       You specify the device in the TUI as guided during the **Install {props.version}** steps.
 
@@ -49,11 +49,11 @@ partial_name: installation-steps-prereqs
       :::
 
 
-    - The second disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
+    - Another disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
 
       :::danger
 
-      The second disk is wiped as part of the installation process. If using an existing disk, ensure that you back up any important data before proceeding.
+      This disk is wiped as part of the installation process. If using an existing disk, ensure that you back up any important data before proceeding.
 
       :::
 
