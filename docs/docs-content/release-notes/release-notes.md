@@ -30,6 +30,10 @@ tags: ["release-notes"]
   [Create and Manage MAAS Clusters Using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md#deploy-a-workload-cluster-with-lxd-vms-as-control-plane-nodes)
   for more information.
 
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.16 is now
+  available.
+
 ### Bug Fixes
 
 <!-- PCP-5701 -->
