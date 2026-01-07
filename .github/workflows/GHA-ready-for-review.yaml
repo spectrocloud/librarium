@@ -1,21 +1,24 @@
-# This workflow will post to Slack when a PR is labeled with "notify-slack". 
-# It will notify the appropriate reviewers based on the current UTC hour.
-# It also ensures that Slack is not notified multiple times for the same PR.
-# The reviewers are defined in a Base64 encoded JSON file stored in a GitHub secret.
-# After notifying, it records the notification in the PR comments and securely deletes the reviewers file.
-# The workflow is designed to be efficient and secure, ensuring that sensitive information is handled properly.
+# This workflow posts to Slack when a PR is labeled with "notify-slack".
+# It notifies reviewers based on each reviewer's local-time window from reviewers.json.
+# It also prevents multiple Slack notifications for the same PR using a hidden PR comment marker.
+#
+# SECURITY NOTE:
+# - This workflow uses pull_request_target so it can comment on PRs from forks.
+# - Do NOT checkout the PR head in this workflow. This file intentionally does not use actions/checkout.
 
-name: Ready for Review
+name: Ready for Review Slack Notification
 
-on:
-  pull_request:
+'on':
+  pull_request_target:
     types: [labeled]
 
 permissions:
-  pull-requests: write
+  issues: write
+  pull-requests: read
 
 concurrency:
-  group: readyforreviewci-${{ github.ref }}
+  # Prefer the PR number (stable) over github.ref for labeled events.
+  group: readyforreviewci-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
@@ -24,54 +27,78 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check for prior Slack notification comment
-        id: check
+      - name: Decode reviewers.json secret
+        env:
+          REVIEWERS_JSON_B64: ${{ secrets.REVIEWER_CONFIG_B64 }}
         run: |
-          COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments)
+          echo "$REVIEWERS_JSON_B64" | base64 --decode > reviewers.json
 
-          COMMENT_ID=$(echo "$COMMENTS" | jq '.[] | select(.body | contains("<!-- slack-notified -->")) | .id')
+      - name: Check if Slack was already notified (marker comment)
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MARKER: "<!-- slack-notified -->"
+        run: |
+          COMMENTS_JSON="$(curl -fsSL             -H "Authorization: Bearer $GH_TOKEN"             -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments")"
+
+          COMMENT_ID="$(echo "$COMMENTS_JSON" | jq -r --arg m "$MARKER" '
+            [.[] | select(.body // "" | contains($m)) | .id][0] // ""')"
 
           if [ -n "$COMMENT_ID" ]; then
-            echo "Slack already notified."
-            echo "notified=true" >> $GITHUB_OUTPUT
-            echo "comment_id=$COMMENT_ID" >> $GITHUB_OUTPUT
+            echo "notified=true" >> "$GITHUB_OUTPUT"
+            echo "comment_id=$COMMENT_ID" >> "$GITHUB_OUTPUT"
+            echo "Found marker comment id: $COMMENT_ID"
           else
-            echo "notified=false" >> $GITHUB_OUTPUT
+            echo "notified=false" >> "$GITHUB_OUTPUT"
+            echo "comment_id=" >> "$GITHUB_OUTPUT"
+            echo "No marker comment found."
           fi
-
-      - name: Exit if already notified
-        if: steps.check.outputs.notified == 'true'
-        continue-on-error: true
-        run: echo "Slack already notified — skipping remaining steps."
-
-      - name: Decode reviewer config (Base64)
-        if: steps.check.outputs.notified == 'false'
-        id: config
-        run: |
-          echo "${{ secrets.REVIEWER_CONFIG_B64 }}" | base64 -d > reviewers.json
 
       - name: Choose Reviewers From Config
         if: steps.check.outputs.notified == 'false'
         id: pick
         run: |
-          HOUR=$(date -u +'%H')
-          DAY=$(date -u +%a | tr '[:upper:]' '[:lower:]')
-          echo "UTC Hour: $HOUR | Day: $DAY"
+          to_minutes () {
+            local t="$1"
+            if [[ "$t" == *:* ]]; then
+              local hh="${t%%:*}"
+              local mm="${t##*:}"
+              echo $((10#$hh * 60 + 10#$mm))
+            else
+              # Back-compat: integer hour => HH:00
+              echo $((10#$t * 60))
+            fi
+          }
+
+          now_in_tz () {
+            local tz="$1"
+            local hh mm day
+            hh=$(TZ="$tz" date +%H)
+            mm=$(TZ="$tz" date +%M)
+            day=$(TZ="$tz" date +%a | tr '[:upper:]' '[:lower:]')
+            echo "$((10#$hh * 60 + 10#$mm)) $day $hh $mm"
+          }
 
           REVIEWERS=""
 
           for reviewer in $(jq -r 'keys[]' reviewers.json); do
-            START=$(jq -r ".\"$reviewer\".start" reviewers.json)
-            END=$(jq -r ".\"$reviewer\".end" reviewers.json)
+            START_RAW=$(jq -r ".\"$reviewer\".start" reviewers.json)
+            END_RAW=$(jq -r ".\"$reviewer\".end" reviewers.json)
             SLACK_ID=$(jq -r ".\"$reviewer\".slack_id" reviewers.json)
+            TZID=$(jq -r ".\"$reviewer\".tz // \"UTC\"" reviewers.json)
+
+            read -r NOW_MIN DAY HH MM <<< "$(now_in_tz "$TZID")"
+            echo "Reviewer: $reviewer | TZ: $TZID | Local: ${HH}:${MM} | Day: $DAY"
 
             if jq -e ".\"$reviewer\".days" reviewers.json > /dev/null; then
               DAYS=$(jq -r ".\"$reviewer\".days[]" reviewers.json | tr '\n' ' ')
               [[ "$DAYS" != *"$DAY"* ]] && continue
             fi
 
-            if [ "$HOUR" -ge "$START" ] && [ "$HOUR" -lt "$END" ]; then
+            START_MIN=$(to_minutes "$START_RAW")
+            END_MIN=$(to_minutes "$END_RAW")
+
+            if [ "$NOW_MIN" -ge "$START_MIN" ] && [ "$NOW_MIN" -lt "$END_MIN" ]; then
               REVIEWERS+="<@$SLACK_ID> "
             fi
           done
@@ -80,12 +107,13 @@ jobs:
             REVIEWERS="<!here> _(No reviewers available — notifying team)_"
           fi
 
-          echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
+          echo "reviewers=$REVIEWERS" >> "$GITHUB_OUTPUT"
 
       - name: Notify Slack
         if: steps.check.outputs.notified == 'false'
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
+          REVIEWERS: ${{ steps.pick.outputs.reviewers }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
@@ -94,24 +122,23 @@ jobs:
             :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
             Pinging: ${{ steps.pick.outputs.reviewers }}
 
-      - name: Create or Update Slack comment manually
+      - name: Upsert Slack marker comment
         if: steps.check.outputs.notified == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MARKER: "<!-- slack-notified -->"
         run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          BODY="✅ Slack reviewers notified at $TIMESTAMP \n <!-- slack-notified -->"
+          TIMESTAMP="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          BODY=$'✅ Slack reviewers notified at '"$TIMESTAMP"$'\n\n'"$MARKER"
 
-          if [ -n "${{ steps.check.outputs.comment_id }}" ]; then
-            echo "Updating existing comment..."
-            curl -s -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Accept: application/vnd.github.v3+json" \
-              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
-              https://api.github.com/repos/${{ github.repository }}/issues/comments/${{ steps.check.outputs.comment_id }}
+          COMMENT_ID="${{ steps.check.outputs.comment_id }}"
+
+          if [ -n "$COMMENT_ID" ]; then
+            echo "Updating existing marker comment ($COMMENT_ID)..."
+            curl -fsSL -X PATCH               -H "Authorization: Bearer $GH_TOKEN"               -H "Accept: application/vnd.github+json"               -d "$(jq -nc --arg body "$BODY" '{body: $body}')"               "https://api.github.com/repos/${{ github.repository }}/issues/comments/$COMMENT_ID" > /dev/null
           else
-            echo "Creating new comment..."
-            curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Accept: application/vnd.github.v3+json" \
-              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
-              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
+            echo "Creating new marker comment..."
+            curl -fsSL -X POST               -H "Authorization: Bearer $GH_TOKEN"               -H "Accept: application/vnd.github+json"               -d "$(jq -nc --arg body "$BODY" '{body: $body}')"               "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" > /dev/null
           fi
 
       - name: Securely overwrite and delete reviewers.json
@@ -130,7 +157,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
-            echo "✅ Job completed: Slack was already notified (comment updated if needed)."
+            echo "✅ Job completed: Slack was already notified (marker comment exists)."
           else
-            echo "✅ Job completed: Slack notification was posted successfully."
+            echo "✅ Job completed: Slack notification was posted and marker comment updated."
           fi

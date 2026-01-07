@@ -11,6 +11,56 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 30, 2025 - Release 4.8.16
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+<!-- PCP-5639 -->
+- The process of deploying AWS EKS clusters using <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> has been streamlined. Users no longer need to disable the `kube-proxy` and `aws-node` DaemonSets or update the `charts.cilium.k8sServiceHost` parameter during deployment. Refer to [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) for the updated deployment process.
+
+<!-- prettier-ignore-end -->
+
+<!-- PCP-5648 -->
+
+- Two subnets can now be configured for MAAS LXD workload clusters using the Kubernetes layer of your MAAS cluster
+  profile. One subnet is designed for the preboot execution environment (PXE), which is used for the initial booting and
+  provisioning of LXD virtual machines. The other subnet is used to configure static IP addresses for workload traffic.
+  Refer to
+  [Create and Manage MAAS Clusters Using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md#deploy-a-workload-cluster-with-lxd-vms-as-control-plane-nodes)
+  for more information.
+
+### Bug Fixes
+
+<!-- PCP-5701 -->
+
+- Fixed an issue where cluster profile updates were not applied to clusters until restarting the
+  `cluster-management-agent` pod.
+
+<!-- PE-7738 -->
+
+- Fixed an issue where CoreDNS entered a crash loop after node reboots in Rocky Linux RKE2 FIPS clusters.
+
+<!-- prettier-ignore-start -->
+<!-- PEM-9432 -->
+- Fixed a compatibility issue between the <VersionedLink text="Virtual Machine Orchestrator (VMO)" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> and <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> packs.
+<!-- prettier-ignore-end -->
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+<!-- PAC-3145 -->
+- <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks" /> pack version 1.33 is now available. Due to a [known issue](./known-issues.md), if configuring Palette as your Identity Provider (IdP), you must add `identityProviderConfigName: "eks-oidc"` to the Kubernetes layer of your cluster profile.
+
+    ```yaml {3}
+    managedControlPlane:
+      oidcIdentityProvider:
+        identityProviderConfigName: "eks-oidc"
+    ```
+<!-- prettier-ignore-end -->
+
 ## December 19, 2025 - Component Updates {#component-updates-2025-51}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.12.
