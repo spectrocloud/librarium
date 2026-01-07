@@ -12,9 +12,9 @@ tags: ["packs", "registry", "edge"]
 
 ### Use External Image Registries
 
-You can use external registries with the Registry Connect pack. The agent reads this pack before it deploys a cluster on edge hosts. When you set registry mapping rules in this pack, it rewrites image references with the mapped images in the pack. 
+You can use external registries with the Registry Connect pack. 
 
-Modify your pack's `imageReplacementRules` parameter to rewrite container image references to an external registry.
+Modify the `imageReplacementRules` parameter to rewrite container image references to an external registry.
 
 #### Rewrite All Image References
 
@@ -32,11 +32,12 @@ charts:
            "all": "example.registry.com/internal-images"
 ```
 
-In this location, an image originally located at `us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2` now points to `example.registry.com/internal-images/us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2` instead. 
+In this case, the prefix `example.registry.com/internal-images` is added to the original image reference `us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
+As a result, the image reference becomes `example.registry.com/internal-images/us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
 
 #### Rewrite Image References for Specific Registries
 
-Enter your preferred locations to rewrite image references. This replaces specific source registry prefixes with the specified external registry. 
+You can rewrite image references by replacing one or more source registry prefixes with external registry prefixes.
 
 The following example shows how to rewrite image references to use `example.registry.com/internal-images`.
 
@@ -67,4 +68,5 @@ charts:
             password: ""
 ```
 
-In this example, if your image was originally located at `us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`, it would now point to `example.registry.com/internal-images/packs/flannel/0.27.0/cni-plugins:v1.6.2` instead. This replaces all instances of the indicated registry location with a new one. 
+Based on the defined rules, an image originally referenced as `us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2` is rewritten to `example.registry.com/internal-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
+This replacement occurs whenever the image reference matches one of the specified source registry prefixes.
