@@ -21,10 +21,10 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.8.a}
 
-- Users with the `cluster.delete` permission are no longer allowed to download cluster
+- Users with the `cluster.delete` permission are no longer allowed to download the cluster
   [admin kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This operation is now controlled using the
-  `cluster.adminKubeconfigDownload` permission, allowing system administrators with fine-grained control over cluster
-  admin access.
+  `cluster.adminKubeconfigDownload` permission, giving system administrators fine-grained control over cluster admin
+  access.
 
   The `cluster.adminKubeconfigDownload` permission is part of the following system roles:
 
@@ -55,6 +55,12 @@ tags: ["release-notes"]
   [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide to learn more.
 
 #### Deprecations and Removals
+
+- The `stylus.installationMode`
+  [Edge Installer Configuration](../clusters/edge/edge-configuration/installer-reference.md) flag is no longer
+  available. Use the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the Edge
+  host is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance. Refer to
+  the [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for further information.
 
 ### Edge
 
