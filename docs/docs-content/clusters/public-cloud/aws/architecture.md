@@ -168,9 +168,10 @@ of spot instances and dedicated hosts.
 
 ### Spot Instances
 
-To take advantage of discounted spot instance pricing, select an **Instance Option** of **On-Spot** when configuring your nodes during the cluster creation process. This option allows you to
-specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for
-spot instances and launches nodes when the spot price falls in the specified range.
+To take advantage of discounted spot instance pricing, select an **Instance Option** of **On-Spot** when configuring
+your nodes during the cluster creation process. This option allows you to specify a maximum bid price for the nodes as a
+percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes when the spot
+price falls in the specified range.
 
 ### Dedicated Hosts
 
@@ -182,8 +183,9 @@ Dedicated Hosts are only supported in AWS IaaS clusters.
 
 Palette supports launching node pools on AWS Dedicated Hosts. Dedicated Hosts are physical servers with EC2 instance
 capacity fully dedicated to your use. This helps you address compliance requirements and reduce costs by allowing you to
-use your existing server-bound software licenses. To use Dedicated Hosts, select an **Instance Option** of **Host Resource Group** when configuring your nodes during the cluster creation process. This option allows you to specify the host resource group and any license
-configurations required for your deployment.
+use your existing server-bound software licenses. To use Dedicated Hosts, select an **Instance Option** of **Host
+Resource Group** when configuring your nodes during the cluster creation process. This option allows you to specify the
+host resource group and any license configurations required for your deployment.
 
 ## Tags
 
