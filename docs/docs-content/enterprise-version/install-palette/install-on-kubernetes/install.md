@@ -189,7 +189,7 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: ""  # leave empty to use the default storage class
 
     config:
-      managementMode: "central" #values can be connected or airgap.
+      installationMode: "central" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -401,7 +401,7 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: ""  # leave empty to use the default storage class
 
     config:
-      managementMode: "central" #values can be connected or airgap.
+      installationMode: "central" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
