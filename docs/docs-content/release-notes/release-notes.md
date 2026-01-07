@@ -48,6 +48,12 @@ tags: ["release-notes"]
   with minimal effort. Refer to our [Cluster Templates](../cluster-templates/cluster-templates.md) guide for more
   information.
 
+- [AWS Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) are now
+  supported for AWS IaaS clusters. This feature allows you to launch your cluster nodes on physical servers that are
+  dedicated for your use, providing additional isolation and compliance benefits. Refer to the
+  [Create and Manage AWS IaaS Cluster](../clusters/public-cloud/aws/create-cluster.md) and
+  [AWS Architecture](../clusters/public-cloud/aws/architecture.md#dedicated-hosts) guides for more information.
+
 #### Improvements
 
 - You can now add OCI Helm registries that do not require authentication to Palette. This allows you to leverage
