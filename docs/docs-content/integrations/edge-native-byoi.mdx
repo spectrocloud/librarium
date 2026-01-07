@@ -23,25 +23,24 @@ images required by the Edge Installer. Refer to the
 [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
 create a custom OS that includes all the required components for the Edge Installer.
 
-Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process.
+Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. 
+
+The `options.system.uri` parameter specifies the location of the BYOOS image. This parameter is required and included in your pack YAML file by default.
 
 The following section provides the list of optional parameters you can customize in the pack YAML file.
 
-### Optional Customizable Parameters
+### Customizable Optional Parameters
 
-You can customize several sections of the pack YAML file. The `drain` and `options` section are included by default. 
+You can customize several sections of the pack YAML file. The `drain` section is included by default. 
 
-In the `drain` section, uncomment the section and update any parameters that you want to change. Otherwise, the default values will be used. 
+* The `drain` section controls how nodes are drained during cluster upgrades. If you do not make any changes in this section, the default drain values are used.
 
-In the `options` section, set the `system.uri` parameter to the location of the BYOOS image for appliance mode.
+* The `providerCredentials` section supplies the credentials and trust configuration for the registry that contains your provider images. 
 
-To further customize your configuration, you can add the `providerCredentials` and `stages` sections. Add the `providerCredentials` section to add your remote registry's user credentials and information. Add the `stages` section to define YIP stages that run during the node boot process. This is similar to adding stages to your user data. Refer to the [Installer Referecne Cloud Init Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages) for more information. 
+* The `stages` section defines the cloud-init stages that run during the node boot process. This is similar to adding stages to your user data. Refer to the [Installer Reference Cloud Init Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages) for more information. 
 
-#### Configuration Example
 
-The following is an example YAML configuration file for your pack. 
-
-<summary>Example pack YAML file</summary>
+The following YAML configuration file shows how these sections are used, as well as all of the available fields. 
 
 ```yaml
 pack:
