@@ -85,7 +85,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.8.a) for more details.
-  
 - <TpBadge /> Palette VerteX now supports deploying Azure IaaS clusters to [Azure Government Secret
   cloud](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security), providing
   flexibility for organizations that need to meet stringent security requirements. Refer to the [Register and Manage
