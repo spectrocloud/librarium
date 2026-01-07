@@ -18,7 +18,7 @@ Modify the `imageReplacementRules` parameter to rewrite container image referenc
 
 #### Rewrite All Image References
 
-Use the `all` key word to remap all registries to a single remote location.  The following example prepends the value to the original image location. 
+Use the `all` key word to add a prefix to all image references. The following example shows how to use this key word in your pack's YAML file. 
 
 ```yaml
 pack:
@@ -66,6 +66,7 @@ charts:
           - domain: 10.10.10.10
             username: admin # you may provide value with 'username' key or you may use 'usernameRef' to refer
             password: ""
+...
 ```
 
 Based on the defined rules, an image originally referenced as `us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2` is rewritten to `example.registry.com/internal-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
