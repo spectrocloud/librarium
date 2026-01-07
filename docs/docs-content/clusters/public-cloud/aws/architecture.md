@@ -164,7 +164,7 @@ instances of t3.medium are needed to satisfy the resource requirement of an EKS 
 
 You can specify different instance options for your nodes to optimize cost and performance. By default, node pools are
 configured to use on-demand instances, which provide flexibility and reliability. However, Palette also supports the use
-of spot instances and dedicated hosts.
+of spot instances and Dedicated Hosts.
 
 ### Spot Instances
 
