@@ -47,6 +47,11 @@ tags: ["release-notes"]
   a single, reusable governance blueprint, allowing you to deploy, manage, and upgrade a synchronized fleet of clusters
   with minimal effort. Refer to our [Cluster Templates](../cluster-templates/cluster-templates.md) guide for more
   information.
+- <TpBadge /> Palette VerteX now supports deploying Azure IaaS clusters to [Azure Government Secret
+  cloud](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security), providing
+  flexibility for organizations that need to meet stringent security requirements. Refer to the [Register and Manage
+  Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md#azure-government-secret-cloud) and [Create and
+  Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guides for more information.
 
 #### Improvements
 
