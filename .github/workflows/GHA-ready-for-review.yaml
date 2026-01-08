@@ -5,6 +5,8 @@
 # SECURITY NOTE:
 # - This workflow uses pull_request_target so it can comment on PRs from forks.
 # - Do NOT checkout the PR head in this workflow. This file intentionally does not use actions/checkout.
+# "Notify once" semantics: we create a marker comment FIRST (lock). If we can't write the marker,
+# we refuse to notify to avoid duplicate Slack notifications.
 
 name: Ready for Review Slack Notification
 
@@ -17,7 +19,6 @@ permissions:
   pull-requests: read
 
 concurrency:
-  # Prefer the PR number (stable) over github.ref for labeled events.
   group: readyforreviewci-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
@@ -27,11 +28,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # SECURITY: Intentionally no checkout. Do NOT checkout PR head in pull_request_target workflows.
+
       - name: Decode reviewers.json secret
         env:
           REVIEWERS_JSON_B64: ${{ secrets.REVIEWER_CONFIG_B64 }}
         run: |
-          echo "$REVIEWERS_JSON_B64" | base64 --decode > reviewers.json
+          echo "::group::Decode reviewer config"
+          if [ -z "${REVIEWERS_JSON_B64:-}" ]; then
+            echo "::warning::REVIEWER_CONFIG_B64 secret is empty or not set; no reviewers will be selected."
+            echo "{}" > reviewers.json
+          else
+            echo "$REVIEWERS_JSON_B64" | base64 --decode > reviewers.json || {
+              echo "::warning::Failed to decode REVIEWER_CONFIG_B64; no reviewers will be selected."
+              echo "{}" > reviewers.json
+            }
+          fi
+          echo "::endgroup::"
 
       - name: Check if Slack was already notified (marker comment)
         id: check
@@ -39,6 +52,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MARKER: "<!-- slack-notified -->"
         run: |
+          echo "::group::Check marker comment"
           COMMENTS_JSON="$(curl -fsSL             -H "Authorization: Bearer $GH_TOKEN"             -H "Accept: application/vnd.github+json"             "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments")"
 
           COMMENT_ID="$(echo "$COMMENTS_JSON" | jq -r --arg m "$MARKER" '
@@ -47,17 +61,42 @@ jobs:
           if [ -n "$COMMENT_ID" ]; then
             echo "notified=true" >> "$GITHUB_OUTPUT"
             echo "comment_id=$COMMENT_ID" >> "$GITHUB_OUTPUT"
-            echo "Found marker comment id: $COMMENT_ID"
+            echo "::notice::Found marker comment id: $COMMENT_ID"
           else
             echo "notified=false" >> "$GITHUB_OUTPUT"
             echo "comment_id=" >> "$GITHUB_OUTPUT"
-            echo "No marker comment found."
+            echo "::notice::No marker comment found."
+          fi
+          echo "::endgroup::"
+
+      - name: Acquire notify lock (create marker comment if missing)
+        if: steps.check.outputs.notified == 'false'
+        id: lock
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MARKER: "<!-- slack-notified -->"
+        run: |
+          echo "::group::Acquire notify lock"
+          TIMESTAMP="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          BODY=$'🟡 Slack notification locked at '"$TIMESTAMP"$'\n\n'"$MARKER"
+
+          RESP="$(curl -fsSL -X POST             -H "Authorization: Bearer $GH_TOKEN"             -H "Accept: application/vnd.github+json"             -d "$(jq -nc --arg body "$BODY" '{body: $body}')"             "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments")"
+
+          COMMENT_ID="$(echo "$RESP" | jq -r '.id // ""')"
+          if [ -z "$COMMENT_ID" ]; then
+            echo "::error::Failed to create marker comment; refusing to notify to avoid duplicates."
+            exit 1
           fi
 
+          echo "comment_id=$COMMENT_ID" >> "$GITHUB_OUTPUT"
+          echo "::notice::Notify lock acquired with comment id: $COMMENT_ID"
+          echo "::endgroup::"
+
       - name: Choose Reviewers From Config
-        if: steps.check.outputs.notified == 'false'
+        if: steps.lock.outputs.comment_id != ''
         id: pick
         run: |
+          echo "::group::Select reviewers"
           to_minutes () {
             local t="$1"
             if [[ "$t" == *:* ]]; then
@@ -81,17 +120,22 @@ jobs:
 
           REVIEWERS=""
 
-          for reviewer in $(jq -r 'keys[]' reviewers.json); do
-            START_RAW=$(jq -r ".\"$reviewer\".start" reviewers.json)
-            END_RAW=$(jq -r ".\"$reviewer\".end" reviewers.json)
-            SLACK_ID=$(jq -r ".\"$reviewer\".slack_id" reviewers.json)
-            TZID=$(jq -r ".\"$reviewer\".tz // \"UTC\"" reviewers.json)
+          for reviewer in $(jq -r 'keys[]' reviewers.json 2>/dev/null || true); do
+            START_RAW=$(jq -r "."$reviewer".start" reviewers.json 2>/dev/null || echo "")
+            END_RAW=$(jq -r "."$reviewer".end" reviewers.json 2>/dev/null || echo "")
+            SLACK_ID=$(jq -r "."$reviewer".slack_id" reviewers.json 2>/dev/null || echo "")
+            TZID=$(jq -r "."$reviewer".tz // "UTC"" reviewers.json 2>/dev/null || echo "UTC")
+
+            if [ -z "$START_RAW" ] || [ -z "$END_RAW" ] || [ -z "$SLACK_ID" ]; then
+              echo "::warning::Reviewer '$reviewer' missing required fields (start/end/slack_id); skipping."
+              continue
+            fi
 
             read -r NOW_MIN DAY HH MM <<< "$(now_in_tz "$TZID")"
             echo "Reviewer: $reviewer | TZ: $TZID | Local: ${HH}:${MM} | Day: $DAY"
 
-            if jq -e ".\"$reviewer\".days" reviewers.json > /dev/null; then
-              DAYS=$(jq -r ".\"$reviewer\".days[]" reviewers.json | tr '\n' ' ')
+            if jq -e "."$reviewer".days" reviewers.json > /dev/null 2>&1; then
+              DAYS=$(jq -r "."$reviewer".days[]" reviewers.json 2>/dev/null | tr '\n' ' ')
               [[ "$DAYS" != *"$DAY"* ]] && continue
             fi
 
@@ -105,12 +149,17 @@ jobs:
 
           if [ -z "$REVIEWERS" ]; then
             REVIEWERS="<!here> _(No reviewers available — notifying team)_"
+            echo "::notice::No reviewers matched availability window; using <!here>."
+          else
+            echo "::notice::Selected reviewers: $REVIEWERS"
           fi
 
           echo "reviewers=$REVIEWERS" >> "$GITHUB_OUTPUT"
+          echo "::endgroup::"
 
       - name: Notify Slack
-        if: steps.check.outputs.notified == 'false'
+        if: steps.lock.outputs.comment_id != ''
+        continue-on-error: true
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
           REVIEWERS: ${{ steps.pick.outputs.reviewers }}
@@ -122,42 +171,42 @@ jobs:
             :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
             Pinging: ${{ steps.pick.outputs.reviewers }}
 
-      - name: Upsert Slack marker comment
-        if: steps.check.outputs.notified == 'false'
+      - name: Finalize marker comment
+        if: steps.lock.outputs.comment_id != ''
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MARKER: "<!-- slack-notified -->"
         run: |
+          echo "::group::Finalize marker comment"
           TIMESTAMP="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-          BODY=$'✅ Slack reviewers notified at '"$TIMESTAMP"$'\n\n'"$MARKER"
+          BODY=$'✅ Slack notification attempted at '"$TIMESTAMP"$'\n\n'"$MARKER"
+          COMMENT_ID="${{ steps.lock.outputs.comment_id }}"
 
-          COMMENT_ID="${{ steps.check.outputs.comment_id }}"
-
-          if [ -n "$COMMENT_ID" ]; then
-            echo "Updating existing marker comment ($COMMENT_ID)..."
-            curl -fsSL -X PATCH               -H "Authorization: Bearer $GH_TOKEN"               -H "Accept: application/vnd.github+json"               -d "$(jq -nc --arg body "$BODY" '{body: $body}')"               "https://api.github.com/repos/${{ github.repository }}/issues/comments/$COMMENT_ID" > /dev/null
-          else
-            echo "Creating new marker comment..."
-            curl -fsSL -X POST               -H "Authorization: Bearer $GH_TOKEN"               -H "Accept: application/vnd.github+json"               -d "$(jq -nc --arg body "$BODY" '{body: $body}')"               "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" > /dev/null
-          fi
+          curl -fsSL -X PATCH             -H "Authorization: Bearer $GH_TOKEN"             -H "Accept: application/vnd.github+json"             -d "$(jq -nc --arg body "$BODY" '{body: $body}')"             "https://api.github.com/repos/${{ github.repository }}/issues/comments/$COMMENT_ID" > /dev/null             || echo "::warning::Failed to finalize marker comment ($COMMENT_ID)"
+          echo "::endgroup::"
 
       - name: Securely overwrite and delete reviewers.json
         if: always()
         run: |
+          echo "::group::Cleanup"
           if [ -f reviewers.json ]; then
             echo "Shredding reviewers.json"
-            dd if=/dev/urandom of=reviewers.json bs=1 count=$(stat -c%s reviewers.json) conv=notrunc status=none
-            rm -f reviewers.json
-            echo "Secure deletion complete."
+            dd if=/dev/urandom of=reviewers.json bs=1 count=$(stat -c%s reviewers.json) conv=notrunc status=none || true
+            rm -f reviewers.json || true
+            echo "Cleanup complete."
           else
             echo "No reviewers.json file to delete."
           fi
+          echo "::endgroup::"
 
       - name: Final Job Status Summary
         if: always()
         run: |
           if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
             echo "✅ Job completed: Slack was already notified (marker comment exists)."
+          elif [ -n "${{ steps.lock.outputs.comment_id }}" ]; then
+            echo "✅ Job completed: Notify lock acquired; Slack notification attempted."
           else
-            echo "✅ Job completed: Slack notification was posted and marker comment updated."
+            echo "ℹ️ Job completed: No lock acquired (likely already notified or skipped)."
           fi
