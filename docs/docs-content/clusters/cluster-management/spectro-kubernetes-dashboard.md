@@ -29,6 +29,17 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 <!-- prettier-ignore-end -->
 
+## Supported Cluster Types
+
+- Public Cloud
+  - Infrastructure as a Service (IaaS):
+    - AWS
+    - Azure
+    - GCP
+  - Managed Kubernetes:
+    - AWS EKS
+- Edge
+
 ## Prerequisites
 
 - An active Palette cluster.
