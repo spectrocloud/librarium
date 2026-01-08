@@ -12,7 +12,7 @@ name: Ready for Review Slack Notification
 
 'on':
   pull_request_target:
-    types: [labeled]
+    types: [ready_for_review, labeled]
 
 permissions:
   issues: write
@@ -24,7 +24,8 @@ concurrency:
 
 jobs:
   notify-slack:
-    if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
+    if: github.event.pull_request.draft == false &&
+        contains(github.event.pull_request.labels.*.name, 'notify-slack')
     runs-on: ubuntu-latest
 
     steps:
