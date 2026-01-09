@@ -183,10 +183,11 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
 
    #### Cloud Configuration
 
-   | Field Name              | Description                                                        |
-   | ----------------------- | ------------------------------------------------------------------ |
-   | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
-   | **Networks (optional)** | Select the guest network to use.                                   |
+   | Field Name                   | Description                                                        |
+   | ---------------------------- | ------------------------------------------------------------------ |
+   | **Compute offering**         | Select the compute offering to use for all nodes in the node pool. |
+   | **Networks (optional)**      | Select the guest network to use.                                   |
+   | **Template Name (optional)** | Copy and paste the template name from CloudStack dashboard.        |
 
    You can click **Copy from Control Plane Pool** if you want to re-use the Control Plane Pool's **Compute offering**
    and **Networks**.
