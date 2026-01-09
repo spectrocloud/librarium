@@ -179,7 +179,6 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
    | **Additional Labels**              | Additional labels to apply to the control plane nodes.                                                                                                                                                                                                                                                                                                                                                                                                                     |
    | **Override Kubeadm Configuration** | Adjust [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) settings for specific operational or environmental requirements. Disabled by default.                                                                                                                                                                                                                                                                                                          |
    | **Additional Annotations**         | Additional Kubernetes [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to assign to each worker node.                                                                                                                                                                                                                                                                                                                         |
-   | **Placeholder for Image Template name**         | Additional Kubernetes [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to assign to each worker node.                                                                                                                                                                                                                                                                                                                         |
    | **Taints**                         | Taints to apply to the control plane nodes. If enabled, an input field is displayed to specify the taint key, value and effect. Check out the [Node Labels and Taints](../../cluster-management/taints.md) page to learn more.                                                                                                                                                                                                                                             |
 
    #### Cloud Configuration
@@ -188,6 +187,8 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
    | ----------------------- | ------------------------------------------------------------------ |
    | **Compute offering**    | Select the compute offering to use for all nodes in the node pool. |
    | **Networks (optional)** | Select the guest network to use.                                   |
+   | **Template Name (optional)** | Copy and paste the template name from CloudStack dashboard.   |
+
 
    You can click **Copy from Control Plane Pool** if you want to re-use the Control Plane Pool's **Compute offering**
    and **Networks**.
