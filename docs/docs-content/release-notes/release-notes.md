@@ -132,6 +132,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 <!-- prettier-ignore-start -->
 
 - <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack versions 1.1.0, 1.7.1, and 1.9.1 are now deprecated. Upgrade your workloads to use Cert Manager pack version 1.19.1.
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> and <VersionedLink text="Kubernetes Dashboard" url="/integrations/packs/?pack=k8s-dashboard" /> packs are now deprecated. This is due to the archiving of upstream projects.
 
 <!-- prettier-ignore-end -->
 
