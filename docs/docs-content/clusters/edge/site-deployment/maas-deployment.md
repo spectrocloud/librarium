@@ -23,7 +23,7 @@ Palette Edge supports deployment on MAAS-managed bare-metal machines and LXD VMs
 
 - If you did not embed the user data in the MAAS image, you need a Palette registration token for pairing Edge hosts with Palette. Tenant admin access to Palette is required to generate a new registration token. For detailed instructions, refer to the [Create Registration Token](site-installation/create-registration-token.md) guide.
 
-- A MAAS image created according to the [Build MAAS Image](../edgeforge-workflow/palette-canvos/build-maas-image.md) guide.
+- A MAAS image created according to the [Build MAAS Images](../edgeforge-workflow/palette-canvos/build-maas-image.md) guide.
 
 - A MAAS-managed bare-metal machine or LXD virtual machine.
 
