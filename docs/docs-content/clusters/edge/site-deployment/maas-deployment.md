@@ -11,7 +11,7 @@ Palette Edge supports deployment on MAAS-managed bare-metal machines and LXD VMs
 
 ## Limitations
 
-- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes – Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployments are not supported by this workflow.
+- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes - Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
 - MAAS-based Edge deployments are verified only with Calico as the Container Network Interface (CNI) and Longhorn as the Container Storage Interface (CSI).
 
