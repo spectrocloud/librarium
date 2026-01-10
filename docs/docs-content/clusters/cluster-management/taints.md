@@ -160,3 +160,9 @@ You can follow these steps to validate that your taints and tolerations are appl
    cluster workloads.
 
    :::
+
+6. Verify that the taint have been applied correctly. You can retrieve the `<node-name>` from the output of step 5. 
+
+   ```
+   kubectl describe nodes <node-name> --all-namespaces | grep -i taint
+   ```
