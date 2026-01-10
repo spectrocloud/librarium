@@ -11,11 +11,11 @@ Palette Edge supports deployment on MAAS-managed bare-metal machines and LXD VMs
 
 ## Limitations
 
-- MAAS-based Edge deployments are supported only for appliance-mode PXK-E configurations. Other Kubernetes distributions and agent-mode configurations are not supported by this workflow.
+- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes – Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
-- MAAS-based Edge deployments are verified only with Calico as the Container Network Interface (CNI) and Longhorn as the Container Storage Interface (CSI) .
+- MAAS-based Edge deployments are verified only with Calico as the Container Network Interface (CNI) and Longhorn as the Container Storage Interface (CSI).
 
-- In MAAS deployments, the Kairos `install` stage in `user-data` is not used. Any GRand Unified Bootloader (GRUB) configuration or mount customization must be applied using other Kairos stages or overlay files. Refer to [Edge Installer Configuration Reference](../edge-configuration/installer-reference.md) for details on the available stages.
+- For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB) configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to [Edge Installer Configuration Reference](../edge-configuration/installer-reference.md) for details on the available stages.
 
 ## Prerequisites
 
@@ -29,21 +29,21 @@ Palette Edge supports deployment on MAAS-managed bare-metal machines and LXD VMs
 
 - A user and a machine with permissions to upload and publish custom images to MAAS. The machine must have the [MAAS CLI](https://maas-cli-doc.readthedocs.io/en/latest/maas-cli-install.html) installed and be able to access the MAAS API.
 
-- The target machine must use the Unified Extensible Firmware Interface (UEFI) boot mode. Legacy Basic Input/Output System (BIOS) boot mode is not supported for this workflow.
+- The target machine must either be configured for Unified Extensible Firmware Interface (UEFI) boot mode or, if the boot mode is not set to UEFI, have UEFI-based boot options prioritized. Legacy Basic Input/Output System (BIOS) boot mode is not supported for this workflow.
 
-  For MAAS-managed bare-metal machines, verify and configure UEFI directly in the machine firmware:
+  For MAAS-managed bare-metal machines, verify the UEFI-related boot settings and adjust the boot order if needed directly in the machine firmware:
 
   - Access the machine console (for example, using a Windows jump host).
 
   - Reboot the machine and press **F11** during boot to enter the BIOS/UEFI setup.
 
-  - In the **Boot** menu, check the current boot mode. If it is not set to **UEFI**, ensure that **UEFI Network** is first in the boot order and the UEFI local disk entry (for example, **UEFI Hard Disk:UEFI OS**) is second.
+  - In the **Boot** menu, check the current boot mode. If it is not set to **UEFI**, ensure that **UEFI Network** is first in the boot order, and the UEFI local disk entry (for example, **UEFI Hard Disk:UEFI OS**) is second.
 
-    The following screenshot shows an example of the required boot order congigured.
+    The following screenshot shows an example of the required boot order configured.
 
-    ![A screenshot with the required UEFI boot order congigured](/clusters_site-deployment_maas-deployment_boot-order_4-8.webp)
+    ![A screenshot with the required UEFI boot order configured](/clusters_site-deployment_maas-deployment_boot-order_4-8.webp)
 
-  For LXD VMs managed by MAAS, ensure the VM is created with UEFI boot enabled. You can verify the machine configuration in MAAS by opening the machine **Summary** page and checking the **Boot mode**. It must be set to **UEFI** before deploying the Edge host.
+  For LXD VMs managed by MAAS, ensure the VM is created with UEFI boot enabled. You can verify the machine configuration in the MAAS UI by opening the machine **Summary** page and checking the **Boot mode**. It must be set to **UEFI** before deploying the Edge host.
 
 ## Deploy MAAS Edge Host
 
@@ -60,7 +60,7 @@ The following command is an example that copies the `custom-maas-image.raw.gz` i
    maas login admin http://<MAAS_URL>:5240/MAAS <API_KEY>
    ```
 
-3. Upload the custom image to MAAS. Use your own values for `name`, `title`, and `content@` path that points to the image location. The `name` value must be unique within MAAS and follow MAAS naming conventions (lowercase, no spaces, and typically using `/` as a namespace separator). The `title` value is a human-readable label shown in the MAAS UI. Additionally, replace `admin` with the name of your MAAS CLI profile.
+3. Upload the custom image to MAAS. Use your own values for `name`, `title`, and `content@` path that points to the image location. The `name` value must be unique within MAAS and follow MAAS naming conventions (lowercase, no spaces, and typically using `/` as a namespace separator). The `title` value is a human-readable label shown in the MAAS UI. Additionally, replace `admin` with the name of your MAAS CLI profile. The following command serves as an example.
 
    ```bash
    maas admin boot-resources create \
@@ -81,7 +81,7 @@ The following command is an example that copies the `custom-maas-image.raw.gz` i
 
 ## Validate
 
-1. Once the deployment is finished, log in to [Palette](https://console.spectrocloud.com).
+1. Once the deployment finishes, log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, click **Clusters**.
 
@@ -89,4 +89,4 @@ The following command is an example that copies the `custom-maas-image.raw.gz` i
 
 ## Next Steps
 
-Once an Edge host is registered with Palette, you can then proceed to allocate the Edge host to a cluster. For more information, refer to [Create Cluster Definition](cluster-deployment.md)
+Once an Edge host is registered with Palette, you can then proceed to allocate the Edge host to a cluster. For more information, refer to [Create Cluster Definition](cluster-deployment.md).

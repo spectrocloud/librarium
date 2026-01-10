@@ -12,39 +12,39 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
 
 ## Limitations
 
-- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes - Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployment configurations are not supported by this workflow.
+- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes – Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
-- In MAAS deployments, the Kairos `install` stage in `user-data` is not used. Any GRand Unified Bootloader (GRUB) configuration or mount customization must be applied using other Kairos stages or overlay files. Refer to [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md) for details on the available stages.
+- For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB) configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md) for details on the available stages.
 
 ## Prerequisites
 
-- If you want embed the user data in the MAAS image, you need a Palette registration token for pairing Edge hosts with Palette. Tenant admin access to Palette is required to generate a new registration token. For detailed instructions, refer to the [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
+- If you want to embed user data in the MAAS image, you need a Palette registration token for pairing Edge hosts with Palette. Tenant admin access to Palette is required to generate a new registration token. For detailed instructions, refer to the [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
 - A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following minimum hardware configuration:
   - 4 CPUs
   - 8 GB memory
   - 150 GB storage
-- A user account with permission to run commands using [`sudo`](https://docs.docker.com/engine/install/linux-postinstall/) privileges.
+- A user account with permission to run commands using `sudo` privileges.
 - The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/)
   - (Optional) [Earthly](https://earthly.dev/)
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - `qemu-utils`
+  - [`qemu-utils`](https://installati.one/install-qemu-utils-ubuntu-20-04/)
 
 ## Build MAAS Image
 
-1.  Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
+1.  Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository, which contains the starter code.
 
     ```bash
     git clone https://github.com/spectrocloud/CanvOS.git
     ```
 
-2.  Change to the `CanvOS` directory.
+2.  Navigate to the `CanvOS` directory.
 
     ```bash
     cd CanvOS
     ```
 
-3.  View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+3.  View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 
     ```bash
     git tag
@@ -56,7 +56,7 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
     git checkout v4.8.5
     ```
 
-5. Issue the command below to create an `.arg` file. Configure the build to use the PXK-E Kubernetes distribution (`K8S_DISTRIBUTION=kubeadm`), the Ubuntu operating system (`OS_DISTRIBUTION=ubuntu`) version 22 (`OS_VERSION=22`), and the AMD64 architecture (`ARCH=amd64`). Replace `1.32.3` with the required PXK-E Kubernetes version and `custom-maas-image` with the desired MAAS image name. If you do not specify the MAAS image name, it defaults to `kairos-ubuntu-maas`.
+5. Issue the command below to create an `.arg` file. Configure the build to use the PXK-E Kubernetes distribution (`K8S_DISTRIBUTION=kubeadm`), the Ubuntu OS (`OS_DISTRIBUTION=ubuntu`) version 22 (`OS_VERSION=22`), and the AMD64 architecture (`ARCH=amd64`). Replace `1.32.3` with the required PXK-E Kubernetes version and `custom-maas-image` with the desired MAAS image name. If you do not specify the MAAS image name, it defaults to `kairos-ubuntu-maas`.
 
     ```bash
     cat << EOF > .arg
@@ -70,9 +70,9 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
     EOF
     ```
 
-    Refer to [Edge Artifact Build Configurations](./arg.md) a complete list of supported configuration parameters.
+    Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
 
-6. (Optional) Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../prepare-user-data.md) for instructions. If you place the `user-data` file in the `CanvOS` repository root, it is embedded into the image at build time. Alternatively, you can supply user data through the MAAS UI at deployment time instead of creating the `user-data` file in the `CanvOS` directory.
+6. (Optional) Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../prepare-user-data.md) for instructions. If you place the `user-data` file in the `CanvOS` repository root, it is embedded into the image at build time. You can also supply user data through the MAAS UI at deployment time instead of creating the `user-data` file in the `CanvOS` directory.
 
 7. Issue the following command to start the build process.
 
@@ -84,7 +84,7 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
 
 8. When the process finishes, the terminal displays the following message.
 
-    ```bash hideClipboard title=”Example Output”
+    ```bash hideClipboard title="Example Output"
     ...
     ✅ Composite image created and compressed successfully: /home/ubuntu/CanvOS/custom-maas-image.raw.gz
     You can now upload this compressed raw image to MAAS (MAAS will automatically decompress it).
@@ -104,7 +104,7 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
     ls build/
     ```
 
-    ```bash hideClipboard title=”Example Output”
+    ```bash hideClipboard title="Example Output"
     custom-maas-image.raw.gz custom-maas-image.raw.gz.sha256
     ```
     The output includes:
@@ -118,7 +118,7 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
     ```
     If the checksum is valid, the command returns the following output.
 
-    ```bash
+    ```bash hideClipboard title="Example Output"
     build/custom-maas-image.raw.gz: OK
     ```
 
