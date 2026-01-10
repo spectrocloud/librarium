@@ -8,18 +8,27 @@ sidebar_position: 35
 tags: ["edge"]
 ---
 
-With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as Edge hosts. The EdgeForge workflow enables the creation of MAAS-compatible images. In this guide, you will use the CanvOS utility to build MAAS images for your Edge deployment.
+With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as Edge hosts. The EdgeForge workflow
+enables the creation of MAAS-compatible images. In this guide, you will use the CanvOS utility to build MAAS images for
+your Edge deployment.
 
 ## Limitations
 
-- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes - Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployments are not supported by this workflow.
+- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes - Edge (PXK-E) deployments. Other
+  Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
-- For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB) configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md) for details on the available stages.
+- For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB)
+  configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to
+  [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md) for details on the available
+  stages.
 
 ## Prerequisites
 
-- If you want to embed user data in the MAAS image, you need a Palette registration token for pairing Edge hosts with Palette. Tenant admin access to Palette is required to generate a new registration token. For detailed instructions, refer to the [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
-- A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following minimum hardware configuration:
+- If you want to embed user data in the MAAS image, you need a Palette registration token for pairing Edge hosts with
+  Palette. Tenant admin access to Palette is required to generate a new registration token. For detailed instructions,
+  refer to the [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
+- A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
+  minimum hardware configuration:
   - 4 CPUs
   - 8 GB memory
   - 150 GB storage
@@ -56,7 +65,10 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
     git checkout v4.8.5
     ```
 
-5. Issue the command below to create an `.arg` file. Configure the build to use the PXK-E Kubernetes distribution (`K8S_DISTRIBUTION=kubeadm`), the Ubuntu OS (`OS_DISTRIBUTION=ubuntu`) version 22 (`OS_VERSION=22`), and the AMD64 architecture (`ARCH=amd64`). Replace `1.32.3` with the required PXK-E Kubernetes version and `custom-maas-image` with the desired MAAS image name. If you do not specify the MAAS image name, it defaults to `kairos-ubuntu-maas`.
+5.  Issue the command below to create an `.arg` file. Configure the build to use the PXK-E Kubernetes distribution
+    (`K8S_DISTRIBUTION=kubeadm`), the Ubuntu OS (`OS_DISTRIBUTION=ubuntu`) version 22 (`OS_VERSION=22`), and the AMD64
+    architecture (`ARCH=amd64`). Replace `1.32.3` with the required PXK-E Kubernetes version and `custom-maas-image`
+    with the desired MAAS image name. If you do not specify the MAAS image name, it defaults to `kairos-ubuntu-maas`.
 
     ```bash
     cat << EOF > .arg
@@ -72,9 +84,12 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
 
-6. (Optional) Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../prepare-user-data.md) for instructions. If you place the `user-data` file in the `CanvOS` repository root, it is embedded into the image at build time. You can also supply user data through the MAAS UI at deployment time instead of creating the `user-data` file in the `CanvOS` directory.
+6.  (Optional) Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../prepare-user-data.md)
+    for instructions. If you place the `user-data` file in the `CanvOS` repository root, it is embedded into the image
+    at build time. You can also supply user data through the MAAS UI at deployment time instead of creating the
+    `user-data` file in the `CanvOS` directory.
 
-7. Issue the following command to start the build process.
+7.  Issue the following command to start the build process.
 
     ```bash
     sudo ./earthly.sh +maas-image
@@ -82,7 +97,7 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
 
     The build process takes some time to finish.
 
-8. When the process finishes, the terminal displays the following message.
+8.  When the process finishes, the terminal displays the following message.
 
     ```bash hideClipboard title="Example Output"
     ...
@@ -100,28 +115,33 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
 
 1. Issue the following command to list the files in the `build/` directory.
 
-    ```bash 
-    ls build/
-    ```
+   ```bash
+   ls build/
+   ```
 
-    ```bash hideClipboard title="Example Output"
-    custom-maas-image.raw.gz custom-maas-image.raw.gz.sha256
-    ```
-    The output includes:
-    - The MAAS-compatible compressed disk image (`custom-maas-image.raw.gz`).
-    - The SHA256 checksum file (`custom-maas-image.raw.gz.sha256`).
+   ```bash hideClipboard title="Example Output"
+   custom-maas-image.raw.gz custom-maas-image.raw.gz.sha256
+   ```
 
-2. Verify the integrity of the image by validating the checksum. Use the following command. Replace `custom-maas-image.raw.gz.sha256` with your checksum file name.
+   The output includes:
 
-    ```bash 
-    sha256sum -c build/custom-maas-image.raw.gz.sha256
-    ```
-    If the checksum is valid, the command returns the following output.
+   - The MAAS-compatible compressed disk image (`custom-maas-image.raw.gz`).
+   - The SHA256 checksum file (`custom-maas-image.raw.gz.sha256`).
 
-    ```bash hideClipboard title="Example Output"
-    build/custom-maas-image.raw.gz: OK
-    ```
+2. Verify the integrity of the image by validating the checksum. Use the following command. Replace
+   `custom-maas-image.raw.gz.sha256` with your checksum file name.
+
+   ```bash
+   sha256sum -c build/custom-maas-image.raw.gz.sha256
+   ```
+
+   If the checksum is valid, the command returns the following output.
+
+   ```bash hideClipboard title="Example Output"
+   build/custom-maas-image.raw.gz: OK
+   ```
 
 ## Next Steps
 
-Refer to [Deploy Edge Hosts on MAAS](../../site-deployment/maas-deployment.md) for step-by-step instructions on uploading the image to MAAS and deploying an Edge host using the MAAS UI.
+Refer to [Deploy Edge Hosts on MAAS](../../site-deployment/maas-deployment.md) for step-by-step instructions on
+uploading the image to MAAS and deploying an Edge host using the MAAS UI.
