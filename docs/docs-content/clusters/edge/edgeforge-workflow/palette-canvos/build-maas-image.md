@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Build MAAS Image"
-title: "Build MAAS Image"
+sidebar_label: "Build MAAS Images"
+title: "Build MAAS Images"
 description: "Learn how to build the Palette MAAS Image using the EdgeForge utilities."
 icon: ""
 hide_table_of_contents: false
