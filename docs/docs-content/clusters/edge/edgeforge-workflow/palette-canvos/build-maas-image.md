@@ -132,7 +132,7 @@ your Edge deployment.
    `custom-maas-image.raw.gz.sha256` with your checksum file name.
 
    ```bash
-   sha256sum -c build/custom-maas-image.raw.gz.sha256
+   sha256sum --check build/custom-maas-image.raw.gz.sha256
    ```
 
    If the checksum is valid, the command returns the following output.
