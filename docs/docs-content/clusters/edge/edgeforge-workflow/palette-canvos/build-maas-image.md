@@ -30,7 +30,7 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   - [`qemu-utils`](https://installati.one/install-qemu-utils-ubuntu-20-04/)
 
-## Build MAAS Image
+## Build MAAS Images
 
 1.  Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository, which contains the starter code.
 
