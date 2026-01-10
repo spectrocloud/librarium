@@ -257,6 +257,13 @@ p img.markdown-image {
   line-height: 1.6em;
 }
 
+// Properly space list items (<li>) in mdx partials
+
+.markdown li {
+  margin-top: var(--ifm-list-paragraph-margin);
+  margin-bottom: var(--ifm-list-paragraph-margin);
+}
+
 // Navbar Ask AI button
 
 .navbar-ai-button {

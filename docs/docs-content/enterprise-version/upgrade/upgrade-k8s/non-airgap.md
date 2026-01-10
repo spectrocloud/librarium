@@ -88,8 +88,10 @@ match your environment.
 
    :::warning
 
-   Ensure that the `values.yaml` file is ready before proceeding. If you're using a self-hosted OCI registry, make sure
+   Ensure that the `values.yaml` file is ready before proceeding. If you are using a self-hosted OCI registry, make sure
    that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
+   Additionally, ensure a `/v2/` endpoint is used if your OCI registry supports the Docker Registry protocol v2;
+   otherwise, container pull images will fail.
 
    :::
 

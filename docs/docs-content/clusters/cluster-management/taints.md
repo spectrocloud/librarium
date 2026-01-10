@@ -70,11 +70,11 @@ Taints can also be applied to node pools using the Spectro Cloud
    - The **effect** defines what will happen to the pods that do not tolerate a taint. Kubernetes provides three taint
      effects.
 
-     | **Effect**         | **Description**                                                                                                                      |
-     | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-     | `NoSchedule`       | Pods that cannot tolerate the node taint will not be scheduled to the node.                                                          |
-     | `PreferNoSchedule` | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                          |
-     | `NoExecute`        | New pods will not be scheduled on the node, and existing pods on the node, if any,will be evicted if they do not tolerate the taint. |
+     | **Effect**         | **Description**                                                                                                                                                      |
+     | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+     | `NoSchedule`       | Pods that cannot tolerate the node taint will not be scheduled to the node.                                                                                          |
+     | `PreferNoSchedule` | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                                                          |
+     | `NoExecute`        | New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. |
 
      ```yaml
      tolerations:

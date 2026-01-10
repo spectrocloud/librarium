@@ -171,10 +171,12 @@ environment. Reach out to our support team if you need assistance.
 
     :::info
 
-    Use the following `mirrorRegistries`placeholder string to replace the respective values of your OCI registry.
+    Use the following `mirrorRegistries` placeholder string to replace the respective values of your OCI registry.
+    Ensure a `/v2/` endpoint is used if your OCI registry supports the Docker Registry protocol v2; otherwise, container
+    pull images will fail.
 
     ```yaml
-    docker.io::OCI_URL/IMAGE_PROJECT/docker.io,gcr.io::OCI_URL/IMAGE_PROJECT/gcr.io,ghcr.io::OCI_URL/IMAGE_PROJECT/ghcr.io,k8s.gcr.io::OCI_URL/IMAGE_PROJECT/k8s.gcr.io,registry.k8s.io::OCI_URL/IMAGE_PROJECT/registry.k8s.io,quay.io::OCI_URL/IMAGE_PROJECT/quay.io"
+    docker.io::OCI_URL/v2/IMAGE_PROJECT/docker.io,gcr.io::OCI_URL/v2/IMAGE_PROJECT/gcr.io,ghcr.io::OCI_URL/v2/IMAGE_PROJECT/ghcr.io,k8s.gcr.io::OCI_URL/v2/IMAGE_PROJECT/k8s.gcr.io,registry.k8s.io::OCI_URL/v2/IMAGE_PROJECT/registry.k8s.io,quay.io::OCI_URL/v2/IMAGE_PROJECT/quay.io,us-docker.pkg.dev::OCI_URL/v2/IMAGE_PROJECT/us-docker.pkg.dev"
     ```
 
     :::
@@ -188,7 +190,7 @@ environment. Reach out to our support team if you need assistance.
       baseContentPath: "spectro-images"
       insecureSkipVerify: true
       caCert: ""
-      mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io"
+      mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io,us-docker.pkg.dev::my-oci-registry.com/v2/spectro-images/us-docker.pkg.dev"
     ```
 
 7.  Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
@@ -224,17 +226,17 @@ environment. Reach out to our support team if you need assistance.
     Ensure you provide the proper `ociImageRegistry.mirrorRegistries` values if you are using a self-hosted OCI
     registry. You can find the placeholder string in the `ociImageRegistry` section of the **values.yaml** file.
 
-    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                       | **Type** |
-    | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                    | The URL name or IP address you will use for the VerteX installation.                                                                                                                                                                                                                                                                                  | string   |
-    | `config.installationMode`           | The installation mode for VerteX. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                                                                                                                                                                              | string   |
-    | `ociPackEcrRegistry`                | The OCI registry credentials for the VerteX FIPS packs repository.                                                                                                                                                                                                                                                                                    | object   |
-    | `ociImageRegistry`                  | The OCI registry credentials for the VerteX images repository.                                                                                                                                                                                                                                                                                        | object   |
-    | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap **values.yaml**. The placeholders require a `/v2/` endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail. |
-    | `imageSwapImages`                   | The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                             | object   |
-    | `imageSwapConfig.isEKSCluster`      | If you are NOT installing VerteX on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                        | boolean  |
-    | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                                                                                 | boolean  |
-    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for VerteX to use a network proxy in your environment.                                                                                                                                                                                                 | object   |
+    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                        | **Type** |
+    | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+    | `env.rootDomain`                    | The URL name or IP address you will use for the VerteX installation.                                                                                                                                                                                                                                                                                   | string   |
+    | `config.installationMode`           | The installation mode for VerteX. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                                                                                                                                                                               | string   |
+    | `ociPackEcrRegistry`                | The OCI registry credentials for the VerteX FIPS packs repository.                                                                                                                                                                                                                                                                                     | object   |
+    | `ociImageRegistry`                  | The OCI registry credentials for the VerteX images repository.                                                                                                                                                                                                                                                                                         | object   |
+    | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap **values.yaml**. The placeholders require a `/v2/` endpoint if your OCI registry supports the Docker Registry protocol v2; otherwise, container pull images will fail. |
+    | `imageSwapImages`                   | The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                              | object   |
+    | `imageSwapConfig.isEKSCluster`      | If you are NOT installing VerteX on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                         | boolean  |
+    | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                                                                                  | boolean  |
+    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for VerteX to use a network proxy in your environment.                                                                                                                                                                                                  | object   |
 
     :::info
 
@@ -364,7 +366,7 @@ environment. Reach out to our support team if you need assistance.
          baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
          insecureSkipVerify: true
          caCert: ""
-         mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io"  # See instructions below.
+         mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io,us-docker.pkg.dev::my-oci-registry.com/v2/spectro-images/us-docker.pkg.dev"  # See instructions below.
 
     # Instruction for mirrorRegistries.
     # ----------------------------------
@@ -575,7 +577,7 @@ environment. Reach out to our support team if you need assistance.
          baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
          insecureSkipVerify: false
          caCert: ""
-         mirrorRegistries: "docker.io::public.ecr.aws/123456789/v2/spectro-images/docker.io,gcr.io::public.ecr.aws/123456789/v2/spectro-images/gcr.io,ghcr.io::public.ecr.aws/123456789/v2/spectro-images/ghcr.io,k8s.gcr.io::public.ecr.aws/123456789/v2/spectro-images/k8s.gcr.io,registry.k8s.io::public.ecr.aws/123456789/v2/spectro-images/registry.k8s.io,quay.io::public.ecr.aws/123456789/v2/spectro-images/quay.io"  # See instructions below.
+         mirrorRegistries: "docker.io::public.ecr.aws/123456789/v2/spectro-images/docker.io,gcr.io::public.ecr.aws/123456789/v2/spectro-images/gcr.io,ghcr.io::public.ecr.aws/123456789/v2/spectro-images/ghcr.io,k8s.gcr.io::public.ecr.aws/123456789/v2/spectro-images/k8s.gcr.io,registry.k8s.io::public.ecr.aws/123456789/v2/spectro-images/registry.k8s.io,quay.io::public.ecr.aws/123456789/v2/spectro-images/quay.io,us-docker.pkg.dev::public.ecr.aws/123456789/v2/spectro-images/us-docker.pkg.dev"  # See instructions below.
 
     # Instruction for mirrorRegistries.
     # ----------------------------------
@@ -688,7 +690,7 @@ environment. Reach out to our support team if you need assistance.
 
     Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next
     steps. For the parameter `ociImageRegistry.mirrorRegistries`, ensure a `/v2/` endpoint is used if your OCI registry
-    supports the Docker Registry protocol v2, otherwise container pull images will fail.
+    supports the Docker Registry protocol v2; otherwise, container pull images will fail.
 
     :::
 

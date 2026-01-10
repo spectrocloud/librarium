@@ -35,7 +35,7 @@ Palette needs access to your AWS cloud account in order to create and manage AWS
 
 ### Static Credentials Access
 
-<PartialsComponent category="palette-setup" name="aws-static-credentials" />
+<PartialsComponent category="clusters-aws-account-setup" name="aws-static-credentials-enablement-1" />
 
 ### Create a Palette API Key
 

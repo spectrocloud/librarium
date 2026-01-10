@@ -108,11 +108,11 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
     #### Effect Table
 
-    | **Parameter**        | **Description**                                                                                                              |
-    | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-    | **NoSchedule**       | A pod that cannot tolerate the node taint and should not be scheduled to the node.                                           |
-    | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                  |
-    | **NoExecute**        | New pods will not be scheduled on the node, and existing pods on the node will be evicted if they do not tolerate the taint. |
+    | **Parameter**        | **Description**                                                                                                                                                      |
+    | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **NoSchedule**       | A pod that cannot tolerate the node taint and should not be scheduled to the node.                                                                                   |
+    | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                                                          |
+    | **NoExecute**        | New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. |
 
 13. Click **Next** after configuring the node pool.
 
