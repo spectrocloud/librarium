@@ -12,7 +12,7 @@ With Palette Edge, you can use MAAS-managed bare-metal machines and LXD VMs as E
 
 ## Limitations
 
-- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes – Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployments are not supported by this workflow.
+- MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes - Edge (PXK-E) deployments. Other Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
 - For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB) configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md) for details on the available stages.
 
