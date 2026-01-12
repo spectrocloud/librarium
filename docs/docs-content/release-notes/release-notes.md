@@ -70,7 +70,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
-- The EdgeForge workflow now enables the creation of MAAS-compatible images. Refer to [Build MAAS Image](../clusters/edge/edgeforge-workflow/palette-canvos/build-maas-image.md) to learn how to create custom MAAS images for Palette Edge, and to [Deploy Edge Hosts on MAAS](../clusters/edge/site-deployment/maas-deployment.md) for step-by-step instructions on uploading images to MAAS and deploying Edge hosts using the MAAS UI.
+- The EdgeForge workflow now enables the creation of MAAS-compatible images. Refer to
+  [Build MAAS Image](../clusters/edge/edgeforge-workflow/palette-canvos/build-maas-image.md) to learn how to create
+  custom MAAS images for Palette Edge, and to
+  [Deploy Edge Hosts on MAAS](../clusters/edge/site-deployment/maas-deployment.md) for step-by-step instructions on
+  uploading images to MAAS and deploying Edge hosts using the MAAS UI.
 
 #### Improvements
 
