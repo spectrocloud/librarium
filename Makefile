@@ -37,7 +37,8 @@ help: ## Display this help
 
 initialize: ## Initialize the repository dependencies
 	@echo "initializing npm dependencies"
-	npm ci --ignore-scripts
+	npm config set ignore-scripts true
+	npm ci
 	npm_config_ignore_scripts=false npm rebuild sharp
 	touch .env
 	npm run prepare
@@ -88,7 +89,8 @@ clean-visuals:
 
 init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
-	npm ci --ignore-scripts
+	npm config set ignore-scripts true
+	npm ci
 	npm_config_ignore_scripts=false npm rebuild sharp
 	touch .env
 	grep -q "^ALGOLIA_APP_ID=" .env || echo "\nALGOLIA_APP_ID=1234567890" >> .env
