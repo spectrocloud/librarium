@@ -181,7 +181,7 @@ Use the steps below to add an AWS cloud account using STS credentials.
 ## AWS Secret Cloud (SC2S) and Top Secret Cloud (C2S)
 
 You can configure [AWS Secret](https://aws.amazon.com/federal/secret-cloud/) and
-[Top Secret cloud](<(https://aws.amazon.com/federal/top-secret-cloud/)>) accounts in
+[Top Secret cloud](https://aws.amazon.com/federal/top-secret-cloud/) accounts in
 [Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in AWS Secret and Top Secret clouds. Depending on
 your organization's compliance requirements, you can register your AWS cloud account using either standard
 authentication (access key and secret access key pairs for IAM users) or secure compliance validation (SC2S Access
