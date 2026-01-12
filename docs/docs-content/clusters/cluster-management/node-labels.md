@@ -140,7 +140,7 @@ You can follow these steps to validate that your node labels are applied success
 
    :::
 
-6. Verify that the labels have been applied correctly. You can retrieve the `<node-name>` from the output of step 5. 
+6. Verify that the labels have been applied correctly. You can retrieve the `<node-name>` from the output of step 5.
 
    ```
    kubectl describe nodes <node-name> --all-namespaces | grep -i label
