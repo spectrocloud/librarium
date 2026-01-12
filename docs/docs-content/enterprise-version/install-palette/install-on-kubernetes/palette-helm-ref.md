@@ -294,7 +294,7 @@ You can specify an OCI registry for the images used by Palette.
 | `ociImageRegistry.baseContentPath`    | The base path for the registry.                                                                                                                                                                    | String   | `""`              |
 | `ociImageRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection.                                                                                                 | Boolean  | `false`           |
 | `ociImageRegistry.caCert`             | The registry's base64-encoded certificate authority (CA) certificate.                                                                                                                              | String   | `""`              |
-| `ociImageRegistry.mirrorRegistries`   | A comma-separated list of mirror registries. The placeholders require a `/v2/` endpoint if your OCI registry supports the Docker Registry protocol v2; otherwise, container pull images will fail. | String   | `""`              |
+| `ociImageRegistry.mirrorRegistries`   | A comma-separated list of mirror registries. Use `/v2/` in your endpoints if your OCI registry supports the Docker Registry HTTP API V2 protocol; otherwise, container image pulls will fail. For example: `docker.io::harbor.example.org/v2/airgap-images/docker.io,gcr.io::harbor.example.org/v2/airgap-images/gcr.io`. | String   | `""`              |
 
 ```yaml
 config:
