@@ -110,13 +110,13 @@ subsections:
 You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation
 mode.
 
-| **Parameters** | **Description**                                                                                                                                      | **Type** | **Default value** |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `installMode`  | Specifies the installation mode. Allowed values are `connected` or `airgap`. Set the value to `airgap` when installing in an air-gapped environment. | String   | `connected`       |
+| **Parameters**     | **Description**                                                                                                                                      | **Type** | **Default value** |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `installationMode` | Specifies the installation mode. Allowed values are `connected` or `airgap`. Set the value to `airgap` when installing in an air-gapped environment. | String   | `connected`       |
 
 ```yaml
 config:
-  managementMode: "central"
+  installationMode: "central"
 ```
 
 ### SSO
