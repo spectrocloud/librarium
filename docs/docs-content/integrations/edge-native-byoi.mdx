@@ -37,7 +37,7 @@ You can customize the following sections of the pack YAML file:
 
 * The `providerCredentials` section supplies the credentials for the registry that contains your provider images. 
 
-* The `stages` section defines the cloud-init stages that run during the node boot process. This is similar to adding stages to your user data. Refer to the [Installer Reference Cloud Init Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages) for more information. 
+* The `stages` section defines the cloud-init stages that run during the node boot process. Stages defined here are processed in the same way as stages defined in a `user-data` file. Refer to the [Installer Reference Cloud Init Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages) for more information. 
 
 
 The following YAML configuration file example demonstrates how these sections are used, with inline comments describing all available fields.
@@ -47,7 +47,7 @@ pack:
   content:
     images:
       - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'  # This parameter uses the value set in the options section as the image for the pack.
-  # If you do not set these parameters, the pack will use the default values. You must uncomment these values to change them. 
+  # Uncomment the following parameters to change them. Otherwise, the pack uses the default values. 
   #drain:
     #drainPods: auto     # Drain pods during cluster upgrades. Set this value to false to skip draining.
     #podSelector:        # Specify the pod selector options for draining specific pods.
@@ -63,7 +63,7 @@ options:
   system.uri: "" # The provider image URL for appliance mode. Set this value to the appliance's image location.
 
 providerCredentials: 
-  registry: example.com/spectro-images  # The registry location for your provider images. This is prepended to the value in your system.uri setting. 
+  registry: example.com/spectro-images  # The registry location for your provider images. This is prepended to the value in your options.system.uri setting. 
   user: user                 # The username for the registry.
   password: "password"       # The password for the registry.
   certificates: |            # The security certificate for the registry, in PEM format.
