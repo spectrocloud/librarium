@@ -31,16 +31,16 @@ The following section provides the list of optional parameters you can customize
 
 ### Customizable Optional Parameters
 
-You can customize several sections of the pack YAML file. The `drain` section is included by default. 
+You can customize the following sections of the pack YAML file:
 
-* The `drain` section controls how nodes are drained during cluster upgrades. If you do not make any changes in this section, the default drain values are used.
+* The `drain` section is included by default and controls how nodes are drained during cluster upgrades. If you do not make any changes in this section, the default drain values are used.
 
-* The `providerCredentials` section supplies the credentials and trust configuration for the registry that contains your provider images. 
+* The `providerCredentials` section supplies the credentials for the registry that contains your provider images. 
 
 * The `stages` section defines the cloud-init stages that run during the node boot process. This is similar to adding stages to your user data. Refer to the [Installer Reference Cloud Init Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages) for more information. 
 
 
-The following YAML configuration file shows how these sections are used, as well as all of the available fields. 
+The following YAML configuration file example demonstrates how these sections are used, with inline comments describing all available fields.
 
 ```yaml
 pack:
@@ -69,7 +69,7 @@ providerCredentials:
   certificates: |            # The security certificate for the registry, in PEM format.
     xxx
 
-# YIP stages behave the same whether they are defined in the OS pack or in user data.
+# Cloud init stages behave the same whether they are defined in the OS pack or in user data.
 stages:
   initramfs:                  # Stage name, typically for early boot/initramfs operations.
     - name: Test stage        # The name of the step within the stage.
