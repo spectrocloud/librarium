@@ -14,14 +14,23 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 :::warning
 
 [EKS-optimized Amazon Linux 2 (AL2) AMIs](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-deprecation-faqs.html)
-will be disabled in Palette on January 17, 2026, and removed on April 11, 2026. When disabled, you will no longer be
-able to select the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create new
-worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches after
-the removal date. Refer to our
+are deprecated and will be disabled in an upcoming Palette release. When disabled, you will no longer be able to select
+the AL2 AMIs for EKS worker nodes in Palette for new clusters. For existing clusters, you must create new worker nodes
+using AL2023 AMIs. Existing AL2 AMI worker nodes will no longer receive bug fixes or security patches after the removal
+date.
+
+Refer to our
 [Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../../../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
-guide for help with migrating workloads.
+guide for help with migrating workloads. For deprecation updates, refer to our
+[Announcements](../../../release-notes/announcements.md#deprecations) page.
 
 :::
+
+## Limitations
+
+- You must use [Palette VerteX](../../../vertex/vertex.md) to deploy clusters in
+  [AWS Secret or Top Secret cloud](./add-aws-accounts.md#aws-secret-cloud-sc2s-and-top-secret-cloud-c2s). Multi-tenant
+  Palette SaaS and self-hosted Palette instances are not supported.
 
 ## Prerequisites
 

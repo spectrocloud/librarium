@@ -10,6 +10,11 @@ sidebar_position: 20
 Palette supports creating and managing Kubernetes clusters deployed to an AWS account. This section guides you on how to
 create a Kubernetes cluster in AWS that is managed by Palette.
 
+## Limitations
+
+- AWS IaaS clusters cannot be deployed in
+  [AWS Secret or Top Secret cloud](add-aws-accounts.md#aws-secret-cloud-sc2s-and-top-secret-cloud-c2s).
+
 ## Prerequisites
 
 The following prerequisites must be met before deploying a cluster to AWS:
