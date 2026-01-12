@@ -143,7 +143,7 @@ You can follow these steps to validate that your taints and tolerations are appl
    tolerations can be scheduled on nodes with configured taints.
 
    ```
-   kubectl get pods --all-namespaces --output wide --watch
+   kubectl get pods --all-namespaces --output wide
    ```
 
    :::tip
@@ -152,3 +152,9 @@ You can follow these steps to validate that your taints and tolerations are appl
    cluster workloads.
 
    :::
+
+6. Verify the taints were correctly applied. You can retrieve the `<node-name>` from the output of step 5.
+
+   ```
+   kubectl describe nodes <node-name> --all-namespaces | grep --ignore-case taint
+   ```
