@@ -18,7 +18,7 @@ Modify the `imageReplacementRules` parameter to rewrite container image referenc
 
 #### Rewrite All Image References
 
-Use the `all` key word to add a prefix to all image references. The following example shows how to use this key word in your pack's YAML file. 
+Use the `all` keyword to add a prefix to all image references. The following example shows how to use this keyword in your pack's YAML file. 
 
 ```yaml
 pack:
@@ -32,8 +32,10 @@ charts:
            "all": "example.registry.com/internal-images"
 ```
 
-In this case, the prefix `example.registry.com/internal-images` is added to the original image reference `us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
-As a result, the image reference becomes `example.registry.com/internal-images/us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
+In this case, the prefix `example.registry.com/internal-images` is prepended to all image references. For example,
+`us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`
+is rewritten as
+`example.registry.com/internal-images/us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
 
 #### Rewrite Image References for Specific Registries
 
