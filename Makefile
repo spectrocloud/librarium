@@ -101,7 +101,7 @@ init: ## Initialize npm dependencies
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
 	npm run prepare
 
-npm-ci-local: ## Initialize npm dependencies for local development
+ci-local: ## Initialize npm dependencies for local development
 	@echo "initializing npm dependencies for local development"
 	npm ci --ignore-scripts
 	npm_config_ignore_scripts=false npm rebuild sharp
