@@ -3,7 +3,7 @@ partial_category: eks-pod-identity
 partial_name: eks-pod-identity-enablement
 ---
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
 2. From the left main menu, select **Tenant Settings**.
 
@@ -24,7 +24,7 @@ partial_name: eks-pod-identity-enablement
 
 7. In Palette, paste the role ARN into the **ARN** field.
 
-8. Select **Validate** to verify your AWS credentials. A green check mark indicates valid credentials. You cannot add your AWS account to Palette until you verify your credentials.
+8. **Validate** your AWS credentials. A green check mark indicates valid credentials. 
 
    The **Add IAM Policies** option appears after successful validation. Leave this blank, as the required IAM policies have already been assigned to the IAM role created for Palette (for
    example, `SpectroCloudRole`).
@@ -34,4 +34,4 @@ partial_name: eks-pod-identity-enablement
    **Add Permission Boundary** on and provide the ARN of a IAM policy or role in the **Permission Boundary ARN**
    field.
 
-10. Select Confirm to add your AWS account to Palette.
+10. Select **Confirm** to add your AWS account to Palette.

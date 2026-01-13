@@ -18,16 +18,11 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## Prerequisites
 
-- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
-
-- A public [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account) account with
-  the following settings:
-
-  - Either an [IAM Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or an
-    [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
-
-  - The [required IAM policies](../../../../clusters/public-cloud/aws/required-iam-policies.md) assigned to the Palette
-    IAM user or IAM role.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-static-credentials-prerequisites"
+  edition="Palette"
+/>
 
 ## Enablement
 
@@ -35,7 +30,14 @@ Palette needs access to your AWS cloud account in order to create and manage AWS
 
 ### Static Credentials Access
 
-<PartialsComponent category="clusters-aws-account-setup" name="aws-static-credentials-enablement-1" />
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-static-credentials-enablement-1"
+  partition="AWS"
+  edition="Palette"
+/>
+
+**Validate** your AWS credentials and select **Confirm** to add your AWS account to Palette.
 
 ### Create a Palette API Key
 
@@ -46,15 +48,7 @@ Follow the steps below to create a Palette API key. This is required for the
 
 ## Validate
 
-You can verify your account is added.
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left **Main Menu**, select **Tenant Settings**.
-
-3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
-
-4. The added cloud account is listed under **AWS** with all other available AWS cloud accounts.
+<PartialsComponent category="clusters-aws-account-setup" name="aws-account-setup-validate" edition="Palette" />
 
 ## Next Steps
 

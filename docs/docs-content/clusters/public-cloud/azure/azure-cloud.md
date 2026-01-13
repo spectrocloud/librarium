@@ -15,11 +15,11 @@ your behalf.
 
 The following table summarizes which Azure clouds and cluster types are supported by Palette or Palette VerteX.
 
-| **Azure Cloud**                                                                                                                     | **Palette Enterprise** | **Palette VerteX** |      **IaaS**      |      **AKS**       |
-| ----------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | :----------------: | :----------------: | :----------------: |
-| Azure Commercial (Public Cloud)                                                                                                     |   :white_check_mark:   | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government)                                      |   :white_check_mark:   | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| <TpBadge /> [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security) |          :x:           | :white_check_mark: | :white_check_mark: |        :x:         |
+| **Azure Cloud**                                                                                                                     |    **Palette**     | **Palette VerteX** |      **IaaS**      |      **AKS**       |
+| ----------------------------------------------------------------------------------------------------------------------------------- | :----------------: | :----------------: | :----------------: | :----------------: |
+| Azure Commercial (Public Cloud)                                                                                                     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government)                                      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| <TpBadge /> [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security) |        :x:         | :white_check_mark: | :white_check_mark: |        :x:         |
 
 ## Add Azure Cloud Account
 
