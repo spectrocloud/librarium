@@ -757,6 +757,37 @@ The snippet above will work with the example partial we have in our repository, 
 Note that the `message` field corresponds to the `{props.message}` reference in the `_partials/_partial_example.mdx`
 file.
 
+### Numbered Lists
+
+To reuse a partial that contains a numbered list, where the step number may vary between procedures, enclose each step
+item _except the first step_ with HTML list item syntax (`<li>`).
+
+```mdx
+---
+partial_category: clusters-aws-account-setup
+partial_name: aws-static-dynamic-credentials-enablement-2
+---
+
+**Validate** your AWS credentials. A green check mark indicates valid credentials.
+
+<li>
+  Once your credentials are verified, the **Add IAM Policies** toggle is displayed. Toggle **Add IAM Policies** on and
+  use the **Policies** drop-down menu to select any desired IAM policies you want to assign to the Palette IAM
+  user.{" "}
+</li>
+
+<li>Select **Confirm** to add your AWS account to Palette.</li>
+```
+
+When you reference the partial in a markdown file, put the partial _after_ the numbered step. Doing so sets the number
+for the first item in the partial, and the steps indicated with `<li>` will be rendered with the correct number.
+
+```
+1. In Palette, paste the role ARN into the **ARN** field.
+
+2. <PartialComponent category="clusters-aws-account-setup" name="aws-static-dynamic-credentials-enablement-2" />
+```
+
 ## Palette/VerteX URLs
 
 A special component has been created to handle the generation of URLs for Palette and VerteX. The component is called

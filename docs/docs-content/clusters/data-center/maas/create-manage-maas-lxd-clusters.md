@@ -62,23 +62,41 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 
 2.  Ensure you are in the correct project scope.
 
-3.  From the left main menu, select **Clusters**, and choose either **Create Cluster** or **Add New Cluster**.
+<!-- 3.  <PartialsComponent category="test" name="test-numbered-1" /> -->
 
 4.  In the **Data Center** section, select **MAAS**.
 
-5.  In the bottom-right corner, click **Start MAAS Configuration**.
+<!-- <PartialsComponent category="test" name="test-numbered-1" /> -->
 
-6.  Enter the basic information for your cluster, including the **Cluster name**, **Description**, and **Tags**.
+5. Placeholder
 
-7.  From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
+<!-- 6. <PartialsComponent category="test" name="test-numbered-no" /> -->
 
-8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
+7. Placeholder
 
-9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+8. Placeholder
 
-10. Select a **Domain** from the drop-down menu.
+<!-- <PartialsComponent category="test" name="test-numbered-no" /> -->
 
-11. To use a MAAS bare metal host as a hypervisor for your control plane components, activate the **Host LXD-Based
+9.  Enter the basic information for your cluster, including the **Cluster name**, **Description**, and **Tags**.
+
+10. Placeholder
+
+<!-- <PartialsComponent category="test" name="test-li" /> -->
+
+11. Placeholder
+
+<!-- 12. <PartialsComponent category="test" name="test-li" /> -->
+
+13. From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
+
+14. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
+
+15. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+
+16. Select a **Domain** from the drop-down menu.
+
+17. To use a MAAS bare metal host as a hypervisor for your control plane components, activate the **Host LXD-Based
     Control Planes** switch. Select **Next**.
 
     ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
@@ -91,7 +109,7 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 
     :::
 
-12. Configure the control plane and, optionally, worker node pools.
+18. Configure the control plane and, optionally, worker node pools.
 
     The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields
     that are common across environments and their usage, refer to our
