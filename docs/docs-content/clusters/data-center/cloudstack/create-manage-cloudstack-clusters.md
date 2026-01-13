@@ -78,6 +78,11 @@ by the hypervisor. Refer to the [CAPI Image Builder](../../../byoos/byoos.md) fo
 
       </details>
 
+- If you plan to use **Cert Manager** pack , ensure that it is 1.19.1. It is also important to ensure:
+  - `crds.enabled` is set to `false`.
+  - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
+  - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
+
 ## Create a CloudStack Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com).

@@ -45,6 +45,11 @@ section of the pack Additional Guidance for further information.
 
 <!-- prettier-ignore-end -->
 
+- If you plan to use **Cert Manager** pack , ensure that it is 1.19.1. It is also important to ensure:
+  - `crds.enabled` is set to `false`.
+  - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
+  - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
+
 :::
 
 ## Deploy a MAAS Cluster
