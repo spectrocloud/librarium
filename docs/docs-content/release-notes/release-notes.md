@@ -21,6 +21,8 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.8.a}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-6547 -->
+
 - Users with the `cluster.delete` permission are no longer allowed to download the cluster
   [admin kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This operation is now controlled using the
   `cluster.adminKubeconfigDownload` permission, giving system administrators fine-grained control over cluster admin
@@ -40,6 +42,9 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8534 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8796 -->
+
 - [Cluster templates](../cluster-templates/cluster-templates.md) provide a new way to enforce consistent configurations
   and prevent drift across multiple clusters. With cluster templates, you define and enforce the desired state and
   lifecycle of clusters by combining [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) with
@@ -48,17 +53,59 @@ tags: ["release-notes"]
   with minimal effort. Refer to our [Cluster Templates](../cluster-templates/cluster-templates.md) guide for more
   information.
 
+<!-- https://spectrocloud.atlassian.net//browse/PCP-5625 -->
+
 - [AWS Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) are now
   supported for AWS IaaS clusters. This feature allows you to launch your cluster nodes on physical servers that are
   dedicated for your use, providing additional isolation and compliance benefits. Refer to the
   [Create and Manage AWS IaaS Cluster](../clusters/public-cloud/aws/create-cluster.md) and
   [AWS Architecture](../clusters/public-cloud/aws/architecture.md#dedicated-hosts) guides for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5279 -->
+
+- [Worker node pools](../clusters/cluster-management/node-pool.md#worker-node-pool) now support custom rolling update
+  configuration which allows you to set numerical values for max surge or max unavailable values, offering more
+  flexibility in managing cluster capacity during updates.
+
+<!-- https://spectrocloud.atlassian.net//browse/PEM-7283 -->
+
+- [Zarf OCI registries](../registries-and-packs/registries/oci-registry/add-oci-zarf.md) now support synchronization
+  capabilities to allow public Zarf packages to be automatically imported into Palette. This setting is immutable and
+  cannot be changed after the OCI registry has been added to Palette. Therefore, it is only available for new OCI
+  registries and is disabled by default on existing registries.
+
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net//browse/PEM-6649 -->
 
 - You can now add OCI Helm registries that do not require authentication to Palette. This allows you to leverage
   publicly available OCI Helm Charts in your cluster profiles. Refer to the
   [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide to learn more.
+
+<!-- https://spectrocloud.atlassian.net//browse/PCP-5558 -->
+<!-- https://spectrocloud.atlassian.net//browse/PCP-5283 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5284 -->
+
+- [CloudStack Clusters](../clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md) now support the
+  following configuration:
+  - [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for the control and
+    worker plane, allowing system administrators to provide node level customizations.
+  - Overrides of [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) settings for specific operational
+    or environmental requirements.
+  - Template name for machine image configuration, allowing users to customize machine images for individual node pools
+    similar to how Amazon EKS clusters handle AMI selections.
+
+<!-- https://spectrocloud.atlassian.net//browse/PCP-5415 -->
+
+- Velero has been upgraded to version 1.17, which is used internally by Palette for backing up and restoring clusters.
+  Existing clusters with backups configured will be automatically updated to Velero version 1.17, ensuring continuous
+  access to backup and restore functionality. Refer to the
+  [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
+  and restore tools in Palette.
+
+<!-- https://spectrocloud.atlassian.net//browse/PEM-9468 -->
+
+- Palette's internal database, MongoDB, has been upgraded to version 7.0.28.
 
 ### Edge
 
@@ -70,10 +117,35 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-7656 -->
+
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports network settings configuration without needing to
+  restart the cluster. You can configure network interface controllers (NICs), virtual local area network (VLAN)
+  interfaces, bonds, and bridges. Refer to the
+  [Configure Network Interfaces in Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md).
+
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net//browse/PE-7782 -->
 
 - [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
   workloads.
+
+<!-- https://spectrocloud.atlassian.net//browse/PE-7322 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now allow users to
+  select specific disks for the ISO installation. Previously, the installation defaulted to the largest drive.
+
+<!-- https://spectrocloud.atlassian.net//browse/PE-7472 -->
+
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Canonical Kubernetes" url="/integrations/packs/?pack=kubernetes-ck8s" > versions 1.32.8 and 1.33.3 have been updated to use `etcd` as the datastore, replacing `k8s-dqlite`.
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net//browse/PE-7657 -->
+
+- The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) has been upgraded Kairos version 3.5.9. The TUI now allows you to customize the color scheme and choose to disable advanced settings, such as user accounts and SSH keys.
 
 #### Deprecations and Removals
 
@@ -96,6 +168,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   flexibility for organizations that need to meet stringent security requirements. Refer to the [Register and Manage
   Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md#azure-government-secret-cloud) and [Create and
   Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guides for more information.
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net//browse/PEM-9039 -->
+
+- The KubeVirt version in use is now v1.7. Other components of the VMO pack have also been upgraded, enhancing system
+  reliability and security.
 
 ### Automation
 
@@ -120,6 +201,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 ### Packs
 
 #### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net//browse/PEM-7631 -->
 
 - The [Spectro Kubernetes Dashboard](../clusters/cluster-management/spectro-kubernetes-dashboard.md) pack is now
   supported on AWS EKS clusters.
