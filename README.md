@@ -88,6 +88,10 @@ cd librarium
 make init
 ```
 
+The `make init` command will install all the required dependencies and create your `.env` file. It will also add the
+`ignore-scripts=true` setting to your local npm configuration. This setting is required to prevent post-install scripts
+from running during the installation of dependencies.
+
 Next, add your Palette API key to the `.env` file. Replace `<your-palette-api-key>` with your Palette API key.
 
 ```shell
@@ -850,7 +854,7 @@ stop and restart the local development server to observe the changes. The same a
 thing to remember is to reference a pack by the name used in the Palette API, not the display name. You can find the
 pack's name in the description component or by looking at the URL of the pack's page.
 
-#### Exluding Packs
+#### Excluding Packs
 
 You can specify a list of packs to exclude from the packs component. To exclude a pack, add the pack name to the
 [exclude_packs.json](./static/packs-data/exclude_packs.json) file.
@@ -860,7 +864,7 @@ You can specify a list of packs to exclude from the packs component. To exclude 
 [
   "palette-upgrader", 
   "csi-aws-new", 
-  "inser-pack-name-here"
+  "insert-pack-name-here"
 ]
 ```
 
@@ -1293,3 +1297,6 @@ recognition, all environment variables used by these scripts are named using the
 - `make generate-component-updates` creates only the component updates skeleton in the Palette release notes.
 - `make generate-release-notes` creates only the release notes changes for the Palette release.
 - `make generate-release` creates all Palette release related updates, excluding release notes.
+- `make ci-local` installs or updates all node dependencies required to start and build the site locally. This command
+  is preferred over `npm ci` as it prevents scripts from running during the installation process except for the Sharp
+  module dependency.
