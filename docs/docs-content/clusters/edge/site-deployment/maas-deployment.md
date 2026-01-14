@@ -109,7 +109,7 @@ automated deployments across both physical and virtual infrastructure managed by
 
 1. Once the deployment finishes, log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Clusters**.
+2. From the left main menu, select **Clusters**.
 
 3. At the top of the **Clusters** page, click the **Edge Hosts** tab. Once the Edge host is registered with Palette, it
    appears in the grid.
