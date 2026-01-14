@@ -54,7 +54,9 @@ tags: ["release-notes"]
   [Create and Manage AWS IaaS Cluster](../clusters/public-cloud/aws/create-cluster.md) and
   [AWS Architecture](../clusters/public-cloud/aws/architecture.md#dedicated-hosts) guides for more information.
 
-- Clusters now support using either the built-in Palette integrated cert-manager feature or the Cert Manager 1.19.1 add-on pack. This will allow for a more flexible and modular approach to [certificate management](../clusters/cluster-management/cert-manager-addon.md).  
+- Clusters now support using either the built-in Palette integrated cert-manager feature or the Cert Manager 1.19.1
+  add-on pack. This will allow for a more flexible and modular approach to
+  [certificate management](../clusters/cluster-management/cert-manager-addon.md).
 
 #### Improvements
 

@@ -7,11 +7,18 @@ sidebar_position: 50
 tags: ["clusters", "cluster management", "cert-manager"]
 ---
 
-The Cert Manager pack automates the process of issuing, renewing, and managing the use of TLS certificates for application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities, such as Let's Encrypt, and HashiCorp Vault. Cert Manager also supports both standard and wildcard certificates.
+The Cert Manager pack automates the process of issuing, renewing, and managing the use of TLS certificates for
+application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities,
+such as Let's Encrypt, and HashiCorp Vault. Cert Manager also supports both standard and wildcard certificates.
 
-The architecture is divided between three main components: `Issuer`, `ClusterIssue` and `Certificate`. `CRD: Issuer` determines who to request a certificate from and how to request that certificate for a specific namespace. The `CRD: ClusterIssuer` addresses certificate requests at the cluster level. `CRD: Certificate` determines which certificate, secret name and DNS are to be used at a namespace level.  
+The architecture is divided between three main components: `Issuer`, `ClusterIssue` and `Certificate`. `CRD: Issuer`
+determines who to request a certificate from and how to request that certificate for a specific namespace. The
+`CRD: ClusterIssuer` addresses certificate requests at the cluster level. `CRD: Certificate` determines which
+certificate, secret name and DNS are to be used at a namespace level.
 
-Cert Manager will request a certificate when `Issuer` or `ClusterIssuer` is created. The key and certificate are then stored in a Kubernetes secret. It will monitor the certificate expiration, and do automatic renewals before the certificate expires as necessary.
+Cert Manager will request a certificate when `Issuer` or `ClusterIssuer` is created. The key and certificate are then
+stored in a Kubernetes secret. It will monitor the certificate expiration, and do automatic renewals before the
+certificate expires as necessary.
 
 ![Cert Manager architecture](../../../../static/assets/docs/images/clusters_cluster-management_cert-manager_4-8-a.webp)
 
@@ -40,7 +47,7 @@ Cert Manager will request a certificate when `Issuer` or `ClusterIssuer` is crea
 
 2.  From the left main menu, select **Clusters**. Select the cluster you want to provision the Cert Manager on.
 
-3.  Select the **Profile** tab and select the profile your desired cluster is using. 
+3.  Select the **Profile** tab and select the profile your desired cluster is using.
 
 4.  From the version drop-down menu, select **Create new version**.
 
@@ -52,8 +59,8 @@ Cert Manager will request a certificate when `Issuer` or `ClusterIssuer` is crea
 
 8.  Click **Confirm** your changes.
 
-9.  Leave the default values for the **Cert Manager** pack and select **Confirm & Create** on the pack
-    customization screen.
+9.  Leave the default values for the **Cert Manager** pack and select **Confirm & Create** on the pack customization
+    screen.
 
     :::warning
 
@@ -65,8 +72,8 @@ Cert Manager will request a certificate when `Issuer` or `ClusterIssuer` is crea
 
     :::
 
-10. The profile overview screen reflects that the `cert-manager` pack is now part of your cluster profile.
-    Select **Save Changes**.
+10. The profile overview screen reflects that the `cert-manager` pack is now part of your cluster profile. Select **Save
+    Changes**.
 
 11. From the left main menu, select **Clusters**. Select the cluster you wish to update.
 

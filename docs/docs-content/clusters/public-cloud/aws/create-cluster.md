@@ -93,7 +93,6 @@ The following prerequisites must be met before deploying a cluster to AWS:
   - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
   - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
 
-
 ## Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS cluster:
