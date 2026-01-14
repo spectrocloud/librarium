@@ -16,6 +16,70 @@ tags: ["packs", "byoos", "operating system", "edge"]
 
 <Tabs queryString="parent">
 
+<TabItem label="2.0.x" value="2.0.x">
+
+BYOOS enables you to use a custom OS for your Edge host. The custom OS must include all the Edge artifacts and provider
+images required by the Edge Installer. Refer to the
+[Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos.md) guide for steps on how to
+create a custom OS that includes all the required components for the Edge Installer.
+
+Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. 
+
+The `options.system.uri` parameter specifies the location of the BYOOS image. This parameter is required and included in your pack YAML file by default.
+
+The following section provides the list of optional parameters you can customize in the pack YAML file.
+
+### Customizable Optional Parameters
+
+You can customize the following sections of the pack YAML file:
+
+* The `drain` section is included by default and controls how nodes are drained during cluster upgrades. If you do not make any changes in this section, the default drain values are used.
+
+* The `providerCredentials` section supplies the credentials for the registry that contains your provider images. 
+
+* The `stages` section defines the cloud-init stages that run during the node boot process. Stages defined here are processed in the same way as stages defined in a `user-data` file. Refer to the [Installer Reference Cloud Init Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference/#cloud-init-stages) for more information. 
+
+
+The following YAML configuration file example demonstrates how these sections are used, with inline comments describing all available fields.
+
+```yaml
+pack:
+  content:
+    images:
+      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'  # This parameter uses the value set in the options section as the image for the pack.
+  # Uncomment the following parameters to change them. Otherwise, the pack uses the default values. 
+  #drain:
+    #drainPods: auto     # Drain pods during cluster upgrades. Set this value to false to skip draining.
+    #podSelector:        # Specify the pod selector options for draining specific pods.
+    #cordon: true        # Cordon the node before draining. This prevents new pods from being scheduled.
+    #timeout: 60         # Maximum time, in seconds, to wait for drain to complete. Set this value to 0 for no timeout.
+    #gracePeriod: 60     #  Time, in seconds, allocated to each pod to terminate gracefully. Set this parameter to a negative value to use the pod's default time. 
+    #ignoreDaemonSets: true  # Ignore DaemonSet-managed pods during drain.
+    #deleteLocalData: true   # Allow drain to proceed even if pods use emptyDir. This will delete local data. 
+    #force: true             # Force drain even if there are pods without controllers.
+    #disableEviction: false  # Use delete instead of eviction, and bypass PodDisruptionBudgets. Use this parameter with caution.
+    #skipWaitForDeleteTimeout: 60 # Skip waiting for a pod if its DeletionTimestamp is older than this value (in seconds).
+options:
+  system.uri: "" # The provider image URL for appliance mode. Set this value to the appliance's image location.
+
+providerCredentials: 
+  registry: example.com/spectro-images  # The registry location for your provider images. This is prepended to the value in your options.system.uri setting. 
+  user: user                 # The username for the registry.
+  password: "password"       # The password for the registry.
+  certificates: |            # The security certificate for the registry, in PEM format.
+    xxx
+
+# Cloud init stages behave the same whether they are defined in the BYOOS pack or in user data.
+stages:
+  initramfs:                  # Stage name, typically for early boot/initramfs operations.
+    - name: Test stage        # The name of the step within the stage.
+      commands: 
+        - echo "hello world"  # The command to execute. Prints "hello world" for testing.
+
+```
+
+</TabItem>
+
 <TabItem label="1.0.x" value="1.0.x">
 
 BYOOS enables you to use a custom OS for your Edge host. The custom OS must include all the Edge artifacts and provider
