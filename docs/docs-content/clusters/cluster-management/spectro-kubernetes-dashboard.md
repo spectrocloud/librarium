@@ -58,9 +58,9 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
     :::info
 
-    Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, remove the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The
-    Spectro Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the
-    replacement process.
+    Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, remove the old
+    Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The Spectro Kubernetes
+    Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the replacement process.
 
     :::
 
