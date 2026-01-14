@@ -7,7 +7,7 @@ sidebar_position: 50
 tags: ["clusters", "cluster management", "cert-manager"]
 ---
 
-The Cert Manager pack automates the process of issuing, renewing, and managing the use of TLS certificates for
+The Cert Manager pack automates the process of issuing, renewing, and managing TLS certificates for
 application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities,
 such as Let's Encrypt, and HashiCorp Vault. Cert Manager also supports both standard and wildcard certificates.
 
@@ -16,11 +16,11 @@ determines who to request a certificate from and how to request that certificate
 `CRD: ClusterIssuer` addresses certificate requests at the cluster level. `CRD: Certificate` determines which
 certificate, secret name and DNS are to be used at a namespace level.
 
-Cert Manager will request a certificate when `Issuer` or `ClusterIssuer` is created. The key and certificate are then
-stored in a Kubernetes secret. It will monitor the certificate expiration, and do automatic renewals before the
+Cert Manager requests a certificate when `Issuer` or `ClusterIssuer` are created. The key and certificate are then
+stored in a Kubernetes secret. Cert Manager monitors the certificate expiration, and does automatic renewals before the
 certificate expires as necessary.
 
-![Cert Manager architecture](../../../../static/assets/docs/images/clusters_cluster-management_cert-manager_4-8-a.webp)
+![Cert Manager architecture](/clusters_cluster-management_cert-manager_4-8-a.webp)
 
 ## Supported Cluster Types
 
@@ -47,7 +47,7 @@ certificate expires as necessary.
 
 2.  From the left main menu, select **Clusters**. Select the cluster you want to provision the Cert Manager on.
 
-3.  Select the **Profile** tab and select the profile your desired cluster is using.
+3.  Select the **Profile** tab and select the profile your selected cluster is using.
 
 4.  From the version drop-down menu, select **Create new version**.
 
@@ -75,7 +75,7 @@ certificate expires as necessary.
 10. The profile overview screen reflects that the `cert-manager` pack is now part of your cluster profile. Select **Save
     Changes**.
 
-11. From the left main menu, select **Clusters**. Select the cluster you wish to update.
+11. From the left main menu, select **Clusters**. Select the cluster to update.
 
 12. Select the **Profile** tab.
 
@@ -94,4 +94,4 @@ certificate expires as necessary.
 
 4. Select the **Namespaces** tab, and then the **Workloads** tab.
 
-5. Click on the cert-manager namespace.
+5. Click on the `cert-manager` namespace.
