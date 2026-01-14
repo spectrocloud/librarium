@@ -63,13 +63,16 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5279 -->
 
-- [Worker node pools](../clusters/cluster-management/node-pool.md#worker-node-pool) now support configuring custom `maxSurge` and `maxUnavailable` values for rolling updates, offering more
-  flexibility in managing cluster capacity during updates.
+- [Worker node pools](../clusters/cluster-management/node-pool.md#worker-node-pool) now support configuring custom
+  `maxSurge` and `maxUnavailable` values for rolling updates, offering more flexibility in managing cluster capacity
+  during updates.
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-7283 -->
 
-- [Zarf OCI registries](../registries-and-packs/registries/oci-registry/add-oci-zarf.md) now support synchronization, allowing public Zarf packages to be automatically imported into Palette. This setting is only available for new OCI registries and is disabled by default on existing registries. This setting is immutable and
-cannot be changed once the OCI registry is added to Palette. 
+- [Zarf OCI registries](../registries-and-packs/registries/oci-registry/add-oci-zarf.md) now support synchronization,
+  allowing public Zarf packages to be automatically imported into Palette. This setting is only available for new OCI
+  registries and is disabled by default on existing registries. This setting is immutable and cannot be changed once the
+  OCI registry is added to Palette.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
 <!-- prettier-ignore-start -->
@@ -99,10 +102,10 @@ cannot be changed once the OCI registry is added to Palette.
   following configurations:
   - [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for the control and
     worker plane, allowing system administrators to provide node-level customization.
-  - [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) setting overrides for specific operational
-    or environmental requirements.
-  - Template names for machine image configuration, allowing users to customize machine images for individual node pools,
-    similar to how Amazon EKS clusters handle AMI selections.
+  - [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) setting overrides for specific operational or
+    environmental requirements.
+  - Template names for machine image configuration, allowing users to customize machine images for individual node
+    pools, similar to how Amazon EKS clusters handle AMI selections.
 
 <!-- https://spectrocloud.atlassian.net//browse/PCP-5415 -->
 
@@ -151,7 +154,8 @@ cannot be changed once the OCI registry is added to Palette.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9426 -->
 
-- Fixed an issue that prevented Palette from correctly assigning users to teams if the team was not listed on the first page in **Users & Teams > Teams**.
+- Fixed an issue that prevented Palette from correctly assigning users to teams if the team was not listed on the first
+  page in **Users & Teams > Teams**.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
 
@@ -177,7 +181,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports network settings configuration without needing to
   restart the cluster. You can configure network interface controllers (NICs), virtual local area network (VLAN)
   interfaces, bonds, and bridges. Refer to the
-  [Configure Network Interfaces in Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md) for more information.
+  [Configure Network Interfaces in Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md)
+  for more information.
 
 #### Improvements
 
@@ -203,8 +208,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net//browse/PE-7657 -->
 
 - The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) has been
-  upgraded to Kairos version 3.5.9. The TUI now allows you to customize the color scheme and disable advanced
-  settings, such as user accounts and SSH keys.
+  upgraded to Kairos version 3.5.9. The TUI now allows you to customize the color scheme and disable advanced settings,
+  such as user accounts and SSH keys.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7856  -->
 
@@ -233,8 +238,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7625 -->
 
-- Fixed an issue that caused stale User Data Protocol (UDP) sessions to appear in the `conntrack` table on Edge hosts that have been disconnected and
-  reconnected from the Local Area Network (LAN) cable.
+- Fixed an issue that caused stale User Data Protocol (UDP) sessions to appear in the `conntrack` table on Edge hosts
+  that have been disconnected and reconnected from the Local Area Network (LAN) cable.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7702 -->
 
@@ -276,8 +281,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-9039 -->
 
-- The KubeVirt version has been upgraded to v1.7. Other components of the VMO pack have also been upgraded, enhancing system
-  reliability and security.
+- The KubeVirt version has been upgraded to v1.7. Other components of the VMO pack have also been upgraded, enhancing
+  system reliability and security.
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-8306 -->
 
@@ -318,8 +323,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2101 -->
 
-- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now includes the `--acknowledge-banner` flag
-  on the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner
+- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now includes the `--acknowledge-banner` flag on
+  the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner
   acceptance.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2092 -->
@@ -327,9 +332,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The cluster resources of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now
-  support configuring additional annotations and labels, as well machine pool update strategies.
-  Additionally, the cluster resources now support time zone configuration, ensuring that maintenance tasks like upgrades
-  execute at the appropriate local time for the cluster.
+  support configuring additional annotations and labels, as well machine pool update strategies. Additionally, the
+  cluster resources now support time zone configuration, ensuring that maintenance tasks like upgrades execute at the
+  appropriate local time for the cluster.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2073 -->
 
@@ -342,9 +347,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The
   [`spectrocloud_registry_oci` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/registry_oci)
-  now includes the `wait_for_sync` field, allowing you to wait for the OCI registry to
-  complete its initial synchronization before marking the resource as created or updated. This operation is supported
-  for Zarf and Helm registries.
+  now includes the `wait_for_sync` field, allowing you to wait for the OCI registry to complete its initial
+  synchronization before marking the resource as created or updated. This operation is supported for Zarf and Helm
+  registries.
 
 ### Packs
 
