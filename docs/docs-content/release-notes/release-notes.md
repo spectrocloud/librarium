@@ -63,22 +63,19 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5279 -->
 
-- [Worker node pools](../clusters/cluster-management/node-pool.md#worker-node-pool) now support custom rolling update
-  configuration which allows you to set numerical values for max surge or max unavailable values, offering more
+- [Worker node pools](../clusters/cluster-management/node-pool.md#worker-node-pool) now support configuring custom `maxSurge` and `maxUnavailable` values for rolling updates, offering more
   flexibility in managing cluster capacity during updates.
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-7283 -->
 
-- [Zarf OCI registries](../registries-and-packs/registries/oci-registry/add-oci-zarf.md) now support synchronization
-  capabilities to allow public Zarf packages to be automatically imported into Palette. This setting is immutable and
-  cannot be changed after the OCI registry has been added to Palette. Therefore, it is only available for new OCI
-  registries and is disabled by default on existing registries.
+- [Zarf OCI registries](../registries-and-packs/registries/oci-registry/add-oci-zarf.md) now support synchronization, allowing public Zarf packages to be automatically imported into Palette. This setting is only available for new OCI registries and is disabled by default on existing registries. This setting is immutable and
+cannot be changed once the OCI registry is added to Palette. 
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
 <!-- prettier-ignore-start -->
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.18 is now
-  available. Additionally, they are now using the following components internally:
+  available. This version uses the following components internally:
   - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
   - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.2
   - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.10.1
@@ -99,12 +96,12 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5284 -->
 
 - [CloudStack Clusters](../clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md) now support the
-  following configuration:
+  following configurations:
   - [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for the control and
-    worker plane, allowing system administrators to provide node level customizations.
-  - Overrides of [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) settings for specific operational
+    worker plane, allowing system administrators to provide node-level customization.
+  - [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) setting overrides for specific operational
     or environmental requirements.
-  - Template name for machine image configuration, allowing users to customize machine images for individual node pools
+  - Template names for machine image configuration, allowing users to customize machine images for individual node pools,
     similar to how Amazon EKS clusters handle AMI selections.
 
 <!-- https://spectrocloud.atlassian.net//browse/PCP-5415 -->
@@ -132,7 +129,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5372 -->
 
-- Fixed an issue that cause the Palette API to fail to update the `metadata.machineUid` field after node are repaved
+- Fixed an issue that caused the Palette API to fail to update the `metadata.machineUid` field after nodes are repaved
   during Kubernetes upgrades.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5440 -->
@@ -148,14 +145,13 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5547 -->
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that caused EKS clusters with both ImageSwap enabled and configured with <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"  /> to fail to deploy.
+- Fixed an issue that caused deployment failures for EKS clusters with both ImageSwap enabled and the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"  />.
 
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9426 -->
 
-- Fixed an issue that prevented Palette from correctly assigning users to teams that fall beyond the first page of team
-  list results, which displays the first 50 teams.
+- Fixed an issue that prevented Palette from correctly assigning users to teams if the team was not listed on the first page in **Users & Teams > Teams**.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
 
@@ -181,7 +177,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports network settings configuration without needing to
   restart the cluster. You can configure network interface controllers (NICs), virtual local area network (VLAN)
   interfaces, bonds, and bridges. Refer to the
-  [Configure Network Interfaces in Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md).
+  [Configure Network Interfaces in Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md) for more information.
 
 #### Improvements
 
@@ -207,7 +203,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net//browse/PE-7657 -->
 
 - The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) has been
-  upgraded Kairos version 3.5.9. The TUI now allows you to customize the color scheme and choose to disable advanced
+  upgraded to Kairos version 3.5.9. The TUI now allows you to customize the color scheme and disable advanced
   settings, such as user accounts and SSH keys.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7856  -->
@@ -237,8 +233,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7625 -->
 
-- Fixed an issue that caused stale UDP to appear in the `conntrack` table on Edge hosts that have been disconnected and
-  reconnected from the LAN cable.
+- Fixed an issue that caused stale User Data Protocol (UDP) sessions to appear in the `conntrack` table on Edge hosts that have been disconnected and
+  reconnected from the Local Area Network (LAN) cable.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7702 -->
 
@@ -248,12 +244,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7727 -->
 
-- Fixed an issue that prevented Palette from applying priority class on critical upgrade pods, leading to scheduling
+- Fixed an issue that prevented Palette from applying priority classes on critical upgrade pods, leading to scheduling
   errors during cluster upgrades.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7786 -->
 
-- Fixed an issue that caused edge reset operations to fail on nodes whose COS_PERSISTENT partition is LUKS-encrypted.
+- Fixed an issue that caused Edge reset operations to fail on nodes whose `COS_PERSISTENT` partition is LUKS-encrypted.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7862 -->
 
@@ -280,7 +276,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-9039 -->
 
-- The KubeVirt version in use is now v1.7. Other components of the VMO pack have also been upgraded, enhancing system
+- The KubeVirt version has been upgraded to v1.7. Other components of the VMO pack have also been upgraded, enhancing system
   reliability and security.
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-8306 -->
@@ -292,13 +288,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8574 -->
 
-- Fixed and issue that cause [VM migration](../vm-management/vm-migration-assistant/create-migration-plans.md) to fail
-  due to `Missing smm: true` errors on VMs where secure boot is enabled.
+- Fixed an issue that caused [VM migration](../vm-management/vm-migration-assistant/create-migration-plans.md) to fail
+  due to `Missing smm: true` errors on VMs with secure boot enabled.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9294 -->
 
 - Fixed an issue that prevented [private CA Certificate](../vm-management/configure-private-ca-certificate.md)
-  configuration from being correctly applied.
+  configurations from being correctly applied.
 
 ### Automation
 
@@ -322,7 +318,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2101 -->
 
-- The [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now provides the `--acknowledge-banner` flag
+- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now includes the `--acknowledge-banner` flag
   on the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner
   acceptance.
 
@@ -331,7 +327,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The cluster resources of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now
-  support the configuration of additional annotations and labels, as well as an update strategy for the machine pool.
+  support configuring additional annotations and labels, as well machine pool update strategies.
   Additionally, the cluster resources now support time zone configuration, ensuring that maintenance tasks like upgrades
   execute at the appropriate local time for the cluster.
 
@@ -339,14 +335,14 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The
   [`spectrocloud_cluster_apache_cloudstack` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_apache_cloudstack)
-  now supports template name for machine image configuration, allowing users to customize machine images for individual
+  now supports template names for machine image configuration, allowing users to customize machine images for individual
   node pools.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2017 -->
 
 - The
   [`spectrocloud_registry_oci` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/registry_oci)
-  now provides the `wait_for_sync` field, which allows you to configure Terraform to wait for the OCI registry to
+  now includes the `wait_for_sync` field, allowing you to wait for the OCI registry to
   complete its initial synchronization before marking the resource as created or updated. This operation is supported
   for Zarf and Helm registries.
 
@@ -363,7 +359,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Kubernetes (AKS)" url="/integrations/packs/?pack=kubernetes-aks" /> version 1.34 now supports the configuration of pod CIDR and service ClusterIP range.
+- <VersionedLink text="Kubernetes (AKS)" url="/integrations/packs/?pack=kubernetes-aks" /> version 1.34 now supports the configuration of pod CIDR and service ClusterIP ranges.
 
 <!-- prettier-ignore-end -->
 
@@ -375,13 +371,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Pack Name                          | Layer      | Non-FIPS           | FIPS               | New Version |
 | ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
 | Amazon EBS CSI                     | CSI        | :white_check_mark: | :x:                | 1.53.0      |
-| AWS Cluster Autoscaler             | Add-on     | :white_check_mark: | :x:                | 1.35.0      |
 | AWS Application Loadbalancer       | Add-on     | :white_check_mark: | :x:                | 2.17.0      |
+| AWS Cluster Autoscaler             | Add-on     | :white_check_mark: | :x:                | 1.35.0      |
 | Argo CD                            | CSI        | :white_check_mark: | :x:                | 9.1.7       |
 | Argo CD                            | CSI        | :white_check_mark: | :x:                | 9.1.6       |
 | Argo CD                            | CSI        | :white_check_mark: | :x:                | 9.1.4       |
-| Cert Manager                       | Add-on     | :white_check_mark: | :x:                | 1.19.1      |
 | Calico                             | CNI        | :white_check_mark: | :x:                | 3.31.3      |
+| Cert Manager                       | Add-on     | :white_check_mark: | :x:                | 1.19.1      |
 | Cilium                             | CNI        | :white_check_mark: | :x:                | 1.18.4      |
 | Crossplane                         | Add-on     | :white_check_mark: | :x:                | 2.1.1       |
 | External DNS                       | Add-on     | :white_check_mark: | :x:                | 0.19.0      |
