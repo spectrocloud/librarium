@@ -119,10 +119,6 @@ tags: ["release-notes"]
 
 - Palette's internal database, MongoDB, has been upgraded to version 7.0.28.
 
-<!-- https://spectrocloud.atlassian.net/browse/OPS-8332 -->
-
-- The image `imageswap-init:v1.5.3-spectro-4.7.a` was recreated due to a missing dependency.
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9143 -->
 
 - The `nginx.ingress.kubernetes.io/proxy-body-size` field allows you to configure the request body size limit of the
@@ -165,6 +161,10 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9484 -->
 
 - Fixed an issue that prevented Palette from masking API responses containing cloud account fields.
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-8332 -->
+
+- The image `imageswap-init:v1.5.3-spectro-4.7.a` was recreated due to a missing dependency.
 
 ### Edge
 
