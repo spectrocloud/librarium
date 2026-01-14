@@ -74,6 +74,10 @@ tags: ["release-notes"]
   cannot be changed after the OCI registry has been added to Palette. Therefore, it is only available for new OCI
   registries and is disabled by default on existing registries.
 
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.18 is now
+  available.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-6649 -->
@@ -106,6 +110,49 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net//browse/PEM-9468 -->
 
 - Palette's internal database, MongoDB, has been upgraded to version 7.0.28.
+
+<!-- https://spectrocloud.atlassian.net/browse/OPS-8332 -->
+
+- The image `imageswap-init:v1.5.3-spectro-4.7.a` was retagged due to a missing dependency.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9143 -->
+
+- The `nginx.ingress.kubernetes.io/proxy-body-size` field allows you to configure the request body size limit of the
+  NGINX ingress controller deployed by Palette.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5372 -->
+
+- Fixed an issue that cause the Palette API to fail to update the `metadata.machineUid` field after node are repaved
+  during Kubernetes upgrades.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5440 -->
+
+- Fixed an issue that caused Palette to fail to update the `controlPlaneEndpoint` field when applying updates on
+  [MAAS](../clusters/data-center/maas/maas.md) clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5490 -->
+
+- Fixed an issue that prevented Palette from removing `cert-renewal-plan` resources that are no longer required for
+  automatic resource upgrades.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5547 -->
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused EKS clusters with both ImageSwap enabled and configured with <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"  /> to fail to deploy/
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9426 -->
+
+- Fixed an issue that prevented Palette from correctly assigning users to teams that fall beyond the first page of team list results, which displays the first 50 teams.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
+
+- Fixed an issue that prevented Palette from correctly applying configuration updates specified in manifest files for `ally` and `palette-controller-manager` resources on newly created clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9484 -->
+
+- Fixed an issue that prevented Palette from masking API responses containing cloud account fields.
 
 ### Edge
 
@@ -147,6 +194,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) has been upgraded Kairos version 3.5.9. The TUI now allows you to customize the color scheme and choose to disable advanced settings, such as user accounts and SSH keys.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-7856  -->
+
+- The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) now allows IP address updates after cluster creation, including changing from static IP to DHCP.
+
 #### Deprecations and Removals
 
 - The `stylus.installationMode`
@@ -156,6 +207,34 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   the [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for further information.
 
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4938 -->
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display a **Running** status while pack updates were still being applied.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7504 -->
+
+- Fixed an issue that caused some CoreDNS pods to enter the `CrashLoopBackOff` state  on Edge clusters whose hosts run Ubuntu 24.04 with a Unified Kernel Image (UKI).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7625 -->
+
+- Fixed an issue that caused stale UDP to appear in the `conntrack` table on Edge hosts that have been disconnected and reconnected from the LAN cable.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7702 -->
+
+- Fixed an issue that prevented [registry mapping rules](../clusters/edge/edge-configuration/installer-reference.md#registry-mapping-rules) from working with local registries.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7727 -->
+
+- Fixed an issue that prevented Palette from applying priority class on critical upgrade pods, leading to scheduling errors during cluster upgrades.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7786 -->
+
+- Fixed an issue that caused edge reset operations to fail on nodes whose COS_PERSISTENT partition is LUKS-encrypted.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7862 -->
+
+- Fixed an issue that caused the Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) to display the Local UI address with the `http` prefix instead of `https`.
 
 ### VerteX
 
@@ -178,6 +257,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - The KubeVirt version in use is now v1.7. Other components of the VMO pack have also been upgraded, enhancing system
   reliability and security.
 
+### Bug Fixes 
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8574 -->
+
+- Fixed and issue that cause [VM migration](../vm-management/vm-migration-assistant/create-migration-plans.md) to fail due to `Missing smm: true` errors on VMs where secure boot is enabled.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9294 -->
+
+- Fixed an issue that prevented [private CA Certificate](../vm-management/configure-private-ca-certificate.md) configuration  from being correctly applied.
+
 ### Automation
 
 :::info
@@ -188,15 +277,19 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.26.X of the
+- Terraform version 0.26.3 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.26.X of the
+- Crossplane version 0.26.3 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2101 -->
+
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now provides the `--acknowledge-banner` flag on the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner acceptance.
 
 ### Packs
 
