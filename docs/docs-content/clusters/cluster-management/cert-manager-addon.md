@@ -1,18 +1,16 @@
 ---
-sidebar_label: "Spectro Kubernetes Dashboard"
-title: "Spectro Kubernetes Dashboard"
+sidebar_label: "Cert Manager Add-On"
+title: "Cert Manager Add-On"
 description: "How to Setup the Cert Manager Add-On"
 hiddenFromNav: false
-sidebar_position: 210
+sidebar_position: 50
 tags: ["clusters", "cluster management", "dashboard"]
 ---
 
-The Cert Manager pack allows .
-
-<!-- prettier-ignore-start -->
+The Cert Manager pack allows for the use of TLS certificates for workloads. These can either be self-signed or sourced from certificates authorities, such as Let's Encrypt, HashiCorp Valut, Venafi and private PKI.
 
 
-<!-- prettier-ignore-end -->
+![Cert Manager architecture](../../../../static/assets/docs/images/clusters_cluster-management_cert-manager_4-8-a.webp)
 
 ## Supported Cluster Types
 
