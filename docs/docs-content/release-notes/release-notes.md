@@ -113,12 +113,12 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/OPS-8332 -->
 
-- The image `imageswap-init:v1.5.3-spectro-4.7.a` was retagged due to a missing dependency.
+- The image `imageswap-init:v1.5.3-spectro-4.7.a` was recreated due to a missing dependency.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9143 -->
 
 - The `nginx.ingress.kubernetes.io/proxy-body-size` field allows you to configure the request body size limit of the
-  NGINX ingress controller deployed by Palette.
+  Nginx ingress controller deployed by Palette.
 
 #### Bug Fixes
 
