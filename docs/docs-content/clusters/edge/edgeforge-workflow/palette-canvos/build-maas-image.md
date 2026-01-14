@@ -113,10 +113,10 @@ your Edge deployment.
 
 ## Validate
 
-1. Issue the following command to list the files in the `build/` directory.
+1. Issue the following command to list the files in the `build` directory.
 
    ```bash
-   ls build/
+   ls build
    ```
 
    ```bash hideClipboard title="Example Output"
