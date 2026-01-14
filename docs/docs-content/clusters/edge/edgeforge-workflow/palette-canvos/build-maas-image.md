@@ -24,7 +24,9 @@ your Edge deployment.
 
 ## Prerequisites
 
-- (Optional) A [Palette registration token](../../site-deployment/site-installation/create-registration-token.md) to embed user data in the MAAS image. If you do not embed the user data, you must provide the user data, including a registration token, when deploying your MAAS host using the MAAS UI.
+- (Optional) A [Palette registration token](../../site-deployment/site-installation/create-registration-token.md) to
+  embed user data in the MAAS image. If you do not embed the user data, you must provide the user data, including a
+  registration token, when deploying your MAAS host using the MAAS UI.
 - A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
   minimum hardware configuration:
   - 4 CPUs
@@ -126,8 +128,8 @@ your Edge deployment.
    - The MAAS-compatible compressed disk image (`custom-maas-image.raw.gz`).
    - The SHA256 checksum file (`custom-maas-image.raw.gz.sha256`).
 
-2. Verify the integrity of the image by validating the checksum. Replace
-   `custom-maas-image.raw.gz.sha256` with your checksum file name.
+2. Verify the integrity of the image by validating the checksum. Replace `custom-maas-image.raw.gz.sha256` with your
+   checksum file name.
 
    ```bash
    sha256sum --check build/custom-maas-image.raw.gz.sha256

@@ -79,6 +79,8 @@ automated deployments across both physical and virtual infrastructure managed by
    ```bash
    maas login admin http://<MAAS-URL>:5240/MAAS <API-KEY>
 
+   ```
+
 3. Upload the custom image to MAAS. Use your own values for `name`, `title`, and `content@` path that points to the
    image location. The `name` value must be unique within MAAS and follow MAAS naming conventions (lowercase, no spaces,
    and typically using `/` as a namespace separator). The `title` value is a human-readable label shown in the MAAS UI.
@@ -115,5 +117,5 @@ automated deployments across both physical and virtual infrastructure managed by
 
 ## Next Steps
 
-Once an Edge host is registered with Palette, you can allocate the Edge host to a cluster. For more
-information, refer to [Create Cluster Definition](cluster-deployment.md).
+Once an Edge host is registered with Palette, you can allocate the Edge host to a cluster. For more information, refer
+to [Create Cluster Definition](cluster-deployment.md).
