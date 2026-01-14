@@ -24,9 +24,7 @@ your Edge deployment.
 
 ## Prerequisites
 
-- If you want to embed user data in the MAAS image, you need a Palette registration token for pairing Edge hosts with
-  Palette. Tenant admin access to Palette is required to generate a new registration token. For detailed instructions,
-  refer to the [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
+- (Optional) A [Palette registration token](../../site-deployment/site-installation/create-registration-token.md) to embed user data in the MAAS image. If you do not embed the user data, you must provide the user data, including a registration token, when deploying your MAAS host using the MAAS UI.
 - A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
   minimum hardware configuration:
   - 4 CPUs
