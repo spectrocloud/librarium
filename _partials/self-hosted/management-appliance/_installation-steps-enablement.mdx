@@ -20,90 +20,92 @@ partial_name: installation-steps-enablement
 
 4. Restart the nodes to start the installation process.
 
+5. Choose between specifying ISO installation disk in the TUI or in the installation manifest.
+
 <Tabs>
 
 <TabItem value="iso-disk-selection-in-tui" label="Specify ISO Installation Disk in the TUI">
 
-5. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette Edge Interactive Installer** option and press **ENTER**.
+   1. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette Edge Interactive Installer** option and press **ENTER**.
 
-   :::caution
+      :::caution
 
-   Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time.
+      Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time. Depending on the configuration, this option may be chosen by default.
 
-   :::
+      :::
 
-6. Once the **Palette Edge Interactive Installer** window appears, select the target disk for installation.
+   2. Once the **Palette Edge Interactive Installer** window appears, select the target disk for installation.
 
-7. Choose the post-installation action: **nothing**, **reboot**, or **poweroff**, then press **ENTER**.
+   3. Choose the post-installation action: **nothing**, **reboot**, or **poweroff**, then press **ENTER**.
 
-8. Review the **Installation Summary**.
+   4. Review the **Installation Summary**.
 
-9. Press **ENTER** to start the installation.
+   5. Press **ENTER** to start the installation.
 
 </TabItem>
 
 <TabItem value="iso-disk-selection-in-yaml" label="Specify ISO Installation Disk in the Installation Manifest.">
 
-5. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette eXtended Kubernetes Edge Install (manual)** option and press **ENTER**.
+   1. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette eXtended Kubernetes Edge Install (manual)** option and press **ENTER**.
 
-   :::caution
+      :::caution
 
-   Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time.
+      Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time.
 
-   :::
+      :::
 
-6. Once the nodes have finished booting, in the terminal, issue the following command to list the block devices.
+   2. Once the nodes have finished booting, in the terminal, issue the following command to list the block devices.
 
-   ```bash
-   lsblk --paths
-   ```
+      ```bash
+      lsblk --paths
+      ```
 
-   Use the output to identify the device name to use for the {props.version} ISO stack. For example, `/dev/sda`.
+      Use the output to identify the device name to use for the {props.version} ISO stack. For example, `/dev/sda`.
 
-   ```shell hideClipboard title="Example output" {3}
-   NAME       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-   /dev/loop0   7:0    0     1G  1 loop /run/rootfsbase
-   /dev/sda     8:0    0   250G  0 disk
-   /dev/sdb     8:16   0  5000G  0 disk
-   /dev/sr0    11:0    1  17.3G  0 rom  /run/initramfs/live
-   ```
+      ```shell hideClipboard title="Example output" {3}
+      NAME       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+      /dev/loop0   7:0    0     1G  1 loop /run/rootfsbase
+      /dev/sda     8:0    0   250G  0 disk
+      /dev/sdb     8:16   0  5000G  0 disk
+      /dev/sr0    11:0    1  17.3G  0 rom  /run/initramfs/live
+      ```
 
-7. Issue the following command to edit the installation manifest.
+   3. Issue the following command to edit the installation manifest.
 
-   ```bash
-   vi /oem/stylus_config.yaml
-   ```
+      ```bash
+      vi /oem/stylus_config.yaml
+      ```
 
-8. Add the following `install.device` section to your manifest, replacing `<storage-drive>` with the device name identified in step 6.
+   4. Add the following `install.device` section to your manifest, replacing `<storage-drive>` with the device name identified in step 6.
 
-   ```yaml hideClipboard {6}
-   #cloud-config
+      ```yaml hideClipboard {6}
+      #cloud-config
 
-   cosign: false
-   verify: false
-   install:
-     device: <storage-drive>
-     grub-entry-name: "Palette eXtended Kubernetes Edge"
-     system:
-       size: 8192
-   ...
-   ```
+      cosign: false
+      verify: false
+      install:
+        device: <storage-drive>
+        grub-entry-name: "Palette eXtended Kubernetes Edge"
+        system:
+          size: 8192
+      ...
+      ```
 
-    Save the changes and exit the editor.
+       Save the changes and exit the editor.
 
-9. Issue the following command to start the installation process.
+   5. Issue the following command to start the installation process.
 
-    ```bash
-    kairos-agent install
-    ```
+       ```bash
+       kairos-agent install
+       ```
 </TabItem>
 
 </Tabs>
 
-10. Wait for the installation process to complete. This will take at least 15 minutes, depending on the resources
+6. Wait for the installation process to complete. This will take at least 15 minutes, depending on the resources
     available on the nodes. Turn on the nodes if required. After completion, the nodes will display the Palette TUI.
 
-11. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the node.
+7. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the node.
 
     | **Field**                | **Description**                            |
     |--------------------------|--------------------------------------------|
@@ -113,13 +115,13 @@ partial_name: installation-steps-enablement
 
     Press **ENTER** to continue.
 
-12. In the Palette TUI, the available configuration options are displayed and are described in the next three steps.
+8. In the Palette TUI, the available configuration options are displayed and are described in the next three steps.
     Use the **TAB** key or the up and down arrow keys to switch between fields. When you make a change, press **ENTER**
     to apply the change. Use **ESC** to go back.
 
-13. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
+9. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
-14. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
+10. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
     automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
     block of an adapter's possible IP address is displayed in the **Network Adapter** screen without selecting an
     individual adapter.
@@ -137,10 +139,10 @@ partial_name: installation-steps-enablement
     - You can also specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the largest size,
       in bytes, of a packet that can be sent over a network interface without needing to be fragmented.
 
-15. In **DNS Configuration**, specify the IP address of the primary and alternate name servers. You can optionally
+11. In **DNS Configuration**, specify the IP address of the primary and alternate name servers. You can optionally
     specify a search domain.
 
-16. After you are satisfied with the configurations, navigate to **Quit** and press **ENTER** to finish the
+12. After you are satisfied with the configurations, navigate to **Quit** and press **ENTER** to finish the
     configuration. Press **ENTER** again on the confirmation prompt.
 
     After a few seconds, the terminal displays the **Device Info** and prompts you to provision the device through Local UI.
@@ -151,11 +153,11 @@ partial_name: installation-steps-enablement
 
     :::
 
-17. Ensure you complete the configuration on each node before proceeding to the next step.
+13. Ensure you complete the configuration on each node before proceeding to the next step.
 
-18. Decide on the host that you plan to use as the leader of the group. Refer to <VersionedLink text="Link Hosts" url="/clusters/edge/local-ui/cluster-management/link-hosts#leader-hosts"/> for more information about leader hosts.
+14. Decide on the host that you plan to use as the leader of the group. Refer to <VersionedLink text="Link Hosts" url="/clusters/edge/local-ui/cluster-management/link-hosts#leader-hosts"/> for more information about leader hosts.
 
-19. Access the Local UI of the leader host. Local UI is used to manage the {props.version} nodes and perform administrative
+15. Access the Local UI of the leader host. Local UI is used to manage the {props.version} nodes and perform administrative
     tasks. It provides a web-based interface for managing the {props.version} management cluster.
 
     In your web browser, go to `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of your node. If you
@@ -166,31 +168,31 @@ partial_name: installation-steps-enablement
     is because Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to Local
     UI.
 
-20. Log in to Local UI using the credentials you provided in step 10.
+16. Log in to Local UI using the credentials you provided in step 10.
 
-21. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the <VersionedLink text="Configure HTTP-Proxy in Local UI" url="/clusters/edge/local-ui/host-management/configure-proxy"/> guide. When done, proceed to the next step.
+17. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the <VersionedLink text="Configure HTTP-Proxy in Local UI" url="/clusters/edge/local-ui/host-management/configure-proxy"/> guide. When done, proceed to the next step.
 
-22. From the left main menu, click **Linked Edge Hosts**.
+18. From the left main menu, click **Linked Edge Hosts**.
 
-23. Click **Generate token**. The host begins generating tokens that you will use to link this host with other
+19. Click **Generate token**. The host begins generating tokens that you will use to link this host with other
     hosts. The Base64 encoded token contains the IP address of the host, as well as an OTP that will expire in two
     minutes. Once a token expires, the leader generates another token automatically.
 
-24. Click the **Copy** button to copy the token.
+20. Click the **Copy** button to copy the token.
 
-25. Log in to Local UI on the host that you want to link to the leader host.
+21. Log in to Local UI on the host that you want to link to the leader host.
 
-26. From the left main menu, click **Linked Edge Hosts**.
+22. From the left main menu, click **Linked Edge Hosts**.
 
-27. Click **Link this device to another**.
+23. Click **Link this device to another**.
 
-28. In the pop-up box that appears, enter the token you copied from the leader host.
+24. In the pop-up box that appears, enter the token you copied from the leader host.
 
-29. Click **Confirm**.
+25. Click **Confirm**.
 
-30. Repeat steps 27-31 for every host you want to link to the leader host.
+26. Repeat steps 27-31 for every host you want to link to the leader host.
 
-31. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the
+27. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the
     required statuses.
 
     | **Column**  | **Status** |
@@ -201,19 +203,19 @@ partial_name: installation-steps-enablement
 
     Content synchronization will take at least five minutes to complete, depending on your network resources.
 
-32. On the left main menu, click **Cluster**.
+28. On the left main menu, click **Cluster**.
 
-33. Click **Create cluster**.
+29. Click **Create cluster**.
 
-34. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
+30. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
 
-35. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included
+31. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included
     with the {props.app}. These applications are pre-configured and used to deploy your {props.version} management
     cluster.
 
     Leave the default options in place and click **Next**.
 
-36. In **Profile Config**, configure the cluster profile settings to your requirements. Review the following tables for
+32. In **Profile Config**, configure the cluster profile settings to your requirements. Review the following tables for
     the available options.
 
     #### Cluster Profile Options
