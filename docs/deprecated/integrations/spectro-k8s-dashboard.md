@@ -17,21 +17,9 @@ secure ports and conveniently includes the [Spectro Proxy](frp.md) pack.
 
 ## Versions Supported
 
-<Tabs queryString="parent">
+**2.7.x**
 
-<TabItem label="7.13.x" value="7.13.x">
-
-:::warning
-
-Spectro Kubernetes version 7.13.0 is not compatible with
-
-<VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks" /> version 1.33. Use Spectro
-Kubernetes Dashboard version 7.11.0 on EKS clusters.
-
-:::
-
-<TabItem />
-<Tabs />
+<br />
 
 ## Prerequisites
 
