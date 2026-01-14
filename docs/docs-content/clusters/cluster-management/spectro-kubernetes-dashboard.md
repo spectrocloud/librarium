@@ -78,15 +78,11 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 8.  Select the most recent version and **Confirm** your changes.
 
-<!-- prettier-ignore-start -->
+    :::warning
 
-        :::warning
+        Spectro Kubernetes Dashboard version 7.13.0 is not compatible with Kubernetes (EKS) version 1.33. Use Spectro Kubernetes Dashboard version 7.11.0 on EKS clusters.
 
-        Spectro Kubernetes Dashboard version 7.13.0 is not compatible with <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks" /> version 1.33. Use Spectro Kubernetes Dashboard version 7.11.0 on EKS clusters.
-
-        :::
-
-<!-- prettier-ignore-end -->
+    :::
 
 9.  Leave the default values for the **Spectro Kubernetes Dashboard** pack and select **Confirm & Create** on the pack
     customization screen.
