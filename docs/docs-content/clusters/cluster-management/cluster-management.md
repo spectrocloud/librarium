@@ -27,6 +27,8 @@ The following sections describe these capabilities in detail:
   ability to have these alerts pushed out to a variety of channels. Users can set up email alerts to receive an email
   when the health status of their cluster changes.
 
+- [Cert Manager Add-On](cert-manager-addon.md) - You can deploy the Cert Manager pack to automate the process of requesting, managing, and renewing cluster certificates.
+
 - [Renew Cluster PKI Certificates](certificate-management.md) - You can renew cluster certificates on-demand or leverage
   the automatic cluster update process to handle certificate renewal operations.
 
