@@ -195,16 +195,21 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net//browse/PE-7472 -->
 
 <!-- prettier-ignore-start -->
+
 - The <VersionedLink text="Canonical Kubernetes" url="/integrations/packs/?pack=kubernetes-ck8s" /> versions 1.32.8 and 1.33.3 have been updated to use `etcd` as the datastore, replacing `k8s-dqlite`.
+
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-7657 -->
 
-- The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) has been upgraded Kairos version 3.5.9. The TUI now allows you to customize the color scheme and choose to disable advanced settings, such as user accounts and SSH keys.
+- The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) has been
+  upgraded Kairos version 3.5.9. The TUI now allows you to customize the color scheme and choose to disable advanced
+  settings, such as user accounts and SSH keys.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7856  -->
 
-- The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) now allows IP address updates after cluster creation, including changing from static IP to DHCP.
+- The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) now
+  allows IP address updates after cluster creation, including changing from static IP to DHCP.
 
 #### Deprecations and Removals
 
@@ -218,23 +223,29 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4938 -->
 
-- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display a **Running** status while pack updates were still being applied.
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display a **Running** status while
+  pack updates were still being applied.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7504 -->
 
-- Fixed an issue that caused some CoreDNS pods to enter the `CrashLoopBackOff` state  on Edge clusters whose hosts run Ubuntu 24.04 with a Unified Kernel Image (UKI).
+- Fixed an issue that caused some CoreDNS pods to enter the `CrashLoopBackOff` state on Edge clusters whose hosts run
+  Ubuntu 24.04 with a Unified Kernel Image (UKI).
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7625 -->
 
-- Fixed an issue that caused stale UDP to appear in the `conntrack` table on Edge hosts that have been disconnected and reconnected from the LAN cable.
+- Fixed an issue that caused stale UDP to appear in the `conntrack` table on Edge hosts that have been disconnected and
+  reconnected from the LAN cable.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7702 -->
 
-- Fixed an issue that prevented [registry mapping rules](../clusters/edge/edge-configuration/installer-reference.md#registry-mapping-rules) from working with local registries.
+- Fixed an issue that prevented
+  [registry mapping rules](../clusters/edge/edge-configuration/installer-reference.md#registry-mapping-rules) from
+  working with local registries.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7727 -->
 
-- Fixed an issue that prevented Palette from applying priority class on critical upgrade pods, leading to scheduling errors during cluster upgrades.
+- Fixed an issue that prevented Palette from applying priority class on critical upgrade pods, leading to scheduling
+  errors during cluster upgrades.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7786 -->
 
@@ -242,7 +253,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7862 -->
 
-- Fixed an issue that caused the Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) to display the Local UI address with the `http` prefix instead of `https`.
+- Fixed an issue that caused the Edge
+  [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) to display the
+  Local UI address with the `http` prefix instead of `https`.
 
 ### VerteX
 
@@ -265,15 +278,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - The KubeVirt version in use is now v1.7. Other components of the VMO pack have also been upgraded, enhancing system
   reliability and security.
 
-### Bug Fixes 
+#### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8574 -->
 
-- Fixed and issue that cause [VM migration](../vm-management/vm-migration-assistant/create-migration-plans.md) to fail due to `Missing smm: true` errors on VMs where secure boot is enabled.
+- Fixed and issue that cause [VM migration](../vm-management/vm-migration-assistant/create-migration-plans.md) to fail
+  due to `Missing smm: true` errors on VMs where secure boot is enabled.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9294 -->
 
-- Fixed an issue that prevented [private CA Certificate](../vm-management/configure-private-ca-certificate.md) configuration  from being correctly applied.
+- Fixed an issue that prevented [private CA Certificate](../vm-management/configure-private-ca-certificate.md)
+  configuration from being correctly applied.
 
 ### Automation
 
@@ -297,7 +312,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2101 -->
 
-- The [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now provides the `--acknowledge-banner` flag on the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner acceptance.
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now provides the `--acknowledge-banner` flag
+  on the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner
+  acceptance.
 
 ### Packs
 
@@ -308,8 +325,34 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - The [Spectro Kubernetes Dashboard](../clusters/cluster-management/spectro-kubernetes-dashboard.md) pack is now
   supported on AWS EKS clusters.
 
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
+<!-- https://spectrocloud.atlassian.net/browse/PAC-2620 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3541 -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI               | CSI    | :white_check_mark: | :x:                | 1.53.0      |
+| AWS Cluster Autoscaler       | Add-on | :white_check_mark: | :x:                | 1.35.0      |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.17.0      |
+| Argo CD                      | CSI    | :white_check_mark: | :x:                | 9.1.4       |
+| Argo CD                      | CSI    | :white_check_mark: | :x:                | 9.1.6       |
+| Argo CD                      | CSI    | :white_check_mark: | :x:                | 9.1.7       |
+| Cert Manager                 | Add-on | :white_check_mark: | :x:                | 1.19.1      |
+| Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.3      |
+| Cilium                       | CNI    | :white_check_mark: | :x:                | 1.18.4      |
+| Crossplane                   | Add-on | :white_check_mark: | :x:                | 2.1.1       |
+| External DNS                 | Add-on | :white_check_mark: | :x:                | 0.19.0      |
+| External Secrets             | Add-on | :white_check_mark: | :x:                | 1.1.1       |
+| External Secrets             | Add-on | :white_check_mark: | :x:                | 1.2.0       |
+| Flux2                        | Add-on | :white_check_mark: | :x:                | 2.17.2      |
+| GCE Persistent Disk CSI      | CSI    | :white_check_mark: | :x:                | 1.22.5      |
+| Istio                        | Add-on | :white_check_mark: | :x:                | 1.28.2      |
+| Karpenter                    | Add-on | :white_check_mark: | :x:                | 1.8.3       |
+| Local Path Provisioner       | CSI    | :white_check_mark: | :white_check_mark: | 0.0.32      |
+| Reloader                     | Add-on | :white_check_mark: | :x:                | 1.4.11      |
+| Reloader                     | Add-on | :white_check_mark: | :x:                | 1.4.12      |
+| Nginx                        | Add-on | :white_check_mark: | :x:                | 1.14.1      |
+| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.51.0     |
+| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 80.4.2      |
 
 #### Deprecations and Removals
 
