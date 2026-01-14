@@ -7,7 +7,7 @@ sidebar_position: 50
 tags: ["clusters", "cluster management", "cert-manager"]
 ---
 
-The Cert Manager pack automates the process of issuing, renewing, and managing the use of TLS certificates for application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities, such as Let's Encrypt, and HashiCorp Vault.
+The Cert Manager pack automates the process of issuing, renewing, and managing the use of TLS certificates for application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities, such as Let's Encrypt, and HashiCorp Vault. Cert Manager also supports both standard and wildcard certificates.
 
 The architecture is divided between three main components: `Issuer`, `ClusterIssue` and `Certificate`. `CRD: Issuer` determines who to request a certificate from and how to request that certificate for a specific namespace. The `CRD: ClusterIssuer` addresses certificate requests at the cluster level. `CRD: Certificate` determines which certificate, secret name and DNS are to be used at a namespace level.  
 
