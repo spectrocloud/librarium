@@ -84,10 +84,18 @@ automated deployments across both physical and virtual infrastructure managed by
 
    ```
 
-3. Upload the custom image to MAAS. Use your own values for `name`, `title`, and `content@` path that points to the
-   image location. The `name` value must be unique within MAAS and follow MAAS naming conventions (lowercase, no spaces,
-   and typically using `/` as a namespace separator). The `title` value is a human-readable label shown in the MAAS UI.
-   Additionally, replace `admin` with the name of your MAAS CLI profile. The following command serves as an example.
+3. Upload the custom image to MAAS using the `maas <profile> boot-resources create` command. The following table describes the parameters used in the command.
+
+   | **Parameter**                    | **Description**        |
+   | ------------------------------- | ----------------------- |
+   | `<profile>`| The MAAS CLI profile name created using the `maas login` command.|
+   | `name`| The unique identifier for the custom image within MAAS. Must follow MAAS naming conventions (lowercase, no spaces, and typically using `/` as a namespace separator).|
+   | `title`| A human-readable label displayed in the MAAS UI.|
+   | `architecture`| The target CPU architecture for the image. Use `amd64/generic` for AMD64 (`x86_64`) MAAS deployments.|
+   | `filetype`| The format of the uploaded image. Use `ddgz` for compressed raw disk images.|
+   | `content@`| Path to the image location.|
+   
+   The following command serves as an example.
 
    ```bash title="Example command"
    maas admin boot-resources create \
@@ -98,16 +106,16 @@ automated deployments across both physical and virtual infrastructure managed by
     content@=~/Downloads/custom-maas-image.raw.gz
    ```
 
-4. In the MAAS web UI, open the page for the machine you want to use as your Edge host. Select **Actions** > **Deploy**.
+6. In the MAAS web UI, open the page for the machine you want to use as your Edge host. Select **Actions** > **Deploy**.
 
-5. Select the **Custom** value in the **OS** field. In the **Release** field, select the custom MAAS image you uploaded
+7. Select the **Custom** value in the **OS** field. In the **Release** field, select the custom MAAS image you uploaded
    in step 3.
 
-6. (Optional) If you did not embed the user data in the custom image, enable **Cloud-init user-data** and paste the
+8. (Optional) If you did not embed the user data in the custom image, enable **Cloud-init user-data** and paste the
    required user data. For instructions on preparing user data, refer to
    [Prepare User Data and Argument Files](../edgeforge-workflow/prepare-user-data.md).
 
-7. Click **Deploy machine** to start the deployment.
+9. Click **Deploy machine** to start the deployment.
 
 ## Validate
 
