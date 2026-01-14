@@ -4,11 +4,12 @@ title: "Cert Manager Add-On"
 description: "How to Setup the Cert Manager Add-On"
 hiddenFromNav: false
 sidebar_position: 50
-tags: ["clusters", "cluster management", "dashboard"]
+tags: ["clusters", "cluster management", "cert-manager"]
 ---
 
-The Cert Manager pack allows for the use of TLS certificates for workloads. These can either be self-signed or sourced from certificates authorities, such as Let's Encrypt, HashiCorp Valut, Venafi and private PKI.
+The Cert Manager pack automates the process of issuing, renewing and managing the use of TLS certificates for application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities, such as Let's Encrypt, and HashiCorp Vault. 
 
+The architecture is divided between three main components: `Issuer`, `ClusterIssue` and `Certificate`. `CRD: Issuer` determines who to request a certificate from and how to request that certificate for a specific namespace. The `CRD: ClusterIssuer` addresses certificate requests at the cluster level. `CRD: Certificate` determines which certificate, secret name and DNS are to be used at a namespace level.  
 
 ![Cert Manager architecture](../../../../static/assets/docs/images/clusters_cluster-management_cert-manager_4-8-a.webp)
 
@@ -19,15 +20,18 @@ The Cert Manager pack allows for the use of TLS certificates for workloads. Thes
     - AWS
     - Azure
     - GCP
-  - Managed Kubernetes:
-    - AWS EKS
+  - Datacenter
+    - MAAS
+    - Nutanix
+    - OpenStack
+    - CloudStack
+    - VMware
 
 
 ## Prerequisites
 
-- An active Palette cluster.
-- An OIDC Identity Provider. For more information about using a custom OIDC, visit the page on
-  [SAML and OIDC SSO](../../user-management/saml-sso/saml-sso.md#palette-oidc-and-pxk).
+- New cluster built on 4.8.a
+- existing cluster upgraded to 4.8.a before adding Cert Manager add-on pack.
 
 ## Enablement
 
@@ -45,37 +49,24 @@ The Cert Manager pack allows for the use of TLS certificates for workloads. Thes
 
 6.  Select **Add New Pack**. The search field appears.
 
-7.  Search for and select the **Spectro Kubernetes Dashboard** pack. Ensure that you are selecting the FIPS version if
-    the Profile is FIPS-based.
+7.  Search for and select the **Cert Manager** pack. Ensure that you are selecting version 1.19.1.
 
-    ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
+8.  Click **Confirm** your changes.
 
-8.  Select the most recent version and **Confirm** your changes.
-
-    :::info
-
-    Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must
-    remove the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The
-    Spectro Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the
-    replacement process.
-
-    :::
-
-9.  Leave the default values for the **Spectro Kubernetes Dashboard** pack and select **Confirm & Create** on the pack
+9.  Leave the default values for the **Cert Manager** pack and select **Confirm & Create** on the pack
     customization screen.
 
-    :::warning
+    :::warning 
 
-         For FIPS deployments, be aware of the following required configuration options:
-             - In private cloud, enable `Proxied` mode.
-             - In public cloud, enable `Direct` mode.
-             - In private clusters of public cloud, enable `Proxied` mode and ensure your VPN is enabled between the private and public clouds.
+         You can do [customizations](https://cert-manager.io/docs/installation/configuring-components/), however, the following must be adhered to:
 
-         Additionally, if the cluster already has Nginx ingress running, disable Nginx from Presets.
+            - `crds.enabled` is set to `false`.
+            - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
+            - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
 
     :::
 
-10. The profile overview screen reflects that the `spectro-k8s-dashboard` pack is now part of your cluster profile.
+10. The profile overview screen reflects that the `cert-manager` pack is now part of your cluster profile.
     Select **Save Changes**.
 
 11. From the left main menu, select **Clusters**. Select the cluster you wish to update.
@@ -83,34 +74,10 @@ The Cert Manager pack allows for the use of TLS certificates for workloads. Thes
 12. Select the **Profile** tab.
 
 13. From the applicable **Infrastructure Layers** or **Addon Layers** version drop-down menu, select the profile version
-    that contains the **Spectro Kubernetes Dashboard** pack.
+    that contains the **Cert Manager** pack.
 
 14. Click **Save Changes**.
 
-    ![Image showing the selection of the profile version to be applied to the selected cluster](/clusters_cluster-management_spectro-kubernetes-dashboard_apply-profile.webp)
-
-15. Select **Settings** from the top right, and click on **Cluster Settings**.
-
-16. Click on **RBAC**, and on the Cluster tab, click **Add New Binding**.
-
-17. On the **Add Cluster Role Binding**, enter `cluster-admin` for **Cluster Role name**.
-
-18. Leave the **Subject type** set to user, and enter the email address of the user in **Subject Name**.
-
-    ![Image showing how to create a Cluster Role Binding](/clusters_cluster-management_spectro-kubernetes-dashboard_add-role-binding.webp)
-
-19. To add additional users, click **Add Subject** and repeat step 18. Click **Confirm** when you have finished.
-
-20. Close the **Settings** page.
-
-21. Select your Kubernetes layer and set the OIDC to **Palette**.
-
-    ![Image of the Kubernetes OIDC selection page](/clusters_cluster-management_spectro-kubernetes-dashboard_select-kubernetes-pack.webp)
-
-22. Click **Save Changes**
-
-23. Use the **Overview** tab to monitor the cluster's status until the **Spectro Kubernetes Dashboard** layer is
-    successfully deployed, indicated by a solid green circle.
 
 ## Validate
 
@@ -118,20 +85,8 @@ The Cert Manager pack allows for the use of TLS certificates for workloads. Thes
 
 2. From the left main menu, select **Clusters**.
 
-3. Select the cluster where you deployed the Spectro Kubernetes Dashboard pack.
+3. Select the cluster where you deployed the Cert Manager pack.
 
-4. On the **Overview** tab, a new **Kubernetes Dashboard** row is displayed. Select the **Connect** button.
+4. Select the **Namespaces** tab, and then the **Workloads** tab.
 
-   ![Image showing the Kubernetes Dashboard Connect button in the cluster overview screen](/clusters_cluster-management_spectro-kubernetes-dashboard_connect.webp)
-
-5. The Spectro Kubernetes Dashboard is displayed.
-
-   ![Image showing a connected k8s dashboard with the Kubernetes-dashboard namespace selected](/clusters_cluster-management_spectro-kubernetes-dashboard_success.webp)
-
-:::info
-
-By default, the Spectro Kubernetes Dashboard displays the `default` namespace. If there are no deployments in that
-namespace, the message "There is nothing to display here" is displayed. Select the namespace drop-down menu to review
-and select other namespaces in your cluster.
-
-:::
+5. Click on the cert-manager namespace.
