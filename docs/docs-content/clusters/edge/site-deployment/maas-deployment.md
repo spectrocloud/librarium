@@ -17,12 +17,10 @@ automated deployments across both physical and virtual infrastructure managed by
 - MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes - Edge (PXK-E) deployments. Other
   Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
-- MAAS-based Edge deployments are verified only with
-
-  <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" /> as the Container Network Interface (CNI)
-  and
-  <VersionedLink text="Longhorn" url="integrations/packs/?pack=csi-longhorn" /> as the Container Storage Interface
-  (CSI).
+<!-- prettier-ignore-start -->
+- MAAS-based Edge deployments are verified only with <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" /> as the Container Network Interface (CNI)
+  and <VersionedLink text="Longhorn" url="/integrations/packs/?pack=csi-longhorn" /> as the Container Storage Interface (CSI).
+<!-- prettier-ignore-end -->
 
 - For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB)
   configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to
