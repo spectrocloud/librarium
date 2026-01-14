@@ -17,8 +17,7 @@ automated deployments across both physical and virtual infrastructure managed by
 - MAAS image creation is supported only for appliance-mode Palette eXtended Kubernetes - Edge (PXK-E) deployments. Other
   Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
-- MAAS-based Edge deployments are verified only with Calico as the Container Network Interface (CNI) and Longhorn as the
-  Container Storage Interface (CSI).
+- MAAS-based Edge deployments are verified only with <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico"/> as the Container Network Interface (CNI) and <VersionedLink text="Longhorn" url="integrations/packs/?pack=csi-longhorn"/> as the Container Storage Interface (CSI).
 
 - For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB)
   configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to
@@ -29,12 +28,11 @@ automated deployments across both physical and virtual infrastructure managed by
 
 - A [Palette account](https://www.spectrocloud.com/get-started).
 
-- If you did not embed the user data in the MAAS image, you need a Palette registration token for pairing Edge hosts
-  with Palette. Tenant admin access to Palette is required to generate a new registration token. For detailed
-  instructions, refer to the [Create Registration Token](site-installation/create-registration-token.md) guide.
-
 - A MAAS image created according to the [Build MAAS Images](../edgeforge-workflow/palette-canvos/build-maas-image.md)
   guide.
+
+-  If you did not embed user data in the MAAS image, you need a [Palette registration token](site-installation/create-registration-token.md) to pair your Edge hosts
+  with Palette.
 
 - A MAAS-managed bare-metal machine or LXD virtual machine.
 
