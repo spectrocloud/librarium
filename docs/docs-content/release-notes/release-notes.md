@@ -283,6 +283,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - The KubeVirt version in use is now v1.7. Other components of the VMO pack have also been upgraded, enhancing system
   reliability and security.
 
+<!-- https://spectrocloud.atlassian.net//browse/PEM-8306 -->
+
+- The Virtual Machine Orchestrator (VMO) now supports the persistent EFI parameter, enhancing support for airgapped
+  usecases. Previously, VM creation only supported Secure Boot under bootloader.efi and omitted persistent.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-8574 -->
