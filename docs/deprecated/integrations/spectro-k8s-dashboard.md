@@ -24,6 +24,7 @@ secure ports and conveniently includes the [Spectro Proxy](frp.md) pack.
 :::warning
 
 Spectro Kubernetes version 7.13.0 is not compatible with
+
 <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks" /> version 1.33. Use Spectro
 Kubernetes Dashboard version 7.11.0 on EKS clusters.
 
