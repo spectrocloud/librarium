@@ -327,32 +327,36 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-2620 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3541 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3446 -->
 
-| Pack Name                    | Layer  | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ------ | ------------------ | ------------------ | ----------- |
-| Amazon EBS CSI               | CSI    | :white_check_mark: | :x:                | 1.53.0      |
-| AWS Cluster Autoscaler       | Add-on | :white_check_mark: | :x:                | 1.35.0      |
-| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:                | 2.17.0      |
-| Argo CD                      | CSI    | :white_check_mark: | :x:                | 9.1.4       |
-| Argo CD                      | CSI    | :white_check_mark: | :x:                | 9.1.6       |
-| Argo CD                      | CSI    | :white_check_mark: | :x:                | 9.1.7       |
-| Cert Manager                 | Add-on | :white_check_mark: | :x:                | 1.19.1      |
-| Calico                       | CNI    | :white_check_mark: | :x:                | 3.31.3      |
-| Cilium                       | CNI    | :white_check_mark: | :x:                | 1.18.4      |
-| Crossplane                   | Add-on | :white_check_mark: | :x:                | 2.1.1       |
-| External DNS                 | Add-on | :white_check_mark: | :x:                | 0.19.0      |
-| External Secrets             | Add-on | :white_check_mark: | :x:                | 1.1.1       |
-| External Secrets             | Add-on | :white_check_mark: | :x:                | 1.2.0       |
-| Flux2                        | Add-on | :white_check_mark: | :x:                | 2.17.2      |
-| GCE Persistent Disk CSI      | CSI    | :white_check_mark: | :x:                | 1.22.5      |
-| Istio                        | Add-on | :white_check_mark: | :x:                | 1.28.2      |
-| Karpenter                    | Add-on | :white_check_mark: | :x:                | 1.8.3       |
-| Local Path Provisioner       | CSI    | :white_check_mark: | :white_check_mark: | 0.0.32      |
-| Reloader                     | Add-on | :white_check_mark: | :x:                | 1.4.11      |
-| Reloader                     | Add-on | :white_check_mark: | :x:                | 1.4.12      |
-| Nginx                        | Add-on | :white_check_mark: | :x:                | 1.14.1      |
-| Prometheus Agent             | Add-on | :white_check_mark: | :x:                | 27.51.0     |
-| Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 80.4.2      |
+| Pack Name                          | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI                     | CSI        | :white_check_mark: | :x:                | 1.53.0      |
+| AWS Cluster Autoscaler             | Add-on     | :white_check_mark: | :x:                | 1.35.0      |
+| AWS Application Loadbalancer       | Add-on     | :white_check_mark: | :x:                | 2.17.0      |
+| Argo CD                            | CSI        | :white_check_mark: | :x:                | 9.1.7       |
+| Argo CD                            | CSI        | :white_check_mark: | :x:                | 9.1.6       |
+| Argo CD                            | CSI        | :white_check_mark: | :x:                | 9.1.4       |
+| Cert Manager                       | Add-on     | :white_check_mark: | :x:                | 1.19.1      |
+| Calico                             | CNI        | :white_check_mark: | :x:                | 3.31.3      |
+| Cilium                             | CNI        | :white_check_mark: | :x:                | 1.18.4      |
+| Crossplane                         | Add-on     | :white_check_mark: | :x:                | 2.1.1       |
+| External DNS                       | Add-on     | :white_check_mark: | :x:                | 0.19.0      |
+| External Secrets                   | Add-on     | :white_check_mark: | :x:                | 1.2.0       |
+| External Secrets                   | Add-on     | :white_check_mark: | :x:                | 1.1.1       |
+| Flux2                              | Add-on     | :white_check_mark: | :x:                | 2.17.2      |
+| GCE Persistent Disk CSI            | CSI        | :white_check_mark: | :x:                | 1.22.5      |
+| Istio                              | Add-on     | :white_check_mark: | :x:                | 1.28.2      |
+| Karpenter                          | Add-on     | :white_check_mark: | :x:                | 1.8.3       |
+| Local Path Provisioner             | CSI        | :white_check_mark: | :white_check_mark: | 0.0.32      |
+| Reloader                           | Add-on     | :white_check_mark: | :x:                | 1.4.12      |
+| Reloader                           | Add-on     | :white_check_mark: | :x:                | 1.4.11      |
+| Nginx                              | Add-on     | :white_check_mark: | :x:                | 1.14.1      |
+| Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Prometheus Agent                   | Add-on     | :white_check_mark: | :x:                | 27.51.0     |
+| Prometheus Operator                | Add-on     | :white_check_mark: | :x:                | 80.4.2      |
 
 #### Deprecations and Removals
 
