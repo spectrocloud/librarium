@@ -56,6 +56,15 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 3.  Select the **Profile** tab and select the profile your desired cluster is using. If you are using the FIPS Spectro
     Kubernetes Dashboard, all profile layers must be FIPS compliant.
 
+    :::info
+
+    Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must
+    remove the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The
+    Spectro Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the
+    replacement process.
+
+    :::
+
 4.  From the version drop-down menu, select **Create new version**.
 
 5.  Enter the semantic version number you wish to use for the updated profile and select **Confirm**.
@@ -69,12 +78,11 @@ If you want to learn how to deploy the standard Kubernetes Dashboard instead, vi
 
 8.  Select the most recent version and **Confirm** your changes.
 
-    :::info
+    :::warning
 
-    Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must
-    remove the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The
-    Spectro Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the
-    replacement process.
+    Spectro Kubernetes version 7.13.0 is not compatible with
+    <VersionedLink text="Kubernetes (EKS)" url="/integrations/packs/?pack=kubernetes-eks" /> version 1.33. Use Spectro
+    Kubernetes Dashboard version 7.11.0 on EKS clusters.
 
     :::
 
