@@ -18,8 +18,11 @@ automated deployments across both physical and virtual infrastructure managed by
   Kubernetes distributions and agent-mode deployments are not supported by this workflow.
 
 - MAAS-based Edge deployments are verified only with
-  <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico"/> as the Container Network Interface (CNI) and
-  <VersionedLink text="Longhorn" url="integrations/packs/?pack=csi-longhorn"/> as the Container Storage Interface (CSI).
+
+  <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" /> as the Container Network Interface (CNI)
+  and
+  <VersionedLink text="Longhorn" url="integrations/packs/?pack=csi-longhorn" /> as the Container Storage Interface
+  (CSI).
 
 - For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB)
   configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to
