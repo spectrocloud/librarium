@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 17, 2025 - Release 4.8.X {#release-notes-4.8.a}
+## January 17, 2025 - Release 4.8.19 {#release-notes-4.8.a}
 
 ### Security Notices
 
@@ -147,16 +147,20 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5547 -->
 <!-- prettier-ignore-start -->
-- Fixed an issue that caused EKS clusters with both ImageSwap enabled and configured with <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"  /> to fail to deploy/
+
+- Fixed an issue that caused EKS clusters with both ImageSwap enabled and configured with <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm"  /> to fail to deploy.
+
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9426 -->
 
-- Fixed an issue that prevented Palette from correctly assigning users to teams that fall beyond the first page of team list results, which displays the first 50 teams.
+- Fixed an issue that prevented Palette from correctly assigning users to teams that fall beyond the first page of team
+  list results, which displays the first 50 teams.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
 
-- Fixed an issue that prevented Palette from correctly applying configuration updates specified in manifest files for `ally` and `palette-controller-manager` resources on newly created clusters.
+- Fixed an issue that prevented Palette from correctly applying configuration updates specified in manifest files for
+  `ally` and `palette-controller-manager` resources on newly created clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9484 -->
 
@@ -263,6 +267,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.8.a) for more details.
+
 - <TpBadge /> Palette VerteX now supports deploying Azure IaaS clusters to [Azure Government Secret
   cloud](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security), providing
   flexibility for organizations that need to meet stringent security requirements. Refer to the [Register and Manage
@@ -316,6 +321,30 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   on the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner
   acceptance.
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2092 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2056 -->
+
+- The cluster resources of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now
+  support the configuration of additional annotations and labels, as well as an update strategy for the machine pool.
+  Additionally, the cluster resources now support time zone configuration, ensuring that maintenance tasks like upgrades
+  execute at the appropriate local time for the cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2073 -->
+
+- The
+  [`spectrocloud_cluster_apache_cloudstack` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_apache_cloudstack)
+  now supports template name for machine image configuration, allowing users to customize machine images for individual
+  node pools.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2017 -->
+
+- The
+  [`spectrocloud_registry_oci` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/registry_oci)
+  now provides the `wait_for_sync` field, which allows you to configure Terraform to wait for the OCI registry to
+  complete its initial synchronization before marking the resource as created or updated. This operation is supported
+  for Zarf and Helm registries.
+
 ### Packs
 
 #### Pack Notes
@@ -325,9 +354,18 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - The [Spectro Kubernetes Dashboard](../clusters/cluster-management/spectro-kubernetes-dashboard.md) pack is now
   supported on AWS EKS clusters.
 
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3418 -->
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Kubernetes (AKS)" url="/integrations/packs/?pack=kubernetes-aks" /> version 1.34 now supports the configuration of pod CIDR and service ClusterIP range.
+
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PAC-2620 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3541 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3446 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-150 -->
 
 | Pack Name                          | Layer      | Non-FIPS           | FIPS               | New Version |
 | ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
@@ -348,6 +386,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | GCE Persistent Disk CSI            | CSI        | :white_check_mark: | :x:                | 1.22.5      |
 | Istio                              | Add-on     | :white_check_mark: | :x:                | 1.28.2      |
 | Karpenter                          | Add-on     | :white_check_mark: | :x:                | 1.8.3       |
+| Kubernetes (AKS)                   | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34        |
 | Local Path Provisioner             | CSI        | :white_check_mark: | :white_check_mark: | 0.0.32      |
 | Reloader                           | Add-on     | :white_check_mark: | :x:                | 1.4.12      |
 | Reloader                           | Add-on     | :white_check_mark: | :x:                | 1.4.11      |
@@ -357,6 +396,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
 | Prometheus Agent                   | Add-on     | :white_check_mark: | :x:                | 27.51.0     |
 | Prometheus Operator                | Add-on     | :white_check_mark: | :x:                | 80.4.2      |
+| Zot Registry                       | Add-on     | :white_check_mark: | :white_check_mark: | 0.1.89-rev1 |
 
 #### Deprecations and Removals
 
