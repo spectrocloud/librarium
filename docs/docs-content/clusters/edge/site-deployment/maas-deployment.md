@@ -73,12 +73,11 @@ automated deployments across both physical and virtual infrastructure managed by
    scp ubuntu@10.10.150.244:/home/ubuntu/CanvOS/build/custom-maas-image.raw.gz ~/Downloads/
    ```
 
-2. Use the following command to log in to MAAS. Replace `<MAAS_URL>` and `<API_KEY>` with your MAAS endpoint and API
+2. Use the following command to log in to MAAS. Replace `<MAAS-URL>` and `<API-KEY>` with your MAAS endpoint and API
    key. Replace `admin` with the name of your MAAS CLI profile.
 
    ```bash
-   maas login admin http://<MAAS_URL>:5240/MAAS <API_KEY>
-   ```
+   maas login admin http://<MAAS-URL>:5240/MAAS <API-KEY>
 
 3. Upload the custom image to MAAS. Use your own values for `name`, `title`, and `content@` path that points to the
    image location. The `name` value must be unique within MAAS and follow MAAS naming conventions (lowercase, no spaces,
