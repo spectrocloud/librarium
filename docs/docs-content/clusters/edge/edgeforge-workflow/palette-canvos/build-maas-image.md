@@ -128,7 +128,7 @@ your Edge deployment.
    - The MAAS-compatible compressed disk image (`custom-maas-image.raw.gz`).
    - The SHA256 checksum file (`custom-maas-image.raw.gz.sha256`).
 
-2. Verify the integrity of the image by validating the checksum. Use the following command. Replace
+2. Verify the integrity of the image by validating the checksum. Replace
    `custom-maas-image.raw.gz.sha256` with your checksum file name.
 
    ```bash
