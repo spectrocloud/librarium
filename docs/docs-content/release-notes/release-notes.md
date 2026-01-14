@@ -75,6 +75,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
   workloads.
 
+- Graphics Processing Unit (GPU) information for Edge hosts can now be retrieved for non-Nvidia devices and without the
+  `nvidia-smi` command-line interface (CLI) installed. GPU information is now automatically retrieved from Spectro
+  Cloud's [GPU lookup table](https://software.spectrocloud.com/scripts/ai-hardware-lookup/hardware-specs-lookup.json)
+  and the Edge host's graphics driver. If GPU information cannot be pulled automatically, users can provide GPU
+  information manually via the `user-data` file (Appliance and Agent mode) or with a `custom-hardware-specs-lookup.json`
+  file (Appliance mode only). Refer to
+  [Prepare User Data and Argument Files](../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-gpu-specs-optional)
+  for more information.
+
 #### Deprecations and Removals
 
 - The `stylus.installationMode`
