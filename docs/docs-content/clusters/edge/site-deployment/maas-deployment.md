@@ -69,7 +69,7 @@ automated deployments across both physical and virtual infrastructure managed by
 1. Copy the MAAS image from the system where it was built to the machine you will use to access MAAS. The following
    command is an example that copies the `custom-maas-image.raw.gz` image to the local `Downloads/` directory.
 
-   ```bash
+   ```bash title="Example command"
    scp ubuntu@10.10.150.244:/home/ubuntu/CanvOS/build/custom-maas-image.raw.gz ~/Downloads/
    ```
 
