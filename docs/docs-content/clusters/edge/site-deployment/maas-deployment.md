@@ -84,7 +84,7 @@ automated deployments across both physical and virtual infrastructure managed by
    and typically using `/` as a namespace separator). The `title` value is a human-readable label shown in the MAAS UI.
    Additionally, replace `admin` with the name of your MAAS CLI profile. The following command serves as an example.
 
-   ```bash
+   ```bash title="Example command"
    maas admin boot-resources create \
     name='custom/my-image' \
     title='My Custom Image' \
