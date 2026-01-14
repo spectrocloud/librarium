@@ -7,9 +7,11 @@ sidebar_position: 50
 tags: ["clusters", "cluster management", "cert-manager"]
 ---
 
-The Cert Manager pack automates the process of issuing, renewing and managing the use of TLS certificates for application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities, such as Let's Encrypt, and HashiCorp Vault. 
+The Cert Manager pack automates the process of issuing, renewing, and managing the use of TLS certificates for application and ingress workloads. These certificates can either be self-signed or sourced from certificate authorities, such as Let's Encrypt, and HashiCorp Vault.
 
 The architecture is divided between three main components: `Issuer`, `ClusterIssue` and `Certificate`. `CRD: Issuer` determines who to request a certificate from and how to request that certificate for a specific namespace. The `CRD: ClusterIssuer` addresses certificate requests at the cluster level. `CRD: Certificate` determines which certificate, secret name and DNS are to be used at a namespace level.  
+
+Cert Manager will request a certificate when `Issuer` or `ClusterIssuer` is created. The key and certificate are then stored in a Kubernetes secret. It will monitor the certificate expiration, and do automatic renewals before the certificate expires as necessary.
 
 ![Cert Manager architecture](../../../../static/assets/docs/images/clusters_cluster-management_cert-manager_4-8-a.webp)
 
@@ -27,21 +29,18 @@ The architecture is divided between three main components: `Issuer`, `ClusterIss
     - CloudStack
     - VMware
 
-
 ## Prerequisites
 
-- New cluster built on 4.8.a
-- existing cluster upgraded to 4.8.a before adding Cert Manager add-on pack.
+- New cluster built on 4.8.a.
+- Existing cluster upgraded to 4.8.a before adding Cert Manager add-on pack.
 
 ## Enablement
 
 1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2.  From the left main menu, select **Clusters**. Select the cluster you want to provision the Spectro Kubernetes
-    Dashboard on.
+2.  From the left main menu, select **Clusters**. Select the cluster you want to provision the Cert Manager on.
 
-3.  Select the **Profile** tab and select the profile your desired cluster is using. If you are using the FIPS Spectro
-    Kubernetes Dashboard, all profile layers must be FIPS compliant.
+3.  Select the **Profile** tab and select the profile your desired cluster is using. 
 
 4.  From the version drop-down menu, select **Create new version**.
 
@@ -56,7 +55,7 @@ The architecture is divided between three main components: `Issuer`, `ClusterIss
 9.  Leave the default values for the **Cert Manager** pack and select **Confirm & Create** on the pack
     customization screen.
 
-    :::warning 
+    :::warning
 
          You can do [customizations](https://cert-manager.io/docs/installation/configuring-components/), however, the following must be adhered to:
 
@@ -77,7 +76,6 @@ The architecture is divided between three main components: `Issuer`, `ClusterIss
     that contains the **Cert Manager** pack.
 
 14. Click **Save Changes**.
-
 
 ## Validate
 
