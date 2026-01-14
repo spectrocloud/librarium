@@ -49,7 +49,7 @@ the Palette Edge deployment lifecycle using VMs.
 You can deploy Edge hosts on MAAS-managed bare-metal machines and LXD VMs. MAAS-provisioned machines function similarly
 to other Edge hosts, enabling automated, scalable deployments using existing MAAS infrastructure. Refer to
 [Build MAAS Images](../edgeforge-workflow/palette-canvos/build-maas-image.md) to learn how to create custom MAAS images
-for Palette Edge, and to [Deploy Edge Hosts on MAAS](maas-deployment.md) for step-by-step instructions on uploading
+for Palette Edge and [Deploy Edge Hosts on MAAS](maas-deployment.md) for step-by-step instructions on uploading
 images to MAAS and deploying an Edge host using the MAAS UI.
 
 ## Resources
