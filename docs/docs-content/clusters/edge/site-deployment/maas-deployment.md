@@ -116,5 +116,5 @@ automated deployments across both physical and virtual infrastructure managed by
 
 ## Next Steps
 
-Once an Edge host is registered with Palette, you can then proceed to allocate the Edge host to a cluster. For more
+Once an Edge host is registered with Palette, you can allocate the Edge host to a cluster. For more
 information, refer to [Create Cluster Definition](cluster-deployment.md).
