@@ -26,78 +26,78 @@ partial_name: installation-steps-enablement
 
 <TabItem value="iso-disk-selection-in-tui" label="Specify ISO Installation Disk in the TUI">
 
-   1. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette Edge Interactive Installer** option and press **ENTER**.
+    1. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette Edge Interactive Installer** option and press **ENTER**.
 
-      :::caution
+        :::caution
 
-      Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time. Depending on the configuration, this option may be chosen by default.
+        Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time. Depending on the configuration, this option may be chosen by default.
 
-      :::
+        :::
 
-   2. Once the **Palette Edge Interactive Installer** window appears, select the target disk for installation.
+    2. Once the **Palette Edge Interactive Installer** window appears, select the target disk for installation.
 
-   3. Choose the post-installation action: **nothing**, **reboot**, or **poweroff**, then press **ENTER**.
+    3. Choose the post-installation action: **nothing**, **reboot**, or **poweroff**, then press **ENTER**.
 
-   4. Review the **Installation Summary**.
+    4. Review the **Installation Summary**.
 
-   5. Press **ENTER** to start the installation.
+    5. Press **ENTER** to start the installation.
 
 </TabItem>
 
 <TabItem value="iso-disk-selection-in-yaml" label="Specify ISO Installation Disk in the Installation Manifest.">
 
-   1. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette eXtended Kubernetes Edge Install (manual)** option and press **ENTER**.
+    1. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, select the **Palette eXtended Kubernetes Edge Install (manual)** option and press **ENTER**.
 
-      :::caution
+        :::caution
 
-      Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time.
+        Ensure that you select the option within the first five seconds of the GRUB menu appearing, as it will automatically proceed with the default installation option after this time.
 
-      :::
+        :::
 
-   2. Once the nodes have finished booting, in the terminal, issue the following command to list the block devices.
+    2. Once the nodes have finished booting, in the terminal, issue the following command to list the block devices.
 
-      ```bash
-      lsblk --paths
-      ```
+        ```bash
+        lsblk --paths
+        ```
 
-      Use the output to identify the device name to use for the {props.version} ISO stack. For example, `/dev/sda`.
+        Use the output to identify the device name to use for the {props.version} ISO stack. For example, `/dev/sda`.
 
-      ```shell hideClipboard title="Example output" {3}
-      NAME       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-      /dev/loop0   7:0    0     1G  1 loop /run/rootfsbase
-      /dev/sda     8:0    0   250G  0 disk
-      /dev/sdb     8:16   0  5000G  0 disk
-      /dev/sr0    11:0    1  17.3G  0 rom  /run/initramfs/live
-      ```
+        ```shell hideClipboard title="Example output" {3}
+        NAME       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+        /dev/loop0   7:0    0     1G  1 loop /run/rootfsbase
+        /dev/sda     8:0    0   250G  0 disk
+        /dev/sdb     8:16   0  5000G  0 disk
+        /dev/sr0    11:0    1  17.3G  0 rom  /run/initramfs/live
+        ```
 
-   3. Issue the following command to edit the installation manifest.
+    3. Issue the following command to edit the installation manifest.
 
-      ```bash
-      vi /oem/stylus_config.yaml
-      ```
+        ```bash
+        vi /oem/stylus_config.yaml
+        ```
 
-   4. Add the following `install.device` section to your manifest, replacing `<storage-drive>` with the device name identified in step 6.
+    4. Add the following `install.device` section to your manifest, replacing `<storage-drive>` with the device name identified in step 6.
 
-      ```yaml hideClipboard {6}
-      #cloud-config
+        ```yaml hideClipboard {6}
+        #cloud-config
 
-      cosign: false
-      verify: false
-      install:
-        device: <storage-drive>
-        grub-entry-name: "Palette eXtended Kubernetes Edge"
-        system:
-          size: 8192
+        cosign: false
+        verify: false
+        install:
+          device: <storage-drive>
+          grub-entry-name: "Palette eXtended Kubernetes Edge"
+          system:
+            size: 8192
       ...
       ```
 
-       Save the changes and exit the editor.
+        Save the changes and exit the editor.
 
-   5. Issue the following command to start the installation process.
+    5. Issue the following command to start the installation process.
 
-       ```bash
-       kairos-agent install
-       ```
+        ```bash
+        kairos-agent install
+        ```
 </TabItem>
 
 </Tabs>
