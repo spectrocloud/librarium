@@ -74,9 +74,17 @@ tags: ["release-notes"]
   cannot be changed after the OCI registry has been added to Palette. Therefore, it is only available for new OCI
   registries and is disabled by default on existing registries.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
+<!-- prettier-ignore-start -->
 - The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.18 is now
-  available.
+  available. Additionally, they are now using the following components internally:
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
+  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.10.1
+  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.89
+
+<!-- prettier-ignore-end -->
 
 #### Improvements
 
@@ -187,7 +195,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net//browse/PE-7472 -->
 
 <!-- prettier-ignore-start -->
-- The <VersionedLink text="Canonical Kubernetes" url="/integrations/packs/?pack=kubernetes-ck8s" > versions 1.32.8 and 1.33.3 have been updated to use `etcd` as the datastore, replacing `k8s-dqlite`.
+- The <VersionedLink text="Canonical Kubernetes" url="/integrations/packs/?pack=kubernetes-ck8s" /> versions 1.32.8 and 1.33.3 have been updated to use `etcd` as the datastore, replacing `k8s-dqlite`.
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-7657 -->
