@@ -48,7 +48,7 @@ automated deployments across both physical and virtual infrastructure managed by
 - MAAS-based Edge deployments require additional disk space on the target machine. The space allocated to the
   `UBUNTU_ROOTFS` partition (~3 GB) is not reclaimed after deployment, reducing the size of `COS_PERSISTENT`. If content
   is bundled into the image at build time, additional disk space equal to the size of the content partition is also not
-  reclaimed. Ensure the target machine has sufficient disk capacity to accommodate these requirements.
+  reclaimed dynamically. Ensure the target machine has sufficient disk capacity to accommodate the `UBUNTU_ROOTFS` and content partitions.
 
 - The target machine must either be configured for Unified Extensible Firmware Interface (UEFI) boot mode or, if the
   boot mode is not set to UEFI, have UEFI-based boot options prioritized. Legacy Basic Input/Output System (BIOS) boot
