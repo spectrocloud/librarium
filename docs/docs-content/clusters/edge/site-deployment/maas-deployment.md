@@ -36,8 +36,7 @@ automated deployments across both physical and virtual infrastructure managed by
 - A MAAS image created according to the [Build MAAS Images](../edgeforge-workflow/palette-canvos/build-maas-image.md)
   guide.
 
-- If you did not embed user data in the MAAS image, you need a
-  [Palette registration token](site-installation/create-registration-token.md) to pair your Edge hosts with Palette.
+  - If you did not embed user data in the MAAS image, you need a [Palette registration token](site-installation/create-registration-token.md) to pair your Edge hosts with Palette.
 
 - A MAAS-managed bare-metal machine or LXD virtual machine.
 
@@ -87,7 +86,6 @@ automated deployments across both physical and virtual infrastructure managed by
 
    ```bash
    maas login admin http://<MAAS-URL>:5240/MAAS <API-KEY>
-
    ```
 
 3. Upload the custom image to MAAS using the `maas <profile> boot-resources create` command. The following table
