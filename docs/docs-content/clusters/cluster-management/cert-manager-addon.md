@@ -55,7 +55,7 @@ certificate expires as necessary.
 
 6.  Select **Add New Pack**. The search field appears.
 
-7.  Search for and select the **Cert Manager** pack. Ensure that you are selecting version 1.19.1.
+7.  Search for and select the **Cert Manager** pack. Ensure that you are selecting version 1.19.1 or later.
 
 8.  Click **Confirm** your changes.
 
