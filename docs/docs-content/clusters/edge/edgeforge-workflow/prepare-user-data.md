@@ -228,9 +228,8 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     | `deviceID`      | Array of PCI device IDs in hexadecimal format. Allows multiple IDs for the same model. Case insensitive. Do not include `0x` prefixes. | `["1e36", "1e78"]`         |
     | `architecture`  | GPU architecture name.                                                                                                                 | `"Turing"`                 |
 
-    The following example is a `user-data` file for GPU specs. GPU information is passed in during the
-    `boot.after` stage. After the system boots, the file is available at
-    `/etc/spectrocloud/custom-hardware-specs-lookup.json`.
+    The following example is a `user-data` file for GPU specs. GPU information is passed in during the `boot.after`
+    stage. After the system boots, the file is available at `/etc/spectrocloud/custom-hardware-specs-lookup.json`.
 
     ```yaml title="Example configuration"
     #cloud-config
