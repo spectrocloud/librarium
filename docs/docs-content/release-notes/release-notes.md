@@ -21,10 +21,10 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.8.a}
 
-- Users with the `cluster.delete` permission are no longer allowed to download cluster
+- Users with the `cluster.delete` permission are no longer allowed to download the cluster
   [admin kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This operation is now controlled using the
-  `cluster.adminKubeconfigDownload` permission, allowing system administrators with fine-grained control over cluster
-  admin access.
+  `cluster.adminKubeconfigDownload` permission, giving system administrators fine-grained control over cluster admin
+  access.
 
   The `cluster.adminKubeconfigDownload` permission is part of the following system roles:
 
@@ -48,13 +48,17 @@ tags: ["release-notes"]
   with minimal effort. Refer to our [Cluster Templates](../cluster-templates/cluster-templates.md) guide for more
   information.
 
+- [AWS Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html) are now
+  supported for AWS IaaS clusters. This feature allows you to launch your cluster nodes on physical servers that are
+  dedicated for your use, providing additional isolation and compliance benefits. Refer to the
+  [Create and Manage AWS IaaS Cluster](../clusters/public-cloud/aws/create-cluster.md) and
+  [AWS Architecture](../clusters/public-cloud/aws/architecture.md#dedicated-hosts) guides for more information.
+
 #### Improvements
 
 - You can now add OCI Helm registries that do not require authentication to Palette. This allows you to leverage
   publicly available OCI Helm Charts in your cluster profiles. Refer to the
   [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide to learn more.
-
-#### Deprecations and Removals
 
 ### Edge
 
@@ -71,6 +75,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
   workloads.
 
+#### Deprecations and Removals
+
+- The `stylus.installationMode`
+  [Edge Installer Configuration](../clusters/edge/edge-configuration/installer-reference.md) flag is no longer
+  available. Use the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the Edge
+  host is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance. Refer to
+  the [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for further information.
+
 - A new `FORCE_INTERACTIVE_INSTALL` flag has been added to the `.arg` file. When enabled, the **Palette Edge Interactive Installer** is selected by default in the GRUB menu on first boot, allowing manual disk selection for ISO-based installations.
 
 #### Bug Fixes
@@ -81,6 +93,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.8.a) for more details.
+- <TpBadge /> Palette VerteX now supports deploying Azure IaaS clusters to [Azure Government Secret
+  cloud](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security), providing
+  flexibility for organizations that need to meet stringent security requirements. Refer to the [Register and Manage
+  Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md#azure-government-secret-cloud) and [Create and
+  Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guides for more information.
 
 ### Automation
 
@@ -102,43 +119,24 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
-### Docs and Education
-
 ### Packs
 
 #### Pack Notes
 
-#### OS
+- The [Spectro Kubernetes Dashboard](../clusters/cluster-management/spectro-kubernetes-dashboard.md) pack is now
+  supported on AWS EKS clusters.
 
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
 
 #### Deprecations and Removals
+
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack versions 1.1.0, 1.7.1, and 1.9.1 are now deprecated. Upgrade your workloads to use Cert Manager pack version 1.19.1.
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> and <VersionedLink text="Kubernetes Dashboard" url="/integrations/packs/?pack=k8s-dashboard" /> packs are now deprecated. This is due to the archiving of upstream projects.
+
+<!-- prettier-ignore-end -->
 
 ## December 30, 2025 - Release 4.8.16
 
