@@ -203,17 +203,15 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
     :::
 
-    #### Configure GPU Specs (Optional)
+    #### Configure GPU Specifications (Optional)
 
-12. Palette can display Graphics Processing Unit (GPU) information for Edge hosts with at least one GPU core in
-    [Edge Host Grid View](../site-deployment/edge-host-view.md) and on the Edge host **Overview** tab. GPU information
-    is automatically displayed if the Edge host's GPU model is included in Spectro Cloud's
-    [GPU lookup table](https://software.spectrocloud.com/scripts/ai-hardware-lookup/hardware-specs-lookup.json). If the
-    GPU is not included in the table, Palette attempts to source the information using the Edge host's graphics driver.
-    Multi-Instance GPU (MIG) data can be retrieved only for Nvidia devices with the `nvidia-smi` command-line interface
-    (CLI) installed.
+12. Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
+    vendor-model combinations in [Edge Host Grid View](../site-deployment/edge-host-view.md) and on the Edge host
+    **Overview** tab. For other GPU models and vendors, Palette attempts to automatically source GPU information using
+    the vendor-specific driver or command-line interface (CLI) installed on the Edge host. Multi-Instance GPU (MIG) data
+    can be retrieved only for Nvidia devices with the `nvidia-smi` CLI installed.
 
-    If GPU information cannot be pulled automatically, you can provide the information manually via the `user-data` file
+    If Palette cannot automatically retrieve the GPU specs, you can provide them manually via the `user-data` file
     (Appliance and Agent mode) or with a `custom-hardware-specs-lookup.json` file (Appliance mode only). These files can
     also be used to override information that is sourced automatically, as long as the `vendorID` and `deviceID` match
     the actual GPU specs. If the `vendorID` or `deviceID` do _not_ match, the user-provided information is ignored.

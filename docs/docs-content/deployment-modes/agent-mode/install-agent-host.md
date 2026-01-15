@@ -365,14 +365,13 @@ Palette. You will then create a cluster profile and use the registered host to d
      [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
      Default Project set.
 
-   - Palette can display Graphics Processing Unit (GPU) information for Edge hosts with at least one GPU core in
-     [Edge Host Grid View](../../clusters/edge/site-deployment/edge-host-view.md) and on the Edge host **Overview** tab.
-     GPU information is automatically displayed if the Edge host's GPU model is included in Spectro Cloud's
-     [GPU lookup table](https://software.spectrocloud.com/scripts/ai-hardware-lookup/hardware-specs-lookup.json). If the
-     GPU is not included in the table, Palette attempts to source the information using the Edge host's graphics driver.
-     If GPU information cannot be pulled automatically, you can provide the information manually via the `user-data`
-     file. Refer to
-     [Prepare User Data and Argument Files](../../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-gpu-specs-optional)
+   - Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
+     vendor-model combinations in [Edge Host Grid View](../../clusters/edge/site-deployment/edge-host-view.md) and on
+     the Edge host **Overview** tab. For other GPU models and vendors, Palette attempts to automatically source GPU
+     information using the vendor-specific driver or command-line interface (CLI) installed on the Edge host. If Palette
+     cannot automatically retrieve the GPU specs, you can provide them manually via the `user-data` file (Appliance and
+     Agent mode) or with a `custom-hardware-specs-lookup.json` file (Appliance mode only). Refer to
+     [Prepare User Data and Argument Files](../../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-gpu-specifications-optional)
      for additional information.
 
      ```shell
