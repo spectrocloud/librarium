@@ -94,6 +94,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Prepare User Data and Argument Files](../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-gpu-specifications-optional)
   for more information.
 
+- A new `FORCE_INTERACTIVE_INSTALL` flag has been added to the
+  [`.arg` file](../clusters/edge/edgeforge-workflow/palette-canvos/arg.md). When enabled, the **Palette Edge Interactive
+  Installer** is selected by default in the GRUB menu on first boot, allowing manual disk selection for ISO-based
+  installations.
+
 #### Deprecations and Removals
 
 - The `stylus.installationMode`
