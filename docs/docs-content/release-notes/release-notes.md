@@ -54,6 +54,10 @@ tags: ["release-notes"]
   [Create and Manage AWS IaaS Cluster](../clusters/public-cloud/aws/create-cluster.md) and
   [AWS Architecture](../clusters/public-cloud/aws/architecture.md#dedicated-hosts) guides for more information.
 
+- Clusters now support using either the built-in Palette integrated cert-manager feature or the Cert Manager 1.19.1
+  add-on pack. This provides a more flexible and modular approach to
+  [certificate management](../clusters/cluster-management/cert-manager-addon.md).
+
 #### Improvements
 
 - You can now add OCI Helm registries that do not require authentication to Palette. This allows you to leverage
@@ -131,7 +135,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-start -->
 
-- <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack versions 1.1.0, 1.7.1, and 1.9.1 are now deprecated. Upgrade your workloads to use Cert Manager pack version 1.19.1.
+- <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack versions 1.1.0, 1.7.1, and 1.9.1 are now deprecated. Upgrade your workloads to use Cert Manager pack version 1.19.1 or later.
 - The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> and <VersionedLink text="Kubernetes Dashboard" url="/integrations/packs/?pack=k8s-dashboard" /> packs are now deprecated. This is due to the archiving of upstream projects.
 
 <!-- prettier-ignore-end -->

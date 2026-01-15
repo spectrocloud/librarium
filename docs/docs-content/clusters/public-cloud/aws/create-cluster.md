@@ -88,6 +88,12 @@ The following prerequisites must be met before deploying a cluster to AWS:
     Palette. Review the [Host Resource Groups Policy](./required-iam-policies.md#host-resource-groups-policy) section
     for more information.
 
+- If configuring the **Cert Manager** pack , ensure that you use version 1.19.1 or later. It is also important to
+  ensure:
+  - `crds.enabled` is set to `false`.
+  - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
+  - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
+
 ## Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS cluster:
