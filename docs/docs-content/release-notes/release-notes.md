@@ -71,6 +71,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
   workloads.
 
+- A new `FORCE_INTERACTIVE_INSTALL` flag has been added to the `.arg` file. When enabled, the **Palette Edge Interactive Installer** is selected by default in the GRUB menu on first boot, allowing manual disk selection for ISO-based installations.
+
 #### Bug Fixes
 
 ### VerteX
