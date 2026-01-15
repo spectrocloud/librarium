@@ -38,7 +38,8 @@ section guides you in creating and updating a Kubernetes cluster in a Nutanix cl
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to
   [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- If configuring the **Cert Manager** pack , ensure that you use version 1.19.1 or later. It is also important to ensure:
+- If configuring the **Cert Manager** pack , ensure that you use version 1.19.1 or later. It is also important to
+  ensure:
   - `crds.enabled` is set to `false`.
   - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
   - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
