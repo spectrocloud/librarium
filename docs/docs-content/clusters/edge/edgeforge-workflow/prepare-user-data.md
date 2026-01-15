@@ -209,7 +209,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     vendor-model combinations in [Edge Host Grid View](../site-deployment/edge-host-view.md) and on the Edge host
     **Overview** tab. For other GPU models and vendors, Palette attempts to automatically source GPU information using
     the vendor-specific driver or command-line interface (CLI) installed on the Edge host. Multi-Instance GPU (MIG) data
-    can be retrieved only for Nvidia devices with the `nvidia-smi` CLI installed.
+    can only be retrieved for Nvidia devices with the `nvidia-smi` CLI installed.
 
     If Palette cannot automatically retrieve the GPU specs, you can provide them manually via the `user-data` file
     (Appliance and Agent mode) or with a `custom-hardware-specs-lookup.json` file (Appliance mode only). These files can
@@ -228,7 +228,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     | `deviceID`      | Array of PCI device IDs in hexadecimal format. Allows multiple IDs for the same model. Case insensitive. Do not include `0x` prefixes. | `["1e36", "1e78"]`         |
     | `architecture`  | GPU architecture name.                                                                                                                 | `"Turing"`                 |
 
-    Following is an example `user-data` configuration for GPU specs. GPU information is passed in during the
+    The following example is a `user-data` file for GPU specs. GPU information is passed in during the
     `boot.after` stage. After the system boots, the file is available at
     `/etc/spectrocloud/custom-hardware-specs-lookup.json`.
 
@@ -285,7 +285,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     `user-data`. In the `CanvOS` directory, create the file
     `overlay/files/etc/spectrocloud/custom-hardware-specs-lookup.json` and provide the necessary information.
 
-    ```json
+    ```json title="Example JSON configuration"
     [
       {
         "marketingName": "NVIDIA Quadro RTX 6000",
