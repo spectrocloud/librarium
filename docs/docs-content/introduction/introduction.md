@@ -90,7 +90,7 @@ configurations but focus on the stuff that matters.
 ### IT Operations and SREs
 
 Declarative management makes life easier for IT teams, with consistency, repeatability, and all the enterprise-grade
-controls and governance they need - especially when moving to production
+controls and governance they need - especially when moving to production.
 [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md) enable them to define and re-use full-stack
 clusters and support them across the entire lifecycle without having to write scripts, as well as integrate with
 existing tools and methodologies.
