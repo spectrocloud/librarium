@@ -75,6 +75,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
   workloads.
 
+- A new `FORCE_INTERACTIVE_INSTALL` flag has been added to the `.arg` file. When enabled, the **Palette Edge Interactive Installer** is selected by default in the GRUB menu on first boot, allowing manual disk selection for ISO-based installations.
+
 #### Deprecations and Removals
 
 - The `stylus.installationMode`
@@ -82,8 +84,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   available. Use the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the Edge
   host is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance. Refer to
   the [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for further information.
-
-- A new `FORCE_INTERACTIVE_INSTALL` flag has been added to the `.arg` file. When enabled, the **Palette Edge Interactive Installer** is selected by default in the GRUB menu on first boot, allowing manual disk selection for ISO-based installations.
 
 #### Bug Fixes
 
