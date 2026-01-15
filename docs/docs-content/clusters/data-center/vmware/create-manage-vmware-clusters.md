@@ -72,7 +72,7 @@ Before you begin, ensure that you have the following prerequisites:
     data center. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add
     multiple DNS mappings to a PCG.
 
-- If you plan to use **Cert Manager** pack , ensure that it is 1.19.1 or later. It is also important to ensure:
+- If configuring the **Cert Manager** pack , ensure that you use version 1.19.1 or later. It is also important to ensure:
   - `crds.enabled` is set to `false`.
   - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
   - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
