@@ -32,8 +32,7 @@ with Microsoft Azure or Google Cloud Platform (GCP).
 - A Palette API key if you choose to follow along using the [Terraform](#cluster-profile-variables-terraform-workflow)
   workflow. Refer to the [Create a Palette API Key ](../getting-started/palette/aws/setup.md#create-a-palette-api-key)
   guide for further instructions.
-- A public cloud account registered in Palette. Refer to
-  [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
+- A public cloud account registered in Palette. Refer to [AWS](../../clusters/public-cloud/aws/add-aws-accounts.md),
   [Azure](../../clusters/public-cloud/azure/azure-cloud.md) or
   [Google Cloud](../../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a
   cloud account.
