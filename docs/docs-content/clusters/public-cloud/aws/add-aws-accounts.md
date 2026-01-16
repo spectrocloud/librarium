@@ -290,7 +290,7 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using stati
 
 2. From the left main menu, select **Tenant Settings**.
 
-3. From the **Tenant Settings Menu**, select **Cloud Accounts**.
+3. From the **Tenant Settings** menu, select **Cloud Accounts**.
 
 4. Locate the **AWS** section and select **Add AWS Account**.
 
@@ -352,7 +352,7 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/S
 
 2. From the left main menu, select **Tenant Settings**.
 
-3. From the **Tenant Settings Menu**, select **Cloud Accounts**.
+3. From the **Tenant Settings** menu, select **Cloud Accounts**.
 
 4. Locate the **AWS** section and select **Add AWS Account**.
 
