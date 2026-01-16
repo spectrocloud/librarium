@@ -58,6 +58,12 @@ distribution OVA.
 <PartialsComponent category="self-hosted-and-vertex" name="palette-kubernetes-versions" />
 
 </TabItem>
+
+<TabItem label="Management Appliance" value="Management Appliance">
+
+<PartialsComponent category="self-hosted-and-vertex" name="palette-management-appliance-versions" />
+
+</TabItem>
 </Tabs>
 
 ## Proxy Requirements
