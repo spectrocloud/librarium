@@ -176,7 +176,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.X Palette release is 4.8.X.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.a Palette release is 4.8.8.
 
 :::
 
@@ -205,12 +205,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) has exited Tech Preview and is now ready for production
   workloads.
 
-<!-- https://spectrocloud.atlassian.net//browse/PE-7322 -->
-
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now allow users to
-  select specific disks for the ISO installation. Previously, the installation defaulted to the largest drive.
-
 <!-- https://spectrocloud.atlassian.net//browse/PE-7472 -->
 
 <!-- prettier-ignore-start -->
@@ -231,6 +225,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   allows IP address updates after cluster creation, including changing from static IP to DHCP.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7828 -->
+
 - Graphics Processing Unit (GPU) specifications for Edge hosts can now be retrieved for non-Nvidia devices and devices
   without the `nvidia-smi` command-line interface (CLI) installed. Palette automatically displays GPU information for
   Edge hosts with certain GPU vendor-model combinations; for other GPUs, Palette sources the information using the
@@ -240,6 +235,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Prepare User Data and Argument Files](../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-gpu-specifications-optional)
   for more information.
 
+<!-- https://spectrocloud.atlassian.net//browse/PE-7322 -->
 
 - A new `FORCE_INTERACTIVE_INSTALL` flag has been added to the
   [`.arg` file](../clusters/edge/edgeforge-workflow/palette-canvos/arg.md). When enabled, the **Palette Edge Interactive
