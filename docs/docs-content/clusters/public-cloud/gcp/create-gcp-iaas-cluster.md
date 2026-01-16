@@ -49,6 +49,12 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
   :::
 
+- If configuring the **Cert Manager** pack , ensure that you use version 1.19.1 or later. It is also important to
+  ensure:
+  - `crds.enabled` is set to `false`.
+  - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
+  - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
+
 ## Deploy a GCP Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com).

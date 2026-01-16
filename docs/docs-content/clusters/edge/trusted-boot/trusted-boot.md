@@ -38,8 +38,6 @@ encrypted.
 
 ## Limitation
 
-- Trusted Boot is only supported for clusters with a connection to a Palette instance. Local clusters cannot be deployed
-  to an Edge host with Trusted Boot enabled.
 - Trusted Boot is only supported in environments that use Ubuntu 24.04 as the OS and RKE2 as the Kubernetes
   distribution.
 

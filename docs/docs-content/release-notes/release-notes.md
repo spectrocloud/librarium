@@ -86,6 +86,12 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-end -->
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4241 -->
+
+- Clusters now support using either the built-in Palette integrated cert-manager feature or the Cert Manager 1.19.1
+  add-on pack. This provides a more flexible and modular approach to
+  [certificate management](../clusters/cluster-management/cert-manager-addon.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-6649 -->
@@ -184,6 +190,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Configure Network Interfaces in Local UI](../clusters/edge/local-ui/host-management/configure-network-interfaces.md)
   for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-7647 -->
+
+- The EdgeForge workflow now enables the creation of MAAS-compatible images. Refer to
+  [Build MAAS Image](../clusters/edge/edgeforge-workflow/palette-canvos/build-maas-image.md) to learn how to create
+  custom MAAS images for Palette Edge and
+  [Deploy Edge Hosts on MAAS](../clusters/edge/site-deployment/maas-deployment.md) for step-by-step instructions on
+  uploading images to MAAS and deploying Edge hosts using the MAAS UI.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-7782 -->
@@ -215,6 +229,22 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - The Edge [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) now
   allows IP address updates after cluster creation, including changing from static IP to DHCP.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7828 -->
+- Graphics Processing Unit (GPU) specifications for Edge hosts can now be retrieved for non-Nvidia devices and devices
+  without the `nvidia-smi` command-line interface (CLI) installed. Palette automatically displays GPU information for
+  Edge hosts with certain GPU vendor-model combinations; for other GPUs, Palette sources the information using the
+  vendor-specific driver or CLI installed on the Edge host. If GPU information cannot be pulled automatically, users can
+  provide GPU information manually via the `user-data` file (Appliance and Agent mode) or with a
+  `custom-hardware-specs-lookup.json` file (Appliance mode only). Refer to
+  [Prepare User Data and Argument Files](../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-gpu-specifications-optional)
+  for more information.
+
+
+- A new `FORCE_INTERACTIVE_INSTALL` flag has been added to the
+  [`.arg` file](../clusters/edge/edgeforge-workflow/palette-canvos/arg.md). When enabled, the **Palette Edge Interactive
+  Installer** is selected by default in the GRUB menu on first boot, allowing manual disk selection for ISO-based
+  installations.
 
 #### Deprecations and Removals
 
@@ -408,7 +438,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- prettier-ignore-start -->
 
-- <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack versions 1.1.0, 1.7.1, and 1.9.1 are now deprecated. Upgrade your workloads to use Cert Manager pack version 1.19.1.
+- <VersionedLink text="Cert Manager" url="/integrations/packs/?pack=certmanager" /> pack versions 1.1.0, 1.7.1, and 1.9.1 are now deprecated. Upgrade your workloads to use Cert Manager pack version 1.19.1 or later.
 - The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> and <VersionedLink text="Kubernetes Dashboard" url="/integrations/packs/?pack=k8s-dashboard" /> packs are now deprecated. This is due to the archiving of upstream projects.
 
 <!-- prettier-ignore-end -->
