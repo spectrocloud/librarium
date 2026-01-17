@@ -61,7 +61,9 @@ distribution OVA.
 
 <TabItem label="Management Appliance" value="Management Appliance">
 
-<PartialsComponent category="self-hosted-and-vertex" name="palette-management-appliance-versions" />
+| **Palette Version** | **Kubernetes Version** |
+| ------------------- | ---------------------- |
+| 4.8.21              | 1.33.5                 |
 
 </TabItem>
 </Tabs>
