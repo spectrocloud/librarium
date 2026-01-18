@@ -28,7 +28,9 @@ Palette upgrade.
 ## Supported Upgrade Paths
 
 Refer to the following tables for the supported self-hosted Palette upgrade paths for
-[VMware](../install-palette/install-on-vmware/install-on-vmware.md), [Kubernetes](../install-palette/install-on-kubernetes/install-on-kubernetes.md), and [Palette Management Appliance](../install-palette/palette-management-appliance.md) installations.
+[VMware](../install-palette/install-on-vmware/install-on-vmware.md),
+[Kubernetes](../install-palette/install-on-kubernetes/install-on-kubernetes.md), and
+[Palette Management Appliance](../install-palette/palette-management-appliance.md) installations.
 
 :::danger
 
