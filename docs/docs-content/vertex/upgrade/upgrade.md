@@ -28,8 +28,7 @@ Palette VerteX upgrade.
 ## Supported Upgrade Paths
 
 Refer to the following tables for the supported Palette VerteX upgrade paths for
-[VMware](../install-palette-vertex/install-on-vmware/install-on-vmware.md) and
-[Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) installations.
+[VMware](../install-palette-vertex/install-on-vmware/install-on-vmware.md), [Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md), and [VerteX Management Appliance](../install-palette-vertex/vertex-management-appliance.md) installations.
 
 :::danger
 
