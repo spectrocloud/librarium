@@ -85,8 +85,11 @@ match your environment.
 
    :::warning
 
-   Ensure that the `values.yaml` file is ready before proceeding. If you're using a self-hosted OCI registry, make sure
-   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
+   Ensure that the `values.yaml` file is ready before proceeding. If you are using a self-hosted OCI registry, make sure
+   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links. Use
+   `/v2/` in your endpoints if your OCI registry supports the Docker Registry HTTP API V2 protocol; otherwise, container
+   image pulls will fail. For example:
+   `docker.io::harbor.example.org/v2/airgap-images/docker.io,gcr.io::harbor.example.org/v2/airgap-images/gcr.io`.
 
    :::
 
