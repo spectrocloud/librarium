@@ -37,7 +37,7 @@ certificate expires as necessary.
     - CloudStack
     - VMware
 
-## Limitation
+## Limitations
 
 - Cert Manager customizations are only supported in clusters running Palette agent version 4.8.9 or later.
 
