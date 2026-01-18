@@ -7,17 +7,18 @@ sidebar_position: 50
 tags: ["clusters", "cluster management", "cert-manager"]
 ---
 
-The Cert Manager pack automates the process of issuing, renewing, and managing TLS certificates for application and
-ingress workloads. These certificates can either be self-signed or sourced from certificate authorities, such as Let's
-Encrypt, and HashiCorp Vault. Cert Manager also supports both standard and wildcard certificates.
+The [Cert Manager](/integrations/packs/?pack=certmanager) pack automates the process of issuing, renewing, and managing
+TLS certificates for application and ingress workloads. These certificates can either be self-signed or sourced from
+certificate authorities, such as Let's Encrypt and HashiCorp Vault. Cert Manager also supports both standard and
+wildcard certificates.
 
 The architecture is divided between three main components: `Issuer`, `ClusterIssue` and `Certificate`. `CRD: Issuer`
 determines who to request a certificate from and how to request that certificate for a specific namespace. The
 `CRD: ClusterIssuer` addresses certificate requests at the cluster level. `CRD: Certificate` determines which
-certificate, secret name and DNS are to be used at a namespace level.
+certificate, secret name, and DNS are to be used at a namespace level.
 
 Cert Manager requests a certificate when `Issuer` or `ClusterIssuer` are created. The key and certificate are then
-stored in a Kubernetes secret. Cert Manager monitors the certificate expiration, and does automatic renewals before the
+stored in a Kubernetes secret. Cert Manager monitors the certificate expiration and does automatic renewals before the
 certificate expires as necessary.
 
 ![Cert Manager architecture](/clusters_cluster-management_cert-manager_4-8-a.webp)
@@ -36,10 +37,9 @@ certificate expires as necessary.
     - CloudStack
     - VMware
 
-## Prerequisites
+## Limitations
 
-- New cluster built on 4.8.a.
-- Existing cluster upgraded to 4.8.a before adding Cert Manager add-on pack.
+- Cert Manager customizations are only supported in clusters running Palette agent version 4.8.9 or later.
 
 ## Enablement
 
