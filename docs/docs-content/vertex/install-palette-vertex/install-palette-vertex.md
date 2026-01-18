@@ -39,8 +39,7 @@ The next sections describe specific requirements for installing Palette VerteX.
 <!-- prettier-ignore-start -->
 
 The following table presents the Kubernetes version corresponding to each Palette version for
-[VMware](../../vertex/install-palette-vertex/install-on-vmware/install-on-vmware.md) and
-[Kubernetes](../../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) installations.
+[VMware](../../vertex/install-palette-vertex/install-on-vmware/install-on-vmware.md), [Kubernetes](../../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md), and [VerteX Management Appliance](../../vertex/install-palette-vertex/vertex-management-appliance.md) installations.
 Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes
 distribution OVA.
 
