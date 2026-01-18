@@ -78,6 +78,12 @@ few hours.
 |       4.8.9        |       4.8.21       | :white_check_mark: |
 |       4.8.9        |       4.8.16       | :white_check_mark: |
 |       4.8.9        |       4.8.12       | :white_check_mark: |
+|       4.8.16       |       4.8.21       | :white_check_mark: |
+|       4.8.12       |       4.8.21       | :white_check_mark: |
+|       4.8.12       |       4.8.16       | :white_check_mark: |
+|       4.8.9        |       4.8.21       | :white_check_mark: |
+|       4.8.9        |       4.8.16       | :white_check_mark: |
+|       4.8.9        |       4.8.12       | :white_check_mark: |
 |       4.8.8        |       4.8.21       | :white_check_mark: |
 |       4.8.8        |       4.8.16       | :white_check_mark: |
 |       4.8.8        |       4.8.12       | :white_check_mark: |
