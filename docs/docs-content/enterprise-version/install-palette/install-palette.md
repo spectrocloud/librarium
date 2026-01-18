@@ -39,8 +39,8 @@ The next sections provide sizing guidelines we recommend you review before insta
 <!-- prettier-ignore-start -->
 
 The following table presents the Kubernetes version corresponding to each Palette version for
-[VMware](../../enterprise-version/install-palette/install-on-vmware/install-on-vmware.md) and
-[Kubernetes](../../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) installations.
+[VMware](../../enterprise-version/install-palette/install-on-vmware/install-on-vmware.md), 
+[Kubernetes](../../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md), and [Palette Management Appliance](../../enterprise-version/install-palette/palette-management-appliance.md) installations.
 Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes
 distribution OVA.
 
