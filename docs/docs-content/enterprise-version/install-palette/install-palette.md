@@ -59,7 +59,7 @@ distribution OVA.
 
 </TabItem>
 
-<TabItem label="Management Appliance" value="Management Appliance">
+<TabItem label="Palette Management Appliance" value="Palette Management Appliance">
 
 | **Palette Version** | **Kubernetes Version** |
 | ------------------- | ---------------------- |
