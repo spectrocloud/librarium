@@ -2759,6 +2759,90 @@
       },
       "type": "object"
     },
+    "v1AwsHostResourceGroup": {
+      "description": "AWS Host Resource Group details",
+      "properties": {
+        "arn": {
+          "description": "ARN of the Host Resource Group",
+          "pattern": "^arn:aws[a-z\\-]*:resource-groups:[a-z0-9\\-]+:[0-9]{12}:group/[a-zA-Z0-9\\-_]+$",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the resource group",
+          "type": "string"
+        },
+        "supportedInstanceFamilies": {
+          "description": "Supported instance families for this HRG",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsHostResourceGroups": {
+      "description": "List of AWS Host Resource Groups",
+      "properties": {
+        "hostResourceGroups": {
+          "items": {
+            "$ref": "#/definitions/v1AwsHostResourceGroup"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "hostResourceGroups"
+      ],
+      "type": "object"
+    },
+    "v1AwsHrgCapacityValidationRequest": {
+      "description": "Request body to validate HRG capacity",
+      "properties": {
+        "cloudAccountUid": {
+          "description": "UID of the AWS cloud account",
+          "type": "string"
+        },
+        "instanceType": {
+          "description": "EC2 instance type (e.g., m5.large)",
+          "type": "string"
+        },
+        "replicaCount": {
+          "description": "Required number of instances",
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cloudAccountUid",
+        "instanceType",
+        "replicaCount"
+      ],
+      "type": "object"
+    },
+    "v1AwsHrgCapacityValidationResponse": {
+      "description": "HRG capacity validation result",
+      "properties": {
+        "availableCapacity": {
+          "format": "int64",
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "isValid": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "message": {
+          "type": "string"
+        },
+        "requiredCapacity": {
+          "format": "int64",
+          "type": "integer",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
     "v1AwsHybridConfig": {
       "description": "AwsHybridConfig specifies the AWS Hybrid configuration for the cluster",
       "properties": {
@@ -2953,6 +3037,47 @@
       },
       "type": "object"
     },
+    "v1AwsLicenseConfiguration": {
+      "description": "AWS License Configuration details",
+      "properties": {
+        "arn": {
+          "description": "ARN of the license configuration",
+          "pattern": "^arn:aws[a-z\\-]*:license-manager:[a-z0-9\\-]+:[0-9]{12}:license-configuration:lic-[a-zA-Z0-9\\-]+$",
+          "type": "string"
+        },
+        "consumedCount": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "licenseType": {
+          "description": "License counting type as returned by AWS License Manager",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "totalCount": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsLicenseConfigurations": {
+      "description": "List of AWS License Configurations",
+      "properties": {
+        "licenseConfigurations": {
+          "items": {
+            "$ref": "#/definitions/v1AwsLicenseConfiguration"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "licenseConfigurations"
+      ],
+      "type": "object"
+    },
     "v1AwsLoginCredentials": {
       "properties": {
         "iamUser": {
@@ -3006,13 +3131,26 @@
           "description": "EC2 instance capacity type",
           "enum": [
             "on-demand",
-            "spot"
+            "spot",
+            "host-resource-group"
           ],
+          "type": "string"
+        },
+        "hostResourceGroupArn": {
+          "description": "ARN of AWS Host Resource Group for node placement on dedicated hosts",
           "type": "string"
         },
         "instanceType": {
           "description": "instance type",
           "type": "string"
+        },
+        "licenseConfigurationArns": {
+          "description": "List of AWS License Configuration ARNs (required when hostResourceGroupArn is specified, max 10)",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "type": "array"
         },
         "rootDeviceSize": {
           "description": "rootDeviceSize in GBs",
@@ -3039,6 +3177,13 @@
     },
     "v1AwsMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -3076,6 +3221,10 @@
           ],
           "type": "string"
         },
+        "hostResourceGroupArn": {
+          "description": "ARN of AWS Host Resource Group for node placement on dedicated hosts",
+          "type": "string"
+        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -3090,6 +3239,13 @@
         },
         "labels": {
           "description": "labels for this pool, example: control-plane/worker, gpu, windows",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "licenseConfigurationArns": {
+          "description": "List of AWS License Configuration ARNs (required when hostResourceGroupArn is specified)",
           "items": {
             "type": "string"
           },
@@ -3115,6 +3271,10 @@
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
           "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
+          "type": "string"
         },
         "rootDeviceSize": {
           "description": "rootDeviceSize in GBs",
@@ -4097,6 +4257,13 @@
     },
     "v1AzureMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -4167,6 +4334,10 @@
         },
         "osType": {
           "$ref": "#/definitions/v1OsType",
+          "type": "string"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
           "type": "string"
         },
         "size": {
@@ -5466,7 +5637,7 @@
       "description": "CloudStack cloud cluster config entity",
       "properties": {
         "clusterConfig": {
-          "$ref": "#/definitions/v1CloudStackClusterConfig"
+          "$ref": "#/definitions/v1CloudStackClusterConfigUpdateEntity"
         }
       },
       "type": "object"
@@ -5543,8 +5714,8 @@
           "type": "string"
         },
         "project": {
-          "description": "Project name for the cluster (optional)",
-          "type": "string"
+          "$ref": "#/definitions/v1CloudStackResource",
+          "description": "Project name for the cluster (optional)"
         },
         "sshKeyName": {
           "description": "SSH Key name for accessing cluster nodes",
@@ -5560,6 +5731,16 @@
             "$ref": "#/definitions/v1CloudStackZoneSpec"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1CloudStackClusterConfigUpdateEntity": {
+      "description": "Cluster level update configuration for CloudStack",
+      "properties": {
+        "controlPlaneEndpoint": {
+          "description": "Endpoint IP to be used for API server, should only be enabled for static CloudStack network",
+          "type": "string"
         }
       },
       "type": "object"
@@ -5672,23 +5853,9 @@
     "v1CloudStackMachineConfig": {
       "description": "CloudStack-specific machine configuration",
       "properties": {
-        "affinityGroupIds": {
-          "description": "Affinity group for VM placement (optional)",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "details": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Additional details for instance creation",
-          "type": "object"
-        },
-        "diskOffering": {
-          "$ref": "#/definitions/v1CloudStackResource",
-          "description": "Disk offering (instance type/size)"
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig",
+          "description": "Instance Configuration"
         },
         "networks": {
           "description": "Network configuration",
@@ -5701,32 +5868,18 @@
           "$ref": "#/definitions/v1CloudStackResource",
           "description": "Service offering (instance type/size)"
         },
-        "rootDiskSizeGB": {
-          "description": "Root disk size in GB (optional)",
-          "format": "int32",
-          "type": "integer"
+        "template": {
+          "$ref": "#/definitions/v1CloudStackResource",
+          "description": "CloudStack template override for this machine pool. If not specified, inherits cluster default from profile."
         }
       },
       "type": "object"
     },
     "v1CloudStackMachineConfigEntity": {
       "properties": {
-        "affinityGroupIds": {
-          "description": "Affinity group for VM placement (optional)",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "details": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Additional details for instance creation",
-          "type": "object"
-        },
-        "diskOffering": {
-          "$ref": "#/definitions/v1CloudStackResource"
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig",
+          "description": "Instance Configuration"
         },
         "networks": {
           "description": "Network configuration",
@@ -5738,10 +5891,9 @@
         "offering": {
           "$ref": "#/definitions/v1CloudStackResource"
         },
-        "rootDiskSizeGB": {
-          "description": "Root disk size in GB",
-          "format": "int32",
-          "type": "integer"
+        "template": {
+          "$ref": "#/definitions/v1CloudStackResource",
+          "description": "CloudStack template override for this machine pool. If not specified, inherits cluster default from profile."
         }
       },
       "required": [
@@ -5788,23 +5940,9 @@
     },
     "v1CloudStackMachinePoolCloudConfigEntity": {
       "properties": {
-        "affinityGroupIds": {
-          "description": "Affinity group for VM placement (optional)",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "details": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Additional details for instance creation",
-          "type": "object"
-        },
-        "diskOffering": {
-          "$ref": "#/definitions/v1CloudStackResource",
-          "description": "Disk offering (instance type/size)"
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig",
+          "description": "Instance Configuration"
         },
         "networks": {
           "description": "Network configuration",
@@ -5817,10 +5955,9 @@
           "$ref": "#/definitions/v1CloudStackResource",
           "description": "Service offering (instance type/size)"
         },
-        "rootDiskSizeGB": {
-          "description": "Root disk size in GB (optional)",
-          "format": "int32",
-          "type": "integer"
+        "template": {
+          "$ref": "#/definitions/v1CloudStackResource",
+          "description": "CloudStack template override for this machine pool. If not specified, inherits cluster default from profile."
         }
       },
       "required": [
@@ -5868,6 +6005,12 @@
         "instanceType": {
           "$ref": "#/definitions/v1GenericInstanceType",
           "description": "Instance service offering with cpu and memory info"
+        },
+        "nics": {
+          "items": {
+            "$ref": "#/definitions/v1CloudStackNic"
+          },
+          "type": "array"
         },
         "offering": {
           "$ref": "#/definitions/v1CloudStackMachineOffering",
@@ -6041,6 +6184,28 @@
           },
           "type": "array",
           "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "v1CloudStackNic": {
+      "description": "CloudStack network interface",
+      "properties": {
+        "index": {
+          "format": "int8",
+          "type": "integer"
+        },
+        "macAddress": {
+          "type": "string"
+        },
+        "networkName": {
+          "type": "string"
+        },
+        "privateIPs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -6221,12 +6386,32 @@
     "v1CloudStackVpc": {
       "description": "CloudStack Vpc",
       "properties": {
+        "cidr": {
+          "description": "Vpc Cidr",
+          "type": "string"
+        },
+        "domainId": {
+          "description": "Domain Id associated with Vpc",
+          "type": "string"
+        },
         "id": {
           "description": "Vpc id",
           "type": "string"
         },
         "name": {
           "description": "Vpc name",
+          "type": "string"
+        },
+        "offeringId": {
+          "description": "Vpc offering Id",
+          "type": "string"
+        },
+        "projectId": {
+          "description": "Project Id associated with Vpc",
+          "type": "string"
+        },
+        "zoneId": {
+          "description": "Zone Id associated with Vpc",
           "type": "string"
         }
       },
@@ -6308,6 +6493,7 @@
         "eks",
         "aks",
         "edge",
+        "apache-cloudstack",
         "edge-native",
         "generic",
         "gke"
@@ -6713,6 +6899,10 @@
           "$ref": "#/definitions/v1MachineManagementConfig",
           "description": "MachineManagementConfig defines the management configurations for the node. Patching OS security updates etc can be configured by user."
         },
+        "timezone": {
+          "description": "Timezone of a cluster in IANA standard format. It is mandatory field if cluster is deployed through template, else it is optional",
+          "type": "string"
+        },
         "updateWorkerPoolsInParallel": {
           "description": "UpdateWorkerPoolsInParallel is used to decide if the update of workerpools happen in parallel. When this flag is false, the workerpools are updated sequentially.",
           "type": "boolean"
@@ -6744,6 +6934,10 @@
         "resources": {
           "$ref": "#/definitions/v1ClusterResourcesEntity"
         },
+        "timezone": {
+          "description": "Timezone of a cluster in IANA standard format. It is mandatory field if cluster is deployed through template, else it is optional",
+          "type": "string"
+        },
         "updateWorkerPoolsInParallel": {
           "type": "boolean"
         }
@@ -6755,6 +6949,10 @@
         "hostClusterConfig": {
           "$ref": "#/definitions/v1HostClusterConfigResponse",
           "description": "HostClusterConfig defines the configuration entity of host clusters config entity"
+        },
+        "timezone": {
+          "description": "Timezone of a cluster in IANA standard format. It is mandatory field if cluster is deployed through template, else it is optional",
+          "type": "string"
         }
       },
       "type": "object"
@@ -11288,6 +11486,10 @@
         },
         "resources": {
           "$ref": "#/definitions/v1ClusterResourcesEntity"
+        },
+        "timezone": {
+          "description": "The timezone field is mandatory if cluster is deployed through template, else it is optional",
+          "type": "string"
         }
       },
       "type": "object"
@@ -11378,6 +11580,13 @@
     },
     "v1CustomMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -11391,6 +11600,10 @@
           "x-omitempty": false
         },
         "name": {
+          "type": "string"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
           "type": "string"
         },
         "size": {
@@ -11999,7 +12212,8 @@
           "default": "helm",
           "enum": [
             "helm",
-            "pack"
+            "pack",
+            "zarf"
           ],
           "type": "string"
         },
@@ -13015,6 +13229,13 @@
     },
     "v1EdgeNativeMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "default": "",
@@ -13072,6 +13293,10 @@
         },
         "osType": {
           "description": "the os type for the pool, must be supported by the provider",
+          "type": "string"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
           "type": "string"
         },
         "size": {
@@ -13570,7 +13795,8 @@
           "description": "EC2 instance capacity type",
           "enum": [
             "on-demand",
-            "spot"
+            "spot",
+            "host-resource-group"
           ],
           "type": "string"
         },
@@ -13603,6 +13829,13 @@
     },
     "v1EksMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -13683,6 +13916,10 @@
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
           "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
+          "type": "string"
         },
         "rootDeviceSize": {
           "description": "rootDeviceSize in GBs",
@@ -14683,6 +14920,13 @@
     },
     "v1GcpMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -14740,6 +14984,10 @@
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
           "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
+          "type": "string"
         },
         "rootDeviceSize": {
           "description": "Size of root volume in GB. Default is 30GB",
@@ -17664,6 +17912,13 @@
     },
     "v1MaasMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -17723,6 +17978,10 @@
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
           "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
+          "type": "string"
         },
         "resourcePool": {
           "type": "string"
@@ -18173,6 +18432,20 @@
     },
     "v1MachinePoolBaseConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\nCurrently implemented for CloudStack only.\n",
+          "type": "object"
+        },
+        "additionalLabels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "additionalLabels",
+          "type": "object"
+        },
         "additionalTags": {
           "additionalProperties": {
             "type": "string"
@@ -18207,10 +18480,27 @@
         "name": {
           "type": "string"
         },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\nCurrently implemented for CloudStack only.\n",
+          "type": "string"
+        },
         "size": {
           "description": "size of the pool, number of machines",
           "format": "int32",
           "type": "integer"
+        },
+        "taints": {
+          "description": "control plane or worker taints",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
         "updateStrategy": {
           "$ref": "#/definitions/v1UpdateStrategy",
@@ -18230,6 +18520,13 @@
     "v1MachinePoolConfigEntity": {
       "description": "Machine pool configuration for the cluster",
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\nCurrently implemented for CloudStack only.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -18276,6 +18573,10 @@
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
           "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\nCurrently implemented for CloudStack only.\n",
+          "type": "string"
         },
         "size": {
           "description": "Size of the pool, number of nodes/machines",
@@ -18561,6 +18862,10 @@
       "properties": {
         "content": {
           "description": "Manifest content in yaml",
+          "type": "string"
+        },
+        "digest": {
+          "description": "Manifest digest",
           "type": "string"
         },
         "name": {
@@ -20985,6 +21290,13 @@
     },
     "v1OpenStackMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -21053,6 +21365,10 @@
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
           "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
+          "type": "string"
         },
         "size": {
           "description": "size of the pool, number of machines",
@@ -24746,14 +25062,14 @@
     "v1RateConfig": {
       "description": "Rate config",
       "properties": {
+        "apache-cloudstack": {
+          "$ref": "#/definitions/v1PrivateCloudRateConfig"
+        },
         "aws": {
           "$ref": "#/definitions/v1PublicCloudRateConfig"
         },
         "azure": {
           "$ref": "#/definitions/v1PublicCloudRateConfig"
-        },
-        "cloudstack": {
-          "$ref": "#/definitions/v1PrivateCloudRateConfig"
         },
         "custom": {
           "items": {
@@ -33819,6 +34135,19 @@
       "format": "date-time",
       "type": "string"
     },
+    "v1TimezoneUpdateEntity": {
+      "properties": {
+        "timezone": {
+          "description": "The timezone field is mandatory if cluster is deployed through template, else it is optional",
+          "example": "America/New_York",
+          "type": "string"
+        }
+      },
+      "required": [
+        "timezone"
+      ],
+      "type": "object"
+    },
     "v1TlsConfiguration": {
       "description": "TLS configuration",
       "properties": {
@@ -34009,13 +34338,22 @@
       "uniqueItems": true
     },
     "v1UpdateStrategy": {
-      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1",
+      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1 OverrideScaling => maxSurge and maxUnavailable are user-specified (both required)",
       "properties": {
+        "maxSurge": {
+          "description": "Max extra nodes during rolling update. Integer or percentage (e.g., \"1\" or \"20%\").\nOnly valid when type=OverrideScaling. Both maxSurge and maxUnavailable are required.\nCurrently implemented for CloudStack only.\n",
+          "type": "string"
+        },
+        "maxUnavailable": {
+          "description": "Max unavailable nodes during rolling update. Integer or percentage (e.g., \"0\" or \"10%\").\nOnly valid when type=OverrideScaling. Both maxSurge and maxUnavailable are required.\nCurrently implemented for CloudStack only.\n",
+          "type": "string"
+        },
         "type": {
-          "description": "update strategy, either ScaleOut or ScaleIn if empty, will default to RollingUpdateScaleOut",
+          "description": "Update strategy type. Defaults to RollingUpdateScaleOut if empty.",
           "enum": [
             "RollingUpdateScaleOut",
-            "RollingUpdateScaleIn"
+            "RollingUpdateScaleIn",
+            "OverrideScaling"
           ],
           "type": "string"
         }
@@ -35460,6 +35798,13 @@
     },
     "v1VirtualMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -35509,6 +35854,10 @@
           "type": "integer"
         },
         "name": {
+          "type": "string"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
           "type": "string"
         },
         "resourcePool": {
@@ -36217,10 +36566,13 @@
       "type": "object"
     },
     "v1VmDataVolumeSource": {
-      "description": "DataVolumeSource represents the source for our Data Volume, this can be HTTP, Imageio, S3, Registry or an existing PVC",
+      "description": "DataVolumeSource represents the source for our Data Volume, this can be HTTP, Imageio, S3, GCS, Registry, Snapshot or an existing PVC",
       "properties": {
         "blank": {
           "$ref": "#/definitions/v1VmDataVolumeBlankImage"
+        },
+        "gcs": {
+          "$ref": "#/definitions/v1VmDataVolumeSourceGCS"
         },
         "http": {
           "$ref": "#/definitions/v1VmDataVolumeSourceHttp"
@@ -36237,6 +36589,9 @@
         "s3": {
           "$ref": "#/definitions/v1VmDataVolumeSourceS3"
         },
+        "snapshot": {
+          "$ref": "#/definitions/v1VmDataVolumeSourceSnapshot"
+        },
         "upload": {
           "$ref": "#/definitions/v1VmDataVolumeSourceUpload"
         },
@@ -36244,6 +36599,23 @@
           "$ref": "#/definitions/v1VmDataVolumeSourceVDDK"
         }
       },
+      "type": "object"
+    },
+    "v1VmDataVolumeSourceGCS": {
+      "description": "DataVolumeSourceGCS provides the parameters to create a Data Volume from a GCS source",
+      "properties": {
+        "secretRef": {
+          "description": "SecretRef provides the secret reference needed to access the GCS source",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL is the url of the GCS source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url"
+      ],
       "type": "object"
     },
     "v1VmDataVolumeSourceHttp": {
@@ -36358,6 +36730,9 @@
           "description": "ImageStream is the name of image stream for import",
           "type": "string"
         },
+        "platform": {
+          "$ref": "#/definitions/v1VmPlatformOptions"
+        },
         "pullMethod": {
           "description": "PullMethod can be either \"pod\" (default import), or \"node\" (node docker cache based import)",
           "type": "string"
@@ -36391,6 +36766,24 @@
       },
       "required": [
         "url"
+      ],
+      "type": "object"
+    },
+    "v1VmDataVolumeSourceSnapshot": {
+      "description": "DataVolumeSourceSnapshot provides the parameters to create a Data Volume from an existing VolumeSnapshot",
+      "properties": {
+        "name": {
+          "description": "The name of the source VolumeSnapshot",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "The namespace of the source VolumeSnapshot",
+          "type": "string"
+        }
+      },
+      "required": [
+        "namespace",
+        "name"
       ],
       "type": "object"
     },
@@ -36706,7 +37099,7 @@
           "type": "object"
         },
         "ioThreadsPolicy": {
-          "description": "Controls whether or not disks will share IOThreads. Omitting IOThreadsPolicy disables use of IOThreads. One of: shared, auto",
+          "description": "Controls whether or not disks will share IOThreads. Omitting IOThreadsPolicy disables use of IOThreads. One of: shared, auto, supplementalPool",
           "type": "string"
         },
         "launchSecurity": {
@@ -36779,6 +37172,10 @@
     "v1VmEFI": {
       "description": "If set, EFI will be used instead of BIOS.",
       "properties": {
+        "persistent": {
+          "description": "If set to true, Persistent will persist the EFI NVRAM across reboots. Defaults to false",
+          "type": "boolean"
+        },
         "secureBoot": {
           "description": "If set, SecureBoot will be enabled and the OVMF roms will be swapped for SecureBoot-enabled ones. Requires SMM to be enabled. Defaults to true",
           "type": "boolean"
@@ -36948,6 +37345,9 @@
         },
         "hyperv": {
           "$ref": "#/definitions/v1VmFeatureHyperv"
+        },
+        "hypervPassthrough": {
+          "$ref": "#/definitions/v1VmHyperVPassthrough"
         },
         "kvm": {
           "$ref": "#/definitions/v1VmFeatureKVm"
@@ -37168,6 +37568,16 @@
         "pageSize": {
           "description": "PageSize specifies the hugepage size, for x86_64 architecture valid values are 1Gi and 2Mi.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1VmHyperVPassthrough": {
+      "description": "HyperVPassthrough enables all supported hyperv flags automatically. Bear in mind that if this enabled hyperV features cannot be enabled explicitly. In addition, a Virtual Machine using it will be non-migratable.",
+      "properties": {
+        "enabled": {
+          "description": "Enabled determines if Hyper-V passthrough should be enabled or disabled. Defaults to false.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -37890,6 +38300,16 @@
       ],
       "type": "object"
     },
+    "v1VmPlatformOptions": {
+      "description": "PlatformOptions describes the minimum runtime requirements of the image",
+      "properties": {
+        "architecture": {
+          "description": "Architecture specifies the image target CPU architecture",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1VmPodAffinity": {
       "description": "Pod affinity is a group of inter pod affinity scheduling rules.",
       "properties": {
@@ -37988,6 +38408,27 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1VmPodResourceClaim": {
+      "description": "PodResourceClaim defines which ResourceClaims must be allocated and reserved before the Pod is allowed to start. The resources will be made available to the domain which consumes them by name.",
+      "properties": {
+        "name": {
+          "description": "Name uniquely identifies this resource claim inside the pod. This must be a DNS_LABEL.",
+          "type": "string"
+        },
+        "resourceClaimName": {
+          "description": "ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod. Exactly one of ResourceClaimName and ResourceClaimTemplateName must be set.",
+          "type": "string"
+        },
+        "resourceClaimTemplateName": {
+          "description": "ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod. The template will be used to create a new ResourceClaim, which will be bound to this pod. Exactly one of ResourceClaimName and ResourceClaimTemplateName must be set.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
       "type": "object"
     },
     "v1VmPort": {
@@ -38325,6 +38766,9 @@
         "dataSource": {
           "$ref": "#/definitions/v1VmTypedLocalObjectReference"
         },
+        "dataSourceRef": {
+          "$ref": "#/definitions/v1VmTypedObjectReference"
+        },
         "resources": {
           "$ref": "#/definitions/v1VmCoreResourceRequirements"
         },
@@ -38489,6 +38933,32 @@
       ],
       "type": "object"
     },
+    "v1VmTypedObjectReference": {
+      "description": "TypedObjectReference contains enough information to let you locate the typed referenced object. It can be used for objects in the same namespace or cluster-scoped objects.",
+      "properties": {
+        "apiGroup": {
+          "description": "APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is the type of resource being referenced",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name is the name of resource being referenced",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Namespace is the namespace of resource being referenced. This field is required when the resource is namespaced and optional when the resource is cluster-scoped.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "name"
+      ],
+      "type": "object"
+    },
     "v1VmUserPasswordAccessCredential": {
       "description": "UserPasswordAccessCredential represents a source and propagation method for injecting user passwords into a vm guest Only one of its members may be specified.",
       "properties": {
@@ -38630,6 +39100,17 @@
         },
         "readinessProbe": {
           "$ref": "#/definitions/v1VmProbe"
+        },
+        "resourceClaims": {
+          "description": "ResourceClaims define which ResourceClaims must be allocated and reserved before the VMI, hence virt-launcher pod is allowed to start. The resources will be made available to the domain which consumes them by name. This is an alpha field and requires enabling the DynamicResourceAllocation feature gate in kubernetes. This field should only be configured if one of the feature-gates GPUsWithDRA or HostDevicesWithDRA is enabled.",
+          "items": {
+            "$ref": "#/definitions/v1VmPodResourceClaim"
+          },
+          "type": "array",
+          "x-kubernetes-list-map-keys": [
+            "name"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "schedulerName": {
           "description": "If specified, the VMI will be dispatched by specified scheduler. If not specified, the VMI will be dispatched by default scheduler.",
@@ -39385,6 +39866,13 @@
     },
     "v1VsphereMachinePoolConfig": {
       "properties": {
+        "additionalAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Custom annotations for CAPI machine objects and nodes.\n",
+          "type": "object"
+        },
         "additionalLabels": {
           "additionalProperties": {
             "type": "string"
@@ -39435,6 +39923,10 @@
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
           "type": "integer"
+        },
+        "overrideKubeadmConfiguration": {
+          "description": "YAML config for kubeletExtraArgs, preKubeadmCommands, postKubeadmCommands.\nOverrides pack-level settings. Worker pools only.\n",
+          "type": "string"
         },
         "placements": {
           "description": "Placements configuration Placements If defined, will replace default values defined in VsphereClusterConfig Array means one MachinePool can span across multiple vsphere compute cluster",
@@ -43114,6 +43606,690 @@
         ]
       }
     },
+    "/v1/cloudaccounts/apache-cloudstack": {
+      "get": {
+        "operationId": "v1CloudAccountsCloudStackList",
+        "parameters": [
+          {
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "in": "query",
+            "name": "fields",
+            "type": "string"
+          },
+          {
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "in": "query",
+            "name": "filters",
+            "type": "string"
+          },
+          {
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of CloudStack cloud account items",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackAccounts"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of CloudStack cloud accounts",
+        "tags": [
+          "cloudaccounts"
+        ],
+        "x-Features": [
+          "ApacheCloudstack"
+        ]
+      },
+      "post": {
+        "operationId": "v1CloudAccountsCloudStackCreate",
+        "parameters": [
+          {
+            "description": "Request payload to validate CloudStack cloud account",
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackAccountInputEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Creates a CloudStack cloud account",
+        "tags": [
+          "cloudaccounts"
+        ],
+        "x-Features": [
+          "ApacheCloudstack"
+        ]
+      }
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}": {
+      "delete": {
+        "operationId": "v1CloudAccountsCloudStackDelete",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Deletes the specified CloudStack account",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "get": {
+        "operationId": "v1CloudAccountsCloudStackGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackAccount"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the specified CloudStack account",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "CloudStack cloud account uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudAccountsCloudStackUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackAccountUpdateEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the specified CloudStack account",
+        "tags": [
+          "cloudaccounts"
+        ]
+      }
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/diskofferings": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidDiskofferings",
+        "parameters": [
+          {
+            "description": "Zone for which CloudStack disk offerings are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack disk offerings are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackDiskOfferings"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack disk offerings for a given account and zone",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/domains": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidDomains",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackDomains"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack domains for a given account",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/keypairs": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidKeypairs",
+        "parameters": [
+          {
+            "description": "Project ID for which CloudStack SSH key pairs are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackKeypairs"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack SSH key pairs for a given account",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/networks": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidNetworks",
+        "parameters": [
+          {
+            "description": "Zone for which CloudStack networks are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack networks are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "VPC ID for which CloudStack networks are requested",
+            "in": "query",
+            "name": "vpcId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackNetworks"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack networks for a given account and zone",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/offerings": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidOfferings",
+        "parameters": [
+          {
+            "description": "Zone for which CloudStack offerings are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack offerings are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "Template ID for which CloudStack offerings are requested",
+            "in": "query",
+            "name": "templateId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackOfferings"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack compute offerings for a given account and zone",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/projects": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidProjects",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackProjects"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack projects for a given account and domain",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/templates": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidTemplates",
+        "parameters": [
+          {
+            "description": "Zone for which CloudStack templates are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack templates are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "Template IDs for which CloudStack templates are requested",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "templateIds",
+            "type": "array"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackTemplates"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack templates for a given account and zone",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/vpcs": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidVpcs",
+        "parameters": [
+          {
+            "description": "Project ID for which CloudStack VPCs are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "Domain ID for which CloudStack VPCs are requested",
+            "in": "query",
+            "name": "domainId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackVpcs"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack VPCs for a given account",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudaccounts/apache-cloudstack/{uid}/properties/zones": {
+      "get": {
+        "operationId": "v1CloudstackAccountsUidZones",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackZones"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cloudstack zones for a given account",
+        "tags": [
+          "cloudaccounts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/cloudaccounts/aws": {
       "get": {
         "operationId": "v1CloudAccountsAwsList",
@@ -43801,675 +44977,6 @@
           "cloudaccounts"
         ]
       }
-    },
-    "/v1/cloudaccounts/cloudstack": {
-      "get": {
-        "operationId": "v1CloudAccountsCloudStackList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of CloudStack cloud account items",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackAccounts"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of CloudStack cloud accounts",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "post": {
-        "operationId": "v1CloudAccountsCloudStackCreate",
-        "parameters": [
-          {
-            "description": "Request payload to validate CloudStack cloud account",
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackAccountInputEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a CloudStack cloud account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      }
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}": {
-      "delete": {
-        "operationId": "v1CloudAccountsCloudStackDelete",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified CloudStack account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudAccountsCloudStackGet",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackAccount"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified CloudStack account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "CloudStack cloud account uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudAccountsCloudStackUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackAccountUpdateEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified CloudStack account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      }
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/diskofferings": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidDiskofferings",
-        "parameters": [
-          {
-            "description": "Zone for which CloudStack disk offerings are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack disk offerings are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackDiskOfferings"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack disk offerings for a given account and zone",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/domains": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidDomains",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackDomains"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack domains for a given account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/keypairs": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidKeypairs",
-        "parameters": [
-          {
-            "description": "Project ID for which CloudStack SSH key pairs are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackKeypairs"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack SSH key pairs for a given account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/networks": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidNetworks",
-        "parameters": [
-          {
-            "description": "Zone for which CloudStack networks are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack networks are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "VPC ID for which CloudStack networks are requested",
-            "in": "query",
-            "name": "vpcId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackNetworks"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack networks for a given account and zone",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/offerings": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidOfferings",
-        "parameters": [
-          {
-            "description": "Zone for which CloudStack offerings are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack offerings are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "Template ID for which CloudStack offerings are requested",
-            "in": "query",
-            "name": "templateId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackOfferings"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack compute offerings for a given account and zone",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/projects": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidProjects",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackProjects"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack projects for a given account and domain",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/templates": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidTemplates",
-        "parameters": [
-          {
-            "description": "Zone for which CloudStack templates are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack templates are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackTemplates"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack templates for a given account and zone",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/vpcs": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidVpcs",
-        "parameters": [
-          {
-            "description": "Project ID for which CloudStack VPCs are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "Domain ID for which CloudStack VPCs are requested",
-            "in": "query",
-            "name": "domainId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackVpcs"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack VPCs for a given account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudaccounts/cloudstack/{uid}/properties/zones": {
-      "get": {
-        "operationId": "v1CloudstackAccountsUidZones",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackZones"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get the cloudstack zones for a given account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
     },
     "/v1/cloudaccounts/gcp": {
       "get": {
@@ -46594,6 +47101,442 @@
         ]
       }
     },
+    "/v1/cloudconfigs/apache-cloudstack/{configUid}": {
+      "get": {
+        "operationId": "v1CloudConfigsCloudStackGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackCloudConfig"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the specified CloudStack cloud config",
+        "tags": [
+          "cloudconfigs"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudconfigs/apache-cloudstack/{configUid}/clusterConfig": {
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsCloudStackUidClusterConfig",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackCloudClusterConfigEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the cluster configuration information",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/apache-cloudstack/{configUid}/machinePools": {
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1CloudConfigsCloudStackMachinePoolCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackMachinePoolConfigEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Creates a CloudStack cloud config's machine pool",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/apache-cloudstack/{configUid}/machinePools/{machinePoolName}": {
+      "delete": {
+        "operationId": "v1CloudConfigsCloudStackMachinePoolDelete",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Deletes the specified machine pool",
+        "tags": [
+          "cloudconfigs"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsCloudStackMachinePoolUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackMachinePoolConfigEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the specified CloudStack cloud config's machine pool",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/apache-cloudstack/{configUid}/machinePools/{machinePoolName}/machines": {
+      "get": {
+        "operationId": "v1CloudConfigsCloudStackPoolMachinesList",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of CloudStack machine items",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackMachines"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of CloudStack machines",
+        "tags": [
+          "cloudconfigs"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1CloudConfigsCloudStackPoolMachinesAdd",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackMachine"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Adds the CloudStack machine to cloud config's machine pool",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/apache-cloudstack/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
+      "delete": {
+        "operationId": "v1CloudConfigsCloudStackPoolMachinesUidDelete",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Deletes the specified CloudStack machine",
+        "tags": [
+          "cloudconfigs"
+        ]
+      },
+      "get": {
+        "operationId": "v1CloudConfigsCloudStackPoolMachinesUidGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackMachine"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the specified CloudStack machine",
+        "tags": [
+          "cloudconfigs"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine uid",
+          "in": "path",
+          "name": "machineUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsCloudStackPoolMachinesUidUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackMachine"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the specified machine to cloud config's machine pool",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
     "/v1/cloudconfigs/aws/{configUid}": {
       "get": {
         "operationId": "v1CloudConfigsAwsGet",
@@ -48271,442 +49214,6 @@
           }
         ],
         "summary": "Updates the specified machine to the cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudstack/{configUid}": {
-      "get": {
-        "operationId": "v1CloudConfigsCloudStackGet",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackCloudConfig"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified CloudStack cloud config",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudconfigs/cloudstack/{configUid}/clusterConfig": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCloudStackUidClusterConfig",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackCloudClusterConfigEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the cluster configuration information",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudstack/{configUid}/machinePools": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsCloudStackMachinePoolCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a CloudStack cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudstack/{configUid}/machinePools/{machinePoolName}": {
-      "delete": {
-        "operationId": "v1CloudConfigsCloudStackMachinePoolDelete",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCloudStackMachinePoolUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified CloudStack cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudstack/{configUid}/machinePools/{machinePoolName}/machines": {
-      "get": {
-        "operationId": "v1CloudConfigsCloudStackPoolMachinesList",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of CloudStack machine items",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackMachines"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of CloudStack machines",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsCloudStackPoolMachinesAdd",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackMachine"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Adds the CloudStack machine to cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudstack/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
-      "delete": {
-        "operationId": "v1CloudConfigsCloudStackPoolMachinesUidDelete",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified CloudStack machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudConfigsCloudStackPoolMachinesUidGet",
-        "parameters": [
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackMachine"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified CloudStack machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine uid",
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCloudStackPoolMachinesUidUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackMachine"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified machine to cloud config's machine pool",
         "tags": [
           "cloudconfigs"
         ]
@@ -53177,6 +53684,484 @@
         }
       ]
     },
+    "/v1/clouds/apache-cloudstack/account/validate": {
+      "post": {
+        "description": "Validates CloudStack account credentials and domain. Verifies API connectivity and that the specified domain exists. Returns no contents if account is valid else error.",
+        "operationId": "V1CloudStackAccountValidate",
+        "parameters": [
+          {
+            "description": "Request payload for CloudStack cloud account with required domain field",
+            "in": "body",
+            "name": "cloudstackCloudAccount",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackCloudAccount"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Check if CloudStack account is valid",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/diskOfferings": {
+      "get": {
+        "operationId": "V1CloudStackDiskOfferingsGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "Zone for which CloudStack disk offerings are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack disk offerings are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackDiskOfferings"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack disk offerings",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/domains": {
+      "get": {
+        "operationId": "V1CloudStackDomainsGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackDomains"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack domains",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/keypairs": {
+      "get": {
+        "operationId": "V1CloudStackKeypairsGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack SSH key pairs are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackKeypairs"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack SSH key pairs",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/networks": {
+      "get": {
+        "operationId": "V1CloudStackNetworksGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "Zone for which CloudStack networks are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack networks are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "VPC ID for which CloudStack networks are requested",
+            "in": "query",
+            "name": "vpcId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackNetworks"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack networks",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/offerings": {
+      "get": {
+        "operationId": "V1CloudStackOfferingsGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "Zone for which CloudStack offerings are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack offerings are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "Template ID for which CloudStack offerings are requested",
+            "in": "query",
+            "name": "templateId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackOfferings"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack compute offerings",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/projects": {
+      "get": {
+        "operationId": "V1CloudStackProjectsGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackProjects"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack projects",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/templates": {
+      "get": {
+        "operationId": "V1CloudStackTemplatesGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "Zone for which CloudStack templates are requested",
+            "in": "query",
+            "name": "zone",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack templates are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "Template IDs for which CloudStack templates are requested",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "templateIds",
+            "type": "array"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackTemplates"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack templates",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/vpcs": {
+      "get": {
+        "operationId": "V1CloudStackVpcsGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "Project ID for which CloudStack VPCs are requested",
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackVpcs"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack Vpcs",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/apache-cloudstack/zones": {
+      "get": {
+        "operationId": "V1CloudStackZonesGet",
+        "parameters": [
+          {
+            "description": "Uid for the specific CloudStack cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CloudStackZones"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the CloudStack zones",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
     "/v1/clouds/aws/account/secret/credentials": {
       "post": {
         "operationId": "V1AwsAccountSecretCredentials",
@@ -53908,6 +54893,13 @@
             "type": "string"
           },
           {
+            "description": "Optional HRG ARN to filter instance types by HRG supported families",
+            "in": "query",
+            "name": "hrgArn",
+            "pattern": "^arn:aws[a-z\\-]*:resource-groups:[a-z0-9\\-]+:[0-9]{12}:group/[a-zA-Z0-9\\-_]+$",
+            "type": "string"
+          },
+          {
             "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
             "in": "header",
             "name": "ProjectUid",
@@ -54193,6 +55185,164 @@
           }
         ],
         "summary": "Validate an Aws KMS key for the specified account",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/aws/regions/{region}/resourceGroups": {
+      "get": {
+        "operationId": "V1AwsHostResourceGroups",
+        "parameters": [
+          {
+            "description": "AWS region",
+            "in": "path",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "UID of the AWS cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsHostResourceGroups"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of AWS Host Resource Groups for the specified account and region",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/aws/regions/{region}/resourceGroups/licenses": {
+      "get": {
+        "operationId": "V1AwsHostResourceGroupLicenses",
+        "parameters": [
+          {
+            "description": "AWS region",
+            "in": "path",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "UID of the AWS cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ARN of the Host Resource Group",
+            "in": "query",
+            "name": "hrgArn",
+            "pattern": "^arn:aws[a-z\\-]*:resource-groups:[a-z0-9\\-]+:[0-9]{12}:group/[a-zA-Z0-9\\-_]+$",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsLicenseConfigurations"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves license configurations for the specified Host Resource Group",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/aws/regions/{region}/resourceGroups/validateCapacity": {
+      "post": {
+        "operationId": "V1AwsHostResourceGroupCapacityValidation",
+        "parameters": [
+          {
+            "description": "AWS region",
+            "in": "path",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ARN of the Host Resource Group",
+            "in": "query",
+            "name": "hrgArn",
+            "pattern": "^arn:aws[a-z\\-]*:resource-groups:[a-z0-9\\-]+:[0-9]{12}:group/[a-zA-Z0-9\\-_]+$",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AwsHrgCapacityValidationRequest"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsHrgCapacityValidationResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Validates available capacity for an instance type in a Host Resource Group",
         "tags": [
           "clouds"
         ]
@@ -56361,475 +57511,6 @@
         ]
       }
     },
-    "/v1/clouds/cloudstack/account/validate": {
-      "post": {
-        "description": "Validates CloudStack account credentials and domain. Verifies API connectivity and that the specified domain exists. Returns no contents if account is valid else error.",
-        "operationId": "V1CloudStackAccountValidate",
-        "parameters": [
-          {
-            "description": "Request payload for CloudStack cloud account with required domain field",
-            "in": "body",
-            "name": "cloudstackCloudAccount",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackCloudAccount"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Check if CloudStack account is valid",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/diskOfferings": {
-      "get": {
-        "operationId": "V1CloudStackDiskOfferingsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "Zone for which CloudStack disk offerings are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack disk offerings are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackDiskOfferings"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack disk offerings",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/domains": {
-      "get": {
-        "operationId": "V1CloudStackDomainsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackDomains"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack domains",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/keypairs": {
-      "get": {
-        "operationId": "V1CloudStackKeypairsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack SSH key pairs are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackKeypairs"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack SSH key pairs",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/networks": {
-      "get": {
-        "operationId": "V1CloudStackNetworksGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "Zone for which CloudStack networks are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack networks are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "VPC ID for which CloudStack networks are requested",
-            "in": "query",
-            "name": "vpcId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackNetworks"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack networks",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/offerings": {
-      "get": {
-        "operationId": "V1CloudStackOfferingsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "Zone for which CloudStack offerings are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack offerings are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "Template ID for which CloudStack offerings are requested",
-            "in": "query",
-            "name": "templateId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackOfferings"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack compute offerings",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/projects": {
-      "get": {
-        "operationId": "V1CloudStackProjectsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackProjects"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack projects",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/templates": {
-      "get": {
-        "operationId": "V1CloudStackTemplatesGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "Zone for which CloudStack templates are requested",
-            "in": "query",
-            "name": "zone",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack templates are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackTemplates"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack templates",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/vpcs": {
-      "get": {
-        "operationId": "V1CloudStackVpcsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "Project ID for which CloudStack VPCs are requested",
-            "in": "query",
-            "name": "projectId",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackVpcs"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack Vpcs",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/cloudstack/zones": {
-      "get": {
-        "operationId": "V1CloudStackZonesGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CloudStack cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudStackZones"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the CloudStack zones",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
     "/v1/clouds/eks/properties/validate": {
       "post": {
         "operationId": "V1EksPropertiesValidate",
@@ -58471,9 +59152,6 @@
         "summary": "Create a new cluster template",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58520,9 +59198,6 @@
         "summary": "Update the specified cluster's template variables",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58556,9 +59231,6 @@
         "summary": "Retrieves a list of cluster template tags",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58601,9 +59273,6 @@
         "summary": "Validates the cluster template name",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58634,9 +59303,6 @@
         "summary": "Delete a cluster template by uid",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "get": {
@@ -58668,9 +59334,6 @@
         "summary": "Returns the specified cluster template",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "parameters": [
@@ -58726,9 +59389,6 @@
         "summary": "Update the specified cluster template metadata",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58775,9 +59435,6 @@
         "summary": "Update the specified cluster template policies",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58824,9 +59481,6 @@
         "summary": "Update the specified cluster template profiles",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58873,9 +59527,6 @@
         "summary": "Update variables for profiles in a cluster template",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -58909,9 +59560,6 @@
         "summary": "Retrieve variables for a specific profile in a cluster template",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "parameters": [
@@ -58961,9 +59609,6 @@
         "summary": "Returns the cluster reconcile document for a specific cluster launched from a template",
         "tags": [
           "clusterTemplates"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "parameters": [
@@ -61438,9 +62083,6 @@
         "summary": "Retrieves a list of cluster templates filter summary Supported filter fields - [\"clusterTemplateName\", \"tags\", \"cloudType\",\"projectUid\", \"policyUid\"] Supported sort fields - [\"clusterTemplateName\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "tags": [
           "dashboard"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -61474,9 +62116,6 @@
         "summary": "Retrieves a list of all cluster template metadata.",
         "tags": [
           "dashboard"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -61517,9 +62156,6 @@
         "summary": "Retrieves spectroclusters meta information for clusters launched using the specified cluster template.",
         "tags": [
           "dashboard"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -62198,9 +62834,6 @@
         "summary": "Retrieves a list of spc policies filter summary Supported filter fields - [\"policyName\", \"tags\", \"policyType\"] Supported sort fields - [\"policyName\", \"policyType\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "tags": [
           "dashboard"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -62234,9 +62867,6 @@
         "summary": "Retrieves a list of all spc policies metadata.",
         "tags": [
           "dashboard"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -66635,7 +67265,7 @@
         ]
       }
     },
-    "/v1/overlords/cloudstack/manifest": {
+    "/v1/overlords/apache-cloudstack/manifest": {
       "get": {
         "operationId": "v1OverlordsCloudStackManifest",
         "parameters": [
@@ -66676,7 +67306,7 @@
         }
       ]
     },
-    "/v1/overlords/cloudstack/{uid}/account": {
+    "/v1/overlords/apache-cloudstack/{uid}/account": {
       "parameters": [
         {
           "in": "path",
@@ -66765,7 +67395,7 @@
         ]
       }
     },
-    "/v1/overlords/cloudstack/{uid}/account/validate": {
+    "/v1/overlords/apache-cloudstack/{uid}/account/validate": {
       "parameters": [
         {
           "in": "path",
@@ -66821,7 +67451,7 @@
         ]
       }
     },
-    "/v1/overlords/cloudstack/{uid}/cloudconfig": {
+    "/v1/overlords/apache-cloudstack/{uid}/cloudconfig": {
       "parameters": [
         {
           "in": "path",
@@ -66910,7 +67540,7 @@
         ]
       }
     },
-    "/v1/overlords/cloudstack/{uid}/clusterprofile": {
+    "/v1/overlords/apache-cloudstack/{uid}/clusterprofile": {
       "get": {
         "operationId": "v1OverlordsUidCloudStackClusterProfile",
         "parameters": [
@@ -67791,7 +68421,7 @@
               "vsphere",
               "openstack",
               "maas",
-              "cloudstack"
+              "apache-cloudstack"
             ],
             "in": "query",
             "name": "cloudType",
@@ -72180,9 +72810,6 @@
         "summary": "Create a new maintenance policy",
         "tags": [
           "spcPolicies"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -72216,9 +72843,6 @@
         "summary": "Returns the specified maintenance policy",
         "tags": [
           "spcPolicies"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "parameters": [
@@ -72263,9 +72887,6 @@
         "summary": "Updates the specified maintenance policy",
         "tags": [
           "spcPolicies"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -72299,9 +72920,6 @@
         "summary": "Retrieves a list of spc policy tags",
         "tags": [
           "spcPolicies"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -72344,9 +72962,6 @@
         "summary": "Validates the spc policy name",
         "tags": [
           "spcPolicies"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "parameters": [
@@ -72386,9 +73001,6 @@
         "summary": "Delete a policy by uid",
         "tags": [
           "spcPolicies"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "parameters": [
@@ -72532,6 +73144,189 @@
           }
         ],
         "summary": "Validates AKS cluster create operation",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/apache-cloudstack": {
+      "post": {
+        "operationId": "v1SpectroClustersCloudStackCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroCloudStackClusterEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Creates a CloudStack cluster",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/apache-cloudstack/import": {
+      "post": {
+        "operationId": "v1SpectroClustersCloudStackImport",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroCloudStackClusterImportEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Imports a CloudStack cluster",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/apache-cloudstack/rate": {
+      "post": {
+        "operationId": "v1SpectroClustersCloudStackRate",
+        "parameters": [
+          {
+            "default": "hourly",
+            "enum": [
+              "hourly",
+              "monthly",
+              "yearly"
+            ],
+            "in": "query",
+            "name": "periodType",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroCloudStackClusterRateEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CloudStack Cluster estimated rate response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterRate"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get CloudStack cluster estimated rate information",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/apache-cloudstack/validate": {
+      "post": {
+        "operationId": "v1SpectroClustersCloudStackValidate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroCloudStackClusterEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CloudStack Cluster validation response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Validates CloudStack cluster create operation",
         "tags": [
           "spectroclusters"
         ]
@@ -73007,189 +73802,6 @@
         ]
       }
     },
-    "/v1/spectroclusters/cloudstack": {
-      "post": {
-        "operationId": "v1SpectroClustersCloudStackCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCloudStackClusterEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a CloudStack cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/cloudstack/import": {
-      "post": {
-        "operationId": "v1SpectroClustersCloudStackImport",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCloudStackClusterImportEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Imports a CloudStack cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/cloudstack/rate": {
-      "post": {
-        "operationId": "v1SpectroClustersCloudStackRate",
-        "parameters": [
-          {
-            "default": "hourly",
-            "enum": [
-              "hourly",
-              "monthly",
-              "yearly"
-            ],
-            "in": "query",
-            "name": "periodType",
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCloudStackClusterRateEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "CloudStack Cluster estimated rate response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterRate"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get CloudStack cluster estimated rate information",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/cloudstack/validate": {
-      "post": {
-        "operationId": "v1SpectroClustersCloudStackValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCloudStackClusterEntity"
-            }
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "CloudStack Cluster validation response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Validates CloudStack cluster create operation",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
     "/v1/spectroclusters/clusterTemplates/{uid}/clusters/upgrade": {
       "parameters": [
         {
@@ -73233,9 +73845,6 @@
         "summary": "Upgrades clusters launched from the specified cluster template",
         "tags": [
           "spectroclusters"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       }
     },
@@ -73275,9 +73884,6 @@
         "summary": "Returns the associated profiles for all the cluster of launched from the specified cluster template",
         "tags": [
           "spectroclusters"
-        ],
-        "x-Features": [
-          "ClusterTemplate"
         ]
       },
       "parameters": [
@@ -76151,6 +76757,52 @@
           }
         ],
         "summary": "Updates the specified cluster OS patch configuration",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/{uid}/clusterConfig/timezone": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "v1SpectroClustersUidTimezoneUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TimezoneUpdateEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the specified cluster's timezone configuration",
         "tags": [
           "spectroclusters"
         ]
