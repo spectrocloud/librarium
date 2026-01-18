@@ -59,7 +59,7 @@ distribution OVA.
 
 </TabItem>
 
-<TabItem label="Management Appliance" value="Management Appliance">
+<TabItem label="VerteX Management Appliance" value="VerteX Management Appliance">
 
 | **Palette Version** | **Kubernetes Version** |
 | ------------------- | ---------------------- |
