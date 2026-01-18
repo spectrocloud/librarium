@@ -3,16 +3,8 @@ partial_category: cluster-templates
 partial_name: profile-vs-template
 ---
 
-import AdmonitionTypeTechPreview from '@theme/Admonition/Type/TechPreview';
-
 Choose between deploying your cluster using individual <VersionedLink text="cluster profiles" url="/profiles/cluster-profiles/" />
-or a single <VersionedLink text="cluster template" url="/cluster-templates" />. 
-
-:::info
-
-<VersionedLink text="Cluster templates" url="/cluster-templates" /> are a Tech Preview feature and can be used only if the **ClusterTemplates** <VersionedLink text="feature flag" url="/enterprise-version/system-management/feature-flags/" /> is enabled.
-
-:::
+or a single <VersionedLink text="cluster template" url="/cluster-templates" />.
 
 <Tabs>
 
@@ -26,17 +18,16 @@ or a single <VersionedLink text="cluster template" url="/cluster-templates" />.
     3. Review the layers of your cluster profile. Use the drop-down menus to select the appropriate cluster profile version, add necessary 
     <VersionedLink text="add-on profiles" url="/profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/" />, and make changes to YAML configuration files as needed. {props.additional_info} When finished, select **Next**.
 
-        :::tip
+        :::info
    
-        For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend <VersionedLink text="creating a new version of your cluster profile" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile" /> rather than making inline changes.
+        - Cluster profile versions linked to cluster templates cannot be used in the cluster profile workflow.
+        - For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend <VersionedLink text="creating a new version of your cluster profile" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile" /> rather than making inline changes.
 
         :::
 
 </TabItem>
 
 <TabItem value="template" label="Cluster Templates">
-
-    <AdmonitionTypeTechPreview />
 
     1. On the **Cluster setup type** window, choose **Cluster Template > Select Cluster Template**.
 

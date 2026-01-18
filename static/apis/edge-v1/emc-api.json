@@ -2832,6 +2832,35 @@
         }
       }
     },
+    "/v1/edge-mgmt/network/config-options": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "description": "Get valid configuration options for network components",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get network config options",
+        "operationId": "V1NetworkConfigOptions",
+        "responses": {
+          "200": {
+            "description": "Network configuration options",
+            "schema": {
+              "$ref": "#/definitions/v1NetworkConfigOptions"
+            }
+          },
+          "500": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/network/interfaces": {
       "get": {
         "security": [
@@ -3434,11 +3463,6 @@
     },
     "/v1/users/default/token/renewal": {
       "post": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
         "tags": [
           "users"
         ],
@@ -3451,6 +3475,20 @@
             "description": "Flag which if set to true will extend token timeout for the user to 24hrs and if not set will default to 2hrs",
             "name": "extendedSession",
             "in": "query"
+          },
+          {
+            "description": "Refresh token in request body (optional - can also be sent via RefreshToken cookie)",
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "refreshToken": {
+                  "description": "Refresh token for renewal (optional if sent via RefreshToken cookie)",
+                  "type": "string"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -3654,6 +3692,10 @@
       "description": "Bond interface configuration",
       "type": "object",
       "properties": {
+        "bridgeName": {
+          "description": "Name of the bridge this bond is a member of, empty if not part of any bridge",
+          "type": "string"
+        },
         "configStatus": {
           "description": "Detailed configuration status from networkctl",
           "type": "string"
@@ -3711,6 +3753,53 @@
         },
         "vlanID": {
           "type": "string"
+        }
+      }
+    },
+    "v1BondConfigOptions": {
+      "description": "Valid configuration options for bond interfaces",
+      "type": "object",
+      "properties": {
+        "lacpTransmitRate": {
+          "description": "Valid LACP transmit rates for 802.3ad mode",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "slow",
+            "fast"
+          ]
+        },
+        "mode": {
+          "description": "Valid bond modes",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "balance-rr",
+            "active-backup",
+            "balance-xor",
+            "broadcast",
+            "802.3ad",
+            "balance-tlb",
+            "balance-alb"
+          ]
+        },
+        "transmitHashPolicy": {
+          "description": "Valid transmit hash policies for bond modes that support it",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "layer2",
+            "layer3+4",
+            "layer2+3",
+            "encap2+3",
+            "encap3+4"
+          ]
         }
       }
     },
@@ -3789,10 +3878,6 @@
       "description": "Bridge interface configuration",
       "type": "object",
       "properties": {
-        "bond": {
-          "description": "Name of the bond interface attached to this bridge",
-          "type": "string"
-        },
         "configStatus": {
           "description": "Detailed configuration status from networkctl",
           "type": "string"
@@ -3804,6 +3889,13 @@
         "ip": {
           "description": "IP address (for static type)",
           "type": "string"
+        },
+        "members": {
+          "description": "Member interfaces attached to this bridge (NICs, Bonds, or VLANs e.g., eth0, bond0, eth0.100)",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "mtu": {
           "description": "MTU for the bridge interface",
@@ -3858,10 +3950,6 @@
         "name"
       ],
       "properties": {
-        "bond": {
-          "description": "Name of the bond interface to attach to this bridge",
-          "type": "string"
-        },
         "gateway": {
           "description": "Gateway IP address",
           "type": "string"
@@ -3869,6 +3957,13 @@
         "ip": {
           "description": "IP address (required for static type)",
           "type": "string"
+        },
+        "members": {
+          "description": "Member interfaces to attach to this bridge (NICs, Bonds, or VLANs e.g., eth0, bond0, eth0.100)",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "mtu": {
           "description": "MTU for the bridge interface",
@@ -5701,6 +5796,15 @@
         }
       }
     },
+    "v1NetworkConfigOptions": {
+      "description": "Valid configuration options for network components",
+      "type": "object",
+      "properties": {
+        "bond": {
+          "$ref": "#/definitions/v1BondConfigOptions"
+        }
+      }
+    },
     "v1NetworkInterface": {
       "type": "object",
       "required": [
@@ -5803,6 +5907,14 @@
     "v1NicSummary": {
       "type": "object",
       "properties": {
+        "bondName": {
+          "description": "Name of the bond this NIC is a member of, empty if not part of any bond",
+          "type": "string"
+        },
+        "bridgeName": {
+          "description": "Name of the bridge this NIC is a member of, empty if not part of any bridge",
+          "type": "string"
+        },
         "configStatus": {
           "type": "string"
         },
@@ -6425,6 +6537,10 @@
         "Authorization": {
           "description": "The token granting the authorization access to the user",
           "type": "string"
+        },
+        "RefreshToken": {
+          "description": "Refresh token for renewing the access token (optional - also available via RefreshToken cookie)",
+          "type": "string"
         }
       }
     },
@@ -6432,6 +6548,10 @@
       "description": "VLAN interface configuration",
       "type": "object",
       "properties": {
+        "bridgeName": {
+          "description": "Name of the bridge this VLAN is a member of, empty if not part of any bridge",
+          "type": "string"
+        },
         "configStatus": {
           "description": "Detailed configuration status from networkctl",
           "type": "string"
