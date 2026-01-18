@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 17, 2025 - Release 4.8.19 {#release-notes-4.8.a}
+## January 17, 2025 - Release 4.8.21 {#release-notes-4.8.a}
 
 ### Security Notices
 
@@ -94,24 +94,28 @@ tags: ["release-notes"]
 
 #### Improvements
 
-<!-- https://spectrocloud.atlassian.net//browse/PEM-6649 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-6649 -->
 
 - You can now add OCI Helm registries that do not require authentication to Palette. This allows you to leverage
   publicly available OCI Helm Charts in your cluster profiles. Refer to the
   [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide to learn more.
 
-<!-- https://spectrocloud.atlassian.net//browse/PCP-5558 -->
-<!-- https://spectrocloud.atlassian.net//browse/PCP-5283 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5284 -->
 
 - [CloudStack Clusters](../clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md) now support the
-  following configurations:
-  - [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for the control and
-    worker plane, allowing system administrators to provide node-level customization.
-  - [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) setting overrides for specific operational or
-    environmental requirements.
-  - Template names for machine image configuration, allowing users to customize machine images for individual node
-    pools, similar to how Amazon EKS clusters handle AMI selections.
+  template names for machine image configuration, allowing users to customize machine images for individual node pools,
+  similar to how Amazon EKS clusters handle AMI selections.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5558 -->
+
+- All infrastructure providers now support adding
+  [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to either control plane
+  or worker nodes (infrastructure dependent), allowing system administrators to provide node-level customization.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5283 -->
+
+- All infrastructure providers now support [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
+  overrides for worker node pools, allowing workloads to meet specific operational or environmental requirements.
 
 <!-- https://spectrocloud.atlassian.net//browse/PCP-5415 -->
 
@@ -168,6 +172,15 @@ tags: ["release-notes"]
 
 - Fixed an issue that prevented Palette from masking API responses containing cloud account fields.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9490 -->
+
+- Fixed an issue that prevented AKS clusters with static placement from deploying with custom VNets.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9359  -->
+
+- Fixed an issue where cluster profile changes were intermittently not propagated to workload clusters due to a race
+  condition in the image resolution process.
+
 <!-- https://spectrocloud.atlassian.net/browse/OPS-8332 -->
 
 - The image `imageswap-init:v1.5.3-spectro-4.7.a` was recreated due to a missing dependency.
@@ -176,7 +189,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.a Palette release is 4.8.8.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.21 Palette release is 4.8.8.
 
 :::
 
@@ -349,7 +362,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2101 -->
 
-- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.a now includes the `--acknowledge-banner` flag on
+- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.5 now includes the `--acknowledge-banner` flag on
   the [login](../automation/palette-cli/commands/login.md) command, allowing CI/CD environments to skip manual banner
   acceptance.
 
