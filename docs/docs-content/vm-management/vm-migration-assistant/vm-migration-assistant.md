@@ -38,13 +38,17 @@ add-on pack that can be added to your cluster profile and works alongside the
 The following table lists `virt-v2v` migration combinations verified by Spectro Cloud. Other combinations may be valid
 but have not been verified.
 
-| Operating System             | Cold Migration | Warm Migration |
-| ---------------------------- | :------------: | :------------: |
-| Fedora                       |       ✅       |       ❌       |
-| Red Hat Enterprise Linux 9   |       ✅       |       ❌       |
-| Red Hat Enterprise Linux 9.4 |       ✅       |       ❌       |
-| Ubuntu                       |       ✅       |       ❌       |
-| Windows Server 2019          |       ✅       |       ✅       |
+| Operating System                         | Cold Migration | Warm Migration |
+| ---------------------------------------- | :------------: | :------------: |
+| Fedora 40                                |       ✅       |       ❌       |
+| Red Hat Enterprise Linux 9               |       ✅       |       ❌       |
+| Red Hat Enterprise Linux 9.4             |       ✅       |       ❌       |
+| Ubuntu 22                                |       ✅       |       ✅       |
+| Ubuntu 22 (XFS filesystem)               |       ✅       |       ❌       |
+| Ubuntu 24 (Btrfs filesystem)             |       ✅       |       ❌       |
+| Ubuntu 24 (ext4 filesystem)              |       ✅       |       ❌       |
+| Windows Server 2019                      |       ✅       |       ✅       |
+| Windows Server 2025 (Desktop Experience) |       ✅       |       ✅       |
 
 :::info
 
