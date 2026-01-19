@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## January 19, 2026 - Release 4.8.22
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5856 -->
+
+- Fixed an issue that caused Palette deployments and cluster updates to become stuck due to incorrectly configured
+  default resource limits.
+
 ## January 18, 2026 - Release 4.8.21 {#release-notes-4.8.a}
 
 ### Security Notices
