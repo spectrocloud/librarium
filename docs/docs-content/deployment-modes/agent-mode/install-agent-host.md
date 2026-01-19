@@ -13,7 +13,7 @@ Palette and to operate as nodes in your Kubernetes clusters. For example, you ca
 [AWS EC2 instance](https://aws.amazon.com/ec2/), a
 [Raspberry Pi](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.raspberrypi.com/&ved=2ahUKEwi-38Gt__SIAxU2CnkGHeU6Ha8QFnoECAkQAQ&usg=AOvVaw12ldjgQls5EV3KbUmJD0nz),
 a
-[VMware vSphere virtual machine](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html),
+[VMware vSphere virtual machine](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration.html),
 and more, as long as they meet the minimum hardware requirements.
 
 This page guides you through the process of installing the Palette agent on your host. You will learn how to create the
