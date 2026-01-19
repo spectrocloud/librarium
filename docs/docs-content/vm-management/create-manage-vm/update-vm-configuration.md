@@ -40,7 +40,32 @@ disks.
    | `sata`         | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                             |
    | `scsi`         | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the `virtio-block` device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
 
-5. Next, specify the access mode for your disk.
+5. Expand the **Advanced settings** menu to display two more configuration settings.
+
+   - **Share this disk between multiple VirtualMachines** allows multiple VMs to use this disk.
+   - If you enable disk sharing, the **Set SCSI reservation for disk** option enables virtual disk locks at the SCSI
+     level, so that only one VM can write to it at a time.
+
+   :::warning
+
+   When enabling **Share this disk between multiple VirtualMachines**, you must set the `cache: none` configuration on
+   your shareable disk to ensure that KubeVirt provides safe access across multiple VMs. VMs will fail to boot if this
+   configuration is not set.
+
+   ```yaml
+   template:
+     spec:
+       domain:
+         devices:
+           disks:
+             - name: shareable-disk
+               shareable: true
+               cache: none
+   ```
+
+   :::
+
+6. Next, specify the access mode for your disk.
 
    | Access mode           | Description                                                                  |
    | --------------------- | ---------------------------------------------------------------------------- |
@@ -48,17 +73,17 @@ disks.
    | Read-Write-Many (RWX) | Allows multiple clients to read from and write to the volume simultaneously. |
    | Read-Only-Many (ROX)  | Permits multiple clients to read data only.                                  |
 
-6. Specify the volume mode for your disk.
+7. Specify the volume mode for your disk.
 
    | Volume mode | Description                                                                                                                          |
    | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
    | Filesystem  | The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders. |
    | Block       | The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure.       |
 
-7. If you'd like to allocate storage to the VM right away, check **Enable preallocation**. Otherwise, the storage is
+8. If you'd like to allocate storage to the VM right away, check **Enable preallocation**. Otherwise, the storage is
    allocated to your VM as data is written to the storage.
 
-8. Click **Add** when you are done.
+9. Click **Add** when you are done.
 
 ### Validate
 
