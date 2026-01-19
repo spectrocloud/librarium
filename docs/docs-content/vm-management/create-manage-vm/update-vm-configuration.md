@@ -52,7 +52,7 @@ disks.
    your shareable disk to ensure that KubeVirt provides safe access across multiple VMs. VMs will fail to boot if this
    configuration is not set.
 
-   ```yaml
+   ```yaml {8}
    template:
      spec:
        domain:
