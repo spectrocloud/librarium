@@ -88,6 +88,10 @@ cd librarium
 make init
 ```
 
+The `make init` command will install all the required dependencies and create your `.env` file. It will also add the
+`ignore-scripts=true` setting to your local npm configuration. This setting is required to prevent post-install scripts
+from running during the installation of dependencies.
+
 Next, add your Palette API key to the `.env` file. Replace `<your-palette-api-key>` with your Palette API key.
 
 ```shell
@@ -511,6 +515,16 @@ Result
 
 ### Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance
 
+For guidance on using admonitions in our docs, refer to
+[Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
+
+To learn more about admonitions in Docusaurus, refer to the
+[Admonitions](https://docusaurus.io/docs/markdown-features/admonitions) guide.
+
+The content must have a new line at the beginning and at the end of the tag.
+
+#### Warning
+
 ```mdx
 :::warning
 
@@ -518,6 +532,8 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
+
+#### Info
 
 ```mdx
 :::info
@@ -527,6 +543,8 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
+#### Tip
+
 ```mdx
 :::tip
 
@@ -534,6 +552,8 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
+
+#### Danger
 
 ```mdx
 :::danger
@@ -543,6 +563,15 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
+#### Tech Preview
+
+The `:::preview` admonition is a custom admonition configured in `docusaurus.config.js` under `admonitions.keywords`.
+
+Unlike other admonition types, you do not need to enter content in the admonition block. By default, the Tech Preview
+admonition generates the message, "This is a Tech Preview feature and is subject to change. Do not use this feature in
+production workloads." This message is hardcoded using `src/theme/Admonition/Type/TechPreview.js`. However, if you need
+to deviate from the template text, you can provide a custom message.
+
 ```mdx
 :::preview
 
@@ -550,6 +579,22 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
+
+Files in `docs/docs-content` and `docs/api-content` are processed during the build phase. However, partials in the
+`_partials` directory are dynamically imported at runtime. Because of this, custom admonitions defined in
+`docusaurus.config.js` that are used in partials are not rendered, and the custom admonition is ignored.
+
+As a workaround, when using custom admonitions in partials, import and reference the admonition with JSX syntax.
+
+```mdx
+import AdmonitionTypeTechPreview from '@theme/Admonition/Type/TechPreview'; # Import below front matter
+
+<AdmonitionTypeTechPreview /> # Use instead of :::
+```
+
+Note that when used in partials, the default message cannot be overridden.
+
+#### Further Guidance
 
 ```mdx
 :::further
@@ -559,12 +604,14 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
-https://docusaurus.io/docs/markdown-features/admonitions
+Like Tech Preview, the Further Guidance admonition is a custom admonition. To use this admonition in partials, you must
+import and reference it with JSX syntax.
 
-The content must have a new line at the beginning and at the end of the tag.
+```mdx
+import AdmonitionTypeFurtherGuidance from '@theme/Admonition/Type/FurtherGuidance'; # Import below front matter
 
-For guidance on using admonitions, refer to
-[Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
+<AdmonitionTypeFurtherGuidance /> # Use instead of :::
+```
 
 ### Video
 
@@ -753,6 +800,92 @@ The snippet above will work with the example partial we have in our repository, 
 Note that the `message` field corresponds to the `{props.message}` reference in the `_partials/_partial_example.mdx`
 file.
 
+### Numbered Lists
+
+Multi-step partials that do not begin a new procedure (start with 1) cannot be reused if the partial is written in
+typical MDX syntax. The example below shows a small snippet of a procedure.
+
+```mdx
+---
+partial_category: clusters-aws-account-setup
+partial_name: example
+---
+
+1. **Validate** your AWS credentials. A green check mark indicates valid credentials.
+
+2. Toggle **Add IAM Policies** on and use the **Policies** drop-down menu to select any desired IAM policies.
+
+3. Select **Confirm** to add your AWS account to Palette.
+```
+
+This partial could be reused in several places, as there are several types of AWS accounts and authentication methods.
+However, the steps prior to this partial vary based on the procedure. For example, the partial may need to start at step
+6 for AWS Commercial cloud but step 10 for AWS Secret cloud, which makes reuse tricky. Since MDX files are generated at
+runtime instead of buildtime, implementing it in either of the following ways will _not_ work.
+
+<!-- prettier-ignore-start -->
+
+```md
+6. In Palette, paste the role ARN into the **ARN** field.
+
+7. <PartialComponent category="clusters-aws-account-setup" name="example" />
+   <!-- creates a nested list on step 7 that begins with step 1 -->
+
+<PartialComponent category="clusters-aws-account-setup" name="example" /> <!-- creates a new list starting at 1 -->
+```
+
+<!-- prettier-ignore-end -->
+
+There are several other ways you can manipulate the partial in an attempt to fix this issue, but only _one_ works. To
+reuse a mid-procedure partial that contains a numbered list, create each step item _except the first step_ as an HTML
+list item (`<li>`).
+
+```mdx
+---
+partial_category: clusters-aws-account-setup
+partial_name: example
+---
+
+**Validate** your AWS credentials. A green check mark indicates valid credentials.
+
+<li> Toggle **Add IAM Policies** on and use the **Policies** drop-down menu to select any desired IAM policies.</li>
+
+<li>Select **Confirm** to add your AWS account to Palette.</li>
+```
+
+When you reference the partial in a markdown file, put the partial _after_ the numbered step. Doing so establishes the
+step number for the first item, and the steps indicated with `<li>` are rendered with the correct subsequent numbers.
+
+<!-- prettier-ignore-start -->
+
+```md
+6. In Palette, paste the role ARN into the **ARN** field.
+
+7. <PartialComponent category="clusters-aws-account-setup" name="example" />
+
+8. Additional step.
+```
+
+<!-- prettier-ignore-end -->
+
+Any steps that come _after_ partial are updated with the correct values during runtime. For example, the above partial
+would be rended as follows.
+
+<!-- prettier-ignore-start -->
+
+```md
+6. In Palette, paste the role ARN into the **ARN** field.
+
+7. **Validate** your AWS credentials. A green check mark indicates valid credentials.
+
+8. Toggle **Add IAM Policies** on and use the **Policies** drop-down menu to select any desired IAM policies.
+
+9. Select **Confirm** to add your AWS account to Palette.
+
+10.  Additional step.
+```
+<!-- prettier-ignore-end -->
+
 ## Palette/VerteX URLs
 
 A special component has been created to handle the generation of URLs for Palette and VerteX. The component is called
@@ -876,7 +1009,7 @@ stop and restart the local development server to observe the changes. The same a
 thing to remember is to reference a pack by the name used in the Palette API, not the display name. You can find the
 pack's name in the description component or by looking at the URL of the pack's page.
 
-#### Exluding Packs
+#### Excluding Packs
 
 You can specify a list of packs to exclude from the packs component. To exclude a pack, add the pack name to the
 [exclude_packs.json](./static/packs-data/exclude_packs.json) file.
@@ -886,7 +1019,7 @@ You can specify a list of packs to exclude from the packs component. To exclude 
 [
   "palette-upgrader", 
   "csi-aws-new", 
-  "inser-pack-name-here"
+  "insert-pack-name-here"
 ]
 ```
 
@@ -1319,3 +1452,6 @@ recognition, all environment variables used by these scripts are named using the
 - `make generate-component-updates` creates only the component updates skeleton in the Palette release notes.
 - `make generate-release-notes` creates only the release notes changes for the Palette release.
 - `make generate-release` creates all Palette release related updates, excluding release notes.
+- `make ci-local` installs or updates all node dependencies required to start and build the site locally. This command
+  is preferred over `npm ci` as it prevents scripts from running during the installation process except for the Sharp
+  module dependency.
