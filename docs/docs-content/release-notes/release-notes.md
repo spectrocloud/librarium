@@ -18,7 +18,7 @@ tags: ["release-notes"]
 - The number of IP addresses allocated for autoscaling
   [VMware vSphere clusters](../clusters/data-center/vmware/vmware.md) is now based on the **Maximum size** of the worker
   pool instead of the number of worker nodes currently deployed. This ensures enough IP addresses are reserved upfront
-  for the maximum possible scale of the cluster.
+  for the maximum possible scale of the cluster. As a result, updates to existing VMware vSphere clusters may fail if the IP pool cannot accommodate the **Maximum size**, and enabling autoscaling on new clusters may fail if the IP capacity is insufficient.
 
 ### Improvements
 
