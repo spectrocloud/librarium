@@ -38,7 +38,7 @@ There are four main artifact areas:
 ## Access Artifact Studio
 
 Access to Artifact Studio is available to all Spectro Cloud customers. To gain access, contact your Spectro Cloud
-representative or [open a support ticket](https://support.spectrocloud.com/).
+representative or [open a support ticket](https://support.spectrocloud.io/).
 
 ## Download Palette Enterprise
 
@@ -47,7 +47,7 @@ representative or [open a support ticket](https://support.spectrocloud.com/).
    :::tip
 
    If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
-   [open a support ticket](https://support.spectrocloud.com/).
+   [open a support ticket](https://support.spectrocloud.io/).
 
    :::
 
@@ -74,7 +74,7 @@ for more information on deploying Palette locally.
    :::tip
 
    If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
-   [open a support ticket](https://support.spectrocloud.com/).
+   [open a support ticket](https://support.spectrocloud.io/).
 
    :::
 
