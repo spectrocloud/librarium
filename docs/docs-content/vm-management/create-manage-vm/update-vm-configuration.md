@@ -51,10 +51,10 @@ disks.
 
 6. Specify the volume mode for your disk.
 
-   | Volume mode | Description                                                                                                                          |
-   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-   | Filesystem  | The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders. |
-   | Block       | The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure.       |
+   | Volume mode    | Description                                                                                                                          |
+   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Filesystem** | The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders. |
+   | **Block**      | The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure.       |
 
 7. If you'd like to allocate storage to the VM right away, check **Enable preallocation**. Otherwise, the storage is
    allocated to your VM as data is written to the storage.
