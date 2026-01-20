@@ -26,39 +26,68 @@ disks.
 
 2. From the left **Main Menu**, click **Clusters** and click on your cluster.
 
-3. Navigate to **Virtual Machines** > **Disks** tabs and click the **Add disk** button.
+3. Navigate to **Virtual Machines** and select the VM you want to configure. Select **Configuration** > **Storage** tabs
+   and click the **Add disk** button. Select the **Empty disk (blank)** option.
 
-4. Review the parameters and update as needed. You can specify the disk size, disk type (Disk, CD-ROM, or LUN), and
-   network interface.
+4. Review the parameters and update as needed. You can specify the disk size, disk type (**Disk**, **CD-ROM**, or
+   **LUN**), and network interface.
 
    The interface type determines out-of-the-box operating system (OS) support and disk performance. Choose from the
    following.
 
-   | Interface type | Description                                                                                                                                                                                                                                                                                                        |
-   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | `virtio`       | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                    |
-   | `sata`         | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                             |
-   | `scsi`         | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the `virtio-block` device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
+   | Interface type | Description                                                                                                                                                                                                                                                                                                                                        |
+   | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **VirtIO**     | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                                                    |
+   | **SATA**       | Most operating systems support Serial Advanced Technology Attachment (SATA). However, it offers lower performance.                                                                                                                                                                                                                                 |
+   | **SCSI**       | A paravirtualized Internet Small Computer System Interface (iSCSI) hard disk drive (HDD) driver that offers similar functionality to the `virtio-block` device but with some additional enhancements. In particular, this driver supports attaching hundreds of devices and uses the standard SCSI device naming scheme for device identification. |
 
 5. Next, specify the access mode for your disk.
 
-   | Access mode           | Description                                                                  |
-   | --------------------- | ---------------------------------------------------------------------------- |
-   | Read-Write-Once (RWO) | Ensures that only one client can write to the volume at any given time.      |
-   | Read-Write-Many (RWX) | Allows multiple clients to read from and write to the volume simultaneously. |
-   | Read-Only-Many (ROX)  | Permits multiple clients to read data only.                                  |
+   | Access mode               | Description                                                                  |
+   | ------------------------- | ---------------------------------------------------------------------------- |
+   | **Read-Write-Once (RWO)** | Ensures that only one client can write to the volume at any given time.      |
+   | **Read-Write-Many (RWX)** | Allows multiple clients to read from and write to the volume simultaneously. |
+   | **Read-Only-Many (ROX)**  | Permits multiple clients to read data only.                                  |
 
 6. Specify the volume mode for your disk.
 
-   | Volume mode | Description                                                                                                                          |
-   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-   | Filesystem  | The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders. |
-   | Block       | The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure.       |
+   | Volume mode    | Description                                                                                                                          |
+   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Filesystem** | The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders. |
+   | **Block**      | The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure.       |
 
 7. If you'd like to allocate storage to the VM right away, check **Enable preallocation**. Otherwise, the storage is
    allocated to your VM as data is written to the storage.
 
-8. Click **Add** when you are done.
+8. Expand the **Advanced settings** menu to display two more configuration settings.
+
+   - **Share this disk between multiple VirtualMachines** allows multiple VMs to use this disk.
+   - If you enable disk sharing, the **Set SCSI reservation for disk** option enforces virtual disk locking at the SCSI
+     level, ensuring that only one VM can write to the disk at a time. This option is only available for disks
+     configured with the LUN type and SCSI interface.
+
+   :::warning
+
+   When enabling **Share this disk between multiple VirtualMachines**, you must set the `cache: none` configuration on
+   your shareable disk to ensure that KubeVirt provides safe access across multiple VMs. VMs will fail to boot if this
+   configuration is not set.
+
+   Select the **YAML** tab and provide the following configuration for your VM.
+
+   ```yaml {8}
+   template:
+     spec:
+       domain:
+         devices:
+           disks:
+             - name: shareable-disk
+               shareable: true
+               cache: none
+   ```
+
+   :::
+
+9. After completing the configuration, click **Add**.
 
 ### Validate
 
