@@ -41,9 +41,9 @@ on **Add Cluster Profile**.
 
 Follow the wizard to create a new profile.
 
-In the **Basic Information** section, assign the name **aws-profile**, a brief profile description, select the type as
-**Full**, and assign the tag **env:aws**. You can leave the version empty if you want to. Just be aware that the version
-defaults to **1.0.0**. Click on **Next**.
+In the **Basic Information** section, enter **aws-profile** in the **Name** field. You may leave the **Version** field
+empty if desired since it will default to **1.0.0**. Leave the **Description** field empty. Select **Full** as the
+**Type**. Add the tag **env:aws**. Click **Next** to continue.
 
 **Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select
 **AWS IaaS** and click on **Next**.
