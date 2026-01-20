@@ -43,11 +43,11 @@ disks.
 
 5. Next, specify the access mode for your disk.
 
-   | Access mode           | Description                                                                  |
-   | --------------------- | ---------------------------------------------------------------------------- |
-   | Read-Write-Once (RWO) | Ensures that only one client can write to the volume at any given time.      |
-   | Read-Write-Many (RWX) | Allows multiple clients to read from and write to the volume simultaneously. |
-   | Read-Only-Many (ROX)  | Permits multiple clients to read data only.                                  |
+   | Access mode               | Description                                                                  |
+   | ------------------------- | ---------------------------------------------------------------------------- |
+   | **Read-Write-Once (RWO)** | Ensures that only one client can write to the volume at any given time.      |
+   | **Read-Write-Many (RWX)** | Allows multiple clients to read from and write to the volume simultaneously. |
+   | **Read-Only-Many (ROX)**  | Permits multiple clients to read data only.                                  |
 
 6. Specify the volume mode for your disk.
 
