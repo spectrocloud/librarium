@@ -15,9 +15,10 @@ tags: ["release-notes"]
 
 ### Breaking Changes {#breaking-changes-4.8.x}
 
-- The number of IP addresses allocated for autoscaling VMware vSphere clusters is now based on the **Maximum size** of
-  the worker pool instead of the number of worker nodes currently deployed. This ensures enough IP addresses are
-  reserved upfront for the maximum possible scale of the cluster.
+- The number of IP addresses allocated for autoscaling
+  [VMware vSphere clusters](../clusters/data-center/vmware/vmware.md) is now based on the **Maximum size** of the worker
+  pool instead of the number of worker nodes currently deployed. This ensures enough IP addresses are reserved upfront
+  for the maximum possible scale of the cluster.
 
 ### Improvements
 

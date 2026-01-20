@@ -28,15 +28,6 @@ additional IPAM node pools when deploying a VMware vSphere or a MAAS LXD cluster
 provides instructions on how to create an IPAM node pool for a PCG deployed in a VMware vSphere environment or for a
 MAAS LXD deployment.
 
-## Limitations
-
-- If autoscaling is enabled when deploying
-  [VMware vSphere clusters](../../data-center/vmware/create-manage-vmware-clusters.md) using an IPAM node pool with
-  [static placement configured](../deploy-pcg/vmware.md#static-placement-configuration), the **Maximum size** determines
-  the number of IP addresses automatically reserved for worker nodes. During day-2 operations, even if autoscaler is
-  disabled or the **Maximum size** of the worker pool is reduced, the original number of IP addresses remains allocated.
-  To release the IP addresses, you must delete the node pool.
-
 ## Prerequisites
 
 - A PCG is installed, active, and in a healthy state. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) for
@@ -73,14 +64,22 @@ MAAS LXD deployment.
 
    :::info
 
-   The number of IP addresses assigned to each node pool must be at least three more than the total number of control
-   plane and worker nodes that will be assigned to the node pool. At the start of cluster deployment, three IPs are
-   immediately reserved: one for the Cluster API (CAPI) bootstrap VM, one for the Kubernetes API load balancer, and one
-   for pool-level repaves.
+   - The number of IP addresses assigned to each node pool must be at least three more than the total number of control
+     plane and worker nodes that will be assigned to the node pool. At the start of cluster deployment, three IPs are
+     immediately reserved: one for the Cluster API (CAPI) bootstrap VM, one for the Kubernetes API load balancer, and
+     one for pool-level repaves.
 
-   If you do not have a sufficient number of IP addresses available, the cluster cannot be deployed. As an example, if
-   you plan to use the node pool for a cluster with one control plane and three worker nodes, you must have at least
-   seven IP addresses available.
+     If you do not have a sufficient number of IP addresses available, the cluster cannot be deployed. As an example, if
+     you plan to use the node pool for a cluster with one control plane and three worker nodes, you must have at least
+     seven IP addresses available.
+
+   - If autoscaling is enabled when deploying
+     [VMware vSphere clusters](../../data-center/vmware/create-manage-vmware-clusters.md) using an IPAM node pool with
+     [static placement configured](../deploy-pcg/vmware.md#static-placement-configuration), the **Maximum size**
+     determines the number of IP addresses automatically reserved for worker nodes. During day-2 operations, even if
+     autoscaler is disabled or the **Maximum size** of the worker pool is reduced, the original number of IP addresses
+     remains allocated. To release the IP addresses, you must
+     [delete the worker node pool](../../cluster-management/node-pool.md#delete-a-node-pool).
 
    :::
 
