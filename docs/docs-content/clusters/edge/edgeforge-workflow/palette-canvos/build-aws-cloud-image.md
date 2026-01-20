@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Build EdgeForge AWS Cloud Images"
-title: "Build EdgeForge AWS Cloud Images"
+sidebar_label: "Build AWS Cloud Images"
+title: "Build AWS Cloud Images"
 description: "Learn how to build EdgeForge images for AWS Cloud."
 icon: ""
 hide_table_of_contents: false
@@ -57,7 +57,7 @@ automates the workflow from raw image creation through AMI registration in AWS.
         - `ec2:DescribeImages`
         - `ec2:CreateTags`
 
-## Build Provider Images
+## Build AWS Cloud Images
 
 1.  Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 

@@ -223,8 +223,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - The EdgeForge workflow now supports the creation of images that support Edge cluster deployment on
   [Amazon EC2](https://aws.amazon.com/ec2/). The `aws-cloud-image` target takes a CanvOS raw disk image and imports it
   into AWS, creating and registering an Amazon Machine Image (AMI) that can be used to launch EC2 instances. Refer to
-  the [Build EdgeForge AWS Cloud Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image.md)
-  guide for further information.
+  the [Build AWS Cloud Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image.md) guide for
+  further information.
 
 #### Improvements
 
