@@ -38,8 +38,8 @@ disks.
    | Interface type | Description                                                                                                                                                                                                                                                                                                        |
    | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
    | **VirtIO**     | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                    |
-   | **SATA**       | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                             |
-   | **SCSI**       | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the `virtio-block` device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
+   | **SATA**       | Most operating systems support Serial Advanced Technology Attachment (SATA). However, it offers lower performance.                                                                                                                                                                                                                             |
+   | **SCSI**       | A paravirtualized Internet Small Computer System Interface (iSCSI) hard disk drive (HDD) driver that offers similar functionality to the `virtio-block` device but with some additional enhancements. In particular, this driver supports attaching hundreds of devices and uses the standard SCSI device naming scheme for device identification.|
 
 5. Next, specify the access mode for your disk.
 
@@ -62,8 +62,7 @@ disks.
 8. Expand the **Advanced settings** menu to display two more configuration settings.
 
    - **Share this disk between multiple VirtualMachines** allows multiple VMs to use this disk.
-   - If you enable disk sharing, the **Set SCSI reservation for disk** option enables virtual disk locks at the SCSI
-     level, so that only one VM can write to it at a time. This option is only available for disks configured with the
+   - If you enable disk sharing, the **Set SCSI reservation for disk** option enforces virtual disk locking at the SCSI level, ensuring that only one VM can write to the disk at a time. This option is only available for disks configured with the
      LUN type and SCSI interface.
 
    :::warning
@@ -87,7 +86,7 @@ disks.
 
    :::
 
-9. Click **Add** when you are done.
+9. After completing the configuration, click **Add**.
 
 ### Validate
 
