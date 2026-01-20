@@ -30,13 +30,12 @@ MAAS LXD deployment.
 
 ## Limitations
 
-- Autoscaling is not supported for [VMware vSphere clusters](../../data-center/vmware/create-manage-vmware-clusters.md)
-  deployed using an IPAM node pool with
-  [static placement configured](../deploy-pcg/vmware.md#static-placement-configuration). To scale your cluster, use
-  either use dynamic IP allocation or disable autoscaler and manually adjust your node pool size using your cluster's
-  **Nodes** tab. For more information on scaling clusters, refer to our
-  [Scale, Upgrade, and Secure Clusters](../../../tutorials/getting-started/palette/vmware/scale-secure-cluster.md#scale-a-cluster)
-  tutorial.
+- If autoscaling is enabled when deploying
+  [VMware vSphere clusters](../../data-center/vmware/create-manage-vmware-clusters.md) using an IPAM node pool with
+  [static placement configured](../deploy-pcg/vmware.md#static-placement-configuration), the **Maximum size** determines
+  the number of IP addresses automatically reserved for worker nodes. During day-2 operations, even if autoscaler is
+  disabled or the **Maximum size** of the worker pool is reduced, the original number of IP addresses remains allocated.
+  To release the IP addresses, you must delete the node pool.
 
 ## Prerequisites
 

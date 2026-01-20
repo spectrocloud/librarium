@@ -11,6 +11,32 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## January 29, 2026 - Release 4.8.X
+
+### Breaking Changes {#breaking-changes-4.8.x}
+
+- The number of IP addresses allocated for autoscaling VMware vSphere clusters is now based on the **Maximum size** of
+  the worker pool instead of the number of worker nodes currently deployed. This ensures enough IP addresses are
+  reserved upfront for the maximum possible scale of the cluster.
+
+### Improvements
+
+- Autoscaling is now supported for VMware vSphere clusters using an
+  [IP Address Management (IPAM) node pool](../clusters/pcg/manage-pcg/create-manage-node-pool.md) with
+  [static placement configured](../clusters/pcg/deploy-pcg/vmware.md#static-placement-configuration).
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5781 -->
+
+- Fixed an issue where worker nodes in static AKS clusters were assigned IP addresses from the control plane subnet
+instead of worker subnet.
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5517 -->
+- Fixed an issue where node groups in EKS clusters were configured with different Classless Inter-Domain Routing (CIDR)
+values in their launch templates.
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9656 -->
+- Fixed an issue where viewing Edge host events was not permitted in the Tenant admin scope.
+
 ## January 19, 2026 - Release 4.8.22
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5856 -->
