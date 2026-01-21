@@ -11,14 +11,16 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 29, 2026 - Release 4.8.X
+## January 30, 2026 - Release 4.8.X
 
 ### Breaking Changes {#breaking-changes-4.8.x}
 
 - The number of IP addresses allocated for autoscaling
   [VMware vSphere clusters](../clusters/data-center/vmware/vmware.md) is now based on the **Maximum size** of the worker
   pool instead of the number of worker nodes currently deployed. This ensures enough IP addresses are reserved upfront
-  for the maximum possible scale of the cluster. As a result, updates to existing VMware vSphere clusters may fail if the IP pool cannot accommodate the **Maximum size**, and enabling autoscaling on new clusters may fail if the IP capacity is insufficient.
+  for the maximum possible scale of the cluster. As a result, updates to existing VMware vSphere clusters may fail if
+  the IP pool cannot accommodate the **Maximum size**, and enabling autoscaling on new clusters may fail if the IP
+  capacity is insufficient.
 
 ### Improvements
 
@@ -35,8 +37,8 @@ instead of worker subnet.
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5517 -->
 - Fixed an issue where node groups in EKS clusters were configured with different Classless Inter-Domain Routing (CIDR)
 values in their launch templates.
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9656 -->
-- Fixed an issue where viewing Edge host events was not permitted in the Tenant admin scope.
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
+- Fixed an issued that caused slow responses from the `/clusterprofiles` [API](/api/introduction) endpoint.
 
 ## January 19, 2026 - Release 4.8.22
 
