@@ -9,9 +9,10 @@ tags: ["edge"]
 ---
 
 In this guide, you will use the CanvOS utility to build provider images that enable deploying Edge clusters on
-[Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/). The `aws-cloud-image` target takes a CanvOS raw disk image and imports it
-into Amazon Web Services (AWS), creating and registering an Amazon Machine Image (AMI) that you can use to launch EC2 instances. This target
-automates the workflow from raw image creation through AMI registration in AWS.
+[Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/). The `aws-cloud-image` target takes a CanvOS
+raw disk image and imports it into Amazon Web Services (AWS), creating and registering an Amazon Machine Image (AMI)
+that you can use to launch EC2 instances. This target automates the workflow from raw image creation through AMI
+registration in AWS.
 
 ## Prerequisites
 
@@ -114,7 +115,8 @@ automates the workflow from raw image creation through AMI registration in AWS.
     export OS_VERSION=24.04
     ```
 
-9.  Issue the following command to use the Palette eXtended Kubernetes - Edge (PXK-E) Kubernetes distribution and use the 1.33.5 version.
+9.  Issue the following command to use the Palette eXtended Kubernetes - Edge (PXK-E) Kubernetes distribution and use
+    the 1.33.5 version.
 
     ```bash
     export K8S_DISTRIBUTION=kubeadm
