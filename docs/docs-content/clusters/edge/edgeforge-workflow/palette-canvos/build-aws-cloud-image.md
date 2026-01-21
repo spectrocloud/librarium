@@ -9,8 +9,8 @@ tags: ["edge"]
 ---
 
 In this guide, you will use the CanvOS utility to build provider images that enable deploying Edge clusters on
-[Amazon EC2](https://aws.amazon.com/ec2/). The `aws-cloud-image` target takes a CanvOS raw disk image and imports it
-into AWS, creating and registering an Amazon Machine Image (AMI) that can be used to launch EC2 instances. This target
+[Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/). The `aws-cloud-image` target takes a CanvOS raw disk image and imports it
+into Amazon Web Services (AWS), creating and registering an Amazon Machine Image (AMI) that you can use to launch EC2 instances. This target
 automates the workflow from raw image creation through AMI registration in AWS.
 
 ## Prerequisites
@@ -48,7 +48,7 @@ automates the workflow from raw image creation through AMI registration in AWS.
   for further information on S3 usage. Your AWS credentials must have the following permissions:
 
         - `s3:PutObject`
-        -`s3:GetObject`
+        - `s3:GetObject`
         - `s3:ListBucket`
         - `ec2:ImportSnapshot`
         - `ec2:DescribeImportSnapshotTasks`
@@ -89,7 +89,7 @@ automates the workflow from raw image creation through AMI registration in AWS.
 
     - `Earthfile` - Contains a series of commands to create target artifacts.
 
-    - `earthly.sh` - Script to invoke the Earthfile, and generate target artifacts.
+    - `earthly.sh` - Script to invoke the Earthfile and generate target artifacts.
 
 6.  Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
     uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
@@ -101,7 +101,7 @@ automates the workflow from raw image creation through AMI registration in AWS.
 
 7.  Use the command below to save the image registry hostname in the `IMAGE_REGISTRY` argument. Before you execute the
     command, replace `[REGISTRY-HOSTNAME]` in the declaration below with your Docker ID. Your image registry hostname
-    must comply with standard DNS rules and may not contain underscores.
+    must comply with standard Domain Name System (DNS) rules and may not contain underscores.
 
     ```bash
     export IMAGE_REGISTRY=[REGISTRY-HOSTNAME]
@@ -114,7 +114,7 @@ automates the workflow from raw image creation through AMI registration in AWS.
     export OS_VERSION=24.04
     ```
 
-9.  Issue the following command to use the PXK-E Kubernetes distribution and use the 1.33.5 version.
+9.  Issue the following command to use the Palette eXtended Kubernetes - Edge (PXK-E) Kubernetes distribution and use the 1.33.5 version.
 
     ```bash
     export K8S_DISTRIBUTION=kubeadm
@@ -173,7 +173,7 @@ automates the workflow from raw image creation through AMI registration in AWS.
 
 14. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
     `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove the
-    Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
+    Kubernetes versions that you do not need from the JSON object corresponding to your Kubernetes distribution.
 
 15. Issue the command below to create a `.secret` file containing your AWS credentials.
 
@@ -205,4 +205,4 @@ automates the workflow from raw image creation through AMI registration in AWS.
 
 3. Open the bucket you configured in **Step 10**.
 
-4. Verify that the file appears in the object list.
+4. Verify that the provider image file appears in the object list.
