@@ -53,7 +53,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.22.
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Nvidia GPU Operator" url="/integrations/?pack=nvidia-gpu-operator-ai" /> pack version 25.10.0 is now available in [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+- The <VersionedLink text="NVIDIA GPU Operator" url="/integrations/?pack=nvidia-gpu-operator-ai" /> pack version 25.10.0 is now available in [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 <!-- prettier-ignore-end -->
 
