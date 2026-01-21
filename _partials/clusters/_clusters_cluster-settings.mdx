@@ -1,0 +1,15 @@
+---
+partial_category: clusters
+partial_name: cluster-settings
+---
+
+On the **Cluster Settings** page, configure additional
+    options as needed. If you are deploying your cluster using [cluster templates](/cluster-templates), a **Cluster Timezone** is required.
+
+    | **Left Menu Item** | **Additional Information** |
+    | --- | --- |
+    | **Cluster Timezone** | Specify the time zone where your cluster is being deployed. The time zone is used in [maintenance policies](/cluster-templates/create-cluster-template-policies/maintenance-policy) to determine when updates are rolled out to clusters deployed with [cluster templates](/cluster-templates). 
+    | **Manage machines** | Set an [OS patching](/clusters/cluster-management/os-patching) schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots. |
+    | **Schedule scans** | Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to [Compliance Scan](/clusters/cluster-management/compliance-scan/#configuration-security) for details on each scan type. |
+    | **Schedule backups** | Schedule backups for your entire cluster or etcd. Refer to [Backup and Restore](/clusters/cluster-management/backup-restore) for more information. |
+    | **RBAC** | Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: <br />- [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 

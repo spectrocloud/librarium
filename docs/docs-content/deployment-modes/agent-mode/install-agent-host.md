@@ -13,7 +13,7 @@ Palette and to operate as nodes in your Kubernetes clusters. For example, you ca
 [AWS EC2 instance](https://aws.amazon.com/ec2/), a
 [Raspberry Pi](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.raspberrypi.com/&ved=2ahUKEwi-38Gt__SIAxU2CnkGHeU6Ha8QFnoECAkQAQ&usg=AOvVaw12ldjgQls5EV3KbUmJD0nz),
 a
-[VMware vSphere virtual machine](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html),
+[VMware vSphere virtual machine](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration.html),
 and more, as long as they meet the minimum hardware requirements.
 
 This page guides you through the process of installing the Palette agent on your host. You will learn how to create the
@@ -360,9 +360,19 @@ Palette. You will then create a cluster profile and use the registered host to d
      vSphere deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
      [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) to learn
      more about user data configuration.
+
    - The `projectName` parameter is not required if the associated Palette
      [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
      Default Project set.
+
+   - Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
+     vendor-model combinations in [Edge Host Grid View](../../clusters/edge/site-deployment/edge-host-view.md) and on
+     the Edge host **Overview** tab. For other GPU models and vendors, Palette attempts to automatically source GPU
+     information using the vendor-specific driver or command-line interface (CLI) installed on the Edge host. If Palette
+     cannot automatically retrieve the GPU specs, you can provide them manually via the `user-data` file (Appliance and
+     Agent mode) or with a `custom-hardware-specs-lookup.json` file (Appliance mode only). Refer to
+     [Prepare User Data and Argument Files](../../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-gpu-specifications-optional)
+     for additional information.
 
      ```shell
      cat << EOF > user-data

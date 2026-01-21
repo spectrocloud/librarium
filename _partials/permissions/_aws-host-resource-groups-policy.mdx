@@ -1,0 +1,25 @@
+---
+partial_category: permissions
+partial_name: aws-host-resource-groups-policy
+---
+**Last Update**: January 17, 2026
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PaletteHostResourceGroupsPermissions",
+      "Effect": "Allow",
+      "Action": [
+        "resource-groups:ListGroups",
+        "resource-groups:GetGroupConfiguration",
+        "resource-groups:ListGroupResources",
+        "license-manager:GetLicenseConfiguration",
+        "ec2:DescribeHosts"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
