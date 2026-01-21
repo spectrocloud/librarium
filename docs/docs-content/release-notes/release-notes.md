@@ -11,6 +11,34 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## January 19, 2026 - Release 4.8.X
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9664 -->
+
+- Fixed an issue that prevented
+  [cluster role bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) configured with the
+  **Group** subject type from being correctly applied.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9663 -->
+
+- Fixed an issue that prevented the **Virtual Machines** tab on clusters configured with the
+  [Virtual Machine Orchestrator](../vm-management/vm-management.md) from displaying correctly.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9665 -->
+
+- Fixed an issue that prevented
+  [cluster profile versions](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) from being
+  displayed correctly on the **Profile** tab of Palette clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9656 -->
+
+- Fixed an issue that prevented Palette from correctly loading the **Events** tab on
+  [Edge hosts](../clusters/edge/edge.md) when the **Tenant Admin** scope is selected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
+
+- Fixed an issued the caused the `/clusterprofiles` [API](/api/introduction) endpoint to respond slowly.
+
 ## January 19, 2026 - Release 4.8.22
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5856 -->
