@@ -1,0 +1,214 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Downloads" [ref=e44] [cursor=pointer]:
+                  - /url: /downloads/
+                  - img [ref=e46]
+                  - text: Downloads
+              - listitem [ref=e48]:
+                - link "Artifact Studio" [ref=e49] [cursor=pointer]:
+                  - /url: /downloads/artifact-studio/
+                  - img [ref=e51]
+                  - text: Artifact Studio
+              - listitem [ref=e53]:
+                - link "CLI Tools" [ref=e54] [cursor=pointer]:
+                  - /url: /downloads/cli-tools/
+                  - img [ref=e56]
+                  - text: CLI Tools
+              - listitem [ref=e58]:
+                - generic [ref=e59]:
+                  - link "Self-Hosted Palette" [expanded] [ref=e60] [cursor=pointer]:
+                    - /url: /downloads/self-hosted-palette/
+                    - img [ref=e62]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e64] [cursor=pointer]
+                - list [ref=e65]:
+                  - listitem [ref=e66]:
+                    - link "Additional Packs" [ref=e67] [cursor=pointer]:
+                      - /url: /downloads/self-hosted-palette/additional-packs/
+                  - listitem [ref=e68]:
+                    - link "Additional OVAs" [ref=e69] [cursor=pointer]:
+                      - /url: /downloads/self-hosted-palette/additional-ovas/
+                  - listitem [ref=e70]:
+                    - link "Kubernetes Requirements" [ref=e71] [cursor=pointer]:
+                      - /url: /downloads/self-hosted-palette/kubernetes-requirements/
+              - listitem [ref=e72]:
+                - generic [ref=e73]:
+                  - link "Palette VerteX" [ref=e74] [cursor=pointer]:
+                    - /url: /downloads/palette-vertex/
+                    - img [ref=e76]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e78] [cursor=pointer]
+              - listitem [ref=e79]:
+                - link "Agent Mode" [ref=e80] [cursor=pointer]:
+                  - /url: /downloads/agent-mode/
+                  - img [ref=e82]
+                  - text: Agent Mode
+              - listitem [ref=e84]:
+                - link "CAPI Image Builder" [ref=e85] [cursor=pointer]:
+                  - /url: /downloads/capi-image-builder/
+                  - img [ref=e87]
+                  - text: CAPI Image Builder
+              - listitem [ref=e89]:
+                - link "Offline Documentation" [ref=e90] [cursor=pointer]:
+                  - /url: /downloads/offline-docs/
+                  - img [ref=e92]
+                  - text: Offline Documentation
+              - listitem [ref=e94]:
+                - button "Privacy Settings" [ref=e95] [cursor=pointer]
+      - main [ref=e96]:
+        - generic [ref=e98]:
+          - generic [ref=e100]:
+            - article [ref=e101]:
+              - navigation "Breadcrumbs" [ref=e102]:
+                - list [ref=e103]:
+                  - listitem [ref=e104]:
+                    - link "Home page" [ref=e105] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e106]
+                  - listitem [ref=e108]:
+                    - link "Self-Hosted Palette" [ref=e109] [cursor=pointer]:
+                      - /url: /downloads/self-hosted-palette/
+                  - listitem [ref=e110]:
+                    - generic [ref=e111]: Additional OVAs
+              - generic [ref=e112]:
+                - heading "Additional OVAs" [level=1] [ref=e114]
+                - paragraph [ref=e115]: The following tables list additional OVAs you may need depending on the Kubernetes version and distribution you want to use for the workload clusters.
+                - generic [ref=e116]:
+                  - tablist [ref=e117]:
+                    - tab "Ubuntu 24.04" [selected] [ref=e118] [cursor=pointer]
+                    - tab "Ubuntu 22.04" [ref=e119] [cursor=pointer]
+                  - tabpanel [ref=e121]:
+                    - table [ref=e122]:
+                      - rowgroup [ref=e123]:
+                        - row "Kubernetes Version OVA Name Download URL" [ref=e124]:
+                          - cell "Kubernetes Version" [ref=e125]:
+                            - strong [ref=e126]: Kubernetes Version
+                          - cell "OVA Name" [ref=e127]:
+                            - strong [ref=e128]: OVA Name
+                          - cell "Download URL" [ref=e129]:
+                            - strong [ref=e130]: Download URL
+                      - rowgroup [ref=e131]:
+                        - row "Kubernetes 1.33.6 u-2404-0-k-1336-0.ova https://vmwaregoldenimage-console.s3.amazonaws.com/u-2404-0-k-1336-0.ova" [ref=e132]:
+                          - cell "Kubernetes 1.33.6" [ref=e133]
+                          - cell "u-2404-0-k-1336-0.ova" [ref=e134]:
+                            - code [ref=e135]: u-2404-0-k-1336-0.ova
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2404-0-k-1336-0.ova" [ref=e136]:
+                            - code [ref=e137]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2404-0-k-1336-0.ova
+                        - row "Kubernetes 1.33.5 u-2404-0-k-1335-0.ova https://vmwaregoldenimage-console.s3.amazonaws.com/u-2404-0-k-1335-0.ova" [ref=e138]:
+                          - cell "Kubernetes 1.33.5" [ref=e139]
+                          - cell "u-2404-0-k-1335-0.ova" [ref=e140]:
+                            - code [ref=e141]: u-2404-0-k-1335-0.ova
+                          - cell "https://vmwaregoldenimage-console.s3.amazonaws.com/u-2404-0-k-1335-0.ova" [ref=e142]:
+                            - code [ref=e143]: https://vmwaregoldenimage-console.s3.amazonaws.com/u-2404-0-k-1335-0.ova
+                - heading "Usage InstructionsDirect link to Usage Instructions" [level=2] [ref=e144]:
+                  - text: Usage Instructions
+                  - link "Direct link to Usage Instructions" [ref=e145] [cursor=pointer]:
+                    - /url: "#usage-instructions"
+                    - text: "#"
+                - paragraph [ref=e146]:
+                  - text: Use the provided download URL to download the OVA and upload it to your vSphere environment. The OVA must be uploaded to the
+                  - code [ref=e147]: spectro-templates
+                  - text: so Palette can access it.
+                - paragraph [ref=e148]:
+                  - text: One additional note about uploaded OVAs, the OVA name must be prefixed with
+                  - code [ref=e149]: r_
+                  - text: to be recognized by Palette. You can rename the OVA before you upload it or after you upload it to vSphere. Use the following command examples to download and rename the necessary OVA files with
+                  - code [ref=e150]: curl
+                  - text: or
+                  - code [ref=e151]: wget
+                  - text: .
+                - generic [ref=e152]:
+                  - tablist [ref=e153]:
+                    - tab "curl" [selected] [ref=e154] [cursor=pointer]
+                    - tab "wget" [ref=e155] [cursor=pointer]
+                  - tabpanel [ref=e157]:
+                    - generic [ref=e159]:
+                      - code [ref=e161]:
+                        - generic [ref=e162]: curl --output r_u-2204-0-k-12610-0.ova \
+                        - generic [ref=e163]: https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+                      - generic [ref=e164]:
+                        - button "Toggle word wrap" [ref=e165] [cursor=pointer]:
+                          - img [ref=e166]
+                        - button "Copy code to clipboard" [ref=e168] [cursor=pointer]:
+                          - generic [ref=e169]:
+                            - img [ref=e170]
+                            - img [ref=e172]
+              - generic [ref=e174]:
+                - generic [ref=e176]:
+                  - text: "Tags:"
+                  - list [ref=e177]:
+                    - listitem [ref=e178]:
+                      - link "palette" [ref=e179] [cursor=pointer]:
+                        - /url: /tags/palette/
+                    - listitem [ref=e180]:
+                      - link "self-hosted" [ref=e181] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e182]:
+                      - link "airgap" [ref=e183] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                    - listitem [ref=e184]:
+                      - link "downloads" [ref=e185] [cursor=pointer]:
+                        - /url: /tags/downloads/
+                - link "Edit this page" [ref=e188] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/downloads/self-hosted-palette/additional-ovas.md
+                  - img [ref=e189]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e193]:
+              - link "Previous « Additional Packs" [ref=e194] [cursor=pointer]:
+                - /url: /downloads/self-hosted-palette/additional-packs/
+                - generic [ref=e195]: Previous
+                - generic [ref=e196]: « Additional Packs
+              - link "Next Kubernetes Requirements »" [ref=e197] [cursor=pointer]:
+                - /url: /downloads/self-hosted-palette/kubernetes-requirements/
+                - generic [ref=e198]: Next
+                - generic [ref=e199]: Kubernetes Requirements »
+          - list [ref=e202]:
+            - listitem [ref=e203]:
+              - link "Usage Instructions" [ref=e204] [cursor=pointer]:
+                - /url: "#usage-instructions"
+  - button "Project Logo Ask AI" [ref=e205] [cursor=pointer]:
+    - generic [ref=e208]:
+      - img "Project Logo" [ref=e209]
+      - paragraph [ref=e210]: Ask AI
+```

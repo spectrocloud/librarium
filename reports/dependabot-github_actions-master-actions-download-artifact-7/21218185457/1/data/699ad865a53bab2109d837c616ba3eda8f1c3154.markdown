@@ -1,0 +1,764 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Public Cloud Clusters" [ref=e113] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e115]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e117] [cursor=pointer]
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Data Center Clusters" [ref=e120] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e122]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e124] [cursor=pointer]
+                  - listitem [ref=e125]:
+                    - generic [ref=e126]:
+                      - link "Edge" [expanded] [ref=e127] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e129]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e131] [cursor=pointer]
+                    - list [ref=e132]:
+                      - listitem [ref=e133]:
+                        - generic [ref=e134]:
+                          - link "Architecture" [ref=e135] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e136] [cursor=pointer]
+                      - listitem [ref=e137]:
+                        - link "Hardware Requirements" [ref=e138] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e139]:
+                        - link "Deployment Lifecycle" [ref=e140] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e141]:
+                        - generic [ref=e142]:
+                          - link "Trusted Boot" [ref=e143] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e144] [cursor=pointer]
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "Install Configuration" [ref=e147] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e148] [cursor=pointer]
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "EdgeForge Workflow" [expanded] [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e152] [cursor=pointer]
+                        - list [ref=e153]:
+                          - listitem [ref=e154]:
+                            - link "Prepare User Data and Argument Files" [ref=e155] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                          - listitem [ref=e156]:
+                            - link "Validate User Data" [ref=e157] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/validate-user-data/
+                          - listitem [ref=e158]:
+                            - generic [ref=e159]:
+                              - link "Build Edge Artifacts" [expanded] [ref=e160] [cursor=pointer]:
+                                - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                              - button "Toggle the collapsible sidebar category 'Build Edge Artifacts'" [ref=e161] [cursor=pointer]
+                            - list [ref=e162]:
+                              - listitem [ref=e163]:
+                                - link "Edge Artifact Build Configurations" [ref=e164] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                              - listitem [ref=e165]:
+                                - link "Build Installer ISO" [ref=e166] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                              - listitem [ref=e167]:
+                                - link "Build Provider Images" [ref=e168] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/
+                              - listitem [ref=e169]:
+                                - link "Build FIPS-Compliant Edge Artifacts" [ref=e170] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/fips/
+                              - listitem [ref=e171]:
+                                - link "Build MAAS Images" [ref=e172] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-maas-image/
+                              - listitem [ref=e173]:
+                                - link "Build Content Bundle" [ref=e174] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                              - listitem [ref=e175]:
+                                - link "Embed a Public Key in Edge Artifacts" [ref=e176] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/signed-content/
+                              - listitem [ref=e177]:
+                                - link "Build AWS Cloud Images" [ref=e178] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image/
+                      - listitem [ref=e179]:
+                        - generic [ref=e180]:
+                          - link "Local UI" [ref=e181] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e182] [cursor=pointer]
+                      - listitem [ref=e183]:
+                        - generic [ref=e184]:
+                          - link "Deployment" [ref=e185] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e186] [cursor=pointer]
+                      - listitem [ref=e187]:
+                        - generic [ref=e188]:
+                          - link "Cluster Management" [ref=e189] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e190] [cursor=pointer]
+                      - listitem [ref=e191]:
+                        - generic [ref=e192]:
+                          - link "Networking" [ref=e193] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e194] [cursor=pointer]
+                      - listitem [ref=e195]:
+                        - generic [ref=e196]:
+                          - link "Third Party Integrations" [ref=e197] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Palette Virtual Clusters" [ref=e201] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e203]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e205] [cursor=pointer]
+                  - listitem [ref=e206]:
+                    - generic [ref=e207]:
+                      - link "Imported Clusters" [ref=e208] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e210]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e212] [cursor=pointer]
+                  - listitem [ref=e213]:
+                    - generic [ref=e214]:
+                      - link "Manage Clusters" [ref=e215] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e217]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e219] [cursor=pointer]
+                  - listitem [ref=e220]:
+                    - generic [ref=e221]:
+                      - link "Cluster Groups" [ref=e222] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e224]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e226] [cursor=pointer]
+                  - listitem [ref=e227]:
+                    - generic [ref=e228]:
+                      - link "Private Cloud Gateway" [ref=e229] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e231]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e236] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e238]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Palette Dev Engine" [ref=e243] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e245]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Virtual Machine Orchestrator" [ref=e250] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e252]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Workspaces" [ref=e257] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e259]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Packs List" [ref=e264] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e266]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "User & Role Management" [ref=e271] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e273]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - generic [ref=e277]:
+                  - link "Registries and Packs" [ref=e278] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e280]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e282] [cursor=pointer]
+              - listitem [ref=e283]:
+                - generic [ref=e284]:
+                  - link "Security" [ref=e285] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e287]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e289] [cursor=pointer]
+              - listitem [ref=e290]:
+                - generic [ref=e291]:
+                  - link "Audit Logs" [ref=e292] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e294]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e296] [cursor=pointer]
+              - listitem [ref=e297]:
+                - generic [ref=e298]:
+                  - link "Self-Hosted Palette" [ref=e299] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e301]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e303] [cursor=pointer]
+              - listitem [ref=e304]:
+                - generic [ref=e305]:
+                  - link "Palette VerteX" [ref=e306] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e308]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e310] [cursor=pointer]
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - link "Tenant Administration" [ref=e313] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e315]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e317] [cursor=pointer]
+              - listitem [ref=e318]:
+                - generic [ref=e319]:
+                  - link "Automation" [ref=e320] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e322]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e324] [cursor=pointer]
+              - listitem [ref=e325]:
+                - generic [ref=e326]:
+                  - link "Troubleshooting" [ref=e327] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e329]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e331] [cursor=pointer]
+              - listitem [ref=e332]:
+                - link "Glossary" [ref=e333] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e335]
+                  - text: Glossary
+              - listitem [ref=e337]:
+                - generic [ref=e338]:
+                  - link "Compliance & Legal" [ref=e339] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e341]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e343] [cursor=pointer]
+              - listitem [ref=e344]:
+                - button "Privacy Settings" [ref=e345] [cursor=pointer]:
+                  - img [ref=e346]
+                  - text: Privacy Settings
+      - main [ref=e348]:
+        - generic [ref=e352]:
+          - article [ref=e353]:
+            - navigation "Breadcrumbs" [ref=e354]:
+              - list [ref=e355]:
+                - listitem [ref=e356]:
+                  - link "Home page" [ref=e357] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e358]
+                - listitem [ref=e360]:
+                  - link "Clusters" [ref=e361] [cursor=pointer]:
+                    - /url: /clusters/
+                - listitem [ref=e362]:
+                  - link "Edge" [ref=e363] [cursor=pointer]:
+                    - /url: /clusters/edge/
+                - listitem [ref=e364]:
+                  - link "EdgeForge Workflow" [ref=e365] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/
+                - listitem [ref=e366]:
+                  - link "Build Edge Artifacts" [ref=e367] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                - listitem [ref=e368]:
+                  - generic [ref=e369]: Edge Artifact Build Configurations
+            - generic [ref=e370]:
+              - heading "Edge Artifact Build Configurations" [level=1] [ref=e372]
+              - paragraph [ref=e373]:
+                - text: During the EdgeForge process, you provide an
+                - strong [ref=e374]: .arg
+                - text: document that contains a list of parameters to configure the build of both the provider images and the Edge Installer ISO. This page lists the parameters available in the
+                - strong [ref=e375]: .arg
+                - text: file.
+              - table [ref=e376]:
+                - rowgroup [ref=e377]:
+                  - row "Argument Description Allowed Values" [ref=e378]:
+                    - cell "Argument" [ref=e379]:
+                      - strong [ref=e380]: Argument
+                    - cell "Description" [ref=e381]:
+                      - strong [ref=e382]: Description
+                    - cell "Allowed Values" [ref=e383]:
+                      - strong [ref=e384]: Allowed Values
+                - rowgroup [ref=e385]:
+                  - row "ARCH Architecture of the image. Required. amd64, arm64" [ref=e386]:
+                    - cell "ARCH" [ref=e387]:
+                      - code [ref=e388]: ARCH
+                    - cell "Architecture of the image. Required." [ref=e389]
+                    - cell "amd64, arm64" [ref=e390]:
+                      - code [ref=e391]: amd64
+                      - text: ","
+                      - code [ref=e392]: arm64
+                  - row "AUTO_ENROLL_SECUREBOOT_KEYS Determines whether to auto enroll keys used for Trusted Boot. true, false. Default is false." [ref=e393]:
+                    - cell "AUTO_ENROLL_SECUREBOOT_KEYS" [ref=e394]:
+                      - code [ref=e395]: AUTO_ENROLL_SECUREBOOT_KEYS
+                    - cell "Determines whether to auto enroll keys used for Trusted Boot." [ref=e396]
+                    - cell "true, false. Default is false." [ref=e397]:
+                      - code [ref=e398]: "true"
+                      - text: ","
+                      - code [ref=e399]: "false"
+                      - text: . Default is
+                      - code [ref=e400]: "false"
+                      - text: .
+                  - row "BASE_IMAGE Base image to be used for building installer and provider images. You only need to provide a value for this parameter when building a FIPS-enabled image. Image URL." [ref=e401]:
+                    - cell "BASE_IMAGE" [ref=e402]:
+                      - code [ref=e403]: BASE_IMAGE
+                    - cell "Base image to be used for building installer and provider images. You only need to provide a value for this parameter when building a FIPS-enabled image." [ref=e404]:
+                      - text: Base image to be used for building installer and provider images. You only need to provide a value for this parameter when
+                      - link "building a FIPS-enabled image" [ref=e405] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/fips/
+                      - text: .
+                    - cell "Image URL." [ref=e406]
+                  - row "CIS_HARDENING Whether to harden Edge artifacts according to Center for Internet Security (CIS) standards. true, false. Default is false." [ref=e407]:
+                    - cell "CIS_HARDENING" [ref=e408]:
+                      - code [ref=e409]: CIS_HARDENING
+                    - cell "Whether to harden Edge artifacts according to Center for Internet Security (CIS) standards." [ref=e410]:
+                      - text: Whether to harden Edge artifacts according to
+                      - link "Center for Internet Security (CIS) standards" [ref=e411] [cursor=pointer]:
+                        - /url: https://www.cisecurity.org/cis-benchmarks
+                      - text: .
+                    - cell "true, false. Default is false." [ref=e412]:
+                      - code [ref=e413]: "true"
+                      - text: ","
+                      - code [ref=e414]: "false"
+                      - text: . Default is
+                      - code [ref=e415]: "false"
+                      - text: .
+                  - row "CLUSTERCONFIG Path to a cluster definition file. For more information refer to Export Cluster Definition. URL string." [ref=e416]:
+                    - cell "CLUSTERCONFIG" [ref=e417]:
+                      - code [ref=e418]: CLUSTERCONFIG
+                    - cell "Path to a cluster definition file. For more information refer to Export Cluster Definition." [ref=e419]:
+                      - text: Path to a cluster definition file. For more information refer to
+                      - link "Export Cluster Definition" [ref=e420] [cursor=pointer]:
+                        - /url: /clusters/edge/local-ui/cluster-management/export-cluster-definition/
+                      - text: .
+                    - cell "URL string." [ref=e421]
+                  - row "CUSTOM_TAG A custom tag for the provider images. This custom tag will be appended at the end to form the full image tag, which is formed as $IMAGE_REGISTRY/$IMAGE_REPO:$K8S_DISTRIBUTION-$K8S_VERSION-$PE-VERSION-$CUSTOM_TAG. $PE_VERSION refers to the Palette Edge agent version, which is automatically determined. Lowercase alphanumeric string without spaces." [ref=e422]:
+                    - cell "CUSTOM_TAG" [ref=e423]:
+                      - code [ref=e424]: CUSTOM_TAG
+                    - cell "A custom tag for the provider images. This custom tag will be appended at the end to form the full image tag, which is formed as $IMAGE_REGISTRY/$IMAGE_REPO:$K8S_DISTRIBUTION-$K8S_VERSION-$PE-VERSION-$CUSTOM_TAG. $PE_VERSION refers to the Palette Edge agent version, which is automatically determined." [ref=e425]:
+                      - text: A custom tag for the provider images. This custom tag will be appended at the end to form the full image tag, which is formed as
+                      - code [ref=e426]: $IMAGE_REGISTRY/$IMAGE_REPO:$K8S_DISTRIBUTION-$K8S_VERSION-$PE-VERSION-$CUSTOM_TAG
+                      - text: .
+                      - code [ref=e427]: $PE_VERSION
+                      - text: refers to the Palette Edge agent version, which is automatically determined.
+                    - cell "Lowercase alphanumeric string without spaces." [ref=e428]
+                  - row "DISABLE_SELINUX Disable Security-Enhanced Linux (SELinux) in the operating system. Set this to true when your cluster has applications are not compatible with SELinux, such as KubeVirt. true, false" [ref=e429]:
+                    - cell "DISABLE_SELINUX" [ref=e430]:
+                      - code [ref=e431]: DISABLE_SELINUX
+                    - cell "Disable Security-Enhanced Linux (SELinux) in the operating system. Set this to true when your cluster has applications are not compatible with SELinux, such as KubeVirt." [ref=e432]
+                    - cell "true, false" [ref=e433]:
+                      - code [ref=e434]: "true"
+                      - text: ","
+                      - code [ref=e435]: "false"
+                  - row "EDGE_CUSTOM_CONFIG Path to the Edge custom configuration file. The file is used to provide public keys for the host to verify signatures. Refer to Embed a Public Key in Edge Artifacts for more information. .edge_custom_config.yaml" [ref=e436]:
+                    - cell "EDGE_CUSTOM_CONFIG" [ref=e437]:
+                      - code [ref=e438]: EDGE_CUSTOM_CONFIG
+                    - cell "Path to the Edge custom configuration file. The file is used to provide public keys for the host to verify signatures. Refer to Embed a Public Key in Edge Artifacts for more information." [ref=e439]:
+                      - text: Path to the Edge custom configuration file. The file is used to provide public keys for the host to verify signatures. Refer to
+                      - link "Embed a Public Key in Edge Artifacts" [ref=e440] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/signed-content/
+                      - text: for more information.
+                    - cell ".edge_custom_config.yaml" [ref=e441]:
+                      - code [ref=e442]: .edge_custom_config.yaml
+                  - row "FIPS_ENABLED Whether to generate FIPS compliant binaries. true, false. Default is false." [ref=e443]:
+                    - cell "FIPS_ENABLED" [ref=e444]:
+                      - code [ref=e445]: FIPS_ENABLED
+                    - cell "Whether to generate FIPS compliant binaries." [ref=e446]
+                    - cell "true, false. Default is false." [ref=e447]:
+                      - code [ref=e448]: "true"
+                      - text: ","
+                      - code [ref=e449]: "false"
+                      - text: . Default is
+                      - code [ref=e450]: "false"
+                      - text: .
+                  - row "FORCE_INTERACTIVE_INSTALL When set to true, Palette Edge Interactive Installer is selected by default in the Grand Unified Bootloader (GRUB) menu on first boot, enabling manual disk selection for ISO installation. Not supported for Unified Kernel Image (UKI) builds. On legacy BIOS systems, the selected disk must be either the first device in the BIOS boot order or the only bootable device. true, false. Default is false." [ref=e451]:
+                    - cell "FORCE_INTERACTIVE_INSTALL" [ref=e452]:
+                      - code [ref=e453]: FORCE_INTERACTIVE_INSTALL
+                    - cell "When set to true, Palette Edge Interactive Installer is selected by default in the Grand Unified Bootloader (GRUB) menu on first boot, enabling manual disk selection for ISO installation. Not supported for Unified Kernel Image (UKI) builds. On legacy BIOS systems, the selected disk must be either the first device in the BIOS boot order or the only bootable device." [ref=e454]:
+                      - text: When set to
+                      - code [ref=e455]: "true"
+                      - text: ","
+                      - strong [ref=e456]: Palette Edge Interactive Installer
+                      - text: is selected by default in the Grand Unified Bootloader (GRUB) menu on first boot, enabling manual disk selection for ISO installation. Not supported for Unified Kernel Image (UKI) builds. On legacy BIOS systems, the selected disk must be either the first device in the BIOS boot order or the only bootable device.
+                    - cell "true, false. Default is false." [ref=e457]:
+                      - code [ref=e458]: "true"
+                      - text: ","
+                      - code [ref=e459]: "false"
+                      - text: . Default is
+                      - code [ref=e460]: "false"
+                      - text: .
+                  - row "HTTP_PROXY URL of the HTTP Proxy server. URL string." [ref=e461]:
+                    - cell "HTTP_PROXY" [ref=e462]:
+                      - code [ref=e463]: HTTP_PROXY
+                    - cell "URL of the HTTP Proxy server." [ref=e464]
+                    - cell "URL string." [ref=e465]
+                  - row "HTTPS_PROXY URL of the HTTPS Proxy server. URL string." [ref=e466]:
+                    - cell "HTTPS_PROXY" [ref=e467]:
+                      - code [ref=e468]: HTTPS_PROXY
+                    - cell "URL of the HTTPS Proxy server." [ref=e469]
+                    - cell "URL string." [ref=e470]
+                  - 'row "IMAGE_REGISTRY The image registry to use for tagging the generated provider images. Required. Your image registry hostname, without http or https. Example: docker.io/spectrocloud." [ref=e471]':
+                    - cell "IMAGE_REGISTRY" [ref=e472]:
+                      - code [ref=e473]: IMAGE_REGISTRY
+                    - cell "The image registry to use for tagging the generated provider images. Required." [ref=e474]
+                    - 'cell "Your image registry hostname, without http or https. Example: docker.io/spectrocloud." [ref=e475]':
+                      - text: Your image registry hostname, without
+                      - code [ref=e476]: http
+                      - text: or
+                      - code [ref=e477]: https
+                      - text: .
+                      - text: "Example:"
+                      - code [ref=e478]: docker.io/spectrocloud
+                      - text: .
+                  - row "IMAGE_REPO The image repository to use for tagging the generated provider images. Required. Your image repository name." [ref=e479]:
+                    - cell "IMAGE_REPO" [ref=e480]:
+                      - code [ref=e481]: IMAGE_REPO
+                    - cell "The image repository to use for tagging the generated provider images. Required." [ref=e482]
+                    - cell "Your image repository name." [ref=e483]
+                  - row "INCLUDE_MS_SECUREBOOT_KEYS Whether to include Microsoft's secure boot keys in the set of keys to enroll in your device for secure boot. Almost every machine requires these keys. true, false. Default is true." [ref=e484]:
+                    - cell "INCLUDE_MS_SECUREBOOT_KEYS" [ref=e485]:
+                      - code [ref=e486]: INCLUDE_MS_SECUREBOOT_KEYS
+                    - cell "Whether to include Microsoft's secure boot keys in the set of keys to enroll in your device for secure boot. Almost every machine requires these keys." [ref=e487]
+                    - cell "true, false. Default is true." [ref=e488]:
+                      - code [ref=e489]: "true"
+                      - text: ","
+                      - code [ref=e490]: "false"
+                      - text: . Default is
+                      - code [ref=e491]: "true"
+                      - text: .
+                  - row "ISO_NAME Name of the Installer ISO file. Required. Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e492]:
+                    - cell "ISO_NAME" [ref=e493]:
+                      - code [ref=e494]: ISO_NAME
+                    - cell "Name of the Installer ISO file. Required." [ref=e495]
+                    - cell "Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e496]:
+                      - text: Lowercase alphanumeric string without spaces. The characters
+                      - code [ref=e497]: "-"
+                      - text: and
+                      - code [ref=e498]: _
+                      - text: are allowed.
+                  - row "IS_UKI Determines whether to build UKI to enabled Trusted Boot. Refer to Trusted Boot for more information. true, false. Default is false." [ref=e499]:
+                    - cell "IS_UKI" [ref=e500]:
+                      - code [ref=e501]: IS_UKI
+                    - cell "Determines whether to build UKI to enabled Trusted Boot. Refer to Trusted Boot for more information." [ref=e502]:
+                      - text: Determines whether to build UKI to enabled Trusted Boot. Refer to
+                      - link "Trusted Boot" [ref=e503] [cursor=pointer]:
+                        - /url: /clusters/edge/trusted-boot/
+                      - text: for more information.
+                    - cell "true, false. Default is false." [ref=e504]:
+                      - code [ref=e505]: "true"
+                      - text: ","
+                      - code [ref=e506]: "false"
+                      - text: . Default is
+                      - code [ref=e507]: "false"
+                      - text: .
+                  - row "K8S_DISTRIBUTION Kubernetes distribution. k3s, rke2, kubeadm, kubeadm-fips, nodeadm, canonical" [ref=e508]:
+                    - cell "K8S_DISTRIBUTION" [ref=e509]:
+                      - code [ref=e510]: K8S_DISTRIBUTION
+                    - cell "Kubernetes distribution." [ref=e511]
+                    - cell "k3s, rke2, kubeadm, kubeadm-fips, nodeadm, canonical" [ref=e512]:
+                      - code [ref=e513]: k3s
+                      - text: ","
+                      - code [ref=e514]: rke2
+                      - text: ","
+                      - code [ref=e515]: kubeadm
+                      - text: ","
+                      - code [ref=e516]: kubeadm-fips
+                      - text: ","
+                      - code [ref=e517]: nodeadm
+                      - text: ","
+                      - code [ref=e518]: canonical
+                  - row "K8S_VERSION Kubernetes version. The available versions vary depending on the specified K8S_DISTRIBUTION. Review the k8s_version.json file in the CanvOS repository for all supported versions. Semantic Versioning patch release format - x.y.z." [ref=e519]:
+                    - cell "K8S_VERSION" [ref=e520]:
+                      - code [ref=e521]: K8S_VERSION
+                    - cell "Kubernetes version. The available versions vary depending on the specified K8S_DISTRIBUTION. Review the k8s_version.json file in the CanvOS repository for all supported versions." [ref=e522]:
+                      - text: Kubernetes version. The available versions vary depending on the specified
+                      - code [ref=e523]: K8S_DISTRIBUTION
+                      - text: . Review the
+                      - code [ref=e524]: k8s_version.json
+                      - text: file in the
+                      - link "CanvOS" [ref=e525] [cursor=pointer]:
+                        - /url: https://github.com/spectrocloud/CanvOS
+                      - text: repository for all supported versions.
+                    - cell "Semantic Versioning patch release format - x.y.z." [ref=e526]:
+                      - text: Semantic Versioning patch release format -
+                      - code [ref=e527]: x.y.z
+                      - text: .
+                  - row "MAAS_IMAGE_NAME Custom MAAS image name. Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e528]:
+                    - cell "MAAS_IMAGE_NAME" [ref=e529]:
+                      - code [ref=e530]: MAAS_IMAGE_NAME
+                    - cell "Custom MAAS image name." [ref=e531]
+                    - cell "Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e532]:
+                      - text: Lowercase alphanumeric string without spaces. The characters
+                      - code [ref=e533]: "-"
+                      - text: and
+                      - code [ref=e534]: _
+                      - text: are allowed.
+                  - row "REGION Region for the S3 bucket used for building AWS cloud images. Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e535]:
+                    - cell "REGION" [ref=e536]:
+                      - code [ref=e537]: REGION
+                    - cell "Region for the S3 bucket used for building AWS cloud images." [ref=e538]:
+                      - text: Region for the S3 bucket used for
+                      - link "building AWS cloud images" [ref=e539] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image/
+                      - text: .
+                    - cell "Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e540]:
+                      - text: Lowercase alphanumeric string without spaces. The characters
+                      - code [ref=e541]: "-"
+                      - text: and
+                      - code [ref=e542]: _
+                      - text: are allowed.
+                  - row "S3_BUCKET Name of the S3 bucket used for building AWS cloud images. Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e543]:
+                    - cell "S3_BUCKET" [ref=e544]:
+                      - code [ref=e545]: S3_BUCKET
+                    - cell "Name of the S3 bucket used for building AWS cloud images." [ref=e546]:
+                      - text: Name of the S3 bucket used for
+                      - link "building AWS cloud images" [ref=e547] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image/
+                      - text: .
+                    - cell "Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e548]:
+                      - text: Lowercase alphanumeric string without spaces. The characters
+                      - code [ref=e549]: "-"
+                      - text: and
+                      - code [ref=e550]: _
+                      - text: are allowed.
+                  - row "S3_KEY Object key used to save images in the configured S3 bucket when building AWS cloud images. This argument is optional. Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e551]:
+                    - cell "S3_KEY" [ref=e552]:
+                      - code [ref=e553]: S3_KEY
+                    - cell "Object key used to save images in the configured S3 bucket when building AWS cloud images. This argument is optional." [ref=e554]:
+                      - text: Object key used to save images in the configured S3 bucket when
+                      - link "building AWS cloud images" [ref=e555] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image/
+                      - text: . This argument is optional.
+                    - cell "Lowercase alphanumeric string without spaces. The characters - and _ are allowed." [ref=e556]:
+                      - text: Lowercase alphanumeric string without spaces. The characters
+                      - code [ref=e557]: "-"
+                      - text: and
+                      - code [ref=e558]: _
+                      - text: are allowed.
+                  - row "MY_ORG Name of the org to use during secure boot key generation. For more information, refer to Generate Keys. String." [ref=e559]:
+                    - cell "MY_ORG" [ref=e560]:
+                      - code [ref=e561]: MY_ORG
+                    - cell "Name of the org to use during secure boot key generation. For more information, refer to Generate Keys." [ref=e562]:
+                      - text: Name of the org to use during secure boot key generation. For more information, refer to
+                      - link "Generate Keys" [ref=e563] [cursor=pointer]:
+                        - /url: /clusters/edge/trusted-boot/keys/generate-keys/
+                      - text: .
+                    - cell "String." [ref=e564]
+                  - row "NO_PROXY URLS that should be excluded from the proxy. Comma-separated URL string." [ref=e565]:
+                    - cell "NO_PROXY" [ref=e566]:
+                      - code [ref=e567]: NO_PROXY
+                    - cell "URLS that should be excluded from the proxy." [ref=e568]
+                    - cell "Comma-separated URL string." [ref=e569]
+                  - row "OS_DISTRIBUTION Operating System (OS) distribution. ubuntu, opensuse-leap, rhel" [ref=e570]:
+                    - cell "OS_DISTRIBUTION" [ref=e571]:
+                      - code [ref=e572]: OS_DISTRIBUTION
+                    - cell "Operating System (OS) distribution." [ref=e573]
+                    - cell "ubuntu, opensuse-leap, rhel" [ref=e574]:
+                      - code [ref=e575]: ubuntu
+                      - text: ","
+                      - code [ref=e576]: opensuse-leap
+                      - text: ","
+                      - code [ref=e577]: rhel
+                  - row "OS_VERSION OS version. This applies to Ubuntu only. 20, 22" [ref=e578]:
+                    - cell "OS_VERSION" [ref=e579]:
+                      - code [ref=e580]: OS_VERSION
+                    - cell "OS version. This applies to Ubuntu only." [ref=e581]
+                    - cell "20, 22" [ref=e582]:
+                      - code [ref=e583]: "20"
+                      - text: ","
+                      - code [ref=e584]: "22"
+                  - row "PROXY_CERT_PATH Absolute path of the SSL Proxy certificate in the PEM format. This parameter is deprecated and will be removed in a future version. Provide the certificates in the certs folder in the root directory of the CanvOS repository instead. For more information, refer to Build Installer ISO. Absolute path string." [ref=e585]:
+                    - cell "PROXY_CERT_PATH" [ref=e586]:
+                      - code [ref=e587]: PROXY_CERT_PATH
+                    - cell "Absolute path of the SSL Proxy certificate in the PEM format. This parameter is deprecated and will be removed in a future version. Provide the certificates in the certs folder in the root directory of the CanvOS repository instead. For more information, refer to Build Installer ISO." [ref=e588]:
+                      - text: Absolute path of the SSL Proxy certificate in the PEM format. This parameter is deprecated and will be removed in a future version. Provide the certificates in the
+                      - code [ref=e589]: certs
+                      - text: folder in the root directory of the
+                      - code [ref=e590]: CanvOS
+                      - text: repository instead. For more information, refer to
+                      - link "Build Installer ISO" [ref=e591] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/#prepare-arg-file
+                      - text: .
+                    - cell "Absolute path string." [ref=e592]
+                  - row "TWO_NODE Whether to build a provider image that enables the host to be part of a two-node high availability cluster. Refer to Two-Node Architecture for more information. true, false" [ref=e593]:
+                    - cell "TWO_NODE" [ref=e594]:
+                      - code [ref=e595]: TWO_NODE
+                    - cell "Whether to build a provider image that enables the host to be part of a two-node high availability cluster. Refer to Two-Node Architecture for more information." [ref=e596]:
+                      - text: Whether to build a provider image that enables the host to be part of a two-node high availability cluster. Refer to
+                      - link "Two-Node Architecture" [ref=e597] [cursor=pointer]:
+                        - /url: /clusters/edge/architecture/two-node/
+                      - text: for more information.
+                    - cell "true, false" [ref=e598]:
+                      - code [ref=e599]: "true"
+                      - text: ","
+                      - code [ref=e600]: "false"
+                  - row "UBUNTU_PRO_KEY Subscription key to a Ubuntu Pro subscription. A Ubuntu Pro subscription is needed to generate FIPS-compliant Edge artifacts with Ubuntu as the OS. String." [ref=e601]:
+                    - cell "UBUNTU_PRO_KEY" [ref=e602]:
+                      - code [ref=e603]: UBUNTU_PRO_KEY
+                    - cell "Subscription key to a Ubuntu Pro subscription. A Ubuntu Pro subscription is needed to generate FIPS-compliant Edge artifacts with Ubuntu as the OS." [ref=e604]
+                    - cell "String." [ref=e605]
+                  - row "UKI_BRING_YOUR_OWN_KEYS Whether to use your own Certificate Authority (CA) to generate secure boot keys. For more information, refer to the Generate Keys using an Existing CA tab in Generate Keys. false" [ref=e606]:
+                    - cell "UKI_BRING_YOUR_OWN_KEYS" [ref=e607]:
+                      - code [ref=e608]: UKI_BRING_YOUR_OWN_KEYS
+                    - cell "Whether to use your own Certificate Authority (CA) to generate secure boot keys. For more information, refer to the Generate Keys using an Existing CA tab in Generate Keys." [ref=e609]:
+                      - text: Whether to use your own Certificate Authority (CA) to generate secure boot keys. For more information, refer to the Generate Keys using an Existing CA tab in
+                      - link "Generate Keys" [ref=e610] [cursor=pointer]:
+                        - /url: /clusters/edge/trusted-boot/keys/generate-keys/
+                      - text: .
+                    - cell "false" [ref=e611]:
+                      - code [ref=e612]: "false"
+                  - row "UPDATE_KERNEL Determines whether to upgrade the Kernel version to the latest from the upstream OS provider. true, false" [ref=e613]:
+                    - cell "UPDATE_KERNEL" [ref=e614]:
+                      - code [ref=e615]: UPDATE_KERNEL
+                    - cell "Determines whether to upgrade the Kernel version to the latest from the upstream OS provider." [ref=e616]
+                    - cell "true, false" [ref=e617]:
+                      - code [ref=e618]: "true"
+                      - text: ","
+                      - code [ref=e619]: "false"
+            - generic [ref=e620]:
+              - generic [ref=e622]:
+                - text: "Tags:"
+                - list [ref=e623]:
+                  - listitem [ref=e624]:
+                    - link "edge" [ref=e625] [cursor=pointer]:
+                      - /url: /tags/edge/
+              - link "Edit this page" [ref=e628] [cursor=pointer]:
+                - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/edgeforge-workflow/palette-canvos/arg.md
+                - img [ref=e629]
+                - text: Edit this page
+          - navigation "Docs pages" [ref=e633]:
+            - link "Previous « Build Edge Artifacts" [ref=e634] [cursor=pointer]:
+              - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+              - generic [ref=e635]: Previous
+              - generic [ref=e636]: « Build Edge Artifacts
+            - link "Next Build Installer ISO »" [ref=e637] [cursor=pointer]:
+              - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+              - generic [ref=e638]: Next
+              - generic [ref=e639]: Build Installer ISO »
+  - button "Project Logo Ask AI" [ref=e640] [cursor=pointer]:
+    - generic [ref=e643]:
+      - img "Project Logo" [ref=e644]
+      - paragraph [ref=e645]: Ask AI
+```
