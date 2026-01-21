@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 22, 2026 - Release 4.8.X
+## January 22, 2026 - Release 4.8.23
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9664 -->
 
