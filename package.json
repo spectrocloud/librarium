@@ -64,7 +64,7 @@
     "p-ratelimit": "^1.0.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.3",
-    "react-dom": "^19.2.1",
+    "react-dom": "^19.2.3",
     "react-markdown": "10.1.0",
     "react-select": "^5.10.2",
     "remark-gfm": "4.0.1",
