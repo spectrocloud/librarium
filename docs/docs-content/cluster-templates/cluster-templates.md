@@ -10,10 +10,6 @@ sidebar_custom_props:
 tags: ["cluster templates", "templates", "policies"]
 ---
 
-:::preview
-
-:::
-
 Cluster templates are reusable blueprints that define and enforce the desired state and lifecycle of clusters deployed
 with Palette or [Palette VerteX](../vertex/vertex.md).
 
@@ -55,7 +51,8 @@ configuration drift that can naturally occur with inline, on-the-fly updates, or
 versions. Each cluster can be attached to only one cluster template at a time, further guarding against drift.
 
 A cluster profile version cannot be linked to a cluster template if that profile version is already being used by a
-cluster that is not attached to a cluster template.
+cluster that is not attached to a cluster template. Likewise, if deploying a cluster using the cluster profile workflow,
+you cannot use a cluster profile version linked to a cluster template.
 
 ### Cluster Profile Variables
 
@@ -98,8 +95,8 @@ whether your cluster is deployed using individual cluster profiles or a cluster 
 Policies are an integral part of cluster templates. While cluster profiles define the infrastructure and software stack
 for your clusters, cluster template policies are modular, reusable definitions that define how the cluster operates as
 well as its lifecycle. Policies are linked rather than embedded within cluster templates, allowing you to manage
-policies independently; this includes updating and swapping them as needed to create a comprehensive governance stack
-for your clusters.
+policies independently; this includes updating and swapping policies as needed to create a comprehensive governance
+stack for your clusters.
 
 Currently, Palette supports [maintenance policies](./create-cluster-template-policies/maintenance-policy.md). Each
 cluster template can be linked to only one policy of each type. For example, while you can create multiple maintenance

@@ -7,114 +7,92 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 10
 ---
 
-Palette supports integration with Amazon Web Services (AWS) Cloud Accounts, including
-[AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc)
-and [AWS Secret Cloud (US)](https://aws.amazon.com/federal/secret-cloud/) accounts. This section explains how to create
-an AWS cloud account in Palette. You can use any of the following authentication methods to register your cloud account.
+Palette supports integration with Amazon Web Services (AWS) cloud accounts, including AWS
+[Commercial cloud](https://aws.amazon.com/), [GovCloud](https://aws.amazon.com/govcloud-us/),
+[Secret cloud](https://aws.amazon.com/federal/secret-cloud/), and
+[Top Secret cloud](https://aws.amazon.com/federal/top-secret-cloud/). Once you add your AWS account to Palette, you can
+deploy clusters into the appropriate AWS cloud, all without leaving the Palette interface.
 
-- AWS
+The following table summarizes which AWS clouds, cluster types, and authentication methods are supported by Palette and
+Palette VerteX.
 
-  - [Static Access Credentials](#static-access-credentials)
-  - [Dynamic Access Credentials](#dynamic-access-credentials)
-  - [EKS Pod Identity](#eks-pod-identity)
+| **AWS Cloud**                                                                        | **Palette Enterprise** | **Palette VerteX** |      **IaaS**      |      **EKS**       | **Static Access**  | **Dynamic (STS) Access** | **EKS Pod Identity** | **Secure Compliance Validation** |
+| ------------------------------------------------------------------------------------ | :--------------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------------: | :------------------: | :------------------------------: |
+| [AWS Commercial Cloud](https://aws.amazon.com/)                                      |   :white_check_mark:   | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :white_check_mark:    |  :white_check_mark:  |               :x:                |
+| [AWS GovCloud](https://aws.amazon.com/govcloud-us/)                                  |   :white_check_mark:   | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :white_check_mark:    |  :white_check_mark:  |               :x:                |
+| <TpBadge /> [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/)         |          :x:           | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: |           :x:            |         :x:          |        :white_check_mark:        |
+| <TpBadge /> [AWS Top Secret Cloud](https://aws.amazon.com/federal/top-secret-cloud/) |          :x:           | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: |           :x:            |         :x:          |        :white_check_mark:        |
 
-- AWS GovCloud (US)
+## AWS Commercial Cloud
 
-  - [Static Access Credentials](#static-access-credentials-1)
-  - [Dynamic Access Credentials](#dynamic-access-credentials-1)
-  - [EKS Pod Identity](#eks-pod-identity-1)
-
-- AWS Secret Cloud (SC2S) (US)
-
-  - [Static Access Credentials](#static-access-credentials-2)
-  - [Secure Compliance Validation Credentials](#secure-compliance-validation-credentials)
-  <!-- - [EKS Pod Identity](#eks-pod-identity-2) -->
-
-## AWS Account
-
-This section provides guidance on creating an AWS account that uses static or dynamic access credentials as well as EKS
-Pod Identity.
+This section provides guidance on how to add an AWS Commercial cloud account to Palette or Palette VerteX using static
+or dynamic access credentials, as well as EKS Pod Identity.
 
 ### Static Access Credentials
 
-Use the steps below to add an AWS cloud account using static access credentials.
+Use the steps below to add an AWS Commercial cloud account using static access credentials.
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-static-credentials-prerequisites"
+  edition="Palette or Palette VerteX"
+/>
 
-- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
-  [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
+#### Enablement
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
-  role.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-static-credentials-enablement-1"
+  partition="AWS"
+  edition="Palette or Palette VerteX"
+/>
 
-#### Add AWS Account to Palette
-
-<PartialsComponent category="palette-setup" name="aws-static-credentials" />
+6. <PartialsComponent
+     category="clusters-aws-account-setup"
+     name="aws-static-dynamic-credentials-enablement-2"
+     edition="Palette or Palette VerteX"
+   />
 
 #### Validate
 
-You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
-cloud accounts, navigate to the left **Main Menu** and click on **Tenant Settings**. Next, click on **Cloud Accounts**.
-Your newly added AWS cloud account is listed under the AWS section.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-account-setup-validate"
+  edition="Palette or Palette VerteX"
+/>
 
 ### Dynamic Access Credentials
 
-Use the steps below to add an AWS cloud account using Security Token Service (STS) credentials.
+Use the steps below to add an AWS cloud account using dynamic Security Token Service (STS) credentials.
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-dynamic-credentials-prerequisites"
+  edition="Palette or Palette VerteX"
+/>
 
-- If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
-  to allow tenants to add AWS accounts using STS. For more information, refer to
-  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
-  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md).
+#### Enablement
 
-- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
-  [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-dynamic-credentials-enablement-1"
+  partition="AWS"
+  option="or Palette VerteX"
+/>
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
-  role.
-
-#### Add AWS Account to Palette
-
-1. Log in to [Palette](https://console.spectrocloud.com) as tenant admin.
-
-2. From the left **Main Menu**, click on **Tenant Settings**.
-
-3. Select **Cloud Accounts**, and click **Add AWS Account**.
-
-4. In the cloud account creation wizard, enter the following information:
-
-   - **Account Name**: Custom name for the cloud account.
-   - **Description**: Optional description for the cloud account.
-   - Select **STS** authentication for validation.
-
-5. You will be provided with information on the right side of the wizard. You will need this information to create an
-   IAM role for Palette. The following table lists the information provided by the wizard after you select **STS**.
-
-   | **Parameter**           | **Description**                                                                                                                                                               |
-   | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Trusted Entity Type** | Another AWS account.                                                                                                                                                          |
-   | **Account ID**          | Copy the Account ID displayed on the UI. If using a self-hosted instance, this is the same AWS account that you configured for your Palette or VerteX instance to enable STS. |
-   | **Require External ID** | Enable.                                                                                                                                                                       |
-   | **External ID**         | Copy the External ID displayed on the UI. This ID is generated by Palette or VerteX and is different per tenant.                                                              |
-   | **Permissions Policy**  | Search and select the 4 policies added in step 2.                                                                                                                             |
-   | **Role Name**           | SpectroCloudRole.                                                                                                                                                             |
-
-6. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
-
-7. In Palette, paste the role ARN into the **ARN** field.
-
-8. Click the **Validate** button to validate the credentials.
+9. <PartialsComponent category="clusters-aws-account-setup" name="aws-static-dynamic-credentials-enablement-2" />
 
 #### Validate
 
-You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
-cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
-Your newly added AWS cloud account is listed under the AWS section.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-account-setup-validate"
+  edition="Palette or Palette VerteX"
+/>
 
 ### EKS Pod Identity
 
@@ -126,7 +104,12 @@ Your newly added AWS cloud account is listed under the AWS section.
 
 #### Prerequisites
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS" />
+<PartialsComponent
+  category="eks-pod-identity"
+  name="eks-pod-identity-prerequisites"
+  partition="AWS"
+  edition="Palette or Palette VerteX"
+/>
 
 #### Enablement
 
@@ -134,119 +117,88 @@ Your newly added AWS cloud account is listed under the AWS section.
 
 #### Validate
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS" />
+<PartialsComponent
+  category="eks-pod-identity"
+  name="eks-pod-identity-validate"
+  partition="AWS"
+  edition="Palette or Palette VerteX"
+/>
 
-## AWS GovCloud Account (US)
+## AWS GovCloud
 
-Palette supports integration with
-[AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc).
-Using Palette, you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance on
-creating an AWS GovCloud account that uses static or dynamic access credentials as well as EKS Pod Identity.
+Palette and Palette VerteX support deploying Kubernetes clusters to [AWS GovCloud](https://aws.amazon.com/govcloud-us/).
+This section provides guidance on how to add an AWS GovCloud account to Palette using static or dynamic access
+credentials, as well as EKS Pod Identity.
 
 ### Static Access Credentials
 
-Use the steps below to add an AWS cloud account using static access credentials.
+Use the steps below to add an AWS GovCloud account using static access credentials.
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-static-credentials-prerequisites"
+  edition="Palette or Palette VerteX"
+/>
 
-- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
-  [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
+#### Enablement
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
-  role.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-static-credentials-enablement-1"
+  partition="AWS US Gov"
+  edition="Palette or Palette VerteX"
+/>
 
-#### Add AWS GovCloud Account to Palette
-
-1. Log in to [Palette](https://console.spectrocloud.com) as tenant admin.
-
-2. From the left **Main Menu**, click on **Tenant Settings**.
-
-3. Select **Cloud Accounts**, and click **Add AWS Account**.
-
-4. In the cloud account creation wizard provide the following information:
-
-   - **Account Name:** Custom name for the cloud account.
-
-   - **Description:** Optional description for the cloud account.
-   - **Partition:** Choose **AWS US Gov** from the **drop-down Menu**.
-
-   - **Credentials:**
-
-     - AWS Access key
-     - AWS Secret access key
-
-5. Click the **Validate** button to validate the credentials.
-
-6. Once the credentials are validated, verified by a green check mark, the **Add IAM Policies** toggle is displayed.
-   Toggle **Add IAM Policies** on.
-
-7. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
-   policies you want to assign to the Palette IAM role or IAM user.
+6. <PartialsComponent
+     category="clusters-aws-account-setup"
+     name="aws-static-dynamic-credentials-enablement-2"
+     edition="Palette or Palette VerteX"
+   />
 
 #### Validate
 
-You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
-cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your
-newly added AWS cloud account is listed under the AWS section.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-account-setup-validate"
+  edition="Palette or Palette VerteX"
+/>
 
 ### Dynamic Access Credentials
 
-Use the steps below to add an AWS cloud account using STS credentials.
+Use the steps below to add an AWS GovCloud account using dynamic STS credentials.
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-dynamic-credentials-prerequisites"
+  edition="Palette or Palette VerteX"
+/>
 
-- If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
-  to allow tenants to add AWS accounts using STS. For more information, refer to
-  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
-  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md).
+#### Enablement
 
-- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
-  [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-dynamic-credentials-enablement-1"
+  partition="AWS US Gov"
+  edition="Palette or Palette VerteX"
+/>
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
-  role.
-
-#### Add AWS GovCloud Account to Palette
-
-1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
-
-2. From the left **Main Menu**, click on **Tenant Settings**.
-
-3. Select **Cloud Accounts**, and click **Add AWS Account**.
-
-4. In the cloud account creation wizard, enter the following information:
-
-   - **Account Name**
-   - **Description**
-   - Select **STS** authentication for validation.
-
-5. You will be provided with information on the right side of the wizard. You will need this information to create an
-   IAM Role for Palette. The following table lists the information provided by the wizard after you select **STS**.
-
-   | **Parameter**           | **Description**                                                                                                                                                               |
-   | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Trusted Entity Type** | Another AWS account.                                                                                                                                                          |
-   | **Account ID**          | Copy the Account ID displayed on the UI. If using a self-hosted instance, this is the same AWS account that you configured for your Palette or VerteX instance to enable STS. |
-   | **Require External ID** | Enable.                                                                                                                                                                       |
-   | **External ID**         | Copy the External ID displayed on the UI. This ID is generated by Palette or VerteX and is different per tenant.                                                              |
-   | **Permissions Policy**  | Search and select the 4 policies added in step #2.                                                                                                                            |
-   | **Role Name**           | SpectroCloudRole.                                                                                                                                                             |
-
-6. In the AWS console, browse to the **Role Details** page and copy the ARN for the role.
-
-7. In Palette, paste the role ARN into the **ARN** input box.
-
-8. Click the **Validate** button to validate the credentials.
+9. <PartialsComponent
+     category="clusters-aws-account-setup"
+     name="aws-static-dynamic-credentials-enablement-2"
+     edition="Palette or Palette VerteX"
+   />
 
 #### Validate
 
-You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
-cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**.
-Your newly added AWS cloud account is listed under the AWS section.
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-account-setup-validate"
+  edition="Palette or Palette VerteX"
+/>
 
 ### EKS Pod Identity
 
@@ -262,19 +214,30 @@ Your newly added AWS cloud account is listed under the AWS section.
 
 #### Enablement
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-enablement" partition="AWS US Gov" />
+<PartialsComponent
+  category="eks-pod-identity"
+  name="eks-pod-identity-enablement"
+  partition="AWS US Gov"
+  edition="Palette or Palette VerteX"
+/>
 
 #### Validate
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-validate" partition="AWS US Gov" />
+<PartialsComponent
+  category="eks-pod-identity"
+  name="eks-pod-identity-validate"
+  partition="AWS US Gov"
+  edition="Palette or Palette VerteX"
+/>
 
-## AWS Secret Cloud Account (US)
+## AWS Secret Cloud (SC2S) and Top Secret Cloud (C2S)
 
-You can configure [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/) accounts in
-[Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your
-organization's compliance requirements, you can choose between standard authentication (standard access credentials) or
-secure compliance validation using your SC2S Access Portal (SCAP) credentials to register your AWS Secret Cloud account
-in Palette VerteX.
+You can add [AWS Secret](https://aws.amazon.com/federal/secret-cloud/) and
+[Top Secret cloud](https://aws.amazon.com/federal/top-secret-cloud/) accounts in
+[Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in AWS Secret and Top Secret clouds. Depending on
+your organization's compliance requirements, you can register your AWS cloud account using either standard
+authentication (access key and secret access key pairs for IAM users) or secure compliance validation (SC2S Access
+Portal (SCAP) or C2S Access Portal (CAP) credentials).
 
 :::preview
 
@@ -282,14 +245,13 @@ in Palette VerteX.
 
 ### Limitations
 
-- Only Amazon Linux 2-based Amazon Machine Images are supported for Kubernetes control plane and worker nodes. Workloads
-  deployed in the cluster should use Linux-based container images to ensure compatibility with the node operating
-  system.
+- Only [AWS EKS clusters](./eks.md) clusters can be deployed in AWS Secret and Top Secret clouds. AWS IaaS clusters are
+  not supported.
 
 - User-provided Certificate Authority (CA) certificates are not automatically mounted on worker nodes in EKS clusters
-  that are deployed in the AWS Secret region. As a result, applications or services that rely on custom CAs for
-  Transport Layer Security (TLS) communication may fail to establish secure connections, and integrations with external
-  services that require custom CAs may encounter Secure Socket Layer (SSL) or TLS verification issues.
+  that are deployed in AWS Secret and Top Secret clouds. As a result, applications or services that rely on custom CAs
+  for Transport Layer Security (TLS) communication may fail to establish secure connections, and integrations with
+  external services that require custom CAs may encounter Secure Socket Layer (SSL) or TLS verification issues.
 
   - Workloads requiring custom CAs for internal trust validation must use an alternative configuration, such as using a
     [sidecar container](https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/) to provide the CA
@@ -299,116 +261,130 @@ in Palette VerteX.
     and
     [creating pods that access Secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume).
 
-### Prerequisites
+### Static Access Credentials
 
-- [Palette VerteX installed](../../../vertex/install-palette-vertex/install-palette-vertex.md) and
-  [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+Use the steps below to add an AWS Secret or Top Secret cloud account using static access credentials.
+
+#### Prerequisites
+
+- Palette VerteX [installed](../../../vertex/install-palette-vertex/install-palette-vertex.md).
+
+<PartialsComponent
+  category="clusters-aws-account-setup"
+  name="aws-static-credentials-prerequisites"
+  edition="Palette VerteX"
+/>
 
 - The **AwsSecretPartition** [feature flag](../../../vertex/system-management/feature-flags.md) enabled in the Palette
   VerteX [system console](../../../vertex/system-management/system-management.md).
 
-- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
-  [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette VerteX.
+- The Certificate Authority (CA) certificate (root, intermediate, or chain of trust) for your AWS Secret or Top Secret
+  cloud account in PEM-encoded format.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette VerteX IAM user or
-  IAM role.
+- A secure connection to your AWS Secret Cloud or Top Secret Cloud account, such as via a
+  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network (WAN) tunnel, or AWS Private Link.
 
-- A secure connection to your AWS Secret Cloud account, such as via a
-  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link.
+#### Enablement
 
-### Static Access Credentials
+1. Log in to Palette VerteX as a tenant admin.
 
-Use the steps below to add an AWS Secret Cloud account using static access credentials.
+2. From the left main menu, select **Tenant Settings**.
 
-#### Add AWS Secret Cloud to Palette VerteX
+3. From the **Tenant Settings** menu, select **Cloud Accounts**.
 
-1. Log in to Palette VerteX as tenant admin.
+4. Locate the **AWS** section and select **Add AWS Account**.
 
-2. From the left **Main Menu**, click on **Tenant Settings**.
+5. Fill out the following information.
 
-3. Select **Cloud Accounts**, and click **Add AWS Account**.
+   | **Parameter**                    | **Description**                                                                                                                                                                                                                                                                      |
+   | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Account Name**                 | Enter a custom account name. The account name must be unique within the tenant scope.                                                                                                                                                                                                |
+   | **Description (Optional)**       | Enter a description for the cloud account.                                                                                                                                                                                                                                           |
+   | **Partition**                    | Select either **AWS US Secret** or **AWS US Top Secret**.                                                                                                                                                                                                                            |
+   | **Credentials**                  | Select **Credentials** to authenticate your AWS account using static access credentials.                                                                                                                                                                                             |
+   | **Secure Compliance Validation** | Keep disabled to use static access credentials.                                                                                                                                                                                                                                      |
+   | **Access key**                   | Enter your IAM user's access key. This is found in the **Summary** section of your AWS **IAM > Users** dashboard. Refer to [Manage access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for more information on access keys. |
+   | **Secret access key**            | Enter your IAM user's secret access key that corresponds to the **Access key**. This key cannot be viewed or regenerated after the initial creation of your **Access key**. If you cannot retrieve your secret access key, you must create a new access key pair.                    |
+   | **Certificate Authority**        | Paste the PEM-encoded root, intermediate, or chain of trust CA certificate for your AWS Secret or Top Secret cloud account.                                                                                                                                                          |
 
-4. In the cloud account creation wizard provide the following information:
-
-   - **Account Name:** Custom name for the cloud account.
-
-   - **Description:** Optional description for the cloud account.
-   - **Partition:** Choose **AWS US Secret** from the **drop-down Menu**.
-
-   - **Credentials:**
-
-     - AWS Access key
-     - AWS Secret access key
-
-   - **Certificate Authority:** Paste the root, intermediate, or chain of trust certificate in PEM-encoded format.
-     Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate.
-
-5. Click the **Validate** button to validate the credentials.
-
-6. Once the credentials are validated, verified by a green check mark, the **Add IAM Policies** toggle is displayed.
-   Toggle **Add IAM Policies** on.
-
-7. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
-   policies you want to assign to the Palette IAM role or IAM user.
-
-8. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud
-   Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the
-   **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the
-   [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
-
-9. Click **Confirm** to create your AWS Secret Cloud account.
+6. <PartialsComponent
+     category="clusters-aws-account-setup"
+     name="aws-static-dynamic-credentials-enablement-2"
+     edition="Palette VerteX"
+   />
 
 #### Validate
 
-You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
-cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your
-newly added AWS cloud account is listed under the AWS section.
+<PartialsComponent category="clusters-aws-account-setup" name="aws-account-setup-validate" edition="Palette VerteX" />
 
 ### Secure Compliance Validation Credentials
 
-Use the steps below to add an AWS Secret Cloud account using SCAP secure compliance validation credentials.
+Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/SCAP credentials.
 
-#### Add AWS Secret Cloud to Palette VerteX
+#### Prerequisites
 
-1. Log in to Palette VerteX as tenant admin.
+- Palette VerteX [installed](../../../vertex/install-palette-vertex/install-palette-vertex.md).
 
-2. From the left **Main Menu**, click on **Tenant Settings**.
+- A Palette VerteX account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
 
-3. Select **Cloud Accounts**, and click **Add AWS Account**.
+- The **AwsSecretPartition** [feature flag](../../../vertex/system-management/feature-flags.md) enabled in the Palette
+  VerteX [system console](../../../vertex/system-management/system-management.md).
 
-4. In the cloud account creation wizard, enter the following information:
+- An AWS Secret or Top Secret account configured for CAP/SCAP access. Your CAP/SCAP administrator must provide the
+  target Agency, Account, and CAP/SCAP role values. The CAP/SCAP role must be assigned the
+  [required IAM policies](./required-iam-policies.md).
 
-   - **Account Name:** Custom name for the cloud account.
+- A Non-Person Entity (NPE) (service identity) provisioned and authorized to access the target Agency, Account, and
+  CAP/SCAP role.
 
-   - **Description:** Optional description for the cloud account.
-   - **Partition:** Choose **AWS US Secret** from the **drop-down Menu**.
+- A trusted client certificate and private key issued for the NPE and mapped to the NPE identity in your organization’s
+  identity access management system. This is required for CAP/SCAP to authenticate and authorize the certificate
+  identity.
 
-5. Toggle on **Secure Compliance Validation** and enter the following information.
+- The CA certificate (root, intermediate, or chain of trust) and private key in PEM-encoded format.
 
-   | **Parameter**                      | **Description**                                                                                                                                                                                                                                                                                                                                                                                                       |
-   | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Agency Name**                    | Enter the SCAP agency name.                                                                                                                                                                                                                                                                                                                                                                                           |
-   | **Account Name**                   | Enter the SCAP account name or number.                                                                                                                                                                                                                                                                                                                                                                                |
-   | **CAP/SCAP Role Name**             | Enter the role name provided by the SCAP administrator. This role determines the AWS permissions granted to the account.                                                                                                                                                                                                                                                                                              |
-   | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used. For example, if the initial role name is `DevOpsRole`, the full role name would be `PROJECT_DevOpsRole`.                                                                                                                                                                                                 |
-   | **Permission Boundary (Optional)** | If you want to apply a permission boundary and limit the maximum permissions a role or user can have, provide the IAM policy ARN (for example, `arn:aws:iam::123456789012:policy/MyPermissionBoundaryPolicy`). Refer to the AWS [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) page for additional information on permission boundaries. |
-   | **Certificate Authority**          | Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate.                                                                                                                                                                                                                            |
-   | **User Certificate**               | Paste your user-issued digital certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                                                     |
-   | **User Key**                       | Provide the private cryptographic key associated with the user certificate in PEM-encoded format.                                                                                                                                                                                                                                                                                                                     |
+- A secure connection to your AWS Secret Cloud or Top Secret Cloud account, such as via a
+  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), WAN tunnel, or AWS Private Link.
 
-   Palette provides default values for CAP/SCAP endpoints. Users can change these configurations on their
-   [self-hosted Palette](../../../enterprise-version/enterprise-version.md) or
-   [Palette VerteX](../../../vertex/vertex.md) installations.
+#### Enablement
+
+1. Log in to Palette VerteX as a tenant admin.
+
+2. From the left main menu, select **Tenant Settings**.
+
+3. From the **Tenant Settings** menu, select **Cloud Accounts**.
+
+4. Locate the **AWS** section and select **Add AWS Account**.
+
+5. Fill out the following information.
+
+   | **Parameter**                      | **Description**                                                                                                                                                                                                                                                                                                 |
+   | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Account Name**                   | Enter a custom account name. The account name must be unique within the tenant scope.                                                                                                                                                                                                                           |
+   | **Description (Optional)**         | Enter a description for the cloud account.                                                                                                                                                                                                                                                                      |
+   | **Partition**                      | Select either **AWS US Secret** or **AWS US Top Secret**.                                                                                                                                                                                                                                                       |
+   | **Credentials**                    | Select **Credentials**.                                                                                                                                                                                                                                                                                         |
+   | **Secure Compliance Validation**   | Enable **Secure Compliance Validation** to authenticate with your CAP/SCAP credentials.                                                                                                                                                                                                                         |
+   | **Agency Name**                    | Enter the CAP/SCAP agency name.                                                                                                                                                                                                                                                                                 |
+   | **Account Name**                   | Enter the CAP/SCAP account name or number.                                                                                                                                                                                                                                                                      |
+   | **CAP/SCAP Role Name**             | Enter the role name provided by the CAP/SCAP administrator. This role determines the AWS permissions granted to the account.                                                                                                                                                                                    |
+   | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used. For example, if the initial role name is `DevOpsRole`, the full role name would be `PROJECT_DevOpsRole`. <br /> <br /> **Note**: The role name, including the prefix, cannot exceed 64 characters. |
+   | **Permission Boundary (Optional)** | If you want to apply a permission boundary and limit the maximum permissions a role or user can have, provide the IAM policy ARN. Refer to [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) for additional information.              |
+   | **Certificate Authority**          | Paste the CA certificate chain (root and intermediates) that signs the CAP/SCAP endpoint certificate or is required to validate the TLS chain. The chain must be in PEM-encoded format.                                                                                                                         |
+   | **User Certificate**               | Paste the NPE certificate in PEM-encoded format.                                                                                                                                                                                                                                                                |
+   | **User Key**                       | Paste the NPE certificate private key in PEM-encoded format.                                                                                                                                                                                                                                                    |
+
+   Palette VerteX is configured to work with CAP/SCAP endpoints for US regions. Users who need alternate endpoints can
+   change these configurations on their [self-hosted Palette VerteX](../../../vertex/vertex.md) installation.
 
    <details>
 
-   <summary> Click here to learn how to provide custom CAP/SCAP endpoints. </summary>
+   <summary> Custom CAP/SCAP endpoints </summary>
 
-   1. Open a terminal window on a host that can connect to the Palette or Palette VerteX management cluster.
-      Additionally, ensure that [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) is installed on
-      this host.
+   1. Open a terminal on a host that can connect to the Palette VerteX management cluster.
+      [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) must be installed on the host.
 
-   2. Download the [Kubeconfig](../../cluster-management/kubeconfig.md) file of the cluster..
+   2. Download the Palette VerteX management cluster's [Kubeconfig](../../cluster-management/kubeconfig.md) file.
 
    3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
@@ -416,21 +392,29 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
       export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
       ```
 
-   4. If you are using AWS Secret cloud accounts, use the following command to set a custom endpoint. Replace the
-      `<customized-endpoint-url>` placeholder with your own value.
+   4. Use the following command to set a custom endpoint. Replace `<customized-endpoint-url>` with your own value.
+
+      <Tabs>
+
+      <TabItem value="secret" label="AWS Secret Cloud">
 
       ```shell
       kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISO_URL="<customized-endpoint-url>"
       ```
 
-      If you are using AWS Top Secret cloud accounts, use the following command to set a custom endpoint. Replace the
-      `<customized-endpoint-url>` placeholder with your own value.
+      </TabItem>
+
+      <TabItem value="top-secret" label="AWS Top Secret Cloud">
 
       ```shell
       kubectl --namespace hubble-system set env deployment/cloud CUSTOM_ISOB_URL="<customized-endpoint-url>"
       ```
 
-   5. Verify that the change has been applied with the following command.
+      </TabItem>
+
+      </Tabs>
+
+   5. Verify the change was applied.
 
       ```shell
       kubectl --namespace hubble-system get deploy cloud --output jsonpath='{.spec.template.spec.containers[*].env}'
@@ -440,28 +424,17 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
       [{"name":"CUSTOM_ISO_URL","value":"<customized-endpoint-url>"}]
       ```
 
-   </details>
+    </details>
 
-6. Click the **Validate** button to validate the credentials.
-
-7. Once the credentials are validated, verified by a green check mark, the **Add IAM Policies** toggle is displayed.
-   Toggle **Add IAM Policies** on.
-
-8. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
-   policies you want to assign to the Palette IAM role or IAM user.
-
-9. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud
-   Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the
-   **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the
-   [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
-
-10. Click **Confirm** to create your AWS Secret Cloud account.
+6. <PartialsComponent
+     category="clusters-aws-account-setup"
+     name="aws-static-dynamic-credentials-enablement-2"
+     edition="Palette VerteX"
+   />
 
 #### Validate
 
-You can verify that the account is available in Palette by reviewing the list of cloud accounts. To review the list of
-cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your
-newly added AWS cloud account is listed under the AWS section.
+<PartialsComponent category="clusters-aws-account-setup" name="aws-account-setup-validate" edition="Palette VerteX" />
 
 <!-- ### EKS Pod Identity
 

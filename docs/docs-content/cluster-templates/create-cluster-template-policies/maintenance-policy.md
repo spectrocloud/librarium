@@ -7,13 +7,10 @@ sidebar_position: 10
 tags: ["cluster templates", "policies"]
 ---
 
-:::preview
-
-:::
-
 A maintenance policy is a required component for [cluster templates](../cluster-templates.md). Maintenance policies
 determine when and how upgrades are executed on the cluster. Since clusters can be provisioned across multiple regions
-and time zones, upgrades are executed based on Coordinated Universal Time (UTC).
+and time zones, upgrades are executed based on the cluster's time zone, which is set during cluster deployment. This
+ensures updates occur at optimal times for each cluster, such as when traffic is low.
 
 When the cluster profile version linked to a cluster template is updated, or when profiles are added, deleted, or
 replaced, the associated maintenance policy automatically schedules upgrades for all active clusters. These clusters are
@@ -44,8 +41,6 @@ Use the following procedure to create a maintenance policy to schedule automatic
 cluster templates.
 
 ### Prerequisites
-
-- The **ClusterTemplate** [feature flag](../../enterprise-version/system-management/feature-flags.md) enabled.
 
 - The `spcPolicy.create` permission to create cluster template policies. Refer to our
   [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
@@ -82,7 +77,7 @@ cluster templates.
     #### Custom Schedules
 
     Use the options described in the following table to create a **Custom** schedule. All upgrade times are relative to
-    UTC.
+    the cluster's time zone.
 
     ![Configuring a schedule for a maintenance policy](/cluster-templates_create-cluster-template-policies_maintenance-policies_schedule.webp)
 
@@ -139,8 +134,6 @@ regardless if they are attached to a cluster template and the template is or is 
 
 ### Prerequisites
 
-- The **ClusterTemplate** [feature flag](../../enterprise-version/system-management/feature-flags.md) enabled.
-
 - The `spcPolicy.update` permission to update cluster template policies. Refer to our
   [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
   information.
@@ -172,8 +165,6 @@ Use the following procedure to delete an existing, detached maintenance policy. 
 if it is not linked to a cluster template, regardless of whether the template is or is not attached to a cluster.
 
 ### Prerequisites
-
-- The **ClusterTemplate** [feature flag](../../enterprise-version/system-management/feature-flags.md) enabled.
 
 - The `spcPolicy.delete` permission to delete cluster template policies. Refer to our
   [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
