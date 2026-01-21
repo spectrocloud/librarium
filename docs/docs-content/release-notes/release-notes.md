@@ -218,6 +218,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Deploy Edge Hosts on MAAS](../clusters/edge/site-deployment/maas-deployment.md) for step-by-step instructions on
   uploading images to MAAS and deploying Edge hosts using the MAAS UI.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-5843 -->
+
+- The EdgeForge workflow now supports the creation of images that support Edge cluster deployment on
+  [Amazon EC2](https://aws.amazon.com/ec2/). The `aws-cloud-image` target takes a CanvOS raw disk image and imports it
+  into AWS, creating and registering an Amazon Machine Image (AMI) that can be used to launch EC2 instances. Refer to
+  the [Build AWS Cloud Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image.md) guide for
+  further information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-7782 -->
