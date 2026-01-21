@@ -11,7 +11,85 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## January 23, 2026 - Component Updates {#component-updates-2026-04}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.22.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.27.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.27.1  |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2095 -->
+
+- The
+  [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws),
+  [`spectrocloud_cluster_custom_cloud`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_custom_cloud),
+  and
+  [`spectrocloud_cluster_maas`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  Terraform resources now provide the `cluster_type` field, which can be set during cluster provisioning. This
+  improvement allows facilitates cluster migration between cloud providers.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1954 -->
+
+- The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+  now provides the `spectrocloud_cluster_brownfield` resource to support cluster import operations.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2094 -->
+
+- Fixed an issue that caused Terraform updates to fail on
+  [EKS clusters](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  configured with Karpenter managed machine pools.
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3493 -->
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Nvidia GPU Operator" url="/integrations/?pack=nvidia-gpu-operator-ai" /> pack version 25.10.0 is now available in [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3374 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3175 -->
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| AWS Cluster Autoscaler      | Add-on     | :white_check_mark: | :x:                | 9.54.1      |
+| Argo CD                     | CSI        | :white_check_mark: | :x:                | 9.2.0       |
+| Amazon EBS CSI              | CSI        | :white_check_mark: | :x:                | 1.54.0      |
+| Amazon EFS                  | CSI        | :white_check_mark: | :x:                | 3.3.0       |
+| Calico                      | CNI        | :x:                | :white_check_mark: | 3.31.3      |
+| Calico Network Policy       | Add-on     | :white_check_mark: | :x:                | 3.31.3      |
+| External DNS                | Add-on     | :white_check_mark: | :x:                | 1.20.0      |
+| External Secrets            | Add-on     | :white_check_mark: | :x:                | 1.2.1       |
+| Flannel                     | CNI        | :white_check_mark: | :x:                | 0.28.0      |
+| GCE Persistent Disk CSI     | CSI        | :white_check_mark: | :x:                | 1.23.3      |
+| Karpenter                   | Add-on     | :x:                | :white_check_mark: | 1.8.3       |
+| Kong                        | Add-on     | :white_check_mark: | :x:                | 3.0.1       |
+| Kong                        | Add-on     | :white_check_mark: | :x:                | 3.0.2       |
+| Kubernetes Dashboard        | Add-on     | :white_check_mark: | :x:                | 7.14.0      |
+| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 27.52.0     |
+| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 80.6.0      |
+
 ## January 19, 2026 - Release 4.8.22
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5856 -->
 
@@ -19,6 +97,10 @@ tags: ["release-notes"]
   default resource limits.
 
 ## January 18, 2026 - Release 4.8.21 {#release-notes-4.8.a}
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -469,6 +551,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ## December 30, 2025 - Release 4.8.16
 
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+
 ### Improvements
 
 <!-- prettier-ignore-start -->
@@ -576,6 +662,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 The following component updates are applicable to this release:
 
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 #### Features
 
@@ -773,6 +860,7 @@ The following component updates are applicable to this release:
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -831,6 +919,7 @@ The following component updates are applicable to this release:
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 ### Security Notices
 
