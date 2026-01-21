@@ -35,9 +35,6 @@ tags: ["release-notes"]
 - Fixed an issue that prevented Palette from correctly loading the **Events** tab on
   [Edge hosts](../clusters/edge/edge.md) when the **Tenant Admin** scope is selected.
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
-
-- Fixed an issued the caused the `/clusterprofiles` [API](/api/introduction) endpoint to respond slowly.
 
 ## January 19, 2026 - Release 4.8.22
 
