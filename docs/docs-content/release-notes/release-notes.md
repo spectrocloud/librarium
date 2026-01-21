@@ -50,10 +50,13 @@ The following components have been updated for Palette version 4.8.6 - 4.8.22.
 #### Pack Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3493 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3360 -->
 
 <!-- prettier-ignore-start -->
 
 - The <VersionedLink text="NVIDIA GPU Operator" url="/integrations/?pack=nvidia-gpu-operator-ai" /> pack version 25.10.0 is now available in [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/?pack=spectro-k8s-dashboard" /> pack version 7.14.0 now provides **Custom** access mode. This mode allows you to provide custom networking values.
 
 <!-- prettier-ignore-end -->
 
