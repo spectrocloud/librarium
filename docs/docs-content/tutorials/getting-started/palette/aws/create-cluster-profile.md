@@ -58,9 +58,9 @@ version you select, a YAML editor will open. Click **Confirm Changes** to procee
 | Pack Name                   | Version | Registry    | Layer            |
 | --------------------------- | ------- | ----------- | ---------------- |
 | Ubuntu                      | 22.4.x  | Public Repo | Operating System |
-| Palette eXtended Kubernetes | 1.29.x  | Public Repo | Kubernetes       |
-| Calico                      | 3.27.x  | Public Repo | Network          |
-| Amazon EBS CSI              | 1.26.x  | Public Repo | Storage          |
+| Palette eXtended Kubernetes | 1.32.x  | Public Repo | Kubernetes       |
+| Calico                      | 3.30.x  | Public Repo | Network          |
+| Amazon EBS CSI              | 1.51.x  | Public Repo | Storage          |
 
 As you select each layer, click on **Next Layer** to proceed to the next one.
 
