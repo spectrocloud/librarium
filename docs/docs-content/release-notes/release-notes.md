@@ -44,10 +44,10 @@ tags: ["release-notes"]
 - [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.22 is now
   available. This version uses the following components internally:
-  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
-  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.2
-  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.10.1
-  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.89
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> 1.33.5
+  - <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />  3.31.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi" /> 2.10.1
+  - <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> 0.1.89
 
 <!-- prettier-ignore-end -->
 
