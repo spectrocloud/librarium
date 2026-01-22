@@ -815,3 +815,4 @@ eb60dbd05b07dd34f27d81f36d413da34e591402:docs/docs-content/automation/crossplane
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-aws-crossplane.md:generic-api-key:253
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-gcp-crossplane.md:generic-api-key:252
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-azure-crossplane.md:generic-api-key:252
+ea43e35d5748e7a3e2dcbb3011fd2ad4ac62ffe0:docs/docs-content/tutorials/clusters/cluster-templates/deploy-clusters-with-cluster-templates.md:generic-api-key:120
