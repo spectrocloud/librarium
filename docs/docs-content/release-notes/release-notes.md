@@ -37,6 +37,22 @@ tags: ["release-notes"]
 
 ## January 19, 2026 - Release 4.8.22
 
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
+<!-- prettier-ignore-start -->
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.22 is now
+  available. This version uses the following components internally:
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> 1.33.5
+  - <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />  3.31.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi" /> 2.10.1
+  - <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> 0.1.89
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5856 -->
 
 - Fixed an issue that caused Palette deployments and cluster updates to become stuck due to incorrectly configured
@@ -104,18 +120,6 @@ tags: ["release-notes"]
   allowing public Zarf packages to be automatically imported into Palette. This setting is only available for new OCI
   registries and is disabled by default on existing registries. This setting is immutable and cannot be changed once the
   OCI registry is added to Palette.
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
-<!-- prettier-ignore-start -->
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.18 is now
-  available. This version uses the following components internally:
-  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
-  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.2
-  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.10.1
-  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.89
-
-<!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4241 -->
 
