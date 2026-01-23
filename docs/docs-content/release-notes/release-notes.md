@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## January 23, 2026 - Component Updates {#component-updates-2026-04}
 
-The following components have been updated for Palette version 4.8.6 - 4.8.22.
+The following components have been updated for Palette version 4.8.6 - 4.8.24.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
@@ -30,7 +30,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.22.
   and
   [`spectrocloud_cluster_maas`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
   Terraform resources now provide the `cluster_type` field, which can be set during cluster provisioning. This
-  improvement allows facilitates cluster migration between cloud providers.
+  improvement facilitates cluster migration between cloud providers.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-1954 -->
 
@@ -49,12 +49,9 @@ The following components have been updated for Palette version 4.8.6 - 4.8.22.
 
 #### Pack Notes
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3493 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3360 -->
 
 <!-- prettier-ignore-start -->
-
-- The <VersionedLink text="NVIDIA GPU Operator" url="/integrations/?pack=nvidia-gpu-operator-ai" /> pack version 25.10.0 is now available in [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 - The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/?pack=spectro-k8s-dashboard" /> pack version 7.14.0 now provides **Custom** access mode. This mode allows you to provide custom networking values.
 
@@ -66,7 +63,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.22.
 
 | Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
 | --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| AWS Cluster Autoscaler      | Add-on     | :white_check_mark: | :x:                | 9.54.1      |
 | Argo CD                     | CSI        | :white_check_mark: | :x:                | 9.2.0       |
 | Amazon EBS CSI              | CSI        | :white_check_mark: | :x:                | 1.54.0      |
 | Amazon EFS                  | CSI        | :white_check_mark: | :x:                | 3.3.0       |
@@ -74,32 +70,35 @@ The following components have been updated for Palette version 4.8.6 - 4.8.22.
 | Calico Network Policy       | Add-on     | :white_check_mark: | :x:                | 3.31.3      |
 | External DNS                | Add-on     | :white_check_mark: | :x:                | 1.20.0      |
 | External Secrets            | Add-on     | :white_check_mark: | :x:                | 1.2.1       |
-| Flannel                     | CNI        | :white_check_mark: | :x:                | 0.28.0      |
 | GCE Persistent Disk CSI     | CSI        | :white_check_mark: | :x:                | 1.23.3      |
 | Karpenter                   | Add-on     | :x:                | :white_check_mark: | 1.8.3       |
 | Kong                        | Add-on     | :white_check_mark: | :x:                | 3.0.1       |
-| Kong                        | Add-on     | :white_check_mark: | :x:                | 3.0.2       |
 | Kubernetes Dashboard        | Add-on     | :white_check_mark: | :x:                | 7.14.0      |
-| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
 | RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
 | RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
 | RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
-| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
 | Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 27.52.0     |
 | Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 80.6.0      |
 
-## January 19, 2026 - Release 4.8.22
+## January 23, 2026 - Release 4.8.24
 
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
-## January 23, 2026 - Release 4.8.24
+
+### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
 
 - Fixed an issued the caused the `/clusterprofiles` [API](/api/introduction) endpoint to respond slowly.
 
 ## January 21, 2026 - Release 4.8.23
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+
+### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9664 -->
 
@@ -124,6 +123,10 @@ The following component updates are applicable to this release:
   [Edge hosts](../clusters/edge/edge.md) when the **Tenant Admin** scope is selected.
 
 ## January 19, 2026 - Release 4.8.22
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 ### Features
 
