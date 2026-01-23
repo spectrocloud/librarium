@@ -11,6 +11,12 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## January 23, 2026 - Release 4.8.24
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
+
+- Fixed an issued the caused the `/clusterprofiles` [API](/api/introduction) endpoint to respond slowly.
+
 ## January 21, 2026 - Release 4.8.23
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9664 -->
