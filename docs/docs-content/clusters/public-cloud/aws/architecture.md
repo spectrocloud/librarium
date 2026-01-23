@@ -160,13 +160,32 @@ Where:
 When setting the desired size of the worker pool, make the choice as per pod requirement. In the example provided, two
 instances of t3.medium are needed to satisfy the resource requirement of an EKS cluster.
 
-## Spot Instances
+## Instance Options
 
-By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot
-instance pricing you can specify spot instances when creating a cluster. The **On-Spot** option can be selected in the
-node configuration page during cluster creation. This option allows you to specify a maximum bid price for the nodes as
-a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the
-spot price falls in the specified range.
+You can specify different instance options for your nodes to optimize cost and performance. By default, node pools are
+configured to use on-demand instances, which provide flexibility and reliability. However, Palette also supports the use
+of spot instances and Dedicated Hosts.
+
+### Spot Instances
+
+To take advantage of discounted spot instance pricing, select an **Instance Option** of **On-Spot** when configuring
+your nodes during the cluster creation process. This option allows you to specify a maximum bid price for the nodes as a
+percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes when the spot
+price falls in the specified range.
+
+### Dedicated Hosts
+
+:::info
+
+Dedicated Hosts are only supported in AWS IaaS clusters.
+
+:::
+
+Palette supports launching node pools on AWS Dedicated Hosts. Dedicated Hosts are physical servers with EC2 instance
+capacity fully dedicated to your use. This helps you address compliance requirements and reduce costs by allowing you to
+use your existing server-bound software licenses. To use Dedicated Hosts, select an **Instance Option** of **Host
+Resource Group** when configuring your nodes during the cluster creation process. This option allows you to specify the
+host resource group and any license configurations required for your deployment.
 
 ## Tags
 

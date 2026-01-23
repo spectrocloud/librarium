@@ -143,6 +143,15 @@ If you plan to deploy AWS EKS host clusters, make sure to attach the **PaletteCo
 
 <PartialsComponent category="permissions" name="aws-eks-controller-policy" />
 
+## Host Resource Groups Policy
+
+If you plan to deploy AWS IaaS clusters on
+[Amazon EC2 Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html), you
+must attach the **PaletteHostResourceGroupsPolicy** on top of the [Core IAM](#core-iam-policies) or
+[Minimum Permissions](#minimum-permissions-policies) policies.
+
+<PartialsComponent category="permissions" name="aws-host-resource-groups-policy" />
+
 ## Global Role Additional Policies
 
 There may be situations where additional node-level policies must be added to your deployment. For instance, when you

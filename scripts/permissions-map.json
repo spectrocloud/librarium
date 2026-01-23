@@ -7,6 +7,7 @@
   "aws/MinimumDynamicPermissions.json": "_partials/permissions/_aws-dynamic-permissions.mdx",
   "aws/AmazonEBSCSIDriverPolicy.yaml": "_partials/permissions/_aws-ebs-csi-driver-policy.mdx",
   "aws/ControllersEKSPolicy.json": "_partials/permissions/_aws-eks-controller-policy.mdx",
+  "aws/HostResourceGroupsPolicy.json": "_partials/permissions/_aws-host-resource-groups-policy.mdx",
   "azure/iaas/dynamic-placement/rg_sub_role.json": "_partials/permissions/_azure-iaas-dynamic-rg-sub-role.mdx",
   "azure/iaas/static-placement/rg_sub_role.json": "_partials/permissions/_azure-iaas-static-rg-sub-role.mdx",
   "azure/iaas/static-placement/vnet_role.json": "_partials/permissions/_azure-iaas-static-vnet-role.mdx",

@@ -1,0 +1,75 @@
+---
+sidebar_label: "Registry Connect"
+title: "Registry Connect"
+description: "Registry Connect pack in Palette Edge."
+hide_table_of_contents: true
+type: "registry"
+sidebar_class_name: "hide-from-sidebar"
+tags: ["packs", "registry", "edge"]
+---
+
+<RedirectPackPage packName="registry-connect" />
+
+### Use External Image Registries
+
+You can use external registries with the Registry Connect pack. 
+
+Modify the `imageReplacementRules` parameter to rewrite container image references to an external registry.
+
+#### Rewrite All Image References
+
+Use the `all` keyword to add a prefix to all image references. The following example shows how to use this keyword in your pack's YAML file. 
+
+```yaml
+pack:
+  ...
+charts:
+  registry-connect:
+     config:
+       ...
+       registry:
+         imageReplacementRules: |
+           "all": "example.registry.com/internal-images"
+```
+
+In this case, the prefix `example.registry.com/internal-images` is prepended to all image references. For example,
+`us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`
+is rewritten as
+`example.registry.com/internal-images/us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
+
+#### Rewrite Image References for Specific Registries
+
+You can rewrite image references by replacing one or more source registry prefixes with external registry prefixes.
+
+The following example shows how to rewrite image references to use `example.registry.com/internal-images`.
+
+
+```yaml
+pack:
+  namespace: "cluster-{{ .spectro.system.cluster.uid }}"
+  content:
+    layer: core
+    images:
+      - image: us-docker.pkg.dev/palette-images/third-party/ubuntu-util:22.04
+
+charts:
+  registry-connect:
+    config:
+      content:
+        sync:
+          enable: false
+      registry:
+        imageReplacementRules: |
+            "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+            "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+            "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+            "grc.io/spectro-images-public": "example.registry.com/internal-images"
+        credentials:
+          - domain: 10.10.10.10
+            username: admin # you may provide value with 'username' key or you may use 'usernameRef' to refer
+            password: ""
+...
+```
+
+Based on the defined rules, an image originally referenced as `us-docker.pkg.dev/palette-images/packs/flannel/0.27.0/cni-plugins:v1.6.2` is rewritten to `example.registry.com/internal-images/packs/flannel/0.27.0/cni-plugins:v1.6.2`.
+This replacement occurs whenever the image reference matches one of the specified source registry prefixes.
