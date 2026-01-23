@@ -61,24 +61,24 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3605 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3175 -->
 
-| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
-| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Argo CD                     | CSI        | :white_check_mark: | :x:                | 9.2.0       |
-| Amazon EBS CSI              | CSI        | :white_check_mark: | :x:                | 1.54.0      |
-| Amazon EFS                  | CSI        | :white_check_mark: | :x:                | 3.3.0       |
-| Calico                      | CNI        | :x:                | :white_check_mark: | 3.31.3      |
-| Calico Network Policy       | Add-on     | :white_check_mark: | :x:                | 3.31.3      |
-| External DNS                | Add-on     | :white_check_mark: | :x:                | 1.20.0      |
-| External Secrets            | Add-on     | :white_check_mark: | :x:                | 1.2.1       |
-| GCE Persistent Disk CSI     | CSI        | :white_check_mark: | :x:                | 1.23.3      |
-| Karpenter                   | Add-on     | :x:                | :white_check_mark: | 1.8.3       |
-| Kong                        | Add-on     | :white_check_mark: | :x:                | 3.0.1       |
-| Kubernetes Dashboard        | Add-on     | :white_check_mark: | :x:                | 7.14.0      |
-| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
-| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
-| RKE2                        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
-| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 27.52.0     |
-| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 80.6.0      |
+| Pack Name               | Layer      | Non-FIPS           | FIPS               | New Version |
+| ----------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Argo CD                 | CSI        | :white_check_mark: | :x:                | 9.2.0       |
+| Amazon EBS CSI          | CSI        | :white_check_mark: | :x:                | 1.54.0      |
+| Amazon EFS              | CSI        | :white_check_mark: | :x:                | 3.3.0       |
+| Calico                  | CNI        | :x:                | :white_check_mark: | 3.31.3      |
+| Calico Network Policy   | Add-on     | :white_check_mark: | :x:                | 3.31.3      |
+| External DNS            | Add-on     | :white_check_mark: | :x:                | 1.20.0      |
+| External Secrets        | Add-on     | :white_check_mark: | :x:                | 1.2.1       |
+| GCE Persistent Disk CSI | CSI        | :white_check_mark: | :x:                | 1.23.3      |
+| Karpenter               | Add-on     | :x:                | :white_check_mark: | 1.8.3       |
+| Kong                    | Add-on     | :white_check_mark: | :x:                | 3.0.1       |
+| Kubernetes Dashboard    | Add-on     | :white_check_mark: | :x:                | 7.14.0      |
+| RKE2                    | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| RKE2                    | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| RKE2                    | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Prometheus Agent        | Add-on     | :white_check_mark: | :x:                | 27.52.0     |
+| Prometheus Operator     | Add-on     | :white_check_mark: | :x:                | 80.6.0      |
 
 ## January 23, 2026 - Release 4.8.24
 
