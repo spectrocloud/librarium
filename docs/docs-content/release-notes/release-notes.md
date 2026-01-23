@@ -93,6 +93,53 @@ The following components have been updated for Palette version 4.8.6 - 4.8.22.
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+## January 23, 2026 - Release 4.8.24
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
+
+- Fixed an issued the caused the `/clusterprofiles` [API](/api/introduction) endpoint to respond slowly.
+
+## January 21, 2026 - Release 4.8.23
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9664 -->
+
+- Fixed an issue that prevented
+  [cluster role bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) configured with the
+  **Group** subject type from being correctly applied.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9663 -->
+
+- Fixed an issue that prevented the **Virtual Machines** tab on clusters configured with the
+  [Virtual Machine Orchestrator](../vm-management/vm-management.md) from displaying correctly.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9665 -->
+
+- Fixed an issue that prevented
+  [cluster profile versions](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) from being
+  displayed correctly on the **Profile** tab of Palette clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9656 -->
+
+- Fixed an issue that prevented Palette from correctly loading the **Events** tab on
+  [Edge hosts](../clusters/edge/edge.md) when the **Tenant Admin** scope is selected.
+
+## January 19, 2026 - Release 4.8.22
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
+<!-- prettier-ignore-start -->
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.22 is now
+  available. This version uses the following components internally:
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> 1.33.5
+  - <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />  3.31.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi" /> 2.10.1
+  - <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> 0.1.89
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5856 -->
 
@@ -165,18 +212,6 @@ The following component updates are applicable to this release:
   allowing public Zarf packages to be automatically imported into Palette. This setting is only available for new OCI
   registries and is disabled by default on existing registries. This setting is immutable and cannot be changed once the
   OCI registry is added to Palette.
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
-<!-- prettier-ignore-start -->
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.18 is now
-  available. This version uses the following components internally:
-  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
-  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.2
-  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.10.1
-  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.89
-
-<!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4241 -->
 
