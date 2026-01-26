@@ -37,8 +37,6 @@ instead of worker subnet.
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5517 -->
 - Fixed an issue where node groups in EKS clusters were configured with different Classless Inter-Domain Routing (CIDR)
 values in their launch templates.
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
-- Fixed an issued that caused slow responses from the `/clusterprofiles` [API](/api/introduction) endpoint.
 
 ## January 19, 2026 - Release 4.8.22
 
