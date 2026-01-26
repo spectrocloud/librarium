@@ -465,8 +465,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-8306 -->
 
-- The Virtual Machine Orchestrator (VMO) now supports the persistent EFI parameter, enhancing support for airgapped
-  usecases. Previously, VM creation only supported Secure Boot under bootloader.efi and omitted persistent.
+- The Virtual Machine Orchestrator (VMO) now supports the persistent EFI parameter, enhancing support for airgapped use
+  cases. Previously, VM creation only supported Secure Boot under bootloader.efi and omitted persistent.
 
 #### Bug Fixes
 
