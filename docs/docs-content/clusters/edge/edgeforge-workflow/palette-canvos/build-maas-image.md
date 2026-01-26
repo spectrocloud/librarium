@@ -42,7 +42,7 @@ your Edge deployment.
   - [Docker Engine](https://docs.docker.com/engine/install/)
   - (Optional) [Earthly](https://earthly.dev/)
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - [`qemu-utils`](https://installati.one/install-qemu-utils-ubuntu-20-04/)
+  - [`qemu-utils`](https://www.qemu.org/download/)
 
 ## Build MAAS Images
 
