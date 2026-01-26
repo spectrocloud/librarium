@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## January 30, 2026 - Release 4.8.X
 
-### Breaking Changes {#breaking-changes-4.8.x}
+### Breaking Changes
 
 - The number of IP addresses allocated for autoscaling
   [VMware vSphere clusters](../clusters/data-center/vmware/vmware.md) is now based on the **Maximum size** of the worker
@@ -36,9 +36,142 @@ tags: ["release-notes"]
 instead of worker subnet.
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5517 -->
 - Fixed an issue where node groups in EKS clusters were configured with different Classless Inter-Domain Routing (CIDR)
-values in their launch templates.
+  values in their launch templates.
+
+## January 23, 2026 - Component Updates {#component-updates-2026-04}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.24.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.27.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.27.1  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.23  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.23  |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2095 -->
+
+- The
+  [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws),
+  [`spectrocloud_cluster_custom_cloud`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_custom_cloud),
+  and
+  [`spectrocloud_cluster_maas`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  Terraform resources now provide the `cluster_type` field, which can be set during cluster provisioning. This
+  improvement facilitates cluster migration between cloud providers.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1954 -->
+
+- The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+  now provides the `spectrocloud_cluster_brownfield` resource to support cluster import operations.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2094 -->
+
+- Fixed an issue that caused Terraform updates to fail on
+  [EKS clusters](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  configured with Karpenter managed machine pools.
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3360 -->
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/?pack=spectro-k8s-dashboard" /> pack version 7.14.0 now provides **Custom** access mode. This mode allows you to provide custom networking values.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3374 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3605 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3175 -->
+
+| Pack Name               | Layer      | Non-FIPS           | FIPS               | New Version |
+| ----------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Argo CD                 | CSI        | :white_check_mark: | :x:                | 9.2.0       |
+| Amazon EBS CSI          | CSI        | :white_check_mark: | :x:                | 1.54.0      |
+| Amazon EFS              | CSI        | :white_check_mark: | :x:                | 3.3.0       |
+| Calico                  | CNI        | :x:                | :white_check_mark: | 3.31.3      |
+| Calico Network Policy   | Add-on     | :white_check_mark: | :x:                | 3.31.3      |
+| External DNS            | Add-on     | :white_check_mark: | :x:                | 1.20.0      |
+| External Secrets        | Add-on     | :white_check_mark: | :x:                | 1.2.1       |
+| GCE Persistent Disk CSI | CSI        | :white_check_mark: | :x:                | 1.23.3      |
+| Karpenter               | Add-on     | :x:                | :white_check_mark: | 1.8.3       |
+| Kong                    | Add-on     | :white_check_mark: | :x:                | 3.0.1       |
+| Kubernetes Dashboard    | Add-on     | :white_check_mark: | :x:                | 7.14.0      |
+| RKE2                    | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| RKE2                    | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| RKE2                    | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Prometheus Agent        | Add-on     | :white_check_mark: | :x:                | 27.52.0     |
+| Prometheus Operator     | Add-on     | :white_check_mark: | :x:                | 80.6.0      |
+
+## January 23, 2026 - Release 4.8.24
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9666 -->
+
+- Fixed an issued the caused the `/clusterprofiles` [API](/api/introduction) endpoint to respond slowly.
+
+## January 21, 2026 - Release 4.8.23
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9664 -->
+
+- Fixed an issue that prevented
+  [cluster role bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) configured with the
+  **Group** subject type from being correctly applied.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9663 -->
+
+- Fixed an issue that prevented the **Virtual Machines** tab on clusters configured with the
+  [Virtual Machine Orchestrator](../vm-management/vm-management.md) from displaying correctly.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9665 -->
+
+- Fixed an issue that prevented
+  [cluster profile versions](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) from being
+  displayed correctly on the **Profile** tab of Palette clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9656 -->
+
+- Fixed an issue that prevented Palette from correctly loading the **Events** tab on
+  [Edge hosts](../clusters/edge/edge.md) when the **Tenant Admin** scope is selected.
 
 ## January 19, 2026 - Release 4.8.22
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
+<!-- prettier-ignore-start -->
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.22 is now
+  available. This version uses the following components internally:
+  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> 1.33.5
+  - <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />  3.31.2
+  - <VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi" /> 2.10.1
+  - <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> 0.1.89
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5856 -->
 
@@ -46,6 +179,10 @@ values in their launch templates.
   default resource limits.
 
 ## January 18, 2026 - Release 4.8.21 {#release-notes-4.8.a}
+
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -107,18 +244,6 @@ values in their launch templates.
   allowing public Zarf packages to be automatically imported into Palette. This setting is only available for new OCI
   registries and is disabled by default on existing registries. This setting is immutable and cannot be changed once the
   OCI registry is added to Palette.
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
-<!-- prettier-ignore-start -->
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.18 is now
-  available. This version uses the following components internally:
-  - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/?pack=kubernetes" /> 1.33.5
-  - <VersionedLink text="Calico" url="/integrations/?pack=cni-calico" />  3.31.2
-  - <VersionedLink text="Piraeus CSI" url="/integrations/?pack=piraeus-csi" /> 2.10.1
-  - <VersionedLink text="Zot Registry" url="/integrations/?pack=zot-registry" /> 0.1.89
-
-<!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4241 -->
 
@@ -245,6 +370,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Deploy Edge Hosts on MAAS](../clusters/edge/site-deployment/maas-deployment.md) for step-by-step instructions on
   uploading images to MAAS and deploying Edge hosts using the MAAS UI.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-5843 -->
+
+- The EdgeForge workflow now supports the creation of images that support Edge cluster deployment on
+  [Amazon EC2](https://aws.amazon.com/ec2/). The `aws-cloud-image` target takes a CanvOS raw disk image and imports it
+  into AWS, creating and registering an Amazon Machine Image (AMI) that can be used to launch EC2 instances. Refer to
+  the [Build AWS Cloud Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image.md) guide for
+  further information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-7782 -->
@@ -359,8 +492,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net//browse/PEM-8306 -->
 
-- The Virtual Machine Orchestrator (VMO) now supports the persistent EFI parameter, enhancing support for airgapped
-  usecases. Previously, VM creation only supported Secure Boot under bootloader.efi and omitted persistent.
+- The Virtual Machine Orchestrator (VMO) now supports the persistent EFI parameter, enhancing support for airgapped use
+  cases. Previously, VM creation only supported Secure Boot under bootloader.efi and omitted persistent.
 
 #### Bug Fixes
 
@@ -488,6 +621,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ## December 30, 2025 - Release 4.8.16
 
+The following component updates are applicable to this release:
+
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+
 ### Improvements
 
 <!-- prettier-ignore-start -->
@@ -595,6 +732,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 The following component updates are applicable to this release:
 
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 #### Features
 
@@ -792,6 +930,7 @@ The following component updates are applicable to this release:
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -850,6 +989,7 @@ The following component updates are applicable to this release:
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 
 ### Security Notices
 
