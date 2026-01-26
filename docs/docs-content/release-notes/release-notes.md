@@ -15,6 +15,8 @@ tags: ["release-notes"]
 
 ### Breaking Changes
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-6205 -->
+
 - The number of IP addresses allocated for autoscaling
   [VMware vSphere clusters](../clusters/data-center/vmware/vmware.md) is now based on the **Maximum size** of the worker
   pool instead of the number of worker nodes currently deployed. This ensures enough IP addresses are reserved upfront
@@ -24,19 +26,46 @@ tags: ["release-notes"]
 
 ### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-6205 -->
+
 - Autoscaling is now supported for VMware vSphere clusters using an
   [IP Address Management (IPAM) node pool](../clusters/pcg/manage-pcg/create-manage-node-pool.md) with
   [static placement configured](../clusters/pcg/deploy-pcg/vmware.md#static-placement-configuration).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
+
+<!-- - Resource limits for core system components now scale automatically based on the number of cluster nodes. Limits can be manually adjusted for Day-1 and Day-2 operations by editing the `palette-agent-config` ConfigMap in the cluster namespace. Refer to ______ for details. I'm not sure if this is currently part of the patch or 4.8.b; I've asked for clarification in https://spectrocloud.atlassian.net/browse/PCP-5803. We will likely need a new page under clusters > cluster management talking about how Palette sets limits and how to override them -->
+
 ### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5517 -->
+
+- Fixed an issue where node groups in EKS clusters were configured with different Classless Inter-Domain Routing (CIDR)
+  values in their launch templates.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5764 -->
+
+- Fixed an issue where Azure and GCP clusters using Kubernetes version 1.34.2 and later experienced Kubelet failures due
+  to the upstream removal of the `--cloud-config` flag.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5781 -->
 
 - Fixed an issue where worker nodes in static AKS clusters were assigned IP addresses from the control plane subnet
-instead of worker subnet.
-<!-- https://spectrocloud.atlassian.net/browse/PCP-5517 -->
-- Fixed an issue where node groups in EKS clusters were configured with different Classless Inter-Domain Routing (CIDR)
-  values in their launch templates.
+  instead of worker subnet.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9653 -->
+
+- Fixed an issue where self-hosted Palette and Palette VerteX users with the Tenant Viewer role could access password
+  reset links via the Palette API.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9672 -->
+
+- Fixed an issue where namespace-scoped RoleBindings could not be created in the Palette UI for clusters with Palette as
+  an identity provider (IdP) and automatic role binding disabled.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9693 -->
+
+- Fixed a UI issue where pagination did not work when attempting to replace a cluster profile on a cluster.
 
 ## January 23, 2026 - Component Updates {#component-updates-2026-04}
 
