@@ -34,7 +34,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
 
-<!-- - Resource limits for core system components now scale automatically based on the number of cluster nodes. Limits can be manually adjusted for Day-1 and Day-2 operations by editing the `palette-agent-config` ConfigMap in the cluster namespace. Refer to ______ for details. I'm not sure if this is currently part of the patch or 4.8.b; I've asked for clarification in https://spectrocloud.atlassian.net/browse/PCP-5803. We will likely need a new page under clusters > cluster management talking about how Palette sets limits and how to override them -->
+- Resource limits for core system components can now be adjusted for Day-1 operations by editing the `palette-agent-config` ConfigMap in the cluster namespace.
 
 ### Bug Fixes
 
