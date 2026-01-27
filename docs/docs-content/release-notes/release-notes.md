@@ -34,8 +34,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
 
-- Resource limits for core system components can now be adjusted for Day-1 operations by editing the
-  `palette-agent-config` ConfigMap in the cluster namespace.
+- Resource limits for core system components can now be adjusted for Day-1 operations by editing the `palette-agent-config` ConfigMap in the cluster namespace.
 
 ### Bug Fixes
 
