@@ -3,20 +3,21 @@ partial_category: eks-pod-identity
 partial_name: eks-pod-identity-validate
 ---
 
-1. Log in to Palette or Palette VerteX as tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
-2. From the left main menu, click on **Tenant Settings**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. Ensure **Cloud Accounts** is selected. Your newly added AWS cloud account is listed under the AWS section.
+3. From the **Tenant Settings** menu, select **Cloud Accounts**.
 
-4. Open a terminal session and ensure you have access to the kubeconfig file for the Amazon EKS cluster where Palette or
-   Palette VerteX is deployed. Set the `KUBECONFIG` environment variable to point to the file.
+4. Verify that your AWS account appears in the **AWS** section.
+
+5. Open a terminal session and ensure you have access to the kubeconfig file for the Amazon EKS cluster where Palette or Palette VerteX is deployed. Set the `KUBECONFIG` environment variable to point to the file.
 
    ```bash
    export KUBECONFIG=/path/to/kubeconfig/file
    ```
 
-5. Issue the following `kubectl` commands to verify that EKS Pod Identity has set the required environment variables for the `spectro-hubble`
+6. Issue the following `kubectl` commands to verify that EKS Pod Identity has set the required environment variables for the `spectro-hubble`
    and `palette-identity` pods.
 
    ```bash

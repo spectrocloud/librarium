@@ -70,7 +70,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/alexflint/go-filemutex                                                      | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/antlr4-go/antlr/v4                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/apparentlymart/go-cidr                                                      | [MIT](https://opensource.org/license/mit/)                  |
-| github.com/armon/circbuf                                                               | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/aws/aws-sdk-go-v2                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/aws/aws-sdk-go-v2/config                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/aws/aws-sdk-go-v2/credentials                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -82,6 +81,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/aws/aws-sdk-go-v2/service/internal/presigned-url                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/aws/aws-sdk-go-v2/service/route53                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/aws/aws-sdk-go-v2/service/secretsmanager                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/aws/aws-sdk-go-v2/service/signin                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/aws/aws-sdk-go-v2/service/sso                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/aws/aws-sdk-go-v2/service/ssooidc                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/aws/aws-sdk-go-v2/service/sts                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -111,6 +111,9 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/cheggaaa/pb/v3                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/cihub/seelog                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/cilium/ebpf                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/clipperhouse/displaywidth                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/clipperhouse/stringish                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/clipperhouse/uax29/v2                                                       | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/container-storage-interface/spec                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/containerd/btrfs/v2                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/containerd/cgroups/v3                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -209,10 +212,9 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/googleapis/enterprise-certificate-proxy                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/googleapis/gax-go/v2                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/gorilla/websocket                                                           | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
-| github.com/gregjones/httpcache                                                         | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/grpc-ecosystem/go-grpc-middleware                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/grpc-ecosystem/go-grpc-middleware/v2                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/grpc-ecosystem/go-grpc-prometheus                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/grpc-ecosystem/grpc-gateway/v2                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/grpc-ecosystem/grpc-opentracing                                             | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/hashicorp/cronexpr                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -233,7 +235,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/josharian/intern                                                            | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/josharian/native                                                            | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/json-iterator/go                                                            | [MIT](https://opensource.org/license/mit/)                  |
-| github.com/karrick/godirwalk                                                           | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
 | github.com/klauspost/compress                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/klauspost/cpuid/v2                                                          | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/knqyf263/go-plugin                                                          | [MIT](https://opensource.org/license/mit/)                  |
@@ -284,6 +285,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/mxk/go-flowrate                                                             | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/networkplumbing/go-nft                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/NYTimes/gziphandler                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/olekukonko/cat                                                              | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/olekukonko/errors                                                           | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/olekukonko/ll                                                               | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/olekukonko/tablewriter                                                      | [MIT](https://opensource.org/license/mit/)                  |
@@ -299,8 +301,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/opentracing/opentracing-go                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/openzipkin-contrib/zipkin-go-opentracing                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/openzipkin/zipkin-go                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/oschwald/geoip2-golang                                                      | [ISC](https://opensource.org/license/isc-license-txt)       |
-| github.com/oschwald/maxminddb-golang                                                   | [ISC](https://opensource.org/license/isc-license-txt)       |
+| github.com/oschwald/geoip2-golang/v2                                                   | [ISC](https://opensource.org/license/isc-license-txt)       |
+| github.com/oschwald/maxminddb-golang/v2                                                | [ISC](https://opensource.org/license/isc-license-txt)       |
 | github.com/outcaste-io/ristretto                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/pelletier/go-toml/v2                                                        | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/peterbourgon/diskv                                                          | [MIT](https://opensource.org/license/mit/)                  |
@@ -317,8 +319,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/prometheus/common                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/prometheus/procfs                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/puzpuzpuz/xsync/v3                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/quic-go/qpack                                                               | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/quic-go/quic-go                                                             | [MIT](https://opensource.org/license/mit/)                  |
-| github.com/rivo/uniseg                                                                 | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/robfig/cron/v3                                                              | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/russross/blackfriday/v2                                                     | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
 | github.com/safchain/ethtool                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -388,7 +390,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | go.uber.org/multierr                                                                   | [MIT](https://opensource.org/license/mit/)                  |
 | go.uber.org/zap                                                                        | [MIT](https://opensource.org/license/mit/)                  |
 | go.yaml.in/yaml/v2                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| go.yaml.in/yaml/v3                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| go.yaml.in/yaml/v3                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | golang.org/x/crypto                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | golang.org/x/exp                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | golang.org/x/mod                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
@@ -411,7 +413,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | gopkg.in/inf.v0                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | gopkg.in/ini.v1                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | gopkg.in/natefinch/lumberjack.v2                                                       | [MIT](https://opensource.org/license/mit/)                  |
-| gopkg.in/yaml.v3                                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| gopkg.in/yaml.v3                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/api                                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/apimachinery                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/cli-runtime                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -435,7 +437,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | sigs.k8s.io/mcs-api                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | sigs.k8s.io/randfill                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | sigs.k8s.io/structured-merge-diff/v6                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| sigs.k8s.io/yaml                                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| sigs.k8s.io/yaml                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | tags.cncf.io/container-device-interface                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | tags.cncf.io/container-device-interface/specs-go                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 
