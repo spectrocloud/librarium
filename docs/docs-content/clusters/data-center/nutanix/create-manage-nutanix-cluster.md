@@ -38,6 +38,12 @@ section guides you in creating and updating a Kubernetes cluster in a Nutanix cl
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to
   [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
+- If configuring the **Cert Manager** pack , ensure that you use version 1.19.1 or later. It is also important to
+  ensure:
+  - `crds.enabled` is set to `false`.
+  - `cainjector.enabled` is set to `false` or `cainjector.replicas` is set to `0`.
+  - `nodeSelector` or `nodeAffinity` is set to prevent scheduling of Cert Manager on control pane nodes.
+
 ### Enablement
 
 Follow the steps below to deploy a Nutanix cluster.
@@ -136,13 +142,15 @@ Follow the steps below to deploy a Nutanix cluster.
 
 11. Click **Next** when you are done.
 
-12. Review the options for OS patching schedule, scanning, backups, and RBAC.
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. Click **Validate** and review the cluster configuration and settings summary.
+13. Select **Validate** to review your cluster configuration and settings.
 
-14. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of
-    the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to
-    complete.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ### Validate
 
