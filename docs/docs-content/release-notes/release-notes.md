@@ -203,7 +203,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
-- [January 3 , 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 
 ### Features
 
