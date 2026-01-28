@@ -65,7 +65,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 | Crossplane                         | Add-on     | :white_check_mark: | :x:                | 2.1.3       |
 | Flannel                            | CNI        | :white_check_mark: | :x:                | 0.28.0      |
 | Fluentbit                          | Add-on     | :white_check_mark: | :x:                | 4.2.2       |
-| Fluentbit                          | Add-on     | :white_check_mark: | :x:                | 4.1.1     |
+| Fluentbit                          | Add-on     | :white_check_mark: | :x:                | 4.1.1       |
 | Flux2                              | Add-on     | :x:                | :white_check_mark: | 2.17.0      |
 | GCE Persistent Disk CSI            | CSI        | :white_check_mark: | :x:                | 1.17.15     |
 | Istio                              | Add-on     | :white_check_mark: | :x:                | 1.28.3      |
