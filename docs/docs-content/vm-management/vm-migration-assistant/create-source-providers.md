@@ -57,9 +57,11 @@ Machines (VMs) that need to be migrated.
     must be enabled on your VMs.
 
 - A
-  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
+  [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/8.0)
   is required for migrations. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from
   the source environment, transfer the data, and write it to the target storage.
+
+  - The VDDK version used must be **8.0.2.1** or earlier.
 
   - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
     cluster for migrations.
@@ -75,7 +77,7 @@ Machines (VMs) that need to be migrated.
     <TabItem label="Non-Airgap" value="non-airgap">
 
     1. Download the VDDK image from the
-       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest).
+       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/8.0).
 
     2. Decompress the downloaded image.
 
@@ -114,133 +116,132 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Airgap" value="airgap">
 
-    1. Download the VDDK image from the
-       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest).
+    6. Download the VDDK image from the
+       [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/8.0).
 
-    2. Copy or move the VDDK image to another Linux environment inside your airgap environment.
+    7. Copy or move the VDDK image to another Linux environment inside your airgap environment.
 
-    3. Log in to the Linux environment inside your airgap environment where you copied the VDDK image.
+    8. Log in to the Linux environment inside your airgap environment where you copied the VDDK image.
 
-    4. Decompress the downloaded image.
+    9. Decompress the downloaded image.
 
        ```shell
        tar -xzf VMware-vix-disklib-<version>.x86_64.tar.gz
        ```
 
-    5. Create a Dockerfile to build the VDDK image.
+    10. Create a Dockerfile to build the VDDK image.
 
-       ```shell
-       cat > Dockerfile <<EOF
-       FROM <myregistry/myrepository:tag>
-       USER 1001
-       COPY vmware-vix-disklib-distrib /vmware-vix-disklib-distrib
-       RUN mkdir -p /opt
-       ENTRYPOINT ["cp", "-r", "/vmware-vix-disklib-distrib", "/opt"]
-       EOF
-       ```
+    ```shell
+    cat > Dockerfile <<EOF
+    FROM <myregistry/myrepository:tag>
+    USER 1001
+    COPY vmware-vix-disklib-distrib /vmware-vix-disklib-distrib
+    RUN mkdir -p /opt
+    ENTRYPOINT ["cp", "-r", "/vmware-vix-disklib-distrib", "/opt"]
+    EOF
+    ```
 
-       Replace the `<myregistry/myrepository:tag>` with your chosen base image registry, repository, and tag (for
-       example: `ubuntu:22.04`).
+    Replace the `<myregistry/myrepository:tag>` with your chosen base image registry, repository, and tag (for example:
+    `ubuntu:22.04`).
 
-    6. Authenticate with your OCI registry. The following examples are for Harbor and AWS ECR.
+    11. Authenticate with your OCI registry. The following examples are for Harbor and AWS ECR.
 
        <Tabs groupId="oci-registry">
 
        <TabItem label="Harbor" value="harbor">
 
-       Use `oras` to log in to your OCI registry. Replace `<username>` and `<password>` with your registry credentials,
-       and replace `<harbor-address>` with your Harbor hostname / IP address. Check out the
-       [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags
-       and examples.
+    Use `oras` to log in to your OCI registry. Replace `<username>` and `<password>` with your registry credentials, and
+    replace `<harbor-address>` with your Harbor hostname / IP address. Check out the
+    [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags
+    and examples.
 
-       ```shell
-       oras login <harbor-address> --username '<username>' --password '<password>'
-       ```
+    ```shell
+    oras login <harbor-address> --username '<username>' --password '<password>'
+    ```
 
-       If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to the `oras`
-       command.
+    If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to the `oras` command.
 
-       ```shell
-       oras login <harbor-address> --insecure --username '<username>' --password '<password>'
-       ```
+    ```shell
+    oras login <harbor-address> --insecure --username '<username>' --password '<password>'
+    ```
 
        </TabItem>
 
        <TabItem label="AWS ECR" value="aws-ecr">
 
-       Acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click
-       on the **View push commands** button to access the command. Refer to the
-       [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
-       documentation for more information.
+    Acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click on
+    the **View push commands** button to access the command. Refer to the
+    [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
+    documentation for more information.
 
-       Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
-       authenticate with the ECR registry. Replace `<username>` with your registry username and `<aws-ecr-url>` with
-       your registry URL. Enter your registry password when prompted.
+    Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
+    authenticate with the ECR registry. Replace `<username>` with your registry username and `<aws-ecr-url>` with your
+    registry URL. Enter your registry password when prompted.
 
-       ```shell
-       aws ecr get-login-password --region xxxxx | oras login --username <username> --password-stdin <aws-ecr-url>
-       ```
+    ```shell
+    aws ecr get-login-password --region xxxxx | oras login --username <username> --password-stdin <aws-ecr-url>
+    ```
 
-       For a public image repository, use the `docker` CLI instead of `oras`. Replace `<username>` with your registry
-       username and `<aws-ecr-url>` with your registry URL. Enter your registry password when prompted.
+    For a public image repository, use the `docker` CLI instead of `oras`. Replace `<username>` with your registry
+    username and `<aws-ecr-url>` with your registry URL. Enter your registry password when prompted.
 
-       ```shell
-       aws ecr-public get-login-password --region xxxxx | docker login --username <username> --password-stdin <aws-ecr-url>
-       ```
+    ```shell
+    aws ecr-public get-login-password --region xxxxx | docker login --username <username> --password-stdin <aws-ecr-url>
+    ```
 
        </TabItem>
 
        </Tabs>
 
-    7. Build the image.
+    12. Build the image.
 
        <Tabs groupId="oci-registry">
 
        <TabItem label="Harbor" value="harbor">
 
-       Replace `<harbor-address>` with your Harbor hostname / IP address, `<project-name>` with the target project name
-       in Harbor, and `<tag>` with your chosen image tag.
+    Replace `<harbor-address>` with your Harbor hostname / IP address, `<project-name>` with the target project name in
+    Harbor, and `<tag>` with your chosen image tag.
 
-       ```shell
-       docker buildx build --platform linux/amd64 --tag <harbor-address>/<project-name>/vddk:<tag> .
-       ```
+    ```shell
+    docker buildx build --platform linux/amd64 --tag <harbor-address>/<project-name>/vddk:<tag> .
+    ```
 
        </TabItem>
 
        <TabItem label="AWS ECR" value="aws-ecr">
 
-       Replace `<aws-ecr-url>` with your registry URL and `<tag>` with your chosen image tag.
+    Replace `<aws-ecr-url>` with your registry URL and `<tag>` with your chosen image tag.
 
-       ```shell
-       docker buildx build --platform linux/amd64 --tag <aws-ecr-url>:<tag> .
-       ```
+    ```shell
+    docker buildx build --platform linux/amd64 --tag <aws-ecr-url>:<tag> .
+    ```
 
        </TabItem>
 
        </Tabs>
 
-    8. Push the built image to your image registry.
+    13. Push the built image to your image registry.
 
        <Tabs groupId="oci-registry">
 
        <TabItem label="Harbor" value="harbor">
 
-       Replace `<harbor-address>` with your Harbor hostname / IP address, `<project-name>` with the target project name
-       in Harbor, and `<tag>` with your chosen image tag.
+    Replace `<harbor-address>` with your Harbor hostname / IP address, `<project-name>` with the target project name in
+    Harbor, and `<tag>` with your chosen image tag.
 
-       ```shell
-       docker push <harbor-address>/<project-name>/vddk:<tag>
-       ```
+    ```shell
+    docker push <harbor-address>/<project-name>/vddk:<tag>
+    ```
 
        </TabItem>
 
        <TabItem label="AWS ECR" value="aws-ecr">
 
-       Replace `<aws-ecr-url>` with your registry URL and `<tag>` with your chosen image tag.
+    Replace `<aws-ecr-url>` with your registry URL and `<tag>` with your chosen image tag.
 
-       ```shell
-       docker push <aws-ecr-url>:<tag>
-       ```
+    ```shell
+    docker push <aws-ecr-url>:<tag>
+    ```
 
        </TabItem>
 
