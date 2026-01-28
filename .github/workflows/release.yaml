@@ -20,6 +20,10 @@ on:
         description: 'Use the GitHub-hosted large runner. Allowed values are true or false. Caution - this results in additional charges to the organization.'
         required: false
         default: 'false'
+      securityAdvisoryPublished:
+        description: 'Indicates if a security advisory has been published. Provide the title of the security advisory if true, otherwise leave empty. Example: Security Advisory 007- MongoDB zlib Compression Memory'
+        required: false
+        default: ''
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -171,6 +175,45 @@ jobs:
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
           SLACK_MESSAGE: "The large runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+  
+  post-security-advisory:
+    if: always() && (needs.build-large-runner.result == 'success' || needs.build-self-hosted-runner.result == 'success') && github.event.inputs.securityAdvisoryPublished != ''
+    needs: [build-self-hosted-runner,build-large-runner]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slugify Security Advisory Title
+        run: |
+          echo "CURRENT_STEP=Security Advisory URL" >> $GITHUB_ENV
+          SECURITY_ADVISORY_PUBLISHED="${{ github.event.inputs.securityAdvisoryPublished }}"
+          SLUG=$(echo "$SECURITY_ADVISORY_PUBLISHED" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[^a-z0-9-]/-/g')
+          SECURITY_ADVISORY_URL="https://docs.spectrocloud.com/security-bulletins/security-advisories/#${SLUG}"
+          echo "SECURITY_ADVISORY_URL=${SECURITY_ADVISORY_URL}" >> $GITHUB_ENV
+          echo "Security Advisory URL: ${SECURITY_ADVISORY_URL}"
+
+      - name: Notify Slack
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "#ADD8E6"
+          SLACK_MESSAGE: |
+            :information_source: *<${{ github.event.inputs.securityAdvisoryPublished }}|${{ SECURITY_ADVISORY_URL }}>* has just been published!
+            
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The post-security-advisory job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+
 
   release:
     name: "Release"
