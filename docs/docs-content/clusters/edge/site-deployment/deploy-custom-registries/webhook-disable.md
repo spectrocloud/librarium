@@ -149,7 +149,7 @@ provides an example that shows how you might customize the image pull behavior o
    with your registry and its mirror. Since you are only editing the reconcile stage, this will not result in a reboot
    or service restart for your cluster.
 
-   The following example will redirect image pulls for `https://gcr.io` to `https://gcr-io-mirror.company.local`.
+   The following example will redirect image pulls for `https://us-docker.pkg.dev` to `https://gcr-io-mirror.company.local`.
 
    ```yaml {9-11}
    stages:
@@ -161,7 +161,7 @@ provides an example that shows how you might customize the image pull behavior o
              group: 0
              permissions: 0644
              content: |-
-               server = "https://gcr.io"
+               server = "https://us-docker.pkg.dev"
                [host."https://gcr-io-mirror.company.local"]
                    capabilities = ["pull", "resolve"]
    ```
