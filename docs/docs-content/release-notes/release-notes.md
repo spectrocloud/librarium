@@ -83,6 +83,12 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
   [`spectrocloud_registry_oci` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/registry_oci)
   now supports registry imports using either the registry ID or the registry name.
 
+<!-- https://https://spectrocloud.atlassian.net/browse/PCOM-160 -->
+
+- Manual disk selection has been enabled for
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) installations.
+
 ### Packs
 
 #### Pack Notes
