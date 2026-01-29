@@ -8,7 +8,7 @@ sidebar_position: 2
 tags: ["edge"]
 ---
 
-The EdgeForge process requires two configuration files. The `.arg` file and the `user-data` file. Each is responsible
+The EdgeForge process requires two configuration files: the `.arg` file and the `user-data` file. Each is responsible
 for a different aspect of the EdgeForge process. The `.arg` file configures the build process itself as well as its
 output, while the `user-data` file configures the Edge installer ISO. The following table briefly summarizes the
 differences between the two files.
@@ -34,7 +34,7 @@ After installation, you can also use Local UI to make edits to the user data fil
 This article guides you through several important parameters in the `.arg` file and configuration blocks in the
 `user-data` file. However, you can use many additional parameters to further customize your installation. Review the
 [Edge Artifact Build Configurations](../edgeforge-workflow/palette-canvos/arg.md) and
-[Installer Reference](../edge-configuration/installer-reference.md) resource to learn more about all the supported
+[Installer Reference](../edge-configuration/installer-reference.md) resource to learn more about the supported
 configuration parameters you can use in the configuration user data.
 
 :::preview
