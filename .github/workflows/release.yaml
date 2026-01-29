@@ -177,6 +177,7 @@ jobs:
           SLACK_MESSAGE: "The large runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
   
   post-security-advisory:
+    name: "Post Security Advisory Notification"
     if: always() && (needs.build-large-runner.result == 'success' || needs.build-self-hosted-runner.result == 'success') && github.event_name == 'workflow_dispatch' && github.event.inputs.securityAdvisoryPublished != ''
     needs: [build-self-hosted-runner,build-large-runner]
     runs-on: ubuntu-latest
