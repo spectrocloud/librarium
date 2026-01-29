@@ -413,7 +413,7 @@ source code for the credential provider on GitHub.
     :::
 
     The script will lookup the JSON file by registry naming and allows partial matches. For example, `docker.io.json` would
-    match `dockercr.io` as well as `registry.docker.io`, and those image pulls to those registries will use the credentials your
+    match `docker.io` as well as `registry.docker.io`, and those image pulls to those registries will use the credentials your
     provided.
 
 ## Validate
