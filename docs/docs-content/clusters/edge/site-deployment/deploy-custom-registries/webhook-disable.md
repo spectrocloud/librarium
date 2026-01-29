@@ -149,20 +149,20 @@ provides an example that shows how you might customize the image pull behavior o
    with your registry and its mirror. Since you are only editing the reconcile stage, this will not result in a reboot
    or service restart for your cluster.
 
-   The following example will redirect image pulls for `https://us-docker.pkg.dev` to `https://gcr-io-mirror.company.local`.
+   The following example will redirect image pulls for `https://us-docker.pkg.dev` to `https://pkg-dev-mirror.company.local`.
 
    ```yaml {9-11}
    stages:
      reconcile:
        - name: "Redirect registries"
          files:
-           - path: /etc/containerd/certs.d/gcr.io/hosts.toml
+           - path: /etc/containerd/certs.d/us-docker.pkg.dev/hosts.toml
              owner: 0
              group: 0
              permissions: 0644
              content: |-
                server = "https://us-docker.pkg.dev"
-               [host."https://gcr-io-mirror.company.local"]
+               [host."https://pkg-dev-mirror.company.local"]
                    capabilities = ["pull", "resolve"]
    ```
 
@@ -369,7 +369,7 @@ source code for the credential provider on GitHub.
     ```
 
     Registry URLs that match the patterns in the `mathImages` field will use this provider for credentials. For example,
-    `*.io` would match `docker.io`, `quay.io`, `gcr.io` and `*.*.io` would cover URLs like `us.gcr.io`. Refer to
+    `*.io` would match `docker.io`, `quay.io`, and `*.*.io` would cover URLs like `registry.docker.io`. Refer to
     [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/Kubelet-credential-provider/#configure-a-Kubelet-credential-provider)
     about the parameters you can use to configure credential providers for Kubelet.
 
@@ -412,8 +412,8 @@ source code for the credential provider on GitHub.
 
     :::
 
-    The script will lookup the JSON file by registry naming and allows partial matches. For example, `gcr.io.json` would
-    match `gcr.io` as well as `us.gcr.io`, and those image pulls to those registries will use the credentials your
+    The script will lookup the JSON file by registry naming and allows partial matches. For example, `docker.io.json` would
+    match `dockercr.io` as well as `registry.docker.io`, and those image pulls to those registries will use the credentials your
     provided.
 
 ## Validate
