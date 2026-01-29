@@ -182,6 +182,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Slugify Security Advisory Title
+        id: slugify
         run: |
           echo "CURRENT_STEP=Security Advisory URL" >> $GITHUB_ENV
           SECURITY_ADVISORY_PUBLISHED="${{ github.event.inputs.securityAdvisoryPublished }}"
@@ -189,8 +190,9 @@ jobs:
             | tr '[:upper:]' '[:lower:]' \
             | sed 's/[^a-z0-9-]/-/g')
           SECURITY_ADVISORY_URL="https://docs.spectrocloud.com/security-bulletins/security-advisories/#${SLUG}"
-          echo "SECURITY_ADVISORY_URL=${SECURITY_ADVISORY_URL}" >> $GITHUB_ENV
           echo "Security Advisory URL: ${SECURITY_ADVISORY_URL}"
+          # Export the URL as a step output so later steps can read it
+          echo "security_advisory_url=${SECURITY_ADVISORY_URL}" >> "$GITHUB_OUTPUT"
 
       - name: Notify Slack
         uses: rtCamp/action-slack-notify@v2.3.3
@@ -200,7 +202,7 @@ jobs:
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: "#ADD8E6"
           SLACK_MESSAGE: |
-            :information_source: *<${{ github.event.inputs.securityAdvisoryPublished }}|${{ SECURITY_ADVISORY_URL }}>* has just been published!
+            :information_source: *<${{ github.event.inputs.securityAdvisoryPublished }}|${{ steps.slugify.outputs.security_advisory_url }}>* has just been published!
             
       - name: Slack Notification on Failure
         if: ${{ failure() }}
