@@ -200,9 +200,9 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
-          SLACK_COLOR: "#ADD8E6"
+          SLACK_COLOR: "#1E90FF"
           SLACK_MESSAGE: |
-            :information_source: *<${{ github.event.inputs.securityAdvisoryPublished }}|${{ steps.slugify.outputs.security_advisory_url }}>* has just been published!
+            :information_source: *<${{ steps.slugify.outputs.security_advisory_url }}|${{ github.event.inputs.securityAdvisoryPublished }}>* has just been published!
             
       - name: Slack Notification on Failure
         if: ${{ failure() }}
