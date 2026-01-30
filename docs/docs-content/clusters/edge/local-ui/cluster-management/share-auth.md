@@ -117,7 +117,7 @@ becomes operational:
    spec:
      containers:
        - name: sample-auth-app
-         image: gcr.io/example-app:latest
+         image: us-docker.pkg.dev/example-app:latest
          volumeMounts:
            - name: jwt-secret
              mountPath: /app/keys
