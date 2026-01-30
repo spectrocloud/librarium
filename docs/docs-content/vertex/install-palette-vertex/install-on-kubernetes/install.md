@@ -141,17 +141,17 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-4.  Open the **values.yaml** in the **vertex/spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
-    contains the default values for the VerteX installation parameters. However, you must populate the following
-    parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the
-    [Helm Configuration Reference](vertex-helm-ref.md) page.
+4.  Open the **values.yaml** in the **vertex/spectro-mgmt-plane** folder with a text editor of your choice. The
+    **values.yaml** contains the default values for the VerteX installation parameters. However, you must populate the
+    following parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file
+    in the [Helm Configuration Reference](vertex-helm-ref.md) page.
 
     | **Parameter**                             | **Description**                                                                                                                                               | **Type** |
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
     | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
     | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
     | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
-    | `reachSystem`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
     :::info
 
