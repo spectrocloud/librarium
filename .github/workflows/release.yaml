@@ -190,6 +190,7 @@ jobs:
           SLUG=$(echo "$SECURITY_ADVISORY_PUBLISHED" \
             | tr '[:upper:]' '[:lower:]' \
             | sed 's/\.//g' \
+            | sed 's/\://g' \
             | sed 's/[^a-z0-9-]/-/g')
           SECURITY_ADVISORY_URL="https://docs.spectrocloud.com/security-bulletins/security-advisories/#${SLUG}"
           echo "Security Advisory URL: ${SECURITY_ADVISORY_URL}"
