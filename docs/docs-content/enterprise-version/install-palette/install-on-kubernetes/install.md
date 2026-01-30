@@ -104,13 +104,13 @@ your environment. Reach out to our support team if you need assistance.
     our support. Unzip the file to a directory named **palette-install**.
 
     ```shell
-    unzip release-*.zip -d palette-install
+    unzip charts.zip -d palette-install
     ```
 
-2.  Navigate to the release folder inside the **vertex-install** directory.
+2.  Navigate to  the **palette-install** directory.
 
     ```shell
-    cd palette-install/charts/release-*
+    cd palette-install
     ```
 
 3.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
@@ -124,10 +124,11 @@ your environment. Reach out to our support team if you need assistance.
     ```shell hideClipboard
     Release "cert-manager" does not exist. Installing it now.
     NAME: cert-manager
-    LAST DEPLOYED: Mon Jan 29 16:32:33 2024
+    LAST DEPLOYED: Fri Jan 30 18:40:57 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
+    DESCRIPTION: Install complete
     TEST SUITE: None
     ```
 
@@ -603,7 +604,7 @@ your environment. Reach out to our support team if you need assistance.
     ```shell hideClipboard
     Release "reach-system" does not exist. Installing it now.
     NAME: reach-system
-    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+    LAST DEPLOYED: Fri Jan 30 18:40:57 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
@@ -639,10 +640,11 @@ your environment. Reach out to our support team if you need assistance.
     ```shell hideClipboard
     Release "hubble" does not exist. Installing it now.
     NAME: hubble
-    LAST DEPLOYED: Mon Jan 29 17:07:51 2024
+    LAST DEPLOYED: Fri Jan 30 18:46:53 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
+    DESCRIPTION: Install complete
     TEST SUITE: None
     ```
 
@@ -748,41 +750,50 @@ Use the following steps to validate the Palette installation.
    Your output should look similar to the following.
 
    ```shell hideClipboard
-   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-   hubble-system   auth-85b748cbf4-6drkn                      Running
-   hubble-system   auth-85b748cbf4-dwhw2                      Running
-   hubble-system   cloud-fb74b8558-lqjq5                      Running
-   hubble-system   cloud-fb74b8558-zkfp5                      Running
-   hubble-system   configserver-685fcc5b6d-t8f8h              Running
-   hubble-system   event-68568f54c7-jzx5t                     Running
-   hubble-system   event-68568f54c7-w9rnh                     Running
-   hubble-system   foreq-6b689f54fb-vxjts                     Running
-   hubble-system   hashboard-897bc9884-pxpvn                  Running
-   hubble-system   hashboard-897bc9884-rmn69                  Running
-   hubble-system   hutil-6d7c478c96-td8q4                     Running
-   hubble-system   hutil-6d7c478c96-zjhk4                     Running
-   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-   hubble-system   mongo-0                                    Running
-   hubble-system   mongo-1                                    Running
-   hubble-system   mongo-2                                    Running
-   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-   hubble-system   packsync-28205220-bmzcg                    Succeeded
-   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-   hubble-system   system-686d77b947-8949z                    Running
-   hubble-system   system-686d77b947-cgzx6                    Running
-   hubble-system   timeseries-7865bc9c56-5q87l                Running
-   hubble-system   timeseries-7865bc9c56-scncb                Running
-   hubble-system   timeseries-7865bc9c56-sxmgb                Running
-   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-   ingress-nginx   ingress-nginx-controller-2txsv             Running
-   ingress-nginx   ingress-nginx-controller-55pk2             Running
-   ingress-nginx   ingress-nginx-controller-gmps9             Running
-   jet-system      jet-6599b9856d-t9mr4                       Running
-   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+  cp-system            spectro-cp-ui-78c9b7dcc5-q8ln4                             Running
+  hubble-system        auth-58bc56bc79-68lbg                                      Running
+  hubble-system        auth-58bc56bc79-r2md8                                      Running
+  hubble-system        cloud-8475845cff-dnq27                                     Running
+  hubble-system        cloud-8475845cff-v2cww                                     Running
+  hubble-system        configserver-74dd648bf5-6tvmv                              Running
+  hubble-system        event-68cfb57f6d-9dx5b                                     Running
+  hubble-system        event-68cfb57f6d-g5zrl                                     Running
+  hubble-system        event-68cfb57f6d-rz4sz                                     Running
+  hubble-system        foreq-6c75b84554-x4f7h                                     Running
+  hubble-system        hashboard-7b69cc685f-d8mmw                                 Running
+  hubble-system        hashboard-7b69cc685f-mbb57                                 Running
+  hubble-system        hutil-5456dfbdd7-68p4m                                     Running
+  hubble-system        hutil-5456dfbdd7-dllfj                                     Running
+  hubble-system        memstore-8654b49cfd-npqbv                                  Running
+  hubble-system        mgmt-55985b7ccb-gpvnr                                      Running
+  hubble-system        mongo-0                                                    Running
+  hubble-system        mongo-1                                                    Running
+  hubble-system        mongo-2                                                    Pending
+  hubble-system        mongodb-key-manager-helm-4z2mw                             Running
+  hubble-system        msgbroker-0                                                Running
+  hubble-system        msgbroker-1                                                Running
+  hubble-system        oci-proxy-787fd499d4-f772t                                 Running
+  hubble-system        specman-0                                                  Running
+  hubble-system        spectro-tunnel-69448888-qn7kk                              Running
+  hubble-system        spectrocluster-54fb864b48-8fhkr                            Running
+  hubble-system        spectrocluster-54fb864b48-9hkgg                            Running
+  hubble-system        spectrocluster-54fb864b48-w5dwr                            Running
+  hubble-system        spectrocluster-jobs-6ddfbddcd6-j9xb8                       Running
+  hubble-system        spectrocluster-reconciler-d448fc8cf-qr6bp                  Running
+  hubble-system        spectroclusterop-89968785d-6n48l                           Running
+  hubble-system        spectroclusterop-89968785d-gzd5w                           Running
+  hubble-system        spectrossh-d5fd6b49-wfcgc                                  Running
+  hubble-system        system-6f7767845d-lm5zn                                    Running
+  hubble-system        system-6f7767845d-xf2hl                                    Running
+  hubble-system        timeseries-6f5bf98c5c-fcqnh                                Running
+  hubble-system        timeseries-6f5bf98c5c-vmb5h                                Running
+  hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
+  hubble-system        user-796c877b57-6rcdp                                      Running
+  hubble-system        user-796c877b57-ptbg4                                      Running
+  ingress-nginx        ingress-nginx-controller-fjffp                             Running
+  ingress-nginx        ingress-nginx-controller-sz9gk                             Running
+  jet-system           jet-555cdf78f5-4l2s2                                       Running
+  ui-system            spectro-ui-8658f85c85-9lkhs                                Running
    ```
 
 ## Next Steps
