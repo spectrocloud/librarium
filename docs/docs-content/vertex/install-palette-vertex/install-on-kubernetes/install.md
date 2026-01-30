@@ -458,13 +458,13 @@ your environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-    #  registry:
-    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-    #    name: "" #<Contact Spectro Cloud Sales for More info>
-    #    password: "" #<Contact Spectro Cloud Sales for More info>
-    #    username: "" #<Contact Spectro Cloud Sales for More info>
-    #    insecureSkipVerify: false
-    #    caCert: ""
+     #  registry:
+     #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+     #    name: "" #<Contact Spectro Cloud Sales for More info>
+     #    password: "" #<Contact Spectro Cloud Sales for More info>
+     #    username: "" #<Contact Spectro Cloud Sales for More info>
+     #    insecureSkipVerify: false
+     #    caCert: ""
 
        ociPackRegistry:
          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
@@ -475,15 +475,15 @@ your environment. Reach out to our support team if you need assistance.
          insecureSkipVerify: false
          caCert: ""
 
-    #  ociPackEcrRegistry:
-    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-    #    name: "" #<Contact Spectro Cloud Sales for More info>
-    #    accessKey: "" #<Contact Spectro Cloud Sales for More info>
-    #    secretKey: "" #<Contact Spectro Cloud Sales for More info>
-    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-    #    isPrivate: true
-    #    insecureSkipVerify: false
-    #    caCert: ""
+     #  ociPackEcrRegistry:
+     #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+     #    name: "" #<Contact Spectro Cloud Sales for More info>
+     #    accessKey: "" #<Contact Spectro Cloud Sales for More info>
+     #    secretKey: "" #<Contact Spectro Cloud Sales for More info>
+     #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+     #    isPrivate: true
+     #    insecureSkipVerify: false
+     #    caCert: ""
 
        ociImageRegistry:
          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
@@ -495,18 +495,18 @@ your environment. Reach out to our support team if you need assistance.
          caCert: ""
          mirrorRegistries: ""  # See instructions below.
 
-    # Instruction for mirrorRegistries.
-    # ----------------------------------
-    # Please provide the registry endpoint for the following registries, separated by double colons (::):
-    # docker.io
-    # gcr.io
-    # ghcr.io
-    # k8s.gcr.io
-    # registry.k8s.io
-    # quay.io
-    # For each registry, follow this example format:
-    # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
-    # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+     # Instruction for mirrorRegistries.
+     # ----------------------------------
+     # Please provide the registry endpoint for the following registries, separated by double colons (::):
+     # docker.io
+     # gcr.io
+     # ghcr.io
+     # k8s.gcr.io
+     # registry.k8s.io
+     # quay.io
+     # For each registry, follow this example format:
+     # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
+     # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
         imageSwapInitImage: "us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.8.a-v2"
