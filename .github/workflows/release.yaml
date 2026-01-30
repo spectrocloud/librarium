@@ -187,6 +187,7 @@ jobs:
         run: |
           echo "CURRENT_STEP=Security Advisory URL" >> $GITHUB_ENV
           SECURITY_ADVISORY_PUBLISHED="${{ github.event.inputs.securityAdvisoryPublished }}"
+          # Create a slug by converting to lowercase, removing periods and colons, and replacing spaces and special characters with hyphens
           SLUG=$(echo "$SECURITY_ADVISORY_PUBLISHED" \
             | tr '[:upper:]' '[:lower:]' \
             | sed 's/\.//g' \
@@ -200,7 +201,7 @@ jobs:
       - name: Notify Slack
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: "#1E90FF"
