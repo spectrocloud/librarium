@@ -202,6 +202,7 @@ your environment. Reach out to our support team if you need assistance.
 
     config:
       installationMode: "connected" #values can be connected or airgap.
+      isPaletteBaseCluster: false
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -289,8 +290,8 @@ your environment. Reach out to our support team if you need assistance.
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
-        imageSwapInitImage: "us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
-        imageSwapImage: "us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.8.a-v2"
+        imageSwapImage: "us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap:v1.5.3-spectro-4.8.a-v2"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -420,6 +421,7 @@ your environment. Reach out to our support team if you need assistance.
 
     config:
       installationMode: "connected" #values can be connected or airgap.
+      isPaletteBaseCluster: false
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
