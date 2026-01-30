@@ -351,7 +351,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
     }
     ```
 
-    For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
+    For Google Artifact Registry (GAR) access, you need to set the username field to `"_json_key"` and set the password
     to an JSON object containing the following fields.
 
     | Field                         | Description                                                                                         |
@@ -367,13 +367,13 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
     | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
 
-    For example, the following is a valid set of credentials for a GCR registry.
+    For example, the following is a valid set of credentials for a GAR registry.
 
     ```json
     {
       "image": [
         {
-          "endpoint": "gcr.io",
+          "endpoint": "us-docker.pkg.dev",
           "username": "_json_key",
           "password": {
             "type": "service_account",
