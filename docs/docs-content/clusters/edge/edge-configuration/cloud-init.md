@@ -125,7 +125,7 @@ stages:
         group: 0
         content: |
           mirrors:
-            "gcr.io":
+            "us-docker.pkg.dev":
               endpoint:
                 - "https://my-mirror.example.com"
               rewrite:
