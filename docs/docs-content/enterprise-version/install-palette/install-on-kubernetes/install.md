@@ -132,7 +132,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-4.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
+4.  Open the **values.yaml** in the **palette/spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
     contains the default values for the Palette installation parameters, however, you must populate the following
     parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the
     [Helm Configuration Reference](palette-helm-ref.md) page.
@@ -227,22 +227,22 @@ your environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-    #  registry:
-    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-    #    name: "" #<Contact Spectro Cloud Sales for More info>
-    #    password: "" #<Contact Spectro Cloud Sales for More info>
-    #    username: "" #<Contact Spectro Cloud Sales for More info>
-    #    insecureSkipVerify: false
-    #    caCert: ""
+      #  registry:
+      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #    name: "" #<Contact Spectro Cloud Sales for More info>
+      #    password: "" #<Contact Spectro Cloud Sales for More info>
+      #    username: "" #<Contact Spectro Cloud Sales for More info>
+      #    insecureSkipVerify: false
+      #    caCert: ""
 
-    #  ociPackRegistry:
-    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-    #    name: "" #<Contact Spectro Cloud Sales for More info>
-    #    password: "" #<Contact Spectro Cloud Sales for More info>
-    #    username: "" #<Contact Spectro Cloud Sales for More info>
-    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-    #    insecureSkipVerify: false
-    #    caCert: ""
+      #  ociPackRegistry:
+      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #    name: "" #<Contact Spectro Cloud Sales for More info>
+      #    password: "" #<Contact Spectro Cloud Sales for More info>
+      #    username: "" #<Contact Spectro Cloud Sales for More info>
+      #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+      #    insecureSkipVerify: false
+      #    caCert: ""
 
        ociPackEcrRegistry:
          endpoint: "15789037893.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
@@ -254,28 +254,28 @@ your environment. Reach out to our support team if you need assistance.
          insecureSkipVerify: false
          caCert: ""
 
-    #  ociImageRegistry:
-    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-    #    name: "" #<Contact Spectro Cloud Sales for More info>
-    #    password: "" #<Contact Spectro Cloud Sales for More info>
-    #    username: "" #<Contact Spectro Cloud Sales for More info>
-    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-    #    insecureSkipVerify: false
-    #    caCert: ""
-    #    mirrorRegistries: ""  # See instructions below.
+      #  ociImageRegistry:
+      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #    name: "" #<Contact Spectro Cloud Sales for More info>
+      #    password: "" #<Contact Spectro Cloud Sales for More info>
+      #    username: "" #<Contact Spectro Cloud Sales for More info>
+      #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+      #    insecureSkipVerify: false
+      #    caCert: ""
+      #    mirrorRegistries: ""  # See instructions below.
 
-    # Instruction for mirrorRegistries.
-    # ----------------------------------
-    # Please provide the registry endpoint for the following registries, separated by double colons (::):
-    # docker.io
-    # gcr.io
-    # ghcr.io
-    # k8s.gcr.io
-    # registry.k8s.io
-    # quay.io
-    # For each registry, follow this example format:
-    # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
-    # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+      # Instruction for mirrorRegistries.
+      # ----------------------------------
+      # Please provide the registry endpoint for the following registries, separated by double colons (::):
+      # docker.io
+      # gcr.io
+      # ghcr.io
+      # k8s.gcr.io
+      # registry.k8s.io
+      # quay.io
+      # For each registry, follow this example format:
+      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
+      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
 
       imageSwapImages:
@@ -372,16 +372,16 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {60,75-82,94-102}
+    ```yaml {61,76-83,95-103}
     #########################
     # Spectro Cloud Palette #
     #########################
 
     global:
       imagePullSecret:
-        create: false
+        create: false 
         # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
-      dockerConfigJson: ""
+        dockerConfigJson: ""  
 
     # MongoDB Configuration
     mongo:
@@ -402,7 +402,8 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: ""  # leave empty to use the default storage class
 
     config:
-      installationMode: "central" #values can be connected or airgap.
+      installationMode: "connected" #values can be connected or airgap.
+      isPaletteBaseCluster: false
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -439,59 +440,60 @@ your environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-    #  registry:
-    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-    #    name: "" #<Contact Spectro Cloud Sales for More info>
-    #    password: "" #<Contact Spectro Cloud Sales for More info>
-    #    username: "" #<Contact Spectro Cloud Sales for More info>
-    #    insecureSkipVerify: false
-    #    caCert: ""
+      #  registry:
+      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #    name: "" #<Contact Spectro Cloud Sales for More info>
+      #    password: "" #<Contact Spectro Cloud Sales for More info>
+      #    username: "" #<Contact Spectro Cloud Sales for More info>
+      #    insecureSkipVerify: false
+      #    caCert: ""
 
-       ociPackRegistry:
-         endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
-         name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
-         password: "**************" #<Contact Spectro Cloud Sales for More info>
-         username: "**************" #<Contact Spectro Cloud Sales for More info>
-         baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
-         insecureSkipVerify: false
-         caCert: ""
+        ociPackRegistry:
+          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
+          name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
+          password: "**************" #<Contact Spectro Cloud Sales for More info>
+          username: "**************" #<Contact Spectro Cloud Sales for More info>
+          baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
+          insecureSkipVerify: false
+          caCert: ""
 
-    #  ociPackEcrRegistry:
-    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-    #    name: "" #<Contact Spectro Cloud Sales for More info>
-    #    accessKey: "" #<Contact Spectro Cloud Sales for More info>
-    #    secretKey: "" #<Contact Spectro Cloud Sales for More info>
-    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-    #    isPrivate: true
-    #    insecureSkipVerify: false
-    #    caCert: ""
+      # ociPackEcrRegistry:
+      #  endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #  name: "" #<Contact Spectro Cloud Sales for More info>
+      #  accessKey: "" #<Contact Spectro Cloud Sales for More info>
+      #  secretKey: "" #<Contact Spectro Cloud Sales for More info>
+      #  baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+      #  isPrivate: true
+      #  insecureSkipVerify: false
+      #  caCert: ""
 
-       ociImageRegistry:
-         endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
-         name: "Palette Images OCI" #<Contact Spectro Cloud Sales for More info>
-         password: "**************" #<Contact Spectro Cloud Sales for More info>
-         username: "**************" #<Contact Spectro Cloud Sales for More info>
-         baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
-         insecureSkipVerify: false
-         caCert: ""
-         mirrorRegistries: ""  # See instructions below.
+        ociImageRegistry:
+          endpoint: "" #<Contact Spectro Cloud Sales for More info>
+          name: "" #<Contact Spectro Cloud Sales for More info>
+          password: "" #<Contact Spectro Cloud Sales for More info>
+          username: "" #<Contact Spectro Cloud Sales for More info>
+          baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+          insecureSkipVerify: false
+          caCert: ""
+          mirrorRegistries: ""  # See instructions below.
 
-    # Instruction for mirrorRegistries.
-    # ----------------------------------
-    # Please provide the registry endpoint for the following registries, separated by double colons (::):
-    # docker.io
-    # gcr.io
-    # ghcr.io
-    # k8s.gcr.io
-    # registry.k8s.io
-    # quay.io
-    # For each registry, follow this example format:
-    # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
-    # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+      # Instruction for mirrorRegistries.
+      # ----------------------------------
+      # Please provide the registry endpoint for the following registries, separated by double colons (::):
+      # docker.io
+      # gcr.io
+      # ghcr.io
+      # k8s.gcr.io
+      # registry.k8s.io
+      # quay.io
+      # For each registry, follow this example format:
+      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
+      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+
 
       imageSwapImages:
-        imageSwapInitImage: "us-docker.pkg.dev/palette-images/palette/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
-        imageSwapImage: "us-docker.pkg.dev/palette-images/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.8.a-v2"
+        imageSwapImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap:v1.5.3-spectro-4.8.a-v2"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -515,8 +517,14 @@ your environment. Reach out to our support team if you need assistance.
       serverCrtBase64: ""
       serverKeyBase64: ""
       insecureSkipVerify: false
-
+    tunnel:
+      preferredServer:
+        endpoint: ""
+      servers:
+        - endpoint: ""
     ingress:
+      msgbroker:
+        proxyBodySize: "15m" # Default proxy body size for msgbroker ingress
       # When enabled nginx ingress controller would be installed
       enabled: true
 
@@ -538,6 +546,7 @@ your environment. Reach out to our support team if you need assistance.
         # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
         # service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM_ARN>
         # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+        # service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
 
         # Azure example
         # service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -577,6 +586,7 @@ your environment. Reach out to our support team if you need assistance.
         no_proxy: ""
         ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate.
       scheduleOnControlPlane: true
+
     ```
 
     </TabItem>
@@ -750,50 +760,50 @@ Use the following steps to validate the Palette installation.
    Your output should look similar to the following.
 
    ```shell hideClipboard
-  cp-system            spectro-cp-ui-78c9b7dcc5-q8ln4                             Running
-  hubble-system        auth-58bc56bc79-68lbg                                      Running
-  hubble-system        auth-58bc56bc79-r2md8                                      Running
-  hubble-system        cloud-8475845cff-dnq27                                     Running
-  hubble-system        cloud-8475845cff-v2cww                                     Running
-  hubble-system        configserver-74dd648bf5-6tvmv                              Running
-  hubble-system        event-68cfb57f6d-9dx5b                                     Running
-  hubble-system        event-68cfb57f6d-g5zrl                                     Running
-  hubble-system        event-68cfb57f6d-rz4sz                                     Running
-  hubble-system        foreq-6c75b84554-x4f7h                                     Running
-  hubble-system        hashboard-7b69cc685f-d8mmw                                 Running
-  hubble-system        hashboard-7b69cc685f-mbb57                                 Running
-  hubble-system        hutil-5456dfbdd7-68p4m                                     Running
-  hubble-system        hutil-5456dfbdd7-dllfj                                     Running
-  hubble-system        memstore-8654b49cfd-npqbv                                  Running
-  hubble-system        mgmt-55985b7ccb-gpvnr                                      Running
-  hubble-system        mongo-0                                                    Running
-  hubble-system        mongo-1                                                    Running
-  hubble-system        mongo-2                                                    Pending
-  hubble-system        mongodb-key-manager-helm-4z2mw                             Running
-  hubble-system        msgbroker-0                                                Running
-  hubble-system        msgbroker-1                                                Running
-  hubble-system        oci-proxy-787fd499d4-f772t                                 Running
-  hubble-system        specman-0                                                  Running
-  hubble-system        spectro-tunnel-69448888-qn7kk                              Running
-  hubble-system        spectrocluster-54fb864b48-8fhkr                            Running
-  hubble-system        spectrocluster-54fb864b48-9hkgg                            Running
-  hubble-system        spectrocluster-54fb864b48-w5dwr                            Running
-  hubble-system        spectrocluster-jobs-6ddfbddcd6-j9xb8                       Running
-  hubble-system        spectrocluster-reconciler-d448fc8cf-qr6bp                  Running
-  hubble-system        spectroclusterop-89968785d-6n48l                           Running
-  hubble-system        spectroclusterop-89968785d-gzd5w                           Running
-  hubble-system        spectrossh-d5fd6b49-wfcgc                                  Running
-  hubble-system        system-6f7767845d-lm5zn                                    Running
-  hubble-system        system-6f7767845d-xf2hl                                    Running
-  hubble-system        timeseries-6f5bf98c5c-fcqnh                                Running
-  hubble-system        timeseries-6f5bf98c5c-vmb5h                                Running
-  hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
-  hubble-system        user-796c877b57-6rcdp                                      Running
-  hubble-system        user-796c877b57-ptbg4                                      Running
-  ingress-nginx        ingress-nginx-controller-fjffp                             Running
-  ingress-nginx        ingress-nginx-controller-sz9gk                             Running
-  jet-system           jet-555cdf78f5-4l2s2                                       Running
-  ui-system            spectro-ui-8658f85c85-9lkhs                                Running
+    cp-system            spectro-cp-ui-78c9b7dcc5-q8ln4                             Running
+    hubble-system        auth-58bc56bc79-68lbg                                      Running
+    hubble-system        auth-58bc56bc79-r2md8                                      Running
+    hubble-system        cloud-8475845cff-dnq27                                     Running
+    hubble-system        cloud-8475845cff-v2cww                                     Running
+    hubble-system        configserver-74dd648bf5-6tvmv                              Running
+    hubble-system        event-68cfb57f6d-9dx5b                                     Running
+    hubble-system        event-68cfb57f6d-g5zrl                                     Running
+    hubble-system        event-68cfb57f6d-rz4sz                                     Running
+    hubble-system        foreq-6c75b84554-x4f7h                                     Running
+    hubble-system        hashboard-7b69cc685f-d8mmw                                 Running
+    hubble-system        hashboard-7b69cc685f-mbb57                                 Running
+    hubble-system        hutil-5456dfbdd7-68p4m                                     Running
+    hubble-system        hutil-5456dfbdd7-dllfj                                     Running
+    hubble-system        memstore-8654b49cfd-npqbv                                  Running
+    hubble-system        mgmt-55985b7ccb-gpvnr                                      Running
+    hubble-system        mongo-0                                                    Running
+    hubble-system        mongo-1                                                    Running
+    hubble-system        mongo-2                                                    Pending
+    hubble-system        mongodb-key-manager-helm-4z2mw                             Running
+    hubble-system        msgbroker-0                                                Running
+    hubble-system        msgbroker-1                                                Running
+    hubble-system        oci-proxy-787fd499d4-f772t                                 Running
+    hubble-system        specman-0                                                  Running
+    hubble-system        spectro-tunnel-69448888-qn7kk                              Running
+    hubble-system        spectrocluster-54fb864b48-8fhkr                            Running
+    hubble-system        spectrocluster-54fb864b48-9hkgg                            Running
+    hubble-system        spectrocluster-54fb864b48-w5dwr                            Running
+    hubble-system        spectrocluster-jobs-6ddfbddcd6-j9xb8                       Running
+    hubble-system        spectrocluster-reconciler-d448fc8cf-qr6bp                  Running
+    hubble-system        spectroclusterop-89968785d-6n48l                           Running
+    hubble-system        spectroclusterop-89968785d-gzd5w                           Running
+    hubble-system        spectrossh-d5fd6b49-wfcgc                                  Running
+    hubble-system        system-6f7767845d-lm5zn                                    Running
+    hubble-system        system-6f7767845d-xf2hl                                    Running
+    hubble-system        timeseries-6f5bf98c5c-fcqnh                                Running
+    hubble-system        timeseries-6f5bf98c5c-vmb5h                                Running
+    hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
+    hubble-system        user-796c877b57-6rcdp                                      Running
+    hubble-system        user-796c877b57-ptbg4                                      Running
+    ingress-nginx        ingress-nginx-controller-fjffp                             Running
+    ingress-nginx        ingress-nginx-controller-sz9gk                             Running
+    jet-system           jet-555cdf78f5-4l2s2                                       Running
+    ui-system            spectro-ui-8658f85c85-9lkhs                                Running
    ```
 
 ## Next Steps
