@@ -167,8 +167,8 @@ Creating a content bundle provides several benefits that may address common use 
    }
    ```
 
-   For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
-   to an JSON object containing the following fields.
+    For Google Artifact Registry (GAR) access, you need to set the username field to `"_json_key"` and set the password
+    to an JSON object containing the following fields.
 
    | Field                         | Description                                                                                         |
    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -183,30 +183,30 @@ Creating a content bundle provides several benefits that may address common use 
    | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
    | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
 
-   For example, the following is a valid set of credentials for a GCR registry.
+    For example, the following is a valid set of credentials for a GAR registry.
 
-   ```json
-   {
-     "image": [
-       {
-         "endpoint": "gcr.io",
-         "username": "_json_key",
-         "password": {
-           "type": "service_account",
-           "project_id": "spectro-images",
-           "private_key_id": "847c09190xxxxxxxxxxxxc4ebc",
-           "private_key": "-----BEGIN KEY-----MIIEvQIBADA ... -----Shortened for brevity",
-           "client_email": "xxx.iam.gserviceaccount.com",
-           "client_id": "115830xxxxxxx340453",
-           "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-           "token_uri": "https://oauth2.googleapis.com/token",
-           "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-           "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/spectro-images-viewer%40spectro-images.iam.gserviceaccount.com"
-         }
-       }
-     ]
-   }
-   ```
+    ```json
+    {
+      "image": [
+        {
+          "endpoint": "us-docker.pkg.dev",
+          "username": "_json_key",
+          "password": {
+            "type": "service_account",
+            "project_id": "spectro-images",
+            "private_key_id": "847c09190xxxxxxxxxxxxc4ebc",
+            "private_key": "-----BEGIN KEY-----MIIEvQIBADA ... -----Shortened for brevity",
+            "client_email": "xxx.iam.gserviceaccount.com",
+            "client_id": "115830xxxxxxx340453",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/spectro-images-viewer%40spectro-images.iam.gserviceaccount.com"
+          }
+        }
+      ]
+    }
+    ```
 
    </TabItem>
 
