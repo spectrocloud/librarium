@@ -54,31 +54,19 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 
 | Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
 | ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Amazon EFS                   | CSI        | :white_check_mark: | :x:                | 2.3.0       |
 | Antrea                       | CNI        | :white_check_mark: | :x:                | 2.5.1       |
-| Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.3.4       |
 | Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.2.4       |
 | AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 2.17.1      |
 | Azure Disk                   | CSI        | :white_check_mark: | :x:                | 1.34.0      |
-| Cilium                       | CNI        | :x:                | :white_check_mark: | 1.18.1      |
-| Crossplane                   | Add-on     | :white_check_mark: | :x:                | 2.1.3       |
 | Flannel                      | CNI        | :white_check_mark: | :x:                | 0.28.0      |
-| Fluentbit                    | Add-on     | :white_check_mark: | :x:                | 4.2.2       |
-| Fluentbit                    | Add-on     | :white_check_mark: | :x:                | 4.1.1       |
 | Flux2                        | Add-on     | :x:                | :white_check_mark: | 2.17.0      |
-| GCE Persistent Disk CSI      | CSI        | :white_check_mark: | :x:                | 1.17.15     |
-| Istio                        | Add-on     | :white_check_mark: | :x:                | 1.28.3      |
 | Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.5       |
 | Kong                         | Add-on     | :white_check_mark: | :x:                | 3.0.2       |
 | Kubernetes (EKS)             | Kubernetes | :white_check_mark: | :x:                | 1.34        |
 | Kubernetes (GKE)             | Kubernetes | :white_check_mark: | :x:                | 1.34        |
-| MetalLB                      | Add-on     | :white_check_mark: | :x:                | 0.15.3      |
-| Multus                       | CNI        | :white_check_mark: | :x:                | 4.2.2       |
 | Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
-| Rook Ceph                    | CSI        | :x:                | :white_check_mark: | 1.17.1      |
 | Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.2.1      |
 | Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 80.13.3     |
-| Spectro Kubernetes Dashboard | Add-on     | :x:                | :white_check_mark: | 7.13.0      |
 | Vault                        | Add-on     | :white_check_mark: | :x:                | 0.32.0      |
 
 ## January 23, 2026 - Component Updates {#component-updates-2026-04}
