@@ -103,13 +103,9 @@ your environment. Reach out to our support team if you need assistance.
 1.  Open a terminal session and navigate to the directory where you downloaded the Palette install zip file provided by
     our support. Unzip the file to a directory named **palette-install**.
 
-<!-- vale off -->
-
     ```shell
     unzip charts.zip -d palette-install
     ```
-
-<!-- vale on -->
 
 2.  Navigate to the **palette-install** directory.
 
