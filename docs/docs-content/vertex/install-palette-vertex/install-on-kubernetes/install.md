@@ -113,13 +113,13 @@ your environment. Reach out to our support team if you need assistance.
     our support. Unzip the file to a directory named **vertex-install**.
 
     ```shell
-    unzip charts.zip -d vertex-install
+    unzip release-*.zip -d vertex-install
     ```
 
-2.  Navigate to the **vertex-install** directory.
+2.  Navigate to the release folder inside the **vertex-install** directory.
 
     ```shell
-    cd vertex-install
+    cd vertex-install/charts/release-*
     ```
 
 3.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
@@ -137,21 +137,20 @@ your environment. Reach out to our support team if you need assistance.
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
-    DESCRIPTION: Install complete
     TEST SUITE: None
     ```
 
-4.  Open the **values.yaml** in the **vertex/spectro-mgmt-plane** folder with a text editor of your choice. The
-    **values.yaml** contains the default values for the VerteX installation parameters. However, you must populate the
-    following parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file
-    in the [Helm Configuration Reference](vertex-helm-ref.md) page.
+4.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
+    contains the default values for the VerteX installation parameters. However, you must populate the following
+    parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the
+    [Helm Configuration Reference](vertex-helm-ref.md) page.
 
     | **Parameter**                             | **Description**                                                                                                                                               | **Type** |
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
     | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
     | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
     | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
+    | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
     :::info
 
@@ -202,7 +201,6 @@ your environment. Reach out to our support team if you need assistance.
 
     config:
       installationMode: "connected" #values can be connected or airgap.
-      isPaletteBaseCluster: false
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -290,8 +288,8 @@ your environment. Reach out to our support team if you need assistance.
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
-        imageSwapInitImage: "us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.8.a-v2"
-        imageSwapImage: "us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap:v1.5.3-spectro-4.8.a-v2"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
+        imageSwapImage: "us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -315,14 +313,8 @@ your environment. Reach out to our support team if you need assistance.
       serverCrtBase64: ""
       serverKeyBase64: ""
       insecureSkipVerify: false
-    tunnel:
-      preferredServer:
-        endpoint: ""
-      servers:
-        - endpoint: ""
+
     ingress:
-      msgbroker:
-        proxyBodySize: "15m" # Default proxy body size for msgbroker ingress
       # When enabled nginx ingress controller would be installed
       enabled: true
 
@@ -344,7 +336,6 @@ your environment. Reach out to our support team if you need assistance.
         # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
         # service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM_ARN>
         # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
-        # service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
 
         # Azure example
         # service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -417,11 +408,10 @@ your environment. Reach out to our support team if you need assistance.
       cpuLimit: "2000m"
       memoryLimit: "4Gi"
       pvcSize: "20Gi"
-      storageClass: "" # leave empty to use the default storage class
+      storageClass: ""  # leave empty to use the default storage class
 
     config:
       installationMode: "connected" #values can be connected or airgap.
-      isPaletteBaseCluster: false
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -458,13 +448,13 @@ your environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-     #  registry:
-     #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-     #    name: "" #<Contact Spectro Cloud Sales for More info>
-     #    password: "" #<Contact Spectro Cloud Sales for More info>
-     #    username: "" #<Contact Spectro Cloud Sales for More info>
-     #    insecureSkipVerify: false
-     #    caCert: ""
+    #  registry:
+    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+    #    name: "" #<Contact Spectro Cloud Sales for More info>
+    #    password: "" #<Contact Spectro Cloud Sales for More info>
+    #    username: "" #<Contact Spectro Cloud Sales for More info>
+    #    insecureSkipVerify: false
+    #    caCert: ""
 
        ociPackRegistry:
          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
@@ -475,15 +465,15 @@ your environment. Reach out to our support team if you need assistance.
          insecureSkipVerify: false
          caCert: ""
 
-     #  ociPackEcrRegistry:
-     #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-     #    name: "" #<Contact Spectro Cloud Sales for More info>
-     #    accessKey: "" #<Contact Spectro Cloud Sales for More info>
-     #    secretKey: "" #<Contact Spectro Cloud Sales for More info>
-     #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-     #    isPrivate: true
-     #    insecureSkipVerify: false
-     #    caCert: ""
+    #  ociPackEcrRegistry:
+    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+    #    name: "" #<Contact Spectro Cloud Sales for More info>
+    #    accessKey: "" #<Contact Spectro Cloud Sales for More info>
+    #    secretKey: "" #<Contact Spectro Cloud Sales for More info>
+    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+    #    isPrivate: true
+    #    insecureSkipVerify: false
+    #    caCert: ""
 
        ociImageRegistry:
          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
@@ -495,22 +485,22 @@ your environment. Reach out to our support team if you need assistance.
          caCert: ""
          mirrorRegistries: ""  # See instructions below.
 
-     # Instruction for mirrorRegistries.
-     # ----------------------------------
-     # Please provide the registry endpoint for the following registries, separated by double colons (::):
-     # docker.io
-     # gcr.io
-     # ghcr.io
-     # k8s.gcr.io
-     # registry.k8s.io
-     # quay.io
-     # For each registry, follow this example format:
-     # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
-     # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+    # Instruction for mirrorRegistries.
+    # ----------------------------------
+    # Please provide the registry endpoint for the following registries, separated by double colons (::):
+    # docker.io
+    # gcr.io
+    # ghcr.io
+    # k8s.gcr.io
+    # registry.k8s.io
+    # quay.io
+    # For each registry, follow this example format:
+    # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
+    # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
-        imageSwapInitImage: "us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.8.a-v2"
-        imageSwapImage: "us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap:v1.5.3-spectro-4.8.a-v2"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
+        imageSwapImage: "us-docker.pkg.dev/palette-images-fips/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -535,14 +525,7 @@ your environment. Reach out to our support team if you need assistance.
       serverKeyBase64: ""
       insecureSkipVerify: false
 
-    tunnel:
-      preferredServer:
-        endpoint: ""
-      servers:
-        - endpoint: ""
     ingress:
-      msgbroker:
-        proxyBodySize: "15m" # Default proxy body size for msgbroker ingress
       # When enabled nginx ingress controller would be installed
       enabled: true
 
@@ -564,7 +547,6 @@ your environment. Reach out to our support team if you need assistance.
         # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
         # service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM_ARN>
         # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
-        # service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
 
         # Azure example
         # service.beta.kubernetes.io/azure-load-balancer-internal: "true"
