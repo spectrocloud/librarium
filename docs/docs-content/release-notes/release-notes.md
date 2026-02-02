@@ -23,7 +23,12 @@ tags: ["release-notes"]
 
 #### Features
 
-- Palette and VerteX installations now use [Traefik for Kubernetes ingress](https://doc.traefik.io/traefik/reference/install-configuration/providers/kubernetes/kubernetes-ingress/). The migration is seamless for new and existing Palette installations. This change follows the [Ingress NGINX Retirement](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/).
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9118 -->
+
+- Palette and VerteX installations now use
+  [Traefik for Kubernetes ingress](https://doc.traefik.io/traefik/reference/install-configuration/providers/kubernetes/kubernetes-ingress/).
+  The migration is seamless for new and existing Palette installations. This change follows the
+  [Ingress NGINX Retirement](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/).
 
 #### Improvements
 
