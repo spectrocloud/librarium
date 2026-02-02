@@ -8,7 +8,7 @@ name: Clean Up Unused Images
 on:
   schedule:
     # On the first of every month at 12 PM UTC
-    - cron: '0 2 1 * *'
+    - cron: '0 12 1 * *'
   workflow_dispatch:
 
 concurrency:
