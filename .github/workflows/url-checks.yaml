@@ -1,11 +1,11 @@
 # This workflow scans the markdown files in the repository for broken URLs.
 # Additional logic is added to the Make command verify-rate-limited-links-ci to check for rate-limited URLs, including guidance on what domains to ignore.
-# The workflow is scheduled to run every Monday at 6 am.
+# The workflow is scheduled to run every Monday at 2PM UTC.
 
 on:
   schedule:
-    # Every Monday at 6 am
-    - cron: '0 6 * * 1'
+    # Every Monday at 2PM UTC
+    - cron: '0 14 * * 1'
   workflow_dispatch:
   
   
