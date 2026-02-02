@@ -750,7 +750,7 @@ Use the following steps to validate the Palette installation.
    the IP address of the load balancer.
 
 2. Log in using the credentials you received from our support team. After login, you will be prompted to create a new
-   password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+   password. Enter a new password and save your changes. You will be redirected to the Palette system console. 
 
 3. Open a terminal session and issue the following command to verify the Palette installation. The command should return
    a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system`
