@@ -18,7 +18,7 @@ you need a public SSH key registered in Palette.
 
 ## Limitations
 
-- Only RSA SSH keys are supported when deploying [Azure AKS clusters](../../public-cloud/azure/aks.md).
+- Only RSA and ED25519 SSH keys are supported when deploying [Azure AKS clusters](../../public-cloud/azure/aks.md).
 
 ## Prerequisites
 

@@ -1,12 +1,12 @@
 # This workflow runs the set of core vale checks on the entire repo.
-# The workflow runs every Monday at 8 am UTC.
+# The workflow runs every Monday at 4PM UTC.
 # This workflow supports on-demand execution using the workflow_dispatch event.
 
 name: Spellcheck Entire Librarium
 on:
   schedule:
-    # Every Monday at 8AM UTC
-    - cron: '0 8 * * 1'
+    # Every Monday at 4PM UTC
+    - cron: '0 16 * * 1'
   workflow_dispatch:
 
 concurrency:
@@ -86,7 +86,7 @@ jobs:
 
       - name: Upload Vale Results
         if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: "vale-spellcheck-results"
           path: vale-spellcheck-results.txt
