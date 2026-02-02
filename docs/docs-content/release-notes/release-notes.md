@@ -70,6 +70,42 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
+#### Pack Notes
+
+<<<<<<< HEAD
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
 ## January 30, 2026 - Release 4.8.25
 
 ### Breaking Changes
@@ -156,42 +192,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 
 #### Pack Notes
 
-<<<<<<< HEAD
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Deprecations and Removals
-
-=======
-
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3587 -->
 <!-- prettier-ignore-start -->
 
@@ -220,8 +220,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 | Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.2.1      |
 | Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 80.13.3     |
 | Vault                        | Add-on     | :white_check_mark: | :x:                | 0.32.0      |
-
-> > > > > > > master
 
 ## January 23, 2026 - Component Updates {#component-updates-2026-04}
 
