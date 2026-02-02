@@ -14,7 +14,8 @@ DEVELOPER_PORTAL_LINKS=(
     "socket\.dev",
     "www\.freedesktop\.org",
     "docs\.openstack\.org",
-    "upwind\.io"
+    "upwind\.io",
+    "wiz\.io",
 )
 LINKS_FILE="all_links.txt"
 BROKEN_LINKS_FILE="link_report_developer_portals.txt"
