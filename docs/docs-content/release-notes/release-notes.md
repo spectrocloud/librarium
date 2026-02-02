@@ -72,8 +72,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
-<<<<<<< HEAD
-
 #### OS
 
 | Pack Name | New Version |
