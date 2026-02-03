@@ -24,7 +24,8 @@ additional details regarding vulnerabilities and offering remediation steps.
 ### Summary
 
 On February 3, 2026, Spectro Cloud became aware of and is tracking the coordinated disclosure of multiple
-vulnerabilities recently disclosed in the Nginx ingress controller versions 1.13.0–1.13.6 and 1.14.0–1.14.2. These vulnerabilities were fixed in versions 1.13.7 and 1.14.3. 
+vulnerabilities recently disclosed in the Nginx ingress controller versions 1.13.0–1.13.6 and 1.14.0–1.14.2. These
+vulnerabilities were fixed in versions 1.13.7 and 1.14.3.
 
 The following vulnerabilities _do not_ affect our products, as we do not use these annotations:
 
@@ -37,7 +38,8 @@ The following vulnerability _does_ impact Palette Enterprise and Palette VerteX 
 - CVE-2026-24514 - Admission Controller denial of service
 
 Nginx controller has been deprecated by the upstream provider, and we are in the process of migrating to Traefik ingress
-controller. Until the migration to Traefik ingress is complete, we will be upgrading Nginx controller to version 1.13.7, which will remediate this vulnerability.
+controller. Until the migration to Traefik ingress is complete, we will be upgrading Nginx controller to version 1.13.7,
+which will remediate this vulnerability.
 
 ### Affected Deployments
 
