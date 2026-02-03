@@ -51,7 +51,7 @@ which will remediate this vulnerability.
 
 2. **Palette Enterprise and Palette VerteX deployments**
 
-   - CVE-2026-24514 affects all Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted), as well as all workload clusters using the `nginx-controller` pack.
+   - CVE-2026-24514 affects all Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted), as well as all workload clusters using the Nginx pack.
 
 <!-- prettier-ignore-end -->
 
