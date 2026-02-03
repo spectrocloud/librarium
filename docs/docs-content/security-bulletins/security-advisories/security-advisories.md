@@ -51,9 +51,7 @@ which will remediate this vulnerability.
 
 2. **Palette Enterprise and Palette VerteX deployments**
 
-   - SaaS deployments
-   - Self hosted deployments
-CVE-2026-24514 affects all Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted), as well as all workload clusters using the `nginx-controller` pack.
+   - CVE-2026-24514 affects all Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted), as well as all workload clusters using the `nginx-controller` pack.
 
 <!-- prettier-ignore-end -->
 
@@ -61,22 +59,15 @@ CVE-2026-24514 affects all Palette Enterprise and Palette VerteX deployment meth
 
 <!-- prettier-ignore-start -->
 
-1. **SaaS deployments**
+We recommend taking the following actions to remediate CVE-2026-24514:
 
-   - Multi-tenant and managed Dedicated SaaS clusters will be patched as part of the standard update process.
+- **Multi-tenant and dedicated SaaS deployments** - No action necessary. Deployments will be patched as part of the standard update process.
+- **Self-hosted deployments** - Update the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack version to 1.13.7.
+- **Workload clusters**
 
-2. **Self-Hosted Palette Deployments**
-
-   - Update the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack version to 1.13.7.
-
-3. **Workload Clusters**
-
-   - Managed Kubernetes clusters (AKS, EKS, GKE) managed by Palette Enterprise and Palette VerteX deployments should be
-     updated with patches from the cloud vendor as soon as they become available.
-   - Patched OS images for other clusters will be available in an upcoming release. All customers are advised to upgrade
-     the latest Kubernetes patch versions as soon as they are available.
-   - A patch for the edge clusters will be available in an upcoming release. All customers are advised to upgrade the
-     clusters to the patched versions as soon as possible.
+   - Managed Kubernetes clusters (AKS, EKS, GKE) should be updated with patches from the cloud vendor as soon as they become available.
+   - Patched OS images for other cluster types will be available in an upcoming release. All customers are advised to upgrade to the latest Kubernetes patch versions as soon as they become available.
+   - A patch for Edge clusters will be available in an upcoming release. All customers are advised to upgrade the clusters to the patched version as soon as they become available.
 
 <!-- prettier-ignore-end -->
 
