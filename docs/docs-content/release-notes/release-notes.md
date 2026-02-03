@@ -32,6 +32,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9695 -->
+
+- A [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) warning is now
+  displayed when modifying operating system (OS) or Kubernetes configurations for clusters linked to a cluster template.
+  Once you approve and save your cluster profile changes, the repave automatically occurs for all clusters attached to
+  the template during the next upgrade window. Refer to
+  [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more information.
+
 #### Deprecations and Removals
 
 ### Edge
