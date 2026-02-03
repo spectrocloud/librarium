@@ -30,6 +30,17 @@ tags: ["release-notes"]
   The migration is seamless for new and existing Palette installations. This change follows the
   [Ingress NGINX Retirement](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/).
 
+- Palette now supports the option to skip worker node upgrades on
+  [AWS IaaS clusters](../clusters/public-cloud/aws/create-cluster.md). For example, if you have worker pools running
+  critical databases or real-time processing services, you can enable this option to maintain service continuity during
+  control plane upgrades, then schedule
+  [worker node updates](../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade-on-aws-iaas-clusters)
+  during planned maintenance windows.
+
+  The version difference between the control plane and worker nodes must not exceed the
+  [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
+  enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9695 -->
