@@ -116,8 +116,8 @@ references the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:u
 
 2. Navigate to the left **Main Menu** and click **Clusters**.
 
-3. Click on a cluster that was deployed by the PCG that you migrated. Take note of the cluster ID. You can find the ID
-   in the URL of the browser. It is the last part of the URL, located after `/clusters/`.
+3. Click on a cluster that was deployed by the PCG that you migrated. Take note of the cluster ID. You can find the
+   **Cluster ID** from the cluster detail **Overview** tab or URL. The value after `clusters/` is the cluster ID.
 
    ```text hideClipboard
    https://console.spectrocloud.com/clusters/11111111111111111111

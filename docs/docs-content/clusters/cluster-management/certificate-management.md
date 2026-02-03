@@ -14,8 +14,13 @@ issue and expiry date of the cluster by click on **View K8s Certificates** in th
 This page focuses on how to renew the PKI certificates through Palette. You have two options for how you can renew the
 cluster PKI certificates:
 
+- [Certificate Renewal Impact on Cluster Availability](#certificate-renewal-impact-on-cluster-availability)
+- [Limitations](#limitations)
 - [Automatic Certificate Renewal](#automatic-certificate-renewal)
 - [Manual Certificate Renewal](#manual-certificate-renewal)
+  - [Prerequisites](#prerequisites)
+  - [Renew Cluster Certificate](#renew-cluster-certificate)
+  - [Validate](#validate)
 
 :::info
 
@@ -131,8 +136,8 @@ The renewal process may take several minutes, depending on the number of cluster
    export PROJECT_ID=REPLACE_ME
    ```
 
-3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`. You can get the
-   cluster ID from the cluster detail's page URL. The value after `clusters/` is the cluster ID.
+3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`. You can copy the
+   **Cluster ID** from the cluster detail **Overview** tab or URL. The value after `clusters/` is the cluster ID.
 
    ```shell
    export CLUSTER_ID=REPLACE_ME

@@ -143,13 +143,9 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 8. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-9. Click on the cluster profile you want to include in the content bundle.
+9. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
-10. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-    value in the URL. Repeat this step for all the cluster profiles whose images you want to include in the content
-    bundle.
-
-11. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
+10. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
     authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
     Replace `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer
     to the [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command
@@ -161,7 +157,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
     --password <registry-password>
     ```
 
-12. Issue the following command to create the content bundle. Replace the placeholder values with your actual values.
+11. Issue the following command to create the content bundle. Replace the placeholder values with your actual values.
 
     ```shell
     palette content build --arch <bundle-architecture> \
@@ -187,7 +183,6 @@ require a local Harbor registry. Built-in registries must be configured using ei
     The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
     in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
     bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
-
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
     :::tip
@@ -199,7 +194,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
     :::
 
-13. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
+12. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In local Edge
     deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
     [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
@@ -287,143 +282,135 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 7. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-8. Click on the cluster profile you want to include in the content bundle.
+8. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
-9. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Refer to the [Project](../../../../tenant-settings/projects/projects.md#project-id) page for
-   details. Repeat this step for all the cluster profiles you want to specify in the content bundle.
+9. (Optional) If your cluster profile uses images or helm charts that are hosted on private registries that require
+   authentication, you must provide a JSON file that contains the necessary credentials to access the registry.
 
-   ```text
-   https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
+   <Tabs>
+
+   <TabItem value="helm" label="Helm">
+
+   For authenticated access to Helm charts, your must provide credentials with the following schema. Use a key at the
+   root level of the JSON object named "helm" and set its value to a list. The list is a list of credentials for each
+   Helm chart repository. For each set of credentials, use an object in the list with the keys "endpoint", "username",
+   and "password".
+
+   ```json
+   {
+     "helm": [
+         {
+           "endpoint": <Registry URL>,
+           "username": <Registry username>,
+           "password": <Password>
+         }
+     ]
+   }
    ```
 
-10. (Optional) If your cluster profile uses images or helm charts that are hosted on private registries that require
-    authentication, you must provide a JSON file that contains the necessary credentials to access the registry.
+   For example, the following JSON code is a valid set of credentials.
 
-    <Tabs>
+   ```json
+   {
+     "helm": [
+       {
+         "endpoint": "harbor.abcd.com",
+         "username": "admin",
+         "password": "xxxxxxxx"
+       }
+     ]
+   }
+   ```
 
-    <TabItem value="helm" label="Helm">
+   </TabItem>
 
-    For authenticated access to Helm charts, your must provide credentials with the following schema. Use a key at the
-    root level of the JSON object named "helm" and set its value to a list. The list is a list of credentials for each
-    Helm chart repository. For each set of credentials, use an object in the list with the keys "endpoint", "username",
-    and "password".
+   <TabItem value="image" label="Image">
 
-    ```json
-    {
-      "helm": [
-          {
-            "endpoint": <Registry URL>,
-            "username": <Registry username>,
-            "password": <Password>
-          }
-      ]
-    }
-    ```
+   For image registries, you must provide credentials with the following schema. Provide a key at the root level of the
+   JSON object named "image" and set its value to a list. The list is a list of credentials for each Helm chart
+   repository. For each set of credentials, use an object in the list with the keys "endpoint", "username", and
+   "password".
 
-    For example, the following JSON code is a valid set of credentials.
+   ```json
+   {
+     "image": [
+         {
+           "endpoint": <Registry URL>,
+           "username": <Registry username>,
+           "password": <Password>
+         }
+     ]
+   }
+   ```
 
-    ```json
-    {
-      "helm": [
-        {
-          "endpoint": "harbor.abcd.com",
-          "username": "admin",
-          "password": "xxxxxxxx"
-        }
-      ]
-    }
-    ```
+   For example, the following JSON code provides access to two registries `ttl.sh` and `docker.io` with two
+   username-password pairs.
 
-    </TabItem>
+   ```json
+   {
+     "image": [
+       {
+         "endpoint": "ttl.sh",
+         "username": "admin",
+         "password": "*********"
+       },
+       {
+         "endpoint": "docker.io",
+         "username": "username",
+         "password": "*********"
+       }
+     ]
+   }
+   ```
 
-    <TabItem value="image" label="Image">
+   For Google Artifact Registry (GAR) access, you need to set the username field to `"_json_key"` and set the password
+   to an JSON object containing the following fields.
 
-    For image registries, you must provide credentials with the following schema. Provide a key at the root level of the
-    JSON object named "image" and set its value to a list. The list is a list of credentials for each Helm chart
-    repository. For each set of credentials, use an object in the list with the keys "endpoint", "username", and
-    "password".
+   | Field                         | Description                                                                                         |
+   | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+   | `type`                        | The type of credential, which is `service_account` for Google Cloud service accounts.               |
+   | `project_id`                  | The project ID associated with your Google Cloud project. For example, `spectro-images`.            |
+   | `private_key_id`              | A unique identifier for the private key associated with the service account.                        |
+   | `private_key`                 | The private key that is used to authenticate to Google Cloud services, encapsulated in a PEM block. |
+   | `client_email`                | The email address associated with the service account, used for authentication.                     |
+   | `client_id`                   | The client ID associated with the service account.                                                  |
+   | `auth_uri`                    | The URI for the authentication provider, typically Google's OAuth 2.0 server.                       |
+   | `token_uri`                   | The URI for obtaining tokens from Google's OAuth 2.0 server.                                        |
+   | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
+   | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
 
-    ```json
-    {
-      "image": [
-          {
-            "endpoint": <Registry URL>,
-            "username": <Registry username>,
-            "password": <Password>
-          }
-      ]
-    }
-    ```
+   For example, the following is a valid set of credentials for a GAR registry.
 
-    For example, the following JSON code provides access to two registries `ttl.sh` and `docker.io` with two
-    username-password pairs.
+   ```json
+   {
+     "image": [
+       {
+         "endpoint": "us-docker.pkg.dev",
+         "username": "_json_key",
+         "password": {
+           "type": "service_account",
+           "project_id": "spectro-images",
+           "private_key_id": "847c09190xxxxxxxxxxxxc4ebc",
+           "private_key": "-----BEGIN KEY-----MIIEvQIBADA ... -----Shortened for brevity",
+           "client_email": "xxx.iam.gserviceaccount.com",
+           "client_id": "115830xxxxxxx340453",
+           "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+           "token_uri": "https://oauth2.googleapis.com/token",
+           "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+           "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/spectro-images-viewer%40spectro-images.iam.gserviceaccount.com"
+         }
+       }
+     ]
+   }
+   ```
 
-    ```json
-    {
-      "image": [
-        {
-          "endpoint": "ttl.sh",
-          "username": "admin",
-          "password": "*********"
-        },
-        {
-          "endpoint": "docker.io",
-          "username": "username",
-          "password": "*********"
-        }
-      ]
-    }
-    ```
+   </TabItem>
 
-    For Google Artifact Registry (GAR) access, you need to set the username field to `"_json_key"` and set the password
-    to an JSON object containing the following fields.
+   </Tabs>
 
-    | Field                         | Description                                                                                         |
-    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
-    | `type`                        | The type of credential, which is `service_account` for Google Cloud service accounts.               |
-    | `project_id`                  | The project ID associated with your Google Cloud project. For example, `spectro-images`.            |
-    | `private_key_id`              | A unique identifier for the private key associated with the service account.                        |
-    | `private_key`                 | The private key that is used to authenticate to Google Cloud services, encapsulated in a PEM block. |
-    | `client_email`                | The email address associated with the service account, used for authentication.                     |
-    | `client_id`                   | The client ID associated with the service account.                                                  |
-    | `auth_uri`                    | The URI for the authentication provider, typically Google's OAuth 2.0 server.                       |
-    | `token_uri`                   | The URI for obtaining tokens from Google's OAuth 2.0 server.                                        |
-    | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
-    | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
+   After creating the file, use the `-cred-file-path filepath` flag to include the credentials in the command.
 
-    For example, the following is a valid set of credentials for a GAR registry.
-
-    ```json
-    {
-      "image": [
-        {
-          "endpoint": "us-docker.pkg.dev",
-          "username": "_json_key",
-          "password": {
-            "type": "service_account",
-            "project_id": "spectro-images",
-            "private_key_id": "847c09190xxxxxxxxxxxxc4ebc",
-            "private_key": "-----BEGIN KEY-----MIIEvQIBADA ... -----Shortened for brevity",
-            "client_email": "xxx.iam.gserviceaccount.com",
-            "client_id": "115830xxxxxxx340453",
-            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-            "token_uri": "https://oauth2.googleapis.com/token",
-            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/spectro-images-viewer%40spectro-images.iam.gserviceaccount.com"
-          }
-        }
-      ]
-    }
-    ```
-
-    </TabItem>
-
-    </Tabs>
-
-    After creating the file, use the `-cred-file-path filepath` flag to include the credentials in the command.
-
-11. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
+10. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
     placeholder values with your actual values.
 
     ```shell
@@ -456,7 +443,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
     separately at the time of Edge host installation using the `-iso` flag in your build command. Doing so will override
     the file extension you provide using the `--outfile` flag.
 
-12. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
+11. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In air-gapped Edge
     deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
     [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).

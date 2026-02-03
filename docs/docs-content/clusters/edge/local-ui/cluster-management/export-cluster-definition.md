@@ -99,20 +99,13 @@ create a content bundle at the same time with a single command.
 
 8.  Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-9.  Click on the cluster profile you want to include in the cluster definition.
-
-10. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-    value in the URL. Repeat this step for all the cluster profiles you want to include in the cluster definition.
-
-    ```text
-    https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
-    ```
+9.  <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="cluster definition" />
 
     Make sure the combination of profiles you choose to export can be used to provision a cluster together. This means
     that you cannot include more than one profile that has infrastructure layers and cannot have duplicate packs between
     the profiles.
 
-11. Issue the following command to export the cluster definition, replacing the placeholder values with your actual
+10. Issue the following command to export the cluster definition, replacing the placeholder values with your actual
     values. The `build` command will generate the `.tgz` cluster definition file in the `<current-directory>/output/`
     folder by default. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI
     command page for a complete list of available flags.
@@ -124,7 +117,7 @@ create a content bundle at the same time with a single command.
     --cluster-definition-profile-ids <cluster-profile-id1,cluster-profile-id2...>
     ```
 
-12. (Optional) You can also build a content bundle along with your cluster definition in a single command by adding the
+11. (Optional) You can also build a content bundle along with your cluster definition in a single command by adding the
     `profiles` and `name` flags to the command. By default, the content bundle will be generated in the
     `<current-directory>/output/content-bundle/` folder. Content bundles are archives of all the container images
     required for one or more cluster profiles. You can upload a content bundle to your Edge host through Local UI or the
@@ -202,12 +195,7 @@ create a content bundle at the same time with a single command.
 
 8. Click on the cluster profile you want to include in the cluster definition.
 
-9. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Repeat this step for all the cluster profiles you want to include in the cluster definition.
-
-   ```text
-   https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
-   ```
+9. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="cluster definition" />
 
    Make sure the combination of profiles you choose to export can be used to provision a cluster together. This means
    that you cannot include more than one profile that has infrastructure layers and cannot have duplicate packs between
@@ -294,23 +282,24 @@ cluster definitions using the Palette API.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the main menu, select **Profiles**.
+2. On the **Project Overview** page, copy the **Project ID**, located in the top-right below the **User Menu**.
 
-3. Select a profile you want to include in the cluster definition.
+3. From the left main menu, select **Profiles**.
 
-4. Inspect the URL of the page. The URL has the following format:
-   `https://console.spectrocloud.com/projects/[ProjectID]/profiles/cluster/[ProfileID]`.
+4. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="cluster definition" />
 
-5. Extract the project ID and the profile ID from the URL.
+   All profiles must be in the same project. Make sure the combination of profiles you choose to export can be used to
+   provision a cluster together. This means that you cannot include more than one profile that has infrastructure layers
+   and cannot have duplicate packs between the profiles.
 
-6. If you want to include another profile in the cluster definition, repeat step 3 - 4 and extract the profile ID for
-   each profile you want to export. All profiles must be in the same project.
+   :::tip
 
-   Make sure the combination of profiles you choose to export can be used to provision a cluster together. This means
-   that you cannot include more than one profile that has infrastructure layers and cannot have duplicate packs between
-   the profiles.
+   You can also retrieve the project ID and cluster profile ID from the URL:
+   `https://console.spectrocloud.com/projects/<project-ID>/profiles/cluster/<profile-ID>`.
 
-7. Use the Palette Download Cluster Definition API to download the cluster definition. The endpoint location is
+   :::
+
+5. Use the Palette Download Cluster Definition API to download the cluster definition. The endpoint location is
    `POST https://api.spectrocloud.com/v1/spectroclusters/spc/download`. If you are using a self-hosted Palette instance,
    replace the base URL `api.spectrocloud.com` with API endpoint address of your Palette instance.
 
