@@ -36,8 +36,9 @@ tags: ["release-notes"]
 
 - A [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) warning is now
   displayed when modifying operating system (OS) or Kubernetes configurations for clusters linked to a cluster template.
-  Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the next upgrade window. Refer to
-  [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more information.
+  Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the
+  next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
+  information.
 
 #### Deprecations and Removals
 
