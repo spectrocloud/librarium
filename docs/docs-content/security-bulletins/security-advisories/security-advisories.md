@@ -40,9 +40,11 @@ controller. We will be upgrading to the 1.13.7 version which will remediate this
 
 ### Applicable Deployments
 
+<!-- prettier-ignore-start -->
+
 1. **Workload Clusters**
 
-   - All clusters using the `nginx-controller` pack.
+   - All clusters using the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack.
 
 2. **Palette Enterprise and Palette VerteX deployments**
 
@@ -50,7 +52,11 @@ controller. We will be upgrading to the 1.13.7 version which will remediate this
    - Self hosted deployments
    - Appliance based deployments
 
+<!-- prettier-ignore-end -->
+
 ### Recommended Actions
+
+<!-- prettier-ignore-start -->
 
 1. **SaaS deployments**
 
@@ -58,7 +64,7 @@ controller. We will be upgrading to the 1.13.7 version which will remediate this
 
 2. **Self-Hosted Palette Deployments**
 
-   - Update the Nginx ingress controller version to 1.13.7.
+   - Update the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack version to 1.13.7.
 
 3. **Workload Clusters**
 
@@ -68,6 +74,8 @@ controller. We will be upgrading to the 1.13.7 version which will remediate this
      the latest Kubernetes patch versions as soon as they are available.
    - A patch for the edge clusters will be available in an upcoming release. All customers are advised to upgrade the
      clusters to the patched versions as soon as possible.
+
+<!-- prettier-ignore-end -->
 
 An additional workaround is recommended, if possible:
 
