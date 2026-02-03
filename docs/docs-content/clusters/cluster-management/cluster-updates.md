@@ -145,8 +145,10 @@ You can follow these steps to validate all cluster update approaches.
 
 ## Trigger Worker Node Upgrade on AWS IaaS Clusters
 
-If you have enabled the [**Skip worker node update (Optional)**](../public-cloud/aws/create-cluster.md#node-configuration-settings) option for worker nodes on an AWS IaaS cluster, you can
-manually trigger a worker node upgrade at any time after updating the control plane.
+If you have enabled the
+[**Skip worker node update (Optional)**](../public-cloud/aws/create-cluster.md#node-configuration-settings) option for
+worker nodes on an AWS IaaS cluster, you can manually trigger a worker node upgrade at any time after updating the
+control plane.
 
 This action repaves the worker nodes to match the control plane's Kubernetes version. This may incur downtime for
 workloads running on those nodes, so plan accordingly.
@@ -178,8 +180,8 @@ workloads running on those nodes, so plan accordingly.
 
 8. Repeat steps 5-7 for each worker node pool that you want to upgrade.
 
-The worker nodes are repaved to match the control plane's Kubernetes version. This process may take some time
-depending on the size of the node pool.
+The worker nodes are repaved to match the control plane's Kubernetes version. This process may take some time depending
+on the size of the node pool.
 
 ### Validate
 
