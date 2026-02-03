@@ -11,6 +11,81 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+## Security Advisory 008- Nginx ingress Vulnerabilities
+
+- **Release Date**: February 3, 2026
+- **Last Updated**: February 3, 2026
+- **Severity**: HIGH
+- **CVEs**: [CVE-2026-1580](https://github.com/kubernetes/kubernetes/issues/136677),
+  [CVE-2026-24512](https://github.com/kubernetes/kubernetes/issues/136678),
+  [CVE-2026-24513](https://github.com/kubernetes/kubernetes/issues/136679),
+  [CVE-2026-24514](https://github.com/kubernetes/kubernetes/issues/136680)
+
+### Summary
+
+On February 3, 2026, Spectro Cloud became aware of and is tracking the coordinated disclosure of multiple
+vulnerabilities recently disclosed in the Nginx ingress controller (Impacted Versions: < 1.13.7 && < 1.14.3) These
+vulnerabilities identified in this advisory do not affect our products, as we do not use these annotations.
+
+- CVE-2026-1580 (`auth-method` annotation)
+- CVE-2026-24512 (`rules.http.paths.path`)
+- CVE-2026-24513 - (`auth-url` protection)
+
+This vulnerability does impact our Palette Enterprise and Palette VerteX deployments.
+
+- CVE-2026-24514 - Admission Controller denial of service.
+
+Nginx controller has been deprecated by the upstream and we are in the process of migrating to Traefik ingress
+controller. We will be upgrading to the 1.13.7 version which will remediate this vulnerability.
+
+### Applicable Deployments
+
+1. **Workload Clusters**
+
+   - All clusters using the `nginx-controller` pack.
+
+2. **Palette Enterprise and Palette VerteX deployments**
+
+   - Saas deployments
+   - Self hosted deployments
+   - Appliance based deployments
+
+### Recommended Actions
+
+1. **SaaS deployments**
+
+   - Multi-tenant and managed Dedicated SaaS clusters will be patched as part of the standard update process.
+
+2. **Self-Hosted Palette Deployments**
+
+   - Update the Nginx ingress controller version to 1.13.7.
+
+3. **Workload Clusters**
+
+   - Managed Kubernetes clusters (AKS, EKS, GKE) managed by Palette Enterprise and Palette VerteX deployments should be
+     updated with patches from the cloud vendor as soon as they become available.
+   - Patched OS images for other clusters will be available in an upcoming release. All customers are advised to upgrade
+     the latest Kubernetes patch versions as soon as they are available.
+   - A patch for the edge clusters will be available in an upcoming release. All customers are advised to upgrade the
+     clusters to the patched versions as soon as possible.
+
+An additional workaround is recommended, if possible:
+
+- Avoid running untrusted container images.
+- Use rootless containers where possible to reduce impact scope.
+- Restrict container `sysctl` configurations and disable host access to `/proc/sysrq-trigger` and
+  `/proc/sys/kernel/core_pattern` where feasible.
+- Reinforce LSM enforcement and confirm AppArmor/SELinux profiles are correctly applied post-patch.
+
+### References
+
+For detailed guidance on this Advisory, please refer to the following GitHub Security Advisories.
+
+- [CVE-2026-1580: ingress-nginx auth-method nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136677)
+- [CVE-2026-24512: ingress-nginx rules.http.paths.path nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136678)
+- [CVE-2026-24513: ingress-nginx auth-url protection bypass](https://github.com/kubernetes/kubernetes/issues/136679)
+- [CVE-2026-24514: ingress-nginx Admission Controller denial of service](https://github.com/kubernetes/kubernetes/issues/136680)
+
 ## Security Advisory 007- MongoDB zlib Compression Memory
 
 - **Release Date**: December 26, 2025
