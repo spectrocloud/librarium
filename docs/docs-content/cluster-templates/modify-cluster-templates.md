@@ -156,7 +156,7 @@ Selecting **Review & Save** opens the **Review changes** dialog. The items displ
 Cluster profile changes that modify operating system (OS) or Kubernetes configurations for clusters linked to a cluster
 template (including packs that modify these configurations, such as the
 <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack) require a
-[cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you approve and save your cluster profile changes,the repave automatically occurs for all clusters attached to the template during the next upgrade window.
+[cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the next upgrade window.
 
 :::
 
@@ -257,7 +257,7 @@ navigate to the **Overview** tab, and select **Options > Upgrade now**.
 - Cluster profile changes that modify operating system (OS) or Kubernetes configurations for clusters linked to a cluster
   template (including packs that modify these configurations, such as the
   <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack) require a
-  [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you approve and save your cluster profile changes,the repave automatically occurs for all clusters attached to the template during the next upgrade window.
+  [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the next upgrade window.
 
 :::
 
