@@ -11,6 +11,83 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+## Security Advisory 008- Nginx ingress Vulnerabilities
+
+- **Release Date**: February 3, 2026
+- **Last Updated**: February 3, 2026
+- **Severity**: HIGH
+- **CVEs**: [CVE-2026-1580](https://github.com/kubernetes/kubernetes/issues/136677),
+  [CVE-2026-24512](https://github.com/kubernetes/kubernetes/issues/136678),
+  [CVE-2026-24513](https://github.com/kubernetes/kubernetes/issues/136679),
+  [CVE-2026-24514](https://github.com/kubernetes/kubernetes/issues/136680)
+
+### Summary
+
+On February 3, 2026, Spectro Cloud became aware of and is tracking the coordinated disclosure of multiple
+vulnerabilities recently disclosed in the Nginx ingress controller versions 1.13.0–1.13.6 and 1.14.0–1.14.2. These
+vulnerabilities were fixed in versions 1.13.7 and 1.14.3.
+
+The following vulnerabilities _do not_ affect our products, as we do not use these annotations:
+
+- CVE-2026-1580 - (`auth-method` annotation)
+- CVE-2026-24512 - (`rules.http.paths.path`)
+- CVE-2026-24513 - (`auth-url` protection)
+
+The following vulnerability _does_ impact Palette Enterprise and Palette VerteX deployments:
+
+- CVE-2026-24514 - Admission Controller denial of service
+
+Nginx controller has been deprecated by the upstream provider, and we are in the process of migrating to Traefik ingress
+controller. Until the migration to Traefik ingress is complete, we will be upgrading Nginx controller to version 1.13.7,
+which will remediate this vulnerability.
+
+### Affected Deployments
+
+<!-- prettier-ignore-start -->
+
+1. **Workload Clusters**
+
+   - All clusters using the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack.
+
+2. **Palette Enterprise and Palette VerteX deployments**
+
+   - CVE-2026-24514 affects all Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted), as well as all workload clusters using the Nginx pack.
+
+<!-- prettier-ignore-end -->
+
+### Recommended Actions
+
+<!-- prettier-ignore-start -->
+
+We recommend taking the following actions to remediate CVE-2026-24514:
+
+- **Multi-tenant and dedicated SaaS deployments** - No action necessary. Deployments will be patched as part of the standard update process.
+- **Self-hosted deployments** - Update the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack version to 1.13.7.
+- **Workload clusters**
+
+   - Managed Kubernetes clusters (AKS, EKS, GKE) should be updated with patches from the cloud vendor as soon as they become available.
+   - Patched OS images for other cluster types will be available in an upcoming release. All customers are advised to upgrade to the latest Kubernetes patch versions as soon as they become available.
+   - A patch for Edge clusters will be available in an upcoming release. All customers are advised to upgrade the clusters to the patched version as soon as they become available.
+
+<!-- prettier-ignore-end -->
+
+If possible, we also recommend taking the following actions:
+
+- Avoid running untrusted container images.
+- Use rootless containers where possible to reduce impact scope.
+- Restrict container `sysctl` configurations and disable host access to `/proc/sysrq-trigger` and
+  `/proc/sys/kernel/core_pattern` where feasible.
+- Reinforce LSM enforcement and confirm AppArmor and SELinux profiles are correctly applied post-patch.
+
+### References
+
+For additional information, refer to the following GitHub Security Advisories:
+
+- [CVE-2026-1580: ingress-nginx auth-method nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136677)
+- [CVE-2026-24512: ingress-nginx rules.http.paths.path nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136678)
+- [CVE-2026-24513: ingress-nginx auth-url protection bypass](https://github.com/kubernetes/kubernetes/issues/136679)
+- [CVE-2026-24514: ingress-nginx Admission Controller denial of service](https://github.com/kubernetes/kubernetes/issues/136680)
+
 ## Security Advisory 007- MongoDB zlib Compression Memory
 
 - **Release Date**: December 26, 2025
