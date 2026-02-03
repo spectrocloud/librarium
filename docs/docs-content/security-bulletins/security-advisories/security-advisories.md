@@ -24,21 +24,22 @@ additional details regarding vulnerabilities and offering remediation steps.
 ### Summary
 
 On February 3, 2026, Spectro Cloud became aware of and is tracking the coordinated disclosure of multiple
-vulnerabilities recently disclosed in the Nginx ingress controller (Impacted Versions: < 1.13.7 && < 1.14.3) These
-vulnerabilities identified in this advisory do not affect our products, as we do not use these annotations.
+vulnerabilities recently disclosed in the Nginx ingress controller versions 1.13.0–1.13.6 and 1.14.0–1.14.2. These vulnerabilities were fixed in versions 1.13.7 and 1.14.3. 
 
-- CVE-2026-1580 (`auth-method` annotation)
-- CVE-2026-24512 (`rules.http.paths.path`)
+The following vulnerabilities _do not_ affect our products, as we do not use these annotations:
+
+- CVE-2026-1580 - (`auth-method` annotation)
+- CVE-2026-24512 - (`rules.http.paths.path`)
 - CVE-2026-24513 - (`auth-url` protection)
 
-This vulnerability does impact our Palette Enterprise and Palette VerteX deployments.
+The following vulnerability _does_ impact Palette Enterprise and Palette VerteX deployments:
 
-- CVE-2026-24514 - Admission Controller denial of service.
+- CVE-2026-24514 - Admission Controller denial of service
 
-Nginx controller has been deprecated by the upstream and we are in the process of migrating to Traefik ingress
-controller. We will be upgrading to the 1.13.7 version which will remediate this vulnerability.
+Nginx controller has been deprecated by the upstream provider, and we are in the process of migrating to Traefik ingress
+controller. Until the migration to Traefik ingress is complete, we will be upgrading Nginx controller to version 1.13.7, which will remediate this vulnerability.
 
-### Applicable Deployments
+### Affected Deployments
 
 <!-- prettier-ignore-start -->
 
@@ -50,7 +51,7 @@ controller. We will be upgrading to the 1.13.7 version which will remediate this
 
    - SaaS deployments
    - Self hosted deployments
-   - Appliance based deployments
+CVE-2026-24514 affects all Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted), as well as all workload clusters using the `nginx-controller` pack.
 
 <!-- prettier-ignore-end -->
 
@@ -77,17 +78,17 @@ controller. We will be upgrading to the 1.13.7 version which will remediate this
 
 <!-- prettier-ignore-end -->
 
-An additional workaround is recommended, if possible:
+If possible, we also recommend taking the following actions:
 
 - Avoid running untrusted container images.
 - Use rootless containers where possible to reduce impact scope.
 - Restrict container `sysctl` configurations and disable host access to `/proc/sysrq-trigger` and
   `/proc/sys/kernel/core_pattern` where feasible.
-- Reinforce LSM enforcement and confirm AppArmor/SELinux profiles are correctly applied post-patch.
+- Reinforce LSM enforcement and confirm AppArmor and SELinux profiles are correctly applied post-patch.
 
 ### References
 
-For detailed guidance on this Advisory, please refer to the following GitHub Security Advisories.
+For additional information, refer to the following GitHub Security Advisories:
 
 - [CVE-2026-1580: ingress-nginx auth-method nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136677)
 - [CVE-2026-24512: ingress-nginx rules.http.paths.path nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136678)
