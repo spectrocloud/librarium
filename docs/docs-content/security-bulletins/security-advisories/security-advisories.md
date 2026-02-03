@@ -46,7 +46,7 @@ controller. We will be upgrading to the 1.13.7 version which will remediate this
 
 2. **Palette Enterprise and Palette VerteX deployments**
 
-   - Saas deployments
+   - SaaS deployments
    - Self hosted deployments
    - Appliance based deployments
 
