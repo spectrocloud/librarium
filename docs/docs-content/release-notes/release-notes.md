@@ -37,9 +37,9 @@ tags: ["release-notes"]
   [worker node updates](../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade-on-aws-iaas-clusters)
   during planned maintenance windows.
 
-  However, the version difference between the control plane and these worker nodes must not exceed the
+  The version difference between the control plane and worker nodes must not exceed the
   [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
-  enforces this during cluster profile updates and warns you if you attempt to exceed the N-3 threshold.
+  enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
 #### Improvements
 
