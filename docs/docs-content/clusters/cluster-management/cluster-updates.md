@@ -60,12 +60,12 @@ This is the recommended best practice for updating a cluster in Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Profiles**.
+2. Navigate to the left main menu and select **Profiles**.
 
 3. Create a new version of the profile you want to update. For more information, refer to
    [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
-4. Navigate to the left **Main Menu** and select **Clusters**.
+4. Navigate to the left main menu and select **Clusters**.
 
 5. Select the cluster you want to update, and navigate to the **Profile** tab of the cluster.
 
@@ -119,7 +119,7 @@ guidance on creating a new cluster profile version.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select the cluster you want to update, and navigate to the **Profile** tab of the cluster.
 
@@ -131,17 +131,66 @@ guidance on creating a new cluster profile version.
 </TabItem>
 </Tabs>
 
-### Validation
+### Validate
 
 You can follow these steps to validate all cluster update approaches.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster.
 
 4. Confirm that the cluster is now using an updated profile.
+
+## Trigger Worker Node Upgrade on AWS IaaS Clusters
+
+If you have enabled the **Skip worker node update (Optional)** option for worker nodes on an AWS IaaS cluster, you can
+manually trigger a worker node upgrade at any time after updating the control plane.
+
+This action will repave the worker nodes to match the control plane's Kubernetes version. This may incur downtime for
+workloads running on those nodes, so plan accordingly.
+
+### Prerequisites
+
+- An active AWS IaaS cluster in Palette with the **Skip worker node update (Optional)** option enabled.
+
+- The cluster control plane must be updated to a newer Kubernetes version within the supported N-3 minor version skew.
+
+### Enablement
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left main menu and select **Clusters**.
+
+3. Locate and select the AWS IaaS cluster you want to upgrade.
+
+4. Click the **Nodes** tab to view the cluster's node pools.
+
+5. Identify the worker node pool that has the **Skip worker node update (Optional)** option enabled and click the
+   **Edit** button next to it.
+
+6. In the **Edit node pool** dialog, disable the **Skip worker node update (Optional)** option.
+
+7. Click **Confirm** to save the changes and click **Continue** in the pop-up window to confirm the node pool repave.
+
+   Palette then schedules the worker node upgrade.
+
+8. Repeat steps 5-7 for each worker node pool that you want to upgrade.
+
+The worker nodes will be repaved to match the control plane's Kubernetes version. This process may take some time
+depending on the size of the node pool.
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left main menu and select **Clusters**.
+
+3. Select the cluster you updated, and navigate to the **Nodes** tab of the cluster.
+
+4. Confirm that the **K8s Version** column for the updated worker node pools now matches the control plane pool's
+   Kubernetes version.
 
 ## Palette Reconciliation After Updating
 
