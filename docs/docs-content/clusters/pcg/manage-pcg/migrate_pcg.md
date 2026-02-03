@@ -114,16 +114,21 @@ references the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:u
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and click **Clusters**.
+2. <PartialsComponent category="projects" name="project-id-copy" />
 
-3. Click on a cluster that was deployed by the PCG that you migrated. Take note of the cluster ID. You can find the
-   **Cluster ID** from the cluster's **Overview** tab or fetch it from the URL. The value after `clusters/` is the cluster ID.
+3. From the left main menu, select **Clusters**.
 
-   ```text hideClipboard
-   https://console.spectrocloud.com/clusters/11111111111111111111
-   ```
+4. Select a cluster that was deployed by the PCG that you migrated. Copy the **Cluster ID**, located on the cluster's
+   **Overview** tab.
 
-4. Retrieve a deployed cluster's `overlordUid` using the Palette API endpoint `GET /v1/spectroclusters/:uid`. You can
+   :::tip
+
+   You can also retrieve your cluster ID from the URL:
+   `https://console.spectrocloud.com/projects/<project-id>/clusters/<cluster-id>`.
+
+   :::
+
+5. Retrieve a deployed cluster's `overlordUid` using the Palette API endpoint `GET /v1/spectroclusters/:uid`. You can
    use the `curl` command below. Make sure you replace the `:uid` path parameter with the cluster ID, and the `apiKey`
    and `ProjectUid` headers with your own values.
 
@@ -134,7 +139,7 @@ references the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:u
    --header 'apiKey: XXXXXXXXXXX'
    ```
 
-5. Verify that the `metadata.annotations.overlordUid` field in the response payload matches the new PCG `overlordUid`.
+6. Verify that the `metadata.annotations.overlordUid` field in the response payload matches the new PCG `overlordUid`.
    Refer to the intro section of this guide for guidance on how to get the `overlordUid` of a PCG cluster.
 
    ```json hideClipboard {5}

@@ -76,28 +76,29 @@ Palette Edge CLI to download the images and upload them to the external registry
    palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
    ```
 
-5. Log in to the [Palette](https://console.spectrocloud.com) console.
+5. Log in to [Palette](https://console.spectrocloud.com).
 
-6. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the user drop-down menu.
+6. Select the project you want to deploy the Edge host to.
 
-7. Navigate to the left main menu and select **Profiles**.
+7. <PartialsComponent category="projects" name="project-id-copy" />
 
-8. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
+8. From the left main menu, select **Profiles**.
 
-9. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
-   authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
-   Replace `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer
-   to the [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command
-   page for more information.
+9. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
-   ```shell
-   palette content registry-login --registry <registry-address> \
-   --username <registry-username> \
-   --password <registry-password>
-   ```
+10. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
+    authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
+    Replace `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer
+    to the [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command
+    page for more information.
 
-10. Issue the following command to download the images as a content bundle. Replace the placeholder values with your
+    ```shell
+    palette content registry-login --registry <registry-address> \
+    --username <registry-username> \
+    --password <registry-password>
+    ```
+
+11. Issue the following command to download the images as a content bundle. Replace the placeholder values with your
     actual values. The bundle is generated in the `<current-directory>/output/content-bundle/` folder by default. Refer
     to the [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) guide for more
     information.
@@ -109,7 +110,7 @@ Palette Edge CLI to download the images and upload them to the external registry
      --name <bundle-name>
     ```
 
-11. Use the `content registry-login` command again to authenticate with the external registry. Replace
+12. Use the `content registry-login` command again to authenticate with the external registry. Replace
     `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials.
 
     ```shell
@@ -118,7 +119,7 @@ Palette Edge CLI to download the images and upload them to the external registry
     --password <registry-password>
     ```
 
-12. Issue the following command to upload the images to the external registry. Replace `<path-to-content-bundle>` with
+13. Issue the following command to upload the images to the external registry. Replace `<path-to-content-bundle>` with
     the path to the content bundle you downloaded in the previous step, and `<registry-address` with the URL of your
     external registry. Refer to the [content push](../../../../automation/palette-cli/commands/content.md#push) CLI
     command page for a complete list of available flags.
@@ -142,14 +143,15 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 2. Log in to [Palette](https://console.spectrocloud.com).
 
-3. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the user drop-down menu.
+3. Select the project you want to deploy the Edge host to.
 
-4. Navigate to the left main menu and select **Profiles**.
+4. <PartialsComponent category="projects" name="project-id-copy" />
 
-5. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
+5. From the left main menu, select **Profiles**.
 
-6. If you are downloading images from public image or Helm registries only, skip this step.
+6. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
+
+7. If you are downloading images from public image or Helm registries only, skip this step.
 
    Prepare a JSON file that includes the credentials to your image or Helm registries.
 
@@ -274,7 +276,7 @@ Palette Edge CLI to download the images and upload them to the external registry
 
    </Tabs>
 
-7. Issue the following command to download the images as a content bundle. The command produces a ZST file as output.
+8. Issue the following command to download the images as a content bundle. The command produces a ZST file as output.
    Replace the `******` after the `--api-key` flag with your Palette API key. Replace `project-ID` with the ID of your
    project in Palette, `palette-api-endpoint` with your Palette API endpoint, and `profile-ID` with the ID of your
    profile.
@@ -288,7 +290,7 @@ Palette Edge CLI to download the images and upload them to the external registry
     --cred-file-path registry-creds.json
    ```
 
-8. Issue the following command to upload the images to the external registry. Replace `path-to-content-bundle` with the
+9. Issue the following command to upload the images to the external registry. Replace `path-to-content-bundle` with the
    path to the content bundle you downloaded in the previous step. Replace `registry-URL` with the URL of your external
    registry. Replace `username` and `******` with the username and password used to access the external registry.
 
