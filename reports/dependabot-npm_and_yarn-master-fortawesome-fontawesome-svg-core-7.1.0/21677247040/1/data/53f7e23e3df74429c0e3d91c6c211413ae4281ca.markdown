@@ -1,0 +1,887 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [expanded] [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+                - list [ref=e117]:
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Create Images with Image Builder" [ref=e120] [cursor=pointer]:
+                        - /url: /byoos/image-builder/
+                      - button "Toggle the collapsible sidebar category 'Create Images with Image Builder'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "CAPI Image Builder" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /byoos/capi-image-builder/
+                      - button "Toggle the collapsible sidebar category 'CAPI Image Builder'" [ref=e125] [cursor=pointer]
+                    - list [ref=e126]:
+                      - listitem [ref=e127]:
+                        - generic [ref=e128]:
+                          - link "Build Image for VMware vSphere" [expanded] [ref=e129] [cursor=pointer]:
+                            - /url: /byoos/capi-image-builder/build-image-vmware/
+                          - button "Toggle the collapsible sidebar category 'Build Image for VMware vSphere'" [ref=e130] [cursor=pointer]
+                        - list [ref=e131]:
+                          - listitem [ref=e132]:
+                            - generic [ref=e133]:
+                              - link "Non-Airgap Build" [expanded] [ref=e134] [cursor=pointer]:
+                                - /url: /byoos/capi-image-builder/build-image-vmware/non-airgap-build/
+                              - button "Toggle the collapsible sidebar category 'Non-Airgap Build'" [ref=e135] [cursor=pointer]
+                            - list [ref=e136]:
+                              - listitem [ref=e137]:
+                                - link "RHEL and PXK" [ref=e138] [cursor=pointer]:
+                                  - /url: /byoos/capi-image-builder/build-image-vmware/non-airgap-build/rhel-capi/
+                              - listitem [ref=e139]:
+                                - link "Rocky and PXK" [ref=e140] [cursor=pointer]:
+                                  - /url: /byoos/capi-image-builder/build-image-vmware/non-airgap-build/rocky-capi/
+                          - listitem [ref=e141]:
+                            - generic [ref=e142]:
+                              - link "Airgap Build" [ref=e143] [cursor=pointer]:
+                                - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/
+                              - button "Toggle the collapsible sidebar category 'Airgap Build'" [ref=e144] [cursor=pointer]
+                      - listitem [ref=e145]:
+                        - link "Configuration Reference" [ref=e146] [cursor=pointer]:
+                          - /url: /byoos/capi-image-builder/config-reference/
+                      - listitem [ref=e147]:
+                        - link "Compatibility Matrix" [ref=e148] [cursor=pointer]:
+                          - /url: /byoos/capi-image-builder/comp-matrix-capi-builder/
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Palette Dev Engine" [ref=e151] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e153]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Virtual Machine Orchestrator" [ref=e158] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e160]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "Workspaces" [ref=e165] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e167]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Packs List" [ref=e172] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e174]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "User & Role Management" [ref=e179] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e181]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Registries and Packs" [ref=e186] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e188]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Security" [ref=e193] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e195]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Audit Logs" [ref=e200] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e202]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Self-Hosted Palette" [ref=e207] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e209]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Palette VerteX" [ref=e214] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e216]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Tenant Administration" [ref=e221] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e223]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - generic [ref=e227]:
+                  - link "Automation" [ref=e228] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e230]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Troubleshooting" [ref=e235] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e237]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - link "Glossary" [ref=e241] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e243]
+                  - text: Glossary
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - link "Compliance & Legal" [ref=e247] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e249]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e251] [cursor=pointer]
+              - listitem [ref=e252]:
+                - button "Privacy Settings" [ref=e253] [cursor=pointer]:
+                  - img [ref=e254]
+                  - text: Privacy Settings
+      - main [ref=e256]:
+        - generic [ref=e258]:
+          - generic [ref=e260]:
+            - article [ref=e261]:
+              - navigation "Breadcrumbs" [ref=e262]:
+                - list [ref=e263]:
+                  - listitem [ref=e264]:
+                    - link "Home page" [ref=e265] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e266]
+                  - listitem [ref=e268]:
+                    - link "Bring Your Own OS (BYOOS)" [ref=e269] [cursor=pointer]:
+                      - /url: /byoos/
+                  - listitem [ref=e270]:
+                    - link "CAPI Image Builder" [ref=e271] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/
+                  - listitem [ref=e272]:
+                    - link "Build Image for VMware vSphere" [ref=e273] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/build-image-vmware/
+                  - listitem [ref=e274]:
+                    - link "Non-Airgap Build" [ref=e275] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/build-image-vmware/non-airgap-build/
+                  - listitem [ref=e276]:
+                    - generic [ref=e277]: Rocky and PXK
+              - generic [ref=e278]:
+                - heading "Rocky and Palette eXtended Kubernetes" [level=1] [ref=e280]
+                - paragraph [ref=e281]:
+                  - text: This guide teaches you how to use the
+                  - link "CAPI Image Builder" [ref=e282] [cursor=pointer]:
+                    - /url: /byoos/capi-image-builder/
+                  - text: tool to create a custom
+                  - link "Rocky Linux" [ref=e283] [cursor=pointer]:
+                    - /url: https://rockylinux.org/
+                  - text: image with
+                  - link "Palette eXtended Kubernetes (PXK)" [ref=e284] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=kubernetes
+                  - text: for VMware vSphere and use the image to create a cluster profile. You can use either a Rocky Linux boot ISO or an existing Rocky Linux VM to create your image.
+                - generic [ref=e285]:
+                  - generic [ref=e286]:
+                    - img [ref=e288]
+                    - text: tech preview
+                  - generic [ref=e290]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e291]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e292] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - generic [ref=e293]:
+                  - tablist [ref=e294]:
+                    - tab "Rocky ISO" [selected] [ref=e295] [cursor=pointer]
+                    - tab "Rocky VM" [ref=e296] [cursor=pointer]
+                  - tabpanel [ref=e298]:
+                    - list [ref=e299]:
+                      - listitem [ref=e300]:
+                        - paragraph [ref=e301]: Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
+                      - listitem [ref=e302]:
+                        - paragraph [ref=e303]: "An existing Linux device used to execute commands and build your Rocky image. This device must have the following resources available and the following software installed:"
+                        - list [ref=e304]:
+                          - listitem [ref=e305]: 4 CPUs
+                          - listitem [ref=e306]: 8 GB of RAM
+                          - listitem [ref=e307]: 50 GB of free disk space
+                          - listitem [ref=e308]:
+                            - link "Docker" [ref=e309] [cursor=pointer]:
+                              - /url: https://docs.docker.com/engine/install/
+                            - text: or
+                            - link "Podman" [ref=e310] [cursor=pointer]:
+                              - /url: https://podman.io/docs/installation
+                          - listitem [ref=e311]:
+                            - link "curl" [ref=e312] [cursor=pointer]:
+                              - /url: https://curl.se/docs/install.html
+                          - listitem [ref=e313]:
+                            - text: (Optional) Any custom Bash scripts (
+                            - code [ref=e314]: .sh
+                            - text: files) that you want to execute when creating your Rocky image. Custom scripts are supported beginning with CAPI Image Builder version 4.6.23.
+                - heading "Build Custom ImageDirect link to Build Custom Image" [level=2] [ref=e315]:
+                  - text: Build Custom Image
+                  - link "Direct link to Build Custom Image" [ref=e316] [cursor=pointer]:
+                    - /url: "#build-custom-image"
+                    - text: "#"
+                - generic [ref=e317]:
+                  - tablist [ref=e318]:
+                    - tab "Rocky ISO" [selected] [ref=e319] [cursor=pointer]
+                    - tab "Rocky VM" [ref=e320] [cursor=pointer]
+                  - tabpanel [ref=e322]:
+                    - list [ref=e323]:
+                      - listitem [ref=e324]:
+                        - paragraph [ref=e325]:
+                          - text: Open a terminal session on your Linux machine and set your CAPI Image Builder version tag as a variable. This guide uses version 4.6.24 as an example. Refer to the CAPI Image Builder
+                          - link "Downloads" [ref=e326] [cursor=pointer]:
+                            - /url: /downloads/capi-image-builder/
+                          - text: page for the latest version.
+                        - generic [ref=e328]:
+                          - code [ref=e330]:
+                            - generic [ref=e331]: CAPI_IMAGE_BUILDER_VERSION=<capi-image-builder-version-tag>
+                            - generic [ref=e332]: "echo CAPI Image Builder version: $CAPI_IMAGE_BUILDER_VERSION"
+                          - button "Copy code to clipboard" [ref=e334] [cursor=pointer]:
+                            - generic [ref=e335]:
+                              - img [ref=e336]
+                              - img [ref=e338]
+                        - generic [ref=e340]:
+                          - generic [ref=e341]: Example output
+                          - generic [ref=e342]:
+                            - code [ref=e344]:
+                              - generic [ref=e345]: "CAPI Image Builder version: v4.6.24"
+                            - button "Copy code to clipboard" [ref=e347] [cursor=pointer]:
+                              - generic [ref=e348]:
+                                - img [ref=e349]
+                                - img [ref=e351]
+                      - listitem [ref=e353]:
+                        - paragraph [ref=e354]: Download the CAPI Image Builder image.
+                        - generic [ref=e355]:
+                          - tablist [ref=e356]:
+                            - tab "Docker" [selected] [ref=e357] [cursor=pointer]
+                            - tab "Podman" [ref=e358] [cursor=pointer]
+                          - tabpanel [ref=e360]:
+                            - generic [ref=e362]:
+                              - code [ref=e364]:
+                                - generic [ref=e365]: docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION
+                              - generic [ref=e366]:
+                                - button "Toggle word wrap" [ref=e367] [cursor=pointer]:
+                                  - img [ref=e368]
+                                - button "Copy code to clipboard" [ref=e370] [cursor=pointer]:
+                                  - generic [ref=e371]:
+                                    - img [ref=e372]
+                                    - img [ref=e374]
+                      - listitem [ref=e376]:
+                        - paragraph [ref=e377]:
+                          - text: Create an
+                          - code [ref=e378]: output
+                          - text: directory to store the image files and set the required permissions.
+                        - generic [ref=e380]:
+                          - code [ref=e382]:
+                            - generic [ref=e383]: mkdir /home/$USER/output
+                            - generic [ref=e384]: chmod a+rwx /home/$USER/output
+                          - button "Copy code to clipboard" [ref=e386] [cursor=pointer]:
+                            - generic [ref=e387]:
+                              - img [ref=e388]
+                              - img [ref=e390]
+                      - listitem [ref=e392]:
+                        - paragraph [ref=e393]:
+                          - text: Navigate to the
+                          - code [ref=e394]: output
+                          - text: directory.
+                        - generic [ref=e396]:
+                          - code [ref=e398]:
+                            - generic [ref=e399]: cd /home/$USER/output
+                          - button "Copy code to clipboard" [ref=e401] [cursor=pointer]:
+                            - generic [ref=e402]:
+                              - img [ref=e403]
+                              - img [ref=e405]
+                    - list [ref=e407]:
+                      - listitem [ref=e408]:
+                        - paragraph [ref=e409]:
+                          - text: Download the
+                          - link "Rocky Linux ISO file" [ref=e410] [cursor=pointer]:
+                            - /url: https://download.rockylinux.org/pub/rocky/
+                          - text: into the
+                          - code [ref=e411]: output
+                          - text: directory. Ensure you download a
+                          - code [ref=e412]: x86_64-dvd.iso
+                          - text: file and not a
+                          - code [ref=e413]: x86_64-boot.iso
+                          - text: file.
+                        - paragraph [ref=e414]:
+                          - text: This guide uses Rocky 8 as an example. Refer to the
+                          - link "Configuration Reference" [ref=e415] [cursor=pointer]:
+                            - /url: /byoos/capi-image-builder/config-reference/
+                          - text: page for details on supported operating systems.
+                        - generic [ref=e417]:
+                          - code [ref=e419]:
+                            - generic [ref=e420]: curl https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso --output Rocky-8-latest-x86_64-dvd.iso
+                          - generic [ref=e421]:
+                            - button "Toggle word wrap" [ref=e422] [cursor=pointer]:
+                              - img [ref=e423]
+                            - button "Copy code to clipboard" [ref=e425] [cursor=pointer]:
+                              - generic [ref=e426]:
+                                - img [ref=e427]
+                                - img [ref=e429]
+                      - listitem [ref=e431]:
+                        - paragraph [ref=e432]: Calculate the SHA256 checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the output, as you will need it later.
+                        - generic [ref=e434]:
+                          - code [ref=e436]:
+                            - generic [ref=e437]: sha256sum Rocky-8-latest-x86_64-dvd.iso
+                          - button "Copy code to clipboard" [ref=e439] [cursor=pointer]:
+                            - generic [ref=e440]:
+                              - img [ref=e441]
+                              - img [ref=e443]
+                        - paragraph [ref=e445]: The output should be similar to the sample output displayed below.
+                        - generic [ref=e446]:
+                          - generic [ref=e447]: Example Rocky SHA
+                          - generic [ref=e448]:
+                            - code [ref=e450]:
+                              - generic [ref=e451]: 642ada8a49dbeca8cca6543b31196019ee3d649a0163b5db0e646c7409364eeb Rocky-8-latest-x86_64-dvd.iso
+                            - generic [ref=e452]:
+                              - button "Toggle word wrap" [ref=e453] [cursor=pointer]:
+                                - img [ref=e454]
+                              - button "Copy code to clipboard" [ref=e456] [cursor=pointer]:
+                                - generic [ref=e457]:
+                                  - img [ref=e458]
+                                  - img [ref=e460]
+                      - listitem [ref=e462]:
+                        - paragraph [ref=e463]:
+                          - text: Download the
+                          - code [ref=e464]: imageconfig
+                          - text: template file.
+                        - generic [ref=e466]:
+                          - code [ref=e468]:
+                            - generic [ref=e469]: curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
+                          - generic [ref=e470]:
+                            - button "Toggle word wrap" [ref=e471] [cursor=pointer]:
+                              - img [ref=e472]
+                            - button "Copy code to clipboard" [ref=e474] [cursor=pointer]:
+                              - generic [ref=e475]:
+                                - img [ref=e476]
+                                - img [ref=e478]
+                      - listitem [ref=e480]:
+                        - paragraph [ref=e481]:
+                          - text: Open the
+                          - code [ref=e482]: imageconfig
+                          - text: template file in an editor of your choice and fill in the required parameters. The
+                          - code [ref=e483]: imageconfig
+                          - text: file is the file used to personalize the base CAPI image for your cluster, which you can alter to fit your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
+                        - paragraph [ref=e484]:
+                          - text: The following example configuration configures a Rocky 8 CAPI image from a Rocky ISO using the SHA256 checksum of the Rocky ISO from step 6 of this guide. Replace all VMware-related placeholders in the
+                          - code [ref=e485]: Define Vmware infra details
+                          - text: section with values from your VMware vSphere environment.
+                        - paragraph [ref=e486]:
+                          - text: For a complete list of parameters, refer to the
+                          - link "Configuration Reference" [ref=e487] [cursor=pointer]:
+                            - /url: /byoos/capi-image-builder/config-reference/
+                          - text: page. Additionally, refer to the
+                          - link "Compatibility Matrix" [ref=e488] [cursor=pointer]:
+                            - /url: /byoos/capi-image-builder/comp-matrix-capi-builder/
+                          - text: for a list of supported Kubernetes versions and their corresponding dependencies.
+                        - generic [ref=e490]:
+                          - code [ref=e492]:
+                            - generic [ref=e493]: "# Define the OS type and version here"
+                            - generic [ref=e494]: "# os_version=rhel-8 | rhel-9 | rockylinux-8 | rockylinux-9"
+                            - generic [ref=e495]: "# image_type=standard | fips"
+                            - generic [ref=e496]: os_version=rockylinux-8
+                            - generic [ref=e497]: image_type=standard
+                            - generic [ref=e498]: "# Define the image name"
+                            - generic [ref=e499]: "# image_name=<Final Image Name to create>"
+                            - generic [ref=e500]: image_name=rocky-8
+                            - generic [ref=e501]: "# Define the Cloud type"
+                            - generic [ref=e502]: "# cloud_type=vmware"
+                            - generic [ref=e503]: cloud_type=vmware
+                            - generic [ref=e504]: "# Define the Component Versions"
+                            - generic [ref=e505]: "#"
+                            - generic [ref=e506]: "# containerd crictl and cni version update should be done"
+                            - generic [ref=e507]: "# only if the images are available in the upstream repositories"
+                            - generic [ref=e508]: k8s_version=1.30.4
+                            - generic [ref=e509]: cni_version=1.3.0
+                            - generic [ref=e510]: containerd_version=1.7.13
+                            - generic [ref=e511]: crictl_version=1.28.0
+                            - generic [ref=e512]: "# Define RHEL subscription credentials(if $image_type=rhel)"
+                            - generic [ref=e513]: "# used while image creation to use package manager"
+                            - generic [ref=e514]: "#rhel_subscription-user="
+                            - generic [ref=e515]: "#rhel_subscription_pass="
+                            - generic [ref=e516]: "# Define ISO url(if image is rhel or rockylinux)"
+                            - generic [ref=e517]: iso_name=Rocky-8-latest-x86_64-dvd.iso
+                            - generic [ref=e518]: iso_checksum=<iso-checksum>
+                            - generic [ref=e519]: "# Define AWS infra details"
+                            - generic [ref=e520]: aws_access_key=
+                            - generic [ref=e521]: aws_secret_key=
+                            - generic [ref=e522]: "# Define Vmware infra details"
+                            - generic [ref=e523]: vcenter_server=<vcenter-server>
+                            - generic [ref=e524]: vcenter_user=<vcenter-user>
+                            - generic [ref=e525]: vcenter_password=<vcenter-password>
+                            - generic [ref=e526]: vcenter_datacenter=<vcenter-datacenter>
+                            - generic [ref=e527]: vcenter_datastore=<vcenter-datastore>
+                            - generic [ref=e528]: vcenter_network=<vcenter-network>
+                            - generic [ref=e529]: vcenter_folder=<vcenter-folder>
+                            - generic [ref=e530]: vcenter_cluster=<vcenter-cluster>
+                            - generic [ref=e531]: vcenter_resource_pool=<vcenter-resource-pool>
+                            - generic [ref=e532]: "# Optional: for OVA based builds"
+                            - generic [ref=e533]: vcenter_template=
+                            - generic [ref=e534]: "# Define Azure infra details"
+                            - generic [ref=e535]: azure_client_id=
+                            - generic [ref=e536]: azure_client_secret=
+                            - generic [ref=e537]: azure_subscription_id=
+                            - generic [ref=e538]: azure_location=
+                            - generic [ref=e539]: azure_storage_account=
+                            - generic [ref=e540]: azure_resource_group=
+                            - generic [ref=e541]: "# Define GCE infra details"
+                            - generic [ref=e542]: google_app_creds=
+                            - generic [ref=e543]: gcp_project_id=
+                            - generic [ref=e544]: "# Airgap Configuration"
+                            - generic [ref=e545]: airgap=false
+                            - generic [ref=e546]: airgap_ip=""
+                            - generic [ref=e547]: k8s_rpm_key=
+                            - generic [ref=e548]: k8s_rpm_server=
+                            - generic [ref=e549]: containerd_url=
+                            - generic [ref=e550]: crictl_url=
+                            - generic [ref=e551]: k8s_container_reg=
+                            - generic [ref=e552]: cert_url=
+                          - generic [ref=e553]:
+                            - button "Toggle word wrap" [ref=e554] [cursor=pointer]:
+                              - img [ref=e555]
+                            - button "Copy code to clipboard" [ref=e557] [cursor=pointer]:
+                              - generic [ref=e558]:
+                                - img [ref=e559]
+                                - img [ref=e561]
+                        - generic [ref=e563]:
+                          - generic [ref=e564]:
+                            - img [ref=e566]
+                            - text: tip
+                          - paragraph [ref=e569]:
+                            - text: To build a FIPS-compliant image, keep the
+                            - code [ref=e570]: image_type
+                            - text: set to
+                            - code [ref=e571]: fips
+                            - text: .
+                        - paragraph [ref=e572]: Once you are finished making changes, save and exit the file.
+                      - listitem [ref=e573]:
+                        - paragraph [ref=e574]:
+                          - text: (Optional) You can add custom Bash scripts (
+                          - code [ref=e575]: .sh
+                          - text: files) to run before or after the build process. This feature is available beginning with CAPI Image Builder version 4.6.23. If any scripts are found in the relevant directories, they are copied to an Ansible playbook. If you do not want to add custom scripts, skip this step.
+                        - group [ref=e576]:
+                          - generic "Add Pre- and Post-Install Bash Scripts" [ref=e577] [cursor=pointer]
+                      - listitem [ref=e578]:
+                        - paragraph [ref=e579]:
+                          - text: Issue the command below to start the CAPI Image Builder container and assign the container ID to the
+                          - code [ref=e580]: BUILD_ID
+                          - text: variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware vSphere environment using the
+                          - code [ref=e581]: image_name
+                          - text: defined in
+                          - code [ref=e582]: imageconfig
+                          - text: . The tool will then generate a Rocky image from the VM and save it to the
+                          - code [ref=e583]: output
+                          - text: directory.
+                        - generic [ref=e584]:
+                          - tablist [ref=e585]:
+                            - tab "Docker" [selected] [ref=e586] [cursor=pointer]
+                            - tab "Podman" [ref=e587] [cursor=pointer]
+                          - tabpanel [ref=e589]:
+                            - generic [ref=e591]:
+                              - code [ref=e593]:
+                                - generic [ref=e594]: BUILD_ID=$(docker run --net=host --volume /home/$USER/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
+                              - generic [ref=e595]:
+                                - button "Toggle word wrap" [ref=e596] [cursor=pointer]:
+                                  - img [ref=e597]
+                                - button "Copy code to clipboard" [ref=e599] [cursor=pointer]:
+                                  - generic [ref=e600]:
+                                    - img [ref=e601]
+                                    - img [ref=e603]
+                        - paragraph [ref=e605]: If you need the VM to use static IP placement instead of DHCP, follow the steps described below.
+                        - group [ref=e606]:
+                          - generic "CAPI Image Builder with Static IP Placement" [ref=e607] [cursor=pointer]
+                      - listitem [ref=e608]:
+                        - paragraph [ref=e609]: Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete. If you added any custom scripts in step 9, the output will be displayed in the build log.
+                        - generic [ref=e610]:
+                          - tablist [ref=e611]:
+                            - tab "Docker" [selected] [ref=e612] [cursor=pointer]
+                            - tab "Podman" [ref=e613] [cursor=pointer]
+                          - tabpanel [ref=e615]:
+                            - generic [ref=e617]:
+                              - code [ref=e619]:
+                                - generic [ref=e620]: docker logs --follow $BUILD_ID
+                              - button "Copy code to clipboard" [ref=e622] [cursor=pointer]:
+                                - generic [ref=e623]:
+                                  - img [ref=e624]
+                                  - img [ref=e626]
+                      - listitem [ref=e628]:
+                        - paragraph [ref=e629]:
+                          - text: Once the build is complete, the Rocky CAPI image is downloaded to the
+                          - code [ref=e630]: output
+                          - text: directory as the
+                          - code [ref=e631]: image_name
+                          - text: specified in the
+                          - code [ref=e632]: imageconfig
+                          - text: file. Issue the following command to confirm that the build files are present in the
+                          - code [ref=e633]: output
+                          - text: directory.
+                        - generic [ref=e635]:
+                          - code [ref=e637]:
+                            - generic [ref=e638]: ls -l <image_name>
+                          - button "Copy code to clipboard" [ref=e640] [cursor=pointer]:
+                            - generic [ref=e641]:
+                              - img [ref=e642]
+                              - img [ref=e644]
+                        - generic [ref=e646]:
+                          - generic [ref=e647]: Example output
+                          - generic [ref=e648]:
+                            - code [ref=e650]:
+                              - generic [ref=e651]: "-rw-r--r-- 1 ubuntu ubuntu 1203 Nov 18 02:48 packer-manifest.json"
+                              - generic [ref=e652]: "-rw-r--r-- 1 ubuntu ubuntu 3571576320 Nov 18 02:48 rocky-8-disk-0.vmdk"
+                              - generic [ref=e653]: "-rw-r--r-- 1 ubuntu ubuntu 9507 Nov 18 02:48 rocky-8-fips.ovf"
+                              - generic [ref=e654]: "-rw-r--r-- 1 ubuntu ubuntu 212 Nov 18 02:48 rockylinux-8-kube-v1.30.4.mf"
+                              - generic [ref=e655]: "-rw-r--r-- 1 ubuntu ubuntu 3571630080 Nov 18 02:49 rockylinux-8-kube-v1.30.4.ova"
+                              - generic [ref=e656]: "-rw-r--r-- 1 ubuntu ubuntu 64 Nov 18 02:49 rockylinux-8-kube-v1.30.4.ova.sha256"
+                              - generic [ref=e657]: "-rw-r--r-- 1 ubuntu ubuntu 41044 Nov 18 02:48 rockylinux-8-kube-v1.30.4.ovf"
+                            - button "Toggle word wrap" [ref=e659] [cursor=pointer]:
+                              - img [ref=e660]
+                      - listitem [ref=e662]:
+                        - paragraph [ref=e663]:
+                          - text: Locate the new Rocky image VM in your VMware vSphere environment. Right-click the VM and select
+                          - strong [ref=e664]: Clone > Clone to Template
+                          - text: .
+                        - generic [ref=e665]:
+                          - generic [ref=e666]:
+                            - img [ref=e668]
+                            - text: tip
+                          - generic [ref=e670]:
+                            - paragraph [ref=e671]:
+                              - text: Once the image is built, you can connect to the image via SSH. The following steps are based on guidance from the
+                              - link "Image Builder Book" [ref=e672] [cursor=pointer]:
+                                - /url: https://image-builder.sigs.k8s.io/capi/providers/vsphere#accessing-remote-vms
+                              - text: .
+                            - group [ref=e673]:
+                              - generic "Connect to image VM with SSH" [ref=e674] [cursor=pointer]
+                      - listitem [ref=e675]:
+                        - paragraph [ref=e676]:
+                          - text: Enter a
+                          - strong [ref=e677]: VM template name
+                          - text: ", choose a location for the template, and select"
+                          - strong [ref=e678]: Next
+                          - text: .
+                        - generic [ref=e679]:
+                          - generic [ref=e680]:
+                            - img [ref=e682]
+                            - text: info
+                          - paragraph [ref=e685]:
+                            - text: The name and location do not have to match those defined in the
+                            - code [ref=e686]: imageconfig
+                            - text: file. The same applies to the remaining locations and resources specified in the following steps.
+                      - listitem [ref=e687]:
+                        - paragraph [ref=e688]:
+                          - text: Choose a compute resource and select
+                          - strong [ref=e689]: Next
+                          - text: .
+                      - listitem [ref=e690]:
+                        - paragraph [ref=e691]:
+                          - text: Choose a storage location and select
+                          - strong [ref=e692]: Next
+                          - text: .
+                      - listitem [ref=e693]:
+                        - paragraph [ref=e694]:
+                          - text: Review your template configurations and select
+                          - strong [ref=e695]: Finish
+                          - text: to convert the VM into a Rocky image template that you can reference when creating your cluster profile.
+                - heading "Create Cluster ProfileDirect link to Create Cluster Profile" [level=2] [ref=e696]:
+                  - text: Create Cluster Profile
+                  - link "Direct link to Create Cluster Profile" [ref=e697] [cursor=pointer]:
+                    - /url: "#create-cluster-profile"
+                    - text: "#"
+                - paragraph [ref=e698]: The Rocky image is now built and available in the VMware vSphere environment. You can use it to create a cluster profile and deploy a VMware host cluster.
+                - list [ref=e699]:
+                  - listitem [ref=e700]:
+                    - paragraph [ref=e701]:
+                      - text: Log in to
+                      - link "Palette" [ref=e702] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com/
+                      - text: .
+                  - listitem [ref=e703]:
+                    - paragraph [ref=e704]:
+                      - text: From the left main menu, select
+                      - strong [ref=e705]: Profiles > Add Cluster Profile
+                      - text: .
+                  - listitem [ref=e706]:
+                    - paragraph [ref=e707]:
+                      - text: In the
+                      - strong [ref=e708]: Basic Information
+                      - text: section, assign the cluster profile a
+                      - strong [ref=e709]: Name
+                      - text: ", brief"
+                      - strong [ref=e710]: Description
+                      - text: ", and"
+                      - strong [ref=e711]: Tags
+                      - text: . Choose
+                      - strong [ref=e712]: Full
+                      - text: or
+                      - strong [ref=e713]: Infrastructure
+                      - text: for the profile
+                      - strong [ref=e714]: Type
+                      - text: ", and select"
+                      - strong [ref=e715]: Next
+                      - text: .
+                  - listitem [ref=e716]:
+                    - paragraph [ref=e717]:
+                      - text: In the
+                      - strong [ref=e718]: Cloud Type
+                      - text: section, choose
+                      - strong [ref=e719]: VMware vSphere
+                      - text: ", and select"
+                      - strong [ref=e720]: Next
+                      - text: .
+                - list [ref=e721]:
+                  - listitem [ref=e722]:
+                    - paragraph [ref=e723]:
+                      - text: Select the
+                      - link "Bring Your Own OS (BYOOS)" [ref=e724] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=generic-byoi
+                      - text: pack and provide the following values in the YAML configuration editor. Proceed to the
+                      - strong [ref=e725]: Next
+                      - text: layer when finished.
+                    - table [ref=e726]:
+                      - rowgroup [ref=e727]:
+                        - row "Field Description Example" [ref=e728]:
+                          - cell "Field" [ref=e729]:
+                            - strong [ref=e730]: Field
+                          - cell "Description" [ref=e731]:
+                            - strong [ref=e732]: Description
+                          - cell "Example" [ref=e733]:
+                            - strong [ref=e734]: Example
+                      - rowgroup [ref=e735]:
+                        - row "osImageOverride The path to your Rocky Linux image template in your VMware vSphere environment. /Datacenter/vm/sp-docs/rockylinux-8-kube-v1.30.4" [ref=e736]:
+                          - cell "osImageOverride" [ref=e737]:
+                            - code [ref=e738]: osImageOverride
+                          - cell "The path to your Rocky Linux image template in your VMware vSphere environment." [ref=e739]
+                          - cell "/Datacenter/vm/sp-docs/rockylinux-8-kube-v1.30.4" [ref=e740]:
+                            - code [ref=e741]: /Datacenter/vm/sp-docs/rockylinux-8-kube-v1.30.4
+                        - row "osName The type of operating system used in your image. rockylinux" [ref=e742]:
+                          - cell "osName" [ref=e743]:
+                            - code [ref=e744]: osName
+                          - cell "The type of operating system used in your image." [ref=e745]
+                          - cell "rockylinux" [ref=e746]:
+                            - code [ref=e747]: rockylinux
+                        - row "osVersion The version of your operating system. Enter 8 or 9 depending on the Rocky Linux os_version referenced in the imageconfig file. 8" [ref=e748]:
+                          - cell "osVersion" [ref=e749]:
+                            - code [ref=e750]: osVersion
+                          - cell "The version of your operating system. Enter 8 or 9 depending on the Rocky Linux os_version referenced in the imageconfig file." [ref=e751]:
+                            - text: The version of your operating system. Enter
+                            - code [ref=e752]: "8"
+                            - text: or
+                            - code [ref=e753]: "9"
+                            - text: depending on the Rocky Linux
+                            - code [ref=e754]: os_version
+                            - text: referenced in the
+                            - code [ref=e755]: imageconfig
+                            - text: file.
+                          - cell "8" [ref=e756]:
+                            - code [ref=e757]: "8"
+                    - generic [ref=e758]:
+                      - generic [ref=e759]: Example YAML configuration
+                      - generic [ref=e760]:
+                        - code [ref=e762]:
+                          - generic [ref=e763]: "pack:"
+                          - generic [ref=e764]: "osImageOverride: \"/Datacenter/vm/sp-docs/rockylinux-8-kube-v1.30.4\""
+                          - generic [ref=e765]: "osName: \"rockylinux\""
+                          - generic [ref=e766]: "osVersion: \"8\""
+                        - button "Toggle word wrap" [ref=e768] [cursor=pointer]:
+                          - img [ref=e769]
+                  - listitem [ref=e771]:
+                    - paragraph [ref=e772]:
+                      - text: Select the
+                      - link "Palette eXtended Kubernetes (PXK)" [ref=e773] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=kubernetes
+                      - text: pack. Ensure the
+                      - strong [ref=e774]: Pack Version
+                      - text: matches the
+                      - code [ref=e775]: k8s_version
+                      - text: specified in the
+                      - code [ref=e776]: imageconfig
+                      - text: file. Proceed to the
+                      - strong [ref=e777]: Next
+                      - text: layer.
+                - list [ref=e778]:
+                  - listitem [ref=e779]:
+                    - text: Complete the remaining profile layers, making any changes necessary. When finished, select
+                    - strong [ref=e780]: Finish Configuration
+                    - text: to create your cluster profile. For additional information on creating cluster profiles, refer to our
+                    - link "Create an Infrastructure Profile" [ref=e781] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                    - text: and
+                    - link "Create a Full Profile" [ref=e782] [cursor=pointer]:
+                      - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                    - text: guides.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e783]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e784] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e785]:
+                  - text: After you have created an OS image with CAPI Image Builder and have it referenced in a cluster profile, you can deploy a VMware host cluster using the created cluster profile. Refer to the
+                  - link "Deploy App Workloads with a PCG" [ref=e786] [cursor=pointer]:
+                    - /url: /tutorials/clusters/pcg/deploy-app-pcg/
+                  - text: tutorial for instructions on deploying a VMware host cluster.
+              - generic [ref=e787]:
+                - generic [ref=e789]:
+                  - text: "Tags:"
+                  - list [ref=e790]:
+                    - listitem [ref=e791]:
+                      - link "operating system" [ref=e792] [cursor=pointer]:
+                        - /url: /tags/operating-system/
+                    - listitem [ref=e793]:
+                      - link "byoos" [ref=e794] [cursor=pointer]:
+                        - /url: /tags/byoos/
+                    - listitem [ref=e795]:
+                      - link "profiles" [ref=e796] [cursor=pointer]:
+                        - /url: /tags/profiles/
+                    - listitem [ref=e797]:
+                      - link "pxk" [ref=e798] [cursor=pointer]:
+                        - /url: /tags/pxk/
+                    - listitem [ref=e799]:
+                      - link "vmware" [ref=e800] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                - link "Edit this page" [ref=e803] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rocky-capi.md
+                  - img [ref=e804]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e808]:
+              - link "Previous « RHEL and PXK" [ref=e809] [cursor=pointer]:
+                - /url: /byoos/capi-image-builder/build-image-vmware/non-airgap-build/rhel-capi/
+                - generic [ref=e810]: Previous
+                - generic [ref=e811]: « RHEL and PXK
+              - link "Next Airgap Build »" [ref=e812] [cursor=pointer]:
+                - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/
+                - generic [ref=e813]: Next
+                - generic [ref=e814]: Airgap Build »
+          - list [ref=e817]:
+            - listitem [ref=e818]:
+              - link "Prerequisites" [ref=e819] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e820]:
+              - link "Build Custom Image" [ref=e821] [cursor=pointer]:
+                - /url: "#build-custom-image"
+            - listitem [ref=e822]:
+              - link "Create Cluster Profile" [ref=e823] [cursor=pointer]:
+                - /url: "#create-cluster-profile"
+            - listitem [ref=e824]:
+              - link "Next Steps" [ref=e825] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e826] [cursor=pointer]:
+    - generic [ref=e829]:
+      - img "Project Logo" [ref=e830]
+      - paragraph [ref=e831]: Ask AI
+```

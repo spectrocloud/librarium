@@ -1,0 +1,1210 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Public Cloud Clusters" [ref=e113] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e115]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e117] [cursor=pointer]
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Data Center Clusters" [ref=e120] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e122]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e124] [cursor=pointer]
+                  - listitem [ref=e125]:
+                    - generic [ref=e126]:
+                      - link "Edge" [expanded] [ref=e127] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e129]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e131] [cursor=pointer]
+                    - list [ref=e132]:
+                      - listitem [ref=e133]:
+                        - generic [ref=e134]:
+                          - link "Architecture" [ref=e135] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e136] [cursor=pointer]
+                      - listitem [ref=e137]:
+                        - link "Hardware Requirements" [ref=e138] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e139]:
+                        - link "Deployment Lifecycle" [ref=e140] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e141]:
+                        - generic [ref=e142]:
+                          - link "Trusted Boot" [ref=e143] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e144] [cursor=pointer]
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "Install Configuration" [ref=e147] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e148] [cursor=pointer]
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "EdgeForge Workflow" [expanded] [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e152] [cursor=pointer]
+                        - list [ref=e153]:
+                          - listitem [ref=e154]:
+                            - link "Prepare User Data and Argument Files" [ref=e155] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/prepare-user-data/
+                          - listitem [ref=e156]:
+                            - link "Validate User Data" [ref=e157] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/validate-user-data/
+                          - listitem [ref=e158]:
+                            - generic [ref=e159]:
+                              - link "Build Edge Artifacts" [expanded] [ref=e160] [cursor=pointer]:
+                                - /url: /clusters/edge/edgeforge-workflow/palette-canvos/
+                              - button "Toggle the collapsible sidebar category 'Build Edge Artifacts'" [ref=e161] [cursor=pointer]
+                            - list [ref=e162]:
+                              - listitem [ref=e163]:
+                                - link "Edge Artifact Build Configurations" [ref=e164] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                              - listitem [ref=e165]:
+                                - link "Build Installer ISO" [ref=e166] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                              - listitem [ref=e167]:
+                                - link "Build Provider Images" [ref=e168] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/
+                              - listitem [ref=e169]:
+                                - link "Build FIPS-Compliant Edge Artifacts" [ref=e170] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/fips/
+                              - listitem [ref=e171]:
+                                - link "Build MAAS Images" [ref=e172] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-maas-image/
+                              - listitem [ref=e173]:
+                                - link "Build Content Bundle" [ref=e174] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                              - listitem [ref=e175]:
+                                - link "Embed a Public Key in Edge Artifacts" [ref=e176] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/signed-content/
+                              - listitem [ref=e177]:
+                                - link "Build AWS Cloud Images" [ref=e178] [cursor=pointer]:
+                                  - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image/
+                      - listitem [ref=e179]:
+                        - generic [ref=e180]:
+                          - link "Local UI" [ref=e181] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e182] [cursor=pointer]
+                      - listitem [ref=e183]:
+                        - generic [ref=e184]:
+                          - link "Deployment" [ref=e185] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e186] [cursor=pointer]
+                      - listitem [ref=e187]:
+                        - generic [ref=e188]:
+                          - link "Cluster Management" [ref=e189] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e190] [cursor=pointer]
+                      - listitem [ref=e191]:
+                        - generic [ref=e192]:
+                          - link "Networking" [ref=e193] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e194] [cursor=pointer]
+                      - listitem [ref=e195]:
+                        - generic [ref=e196]:
+                          - link "Third Party Integrations" [ref=e197] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Palette Virtual Clusters" [ref=e201] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e203]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e205] [cursor=pointer]
+                  - listitem [ref=e206]:
+                    - generic [ref=e207]:
+                      - link "Imported Clusters" [ref=e208] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e210]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e212] [cursor=pointer]
+                  - listitem [ref=e213]:
+                    - generic [ref=e214]:
+                      - link "Manage Clusters" [ref=e215] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e217]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e219] [cursor=pointer]
+                  - listitem [ref=e220]:
+                    - generic [ref=e221]:
+                      - link "Cluster Groups" [ref=e222] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e224]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e226] [cursor=pointer]
+                  - listitem [ref=e227]:
+                    - generic [ref=e228]:
+                      - link "Private Cloud Gateway" [ref=e229] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e231]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e233] [cursor=pointer]
+              - listitem [ref=e234]:
+                - generic [ref=e235]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e236] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e238]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e240] [cursor=pointer]
+              - listitem [ref=e241]:
+                - generic [ref=e242]:
+                  - link "Palette Dev Engine" [ref=e243] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e245]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e247] [cursor=pointer]
+              - listitem [ref=e248]:
+                - generic [ref=e249]:
+                  - link "Virtual Machine Orchestrator" [ref=e250] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e252]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e254] [cursor=pointer]
+              - listitem [ref=e255]:
+                - generic [ref=e256]:
+                  - link "Workspaces" [ref=e257] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e259]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e261] [cursor=pointer]
+              - listitem [ref=e262]:
+                - generic [ref=e263]:
+                  - link "Packs List" [ref=e264] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e266]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - link "User & Role Management" [ref=e271] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e273]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e275] [cursor=pointer]
+              - listitem [ref=e276]:
+                - generic [ref=e277]:
+                  - link "Registries and Packs" [ref=e278] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e280]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e282] [cursor=pointer]
+              - listitem [ref=e283]:
+                - generic [ref=e284]:
+                  - link "Security" [ref=e285] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e287]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e289] [cursor=pointer]
+              - listitem [ref=e290]:
+                - generic [ref=e291]:
+                  - link "Audit Logs" [ref=e292] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e294]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e296] [cursor=pointer]
+              - listitem [ref=e297]:
+                - generic [ref=e298]:
+                  - link "Self-Hosted Palette" [ref=e299] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e301]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e303] [cursor=pointer]
+              - listitem [ref=e304]:
+                - generic [ref=e305]:
+                  - link "Palette VerteX" [ref=e306] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e308]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e310] [cursor=pointer]
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - link "Tenant Administration" [ref=e313] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e315]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e317] [cursor=pointer]
+              - listitem [ref=e318]:
+                - generic [ref=e319]:
+                  - link "Automation" [ref=e320] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e322]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e324] [cursor=pointer]
+              - listitem [ref=e325]:
+                - generic [ref=e326]:
+                  - link "Troubleshooting" [ref=e327] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e329]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e331] [cursor=pointer]
+              - listitem [ref=e332]:
+                - link "Glossary" [ref=e333] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e335]
+                  - text: Glossary
+              - listitem [ref=e337]:
+                - generic [ref=e338]:
+                  - link "Compliance & Legal" [ref=e339] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e341]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e343] [cursor=pointer]
+              - listitem [ref=e344]:
+                - button "Privacy Settings" [ref=e345] [cursor=pointer]:
+                  - img [ref=e346]
+                  - text: Privacy Settings
+      - main [ref=e348]:
+        - generic [ref=e350]:
+          - generic [ref=e352]:
+            - article [ref=e353]:
+              - navigation "Breadcrumbs" [ref=e354]:
+                - list [ref=e355]:
+                  - listitem [ref=e356]:
+                    - link "Home page" [ref=e357] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e358]
+                  - listitem [ref=e360]:
+                    - link "Clusters" [ref=e361] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e362]:
+                    - link "Edge" [ref=e363] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e364]:
+                    - link "EdgeForge Workflow" [ref=e365] [cursor=pointer]:
+                      - /url: /clusters/edge/edgeforge-workflow/
+                  - listitem [ref=e366]:
+                    - generic [ref=e367]: Build Edge Artifacts
+              - generic [ref=e368]:
+                - heading "Build Edge Artifacts" [level=1] [ref=e370]
+                - paragraph [ref=e371]:
+                  - text: Palette's Edge solution requires Edge hosts to be ready with the required dependencies and
+                  - link "user data" [ref=e372] [cursor=pointer]:
+                    - /url: /clusters/edge/edge-configuration/installer-reference/
+                  - text: "configurations before deploying a Kubernetes cluster. An Edge host requires the following artifacts to prepare for successful cluster deployment:"
+                - list [ref=e373]:
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]:
+                      - strong [ref=e376]: Edge installer ISO image
+                      - text: "- This bootable ISO image installs the necessary dependencies and configurations on a bare host machine. During installation, the host machine will boot from the Edge installer ISO, partition the disk, copy the image content to the disk, install the Palette Edge host agent and metadata, and perform several configuration steps. These configuration steps include registering the host with Palette, setting user privileges, and configuring network or security settings."
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - strong [ref=e379]: Provider Images
+                      - text: "- These are"
+                      - link "Kairos" [ref=e380] [cursor=pointer]:
+                        - /url: https://kairos.io/
+                      - text: "-based images containing the OS and the desired Kubernetes versions. These images install an immutable Operating System (OS) and software dependencies compatible with a specific Kubernetes version at runtime, i.e., during the cluster deployment. A provider image is used in the OS and the Kubernetes layer when creating a cluster profile."
+                - paragraph [ref=e381]:
+                  - text: In this guide, you will use the utility,
+                  - link "CanvOS" [ref=e382] [cursor=pointer]:
+                    - /url: https://github.com/spectrocloud/CanvOS/blob/main/README.md
+                  - text: ", to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile."
+                - paragraph [ref=e383]:
+                  - text: If you want to build the ISO image and the provider images individually, refer to
+                  - link "Build Provider Images" [ref=e384] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/
+                  - text: and
+                  - link "Build Installer ISO" [ref=e385] [cursor=pointer]:
+                    - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                  - text: .
+                - generic [ref=e386]:
+                  - generic [ref=e387]:
+                    - img [ref=e389]
+                    - text: info
+                  - paragraph [ref=e392]: CanvOS is a utility that helps you build Edge artifacts. CanvOS is part of the EdgeForge workflow.
+                - paragraph [ref=e393]: The diagram below shows the high-level steps to building the Edge artifacts and pushing the provider images to an image registry.
+                - paragraph [ref=e394]:
+                  - img "Overarching diagram showing the workflow in the current guide." [ref=e395]
+                - paragraph [ref=e396]: This guide presents two workflows - Basic and Advanced.
+                - paragraph [ref=e397]: The basic workflow has minimal customizations and offers a quick start to build Edge artifacts. This workflow builds an Ubuntu based Edge installer ISO and provider images.
+                - paragraph [ref=e398]: The advanced workflow uses more customization options. This workflow builds an openSUSE based Edge installer ISO and provider images.
+                - paragraph [ref=e399]: You can follow either of the workflows below that suits your use case.
+                - generic [ref=e400]:
+                  - tablist [ref=e401]:
+                    - tab "Basic" [selected] [ref=e402] [cursor=pointer]
+                    - tab "Advanced" [ref=e403] [cursor=pointer]
+                  - generic [ref=e404]:
+                    - tabpanel [ref=e405]:
+                      - heading "PrerequisitesDirect link to Prerequisites" [level=3] [ref=e406]:
+                        - text: Prerequisites
+                        - link "Direct link to Prerequisites" [ref=e407] [cursor=pointer]:
+                          - /url: "#prerequisites"
+                          - text: "#"
+                      - paragraph [ref=e408]: "To complete this basic guide, you will need the following items:"
+                      - list [ref=e409]:
+                        - listitem [ref=e410]:
+                          - paragraph [ref=e411]:
+                            - text: A physical or virtual Linux machine with
+                            - emphasis [ref=e412]: AMD64
+                            - text: (also known as
+                            - emphasis [ref=e413]: x86_64
+                            - text: ) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture.
+                          - generic [ref=e415]:
+                            - code [ref=e417]:
+                              - generic [ref=e418]: uname -m
+                            - button "Copy code to clipboard" [ref=e420] [cursor=pointer]:
+                              - generic [ref=e421]:
+                                - img [ref=e422]
+                                - img [ref=e424]
+                        - listitem [ref=e426]:
+                          - paragraph [ref=e427]: "Minimum hardware configuration of the Linux machine:"
+                          - list [ref=e428]:
+                            - listitem [ref=e429]: 4 CPU
+                            - listitem [ref=e430]: 8 GB memory
+                            - listitem [ref=e431]: 150 GB storage
+                        - listitem [ref=e432]:
+                          - paragraph [ref=e433]:
+                            - link "Git" [ref=e434] [cursor=pointer]:
+                              - /url: https://git-scm.com/downloads
+                            - text: . You can ensure git installation by issuing the
+                            - code [ref=e435]: git --version
+                            - text: command.
+                        - listitem [ref=e436]:
+                          - paragraph [ref=e437]:
+                            - text: (Optional)
+                            - link "Earthly" [ref=e438] [cursor=pointer]:
+                              - /url: https://earthly.dev/
+                            - text: is installed and available. If you do not install Earthly, you can still build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the root user.
+                        - listitem [ref=e439]:
+                          - paragraph [ref=e440]:
+                            - text: An image management tool such as
+                            - link "Docker" [ref=e441] [cursor=pointer]:
+                              - /url: https://docs.docker.com/engine/install/
+                            - text: or
+                            - link "crane" [ref=e442] [cursor=pointer]:
+                              - /url: https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md
+                            - text: is installed and available.
+                          - generic [ref=e443]:
+                            - generic [ref=e444]:
+                              - img [ref=e446]
+                              - text: info
+                            - paragraph [ref=e449]: If you do not install Earthly, you must install Docker.
+                        - listitem [ref=e450]:
+                          - paragraph [ref=e451]:
+                            - text: A
+                            - link "Spectro Cloud" [ref=e452] [cursor=pointer]:
+                              - /url: https://console.spectrocloud.com
+                            - text: account. If you have not signed up, you can sign up for an account
+                            - link "here" [ref=e453] [cursor=pointer]:
+                              - /url: https://www.spectrocloud.com/get-started
+                            - text: .
+                        - listitem [ref=e454]:
+                          - paragraph [ref=e455]:
+                            - text: Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to generate a new registration token. For detailed instructions, refer to the
+                            - link "Create Registration Token" [ref=e456] [cursor=pointer]:
+                              - /url: /clusters/edge/site-deployment/site-installation/create-registration-token/
+                            - text: guide.
+                        - listitem [ref=e457]:
+                          - paragraph [ref=e458]: Access to an image registry.
+                          - generic [ref=e459]:
+                            - generic [ref=e460]:
+                              - img [ref=e462]
+                              - text: info
+                            - paragraph [ref=e465]: This guide uses a public Docker Hub registry as an example. You can use any other image registry that suits your requirements.
+                      - heading "InstructionsDirect link to Instructions" [level=3] [ref=e466]:
+                        - text: Instructions
+                        - link "Direct link to Instructions" [ref=e467] [cursor=pointer]:
+                          - /url: "#instructions"
+                          - text: "#"
+                      - paragraph [ref=e468]: Use the following instructions on your Linux machine to create all the required Edge artifacts with minimal customization.
+                      - list [ref=e469]:
+                        - listitem [ref=e470]:
+                          - paragraph [ref=e471]:
+                            - text: Check out the
+                            - link "CanvOS" [ref=e472] [cursor=pointer]:
+                              - /url: https://github.com/spectrocloud/CanvOS.git
+                            - text: GitHub repository containing the starter code.
+                          - generic [ref=e474]:
+                            - code [ref=e476]:
+                              - generic [ref=e477]: git clone https://github.com/spectrocloud/CanvOS.git
+                            - button "Copy code to clipboard" [ref=e479] [cursor=pointer]:
+                              - generic [ref=e480]:
+                                - img [ref=e481]
+                                - img [ref=e483]
+                        - listitem [ref=e485]:
+                          - paragraph [ref=e486]:
+                            - text: Change to the
+                            - code [ref=e487]: CanvOS
+                            - text: directory.
+                          - generic [ref=e489]:
+                            - code [ref=e491]:
+                              - generic [ref=e492]: cd CanvOS
+                            - button "Copy code to clipboard" [ref=e494] [cursor=pointer]:
+                              - generic [ref=e495]:
+                                - img [ref=e496]
+                                - img [ref=e498]
+                        - listitem [ref=e500]:
+                          - paragraph [ref=e501]:
+                            - text: View the available
+                            - link "git tag" [ref=e502] [cursor=pointer]:
+                              - /url: https://github.com/spectrocloud/CanvOS/tags
+                            - text: .
+                          - generic [ref=e504]:
+                            - code [ref=e506]:
+                              - generic [ref=e507]: git tag
+                            - button "Copy code to clipboard" [ref=e509] [cursor=pointer]:
+                              - generic [ref=e510]:
+                                - img [ref=e511]
+                                - img [ref=e513]
+                        - listitem [ref=e515]:
+                          - paragraph [ref=e516]:
+                            - text: (Optional) If you are using a self-hosted instance of Palette, you need to build the ISO using the corresponding CanvOS version. Use the following command to identify the agent version for your Palette instance. Replace
+                            - code [ref=e517]: <palette-endpoint>
+                            - text: with your Palette endpoint and
+                            - code [ref=e518]: <api-key>
+                            - text: with your
+                            - link "Palette API key" [ref=e519] [cursor=pointer]:
+                              - /url: /user-management/authentication/api-key/
+                            - text: .
+                          - generic [ref=e521]:
+                            - code [ref=e523]:
+                              - generic [ref=e524]: "curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>' | jq --raw-output '.spec.latestVersion.content | match(\"version: ([^\\n]+)\").captures[0].string'"
+                            - generic [ref=e525]:
+                              - button "Toggle word wrap" [ref=e526] [cursor=pointer]:
+                                - img [ref=e527]
+                              - button "Copy code to clipboard" [ref=e529] [cursor=pointer]:
+                                - generic [ref=e530]:
+                                  - img [ref=e531]
+                                  - img [ref=e533]
+                          - paragraph [ref=e535]:
+                            - text: The output is the version number you must use to build the ISO. For example, if the output is
+                            - code [ref=e536]: 4.5.15
+                            - text: ", you must check out the"
+                            - code [ref=e537]: v4.5.15
+                            - text: tag in the CanvOS repository to build the ISO.
+                          - generic [ref=e538]:
+                            - generic [ref=e539]: Example output
+                            - code [ref=e542]:
+                              - generic [ref=e543]: 4.5.15
+                      - list [ref=e544]:
+                        - listitem [ref=e545]:
+                          - paragraph [ref=e546]: If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the corresponding tag.
+                          - paragraph [ref=e547]:
+                            - text: Otherwise, Check out the newest available tag. This guide uses the tag
+                            - strong [ref=e548]: v4.4.12
+                            - text: as an example.
+                          - generic [ref=e550]:
+                            - code [ref=e552]:
+                              - generic [ref=e553]: git checkout v4.4.12
+                            - button "Copy code to clipboard" [ref=e555] [cursor=pointer]:
+                              - generic [ref=e556]:
+                                - img [ref=e557]
+                                - img [ref=e559]
+                        - listitem [ref=e561]:
+                          - paragraph [ref=e562]: Review the files relevant for this guide.
+                          - list [ref=e563]:
+                            - listitem [ref=e564]:
+                              - code [ref=e565]: .arg.template
+                              - text: "- A sample"
+                              - code [ref=e566]: .arg
+                              - text: file that defines arguments to use during the build process.
+                            - listitem [ref=e567]:
+                              - code [ref=e568]: Dockerfile
+                              - text: "- Embeds the arguments and other configurations in the image."
+                            - listitem [ref=e569]:
+                              - code [ref=e570]: Earthfile
+                              - text: "- Contains a series of commands to create target artifacts."
+                            - listitem [ref=e571]:
+                              - code [ref=e572]: earthly.sh
+                              - text: "- Script to invoke the"
+                              - code [ref=e573]: Earthfile
+                              - text: ", and generate target artifacts."
+                            - listitem [ref=e574]:
+                              - code [ref=e575]: user-data.template
+                              - text: "- A sample file containing user data."
+                        - listitem [ref=e576]:
+                          - paragraph [ref=e577]:
+                            - text: Issue the command below to assign an image tag value that will be used when creating the provider images. This guide uses the value
+                            - code [ref=e578]: palette-learn
+                            - text: as an example. However, you can assign any lowercase and alphanumeric string to the
+                            - code [ref=e579]: CUSTOM_TAG
+                            - text: argument. Additionally, replace
+                            - code [ref=e580]: spectrocloud
+                            - text: with the name of your registry.
+                          - generic [ref=e582]:
+                            - code [ref=e584]:
+                              - generic [ref=e585]: export CUSTOM_TAG=palette-learn
+                              - generic [ref=e586]: export IMAGE_REGISTRY=spectrocloud
+                            - button "Copy code to clipboard" [ref=e588] [cursor=pointer]:
+                              - generic [ref=e589]:
+                                - img [ref=e590]
+                                - img [ref=e592]
+                        - listitem [ref=e594]:
+                          - paragraph [ref=e595]:
+                            - text: Issue the command below to create the
+                            - code [ref=e596]: .arg
+                            - text: file containing the custom tag. The remaining arguments in the
+                            - code [ref=e597]: .arg
+                            - text: file will use the default values. For example,
+                            - code [ref=e598]: ubuntu
+                            - text: is the default operating system, and
+                            - code [ref=e599]: demo
+                            - text: is the default tag.
+                          - paragraph [ref=e600]:
+                            - text: Refer to
+                            - link "Edge Artifact Build Configurations" [ref=e601] [cursor=pointer]:
+                              - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                            - text: for all available configuration parameters.
+                          - generic [ref=e602]:
+                            - generic [ref=e603]:
+                              - img [ref=e605]
+                              - text: tech preview
+                            - paragraph [ref=e608]:
+                              - text: The
+                              - code [ref=e609]: K8S_DISTRIBUTION
+                              - text: argument, defined in the
+                              - code [ref=e610]: .arg
+                              - text: file, accepts
+                              - code [ref=e611]: canonical
+                              - text: as a valid value. This value corresponds to the
+                              - strong [ref=e612]: Palette Optimized Canonical
+                              - text: pack, which is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                          - paragraph [ref=e613]:
+                            - text: Using the arguments defined in the
+                            - code [ref=e614]: .arg
+                            - text: file, the final provider images you generate will have the following naming convention,
+                            - code [ref=e615]: "[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]"
+                            - text: . For example, one of the provider images will be
+                            - code [ref=e616]: spectrocloud/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
+                            - text: .
+                          - generic [ref=e618]:
+                            - code [ref=e620]:
+                              - generic [ref=e621]: cat << EOF > .arg
+                              - generic [ref=e622]: CUSTOM_TAG=$CUSTOM_TAG
+                              - generic [ref=e623]: IMAGE_REGISTRY=$IMAGE_REGISTRY
+                              - generic [ref=e624]: OS_DISTRIBUTION=ubuntu
+                              - generic [ref=e625]: IMAGE_REPO=ubuntu
+                              - generic [ref=e626]: OS_VERSION=22.04
+                              - generic [ref=e627]: K8S_DISTRIBUTION=k3s
+                              - generic [ref=e628]: K8s_VERSION=1.27.2
+                              - generic [ref=e629]: ISO_NAME=palette-edge-installer
+                              - generic [ref=e630]: ARCH=amd64
+                              - generic [ref=e631]: HTTPS_PROXY=
+                              - generic [ref=e632]: HTTP_PROXY=
+                              - generic [ref=e633]: PROXY_CERT_PATH=
+                              - generic [ref=e634]: UPDATE_KERNEL=false
+                              - generic [ref=e635]: EOF
+                            - button "Copy code to clipboard" [ref=e637] [cursor=pointer]:
+                              - generic [ref=e638]:
+                                - img [ref=e639]
+                                - img [ref=e641]
+                          - paragraph [ref=e643]: View the newly created file to ensure the customized arguments are set correctly.
+                          - generic [ref=e645]:
+                            - code [ref=e647]:
+                              - generic [ref=e648]: cat .arg
+                            - button "Copy code to clipboard" [ref=e650] [cursor=pointer]:
+                              - generic [ref=e651]:
+                                - img [ref=e652]
+                                - img [ref=e654]
+                        - listitem [ref=e656]:
+                          - paragraph [ref=e657]:
+                            - text: Issue the command below to save your tenant registration token to an environment variable. Replace
+                            - code [ref=e658]: "[your_token_here]"
+                            - text: with your actual registration token.
+                          - generic [ref=e660]:
+                            - code [ref=e662]:
+                              - generic [ref=e663]: export token=[your_token_here]
+                            - button "Copy code to clipboard" [ref=e665] [cursor=pointer]:
+                              - generic [ref=e666]:
+                                - img [ref=e667]
+                                - img [ref=e669]
+                        - listitem [ref=e671]:
+                          - paragraph [ref=e672]:
+                            - text: Use the following command to create the
+                            - code [ref=e673]: user-data
+                            - text: file containing the tenant registration token.
+                          - generic [ref=e675]:
+                            - code [ref=e677]:
+                              - generic [ref=e678]: cat <<EOF > user-data
+                              - generic [ref=e679]: "#cloud-config"
+                              - generic [ref=e680]: "stylus:"
+                              - generic [ref=e681]: "site:"
+                              - generic [ref=e682]: "edgeHostToken: $token"
+                              - generic [ref=e683]: "install:"
+                              - generic [ref=e684]: "poweroff: true"
+                              - generic [ref=e685]: "stages:"
+                              - generic [ref=e686]: "initramfs:"
+                              - generic [ref=e687]: "- name: \"Core system setup\""
+                              - generic [ref=e688]: "users:"
+                              - generic [ref=e689]: "kairos:"
+                              - generic [ref=e690]: "groups:"
+                              - generic [ref=e691]: "- admin"
+                              - generic [ref=e692]: "passwd: kairos"
+                              - generic [ref=e693]: EOF
+                            - button "Copy code to clipboard" [ref=e695] [cursor=pointer]:
+                              - generic [ref=e696]:
+                                - img [ref=e697]
+                                - img [ref=e699]
+                          - generic [ref=e701]:
+                            - generic [ref=e702]:
+                              - img [ref=e704]
+                              - text: warning
+                            - list [ref=e707]:
+                              - listitem [ref=e708]:
+                                - paragraph [ref=e709]:
+                                  - text: If you haven't set a default project for the registration token, ensure that you provide the
+                                  - code [ref=e710]: stylus.site.projectName
+                                  - text: parameter with the value
+                                  - code [ref=e711]: Default
+                                  - text: in your
+                                  - code [ref=e712]: user-data
+                                  - text: file.
+                              - listitem [ref=e713]:
+                                - paragraph [ref=e714]:
+                                  - text: If your setup meets the following conditions, include the following
+                                  - code [ref=e715]: initramfs
+                                  - text: stage in your
+                                  - code [ref=e716]: user-data
+                                  - text: file, replacing
+                                  - code [ref=e717]: <interface-name>
+                                  - text: "with the name of the network interface on your Edge host:"
+                                - list [ref=e718]:
+                                  - listitem [ref=e719]:
+                                    - paragraph [ref=e720]: Your host is a virtual machine.
+                                  - listitem [ref=e721]:
+                                    - paragraph [ref=e722]: The virtual machine uses a VMXNET3 adapter.
+                                  - listitem [ref=e723]:
+                                    - paragraph [ref=e724]:
+                                      - text: You are planning to use
+                                      - emphasis [ref=e725]: one
+                                      - text: "of the following in your Edge cluster:"
+                                    - list [ref=e726]:
+                                      - listitem [ref=e727]:
+                                        - paragraph [ref=e728]:
+                                          - text: An
+                                          - link "overlay network" [ref=e729] [cursor=pointer]:
+                                            - /url: /clusters/edge/networking/vxlan-overlay/
+                                          - text: .
+                                      - listitem [ref=e730]:
+                                        - paragraph [ref=e731]:
+                                          - link "Flannel" [ref=e732] [cursor=pointer]:
+                                            - /url: /integrations/cni-flannel
+                                          - text: for your CNI.
+                                - generic [ref=e734]:
+                                  - code [ref=e736]:
+                                    - generic [ref=e737]: "stages:"
+                                    - generic [ref=e738]: "initramfs:"
+                                    - generic [ref=e739]: "- name: \"Disable UDP segmentation\""
+                                    - generic [ref=e740]: "commands:"
+                                    - generic [ref=e741]: "- ethtool --offload <interface-name> tx-udp_tnl-segmentation off"
+                                    - generic [ref=e742]: "- ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off"
+                                  - generic [ref=e743]:
+                                    - button "Toggle word wrap" [ref=e744] [cursor=pointer]:
+                                      - img [ref=e745]
+                                    - button "Copy code to clipboard" [ref=e747] [cursor=pointer]:
+                                      - generic [ref=e748]:
+                                        - img [ref=e749]
+                                        - img [ref=e751]
+                                - paragraph [ref=e753]:
+                                  - text: This is due to a
+                                  - link "known issue with VMware's VMXNET3 adapter" [ref=e754] [cursor=pointer]:
+                                    - /url: https://github.com/cilium/cilium/issues/13096#issuecomment-723901955
+                                  - text: ", which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V."
+                          - paragraph [ref=e755]:
+                            - text: View the newly created
+                            - code [ref=e756]: user-data
+                            - text: file to ensure the token is set correctly.
+                          - generic [ref=e758]:
+                            - code [ref=e760]:
+                              - generic [ref=e761]: cat user-data
+                            - button "Copy code to clipboard" [ref=e763] [cursor=pointer]:
+                              - generic [ref=e764]:
+                                - img [ref=e765]
+                                - img [ref=e767]
+                          - generic [ref=e769]:
+                            - generic [ref=e770]:
+                              - img [ref=e772]
+                              - text: tip
+                            - paragraph [ref=e775]:
+                              - text: You can also
+                              - link "edit user data in Local UI" [ref=e776] [cursor=pointer]:
+                                - /url: /clusters/edge/local-ui/host-management/edit-user-data/
+                              - text: after installation. However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can be updated in Local UI.
+                        - listitem [ref=e777]:
+                          - paragraph [ref=e778]:
+                            - text: (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove the
+                            - code [ref=e779]: K8S_VERSION
+                            - text: argument from the
+                            - code [ref=e780]: .arg
+                            - text: file. Open the
+                            - code [ref=e781]: k8s_version.json
+                            - text: file in the CanvOS directory. Remove the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
+                        - listitem [ref=e782]:
+                          - paragraph [ref=e783]: Issue the following command to start the build process.
+                          - generic [ref=e784]:
+                            - tablist [ref=e785]:
+                              - tab "Earthly Installed" [selected] [ref=e786] [cursor=pointer]
+                              - tab "Earthly Not Installed" [ref=e787] [cursor=pointer]
+                            - tabpanel [ref=e789]:
+                              - generic [ref=e791]:
+                                - code [ref=e793]:
+                                  - generic [ref=e794]: earthly +build-all-images
+                                - button "Copy code to clipboard" [ref=e796] [cursor=pointer]:
+                                  - generic [ref=e797]:
+                                    - img [ref=e798]
+                                    - img [ref=e800]
+                          - generic [ref=e803]:
+                            - code [ref=e805]:
+                              - generic [ref=e806]: ===================== Earthly Build SUCCESS =====================
+                              - generic [ref=e807]: Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+                            - button "Toggle word wrap" [ref=e809] [cursor=pointer]:
+                              - img [ref=e810]
+                          - generic [ref=e812]:
+                            - generic [ref=e813]:
+                              - img [ref=e815]
+                              - text: info
+                            - paragraph [ref=e818]:
+                              - text: If you plan to build the Edge Installer ISO using a content bundle, use the
+                              - code [ref=e819]: +build-provider-images
+                              - text: option instead of the
+                              - code [ref=e820]: +build-all-images
+                              - text: option in the command above. The command
+                              - code [ref=e821]: sudo ./earthly.sh +build-provider-images
+                              - text: will build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in the
+                              - link "Build Content Bundle" [ref=e822] [cursor=pointer]:
+                                - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                              - text: guide to build the Edge installer ISO using a content bundle.
+                          - paragraph [ref=e823]:
+                            - text: This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion, the command will display the manifest, as shown in the example below, that you will use in your cluster profile later in this tutorial. Note that the
+                            - code [ref=e824]: system.xxxxx
+                            - text: attribute values in the manifest example are the same as what you defined earlier in the
+                            - code [ref=e825]: .arg
+                            - text: file.
+                          - paragraph [ref=e826]: Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
+                          - generic [ref=e828]:
+                            - code [ref=e830]:
+                              - generic [ref=e831]: "pack:"
+                              - generic [ref=e832]: "content:"
+                              - generic [ref=e833]: "images:"
+                              - generic [ref=e834]: "- image: \"{{.spectro.pack.edge-native-byoi.options.system.uri}}\""
+                              - generic [ref=e835]: "# Below config is default value, please uncomment if you want to modify default values"
+                              - generic [ref=e836]: "# drain:"
+                              - generic [ref=e837]: "#cordon: true"
+                              - generic [ref=e838]: "#timeout: 60 # The length of time to wait before giving up, zero means infinite"
+                              - generic [ref=e839]: "#gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used"
+                              - generic [ref=e840]: "#ignoreDaemonSets: true"
+                              - generic [ref=e841]: "#deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)"
+                              - generic [ref=e842]: "#force: true # Continue even if there are pods that do not declare a controller"
+                              - generic [ref=e843]: "#disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution"
+                              - generic [ref=e844]: "#skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip."
+                              - generic [ref=e845]: "options:"
+                              - generic [ref=e846]: "system.uri:"
+                              - generic [ref=e847]: "\"{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{"
+                              - generic [ref=e848]: ".spectro.pack.edge-native-byoi.options.system.repo }}:{{"
+                              - generic [ref=e849]: ".spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{"
+                              - generic [ref=e850]: ".spectro.pack.edge-native-byoi.options.system.peVersion }}-{{"
+                              - generic [ref=e851]: ".spectro.pack.edge-native-byoi.options.system.customTag }}\""
+                              - generic [ref=e852]: "system.registry: spectrocloud"
+                              - generic [ref=e853]: "system.repo: ubuntu"
+                              - generic [ref=e854]: "system.k8sDistribution: k3s"
+                              - generic [ref=e855]: "system.osName: ubuntu"
+                              - generic [ref=e856]: "system.peVersion: v4.4.12"
+                              - generic [ref=e857]: "system.customTag: palette-learn"
+                              - generic [ref=e858]: "system.osVersion: 22"
+                            - generic [ref=e859]:
+                              - button "Toggle word wrap" [ref=e860] [cursor=pointer]:
+                                - img [ref=e861]
+                              - button "Copy code to clipboard" [ref=e863] [cursor=pointer]:
+                                - generic [ref=e864]:
+                                  - img [ref=e865]
+                                  - img [ref=e867]
+                        - listitem [ref=e869]:
+                          - paragraph [ref=e870]:
+                            - text: List the Docker images to review the provider images created. You can identify the provider images by reviewing the image tag value you used in the
+                            - code [ref=e871]: .arg
+                            - text: file's
+                            - code [ref=e872]: CUSTOM_TAG
+                            - text: argument.
+                          - generic [ref=e874]:
+                            - code [ref=e876]:
+                              - generic [ref=e877]: docker images --filter=reference='*/*:*palette-learn'
+                            - button "Copy code to clipboard" [ref=e879] [cursor=pointer]:
+                              - generic [ref=e880]:
+                                - img [ref=e881]
+                                - img [ref=e883]
+                          - code [ref=e888]:
+                            - generic [ref=e889]: REPOSITORY TAG IMAGE ID CREATED SIZE
+                            - generic [ref=e890]: spectrocloud/ubuntu k3s-1.27.2-v4.4.12-palette-learn 075134ad5d4b 10 minutes ago 4.11GB
+                        - listitem [ref=e891]:
+                          - paragraph [ref=e892]:
+                            - text: To use the provider image with your Edge deployment, push it to the image registry specified in the
+                            - code [ref=e893]: .arg
+                            - text: file. Log in to your container registry. Provide your credentials when prompted. The example below provides a Docker login command.
+                          - generic [ref=e895]:
+                            - code [ref=e897]:
+                              - generic [ref=e898]: docker login
+                            - button "Copy code to clipboard" [ref=e900] [cursor=pointer]:
+                              - generic [ref=e901]:
+                                - img [ref=e902]
+                                - img [ref=e904]
+                        - listitem [ref=e906]:
+                          - paragraph [ref=e907]: Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster deployment.
+                          - generic [ref=e909]:
+                            - code [ref=e911]:
+                              - generic [ref=e912]: docker push $IMAGE_REGISTRY/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
+                            - generic [ref=e913]:
+                              - button "Toggle word wrap" [ref=e914] [cursor=pointer]:
+                                - img [ref=e915]
+                              - button "Copy code to clipboard" [ref=e917] [cursor=pointer]:
+                                - generic [ref=e918]:
+                                  - img [ref=e919]
+                                  - img [ref=e921]
+                        - listitem [ref=e923]:
+                          - paragraph [ref=e924]:
+                            - text: After pushing the provider images to the image registry, open a web browser and log in to
+                            - link "Palette" [ref=e925] [cursor=pointer]:
+                              - /url: https://console.spectrocloud.com
+                            - text: . Ensure you are in the
+                            - strong [ref=e926]: Default
+                            - text: project scope before creating a cluster profile.
+                        - listitem [ref=e927]:
+                          - paragraph [ref=e928]:
+                            - text: Navigate to the left
+                            - strong [ref=e929]: Main Menu
+                            - text: and select
+                            - strong [ref=e930]: Profiles
+                            - text: . Click on the
+                            - strong [ref=e931]: Add Cluster Profile
+                            - text: button, and fill out the required basic information fields to create a cluster profile for Edge.
+                        - listitem [ref=e932]:
+                          - paragraph [ref=e933]:
+                            - text: Add the following
+                            - link "BYOS Edge OS" [ref=e934] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=generic-byoi
+                            - text: pack to the OS layer in the
+                            - strong [ref=e935]: Profile Layers
+                            - text: section.
+                          - table [ref=e936]:
+                            - rowgroup [ref=e937]:
+                              - row "Pack Type Registry Pack Name Pack Version" [ref=e938]:
+                                - cell "Pack Type" [ref=e939]:
+                                  - strong [ref=e940]: Pack Type
+                                - cell "Registry" [ref=e941]:
+                                  - strong [ref=e942]: Registry
+                                - cell "Pack Name" [ref=e943]:
+                                  - strong [ref=e944]: Pack Name
+                                - cell "Pack Version" [ref=e945]:
+                                  - strong [ref=e946]: Pack Version
+                            - rowgroup [ref=e947]:
+                              - row "OS Public Repo BYOS Edge OS 1.0.0" [ref=e948]:
+                                - cell "OS" [ref=e949]
+                                - cell "Public Repo" [ref=e950]
+                                - cell "BYOS Edge OS" [ref=e951]
+                                - cell "1.0.0" [ref=e952]:
+                                  - code [ref=e953]: 1.0.0
+                        - listitem [ref=e954]:
+                          - paragraph [ref=e955]: Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can pull the provider image from the image registry.
+                          - paragraph [ref=e956]:
+                            - text: The
+                            - code [ref=e957]: system.xxxxx
+                            - text: attribute values below refer to the arguments defined in the
+                            - code [ref=e958]: .arg
+                            - text: file. If you modified the arguments in the
+                            - code [ref=e959]: .arg
+                            - text: file, you must modify the attribute values below accordingly.
+                          - generic [ref=e961]:
+                            - code [ref=e963]:
+                              - generic [ref=e964]: "pack:"
+                              - generic [ref=e965]: "content:"
+                              - generic [ref=e966]: "images:"
+                              - generic [ref=e967]: "- image: \"{{.spectro.pack.edge-native-byoi.options.system.uri}}\""
+                              - generic [ref=e968]: "# Below config is default value, please uncomment if you want to modify default values"
+                              - generic [ref=e969]: "# drain:"
+                              - generic [ref=e970]: "#cordon: true"
+                              - generic [ref=e971]: "#timeout: 60 # The length of time to wait before giving up, zero means infinite"
+                              - generic [ref=e972]: "#gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used"
+                              - generic [ref=e973]: "#ignoreDaemonSets: true"
+                              - generic [ref=e974]: "#deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)"
+                              - generic [ref=e975]: "#force: true # Continue even if there are pods that do not declare a controller"
+                              - generic [ref=e976]: "#disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution"
+                              - generic [ref=e977]: "#skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip."
+                              - generic [ref=e978]: "options:"
+                              - generic [ref=e979]: "system.uri:"
+                              - generic [ref=e980]: "\"{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{"
+                              - generic [ref=e981]: ".spectro.pack.edge-native-byoi.options.system.repo }}:{{"
+                              - generic [ref=e982]: ".spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{"
+                              - generic [ref=e983]: ".spectro.pack.edge-native-byoi.options.system.peVersion }}-{{"
+                              - generic [ref=e984]: ".spectro.pack.edge-native-byoi.options.system.customTag }}\""
+                              - generic [ref=e985]: "system.registry: spectrocloud"
+                              - generic [ref=e986]: "system.repo: ubuntu"
+                              - generic [ref=e987]: "system.k8sDistribution: k3s"
+                              - generic [ref=e988]: "system.osName: ubuntu"
+                              - generic [ref=e989]: "system.peVersion: v4.4.12"
+                              - generic [ref=e990]: "system.customTag: palette-learn"
+                              - generic [ref=e991]: "system.osVersion: 22"
+                            - generic [ref=e992]:
+                              - button "Toggle word wrap" [ref=e993] [cursor=pointer]:
+                                - img [ref=e994]
+                              - button "Copy code to clipboard" [ref=e996] [cursor=pointer]:
+                                - generic [ref=e997]:
+                                  - img [ref=e998]
+                                  - img [ref=e1000]
+                          - paragraph [ref=e1002]: The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
+                          - paragraph [ref=e1003]:
+                            - img "Screenshot of a sample cluster profile&#39;s OS layer" [ref=e1004]
+                          - generic [ref=e1005]:
+                            - generic [ref=e1006]:
+                              - img [ref=e1008]
+                              - text: info
+                            - paragraph [ref=e1011]:
+                              - text: The BYOOS pack's
+                              - code [ref=e1012]: system.uri
+                              - text: attribute references the Kubernetes version selected in the cluster profile by using the
+                              - code [ref=e1013]: "{{ .spectro.system.kubernetes.version }}"
+                              - link "macro" [ref=e1014] [cursor=pointer]:
+                                - /url: /clusters/cluster-management/macros/
+                              - text: . This is how the provider images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in the
+                              - code [ref=e1015]: .arg
+                              - text: file.
+                        - listitem [ref=e1016]:
+                          - paragraph [ref=e1017]:
+                            - text: Add the following
+                            - strong [ref=e1018]: Palette Optimized K3s
+                            - text: pack to the Kubernetes layer of your cluster profile. Select the k3s version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to an image registry.
+                          - table [ref=e1019]:
+                            - rowgroup [ref=e1020]:
+                              - row "Pack Type Registry Pack Name Pack Version" [ref=e1021]:
+                                - cell "Pack Type" [ref=e1022]:
+                                  - strong [ref=e1023]: Pack Type
+                                - cell "Registry" [ref=e1024]:
+                                  - strong [ref=e1025]: Registry
+                                - cell "Pack Name" [ref=e1026]:
+                                  - strong [ref=e1027]: Pack Name
+                                - cell "Pack Version" [ref=e1028]:
+                                  - strong [ref=e1029]: Pack Version
+                            - rowgroup [ref=e1030]:
+                              - row "Kubernetes Public Repo Palette Optimized k3s 1.27.x" [ref=e1031]:
+                                - cell "Kubernetes" [ref=e1032]
+                                - cell "Public Repo" [ref=e1033]
+                                - cell "Palette Optimized k3s" [ref=e1034]
+                                - cell "1.27.x" [ref=e1035]:
+                                  - code [ref=e1036]: 1.27.x
+                        - listitem [ref=e1037]:
+                          - paragraph [ref=e1038]: Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer. This step completes the core infrastructure layers in the cluster profile.
+                          - table [ref=e1039]:
+                            - rowgroup [ref=e1040]:
+                              - row "Pack Type Registry Pack Name Pack Version" [ref=e1041]:
+                                - cell "Pack Type" [ref=e1042]:
+                                  - strong [ref=e1043]: Pack Type
+                                - cell "Registry" [ref=e1044]:
+                                  - strong [ref=e1045]: Registry
+                                - cell "Pack Name" [ref=e1046]:
+                                  - strong [ref=e1047]: Pack Name
+                                - cell "Pack Version" [ref=e1048]:
+                                  - strong [ref=e1049]: Pack Version
+                            - rowgroup [ref=e1050]:
+                              - row "Network Public Repo Calico 3.25.x" [ref=e1051]:
+                                - cell "Network" [ref=e1052]
+                                - cell "Public Repo" [ref=e1053]
+                                - cell "Calico" [ref=e1054]
+                                - cell "3.25.x" [ref=e1055]:
+                                  - code [ref=e1056]: 3.25.x
+                        - listitem [ref=e1057]:
+                          - paragraph [ref=e1058]: Add add-on layers and manifests to your cluster profile per your requirements.
+                        - listitem [ref=e1059]:
+                          - paragraph [ref=e1060]: If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for review. Verify the layers you added, and finish creating the cluster profile.
+                      - heading "ValidateDirect link to Validate" [level=3] [ref=e1061]:
+                        - text: Validate
+                        - link "Direct link to Validate" [ref=e1062] [cursor=pointer]:
+                          - /url: "#validate"
+                          - text: "#"
+                      - paragraph [ref=e1063]:
+                        - text: List the Edge installer ISO image and checksum by issuing the following command from the
+                        - code [ref=e1064]: CanvOS
+                        - text: directory.
+                      - generic [ref=e1066]:
+                        - code [ref=e1068]:
+                          - generic [ref=e1069]: ls build/
+                        - button "Copy code to clipboard" [ref=e1071] [cursor=pointer]:
+                          - generic [ref=e1072]:
+                            - img [ref=e1073]
+                            - img [ref=e1075]
+                      - code [ref=e1080]:
+                        - generic [ref=e1081]: palette-edge-installer.iso
+                        - generic [ref=e1082]: palette-edge-installer.iso.sha256
+                      - paragraph [ref=e1083]: You can validate the ISO image by creating a bootable USB flash drive using any third-party software and attempting to flash a bare host machine. Most software that creates a bootable USB drive will validate the ISO image. Here, the flash process means installing the necessary tools and configurations on a host machine.
+                    - text: "# # #"
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1084]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1085] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1086]: After building the Edge artifacts and creating an Edge cluster profile, the next step is to use the Edge installer ISO image to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy Palette-managed Edge clusters, we encourage you to check out the reference resources below.
+                - list [ref=e1087]:
+                  - listitem [ref=e1088]:
+                    - paragraph [ref=e1089]:
+                      - link "Deploy an Edge Cluster on VMware" [ref=e1090] [cursor=pointer]:
+                        - /url: /tutorials/clusters/edge/deploy-cluster/
+                  - listitem [ref=e1091]:
+                    - paragraph [ref=e1092]:
+                      - link "Installation" [ref=e1093] [cursor=pointer]:
+                        - /url: /clusters/edge/site-deployment/stage/
+                - heading "ResourcesDirect link to Resources" [level=2] [ref=e1094]:
+                  - text: Resources
+                  - link "Direct link to Resources" [ref=e1095] [cursor=pointer]:
+                    - /url: "#resources"
+                    - text: "#"
+                - list [ref=e1096]:
+                  - listitem [ref=e1097]:
+                    - paragraph [ref=e1098]:
+                      - link "Edge Artifact Build Configurations" [ref=e1099] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                  - listitem [ref=e1100]:
+                    - paragraph [ref=e1101]:
+                      - link "Build Installer ISO" [ref=e1102] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso/
+                  - listitem [ref=e1103]:
+                    - paragraph [ref=e1104]:
+                      - link "Build Provider Images" [ref=e1105] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/
+                  - listitem [ref=e1106]:
+                    - paragraph [ref=e1107]:
+                      - link "Build FIPS-Compliant Edge Artifacts" [ref=e1108] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/fips/
+                  - listitem [ref=e1109]:
+                    - paragraph [ref=e1110]:
+                      - link "Build Content Bundles" [ref=e1111] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/
+                  - listitem [ref=e1112]:
+                    - paragraph [ref=e1113]:
+                      - link "Edge Artifact Build Configurations" [ref=e1114] [cursor=pointer]:
+                        - /url: /clusters/edge/edgeforge-workflow/palette-canvos/signed-content/
+              - generic [ref=e1115]:
+                - generic [ref=e1117]:
+                  - text: "Tags:"
+                  - list [ref=e1118]:
+                    - listitem [ref=e1119]:
+                      - link "edge" [ref=e1120] [cursor=pointer]:
+                        - /url: /tags/edge/
+                - link "Edit this page" [ref=e1123] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md
+                  - img [ref=e1124]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1128]:
+              - link "Previous « Validate User Data" [ref=e1129] [cursor=pointer]:
+                - /url: /clusters/edge/edgeforge-workflow/validate-user-data/
+                - generic [ref=e1130]: Previous
+                - generic [ref=e1131]: « Validate User Data
+              - link "Next Edge Artifact Build Configurations »" [ref=e1132] [cursor=pointer]:
+                - /url: /clusters/edge/edgeforge-workflow/palette-canvos/arg/
+                - generic [ref=e1133]: Next
+                - generic [ref=e1134]: Edge Artifact Build Configurations »
+          - list [ref=e1137]:
+            - listitem [ref=e1138]:
+              - link "Next Steps" [ref=e1139] [cursor=pointer]:
+                - /url: "#next-steps"
+            - listitem [ref=e1140]:
+              - link "Resources" [ref=e1141] [cursor=pointer]:
+                - /url: "#resources"
+  - button "Project Logo Ask AI" [ref=e1142] [cursor=pointer]:
+    - generic [ref=e1145]:
+      - img "Project Logo" [ref=e1146]
+      - paragraph [ref=e1147]: Ask AI
+```

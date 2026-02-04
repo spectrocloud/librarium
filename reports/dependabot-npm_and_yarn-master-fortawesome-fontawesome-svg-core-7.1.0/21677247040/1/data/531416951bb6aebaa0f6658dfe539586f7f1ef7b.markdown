@@ -1,0 +1,661 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Public Cloud Clusters" [ref=e113] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e115]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e117] [cursor=pointer]
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Data Center Clusters" [ref=e120] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e122]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e124] [cursor=pointer]
+                  - listitem [ref=e125]:
+                    - generic [ref=e126]:
+                      - link "Edge" [expanded] [ref=e127] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e129]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e131] [cursor=pointer]
+                    - list [ref=e132]:
+                      - listitem [ref=e133]:
+                        - generic [ref=e134]:
+                          - link "Architecture" [expanded] [ref=e135] [cursor=pointer]:
+                            - /url: /clusters/edge/architecture/
+                          - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e136] [cursor=pointer]
+                        - list [ref=e137]:
+                          - listitem [ref=e138]:
+                            - link "Two-Node Architecture" [ref=e139] [cursor=pointer]:
+                              - /url: /clusters/edge/architecture/two-node/
+                      - listitem [ref=e140]:
+                        - link "Hardware Requirements" [ref=e141] [cursor=pointer]:
+                          - /url: /clusters/edge/hardware-requirements/
+                      - listitem [ref=e142]:
+                        - link "Deployment Lifecycle" [ref=e143] [cursor=pointer]:
+                          - /url: /clusters/edge/edge-native-lifecycle/
+                      - listitem [ref=e144]:
+                        - generic [ref=e145]:
+                          - link "Trusted Boot" [ref=e146] [cursor=pointer]:
+                            - /url: /clusters/edge/trusted-boot/
+                          - button "Toggle the collapsible sidebar category 'Trusted Boot'" [ref=e147] [cursor=pointer]
+                      - listitem [ref=e148]:
+                        - generic [ref=e149]:
+                          - link "Install Configuration" [ref=e150] [cursor=pointer]:
+                            - /url: /clusters/edge/edge-configuration/
+                          - button "Toggle the collapsible sidebar category 'Install Configuration'" [ref=e151] [cursor=pointer]
+                      - listitem [ref=e152]:
+                        - generic [ref=e153]:
+                          - link "EdgeForge Workflow" [ref=e154] [cursor=pointer]:
+                            - /url: /clusters/edge/edgeforge-workflow/
+                          - button "Toggle the collapsible sidebar category 'EdgeForge Workflow'" [ref=e155] [cursor=pointer]
+                      - listitem [ref=e156]:
+                        - generic [ref=e157]:
+                          - link "Local UI" [ref=e158] [cursor=pointer]:
+                            - /url: /clusters/edge/local-ui/
+                          - button "Toggle the collapsible sidebar category 'Local UI'" [ref=e159] [cursor=pointer]
+                      - listitem [ref=e160]:
+                        - generic [ref=e161]:
+                          - link "Deployment" [ref=e162] [cursor=pointer]:
+                            - /url: /clusters/edge/site-deployment/
+                          - button "Toggle the collapsible sidebar category 'Deployment'" [ref=e163] [cursor=pointer]
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "Cluster Management" [ref=e166] [cursor=pointer]:
+                            - /url: /clusters/edge/cluster-management/
+                          - button "Toggle the collapsible sidebar category 'Cluster Management'" [ref=e167] [cursor=pointer]
+                      - listitem [ref=e168]:
+                        - generic [ref=e169]:
+                          - link "Networking" [ref=e170] [cursor=pointer]:
+                            - /url: /clusters/edge/networking/
+                          - button "Toggle the collapsible sidebar category 'Networking'" [ref=e171] [cursor=pointer]
+                      - listitem [ref=e172]:
+                        - generic [ref=e173]:
+                          - link "Third Party Integrations" [ref=e174] [cursor=pointer]:
+                            - /url: /clusters/edge/third-party-integrations/
+                          - button "Toggle the collapsible sidebar category 'Third Party Integrations'" [ref=e175] [cursor=pointer]
+                  - listitem [ref=e176]:
+                    - generic [ref=e177]:
+                      - link "Palette Virtual Clusters" [ref=e178] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e180]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e182] [cursor=pointer]
+                  - listitem [ref=e183]:
+                    - generic [ref=e184]:
+                      - link "Imported Clusters" [ref=e185] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e187]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e189] [cursor=pointer]
+                  - listitem [ref=e190]:
+                    - generic [ref=e191]:
+                      - link "Manage Clusters" [ref=e192] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e194]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e196] [cursor=pointer]
+                  - listitem [ref=e197]:
+                    - generic [ref=e198]:
+                      - link "Cluster Groups" [ref=e199] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e201]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e203] [cursor=pointer]
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]:
+                      - link "Private Cloud Gateway" [ref=e206] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e208]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e213] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e215]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Palette Dev Engine" [ref=e220] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e222]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Virtual Machine Orchestrator" [ref=e227] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e229]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Workspaces" [ref=e234] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e236]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Packs List" [ref=e241] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e243]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "User & Role Management" [ref=e248] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e250]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Registries and Packs" [ref=e255] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e257]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "Security" [ref=e262] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e264]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - generic [ref=e268]:
+                  - link "Audit Logs" [ref=e269] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e271]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e273] [cursor=pointer]
+              - listitem [ref=e274]:
+                - generic [ref=e275]:
+                  - link "Self-Hosted Palette" [ref=e276] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e278]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - link "Palette VerteX" [ref=e283] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e285]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e287] [cursor=pointer]
+              - listitem [ref=e288]:
+                - generic [ref=e289]:
+                  - link "Tenant Administration" [ref=e290] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e292]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - generic [ref=e296]:
+                  - link "Automation" [ref=e297] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e299]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e301] [cursor=pointer]
+              - listitem [ref=e302]:
+                - generic [ref=e303]:
+                  - link "Troubleshooting" [ref=e304] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e306]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e308] [cursor=pointer]
+              - listitem [ref=e309]:
+                - link "Glossary" [ref=e310] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e312]
+                  - text: Glossary
+              - listitem [ref=e314]:
+                - generic [ref=e315]:
+                  - link "Compliance & Legal" [ref=e316] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e318]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e320] [cursor=pointer]
+              - listitem [ref=e321]:
+                - button "Privacy Settings" [ref=e322] [cursor=pointer]:
+                  - img [ref=e323]
+                  - text: Privacy Settings
+      - main [ref=e325]:
+        - generic [ref=e327]:
+          - generic [ref=e329]:
+            - article [ref=e330]:
+              - navigation "Breadcrumbs" [ref=e331]:
+                - list [ref=e332]:
+                  - listitem [ref=e333]:
+                    - link "Home page" [ref=e334] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e335]
+                  - listitem [ref=e337]:
+                    - link "Clusters" [ref=e338] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e339]:
+                    - link "Edge" [ref=e340] [cursor=pointer]:
+                      - /url: /clusters/edge/
+                  - listitem [ref=e341]:
+                    - generic [ref=e342]: Architecture
+              - generic [ref=e343]:
+                - heading "Architecture" [level=1] [ref=e345]
+                - paragraph [ref=e346]: The following are architectural highlights of Palette-provisioned Edge native clusters.
+                - list [ref=e347]:
+                  - listitem [ref=e348]:
+                    - paragraph [ref=e349]: Kubernetes is natively installed on the host.
+                  - listitem [ref=e350]:
+                    - paragraph [ref=e351]: Support for bare metal and virtualized edge devices.
+                  - listitem [ref=e352]:
+                    - paragraph [ref=e353]: Customizable site properties such as network proxies and certificates.
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]: Configurable Kubernetes API servers to work with virtual IP address (VIP) or Dynamic DNS.
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]:
+                      - text: Edge artifacts hardened according to
+                      - link "Center for Internet Security (CIS) standards" [ref=e358] [cursor=pointer]:
+                        - /url: https://www.cisecurity.org/cis-benchmarks
+                      - text: .
+                  - listitem [ref=e359]:
+                    - paragraph [ref=e360]: Edge supports adding multiple devices to the site to form a multi-node Kubernetes cluster.
+                  - listitem [ref=e361]:
+                    - paragraph [ref=e362]:
+                      - text: Operating system (OS) images are derived from immutable container-based OS images provided by the
+                      - link "Kairos" [ref=e363] [cursor=pointer]:
+                        - /url: http://kairos.io
+                      - text: open source project.
+                  - listitem [ref=e364]:
+                    - paragraph [ref=e365]:
+                      - text: The installation is bootstrapped using a relatively small distribution-agnostic
+                      - emphasis [ref=e366]: Stylus
+                      - text: installer image. The operating system and Kubernetes version are derived from cluster profile settings associated with the edge site and dynamically downloaded and installed.
+                  - listitem [ref=e367]:
+                    - paragraph [ref=e368]: Palette Edge Distribution supports use cases that require customizing OS packages, device drivers, and more.
+                    - paragraph [ref=e369]:
+                      - img "Architecture diagram of Edge" [ref=e370]
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e371]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e372] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e373]:
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]: "The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not support the following:"
+                    - list [ref=e376]:
+                      - listitem [ref=e377]: ARM64 architecture
+                      - listitem [ref=e378]: Palette VerteX
+                      - listitem [ref=e379]:
+                        - text: Custom installation paths for Kubernetes and its dependencies in
+                        - link "agent mode" [ref=e380] [cursor=pointer]:
+                          - /url: /deployment-modes/agent-mode/
+                      - listitem [ref=e381]:
+                        - link "Network overlay" [ref=e382] [cursor=pointer]:
+                          - /url: /clusters/edge/networking/vxlan-overlay/
+                        - text: in locally managed Edge clusters.
+                      - listitem [ref=e383]: High availability mode with one or two nodes.
+                  - listitem [ref=e384]:
+                    - paragraph [ref=e385]: When scaling down a Palette Optimized Canonical Kubernetes cluster with two nodes, ensure you do not delete the leader node. In this configuration, one node is the leader (and voter), while the other is a spare. Deleting the leader will render the cluster inaccessible, as database updates are not replicated to the spare node.
+                - generic [ref=e386]:
+                  - generic [ref=e387]:
+                    - img [ref=e389]
+                    - text: info
+                  - generic [ref=e391]:
+                    - paragraph [ref=e392]: "The Palette Optimized Canonical Kubernetes distribution uses distributed SQLite (Dqlite) as its datastore. Each node assumes one of the following roles at any given time:"
+                    - list [ref=e393]:
+                      - listitem [ref=e394]: Voter - replication and leader election voting are enabled.
+                      - listitem [ref=e395]: Stand-by - only replication is enabled.
+                      - listitem [ref=e396]: Spare - neither replication nor election is enabled.
+                    - paragraph [ref=e397]:
+                      - text: Run the
+                      - code [ref=e398]: k8s status
+                      - text: command on a control plane node to view the current roles of all nodes in the cluster.
+                    - generic [ref=e399]:
+                      - generic [ref=e400]: Example output
+                      - generic [ref=e401]:
+                        - code [ref=e403]:
+                          - generic [ref=e404]: "cluster status: ready"
+                          - generic [ref=e405]: "control plane nodes: 10.10.216.81:6400 (voter), 10.10.217.4:6400 (voter), 10.10.220.115:6400 (voter)"
+                          - generic [ref=e406]: "high availability: yes"
+                          - generic [ref=e407]: "datastore: k8s-dqlite"
+                        - button "Toggle word wrap" [ref=e409] [cursor=pointer]:
+                          - img [ref=e410]
+                - heading "Minimum Device RequirementsDirect link to Minimum Device Requirements" [level=2] [ref=e412]:
+                  - text: Minimum Device Requirements
+                  - link "Direct link to Minimum Device Requirements" [ref=e413] [cursor=pointer]:
+                    - /url: "#minimum-device-requirements"
+                    - text: "#"
+                - paragraph [ref=e414]:
+                  - text: All Edge hosts must meet the following minimum hardware requirements. For specific features, additional hardware capabilities may be needed. Refer to
+                  - link "Hardware Requirements" [ref=e415] [cursor=pointer]:
+                    - /url: /clusters/edge/hardware-requirements/
+                  - text: for details.
+                - heading "AMD64 Architecture DevicesDirect link to AMD64 Architecture Devices" [level=3] [ref=e416]:
+                  - text: AMD64 Architecture Devices
+                  - link "Direct link to AMD64 Architecture Devices" [ref=e417] [cursor=pointer]:
+                    - /url: "#amd64-architecture-devices"
+                    - text: "#"
+                - table [ref=e418]:
+                  - rowgroup [ref=e419]:
+                    - row "Component Requirement" [ref=e420]:
+                      - cell "Component" [ref=e421]
+                      - cell "Requirement" [ref=e422]
+                  - rowgroup [ref=e423]:
+                    - 'row "CPU - Intel: i3, i5, i7, i9, Xeon series - AMD: Ryzen 3, 5, 7, 9, and Epyc series" [ref=e424]':
+                      - cell "CPU" [ref=e425]
+                      - 'cell "- Intel: i3, i5, i7, i9, Xeon series - AMD: Ryzen 3, 5, 7, 9, and Epyc series" [ref=e426]':
+                        - text: "- Intel: i3, i5, i7, i9, Xeon series"
+                        - text: "- AMD: Ryzen 3, 5, 7, 9, and Epyc series"
+                    - row "CPU Core Minimum two cores." [ref=e427]:
+                      - cell "CPU Core" [ref=e428]
+                      - cell "Minimum two cores." [ref=e429]
+                    - row "Memory Minimum 8 GB." [ref=e430]:
+                      - cell "Memory" [ref=e431]
+                      - cell "Minimum 8 GB." [ref=e432]
+                    - row "Storage Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive." [ref=e433]:
+                      - cell "Storage" [ref=e434]
+                      - cell "Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive." [ref=e435]
+                - heading "ARM64 Architecture DevicesDirect link to ARM64 Architecture Devices" [level=3] [ref=e436]:
+                  - text: ARM64 Architecture Devices
+                  - link "Direct link to ARM64 Architecture Devices" [ref=e437] [cursor=pointer]:
+                    - /url: "#arm64-architecture-devices"
+                    - text: "#"
+                - paragraph [ref=e438]: ARM64 support is only verified for the Nvidia Jetson Orin device family.
+                - heading "Palette Edge DistributionDirect link to Palette Edge Distribution" [level=2] [ref=e439]:
+                  - text: Palette Edge Distribution
+                  - link "Direct link to Palette Edge Distribution" [ref=e440] [cursor=pointer]:
+                    - /url: "#palette-edge-distribution"
+                    - text: "#"
+                - paragraph [ref=e441]: Palette provides the following distributions for edge installations.
+                - table [ref=e442]:
+                  - rowgroup [ref=e443]:
+                    - row "Name Kubernetes Distribution OS CNIs CSIs" [ref=e444]:
+                      - cell "Name" [ref=e445]
+                      - cell "Kubernetes Distribution" [ref=e446]
+                      - cell "OS" [ref=e447]
+                      - cell "CNIs" [ref=e448]
+                      - cell "CSIs" [ref=e449]
+                  - rowgroup [ref=e450]:
+                    - row "Palette Optimized K3s K3s openSUSE, Ubuntu Calico, Flannel Rook Ceph" [ref=e451]:
+                      - cell "Palette Optimized K3s" [ref=e452]
+                      - cell "K3s" [ref=e453]
+                      - cell "openSUSE, Ubuntu" [ref=e454]
+                      - cell "Calico, Flannel" [ref=e455]
+                      - cell "Rook Ceph" [ref=e456]
+                    - row "Palette Optimized RKE2 RKE2 openSUSE, Ubuntu Calico, Flannel Rook Ceph" [ref=e457]:
+                      - cell "Palette Optimized RKE2" [ref=e458]
+                      - cell "RKE2" [ref=e459]
+                      - cell "openSUSE, Ubuntu" [ref=e460]
+                      - cell "Calico, Flannel" [ref=e461]
+                      - cell "Rook Ceph" [ref=e462]
+                    - row "Palette eXtended Kubernetes Edge (PXK-E) CNCF openSUSE, Ubuntu Calico, Flannel Rook Ceph" [ref=e463]:
+                      - cell "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e464]:
+                        - link "Palette eXtended Kubernetes Edge (PXK-E)" [ref=e465] [cursor=pointer]:
+                          - /url: /glossary-all/#palette-extended-kubernetes-edge-pxk-e
+                      - cell "CNCF" [ref=e466]
+                      - cell "openSUSE, Ubuntu" [ref=e467]
+                      - cell "Calico, Flannel" [ref=e468]
+                      - cell "Rook Ceph" [ref=e469]
+                    - row "Palette Optimized Canonical Canonical Kubernetes Ubuntu Calico, Cilium Longhorn" [ref=e470]:
+                      - cell "Palette Optimized Canonical" [ref=e471]
+                      - cell "Canonical Kubernetes" [ref=e472]
+                      - cell "Ubuntu" [ref=e473]
+                      - cell "Calico, Cilium" [ref=e474]
+                      - cell "Longhorn" [ref=e475]
+                - generic [ref=e476]:
+                  - generic [ref=e477]:
+                    - img [ref=e479]
+                    - text: tech preview
+                  - paragraph [ref=e482]:
+                    - text: The
+                    - strong [ref=e483]: Palette Optimized Canonical
+                    - text: Kubernetes distribution is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - heading "Supported ConfigurationsDirect link to Supported Configurations" [level=2] [ref=e484]:
+                  - text: Supported Configurations
+                  - link "Direct link to Supported Configurations" [ref=e485] [cursor=pointer]:
+                    - /url: "#supported-configurations"
+                    - text: "#"
+                - paragraph [ref=e486]: Palette offers complete flexibility in deploying clusters at edge sites with various aspects you can customize. The table below describes these aspects and the available options.
+                - table [ref=e487]:
+                  - rowgroup [ref=e488]:
+                    - row "Parameter Choices" [ref=e489]:
+                      - cell "Parameter" [ref=e490]:
+                        - strong [ref=e491]: Parameter
+                      - cell "Choices" [ref=e492]:
+                        - strong [ref=e493]: Choices
+                  - rowgroup [ref=e494]:
+                    - 'row "Management Mode - Central: The site has a connection to Palette and is managed centrally via Palette Management Console - Local: The site does not have a connection to Palette and is managed locally." [ref=e495]':
+                      - cell "Management Mode" [ref=e496]
+                      - 'cell "- Central: The site has a connection to Palette and is managed centrally via Palette Management Console - Local: The site does not have a connection to Palette and is managed locally." [ref=e497]':
+                        - text: "- Central: The site has a connection to Palette and is managed centrally via Palette Management Console"
+                        - text: "- Local: The site does not have a connection to Palette and is managed locally."
+                    - row "OS - Ubuntu - OpenSUSE - Bring Your Own OS (BYOOS)" [ref=e498]:
+                      - cell "OS" [ref=e499]
+                      - cell "- Ubuntu - OpenSUSE - Bring Your Own OS (BYOOS)" [ref=e500]:
+                        - text: "- Ubuntu"
+                        - text: "- OpenSUSE"
+                        - text: "- Bring Your Own OS (BYOOS)"
+                    - row "Kubernetes Flavor - Palette eXtended K8s for Edge FIPS (PXK-E) - Palette eXtended K8s for Edge (PXK-E) - Palette Optimized K3s - Palette Optimized RKE2 - Palette Optimized Canonical" [ref=e501]:
+                      - cell "Kubernetes Flavor" [ref=e502]
+                      - cell "- Palette eXtended K8s for Edge FIPS (PXK-E) - Palette eXtended K8s for Edge (PXK-E) - Palette Optimized K3s - Palette Optimized RKE2 - Palette Optimized Canonical" [ref=e503]:
+                        - text: "- Palette eXtended K8s for Edge FIPS (PXK-E)"
+                        - text: "- Palette eXtended K8s for Edge (PXK-E)"
+                        - text: "- Palette Optimized K3s"
+                        - text: "- Palette Optimized RKE2"
+                        - text: "- Palette Optimized Canonical"
+                    - row "Kubernetes Version - 1.26.x - 1.27.x - 1.28.x - 1.29.x - 1.30.x - 1.31.x - 1.32.x - 1.33.x" [ref=e504]:
+                      - cell "Kubernetes Version" [ref=e505]
+                      - cell "- 1.26.x - 1.27.x - 1.28.x - 1.29.x - 1.30.x - 1.31.x - 1.32.x - 1.33.x" [ref=e506]:
+                        - text: "- 1.26.x"
+                        - text: "- 1.27.x"
+                        - text: "- 1.28.x"
+                        - text: "- 1.29.x"
+                        - text: "- 1.30.x"
+                        - text: "- 1.31.x"
+                        - text: "- 1.32.x"
+                        - text: "- 1.33.x"
+                    - 'row "FIPS Mode - True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance - False" [ref=e507]':
+                      - cell "FIPS Mode" [ref=e508]
+                      - 'cell "- True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance - False" [ref=e509]':
+                        - text: "- True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance"
+                        - text: "- False"
+                    - 'row "Edge Host Registration Mode - Manual: A unique Edge host ID is manually entered into the Palette Management Console - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the user-data - QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry." [ref=e510]':
+                      - cell "Edge Host Registration Mode" [ref=e511]
+                      - 'cell "- Manual: A unique Edge host ID is manually entered into the Palette Management Console - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the user-data - QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry." [ref=e512]':
+                        - text: "- Manual: A unique Edge host ID is manually entered into the Palette Management Console"
+                        - text: "- Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the user-data"
+                        - text: "- QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry."
+                    - row "Edge Host Type - Installer Format Create an ISO image that contains all your dependencies and custom configurations." [ref=e513]:
+                      - cell "Edge Host Type - Installer Format" [ref=e514]
+                      - cell "Create an ISO image that contains all your dependencies and custom configurations." [ref=e515]
+                - heading "Kubernetes DefaultsDirect link to Kubernetes Defaults" [level=2] [ref=e516]:
+                  - text: Kubernetes Defaults
+                  - link "Direct link to Kubernetes Defaults" [ref=e517] [cursor=pointer]:
+                    - /url: "#kubernetes-defaults"
+                    - text: "#"
+                - paragraph [ref=e518]: The following items are disabled by default for RKE2 and K3s.
+                - list [ref=e519]:
+                  - listitem [ref=e520]:
+                    - paragraph [ref=e521]: Traefik
+                  - listitem [ref=e522]:
+                    - paragraph [ref=e523]: SERVICE-lb
+                  - listitem [ref=e524]:
+                    - paragraph [ref=e525]: local-path provisioner
+                  - listitem [ref=e526]:
+                    - paragraph [ref=e527]: Flannel
+                - paragraph [ref=e528]:
+                  - strong [ref=e529]: "Example Scenario:"
+                - paragraph [ref=e530]: For the Palette optimized K3s pack, the default network component flannel is disabled to allow the user to independently use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
+                - paragraph [ref=e531]: The component metrics server is disabled to avoid duplicating it because Palette installs the metrics server by default.
+                - generic [ref=e533]:
+                  - code [ref=e535]:
+                    - generic [ref=e536]: "cluster:"
+                    - generic [ref=e537]: "config:"
+                    - generic [ref=e538]: "# disable the built in cni"
+                    - generic [ref=e539]: "flannel-backend: none"
+                    - generic [ref=e540]: "no-flannel: true"
+                    - generic [ref=e541]: "disable-network-policy: true"
+                    - generic [ref=e542]: "Disable:"
+                    - generic [ref=e543]: "- metrics-server"
+                  - button "Copy code to clipboard" [ref=e545] [cursor=pointer]:
+                    - generic [ref=e546]:
+                      - img [ref=e547]
+                      - img [ref=e549]
+              - generic [ref=e551]:
+                - generic [ref=e553]:
+                  - text: "Tags:"
+                  - list [ref=e554]:
+                    - listitem [ref=e555]:
+                      - link "edge" [ref=e556] [cursor=pointer]:
+                        - /url: /tags/edge/
+                    - listitem [ref=e557]:
+                      - link "architecture" [ref=e558] [cursor=pointer]:
+                        - /url: /tags/architecture/
+                - link "Edit this page" [ref=e561] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/edge/architecture/architecture.md
+                  - img [ref=e562]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e566]:
+              - link "Previous « Edge" [ref=e567] [cursor=pointer]:
+                - /url: /clusters/edge/
+                - generic [ref=e568]: Previous
+                - generic [ref=e569]: « Edge
+              - link "Next Two-Node Architecture »" [ref=e570] [cursor=pointer]:
+                - /url: /clusters/edge/architecture/two-node/
+                - generic [ref=e571]: Next
+                - generic [ref=e572]: Two-Node Architecture »
+          - list [ref=e575]:
+            - listitem [ref=e576]:
+              - link "Limitations" [ref=e577] [cursor=pointer]:
+                - /url: "#limitations"
+            - listitem [ref=e578]:
+              - link "Minimum Device Requirements" [ref=e579] [cursor=pointer]:
+                - /url: "#minimum-device-requirements"
+              - list [ref=e580]:
+                - listitem [ref=e581]:
+                  - link "AMD64 Architecture Devices" [ref=e582] [cursor=pointer]:
+                    - /url: "#amd64-architecture-devices"
+                - listitem [ref=e583]:
+                  - link "ARM64 Architecture Devices" [ref=e584] [cursor=pointer]:
+                    - /url: "#arm64-architecture-devices"
+            - listitem [ref=e585]:
+              - link "Palette Edge Distribution" [ref=e586] [cursor=pointer]:
+                - /url: "#palette-edge-distribution"
+            - listitem [ref=e587]:
+              - link "Supported Configurations" [ref=e588] [cursor=pointer]:
+                - /url: "#supported-configurations"
+            - listitem [ref=e589]:
+              - link "Kubernetes Defaults" [ref=e590] [cursor=pointer]:
+                - /url: "#kubernetes-defaults"
+  - button "Project Logo Ask AI" [ref=e591] [cursor=pointer]:
+    - generic [ref=e594]:
+      - img "Project Logo" [ref=e595]
+      - paragraph [ref=e596]: Ask AI
+```

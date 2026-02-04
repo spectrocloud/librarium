@@ -1,0 +1,1184 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Public Cloud Clusters" [ref=e113] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e115]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e117] [cursor=pointer]
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Data Center Clusters" [expanded] [ref=e120] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e122]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e124] [cursor=pointer]
+                    - list [ref=e125]:
+                      - listitem [ref=e126]:
+                        - generic [ref=e127]:
+                          - link "MAAS" [expanded] [ref=e128] [cursor=pointer]:
+                            - /url: /clusters/data-center/maas/
+                          - button "Toggle the collapsible sidebar category 'MAAS'" [ref=e129] [cursor=pointer]
+                        - list [ref=e130]:
+                          - listitem [ref=e131]:
+                            - link "Architecture" [ref=e132] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/architecture/
+                          - listitem [ref=e133]:
+                            - link "Register and Manage MAAS Cloud Accounts" [ref=e134] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/register-manage-maas-cloud-accounts/
+                          - listitem [ref=e135]:
+                            - link "Create and Manage MAAS Clusters" [ref=e136] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/create-manage-maas-clusters/
+                          - listitem [ref=e137]:
+                            - link "Create and Manage MAAS Clusters Using LXD VMs" [ref=e138] [cursor=pointer]:
+                              - /url: /clusters/data-center/maas/create-manage-maas-lxd-clusters/
+                      - listitem [ref=e139]:
+                        - generic [ref=e140]:
+                          - link "Nutanix" [ref=e141] [cursor=pointer]:
+                            - /url: /clusters/data-center/nutanix/
+                          - button "Toggle the collapsible sidebar category 'Nutanix'" [ref=e142] [cursor=pointer]
+                      - listitem [ref=e143]:
+                        - link "OpenStack" [ref=e144] [cursor=pointer]:
+                          - /url: /clusters/data-center/openstack/
+                      - listitem [ref=e145]:
+                        - generic [ref=e146]:
+                          - link "CloudStack" [ref=e147] [cursor=pointer]:
+                            - /url: /clusters/data-center/cloudstack/
+                          - button "Toggle the collapsible sidebar category 'CloudStack'" [ref=e148] [cursor=pointer]
+                      - listitem [ref=e149]:
+                        - generic [ref=e150]:
+                          - link "VMware" [ref=e151] [cursor=pointer]:
+                            - /url: /clusters/data-center/vmware/
+                          - button "Toggle the collapsible sidebar category 'VMware'" [ref=e152] [cursor=pointer]
+                  - listitem [ref=e153]:
+                    - generic [ref=e154]:
+                      - link "Edge" [ref=e155] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e157]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Palette Virtual Clusters" [ref=e162] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e164]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e166] [cursor=pointer]
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "Imported Clusters" [ref=e169] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e171]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - generic [ref=e175]:
+                      - link "Manage Clusters" [ref=e176] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e178]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Cluster Groups" [ref=e183] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e185]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e187] [cursor=pointer]
+                  - listitem [ref=e188]:
+                    - generic [ref=e189]:
+                      - link "Private Cloud Gateway" [ref=e190] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e192]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e197] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e199]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Palette Dev Engine" [ref=e204] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e206]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Virtual Machine Orchestrator" [ref=e211] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e213]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Workspaces" [ref=e218] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e220]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Packs List" [ref=e225] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e227]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "User & Role Management" [ref=e232] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e234]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Registries and Packs" [ref=e239] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e241]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Security" [ref=e246] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e248]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Audit Logs" [ref=e253] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e255]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Self-Hosted Palette" [ref=e260] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e262]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - generic [ref=e266]:
+                  - link "Palette VerteX" [ref=e267] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e269]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e271] [cursor=pointer]
+              - listitem [ref=e272]:
+                - generic [ref=e273]:
+                  - link "Tenant Administration" [ref=e274] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e276]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e278] [cursor=pointer]
+              - listitem [ref=e279]:
+                - generic [ref=e280]:
+                  - link "Automation" [ref=e281] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e283]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e285] [cursor=pointer]
+              - listitem [ref=e286]:
+                - generic [ref=e287]:
+                  - link "Troubleshooting" [ref=e288] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e290]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e292] [cursor=pointer]
+              - listitem [ref=e293]:
+                - link "Glossary" [ref=e294] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e296]
+                  - text: Glossary
+              - listitem [ref=e298]:
+                - generic [ref=e299]:
+                  - link "Compliance & Legal" [ref=e300] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e302]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e304] [cursor=pointer]
+              - listitem [ref=e305]:
+                - button "Privacy Settings" [ref=e306] [cursor=pointer]:
+                  - img [ref=e307]
+                  - text: Privacy Settings
+      - main [ref=e309]:
+        - generic [ref=e311]:
+          - generic [ref=e313]:
+            - article [ref=e314]:
+              - navigation "Breadcrumbs" [ref=e315]:
+                - list [ref=e316]:
+                  - listitem [ref=e317]:
+                    - link "Home page" [ref=e318] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e319]
+                  - listitem [ref=e321]:
+                    - link "Clusters" [ref=e322] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e323]:
+                    - link "Data Center Clusters" [ref=e324] [cursor=pointer]:
+                      - /url: /clusters/data-center/
+                  - listitem [ref=e325]:
+                    - link "MAAS" [ref=e326] [cursor=pointer]:
+                      - /url: /clusters/data-center/maas/
+                  - listitem [ref=e327]:
+                    - generic [ref=e328]: Create and Manage MAAS Clusters Using LXD VMs
+              - generic [ref=e329]:
+                - heading "Create and Manage MAAS Clusters Using LXD VMs" [level=1] [ref=e331]
+                - paragraph [ref=e332]: Palette supports creating and managing Kubernetes clusters deployed to a MAAS account with LXD Virtual Machines (VMs) enabled. This feature allows you to spawn multiple control plane nodes as LXD VMs and consolidate them on MAAS-managed servers, while your worker nodes run on bare metal. This improves resource utilization by reducing the number of bare metal machines needed to run control planes and keeps virtualization overhead low.
+                - generic [ref=e333]:
+                  - generic [ref=e334]:
+                    - img [ref=e336]
+                    - text: tech preview
+                  - generic [ref=e338]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e339]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e340] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e341]:
+                  - listitem [ref=e342]:
+                    - paragraph [ref=e343]:
+                      - text: A
+                      - link "MAAS account registered in Palette" [ref=e344] [cursor=pointer]:
+                        - /url: /clusters/data-center/maas/register-manage-maas-cloud-accounts/
+                      - text: . All MAAS-registered Palette accounts must use either a System Private Gateway or Private Cloud Gateway (PCG) to connect to the MAAS environment. For more information on which PCG to use, refer to our MAAS
+                      - link "Architecture" [ref=e345] [cursor=pointer]:
+                        - /url: /clusters/data-center/maas/architecture/
+                      - text: guide.
+                    - list [ref=e346]:
+                      - listitem [ref=e347]:
+                        - paragraph [ref=e348]:
+                          - text: If you want to use a specific a static network range for the workload cluster, ensure you have configured an IP pool on the
+                          - link "IP Address Management (IPAM)" [ref=e349] [cursor=pointer]:
+                            - /url: /clusters/pcg/manage-pcg/create-manage-node-pool/
+                          - text: tab of the PCG.
+                      - listitem [ref=e350]:
+                        - paragraph [ref=e351]:
+                          - text: If your Palette instance does not have a direct connection to the MAAS environment, you must manually
+                          - link "deploy a PCG cluster" [ref=e352] [cursor=pointer]:
+                            - /url: /clusters/pcg/deploy-pcg/maas/
+                          - text: to your MAAS environment.
+                      - listitem [ref=e353]:
+                        - paragraph [ref=e354]:
+                          - text: If you are using a self-hosted Palette or Palette VerteX instance that has a direct connection to your MAAS environment, you can use Palette's
+                          - link "System Private Gateway" [ref=e355] [cursor=pointer]:
+                            - /url: /clusters/pcg/architecture/#system-private-gateway
+                          - text: .
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]:
+                      - text: A
+                      - link "cluster profile" [ref=e358] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: for the MAAS environment. The Operating System (OS) image used in your cluster profile must be downloaded and available in your MAAS environment. Review
+                      - link "How to use standard images" [ref=e359] [cursor=pointer]:
+                        - /url: https://canonical.com/maas/docs/about-images
+                      - text: for guidance on downloading OS images for MAAS.
+                  - listitem [ref=e360]:
+                    - paragraph [ref=e361]: MAAS hosts that support KVM or LXD VMs.
+                  - listitem [ref=e362]:
+                    - paragraph [ref=e363]:
+                      - text: The
+                      - strong [ref=e364]: LxdMaas
+                      - text: feature flag enabled in the
+                      - link "system console" [ref=e365] [cursor=pointer]:
+                        - /url: /enterprise-version/system-management/feature-flags/
+                      - text: .
+                - generic [ref=e366]:
+                  - generic [ref=e367]:
+                    - img [ref=e369]
+                    - text: info
+                  - paragraph [ref=e372]:
+                    - text: By default, Palette registers a Domain Name System (DNS) record in MAAS for the deployed cluster and links it to the IP addresses of the control plane nodes. However, you can use the
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e373] [cursor=pointer]:
+                      - /url: integrations/packs/?pack=kubernetes&tab=custom#custom-api-server-endpoint-for-maas-clusters
+                    - text: pack to configure a custom API server endpoint for your cluster instead.
+                - list [ref=e374]:
+                  - listitem [ref=e375]:
+                    - text: If configuring the
+                    - strong [ref=e376]: Cert Manager
+                    - text: "pack , ensure that you use version 1.19.1 or later. It is also important to ensure:"
+                    - list [ref=e377]:
+                      - listitem [ref=e378]:
+                        - code [ref=e379]: crds.enabled
+                        - text: is set to
+                        - code [ref=e380]: "false"
+                        - text: .
+                      - listitem [ref=e381]:
+                        - code [ref=e382]: cainjector.enabled
+                        - text: is set to
+                        - code [ref=e383]: "false"
+                        - text: or
+                        - code [ref=e384]: cainjector.replicas
+                        - text: is set to
+                        - code [ref=e385]: "0"
+                        - text: .
+                      - listitem [ref=e386]:
+                        - code [ref=e387]: nodeSelector
+                        - text: or
+                        - code [ref=e388]: nodeAffinity
+                        - text: is set to prevent scheduling of Cert Manager on control pane nodes.
+                - heading "Deploy a MAAS Cluster with LXD-EnabledDirect link to Deploy a MAAS Cluster with LXD-Enabled" [level=2] [ref=e389]:
+                  - text: Deploy a MAAS Cluster with LXD-Enabled
+                  - link "Direct link to Deploy a MAAS Cluster with LXD-Enabled" [ref=e390] [cursor=pointer]:
+                    - /url: "#deploy-a-maas-cluster-with-lxd-enabled"
+                    - text: "#"
+                - paragraph [ref=e391]: Deploying a MAAS cluster with LXD enabled is a two-step process. First, you deploy your host cluster nodes on bare-metal MAAS servers that have LXD enabled. Then, you deploy your workload cluster with its control plane nodes as LXD VMs that are managed by the host cluster. The worker nodes are still deployed on bare-metal MAAS servers.
+                - heading "Deploy a Host Cluster with LXD-Enabled MAAS HostsDirect link to Deploy a Host Cluster with LXD-Enabled MAAS Hosts" [level=3] [ref=e392]:
+                  - text: Deploy a Host Cluster with LXD-Enabled MAAS Hosts
+                  - link "Direct link to Deploy a Host Cluster with LXD-Enabled MAAS Hosts" [ref=e393] [cursor=pointer]:
+                    - /url: "#deploy-a-host-cluster-with-lxd-enabled-maas-hosts"
+                    - text: "#"
+                - list [ref=e394]:
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: Log in to
+                      - link "Palette" [ref=e397] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e398]:
+                    - paragraph [ref=e399]: Ensure you are in the correct project scope.
+                  - listitem [ref=e400]:
+                    - paragraph [ref=e401]:
+                      - text: From the left main menu, select
+                      - strong [ref=e402]: Clusters
+                      - text: ", and choose either"
+                      - strong [ref=e403]: Create Cluster
+                      - text: or
+                      - strong [ref=e404]: Add New Cluster
+                      - text: .
+                  - listitem [ref=e405]:
+                    - paragraph [ref=e406]:
+                      - text: In the
+                      - strong [ref=e407]: Data Center
+                      - text: section, select
+                      - strong [ref=e408]: MAAS
+                      - text: .
+                  - listitem [ref=e409]:
+                    - paragraph [ref=e410]:
+                      - text: In the bottom-right corner, click
+                      - strong [ref=e411]: Start MAAS Configuration
+                      - text: .
+                  - listitem [ref=e412]:
+                    - paragraph [ref=e413]:
+                      - text: Enter the basic information for your cluster, including the
+                      - strong [ref=e414]: Cluster name
+                      - text: ","
+                      - strong [ref=e415]: Description
+                      - text: ", and"
+                      - strong [ref=e416]: Tags
+                      - text: .
+                  - listitem [ref=e417]:
+                    - paragraph [ref=e418]:
+                      - text: From the
+                      - strong [ref=e419]: Cloud Account
+                      - text: drop-down menu, select your MAAS cloud account, and click
+                      - strong [ref=e420]: Next
+                      - text: .
+                  - listitem [ref=e421]:
+                    - paragraph [ref=e422]:
+                      - text: Choose between deploying your cluster using individual
+                      - link "cluster profiles" [ref=e423] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: or a single
+                      - link "cluster template" [ref=e424] [cursor=pointer]:
+                        - /url: /cluster-templates
+                      - text: .
+                    - generic [ref=e425]:
+                      - tablist [ref=e426]:
+                        - tab "Cluster Profiles" [selected] [ref=e427] [cursor=pointer]
+                        - tab "Cluster Templates" [ref=e428] [cursor=pointer]
+                      - tabpanel [ref=e430]:
+                        - list [ref=e431]:
+                          - listitem [ref=e432]:
+                            - paragraph [ref=e433]:
+                              - text: On the
+                              - strong [ref=e434]: Cluster setup type
+                              - text: window, choose
+                              - strong [ref=e435]: Cluster Profiles > Add Cluster Profile
+                              - text: .
+                          - listitem [ref=e436]:
+                            - paragraph [ref=e437]:
+                              - text: Select the appropriate
+                              - link "full" [ref=e438] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                              - text: or
+                              - link "infrastructure cluster profile" [ref=e439] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                              - text: and
+                              - strong [ref=e440]: Confirm
+                              - text: your selection.
+                          - listitem [ref=e441]:
+                            - paragraph [ref=e442]:
+                              - text: Review the layers of your cluster profile. Use the drop-down menus to select the appropriate cluster profile version, add necessary
+                              - link "add-on profiles" [ref=e443] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                              - text: ", and make changes to YAML configuration files as needed. When finished, select"
+                              - strong [ref=e444]: Next
+                              - text: .
+                            - generic [ref=e445]:
+                              - generic [ref=e446]:
+                                - img [ref=e448]
+                                - text: info
+                              - list [ref=e451]:
+                                - listitem [ref=e452]: Cluster profile versions linked to cluster templates cannot be used in the cluster profile workflow.
+                                - listitem [ref=e453]:
+                                  - text: For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend
+                                  - link "creating a new version of your cluster profile" [ref=e454] [cursor=pointer]:
+                                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile
+                                  - text: rather than making inline changes.
+                  - listitem [ref=e455]:
+                    - paragraph [ref=e456]:
+                      - text: The
+                      - strong [ref=e457]: Profile variables configuration
+                      - text: window opens if your cluster profile is configured to use
+                      - link "cluster profile variables" [ref=e458] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                      - text: . Fill in the appropriate values, and select
+                      - strong [ref=e459]: Next
+                      - text: .
+                  - listitem [ref=e460]:
+                    - paragraph [ref=e461]:
+                      - text: Select a
+                      - strong [ref=e462]: Domain
+                      - text: from the drop-down menu.
+                  - listitem [ref=e463]:
+                    - paragraph [ref=e464]:
+                      - text: To use a MAAS bare metal host as a hypervisor for your control plane components, activate the
+                      - strong [ref=e465]: Host LXD-Based Control Planes
+                      - text: switch. Select
+                      - strong [ref=e466]: Next
+                      - text: .
+                    - paragraph [ref=e467]:
+                      - img "Activating the Host LXD-Based Control Planes switch" [ref=e468]
+                    - generic [ref=e469]:
+                      - generic [ref=e470]:
+                        - img [ref=e472]
+                        - text: warning
+                      - paragraph [ref=e475]:
+                        - text: We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time. If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
+                        - strong [ref=e476]: Cluster Config
+                        - text: step.
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]: Configure the control plane and, optionally, worker node pools.
+                    - paragraph [ref=e479]:
+                      - text: The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields that are common across environments and their usage, refer to our
+                      - link "Node Pools" [ref=e480] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/#node-pool-configuration-settings
+                      - text: guide. Select
+                      - strong [ref=e481]: Next
+                      - text: when finished.
+                    - heading "Cloud ConfigurationDirect link to Cloud Configuration" [level=4] [ref=e482]:
+                      - text: Cloud Configuration
+                      - link "Direct link to Cloud Configuration" [ref=e483] [cursor=pointer]:
+                        - /url: "#cloud-configuration"
+                        - text: "#"
+                    - table [ref=e484]:
+                      - rowgroup [ref=e485]:
+                        - row "Parameter Description" [ref=e486]:
+                          - cell "Parameter" [ref=e487]:
+                            - strong [ref=e488]: Parameter
+                          - cell "Description" [ref=e489]:
+                            - strong [ref=e490]: Description
+                      - rowgroup [ref=e491]:
+                        - row "Resource Pool The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected." [ref=e492]:
+                          - cell "Resource Pool" [ref=e493]:
+                            - strong [ref=e494]: Resource Pool
+                          - cell "The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected." [ref=e495]:
+                            - text: The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of
+                            - strong [ref=e496]: CPU
+                            - text: and
+                            - strong [ref=e497]: Memory
+                            - text: selected.
+                        - row "Availability zones Specify the Availability Zones." [ref=e498]:
+                          - cell "Availability zones" [ref=e499]:
+                            - strong [ref=e500]: Availability zones
+                          - cell "Specify the Availability Zones." [ref=e501]
+                        - row "Tags Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the MAAS Tags documentation." [ref=e502]:
+                          - cell "Tags" [ref=e503]:
+                            - strong [ref=e504]: Tags
+                          - cell "Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the MAAS Tags documentation." [ref=e505]:
+                            - text: Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the
+                            - link "MAAS Tags" [ref=e506] [cursor=pointer]:
+                              - /url: https://canonical.com/maas/docs/about-machine-groups#p-22953-tags
+                            - text: documentation.
+                  - listitem [ref=e507]:
+                    - paragraph [ref=e508]:
+                      - text: On the
+                      - strong [ref=e509]: Cluster Settings
+                      - text: page, configure additional options as needed. If you are deploying your cluster using
+                      - link "cluster templates" [ref=e510] [cursor=pointer]:
+                        - /url: /cluster-templates/
+                      - text: ", a"
+                      - strong [ref=e511]: Cluster Timezone
+                      - text: is required.
+                    - table [ref=e512]:
+                      - rowgroup [ref=e513]:
+                        - row "Left Menu Item Additional Information" [ref=e514]:
+                          - cell "Left Menu Item" [ref=e515]:
+                            - strong [ref=e516]: Left Menu Item
+                          - cell "Additional Information" [ref=e517]:
+                            - strong [ref=e518]: Additional Information
+                      - rowgroup [ref=e519]:
+                        - row "Cluster Timezone Specify the time zone where your cluster is being deployed. The time zone is used in maintenance policies to determine when updates are rolled out to clusters deployed with cluster templates." [ref=e520]:
+                          - cell "Cluster Timezone" [ref=e521]:
+                            - strong [ref=e522]: Cluster Timezone
+                          - cell "Specify the time zone where your cluster is being deployed. The time zone is used in maintenance policies to determine when updates are rolled out to clusters deployed with cluster templates." [ref=e523]:
+                            - text: Specify the time zone where your cluster is being deployed. The time zone is used in
+                            - link "maintenance policies" [ref=e524] [cursor=pointer]:
+                              - /url: /cluster-templates/create-cluster-template-policies/maintenance-policy/
+                            - text: to determine when updates are rolled out to clusters deployed with
+                            - link "cluster templates" [ref=e525] [cursor=pointer]:
+                              - /url: /cluster-templates/
+                            - text: .
+                        - row "Manage machines Set an OS patching schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots." [ref=e526]:
+                          - cell "Manage machines" [ref=e527]:
+                            - strong [ref=e528]: Manage machines
+                          - cell "Set an OS patching schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots." [ref=e529]:
+                            - text: Set an
+                            - link "OS patching" [ref=e530] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/os-patching/
+                            - text: schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots.
+                        - row "Schedule scans Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to Compliance Scan for details on each scan type." [ref=e531]:
+                          - cell "Schedule scans" [ref=e532]:
+                            - strong [ref=e533]: Schedule scans
+                          - cell "Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to Compliance Scan for details on each scan type." [ref=e534]:
+                            - text: Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to
+                            - link "Compliance Scan" [ref=e535] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/compliance-scan/#configuration-security
+                            - text: for details on each scan type.
+                        - row "Schedule backups Schedule backups for your entire cluster or etcd. Refer to Backup and Restore for more information." [ref=e536]:
+                          - cell "Schedule backups" [ref=e537]:
+                            - strong [ref=e538]: Schedule backups
+                          - cell "Schedule backups for your entire cluster or etcd. Refer to Backup and Restore for more information." [ref=e539]:
+                            - text: Schedule backups for your entire cluster or etcd. Refer to
+                            - link "Backup and Restore" [ref=e540] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/
+                            - text: for more information.
+                        - 'row "RBAC Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: - Create Role Bindings - Palette eXtended Kubernetes (PXK)" [ref=e541]':
+                          - cell "RBAC" [ref=e542]:
+                            - strong [ref=e543]: RBAC
+                          - 'cell "Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: - Create Role Bindings - Palette eXtended Kubernetes (PXK)" [ref=e544]':
+                            - text: "Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information:"
+                            - text: "-"
+                            - link "Create Role Bindings" [ref=e545] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/cluster-rbac/#create-role-bindings
+                            - text: "-"
+                            - link "Palette eXtended Kubernetes (PXK)" [ref=e546] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=kubernetes&tab=custom
+                  - listitem [ref=e547]:
+                    - paragraph [ref=e548]:
+                      - text: Select
+                      - strong [ref=e549]: Validate
+                      - text: to review your cluster configurations and settings.
+                  - listitem [ref=e550]:
+                    - paragraph [ref=e551]:
+                      - text: If no changes are needed, select
+                      - strong [ref=e552]: Finish Configuration
+                      - text: to deploy your cluster.
+                - paragraph [ref=e553]:
+                  - text: To monitor the status of your cluster deployment, from the left main menu, select
+                  - strong [ref=e554]: Clusters
+                  - text: and choose your cluster. The cluster
+                  - strong [ref=e555]: Overview
+                  - text: tab displays the status and health of your cluster, as well as deployment details. Use the
+                  - strong [ref=e556]: Events
+                  - text: tab to monitor the deployment in real time. Provisioning may take several minutes.
+                - heading "Deploy a Workload Cluster with LXD VMs as Control Plane NodesDirect link to Deploy a Workload Cluster with LXD VMs as Control Plane Nodes" [level=3] [ref=e557]:
+                  - text: Deploy a Workload Cluster with LXD VMs as Control Plane Nodes
+                  - link "Direct link to Deploy a Workload Cluster with LXD VMs as Control Plane Nodes" [ref=e558] [cursor=pointer]:
+                    - /url: "#deploy-a-workload-cluster-with-lxd-vms-as-control-plane-nodes"
+                    - text: "#"
+                - list [ref=e559]:
+                  - listitem [ref=e560]:
+                    - paragraph [ref=e561]:
+                      - text: Log in to
+                      - link "Palette" [ref=e562] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e563]:
+                    - paragraph [ref=e564]: Ensure you are in the correct project scope.
+                  - listitem [ref=e565]:
+                    - paragraph [ref=e566]:
+                      - text: From the left main menu, select
+                      - strong [ref=e567]: Clusters
+                      - text: ", and choose either"
+                      - strong [ref=e568]: Create Cluster
+                      - text: or
+                      - strong [ref=e569]: Add New Cluster
+                      - text: .
+                  - listitem [ref=e570]:
+                    - paragraph [ref=e571]:
+                      - text: In the
+                      - strong [ref=e572]: Data Center
+                      - text: section, select
+                      - strong [ref=e573]: MAAS
+                      - text: .
+                  - listitem [ref=e574]:
+                    - paragraph [ref=e575]:
+                      - text: In the bottom-right corner, click
+                      - strong [ref=e576]: Start MAAS Configuration
+                      - text: .
+                  - listitem [ref=e577]:
+                    - paragraph [ref=e578]:
+                      - text: Enter the basic information for your cluster, including the
+                      - strong [ref=e579]: Cluster name
+                      - text: ","
+                      - strong [ref=e580]: Description
+                      - text: ", and"
+                      - strong [ref=e581]: Tags
+                      - text: .
+                  - listitem [ref=e582]:
+                    - paragraph [ref=e583]:
+                      - text: From the
+                      - strong [ref=e584]: Cloud Account
+                      - text: drop-down menu, select your MAAS cloud account, and click
+                      - strong [ref=e585]: Next
+                      - text: .
+                  - listitem [ref=e586]:
+                    - paragraph [ref=e587]:
+                      - text: Choose between deploying your cluster using individual
+                      - link "cluster profiles" [ref=e588] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: or a single
+                      - link "cluster template" [ref=e589] [cursor=pointer]:
+                        - /url: /cluster-templates
+                      - text: .
+                    - generic [ref=e590]:
+                      - tablist [ref=e591]:
+                        - tab "Cluster Profiles" [selected] [ref=e592] [cursor=pointer]
+                        - tab "Cluster Templates" [ref=e593] [cursor=pointer]
+                      - tabpanel [ref=e595]:
+                        - list [ref=e596]:
+                          - listitem [ref=e597]:
+                            - paragraph [ref=e598]:
+                              - text: On the
+                              - strong [ref=e599]: Cluster setup type
+                              - text: window, choose
+                              - strong [ref=e600]: Cluster Profiles > Add Cluster Profile
+                              - text: .
+                          - listitem [ref=e601]:
+                            - paragraph [ref=e602]:
+                              - text: Select the appropriate
+                              - link "full" [ref=e603] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                              - text: or
+                              - link "infrastructure cluster profile" [ref=e604] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                              - text: and
+                              - strong [ref=e605]: Confirm
+                              - text: your selection.
+                          - listitem [ref=e606]:
+                            - paragraph [ref=e607]:
+                              - text: Review the layers of your cluster profile. Use the drop-down menus to select the appropriate cluster profile version, add necessary
+                              - link "add-on profiles" [ref=e608] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                              - text: ", and make changes to YAML configuration files as needed. When finished, select"
+                              - strong [ref=e609]: Next
+                              - text: .
+                            - generic [ref=e610]:
+                              - generic [ref=e611]:
+                                - img [ref=e613]
+                                - text: info
+                              - list [ref=e616]:
+                                - listitem [ref=e617]: Cluster profile versions linked to cluster templates cannot be used in the cluster profile workflow.
+                                - listitem [ref=e618]:
+                                  - text: For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend
+                                  - link "creating a new version of your cluster profile" [ref=e619] [cursor=pointer]:
+                                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile
+                                  - text: rather than making inline changes.
+                    - heading "Additional ConfigurationsDirect link to Additional Configurations" [level=4] [ref=e620]:
+                      - text: Additional Configurations
+                      - link "Direct link to Additional Configurations" [ref=e621] [cursor=pointer]:
+                        - /url: "#additional-configurations"
+                        - text: "#"
+                    - list [ref=e622]:
+                      - listitem [ref=e623]:
+                        - paragraph [ref=e624]:
+                          - text: To use two subnets, add the
+                          - code [ref=e625]: cloud.maas.lxdVMSubnets
+                          - text: configuration to the Kubernetes layer of your cluster profile. The first subnet must specify the preboot execution environment (PXE), used for the initial booting and provisioning of LXD virtual machines, and the second must specify the subnet used to configure static IPs for workload traffic.
+                        - generic [ref=e626]:
+                          - generic [ref=e627]: Example LXD subnet configuration
+                          - code [ref=e630]:
+                            - generic [ref=e631]: "cloud:"
+                            - generic [ref=e632]: "maas:"
+                            - generic [ref=e633]: "lxdVMSubnets: 10.11.160.0/24,10.10.128.0/18"
+                  - listitem [ref=e634]:
+                    - paragraph [ref=e635]:
+                      - text: The
+                      - strong [ref=e636]: Profile variables configuration
+                      - text: window opens if your cluster profile is configured to use
+                      - link "cluster profile variables" [ref=e637] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                      - text: . Fill in the appropriate values, and select
+                      - strong [ref=e638]: Next
+                      - text: .
+                  - listitem [ref=e639]:
+                    - paragraph [ref=e640]:
+                      - text: Select a
+                      - strong [ref=e641]: Domain
+                      - text: from the drop-down menu.
+                  - listitem [ref=e642]:
+                    - paragraph [ref=e643]:
+                      - text: When creating a workload cluster that will leverage MAAS LXD or will use an existing host LXD-based control plane, leave the
+                      - strong [ref=e644]: Host LXD-Based Control Planes
+                      - text: option disabled. Select
+                      - strong [ref=e645]: Next
+                      - text: .
+                    - paragraph [ref=e646]:
+                      - img "Activating the Host LXD-Based Control Planes switch" [ref=e647]
+                  - listitem [ref=e648]:
+                    - paragraph [ref=e649]:
+                      - text: Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields that are common across environments and their usage, refer to our
+                      - link "Node Pools" [ref=e650] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/#node-pool-configuration-settings
+                      - text: guide. Select
+                      - strong [ref=e651]: Next
+                      - text: when finished.
+                    - heading "Cloud ConfigurationDirect link to Cloud Configuration" [level=4] [ref=e652]:
+                      - text: Cloud Configuration
+                      - link "Direct link to Cloud Configuration" [ref=e653] [cursor=pointer]:
+                        - /url: "#cloud-configuration-1"
+                        - text: "#"
+                    - table [ref=e654]:
+                      - rowgroup [ref=e655]:
+                        - row "Parameter Description" [ref=e656]:
+                          - cell "Parameter" [ref=e657]:
+                            - strong [ref=e658]: Parameter
+                          - cell "Description" [ref=e659]:
+                            - strong [ref=e660]: Description
+                      - rowgroup [ref=e661]:
+                        - row "Use LXD VMs Select this option if you want your worker nodes' control plane to be deployed on MAAS LXD VMs instead of a MAAS bare metal server. This option is only displayed if you have KVM or LXD enabled on MAAS and you did not select Host LXD-Based Control Planes on step 11." [ref=e662]:
+                          - cell "Use LXD VMs" [ref=e663]:
+                            - strong [ref=e664]: Use LXD VMs
+                          - cell "Select this option if you want your worker nodes' control plane to be deployed on MAAS LXD VMs instead of a MAAS bare metal server. This option is only displayed if you have KVM or LXD enabled on MAAS and you did not select Host LXD-Based Control Planes on step 11." [ref=e665]:
+                            - text: Select this option if you want your worker nodes' control plane to be deployed on MAAS LXD VMs instead of a MAAS bare metal server. This option is only displayed if you have KVM or LXD enabled on MAAS and you did
+                            - emphasis [ref=e666]: not
+                            - text: select
+                            - strong [ref=e667]: Host LXD-Based Control Planes
+                            - text: on step 11.
+                        - row "Resource Pool The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected." [ref=e668]:
+                          - cell "Resource Pool" [ref=e669]:
+                            - strong [ref=e670]: Resource Pool
+                          - cell "The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected." [ref=e671]:
+                            - text: The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of
+                            - strong [ref=e672]: CPU
+                            - text: and
+                            - strong [ref=e673]: Memory
+                            - text: selected.
+                        - row "Availability zones Specify the Availability Zones. These should match the same zones used by the Hosted LXD-Based Control Plane." [ref=e674]:
+                          - cell "Availability zones" [ref=e675]:
+                            - strong [ref=e676]: Availability zones
+                          - cell "Specify the Availability Zones. These should match the same zones used by the Hosted LXD-Based Control Plane." [ref=e677]
+                        - row "Tags Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. If you are using a hosted LXD-based control plane, the resource pool, availability zones, and tags must match. To learn more about MAAS tags, refer to the MAAS Tags documentation." [ref=e678]:
+                          - cell "Tags" [ref=e679]:
+                            - strong [ref=e680]: Tags
+                          - cell "Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. If you are using a hosted LXD-based control plane, the resource pool, availability zones, and tags must match. To learn more about MAAS tags, refer to the MAAS Tags documentation." [ref=e681]:
+                            - text: Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. If you are using a hosted LXD-based control plane, the resource pool, availability zones, and tags must match. To learn more about MAAS tags, refer to the
+                            - link "MAAS Tags" [ref=e682] [cursor=pointer]:
+                              - /url: https://canonical.com/maas/docs/about-machine-groups#p-22953-tags
+                            - text: documentation.
+                        - row "Network Type This option is only available when Use LXD VMs is enabled. Select DHCP or Static IP. For Static IP, select the IP Address Management drop-down menu, and choose the desired IP pool for the workload cluster." [ref=e683]:
+                          - cell "Network Type" [ref=e684]:
+                            - strong [ref=e685]: Network Type
+                          - cell "This option is only available when Use LXD VMs is enabled. Select DHCP or Static IP. For Static IP, select the IP Address Management drop-down menu, and choose the desired IP pool for the workload cluster." [ref=e686]:
+                            - text: This option is only available when
+                            - strong [ref=e687]: Use LXD VMs
+                            - text: is enabled. Select
+                            - strong [ref=e688]: DHCP
+                            - text: or
+                            - strong [ref=e689]: Static IP
+                            - text: . For
+                            - strong [ref=e690]: Static IP
+                            - text: ", select the"
+                            - strong [ref=e691]: IP Address Management
+                            - text: drop-down menu, and choose the desired IP pool for the workload cluster.
+                    - generic [ref=e692]:
+                      - generic [ref=e693]:
+                        - img [ref=e695]
+                        - text: danger
+                      - paragraph [ref=e698]:
+                        - text: Ensure that your
+                        - strong [ref=e699]: Resource Pool
+                        - text: ","
+                        - strong [ref=e700]: Availability Zones
+                        - text: ", and"
+                        - strong [ref=e701]: Tags
+                        - text: selections match the same values used for the host cluster nodes. Failure to do so may result in LXD VMs created on MAAS hosts that do not have LXD initialized, which can lead to cluster provisioning failures.
+                    - paragraph [ref=e702]:
+                      - img "Screenshot of Cloud Configuration section in Node pools configuration" [ref=e703]
+                  - listitem [ref=e704]:
+                    - paragraph [ref=e705]:
+                      - text: On the
+                      - strong [ref=e706]: Cluster Settings
+                      - text: page, configure additional options as needed. If you are deploying your cluster using
+                      - link "cluster templates" [ref=e707] [cursor=pointer]:
+                        - /url: /cluster-templates/
+                      - text: ", a"
+                      - strong [ref=e708]: Cluster Timezone
+                      - text: is required.
+                    - table [ref=e709]:
+                      - rowgroup [ref=e710]:
+                        - row "Left Menu Item Additional Information" [ref=e711]:
+                          - cell "Left Menu Item" [ref=e712]:
+                            - strong [ref=e713]: Left Menu Item
+                          - cell "Additional Information" [ref=e714]:
+                            - strong [ref=e715]: Additional Information
+                      - rowgroup [ref=e716]:
+                        - row "Cluster Timezone Specify the time zone where your cluster is being deployed. The time zone is used in maintenance policies to determine when updates are rolled out to clusters deployed with cluster templates." [ref=e717]:
+                          - cell "Cluster Timezone" [ref=e718]:
+                            - strong [ref=e719]: Cluster Timezone
+                          - cell "Specify the time zone where your cluster is being deployed. The time zone is used in maintenance policies to determine when updates are rolled out to clusters deployed with cluster templates." [ref=e720]:
+                            - text: Specify the time zone where your cluster is being deployed. The time zone is used in
+                            - link "maintenance policies" [ref=e721] [cursor=pointer]:
+                              - /url: /cluster-templates/create-cluster-template-policies/maintenance-policy/
+                            - text: to determine when updates are rolled out to clusters deployed with
+                            - link "cluster templates" [ref=e722] [cursor=pointer]:
+                              - /url: /cluster-templates/
+                            - text: .
+                        - row "Manage machines Set an OS patching schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots." [ref=e723]:
+                          - cell "Manage machines" [ref=e724]:
+                            - strong [ref=e725]: Manage machines
+                          - cell "Set an OS patching schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots." [ref=e726]:
+                            - text: Set an
+                            - link "OS patching" [ref=e727] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/os-patching/
+                            - text: schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots.
+                        - row "Schedule scans Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to Compliance Scan for details on each scan type." [ref=e728]:
+                          - cell "Schedule scans" [ref=e729]:
+                            - strong [ref=e730]: Schedule scans
+                          - cell "Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to Compliance Scan for details on each scan type." [ref=e731]:
+                            - text: Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to
+                            - link "Compliance Scan" [ref=e732] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/compliance-scan/#configuration-security
+                            - text: for details on each scan type.
+                        - row "Schedule backups Schedule backups for your entire cluster or etcd. Refer to Backup and Restore for more information." [ref=e733]:
+                          - cell "Schedule backups" [ref=e734]:
+                            - strong [ref=e735]: Schedule backups
+                          - cell "Schedule backups for your entire cluster or etcd. Refer to Backup and Restore for more information." [ref=e736]:
+                            - text: Schedule backups for your entire cluster or etcd. Refer to
+                            - link "Backup and Restore" [ref=e737] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/
+                            - text: for more information.
+                        - 'row "RBAC Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: - Create Role Bindings - Palette eXtended Kubernetes (PXK)" [ref=e738]':
+                          - cell "RBAC" [ref=e739]:
+                            - strong [ref=e740]: RBAC
+                          - 'cell "Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: - Create Role Bindings - Palette eXtended Kubernetes (PXK)" [ref=e741]':
+                            - text: "Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information:"
+                            - text: "-"
+                            - link "Create Role Bindings" [ref=e742] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/cluster-rbac/#create-role-bindings
+                            - text: "-"
+                            - link "Palette eXtended Kubernetes (PXK)" [ref=e743] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=kubernetes&tab=custom
+                  - listitem [ref=e744]:
+                    - paragraph [ref=e745]:
+                      - text: Select
+                      - strong [ref=e746]: Validate
+                      - text: to review your cluster configurations and settings.
+                  - listitem [ref=e747]:
+                    - paragraph [ref=e748]:
+                      - text: If no changes are needed, select
+                      - strong [ref=e749]: Finish Configuration
+                      - text: to deploy your cluster.
+                - paragraph [ref=e750]:
+                  - text: To monitor the status of your cluster deployment, from the left main menu, select
+                  - strong [ref=e751]: Clusters
+                  - text: and choose your cluster. The cluster
+                  - strong [ref=e752]: Overview
+                  - text: tab displays the status and health of your cluster, as well as deployment details. Use the
+                  - strong [ref=e753]: Events
+                  - text: tab to monitor the deployment in real time. Provisioning may take several minutes.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e754]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e755] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e756]:
+                  - text: Use the following steps to You can validate your cluster is up and in
+                  - strong [ref=e757]: Running
+                  - text: state.
+                - list [ref=e758]:
+                  - listitem [ref=e759]:
+                    - paragraph [ref=e760]:
+                      - text: Log in to
+                      - link "Palette" [ref=e761] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e762]:
+                    - paragraph [ref=e763]: Ensure you are in the correct project scope.
+                  - listitem [ref=e764]:
+                    - paragraph [ref=e765]:
+                      - text: From the left main menu, select
+                      - strong [ref=e766]: Clusters
+                      - text: . The
+                      - strong [ref=e767]: Clusters
+                      - text: page displays a list of all available clusters that Palette manages.
+                  - listitem [ref=e768]:
+                    - paragraph [ref=e769]:
+                      - text: Select the cluster you deployed. On the
+                      - strong [ref=e770]: Overview
+                      - text: tab, ensure the
+                      - strong [ref=e771]: Cluster Status
+                      - text: is
+                      - strong [ref=e772]: Running
+                      - text: and that the cluster has a
+                      - strong [ref=e773]: Health
+                      - text: status of
+                      - strong [ref=e774]: Healthy
+                      - text: .
+                - heading "Update a MAAS ClusterDirect link to Update a MAAS Cluster" [level=2] [ref=e775]:
+                  - text: Update a MAAS Cluster
+                  - link "Direct link to Update a MAAS Cluster" [ref=e776] [cursor=pointer]:
+                    - /url: "#update-a-maas-cluster"
+                    - text: "#"
+                - generic [ref=e777]:
+                  - generic [ref=e778]:
+                    - img [ref=e780]
+                    - text: warning
+                  - paragraph [ref=e783]:
+                    - text: Ensure that the OS image used in your cluster profile is downloaded and available in your MAAS environment before attempting to update your cluster. Review
+                    - link "How to use standard images" [ref=e784] [cursor=pointer]:
+                      - /url: https://canonical.com/maas/docs/about-images
+                    - text: for guidance on downloading compatible OS images for MAAS.
+                - paragraph [ref=e785]:
+                  - text: Updates can include changes to the cluster configuration, such as a Kubernetes upgrade, or a node configuration, such as changing the CPU or memory requirements, or picking a different availability zone. These updates are orchestrated using a rolling repave of the cluster nodes. To learn more about managing a MAAS cluster, refer to
+                  - link "Manage Clusters" [ref=e786] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/cluster-updates/
+                  - text: .
+                - paragraph [ref=e787]:
+                  - text: Updating the host cluster causes a rolling repave across nodes. During the repave, nodes running older versions are removed, and the associated LXD VMs are deleted. If the leader node is deleted, the control plane components of the workload cluster undergo a new leader election process and choose a new leader on an LXD VM running on a different node. For this reason, it is
+                  - emphasis [ref=e788]: critical
+                  - text: that the host and workload clusters are configured for high availability, consisting of at least three nodes per cluster, with the nodes spread across different availability zones.
+                - paragraph [ref=e789]: Workload cluster updates function the same as regular MAAS clusters. Instead of provisioning new bare-metal hosts, new LXD VMs are created for the control plane nodes.
+                - paragraph [ref=e790]:
+                  - text: To protect your data, we recommend creating a backup of your MAAS cluster before proceeding with any updates or infrastructure changes. Review our
+                  - link "Backup and Restore" [ref=e791] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/backup-restore/
+                  - text: guide for additional information.
+                - heading "Delete a MAAS ClusterDirect link to Delete a MAAS Cluster" [level=2] [ref=e792]:
+                  - text: Delete a MAAS Cluster
+                  - link "Direct link to Delete a MAAS Cluster" [ref=e793] [cursor=pointer]:
+                    - /url: "#delete-a-maas-cluster"
+                    - text: "#"
+                - generic [ref=e794]:
+                  - generic [ref=e795]:
+                    - img [ref=e797]
+                    - text: warning
+                  - generic [ref=e799]:
+                    - paragraph [ref=e800]: "Before deleting a MAAS LXD cluster, consider the following:"
+                    - list [ref=e801]:
+                      - listitem [ref=e802]:
+                        - paragraph [ref=e803]:
+                          - text: If the
+                          - emphasis [ref=e804]: host cluster
+                          - text: currently runs LXD control planes for any workload clusters, you must first move the workload clusters to a different host cluster. Deleting a host cluster that hosts control planes will bring the workload clusters down. Once the host cluster is removed, or if the host cluster is not running on any LXD VMs, you can delete it the same way as regular MAAS clusters.
+                      - listitem [ref=e805]:
+                        - paragraph [ref=e806]:
+                          - emphasis [ref=e807]: Workload clusters
+                          - text: can be deleted the same way as regular MAAS clusters. Deleting a workload cluster that uses LXD will also delete the LXD VMs created for that workload cluster on the host cluster.
+                - paragraph [ref=e808]: Take the following steps to delete a MAAS cluster. Note that when you delete a MAAS cluster, all machines and associated storage disks that were created for the cluster are removed.
+                - list [ref=e809]:
+                  - listitem [ref=e810]:
+                    - paragraph [ref=e811]:
+                      - text: Log in to
+                      - link "Palette" [ref=e812] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: as a tenant admin.
+                  - listitem [ref=e813]:
+                    - paragraph [ref=e814]:
+                      - text: From the left main menu, select
+                      - strong [ref=e815]: Clusters
+                      - text: .
+                  - listitem [ref=e816]:
+                    - paragraph [ref=e817]: Select the cluster you want to delete.
+                  - listitem [ref=e818]:
+                    - paragraph [ref=e819]:
+                      - text: In the top-right, select the
+                      - strong [ref=e820]: Settings
+                      - text: drop-down menu, and choose
+                      - strong [ref=e821]: Delete
+                      - text: .
+                - paragraph [ref=e822]:
+                  - text: The cluster status is updated to
+                  - strong [ref=e823]: Deleting
+                  - text: while cluster resources are being deleted. When all resources are successfully deleted, the cluster status is updated to
+                  - strong [ref=e824]: Deleted
+                  - text: and the cluster is removed from the list. The delete operation returns the hosts to the
+                  - strong [ref=e825]: Ready
+                  - text: state. All the artifacts related to the Kubernetes distribution are removed.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e826]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e827] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e828]:
+                  - text: Now that you have deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We recommend you review the Day-2 operations and become familiar with the cluster management tasks. Check out the
+                  - link "Manage Clusters" [ref=e829] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/
+                  - text: documentation to learn more about Day-2 responsibilities.
+              - generic [ref=e830]:
+                - generic [ref=e832]:
+                  - text: "Tags:"
+                  - list [ref=e833]:
+                    - listitem [ref=e834]:
+                      - link "data center" [ref=e835] [cursor=pointer]:
+                        - /url: /tags/data-center/
+                    - listitem [ref=e836]:
+                      - link "maas" [ref=e837] [cursor=pointer]:
+                        - /url: /tags/maas/
+                    - listitem [ref=e838]:
+                      - link "lxd" [ref=e839] [cursor=pointer]:
+                        - /url: /tags/lxd/
+                - link "Edit this page" [ref=e842] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/data-center/maas/create-manage-maas-lxd-clusters.md
+                  - img [ref=e843]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e847]:
+              - link "Previous « Create and Manage MAAS Clusters" [ref=e848] [cursor=pointer]:
+                - /url: /clusters/data-center/maas/create-manage-maas-clusters/
+                - generic [ref=e849]: Previous
+                - generic [ref=e850]: « Create and Manage MAAS Clusters
+              - link "Next Nutanix »" [ref=e851] [cursor=pointer]:
+                - /url: /clusters/data-center/nutanix/
+                - generic [ref=e852]: Next
+                - generic [ref=e853]: Nutanix »
+          - list [ref=e856]:
+            - listitem [ref=e857]:
+              - link "Prerequisites" [ref=e858] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e859]:
+              - link "Deploy a MAAS Cluster with LXD-Enabled" [ref=e860] [cursor=pointer]:
+                - /url: "#deploy-a-maas-cluster-with-lxd-enabled"
+              - list [ref=e861]:
+                - listitem [ref=e862]:
+                  - link "Deploy a Host Cluster with LXD-Enabled MAAS Hosts" [ref=e863] [cursor=pointer]:
+                    - /url: "#deploy-a-host-cluster-with-lxd-enabled-maas-hosts"
+                - listitem [ref=e864]:
+                  - link "Deploy a Workload Cluster with LXD VMs as Control Plane Nodes" [ref=e865] [cursor=pointer]:
+                    - /url: "#deploy-a-workload-cluster-with-lxd-vms-as-control-plane-nodes"
+            - listitem [ref=e866]:
+              - link "Validate" [ref=e867] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e868]:
+              - link "Update a MAAS Cluster" [ref=e869] [cursor=pointer]:
+                - /url: "#update-a-maas-cluster"
+            - listitem [ref=e870]:
+              - link "Delete a MAAS Cluster" [ref=e871] [cursor=pointer]:
+                - /url: "#delete-a-maas-cluster"
+            - listitem [ref=e872]:
+              - link "Next Steps" [ref=e873] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e874] [cursor=pointer]:
+    - generic [ref=e877]:
+      - img "Project Logo" [ref=e878]
+      - paragraph [ref=e879]: Ask AI
+```
