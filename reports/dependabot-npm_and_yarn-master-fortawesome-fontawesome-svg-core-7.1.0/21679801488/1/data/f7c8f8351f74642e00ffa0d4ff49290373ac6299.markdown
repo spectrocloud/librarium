@@ -1,0 +1,1482 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [expanded] [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+                - list [ref=e110]:
+                  - listitem [ref=e111]:
+                    - generic [ref=e112]:
+                      - link "Public Cloud Clusters" [expanded] [ref=e113] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/
+                        - img [ref=e115]
+                        - text: Public Cloud Clusters
+                      - button "Toggle the collapsible sidebar category 'Public Cloud Clusters'" [ref=e117] [cursor=pointer]
+                    - list [ref=e118]:
+                      - listitem [ref=e119]:
+                        - generic [ref=e120]:
+                          - link "AWS" [ref=e121] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/aws/
+                          - button "Toggle the collapsible sidebar category 'AWS'" [ref=e122] [cursor=pointer]
+                      - listitem [ref=e123]:
+                        - generic [ref=e124]:
+                          - link "Azure" [expanded] [ref=e125] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/azure/
+                          - button "Toggle the collapsible sidebar category 'Azure'" [ref=e126] [cursor=pointer]
+                        - list [ref=e127]:
+                          - listitem [ref=e128]:
+                            - link "Architecture" [ref=e129] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/architecture/
+                          - listitem [ref=e130]:
+                            - link "Register and Manage Azure Cloud Accounts" [ref=e131] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/azure-cloud/
+                          - listitem [ref=e132]:
+                            - link "Azure Disk Encryption" [ref=e133] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/azure-disk-storage-sse/
+                          - listitem [ref=e134]:
+                            - link "Create and Manage Azure IaaS Cluster" [ref=e135] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/create-azure-cluster/
+                          - listitem [ref=e136]:
+                            - link "Create and Manage Azure AKS Cluster" [ref=e137] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/aks/
+                          - listitem [ref=e138]:
+                            - link "Deploy Windows Workloads" [ref=e139] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/windows/
+                          - listitem [ref=e140]:
+                            - link "Required Permissions" [ref=e141] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/required-permissions/
+                      - listitem [ref=e142]:
+                        - generic [ref=e143]:
+                          - link "GCP" [ref=e144] [cursor=pointer]:
+                            - /url: /clusters/public-cloud/gcp/
+                          - button "Toggle the collapsible sidebar category 'GCP'" [ref=e145] [cursor=pointer]
+                  - listitem [ref=e146]:
+                    - generic [ref=e147]:
+                      - link "Data Center Clusters" [ref=e148] [cursor=pointer]:
+                        - /url: /clusters/data-center/
+                        - img [ref=e150]
+                        - text: Data Center Clusters
+                      - button "Toggle the collapsible sidebar category 'Data Center Clusters'" [ref=e152] [cursor=pointer]
+                  - listitem [ref=e153]:
+                    - generic [ref=e154]:
+                      - link "Edge" [ref=e155] [cursor=pointer]:
+                        - /url: /clusters/edge/
+                        - img [ref=e157]
+                        - text: Edge
+                      - button "Toggle the collapsible sidebar category 'Edge'" [ref=e159] [cursor=pointer]
+                  - listitem [ref=e160]:
+                    - generic [ref=e161]:
+                      - link "Palette Virtual Clusters" [ref=e162] [cursor=pointer]:
+                        - /url: /clusters/palette-virtual-clusters/
+                        - img [ref=e164]
+                        - text: Palette Virtual Clusters
+                      - button "Toggle the collapsible sidebar category 'Palette Virtual Clusters'" [ref=e166] [cursor=pointer]
+                  - listitem [ref=e167]:
+                    - generic [ref=e168]:
+                      - link "Imported Clusters" [ref=e169] [cursor=pointer]:
+                        - /url: /clusters/imported-clusters/
+                        - img [ref=e171]
+                        - text: Imported Clusters
+                      - button "Toggle the collapsible sidebar category 'Imported Clusters'" [ref=e173] [cursor=pointer]
+                  - listitem [ref=e174]:
+                    - generic [ref=e175]:
+                      - link "Manage Clusters" [ref=e176] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/
+                        - img [ref=e178]
+                        - text: Manage Clusters
+                      - button "Toggle the collapsible sidebar category 'Manage Clusters'" [ref=e180] [cursor=pointer]
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]:
+                      - link "Cluster Groups" [ref=e183] [cursor=pointer]:
+                        - /url: /clusters/cluster-groups/
+                        - img [ref=e185]
+                        - text: Cluster Groups
+                      - button "Toggle the collapsible sidebar category 'Cluster Groups'" [ref=e187] [cursor=pointer]
+                  - listitem [ref=e188]:
+                    - generic [ref=e189]:
+                      - link "Private Cloud Gateway" [ref=e190] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                        - img [ref=e192]
+                        - text: Private Cloud Gateway
+                      - button "Toggle the collapsible sidebar category 'Private Cloud Gateway'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e197] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e199]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "Palette Dev Engine" [ref=e204] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e206]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Virtual Machine Orchestrator" [ref=e211] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e213]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Workspaces" [ref=e218] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e220]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Packs List" [ref=e225] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e227]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "User & Role Management" [ref=e232] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e234]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Registries and Packs" [ref=e239] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e241]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Security" [ref=e246] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e248]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Audit Logs" [ref=e253] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e255]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Self-Hosted Palette" [ref=e260] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e262]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - generic [ref=e266]:
+                  - link "Palette VerteX" [ref=e267] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e269]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e271] [cursor=pointer]
+              - listitem [ref=e272]:
+                - generic [ref=e273]:
+                  - link "Tenant Administration" [ref=e274] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e276]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e278] [cursor=pointer]
+              - listitem [ref=e279]:
+                - generic [ref=e280]:
+                  - link "Automation" [ref=e281] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e283]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e285] [cursor=pointer]
+              - listitem [ref=e286]:
+                - generic [ref=e287]:
+                  - link "Troubleshooting" [ref=e288] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e290]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e292] [cursor=pointer]
+              - listitem [ref=e293]:
+                - link "Glossary" [ref=e294] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e296]
+                  - text: Glossary
+              - listitem [ref=e298]:
+                - generic [ref=e299]:
+                  - link "Compliance & Legal" [ref=e300] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e302]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e304] [cursor=pointer]
+              - listitem [ref=e305]:
+                - button "Privacy Settings" [ref=e306] [cursor=pointer]:
+                  - img [ref=e307]
+                  - text: Privacy Settings
+      - main [ref=e309]:
+        - generic [ref=e311]:
+          - generic [ref=e313]:
+            - article [ref=e314]:
+              - navigation "Breadcrumbs" [ref=e315]:
+                - list [ref=e316]:
+                  - listitem [ref=e317]:
+                    - link "Home page" [ref=e318] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e319]
+                  - listitem [ref=e321]:
+                    - link "Clusters" [ref=e322] [cursor=pointer]:
+                      - /url: /clusters/
+                  - listitem [ref=e323]:
+                    - link "Public Cloud Clusters" [ref=e324] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/
+                  - listitem [ref=e325]:
+                    - link "Azure" [ref=e326] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/azure/
+                  - listitem [ref=e327]:
+                    - generic [ref=e328]: Create and Manage Azure IaaS Cluster
+              - generic [ref=e329]:
+                - heading "Create and Manage Azure IaaS Cluster" [level=1] [ref=e331]
+                - paragraph [ref=e332]: Palette supports creating and managing Kubernetes clusters deployed to an Azure account. This section guides you on how to create an IaaS Kubernetes cluster in Azure that Palette manages.
+                - heading "LimitationsDirect link to Limitations" [level=2] [ref=e333]:
+                  - text: Limitations
+                  - link "Direct link to Limitations" [ref=e334] [cursor=pointer]:
+                    - /url: "#limitations"
+                    - text: "#"
+                - list [ref=e335]:
+                  - listitem [ref=e336]:
+                    - paragraph [ref=e337]:
+                      - text: If the
+                      - code [ref=e338]: fullyPrivateAddressing
+                      - text: parameter is set to
+                      - code [ref=e339]: "true"
+                      - text: ", the control plane and worker nodes in your cluster must still have outbound access to the internet, including the"
+                      - link "Microsoft Container Registry" [ref=e340] [cursor=pointer]:
+                        - /url: https://mcr.microsoft.com/
+                      - text: ", to download updates, patches, and the necessary container images."
+                  - listitem [ref=e341]:
+                    - paragraph [ref=e342]:
+                      - text: Once the
+                      - code [ref=e343]: fullyPrivateAddressing
+                      - text: parameter is set for your cluster, you cannot change its value. Changing the parameter value will result in errors until you return the value to its original configuration.
+                - heading "Azure Government Secret LimitationsDirect link to Azure Government Secret Limitations" [level=3] [ref=e344]:
+                  - text: Azure Government Secret Limitations
+                  - link "Direct link to Azure Government Secret Limitations" [ref=e345] [cursor=pointer]:
+                    - /url: "#azure-government-secret-limitations"
+                    - text: "#"
+                - generic [ref=e346]:
+                  - generic [ref=e347]:
+                    - img [ref=e349]
+                    - text: tech preview
+                  - generic [ref=e351]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - list [ref=e352]:
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - text: You must use Palette VerteX to deploy clusters in
+                      - link "Azure Government Secret cloud" [ref=e355] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/azure-cloud/#azure-government-secret-cloud
+                      - text: . Multi-tenant Palette SaaS and self-hosted Palette instances are not supported.
+                  - listitem [ref=e356]:
+                    - paragraph [ref=e357]:
+                      - text: Clusters deployed in
+                      - link "Azure Government Secret cloud" [ref=e358] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/azure-cloud/#azure-government-secret-cloud
+                      - text: must use
+                      - link "static placement" [ref=e359] [cursor=pointer]:
+                        - /url: "#static-placement-settings"
+                      - text: and a
+                      - link "private API server load balancer" [ref=e360] [cursor=pointer]:
+                        - /url: "#private-api-server-lb-settings"
+                      - text: with a static IP.
+                - list [ref=e361]:
+                  - listitem [ref=e362]:
+                    - paragraph [ref=e363]:
+                      - text: Clusters deployed in Azure Government Secret cloud must use
+                      - link "Azure Disk CSI Driver" [ref=e364] [cursor=pointer]:
+                        - /url: /integrations/packs/?pack=csi-azure
+                      - text: version 1.31.2-rev2 for the storage layer in your
+                      - link "cluster profile" [ref=e365] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: .
+                  - listitem [ref=e366]:
+                    - paragraph [ref=e367]:
+                      - text: Clusters deployed in Azure Government Secret cloud must reference the appropriate Spectro Cloud Azure Government Secret Virtual Hard Disk (VHD) image in the OS layer of your
+                      - link "cluster profile" [ref=e368] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: . These images must be uploaded to your private registry, and the
+                      - code [ref=e369]: <os-name-and-version>
+                      - text: and
+                      - code [ref=e370]: <kubernetes-version>
+                      - text: referenced in the VHD image must match the OS and Kubernetes layers specified in your cluster profile. Only certain OS and Kubernetes combinations are supported. Contact your customer support representative for details.
+                    - generic [ref=e371]:
+                      - generic [ref=e372]: Example OS layer configuration
+                      - generic [ref=e373]:
+                        - code [ref=e375]:
+                          - generic [ref=e376]: "cloud:"
+                          - generic [ref=e377]: "azure:"
+                          - generic [ref=e378]: "sigImageId: \"spectrocloudinfra2022/sig-spectrocloud-infra-<os-name-and-version>-<kubernetes-version>\""
+                        - button "Toggle word wrap" [ref=e380] [cursor=pointer]:
+                          - img [ref=e381]
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e383]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e384] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e385]:
+                  - listitem [ref=e386]:
+                    - paragraph [ref=e387]:
+                      - text: An active
+                      - link "Azure cloud account" [ref=e388] [cursor=pointer]:
+                        - /url: https://portal.azure.com/
+                      - text: with sufficient resource limits and permissions to provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
+                      - link "Required Permissions" [ref=e389] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/required-permissions/
+                      - text: guide for more information. If deploying a cluster to
+                      - link "Azure Government Secret cloud" [ref=e390] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/azure-cloud/#azure-government-secret-cloud
+                      - text: ", you must have the required permissions for"
+                      - link "static placement" [ref=e391] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/required-permissions/#iaas-static-placement
+                      - text: .
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]:
+                      - text: Palette integration with Azure account. Review the
+                      - link "Register and Manage Azure Cloud Account" [ref=e394] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/azure-cloud/
+                      - text: guide for more information.
+                  - listitem [ref=e395]:
+                    - paragraph [ref=e396]:
+                      - text: A Secure Shell (SSH) key pre-configured in your Azure environment. Refer to the
+                      - link "SSH Keys" [ref=e397] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/ssh/ssh-keys/
+                      - text: guide for more information about creating and managing SSH keys in Palette.
+                  - listitem [ref=e398]:
+                    - paragraph [ref=e399]:
+                      - text: An
+                      - link "infrastructure cluster profile" [ref=e400] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                      - text: or
+                      - link "full cluster profile" [ref=e401] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                      - text: for Azure.
+                  - listitem [ref=e402]:
+                    - paragraph [ref=e403]:
+                      - text: To use custom storage accounts or containers, you must create them before you create your cluster. All custom storage accounts and containers will be listed on the
+                      - strong [ref=e404]: Cluster config
+                      - text: page during the cluster creation process. For information about use cases for custom storage, review our
+                      - link "Azure Storage" [ref=e405] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/architecture/#azure-storage
+                      - text: documentation.
+                    - paragraph [ref=e406]:
+                      - text: If you need help creating a custom storage account or container, check out the Azure
+                      - link "Create a Storage Account" [ref=e407] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal
+                      - text: or
+                      - link "Manage Blob Containers" [ref=e408] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal
+                      - text: guide.
+                - list [ref=e409]:
+                  - listitem [ref=e410]:
+                    - paragraph [ref=e411]: "If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in Azure when it provisions Kubernetes clusters. To use a VNet that Palette creates, ensure there is sufficient capacity in the preferred Azure region to create the following resources:"
+                    - list [ref=e412]:
+                      - listitem [ref=e413]: Virtual CPUs (vCPUs)
+                      - listitem [ref=e414]: VNets
+                      - listitem [ref=e415]: Static public IP addresses
+                      - listitem [ref=e416]: Virtual network interfaces
+                      - listitem [ref=e417]: Load balancers
+                      - listitem [ref=e418]: Virtual Hard Disks (VHDs)
+                      - listitem [ref=e419]: Managed disks
+                      - listitem [ref=e420]: Virtual Network Address Translation (NAT) gateways
+                    - generic [ref=e421]:
+                      - generic [ref=e422]:
+                        - img [ref=e424]
+                        - text: warning
+                      - paragraph [ref=e427]:
+                        - text: For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+                        - link "Network Ports" [ref=e428] [cursor=pointer]:
+                          - /url: /architecture/networking-ports/
+                        - text: documentation for detailed network architecture diagrams and to learn more about the ports used for communication.
+                - list [ref=e429]:
+                  - listitem [ref=e430]:
+                    - paragraph [ref=e431]:
+                      - text: To enable the
+                      - code [ref=e432]: fullyPrivateAddressing
+                      - text: parameter and use a private API server load balancer, you need a self-hosted Private Cloud Gateway (PCG) deployed in Azure. Ensure the Azure cloud account selected is connected to a PCG. For more information on deploying PCGs, refer to
+                      - link "Private Cloud Gateway" [ref=e433] [cursor=pointer]:
+                        - /url: /clusters/pcg/
+                      - text: . To learn how to connect a PCG to an Azure cloud account, refer to the
+                      - link "Register and Manage Azure Cloud Account" [ref=e434] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/azure-cloud/
+                      - text: guide.
+                  - listitem [ref=e435]:
+                    - paragraph [ref=e436]:
+                      - text: A private DNS zone is required to use the private API server load balancer. You also need to ensure the virtual networks used for the cluster support
+                      - link "private DNS resolution" [ref=e437] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview
+                      - text: . To learn more about private DNS zones, refer to the Azure
+                      - link "Private DNS Zones" [ref=e438] [cursor=pointer]:
+                        - /url: https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns
+                      - text: guide.
+                - list [ref=e439]:
+                  - listitem [ref=e440]:
+                    - text: If you want to enable Azure Disk Encryption on your cluster, ensure you have created a Key Vault and Disk Encryption Set. Your cluster profile must also be configured to use the
+                    - link "Palette eXtended Kubernetes (PXK)" [ref=e441] [cursor=pointer]:
+                      - /url: /integrations/packs/?pack=kubernetes
+                    - text: pack and have the
+                    - strong [ref=e442]: Use Azure Disk Encryption
+                    - text: preset enabled. Review our
+                    - link "Azure Disk Encryption" [ref=e443] [cursor=pointer]:
+                      - /url: /clusters/public-cloud/azure/azure-disk-storage-sse/
+                    - text: guide for more information.
+                - list [ref=e444]:
+                  - listitem [ref=e445]:
+                    - text: If configuring the
+                    - strong [ref=e446]: Cert Manager
+                    - text: "pack , ensure that you use version 1.19.1 or later. It is also important to ensure:"
+                    - list [ref=e447]:
+                      - listitem [ref=e448]:
+                        - code [ref=e449]: crds.enabled
+                        - text: is set to
+                        - code [ref=e450]: "false"
+                        - text: .
+                      - listitem [ref=e451]:
+                        - code [ref=e452]: cainjector.enabled
+                        - text: is set to
+                        - code [ref=e453]: "false"
+                        - text: or
+                        - code [ref=e454]: cainjector.replicas
+                        - text: is set to
+                        - code [ref=e455]: "0"
+                        - text: .
+                      - listitem [ref=e456]:
+                        - code [ref=e457]: nodeSelector
+                        - text: or
+                        - code [ref=e458]: nodeAffinity
+                        - text: is set to prevent scheduling of Cert Manager on control pane nodes.
+                - heading "Deploy an Azure ClusterDirect link to Deploy an Azure Cluster" [level=2] [ref=e459]:
+                  - text: Deploy an Azure Cluster
+                  - link "Direct link to Deploy an Azure Cluster" [ref=e460] [cursor=pointer]:
+                    - /url: "#deploy-an-azure-cluster"
+                    - text: "#"
+                - paragraph [ref=e461]: Take the following steps to deploy an Azure cluster.
+                - list [ref=e462]:
+                  - listitem [ref=e463]:
+                    - paragraph [ref=e464]:
+                      - text: Log in to
+                      - link "Palette" [ref=e465] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: or Palette VerteX.
+                  - listitem [ref=e466]:
+                    - paragraph [ref=e467]:
+                      - text: From the left main menu, select
+                      - strong [ref=e468]: Clusters > Create Cluster
+                      - text: .
+                  - listitem [ref=e469]:
+                    - paragraph [ref=e470]:
+                      - text: In
+                      - strong [ref=e471]: Public Clouds
+                      - text: ", under"
+                      - strong [ref=e472]: Infrastructure Provider
+                      - text: ", select"
+                      - strong [ref=e473]: Azure IaaS
+                      - text: .
+                  - listitem [ref=e474]:
+                    - paragraph [ref=e475]:
+                      - text: In the bottom-right corner, select
+                      - strong [ref=e476]: Start Azure IaaS Configuration
+                      - text: .
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]:
+                      - text: Complete the following information. Select
+                      - strong [ref=e479]: Next
+                      - text: when finished.
+                    - table [ref=e480]:
+                      - rowgroup [ref=e481]:
+                        - row "Field Description" [ref=e482]:
+                          - cell "Field" [ref=e483]:
+                            - strong [ref=e484]: Field
+                          - cell "Description" [ref=e485]:
+                            - strong [ref=e486]: Description
+                      - rowgroup [ref=e487]:
+                        - row "Cluster Name Enter a custom name for the cluster." [ref=e488]:
+                          - cell "Cluster Name" [ref=e489]:
+                            - strong [ref=e490]: Cluster Name
+                          - cell "Enter a custom name for the cluster." [ref=e491]
+                        - row "Description (Optional) Provide context about the cluster." [ref=e492]:
+                          - cell "Description" [ref=e493]:
+                            - strong [ref=e494]: Description
+                          - cell "(Optional) Provide context about the cluster." [ref=e495]
+                        - 'row "Tags (Optional) Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: region:us-west." [ref=e496]':
+                          - cell "Tags" [ref=e497]:
+                            - strong [ref=e498]: Tags
+                          - 'cell "(Optional) Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: region:us-west." [ref=e499]':
+                            - text: "(Optional) Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example:"
+                            - code [ref=e500]: region:us-west
+                            - text: .
+                        - row "Cloud Account Select the appropriate Azure account under which to deploy the cluster. If the account is not there, select Add New Account, and provide your Azure account information. For more information, refer to our Register and Manage Azure Cloud Accounts guide." [ref=e501]:
+                          - cell "Cloud Account" [ref=e502]:
+                            - strong [ref=e503]: Cloud Account
+                          - cell "Select the appropriate Azure account under which to deploy the cluster. If the account is not there, select Add New Account, and provide your Azure account information. For more information, refer to our Register and Manage Azure Cloud Accounts guide." [ref=e504]:
+                            - text: Select the appropriate Azure account under which to deploy the cluster. If the account is not there, select
+                            - strong [ref=e505]: Add New Account
+                            - text: ", and provide your Azure account information. For more information, refer to our"
+                            - link "Register and Manage Azure Cloud Accounts" [ref=e506] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/azure-cloud/
+                            - text: guide.
+                  - listitem [ref=e507]:
+                    - paragraph [ref=e508]:
+                      - text: Choose between deploying your cluster using individual
+                      - link "cluster profiles" [ref=e509] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/
+                      - text: or a single
+                      - link "cluster template" [ref=e510] [cursor=pointer]:
+                        - /url: /cluster-templates
+                      - text: .
+                    - generic [ref=e511]:
+                      - tablist [ref=e512]:
+                        - tab "Cluster Profiles" [selected] [ref=e513] [cursor=pointer]
+                        - tab "Cluster Templates" [ref=e514] [cursor=pointer]
+                      - tabpanel [ref=e516]:
+                        - list [ref=e517]:
+                          - listitem [ref=e518]:
+                            - paragraph [ref=e519]:
+                              - text: On the
+                              - strong [ref=e520]: Cluster setup type
+                              - text: window, choose
+                              - strong [ref=e521]: Cluster Profiles > Add Cluster Profile
+                              - text: .
+                          - listitem [ref=e522]:
+                            - paragraph [ref=e523]:
+                              - text: Select the appropriate
+                              - link "full" [ref=e524] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-full-profile/
+                              - text: or
+                              - link "infrastructure cluster profile" [ref=e525] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/
+                              - text: and
+                              - strong [ref=e526]: Confirm
+                              - text: your selection.
+                          - listitem [ref=e527]:
+                            - paragraph [ref=e528]:
+                              - text: Review the layers of your cluster profile. Use the drop-down menus to select the appropriate cluster profile version, add necessary
+                              - link "add-on profiles" [ref=e529] [cursor=pointer]:
+                                - /url: /profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/
+                              - text: ", and make changes to YAML configuration files as needed. When finished, select"
+                              - strong [ref=e530]: Next
+                              - text: .
+                            - generic [ref=e531]:
+                              - generic [ref=e532]:
+                                - img [ref=e534]
+                                - text: info
+                              - list [ref=e537]:
+                                - listitem [ref=e538]: Cluster profile versions linked to cluster templates cannot be used in the cluster profile workflow.
+                                - listitem [ref=e539]:
+                                  - text: For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend
+                                  - link "creating a new version of your cluster profile" [ref=e540] [cursor=pointer]:
+                                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile
+                                  - text: rather than making inline changes.
+                    - list [ref=e541]:
+                      - listitem [ref=e542]:
+                        - paragraph [ref=e543]: Certain features require additional modifications to your cluster profile. Expand the appropriate panel for more information.
+                        - group [ref=e544]:
+                          - generic "Static Placement" [ref=e545] [cursor=pointer]
+                        - group [ref=e546]:
+                          - generic "OpenID Connect (OIDC)" [ref=e547] [cursor=pointer]
+                        - group [ref=e548]:
+                          - generic "Azure Government Secret Cloud" [ref=e549] [cursor=pointer]
+                        - group [ref=e550]:
+                          - generic "Disable automatic route table creation for pod networking" [ref=e551] [cursor=pointer]
+                  - listitem [ref=e552]:
+                    - paragraph [ref=e553]:
+                      - text: The
+                      - strong [ref=e554]: Profile variables configuration
+                      - text: window opens if your cluster profile is configured to use
+                      - link "cluster profile variables" [ref=e555] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                      - text: . Fill in the appropriate values, and select
+                      - strong [ref=e556]: Next
+                      - text: .
+                  - listitem [ref=e557]:
+                    - paragraph [ref=e558]:
+                      - text: Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet, ensure you also provide information listed in the Static Placement Settings table. If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out
+                      - link "Azure storage" [ref=e559] [cursor=pointer]:
+                        - /url: /clusters/public-cloud/azure/architecture/#azure-storage
+                      - text: .
+                    - generic [ref=e560]:
+                      - generic [ref=e561]:
+                        - img [ref=e563]
+                        - text: warning
+                      - paragraph [ref=e566]:
+                        - text: If you enabled the
+                        - strong [ref=e567]: Disable Properties
+                        - text: setting when
+                        - link "registering an Azure cloud account" [ref=e568] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/azure/azure-cloud/
+                        - text: ", Palette cannot create network resources on your behalf. In this case, when creating clusters, you must manually specify their virtual network subnets and security groups."
+                    - table [ref=e569]:
+                      - rowgroup [ref=e570]:
+                        - row "Parameter Description" [ref=e571]:
+                          - cell "Parameter" [ref=e572]:
+                            - strong [ref=e573]: Parameter
+                          - cell "Description" [ref=e574]:
+                            - strong [ref=e575]: Description
+                      - rowgroup [ref=e576]:
+                        - row "Subscription Choose the subscription that will be used to access Azure services." [ref=e577]:
+                          - cell "Subscription" [ref=e578]:
+                            - strong [ref=e579]: Subscription
+                          - cell "Choose the subscription that will be used to access Azure services." [ref=e580]
+                        - row "Region Choose the Azure region to provision the cluster." [ref=e581]:
+                          - cell "Region" [ref=e582]:
+                            - strong [ref=e583]: Region
+                          - cell "Choose the Azure region to provision the cluster." [ref=e584]
+                        - row "Resource Group Select the name of the resource group that contains the Azure resources you will be accessing." [ref=e585]:
+                          - cell "Resource Group" [ref=e586]:
+                            - strong [ref=e587]: Resource Group
+                          - cell "Select the name of the resource group that contains the Azure resources you will be accessing." [ref=e588]
+                        - row "Storage account (Optional) (Optional) Use a storage account, if desired. For information about custom storage use cases, refer to our Azure Storage documentation." [ref=e589]:
+                          - cell "Storage account (Optional)" [ref=e590]:
+                            - strong [ref=e591]: Storage account (Optional)
+                          - cell "(Optional) Use a storage account, if desired. For information about custom storage use cases, refer to our Azure Storage documentation." [ref=e592]:
+                            - text: (Optional) Use a storage account, if desired. For information about custom storage use cases, refer to our
+                            - link "Azure Storage" [ref=e593] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/architecture/#azure-storage
+                            - text: documentation.
+                        - row "Storage container (Optional) (Optional) Use a custom storage container, if desired. For information about custom storage use cases, refer to our Azure Storage documentation." [ref=e594]:
+                          - cell "Storage container (Optional)" [ref=e595]:
+                            - strong [ref=e596]: Storage container (Optional)
+                          - cell "(Optional) Use a custom storage container, if desired. For information about custom storage use cases, refer to our Azure Storage documentation." [ref=e597]:
+                            - text: (Optional) Use a custom storage container, if desired. For information about custom storage use cases, refer to our
+                            - link "Azure Storage" [ref=e598] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/architecture/#azure-storage
+                            - text: documentation.
+                        - row "SSH Key Select the public SSH key to use when connecting to the nodes. The SSH key pairs displayed are pulled from the Azure cloud account being used to deploy the cluster. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's Supported SSH key formats." [ref=e599]:
+                          - cell "SSH Key" [ref=e600]:
+                            - strong [ref=e601]: SSH Key
+                          - cell "Select the public SSH key to use when connecting to the nodes. The SSH key pairs displayed are pulled from the Azure cloud account being used to deploy the cluster. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's Supported SSH key formats." [ref=e602]:
+                            - text: Select the public SSH key to use when connecting to the nodes. The SSH key pairs displayed are pulled from the Azure cloud account being used to deploy the cluster. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's
+                            - link "Supported SSH key formats" [ref=e603] [cursor=pointer]:
+                              - /url: https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats
+                            - text: .
+                        - row "Static Placement (Optional) By default, Palette uses dynamic placement. Select this option to place resources into a pre-existing VNet, and complete the fields listed in the Static Placement table. Static Placement must be enabled for clusters where you want to use network proxy configurations and for clusters deployed in Azure Government Secret cloud. To learn more about proxy configurations, check out Proxy Configuration." [ref=e604]:
+                          - cell "Static Placement" [ref=e605]:
+                            - strong [ref=e606]: Static Placement
+                          - cell "(Optional) By default, Palette uses dynamic placement. Select this option to place resources into a pre-existing VNet, and complete the fields listed in the Static Placement table. Static Placement must be enabled for clusters where you want to use network proxy configurations and for clusters deployed in Azure Government Secret cloud. To learn more about proxy configurations, check out Proxy Configuration." [ref=e607]:
+                            - text: (Optional) By default, Palette uses dynamic placement. Select this option to place resources into a pre-existing VNet, and complete the fields listed in the
+                            - link "Static Placement" [ref=e608] [cursor=pointer]:
+                              - /url: "#static-placement-settings"
+                            - text: table.
+                            - strong [ref=e609]: Static Placement
+                            - text: must be enabled for clusters where you want to use network proxy configurations and for clusters deployed in
+                            - link "Azure Government Secret" [ref=e610] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/azure-cloud/
+                            - text: cloud. To learn more about proxy configurations, check out
+                            - link "Proxy Configuration" [ref=e611] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/architecture/#proxy-configuration
+                            - text: .
+                        - row "Private API Server LB (Optional) Select this option to configure a private API server load balancer and enable private connectivity to your Kubernetes cluster, and complete the fields listed in the Private API Server LB Settings table. The option Private API Server LB exposes the Kubernetes control plane endpoint on an internal Azure load balancer. This option is available only when deploying clusters through a self-hosted PCG. This option must be enabled if deploying clusters to Azure Government Secret cloud." [ref=e612]:
+                          - cell "Private API Server LB" [ref=e613]:
+                            - strong [ref=e614]: Private API Server LB
+                          - cell "(Optional) Select this option to configure a private API server load balancer and enable private connectivity to your Kubernetes cluster, and complete the fields listed in the Private API Server LB Settings table. The option Private API Server LB exposes the Kubernetes control plane endpoint on an internal Azure load balancer. This option is available only when deploying clusters through a self-hosted PCG. This option must be enabled if deploying clusters to Azure Government Secret cloud." [ref=e615]:
+                            - text: (Optional) Select this option to configure a private API server load balancer and enable private connectivity to your Kubernetes cluster, and complete the fields listed in the
+                            - link "Private API Server LB Settings" [ref=e616] [cursor=pointer]:
+                              - /url: "#private-api-server-lb-settings"
+                            - text: table. The option
+                            - strong [ref=e617]: Private API Server LB
+                            - text: exposes the Kubernetes control plane endpoint on an internal Azure load balancer.
+                            - text: This option is available only when deploying clusters through a
+                            - link "self-hosted PCG" [ref=e618] [cursor=pointer]:
+                              - /url: /clusters/pcg/deploy-pcg-k8s/
+                            - text: . This option must be enabled if deploying clusters to
+                            - link "Azure Government Secret cloud" [ref=e619] [cursor=pointer]:
+                              - /url: /clusters/public-cloud/azure/azure-cloud/#azure-government-secret-cloud
+                            - text: .
+                    - heading "Static Placement SettingsDirect link to Static Placement Settings" [level=3] [ref=e620]:
+                      - text: Static Placement Settings
+                      - link "Direct link to Static Placement Settings" [ref=e621] [cursor=pointer]:
+                        - /url: "#static-placement-settings"
+                        - text: "#"
+                    - paragraph [ref=e622]: Each subnet allows you to specify the CIDR range and a security group.
+                    - table [ref=e623]:
+                      - rowgroup [ref=e624]:
+                        - row "Parameter Description" [ref=e625]:
+                          - cell "Parameter" [ref=e626]:
+                            - strong [ref=e627]: Parameter
+                          - cell "Description" [ref=e628]:
+                            - strong [ref=e629]: Description
+                      - rowgroup [ref=e630]:
+                        - row "Network Resource Group Select the logical container for grouping related Azure resources." [ref=e631]:
+                          - cell "Network Resource Group" [ref=e632]:
+                            - strong [ref=e633]: Network Resource Group
+                          - cell "Select the logical container for grouping related Azure resources." [ref=e634]
+                        - row "Virtual Network Select the VNet." [ref=e635]:
+                          - cell "Virtual Network" [ref=e636]:
+                            - strong [ref=e637]: Virtual Network
+                          - cell "Select the VNet." [ref=e638]
+                        - row "CIDR Block Select the IP address CIDR range." [ref=e639]:
+                          - cell "CIDR Block" [ref=e640]:
+                            - strong [ref=e641]: CIDR Block
+                          - cell "Select the IP address CIDR range." [ref=e642]
+                        - row "Control Plane Subnet Select the control plane subnet." [ref=e643]:
+                          - cell "Control Plane Subnet" [ref=e644]:
+                            - strong [ref=e645]: Control Plane Subnet
+                          - cell "Select the control plane subnet." [ref=e646]
+                        - row "Worker Subnet Select the worker network." [ref=e647]:
+                          - cell "Worker Subnet" [ref=e648]:
+                            - strong [ref=e649]: Worker Subnet
+                          - cell "Select the worker network." [ref=e650]
+                    - heading "Private API Server LB SettingsDirect link to Private API Server LB Settings" [level=3] [ref=e651]:
+                      - text: Private API Server LB Settings
+                      - link "Direct link to Private API Server LB Settings" [ref=e652] [cursor=pointer]:
+                        - /url: "#private-api-server-lb-settings"
+                        - text: "#"
+                    - paragraph [ref=e653]:
+                      - text: The option to enable a private API server load balancer is available only when deploying clusters through a
+                      - link "self-hosted PCG" [ref=e654] [cursor=pointer]:
+                        - /url: /clusters/pcg/deploy-pcg-k8s/
+                      - text: .
+                    - generic [ref=e655]:
+                      - generic [ref=e656]:
+                        - img [ref=e658]
+                        - text: warning
+                      - paragraph [ref=e661]:
+                        - strong [ref=e662]: Private API Server LB
+                        - text: must be enabled if deploying clusters to
+                        - link "Azure Government Secret cloud" [ref=e663] [cursor=pointer]:
+                          - /url: /clusters/public-cloud/azure/azure-cloud/#azure-government-secret-cloud
+                        - text: .
+                    - table [ref=e664]:
+                      - rowgroup [ref=e665]:
+                        - row "Parameter Description" [ref=e666]:
+                          - cell "Parameter" [ref=e667]:
+                            - strong [ref=e668]: Parameter
+                          - cell "Description" [ref=e669]:
+                            - strong [ref=e670]: Description
+                      - rowgroup [ref=e671]:
+                        - row "Resource Group for Private DNS Zone Select the Azure resource group that contains the private DNS zone you want to use for the private API server load balancer. The DNS zone resource group can be different from the cluster resource group. If left blank, Palette uses the cluster's Resource Group." [ref=e672]:
+                          - cell "Resource Group for Private DNS Zone" [ref=e673]:
+                            - strong [ref=e674]: Resource Group for Private DNS Zone
+                          - cell "Select the Azure resource group that contains the private DNS zone you want to use for the private API server load balancer. The DNS zone resource group can be different from the cluster resource group. If left blank, Palette uses the cluster's Resource Group." [ref=e675]:
+                            - text: Select the Azure resource group that contains the private DNS zone you want to use for the private API server load balancer. The DNS zone resource group can be different from the cluster resource group. If left blank, Palette uses the cluster's
+                            - strong [ref=e676]: Resource Group
+                            - text: .
+                        - row "Private DNS zone (Optional) (Optional) Select an existing private DNS zone that will hold the A record of the private endpoint. The options displayed in the drop-down depend on your Resource Group for Private DNS Zone selection. If left blank, Palette creates a new private DNS zone in the selected Resource Group for Private DNS Zone." [ref=e677]:
+                          - cell "Private DNS zone (Optional)" [ref=e678]:
+                            - strong [ref=e679]: Private DNS zone (Optional)
+                          - cell "(Optional) Select an existing private DNS zone that will hold the A record of the private endpoint. The options displayed in the drop-down depend on your Resource Group for Private DNS Zone selection. If left blank, Palette creates a new private DNS zone in the selected Resource Group for Private DNS Zone." [ref=e680]:
+                            - text: (Optional) Select an existing private DNS zone that will hold the
+                            - strong [ref=e681]: A
+                            - text: record of the private endpoint. The options displayed in the drop-down depend on your
+                            - strong [ref=e682]: Resource Group for Private DNS Zone
+                            - text: selection. If left blank, Palette creates a new private DNS zone in the selected
+                            - strong [ref=e683]: Resource Group for Private DNS Zone
+                            - text: .
+                        - 'row "IP Allocation Method Choose how the load balancer virtual IP is assigned: - Static (default) - Choose a specific IP address for the load balancer that you supply in the Static IP field. - Dynamic (disabled) - Azure picks the next free address in the subnet. This option is no longer supported. You must assign a static IP." [ref=e684]':
+                          - cell "IP Allocation Method" [ref=e685]:
+                            - strong [ref=e686]: IP Allocation Method
+                          - 'cell "Choose how the load balancer virtual IP is assigned: - Static (default) - Choose a specific IP address for the load balancer that you supply in the Static IP field. - Dynamic (disabled) - Azure picks the next free address in the subnet. This option is no longer supported. You must assign a static IP." [ref=e687]':
+                            - text: "Choose how the load balancer virtual IP is assigned:"
+                            - text: "-"
+                            - strong [ref=e688]: Static
+                            - text: (default) - Choose a specific IP address for the load balancer that you supply in the
+                            - strong [ref=e689]: Static IP
+                            - text: field.
+                            - text: "-"
+                            - strong [ref=e690]: Dynamic
+                            - text: (disabled) - Azure picks the next free address in the subnet.
+                            - emphasis [ref=e691]: This option is no longer supported. You must assign a static IP.
+                        - row "Static IP The private, static IP address to use for the load balancer. The address must be unused and inside the subnet delegated for the private API server load balancer." [ref=e692]:
+                          - cell "Static IP" [ref=e693]:
+                            - strong [ref=e694]: Static IP
+                          - cell "The private, static IP address to use for the load balancer. The address must be unused and inside the subnet delegated for the private API server load balancer." [ref=e695]
+                  - listitem [ref=e696]:
+                    - paragraph [ref=e697]:
+                      - text: Select
+                      - strong [ref=e698]: Next
+                      - text: to continue.
+                  - listitem [ref=e699]:
+                    - paragraph [ref=e700]:
+                      - text: Provide the following node pool and cloud configuration information. To learn more about node pools, review our
+                      - link "Node Pool" [ref=e701] [cursor=pointer]:
+                        - /url: /clusters/cluster-management/node-pool/
+                      - text: guide.
+                    - generic [ref=e702]:
+                      - generic [ref=e703]:
+                        - img [ref=e705]
+                        - text: info
+                      - paragraph [ref=e708]: Palette configures one control plane pool and one worker node pool by default. You can add new worker pools to customize certain worker nodes for specialized workloads. For example, the default worker pool can be configured with the Standard_D2_v2 instance types for general-purpose workloads, and another worker pool with instance type Standard_NC12s_v3 can be configured for Graphics Processing Unit (GPU) workloads.
+                    - heading "Control Plane Pool Configuration SettingsDirect link to Control Plane Pool Configuration Settings" [level=3] [ref=e709]:
+                      - text: Control Plane Pool Configuration Settings
+                      - link "Direct link to Control Plane Pool Configuration Settings" [ref=e710] [cursor=pointer]:
+                        - /url: "#control-plane-pool-configuration-settings"
+                        - text: "#"
+                    - table [ref=e711]:
+                      - rowgroup [ref=e712]:
+                        - row "Parameter Description" [ref=e713]:
+                          - cell "Parameter" [ref=e714]:
+                            - strong [ref=e715]: Parameter
+                          - cell "Description" [ref=e716]:
+                            - strong [ref=e717]: Description
+                      - rowgroup [ref=e718]:
+                        - row "Node pool name Enter a descriptive name for the control plane node pool." [ref=e719]:
+                          - cell "Node pool name" [ref=e720]:
+                            - strong [ref=e721]: Node pool name
+                          - cell "Enter a descriptive name for the control plane node pool." [ref=e722]
+                        - row "Number of nodes in the pool Specify the number of nodes in the control plane pool." [ref=e723]:
+                          - cell "Number of nodes in the pool" [ref=e724]:
+                            - strong [ref=e725]: Number of nodes in the pool
+                          - cell "Specify the number of nodes in the control plane pool." [ref=e726]
+                        - row "Allow worker capability (Optional) (Optional) Allow workloads to be provisioned on control plane nodes." [ref=e727]:
+                          - cell "Allow worker capability (Optional)" [ref=e728]:
+                            - strong [ref=e729]: Allow worker capability (Optional)
+                          - cell "(Optional) Allow workloads to be provisioned on control plane nodes." [ref=e730]
+                        - 'row "Additional Labels (Optional) (Optional) Add optional node labels to nodes using key-value format. Example: environment:production." [ref=e731]':
+                          - cell "Additional Labels (Optional)" [ref=e732]:
+                            - strong [ref=e733]: Additional Labels (Optional)
+                          - 'cell "(Optional) Add optional node labels to nodes using key-value format. Example: environment:production." [ref=e734]':
+                            - text: (Optional) Add optional
+                            - link "node labels" [ref=e735] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-labels/
+                            - text: "to nodes using key-value format. Example:"
+                            - code [ref=e736]: environment:production
+                            - text: .
+                        - row "Additional Annotations (Optional) Additional Kubernetes annotations to assign to each control plane node." [ref=e737]:
+                          - cell "Additional Annotations (Optional)" [ref=e738]:
+                            - strong [ref=e739]: Additional Annotations (Optional)
+                          - cell "Additional Kubernetes annotations to assign to each control plane node." [ref=e740]:
+                            - text: Additional Kubernetes
+                            - link "annotations" [ref=e741] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+                            - text: to assign to each control plane node.
+                        - 'row "Taints (Optional) (Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select Add New Taint to create a taint label, and complete the following fields: - Key - Enter the key in the taint key-value pair. - Value - Enter the value in the taint key-value pair. - Effect - Choose from among the following Effect options: NoSchedule, PreferNoSchedule, and NoExecute. - NoSchedule - Pods are not scheduled onto nodes with this taint. - PreferNoSchedule - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. - NoExecute - New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. Review our Node Pool and Taints and Tolerations guides to learn more." [ref=e742]':
+                          - cell "Taints (Optional)" [ref=e743]:
+                            - strong [ref=e744]: Taints (Optional)
+                          - 'cell "(Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select Add New Taint to create a taint label, and complete the following fields: - Key - Enter the key in the taint key-value pair. - Value - Enter the value in the taint key-value pair. - Effect - Choose from among the following Effect options: NoSchedule, PreferNoSchedule, and NoExecute. - NoSchedule - Pods are not scheduled onto nodes with this taint. - PreferNoSchedule - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. - NoExecute - New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. Review our Node Pool and Taints and Tolerations guides to learn more." [ref=e745]':
+                            - text: (Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select
+                            - strong [ref=e746]: Add New Taint
+                            - text: "to create a taint label, and complete the following fields:"
+                            - text: "-"
+                            - strong [ref=e747]: Key
+                            - text: "- Enter the key in the taint key-value pair."
+                            - text: "-"
+                            - strong [ref=e748]: Value
+                            - text: "- Enter the value in the taint key-value pair."
+                            - text: "-"
+                            - strong [ref=e749]: Effect
+                            - text: "- Choose from among the following"
+                            - strong [ref=e750]: Effect
+                            - text: "options:"
+                            - strong [ref=e751]: NoSchedule
+                            - text: ","
+                            - strong [ref=e752]: PreferNoSchedule
+                            - text: ", and"
+                            - strong [ref=e753]: NoExecute
+                            - text: .
+                            - text: "-"
+                            - strong [ref=e754]: NoSchedule
+                            - text: "- Pods are not scheduled onto nodes with this taint."
+                            - text: "-"
+                            - strong [ref=e755]: PreferNoSchedule
+                            - text: "- Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited."
+                            - text: "-"
+                            - strong [ref=e756]: NoExecute
+                            - text: "- New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint."
+                            - text: Review our
+                            - link "Node Pool" [ref=e757] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-pool/
+                            - text: and
+                            - link "Taints and Tolerations" [ref=e758] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/taints/
+                            - text: guides to learn more.
+                    - heading "Cloud Configuration SettingsDirect link to Cloud Configuration Settings" [level=4] [ref=e759]:
+                      - text: Cloud Configuration Settings
+                      - link "Direct link to Cloud Configuration Settings" [ref=e760] [cursor=pointer]:
+                        - /url: "#cloud-configuration-settings"
+                        - text: "#"
+                    - table [ref=e761]:
+                      - rowgroup [ref=e762]:
+                        - row "Parameter Description" [ref=e763]:
+                          - cell "Parameter" [ref=e764]:
+                            - strong [ref=e765]: Parameter
+                          - cell "Description" [ref=e766]:
+                            - strong [ref=e767]: Description
+                      - rowgroup [ref=e768]:
+                        - row "Instance Type Select the instance type to use for all nodes in the node pool." [ref=e769]:
+                          - cell "Instance Type" [ref=e770]:
+                            - strong [ref=e771]: Instance Type
+                          - cell "Select the instance type to use for all nodes in the node pool." [ref=e772]
+                        - row "Managed disk Choose a storage option. Available options are Standard SSD LRS, Standard LRS, Premium LRS, and Standard SSD ZRS. Refer to Microsoft's Storage Account Overview and Standard SSD Disks for Azure Virtual Machine Workloads reference pages for more information." [ref=e773]:
+                          - cell "Managed disk" [ref=e774]:
+                            - strong [ref=e775]: Managed disk
+                          - cell "Choose a storage option. Available options are Standard SSD LRS, Standard LRS, Premium LRS, and Standard SSD ZRS. Refer to Microsoft's Storage Account Overview and Standard SSD Disks for Azure Virtual Machine Workloads reference pages for more information." [ref=e776]:
+                            - text: Choose a storage option. Available options are
+                            - strong [ref=e777]: Standard SSD LRS
+                            - text: ","
+                            - strong [ref=e778]: Standard LRS
+                            - text: ","
+                            - strong [ref=e779]: Premium LRS
+                            - text: ", and"
+                            - strong [ref=e780]: Standard SSD ZRS
+                            - text: . Refer to Microsoft's
+                            - link "Storage Account Overview" [ref=e781] [cursor=pointer]:
+                              - /url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
+                            - text: and
+                            - link "Standard SSD Disks for Azure Virtual Machine Workloads" [ref=e782] [cursor=pointer]:
+                              - /url: https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/
+                            - text: reference pages for more information.
+                        - row "Disk size Enter the size of the disk based on your requirements. The default size is 60 GB." [ref=e783]:
+                          - cell "Disk size" [ref=e784]:
+                            - strong [ref=e785]: Disk size
+                          - cell "Enter the size of the disk based on your requirements. The default size is 60 GB." [ref=e786]
+                    - heading "Worker Pool Configuration SettingsDirect link to Worker Pool Configuration Settings" [level=3] [ref=e787]:
+                      - text: Worker Pool Configuration Settings
+                      - link "Direct link to Worker Pool Configuration Settings" [ref=e788] [cursor=pointer]:
+                        - /url: "#worker-pool-configuration-settings"
+                        - text: "#"
+                    - generic [ref=e789]:
+                      - generic [ref=e790]:
+                        - img [ref=e792]
+                        - text: tip
+                      - paragraph [ref=e795]:
+                        - text: Select
+                        - strong [ref=e796]: Remove
+                        - text: on the right side of the page to remove the worker node pool if you only want a control plane pool.
+                    - table [ref=e797]:
+                      - rowgroup [ref=e798]:
+                        - row "Parameter Description" [ref=e799]:
+                          - cell "Parameter" [ref=e800]:
+                            - strong [ref=e801]: Parameter
+                          - cell "Description" [ref=e802]:
+                            - strong [ref=e803]: Description
+                      - rowgroup [ref=e804]:
+                        - row "Node pool name Enter a descriptive name for the worker node pool." [ref=e805]:
+                          - cell "Node pool name" [ref=e806]:
+                            - strong [ref=e807]: Node pool name
+                          - cell "Enter a descriptive name for the worker node pool." [ref=e808]
+                        - row "Enable Autoscaler Scale the worker pool horizontally based on its per-node workload counts. Enabling this option displays the fields Minimum size and Maximum size. - Minimum size - Specify the lower bound of nodes in the pool. - Maximum size - Specify the upper bound of nodes in the pool. Setting the Minimum size and Maximum size to the same value results in a static node count. Refer to the Cluster API autoscaler documentation for more information on autoscaling." [ref=e809]:
+                          - cell "Enable Autoscaler" [ref=e810]:
+                            - strong [ref=e811]: Enable Autoscaler
+                          - cell "Scale the worker pool horizontally based on its per-node workload counts. Enabling this option displays the fields Minimum size and Maximum size. - Minimum size - Specify the lower bound of nodes in the pool. - Maximum size - Specify the upper bound of nodes in the pool. Setting the Minimum size and Maximum size to the same value results in a static node count. Refer to the Cluster API autoscaler documentation for more information on autoscaling." [ref=e812]:
+                            - text: Scale the worker pool horizontally based on its per-node workload counts. Enabling this option displays the fields
+                            - strong [ref=e813]: Minimum size
+                            - text: and
+                            - strong [ref=e814]: Maximum size
+                            - text: .
+                            - text: "-"
+                            - strong [ref=e815]: Minimum size
+                            - text: "- Specify the lower bound of nodes in the pool."
+                            - text: "-"
+                            - strong [ref=e816]: Maximum size
+                            - text: "- Specify the upper bound of nodes in the pool."
+                            - text: Setting the
+                            - strong [ref=e817]: Minimum size
+                            - text: and
+                            - strong [ref=e818]: Maximum size
+                            - text: to the same value results in a static node count. Refer to the Cluster API
+                            - link "autoscaler documentation" [ref=e819] [cursor=pointer]:
+                              - /url: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md
+                            - text: for more information on autoscaling.
+                        - row "Node repave interval (Optional) (Optional) Specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the kubeadm configuration file." [ref=e820]:
+                          - cell "Node repave interval (Optional)" [ref=e821]:
+                            - strong [ref=e822]: Node repave interval (Optional)
+                          - cell "(Optional) Specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the kubeadm configuration file." [ref=e823]
+                        - row "Number of nodes in the pool Specify the number of nodes in the worker pool. This field is hidden if Enable Autoscaler is toggled on." [ref=e824]:
+                          - cell "Number of nodes in the pool" [ref=e825]:
+                            - strong [ref=e826]: Number of nodes in the pool
+                          - cell "Specify the number of nodes in the worker pool. This field is hidden if Enable Autoscaler is toggled on." [ref=e827]:
+                            - text: Specify the number of nodes in the worker pool. This field is hidden if
+                            - strong [ref=e828]: Enable Autoscaler
+                            - text: is toggled on.
+                        - row "Rolling update Control the sequence of operations during a node pool update. Select Expand First, Contract First, or Custom to determine the order in which nodes are added to or removed from the worker node pool. - Expand First - Adds new nodes before removing old nodes. - Contract First - Removes old nodes before adding new nodes. - Custom - Set either an explicit numerical value or a percentage for Max Surge and Max Unavailable. Max Surge and Max Unavailable cannot both be set to 0." [ref=e829]:
+                          - cell "Rolling update" [ref=e830]:
+                            - strong [ref=e831]: Rolling update
+                          - cell "Control the sequence of operations during a node pool update. Select Expand First, Contract First, or Custom to determine the order in which nodes are added to or removed from the worker node pool. - Expand First - Adds new nodes before removing old nodes. - Contract First - Removes old nodes before adding new nodes. - Custom - Set either an explicit numerical value or a percentage for Max Surge and Max Unavailable. Max Surge and Max Unavailable cannot both be set to 0." [ref=e832]:
+                            - text: Control the sequence of operations during a node pool update.
+                            - text: Select
+                            - strong [ref=e833]: Expand First
+                            - text: ","
+                            - strong [ref=e834]: Contract First
+                            - text: ", or"
+                            - strong [ref=e835]: Custom
+                            - text: to determine the order in which nodes are added to or removed from the worker node pool.
+                            - text: "-"
+                            - strong [ref=e836]: Expand First
+                            - text: "- Adds new nodes before removing old nodes."
+                            - text: "-"
+                            - strong [ref=e837]: Contract First
+                            - text: "- Removes old nodes before adding new nodes."
+                            - text: "-"
+                            - strong [ref=e838]: Custom
+                            - text: "- Set either an explicit numerical value or a percentage for"
+                            - link "Max Surge" [ref=e839] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#max-surge
+                              - strong [ref=e840]: Max Surge
+                            - text: and
+                            - link "Max Unavailable" [ref=e841] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#max-unavailable
+                              - strong [ref=e842]: Max Unavailable
+                            - text: .
+                            - strong [ref=e843]: Max Surge
+                            - text: and
+                            - strong [ref=e844]: Max Unavailable
+                            - text: cannot both be set to
+                            - code [ref=e845]: "0"
+                            - text: .
+                        - 'row "Additional Labels (Optional) (Optional) Add optional node labels to nodes using key-value format. Example: environment:production." [ref=e846]':
+                          - cell "Additional Labels (Optional)" [ref=e847]:
+                            - strong [ref=e848]: Additional Labels (Optional)
+                          - 'cell "(Optional) Add optional node labels to nodes using key-value format. Example: environment:production." [ref=e849]':
+                            - text: (Optional) Add optional
+                            - link "node labels" [ref=e850] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-labels/
+                            - text: "to nodes using key-value format. Example:"
+                            - code [ref=e851]: environment:production
+                            - text: .
+                        - row "Additional Annotations (Optional) Additional Kubernetes annotations to assign to each worker node." [ref=e852]:
+                          - cell "Additional Annotations (Optional)" [ref=e853]:
+                            - strong [ref=e854]: Additional Annotations (Optional)
+                          - cell "Additional Kubernetes annotations to assign to each worker node." [ref=e855]:
+                            - text: Additional Kubernetes
+                            - link "annotations" [ref=e856] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+                            - text: to assign to each worker node.
+                        - row "Override Kubeadm Configuration Only applicable to worker node pools. Adjust kubelet arguments for kubeadm or pre-kubeadm commands to meet specific operational or environment requirements for your worker nodes. This option is disabled by default. When enabled, the Configure Kubeadm button appears." [ref=e857]:
+                          - cell "Override Kubeadm Configuration" [ref=e858]:
+                            - strong [ref=e859]: Override Kubeadm Configuration
+                          - cell "Only applicable to worker node pools. Adjust kubelet arguments for kubeadm or pre-kubeadm commands to meet specific operational or environment requirements for your worker nodes. This option is disabled by default. When enabled, the Configure Kubeadm button appears." [ref=e860]:
+                            - emphasis [ref=e861]: Only applicable to worker node pools.
+                            - text: Adjust kubelet arguments for
+                            - link "kubeadm" [ref=e862] [cursor=pointer]:
+                              - /url: https://kubernetes.io/docs/reference/setup-tools/kubeadm/
+                            - text: or pre-kubeadm commands to meet specific operational or environment requirements for your worker nodes. This option is disabled by default. When enabled, the
+                            - strong [ref=e863]: Configure Kubeadm
+                            - text: button appears.
+                        - row "Configure Kubeadm Only applicable to worker node pools. Available only when Override Kubeadm Configuration is enabled. Select this option to override kubeadmconfig.kubeletExtraArgs and kubeadmconfig.preKubeadmConfig commands configured in the Kubernetes layer of your cluster profile. Any changes made post-cluster deployment will trigger a cluster repave." [ref=e864]:
+                          - cell "Configure Kubeadm" [ref=e865]:
+                            - strong [ref=e866]: Configure Kubeadm
+                          - cell "Only applicable to worker node pools. Available only when Override Kubeadm Configuration is enabled. Select this option to override kubeadmconfig.kubeletExtraArgs and kubeadmconfig.preKubeadmConfig commands configured in the Kubernetes layer of your cluster profile. Any changes made post-cluster deployment will trigger a cluster repave." [ref=e867]:
+                            - emphasis [ref=e868]: Only applicable to worker node pools.
+                            - text: Available only when
+                            - strong [ref=e869]: Override Kubeadm Configuration
+                            - text: is enabled. Select this option to override
+                            - code [ref=e870]: kubeadmconfig.kubeletExtraArgs
+                            - text: and
+                            - code [ref=e871]: kubeadmconfig.preKubeadmConfig
+                            - text: commands configured in the Kubernetes layer of your cluster profile. Any changes made post-cluster deployment will trigger a cluster repave.
+                        - 'row "Taints (Optional) (Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select Add New Taint to create a taint label, and complete the following fields: - Key - Enter the key in the taint key-value pair. - Value - Enter the value in the taint key-value pair. - Effect - Choose from among the following Effect options: NoSchedule, PreferNoSchedule, and NoExecute. - NoSchedule - Pods are not scheduled onto nodes with this taint. - PreferNoSchedule - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. - NoExecute - New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. Review our Node Pool and Taints and Tolerations guides to learn more." [ref=e872]':
+                          - cell "Taints (Optional)" [ref=e873]:
+                            - strong [ref=e874]: Taints (Optional)
+                          - 'cell "(Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select Add New Taint to create a taint label, and complete the following fields: - Key - Enter the key in the taint key-value pair. - Value - Enter the value in the taint key-value pair. - Effect - Choose from among the following Effect options: NoSchedule, PreferNoSchedule, and NoExecute. - NoSchedule - Pods are not scheduled onto nodes with this taint. - PreferNoSchedule - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited. - NoExecute - New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. Review our Node Pool and Taints and Tolerations guides to learn more." [ref=e875]':
+                            - text: (Optional) Apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Select
+                            - strong [ref=e876]: Add New Taint
+                            - text: "to create a taint label, and complete the following fields:"
+                            - text: "-"
+                            - strong [ref=e877]: Key
+                            - text: "- Enter the key in the taint key-value pair."
+                            - text: "-"
+                            - strong [ref=e878]: Value
+                            - text: "- Enter the value in the taint key-value pair."
+                            - text: "-"
+                            - strong [ref=e879]: Effect
+                            - text: "- Choose from among the following"
+                            - strong [ref=e880]: Effect
+                            - text: "options:"
+                            - strong [ref=e881]: NoSchedule
+                            - text: ","
+                            - strong [ref=e882]: PreferNoSchedule
+                            - text: ", and"
+                            - strong [ref=e883]: NoExecute
+                            - text: .
+                            - text: "-"
+                            - strong [ref=e884]: NoSchedule
+                            - text: "- Pods are not scheduled onto nodes with this taint."
+                            - text: "-"
+                            - strong [ref=e885]: PreferNoSchedule
+                            - text: "- Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited."
+                            - text: "-"
+                            - strong [ref=e886]: NoExecute
+                            - text: "- New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint."
+                            - text: Review our
+                            - link "Node Pool" [ref=e887] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/node-pool/
+                            - text: and
+                            - link "Taints and Tolerations" [ref=e888] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/taints/
+                            - text: guides to learn more.
+                    - heading "Cloud Configuration SettingsDirect link to Cloud Configuration Settings" [level=4] [ref=e889]:
+                      - text: Cloud Configuration Settings
+                      - link "Direct link to Cloud Configuration Settings" [ref=e890] [cursor=pointer]:
+                        - /url: "#cloud-configuration-settings-1"
+                        - text: "#"
+                    - generic [ref=e891]:
+                      - generic [ref=e892]:
+                        - img [ref=e894]
+                        - text: tip
+                      - paragraph [ref=e897]:
+                        - text: Select
+                        - strong [ref=e898]: Copy from Control Plane Pool
+                        - text: on the right side of the screen to copy the
+                        - link "control plane's cloud configuration settings" [ref=e899] [cursor=pointer]:
+                          - /url: "#cloud-configuration-settings"
+                        - text: to your worker node pool. Note that the
+                        - strong [ref=e900]: Instance Type
+                        - text: may not be copied if it does not have accessible availability zones. If you select
+                        - strong [ref=e901]: Availability zones
+                        - text: prior to selecting
+                        - strong [ref=e902]: Copy from Control Plane Pool
+                        - text: ", the availability zones are cleared and must be reselected."
+                    - table [ref=e903]:
+                      - rowgroup [ref=e904]:
+                        - row "Parameter Description" [ref=e905]:
+                          - cell "Parameter" [ref=e906]:
+                            - strong [ref=e907]: Parameter
+                          - cell "Description" [ref=e908]:
+                            - strong [ref=e909]: Description
+                      - rowgroup [ref=e910]:
+                        - row "Instance Type Select the instance type to use for all nodes in the node pool." [ref=e911]:
+                          - cell "Instance Type" [ref=e912]:
+                            - strong [ref=e913]: Instance Type
+                          - cell "Select the instance type to use for all nodes in the node pool." [ref=e914]
+                        - row "Managed disk Choose a storage option. Available options are Standard SSD LRS, Standard LRS, Premium LRS, and Standard SSD ZRS. Refer to Microsoft's Storage Account Overview and Standard SSD Disks for Azure Virtual Machine Workloads reference pages for more information." [ref=e915]:
+                          - cell "Managed disk" [ref=e916]:
+                            - strong [ref=e917]: Managed disk
+                          - cell "Choose a storage option. Available options are Standard SSD LRS, Standard LRS, Premium LRS, and Standard SSD ZRS. Refer to Microsoft's Storage Account Overview and Standard SSD Disks for Azure Virtual Machine Workloads reference pages for more information." [ref=e918]:
+                            - text: Choose a storage option. Available options are
+                            - strong [ref=e919]: Standard SSD LRS
+                            - text: ","
+                            - strong [ref=e920]: Standard LRS
+                            - text: ","
+                            - strong [ref=e921]: Premium LRS
+                            - text: ", and"
+                            - strong [ref=e922]: Standard SSD ZRS
+                            - text: . Refer to Microsoft's
+                            - link "Storage Account Overview" [ref=e923] [cursor=pointer]:
+                              - /url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
+                            - text: and
+                            - link "Standard SSD Disks for Azure Virtual Machine Workloads" [ref=e924] [cursor=pointer]:
+                              - /url: https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/
+                            - text: reference pages for more information.
+                        - row "Disk size Enter the size of the disk based on your requirements. The default size is 60 GB." [ref=e925]:
+                          - cell "Disk size" [ref=e926]:
+                            - strong [ref=e927]: Disk size
+                          - cell "Enter the size of the disk based on your requirements. The default size is 60 GB." [ref=e928]
+                        - row "Availability zones Select the availability zones where you want to deploy your worker nodes. If you select multiple zones, Palette will distribute the nodes evenly across the chosen zones, provided sufficient capacity is available." [ref=e929]:
+                          - cell "Availability zones" [ref=e930]:
+                            - strong [ref=e931]: Availability zones
+                          - cell "Select the availability zones where you want to deploy your worker nodes. If you select multiple zones, Palette will distribute the nodes evenly across the chosen zones, provided sufficient capacity is available." [ref=e932]
+                  - listitem [ref=e933]:
+                    - paragraph [ref=e934]:
+                      - text: Select
+                      - strong [ref=e935]: Next
+                      - text: to continue.
+                  - listitem [ref=e936]:
+                    - paragraph [ref=e937]:
+                      - text: On the
+                      - strong [ref=e938]: Cluster Settings
+                      - text: page, configure additional options as needed. If you are deploying your cluster using
+                      - link "cluster templates" [ref=e939] [cursor=pointer]:
+                        - /url: /cluster-templates/
+                      - text: ", a"
+                      - strong [ref=e940]: Cluster Timezone
+                      - text: is required.
+                    - table [ref=e941]:
+                      - rowgroup [ref=e942]:
+                        - row "Left Menu Item Additional Information" [ref=e943]:
+                          - cell "Left Menu Item" [ref=e944]:
+                            - strong [ref=e945]: Left Menu Item
+                          - cell "Additional Information" [ref=e946]:
+                            - strong [ref=e947]: Additional Information
+                      - rowgroup [ref=e948]:
+                        - row "Cluster Timezone Specify the time zone where your cluster is being deployed. The time zone is used in maintenance policies to determine when updates are rolled out to clusters deployed with cluster templates." [ref=e949]:
+                          - cell "Cluster Timezone" [ref=e950]:
+                            - strong [ref=e951]: Cluster Timezone
+                          - cell "Specify the time zone where your cluster is being deployed. The time zone is used in maintenance policies to determine when updates are rolled out to clusters deployed with cluster templates." [ref=e952]:
+                            - text: Specify the time zone where your cluster is being deployed. The time zone is used in
+                            - link "maintenance policies" [ref=e953] [cursor=pointer]:
+                              - /url: /cluster-templates/create-cluster-template-policies/maintenance-policy/
+                            - text: to determine when updates are rolled out to clusters deployed with
+                            - link "cluster templates" [ref=e954] [cursor=pointer]:
+                              - /url: /cluster-templates/
+                            - text: .
+                        - row "Manage machines Set an OS patching schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots." [ref=e955]:
+                          - cell "Manage machines" [ref=e956]:
+                            - strong [ref=e957]: Manage machines
+                          - cell "Set an OS patching schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots." [ref=e958]:
+                            - text: Set an
+                            - link "OS patching" [ref=e959] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/os-patching/
+                            - text: schedule and specify node behavior when creating your cluster, including upgrading your nodes to use the latest OS patch version and allowing reboots.
+                        - row "Schedule scans Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to Compliance Scan for details on each scan type." [ref=e960]:
+                          - cell "Schedule scans" [ref=e961]:
+                            - strong [ref=e962]: Schedule scans
+                          - cell "Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to Compliance Scan for details on each scan type." [ref=e963]:
+                            - text: Enable any scan options you want Palette to perform and select a scan schedule. Palette supports Kubernetes configuration security, penetration testing, and conformance testing. Refer to
+                            - link "Compliance Scan" [ref=e964] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/compliance-scan/#configuration-security
+                            - text: for details on each scan type.
+                        - row "Schedule backups Schedule backups for your entire cluster or etcd. Refer to Backup and Restore for more information." [ref=e965]:
+                          - cell "Schedule backups" [ref=e966]:
+                            - strong [ref=e967]: Schedule backups
+                          - cell "Schedule backups for your entire cluster or etcd. Refer to Backup and Restore for more information." [ref=e968]:
+                            - text: Schedule backups for your entire cluster or etcd. Refer to
+                            - link "Backup and Restore" [ref=e969] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/backup-restore/
+                            - text: for more information.
+                        - 'row "RBAC Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: - Create Role Bindings - Palette eXtended Kubernetes (PXK)" [ref=e970]':
+                          - cell "RBAC" [ref=e971]:
+                            - strong [ref=e972]: RBAC
+                          - 'cell "Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: - Create Role Bindings - Palette eXtended Kubernetes (PXK)" [ref=e973]':
+                            - text: "Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information:"
+                            - text: "-"
+                            - link "Create Role Bindings" [ref=e974] [cursor=pointer]:
+                              - /url: /clusters/cluster-management/cluster-rbac/#create-role-bindings
+                            - text: "-"
+                            - link "Palette eXtended Kubernetes (PXK)" [ref=e975] [cursor=pointer]:
+                              - /url: /integrations/packs/?pack=kubernetes&tab=custom
+                  - listitem [ref=e976]:
+                    - paragraph [ref=e977]:
+                      - text: Select
+                      - strong [ref=e978]: Validate
+                      - text: to review your cluster configurations and settings.
+                  - listitem [ref=e979]:
+                    - paragraph [ref=e980]:
+                      - text: If no changes are needed, select
+                      - strong [ref=e981]: Finish Configuration
+                      - text: to deploy your cluster.
+                - paragraph [ref=e982]:
+                  - text: To monitor the status of your cluster deployment, from the left main menu, select
+                  - strong [ref=e983]: Clusters
+                  - text: and choose your cluster. The cluster
+                  - strong [ref=e984]: Overview
+                  - text: tab displays the status and health of your cluster, as well as deployment details. Use the
+                  - strong [ref=e985]: Events
+                  - text: tab to monitor the deployment in real time. Provisioning may take several minutes.
+                - paragraph [ref=e986]:
+                  - text: To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs, refer to
+                  - link "Cluster Removal" [ref=e987] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/remove-clusters/
+                  - text: .
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e988]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e989] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - paragraph [ref=e990]:
+                  - text: Use the following steps to You can validate your cluster is up and in
+                  - strong [ref=e991]: Running
+                  - text: state.
+                - list [ref=e992]:
+                  - listitem [ref=e993]:
+                    - paragraph [ref=e994]:
+                      - text: Log in to
+                      - link "Palette" [ref=e995] [cursor=pointer]:
+                        - /url: https://console.spectrocloud.com
+                      - text: .
+                  - listitem [ref=e996]:
+                    - paragraph [ref=e997]: Ensure you are in the correct project scope.
+                  - listitem [ref=e998]:
+                    - paragraph [ref=e999]:
+                      - text: From the left main menu, select
+                      - strong [ref=e1000]: Clusters
+                      - text: . The
+                      - strong [ref=e1001]: Clusters
+                      - text: page displays a list of all available clusters that Palette manages.
+                  - listitem [ref=e1002]:
+                    - paragraph [ref=e1003]:
+                      - text: Select the cluster you deployed. On the
+                      - strong [ref=e1004]: Overview
+                      - text: tab, ensure the
+                      - strong [ref=e1005]: Cluster Status
+                      - text: is
+                      - strong [ref=e1006]: Running
+                      - text: and that the cluster has a
+                      - strong [ref=e1007]: Health
+                      - text: status of
+                      - strong [ref=e1008]: Healthy
+                      - text: .
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e1009]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e1010] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e1011]:
+                  - text: Once your cluster is running, perform
+                  - link "Day-2" [ref=e1012] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/
+                  - text: operations as needed, including
+                  - link "Kubernetes upgrades" [ref=e1013] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/cluster-updates/
+                  - text: ","
+                  - link "node pool operations" [ref=e1014] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/node-pool/
+                  - text: ", and"
+                  - link "cluster profile updates" [ref=e1015] [cursor=pointer]:
+                    - /url: /profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile/
+                  - text: . For guidance on deleting your cluster, refer to our
+                  - link "Cluster Removal" [ref=e1016] [cursor=pointer]:
+                    - /url: /clusters/cluster-management/remove-clusters/
+                  - text: guide.
+              - generic [ref=e1017]:
+                - generic [ref=e1019]:
+                  - text: "Tags:"
+                  - list [ref=e1020]:
+                    - listitem [ref=e1021]:
+                      - link "public cloud" [ref=e1022] [cursor=pointer]:
+                        - /url: /tags/public-cloud/
+                    - listitem [ref=e1023]:
+                      - link "azure" [ref=e1024] [cursor=pointer]:
+                        - /url: /tags/azure/
+                - link "Edit this page" [ref=e1027] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/clusters/public-cloud/azure/create-azure-cluster.md
+                  - img [ref=e1028]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e1032]:
+              - link "Previous « Azure Disk Encryption" [ref=e1033] [cursor=pointer]:
+                - /url: /clusters/public-cloud/azure/azure-disk-storage-sse/
+                - generic [ref=e1034]: Previous
+                - generic [ref=e1035]: « Azure Disk Encryption
+              - link "Next Create and Manage Azure AKS Cluster »" [ref=e1036] [cursor=pointer]:
+                - /url: /clusters/public-cloud/azure/aks/
+                - generic [ref=e1037]: Next
+                - generic [ref=e1038]: Create and Manage Azure AKS Cluster »
+          - list [ref=e1041]:
+            - listitem [ref=e1042]:
+              - link "Limitations" [ref=e1043] [cursor=pointer]:
+                - /url: "#limitations"
+              - list [ref=e1044]:
+                - listitem [ref=e1045]:
+                  - link "Azure Government Secret Limitations" [ref=e1046] [cursor=pointer]:
+                    - /url: "#azure-government-secret-limitations"
+            - listitem [ref=e1047]:
+              - link "Prerequisites" [ref=e1048] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e1049]:
+              - link "Deploy an Azure Cluster" [ref=e1050] [cursor=pointer]:
+                - /url: "#deploy-an-azure-cluster"
+              - list [ref=e1051]:
+                - listitem [ref=e1052]:
+                  - link "Static Placement Settings" [ref=e1053] [cursor=pointer]:
+                    - /url: "#static-placement-settings"
+                - listitem [ref=e1054]:
+                  - link "Private API Server LB Settings" [ref=e1055] [cursor=pointer]:
+                    - /url: "#private-api-server-lb-settings"
+                - listitem [ref=e1056]:
+                  - link "Control Plane Pool Configuration Settings" [ref=e1057] [cursor=pointer]:
+                    - /url: "#control-plane-pool-configuration-settings"
+                  - list [ref=e1058]:
+                    - listitem [ref=e1059]:
+                      - link "Cloud Configuration Settings" [ref=e1060] [cursor=pointer]:
+                        - /url: "#cloud-configuration-settings"
+                - listitem [ref=e1061]:
+                  - link "Worker Pool Configuration Settings" [ref=e1062] [cursor=pointer]:
+                    - /url: "#worker-pool-configuration-settings"
+                  - list [ref=e1063]:
+                    - listitem [ref=e1064]:
+                      - link "Cloud Configuration Settings" [ref=e1065] [cursor=pointer]:
+                        - /url: "#cloud-configuration-settings-1"
+            - listitem [ref=e1066]:
+              - link "Validate" [ref=e1067] [cursor=pointer]:
+                - /url: "#validate"
+            - listitem [ref=e1068]:
+              - link "Next Steps" [ref=e1069] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e1070] [cursor=pointer]:
+    - generic [ref=e1073]:
+      - img "Project Logo" [ref=e1074]
+      - paragraph [ref=e1075]: Ask AI
+```
