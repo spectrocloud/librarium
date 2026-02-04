@@ -1,0 +1,835 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [expanded] [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+                - list [ref=e117]:
+                  - listitem [ref=e118]:
+                    - generic [ref=e119]:
+                      - link "Create Images with Image Builder" [ref=e120] [cursor=pointer]:
+                        - /url: /byoos/image-builder/
+                      - button "Toggle the collapsible sidebar category 'Create Images with Image Builder'" [ref=e121] [cursor=pointer]
+                  - listitem [ref=e122]:
+                    - generic [ref=e123]:
+                      - link "CAPI Image Builder" [expanded] [ref=e124] [cursor=pointer]:
+                        - /url: /byoos/capi-image-builder/
+                      - button "Toggle the collapsible sidebar category 'CAPI Image Builder'" [ref=e125] [cursor=pointer]
+                    - list [ref=e126]:
+                      - listitem [ref=e127]:
+                        - generic [ref=e128]:
+                          - link "Build Image for VMware vSphere" [ref=e129] [cursor=pointer]:
+                            - /url: /byoos/capi-image-builder/build-image-vmware/
+                          - button "Toggle the collapsible sidebar category 'Build Image for VMware vSphere'" [ref=e130] [cursor=pointer]
+                      - listitem [ref=e131]:
+                        - link "Configuration Reference" [ref=e132] [cursor=pointer]:
+                          - /url: /byoos/capi-image-builder/config-reference/
+                      - listitem [ref=e133]:
+                        - link "Compatibility Matrix" [ref=e134] [cursor=pointer]:
+                          - /url: /byoos/capi-image-builder/comp-matrix-capi-builder/
+              - listitem [ref=e135]:
+                - generic [ref=e136]:
+                  - link "Palette Dev Engine" [ref=e137] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e139]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e141] [cursor=pointer]
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - link "Virtual Machine Orchestrator" [ref=e144] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e146]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - link "Workspaces" [ref=e151] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e153]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Packs List" [ref=e158] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e160]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e162] [cursor=pointer]
+              - listitem [ref=e163]:
+                - generic [ref=e164]:
+                  - link "User & Role Management" [ref=e165] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e167]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e169] [cursor=pointer]
+              - listitem [ref=e170]:
+                - generic [ref=e171]:
+                  - link "Registries and Packs" [ref=e172] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e174]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e176] [cursor=pointer]
+              - listitem [ref=e177]:
+                - generic [ref=e178]:
+                  - link "Security" [ref=e179] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e181]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e183] [cursor=pointer]
+              - listitem [ref=e184]:
+                - generic [ref=e185]:
+                  - link "Audit Logs" [ref=e186] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e188]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - link "Self-Hosted Palette" [ref=e193] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e195]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e197] [cursor=pointer]
+              - listitem [ref=e198]:
+                - generic [ref=e199]:
+                  - link "Palette VerteX" [ref=e200] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e202]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e204] [cursor=pointer]
+              - listitem [ref=e205]:
+                - generic [ref=e206]:
+                  - link "Tenant Administration" [ref=e207] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e209]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e211] [cursor=pointer]
+              - listitem [ref=e212]:
+                - generic [ref=e213]:
+                  - link "Automation" [ref=e214] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e216]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e218] [cursor=pointer]
+              - listitem [ref=e219]:
+                - generic [ref=e220]:
+                  - link "Troubleshooting" [ref=e221] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e223]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e225] [cursor=pointer]
+              - listitem [ref=e226]:
+                - link "Glossary" [ref=e227] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e229]
+                  - text: Glossary
+              - listitem [ref=e231]:
+                - generic [ref=e232]:
+                  - link "Compliance & Legal" [ref=e233] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e235]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e237] [cursor=pointer]
+              - listitem [ref=e238]:
+                - button "Privacy Settings" [ref=e239] [cursor=pointer]:
+                  - img [ref=e240]
+                  - text: Privacy Settings
+      - main [ref=e242]:
+        - generic [ref=e244]:
+          - generic [ref=e246]:
+            - article [ref=e247]:
+              - navigation "Breadcrumbs" [ref=e248]:
+                - list [ref=e249]:
+                  - listitem [ref=e250]:
+                    - link "Home page" [ref=e251] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e252]
+                  - listitem [ref=e254]:
+                    - link "Bring Your Own OS (BYOOS)" [ref=e255] [cursor=pointer]:
+                      - /url: /byoos/
+                  - listitem [ref=e256]:
+                    - link "CAPI Image Builder" [ref=e257] [cursor=pointer]:
+                      - /url: /byoos/capi-image-builder/
+                  - listitem [ref=e258]:
+                    - generic [ref=e259]: Configuration Reference
+              - generic [ref=e260]:
+                - heading "Configuration Reference" [level=1] [ref=e262]
+                - generic [ref=e263]:
+                  - generic [ref=e264]:
+                    - img [ref=e266]
+                    - text: tech preview
+                  - generic [ref=e268]: This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+                - paragraph [ref=e269]: The CAPI Image Builder utility is configured using a configuration file that includes the parameters documented below. Review these parameters to understand how to tailor the CAPI Image Builder to your specific use case.
+                - heading "Operating System ConfigurationDirect link to Operating System Configuration" [level=2] [ref=e270]:
+                  - text: Operating System Configuration
+                  - link "Direct link to Operating System Configuration" [ref=e271] [cursor=pointer]:
+                    - /url: "#operating-system-configuration"
+                    - text: "#"
+                - table [ref=e272]:
+                  - rowgroup [ref=e273]:
+                    - row "Parameter Description Required" [ref=e274]:
+                      - cell "Parameter" [ref=e275]
+                      - cell "Description" [ref=e276]
+                      - cell "Required" [ref=e277]
+                  - rowgroup [ref=e278]:
+                    - row "os_versions A list of operating system versions to build. Available options are rhel-8, rhel-9, rockylinux-8, and rockylinux-9. Yes" [ref=e279]:
+                      - cell "os_versions" [ref=e280]:
+                        - code [ref=e281]: os_versions
+                      - cell "A list of operating system versions to build. Available options are rhel-8, rhel-9, rockylinux-8, and rockylinux-9." [ref=e282]:
+                        - text: A list of operating system versions to build. Available options are
+                        - code [ref=e283]: rhel-8
+                        - text: ","
+                        - code [ref=e284]: rhel-9
+                        - text: ","
+                        - code [ref=e285]: rockylinux-8
+                        - text: ", and"
+                        - code [ref=e286]: rockylinux-9
+                        - text: .
+                      - cell "Yes" [ref=e287]
+                    - row "image_type The type of image to build. Available options are standard or fips. Yes" [ref=e288]:
+                      - cell "image_type" [ref=e289]:
+                        - code [ref=e290]: image_type
+                      - cell "The type of image to build. Available options are standard or fips." [ref=e291]:
+                        - text: The type of image to build. Available options are
+                        - code [ref=e292]: standard
+                        - text: or
+                        - code [ref=e293]: fips
+                        - text: .
+                      - cell "Yes" [ref=e294]
+                - heading "Image ConfigurationDirect link to Image Configuration" [level=2] [ref=e295]:
+                  - text: Image Configuration
+                  - link "Direct link to Image Configuration" [ref=e296] [cursor=pointer]:
+                    - /url: "#image-configuration"
+                    - text: "#"
+                - table [ref=e297]:
+                  - rowgroup [ref=e298]:
+                    - row "Parameter Description Required" [ref=e299]:
+                      - cell "Parameter" [ref=e300]
+                      - cell "Description" [ref=e301]
+                      - cell "Required" [ref=e302]
+                  - rowgroup [ref=e303]:
+                    - row "image_name The name of the image to build. Yes" [ref=e304]:
+                      - cell "image_name" [ref=e305]:
+                        - code [ref=e306]: image_name
+                      - cell "The name of the image to build." [ref=e307]
+                      - cell "Yes" [ref=e308]
+                - heading "Cloud ConfigurationDirect link to Cloud Configuration" [level=2] [ref=e309]:
+                  - text: Cloud Configuration
+                  - link "Direct link to Cloud Configuration" [ref=e310] [cursor=pointer]:
+                    - /url: "#cloud-configuration"
+                    - text: "#"
+                - generic [ref=e311]:
+                  - generic [ref=e312]:
+                    - img [ref=e314]
+                    - text: warning
+                  - paragraph [ref=e317]: At this time, VMware vSphere is the only supported infrastructure provider for the CAPI Image Builder.
+                - table [ref=e318]:
+                  - rowgroup [ref=e319]:
+                    - row "Parameter Description Required" [ref=e320]:
+                      - cell "Parameter" [ref=e321]
+                      - cell "Description" [ref=e322]
+                      - cell "Required" [ref=e323]
+                  - rowgroup [ref=e324]:
+                    - row "cloud_type The cloud type to build the image for. Available options are aws, azure, gcp and vmware. Yes" [ref=e325]:
+                      - cell "cloud_type" [ref=e326]:
+                        - code [ref=e327]: cloud_type
+                      - cell "The cloud type to build the image for. Available options are aws, azure, gcp and vmware." [ref=e328]:
+                        - text: The cloud type to build the image for. Available options are
+                        - code [ref=e329]: aws
+                        - text: ","
+                        - code [ref=e330]: azure
+                        - text: ","
+                        - code [ref=e331]: gcp
+                        - text: and
+                        - code [ref=e332]: vmware
+                        - text: .
+                      - cell "Yes" [ref=e333]
+                - heading "Kubernetes ConfigurationDirect link to Kubernetes Configuration" [level=2] [ref=e334]:
+                  - text: Kubernetes Configuration
+                  - link "Direct link to Kubernetes Configuration" [ref=e335] [cursor=pointer]:
+                    - /url: "#kubernetes-configuration"
+                    - text: "#"
+                - paragraph [ref=e336]:
+                  - text: Refer to the
+                  - link "CAPI Image Builder Compatibility Matrix" [ref=e337] [cursor=pointer]:
+                    - /url: /byoos/capi-image-builder/comp-matrix-capi-builder/
+                  - text: file for a list of supported Kubernetes versions and the corresponding compatible versions of its dependencies.
+                - table [ref=e338]:
+                  - rowgroup [ref=e339]:
+                    - row "Parameter Description Required" [ref=e340]:
+                      - cell "Parameter" [ref=e341]
+                      - cell "Description" [ref=e342]
+                      - cell "Required" [ref=e343]
+                  - rowgroup [ref=e344]:
+                    - row "k8s_version The Kubernetes version to use when building the image. Yes" [ref=e345]:
+                      - cell "k8s_version" [ref=e346]:
+                        - code [ref=e347]: k8s_version
+                      - cell "The Kubernetes version to use when building the image." [ref=e348]
+                      - cell "Yes" [ref=e349]
+                    - 'row "cni_version The Container Network Interface (CNI) version to use when building the image. For airgap builds, the cni_version must match the CNI version in the Yum repository. Example: kubernetes-cni-<version>-1.el8.x86_64.rpm . Yes" [ref=e350]':
+                      - cell "cni_version" [ref=e351]:
+                        - code [ref=e352]: cni_version
+                      - 'cell "The Container Network Interface (CNI) version to use when building the image. For airgap builds, the cni_version must match the CNI version in the Yum repository. Example: kubernetes-cni-<version>-1.el8.x86_64.rpm ." [ref=e353]':
+                        - text: The Container Network Interface (CNI) version to use when building the image. For airgap builds, the
+                        - code [ref=e354]: cni_version
+                        - text: "must match the CNI version in the Yum repository. Example:"
+                        - code [ref=e355]: kubernetes-cni-<version>-1.el8.x86_64.rpm
+                        - text: .
+                      - cell "Yes" [ref=e356]
+                    - 'row "containerd_version The containerd version to use when building the image. The version specified is pulled from the containerd GitHub repository. For airgap builds, the containerd_version must match the cri-containerd-cni version in the Yum repository. Example: cri-containerd-cni-<version>-linux-amd64.tar.gz. Yes" [ref=e357]':
+                      - cell "containerd_version" [ref=e358]:
+                        - code [ref=e359]: containerd_version
+                      - 'cell "The containerd version to use when building the image. The version specified is pulled from the containerd GitHub repository. For airgap builds, the containerd_version must match the cri-containerd-cni version in the Yum repository. Example: cri-containerd-cni-<version>-linux-amd64.tar.gz." [ref=e360]':
+                        - text: The containerd version to use when building the image. The version specified is pulled from the
+                        - link "containerd GitHub repository" [ref=e361] [cursor=pointer]:
+                          - /url: https://github.com/containerd/containerd/
+                        - text: . For airgap builds, the
+                        - code [ref=e362]: containerd_version
+                        - text: must match the
+                        - code [ref=e363]: cri-containerd-cni
+                        - text: "version in the Yum repository. Example:"
+                        - code [ref=e364]: cri-containerd-cni-<version>-linux-amd64.tar.gz
+                        - text: .
+                      - cell "Yes" [ref=e365]
+                    - 'row "crictl_version The crictl version to use when building the image. The version specified is pulled from the cri-tools GitHub repository. For airgap builds, the crictl_version must match the crictl version in the Yum repository. Example: crictl-v<version>-linux-amd64.tar.gz. Yes" [ref=e366]':
+                      - cell "crictl_version" [ref=e367]:
+                        - code [ref=e368]: crictl_version
+                      - 'cell "The crictl version to use when building the image. The version specified is pulled from the cri-tools GitHub repository. For airgap builds, the crictl_version must match the crictl version in the Yum repository. Example: crictl-v<version>-linux-amd64.tar.gz." [ref=e369]':
+                        - text: The crictl version to use when building the image. The version specified is pulled from the
+                        - link "cri-tools GitHub repository" [ref=e370] [cursor=pointer]:
+                          - /url: https://github.com/kubernetes-sigs/cri-tools
+                        - text: . For airgap builds, the
+                        - code [ref=e371]: crictl_version
+                        - text: "must match the crictl version in the Yum repository. Example:"
+                        - code [ref=e372]: crictl-v<version>-linux-amd64.tar.gz
+                        - text: .
+                      - cell "Yes" [ref=e373]
+                - heading "RHEL ConfigurationDirect link to RHEL Configuration" [level=2] [ref=e374]:
+                  - text: RHEL Configuration
+                  - link "Direct link to RHEL Configuration" [ref=e375] [cursor=pointer]:
+                    - /url: "#rhel-configuration"
+                    - text: "#"
+                - table [ref=e376]:
+                  - rowgroup [ref=e377]:
+                    - row "Parameter Description Required" [ref=e378]:
+                      - cell "Parameter" [ref=e379]
+                      - cell "Description" [ref=e380]
+                      - cell "Required" [ref=e381]
+                  - rowgroup [ref=e382]:
+                    - row "rhel_subscription_user The Red Hat Enterprise Linux (RHEL) subscription username to use when building the image. No value is required if creating a RHEL image in an airgapped environment (airgap=true) with CAPI Image Builder version 4.6.0 or later. No" [ref=e383]:
+                      - cell "rhel_subscription_user" [ref=e384]:
+                        - code [ref=e385]: rhel_subscription_user
+                      - cell "The Red Hat Enterprise Linux (RHEL) subscription username to use when building the image. No value is required if creating a RHEL image in an airgapped environment (airgap=true) with CAPI Image Builder version 4.6.0 or later." [ref=e386]:
+                        - text: The Red Hat Enterprise Linux (RHEL) subscription username to use when building the image. No value is required if creating a RHEL image in an airgapped environment (
+                        - code [ref=e387]: airgap=true
+                        - text: ) with CAPI Image Builder version 4.6.0 or later.
+                      - cell "No" [ref=e388]
+                    - row "rhel_subscription_pass The RHEL subscription password to use when building the image. No value is required if creating a RHEL image in an airgapped environment (airgap=true) with CAPI Image Builder version 4.6.0 or later. No" [ref=e389]:
+                      - cell "rhel_subscription_pass" [ref=e390]:
+                        - code [ref=e391]: rhel_subscription_pass
+                      - cell "The RHEL subscription password to use when building the image. No value is required if creating a RHEL image in an airgapped environment (airgap=true) with CAPI Image Builder version 4.6.0 or later." [ref=e392]:
+                        - text: The RHEL subscription password to use when building the image. No value is required if creating a RHEL image in an airgapped environment (
+                        - code [ref=e393]: airgap=true
+                        - text: ) with CAPI Image Builder version 4.6.0 or later.
+                      - cell "No" [ref=e394]
+                - heading "ISO ConfigurationDirect link to ISO Configuration" [level=2] [ref=e395]:
+                  - text: ISO Configuration
+                  - link "Direct link to ISO Configuration" [ref=e396] [cursor=pointer]:
+                    - /url: "#iso-configuration"
+                    - text: "#"
+                - generic [ref=e397]:
+                  - generic [ref=e398]:
+                    - img [ref=e400]
+                    - text: info
+                  - paragraph [ref=e403]:
+                    - text: Leave this section blank if you are using an existing OVF template as the base for your image. Refer to the
+                    - code [ref=e404]: vcenter_template
+                    - text: parameter in the
+                    - link "VMware" [ref=e405] [cursor=pointer]:
+                      - /url: "#vmware"
+                    - text: section for more information.
+                - table [ref=e406]:
+                  - rowgroup [ref=e407]:
+                    - row "Parameter Description Required" [ref=e408]:
+                      - cell "Parameter" [ref=e409]
+                      - cell "Description" [ref=e410]
+                      - cell "Required" [ref=e411]
+                  - rowgroup [ref=e412]:
+                    - row "iso_name The name of the ISO file to use when building the image. The ISO file is expected to be located inside the output folder. Yes" [ref=e413]:
+                      - cell "iso_name" [ref=e414]:
+                        - code [ref=e415]: iso_name
+                      - cell "The name of the ISO file to use when building the image. The ISO file is expected to be located inside the output folder." [ref=e416]:
+                        - text: The name of the ISO file to use when building the image. The ISO file is expected to be located inside the
+                        - strong [ref=e417]: output
+                        - text: folder.
+                      - cell "Yes" [ref=e418]
+                    - row "iso_checksum The SHA256 checksum of the ISO file to use when building the image. The checksum is used to verify the integrity of the ISO file. Yes" [ref=e419]:
+                      - cell "iso_checksum" [ref=e420]:
+                        - code [ref=e421]: iso_checksum
+                      - cell "The SHA256 checksum of the ISO file to use when building the image. The checksum is used to verify the integrity of the ISO file." [ref=e422]
+                      - cell "Yes" [ref=e423]
+                - heading "Infrastructure ConfigurationDirect link to Infrastructure Configuration" [level=2] [ref=e424]:
+                  - text: Infrastructure Configuration
+                  - link "Direct link to Infrastructure Configuration" [ref=e425] [cursor=pointer]:
+                    - /url: "#infrastructure-configuration"
+                    - text: "#"
+                - paragraph [ref=e426]: Fill out the parameters below for the infrastructure provider for which you are building the image. These parameters are required for authenticating with the provider and uploading the image. Do not fill in the parameters for any other providers.
+                - generic [ref=e427]:
+                  - generic [ref=e428]:
+                    - img [ref=e430]
+                    - text: info
+                  - list [ref=e433]:
+                    - listitem [ref=e434]: Only one infrastructure provider can be used at a time. If you need to build images for multiple providers, you need to create a separate configuration file for each.
+                    - listitem [ref=e435]: At this time, VMware vSphere is the only supported infrastructure provider for the CAPI Image Builder.
+                - heading "AWSDirect link to AWS" [level=3] [ref=e436]:
+                  - text: AWS
+                  - link "Direct link to AWS" [ref=e437] [cursor=pointer]:
+                    - /url: "#aws"
+                    - text: "#"
+                - table [ref=e438]:
+                  - rowgroup [ref=e439]:
+                    - row "Parameter Description Required" [ref=e440]:
+                      - cell "Parameter" [ref=e441]
+                      - cell "Description" [ref=e442]
+                      - cell "Required" [ref=e443]
+                  - rowgroup [ref=e444]:
+                    - row "aws_access_key Reserved for future use. The AWS access key to use when building the image. Yes" [ref=e445]:
+                      - cell "aws_access_key" [ref=e446]:
+                        - code [ref=e447]: aws_access_key
+                      - cell "Reserved for future use. The AWS access key to use when building the image." [ref=e448]
+                      - cell "Yes" [ref=e449]
+                    - row "aws_secret_key Reserved for future use. The AWS secret key to use when building the image. Yes" [ref=e450]:
+                      - cell "aws_secret_key" [ref=e451]:
+                        - code [ref=e452]: aws_secret_key
+                      - cell "Reserved for future use. The AWS secret key to use when building the image." [ref=e453]
+                      - cell "Yes" [ref=e454]
+                - heading "AzureDirect link to Azure" [level=3] [ref=e455]:
+                  - text: Azure
+                  - link "Direct link to Azure" [ref=e456] [cursor=pointer]:
+                    - /url: "#azure"
+                    - text: "#"
+                - table [ref=e457]:
+                  - rowgroup [ref=e458]:
+                    - row "Parameter Description Required" [ref=e459]:
+                      - cell "Parameter" [ref=e460]
+                      - cell "Description" [ref=e461]
+                      - cell "Required" [ref=e462]
+                  - rowgroup [ref=e463]:
+                    - row "azure_client_id Reserved for future use. The Azure client ID to use when building the image. Yes" [ref=e464]:
+                      - cell "azure_client_id" [ref=e465]:
+                        - code [ref=e466]: azure_client_id
+                      - cell "Reserved for future use. The Azure client ID to use when building the image." [ref=e467]
+                      - cell "Yes" [ref=e468]
+                    - row "azure_client_secret Reserved for future use. The Azure client secret to use when building the image. Yes" [ref=e469]:
+                      - cell "azure_client_secret" [ref=e470]:
+                        - code [ref=e471]: azure_client_secret
+                      - cell "Reserved for future use. The Azure client secret to use when building the image." [ref=e472]
+                      - cell "Yes" [ref=e473]
+                    - row "azure_subscription_id Reserved for future use. The Azure subscription ID to use when building the image. Yes" [ref=e474]:
+                      - cell "azure_subscription_id" [ref=e475]:
+                        - code [ref=e476]: azure_subscription_id
+                      - cell "Reserved for future use. The Azure subscription ID to use when building the image." [ref=e477]
+                      - cell "Yes" [ref=e478]
+                    - row "azure_location Reserved for future use. The Azure location to use when building the image. Yes" [ref=e479]:
+                      - cell "azure_location" [ref=e480]:
+                        - code [ref=e481]: azure_location
+                      - cell "Reserved for future use. The Azure location to use when building the image." [ref=e482]
+                      - cell "Yes" [ref=e483]
+                    - row "azure_storage_account Reserved for future use. The Azure storage account to use when building the image. Yes" [ref=e484]:
+                      - cell "azure_storage_account" [ref=e485]:
+                        - code [ref=e486]: azure_storage_account
+                      - cell "Reserved for future use. The Azure storage account to use when building the image." [ref=e487]
+                      - cell "Yes" [ref=e488]
+                    - row "azure_resource_group Reserved for future use. The Azure resource group to use when building the image. Yes" [ref=e489]:
+                      - cell "azure_resource_group" [ref=e490]:
+                        - code [ref=e491]: azure_resource_group
+                      - cell "Reserved for future use. The Azure resource group to use when building the image." [ref=e492]
+                      - cell "Yes" [ref=e493]
+                - heading "GCPDirect link to GCP" [level=3] [ref=e494]:
+                  - text: GCP
+                  - link "Direct link to GCP" [ref=e495] [cursor=pointer]:
+                    - /url: "#gcp"
+                    - text: "#"
+                - table [ref=e496]:
+                  - rowgroup [ref=e497]:
+                    - row "Parameter Description Required" [ref=e498]:
+                      - cell "Parameter" [ref=e499]
+                      - cell "Description" [ref=e500]
+                      - cell "Required" [ref=e501]
+                  - rowgroup [ref=e502]:
+                    - row "google_app_creds Reserved for future use. The path to the Google Application Credentials file to use when building the image. Yes" [ref=e503]:
+                      - cell "google_app_creds" [ref=e504]:
+                        - code [ref=e505]: google_app_creds
+                      - cell "Reserved for future use. The path to the Google Application Credentials file to use when building the image." [ref=e506]
+                      - cell "Yes" [ref=e507]
+                    - row "gcp_project_id Reserved for future use. The GCP project ID to use when building the image. Yes" [ref=e508]:
+                      - cell "gcp_project_id" [ref=e509]:
+                        - code [ref=e510]: gcp_project_id
+                      - cell "Reserved for future use. The GCP project ID to use when building the image." [ref=e511]
+                      - cell "Yes" [ref=e512]
+                - heading "VMwareDirect link to VMware" [level=3] [ref=e513]:
+                  - text: VMware
+                  - link "Direct link to VMware" [ref=e514] [cursor=pointer]:
+                    - /url: "#vmware"
+                    - text: "#"
+                - table [ref=e515]:
+                  - rowgroup [ref=e516]:
+                    - row "Parameter Description Required" [ref=e517]:
+                      - cell "Parameter" [ref=e518]
+                      - cell "Description" [ref=e519]
+                      - cell "Required" [ref=e520]
+                  - rowgroup [ref=e521]:
+                    - row "vcenter_server The vCenter server to use when building the image. Provide either a Fully Qualified Domain Name (FQDN) or an IP address. Yes" [ref=e522]:
+                      - cell "vcenter_server" [ref=e523]:
+                        - code [ref=e524]: vcenter_server
+                      - cell "The vCenter server to use when building the image. Provide either a Fully Qualified Domain Name (FQDN) or an IP address." [ref=e525]
+                      - cell "Yes" [ref=e526]
+                    - row "vcenter_user The vCenter user to use when building the image. Yes" [ref=e527]:
+                      - cell "vcenter_user" [ref=e528]:
+                        - code [ref=e529]: vcenter_user
+                      - cell "The vCenter user to use when building the image." [ref=e530]
+                      - cell "Yes" [ref=e531]
+                    - row "vcenter_password The vCenter password to use when building the image. Yes" [ref=e532]:
+                      - cell "vcenter_password" [ref=e533]:
+                        - code [ref=e534]: vcenter_password
+                      - cell "The vCenter password to use when building the image." [ref=e535]
+                      - cell "Yes" [ref=e536]
+                    - row "vcenter_datacenter The vCenter data center to use when building the image. Yes" [ref=e537]:
+                      - cell "vcenter_datacenter" [ref=e538]:
+                        - code [ref=e539]: vcenter_datacenter
+                      - cell "The vCenter data center to use when building the image." [ref=e540]
+                      - cell "Yes" [ref=e541]
+                    - row "vcenter_datastore The vCenter datastore to use when building the image. Yes" [ref=e542]:
+                      - cell "vcenter_datastore" [ref=e543]:
+                        - code [ref=e544]: vcenter_datastore
+                      - cell "The vCenter datastore to use when building the image." [ref=e545]
+                      - cell "Yes" [ref=e546]
+                    - row "vcenter_network The vCenter network to use when building the image. Yes" [ref=e547]:
+                      - cell "vcenter_network" [ref=e548]:
+                        - code [ref=e549]: vcenter_network
+                      - cell "The vCenter network to use when building the image." [ref=e550]
+                      - cell "Yes" [ref=e551]
+                    - row "vcenter_folder The vCenter folder to use when building the image. Yes" [ref=e552]:
+                      - cell "vcenter_folder" [ref=e553]:
+                        - code [ref=e554]: vcenter_folder
+                      - cell "The vCenter folder to use when building the image." [ref=e555]
+                      - cell "Yes" [ref=e556]
+                    - row "vcenter_cluster The vCenter cluster to use when building the image. Yes" [ref=e557]:
+                      - cell "vcenter_cluster" [ref=e558]:
+                        - code [ref=e559]: vcenter_cluster
+                      - cell "The vCenter cluster to use when building the image." [ref=e560]
+                      - cell "Yes" [ref=e561]
+                    - row "vcenter_resource_pool The vCenter resource pool to use when building the image. Yes" [ref=e562]:
+                      - cell "vcenter_resource_pool" [ref=e563]:
+                        - code [ref=e564]: vcenter_resource_pool
+                      - cell "The vCenter resource pool to use when building the image." [ref=e565]
+                      - cell "Yes" [ref=e566]
+                    - row "vcenter_template The vCenter path to an existing Rocky Linux VM to use when building a Rocky Linux image. A snapshot must be associated with the VM. If using this field, leave the ISO Configuration values blank. No" [ref=e567]:
+                      - cell "vcenter_template" [ref=e568]:
+                        - code [ref=e569]: vcenter_template
+                      - cell "The vCenter path to an existing Rocky Linux VM to use when building a Rocky Linux image. A snapshot must be associated with the VM. If using this field, leave the ISO Configuration values blank." [ref=e570]:
+                        - text: The vCenter path to an existing Rocky Linux VM to use when building a Rocky Linux image. A snapshot must be associated with the VM. If using this field, leave the
+                        - link "ISO Configuration" [ref=e571] [cursor=pointer]:
+                          - /url: "#iso-configuration"
+                        - text: values blank.
+                      - cell "No" [ref=e572]
+                - heading "Airgap ConfigurationDirect link to Airgap Configuration" [level=2] [ref=e573]:
+                  - text: Airgap Configuration
+                  - link "Direct link to Airgap Configuration" [ref=e574] [cursor=pointer]:
+                    - /url: "#airgap-configuration"
+                    - text: "#"
+                - paragraph [ref=e575]: Fill out the parameters below if you are building the image in an airgapped environment. Otherwise, you can skip this section.
+                - table [ref=e576]:
+                  - rowgroup [ref=e577]:
+                    - row "Parameter Description Required" [ref=e578]:
+                      - cell "Parameter" [ref=e579]
+                      - cell "Description" [ref=e580]
+                      - cell "Required" [ref=e581]
+                  - rowgroup [ref=e582]:
+                    - row "airgap Set to true if you are building the image in an airgapped environment. Otherwise, set to false. Yes" [ref=e583]:
+                      - cell "airgap" [ref=e584]:
+                        - code [ref=e585]: airgap
+                      - cell "Set to true if you are building the image in an airgapped environment. Otherwise, set to false." [ref=e586]:
+                        - text: Set to
+                        - code [ref=e587]: "true"
+                        - text: if you are building the image in an airgapped environment. Otherwise, set to
+                        - code [ref=e588]: "false"
+                        - text: .
+                      - cell "Yes" [ref=e589]
+                    - row "airgap_ip The IP address or hostname of the airgap support VM that has the required dependencies. Refer to the Self-Hosted Palette and Vertex Environment Setup pages for instructions on how to deploy an airgap support VM. Yes" [ref=e590]:
+                      - cell "airgap_ip" [ref=e591]:
+                        - code [ref=e592]: airgap_ip
+                      - cell "The IP address or hostname of the airgap support VM that has the required dependencies. Refer to the Self-Hosted Palette and Vertex Environment Setup pages for instructions on how to deploy an airgap support VM." [ref=e593]:
+                        - text: The IP address or hostname of the airgap support VM that has the required dependencies. Refer to the
+                        - link "Self-Hosted Palette" [ref=e594] [cursor=pointer]:
+                          - /url: /enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/
+                        - text: and
+                        - link "Vertex" [ref=e595] [cursor=pointer]:
+                          - /url: /vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/
+                        - text: Environment Setup pages for instructions on how to deploy an airgap support VM.
+                      - cell "Yes" [ref=e596]
+                    - row "k8s_rpm_key The URL to the GNU Privacy Guard (GPG) key for the Kubernetes RPM Package Manager (RPM) repository. Used to verify package signatures when installing Kubernetes packages. Overrides the default key from pkgs.k8s.io. No" [ref=e597]:
+                      - cell "k8s_rpm_key" [ref=e598]:
+                        - code [ref=e599]: k8s_rpm_key
+                      - cell "The URL to the GNU Privacy Guard (GPG) key for the Kubernetes RPM Package Manager (RPM) repository. Used to verify package signatures when installing Kubernetes packages. Overrides the default key from pkgs.k8s.io." [ref=e600]
+                      - cell "No" [ref=e601]
+                    - row "k8s_rpm_server The URL to the Kubernetes RPM repository. Used to install kubelet, kubeadm, and kubectl packages. Overrides the default repository at pkgs.k8s.io. No" [ref=e602]:
+                      - cell "k8s_rpm_server" [ref=e603]:
+                        - code [ref=e604]: k8s_rpm_server
+                      - cell "The URL to the Kubernetes RPM repository. Used to install kubelet, kubeadm, and kubectl packages. Overrides the default repository at pkgs.k8s.io." [ref=e605]
+                      - cell "No" [ref=e606]
+                    - row "containerd_url The URL to download the containerd tarball from. Overrides the default release URL from the containerd GitHub repository. No" [ref=e607]:
+                      - cell "containerd_url" [ref=e608]:
+                        - code [ref=e609]: containerd_url
+                      - cell "The URL to download the containerd tarball from. Overrides the default release URL from the containerd GitHub repository." [ref=e610]:
+                        - text: The URL to download the containerd tarball from. Overrides the default release URL from the
+                        - link "containerd GitHub repository" [ref=e611] [cursor=pointer]:
+                          - /url: https://github.com/containerd/containerd/
+                        - text: .
+                      - cell "No" [ref=e612]
+                    - row "crictl_url The URL to download the crictl tarball from. Overrides the default release URL from the cri-tools GitHub repository. No" [ref=e613]:
+                      - cell "crictl_url" [ref=e614]:
+                        - code [ref=e615]: crictl_url
+                      - cell "The URL to download the crictl tarball from. Overrides the default release URL from the cri-tools GitHub repository." [ref=e616]:
+                        - text: The URL to download the crictl tarball from. Overrides the default release URL from the
+                        - link "cri-tools GitHub repository" [ref=e617] [cursor=pointer]:
+                          - /url: https://github.com/kubernetes-sigs/cri-tools
+                        - text: .
+                      - cell "No" [ref=e618]
+                    - row "k8s_container_reg The container registry to use for pulling Kubernetes control plane images (kube-apiserver, kube-controller-manager, kube-scheduler, kube-proxy, coredns, etcd). Overrides the default registry.k8s.io. No" [ref=e619]:
+                      - cell "k8s_container_reg" [ref=e620]:
+                        - code [ref=e621]: k8s_container_reg
+                      - cell "The container registry to use for pulling Kubernetes control plane images (kube-apiserver, kube-controller-manager, kube-scheduler, kube-proxy, coredns, etcd). Overrides the default registry.k8s.io." [ref=e622]:
+                        - text: The container registry to use for pulling Kubernetes control plane images (
+                        - code [ref=e623]: kube-apiserver
+                        - text: ","
+                        - code [ref=e624]: kube-controller-manager
+                        - text: ","
+                        - code [ref=e625]: kube-scheduler
+                        - text: ","
+                        - code [ref=e626]: kube-proxy
+                        - text: ","
+                        - code [ref=e627]: coredns
+                        - text: ","
+                        - code [ref=e628]: etcd
+                        - text: ). Overrides the default
+                        - code [ref=e629]: registry.k8s.io
+                        - text: .
+                      - cell "No" [ref=e630]
+                    - row "cert_url Reserved for future use. No" [ref=e631]:
+                      - cell "cert_url" [ref=e632]:
+                        - code [ref=e633]: cert_url
+                      - cell "Reserved for future use." [ref=e634]
+                      - cell "No" [ref=e635]
+                - heading "Example ConfigurationDirect link to Example Configuration" [level=2] [ref=e636]:
+                  - text: Example Configuration
+                  - link "Direct link to Example Configuration" [ref=e637] [cursor=pointer]:
+                    - /url: "#example-configuration"
+                    - text: "#"
+                - generic [ref=e639]:
+                  - code [ref=e641]:
+                    - generic [ref=e642]: os_version=rhel-8
+                    - generic [ref=e643]: image_type=standard
+                    - generic [ref=e644]: rhel_subscription_user='demo@spectrocloud.com'
+                    - generic [ref=e645]: rhel_subscription_pass='***********'
+                    - generic [ref=e646]: image_name=rhel-8-custom
+                    - generic [ref=e647]: cloud_type=vmware
+                    - generic [ref=e648]: k8s_version=1.28.9
+                    - generic [ref=e649]: cni_version=1.2.0
+                    - generic [ref=e650]: containerd_version=1.7.13
+                    - generic [ref=e651]: crictl_version=1.26.0
+                    - generic [ref=e652]: iso_name=rhel-8.8-x86_64-dvd.iso
+                    - generic [ref=e653]: iso_checksum=517abcc67ee3b7212f57e180f5d30be3e8269e7a99e127a3399b7935c7e00a09
+                    - generic [ref=e654]: vcenter_server=example.vcenter.dev
+                    - generic [ref=e655]: vcenter_user=demo@vsphere.local
+                    - generic [ref=e656]: vcenter_password='***********'
+                    - generic [ref=e657]: vcenter_datacenter=Datacenter
+                    - generic [ref=e658]: vcenter_datastore=vsanDatastorePrimary
+                    - generic [ref=e659]: vcenter_network=NETWORK-1
+                    - generic [ref=e660]: vcenter_folder=teamA
+                    - generic [ref=e661]: vcenter_cluster=teamA-cluster
+                    - generic [ref=e662]: vcenter_resource_pool=teamA-resource-pool
+                    - generic [ref=e663]: airgap=false
+                  - generic [ref=e664]:
+                    - button "Toggle word wrap" [ref=e665] [cursor=pointer]:
+                      - img [ref=e666]
+                    - button "Copy code to clipboard" [ref=e668] [cursor=pointer]:
+                      - generic [ref=e669]:
+                        - img [ref=e670]
+                        - img [ref=e672]
+              - generic [ref=e674]:
+                - generic [ref=e676]:
+                  - text: "Tags:"
+                  - list [ref=e677]:
+                    - listitem [ref=e678]:
+                      - link "operating system" [ref=e679] [cursor=pointer]:
+                        - /url: /tags/operating-system/
+                    - listitem [ref=e680]:
+                      - link "byoos" [ref=e681] [cursor=pointer]:
+                        - /url: /tags/byoos/
+                    - listitem [ref=e682]:
+                      - link "capi image builder" [ref=e683] [cursor=pointer]:
+                        - /url: /tags/capi-image-builder/
+                - link "Edit this page" [ref=e686] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/byoos/capi-image-builder/config-reference.md
+                  - img [ref=e687]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e691]:
+              - link "Previous « Rocky and PXK" [ref=e692] [cursor=pointer]:
+                - /url: /byoos/capi-image-builder/build-image-vmware/airgap-build/rocky-capi-airgap/
+                - generic [ref=e693]: Previous
+                - generic [ref=e694]: « Rocky and PXK
+              - link "Next Compatibility Matrix »" [ref=e695] [cursor=pointer]:
+                - /url: /byoos/capi-image-builder/comp-matrix-capi-builder/
+                - generic [ref=e696]: Next
+                - generic [ref=e697]: Compatibility Matrix »
+          - list [ref=e700]:
+            - listitem [ref=e701]:
+              - link "Operating System Configuration" [ref=e702] [cursor=pointer]:
+                - /url: "#operating-system-configuration"
+            - listitem [ref=e703]:
+              - link "Image Configuration" [ref=e704] [cursor=pointer]:
+                - /url: "#image-configuration"
+            - listitem [ref=e705]:
+              - link "Cloud Configuration" [ref=e706] [cursor=pointer]:
+                - /url: "#cloud-configuration"
+            - listitem [ref=e707]:
+              - link "Kubernetes Configuration" [ref=e708] [cursor=pointer]:
+                - /url: "#kubernetes-configuration"
+            - listitem [ref=e709]:
+              - link "RHEL Configuration" [ref=e710] [cursor=pointer]:
+                - /url: "#rhel-configuration"
+            - listitem [ref=e711]:
+              - link "ISO Configuration" [ref=e712] [cursor=pointer]:
+                - /url: "#iso-configuration"
+            - listitem [ref=e713]:
+              - link "Infrastructure Configuration" [ref=e714] [cursor=pointer]:
+                - /url: "#infrastructure-configuration"
+              - list [ref=e715]:
+                - listitem [ref=e716]:
+                  - link "AWS" [ref=e717] [cursor=pointer]:
+                    - /url: "#aws"
+                - listitem [ref=e718]:
+                  - link "Azure" [ref=e719] [cursor=pointer]:
+                    - /url: "#azure"
+                - listitem [ref=e720]:
+                  - link "GCP" [ref=e721] [cursor=pointer]:
+                    - /url: "#gcp"
+                - listitem [ref=e722]:
+                  - link "VMware" [ref=e723] [cursor=pointer]:
+                    - /url: "#vmware"
+            - listitem [ref=e724]:
+              - link "Airgap Configuration" [ref=e725] [cursor=pointer]:
+                - /url: "#airgap-configuration"
+            - listitem [ref=e726]:
+              - link "Example Configuration" [ref=e727] [cursor=pointer]:
+                - /url: "#example-configuration"
+  - button "Project Logo Ask AI" [ref=e728] [cursor=pointer]:
+    - generic [ref=e731]:
+      - img "Project Logo" [ref=e732]
+      - paragraph [ref=e733]: Ask AI
+```
