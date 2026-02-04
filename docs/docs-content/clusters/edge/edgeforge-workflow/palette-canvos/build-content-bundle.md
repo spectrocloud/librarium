@@ -422,7 +422,13 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --palette-endpoint <PALETTE_API_ENDPOINT> \
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
-     --private-key <PRIVATE_KEY_PATH>
+   ./palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
+    --palette-endpoint <palette-api-endpoint > \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
+    --private-key <private-key-path>
     ```
 
     | Flag                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -460,7 +466,14 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
      --cluster-definition-name <CLUSTER_DEFINITION_FILENAME> \
-     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
+    ./palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
+    --palette-endpoint <palette-api-endpoint> \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
+    --cluster-definition-name <cluster-definition-filename> \
+    --cluster-definition-profile-ids <cluster-profile-ids>
     ```
 
     Compared with the previous command, this command has two additional flags.

@@ -199,9 +199,7 @@ create a content bundle at the same time with a single command.
 
 10. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="cluster definition" />
 
-    Make sure the combination of profiles you choose to export can be used to provision a cluster together. This means
-    that you cannot include more than one profile that has infrastructure layers and cannot have duplicate packs between
-    the profiles.
+    Make sure the selected profiles can be used together to provision a cluster. Only one profile may include infrastructure layers, and no packs can be duplicated across the profiles.
 
 11. Issue the following command to export the cluster definition.
 
@@ -210,7 +208,11 @@ create a content bundle at the same time with a single command.
     --project-id <projectId> \
     --palette-endpoint <paletteEndpoint> \
     --cluster-definition-name <clusterDefinitionName> \
-    --cluster-definition-profile-ids <clusterDefinitionProfileId1,clusterDefinitionProfileId2,...>
+   palette-edge build --api-key <api-key> \
+   --project-id <project-id> \
+   --palette-endpoint <palette-endpoint> \
+   --cluster-definition-name <cluster-definition-name> \
+   --cluster-definition-profile-ids <cluster-definition-profile-id1,cluster-definition-profile-id2,...>
     ```
 
     | Flag                               | Description                                                                                                                                                                                                                                                                                                        |
@@ -237,7 +239,15 @@ create a content bundle at the same time with a single command.
      --cred-file-path <FILE_PATH> \
      --include-core-images-only \
      --cluster-definition-name <CLUSTER_DEFINITION_FILENAME> \
-     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
+    palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
+    --palette-endpoint <palette-api-endpoint> \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
+    --include-core-images-only \
+    --cluster-definition-name <cluster-definition-filename> \
+    --cluster-definition-profile-ids <cluster-profile-ids>
     ```
 
     | Flag                         | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -292,9 +302,7 @@ cluster definitions using the Palette API.
 
 5. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="cluster definition" />
 
-   All profiles must be in the same project. Make sure the combination of profiles you choose to export can be used to
-   provision a cluster together. This means that you cannot include more than one profile that has infrastructure layers
-   and cannot have duplicate packs between the profiles.
+   All profiles must be in the same project. Make sure the selected profiles can be used together to provision a cluster. Only one profile may include infrastructure layers, and no packs can be duplicated across the profiles.
 
 6. Use the Palette Download Cluster Definition API to download the cluster definition. The endpoint location is
    `POST https://api.spectrocloud.com/v1/spectroclusters/spc/download`. If you are using a self-hosted Palette instance,
