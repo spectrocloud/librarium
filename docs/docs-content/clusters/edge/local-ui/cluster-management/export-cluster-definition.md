@@ -199,7 +199,8 @@ create a content bundle at the same time with a single command.
 
 10. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="cluster definition" />
 
-    Make sure the selected profiles can be used together to provision a cluster. Only one profile may include infrastructure layers, and no packs can be duplicated across the profiles.
+    Make sure the selected profiles can be used together to provision a cluster. Only one profile may include
+    infrastructure layers, and no packs can be duplicated across the profiles.
 
 11. Issue the following command to export the cluster definition.
 
@@ -208,11 +209,11 @@ create a content bundle at the same time with a single command.
     --project-id <projectId> \
     --palette-endpoint <paletteEndpoint> \
     --cluster-definition-name <clusterDefinitionName> \
-   palette-edge build --api-key <api-key> \
-   --project-id <project-id> \
-   --palette-endpoint <palette-endpoint> \
-   --cluster-definition-name <cluster-definition-name> \
-   --cluster-definition-profile-ids <cluster-definition-profile-id1,cluster-definition-profile-id2,...>
+    palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --palette-endpoint <palette-endpoint> \
+    --cluster-definition-name <cluster-definition-name> \
+    --cluster-definition-profile-ids <cluster-definition-profile-id1,cluster-definition-profile-id2,...>
     ```
 
     | Flag                               | Description                                                                                                                                                                                                                                                                                                        |
@@ -302,7 +303,8 @@ cluster definitions using the Palette API.
 
 5. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="cluster definition" />
 
-   All profiles must be in the same project. Make sure the selected profiles can be used together to provision a cluster. Only one profile may include infrastructure layers, and no packs can be duplicated across the profiles.
+   All profiles must be in the same project. Make sure the selected profiles can be used together to provision a
+   cluster. Only one profile may include infrastructure layers, and no packs can be duplicated across the profiles.
 
 6. Use the Palette Download Cluster Definition API to download the cluster definition. The endpoint location is
    `POST https://api.spectrocloud.com/v1/spectroclusters/spc/download`. If you are using a self-hosted Palette instance,

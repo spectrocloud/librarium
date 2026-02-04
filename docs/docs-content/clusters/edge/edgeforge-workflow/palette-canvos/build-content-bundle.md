@@ -422,7 +422,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --palette-endpoint <PALETTE_API_ENDPOINT> \
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
-   ./palette-edge build --api-key <api-key> \
+    ./palette-edge build --api-key <api-key> \
     --project-id <project-id> \
     --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
     --palette-endpoint <palette-api-endpoint > \

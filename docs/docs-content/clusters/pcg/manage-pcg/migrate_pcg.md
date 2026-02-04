@@ -136,10 +136,10 @@ references the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:u
    curl --location 'https://api.spectrocloud.com/v1/spectroclusters/:uid' \
    --header 'ProjectUid: XXXXXXXXXXXX' \
    --header 'Accept: application/json' \
-curl --location 'https://api.spectrocloud.com/v1/spectroclusters/:<cluster-id>' \
---header 'ProjectUid: <project-id>' \
---header 'Accept: application/json' \
---header 'apiKey: <api-key>'
+   curl --location 'https://api.spectrocloud.com/v1/spectroclusters/:<cluster-id>' \
+   --header 'ProjectUid: <project-id>' \
+   --header 'Accept: application/json' \
+   --header 'apiKey: <api-key>'
    ```
 
 6. Verify that the `metadata.annotations.overlordUid` field in the response payload matches the new PCG `overlordUid`.
