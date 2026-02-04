@@ -178,7 +178,7 @@ updated version of the component and update your instance.
 
 2. Log in to the Palette system console.
 
-3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click the
+3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the registry, click the
    three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise cluster. Refer to the
@@ -244,7 +244,7 @@ updated version of the component and update your instance.
 
 2. Log in to the Palette VerteX system console.
 
-3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click the
+3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the registry, click the
    three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise cluster. Refer to the
@@ -319,8 +319,8 @@ cluster profile.
 
 2. Log in to the Palette system console.
 
-3. From the left main menu, select **Administration > Pack Registries**. Then, next to the packs registry, click the
-   three-dot button > **Sync**. Wait for the registry synchronization to complete.
+3. From the left main menu, select **Administration > Pack Registries**. Then, next to the registry, click the three-dot
+   button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Log in to the Palette console.
 
@@ -343,8 +343,8 @@ cluster profile.
 
 2. Log in to the Palette VerteX system console.
 
-3. From the left main menu, select **Administration > Pack Registries**. Then, next to the packs registry, click the
-   three-dot button > **Sync**. Wait for the registry synchronization to complete.
+3. From the left main menu, select **Administration > Pack Registries**. Then, next to the registry, click the three-dot
+   button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Log in to the Palette VerteX console.
 
