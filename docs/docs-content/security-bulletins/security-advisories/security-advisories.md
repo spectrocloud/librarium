@@ -169,10 +169,9 @@ updated version of the component and update your instance.
 <TabItem value="Palette Enterprise" label="Palette Enterprise">
 
 1. Contact your Palette support representative to obtain the `airgap-palette-nginx` binary version `1.13.7`. Ensure the
-   SHA of the binary is `REPLACE ME`. Once obtained, upload the
-   `airgap-palette-nginx` binary to the registry. Follow the
-   [Usage Instructions](../../downloads/self-hosted-palette/additional-packs.md) guide for detailed steps on downloading
-   and installing the binary.
+   SHA of the binary is `REPLACE ME`. Once obtained, upload the `airgap-palette-nginx` binary to the registry. Follow
+   the [Usage Instructions](../../downloads/self-hosted-palette/additional-packs.md) guide for detailed steps on
+   downloading and installing the binary.
 
 2. Log in to the Palette system console.
 
@@ -235,8 +234,7 @@ updated version of the component and update your instance.
 <TabItem value="Palette VerteX" label="Palette VerteX">
 
 1. Contact your Palette support representative to obtain the `airgap-vertex-nginx` binary version `1.13.7`. Ensure the
-   SHA of the binary is `REPLACE ME`. Once obtained, upload the
-   `airgap-vertex-nginx` binary to the registry. Follow the
+   SHA of the binary is `REPLACE ME`. Once obtained, upload the `airgap-vertex-nginx` binary to the registry. Follow the
    [Usage Instructions](../../downloads/palette-vertex/additional-packs.md) guide for detailed steps on downloading and
    installing the binary.
 
@@ -335,8 +333,7 @@ cluster profile.
 <TabItem value="Palette VerteX" label="Palette VerteX">
 
 1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.13.7`. Ensure the SHA
-   of the binary is `REPLACE ME`. Once obtained, upload the
-   `airgap-pack-nginx` binary to the registry. Follow the
+   of the binary is `REPLACE ME`. Once obtained, upload the `airgap-pack-nginx` binary to the registry. Follow the
    [Usage Instructions](../../downloads/palette-vertex/additional-packs.md) guide for detailed steps on downloading and
    installing the binary.
 
