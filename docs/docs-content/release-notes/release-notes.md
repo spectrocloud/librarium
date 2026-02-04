@@ -51,6 +51,10 @@ tags: ["release-notes"]
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9696 -->
+
+- Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
+
 #### Deprecations and Removals
 
 ### Edge

@@ -136,18 +136,15 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 5. Log in to the [Palette](https://console.spectrocloud.com) console.
 
-6. Select the project you want to deploy the Edge host to and copy the project ID. You can find the project ID at the
-   top right side corner of the landing page below the user drop-down menu.
+6. Select the project you want to deploy the Edge host to.
 
-7. Navigate to the left main menu and select **Profiles**.
+7. <PartialsComponent category="projects" name="project-id-copy" />
 
-8. Use the **Cloud Types** drop-down menu and select **Edge Native**.
+8. From the left main menu, select **Profiles**.
 
-9. Click on the cluster profile you want to include in the content bundle.
+9. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-10. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-    value in the URL. Repeat this step for all the cluster profiles whose images you want to include in the content
-    bundle.
+10. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
 11. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
     authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
@@ -187,7 +184,6 @@ require a local Harbor registry. Built-in registries must be configured using ei
     The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
     in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
     bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
-
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
     :::tip
@@ -280,22 +276,15 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 4. Log in to [Palette](https://console.spectrocloud.com).
 
-5. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the user drop-down menu.
+5. Select the project you want to deploy the Edge host to.
 
-6. Navigate to the left main menu and select **Profiles**.
+6. <PartialsComponent category="projects" name="project-id-copy" />
 
-7. Use the **Cloud Types** drop-down menu and select **Edge Native**.
+7. From the left main menu, select **Profiles**.
 
-8. Click on the cluster profile you want to include in the content bundle.
+8. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-9. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Refer to the [Project](../../../../tenant-settings/projects/projects.md#project-id) page for
-   details. Repeat this step for all the cluster profiles you want to specify in the content bundle.
-
-   ```text
-   https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
-   ```
+9. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
 10. (Optional) If your cluster profile uses images or helm charts that are hosted on private registries that require
     authentication, you must provide a JSON file that contains the necessary credentials to access the registry.
@@ -433,7 +422,13 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --palette-endpoint <PALETTE_API_ENDPOINT> \
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
-     --private-key <PRIVATE_KEY_PATH>
+    ./palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
+    --palette-endpoint <palette-api-endpoint > \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
+    --private-key <private-key-path>
     ```
 
     | Flag                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -471,7 +466,14 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
      --cluster-definition-name <CLUSTER_DEFINITION_FILENAME> \
-     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
+    ./palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
+    --palette-endpoint <palette-api-endpoint> \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
+    --cluster-definition-name <cluster-definition-filename> \
+    --cluster-definition-profile-ids <cluster-profile-ids>
     ```
 
     Compared with the previous command, this command has two additional flags.
