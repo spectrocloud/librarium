@@ -312,7 +312,8 @@ cluster profile.
 
 <TabItem value="Palette Enterprise" label="Palette Enterprise">
 
-1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.13.7`. Once obtained, upload the `airgap-pack-nginx` binary to the registry. Follow the
+1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.13.7`. Once obtained,
+   upload the `airgap-pack-nginx` binary to the registry. Follow the
    [Usage Instructions](../../downloads/self-hosted-palette/additional-packs.md) guide for detailed steps on downloading
    and installing the binary.
 
