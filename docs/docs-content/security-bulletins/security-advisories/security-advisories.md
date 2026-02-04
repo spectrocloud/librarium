@@ -169,7 +169,7 @@ updated version of the component and update your instance.
 <TabItem value="Palette Enterprise" label="Palette Enterprise">
 
 1. Contact your Palette support representative to obtain the `airgap-palette-nginx` binary version `1.13.7`. Ensure the
-   SHA of the binary is `8148734578378da043b918f893f3bbfcae9d421b9ac4426e10762d832734e1dd`. Once obtained, upload the
+   SHA of the binary is `REPLACE ME`. Once obtained, upload the
    `airgap-palette-nginx` binary to the registry. Follow the
    [Usage Instructions](../../downloads/self-hosted-palette/additional-packs.md) guide for detailed steps on downloading
    and installing the binary.
@@ -235,7 +235,7 @@ updated version of the component and update your instance.
 <TabItem value="Palette VerteX" label="Palette VerteX">
 
 1. Contact your Palette support representative to obtain the `airgap-vertex-nginx` binary version `1.13.7`. Ensure the
-   SHA of the binary is `846c1e92f32ddd9a8da7eebd5b6d05517c5626a11e64c34acdf093dacdcb7310`. Once obtained, upload the
+   SHA of the binary is `REPLACE ME`. Once obtained, upload the
    `airgap-vertex-nginx` binary to the registry. Follow the
    [Usage Instructions](../../downloads/palette-vertex/additional-packs.md) guide for detailed steps on downloading and
    installing the binary.
@@ -335,7 +335,7 @@ cluster profile.
 <TabItem value="Palette VerteX" label="Palette VerteX">
 
 1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.13.7`. Ensure the SHA
-   of the binary is `f526bdf9fba8031d50846e503ea8011d67ffdc23b9331a62ebe644ae49c06fb1`. Once obtained, upload the
+   of the binary is `REPLACE ME`. Once obtained, upload the
    `airgap-pack-nginx` binary to the registry. Follow the
    [Usage Instructions](../../downloads/palette-vertex/additional-packs.md) guide for detailed steps on downloading and
    installing the binary.
