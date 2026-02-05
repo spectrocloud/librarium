@@ -15,10 +15,10 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.8.6 - 4.8.27.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.27  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.27  |
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.27  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.27  |
 
 ### Packs
 
