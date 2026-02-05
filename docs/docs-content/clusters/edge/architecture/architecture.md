@@ -46,7 +46,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 <!-- prettier-ignore-end -->
 
-
 ## Minimum Device Requirements
 
 All Edge hosts must meet the following minimum hardware requirements. For specific features, additional hardware
