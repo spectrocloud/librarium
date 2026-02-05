@@ -43,6 +43,15 @@ The following components have been updated for Palette version 4.8.6 - 4.8.25.
 | K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.32.10     |
 | K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.31.14     |
 
+## February 5, 2026 - Release 4.8.27
+
+### Improvements
+
+- The internal Palette Nginx controller has been upgraded to v1.13.7 to address multiple Nginx ingress vulnerabilities.
+  Refer to
+  [Security Advisory 008- Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008--nginx-ingress-vulnerabilities)
+  for further information.
+
 ## January 30, 2026 - Release 4.8.25
 
 The following component updates are applicable to this release:

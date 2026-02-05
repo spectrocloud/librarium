@@ -46,8 +46,8 @@
     "@docusaurus/plugin-ideal-image": "^3.9.2",
     "@docusaurus/preset-classic": "^3.9.2",
     "@docusaurus/types": "^3.9.2",
-    "@fortawesome/fontawesome-svg-core": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "antd": "^5.26.4",
@@ -68,7 +68,7 @@
     "react-markdown": "10.1.0",
     "react-select": "^5.10.2",
     "remark-gfm": "4.0.1",
-    "sass": "^1.92.1",
+    "sass": "^1.97.3",
     "semver": "^7.7.1"
   },
   "devDependencies": {

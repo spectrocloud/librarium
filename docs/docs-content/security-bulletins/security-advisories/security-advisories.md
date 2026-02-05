@@ -41,6 +41,9 @@ Nginx controller has been deprecated by the upstream provider, and we are in the
 controller. Until the migration to Traefik ingress is complete, we will be upgrading Nginx controller to version 1.13.7,
 which will remediate this vulnerability.
 
+Palette version 4.8.27 uses Nginx controller version 1.13.7. Refer to the
+[release notes](../../release-notes/release-notes.md#february-5-2026---release-4827) for further information.
+
 ### Affected Deployments
 
 <!-- prettier-ignore-start -->
@@ -59,25 +62,303 @@ which will remediate this vulnerability.
 
 <!-- prettier-ignore-start -->
 
-We recommend taking the following actions to remediate CVE-2026-24514:
+We recommend taking the following actions to remediate CVE-2026-2451.
 
-- **Multi-tenant and dedicated SaaS deployments** - No action necessary. Deployments will be patched as part of the standard update process.
-- **Self-hosted deployments** - Update the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack version to 1.13.7.
-- **Workload clusters**
+#### Multi-tenant and Dedicated SaaS Deployments
 
-   - Managed Kubernetes clusters (AKS, EKS, GKE) should be updated with patches from the cloud vendor as soon as they become available.
-   - Patched OS images for other cluster types will be available in an upcoming release. All customers are advised to upgrade to the latest Kubernetes patch versions as soon as they become available.
-   - A patch for Edge clusters will be available in an upcoming release. All customers are advised to upgrade the clusters to the patched version as soon as they become available.
+No action necessary. Deployments will be patched as part of the standard update process.
 
-<!-- prettier-ignore-end -->
+#### Palette Enterprise or VerteX Installed with Helm Charts
 
-If possible, we also recommend taking the following actions:
+If you have any instances of Palette enterprise or VerteX installed via Helm Charts with the affected version of the
+`ingress-nginx-controller` DaemonSet, you must update it to version `1.13.7`. Follow the steps below to download the
+updated version of the component and update your instance.
 
-- Avoid running untrusted container images.
-- Use rootless containers where possible to reduce impact scope.
-- Restrict container `sysctl` configurations and disable host access to `/proc/sysrq-trigger` and
-  `/proc/sys/kernel/core_pattern` where feasible.
-- Reinforce LSM enforcement and confirm AppArmor and SELinux profiles are correctly applied post-patch.
+1. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise or VerteX cluster. Refer to the
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
+
+2. Check the image used by the `ingress-nginx-controller` DaemonSet in the `ingress-nginx` namespace.
+
+   ```shell
+   kubectl get daemonset ingress-nginx-controller --namespace ingress-nginx --output yaml | grep 'image:'
+   ```
+
+3. Once you identify the image, update its tag to `v1.13.7`. You can use the `kubectl set image` command to update the
+   image.
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.3`, update it to
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the name
+  of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.3`, update it to
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the
+  name of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+#### Palette Enterprise or VerteX Installed with the Palette CLI
+
+If you have any instances of Palette enterprise or VerteX installed via the Palette CLI with the affected version of the
+`ingress-nginx-controller` DaemonSet, you must update it to version `1.13.7`. Follow the steps below to download the
+updated version of the component and update your instance.
+
+1. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise or VerteX cluster. Refer to the
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
+
+2. Scale down the `palette-controller-manager` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
+   `*` with the suffix associated with your namespace.
+
+   ```shell
+   kubectl scale deployment palette-controller-manager --replicas=0 --namespace cluster-mgmt-*
+   ```
+
+3. Scale down the `cluster-management-agent` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
+   `*` with the suffix associated with your namespace.
+
+   ```shell
+   kubectl scale deployment cluster-management-agent --replicas=0 --namespace cluster-mgmt-*
+   ```
+
+4. Confirm that both deployments have been scaled down to zero replicas. Replace `*` with the suffix associated with
+   your namespace.
+
+   ```shell
+   kubectl get deployments --namespace cluster-mgmt-*
+   ```
+
+5. Check the image used by the `ingress-nginx-controller` DaemonSet in the `ingress-nginx` namespace.
+
+   ```shell
+   kubectl get daemonset ingress-nginx-controller --namespace ingress-nginx --output yaml | grep 'image:'
+   ```
+
+6. Once you identify the image, update its tag to `v1.13.7`. You can use the `kubectl set image` command to update the
+   image.
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.3`, update it to
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the name
+  of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.3`, update it to
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the
+  name of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+#### Airgap Palette Enterprise or VerteX
+
+If you have any airgapped instances of Palette enterprise or VerteX using the affected version of the
+`ingress-nginx-controller` DaemonSet, you must update it to version `1.13.7`. Follow the steps below to download the
+updated version of the component and update your instance.
+
+<Tabs>
+
+<TabItem value="Palette Enterprise" label="Palette Enterprise">
+
+1. Contact your Palette support representative to obtain the `airgap-palette-nginx` binary version `1.13.7`. Ensure the
+   SHA of the binary is `ea6d7f28a24e100998ea382ab2d206f81dc33776ac98091815e794fb35b215ce`. Once obtained, upload the
+   `airgap-palette-nginx` binary to the registry. Follow the
+   [Usage Instructions](../../downloads/self-hosted-palette/additional-packs.md) guide for detailed steps on downloading
+   and installing the binary.
+
+2. Log in to the Palette system console.
+
+3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the registry, click the
+   three-dot button > **Sync**. Wait for the registry synchronization to complete.
+
+4. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise cluster. Refer to the
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
+
+5. Scale down the `palette-controller-manager` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
+   `*` with the suffix associated with your namespace.
+
+   ```shell
+   kubectl scale deployment palette-controller-manager --replicas=0 --namespace cluster-mgmt-*
+   ```
+
+6. Scale down the `cluster-management-agent` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
+   `*` with the suffix associated with your namespace.
+
+   ```shell
+   kubectl scale deployment cluster-management-agent --replicas=0 --namespace cluster-mgmt-*
+   ```
+
+7. Confirm that both deployments have been scaled down to zero replicas. Replace `*` with the suffix associated with
+   your namespace.
+
+   ```shell
+   kubectl get deployments --namespace cluster-mgmt-*
+   ```
+
+8. Check the image used by the `ingress-nginx-controller` DaemonSet in the `ingress-nginx` namespace.
+
+   ```shell
+   kubectl get daemonset ingress-nginx-controller --namespace ingress-nginx --output yaml | grep 'image:'
+   ```
+
+9. Once you identify the image, update its tag to `v1.13.7`. You can use the `kubectl set image` command to update the
+   image.
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.3`, update it to
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the name
+  of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.3`, update it to
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the
+  name of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+</TabItem>
+
+<TabItem value="Palette VerteX" label="Palette VerteX">
+
+1. Contact your Palette support representative to obtain the `airgap-vertex-nginx` binary version `1.13.7`. Ensure the
+   SHA of the binary is `ea6d7f28a24e100998ea382ab2d206f81dc33776ac98091815e794fb35b215ce`. Once obtained, upload the
+   `airgap-vertex-nginx` binary to the registry. Follow the
+   [Usage Instructions](../../downloads/palette-vertex/additional-packs.md) guide for detailed steps on downloading and
+   installing the binary.
+
+2. Log in to the Palette VerteX system console.
+
+3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the registry, click the
+   three-dot button > **Sync**. Wait for the registry synchronization to complete.
+
+4. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise cluster. Refer to the
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
+
+5. Scale down the `palette-controller-manager` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
+   `*` with the suffix associated with your namespace.
+
+   ```shell
+   kubectl scale deployment palette-controller-manager --replicas=0 --namespace cluster-mgmt-*
+   ```
+
+6. Scale down the `cluster-management-agent` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
+   `*` with the suffix associated with your namespace.
+
+   ```shell
+   kubectl scale deployment cluster-management-agent --replicas=0 --namespace cluster-mgmt-*
+   ```
+
+7. Confirm that both deployments have been scaled down to zero replicas. Replace `*` with the suffix associated with
+   your namespace.
+
+   ```shell
+   kubectl get deployments --namespace cluster-mgmt-*
+   ```
+
+8. Check the image used by the `ingress-nginx-controller` DaemonSet in the `ingress-nginx` namespace.
+
+   ```shell
+   kubectl get daemonset ingress-nginx-controller --namespace ingress-nginx --output yaml | grep 'image:'
+   ```
+
+9. Once you identify the image, update its tag to `v1.13.7`. You can use the `kubectl set image` command to update the
+   image.
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.3`, update it to
+  `gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the name
+  of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=gcr.io/spectro-images-public/release-fips/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+- If the `ingress-nginx-controller` DaemonSet is using the image
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.3`, update it to
+  `us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7`. Replace `<container-name>` with the
+  name of the container.
+
+  ```shell
+  kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.13.7 --namespace ingress-nginx
+  ```
+
+</TabItem>
+
+</Tabs>
+
+#### Airgap Workload Clusters Using the Nginx Pack
+
+If you have any airgap workload clusters using the affected version of the Nginx pack, you must update the cluster
+profile to version `1.13.7` of the Nginx pack. Follow the steps below to download the updated pack and modify your
+cluster profile.
+
+<Tabs>
+
+<TabItem value="Palette Enterprise" label="Palette Enterprise">
+
+1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.13.7`. Once obtained,
+   upload the `airgap-pack-nginx` binary to the registry. Follow the
+   [Usage Instructions](../../downloads/self-hosted-palette/additional-packs.md) guide for detailed steps on downloading
+   and installing the binary.
+
+2. Log in to the Palette system console.
+
+3. From the left main menu, select **Administration > Pack Registries**. Then, next to the registry, click the three-dot
+   button > **Sync**. Wait for the registry synchronization to complete.
+
+4. Log in to the Palette console.
+
+5. Update all cluster profiles currently using the affected version of the Nginx pack. Refer to the
+   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
+   for instructions on how to update a cluster profile.
+
+6. Apply the profile updates to all affected clusters. Refer to the
+   [Apply Profile Updates to Clusters](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#apply-profile-updates-to-clusters)
+   guide to learn how to apply profile updates to clusters.
+
+</TabItem>
+
+<TabItem value="Palette VerteX" label="Palette VerteX">
+
+1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.13.7`. Follow the
+   [Usage Instructions](../../downloads/palette-vertex/additional-packs.md) guide for detailed steps on downloading and
+   installing the binary.
+
+2. Log in to the Palette VerteX system console.
+
+3. From the left main menu, select **Administration > Pack Registries**. Then, next to the registry, click the three-dot
+   button > **Sync**. Wait for the registry synchronization to complete.
+
+4. Log in to the Palette VerteX console.
+
+5. Update all cluster profiles currently using the affected version of the Nginx pack. Refer to the
+   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
+   for instructions on how to update a cluster profile.
+
+6. Apply the profile updates to all affected clusters. Refer to the
+   [Apply Profile Updates to Clusters](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#apply-profile-updates-to-clusters)
+   guide to learn how to apply profile updates to clusters.
+
+</TabItem>
+
+</Tabs>
 
 ### References
 
