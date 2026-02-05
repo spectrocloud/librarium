@@ -46,8 +46,6 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 <!-- prettier-ignore-start -->
 
-- <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> Kubernetes
-  clusters require at least three nodes to operate in high availability mode.
 
 <!-- prettier-ignore-end -->
 
