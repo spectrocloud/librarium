@@ -23,6 +23,7 @@ In this tutorial, you will:
 - Create a maintenance policy
 - Create a cluster template that references the profile and policy
 - Deploy two clusters from the template
+- Assign a cluster profile variable value per cluster
 - Update the template and upgrade both clusters
 
 You can complete this tutorial using one of the following workflows:
@@ -77,9 +78,15 @@ Use this workflow if you prefer a visual and guided experience in the Palette co
 
 ### Import a Cluster Profile
 
+This workflow imports a cluster profile that already includes a **cluster profile variable** named `hello_replicas`. You
+will assign a different value for `dev` and `prod` at deployment time.
+
 1. In the Palette UI, navigate to **Profiles**.
-2. Click **Import Cluster Profile**
-3. Paste this JSON into the Import Cluster Profile Window
+
+2. Select **Import Cluster Profile**.
+
+3. Paste this JSON into the Import Cluster Profile window.
+
    ```json
    {
      "metadata": {
@@ -176,21 +183,37 @@ Use this workflow if you prefer a visual and guided experience in the Palette co
                  "name": "Palette Community Registry",
                  "kind": "oci",
                  "isPrivate": true,
-                 "isSyncSupported": true,
-                 "providerType": "pack"
+                 "providerType": "pack",
+                 "isSyncSupported": true
                }
-             },
-             "values": "pack:\n  content:\n    images:\n      - image: ghcr.io/spectrocloud/hello-universe:1.2.0\n\nmanifests:\n  hello-universe:\n    images:\n      hellouniverse: ghcr.io/spectrocloud/hello-universe:1.2.0\n    apiEnabled: false\n    namespace: hello-universe\n    port: 8080\n    replicas: 1"
+             }
            }
          ]
        },
-       "variables": []
+       "variables": [
+         {
+           "name": "hello_replicas",
+           "displayName": "Hello Universe Replicas",
+           "format": "number",
+           "required": true,
+           "defaultValue": "1",
+           "immutable": false,
+           "hidden": false,
+           "isSensitive": false,
+           "inputType": "text"
+         }
+       ]
      }
    }
    ```
-4. Click **Validate**.
-5. Click **Confirm**.
-6. Open the cluster profile named `aws-cluster-profile-for-cluster-template` and review the layers.
+
+4. Select **Validate**.
+
+5. Select **Confirm**.
+
+6. Open the cluster profile named `brent-aws-profile-for-cluster-template` and review the layers.
+
+7. Select the **Variables** tab and confirm a variable named `hello_replicas` exists.
 
 The cluster profile exists and is ready to use in a cluster template.
 
@@ -209,7 +232,7 @@ The maintenance policy controls when upgrades can start for clusters that use th
 1. In the Palette UI, navigate to **Cluster Templates**.
 2. Select **Add Cluster Template**.
 3. Enter a template name and select **AWS** as the cloud type.
-4. In the cluster profile section, attach the imported cluster profile and select the version you imported.
+4. In the cluster profile section, attach the imported cluster profile and select version `1.0.0`.
 5. In the policy section, attach the maintenance policy.
 6. Save the cluster template.
 
@@ -223,7 +246,11 @@ The cluster template exists and references the cluster profile and maintenance p
 4. Select the cluster template you created.
 5. Name the cluster `dev`.
 6. Select the AWS cloud account, region, and other required cluster settings.
-7. Select **Create**.
+7. In **Cluster Profile Variables**, set:
+
+   - `hello_replicas = 1`
+
+8. Select **Create**.
 
 Wait for the cluster status to report **Running**.
 
@@ -237,7 +264,11 @@ Repeat the same process to create a second cluster.
 4. Select the cluster template you created.
 5. Name the cluster `prod`.
 6. Select the AWS cloud account, region, and other required cluster settings.
-7. Select **Create**.
+7. In **Cluster Profile Variables**, set:
+
+   - `hello_replicas = 2`
+
+8. Select **Create**.
 
 Wait for the cluster status to report **Running**.
 
@@ -251,11 +282,15 @@ Validate both clusters from the Palette UI.
 4. Select the **Profile** tab.
 5. Confirm the cluster template and profile version match your template configuration.
 6. Repeat the same validation for `prod`.
+7. Confirm the `hello-universe` workload replica count differs:
+
+   - `dev` has **1** replica.
+   - `prod` has **2** replicas.
 
 ### Create a New Cluster Profile Version with Kubecost
 
 1. On the left main menu, select **Profiles**.
-2. Select your imported cluster profile.
+2. Select your imported cluster profile `brent-aws-profile-for-cluster-template`.
 3. Create a new version, such as `1.1.0`.
 4. Add the Kubecost pack to the new version.
 5. Save the new version.
@@ -302,6 +337,9 @@ Palette triggers upgrades for clusters attached to the template, including `dev`
 Use this workflow if you prefer to manage cluster templates and clusters as code.
 
 This workflow starts from scratch and does not reuse resources created through the UI workflow.
+
+Note: This workflow focuses on cluster templates, policies, and upgrades as code. The UI workflow demonstrates a simple
+cluster profile variable (`hello_replicas`) assigned per cluster.
 
 ### Configure the Terraform Provider
 
