@@ -46,9 +46,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 <!-- prettier-ignore-end -->
 
-- When scaling down a Palette Optimized Canonical Kubernetes cluster with two nodes, ensure you do not delete the leader
-  node. In this configuration, one node is the leader (and voter), while the other is a spare. Deleting the leader will
-  render the cluster inaccessible, as database updates are not replicated to the spare node.
 
 ## Minimum Device Requirements
 
