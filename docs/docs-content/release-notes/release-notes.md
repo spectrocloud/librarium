@@ -21,7 +21,7 @@ tags: ["release-notes"]
   for further information.
 
 - [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.X is now
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.27 is now
   available. This appliance version uses the Nginx controller v1.13.7.
 
 ## January 30, 2026 - Release 4.8.25
