@@ -13,7 +13,12 @@ tags: ["release-notes"]
 
 ## February 6, 2026 - Component Updates {#component-updates-2026-06}
 
-The following components have been updated for Palette version 4.8.6 - 4.8.25.
+The following components have been updated for Palette version 4.8.6 - 4.8.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.27  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.27  |
 
 ### Packs
 
@@ -29,21 +34,25 @@ The following components have been updated for Palette version 4.8.6 - 4.8.25.
 | ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
 | Amazon EFS                         | CSI        | :white_check_mark: | :x:                | 2.3.0       |
 | Argo CD                            | Add-on     | :white_check_mark: | :x:                | 9.3.4       |
-| Crossplane                         | Add-on     | :white_check_mark: | :x:                | 2.1.3       |
 | Istio                              | Add-on     | :white_check_mark: | :x:                | 1.28.3      |
 | MetalLB                            | Add-on     | :white_check_mark: | :x:                | 0.15.3      |
-| Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.3      |
-| Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
+| Nginx                              | Add-on     | :white_check_mark: | :x:                | 1.13.7      |
 | Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.11     |
 | Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
-| RKE2                               | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
-| RKE2                               | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
-| RKE2                               | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.34.2      |
 | K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.33.6      |
 | K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.32.10     |
 | K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.31.14     |
 
 ## February 5, 2026 - Release 4.8.27
+
+The following component updates are applicable to this release:
+
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Improvements
 
