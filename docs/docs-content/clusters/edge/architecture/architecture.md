@@ -43,7 +43,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   - ARM64 architecture
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../../../deployment-modes/agent-mode/)
-  - High availability mode with one or two nodes.
 
 <!-- prettier-ignore-end -->
 
