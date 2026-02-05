@@ -20,7 +20,6 @@ tags: ["release-notes"]
   [Security Advisory 008- Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008--nginx-ingress-vulnerabilities)
   for further information.
 
-
 ## January 30, 2026 - Release 4.8.25
 
 ### Breaking Changes
