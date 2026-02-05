@@ -25,7 +25,7 @@ specific needs, with granular governance and enterprise-grade security.
 
 Make sure to check out the [Getting Started](../getting-started/getting-started.md) section to learn how you can use
 Palette to deploy and update your Kubernetes clusters. This section contains hands-on tutorials for Amazon Web Services
-(AWS), Microsoft Azure and Google Cloud Platform (GCP).
+(AWS), Microsoft Azure, Google Cloud Platform (GCP), and VMware.
 
 :::
 
