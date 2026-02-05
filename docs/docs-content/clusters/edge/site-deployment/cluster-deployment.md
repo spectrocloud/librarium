@@ -42,7 +42,8 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 <!-- prettier-ignore-end -->
 
-- Two-node clusters operating in high availability mode only support K3s and Palette Optimized Canonical Kubernetes. Other Kubernetes distributions are not supported.
+- Two-node clusters operating in high availability mode only support K3s and Palette Optimized Canonical Kubernetes.
+  Other Kubernetes distributions are not supported.
 
 <!-- prettier-ignore-start -->
 
