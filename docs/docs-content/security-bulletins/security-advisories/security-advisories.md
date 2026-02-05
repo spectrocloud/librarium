@@ -42,7 +42,7 @@ controller. Until the migration to Traefik ingress is complete, we will be upgra
 which will remediate this vulnerability.
 
 Palette version 4.8.27 uses Nginx controller version 1.13.7. Refer
-to the [release notes](../../release-notes/release-notes.md#february-6-2026---release-48x) for further information.
+to the [release notes](../../release-notes/release-notes.md#february-6-2026---release-4827) for further information.
 
 ### Affected Deployments
 
