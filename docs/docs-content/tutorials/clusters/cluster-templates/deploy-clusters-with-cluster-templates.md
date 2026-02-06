@@ -17,10 +17,20 @@ environments.
 This tutorial introduces cluster templates, a Palette feature that helps you define a repeatable cluster configuration,
 enforce maintenance windows, and upgrade clusters as a group.
 
+Cluster templates reference two kinds of building blocks:
+
+- **Cluster profiles**, which define the cluster’s software and infrastructure configuration.
+- **Cluster template policies**, which define operational governance for a fleet of clusters (for example, when upgrades
+  are allowed to start).
+
+A **maintenance policy** is one type of cluster template policy. Currently, maintenance policies are the
+only cluster template policy type supported by Palette. As Palette adds more policy types, the workflow remains the same:
+you create the policy you need and link it to your cluster template.
+
 In this tutorial, you will:
 
 - Import or create a cluster profile
-- Create a maintenance policy
+- Create a cluster template policy (a maintenance policy)
 - Create a cluster template that references the profile and policy
 - Deploy two clusters from the template
 - Assign a cluster profile variable value per cluster
@@ -41,7 +51,7 @@ Before you begin, ensure you have:
 
 - A Palette account with permission to:
   - Create cluster profiles
-  - Create maintenance policies
+  - Create cluster template policies
   - Create cluster templates
   - Create clusters
 - Access to an AWS account that is registered in Palette if you use the Palette UI workflow
@@ -219,6 +229,12 @@ The cluster profile exists and is ready to use in a cluster template.
 
 ### Create a Maintenance Policy
 
+Cluster template policies define operational governance for clusters deployed by a cluster template. A maintenance policy
+is one type of cluster template policy and is used to control when upgrades can start.
+
+Currently, maintenance policies are the only cluster template policy type supported by Palette. As more
+policy types are added, you can create and link additional policy types the same way.
+
 1. In the Palette UI, navigate to **Policies** > **Cluster Config Policies**.
 2. Select **Add Policy**.
 3. Enter a policy name.
@@ -236,7 +252,7 @@ The maintenance policy controls when upgrades can start for clusters that use th
 5. In the policy section, attach the maintenance policy.
 6. Save the cluster template.
 
-The cluster template exists and references the cluster profile and maintenance policy.
+The cluster template exists and references the cluster profile and cluster template policy.
 
 ### Deploy a Dev Cluster from the Template
 
@@ -340,6 +356,7 @@ This workflow mirrors the Palette UI workflow. You will:
 
 * Create a cluster profile that defines a cluster profile variable
 * Reference that variable in an add-on pack
+* Create a cluster template policy (a maintenance policy)
 * Deploy two clusters from the same cluster template
 * Assign different variable values to each cluster
 
@@ -617,9 +634,8 @@ removed.
 
 ## Wrap-Up
 
-In this tutorial, you standardized cluster provisioning and upgrades by creating a cluster profile, maintenance policy,
-and cluster template. You then used the cluster template to provision dev and prod clusters and roll out an upgrade that
-added Kubecost.
+In this tutorial, you standardized cluster provisioning and upgrades by creating a cluster profile, a maintenance policy, and a cluster template. You then used the cluster template to provision dev and prod clusters,
+assign variable values per cluster, and roll out a profile-based upgrade across the fleet.
 
 ## Next Steps
 
