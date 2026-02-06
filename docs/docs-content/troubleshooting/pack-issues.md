@@ -10,6 +10,49 @@ tags: ["troubleshooting", "packs"]
 
 The following are common scenarios that you may encounter when using Packs.
 
+## Scenario - Configure OIDC for Palette eXtended Kubernetes Edge (PXK-E) 1.33.6
+
+<!-- prettier-ignore-start -->
+
+Clusters configured with
+<VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> pack version
+1.33.6 and an OIDC provider fail to deploy successfully. The Palette eXtended Kubernetes Edge (PXK-E) pack version
+1.34.2 allows OIDC configuration.
+
+<!-- prettier-ignore-end -->
+
+Use the following steps to manually configure OIDC for your clusters.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Profiles**. Choose the affected cluster profile.
+
+3. Select the Kubernetes layer. Then, click on the **Values** option to reveal the YAML editor.
+
+4. Remove the following lines from the `config.clusterConfiguration.apiServer.extraArgs` field.
+
+   ```yaml
+   name: "authentication-config
+   value: "/etc/kubernetes/authentication-config.yaml"
+   ```
+
+5. Add the entry under the `config.clusterConfiguration.apiServer.extraVolumes` field.
+
+   ```yaml
+   - name: authentication-config
+     hostPath: /etc/kubernetes/authentication-config.yaml
+     mountPath: /etc/kubernetes/authentication-config.yaml
+     pathType: File
+     readOnly: true
+   ```
+
+6. Save your change by clicking **Confirm Updates**. Then, click **Save Changes**.
+
+7. From the left main menu, select **Profiles**. Choose the affected cluster. Palette displays the **Updates** button in
+   the top right-hand corner of the page. Click on the **Updates** button to apply your cluster profile changes.
+
 ## Scenario - Pods with NamespaceLabels are Stuck on Deployment
 
 When deploying a workload cluster with packs that declare `namespaceLabels`, the associated Pods never start if the
