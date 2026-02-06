@@ -16,8 +16,8 @@ The following are common scenarios that you may encounter when using Packs.
 
 Clusters configured with
 <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> pack version
-1.33.6 and an OIDC provider fail to deploy successfully. The Palette eXtended Kubernetes Edge (PXK-E) pack version
-1.34.2 allows OIDC configuration.
+1.33.6 and an OIDC provider fail to deploy successfully. Palette eXtended Kubernetes Edge (PXK-E) pack versions
+1.34.2 and later allows OIDC configuration.
 
 <!-- prettier-ignore-end -->
 
