@@ -334,12 +334,14 @@ Palette triggers upgrades for clusters attached to the template, including `dev`
 
 ## Provision and Upgrade Clusters Using Terraform
 
-Use this workflow if you prefer to manage cluster templates and clusters as code.
+Use this workflow if you prefer to manage cluster templates, cluster profiles, and clusters as code.
 
-This workflow starts from scratch and does not reuse resources created through the UI workflow.
+This workflow mirrors the Palette UI workflow. You will:
 
-Note: This workflow focuses on cluster templates, policies, and upgrades as code. The UI workflow demonstrates a simple
-cluster profile variable (`hello_replicas`) assigned per cluster.
+* Create a cluster profile that defines a cluster profile variable
+* Reference that variable in an add-on pack
+* Deploy two clusters from the same cluster template
+* Assign different variable values to each cluster
 
 ### Configure the Terraform Provider
 
@@ -369,12 +371,18 @@ variable "palette_project" {
   description = "Palette project name"
   type        = string
 }
+
+variable "cloud_account_id" {
+  description = "Cloud account ID registered in Palette"
+  type        = string
+}
 ```
 
 Create `terraform.tfvars`.
 
 ```hcl
 palette_project = "Default"
+cloud_account_id = "REPLACE_ME"
 ```
 
 Initialize Terraform.
@@ -389,59 +397,91 @@ Terraform has been successfully initialized!
 
 ### Create a Cluster Profile
 
-Use the tabs to select the cloud provider.
-
-<Tabs>
-
-<TabItem label="AWS" value="aws">
+In this step, you create a cluster profile that includes a cluster profile variable named `hello_replicas`. This variable
+controls the replica count of the `hello-universe` add-on.
 
 ```hcl
 resource "spectrocloud_cluster_profile" "profile" {
-  name        = "tf-aws-profile"
-  description = "AWS cluster profile created with Terraform"
+  name        = "tf-cluster-template-profile"
+  description = "Cluster profile with profile variables"
   cloud       = "aws"
   type        = "cluster"
   version     = "1.0.0"
+
+  pack {
+    name    = "ubuntu-aws"
+    tag     = "22.04"
+    uid     = "ubuntu-aws"
+    layer   = "os"
+  }
+
+  pack {
+    name    = "kubernetes"
+    tag     = "1.32.3"
+    uid     = "kubernetes"
+    layer   = "k8s"
+  }
+
+  pack {
+    name    = "cni-calico"
+    tag     = "3.29.3"
+    uid     = "cni-calico"
+    layer   = "cni"
+  }
+
+  pack {
+    name    = "csi-aws-ebs"
+    tag     = "1.41.0"
+    uid     = "csi-aws-ebs"
+    layer   = "csi"
+  }
+
+  pack {
+    name    = "hello-universe"
+    tag     = "1.2.0"
+    uid     = "hello-universe"
+    layer   = "addon"
+
+    values = <<-EOT
+pack:
+  content:
+    images:
+      - image: ghcr.io/spectrocloud/hello-universe:1.2.0
+
+manifests:
+  hello-universe:
+    apiEnabled: false
+    namespace: hello-universe
+    port: 8080
+    replicas: '{{ .spectro.var.hello_replicas }}'
+EOT
+  }
+
+  profile_variables {
+    variable {
+      name          = "hello_replicas"
+      display_name  = "Hello Universe Replicas"
+      description   = "Number of replicas for the hello-universe workload"
+      format        = "number"
+      default_value = 1
+      required      = true
+    }
+  }
 }
 ```
-
-</TabItem>
-
-<TabItem label="Azure" value="azure">
-
-```hcl
-resource "spectrocloud_cluster_profile" "profile" {
-  name        = "tf-azure-profile"
-  description = "Azure cluster profile created with Terraform"
-  cloud       = "azure"
-  type        = "cluster"
-  version     = "1.0.0"
-}
-```
-
-</TabItem>
-
-</Tabs>
 
 Plan and apply.
 
 ```bash
 terraform plan
-```
-
-```bash hideClipboard title="Example Output"
-Plan: 1 to add, 0 to change, 0 to destroy.
-```
-
-```bash
 terraform apply -auto-approve
 ```
 
-```bash hideClipboard title="Example Output"
-spectrocloud_cluster_profile.profile: Creation complete
+Validate in the Palette UI:
 
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
+1. Navigate to **Profiles**
+2. Select `tf-cluster-template-profile`
+3. Confirm the **Variables** tab lists `hello_replicas`
 
 Validate the cluster profile in the Palette UI.
 
@@ -451,54 +491,31 @@ Validate the cluster profile in the Palette UI.
 ### Create a Maintenance Policy
 
 ```hcl
-resource "spectrocloud_cluster_config_policy" "weekly_maintenance" {
-  name    = "tf-weekly-maintenance-policy"
+resource "spectrocloud_cluster_config_policy" "maintenance" {
+  name    = "tf-weekly-maintenance"
   context = "project"
 
   schedules {
-    name         = "sunday-maintenance"
+    name         = "weekly-window"
     start_cron   = "0 2 * * SUN"
     duration_hrs = 4
   }
 }
 ```
 
-Plan and apply.
-
-```bash
-terraform plan
-```
-
-```bash hideClipboard title="Example Output"
-Plan: 1 to add, 0 to change, 0 to destroy.
-```
+Apply the changes.
 
 ```bash
 terraform apply -auto-approve
 ```
 
-```bash hideClipboard title="Example Output"
-spectrocloud_cluster_config_policy.weekly_maintenance: Creation complete
-
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
-
-Validate the policy in the Palette UI.
-
-1. On the left main menu, select **Policies** > **Cluster Config Policies**.
-2. Confirm the policy exists.
+---
 
 ### Create a Cluster Template
 
-Use the tabs to select the cloud provider.
-
-<Tabs>
-
-<TabItem label="AWS" value="aws-template">
-
 ```hcl
 resource "spectrocloud_cluster_config_template" "template" {
-  name       = "tf-aws-template"
+  name       = "tf-cluster-template"
   cloud_type = "aws"
   context    = "project"
 
@@ -507,233 +524,92 @@ resource "spectrocloud_cluster_config_template" "template" {
   }
 
   policy {
-    id   = spectrocloud_cluster_config_policy.weekly_maintenance.id
+    id   = spectrocloud_cluster_config_policy.maintenance.id
     kind = "maintenance"
   }
 }
 ```
 
-</TabItem>
-
-<TabItem label="Azure" value="azure-template">
-
-```hcl
-resource "spectrocloud_cluster_config_template" "template" {
-  name       = "tf-azure-template"
-  cloud_type = "azure"
-  context    = "project"
-
-  cluster_profile {
-    id = spectrocloud_cluster_profile.profile.id
-  }
-
-  policy {
-    id   = spectrocloud_cluster_config_policy.weekly_maintenance.id
-    kind = "maintenance"
-  }
-}
-```
-
-</TabItem>
-
-</Tabs>
-
-Plan and apply.
-
-```bash
-terraform plan
-```
-
-```bash hideClipboard title="Example Output"
-Plan: 1 to add, 0 to change, 0 to destroy.
-```
+Apply the changes.
 
 ```bash
 terraform apply -auto-approve
 ```
 
-```bash hideClipboard title="Example Output"
-spectrocloud_cluster_config_template.template: Creation complete
+Validate in the Palette UI:
 
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
+* The template references the cluster profile and maintenance policy
 
-Validate the template in the Palette UI.
+---
 
-1. On the left main menu, select **Cluster Templates**.
-2. Confirm the cluster template exists and references the profile and policy.
+### Deploy Dev and Prod Clusters with Different Variable Values
 
-### Deploy Dev and Prod Clusters from the Template
-
-This tutorial provisions two clusters. Use the tabs to select the cloud provider and cluster resource.
-
-<Tabs>
-
-<TabItem label="AWS" value="aws-clusters">
+Use the same cluster template, but assign different values to the `hello_replicas` variable.
 
 ```hcl
 resource "spectrocloud_cluster_aws" "dev" {
   name             = "tf-dev"
   cloud_account_id = var.cloud_account_id
-  tags             = ["env:dev"]
+
+  cluster_template {
+    id = spectrocloud_cluster_config_template.template.id
+  }
 
   cluster_profile {
-    id = spectrocloud_cluster_profile.profile.id
+    variable {
+      name  = "hello_replicas"
+      value = 1
+    }
   }
 }
 
 resource "spectrocloud_cluster_aws" "prod" {
   name             = "tf-prod"
   cloud_account_id = var.cloud_account_id
-  tags             = ["env:prod"]
+
+  cluster_template {
+    id = spectrocloud_cluster_config_template.template.id
+  }
 
   cluster_profile {
-    id = spectrocloud_cluster_profile.profile.id
+    variable {
+      name  = "hello_replicas"
+      value = 2
+    }
   }
 }
 ```
 
-</TabItem>
-
-<TabItem label="Azure" value="azure-clusters">
-
-```hcl
-resource "spectrocloud_cluster_azure" "dev" {
-  name             = "tf-dev"
-  cloud_account_id = var.cloud_account_id
-  tags             = ["env:dev"]
-
-  cluster_profile {
-    id = spectrocloud_cluster_profile.profile.id
-  }
-}
-
-resource "spectrocloud_cluster_azure" "prod" {
-  name             = "tf-prod"
-  cloud_account_id = var.cloud_account_id
-  tags             = ["env:prod"]
-
-  cluster_profile {
-    id = spectrocloud_cluster_profile.profile.id
-  }
-}
-```
-
-</TabItem>
-
-</Tabs>
-
-Plan and apply.
+Apply the changes.
 
 ```bash
 terraform plan
-```
-
-```bash hideClipboard title="Example Output"
-Plan: 2 to add, 0 to change, 0 to destroy.
-```
-
-```bash
 terraform apply -auto-approve
 ```
 
-```bash hideClipboard title="Example Output"
-spectrocloud_cluster_*.dev: Creation complete
-spectrocloud_cluster_*.prod: Creation complete
+---
 
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-```
+### Validate the Deployments
 
-Validate both clusters in the Palette UI.
+In the Palette UI:
 
-1. On the left main menu, select **Clusters**.
-2. Select `tf-dev` and confirm the status is **Running**.
-3. Select `tf-prod` and confirm the status is **Running**.
+1. Navigate to **Clusters**
+2. Select `tf-dev`
+3. Confirm the `hello-universe` workload has **1 replica**
+4. Select `tf-prod`
+5. Confirm the `hello-universe` workload has **2 replicas**
 
-### Upgrade Clusters Using an Updated Profile Version
+This confirms that the same cluster profile and template were reused, while the cluster profile variable allowed
+environment-specific behavior.
 
-This tutorial uses a profile version update to drive the upgrade workflow.
-
-1. Create a new cluster profile version, such as `1.1.0`.
-2. Add Kubecost to the new version.
-
-Update the cluster profile resource to the new version and apply.
-
-```bash
-terraform plan
-```
-
-```bash hideClipboard title="Example Output"
-Plan: 1 to change, 0 to add, 0 to destroy.
-```
-
-```bash
-terraform apply -auto-approve
-```
-
-```bash hideClipboard title="Example Output"
-spectrocloud_cluster_profile.profile: Modifications complete
-
-Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
-```
-
-Update the cluster template to reference the updated profile and apply.
-
-```bash
-terraform plan
-```
-
-```bash hideClipboard title="Example Output"
-Plan: 1 to change, 0 to add, 0 to destroy.
-```
-
-```bash
-terraform apply -auto-approve
-```
-
-```bash hideClipboard title="Example Output"
-spectrocloud_cluster_config_template.template: Modifications complete
-
-Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
-```
-
-Trigger an immediate upgrade by setting `upgrade_now` to a new timestamp, and apply.
-
-```bash
-terraform plan
-```
-
-```bash hideClipboard title="Example Output"
-Plan: 1 to change, 0 to add, 0 to destroy.
-```
-
-```bash
-terraform apply -auto-approve
-```
-
-```bash hideClipboard title="Example Output"
-spectrocloud_cluster_config_template.template: Modifications complete
-
-Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
-```
-
-Validate the upgrade in the Palette UI.
-
-1. On the left main menu, select **Clusters**.
-2. Select `tf-dev` and confirm the cluster profile version updated.
-3. Confirm the Kubecost layer appears and reports a healthy status.
-4. Repeat the same validation for `tf-prod`.
+---
 
 ### Cleanup
 
-Destroy Terraform managed resources when you are done.
+Destroy all Terraform-managed resources.
 
 ```bash
 terraform destroy --auto-approve
-```
-
-```bash hideClipboard title="Example Output"
-Destroy complete! Resources: <number> destroyed.
 ```
 
 Confirm in the Palette UI that the clusters, cluster template, cluster profile, and maintenance policy have been
