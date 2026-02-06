@@ -50,7 +50,7 @@ Use the following steps to manually configure OIDC for your clusters.
 
 6. Save your changes by clicking **Confirm Updates**. Then, click **Save Changes**.
 
-7. From the left main menu, select **Profiles**. Choose the affected cluster. Palette displays the **Updates** button in
+7. From the left main menu, select **Clusters**. Choose the affected cluster. Palette displays the **Updates** button in
    the top right-hand corner of the page. Click on the **Updates** button to apply your cluster profile changes.
 
 ## Scenario - Pods with NamespaceLabels are Stuck on Deployment
