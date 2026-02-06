@@ -5,9 +5,9 @@ ACCESS_TOKEN=$ACCESS_TOKEN
 DELAY=1  # seconds between requests
 # Developer portal links to check with dots (.) escaped
 DEVELOPER_PORTAL_LINKS=(
-    "developers\.redhat\.com"
-    "www\.intel\.com"
-    "github\.com"
+    "developers\.redhat\.com",
+    "www\.intel\.com",
+    "github\.com",
     "developer\.hashicorp\.com",
     "www\.packer\.io",
     "www\.gnu\.org",
@@ -16,6 +16,9 @@ DEVELOPER_PORTAL_LINKS=(
     "docs\.openstack\.org",
     "upwind\.io",
     "wiz\.io",
+    "linux\.die\.net",
+    "mysql\.com",
+    "dev\.mysql\.com",
 )
 LINKS_FILE="all_links.txt"
 BROKEN_LINKS_FILE="link_report_developer_portals.txt"
