@@ -19,7 +19,8 @@ additional details regarding vulnerabilities and offering remediation steps.
 - **CVEs**: [CVE-2026-1580](https://github.com/kubernetes/kubernetes/issues/136677),
   [CVE-2026-24512](https://github.com/kubernetes/kubernetes/issues/136678),
   [CVE-2026-24513](https://github.com/kubernetes/kubernetes/issues/136679),
-  [CVE-2026-24514](https://github.com/kubernetes/kubernetes/issues/136680)
+  [CVE-2026-24514](https://github.com/kubernetes/kubernetes/issues/136680),
+  [CVE-2025-15566](https://github.com/kubernetes/kubernetes/issues/136789)
 
 ### Summary
 
@@ -32,6 +33,7 @@ The following vulnerabilities _do not_ affect our products, as we do not use the
 - CVE-2026-1580 - (`auth-method` annotation)
 - CVE-2026-24512 - (`rules.http.paths.path`)
 - CVE-2026-24513 - (`auth-url` protection)
+- CVE-2025-15566 (`auth-proxy-set-headers`)
 
 The following vulnerability _does_ impact Palette Enterprise and Palette VerteX deployments:
 
@@ -367,6 +369,7 @@ For additional information, refer to the following GitHub Security Advisories:
 - [CVE-2026-24512: ingress-nginx rules.http.paths.path nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136678)
 - [CVE-2026-24513: ingress-nginx auth-url protection bypass](https://github.com/kubernetes/kubernetes/issues/136679)
 - [CVE-2026-24514: ingress-nginx Admission Controller denial of service](https://github.com/kubernetes/kubernetes/issues/136680)
+- [CVE-2025-15566: ingress-nginx auth-proxy-set-headers nginx configuration injection](https://github.com/kubernetes/kubernetes/issues/136789)
 
 ## Security Advisory 005 - `runc` Container Vulnerabilities Affecting Kubernetes Cluster Runtimes
 
