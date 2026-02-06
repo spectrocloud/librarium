@@ -7,35 +7,28 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 50
 ---
 
-Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. The
-following policies include all the permissions needed for Palette to deploy and manage clusters on AWS.
+Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. These
+permissions must be granted to the IAM User or IAM Role that you use to connect your AWS account to Palette.
 
-- **PaletteControllerPolicy**
+There are two options for granting permissions to Palette. You can use the [Core IAM Policies](#core-iam-policies) or
+the [Minimum Permissions Policies](#minimum-permissions-policies):
 
-- **PaletteControlPlanePolicy**
+- The Core IAM policies are a set of AWS managed and customer-managed policies that grant broad permissions for Palette
+  to operate.
 
-- **PaletteNodesPolicy**
-
-- **PaletteDeploymentPolicy**
-
-Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS)
-requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to
-review the IAM policy.
+- The Minimum Permissions policies are a set of customer-managed policies that are designed to follow the
+  [principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+  Use the dynamic policy to allow Palette to operate and create VPC resources as needed or the static policy to deploy
+  clusters within an existing VPC without provisioning or deleting foundational network resources.
 
 :::warning
 
-You can attach a maximum of ten managed policies to an IAM User or role. Exceeding this limit will result in cluster
+You can attach a maximum of ten managed policies to an IAM User or Role. Exceeding this limit will result in cluster
 deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies
 into a custom-managed policy. You can learn more about AWS IAM limits in the
 [IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
 
 :::
-
-If you want to narrow down the IAM permissions, you can use the [Minimum Permissions](#minimum-permissions-policies)
-policies. These policies are designed to follow the
-[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
-You can also use the Static Policy for deploying clusters within an existing VPC without provisioning or deleting
-foundational network resources.
 
 :::tip
 
@@ -46,29 +39,40 @@ You can use Palette CLI to verify you have setup the correct permissions. Check 
 
 ## Core IAM Policies
 
-The four core IAM policies are required for Palette to operate.
+The following core IAM policies include all the permissions needed for Palette to deploy and manage clusters on AWS:
+
+- **PaletteControllerPolicy**
+- **PaletteControlPlanePolicy**
+- **PaletteNodesPolicy**
+- **PaletteDeploymentPolicy**
+
+If you want to deploy AWS EKS clusters, make sure to also attach the **PaletteControllersEKSPolicy** on top of the core
+policies. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to review the IAM policy.
+
+Additional IAM policies may be required depending on the use case. Check out the
+[Global Role Additional Policies](#global-role-additional-policies) section for more information.
 
 <Tabs queryString="iam-policies">
 
-<TabItem label="Controller Policy" value="Controller Policy">
+<TabItem label="PaletteControllerPolicy" value="palette-controller-policy">
 
 <PartialsComponent category="permissions" name="aws-controller-policy" />
 
 </TabItem>
 
-<TabItem label="Control Plane Policy" value="Control Plane Policy">
+<TabItem label="PaletteControlPlanePolicy" value="palette-control-plane-policy">
 
 <PartialsComponent category="permissions" name="aws-control-plane-policy" />
 
 </TabItem>
 
-<TabItem label="Nodes Policy" value="Nodes Policy">
+<TabItem label="PaletteNodesPolicy" value="palette-nodes-policy">
 
 <PartialsComponent category="permissions" name="aws-nodes-policy" />
 
 </TabItem>
 
-<TabItem label="Deployment Policy" value="Deployment Policy">
+<TabItem label="PaletteDeploymentPolicy" value="palette-deployment-policy">
 
 <PartialsComponent category="permissions" name="aws-deployment-policy" />
 
@@ -83,34 +87,64 @@ The following policies are designed from the
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
 [Core IAM Policies](#core-iam-policies).
 
-The **Minimum Dynamic Permissions** grants broad permissions across EC2, VPC, and Elastic Container Registry (ECR),
-allowing complete control over the lifecycle of virtual network and compute resources. This includes creating,
-modifying, and deleting VPCs, subnets, internet gateways, and route tables, as well as managing Docker images in ECR.
+When using these policies, you must also create the required CloudFormation stack for CAPA roles manually. Ensure to
+complete the steps in the [Create CloudFormation Stacks for Palette](#create-cloudformation-stacks-for-palette) section
+after [adding your minimum permissions policies](#add-minimum-permissions-policies-to-iam-user-or-role).
 
-In contrast, the **Static Policy** is more restrictive, omitting permissions for creating and deleting core VPC
-components and excluding ECR access. However, it includes additional permissions for managing EC2 volumes and accessing
-S3 bucket encryption configurations.
+### Add Minimum Permissions Policies to IAM User or Role
 
-Both policies provide similar access to CloudFormation, Elastic Load Balancing, IAM roles, and Secrets Manager. However,
-the **Dynamic Policy** supports full EC2 and network resource control, while the **Static Policy** is tailored for
-managing existing infrastructure without provisioning or deleting foundational network resources.
+Add at least one or more of these policies to your IAM User or Role based on your use case:
+
+- **Minimum IaaS Dynamic Permissions** allows full lifecycle provisioning and management of EC2, VPC, and load balancing
+  resources, with IAM access limited to passing Cluster API–managed roles and scoped Secrets Manager usage.
+
+- **Minimum IaaS Static Permissions** allows management of EC2 instances, security groups, and load balancers within
+  existing VPC infrastructure, while restricting core network provisioning and limiting IAM access to Cluster
+  API–managed roles with scoped Secrets Manager usage.
+
+- **Minimum EKS Dynamic Permissions** allows full lifecycle provisioning of EKS clusters and node groups, including
+  required EC2 and VPC resources, with scoped IAM permissions for OIDC provider management and Cluster API role usage to
+  enable IRSA.
+
+- **Minimum EKS Static Permissions** allows management of EKS clusters and node groups within pre-existing EC2 and VPC
+  infrastructure, with restricted network provisioning and scoped IAM permissions for OIDC provider management and
+  Cluster API role usage to enable IRSA.
 
 <Tabs queryString="min-permissions">
-<TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
+
+<TabItem label="Minimum IaaS Dynamic Permissions" value="minimum-iaas-dynamic-permissions">
 
 The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
-for deploying clusters through Palette.
+for deploying AWS IaaS clusters through Palette.
 
-<PartialsComponent category="permissions" name="aws-dynamic-permissions" />
+<PartialsComponent category="permissions" name="aws-iaas-dynamic-permissions" />
 
 </TabItem>
 
-<TabItem label="Minimum Static Permissions" value="Minimum Static Permissions">
+<TabItem label="Minimum IaaS Static Permissions" value="minimum-iaas-static-permissions">
 
 The following policy allows Palette to operate within an existing VPC while retaining minimal permissions for deploying
-clusters through Palette.
+AWS IaaS clusters through Palette.
 
-<PartialsComponent category="permissions" name="aws-static-permissions" />
+<PartialsComponent category="permissions" name="aws-iaas-static-permissions" />
+
+</TabItem>
+
+<TabItem label="Minimum EKS Dynamic Permissions" value="minimum-eks-dynamic-permissions">
+
+The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
+for deploying AWS EKS clusters through Palette.
+
+<PartialsComponent category="permissions" name="aws-eks-dynamic-permissions" />
+
+</TabItem>
+
+<TabItem label="Minimum EKS Static Permissions" value="minimum-eks-static-permissions">
+
+The following policy allows Palette to operate within an existing VPC while retaining minimal permissions for deploying
+AWS EKS clusters through Palette.
+
+<PartialsComponent category="permissions" name="aws-eks-static-permissions" />
 
 </TabItem>
 
@@ -120,26 +154,94 @@ clusters through Palette.
 
 The following are important points to be aware of.
 
+- The
+
 - These permissions specified do not include all the permissions required for all possible use cases and for taking full
   advantage of all Palette features. Additional permissions may be required based on the specific use case.
-
-- Ensure that the IAM Role or IAM User created contain all the core policies defined above, or one of the minimum
-  permissions policies.
 
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
   Break policy into multiple inline policies or create new managed policies.
 
 - The following IAM warning is expected and can be ignored:
 
-> These policies define some actions, resources, or conditions that do not provide permissions. _To grant access,
-> policies must have an action that has an applicable resource or condition_.
+  > These policies define some actions, resources, or conditions that do not provide permissions. _To grant access,
+  > policies must have an action that has an applicable resource or condition_.
 
 :::
+
+### Create CloudFormation Stacks for Palette
+
+When using the minimum permissions policies, you must manually create the CloudFormation stack that Palette uses to
+create the required [CAPA](https://github.com/kubernetes-sigs/cluster-api-provider-aws) roles. This is not required when
+using the [core policies](#core-iam-policies), as the stack is created automatically using the more permissive policies.
+
+1. Use the following command to create a file named `palette-cloudformation-input-template.yaml` with the necessary
+   CloudFormation template for creating the required CAPA roles.
+
+   <PartialsComponent category="permissions" name="aws-palette-cloud-formation-input-template" />
+
+2. Once the file is created, use the following steps in the AWS Console or AWS CLI to create the CloudFormation stack.
+
+   <Tabs queryString="cfn-stack">
+
+   <TabItem label="AWS Console" value="aws-console">
+
+   1. Log in to the [AWS Management Console](https://aws.amazon.com/console/) and navigate to the **CloudFormation**
+      service.
+
+   2. Create a new stack by clicking on the **Create stack** button and selecting **With new resources (standard)**.
+
+   3. Leave the **Choose an existing template** option selected, and under the **Specify template** section, select
+      **Upload a template file**. Click **Choose file** and select the `palette-cloudformation-input-template.yaml` file
+      you created earlier. Click **Next**.
+
+   4. Provide the **Stack name** as `cluster-api-provider-aws-sigs-k8s-io` and click **Next**.
+
+   5. On the **Configure stack options** page, check the box for **I acknowledge that AWS CloudFormation might create
+      IAM resources with customized names**.
+
+      Configure any additional options as needed and click **Next**.
+
+   6. Review the stack configuration and click **Submit** to create the CloudFormation stack.
+
+   7. Wait for the stack creation to complete. You can monitor the progress in the CloudFormation console.
+
+   </TabItem>
+
+   <TabItem label="AWS CLI" value="aws-cli">
+
+   1. Use the following command to create the CloudFormation stack using AWS CLI. Make sure to replace `<aws-region>`
+      with the AWS region you are using for your cluster deployments.
+
+      This command assumes you are in the same directory where the `palette-cloudformation-input-template.yaml` file is
+      located.
+
+      ```bash
+      aws cloudformation create-stack \
+        --stack-name cluster-api-provider-aws-sigs-k8s-io \
+        --template-body file://palette-cloudformation-input-template.yaml \
+        --capabilities CAPABILITY_NAMED_IAM \
+        --region <aws-region>
+      ```
+
+      ```shell title="Example output"
+      {
+          "StackId": "arn:aws:cloudformation:us-west-1:123456789012:stack/cluster-api-provider-aws-sigs-k8s-io/8cc59d10-0364-11f1-83cd-0affdad4978f"
+      }
+      ```
+
+   2. Wait for the stack creation to complete. You can monitor the progress in the
+      [CloudFormation console](https://console.aws.amazon.com/cloudformation/home).
+
+   </TabItem>
+
+   </Tabs>
 
 ## Controllers EKS Policy
 
 If you plan to deploy AWS EKS host clusters, make sure to attach the **PaletteControllersEKSPolicy** on top of the
-[Core IAM](#core-iam-policies) or [Minimum Permissions](#minimum-permissions-policies) policies.
+[Core IAM](#core-iam-policies). If you are using the [minimum permissions policies](#minimum-permissions-policies) for
+EKS (static or dynamic), this is _not_ required.
 
 <PartialsComponent category="permissions" name="aws-eks-controller-policy" />
 

@@ -1,0 +1,76 @@
+---
+partial_category: permissions
+partial_name: aws-iaas-static-permissions
+---
+**Last Update**: February 14, 2026
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "EC2Permissions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:DescribeAddresses",
+                "ec2:DescribeInstances",
+                "ec2:TerminateInstances",
+                "ec2:DeleteTags",
+                "ec2:DescribeTags",
+                "ec2:CreateTags",
+                "ec2:DescribeDhcpOptions",
+                "ec2:RunInstances",
+                "ec2:DescribeNatGateways",
+                "ec2:DescribeSecurityGroups",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:DescribeImages",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeVpcs",
+                "ec2:CreateSecurityGroup",
+                "ec2:DeleteSecurityGroup",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeRouteTables"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ELBPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:DeleteLoadBalancer",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:CreateLoadBalancer",
+                "elasticloadbalancing:DescribeTags",
+                "elasticloadbalancing:ConfigureHealthCheck",
+                "elasticloadbalancing:AddTags",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                "elasticloadbalancing:ModifyLoadBalancerAttributes"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "IAMPassRole",
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": [
+                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+            ]
+        },
+        {
+            "Sid": "SecretsManagerPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:CreateSecret",
+                "secretsmanager:DeleteSecret",
+                "secretsmanager:TagResource"
+            ],
+            "Resource": [
+                "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+            ]
+        }
+    ]
+}
+```
