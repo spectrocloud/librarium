@@ -50,7 +50,8 @@ If you want to deploy AWS EKS clusters, make sure to also attach the **PaletteCo
 policies. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to review the IAM policy.
 
 Additional IAM policies may be required depending on the use case. Check out the
-[Global Role Additional Policies](#global-role-additional-policies) section for more information.
+[Additional IAM Policies for Specific Use Cases](#additional-iam-policies-for-specific-use-cases) section for more
+information.
 
 <Tabs queryString="iam-policies">
 
@@ -87,9 +88,24 @@ The following policies are designed from the
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
 [Core IAM Policies](#core-iam-policies).
 
-When using these policies, you must also create the required CloudFormation stack for CAPA roles manually. Ensure to
-complete the steps in the [Create CloudFormation Stacks for Palette](#create-cloudformation-stacks-for-palette) section
-after [adding your minimum permissions policies](#add-minimum-permissions-policies-to-iam-user-or-role).
+After adding these policies to your IAM User or Role, you must also create the required CloudFormation stack for Palette
+manually in your AWS region. Finally, you must configure the Kubernetes layer of your cluster profiles to use the
+manually created CloudFormation stack instead of allowing Palette to manage the stack automatically.
+
+<!-- prettier-ignore-start -->
+
+:::info
+
+If you are wanting to use minimum permissions policies for deploying AWS IaaS clusters, you must use the
+<VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack for the
+Kubernetes layer of your cluster profiles.
+
+This is because the required `manageCloudFormationStackManually` property to use the manually created CloudFormation
+stack is only supported in this pack.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ### Add Minimum Permissions Policies to IAM User or Role
 
@@ -154,10 +170,10 @@ AWS EKS clusters through Palette.
 
 The following are important points to be aware of.
 
-- The
-
 - These permissions specified do not include all the permissions required for all possible use cases and for taking full
-  advantage of all Palette features. Additional permissions may be required based on the specific use case.
+  advantage of all Palette features. Additional permissions may be required based on the specific use case. Check out
+  the [Additional IAM Policies for Specific Use Cases](#additional-iam-policies-for-specific-use-cases) section for more
+  information.
 
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
   Break policy into multiple inline policies or create new managed policies.
@@ -237,7 +253,111 @@ using the [core policies](#core-iam-policies), as the stack is created automatic
 
    </Tabs>
 
-## Controllers EKS Policy
+### Enable Manual CloudFormation Stack Management
+
+After creating the CloudFormation stack, you must configure the Kubernetes layer of your cluster profiles to use the
+manually created stack instead of allowing Palette to manage the stack automatically.
+
+<Tabs queryString="cluster-profile">
+
+<TabItem label="AWS IaaS Cluster Profiles" value="aws-iaas-cluster-profiles">
+
+:::info
+
+Only the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+supports the `manageCloudFormationStackManually` configuration.
+
+:::
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Profiles**..
+
+3. Choose an existing cluster profile or
+   [create a new cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
+   For more information on cluster profiles, refer to the
+   [cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) page.
+
+4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
+   Pack** page.
+
+5. In the YAML editor, add the `manageCloudFormationStackManually` field and set the value to `true` as shown below.
+
+   ```yaml {5-6}
+   pack:
+   ---
+   kubeadmconfig:
+   ---
+   manageCloudFormationStackManually:
+     enabled: true
+   ```
+
+6. Select **Confirm Updates** to save the changes to the Kubernetes layer.
+
+7. Click **Save Changes** to save the cluster profile.
+
+</TabItem>
+
+<TabItem label="AWS EKS Cluster Profiles" value="aws-eks-cluster-profiles">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Profiles**..
+
+3. Choose an existing cluster profile or
+   [create a new cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
+   For more information on cluster profiles, refer to the
+   [cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) page.
+
+4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
+   Pack** page.
+
+5. In the YAML editor, add the `manageCloudFormationStackManually` field and set the value to `true` as shown below.
+
+   ```yaml {7-8}
+   pack:
+   ---
+   managedControlPlane:
+   ---
+   managedMachinePool:
+   ---
+   manageCloudFormationStackManually:
+     enabled: true
+   ```
+
+6. If you want to provide a different role for the Control Plane and Worker Node pools, you can specify the role names
+   in the `managedControlPlane` and `managedMachinePool` sections as shown below. If you do not specify role names, the
+   default role names created by the CloudFormation stack will be used.
+
+   ```yaml title="Example role names" {4,7}
+   pack:
+   ---
+   managedControlPlane:
+     roleName: "eks-controlplane.cluster-api-provider-aws.sigs.k8s.io"
+   ---
+   managedMachinePool:
+     roleName: "eks-nodegroup.cluster-api-provider-aws.sigs.k8s.io"
+   ---
+   manageCloudFormationStackManually:
+     enabled: true
+   ```
+
+7. Select **Confirm Updates** to save the changes to the Kubernetes layer.
+
+8. Click **Save Changes** to save the cluster profile.
+
+</TabItem>
+
+</Tabs>
+
+#### IAM Role Naming Requirements for AWS EKS
+
+TBD: Add instructions to configure the IAM roles for the control plane and worker nodes when using the minimum
+permissions policies for AWS EKS clusters.
+
+## Additional IAM Policies for Specific Use Cases
+
+### Controllers EKS Policy
 
 If you plan to deploy AWS EKS host clusters, make sure to attach the **PaletteControllersEKSPolicy** on top of the
 [Core IAM](#core-iam-policies). If you are using the [minimum permissions policies](#minimum-permissions-policies) for
@@ -245,7 +365,7 @@ EKS (static or dynamic), this is _not_ required.
 
 <PartialsComponent category="permissions" name="aws-eks-controller-policy" />
 
-## Host Resource Groups Policy
+### Host Resource Groups Policy
 
 If you plan to deploy AWS IaaS clusters on
 [Amazon EC2 Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html), you
@@ -254,7 +374,7 @@ must attach the **PaletteHostResourceGroupsPolicy** on top of the [Core IAM](#co
 
 <PartialsComponent category="permissions" name="aws-host-resource-groups-policy" />
 
-## Global Role Additional Policies
+### Global Role Additional Policies
 
 There may be situations where additional node-level policies must be added to your deployment. For instance, when you
 create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add
