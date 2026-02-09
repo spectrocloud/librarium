@@ -162,6 +162,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
+- The Spectro Cloud Ask AI bot is now configured to use a Model Context Protocol (MCP) server. You can integrate it with
+  your IDEs and other AI tools to retrieve answers from the Spectro Cloud documentation site. Use the **Ask AI** widget
+  and expand the **Use MCP** drop-down menu to get started.
+
 ### Packs
 
 #### Pack Notes
