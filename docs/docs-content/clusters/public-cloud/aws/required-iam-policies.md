@@ -90,7 +90,7 @@ You can use these policies to narrow the permissions Palette requires to operate
 
 After adding these policies to your IAM User or Role, you must also create the required CloudFormation stack for Palette
 manually in your AWS region. Finally, you must configure the Kubernetes layer of your cluster profiles to use the
-manually created CloudFormation stack instead of allowing Palette to manage the stack automatically.
+manually created CloudFormation stack.
 
 <!-- prettier-ignore-start -->
 
@@ -256,7 +256,8 @@ using the [core policies](#core-iam-policies), as the stack is created automatic
 ### Enable Manual CloudFormation Stack Management
 
 After creating the CloudFormation stack, you must configure the Kubernetes layer of your cluster profiles to use the
-manually created stack instead of allowing Palette to manage the stack automatically.
+manually created stack. This is because Palette needs to know to use the existing stack instead of trying to create and
+manage the stack automatically, which would not work with the minimum permissions policies.
 
 <Tabs queryString="cluster-profile">
 
@@ -325,22 +326,65 @@ supports the `manageCloudFormationStackManually` configuration.
      enabled: true
    ```
 
-6. If you want to provide a different role for the Control Plane and Worker Node pools, you can specify the role names
-   in the `managedControlPlane` and `managedMachinePool` sections as shown below. If you do not specify role names, the
-   default role names created by the CloudFormation stack will be used.
+6. If you want to provide a different IAM role names for node groups, you can specify the role names in the
+   `managedControlPlane` and `managedMachinePool` sections. If you do not specify role names, the default role names
+   created by the CloudFormation stack will be used.
 
-   ```yaml title="Example role names" {4,7}
+   These default role names are shown in the following example. You can change the role names to your desired names, but
+   make sure to follow the IAM Role Naming Requirements.
+
+   ```yaml title="Example role names" {5,9}
    pack:
    ---
    managedControlPlane:
+     ...
      roleName: "eks-controlplane.cluster-api-provider-aws.sigs.k8s.io"
    ---
    managedMachinePool:
+     ...
      roleName: "eks-nodegroup.cluster-api-provider-aws.sigs.k8s.io"
    ---
-   manageCloudFormationStackManually:
-     enabled: true
    ```
+
+   <details>
+
+   <summary> IAM Role Naming Requirements </summary>
+
+   When manually creating and providing IAM roles for EKS clusters through pack `roleName` values, all role names must
+   follow the naming pattern `*.cluster-api-provider-aws.sigs.k8s.io`. This includes:
+
+   - Control plane roles
+   - Node group roles
+   - Fargate profile roles
+
+   The IAM permissions granted are scoped to this specific role naming pattern through the resource constraint defined
+   in the [Minimum EKS Dynamic/Static Permissions](#add-minimum-permissions-policies-to-iam-user-or-role)
+   (`arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io`). Deviating from this naming convention will result in
+   `AccessDenied` errors when the system attempts to perform operations such as `iam:GetRole`, `iam:PassRole`, or
+   `iam:ListAttachedRolePolicies`.
+
+   If your organizational policies or specific use cases require a different role naming pattern, you must explicitly
+   add the corresponding resource ARN pattern to the IAM policy's Resource field to grant the necessary permissions.
+
+   ```json title="Example Resource ARN pattern for custom role names" {12}
+   ...
+        {
+            "Sid": "IAMRolePermissions",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:PassRole",
+                "iam:ListAttachedRolePolicies"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io",
+                "arn:*:iam::*:role/my-custom-eks-role-*"
+            ]
+        }
+   ...
+   ```
+
+   </details>
 
 7. Select **Confirm Updates** to save the changes to the Kubernetes layer.
 
@@ -349,11 +393,6 @@ supports the `manageCloudFormationStackManually` configuration.
 </TabItem>
 
 </Tabs>
-
-#### IAM Role Naming Requirements for AWS EKS
-
-TBD: Add instructions to configure the IAM roles for the control plane and worker nodes when using the minimum
-permissions policies for AWS EKS clusters.
 
 ## Additional IAM Policies for Specific Use Cases
 
