@@ -19,6 +19,9 @@ DEVELOPER_PORTAL_LINKS=(
     "linux\.die\.net",
     "mysql\.com",
     "dev\.mysql\.com",
+    "cloudinit\.readthedocs\.io",
+    "netplan\.io",
+    "canonical\.com",
 )
 LINKS_FILE="all_links.txt"
 BROKEN_LINKS_FILE="link_report_developer_portals.txt"
