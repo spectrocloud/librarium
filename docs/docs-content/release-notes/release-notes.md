@@ -30,6 +30,8 @@ tags: ["release-notes"]
   The migration is seamless for new and existing Palette installations. This change follows the
   [Ingress NGINX Retirement](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5747 -->
+
 - Palette now supports the option to skip worker node upgrades on
   [AWS IaaS clusters](../clusters/public-cloud/aws/create-cluster.md). For example, if you have worker pools running
   critical databases or real-time processing services, you can enable this option to maintain service continuity during
@@ -41,9 +43,15 @@ tags: ["release-notes"]
   [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-94 -->
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) is now available as
+  MAAS (Metal as a Service) boot resources in addition to the existing ISO format.
+
 #### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9695 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9205 -->
 
 - A [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) warning is now
   displayed when modifying operating system (OS) or Kubernetes configurations for clusters linked to a cluster template.
@@ -51,9 +59,23 @@ tags: ["release-notes"]
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9696 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7488 -->
 
 - Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9668 -->
+
+- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
+  supports the migration of VMs with NVM Express (NVMe) backed disks.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7563 -->
+
+- The Palette UI now supports direct navigation to the relevant profile layer when users click any profile component of
+  a running cluster from the overview page, instead of defaulting to editing the Operating System layer.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-5869 -->
+
+- - Palette's internal database, MongoDB, has been upgraded to version 8.0.
 
 #### Deprecations and Removals
 
@@ -65,15 +87,34 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-#### Features
-
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7783 -->
 
 <!-- prettier-ignore-start -->
 
 - The <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> pack has exited Tech Preview and is now ready for production workloads.
 
 <!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7529 -->
+
+- The [Palette Optimized Canonical distribution](../clusters/edge/architecture/architecture.md) now supports
+  [network overlay](../clusters/edge/networking/vxlan-overlay.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7394 -->
+
+- The [kube-vip](../clusters/edge/networking/kubevip.md) version used in Edge cluster deployments is now 1.0.3.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7991 -->
+
+- The [Palette Agent installer](../deployment-modes/agent-mode/install-agent-host.md) now displays a progress bar during
+  the download of the Palette agent binary.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-5767 -->
+
+- The Kubernetes boot time on [Edge clusters](../clusters/edge/edge.md) has now been reduced through the optimization of
+  cache fetching.
 
 #### Bug Fixes
 
@@ -94,49 +135,67 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.27.1 of the
+- Terraform version 0.27.X of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.27.1 of the
+- Crossplane version 0.27.X of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2118 -->
+
+- The
+  [`spectrocloud_cluster_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)
+  now provides the `skip_k8s_upgrade` configuration for machine pools. When enabled, the Kubernetes version upgrade for
+  this worker pool will be skipped provided that it remains within the allowed N-3 version skew.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1840 -->
+
+- Fixed an issue that caused the [Palette CLI `content upload`](../automation/palette-cli/commands/content.md#upload)
+  command to fail to upload content to the Amazon Elastic Container Registry (ECR) due to non-existent directories or
+  paths expected for deployment.
+
 ### Docs and Education
+
+### Packs
 
 #### Pack Notes
 
-#### OS
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3688 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3643 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3687 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3703 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3635 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3670 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3702 -->
 
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI               | CSI        | :white_check_mark: | :x:                | 1.55.0      |
+| Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.3.7       |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
+| Canonical Kubernetes         | Kubernetes | :white_check_mark: | :x:                | 1.34.2      |
+| Cilium                       | CNI        | :x:                | :white_check_mark: | 1.18.4      |
+| Cilium                       | CNI        | :x:                | :white_check_mark: | 1.18.1      |
+| External Secrets             | Add-on     | :white_check_mark: | :x:                | 1.3.1       |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.6       |
+| Kubernetes (AKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
+| Kubernetes (EKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
+| Kubernetes (GKE)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
+| Nginx                        | Add-on     | :white_check_mark: | :x:                | 1.14.3      |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.x      |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.3      |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
+| Palette Optimized Canonical  | Kubernetes | :white_check_mark: | :x:                | 1.34.2      |
+| Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.6.1      |
+| Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 81.3.1      |
+| RKE2                         | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Traefik                      | Add-on     | :white_check_mark: | :x:                | REPLACE ME  |
 
 #### Deprecations and Removals
 
