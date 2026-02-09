@@ -4,8 +4,7 @@ partial_name: aws-palette-cloud-formation-input-template
 ---
 **Last Update**: February 14, 2026
 
-```bash
-cat <<-EOF > palette-cloudformation-input-template.yaml
+```yaml
 AWSTemplateFormatVersion: 2010-09-09
 Resources:
   AWSIAMInstanceProfileControlPlane:
@@ -460,5 +459,4 @@ Resources:
       - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
       RoleName: nodes.cluster-api-provider-aws.sigs.k8s.io
     Type: AWS::IAM::Role
-EOF
 ```

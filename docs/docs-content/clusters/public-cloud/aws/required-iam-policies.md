@@ -191,8 +191,8 @@ When using the minimum permissions policies, you must manually create the CloudF
 create the required [CAPA](https://github.com/kubernetes-sigs/cluster-api-provider-aws) roles. This is not required when
 using the [core policies](#core-iam-policies), as the stack is created automatically using the more permissive policies.
 
-1. Use the following command to create a file named `palette-cloudformation-input-template.yaml` with the necessary
-   CloudFormation template for creating the required CAPA roles.
+1. Create a file named `palette-cloudformation-input-template.yaml` and copy the contents of the following
+   CloudFormation template. This template is used for creating the required CAPA roles.
 
    <PartialsComponent category="permissions" name="aws-palette-cloud-formation-input-template" />
 
@@ -226,7 +226,7 @@ using the [core policies](#core-iam-policies), as the stack is created automatic
 
    <TabItem label="AWS CLI" value="aws-cli">
 
-   1. Use the following command to create the CloudFormation stack using AWS CLI. Make sure to replace `<aws-region>`
+   8. Use the following command to create the CloudFormation stack using AWS CLI. Make sure to replace `<aws-region>`
       with the AWS region you are using for your cluster deployments.
 
       This command assumes you are in the same directory where the `palette-cloudformation-input-template.yaml` file is
@@ -246,7 +246,7 @@ using the [core policies](#core-iam-policies), as the stack is created automatic
       }
       ```
 
-   2. Wait for the stack creation to complete. You can monitor the progress in the
+   9. Wait for the stack creation to complete. You can monitor the progress in the
       [CloudFormation console](https://console.aws.amazon.com/cloudformation/home).
 
    </TabItem>

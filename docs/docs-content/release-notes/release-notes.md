@@ -41,15 +41,6 @@ tags: ["release-notes"]
   [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
-- The minimum permissions policies for AWS clusters have been revamped to remove certain permissive permissions such as
-  `iam:CreateUser`, `iam:CreateRole`, and `iam:AttachRolePolicy`. There are also further resource constraints added to
-  the existing permissions.
-
-  As a result, there are some additional steps required to use the minimum permissions policies. You must create the
-  required CloudFormation stack for Palette manually in your AWS region, and configure the Kubernetes layer of your
-  cluster profiles to use the manually created stack using a new property. For more details, refer to the
-  [Required IAM Policies for AWS Clusters](../clusters/public-cloud/aws/required-iam-policies.md) documentation.
-
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9695 -->
@@ -59,6 +50,15 @@ tags: ["release-notes"]
   Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
+
+- The minimum permissions policies for AWS clusters have been revamped to remove certain permissive permissions such as
+  `iam:CreateUser`, `iam:CreateRole`, and `iam:AttachRolePolicy`. There are also further resource constraints added to
+  the existing permissions.
+
+  As a result, there are some additional steps required to use the minimum permissions policies. You must create the
+  required CloudFormation stack for Palette manually in your AWS region, and configure the Kubernetes layer of your
+  cluster profiles to use the manually created stack using a new property. For more details, refer to the
+  [Required IAM Policies for AWS Clusters](../clusters/public-cloud/aws/required-iam-policies.md) documentation.
 
 #### Deprecations and Removals
 
