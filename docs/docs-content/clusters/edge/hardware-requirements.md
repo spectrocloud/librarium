@@ -74,5 +74,5 @@ technologies:
 For more information, refer to [Virtual Machine Orchestrator](../../vm-management/vm-management.md).
 
 VMO requires virtual local area network (VLAN) interfaces, bridges, and bonds to be present on Edge hosts. You can
-[configure these network interfaces in Local UI](local-ui/host-management/configure-network-interfaces.md).
-This eliminates the need for external tools such as MAAS.
+[configure these network interfaces in Local UI](local-ui/host-management/configure-network-interfaces.md). This
+eliminates the need for external tools such as MAAS.
