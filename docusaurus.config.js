@@ -84,6 +84,8 @@ const allScripts = [
     "data-modal-full-screen-on-mobile": "false",
     "data-modal-lock-scroll": "false",
     "data-modal-inner-position-left": "auto",
+    "data-mcp-enabled": "true",
+    "data-mcp-server-url": "https://spectro-cloud.mcp.kapa.ai",
     async: true,
   },
   {

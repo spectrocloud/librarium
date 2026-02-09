@@ -51,6 +51,8 @@ tags: ["release-notes"]
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5892 -->
+
 - The minimum permissions policies for AWS clusters have been revamped to remove certain permissive permissions such as
   `iam:CreateUser`, `iam:CreateRole`, and `iam:AttachRolePolicy`. There are also further resource constraints added to
   the existing permissions.
@@ -59,6 +61,10 @@ tags: ["release-notes"]
   required CloudFormation stack for Palette manually in your AWS region, and configure the Kubernetes layer of your
   cluster profiles to use the manually created stack using a new property. For more details, refer to the
   [Required IAM Policies for AWS Clusters](../clusters/public-cloud/aws/required-iam-policies.md) documentation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9696 -->
+
+- Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
 
 #### Deprecations and Removals
 
@@ -73,6 +79,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Features
 
 #### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> pack has exited Tech Preview and is now ready for production workloads.
+
+<!-- prettier-ignore-end -->
 
 #### Bug Fixes
 
@@ -139,7 +151,61 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## February 6, 2026 - Component Updates {#component-updates-2026-06}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.27.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.27  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.27  |
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3662 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3665 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3447 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3588 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3634 -->
+
+| Pack Name                          | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EFS                         | CSI        | :white_check_mark: | :x:                | 2.3.0       |
+| Argo CD                            | Add-on     | :white_check_mark: | :x:                | 9.3.4       |
+| Istio                              | Add-on     | :white_check_mark: | :x:                | 1.28.3      |
+| MetalLB                            | Add-on     | :white_check_mark: | :x:                | 0.15.3      |
+| Nginx                              | Add-on     | :white_check_mark: | :x:                | 1.13.7      |
+| Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.11     |
+| Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.34.2      |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.33.6      |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.32.10     |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.31.14     |
+
+## February 5, 2026 - Release 4.8.27
+
+The following component updates are applicable to this release:
+
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+
+### Improvements
+
+- The internal Palette Nginx controller has been upgraded to v1.13.7 to address multiple Nginx ingress vulnerabilities.
+  Refer to
+  [Security Advisory 008- Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008--nginx-ingress-vulnerabilities)
+  for further information.
+
 ## January 30, 2026 - Release 4.8.25
+
+The following component updates are applicable to this release:
+
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Breaking Changes
 
@@ -331,6 +397,7 @@ The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -344,6 +411,7 @@ The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -375,6 +443,7 @@ The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Features
 
@@ -403,6 +472,7 @@ The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -845,6 +915,7 @@ The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Improvements
 
@@ -955,6 +1026,7 @@ The following component updates are applicable to this release:
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 #### Features
 
@@ -1154,6 +1226,7 @@ The following component updates are applicable to this release:
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1189,6 +1262,7 @@ The following component updates are applicable to this release:
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1216,6 +1290,7 @@ The following component updates are applicable to this release:
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Security Notices
 
