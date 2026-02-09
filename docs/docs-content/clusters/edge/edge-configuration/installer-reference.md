@@ -16,7 +16,7 @@ installation. Refer to the [Site Parameters](#site-parameters) for a list of all
 :::info
 
 The `#cloud-config` value is a required cloud-init header required by the
-[cloud-init](https://cloudinit.readthedocs.io/en/latest/explanation/format.html) standard.
+[cloud-init](https://cloudinit.readthedocs.io/en/latest/reference/index.html) standard.
 
 :::
 
