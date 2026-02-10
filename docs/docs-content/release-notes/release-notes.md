@@ -53,7 +53,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5892 -->
 
-- The minimum permissions policies for AWS clusters have been revamped to remove certain permissive permissions such as
+- The minimum permissions policies for AWS clusters have been revamped to remove certain permissions, such as
   `iam:CreateUser`, `iam:CreateRole`, and `iam:AttachRolePolicy`. There are also further resource constraints added to
   the existing permissions.
 

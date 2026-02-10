@@ -7,24 +7,23 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 50
 ---
 
-Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. These
-permissions must be granted to the IAM User or IAM Role that you use to connect your AWS account to Palette.
+Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. You must grant these permissions to the Identity and Access Management (IAM) User or Role that you use to connect your AWS account to Palette.
 
 There are two options for granting permissions to Palette. You can use the [Core IAM Policies](#core-iam-policies) or
 the [Minimum Permissions Policies](#minimum-permissions-policies):
 
-- The Core IAM policies are a set of AWS managed and customer-managed policies that grant broad permissions for Palette
-  to operate.
+- The Core IAM policies are a set of AWS-managed and customer-managed policies that grant broader permissions for Palette
+  to operate. Using these policies reduces the prerequisites required compared to the minimum permissions policies.
 
 - The Minimum Permissions policies are a set of customer-managed policies that are designed to follow the
   [principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
-  Use the dynamic policy to allow Palette to operate and create VPC resources as needed or the static policy to deploy
+  Use the dynamic policy to allow Palette to operate and create Virtual Private Cloud (VPC) resources as needed, or the static policy to deploy
   clusters within an existing VPC without provisioning or deleting foundational network resources.
 
 :::warning
 
-You can attach a maximum of ten managed policies to an IAM User or Role. Exceeding this limit will result in cluster
-deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies
+You can attach a maximum of ten managed policies to an IAM User or Role. Exceeding this limit results in cluster
+deployment failures. If you have to exceed the limit, consider combining policies
 into a custom-managed policy. You can learn more about AWS IAM limits in the
 [IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
 
@@ -35,7 +34,10 @@ into a custom-managed policy. You can learn more about AWS IAM limits in the
 You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
 [`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
 
-:::
+
+You can use Palette CLI to verify you have set up the correct permissions. Check out the Palette CLI
+[`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
+
 
 ## Core IAM Policies
 
@@ -46,7 +48,7 @@ The following core IAM policies include all the permissions needed for Palette t
 - **PaletteNodesPolicy**
 - **PaletteDeploymentPolicy**
 
-If you want to deploy AWS EKS clusters, make sure to also attach the **PaletteControllersEKSPolicy** on top of the core
+If you want to deploy AWS Elastic Kubernetes Service  (EKS) clusters, make sure to also attach the **PaletteControllersEKSPolicy** on top of the core
 policies. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to review the IAM policy.
 
 Additional IAM policies may be required depending on the use case. Check out the
@@ -96,12 +98,11 @@ manually created CloudFormation stack.
 
 :::info
 
-If you are wanting to use minimum permissions policies for deploying AWS IaaS clusters, you must use the
+If you want to use minimum permissions policies for deploying AWS Infrastructure as a Service (IaaS) clusters, you must use the
 <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack for the
 Kubernetes layer of your cluster profiles.
 
-This is because the required `manageCloudFormationStackManually` property to use the manually created CloudFormation
-stack is only supported in this pack.
+This requirement exists because only the PXK pack supports the `manageCloudFormationStackManually` property required to reference a manually created CloudFormation stack.
 
 :::
 
@@ -109,9 +110,9 @@ stack is only supported in this pack.
 
 ### Add Minimum Permissions Policies to IAM User or Role
 
-Add at least one or more of these policies to your IAM User or Role based on your use case:
+Add at least one of the following policies to your IAM User or Role based on your use case:
 
-- **Minimum IaaS Dynamic Permissions** allows full lifecycle provisioning and management of EC2, VPC, and load balancing
+- **Minimum IaaS Dynamic Permissions** allows full lifecycle provisioning and management of Elastic Compute Cloud (EC2), VPC, and load balancing
   resources, with IAM access limited to passing Cluster API–managed roles and scoped Secrets Manager usage.
 
 - **Minimum IaaS Static Permissions** allows management of EC2 instances, security groups, and load balancers within
@@ -119,8 +120,8 @@ Add at least one or more of these policies to your IAM User or Role based on you
   API–managed roles with scoped Secrets Manager usage.
 
 - **Minimum EKS Dynamic Permissions** allows full lifecycle provisioning of EKS clusters and node groups, including
-  required EC2 and VPC resources, with scoped IAM permissions for OIDC provider management and Cluster API role usage to
-  enable IRSA.
+  required EC2 and VPC resources, with scoped IAM permissions for OpenID Connect (OIDC) provider management and Cluster API role usage to
+  enable IAM roles for service accounts (IRSA).
 
 - **Minimum EKS Static Permissions** allows management of EKS clusters and node groups within pre-existing EC2 and VPC
   infrastructure, with restricted network provisioning and scoped IAM permissions for OIDC provider management and
@@ -171,7 +172,7 @@ AWS EKS clusters through Palette.
 The following are important points to be aware of.
 
 - These permissions specified do not include all the permissions required for all possible use cases and for taking full
-  advantage of all Palette features. Additional permissions may be required based on the specific use case. Check out
+  advantage of all Palette features. Additional permissions may be required based on the specific use case. Review
   the [Additional IAM Policies for Specific Use Cases](#additional-iam-policies-for-specific-use-cases) section for more
   information.
 
@@ -188,7 +189,7 @@ The following are important points to be aware of.
 ### Create CloudFormation Stacks for Palette
 
 When using the minimum permissions policies, you must manually create the CloudFormation stack that Palette uses to
-create the required [CAPA](https://github.com/kubernetes-sigs/cluster-api-provider-aws) roles. This is not required when
+create the required [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws) roles. This is not required when
 using the [core policies](#core-iam-policies), as the stack is created automatically using the more permissive policies.
 
 1. Create a file named `palette-cloudformation-input-template.yaml` and copy the contents of the following
@@ -226,11 +227,7 @@ using the [core policies](#core-iam-policies), as the stack is created automatic
 
    <TabItem label="AWS CLI" value="aws-cli">
 
-   8. Use the following command to create the CloudFormation stack using AWS CLI. Make sure to replace `<aws-region>`
-      with the AWS region you are using for your cluster deployments.
-
-      This command assumes you are in the same directory where the `palette-cloudformation-input-template.yaml` file is
-      located.
+   1. From the same directory where the `palette-cloudformation-input-template.yaml` file is located, execute the following command to create the CloudFormation stack using AWS CLI. Replace `<aws-region>` with the AWS region you are using for your cluster deployments.
 
       ```bash
       aws cloudformation create-stack \
@@ -246,7 +243,7 @@ using the [core policies](#core-iam-policies), as the stack is created automatic
       }
       ```
 
-   9. Wait for the stack creation to complete. You can monitor the progress in the
+   2. Wait for the stack creation to complete. You can monitor the progress in the
       [CloudFormation console](https://console.aws.amazon.com/cloudformation/home).
 
    </TabItem>
@@ -256,8 +253,7 @@ using the [core policies](#core-iam-policies), as the stack is created automatic
 ### Enable Manual CloudFormation Stack Management
 
 After creating the CloudFormation stack, you must configure the Kubernetes layer of your cluster profiles to use the
-manually created stack. This is because Palette needs to know to use the existing stack instead of trying to create and
-manage the stack automatically, which would not work with the minimum permissions policies.
+manually created stack. This ensures that Palette uses the existing stack rather than attempting to create and manage one automatically, which is not supported when using minimum permissions policies.
 
 <Tabs queryString="cluster-profile">
 
@@ -282,7 +278,7 @@ supports the `manageCloudFormationStackManually` configuration.
 4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
    Pack** page.
 
-5. In the YAML editor, add the `manageCloudFormationStackManually` field and set the value to `true` as shown below.
+5. In the YAML editor, add the `manageCloudFormationStackManually.enabled` field and set the value to `true` as shown below.
 
    ```yaml {5-6}
    pack:
@@ -293,9 +289,9 @@ supports the `manageCloudFormationStackManually` configuration.
      enabled: true
    ```
 
-6. Select **Confirm Updates** to save the changes to the Kubernetes layer.
+6. **Confirm Updates** to save the changes to the Kubernetes layer.
 
-7. Click **Save Changes** to save the cluster profile.
+7. **Save Changes** to the cluster profile.
 
 </TabItem>
 
@@ -313,7 +309,7 @@ supports the `manageCloudFormationStackManually` configuration.
 4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
    Pack** page.
 
-5. In the YAML editor, add the `manageCloudFormationStackManually` field and set the value to `true` as shown below.
+5. In the YAML editor, add the `manageCloudFormationStackManually.enabled` field and set the value to `true` as shown below.
 
    ```yaml {7-8}
    pack:
@@ -326,9 +322,9 @@ supports the `manageCloudFormationStackManually` configuration.
      enabled: true
    ```
 
-6. If you want to provide a different IAM role names for node groups, you can specify the role names in the
-   `managedControlPlane` and `managedMachinePool` sections. If you do not specify role names, the default role names
-   created by the CloudFormation stack will be used.
+6. If you want to provide different IAM role names for node groups, you can specify them in the
+   `managedControlPlane` and `managedMachinePool` sections. If you do not specify role names, the default values
+   created by the CloudFormation stack are used.
 
    These default role names are shown in the following example. You can change the role names to your desired names, but
    make sure to follow the IAM Role Naming Requirements.
@@ -359,12 +355,12 @@ supports the `manageCloudFormationStackManually` configuration.
 
    The IAM permissions granted are scoped to this specific role naming pattern through the resource constraint defined
    in the [Minimum EKS Dynamic/Static Permissions](#add-minimum-permissions-policies-to-iam-user-or-role)
-   (`arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io`). Deviating from this naming convention will result in
+   (`arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io`). Deviating from this naming convention results in
    `AccessDenied` errors when the system attempts to perform operations such as `iam:GetRole`, `iam:PassRole`, or
    `iam:ListAttachedRolePolicies`.
 
    If your organizational policies or specific use cases require a different role naming pattern, you must explicitly
-   add the corresponding resource ARN pattern to the IAM policy's Resource field to grant the necessary permissions.
+   add the corresponding resource Amazon resource names (ARN) pattern to the IAM policy's Resource field to grant the necessary permissions.
 
    ```json title="Example Resource ARN pattern for custom role names" {12}
    ...
@@ -386,9 +382,9 @@ supports the `manageCloudFormationStackManually` configuration.
 
    </details>
 
-7. Select **Confirm Updates** to save the changes to the Kubernetes layer.
+7. **Confirm Updates** to save the changes to the Kubernetes layer.
 
-8. Click **Save Changes** to save the cluster profile.
+8. **Save Changes** to the cluster profile.
 
 </TabItem>
 
@@ -419,7 +415,7 @@ There may be situations where additional node-level policies must be added to yo
 create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add
 additional node-level policies, switch to the **Tenant Admin** project, and click on the **Tenant Settings** on the
 **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS
-credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be
+credentials, ensure `Add IAM policies` are enabled. You can specify additional Amazon resource names (ARN) to be
 attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 **AmazonEBSCSIDriverPolicy:**
