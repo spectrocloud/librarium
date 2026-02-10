@@ -43,9 +43,9 @@ across all projects and tenant actions. The project scope audits show the activi
 
 ## Add Update Note
 
-For certain resources, like cluster profiles, you can associate a custom update note in addition to the generic
-audit event log. On a successful save of a cluster profile, you will be prompted to provide an update note about
-the changes made to the profile. This message will be shown when you select an audit log from the list.
+For certain resources, like cluster profiles, you can associate a custom update note in addition to the generic audit
+event log. On a successful save of a cluster profile, you will be prompted to provide an update note about the changes
+made to the profile. This message will be shown when you select an audit log from the list.
 
 ## Push Audit Trails to AWS CloudWatch
 
