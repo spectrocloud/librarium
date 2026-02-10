@@ -144,7 +144,8 @@ customization.
    - IMAGE_REPO
    - CUSTOM_TAG
 
-For more information about preparing the `.arg` file and full sample files, refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/).
+For more information about preparing the `.arg` file and full sample files, refer to
+[Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/).
 
 8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
@@ -500,7 +501,8 @@ required Edge artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-For more information about preparing the `.arg` file, refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
+For more information about preparing the `.arg` file, refer to
+[Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
 
 7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
    include the following arguments. These are the most commonly used arguments.
