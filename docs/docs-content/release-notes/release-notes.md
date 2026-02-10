@@ -55,9 +55,12 @@ tags: ["release-notes"]
 
 - Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5982 -->
+
 - Palette now improves how `volumes` and `volumeMounts` defined in `ClusterPodPreset` or `PodPreset` resources on a
   [self-hosted PCG cluster](../clusters/pcg/deploy-pcg-k8s.md) deployed in Amazon EKS are reconciled with pod-mounted
   files defined under `kubeadmconfig` in the OS layer of an AWS EKS cluster profile used to deploy workload clusters.
+
   Volumes and mounts derived from the OS layer are only added when their resolved `volumes.hostPath.path` or
   `volumeMounts.mountPath` does not already exist in the self-hosted PCG cluster configuration, preventing duplicate
   mounts when the same paths are specified in both locations. Volume and mount names are generated using a hash of the
