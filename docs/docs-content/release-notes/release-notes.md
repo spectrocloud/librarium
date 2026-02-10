@@ -11,6 +11,175 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 6, 2026 - Component Updates {#component-updates-2026-06}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.27.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.27  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.27  |
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3662 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3665 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3447 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3588 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3634 -->
+
+| Pack Name                          | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EFS                         | CSI        | :white_check_mark: | :x:                | 2.3.0       |
+| Argo CD                            | Add-on     | :white_check_mark: | :x:                | 9.3.4       |
+| Istio                              | Add-on     | :white_check_mark: | :x:                | 1.28.3      |
+| MetalLB                            | Add-on     | :white_check_mark: | :x:                | 0.15.3      |
+| Nginx                              | Add-on     | :white_check_mark: | :x:                | 1.13.7      |
+| Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.11     |
+| Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.6      |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.10     |
+| Palette Optimized RKE2             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.14     |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.34.2      |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.33.6      |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.32.10     |
+| K3s                                | Kubernetes | :white_check_mark: | :x:                | 1.31.14     |
+
+## February 5, 2026 - Release 4.8.27
+
+The following component updates are applicable to this release:
+
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+
+### Improvements
+
+- The internal Palette Nginx controller has been upgraded to v1.13.7 to address multiple Nginx ingress vulnerabilities.
+  Refer to
+  [Security Advisory 008- Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008--nginx-ingress-vulnerabilities)
+  for further information.
+
+## January 30, 2026 - Release 4.8.25
+
+The following component updates are applicable to this release:
+
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+
+### Breaking Changes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-6205 -->
+
+- The number of IP addresses allocated for autoscaling
+  [VMware vSphere clusters](../clusters/data-center/vmware/vmware.md) is now based on the **Maximum size** of the worker
+  pool instead of the number of worker nodes currently deployed. This ensures enough IP addresses are reserved upfront
+  for the maximum possible scale of the cluster. As a result, updates to existing VMware vSphere clusters may fail if
+  the IP pool cannot accommodate the **Maximum size**, and enabling autoscaling on new clusters may fail if the IP
+  capacity is insufficient.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-6205 -->
+
+- Autoscaling is now supported for VMware vSphere clusters using an
+  [IP Address Management (IPAM) node pool](../clusters/pcg/manage-pcg/create-manage-node-pool.md) with
+  [static placement configured](../clusters/pcg/deploy-pcg/vmware.md#static-placement-configuration).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5753 -->
+
+- Resource limits for core system components can now be adjusted for Day-1 operations by editing the
+  `palette-agent-config` ConfigMap in the cluster namespace.
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.25 is now
+  available.
+
+<!-- https://https://spectrocloud.atlassian.net/browse/PCOM-160 -->
+
+- Manual disk selection has been enabled for
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) installations.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5517 -->
+
+- Fixed an issue where node groups in EKS clusters were configured with different Classless Inter-Domain Routing (CIDR)
+  values in their launch templates.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5764 -->
+
+- Fixed an issue where Azure and GCP clusters using Kubernetes version 1.34.2 and later experienced Kubelet failures due
+  to the upstream removal of the `--cloud-config` flag.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5781 -->
+
+- Fixed an issue where worker nodes in static AKS clusters were assigned IP addresses from the control plane subnet
+  instead of worker subnet.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9653 -->
+
+- Fixed an issue where self-hosted Palette and Palette VerteX users with the Tenant Viewer role could access password
+  reset links via the Palette API.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9672 -->
+
+- Fixed an issue where namespace-scoped RoleBindings could not be created in the Palette UI for clusters with Palette as
+  an identity provider (IdP) and automatic role binding disabled.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9693 -->
+
+- Fixed a UI issue where pagination did not work when attempting to replace a cluster profile on a cluster.
+
+## January 30, 2026 - Component Updates {#component-updates-2026-05}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.24.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.27.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.27.2  |
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1972 -->
+
+- The
+  [`spectrocloud_registry_oci` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/registry_oci)
+  now supports registry imports using either the registry ID or the registry name.
+
+### Packs
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3587 -->
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Antrea" url="/integrations/?pack=antrea" /> pack version 2.5.1 is now Verified and available in the Palette Registry.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3374 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3636 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3633 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3637 -->
+
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Antrea                       | CNI        | :white_check_mark: | :x:                | 2.5.1       |
+| Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.2.4       |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 2.17.1      |
+| Azure Disk                   | CSI        | :white_check_mark: | :x:                | 1.34.0      |
+| Flannel                      | CNI        | :white_check_mark: | :x:                | 0.28.0      |
+| Flux2                        | Add-on     | :x:                | :white_check_mark: | 2.17.0      |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.5       |
+| Kong                         | Add-on     | :white_check_mark: | :x:                | 3.0.2       |
+| Kubernetes (EKS)             | Kubernetes | :white_check_mark: | :x:                | 1.34        |
+| Kubernetes (GKE)             | Kubernetes | :white_check_mark: | :x:                | 1.34        |
+| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
+| Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.2.1      |
+| Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 80.13.3     |
+| Vault                        | Add-on     | :white_check_mark: | :x:                | 0.32.0      |
+
 ## January 23, 2026 - Component Updates {#component-updates-2026-04}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.24.
@@ -65,7 +234,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 
 | Pack Name               | Layer      | Non-FIPS           | FIPS               | New Version |
 | ----------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Argo CD                 | CSI        | :white_check_mark: | :x:                | 9.2.0       |
+| Argo CD                 | Add-on     | :white_check_mark: | :x:                | 9.2.0       |
 | Amazon EBS CSI          | CSI        | :white_check_mark: | :x:                | 1.54.0      |
 | Amazon EFS              | CSI        | :white_check_mark: | :x:                | 3.3.0       |
 | Calico                  | CNI        | :x:                | :white_check_mark: | 3.31.3      |
@@ -87,6 +256,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -99,6 +270,8 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -129,6 +302,8 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Features
 
@@ -156,6 +331,8 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -597,6 +774,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 The following component updates are applicable to this release:
 
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Improvements
 
@@ -706,6 +885,8 @@ The following component updates are applicable to this release:
 
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 #### Features
 
@@ -904,6 +1085,8 @@ The following component updates are applicable to this release:
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -937,6 +1120,9 @@ The following component updates are applicable to this release:
 - [December 5, 2025 - Component Updates](#component-updates-2025-49) <!-- omit in toc -->
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
+- [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Improvements
 
@@ -963,6 +1149,8 @@ The following component updates are applicable to this release:
 - [December 12, 2025 - Component Updates](#component-updates-2025-50) <!-- omit in toc -->
 - [December 19, 2025 - Component Updates](#component-updates-2025-51) <!-- omit in toc -->
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
+- [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
+- [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 
 ### Security Notices
 
