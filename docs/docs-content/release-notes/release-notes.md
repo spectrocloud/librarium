@@ -172,7 +172,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8064 -->
 
-- Fixed an issue that prevented Palette from clearing NTP values and SSHKeys after they have been removed in
+- Fixed an issue that prevented Palette from clearing NTP values and SSH keys after they have been removed in
   [LocalUI](../clusters/edge/local-ui/local-ui.md), causing the Edge cluster to fail to update successfully.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8075 -->
