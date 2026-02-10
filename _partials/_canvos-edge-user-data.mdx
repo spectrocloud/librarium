@@ -3,12 +3,10 @@ partial_category: palette-edge-canvos-version
 partial_name: canvos-edge-user-data
 ---
 
-1. From the CanvOS directory, copy the **user-data.template** file and name the copy **user-data**. Edit the `user-data` file to include the following fields under `stylus.site`.
+From the CanvOS directory, copy the **user-data.template** file and name the copy **user-data**. Edit the `user-data` file to include the following fields under `stylus.site`.
 	- edgeHostToken
 	- paletteEndpoint
 	- projectName
-
-:::tip
 
 The `user-data` file uses the `cloud-init` `cloud-config` format. The first line of your file must be `#cloud-config` to ensure that `cloud-init` recognizes and applies the configuration correctly.
 
@@ -18,7 +16,5 @@ stylus:
   site:
     ...
 ```
-Refer to **Cloud Init Stages** and the **Edge Installer Configuration Reference** for supported keys and stages.
-
-:::
+Refer to [Cloud Init Stages](./clusters/edge/edge-configuration/cloud-init/) and the [Edge Installer Configuration Reference](./clusters/edge/edge-configuration/installer-reference/) for supported keys and stages.
 
