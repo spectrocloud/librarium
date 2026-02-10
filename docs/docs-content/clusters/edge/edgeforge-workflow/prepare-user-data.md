@@ -95,10 +95,10 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    git tag
    ```
 
-3. Check out the latest available tag. This guide uses the tag v4.8.5 as an example.
+3. Check out the latest available tag. This guide uses the tag v4.7.2 as an example.
 
    ```bash
-   git checkout v4.8.5
+   git checkout v4.7.2
    ```
 
    ### Prepare .arg File
@@ -158,7 +158,7 @@ information about the deployment lifecycle of locally managed Edge hosts, refer 
 
 13. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data`
     file. For more information about cloud-init stages, refer to
-    [Cloud-init Stages](../edge-configuration/cloud-init.md).
+    [Cloud Init Stages](../edge-configuration/cloud-init.md).
 
     To configure cloud-init stages for your Edge host, use the `stages` block. For example, the following configuration
     installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.

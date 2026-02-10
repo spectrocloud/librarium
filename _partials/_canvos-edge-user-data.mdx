@@ -8,7 +8,7 @@ From the CanvOS directory, copy the **user-data.template** file and name the cop
 	- paletteEndpoint
 	- projectName
 
-The `user-data` file uses the `cloud-init` `cloud-config` format. The first line of your file must be `#cloud-config` to ensure that `cloud-init` recognizes and applies the configuration correctly.
+The `user-data` file uses the `cloud-init` `cloud-config` format. The first line of your file must be `#cloud-config` to ensure that `cloud-init` recognizes and applies the configuration correctly. Delete any unused arguments. 
 
 ```shell
 #cloud-config
@@ -16,5 +16,4 @@ stylus:
   site:
     ...
 ```
-Refer to [Cloud Init Stages](/clusters/edge/edge-configuration/cloud-init/) and the [Edge Installer Configuration Reference](/clusters/edge/edge-configuration/installer-reference/) for supported keys and stages.
-
+Refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for more information about configuring your `user-data` file and to see sample files for different use cases. Refer to [Cloud Init Stages](/clusters/edge/edge-configuration/cloud-init/), and the [Edge Installer Configuration Reference](/clusters/edge/edge-configuration/installer-reference/) for supported keys and stages. 

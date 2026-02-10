@@ -118,10 +118,10 @@ customization.
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, check out the newest available tag. This guide uses the tag **v4.8.5** as an example.
+   Otherwise, check out the newest available tag. This guide uses the tag **v4.7.2** as an example.
 
    ```shell
-   git checkout v4.8.5
+   git checkout v4.7.2
    ```
 
 6. Review the files relevant for this guide.
@@ -143,6 +143,8 @@ customization.
    - IMAGE_REGISTRY
    - IMAGE_REPO
    - CUSTOM_TAG
+
+For more information about preparing the `.arg` file and full sample files, refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/).
 
 8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
@@ -283,7 +285,7 @@ customization.
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
-      system.peVersion: v4.8.5
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion: 22
     ```
@@ -297,7 +299,7 @@ customization.
 
     ```hideClipboard bash
     REPOSITORY                   TAG                                    IMAGE ID       CREATED          SIZE
-    spectrocloud/ubuntu          k3s-1.33.5-v4.8.5-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
+    spectrocloud/ubuntu          k3s-1.33.5-v4.7.2-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
 14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
@@ -312,7 +314,7 @@ customization.
     cluster deployment.
 
     ```bash
-    docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.8.5-palette-learn
+    docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.2-palette-learn
     ```
 
 16. After pushing the provider images to the image registry, open a web browser and log in to
@@ -362,7 +364,7 @@ customization.
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
-      system.peVersion: v4.8.5
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion: 22
     ```
@@ -484,10 +486,10 @@ required Edge artifacts.
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, check out the newest available tag. This guide uses **v4.8.5** tag as an example.
+   Otherwise, check out the newest available tag. This guide uses **v4.7.2** tag as an example.
 
    ```shell
-   git checkout v4.8.5
+   git checkout v4.7.2
    ```
 
 6. Review the files relevant for this guide.
@@ -497,6 +499,8 @@ required Edge artifacts.
    - `Earthfile` - Contains a series of commands to create target artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
+
+For more information about preparing the `.arg` file, refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
 
 7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
    include the following arguments. These are the most commonly used arguments.
@@ -675,7 +679,7 @@ Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md)
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
-      system.peVersion: v4.8.5
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion:
     ```
@@ -690,7 +694,7 @@ Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md)
 
     ```hideClipboard bash
     REPOSITORY                   TAG                               IMAGE ID       CREATED          SIZE
-    spectrocloud/opensuse-leap   k3s-1.33.5-v4.8.5-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+    spectrocloud/opensuse-leap   k3s-1.33.5-v4.7.2-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
 14. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
@@ -709,7 +713,7 @@ Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md)
     that the utility created.
 
     ```bash
-    docker push spectrocloud/opensuse-leap:k3s-1.33.5-v4.8.5-palette-learn
+    docker push spectrocloud/opensuse-leap:k3s-1.33.5-v4.7.2-palette-learn
     ```
 
 16. After pushing the provider images to the image registry, open a web browser and log in to
@@ -759,7 +763,7 @@ Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md)
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
-      system.peVersion: v4.8.5
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion:
     ```
