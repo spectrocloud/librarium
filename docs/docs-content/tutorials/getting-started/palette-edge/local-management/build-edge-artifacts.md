@@ -11,7 +11,7 @@ tags: ["getting-started", "tutorial", "edge"]
 
 One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The
 process of building these artifacts is called
-[EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating the
+[EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating the
 installer ISO and provider image artifacts.
 
 - Installer ISO: An ISO image that installs the Palette Edge agent on the host.
@@ -20,10 +20,10 @@ installer ISO and provider image artifacts.
   Kubernetes version during cluster deployment.
 
 This tutorial teaches you how to build the artifacts required for your Edge deployment. Once built, you will be ready to
-learn how to reference them in Edge [cluster profiles](../../../profiles/profiles.md) and how they are used to install
+learn how to reference them in Edge [cluster profiles](../../../../profiles/profiles.md) and how they are used to install
 the Palette agent on hosts.
 
-![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
+![Palette Edge architecture diagram](/static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
 - Access to a public image registry and permissions to push images. This tutorial uses
   [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
   to the
-  [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  [Deploy Cluster with a Private Provider Registry](../../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
   guide for instructions on how to configure the credentials.
 - The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/) with
@@ -81,7 +81,7 @@ While both the `.arg` file and [user-data](./prepare-user-data.md) file are conf
 EdgeForge process, they serve different purposes. The `.arg` file is used to customize the Edge artifact build process.
 For example, you can specify the name of the installer ISO to be built, the Kubernetes distribution and version for the
 provider images, the registry to push the images to, and more. The
-[Edge Artifact Build Configurations](../../../clusters/edge/edgeforge-workflow/palette-canvos/arg.md) page contains a
+[Edge Artifact Build Configurations](../../../../clusters/edge/edgeforge-workflow/palette-canvos/arg.md) page contains a
 list of all the configurable parameters. In contrast, the `user-data` file focuses on customizing the installer ISO.
 When the Edge host boots from the installer ISO, it applies the user data configuration to the host.
 
@@ -130,7 +130,7 @@ cat .arg
 
 :::tip
 
-You can also use the [Appliance Studio](../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
+You can also use the [Appliance Studio](../../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
 Graphic User Interface (GUI) to help you create the `.arg` file.
 
 :::
