@@ -47,10 +47,10 @@ For certain resources, like cluster profiles, you can associate a custom update 
 event log. On a successful save of a cluster profile, you will be prompted to provide an update note about the changes
 made to the profile. This message will be shown when you select an audit log from the list.
 
-## Push Audit Trails to AWS CloudWatch
+## Push Audit Trails to Amazon CloudWatch
 
 You can push the compliance, management, operational, and risk audit logs to
-[AWS CloudWatch](https://aws.amazon.com/cloudwatch/). This enables continuous monitoring, security analysis, resource
+[Amazon CloudWatch](https://aws.amazon.com/cloudwatch/). This enables continuous monitoring, security analysis, resource
 tracking, and troubleshooting of the workload cluster using the event history.
 
 ### Prerequisites
@@ -89,7 +89,7 @@ Ensure that the IAM user or the ROOT user role created has the following IAM pol
 4. Fill in the following details.
 
    - **Audit Name**: Custom name to identify the logs.
-   - **Type**: Choice of monitoring service. Currently, AWS CloudWatch is available.
+   - **Type**: Choice of monitoring service. Currently, CloudWatch is available.
    - **Group**: The log group name obtained from CloudWatch logs for audit trail creation.
    - **Region**: The region of the AWS account.
    - **Credentials** : Use an **Access Key** and **Secret Access Key** to validate the AWS account for pushing the audit
