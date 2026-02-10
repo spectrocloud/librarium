@@ -266,8 +266,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | RKE2                         | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
 | Traefik                      | Add-on     | :white_check_mark: | :x:                | 39.0.0      |
 
-#### Deprecations and Removals
-
 ## February 6, 2026 - Component Updates {#component-updates-2026-06}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.27.
