@@ -96,7 +96,7 @@ Ensure that the IAM user or the ROOT user role created has the following IAM pol
      trails from Palette.
    - **STS**: Use Amazon's unique resource identifier, ARN, to validate the AWS account for pushing the audit trails
      from Palette.
-   - **Stream (Optional)**
+   - **Stream (Optional)**: CloudWatch log stream for audit trail creation.
 
 5. Select **Confirm** to complete the audit trail configuration. Audit trails can be edited and deleted using the
    **three-dot Menu**.
