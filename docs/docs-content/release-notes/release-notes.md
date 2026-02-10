@@ -51,7 +51,7 @@ tags: ["release-notes"]
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-5892 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5582 -->
 
 - The minimum permissions policies for AWS clusters have been revamped to remove certain permissions, such as
   `iam:CreateUser`, `iam:CreateRole`, and `iam:AttachRolePolicy`. There are also further resource constraints added to
