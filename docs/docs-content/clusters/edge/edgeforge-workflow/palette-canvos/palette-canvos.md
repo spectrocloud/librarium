@@ -135,14 +135,14 @@ customization.
 7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
    include the following fields. These are the most commonly used fields.
 
-   - ARCH
-   - OS_DISTRIBUTION
-   - OS_VERSION
-   - K8S_DISTRIBUTION
-   - K8S_VERSION
-   - IMAGE_REGISTRY
-   - IMAGE_REPO
-   - CUSTOM_TAG
+   - `ARCH`
+   - `OS_DISTRIBUTION`
+   - `OS_VERSION`
+   - `K8S_DISTRIBUTION`
+   - `K8S_VERSION`
+   - `IMAGE_REGISTRY`
+   - `IMAGE_REPO`
+   - `CUSTOM_TAG`
 
 For more information about preparing the `.arg` file and full sample files, refer to
 [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/).
@@ -507,14 +507,14 @@ For more information about preparing the `.arg` file, refer to
 7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
    include the following arguments. These are the most commonly used arguments.
 
-   - ARCH
-   - OS_DISTRIBUTION
-   - OS_VERSION
-   - K8S_DISTRIBUTION
-   - K8S_VERSION
-   - IMAGE_REGISTRY
-   - IMAGE_REPO
-   - CUSTOM_TAG
+   - `ARCH`
+   - `OS_DISTRIBUTION`
+   - `OS_VERSION`
+   - `K8S_DISTRIBUTION`
+   - `K8S_VERSION`
+   - `IMAGE_REGISTRY`
+   - `IMAGE_REPO`
+   - `CUSTOM_TAG`
 
 8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
