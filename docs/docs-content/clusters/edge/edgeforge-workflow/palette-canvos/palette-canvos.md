@@ -187,7 +187,8 @@ customization.
               - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
       ```
 
-      This is due to a [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+      This is due to a
+      [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
       which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
 
     :::
