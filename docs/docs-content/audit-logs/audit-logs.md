@@ -26,8 +26,8 @@ across all projects and tenant actions. The project scope audits show the activi
 
     - Users must have the **Project Viewer** role with `audit.get` and `audit.list` permissions for the selected project
       to access the audit logs.
-    - Users must have have the **Tenant Admin** role or the `audit.get` and `audit.list` permissions at the tenant scope
-      to access the audit logs.
+    - Users must have the **Tenant Admin** role or the `audit.get` and `audit.list` permissions at the tenant scope to
+      access the audit logs.
 
 3.  Navigate to the left **Main Menu** and select **Audit Logs**.
 
@@ -47,16 +47,15 @@ For certain resources like the cluster profiles, users can associate a custom up
 audit event log. On a successful save of the cluster profile, the user will be prompted to provide an update note about
 the changes made on the profile. This message will be shown when the user selects an audit log from the list.
 
-## Pushing the Audit Log to the AWS CloudWatch
+## Push Audit Trails to AWS CloudWatch
 
 Spectro Cloud users can now push the compliance, management, operational, and risk audit logs to the
 [AWS CloudWatch](https://aws.amazon.com/cloudwatch/). This enables continuous monitoring, security analysis, resource
 tracking, and troubleshooting of the workload cluster using the event history.
 
-### Permission List
+### Prerequisites
 
-Ensure that the IAM user or the ROOT user role created should have the following IAM policy included for Amazon
-CloudWatch:
+Ensure that the IAM user or the ROOT user role created has the following IAM policy included for Amazon CloudWatch.
 
 ```json
 {
