@@ -1,0 +1,50 @@
+---
+partial_category: palette-edge-canvos-version
+partial_name: canvos-edge-arg-file
+---
+
+1. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to include the following fields. These are the most commonly used fields. 
+	- ARCH
+	- OS_DISTRIBUTION
+	- OS_VERSION
+	- K8S_DISTRIBUTION
+	- K8S_VERSION
+	- IMAGE_REGISTRY
+	- IMAGE_REPO
+	- CUSTOM_TAG
+
+2. Specify the system architecture, OS distribution, and version. These configurations apply to your Edge host's OS both before and after cluster formation.
+
+3. Specify the Kubernetes distribution and version. This is used with the OS distribution and version to create an immutable provider image with your specified OS and Kubernetes.
+
+
+    ::: info
+
+     To build multiple versions of a provider image with different Kubernetes versions, use the `k8s_version.json` file in the repository. You must leave the `K8S_VERSION` field in your `.arg` file empty to use the JSON file. This file is only used when `K8S_VERSION` is not detected as an argument.
+
+    :::
+
+4. Specify the image registry, image repository name, and custom tag for your provider images. The custom tag, together with the Palette agent version (the same number as the Git tag you are using), the version and distribution of Kubernetes, and the OS used by the image forms the tag of the image.
+
+   For example, if your `.arg` file contains the following arguments, the full image reference would be
+   `ttl.sh/ubuntu:k3s-1.33.5-v4.8.5-demo`.
+
+   ```text
+   IMAGE_REGISTRY=ttl.sh
+   IMAGE_REPO=ubuntu
+   CUSTOM_TAG=demo
+   K8S_DISTRIBUTION=k3s
+   K8S_VERSION=1.33.5
+   OS_DISTRIBUTION=ubuntu
+   OS_VERSION=22
+   ```
+
+Refer to [Edge Artifact Build Configurations](./arg.md) for all available .arg configuration parameters.
+
+   :::preview
+
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+
+   :::
+
+   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be `spectrocloud/ubuntu:k3s-1.33.5-v4.8.5-palette-learn`.

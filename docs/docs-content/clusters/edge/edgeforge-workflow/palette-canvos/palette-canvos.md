@@ -118,10 +118,10 @@ customization.
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
+   Otherwise, Check out the newest available tag. This guide uses the tag **v4.8.5** as an example.
 
    ```shell
-   git checkout v4.4.12
+   git checkout v4.8.5
    ```
 
 6. Review the files relevant for this guide.
@@ -132,52 +132,10 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
-   uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
-   `CUSTOM_TAG` argument. Additionally, replace `spectrocloud` with the name of your registry.
 
-   ```bash
-   export CUSTOM_TAG=palette-learn
-   export IMAGE_REGISTRY=spectrocloud
-   ```
+7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-versionedge-arg-file" />
 
-8. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
-   file will use the default values. For example, `ubuntu` is the default operating system, and `demo` is the default
-   tag.
-
-   Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
-
-   :::preview
-
-   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
-   not use this feature in production workloads.
-
-   :::
-
-   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
-   convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
-   `spectrocloud/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
-
-   ```bash
-   cat << EOF > .arg
-   CUSTOM_TAG=$CUSTOM_TAG
-   IMAGE_REGISTRY=$IMAGE_REGISTRY
-   OS_DISTRIBUTION=ubuntu
-   IMAGE_REPO=ubuntu
-   OS_VERSION=22.04
-   K8S_DISTRIBUTION=k3s
-   K8s_VERSION=1.27.2
-   ISO_NAME=palette-edge-installer
-   ARCH=amd64
-   HTTPS_PROXY=
-   HTTP_PROXY=
-   PROXY_CERT_PATH=
-   UPDATE_KERNEL=false
-   EOF
-   ```
-
-   View the newly created file to ensure the customized arguments are set correctly.
+8. View the newly created file to ensure the customized arguments are set correctly.
 
    ```bash
    cat .arg
@@ -190,29 +148,7 @@ customization.
    export token=[your_token_here]
    ```
 
-10. Use the following command to create the `user-data` file containing the tenant registration token.
-
-    ```shell
-    cat <<EOF > user-data
-    #cloud-config
-
-    stylus:
-       site:
-         edgeHostToken: $token
-
-    install:
-       poweroff: true
-
-    stages:
-       initramfs:
-       - name: "Core system setup"
-         users:
-           kairos:
-             groups:
-               - admin
-             passwd: kairos
-    EOF
-    ```
+10. <PartialsComponent category="palette-edge-canvos-version" name="canvos-versionedge-user-data" />
 
     <!-- prettier-ignore-start -->
 
