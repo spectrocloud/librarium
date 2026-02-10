@@ -132,24 +132,25 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to include the following fields. These are the most commonly used fields.
+7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
+   include the following fields. These are the most commonly used fields.
 
-    - ARCH
-    - OS_DISTRIBUTION
-    - OS_VERSION
-    - K8S_DISTRIBUTION
-    - K8S_VERSION
-    - IMAGE_REGISTRY
-    - IMAGE_REPO
-    - CUSTOM_TAG
+   - ARCH
+   - OS_DISTRIBUTION
+   - OS_VERSION
+   - K8S_DISTRIBUTION
+   - K8S_VERSION
+   - IMAGE_REGISTRY
+   - IMAGE_REPO
+   - CUSTOM_TAG
 
 8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
-    :::preview
+   :::preview
 
-    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
-    Do not use this feature in production workloads.
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
 
    :::
 
@@ -299,7 +300,8 @@ customization.
     spectrocloud/ubuntu          k3s-1.33.5-v4.8.5-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
-14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
+14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
+    in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
     command.
 
     ```bash
@@ -479,7 +481,8 @@ required Edge artifacts.
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the corresponding tag.
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+   corresponding tag.
 
    Otherwise, check out the newest available tag. This guide uses **v4.8.5** tag as an example.
 
@@ -495,59 +498,59 @@ required Edge artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7.  Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to include the following arguments. These are the most commonly used arguments.
+7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
+   include the following arguments. These are the most commonly used arguments.
 
-    - ARCH
-    - OS_DISTRIBUTION
-    - OS_VERSION
-    - K8S_DISTRIBUTION
-    - K8S_VERSION
-    - IMAGE_REGISTRY
-    - IMAGE_REPO
-    - CUSTOM_TAG
+   - ARCH
+   - OS_DISTRIBUTION
+   - OS_VERSION
+   - K8S_DISTRIBUTION
+   - K8S_VERSION
+   - IMAGE_REGISTRY
+   - IMAGE_REPO
+   - CUSTOM_TAG
 
 8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
-
    :::preview
 
-    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
-    Do not use this feature in production workloads.
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
 
    :::
 
-    View the newly created file to ensure the customized arguments are set correctly.
+   View the newly created file to ensure the customized arguments are set correctly.
 
-    ```bash
-    cat .arg
-    ```
+   ```bash
+   cat .arg
+   ```
 
-    :::warning
+   :::warning
 
-    Ensure the final artifact name conforms to the `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`naming pattern.
+   Ensure the final artifact name conforms to the `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`naming pattern.
 
-    :::
+   :::
 
 9. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
-    require client certificates, or if your base image is in a registry that requires client certificates.
+   require client certificates, or if your base image is in a registry that requires client certificates.
 
-    You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
-    `CanvOS` repository. You can provide as many certificates as you need in the folder.
+   You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
+   `CanvOS` repository. You can provide as many certificates as you need in the folder.
 
-    If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
-    provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
-    refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
+   If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
+   provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
+   refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
 
-    :::warning
+   :::warning
 
-    These proxy settings are only configured for the build process itself, when your builder machine needs to pull
-    certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
-    deployed. To configure the proxy network settings for a host, refer to
-    [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
-    [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
+   These proxy settings are only configured for the build process itself, when your builder machine needs to pull
+   certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
+   deployed. To configure the proxy network settings for a host, refer to
+   [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
+   [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
 
-    :::
+   :::
 
 10. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
     the `Dockerfile`. You can install more tools and dependencies and configure the image to meet your needs. Add your
@@ -577,7 +580,8 @@ required Edge artifacts.
 
     :::warning
 
-    If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName` parameter with the value `Default` in the `user-data` file.
+    If you haven't set a default project for the registration token, ensure that you provide the
+    `stylus.site.projectName` parameter with the value `Default` in the `user-data` file.
 
     :::
 
@@ -601,8 +605,8 @@ required Edge artifacts.
     cat user-data
     ```
 
- Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
-    [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
+Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
+[User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
 12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.

@@ -105,37 +105,38 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
 4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
-8. (Optional) If your build machine isn't in a restricted network environment, or your build process does not require
+5. (Optional) If your build machine isn't in a restricted network environment, or your build process does not require
    access to a proxy server, skip this step.
 
    You can use `HTTP_PROXY` and `HTTPS_PROXY` to specify the URLs of the proxy servers to be used for your build.
 
-9. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
+6. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
    use to customize the build.
 
    ### Prepare User Data
 
-10. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
+7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
-11. Decide if you want your Edge host centrally managed by Palette or managed locally. The default configuration is a centrally managed Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, change the management mode to `local` by adding the `managementMode` parameter to under the
-   `stylus` parameter.
+8. Decide if you want your Edge host centrally managed by Palette or managed locally. The default configuration is a
+   centrally managed Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, change
+   the management mode to `local` by adding the `managementMode` parameter to under the `stylus` parameter.
 
-   ```yaml
-   #cloud-config
-   stylus:
-     managementMode: local
-   ```
+```yaml
+#cloud-config
+stylus:
+  managementMode: local
+```
 
-   Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more
-   information about the deployment lifecycle of locally managed Edge hosts, refer to
-   [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
+Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more
+information about the deployment lifecycle of locally managed Edge hosts, refer to
+[Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
 12. If you want to deploy a locally managed Edge host, skip this step.
 
-    To deploy the Edge host in central management mode, provide the Palette endpoint in
-    addition to either a registration token or QR code registration configuration. For more information about Edge host
-    registration, refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For
-    example, the following configuration provides the default Palette endpoint, a registration token, and a project name.
+    To deploy the Edge host in central management mode, provide the Palette endpoint in addition to either a
+    registration token or QR code registration configuration. For more information about Edge host registration, refer
+    to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For example, the
+    following configuration provides the default Palette endpoint, a registration token, and a project name.
 
     ```yaml
     #cloud-config
@@ -155,16 +156,16 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
     #### Configure Cloud-init Stages (Optional)
 
-13. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data` file. For more information about cloud-init stages,
-    refer to [Cloud-init Stages](../edge-configuration/cloud-init.md).
+13. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data`
+    file. For more information about cloud-init stages, refer to
+    [Cloud-init Stages](../edge-configuration/cloud-init.md).
 
     To configure cloud-init stages for your Edge host, use the `stages` block. For example, the following configuration
     installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
 
     ```yaml
     #cloud-config
-    ...
-
+    ---
     stages:
       after-install-chroot:
         - name: "Install SSM"
