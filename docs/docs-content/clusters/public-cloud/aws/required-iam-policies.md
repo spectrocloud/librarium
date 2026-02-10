@@ -33,12 +33,7 @@ learn more about AWS IAM limits in the
 
 :::
 
-:::tip
-
 You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
-[`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
-
-You can use Palette CLI to verify you have set up the correct permissions. Check out the Palette CLI
 [`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
 
 ## Core IAM Policies
