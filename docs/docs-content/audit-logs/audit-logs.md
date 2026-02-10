@@ -29,27 +29,27 @@ across all projects and tenant actions. The project scope audits show the activi
     - Users must have the **Tenant Admin** role or the `audit.get` and `audit.list` permissions at the tenant scope to
       access the audit logs.
 
-3.  Navigate to the left **Main Menu** and select **Audit Logs**.
+3.  Navigate to the left main menu and select **Audit Logs**.
 
 4.  You can filter audit logs based on user and resource attributes. The following attributes can be used to filter the
     audit logs.
 
-        - **Project**
-        - **Log Type**
-        - **User**
-        - **Resource Type**
+    - **Project**
+    - **Log Type**
+    - **User**
+    - **Resource Type**
 
 5.  You can also download audit logs as CSV files.
 
 ## Add Update Note
 
-For certain resources like the cluster profiles, users can associate a custom update note in addition to the generic
-audit event log. On a successful save of the cluster profile, the user will be prompted to provide an update note about
-the changes made on the profile. This message will be shown when the user selects an audit log from the list.
+For certain resources, like cluster profiles, you can associate a custom update note in addition to the generic
+audit event log. On a successful save of a cluster profile, you will be prompted to provide an update note about
+the changes made to the profile. This message will be shown when you select an audit log from the list.
 
 ## Push Audit Trails to AWS CloudWatch
 
-Spectro Cloud users can now push the compliance, management, operational, and risk audit logs to the
+You can push the compliance, management, operational, and risk audit logs to
 [AWS CloudWatch](https://aws.amazon.com/cloudwatch/). This enables continuous monitoring, security analysis, resource
 tracking, and troubleshooting of the workload cluster using the event history.
 
@@ -81,7 +81,7 @@ Ensure that the IAM user or the ROOT user role created has the following IAM pol
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Navigate to the left **Main Menu** and select **Tenant Settings**. Then, select **Audit Trails** from the
+2. Navigate to the left main menu and select **Tenant Settings**. Then, select **Audit Trails** from the
    **Infrastructure** section.
 
 3. Select **Add new Audit Trail**. The **Add audit trail** window appears.
