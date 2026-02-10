@@ -10,9 +10,9 @@ sidebar_position: 40
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
-[Cluster profiles](../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
+[Cluster profiles](../../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
 scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
-packs. [Packs](../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
+packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
 integrations.
 
@@ -22,14 +22,14 @@ the provider images that you built in the [Build Edge Artifacts](./build-edge-ar
 cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
 installation on your host and use it as a node for deploying your first Edge cluster.
 
-![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-profile.webp)
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-profile.webp)
 
 ## Prerequisites
 
 - You have completed the steps in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, including building the
   installer ISO and provider image, and pushing the provider image to a registry.
 - A [Palette account](https://www.spectrocloud.com/get-started) with
-  [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+  [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 - One available IP address on the same network as the Edge host for the MetalLB load balancer.
 
 ## Create Cluster Profile
@@ -64,7 +64,7 @@ with the address of the provider image you pushed to the registry. For example, 
 
 The following image displays the OS layer with the custom manifest and registry credentials.
 
-![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
+![A screenshot of the cluster profile creation step with the OS layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
 
 Click **Next Layer** to continue. Add the following Kubernetes layer to your cluster profile. Ensure the Kubernetes
 version matches the version used in the provider images.
@@ -77,7 +77,7 @@ Under **Pack Details**, select **Values** and replace the predefined `cluster-ci
 overlap with the host network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to
 `"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
 
-![A screenshot of the cluster profile creation step with the Kubernetes layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-k8s.webp)
+![A screenshot of the cluster profile creation step with the Kubernetes layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-k8s.webp)
 
 Click **Next Layer** to add the network layer. This tutorial uses Cilium as the example network layer.
 
@@ -110,7 +110,7 @@ Under **Pack Details**, select **Values** and replace the default `192.168.10.0/
 field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
 your cluster profile.
 
-![A screenshot of the cluster profile creation step with the MetalLB layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_profile-metallb.webp)
+![A screenshot of the cluster profile creation step with the MetalLB layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_profile-metallb.webp)
 
 Finally, click **Add New Pack** again and search for the Hello Universe pack.
 
@@ -157,7 +157,7 @@ dbPassword: "cGFzc3dvcmQ="
 authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 ```
 
-![A screenshot of the cluster profile creation step with the Hello Universe layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-hellouni.webp)
+![A screenshot of the cluster profile creation step with the Hello Universe layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-hellouni.webp)
 
 Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
 

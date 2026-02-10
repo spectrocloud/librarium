@@ -23,7 +23,7 @@ This tutorial teaches you how to build the artifacts required for your Edge depl
 learn how to reference them in Edge [cluster profiles](../../../../profiles/profiles.md) and how they are used to install
 the Palette agent on hosts.
 
-![Palette Edge architecture diagram](/static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
 
 ## Prerequisites
 

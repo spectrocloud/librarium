@@ -10,7 +10,7 @@ sidebar_position: 40
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
-[Cluster profiles](../../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
+[Cluster profiles](../../../../../docs-content/profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
 scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
 packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
@@ -29,7 +29,7 @@ installation on your host and use it as a node for deploying your first Edge clu
 - You have completed the steps in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, including building the
   installer ISO and provider image, and pushing the provider image to a registry.
 - A [Palette account](https://www.spectrocloud.com/get-started) with
-  [tenant admin](../../../../../tenant-settings/tenant-settings.md) access.
+  [tenant admin](../../../../../docs-content/tenant-settings/tenant-settings.md) access.
 - One available IP address on the same network as the Edge host for the MetalLB load balancer.
 
 ## Create Cluster Profile

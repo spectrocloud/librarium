@@ -52,7 +52,7 @@ Review the cluster profile layers and click **Next** to proceed.
 We recommend enabling the overlay network configuration when using DHCP-enabled networks to ensure stable IP addresses
 for the cluster. However, for education purposes, this tutorial does not use the overlay network. For production use or
 detailed configuration instructions, refer to the
-[Enable Overlay Network](../../../clusters/edge/networking/vxlan-overlay.md) guide.
+[Enable Overlay Network](../../../../clusters/edge/networking/vxlan-overlay.md) guide.
 
 :::
 
@@ -90,7 +90,7 @@ single-node Edge cluster with no worker pool.
 
 The following image shows the Edge host selection in the control plane pool.
 
-![A screenshot of the nodes config during cluster deployment.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
+![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
 
 Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
 
@@ -119,12 +119,12 @@ Confirm that your cluster displays a **Running** status and is listed as **Healt
 When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
 **Services** field. Click the URL on port **:8080** to access the application's landing page.
 
-![A screenshot of the cluster's Overview tab](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-overview.webp)
+![A screenshot of the cluster's Overview tab](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-overview.webp)
 
 Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages to learn more about space. The
 statistics page offers information on visitor counts for your deployed cluster.
 
-![A screenshot of the Hello Universe application.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
+![A screenshot of the Hello Universe application.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
 
 ## Clean Up
 
@@ -162,7 +162,7 @@ Locate the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.m
 and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This removes the Edge host from
 Palette but does not delete the underlying infrastructure.
 
-![A screenshot of the Edge Hosts page.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_delete-host.webp)
+![A screenshot of the Edge Hosts page.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_delete-host.webp)
 
 <Tabs groupId="host">
 
@@ -193,7 +193,7 @@ Next, reboot the host.
 sudo reboot
 ```
 
-Refer to [Reset Host via Terminal](../../../clusters/edge/cluster-management/reset-host.md) for more information about
+Refer to [Reset Host via Terminal](../../../../clusters/edge/cluster-management/reset-host.md) for more information about
 Edge host resetting.
 
 </TabItem>
@@ -226,6 +226,6 @@ In this tutorial, you learned how to deploy a single-node Edge cluster along wit
 host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Edge
 Getting Started tutorial series.
 
-We encourage you to check out the [Additional Capabilities](../additional-capabilities/additional-capabilities.md)
-section to explore other Palette functionalities, and the [Edge](../../../clusters/edge/edge.md) documentation section
+We encourage you to check out the [Additional Capabilities](../../additional-capabilities/additional-capabilities.md)
+section to explore other Palette functionalities, and the [Edge](../../../../clusters/edge/edge.md) documentation section
 to learn more about Palette Edge.

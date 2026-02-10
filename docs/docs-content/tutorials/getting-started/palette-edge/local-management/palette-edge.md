@@ -12,7 +12,7 @@ This section gives you an overview of how to get started with Palette Edge. You 
 deployment of Kubernetes clusters at the edge, along with all the steps required to deploy your first Edge cluster, such
 as building the necessary artifacts and preparing the host.
 
-![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-edge_roadmap.webp)
+![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_roadmap.webp)
 
 Explore the following tutorials to learn how to deploy your first connected Edge cluster with Palette. Each tutorial is
 designed to guide you step-by-step, building on the concepts introduced in the previous one.
