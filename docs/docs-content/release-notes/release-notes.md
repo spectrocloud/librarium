@@ -74,6 +74,17 @@ tags: ["release-notes"]
 
 - Palette's internal database, MongoDB, has been upgraded to version 8.0.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5934 -->
+
+- Palette now improves how `volumes` and `volumeMounts` defined in `ClusterPodPreset` or `PodPreset` resources on a
+  [self-hosted PCG cluster](../clusters/pcg/deploy-pcg-k8s.md) deployed in Amazon EKS are reconciled with pod-mounted
+  files defined under `kubeadmconfig` in the OS layer of an AWS EKS cluster profile used to deploy workload clusters.
+
+  Volumes and mounts derived from the OS layer are only added if their resolved `volumes.hostPath.path` or
+  `volumeMounts.mountPath` do not already exist in the self-hosted PCG cluster configuration, preventing duplicate
+  mounts when the same paths are specified in both locations. Volume and mount names are generated using a hash of the
+  full path to ensure path-unique naming and avoid Kubernetes validation conflicts.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9460 -->
@@ -108,6 +119,8 @@ tags: ["release-notes"]
 - Fixed an issue that caused [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) configured with
   [OCI Helm chart packs](../registries-and-packs/registries-and-packs.md) with missing `pack.namespace` fields to fail
   to publish.
+
+#### Deprecations and Removals
 
 ### Edge
 
