@@ -75,9 +75,42 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-5869 -->
 
-- - Palette's internal database, MongoDB, has been upgraded to version 8.0.
+- Palette's internal database, MongoDB, has been upgraded to version 8.0.
 
-#### Deprecations and Removals
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9460 -->
+
+- Fixed an issue that prevented some permissions available in
+  [tenant roles](../user-management/palette-rbac/tenant-scope-roles-permissions.md) from being available during
+  [custom role creation](../user-management/palette-rbac/create-custom-role.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5756 -->
+
+- Fixed an issue that caused the Palette controller to stop reconciling resources on
+  [AWS clusters](../clusters/public-cloud/aws/aws.md) where pack uninstallation is stuck.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9788 -->
+
+- Fixed an issue that caused Palette to fail to list or select
+  [Zarf OCI](../registries-and-packs/registries/oci-registry/add-oci-zarf.md) packs with image tags do not conform to
+  strict semantic versioning.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5949 -->
+
+- Fixed an issue that caused [backups](../clusters/cluster-management/backup-restore/backup-restore.md) to failing
+  unless `AWS_REGION` is set in the `kube2iam` DaemonSet.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9830 -->
+
+- Fixed an issue that caused Palette [SMTP configuration](../enterprise-version/system-management/smtp.md) to ignore
+  `noProxy` entries specified using leading-dot notation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9843 -->
+
+- Fixed an issue that caused [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) configured with
+  [OCI Helm chart packs](../registries-and-packs/registries-and-packs.md) with missing `pack.namespace` fields to fail
+  to publish.
 
 ### Edge
 
@@ -117,6 +150,40 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   cache fetching.
 
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7531 -->
+
+- Palette no longer reports errors when automatic certificate renewals are not configured on
+  [Edge clusters](../clusters/edge/edge.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7727 -->
+
+- Fixed an issue that prevented Palette from applying priority classes on critical upgrade pods, leading to scheduling
+  errors during cluster upgrades.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7809 -->
+
+- Fixed an issue that caused the automatic upgrades task to consume high memory and crash.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8018 -->
+
+- Fixed an issue that prevented Palette from deleting some cluster artifacts and journal logs from Edge hosts that have
+  been [reset](../clusters/edge/cluster-management/reset-host.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8064 -->
+
+- Fixed an issue that prevented Palette from clearing NTP values and SSHKeys after they have been removed in
+  [LocalUI](../clusters/edge/local-ui/local-ui.md), causing the Edge cluster to fail to update successfully.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8075 -->
+
+- Fixed an issue that caused JWT tokens issued in [LocalUI](../clusters/edge/local-ui/local-ui.md) to fail signature
+  verification.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8130 -->
+
+- Fixed an issue that caused Palette to print some sensitive information to the
+  [LocalUI](../clusters/edge/local-ui/local-ui.md) audit logs.
 
 ### VerteX
 
@@ -183,14 +250,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Amazon EBS CSI               | CSI        | :white_check_mark: | :x:                | 1.55.0      |
 | Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.3.7       |
 | AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
-| Canonical Kubernetes         | Kubernetes | :white_check_mark: | :x:                | 1.34.2      |
+| Canonical Kubernetes         | Kubernetes | :white_check_mark: | :x:                | 1.34        |
 | Cilium                       | CNI        | :x:                | :white_check_mark: | 1.18.4      |
 | Cilium                       | CNI        | :x:                | :white_check_mark: | 1.18.1      |
 | External Secrets             | Add-on     | :white_check_mark: | :x:                | 1.3.1       |
 | Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.6       |
-| Kubernetes (AKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
 | Kubernetes (EKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
-| Kubernetes (GKE)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
 | Nginx                        | Add-on     | :white_check_mark: | :x:                | 1.14.3      |
 | Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.x      |
 | Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.3      |
@@ -199,7 +264,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.6.1      |
 | Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 81.3.1      |
 | RKE2                         | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
-| Traefik                      | Add-on     | :white_check_mark: | :x:                | REPLACE ME  |
+| Traefik                      | Add-on     | :white_check_mark: | :x:                | 39.0.0      |
 
 #### Deprecations and Removals
 
@@ -794,11 +859,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Fixed an issue that prevented
   [registry mapping rules](../clusters/edge/edge-configuration/installer-reference.md#registry-mapping-rules) from
   working with local registries.
-
-<!-- https://spectrocloud.atlassian.net/browse/PE-7727 -->
-
-- Fixed an issue that prevented Palette from applying priority classes on critical upgrade pods, leading to scheduling
-  errors during cluster upgrades.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7786 -->
 
