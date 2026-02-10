@@ -55,7 +55,7 @@ tags: ["release-notes"]
 
 - Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-5982 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5934 -->
 
 - Palette now improves how `volumes` and `volumeMounts` defined in `ClusterPodPreset` or `PodPreset` resources on a
   [self-hosted PCG cluster](../clusters/pcg/deploy-pcg-k8s.md) deployed in Amazon EKS are reconciled with pod-mounted
