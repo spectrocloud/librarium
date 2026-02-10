@@ -49,6 +49,10 @@ tags: ["release-notes"]
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) is now available as
   MAAS (Metal as a Service) boot resources in addition to the existing ISO format.
 
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.b is now
+  available.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9205 -->
@@ -200,13 +204,25 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
+#### Breaking Changes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1854 -->
+
+- The `kubeconfig` and `adminKubeConfig` fields are now marked as sensitive across the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  cluster CRDs . These fields were previously exposed in the resource status and are now protected to prevent unintended
+  access.
+
+  Users who require kubeconfig access must explicitly configure `writeConnectionSecretToRef` on the managed resource to
+  retrieve the connection details in a secure and controlled manner.
+
 #### Features
 
-- Terraform version 0.27.X of the
+- Terraform version 0.28.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.27.X of the
+- Crossplane version 0.28.0 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
