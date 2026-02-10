@@ -55,18 +55,13 @@ tags: ["release-notes"]
 
 - Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
 
-- When `volumeMounts` are defined in `ClusterPodPreset` or `PodPreset` resources on a
-  [self-hosted PCG cluster](../clusters/pcg/deploy-pcg-k8s.md) deployed in Amazon EKS, and additional `volumeMounts` are
-  defined in the OS layer of a cluster profile, Palette now merges these configurations and ensures uniqueness based on
-  `mountPath`, preventing duplicate mounts from being applied.
-
 - Palette now improves how `volumes` and `volumeMounts` defined in `ClusterPodPreset` or `PodPreset` resources on a
-  self-hosted PCG cluster deployed in Amazon EKS are reconciled with pod-mounted files defined under `kubeadmconfig` in
-  the OS layer of an AWS EKS cluster profile used to deploy workload clusters. Volumes and mounts derived from the OS
-  layer are only added when their resolved `volumes.hostPath.path` or `volumeMounts.mountPath` does not already exist in
-  the self-hosted PCG cluster configuration, preventing duplicate mounts when the same paths are specified in both
-  locations. Volume and mount names are generated using a hash of the full path to ensure path-unique naming and avoid
-  Kubernetes validation conflicts.
+  [self-hosted PCG cluster](../clusters/pcg/deploy-pcg-k8s.md) deployed in Amazon EKS are reconciled with pod-mounted
+  files defined under `kubeadmconfig` in the OS layer of an AWS EKS cluster profile used to deploy workload clusters.
+  Volumes and mounts derived from the OS layer are only added when their resolved `volumes.hostPath.path` or
+  `volumeMounts.mountPath` does not already exist in the self-hosted PCG cluster configuration, preventing duplicate
+  mounts when the same paths are specified in both locations. Volume and mount names are generated using a hash of the
+  full path to ensure path-unique naming and avoid Kubernetes validation conflicts.
 
 #### Deprecations and Removals
 
