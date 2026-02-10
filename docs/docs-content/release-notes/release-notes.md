@@ -61,8 +61,8 @@ tags: ["release-notes"]
   [self-hosted PCG cluster](../clusters/pcg/deploy-pcg-k8s.md) deployed in Amazon EKS are reconciled with pod-mounted
   files defined under `kubeadmconfig` in the OS layer of an AWS EKS cluster profile used to deploy workload clusters.
 
-  Volumes and mounts derived from the OS layer are only added when their resolved `volumes.hostPath.path` or
-  `volumeMounts.mountPath` does not already exist in the self-hosted PCG cluster configuration, preventing duplicate
+  Volumes and mounts derived from the OS layer are only added if their resolved `volumes.hostPath.path` or
+  `volumeMounts.mountPath` do not already exist in the self-hosted PCG cluster configuration, preventing duplicate
   mounts when the same paths are specified in both locations. Volume and mount names are generated using a hash of the
   full path to ensure path-unique naming and avoid Kubernetes validation conflicts.
 
