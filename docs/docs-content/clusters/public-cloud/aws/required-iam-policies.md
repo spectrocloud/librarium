@@ -125,7 +125,7 @@ Add at least one of the following policies to your IAM User or Role based on you
 
 - **Minimum EKS Dynamic Permissions** allows full lifecycle provisioning of EKS clusters and node groups, including
   required EC2 and VPC resources, with scoped IAM permissions for OpenID Connect (OIDC) provider management and Cluster
-  API role usage to enable IAM roles for service accounts (IRSA).
+  API role usage to enable IAM Roles for Service Accounts (IRSA).
 
 - **Minimum EKS Static Permissions** allows management of EKS clusters and node groups within pre-existing EC2 and VPC
   infrastructure, with restricted network provisioning and scoped IAM permissions for OIDC provider management and
@@ -280,8 +280,6 @@ supports the `manageCloudFormationStackManually` configuration.
 
 3. Choose an existing cluster profile or
    [create a new cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
-   For more information on cluster profiles, refer to the
-   [cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) page.
 
 4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
    Pack** page.
@@ -312,8 +310,6 @@ supports the `manageCloudFormationStackManually` configuration.
 
 3. Choose an existing cluster profile or
    [create a new cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
-   For more information on cluster profiles, refer to the
-   [cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) page.
 
 4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
    Pack** page.
@@ -370,7 +366,7 @@ supports the `manageCloudFormationStackManually` configuration.
    `iam:ListAttachedRolePolicies`.
 
    If your organizational policies or specific use cases require a different role naming pattern, you must explicitly
-   add the corresponding resource Amazon resource names (ARN) pattern to the IAM policy's Resource field to grant the
+   add the corresponding resource Amazon Resource Name (ARN) pattern to the IAM policy's Resource field to grant the
    necessary permissions.
 
    ```json title="Example Resource ARN pattern for custom role names" {12}
@@ -426,7 +422,7 @@ There may be situations where additional node-level policies must be added to yo
 create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add
 additional node-level policies, switch to the **Tenant Admin** project, and click on the **Tenant Settings** on the
 **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS
-credentials, ensure `Add IAM policies` are enabled. You can specify additional Amazon resource names (ARN) to be
+credentials, ensure `Add IAM policies` are enabled. You can specify additional Amazon Resource Names (ARNs) to be
 attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 **AmazonEBSCSIDriverPolicy:**
