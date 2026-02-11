@@ -41,7 +41,7 @@ Nginx controller has been deprecated by the upstream provider, and we are in the
 controller. Until the migration to Traefik ingress is complete, we will be upgrading Nginx controller to version 1.13.7,
 which will remediate this vulnerability.
 
-Palette version 4.7.X uses Nginx controller version 1.13.7. Refer to the
+Palette version 4.7.31 uses Nginx controller version 1.13.7. Refer to the
 [release notes](../../release-notes/release-notes.md) for further information.
 
 ### Affected Deployments
