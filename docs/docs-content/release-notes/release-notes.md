@@ -209,7 +209,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
-#### Breaking Changes
+#### Breaking Changes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-1854 -->
 
