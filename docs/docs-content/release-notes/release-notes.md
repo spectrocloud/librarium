@@ -256,6 +256,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3428 -->
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Portworx with Operator" url="/integrations/?pack=csi-portworx-generic" /> pack version 3.4.1 is now available for airgap environments.
+
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3643 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3687 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3670 -->
