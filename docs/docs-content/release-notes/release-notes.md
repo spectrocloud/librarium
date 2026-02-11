@@ -243,11 +243,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Bug Fixes
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-1840 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2134 -->
 
-- Fixed an issue that caused the [Palette CLI `content upload`](../automation/palette-cli/commands/content.md#upload)
-  command to fail to upload content to the Amazon Elastic Container Registry (ECR) due to non-existent directories or
-  paths expected for deployment.
+- Fixed an issue that caused the
+  [`spectrocloud_cluster_profile` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
+  to fail to resolve the pack uid of Helm packs in OCI registries.
 
 ### Docs and Education
 
@@ -257,15 +257,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
-#### Pack Notes
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3688 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3643 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3687 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3703 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3635 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3670 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3702 -->
 
 | Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
 | ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
@@ -278,15 +272,18 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | External Secrets             | Add-on     | :white_check_mark: | :x:                | 1.3.1       |
 | Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.6       |
 | Kubernetes (EKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
+| Longhorn                     | CSI        | :white_check_mark: | :white_check_mark: | 1.10.1      |
 | Nginx                        | Add-on     | :white_check_mark: | :x:                | 1.14.3      |
-| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.x      |
-| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.3      |
-| Palette eXtended Kubernetes  | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
-| Palette Optimized Canonical  | Kubernetes | :white_check_mark: | :x:                | 1.34.2      |
 | Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.6.1      |
 | Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 81.3.1      |
-| RKE2                         | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.2      |
 | Traefik                      | Add-on     | :white_check_mark: | :x:                | 39.0.0      |
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3640 -->
+
+- Fixed an issue where the Harbor Nginx service template did not honor the `expose.http.enabled: false` when
+  `expose.type: nodePort` was set, resulting in the HTTP NodePort 30002 being created even when it was disabled.
 
 ## February 6, 2026 - Component Updates {#component-updates-2026-06}
 
