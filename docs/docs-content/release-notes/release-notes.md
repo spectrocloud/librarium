@@ -36,12 +36,6 @@ tags: ["release-notes"]
   [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-94 -->
-
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) is now available as
-  MAAS (Metal as a Service) boot resources in addition to the existing ISO format.
-
 - [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.b is now
   available.
@@ -84,6 +78,11 @@ tags: ["release-notes"]
   `volumeMounts.mountPath` do not already exist in the self-hosted PCG cluster configuration, preventing duplicate
   mounts when the same paths are specified in both locations. Volume and mount names are generated using a hash of the
   full path to ensure path-unique naming and avoid Kubernetes validation conflicts.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-166 -->
+
+- [Artifact Studio](../downloads/artifact-studio.md) now implements AWS Key Management Service (AWS KMS) signing for
+  image and artifact signatures. The public key file used for bundle verification has also been updated.
 
 #### Bug Fixes
 
