@@ -142,59 +142,61 @@ customization.
 
    :::
 
-    For more information about preparing the `.arg` file, refer to [Edge Artifact Build Configurations](./arg/) for a comprehensive list of arguments you can use to customize the build and refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for more information and full sample files.
+   For more information about preparing the `.arg` file, refer to [Edge Artifact Build Configurations](./arg/) for a
+   comprehensive list of arguments you can use to customize the build and refer to
+   [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for more information and
+   full sample files.
 
-9. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
+8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
-    <!-- prettier-ignore-start -->
+   <!-- prettier-ignore-start -->
 
-    :::warning
+   :::warning
 
-    - If you haven't set a default project for the registration token, ensure that you provide the
-      `stylus.site.projectName` parameter with the value `Default` in your `user-data` file.
-    - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
-      replacing `<interface-name>` with the name of the network interface on your Edge host:
+   - If you haven't set a default project for the registration token, ensure that you provide the
+     `stylus.site.projectName` parameter with the value `Default` in your `user-data` file.
+   - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
+     replacing `<interface-name>` with the name of the network interface on your Edge host:
 
-      - Your host is a virtual machine.
-      - The virtual machine uses a VMXNET3 adapter.
-      - You are planning to use _one_ of the following in your Edge cluster:
+     - Your host is a virtual machine.
+     - The virtual machine uses a VMXNET3 adapter.
+     - You are planning to use _one_ of the following in your Edge cluster:
 
-        - An [overlay network](../../networking/vxlan-overlay.md).
-        - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
+       - An [overlay network](../../networking/vxlan-overlay.md).
+       - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
 
-      ```shell
-      stages:
-        initramfs:
-          - name: "Disable UDP segmentation"
-            commands:
-              - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
-              - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
-      ```
+     ```shell
+     stages:
+       initramfs:
+         - name: "Disable UDP segmentation"
+           commands:
+             - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+             - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+     ```
 
-      This is due to a
-      [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
-      which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+     This is due to a
+     [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+     which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
 
-    :::
+   :::
 
-    <!-- prettier-ignore-end -->
+   <!-- prettier-ignore-end -->
 
-10. View the newly created `user-data` file to ensure the token is set correctly.
+9. View the newly created `user-data` file to ensure the token is set correctly.
 
-    ```bash
-    cat user-data
-    ```
+   ```bash
+   cat user-data
+   ```
 
-    :::tip
+   :::tip
 
-    You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
-    However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
-    be updated in Local UI.
+   You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
+   However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
+   be updated in Local UI.
 
-    :::
+   :::
 
-
-11. Issue the following command to start the build process.
+10. Issue the following command to start the build process.
 
     <Tabs group="earthly">
 
@@ -269,7 +271,7 @@ customization.
       system.osVersion: 22
     ```
 
-12. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
+11. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
     image tag value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
@@ -281,7 +283,7 @@ customization.
     spectrocloud/ubuntu          k3s-1.33.5-v4.7.2-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
-13. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
+12. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
     in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
     command.
 
@@ -289,28 +291,28 @@ customization.
     docker login
     ```
 
-14. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
+13. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
     cluster deployment.
 
     ```bash
     docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.2-palette-learn
     ```
 
-15. After pushing the provider images to the image registry, open a web browser and log in to
+14. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-16. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+15. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-17. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+16. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-18. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
+17. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
     pull the provider image from the image registry.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -361,7 +363,7 @@ customization.
 
     :::
 
-19. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
+18. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
     version 1.33. because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to an
     image registry.
 
@@ -369,7 +371,7 @@ customization.
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized k3s | `1.33.x`         |
 
-20. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+19. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -377,9 +379,9 @@ customization.
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-21. Add add-on layers and manifests to your cluster profile per your requirements.
+20. Add add-on layers and manifests to your cluster profile per your requirements.
 
-22. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+21. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
@@ -479,8 +481,8 @@ required Edge artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-    For more information about preparing the `.arg` file, refer to
-  [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
+   For more information about preparing the `.arg` file, refer to
+   [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
 
 7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
    include the following arguments. These are the most commonly used arguments.
@@ -589,7 +591,8 @@ required Edge artifacts.
     cat user-data
     ```
 
-    Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
+    Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
+    [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
 12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
