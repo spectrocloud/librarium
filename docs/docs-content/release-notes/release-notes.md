@@ -79,11 +79,6 @@ tags: ["release-notes"]
   mounts when the same paths are specified in both locations. Volume and mount names are generated using a hash of the
   full path to ensure path-unique naming and avoid Kubernetes validation conflicts.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-166 -->
-
-- [Artifact Studio](../downloads/artifact-studio.md) now implements AWS Key Management Service (AWS KMS) signing for
-  image and artifact signatures. The public key file used for bundle verification has also been updated.
-
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9460 -->
@@ -118,8 +113,6 @@ tags: ["release-notes"]
 - Fixed an issue that caused [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) configured with
   [OCI Helm chart packs](../registries-and-packs/registries-and-packs.md) with missing `pack.namespace` fields to fail
   to publish.
-
-#### Deprecations and Removals
 
 ### Edge
 
@@ -209,44 +202,19 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
-#### Breaking Changes
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-1854 -->
-
-- The `kubeconfig` and `adminKubeConfig` fields are now marked as sensitive across the
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
-  cluster CRDs . These fields were previously exposed in the resource status and are now protected to prevent unintended
-  access.
-
-  Users who require kubeconfig access must explicitly configure `writeConnectionSecretToRef` on the managed resource to
-  retrieve the connection details in a secure and controlled manner.
-
 #### Features
 
-- Terraform version 0.28.0 of the
+- Terraform version 0.28.X of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.28.0 of the
+- Crossplane version 0.28.X of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 #### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2118 -->
-
-- The
-  [`spectrocloud_cluster_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)
-  now provides the `skip_k8s_upgrade` configuration for machine pools. When enabled, the Kubernetes version upgrade for
-  this worker pool will be skipped provided that it remains within the allowed N-3 version skew.
-
 #### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2134 -->
-
-- Fixed an issue that caused the
-  [`spectrocloud_cluster_profile` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
-  to fail to resolve the pack UID of Helm packs in OCI registries.
 
 ### Docs and Education
 
@@ -256,42 +224,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
-#### Pack Notes
+#### Pack Notes
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3428 -->
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Portworx with Operator" url="/integrations/?pack=csi-portworx-generic" /> pack version 3.4.1 is now available for airgap environments.
-
-<!-- prettier-ignore-end -->
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3643 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3687 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3670 -->
-
-| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Amazon EBS CSI               | CSI        | :white_check_mark: | :x:                | 1.55.0      |
-| Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.3.7       |
-| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
-| Canonical Kubernetes         | Kubernetes | :white_check_mark: | :x:                | 1.34        |
-| Cilium                       | CNI        | :x:                | :white_check_mark: | 1.18.4      |
-| Cilium                       | CNI        | :x:                | :white_check_mark: | 1.18.1      |
-| External Secrets             | Add-on     | :white_check_mark: | :x:                | 1.3.1       |
-| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.6       |
-| Kubernetes (EKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
-| Longhorn                     | CSI        | :white_check_mark: | :white_check_mark: | 1.10.1      |
-| Nginx                        | Add-on     | :white_check_mark: | :x:                | 1.14.3      |
-| Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.6.1      |
-| Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 81.3.1      |
-| Traefik                      | Add-on     | :white_check_mark: | :x:                | 39.0.0      |
-
-#### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3640 -->
-
-- Fixed an issue where the Harbor Nginx service template did not honor the `expose.http.enabled: false` when
-  `expose.type: nodePort` was set, resulting in the HTTP NodePort 30002 being created even when it was disabled.
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
 
 ## February 6, 2026 - Component Updates {#component-updates-2026-06}
 
