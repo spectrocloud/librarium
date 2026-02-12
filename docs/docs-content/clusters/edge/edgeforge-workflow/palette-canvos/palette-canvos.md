@@ -132,8 +132,8 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. Copy the `.arg.template` file from the `CanvOS` directory and name the copy `.arg`. Edit the `.arg` file to
-   include the following fields. These are the most commonly used fields.
+7. Copy the `.arg.template` file from the `CanvOS` directory and name the copy `.arg`. Edit the `.arg` file to include
+   the following fields. These are the most commonly used fields.
 
    - `ARCH`
    - `OS_DISTRIBUTION`
