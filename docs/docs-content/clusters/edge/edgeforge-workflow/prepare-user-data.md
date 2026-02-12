@@ -105,7 +105,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
 4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
-5. (Optional) If your build machine isn't in a restricted network environment, or your build process does not require
+5. (Optional) If your build machine is not in a restricted network environment, or your build process does not require
    access to a proxy server, skip this step.
 
    You can use `HTTP_PROXY` and `HTTPS_PROXY` to specify the URLs of the proxy servers to be used for your build.
