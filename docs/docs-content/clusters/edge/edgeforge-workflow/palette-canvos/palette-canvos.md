@@ -118,7 +118,7 @@ customization.
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, check out the newest available tag. This guide uses the tag **v4.7.2** as an example.
+   Otherwise, check out the newest available tag. This guide uses the tag `v4.7.2` as an example.
 
    ```shell
    git checkout v4.7.2
@@ -132,22 +132,7 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. Copy the `.arg.template` file from the `CanvOS` directory and name the copy `.arg`. Edit the `.arg` file to include
-   the following fields. These are the most commonly used fields.
-
-   - `ARCH`
-   - `OS_DISTRIBUTION`
-   - `OS_VERSION`
-   - `K8S_DISTRIBUTION`
-   - `K8S_VERSION`
-   - `IMAGE_REGISTRY`
-   - `IMAGE_REPO`
-   - `CUSTOM_TAG`
-
-For more information about preparing the `.arg` file and full sample files, refer to
-[Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/).
-
-8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
+7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
    :::preview
 
@@ -157,13 +142,9 @@ For more information about preparing the `.arg` file and full sample files, refe
 
    :::
 
-9. View the newly created file to ensure the customized arguments are set correctly.
+    For more information about preparing the `.arg` file, refer to [Edge Artifact Build Configurations](./arg/) for a comprehensive list of arguments you can use to customize the build and refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for more information and full sample files.
 
-   ```bash
-   cat .arg
-   ```
-
-10. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
+9. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
     <!-- prettier-ignore-start -->
 
@@ -198,7 +179,7 @@ For more information about preparing the `.arg` file and full sample files, refe
 
     <!-- prettier-ignore-end -->
 
-    View the newly created `user-data` file to ensure the token is set correctly.
+10. View the newly created `user-data` file to ensure the token is set correctly.
 
     ```bash
     cat user-data
@@ -212,11 +193,8 @@ For more information about preparing the `.arg` file and full sample files, refe
 
     :::
 
-11. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
-    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
-    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
-12. Issue the following command to start the build process.
+11. Issue the following command to start the build process.
 
     <Tabs group="earthly">
 
@@ -291,7 +269,7 @@ For more information about preparing the `.arg` file and full sample files, refe
       system.osVersion: 22
     ```
 
-13. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
+12. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
     image tag value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
@@ -303,7 +281,7 @@ For more information about preparing the `.arg` file and full sample files, refe
     spectrocloud/ubuntu          k3s-1.33.5-v4.7.2-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
-14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
+13. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
     in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
     command.
 
@@ -311,28 +289,28 @@ For more information about preparing the `.arg` file and full sample files, refe
     docker login
     ```
 
-15. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
+14. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
     cluster deployment.
 
     ```bash
     docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.2-palette-learn
     ```
 
-16. After pushing the provider images to the image registry, open a web browser and log in to
+15. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-17. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+16. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-18. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+17. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-19. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
+18. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
     pull the provider image from the image registry.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -383,7 +361,7 @@ For more information about preparing the `.arg` file and full sample files, refe
 
     :::
 
-20. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
+19. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
     version 1.33. because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to an
     image registry.
 
@@ -391,7 +369,7 @@ For more information about preparing the `.arg` file and full sample files, refe
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized k3s | `1.33.x`         |
 
-21. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+20. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -399,9 +377,9 @@ For more information about preparing the `.arg` file and full sample files, refe
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-22. Add add-on layers and manifests to your cluster profile per your requirements.
+21. Add add-on layers and manifests to your cluster profile per your requirements.
 
-23. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+22. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
@@ -501,8 +479,8 @@ required Edge artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-For more information about preparing the `.arg` file, refer to
-[Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
+    For more information about preparing the `.arg` file, refer to
+  [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
 
 7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
    include the following arguments. These are the most commonly used arguments.
@@ -611,8 +589,7 @@ For more information about preparing the `.arg` file, refer to
     cat user-data
     ```
 
-Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
-[User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
+    Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
 12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
@@ -650,7 +627,7 @@ Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md)
     build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in
     the [Build Content Bundle](./build-content-bundle.md) guide to build the Edge installer ISO using a content bundle.
 
-    :::info
+    :::
 
     This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion,
     the command will display the manifest, as shown in the example below, that you will use in your cluster profile
@@ -837,14 +814,14 @@ Palette-managed Edge clusters, we encourage you to check out the reference resou
 
 ## Resources
 
-- [Edge Artifact Build Configurations](./arg.md)
+- [Build Content Bundles](./build-content-bundle.md)
+
+- [Build FIPS-Compliant Edge Artifacts](./fips.md)
 
 - [Build Installer ISO](./build-installer-iso.md)
 
 - [Build Provider Images](./build-provider-images.md)
 
-- [Build FIPS-Compliant Edge Artifacts](./fips.md)
+- [Edge Artifact Build Configurations](./arg.md)
 
-- [Build Content Bundles](./build-content-bundle.md)
-
-- [Edge Artifact Build Configurations](./signed-content.md)
+- [Embed a Public Key in Edge Artifacts](./signed-content.md)

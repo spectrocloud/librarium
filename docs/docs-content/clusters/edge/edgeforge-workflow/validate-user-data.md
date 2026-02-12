@@ -38,15 +38,7 @@ However, this process is also executed automatically when you build the Edge ins
 
 <TabItem value="CanvOS">
 
-From the `CanvOS` directory, issue the following command to validate your user data.
-
-```shell
-sudo ./earthly.sh +validate-user-data
-```
-
-```hideClipboard
-+validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
-```
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-validate" />
 
 </TabItem>
 

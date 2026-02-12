@@ -86,16 +86,13 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     git clone https://github.com/spectrocloud/CanvOS.git
    ```
 
-   Copy the **user-data.template** file from the **CanvOS** directory and name the copy **user-data**. This is a
-   template that you can use as a starting point to build your own user data file.
-
 2. View the available git tag.
 
    ```shell
    git tag
    ```
 
-3. Check out the latest available tag. This guide uses the tag v4.7.2 as an example.
+3. Check out the latest available tag. This guide uses the tag `v4.7.2` as an example.
 
    ```bash
    git checkout v4.7.2
@@ -110,8 +107,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
    You can use `HTTP_PROXY` and `HTTPS_PROXY` to specify the URLs of the proxy servers to be used for your build.
 
-6. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
-   use to customize the build.
+6. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can use to customize the build and to the [Full `.arg` Samples](#full-arg-samples) section below for example `.arg` files.
 
    ### Prepare User Data
 
@@ -121,17 +117,15 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    centrally managed Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, change
    the management mode to `local` by adding the `managementMode` parameter to under the `stylus` parameter.
 
-```yaml
-#cloud-config
-stylus:
-  managementMode: local
-```
+    ```yaml
+    #cloud-config
+    stylus:
+    managementMode: local
+    ```
 
-Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more
-information about the deployment lifecycle of locally managed Edge hosts, refer to
-[Edge Deployment Lifecycle](../edge-native-lifecycle.md).
+    Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more information about the deployment lifecycle of locally managed Edge hosts, refer to [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
-12. If you want to deploy a locally managed Edge host, skip this step.
+9.  If you want to deploy a locally managed Edge host, skip this step.
 
     To deploy the Edge host in central management mode, provide the Palette endpoint in addition to either a
     registration token or QR code registration configuration. For more information about Edge host registration, refer
@@ -156,7 +150,7 @@ information about the deployment lifecycle of locally managed Edge hosts, refer 
 
     #### Configure Cloud-init Stages (Optional)
 
-13. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data`
+10. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data`
     file. For more information about cloud-init stages, refer to
     [Cloud Init Stages](../edge-configuration/cloud-init.md).
 
@@ -183,7 +177,7 @@ information about the deployment lifecycle of locally managed Edge hosts, refer 
 
     #### Configure GPU Specifications (Optional)
 
-14. Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
+11. Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
     vendor-model combinations in [Edge Host Grid View](../site-deployment/edge-host-view.md) and on the Edge host
     **Overview** tab. For other GPU models and vendors, Palette attempts to automatically source GPU information using
     the vendor-specific driver or command-line interface (CLI) installed on the Edge host. Multi-Instance GPU (MIG) data
@@ -280,7 +274,7 @@ information about the deployment lifecycle of locally managed Edge hosts, refer 
 
     #### Configure Users
 
-15. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+12. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
     host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
     replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
     the list of authorized keys for that user.
@@ -301,7 +295,7 @@ information about the deployment lifecycle of locally managed Edge hosts, refer 
 
     #### Configure Proxy Settings (Optional)
 
-16. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+13. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
     as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
     configure proxy settings for your Edge host.
 
@@ -325,7 +319,7 @@ information about the deployment lifecycle of locally managed Edge hosts, refer 
 
     #### Configure Post-Installation Behavior (Optional)
 
-17. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
+14. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
     installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen,
     but you can configure it to power off or restart automatically. For example, the following configuration instructs
     the Edge host to power off automatically post-installation.
@@ -426,15 +420,9 @@ You can create presets to use as reusable building blocks for future instances o
 You can use the `+validate-user-data` build target of EdgeForge to validate that your user data follows the expected
 schema. You need to perform this action on an AMD64 (also known as x86_64) machine.
 
-From the **CanvOS** directory, issue the following command to validate your user data.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-validate" />
 
-```shell
-sudo ./earthly.sh +validate-user-data
-```
-
-```hideClipboard
-+validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
-```
+For more information about `user-data` file validation, refer to [Validate User Data](./validate-user-data.md).
 
 ## Full .arg Samples
 
