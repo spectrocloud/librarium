@@ -325,7 +325,7 @@ information about the deployment lifecycle of locally managed Edge hosts, refer 
 
     #### Configure Post-Installation Behavior (Optional)
 
-17. You can use some parameters of the `install` block to configure what you'd like the Edge host to do after
+17. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
     installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen,
     but you can configure it to power off or restart automatically. For example, the following configuration instructs
     the Edge host to power off automatically post-installation.
