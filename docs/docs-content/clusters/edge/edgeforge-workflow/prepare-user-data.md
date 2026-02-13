@@ -653,8 +653,7 @@ stages:
 
 ### Create Bind Mounts
 
-Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration
-file named **user-data**, which allows your cluster to use directories or files from your Edge host directly within your
+Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration `user-data` file, which allows your cluster to use directories or files from your Edge host directly within your
 Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct
 access to files or directories on the Edge host.
 
@@ -723,7 +722,7 @@ use case.
 ## Next Steps
 
 After you have finalized your Installer configuration, you can build the configuration into the Edge Installer ISO, or
-turn the **user-data** file into an ISO file to use before site deployment.
+turn the `user-data` file into an ISO file to use before site deployment.
 
 - Check out the [Build Edge Installer ISO](palette-canvos/palette-canvos.md) guide to learn how to build the Edge
   Installer ISO image.
