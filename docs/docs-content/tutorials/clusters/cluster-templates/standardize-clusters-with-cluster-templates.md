@@ -47,12 +47,10 @@ preferred way of working.
 
 - A Palette account with permissions to create cluster profiles, cluster template policies, cluster templates, and
   clusters.
-- A cloud account registered in Palette. Refer to [AWS](../../../clusters/public-cloud/aws/add-aws-accounts.md) for the
-  Palette UI workflow, or [AWS](../../../tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf.md),
-  [Azure](../../../tutorials/getting-started/palette/azure/deploy-manage-k8s-cluster-tf.md),
-  [GCP](../../../tutorials/getting-started/palette/gcp/deploy-manage-k8s-cluster-tf.md), or
-  [VMware](../../../tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf.md) for the Terraform
-  workflow.
+- A cloud account registered in Palette. Refer to [AWS](../../../tutorials/getting-started/palette/aws/setup.md),
+  [Azure](../../../tutorials/getting-started/palette/azure/setup.md),
+  [GCP](../../../tutorials/getting-started/palette/gcp/setup.md), or
+  [VMware](../../../tutorials/getting-started/palette/vmware/setup.md) to get started.
 - Ensure that the
   [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries) is available
   in your Palette environment.
