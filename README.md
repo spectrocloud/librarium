@@ -1086,11 +1086,12 @@ or a message indicating that no content is available. Refer to the table below f
 
 To display the Additional Details content, create a markdown file with the same name as the pack in the the
 [`docs/docs-content/integrations/`](./docs/docs-content/integrations/) content folder. For example, if the pack name is
-`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.mdx`. 
+`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.mdx`.
 
-When you create Additional Details content, you can remove the `category` field. The `logoUrl` field is only necessary when a pack has no `README` file. 
+When you create Additional Details content, you can remove the `category` field. The `logoUrl` field is only necessary
+when a pack has no `README` file.
 
-Your frontmatter might resemble the following example. 
+Your frontmatter might resemble the following example.
 
 ```
 ---
@@ -1105,8 +1106,8 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/heartbeat/blobs/sha256:19fec6
 ---
 ```
 
-The additional details content requires you to
-follow the [Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
+The additional details content requires you to follow the
+[Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
 
 If you want to add content specific to a version, include the following heading and tabs component in the markdown file.
 
