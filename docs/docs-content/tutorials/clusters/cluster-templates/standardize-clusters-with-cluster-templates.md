@@ -14,20 +14,32 @@ apply the same configuration and upgrade rules across multiple clusters.
 Palette supports this workflow with cluster templates. Cluster templates let you reuse a cluster configuration, control
 when upgrades happen, and apply changes to multiple clusters at once.
 
-Cluster templates are built from two related concepts:
+[Cluster templates](../../../cluster-templates/cluster-templates.md) combine a
+[cluster profile](../../../../../profiles/cluster-profiles/create-cluster-profiles/) and one or more
+[cluster template policies](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
 
-- [Cluster profiles](../../../../../profiles/cluster-profiles/create-cluster-profiles/), which define the software stack
-  and infrastructure configuration of a cluster.
-- [Cluster template policies](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md),
-  which define how clusters created from a template are managed and maintained throughout their lifecycle, such as when
-  upgrades are allowed to run.
+- [Cluster profiles](../../../../../profiles/cluster-profiles/create-cluster-profiles/) define what a cluster runs. They
+  contains the software stack and infrastructure configuration.
+- [Cluster template policies](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md)
+  define how clusters created from a template are managed throughout their lifecycle, including when upgrades can run.
 
-A [maintenance policy](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) is one type of
-cluster template policy. Maintenance policies define a maintenance window that controls when upgrades can run.
-Currently, maintenance policies are the only cluster template policy type available in Palette.
+Cluster profiles can include
+[cluster profile variables](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/),
+which let you reuse the same profile while changing specific values per cluster, such as the worker node instance size
+or the number of application replicas.
 
-Cluster templates link cluster profiles and policies. When you create clusters from the same template, those clusters
-share the same base configuration and follow the same operational rules.
+A [maintenance policy](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) is one example
+of a cluster template policy. Maintenance policies define a maintenance window that controls when upgrades can run.
+Currently, maintenance policies are the only supported cluster template policy type in Palette.
+
+![Diagram of cluster template architecture](/profiles-policies-templates.webp)
+
+When you create clusters from the same template, they inherit the same base configuration and the same governance rules.
+For example, you can create **dev** and **prod** clusters from a single template. Both clusters run the same software
+stack and follow the same upgrade policy. You can assign different profile variable values to handle
+environment-specific requirements.
+
+The following diagram shows how these components fit together.
 
 In this tutorial, you will:
 
