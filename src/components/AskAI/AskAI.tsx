@@ -29,7 +29,8 @@ function TypeableInput({
   };
 
   return (
-    <div className={styles.inputContainer}>
+    <label className={styles.inputContainer}>
+      <span className={styles.srOnly}>{placeholder}</span>
       <FontAwesomeIcon icon={faWandMagicSparkles} className={styles.icon} />
       <input
         type="text"
@@ -42,7 +43,7 @@ function TypeableInput({
         onChange={(e) => onChange(e.target.value)}
         onClick={handleClick}
       />
-    </div>
+    </label>
   );
 }
 
