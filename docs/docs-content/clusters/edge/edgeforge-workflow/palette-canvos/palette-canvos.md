@@ -361,7 +361,7 @@ customization.
     :::
 
 18. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
-    version 1.33. because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to an
+    version 1.33.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to an
     image registry.
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
@@ -743,12 +743,12 @@ required Edge artifacts.
     :::
 
 19. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
-    version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
+    version 1.33.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to the
     image registry.
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
     | ------------- | ------------ | --------------------- | ---------------- |
-    | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.x`         |
+    | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.x`         |
 
 20. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.

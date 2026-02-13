@@ -7,5 +7,29 @@ From the CanvOS directory, copy the `user-data.template` file and name the copy 
 	- `edgeHostToken`
 	- `paletteEndpoint`
 
+Below is an example of a `user-data` file.
+
+```yaml
+#cloud-config
+stylus:
+  site:
+    paletteEndpoint: api.spectrocloud.com
+    edgeHostToken: <yourRegistrationToken>
+    tags:
+      city: chicago
+      building: building-1
+
+install:
+  poweroff: true
+
+stages:
+  initramfs:
+    - users:
+        kairos:
+          groups:
+            - sudo
+          passwd: kairos
+      name: Create user and assign to sudo group
+```
 
 Refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for more information about configuring the `user-data` file and for sample files covering various use cases. Refer to [Cloud Init Stages](/clusters/edge/edge-configuration/cloud-init/) for more information about configuration stages and to [Edge Installer Configuration Reference](/clusters/edge/edge-configuration/installer-reference/) for a complete list of supported fields. 
