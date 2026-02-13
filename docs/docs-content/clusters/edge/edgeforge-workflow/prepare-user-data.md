@@ -100,9 +100,9 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
    ### Prepare .arg File
 
-4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" /> 
+4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
-    Refer to the [Full `.arg` Samples](#full-arg-samples) section below for example `.arg` files.
+   Refer to the [Full `.arg` Samples](#full-arg-samples) section below for example `.arg` files.
 
 5. (Optional) If your build machine is not in a restricted network environment, or your build process does not require
    access to a proxy server, skip this step.
@@ -111,9 +111,9 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
    ### Prepare User Data
 
-7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
+6. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
-8. Decide if you want your Edge host centrally managed by Palette or managed locally. The default configuration is a
+7. Decide if you want your Edge host centrally managed by Palette or managed locally. The default configuration is a
    centrally managed Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, change
    the management mode to `local` by adding the `managementMode` parameter to under the `stylus` parameter.
 
@@ -127,7 +127,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    information about the deployment lifecycle of locally managed Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
-9. If you want to deploy a locally managed Edge host, skip this step.
+8. If you want to deploy a locally managed Edge host, skip this step.
 
    To deploy the Edge host in central management mode, provide the Palette endpoint in addition to either a registration
    token or QR code registration configuration. For more information about Edge host registration, refer to
@@ -152,34 +152,34 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
    #### Configure Cloud-init Stages (Optional)
 
-10. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data`
-    file. For more information about cloud-init stages, refer to
-    [Cloud Init Stages](../edge-configuration/cloud-init.md).
+9. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data`
+   file. For more information about cloud-init stages, refer to
+   [Cloud Init Stages](../edge-configuration/cloud-init.md).
 
-    To configure cloud-init stages for your Edge host, use the `stages` block. For example, the following configuration
-    installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
+   To configure cloud-init stages for your Edge host, use the `stages` block. For example, the following configuration
+   installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
 
-    ```yaml
-    #cloud-config
-    ---
-    stages:
-      after-install-chroot:
-        - name: "Install SSM"
-          commands:
-            - snap install amazon-ssm-agent --classic
-    ```
+   ```yaml
+   #cloud-config
+   ---
+   stages:
+     after-install-chroot:
+       - name: "Install SSM"
+         commands:
+           - snap install amazon-ssm-agent --classic
+   ```
 
-    :::tip
+   :::tip
 
-    You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the
-    Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the
-    [Cloud-Init Stages](../edge-configuration/cloud-init.md) to learn more.
+   You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the
+   Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the
+   [Cloud-Init Stages](../edge-configuration/cloud-init.md) to learn more.
 
-    :::
+   :::
 
-    #### Configure GPU Specifications (Optional)
+   #### Configure GPU Specifications (Optional)
 
-11. Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
+10. Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
     vendor-model combinations in [Edge Host Grid View](../site-deployment/edge-host-view.md) and on the Edge host
     **Overview** tab. For other GPU models and vendors, Palette attempts to automatically source GPU information using
     the vendor-specific driver or command-line interface (CLI) installed on the Edge host. Multi-Instance GPU (MIG) data
@@ -276,7 +276,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
     #### Configure Users
 
-12. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+11. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
     host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
     replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
     the list of authorized keys for that user.
@@ -297,7 +297,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
     #### Configure Proxy Settings (Optional)
 
-13. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+12. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
     as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
     configure proxy settings for your Edge host.
 
@@ -321,7 +321,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
     #### Configure Post-Installation Behavior (Optional)
 
-14. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
+13. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
     installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen,
     but you can configure it to power off or restart automatically. For example, the following configuration instructs
     the Edge host to power off automatically post-installation.
@@ -653,7 +653,8 @@ stages:
 
 ### Create Bind Mounts
 
-Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration `user-data` file, which allows your cluster to use directories or files from your Edge host directly within your
+Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration
+`user-data` file, which allows your cluster to use directories or files from your Edge host directly within your
 Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct
 access to files or directories on the Edge host.
 
