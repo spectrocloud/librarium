@@ -61,7 +61,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.27.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3428 -->
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Portworx with Operator" url="/integrations/?pack=csi-portworx-generic" /> pack version 3.4.1 is now available for airgap environments.
+- The <VersionedLink text="Portworx with Operator" url="/integrations/?pack=csi-portworx-generic" /> pack version 3.4.1-rev4 is now available for airgap environments.
 
 <!-- prettier-ignore-end -->
 
@@ -83,6 +83,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.27.
 | Nginx                        | Add-on     | :white_check_mark: | :x:                | 1.14.3      |
 | Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.6.1      |
 | Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 81.3.1      |
+| Portworx with Operator       | CSI        | :white_check_mark: | :x:                | 3.4.1-rev4  |
 | Traefik                      | Add-on     | :white_check_mark: | :x:                | 39.0.0      |
 
 #### Bug Fixes
