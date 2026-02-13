@@ -100,16 +100,14 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
    ### Prepare .arg File
 
-4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
+4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" /> 
+
+    Refer to the [Full `.arg` Samples](#full-arg-samples) section below for example `.arg` files.
 
 5. (Optional) If your build machine is not in a restricted network environment, or your build process does not require
    access to a proxy server, skip this step.
 
    You can use `HTTP_PROXY` and `HTTPS_PROXY` to specify the URLs of the proxy servers to be used for your build.
-
-6. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
-   use to customize the build and to the [Full `.arg` Samples](#full-arg-samples) section below for example `.arg`
-   files.
 
    ### Prepare User Data
 
@@ -122,7 +120,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    ```yaml
    #cloud-config
    stylus:
-   managementMode: local
+     managementMode: local
    ```
 
    Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more
@@ -440,7 +438,7 @@ processes that are allowed to operate on your Edge device. To enable the feature
 during the EdgeForge build process.
 
 ```
-IMAGE_REGISTRY=ttl.sh
+IMAGE_REGISTRY=spectrocloud
 OS_DISTRIBUTION=Ubuntu
 OS_VERSION=22
 IMAGE_REPO=ubuntu-secure
@@ -462,7 +460,7 @@ alters the Kubernetes layer and requires a different provider image to be built 
 Therefore, you must specify `TWO_NODE=true` during the EdgeForge process in your `.arg` file.
 
 ```
-IMAGE_REGISTRY=ttl.sh
+IMAGE_REGISTRY=spectrocloud
 OS_DISTRIBUTION=Ubuntu
 OS_VERSION=22
 IMAGE_REPO=ubuntu

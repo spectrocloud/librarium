@@ -132,7 +132,8 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
+7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" /> 
+    Refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for full sample `.arg` files.
 
    :::preview
 
@@ -141,11 +142,6 @@ customization.
    not use this feature in production workloads.
 
    :::
-
-   For more information about preparing the `.arg` file, refer to [Edge Artifact Build Configurations](./arg/) for a
-   comprehensive list of arguments you can use to customize the build and refer to
-   [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for more information and
-   full sample files.
 
 8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
@@ -484,19 +480,7 @@ required Edge artifacts.
    For more information about preparing the `.arg` file, refer to
    [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
 
-7. Copy the **.arg.template** file from the **CanvOS** directory and name the copy **.arg**. Edit the `.arg` file to
-   include the following arguments. These are the most commonly used arguments.
-
-   - `ARCH`
-   - `OS_DISTRIBUTION`
-   - `OS_VERSION`
-   - `K8S_DISTRIBUTION`
-   - `K8S_VERSION`
-   - `IMAGE_REGISTRY`
-   - `IMAGE_REPO`
-   - `CUSTOM_TAG`
-
-8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
+7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
    :::preview
 
@@ -506,19 +490,13 @@ required Edge artifacts.
 
    :::
 
-   View the newly created file to ensure the customized arguments are set correctly.
-
-   ```bash
-   cat .arg
-   ```
-
    :::warning
 
    Ensure the final artifact name conforms to the `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`naming pattern.
 
    :::
 
-9. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+8. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
    require client certificates, or if your base image is in a registry that requires client certificates.
 
    You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
@@ -538,7 +516,7 @@ required Edge artifacts.
 
    :::
 
-10. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
+9. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
     the `Dockerfile`. You can install more tools and dependencies and configure the image to meet your needs. Add your
     customizations below the line tagged with the `Add any other image customizations here` comment in the `Dockerfile`.
     Do not edit or add any lines before this tagged comment.
@@ -562,7 +540,7 @@ required Edge artifacts.
 
     :::
 
-11. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
+10. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
     :::warning
 
@@ -594,7 +572,7 @@ required Edge artifacts.
     Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     <Tabs group="earthly">
@@ -666,7 +644,7 @@ required Edge artifacts.
       system.osVersion:
     ```
 
-13. List the Docker images to review the provider images created. By default, provider images for all the Palette's
+12. List the Docker images to review the provider images created. By default, provider images for all the Palette's
     Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
     value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
@@ -679,7 +657,7 @@ required Edge artifacts.
     spectrocloud/opensuse-leap   k3s-1.33.5-v4.7.2-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
-14. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
+13. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash

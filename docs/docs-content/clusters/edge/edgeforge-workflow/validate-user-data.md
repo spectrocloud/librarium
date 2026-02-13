@@ -52,10 +52,6 @@ download the Palette Edge CLI.
 ./palette-edge-cli validate --user-data-file-path <path-to-user-data>
 ```
 
-</TabItem>
-
-</Tabs>
-
 If the output is similar to the following, it means that the user data is valid and will be applied to the Edge host.
 
 :::warning
@@ -76,6 +72,10 @@ in the output.
 ```
 Error: invalid JSON: stylus.registryCredentials.password: Invalid type. Expected: string, given: null
 ```
+
+</TabItem>
+
+</Tabs>
 
 ## Validate
 

@@ -9,6 +9,23 @@ From the `CanvOS` directory, issue the following command to validate your user d
 sudo ./earthly.sh +validate-user-data
 ```
 
+If the output is similar to the following, it means that the user data is valid and will be applied to the Edge host.
+
+:::warning
+
+This only checks that the user data conforms to the expected schema and will not catch issues with the data itself. For
+example, if your user data contains an expired registration token, this will not be flagged by the validation script.
+
+:::
+
 ```hideClipboard
 +validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
+```
+
+If the data does not pass the validation, the output will display the encountered error. For example, if the
+`stylus.registryCredentials.password` field is present but no value is provided, the following error will be displayed
+in the output.
+
+```
+Error: invalid JSON: stylus.registryCredentials.password: Invalid type. Expected: string, given: null
 ```
