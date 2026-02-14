@@ -38,7 +38,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
 The user data file supports multiple parameters that allow you to customize the Edge installation and consists of three
 main configuration blocks:
 
-- `stylus`: [Palette agent parameters](../../../clusters/edge/edge-configuration/installer-reference/#palette-agent-parameters) that control aspects of the Edge host's configuration, such as networking, logging, services, users, and permissions. The following configuration snippet specifies that the Edge device will be locally managed, and the [Terminal User Interface (TUI)](../../../clusters/edge/site-deployment/site-installation/initial-setup/) will be installed.
+- `stylus`: [Palette agent parameters](../../../../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters) that control aspects of the Edge host's configuration, such as networking, logging, services, users, and permissions. The following configuration snippet specifies that the Edge device will be locally managed, and the [Terminal User Interface (TUI)](../../../../clusters/edge/site-deployment/site-installation/initial-setup.md) will be installed.
 
   ```shell
   #cloud-config
