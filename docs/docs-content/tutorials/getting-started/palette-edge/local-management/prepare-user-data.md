@@ -115,8 +115,7 @@ git checkout v4.8.8
 ## Create User Data
 
 In this section, you will create a user data file that identifies that the Edge device will be locally managed, and contains
-Edge host login credentials. The login credentials allow you to SSH into your Edge host, while the Palette registration
-token and endpoint enable the host to register with your Palette instance. The user data file also includes an `install`
+Edge host login credentials. The login credentials allow you to SSH into your Edge host. The user data file also includes an `install`
 parameter block to power off the host once the Edge installation completes.
 
 :::tip
@@ -133,7 +132,7 @@ export USER=<host-user-name>
 export PASSWORD=<user-name-password>
 ```
 
-Next, issue the command below to create the `user-data` file using the exported token and user information.
+Next, issue the command below to create the `user-data` file using the user information.
 
 ```bash
 cat << EOF > user-data
@@ -172,8 +171,7 @@ Confirm that the file was created correctly.
 cat user-data
 ```
 
-The output should show your user data file, with the value of your Palette registration token assigned to the
-`edgeHostToken` parameter, as well as the user and password to be created. This tutorial uses `kairos` as an example for
+The output should show your user data file, with the user and password to be created. This tutorial uses `kairos` as an example for
 both the username and password.
 
 ```text hideClipboard
