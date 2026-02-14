@@ -57,8 +57,7 @@ main configuration blocks:
   ```
 
 - `stages`: The `stages` block uses cloud-init stages to personalize the initialization of your Edge hosts during
-  various stages of the system boot process. The following example wipes the local NVMe drive, and configures a `docs` user with a password.
-  during the `initramfs` stage.
+  various stages of the system boot process. The following example wipes the local NVMe drive, and configures a `docs` user with a password during the `initramfs` stage.
 
   ```shell
   stages:
@@ -106,7 +105,7 @@ Check the available git tags.
 git tag --sort=v:refname
 ```
 
-Check out the newest available tag. This tutorial uses the tag `v4.6.24` as an example.
+Check out the newest available tag. This tutorial uses the tag `v4.8.8` as an example.
 
 ```shell
 git checkout v4.8.8
