@@ -56,7 +56,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.27.
 
 ### Packs
 
-#### Pack Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3643 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3687 -->
