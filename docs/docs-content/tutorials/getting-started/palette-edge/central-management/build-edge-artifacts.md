@@ -11,8 +11,8 @@ tags: ["getting-started", "tutorial", "edge"]
 
 One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The
 process of building these artifacts is called
-[EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating the
-installer ISO and provider image artifacts.
+[EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating
+the installer ISO and provider image artifacts.
 
 - Installer ISO: An ISO image that installs the Palette Edge agent on the host.
 - Provider Images: [Kairos-based](https://kairos.io/) images that include the Operating System (OS) and the desired
@@ -20,8 +20,8 @@ installer ISO and provider image artifacts.
   Kubernetes version during cluster deployment.
 
 This tutorial teaches you how to build the artifacts required for your Edge deployment. Once built, you will be ready to
-learn how to reference them in Edge [cluster profiles](../../../../profiles/profiles.md) and how they are used to install
-the Palette agent on hosts.
+learn how to reference them in Edge [cluster profiles](../../../../profiles/profiles.md) and how they are used to
+install the Palette agent on hosts.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
 
