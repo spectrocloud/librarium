@@ -93,8 +93,9 @@ Create an IAM User or Role with at least one of the policies listed in the
 based on your use case.
 
 Once you have created the IAM User or Role, there are two options for using minimum permissions policies depending on
-whether you want Palette to manage the CloudFormation stack for Cluster API for AWS (CAPA) automatically or if you want
-to manage it manually:
+whether you want Palette to manage the CloudFormation stack for
+[Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws) automatically or if you
+want to manage it manually:
 
 - If you want Palette to manage the CloudFormation stack automatically, add the additional policies listed in the
   [Option 1: Automatic CloudFormation Stack Management](#option-1-automatic-cloudformation-stack-management) section.
@@ -214,8 +215,7 @@ After the stack is created, you must
 #### Create CloudFormation Stacks for Palette
 
 When using the minimum permissions policies, you must manually create the CloudFormation stack that Palette uses to
-create the required [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws)
-roles.
+create the required CAPA roles.
 
 1. Create a file named `palette-cloudformation-input-template.yaml` and copy the contents of the following
    CloudFormation template. This template is used for creating the required CAPA roles.
@@ -252,7 +252,7 @@ roles.
 
    <TabItem label="AWS CLI" value="aws-cli">
 
-   1. From the same directory where the `palette-cloudformation-input-template.yaml` file is located, execute the
+   8. From the same directory where the `palette-cloudformation-input-template.yaml` file is located, execute the
       following command to create the CloudFormation stack using AWS CLI. Replace `<aws-region>` with the AWS region you
       are using for your cluster deployments.
 
@@ -270,7 +270,7 @@ roles.
       }
       ```
 
-   2. Wait for the stack creation to complete. You can monitor the progress in the
+   9. Wait for the stack creation to complete. You can monitor the progress in the
       [CloudFormation console](https://console.aws.amazon.com/cloudformation/home).
 
    </TabItem>
