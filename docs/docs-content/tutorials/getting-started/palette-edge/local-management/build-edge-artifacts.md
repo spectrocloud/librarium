@@ -6,7 +6,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "tutorial", "local", "airgap", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 ---
 
 One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The
