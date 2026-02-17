@@ -44,7 +44,9 @@ Each Edge cluster consists of one or more nodes, with each node representing an 
 configuration begins with the
 [EdgeForge](../../../../docs-content/clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process, which builds two
 key artifacts:
+
 <!-- vale-off -->
+
 1. **Installer ISO**: A bootable ISO image that includes the required dependencies, such as the Palette Agent, and
    bootstraps the Edge installation process on the host.
 2. **Provider Images**: [Kairos](https://kairos.io/)-based customizable images that combine the OS and Kubernetes layers
