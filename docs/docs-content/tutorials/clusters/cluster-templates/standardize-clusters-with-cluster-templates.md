@@ -57,7 +57,7 @@ provided JSON cluster profile definition into the Palette UI. In the Terraform w
 cluster profile as code. In both cases, you create a cluster template, deploy clusters from it, and manage upgrades
 through profile version updates.
 
-Choose the workflow that fits your preferred way of working.
+Choose the workflow that best fits your use case.
 
 ## Prerequisites
 
