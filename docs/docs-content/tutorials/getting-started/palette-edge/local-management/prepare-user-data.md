@@ -124,13 +124,6 @@ In this section, you will create a user data file that identifies that the Edge 
 contains Edge host login credentials. The login credentials allow you to SSH into your Edge host. The user data file
 also includes an `install` parameter block to power off the host once the Edge installation completes.
 
-:::tip
-
-You can also use the [Appliance Studio](../../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
-Graphic User Interface (GUI) to help you create and validate your user data files.
-
-:::
-
 Export your Edge host login credentials.
 
 ```shell
@@ -181,7 +174,6 @@ The output should show your user data file, with the user and password to be cre
 example for both the username and password.
 
 ```text hideClipboard
-#cloud-config
 #cloud-config
 stylus:
   managementMode: local
