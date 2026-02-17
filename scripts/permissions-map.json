@@ -7,6 +7,7 @@
   "aws/MinimumIaaSDynamicPermissions.json": "_partials/permissions/_aws-iaas-dynamic-permissions.mdx",
   "aws/MinimumEKSDynamicPermissions.json": "_partials/permissions/_aws-eks-dynamic-permissions.mdx",
   "aws/MinimumEKSStaticPermissions.json": "_partials/permissions/_aws-eks-static-permissions.mdx",
+  "aws/MinimumAWSCloudFormationStackPermissions.json": "_partials/permissions/_aws-cloud-formation-stack-permissions.mdx",
   "aws/AWSPaletteCloudFormationInputTemplate.yaml": "_partials/permissions/_aws-palette-cloud-formation-input-template.mdx",
   "aws/AmazonEBSCSIDriverPolicy.yaml": "_partials/permissions/_aws-ebs-csi-driver-policy.mdx",
   "aws/ControllersEKSPolicy.json": "_partials/permissions/_aws-eks-controller-policy.mdx",

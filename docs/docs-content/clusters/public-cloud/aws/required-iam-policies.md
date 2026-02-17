@@ -88,9 +88,19 @@ The following policies are designed from the
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
 [Core IAM Policies](#core-iam-policies).
 
-After adding these policies to your IAM User or Role, you must also create the required CloudFormation stack for Palette
-manually in your AWS region. Finally, you must configure the Kubernetes layer of your cluster profiles to use the
-manually created CloudFormation stack.
+Create an IAM User or Role with at least one of the policies listed in the
+[Add Minimum Permissions Policies to IAM User or Role](#add-minimum-permissions-policies-to-iam-user-or-role) section
+based on your use case.
+
+Once you have created the IAM User or Role, there are two options for using minimum permissions policies depending on
+whether you want Palette to manage the CloudFormation stack for Cluster API for AWS (CAPA) automatically or if you want
+to manage it manually:
+
+- If you want Palette to manage the CloudFormation stack automatically, add the additional policies listed in the
+  [Option 1: Automatic CloudFormation Stack Management](#option-1-automatic-cloudformation-stack-management) section.
+
+- If you want to manage the CloudFormation stack manually, follow the steps in the
+  [Option 2: Manual CloudFormation Stack Management](#option-2-manual-cloudformation-stack-management) section.
 
 <!-- prettier-ignore-start -->
 
@@ -185,12 +195,27 @@ The following are important points to be aware of.
 
 :::
 
-### Create CloudFormation Stacks for Palette
+### Option 1: Automatic CloudFormation Stack Management
+
+Assign the following additional permissions policy on top of the minimum permissions policies to your IAM User or Role.
+These permissions allow Palette to manage the creation and lifecycle of the CloudFormation stack used for provisioning
+the required CAPA roles automatically.
+
+<PartialsComponent category="permissions" name="aws-cloudformation-stack-permissions" />
+
+### Option 2: Manual CloudFormation Stack Management
+
+After adding the minimum permissions policies to your IAM User or Role,
+[create the required CloudFormation stack for Palette manually in your AWS region](#create-cloudformation-stacks-for-palette).
+
+After the stack is created, you must
+[configure the Kubernetes layer of your cluster profiles to use the manually created CloudFormation stack](#enable-manual-cloudformation-stack-management-in-cluster-profiles).
+
+#### Create CloudFormation Stacks for Palette
 
 When using the minimum permissions policies, you must manually create the CloudFormation stack that Palette uses to
 create the required [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws)
-roles. This is not required when using the [core policies](#core-iam-policies), as the stack is created automatically
-using the more permissive policies.
+roles.
 
 1. Create a file named `palette-cloudformation-input-template.yaml` and copy the contents of the following
    CloudFormation template. This template is used for creating the required CAPA roles.
@@ -252,11 +277,11 @@ using the more permissive policies.
 
    </Tabs>
 
-### Enable Manual CloudFormation Stack Management
+#### Enable Manual CloudFormation Stack Management in Cluster Profiles
 
 After creating the CloudFormation stack, you must configure the Kubernetes layer of your cluster profiles to use the
 manually created stack. This ensures that Palette uses the existing stack rather than attempting to create and manage
-one automatically, which is not supported when using minimum permissions policies.
+one automatically.
 
 <Tabs queryString="cluster-profile">
 
@@ -393,6 +418,8 @@ supports the `manageCloudFormationStackManually` configuration.
 </Tabs>
 
 ## Additional IAM Policies for Specific Use Cases
+
+The following sections list additional IAM policies that may be required for specific use cases.
 
 ### Controllers EKS Policy
 

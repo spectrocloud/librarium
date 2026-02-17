@@ -1,0 +1,34 @@
+---
+partial_category: permissions
+partial_name: aws-cloudformation-stack-permissions
+---
+**Last Update**: February 21, 2026
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CloudFormationStackPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CreateStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:UpdateStack"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "IAMCAPARolePermissions",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateRole",
+                "iam:AttachRolePolicy"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+    ]
+}
+```
