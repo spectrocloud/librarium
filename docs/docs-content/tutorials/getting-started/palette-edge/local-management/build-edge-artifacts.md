@@ -2,11 +2,11 @@
 sidebar_label: "Build Edge Artifacts"
 title: "Build Edge Artifacts"
 description:
-  "Get started with Kubernetes at the edge. Learn how to build the artifacts required for your Edge deployment."
+  "Get started with Kubernetes at the edge. Learn how to build the artifacts required for your locally managed Edge deployment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "local", "airgap", "edge"]
 ---
 
 One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The
