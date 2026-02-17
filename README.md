@@ -1088,7 +1088,8 @@ To display the Additional Details content, create a markdown file with the same 
 [`docs/docs-content/integrations/`](./docs/docs-content/integrations/) content folder. For example, if the pack name is
 `ubuntu-aws`, you would create a markdown file called `ubuntu-aws.mdx`.
 
-When you create Additional Details content, the `category` field is optional because it is unused, and the `logoUrl` field is only necessary when a pack has no `README` file. 
+When you create Additional Details content, the `category` field is optional because it is unused, and the `logoUrl`
+field is only necessary when a pack has no `README` file.
 
 Your frontmatter might resemble the following example.
 
