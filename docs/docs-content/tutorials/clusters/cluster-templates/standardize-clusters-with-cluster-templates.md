@@ -39,8 +39,6 @@ For example, you can create **dev** and **prod** clusters from a single template
 stack and follow the same upgrade policy. You can assign different profile variable values to handle
 environment-specific requirements.
 
-The following diagram shows how these components fit together.
-
 In this tutorial, you will:
 
 - Create a cluster profile, a cluster template policy, and a cluster template that uses them together
@@ -52,8 +50,14 @@ In this tutorial, you will:
 
 Cluster templates can be used across all supported public clouds and data centers in Palette. This tutorial demonstrates
 two workflows: [Palette UI on AWS](#provision-and-upgrade-clusters-using-the-palette-ui-for-aws) and
-[Terraform on AWS or Azure](#provision-and-upgrade-clusters-using-terraform). Choose the workflow that fits your
-preferred way of working.
+[Terraform on AWS or Azure](#provision-and-upgrade-clusters-using-terraform).
+
+Both workflows use the same core components and follow the same architecture. In the UI workflow, you will import a
+provided JSON cluster profile definition into the Palette console. In the Terraform workflow, you will define and create
+the cluster profile as code. In both cases, you create a cluster template, deploy clusters from it, and manage upgrades
+through profile version updates.
+
+Choose the workflow that fits your preferred way of working.
 
 ## Prerequisites
 
