@@ -53,7 +53,7 @@ two workflows: [Palette UI on AWS](#provision-and-upgrade-clusters-using-the-pal
 [Terraform on AWS or Azure](#provision-and-upgrade-clusters-using-terraform).
 
 Both workflows use the same core components and follow the same architecture. In the UI workflow, you will import a
-provided JSON cluster profile definition into the Palette console. In the Terraform workflow, you will define and create
+provided JSON cluster profile definition into the Palette UI. In the Terraform workflow, you will define and create
 the cluster profile as code. In both cases, you create a cluster template, deploy clusters from it, and manage upgrades
 through profile version updates.
 
