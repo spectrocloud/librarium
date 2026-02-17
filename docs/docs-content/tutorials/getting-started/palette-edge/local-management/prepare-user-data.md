@@ -10,6 +10,7 @@ sidebar_position: 20
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
+This tutorial is focuses on building locally managed Edge devices, and is part of the [Edge Getting Started](../introduction-edge.md) series. You will learn how to create a
 [user data](../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which is a configuration file that
 allows you to customize the Edge installation process on the host. The user data file is embedded into the Edge
 installer ISO during the [EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When
