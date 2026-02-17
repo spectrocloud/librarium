@@ -41,8 +41,9 @@ how you can leverage Palette Edge.
 ## Architecture
 
 Each Edge cluster consists of one or more nodes, with each node representing an individual Edge host. The Edge
-configuration begins with the [EdgeForge](../../../../docs-content/clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process,
-which builds two key artifacts:
+configuration begins with the
+[EdgeForge](../../../../docs-content/clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process, which builds two
+key artifacts:
 
 1. **Installer ISO**: A bootable ISO image that includes the required dependencies, such as the Palette Agent, and
    bootstraps the Edge installation process on the host.
@@ -60,6 +61,7 @@ which does not require a connection to Palette.
 
 ## Next Steps
 
-On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue to the
-by choose whether you are going to deploy [Central Edge Management](./central-management/palette-edge.md) or [Local Edge Management](./local-management/palette-edge.md) tutorial to learn how to create a user data file, which is required for your
-first Edge deployment.
+On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue to the by choose
+whether you are going to deploy [Central Edge Management](./central-management/palette-edge.md) or
+[Local Edge Management](./local-management/palette-edge.md) tutorial to learn how to create a user data file, which is
+required for your first Edge deployment.

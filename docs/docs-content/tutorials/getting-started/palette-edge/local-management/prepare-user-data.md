@@ -7,13 +7,13 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["getting-started", "tutorial","locally-managed", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 [user data](../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which is a configuration file that
 allows you to customize the Edge installation process on the host. The user data file is embedded into the Edge
-installer ISO during the [EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When the
-Edge host boots from the installer ISO, it applies the user data configuration to the host.
+installer ISO during the [EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When
+the Edge host boots from the installer ISO, it applies the user data configuration to the host.
 
 After creating the user data file, you will proceed to the next tutorial in this series, where you will learn how to
 build the required Edge artifacts. You will then deploy your first Edge cluster.
@@ -38,7 +38,12 @@ To complete this tutorial, ensure the following prerequisites are in place.
 The user data file supports multiple parameters that allow you to customize the Edge installation and consists of three
 main configuration blocks:
 
-- `stylus`: [Palette agent parameters](../../../../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters) that control aspects of the Edge host's configuration, such as networking, logging, services, users, and permissions. The following configuration snippet specifies that the Edge device will be locally managed, and the [Terminal User Interface (TUI)](../../../../clusters/edge/site-deployment/site-installation/initial-setup.md) will be installed.
+- `stylus`:
+  [Palette agent parameters](../../../../clusters/edge/edge-configuration/installer-reference.md#palette-agent-parameters)
+  that control aspects of the Edge host's configuration, such as networking, logging, services, users, and permissions.
+  The following configuration snippet specifies that the Edge device will be locally managed, and the
+  [Terminal User Interface (TUI)](../../../../clusters/edge/site-deployment/site-installation/initial-setup.md) will be
+  installed.
 
   ```shell
   #cloud-config
@@ -56,7 +61,8 @@ main configuration blocks:
   ```
 
 - `stages`: The `stages` block uses cloud-init stages to personalize the initialization of your Edge hosts during
-  various stages of the system boot process. The following example wipes the local NVMe drive, and configures a `docs` user with a password during the `initramfs` stage.
+  various stages of the system boot process. The following example wipes the local NVMe drive, and configures a `docs`
+  user with a password during the `initramfs` stage.
 
   ```shell
   stages:
@@ -75,11 +81,12 @@ main configuration blocks:
 
   :::tip
 
-  Visit the [Edge Installer Configuration Reference](../../../../clusters/edge/edge-configuration/installer-reference.md)
-  page for a complete list of configuration parameters, the
+  Visit the
+  [Edge Installer Configuration Reference](../../../../clusters/edge/edge-configuration/installer-reference.md) page for
+  a complete list of configuration parameters, the
   [Prepare User Data](../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for more examples of user
-  data configurations, and the [Cloud Init Stages](../../../../clusters/edge/edge-configuration/cloud-init.md) page for the
-  supported cloud init stages.
+  data configurations, and the [Cloud Init Stages](../../../../clusters/edge/edge-configuration/cloud-init.md) page for
+  the supported cloud init stages.
 
   :::
 
@@ -112,9 +119,9 @@ git checkout v4.8.8
 
 ## Create User Data
 
-In this section, you will create a user data file that identifies that the Edge device will be locally managed, and contains
-Edge host login credentials. The login credentials allow you to SSH into your Edge host. The user data file also includes an `install`
-parameter block to power off the host once the Edge installation completes.
+In this section, you will create a user data file that identifies that the Edge device will be locally managed, and
+contains Edge host login credentials. The login credentials allow you to SSH into your Edge host. The user data file
+also includes an `install` parameter block to power off the host once the Edge installation completes.
 
 :::tip
 
@@ -141,7 +148,7 @@ stylus:
 
 install:
   poweroff: false
- 
+
 stages:
   before-install:
     - name: "Erase Old Partitions on Boot Disk"
@@ -169,8 +176,8 @@ Confirm that the file was created correctly.
 cat user-data
 ```
 
-The output should show your user data file, with the user and password to be created. This tutorial uses `kairos` as an example for
-both the username and password.
+The output should show your user data file, with the user and password to be created. This tutorial uses `kairos` as an
+example for both the username and password.
 
 ```text hideClipboard
 #cloud-config
@@ -181,7 +188,7 @@ stylus:
 
 install:
   poweroff: false
- 
+
 stages:
   before-install:
     - name: "Erase Old Partitions on Boot Disk"
