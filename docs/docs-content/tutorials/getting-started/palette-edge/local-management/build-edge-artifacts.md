@@ -9,7 +9,7 @@ sidebar_position: 30
 tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 ---
 
-One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The
+One of the first steps in deploying an Edge cluster is preparing your locally managed Edge host with all the required artifacts. The
 process of building these artifacts is called
 [EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating the
 installer ISO and provider image artifacts.
@@ -65,10 +65,10 @@ git tag --sort=v:refname
 ```
 
 Check out the desired tag. We recommend using a CanvOS minor version that is the same as, or older than, Palette's minor
-version. This tutorial uses the tag `v4.6.24` as an example.
+version. This tutorial uses the tag `v4.8.8` as an example.
 
 ```
-git checkout v4.6.24
+git checkout v4.8.8
 ```
 
 EdgeForge leverages [Earthly](https://earthly.dev/) to build the installer ISO and provider images artifacts. A `.arg`
@@ -88,10 +88,10 @@ When the Edge host boots from the installer ISO, it applies the user data config
 :::
 
 Set a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses
-`gs-tutorial` as an example. Additionally, replace `spectrocloud` with the name of your registry.
+`local-edge` as an example. Additionally, replace `spectrocloud` with the name of your registry.
 
 ```bash
-export CUSTOM_TAG=gs-tutorial
+export CUSTOM_TAG=local-edge
 export IMAGE_REGISTRY=spectrocloud
 ```
 
@@ -116,7 +116,7 @@ IMAGE_REPO=ubuntu
 OS_VERSION=22.04
 K8S_DISTRIBUTION=k3s
 K8S_VERSION=1.32.3
-ISO_NAME=palette-edge-installer
+ISO_NAME=palette-local-edge-installer
 ARCH=amd64
 UPDATE_KERNEL=false
 EOF
@@ -127,13 +127,6 @@ Verify that the file was created correctly using the `cat` command.
 ```
 cat .arg
 ```
-
-:::tip
-
-You can also use the [Appliance Studio](../../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
-Graphic User Interface (GUI) to help you create the `.arg` file.
-
-:::
 
 ## Build Artifacts
 
@@ -173,12 +166,12 @@ options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
 
-  system.registry: spectrocloud
-  system.repo: ubuntu
+  system.registry: spectrodocs
+  system.repo: edge
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.6.24
-  system.customTag: gs-tutorial
+  system.peVersion: v4.8.8
+  system.customTag: edgedemo1
   system.osVersion: 22.04
 ```
 
@@ -189,7 +182,7 @@ ls build
 ```
 
 ```text hideClipboard
-palette-edge-installer.iso  palette-edge-installer.iso.sha256
+palette-local-edge-installer.iso  palette-local-edge-installer.iso.sha256
 ```
 
 List the container images to confirm that the provider images were built successfully.
@@ -200,8 +193,8 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 
 ```text hideClipboard
 REPOSITORY            TAG                                          IMAGE ID       CREATED          SIZE
-spectrocloud/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial               d28750baa9a6   33 minutes ago   5.05GB
-spectrocloud/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial_linux_amd64   d28750baa9a6   33 minutes ago   5.05GB
+spectrocloud/ubuntu   k3s-1.32.3-v4.8.8-local-edge               d28750baa9a6   33 minutes ago   4.33GB
+spectrocloud/ubuntu   k3s-1.32.3-v4.8.8-local-edge_linux_amd64   d28750baa9a6   33 minutes ago   4.33GB
 ```
 
 ## Push Provider Images
@@ -221,7 +214,7 @@ Once authenticated, push the provider image to the registry so that your Edge ho
 deployment.
 
 ```bash
-docker push $IMAGE_REGISTRY/ubuntu:k3s-1.32.3-v4.6.24-$CUSTOM_TAG
+docker push $IMAGE_REGISTRY/ubuntu:k3s-1.32.3-v4.8.8-$CUSTOM_TAG
 ```
 
 The output confirms that the image was pushed to the registry with the correct tag and is ready to be used in a cluster
@@ -229,7 +222,7 @@ profile.
 
 ```text hideClipboard
 ...
-k3s-1.32.3-v4.6.24-gs-tutorial: digest: sha256:518f937c3256e49c31b54ae72404812c99198281ddea647183b6ee8fc6938aaa size: 16576
+k3s-1.32.3-v4.8.8-local-edge: digest: sha256:518f937c3256e49c31b54ae72404812c99198281ddea647183b6ee8fc6938aaa size: 16576
 ```
 
 ## Automate EdgeForge
@@ -396,8 +389,8 @@ Follow the steps below to build the artifacts using the script.
    done
 
    # Prompt for other .arg file parameters
-   read -p "Enter custom tag for the artifacts [default: gs-tutorial]: " CUSTOM_TAG
-   CUSTOM_TAG=${CUSTOM_TAG:-gs-tutorial}
+   read -p "Enter custom tag for the artifacts [default: local-edge]: " CUSTOM_TAG
+   CUSTOM_TAG=${CUSTOM_TAG:-local-edge}
 
    read -p "Enter OS distribution [default: ubuntu]: " OS_DISTRIBUTION
    OS_DISTRIBUTION=${OS_DISTRIBUTION:-ubuntu}
