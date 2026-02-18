@@ -35,7 +35,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
   minimum hardware configuration:
   - 4 CPUs
   - 8 GB memory
-  - 150 GB storage
+  - 300 GB storage
 - Access to a public image registry and permissions to push images. This tutorial uses
   [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
   to the
