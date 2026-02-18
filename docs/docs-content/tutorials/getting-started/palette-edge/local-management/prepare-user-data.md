@@ -29,7 +29,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
   minimum hardware configuration:
   - 4 CPUs
   - 8 GB memory
-  - 150 GB storage
+  - 300 GB storage
 - The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
     [Earthly](https://earthly.dev/), in which case you will not need `sudo` privileges.
