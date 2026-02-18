@@ -3,9 +3,8 @@ partial_category: palette-edge-canvos-version
 partial_name: canvos-edge-user-data
 ---
 
-From the CanvOS directory, copy the `user-data.template` file and name the copy `user-data`. Update the following fields in the `user-data` file `stylus.site`. You can comment out any fields that you do not need to use.
-	- `edgeHostToken`
-	- `paletteEndpoint`
+From the CanvOS directory, copy the `user-data.template` file and name the copy `user-data`. In the `user-data` file under the `stylus.site` section, update the values of the `edgeHostToken` and `paletteEndpoint` fields. You can comment out any fields that are not required.
+	
 
 Below is an example of a `user-data` file.
 
@@ -14,7 +13,7 @@ Below is an example of a `user-data` file.
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: <yourRegistrationToken>
+    edgeHostToken: <your-registration-token>
     tags:
       city: chicago
       building: building-1

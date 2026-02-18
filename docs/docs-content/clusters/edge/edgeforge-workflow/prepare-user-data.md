@@ -98,7 +98,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    git checkout v4.7.2
    ```
 
-   ### Prepare .arg File
+   ### Prepare `.arg` File
 
 4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
@@ -115,7 +115,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
 7. Decide if you want your Edge host centrally managed by Palette or managed locally. The default configuration is a
    centrally managed Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, change
-   the management mode to `local` by adding the `managementMode` parameter to under the `stylus` parameter.
+   the management mode to `local` by adding `managementMode` under the `stylus` parameter.
 
    ```yaml
    #cloud-config

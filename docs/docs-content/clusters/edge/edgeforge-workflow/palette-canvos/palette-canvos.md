@@ -115,7 +115,7 @@ customization.
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
    corresponding tag.
 
    Otherwise, check out the newest available tag. This guide uses the tag `v4.7.2` as an example.
@@ -133,8 +133,7 @@ customization.
    - `user-data.template` - A sample file containing user data.
 
 7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
-   Refer to [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/) for full sample
-   `.arg` files.
+   For `.arg` examples, refer to [Full `.arg` Samples](/clusters/edge/edgeforge-workflow/prepare-user-data/#full-arg-samples). 
 
    :::preview
 
@@ -464,7 +463,7 @@ required Edge artifacts.
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, check out the newest available tag. This guide uses **v4.7.2** tag as an example.
+   Otherwise, check out the newest available tag. This guide uses the `v4.7.2` tag as an example.
 
    ```shell
    git checkout v4.7.2
