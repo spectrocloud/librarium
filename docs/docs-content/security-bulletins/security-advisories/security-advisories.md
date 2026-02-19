@@ -3,7 +3,6 @@ sidebar_label: "Security Advisories"
 title: "Security Advisories"
 description: "Palette Security Advisories for Common Vulnerabilities and Exposures (CVEs)."
 icon: ""
-toc_max_heading_level: 4
 hide_table_of_contents: false
 tags: ["security", "cve", "advisories"]
 ---
@@ -11,7 +10,52 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
-## Security Advisory 008- Nginx ingress Vulnerabilities
+## Security Advisory 009 - crypto/tls TLS Session Resumption
+
+- **Release Date**: February 5, 2026
+- **Last Updated**: February 18, 2026
+- **Severity**: CRITICAL
+- **CVEs**: [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/CVE-2025-68121)
+
+### Summary
+
+CVE-2025-68121 is a critical security vulnerability in the Go standard library (`crypto/tls`) that may allow unintended
+TLS session resumption when certificate validation configuration changes between connections. Under specific conditions,
+an attacker may resume a previously established TLS session even when updated certificate validation settings should
+cause the connection to fail.
+
+### Affected Deployments
+
+- All Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted)
+- All workload clusters
+
+### Impact
+
+Successful exploitation may allow:
+
+- Bypassing updated certificate validation policies
+- Resuming unauthorized TLS sessions
+- Compromising the confidentiality and integrity of session data
+
+This can affect service-to-service communication and API traffic, depending on how the services use `crypto/tls` and
+resume sessions.
+
+### Fix Availability
+
+An updated release containing a patched Go runtime is in development. This advisory will be updated when fixed versions
+become available.
+
+### Mitigations
+
+Until a fix is available, customers may mitigate risk by monitoring and auditing controls to detect any unauthorized or
+unexpected changes to root Certificate Authority (CA) or client CA bundles, including updates to Kubernetes Secrets and
+ConfigMaps.
+
+### Resources
+
+- [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/CVE-2025-68121)
+
+## Security Advisory 008 - Nginx ingress Vulnerabilities
 
 - **Release Date**: February 3, 2026
 - **Last Updated**: February 3, 2026
@@ -362,7 +406,7 @@ cluster profile.
 
 </Tabs>
 
-### References
+### Resources
 
 For additional information, refer to the following GitHub Security Advisories:
 
