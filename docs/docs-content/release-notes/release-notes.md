@@ -241,8 +241,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | ----------------- | ---------- | ------------------ | ------------------ | ----------- |
 | Argo CD           | Add-on     | :white_check_mark: | :x:                | 9.4.1       |
 | Azure Disk        | CSI        | :white_check_mark: | :x:                | 1.34.1      |
-| Cilium            | CNI        | :x:                | :white_check_mark: | 1.18.4      |
-| Cilium            | CNI        | :x:                | :white_check_mark: | 1.18.1      |
 | Crossplane        | Add-on     | :white_check_mark: | :x:                | 2.1.4       |
 | ECK Stack         | Add-on     | :white_check_mark: | :x:                | 0.18.0      |
 | ECK Operator      | Add-on     | :white_check_mark: | :x:                | 3.3.0       |
