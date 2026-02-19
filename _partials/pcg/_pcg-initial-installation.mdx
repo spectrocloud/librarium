@@ -109,26 +109,25 @@ partial_name: pcg-initial-installation
    
       3. Choose an existing cluster profile or <VersionedLink text="create a new cluster profile" url="/profiles/cluster-profiles/create-cluster-profiles" />. For more information, refer to the <VersionedLink text="cluster profile" url="/profiles/cluster-profiles" /> guide.
    
-      4. In the OS layer of your cluster profile, add your CA certificate to the `content` field under `kubeadmconfig.files`.
-      <br />
-            ```yaml hideClipboard title="Example OS layer configuration" {1,9,13-16}
-            kubeadmconfig:
-              preKubeadmCommands:
-              - echo "Executing pre kube admin config commands"
-              - update-ca-certificates
-              - 'systemctl restart containerd; sleep 3'
-              - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
-              postKubeadmCommands:
-              - echo "Executing post kube admin config commands"
-              files:
-              - targetPath: /usr/local/share/ca-certificates/mycom.crt
-                targetOwner: "root:root"
-                targetPermissions: "0644"
-                content: |
-                  -----BEGIN CERTIFICATE-----
-                  ***************************
-                  -----END CERTIFICATE-----
-            ```
+      4. In the OS layer of your cluster profile, add your CA certificate to the `content` field under `kubeadmconfig.files`. The CA certificate file _must_ be named `ca.crt`.
+              ```yaml hideClipboard title="Example OS layer configuration" {1,9-10,13-16}
+              kubeadmconfig:
+                preKubeadmCommands:
+                - echo "Executing pre kube admin config commands"
+                - update-ca-certificates
+                - 'systemctl restart containerd; sleep 3'
+                - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
+                postKubeadmCommands:
+                - echo "Executing post kube admin config commands"
+                files:
+                - targetPath: /usr/local/share/ca-certificates/ca.crt
+                  targetOwner: "root:root"
+                  targetPermissions: "0644"
+                  content: |
+                    -----BEGIN CERTIFICATE-----
+                    ***************************
+                    -----END CERTIFICATE-----
+              ```
 
       5. Select **Confirm Updates**.
 
