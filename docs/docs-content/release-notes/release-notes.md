@@ -131,7 +131,7 @@ The following component updates are applicable to this release:
 
 - The internal Palette Nginx controller has been upgraded to v1.13.7 to address multiple Nginx ingress vulnerabilities.
   Refer to
-  [Security Advisory 008- Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008---nginx-ingress-vulnerabilities)
+  [Security Advisory 008 - Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008---nginx-ingress-vulnerabilities)
   for further information.
 
 ## January 30, 2026 - Release 4.8.25
