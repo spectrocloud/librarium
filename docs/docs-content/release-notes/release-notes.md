@@ -218,7 +218,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - Fixed an issue that caused the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) to
-  incorrectly resolve private registry pack IUD for during cluster profile creation, resulting in errors.
+  incorrectly resolve private registry pack UID for during cluster profile creation, resulting in errors.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2138 -->
 
