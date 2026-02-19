@@ -50,6 +50,13 @@ tags: ["release-notes"]
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2154 -->
+
+- A proxy Certificate Authority (CA) certificate filename of `ca.crt` is now required for
+  [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) clusters and
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [VerteX](../vertex/vertex.md) instances
+  installed using the [Palette CLI](../automation/palette-cli/palette-cli.md).
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7488 -->
 
 - Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
