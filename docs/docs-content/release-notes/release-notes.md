@@ -124,6 +124,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8192 -->
+
+- [Two-node Edge clusters](../clusters/edge/architecture/two-node.md) have exited Tech Preview and are now ready for
+  production workloads.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-7783 -->
 
 <!-- prettier-ignore-start -->
