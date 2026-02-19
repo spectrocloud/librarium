@@ -52,7 +52,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2154 -->
 
-- Proxy server Certificate Authority (CA) certificate filenames must now be named `ca.crt` for
+- Proxy server Certificate Authority (CA) files must now be named `ca.crt` for
   [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) clusters and
   [self-hosted Palette](../enterprise-version/enterprise-version.md) and [VerteX](../vertex/vertex.md) instances
   installed using the [Palette CLI](../automation/palette-cli/palette-cli.md).
