@@ -7,7 +7,7 @@ sidebar_position: 2
 tags: ["edge"]
 ---
 
-The EdgeForge process requires two configuration files. The `.arg` file and the `user-data` file. Each is responsible
+The EdgeForge process requires two configuration files: the `.arg` file and the `user-data` file. Each is responsible
 for a different aspect of the EdgeForge process. The `.arg` file configures the build process itself as well as its
 output, while the `user-data` file configures the Edge installer ISO. The following table briefly summarizes the
 differences between the two files.
@@ -33,7 +33,7 @@ After installation, you can also use Local UI to make edits to the user data fil
 This article guides you through several important parameters in the `.arg` file and configuration blocks in the
 `user-data` file. However, you can use many additional parameters to further customize your installation. Review the
 [Edge Artifact Build Configurations](../edgeforge-workflow/palette-canvos/arg.md) and
-[Installer Reference](../edge-configuration/installer-reference.md) resource to learn more about all the supported
+[Installer Reference](../edge-configuration/installer-reference.md) resource to learn more about the supported
 configuration parameters you can use in the configuration user data.
 
 :::preview
@@ -85,64 +85,36 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     git clone https://github.com/spectrocloud/CanvOS.git
    ```
 
-   From the **CanvOS** directory, copy the **user-data.template** file and name the copy **user-data**. This is a
-   template that you can use as a starting point to build your own user data file.
-
 2. View the available git tag.
 
    ```shell
    git tag
    ```
 
-3. Check out the latest available tag. This guide uses the tag v4.6.21 as an example.
+3. Check out the latest available tag. This guide uses the tag `v4.7.2` as an example.
 
    ```bash
-   git checkout v4.6.21
+   git checkout v4.7.2
    ```
 
-### Prepare .arg File
+   ### Prepare `.arg` File
 
-1. Specify the system architecture and OS distribution and version. These configurations will apply to both the OS of
-   your Edge host before and after cluster formation.
+4. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
-2. Specify the Kubernetes distribution and version. The Kubernetes distribution is used together with the OS
-   distribution and version to create an immutable provider image that has your specified OS and Kubernetes.
+   Refer to the [Full `.arg` Samples](#full-arg-samples) section below for example `.arg` files.
 
-   If you want to build multiple versions of a provider image with different Kubernetes versions, use the
-   `k8s_version.json` file in the repository. You must leave the `K8s_VERSION` empty if you want to use the JSON file
-   because it is only used when `K8s_VERSION` is not detected as an argument.
-
-3. Specify the image registry, image repository name, and image tag that will be used to tag your provider images. The
-   custom tag, together with the Palette agent version (the same number as the Git tag you are using), the version and
-   distribution of Kubernetes and the OS used by the image forms the tag of the image.
-
-   For example, if your `.arg` file contains the following arguments, the full image reference would be
-   `ttl.sh/ubuntu:k3s-1.32.1-v4.6.21-demo`.
-
-   ```text
-   IMAGE_REGISTRY=ttl.sh
-   IMAGE_REPO=ubuntu
-   CUSTOM_TAG=demo
-   K8S_DISTRIBUTION=k3s
-   K8s_VERSION=1.31.7
-   OS_DISTRIBUTION=ubuntu
-   OS_VERSION=22
-   ```
-
-4. (Optional) If your build machine isn't in a restricted network environment, or your build process does not require
+5. (Optional) If your build machine is not in a restricted network environment, or your build process does not require
    access to a proxy server, skip this step.
 
    You can use `HTTP_PROXY` and `HTTPS_PROXY` to specify the URLs of the proxy servers to be used for your build.
 
-5. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
-   use to customize the build.
+   ### Prepare User Data
 
-### Prepare User Data
+6. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
-1. Decide whether you want to deploy an Edge host that is managed locally or centrally by Palette. The default
-   configuration is a centrally management Edge host. If you want to deploy an Edge host that is not connected to a
-   Palette instance, you need to change the management mode to `local`. Add the `managementMode` parameter to under the
-   `stylus` parameter.
+7. Decide if you want your Edge host centrally managed by Palette or managed locally. The default configuration is a
+   centrally managed Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, change
+   the management mode to `local` by adding `managementMode` under the `stylus` parameter.
 
    ```yaml
    #cloud-config
@@ -154,12 +126,12 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    information about the deployment lifecycle of locally managed Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
-2. If you want to deploy a locally managed Edge host, skip this step.
+8. If you want to deploy a locally managed Edge host, skip this step.
 
-   If you want to deploy the Edge host in central management mode, you need to provide the Palette endpoint, in addition
-   to either a registration token or QR code registration configuration. For more information about Edge host
-   registration, refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For
-   example, the following configuration provides the default Palette endpoint, a registration token, an a project name.
+   To deploy the Edge host in central management mode, provide the Palette endpoint in addition to either a registration
+   token or QR code registration configuration. For more information about Edge host registration, refer to
+   [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For example, the following
+   configuration provides the default Palette endpoint, a registration token, and a project name.
 
    ```yaml
    #cloud-config
@@ -177,16 +149,18 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
        projectUid: 12345677788
    ```
 
-#### Configure Cloud Init Stages (Optional)
+   #### Configure Cloud-init Stages (Optional)
 
-4. Cloud-init stages allow you to configure your Edge host declaratively. For more information about cloud-init stages,
-   refer to [Cloud-init Stages](../edge-configuration/cloud-init.md).
+9. Cloud-init stages allow you to configure your Edge host declaratively. These stages are included in your `user-data`
+   file. For more information about cloud-init stages, refer to
+   [Cloud Init Stages](../edge-configuration/cloud-init.md).
 
-   To configure clout-init stages for your Edge host, use the `stages` block. For example, the following configuration
+   To configure cloud-init stages for your Edge host, use the `stages` block. For example, the following configuration
    installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
 
    ```yaml
    #cloud-config
+   ---
    stages:
      after-install-chroot:
        - name: "Install SSM"
@@ -202,12 +176,13 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
 
    :::
 
-#### Configure Users
+   #### Configure GPU Specifications (Optional)
 
-5. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
-   host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
-   replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
-   the list of authorized keys for that user.
+10. Palette automatically displays Graphics Processing Unit (GPU) specifications for Edge hosts with certain GPU
+    vendor-model combinations in [Edge Host Grid View](../site-deployment/edge-host-view.md) and on the Edge host
+    **Overview** tab. For other GPU models and vendors, Palette attempts to automatically source GPU information using
+    the vendor-specific driver or command-line interface (CLI) installed on the Edge host. Multi-Instance GPU (MIG) data
+    can only be retrieved for Nvidia devices with the `nvidia-smi` CLI installed.
 
    ```yaml
    #cloud-config
@@ -266,7 +241,71 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    installation is complete and before the restart happens. Otherwise, the Edge host might start the installation
    process again.
 
-   :::
+    #### Configure Users
+
+11. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+    host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
+    replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
+    the list of authorized keys for that user.
+
+    ```yaml
+    #cloud-config
+    stages:
+      initramfs:
+        - users:
+            USERNAME:
+              passwd: ******
+              groups:
+                - sudo
+              ssh_authorized_keys:
+                - ssh-rsa AAAAB3N…
+          name: Create user and assign SSH key
+    ```
+
+    #### Configure Proxy Settings (Optional)
+
+12. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+    as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
+    configure proxy settings for your Edge host.
+
+    These settings are different from the proxy settings you provide to the `.arg` file. The settings in the `.arg` file
+    apply to the builder machine during the build process, while the settings in `user-data` apply to the Edge host
+    after installation.
+
+    | Parameter                | Description                                                                           |
+    | ------------------------ | ------------------------------------------------------------------------------------- |
+    | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
+    | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
+    | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
+
+    :::warning
+
+    The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
+    automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+    [Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
+
+    :::
+
+    #### Configure Post-Installation Behavior (Optional)
+
+13. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
+    installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen,
+    but you can configure it to power off or restart automatically. For example, the following configuration instructs
+    the Edge host to power off automatically post-installation.
+
+    ```yaml
+    #cloud-config
+    install:
+      poweroff: true
+    ```
+
+    :::warning
+
+    If your want your Edge host to restart automatically, ensure that you remove the installation disk after the
+    installation is complete and before the restart happens. Otherwise, the Edge host might start the installation
+    process again.
+
+    :::
 
 </TabItem>
 
@@ -350,15 +389,9 @@ You can create presets to use as reusable building blocks for future instances o
 You can use the `+validate-user-data` build target of EdgeForge to validate that your user data follows the expected
 schema. You need to perform this action on an AMD64 (also known as x86_64) machine.
 
-From the **CanvOS** directory, issue the following command to validate your user data.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-validate" />
 
-```shell
-sudo ./earthly.sh +validate-user-data
-```
-
-```hideClipboard
-+validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
-```
+For more information about `user-data` file validation, refer to [Validate User Data](./validate-user-data.md).
 
 ## Full .arg Samples
 
@@ -372,7 +405,7 @@ processes that are allowed to operate on your Edge device. To enable the feature
 during the EdgeForge build process.
 
 ```
-IMAGE_REGISTRY=ttl.sh
+IMAGE_REGISTRY=spectrocloud
 OS_DISTRIBUTION=Ubuntu
 OS_VERSION=22
 IMAGE_REPO=ubuntu-secure
@@ -394,7 +427,7 @@ alters the Kubernetes layer and requires a different provider image to be built 
 Therefore, you must specify `TWO_NODE=true` during the EdgeForge process in your `.arg` file.
 
 ```
-IMAGE_REGISTRY=ttl.sh
+IMAGE_REGISTRY=spectrocloud
 OS_DISTRIBUTION=Ubuntu
 OS_VERSION=22
 IMAGE_REPO=ubuntu
@@ -588,7 +621,7 @@ stages:
 ### Create Bind Mounts
 
 Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration
-file named **user-data**, which allows your cluster to use directories or files from your Edge host directly within your
+`user-data` file, which allows your cluster to use directories or files from your Edge host directly within your
 Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct
 access to files or directories on the Edge host.
 
@@ -657,7 +690,7 @@ use case.
 ## Next Steps
 
 After you have finalized your Installer configuration, you can build the configuration into the Edge Installer ISO, or
-turn the **user-data** file into an ISO file to use before site deployment.
+turn the `user-data` file into an ISO file to use before site deployment.
 
 - Check out the [Build Edge Installer ISO](palette-canvos/palette-canvos.md) guide to learn how to build the Edge
   Installer ISO image.
