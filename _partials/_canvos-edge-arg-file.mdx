@@ -32,7 +32,7 @@ Copy the `.arg.template` file from the `CanvOS` directory and name the copy `.ar
 
 The `.arg` file uses the default values for any remaining arguments.
 
-Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. The custom tag, together with the Palette agent version (the same number as the Git tag you are using), the version and distribution of Kubernetes, and the OS used by the image forms the tag of the image. For example, one of the provider images might be `spectrocloud/ubuntu:k3s-1.33.5-v4.7.2-palette-learn`.
+Using the arguments defined in the `.arg` file, together with the CanvOS tag, the final provider image follows this naming convention: `[IMAGE_REGISTRY]/[IMAGE_REPO]:[K8S_DISTRIBUTION]-[K8S_VERSION]-[CANVOS_TAG]-[CUSTOM_TAG]`. For example: `spectrocloud/ubuntu:k3s-1.33.5-v4.7.2-palette-learn`.
 
 <li> View the newly created file to ensure the customized arguments are set correctly.</li>
 
