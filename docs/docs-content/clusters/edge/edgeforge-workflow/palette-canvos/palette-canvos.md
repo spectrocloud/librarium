@@ -133,7 +133,8 @@ customization.
    - `user-data.template` - A sample file containing user data.
 
 7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
-   For `.arg` examples, refer to [Full `.arg` Samples](/clusters/edge/edgeforge-workflow/prepare-user-data/#full-arg-samples). 
+   For `.arg` examples, refer to [Full `.arg`
+   Samples](/clusters/edge/edgeforge-workflow/prepare-user-data/#full-arg-samples).
 
    :::preview
 
@@ -267,7 +268,8 @@ customization.
       system.osVersion: 22
     ```
 
-11. List the Docker images to review the provider images created. You can identify the provider images by reviewing the value you used in the `.arg` file's `CUSTOM_TAG` argument.
+11. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
+    value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
     docker images --filter=reference='*/*:*palette-learn'
@@ -638,7 +640,8 @@ required Edge artifacts.
     ```
 
 12. List the Docker images to review the provider images created. By default, provider images for all the Palette's
-    Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the value you used in the `.arg` file's `CUSTOM_TAG` argument.
+    Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the value you used
+    in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
     docker images --filter=reference='*/*:*palette-learn'
