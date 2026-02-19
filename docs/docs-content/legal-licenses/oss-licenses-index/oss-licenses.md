@@ -283,7 +283,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/creachadair/otp                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/cyberphone/json-canonicalization                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/cyphar/filepath-securejoin                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
-| github.com/cyphar/filepath-securejoin                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/danieljoos/wincred                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/davecgh/go-spew                                                                    | [ISC](https://opensource.org/license/isc-license-txt)                     |
 | github.com/denisbrodbeck/machineid                                                            | [MIT](https://opensource.org/license/mit/)                                |
@@ -300,7 +299,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/diskfs/go-diskfs                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/distribution/reference                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/djherbis/times                                                                     | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/docker/cli                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/docker/cli                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/docker/distribution                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/docker/docker                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -616,7 +614,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/pquerna/cachecontrol                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/prometheus-community/pro-bing                                                      | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/prometheus/client_golang                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| github.com/prometheus/client_golang                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/prometheus/client_model                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/prometheus/common                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/prometheus/procfs                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -762,23 +759,16 @@ The following table lists the open source licenses tied to the libraries and mod
 | go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/contrib/instrumentation/runtime                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.opentelemetry.io/otel                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/otlp/otlptrace                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.opentelemetry.io/otel/exporters/otlp/otlptrace                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/prometheus                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/stdout/stdoutmetric                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/metric                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.opentelemetry.io/otel/metric                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.opentelemetry.io/otel/sdk                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/sdk                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/sdk/metric                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.opentelemetry.io/otel/trace                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/trace                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/proto/otlp                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.starlark.net                                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
@@ -836,7 +826,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | i18next-browser-languagedetector                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | i18next-conv                                                                                  | [MIT](https://opensource.org/license/mit/)                                |
 | i18next-http-backend                                                                          | [MIT](https://opensource.org/license/mit/)                                |
-| i18next-http-backend                                                                          | [MIT](https://opensource.org/license/mit/)                                |
 | i18next-v4-format-converter                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | i18next-xhr-backend                                                                           | [MIT](https://opensource.org/license/mit/)                                |
 | immer                                                                                         | [MIT](https://opensource.org/license/mit/)                                |
@@ -858,7 +847,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | k8s.io/helm                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | k8s.io/klog                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | k8s.io/klog/v2                                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| k8s.io/kube-openapi                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | k8s.io/kube-openapi                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | k8s.io/kubectl                                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | k8s.io/kubelet                                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
