@@ -52,11 +52,15 @@ which builds two key artifacts:
 
 After completing the build, you use the Installer ISO to install the Palette agent onto the Edge host. In connected
 environments, the host then registers itself with Palette using the registration token provided during the installer
-build. After registration, you can use the host as a node during the Edge cluster deployment. In disconnected
+build. After registration, you can use the host as a node during the Edge cluster deployment. 
+
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram.webp)
+
+In disconnected
 environments, you can use [Local UI](../../../clusters/edge/local-ui/local-ui.md) to create and manage the cluster,
 which does not require a connection to Palette.
 
-![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram.webp)
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_local-managed-edgeforge-diagram_4-8.webp)
 
 ## Next Steps
 
