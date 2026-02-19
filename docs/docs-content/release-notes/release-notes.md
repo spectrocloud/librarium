@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 14, 2026 - Release 4.8.X {#release-notes-4.8.b}
+## February 21, 2026 - Release 4.8.b {#release-notes-4.8.b}
 
 ### Security Notices
 
@@ -23,12 +23,7 @@ tags: ["release-notes"]
 
 #### Features
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9118 -->
-
-- Palette and VerteX installations now use
-  [Traefik for Kubernetes ingress](https://doc.traefik.io/traefik/reference/install-configuration/providers/kubernetes/kubernetes-ingress/).
-  The migration is seamless for new and existing Palette installations. This change follows the
-  [Ingress NGINX Retirement](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/).
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5747 -->
 
 - Palette now supports the option to skip worker node upgrades on
   [AWS IaaS clusters](../clusters/public-cloud/aws/create-cluster.md). For example, if you have worker pools running
@@ -41,9 +36,13 @@ tags: ["release-notes"]
   [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.b is now
+  available.
+
 #### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9695 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9205 -->
 
 - A [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) warning is now
   displayed when modifying operating system (OS) or Kubernetes configurations for clusters linked to a cluster template.
@@ -51,9 +50,23 @@ tags: ["release-notes"]
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-9696 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7488 -->
 
 - Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9668 -->
+
+- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
+  supports the migration of VMs with NVM Express (NVMe) backed disks.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7563 -->
+
+- The Palette UI now supports direct navigation to the relevant profile layer when users click any profile component of
+  a running cluster from the overview page, instead of defaulting to editing the Operating System layer.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-5869 -->
+
+- Palette's internal database, MongoDB, has been upgraded to version 8.0.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5934 -->
 
@@ -66,19 +79,52 @@ tags: ["release-notes"]
   mounts when the same paths are specified in both locations. Volume and mount names are generated using a hash of the
   full path to ensure path-unique naming and avoid Kubernetes validation conflicts.
 
-#### Deprecations and Removals
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9460 -->
+
+- Fixed an issue that prevented some permissions available in
+  [tenant roles](../user-management/palette-rbac/tenant-scope-roles-permissions.md) from being available during
+  [custom role creation](../user-management/palette-rbac/create-custom-role.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5756 -->
+
+- Fixed an issue that caused the Palette controller to stop reconciling resources on
+  [AWS clusters](../clusters/public-cloud/aws/aws.md) where pack uninstallation is stuck.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9788 -->
+
+- Fixed an issue that caused Palette to fail to list or select
+  [Zarf OCI](../registries-and-packs/registries/oci-registry/add-oci-zarf.md) packs with image tags do not conform to
+  strict semantic versioning.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5949 -->
+
+- Fixed an issue that caused [backups](../clusters/cluster-management/backup-restore/backup-restore.md) to failing
+  unless `AWS_REGION` is set in the `kube2iam` DaemonSet.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9830 -->
+
+- Fixed an issue that caused Palette [SMTP configuration](../enterprise-version/system-management/smtp.md) to ignore
+  `noProxy` entries specified using leading-dot notation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9843 -->
+
+- Fixed an issue that caused [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) configured with
+  [OCI Helm chart packs](../registries-and-packs/registries-and-packs.md) with missing `pack.namespace` fields to fail
+  to publish.
 
 ### Edge
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.X Palette release is 4.8.b.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.b Palette release is 4.8.10.
 
 :::
 
-#### Features
-
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7783 -->
 
 <!-- prettier-ignore-start -->
 
@@ -86,7 +132,60 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- prettier-ignore-end -->
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-7529 -->
+
+- The [Palette Optimized Canonical distribution](../clusters/edge/architecture/architecture.md) now supports
+  [network overlay](../clusters/edge/networking/vxlan-overlay.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7394 -->
+
+- The [kube-vip](../clusters/edge/networking/kubevip.md) version used in Edge cluster deployments is now 1.0.3.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7991 -->
+
+- The [Palette Agent installer](../deployment-modes/agent-mode/install-agent-host.md) now displays a progress bar during
+  the download of the Palette agent binary.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-5767 -->
+
+- The Kubernetes boot time on [Edge clusters](../clusters/edge/edge.md) has now been reduced through the optimization of
+  cache fetching.
+
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7531 -->
+
+- Palette no longer reports errors when automatic certificate renewals are not configured on
+  [Edge clusters](../clusters/edge/edge.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7727 -->
+
+- Fixed an issue that prevented Palette from applying priority classes on critical upgrade pods, leading to scheduling
+  errors during cluster upgrades.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7809 -->
+
+- Fixed an issue that caused the automatic upgrades task to consume high memory and crash.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8018 -->
+
+- Fixed an issue that prevented Palette from deleting some cluster artifacts and journal logs from Edge hosts that have
+  been [reset](../clusters/edge/cluster-management/reset-host.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8064 -->
+
+- Fixed an issue that prevented Palette from clearing NTP values and SSH keys after they have been removed in
+  [LocalUI](../clusters/edge/local-ui/local-ui.md), causing the Edge cluster to fail to update successfully.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8075 -->
+
+- Fixed an issue that caused JWT tokens issued in [LocalUI](../clusters/edge/local-ui/local-ui.md) to fail signature
+  verification.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8130 -->
+
+- Fixed an issue that caused Palette to print some sensitive information to the
+  [LocalUI](../clusters/edge/local-ui/local-ui.md) audit logs.
 
 ### VerteX
 
@@ -105,51 +204,30 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.27.1 of the
+- Terraform version 0.28.X of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.27.1 of the
+- Crossplane version 0.28.X of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 #### Improvements
 
+#### Bug Fixes
+
 ### Docs and Education
+
+- The Spectro Cloud Ask AI bot is now configured to use a Model Context Protocol (MCP) server. You can integrate it with
+  your IDEs and other AI tools to retrieve answers from the Spectro Cloud documentation site. Use the **Ask AI** widget
+  and expand the **Use MCP** drop-down menu to get started.
+
+### Packs
 
 #### Pack Notes
 
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Deprecations and Removals
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
 
 ## February 6, 2026 - Component Updates {#component-updates-2026-06}
 
@@ -742,11 +820,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Fixed an issue that prevented
   [registry mapping rules](../clusters/edge/edge-configuration/installer-reference.md#registry-mapping-rules) from
   working with local registries.
-
-<!-- https://spectrocloud.atlassian.net/browse/PE-7727 -->
-
-- Fixed an issue that prevented Palette from applying priority classes on critical upgrade pods, leading to scheduling
-  errors during cluster upgrades.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7786 -->
 
