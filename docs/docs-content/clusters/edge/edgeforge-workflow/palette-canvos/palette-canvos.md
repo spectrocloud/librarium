@@ -132,11 +132,87 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
-   For `.arg` examples, refer to [Full `.arg`
-   Samples](/clusters/edge/edgeforge-workflow/prepare-user-data/#full-arg-samples).
+7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
+   uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
+   `CUSTOM_TAG` argument. Additionally, replace `spectrocloud` with the name of your registry.
 
-8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
+   ```bash
+   export CUSTOM_TAG=palette-learn
+   export IMAGE_REGISTRY=spectrocloud
+   ```
+
+8. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
+   file will use the default values. For example, `ubuntu` is the default operating system, and `demo` is the default
+   tag.
+
+   Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+   :::preview
+
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
+
+   :::
+
+   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
+   convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
+   `spectrocloud/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
+
+   ```bash
+   cat << EOF > .arg
+   CUSTOM_TAG=$CUSTOM_TAG
+   IMAGE_REGISTRY=$IMAGE_REGISTRY
+   OS_DISTRIBUTION=ubuntu
+   IMAGE_REPO=ubuntu
+   OS_VERSION=22.04
+   K8S_DISTRIBUTION=k3s
+   K8s_VERSION=1.27.2
+   ISO_NAME=palette-edge-installer
+   ARCH=amd64
+   HTTPS_PROXY=
+   HTTP_PROXY=
+   PROXY_CERT_PATH=
+   UPDATE_KERNEL=false
+   EOF
+   ```
+
+   View the newly created file to ensure the customized arguments are set correctly.
+
+   ```bash
+   cat .arg
+   ```
+
+9. Issue the command below to save your tenant registration token to an environment variable. Replace
+   `[your_token_here]` with your actual registration token.
+
+   ```bash
+   export token=[your_token_here]
+   ```
+
+10. Use the following command to create the `user-data` file containing the tenant registration token.
+
+    ```shell
+    cat <<EOF > user-data
+    #cloud-config
+
+    stylus:
+       site:
+         edgeHostToken: $token
+
+    install:
+       poweroff: true
+
+    stages:
+       initramfs:
+       - name: "Core system setup"
+         users:
+           kairos:
+             groups:
+               - admin
+             passwd: kairos
+    EOF
+    ```
 
    <!-- prettier-ignore-start -->
 
@@ -470,13 +546,97 @@ required Edge artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-   For more information about preparing the `.arg` file, refer to
-   [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
+7. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
+   and OS distribution. The table below shows all arguments, their default value, and allowed values.
 
-7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
+   | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                    |
+   | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------- |
+   | `CUSTOM_TAG`       | Tag for the provider images                                                                                                                                                                                                      | demo                                                | Lowercase alphanumeric string without spaces.                                         |
+   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | `$IMAGE_REGISTRY`                                   | Your image registry name, without `http` or `https` <br /> Example: `spectrocloud`    |
+   | `OS_DISTRIBUTION`  | OS Distribution                                                                                                                                                                                                                  | ubuntu                                              | ubuntu, opensuse-leap                                                                 |
+   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                                                                                                                                                              | `$OS_DISTRIBUTION`                                  | Your image repository name.                                                           |
+   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                                                                                                                                                               | 22                                                  | 20, 22                                                                                |
+   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                                                                                                                                                          | k3s                                                 | k3s, rke2, kubeadm                                                                    |
+   | `K8S_VERSION`      | Kubernetes version. The available versions vary depending on the specified `K8S_DISTRIBUTION`. Review the `k8s_version.json` file in the [CanvOS](https://github.com/spectrocloud/CanvOS) repository for all supported versions. | Semantic Versioning patch release format - `x.y.z`. |
+   | `ISO_NAME`         | Name of the Installer ISO                                                                                                                                                                                                        | palette-edge-installer                              | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed. |
+   | `ARCH`             | Architecture of the image.                                                                                                                                                                                                       | `amd64`                                             | `amd64`, `arm64`                                                                      |
+   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                                                                                                                                                              | `false`                                             | `true`, `false`                                                                       |
+   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                                                                                                                                                    | `""`                                                | URL string                                                                            |
+   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                                                                                                                                                                   | `""`                                                | URL string                                                                            |
+   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                                                                                                                                                     | `""`                                                | Comma separated URL string                                                            |
+   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                                                                                                                                                        | `""`                                                | Absolute path string                                                                  |
+   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider                                                                                                                                     | `false`                                             | `true`, `false`                                                                       |
 
-8. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
-   require client certificates, or if your base image is in a registry that requires client certificates.
+   Next, you will customize these arguments to use during the build process.
+
+8. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
+   uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
+   `CUSTOM_TAG` argument.
+
+   ```bash
+   export CUSTOM_TAG=palette-learn
+   ```
+
+9. Use the command below to save the Docker Hub image registry in the `IMAGE_REGISTRY` argument. Before you execute the
+   command, replace `spectrocloud` in the declaration below with your Docker ID.
+
+   ```bash
+   export IMAGE_REGISTRY=spectrocloud
+   ```
+
+10. Issue the following command to use the openSUSE Leap OS distribution.
+
+    ```bash
+    export OS_DISTRIBUTION=opensuse-leap
+    ```
+
+11. Issue the command below to create the `.arg` file containing the custom tag, image registry name, and openSUSE Leap
+    OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
+    [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+    :::preview
+
+    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
+    Do not use this feature in production workloads.
+
+    :::
+
+    ```bash
+    cat << EOF > .arg
+    IMAGE_REGISTRY=$IMAGE_REGISTRY
+    OS_DISTRIBUTION=$OS_DISTRIBUTION
+    IMAGE_REPO=$OS_DISTRIBUTION
+    CUSTOM_TAG=$CUSTOM_TAG
+    K8S_DISTRIBUTION=k3s
+    K8S_VERSION=1.27.2
+    ISO_NAME=palette-edge-installer
+    ARCH=amd64
+    HTTPS_PROXY=
+    HTTP_PROXY=
+    PROXY_CERT_PATH=
+    UPDATE_KERNEL=false
+    EOF
+    ```
+
+    View the newly created file to ensure the customized arguments are set correctly.
+
+    ```bash
+    cat .arg
+    ```
+
+    :::warning
+
+    Ensure the final artifact name conforms to the `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`naming pattern.
+
+    :::
+
+12. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
+    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
+
+13. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+    require client certificates, or if your base image is in a registry that requires client certificates.
 
    You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
    `CanvOS` repository. You can provide as many certificates as you need in the folder.

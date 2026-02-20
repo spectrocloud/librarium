@@ -1,0 +1,42 @@
+---
+partial_category: palette-edge-canvos-version
+partial_name: canvos-edge-arg-file
+---
+
+Copy the `.arg.template` file from the `CanvOS` directory and name the copy `.arg`. Edit the `.arg` file to update for your configuration.
+
+<li>Specify the `ARCH`, `OS_DISTRIBUTION`, and `OS_VERSION` fields to define your system architecture, OS distribution, and OS version. These configurations apply to your Edge host's OS both before and after cluster formation. </li>
+
+<li>Specify `K8S_DISTRIBUTION` and `K8S_VERSION` to define the Kubernetes distribution and version. Together with the OS distribution and version, these values are used by EdgeForge to build an immutable provider image that includes the specified OS and Kubernetes components. </li>
+
+    :::info
+
+     To build multiple versions of a provider image with different Kubernetes versions, use the `k8s_version.json` file in the repository. You must leave the `K8S_VERSION` field in your `.arg` file empty to use the JSON file. This file is only used when `K8S_VERSION` is not detected as an argument.
+
+    :::
+
+<li>Specify the `IMAGE_REGISTRY`, `IMAGE_REPO`, and `CUSTOM_TAG` fields to define the image registry, image repository name, and custom tag for your provider images. </li>
+
+
+   Below is an example of an `.arg` file. 
+
+   ```text
+   IMAGE_REGISTRY=spectrocloud
+   IMAGE_REPO=ubuntu
+   CUSTOM_TAG=palette-learn
+   K8S_DISTRIBUTION=k3s
+   K8S_VERSION=1.33.5
+   OS_DISTRIBUTION=ubuntu
+   OS_VERSION=22
+   ```
+
+The `.arg` file uses the default values for any remaining arguments.
+
+Using the arguments defined in the `.arg` file, together with the CanvOS tag, the final provider image follows this naming convention: `[IMAGE_REGISTRY]/[IMAGE_REPO]:[K8S_DISTRIBUTION]-[K8S_VERSION]-[CANVOS_TAG]-[CUSTOM_TAG]`. For example: `spectrocloud/ubuntu:k3s-1.33.5-v4.7.2-palette-learn`.
+
+<li> View the newly created file to ensure the customized arguments are set correctly.</li>
+
+   ```bash
+   cat .arg
+   ```
+For more information about preparing the `.arg` file, refer to [Edge Artifact Build Configurations](/clusters/edge/edgeforge-workflow/palette-canvos/arg/) for a comprehensive list of arguments you can use to customize the build.
