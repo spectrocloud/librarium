@@ -65,7 +65,6 @@ which does not require a connection to Palette.
 
 ## Next Steps
 
-On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue to the by choose
-whether you are going to deploy [Central Edge Management](./central-management/palette-edge.md) or
+On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue by choosing whether you are going to deploy [Central Edge Management](./central-management/palette-edge.md) or
 [Local Edge Management](./local-management/palette-edge.md) tutorial to learn how to create a user data file, which is
 required for your first Edge deployment.
