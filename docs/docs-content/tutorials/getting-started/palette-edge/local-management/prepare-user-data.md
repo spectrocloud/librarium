@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["getting-started", "tutorial", "locally-managed", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 ---
 
 This tutorial is focuses on building locally managed Edge devices, and is part of the
