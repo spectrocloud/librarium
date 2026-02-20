@@ -221,17 +221,36 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 0.28.X of the
+- Terraform version 0.28.1 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.28.X of the
+- Crossplane version 0.28.1 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2155 -->
+
+- The cluster resources of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now
+  provide the `update_worker_pools_in_parallel`, which controls whether worker pool updates occur in parallel or
+  sequentially.
+
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2134 -->
+
+- Fixed an issue that caused the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) to
+  incorrectly resolve private registry pack UID for during cluster profile creation, resulting in errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2138 -->
+
+- Fixed an issue that caused Terraform changes to be incorrectly detected when `cluster_profile` blocks were reordered
+  on the
+  [`spectrocloud_cluster_profile` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile).
 
 ### Docs and Education
 
@@ -241,10 +260,21 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
-#### Pack Notes
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3716 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3701 -->
 
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
+| Pack Name         | Layer      | Non-FIPS           | FIPS               | New Version |
+| ----------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Argo CD           | Add-on     | :white_check_mark: | :x:                | 9.4.1       |
+| Azure Disk        | CSI        | :white_check_mark: | :x:                | 1.34.1      |
+| ECK Stack         | Add-on     | :white_check_mark: | :x:                | 0.18.0      |
+| ECK Operator      | Add-on     | :white_check_mark: | :x:                | 3.3.0       |
+| External Secrets  | Add-on     | :white_check_mark: | :x:                | 2.0.0       |
+| Flannel           | CNI        | :white_check_mark: | :x:                | 0.28.1      |
+| Karpenter         | Add-on     | :white_check_mark: | :x:                | 1.9.0       |
+| Kubernetes (GKE)  | Kubernetes | :white_check_mark: | :x:                | 1.35        |
+| Longhorn          | CSI        | :x:                | :white_check_mark: | 1.10.1      |
+| Open Policy Agent | Add-on     | :white_check_mark: | :x:                | 3.21.1      |
 
 ## February 13, 2026 - Component Updates {#component-updates-2026-07}
 
