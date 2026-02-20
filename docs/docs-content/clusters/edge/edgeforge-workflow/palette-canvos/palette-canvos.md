@@ -115,13 +115,13 @@ customization.
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
+   Otherwise, check out the newest available tag. This guide uses the tag `v4.7.2` as an example.
 
    ```shell
-   git checkout v4.4.12
+   git checkout v4.7.2
    ```
 
 6. Review the files relevant for this guide.
@@ -132,20 +132,9 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
-   uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
-   `CUSTOM_TAG` argument. Additionally, replace `spectrocloud` with the name of your registry.
-
-   ```bash
-   export CUSTOM_TAG=palette-learn
-   export IMAGE_REGISTRY=spectrocloud
-   ```
-
-8. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
-   file will use the default values. For example, `ubuntu` is the default operating system, and `demo` is the default
-   tag.
-
-   Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
+   For `.arg` examples, refer to [Full `.arg`
+   Samples](/clusters/edge/edgeforge-workflow/prepare-user-data/#full-arg-samples).
 
    :::preview
 
@@ -155,117 +144,56 @@ customization.
 
    :::
 
-   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
-   convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
-   `spectrocloud/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
+8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
-   ```bash
-   cat << EOF > .arg
-   CUSTOM_TAG=$CUSTOM_TAG
-   IMAGE_REGISTRY=$IMAGE_REGISTRY
-   OS_DISTRIBUTION=ubuntu
-   IMAGE_REPO=ubuntu
-   OS_VERSION=22.04
-   K8S_DISTRIBUTION=k3s
-   K8s_VERSION=1.27.2
-   ISO_NAME=palette-edge-installer
-   ARCH=amd64
-   HTTPS_PROXY=
-   HTTP_PROXY=
-   PROXY_CERT_PATH=
-   UPDATE_KERNEL=false
-   EOF
-   ```
+   <!-- prettier-ignore-start -->
 
-   View the newly created file to ensure the customized arguments are set correctly.
+   :::warning
 
-   ```bash
-   cat .arg
-   ```
+   - If you haven't set a default project for the registration token, ensure that you provide the
+     `stylus.site.projectName` parameter with the value `Default` in your `user-data` file.
+   - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
+     replacing `<interface-name>` with the name of the network interface on your Edge host:
 
-9. Issue the command below to save your tenant registration token to an environment variable. Replace
-   `[your_token_here]` with your actual registration token.
+     - Your host is a virtual machine.
+     - The virtual machine uses a VMXNET3 adapter.
+     - You are planning to use _one_ of the following in your Edge cluster:
 
-   ```bash
-   export token=[your_token_here]
-   ```
+       - An [overlay network](../../networking/vxlan-overlay.md).
+       - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
 
-10. Use the following command to create the `user-data` file containing the tenant registration token.
-
-    ```shell
-    cat <<EOF > user-data
-    #cloud-config
-
-    stylus:
-       site:
-         edgeHostToken: $token
-
-    install:
-       poweroff: true
-
-    stages:
+     ```shell
+     stages:
        initramfs:
-       - name: "Core system setup"
-         users:
-           kairos:
-             groups:
-               - admin
-             passwd: kairos
-    EOF
-    ```
+         - name: "Disable UDP segmentation"
+           commands:
+             - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+             - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+     ```
 
-    <!-- prettier-ignore-start -->
+     This is due to a
+     [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+     which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
 
-    :::warning
+   :::
 
-    - If you haven't set a default project for the registration token, ensure that you provide the
-      `stylus.site.projectName` parameter with the value `Default` in your `user-data` file.
-    - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
-      replacing `<interface-name>` with the name of the network interface on your Edge host:
+   <!-- prettier-ignore-end -->
 
-      - Your host is a virtual machine.
-      - The virtual machine uses a VMXNET3 adapter.
-      - You are planning to use _one_ of the following in your Edge cluster:
+9. View the newly created `user-data` file to ensure the token is set correctly.
 
-        - An [overlay network](../../networking/vxlan-overlay.md).
-        - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
+   ```bash
+   cat user-data
+   ```
 
-      ```shell
-      stages:
-        initramfs:
-          - name: "Disable UDP segmentation"
-            commands:
-              - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
-              - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
-      ```
+   :::tip
 
-      This is due to a
-      [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
-      which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+   You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
+   However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
+   be updated in Local UI.
 
-    :::
+   :::
 
-    <!-- prettier-ignore-end -->
-
-    View the newly created `user-data` file to ensure the token is set correctly.
-
-    ```bash
-    cat user-data
-    ```
-
-    :::tip
-
-    You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
-    However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
-    be updated in Local UI.
-
-    :::
-
-11. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
-    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
-    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
-
-12. Issue the following command to start the build process.
+10. Issue the following command to start the build process.
 
     <Tabs group="earthly">
 
@@ -335,13 +263,13 @@ customization.
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
-      system.peVersion: v4.4.12
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion: 22
     ```
 
-13. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
-    image tag value you used in the `.arg` file's `CUSTOM_TAG` argument.
+11. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
+    value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
     docker images --filter=reference='*/*:*palette-learn'
@@ -349,10 +277,10 @@ customization.
 
     ```hideClipboard bash
     REPOSITORY                   TAG                                    IMAGE ID       CREATED          SIZE
-    spectrocloud/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
+    spectrocloud/ubuntu          k3s-1.33.5-v4.7.2-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
-14. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
+12. To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Log
     in to your container registry. Provide your credentials when prompted. The example below provides a Docker login
     command.
 
@@ -360,28 +288,28 @@ customization.
     docker login
     ```
 
-15. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
+13. Once authenticated, push the provider image to the registry so that your Edge host can download it during the
     cluster deployment.
 
     ```bash
-    docker push $IMAGE_REGISTRY/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
+    docker push $IMAGE_REGISTRY/ubuntu:k3s-1.33.5-v4.7.2-palette-learn
     ```
 
-16. After pushing the provider images to the image registry, open a web browser and log in to
+14. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-17. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+15. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-18. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+16. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-19. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
+17. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
     pull the provider image from the image registry.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -414,7 +342,7 @@ customization.
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
-      system.peVersion: v4.4.12
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion: 22
     ```
@@ -432,15 +360,15 @@ customization.
 
     :::
 
-20. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
-    version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to an
+18. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
+    version 1.33.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to an
     image registry.
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
     | ------------- | ------------ | --------------------- | ---------------- |
-    | Kubernetes    | Public Repo  | Palette Optimized k3s | `1.27.x`         |
+    | Kubernetes    | Public Repo  | Palette Optimized k3s | `1.33.x`         |
 
-21. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+19. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -448,9 +376,9 @@ customization.
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-22. Add add-on layers and manifests to your cluster profile per your requirements.
+20. Add add-on layers and manifests to your cluster profile per your requirements.
 
-23. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+21. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
@@ -489,7 +417,7 @@ To complete this advanced guide, you will need the following items:
 
   - 4 CPU
   - 8 GB memory
-  - 50 GB storage
+  - 150 GB storage
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
@@ -536,10 +464,10 @@ required Edge artifacts.
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses **v4.4.12** tag as an example.
+   Otherwise, check out the newest available tag. This guide uses the `v4.7.2` tag as an example.
 
    ```shell
-   git checkout v4.4.12
+   git checkout v4.7.2
    ```
 
 6. Review the files relevant for this guide.
@@ -550,199 +478,64 @@ required Edge artifacts.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample file containing user data.
 
-7. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
-   and OS distribution. The table below shows all arguments, their default value, and allowed values.
+   For more information about preparing the `.arg` file, refer to
+   [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
 
-   | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                    |
-   | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------- |
-   | `CUSTOM_TAG`       | Tag for the provider images                                                                                                                                                                                                      | demo                                                | Lowercase alphanumeric string without spaces.                                         |
-   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | `$IMAGE_REGISTRY`                                   | Your image registry name, without `http` or `https` <br /> Example: `spectrocloud`    |
-   | `OS_DISTRIBUTION`  | OS Distribution                                                                                                                                                                                                                  | ubuntu                                              | ubuntu, opensuse-leap                                                                 |
-   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                                                                                                                                                              | `$OS_DISTRIBUTION`                                  | Your image repository name.                                                           |
-   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                                                                                                                                                               | 22                                                  | 20, 22                                                                                |
-   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                                                                                                                                                          | k3s                                                 | k3s, rke2, kubeadm                                                                    |
-   | `K8S_VERSION`      | Kubernetes version. The available versions vary depending on the specified `K8S_DISTRIBUTION`. Review the `k8s_version.json` file in the [CanvOS](https://github.com/spectrocloud/CanvOS) repository for all supported versions. | Semantic Versioning patch release format - `x.y.z`. |
-   | `ISO_NAME`         | Name of the Installer ISO                                                                                                                                                                                                        | palette-edge-installer                              | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed. |
-   | `ARCH`             | Architecture of the image.                                                                                                                                                                                                       | `amd64`                                             | `amd64`, `arm64`                                                                      |
-   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                                                                                                                                                              | `false`                                             | `true`, `false`                                                                       |
-   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                                                                                                                                                    | `""`                                                | URL string                                                                            |
-   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                                                                                                                                                                   | `""`                                                | URL string                                                                            |
-   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                                                                                                                                                     | `""`                                                | Comma separated URL string                                                            |
-   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                                                                                                                                                        | `""`                                                | Absolute path string                                                                  |
-   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider                                                                                                                                     | `false`                                             | `true`, `false`                                                                       |
+7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
 
-   Next, you will customize these arguments to use during the build process.
+   :::preview
 
-8. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
-   uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
-   `CUSTOM_TAG` argument.
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
+
+   :::
+
+8. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+   require client certificates, or if your base image is in a registry that requires client certificates.
+
+   You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
+   `CanvOS` repository. You can provide as many certificates as you need in the folder.
+
+   If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
+   provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
+   refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
+
+   :::warning
+
+   These proxy settings are only configured for the build process itself, when your builder machine needs to pull
+   certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
+   deployed. To configure the proxy network settings for a host, refer to
+   [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
+   [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
+
+   :::
+
+9. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
+   the `Dockerfile`. You can install more tools and dependencies and configure the image to meet your needs. Add your
+   customizations below the line tagged with the `Add any other image customizations here` comment in the `Dockerfile`.
+   Do not edit or add any lines before this tagged comment.
 
    ```bash
-   export CUSTOM_TAG=palette-learn
+   echo 'RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools' >> Dockerfile
    ```
 
-9. Use the command below to save the Docker Hub image registry in the `IMAGE_REGISTRY` argument. Before you execute the
-   command, replace `spectrocloud` in the declaration below with your Docker ID.
+   View the newly created file to ensure the instruction to install WireGuard is appended correctly.
 
    ```bash
-   export IMAGE_REGISTRY=spectrocloud
+   cat Dockerfile
    ```
 
-10. Issue the following command to use the openSUSE Leap OS distribution.
+   :::warning
 
-    ```bash
-    export OS_DISTRIBUTION=opensuse-leap
-    ```
+   Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The
+   default behavior for package installations is to prompt the user for permission to install the package. A user prompt
+   will cause the image creation process to fail. This guidance applies to all dependencies you add through the
+   `Dockerfile`.
 
-11. Issue the command below to create the `.arg` file containing the custom tag, image registry name, and openSUSE Leap
-    OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
-    [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+   :::
 
-    :::preview
-
-    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
-    Do not use this feature in production workloads.
-
-    :::
-
-    ```bash
-    cat << EOF > .arg
-    IMAGE_REGISTRY=$IMAGE_REGISTRY
-    OS_DISTRIBUTION=$OS_DISTRIBUTION
-    IMAGE_REPO=$OS_DISTRIBUTION
-    CUSTOM_TAG=$CUSTOM_TAG
-    K8S_DISTRIBUTION=k3s
-    K8S_VERSION=1.27.2
-    ISO_NAME=palette-edge-installer
-    ARCH=amd64
-    HTTPS_PROXY=
-    HTTP_PROXY=
-    PROXY_CERT_PATH=
-    UPDATE_KERNEL=false
-    EOF
-    ```
-
-    View the newly created file to ensure the customized arguments are set correctly.
-
-    ```bash
-    cat .arg
-    ```
-
-    :::warning
-
-    Ensure the final artifact name conforms to the `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`naming pattern.
-
-    :::
-
-12. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
-    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
-    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
-
-13. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
-    require client certificates, or if your base image is in a registry that requires client certificates.
-
-    You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
-    `CanvOS` repository. You can provide as many certificates as you need in the folder.
-
-    If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
-    provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
-    refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
-
-    :::warning
-
-    These proxy settings are only configured for the build process itself, when your builder machine needs to pull
-    certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
-    deployed. To configure the proxy network settings for a host, refer to
-    [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
-    [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
-
-    :::
-
-14. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
-    the `Dockerfile`. You can install more tools and dependencies and configure the image to meet your needs. Add your
-    customizations below the line tagged with the `Add any other image customizations here` comment in the `Dockerfile`.
-    Do not edit or add any lines before this tagged comment.
-
-    ```bash
-    echo 'RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools' >> Dockerfile
-    ```
-
-    View the newly created file to ensure the instruction to install WireGuard is appended correctly.
-
-    ```bash
-    cat Dockerfile
-    ```
-
-    :::warning
-
-    Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The
-    default behavior for package installations is to prompt the user for permission to install the package. A user
-    prompt will cause the image creation process to fail. This guidance applies to all dependencies you add through the
-    `Dockerfile`.
-
-    :::
-
-15. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with
-    your actual registration token.
-
-    ```bash
-    export token=[your_token_here]
-    ```
-
-16. Use the following command to create the `user-data` file containing the tenant registration token.
-
-    ```shell
-    cat << EOF > user-data
-    #cloud-config
-    stylus:
-      site:
-        paletteEndpoint: api.spectrocloud.com
-        edgeHostToken: $token
-        tags:
-          key1: value1
-          key2: value2
-          key3: value3
-        name: edge-randomid
-        registrationURL: https://edge-registration-app.vercel.app/
-
-        network:
-          httpProxy: http://proxy.example.com
-          httpsProxy: https://proxy.example.com
-          noProxy: 10.10.128.10,10.0.0.0/8
-
-          nameserver: 1.1.1.1
-          interfaces:
-              enp0s3:
-                  type: static
-                  ipAddress: 10.0.10.25/24
-                  gateway: 10.0.10.1
-                  nameserver: 10.10.128.8
-              enp0s4:
-                  type: dhcp
-        caCerts:
-          - |
-            ------BEGIN CERTIFICATE------
-            *****************************
-            *****************************
-            ------END CERTIFICATE------
-          - |
-            ------BEGIN CERTIFICATE------
-            *****************************
-            *****************************
-            ------END CERTIFICATE------
-      registryCredentials:
-        domain: registry.example.com
-        username: bob
-        password: ####
-        insecure: false
-    install:
-      poweroff: true
-    users:
-      - name: kairos
-        passwd: kairos
-    EOF
-    ```
+10. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
     :::warning
 
@@ -771,11 +564,10 @@ required Edge artifacts.
     cat user-data
     ```
 
-    If you want further customization, check the existing `user-data.template` file, and refer to the
-    [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
+    Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-17. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     <Tabs group="earthly">
@@ -811,7 +603,7 @@ required Edge artifacts.
     build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in
     the [Build Content Bundle](./build-content-bundle.md) guide to build the Edge installer ISO using a content bundle.
 
-    :::info
+    :::
 
     This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion,
     the command will display the manifest, as shown in the example below, that you will use in your cluster profile
@@ -842,14 +634,14 @@ required Edge artifacts.
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
-      system.peVersion: v4.4.12
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion:
     ```
 
-18. List the Docker images to review the provider images created. By default, provider images for all the Palette's
-    Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
-    value you used in the `.arg` file's `CUSTOM_TAG` argument.
+12. List the Docker images to review the provider images created. By default, provider images for all the Palette's
+    Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the value you used
+    in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
     docker images --filter=reference='*/*:*palette-learn'
@@ -857,10 +649,10 @@ required Edge artifacts.
 
     ```hideClipboard bash
     REPOSITORY                   TAG                               IMAGE ID       CREATED          SIZE
-    spectrocloud/opensuse-leap   k3s-1.27.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+    spectrocloud/opensuse-leap   k3s-1.33.5-v4.7.2-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
-19. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
+13. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
@@ -871,29 +663,29 @@ required Edge artifacts.
     Login Succeeded
     ```
 
-20. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace
+14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace
     `spectrocloud` and the version numbers in the command below with your Docker ID and respective Kubernetes versions
     that the utility created.
 
     ```bash
-    docker push spectrocloud/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
+    docker push spectrocloud/opensuse-leap:k3s-1.33.5-v4.7.2-palette-learn
     ```
 
-21. After pushing the provider images to the image registry, open a web browser and log in to
+15. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-22. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+16. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-23. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+17. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-24. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
+18. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
     copied.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -926,7 +718,7 @@ required Edge artifacts.
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
-      system.peVersion: v4.4.12
+      system.peVersion: v4.7.2
       system.customTag: palette-learn
       system.osVersion:
     ```
@@ -944,15 +736,15 @@ required Edge artifacts.
 
     :::
 
-25. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
-    version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
+19. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
+    version 1.33.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to the
     image registry.
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
     | ------------- | ------------ | --------------------- | ---------------- |
-    | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.x`         |
+    | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.x`         |
 
-26. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+20. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -960,9 +752,9 @@ required Edge artifacts.
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-27. Add add-on layers and manifests to your cluster profile per your requirements.
+21. Add add-on layers and manifests to your cluster profile per your requirements.
 
-28. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+22. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
@@ -998,14 +790,14 @@ Palette-managed Edge clusters, we encourage you to check out the reference resou
 
 ## Resources
 
-- [Edge Artifact Build Configurations](./arg.md)
+- [Build Content Bundles](./build-content-bundle.md)
+
+- [Build FIPS-Compliant Edge Artifacts](./fips.md)
 
 - [Build Installer ISO](./build-installer-iso.md)
 
 - [Build Provider Images](./build-provider-images.md)
 
-- [Build FIPS-Compliant Edge Artifacts](./fips.md)
+- [Edge Artifact Build Configurations](./arg.md)
 
-- [Build Content Bundles](./build-content-bundle.md)
-
-- [Edge Artifact Build Configurations](./signed-content.md)
+- [Embed a Public Key in Edge Artifacts](./signed-content.md)
