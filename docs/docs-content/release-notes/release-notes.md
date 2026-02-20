@@ -121,6 +121,11 @@ tags: ["release-notes"]
   [OCI Helm chart packs](../registries-and-packs/registries-and-packs.md) with missing `pack.namespace` fields to fail
   to publish.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8604 -->
+
+- Fixed an issue that caused the Palette UI to incorrectly display the **Enable Nodepool Customization** toggle as off
+  for [EKS worker pools](../clusters/public-cloud/aws/eks.md) deployed with this configuration turned on.
+
 ### Edge
 
 :::info
