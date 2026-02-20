@@ -247,6 +247,8 @@ Follow the steps below to build the artifacts using the script.
 
 2. Open a terminal window on your Linux machine and issue the following command to create the script file.
 
+<!-- vale off -->
+
    ```shell
     cat << EOF > edgeforge.sh
     #!/usr/bin/env bash
@@ -384,6 +386,8 @@ Follow the steps below to build the artifacts using the script.
     echo "🧾 Manifest profile YAML: $(pwd)/manifest-profile.yaml"
     EOF
     ```
+
+<!-- vale on -->
 
 3. Grant execution permissions to the script.
 
