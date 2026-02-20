@@ -388,8 +388,6 @@ Follow the steps below to build the artifacts using the script.
  EOF
 ```
 
-<!-- vale on -->
-
 3. Grant execution permissions to the script.
 
    ```shell
