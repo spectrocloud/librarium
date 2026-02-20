@@ -22,14 +22,13 @@ the provider images that you built in the [Build Edge Artifacts](./build-edge-ar
 cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
 installation on your host and use it as a node for deploying your first Edge cluster.
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-profile.webp)
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
 
 ## Prerequisites
 
 - You have completed the steps in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, including building the
   installer ISO and provider image, and pushing the provider image to a registry.
-- A [Palette account](https://www.spectrocloud.com/get-started) with
-  [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
+- A [Palette account](https://www.spectrocloud.com/get-started).
 - One available IP address on the same network as the Edge host for the MetalLB load balancer.
 
 ## Create Cluster Profile
