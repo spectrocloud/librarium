@@ -136,22 +136,22 @@ Select the appropriate tab below based on the environment in which your VertX cl
 7. Open the **registry-secret.yaml** file and copy the placeholder configuration below.
 
    ```yaml
-    ---
-    apiVersion: v1
-    stringData:
-      DOMAIN: "REPLACE_WITH_CUSTOM_REGISTRY_DOMAIN"
-      BASE_PATH: "REPLACE_WITH_CUSTOM_REGISTRY_BASE_PATH"
-      USERNAME: "REPLACE_WITH_CUSTOM_REGISTRY_USERNAME"
-      PASSWORD: "REPLACE_WITH_CUSTOM_REGISTRY_PASSWORD"
-      INSECURE: "false"
-      CA_CERT: "REPLACE_WITH_CUSTOM_REGISTRY_CA_CERT"
-      MIRROR_REGISTRIES: REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES
-    kind: Secret
-    metadata:
-      name: registry-info
-      namespace: jet-system
-    type: Opaque
-    ---
+   ---
+   apiVersion: v1
+   stringData:
+     DOMAIN: "REPLACE_WITH_CUSTOM_REGISTRY_DOMAIN"
+     BASE_PATH: "REPLACE_WITH_CUSTOM_REGISTRY_BASE_PATH"
+     USERNAME: "REPLACE_WITH_CUSTOM_REGISTRY_USERNAME"
+     PASSWORD: "REPLACE_WITH_CUSTOM_REGISTRY_PASSWORD"
+     INSECURE: "false"
+     CA_CERT: "REPLACE_WITH_CUSTOM_REGISTRY_CA_CERT"
+     MIRROR_REGISTRIES: REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES
+   kind: Secret
+   metadata:
+     name: registry-info
+     namespace: jet-system
+   type: Opaque
+   ---
    ```
 
    :::warning
