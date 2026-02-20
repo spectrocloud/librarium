@@ -212,6 +212,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2155 -->
+
+- The cluster resources of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now
+  provide the `update_worker_pools_in_parallel`, which controls whether worker pool updates occur in parallel or
+  sequentially.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2134 -->
