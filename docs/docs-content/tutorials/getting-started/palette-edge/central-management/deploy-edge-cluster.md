@@ -193,8 +193,8 @@ Next, reboot the host.
 sudo reboot
 ```
 
-Refer to [Reset Host via Terminal](../../../../clusters/edge/cluster-management/reset-host.md) for more information about
-Edge host resetting.
+Refer to [Reset Host via Terminal](../../../../clusters/edge/cluster-management/reset-host.md) for more information
+about Edge host resetting.
 
 </TabItem>
 
@@ -227,5 +227,5 @@ host, cluster profile, and artifacts prepared in earlier tutorials from this ser
 Getting Started tutorial series.
 
 We encourage you to check out the [Additional Capabilities](../../additional-capabilities/additional-capabilities.md)
-section to explore other Palette functionalities, and the [Edge](../../../../clusters/edge/edge.md) documentation section
-to learn more about Palette Edge.
+section to explore other Palette functionalities, and the [Edge](../../../../clusters/edge/edge.md) documentation
+section to learn more about Palette Edge.

@@ -13,8 +13,8 @@ tags: ["getting-started", "tutorial", "edge"]
 This tutorial is the first in the [Edge Getting Started](../introduction-edge.md) series. You will learn how to create a
 [user data](../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which is a configuration file that
 allows you to customize the Edge installation process on the host. The user data file is embedded into the Edge
-installer ISO during the [EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When the
-Edge host boots from the installer ISO, it applies the user data configuration to the host.
+installer ISO during the [EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When
+the Edge host boots from the installer ISO, it applies the user data configuration to the host.
 
 After creating the user data file, you will proceed to the next tutorial in this series, where you will learn how to
 build the required Edge artifacts. You will then install the Palette agent on your host and use it as a node to deploy
@@ -84,11 +84,12 @@ main configuration blocks:
 
   :::tip
 
-  Visit the [Edge Installer Configuration Reference](../../../../clusters/edge/edge-configuration/installer-reference.md)
-  page for a complete list of configuration parameters, the
+  Visit the
+  [Edge Installer Configuration Reference](../../../../clusters/edge/edge-configuration/installer-reference.md) page for
+  a complete list of configuration parameters, the
   [Prepare User Data](../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for more examples of user
-  data configurations, and the [Cloud Init Stages](../../../../clusters/edge/edge-configuration/cloud-init.md) page for the
-  supported cloud init stages.
+  data configurations, and the [Cloud Init Stages](../../../../clusters/edge/edge-configuration/cloud-init.md) page for
+  the supported cloud init stages.
 
   :::
 

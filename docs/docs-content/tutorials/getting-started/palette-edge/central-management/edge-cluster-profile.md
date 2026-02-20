@@ -10,11 +10,11 @@ sidebar_position: 40
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
-[Cluster profiles](../../../../../docs-content/profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
-scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
-packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
-deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
-integrations.
+[Cluster profiles](../../../../../docs-content/profiles/profiles.md) are declarative, full-stack models that Palette
+uses to provision, scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes
+manifests, Helm charts, or packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of
+files and configurations deployed to a cluster to provide core infrastructure functionality or customize the cluster's
+behavior through add-on integrations.
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
 a demo application that you can access on your browser. You will learn about cluster profile layers and how to reference
