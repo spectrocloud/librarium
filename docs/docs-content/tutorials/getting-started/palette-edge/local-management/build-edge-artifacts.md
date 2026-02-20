@@ -2,17 +2,18 @@
 sidebar_label: "Build Edge Artifacts"
 title: "Build Edge Artifacts"
 description:
-  "Get started with Kubernetes at the edge. Learn how to build the artifacts required for your locally managed Edge deployment."
+  "Get started with Kubernetes at the edge. Learn how to build the artifacts required for your locally managed Edge
+  deployment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 ---
 
-One of the first steps in deploying an Edge cluster is preparing your locally managed Edge host with all the required artifacts. The
-process of building these artifacts is called
-[EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating the
-installer ISO and provider image artifacts.
+One of the first steps in deploying an Edge cluster is preparing your locally managed Edge host with all the required
+artifacts. The process of building these artifacts is called
+[EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating
+the installer ISO and provider image artifacts.
 
 - Installer ISO: An ISO image that installs the Palette Edge agent on the host.
 - Provider Images: [Kairos-based](https://kairos.io/) images that include the Operating System (OS) and the desired
@@ -20,8 +21,8 @@ installer ISO and provider image artifacts.
   Kubernetes version during cluster deployment.
 
 This tutorial teaches you how to build the artifacts required for your Edge deployment. Once built, you will be ready to
-learn how to reference them in Edge [cluster profiles](../../../../profiles/profiles.md) and how they are used to install
-the Palette agent on hosts.
+learn how to reference them in Edge [cluster profiles](../../../../profiles/profiles.md) and how they are used to
+install the Palette agent on hosts.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_artifact-creation_artifact-creation-edgeforge_4-8.webp)
 
@@ -231,8 +232,8 @@ The following example script automates the EdgeForge process. It provides an alt
 you have already learned the steps and want to replicate them quickly. You can skip this section if you have followed
 the tutorial and built the artifacts manually.
 
-The script clones the CanvOS repository, and uses the `user-data` and `.arg` files provided by the user. It
-then builds the Edge artifacts. The script prompts the user to optionally push the provider images to the registry.
+The script clones the CanvOS repository, and uses the `user-data` and `.arg` files provided by the user. It then builds
+the Edge artifacts. The script prompts the user to optionally push the provider images to the registry.
 
 Follow the steps below to build the artifacts using the script.
 
@@ -241,9 +242,9 @@ Follow the steps below to build the artifacts using the script.
 
 1. Ensure you are in the CanvOS folder
 
-    ```shell
-    pwd
-    ```
+   ```shell
+   pwd
+   ```
 
 2. Open a terminal window on your Linux machine and issue the following command to create the script file.
 
@@ -385,7 +386,7 @@ Follow the steps below to build the artifacts using the script.
     echo "📦 Artifacts directory: $(pwd)/build"
     echo "🧾 Manifest profile YAML: $(pwd)/manifest-profile.yaml"
     EOF
-    ```
+   ```
 
 <!-- vale on -->
 
@@ -406,12 +407,12 @@ Follow the steps below to build the artifacts using the script.
    Login Succeeded
    ```
 
-5. Check available git tag versions and set the git tag. 
+5. Check available git tag versions and set the git tag.
 
-    ```shell
-    git tag --sort=v:refname
-    git checkout v4.8.8
-    ```
+   ```shell
+   git tag --sort=v:refname
+   git checkout v4.8.8
+   ```
 
 6. Invoke the script to build the artifacts, answering the prompts.
 
