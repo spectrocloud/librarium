@@ -136,14 +136,6 @@ customization.
    For `.arg` examples, refer to [Full `.arg`
    Samples](/clusters/edge/edgeforge-workflow/prepare-user-data/#full-arg-samples).
 
-   :::preview
-
-   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
-   not use this feature in production workloads.
-
-   :::
-
 8. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
    <!-- prettier-ignore-start -->
@@ -482,14 +474,6 @@ required Edge artifacts.
    [Prepare User Data and Argument Files](/clusters/edge/edgeforge-workflow/prepare-user-data/)
 
 7. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-arg-file" />
-
-   :::preview
-
-   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
-   not use this feature in production workloads.
-
-   :::
 
 8. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
    require client certificates, or if your base image is in a registry that requires client certificates.

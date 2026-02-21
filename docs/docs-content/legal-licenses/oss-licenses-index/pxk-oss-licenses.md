@@ -102,7 +102,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/bgentry/speakeasy                                                           | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/blang/semver/v4                                                             | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/buger/jsonparser                                                            | [MIT](https://opensource.org/license/mit/)                  |
-| github.com/cenkalti/backoff/v4                                                         | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/cenkalti/backoff/v5                                                         | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/cespare/xxhash/v2                                                           | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/chai2010/gettext-go                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
@@ -192,7 +191,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/go-openapi/jsonreference                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/go-openapi/swag                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/go-task/slim-sprig/v3                                                       | [MIT](https://opensource.org/license/mit/)                  |
-| github.com/go-viper/mapstructure/v2                                                    | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/godbus/dbus/v5                                                              | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
 | github.com/gogo/protobuf                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/golang-jwt/jwt/v4                                                           | [MIT](https://opensource.org/license/mit/)                  |
@@ -239,8 +237,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/klauspost/cpuid/v2                                                          | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/knqyf263/go-plugin                                                          | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/kylelemons/godebug                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/libopenstorage/openstorage                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/liggitt/tabwriter                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/linkdata/deadlock                                                           | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/lithammer/dedent                                                            | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/lufia/plan9stats                                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/mailru/easyjson                                                             | [MIT](https://opensource.org/license/mit/)                  |
@@ -278,7 +276,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/moby/term                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/modern-go/concurrent                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/modern-go/reflect2                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/mohae/deepcopy                                                              | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/monochromegane/go-gitignore                                                 | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/mrunalp/fileutils                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/munnerz/goautoneg                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
@@ -309,6 +306,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/petermattis/goid                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/philhofer/fwd                                                               | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/pierrec/lz4/v4                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/pires/go-proxyproto                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/pkg/errors                                                                  | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
 | github.com/planetscale/vtprotobuf                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/pmezard/go-difflib                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
@@ -340,11 +338,11 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/stretchr/testify                                                            | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/tchap/go-patricia/v2                                                        | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/tetratelabs/wazero                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/theckman/httpforwarded                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/tinylib/msgp                                                                | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/tklauser/go-sysconf                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/tklauser/numcpus                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/tmc/grpc-websocket-proxy                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/trailofbits/go-mutexasserts                                                 | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/u-root/uio                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/urfave/cli                                                                  | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/urfave/cli/v2                                                               | [MIT](https://opensource.org/license/mit/)                  |
@@ -371,6 +369,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | go.opentelemetry.io/collector/featuregate                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opentelemetry.io/collector/internal/telemetry                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opentelemetry.io/collector/pdata                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go.opentelemetry.io/collector/pdata/pprofile                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opentelemetry.io/contrib/bridges/otelzap                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opentelemetry.io/contrib/instrumentation/github.com/emicklei/go-restful/otelrestful | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
