@@ -244,7 +244,7 @@ nodes individually and fetch these logs. <br />
 
 1. Select the running cluster.
 
-2. Go to **Settings\* and select **Download Logs\*\*.
+2. Go to **Settings** and select **Download Logs**.
 
 3. Choose the desired log from the below options:
    - Kube-System Logs
