@@ -209,7 +209,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4.8.33) for more details.
+  [Palette section](#palette-enterprise-4.8.b) for more details.
 
 ### Automation
 
