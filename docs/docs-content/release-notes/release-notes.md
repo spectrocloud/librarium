@@ -50,6 +50,13 @@ tags: ["release-notes"]
   next upgrade window. Refer to [Modify Cluster Templates](../cluster-templates/modify-cluster-templates.md) for more
   information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2154 -->
+
+- Proxy server Certificate Authority (CA) files must now be named `ca.crt` for
+  [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) clusters and
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [VerteX](../vertex/vertex.md) instances
+  installed using the [Palette CLI](../automation/palette-cli/palette-cli.md).
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7488 -->
 
 - Cluster IDs and cluster profile IDs are now displayed on the respective cluster and cluster profile detail pages.
@@ -114,6 +121,11 @@ tags: ["release-notes"]
   [OCI Helm chart packs](../registries-and-packs/registries-and-packs.md) with missing `pack.namespace` fields to fail
   to publish.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8604 -->
+
+- Fixed an issue that caused the Palette UI to incorrectly display the **Enable Nodepool Customization** toggle as off
+  for [EKS worker pools](../clusters/public-cloud/aws/eks.md) deployed with this configuration turned on.
+
 ### Edge
 
 :::info
@@ -123,6 +135,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 :::
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8192 -->
+
+- [Two-node Edge clusters](../clusters/edge/architecture/two-node.md) have exited Tech Preview and are now ready for
+  production workloads.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7783 -->
 
@@ -214,7 +231,26 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2155 -->
+
+- The cluster resources of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now
+  provide the `update_worker_pools_in_parallel`, which controls whether worker pool updates occur in parallel or
+  sequentially.
+
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2134 -->
+
+- Fixed an issue that caused the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) to
+  incorrectly resolve private registry pack UID for during cluster profile creation, resulting in errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2138 -->
+
+- Fixed an issue that caused Terraform changes to be incorrectly detected when `cluster_profile` blocks were reordered
+  on the
+  [`spectrocloud_cluster_profile` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile).
 
 ### Docs and Education
 
@@ -224,10 +260,93 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
-#### Pack Notes
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3716 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3701 -->
 
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
+| Pack Name         | Layer      | Non-FIPS           | FIPS               | New Version |
+| ----------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Argo CD           | Add-on     | :white_check_mark: | :x:                | 9.4.1       |
+| Azure Disk        | CSI        | :white_check_mark: | :x:                | 1.34.1      |
+| ECK Stack         | Add-on     | :white_check_mark: | :x:                | 0.18.0      |
+| ECK Operator      | Add-on     | :white_check_mark: | :x:                | 3.3.0       |
+| External Secrets  | Add-on     | :white_check_mark: | :x:                | 2.0.0       |
+| Flannel           | CNI        | :white_check_mark: | :x:                | 0.28.1      |
+| Karpenter         | Add-on     | :white_check_mark: | :x:                | 1.9.0       |
+| Kubernetes (GKE)  | Kubernetes | :white_check_mark: | :x:                | 1.35        |
+| Longhorn          | CSI        | :x:                | :white_check_mark: | 1.10.1      |
+| Open Policy Agent | Add-on     | :white_check_mark: | :x:                | 3.21.1      |
+
+## February 13, 2026 - Component Updates {#component-updates-2026-07}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.27.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.28.0  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.28.0  |
+
+### Breaking Changes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1854 -->
+
+- The `kubeconfig` and `adminKubeConfig` fields are now marked as sensitive across the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  cluster CRDs . These fields were previously exposed in the resource status and are now protected to prevent unintended
+  access.
+
+  Users who require kubeconfig access must explicitly configure `writeConnectionSecretToRef` on the managed resource to
+  retrieve the connection details in a secure and controlled manner.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-166 -->
+
+- [Artifact Studio](../downloads/artifact-studio.md) now implements AWS Key Management Service (AWS KMS) signing for
+  image and artifact signatures. The public key file used for bundle verification has also been updated.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2118 -->
+
+- The
+  [`spectrocloud_cluster_aws` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)
+  now provides the `skip_k8s_upgrade` configuration for machine pools. When enabled, the Kubernetes version upgrade for
+  this worker pool will be skipped provided that it remains within the allowed N-3 version skew.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2134 -->
+
+- Fixed an issue that caused the
+  [`spectrocloud_cluster_profile` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
+  to fail to resolve the pack UID of Helm packs in OCI registries.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3643 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3687 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3670 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3640 -->
+
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI               | CSI        | :white_check_mark: | :x:                | 1.55.0      |
+| Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.3.7       |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.0.0       |
+| External Secrets             | Add-on     | :white_check_mark: | :x:                | 1.3.1       |
+| Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.18.1-rev1 |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.8.6       |
+| Kubernetes (EKS)             | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
+| Longhorn                     | CSI        | :white_check_mark: | :x:                | 1.10.1      |
+| Nginx                        | Add-on     | :white_check_mark: | :x:                | 1.14.3      |
+| Prometheus Agent             | Add-on     | :white_check_mark: | :x:                | 28.6.1      |
+| Prometheus Operator          | Add-on     | :white_check_mark: | :x:                | 81.3.1      |
+| Traefik                      | Add-on     | :white_check_mark: | :x:                | 39.0.0      |
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3640 -->
+
+- Fixed an issue where the Harbor Nginx service template did not honor the `expose.http.enabled: false` when
+  `expose.type: nodePort` was set, resulting in the HTTP NodePort 30002 being created even when it was disabled.
 
 ## February 6, 2026 - Component Updates {#component-updates-2026-06}
 
@@ -271,12 +390,13 @@ The following components have been updated for Palette version 4.8.6 - 4.8.27.
 The following component updates are applicable to this release:
 
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Improvements
 
 - The internal Palette Nginx controller has been upgraded to v1.13.7 to address multiple Nginx ingress vulnerabilities.
   Refer to
-  [Security Advisory 008- Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008--nginx-ingress-vulnerabilities)
+  [Security Advisory 008 - Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008---nginx-ingress-vulnerabilities)
   for further information.
 
 ## January 30, 2026 - Release 4.8.25
@@ -284,6 +404,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Breaking Changes
 
@@ -476,6 +597,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -490,6 +612,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -522,6 +645,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Features
 
@@ -551,6 +675,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -989,6 +1114,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1100,6 +1226,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 #### Features
 
@@ -1300,6 +1427,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1336,6 +1464,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1364,6 +1493,7 @@ The following component updates are applicable to this release:
 - [January 23, 2026 - Component Updates](#component-updates-2026-04) <!-- omit in toc -->
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
+- [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 
 ### Security Notices
 

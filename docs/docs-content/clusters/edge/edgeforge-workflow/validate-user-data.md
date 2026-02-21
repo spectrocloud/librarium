@@ -38,11 +38,7 @@ However, this process is also executed automatically when you build the Edge ins
 
 <TabItem value="CanvOS">
 
-From the `CanvOS` directory, issue the following command.
-
-```shell
-sudo ./earthly.sh +validate-user-data
-```
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-validate" />
 
 </TabItem>
 
@@ -55,10 +51,6 @@ download the Palette Edge CLI.
 ```shell
 ./palette-edge-cli validate --user-data-file-path <path-to-user-data>
 ```
-
-</TabItem>
-
-</Tabs>
 
 If the output is similar to the following, it means that the user data is valid and will be applied to the Edge host.
 
@@ -80,6 +72,10 @@ in the output.
 ```
 Error: invalid JSON: stylus.registryCredentials.password: Invalid type. Expected: string, given: null
 ```
+
+</TabItem>
+
+</Tabs>
 
 ## Validate
 

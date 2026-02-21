@@ -59,7 +59,7 @@ updates to ensure compatibility with Palette.
 
 If you are installing the PCG through the Palette CLI, you can provide the proxy server details during installation. The
 proxy server details are saved as environment variables (`HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY`) and are propagated
-to all PCG cluster nodes, as well as the nodes of all tenant workload clusters deployed with the PCG. The provided proxy
+to all PCG cluster nodes, as well as the nodes of all workload clusters deployed with the PCG. The provided proxy
 servers are then used by the PCG and workload clusters to access the internet.
 
 You can also provide Certificate Authority (CA) certificates for the proxy server during installation. However, proxy CA

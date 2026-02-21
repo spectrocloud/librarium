@@ -12,10 +12,6 @@ with only two nodes instead of three. In two-node HA clusters, Palette overcomes
 utilizing Postgres as the backend storage with [Kine](https://github.com/k3s-io/kine). Kine is only used in two-node
 clusters.
 
-:::preview
-
-:::
-
 ## Architecture Overview
 
 In a typical Kubernetes cluster, a cluster achieves high availability through the backend key-value store
