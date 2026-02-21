@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 21, 2026 - Release 4.8.b {#release-notes-4.8.b}
+## February 21, 2026 - Release 4.8.33 {#release-notes-4.8.b}
 
 ### Security Notices
 
@@ -37,7 +37,7 @@ tags: ["release-notes"]
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
 - [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.b is now
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.33 is now
   available.
 
 #### Improvements
@@ -130,7 +130,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.b Palette release is 4.8.10.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.33 Palette release is 4.8.10.
 
 :::
 
