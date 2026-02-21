@@ -14,7 +14,7 @@ issue and expiry date of the cluster by click on **View K8s Certificates** in th
 This page focuses on how to renew the PKI certificates through Palette. You have two options for how you can renew the
 cluster PKI certificates:
 
-- [Automatic Certificate Renewal](#automatic-certificate-renewal)
+- [Automatic Certificate Renewal](#automatic-certificate-renewal) <!-- omit in toc -->
 - [Manual Certificate Renewal](#manual-certificate-renewal)
 
 :::info
@@ -118,25 +118,37 @@ The renewal process may take several minutes, depending on the number of cluster
 </TabItem>
 <TabItem label="API" value="api">
 
-1. Set your Palette API key as an environment variable. Add your actual API key in place of `REPLACE_ME`.
+1. Set your Palette API key as an environment variable.
 
    ```shell
-   export API_KEY=REPLACE_ME
+   export API_KEY=<api-key>
    ```
 
-2. Set the project ID as an environment variable. Add your project ID in place of `REPLACE_ME`. You can find the project
-   ID on the Palette landing page. The project ID is displayed in the top right corner of the page.
+2. Set the project ID as an environment variable. The **Project ID** is located on the **Project Overview** page in the
+   top-right below the **User Menu**.
 
    ```shell
-   export PROJECT_ID=REPLACE_ME
+   export PROJECT_ID=<project-id>
    ```
 
-3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`. You can get the
-   cluster ID from the cluster detail's page URL. The value after `clusters/` is the cluster ID.
+   :::tip
+
+   You can also retrieve your project ID from the URL: `https://console.spectrocloud.com/projects/<project-id>`.
+
+   :::
+
+3. Set the cluster ID as an environment variable. The **Cluster ID** is located on the cluster's **Overview** tab.
 
    ```shell
-   export CLUSTER_ID=REPLACE_ME
+   export CLUSTER_ID=<cluster-id>
    ```
+
+   :::tip
+
+   You can also retrieve your cluster ID from the URL:
+   `https://console.spectrocloud.com/projects/<project-id>/clusters/<cluster-id>`.
+
+   :::
 
 4. Use the Palette API endpoint `https://api.spectrocloud.com/v1/spectroclusters/{uid}/k8certificates/renew` to renew a
    cluster's PKI certificates. The endpoint accepts the HTTP method `PATCH`, and the only required parameter is the
@@ -182,23 +194,37 @@ Using the following steps, you can validate that the cluster's PKI certificates 
 
 Using the following steps, you can validate that the cluster's PKI certificates were renewed.
 
-1. Set your Palette API key as an environment variable. Add your actual API key in place of `REPLACE_ME`.
+1. Set your Palette API key as an environment variable.
 
    ```shell
-   export API_KEY=REPLACE_ME
+   export API_KEY=<api-key>
    ```
 
-2. Set the project ID as an environment variable. Add your project ID in place of `REPLACE_ME`.
+2. Set the project ID as an environment variable. The **Project ID** is located on the **Project Overview** page in the
+   top-right below the **User Menu**.
 
    ```shell
-   export PROJECT_ID=REPLACE_ME
+   export PROJECT_ID=<project-id>
    ```
 
-3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`.
+   :::tip
+
+   You can also retrieve your project ID from the URL: `https://console.spectrocloud.com/projects/<project-id>`.
+
+   :::
+
+3. Set the cluster ID as an environment variable. The **Cluster ID** is located on the cluster's **Overview** tab.
 
    ```shell
-   export CLUSTER_ID=REPLACE_ME
+   export CLUSTER_ID=<cluster-id>
    ```
+
+   :::tip
+
+   You can also retrieve your cluster ID from the URL:
+   `https://console.spectrocloud.com/projects/<project-id>/clusters/<cluster-id>`.
+
+   :::
 
 4. Retrieve the cluster's certificate information from Palette by using the
    `https://api.spectrocloud.com/v1/spectroclusters/{uid}/k8certificates` endpoint.

@@ -33,14 +33,22 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 - In a multi-node cluster with PXK-E as its Kubernetes layer, you cannot change custom Network Interface Card (NIC).
   When you add an Edge host to such a cluster, leave the NIC field as its default value.
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+
 - For multi-node clusters, do not use the
   <VersionedLink text="Local Path Provisioner Pack" url="/integrations/packs/?pack=csi-local-path-provisioner" />. This
   is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
   with the local path provisioner.
 
-- Two-node clusters operating in high availability mode only support K3s and no other Kubernetes distributions.
-- Palette Optimized Canonical Kubernetes clusters require at least three nodes to operate in high availability mode.
+<!-- prettier-ignore-end -->
+
+- [Two-node clusters](../architecture/two-node.md) operating in high availability mode only support K3s and Palette
+  Optimized Canonical Kubernetes. Other Kubernetes distributions are not supported.
+
+<!-- prettier-ignore-start -->
+
+
+<!-- prettier-ignore-end -->
 
 ### Prerequisites
 
@@ -66,8 +74,8 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
     :::
 
-- If you are provisioning a two-node cluster, ensure that you set the `TWO_NODE` argument to `true` when building the
-  provider image you use to deploy the cluster. For more information, refer to
+- If you are provisioning a [two-node cluster](../architecture/two-node.md), ensure that you set the `TWO_NODE` argument
+  to `true` when building the provider image you use to deploy the cluster. For more information, refer to
   [Build Provider Images](../edgeforge-workflow/palette-canvos/build-provider-images.md).
 
 - Network Time Protocol (NTP) servers are correctly configured in a multi-node cluster. All nodes must have their time
@@ -100,9 +108,9 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
     **Next**.
 
-10. (Optional) If you want to provision a two-node high availability cluster, check the **Enable Two-Node Capability**
-    box to enable the two-node high availability architecture. This means you must have exactly two nodes in the control
-    plane pool.
+10. (Optional) If you want to provision a [two-node high availability cluster](../architecture/two-node.md), check the
+    **Enable Two-Node Capability** box to enable the two-node high availability architecture. This means you must have
+    exactly two nodes in the control plane pool.
 
 11. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge
     host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
