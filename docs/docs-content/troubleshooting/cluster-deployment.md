@@ -93,7 +93,7 @@ all other packs, ensuring that the updated resource configuration is in place be
 
         ```shell
         kubectl describe deployment cluster-management-agent palette-controller-manager \
-          --namespace <cluster-namespace> | grep -A 3 "Limits\|Requests"
+          --namespace <cluster-namespace> | grep --after-context 3 "Limits\|Requests"
         ```
 
         The output displays the updated resource requirements for the `cluster-management-agent` pod and the `manager` and `atop-manager` containers, which are part of the `palette-controller-manager` pod. By default, the `kube-rbac-proxy` container does not define resource requests or limits and therefore does not appear in the output.
