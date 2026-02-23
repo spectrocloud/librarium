@@ -51,6 +51,8 @@ key artifacts:
    required for the cluster. These images install a secure, immutable OS during the cluster deployment and are
    referenced during the cluster profile creation.
 
+<!-- vale-on -->
+
 After completing the build, you use the Installer ISO to install the Palette agent onto the Edge host. In connected
 environments, the host then registers itself with Palette using the registration token provided during the installer
 build. After registration, you can use the host as a node during the Edge cluster deployment.
