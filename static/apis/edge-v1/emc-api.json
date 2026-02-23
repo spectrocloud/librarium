@@ -5924,6 +5924,10 @@
         "ip": {
           "type": "string"
         },
+        "isClusterNIC": {
+          "description": "True if this NIC is used for cluster communication",
+          "type": "boolean"
+        },
         "mac": {
           "type": "string"
         },
