@@ -45,8 +45,6 @@ configuration begins with the
 [EdgeForge](../../../../docs-content/clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process, which builds two
 key artifacts:
 
-<!-- vale-off -->
-
 1. **Installer ISO**: A bootable ISO image that includes the required dependencies, such as the Palette Agent, and
    bootstraps the Edge installation process on the host.
 2. **Provider Images**: [Kairos](https://kairos.io/)-based customizable images that combine the OS and Kubernetes layers
@@ -57,11 +55,14 @@ key artifacts:
 
 After completing the build, you use the Installer ISO to install the Palette agent onto the Edge host. In connected
 environments, the host then registers itself with Palette using the registration token provided during the installer
-build. After registration, you can use the host as a node during the Edge cluster deployment. In disconnected
-environments, you can use [Local UI](../../../clusters/edge/local-ui/local-ui.md) to create and manage the cluster,
-which does not require a connection to Palette.
+build. After registration, you can use the host as a node during the Edge cluster deployment.
 
 ![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram.webp)
+
+In disconnected environments, you can use [Local UI](../../../clusters/edge/local-ui/local-ui.md) to create and manage
+the cluster, which does not require a connection to Palette.
+
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_local-managed-edgeforge-diagram_4-8.webp)
 
 ## Next Steps
 
