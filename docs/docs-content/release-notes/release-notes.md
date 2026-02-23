@@ -11,6 +11,49 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February XX, 2026 - Release 4.8.X
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9977 -->
+
+- The internal Palette [Go version](https://go.dev/doc/devel/release) has been upgraded to 1.24.X, addressing
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5353 -->
+
+- Palette now supports version 3 configuration for `config.toml` file for all Kubernetes packs version 1.34 or newer.
+  Refer to [Override Registry Configuration](../enterprise-version/system-management/registry-override.md) to learn more
+  about `config.toml` usage.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5936 -->
+
+- The `palette-agent-config` manifest now allows the configuration of memory limits for `palette-controller-manager` and
+  `cluster-management-agent` pods, allows users to increase cluster size.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7658 -->
+
+- Fixed an issue that caused the [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) to
+  shut down edge hosts without confirmation when the user presses F12.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8166 -->
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display sensitive pack values returned
+  by the [Palette API](/api/introduction).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8167 -->
+
+- Fixed an issue that caused [Edge clusters](../clusters/edge/edge.md) to attempt to download packs and fail to
+  provision the cluster, even when local content bundles have been provided.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8181 -->
+
+- Fixed an issue that caused Local UI to fail to configure
+  [bridges](../clusters/edge/local-ui/host-management/configure-network-interfaces.md) without pre-existing networkd
+  configuration files.
+
 ## February 21, 2026 - Release 4.8.33 {#release-notes-4.8.b}
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
