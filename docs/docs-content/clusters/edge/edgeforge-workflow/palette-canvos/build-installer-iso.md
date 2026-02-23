@@ -96,14 +96,6 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    the provider images. Refer to [Edge Artifact Build Configuration](./arg.md) for all available configuration
    parameters.
 
-   :::preview
-
-   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
-   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
-   not use this feature in production workloads.
-
-   :::
-
 7. Customize these arguments to use during the build process. The following is an example `.arg` file.
 
    ```
