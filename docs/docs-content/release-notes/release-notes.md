@@ -19,8 +19,6 @@ tags: ["release-notes"]
 
 ### Palette Enterprise {#palette-enterprise-4.8.b}
 
-#### Breaking Changes {#breaking-changes-4.8.b}
-
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5747 -->
