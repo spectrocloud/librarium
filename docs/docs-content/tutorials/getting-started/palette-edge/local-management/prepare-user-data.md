@@ -123,7 +123,7 @@ git checkout v4.8.8
 
 In this section, you will create a user data file that identifies that the Edge device will be locally managed, and
 contains Edge host login credentials. The login credentials allow you to SSH into your Edge host. The user data file
-also includes an `install` parameter section to power off the host once the Edge installation completes.
+also includes an `install` parameter block to power off the host once the Edge installation completes. This is to allow safe removal the USB device after installation. 
 
 Export your Edge host login credentials.
 
@@ -142,7 +142,7 @@ stylus:
   includeTui: true
 
 install:
-  poweroff: false
+  poweroff: true
 
 stages:
   before-install:
@@ -181,7 +181,7 @@ stylus:
   includeTui: true
 
 install:
-  poweroff: false
+  poweroff: true
 
 stages:
   before-install:
