@@ -13,6 +13,8 @@ tags: ["release-notes"]
 
 ## February 21, 2026 - Release 4.8.33 {#release-notes-4.8.b}
 
+Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
+
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
