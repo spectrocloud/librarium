@@ -28,8 +28,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5936 -->
 
-- The `palette-agent-config` manifest now allows the configuration of memory limits for `palette-controller-manager` and
-  `cluster-management-agent` pods, allows users to increase cluster size.
+- Palette now supports the configuration of memory limits for `palette-controller-manager` and
+  `cluster-management-agent` pods through the `palette-agent-config` manifest, allowing users to increase cluster size.
 
 ### Bug Fixes
 
