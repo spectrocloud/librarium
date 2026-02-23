@@ -63,6 +63,7 @@ distribution OVA.
 
 | **Palette Version** | **Kubernetes Version** |
 | ------------------- | ---------------------- |
+| 4.8.33              | 1.33.6                 |
 | 4.8.21              | 1.33.5                 |
 
 </TabItem>
