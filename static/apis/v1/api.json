@@ -2397,6 +2397,19 @@
       },
       "type": "object"
     },
+    "v1AwsApiEndpointsConfig": {
+      "description": "AWS API endpoints configuration containing all partition settings",
+      "properties": {
+        "partitions": {
+          "additionalProperties": {
+            "$ref": "#/definitions/v1AwsPartitionEndpoints"
+          },
+          "description": "Map of partition name to AWS endpoint configuration",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "v1AwsAvailabilityZone": {
       "description": "Distinct locations within an AWS Region that are engineered to be isolated from failures in other Zones",
       "properties": {
@@ -3286,6 +3299,16 @@
           "format": "int32",
           "type": "integer"
         },
+        "skipK8sUpgrade": {
+          "default": "disabled",
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string",
+          "x-omitempty": true
+        },
         "spotMarketOptions": {
           "$ref": "#/definitions/v1SpotMarketOptions",
           "description": "SpotMarketOptions allows users to configure instances to be run using AWS Spot instances."
@@ -3434,6 +3457,16 @@
         "aws-us-gov"
       ],
       "type": "string"
+    },
+    "v1AwsPartitionEndpoints": {
+      "description": "AWS partition endpoint configuration",
+      "properties": {
+        "credentialsEndpoint": {
+          "description": "Credentials URL for obtaining temporary AWS credentials",
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1AwsPodIdentityCredentials": {
       "description": "AWS EKS Pod Identity credentials for role assumption",
@@ -9732,6 +9765,33 @@
         "uid": {
           "description": "Uid of the cluster template from which the cluster is created. When a cluster is launched using a template, the packs configuration is automatically derived from the template and does not need to be set manually.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1ClusterTemplateRepaveProfile": {
+      "description": "Cluster template profile reference for repave validation",
+      "properties": {
+        "uid": {
+          "description": "Cluster profile uid",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1ClusterTemplateRepaveValidationSpec": {
+      "description": "Cluster template repave validation request spec",
+      "properties": {
+        "isUpgradeNow": {
+          "description": "If true, validates repave for immediate upgrade, otherwise for scheduled upgrade",
+          "type": "boolean"
+        },
+        "profiles": {
+          "description": "List of cluster profile UIDs to validate for repave",
+          "items": {
+            "$ref": "#/definitions/v1ClusterTemplateRepaveProfile"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -18582,6 +18642,16 @@
           "description": "Size of the pool, number of nodes/machines",
           "format": "int32",
           "type": "integer"
+        },
+        "skipK8sUpgrade": {
+          "default": "disabled",
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is >3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version (default)\n",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string",
+          "x-omitempty": true
         },
         "taints": {
           "description": "control plane or worker taints",
@@ -37174,11 +37244,13 @@
       "properties": {
         "persistent": {
           "description": "If set to true, Persistent will persist the EFI NVRAM across reboots. Defaults to false",
-          "type": "boolean"
+          "type": "boolean",
+          "x-nullable": true
         },
         "secureBoot": {
           "description": "If set, SecureBoot will be enabled and the OVMF roms will be swapped for SecureBoot-enabled ones. Requires SMM to be enabled. Defaults to true",
-          "type": "boolean"
+          "type": "boolean",
+          "x-nullable": true
         }
       },
       "type": "object"
@@ -54321,6 +54393,40 @@
           }
         ],
         "summary": "Retrieves a list of AWS AMI types",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
+    "/v1/clouds/aws/apiEndpoints": {
+      "get": {
+        "description": "Retrieves all AWS partition endpoint configurations.",
+        "operationId": "V1CloudsAwsApiEndpointsGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AwsApiEndpointsConfig"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get AWS API endpoints configuration",
         "tags": [
           "clouds"
         ]
@@ -73895,6 +74001,55 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/spectroclusters/clusterTemplates/{uid}/validate/repave": {
+      "parameters": [
+        {
+          "description": "Cluster template uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "V1SpectroClustersClusterTemplatesUIDValidateRepave",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterTemplateRepaveValidationSpec"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cluster template repave validation response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterRepaveValidationResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Validates if cluster template profile update triggers repave",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
     },
     "/v1/spectroclusters/config/edgeInstaller": {
       "get": {
