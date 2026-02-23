@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 24, 2026 - Release 4.8.34
+
+### Bug Fixes
+
+- Fixed an issue that prevented [Virtual Machine Orchestrator](../vm-management/vm-management.md) Day-2 operations, such
+  as VM start, stop, restart, and migrate, from completing when triggered using the [Palette API](/api/introduction).
+
 ## February 21, 2026 - Release 4.8.33 {#release-notes-4.8.b}
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
