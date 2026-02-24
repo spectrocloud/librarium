@@ -100,7 +100,141 @@ Choose the workflow that best fits your use case.
 
 ## Provision and Upgrade Clusters Using Terraform
 
+In this section, you will define and manage your cluster infrastructure as code using Terraform. You will configure the
+Terraform provider, create a cluster profile, configure a cluster template with a maintenance policy, and deploy two
+clusters from the same template. You will then release a new cluster profile version, update the template to reference
+it, and apply upgrades across both clusters.
+
+<PartialsComponent category="getting-started" name="setup-local-environment" />
+
+Navigate to the **terraform/cluster-templates-tf** directory.
+
+```shell
+cd terraform/cluster-templates-tf
+```
+
+Confirm you are in the correct directory.
+
+```bash
+pwd
+```
+
+```bash hideClipboard title="Expected output"
+/workspace/terraform/cluster-templates-tf
+```
+
 ### Configure the Terraform Provider
+
+The directory contains files that configure the Spectro Cloud provider and point it at your Palette project. Review each
+file before running any commands.
+
+| **File**             | **Description**                                                                                                  |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **provider.tf**      | Configures the Spectro Cloud Terraform provider and sets the target Palette project.                             |
+| **inputs.tf**        | Declares the input variables the configuration expects.                                                          |
+| **terraform.tfvars** | Supplies values for the declared variables. Update `palette_project` if your project is not named `Default`.     |
+| **data.tf**          | Reads the Palette project by name to confirm authentication and project access before any resources are created. |
+
+`provider.tf` pins the Spectro Cloud provider to its registry source and sets a minimum version requirement. The
+`provider` block reads `var.palette_project` to target the correct Palette project.
+
+```hcl title="provider.tf" hideClipboard
+terraform {
+  required_providers {
+    spectrocloud = {
+      version = ">= 0.1"
+      source  = "spectrocloud/spectrocloud"
+    }
+  }
+}
+
+provider "spectrocloud" {
+  project_name = var.palette_project
+}
+```
+
+`inputs.tf` includes a `type` in each variable definition so Terraform can validate values before applying any changes.
+
+```hcl title="inputs.tf" hideClipboard
+variable "palette_project" {
+  description = "Palette project name"
+  type        = string
+}
+```
+
+Terraform loads `terraform.tfvars` automatically at runtime. If your project is not named `Default`, update
+`palette_project` before proceeding.
+
+```hcl title="terraform.tfvars" hideClipboard
+palette_project = "Default"
+```
+
+`data.tf` uses a read-only data source to look up the Palette project by name. If authentication fails or the project
+does not exist, Terraform stops with an error before creating any resources.
+
+```hcl title="data.tf" hideClipboard
+data "spectrocloud_project" "current" {
+  name = var.palette_project
+}
+```
+
+#### Set API Key Environment Variable
+
+Terraform authenticates to Palette using your API key. Export it as an environment variable so the provider picks it up
+automatically.
+
+```bash
+export SPECTROCLOUD_APIKEY=<your-api-key>
+```
+
+Confirm the variable is set correctly.
+
+```bash
+echo $SPECTROCLOUD_APIKEY
+```
+
+```bash hideClipboard title="Expected output"
+abcd1234efgh5678...
+```
+
+#### Check Terraform Version
+
+Confirm that Terraform 1.x is installed.
+
+```bash
+terraform version
+```
+
+```bash hideClipboard title="Expected output"
+Terraform v1.x.x
+on darwin_arm64
+```
+
+The version must start with `v1`. If the command is not found or the version is outside the `1.x` range, install or
+upgrade Terraform before continuing.
+
+#### Validate Provider and Project Configuration
+
+Initialize the working directory, then run a plan to confirm that Terraform can authenticate to Palette and that your
+target project exists. No infrastructure will be created at this step.
+
+```bash
+terraform init && terraform plan
+```
+
+Terraform will install the provider and query the project defined in `terraform.tfvars`.
+
+```bash hideClipboard title="Expected output"
+Terraform has been successfully initialized!
+...
+data.spectrocloud_project.current: Reading...
+data.spectrocloud_project.current: Read complete after 0s [id=6342eab2faa0813ead9082e0]
+
+No changes. Your infrastructure matches the configuration.
+```
+
+If `Read complete` is followed by `No changes`, Terraform successfully authenticated, found your Palette project, and
+the provider configuration is valid.
 
 ### Create a Cluster Profile
 
