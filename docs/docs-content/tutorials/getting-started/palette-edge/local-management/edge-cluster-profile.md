@@ -95,7 +95,7 @@ Next, click **Add New Pack** to include the add-on layers.  Harbor is required t
 
 | **Pack Name**               | **Version** | **Registry**     | **Layer** |
 | --------------------------  | ----------- | ---------------- | --------- |
-| Habor Edge Native Config.   | 1.1.2       | Palette Registry | Registry  |
+| Habor Edge Native Config   | 1.1.2       | Palette Registry | Registry  |
 
 
 Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
