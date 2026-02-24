@@ -22,7 +22,19 @@ reference the provider images that you built in the [Build Edge Artifacts](./bui
 creating the cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap
 the Edge installation on your host and use it as a node for deploying your first Edge cluster.
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
+For this tutorial, you will build a cluster profile that has the following packs.
+
+| **Pack Name**            | **Version** | **Registry**               | 
+| ------------------------ | ----------- | -------------------------- | 
+| BYOS Edge OS             | 2.1.0       | Palette Registry           | 
+| Palette Optimized K3s    | 1.32.3      | Palette Registry           |
+| Cilium                   | 1.18.4      | Palette Registry           |
+| Local Path Provisioner   | 0.0.32      | Palette Registry           |
+| Habor Edge Native Config | 1.1.2       | Palette Registry           |
+| MetalLB (Helm)           | 0.14.9      | Palette Registry           |
+| Hello Universe           | 1.3.0       | Palette Community Registry |
+
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
 
 ## Prerequisites
 
@@ -95,9 +107,13 @@ storage.
 
 Next, click **Add New Pack** to include the add-on layers.  Harbor is required to manage local registries for Edge clusters.
 
-| **Pack Name**               | **Version** | **Registry**     | **Layer** |
-| --------------------------  | ----------- | ---------------- | --------- |
-| Habor Edge Native Config   | 1.1.2       | Palette Registry | Registry  |
+
+| **Pack Name**             | **Version** | **Registry**     | **Layer** |
+| ------------------------- | ----------- | ---------------- | --------- |
+| Habor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
+
+Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
+cluster profile.
 
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
