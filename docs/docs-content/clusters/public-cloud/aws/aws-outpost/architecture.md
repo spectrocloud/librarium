@@ -11,7 +11,7 @@ Palette allows you to use an AWS Outpost server at Edge.
 
 These are some of the architectural highlights when using Palette to manage your AWS Outpost.
 
-## Operating System Compatability
+## Limitations
 
 Palette only supports Ubuntu with AWS Outpost.
 

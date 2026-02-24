@@ -1,6 +1,6 @@
 ---
-sidebar_label: "AWS Outpost"
-title: "AWS Outpost"
+sidebar_label: "AWS Outposts"
+title: "AWS Outposts"
 description: "Learn about how Palette supports deployment of AWS Outpost."
 tags: ["public cloud", "aws", "aws outpost"]
 hide_table_of_contents: false
@@ -18,7 +18,7 @@ while offline.
 
 ## Resources
 
-To learn more about Palette Edge and AWS Outpost, refer to the following resources.
+
 
 - [Architecture](./architecture.md)
 - [Configure Edge on AWS Outpost](./configure-edge-on-aws-outpost.md)
