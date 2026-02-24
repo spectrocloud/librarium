@@ -18,7 +18,5 @@ while offline.
 
 ## Resources
 
-
-
 - [Architecture](./architecture.md)
 - [Configure Edge on AWS Outpost](./configure-edge-on-aws-outpost.md)
