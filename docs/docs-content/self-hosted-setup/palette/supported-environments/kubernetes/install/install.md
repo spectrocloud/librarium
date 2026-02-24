@@ -39,12 +39,7 @@ The next sections provide sizing guidelines we recommend you review before insta
 
 ## Size Guidelines
 
-<PartialsComponent
-  category="self-hosted"
-  name="size-guidelines-helm-cli"
-  edition="Palette"
-  app="Palette Management Appliance"
-/>
+<PartialsComponent category="self-hosted" name="size-guidelines-helm-cli" version="Palette" />
 
 ## Kubernetes Requirements
 
@@ -71,7 +66,3 @@ distribution OVA.
 
 </TabItem>
 </Tabs>
-
-## Proxy Requirements
-
-<PartialsComponent category="self-hosted" name="required-domains" edition="Palette" />

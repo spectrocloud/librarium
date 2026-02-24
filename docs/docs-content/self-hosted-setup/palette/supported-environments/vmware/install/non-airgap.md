@@ -9,7 +9,7 @@ tags: ["self-hosted", "vmware", "non-airgap", "cli"]
 keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 ---
 
-<PartialsComponent category="self-hosted" name="install-non-airgap-introduction" version="Palette" />
+<PartialsComponent category="self-hosted" name="install-vmware-non-airgap-introduction" version="Palette" />
 
 ## Prerequisites
 
@@ -19,6 +19,9 @@ keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
   version="Palette"
   edition="palette"
 />
+
+<PartialsComponent category="self-hosted" name="required-domains" version="Palette VerteX" />
+
 <PartialsComponent
   category="self-hosted"
   name="install-vmware-prerequisites-second"
@@ -45,7 +48,7 @@ keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 
 ## Validate
 
-<PartialsComponent category="self-hosted" name="install-non-airgap-validation" />
+<PartialsComponent category="self-hosted" name="install-vmware-validation" />
 
 ## Next Steps
 
