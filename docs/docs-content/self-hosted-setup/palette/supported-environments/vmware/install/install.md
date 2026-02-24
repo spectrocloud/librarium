@@ -8,20 +8,11 @@ tags: ["self-hosted", "install", "vmware", "cli"]
 keywords: ["self-hosted", "install", "vmware", "cli"]
 ---
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-vmware-introduction"
-  edition="Palette"
-  version="Palette"
-/>
+<PartialsComponent category="self-hosted" name="install-vmware-introduction" edition="Palette" version="Palette" />
 
 ## Size Guidelines
 
-<PartialsComponent
-  category="self-hosted"
-  name="size-guidelines-helm-cli"
-  version="Palette"
-/>
+<PartialsComponent category="self-hosted" name="size-guidelines-helm-cli" version="Palette" />
 
 ## Kubernetes Requirements
 

@@ -18,15 +18,15 @@ keywords: ["self-hosted", "vertex", "install", "vmware", "cli"]
 
 ## Size Guidelines
 
-<PartialsComponent
-  category="self-hosted"
-  name="size-guidelines-helm-cli"
-  version="Palette VerteX"
-/>
+<PartialsComponent category="self-hosted" name="size-guidelines-helm-cli" version="Palette VerteX" />
 
 ## Kubernetes Requirements
 
-<PartialsComponent category="self-hosted" name="introduction-palette-vmware-kubernetes-versions" version="Palette VerteX" />
+<PartialsComponent
+  category="self-hosted"
+  name="introduction-palette-vmware-kubernetes-versions"
+  version="Palette VerteX"
+/>
 <PartialsComponent category="self-hosted" name="palette-vmware-kubernetes-versions" />
 
 ## Proxy Requirements

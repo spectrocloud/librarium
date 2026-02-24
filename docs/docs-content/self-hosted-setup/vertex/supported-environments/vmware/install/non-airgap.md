@@ -29,11 +29,7 @@ necessary.
 
 :::
 
-<PartialsComponent
-  category="self-hosted"
-  name="required-domains"
-  version="Palette VerteX"
-/>
+<PartialsComponent category="self-hosted" name="required-domains" version="Palette VerteX" />
 
 <PartialsComponent
   category="self-hosted"

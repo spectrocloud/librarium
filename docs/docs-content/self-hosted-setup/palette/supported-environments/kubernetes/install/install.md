@@ -39,11 +39,7 @@ The next sections provide sizing guidelines we recommend you review before insta
 
 ## Size Guidelines
 
-<PartialsComponent
-  category="self-hosted"
-  name="size-guidelines-helm-cli"
-  version="Palette"
-/>
+<PartialsComponent category="self-hosted" name="size-guidelines-helm-cli" version="Palette" />
 
 ## Kubernetes Requirements
 

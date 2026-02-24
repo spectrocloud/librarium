@@ -82,11 +82,7 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   certificate file in the base64 format. You will need this to enable Palette to communicate with the network proxy
   server.
 
-<PartialsComponent
-  category="self-hosted"
-  name="required-domains"
-  version="Palette"
-/>
+<PartialsComponent category="self-hosted" name="required-domains" version="Palette" />
 
 - Access to the Palette Helm Charts. Refer to the [Access Palette](../../../palette.md#access-palette) for instructions
   on how to request access to the Helm Chart

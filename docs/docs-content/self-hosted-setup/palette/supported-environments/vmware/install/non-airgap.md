@@ -20,11 +20,7 @@ keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
   edition="palette"
 />
 
-<PartialsComponent
-  category="self-hosted"
-  name="required-domains"
-  version="Palette VerteX"
-/>
+<PartialsComponent category="self-hosted" name="required-domains" version="Palette VerteX" />
 
 <PartialsComponent
   category="self-hosted"

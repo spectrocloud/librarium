@@ -39,11 +39,7 @@ The next sections describe specific requirements for installing Palette VerteX.
 
 ## Size Guidelines
 
-<PartialsComponent
-  category="self-hosted"
-  name="size-guidelines-helm-cli"
-  version="Palette VerteX"
-/>
+<PartialsComponent category="self-hosted" name="size-guidelines-helm-cli" version="Palette VerteX" />
 
 ## Kubernetes Requirements
 

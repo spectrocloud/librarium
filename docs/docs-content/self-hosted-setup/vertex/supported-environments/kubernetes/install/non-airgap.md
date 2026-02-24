@@ -87,11 +87,7 @@ cluster has the necessary network connectivity for VerteX to operate successfull
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for VerteX.
 
-<PartialsComponent
-  category="self-hosted"
-  name="required-domains"
-  version="Palette VerteX"
-/>
+<PartialsComponent category="self-hosted" name="required-domains" version="Palette VerteX" />
 
 - If you are installing VerteX behind a network proxy server, ensure you have the Certificate Authority (CA) certificate
   file in the base64 format. You will need this to enable VerteX to communicate with the network proxy server.
