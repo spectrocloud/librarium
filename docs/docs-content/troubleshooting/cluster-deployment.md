@@ -40,7 +40,6 @@ all other packs, ensuring that the updated resource configuration is in place be
      
     :::
 
-6.  Keep the **Install order** field at `0` to give the pack the highest priority.
 
 7.  Select **New manifest**. Assign an applicable name to the manifest and select the blue check mark. An empty editor
     displays on the right side of the screen.
