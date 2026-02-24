@@ -7,57 +7,57 @@ tags: ["public cloud", "aws", "aws outpost"]
 sidebar_position: 30
 ---
 
-Palette supports creating and managing Kubernetes clusters deployed to an [AWS Outpost](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html) server. This document guides you on how to configure a Kubernetes cluster on AWS Outpost that is managed by Palette Edge.
+Palette supports creating and managing Kubernetes clusters deployed to an
+[AWS Outpost](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html) server. This document
+guides you on how to configure a Kubernetes cluster on AWS Outpost that is managed by Palette Edge.
 
 ## Prerequisites
 
-You must order and [install an AWS Outpost server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html) at your site before you can configure your Edge server. 
+You must order and
+[install an AWS Outpost server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html) at your
+site before you can configure your Edge server.
 
 ## Configure your AWS Outpost for Edge
 
-Use the following steps to convert your AWS Outpost server to an Edge instance. 
+Use the following steps to convert your AWS Outpost server to an Edge instance.
 
-1. Select your Outpost server and create a capacity task and remove any existing configured instances. Set the **Instance size** to `c61d.metal` and the **Instance quantity** to 1. 
+1. Select your Outpost server and create a capacity task and remove any existing configured instances. Set the
+   **Instance size** to `c61d.metal` and the **Instance quantity** to 1.
 
-   Refer to [Modify AWS Outposts instance capacity ](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html) for more information about adjusting your Outpost's capacity.
+   Refer to
+   [Modify AWS Outposts instance capacity ](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html)
+   for more information about adjusting your Outpost's capacity.
 
-2. [Create a subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet) for your Outpost. 
+2. [Create a subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet)
+   for your Outpost.
 
 3. Enable the subnet for your local network. You must set the secondary instance to a value of 1.
-   
+
    ```bash
 
-   aws ec2 modify-subnet-attribute   
-   --subnet-id subnet-xxxxxxxxxxxxxxxxx  
-   --enable-lni-at-device-index 1  
+   aws ec2 modify-subnet-attribute
+   --subnet-id subnet-xxxxxxxxxxxxxxxxx
+   --enable-lni-at-device-index 1
 
    ```
 
 ## Create the Edge Host
 
-
 To configure the Edge server on your Outpost server, perform the following steps.
 
-1. Select your AWS Outpost server and click [**Launch instance**](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#launch-instances). 
-   
-2. In the **Application and OS Images (Amazon Machine Image)** section, select Ubuntu. 
-   
-3. Verify that the Instance type is `c6id.metal`.
-   
-4. Enter your security key pair.
-   
-5. In the **Network settings** section, click **Edit** then select the Outpost and Subnet that you created previously.
-   
-6. Expand the **Advanced network configuration** section and click **Add network interface**.
-   
-7. Ensure that the **Device index** is set to `1` and enter a name in the **Description** field.
-   
-8. Expand the **Advanced details** section. 
-   
-9. Enter the following in the **User data - optional** section. 
+1.  Select your AWS Outpost server and click
+    [**Launch instance**](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#launch-instances).
+2.  In the **Application and OS Images (Amazon Machine Image)** section, select Ubuntu.
+3.  Verify that the Instance type is `c6id.metal`.
+4.  Enter your security key pair.
+5.  In the **Network settings** section, click **Edit** then select the Outpost and Subnet that you created previously.
+6.  Expand the **Advanced network configuration** section and click **Add network interface**.
+7.  Ensure that the **Device index** is set to `1` and enter a name in the **Description** field.
+8.  Expand the **Advanced details** section.
+9.  Enter the following in the **User data - optional** section.
 
-        You must update the `write_files.content.network` section with your server's routes, the `write_files.content.stylus.site` section with your Palette Edge information, and the `write_files.content.stylus.stages` section with your login information. 
-   
+        You must update the `write_files.content.network` section with your server's routes, the `write_files.content.stylus.site` section with your Palette Edge information, and the `write_files.content.stylus.stages` section with your login information.
+
     ```yaml
 
     #cloud-config
@@ -110,7 +110,7 @@ To configure the Edge server on your Outpost server, perform the following steps
                        groups:
                          - sudo
                        passwd: kairos
-                       
+
     runcmd:
       - touch /var/log/cloud-init-userdata.log
 
@@ -143,8 +143,7 @@ To configure the Edge server on your Outpost server, perform the following steps
 
       - sleep 30
       - reboot
-      
-      ```
+
+    ```
 
 10. Verify that your new Edge host is visible in Palette.
-   

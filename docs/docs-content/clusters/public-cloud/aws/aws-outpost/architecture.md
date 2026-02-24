@@ -7,18 +7,19 @@ tags: ["public cloud", "aws", "aws outpost"]
 sidebar_position: 30
 ---
 
-Palette allows you to use an AWS Outpost server at Edge. 
+Palette allows you to use an AWS Outpost server at Edge.
 
 These are some of the architectural highlights when using Palette to manage your AWS Outpost.
 
 ## Operating System Compatability
 
-Palette only supports Ubuntu with AWS Outpost. 
+Palette only supports Ubuntu with AWS Outpost.
 
 ## Supported Edge Hosts
 
-Palette allows you to set up your AWS Outpost as an edge host. You must register your edge hosts with Palette before you can add them to your node pools.
+Palette allows you to set up your AWS Outpost as an edge host. You must register your edge hosts with Palette before you
+can add them to your node pools.
 
-You can only use AWS Outpost as an edge host if you register it in [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md). Follow the steps in Follow the steps in [Configure Edge on AWS Outpost](./configure-edge-on-aws-outpost.md) to configure your edge host.
-
-
+You can only use AWS Outpost as an edge host if you register it in
+[Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md). Follow the steps in Follow the steps in
+[Configure Edge on AWS Outpost](./configure-edge-on-aws-outpost.md) to configure your edge host.
