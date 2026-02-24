@@ -29,7 +29,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5936 -->
 
 - Palette now supports configuring Day-1 and Day-2 resource requirements for `palette-controller-manager` and
-  `cluster-management-agent` pods through the `palette-agent-config` manifest, allowing users to increase cluster size.
+`cluster-management-agent` pods through the `palette-agent-config` manifest, allowing users to allocate additional resources to system components in large-scale clusters.
   Refer to our
   [Troubleshooting](../troubleshooting/cluster-deployment.md#scenario---insufficient-resources-for-palette-controller-manager-and-cluster-management-agent-pods)
   guide for more information.
