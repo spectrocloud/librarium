@@ -93,11 +93,12 @@ storage.
 | ---------------------- | ----------- | ---------------- | --------- |
 | Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
-Next, click **Add New Pack** to include the add-on layers.  Harbor is required to manage local registries for Edge clusters.
+Next, click **Add New Pack** to include the add-on layers. Harbor is required to manage local registries for Edge
+clusters.
 
-| **Pack Name**               | **Version** | **Registry**     | **Layer** |
-| --------------------------  | ----------- | ---------------- | --------- |
-| Habor Edge Native Config   | 1.1.2       | Palette Registry | Registry  |
+| **Pack Name**            | **Version** | **Registry**     | **Layer** |
+| ------------------------ | ----------- | ---------------- | --------- |
+| Habor Edge Native Config | 1.1.2       | Palette Registry | Registry  |
 
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
