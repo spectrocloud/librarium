@@ -1,15 +1,15 @@
 ---
 sidebar_label: "AWS Outposts"
 title: "AWS Outposts"
-description: "Learn about how Palette supports deployment of AWS Outpost."
-tags: ["public cloud", "aws", "aws outpost"]
+description: "Learn about how Palette supports deployment of AWS Outposts."
+tags: ["public cloud", "aws", "aws outposts"]
 hide_table_of_contents: false
 ---
 
 Palette supports installing Edge on
 [AWS Outposts](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html).
 
-AWS Outposts provide the benefits of an AWS-managed service while also allowing you access to locally-managed resources.
+AWS Outposts provides the benefits of an AWS-managed service while also allowing you access to locally managed resources.
 This decreases latency and allows for local data processing.
 
 Palette provides the ability to run an AWS Outpost server offline, bypassing the need to connect every seven days. It

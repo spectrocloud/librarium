@@ -1,9 +1,9 @@
 ---
 sidebar_label: "Architecture"
 title: "Architecture"
-description: "Learn about the architecture used for AWS Outpost."
+description: "Learn about the architecture used for AWS Outposts."
 hide_table_of_contents: false
-tags: ["public cloud", "aws", "aws outpost"]
+tags: ["public cloud", "aws", "aws outposts"]
 sidebar_position: 30
 ---
 
@@ -13,7 +13,7 @@ These are some of the architectural highlights when using Palette to manage your
 
 ## Limitations
 
-Palette only supports Ubuntu with AWS Outpost.
+Only Ubuntu is supported for AWS Outposts servers.
 
 ## Supported Edge Hosts
 

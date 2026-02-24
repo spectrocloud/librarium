@@ -1,25 +1,25 @@
 ---
-sidebar_label: "Configure Edge on AWS Outpost"
-title: "Configure Edge on AWS Outpost"
-description: "Learn how to configure AWS Outpost and install edge hosts to them."
+sidebar_label: "Configure Edge on AWS Outposts"
+title: "Configure Edge on AWS Outposts"
+description: "Learn how to configure AWS Outposts and install edge hosts to them."
 hide_table_of_contents: false
-tags: ["public cloud", "aws", "aws outpost"]
+tags: ["public cloud", "aws", "aws outposts"]
 sidebar_position: 30
 ---
 
-Palette supports creating and managing Kubernetes clusters deployed to an
-[AWS Outpost](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html) server. This document
-guides you on how to configure a Kubernetes cluster on AWS Outpost that is managed by Palette Edge.
+Palette supports creating and managing Kubernetes clusters deployed on an
+[AWS Outposts](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html) server. This document
+guides you through configuring a Kubernetes cluster on an AWS Outposts server that is managed by Palette Edge.
 
 ## Prerequisites
 
 You must order and
-[install an AWS Outpost server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html) at your
+[install an AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html) at your
 site before you can configure your Edge server.
 
-## Configure your AWS Outpost for Edge
+## Configure AWS Outposts for Edge
 
-Use the following steps to convert your AWS Outpost server to an Edge instance.
+Use the following steps to convert your AWS Outposts server to an Edge instance.
 
 1. Select your Outpost server and create a capacity task and remove any existing configured instances. Set the
    **Instance size** to `c61d.metal` and the **Instance quantity** to 1.
@@ -36,7 +36,7 @@ Use the following steps to convert your AWS Outpost server to an Edge instance.
    ```bash
 
    aws ec2 modify-subnet-attribute
-   --subnet-id subnet-xxxxxxxxxxxxxxxxx
+   --subnet-id <subnet-id>
    --enable-lni-at-device-index 1
 
    ```
@@ -47,16 +47,24 @@ To configure the Edge server on your Outpost server, perform the following steps
 
 1.  Select your AWS Outpost server and click
     [**Launch instance**](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#launch-instances).
-2.  In the **Application and OS Images (Amazon Machine Image)** section, select Ubuntu.
-3.  Verify that the Instance type is `c6id.metal`.
+2.  In the **Application and OS Images (Amazon Machine Image)** section, select **Ubuntu**.
+3.  Verify that the Instance type is **c6id.metal**.
 4.  Enter your security key pair.
 5.  In the **Network settings** section, click **Edit** then select the Outpost and Subnet that you created previously.
 6.  Expand the **Advanced network configuration** section and click **Add network interface**.
 7.  Ensure that the **Device index** is set to `1` and enter a name in the **Description** field.
 8.  Expand the **Advanced details** section.
-9.  Enter the following in the **User data - optional** section.
-
-        You must update the `write_files.content.network` section with your server's routes, the `write_files.content.stylus.site` section with your Palette Edge information, and the `write_files.content.stylus.stages` section with your login information.
+9.  Enter the following information in the **User data - optional** section.
+    Replace the following placeholders in the YAML file:
+    
+    * `<remote-network-cidr>` - The remote network's CIDR block.
+    * `<upstream-gateway-ip>` - The remote network's gateway IP address. 
+    * `<interface-ip-cidr>` -  The interface's static IP address.
+    * `<default-gateway-ip>` - The default gateway IP address.
+    * `<edge-token>` - The Palette Edge registration token.
+    * `<project-name>` - The AWS Outpost project name.
+    * `<username>` - The local username for the instance.
+    * `<password>` - The username's password. 
 
     ```yaml
 
@@ -75,20 +83,20 @@ To configure the Edge server on your Outpost server, perform the following steps
                 dhcp4-overrides:
                   use-routes: false
                 routes:
-                  - to: 172.25.1.0/24
-                    via: 172.25.220.1
-                  - to: 172.25.2.0/24
-                    via: 172.25.220.1
-                  - to: 172.25.3.0/24
-                    via: 172.25.220.1
+                  - to: <remote-network-cidr>
+                    via: <upstream-gateway-ip>
+                  - to: <remote-network-cidr>
+                    via: <upstream-gateway-ip>
+                  - to: <remote-network-cidr>
+                    via: <upstream-gateway-ip>
               ens2:
                 dhcp4: false
                 dhcp6: false
                 addresses:
-                  - 10.11.0.6/24
+                  - <interface-ip-cidr>
                 routes:
                   - to: 0.0.0.0/0
-                    via: 10.11.0.1
+                    via: <default-gateway-ip>
                     metric: 50
 
        - path: /opt/palette/user-data
@@ -98,18 +106,18 @@ To configure the Edge server on your Outpost server, perform the following steps
            #cloud-config
            stylus:
              site:
-               edgeHostToken: abc123def456ghi789jkl012mno345pqr678stu901vw
+               edgeHostToken: <edge-token>
                paletteEndpoint: api.spectrocloud.com
-               projectName: Outpost
+               projectName: <project-name>
              install:
                reboot: true
              stages:
                initramfs:
                  - users:
-                     kairos:
+                     <username>:
                        groups:
                          - sudo
-                       passwd: kairos
+                       passwd: <password>
 
     runcmd:
       - touch /var/log/cloud-init-userdata.log
@@ -146,4 +154,6 @@ To configure the Edge server on your Outpost server, perform the following steps
 
     ```
 
-10. Verify that your new Edge host is visible in Palette.
+## Validate your instance
+
+Log in to Palette and verify that your new Edge host is visible in the interface. 
