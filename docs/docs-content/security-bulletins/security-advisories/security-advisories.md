@@ -10,7 +10,7 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
-Refer to the [Archived Security Advisories](./archived-security-advisories.md) for a list of addressed security
+Refer to the [Archived Security Advisories](./archived-security-advisories.md) page for a list of addressed security
 advisories.
 
 ## Security Advisory 009 - crypto/tls TLS Session Resumption
