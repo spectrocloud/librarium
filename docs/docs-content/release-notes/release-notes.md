@@ -17,8 +17,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9977 -->
 
-- The internal Palette [Go versions](https://go.dev/doc/devel/release) have been upgraded to 1.24.12 and 1.25.7, depending on the component, addressing
-  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
+- The internal Palette [Go versions](https://go.dev/doc/devel/release) have been upgraded to 1.24.12 and 1.25.7,
+  depending on the component, addressing [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5353 -->
 
