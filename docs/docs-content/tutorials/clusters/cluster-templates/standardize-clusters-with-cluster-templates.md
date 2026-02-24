@@ -138,7 +138,7 @@ file before running any commands.
 `provider.tf` pins the Spectro Cloud provider to its registry source and sets a minimum version requirement. The
 `provider` block reads `var.palette_project` to target the correct Palette project.
 
-```hcl title="provider.tf" hideClipboard 
+```hcl title="provider.tf" hideClipboard
 terraform {
   required_providers {
     spectrocloud = {
