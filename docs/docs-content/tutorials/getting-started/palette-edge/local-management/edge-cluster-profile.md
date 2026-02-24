@@ -17,10 +17,10 @@ deployed to a cluster to provide core infrastructure functionality or customize 
 integrations.
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
-an application layer that you can access on your browser. You will learn about cluster profile layers and how to reference
-the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After creating the
-cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
-installation on your host and use it as a node for deploying your first Edge cluster.
+an application layer that you can access on your browser. You will learn about cluster profile layers and how to
+reference the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After
+creating the cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap
+the Edge installation on your host and use it as a node for deploying your first Edge cluster.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
 
@@ -33,11 +33,12 @@ installation on your host and use it as a node for deploying your first Edge clu
 
 ## Create Cluster Profile
 
-Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left main menu. Click **Add Cluster Profile** to create your cluster profile.
+Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left main menu. Click **Add
+Cluster Profile** to create your cluster profile.
 
-Follow the wizard to create a new profile. In the **Basic Information** section, assign `local-edge-profile` as the name, and
-provide a brief profile description. Set the type as **Full** and add the tag `env:edge`. You may leave the version
-empty, but note that the version defaults to `1.0.0` if not specified. Click **Next** to continue.
+Follow the wizard to create a new profile. In the **Basic Information** section, assign `local-edge-profile` as the
+name, and provide a brief profile description. Set the type as **Full** and add the tag `env:edge`. You may leave the
+version empty, but note that the version defaults to `1.0.0` if not specified. Click **Next** to continue.
 
 The **Cloud Type** section allows you to choose the infrastructure provider for the cluster. Select **Edge Native** and
 click **Next**.
@@ -85,18 +86,19 @@ Click **Next Layer** to add the network layer. This tutorial uses Cilium as the 
 
 Click **Confirm** once you have completed adding all core layers.
 
-Next, click **Add New Pack** to include the add-on layers. The Local Path Provisioner is needed to configure local storage.
+Next, click **Add New Pack** to include the add-on layers. The Local Path Provisioner is needed to configure local
+storage.
 
-| **Pack Name**               | **Version** | **Registry**     | **Layer** |
-| --------------------------  | ----------- | ---------------- | --------- |
-| Local Path Provisioner      | 0.0.32      | Palette Registry | Storage   |
+| **Pack Name**          | **Version** | **Registry**     | **Layer** |
+| ---------------------- | ----------- | ---------------- | --------- |
+| Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
-Next, click **Add New Pack** to include the add-on layers.  Harbor is required to manage local registries for Edge clusters.
+Next, click **Add New Pack** to include the add-on layers. Harbor is required to manage local registries for Edge
+clusters.
 
-| **Pack Name**               | **Version** | **Registry**     | **Layer** |
-| --------------------------  | ----------- | ---------------- | --------- |
-| Habor Edge Native Config.   | 1.1.2       | Palette Registry | Registry  |
-
+| **Pack Name**             | **Version** | **Registry**     | **Layer** |
+| ------------------------- | ----------- | ---------------- | --------- |
+| Habor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
 
 Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
 cluster profile.
