@@ -517,8 +517,28 @@ tests/azure.tftest.hcl... pass
 Success! 2 passed, 0 failed.
 ```
 
-Run `terraform plan` to preview the changes Terraform will make. This also confirms that Terraform can authenticate to
-Palette and that your project exists.
+### Create a Maintenance Policy
+
+`maintenance_policy.tf` defines a
+[maintenance policy](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) that controls
+when Palette schedules upgrades for clusters managed by the cluster template. The policy runs every Sunday at midnight
+UTC with a four hour upgrade window.
+
+```hcl title="maintenance_policy.tf"
+resource "spectrocloud_cluster_config_policy" "maintenance" {
+  name    = "tf-maintenance-policy"
+  context = "project"
+
+  schedules {
+    name         = "weekly-sunday"
+    start_cron   = "0 0 * * SUN"
+    duration_hrs = 4
+  }
+}
+```
+
+With both the cluster profile and maintenance policy defined, run `terraform plan` to preview the changes Terraform will
+make. This also confirms that Terraform can authenticate to Palette and that your project exists.
 
 ```bash
 terraform plan
@@ -529,16 +549,19 @@ data.spectrocloud_project.current: Reading...
 data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
 ...
 
+  # spectrocloud_cluster_config_policy.maintenance will be created
+  + resource "spectrocloud_cluster_config_policy" "maintenance" { ... }
+
   # spectrocloud_cluster_profile.aws_profile[0] will be created
   + resource "spectrocloud_cluster_profile" "aws_profile" { ... }
 
-Plan: 1 to add, 0 to change, 0 to destroy.
+Plan: 2 to add, 0 to change, 0 to destroy.
 ```
 
 If `Read complete` appears in the output, Terraform successfully authenticated and found your Palette project. A plan of
-`1 to add` confirms the cluster profile is ready to be created.
+`2 to add` confirms both resources are ready to be created.
 
-Apply the configuration to create the cluster profile in Palette.
+Apply the configuration to create the cluster profile and maintenance policy in Palette.
 
 ```bash
 terraform apply -auto-approve
@@ -547,8 +570,10 @@ terraform apply -auto-approve
 ```bash hideClipboard title="Expected output"
 spectrocloud_cluster_profile.aws_profile[0]: Creating...
 spectrocloud_cluster_profile.aws_profile[0]: Creation complete after Xs [id=<profile-id>]
+spectrocloud_cluster_config_policy.maintenance: Creating...
+spectrocloud_cluster_config_policy.maintenance: Creation complete after Xs [id=<policy-id>]
 
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
 Confirm the cluster profile was created correctly in Palette.
@@ -559,7 +584,12 @@ Confirm the cluster profile was created correctly in Palette.
 4. Review its pack layers to confirm they match the configuration.
 5. Select the **Variables** tab and confirm that a variable named `app_replicas` is listed.
 
-### Create a Cluster Template Policy (Maintenance)
+Confirm the maintenance policy was created correctly in Palette.
+
+1. From the left **Main Menu**, select **Cluster Configurations**.
+2. On the **Policies** tab, locate the policy named `tf-maintenance-policy`.
+3. Select it and confirm the schedule shows a weekly window starting every Sunday at midnight UTC with a four hour
+   duration.
 
 ### Create a Cluster Template
 
