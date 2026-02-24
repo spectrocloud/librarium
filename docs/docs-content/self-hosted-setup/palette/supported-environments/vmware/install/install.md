@@ -18,7 +18,3 @@ keywords: ["self-hosted", "install", "vmware", "cli"]
 
 <PartialsComponent category="self-hosted" name="introduction-palette-vmware-kubernetes-versions" version="Palette" />
 <PartialsComponent category="self-hosted" name="palette-vmware-kubernetes-versions" />
-
-## Proxy Requirements
-
-<PartialsComponent category="self-hosted" name="required-domains" version="Palette" />

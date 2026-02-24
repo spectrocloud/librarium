@@ -66,7 +66,3 @@ distribution OVA.
 
 </TabItem>
 </Tabs>
-
-## Proxy Requirements
-
-<PartialsComponent category="self-hosted" name="required-domains" version="Palette" />

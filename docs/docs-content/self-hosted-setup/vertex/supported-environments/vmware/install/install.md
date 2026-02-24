@@ -28,7 +28,3 @@ keywords: ["self-hosted", "vertex", "install", "vmware", "cli"]
   version="Palette VerteX"
 />
 <PartialsComponent category="self-hosted" name="palette-vmware-kubernetes-versions" />
-
-## Proxy Requirements
-
-<PartialsComponent category="self-hosted" name="required-domains" version="Palette VerteX" />

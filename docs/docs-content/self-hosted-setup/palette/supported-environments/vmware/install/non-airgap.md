@@ -48,7 +48,7 @@ keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 
 ## Validate
 
-<PartialsComponent category="self-hosted" name="install-vmware-non-airgap-validation" />
+<PartialsComponent category="self-hosted" name="install-vmware-validation" />
 
 ## Next Steps
 
