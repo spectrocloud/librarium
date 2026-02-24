@@ -9,9 +9,4 @@ tags: ["self-hosted", "vmware", "non-airgap"]
 keywords: ["self-hosted", "vmware", "non-airgap"]
 ---
 
-:::info
-
-No prior setup is necessary for non-airgap installations. For system prerequisites, refer to the installation
-Prerequisites.
-
-:::
+<PartialsComponent category="self-hosted" name="set-up-vmware-non-airgap" edition="palette" />

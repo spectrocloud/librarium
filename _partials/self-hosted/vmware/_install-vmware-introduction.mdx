@@ -1,0 +1,10 @@
+---
+partial_category: self-hosted
+partial_name: install-vmware-introduction
+---
+{props.version} is available as a self-hosted application that you install in your environment. Refer to the table below to learn more about the available installation modes.
+
+| **Environment**| **Method** | **Description**                                                                                              | **Install Guide**                                                                                                                                        |
+| --------------| -----------| ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| Airgap        | Palette CLI| Install {props.version} in VMware environment using your own Open Container Initiative (OCI) registry server.| <PaletteVertexUrlMapper edition={props.edition} text={`Install Airgap ${props.version}`} url="/supported-environments/vmware/install/airgap"/>.        |
+| Non-airgap    | Palette CLI| Install {props.version} in VMware environment.                                                               | <PaletteVertexUrlMapper edition={props.edition} text={`Install Non-Airgap ${props.version}`} url="/supported-environments/vmware/install/non-airgap"/>.|

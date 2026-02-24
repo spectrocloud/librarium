@@ -9,7 +9,7 @@ tags: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 keywords: ["self-hosted", "vertex", "vmware", "non-airgap", "cli"]
 ---
 
-<PartialsComponent category="self-hosted" name="install-non-airgap-introduction" version="Palette VerteX" />
+<PartialsComponent category="self-hosted" name="install-vmware-non-airgap-introduction" version="Palette VerteX" />
 
 ## Prerequisites
 
@@ -28,6 +28,12 @@ pull packs and images from the registry. The Palette CLI will prompt you to prov
 necessary.
 
 :::
+
+<PartialsComponent
+  category="self-hosted"
+  name="required-domains"
+  version="Palette VerteX"
+/>
 
 <PartialsComponent
   category="self-hosted"
@@ -65,7 +71,7 @@ necessary.
 
 ## Validate
 
-<PartialsComponent category="self-hosted" name="install-non-airgap-validation" />
+<PartialsComponent category="self-hosted" name="install-vmware-validation" />
 
 ## Next Steps
 

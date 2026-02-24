@@ -42,8 +42,7 @@ The next sections describe specific requirements for installing Palette VerteX.
 <PartialsComponent
   category="self-hosted"
   name="size-guidelines-helm-cli"
-  edition="VerteX"
-  app="VerteX Management Appliance"
+  version="Palette VerteX"
 />
 
 ## Kubernetes Requirements
@@ -74,4 +73,4 @@ distribution OVA.
 
 ## Proxy Requirements
 
-<PartialsComponent category="self-hosted" name="required-domains" edition="VerteX" />
+<PartialsComponent category="self-hosted" name="required-domains" version="Palette VerteX" />
