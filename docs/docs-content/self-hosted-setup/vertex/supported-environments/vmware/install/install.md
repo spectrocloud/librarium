@@ -27,4 +27,4 @@ keywords: ["self-hosted", "vertex", "install", "vmware", "cli"]
   name="introduction-palette-vmware-kubernetes-versions"
   version="Palette VerteX"
 />
-<PartialsComponent category="self-hosted" name="palette-vmware-kubernetes-versions" />
+<PartialsComponent category="vertex" name="palette-vmware-kubernetes-versions" />
