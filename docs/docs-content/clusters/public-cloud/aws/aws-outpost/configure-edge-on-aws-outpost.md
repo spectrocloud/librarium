@@ -54,17 +54,17 @@ To configure the Edge server on your Outpost server, perform the following steps
 6.  Expand the **Advanced network configuration** section and click **Add network interface**.
 7.  Ensure that the **Device index** is set to `1` and enter a name in the **Description** field.
 8.  Expand the **Advanced details** section.
-9.  Enter the following information in the **User data - optional** section.
-    Replace the following placeholders in the YAML file:
-    
-    * `<remote-network-cidr>` - The remote network's CIDR block.
-    * `<upstream-gateway-ip>` - The remote network's gateway IP address. 
-    * `<interface-ip-cidr>` -  The interface's static IP address.
-    * `<default-gateway-ip>` - The default gateway IP address.
-    * `<edge-token>` - The Palette Edge registration token.
-    * `<project-name>` - The AWS Outpost project name.
-    * `<username>` - The local username for the instance.
-    * `<password>` - The username's password. 
+9.  Enter the following information in the **User data - optional** section. Replace the following placeholders in the
+    YAML file:
+
+    - `<remote-network-cidr>` - The remote network's CIDR block.
+    - `<upstream-gateway-ip>` - The remote network's gateway IP address.
+    - `<interface-ip-cidr>` - The interface's static IP address.
+    - `<default-gateway-ip>` - The default gateway IP address.
+    - `<edge-token>` - The Palette Edge registration token.
+    - `<project-name>` - The AWS Outpost project name.
+    - `<username>` - The local username for the instance.
+    - `<password>` - The username's password.
 
     ```yaml
 
@@ -156,4 +156,4 @@ To configure the Edge server on your Outpost server, perform the following steps
 
 ## Validate your instance
 
-Log in to Palette and verify that your new Edge host is visible in the interface. 
+Log in to Palette and verify that your new Edge host is visible in the interface.
