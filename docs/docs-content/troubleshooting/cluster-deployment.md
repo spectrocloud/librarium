@@ -14,12 +14,13 @@ The following steps will help you troubleshoot errors in the event issues arise 
 
 Palette deploys system components such as `palette-controller-manager` and `cluster-management-agent` to each workload
 cluster. These components have default resource limits that are sufficient for most workloads. However, clusters with a
-large number of nodes, packs, or workloads can cause these components to exceed their limits, resulting in
-`OOMKilled` errors and `CrashLoopBackOff` states.
+large number of nodes, packs, or workloads can cause these components to exceed their limits, resulting in `OOMKilled`
+errors and `CrashLoopBackOff` states.
 
 Beginning with Palette version 4.8.x, you can add the `palette-agent-config` manifest pack as an add-on layer to adjust
-resource requirements for these system components. When this pack is included in a cluster profile, Palette installs it before
-all other packs, ensuring that the updated resource configuration is in place before resource-intensive workloads begin.
+resource requirements for these system components. When this pack is included in a cluster profile, Palette installs it
+before all other packs, ensuring that the updated resource configuration is in place before resource-intensive workloads
+begin.
 
 ### Debug Steps
 
@@ -34,17 +35,17 @@ all other packs, ensuring that the updated resource configuration is in place be
 
 5.  In the **Layer name** field, enter `palette-agent-config`.
 
-     :::warning
-     
-     The manifest layer must be named `palette-agent-config` verbatim; otherwise, Palette does not assign the layer special install priority.
-     
+    :::warning
+
+    The manifest layer must be named `palette-agent-config` verbatim; otherwise, Palette does not assign the layer
+    special install priority.
+
     :::
 
-
-7.  Select **New manifest**. Assign an applicable name to the manifest and select the blue check mark. An empty editor
+6.  Select **New manifest**. Assign an applicable name to the manifest and select the blue check mark. An empty editor
     displays on the right side of the screen.
 
-8.  Paste the following YAML into the editor. The snippet displays the default resource requirements for the
+7.  Paste the following YAML into the editor. The snippet displays the default resource requirements for the
     `cluster-management-agent` pod and the `manager` container in the `palette-controller-manager` pod. Adjust the
     resource `requests` and `limits` according to your cluster requirements.
 
@@ -79,11 +80,11 @@ all other packs, ensuring that the updated resource configuration is in place be
         }
     ```
 
-9.  Select **Confirm & Create** to save the manifest.
+8.  Select **Confirm & Create** to save the manifest.
 
-10. Select **Save Changes** to create or update the cluster profile.
+9.  Select **Save Changes** to create or update the cluster profile.
 
-11. Use the cluster profile to deploy a new cluster or
+10. Use the cluster profile to deploy a new cluster or
     [update an existing cluster](../clusters/cluster-management/cluster-updates.md).
 
     When Palette deploys a new cluster, it installs the `palette-agent-config` manifest pack first before downloading
@@ -92,7 +93,7 @@ all other packs, ensuring that the updated resource configuration is in place be
     requirements, it deletes the existing `cluster-management-agent` and `palette-controller-manager` pods and deploys
     new pods with the updated values.
 
-12. To verify your cluster is using the latest resources requirements,
+11. To verify your cluster is using the latest resources requirements,
     [connect to your cluster using the kubectl CLI](../clusters/cluster-management/palette-webctl.md), and issue the
     following command. Replace `<cluster-namespace>` with the namespace of your cluster.
 
