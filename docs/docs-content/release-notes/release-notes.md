@@ -36,7 +36,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-7658 -->
 
 - Fixed an issue that caused the [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) to
-  shut down edge hosts without confirmation when the user presses F12.
+  shut down Edge hosts without confirmation when the user presses **F12**.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8166 -->
 
