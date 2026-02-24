@@ -895,7 +895,8 @@ The component will automatically prefix the path to the URL. The component has t
 
 - `edition` - The edition of the URL. This can be either `Palette` or `Vertex`. Internally, the component will use this
   value to determine the base URL.
-- `text` - The text to display for the link. To include a property value, wrap the text in `{``}` and insert the property using `${props.field}`.
+- `text` - The text to display for the link. To include a property value, wrap the text in `{``}` and insert the
+  property using `${props.field}`.
 - `url` - The path to append to the base URL.
 
 Below is an example of how to use the component:
@@ -913,11 +914,11 @@ Below is an example of how to use the component:
 Below is an example of how to use the component when you want the link text to include a property value:
 
 ```mdx
-  <PaletteVertexUrlMapper
-    edition={props.edition}
-    text={`Install Airgap ${props.version}`}
-    url="/supported-environments/vmware/install/airgap"
-  />
+<PaletteVertexUrlMapper
+  edition={props.edition}
+  text={`Install Airgap ${props.version}`}
+  url="/supported-environments/vmware/install/airgap"
+/>
 ```
 
 In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
