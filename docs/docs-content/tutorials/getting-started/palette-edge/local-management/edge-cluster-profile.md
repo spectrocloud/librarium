@@ -105,8 +105,10 @@ storage.
 | ---------------------- | ----------- | ---------------- | --------- |
 | Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
-Next, click **Add New Pack** to include the add-on layers.  Harbor is required to manage local registries for Edge clusters.
+Next, click **Add New Pack** to include the add-on layers. Harbor is required to manage local registries for Edge
+clusters.
 
+<<<<<<< HEAD
 
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
@@ -114,6 +116,11 @@ Next, click **Add New Pack** to include the add-on layers.  Harbor is required t
 
 Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
 cluster profile.
+=======
+| **Pack Name**            | **Version** | **Registry**     | **Layer** |
+| ------------------------ | ----------- | ---------------- | --------- |
+| Habor Edge Native Config | 1.1.2       | Palette Registry | Registry  |
+>>>>>>> d54db7b578298170f865fb22408a2503357fca0f
 
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
