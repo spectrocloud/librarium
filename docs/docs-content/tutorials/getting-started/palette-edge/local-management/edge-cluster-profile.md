@@ -24,9 +24,9 @@ the Edge installation on your host and use it as a node for deploying your first
 
 For this tutorial, you will build a cluster profile that has the following packs.
 
-| **Pack Name**            | **Version** | **Registry**               | 
-| ------------------------ | ----------- | -------------------------- | 
-| BYOS Edge OS             | 2.1.0       | Palette Registry           | 
+| **Pack Name**            | **Version** | **Registry**               |
+| ------------------------ | ----------- | -------------------------- |
+| BYOS Edge OS             | 2.1.0       | Palette Registry           |
 | Palette Optimized K3s    | 1.32.3      | Palette Registry           |
 | Cilium                   | 1.18.4      | Palette Registry           |
 | Local Path Provisioner   | 0.0.32      | Palette Registry           |
@@ -115,12 +115,10 @@ clusters.
 | Habor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
 
 Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
-cluster profile.
-=======
-| **Pack Name**            | **Version** | **Registry**     | **Layer** |
-| ------------------------ | ----------- | ---------------- | --------- |
-| Habor Edge Native Config | 1.1.2       | Palette Registry | Registry  |
->>>>>>> d54db7b578298170f865fb22408a2503357fca0f
+cluster profile. ======= | **Pack Name** | **Version** | **Registry** | **Layer** | | ------------------------ |
+----------- | ---------------- | --------- | | Habor Edge Native Config | 1.1.2 | Palette Registry | Registry |
+
+> > > > > > > d54db7b578298170f865fb22408a2503357fca0f
 
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
