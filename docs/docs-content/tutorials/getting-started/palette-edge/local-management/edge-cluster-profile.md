@@ -17,7 +17,7 @@ deployed to a cluster to provide core infrastructure functionality or customize 
 integrations.
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
-an application layer that you can access on your browser. You will learn about cluster profile layers and how to
+a demo application that you can access on your browser. You will learn about cluster profile layers and how to
 reference the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After
 creating the cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap
 the Edge installation on your host and use it as a node for deploying your first Edge cluster.
@@ -31,10 +31,10 @@ For this tutorial, you will build a cluster profile that has the following packs
 | Cilium                   | 1.18.4      | Palette Registry           |
 | Local Path Provisioner   | 0.0.32      | Palette Registry           |
 | Habor Edge Native Config | 1.1.2       | Palette Registry           |
-| MetalLB (Helm)           | 0.14.9      | Palette Registry           |
-| Hello Universe           | 1.3.0       | Palette Community Registry |
+| MetalLB (Helm)           | 0.15.3      | Palette Registry           |
+| Hello Universe           | 1.3.1       | Palette Community Registry |
 
-![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
+***Placeholder image - architectural diagram***
 
 ## Prerequisites
 
@@ -75,7 +75,7 @@ with the address of the provider image you pushed to the registry. For example, 
 
 The following image displays the OS layer with the custom manifest and registry credentials.
 
-![A screenshot of the cluster profile creation step with the OS layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
+***Placeholder -A screenshot of the cluster profile creation step with the OS layer.***
 
 Click **Next Layer** to continue. Add the following Kubernetes layer to your cluster profile. Ensure the Kubernetes
 version matches the version used in the provider images.
@@ -84,11 +84,11 @@ version matches the version used in the provider images.
 | --------------------- | ----------- | ---------------- | ---------- |
 | Palette Optimized K3s | 1.32.3      | Palette Registry | Kubernetes |
 
-Under **Pack Details**, select **Values** and replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they
+Under **Pack Details**, select **Values** and for the `cluster.config.kube-apiserver-arg` setting `enable-admission-plugins` remove `AlwaysPullImages`. This setting is not supported for locally managed clusters. Additionally, if needed, replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they
 overlap with the host network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to
 `"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
 
-![A screenshot of the cluster profile creation step with the Kubernetes layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-k8s.webp)
+***A screenshot of the cluster profile creation step with the Kubernetes layer.***
 
 Click **Next Layer** to add the network layer. This tutorial uses Cilium as the example network layer.
 
@@ -98,54 +98,26 @@ Click **Next Layer** to add the network layer. This tutorial uses Cilium as the 
 
 Click **Confirm** once you have completed adding all core layers.
 
-Next, click **Add New Pack** to include the add-on layers. The Local Path Provisioner is needed to configure local
+Next, click **Add New Pack** to include the add-on layers. Search for `Local Path` and add the following pack to your cluster profile. The Local Path Provisioner is needed to configure local
 storage.
 
 | **Pack Name**          | **Version** | **Registry**     | **Layer** |
 | ---------------------- | ----------- | ---------------- | --------- |
 | Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
-Next, click **Add New Pack** to include the add-on layers. Harbor is required to manage local registries for Edge
+Next, click **Add New Pack** to include the add-on layers. Search for `Harbor` and add the following pack to your cluster profile. Harbor is required to manage local registries for Edge
 clusters.
 
-<<<<<<< HEAD
-
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
 | Habor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
 
-Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
-cluster profile. ======= | **Pack Name** | **Version** | **Registry** | **Layer** | | ------------------------ |
------------ | ---------------- | --------- | | Habor Edge Native Config | 1.1.2 | Palette Registry | Registry |
-
-> > > > > > > d54db7b578298170f865fb22408a2503357fca0f
-
-| **Pack Name**             | **Version** | **Registry**     | **Layer** |
-| ------------------------- | ----------- | ---------------- | --------- |
-| Habor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
-
-Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
+Next, click **Add New Pack** to include the add-on layers. Search for `Hello Universe` and add the following pack to your
 cluster profile.
 
-| **Pack Name**  | **Version** | **Registry**     | **Layer**     |
-| -------------- | ----------- | ---------------- | ------------- |
-| MetalLB (Helm) | 0.14.9      | Palette Registry | Load Balancer |
-
-The MetalLB pack implements a load balancer for your Edge Kubernetes cluster. It is required to help the `LoadBalancer`
-service specified in the Hello Universe pack obtain an IP address so that you can access the demo application from your
-browser.
-
-Under **Pack Details**, select **Values** and replace the default `192.168.10.0/24` IP CIDR listed under the `addresses`
-field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
-your cluster profile.
-
-![A screenshot of the cluster profile creation step with the MetalLB layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_profile-metallb.webp)
-
-Finally, click **Add New Pack** again and search for the Hello Universe pack.
-
-| **Pack Name**  | **Version** | **Registry**               | **Layer**   |
-| -------------- | ----------- | -------------------------- | ----------- |
-| Hello Universe | 1.3.0       | Palette Community Registry | Application |
+| **Pack Name**             | **Version** | **Registry**     | **Layer** |
+| ------------------------- | ----------- | ---------------- | --------- |
+| Hello Universe | 1.3.1       | Palette Community Registry | Registry  |
 
 Once you select the pack, Palette displays its README file, providing additional guidance on usage and configuration
 options. This pack deploys the [hello-universe](https://github.com/spectrocloud/hello-universe) demo application.
@@ -186,12 +158,76 @@ dbPassword: "cGFzc3dvcmQ="
 authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 ```
 
-![A screenshot of the cluster profile creation step with the Hello Universe layer.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-hellouni.webp)
+***A screenshot of the cluster profile creation step with the Hello Universe layer.***
+
+Finally, click **Add New Pack** again, search for `MetalLB`, and add the following pack to your
+cluster profile.
+
+| **Pack Name**  | **Version** | **Registry**     | **Layer**     |
+| -------------- | ----------- | ---------------- | ------------- |
+| MetalLB (Helm) | 0.15.3      | Palette Registry | Load Balancer |
+
+The MetalLB pack implements a load balancer for your Edge Kubernetes cluster. It is required to help the `LoadBalancer`
+service specified in the Hello Universe pack obtain an IP address so that you can access the demo application from your
+browser.
+
+Under **Pack Details**, select **Values** and replace the default `192.168.10.0/24` IP CIDR listed under the `addresses`
+field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
+your cluster profile.
+
+***A screenshot of the cluster profile creation step with the MetalLB layer.***
 
 Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
 
 Click **Next** to proceed. If there are no compatibility issues, Palette displays the cluster profile for review. Verify
 that the layers you added are correct, and click **Finish Configuration** to create the cluster profile.
+
+With the cluster profile created, it will now need to be exported into a compressed `.tgz` file. You will need to download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli). 
+
+```shell
+# Example: download a specific version (replace with the version you need)
+VERSION=<palette-edge-cli-version>
+wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
+chmod +x palette-edge
+```
+
+
+```shell
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Prompt for variables
+read -rsp "Enter API key: " apikey #hide the API when entered in
+echo
+read -rp "Enter Project UID: " projectuid
+read -rp "Enter Profile UID: " profileuid
+read -rp "Palette API endpoint [https://api.spectrocloud.com]: " apiendpoint
+read -rp "Enter custom tag (used for naming): " custom_tag
+
+# Default endpoint if empty
+apiendpoint=${apiendpoint:-https://api.spectrocloud.com}
+
+echo
+echo "Building content bundle..."
+echo "  Cluster definition: ${custom_tag}-cluster-definition"
+echo "  Output file:        ${custom_tag}-content-bundle"
+echo
+
+./palette-edge build \
+  --api-key "$apikey" \
+  --project-id "$projectuid" \
+  --cluster-profile-ids "$profileuid" \
+  --cluster-definition-profile-ids "$profileuid" \
+  --palette-endpoint "$apiendpoint" \
+  --cluster-definition-name "${custom_tag}-cluster-definition" \
+  --outfile "${custom_tag}-content-bundle" \
+  --include-palette-content
+
+echo
+echo "Done ✅"
+```
+
 
 ## Next Steps
 
