@@ -39,18 +39,16 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2133 -->
 
-- Fixed an issue that caused the Terraform provider to fail to reconcile when updating cluster profiles with a different
-  [infrastructure cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
+- Fixed an issue that caused the Terraform provider to fail to reconcile when replacing an
+  [infrastructure cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) on a cluster.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-100 -->
 
-- Fixed an issue that caused the versions dropdown list to incorrectly float on the
-  [Artifact Studio](../downloads/artifact-studio.md) UI.
+- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused expanded version drop-down menus to float when scrolling.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-101 -->
 
-- Fixed an issue that caused pack sizes to be incorrectly reported as 0 GB in the
-  [Artifact Studio](../downloads/artifact-studio.md) UI.
+- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused pack sizes to be incorrectly reported as 0 GB.
 
 ### Packs
 
