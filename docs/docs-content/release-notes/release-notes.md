@@ -11,6 +11,15 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 25, 2026 - Release 4.6.49
+
+### Improvements
+
+- The internal Palette Nginx controller has been upgraded to v1.13.7 to address multiple Nginx ingress vulnerabilities.
+  Refer to
+  [Security Advisory 008- Nginx ingress Vulnerabilities](../security-bulletins/security-advisories/security-advisories.md#security-advisory-008--nginx-ingress-vulnerabilities)
+  for further information.
+
 ## September 29, 2025 - Release 4.6.45
 
 ### Breaking Changes
