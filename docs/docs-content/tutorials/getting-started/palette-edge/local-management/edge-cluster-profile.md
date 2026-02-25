@@ -17,10 +17,10 @@ deployed to a cluster to provide core infrastructure functionality or customize 
 integrations.
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
-a demo application that you can access on your browser. You will learn about cluster profile layers and how to
-reference the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After
-creating the cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap
-the Edge installation on your host and use it as a node for deploying your first Edge cluster.
+a demo application that you can access on your browser. You will learn about cluster profile layers and how to reference
+the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After creating the
+cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
+installation on your host and use it as a node for deploying your first Edge cluster.
 
 For this tutorial, you will build a cluster profile that has the following packs.
 
@@ -34,7 +34,7 @@ For this tutorial, you will build a cluster profile that has the following packs
 | MetalLB (Helm)           | 0.15.3      | Palette Registry           |
 | Hello Universe           | 1.3.1       | Palette Community Registry |
 
-***Placeholder image - architectural diagram***
+**_Placeholder image - architectural diagram_**
 
 ## Prerequisites
 
@@ -75,7 +75,7 @@ with the address of the provider image you pushed to the registry. For example, 
 
 The following image displays the OS layer with the custom manifest and registry credentials.
 
-***Placeholder -A screenshot of the cluster profile creation step with the OS layer.***
+**_Placeholder -A screenshot of the cluster profile creation step with the OS layer._**
 
 Click **Next Layer** to continue. Add the following Kubernetes layer to your cluster profile. Ensure the Kubernetes
 version matches the version used in the provider images.
@@ -84,11 +84,13 @@ version matches the version used in the provider images.
 | --------------------- | ----------- | ---------------- | ---------- |
 | Palette Optimized K3s | 1.32.3      | Palette Registry | Kubernetes |
 
-Under **Pack Details**, select **Values** and for the `cluster.config.kube-apiserver-arg` setting `enable-admission-plugins` remove `AlwaysPullImages`. This setting is not supported for locally managed clusters. Additionally, if needed, replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they
-overlap with the host network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to
-`"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
+Under **Pack Details**, select **Values** and for the `cluster.config.kube-apiserver-arg` setting
+`enable-admission-plugins` remove `AlwaysPullImages`. This setting is not supported for locally managed clusters.
+Additionally, if needed, replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they overlap with the host
+network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to `"100.64.64.0/18"`. This
+prevents any routing conflicts in the internal pod networking.
 
-***A screenshot of the cluster profile creation step with the Kubernetes layer.***
+**_A screenshot of the cluster profile creation step with the Kubernetes layer._**
 
 Click **Next Layer** to add the network layer. This tutorial uses Cilium as the example network layer.
 
@@ -98,25 +100,25 @@ Click **Next Layer** to add the network layer. This tutorial uses Cilium as the 
 
 Click **Confirm** once you have completed adding all core layers.
 
-Next, click **Add New Pack** to include the add-on layers. Search for `Local Path` and add the following pack to your cluster profile. The Local Path Provisioner is needed to configure local
-storage.
+Next, click **Add New Pack** to include the add-on layers. Search for `Local Path` and add the following pack to your
+cluster profile. The Local Path Provisioner is needed to configure local storage.
 
 | **Pack Name**          | **Version** | **Registry**     | **Layer** |
 | ---------------------- | ----------- | ---------------- | --------- |
 | Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
-Next, click **Add New Pack** to include the add-on layers. Search for `Harbor` and add the following pack to your cluster profile. Harbor is required to manage local registries for Edge
-clusters.
+Next, click **Add New Pack** to include the add-on layers. Search for `Harbor` and add the following pack to your
+cluster profile. Harbor is required to manage local registries for Edge clusters.
 
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
 | Habor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
 
-Next, click **Add New Pack** to include the add-on layers. Search for `Hello Universe` and add the following pack to your
-cluster profile.
+Next, click **Add New Pack** to include the add-on layers. Search for `Hello Universe` and add the following pack to
+your cluster profile.
 
-| **Pack Name**             | **Version** | **Registry**     | **Layer** |
-| ------------------------- | ----------- | ---------------- | --------- |
+| **Pack Name**  | **Version** | **Registry**               | **Layer** |
+| -------------- | ----------- | -------------------------- | --------- |
 | Hello Universe | 1.3.1       | Palette Community Registry | Registry  |
 
 Once you select the pack, Palette displays its README file, providing additional guidance on usage and configuration
@@ -158,10 +160,9 @@ dbPassword: "cGFzc3dvcmQ="
 authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 ```
 
-***A screenshot of the cluster profile creation step with the Hello Universe layer.***
+**_A screenshot of the cluster profile creation step with the Hello Universe layer._**
 
-Finally, click **Add New Pack** again, search for `MetalLB`, and add the following pack to your
-cluster profile.
+Finally, click **Add New Pack** again, search for `MetalLB`, and add the following pack to your cluster profile.
 
 | **Pack Name**  | **Version** | **Registry**     | **Layer**     |
 | -------------- | ----------- | ---------------- | ------------- |
@@ -175,14 +176,15 @@ Under **Pack Details**, select **Values** and replace the default `192.168.10.0/
 field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
 your cluster profile.
 
-***A screenshot of the cluster profile creation step with the MetalLB layer.***
+**_A screenshot of the cluster profile creation step with the MetalLB layer._**
 
 Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
 
 Click **Next** to proceed. If there are no compatibility issues, Palette displays the cluster profile for review. Verify
 that the layers you added are correct, and click **Finish Configuration** to create the cluster profile.
 
-With the cluster profile created, it will now need to be exported into a compressed `.tgz` file. You will need to download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli). 
+With the cluster profile created, it will now need to be exported into a compressed `.tgz` file. You will need to
+download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).
 
 ```shell
 # Example: download a specific version (replace with the version you need)
@@ -190,7 +192,6 @@ VERSION=<palette-edge-cli-version>
 wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
 chmod +x palette-edge
 ```
-
 
 ```shell
 #!/usr/bin/env bash
@@ -227,7 +228,6 @@ echo
 echo
 echo "Done ✅"
 ```
-
 
 ## Next Steps
 
