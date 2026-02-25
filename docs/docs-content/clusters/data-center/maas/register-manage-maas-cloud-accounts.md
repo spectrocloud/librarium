@@ -20,8 +20,8 @@ additional cloud accounts that reference specific PCGs.
   Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the
   [PCG Architecture](../../pcg/architecture.md#pcg-deployment-options) page.
 
-- An active [MAAS API key](https://maas.io/docs/api) which can be generated in the MAAS web console under **My
-  Preferences**, and selecting **API keys**.
+- An active [MAAS API key](https://canonical.com/maas/docs/reference) which can be generated in the MAAS web console
+  under **My Preferences**, and selecting **API keys**.
 
 For details, refer to the MAAS document on
 [how to add an API key](https://canonical.com/maas/docs/how-to-enhance-maas-security#p-9102-manage-api-keys).

@@ -852,7 +852,8 @@ The component will automatically prefix the path to the URL. The component has t
 
 - `edition` - The edition of the URL. This can be either `Palette` or `Vertex`. Internally, the component will use this
   value to determine the base URL.
-- `text` - The text to display for the link.
+- `text` - The text to display for the link. To include a property value, wrap the text in `{``}` and insert the
+  property using `${props.field}`.
 - `url` - The path to append to the base URL.
 
 Below is an example of how to use the component:
@@ -865,6 +866,16 @@ Below is an example of how to use the component:
     url="/system-management/account-management"
   />
   page to learn more about system administrator roles.
+```
+
+Below is an example of how to use the component when you want the link text to include a property value:
+
+```mdx
+<PaletteVertexUrlMapper
+  edition={props.edition}
+  text={`Install Airgap ${props.version}`}
+  url="/supported-environments/vmware/install/airgap"
+/>
 ```
 
 In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
@@ -1043,8 +1054,28 @@ or a message indicating that no content is available. Refer to the table below f
 
 To display the Additional Details content, create a markdown file with the same name as the pack in the the
 [`docs/docs-content/integrations/`](./docs/docs-content/integrations/) content folder. For example, if the pack name is
-`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.md`. The additional details content requires you to
-follow the [Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
+`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.mdx`.
+
+When you create Additional Details content, the `category` field is optional because it is unused, and the `logoUrl`
+field is only necessary when a pack has no `README` file.
+
+Your frontmatter might resemble the following example.
+
+```
+---
+sidebar_label: "Pack Name"
+title: "Pack Name"
+description: "Pack description"
+hide_table_of_contents: true
+type: "integration"
+sidebar_class_name: "hide-from-sidebar"
+tags: ["tag1", "tag2", "tag3"]
+logoUrl: "https://registry.dev.spectrocloud.com/v1/heartbeat/blobs/sha256:19fec69ae172c3e54d5fb09c176517cf7bfeb1bc740bde65c200e14115510313?type=image.webp"
+---
+```
+
+The additional details content requires you to follow the
+[Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
 
 If you want to add content specific to a version, include the following heading and tabs component in the markdown file.
 
@@ -1095,7 +1126,7 @@ Your page will now redirect to `/integrations/packs/?pack=myPack`.
 
 ### Create link with full URL display
 
-You must use the `<FullUrlLink />` component to create a link that displays its full URL in text, as thi is currently
+You must use the `<FullUrlLink />` component to create a link that displays its full URL in text, as this is currently
 not supported by markdown.
 
 ```mdx
