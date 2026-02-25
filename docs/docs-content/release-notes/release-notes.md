@@ -32,8 +32,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-17 -->
 
-- [Artifact Studio](../downloads/artifact-studio.md) now includes a user survey to be used internally by Spectro Cloud
-  for gathering feedback.
+- [Artifact Studio](../downloads/artifact-studio.md) now includes a user survey
+  for gathering feedback and identifying improvements. The provided data is processed internally by Spectro Cloud.
 
 ### Bug Fixes
 
