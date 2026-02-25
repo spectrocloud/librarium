@@ -11,7 +11,77 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 27, 2026 - Component Updates {#component-updates-2026-09}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.35.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.28.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.28.2  |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1899 -->
+
+- The
+  [`spectrocloud_cluster_profile` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
+  now supports dropdown and multiline
+  [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  input types.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-17 -->
+
+- [Artifact Studio](../downloads/artifact-studio.md) now includes a user survey to be used internally by Spectro Cloud
+  for gathering feedback.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2133 -->
+
+- Fixed an issue that caused the Terraform provider to fail to reconcile when updating cluster profiles with a different
+  [infrastructure cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-100 -->
+
+- Fixed an issue that caused the versions dropdown list to incorrectly float on the
+  [Artifact Studio](../downloads/artifact-studio.md) UI.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-101 -->
+
+- Fixed an issue that caused pack sizes to be incorrectly reported as 0 GB in the
+  [Artifact Studio](../downloads/artifact-studio.md) UI.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3702 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3759 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3773 -->
+
+| Pack Name                          | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Calico                             | CNI        | :white_check_mark: | :white_check_mark: | 3.31.4      |
+| Cert Manager                       | Add-on     | :white_check_mark: | :white_check_mark: | 1.19.3      |
+| Cilium                             | CNI        | :x:                | :white_check_mark: | 1.18.4      |
+| Cilium                             | CNI        | :x:                | :white_check_mark: | 1.18.1      |
+| Crossplane                         | Add-on     | :white_check_mark: | :x:                | 2.2.0       |
+| Harbor                             | Add-on     | :white_check_mark: | :x:                | 1.18.2      |
+| Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
+| Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
+| Palette Optimized Canonical        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
+| Piraeus Operator                   | CSI        | :white_check_mark: | :x:                | 2.10.4      |
+| Portworx with Operator             | CSI        | :white_check_mark: | :x:                | 3.5.2       |
+| Prometheus Agent                   | Add-on     | :white_check_mark: | :x:                | 28.9.0      |
+| Prometheus Operator                | Add-on     | :white_check_mark: | :x:                | 81.6.1      |
+| Reloader                           | Add-on     | :white_check_mark: | :x:                | 1.4.13      |
+| Tigera Operator                    | CNI        | :white_check_mark: | :x:                | 3.31.3      |
+| Volume Snapshot Controller         | Add-on     | :white_check_mark: | :x:                | 8.5.0       |
+
 ## February 25, 2026 - Release 4.8.35
+
+The following component updates are applicable to this release:
+
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -19,6 +89,10 @@ tags: ["release-notes"]
   as VM start, stop, restart, and migrate, from completing when triggered using the [Palette API](/api/introduction).
 
 ## February 21, 2026 - Release 4.8.33 {#release-notes-4.8.b}
+
+The following component updates are applicable to this release:
+
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
 
@@ -398,6 +472,7 @@ The following component updates are applicable to this release:
 
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Improvements
 
@@ -412,6 +487,7 @@ The following component updates are applicable to this release:
 
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Breaking Changes
 
@@ -605,6 +681,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -620,6 +697,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -653,6 +731,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Features
 
@@ -683,6 +762,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1122,6 +1202,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1234,6 +1315,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 #### Features
 
@@ -1435,6 +1517,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1472,6 +1555,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1501,6 +1585,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Security Notices
 
