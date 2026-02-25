@@ -186,6 +186,8 @@ Click **Confirm & Create** to save the alterations and add the pack to your clus
 Click **Next** to proceed. If there are no compatibility issues, Palette displays the cluster profile for review. Verify
 that the layers you added are correct, and click **Finish Configuration** to create the cluster profile.
 
+## Export and Download Cluster Profile
+
 With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to
 download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
 
@@ -257,6 +259,12 @@ echo
 
 echo
 echo "Done ✅"
+```
+
+The `.tgz` file will need to be uploaded to the locally managed Edge device after it is built using the Edge UI. If you are using a browser on a system other than your Linux system to access the Edge UI, you will need to download the `.tgz` file. 
+
+```
+scp <username>@<ip-of-linux-system>:/path/to/<filename>.tgz .
 ```
 
 ## Next Steps
