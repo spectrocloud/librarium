@@ -183,8 +183,8 @@ Click **Confirm & Create** to save the alterations and add the pack to your clus
 Click **Next** to proceed. If there are no compatibility issues, Palette displays the cluster profile for review. Verify
 that the layers you added are correct, and click **Finish Configuration** to create the cluster profile.
 
-With the cluster profile created, it will now need to be exported into a compressed `.tgz` file. You will need to
-download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).
+With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to
+download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
 
 <!-- vale off -->
 ```shell
@@ -193,6 +193,17 @@ VERSION=<palette-edge-cli-version>
 wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
 chmod +x palette-edge
 ```
+
+You will use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a specific project. You will need the following:
+
+- [API Key](../../../../user-management/authentication/api-key/create-api-key.md)
+- Project ID
+- Cluster Profile ID
+
+To retrieve the Project ID, log in to [Palette](https://console.spectrocloud.com/), and copy the Project ID from the top right.
+
+*** Placeholder for local-edge_cluster-profile_project-id_4-8.webp***
+
 
 ```shell
 #!/usr/bin/env bash
