@@ -188,8 +188,10 @@ that the layers you added are correct, and click **Finish Configuration** to cre
 
 ## Export and Download Cluster Profile
 
-With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to
-download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
+## Export and Download Cluster Profile
+
+With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download the
+[Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
 
 <!-- vale off -->
 
@@ -200,17 +202,20 @@ wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
 chmod +x palette-edge
 ```
 
-You will use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a specific project. You will need the following:
+You will use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a
+specific project. You will need the following:
 
 - [API Key](../../../../user-management/authentication/api-key/create-api-key.md)
 - Project ID
 - Cluster Profile ID
 
-To retrieve the Project ID, log in to [Palette](https://console.spectrocloud.com/), and copy the Project ID from the top right.
+To retrieve the Project ID, log in to [Palette](https://console.spectrocloud.com/), and copy the Project ID from the top
+right.
 
 ![A screenshot of the Project ID location.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_project-id_4-8.webp)
 
-To retrieve the Cluster Profile ID, navigate to **Profiles**, select the profile you created, and click the **Copy to Clipboard** icon.
+To retrieve the Cluster Profile ID, navigate to **Profiles**, select the profile you created, and click the **Copy to
+Clipboard** icon.
 
 ![A screenshot of the Profile ID location.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_profile-id_4-8.webp)
 
@@ -223,7 +228,8 @@ Use the following Palette Edge ClI to generate the cluster profile compressed `.
 --outfile <cluster-profile-name.tgz> --include-palette-content
 ```
 
-Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will appear blank for security reasons.
+Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
+appear blank for security reasons.
 
 ```shell
 #!/usr/bin/env bash
@@ -269,6 +275,7 @@ scp <username>@<ip-of-linux-system>:/path/to/<filename>.tgz .
 
 ## Next Steps
 
-In this tutorial, you learned how to create a cluster profile for your Edge deployment and export it in a file that can be uploaded to the locally managed Edge device. We recommend proceeding to the
+In this tutorial, you learned how to create a cluster profile for your Edge deployment and export it in a file that can
+be uploaded to the locally managed Edge device. We recommend proceeding to the
 [Prepare Edge Host](./prepare-edge-host.md) tutorial to learn how to prepare your virtual or physical device to become a
 node of an Edge cluster.
