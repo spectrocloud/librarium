@@ -16,6 +16,8 @@ packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a c
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
 integrations.
 
+![A screenshot of the Architecture Diagram, highlighting Cluster Profile.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
+
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
 a demo application that you can access on your browser. You will learn about cluster profile layers and how to reference
 the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After creating the
@@ -33,8 +35,6 @@ For this tutorial, you will build a cluster profile that has the following packs
 | Harbor Edge Native Config | 1.1.2       | Palette Registry           |
 | MetalLB (Helm)            | 0.15.3      | Palette Registry           |
 | Hello Universe            | 1.3.1       | Palette Community Registry |
-
-**_Placeholder image - architectural diagram_**
 
 ## Prerequisites
 
@@ -75,7 +75,7 @@ with the address of the provider image you pushed to the registry. For example, 
 
 The following image displays the OS layer with the custom manifest and registry credentials.
 
-**_Placeholder - A screenshot of the cluster profile creation step with the OS layer._**
+![A screenshot of the BYOS values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_byos_4-8.webp)
 
 Click **Next Layer** to continue. Add the following Kubernetes layer to your cluster profile. Ensure the Kubernetes
 version matches the version used in the provider images.
@@ -86,11 +86,12 @@ version matches the version used in the provider images.
 
 Under **Pack Details**, select **Values** and for the `cluster.config.kube-apiserver-arg` setting
 `enable-admission-plugins` remove `AlwaysPullImages`. This setting is not supported for locally managed clusters.
+
 Additionally, if needed, replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they overlap with the host
 network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to `"100.64.64.0/18"`. This
 prevents any routing conflicts in the internal pod networking.
 
-**_A screenshot of the cluster profile creation step with the Kubernetes layer._**
+![A screenshot of the BYOS values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_k3s-values_4-8.webp)
 
 Click **Next Layer** to add the network layer. This tutorial uses Cilium as the example network layer.
 
@@ -108,7 +109,7 @@ cluster profile. The Local Path Provisioner is needed to configure local storage
 | Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
 Next, click **Add New Pack** to include the add-on layers. Search for `Harbor` and add the following pack to your
-cluster profile. Harbor is required to manage local registries for Edge clusters.
+cluster profile. Harbor is required to manage local registries for locally-managed Edge clusters.
 
 | **Pack Name**              | **Version** | **Registry**     | **Layer** |
 | -------------------------- | ----------- | ---------------- | --------- |
@@ -160,7 +161,7 @@ dbPassword: "cGFzc3dvcmQ="
 authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 ```
 
-**_A screenshot of the cluster profile creation step with the Hello Universe layer._**
+![A screenshot of the Hello Universe values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_hellouniverse-values_4-8.webp)
 
 Finally, click **Add New Pack** again, search for `MetalLB`, and add the following pack to your cluster profile.
 
@@ -176,7 +177,9 @@ Under **Pack Details**, select **Values** and replace the default `192.168.10.0/
 field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
 your cluster profile.
 
-**_A screenshot of the cluster profile creation step with the MetalLB layer._**
+The following image displays the MetalLB layer with a custom IP range.
+
+![A screenshot of the MetalLB values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_metallb-values_4-8.webp)
 
 Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
 
@@ -203,8 +206,22 @@ You will use the Palette Edge CLI tool to authenticate against Palette, and down
 
 To retrieve the Project ID, log in to [Palette](https://console.spectrocloud.com/), and copy the Project ID from the top right.
 
-*** Placeholder for local-edge_cluster-profile_project-id_4-8.webp***
+![A screenshot of the Project ID location.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_project-id_4-8.webp)
 
+To retrieve the Cluster Profile ID, navigate to **Profiles**, select the profile you created, and click the **Copy to Clipboard** icon.
+
+![A screenshot of the Profile ID location.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_profile-id_4-8.webp)
+
+Use the following Palette Edge ClI to generate the cluster profile compressed `.tgz` file.
+
+```shell
+./palette-edge build --api-key <apikey> --project-id <project-id> \
+--cluster-profile-ids <profile-id> --cluster-definition-profile-ids <profile-id> \
+--palette-endpoint <https://api.yourpalette> --cluster-definition-name <cluster-profile-name> \
+--outfile <cluster-profile-name.tgz> --include-palette-content
+```
+
+Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will appear blank for security reasons.
 
 ```shell
 #!/usr/bin/env bash
@@ -244,6 +261,6 @@ echo "Done ✅"
 
 ## Next Steps
 
-In this tutorial, you learned how to create a cluster profile for your Edge deployment. We recommend proceeding to the
+In this tutorial, you learned how to create a cluster profile for your Edge deployment and export it in a file that can be uploaded to the locally-managed Edge device. We recommend proceeding to the
 [Prepare Edge Host](./prepare-edge-host.md) tutorial to learn how to prepare your virtual or physical device to become a
 node of an Edge cluster.
