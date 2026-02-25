@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 17, 2026 - Release 4.6.48
+## February 25, 2026 - Release 4.6.49
 
 ### Improvements
 
