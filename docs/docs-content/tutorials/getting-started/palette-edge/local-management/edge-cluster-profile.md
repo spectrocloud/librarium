@@ -30,7 +30,7 @@ For this tutorial, you will build a cluster profile that has the following packs
 | Palette Optimized K3s    | 1.32.3      | Palette Registry           |
 | Cilium                   | 1.18.4      | Palette Registry           |
 | Local Path Provisioner   | 0.0.32      | Palette Registry           |
-| Habor Edge Native Config | 1.1.2       | Palette Registry           |
+| Harbor Edge Native Config | 1.1.2       | Palette Registry           |
 | MetalLB (Helm)           | 0.15.3      | Palette Registry           |
 | Hello Universe           | 1.3.1       | Palette Community Registry |
 
@@ -75,7 +75,7 @@ with the address of the provider image you pushed to the registry. For example, 
 
 The following image displays the OS layer with the custom manifest and registry credentials.
 
-***Placeholder -A screenshot of the cluster profile creation step with the OS layer.***
+***Placeholder - A screenshot of the cluster profile creation step with the OS layer.***
 
 Click **Next Layer** to continue. Add the following Kubernetes layer to your cluster profile. Ensure the Kubernetes
 version matches the version used in the provider images.
@@ -110,7 +110,7 @@ clusters.
 
 | **Pack Name**             | **Version** | **Registry**     | **Layer** |
 | ------------------------- | ----------- | ---------------- | --------- |
-| Habor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
+| Harbor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
 
 Next, click **Add New Pack** to include the add-on layers. Search for `Hello Universe` and add the following pack to your
 cluster profile.
@@ -184,6 +184,7 @@ that the layers you added are correct, and click **Finish Configuration** to cre
 
 With the cluster profile created, it will now need to be exported into a compressed `.tgz` file. You will need to download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli). 
 
+<!-- vale off -->
 ```shell
 # Example: download a specific version (replace with the version you need)
 VERSION=<palette-edge-cli-version>
