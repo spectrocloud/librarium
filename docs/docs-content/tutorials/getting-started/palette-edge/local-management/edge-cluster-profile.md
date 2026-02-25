@@ -188,8 +188,8 @@ that the layers you added are correct, and click **Finish Configuration** to cre
 
 ## Export and Download Cluster Profile
 
-With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to
-download the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
+With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download the
+[Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
 
 <!-- vale off -->
 
