@@ -109,7 +109,7 @@ cluster profile. The Local Path Provisioner is needed to configure local storage
 | Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
 Next, click **Add New Pack** to include the add-on layers. Search for `Harbor` and add the following pack to your
-cluster profile. Harbor is required to manage local registries for locally-managed Edge clusters.
+cluster profile. Harbor is required to manage local registries for locally managed Edge clusters.
 
 | **Pack Name**              | **Version** | **Registry**     | **Layer** |
 | -------------------------- | ----------- | ---------------- | --------- |
@@ -261,6 +261,6 @@ echo "Done ✅"
 
 ## Next Steps
 
-In this tutorial, you learned how to create a cluster profile for your Edge deployment and export it in a file that can be uploaded to the locally-managed Edge device. We recommend proceeding to the
+In this tutorial, you learned how to create a cluster profile for your Edge deployment and export it in a file that can be uploaded to the locally managed Edge device. We recommend proceeding to the
 [Prepare Edge Host](./prepare-edge-host.md) tutorial to learn how to prepare your virtual or physical device to become a
 node of an Edge cluster.
