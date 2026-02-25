@@ -267,7 +267,9 @@ echo
 echo "Done ✅"
 ```
 
-The `.tgz` file will need to be uploaded to the locally managed Edge device after it is built using the Edge UI. If you are using a browser on a system other than your Linux system to access the Edge UI, you will need to download the `.tgz` file. 
+The `.tgz` file will need to be uploaded to the locally managed Edge device after it is built using the Edge UI. If you
+are using a browser on a system other than your Linux system to access the Edge UI, you will need to download the `.tgz`
+file.
 
 ```
 scp <username>@<ip-of-linux-system>:/path/to/<filename>.tgz .
