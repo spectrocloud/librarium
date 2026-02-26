@@ -13,25 +13,42 @@ guides you through configuring a Kubernetes cluster on an AWS Outposts server th
 
 ## Prerequisites
 
-You must order and
-[install an AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html) at your
-site before you can configure your Edge server.
+- An active Palette account.
+- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
+- Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html). 
 
 ## Configure AWS Outposts for Edge
 
-Use the following steps to convert your AWS Outposts server to an Edge instance.
+Your AWS Outposts server requires you to configure your capacity and a subnet before you can convert it to an Edge instance. 
 
-1. Select your Outpost server and create a capacity task and remove any existing configured instances. Set the
-   **Instance size** to `c61d.metal` and the **Instance quantity** to 1.
+### Configure the Outpost's capacity
 
-   Refer to
-   [Modify AWS Outposts instance capacity ](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html)
-   for more information about adjusting your Outpost's capacity.
+Perform the following steps to set your AWS outposts server capacity. It may take several hours for your server to configure your chosen capacity. 
 
-2. [Create a subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet)
+1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
+2. Select your Outposts server.
+3. [Create a capacity task](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html). Set the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**.
+
+   :::info
+
+   Palette only supports AWS Outposts servers with one instance.
+
+   :::
+
+4. **Remove** any previously created instances. 
+
+    ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
+
+### Create a subnet
+
+1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
+   
+2. Select your AWS Outposts server.
+   
+3. [Create a subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet)
    for your Outpost.
 
-3. Enable the subnet for your local network. You must set the secondary instance to a value of 1.
+4. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), enable the new subnet for your local network. You must set the secondary instance to a value of **1**. This ensures that Palette Edge can communicate properly with your server.
 
    ```bash
 
@@ -41,16 +58,23 @@ Use the following steps to convert your AWS Outposts server to an Edge instance.
 
    ```
 
+:::info
+
+Make a note of your new subnet name. It is required to create your Edge host.
+
+:::
+
 ## Create the Edge Host
 
 To configure the Edge server on your Outpost server, perform the following steps.
 
-1.  Select your AWS Outpost server and click
+1.  From the [AWS Outposts console](https://console.aws.amazon.com/outposts), select your AWS Outpost server and click
     [**Launch instance**](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#launch-instances).
 2.  In the **Application and OS Images (Amazon Machine Image)** section, select **Ubuntu**.
-3.  Verify that the Instance type is **c6id.metal**.
+3.  Verify that the **Instance type** is **c6id.metal**.
 4.  Enter your security key pair.
-5.  In the **Network settings** section, click **Edit** then select the Outpost and Subnet that you created previously.
+5.  In the **Network settings** section, click **Edit** then select the Outpost **VPC** and **Subnet** that you created previously.
+   ![AWS Outposts Network settings](/aws_outposts-network-settings.webp "AWS Outposts Network settings")
 6.  Expand the **Advanced network configuration** section and click **Add network interface**.
 7.  Ensure that the **Device index** is set to `1` and enter a name in the **Description** field.
 8.  Expand the **Advanced details** section.
