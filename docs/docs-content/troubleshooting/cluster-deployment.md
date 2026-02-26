@@ -39,28 +39,28 @@ Use the following steps to manually trigger the upgrade.
    Server Version: v1.34.2
    ```
 
-4. Export the desired Kubernetes version to an environment variable.
+4. Export the Kubernetes version to an environment variable.
 
    ```shell
    K8S_VERSION="v1.34.2"
    ```
 
-5. Execute the following snippet to trigger a rolling worker repave.
+5. Execute the following command to trigger a rolling worker repave.
 
    ```shell
-   kubectl get machinepools -A --no-headers \
+   kubectl get machinepools --all-namespaces --no-headers \
    | awk '{print $1, $2}' \
    | while read ns name; do
     echo "Patching $ns/$name to $K8S_VERSION"
-    kubectl patch machinepool "$name" -n "$ns" --type merge \
-      -p "{\"spec\":{\"template\":{\"spec\":{\"version\":\"$K8S_VERSION\"}}}}"
+    kubectl patch machinepool "$name" --namespace "$ns" --type merge \
+      --patch "{\"spec\":{\"template\":{\"spec\":{\"version\":\"$K8S_VERSION\"}}}}"
    done
    ```
 
-6. Verify that all the nodes have been upgraded.
+6. Verify that all worker nodes have been upgraded to the same Kubernetes version as the control plane.
 
    ```shell
-   kubectl get nodes -o wide
+   kubectl get nodes --output wide
    ```
 
 ## Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023
