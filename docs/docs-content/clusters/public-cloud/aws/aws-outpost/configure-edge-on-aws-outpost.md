@@ -16,6 +16,7 @@ guides you through configuring a Kubernetes cluster on an AWS Outposts server th
 - An active Palette account.
 - An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
 - Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+- An AWS[ EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html).
 
 ## Configure AWS Outposts for Edge
 
@@ -161,7 +162,7 @@ To configure the Edge server on your Outpost server, perform the following steps
 
       # Install Palette Agent Pre-requisites
       - apt-get update >> /var/log/cloud-init-userdata.log 2>&1
-      - apt-get install -y bash jq zstd rsync systemd-timesyncd iptables rsyslog conntrack --no-install-recommends >> /var/log/cloud-init-userdata.log 2>&1
+      - apt-get install -yes bash jq zstd rsync systemd-timesyncd iptables rsyslog conntrack --no-install-recommends >> /var/log/cloud-init-userdata.log 2>&1
 
       # Install SSM
       - snap install amazon-ssm-agent --classic >> /var/log/cloud-init-userdata.log 2>&1
@@ -181,10 +182,10 @@ To configure the Edge server on your Outpost server, perform the following steps
 
     ```
 
-## Verify your instance appears in Palatte
+## Verify your instance appears in Palette
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 2. Navigate to your Project.
 3. In the left main menu, select **Clusters**.
 4. Click the **Edge Hosts** tab to view the registered hosts.
-5. Verfy that your Edge host appears with a **Healthy** and **Ready** status.
+5. Verify that your Edge host appears with a **Healthy** and **Ready** status.
