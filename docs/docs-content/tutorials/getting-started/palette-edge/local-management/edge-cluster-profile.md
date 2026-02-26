@@ -71,7 +71,7 @@ during deployment.
 
 Alternatively, if you no longer have access to the manifest, you can manually fill in the `options.system.uri` parameter
 with the address of the provider image you pushed to the registry. For example, the address used in this tutorial is
-`spectrocloud/ubuntu:k3s-1.32.3-v4.8.8-edgedemo`.
+`spectrocloud/ubuntu:k3s-1.32.3-v4.8.8-local-edge`.
 
 The following image displays the OS layer with the custom manifest and registry credentials.
 
@@ -84,8 +84,8 @@ version matches the version used in the provider images.
 | --------------------- | ----------- | ---------------- | ---------- |
 | Palette Optimized K3s | 1.32.3      | Palette Registry | Kubernetes |
 
-Under **Pack Details**, select **Values** and for the `cluster.config.kube-apiserver-arg` setting
-`enable-admission-plugins` remove `AlwaysPullImages`. This setting is not supported for locally managed clusters.
+Under **Pack Details**, select **Values** and remove `AlwaysPullImages` value from `cluster.config.kube-apiserver-arg` setting
+`enable-admission-plugins`. This value is not supported for locally managed clusters.
 
 Additionally, if needed, replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they overlap with the host
 network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to `"100.64.64.0/18"`. This
@@ -194,28 +194,17 @@ With the cluster profile created, you will need to export it as a compressed `.t
 <!-- vale off -->
 
 ```shell
-# Example: download a specific version (replace with the version you need)
 VERSION=<palette-edge-cli-version>
 wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
 chmod +x palette-edge
 ```
 
 You will use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a
-specific project. You will need the following:
+specific project. You will need the following values:
 
 - [API Key](../../../../user-management/authentication/api-key/create-api-key.md)
-- Project ID
-- Cluster Profile ID
-
-To retrieve the Project ID, log in to [Palette](https://console.spectrocloud.com/), and copy the Project ID from the top
-right.
-
-![A screenshot of the Project ID location.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_project-id_4-8.webp)
-
-To retrieve the Cluster Profile ID, navigate to **Profiles**, select the profile you created, and click the **Copy to
-Clipboard** icon.
-
-![A screenshot of the Profile ID location.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_profile-id_4-8.webp)
+- [Project ID](../../../../tenant-settings/projects/projects.md#project-id)
+- [Cluster Profile ID](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md#enablement-1)
 
 Use the following Palette Edge ClI to generate the cluster profile compressed `.tgz` file.
 
