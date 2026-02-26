@@ -31,7 +31,7 @@ Follow the steps in [Configure Edge on AWS Outpost](./configure-edge-on-aws-outp
 
 ## Network structure
 
-Palette Edge on AWS Outposts extends your VPC into your on-premises environment.
+Palette Edge on AWS Outposts extends your VPC into your local environment.
 
 In the following diagram, your AWS Outposts server is installed at your site and runs an EC2 bare metal instance. This
 instance hosts Palette Edge in Agent Mode as well as Kubernetes.

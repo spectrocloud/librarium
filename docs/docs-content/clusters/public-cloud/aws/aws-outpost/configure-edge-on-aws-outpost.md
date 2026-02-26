@@ -181,6 +181,10 @@ To configure the Edge server on your Outpost server, perform the following steps
 
     ```
 
-## Validate your instance
+## Verify your instance appears in Palatte
 
-Log in to Palette and verify that your new Edge host is visible in the interface.
+1. Log in to [Palette](https://console.spectrocloud.com/).
+2. Navigate to your Project.
+3. In the left main menu, select **Clusters**.
+4. Click the **Edge Hosts** tab to view the registered hosts.
+5. Verfy that your Edge host appears with a **Healthy** and **Ready** status.
