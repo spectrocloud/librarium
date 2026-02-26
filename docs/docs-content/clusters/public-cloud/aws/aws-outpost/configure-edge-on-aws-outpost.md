@@ -62,11 +62,11 @@ configure your chosen capacity.
 
    ```
 
-:::info
+    :::info
 
-Make a note of your new subnet name. It is required to create your Edge host.
+    Make a note of your new subnet name. It is required to create your Edge host.
 
-:::
+    :::
 
 ## Create the Edge Host
 
