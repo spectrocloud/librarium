@@ -27,6 +27,9 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+- OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
+  [data center environment](../clusters/data-center/data-center.md)
+
 ### Edge
 
 :::info

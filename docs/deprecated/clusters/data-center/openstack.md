@@ -21,7 +21,7 @@ The following are some highlights of OpenStack clusters provisioned by Palette:
 
    ![openstack_cluster_architecture.webp](/openstack_cluster_architecture.webp)
 
-   Refer to the [PCG Architecture](../pcg/architecture.md) section to learn more about the PCG architecture.
+   Refer to the PCG Architecture section to learn more about the PCG architecture.
 
 ## OpenStack Cloud Account Permissions
 
@@ -314,8 +314,8 @@ used to create tenant clusters. Additional cloud accounts may be created if desi
 
 ### Prerequisites
 
-- A PCG is installed and available in the OpenStack. Refer to the [Deploy to OpenStack](../pcg/deploy-pcg/openstack.md)
-  guide to learn how to deploy a PCG.
+- A PCG is installed and available in the OpenStack. Refer to the Deploy to OpenStack guide to learn how to deploy a
+  PCG.
 
 ### Create Cloud Account
 
@@ -344,8 +344,8 @@ used to create tenant clusters. Additional cloud accounts may be created if desi
 
 ### Prerequisites
 
-- A PCG is installed and available in the OpenStack. Refer to the [Deploy to OpenStack](../pcg/deploy-pcg/openstack.md)
-  guide to learn how to deploy a PCG.
+- A PCG is installed and available in the OpenStack. Refer to the Deploy to OpenStack guide to learn how to deploy a
+  PCG.
 
 <!-- prettier-ignore-start -->
 
@@ -395,8 +395,8 @@ The following steps need to be performed to provision a new OpenStack cluster:
              | **Name**                                           | A descriptive name for the node pool.                                                                                                                                                                               |
              | **Size**                                           | Number of VMs to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5.                                                                                                       |
              | **Allow worker capability**                        | Select this option for allowing workloads to be provisioned on control plane nodes.                                                                                                                                 |
-             | **[Labels](../cluster-management/node-labels.md)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                            |
-             | **[Taints](../cluster-management/taints.md)**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                      |
+             | **Labels** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                            |
+             | **Taints**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                      |
              | **Instance type**                                  | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                         |
              | **Availability Zones**                             | Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected. |
              | **Disk Size**                                      | Give the required storage size                                                                                                                                                                                      |
@@ -409,8 +409,8 @@ The following steps need to be performed to provision a new OpenStack cluster:
              | **Enable Autoscaler**                              | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. |
              | **Size**                                           | Number of VMs to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                            |
              | **Rolling Update**                                 | Rolling update has two available options. The expand option launches a new node first, then shuts down old one. The contract option shuts down a old one first, then launches new one.                                                                                                                                                                                                                                                                                     |
-             | **[Labels](../cluster-management/node-labels.md)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                                                                                                                                                                                                                                                                                   |
-             | **[Taints](../cluster-management/taints.md)**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                                                                                                                                                                                                                                                                             |
+             | **Labels** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                                                                                                                                                                                                                                                                                   |
+             | **Taints**      | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                                                                                                                                                                                                                                                                             |
              | **Instance type**                                  | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                                                                                                                                                                                                                                                                                |
              | **Availability Zones**                             | Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.                                                                                                                                                                                                                                                        |
              | **Disk Size**                                      | Provide the required storage size                                                                                                                                                                                                                                                                                                                                                                                                                                          |

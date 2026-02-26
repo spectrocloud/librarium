@@ -149,7 +149,6 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
    customresourcedefinition.apiextensions.k8s.io/gcpcloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/maascloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/nestedcloudconfigs.cluster.spectrocloud.com configured
-   customresourcedefinition.apiextensions.k8s.io/openstackcloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/packs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/spectroclusters.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/vspherecloudconfigs.cluster.spectrocloud.com configured

@@ -37,7 +37,7 @@ Let's assume that a cluster ‘demo’ is launched with two machine pools with t
 
 :::info
 
-For private clouds like VMware, OpenStack, MAAS, etc., the unit rate for CPU and Memory can be configured as an
+For private clouds like VMware, CloudStack, MAAS, etc., the unit rate for CPU and Memory can be configured as an
 administrative setting. These rates are used in place of instance-type rates for cost calculation.
 
 :::

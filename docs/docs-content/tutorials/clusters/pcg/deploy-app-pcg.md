@@ -25,8 +25,8 @@ Palette through the Palette agent available within each cluster, which originate
 Palette. Refer to the [PCG Architecture](../../../clusters/pcg/architecture.md) section for more information.
 
 A PCG comprises a cluster of nodes and can be deployed using two methods. The first method uses the Palette CLI to
-deploy a PCG in one of the three supported infrastructure environments; MAAS, OpenStack, or VMware vSphere. The other
-method manually deploys a PCG [onto an existing Kubernetes cluster](../../../clusters/pcg/deploy-pcg-k8s.md).
+deploy a PCG in one of the three supported infrastructure environments; MAAS, Apache CloudStack, or VMware vSphere. The
+other method manually deploys a PCG [onto an existing Kubernetes cluster](../../../clusters/pcg/deploy-pcg-k8s.md).
 
 In this tutorial, you will deploy a VMware PCG using Palette CLI. Next, you will learn how to deploy a VMware cluster
 with a sample Kubernetes application called

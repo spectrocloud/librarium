@@ -81,7 +81,6 @@ The following table outlines all available provider options.
 | **GCP GKE**                                    | `gke`         |
 | **MAAS** (Canonical)                           | `maas`        |
 | **VMware vSphere**                             | `vsphere`     |
-| **Openstack**                                  | `openstack`   |
 | **Edge Native**                                | `edge-native` |
 | [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`     |
 
@@ -123,7 +122,7 @@ curl --location "https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?Proje
 ```js
 const apiKey = process.env.API_KEY;
 const projectID = process.env.PROJECT_ID;
-const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws", "aks", "openstack"
+const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws" or "aks"
 
 // Build the request URL
 const url = `https://api.spectrocloud.com/v1/spectroclusters/${provider}?ProjectUid=${projectID}`;
@@ -244,7 +243,7 @@ def send_request():
     # Get the required environment variables
     apiKey = os.environ['API_KEY']
     projectID = os.environ['PROJECT_ID']
-    provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws", "aks", "openstack"
+    provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws" or "aks"
 
     # Build the request URL
     url = f"https://api.spectrocloud.com/v1/spectroclusters/{provider}?ProjectUid={projectID}"

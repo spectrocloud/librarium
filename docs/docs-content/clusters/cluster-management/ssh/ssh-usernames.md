@@ -51,12 +51,12 @@ nodes is critical, consider one of the following options:
 
 ## Data Center
 
-| Provider           | OS Pack    | SSH Username |
-| ------------------ | ---------- | ------------ |
-| **MAAS**           | **Ubuntu** | `ubuntu`     |
-| **OpenStack**      | **Ubuntu** | `ubuntu`     |
-| **VMware vSphere** | **Ubuntu** | `spectro`    |
-| **VMware vSphere** | **CentOS** | `spectro`    |
+| Provider           | OS Pack       | SSH Username |
+| ------------------ | ------------- | ------------ | -------- | ----------------------------- |
+| **MAAS**           | **Ubuntu**    | `ubuntu`     |
+| <!--               | **OpenStack** | **Ubuntu**   | `ubuntu` | NEED TO VERIFY CLOUDSTACK --> |
+| **VMware vSphere** | **Ubuntu**    | `spectro`    |
+| **VMware vSphere** | **CentOS**    | `spectro`    |
 
 ## Edge
 

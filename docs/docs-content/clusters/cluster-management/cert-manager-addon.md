@@ -33,7 +33,6 @@ certificate expires as necessary.
   - Datacenter
     - MAAS
     - Nutanix
-    - OpenStack
     - CloudStack
     - VMware
 

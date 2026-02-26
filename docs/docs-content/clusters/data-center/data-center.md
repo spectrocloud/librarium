@@ -28,6 +28,6 @@ environments.
 
 - [Nutanix](nutanix/nutanix.md)
 
-- [OpenStack](openstack.md)
+- [Apache CloudStack](cloudstack/cloudstack.md)
 
 - [VMware](./vmware/vmware.md)
