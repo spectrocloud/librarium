@@ -10,6 +10,59 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - EKS Worker Nodes Configured with Autoscaler Fail to Upgrade
+
+[EKS clusters](../clusters/public-cloud/aws/eks.md) deployed with the
+<VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> pack fail to
+upgrade the Kubernetes version of their worker node groups or `MachinePools`.
+
+Use the following steps to manually trigger the upgrade.
+
+### Debug Steps
+
+1. Open a terminal session and ensure you have the `kubectl` CLI installed. If you do not have the CLI installed, you
+   can download it from the [Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) website.
+
+2. Set up your terminal session to use the kubeconfig file for your EKS cluster. You can find the kubeconfig for your
+   cluster in the Palette UI by visiting the cluster's details page. Check out the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
+   guidance on how to set up your terminal session to use the kubeconfig file.
+
+3. Confirm that the control plane has been upgraded. Wait for the upgrade to complete before proceeding to the next
+   steps.
+
+   ```shell
+   kubectl version --short
+   ```
+
+   ```shell title="Example output"
+   Server Version: v1.34.2
+   ```
+
+4. Export the desired Kubernetes version to an environment variable.
+
+   ```shell
+   K8S_VERSION="v1.34.2"
+   ```
+
+5. Execute the following snippet to trigger a rolling worker repave.
+
+   ```shell
+   kubectl get machinepools -A --no-headers \
+   | awk '{print $1, $2}' \
+   | while read ns name; do
+    echo "Patching $ns/$name to $K8S_VERSION"
+    kubectl patch machinepool "$name" -n "$ns" --type merge \
+      -p "{\"spec\":{\"template\":{\"spec\":{\"version\":\"$K8S_VERSION\"}}}}"
+   done
+   ```
+
+6. Verify that all the nodes have been upgraded.
+
+   ```shell
+   kubectl get nodes -o wide
+   ```
+
 ## Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023
 
 AWS does not provide a direct upgrade path from Amazon Linux 2 (AL2) to Amazon Linux 2023 (AL2023) for EKS worker nodes.
