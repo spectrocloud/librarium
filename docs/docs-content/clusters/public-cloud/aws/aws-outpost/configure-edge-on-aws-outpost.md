@@ -15,19 +15,22 @@ guides you through configuring a Kubernetes cluster on an AWS Outposts server th
 
 - An active Palette account.
 - An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
-- Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html). 
+- Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 
 ## Configure AWS Outposts for Edge
 
-Your AWS Outposts server requires you to configure your capacity and a subnet before you can convert it to an Edge instance. 
+Your AWS Outposts server requires you to configure your capacity and a subnet before you can convert it to an Edge
+instance.
 
 ### Configure the Outpost's capacity
 
-Perform the following steps to set your AWS outposts server capacity. It may take several hours for your server to configure your chosen capacity. 
+Perform the following steps to set your AWS outposts server capacity. It may take several hours for your server to
+configure your chosen capacity.
 
 1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
 2. Select your Outposts server.
-3. [Create a capacity task](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html). Set the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**.
+3. [Create a capacity task](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html). Set
+   the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**.
 
    :::info
 
@@ -35,20 +38,20 @@ Perform the following steps to set your AWS outposts server capacity. It may tak
 
    :::
 
-4. **Remove** any previously created instances. 
+4. **Remove** any previously created instances.
 
-    ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
+   ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
 
 ### Create a subnet
 
 1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
-   
 2. Select your AWS Outposts server.
-   
 3. [Create a subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet)
    for your Outpost.
 
-4. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), enable the new subnet for your local network. You must set the secondary instance to a value of **1**. This ensures that Palette Edge can communicate properly with your server.
+4. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), enable the new
+   subnet for your local network. You must set the secondary instance to a value of **1**. This ensures that Palette
+   Edge can communicate properly with your server.
 
    ```bash
 
@@ -73,8 +76,8 @@ To configure the Edge server on your Outpost server, perform the following steps
 2.  In the **Application and OS Images (Amazon Machine Image)** section, select **Ubuntu**.
 3.  Verify that the **Instance type** is **c6id.metal**.
 4.  Enter your security key pair.
-5.  In the **Network settings** section, click **Edit** then select the Outpost **VPC** and **Subnet** that you created previously.
-   ![AWS Outposts Network settings](/aws_outposts-network-settings.webp "AWS Outposts Network settings")
+5.  In the **Network settings** section, click **Edit** then select the Outpost **VPC** and **Subnet** that you created
+    previously. ![AWS Outposts Network settings](/aws_outposts-network-settings.webp "AWS Outposts Network settings")
 6.  Expand the **Advanced network configuration** section and click **Add network interface**.
 7.  Ensure that the **Device index** is set to `1` and enter a name in the **Description** field.
 8.  Expand the **Advanced details** section.
