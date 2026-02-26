@@ -12,9 +12,9 @@ The following steps will help you troubleshoot errors in the event issues arise 
 
 ## Scenario - EKS Worker Nodes Configured with Autoscaler Fail to Upgrade
 
-[EKS clusters](../clusters/public-cloud/aws/eks.md) deployed with the
-<VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> pack fail to
-upgrade the Kubernetes version of their worker node groups or `MachinePools`.
+<!-- prettier-ignore-start -->
+[EKS clusters](../clusters/public-cloud/aws/eks.md) deployed with the <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> pack fail to upgrade the Kubernetes version of their worker node groups or `MachinePools`.
+<!-- prettier-ignore-end -->
 
 Use the following steps to manually trigger the upgrade.
 
