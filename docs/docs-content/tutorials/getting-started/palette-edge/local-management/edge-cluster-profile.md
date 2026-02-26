@@ -84,8 +84,8 @@ version matches the version used in the provider images.
 | --------------------- | ----------- | ---------------- | ---------- |
 | Palette Optimized K3s | 1.32.3      | Palette Registry | Kubernetes |
 
-Under **Pack Details**, select **Values** and remove `AlwaysPullImages` value from `cluster.config.kube-apiserver-arg` setting
-`enable-admission-plugins`. This value is not supported for locally managed clusters.
+Under **Pack Details**, select **Values** and remove `AlwaysPullImages` value from `cluster.config.kube-apiserver-arg`
+setting `enable-admission-plugins`. This value is not supported for locally managed clusters.
 
 Additionally, if needed, replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they overlap with the host
 network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to `"100.64.64.0/18"`. This
