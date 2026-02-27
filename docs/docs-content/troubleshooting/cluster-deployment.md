@@ -67,7 +67,7 @@ Use the following steps to manually trigger the upgrade.
     NAME        STATUS   ROLES           AGE  VERSION   INTERNAL-IP   OS-IMAGE        KERNEL   RUNTIME
     node-1      Ready    <none>          1d   v1.34.2   10.0.1.10     Ubuntu 24.04    6.14     containerd
     node-2      Ready    control-plane   1d   v1.34.2   10.0.1.11     Ubuntu 24.04    6.14     containerd
-    node-3      Ready    control-plane   1d   v1.34.2   10.0.1.11     Ubuntu 24.04    6.14     containerd
+    node-3      Ready    control-plane   1d   v1.34.2   10.0.1.12     Ubuntu 24.04    6.14     containerd
    ```
 
 ## Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023
