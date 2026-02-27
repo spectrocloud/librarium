@@ -206,13 +206,13 @@ the required CAPA roles automatically.
 
 ### Option 2: Manual CloudFormation Stack Management
 
-After adding the minimum permissions policies to your IAM User or Role,
-[create the required CloudFormation stack for Palette manually in your AWS region](#create-cloudformation-stacks-for-palette).
+After adding the minimum permissions policies to your IAM User or Role, you must perform the following additional steps
+in the sections listed.
 
-After the stack is created, you must
-[configure the Kubernetes layer of your cluster profiles to use the manually created CloudFormation stack](#enable-manual-cloudformation-stack-management-in-cluster-profiles).
+1. [Create the required CloudFormation stack for Palette manually in your AWS region](#1-create-cloudformation-stacks-for-palette).
+2. [Configure the Kubernetes layer of your cluster profiles to use the manually created CloudFormation stack](#2-enable-manual-cloudformation-stack-management-in-cluster-profiles).
 
-#### Create CloudFormation Stacks for Palette
+#### 1. Create CloudFormation Stacks for Palette
 
 When using the minimum permissions policies, you must manually create the CloudFormation stack that Palette uses to
 create the required CAPA roles.
@@ -252,7 +252,7 @@ create the required CAPA roles.
 
    <TabItem label="AWS CLI" value="aws-cli">
 
-   8. From the same directory where the `palette-cloudformation-input-template.yaml` file is located, execute the
+   1. From the same directory where the `palette-cloudformation-input-template.yaml` file is located, execute the
       following command to create the CloudFormation stack using AWS CLI. Replace `<aws-region>` with the AWS region you
       are using for your cluster deployments.
 
@@ -270,14 +270,14 @@ create the required CAPA roles.
       }
       ```
 
-   9. Wait for the stack creation to complete. You can monitor the progress in the
+   2. Wait for the stack creation to complete. You can monitor the progress in the
       [CloudFormation console](https://console.aws.amazon.com/cloudformation/home).
 
    </TabItem>
 
    </Tabs>
 
-#### Enable Manual CloudFormation Stack Management in Cluster Profiles
+#### 2. Enable Manual CloudFormation Stack Management in Cluster Profiles
 
 After creating the CloudFormation stack, you must configure the Kubernetes layer of your cluster profiles to use the
 manually created stack. This ensures that Palette uses the existing stack rather than attempting to create and manage
