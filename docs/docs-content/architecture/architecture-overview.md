@@ -18,7 +18,7 @@ Palette is available in three flexible deployment models:
   management plane.
 
 - **Self-hosted**: The management plane is hosted in the customer’s environment. This environment can be a public cloud,
-  data center, or bare metal.
+  data center, or bare metal devices.
 
 ![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.webp)
 
@@ -35,8 +35,8 @@ ensuring the integrity of our services is paramount. Learn more about Palette se
 
 ## SaaS Architecture and Data Flow
 
-The Palette SaaS platform can manage public clouds (AWS, Azure, and Google Cloud) and on-premises data centers (VMware
-vSphere, MAAS, Apache CloudStack, and bare metal). The architecture and data flow slightly differ based on whether the
+The Palette SaaS platform can manage public clouds (AWS, Azure, and Google Cloud), data centers (VMware
+vSphere, Apache CloudStack, MAAS, and Nutanix), and bare metal devices. The architecture and data flow slightly differ based on whether the
 target environment is a public or an on-premises data center.
 
 ### SaaS to Public Clouds

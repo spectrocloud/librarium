@@ -81,6 +81,7 @@ The following table outlines all available provider options.
 | **GCP GKE**                                    | `gke`         |
 | **MAAS** (Canonical)                           | `maas`        |
 | **VMware vSphere**                             | `vsphere`     |
+| **Apache CloudStack**                         | `apache-cloudstack` | 
 | **Edge Native**                                | `edge-native` |
 | [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`     |
 
