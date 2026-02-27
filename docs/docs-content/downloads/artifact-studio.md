@@ -24,7 +24,7 @@ be validated via signatures. These artifact bundles replace the self-extracting 
 environments with a more familiar Zstandard compressed format (`zst`) that can be moved and manipulated with the Palette
 CLI.
 
-There are five main use cases:
+Following are the main use cases:
 
 - Install Palette Enterprise (content bundle, ISO, or Helm chart).
 - Install Palette VerteX (content bundle, ISO, or Helm chart).
