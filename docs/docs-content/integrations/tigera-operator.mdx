@@ -11,7 +11,7 @@ tags: ["packs", "tigera-operator", "network"]
 
 <RedirectPackPage packName="tigera-operator" />
 
-Tigera Operator is a Kubernetes operator that deploys and manages the complete Calico or Calico Enterprise stack on Kubernetes and OpenShift clusters. It automates lifecycle operations—including installation, upgrades, configuration, and health monitoring—by watching Calico-specific custom resources.
+Tigera Operator is a Kubernetes operator that deploys and manages the complete Calico or Calico Enterprise stack on Kubernetes and OpenShift clusters. It automates lifecycle operations including installation, upgrades, configuration, and health monitoring.
 
 The operator itself is not a CNI plugin. Instead, it installs and manages the Calico CNI components and the required CNI binaries and configuration.
 
@@ -25,14 +25,14 @@ Tigera Operator version 3.31.3 fails to install in airgapped environments. The `
 
 You must configure a private registry to pull images from instead of the external default registry.
 
-Add the registry value to the  `charts.installation` section of the `values.yaml` file with the URL of your private registry.
+Add the registry value to the `charts.installation` section of the `values.yaml` file with the URL of your private registry.
 
 ```yaml
 installation:
     registry: us-docker.pkg.dev/palette-images/packs/tigera-operator/3.31.3
 ```
 
-Save the `values.yaml` file after making the change and apply the update to your cluster. The operator will now pull images from the specified private registry, allowing the Calico pods to be deployed successfully.
+Save your changes and apply the update to your cluster. The operator now pulls images from the specified private registry, enabling the Calico pods to be successfully deployed.
 
 </TabItem>
 
