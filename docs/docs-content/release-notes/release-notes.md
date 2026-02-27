@@ -59,6 +59,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- prettier-ignore-start -->
 - The <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> pack version 2.2.0 is now available in the Palette Community Registry.
+- The <VersionedLink text="Tigera Operator" url="/integrations/packs/?pack=tigera-operator" /> pack version 3.31.3 fails to install on airgapped environments. Refer to the <VersionedLink text="Additional Details" url="/integrations/packs/?pack=tigera-operator&tab=custom" /> tab for the workaround. 
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3702 -->
