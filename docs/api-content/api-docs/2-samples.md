@@ -71,19 +71,19 @@ want to deploy the cluster, such as public cloud or on-prem.
 
 The following table outlines all available provider options.
 
-| **Provider**                                   | **Value**     |
-| ---------------------------------------------- | ------------- |
-| **Azure IaaS**                                 | `azure`       |
-| **Azure AKS**                                  | `aks`         |
-| **AWS IaaS**                                   | `aws`         |
-| **AWS EKS**                                    | `eks`         |
-| **GCP IaaS**                                   | `gcp`         |
-| **GCP GKE**                                    | `gke`         |
-| **MAAS** (Canonical)                           | `maas`        |
-| **VMware vSphere**                             | `vsphere`     |
-| **Apache CloudStack**                         | `apache-cloudstack` | 
-| **Edge Native**                                | `edge-native` |
-| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`     |
+| **Provider**                                   | **Value**           |
+| ---------------------------------------------- | ------------------- |
+| **Azure IaaS**                                 | `azure`             |
+| **Azure AKS**                                  | `aks`               |
+| **AWS IaaS**                                   | `aws`               |
+| **AWS EKS**                                    | `eks`               |
+| **GCP IaaS**                                   | `gcp`               |
+| **GCP GKE**                                    | `gke`               |
+| **MAAS** (Canonical)                           | `maas`              |
+| **VMware vSphere**                             | `vsphere`           |
+| **Apache CloudStack**                          | `apache-cloudstack` |
+| **Edge Native**                                | `edge-native`       |
+| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`           |
 
 Set the provider as an environment variable. For example, issue the following command to set Azure IaaS as the provider.
 

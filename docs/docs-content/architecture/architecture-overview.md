@@ -35,9 +35,9 @@ ensuring the integrity of our services is paramount. Learn more about Palette se
 
 ## SaaS Architecture and Data Flow
 
-The Palette SaaS platform can manage public clouds (AWS, Azure, and Google Cloud), data centers (VMware
-vSphere, Apache CloudStack, MAAS, and Nutanix), and bare metal devices. The architecture and data flow slightly differ based on whether the
-target environment is a public or an on-premises data center.
+The Palette SaaS platform can manage public clouds (AWS, Azure, and Google Cloud), data centers (VMware vSphere, Apache
+CloudStack, MAAS, and Nutanix), and bare metal devices. The architecture and data flow slightly differ based on whether
+the target environment is a public or an on-premises data center.
 
 ### SaaS to Public Clouds
 
