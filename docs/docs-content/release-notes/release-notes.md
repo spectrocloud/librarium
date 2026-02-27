@@ -49,7 +49,6 @@ Review the active known issues that affect this Palette release on the [Known Is
 
 #### Improvements
 
-<!-- To be moved once the patch release is announced! -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5582 -->
 
 - The minimum permissions policies for AWS clusters have been revamped to remove certain permissions, such as
@@ -58,7 +57,14 @@ Review the active known issues that affect this Palette release on the [Known Is
 
   As a result, there are some additional steps required to use the minimum permissions policies. You must create the
   required CloudFormation stack for Palette manually in your AWS region, and configure the Kubernetes layer of your
-  cluster profiles to use the manually created stack using a new property. For more details, refer to the
+  cluster profiles to use the manually created stack using a new property.
+
+  Alternatively, you can use the new minimum permissions policies and include an additional policy that allows Palette
+  to manage the creation and lifecycle of the CloudFormation stack on your behalf. This allows you to continue using the
+  streamlined experience for AWS cluster provisioning and management without needing to manually create the
+  CloudFormation stack.
+
+  For more details, refer to the
   [Required IAM Policies for AWS Clusters](../clusters/public-cloud/aws/required-iam-policies.md) documentation.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9205 -->
