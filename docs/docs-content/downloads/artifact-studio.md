@@ -24,12 +24,16 @@ be validated via signatures. These artifact bundles replace the self-extracting 
 environments with a more familiar Zstandard compressed format (`zst`) that can be moved and manipulated with the Palette
 CLI.
 
-There are four main artifact areas:
+There are five main use cases:
 
 - Install Palette Enterprise (content bundle, ISO, or Helm chart).
 - Install Palette VerteX (content bundle, ISO, or Helm chart).
-- Create a pack bundle to download.
+- Create and download pack bundles.
 - Browse the pack catalog to download individual packs.
+- Download [PaletteAI profile bundles](https://docs.palette-ai.com/docs/what-is-paletteai/concepts/profile-bundles/) and
+  explore available Nvidia AI resources to incorporate in your profile bundles. Refer to the
+  [PaletteAI documentation](https://docs.palette-ai.com/) and [product page](https://www.palette-ai.com/) to learn more
+  about PaletteAI.
 
 :::preview
 
