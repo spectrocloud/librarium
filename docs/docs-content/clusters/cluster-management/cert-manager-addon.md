@@ -33,8 +33,8 @@ certificate expires as necessary.
   - Datacenter
     - MAAS
     - Nutanix
-    - CloudStack
-    - VMware
+    - Apache CloudStack
+    - VMware vSphere
 
 ## Limitations
 
