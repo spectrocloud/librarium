@@ -32,25 +32,34 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-17 -->
 
-- [Artifact Studio](../downloads/artifact-studio.md) now includes a user survey
-  for gathering feedback and identifying improvements. The provided data is processed internally by Spectro Cloud.
+- [Artifact Studio](../downloads/artifact-studio.md) now includes a user survey for gathering feedback and identifying
+  improvements. The provided data is processed internally by Spectro Cloud.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2133 -->
 
 - Fixed an issue that caused the Terraform provider to fail to reconcile when replacing an
-  [infrastructure cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) on a cluster.
+  [infrastructure cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  on a cluster.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-100 -->
 
-- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused expanded version drop-down menus to float when scrolling.
+- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused expanded version drop-down menus to
+  float when scrolling.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-101 -->
 
-- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused pack sizes to be incorrectly reported as 0 GB.
+- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused pack sizes to be incorrectly reported
+  as 0 GB.
 
 ### Packs
+
+#### Packs Notes
+
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> pack version 2.2.0 is now available in the Palette Community Registry.
+<!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3702 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3759 -->
@@ -62,18 +71,13 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 | Cert Manager                       | Add-on     | :white_check_mark: | :white_check_mark: | 1.19.3      |
 | Cilium                             | CNI        | :x:                | :white_check_mark: | 1.18.4      |
 | Cilium                             | CNI        | :x:                | :white_check_mark: | 1.18.1      |
-| Crossplane                         | Add-on     | :white_check_mark: | :x:                | 2.2.0       |
 | Harbor                             | Add-on     | :white_check_mark: | :x:                | 1.18.2      |
 | Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
-| Palette eXtended Kubernetes - Edge | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
-| Palette Optimized Canonical        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
 | Piraeus Operator                   | CSI        | :white_check_mark: | :x:                | 2.10.4      |
-| Portworx with Operator             | CSI        | :white_check_mark: | :x:                | 3.5.2       |
 | Prometheus Agent                   | Add-on     | :white_check_mark: | :x:                | 28.9.0      |
 | Prometheus Operator                | Add-on     | :white_check_mark: | :x:                | 81.6.1      |
 | Reloader                           | Add-on     | :white_check_mark: | :x:                | 1.4.13      |
 | Tigera Operator                    | CNI        | :white_check_mark: | :x:                | 3.31.3      |
-| Volume Snapshot Controller         | Add-on     | :white_check_mark: | :x:                | 8.5.0       |
 
 ## February 25, 2026 - Release 4.8.35
 
