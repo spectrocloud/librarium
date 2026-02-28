@@ -45,4 +45,9 @@ keywords: ["self-hosted", "vertex", "account", "activate"]
 
 ## Validation
 
-<PartialsComponent category="self-hosted" name="self-hosted-activate-validation" edition="vertex" version="Palette VerteX" />
+<PartialsComponent
+  category="self-hosted"
+  name="self-hosted-activate-validation"
+  edition="vertex"
+  version="Palette VerteX"
+/>
