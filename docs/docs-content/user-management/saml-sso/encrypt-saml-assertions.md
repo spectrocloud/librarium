@@ -12,19 +12,20 @@ Palette supports encrypted Security Assertion Markup Language (SAML) assertions 
 Service Provider (SP) metadata. When configured with the SP’s public key, the Identity Provider (IdP) can encrypt the
 entire SAML assertion, ensuring user attributes and identity data are protected in transit.
 
-The steps in this guide assume you have already configured SAML SSO in Palette with your IdP. If you have not yet set up
-SAML SSO, refer to the [SAML and OIDC SSO](saml-sso.md) guide to get started.
+This guide demonstrates how to configure your IdP to encrypt SAML assertions for Palette Single Sign-On (SSO). The
+examples provided use [Auth0](https://auth0.com/) as the IdP, but the general principles apply to any SAML-compliant
+IdP. Refer to your IdP documentation for specific instructions on how to configure SAML applications and encryption
+settings.
 
 ## Prerequisites
 
-- Access to Palette to view the SSO configuration and obtain the SP encryption certificate and public key.
+- Palette has been configured for SAML SSO with your Identity Provider (IdP). If you have not yet set up SAML SSO, refer
+  to the [SAML and OIDC SSO](saml-sso.md) guide to get started.
+- Access to Palette with at least the [Tenant Viewer](../palette-rbac/tenant-scope-roles-permissions.md#admin)
+  permissions to view the SSO configuration and obtain the SP encryption certificate and public key.
 - Access to the IdP configuration to configure your SAML SSO settings.
 
 ## Configure Identity Provider for Encrypted Assertions
-
-The following example demonstrates how to configure your IdP to encrypt SAML assertions for Palette SSO. The examples
-provided use [Auth0](https://auth0.com/) as the IdP, but the general principles apply to any SAML-compliant IdP. Refer
-to your IdP documentation for specific instructions on how to configure SAML applications and encryption settings.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -33,7 +34,8 @@ to your IdP documentation for specific instructions on how to configure SAML app
 3. Ensure the **Configure** tab is selected and the **SSO Auth type** is set to **SAML**.
 
 4. Scroll down to the **Service Provider Metadata** section and copy the encryption certificate that is located under
-   the `<KeyDescriptor use="encryption">` tag. Save this certificate as a file named `sc_cert.pem`.
+   the `<KeyDescriptor use="encryption">` tag. The certificate content includes the `-----BEGIN CERTIFICATE-----` and
+   `-----END CERTIFICATE-----` lines and the content in between. Save this certificate as a file named `sc_cert.pem`.
 
    ```xml hideClipboard title="Example SP Metadata with encryption certificate" {4-6}
      <KeyDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" use="encryption">
@@ -219,19 +221,22 @@ structured and encrypted.
 
 2. Initiate an SSO login from Palette by navigating to your Palette login page and selecting the SSO option.
 
-3. In the Network tab, find the `POST` request to your Palette ACS URL. The URL will match the format
+3. A successful login will redirect you back to Palette. You can stop here or proceed with the rest of the steps to
+   inspect the SAML response and confirm that assertions are encrypted.
+
+4. In the Network tab, find the `POST` request to your Palette ACS URL. The URL will match the format
    `https://<your-palette-domain>/v1/auth/org/<your-org-name>/saml/callback`.
 
-4. Select that request and open the **Payload** tab. Copy the value of the `SAMLResponse` field. This value is
+5. Select that request and open the **Payload** tab. Copy the value of the `SAMLResponse` field. This value is
    Base64-encoded XML.
 
-5. Decode the value using the following command. Replace `<SAMLResponse-value>` with the copied value.
+6. Decode the value using the following command. Replace `<SAMLResponse-value>` with the copied value.
 
    ```bash
    echo "<SAMLResponse-value>" | base64 --decode
    ```
 
-6. Review the decoded XML and confirm the following directly from the raw response:
+7. Review the decoded XML and confirm the following directly from the raw response:
 
    - The response contains a `<saml:EncryptedAssertion>` element wrapping `<xenc:EncryptedData>`. If a plain text
      `<saml:Assertion>` element is displayed, encryption is not configured correctly.
