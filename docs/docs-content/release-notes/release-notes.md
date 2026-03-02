@@ -11,6 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March XX, 2026 - Release 4.7.X
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10058 -->
+
+- The internal Palette [Go versions](https://go.dev/doc/devel/release) have been upgraded to 1.24.12 and 1.25.7,
+  depending on the component, addressing [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8202 -->
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display sensitive pack values returned
+  by the [Palette API](/api/introduction).
+
 ## February 12, 2026 - Release 4.7.31
 
 ### Improvements
