@@ -167,7 +167,7 @@ authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 
 ![A screenshot of the Hello Universe values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_hellouniverse-values_4-8.webp)
 
-Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
+Click **Confirm & Create** to save any alterations applied and add the pack to your cluster profile.
 
 Finally, click **Add New Pack** again, search for `MetalLB`, and add the following pack to your cluster profile.
 
@@ -187,7 +187,7 @@ The following image displays the MetalLB layer with a custom IP range.
 
 ![A screenshot of the MetalLB values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_metallb-values_4-8.webp)
 
-Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
+Click **Confirm & Create** to save any alterations applied and add the pack to your cluster profile.
 
 Click **Next** to proceed. If there are no compatibility issues, Palette displays the cluster profile for review. Verify
 that the layers you added are correct, and click **Finish Configuration** to create the cluster profile.
