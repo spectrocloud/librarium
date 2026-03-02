@@ -108,12 +108,16 @@ cluster profile. The Local Path Provisioner is needed to configure local storage
 | ---------------------- | ----------- | ---------------- | --------- |
 | Local Path Provisioner | 0.0.32      | Palette Registry | Storage   |
 
+Click **Confirm & Create**.
+
 Next, click **Add New Pack** to include the add-on layers. Search for `Harbor` and add the following pack to your
 cluster profile. Harbor is required to manage local registries for locally managed Edge clusters.
 
 | **Pack Name**              | **Version** | **Registry**     | **Layer** |
 | -------------------------- | ----------- | ---------------- | --------- |
 | Harbor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
+
+Click **Confirm & Create**.
 
 Next, click **Add New Pack** to include the add-on layers. Search for `Hello Universe` and add the following pack to
 your cluster profile.
@@ -162,6 +166,8 @@ authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 ```
 
 ![A screenshot of the Hello Universe values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_hellouniverse-values_4-8.webp)
+
+Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
 
 Finally, click **Add New Pack** again, search for `MetalLB`, and add the following pack to your cluster profile.
 
