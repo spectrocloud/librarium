@@ -82,7 +82,7 @@ eligibility of Spectro Cloud, Inc., to receive technical data governed by the Te
   />
 </div>
 
-Spectro Cloud is proud to be certified UK Cyber Essentials Plus, the advanced level of the UK Government-backed Cyber
+Spectro Cloud is proud to be UK Cyber Essentials Plus certified, the advanced level of the UK Government-backed Cyber
 Essentials cybersecurity standard. Cyber Essentials is a scheme developed by the UK’s National Cyber Security Centre
 (NCSC) to help organizations of all sizes guard against the most common internet-based cyber threats by implementing a
 defined set of technical security controls. Cyber Essentials Plus includes independent, hands-on technical testing of
