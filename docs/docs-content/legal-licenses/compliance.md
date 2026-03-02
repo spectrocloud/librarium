@@ -71,6 +71,26 @@ Defense and the U.S. Department of Defense, that helps to protect controlled Unc
 Data (MCTD) and technology from common adversaries. Our Joint Certification Program certification establishes the
 eligibility of Spectro Cloud, Inc., to receive technical data governed by the Technical Data Control Regulations (TCDR).
 
+## UK Cyber Essentials Plus Certification
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <iframe
+    src="https://registry.blockmarktech.com/certificates/41827ab6-48ed-4a59-8061-2792659a5802/widget/?tooltip_position=bottom&theme=transparent"
+    style={{ border: "none", height: 180, width: 180 }}
+    title="Blockmark certificate widget"
+    loading="lazy"
+  />
+</div>
+
+Spectro Cloud is proud to be UK Cyber Essentials Plus certified, the advanced level of the UK Government-backed Cyber
+Essentials cybersecurity standard. Cyber Essentials is a scheme developed by the UK’s National Cyber Security Centre
+(NCSC) to help organizations of all sizes guard against the most common internet-based cyber threats by implementing a
+defined set of technical security controls. Cyber Essentials Plus includes independent, hands-on technical testing of
+our systems, conducted by accredited specialists to verify that our defenses are effectively implemented and operating
+as intended. This certification demonstrates our commitment to strong cyber hygiene, validated security practices, and
+trustworthy operations for customers, partners, and supply chains that demand high assurance against everyday cyber
+risks.
+
 ## UK Cyber Essentials Certification
 
 <div style={{ display: "flex", justifyContent: "center" }}>
