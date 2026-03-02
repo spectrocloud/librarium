@@ -30,7 +30,10 @@ separating responsibilities and network restrictions.
 - **Dedicated SaaS**: The management plane is hosted in a cloud or region that you specify in our Spectro Cloud cloud
   account with a dedicated instance that we manage. In this scenario, you decide when to upgrade the management plane.
 
-- **Self-hosted**: The management plane is hosted in your environment. This includes bare metal devices, private data centers (VMware vSphere, Apache CloudStack, Nutanix, and MAAS), public clouds that manage your compute instances (AWS, Azure, and GCP), or managed Kubernetes services (Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE)).
+- **Self-hosted**: The management plane is hosted in your environment. This includes bare metal devices, private data
+  centers (VMware vSphere, Apache CloudStack, Nutanix, and MAAS), public clouds that manage your compute instances (AWS,
+  Azure, and GCP), or managed Kubernetes services (Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service
+  (AKS), and Google Kubernetes Engine (GKE)).
 
 <br />
 
