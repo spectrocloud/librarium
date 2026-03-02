@@ -14,7 +14,9 @@ Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can 
 and must have the Palette agent installed.
 
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
-host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then let it self-register. Locally managed Edge devices will still need access to any registries, either from the internet or local network access, to download necessary packs for the cluster.
+host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
+let it self-register. Locally managed Edge devices will still need access to any registries, either from the internet or
+local network access, to download necessary packs for the cluster.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-host.webp)
 
@@ -25,8 +27,8 @@ host using the Edge installer ISO created in the [Build Edge Artifacts](./build-
   - 2 CPUs
   - 8 GB memory
   - 300 GB storage
-- **CHANGE?** If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed.
-  This tutorial uses
+- **CHANGE?** If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine
+  Manager) installed. This tutorial uses
   [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0 as
   an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same minimum
   hardware requirements.
@@ -134,7 +136,6 @@ values from the Edge installer user data you created during the EdgeForge proces
 information.
 
 :::
-
 
 **LOG INTO EDGE UI**
 
