@@ -7,15 +7,14 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["getting-started", "tutorial", "locally-managed", "air-gapped", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "airgapped", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual machines
 and must have the Palette agent installed.
 
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
-host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
-register the host with Palette. Once registered, the host will be ready to be part of an Edge cluster.
+host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then let it self-register. Locally managed Edge devices will still need access to any registries, either from the internet or local network access, to download necessary packs for the cluster.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-host.webp)
 
@@ -25,8 +24,8 @@ register the host with Palette. Once registered, the host will be ready to be pa
   minimum hardware specifications.
   - 2 CPUs
   - 8 GB memory
-  - 150 GB storage
-- If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed.
+  - 300 GB storage
+- **CHANGE?** If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed.
   This tutorial uses
   [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0 as
   an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same minimum
@@ -127,19 +126,6 @@ The device is now ready to be registered with Palette as an Edge host.
 
 ## Register Edge Host
 
-<Tabs groupId="host">
-
-<TabItem label="VM Host" value="VM Host">
-
-To register the host with Palette, select the VM in VirtualBox and click **Start** to power it on. The VM boots and
-obtains an IP address from the host machine's bridged network.
-
-After a few minutes, the VM screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the
-[Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
-
-![A screenshot of the Edge host.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
-
 :::tip
 
 You can provide site-specific Edge installer configuration user data if you need to apply new values or override default
@@ -149,48 +135,14 @@ information.
 
 :::
 
-Log in to [Palette](https://console.spectrocloud.com/). From the left main menu, select **Clusters**. Click the **Edge
-Hosts** tab to view the registered hosts.
 
-Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
-should match the ID displayed on the VM screen.
-
-![A screenshot of the Edge host in Palette.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
-
-</TabItem>
-
-<TabItem label="Bare Metal Host" value="Bare Metal Host">
-
-To register the host with Palette, power on your bare metal device. Let Palette Edge choose the registration boot option
-automatically from the GRand Unified Bootloader (GRUB) menu. The device boots and obtains an IP address from the
-network.
-
-After a few minutes, the device screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the
-[Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
-
-![A screenshot of the Edge host.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
-
-:::tip
-
-You can provide site-specific Edge installer configuration user data if you need to apply new values or override default
-values from the Edge installer user data you created during the EdgeForge process. Refer to
-[Apply Site User Data](../../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for more
-information.
-
-:::
+**LOG INTO EDGE UI**
 
 Log in to [Palette](https://console.spectrocloud.com/). From the left main menu, select **Clusters**. Click the **Edge
 Hosts** tab to view the registered hosts.
 
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the host screen.
-
-![A screenshot of the Edge host in Palette.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
-
-</TabItem>
-
-</Tabs>
 
 ## Next Steps
 
