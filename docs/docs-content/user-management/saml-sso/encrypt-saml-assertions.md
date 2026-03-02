@@ -122,9 +122,9 @@ to your IdP documentation for specific instructions on how to configure SAML app
 8. Configure your IdP to emit the SAML attributes Palette requires and to encrypt assertions using the SP certificate
    and public key from the previous steps. Palette expects the following attributes in the SAML response:
 
-   - `Email` — the user's email address, used as the SAML NameID.
-   - `FirstName` — the user's first name.
-   - `LastName` — the user's last name.
+   - Replace `Email` with the user's email address, used as the SAML `NameID`.
+   - Replace `FirstName` with the user's first name.
+   - Replace `LastName` with the user's last name.
 
    <details>
 
@@ -233,8 +233,8 @@ structured and encrypted.
 
 6. Review the decoded XML and confirm the following directly from the raw response:
 
-   - The response contains a `<saml:EncryptedAssertion>` element wrapping `<xenc:EncryptedData>`. If you see a plaintext
-     `<saml:Assertion>` element instead, encryption is not configured correctly.
+   - The response contains a `<saml:EncryptedAssertion>` element wrapping `<xenc:EncryptedData>`. If a plain text
+     `<saml:Assertion>` element is displayed, encryption is not configured correctly.
 
    - A `<Signature>` element is present at the response level. If no `<Signature>` is present, check your IdP signing
      settings.
