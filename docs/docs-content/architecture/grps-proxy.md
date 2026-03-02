@@ -87,7 +87,7 @@ traffic can pass through. If the gRPC connection fails, the agent automatically 
 | gRPC with HTTP/HTTPS - No SSL bump                                                                                                  | gRPC traffic is sent over HTTP/HTTPS, and the proxy does not perform a Secure Socket Layer (SSL) bump. This is universally supported. | ✅                  |
 | gRPC with HTTP/HTTPS - SSL bump                                                                                                     | gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump. Support varies by vendor.                                   | ⚠️                  |
 | gRPC with [Squid](https://wiki.squid-cache.org) - [HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) | gRPC can pass through the proxy because the HTTP/2 connection between the Palette agent and the management plane remains intact.      | ✅                  |
-| gRPC with [Squid](https://wiki.squid-cache.org) - SSL bump                                                                          | Squid does not support HTTP/2, so gRPC fails when Squid performs an SSL bump.                                                            | ❌                  |
+| gRPC with [Squid](https://wiki.squid-cache.org) - SSL bump                                                                          | Squid does not support HTTP/2, so gRPC fails when Squid performs an SSL bump.                                                         | ❌                  |
 
 The following sections provide more information about gRPC and proxies.
 
