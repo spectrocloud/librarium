@@ -37,7 +37,9 @@ help: ## Display this help
 
 initialize: ## Initialize the repository dependencies
 	@echo "initializing npm dependencies"
+	npm config set ignore-scripts true
 	npm ci
+	npm_config_ignore_scripts=false npm rebuild sharp
 	touch .env
 	npm run prepare
 	vale sync
@@ -87,7 +89,9 @@ clean-visuals:
 
 init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
+	npm config set ignore-scripts true
 	npm ci
+	npm_config_ignore_scripts=false npm rebuild sharp
 	touch .env
 	grep -q "^ALGOLIA_APP_ID=" .env || echo "\nALGOLIA_APP_ID=1234567890" >> .env
 	grep -q "^ALGOLIA_SEARCH_KEY=" .env || echo "\nALGOLIA_SEARCH_KEY=1234567890" >> .env
@@ -96,6 +100,11 @@ init: ## Initialize npm dependencies
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
 	npm run prepare
+
+ci-local: ## Initialize npm dependencies for local development
+	@echo "initializing npm dependencies for local development"
+	npm ci --ignore-scripts
+	npm_config_ignore_scripts=false npm rebuild sharp
 
 start: ## Start a local development server
 	npm run start

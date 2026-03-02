@@ -88,6 +88,10 @@ cd librarium
 make init
 ```
 
+The `make init` command will install all the required dependencies and create your `.env` file. It will also add the
+`ignore-scripts=true` setting to your local npm configuration. This setting is required to prevent post-install scripts
+from running during the installation of dependencies.
+
 Next, add your Palette API key to the `.env` file. Replace `<your-palette-api-key>` with your Palette API key.
 
 ```shell
@@ -727,6 +731,92 @@ The snippet above will work with the example partial we have in our repository, 
 Note that the `message` field corresponds to the `{props.message}` reference in the `_partials/_partial_example.mdx`
 file.
 
+### Numbered Lists
+
+Multi-step partials that do not begin a new procedure (start with 1) cannot be reused if the partial is written in
+typical MDX syntax. The example below shows a small snippet of a procedure.
+
+```mdx
+---
+partial_category: clusters-aws-account-setup
+partial_name: example
+---
+
+1. **Validate** your AWS credentials. A green check mark indicates valid credentials.
+
+2. Toggle **Add IAM Policies** on and use the **Policies** drop-down menu to select any desired IAM policies.
+
+3. Select **Confirm** to add your AWS account to Palette.
+```
+
+This partial could be reused in several places, as there are several types of AWS accounts and authentication methods.
+However, the steps prior to this partial vary based on the procedure. For example, the partial may need to start at step
+6 for AWS Commercial cloud but step 10 for AWS Secret cloud, which makes reuse tricky. Since MDX files are generated at
+runtime instead of buildtime, implementing it in either of the following ways will _not_ work.
+
+<!-- prettier-ignore-start -->
+
+```md
+6. In Palette, paste the role ARN into the **ARN** field.
+
+7. <PartialComponent category="clusters-aws-account-setup" name="example" />
+   <!-- creates a nested list on step 7 that begins with step 1 -->
+
+<PartialComponent category="clusters-aws-account-setup" name="example" /> <!-- creates a new list starting at 1 -->
+```
+
+<!-- prettier-ignore-end -->
+
+There are several other ways you can manipulate the partial in an attempt to fix this issue, but only _one_ works. To
+reuse a mid-procedure partial that contains a numbered list, create each step item _except the first step_ as an HTML
+list item (`<li>`).
+
+```mdx
+---
+partial_category: clusters-aws-account-setup
+partial_name: example
+---
+
+**Validate** your AWS credentials. A green check mark indicates valid credentials.
+
+<li> Toggle **Add IAM Policies** on and use the **Policies** drop-down menu to select any desired IAM policies.</li>
+
+<li>Select **Confirm** to add your AWS account to Palette.</li>
+```
+
+When you reference the partial in a markdown file, put the partial _after_ the numbered step. Doing so establishes the
+step number for the first item, and the steps indicated with `<li>` are rendered with the correct subsequent numbers.
+
+<!-- prettier-ignore-start -->
+
+```md
+6. In Palette, paste the role ARN into the **ARN** field.
+
+7. <PartialComponent category="clusters-aws-account-setup" name="example" />
+
+8. Additional step.
+```
+
+<!-- prettier-ignore-end -->
+
+Any steps that come _after_ partial are updated with the correct values during runtime. For example, the above partial
+would be rended as follows.
+
+<!-- prettier-ignore-start -->
+
+```md
+6. In Palette, paste the role ARN into the **ARN** field.
+
+7. **Validate** your AWS credentials. A green check mark indicates valid credentials.
+
+8. Toggle **Add IAM Policies** on and use the **Policies** drop-down menu to select any desired IAM policies.
+
+9. Select **Confirm** to add your AWS account to Palette.
+
+10.  Additional step.
+```
+<!-- prettier-ignore-end -->
+
 ## Palette/VerteX URLs
 
 A special component has been created to handle the generation of URLs for Palette and VerteX. The component is called
@@ -736,7 +826,8 @@ The component will automatically prefix the path to the URL. The component has t
 
 - `edition` - The edition of the URL. This can be either `Palette` or `Vertex`. Internally, the component will use this
   value to determine the base URL.
-- `text` - The text to display for the link.
+- `text` - The text to display for the link. To include a property value, wrap the text in `{``}` and insert the
+  property using `${props.field}`.
 - `url` - The path to append to the base URL.
 
 Below is an example of how to use the component:
@@ -749,6 +840,16 @@ Below is an example of how to use the component:
     url="/system-management/account-management"
   />
   page to learn more about system administrator roles.
+```
+
+Below is an example of how to use the component when you want the link text to include a property value:
+
+```mdx
+<PaletteVertexUrlMapper
+  edition={props.edition}
+  text={`Install Airgap ${props.version}`}
+  url="/supported-environments/vmware/install/airgap"
+/>
 ```
 
 In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
@@ -850,7 +951,7 @@ stop and restart the local development server to observe the changes. The same a
 thing to remember is to reference a pack by the name used in the Palette API, not the display name. You can find the
 pack's name in the description component or by looking at the URL of the pack's page.
 
-#### Exluding Packs
+#### Excluding Packs
 
 You can specify a list of packs to exclude from the packs component. To exclude a pack, add the pack name to the
 [exclude_packs.json](./static/packs-data/exclude_packs.json) file.
@@ -860,7 +961,7 @@ You can specify a list of packs to exclude from the packs component. To exclude 
 [
   "palette-upgrader", 
   "csi-aws-new", 
-  "inser-pack-name-here"
+  "insert-pack-name-here"
 ]
 ```
 
@@ -927,8 +1028,28 @@ or a message indicating that no content is available. Refer to the table below f
 
 To display the Additional Details content, create a markdown file with the same name as the pack in the the
 [`docs/docs-content/integrations/`](./docs/docs-content/integrations/) content folder. For example, if the pack name is
-`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.md`. The additional details content requires you to
-follow the [Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
+`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.mdx`.
+
+When you create Additional Details content, the `category` field is optional because it is unused, and the `logoUrl`
+field is only necessary when a pack has no `README` file.
+
+Your frontmatter might resemble the following example.
+
+```
+---
+sidebar_label: "Pack Name"
+title: "Pack Name"
+description: "Pack description"
+hide_table_of_contents: true
+type: "integration"
+sidebar_class_name: "hide-from-sidebar"
+tags: ["tag1", "tag2", "tag3"]
+logoUrl: "https://registry.dev.spectrocloud.com/v1/heartbeat/blobs/sha256:19fec69ae172c3e54d5fb09c176517cf7bfeb1bc740bde65c200e14115510313?type=image.webp"
+---
+```
+
+The additional details content requires you to follow the
+[Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
 
 If you want to add content specific to a version, include the following heading and tabs component in the markdown file.
 
@@ -979,7 +1100,7 @@ Your page will now redirect to `/integrations/packs/?pack=myPack`.
 
 ### Create link with full URL display
 
-You must use the `<FullUrlLink />` component to create a link that displays its full URL in text, as thi is currently
+You must use the `<FullUrlLink />` component to create a link that displays its full URL in text, as this is currently
 not supported by markdown.
 
 ```mdx
@@ -1293,3 +1414,6 @@ recognition, all environment variables used by these scripts are named using the
 - `make generate-component-updates` creates only the component updates skeleton in the Palette release notes.
 - `make generate-release-notes` creates only the release notes changes for the Palette release.
 - `make generate-release` creates all Palette release related updates, excluding release notes.
+- `make ci-local` installs or updates all node dependencies required to start and build the site locally. This command
+  is preferred over `npm ci` as it prevents scripts from running during the installation process except for the Sharp
+  module dependency.
