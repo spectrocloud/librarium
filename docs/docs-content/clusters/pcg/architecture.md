@@ -76,7 +76,7 @@ OS layer.
   with the CA certificate.
 
 For guidance on configuring proxy CA certificates, refer to appropriate Palette CLI PCG deployment guide for
-[MAAS](./deploy-pcg/maas.md), [OpenStack](./deploy-pcg/openstack.md), [VMware vSphere](./deploy-pcg/vmware.md), or
+[MAAS](./deploy-pcg/maas.md), [VMware vSphere](./deploy-pcg/vmware.md), or
 [Apache CloudStack](./deploy-pcg/cloudstack.md).
 
 #### Existing Kubernetes Cluster
@@ -210,6 +210,6 @@ The following table explains the different use cases for when a PCG or a System 
 
 To use the System Private Gateway with a self-hosted Palette instance, you must toggle the **Use System Private
 Gateway** option while registering a private cloud account with Palette. This option is only available from the Palette
-user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
+user interface for private cloud environments such as MAAS, Apache CloudStack, and VMware vSphere.
 
 ![View of the cloud account registration screen with the system PCG check box highlighted](/clusters_pcg_architecture_system-pcg-ui.webp)

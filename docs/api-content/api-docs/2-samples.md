@@ -71,19 +71,19 @@ want to deploy the cluster, such as public cloud or on-prem.
 
 The following table outlines all available provider options.
 
-| **Provider**                                   | **Value**     |
-| ---------------------------------------------- | ------------- |
-| **Azure IaaS**                                 | `azure`       |
-| **Azure AKS**                                  | `aks`         |
-| **AWS IaaS**                                   | `aws`         |
-| **AWS EKS**                                    | `eks`         |
-| **GCP IaaS**                                   | `gcp`         |
-| **GCP GKE**                                    | `gke`         |
-| **MAAS** (Canonical)                           | `maas`        |
-| **VMware vSphere**                             | `vsphere`     |
-| **Openstack**                                  | `openstack`   |
-| **Edge Native**                                | `edge-native` |
-| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`     |
+| **Provider**                                   | **Value**           |
+| ---------------------------------------------- | ------------------- |
+| **Azure IaaS**                                 | `azure`             |
+| **Azure AKS**                                  | `aks`               |
+| **AWS IaaS**                                   | `aws`               |
+| **AWS EKS**                                    | `eks`               |
+| **GCP IaaS**                                   | `gcp`               |
+| **GCP GKE**                                    | `gke`               |
+| **MAAS** (Canonical)                           | `maas`              |
+| **VMware vSphere**                             | `vsphere`           |
+| **Apache CloudStack**                          | `apache-cloudstack` |
+| **Edge Native**                                | `edge-native`       |
+| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`           |
 
 Set the provider as an environment variable. For example, issue the following command to set Azure IaaS as the provider.
 
@@ -123,7 +123,7 @@ curl --location "https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?Proje
 ```js
 const apiKey = process.env.API_KEY;
 const projectID = process.env.PROJECT_ID;
-const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws", "aks", "openstack"
+const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws" or "aks"
 
 // Build the request URL
 const url = `https://api.spectrocloud.com/v1/spectroclusters/${provider}?ProjectUid=${projectID}`;
@@ -244,7 +244,7 @@ def send_request():
     # Get the required environment variables
     apiKey = os.environ['API_KEY']
     projectID = os.environ['PROJECT_ID']
-    provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws", "aks", "openstack"
+    provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws" or "aks"
 
     # Build the request URL
     url = f"https://api.spectrocloud.com/v1/spectroclusters/{provider}?ProjectUid={projectID}"
