@@ -8,14 +8,12 @@ tags: ["palette", "self-hosted", "airgap", "downloads"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-## Additional OVAs
-
 The following tables list additional OVAs you may need depending on the Kubernetes version and distribution you want to
 use for the workload clusters.
 
 <PartialsComponent category="self-hosted" name="airgap-additional-ovas" />
 
-### Usage Instructions
+## Usage Instructions
 
 Use the provided download URL to download the OVA and upload it to your vSphere environment. The OVA must be uploaded to
 the `spectro-templates ` so Palette can access it.

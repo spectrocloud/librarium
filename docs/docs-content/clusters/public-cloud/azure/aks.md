@@ -10,14 +10,25 @@ sidebar_position: 30
 Palette supports creating and managing Azure Kubernetes Service (AKS) clusters deployed to an Azure account. This guide
 explains how you can create an Azure AKS cluster managed by Palette.
 
+## Limitations
+
+- AKS clusters cannot be deployed in [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud).
+
+- When integrating with private Domain Name System (DNS) zones, AKS clusters created by Palette use a user-assigned
+  managed identity instead of a system-assigned managed identity. This identity must have the
+  [`Microsoft.Network/privateDnsZones/read` permission](https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/networking#microsoftnetwork)
+  in the required subscriptions. Check out
+  [What is managed identities for Azure resources?](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities)
+  to learn more about user-assigned vs. system-assigned managed identities.
+
 ## Prerequisites
 
 - An active Azure cloud account integrated with Palette. Review
   [Register and Manage Azure Cloud Account](./azure-cloud.md) for guidance.
 
-- A Secure Shell (SSH) key that you have pre-configured in your Azure environment. Only RSA SSH keys are supported when
-  deploying Azure AKS clusters. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide for more
-  information about creating and managing SSH keys in Palette.
+- A Secure Shell (SSH) key that you have pre-configured in your Azure environment. Only RSA and ED25519 SSH keys are
+  supported when deploying Azure AKS clusters. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide
+  for more information about creating and managing SSH keys in Palette.
 
 - An infrastructure cluster profile for Azure. Review
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
@@ -52,6 +63,21 @@ explains how you can create an Azure AKS cluster managed by Palette.
   - Virtual Hard Disk (VHD)
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
+
+- If you configure a private DNS zone in a dedicated resource group for an AKS cluster, the private DNS zone must be
+  linked to the cluster’s VNet to enable DNS resolution for private endpoints. If no private DNS zone is provided, AKS
+  creates a private DNS zone in the node resource group. Refer to the
+  [Create a private Azure Kubernetes Service (AKS) cluster](https://learn.microsoft.com/en-us/azure/aks/private-clusters)
+  guide for further information.
+
+  Review the following guidelines to create a DNS zone and resource group before deploying your cluster.
+
+  - For private AKS clusters, the private DNS zone used for the API server must be named
+    `private.<cluster-region>.azmk8s.io`. This naming convention is mandatory regardless of whether the private DNS zone
+    resides in a different resource group, region, or subscription, provided it is correctly linked to the cluster VNet.
+
+  - If the private DNS zone is located in a different subscription than the AKS cluster, both subscriptions must have
+    the `Microsoft.ContainerService` resource provider registered.
 
 :::warning
 
@@ -195,6 +221,21 @@ to learn more about the ports used for communication.
                 ```
 
             </details>
+            <details>
+
+            <summary> Private DNS Zone </summary>
+
+            To configure a private DNS zone, update the following configuration in the Kubernetes layer of your cluster profile. Replace the placeholders with your subscription ID, resource group ID, user assigned identity name, and cluster region.
+
+                ```yaml
+                managedControlPlane:
+                  userAssignedIdentities:
+                    - providerID: /subscriptions/<subscription-id>/resourceGroups/<identity-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>
+                  apiServerAccessProfile:
+                    privateDNSZone: /subscriptions/<subscription-id>/resourceGroups/<dns-resource-group>/providers/Microsoft.Network/privateDnsZones/private.<cluster-region>.azmk8s.io
+                ```
+
+            </details>
 
 7.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
@@ -202,10 +243,9 @@ to learn more about the ports used for communication.
 
     :::warning
 
-    If you enable the **Disable Properties** setting when
-    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-    resources on your behalf. In this case, every time you deploy a cluster, you must manually specify its virtual
-    network subnets and security groups.
+    If you enable the **Disable Properties** setting when [registering an Azure cloud account](./azure-cloud.md),
+    Palette cannot create network resources on your behalf. In this case, every time you deploy a cluster, you must
+    manually specify its virtual network subnets and security groups.
 
     :::
 
@@ -216,7 +256,7 @@ to learn more about the ports used for communication.
     | **Resource Group**         | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | **Storage Account**        | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | **Storage Container**      | Optionally, if you are using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | **SSH Key**                | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. Only RSA SSH keys are supported when deploying Azure AKS clusters. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                                                                                        |
+    | **SSH Key**                | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. Only RSA and ED25519 SSH keys are supported when deploying Azure AKS clusters. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                                                                            |
     | **Enable Private Cluster** | Whether the control plane or API server should have internal IP addresses. Refer to the [Create a private AKS cluster](https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=azure-portal) guide for more information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | **Static Placement**       | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different availability zones. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. <br /> <br /> Select **Static Placement** for clusters where you want to use your network proxy configurations. To learn more about proxy configurations, check out [Proxy Configuration](./architecture.md#proxy-configuration). |
 
@@ -275,14 +315,17 @@ to learn more about the ports used for communication.
 
     The following table describes how to configure a worker node pool.
 
-    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-    | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Enable Autoscaler**           | Whether Palette should scale the pool horizontally based on its per-node workload counts. If enabled, instead of the **Number of nodes in the pool** parameter, you will have to configure the **Minimum size** and **Maximum size** parameters, which will allow AKS to adjust the node pool size based on the workload. You can set the node count to a minimum of zero and a maximum of 1000. Setting both parameters to the same value results in a static node count.                                                                                                                                                                                                                                                  |
-    | **System Node Pool**            | Sets the pool to be a system node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | **Number of nodes in the pool** | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-    | **Additional Labels**           | Optional node labels in the key-value format. To learn more, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-    | **Taints**                      | You can apply optional taint labels to a worker node pool. Review the [Node Pool](../../cluster-management/node-pool.md) and [Taints and Tolerations](../../cluster-management/taints.md) guides to learn more.<br/><br/>Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />- **NoSchedule**—Pods are not scheduled onto nodes with this taint.<br />- **PreferNoSchedule**—Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />- **NoExecute**—Existing pods on nodes with this taint are evicted. |
+    | **Parameter**                         | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+    | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Node pool name**                    | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Enable Autoscaler**                 | Whether Palette should scale the pool horizontally based on its per-node workload counts. If enabled, instead of the **Number of nodes in the pool** parameter, you will have to configure the **Minimum size** and **Maximum size** parameters, which will allow AKS to adjust the node pool size based on the workload. You can set the node count to a minimum of zero and a maximum of 1000. Setting both parameters to the same value results in a static node count.                                                                                                                                                                                                                                                                                                                                                                     |
+    | **System Node Pool**                  | Sets the pool to be a system node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+    | **Number of nodes in the pool**       | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Additional Labels**                 | Optional node labels in the key-value format. To learn more, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Additional Annotations (Optional)** | Additional Kubernetes [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to assign to each worker node.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Override Kubeadm Configuration**    | Adjust kubelet arguments for [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) or pre-kubeadm commands to meet specific operational or environment requirements for your worker nodes. This option is disabled by default. When enabled, the **Configure Kubeadm** button appears.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Configure Kubeadm**                 | Available only when **Override Kubeadm Configuration** is enabled. Select this option to override `kubeadmconfig.kubeletExtraArgs` and `kubeadmconfig.preKubeadmConfig` commands configured in the Kubernetes layer of your cluster profile. Any changes made post-cluster deployment will trigger a cluster repave.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+    | **Taints**                            | You can apply optional taint labels to a worker node pool. Review the [Node Pool](../../cluster-management/node-pool.md) and [Taints and Tolerations](../../cluster-management/taints.md) guides to learn more.<br/><br/>Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />- **NoSchedule**—Pods are not scheduled onto nodes with this taint.<br />- **PreferNoSchedule**—Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />- **NoExecute** — New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. |
 
     #### Worker Node Pool Cloud Configuration
 
@@ -297,29 +340,15 @@ to learn more about the ports used for communication.
 
 11. Click **Next** to continue.
 
-12. Specify your preferred **OS Patching Schedule**.
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
-    Kubernetes configuration security, penetration testing, and conformance testing.
+13. Select **Validate** to review your cluster configurations and settings.
 
-14. Schedule any backups you want Palette to perform. Review
-    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
-<!-- prettier-ignore-start -->
-
-20. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
-    to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
-    pack additional details for an example.
-
-<!-- prettier-ignore-end -->
-
-21. Click **Validate** and review the cluster configuration and settings summary.
-
-22. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
-
-The cluster details page contains the status and details of the deployment. Use this page to track the deployment
-progress.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs,
 refer to [Cluster Removal](../../cluster-management/remove-clusters.md).

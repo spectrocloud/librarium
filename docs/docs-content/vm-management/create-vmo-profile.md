@@ -102,13 +102,35 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 
    :::
 
-8. Click **Confirm & Create**.
+<!--prettier-ignore-start-->
 
-9. In the following screen, click **Next**.
+8. If you are using a Container Storage Interface (CSI) that installs its own Custom Resource Definitions (CRDs) for
+   VolumeSnapshotClass, VolumeSnapshot, and VolumeSnapshotContent, you need to disable the equivalent CRDs from being
+   installed by the VMO pack. An example of such a CSI is the
+   <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack.
 
-10. Review the profile and click **Finish Configuration**.
+   To do this, click **Values** in the **Pack Details** section. The pack manifest editor appears. Locate the
+   `charts.virtual-machine-orchestrator.snapshotController.installCRDs` parameter in the manifest and set its value to
+   `false`.
 
-11. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
+   ```yaml {6}
+   charts:
+     virtual-machine-orchestrator:
+       ...
+       snapshotController:
+         ...
+         installCRDs: false
+   ```
+
+<!--prettier-ignore-end-->
+
+9. Click **Confirm & Create**.
+
+10. In the following screen, click **Next**.
+
+11. Review the profile and click **Finish Configuration**.
+
+12. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
     tutorials.
 
 </TabItem>
@@ -199,13 +221,35 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 
     </Tabs>
 
-10. Click **Confirm & Create**.
+<!--prettier-ignore-start-->
 
-11. In the following screen, click **Next**.
+10. If you are using a Container Storage Interface (CSI) that installs its own Custom Resource Definitions (CRDs) for
+    VolumeSnapshotClass, VolumeSnapshot, and VolumeSnapshotContent, you need to disable the equivalent CRDs from being
+    installed by the VMO pack. An example of such a CSI is the
+    <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack.
 
-12. Review the profile and click **Finish Configuration**.
+    To do this, click **Values** in the **Pack Details** section. The pack manifest editor appears. Locate the
+    `charts.virtual-machine-orchestrator.snapshotController.installCRDs` parameter in the manifest and set its value to
+    `false`.
 
-13. Add the add-on profile when you create a cluster. For more information, refer to
+    ```yaml {6}
+    charts:
+      virtual-machine-orchestrator:
+        ...
+        snapshotController:
+          ...
+          installCRDs: false
+    ```
+
+<!--prettier-ignore-end-->
+
+11. Click **Confirm & Create**.
+
+12. In the following screen, click **Next**.
+
+13. Review the profile and click **Finish Configuration**.
+
+14. Add the add-on profile when you create a cluster. For more information, refer to
     [Create Cluster Definition](../clusters/edge/site-deployment/cluster-deployment.md).
 
 </TabItem>
@@ -260,13 +304,35 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
             registryBasePath: <REPLACE ME>
         ```
 
-9.  Click **Confirm & Create**.
+<!--prettier-ignore-start-->
 
-10. On the following screen, click **Next**.
+9. If you are using a Container Storage Interface (CSI) that installs its own Custom Resource Definitions (CRDs) for
+   VolumeSnapshotClass, VolumeSnapshot, and VolumeSnapshotContent, you need to disable the equivalent CRDs from being
+   installed by the VMO pack. An example of such a CSI is the
+   <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack.
 
-11. Review the profile and click **Finish Configuration**.
+   To do this, click **Values** in the **Pack Details** section. The pack manifest editor appears. Locate the
+   `charts.virtual-machine-orchestrator.snapshotController.installCRDs` parameter in the manifest and set its value to
+   `false`.
 
-12. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
+   ```yaml {6}
+   charts:
+     virtual-machine-orchestrator:
+       ...
+       snapshotController:
+         ...
+         installCRDs: false
+   ```
+
+<!--prettier-ignore-end-->
+
+10. Click **Confirm & Create**.
+
+11. On the following screen, click **Next**.
+
+12. Review the profile and click **Finish Configuration**.
+
+13. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
     tutorials.
 
 :::info

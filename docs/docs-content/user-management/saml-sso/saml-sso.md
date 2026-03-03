@@ -25,6 +25,13 @@ Palette can act as an Identity Provider (IDP) when <VersionedLink text="Palette 
 
 ## OIDC Limitations
 
+:::warning
+
+Palette enforces a strict one-to-one mapping between an SSO domain and a tenant. We recommend planning tenant boundaries
+around identity domains and using distinct SSO domains to enforce tenant separation.
+
+:::
+
 Palette [API keys](../authentication/api-key/api-key.md) that belong to Palette users removed from the organization
 through OIDC/SAML are not automatically removed. We recommend that you remove these keys to ensure that they are no
 longer used. You can programmatically remove the API keys using the REST API or the Palette SDK. Check out the
@@ -41,7 +48,17 @@ To learn more about the API key management tasks you can perform as a tenant adm
 
 Check out the following resources to enable SSO in Palette with the supported Identity Providers (IDP).
 
-## Resources
+## Encrypted SAML Assertions
+
+By default, SAML assertions are signed but transmitted as plain XML. Palette supports assertion encryption as an
+additional layer of security, where the Identity Provider (IdP) wraps the assertion in an encrypted envelope before
+sending it to Palette. This prevents the assertion contents, including user attributes and identity claims, from being
+read by any intermediary that may intercept the exchange. To learn how to enable this for your IdP, refer to the
+[Encrypt SAML Assertions](encrypt-saml-assertions.md) guide.
+
+## Next Steps
+
+The following guides provide step-by-step instructions to enable SSO in Palette with the mentioned Identity Providers.
 
 - [Enable SSO with Microsoft Active Directory Federation Service (AD FS)](palette-sso-with-adfs.md)
 
@@ -56,3 +73,6 @@ Check out the following resources to enable SSO in Palette with the supported Id
 - [Palette SSO with Microsoft Entra ID](palette-sso-with-entra-id.md)
 
 - [Palette SSO with Custom CA](palette-sso-with-custom-ca.md)
+
+You can also learn how to encrypt SAML assertions for enhanced security in the
+[Encrypt SAML Assertions](encrypt-saml-assertions.md) guide.

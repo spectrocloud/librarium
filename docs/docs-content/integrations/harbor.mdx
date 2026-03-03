@@ -1,0 +1,37 @@
+---
+sidebar_label: "harbor"
+title: "Harbor"
+description: "Harbor Edge Native Config pack in Spectro Cloud"
+hide_table_of_contents: true
+type: "integration"
+category: ["system-app", "registry"]
+sidebar_class_name: "hide-from-sidebar"
+logoUrl: "https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d41a6eb2398194dd4563d31d371074375255ba8a2fc4feff4ef33?type=image.webp"
+tags: ["packs", "harbor", "system-app"]
+---
+
+<RedirectPackPage packName="harbor" />
+
+## Versions Supported
+
+<Tabs queryString="parent">
+<TabItem value="1.18.x" label="1.18.1">
+
+### Configure HTTP Access
+
+The Harbor chart allows you to configure how the service is exposed. You can choose between `ingress`, `clusterIP`, `nodePort`, or `loadBalancer`. HTTP access can be enabled or disabled using the `charts.harbor.expose.http.enabled` parameter.
+
+```yaml {9}
+charts:
+  harbor:
+    expose:
+      # Set how to expose the service. Set the type as "ingress", "clusterIP", "nodePort" or "loadBalancer"
+      # and fill the information in the corresponding section
+      type: nodePort
+      # Enable HTTP access. When disabled, only HTTPS port will be exposed in the service when tls is enabled.
+      http:
+        enabled: true
+```
+
+</TabItem>
+</Tabs>

@@ -12,7 +12,6 @@ The following table lists the open source licenses tied to the libraries and mod
 
 | Library                                                                                       | License                                                                   |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| @ant-design/compatible                                                                        | [MIT](https://opensource.org/license/mit/)                                |
 | @ant-design/icons                                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | @ark-ui/react                                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | @datadog/browser-logs                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -48,6 +47,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | @patternfly/react-topology                                                                    | [MIT](https://opensource.org/license/mit/)                                |
 | @patternfly/react-user-feedback                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | @patternfly/react-virtualized-extension                                                       | [MIT](https://opensource.org/license/mit/)                                |
+| @phosphor-icons/react                                                                         | [MIT](https://opensource.org/license/mit/)                                |
 | @radix-ui/react-accordion                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | @radix-ui/react-checkbox                                                                      | [MIT](https://opensource.org/license/mit/)                                |
 | @radix-ui/react-dialog                                                                        | [MIT](https://opensource.org/license/mit/)                                |
@@ -91,6 +91,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | @visx/scale                                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | @visx/shape                                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | @visx/tooltip                                                                                 | [MIT](https://opensource.org/license/mit/)                                |
+| @vitest/coverage-v8                                                                           | [MIT](https://opensource.org/license/mit/)                                |
 | @xterm/xterm                                                                                  | [MIT](https://opensource.org/license/mit/)                                |
 | abort-controller                                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | ajv                                                                                           | [MIT](https://opensource.org/license/mit/)                                |
@@ -120,9 +121,11 @@ The following table lists the open source licenses tied to the libraries and mod
 | crypto-browserify                                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | cuelabs.dev/go/oci/ociregistry                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | cuelang.org/go                                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| cyphar.com/go-pathrs                                                                          | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)                         |
 | d3                                                                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | dario.cat/mergo                                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | emperror.dev/errors                                                                           | [MIT](https://opensource.org/license/mit/)                                |
+| eslint-plugin-react-hooks                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | fast-deep-equal                                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | file-saver                                                                                    | [MIT](https://opensource.org/license/mit/)                                |
 | filippo.io/edwards25519                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
@@ -149,6 +152,9 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/aliyun/credentials-go                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/AliyunContainerService/ack-ram-tool/pkg/credentials/provider                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/amoghe/go-crypt                                                                    | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/anatol/devmapper.go                                                                | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/anatol/luks.go                                                                     | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/anchore/go-lzo                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/andreburgaud/crypt2go                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/andybalholm/brotli                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/antlr4-go/antlr/v4                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
@@ -173,6 +179,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/aws/aws-sdk-go-v2/service/eks                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/aws/aws-sdk-go-v2/service/internal/presigned-url                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/aws/aws-sdk-go-v2/service/kms                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/aws/aws-sdk-go-v2/service/signin                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/aws/aws-sdk-go-v2/service/sso                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/aws/aws-sdk-go-v2/service/ssooidc                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/aws/aws-sdk-go-v2/service/sts                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -244,6 +252,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/chrismellard/docker-credential-acr-env                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/chuckpreslar/emission                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/clbanning/mxj/v2                                                                   | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/clipperhouse/stringish                                                             | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/clipperhouse/uax29/v2                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/cloudevents/sdk-go/v2                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/cloudflare/circl                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/cockroachdb/apd/v3                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -271,7 +281,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/cpuguy83/dockercfg                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/cpuguy83/go-md2man/v2                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/creachadair/otp                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
-| github.com/creack/pty                                                                         | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/cyberphone/json-canonicalization                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/cyphar/filepath-securejoin                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/danieljoos/wincred                                                                 | [MIT](https://opensource.org/license/mit/)                                |
@@ -282,12 +291,12 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/devfile/registry-support/index/generator                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/devfile/registry-support/registry-library                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/dgraph-io/ristretto                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/dgryski/go-camellia                                                                | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/digitorus/pkcs7                                                                    | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/digitorus/timestamp                                                                | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
 | github.com/dimchansky/utfbom                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/disintegration/imaging                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/diskfs/go-diskfs                                                                   | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/distribution/distribution/v3                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/distribution/reference                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/djherbis/times                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/docker/cli                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -302,6 +311,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/drone/envsubst/v2                                                                  | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/dsnet/compress                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/dustin/go-humanize                                                                 | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/edsrzf/mmap-go                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/elastic/go-licenser                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/elastic/go-sysinfo                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/elastic/go-windows                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -315,6 +325,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/exponent-io/jsonpath                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/fatih/color                                                                        | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/felixge/httpsnoop                                                                  | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/foxboron/go-uefi                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/fsnotify/fsnotify                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/fxamacker/cbor/v2                                                                  | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/gabriel-vasile/mimetype                                                            | [MIT](https://opensource.org/license/mit/)                                |
@@ -348,6 +359,17 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/go-openapi/spec                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/go-openapi/strfmt                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/go-openapi/swag                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/cmdutils                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/conv                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/fileutils                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/jsonname                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/jsonutils                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/loading                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/mangling                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/netutils                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/stringutils                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/typeutils                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/go-openapi/swag/yamlutils                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/go-openapi/validate                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/go-piv/piv-go                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/go-playground/locales                                                              | [MIT](https://opensource.org/license/mit/)                                |
@@ -355,6 +377,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/go-playground/validator                                                            | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/go-playground/validator/v10                                                        | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/go-task/slim-sprig/v3                                                              | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/go-test/deep                                                                       | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/go-viper/mapstructure/v2                                                           | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/go-webauthn/x                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/go-xmlfmt/xmlfmt                                                                   | [MIT](https://opensource.org/license/mit/)                                |
@@ -376,12 +399,15 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/google/certificate-transparency-go                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/google/gnostic                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/google/gnostic-models                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/google/go-attestation                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/google/go-cmp                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/google/go-containerregistry                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/google/go-github/v53                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/google/go-github/v55                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/google/go-querystring                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/google/go-tpm                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/google/go-tpm-tools                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/google/go-tspi                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/google/gofuzz                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/google/martian                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/google/pprof                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -444,10 +470,12 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/jpillora/backoff                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/json-iterator/go                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/juliangruber/go-intersect                                                          | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/jzelinskie/whirlpool                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/k8snetworkplumbingwg/network-attachment-definition-client                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/kairos-io/kairos-sdk                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/kairos-io/provider-k3s                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/kairos-io/provider-nodeadm                                                         | None                                                                      |
+| github.com/kairos-io/tpm-helpers                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/kelseyhightower/envconfig                                                          | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/kendru/darwin/go/depgraph                                                          | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/kevinburke/ssh_config                                                              | [MIT](https://opensource.org/license/mit/)                                |
@@ -495,6 +523,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/mholt/archives                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/Microsoft/go-winio                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/Microsoft/hcsshim                                                                  | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/miekg/dns                                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/miekg/pkcs11                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/mikelolasagasti/xz                                                                 | [0BSD](https://opensource.org/license/0bsd)                               |
 | github.com/minio/highwayhash                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -591,8 +620,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/protocolbuffers/txtpbfmt                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/ProtonMail/go-crypto                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/pterm/pterm                                                                        | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/PuerkitoBio/purell                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
-| github.com/PuerkitoBio/urlesc                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/qeesung/image2ascii                                                                | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/r3labs/diff                                                                        | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)                         |
 | github.com/r3labs/diff/v3                                                                     | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)                         |
@@ -601,6 +628,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/rawagner/graphql-transport-ws                                                      | None                                                                      |
 | github.com/rcrowley/go-metrics                                                                | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
 | github.com/redhat-certification/chart-verifier                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/redis/go-redis/extra/redisotel/v9                                                  | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
 | github.com/rivo/tview                                                                         | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/rivo/uniseg                                                                        | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/robfig/cron                                                                        | [MIT](https://opensource.org/license/mit/)                                |
@@ -610,6 +638,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/rubenv/sql-migrate                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/russellhaering/gosaml2                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/russross/blackfriday/v2                                                            | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
+| github.com/saferwall/pe                                                                       | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/sagikazarmark/locafero                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/sagikazarmark/slog-shim                                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/samber/lo                                                                          | [MIT](https://opensource.org/license/mit/)                                |
@@ -621,6 +650,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/sassoftware/relic                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/satori/go.uuid                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/schollz/progressbar/v3                                                             | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/secDre4mer/pkcs7                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/secure-systems-lab/go-securesystemslib                                             | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/segmentio/ksuid                                                                    | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/sergi/go-diff                                                                      | [MIT](https://opensource.org/license/mit/)                                |
@@ -647,10 +677,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/spectrocloud-labs/prompts-tui                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/cluster-api-provider-maas                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/go-i18n/v2                                                            | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/spectrocloud/hexternal                                                             | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/spectrocloud/maas-client-go                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/palette-sdk-go                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| github.com/spectrocloud/reach                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spectrocloud/system-upgrade-controller/pkg/apis                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spf13/afero                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/spf13/cast                                                                         | [MIT](https://opensource.org/license/mit/)                                |
@@ -658,7 +686,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/spf13/pflag                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/spf13/viper                                                                        | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/spiffe/go-spiffe/v2                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| github.com/StackExchange/wmi                                                                  | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/STARRY-S/zip                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/stoewer/go-strcase                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/stretchr/objx                                                                      | [MIT](https://opensource.org/license/mit/)                                |
@@ -737,6 +764,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/otlp/otlptrace                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| go.opentelemetry.io/otel/exporters/prometheus                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| go.opentelemetry.io/otel/exporters/stdout/stdoutmetric                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/metric                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/sdk                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/sdk/metric                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -750,7 +779,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | go.uber.org/multierr                                                                          | [MIT](https://opensource.org/license/mit/)                                |
 | go.uber.org/zap                                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | go.yaml.in/yaml/v2                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go.yaml.in/yaml/v3                                                                            | [MIT](https://opensource.org/license/mit/)                                |
+| go.yaml.in/yaml/v3                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go4.org                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | golang.org/x/crypto                                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | golang.org/x/exp                                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
@@ -774,7 +803,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | google.golang.org/grpc                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | google.golang.org/protobuf                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | gopkg.in/alexcesaro/quotedprintable.v3                                                        | [MIT](https://opensource.org/license/mit/)                                |
-| gopkg.in/check.v1                                                                             | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
 | gopkg.in/evanphx/json-patch.v4                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | gopkg.in/go-jose/go-jose.v2                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | gopkg.in/go-playground/assert.v1                                                              | [MIT](https://opensource.org/license/mit/)                                |
@@ -786,7 +814,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | gopkg.in/tomb.v1                                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | gopkg.in/warnings.v0                                                                          | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
 | gopkg.in/yaml.v2                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| gopkg.in/yaml.v3                                                                              | [MIT](https://opensource.org/license/mit/)                                |
+| gopkg.in/yaml.v3                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | gotest.tools                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | gotest.tools/gotestsum                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | graphql                                                                                       | [MIT](https://opensource.org/license/mit/)                                |
@@ -803,7 +831,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | immer                                                                                         | [MIT](https://opensource.org/license/mit/)                                |
 | immutable                                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | is-cidr                                                                                       | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
-| istextorbinary [Artistic-2.0](https://spdx.org/licenses/Artistic-2.0.html)                    |
+| istextorbinary                                                                                | [Artistic-2.0](https://spdx.org/licenses/Artistic-2.0.html)               |
 | js-base64                                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | js-beautify                                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | js-yaml                                                                                       | [MIT](https://opensource.org/license/mit/)                                |
@@ -873,6 +901,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | react-calendar                                                                                | [MIT](https://opensource.org/license/mit/)                                |
 | react-clipboard                                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | react-clipboard.js                                                                            | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.en) |
+| react-color                                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | react-copy-to-clipboard                                                                       | [MIT](https://opensource.org/license/mit/)                                |
 | react-dnd                                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | react-dnd-html5-backend                                                                       | [MIT](https://opensource.org/license/mit/)                                |
@@ -899,11 +928,12 @@ The following table lists the open source licenses tied to the libraries and mod
 | react-transition-group                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | react-use-measure                                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | react-virtualized                                                                             | [MIT](https://opensource.org/license/mit/)                                |
-| react-vite-cron                                                                               | None                                                                      |
+| react-vite-cron                                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | redux                                                                                         | [MIT](https://opensource.org/license/mit/)                                |
 | redux-debounce-thunk                                                                          | [ISC](https://opensource.org/license/isc-license-txt)                     |
 | redux-devtools-extension                                                                      | [MIT](https://opensource.org/license/mit/)                                |
 | redux-thunk                                                                                   | [MIT](https://opensource.org/license/mit/)                                |
+| regenerator-runtime                                                                           | [MIT](https://opensource.org/license/mit/)                                |
 | remark-gfm                                                                                    | [MIT](https://opensource.org/license/mit/)                                |
 | reselect                                                                                      | [MIT](https://opensource.org/license/mit/)                                |
 | sanitize-html                                                                                 | [MIT](https://opensource.org/license/mit/)                                |
@@ -913,6 +943,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | sigs.k8s.io/apiserver-network-proxy/konnectivity-client                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/cluster-api                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/cluster-api-provider-aws/v2                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| sigs.k8s.io/cluster-api-provider-azure                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| sigs.k8s.io/cluster-api-provider-cloudstack                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/cluster-api-provider-gcp                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/cluster-api-provider-openstack                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/cluster-api-provider-vsphere                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -927,11 +959,13 @@ The following table lists the open source licenses tied to the libraries and mod
 | sigs.k8s.io/release-utils                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/structured-merge-diff/v4                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/structured-merge-diff/v6                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| sigs.k8s.io/yaml                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/yaml                                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | styled-components                                                                             | [MIT](https://opensource.org/license/mit/)                                |
 | subscriptions-transport-ws                                                                    | [MIT](https://opensource.org/license/mit/)                                |
 | text-encoding                                                                                 | [Unlicense](https://unlicense.org/)                                       |
 | three                                                                                         | [MIT](https://opensource.org/license/mit/)                                |
+| timezones.json                                                                                | [MIT](https://opensource.org/license/mit/)                                |
 | typesafe-actions                                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | typescript                                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | unique-names-generator                                                                        | [MIT](https://opensource.org/license/mit/)                                |

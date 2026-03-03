@@ -95,7 +95,7 @@ bandwidth use and protect against outages. For more information, refer to
    cd CanvOS
    ```
 
-3. In the user data file, provide the URL and the credentials to the external registry. You can specify a single
+3. In the `user-data` file, provide the URL and the credentials to the external registry. You can specify a single
    external registry or multiple external registries. The following example shows how to specify a single external
    registry and multiple external registries. Select the tab that corresponds to the configuration you want to use.
 
@@ -214,7 +214,7 @@ bandwidth use and protect against outages. For more information, refer to
 
     Registry configurations for K3s is written in a file called **registries.yaml**. You can use the cloud-init stages
     to create such a file and point it to the registry you want to load the images from. This can be done either in the
-    **user-data** file or the OS layer of the cluster profile. Refer to
+    `user-data` file or the OS layer of the cluster profile. Refer to
     [Cloud-init Stages](../../edge-configuration/cloud-init.md) for more information.
 
     Replace `example.artifactory.net` with the address of your registry and the auth argument under it with your
@@ -246,7 +246,7 @@ bandwidth use and protect against outages. For more information, refer to
 
     Registry configurations for RKE2 is written in a file called **registries.yaml**. You can use the cloud-init stages
     to create such a file and point it to the registry you want to load the images from. This can be done either in the
-    **user-data** file or the OS layer of the cluster profile. Refer to
+    `user-data` file or the OS layer of the cluster profile. Refer to
     [Cloud-init Stages](../../edge-configuration/cloud-init.md) for more information.
 
     Replace `example.artifactory.net` with the address of your registry and the auth argument under it with your

@@ -20,7 +20,7 @@ webhook and provides an example custom image pull configuration.
 ## What Happens When You Disable the Webhook
 
 When the agent webhook is disabled, the Palette agent will not redirect any image pull operation by default. This means
-that even if you specify an external registry in the **user-data**, the Palette agent will not pull images from that
+that even if you specify an external registry in the `user-data` file, the Palette agent will not pull images from that
 registry unless it is otherwise configured to do so. This also means that the Palette agent will not pull images from
 the primary registry, even if the images are downloaded and stored in the registry, unless it is otherwise configured to
 do so. Disabling the webhook removes restrictions, but does place the burden of ensuring that images are pulled from the
@@ -80,8 +80,8 @@ as K3s and RKE2, or other redirect mechanism that you implement on your own to c
    git checkout v4.5.0
    ```
 
-4. In your **user-data** file, set `stylus.imageRedirectWebhook.enable` to `false`. This parameter defaults to true if
-   you do not explicitly set it to `false`.
+4. In your `user-data` file, set `stylus.imageRedirectWebhook.enable` to `false`. This parameter defaults to true if you
+   do not explicitly set it to `false`.
 
    ```yaml {7}
    #cloud-config
@@ -149,20 +149,21 @@ provides an example that shows how you might customize the image pull behavior o
    with your registry and its mirror. Since you are only editing the reconcile stage, this will not result in a reboot
    or service restart for your cluster.
 
-   The following example will redirect image pulls for `https://gcr.io` to `https://gcr-io-mirror.company.local`.
+   The following example will redirect image pulls for `https://us-docker.pkg.dev` to
+   `https://pkg-dev-mirror.company.local`.
 
    ```yaml {9-11}
    stages:
      reconcile:
        - name: "Redirect registries"
          files:
-           - path: /etc/containerd/certs.d/gcr.io/hosts.toml
+           - path: /etc/containerd/certs.d/us-docker.pkg.dev/hosts.toml
              owner: 0
              group: 0
              permissions: 0644
              content: |-
-               server = "https://gcr.io"
-               [host."https://gcr-io-mirror.company.local"]
+               server = "https://us-docker.pkg.dev"
+               [host."https://pkg-dev-mirror.company.local"]
                    capabilities = ["pull", "resolve"]
    ```
 
@@ -369,7 +370,7 @@ source code for the credential provider on GitHub.
     ```
 
     Registry URLs that match the patterns in the `mathImages` field will use this provider for credentials. For example,
-    `*.io` would match `docker.io`, `quay.io`, `gcr.io` and `*.*.io` would cover URLs like `us.gcr.io`. Refer to
+    `*.io` would match `docker.io`, `quay.io`, and `*.*.io` would cover URLs like `registry.docker.io`. Refer to
     [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/Kubelet-credential-provider/#configure-a-Kubelet-credential-provider)
     about the parameters you can use to configure credential providers for Kubelet.
 
@@ -412,9 +413,9 @@ source code for the credential provider on GitHub.
 
     :::
 
-    The script will lookup the JSON file by registry naming and allows partial matches. For example, `gcr.io.json` would
-    match `gcr.io` as well as `us.gcr.io`, and those image pulls to those registries will use the credentials your
-    provided.
+    The script will lookup the JSON file by registry naming and allows partial matches. For example, `docker.io.json`
+    would match `docker.io` as well as `registry.docker.io`, and image pulls to those registries will use the
+    credentials you provided.
 
 ## Validate
 

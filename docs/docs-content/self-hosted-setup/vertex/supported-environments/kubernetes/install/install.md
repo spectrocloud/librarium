@@ -51,8 +51,8 @@ The next sections describe specific requirements for installing Palette VerteX.
 <!-- prettier-ignore-start -->
 
 The following table presents the Kubernetes version corresponding to each Palette version for
-[VMware](../../vmware/vmware.md) and
-[Kubernetes](../kubernetes.md) installations.
+[VMware](../../vmware/vmware.md),
+[Kubernetes](../kubernetes.md), and [VerteX Management Appliance](../../management-appliance/management-appliance.md) installations.
 Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes
 distribution OVA.
 
@@ -68,6 +68,15 @@ distribution OVA.
 <TabItem label="Kubernetes" value="Kubernetes">
 
 <PartialsComponent category="self-hosted-and-vertex" name="palette-kubernetes-versions" />
+
+</TabItem>
+
+<TabItem label="VerteX Management Appliance" value="VerteX Management Appliance">
+
+| **Palette Version** | **Kubernetes Version** |
+| ------------------- | ---------------------- |
+| 4.8.33              | 1.33.6                 |
+| 4.8.21              | 1.33.5                 |
 
 </TabItem>
 </Tabs>

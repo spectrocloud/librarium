@@ -52,8 +52,8 @@ To complete this tutorial, you will need the following:
 
 - The VMs you will prepare as Edge hosts must be attached to a DHCP-enabled network. To ensure DHCP is enabled on the
   network, review the network settings on your ESXi Host. You can refer to the
-  [vSphere Networking](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-networking-7-0.html)
-  guide from VMware to configure a DHCP server on the network.
+  [vSphere Networking](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-networking.html) guide
+  from VMware to configure a DHCP server on the network.
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can use the
   `uname -m` command to check your architecture.

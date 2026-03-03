@@ -108,21 +108,23 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
     #### Effect Table
 
-    | **Parameter**        | **Description**                                                                                                              |
-    | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-    | **NoSchedule**       | A pod that cannot tolerate the node taint and should not be scheduled to the node.                                           |
-    | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                  |
-    | **NoExecute**        | New pods will not be scheduled on the node, and existing pods on the node will be evicted if they do not tolerate the taint. |
+    | **Parameter**        | **Description**                                                                                                                                                      |
+    | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **NoSchedule**       | A pod that cannot tolerate the node taint and should not be scheduled to the node.                                                                                   |
+    | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                                                          |
+    | **NoExecute**        | New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. |
 
 13. Click **Next** after configuring the node pool.
 
-14. The **Settings** page is where you can configure the patching schedule, security scans, backup settings, and set up
-    Role Based Access Control (RBAC). Review cluster settings and make changes if needed. Click **Validate**.
+14. <PartialsComponent category="clusters" name="cluster-settings" />
 
-15. Review the settings summary and click **Finish Configuration** to deploy the cluster. Be aware that provisioning GKE
-    clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
+15. Select **Validate** to review your cluster configurations and settings.
 
-You can monitor cluster deployment progress on the cluster details page.
+16. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
+**Events** tab to monitor the deployment in real time. Provisioning may take several minutes.
 
 ## Validate
 

@@ -7,9 +7,9 @@ tags: ["edge"]
 ---
 
 The Edge Installer is responsible for preparing the Edge host to be ready for assignment to cluster workloads. The Edge
-Installer supports the ability to specify a configuration file named **user-data**. You can use this configuration file
-to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly
-in your environment. For more information about all the available parameters in the installer configuration, refer to
+Installer supports the ability to specify a configuration file named `user-data`. You can use this configuration file to
+customize the installation and ensure your Edge host has all the required dependencies and settings to work properly in
+your environment. For more information about all the available parameters in the installer configuration, refer to
 [Installer Reference](./installer-reference.md).
 
 To better understand the Edge installation process, review the order of operations from installation to Edge host
@@ -23,15 +23,15 @@ registration.
 
 3. Device powers off or reboots to registration mode based on the user data configuration.
 
-4. Upon boot up or reboot, cloud-init stages that are specified in the user data configuration file take effect.
+4. Upon boot up or reboot, cloud-init stages that are specified in the `user-data` file take effect.
 
 5. Edge Host Registers with Palette and is ready to be part of a cluster.
 
 ![The boot order sequence, listing steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.webp)
 
 Palette Edge allows you to use cloud-init stages to declaratively configure your Operating System (OS) of your Edge host
-both using installer configuration **user-data** and in the OS pack. For more information about cloud-init stages, refer
-to [Cloud-init Stages](./cloud-init.md).
+both using the installer configuration `user-data` file and in the OS pack. For more information about cloud-init
+stages, refer to [Cloud-init Stages](./cloud-init.md).
 
 ## Edge Installer Configuration
 
@@ -44,7 +44,7 @@ various stages are merged to create the Edge host's final configuration.
 
 ## Installer Example Configuration
 
-The following example shows how user data configuration is used to customize the Edge host installation process.
+The following example shows how the `user-data` file is used to customize the Edge host installation process.
 
 ```yaml
 #cloud-config

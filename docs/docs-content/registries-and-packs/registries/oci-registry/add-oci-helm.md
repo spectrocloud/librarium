@@ -13,8 +13,9 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 
 - Tenant admin access to Palette.
 
-- Credentials to access the OCI registry. If you are using an Amazon Elastic Container Registry (ECR), you must have the
-  AWS credentials to an IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
+- If the registry uses basic authentication, credentials to access the OCI registry. If you are using an Amazon Elastic
+  Container Registry (ECR), you must have the AWS credentials to an IAM user or add a trust relationship to an IAM role
+  so that Palette can access the registry.
 
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
@@ -83,6 +84,42 @@ Use the following steps to add an OCI Helm registry to Palette. Select the tab t
 registry you are adding.
 
 <Tabs groupId="registry">
+
+<TabItem value="no-authentication" label="No Authentication">
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant administrator.
+
+2. From the left main menu, select **Tenant Settings**.
+
+3. From the **Tenant Settings Menu**, select **Registries**.
+
+4. On the**OCI Registries** tab, select **Add New OCI Registry**.
+
+5. Enter the **Name** of the registry. For **Provider** type, select **Helm**.
+
+6. For **OCI Authentication Type**, select **Basic**.
+
+7. Toggle the **Synchronization** option to enable or disable synchronization for the registry. To learn more about the
+   synchronization behavior of Helm registries, refer to the [Helm Registry](../helm-charts.md#synchronization-behavior)
+   resource.
+
+8. Provide the registry URL in the **Endpoint** field.
+
+9. For **Base Content Path**, enter the base path to the repository in the registry where the Helm Charts are stored.
+   You can specify multiple base paths by pressing the **ENTER** key after each path. Providing multiple base paths is
+   useful when Helm Charts are stored in different directories or projects, such as multiple projects in a Harbor
+   registry.
+
+10. Leave the **Username** and **Password** fields empty.
+
+11. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
+    trusted CA, check the **Insecure Skip TLS Verify** box to skip verifying the x509 certificate, and click **Upload
+    file** to upload the certificate.
+
+12. Click **Confirm** to add the registry.
+
+</TabItem>
+
 <TabItem value="basic" label="Basic">
 
 1. Log in to the [Palette](https://console.spectrocloud.com) as a Tenant administrator.

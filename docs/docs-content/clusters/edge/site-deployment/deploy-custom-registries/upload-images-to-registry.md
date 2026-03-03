@@ -76,18 +76,15 @@ Palette Edge CLI to download the images and upload them to the external registry
    palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
    ```
 
-5. Log in to the [Palette](https://console.spectrocloud.com) console.
+5. Log in to [Palette](https://console.spectrocloud.com).
 
-6. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the user drop-down menu.
+6. Select the project you want to deploy the Edge host to.
 
-7. Navigate to the left main menu and select **Profiles**.
+7. <PartialsComponent category="projects" name="project-id-copy" />
 
-8. Click on the cluster profile you want to include in the content bundle.
+8. From the left main menu, select **Profiles**.
 
-9. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Repeat this step for all the cluster profiles whose images you want to include in the content
-   bundle.
+9. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
 10. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
     authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
@@ -146,16 +143,13 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 2. Log in to [Palette](https://console.spectrocloud.com).
 
-3. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the user drop-down menu.
+3. Select the project you want to deploy the Edge host to.
 
-4. Navigate to the left main menu and select **Profiles**.
+4. <PartialsComponent category="projects" name="project-id-copy" />
 
-5. Click on the cluster profile you want to include in the content bundle.
+5. From the left main menu, select **Profiles**.
 
-6. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Repeat this step for all the cluster profiles whose images you want to include in the content
-   bundle.
+6. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
 7. If you are downloading images from public image or Helm registries only, skip this step.
 
@@ -237,7 +231,7 @@ Palette Edge CLI to download the images and upload them to the external registry
    }
    ```
 
-   For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
+   For Google Artifact Registry (GAR) access, you need to set the username field to `"_json_key"` and set the password
    to an JSON object containing the following fields.
 
    | Field                         | Description                                                                                         |
@@ -253,13 +247,13 @@ Palette Edge CLI to download the images and upload them to the external registry
    | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
    | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
 
-   For example, the following is a valid set of credentials for a GCR registry.
+   For example, the following is a valid set of credentials for a GAR registry.
 
    ```json
    {
      "image": [
        {
-         "endpoint": "gcr.io",
+         "endpoint": "us-docker.pkg.dev",
          "username": "_json_key",
          "password": {
            "type": "service_account",

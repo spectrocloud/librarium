@@ -11,19 +11,19 @@ Palette supports the configuration of multiple Open Container Initiative (OCI) r
 registry to Palette and use OCI artifacts in your cluster profiles. Palette only supports custom OCI registries that are
 hosting the following type of artifacts; Helm Charts, Zarf packages, and Packs.
 
-Registries that comply with the OCI specification and support basic authentication are supported. OCI-compliant
-registries with basic authentication are labeled as **Basic**. Palette also supports some third-party registry
-providers, such as AWS ECR.
+Registries that comply with the OCI specification and support basic authentication are supported, although you can also
+add registries that do not require authentication. OCI-compliant registries with basic authentication are labeled as
+**Basic**. Palette also supports certain third-party registry providers, such as AWS ECR.
 
 ## Supported OCI Registries
 
-The following type of OCI registries are supported:
+The following table describes the types of OCI registries that are supported.
 
-| **Provider** | **Description**                  | **Basic** | **AWS ECR** |
-| ------------ | -------------------------------- | --------- | ----------- |
-| Helm         | OCI based Helm Chart registries. | ✅        | ✅          |
-| Zarf         | OCI based Zarf registries.       | ✅        | ❌          |
-| Packs        | OCI based Packs registries.      | ✅        | ✅          |
+| **Provider** | **Description**                  | **No Authentication** | **Basic** | **AWS ECR** |
+| ------------ | -------------------------------- | --------------------- | --------- | ----------- |
+| Helm         | OCI-based Helm Chart registries. | ✅                    | ✅        | ✅          |
+| Zarf         | OCI-based Zarf registries.       | ❌                    | ✅        | ❌          |
+| Packs        | OCI-based Packs registries.      | ❌                    | ✅        | ✅          |
 
 ## Limitations
 

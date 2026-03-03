@@ -112,9 +112,9 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 9.  Review the details and click on **Finish** to deploy the airgap support VM.
 
 10. It takes a while for the airgap support VM to deploy, approximately 45 min or more depending on your internet
-    connection. The download of the OVA takes up majority of the time. The image is over 30 GB and contains all the
-    dependencies required to deploy a VerteX. Once the deployment is complete, the airgap support VM is displayed in the
-    vSphere inventory. The VM will be powered off. Power on the VM to continue.
+    connection. The download of the OVA takes up majority of the time. The image is approximately 3 GB and contains all
+    the dependencies required to deploy a VerteX. Once the deployment is complete, the airgap support VM is displayed in
+    the vSphere inventory. The VM will be powered off. Power on the VM to continue.
 
 11. SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the
     IP address or hostname of the airgap support VM. The default user account is `ubuntu`. Replace the path to the
@@ -399,7 +399,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     list of additional OS OVAs.
 
     You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
-    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+    [Deploy an OVF or OVA Template](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/deploying-ovf-templatesvsphere-vm-admin.html)
     guide for more information about deploying an OVA in vCenter.
 
     :::warning

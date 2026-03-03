@@ -25,10 +25,6 @@ Together, these measures allow Trusted Boot to ensure the authenticity of the bo
 on your Edge device. Only when the boot process can be verified does the TPM release the key to decrypt the encrypted
 content, and the sensitive data is not accessible if the boot process is tempered with.
 
-:::preview
-
-:::
-
 ## Why Do You Need Trusted Boot?
 
 Edge devices are often deployed in locations with minimal security and high traffic, such as restaurants and coffee
@@ -42,8 +38,8 @@ encrypted.
 
 ## Limitation
 
-- Trusted Boot is only supported for clusters with a connection to a Palette instance. Air-gapped clusters cannot be
-  deployed to an Edge host with Trusted Boot enabled.
+- Trusted Boot is only supported in environments that use Ubuntu 24.04 as the OS and RKE2 as the Kubernetes
+  distribution.
 
 ## Next Steps
 

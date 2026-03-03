@@ -1,0 +1,37 @@
+---
+partial_category: eks-pod-identity
+partial_name: eks-pod-identity-enablement
+---
+
+1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
+
+2. From the left main menu, select **Tenant Settings**.
+
+3. From the **Tenant Settings** menu, select **Cloud Accounts**.
+
+4. Locate the **AWS** section and select **Add AWS Account**.
+
+5. Fill out the following information.
+
+   | **Palette Parameter**      | **Description**                                                                                     |
+   | -------------------------- | --------------------------------------------------------------------------------------------------- |
+   | **Account Name**           | Enter a custom account name. The account name must be unique within the tenant scope.               |
+   | **Description (Optional)** | Enter a description for the cloud account.                                                          |
+   | **Partition**              | Select **{props.partition}**.                                                                                     |
+   | **EKS Pod Identity**       | Select **EKS Pod Identity** to authenticate your AWS account using the EKS Pod Identity method and reveal the **ARN** field. |
+
+6. In the AWS console, navigate to **IAM > Roles**, and select the new IAM role created for Palette (for example,`SpectroCloudRole`). In the **Summary** section, copy the Amazon Resource Name (**ARN**) for the role.
+
+7. In Palette, paste the role ARN into the **ARN** field.
+
+8. **Validate** your AWS credentials. A green check mark indicates valid credentials. 
+
+   The **Add IAM Policies** option appears after successful validation. Leave this blank, as the required IAM policies have already been assigned to the IAM role created for Palette (for
+   example, `SpectroCloudRole`).
+
+9. (Optional) To set a
+   [permission boundary](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html), toggle
+   **Add Permission Boundary** on and provide the ARN of a IAM policy or role in the **Permission Boundary ARN**
+   field.
+
+10. Select **Confirm** to add your AWS account to Palette.

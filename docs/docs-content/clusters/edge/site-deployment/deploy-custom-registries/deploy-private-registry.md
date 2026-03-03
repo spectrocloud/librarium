@@ -76,7 +76,7 @@ to use a private registry for images other the provider images, refer to
 
 6.  :::warning
 
-    If you have specified registry credentials in the `registryCredentials` field in the user data file during the
+    If you have specified registry credentials in the `registryCredentials` field in the `user-data` file during the
     EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
     [EdgeForge - Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) and
     [Installer Configuration](../../edge-configuration/installer-reference.md#multiple-external-registries).

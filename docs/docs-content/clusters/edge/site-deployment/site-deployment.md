@@ -44,6 +44,14 @@ templates and provision Edge hosts using the templates. Or check out the
 [Deploy Edge Cluster on VMware](../../../tutorials/clusters/edge/deploy-cluster.md) for an end-to-end tutorial to learn
 the Palette Edge deployment lifecycle using VMs.
 
+## Deployment on MAAS
+
+You can deploy Edge hosts on MAAS-managed bare-metal machines and LXD VMs. MAAS-provisioned machines function similarly
+to other Edge hosts, enabling automated, scalable deployments using existing MAAS infrastructure. Refer to
+[Build MAAS Images](../edgeforge-workflow/palette-canvos/build-maas-image.md) to learn how to create custom MAAS images
+for Palette Edge and [Deploy Edge Hosts on MAAS](maas-deployment.md) for step-by-step instructions on uploading images
+to MAAS and deploying an Edge host using the MAAS UI.
+
 ## Resources
 
 - [Model Cluster Profile](model-profile.md)
@@ -53,6 +61,8 @@ the Palette Edge deployment lifecycle using VMs.
 - [Deploy Edge Hosts On-site](site-installation/site-installation.md)
 
 - [Deploy Edge Hosts as Virtual Machines](./virtual-deployment/virtual-deployment.md)
+
+- [Deploy Edge Hosts on MAAS](maas-deployment.md)
 
 - [Edge Host Grid View](./edge-host-view.md)
 

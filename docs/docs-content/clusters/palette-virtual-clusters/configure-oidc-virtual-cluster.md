@@ -33,9 +33,9 @@ virtual cluster.
 
 - The OIDC issuer URL, OIDC client ID, and OIDC secret. You can obtain this information from your identity provider.
 
-- At a minimum, the `cluster.delete` permission to access the generated kubeconfig. For more information, check out
-  [Kubeconfig files](../cluster-management/kubeconfig.md#kubeconfig-files). If you are deploying virtual clusters, you
-  need the `clusterGroup.update` permission.
+- At a minimum, the `cluster.adminKubeconfigDownload` permission to access the generated kubeconfig. For more
+  information, check out [Kubeconfig files](../cluster-management/kubeconfig.md#kubeconfig-files). If you are deploying
+  virtual clusters, you need the `clusterGroup.update` permission.
 
 - [kubelogin](https://github.com/int128/kubelogin) installed. This is a kubectl plugin for Kubernetes OIDC
   authentication, also known as `kubectl oidc-login`.

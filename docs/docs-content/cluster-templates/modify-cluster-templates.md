@@ -9,10 +9,6 @@ toc_max_heading_level: 5
 tags: ["cluster templates"]
 ---
 
-:::preview
-
-:::
-
 [Cluster templates](./cluster-templates.md) use [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and
 cluster [template policies](./create-cluster-template-policies/create-cluster-template-policies.md) to declaratively
 define and manage the software stack and lifecycle of clusters deployed with Palette. Since cluster templates are
@@ -31,8 +27,6 @@ flexible, version-driven management.
 ![Diagram showing how cluster templates reference profiles and policies as objects](/cluster-templates_modify-cluster-templates_cluster-template-links.webp)
 
 ## Prerequisites
-
-- The **ClusterTemplate** [feature flag](..//self-hosted-setup/palette/system-management/feature-flags.md) enabled.
 
 - The `clusterTemplate.update` permission to modify cluster templates. Refer to our
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
@@ -63,6 +57,8 @@ information about your cluster template:
 
 - List of linked cluster profiles and their packs
 
+- Next upgrade time (in Coordinated Universal Time (UTC), converted to each cluster's time zone)
+
 The option to manually trigger cluster updates is available only if a cluster template is linked to a cluster _and_
 there is a discrepancy between the cluster profile variable versions used in the cluster and the versions referenced in
 the template. This is caused when a cluster profile has been recently added to or removed from the cluster template, or
@@ -76,14 +72,10 @@ now** button is disabled while the upgrade is in progress.
 
 :::warning
 
-- If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
-  Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
-  select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
-  each variable before attempting the upgrade again.
-
-- If your changes require a cluster repave, you must
-  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
-  proceed.
+If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
+Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
+select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
+each variable before attempting the upgrade again.
 
 :::
 
@@ -156,6 +148,19 @@ Selecting **Review & Save** opens the **Review changes** dialog. The items displ
 | :white_check_mark:             | :x:                   | :white_check_mark:   | **Review & Save**    | - [Profile Variable Changes](#profile-variable-changes)                                            |
 | :white_check_mark:             | :white_check_mark:    | :x:                  | **Review & Save**    | - [Modified Packs](#modified-packs)                                                                |
 | :white_check_mark:             | :white_check_mark:    | :white_check_mark:   | **Review & Save**    | - [Modified Packs](#modified-packs) <br /> - [Profile Variable Changes](#profile-variable-changes) |
+
+<!-- prettier-ignore-start -->
+
+:::warning
+
+Cluster profile changes that modify operating system (OS) or Kubernetes configurations for clusters linked to a cluster
+template (including packs that modify these configurations, such as the
+<VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack) require a
+[cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the next upgrade window.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ###### Modified Packs
 
@@ -240,6 +245,8 @@ If a cluster is currently deployed using the cluster template, the cluster will 
 specified in the linked maintenance policy. To force cluster updates and bypass the scheduled maintenance window,
 navigate to the **Overview** tab, and select **Options > Upgrade now**.
 
+<!-- prettier-ignore-start -->
+
 :::warning
 
 - If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
@@ -247,11 +254,14 @@ navigate to the **Overview** tab, and select **Options > Upgrade now**.
   select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
   each variable before attempting the upgrade again.
 
-- If your changes require a cluster repave, you must
-  [approve the repave](../clusters/cluster-management/node-pool.md#approve-cluster-repave) before the upgrade can
-  proceed.
+- Cluster profile changes that modify operating system (OS) or Kubernetes configurations for clusters linked to a cluster
+  template (including packs that modify these configurations, such as the
+  <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack) require a
+  [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the next upgrade window.
 
 :::
+
+<!-- prettier-ignore-end -->
 
 ### Variable Values Tab
 

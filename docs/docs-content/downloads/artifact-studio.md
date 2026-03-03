@@ -24,12 +24,16 @@ be validated via signatures. These artifact bundles replace the self-extracting 
 environments with a more familiar Zstandard compressed format (`zst`) that can be moved and manipulated with the Palette
 CLI.
 
-There are four main artifact areas:
+Following are the main use cases:
 
 - Install Palette Enterprise (content bundle, ISO, or Helm chart).
 - Install Palette VerteX (content bundle, ISO, or Helm chart).
-- Create a pack bundle to download.
+- Create and download pack bundles.
 - Browse the pack catalog to download individual packs.
+- Download [PaletteAI profile bundles](https://docs.palette-ai.com/docs/what-is-paletteai/concepts/profile-bundles/) and
+  explore available Nvidia AI resources to incorporate in your profile bundles. Refer to the
+  [PaletteAI documentation](https://docs.palette-ai.com/) and [product page](https://www.palette-ai.com/) to learn more
+  about PaletteAI.
 
 :::preview
 
@@ -38,7 +42,7 @@ There are four main artifact areas:
 ## Access Artifact Studio
 
 Access to Artifact Studio is available to all Spectro Cloud customers. To gain access, contact your Spectro Cloud
-representative or [open a support ticket](https://support.spectrocloud.com/).
+representative or [open a support ticket](https://support.spectrocloud.io/).
 
 ## Download Palette Enterprise
 
@@ -47,7 +51,7 @@ representative or [open a support ticket](https://support.spectrocloud.com/).
    :::tip
 
    If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
-   [open a support ticket](https://support.spectrocloud.com/).
+   [open a support ticket](https://support.spectrocloud.io/).
 
    :::
 
@@ -74,7 +78,7 @@ for more information on deploying Palette locally.
    :::tip
 
    If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
-   [open a support ticket](https://support.spectrocloud.com/).
+   [open a support ticket](https://support.spectrocloud.io/).
 
    :::
 

@@ -263,7 +263,7 @@ workaround.
     :::
 
 16. Create a file named `user-data`. It must have the `#cloud-init` header at the top of the file. Ensure you have the
-    following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
+    following blocks at the root level of the `user-data` file. Replace the value for `edgeHostToken` with your VerteX
     registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
     `kairos` and its password with your desired username and password.
 
