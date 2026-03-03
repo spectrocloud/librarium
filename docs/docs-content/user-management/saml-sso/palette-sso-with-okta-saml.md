@@ -21,8 +21,8 @@ The following steps will guide you on how to enable Palette SSO with
 
 - For Okta SAML to work correctly with self-hosted Palette, ensure that HTTPS is enabled and TLS is configured. For
   additional information, refer to the appropriate
-  [Palette](../../../enterprise-version/system-management/ssl-certificate-management) or
-  [VerteX](../../../vertex/system-management/ssl-certificate-management) System Address Management guide.
+  [Palette](../../enterprise-version/system-management/ssl-certificate-management.md) or
+  [VerteX](../../vertex/system-management/ssl-certificate-management.md) System Address Management guide.
 
 - A free or paid subscription with Okta. Okta provides free
   [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
