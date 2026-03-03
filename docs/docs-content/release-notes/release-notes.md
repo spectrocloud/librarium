@@ -25,6 +25,9 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- The **Options** button on the [cluster template](../cluster-templates/cluster-templates.md) **Overview** tab has been
+  renamed **Actions**.
+
 #### Deprecations and Removals
 
 - OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
