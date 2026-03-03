@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Management Appliance"
-title: "Self-Hosted Palette with Management Appliance"
+sidebar_label: "Palette Management Appliance"
+title: "Self-Hosted Palette with Palette Management Appliance"
 description: "Use the Palette Management Appliance to install self-hosted Palette on your desired infrastructure."
 hide_table_of_contents: false
 # sidebar_custom_props:

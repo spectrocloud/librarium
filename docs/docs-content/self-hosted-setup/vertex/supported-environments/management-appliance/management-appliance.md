@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Management Appliance"
-title: "Self-Hosted Palette VerteX with Management Appliance"
+sidebar_label: "VerteX Management Appliance"
+title: "Self-Hosted Palette VerteX with VerteX Management Appliance"
 description:
   "Learn how to use the VerteX Management Appliance to install self-hosted Palette VerteX on your desired
   infrastructure."
