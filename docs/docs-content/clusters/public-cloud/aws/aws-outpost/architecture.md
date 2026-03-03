@@ -19,7 +19,7 @@ premises before you can configure your Edge host. AWS manages the delivery and i
 server at your site.
 
 You must configure your AWS Outposts server's
-[capacity](<(https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html)>) with an **Instance
+[capacity](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html) with an **Instance
 type** of **c6id.metal** and set the **Instance quantity** to **1**.
 
 You must
