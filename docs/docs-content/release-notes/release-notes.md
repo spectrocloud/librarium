@@ -25,7 +25,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9573 -->
+
+- The **Options** button on the [cluster template](../cluster-templates/cluster-templates.md) **Overview** tab has been
+  renamed **Actions**.
+
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5880 -->
 
 - OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
   [data center environment](../clusters/data-center/data-center.md)
