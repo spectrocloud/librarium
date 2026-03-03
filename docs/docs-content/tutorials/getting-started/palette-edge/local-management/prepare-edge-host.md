@@ -139,11 +139,13 @@ information.
 
 **LOG INTO EDGE UI**
 
-Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, and generate an Edge Host UID. Wait until an IP Address is assigned. 
+Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, and generate
+an Edge Host UID. Wait until an IP Address is assigned.
 
 ![Screenshot showing bare metal edge TUI](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
 
-Login in to the Edge UI (`https://<ip-of-edge:5080`) with the username and password you defined in the [Prepare User Data](./prepare-user-data.md) tutorial.
+Login in to the Edge UI (`https://<ip-of-edge:5080`) with the username and password you defined in the
+[Prepare User Data](./prepare-user-data.md) tutorial.
 
 ![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
