@@ -182,7 +182,7 @@ Confirm that the Edge installer ISO and its checksum have been created correctly
 ls build
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 palette-local-edge-installer.iso  palette-local-edge-installer.iso.sha256
 ```
 
@@ -192,7 +192,7 @@ List the container images to confirm that the provider images were built success
 docker images --filter=reference="*/*:*$CUSTOM_TAG"
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 REPOSITORY            TAG                                          IMAGE ID       CREATED          SIZE
 spectrocloud/ubuntu   k3s-1.32.3-v4.8.8-local-edge               d28750baa9a6   33 minutes ago   4.33GB
 spectrocloud/ubuntu   k3s-1.32.3-v4.8.8-local-edge_linux_amd64   d28750baa9a6   33 minutes ago   4.33GB
@@ -207,7 +207,7 @@ the following command to log in to Docker Hub. Provide your Docker ID and passwo
 docker login
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 Login Succeeded
 ```
 
@@ -221,7 +221,7 @@ docker push $IMAGE_REGISTRY/ubuntu:k3s-1.32.3-v4.8.8-$CUSTOM_TAG
 The output confirms that the image was pushed to the registry with the correct tag and is ready to be used in a cluster
 profile.
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 ...
 k3s-1.32.3-v4.8.8-local-edge: digest: sha256:518f937c3256e49c31b54ae72404812c99198281ddea647183b6ee8fc6938aaa size: 16576
 ```
@@ -403,7 +403,7 @@ Follow the steps below to build the artifacts using the script.
    docker login
    ```
 
-   ```text hideClipboard
+   ```bash hideClipboard title="Example Output"
    Login Succeeded
    ```
 
@@ -429,7 +429,7 @@ Follow the steps below to build the artifacts using the script.
    ls CanvOS/build
    ```
 
-   ```text hideClipboard
+   ```bash hideClipboard title="Example Output"
    palette-edge-installer.iso  palette-edge-installer.iso.sha256
    ```
 
