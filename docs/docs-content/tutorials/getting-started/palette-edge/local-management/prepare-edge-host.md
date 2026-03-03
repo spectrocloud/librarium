@@ -18,7 +18,7 @@ host using the Edge installer ISO created in the [Build Edge Artifacts](./build-
 let it self-register. Locally managed Edge devices will still need access to any registries, either from the internet or
 local network access, to download necessary packs for the cluster.
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-host.webp)
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-architecture-prepare_4-8.webp)
 
 ## Prerequisites
 
@@ -120,8 +120,6 @@ specified in the [Prepare User Data](./prepare-user-data.md) tutorial with the l
 Once the device powers off, remove the USB drive. Since it was previously selected as the boot volume, leaving it
 inserted would cause the system to boot from it again, restarting the installation process.
 
-The device is now ready to self-register.
-
 </TabItem>
 
 </Tabs>
@@ -140,12 +138,12 @@ information.
 **LOG INTO EDGE UI**
 
 Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, and generate
-an Edge Host UID. Wait until an IP Address is assigned.
+an Edge Host UID. Wait until an IP Address is assigned. The following image displays the Edge TUI on an Intel NUC device after it has self-registered, and obtained an IP address.
 
 ![Screenshot showing bare metal edge TUI](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
 
 Login in to the Edge UI (`https://<ip-of-edge:5080`) with the username and password you defined in the
-[Prepare User Data](./prepare-user-data.md) tutorial.
+[Prepare User Data](./prepare-user-data.md) tutorial. The following image displays the Edge Local UI log in screen.
 
 ![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
