@@ -120,7 +120,7 @@ specified in the [Prepare User Data](./prepare-user-data.md) tutorial with the l
 Once the device powers off, remove the USB drive. Since it was previously selected as the boot volume, leaving it
 inserted would cause the system to boot from it again, restarting the installation process.
 
-The device is now ready to be registered with Palette as an Edge host.
+The device is now ready to self-register.
 
 </TabItem>
 
@@ -139,8 +139,13 @@ information.
 
 **LOG INTO EDGE UI**
 
-Log in to [Palette](https://console.spectrocloud.com/). From the left main menu, select **Clusters**. Click the **Edge
-Hosts** tab to view the registered hosts.
+Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, and generate an Edge Host UID. Wait until an IP Address is assigned. 
+
+![Screenshot showing bare metal edge TUI](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
+
+Login in to the Edge UI (`https://<ip-of-edge:5080`) with the username and password you defined in the [Prepare User Data](./prepare-user-data.md) tutorial.
+
+![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the host screen.
