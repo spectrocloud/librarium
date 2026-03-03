@@ -129,7 +129,7 @@ your cluster profile.
 Once you select the pack, Palette displays its README file, providing additional guidance on usage and configuration
 options. This pack deploys the [hello-universe](https://github.com/spectrocloud/hello-universe) demo application.
 
-Under **Pack Details**, select **Values**, then choose **Presets**. This pack has two presets available:
+Under **Pack Details**, select **Values**, then choose **Presets**. This pack has the following presets available:
 
 1. **Disable Hello Universe API** configures the `hello-universe` application as a standalone frontend application. This
    is the default option.
