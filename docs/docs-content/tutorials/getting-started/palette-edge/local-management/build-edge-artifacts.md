@@ -182,7 +182,7 @@ Confirm that the Edge installer ISO and its checksum have been created correctly
 ls build
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 palette-local-edge-installer.iso  palette-local-edge-installer.iso.sha256
 ```
 
@@ -192,7 +192,7 @@ List the container images to confirm that the provider images were built success
 docker images --filter=reference="*/*:*$CUSTOM_TAG"
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 REPOSITORY            TAG                                          IMAGE ID       CREATED          SIZE
 spectrocloud/ubuntu   k3s-1.32.3-v4.8.8-local-edge               d28750baa9a6   33 minutes ago   4.33GB
 spectrocloud/ubuntu   k3s-1.32.3-v4.8.8-local-edge_linux_amd64   d28750baa9a6   33 minutes ago   4.33GB
@@ -207,7 +207,7 @@ the following command to log in to Docker Hub. Provide your Docker ID and passwo
 docker login
 ```
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 Login Succeeded
 ```
 
@@ -221,7 +221,7 @@ docker push $IMAGE_REGISTRY/ubuntu:k3s-1.32.3-v4.8.8-$CUSTOM_TAG
 The output confirms that the image was pushed to the registry with the correct tag and is ready to be used in a cluster
 profile.
 
-```text hideClipboard
+```text hideClipboard title="Example Output"
 ...
 k3s-1.32.3-v4.8.8-local-edge: digest: sha256:518f937c3256e49c31b54ae72404812c99198281ddea647183b6ee8fc6938aaa size: 16576
 ```
@@ -237,6 +237,8 @@ the Edge artifacts. The script prompts the user to optionally push the provider 
 
 Follow the steps below to build the artifacts using the script.
 
+<!-- vale off -->
+
 <details>
 <summary>EdgeForge Automation Example Script</summary>
 
@@ -248,145 +250,145 @@ Follow the steps below to build the artifacts using the script.
 
 2. Open a terminal window on your Linux machine and issue the following command to create the script file.
 
-<!-- vale off -->
+   ```shell
+     cat << EOF > edgeforge.sh
+     #!/usr/bin/env bash
+     set -Eeuo pipefail
 
-```shell
- cat << EOF > edgeforge.sh
- #!/usr/bin/env bash
- set -Eeuo pipefail
+     # -----------------------------
+     # Tutorial expectations
+     # -----------------------------
+     REQUIRED_TAG="${REQUIRED_TAG:-v4.8.8}"
+     USER_DATA_SRC="${USER_DATA_SRC:-./user-data}"
+     ARG_FILE="${ARG_FILE:-./.arg}"
 
- # -----------------------------
- # Tutorial expectations
- # -----------------------------
- REQUIRED_TAG="${REQUIRED_TAG:-v4.8.8}"
- USER_DATA_SRC="${USER_DATA_SRC:-./user-data}"
- ARG_FILE="${ARG_FILE:-./.arg}"
+     # -----------------------------
+     # Helpers
+     # -----------------------------
+     die() { echo "❌ $*" >&2; exit 1; }
+     info() { echo "ℹ️  $*"; }
+     ok() { echo "✅ $*"; }
 
- # -----------------------------
- # Helpers
- # -----------------------------
- die() { echo "❌ $*" >&2; exit 1; }
- info() { echo "ℹ️  $*"; }
- ok() { echo "✅ $*"; }
+     require_cmd() {
+     for c in "$@"; do
+         command -v "$c" >/dev/null 2>&1 || die "Missing required command: $c"
+     done
+     }
 
- require_cmd() {
- for c in "$@"; do
-     command -v "$c" >/dev/null 2>&1 || die "Missing required command: $c"
- done
- }
+     # -----------------------------
+     # Preconditions
+     # -----------------------------
+     require_cmd git sudo awk grep tee mktemp docker
 
- # -----------------------------
- # Preconditions
- # -----------------------------
- require_cmd git sudo awk grep tee mktemp docker
+     git rev-parse --is-inside-work-tree >/dev/null 2>&1 \
+     || die "Run this from inside the CanvOS git repository."
 
- git rev-parse --is-inside-work-tree >/dev/null 2>&1 \
- || die "Run this from inside the CanvOS git repository."
+     [ -f "./earthly.sh" ] \
+     || die "earthly.sh not found. Run this script from the root of the CanvOS repository."
 
- [ -f "./earthly.sh" ] \
- || die "earthly.sh not found. Run this script from the root of the CanvOS repository."
+     CURRENT_TAG="$(git describe --tags --exact-match 2>/dev/null || true)"
+     [ -n "$CURRENT_TAG" ] \
+     || die "You are not on a release tag. Run: git checkout ${REQUIRED_TAG}"
 
- CURRENT_TAG="$(git describe --tags --exact-match 2>/dev/null || true)"
- [ -n "$CURRENT_TAG" ] \
- || die "You are not on a release tag. Run: git checkout ${REQUIRED_TAG}"
+     if [ "$CURRENT_TAG" != "$REQUIRED_TAG" ]; then
+       die "You are on tag '${CURRENT_TAG}', but this tutorial expects '${REQUIRED_TAG}'.
+     Run: git checkout ${REQUIRED_TAG}"
+     fi
+     ok "Detected CanvOS tag: $CURRENT_TAG"
 
- if [ "$CURRENT_TAG" != "$REQUIRED_TAG" ]; then
- die "You are on tag '${CURRENT_TAG}', but this tutorial expects '${REQUIRED_TAG}'. Run: git checkout ${REQUIRED_TAG}"
- fi
- ok "Detected CanvOS tag: $CURRENT_TAG"
+     [ -f "./k8s_version.json" ] \
+     || die "k8s_version.json not found. Ensure you checked out ${REQUIRED_TAG} (or v4.4.12+)."
 
- [ -f "./k8s_version.json" ] \
- || die "k8s_version.json not found. Ensure you checked out ${REQUIRED_TAG} (or v4.4.12+)."
+     # -----------------------------
+     # Validate required input files
+     # -----------------------------
+     [ -f "$USER_DATA_SRC" ] \
+     || die "user-data file not found at: $USER_DATA_SRC"
 
- # -----------------------------
- # Validate required input files
- # -----------------------------
- [ -f "$USER_DATA_SRC" ] \
- || die "user-data file not found at: $USER_DATA_SRC"
+     [ -f "$ARG_FILE" ] \
+     || die ".arg file not found at: $ARG_FILE"
 
- [ -f "$ARG_FILE" ] \
- || die ".arg file not found at: $ARG_FILE"
+     ok "Using user-data: $USER_DATA_SRC"
+     ok "Using arg file: $ARG_FILE"
 
- ok "Using user-data: $USER_DATA_SRC"
- ok "Using arg file: $ARG_FILE"
+     # Ensure user-data is named correctly for build
+     if [ "$USER_DATA_SRC" != "./user-data" ]; then
+     cp -f "$USER_DATA_SRC" ./user-data
+     ok "Copied user-data -> ./user-data"
+     fi
 
- # Ensure user-data is named correctly for build
- if [ "$USER_DATA_SRC" != "./user-data" ]; then
- cp -f "$USER_DATA_SRC" ./user-data
- ok "Copied user-data -> ./user-data"
- fi
+     # -----------------------------
+     # Validate user-data
+     # -----------------------------
+     info "Validating user-data..."
+     VALIDATION_OUTPUT="$(sudo ./earthly.sh +validate-user-data 2>&1 || true)"
 
- # -----------------------------
- # Validate user-data
- # -----------------------------
- info "Validating user-data..."
- VALIDATION_OUTPUT="$(sudo ./earthly.sh +validate-user-data 2>&1 || true)"
+     if echo "$VALIDATION_OUTPUT" | grep -iEq \
+     "Validation successful|user data validated successfully"; then
+     ok "User data validation passed."
+     else
+     echo "$VALIDATION_OUTPUT" >&2
+     die "User data validation failed. Please check ./user-data and try again."
+     fi
 
- if echo "$VALIDATION_OUTPUT" | grep -iEq "Validation successful|user data validated successfully"; then
- ok "User data validation passed."
- else
- echo "$VALIDATION_OUTPUT" >&2
- die "User data validation failed. Please check ./user-data and try again."
- fi
+     # -----------------------------
+     # Build artifacts
+     # -----------------------------
+     info "Building Edge artifacts..."
+     TEMP_BUILD_LOG="$(mktemp)"
+     trap 'rm -f "$TEMP_BUILD_LOG"' EXIT
 
- # -----------------------------
- # Build artifacts
- # -----------------------------
- info "Building Edge artifacts..."
- TEMP_BUILD_LOG="$(mktemp)"
- trap 'rm -f "$TEMP_BUILD_LOG"' EXIT
+     sudo ./earthly.sh +build-all-images | tee "$TEMP_BUILD_LOG"
+     ok "Artifacts built successfully."
 
- sudo ./earthly.sh +build-all-images | tee "$TEMP_BUILD_LOG"
- ok "Artifacts built successfully."
+     # Extract manifest profile YAML
+     awk '/^pack:/{flag=1} flag' "$TEMP_BUILD_LOG" > manifest-profile.yaml
 
- # Extract manifest profile YAML
- awk '/^pack:/{flag=1} flag' "$TEMP_BUILD_LOG" > manifest-profile.yaml
+     if [ -s manifest-profile.yaml ]; then
+     ok "Extracted manifest profile YAML -> ./manifest-profile.yaml"
+     else
+     die "Failed to extract manifest profile YAML from build output."
+     fi
 
- if [ -s manifest-profile.yaml ]; then
- ok "Extracted manifest profile YAML -> ./manifest-profile.yaml"
- else
- die "Failed to extract manifest profile YAML from build output."
- fi
+     # -----------------------------
+     # Optional: push image (OFF by default for airgap)
+     # -----------------------------
+     read -r -p "Push provider image to a registry now? [y/N]: " PUSH_CHOICE
+     PUSH_CHOICE="${PUSH_CHOICE:-N}"
 
- # -----------------------------
- # Optional: push image (OFF by default for airgap)
- # -----------------------------
- read -r -p "Push provider image to a registry now? [y/N]: " PUSH_CHOICE
- PUSH_CHOICE="${PUSH_CHOICE:-N}"
+     if [[ "$PUSH_CHOICE" =~ ^[Yy]$ ]]; then
+     set -a
+     # shellcheck disable=SC1091
+     source "$ARG_FILE"
+     set +a
 
- if [[ "$PUSH_CHOICE" =~ ^[Yy]$ ]]; then
- set -a
- # shellcheck disable=SC1091
- source "$ARG_FILE"
- set +a
+     IMAGE_REPO="${IMAGE_REPO:-${OS_DISTRIBUTION:-}}"
 
- IMAGE_REPO="${IMAGE_REPO:-${OS_DISTRIBUTION:-}}"
+     [ -n "${IMAGE_REGISTRY:-}" ] || die "IMAGE_REGISTRY is empty in .arg"
+     [ -n "${IMAGE_REPO:-}" ] || die "IMAGE_REPO (or OS_DISTRIBUTION) is empty in .arg"
+     [ -n "${K8S_DISTRIBUTION:-}" ] || die "K8S_DISTRIBUTION is empty in .arg"
+     [ -n "${K8S_VERSION:-}" ] || die "K8S_VERSION is empty in .arg"
+     [ -n "${CUSTOM_TAG:-}" ] || die "CUSTOM_TAG is empty in .arg"
 
- [ -n "${IMAGE_REGISTRY:-}" ] || die "IMAGE_REGISTRY is empty in .arg"
- [ -n "${IMAGE_REPO:-}" ] || die "IMAGE_REPO (or OS_DISTRIBUTION) is empty in .arg"
- [ -n "${K8S_DISTRIBUTION:-}" ] || die "K8S_DISTRIBUTION is empty in .arg"
- [ -n "${K8S_VERSION:-}" ] || die "K8S_VERSION is empty in .arg"
- [ -n "${CUSTOM_TAG:-}" ] || die "CUSTOM_TAG is empty in .arg"
+     IMAGE_TAG="${K8S_DISTRIBUTION}-${K8S_VERSION}-${CURRENT_TAG}-${CUSTOM_TAG}"
+     IMAGE_REF="${IMAGE_REGISTRY}/${IMAGE_REPO}:${IMAGE_TAG}"
 
- IMAGE_TAG="${K8S_DISTRIBUTION}-${K8S_VERSION}-${CURRENT_TAG}-${CUSTOM_TAG}"
- IMAGE_REF="${IMAGE_REGISTRY}/${IMAGE_REPO}:${IMAGE_TAG}"
+     info "Pushing provider image: $IMAGE_REF"
+     docker push "$IMAGE_REF"
+     ok "Pushed: $IMAGE_REF"
+     else
+     info "Skipping registry push (recommended for airgap)."
+     fi
 
- info "Pushing provider image: $IMAGE_REF"
- docker push "$IMAGE_REF"
- ok "Pushed: $IMAGE_REF"
- else
- info "Skipping registry push (recommended for airgap)."
- fi
-
- # -----------------------------
- # Outputs
- # -----------------------------
- echo
- ok "Build complete."
- echo "📦 Artifacts directory: $(pwd)/build"
- echo "🧾 Manifest profile YAML: $(pwd)/manifest-profile.yaml"
- EOF
-```
+     # -----------------------------
+     # Outputs
+     # -----------------------------
+     echo
+     ok "Build complete."
+     echo "📦 Artifacts directory: $(pwd)/build"
+     echo "🧾 Manifest profile YAML: $(pwd)/manifest-profile.yaml"
+     EOF
+   ```
 
 3. Grant execution permissions to the script.
 
@@ -401,7 +403,7 @@ Follow the steps below to build the artifacts using the script.
    docker login
    ```
 
-   ```text hideClipboard
+   ```bash hideClipboard title="Example Output"
    Login Succeeded
    ```
 
@@ -427,7 +429,7 @@ Follow the steps below to build the artifacts using the script.
    ls CanvOS/build
    ```
 
-   ```text hideClipboard
+   ```bash hideClipboard title="Example Output"
    palette-edge-installer.iso  palette-edge-installer.iso.sha256
    ```
 
