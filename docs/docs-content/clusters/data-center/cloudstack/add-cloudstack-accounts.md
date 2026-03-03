@@ -19,7 +19,8 @@ environment.
 
 ## Prerequisites
 
-- The **ApacheCloudStack** [feature flag](../../../enterprise-version/system-management/feature-flags.md) is enabled.
+- The **ApacheCloudStack** [feature flag](../../../self-hosted-setup/palette/system-management/feature-flags.md) is
+  enabled.
 
 - An installed [Private Cloud Gateway (PCG)](../../pcg/pcg.md) that connects to your CloudStack environment. Review
   [Deploy a PCG in CloudStack](../../pcg/deploy-pcg/cloudstack.md) for guidance.

@@ -234,10 +234,10 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
 
 You can add [AWS Secret](https://aws.amazon.com/federal/secret-cloud/) and
 [Top Secret cloud](https://aws.amazon.com/federal/top-secret-cloud/) accounts in
-[Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in AWS Secret and Top Secret clouds. Depending on
-your organization's compliance requirements, you can register your AWS cloud account using either standard
-authentication (access key and secret access key pairs for IAM users) or secure compliance validation (SC2S Access
-Portal (SCAP) or C2S Access Portal (CAP) credentials).
+[Palette VerteX](../../../../self-hosted-setup/vertex/vertex.md) to deploy AWS EKS clusters in AWS Secret and Top Secret
+clouds. Depending on your organization's compliance requirements, you can register your AWS cloud account using either
+standard authentication (access key and secret access key pairs for IAM users) or secure compliance validation (SC2S
+Access Portal (SCAP) or C2S Access Portal (CAP) credentials).
 
 :::preview
 
@@ -245,7 +245,7 @@ Portal (SCAP) or C2S Access Portal (CAP) credentials).
 
 ### Limitations
 
-- Only [AWS EKS clusters](./eks.md) clusters can be deployed in AWS Secret and Top Secret clouds. AWS IaaS clusters are
+- Only [AWS EKS clusters](../eks.md) clusters can be deployed in AWS Secret and Top Secret clouds. AWS IaaS clusters are
   not supported.
 
 - User-provided Certificate Authority (CA) certificates are not automatically mounted on worker nodes in EKS clusters
@@ -267,7 +267,7 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using stati
 
 #### Prerequisites
 
-- Palette VerteX [installed](../../../vertex/install-palette-vertex/install-palette-vertex.md).
+- Palette VerteX [installed](../../../../self-hosted-setup/vertex/supported-environments/supported-environments.md).
 
 <PartialsComponent
   category="clusters-aws-account-setup"
@@ -283,7 +283,7 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using stati
   cloud account in PEM-encoded format.
 
 - A secure connection to your AWS Secret Cloud or Top Secret Cloud account, such as via a
-  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network (WAN) tunnel, or AWS Private Link.
+  [Private Cloud Gateway (PCG)](../../../pcg/pcg.md), Wide Area Network (WAN) tunnel, or AWS Private Link.
 
 #### Enablement
 
@@ -324,16 +324,17 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/S
 
 #### Prerequisites
 
-- Palette VerteX [installed](../../../vertex/install-palette-vertex/install-palette-vertex.md).
+- Palette VerteX [installed](../../../../self-hosted-setup/vertex/supported-environments/supported-environments.md).
 
-- A Palette VerteX account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A Palette VerteX account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
-- The **AwsSecretPartition** [feature flag](../../../vertex/system-management/feature-flags.md) enabled in the Palette
-  VerteX [system console](../../../vertex/system-management/system-management.md).
+- The **AwsSecretPartition** [feature flag](../../../../self-hosted-setup/vertex/system-management/feature-flags.md)
+  enabled in the Palette VerteX
+  [system console](../../../../self-hosted-setup/vertex/system-management/system-management.md).
 
 - An AWS Secret or Top Secret account configured for CAP/SCAP access. Your CAP/SCAP administrator must provide the
   target Agency, Account, and CAP/SCAP role values. The CAP/SCAP role must be assigned the
-  [required IAM policies](./required-iam-policies.md).
+  [required IAM policies](../required-iam-policies.md).
 
 - A Non-Person Entity (NPE) (service identity) provisioned and authorized to access the target Agency, Account, and
   CAP/SCAP role.
@@ -345,7 +346,7 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/S
 - The CA certificate (root, intermediate, or chain of trust) and private key in PEM-encoded format.
 
 - A secure connection to your AWS Secret Cloud or Top Secret Cloud account, such as via a
-  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), WAN tunnel, or AWS Private Link.
+  [Private Cloud Gateway (PCG)](../../../pcg/pcg.md), WAN tunnel, or AWS Private Link.
 
 #### Enablement
 
@@ -376,7 +377,8 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/S
    | **User Key**                       | Paste the NPE certificate private key in PEM-encoded format.                                                                                                                                                                                                                                                    |
 
    Palette VerteX is configured to work with CAP/SCAP endpoints for US regions. Users who need alternate endpoints can
-   change these configurations on their [self-hosted Palette VerteX](../../../vertex/vertex.md) installation.
+   change these configurations on their [self-hosted Palette VerteX](../../../../self-hosted-setup/vertex/vertex.md)
+   installation.
 
    <details>
 
@@ -385,7 +387,7 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/S
    1. Open a terminal on a host that can connect to the Palette VerteX management cluster.
       [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) must be installed on the host.
 
-   2. Download the Palette VerteX management cluster's [Kubeconfig](../../cluster-management/kubeconfig.md) file.
+   2. Download the Palette VerteX management cluster's [kubeconfig](../../../cluster-management/kubeconfig.md) file.
 
    3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 

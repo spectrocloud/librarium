@@ -120,8 +120,8 @@ Review the active known issues that affect this Palette release on the [Known Is
   [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.33 is now
+- [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md) version 4.8.33 is now
   available.
 
 #### Improvements
@@ -156,7 +156,7 @@ Review the active known issues that affect this Palette release on the [Known Is
 
 - Proxy server Certificate Authority (CA) files must now be named `ca.crt` for
   [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) clusters and
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [VerteX](../vertex/vertex.md) instances
+  [self-hosted Palette](../self-hosted-setup/palette/palette.md) and [VerteX](../self-hosted-setup/vertex/vertex.md) instances
   installed using the [Palette CLI](../automation/palette-cli/palette-cli.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7488 -->
@@ -214,7 +214,7 @@ Review the active known issues that affect this Palette release on the [Known Is
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9830 -->
 
-- Fixed an issue that caused Palette [SMTP configuration](../enterprise-version/system-management/smtp.md) to ignore
+- Fixed an issue that caused Palette [SMTP configuration](../self-hosted-setup/palette/system-management/smtp.md) to ignore
   `noProxy` entries specified using leading-dot notation.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9843 -->
@@ -454,10 +454,10 @@ The following components have been updated for Palette version 4.8.6 - 4.8.27.
 
 The following components have been updated for Palette version 4.8.6 - 4.8.27.
 
-| Component                                                                                             | Version |
-| ----------------------------------------------------------------------------------------------------- | ------- |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.27  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.27  |
+| Component                                                                                                                        | Version |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) | 4.8.27  |
+| [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)   | 4.8.27  |
 
 ### Packs
 
@@ -534,15 +534,18 @@ The following component updates are applicable to this release:
 - Resource limits for core system components can now be adjusted for Day-1 operations by editing the
   `palette-agent-config` ConfigMap in the cluster namespace.
 
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.25 is now
-  available.
+- [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md)
+  and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)
+  version 4.8.25 is now available.
 
 <!-- https://https://spectrocloud.atlassian.net/browse/PCOM-160 -->
 
 - Manual disk selection has been enabled for
-  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) installations.
+  [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md)
+  and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)
+  installations.
 
 ### Bug Fixes
 
@@ -627,12 +630,12 @@ The following components have been updated for Palette version 4.8.6 - 4.8.24.
 
 The following components have been updated for Palette version 4.8.6 - 4.8.24.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.27.1  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.27.1  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.23  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.23  |
+| Component                                                                                                                        | Version |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)                | 0.27.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)                | 0.27.1  |
+| [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) | 4.8.23  |
+| [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)   | 4.8.23  |
 
 ### Improvements
 
@@ -758,8 +761,8 @@ The following component updates are applicable to this release:
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-110 -->
 <!-- prettier-ignore-start -->
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.22 is now
+- [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and
+  [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md) version 4.8.22 is now
   available. This version uses the following components internally:
   - <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> 1.33.5
   - <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />  3.31.2
@@ -1281,8 +1284,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.12.
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.26.2  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.26.2  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.12  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.12  |
+| [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md)             | 4.8.12  |
+| [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)                   | 4.8.12  |
 
 ### Bug Fixes
 
@@ -1431,7 +1434,7 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
 - Fixed an issue that caused [content bundle builds](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) configured on encrypted partitions to become stuck.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5574 -->
-- Fixed an issue that caused multiple versions of the `spectro-reach` image to be installed in [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md).
+- Fixed an issue that caused multiple versions of the `spectro-reach` image to be installed in [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) and [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5573 -->
 - Fixed an issue that caused an incorrect version of the `palette-agent` image to be referenced by the Palette `ally` service.
@@ -1443,7 +1446,7 @@ external provider registries in the <VersionedLink text="Palette eXtended Kubern
 - Fixed an issue that caused Windows 25 server VMs to become inaccessible after being migrated using the [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9395 -->
-- Fixed an issue that caused the [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) PCG type to appear under **Tenant Settings** even though it was disabled using a system administration [feature flag](../enterprise-version/system-management/feature-flags.md).
+- Fixed an issue that caused the [CloudStack](../clusters/data-center/cloudstack/cloudstack.md) PCG type to appear under **Tenant Settings** even though it was disabled using a system administration [feature flag](../self-hosted-setup/palette/system-management/feature-flags.md).
 
 ### Packs
 
@@ -1477,8 +1480,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.9.
 
 | Component                                                                                             | Version |
 | ----------------------------------------------------------------------------------------------------- | ------- |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.10  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.10  |
+| [Palette Management Appliance](../self-hosted-setup/palette/supported-environments/management-appliance/management-appliance.md) | 4.8.10  |
+| [VerteX Management Appliance](../self-hosted-setup/vertex/supported-environments/management-appliance/management-appliance.md)        | 4.8.10  |
 
 Review the active known issues that affect this component update on the [Known Issues](./known-issues.md) page.
 
