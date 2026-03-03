@@ -1,0 +1,29 @@
+---
+partial_category: self-hosted
+partial_name: self-hosted-activate-introduction
+---
+Beginning with version 4.6.32, once you install {props.version} or upgrade it to version 4.6.32 or later, you have 30 days to
+activate it. During this time, you have unrestricted access to all of {props.version}'s features. After 30 days, you can
+continue to use {props.version}, and existing clusters will continue to run, but you cannot perform the following operations
+until {props.version} is activated:
+
+- Create new clusters.
+
+- Modify the configuration of active clusters. This includes modifying
+  [cluster profile variables](/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables);
+  changing [cluster profile versions](/clusters/cluster-management/cluster-updates#enablement);
+  editing, deleting, or replacing profile layers; and editing YAML files.
+
+- Update [node configurations](/clusters/cluster-management/node-pool), such as the node pool size.
+
+Each installation of {props.version} has a unique product ID and corresponding activation key. Activation keys are single-use
+and valid for the entirety of the {props.version} installation, including all subsequent version upgrades. Once {props.version} is
+activated, it does not need to be reactivated unless you need to reinstall {props.version}, at which time a new product ID will
+be assigned, and a new activation key will be needed. Activation keys are no additional cost and are included with your
+purchase of {props.version}. The activation process is the same for connected and airgapped installations, regardless of whether
+{props.version} is installed via the [Palette CLI](/automation/palette-cli),
+<PaletteVertexUrlMapper edition={props.edition} text="Helm chart" url="/supported-environments/kubernetes/install" />, or
+<PaletteVertexUrlMapper edition={props.edition} text="Management Appliance" url="/supported-environments/management-appliance" /> ISO.
+
+If you are in trial mode or your trial has expired, {props.version} displays the appropriate banner on the **Summary** screen of
+your system console, as well as at **Administration > Activation**. Trial mode and expired statuses are also displayed in the {props.version} UI at the bottom of the left main menu.
