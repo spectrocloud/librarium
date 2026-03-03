@@ -12,8 +12,8 @@ instance on [AWS Outposts](https://docs.aws.amazon.com/outposts/latest/server-us
 AWS Outposts provides the benefits of an AWS-managed service while also allowing you access to locally managed
 resources. This decreases latency and allows for local data processing.
 
-Palette allows you to run Kubernetes clusters locally in your AWS Outposts instance. If you lost connectivity to AWS or Palette, your existing clusters continue to operate locally. 
-
+Palette allows you to run Kubernetes clusters locally in your AWS Outposts instance. If you lost connectivity to AWS or
+Palette, your existing clusters continue to operate locally.
 
 ## Resources
 

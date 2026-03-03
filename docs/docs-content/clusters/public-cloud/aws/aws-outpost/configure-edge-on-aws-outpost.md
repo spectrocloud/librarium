@@ -39,7 +39,8 @@ To configure the Edge host on your Outpost server, perform the following steps.
     - `<interface-ip-cidr>` - The interface's static IP address.
     - `<default-gateway-ip>` - The default gateway IP address.
     - `<edge-token>` - The Palette Edge registration token.
-    - `<api-endpoint>` - The api endpoint for your Palette instance. If you are using Palette's multi tenant instance, use `api.spectrocloud.com`. Otherwise, enter the the endpoint for your self-hosted instance.
+    - `<api-endpoint>` - The api endpoint for your Palette instance. If you are using Palette's multi tenant instance,
+      use `api.spectrocloud.com`. Otherwise, enter the the endpoint for your self-hosted instance.
     - `<project-name>` - The AWS Outpost project name.
     - `<username>` - The local username for the instance.
     - `<password>` - The username's password.
