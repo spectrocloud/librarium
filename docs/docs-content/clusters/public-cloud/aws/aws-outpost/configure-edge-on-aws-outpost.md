@@ -14,63 +14,12 @@ guides you through configuring a Kubernetes cluster on an AWS Outposts server th
 ## Prerequisites
 
 - An active Palette account.
-- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
-- Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
-- An AWS[ EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html).
-
-## Configure AWS Outposts for Edge
-
-Your AWS Outposts server requires you to configure your capacity and a subnet before you can convert it to an Edge
-instance.
-
-### Configure the Outpost's capacity
-
-Perform the following steps to set your AWS outposts server capacity. It may take several hours for your server to
-configure your chosen capacity.
-
-1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
-2. Select your Outposts server.
-3. [Create a capacity task](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html). Set
-   the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**.
-
-   :::info
-
-   Palette only supports AWS Outposts servers with one instance.
-
-   :::
-
-4. **Remove** any previously created instances.
-
-   ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
-
-### Create a subnet
-
-1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
-2. Select your AWS Outposts server.
-3. [Create a subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet)
-   for your Outpost.
-
-4. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), enable the new
-   subnet for your local network. You must set the secondary instance to a value of **1**. This ensures that Palette
-   Edge can communicate properly with your server.
-
-   ```bash
-
-   aws ec2 modify-subnet-attribute
-   --subnet-id <subnet-id>
-   --enable-lni-at-device-index 1
-
-   ```
-
-   :::info
-
-   Make a note of your new subnet name. It is required to create your Edge host.
-
-   :::
+- A prepared [AWS Outposts server](./prepare-environment.md).
+- An AWS [EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html).
 
 ## Create the Edge Host
 
-To configure the Edge server on your Outpost server, perform the following steps.
+To configure the Edge host on your Outpost server, perform the following steps.
 
 1.  From the [AWS Outposts console](https://console.aws.amazon.com/outposts), select your AWS Outpost server and click
     [**Launch instance**](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#launch-instances).
@@ -90,6 +39,7 @@ To configure the Edge server on your Outpost server, perform the following steps
     - `<interface-ip-cidr>` - The interface's static IP address.
     - `<default-gateway-ip>` - The default gateway IP address.
     - `<edge-token>` - The Palette Edge registration token.
+    - `<api-endpoint>` - The api endpoint for your Palette instance. If you are using Palette's multi tenant instance, use `api.spectrocloud.com`. Otherwise, enter the the endpoint for your self-hosted instance.
     - `<project-name>` - The AWS Outpost project name.
     - `<username>` - The local username for the instance.
     - `<password>` - The username's password.
@@ -135,7 +85,7 @@ To configure the Edge server on your Outpost server, perform the following steps
            stylus:
              site:
                edgeHostToken: <edge-token>
-               paletteEndpoint: api.spectrocloud.com
+               paletteEndpoint: <api-endpoint>
                projectName: <project-name>
              install:
                reboot: true
@@ -182,7 +132,7 @@ To configure the Edge server on your Outpost server, perform the following steps
 
     ```
 
-## Verify your instance appears in Palette
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 2. Navigate to your Project.

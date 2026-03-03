@@ -12,11 +12,11 @@ instance on [AWS Outposts](https://docs.aws.amazon.com/outposts/latest/server-us
 AWS Outposts provides the benefits of an AWS-managed service while also allowing you access to locally managed
 resources. This decreases latency and allows for local data processing.
 
-Palette provides the ability to run an AWS Outposts server disconnected from the network, bypassing the need to connect
-every seven days. Local UI and the local control plane allow servers to operate without AWS connectivity. It allows
-Kubernetes to run locally on bare metal machines, and lets you deploy, update, and configure your clusters.
+Palette allows you to run Kubernetes clusters locally in your AWS Outposts instance. If you lost connectivity to AWS or Palette, your existing clusters continue to operate locally. 
+
 
 ## Resources
 
 - [Architecture](./architecture.md)
+- [Prepare Environment](./prepare-environment.md)
 - [Configure Edge on AWS Outpost](./configure-edge-on-aws-outpost.md)
