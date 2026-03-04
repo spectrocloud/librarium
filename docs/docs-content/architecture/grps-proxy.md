@@ -11,7 +11,7 @@ sidebar_custom_props:
 
 Palette uses [gRPC](https://grpc.io) to communicate between the management platform and the workload cluster. gRPC is a
 high-performance, open source universal Remote Procedure Call (RPC) framework. It is used to build distributed
-applications and services. gRPC is based on HTTP/2 protocol and uses protocol buffers
+applications and services. gRPC is based on Hypertext Transfer Protocol Version 2 (HTTP/2) and uses protocol buffers
 ([protobuf](https://protobuf.dev/)) as the underlying data serialization framework.
 
 :::tip
@@ -23,10 +23,11 @@ and to learn more about the ports used for communication.
 
 ## gRPC and WebSocket
 
-The Palette agent will automatically attempt to connect to the management plane using gRPC through HTTPS using the
+The Palette agent automatically attempts to connect to the management plane using gRPC through Hypertext Transfer Protocol Secure (HTTPS) using the
 HTTP/2 protocol. In some environments, the network configuration may not allow gRPC traffic to pass through. A common
 scenario is when the network is behind a proxy server that does not support HTTP/2. In this scenario, the Palette agent
 will first attempt to connect to the management plane using HTTP/2. After several failed attempts, the agent will fall
+first attempts to connect to the management plane using HTTP/2. After several failed attempts, the agent falls
 back to using WebSocket over HTTPS with HTTP/1.1.
 
 The fallback to WebSocket with transcoding occurs automatically and does not require any additional configuration.
@@ -82,12 +83,12 @@ When gRPC is used with network proxies, proxy behavior depends on whether the pr
 or intercepts and re-encrypts it (SSL bump). The following table summarizes common proxy scenarios and whether gRPC
 traffic can pass through. If the gRPC connection fails, the agent automatically falls back to using WebSocket.
 
-| **Scenario**                                                                                                                        | **Description**                                                                                                                       | **Proxy Supported** |
+| **Scenario**                                                                                                                        |  **Proxy Mode**|**Description**                                                                                                                       | **Proxy Supported** |
 | :---------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ | :------------------ |
-| gRPC with HTTP/HTTPS - No SSL bump                                                                                                  | gRPC traffic is sent over HTTP/HTTPS, and the proxy does not perform a Secure Socket Layer (SSL) bump. This is universally supported. | ✅                  |
-| gRPC with HTTP/HTTPS - SSL bump                                                                                                     | gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump. Support varies by vendor.                                   | ⚠️                  |
-| gRPC with [Squid](https://wiki.squid-cache.org) - [HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) | gRPC can pass through the proxy because the HTTP/2 connection between the Palette agent and the management plane remains intact.      | ✅                  |
-| gRPC with [Squid](https://wiki.squid-cache.org) - SSL bump                                                                          | Squid does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic, so gRPC fails when Squid performs an SSL bump.              | ❌                  |
+| gRPC with HTTP/HTTPS                                                                                                   | No SSL bump| gRPC traffic is sent over HTTP/HTTPS, and the proxy does not perform a Secure Socket Layer (SSL) bump. This is universally supported. | ✅                  |
+| gRPC with HTTP/HTTPS                                                                                                      | SSL bump| gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump.| Varies by vendor|
+| gRPC with [Squid](https://wiki.squid-cache.org) | [`CONNECT` HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) | gRPC can pass through the proxy because the HTTP/2 connection between the Palette agent and the management plane remains intact.      | ✅                  |
+| gRPC with [Squid](https://wiki.squid-cache.org)                                                                           | SSL bump| Squid does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic, so gRPC fails when Squid performs an SSL bump.              | ❌                  |
 
 The following sections provide more information about gRPC and proxies.
 
@@ -126,14 +127,14 @@ to some vendors' documentation that addresses HTTP/2 and gRPC support.
 ### Squid Proxy
 
 A common open source proxy server is [Squid](https://wiki.squid-cache.org). Squid is a caching proxy for the web,
-supporting HTTP, HTTPS, FTP, and more.
+supporting HTTP, HTTPS, File Transfer Protocol (FTP), and more.
 
 Squid has limited HTTP/2 support. It does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic. Because gRPC
 uses HTTP/2, gRPC traffic does not work when Squid performs an SSL bump. For more information about Squid HTTP/2
 support, refer to [Feature: HTTP/2.0 support](https://wiki.squid-cache.org/Features/HTTP2).
 
 If you use Squid without SSL bump, Squid can tunnel the connection using the
-[HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) method. In this scenario, gRPC can
+[`CONNECT` HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) method. In this scenario, gRPC can
 pass through the proxy because the HTTP/2 connection between the Palette agent and the management plane remains intact.
 
 If gRPC traffic cannot pass through your Squid proxy, the Palette agent automatically falls back to using WebSocket over
