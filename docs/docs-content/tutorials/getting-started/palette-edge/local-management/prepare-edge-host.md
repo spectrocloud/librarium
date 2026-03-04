@@ -27,8 +27,8 @@ local network access, to download necessary packs for the cluster.
   - 2 CPUs
   - 8 GB memory
   - 300 GB storage
-- If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine
-  Manager) installed. This tutorial uses
+- If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed.
+  This tutorial uses
   [vSphere](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0.3 as
   an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same minimum
   hardware requirements.
