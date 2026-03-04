@@ -16,7 +16,11 @@ and must have the Palette agent installed.
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
 let it self-register. Locally managed Edge devices need access to any registries, either through the internet or local
-network access, to download necessary packs for the cluster.
+network access, to download necessary packs for the cluster. The following architectural diagram highlights the processes that will be used in this tutorial:
+
+- Installation of the Edge software.
+- Self-registration of the Local Management Agent.
+- Accessing the Edge device with the Edge Local UI.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-architecture-prepare_4-8.webp)
 
@@ -29,7 +33,7 @@ network access, to download necessary packs for the cluster.
   - 300 GB storage
 - If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed.
   This tutorial uses
-  [vSphere](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0.3 as
+  [Oracle Virtualbox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.2.6 as
   an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same minimum
   hardware requirements.
 - The Edge installer ISO file built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. If you are using
@@ -50,18 +54,18 @@ will use the Edge installer ISO to bootstrap the Edge installation and serve as 
 
 Launch the VirtualBox application and click **New** to create a new VM.
 
-Give the machine a name, for example, `edge-vm`.
+Give the machine a name, for example, `local-edge-vm`.
 
 In the **ISO Image** field, select the Edge installer ISO file you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. The ISO file is located in the `CanvOS/build` directory.
 
-Set the machine **Type** as **Linux** and the **Version** as **Ubuntu (64-bit)**, and click **Next**.
+Set the machine **Type** as **Linux**, the **OS Distribution** as Ubuntu, and the **Version** as **Ubuntu (64-bit)**, and click **Next**.
 
-![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-config.webp)
+![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-new-vm_4-8.webp)
 
 Adjust the **Base Memory** to 8000 MB and **Processors** to 2 CPU. Click **Next** to proceed.
 
-Set the **Disk Size** to 150 GB and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
+Set the **Disk Size** to 300 GB and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
 
 :::info
 
@@ -77,7 +81,7 @@ Select the VM to adjust its network settings. Click **Settings**, then select **
 Change the **Attached to:** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from
 the same network as the host. Click **OK**.
 
-![A screenshot of the VirtualBox VM network configuration.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-network.webp)
+![A screenshot of the VirtualBox VM network configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-network_4-8.webp)
 
 Select the created VM and click **Start** to turn it on. The Edge installer bootstraps the Palette Edge installation
 onto the VM.
@@ -92,7 +96,7 @@ Select the Edge installer ISO and click **Remove Attachment** to remove it from 
 **Remove** and click **OK** to close the settings window. Leaving the installer ISO attached would cause the VM to boot
 from it again, restarting the installation process.
 
-![A screenshot of the VirtualBox VM storage configuration.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-remove-iso.webp)
+![A screenshot of the VirtualBox VM storage configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-remove-iso_4-8.webp)
 
 </TabItem>
 
@@ -135,8 +139,6 @@ information.
 
 :::
 
-**LOG INTO EDGE UI**
-
 Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, reboot, and
 generate an Edge Host UID. Wait until an IP Address is assigned. The following image displays the Edge TUI on an Intel
 NUC device after it has self-registered, and obtained an IP address.
@@ -148,8 +150,9 @@ Login in to the Edge UI (`https://<ip-of-edge:5080`) with the username and passw
 
 ![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
-Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
-should match the ID displayed on the host screen.
+The Edge host will show as **Not Configured** as there is no Edge cluster deployed. The following image displays a newly installed locally managed Edge host.
+
+![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-not-config_4-8.webp)
 
 ## Next Steps
 
