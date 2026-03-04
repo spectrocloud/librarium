@@ -87,7 +87,7 @@ traffic can pass through. If the gRPC connection fails, the agent automatically 
 | gRPC with HTTP/HTTPS - No SSL bump                                                                                                  | gRPC traffic is sent over HTTP/HTTPS, and the proxy does not perform a Secure Socket Layer (SSL) bump. This is universally supported. | ✅                  |
 | gRPC with HTTP/HTTPS - SSL bump                                                                                                     | gRPC traffic is sent over HTTP/HTTPS, and the proxy performs an SSL bump. Support varies by vendor.                                   | ⚠️                  |
 | gRPC with [Squid](https://wiki.squid-cache.org) - [HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) | gRPC can pass through the proxy because the HTTP/2 connection between the Palette agent and the management plane remains intact.      | ✅                  |
-| gRPC with [Squid](https://wiki.squid-cache.org) - SSL bump                                                                          | Squid does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic, so gRPC fails when Squid performs an SSL bump.                                                         | ❌                  |
+| gRPC with [Squid](https://wiki.squid-cache.org) - SSL bump                                                                          | Squid does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic, so gRPC fails when Squid performs an SSL bump.              | ❌                  |
 
 The following sections provide more information about gRPC and proxies.
 
@@ -128,8 +128,9 @@ to some vendors' documentation that addresses HTTP/2 and gRPC support.
 A common open source proxy server is [Squid](https://wiki.squid-cache.org). Squid is a caching proxy for the web,
 supporting HTTP, HTTPS, FTP, and more.
 
-Squid has limited HTTP/2 support. It does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic. Because gRPC uses HTTP/2, gRPC traffic does not work when Squid performs an SSL bump. For more information about Squid HTTP/2 support, refer to
-[Feature: HTTP/2.0 support](https://wiki.squid-cache.org/Features/HTTP2).
+Squid has limited HTTP/2 support. It does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic. Because gRPC
+uses HTTP/2, gRPC traffic does not work when Squid performs an SSL bump. For more information about Squid HTTP/2
+support, refer to [Feature: HTTP/2.0 support](https://wiki.squid-cache.org/Features/HTTP2).
 
 If you use Squid without SSL bump, Squid can tunnel the connection using the
 [HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) method. In this scenario, gRPC can
