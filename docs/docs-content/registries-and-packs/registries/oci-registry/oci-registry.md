@@ -27,12 +27,12 @@ The following table describes the types of OCI registries that are supported.
 
 ## Limitations
 
-- Automatic synchronization is not supported for Zarf registries.
+- GitHub Container Registry (GHCR) is not officially supported at this time. To add a Helm chart from GHCR, you must
+  create a separate OCI Helm registry for each chart. Refer to [Add OCI Helm Registry](./add-oci-helm.md) for more
+  information.
 
 - OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic
   synchronization, re-register the OCI Helm registry.
-
-<br />
 
 To add an OCI registry to Palette, refer to the respective guide for the OCI-type registry located in the
 [Resources](#resources) section.
@@ -53,4 +53,4 @@ system level scope, refer to the
 
 - [Add OCI Packs Registry](./add-oci-packs.md)
 
-- [Add OCI Zarf Registry](./oci-registry.md)
+- [Add OCI Zarf Registry](./add-oci-zarf.md)
