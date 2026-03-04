@@ -31,7 +31,7 @@ Therefore, when using `LB_HOW=compile`, ensure that you follow these guidelines.
      For Palette deployments, add the following line to the Dockerfile or build configuration of the `drbd-loader` image.
 
      ```dockerfile
-     apt-get update && apt-get install -y linux-headers-$(uname -r)
+     apt-get update && apt-get install --assume-yes linux-headers-$(uname --kernel-release)
      ```
 
     </TabItem>
@@ -41,7 +41,7 @@ Therefore, when using `LB_HOW=compile`, ensure that you follow these guidelines.
 
      ```dockerfile
      kernel=$(ls /lib/modules/ | grep fips | head -1)
-     apt-get update && apt-get install -y linux-headers-${kernel}
+     apt-get update && apt-get install --assume-yes linux-headers-${kernel}
      ```
      </TabItem>
 2. Your nodes must have internet access at runtime to download the DRBD source code from the LINBIT repositories for the compilation process to succeed. 

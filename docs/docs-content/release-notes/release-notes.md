@@ -45,7 +45,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that prevented Palette and Palette VerteX deployments from successfully installing on agent mode nodes configured with <VersionedLink text="Piraeus CSI" url="url="/integrations/packs/?pack=piraeus-csi"/>. Refer to the <VersionedLink text="Additional Details" url="url="/integrations/packs/?pack=csi-portworx-generic?tab=custom"/> tab for further details.
+- Fixed an issue that prevented Palette and Palette VerteX deployments from successfully installing on agent mode nodes configured with <VersionedLink text="Piraeus CSI" url="url="/integrations/packs/?pack=piraeus-csi"/>. Refer to the <VersionedLink text="Additional Details" url="url="/integrations/packs/?pack=pack=piraeus-csi?tab=custom"/> tab for further details.
 
 <!-- prettier-ignore-end -->
 
