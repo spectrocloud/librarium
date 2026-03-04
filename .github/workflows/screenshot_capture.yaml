@@ -72,7 +72,7 @@ jobs:
 
       - name: Upload Build
         if: ${{ env.BUILD_EXIT_CODE == '0' }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: "build"
           path: |
@@ -125,7 +125,7 @@ jobs:
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
 
       - name: Upload Screenshots
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         id: screenshots
         with:
           name: screenshots-${{ matrix.shardIndex }}
@@ -148,7 +148,7 @@ jobs:
         merge-multiple: true
 
     - name: Upload Screenshots
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       id: screenshots
       with:
         name: "screenshots"
