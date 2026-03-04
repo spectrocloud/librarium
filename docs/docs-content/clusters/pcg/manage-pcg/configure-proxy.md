@@ -9,19 +9,46 @@ sidebar_position: 14
 tags: ["pcg", "proxy"]
 ---
 
-You can add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed into an existing Kubernetes
-cluster. By default, a PCG deployed to an existing Kubernetes cluster does not have a proxy configuration. If your
-infrastructure environment requires a proxy configuration, use the instructions in this guide to add and manage proxy
-configurations for a PCG deployed in a Kubernetes cluster and to ensure workload clusters deployed through Palette
-inherit the proxy configuration from the PCG cluster.
+You can add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed into an
+[existing Kubernetes cluster](../deploy-pcg-k8s.md). By default, a PCG deployed to an existing Kubernetes cluster does
+not have a proxy configuration. If your infrastructure environment requires a proxy configuration, use the instructions
+in this guide to add and manage proxy configurations for a PCG deployed in a Kubernetes cluster and to ensure workload
+clusters deployed through Palette inherit the proxy configuration from the PCG cluster. The PCG is not used as a network
+proxy for deployed workload clusters and does not provide internet connectivity for the workload clusters. Individual
+workload clusters must have their own proxy configurations to access the internet.
 
-:::info
+:::warning
 
-Workload clusters deployed through Palette will inherit proxy configuration from the PCG cluster. The PCG is not used as
-a network proxy for deployed workload clusters and does not provide internet connectivity for the workload clusters.
-Individual workload clusters must have their own proxy configurations to access the internet.
+This guide applies only to PCGs deployed to an [existing Kubernetes cluster](../deploy-pcg-k8s.md). If you deployed a
+PCG through the [Palette CLI](../pcg.md#supported-environments), the Reach system and `cert-manager` are automatically
+installed during PCG provisioning. Refer to the respective platform installation guide for
+[MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md), or
+[Apache CloudStack](../deploy-pcg/cloudstack.md) for instructions on how to configure proxy settings during the CLI
+installation process.
 
 :::
+
+## How the Reach System Works
+
+The Reach system is a Kubernetes
+[mutating admission webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)
+that automatically injects configuration into pods at creation time. When deployed, it creates the following resources
+in the `reach-system` namespace:
+
+- Two Custom Resource Definitions (CRDs): **ClusterPodPreset** (cluster-scoped) and **PodPreset** (namespace-scoped).
+  These resources define the environment variables, volumes, and volume mounts to inject into matching pods.
+
+- A **MutatingWebhookConfiguration** that intercepts pod creation requests and applies the preset configurations.
+
+When Palette configures the Reach system with proxy settings, it creates ClusterPodPreset resources that inject the
+`HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables into all matching pods across the cluster.
+Namespace-scoped PodPreset resources are also created to append namespace-specific entries to the `NO_PROXY` list, so
+that in-cluster service discovery traffic bypasses the proxy.
+
+The Reach system also supports injecting volumes and volume mounts into pods. This is used to mount Certificate
+Authority (CA) certificates into pods so they can trust the proxy server. For more information about configuring proxy
+CA certificates for workload clusters, refer to
+[Configure Proxy CA Certificates for Workload Clusters](#configure-proxy-ca-certificates-for-workload-clusters).
 
 Use the following steps to add and manage proxy configurations for a PCG.
 
@@ -29,14 +56,6 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
 - A PCG is deployed into an active and healthy Kubernetes cluster. Refer to
   [Deploy a PCG to an Existing Kubernetes Cluster](../deploy-pcg-k8s.md) for additional guidance.
-
-  :::warning
-
-  If you deployed a [PCG through the Palette CLI](../pcg.md#supported-environments), refer to the respective platform
-  installation guide for instructions on how to configure proxy settings during the installation process through the
-  CLI.
-
-  :::
 
 - The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The kubeconfig file is used to authenticate
   with the Kubernetes cluster and deploy the Reach service.
@@ -68,6 +87,8 @@ Use the following steps to add and manage proxy configurations for a PCG.
     contact our support team for additional guidance.
 
     :::
+
+- If the proxy server uses a CA certificate, the certificate file must be named `ca.crt` and be in PEM format.
 
 - Download the Reach Helm Chart provided by our support team. The Reach Helm Chart is used to deploy the Reach service
   into the Kubernetes cluster where the PCG is deployed. The Reach service is used to manage proxy configurations for
@@ -177,6 +198,70 @@ Use the following steps to add and manage proxy configurations for a PCG.
 Once the Reach service is deployed, the PCG will use the proxy configuration in the Reach Helm Chart. If the cloud
 account is configured to use the PCG, the proxy configuration will be inherited by the workload clusters deployed
 through Palette.
+
+## Configure Proxy CA Certificates for Workload Clusters
+
+When your proxy server uses a CA certificate for TLS inspection, workload cluster nodes and pods need access to the CA
+certificate to establish trusted connections through the proxy. The Reach system handles injecting proxy environment
+variables into pods automatically, but the CA certificate must be configured separately.
+
+Proxy CA certificates provided during PCG installation are propagated to the PCG cluster nodes but are not automatically
+propagated to workload cluster nodes. You must configure the CA certificate at either the tenant level or the cluster
+profile level in the OS layer. Refer to the [PCG Architecture](../architecture.md#palette-cli) page for more information
+about proxy CA certificate propagation.
+
+If you deployed your PCG through the Palette CLI, the CLI installation guide includes steps for propagating proxy CA
+certificates to workload clusters at the tenant level or cluster profile level. Refer to the appropriate platform
+installation guide for [MAAS](../deploy-pcg/maas.md), [OpenStack](../deploy-pcg/openstack.md),
+[VMware vSphere](../deploy-pcg/vmware.md), or [Apache CloudStack](../deploy-pcg/cloudstack.md).
+
+### Mount Proxy CA Certificates into Pods
+
+Adding a proxy CA certificate to the cluster profile OS layer places the certificate on each workload cluster node and
+adds it to the node trust store. However, applications running inside pods do not automatically inherit the node trust
+store. To make the CA certificate available inside pods, use the `podMount` configuration in the `kubeadmconfig.files`
+section of the OS layer. The `podMount` configuration instructs Palette to mount the specified host file into pods
+through the Reach system.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Profiles**.
+
+3. Select the cluster profile used by your workload clusters and select the OS layer.
+
+4. In the OS layer pack values, add a `podMount` entry to an existing `files` entry, or add a new `files` entry under
+   the `kubeadmconfig` section. The `targetPath` field specifies the path on the host node where the CA certificate is
+   located, and the `podMount.targetPath` field specifies the mount path inside pods.
+
+   ```yaml
+   kubeadmconfig:
+     files:
+       - targetPath: /usr/local/share/ca-certificates/ca.crt
+         targetOwner: "root:root"
+         targetPermissions: "0644"
+         content: |
+           -----BEGIN CERTIFICATE-----
+           <your-proxy-ca-certificate-content>
+           -----END CERTIFICATE-----
+         podMount:
+           allowed: true
+           targetPath: /etc/ssl/certs/ca-certificates.crt
+   ```
+
+   The following table describes the fields in the configuration.
+
+   | Field                 | Description                                                                                                                                                                      |
+   | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `targetPath`          | The path on the host node where the CA certificate file is written. The certificate file must be named `ca.crt`.                                                                 |
+   | `targetOwner`         | The file ownership in the format `user:group`.                                                                                                                                   |
+   | `targetPermissions`   | The file permissions in octal notation.                                                                                                                                          |
+   | `content`             | The PEM-encoded CA certificate content. If the file already exists on the host node, you can omit this field.                                                                    |
+   | `podMount.allowed`    | Set to `true` to enable mounting the host file into pods through the Reach system.                                                                                               |
+   | `podMount.targetPath` | The path inside pods where the file is mounted. Use `/etc/ssl/certs/ca-certificates.crt` to make the certificate available to most applications that use the system trust store. |
+
+5. **Save** your changes to the cluster profile.
+
+6. If you have existing workload clusters using this profile, apply the updated profile to trigger a cluster update.
 
 ## Validate
 

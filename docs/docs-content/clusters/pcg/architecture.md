@@ -62,8 +62,9 @@ proxy server details are saved as environment variables (`HTTPS_PROXY`, `HTTP_PR
 to all PCG cluster nodes, as well as the nodes of all workload clusters deployed with the PCG. The provided proxy
 servers are then used by the PCG and workload clusters to access the internet.
 
-You can also provide Certificate Authority (CA) certificates for the proxy server during installation. However, proxy CA
-certificates are only propagated to each PCG cluster node; they are not propagated to the nodes of tenant clusters.
+You can also provide Certificate Authority (CA) certificates for the proxy server during installation. The certificate
+file must be named `ca.crt` and be in PEM format. Proxy CA certificates are only propagated to each PCG cluster node;
+they are not propagated to workload cluster nodes.
 
 Proxy CA certificates must be added to workload clusters at either the tenant level or the cluster profile level in the
 OS layer.
@@ -75,8 +76,13 @@ OS layer.
 - If configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected
   with the CA certificate.
 
-For guidance on configuring proxy CA certificates, refer to appropriate Palette CLI PCG deployment guide for
-[MAAS](./deploy-pcg/maas.md), [OpenStack](./deploy-pcg/openstack.md), [VMware vSphere](./deploy-pcg/vmware.md), or
+To make the CA certificate available to pods inside workload clusters, you can use the `podMount` configuration in the
+OS layer of your cluster profile. Refer to
+[Configure Proxy CA Certificates for Workload Clusters](./manage-pcg/configure-proxy.md#configure-proxy-ca-certificates-for-workload-clusters)
+for instructions.
+
+For guidance on configuring proxy CA certificates during PCG installation, refer to the appropriate Palette CLI PCG
+deployment guide for [MAAS](./deploy-pcg/maas.md), [VMware vSphere](./deploy-pcg/vmware.md), or
 [Apache CloudStack](./deploy-pcg/cloudstack.md).
 
 #### Existing Kubernetes Cluster
