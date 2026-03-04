@@ -25,6 +25,15 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- It is now possible to use dynamic credentials for backup locations when the IAM user or role for backup locations
+  differs from the one used for cluster deployment, and the cluster deployment uses static credentials in AWS. The IAM
+  user or role must be added to the trust policy of the backup location IAM role for this to work. For more details,
+  refer to the
+  [Add Backup Location with Dynamic Credentials](../clusters/cluster-management/backup-restore/add-backup-location-dynamic.md)
+  and
+  [Troubleshooting clusters](../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+  guides.
+
 #### Deprecations and Removals
 
 - OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
