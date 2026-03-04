@@ -289,8 +289,8 @@ multiple cloud accounts.
   }
   ```
 
-  - If you are using an IAM user or role with static credentials to deploy clusters in AWS Account A, you must update
-    the IAM role used for the backup location in AWS Account B to allow the IAM principal (user or role) associated with
+  - If you are using an IAM user or role with static credentials to deploy clusters, you must update
+    the IAM role used for the backup location to allow the IAM principal (user or role) associated with
     those static credentials to assume the backup location IAM role. Check out the
     [Troubleshooting clusters](../../../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
     guide for detailed instructions.
