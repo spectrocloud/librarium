@@ -19,7 +19,7 @@ when upgrades happen, and apply changes to multiple clusters at once.
 [cluster template policies](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
 
 - [Cluster profiles](../../../../../profiles/cluster-profiles/create-cluster-profiles/) define what a cluster runs. They
-  contains the software stack and infrastructure configuration.
+  contain the software stack and infrastructure configuration.
 - [Cluster template policies](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md)
   define how clusters created from a template are managed throughout their lifecycle, including when upgrades can run.
 
@@ -105,6 +105,13 @@ Terraform provider, create a cluster profile, configure a cluster template with 
 clusters from the same template. You will then release a new cluster profile version, update the template to reference
 it, and apply upgrades across both clusters.
 
+:::info
+
+All commands and expected outputs in this section use AWS as the example. Azure users follow the same steps with
+Azure-specific resource names in the output.
+
+:::
+
 <PartialsComponent category="getting-started" name="setup-local-environment" />
 
 Navigate to the **terraform/cluster-templates-tf** directory.
@@ -128,55 +135,87 @@ pwd
 The directory contains files that configure the Spectro Cloud provider and point it at your Palette project. Review each
 file before running any commands.
 
-| **File**             | **Description**                                                                                                  |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **provider.tf**      | Configures the Spectro Cloud Terraform provider and sets the target Palette project.                             |
-| **inputs.tf**        | Declares the input variables the configuration expects.                                                          |
-| **terraform.tfvars** | Supplies values for the declared variables. Update `palette_project` if your project is not named `Default`.     |
-| **data.tf**          | Reads the Palette project by name to confirm authentication and project access before any resources are created. |
+| **File**             | **Description**                                                                                                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **provider.tf**      | Configures the Spectro Cloud Terraform provider and sets the target Palette project.                                                                                                                       |
+| **inputs.tf**        | Declares the input variables the configuration expects: the Palette project and cloud provider.                                                                                                            |
+| **terraform.tfvars** | Supplies values for the variables declared in `inputs.tf`. Update `palette-project` if your project is not named `Default`, and set `deploy-aws` or `deploy-azure` to `true` to match your cloud provider. |
+| **data.tf**          | Resolves the Palette project, registries, and pack configuration referenced by `cluster_profiles.tf`.                                                                                                      |
 
-`provider.tf` pins the Spectro Cloud provider to its registry source and sets a minimum version requirement. The
-`provider` block reads `var.palette_project` to target the correct Palette project.
-
-```hcl title="provider.tf" hideClipboard
-terraform {
-  required_providers {
-    spectrocloud = {
-      version = ">= 0.1"
-      source  = "spectrocloud/spectrocloud"
-    }
-  }
-}
-
-provider "spectrocloud" {
-  project_name = var.palette_project
-}
-```
-
-`inputs.tf` includes a `type` in each variable definition so Terraform can validate values before applying any changes.
+`inputs.tf` declares four variables. `palette-project` sets the Palette project where the cluster template and all
+clusters it manages will be created. `app_port` is set at apply time and shared across every cluster the template
+manages. `deploy-aws` and `deploy-azure` determine the cloud provider for the cluster template and all clusters it
+manages.
 
 ```hcl title="inputs.tf" hideClipboard
-variable "palette_project" {
+#########
+# Palette
+#########
+
+variable "palette-project" {
   description = "Palette project name"
   type        = string
+}
+
+#####################
+# Hello Universe
+#####################
+
+variable "app_port" {
+  type        = number
+  description = "The cluster port number on which the service will listen for incoming traffic."
+}
+
+#######
+# AWS
+#######
+
+variable "deploy-aws" {
+  type        = bool
+  description = "A flag for enabling a deployment on AWS."
+}
+
+#########
+# Azure
+#########
+
+variable "deploy-azure" {
+  type        = bool
+  description = "A flag for enabling a deployment on Azure."
 }
 ```
 
 Terraform loads `terraform.tfvars` automatically at runtime. If your project is not named `Default`, update
-`palette_project` before proceeding.
+`palette-project`. Set either `deploy-aws` or `deploy-azure` to `true` to match your cloud provider. Only one should be
+`true` at a time.
 
 ```hcl title="terraform.tfvars" hideClipboard
-palette_project = "Default"
+#####################
+# Palette Settings
+#####################
+palette-project = "Default" # The name of your project in Palette.
+
+##############################
+# Hello Universe Configuration
+##############################
+app_port = 8080 # The cluster port number on which the service will listen for incoming traffic.
+
+###########################
+# AWS Deployment Settings
+############################
+deploy-aws = false # Set to true to deploy to AWS.
+
+###########################
+# Azure Deployment Settings
+############################
+deploy-azure = false # Set to true to deploy to Azure.
 ```
 
-`data.tf` uses a read-only data source to look up the Palette project by name. If authentication fails or the project
-does not exist, Terraform stops with an error before creating any resources.
+`provider.tf` pins the Spectro Cloud provider to its registry source and sets a minimum version requirement. The
+`provider` block reads `var.palette-project` to target the correct Palette project.
 
-```hcl title="data.tf" hideClipboard
-data "spectrocloud_project" "current" {
-  name = var.palette_project
-}
-```
+`data.tf` resolves the Palette project, registries, and packs that `cluster_profiles.tf` references. The project lookup
+runs first, so if authentication fails or the project does not exist, Terraform stops before creating any resources.
 
 #### Set API Key Environment Variable
 
@@ -210,33 +249,120 @@ Terraform v1.x.x
 on darwin_arm64
 ```
 
-The version must start with `v1`. If the command is not found or the version is outside the `1.x` range, install or
-upgrade Terraform before continuing.
+#### Initialize the Working Directory
 
-#### Validate Provider and Project Configuration
-
-Initialize the working directory, then run a plan to confirm that Terraform can authenticate to Palette and that your
-target project exists. No infrastructure will be created at this step.
+Initialize the working directory to download the Spectro Cloud provider.
 
 ```bash
-terraform init && terraform plan
+terraform init
 ```
-
-Terraform will install the provider and query the project defined in `terraform.tfvars`.
 
 ```bash hideClipboard title="Expected output"
 Terraform has been successfully initialized!
-...
-data.spectrocloud_project.current: Reading...
-data.spectrocloud_project.current: Read complete after 0s [id=6342eab2faa0813ead9082e0]
-
-No changes. Your infrastructure matches the configuration.
 ```
 
-If `Read complete` is followed by `No changes`, Terraform successfully authenticated, found your Palette project, and
-the provider configuration is valid.
+Successful initialization confirms the provider plugin was downloaded and the working directory is ready.
 
 ### Create a Cluster Profile
+
+`cluster_profiles.tf` declares two cluster profiles: one for AWS and one for Azure. The `count` meta-argument on each
+resource reads `var.deploy-aws` or `var.deploy-azure` and resolves to either `1` or `0`, so only the matching resource
+is created when you run `terraform apply`.
+
+Pack versions are defined in `data.tf`. To use a different version, update the `version` field in the corresponding
+`spectrocloud_pack` data source before running `terraform apply`.
+
+<Tabs>
+
+<TabItem label="AWS" value="aws">
+
+| **Pack Type** | **Pack Name**    | **Version** |
+| ------------- | ---------------- | ----------- |
+| OS            | `ubuntu-aws`     | `22.04`     |
+| Kubernetes    | `kubernetes`     | `1.33.6`    |
+| Network       | `cni-calico`     | `3.31.2`    |
+| Storage       | `csi-aws-ebs`    | `1.46.0`    |
+| App Services  | `hello-universe` | `1.3.0`     |
+
+</TabItem>
+
+<TabItem label="Azure" value="azure">
+
+| **Pack Type** | **Pack Name**      | **Version**   |
+| ------------- | ------------------ | ------------- |
+| OS            | `ubuntu-azure`     | `22.04`       |
+| Kubernetes    | `kubernetes`       | `1.33.6`      |
+| Network       | `cni-calico-azure` | `3.31.2`      |
+| Storage       | `csi-azure`        | `1.31.2-rev2` |
+| App Services  | `hello-universe`   | `1.3.0`       |
+
+</TabItem>
+
+</Tabs>
+
+`cluster_profiles.tf` loads the hello-universe pack values from `manifests/values-hello-universe.yaml`. This file sets
+`replicas` to `{{.spectro.var.app_replicas}}`, a
+[cluster profile variable](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
+declared in the `profile_variables` block with `required = true`. Each cluster template that uses this profile must
+supply a value for `app_replicas`, which is what allows dev and prod clusters to run different replica counts while
+sharing the same profile.
+
+Run `terraform test` to verify the profile configuration.
+
+```bash
+terraform test
+```
+
+```bash hideClipboard title="Expected output"
+tests/aws.tftest.hcl... pass
+  run "verify_aws_profile"... pass
+tests/azure.tftest.hcl... pass
+  run "verify_azure_profile"... pass
+
+Success! 2 passed, 0 failed.
+```
+
+Run `terraform plan` to preview the changes Terraform will make. This also confirms that Terraform can authenticate to
+Palette and that your project exists.
+
+```bash
+terraform plan
+```
+
+```bash hideClipboard title="Expected output"
+data.spectrocloud_project.current: Reading...
+data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
+...
+
+  # spectrocloud_cluster_profile.aws_profile[0] will be created
+  + resource "spectrocloud_cluster_profile" "aws_profile" { ... }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+```
+
+If `Read complete` appears in the output, Terraform successfully authenticated and found your Palette project. A plan of
+`1 to add` confirms the cluster profile is ready to be created.
+
+Apply the configuration to create the cluster profile in Palette.
+
+```bash
+terraform apply -auto-approve
+```
+
+```bash hideClipboard title="Expected output"
+spectrocloud_cluster_profile.aws_profile[0]: Creating...
+spectrocloud_cluster_profile.aws_profile[0]: Creation complete after Xs [id=<profile-id>]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+Confirm the cluster profile was created correctly in Palette.
+
+1. Log in to [Palette](https://console.spectrocloud.com)
+2. Click **Profiles** from the left **Main Menu**.
+3. Locate and select the cluster profile named `tf-cluster-template-profile`.
+4. Review its pack layers to confirm they match the configuration.
+5. Select the **Variables** tab and confirm that a variable named `app_replicas` is listed.
 
 ### Create a Cluster Template Policy (Maintenance)
 
