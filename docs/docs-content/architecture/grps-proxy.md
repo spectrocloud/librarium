@@ -45,8 +45,6 @@ before forwarding it to the gRPC handler. The server will then respond with a gR
 HTTP/1.1 and sent back to the agent over the WebSocket. The agent's in-memory proxy will read the message and transcode
 it back to HTTP/2 and pass it to the agent.
 
-![An architecture diagram of the gRPC over WebSocket flow from a network perspective. Agent to agent proxy, to WebSocket handler, who then forwards the message to the server gRPC handler.](/architecture_grps-proxy_grpc-websocket.webp)
-
 Below is a high-level overview of the order of operations when the Palette agent falls back to using WebSocket:
 
 1. The agent initiates a new gRPC request to the management plane servers that is picked up by the in-memory proxy
