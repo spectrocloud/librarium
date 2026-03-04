@@ -156,6 +156,6 @@ The Edge host will show as **Not Configured** as there is no Edge cluster deploy
 
 ## Next Steps
 
-In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
+In this tutorial, you learned how to install the Palette agent on your host. We
 recommend proceeding to the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial to learn how to use the registered
-Edge host to deploy an Edge cluster in Palette.
+Edge host to deploy an Edge cluster locally.
