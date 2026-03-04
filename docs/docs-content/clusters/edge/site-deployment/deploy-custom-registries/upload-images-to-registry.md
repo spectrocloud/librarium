@@ -37,8 +37,6 @@ Palette Edge CLI to download the images and upload them to the external registry
   version `4.5.3` or earlier to create content bundles. To download the latest version of the Edge CLI, visit the
   [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page.
 
--
-
 ## Upload Cluster Images to Registry
 
 <Tabs>
@@ -129,6 +127,25 @@ Palette Edge CLI to download the images and upload them to the external registry
     ```shell
     palette content push --file <path-to-content-bundle> --registry <registry-address>
     ```
+
+    <!-- https://spectrocloud.atlassian.net/browse/PLT-1840 -->
+
+    :::info
+
+    [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) now allows repository path creation on
+    the fly. You must create a repository creation template in ECR to enable this for your registry before uploading
+    your content bundle images. Refer to the
+    [Creating a repository creation template in Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-creation-templates-create.html)
+    guide for further information.
+
+    For example, you can create a template for your registry using the AWS CLI by issuing the following command. You can
+    then push bundle content at the `<registry-url>/<prefix>` path.
+
+    ```shell
+    aws ecr create-repository-creation-template  --prefix <prefix>  --applied-for CREATE_ON_PUSH  --description  "Auto-create repos on push"
+    ```
+
+    :::
 
 </TabItem>
 
@@ -300,23 +317,6 @@ Palette Edge CLI to download the images and upload them to the external registry
    ./palette-edge deploy --export path-to-content-bundle --url registry-URL \
     --username username --password ******
    ```
-
-   :::info
-
-   [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) now allows repository path creation on
-   the fly. You must create a repository creation template in ECR to enable this for your registry before uploading your
-   content bundle images. Refer to the
-   [Creating a repository creation template in Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-creation-templates-create.html)
-   guide for further information.
-
-   For example, you can create a template for your registry using the AWS CLI by issuing the following command. You can
-   then push bundle content at the `<registry-url>/<prefix>` path.
-
-   ```shell
-   aws ecr create-repository-creation-template  --prefix <prefix>  --applied-for CREATE_ON_PUSH  --description "Auto-create repos on push"
-   ```
-
-   :::
 
 </TabItem>
 </Tabs>
