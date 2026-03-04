@@ -10,7 +10,7 @@ tags: ["profiles", "cluster profiles", "helm", "add-on"]
 You can extend the list of integrations by adding Helm charts from a public or private registry to your cluster profile.
 Take the following steps to create a cluster profile by adding layers using Helm charts.
 
-For guidance on adding Open Container Initiative (OCI)-based Helm Chart registries to Palette, refer to our
+For guidance on adding Open Container Initiative (OCI)-based Helm chart registries to Palette, refer to our
 [Add OCI Helm Registry](../../../../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide.
 
 ## Prerequisites

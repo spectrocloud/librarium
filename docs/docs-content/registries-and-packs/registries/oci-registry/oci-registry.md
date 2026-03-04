@@ -28,7 +28,7 @@ The following table describes the types of OCI registries that are supported.
 ## Limitations
 
 - GitHub Container Registry (GHCR) is not officially supported at this time. To add a Helm chart from GHCR, you must
-  create a separate OCI Helm registry for each chart. Refer to [Add OCI Helm Registry](./add-oci-helm.md) for more
+  create a separate OCI Helm registry in Palette for each chart. Refer to [Add OCI Helm Registry](./add-oci-helm.md) for more
   information.
 
 - OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic

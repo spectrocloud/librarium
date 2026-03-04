@@ -112,8 +112,8 @@ registry you are adding.
 8. Provide the registry URL in the **Endpoint** field.
 
 9. If **Synchronization** is enabled, for **Base Content Path**, enter the base path to the repository in the registry
-   where the Helm Charts are stored. You can specify multiple base paths by pressing the **ENTER** key after each path.
-   Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such as
+   where the Helm charts are stored. You can specify multiple base paths by pressing the **ENTER** key after each path.
+   Providing multiple base paths is useful when Helm charts are stored in different directories or projects, such as
    multiple projects in a Harbor registry.
 
 10. Fill out the **Username** and **Password** fields with the credentials to access the registry. If the registry does
@@ -147,9 +147,8 @@ registry you are adding.
 8. Provide the registry URL in the **Endpoint** field. Exclude the `https://` prefix.
 
 9. If **Synchronization** is enabled, for **Base Content Path**, enter the base path to the repository in the registry
-   where the Helm Charts are stored. You can specify multiple base paths by pressing the **ENTER** key after each path.
-   Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such as
-   multiple projects in a Harbor registry.
+   where the Helm charts are stored. You can specify multiple base paths by pressing the **ENTER** key after each path.
+   Providing multiple base paths is useful when Helm charts are stored in different directories or projects.
 
 10. If you are using a private ECR, toggle the **Enable Authentication** option to expose the **AWS authentication
     method** fields. Choose **Credentials** if you want to provide the static AWS credentials for an IAM user. Choose
