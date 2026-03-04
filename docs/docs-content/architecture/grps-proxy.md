@@ -128,7 +128,7 @@ to some vendors' documentation that addresses HTTP/2 and gRPC support.
 A common open source proxy server is [Squid](https://wiki.squid-cache.org). Squid is a caching proxy for the web,
 supporting HTTP, HTTPS, FTP, and more.
 
-Squid has limited HTTP/2 support. It does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic. Because gRPC uses HTTP/2, gRPC traffic does not work when Squid performs SSL bump. For more information about Squid HTTP/2 support, refer to
+Squid has limited HTTP/2 support. It does not support HTTP/2 for intercepted (SSL-bumped) HTTPS traffic. Because gRPC uses HTTP/2, gRPC traffic does not work when Squid performs an SSL bump. For more information about Squid HTTP/2 support, refer to
 [Feature: HTTP/2.0 support](https://wiki.squid-cache.org/Features/HTTP2).
 
 If you use Squid without SSL bump, Squid can tunnel the connection using the
