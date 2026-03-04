@@ -13,7 +13,7 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 ## Limitations
 
 - GitHub Container Registry (GHCR) is not officially supported at this time. To add a Helm chart from GHCR, you must
-  create a separate OCI Helm registry for each chart. Refer to the
+  create a separate OCI Helm registry in Palette for each chart. Refer to the
   [Add OCI Helm Registry - GHCR](#add-oci-helm-registry) section for more information.
 
 ## Prerequisites
