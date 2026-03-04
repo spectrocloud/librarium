@@ -137,8 +137,9 @@ information.
 
 **LOG INTO EDGE UI**
 
-Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, reboot, and generate
-an Edge Host UID. Wait until an IP Address is assigned. The following image displays the Edge TUI on an Intel NUC device after it has self-registered, and obtained an IP address.
+Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, reboot, and
+generate an Edge Host UID. Wait until an IP Address is assigned. The following image displays the Edge TUI on an Intel
+NUC device after it has self-registered, and obtained an IP address.
 
 ![Screenshot showing bare metal edge TUI](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
 
