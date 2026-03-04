@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February XX, 2026 - Release 4.8.X
+## March XX, 2026 - Release 4.8.36
 
 ### Improvements
 
@@ -19,6 +19,13 @@ tags: ["release-notes"]
 
 - The internal Palette [Go versions](https://go.dev/doc/devel/release) have been upgraded to 1.24.12 and 1.25.7,
   depending on the component, addressing [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6110 -->
+
+- The internal Palette version of [kube-vip](../clusters/edge/networking/kubevip.md) has now been upgraded to address
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121). Due to cluster repave protection,
+  [cluster repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) must be manually
+  triggered to apply the upgrade.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5353 -->
 
@@ -33,6 +40,11 @@ tags: ["release-notes"]
   resources to system components in large-scale clusters. Refer to our
   [Troubleshooting](../troubleshooting/cluster-deployment.md#scenario---insufficient-resources-for-palette-controller-manager-and-cluster-management-agent-pods)
   guide for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6029 -->
+
+- Palette now allows the use of tags to specify the placement of control planes on
+  [MAAS LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md).
 
 ### Bug Fixes
 
@@ -56,7 +68,22 @@ tags: ["release-notes"]
 - Fixed an issue that caused Local UI to fail to configure
   [bridges](../clusters/edge/local-ui/host-management/configure-network-interfaces.md) without pre-existing networkd
   configuration files.
-  
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8204 -->
+
+- Fixed an issue that prevented the Palette TUI from displaying the DNS IP details of
+  [configured DNS servers](../clusters/edge/site-deployment/site-installation/initial-setup.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6091 -->
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused Palette to accumulate orphaned objects when changing the AMI ID on existing [EKS worker pools](../clusters/public-cloud/aws/eks.md) with the <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> pack installed.
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6089 -->
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed with the <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> pack to fail to upgrade the Kubernetes version of their worker node groups or `MachinePools`.
+<!-- prettier-ignore-end -->
+
 ## February 27, 2026 - Component Updates {#component-updates-2026-09}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.35.
