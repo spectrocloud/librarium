@@ -56,8 +56,81 @@ tags: ["release-notes"]
 - Fixed an issue that caused Local UI to fail to configure
   [bridges](../clusters/edge/local-ui/host-management/configure-network-interfaces.md) without pre-existing networkd
   configuration files.
+  
+## February 27, 2026 - Component Updates {#component-updates-2026-09}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.35.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.28.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.28.2  |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-1899 -->
+
+- The
+  [`spectrocloud_cluster_profile` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
+  now supports dropdown and multiline
+  [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  input types.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-17 -->
+
+- [Artifact Studio](../downloads/artifact-studio.md) now includes a user survey for gathering feedback and identifying
+  improvements. The provided data is processed internally by Spectro Cloud.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2133 -->
+
+- Fixed an issue that caused the Terraform provider to fail to reconcile when replacing an
+  [infrastructure cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  on a cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-100 -->
+
+- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused expanded version drop-down menus to
+  float when scrolling.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-101 -->
+
+- Fixed an [Artifact Studio](../downloads/artifact-studio.md) UI issue that caused pack sizes to be incorrectly reported
+  as 0 GB.
+
+### Packs
+
+#### Packs Notes
+
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> pack version 2.2.0 is now available in the Palette Community Registry.
+- The <VersionedLink text="Tigera Operator" url="/integrations/packs/?pack=tigera-operator" /> pack version 3.31.3 fails to install on airgapped environments. Refer to the <VersionedLink text="Additional Details" url="/integrations/packs/?pack=tigera-operator&tab=custom" /> tab for the workaround. 
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3702 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3759 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3773 -->
+
+| Pack Name                          | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Calico                             | CNI        | :white_check_mark: | :white_check_mark: | 3.31.4      |
+| Cert Manager                       | Add-on     | :white_check_mark: | :white_check_mark: | 1.19.3      |
+| Cilium                             | CNI        | :x:                | :white_check_mark: | 1.18.4      |
+| Cilium                             | CNI        | :x:                | :white_check_mark: | 1.18.1      |
+| Harbor                             | Add-on     | :white_check_mark: | :x:                | 1.18.2      |
+| Palette eXtended Kubernetes        | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.7      |
+| Piraeus Operator                   | CSI        | :white_check_mark: | :x:                | 2.10.4      |
+| Prometheus Agent                   | Add-on     | :white_check_mark: | :x:                | 28.9.0      |
+| Prometheus Operator                | Add-on     | :white_check_mark: | :x:                | 81.6.1      |
+| Reloader                           | Add-on     | :white_check_mark: | :x:                | 1.4.13      |
+| Tigera Operator                    | CNI        | :white_check_mark: | :x:                | 3.31.3      |
 
 ## February 25, 2026 - Release 4.8.35
+
+The following component updates are applicable to this release:
+
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -65,6 +138,10 @@ tags: ["release-notes"]
   as VM start, stop, restart, and migrate, from completing when triggered using the [Palette API](/api/introduction).
 
 ## February 21, 2026 - Release 4.8.33 {#release-notes-4.8.b}
+
+The following component updates are applicable to this release:
+
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
 
@@ -94,6 +171,24 @@ Review the active known issues that affect this Palette release on the [Known Is
   available.
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5582 -->
+
+- The minimum permissions policies for AWS clusters have been revamped to remove certain permissions, such as
+  `iam:CreateUser`, `iam:CreateRole`, and `iam:AttachRolePolicy`. There are also further resource constraints added to
+  the existing permissions.
+
+  As a result, there are some additional steps required to use the minimum permissions policies. You must create the
+  required CloudFormation stack for Palette manually in your AWS region, and configure the Kubernetes layer of your
+  cluster profiles to use the manually created stack using a new property.
+
+  Alternatively, you can use the new minimum permissions policies and include an additional policy that allows Palette
+  to manage the creation and lifecycle of the CloudFormation stack on your behalf. This allows you to continue using the
+  streamlined experience for AWS cluster provisioning and management without needing to manually create the
+  CloudFormation stack.
+
+  For more details, refer to the
+  [Required IAM Policies for AWS Clusters](../clusters/public-cloud/aws/required-iam-policies.md) documentation.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9205 -->
 
@@ -444,6 +539,7 @@ The following component updates are applicable to this release:
 
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Improvements
 
@@ -458,6 +554,7 @@ The following component updates are applicable to this release:
 
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Breaking Changes
 
@@ -651,6 +748,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -666,6 +764,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -699,6 +798,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Features
 
@@ -729,6 +829,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1168,6 +1269,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1280,6 +1382,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 #### Features
 
@@ -1481,6 +1584,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1518,6 +1622,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1547,6 +1652,7 @@ The following component updates are applicable to this release:
 - [January 30, 2026 - Component Updates](#component-updates-2026-05) <!-- omit in toc -->
 - [February 6, 2026 - Component Updates](#component-updates-2026-06) <!-- omit in toc -->
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
+- [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 
 ### Security Notices
 
