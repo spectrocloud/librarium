@@ -109,7 +109,7 @@ credentials.
 
    A successful response returns temporary credentials similar to the following output.
 
-   ```json  hideClipboard title="Example Output" 
+   ```json hideClipboard title="Example Output"
    {
      "Credentials": {
        "AccessKeyId": "*****",
