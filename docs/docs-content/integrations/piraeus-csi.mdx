@@ -1,0 +1,52 @@
+---
+sidebar_label: "Piraeus CSI"
+title: "Piraeus CSI"
+description: "Piraeus CSI integration in Spectro Cloud"
+type: "integration"
+hide_table_of_contents: true
+category: ["storage", "amd64"]
+sidebar_class_name: "hide-from-sidebar"
+tags: ["packs", "piraeus-csi", "storage"]
+---
+
+<RedirectPackPage packName="piraeus-csi" />
+
+## Versions Supported
+
+<Tabs queryString="parent">
+<TabItem label="2.8.x" value="2.8.0">
+
+For Palette or Palette VerteX deployments that use Piraeus/LINSTOR-backed storage, and where the `drbd-loader` init container is configured with `LB_HOW=compile`, it is mandatory that the container image includes the appropriate Linux kernel headers.
+
+The `drbd-loader` dynamically compiles the DRBD kernel module at runtime on the target node when `LB_HOW=compile` is set. This compilation process requires access to the kernel headers and related build tooling that match the running kernel (`uname -r`) on the host.
+
+If the required kernel headers are missing or do not match the running kernel version, the module compilation will fail, and the DRBD kernel module will not be loaded.
+
+Therefore, when using `LB_HOW=compile`, ensure that you follow these guidelines.
+
+1. Ensure that you include kernel headers that matches the Palette or Palette VerteX host kernel version in the container image used by the `drbd-loader` init container.
+
+    <TabItem label="Palette" value="palette">
+
+     For Palette deployments, add the following line to the Dockerfile or build configuration of the `drbd-loader` image.
+
+     ```dockerfile
+     apt-get update && apt-get install -y linux-headers-$(uname -r)
+     ```
+
+    </TabItem>
+    
+    <TabItem label="Palette VerteX" value="vertex">
+     For Palette VerteX deployments, add the following line to the Dockerfile or build configuration of the `drbd-loader` image.
+
+     ```dockerfile
+     kernel=$(ls /lib/modules/ | grep fips | head -1)
+     apt-get update && apt-get install -y linux-headers-${kernel}
+     ```
+     </TabItem>
+2. Your nodes must have internet access at runtime to download the DRBD source code from the LINBIT repositories for the compilation process to succeed. 
+
+     If your nodes do not have internet access, such as in airgapped environments, you need to use precompiled modules by setting `LB_HOW=shipped_modules` to use prebuilt DRBD modules instead of compiling dynamically.
+
+</TabItem>
+</Tabs>
