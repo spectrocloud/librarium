@@ -57,7 +57,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Portworx with Operator" url="url="/integrations/packs/?pack=csi-portworx-generic"> pack version 3.4.1 can now be used for airgapped clusters.
+- The <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack version 3.4.1 can now be used for airgapped clusters.
 
 <!-- prettier-ignore-end -->
 
