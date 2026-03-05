@@ -6,7 +6,7 @@ description:
   host with Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 50
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
