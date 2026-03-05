@@ -80,7 +80,7 @@ Confirm the VM settings and click **Finish** to create the VM.
 
 Select the VM to adjust its network settings. Click **Settings**, then select **Network**.
 
-Change the **Attached to:** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from
+Change the **Attached to** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from
 the same network as the host. Click **OK**.
 
 ![A screenshot of the VirtualBox VM network configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-network_4-8.webp)
