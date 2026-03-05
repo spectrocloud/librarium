@@ -15,31 +15,32 @@ Follow the steps in [Prepare Environment](./prepare-environment.md) to prepare y
 
 ## Prerequisites
 
-- An installed
-[AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html). This is required before you can configure your Edge host. AWS manages the delivery and initial configuration of the AWS outposts
-server at your site.
+- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
+  This is required before you can configure your Edge host. AWS manages the delivery and initial configuration of the
+  AWS outposts server at your site.
 
-- The [capacity](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html) of your AWS Outposts server configured with an **Instance
-type** of **c6id.metal** and set the **Instance quantity** to **1**.
+- The [capacity](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html) of your AWS
+  Outposts server configured with an **Instance type** of **c6id.metal** and set the **Instance quantity** to **1**.
 
-- [A subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet) for
-your Outpost. This ensures that your server can communicate with Palette.
+- [A subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet) for your
+  Outpost. This ensures that your server can communicate with Palette.
 
 ## Agent Mode
 
-In [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md), your Amazon Elastic Compute Cloud (EC2) server runs Kubernetes as an Edge host and is managed by Palette's
-multi-tenant environment. 
+In [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md), your Amazon Elastic Compute Cloud (EC2) server
+runs Kubernetes as an Edge host and is managed by Palette's multi-tenant environment.
 
 ### Network structure
 
-AWS Outposts extends your virtual private cloud (VPC) into your local environment while providing a connection between your on premises network
-and AWS.
+AWS Outposts extends your virtual private cloud (VPC) into your local environment while providing a connection between
+your on premises network and AWS.
 
 In the following diagram, your AWS Outposts server is installed at your site and sits within your local on premises
-network. Your AWS Outposts server remains connected to your local network through the Local Network Interface (LNI) but also
-maintains a service link to the AWS region.
+network. Your AWS Outposts server remains connected to your local network through the Local Network Interface (LNI) but
+also maintains a service link to the AWS region.
 
-The Edge host is deployed on a single EC2 instance and is in an Outposts subnet inside your network. This instance is deployed in Agent Mode.
+The Edge host is deployed on a single EC2 instance and is in an Outposts subnet inside your network. This instance is
+deployed in Agent Mode.
 
 Your clusters continue to function even if connectivity to AWS is lost.
 
