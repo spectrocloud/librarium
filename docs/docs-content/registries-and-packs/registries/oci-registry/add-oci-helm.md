@@ -154,18 +154,11 @@ registry you are adding.
     **STS** if you want Palette to assume an IAM role that has access to the ECR through the Security Token Service
     (STS). Refer to the table below to learn more about each credential type.
 
-    ### Credentials
-
-    | **Field**             | **Description**                        |
-    | --------------------- | -------------------------------------- |
-    | **Access key**        | The access key ID of the IAM user.     |
-    | **Secret access key** | The secret access key of the IAM user. |
-
-    ### STS
-
-    | **Field** | **Description**                                                                                                                                                                                                            |
-    | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **ARN**   | The Amazon Resource Name (ARN) of the IAM role to assume. Refer to the instructions exposed in the side-drawer to the right of the input field to review the IAM trust relationship changes you must add to your IAM role. |
+    | **Authentication Method** | **Field**             | **Description**                                                                                                                                                                                                            |
+    | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Credentials**           | **Access key**        | The access key ID of the IAM user.                                                                                                                                                                                         |
+    | **Credentials**           | **Secret access key** | The secret access key of the IAM user.                                                                                                                                                                                     |
+    | **STS**                   | **ARN**               | The Amazon Resource Name (ARN) of the IAM role to assume. Refer to the instructions exposed in the side-drawer to the right of the input field to review the IAM trust relationship changes you must add to your IAM role. |
 
     :::warning
 
