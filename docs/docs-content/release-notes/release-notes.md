@@ -19,8 +19,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.28.3  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.28.3  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.36  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.36  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.37  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.37  |
 
 ### Improvements
 
@@ -34,14 +34,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 ### Bug Fixes
 
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-57 -->
-
-- Fixed an issue that prevented the
-  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) from being deployed
-  with the correct external registry instead of the internal Zot registry.
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-164 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-169 -->
 
 <!-- prettier-ignore-start -->
 
