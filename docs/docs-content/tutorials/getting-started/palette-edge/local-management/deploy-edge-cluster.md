@@ -4,7 +4,7 @@ title: "Deploy Edge Cluster"
 description: "Get started with Kubernetes at the edge. Learn how to deploy an Edge cluster with Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 70
 tags: ["getting-started", "tutorial", "edge"]
 ---
 

@@ -6,7 +6,7 @@ description:
   deployment."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 50
 tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 ---
 
@@ -24,7 +24,6 @@ cluster profile, you will proceed to the next tutorial, where you will use the i
 installation on your host and use it as a node for deploying your first Edge cluster.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-profile.webp)
-
 
 ## Prerequisites
 
