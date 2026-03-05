@@ -46,6 +46,10 @@ wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
 chmod +x palette-edge
 ```
 
+<Tabs groupId="cli-options">
+
+<TabItem label="Palette CLI" value="Palette CLI">
+
 You will use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a
 specific project. You will need the following values:
 
@@ -62,6 +66,68 @@ Use the following Palette Edge ClI to generate the cluster profile compressed `.
 --outfile <cluster-profile-name.tgz> --include-palette-content
 ```
 
+
+
+```shell
+#!/usr/bin/env bash
+set -euo pipefail
+
+# --- Inputs ---
+read -rsp "Enter Palette API key: " apikey
+echo
+read -rp "Enter Palette Project UID: " projectuid
+read -rp "Enter Cluster Profile UID(s) (comma-separated if multiple): " profileuids
+read -rp "Palette console URL [https://console.spectrocloud.com]: " console_url
+read -rp "Enter custom tag (used for naming): " custom_tag
+read -rsp "Enter Palette CLI encryption passphrase: " enc_pass
+echo
+
+# Default console URL
+console_url=${console_url:-https://console.spectrocloud.com}
+
+bundle_name="${custom_tag}-content-bundle"
+definition_name="${custom_tag}-cluster-definition"
+
+echo
+echo "Logging into Palette CLI..."
+palette login \
+  --api-key "${apikey}" \
+  --console-url "${console_url}" \
+  --encryption-passphrase "${enc_pass}"
+
+echo
+echo "Building content bundle..."
+echo "  Cluster definition: ${definition_name}"
+echo "  Bundle name:        ${bundle_name}"
+echo
+
+palette content build \
+  --arch amd64 \
+  --project-id "${projectuid}" \
+  --profiles "${profileuids}" \
+  --cluster-definition-name "${definition_name}" \
+  --cluster-definition-profile-ids "${profileuids}" \
+  --name "${bundle_name}" \
+  --include-core-palette-images-only \
+  --progress
+
+bundle_path="./output/content-bundle/${bundle_name}.tar.zst"
+
+echo
+echo "Done ✅"
+echo
+echo "Content bundle created:"
+echo "  ${bundle_path}"
+echo
+echo "Transfer this file to the airgapped Edge device and upload it via:"
+echo "  - Local UI"
+echo "  - or: palette content upload (from a reachable system)"
+echo
+```
+
+</TabItem>
+
+<TabItem label="Palette Edge CLI" value="Palette Edge CLI">
 Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
 appear blank for security reasons.
 
@@ -101,11 +167,21 @@ echo
 echo "Done ✅"
 ```
 
+</TabItem>
+
+</Tabs>
+
 The `.tgz` file will need to be uploaded to the locally managed Edge device after it is built using the Edge UI. If you
 are using a browser on a system other than your Linux system to access the Edge UI, you will need to download the `.tgz`
 file.
 
-```
+```shell
+
 scp <username>@<ip-of-linux-system>:/path/to/<filename>.tgz .
+
 ```
 
+## Next Steps
+
+In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
+recommend proceeding to the [Build Content Bundle](./build-content-bundle.md) tutorial to learn how to build the cluster content bundle to use on the locally managed Edge device.
