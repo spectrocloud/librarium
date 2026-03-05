@@ -28,27 +28,8 @@ installation process.
 
 :::
 
-## How the Reach System Works
-
-The Reach system is a Kubernetes
-[mutating admission webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)
-that automatically injects configuration into pods at creation time. When deployed, it creates the following resources
-in the `reach-system` namespace:
-
-- Two Custom Resource Definitions (CRDs): **ClusterPodPreset** (cluster-scoped) and **PodPreset** (namespace-scoped).
-  These resources define the environment variables, volumes, and volume mounts to inject into matching pods.
-
-- A **MutatingWebhookConfiguration** that intercepts pod creation requests and applies the preset configurations.
-
-When Palette configures the Reach system with proxy settings, it creates ClusterPodPreset resources that inject the
-`HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables into all matching pods across the cluster.
-Namespace-scoped PodPreset resources are also created to append namespace-specific entries to the `NO_PROXY` list, so
-that in-cluster service discovery traffic bypasses the proxy.
-
-The Reach system also supports injecting volumes and volume mounts into pods. This is used to mount Certificate
-Authority (CA) certificates into pods so they can trust the proxy server. For more information about configuring proxy
-CA certificates for workload clusters, refer to
-[Configure Proxy CA Certificates for Workload Clusters](#configure-proxy-ca-certificates-for-workload-clusters).
+The Reach system is responsible for injecting proxy configuration into pods. To learn how the Reach system works, refer
+to the [Reach System](../architecture.md#reach-system) section on the PCG Architecture page.
 
 Use the following steps to add and manage proxy configurations for a PCG.
 
@@ -199,69 +180,13 @@ Once the Reach service is deployed, the PCG will use the proxy configuration in 
 account is configured to use the PCG, the proxy configuration will be inherited by the workload clusters deployed
 through Palette.
 
-## Configure Proxy CA Certificates for Workload Clusters
+:::tip
 
-When your proxy server uses a CA certificate for TLS inspection, workload cluster nodes and pods need access to the CA
-certificate to establish trusted connections through the proxy. The Reach system handles injecting proxy environment
-variables into pods automatically, but the CA certificate must be configured separately.
+If your proxy server uses a CA certificate, workload cluster nodes and pods need separate configuration to trust the
+proxy. Refer to [Configure Proxy CA Certificates for Workload Clusters](./configure-proxy-ca-certs.md) for instructions
+on configuring node-level and pod-level CA certificate trust.
 
-Proxy CA certificates provided during PCG installation are propagated to the PCG cluster nodes but are not automatically
-propagated to workload cluster nodes. You must configure the CA certificate at either the tenant level or the cluster
-profile level in the OS layer. Refer to the [PCG Architecture](../architecture.md#palette-cli) page for more information
-about proxy CA certificate propagation.
-
-If you deployed your PCG through the Palette CLI, the CLI installation guide includes steps for propagating proxy CA
-certificates to workload clusters at the tenant level or cluster profile level. Refer to the appropriate platform
-installation guide for [MAAS](../deploy-pcg/maas.md), [OpenStack](../deploy-pcg/openstack.md),
-[VMware vSphere](../deploy-pcg/vmware.md), or [Apache CloudStack](../deploy-pcg/cloudstack.md).
-
-### Mount Proxy CA Certificates into Pods
-
-Adding a proxy CA certificate to the cluster profile OS layer places the certificate on each workload cluster node and
-adds it to the node trust store. However, applications running inside pods do not automatically inherit the node trust
-store. To make the CA certificate available inside pods, use the `podMount` configuration in the `kubeadmconfig.files`
-section of the OS layer. The `podMount` configuration instructs Palette to mount the specified host file into pods
-through the Reach system.
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left main menu, select **Profiles**.
-
-3. Select the cluster profile used by your workload clusters and select the OS layer.
-
-4. In the OS layer pack values, add a `podMount` entry to an existing `files` entry, or add a new `files` entry under
-   the `kubeadmconfig` section. The `targetPath` field specifies the path on the host node where the CA certificate is
-   located, and the `podMount.targetPath` field specifies the mount path inside pods.
-
-   ```yaml
-   kubeadmconfig:
-     files:
-       - targetPath: /usr/local/share/ca-certificates/ca.crt
-         targetOwner: "root:root"
-         targetPermissions: "0644"
-         content: |
-           -----BEGIN CERTIFICATE-----
-           <your-proxy-ca-certificate-content>
-           -----END CERTIFICATE-----
-         podMount:
-           allowed: true
-           targetPath: /etc/ssl/certs/ca-certificates.crt
-   ```
-
-   The following table describes the fields in the configuration.
-
-   | Field                 | Description                                                                                                                                                                      |
-   | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `targetPath`          | The path on the host node where the CA certificate file is written. The certificate file must be named `ca.crt`.                                                                 |
-   | `targetOwner`         | The file ownership in the format `user:group`.                                                                                                                                   |
-   | `targetPermissions`   | The file permissions in octal notation.                                                                                                                                          |
-   | `content`             | The PEM-encoded CA certificate content. If the file already exists on the host node, you can omit this field.                                                                    |
-   | `podMount.allowed`    | Set to `true` to enable mounting the host file into pods through the Reach system.                                                                                               |
-   | `podMount.targetPath` | The path inside pods where the file is mounted. Use `/etc/ssl/certs/ca-certificates.crt` to make the certificate available to most applications that use the system trust store. |
-
-5. **Save** your changes to the cluster profile.
-
-6. If you have existing workload clusters using this profile, apply the updated profile to trigger a cluster update.
+:::
 
 ## Validate
 
