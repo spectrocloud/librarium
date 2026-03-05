@@ -26,7 +26,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2149 -->
 
-- Cloud account data sources of the
+- Cloud account data sources for the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) now
   contain the ID of the [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) that they are associated with. This field
   is now available in the `spectrocloud_cloudaccount_apache_cloudstack`, `spectrocloud_cloudaccount_maas`,
@@ -38,14 +38,14 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 - Fixed an issue that prevented the
   [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) from deploying
-  correctly with an external registry configured, instead of the internal Zot registry.
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) from being deployed
+  with the correct external registry instead of the internal Zot registry.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-164 -->
 
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that prevented Palette and Palette VerteX deployments from successfully installing on agent mode nodes configured with <VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi" />. Refer to the <VersionedLink text="Additional Details" url="/integrations/packs/?pack=piraeus-csi&tab=custom" /> tab for further details.
+- Fixed an issue that prevented Palette and Palette VerteX environments configured with <VersionedLink text="Piraeus CSI" url="/integrations/packs/?pack=piraeus-csi" /> from being successfully installed on agent mode nodes. Refer to the <VersionedLink text="Additional Details" url="/integrations/packs/?pack=piraeus-csi&tab=custom" /> tab for further details.
 
 <!-- prettier-ignore-end -->
 
@@ -57,7 +57,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack version 3.4.1 can now be used for airgapped clusters.
+- <VersionedLink text="Portworx with Operator" url="/integrations/packs/?pack=csi-portworx-generic" /> pack version 3.4.1 can now be used for airgapped clusters.
 
 <!-- prettier-ignore-end -->
 
@@ -68,7 +68,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.35.
 | ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
 | Amazon EBS CSI               | CSI        | :x:                | :white_check_mark: | 1.55.0      |
 | AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.1.0       |
-| AWS VPC CNI                  | CNO        | :white_check_mark: | :x:                | 1.21.1      |
+| AWS VPC CNI                  | CNI        | :white_check_mark: | :x:                | 1.21.1      |
 | External Secrets             | Add-on     | :white_check_mark: | :x:                | 2.0.1       |
 | Istio                        | Add-on     | :white_check_mark: | :x:                | 1.29.0      |
 | Kubewatch                    | Add-on     | :white_check_mark: | :x:                | 3.5.0       |

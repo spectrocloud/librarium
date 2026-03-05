@@ -16,15 +16,15 @@ tags: ["packs", "piraeus-csi", "storage"]
 <Tabs queryString="parent">
 <TabItem label="2.8.x" value="2.8.0">
 
-For Palette or Palette VerteX deployments that use Piraeus/LINSTOR-backed storage, and where the `drbd-loader` init container is configured with `LB_HOW=compile`, it is mandatory that the container image includes the appropriate Linux kernel headers.
+For Palette or Palette VerteX deployments that use Piraeus/LINSTOR-backed storage, and where the `drbd-loader` init container is configured with `LB_HOW=compile`, the container image must include the appropriate Linux kernel headers.
 
 The `drbd-loader` dynamically compiles the DRBD kernel module at runtime on the target node when `LB_HOW=compile` is set. This compilation process requires access to the kernel headers and related build tooling that match the running kernel on the host.
 
-If the required kernel headers are missing or do not match the running kernel version, the module compilation will fail, and the DRBD kernel module will not be loaded.
+If the required kernel headers are missing or do not match the running kernel version, the module compilation fails, and the DRBD kernel module does not load.
 
 Therefore, when using `LB_HOW=compile`, ensure that you follow these guidelines.
 
-1. Ensure that you include kernel headers that matches the Palette or Palette VerteX host kernel version in the container image used by the `drbd-loader` init container.
+1. Ensure that you include kernel headers that match the Palette or Palette VerteX host kernel version in the container image used by the `drbd-loader` init container.
 
     <TabItem label="Palette" value="palette">
 
