@@ -23,7 +23,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6147 -->
 
 <!-- prettier-ignore-start -->
-- The internal Cert Manager component for Palette environments has been updated to version 1.19.3, remediating [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121). For workload clusters using the <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> pack, you must update your cluster profile to version 1.19.3.
+- The internal Cert Manager component for Palette environments has been updated to version 1.19.3, remediating [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121) caused by Cert Manager version 1.19.1. For workload clusters using the <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> pack, you must update your cluster profile to version 1.19.3.
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6110 -->
