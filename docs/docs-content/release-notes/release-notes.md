@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March XX, 2026 - Release 4.8.36
+## March XX, 2026 - Release 4.8.37
 
 ### Improvements
 
@@ -82,6 +82,15 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6089 -->
 <!-- prettier-ignore-start -->
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) deployed with the <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" /> pack to fail to upgrade the Kubernetes version of their worker node groups or `MachinePools`.
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10152 -->
+
+- Fixed an caused the [Palette Kubernetes upgrades](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) through Helm to fail on Palette 4.8.35.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6150 -->
+<!-- prettier-ignore-start -->
+- Fixed an issue that prevented [EKS clusters](../clusters/public-cloud/aws/eks.md) configured with the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> from deploying successfully.
 <!-- prettier-ignore-end -->
 
 ## February 27, 2026 - Component Updates {#component-updates-2026-09}
