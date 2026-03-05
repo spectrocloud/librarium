@@ -68,4 +68,4 @@ configure your chosen capacity.
 
    :::
 
-Refer to [Configure Edge on AWS Outposts](./configure-edge-on-aws-outpost.md) to configure your edge host.
+Refer to [Configure Edge on AWS Outposts](./configure-edge-on-aws-outpost.md) to configure your Edge host.
