@@ -20,6 +20,12 @@ tags: ["release-notes"]
 - The internal Palette [Go versions](https://go.dev/doc/devel/release) have been upgraded to 1.24.12 and 1.25.7,
   depending on the component, addressing [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6147 -->
+
+<!-- prettier-ignore-start -->
+- The internal Cert Manager component for Palette environments has been updated to version 1.19.3, remediating [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121). For workload clusters using the <VersionedLink text="cert-manager" url="/integrations/packs/?pack=cert-manager" /> pack, you must update your cluster profile to version 1.19.3.
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6110 -->
 
 - The internal Palette version of [kube-vip](../clusters/edge/networking/kubevip.md) has now been upgraded to address
