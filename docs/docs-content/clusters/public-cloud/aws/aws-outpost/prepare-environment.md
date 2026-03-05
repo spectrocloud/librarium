@@ -52,7 +52,7 @@ configure your chosen capacity.
 
 4. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), enable the new
    subnet for your local network. You must set the secondary instance to a value of **1**. This ensures that Palette
-   Edge can communicate properly with your server.
+   Edge can communicate with your server.
 
    ```bash
 

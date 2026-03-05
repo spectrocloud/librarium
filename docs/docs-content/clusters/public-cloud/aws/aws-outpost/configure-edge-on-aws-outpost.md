@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Configure Edge on AWS Outposts"
-title: "Configure Edge on AWS Outposts"
+sidebar_label: "Deploy Edge on AWS Outposts"
+title: "Deploy Edge on AWS Outposts"
 description: "Learn how to configure AWS Outposts and install edge hosts to them."
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "aws outposts"]
@@ -40,7 +40,7 @@ To configure the Edge host on your Outpost server, perform the following steps.
     - `<default-gateway-ip>` - The default gateway IP address.
     - `<edge-token>` - The Palette Edge registration token.
     - `<api-endpoint>` - The api endpoint for your Palette instance. If you are using Palette's multi tenant instance,
-      use `api.spectrocloud.com`. Otherwise, enter the endpoint for your self-hosted instance.
+      use `api.spectrocloud.com`. Otherwise, enter the endpoint for your Palette instance.
     - `<project-name>` - The AWS Outpost project name.
     - `<username>` - The local username for the instance.
     - `<password>` - The username's password.
