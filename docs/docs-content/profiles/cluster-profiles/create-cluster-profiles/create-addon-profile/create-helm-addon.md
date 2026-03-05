@@ -21,7 +21,7 @@ For guidance on adding Open Container Initiative (OCI)-based Helm chart registri
 
 <PartialsComponent category="profiles" name="create-profile-enablement" edition="Add-on" />
 
-5. Select the **Add Helm Chart** drop-down menu and choose **Public packs** or **Private packs**. For GitHub Container
+5. From the **Add Helm Chart** drop-down menu, choose **Public packs** or **Private packs**. For GitHub Container
    Registry (GHCR), select **Private packs**.
 
 <Tabs groupId="registry-type">
