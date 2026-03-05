@@ -49,7 +49,7 @@ In this tutorial, you will:
 - Update the template and upgrade both clusters
 
 Cluster templates can be used across all supported public clouds and data centers in Palette. This tutorial demonstrates
-two workflows: [Palette UI on AWS](#provision-and-upgrade-clusters-using-the-palette-ui-for-aws) and
+two workflows: [Palette UI](#provision-and-upgrade-clusters-using-the-palette-ui) and
 [Terraform on AWS or Azure](#provision-and-upgrade-clusters-using-terraform).
 
 Both workflows use the same core components and follow the same architecture. In the UI workflow, you will import a
@@ -74,9 +74,235 @@ Choose the workflow that best fits your use case.
 - A [Palette API key](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) set as an environment
   variable.
 
-## Provision and Upgrade Clusters Using the Palette UI for AWS
+## Provision and Upgrade Clusters Using the Palette UI
+
+In this section, you will use the Palette UI to import a cluster profile, create a cluster template with a maintenance
+policy, and deploy two clusters from the same template. You will then release a new cluster profile version, update the
+template to reference it, and apply upgrades across both clusters.
+
+<PartialsComponent category="cluster-templates" name="aws-example-note" />
 
 ### Import a Cluster Profile
+
+In this section, you will import a cluster profile into Palette composed of the following packs.
+
+<PartialsComponent category="cluster-templates" name="cluster-profile-pack-versions" />
+
+The `hello-universe` pack declares an `app_replicas`
+[cluster profile variable](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/).
+This variable has no value in the profile itself. A cluster template will assign a value for each cluster it manages,
+allowing dev and prod clusters to run different replica counts from the same profile. The variable is marked `required`,
+so no cluster can be deployed without a value.
+
+Log in to [Palette](https://console.spectrocloud.com). From the left **Main Menu**, select **Profiles** and click
+**Import Cluster Profile**.
+
+In the slide panel that opens, copy the JSON for your cloud provider and paste it into the text area.
+
+<Tabs>
+
+<TabItem label="AWS" value="aws">
+
+```json
+{
+  "metadata": {
+    "name": "cluster-template-profile-aws",
+    "description": "Cluster profile for the cluster templates tutorial",
+    "labels": {}
+  },
+  "spec": {
+    "version": "1.0.0",
+    "template": {
+      "type": "cluster",
+      "cloudType": "aws",
+      "packs": [
+        {
+          "name": "ubuntu-aws",
+          "type": "spectro",
+          "layer": "os",
+          "version": "22.04",
+          "tag": "22.04",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "kubernetes",
+          "type": "spectro",
+          "layer": "k8s",
+          "version": "1.33.6",
+          "tag": "1.33.6",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "cni-calico",
+          "type": "spectro",
+          "layer": "cni",
+          "version": "3.31.2",
+          "tag": "3.31.2",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "csi-aws-ebs",
+          "type": "spectro",
+          "layer": "csi",
+          "version": "1.46.0",
+          "tag": "1.46.0",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "hello-universe",
+          "type": "oci",
+          "layer": "addon",
+          "version": "1.3.0",
+          "tag": "1.3.0",
+          "values": "pack:\n  content:\n    images:\n      - image: ghcr.io/spectrocloud/hello-universe:1.3.0\n\nmanifests:\n  hello-universe:\n    images:\n      hellouniverse: ghcr.io/spectrocloud/hello-universe:1.3.0\n    apiEnabled: false\n    namespace: hello-universe\n    port: 8080\n    replicas: \"{{.spectro.var.app_replicas}}\"",
+          "registry": {
+            "metadata": {
+              "name": "Palette Community Registry",
+              "kind": "oci",
+              "isPrivate": true,
+              "providerType": "pack"
+            }
+          }
+        }
+      ]
+    },
+    "variables": [
+      {
+        "name": "app_replicas",
+        "displayName": "Hello Universe Replicas",
+        "format": "number",
+        "description": "Number of replicas for the hello-universe workload",
+        "defaultValue": "1",
+        "required": true,
+        "isSensitive": false,
+        "isHidden": false,
+        "immutable": false
+      }
+    ]
+  }
+}
+```
+
+</TabItem>
+
+<TabItem label="Azure" value="azure">
+
+```json
+{
+  "metadata": {
+    "name": "cluster-template-profile-azure",
+    "description": "Cluster profile for the cluster templates tutorial",
+    "labels": {}
+  },
+  "spec": {
+    "version": "1.0.0",
+    "template": {
+      "type": "cluster",
+      "cloudType": "azure",
+      "packs": [
+        {
+          "name": "ubuntu-azure",
+          "type": "spectro",
+          "layer": "os",
+          "version": "22.04",
+          "tag": "22.04",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "kubernetes",
+          "type": "spectro",
+          "layer": "k8s",
+          "version": "1.33.6",
+          "tag": "1.33.6",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "cni-calico-azure",
+          "type": "spectro",
+          "layer": "cni",
+          "version": "3.31.2",
+          "tag": "3.31.2",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "csi-azure",
+          "type": "spectro",
+          "layer": "csi",
+          "version": "1.31.2-rev2",
+          "tag": "1.31.2-rev2",
+          "values": "",
+          "registry": {
+            "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
+          }
+        },
+        {
+          "name": "hello-universe",
+          "type": "oci",
+          "layer": "addon",
+          "version": "1.3.0",
+          "tag": "1.3.0",
+          "values": "pack:\n  content:\n    images:\n      - image: ghcr.io/spectrocloud/hello-universe:1.3.0\n\nmanifests:\n  hello-universe:\n    images:\n      hellouniverse: ghcr.io/spectrocloud/hello-universe:1.3.0\n    apiEnabled: false\n    namespace: hello-universe\n    port: 8080\n    replicas: \"{{.spectro.var.app_replicas}}\"",
+          "registry": {
+            "metadata": {
+              "name": "Palette Community Registry",
+              "kind": "oci",
+              "isPrivate": true,
+              "providerType": "pack"
+            }
+          }
+        }
+      ]
+    },
+    "variables": [
+      {
+        "name": "app_replicas",
+        "displayName": "Hello Universe Replicas",
+        "format": "number",
+        "description": "Number of replicas for the hello-universe workload",
+        "defaultValue": "1",
+        "required": true,
+        "isSensitive": false,
+        "isHidden": false,
+        "immutable": false
+      }
+    ]
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+Click **Validate**. A _Validated successfully_ message should appear, indicating the profile is ready to import. Click
+**Confirm**.
+
+#### Verify the Import
+
+To verify the import, navigate to **Profiles** from the left **Main Menu** and select `cluster-template-profile-aws`.
+Review its pack layers to confirm they match the table above. Select the **Variables** tab and verify that
+`app_replicas` is listed, which is what a cluster template will assign a value to at deploy time.
 
 ### Create a Cluster Template Policy (Maintenance)
 
@@ -105,12 +331,7 @@ Terraform provider, create a cluster profile, configure a cluster template with 
 clusters from the same template. You will then release a new cluster profile version, update the template to reference
 it, and apply upgrades across both clusters.
 
-:::info
-
-All commands and expected outputs in this section use AWS as the example. Azure users follow the same steps with
-Azure-specific resource names in the output.
-
-:::
+<PartialsComponent category="cluster-templates" name="aws-example-note" />
 
 <PartialsComponent category="getting-started" name="setup-local-environment" />
 
@@ -272,33 +493,7 @@ is created when you run `terraform apply`.
 Pack versions are defined in `data.tf`. To use a different version, update the `version` field in the corresponding
 `spectrocloud_pack` data source before running `terraform apply`.
 
-<Tabs>
-
-<TabItem label="AWS" value="aws">
-
-| **Pack Type** | **Pack Name**    | **Version** |
-| ------------- | ---------------- | ----------- |
-| OS            | `ubuntu-aws`     | `22.04`     |
-| Kubernetes    | `kubernetes`     | `1.33.6`    |
-| Network       | `cni-calico`     | `3.31.2`    |
-| Storage       | `csi-aws-ebs`    | `1.46.0`    |
-| App Services  | `hello-universe` | `1.3.0`     |
-
-</TabItem>
-
-<TabItem label="Azure" value="azure">
-
-| **Pack Type** | **Pack Name**      | **Version**   |
-| ------------- | ------------------ | ------------- |
-| OS            | `ubuntu-azure`     | `22.04`       |
-| Kubernetes    | `kubernetes`       | `1.33.6`      |
-| Network       | `cni-calico-azure` | `3.31.2`      |
-| Storage       | `csi-azure`        | `1.31.2-rev2` |
-| App Services  | `hello-universe`   | `1.3.0`       |
-
-</TabItem>
-
-</Tabs>
+<PartialsComponent category="cluster-templates" name="cluster-profile-pack-versions" />
 
 `cluster_profiles.tf` loads the hello-universe pack values from `manifests/values-hello-universe.yaml`. This file sets
 `replicas` to `{{.spectro.var.app_replicas}}`, a
