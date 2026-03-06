@@ -495,16 +495,27 @@ required Edge artifacts.
 
    :::
 
-9. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
-   the `Dockerfile`. You can install more tools and dependencies and configure the image to meet your needs. Add your
-   customizations below the line tagged with the `Add any other image customizations here` comment in the `Dockerfile`.
-   Do not edit or add any lines before this tagged comment.
+9. Customize the `Dockerfile` as needed. You can install tools and dependencies and make other image modifications. Add
+   your customizations below the line tagged with the `Add any other image customizations here` comment in the
+   Dockerfile. Do not edit or add any lines before this tagged comment.
+   
+   :::warning
+   
+   When customizing the `Dockerfile` to add custom binaries, install them into `/usr/bin`. Do not use `/usr/local`, as this directory is mounted from the persistent partition at boot and makes files added during image build unavailable at runtime.
 
-   ```bash
-   echo 'RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools' >> Dockerfile
+   :::
+   
+   For example, you can add the following line to
+   the `Dockerfile` to install [WireGuard](https://www.wireguard.com/install/).
+
+   ```dockerfile
+   ...
+   ###########################Add any other image customizations here #######################
+
+   RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools
    ```
 
-   View the newly created file to ensure the instruction to install WireGuard is appended correctly.
+   View the `Dockerfile` to ensure the instruction to install WireGuard is appended correctly.
 
    ```bash
    cat Dockerfile
