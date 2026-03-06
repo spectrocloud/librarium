@@ -497,7 +497,7 @@ required Edge artifacts.
 
 9. Customize the `Dockerfile` as needed. You can install tools and dependencies and make other image modifications. Add
    your customizations below the line tagged with the `Add any other image customizations here` comment in the
-   Dockerfile. Do not edit or add any lines before this tagged comment.
+   `Dockerfile`. Do not edit or add any lines before this tagged comment.
 
    :::warning
 
@@ -524,15 +524,12 @@ required Edge artifacts.
    ```
 
    :::warning
-
-   Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The
-   default behavior for package installations is to prompt the user for permission to install the package. A user prompt
-   will cause the image creation process to fail. This guidance applies to all dependencies you add through the
-   `Dockerfile`.
+   
+   Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate non-interactive flag for your package manager (for example, `--yes` for apt or `--non-interactive` for zypper). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you add through the `Dockerfile`.
 
    :::
 
-10. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
+11. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
     :::warning
 
@@ -564,7 +561,7 @@ required Edge artifacts.
     Refer to the [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     <Tabs group="earthly">
@@ -636,7 +633,7 @@ required Edge artifacts.
       system.osVersion:
     ```
 
-12. List the Docker images to review the provider images created. By default, provider images for all the Palette's
+13. List the Docker images to review the provider images created. By default, provider images for all the Palette's
     Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the value you used
     in the `.arg` file's `CUSTOM_TAG` argument.
 
@@ -649,7 +646,7 @@ required Edge artifacts.
     spectrocloud/opensuse-leap   k3s-1.33.5-v4.7.2-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
-13. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
+14. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
@@ -660,7 +657,7 @@ required Edge artifacts.
     Login Succeeded
     ```
 
-14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace
+15. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace
     `spectrocloud` and the version numbers in the command below with your Docker ID and respective Kubernetes versions
     that the utility created.
 
@@ -668,21 +665,21 @@ required Edge artifacts.
     docker push spectrocloud/opensuse-leap:k3s-1.33.5-v4.7.2-palette-learn
     ```
 
-15. After pushing the provider images to the image registry, open a web browser and log in to
+16. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-16. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+17. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-17. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+18. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-18. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
+19. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
     copied.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -733,7 +730,7 @@ required Edge artifacts.
 
     :::
 
-19. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
+20. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
     version 1.33.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.33.5 to the
     image registry.
 
@@ -741,7 +738,7 @@ required Edge artifacts.
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.33.x`         |
 
-20. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+21. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -749,9 +746,9 @@ required Edge artifacts.
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-21. Add add-on layers and manifests to your cluster profile per your requirements.
+22. Add add-on layers and manifests to your cluster profile per your requirements.
 
-22. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+23. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
