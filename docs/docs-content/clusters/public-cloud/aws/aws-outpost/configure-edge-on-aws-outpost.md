@@ -7,9 +7,9 @@ tags: ["public cloud", "aws", "aws outposts"]
 sidebar_position: 30
 ---
 
-Palette supports creating and managing Kubernetes clusters deployed on an
+Palette supports deploying an Edge host on an
 [AWS Outposts](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html) server. This document
-guides you through configuring a Kubernetes cluster on an AWS Outposts server that is managed by Palette Edge.
+guides you through configuring an AWS Outposts server to run a Palette Edge host.
 
 ## Prerequisites
 

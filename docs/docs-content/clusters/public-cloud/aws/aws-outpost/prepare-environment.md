@@ -33,14 +33,17 @@ Perform the following steps to set your AWS Outposts server capacity.
 2.  Select your Outposts server.
 3.  [Create a capacity task](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html). Set
     the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**.
-4.  **Remove** any previously created instances. :::info
+
+    ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
+    
+4.  **Remove** any previously created instances. 
+  
+    :::info
 
         - Palette only supports AWS Outposts servers with one instance.
         - After you click **Create**, it may take several hours for your server to configure your chosen capacity.
 
     :::
-
-    ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
 
 ## Create a subnet
 
