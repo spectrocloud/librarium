@@ -29,18 +29,6 @@ There are two levels of CA certificate trust to consider:
   and is _only_ available through the [cluster profile](#cluster-profile-os-layer) approach. Certificates configured at
   the tenant level are not mounted into pods.
 
-## Prerequisites
-
-- An active PCG cluster with proxy configured. Refer to the appropriate installation guide for your environment:
-
-  - **Palette CLI** - [MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md),
-    [OpenStack](../deploy-pcg/openstack.md), or [Apache CloudStack](../deploy-pcg/cloudstack.md).
-  - **Existing Kubernetes cluster** - [Enable and Manage Proxy Configurations](./configure-proxy.md).
-
-- Palette tenant administrator access.
-
-- The proxy CA certificate in Privacy-Enhanced Mail (PEM) format. The certificate file must be named `ca.crt`.
-
 ## Add CA Certificate to Workload Cluster Nodes
 
 To make the proxy CA certificate available to workload cluster nodes, configure it at either the tenant level or the
@@ -67,6 +55,20 @@ certificate into pods.
 
 :::
 
+#### Prerequisites
+
+- Palette tenant administrator access.
+
+- An active PCG cluster with proxy configured. Refer to the appropriate installation guide for your environment:
+
+  - **Palette CLI** - [MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md),
+    [OpenStack](../deploy-pcg/openstack.md), or [Apache CloudStack](../deploy-pcg/cloudstack.md).
+  - **Existing Kubernetes cluster** - [Enable and Manage Proxy Configurations](./configure-proxy.md).
+
+- The proxy CA certificate in Privacy-Enhanced Mail (PEM) format. The certificate file must be named `ca.crt`.
+
+#### Enablement
+
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 2. From the left main menu, select **Tenant Settings**.
@@ -79,10 +81,72 @@ certificate into pods.
 
 6. **Confirm** your changes.
 
+#### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Deploy a workload cluster through using the PCG, or apply the updated cluster profile to an existing workload
+   cluster.
+
+3. SSH into a node in the workload cluster. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) and
+   [SSH Usernames](../../cluster-management/ssh/ssh-usernames.md) guides for information on accessing cluster nodes.
+
+   ```shell
+   ssh -i <private-key-path> <username>@<dns-or-ip-address>
+   ```
+
+   ```shell hideClipboard title="Example command"
+   ssh -i ~/.ssh/spectro2026.pem spectro@10.10.149.37
+   ```
+
+4. Verify the CA certificate file is present on the node.
+
+   ```shell
+   ls -l /usr/local/share/ca-certificates/spectro-ca.crt
+   ```
+
+   ```shell hideClipboard title="Example output"
+   -rw-r--r-- 1 root root 1049 Mar  6 13:46 /usr/local/share/ca-certificates/spectro-ca.crt
+   ```
+
+5. Verify the certificate entered at either **Tenant Settings > Certificates** matches the CA certificate on the node.
+
+   ```shell
+   cat /usr/local/share/ca-certificates/spectro-ca.crt
+   ```
+
+   ```shell hideClipboard title="Example output"
+   -----BEGIN CERTIFICATE-----
+   **************************
+   -----END CERTIFICATE-----
+   ```
+
+6. Verify the certificate is included in the system trust store.
+
+   ```shell
+   openssl verify -CAfile /etc/ssl/certs/ca-certificates.crt /usr/local/share/ca-certificates/spectro-ca.crt
+   ```
+
+   ```shell hideClipboard title="Example output"
+   /usr/local/share/ca-certificates/spectro-ca.crt: OK
+   ```
+
 ### Cluster Profile OS Layer
 
 Use this approach to propagate proxy server CA certificates on a per-cluster basis. This is the only approach that
 supports mounting the CA certificate into pods through the [Reach system](../architecture.md#reach-system).
+
+#### Prerequisites
+
+- An active PCG cluster with proxy configured. Refer to the appropriate installation guide for your environment:
+
+  - **Palette CLI** - [MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md),
+    [OpenStack](../deploy-pcg/openstack.md), or [Apache CloudStack](../deploy-pcg/cloudstack.md).
+  - **Existing Kubernetes cluster** - [Enable and Manage Proxy Configurations](./configure-proxy.md).
+
+- The proxy CA certificate in Privacy-Enhanced Mail (PEM) format. The certificate file must be named `ca.crt`.
+
+#### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -107,7 +171,7 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
    | `targetPath`          | The path on the host node where the CA certificate file is written. The certificate file must be named `ca.crt`.                                                                 |
    | `targetOwner`         | The file ownership in the format `user:group`.                                                                                                                                   |
    | `targetPermissions`   | The file permissions in octal notation.                                                                                                                                          |
-   | `content`             | The PEM-encoded CA certificate content. If the file already exists on the host node, you can omit this field.                                                                    |
+   | `content`             | The PEM-encoded CA certificate content.                                                                                                                                          |
    | `podMount.allowed`    | Set to `true` to enable mounting the host file into pods through the Reach system.                                                                                               |
    | `podMount.targetPath` | The path inside pods where the file is mounted. Use `/etc/ssl/certs/ca-certificates.crt` to make the certificate available to most applications that use the system trust store. |
 
@@ -126,94 +190,147 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
          targetPermissions: "0644"
          content: |
            -----BEGIN CERTIFICATE-----
-           <your-proxy-ca-certificate-content>
+           *************************
            -----END CERTIFICATE-----
          podMount:
            allowed: true
            targetPath: /etc/ssl/certs/ca-certificates.crt
    ```
 
+   :::warning
+
+   When using `podMount`, the Reach system creates a host-path volume from the file at `targetPath` on the node and
+   mounts it at `podMount.targetPath` inside pods. If the individual proxy CA certificate file is mounted at
+   `/etc/ssl/certs/ca-certificates.crt`, it replaces the container's default CA bundle. This means pods will trust your
+   proxy CA but will not trust standard public Certificate Authorities.
+
+   In most proxy environments this is acceptable because all outbound HTTPS traffic passes through the proxy, which
+   handles upstream TLS verification on behalf of the pod. However, if your pods make direct TLS connections to services
+   that bypass the proxy, such as internal services listed in `NO_PROXY`, those connections may fail because the
+   container no longer has the default public CA certificates.
+
+   To preserve the container's default CA bundle, use a path other than `/etc/ssl/certs/ca-certificates.crt` for
+   `podMount.targetPath`. However, doing so requires individual configurations for each app to point to the custom
+   `podMount.targetPath`.
+
+   :::
+
 5. Select **Confirm Updates**.
 
-6. If you have existing workload clusters using this profile, apply the updated profile to trigger a cluster update.
+#### Validate Node-Level Trust
 
-## Validate
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-Use the following steps to verify that the proxy CA certificate was successfully propagated to workload cluster nodes
-and, if you configured `podMount`, into pods.
-
-### Verify Node-Level Trust
-
-1. Deploy a workload cluster through Palette using the PCG, or apply the updated cluster profile to an existing workload
+2. Deploy a workload cluster through using the PCG, or apply the updated cluster profile to an existing workload
    cluster.
 
-2. SSH into a node in the workload cluster.
+3. SSH into a node in the workload cluster. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) and
+   [SSH Usernames](../../cluster-management/ssh/ssh-usernames.md) guides for information on accessing cluster nodes.
 
-3. Verify the CA certificate file is present on the node.
+   ```shell
+   ssh -i <private-key-path> <username>@<dns-or-ip-address>
+   ```
+
+   ```shell hideClipboard title="Example command"
+   ssh -i ~/.ssh/spectro2026.pem spectro@10.10.149.37
+   ```
+
+4. Verify the CA certificate file is present on the node.
 
    ```shell
    ls -l /usr/local/share/ca-certificates/ca.crt
    ```
 
-   The output should display the certificate file.
+   ```shell hideClipboard title="Example output"
+   -rw-r--r-- 1 root root 1049 Mar  6 13:46 /usr/local/share/ca-certificates/ca.crt
+   ```
 
-4. Verify the certificate is included in the system trust store.
+5. Verify the certificate entered in the cluster profile OS layer matches the CA certificate on the node.
+
+   ```shell
+   cat /usr/local/share/ca-certificates/ca.crt
+   ```
+
+   ```shell hideClipboard title="Example output"
+   -----BEGIN CERTIFICATE-----
+   **************************
+   -----END CERTIFICATE-----
+   ```
+
+6. Verify the certificate is included in the system trust store.
 
    ```shell
    openssl verify -CAfile /etc/ssl/certs/ca-certificates.crt /usr/local/share/ca-certificates/ca.crt
    ```
 
-   The output should display the following.
-
-   ```shell hideClipboard
+   ```shell hideClipboard title="Example output"
    /usr/local/share/ca-certificates/ca.crt: OK
    ```
 
-### Verify Pod-Level Trust
+#### Validate Pod-Level Trust
 
-If you configured `podMount` in the cluster profile OS layer, use the following steps to verify the CA certificate is
-mounted into pods.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-1. Access the workload cluster using kubectl. Refer to the
+2. Deploy a workload cluster through using the PCG, or apply the updated cluster profile to an existing workload
+   cluster.
+
+3. Download your workload cluster's kubeconfig and configure kubectl to access the cluster. Refer to our
    [Access Cluster with CLI](../../cluster-management/palette-webctl.md) guide for more information.
 
-2. Verify the ClusterPodPreset contains volume and volumeMount entries for the CA certificate.
+4. Verify the ClusterPodPreset contains volume and volumeMount entries for the CA certificate.
 
    ```shell
-   kubectl get clusterpodpreset proxy --output yaml
+   kubectl get clusterpodpreset proxy --output yaml | grep --after-context=10 volumeMounts
    ```
 
    The output should include `volumes` and `volumeMounts` entries referencing the CA certificate path.
 
-   ```yaml hideClipboard
-   spec:
-     volumeMounts:
-       - mountPath: /etc/ssl/certs/ca-certificates.crt
-         name: ca-crt-xxxxxxxx
-     volumes:
-       - hostPath:
-           path: /usr/local/share/ca-certificates/ca.crt
-           type: File
-         name: ca-crt-xxxxxxxx
+   ```yaml hideClipboard title="Example output" {4,8}
+   volumeMounts:
+     - metadata:
+         merge_strategy: replace
+       mountPath: /etc/ssl/certs/ca-certificates.crt
+       name: ca-crt-11d45c1c
+   volumes:
+     - hostPath:
+         path: /usr/local/share/ca-certificates/ca.crt
+         type: File
+       metadata:
+         merge_strategy: replace
    ```
 
-3. Deploy a test pod and verify the certificate file is available inside the container.
+5. Create a temporary namespace with the `privileged` Pod Security Standard. The Reach system injects `hostPath` volumes
+   into matching pods, which requires the `privileged` security level.
 
    ```shell
-   kubectl run test-proxy-cert --image=busybox --restart=Never \
-     --command -- cat /etc/ssl/certs/ca-certificates.crt
+   kubectl create namespace test-proxy-cert
+   kubectl label namespace test-proxy-cert pod-security.kubernetes.io/enforce=privileged
    ```
 
-4. Check the pod logs to confirm the certificate content is present.
+6. Deploy a test pod with the `spectrocloud.com/connection: proxy` label. The Reach system only injects volumes into
+   pods that match the ClusterPodPreset's label selector.
 
    ```shell
-   kubectl logs test-proxy-cert
+   kubectl run test-proxy-cert --namespace test-proxy-cert --image=busybox --restart=Never \
+     --labels="spectrocloud.com/connection=proxy" \
+     --command -- sleep 3600
    ```
 
-   The output should contain certificate content, including `-----BEGIN CERTIFICATE-----` blocks.
-
-5. Clean up the test pod.
+7. Verify the certificate file is mounted inside the container. The certificate should match the content pasted in to
+   the cluster profile OS layer.
 
    ```shell
-   kubectl delete pod test-proxy-cert
+   kubectl exec test-proxy-cert --namespace test-proxy-cert -- cat /etc/ssl/certs/ca-certificates.crt
+   ```
+
+   ```shell hideClipboard title="Example output"
+   -----BEGIN CERTIFICATE-----
+   **************************
+   -----END CERTIFICATE-----
+   ```
+
+8. Clean up the test namespace and pod.
+
+   ```shell
+   kubectl delete namespace test-proxy-cert
    ```
