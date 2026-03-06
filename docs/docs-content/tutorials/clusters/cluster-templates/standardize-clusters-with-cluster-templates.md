@@ -304,7 +304,26 @@ To verify the import, navigate to **Profiles** from the left **Main Menu** and s
 Review its pack layers to confirm they match the table above. Select the **Variables** tab and verify that
 `app_replicas` is listed, which is what a cluster template will assign a value to at deploy time.
 
-### Create a Cluster Template Policy (Maintenance)
+### Create a Maintenance Policy
+
+A
+[cluster template policy](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md)
+governs how Palette manages the lifecycle of clusters attached to a template. You will use a
+[maintenance policy](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md), which defines a
+recurring upgrade window.
+
+Create a maintenance policy with a weekly Sunday midnight schedule and a four hour upgrade window.
+
+1. From the left **Main Menu**, select **Cluster Configurations**.
+2. From the top-right of the **Policies** tab, select **Create Policy > Maintenance Policy**.
+3. In the **Name** field, enter `cluster-template-policy`.
+4. Select **Add Schedule** to open the schedule drawer.
+5. In the **Name** field, enter `weekly-sunday`.
+6. From the **Schedule** drop-down menu, select **Every week on Sunday at midnight**.
+7. Set the **Upgrade window** to **4** hours.
+8. Select **Confirm**, then **Next**, then **Finalize**.
+
+The policy appears in the **Policies** list and is ready to attach to a cluster template.
 
 ### Create a Cluster Template
 
