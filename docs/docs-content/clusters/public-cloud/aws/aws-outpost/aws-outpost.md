@@ -9,7 +9,8 @@ hide_table_of_contents: false
 AWS Outposts provides a way to run Palette in your on premises environment. You can deploy Palette on an Amazon Elastic
 Compute Cloud (EC2) instance on
 [AWS Outposts](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html) as either a
-[self-hosted instance](../../../../enterprise-version/enterprise-version.md) or in [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md).
+[self-hosted instance](../../../../enterprise-version/enterprise-version.md) or in
+[Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md).
 
 AWS Outposts provides the benefits of an on premises environment while also taking advantage of AWS-managed services.
 This reduces latency and allows for local data processing.
