@@ -71,6 +71,7 @@ Alternatively, you can use the script below to prompt you when doing the Palette
 appear blank for security reasons.
 
 <!-- vale off -->
+
 ```shell
 #!/usr/bin/env bash
 set -euo pipefail
@@ -127,6 +128,7 @@ echo "  - Local UI"
 echo "  - or: palette content upload (from a reachable system)"
 echo
 ```
+
 <!-- vale on -->
 
 </TabItem>
@@ -136,6 +138,7 @@ Alternatively, you can use the script below to prompt you when doing the Palette
 appear blank for security reasons.
 
 <!-- vale off -->
+
 ```shell
 #!/usr/bin/env bash
 
@@ -171,6 +174,7 @@ echo
 echo
 echo "Done ✅"
 ```
+
 <!-- vale on -->
 
 </TabItem>
