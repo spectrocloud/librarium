@@ -128,6 +128,25 @@ Palette Edge CLI to download the images and upload them to the external registry
     palette content push --file <path-to-content-bundle> --registry <registry-address>
     ```
 
+    <!-- https://spectrocloud.atlassian.net/browse/PLT-1840 -->
+
+    :::info
+
+    [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/ecr/) now allows repository path creation on
+    the fly. You must create a repository creation template in ECR to enable this for your registry before uploading
+    your content bundle images. Refer to the
+    [Creating a repository creation template in Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-creation-templates-create.html)
+    guide for further information.
+
+    For example, you can create a template for your registry using the AWS CLI by issuing the following command. You can
+    then push bundle content at the `<registry-url>/<prefix>` path.
+
+    ```shell
+    aws ecr create-repository-creation-template  --prefix <prefix>  --applied-for CREATE_ON_PUSH  --description  "Auto-create repos on push"
+    ```
+
+    :::
+
 </TabItem>
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
