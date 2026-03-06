@@ -101,10 +101,20 @@ This document guides you through the process of producing Edge Installer ISOs th
 
    :::
 
-7. Customize the **Dockerfile**. You can install tools and dependencies and configure the image to meet your needs. Add
+7. Customize the `Dockerfile` as needed. You can install tools and dependencies and make other image modifications. Add
    your customizations below the line tagged with the `Add any other image customizations here` comment in the
-   Dockerfile. Do not edit or add any lines before this tagged comment. For example, you can add the following line to
-   the **Dockerfile** to install WireGuard.
+   `Dockerfile`. Do not edit or add any lines before this tagged comment.
+
+   :::warning
+
+   When customizing the `Dockerfile` to add custom binaries, install them into `/usr/bin`. Do not use `/usr/local`, as
+   this directory is mounted from the persistent partition at boot and makes files added during image build unavailable
+   at runtime.
+
+   :::
+
+   For example, you can add the following line to the `Dockerfile` to install
+   [WireGuard](https://www.wireguard.com/install/).
 
    ```dockerfile
    ...
@@ -113,14 +123,25 @@ This document guides you through the process of producing Edge Installer ISOs th
    RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools
    ```
 
+   Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate
+   non-interactive flag for your package manager, for example, `--non-interactive` for Zypper or `--yes` for Advanced
+   Package Tool (APT). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you
+   add through the `Dockerfile`.
+
+   View the `Dockerfile` to ensure the instruction to install WireGuard is appended correctly.
+
+   ```bash
+   cat Dockerfile
+   ```
+
    :::warning
 
-   Adding software dependencies in the Dockerfile will cause the size of the Extensible Firmware Interface (EFI) file to
-   grow. Most hardware has a limit on the size of the EFI that it can boot. Make sure you do not include too many
+   Adding software dependencies in the `Dockerfile` will cause the size of the Extensible Firmware Interface (EFI) file
+   to grow. Most hardware has a limit on the size of the EFI that it can boot. Make sure you do not include too many
    dependencies that can cause the EFI file to grow larger than the boot limit. For more information, refer to
    [Check EFI Boot Limit](./check-efi-limit.md).
 
-   Instead of adding software packages through the Dockerfile to the OS layer, you can add compiled static binaries to
+   Instead of adding software packages through the `Dockerfile` to the OS layer, you can add compiled static binaries to
    the persistent partition instead, which does not increase the size of the EFI file. Refer to
    [Add Static Binaries to Persistent Partition](./add-extra-content.md) for more information.
 
