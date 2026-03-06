@@ -516,15 +516,11 @@ required Edge artifacts.
 
    RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools
    ```
-
-   :::warning
-
+   
    Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate
    non-interactive flag for your package manager, for example, `--non-interactive` for Zypper or `--yes` for Advanced
    Package Tool (APT). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you
    add through the `Dockerfile`.
-
-   :::
 
    View the `Dockerfile` to ensure the instruction to install WireGuard is appended correctly.
 
