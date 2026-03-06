@@ -15,9 +15,9 @@ and must have the Palette agent installed.
 
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
-let the host register itself with Local UI. Locally managed Edge devices need access to registries containing content bundles, either through
-the internet or local network access, to download necessary packs for the cluster. The following architectural diagram
-highlights the processes that will be used in this tutorial:
+let the host register itself with Local UI. Locally managed Edge devices need access to registries containing content
+bundles, either through the internet or local network access, to download necessary packs for the cluster. The following
+architectural diagram highlights the processes that will be used in this tutorial:
 
 - Installation of the Palette agent.
 - Self-generation of the Host UID.
