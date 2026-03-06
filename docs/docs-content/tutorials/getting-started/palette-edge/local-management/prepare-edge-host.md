@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["getting-started", "tutorial", "locally-managed", "airgapped", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual machines
@@ -15,9 +15,8 @@ and must have the Palette agent installed.
 
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
-let the host register itself with Local UI. Locally managed Edge devices need access to registries containing content
-bundles, either through the internet or local network access, to download necessary packs for the cluster. The following
-architectural diagram highlights the processes that will be used in this tutorial:
+let the host register with Local UI. Locally managed Edge devices require access to registries that contain content bundles, either through the internet or the local network, in order to download the required packs for cluster deployment. The following
+architectural diagram illustrates the workflow covered in this tutorial:
 
 - Installation of the Palette agent.
 - Self-generation of the Host UID.
@@ -32,7 +31,7 @@ architectural diagram highlights the processes that will be used in this tutoria
   - 2 CPUs
   - 8 GB memory
   - 300 GB storage
-- If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed.
+- If you plan to use a virtual machine as the Edge host, ensure that you have a Virtual Machine Manager (VMM) installed.
   This tutorial uses
   [Oracle Virtualbox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version
   7.2.6 as an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same
