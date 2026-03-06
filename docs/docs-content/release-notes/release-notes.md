@@ -63,7 +63,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.37.
 | AWS VPC CNI                  | CNI    | :white_check_mark: | :x:                | 1.21.1      |
 | External Secrets             | Add-on | :white_check_mark: | :x:                | 2.0.1       |
 | Istio                        | Add-on | :white_check_mark: | :x:                | 1.29.0      |
-| Portworx with Operator       | CSI    | :white_check_mark: | :x:                | 3.4.1-rev5      |
+| Portworx with Operator       | CSI    | :white_check_mark: | :x:                | 3.4.1-rev5  |
 | Prometheus Operator          | Add-on | :white_check_mark: | :x:                | 82.2.0      |
 | Volume Snapshot Controller   | Add-on | :white_check_mark: | :x:                | 8.5.0       |
 
