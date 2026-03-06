@@ -520,7 +520,7 @@ required Edge artifacts.
    :::warning
 
    Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate
-   non-interactive flag for your package manager (for example, `--yes` for apt or `--non-interactive` for zypper).
+   non-interactive flag for your package manager, for example, `--yes` for Advanced Package Tool (APT) or `--non-interactive` for Zypper.
    Interactive prompts cause the image build to fail. This guidance applies to all dependencies you add through the
    `Dockerfile`.
 
