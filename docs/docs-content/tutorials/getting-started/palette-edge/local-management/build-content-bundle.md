@@ -65,6 +65,12 @@ Use the following Palette Edge ClI to generate the cluster profile compressed `.
 --outfile <cluster-profile-name.tgz> --include-palette-content
 ```
 
+<!-- vale on -->
+
+Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
+appear blank for security reasons.
+
+<!-- vale off -->
 ```shell
 #!/usr/bin/env bash
 set -euo pipefail
@@ -121,6 +127,7 @@ echo "  - Local UI"
 echo "  - or: palette content upload (from a reachable system)"
 echo
 ```
+<!-- vale on -->
 
 </TabItem>
 
@@ -128,6 +135,7 @@ echo
 Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
 appear blank for security reasons.
 
+<!-- vale off -->
 ```shell
 #!/usr/bin/env bash
 
@@ -163,6 +171,7 @@ echo
 echo
 echo "Done ✅"
 ```
+<!-- vale on -->
 
 </TabItem>
 
