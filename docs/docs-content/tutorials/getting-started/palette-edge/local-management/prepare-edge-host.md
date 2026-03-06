@@ -15,9 +15,9 @@ and must have the Palette agent installed.
 
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
-let the host register itself with Local UI. Locally managed Edge devices need access to any registries, either through the internet or local
-network access, to download necessary packs for the cluster. The following architectural diagram highlights the
-processes that will be used in this tutorial:
+let the host register itself with Local UI. Locally managed Edge devices need access to any registries, either through
+the internet or local network access, to download necessary packs for the cluster. The following architectural diagram
+highlights the processes that will be used in this tutorial:
 
 - Installation of the Palette agent.
 - Self-generation of the Host UID.
@@ -60,8 +60,8 @@ Give the machine a name, for example, `local-edge-vm`.
 In the **ISO Image** field, select the Edge installer ISO file you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. The ISO file is located in the `CanvOS/build` directory.
 
-Set the machine **Type** as **Linux**, the **OS Distribution** as **Ubuntu**, and the **Version** as **Ubuntu (64-bit)**,
-and click **Next**.
+Set the machine **Type** as **Linux**, the **OS Distribution** as **Ubuntu**, and the **Version** as **Ubuntu
+(64-bit)**, and click **Next**.
 
 ![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-new-vm_4-8.webp)
 
