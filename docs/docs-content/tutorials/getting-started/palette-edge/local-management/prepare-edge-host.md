@@ -64,7 +64,7 @@ Set the machine **Type** as **Linux**, the **OS Distribution** as **Ubuntu**, an
 
 ![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-new-vm_4-8.webp)
 
-Adjust the **Base Memory** to `8000 MB` and **Processors** to 2 CPU. Click **Next** to proceed.
+Adjust the **Base Memory** to `8000 MB` and **Processors** to `2` CPU. Click **Next** to proceed.
 
 Set the **Disk Size** to `300 GB` and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
 
