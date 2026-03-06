@@ -19,8 +19,8 @@ let the host register itself with Local UI. Locally managed Edge devices need ac
 network access, to download necessary packs for the cluster. The following architectural diagram highlights the
 processes that will be used in this tutorial:
 
-- Installation of the Edge software.
-- Self-registration of the Local Management Agent.
+- Installation of the Palette agent.
+- Self-generation of the Host UID.
 - Accessing the Edge device with Local UI.
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-architecture-prepare_4-8.webp)
@@ -65,9 +65,9 @@ and click **Next**.
 
 ![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-new-vm_4-8.webp)
 
-Adjust the **Base Memory** to 8000 MB and **Processors** to 2 CPU. Click **Next** to proceed.
+Adjust the **Base Memory** to `8000 MB` and **Processors** to 2 CPU. Click **Next** to proceed.
 
-Set the **Disk Size** to 300 GB and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
+Set the **Disk Size** to `300 GB` and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
 
 :::info
 
@@ -143,7 +143,7 @@ information.
 
 Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, reboot, and
 generate an Edge Host UID. Wait until an IP address is assigned. The following image displays the Edge TUI on an Intel
-NUC device after it has registered itself with Local UI and obtained an IP address.
+NUC device after the device has generated a Host UID and obtained an IP address.
 
 ![Screenshot showing bare metal edge TUI](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
 
