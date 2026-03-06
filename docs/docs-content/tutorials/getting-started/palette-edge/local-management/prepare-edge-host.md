@@ -195,4 +195,5 @@ should match the ID displayed on the host screen.
 ## Next Steps
 
 In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
-recommend proceeding to the [Build Content Bundle](./build-content-bundle.md) tutorial to learn how to build the cluster content bundle to use on the locally managed Edge device.
+recommend proceeding to the [Build Content Bundle](./build-content-bundle.md) tutorial to learn how to build the cluster
+content bundle to use on the locally managed Edge device.

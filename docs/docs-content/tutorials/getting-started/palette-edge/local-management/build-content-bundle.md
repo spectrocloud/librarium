@@ -10,7 +10,6 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 ---
 
-
 [Cluster profiles](../../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
 scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
 packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
@@ -65,8 +64,6 @@ Use the following Palette Edge ClI to generate the cluster profile compressed `.
 --palette-endpoint <https://api.yourpalette> --cluster-definition-name <cluster-profile-name> \
 --outfile <cluster-profile-name.tgz> --include-palette-content
 ```
-
-
 
 ```shell
 #!/usr/bin/env bash
@@ -184,4 +181,5 @@ scp <username>@<ip-of-linux-system>:/path/to/<filename>.tgz .
 ## Next Steps
 
 In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
-recommend proceeding to the [Build Content Bundle](./build-content-bundle.md) tutorial to learn how to build the cluster content bundle to use on the locally managed Edge device.
+recommend proceeding to the [Build Content Bundle](./build-content-bundle.md) tutorial to learn how to build the cluster
+content bundle to use on the locally managed Edge device.
