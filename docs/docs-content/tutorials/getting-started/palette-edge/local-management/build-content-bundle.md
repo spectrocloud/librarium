@@ -31,11 +31,19 @@ This tutorial teaches you how to export the cluster profile you created in the [
 
 ### Export and Download Cluster Profile
 
-With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download the
-[Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
+With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download either the
+[Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
 
 <!-- vale off -->
 
+**Palette CLI**
+```shell
+VERSION=<palette-edge-cli-version>
+wget https://software.spectrocloud.com/palette-cli/v$VERSION/cli/linux/palette
+chmod +x palette-edge
+```
+
+**Palette Edge CLI**
 ```shell
 VERSION=<palette-edge-cli-version>
 wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
@@ -46,7 +54,7 @@ chmod +x palette-edge
 
 <TabItem label="Palette CLI" value="Palette CLI">
 
-You will use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a
+You will use the Palette  CLI tool to authenticate against Palette, and download a specific cluster profile from a
 specific project. You will need the following values:
 
 - [API Key](../../../../user-management/authentication/api-key/create-api-key.md)
