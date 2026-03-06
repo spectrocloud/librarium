@@ -14,23 +14,20 @@ tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
 packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
-integrations.
+integrations. With centrally managed Edge, these are automatically provisioned when the Edge device is connected. With locally managed Edge, the cluster profile needs to be exported from Palette, and uploaded to the Edge device. 
 
-This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
-a demo application that you can access on your browser. You will learn about cluster profile layers and how to reference
-the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After creating the
-cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
-installation on your host and use it as a node for deploying your first Edge cluster.
+This tutorial teaches you how to export the cluster profile you created in the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial using either the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).  
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-profile.webp)
+
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_content-bundle_content-bundle-architecture-diagram_4-8.webp)
 
 ## Prerequisites
 
-- You have completed the steps in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, including building the
-  installer ISO and provider image, and pushing the provider image to a registry.
-- A [Palette account](https://www.spectrocloud.com/get-started) with
-  [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
-- One available IP address on the same network as the Edge host for the MetalLB load balancer.
+- You have completed the steps in the [Deploy Edge Cluster](./deploy-edge-cluster.md), and [Prepare Edge Host](./prepare-edge-host.md) tutorials.
+- A [Palette account](https://www.spectrocloud.com/get-started).
+- A valid Palette [API Key](../../../../user-management/authentication/api-key/create-api-key.md).
+- The [Project ID](../../../../tenant-settings/projects/projects.md#project-id) where you created your cluster profile.
+- The [Cluster Profile ID](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md#enablement-1).
 
 ### Export and Download Cluster Profile
 
