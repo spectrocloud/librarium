@@ -14,7 +14,7 @@ tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
 packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
-integrations. With centrally managed Edge, these are automatically provisioned when the Edge device is connected. With locally managed Edge, the cluster profile needs to be exported from Palette, and uploaded to the Edge device. 
+integrations. With centrally managed Edge, these are automatically provisioned when the Edge device is connected. With locally managed Edge, the cluster profile needs to be exported from Palette as a [Content Bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md#create-content-bundle), and upload the bundle to the Edge device. 
 
 This tutorial teaches you how to export the cluster profile you created in the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial using either the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).  
 
@@ -54,20 +54,18 @@ chmod +x palette-edge
 
 <TabItem label="Palette CLI" value="Palette CLI">
 
-You will use the Palette  CLI tool to authenticate against Palette, and download a specific cluster profile from a
-specific project. You will need the following values:
-
-- [API Key](../../../../user-management/authentication/api-key/create-api-key.md)
-- [Project ID](../../../../tenant-settings/projects/projects.md#project-id)
-- [Cluster Profile ID](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md#enablement-1)
+You will use the Palette CLI tool to authenticate against Palette, and download a specific cluster profile from a
+specific project. 
 
 Use the following Palette Edge ClI to generate the cluster profile compressed `.tgz` file.
 
 ```shell
-./palette-edge build --api-key <apikey> --project-id <project-id> \
---cluster-profile-ids <profile-id> --cluster-definition-profile-ids <profile-id> \
---palette-endpoint <https://api.yourpalette> --cluster-definition-name <cluster-profile-name> \
---outfile <cluster-profile-name.tgz> --include-palette-content
+./palette content build --arch <bundle-architecture> \
+--project-id <project-id> \
+--profiles <cluster-profile-id1,cluster-profile-id2...> \
+--cluster-definition-name <cluster-definition-name> \
+--cluster-definition-profile-ids <cluster-definition-profile-ids> \
+--name <bundle-name>
 ```
 
 <!-- vale on -->
