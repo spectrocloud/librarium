@@ -91,7 +91,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 8. Customize the `Dockerfile` as needed. You can install tools and dependencies and make other image modifications. Add
    your customizations below the line tagged with the `Add any other image customizations here` comment in the
    `Dockerfile`. Do not edit or add any lines before this tagged comment.
-   
+
    :::warning
 
    When customizing the `Dockerfile` to add custom binaries, install them into `/usr/bin`. Do not use `/usr/local`, as
@@ -111,8 +111,11 @@ This document guides you through the process of producing Edge Installer ISOs th
    ```
 
    :::warning
-   
-   Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate non-interactive flag for your package manager, for example, `--non-interactive` for Zypper or `--yes` for Advanced Package Tool (APT). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you add through the `Dockerfile`.
+
+   Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate
+   non-interactive flag for your package manager, for example, `--non-interactive` for Zypper or `--yes` for Advanced
+   Package Tool (APT). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you
+   add through the `Dockerfile`.
 
    :::
 
@@ -121,10 +124,11 @@ This document guides you through the process of producing Edge Installer ISOs th
    ```bash
    cat Dockerfile
    ```
+
    :::warning
 
-   Adding software dependencies in the `Dockerfile` will cause the size of the Extensible Firmware Interface (EFI) file to
-   grow. Most hardware has a limit on the size of the EFI that it can boot. Make sure you do not include too many
+   Adding software dependencies in the `Dockerfile` will cause the size of the Extensible Firmware Interface (EFI) file
+   to grow. Most hardware has a limit on the size of the EFI that it can boot. Make sure you do not include too many
    dependencies that can cause the EFI file to grow larger than the boot limit. For more information, refer to
    [Check EFI Boot Limit](./check-efi-limit.md).
 
