@@ -18,28 +18,27 @@ You only need to configure your AWS Outposts once for each Outpost.
 
 ## Prerequisites
 
+- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html). This is required before you can configure your Edge host. AWS manages the delivery and initial configuration of the AWS outposts server at your site.
 - An active Palette account.
-- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
 - Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 - An AWS [EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html).
 
 ## Configure the Outpost's capacity
 
-Perform the following steps to set your AWS Outposts server capacity. It may take several hours for your server to
-configure your chosen capacity.
+Perform the following steps to set your AWS Outposts server capacity. 
 
 1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
 2. Select your Outposts server.
 3. [Create a capacity task](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html). Set
-   the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**.
-
-   :::info
-
-   Palette only supports AWS Outposts servers with one instance.
-
-   :::
-
+   the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**. 
 4. **Remove** any previously created instances.
+    :::info
+
+       - Palette only supports AWS Outposts servers with one instance.
+       - After you click **Create**, it may take several hours for your server to configure your chosen capacity.
+
+    :::
+
 
    ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
 
@@ -68,4 +67,6 @@ configure your chosen capacity.
 
    :::
 
-Refer to [Configure Edge on AWS Outposts](./configure-edge-on-aws-outpost.md) to configure your Edge host.
+## Next steps
+
+Refer to [Deploy Edge on AWS Outposts](./configure-edge-on-aws-outpost.md) to configure your Edge host.
