@@ -517,12 +517,6 @@ required Edge artifacts.
    RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools
    ```
 
-   View the `Dockerfile` to ensure the instruction to install WireGuard is appended correctly.
-
-   ```bash
-   cat Dockerfile
-   ```
-
    :::warning
 
    Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate
@@ -531,6 +525,12 @@ required Edge artifacts.
    `Dockerfile`.
 
    :::
+
+   View the `Dockerfile` to ensure the instruction to install WireGuard is appended correctly.
+
+   ```bash
+   cat Dockerfile
+   ```
 
 10. <PartialsComponent category="palette-edge-canvos-version" name="canvos-edge-user-data" />
 
