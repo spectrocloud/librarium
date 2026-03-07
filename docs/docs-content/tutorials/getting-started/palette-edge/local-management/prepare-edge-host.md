@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual machines
@@ -15,9 +15,15 @@ and must have the Palette agent installed.
 
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
-register the host with Palette. Once registered, the host will be ready to be part of an Edge cluster.
+let the host register with Local UI. Locally managed Edge devices require access to registries that contain content
+bundles, either through the internet or the local network, in order to download the required packs for cluster
+deployment. The following architectural diagram illustrates the workflow covered in this tutorial:
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-host.webp)
+- Installation of the Palette agent.
+- Self-generation of the Host UID.
+- Accessing the Edge device with Local UI.
+
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-architecture-prepare_4-8.webp)
 
 ## Prerequisites
 
@@ -25,12 +31,12 @@ register the host with Palette. Once registered, the host will be ready to be pa
   minimum hardware specifications.
   - 2 CPUs
   - 8 GB memory
-  - 150 GB storage
-- If you plan to use a virtual machine as the Edge host, ensure that you have a VMM (Virtual Machine Manager) installed.
+  - 300 GB storage
+- If you plan to use a virtual machine as the Edge host, ensure that you have a Virtual Machine Manager (VMM) installed.
   This tutorial uses
-  [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0 as
-  an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same minimum
-  hardware requirements.
+  [Oracle Virtualbox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version
+  7.2.6 as an example. Additionally, the underlying physical host must allow the creation of a VM that meets the same
+  minimum hardware requirements.
 - The Edge installer ISO file built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. If you are using
   a physical device as the Edge host, ensure the device has USB ports, the ISO file is flashed to a USB drive, and you
   are able to modify the host's boot order settings to boot from the USB drive.
@@ -49,18 +55,19 @@ will use the Edge installer ISO to bootstrap the Edge installation and serve as 
 
 Launch the VirtualBox application and click **New** to create a new VM.
 
-Give the machine a name, for example, `edge-vm`.
+Give the machine a name, for example, `local-edge-vm`.
 
 In the **ISO Image** field, select the Edge installer ISO file you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. The ISO file is located in the `CanvOS/build` directory.
 
-Set the machine **Type** as **Linux** and the **Version** as **Ubuntu (64-bit)**, and click **Next**.
+Set the machine **Type** as **Linux**, the **OS Distribution** as **Ubuntu**, and the **Version** as **Ubuntu
+(64-bit)**, and click **Next**.
 
-![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-config.webp)
+![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-new-vm_4-8.webp)
 
-Adjust the **Base Memory** to 8000 MB and **Processors** to 2 CPU. Click **Next** to proceed.
+Adjust the **Base Memory** to `8000 MB` and **Processors** to `2` CPU. Click **Next** to proceed.
 
-Set the **Disk Size** to 150 GB and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
+Set the **Disk Size** to `300 GB` and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
 
 :::info
 
@@ -73,10 +80,10 @@ Confirm the VM settings and click **Finish** to create the VM.
 
 Select the VM to adjust its network settings. Click **Settings**, then select **Network**.
 
-Change the **Attached to:** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from
+Change the **Attached to** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from
 the same network as the host. Click **OK**.
 
-![A screenshot of the VirtualBox VM network configuration.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-network.webp)
+![A screenshot of the VirtualBox VM network configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-network_4-8.webp)
 
 Select the created VM and click **Start** to turn it on. The Edge installer bootstraps the Palette Edge installation
 onto the VM.
@@ -91,7 +98,7 @@ Select the Edge installer ISO and click **Remove Attachment** to remove it from 
 **Remove** and click **OK** to close the settings window. Leaving the installer ISO attached would cause the VM to boot
 from it again, restarting the installation process.
 
-![A screenshot of the VirtualBox VM storage configuration.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-remove-iso.webp)
+![A screenshot of the VirtualBox VM storage configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-remove-iso_4-8.webp)
 
 </TabItem>
 
@@ -119,27 +126,12 @@ specified in the [Prepare User Data](./prepare-user-data.md) tutorial with the l
 Once the device powers off, remove the USB drive. Since it was previously selected as the boot volume, leaving it
 inserted would cause the system to boot from it again, restarting the installation process.
 
-The device is now ready to be registered with Palette as an Edge host.
-
 </TabItem>
 
 </Tabs>
 
 ## Register Edge Host
 
-<Tabs groupId="host">
-
-<TabItem label="VM Host" value="VM Host">
-
-To register the host with Palette, select the VM in VirtualBox and click **Start** to power it on. The VM boots and
-obtains an IP address from the host machine's bridged network.
-
-After a few minutes, the VM screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the
-[Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
-
-![A screenshot of the Edge host.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
-
 :::tip
 
 You can provide site-specific Edge installer configuration user data if you need to apply new values or override default
@@ -149,48 +141,21 @@ information.
 
 :::
 
-Log in to [Palette](https://console.spectrocloud.com/). From the left main menu, select **Clusters**. Click the **Edge
-Hosts** tab to view the registered hosts.
+Power on the Edge device. It will automatically boot to **Palette eXtended Kubernetes Edge Registration**, reboot, and
+generate an Edge Host UID. Wait until an IP address is assigned. The following image displays the Edge TUI on an Intel
+NUC device after the device has generated a Host UID and obtained an IP address.
 
-Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
-should match the ID displayed on the VM screen.
+![Screenshot showing bare metal edge TUI](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
 
-![A screenshot of the Edge host in Palette.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
+Log in to Local UI (`https://<ip-of-edge:5080`) with the username and password you defined in the
+[Prepare User Data](./prepare-user-data.md) tutorial. The following image displays the Local UI login screen.
 
-</TabItem>
+![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
-<TabItem label="Bare Metal Host" value="Bare Metal Host">
+The Edge host will show as **Not Configured** as there is no Edge cluster deployed. The following image displays a newly
+installed locally managed Edge host.
 
-To register the host with Palette, power on your bare metal device. Let Palette Edge choose the registration boot option
-automatically from the GRand Unified Bootloader (GRUB) menu. The device boots and obtains an IP address from the
-network.
-
-After a few minutes, the device screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the
-[Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
-
-![A screenshot of the Edge host.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
-
-:::tip
-
-You can provide site-specific Edge installer configuration user data if you need to apply new values or override default
-values from the Edge installer user data you created during the EdgeForge process. Refer to
-[Apply Site User Data](../../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for more
-information.
-
-:::
-
-Log in to [Palette](https://console.spectrocloud.com/). From the left main menu, select **Clusters**. Click the **Edge
-Hosts** tab to view the registered hosts.
-
-Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
-should match the ID displayed on the host screen.
-
-![A screenshot of the Edge host in Palette.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
-
-</TabItem>
-
-</Tabs>
+![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-not-config_4-8.webp)
 
 ## Next Steps
 
