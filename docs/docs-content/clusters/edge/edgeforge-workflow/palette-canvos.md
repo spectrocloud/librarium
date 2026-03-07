@@ -618,29 +618,37 @@ git checkout v4.0.6
 
     :::
 
-11. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
-    the Dockerfile. You can install more tools and dependencies and configure the image to meet your needs. Add your
-    customizations below the line tagged with the `Add any other image customizations here` comment in the Dockerfile.
-    Do not edit or add any lines before this tagged comment.
-
-    ```bash
-    echo 'RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools' >> Dockerfile
-    ```
-
-    View the newly created file to ensure the instruction to install WireGuard is appended correctly.
-
-    ```bash
-    cat Dockerfile
-    ```
+11. Customize the `Dockerfile` as needed. You can install tools and dependencies and make other image modifications. Add
+    your customizations below the line tagged with the `Add any other image customizations here` comment in the
+    `Dockerfile`. Do not edit or add any lines before this tagged comment.
 
     :::warning
 
-    Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The
-    default behavior for package installations is to prompt the user for permission to install the package. A user
-    prompt will cause the image creation process to fail. This guidance applies to all dependencies you add through the
-    `Dockerfile`.
+    When customizing the `Dockerfile` to add custom binaries, install them into `/usr/bin`. Do not use `/usr/local`, as
+    this directory is mounted from the persistent partition at boot and makes files added during image build unavailable
+    at runtime.
 
     :::
+
+    For example, you can add the following line to the `Dockerfile` to install
+    [WireGuard](https://www.wireguard.com/install/).
+
+    ```dockerfile
+    ...
+    ###########################Add any other image customizations here #######################
+
+    RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools
+    ```
+
+    Package installation commands in the `Dockerfile` must be non-interactive. Ensure you use the appropriate
+    non-interactive flag for your package manager, for example, `--non-interactive` for Zypper or `--yes` for Advanced
+    Package Tool (APT). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you
+    add through the `Dockerfile`.
+
+    View the `Dockerfile` to ensure the instruction to install WireGuard is appended correctly.
+
+    ```bash
+    cat Dockerfile
 
 12. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with
     your actual registration token.
