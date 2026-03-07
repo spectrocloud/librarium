@@ -649,6 +649,7 @@ git checkout v4.0.6
 
     ```bash
     cat Dockerfile
+    ```
 
 12. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with
     your actual registration token.
