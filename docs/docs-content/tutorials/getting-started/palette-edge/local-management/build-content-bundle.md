@@ -14,10 +14,9 @@ tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
 packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
-integrations. With centrally managed Edge, these are automatically provisioned when the Edge device is connected. With locally managed Edge, the cluster profile needs to be exported from Palette as a [Content Bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md#create-content-bundle), and upload the bundle to the Edge device. 
+integrations. With centrally managed Edge, these are automatically provisioned when the Edge device is connected to Palette. With locally managed Edge, the cluster profile needs to be exported from Palette as a [Content Bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md#create-content-bundle), and upload the bundle to the Edge device. 
 
-This tutorial teaches you how to export the cluster profile you created in the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial using either the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).  
-
+This tutorial teaches you how to create the content bundle you created in the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial using either the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).  
 
 ![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_content-bundle_content-bundle-architecture-diagram_4-8.webp)
 
