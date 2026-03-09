@@ -10,11 +10,7 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
 ---
 
-[Cluster profiles](../../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
-scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
-packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
-deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
-integrations. With centrally managed Edge, these are automatically provisioned when the Edge device is connected to Palette. With locally managed Edge, the cluster profile needs to be exported from Palette as a [Content Bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md#create-content-bundle), and upload the bundle to the Edge device. 
+With locally managed Edge, the [cluster profile](../../../../profiles/profiles.md) needs to be exported from Palette as a [Content Bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md#create-content-bundle), and upload the bundle to the Edge device. 
 
 This tutorial teaches you how to create the content bundle you created in the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial using either the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).  
 
@@ -30,31 +26,28 @@ This tutorial teaches you how to create the content bundle you created in the [D
 
 ### Export and Download Cluster Profile
 
-With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download either the
-[Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine.
-
-<!-- vale off -->
-
-**Palette CLI**
-```shell
-VERSION=<palette-edge-cli-version>
-wget https://software.spectrocloud.com/palette-cli/v$VERSION/cli/linux/palette
-chmod +x palette-edge
-```
-
-**Palette Edge CLI**
-```shell
-VERSION=<palette-edge-cli-version>
-wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
-chmod +x palette-edge
-```
 
 <Tabs groupId="cli-options">
 
 <TabItem label="Palette CLI" value="Palette CLI">
 
-You will use the Palette CLI tool to authenticate against Palette, and download a specific cluster profile from a
-specific project. 
+With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download 
+[Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. For this tutorial, you will use version 4.8.7.
+
+<!-- vale off -->
+
+```shell
+wget https://software.spectrocloud.com/palette-cli/v4.8.7/cli/linux/palette
+chmod +x palette-edge
+```
+
+Use the Palette CLI tool to authenticate against Palette, and download a specific cluster profile from a
+specific project. The command will ask for the following values:
+
+- architecture version
+- The project ID where the profile exists.
+- The profile ID. Although you can provider multiple profile IDs, for this tutorial only one is needed.
+- 
 
 Use the following Palette Edge ClI to generate the cluster profile compressed `.tgz` file.
 
@@ -69,7 +62,7 @@ Use the following Palette Edge ClI to generate the cluster profile compressed `.
 
 <!-- vale on -->
 
-Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
+Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command for the values. The API key will
 appear blank for security reasons.
 
 <!-- vale off -->
@@ -134,6 +127,15 @@ echo
 </TabItem>
 
 <TabItem label="Palette Edge CLI" value="Palette Edge CLI">
+With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download either the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine. For this tutorial, you will use Palette CLI version 4.8.8.
+
+<!-- vale off -->
+
+```shell
+wget https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge
+chmod +x palette-edge
+```
+
 Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
 appear blank for security reasons.
 
