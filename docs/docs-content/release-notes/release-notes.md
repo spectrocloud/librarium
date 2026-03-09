@@ -154,11 +154,6 @@ The following component updates are applicable to this release:
 
 - Fixed an caused the [Palette Kubernetes upgrades](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) through Helm to fail on Palette 4.8.35.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-6150 -->
-<!-- prettier-ignore-start -->
-- Fixed an issue that prevented [EKS clusters](../clusters/public-cloud/aws/eks.md) configured with the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> from deploying successfully.
-<!-- prettier-ignore-end -->
-
 ## February 27, 2026 - Component Updates {#component-updates-2026-09}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.35.
