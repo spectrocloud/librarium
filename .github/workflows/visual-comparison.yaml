@@ -8,216 +8,273 @@
 
 name: Visual Comparison
 
+
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-  workflow_dispatch:
+    types: [opened, reopened, synchronize, labeled]
+    branches-ignore: ["version-*", "docs-rel-*"]
 
-# Needed for PR comments + pushing to gh-pages
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
-
-concurrency:
-  group: visual-comparison-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
 
 env:
-  # You can keep your existing env vars here; these are sane defaults
-  NODE_VERSION: "20"
-  # Used to build a unique report folder; we sanitize later for branch names with "/"
-  HTML_REPORT_URL_PATH: pr/${{ github.event.pull_request.number || github.run_id }}/${{ github.head_ref || github.ref_name }}
-  ARTIFACT_NAME: playwright-html-report
-  GH_PAGES_BRANCH: gh-pages
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  HTML_REPORT_URL_PATH: reports/${{ github.head_ref }}/${{ github.run_id }}/${{ github.run_attempt }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+
+
+concurrency:
+  group: "visual-comparison-${{ github.workflow }}-${{ github.head_ref }}"
+  cancel-in-progress: true
+
 
 jobs:
   run-ci:
-    name: Gate / Info
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' && contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
     steps:
-      - name: Echo context
-        run: |
-          echo "event_name=${{ github.event_name }}"
-          echo "ref=${{ github.ref }}"
-          echo "ref_name=${{ github.ref_name }}"
-          echo "head_ref=${{ github.head_ref }}"
-          echo "pr_number=${{ github.event.pull_request.number }}"
-          echo "HTML_REPORT_URL_PATH=${{ env.HTML_REPORT_URL_PATH }}"
-
-  build:
-    name: Build + Playwright
-    runs-on: ubuntu-latest
-    needs: [run-ci]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      # Run build in a way that allows fallback logic to happen
-      - name: Build (primary)
-        id: build_primary
-        continue-on-error: true
-        run: |
-          set +e
-          make build-ci
-          exit_code=$?
-          echo "BUILD_EXIT_CODE=$exit_code" >> "$GITHUB_ENV"
-          echo "build_exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+      # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
+      # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
+      # As of 8/8/2022, there is no way to enforce this behavior in GitHub Actions CI.
+      - run: |
+          echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
+          echo "GITHUB_HEAD_REF: ${{ github.head_ref }}"
+          echo "GITHUB_REF_NAME: ${{ github.ref_name }}"
+          echo "HTML_REPORT_URL_PATH ${{ env.HTML_REPORT_URL_PATH }}"
           exit 0
 
-      # Example fallback: only run if exit code indicates "cache missing" / special case
-      # (You mentioned "5" in your original logic.)
-      - name: Build (fallback using cached packs/CVEs)
-        if: ${{ steps.build_primary.outputs.build_exit_code == '5' }}
-        run: |
-          echo "Primary build returned 5, running fallback steps..."
-          make build-ci-cached
 
-      - name: Fail if build ultimately failed
-        # If primary failed with something other than 0 or the handled 5, fail the job.
-        if: ${{ steps.build_primary.outputs.build_exit_code != '0' && steps.build_primary.outputs.build_exit_code != '5' }}
-        run: |
-          echo "Build failed with exit code ${{ steps.build_primary.outputs.build_exit_code }}"
-          exit 1
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-
-      - name: Run Playwright visual comparison (sharded)
-        # If you truly never want this to fail the workflow, keep `|| true`.
-        # If you *do* want failures to fail the workflow, remove `|| true`.
-        run: |
-          set -e
-          npx playwright test --reporter=html || true
-
-      - name: Upload HTML report artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: playwright-report
-          if-no-files-found: warn
-          retention-days: 14
 
   create-assets:
-    name: Comment on PR with status
+    name: create-assets
+    needs: [run-ci]
     runs-on: ubuntu-latest
-    needs: [build]
-    if: ${{ github.event_name == 'pull_request' }}
     steps:
-      - name: Post PR Comment
-        uses: actions/github-script@v7
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v6
         with:
-          script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const issue_number = context.payload.pull_request.number;
+          node-version: "22"
+          cache: "npm"
 
-            const body = [
-              "✅ Visual comparison run completed.",
-              "",
-              "The HTML report will be published to `gh-pages` by the `publish_report` job (see next job).",
-              "If you don't see a link yet, refresh after the workflow finishes."
-            ].join("\n");
+      - name: Post PR Comment
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+              🤖 Starting the visual tests. This will take approximately an hour.
+          refresh-message-position: true
 
-            await github.rest.issues.createComment({ owner, repo, issue_number, body });
+      - name: Install Dependencies
+        uses: Wandalen/wretry.action@v3
+        with: 
+            command: npm ci
+            attempt_limit: 3
+            attempt_delay: 60000 # 1 minute
+
+      - name: Build
+        run: |
+          touch .env
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Build
+        uses: actions/upload-artifact@v7
+        with:
+          name: "build"
+          path: |
+            build/
+          if-no-files-found: error
+          retention-days: 1
+
+
+
+  take-screenshots:
+    name: Visual Comparison
+    needs: [run-ci, create-assets]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Dependencies
+        uses: Wandalen/wretry.action@v3
+        with: 
+            command: npm ci
+            attempt_limit: 3
+            attempt_delay: 60000 # 1 minute
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Download Build
+        uses: Wandalen/wretry.action@v3
+        with: 
+          attempt_limit: 3
+          action: actions/download-artifact@v8
+          with: |
+            name: build
+            path: build
+          attempt_delay: 60000 # 1 minute
+
+      - name: Download Reference Screenshots
+        run:  ./scripts/screenshot_artifacts.sh ./screenshots
+
+      - name: Take screenshots with Playwright
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
+
+      - name: Upload blob report to GitHub Actions Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: blob-report-${{ matrix.shardIndex }}
+          path: blob-report
+          retention-days: 1
+
+
+  merge-reports:
+    name: Merge Reports
+    needs: [take-screenshots]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v6
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v6
+      with:
+        node-version: "22"
+        cache: "npm"
+
+    - name: Install Dependencies
+      uses: Wandalen/wretry.action@v3
+      with: 
+          command: npm ci
+          attempt_limit: 3
+          attempt_delay: 60000 # 1 minute
+    
+    - name: Download blob reports from GitHub Actions Artifacts
+      uses: actions/download-artifact@v8
+      with:
+        path: all-blob-reports
+        pattern: blob-report-*
+        merge-multiple: true
+
+    - name: Merge into HTML Report
+      run: npx playwright merge-reports --reporter html ./all-blob-reports
+
+    - name: Upload Report
+      uses: actions/upload-artifact@v7
+      id: report
+      with:
+        name: "report"
+        path: |
+          playwright-report/
+        if-no-files-found: error
+        retention-days: 1  
+
 
   publish_report:
-    name: Publish report to gh-pages
+    name: Publish HTML Report
+    needs: [run-ci, take-screenshots, merge-reports]
     runs-on: ubuntu-latest
-    needs: [build]
-    if: always()
-    steps:
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ env.GH_PAGES_BRANCH }}
-          fetch-depth: 0
+    continue-on-error: true    
+    steps: 
 
-      - name: Download report artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: _incoming-report
+    - name: Checkout GitHub Pages Branch
+      uses: actions/checkout@v6
+      with:
+        ref: gh-pages  
 
-      - name: Prepare destination path (sanitize)
-        id: prep
-        run: |
-          set -e
-          RAW_PATH="${{ env.HTML_REPORT_URL_PATH }}"
-          SAFE_PATH="$(echo "$RAW_PATH" | sed 's#[^a-zA-Z0-9._/-]#-#g' | sed 's#/#-#g')"
-          echo "safe_path=$SAFE_PATH" >> "$GITHUB_OUTPUT"
+    - name: Set Git User
+          # see: https://github.com/actions/checkout/issues/13#issuecomment-724415212
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          DEST="reports/${SAFE_PATH}"
-          echo "dest=$DEST" >> "$GITHUB_OUTPUT"
+    - name: Sanitize branch name for path
+      run: |
+        BRANCH_SAFE=$(echo "${{ github.head_ref }}" | sed 's/\//-/g')
+        echo "BRANCH_SAFE=$BRANCH_SAFE" >> $GITHUB_ENV
+        echo "HTML_REPORT_URL_PATH=reports/$BRANCH_SAFE/${{ github.run_id }}/${{ github.run_attempt }}" >> $GITHUB_ENV
 
-          mkdir -p "$DEST"
-          rsync -a --delete "_incoming-report/" "$DEST/"
+    - name: Download zipped HTML report
+      uses: actions/download-artifact@v8
+      with:
+        name: report
+        path: ${{ env.HTML_REPORT_URL_PATH }}
 
-      - name: Set Git user
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit & push (if changed)
-        run: |
-          set -e
-          git add -A
-
-          if git diff --cached --quiet; then
-            echo "No changes to publish."
-            exit 0
+    - name: Push HTML Report
+      timeout-minutes: 5
+      run: |
+        git add .
+        git commit -m "workflow: add HTML report for run-id ${{ github.run_id }} (attempt:  ${{ github.run_attempt }})"
+        while true; do
+          git pull --rebase
+          if [ $? -ne 0 ]; then
+            echo "Failed to rebase. Please review manually."
+            exit 1
           fi
 
-          git commit -m "Publish visual report for ${{ github.sha }}"
-          git push origin "${{ env.GH_PAGES_BRANCH }}"
+          git push
+          if [ $? -eq 0 ]; then
+            echo "Successfully pushed HTML report to repo."
+            exit 0
+          fi
+        done
 
-      - name: Post report URL to PR
-        if: ${{ github.event_name == 'pull_request' && success() }}
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const issue_number = context.payload.pull_request.number;
 
-            const safePath = "${{ steps.prep.outputs.safe_path }}";
-            const reportPath = `reports/${safePath}/index.html`;
+    - name: DNS Wait
+      run:  sleep 120
 
-            // Best-effort Pages URL: works if Pages is configured for gh-pages.
-            // If your org uses a different Pages base, replace this with your known base URL.
-            const pagesBase = `https://${owner}.github.io/${repo}`;
-            const reportUrl = `${pagesBase}/${reportPath}`;
+        
+    - name: GH Pages URL
+      run: |
+        echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
-            const body = [
-              "📸 Visual comparison report published:",
-              reportUrl
-            ].join("\n");
 
-            await github.rest.issues.createComment({ owner, repo, issue_number, body });
+    - name: Post Report URL Comment
+      uses: mshick/add-pr-comment@v2
+      with:
+        message: |
+            📋 Visual Report for branch ${{ github.head_ref }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
+              https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
 
-      - name: Post failure comment to PR
-        if: ${{ github.event_name == 'pull_request' && failure() }}
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const issue_number = context.payload.pull_request.number;
-
-            const body = [
-              "❌ Visual comparison workflow failed while publishing the report.",
-              "Check the `publish_report` job logs for details."
-            ].join("\n");
-
-            await github.rest.issues.createComment({ owner, repo, issue_number, body });
+              💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).
+        message-failure: |
+            👎 Uh oh! Unable to publish Visual Report URL.
+        refresh-message-position: true
+        update-only: true
