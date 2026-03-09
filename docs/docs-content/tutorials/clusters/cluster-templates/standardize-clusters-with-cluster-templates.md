@@ -521,7 +521,7 @@ Success! 2 passed, 0 failed.
 
 `maintenance_policy.tf` defines a
 [maintenance policy](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) that controls
-when Palette schedules upgrades for clusters managed by the cluster template. The policy runs every Sunday at midnight
+when Palette schedules upgrades for clusters managed by the cluster template. For the tutorial, the policy is set to run every Sunday at midnight
 UTC with a four hour upgrade window.
 
 ```hcl title="maintenance_policy.tf"
