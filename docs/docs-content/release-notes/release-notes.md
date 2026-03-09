@@ -20,6 +20,8 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10194 -->
+
 - Fixed an issue that caused duplicate images that were vulnerable to
   [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121)  
   to appear alongside newer, fixed images in Palette version 4.8.37.
