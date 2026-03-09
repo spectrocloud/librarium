@@ -1,24 +1,14 @@
+/**
+ * @jest-environment jsdom
+ * @jest-environment-options {"url": "https://mocked-origin.com"}
+ */
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import FullUrlLink from "./FullUrlLink";
 
 const mockedOrigin = "https://mocked-origin.com";
 
-Object.defineProperty(window, "location", {
-  writable: true,
-  value: { ...window.location, origin: mockedOrigin },
-});
-
 describe("FullUrlLink", () => {
-  beforeEach(() => {
-    Object.defineProperty(window, "location", {
-      writable: true,
-      value: {
-        ...window.location,
-        origin: mockedOrigin,
-      },
-    });
-  });
 
   it("latest version", () => {
     const url = "/path/url";
