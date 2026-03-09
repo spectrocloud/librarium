@@ -9,7 +9,6 @@ import FullUrlLink from "./FullUrlLink";
 const mockedOrigin = "https://mocked-origin.com";
 
 describe("FullUrlLink", () => {
-
   it("latest version", () => {
     const url = "/path/url";
     const text = mockedOrigin + url;
