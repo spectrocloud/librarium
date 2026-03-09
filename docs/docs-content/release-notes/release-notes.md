@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March XX, 2026 - Release 4.7.X
+## March 10, 2026 - Release 4.7.34
 
 ### Improvements
 
