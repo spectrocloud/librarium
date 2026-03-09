@@ -24,6 +24,14 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
   Container Registry (ECR), you must have the AWS credentials to an IAM user or add a trust relationship to an IAM role
   so that Palette can access the registry.
 
+- If you are using Azure Container Registry (ACR), Azure recommends using a
+  [service principal](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#when-to-use-a-service-principal)
+  for automated pull access. The service principal must have at minimum the **AcrPull** role or **Container Registry
+  Repository Reader** role depending on the registry's role assignment permissions mode. Refer to the
+  [Azure Container Registry Entra permissions and role assignments overview](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview#recommended-built-in-roles-by-scenario)
+  for further details. Use the service principal's **App ID** as the username and its **client secret** as the password
+  when configuring the registry in Palette.
+
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
 
@@ -117,6 +125,13 @@ registry you are adding.
 
 10. Fill out the **Username** and **Password** fields with the credentials to access the registry. If the registry does
     not require authentication, leave the **Username** and **Password** fields empty.
+
+    :::tip
+
+    If you are using ACR, use the service principal **App ID** as the **Username** and its **client secret** as the
+    **Password**.
+
+    :::
 
 11. If your OCI registry server is using a self-signed certificate, select **Upload file** to upload the certificate. If
     the server certificate is not signed by a trusted CA, select **Insecure Skip TLS Verify** to skip verifying the x509
