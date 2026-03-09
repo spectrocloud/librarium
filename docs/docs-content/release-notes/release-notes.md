@@ -127,6 +127,12 @@ The following component updates are applicable to this release:
 - Palette now allows the use of tags to specify the placement of control planes on
   [MAAS LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md).
 
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.37 Palette release is 4.8.11.
+
+:::
+
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7658 -->
