@@ -11,6 +11,19 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 10, 2026 - Release 4.8.38
+
+### Improvements
+
+- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.8 has been released to address
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
+
+### Bug Fixes
+
+- Fixed an issue that caused duplicate images that were vulnerable to
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121)  
+  to appear alongside newer, fixed images in Palette version 4.8.37.
+
 ## March 6, 2026 - Component Updates {#component-updates-2026-10}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.37.
