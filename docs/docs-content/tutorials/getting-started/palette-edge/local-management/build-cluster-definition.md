@@ -1,16 +1,16 @@
 ---
-sidebar_label: "Build Content Bundle"
-title: "Build Content Bundle"
+sidebar_label: "Build Cluster Definition"
+title: "Build Cluster Definition"
 description:
   "Get started with Kubernetes at the edge. Learn how to build the artifacts required for your locally managed Edge
   deployment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-With locally managed Edge, the [cluster profile](../../../../profiles/profiles.md) needs to be exported from Palette as a [Content Bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md#create-content-bundle), and upload the bundle to the Edge device. 
+With locally managed Edge, the [cluster profile](../../../../profiles/profiles.md), including any profile variables, needs to be exported from Palette as a [Cluster Definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md), and upload the bundle to the Edge device. 
 
 This tutorial teaches you how to create the content bundle you created in the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial using either the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).  
 
@@ -23,6 +23,12 @@ This tutorial teaches you how to create the content bundle you created in the [D
 - A valid Palette [API Key](../../../../user-management/authentication/api-key/create-api-key.md).
 - The [Project ID](../../../../tenant-settings/projects/projects.md#project-id) where you created your cluster profile.
 - The [Cluster Profile ID](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md#enablement-1).
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can issue the
+  following command in the terminal to check your processor architecture.
+
+  ```bash
+  uname -m
+  ```
 
 ### Export and Download Cluster Profile
 

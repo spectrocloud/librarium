@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["getting-started", "tutorial", "locally-managed", "airgapped", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 [Cluster profiles](../../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
@@ -32,7 +32,7 @@ For this tutorial, you will build a cluster profile that has the following packs
 | Palette Optimized K3s     | 1.32.3      | Palette Registry           |
 | Cilium                    | 1.18.4      | Palette Registry           |
 | Local Path Provisioner    | 0.0.32      | Palette Registry           |
-| Harbor Edge Native Config | 1.1.2       | Palette Registry           |
+| Harbor Edge Native Config | 1.9.3       | Palette Registry           |
 | Hello Universe            | 1.3.1       | Palette Community Registry |
 | MetalLB (Helm)            | 0.15.3      | Palette Registry           |
 
@@ -115,7 +115,7 @@ cluster profile. Harbor is required to manage local registries for locally manag
 
 | **Pack Name**              | **Version** | **Registry**     | **Layer** |
 | -------------------------- | ----------- | ---------------- | --------- |
-| Harbor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
+| Harbor Edge Native Config. | 1.9.3      | Palette Registry | Registry  |
 
 Click **Confirm & Create**.
 
