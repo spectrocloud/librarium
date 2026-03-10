@@ -27,8 +27,8 @@ For guidance on how to add a custom pack to an OCI pack registry, check out the
 
 - If you are using Azure Container Registry (ACR), Azure recommends using a
   [service principal](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#when-to-use-a-service-principal)
-  for automated pull access. The service principal must have at minimum the **AcrPull** role or **Container Registry
-  Repository Reader** role depending on the registry's role assignment permissions mode. Refer to the
+  for automated pull access. The service principal must have at least the **AcrPull** role or the **Container Registry
+  Repository Reader** role, depending on the registry's role assignment permissions mode. Refer to the
   [Azure Container Registry Entra permissions and role assignments overview](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview#recommended-built-in-roles-by-scenario)
   for further details. Use the service principal's **App ID** as the username and its **client secret** as the password
   when configuring the registry in Palette.
