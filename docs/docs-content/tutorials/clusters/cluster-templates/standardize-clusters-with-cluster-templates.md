@@ -530,10 +530,12 @@ terraform test
 ```bash hideClipboard title="Expected output"
 tests/aws.tftest.hcl... pass
   run "verify_aws_profile"... pass
+  run "verify_aws_template"... pass
 tests/azure.tftest.hcl... pass
   run "verify_azure_profile"... pass
+  run "verify_azure_template"... pass
 
-Success! 2 passed, 0 failed.
+Success! 4 passed, 0 failed.
 ```
 
 ### Create a Maintenance Policy
@@ -556,8 +558,35 @@ resource "spectrocloud_cluster_config_policy" "maintenance" {
 }
 ```
 
-With both the cluster profile and maintenance policy defined, run `terraform plan` to preview the changes Terraform will
-make. This also confirms that Terraform can authenticate to Palette and that your project exists.
+### Create a Cluster Template
+
+`cluster_templates.tf` defines a [cluster template](../../../cluster-templates/create-cluster-templates.md) that links
+the cluster profile and maintenance policy. `context = "project"` scopes the template to the current Palette project
+rather than `"tenant"`, which would make it available across all projects in the organization. `kind = "maintenance"`
+tells Palette how to apply the attached policy. Cluster templates are designed to support multiple kinds of policies,
+and `kind` is how Palette distinguishes between them.
+
+```hcl title="cluster_templates.tf"
+resource "spectrocloud_cluster_config_template" "aws_template" {
+  count = var.deploy-aws ? 1 : 0
+
+  name       = "tf-cluster-template-aws"
+  cloud_type = "aws"
+  context    = "project"
+
+  cluster_profile {
+    id = spectrocloud_cluster_profile.aws_profile[0].id
+  }
+
+  policy {
+    id   = spectrocloud_cluster_config_policy.maintenance.id
+    kind = "maintenance"
+  }
+}
+```
+
+With all three resources defined, run `terraform plan` to preview the changes. This also confirms that Terraform can
+authenticate to Palette and that your project exists.
 
 ```bash
 terraform plan
@@ -571,34 +600,39 @@ data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
   # spectrocloud_cluster_config_policy.maintenance will be created
   + resource "spectrocloud_cluster_config_policy" "maintenance" { ... }
 
+  # spectrocloud_cluster_config_template.aws_template[0] will be created
+  + resource "spectrocloud_cluster_config_template" "aws_template" { ... }
+
   # spectrocloud_cluster_profile.aws_profile[0] will be created
   + resource "spectrocloud_cluster_profile" "aws_profile" { ... }
 
-Plan: 2 to add, 0 to change, 0 to destroy.
+Plan: 3 to add, 0 to change, 0 to destroy.
 ```
 
 If `Read complete` appears in the output, Terraform successfully authenticated and found your Palette project. A plan of
-`2 to add` confirms both resources are ready to be created.
+`3 to add` confirms all three resources are ready to be created.
 
-Apply the configuration to create the cluster profile and maintenance policy in Palette.
+Apply the configuration to create all three resources in Palette.
 
 ```bash
 terraform apply -auto-approve
 ```
 
 ```bash hideClipboard title="Expected output"
-spectrocloud_cluster_profile.aws_profile[0]: Creating...
-spectrocloud_cluster_profile.aws_profile[0]: Creation complete after Xs [id=<profile-id>]
 spectrocloud_cluster_config_policy.maintenance: Creating...
-spectrocloud_cluster_config_policy.maintenance: Creation complete after Xs [id=<policy-id>]
+spectrocloud_cluster_profile.aws_profile[0]: Creating...
+spectrocloud_cluster_config_template.aws_template[0]: Creating...
+spectrocloud_cluster_config_policy.maintenance: Creation complete after 0s [id=<policy-id>]
+spectrocloud_cluster_profile.aws_profile[0]: Creation complete after 2s [id=<profile-id>]
+spectrocloud_cluster_config_template.aws_template[0]: Creation complete after 1s [id=<template-id>]
 
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 ```
 
 Confirm the cluster profile was created correctly in Palette.
 
-1. Log in to [Palette](https://console.spectrocloud.com)
-2. Click **Profiles** from the left **Main Menu**.
+1. Log in to [Palette](https://console.spectrocloud.com).
+2. From the left **Main Menu**, select **Profiles**.
 3. Locate and select the cluster profile named `tf-cluster-template-profile`.
 4. Review its pack layers to confirm they match the configuration.
 5. Select the **Variables** tab and confirm that a variable named `app_replicas` is listed.
@@ -610,7 +644,11 @@ Confirm the maintenance policy was created correctly in Palette.
 3. Select it and confirm the schedule shows a weekly window starting every Sunday at midnight UTC with a four hour
    duration.
 
-### Create a Cluster Template
+Confirm the cluster template was created correctly in Palette.
+
+1. Select the **Templates** tab and locate the template named `tf-cluster-template-aws`.
+2. Select it and confirm it references the `tf-cluster-template-profile` cluster profile and the `tf-maintenance-policy`
+   maintenance policy.
 
 ### Deploy Dev and Prod Clusters with Different Variable Values
 
