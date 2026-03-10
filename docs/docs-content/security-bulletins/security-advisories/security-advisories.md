@@ -28,30 +28,30 @@ directives.
 
 Successful exploitation may result in:
 
-- Arbitrary code execution in the `ingress-nginx` controller context
-- Disclosure of Kubernetes Secrets accessible to the controller
-- Compromise of workloads exposed through the ingress controller
+- Arbitrary code execution in the `ingress-nginx` controller context.
+- Disclosure of Kubernetes Secrets accessible to the controller.
+- Compromise of workloads exposed through the ingress controller.
 
 This vulnerability only affects environments using the `ingress-nginx` controller.
 
 ### Affected Deployments
 
 - All workload clusters using the `ingress-nginx` pack.
-- All Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted)
+- All Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted).
 
 ### Impact
 
 An attacker with the ability to create or modify an Ingress resource may be able to:
 
-- Inject malicious configuration into Nginx
-- Execute arbitrary code within the ingress controller pod
-- Access or exfiltrate Kubernetes Secrets accessible to the controller (potentially cluster-wide)
+- Inject malicious configuration into Nginx.
+- Execute arbitrary code within the ingress controller pod.
+- Access or exfiltrate Kubernetes Secrets accessible to the controller (potentially cluster-wide).
 
 The risk is higher in environments where:
 
-- Users have Ingress write privileges
-- The ingress controller has broad RBAC permissions
-- Secrets are accessible across namespaces
+- Users have Ingress write privileges.
+- The ingress controller has broad RBAC permissions.
+- Secrets are accessible across namespaces.
 
 ### Recommended Actions
 
