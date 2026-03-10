@@ -1,0 +1,541 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - link "Tutorials" [ref=e10] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e11] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e12] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - link "Go to Spectro Cloud homepage (opens in a new tab)" [ref=e17] [cursor=pointer]:
+            - /url: https://spectrocloud.com
+            - text: spectrocloud.com ↗
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Downloads" [ref=e44] [cursor=pointer]:
+                  - /url: /downloads/
+                  - img [ref=e46]
+                  - text: Downloads
+              - listitem [ref=e48]:
+                - link "Artifact Studio" [ref=e49] [cursor=pointer]:
+                  - /url: /downloads/artifact-studio/
+                  - img [ref=e51]
+                  - text: Artifact Studio
+              - listitem [ref=e53]:
+                - link "CLI Tools" [ref=e54] [cursor=pointer]:
+                  - /url: /downloads/cli-tools/
+                  - img [ref=e56]
+                  - text: CLI Tools
+              - listitem [ref=e58]:
+                - generic [ref=e59]:
+                  - link "Self-Hosted Palette" [ref=e60] [cursor=pointer]:
+                    - /url: /downloads/self-hosted-palette/
+                    - img [ref=e62]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e64] [cursor=pointer]
+              - listitem [ref=e65]:
+                - generic [ref=e66]:
+                  - link "Palette VerteX" [ref=e67] [cursor=pointer]:
+                    - /url: /downloads/palette-vertex/
+                    - img [ref=e69]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e71] [cursor=pointer]
+              - listitem [ref=e72]:
+                - link "Agent Mode" [ref=e73] [cursor=pointer]:
+                  - /url: /downloads/agent-mode/
+                  - img [ref=e75]
+                  - text: Agent Mode
+              - listitem [ref=e77]:
+                - link "CAPI Image Builder" [ref=e78] [cursor=pointer]:
+                  - /url: /downloads/capi-image-builder/
+                  - img [ref=e80]
+                  - text: CAPI Image Builder
+              - listitem [ref=e82]:
+                - link "Offline Documentation" [ref=e83] [cursor=pointer]:
+                  - /url: /downloads/offline-docs/
+                  - img [ref=e85]
+                  - text: Offline Documentation
+              - listitem [ref=e87]:
+                - button "Privacy Settings" [ref=e88] [cursor=pointer]
+      - main [ref=e89]:
+        - generic [ref=e91]:
+          - generic [ref=e93]:
+            - article [ref=e94]:
+              - navigation "Breadcrumbs" [ref=e95]:
+                - list [ref=e96]:
+                  - listitem [ref=e97]:
+                    - link "Home page" [ref=e98] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e99]
+                  - listitem [ref=e101]:
+                    - generic [ref=e102]: CLI Tools
+              - generic [ref=e103]:
+                - heading "CLI Tools" [level=1] [ref=e105]
+                - paragraph [ref=e106]: The following sections provide links to download the available CLI tools related to Palette and Spectro Cloud.
+                - paragraph [ref=e107]:
+                  - text: The Palette CLI and Palette Edge CLI are tools that allow you to interact with Spectro Cloud's Palette platform programmatically. The Palette Edge CLI focuses specifically on Edge computing scenarios while the Palette CLI handles broader platform management. Refer to the
+                  - link "Palette CLI documentation" [ref=e108] [cursor=pointer]:
+                    - /url: /automation/palette-cli/
+                  - text: for guidance on installing and using the Palette CLI and Palette Edge CLI.
+                - paragraph [ref=e109]:
+                  - text: The Spectro CLI tool is a command-line interface to interact with a Palette legacy registry server. You can use the CLI to upload or download packs and perform other operations. Refer to the
+                  - link "Spectro Cloud CLI Tool documentation" [ref=e110] [cursor=pointer]:
+                    - /url: /registries-and-packs/spectro-cli-reference/
+                  - text: for guidance on installing and using the Spectro Cloud CLI tool.
+                - heading "Palette CLIDirect link to Palette CLI" [level=2] [ref=e111]:
+                  - text: Palette CLI
+                  - link "Direct link to Palette CLI" [ref=e112] [cursor=pointer]:
+                    - /url: "#palette-cli"
+                    - text: "#"
+                - paragraph [ref=e113]: The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
+                - table [ref=e114]:
+                  - rowgroup [ref=e115]:
+                    - row "Palette Release Recommended CLI Version Download URL Checksum (SHA256)" [ref=e116]:
+                      - cell "Palette Release" [ref=e117]
+                      - cell "Recommended CLI Version" [ref=e118]
+                      - cell "Download URL" [ref=e119]
+                      - cell "Checksum (SHA256)" [ref=e120]
+                  - rowgroup [ref=e121]:
+                    - row "4.8.38 4.8.8 https://software.spectrocloud.com/palette-cli/v4.8.8/linux/cli/palette 9eb15343d098594f637b5f7f8228d427853846a38ada7ceef26656d6b177cdea" [ref=e122]:
+                      - cell "4.8.38" [ref=e123]
+                      - cell "4.8.8" [ref=e124]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.8.8/linux/cli/palette" [ref=e125]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.8.8/linux/cli/palette" [ref=e126] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.8.8/linux/cli/palette
+                      - cell "9eb15343d098594f637b5f7f8228d427853846a38ada7ceef26656d6b177cdea" [ref=e127]:
+                        - code [ref=e128]: 9eb15343d098594f637b5f7f8228d427853846a38ada7ceef26656d6b177cdea
+                    - row "4.8.33 4.8.7 https://software.spectrocloud.com/palette-cli/v4.8.7/linux/cli/palette 7854f35a210a0ecc926aae80218f14e06a98b2d6b28841454299372ee674a5f9" [ref=e129]:
+                      - cell "4.8.33" [ref=e130]
+                      - cell "4.8.7" [ref=e131]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.8.7/linux/cli/palette" [ref=e132]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.8.7/linux/cli/palette" [ref=e133] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.8.7/linux/cli/palette
+                      - cell "7854f35a210a0ecc926aae80218f14e06a98b2d6b28841454299372ee674a5f9" [ref=e134]:
+                        - code [ref=e135]: 7854f35a210a0ecc926aae80218f14e06a98b2d6b28841454299372ee674a5f9
+                    - row "4.8.21 4.8.5 https://software.spectrocloud.com/palette-cli/v4.8.5/linux/cli/palette 6c5928a96498111126d17260dfeb3354b6793e87cfad1b8b1103ddaa4069807b" [ref=e136]:
+                      - cell "4.8.21" [ref=e137]
+                      - cell "4.8.5" [ref=e138]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.8.5/linux/cli/palette" [ref=e139]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.8.5/linux/cli/palette" [ref=e140] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.8.5/linux/cli/palette
+                      - cell "6c5928a96498111126d17260dfeb3354b6793e87cfad1b8b1103ddaa4069807b" [ref=e141]:
+                        - code [ref=e142]: 6c5928a96498111126d17260dfeb3354b6793e87cfad1b8b1103ddaa4069807b
+                    - row "4.8.6 4.8.2 https://software.spectrocloud.com/palette-cli/v4.8.2/linux/cli/palette 926c80d0a62c2b22df31856cdb680475f9423c3c3ef7bf3a6008888589a28217" [ref=e143]:
+                      - cell "4.8.6" [ref=e144]
+                      - cell "4.8.2" [ref=e145]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.8.2/linux/cli/palette" [ref=e146]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.8.2/linux/cli/palette" [ref=e147] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.8.2/linux/cli/palette
+                      - cell "926c80d0a62c2b22df31856cdb680475f9423c3c3ef7bf3a6008888589a28217" [ref=e148]:
+                        - code [ref=e149]: 926c80d0a62c2b22df31856cdb680475f9423c3c3ef7bf3a6008888589a28217
+                    - row "4.7.27 4.7.4 https://software.spectrocloud.com/palette-cli/v4.7.4/linux/cli/palette 48edf70b44c493230215a037531a97bdefdfc6d128d258c8ce78ddb06f331f00" [ref=e150]:
+                      - cell "4.7.27" [ref=e151]
+                      - cell "4.7.4" [ref=e152]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.7.4/linux/cli/palette" [ref=e153]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.7.4/linux/cli/palette" [ref=e154] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.7.4/linux/cli/palette
+                      - cell "48edf70b44c493230215a037531a97bdefdfc6d128d258c8ce78ddb06f331f00" [ref=e155]:
+                        - code [ref=e156]: 48edf70b44c493230215a037531a97bdefdfc6d128d258c8ce78ddb06f331f00
+                    - row "4.7.20 4.7.2 https://software.spectrocloud.com/palette-cli/v4.7.2/linux/cli/palette 8350d1c84cbb000316e3c5e3fee2a8ce63157bcada8ddbb57cc670ed9d0da5ac" [ref=e157]:
+                      - cell "4.7.20" [ref=e158]
+                      - cell "4.7.2" [ref=e159]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.7.2/linux/cli/palette" [ref=e160]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.7.2/linux/cli/palette" [ref=e161] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.7.2/linux/cli/palette
+                      - cell "8350d1c84cbb000316e3c5e3fee2a8ce63157bcada8ddbb57cc670ed9d0da5ac" [ref=e162]:
+                        - code [ref=e163]: 8350d1c84cbb000316e3c5e3fee2a8ce63157bcada8ddbb57cc670ed9d0da5ac
+                    - row "4.7.13 4.7.1 https://software.spectrocloud.com/palette-cli/v4.7.1/linux/cli/palette c6dcc5b725f31ca402e10ebbb7dee090beed28de3b452ec786419eedcda3c468" [ref=e164]:
+                      - cell "4.7.13" [ref=e165]
+                      - cell "4.7.1" [ref=e166]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.7.1/linux/cli/palette" [ref=e167]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.7.1/linux/cli/palette" [ref=e168] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.7.1/linux/cli/palette
+                      - cell "c6dcc5b725f31ca402e10ebbb7dee090beed28de3b452ec786419eedcda3c468" [ref=e169]:
+                        - code [ref=e170]: c6dcc5b725f31ca402e10ebbb7dee090beed28de3b452ec786419eedcda3c468
+                    - row "4.7.3 4.7.0 https://software.spectrocloud.com/palette-cli/v4.7.0/linux/cli/palette 743300629069d89d9a40acc3c3463e427adcc3b80fbdc4b1806badbaea5fc1f5" [ref=e171]:
+                      - cell "4.7.3" [ref=e172]
+                      - cell "4.7.0" [ref=e173]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.7.0/linux/cli/palette" [ref=e174]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.7.0/linux/cli/palette" [ref=e175] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.7.0/linux/cli/palette
+                      - cell "743300629069d89d9a40acc3c3463e427adcc3b80fbdc4b1806badbaea5fc1f5" [ref=e176]:
+                        - code [ref=e177]: 743300629069d89d9a40acc3c3463e427adcc3b80fbdc4b1806badbaea5fc1f5
+                    - row "4.6.40 4.6.8 https://software.spectrocloud.com/palette-cli/v4.6.8/linux/cli/palette 33a81b1ddfcaf35bef73e6f8ae7016f1dd30bce16af74eeeb53e0f3209fcdcc4" [ref=e178]:
+                      - cell "4.6.40" [ref=e179]
+                      - cell "4.6.8" [ref=e180]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.6.8/linux/cli/palette" [ref=e181]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.6.8/linux/cli/palette" [ref=e182] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.6.8/linux/cli/palette
+                      - cell "33a81b1ddfcaf35bef73e6f8ae7016f1dd30bce16af74eeeb53e0f3209fcdcc4" [ref=e183]:
+                        - code [ref=e184]: 33a81b1ddfcaf35bef73e6f8ae7016f1dd30bce16af74eeeb53e0f3209fcdcc4
+                    - row "4.6.32 4.6.6 https://software.spectrocloud.com/palette-cli/v4.6.6/linux/cli/palette 5884500e5a04a7c2beb573674eb78a8804794a0dd25e4da5b38829e7303a29fe" [ref=e185]:
+                      - cell "4.6.32" [ref=e186]
+                      - cell "4.6.6" [ref=e187]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.6.6/linux/cli/palette" [ref=e188]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.6.6/linux/cli/palette" [ref=e189] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.6.6/linux/cli/palette
+                      - cell "5884500e5a04a7c2beb573674eb78a8804794a0dd25e4da5b38829e7303a29fe" [ref=e190]:
+                        - code [ref=e191]: 5884500e5a04a7c2beb573674eb78a8804794a0dd25e4da5b38829e7303a29fe
+                    - row "4.6.23 4.6.5 https://software.spectrocloud.com/palette-cli/v4.6.5/linux/cli/palette b56af3f083130ca0665e8c0a4f3e2d903572209f714a50f19c0110452122e28d" [ref=e192]:
+                      - cell "4.6.23" [ref=e193]
+                      - cell "4.6.5" [ref=e194]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.6.5/linux/cli/palette" [ref=e195]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.6.5/linux/cli/palette" [ref=e196] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.6.5/linux/cli/palette
+                      - cell "b56af3f083130ca0665e8c0a4f3e2d903572209f714a50f19c0110452122e28d" [ref=e197]:
+                        - code [ref=e198]: b56af3f083130ca0665e8c0a4f3e2d903572209f714a50f19c0110452122e28d
+                    - row "4.6.12 4.6.1 https://software.spectrocloud.com/palette-cli/v4.6.1/linux/cli/palette db6da8dc1648b27ca8057fbbe3d95e7d371136f52395cef3dc3bd8ac62c287ae" [ref=e199]:
+                      - cell "4.6.12" [ref=e200]
+                      - cell "4.6.1" [ref=e201]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.6.1/linux/cli/palette" [ref=e202]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.6.1/linux/cli/palette" [ref=e203] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.6.1/linux/cli/palette
+                      - cell "db6da8dc1648b27ca8057fbbe3d95e7d371136f52395cef3dc3bd8ac62c287ae" [ref=e204]:
+                        - code [ref=e205]: db6da8dc1648b27ca8057fbbe3d95e7d371136f52395cef3dc3bd8ac62c287ae
+                    - row "4.6.6 4.6.0 https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette 07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7" [ref=e206]:
+                      - cell "4.6.6" [ref=e207]
+                      - cell "4.6.0" [ref=e208]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette" [ref=e209]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette" [ref=e210] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette
+                      - cell "07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7" [ref=e211]:
+                        - code [ref=e212]: 07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7
+                    - row "4.5.21 4.5.7 https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e" [ref=e213]:
+                      - cell "4.5.21" [ref=e214]
+                      - cell "4.5.7" [ref=e215]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette" [ref=e216]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette" [ref=e217] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette
+                      - cell "e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e" [ref=e218]:
+                        - code [ref=e219]: e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e
+                    - row "4.5.20 4.5.7 https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e" [ref=e220]:
+                      - cell "4.5.20" [ref=e221]
+                      - cell "4.5.7" [ref=e222]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette" [ref=e223]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette" [ref=e224] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette
+                      - cell "e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e" [ref=e225]:
+                        - code [ref=e226]: e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e
+                    - row "4.5.15 4.5.4 https://software.spectrocloud.com/palette-cli/v4.5.4/linux/cli/palette 74723cae5e87353e9c6b0191036229c0a9b645f10101e309586ecb18b6691bbd" [ref=e227]:
+                      - cell "4.5.15" [ref=e228]
+                      - cell "4.5.4" [ref=e229]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.4/linux/cli/palette" [ref=e230]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.4/linux/cli/palette" [ref=e231] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.4/linux/cli/palette
+                      - cell "74723cae5e87353e9c6b0191036229c0a9b645f10101e309586ecb18b6691bbd" [ref=e232]:
+                        - code [ref=e233]: 74723cae5e87353e9c6b0191036229c0a9b645f10101e309586ecb18b6691bbd
+                    - row "4.5.11 4.5.1 https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette 050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738" [ref=e234]:
+                      - cell "4.5.11" [ref=e235]
+                      - cell "4.5.1" [ref=e236]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette" [ref=e237]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette" [ref=e238] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette
+                      - cell "050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738" [ref=e239]:
+                        - code [ref=e240]: 050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738
+                    - row "4.5.10 4.5.1 https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette 050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738" [ref=e241]:
+                      - cell "4.5.10" [ref=e242]
+                      - cell "4.5.1" [ref=e243]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette" [ref=e244]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette" [ref=e245] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette
+                      - cell "050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738" [ref=e246]:
+                        - code [ref=e247]: 050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738
+                    - row "4.5.8 4.5.1 https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette 050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738" [ref=e248]:
+                      - cell "4.5.8" [ref=e249]
+                      - cell "4.5.1" [ref=e250]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette" [ref=e251]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette" [ref=e252] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette
+                      - cell "050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738" [ref=e253]:
+                        - code [ref=e254]: 050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738
+                    - row "4.5.5 4.5.0 https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette 1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0" [ref=e255]:
+                      - cell "4.5.5" [ref=e256]
+                      - cell "4.5.0" [ref=e257]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette" [ref=e258]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette" [ref=e259] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette
+                      - cell "1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0" [ref=e260]:
+                        - code [ref=e261]: 1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0
+                    - row "4.5.4 4.5.0 https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette 1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0" [ref=e262]:
+                      - cell "4.5.4" [ref=e263]
+                      - cell "4.5.0" [ref=e264]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette" [ref=e265]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette" [ref=e266] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette
+                      - cell "1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0" [ref=e267]:
+                        - code [ref=e268]: 1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0
+                    - row "4.5.3 4.5.0 https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette 1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0" [ref=e269]:
+                      - cell "4.5.3" [ref=e270]
+                      - cell "4.5.0" [ref=e271]
+                      - cell "https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette" [ref=e272]:
+                        - link "https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette" [ref=e273] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette
+                      - cell "1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0" [ref=e274]:
+                        - code [ref=e275]: 1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0
+                - heading "Palette Edge CLIDirect link to Palette Edge CLI" [level=2] [ref=e276]:
+                  - text: Palette Edge CLI
+                  - link "Direct link to Palette Edge CLI" [ref=e277] [cursor=pointer]:
+                    - /url: "#palette-edge-cli"
+                    - text: "#"
+                - paragraph [ref=e278]: The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
+                - table [ref=e279]:
+                  - rowgroup [ref=e280]:
+                    - row "Palette Release CLI Version Download URL Checksum (SHA256)" [ref=e281]:
+                      - cell "Palette Release" [ref=e282]
+                      - cell "CLI Version" [ref=e283]
+                      - cell "Download URL" [ref=e284]
+                      - cell "Checksum (SHA256)" [ref=e285]
+                  - rowgroup [ref=e286]:
+                    - row "4.8.33 4.8.10 https://software.spectrocloud.com/stylus/v4.8.10/cli/linux/palette-edge bc635479233dde1f5b966bb5d776a5f1fdeb9babe200666a8c8a1306546ce471" [ref=e287]:
+                      - cell "4.8.33" [ref=e288]
+                      - cell "4.8.10" [ref=e289]
+                      - cell "https://software.spectrocloud.com/stylus/v4.8.10/cli/linux/palette-edge" [ref=e290]:
+                        - link "https://software.spectrocloud.com/stylus/v4.8.10/cli/linux/palette-edge" [ref=e291] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.8.10/cli/linux/palette-edge
+                      - cell "bc635479233dde1f5b966bb5d776a5f1fdeb9babe200666a8c8a1306546ce471" [ref=e292]:
+                        - code [ref=e293]: bc635479233dde1f5b966bb5d776a5f1fdeb9babe200666a8c8a1306546ce471
+                    - row "4.8.21 4.8.8 https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge 717325354dbf313aed2011d18b92f5906572749fb81ce8fe060c54ff25e38734" [ref=e294]:
+                      - cell "4.8.21" [ref=e295]
+                      - cell "4.8.8" [ref=e296]
+                      - cell "https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge" [ref=e297]:
+                        - link "https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge" [ref=e298] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge
+                      - cell "717325354dbf313aed2011d18b92f5906572749fb81ce8fe060c54ff25e38734" [ref=e299]:
+                        - code [ref=e300]: 717325354dbf313aed2011d18b92f5906572749fb81ce8fe060c54ff25e38734
+                    - row "4.8.6 4.8.1 https://software.spectrocloud.com/stylus/v4.8.1/cli/linux/palette-edge 112ff4671fa6e585504ecf53d07add5cd76533b6a648822638ae2e86afe39463" [ref=e301]:
+                      - cell "4.8.6" [ref=e302]
+                      - cell "4.8.1" [ref=e303]
+                      - cell "https://software.spectrocloud.com/stylus/v4.8.1/cli/linux/palette-edge" [ref=e304]:
+                        - link "https://software.spectrocloud.com/stylus/v4.8.1/cli/linux/palette-edge" [ref=e305] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.8.1/cli/linux/palette-edge
+                      - cell "112ff4671fa6e585504ecf53d07add5cd76533b6a648822638ae2e86afe39463" [ref=e306]:
+                        - code [ref=e307]: 112ff4671fa6e585504ecf53d07add5cd76533b6a648822638ae2e86afe39463
+                    - row "4.7.27 4.7.16 https://software.spectrocloud.com/stylus/v4.7.16/cli/linux/palette-edge 49eda70a5e3d7b1d3b912288c130b03097929f0ab762a2b6dc45232016caa433" [ref=e308]:
+                      - cell "4.7.27" [ref=e309]
+                      - cell "4.7.16" [ref=e310]
+                      - cell "https://software.spectrocloud.com/stylus/v4.7.16/cli/linux/palette-edge" [ref=e311]:
+                        - link "https://software.spectrocloud.com/stylus/v4.7.16/cli/linux/palette-edge" [ref=e312] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.7.16/cli/linux/palette-edge
+                      - cell "49eda70a5e3d7b1d3b912288c130b03097929f0ab762a2b6dc45232016caa433" [ref=e313]:
+                        - code [ref=e314]: 49eda70a5e3d7b1d3b912288c130b03097929f0ab762a2b6dc45232016caa433
+                    - row "4.7.20 4.7.13 https://software.spectrocloud.com/stylus/v4.7.13/cli/linux/palette-edge 888cca0cbc38cd7e2073662711922a5297c50f9cf0f1ddd78c31c02a475c159a" [ref=e315]:
+                      - cell "4.7.20" [ref=e316]
+                      - cell "4.7.13" [ref=e317]
+                      - cell "https://software.spectrocloud.com/stylus/v4.7.13/cli/linux/palette-edge" [ref=e318]:
+                        - link "https://software.spectrocloud.com/stylus/v4.7.13/cli/linux/palette-edge" [ref=e319] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.7.13/cli/linux/palette-edge
+                      - cell "888cca0cbc38cd7e2073662711922a5297c50f9cf0f1ddd78c31c02a475c159a" [ref=e320]:
+                        - code [ref=e321]: 888cca0cbc38cd7e2073662711922a5297c50f9cf0f1ddd78c31c02a475c159a
+                    - row "4.7.13 4.7.9 https://software.spectrocloud.com/stylus/v4.7.9/cli/linux/palette-edge cbd12df60abe88a619d42589526af6df65367672f4b33300daff4c0c79126fe0" [ref=e322]:
+                      - cell "4.7.13" [ref=e323]
+                      - cell "4.7.9" [ref=e324]
+                      - cell "https://software.spectrocloud.com/stylus/v4.7.9/cli/linux/palette-edge" [ref=e325]:
+                        - link "https://software.spectrocloud.com/stylus/v4.7.9/cli/linux/palette-edge" [ref=e326] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.7.9/cli/linux/palette-edge
+                      - cell "cbd12df60abe88a619d42589526af6df65367672f4b33300daff4c0c79126fe0" [ref=e327]:
+                        - code [ref=e328]: cbd12df60abe88a619d42589526af6df65367672f4b33300daff4c0c79126fe0
+                    - row "4.7.3 4.7.2 https://software.spectrocloud.com/stylus/v4.7.2/cli/linux/palette-edge 8a68c6eacff423d48d48ce2d9420b98832dd65660ddc9115562a530d5c325ebc" [ref=e329]:
+                      - cell "4.7.3" [ref=e330]
+                      - cell "4.7.2" [ref=e331]
+                      - cell "https://software.spectrocloud.com/stylus/v4.7.2/cli/linux/palette-edge" [ref=e332]:
+                        - link "https://software.spectrocloud.com/stylus/v4.7.2/cli/linux/palette-edge" [ref=e333] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.7.2/cli/linux/palette-edge
+                      - cell "8a68c6eacff423d48d48ce2d9420b98832dd65660ddc9115562a530d5c325ebc" [ref=e334]:
+                        - code [ref=e335]: 8a68c6eacff423d48d48ce2d9420b98832dd65660ddc9115562a530d5c325ebc
+                    - row "4.6.40 4.6.24 https://software.spectrocloud.com/stylus/v4.6.24/cli/linux/palette-edge c90741bb2e959e8188337bd6ece73f67d6512c5f20e9c79a64b01aab9c0708de" [ref=e336]:
+                      - cell "4.6.40" [ref=e337]
+                      - cell "4.6.24" [ref=e338]
+                      - cell "https://software.spectrocloud.com/stylus/v4.6.24/cli/linux/palette-edge" [ref=e339]:
+                        - link "https://software.spectrocloud.com/stylus/v4.6.24/cli/linux/palette-edge" [ref=e340] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.6.24/cli/linux/palette-edge
+                      - cell "c90741bb2e959e8188337bd6ece73f67d6512c5f20e9c79a64b01aab9c0708de" [ref=e341]:
+                        - code [ref=e342]: c90741bb2e959e8188337bd6ece73f67d6512c5f20e9c79a64b01aab9c0708de
+                    - row "4.6.32 4.6.21 https://software.spectrocloud.com/stylus/v4.6.21/cli/linux/palette-edge 17e057172b8b2cd42cdc5aff0735dfdff6e864ec03b5404e18ae130bfd315b87" [ref=e343]:
+                      - cell "4.6.32" [ref=e344]
+                      - cell "4.6.21" [ref=e345]
+                      - cell "https://software.spectrocloud.com/stylus/v4.6.21/cli/linux/palette-edge" [ref=e346]:
+                        - link "https://software.spectrocloud.com/stylus/v4.6.21/cli/linux/palette-edge" [ref=e347] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.6.21/cli/linux/palette-edge
+                      - cell "17e057172b8b2cd42cdc5aff0735dfdff6e864ec03b5404e18ae130bfd315b87" [ref=e348]:
+                        - code [ref=e349]: 17e057172b8b2cd42cdc5aff0735dfdff6e864ec03b5404e18ae130bfd315b87
+                    - row "4.6.23 4.6.16 https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge 628c3668633943e9fd4b7859093948843d508494ec88b906f75aea9e80ec0f5f" [ref=e350]:
+                      - cell "4.6.23" [ref=e351]
+                      - cell "4.6.16" [ref=e352]
+                      - cell "https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge" [ref=e353]:
+                        - link "https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge" [ref=e354] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge
+                      - cell "628c3668633943e9fd4b7859093948843d508494ec88b906f75aea9e80ec0f5f" [ref=e355]:
+                        - code [ref=e356]: 628c3668633943e9fd4b7859093948843d508494ec88b906f75aea9e80ec0f5f
+                    - row "4.6.12 4.6.9 https://software.spectrocloud.com/stylus/v4.6.9/cli/linux/palette-edge e50a5533316e96c8b145d8e0c1e2b3e9958350d4aed61e8292cd31b4e7fb4196" [ref=e357]:
+                      - cell "4.6.12" [ref=e358]
+                      - cell "4.6.9" [ref=e359]
+                      - cell "https://software.spectrocloud.com/stylus/v4.6.9/cli/linux/palette-edge" [ref=e360]:
+                        - link "https://software.spectrocloud.com/stylus/v4.6.9/cli/linux/palette-edge" [ref=e361] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.6.9/cli/linux/palette-edge
+                      - cell "e50a5533316e96c8b145d8e0c1e2b3e9958350d4aed61e8292cd31b4e7fb4196" [ref=e362]:
+                        - code [ref=e363]: e50a5533316e96c8b145d8e0c1e2b3e9958350d4aed61e8292cd31b4e7fb4196
+                    - row "4.6.6 4.6.3 https://software.spectrocloud.com/stylus/v4.6.3/cli/linux/palette-edge 639d325659b369b8e71e00d36763b6088ac1932dbdbd105bdf3c63051cfd500b" [ref=e364]:
+                      - cell "4.6.6" [ref=e365]
+                      - cell "4.6.3" [ref=e366]
+                      - cell "https://software.spectrocloud.com/stylus/v4.6.3/cli/linux/palette-edge" [ref=e367]:
+                        - link "https://software.spectrocloud.com/stylus/v4.6.3/cli/linux/palette-edge" [ref=e368] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.6.3/cli/linux/palette-edge
+                      - cell "639d325659b369b8e71e00d36763b6088ac1932dbdbd105bdf3c63051cfd500b" [ref=e369]:
+                        - code [ref=e370]: 639d325659b369b8e71e00d36763b6088ac1932dbdbd105bdf3c63051cfd500b
+                    - row "4.5.21 4.5.15 https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge 5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb" [ref=e371]:
+                      - cell "4.5.21" [ref=e372]
+                      - cell "4.5.15" [ref=e373]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge" [ref=e374]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge" [ref=e375] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge
+                      - cell "5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb" [ref=e376]:
+                        - code [ref=e377]: 5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb
+                    - row "4.5.20 4.5.14 https://software.spectrocloud.com/stylus/v4.5.14/cli/linux/palette-edge 5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb" [ref=e378]:
+                      - cell "4.5.20" [ref=e379]
+                      - cell "4.5.14" [ref=e380]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.14/cli/linux/palette-edge" [ref=e381]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.14/cli/linux/palette-edge" [ref=e382] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.14/cli/linux/palette-edge
+                      - cell "5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb" [ref=e383]:
+                        - code [ref=e384]: 5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb
+                    - row "4.5.15 4.5.11 https://software.spectrocloud.com/stylus/v4.5.11/cli/linux/palette-edge 390b4693a91c938ef230ce329ec28f42c058f98fb77160685e9a885dd2083587" [ref=e385]:
+                      - cell "4.5.15" [ref=e386]
+                      - cell "4.5.11" [ref=e387]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.11/cli/linux/palette-edge" [ref=e388]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.11/cli/linux/palette-edge" [ref=e389] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.11/cli/linux/palette-edge
+                      - cell "390b4693a91c938ef230ce329ec28f42c058f98fb77160685e9a885dd2083587" [ref=e390]:
+                        - code [ref=e391]: 390b4693a91c938ef230ce329ec28f42c058f98fb77160685e9a885dd2083587
+                    - row "4.5.11 4.5.7 https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1" [ref=e392]:
+                      - cell "4.5.11" [ref=e393]
+                      - cell "4.5.7" [ref=e394]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge" [ref=e395]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge" [ref=e396] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge
+                      - cell "abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1" [ref=e397]:
+                        - code [ref=e398]: abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1
+                    - row "4.5.10 4.5.7 https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1" [ref=e399]:
+                      - cell "4.5.10" [ref=e400]
+                      - cell "4.5.7" [ref=e401]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge" [ref=e402]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge" [ref=e403] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge
+                      - cell "abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1" [ref=e404]:
+                        - code [ref=e405]: abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1
+                    - row "4.5.8 4.5.7 https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1" [ref=e406]:
+                      - cell "4.5.8" [ref=e407]
+                      - cell "4.5.7" [ref=e408]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge" [ref=e409]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge" [ref=e410] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge
+                      - cell "abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1" [ref=e411]:
+                        - code [ref=e412]: abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1
+                    - row "4.5.5 4.5.5 https://software.spectrocloud.com/stylus/v4.5.5/cli/linux/palette-edge f93382a7ab92e9621f47d857252c2673b33de79735cf729fcb4b2fb24719d537" [ref=e413]:
+                      - cell "4.5.5" [ref=e414]
+                      - cell "4.5.5" [ref=e415]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.5/cli/linux/palette-edge" [ref=e416]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.5/cli/linux/palette-edge" [ref=e417] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.5/cli/linux/palette-edge
+                      - cell "f93382a7ab92e9621f47d857252c2673b33de79735cf729fcb4b2fb24719d537" [ref=e418]:
+                        - code [ref=e419]: f93382a7ab92e9621f47d857252c2673b33de79735cf729fcb4b2fb24719d537
+                    - row "4.5.4 4.5.3 https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge 9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28" [ref=e420]:
+                      - cell "4.5.4" [ref=e421]
+                      - cell "4.5.3" [ref=e422]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge" [ref=e423]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge" [ref=e424] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge
+                      - cell "9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28" [ref=e425]:
+                        - code [ref=e426]: 9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28
+                    - row "4.5.3 4.5.3 https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge 9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28" [ref=e427]:
+                      - cell "4.5.3" [ref=e428]
+                      - cell "4.5.3" [ref=e429]
+                      - cell "https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge" [ref=e430]:
+                        - link "https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge" [ref=e431] [cursor=pointer]:
+                          - /url: https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge
+                      - cell "9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28" [ref=e432]:
+                        - code [ref=e433]: 9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28
+                - heading "Spectro Cloud CLI ToolDirect link to Spectro Cloud CLI Tool" [level=2] [ref=e434]:
+                  - text: Spectro Cloud CLI Tool
+                  - link "Direct link to Spectro Cloud CLI Tool" [ref=e435] [cursor=pointer]:
+                    - /url: "#spectro-cloud-cli-tool"
+                    - text: "#"
+                - paragraph [ref=e436]: The Spectro CLI tool is currently available for OSX and Linux. Download the CLI file for your operating system.
+                - generic [ref=e437]:
+                  - tablist [ref=e438]:
+                    - tab "OSX" [selected] [ref=e439] [cursor=pointer]
+                    - tab "Linux" [ref=e440] [cursor=pointer]
+                  - tabpanel [ref=e442]:
+                    - generic [ref=e444]:
+                      - code [ref=e446]:
+                        - generic [ref=e447]: wget https://spectro-cli.s3.amazonaws.com/v4.8.0/osx/spectro
+                      - button "Copy code to clipboard" [ref=e449] [cursor=pointer]:
+                        - generic [ref=e450]:
+                          - img [ref=e451]
+                          - img [ref=e453]
+              - generic [ref=e455]:
+                - generic [ref=e457]:
+                  - text: "Tags:"
+                  - list [ref=e458]:
+                    - listitem [ref=e459]:
+                      - link "downloads" [ref=e460] [cursor=pointer]:
+                        - /url: /tags/downloads/
+                    - listitem [ref=e461]:
+                      - link "palette-cli" [ref=e462] [cursor=pointer]:
+                        - /url: /tags/palette-cli/
+                - link "Edit this page" [ref=e465] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/downloads/cli-tools.md
+                  - img [ref=e466]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e470]:
+              - link "Previous « Artifact Studio" [ref=e471] [cursor=pointer]:
+                - /url: /downloads/artifact-studio/
+                - generic [ref=e472]: Previous
+                - generic [ref=e473]: « Artifact Studio
+              - link "Next Self-Hosted Palette »" [ref=e474] [cursor=pointer]:
+                - /url: /downloads/self-hosted-palette/
+                - generic [ref=e475]: Next
+                - generic [ref=e476]: Self-Hosted Palette »
+          - list [ref=e479]:
+            - listitem [ref=e480]:
+              - link "Palette CLI" [ref=e481] [cursor=pointer]:
+                - /url: "#palette-cli"
+            - listitem [ref=e482]:
+              - link "Palette Edge CLI" [ref=e483] [cursor=pointer]:
+                - /url: "#palette-edge-cli"
+            - listitem [ref=e484]:
+              - link "Spectro Cloud CLI Tool" [ref=e485] [cursor=pointer]:
+                - /url: "#spectro-cloud-cli-tool"
+  - button "Project Logo Ask AI" [ref=e486] [cursor=pointer]:
+    - generic [ref=e489]:
+      - img "Project Logo" [ref=e490]
+      - paragraph [ref=e491]: Ask AI
+```
