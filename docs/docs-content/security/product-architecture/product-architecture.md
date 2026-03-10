@@ -27,8 +27,15 @@ separating responsibilities and network restrictions.
   us-west-1, and us-west-2. Each customer occupies a tenant in our multi-tenant cloud environment. Our Operations team
   controls when to upgrade the management plane.
 
+- **EU Multi-tenant SaaS**: The management plane is hosted in AWS across two regions that we manage: eu-west-1 and eu-central-1. Each customer occupies a tenant in our multi-tenant cloud environment. Our Operations team
+  controls when to upgrade the management plane.
+
+
 - **Dedicated SaaS**: The management plane is hosted in a cloud or region that you specify in our Spectro Cloud cloud
   account with a dedicated instance that we manage. In this scenario, you decide when to upgrade the management plane.
+
+- **EU Dedicated SaaS**: The management plane is hosted in a cloud or region in the EU that you specify in our Spectro Cloud cloud
+  account with a dedicated instance that we manage. In this scenario, you decide when to upgrade the management plane.  
 
 - **Self-hosted**: The management plane is hosted in your environment. It can be on-prem VMware vSphere, OpenStack, bare
   metal, in a public cloud that manages your compute instances, or a managed Kubernetes cluster such as Amazon Elastic
