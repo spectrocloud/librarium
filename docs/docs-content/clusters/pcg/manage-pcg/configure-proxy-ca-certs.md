@@ -1,17 +1,18 @@
 ---
-sidebar_label: "Proxy CA Certificates for Workload Clusters"
+sidebar_label: "Configure Proxy CA Certificates for Workload Clusters"
 title: "Configure Proxy CA Certificates for Workload Clusters"
 description:
   "Learn how to configure proxy CA certificates for workload clusters deployed through a Private Cloud Gateway (PCG)."
 hide_table_of_contents: false
+toc_max_heading_level: 5
 sidebar_position: 15
 tags: ["pcg", "proxy"]
 ---
 
-When your proxy server uses a Certificate Authority (CA) certificate for TLS inspection, workload cluster nodes and pods
-need access to the CA certificate to establish trusted connections through the proxy. The
-[Reach system](../architecture.md#reach-system) handles injecting proxy environment variables into pods automatically,
-but the CA certificate must be configured separately.
+When your proxy server uses a Certificate Authority (CA) certificate for Transport Layer Security (TLS) inspection,
+workload cluster nodes and pods need access to the CA certificate to establish trusted connections through the proxy.
+The [Reach system](../architecture.md#reach-system) handles injecting proxy environment variables into pods
+automatically, but the CA certificate must be configured separately.
 
 Proxy CA certificates provided during PCG installation are propagated to the PCG cluster nodes but are not automatically
 propagated to workload cluster nodes. You must configure the CA certificate for workload clusters using one of the
@@ -109,7 +110,7 @@ certificate into pods.
    -rw-r--r-- 1 root root 1049 Mar  6 13:46 /usr/local/share/ca-certificates/spectro-ca.crt
    ```
 
-5. Verify the certificate entered at either **Tenant Settings > Certificates** matches the CA certificate on the node.
+5. Verify the certificate entered at **Tenant Settings > Certificates** matches the CA certificate on the node.
 
    ```shell
    cat /usr/local/share/ca-certificates/spectro-ca.crt
@@ -140,11 +141,11 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
 
 - An active PCG cluster with proxy configured. Refer to the appropriate installation guide for your environment:
 
-  - **Palette CLI** - [MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md),
-    [OpenStack](../deploy-pcg/openstack.md), or [Apache CloudStack](../deploy-pcg/cloudstack.md).
+  - **Palette CLI** - [MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md), or
+    [Apache CloudStack](../deploy-pcg/cloudstack.md).
   - **Existing Kubernetes cluster** - [Enable and Manage Proxy Configurations](./configure-proxy.md).
 
-- The proxy CA certificate in Privacy-Enhanced Mail (PEM) format. The certificate file must be named `ca.crt`.
+- The proxy CA certificate in PEM format. The certificate file must be named `ca.crt`.
 
 #### Enablement
 
@@ -201,8 +202,8 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
 
    When using `podMount`, the Reach system creates a host-path volume from the file at `targetPath` on the node and
    mounts it at `podMount.targetPath` inside pods. If the individual proxy CA certificate file is mounted at
-   `/etc/ssl/certs/ca-certificates.crt`, it replaces the container's default CA bundle. This means pods will trust your
-   proxy CA but will not trust standard public Certificate Authorities.
+   `/etc/ssl/certs/ca-certificates.crt`, it replaces the container's default CA bundle. This means pods will trust the
+   proxy CA but not standard public CAs.
 
    In most proxy environments this is acceptable because all outbound HTTPS traffic passes through the proxy, which
    handles upstream TLS verification on behalf of the pod. However, if your pods make direct TLS connections to services
@@ -217,7 +218,14 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
 
 5. Select **Confirm Updates**.
 
-#### Validate Node-Level Trust
+#### Validate
+
+Use the [Node-Level Trust](#node-level-trust) section to verify the proxy CA certificate exists on and is trusted by
+your workload cluster nodes. Additionally, if you configured the `kubeadmconfig.files.podMount` section in your cluster
+profile OS layer, use the [Pod-Level Trust](#pod-level-trust) section to verify the proxy CA was mounted to the pods
+within your workload cluster nodes.
+
+##### Node-Level Trust
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -267,7 +275,14 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
    /usr/local/share/ca-certificates/ca.crt: OK
    ```
 
-#### Validate Pod-Level Trust
+##### Pod-Level Trust
+
+:::info
+
+This section is not applicable if you did not configure the `kubeadmconfig.files.podMount` section in your cluster
+profile OS layer.
+
+:::
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -299,38 +314,85 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
          merge_strategy: replace
    ```
 
-5. Create a temporary namespace with the `privileged` Pod Security Standard. The Reach system injects `hostPath` volumes
-   into matching pods, which requires the `privileged` security level.
+5. Locate pods with the `spectrocloud.com/connection: proxy` label. The Reach system only injects volumes into pods that
+   match the ClusterPodPreset's label selector.
 
    ```shell
-   kubectl create namespace test-proxy-cert
-   kubectl label namespace test-proxy-cert pod-security.kubernetes.io/enforce=privileged
+   kubectl get pods --all-namespaces --selector=spectrocloud.com/connection=proxy
    ```
 
-6. Deploy a test pod with the `spectrocloud.com/connection: proxy` label. The Reach system only injects volumes into
-   pods that match the ClusterPodPreset's label selector.
+   ```shell hideClipboard title="Example output"
+   NAMESPACE                          NAME                                         READY   STATUS    RESTARTS      AGE
+   capi-webhook-system                capv-controller-manager-cd9474c54-qxc25      1/1     Running   0             25m
+   cluster-69b029bd77beee88f6961f4f   capv-controller-manager-554b46cf65-x76zx     1/1     Running   0             25m
+   cluster-69b029bd77beee88f6961f4f   cluster-management-agent-cbb78fb69-g72k2     1/1     Running   0             24m
+   cluster-69b029bd77beee88f6961f4f   crony-56c6bc6bdd-gm9pf                       1/1     Running   0             24m
+   cluster-69b029bd77beee88f6961f4f   palette-controller-manager-f98487785-84klk   3/3     Running   0             25m
+   kube-system                        vsphere-cloud-controller-manager-wclrf       1/1     Running   1 (21m ago)   21m
+   kube-system                        vsphere-cloud-controller-manager-xfdv5       1/1     Running   1 (17m ago)   18m
+   kube-system                        vsphere-cloud-controller-manager-ztxbh       1/1     Running   0             24m
+   kube-system                        vsphere-csi-controller-866f6f7756-bnc94      7/7     Running   1 (20m ago)   24m
+   kube-system                        vsphere-csi-controller-866f6f7756-g59p5      7/7     Running   0             24m
+   kube-system                        vsphere-csi-controller-866f6f7756-x9nwj      7/7     Running   0             24m
+   kube-system                        vsphere-csi-node-4wthp                       3/3     Running   1 (17m ago)   18m
+   kube-system                        vsphere-csi-node-5tkfl                       3/3     Running   2 (20m ago)   21m
+   kube-system                        vsphere-csi-node-gl9nv                       3/3     Running   3 (14m ago)   15m
+   kube-system                        vsphere-csi-node-rt7rg                       3/3     Running   0             24m
+   palette-system                     palette-webhook-bf496fdfb-2gqsp              1/1     Running   0             21m
+   palette-system                     palette-webhook-bf496fdfb-mp54l              1/1     Running   0             18m
+   palette-system                     palette-webhook-bf496fdfb-npt88              1/1     Running   0             24m
+   ```
+
+6. Verify the certificate file is mounted inside all containers within a `spectrocloud.com/connection: proxy` labeled
+   pod.
 
    ```shell
-   kubectl run test-proxy-cert --namespace test-proxy-cert --image=busybox --restart=Never \
-     --labels="spectrocloud.com/connection=proxy" \
-     --command -- sleep 3600
+   kubectl describe pod <pod-name> --namespace <namespace> | grep --context=5 "ca-crt"
    ```
 
-7. Verify the certificate file is mounted inside the container. The certificate should match the content pasted in to
+   ```shell hideClipboard title="Example command"
+   kubectl describe pod palette-webhook-bf496fdfb-npt88 --namespace palette-system | grep --context=5 "ca-crt"
+   ```
+
+   ```shell hideClipboard title="Example output" {6,20}
+               BUILD_ID:        <set to the key 'BUILD_ID' of config map 'palette-version-info-for-webhook'>  Optional: false
+            CONTAINER_REPO:  gcr.io
+            no_proxy:        .cluster.local,.kvdb,.svc,10.96.0.0/12,127.0.0.1,192.168.0.0/16,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,vcenter.spectrocloud.dev
+            NO_PROXY:        .cluster.local,.kvdb,.svc,10.96.0.0/12,127.0.0.1,192.168.0.0/16,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,vcenter.spectrocloud.dev
+         Mounts:
+            /etc/ssl/certs/ca-certificates.crt from ca-crt-11d45c1c (rw)
+            /packs from mold-drive-storage (rw)
+            /tmp/k8s-webhook-server/serving-certs from cert (ro)
+            /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-45swv (ro)
+      Conditions:
+      Type                        Status
+      --
+         Type:                    Projected (a volume that contains injected data from multiple sources)
+         TokenExpirationSeconds:  3607
+         ConfigMapName:           kube-root-ca.crt
+         Optional:                false
+         DownwardAPI:             true
+      ca-crt-11d45c1c:
+         Type:          HostPath (bare host directory volume)
+         Path:          /usr/local/share/ca-certificates/ca.crt
+         HostPathType:  File
+      QoS Class:         Burstable
+      Node-Selectors:    kubernetes.io/os=linux
+   ```
+
+7. Optionally, if the container contains the `cat` utility, verify that the certificate matches the content pasted into
    the cluster profile OS layer.
 
    ```shell
-   kubectl exec test-proxy-cert --namespace test-proxy-cert -- cat /etc/ssl/certs/ca-certificates.crt
+   kubectl exec <pod-name> --namespace <namespace> -- cat /etc/ssl/certs/ca-certificates.crt
+   ```
+
+   ```shell hideClipboard title="Example command"
+   kubectl exec palette-webhook-bf496fdfb-2gqsp --namespace palette-system -- cat /etc/ssl/certs/ca-certificates.crt
    ```
 
    ```shell hideClipboard title="Example output"
    -----BEGIN CERTIFICATE-----
    **************************
    -----END CERTIFICATE-----
-   ```
-
-8. Clean up the test namespace and pod.
-
-   ```shell
-   kubectl delete namespace test-proxy-cert
    ```

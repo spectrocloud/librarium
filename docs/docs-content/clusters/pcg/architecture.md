@@ -18,6 +18,13 @@ communication between the Palette management plane and the private cloud environ
 removal of Kubernetes clusters in private cloud environments through the Palette user interface, API, CLI, or Terraform
 provider.
 
+:::info
+
+The PCG is not used as a network proxy for deployed workload clusters and does not route traffic on their behalf.
+Workload clusters connect to the proxy server directly.
+
+:::
+
 ![An architecture diagram of PCG](/clusters_pcg_architecture_overview_diagram.webp)
 
 ## Network Communication
@@ -86,9 +93,9 @@ Kubernetes cluster. To configure a proxy on a PCG installed on an existing Kuber
 
 The Reach system is a Kubernetes
 [mutating admission webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)
-that automatically injects configuration into pods at creation time. It is deployed in the `reach-system` namespace on
-every Palette CLI-provisioned PCG and can be manually installed on PCGs deployed to an existing Kubernetes cluster. When
-deployed, the Reach system creates the following resources:
+that automatically injects proxy configurations into pods at creation time. It is deployed in the `reach-system`
+namespace on every Palette CLI-provisioned PCG and can be manually installed on PCGs deployed to an existing Kubernetes
+cluster. When deployed, the Reach system creates the following resources:
 
 - **Two Custom Resource Definitions (CRDs)** - _ClusterPodPreset_ (cluster-scoped) and _PodPreset_ (namespace-scoped).
   These resources define the environment variables, volumes, and volume mounts to inject into matching pods.
@@ -106,7 +113,7 @@ configuring proxy CA certificates for workload clusters, refer to
 [Configure Proxy CA Certificates for Workload Clusters](./manage-pcg/configure-proxy-ca-certs.md).
 
 For PCGs deployed to an existing Kubernetes cluster, you must manually install the Reach system using a Helm chart.
-Refer to [Enable and Manage Proxy Configurations](./manage-pcg/configure-proxy.md) for instructions.
+Refer to [Enable and Manage Proxy Configurations](./manage-pcg/configure-proxy.md) for more information.
 
 ## Cluster Lifecycle Support
 
