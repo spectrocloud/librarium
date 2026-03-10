@@ -58,6 +58,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-3559 -->
+
+- K3s is now supported for Edge devices with [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled.
+
 #### Improvements
 
 #### Bug Fixes

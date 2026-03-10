@@ -105,7 +105,7 @@ key that is in the Signature Database (DB). This is important both during instal
 
    ```bash
    export OS_DISTRIBUTION=ubuntu
-   export OS_VERSION=23.10
+   export OS_VERSION=24.04
    ```
 
 9. Issue the command below to create the **.arg** file containing the custom tag, image registry hostname, and Ubuntu OS
@@ -132,10 +132,10 @@ key that is in the Signature Database (DB). This is important both during instal
    | **Argument**       | **Description**                                                                                       | **Allowed Values**                   |
    | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
    | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
-   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`                               |
+   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`, `k3s`                        |
    | `K8S_VERSION`      | Kubernetes version.                                                                                   | Semantic version numbers `x.y.z`     |
-   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.   |
-   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`, `24.04`                     |
+   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`                             |
+   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `24.04`                              |
 
 10. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
     the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
