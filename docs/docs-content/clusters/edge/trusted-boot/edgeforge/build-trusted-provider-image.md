@@ -127,11 +127,11 @@ key that is in the Signature Database (DB). This is important both during instal
    EOF
    ```
 
-   The following table lists a few key arguments for you to pay close attention to.
+   The following table lists the allowed parameter-value combinations for Trusted Boot.
 
    | **Argument**       | **Description**                                                                                       | **Allowed Values**                   |
    | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
-   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
+   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true` |
    | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`, `k3s`                        |
    | `K8S_VERSION`      | Kubernetes version.                                                                                   | Semantic version numbers `x.y.z`     |
    | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`                             |
