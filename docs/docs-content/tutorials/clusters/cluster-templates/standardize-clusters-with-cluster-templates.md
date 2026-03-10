@@ -327,6 +327,24 @@ The policy appears in the **Policies** list and is ready to attach to a cluster 
 
 ### Create a Cluster Template
 
+A [cluster template](../../../cluster-templates/cluster-templates.md) links a cluster profile and maintenance policy.
+The linked profile version becomes immutable once attached, so changes to the profile require creating a new version.
+
+Create a cluster template and attach the profile and policy you created in the previous steps.
+
+1. From the left main menu, select **Cluster Configurations**.
+2. Select the **Templates** tab and select **Create Template**.
+3. Select **AWS IaaS** and select **Start AWS IaaS Configuration**.
+4. In the **Name** field, enter `cluster-template-aws`. Select **Next Step**.
+5. Select the plus icon next to **Maintenance Policy**. In the **Select a policy** drawer, locate and select
+   `cluster-template-policy`. Select **Confirm**.
+6. Select the plus icon next to **Linked Profiles**. In the **Select a profile** drawer, select
+   `cluster-template-profile-aws`. Select **Confirm**.
+7. From the version drop-down menu, confirm version `1.0.0` is selected.
+8. Select **Next Step**, review the configuration, and select **Finalize**.
+
+The template appears in the **Templates** list and is ready to deploy clusters from.
+
 ### Deploy a Dev Cluster from the Template
 
 ### Deploy a Prod Cluster from the Template
