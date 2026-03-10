@@ -16,13 +16,7 @@ You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster
 
 - Credentials to access the OCI registry. Public OCI registries are not supported.
 
-- If you are using Azure Container Registry (ACR), Azure recommends using a
-  [service principal](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#when-to-use-a-service-principal)
-  for automated pull access. The service principal must have at least the **AcrPull** role or the **Container Registry
-  Repository Reader** role, depending on the registry's role assignment permissions mode. Refer to the
-  [Azure Container Registry Entra permissions and role assignments overview](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview#recommended-built-in-roles-by-scenario)
-  for further details. Use the service principal's **App ID** as the username and its **client secret** as the password
-  when configuring the registry in Palette.
+<PartialsComponent category="registries-and-packs" name="acr-prerequisite-oci" />
 
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
@@ -67,12 +61,7 @@ Take the following steps to add an OCI Zarf registry to Palette.
 8. Choose whether to **Enable Authentication** for your registry. If enabled, enter your registry credentials in the
    **Username** and **Password** fields.
 
-   :::tip
-
-   If you are using ACR, use the service principal **App ID** as the **Username** and its **client secret** as the
-   **Password**.
-
-   :::
+   <PartialsComponent category="registries-and-packs" name="acr-tip-oci" />
 
 9. If your OCI registry server is using a self-signed certificate, or if the server certificate is not signed by a
    trusted CA, select **Insecure Skip TLS Verify** to skip verifying the x509 certificate, and select **Upload file** to
