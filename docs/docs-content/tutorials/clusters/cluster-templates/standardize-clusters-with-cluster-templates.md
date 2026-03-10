@@ -332,7 +332,7 @@ The linked profile version becomes immutable once attached, so changes to the pr
 
 Create a cluster template and attach the profile and policy you created in the previous steps.
 
-1. From the left **Main Menu**, select **Cluster Configurations**.
+1. From the left main menu, select **Cluster Configurations**.
 2. Select the **Templates** tab and select **Create Template**.
 3. Select **AWS IaaS** and select **Start AWS IaaS Configuration**.
 4. In the **Name** field, enter `cluster-template-aws`. Select **Next Step**.
