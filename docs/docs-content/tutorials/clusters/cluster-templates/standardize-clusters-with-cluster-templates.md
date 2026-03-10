@@ -400,10 +400,9 @@ file before running any commands.
 | **terraform.tfvars** | Supplies values for the variables declared in `inputs.tf`. Update `palette-project` if your project is not named `Default`, and set `deploy-aws` or `deploy-azure` to `true` to match your cloud provider. |
 | **data.tf**          | Resolves the Palette project, registries, and pack configuration referenced by `cluster_profiles.tf`.                                                                                                      |
 
-`inputs.tf` declares four variables. `palette-project` sets the Palette project where the cluster template and all
-clusters it manages will be created. `app_port` is set at apply time and shared across every cluster the template
-manages. `deploy-aws` and `deploy-azure` determine the cloud provider for the cluster template and all clusters it
-manages.
+`inputs.tf` declares all variables used across the configuration. `palette-project` sets the Palette project where all
+resources will be created. `app_port` is set at apply time and shared across every cluster the template manages.
+`deploy-aws` and `deploy-azure` determine the cloud provider for the cluster template and all clusters it manages.
 
 ```hcl title="inputs.tf" hideClipboard
 #########
@@ -431,6 +430,43 @@ variable "app_port" {
 variable "deploy-aws" {
   type        = bool
   description = "A flag for enabling a deployment on AWS."
+}
+
+variable "aws-cloud-account-name" {
+  type        = string
+  description = "The name of your AWS account as assigned in Palette."
+}
+
+variable "aws-region" {
+  type        = string
+  description = "AWS region."
+}
+
+variable "aws-key-pair-name" {
+  type        = string
+  description = "The name of the AWS key pair to use for SSH access to the cluster."
+}
+
+variable "aws_control_plane_nodes" {
+  type = object({
+    count              = string
+    control_plane      = bool
+    instance_type      = string
+    disk_size_gb       = string
+    availability_zones = list(string)
+  })
+  description = "AWS control plane nodes configuration."
+}
+
+variable "aws_worker_nodes" {
+  type = object({
+    count              = string
+    control_plane      = bool
+    instance_type      = string
+    disk_size_gb       = string
+    availability_zones = list(string)
+  })
+  description = "AWS worker nodes configuration."
 }
 
 #########
@@ -539,23 +575,6 @@ declared in the `profile_variables` block with `required = true`. Each cluster t
 supply a value for `app_replicas`, which is what allows dev and prod clusters to run different replica counts while
 sharing the same profile.
 
-Run `terraform test` to verify the profile configuration.
-
-```bash
-terraform test
-```
-
-```bash hideClipboard title="Expected output"
-tests/aws.tftest.hcl... pass
-  run "verify_aws_profile"... pass
-  run "verify_aws_template"... pass
-tests/azure.tftest.hcl... pass
-  run "verify_azure_profile"... pass
-  run "verify_azure_template"... pass
-
-Success! 4 passed, 0 failed.
-```
-
 ### Create a Maintenance Policy
 
 `maintenance_policy.tf` defines a
@@ -603,8 +622,118 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 }
 ```
 
-With all three resources defined, run `terraform plan` to preview the changes. This also confirms that Terraform can
-authenticate to Palette and that your project exists.
+### Deploy a Dev Cluster with a Variable Value
+
+`clusters.tf` defines a dev cluster that uses the AWS cluster template. A nested `cluster_profile` block sets
+`app_replicas` to `"1"` for this cluster without changing the shared template or profile.
+
+```hcl title="clusters.tf" hideClipboard
+resource "spectrocloud_cluster_aws" "dev_cluster" {
+  count = var.deploy-aws ? 1 : 0
+
+  name             = "tf-dev-cluster"
+  cluster_timezone = "UTC"
+  cloud_account_id = data.spectrocloud_cloudaccount_aws.account[0].id
+
+  cloud_config {
+    region       = var.aws-region
+    ssh_key_name = var.aws-key-pair-name
+  }
+
+  cluster_template {
+    id = spectrocloud_cluster_config_template.aws_template[0].id
+
+    cluster_profile {
+      id = spectrocloud_cluster_profile.aws_profile[0].id
+      variables = {
+        "app_replicas" = "1"
+      }
+    }
+  }
+
+  machine_pool {
+    control_plane           = true
+    control_plane_as_worker = true
+    name                    = "control-plane-pool"
+    count                   = var.aws_control_plane_nodes.count
+    instance_type           = var.aws_control_plane_nodes.instance_type
+    disk_size_gb            = var.aws_control_plane_nodes.disk_size_gb
+    azs                     = var.aws_control_plane_nodes.availability_zones
+  }
+
+  machine_pool {
+    name          = "worker-pool"
+    count         = var.aws_worker_nodes.count
+    instance_type = var.aws_worker_nodes.instance_type
+    disk_size_gb  = var.aws_worker_nodes.disk_size_gb
+    azs           = var.aws_worker_nodes.availability_zones
+  }
+
+  timeouts {
+    create = "60m"
+    delete = "60m"
+  }
+}
+```
+
+Run `terraform test` to verify the configuration. The tests use a mock provider, so no credentials are required.
+
+```bash
+terraform test
+```
+
+```bash hideClipboard title="Expected output"
+  run "verify_aws"... pass
+tests/aws-replace.tftest.hcl... pass
+  run "verify_aws"... pass
+tests/aws.tftest.hcl... pass
+  run "verify_azure"... pass
+tests/azure-replace.tftest.hcl... pass
+  run "verify_azure"... pass
+tests/azure.tftest.hcl... pass
+
+Success! 4 passed, 0 failed.
+```
+
+Open `terraform.tfvars`. Set `deploy-aws` to `true` and replace each `REPLACE ME` placeholder with the correct value for
+your environment.
+
+:::warning
+
+Ensure that `aws-cloud-account-name` matches the name of the AWS cloud account registered in Palette. The SSH key pair
+specified in `aws-key-pair-name` must exist in the same region as `aws-region`.
+
+:::
+
+```hcl {4,6,7,8,14,22} title="terraform.tfvars"
+###########################
+# AWS Deployment Settings
+###########################
+deploy-aws = true # Set to true to deploy to AWS.
+
+aws-cloud-account-name = "REPLACE ME"
+aws-region             = "REPLACE ME"
+aws-key-pair-name      = "REPLACE ME"
+
+aws_control_plane_nodes = {
+  count              = "1"
+  control_plane      = true
+  instance_type      = "m4.2xlarge"
+  disk_size_gb       = "60"
+  availability_zones = ["REPLACE ME"]
+}
+
+aws_worker_nodes = {
+  count              = "1"
+  control_plane      = false
+  instance_type      = "m4.2xlarge"
+  disk_size_gb       = "60"
+  availability_zones = ["REPLACE ME"]
+}
+```
+
+Issue the `plan` command to preview the changes. This also confirms that Terraform can authenticate to Palette and that
+your project exists.
 
 ```bash
 terraform plan
@@ -615,6 +744,9 @@ data.spectrocloud_project.current: Reading...
 data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
 ...
 
+  # spectrocloud_cluster_aws.dev_cluster[0] will be created
+  + resource "spectrocloud_cluster_aws" "dev_cluster" { ... }
+
   # spectrocloud_cluster_config_policy.maintenance will be created
   + resource "spectrocloud_cluster_config_policy" "maintenance" { ... }
 
@@ -624,13 +756,13 @@ data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
   # spectrocloud_cluster_profile.aws_profile[0] will be created
   + resource "spectrocloud_cluster_profile" "aws_profile" { ... }
 
-Plan: 3 to add, 0 to change, 0 to destroy.
+Plan: 4 to add, 0 to change, 0 to destroy.
 ```
 
 If `Read complete` appears in the output, Terraform successfully authenticated and found your Palette project. A plan of
-`3 to add` confirms all three resources are ready to be created.
+`4 to add` confirms all resources are ready to be created.
 
-Apply the configuration to create all three resources in Palette.
+Issue the `apply` command to create all resources in Palette.
 
 ```bash
 terraform apply -auto-approve
@@ -639,36 +771,33 @@ terraform apply -auto-approve
 ```bash hideClipboard title="Expected output"
 spectrocloud_cluster_config_policy.maintenance: Creating...
 spectrocloud_cluster_profile.aws_profile[0]: Creating...
-spectrocloud_cluster_config_template.aws_template[0]: Creating...
 spectrocloud_cluster_config_policy.maintenance: Creation complete after 0s [id=<policy-id>]
 spectrocloud_cluster_profile.aws_profile[0]: Creation complete after 2s [id=<profile-id>]
+spectrocloud_cluster_config_template.aws_template[0]: Creating...
 spectrocloud_cluster_config_template.aws_template[0]: Creation complete after 1s [id=<template-id>]
+spectrocloud_cluster_aws.dev_cluster[0]: Creating...
+spectrocloud_cluster_aws.dev_cluster[0]: Still creating... [10s elapsed]
+...
+spectrocloud_cluster_aws.dev_cluster[0]: Creation complete after Xm Ys [id=<cluster-id>]
 
-Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 ```
 
-Confirm the cluster profile was created correctly in Palette.
+The cluster deployment may take 15 to 30 minutes. Confirm each resource was created correctly in Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-2. From the left **Main Menu**, select **Profiles**.
-3. Locate and select the cluster profile named `tf-cluster-template-profile`.
-4. Review its pack layers to confirm they match the configuration.
-5. Select the **Variables** tab and confirm that a variable named `app_replicas` is listed.
+2. From the left **Main Menu**, select **Profiles**. Locate and select `tf-cluster-template-profile-aws`. Review its
+   pack layers to confirm they match the configuration. Select the **Variables** tab and confirm that a variable named
+   `app_replicas` is listed.
+3. From the left **Main Menu**, select **Cluster Configurations**. On the **Policies** tab, locate and select
+   `tf-maintenance-policy`. Confirm the schedule shows a weekly window starting every Sunday at midnight UTC with a four
+   hour duration.
+4. Select the **Templates** tab and locate `tf-cluster-template-aws`. Confirm it references the
+   `tf-cluster-template-profile-aws` cluster profile and the `tf-maintenance-policy` maintenance policy.
+5. From the left **Main Menu**, select **Clusters**. Select `tf-dev-cluster` and click the **Profile** tab to confirm it
+   is using `tf-cluster-template-profile-aws` with `app_replicas` set to `1`.
 
-Confirm the maintenance policy was created correctly in Palette.
-
-1. From the left **Main Menu**, select **Cluster Configurations**.
-2. On the **Policies** tab, locate the policy named `tf-maintenance-policy`.
-3. Select it and confirm the schedule shows a weekly window starting every Sunday at midnight UTC with a four hour
-   duration.
-
-Confirm the cluster template was created correctly in Palette.
-
-1. Select the **Templates** tab and locate the template named `tf-cluster-template-aws`.
-2. Select it and confirm it references the `tf-cluster-template-profile` cluster profile and the `tf-maintenance-policy`
-   maintenance policy.
-
-### Deploy Dev and Prod Clusters with Different Variable Values
+### Deploy a Prod Cluster with a Different Variable Value
 
 ### Validate the Deployments
 
