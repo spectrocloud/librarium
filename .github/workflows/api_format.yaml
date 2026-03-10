@@ -77,13 +77,17 @@ jobs:
         run: make api
 
 
-      - name: Commit Changes
-        uses: step-security/git-auto-commit-action@v5
-        with:
-          commit_message: "ci: auto-formatting API changes"
-          file_pattern: '*.json **.json **/*.json'
-          disable_globbing: true
-          branch: ${{ github.head_ref }}
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "ci: auto-formatting API changes"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
 
       - name: Slack Notification
         if: ${{ failure() }}
