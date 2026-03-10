@@ -292,7 +292,7 @@ profile OS layer.
 3. Download your workload cluster's kubeconfig and configure kubectl to access the cluster. Refer to our
    [Access Cluster with CLI](../../cluster-management/palette-webctl.md) guide for more information.
 
-4. Verify the ClusterPodPreset contains volume and volumeMount entries for the CA certificate.
+4. Verify the ClusterPodPreset contains `volume` and `volumeMount` entries for the CA certificate.
 
    ```shell
    kubectl get clusterpodpreset proxy --output yaml | grep --after-context=10 volumeMounts
