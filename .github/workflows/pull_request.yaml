@@ -88,16 +88,13 @@ jobs:
         run: make format
 
       - name: Commit Changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "ci: auto-formatting prettier issues"
-            git push origin HEAD:${{ github.head_ref }}
-          fi
+        uses: ./.github/actions/commit-changes
+        with:
+          method: git
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
+          commit_message: "ci: auto-formatting prettier issues"
+          file_regex: ".*"
 
   build:
     name: Build
