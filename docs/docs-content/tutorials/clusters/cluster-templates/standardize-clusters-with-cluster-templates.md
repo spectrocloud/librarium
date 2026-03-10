@@ -339,8 +339,7 @@ Create a cluster template and attach the profile and policy you created in the p
 5. Select the plus icon next to **Maintenance Policy**. In the **Select a policy** drawer, locate and select
    `cluster-template-policy`. Select **Confirm**.
 6. Select the plus icon next to **Linked Profiles**. In the **Select a profile** drawer, select
-   `cluster-template-profile-aws`.
-   Select **Confirm**.
+   `cluster-template-profile-aws`. Select **Confirm**.
 7. From the version drop-down menu, confirm version `1.0.0` is selected.
 8. Select **Next Step**, review the configuration, and select **Finalize**.
 
