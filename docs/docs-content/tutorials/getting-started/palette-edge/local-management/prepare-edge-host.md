@@ -152,7 +152,7 @@ Log in to Local UI (`https://<ip-of-edge:5080`) with the username and password y
 
 ![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
-The Edge host will show as **Not Configured** as there is no Edge cluster deployed. The following image displays a newly
+The Edge host appears as **Not Configured** because no Edge cluster has been deployed.  The following image displays a newly
 installed locally managed Edge host.
 
 ![Screenshot showing Edge UI overview of the Edge device](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-not-config_4-8.webp)
@@ -163,8 +163,7 @@ Click **Settings** on the left main menu, and verify that the **Cluster manageme
 
 :::danger
 
-Do not change the **Cluster management mode** to **Centrally managed**. You cannot revert it back to local without doing
-a complete re-install of the Edge device.
+Do not change the **Cluster management mode** to **Centrally managed**. You cannot revert it to **Locally managed** without completely reinstalling the Edge device.
 
 :::
 
