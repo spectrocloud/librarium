@@ -49,7 +49,8 @@ To configure an Edge host on your Outpost server, complete the following steps.
 6. In the **Key pair (login)** section, select a value for **Key pair name**.
 
 7. In the **Network settings** section, click **Edit**, then in the **VPC - _required_** field, select the VPC
-   associated with your Outposts subnet. Then select the **Subnet** you created when following the [Prepare Environment](./prepare-environment.md#create-a-subnet) guide.
+   associated with your Outposts subnet. Then select the **Subnet** you created when following the
+   [Prepare Environment](./prepare-environment.md#create-a-subnet) guide.
 
    ![AWS Outposts Network settings](/configure-edge-on-aws-outpost_network-settings.webp)
 
