@@ -10,9 +10,10 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-With locally managed Edge, you must export the [cluster profile](../../../../../docs-content/profiles/profiles.md) from Palette
-as a [cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and upload
-it to the Edge device. A cluster definition contains one or more cluster profiles, including their profile variables.
+With locally managed Edge, you must export the [cluster profile](../../../../../docs-content/profiles/profiles.md) from
+Palette as a [cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md)
+and upload it to the Edge device. A cluster definition contains one or more cluster profiles, including their profile
+variables.
 
 A [content bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) is an archive
 that includes all required container images for one or more profiles. It contains the Helm charts, packs, and manifest
