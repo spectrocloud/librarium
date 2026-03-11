@@ -86,12 +86,12 @@ For the tutorial, you will use the following Palette CLI command to generate the
 --name <bundle-name>
 ```
 
-<!-- vale on -->
+
 
 Alternatively, you can use the interactive script below to prompt you when doing the Palette CLI command for the values.
 The API key will appear blank for security reasons.
 
-<!-- vale off -->
+
 
 ```shell
 #!/usr/bin/env bash
@@ -150,14 +150,14 @@ echo "  - or: palette content upload (from a reachable system)"
 echo
 ```
 
-<!-- vale on -->
+
 
 </TabItem>
 
 <TabItem label="Palette Edge CLI" value="Palette Edge CLI">
 With the cluster profile created, you will need to export it as a compressed `.tgz` file. You will need to download either the [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli) to your Linux machine. For this tutorial, you will use Palette CLI version 4.8.8.
 
-<!-- vale off -->
+
 
 ```shell
 wget https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge
@@ -198,7 +198,7 @@ For the tutorial, you will use the following Palette CLI command to generate the
 Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
 appear blank for security reasons.
 
-<!-- vale off -->
+
 
 ```shell
 #!/usr/bin/env bash
@@ -236,7 +236,7 @@ echo
 echo "Done ✅"
 ```
 
-<!-- vale on -->
+
 
 </TabItem>
 
