@@ -170,5 +170,4 @@ Do not change the **Cluster management mode** to **Centrally managed**. You cann
 ## Next Steps
 
 In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
-recommend proceeding to the [Build Content Bundle](./build-cluster-definition.md) tutorial to learn how to use the registered
-Edge host to deploy an Edge cluster in Palette.
+recommend proceeding to the [Build Cluster Definition](./build-cluster-definition.md) tutorial to learn how to create and download a cluster definition to use on an Edge cluster in Palette.

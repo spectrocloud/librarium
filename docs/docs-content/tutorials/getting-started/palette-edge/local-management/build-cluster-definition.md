@@ -10,7 +10,9 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-With locally managed Edge, the [cluster profile](../../../../profiles/profiles.md), including any profile variables, needs to be exported from Palette as a [Cluster Definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md), and upload the bundle to the Edge device. 
+With locally managed Edge, you must export the [cluster profile](../../../../profiles/profiles.md) from Palette as a [Cluster Definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and upload it to the Edge device. A Cluster Definition contains one or more cluster profiles, including their profile variables.
+
+A [Content Bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) is an archive that includes all required container images for one or more profiles. It contains the Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container images, the Content Bundle can also include application artifacts that you want to deploy to the Edge cluster.
 
 This tutorial teaches you how to create the content bundle you created in the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial using either the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) or [Palette Edge CLI](../../../../downloads/cli-tools.md#palette-edge-cli).  
 
@@ -48,14 +50,21 @@ chmod +x palette-edge
 ```
 
 Use the Palette CLI tool to authenticate against Palette, and download a specific cluster profile from a
-specific project. The command will ask for the following values:
+specific project. The output will be found in `<current-directory>/output/content-bundle` folder. The following table identifies the specific commands and subcommands that will be used, and identifies the information required. 
 
-- architecture version
-- The project ID where the profile exists.
-- The profile ID. Although you can provider multiple profile IDs, for this tutorial only one is needed.
-- 
+| **Option**     | **Definition** |
+|----------------|-----------------------------------------------|
+| `content` | Creates and manages content bundles, which are archives containing all the images and artifacts required for deploying an Edge cluster. |
+| `build` | Build a content bundle. |
+| `--arch` | The architecture of the bundle to be built. The available options are `amd64` and `arm64`.
+| `--api-key`    | Palette API key. Omit for interactive login. |
+| `--project-id` | The ID of the Palette project. |
+| `--cluster-profile-ids` | The ID of the cluster profile in Palette.|
+| `--cluster-definition-name` | The filename of the cluster definition .tgz file. |
+| `--cluster-definition-profile-ids` | A comma-separated list of cluster profile IDs to be included in the cluster definition. For this tutorial, only one cluster profile ID is needed. |
+| `--name` | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI. |
 
-Use the following Palette Edge ClI to generate the cluster profile compressed `.tgz` file.
+For the tutorial, you will use the following Palette CLI command to generate the cluster profile compressed `.tgz` file.
 
 ```shell
 ./palette content build --arch <bundle-architecture> \
@@ -68,7 +77,7 @@ Use the following Palette Edge ClI to generate the cluster profile compressed `.
 
 <!-- vale on -->
 
-Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command for the values. The API key will
+Alternatively, you can use the interactive script below to prompt you when doing the Palette CLI command for the values. The API key will
 appear blank for security reasons.
 
 <!-- vale off -->
@@ -142,6 +151,36 @@ wget https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge
 chmod +x palette-edge
 ```
 
+Use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a
+specific project. The output will be found in `<current-directory>`. The following table identifies the specific commands and subcommands that will be used, and identifies the information required. 
+
+| **Option**     | **Definition** |
+|----------------|-----------------------------------------------|
+| `build` | Build a content bundle. |
+| `--api-key`    | Palette API key. Omit for interactive login. |
+| `--project-id` | The ID of the Palette project. |
+| `--cluster-profile-ids` | The ID of the cluster profile in Palette.|
+| `--cluster-definition-name` | The filename of the cluster definition .tgz file. |
+| `--palette-endpoint` | The url for palette-endpoint. The format should be `https://<palette-address>/api` |
+| `--cluster-definition-profile-ids` |The cluster profile ID to be included in the cluster definition. |
+| `--outfile` | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI. |
+| `--include-palette-content` | This will ensure that preloaded Palette components are included. |
+
+For the tutorial, you will use the following Palette CLI command to generate the cluster profile compressed `.tgz` file.
+
+```shell
+./palette-edge build \
+  --api-key <apikey> \
+  --project-id <projectuid> \
+  --cluster-profile-ids <profileuid> \
+  --cluster-definition-profile-ids <profileuid> \
+  --palette-endpoint <apiendpoint> \
+  --cluster-definition-name <cluster-definition> \
+  --outfile <content-bundle> \
+  --include-palette-content
+
+```
+
 Alternatively, you can use the script below to prompt you when doing the Palette Edge CLI command. The API key will
 appear blank for security reasons.
 
@@ -189,7 +228,7 @@ echo "Done ✅"
 
 The `.tgz` file will need to be uploaded to the locally managed Edge device after it is built using the Edge UI. If you
 are using a browser on a system other than your Linux system to access the Edge UI, you will need to download the `.tgz`
-file.
+file. As an example, you can use `scp` to connect to a remote connection, and download the `tgz` file to `<current-directory>`.
 
 ```shell
 
@@ -199,6 +238,5 @@ scp <username>@<ip-of-linux-system>:/path/to/<filename>.tgz .
 
 ## Next Steps
 
-In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
-recommend proceeding to the [Deploy Cluster](./deploy-edge-cluster.md) tutorial to learn how to build the cluster
-content bundle to use on the locally managed Edge device.
+In this tutorial, you learned how create and download a cluster definition to be used on your Edge device. We
+recommend proceeding to the [Deploy Cluster](./deploy-edge-cluster.md) tutorial to learn how to deploy the cluster on the locally managed Edge device.
