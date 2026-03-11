@@ -13,17 +13,17 @@ hosting the following type of artifacts; Helm Charts, Zarf packages, and Packs.
 
 Registries that comply with the OCI specification and support basic authentication are supported. OCI-compliant
 registries with basic authentication are labeled as **Basic**. Palette also supports some third-party registry
-providers, such as AWS ECR.
+providers, such as AWS ECR and Azure Container Registry (ACR).
 
 ## Supported OCI Registries
 
 The following type of OCI registries are supported:
 
-| **Provider** | **Description**                  | **Basic** | **AWS ECR** |
-| ------------ | -------------------------------- | --------- | ----------- |
-| Helm         | OCI based Helm Chart registries. | ✅        | ✅          |
-| Zarf         | OCI based Zarf registries.       | ✅        | ❌          |
-| Packs        | OCI based Packs registries.      | ✅        | ✅          |
+| **Provider** | **Description**                  | **Basic (includes ACR)** | **AWS ECR** |
+| ------------ | -------------------------------- | ------------------------ | ----------- |
+| Helm         | OCI based Helm Chart registries. | ✅                       | ✅          |
+| Zarf         | OCI based Zarf registries.       | ✅                       | ❌          |
+| Packs        | OCI based Packs registries.      | ✅                       | ✅          |
 
 ## Limitations
 
