@@ -27,7 +27,7 @@ tags: ["release-notes"]
   [AWS IaaS clusters](../clusters/public-cloud/aws/create-cluster.md) when deploying or modifying worker machine pools
   using the [Palette API](/api/introduction/). Users of
   [Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs),
-  [Crossplane](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette), and other API consumers
+  [Crossplane](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette), and other API tools
   must specify `azs` for all new and existing AWS worker machine pool configurations to ensure successful provisioning.
 
 #### Features
