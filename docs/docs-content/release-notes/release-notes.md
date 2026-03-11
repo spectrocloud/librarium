@@ -46,7 +46,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5880 -->
 
 - OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
-  [data center environment](../clusters/data-center/data-center.md)
+  [data center environment](../clusters/data-center/data-center.md).
 
 ### Edge
 
@@ -57,6 +57,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 :::
 
 #### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-3559 -->
+
+- K3s is now supported for Edge devices with [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled.
 
 #### Improvements
 
