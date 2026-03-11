@@ -163,11 +163,13 @@ Click **Settings** on the left main menu, and verify that the **Cluster manageme
 
 :::danger
 
-Do not change the **Cluster management mode** to **Centrally managed**. You cannot revert it back to local without doing a complete re-install of the Edge device.
+Do not change the **Cluster management mode** to **Centrally managed**. You cannot revert it back to local without doing
+a complete re-install of the Edge device.
 
 :::
 
 ## Next Steps
 
 In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
-recommend proceeding to the [Build Cluster Definition](./build-cluster-definition.md) tutorial to learn how to create and download a cluster definition to use on an Edge cluster in Palette.
+recommend proceeding to the [Build Cluster Definition](./build-cluster-definition.md) tutorial to learn how to create
+and download a cluster definition to use on an Edge cluster in Palette.
