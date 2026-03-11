@@ -52,17 +52,17 @@ chmod +x palette-edge
 Use the Palette CLI tool to authenticate against Palette, and download a specific cluster profile from a
 specific project. The output will be found in `<current-directory>/output/content-bundle` folder. The following table identifies the specific commands and subcommands that will be used, and identifies the information required. 
 
-| **Option**     | **Definition** |
-|----------------|-----------------------------------------------|
-| `content` | Creates and manages content bundles, which are archives containing all the images and artifacts required for deploying an Edge cluster. |
-| `build` | Build a content bundle. |
-| `--arch` | The architecture of the bundle to be built. The available options are `amd64` and `arm64`.
-| `--api-key`    | Palette API key. Omit for interactive login. |
-| `--project-id` | The ID of the Palette project. |
-| `--cluster-profile-ids` | The ID of the cluster profile in Palette.|
-| `--cluster-definition-name` | The filename of the cluster definition .tgz file. |
+| **Option**                         | **Definition** |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `content`                          | Creates and manages content bundles, which are archives containing all the images and artifacts required for deploying an Edge cluster. |
+| `build`                            | Build a content bundle. |
+| `--arch`                           | The architecture of the bundle to be built. The available options are `amd64` and `arm64`.
+| `--api-key`                        | Palette API key. Omit for interactive login. |
+| `--project-id`                     | The ID of the Palette project. |
+| `--cluster-profile-ids`            | The ID of the cluster profile in Palette.|
+| `--cluster-definition-name`        | The filename of the cluster definition .tgz file. |
 | `--cluster-definition-profile-ids` | A comma-separated list of cluster profile IDs to be included in the cluster definition. For this tutorial, only one cluster profile ID is needed. |
-| `--name` | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI. |
+| `--name`                           | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI. |
 
 For the tutorial, you will use the following Palette CLI command to generate the cluster profile compressed `.tgz` file.
 
@@ -154,17 +154,17 @@ chmod +x palette-edge
 Use the Palette Edge CLI tool to authenticate against Palette, and download a specific cluster profile from a
 specific project. The output will be found in `<current-directory>`. The following table identifies the specific commands and subcommands that will be used, and identifies the information required. 
 
-| **Option**     | **Definition** |
-|----------------|-----------------------------------------------|
-| `build` | Build a content bundle. |
-| `--api-key`    | Palette API key. Omit for interactive login. |
-| `--project-id` | The ID of the Palette project. |
-| `--cluster-profile-ids` | The ID of the cluster profile in Palette.|
-| `--cluster-definition-name` | The filename of the cluster definition .tgz file. |
-| `--palette-endpoint` | The url for palette-endpoint. The format should be `https://<palette-address>/api` |
+| **Option**                         | **Definition** |
+|------------------------------------|-----------------------------------------------|
+| `build`                            | Build a content bundle. |
+| `--api-key`                        | Palette API key. Omit for interactive login. |
+| `--project-id`                     | The ID of the Palette project. |
+| `--cluster-profile-ids`            | The ID of the cluster profile in Palette.|
+| `--cluster-definition-name`        | The filename of the cluster definition .tgz file. |
+| `--palette-endpoint`               | The url for palette-endpoint. The format should be `https://<palette-address>/api` |
 | `--cluster-definition-profile-ids` |The cluster profile ID to be included in the cluster definition. |
-| `--outfile` | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI. |
-| `--include-palette-content` | This will ensure that preloaded Palette components are included. |
+| `--outfile`                        | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI. |
+| `--include-palette-content`        | This will ensure that preloaded Palette components are included. |
 
 For the tutorial, you will use the following Palette CLI command to generate the cluster profile compressed `.tgz` file.
 
