@@ -55,7 +55,7 @@ To configure an Edge host on your Outpost server, complete the following steps.
 
 8. Expand **Advanced network configuration**, then select **Add network interface**.
 
-9. Ensure that the **Device index** is set to `1`, as you enabled the local network interface (LNI) for device ID 1 when
+9. Ensure that the **Device index** is set to `1`, as you enabled the Local Network Interface (LNI) for device ID 1 when
    [creating the subnet](./prepare-environment.md#create-a-subnet). Enter a value in the **Description** field.
 
 10. Expand the **Advanced details** section.
