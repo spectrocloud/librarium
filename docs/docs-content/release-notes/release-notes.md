@@ -46,7 +46,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5880 -->
 
 - OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
-  [data center environment](../clusters/data-center/data-center.md)
+  [data center environment](../clusters/data-center/data-center.md).
 
 ### Edge
 
