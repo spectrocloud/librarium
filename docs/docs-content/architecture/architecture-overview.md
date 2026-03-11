@@ -21,7 +21,7 @@ Palette is available in three flexible deployment models:
   cloud account with a dedicated instance managed by Spectro Cloud. The customer can decide when to upgrade the
   management plane.
 
-- **EU Dedicated SaaS**: The management plane is hosted in a cloud/region in the EU specified by the customer in Spectro
+- **EU Dedicated SaaS**: The management plane is hosted in an EU cloud/region specified by the customer in Spectro
   Cloud’s cloud account with a dedicated instance managed by Spectro Cloud. The customer can decide when to upgrade the
   management plane.
 
