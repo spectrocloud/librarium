@@ -61,7 +61,7 @@ chmod +x palette-edge
 ```
 
 Use the Palette CLI to authenticate with Palette and download a specific cluster profile from a designated project. The
-output is saved to the <current-directory>/output/content-bundle directory. The Palette CLI command uses the command
+output is saved to the `<current-directory>/output/content-bundle` directory. The Palette CLI command uses the command
 `content build` with the following subcommands.
 
 | **Option** | **Definition**                                                                                                                          |
