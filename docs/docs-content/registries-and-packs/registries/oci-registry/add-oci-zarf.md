@@ -16,6 +16,8 @@ You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster
 
 - Credentials to access the OCI registry. Public OCI registries are not supported.
 
+<PartialsComponent category="registries-and-packs" name="acr-prerequisite-oci" />
+
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
 
@@ -58,6 +60,8 @@ Take the following steps to add an OCI Zarf registry to Palette.
 
 8. Choose whether to **Enable Authentication** for your registry. If enabled, enter your registry credentials in the
    **Username** and **Password** fields.
+
+   <PartialsComponent category="registries-and-packs" name="acr-tip-oci" />
 
 9. If your OCI registry server is using a self-signed certificate, or if the server certificate is not signed by a
    trusted CA, select **Insecure Skip TLS Verify** to skip verifying the x509 certificate, and select **Upload file** to
