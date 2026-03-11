@@ -32,4 +32,4 @@ These are some of the architectural highlights when using Palette with your AWS 
 
 The following diagram presents an overview of an AWS Outposts environment.
 
-![AWS Outposts network architecture](/clusters_public-cloud_aws_aws-outpost_architecture.webp)
+![AWS Outposts architecture](/aws-outposts-architecture-diagram.webp)
