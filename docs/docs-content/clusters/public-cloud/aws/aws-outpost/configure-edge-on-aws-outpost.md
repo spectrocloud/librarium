@@ -7,7 +7,9 @@ tags: ["public cloud", "aws", "aws outposts"]
 sidebar_position: 30
 ---
 
-Palette supports deploying an Edge host on an Amazon Elastic Compute Cloud (EC2) instance provisioned on [Amazon Web Services (AWS) Outposts](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html). This document guides you through launching an EC2 instance on Outposts and registering it with Palette as an Edge host.
+Palette supports deploying an Edge host on an Amazon Elastic Compute Cloud (EC2) instance provisioned on
+[Amazon Web Services (AWS) Outposts](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html).
+This document guides you through launching an EC2 instance on Outposts and registering it with Palette as an Edge host.
 
 ## Prerequisites
 
@@ -17,50 +19,55 @@ Palette supports deploying an Edge host on an Amazon Elastic Compute Cloud (EC2)
 
 - A Virtual Private Cloud (VPC) configured for use with AWS Outposts.
 
-- An Outposts subnet associated with the VPC, created according to the [Prepare Environment](./prepare-environment.md) guide.
+- An Outposts subnet associated with the VPC, created according to the [Prepare Environment](./prepare-environment.md)
+  guide.
 
 - An AWS [EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html).
 
 - An active Palette account.
 
-- Palette registration token for pairing the Edge host with Palette. You need tenant admin access to Palette to
-  generate a new registration token. For detailed instructions, refer to the
+- Palette registration token for pairing the Edge host with Palette. You need tenant admin access to Palette to generate
+  a new registration token. For detailed instructions, refer to the
   [Create a Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
 
 ## Create the Edge Host
 
 To configure an Edge host on your Outpost server, complete the following steps.
 
-1.  From the [AWS Outposts console](https://console.aws.amazon.com/outposts), select your AWS Outpost server.
+1. Log in to the [AWS Console](https://console.aws.amazon.com). Select the **AWS Outposts** service.
 
-2.  Click the **Launch instance** button.
+2. Select your AWS Outposts server.
 
-3.  In the **Application and OS Images (Amazon Machine Image)** section, select **Ubuntu**.
+3. Click the **Launch instance** button.
 
-4.  Verify that the **Instance type** is set to **c6id.metal**.
+4. In the **Application and OS Images (Amazon Machine Image)** section, select **Ubuntu**.
 
-    ![Instance OS and Type](/configure-edge-on-aws-outpost_instance-os-and-type.webp)
+5. Verify that the **Instance type** is set to **c6id.metal**.
 
-5.  In the **Key pair (login)** section, select a value for **Key pair name**.
+   ![Instance OS and Type](/configure-edge-on-aws-outpost_instance-os-and-type.webp)
 
-6.  In the **Network settings** section, click **Edit**, then in the **VPC - _required_** field, select the VPC associated with your Outposts subnet. The **Subnet** field is populated automatically.
+6. In the **Key pair (login)** section, select a value for **Key pair name**.
 
-    ![AWS Outposts Network settings](/configure-edge-on-aws-outpost_network-settings.webp)
+7. In the **Network settings** section, click **Edit**, then in the **VPC - _required_** field, select the VPC
+   associated with your Outposts subnet. The **Subnet** field is populated automatically.
 
-7.  Expand **Advanced network configuration**, then select **Add network interface**.
+   ![AWS Outposts Network settings](/configure-edge-on-aws-outpost_network-settings.webp)
 
-8.  Ensure that the **Device index** is set to `1`, as you enabled the local network interface (LNI) for device ID 1 when [creating the subnet](./prepare-environment.md#create-a-subnet). Enter a value in the **Description** field.
+8. Expand **Advanced network configuration**, then select **Add network interface**.
 
-9.  Expand the **Advanced details** section.
+9. Ensure that the **Device index** is set to `1`, as you enabled the local network interface (LNI) for device ID 1 when
+   [creating the subnet](./prepare-environment.md#create-a-subnet). Enter a value in the **Description** field.
 
-10. Populate the **User data - _optional_** field. You can upload a file containing the user data or enter the text directly in the UI.
-    Below is an example of a `user-data` file. It applies a custom Netplan configuration to the underlying OS.
+10. Expand the **Advanced details** section.
+
+11. Populate the **User data - _optional_** field. You can upload a file containing the user data or enter the text
+    directly in the UI. Below is an example of a `user-data` file. It applies a custom Netplan configuration to the
+    underlying OS.
 
     ```yaml
     #cloud-config
 
     write_files:
-
       # Netplan configuration file for static IP and routing.
       - path: /etc/netplan/99-custom-network.yaml
         permissions: "0600"
@@ -124,7 +131,8 @@ To configure an Edge host on your Outpost server, complete the following steps.
 
       # Install required OS packages for Palette agent.
       - apt-get update >> /var/log/cloud-init-userdata.log 2>&1
-      - apt-get install --yes bash jq zstd rsync systemd-timesyncd iptables rsyslog conntrack --no-install-recommends >> /var/log/cloud-init-userdata.log 2>&1
+      - apt-get install --yes bash jq zstd rsync systemd-timesyncd iptables rsyslog conntrack --no-install-recommends >>
+        /var/log/cloud-init-userdata.log 2>&1
 
       # Install AWS Systems Manager (SSM) agent for remote troubleshooting.
       - snap install amazon-ssm-agent --classic >> /var/log/cloud-init-userdata.log 2>&1
@@ -136,14 +144,17 @@ To configure an Edge host on your Outpost server, complete the following steps.
 
       # Download Palette agent installer.
       - mkdir -p /opt/palette >> /var/log/cloud-init-userdata.log 2>&1
-      - curl --location --output /opt/palette/palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh >> /var/log/cloud-init-userdata.log 2>&1
+      - curl --location --output /opt/palette/palette-agent-install.sh
+        https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh >>
+        /var/log/cloud-init-userdata.log 2>&1
       - chmod +x /opt/palette/palette-agent-install.sh >> /var/log/cloud-init-userdata.log 2>&1
 
       # Ensure USERDATA variable persists.
       - echo 'USERDATA=/opt/palette/user-data' >> /etc/environment >> /var/log/cloud-init-userdata.log 2>&1
 
       # Run Palette agent installer.
-      - cd /opt/palette && export USERDATA=./user-data && sudo --preserve-env ./palette-agent-install.sh >> /var/log/cloud-init-userdata.log 2>&1
+      - cd /opt/palette && export USERDATA=./user-data && sudo --preserve-env ./palette-agent-install.sh >>
+        /var/log/cloud-init-userdata.log 2>&1
 
       # Give installer time to finish before reboot.
       - sleep 30
@@ -154,16 +165,18 @@ To configure an Edge host on your Outpost server, complete the following steps.
 
     Replace the following placeholders in the YAML file:
 
-    - `<remote-network-cidr>` — The Classless Inter-Domain Routing (CIDR) block of the remote or internal network that the instance must route traffic to.
+    - `<remote-network-cidr>` — The Classless Inter-Domain Routing (CIDR) block of the remote or internal network that
+      the instance must route traffic to.
     - `<upstream-gateway-ip>` — The IP address of the upstream gateway that routes traffic to the remote network.
-    - `<interface-ip-cidr>` — The static IPv4 (IP version 4) address and subnet mask assigned to the interface, expressed in CIDR notation.
+    - `<interface-ip-cidr>` — The static IPv4 (IP version 4) address and subnet mask assigned to the interface,
+      expressed in CIDR notation.
     - `<default-gateway-ip>` — The IP address of the default gateway used for outbound traffic.
     - `<edge-token>` - The Palette registration token.
     - `<palette-endpoint>` - The Palette endpoint, for example, `api.spectrocloud.com`
-    - `<project-name>` - The Palette project name. This parameter is required only if you have not set a default project for the registration token.
+    - `<project-name>` - The Palette project name. This parameter is required only if you have not set a default project
+      for the registration token.
     - `<username>` - The local username for the instance OS.
     - `<password>` - The username's password.
-
 
 ## Validate
 

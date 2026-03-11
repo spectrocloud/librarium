@@ -7,54 +7,58 @@ tags: ["public cloud", "aws", "aws outposts"]
 sidebar_position: 20
 ---
 
-Your AWS Outposts server requires you to configure your capacity and a subnet before you can convert it to an Edge
-instance.
-
-:::info
-
-You only need to configure your AWS Outposts once for each Outpost.
-
-:::
+Your AWS Outposts server requires you to configure your capacity and a subnet before you can use it with Palette.
 
 ## Prerequisites
 
-- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
-  This is required before you can configure your Edge host. AWS manages the delivery and initial configuration of the
-  AWS outposts server at your site.
-- An active Palette account.
-- Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
-- An AWS [EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html).
+- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).AWS
+  manages the delivery and initial configuration of the AWS outposts server at your site.
 
-## Configure the Outpost's capacity
+- An active Palette account.
+
+- Access to the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+
+- A Virtual Private Cloud (VPC) configured for use with AWS Outposts.
+
+## Configure the Capacity
 
 Perform the following steps to set your AWS Outposts server capacity.
 
-1.  Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
-2.  Select your Outposts server.
-3.  [Create a capacity task](https://docs.aws.amazon.com/outposts/latest/userguide/modify-instance-capacity.html). Set
-    the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**.
+1. Log in to the [AWS Console](https://console.aws.amazon.com). Select the **AWS Outposts** service.
 
-    ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
+2. Select your Outposts server.
 
-4.  **Remove** any previously created instances.
+3. Select **Capacity tasks** from the left main menu. Click **Create capacity task**.
 
-    :::info
+4. Select the **Resource ID** corresponding to your Outpost server.
 
-        - Palette only supports AWS Outposts servers with one instance.
-        - After you click **Create**, it may take several hours for your server to configure your chosen capacity.
+5. Select the **Asset ID** corresponding to the **C6id** instance family. Click **Next**.
 
-    :::
+6. Set the **Instance size** to **c6id.metal** and the **Instance quantity** to **1**. Click **Next**.
 
-## Create a subnet
+   ![AWS Outposts Capacity configuration](/aws_outposts-capacity-config.webp "Capacity configuration example")
 
-1. Log in to the [AWS Outposts console](https://console.aws.amazon.com/outposts).
+7. Review your changes and create the capacity task.
+
+The capacity creation may take a few hours.
+
+## Create a Subnet
+
+1. Log in to the [AWS Console](https://console.aws.amazon.com). Select the **AWS Outposts** service.
+
 2. Select your AWS Outposts server.
-3. [Create a subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet)
-   for your Outpost.
 
-4. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), enable the new
-   subnet for your local network. You must set the secondary instance to a value of **1**. This ensures that Palette
-   Edge can communicate with your server.
+3. From the **Actions** menu, select **Create a subnet**.
+
+4. Select the **VPC ID** corresponding to your Outposts instance.
+
+5. Fill in a CIDR block corresponding to your environment in the **IPv4 subnet CIDR block** field.
+
+6. Select **Create subnet**.
+
+7. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), execute the
+   following command to enable the subnet as a Local Network Interface (LNI) for anything with device index 1, allowing
+   Palette Edge to communicate with your server.
 
    ```bash
 
@@ -72,4 +76,4 @@ Perform the following steps to set your AWS Outposts server capacity.
 
 ## Next steps
 
-Refer to [Deploy Edge on AWS Outposts](./configure-edge-on-aws-outpost.md) to configure your Edge host.
+- [Deploy Edge on AWS Outposts](./configure-edge-on-aws-outpost.md)
