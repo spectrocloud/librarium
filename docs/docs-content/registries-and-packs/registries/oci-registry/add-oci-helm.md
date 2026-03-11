@@ -16,6 +16,8 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 - Credentials to access the OCI registry. If you are using an Amazon Elastic Container Registry (ECR), you must have the
   AWS credentials to an IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
 
+<PartialsComponent category="registries-and-packs" name="acr-prerequisite-oci" />
+
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
 
@@ -111,6 +113,8 @@ registry you are adding.
     as multiple projects in a Harbor registry.
 
 11. Fill out the **Username** and **Password** fields with the credentials to access the registry.
+
+    <PartialsComponent category="registries-and-packs" name="acr-tip-oci" />
 
 12. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
     trusted CA, check the **Insecure Skip TLS Verify** box to skip verifying the x509 certificate, and click **Upload
