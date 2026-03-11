@@ -10,9 +10,9 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-With locally managed Edge, you must export the [cluster profile](../../../../profiles/cluster-profiles.md) from Palette as a
-[cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and upload it
-to the Edge device. A cluster definition contains one or more cluster profiles, including their profile variables.
+With locally managed Edge, you must export the [cluster profile](../../../../profiles/cluster-profiles.md) from Palette
+as a [cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and upload
+it to the Edge device. A cluster definition contains one or more cluster profiles, including their profile variables.
 
 A [content bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) is an archive
 that includes all required container images for one or more profiles. It contains the Helm charts, packs, and manifest
@@ -32,7 +32,8 @@ This tutorial teaches you how to create the content bundle you created in the
   [Prepare Edge Host](./prepare-edge-host.md) tutorials.
 - A [Palette account](https://www.spectrocloud.com/get-started).
 - A valid Palette [API Key](../../../../user-management/authentication/api-key/create-api-key.md).
-- The [ID of the project](../../../../tenant-settings/projects/projects.md#project-id) where you created your cluster profile.
+- The [ID of the project](../../../../tenant-settings/projects/projects.md#project-id) where you created your cluster
+  profile.
 - The
   [Cluster Profile ID](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md#enablement-1).
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can issue the
@@ -49,7 +50,8 @@ This tutorial teaches you how to create the content bundle you created in the
 <TabItem label="Palette CLI" value="Palette CLI">
 
 Export the created cluster profile as a compressed TGZ file. Download
-[Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses Palette CLI version 4.8.7.
+[Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses Palette CLI
+version 4.8.7.
 
 <!-- vale off -->
 
@@ -58,8 +60,9 @@ wget https://software.spectrocloud.com/palette-cli/v4.8.7/cli/linux/palette
 chmod +x palette-edge
 ```
 
-Use the Palette CLI to authenticate with Palette and download a specific cluster profile from a designated project. The output is saved to the <current-directory>/output/content-bundle directory. The following table lists
-the specific commands and subcommands that will be used, and identifies the information required.
+Use the Palette CLI to authenticate with Palette and download a specific cluster profile from a designated project. The
+output is saved to the <current-directory>/output/content-bundle directory. The following table lists the specific
+commands and subcommands that will be used, and identifies the information required.
 
 | **Option**                         | **Definition**                                                                                                                                                                                                                                                                                                        |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -84,8 +87,8 @@ For the tutorial, you will use the following Palette CLI command to generate the
 --name <bundle-name>
 ```
 
-Alternatively, use the interactive script below to be prompted for the required values when executing the Palette CLI command.
-The API key will appear blank for security reasons.
+Alternatively, use the interactive script below to be prompted for the required values when executing the Palette CLI
+command. The API key will appear blank for security reasons.
 
 ```shell
 #!/usr/bin/env bash
@@ -188,8 +191,8 @@ For the tutorial, you will use the following Palette CLI command to generate the
   --include-palette-content
 ```
 
-Alternatively, use the interactive script below to be prompted for the required values when executing the Palette Edge CLI command. The API key will
-appear blank for security reasons.
+Alternatively, use the interactive script below to be prompted for the required values when executing the Palette Edge
+CLI command. The API key will appear blank for security reasons.
 
 ```shell
 #!/usr/bin/env bash
@@ -231,8 +234,9 @@ echo "Done ✅"
 
 </Tabs>
 
-After it is built, upload the TGZ file to the locally managed Edge device using the Local UI. If you are accessing the Local UI from a system other than the Linux system where the file was generated, download the TGZ file first.
-For example, you can use `scp` to copy the file from the remote Linux system to your current directory.
+After it is built, upload the TGZ file to the locally managed Edge device using the Local UI. If you are accessing the
+Local UI from a system other than the Linux system where the file was generated, download the TGZ file first. For
+example, you can use `scp` to copy the file from the remote Linux system to your current directory.
 
 ```shell
 
@@ -242,6 +246,6 @@ scp <username>@<ip-of-linux-system>:/path/to/<filename>.tgz .
 
 ## Next Steps
 
-In this tutorial, you learned how to create and download a cluster definition to be used on your Edge device. We recommend
-proceeding to the [Deploy Cluster](./deploy-edge-cluster.md) tutorial to learn how to deploy the cluster on a locally
-managed Edge device.
+In this tutorial, you learned how to create and download a cluster definition to be used on your Edge device. We
+recommend proceeding to the [Deploy Cluster](./deploy-edge-cluster.md) tutorial to learn how to deploy the cluster on a
+locally managed Edge device.
