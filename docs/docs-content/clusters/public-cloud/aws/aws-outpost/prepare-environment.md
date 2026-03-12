@@ -11,8 +11,8 @@ Your AWS Outposts server requires you to configure your capacity and a subnet be
 
 ## Prerequisites
 
-- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html). AWS
-  manages the delivery and initial configuration of the AWS outposts server at your site.
+- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).
+  AWS manages the delivery and initial configuration of the AWS outposts server at your site.
 
 - An active Palette account.
 
