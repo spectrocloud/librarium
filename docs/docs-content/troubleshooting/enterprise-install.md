@@ -38,6 +38,8 @@ guide.
 
 5. Execute the following script to gather data and check for split brain.
 
+<!-- vale off -->
+
    ```shell
 
    #!/usr/bin/env bash
@@ -516,6 +518,8 @@ guide.
 
    ⚠  Verify the healthy primary holds all committed data before running.
    ```
+
+<!-- vale on -->
 
 6. Promote a healthy node to primary. Refer to
    [Force a Self-Managed Replica Set Member to Become Primary](https://www.mongodb.com/docs/manual/tutorial/force-member-to-be-primary/)
