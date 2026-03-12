@@ -10,10 +10,10 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-With locally managed Edge, you must export the [cluster profile](../../../../../docs-content/profiles/cluster-profiles.md) from
-Palette as a [cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md)
-and upload it to the Edge device. A cluster definition contains one or more cluster profiles, including their profile
-variables.
+With locally managed Edge, you must export the
+[cluster profile](../../../../../docs-content/profiles/cluster-profiles.md) from Palette as a
+[cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and upload it
+to the Edge device. A cluster definition contains one or more cluster profiles, including their profile variables.
 
 A [content bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) is an archive
 that includes all required container images for one or more profiles. It contains the Helm charts, packs, and manifest
@@ -45,9 +45,8 @@ This tutorial teaches you how to create the content bundle you created in the
 
 ### Export and Download Cluster Profile
 
-Download
-[Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses Palette CLI
-version 4.8.7.
+Download [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses Palette
+CLI version 4.8.7.
 
 <!-- vale off -->
 
@@ -56,10 +55,12 @@ wget https://software.spectrocloud.com/palette-cli/v4.8.7/cli/linux/palette
 chmod +x palette
 ```
 
-Then execute the `palette content build` command to export a cluster definition for the specified cluster profile within a designated project. This command generates a  TGZ cluster definition file in the `<current-directory>/output/` folder, and a content bundle in the `<current-directory>/output/content-bundle/ folder` by default.
-The table below lists the flags used in the command.
+Then execute the `palette content build` command to export a cluster definition for the specified cluster profile within
+a designated project. This command generates a TGZ cluster definition file in the `<current-directory>/output/` folder,
+and a content bundle in the `<current-directory>/output/content-bundle/ folder` by default. The table below lists the
+flags used in the command.
 
-| **Flag**                         | **Description**                                                                                                                                                                                                                                                                                                        |
+| **Flag**                           | **Description**                                                                                                                                                                                                                                                                                                       |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--arch`                           | The architecture of the bundle to be built. The available options are `amd64` and `arm64`.                                                                                                                                                                                                                            |
 | `--project-id`                     | The ID of the Palette project.                                                                                                                                                                                                                                                                                        |
