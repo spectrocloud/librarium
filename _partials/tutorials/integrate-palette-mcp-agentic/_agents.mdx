@@ -1,0 +1,297 @@
+---
+partial_category: integrate-palette-mcp-agentic
+partial_name: agents
+---
+
+<Tabs queryString="agents">
+ <TabItem label="Cluster Profile Agent" value="cluster-profile">
+
+    ```python
+    async def initialize_profile_finder_agent(
+        model: str,
+        mcp_tools: list,
+    ) -> Any:
+        from langchain.agents import create_agent
+        from langchain_openai import ChatOpenAI
+
+        checkpoint_module = importlib.import_module("langgraph.checkpoint.memory")
+        InMemorySaver = checkpoint_module.InMemorySaver
+
+        llm = ChatOpenAI(model=model)
+        return create_agent(
+            model=llm,
+            tools=mcp_tools,
+            system_prompt=PROFILE_FINDER_SYSTEM_PROMPT,
+            response_format=ProfileDiscoveryOutput,
+            checkpointer=InMemorySaver(),
+        )
+
+
+    async def invoke_profile_finder_agent(
+        agent: Any,
+        pack_name: str,
+        debug_level: str,
+        run_id: str,
+    ) -> str:
+        hide_mcp_output = debug_level != "verbose"
+        schema = json.dumps(ProfileDiscoveryOutput.model_json_schema(), indent=2)
+        profile_finder_prompt = (
+            "Find all cluster profiles in Palette that use the pack named "
+            f"'{pack_name}'. Use Palette MCP tools only.\n\n"
+            "Required process:\n"
+            "1) Call gather_or_delete_clusterprofiles with action='list'.\n"
+            "2) If list output lacks pack details, call action='get' for relevant cluster profile uids.\n"
+            "3) Match pack name case-insensitively.\n"
+            "4) For each matched profile, include scope from metadata.annotations.scope when available.\n"
+            "5) If scope is missing, set scope to 'unknown' and mention in notes.\n\n"
+            "Important:\n"
+            "- Return only profile-level results. Do not query clusters in this agent.\n\n"
+            "Return a response that conforms to this JSON schema:\n"
+            f"{schema}\n"
+        )
+        run_config = {
+            "configurable": {"thread_id": f"profile-finder:{pack_name.lower()}:{run_id}"}
+        }
+        with suppress_console_output(hide_mcp_output):
+            result = await agent.ainvoke(
+                {"messages": [{"role": "user", "content": profile_finder_prompt}]},
+                config=run_config,
+            )
+        structured = result.get("structured_response")
+        if isinstance(structured, ProfileDiscoveryOutput):
+            return structured.model_dump_json()
+        messages = result.get("messages", [])
+        for message in reversed(messages):
+            content = getattr(message, "content", None)
+            if isinstance(content, str) and content.strip():
+                return content
+        return str(result)
+    ```
+
+  </TabItem>
+  <TabItem label="Active Cluster Agent" value="active-cluster">
+
+    ```python
+    async def initialize_active_cluster_agent(
+        model: str,
+        mcp_tools: list,
+    ) -> Any:
+        from langchain.agents import create_agent
+        from langchain_openai import ChatOpenAI
+
+        checkpoint_module = importlib.import_module("langgraph.checkpoint.memory")
+        InMemorySaver = checkpoint_module.InMemorySaver
+
+        llm = ChatOpenAI(model=model)
+        return create_agent(
+            model=llm,
+            tools=mcp_tools,
+            system_prompt=ACTIVE_CLUSTER_SYSTEM_PROMPT,
+            response_format=ActiveClusterOutput,
+            checkpointer=InMemorySaver(),
+        )
+
+
+    async def invoke_active_cluster_agent(
+        agent: Any,
+        pack_name: str,
+        matched_profiles_output: str,
+        debug_level: str,
+        run_id: str,
+    ) -> str:
+        hide_mcp_output = debug_level != "verbose"
+        schema = json.dumps(ActiveClusterOutput.model_json_schema(), indent=2)
+        active_cluster_prompt = (
+            f"Given this profile discovery result for pack '{pack_name}':\n"
+            f"{matched_profiles_output}\n\n"
+            "Required process:\n"
+            "1) Extract matched profile UIDs from the input JSON.\n"
+            "2) Call gather_or_delete_clusters with action='list' and active_only=true.\n"
+            "3) For each active cluster uid from step 2, call gather_or_delete_clusters with action='get'.\n"
+            "4) Match clusters using explicit profile UID fields only.\n"
+            "5) If no clusters match, return an empty list and include every checked active cluster uid.\n\n"
+            "Return a response that conforms to this JSON schema:\n"
+            f"{schema}\n"
+        )
+        run_config = {
+            "configurable": {"thread_id": f"active-cluster:{pack_name.lower()}:{run_id}"}
+        }
+        with suppress_console_output(hide_mcp_output):
+            result = await agent.ainvoke(
+                {"messages": [{"role": "user", "content": active_cluster_prompt}]},
+                config=run_config,
+            )
+        structured = result.get("structured_response")
+        if isinstance(structured, ActiveClusterOutput):
+            return structured.model_dump_json()
+        messages = result.get("messages", [])
+        for message in reversed(messages):
+            content = getattr(message, "content", None)
+            if isinstance(content, str) and content.strip():
+                return content
+        return str(result)
+
+    ```
+
+  </TabItem>
+  <TabItem label="Tagging Agent" value="tagging">
+
+    ```python
+    async def invoke_tagging_agent(
+        agent: Any,
+        pack_name: str,
+        profile_discovery_output: str,
+        active_cluster_output: str,
+        tags: list[str],
+        run_id: str,
+    ) -> str:
+        if not tags:
+            return TaggingOutput(
+                pack_name=pack_name,
+                requested_tags=[],
+                clusters_attempted=[],
+                cluster_profiles_attempted=[],
+                cluster_results=[],
+                cluster_profile_results=[],
+                cluster_profile_skipped=[],
+                notes="No tags provided by user. Tagging skipped.",
+            ).model_dump_json()
+
+        schema = json.dumps(TaggingOutput.model_json_schema(), indent=2)
+        tagging_prompt = (
+            f"Given this profile discovery output for pack '{pack_name}':\n"
+            f"{profile_discovery_output}\n\n"
+            f"Given this active cluster mapping output for pack '{pack_name}':\n"
+            f"{active_cluster_output}\n\n"
+            f"Apply these tags: {tags}\n\n"
+            "Task:\n"
+            "1) Extract unique cluster UIDs from active_clusters_using_matched_profiles.\n"
+            "2) Extract unique cluster profile UIDs and scope values from matched_profiles.\n"
+            f"3) For each cluster UID, call tag_cluster_for_review with cluster_uid=<uid> and tags={tags}.\n"
+            f"4) For each cluster profile UID, call tag_cluster_profile_for_review with cluster_profile_uid=<uid> and tags={tags}, only if scope is not 'system'.\n"
+            "5) For scope='system' profiles, skip tagging and record skip reason.\n"
+            "6) Return a response that conforms to this JSON schema:\n"
+            f"{schema}\n"
+            "If there are no resources to tag, return empty arrays and explain in notes."
+        )
+        run_config = {"configurable": {"thread_id": f"tagging:{pack_name.lower()}:{run_id}"}}
+        result = await agent.ainvoke(
+            {"messages": [{"role": "user", "content": tagging_prompt}]},
+            config=run_config,
+        )
+        structured = result.get("structured_response")
+        if isinstance(structured, TaggingOutput):
+            return structured.model_dump_json()
+        messages = result.get("messages", [])
+        for message in reversed(messages):
+            content = getattr(message, "content", None)
+            if isinstance(content, str) and content.strip():
+                return content
+        return str(result)
+    ```
+
+  </TabItem>
+  <TabItem label="Reporter Agent" value="reporter">
+
+    ```python
+    async def initialize_reporter_agent(model: str) -> Any:
+        from langchain.agents import create_agent
+        from langchain_openai import ChatOpenAI
+
+        checkpoint_module = importlib.import_module("langgraph.checkpoint.memory")
+        InMemorySaver = checkpoint_module.InMemorySaver
+
+        llm = ChatOpenAI(model=model)
+        return create_agent(
+            model=llm,
+            tools=[],
+            system_prompt=REPORTER_SYSTEM_PROMPT,
+            checkpointer=InMemorySaver(),
+        )
+
+
+    async def invoke_reporter_agent(
+        agent: Any,
+        pack_name: str,
+        profile_discovery_output: str,
+        active_cluster_output: str,
+        tagging_output: str,
+        run_id: str,
+    ) -> str:
+        reporter_prompt = (
+            f"Create a report for cluster profiles using pack '{pack_name}'.\n\n"
+            "Use these outputs as the source of truth:\n\n"
+            "Profile discovery output:\n"
+            f"{profile_discovery_output}\n\n"
+            "Active cluster mapping output:\n"
+            f"{active_cluster_output}\n\n"
+            "Tagging output:\n"
+            f"{tagging_output}\n\n"
+            "Produce output that matches this exact template. "
+            "Do not add, remove, or rename any section. "
+            "Do not add extra blank lines between bullet sub-fields. "
+            "Replace every <placeholder> with the real value from the source data.\n\n"
+            "---\n"
+            "1) Summary\n\n"
+            "Pack `<pack_name>` was found in <N> of <total> scanned cluster profiles. "
+            "Among <M> active cluster(s) scanned, <K> active cluster(s) were confirmed to be using one of the matched profiles; "
+            "tagging <succeeded/failed/was skipped> for <summary of tagging outcome>.\n\n"
+            "2) Matching cluster profiles\n\n"
+            "- UID: `<uid>`\n"
+            "  - Name: `<name>`\n"
+            "  - Evidence: <one sentence>\n\n"
+            "(repeat for each matched profile)\n\n"
+            "3) Active clusters using the matched cluster profiles\n\n"
+            "- UID: `<uid>`\n"
+            "  - Name: `<name>`\n"
+            "  - Cluster profile UID: `<profile_uid>`\n"
+            "  - Cluster profile name: `<profile_name>`\n\n"
+            "(repeat for each active cluster)\n\n"
+            "4) Tagging results for clusters and cluster profiles\n\n"
+            "Requested tags:\n"
+            "- `<tag>`\n\n"
+            "(repeat for each tag)\n\n"
+            "Clusters tagged:\n"
+            "- Cluster UID: `<uid>`\n"
+            "  - Result: <Success|Failed|Skipped>\n\n"
+            "(repeat for each cluster)\n\n"
+            "Cluster profiles tagged:\n"
+            "- Cluster profile UID: `<uid>`\n"
+            "  - Name: `<name>`\n"
+            "  - Scope: `<scope>`\n"
+            "  - Result: <Success|Failed|Skipped>\n\n"
+            "(repeat for each tagged profile)\n\n"
+            "Skipped cluster profiles:\n"
+            "- Cluster profile UID: `<uid>`\n"
+            "  - Name: `<name>`\n"
+            "  - Scope: `<scope>`\n"
+            "  - Reason: `<reason>`\n\n"
+            "(repeat for each skipped profile)\n\n"
+            "5) Notes and caveats\n\n"
+            "- <note>\n\n"
+            "(repeat for each note)\n"
+            "---\n\n"
+            "Rules:\n"
+            "- If there are no matching cluster profiles, write 'No matching cluster profiles found.' in the summary and omit sections 2-4.\n"
+            "- If active cluster data appears incomplete, add a note in section 5 stating the result may be incomplete.\n"
+            "- Do not invent data. Only use values present in the source outputs.\n"
+            "- Remove any '(repeat ...)' lines from the final output.\n"
+            "- Remove the '---' delimiters from the final output.\n"
+        )
+        run_config = {"configurable": {"thread_id": f"reporter:{pack_name.lower()}:{run_id}"}}
+        result = await agent.ainvoke(
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": reporter_prompt,
+                    }
+                ]
+            },
+            config=run_config,
+        )
+        return extract_text_response(result)
+    ```
+
+  </TabItem>
+</Tabs>
