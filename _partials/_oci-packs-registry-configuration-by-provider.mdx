@@ -1,0 +1,124 @@
+---
+partial_category: oci-registry-configuration
+partial_name: oci-packs-registry-configuration-by-provider
+---
+
+For OCI Packs registries, the configuration values need to map correctly to the registry URL structure.
+This is especially important for registries that do not follow the standard Docker V2 API structure such as JFrog Artifactory.
+
+The following sections provide key rules and example configurations for some of the supported OCI Packs registry providers.
+
+#### Key Rules
+
+- Palette resolves pack URL locations using the following pattern.
+
+  ```text
+  <endpoint>/<baseContentPath>/spectro-packs
+  ```
+
+  If `<baseContentPath>` is empty, Palette uses the following pattern instead.
+
+  ```text
+  <endpoint>/spectro-packs
+  ```
+
+- The `spectro-packs` path is always appended automatically so never include it in the values for `<endpoint>` or
+  `<baseContentPath>`. Palette expects packs to be stored under the `spectro-packs` repository path in the OCI registry.
+
+- In general practice, set `<baseContentPath>` to the path segment that sits between the `<endpoint>` and
+  `spectro-packs`. Leave empty if `spectro-packs` is at the repository root.
+
+  For example, if your OCI registry URL is `https://harbor.example.com/registry/palette-packs/spectro-packs`, set
+  `<endpoint>` to `https://harbor.example.com` and `<baseContentPath>` to `registry/palette-packs`.
+
+- For registries with a non-standard API path like
+  [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/jfrog-artifactory), include the full API
+  path in the `<endpoint>` value. For standard Docker V2 registries like [Harbor](https://goharbor.io/), use the
+  hostname only.
+
+- Self-hosted registries require a base64-encoded PEM CA certificate in `<caCert>`.
+
+#### Example Provider Configurations
+
+<Tabs groupId="oci-registry-examples">
+
+<TabItem value="example-jfrog-artifactory" label="Example JFrog Artifactory">
+
+- The full Docker V2 API path is required for the JFrog Artifactory `<endpoint>`.
+- The [repository key](https://jfrog.com/help/r/artifactory-rest-apis/list-docker-repositories) is included in the
+  `<endpoint>` value, which is `spectro-packs-repo` in this example.
+
+```yaml hideClipboard
+config:
+  ociPackRegistry:
+    endpoint: "https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo"
+    baseContentPath: ""
+    name: "Artifactory OCI Packs"
+    username: "<username>"
+    password: "<base64-encoded-password>"
+    insecureSkipVerify: false
+    caCert: "<base64-encoded-ca-cert>"
+```
+
+This configuration resolves to the following URL for the `spectro-packs` repository.
+
+```
+https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo/spectro-packs/
+```
+
+</TabItem>
+
+<TabItem value="example-harbor" label="Example Harbor">
+
+- The `<endpoint>` is the Harbor hostname only.
+- The `<baseContentPath>` is the Harbor project name.
+- Ensure that the `spectro-packs` repository is created under the specified Harbor project.
+
+```yaml hideClipboard
+config:
+  ociPackRegistry:
+    endpoint: "https://harbor.example.com"
+    baseContentPath: "palette-packs"
+    name: "Harbor OCI Packs"
+    username: "<username>"
+    password: "<base64-encoded-password>"
+    insecureSkipVerify: false
+    caCert: "<base64-encoded-ca-cert>"
+```
+
+This configuration resolves to the following URL for the `spectro-packs` repository.
+
+```
+https://harbor.example.com/palette-packs/spectro-packs/
+```
+
+</TabItem>
+
+<TabItem value="example-aws-ecr" label="Example AWS ECR">
+
+- The `<endpoint>` is the AWS ECR registry URL without the repository name. The repository name can be optionally
+  included in `<baseContentPath>`.
+- AWS ECR uses `accessKey` and `secretKey` instead of `username` and `password`.
+
+```yaml hideClipboard
+config:
+  ociPackEcrRegistry:
+    endpoint: "123456789012.dkr.ecr.us-east-1.amazonaws.com"
+    baseContentPath: "production"
+    name: "ECR OCI Packs"
+    accessKey: "<base64-encoded-access-key>"
+    secretKey: "<base64-encoded-secret-key>"
+    isPrivate: true
+    insecureSkipVerify: false
+    caCert: ""
+```
+
+This configuration resolves to the following URL for the `spectro-packs` repository.
+
+```
+123456789012.dkr.ecr.us-east-1.amazonaws.com/production/spectro-packs/
+```
+
+</TabItem>
+
+</Tabs>
