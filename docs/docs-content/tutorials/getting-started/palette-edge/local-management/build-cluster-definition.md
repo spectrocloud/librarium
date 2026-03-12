@@ -18,7 +18,7 @@ to the Edge device. A cluster definition contains one or more cluster profiles, 
 A [content bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) is an archive
 that includes all required container images for one or more profiles. It contains the Helm charts and packs
 files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can also include
-application artifacts that you want to deploy to the Edge cluster. The content bundle can be uploaded when a locally managed Edge device has no access to public or private registries. Since this tutorial assumes access to one or the other, the content bundle will not be used.
+application artifacts that you want to deploy to the Edge cluster. You can upload a content bundle when a locally managed Edge device has no access to public or private registries. Since this tutorial assumes access to either, you will use a cluster definition instead.
 
 This tutorial teaches you how to create a cluster definition of the cluster profile you created in the
 [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial using the
@@ -30,6 +30,7 @@ This tutorial teaches you how to create a cluster definition of the cluster prof
 
 - You have completed the steps in the [Create Edge Cluster Profile](./edge-cluster-profile.md) and
   [Prepare Edge Host](./prepare-edge-host.md) tutorials.
+- The Edge device has access to the same public or private registries used to build the cluster profile.
 - A [Palette account](https://www.spectrocloud.com/get-started).
 - A valid Palette [API key](../../../../user-management/authentication/api-key/create-api-key.md).
 - The [ID of the project](../../../../tenant-settings/projects/projects.md#project-id) where you created your cluster
