@@ -45,7 +45,7 @@ This tutorial teaches you how to create a cluster definition of the cluster prof
 
 ### Export Cluster Definition
 
-Download [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses Palette
+Download the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses the Palette
 CLI version 4.8.7.
 
 <!-- vale off -->
