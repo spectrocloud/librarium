@@ -140,7 +140,7 @@ echo "  - or: palette content upload (from a reachable system)"
 echo
 ```
 
-After it is built, upload the TGZ file to the locally managed Edge device using the Local UI. If you are accessing the
+After the TGZ file is built, upload it to the locally managed Edge device using the Local UI. If you are accessing the
 Local UI from a system other than the Linux system where the file was generated, download the TGZ file first. For
 example, you can use `scp` to copy the file from the remote Linux system to your current directory.
 
