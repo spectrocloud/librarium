@@ -11,7 +11,7 @@ Your AWS Outposts server requires you to configure your capacity and a subnet be
 
 ## Prerequisites
 
-- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html).AWS
+- An installed [AWS Outposts server](https://docs.aws.amazon.com/outposts/latest/install-server/install-server.html). AWS
   manages the delivery and initial configuration of the AWS outposts server at your site.
 
 - An active Palette account.
@@ -61,11 +61,9 @@ The capacity creation may take a few hours.
    Palette Edge to communicate with your server.
 
    ```bash
-
    aws ec2 modify-subnet-attribute
    --subnet-id <subnet-id>
    --enable-lni-at-device-index 1
-
    ```
 
    :::info
