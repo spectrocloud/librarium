@@ -469,7 +469,7 @@ guide.
    ./mongo-diagnose.sh --kubeconfig /path/to/kubeconfig.conf
    ```
 
-   ```shell "Example Output"
+   ```shell  hideClipboard "Example Output"
    STEP 1 — MongoDB Pod Status
    ✘  mongo-0  ready=0/1  restarts=12  status=CrashLoopBackOff  age=1h
    ✔  mongo-1  ready=1/1   restarts=0  age=10d
