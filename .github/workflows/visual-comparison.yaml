@@ -71,11 +71,15 @@ jobs:
           cache: "npm"
 
       - name: Post PR Comment
-        uses: mshick/add-pr-comment@v2
+        uses: actions/github-script@v7
         with:
-          message: |
-              🤖 Starting the visual tests. This will take approximately an hour.
-          refresh-message-position: true
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `🤖 Starting the visual tests. This will take approximately an hour.`,
+            });
 
       - name: Install Dependencies
         uses: Wandalen/wretry.action@v3
@@ -266,15 +270,19 @@ jobs:
         echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
 
-    - name: Post Report URL Comment
-      uses: mshick/add-pr-comment@v2
-      with:
-        message: |
-            📋 Visual Report for branch ${{ github.head_ref }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
-              https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
+    - name: GH Pages URL
+      run: |
+        echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
-              💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).
-        message-failure: |
-            👎 Uh oh! Unable to publish Visual Report URL.
-        refresh-message-position: true
-        update-only: true
+    - name: Post Report URL Comment
+      uses: actions/github-script@v7
+      with:
+        script: |
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.payload.pull_request.number,
+            body: `📋 Visual Report for branch ${{ github.head_ref }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
+
+            💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).`,
+          });
