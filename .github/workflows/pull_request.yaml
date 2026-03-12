@@ -88,10 +88,13 @@ jobs:
         run: make format
 
       - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: ./.github/actions/commit-changes
         with:
-          commit_message: "ci: auto-formatting prettier issues"
+          method: git
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
+          commit_message: "ci: auto-formatting prettier issues"
+          file_regex: ".*"
 
   build:
     name: Build
