@@ -11,6 +11,21 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 10, 2026 - Release 4.8.38
+
+### Improvements
+
+- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.8 has been released to address
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10194 -->
+
+- Fixed an issue that caused duplicate images that were vulnerable to
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121)  
+  to appear alongside newer, fixed images in Palette version 4.8.37.
+
 ## March 6, 2026 - Component Updates {#component-updates-2026-10}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.37.
@@ -112,6 +127,12 @@ The following component updates are applicable to this release:
 - Palette now allows the use of tags to specify the placement of control planes on
   [MAAS LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md).
 
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.37 Palette release is 4.8.11.
+
+:::
+
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7658 -->
@@ -153,11 +174,6 @@ The following component updates are applicable to this release:
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10152 -->
 
 - Fixed an caused the [Palette Kubernetes upgrades](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) through Helm to fail on Palette 4.8.35.
-
-<!-- https://spectrocloud.atlassian.net/browse/PCP-6150 -->
-<!-- prettier-ignore-start -->
-- Fixed an issue that prevented [EKS clusters](../clusters/public-cloud/aws/eks.md) configured with the <VersionedLink text="AWS VPC CNI (Helm)" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> from deploying successfully.
-<!-- prettier-ignore-end -->
 
 ## February 27, 2026 - Component Updates {#component-updates-2026-09}
 
