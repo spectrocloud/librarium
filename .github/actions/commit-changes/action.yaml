@@ -1,0 +1,159 @@
+name: "Commit changes"
+description: "Commit and push changes either via GitHub API (github-script) or via inline git commands."
+inputs:
+  method:
+    description: "How to commit: 'api' (GitHub API via github-script) or 'git' (inline git commands)."
+    required: false
+    default: "git"
+  token:
+    description: "GitHub token with permission to write to the PR branch."
+    required: true
+  branch:
+    description: "Branch name to update (e.g., github.head_ref)."
+    required: true
+  commit_message:
+    description: "Commit message."
+    required: false
+    default: "Apply automatic changes"
+  file_regex:
+    description: "Regex for files to include (default: json files)."
+    required: false
+    default: "\\.json$"
+
+runs:
+  using: "composite"
+  steps:
+    # -----------------------------
+    # Method B: inline git commands
+    # -----------------------------
+    - name: Commit and push (git)
+      if: ${{ inputs.method == 'git' }}
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+        BRANCH: ${{ inputs.branch }}
+        COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        FILE_REGEX: ${{ inputs.file_regex }}
+      run: |
+        set -euo pipefail
+
+        # Ensure pushes authenticate using the provided token.
+        git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        # Stage only matching changed files (default: *.json)
+        mapfile -t FILES < <(git status --porcelain | awk '{print $2}' | grep -E "${FILE_REGEX}" || true)
+
+        if [ ${#FILES[@]} -eq 0 ]; then
+          echo "No matching files to commit."
+          exit 0
+        fi
+
+        git add -- "${FILES[@]}"
+
+        if git diff --cached --quiet; then
+          echo "No staged changes after add; nothing to commit."
+          exit 0
+        fi
+
+        git commit -m "${COMMIT_MESSAGE}"
+        git push origin "HEAD:${BRANCH}"
+
+    # -----------------------------------------
+    # Method A: GitHub API via actions/github-script
+    # -----------------------------------------
+    - name: Commit via API (github-script)
+      if: ${{ inputs.method == 'api' }}
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ inputs.token }}
+        script: |
+          const fs = require('fs');
+          const { execSync } = require('child_process');
+
+          const branch = process.env.BRANCH;
+          const commitMessage = process.env.COMMIT_MESSAGE;
+          const fileRegex = new RegExp(process.env.FILE_REGEX);
+
+          // Find changed files in the working tree
+          const porcelain = execSync('git status --porcelain', { encoding: 'utf8' }).trim();
+          if (!porcelain) {
+            core.info('No changes detected.');
+            return;
+          }
+
+          const changed = porcelain
+            .split('\n')
+            .map(l => l.trim().slice(3)) // strip XY + space
+            .filter(p => fileRegex.test(p));
+
+          if (changed.length === 0) {
+            core.info('No matching files to commit.');
+            return;
+          }
+
+          core.info(`Files to commit: ${changed.join(', ')}`);
+
+          // Get the current HEAD commit SHA for the branch
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+          const ref = `heads/${branch}`;
+
+          const refData = await github.rest.git.getRef({ owner, repo, ref });
+          const headSha = refData.data.object.sha;
+
+          const headCommit = await github.rest.git.getCommit({ owner, repo, commit_sha: headSha });
+          const baseTreeSha = headCommit.data.tree.sha;
+
+          // Create blobs for each file
+          const treeItems = [];
+          for (const path of changed) {
+            const content = fs.readFileSync(path, 'utf8');
+            const blob = await github.rest.git.createBlob({
+              owner,
+              repo,
+              content,
+              encoding: 'utf-8',
+            });
+
+            treeItems.push({
+              path,
+              mode: '100644',
+              type: 'blob',
+              sha: blob.data.sha,
+            });
+          }
+
+          // Create a new tree
+          const newTree = await github.rest.git.createTree({
+            owner,
+            repo,
+            base_tree: baseTreeSha,
+            tree: treeItems,
+          });
+
+          // Create commit
+          const newCommit = await github.rest.git.createCommit({
+            owner,
+            repo,
+            message: commitMessage,
+            tree: newTree.data.sha,
+            parents: [headSha],
+          });
+
+          // Update the ref to point to the new commit
+          await github.rest.git.updateRef({
+            owner,
+            repo,
+            ref,
+            sha: newCommit.data.sha,
+            force: false,
+          });
+
+          core.info(`Created commit ${newCommit.data.sha} on ${branch}`);
+      env:
+        BRANCH: ${{ inputs.branch }}
+        COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        FILE_REGEX: ${{ inputs.file_regex }}
