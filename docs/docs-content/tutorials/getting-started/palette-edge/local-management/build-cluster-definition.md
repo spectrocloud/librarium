@@ -11,7 +11,7 @@ tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 With locally managed Edge, you must export the
-[cluster profile](../../../../../docs-content/profiles/cluster-profiles.md) from Palette as a
+[cluster profile](../../../../../docs-content/profiles/cluster-profiles/cluster-profiles.md) from Palette as a
 [cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and upload it
 to the Edge device. A cluster definition contains one or more cluster profiles, including their profile variables.
 
@@ -20,7 +20,7 @@ that includes all required container images for one or more profiles. It contain
 files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can also include
 application artifacts that you want to deploy to the Edge cluster.
 
-This tutorial teaches you how to create the content bundle you created in the
+This tutorial teaches you how to create a cluster definition of the cluster profile you created in the
 [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial using the
 [Palette CLI](../../../../downloads/cli-tools.md#palette-cli).
 
@@ -43,7 +43,7 @@ This tutorial teaches you how to create the content bundle you created in the
   uname -m
   ```
 
-### Export and Download Cluster Profile
+### Export Cluster Definition
 
 Download [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses Palette
 CLI version 4.8.7.
