@@ -75,7 +75,7 @@ development and testing environments.
   - 4 vCPUs
   - 4 GB of memory
   - 60 GB of disk space
-  - 1 control plane node with worker capabilities or 3 nodes for production environments. Refer to the
+  - One control plane node with worker capabilities or three nodes for production environments. Refer to the
     [PCG Sizing](#pcg-sizing) section for more information.
   - A Container Network Interface (CNI) plugin installed.
   - A Container Storage Interface (CSI) plugin installed.

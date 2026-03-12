@@ -41,11 +41,18 @@ cluster profile level in the OS layer.
 - **Cluster profile OS level** - Only workload clusters deployed using the cluster profile have the CA certificate
   injected.
 
+The approach you use must also depend on whether the proxy CA certificate needs to be trusted at the node-level or pod-level.
+
+| **Approach** | **Node-Level Trust** | **Pod-Level Trust** |
+| --- | :---: | :---: |
+| **Tenant Level** | :white_check_mark: | :x:  |
+| **Cluster Profile OS Layer** | :white_check_mark: | :white_check_mark: |
+
 ### Tenant Level
 
 Use this approach to propagate your proxy server CA certificate to _all_ workload cluster nodes provisioned from the
 tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters. For managed Kubernetes
-and Edge clusters, proceed to the [Cluster Profile OS Layer](#cluster-profile-os-layer) section.
+and Edge clusters, you must use the [Cluster Profile OS Layer](#cluster-profile-os-layer) approach.
 
 :::warning
 
@@ -171,7 +178,7 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
    | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | `targetPath`          | The path on the host node where the CA certificate file is written. The certificate file must be named `ca.crt`.                                                                 |
    | `targetOwner`         | The file ownership in the format `user:group`.                                                                                                                                   |
-   | `targetPermissions`   | The file permissions in octal notation.                                                                                                                                          |
+   | `targetPermissions`   | The file permissions in octal notation. For example, `0644`.                                                                                                                                          |
    | `content`             | The PEM-encoded CA certificate content.                                                                                                                                          |
    | `podMount.allowed`    | Set to `true` to enable mounting the host file into pods through the Reach system.                                                                                               |
    | `podMount.targetPath` | The path inside pods where the file is mounted. Use `/etc/ssl/certs/ca-certificates.crt` to make the certificate available to most applications that use the system trust store. |
@@ -205,7 +212,7 @@ supports mounting the CA certificate into pods through the [Reach system](../arc
    `/etc/ssl/certs/ca-certificates.crt`, it replaces the container's default CA bundle. This means pods will trust the
    proxy CA but not standard public CAs.
 
-   In most proxy environments this is acceptable because all outbound HTTPS traffic passes through the proxy, which
+   In most proxy environments, this is acceptable because all outbound HTTPS traffic passes through the proxy, which
    handles upstream TLS verification on behalf of the pod. However, if your pods make direct TLS connections to services
    that bypass the proxy, such as internal services listed in `NO_PROXY`, those connections may fail because the
    container no longer has the default public CA certificates.
