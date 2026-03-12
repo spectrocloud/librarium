@@ -1,0 +1,45 @@
+---
+sidebar_label: "Tigera Operator"
+title: "Tigera Operator"
+description: "Kubernetes operator to simplify the deployment and management of Calico"
+hide_table_of_contents: true
+type: "integration"
+category: ["network"]
+sidebar_class_name: "hide-from-sidebar"
+tags: ["packs", "tigera-operator", "network"]
+---
+
+<RedirectPackPage packName="tigera-operator" />
+
+## Versions Supported
+
+<Tabs queryString="parent">
+
+<TabItem label="3.31.x" value="3.31.x">
+
+### Configuration for Airgapped Environments
+
+Tigera Operator version 3.31.3 fails to install in airgapped environments. The `calico-system` pods cannot access external registries and are unable to pull images successfully, resulting in `ImagePullBackOff` errors.
+
+You must configure a private registry to pull images from instead of the external default registry.
+
+Add the registry value to the `charts.installation` section of the `values.yaml` file with the URL of your private registry.
+
+```yaml
+installation:
+    registry: us-docker.pkg.dev/palette-images/packs/tigera-operator/3.31.3
+```
+
+Save your changes and apply the update to your cluster. The operator now pulls images from the specified private registry, enabling the Calico pods to be successfully deployed.
+
+</TabItem>
+
+<TabItem label="3.30.x" value="3.30.x">
+
+No additional details for this pack version.
+
+</TabItem>
+
+
+
+</Tabs>
