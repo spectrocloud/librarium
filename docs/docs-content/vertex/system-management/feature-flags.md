@@ -23,6 +23,10 @@ keywords: ["self-hosted", "vertex", "feature-flags"]
 
 <PartialsComponent category="self-hosted" name="feature-flags-enablement" edition="vertex" />
 
+### Customize AWS Secret and Top Secret Endpoints
+
+<PartialsComponent category="self-hosted" name="feature-flags-customize-aws-secret-endpoints" edition="vertex" />
+
 ## Validate
 
 <PartialsComponent category="self-hosted" name="feature-flags-validate" />

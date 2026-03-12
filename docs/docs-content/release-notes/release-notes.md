@@ -32,6 +32,8 @@ tags: ["release-notes"]
 
 #### Features
 
+- API endpoints for AWS Secret and Top Secret clouds can now be customized.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5984 -->
