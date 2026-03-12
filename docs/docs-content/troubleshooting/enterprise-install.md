@@ -12,7 +12,9 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 ## Scenario - MongoDB Replica Pods Crash during Palette Upgrade
 
-When upgrading a self-hosted Palette instance from 4.8.35 to 4.8.37, MongoDB replica pods may crash with a `CrashLoopBackOff` error. This may be due to MongoDB replication lag or a cluster split-brain state, resulting in a stuck upgrade.   
+When upgrading a self-hosted Palette instance from 4.8.35 to 4.8.37, MongoDB replica pods may crash with a
+`CrashLoopBackOff` error. This may be due to MongoDB replication lag or a cluster split-brain state, resulting in a
+stuck upgrade.
 
 ### Debug Steps
 
