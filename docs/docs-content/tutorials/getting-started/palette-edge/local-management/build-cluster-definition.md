@@ -55,7 +55,7 @@ wget https://software.spectrocloud.com/palette-cli/v4.8.7/cli/linux/palette
 chmod +x palette
 ```
 
-Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key. 
+Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
 
 ```shell
 palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com
