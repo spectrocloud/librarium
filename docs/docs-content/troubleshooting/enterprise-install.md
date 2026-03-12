@@ -12,9 +12,7 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 ## Scenario - MongoDB Replica Pods Crash during Palette Upgrade
 
-When upgrading a self-hosted Palette instance from 4.8.35 to 4.8.37, the MongoDB replica pods may crash with a
-`CrashLoopBackOff` error and the upgrade may be stuck. This issue may happen due to MongoDB replication lag or split
-brain.
+When upgrading a self-hosted Palette instance from 4.8.35 to 4.8.37, MongoDB replica pods may crash with a `CrashLoopBackOff` error. This may be due to MongoDB replication lag or a cluster split-brain state, resulting in a stuck upgrade.   
 
 ### Debug Steps
 
@@ -32,9 +30,9 @@ guide.
 
 2. Log in to your self-hosted Palette instance System Console.
 
-3. In the left main menu, click **Enterprise Cluster**.
+3. From the left main menu, click **Enterprise Cluster**.
 
-4. In the cluster details page, scroll down to the **Kubernetes Config File** field and download the kubeconfig file.
+4. On the cluster details page, scroll down to the **Kubernetes Config File** field and download the kubeconfig file.
 
 5. Execute the following script to gather data and check for split brain.
 
@@ -528,8 +526,8 @@ Recommended fix (wipes crashed nodes and resyncs from healthy primary):
 7. Delete persistent volume claims and the unhealthy pods.
 
    ```shell
-   kubectl delete pvc <mongo-pod-pvc> -n hubble-system
-   kubectl delete pod <mongo-pod> -n hubble-system
+   kubectl delete pvc <mongo-pod-pvc> --namespace hubble-system
+   kubectl delete pod <mongo-pod> --namespace hubble-system
    ```
 
 Palette recreates all resources with the correct configuration.
