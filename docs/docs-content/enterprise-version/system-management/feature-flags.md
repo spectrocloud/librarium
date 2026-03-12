@@ -23,10 +23,6 @@ keywords: ["self-hosted", "palette", "feature-flags"]
 
 <PartialsComponent category="self-hosted" name="feature-flags-enablement" edition="palette" />
 
-### Customize AWS Secret and Top Secret Endpoints
-
-<PartialsComponent category="self-hosted" name="feature-flags-customize-aws-secret-endpoints" edition="palette" />
-
 ## Validate
 
 <PartialsComponent category="self-hosted" name="feature-flags-validate" />
