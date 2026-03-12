@@ -55,6 +55,12 @@ wget https://software.spectrocloud.com/palette-cli/v4.8.7/cli/linux/palette
 chmod +x palette
 ```
 
+Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key. 
+
+```shell
+palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com
+```
+
 Then execute the `palette content build` command to export a cluster definition for the specified cluster profile within
 a designated project. This command generates a TGZ cluster definition file in the `<current-directory>/output/` folder,
 and a content bundle in the `<current-directory>/output/content-bundle/ folder` by default. The table below lists the
