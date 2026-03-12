@@ -10,14 +10,14 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-With locally managed Edge, you must export the [cluster profile](../../../../../docs-content/profiles/profiles.md) from
+With locally managed Edge, you must export the [cluster profile](../../../../../docs-content/profiles/cluster-profiles.md) from
 Palette as a [cluster definition](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md)
 and upload it to the Edge device. A cluster definition contains one or more cluster profiles, including their profile
 variables.
 
 A [content bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) is an archive
 that includes all required container images for one or more profiles. It contains the Helm charts, packs, and manifest
-files needed to deploy your Edge host cluster. In addition to core container images, the Content Bundle can also include
+files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can also include
 application artifacts that you want to deploy to the Edge cluster.
 
 This tutorial teaches you how to create the content bundle you created in the
@@ -28,14 +28,14 @@ This tutorial teaches you how to create the content bundle you created in the
 
 ## Prerequisites
 
-- You have completed the steps in the [Create Edge Cluster Profile](./edge-cluster-profile.md), and
+- You have completed the steps in the [Create Edge Cluster Profile](./edge-cluster-profile.md) and
   [Prepare Edge Host](./prepare-edge-host.md) tutorials.
 - A [Palette account](https://www.spectrocloud.com/get-started).
-- A valid Palette [API Key](../../../../user-management/authentication/api-key/create-api-key.md).
+- A valid Palette [API key](../../../../user-management/authentication/api-key/create-api-key.md).
 - The [ID of the project](../../../../tenant-settings/projects/projects.md#project-id) where you created your cluster
   profile.
 - The
-  [Cluster Profile ID](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md#enablement-1).
+  [cluster profile ID](../../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md#enablement-1).
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture. You can issue the
   following command in the terminal to check your processor architecture.
 
@@ -45,7 +45,7 @@ This tutorial teaches you how to create the content bundle you created in the
 
 ### Export and Download Cluster Profile
 
-Export the created cluster profile as a compressed TGZ file. Download
+Download
 [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses Palette CLI
 version 4.8.7.
 
@@ -53,17 +53,14 @@ version 4.8.7.
 
 ```shell
 wget https://software.spectrocloud.com/palette-cli/v4.8.7/cli/linux/palette
-chmod +x palette-edge
+chmod +x palette
 ```
 
-Use the Palette CLI to authenticate with Palette and download a specific cluster profile from a designated project. The
-output is saved to the `<current-directory>/output/content-bundle` directory. The Palette CLI command uses the command
-`content build` with the following subcommands.
+Then execute the `palette content build` command to export a cluster definition for the specified cluster profile within a designated project. This command generates a  TGZ cluster definition file in the `<current-directory>/output/` folder, and a content bundle in the `<current-directory>/output/content-bundle/ folder` by default.
+The table below lists the flags used in the command.
 
-| **Option**                         | **Definition**                                                                                                                                                                                                                                                                                                        |
+| **Flag**                         | **Description**                                                                                                                                                                                                                                                                                                        |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `content`                          | Creates and manages content bundles, which are archives containing all the images and artifacts required for deploying an Edge cluster.                                                                                                                                                                               |
-| `build`                            | Build a content bundle.                                                                                                                                                                                                                                                                                               |
 | `--arch`                           | The architecture of the bundle to be built. The available options are `amd64` and `arm64`.                                                                                                                                                                                                                            |
 | `--project-id`                     | The ID of the Palette project.                                                                                                                                                                                                                                                                                        |
 | `--profile`                        | Comma-separated list of cluster profile IDs to download content for the content bundle. For this tutorial, only one cluster profile ID is needed.                                                                                                                                                                     |
@@ -83,7 +80,7 @@ For the tutorial, you will use the following Palette CLI command to generate the
 ```
 
 Alternatively, use the interactive script below to be prompted for the required values when executing the Palette CLI
-command. The API key will appear blank for security reasons.
+command. The API key appears blank for security reasons.
 
 ```shell
 #!/usr/bin/env bash
