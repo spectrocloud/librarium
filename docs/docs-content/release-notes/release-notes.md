@@ -31,7 +31,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.38.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-263 -->
 
-- Fixed an issue that prevented the
+- Fixed an issue that prevented
   [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) version 4.8.37
   from deploying successfully on AWS due to a missing image in the Amazon Machine Image (AMI).
 
