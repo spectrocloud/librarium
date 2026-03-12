@@ -69,7 +69,7 @@ flags used in the command.
 | `--cluster-definition-profile-ids` | A comma-separated list of cluster profile IDs to be included in the cluster definition. For this tutorial, only one cluster profile ID is needed.                                                                                                                                                                     |
 | `--name`                           | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI. |
 
-For the tutorial, you will use the following Palette CLI command to generate the cluster profile compressed TGZ file.
+Execute the following Palette CLI command to generate the cluster profile compressed TGZ file.
 
 ```shell
 ./palette content build --arch <bundle-architecture> \
