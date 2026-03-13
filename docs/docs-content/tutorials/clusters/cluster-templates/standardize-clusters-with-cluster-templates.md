@@ -613,29 +613,6 @@ resource "spectrocloud_cluster_aws" "dev_cluster" {
       }
     }
   }
-
-  machine_pool {
-    control_plane           = true
-    control_plane_as_worker = true
-    name                    = "control-plane-pool"
-    count                   = var.aws_control_plane_nodes.count
-    instance_type           = var.aws_control_plane_nodes.instance_type
-    disk_size_gb            = var.aws_control_plane_nodes.disk_size_gb
-    azs                     = var.aws_control_plane_nodes.availability_zones
-  }
-
-  machine_pool {
-    name          = "worker-pool"
-    count         = var.aws_worker_nodes.count
-    instance_type = var.aws_worker_nodes.instance_type
-    disk_size_gb  = var.aws_worker_nodes.disk_size_gb
-    azs           = var.aws_worker_nodes.availability_zones
-  }
-
-  timeouts {
-    create = "60m"
-    delete = "60m"
-  }
 }
 ```
 
