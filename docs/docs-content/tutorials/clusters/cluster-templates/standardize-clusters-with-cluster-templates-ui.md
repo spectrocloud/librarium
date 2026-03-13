@@ -14,8 +14,7 @@ In this tutorial, you will:
 
 - Create a cluster profile, a cluster template policy, and a cluster template that uses them together
 - Deploy two clusters (**dev** and **prod**) from the same template
-- Use
-  [cluster profile variables](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
+- Use [cluster profile variables](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
   to apply environment-specific settings
 - Update the template and upgrade both clusters
 
