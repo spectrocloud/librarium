@@ -20,15 +20,15 @@ The following ports must be reachable from a network perspective for Palette Saa
 
 ### SaaS Managed Without a PCG
 
-![SaaS Network Diagram with ports without a PCG](/architecture_networking-ports_saas-network-diagram-grpc-no-pcg.webp)
+![SaaS Network Diagram with ports without a PCG](../././../../static/assets/docs/images/architecture_networking-ports_saas-network-diagram-grpc-no-pcg_4-8.webp)
 
 ### SaaS Managed With a PCG
 
-![SaaS Network Diagram with ports using a PCG](/architecture_networking-ports_saas-network-diagram-grpc.webp "title=SaaS Network Diagram with ports w/PCG")
+![SaaS Network Diagram with ports using a PCG](../././../../static/assets/docs/images/architecture_networking-ports_saas-network-diagram-grpc_4-8.webp "title=SaaS Network Diagram with ports w/PCG")
 
 ### SaaS Managed With Edge
 
-![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-grpc.webp)
+![SaaS network diagram displaying the network paths for edge](../././../../static/assets/docs/images/architecture_networking-ports_saas-network-diagram-edge-grpc_4-8.webp)
 
 ## Network Ports
 
@@ -57,7 +57,7 @@ is entirely optional and not required for Palette to operate appropriately.
 
 ## Self-Hosted Network Communications and Ports
 
-![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc-new.webp)
+![On-prem network diagram](../././../../static/assets/docs/images/architecture_networking-ports_on_prem_network-diagram-grpc-new_4-8.webp)
 
 The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
 
