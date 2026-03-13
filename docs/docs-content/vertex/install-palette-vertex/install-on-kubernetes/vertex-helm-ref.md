@@ -294,6 +294,10 @@ config:
     mirrorRegistries: ""
 ```
 
+### OCI Packs Registry Configuration by Provider
+
+<PartialsComponent category="oci-registry-configuration" name="oci-packs-registry-configuration-by-provider" />
+
 ### Spectro Cloud Artifact Repository (SCAR)
 
 SCAR credentials are required to download the necessary FIPS manifests. Our support team provides the SCAR credentials.
