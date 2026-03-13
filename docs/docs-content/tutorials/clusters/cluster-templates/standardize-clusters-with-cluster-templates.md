@@ -432,43 +432,6 @@ variable "deploy-aws" {
   description = "A flag for enabling a deployment on AWS."
 }
 
-variable "aws-cloud-account-name" {
-  type        = string
-  description = "The name of your AWS account as assigned in Palette."
-}
-
-variable "aws-region" {
-  type        = string
-  description = "AWS region."
-}
-
-variable "aws-key-pair-name" {
-  type        = string
-  description = "The name of the AWS key pair to use for SSH access to the cluster."
-}
-
-variable "aws_control_plane_nodes" {
-  type = object({
-    count              = string
-    control_plane      = bool
-    instance_type      = string
-    disk_size_gb       = string
-    availability_zones = list(string)
-  })
-  description = "AWS control plane nodes configuration."
-}
-
-variable "aws_worker_nodes" {
-  type = object({
-    count              = string
-    control_plane      = bool
-    instance_type      = string
-    disk_size_gb       = string
-    availability_zones = list(string)
-  })
-  description = "AWS worker nodes configuration."
-}
-
 #########
 # Azure
 #########
