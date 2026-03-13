@@ -47,6 +47,10 @@ system level scope, refer to the
 
 :::
 
+## OCI Packs Registry Configuration by Provider
+
+<PartialsComponent category="oci-registry-configuration" name="oci-packs-registry-configuration-by-provider" />
+
 ## Resources
 
 - [Add OCI Helm Registry](./add-oci-helm.md)
