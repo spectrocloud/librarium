@@ -112,8 +112,9 @@ resume sessions.
 
 ### Fix Availability
 
-An updated release containing a patched Go runtime is in development. This advisory will be updated when fixed versions
-become available.
+Palette version 4.8.38 includes fixes for this vulnerability in both core images and third-party images, where
+available, have been released. Refer to the [Release Notes](../../release-notes/release-notes.md) page for further
+details.
 
 ### Mitigations
 
