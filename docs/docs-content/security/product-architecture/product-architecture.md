@@ -23,7 +23,7 @@ separating responsibilities and network restrictions.
 
 <br />
 
-- **US Multi-Tenant SaaS** - The management plane is hosted in AWS across three regions (us-east-1, us-west-1, and
+- **US Multi-Tenant SaaS**: The management plane is hosted in AWS across three regions (us-east-1, us-west-1, and
   us-west-2) and managed by Spectro Cloud. Each customer is a unique tenant, with enforced data isolation and access
   controls. Spectro Cloud controls when to upgrade the management plane.
 
