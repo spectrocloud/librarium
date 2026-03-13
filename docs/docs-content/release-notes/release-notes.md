@@ -11,13 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March 10, 2026 - Release 4.7.34
+## March 13, 2026 - Release 4.7.37
 
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10058 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10207 -->
 
-- The internal Palette [Go versions](https://go.dev/doc/devel/release) have been upgraded to 1.24.12 and 1.25.7,
+- The internal Palette [Go versions](https://go.dev/doc/devel/release) have been upgraded to 1.24.12 and 1.25.8,
   depending on the component, addressing [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
 
 ### Bug Fixes
@@ -26,6 +27,16 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display sensitive pack values returned
   by the [Palette API](/api/introduction).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6183 -->
+
+- Fixed an issue that prevented `capv-static-ip` from successfully installing during VMware vSphere
+  [Public Cloud Gateway (PCG)](../clusters/pcg/pcg.md) deployment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6205 -->
+
+- Fixed an issue that caused prevented [VMware vSphere](../clusters/data-center/vmware/vmware.md) clusters from
+  successfully provisioning and deploying.
 
 ## February 12, 2026 - Release 4.7.31
 
