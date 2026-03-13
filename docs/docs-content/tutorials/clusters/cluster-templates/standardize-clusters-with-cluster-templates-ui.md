@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 sidebar_label: "Standardize Clusters with Cluster Templates - Palette UI"
-title: "Standardize Cluster Provisioning and Maintenance with Cluster Templates"
+title: "Standardize Cluster Provisioning and Maintenance with Cluster Templates - Palette UI"
 description:
   "A tutorial that shows how to standardize cluster provisioning, apply maintenance windows, and roll out upgrades using
   cluster templates and the Palette UI."
