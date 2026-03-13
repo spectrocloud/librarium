@@ -40,8 +40,8 @@ The following components have been updated for Palette version 4.8.6 - 4.8.38.
 
 | Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
 | --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Amazon EBS CSI              | CSI        | :x:                | :white_check_mark: | 1.34.1      |
-| Azure Disk                  | CSI        | :white_check_mark: | :x:                | 1.24.0      |
+| Amazon EBS CSI              | CSI        | :white_check_mark: | :x:                | 1.56.0      |
+| Azure Disk                  | CSI        | :x:                | :white_check_mark: | 1.34.1      |
 | Cilium                      | CNI        | :white_check_mark: | :x:                | 1.19.1      |
 | GCE Persistent Disk CSI     | CSI        | :white_check_mark: | :x:                | 1.24.0      |
 | Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
