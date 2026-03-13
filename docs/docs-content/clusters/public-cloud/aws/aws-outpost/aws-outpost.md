@@ -7,7 +7,7 @@ hide_table_of_contents: false
 ---
 
 [AWS Outposts](https://aws.amazon.com/outposts/) is a fully managed service that extends Amazon Web Services(AWS)
-infrastructure, services, Application Program Interfaces (APIs), and tools to on-premises environments. It allows
+infrastructure, services, APIs, and tools to on-premises environments. It allows
 organizations to run AWS services in their own data centers or facilities. AWS Outposts is ideal for organizations that
 require local processing due to latency, regulatory, or operational requirements, while leveraging the scalability of
 the AWS ecosystem.
