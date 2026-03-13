@@ -34,8 +34,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9513 -->
 
-- API endpoints for AWS Secret and Top Secret cloud regions can now be customized. Refer to our
-  [Feature Flags](../enterprise-version/system-management/feature-flags.md) guide for more information.
+- API endpoints for AWS services in AWS Secret and Top Secret cloud regions can now be customized. Refer to our
+  [Feature Flags](../vertex/system-management/feature-flags.md#customize-aws-secret-and-top-secret-endpoints) guide for
+  more information.
 
 #### Improvements
 
