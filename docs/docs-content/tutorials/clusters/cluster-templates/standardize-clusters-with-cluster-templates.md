@@ -315,12 +315,19 @@ recurring upgrade window.
 Create a maintenance policy with a weekly Sunday midnight schedule and a four-hour upgrade window.
 
 1. From the left **Main Menu**, select **Cluster Configurations**.
+
 2. From the top-right of the **Policies** tab, select **Create Policy > Maintenance Policy**.
+
 3. In the **Name** field, enter `cluster-template-policy`.
+
 4. Select **Add Schedule** to open the schedule drawer.
+
 5. In the **Name** field, enter `weekly-sunday`.
+
 6. From the **Schedule** drop-down menu, select **Every week on Sunday at midnight**.
+
 7. Set the **Upgrade window** to **4** hours.
+
 8. Select **Confirm**, then **Next**, then **Finalize**.
 
 The policy appears in the **Policies** list and is ready to attach to a cluster template.
@@ -333,14 +340,21 @@ The linked profile version becomes immutable once attached, so changes to the pr
 Create a cluster template and attach the profile and policy you created in the previous steps.
 
 1. From the left main menu, select **Cluster Configurations**.
+
 2. Select the **Templates** tab and select **Create Template**.
+
 3. Select **AWS IaaS** and select **Start AWS IaaS Configuration**.
+
 4. In the **Name** field, enter `cluster-template-aws`. Select **Next Step**.
+
 5. Select the plus icon next to **Maintenance Policy**. In the **Select a policy** drawer, locate and select
    `cluster-template-policy`. Select **Confirm**.
+
 6. Select the plus icon next to **Linked Profiles**. In the **Select a profile** drawer, select
    `cluster-template-profile-aws`. Select **Confirm**.
+
 7. From the version drop-down menu, confirm version `1.0.0` is selected.
+
 8. Select **Next Step**, review the configuration, and select **Finalize**.
 
 The template appears in the **Templates** list and is ready to deploy clusters from.
@@ -723,14 +737,18 @@ Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 The cluster deployment may take 15 to 30 minutes. Confirm each resource was created correctly in Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
+
 2. From the left **Main Menu**, select **Profiles**. Locate and select `tf-cluster-template-profile-aws`. Review its
    pack layers to confirm they match the configuration. Select the **Variables** tab and confirm that a variable named
    `app_replicas` is listed.
+
 3. From the left **Main Menu**, select **Cluster Configurations**. On the **Policies** tab, locate and select
    `tf-maintenance-policy`. Confirm the schedule shows a weekly window starting every Sunday at midnight UTC with a four
    hour duration.
+
 4. Select the **Templates** tab and locate `tf-cluster-template-aws`. Confirm it references the
    `tf-cluster-template-profile-aws` cluster profile and the `tf-maintenance-policy` maintenance policy.
+
 5. From the left **Main Menu**, select **Clusters**. Select `tf-dev-cluster` and click the **Profile** tab to confirm it
    is using `tf-cluster-template-profile-aws` with `app_replicas` set to `1`.
 
