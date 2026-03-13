@@ -3,10 +3,9 @@ partial_category: oci-registry-configuration
 partial_name: oci-packs-registry-configuration-by-provider
 ---
 
-For OCI Packs registries, the configuration values need to map correctly to the registry URL structure.
-This is especially important for registries that do not follow the standard Docker V2 API structure such as JFrog Artifactory.
+When configuring OCI pack registries in Palette through the UI or Helm values, ensure that the configuration values align with the expected URL structure of the registry. This is especially important for registries that do not adhere to the standard Docker V2 API structure, such as JFrog Artifactory.
 
-The following sections provide key rules and example configurations for some of the supported OCI Packs registry providers.
+The following sections provide key rules and example configurations for some of the supported OCI pack registry providers.
 
 #### Key Rules
 
@@ -22,7 +21,7 @@ The following sections provide key rules and example configurations for some of 
   <endpoint>/spectro-packs
   ```
 
-- The `spectro-packs` path is always appended automatically so never include it in the values for `<endpoint>` or
+- The `spectro-packs` path is appended automatically so you should not include it in the values for `<endpoint>` or
   `<baseContentPath>`. Palette expects packs to be stored under the `spectro-packs` repository path in the OCI registry.
 
 - In general practice, set `<baseContentPath>` to the path segment that sits between the `<endpoint>` and
@@ -40,6 +39,8 @@ The following sections provide key rules and example configurations for some of 
 
 #### Example Provider Configurations
 
+The following examples demonstrate how to configure OCI pack registries for different providers. Adjust the values as needed for your specific registry setup.
+
 <Tabs groupId="oci-registry-examples">
 
 <TabItem value="example-jfrog-artifactory" label="Example JFrog Artifactory">
@@ -48,7 +49,12 @@ The following sections provide key rules and example configurations for some of 
 - The [repository key](https://jfrog.com/help/r/artifactory-rest-apis/list-docker-repositories) is included in the
   `<endpoint>` value, which is `spectro-packs-repo` in this example.
 
-```yaml hideClipboard
+```text hideClipboard title="UI values example"
+Endpoint: https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo
+Base Content Path: (leave empty)
+```
+
+```yaml hideClipboard title="Helm values example"
 config:
   ociPackRegistry:
     endpoint: "https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo"
@@ -60,7 +66,7 @@ config:
     caCert: "<base64-encoded-ca-cert>"
 ```
 
-This configuration resolves to the following URL for the `spectro-packs` repository.
+This configuration resolves to the following URL for `spectro-packs`.
 
 ```
 https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo/spectro-packs/
@@ -74,7 +80,12 @@ https://artifactory.example.com/artifactory/api/docker/spectro-packs-repo/spectr
 - The `<baseContentPath>` is the Harbor project name.
 - Ensure that the `spectro-packs` repository is created under the specified Harbor project.
 
-```yaml hideClipboard
+```text hideClipboard title="UI values example"
+Endpoint: https://harbor.example.com
+Base Content Path: palette-packs
+```
+
+```yaml hideClipboard title="Helm values example"
 config:
   ociPackRegistry:
     endpoint: "https://harbor.example.com"
@@ -100,7 +111,12 @@ https://harbor.example.com/palette-packs/spectro-packs/
   included in `<baseContentPath>`.
 - AWS ECR uses `accessKey` and `secretKey` instead of `username` and `password`.
 
-```yaml hideClipboard
+```text hideClipboard title="UI values example"
+Endpoint: 123456789012.dkr.ecr.us-east-1.amazonaws.com
+Base Content Path: production
+```
+
+```yaml hideClipboard title="Helm values example"
 config:
   ociPackEcrRegistry:
     endpoint: "123456789012.dkr.ecr.us-east-1.amazonaws.com"
@@ -113,7 +129,7 @@ config:
     caCert: ""
 ```
 
-This configuration resolves to the following URL for the `spectro-packs` repository.
+This configuration resolves to the following URL for `spectro-packs`.
 
 ```
 123456789012.dkr.ecr.us-east-1.amazonaws.com/production/spectro-packs/
