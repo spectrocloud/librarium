@@ -21,7 +21,7 @@ keywords: ["self-hosted", "vertex", "feature-flags"]
 
 ## Enable a Feature
 
-<PartialsComponent category="self-hosted" name="feature-flags-enablement" edition="vertex" />
+<PartialsComponent category="self-hosted" name="feature-flags-enablement" edition="vertex" version="Palette VerteX" />
 
 ### Customize AWS Secret and Top Secret Endpoints
 
@@ -41,7 +41,7 @@ cloud.
 5. In the **AWS Secret and Top Secret API Endpoints** dialog, select the **Secret** or **Top Secret** tab depending on
    the partition you are configuring endpoints for.
 
-   ![Customizing endpoints for AWS Secret and Top Secret](/shared-pages/self-hosted_system-management_feature-flags_customize-endpoints.webp)
+   ![Customizing endpoints for AWS Secret and Top Secret](/feature-flags_customize-endpoints.webp)
 
 6. Use the drop-down menu to select the applicable cloud region.
 
