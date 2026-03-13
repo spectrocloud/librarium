@@ -639,12 +639,8 @@ Success! 4 passed, 0 failed.
 Open `terraform.tfvars`. Set `deploy-aws` to `true` and replace each `REPLACE ME` placeholder with the correct value for
 your environment.
 
-:::warning
-
 Ensure that `aws-cloud-account-name` matches the name of the AWS cloud account registered in Palette. The SSH key pair
 specified in `aws-key-pair-name` must exist in the same region as `aws-region`.
-
-:::
 
 ```hcl {4,6,7,8,14,22} title="terraform.tfvars"
 ###########################
