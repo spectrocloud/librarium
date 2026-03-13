@@ -51,7 +51,7 @@ cloud.
    | **Field**                | **Description**                                                                                                                                                                                                              |
    | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Credentials endpoint** | The URL for the credentials provider used to obtain temporary security credentials. For AWS Top Secret (C2S) cloud, this is the C2S Access Portal (CAP). For AWS Secret (SC2S) cloud, this is the SC2S Access Portal (SCAP). |
-   | **DNS suffix**           | The base domain suffix for AWS service endpoints in the selected region. This value is stored independently and does not auto-populate the individual service endpoint fields.                                               |
+   | **DNS suffix**           | The base domain suffix for AWS service endpoints in the selected region.                                                                                                                                                     |
    | **eks**                  | [Amazon Elastic Kubernetes Service](https://docs.aws.amazon.com/eks/)                                                                                                                                                        |
    | **ec2**                  | [Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/ec2/)                                                                                                                                                             |
    | **iam**                  | [AWS Identity and Access Management](https://docs.aws.amazon.com/iam/)                                                                                                                                                       |
@@ -72,11 +72,10 @@ provisioning or management operations to fail.
 
 :::
 
-You can update endpoints at any time, including after workload clusters are deployed. Palette VerteX restarts only the
-internal cluster management controller pods to apply the new endpoint configurations, and your workloads continue
-running without downtime. Updated endpoint configurations are applied to existing clusters during the next
-reconciliation cycle, which occurs approximately every 15 minutes. Workloads on running clusters are not interrupted
-during this process.
+You can update endpoints at any time, including after workload clusters are deployed. When you update an endpoint,
+Palette VerteX restarts the internal cluster management controller pods to apply the new endpoint configurations.
+Updated endpoint configurations are applied to existing clusters during the next reconciliation cycle, which occurs
+approximately every 15 minutes. Workloads on running clusters are not interrupted during this process.
 
 ## Validate
 
