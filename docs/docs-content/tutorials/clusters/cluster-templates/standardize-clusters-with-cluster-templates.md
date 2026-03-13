@@ -734,23 +734,14 @@ spectrocloud_cluster_aws.dev_cluster[0]: Creation complete after Xm Ys [id=<clus
 Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 ```
 
-The cluster deployment may take 15 to 30 minutes. Confirm each resource was created correctly in Palette.
+The cluster deployment may take 15 to 30 minutes. Log in to [Palette](https://console.spectrocloud.com) and confirm the
+deployment.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. From the left **Main Menu**, select **Clusters**. Confirm that `tf-dev-cluster` has a **Running** status.
 
-2. From the left **Main Menu**, select **Profiles**. Locate and select `tf-cluster-template-profile-aws`. Review its
-   pack layers to confirm they match the configuration. Select the **Variables** tab and confirm that a variable named
-   `app_replicas` is listed.
+2. Select `tf-dev-cluster` and click the **Profile** tab. Confirm it is using `tf-cluster-template-profile-aws`.
 
-3. From the left **Main Menu**, select **Cluster Configurations**. On the **Policies** tab, locate and select
-   `tf-maintenance-policy`. Confirm the schedule shows a weekly window starting every Sunday at midnight UTC with a four
-   hour duration.
-
-4. Select the **Templates** tab and locate `tf-cluster-template-aws`. Confirm it references the
-   `tf-cluster-template-profile-aws` cluster profile and the `tf-maintenance-policy` maintenance policy.
-
-5. From the left **Main Menu**, select **Clusters**. Select `tf-dev-cluster` and click the **Profile** tab to confirm it
-   is using `tf-cluster-template-profile-aws` with `app_replicas` set to `1`.
+3. Select the `hello-universe` pack and confirm that the `app_replicas` variable is set to `1`.
 
 ### Deploy a Prod Cluster with a Different Variable Value
 
