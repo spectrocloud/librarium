@@ -5,7 +5,7 @@ description: "Learn about the Palette Edge Getting Started section."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 This section gives you an overview of how to get started with Palette Edge. You will learn how Palette simplifies the

@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["getting-started", "tutorial", "locally-managed", "airgapped", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 [Cluster profiles](../../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
