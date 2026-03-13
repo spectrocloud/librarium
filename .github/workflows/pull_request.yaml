@@ -130,3 +130,38 @@ jobs:
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Post PR Comment (success)
+        if: ${{ github.event_name == 'pull_request' && success() }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.pull_request?.number || context.issue?.number;
+            if (!issue_number) {
+              core.setFailed("No associated PR found to comment on.");
+              return;
+            }
+            const body = `✅ CI checks passed for commit ${{ github.sha }}.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body,
+            });
+
+      - name: Post PR Comment (failure)
+        if: ${{ github.event_name == 'pull_request' && failure() }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.pull_request?.number || context.issue?.number;
+            if (!issue_number) {
+              core.setFailed("No associated PR found to comment on.");
+              return;
+            }
+            const body = `❌ CI checks failed for commit ${{ github.sha }}.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body,
+            });
