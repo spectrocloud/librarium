@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "tutorial", "locally-managed", "airgap", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 One of the first steps in deploying an Edge cluster is preparing your locally managed Edge host with all the required

@@ -152,13 +152,24 @@ Log in to Local UI (`https://<ip-of-edge:5080`) with the username and password y
 
 ![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
-The Edge host will show as **Not Configured** as there is no Edge cluster deployed. The following image displays a newly
-installed locally managed Edge host.
+The Edge host appears as **Not Configured** because no Edge cluster has been deployed. The following image displays a
+newly installed locally managed Edge host.
 
-![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-not-config_4-8.webp)
+![Screenshot showing Edge UI overview of the Edge device](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-not-config_4-8.webp)
+
+Click **Settings** on the left main menu, and verify that the **Cluster management mode** is set to **Locally managed**.
+
+![Screenshot showing Edge UI settings value for cluster management mode](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge_local-only_4-8.webp)
+
+:::danger
+
+Do not change the **Cluster management mode** to **Centrally managed**. You cannot revert it to **Locally managed**
+without completely reinstalling the Edge device.
+
+:::
 
 ## Next Steps
 
-In this tutorial, you learned how to install the Palette agent on your host. We recommend proceeding to the
-[Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial to learn how to use the registered Edge host to deploy an Edge
-cluster locally.
+In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
+recommend proceeding to the [Build Cluster Definition](./build-cluster-definition.md) tutorial to learn how to create
+and download a cluster definition to use on an Edge cluster in Palette.

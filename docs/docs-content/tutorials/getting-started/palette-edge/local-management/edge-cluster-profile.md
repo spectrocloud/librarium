@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["getting-started", "tutorial", "locally-managed", "airgapped", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 [Cluster profiles](../../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
@@ -26,15 +26,15 @@ installation on your host and use it as a node for deploying your first Edge clu
 
 For this tutorial, you will build a cluster profile that has the following packs.
 
-| **Pack Name**             | **Version** | **Registry**               |
-| ------------------------- | ----------- | -------------------------- |
-| BYOS Edge OS              | 2.1.0       | Palette Registry           |
-| Palette Optimized K3s     | 1.32.3      | Palette Registry           |
-| Cilium                    | 1.18.4      | Palette Registry           |
-| Local Path Provisioner    | 0.0.32      | Palette Registry           |
-| Harbor Edge Native Config | 1.1.2       | Palette Registry           |
-| Hello Universe            | 1.3.1       | Palette Community Registry |
-| MetalLB (Helm)            | 0.15.3      | Palette Registry           |
+| **Pack Name**          | **Version** | **Registry**               |
+| ---------------------- | ----------- | -------------------------- |
+| BYOS Edge OS           | 2.1.0       | Palette Registry           |
+| Palette Optimized K3s  | 1.32.3      | Palette Registry           |
+| Cilium                 | 1.18.4      | Palette Registry           |
+| Local Path Provisioner | 0.0.32      | Palette Registry           |
+| Harbor                 | 1.9.3       | Palette Registry           |
+| Hello Universe         | 1.3.1       | Palette Community Registry |
+| MetalLB (Helm)         | 0.15.3      | Palette Registry           |
 
 ## Prerequisites
 
@@ -113,9 +113,9 @@ Click **Confirm & Create**.
 Next, click **Add New Pack** to include the add-on layers. Search for `Harbor` and add the following pack to your
 cluster profile. Harbor is required to manage local registries for locally managed Edge clusters.
 
-| **Pack Name**              | **Version** | **Registry**     | **Layer** |
-| -------------------------- | ----------- | ---------------- | --------- |
-| Harbor Edge Native Config. | 1.1.2       | Palette Registry | Registry  |
+| **Pack Name** | **Version** | **Registry**     | **Layer** |
+| ------------- | ----------- | ---------------- | --------- |
+| Harbor        | 1.9.3       | Palette Registry | Registry  |
 
 Click **Confirm & Create**.
 
