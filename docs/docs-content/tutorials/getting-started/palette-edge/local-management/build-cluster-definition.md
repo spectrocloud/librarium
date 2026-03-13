@@ -16,9 +16,11 @@ With locally managed Edge, you must export the
 to the Edge device. A cluster definition contains one or more cluster profiles, including their profile variables.
 
 A [content bundle](../../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) is an archive
-that includes all required container images for one or more profiles. It contains the Helm charts and packs
-files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can also include
-application artifacts that you want to deploy to the Edge cluster. You can upload a content bundle when a locally managed Edge device has no access to public or private registries. Since this tutorial assumes access to either, you will use a cluster definition instead.
+that includes all required container images for one or more profiles. It contains the Helm charts and packs files needed
+to deploy your Edge host cluster. In addition to core container images, the content bundle can also include application
+artifacts that you want to deploy to the Edge cluster. You can upload a content bundle when a locally managed Edge
+device has no access to public or private registries. Since this tutorial assumes access to either, you will use a
+cluster definition instead.
 
 This tutorial teaches you how to create a cluster definition of the cluster profile you created in the
 [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial using the
@@ -46,8 +48,8 @@ This tutorial teaches you how to create a cluster definition of the cluster prof
 
 ### Export Cluster Definition
 
-Download the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses the Palette
-CLI version 4.8.7.
+Download the [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) to your Linux machine. This tutorial uses the
+Palette CLI version 4.8.7.
 
 <!-- vale off -->
 
