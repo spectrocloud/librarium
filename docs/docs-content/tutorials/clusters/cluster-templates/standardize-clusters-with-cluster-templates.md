@@ -587,8 +587,9 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 
 ### Deploy a Dev Cluster with a Variable Value
 
-`clusters.tf` defines a dev cluster that uses the AWS cluster template. A nested `cluster_profile` block sets
-`app_replicas` to `"1"` for this cluster without changing the shared template or profile.
+`clusters.tf` defines a dev cluster that uses the AWS cluster template. The `cluster_template` block links the cluster
+to the template. The nested `cluster_profile` block is needed to override the variable value for the profile within that
+template, scoped to just this cluster. `app_replicas` is set to `"1"`, without changing the shared template or profile.
 
 ```hcl title="clusters.tf" hideClipboard
 resource "spectrocloud_cluster_aws" "dev_cluster" {
