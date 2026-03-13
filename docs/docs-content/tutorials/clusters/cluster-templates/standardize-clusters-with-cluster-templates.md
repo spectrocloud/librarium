@@ -402,7 +402,7 @@ file before running any commands.
 
 `inputs.tf` declares all variables used across the configuration. `palette-project` sets the Palette project where all
 resources will be created. `app_port` is set at apply time and shared across every cluster the template manages.
-`deploy-aws` and `deploy-azure` determine the cloud provider for the cluster template and all clusters it manages.
+`deploy-aws` and `deploy-azure` specify the cloud provider for the cluster template and all clusters it manages.
 
 ```hcl title="inputs.tf" hideClipboard
 #########
