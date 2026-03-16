@@ -299,6 +299,48 @@ The template appears in the **Templates** list and is ready to deploy clusters f
 
 ### Deploy a Dev Cluster from the Template
 
+The dev environment requires fewer replicas, so assign `app_replicas`, displayed as `Hello Universe Replicas` in the UI,
+a value of `1`. Once that value is set, deploy a cluster from the `cluster-template-aws` cluster template.
+
+1. From the left **Main Menu**, select **Clusters > Add New Cluster**.
+
+2. Select **AWS IaaS > Start AWS IaaS Configuration**.
+
+3. On the **Basic Information** page, enter `dev-cluster-aws` as the cluster name. Select the cloud account and select
+   **Next**.
+
+4. On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**.
+
+5. Select `cluster-template-aws` and select **Confirm**.
+
+6. On the **Cluster Template** page, confirm the correct maintenance policy and linked profile are configured, and
+   select **Next**.
+
+7. On the **Cluster Profile** page, select **Next**.
+
+8. On the **Profile Config** page, set `Hello Universe Replicas` to `1`. Select **Next**.
+
+9. On the **Cluster Config** page, select the region and SSH Key Pair Name. Select **Next**.
+
+10. In **Nodes Config**, under **control-plane-pool configuration > AWS Cloud Configuration**, select
+    `General purpose - m4.2xlarge` as the Instance Type. Select an availability zone if required by your cloud region.
+
+11. In **Nodes Config**, under **worker-plane-pool configuration > AWS Cloud Configuration**, select
+    `General purpose - m4.2xlarge` as the Instance Type. Select an availability zone if required by your cloud region.
+    Select **Next**.
+
+12. On the **Cluster Settings** page, under **Cluster Timezone**, set the cluster time zone to `Etc/GMT`. Select
+    **Validate > Finish Configuration**.
+
+The cluster deployment may take 15 to 30 minutes. From the left **Main Menu**, select **Clusters** to monitor progress.
+
+Once `dev-cluster-aws` has a **Running** status, validate the deployment.
+
+1. Select `dev-cluster-aws`, and select the **Profile** tab. Confirm it is using `cluster-template-profile-aws`.
+
+2. Select **Configure Values > Profiles Variables Configuration**. Confirm that `Hello Universe Replicas` is set to `1`
+   for this dev cluster.
+
 ### Deploy a Prod Cluster from the Template
 
 ### Validate the Deployments
