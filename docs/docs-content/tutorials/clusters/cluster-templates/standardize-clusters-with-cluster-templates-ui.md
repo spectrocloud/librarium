@@ -42,15 +42,16 @@ Use the Palette UI to complete each step in the sections below.
 
 ### Import a Cluster Profile
 
-In this section, you will import a cluster profile into Palette composed of the following packs.
+In this section, you will import a cluster profile into Palette. This profile will be used to deploy two clusters: a
+development cluster running fewer application replicas and a production cluster running more.
 
 <PartialsComponent category="cluster-templates" name="cluster-profile-pack-versions" />
 
 The `hello-universe` pack declares an `app_replicas`
 [cluster profile variable](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/).
-This variable has no value in the profile itself. A cluster template will assign a value for each cluster it manages,
-allowing dev and prod clusters to run different replica counts from the same profile. The variable is marked `required`,
-so no cluster can be deployed without a value.
+This variable has no value in the profile itself. A cluster template assigns a value for each cluster it manages. This
+allows a development cluster and a production cluster to share the same profile while running different replica counts.
+The variable is marked `required`, so no cluster can be deployed without a value.
 
 Log in to [Palette](https://console.spectrocloud.com). From the left **Main Menu**, select **Profiles** and click
 **Import Cluster Profile**.
