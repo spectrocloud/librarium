@@ -254,7 +254,7 @@ In the slide panel that opens, copy the JSON for your cloud provider and paste i
 
 </Tabs>
 
-Click **Validate**. A _Validated successfully_ message should appear, indicating the profile is ready to import. Click
+Click **Validate**. A _Validated successfully_ message appears. Click
 **Confirm**.
 
 ### Create a Maintenance Policy
