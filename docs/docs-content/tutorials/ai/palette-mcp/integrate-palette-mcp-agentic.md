@@ -13,10 +13,10 @@ category: ["tutorial"]
 
 <!-- Tutorial Diagrams: https://app.excalidraw.com/s/172R1vSdAWD/99RvSdETLlo -->
 
-The Palette MCP server can help you power various AI use cases and workflows. In the previous tutorial, you learned how
-to deploy the Palette MCP server and how to use it by querying questions to a Large Language Model (LLM) and configuring
-the LLM to use the Palette MCP to answer questions. While this is a great way to use the Palette MCP, it is not the only
-way. You can also use the Palette MCP to power agentic workflows that can perform actions on your Palette environment.
+One of the key value propositions of MCP servers is that they provide Large Language Models (LLMs) with access to the
+tools that allow them to perform actions. The alternative to using MCP servers is to implement custom logic to interact
+with APIs to perform actions. The Palette MCP server can help you power various AI use cases and workflows without
+having to implement custom logic.
 
 In this tutorial, you will learn how to integrate the Palette MCP into an agentic workflow that identifies if a specific
 pack is present in your environment's cluster profiles and deployed clusters. If the pack is present, the workflow will
@@ -30,23 +30,27 @@ Below is a high-level diagram of the agentic workflow.
 
 ## Prerequisites
 
+- Ensure the following software is installed locally on your workstation.
+
+  - Kind installed locally. Use the [Kind Installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
+    guide to install Kind.
+  - uv is installed locally. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to
+    install uv.
+  - git is installed locally. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
+  - A container runtime installed locally, such as [Docker](https://www.docker.com/products/docker-desktop/) or
+    [Podman](https://podman.io/docs/installation).
+  - The Palette MCP server is deployed in your environment. Refer to the Setup Palette MCP server guide to learn how to
+    deploy the Palette MCP server.
+  - Helm is installed locally. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
+
 - A Palette account.
 - A Palette API key. Check out the
   [Create a Palette API Key ](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) guide to learn how to
   create a Palette API key. guide for further instructions.
 - An OpenAI API key. You can get your OpenAI API key from the
   [OpenAI Platform site](https://platform.openai.com/api-keys).
-- Kind installed locally. Use the [Kind Installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
-  guide to install Kind.
-- uv is installed locally. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to
-  install uv.
-- git is installed locally. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
+
 - Internet access to clone the Palette tutorial repository and interact with OpenAI API.
-- A container runtime installed locally, such as [Docker](https://www.docker.com/products/docker-desktop/) or
-  [Podman](https://podman.io/docs/installation).
-- The Palette MCP server is deployed in your environment. Refer to the Setup Palette MCP server guide to learn how to
-  deploy the Palette MCP server.
-- Helm is installed locally. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
 
 ## Setup
 
@@ -110,9 +114,9 @@ helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metric
 
 :::tip
 
-To enable the metrics-server in a kind cluster, you need to set the `--kubelet-insecure-tls` argument. Otherwise, the
-metrics-server will not start due to the self-signed SSL certificate used by the Kubernetes API server in the Kind
-cluster.
+The flag `--kubelet-insecure-tls` is provided to allow the metrics-server to connect to the Kubernetes API server in the
+Kind cluster. Otherwise, the metrics-server will not start due to the self-signed SSL certificate used by the Kubernetes
+API server.
 
 :::
 
@@ -266,8 +270,6 @@ Go ahead and open each agent Python file. Uncomment any code that is commented o
 moment to review the code and the comments to understand what the code is doing. You will notice a pattern of an init
 function that is used to initialize the agent and an "invoke" function that is used to start the agent.
 
-<PartialsComponent category="integrate-palette-mcp-agentic" name="agents" />
-
 Next, open the `main.py` file. This is the main entry point for the agentic workflow. Go ahead and uncomment the code
 for the `main` function. We also recommend you take a moment and review the code.
 
@@ -359,15 +361,14 @@ initialize agents and configure tools. Check out the
 
 ## Invoke the Agentic Workflow
 
-Once you have uncommented the code for the `main` function. The last step is set an OpenAI API key as an environment
-variable. Use the following command to set the OpenAI API key as an environment variable.
+Once you have uncommented the code for the `main` function and all agent files. The last step is set an OpenAI API key
+as an environment variable. Use the following command to set the OpenAI API key as an environment variable.
 
 ```shell
 export OPENAI_API_KEY=<your-openai-api-key>
 ```
 
-Replace `<your-openai-api-key>` with your OpenAI API key. You can get your OpenAI API key from the
-[OpenAI platform site](https://platform.openai.com/api-keys).
+Replace `<your-openai-api-key>` with your OpenAI API key.
 
 You are now ready to start the agentic workflow. In your terminal, issue the following command.
 
