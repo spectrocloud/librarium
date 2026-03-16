@@ -74,7 +74,7 @@ Change to the tutorial directory that contains the code for this tutorial.
 cd tutorials/ai/palette-mcp/integrate-palette-mcp/
 ```
 
-Next, initialize the tutorial environment by issuing the following command. This will install the dependencies required
+Next, initialize the tutorial environment by issuing the following command. This installs the dependencies required
 for the tutorial.
 
 ```bash
@@ -87,7 +87,7 @@ Start a Kind cluster by issuing the following command.
 kind create cluster --name palette-mcp-agentic-tutorial
 ```
 
-This will start a Kind cluster named `palette-mcp-agentic`.
+This starts a Kind cluster named `palette-mcp-agentic`.
 
 ```bash hideClipboard
 Creating cluster "palette-mcp-agentic-tutorial" ...
@@ -103,8 +103,7 @@ You can now use your cluster with:
 kubectl cluster-info --context kind-palette-mcp-agentic-tutorial
 ```
 
-Once the clusters is created and ready, deploy the Kubernetes metrics-server through Helm. Use the following command to
-deploy the metrics-server.
+Once the cluster is ready, use the following command to deploy the Kubernetes `metrics-server` through Helm.
 
 ```bash
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
@@ -122,29 +121,26 @@ API server.
 
 ### Import Cluster
 
-You will use the freshly created Kind cluster to act as a Palette-deployed cluster. Deploying an actual cluster through
-Palette takes time and requires real infrastructure. To optimize the learning experience of this tutorial, you will use
-the Kind cluster to act as a Palette-deployed cluster by importing it into Palette.
+Use the freshly created Kind cluster to act as a Palette-deployed cluster, reducing deployment time and removing the need real infrastructure. 
 
 Open up a web browser and log in to your Palette account. Navigate to the left **Main Menu** and select **Clusters**.
 From the cluster list page, click on **Import Cluster** in the top right corner.
 
 ![A view of the cluster list page with the Import Cluster button](/tutorials/ai/palette-mcp/ai_palette-mcp_import-cluser-view.webp)
 
-In the following screen, you will need to fill out the required information to import the cluster. Fill out the
-following fields:
+Fill out the following fields.
 
 - Cluster Name: `palette-mcp-agentic-tutorial`
 - Cloud Type: `Generic`
 - Import mode: `Full-permission mode`
 
-Click on **Create & Open Cluster Instance**. You will be redirected to the cluster details page. A set of instructions
+Select **Create & Open Cluster Instance**.  Palette redirects you to the cluster details page. A set of instructions
 with commands is displayed on the right side of the screen.
 
 ![A view of the cluster details page with the import instructions](/tutorials/ai/palette-mcp/ai_palette-mcp_import-instructions.webp)
 
-Go ahead and copy the command to your clipboard, then paste it into your terminal window where you created the Kind
-cluster. After a few moments, the cluster will report a status of **Running** in the cluster details page.
+Copy the command to your clipboard, then paste it into your terminal window where you created the Kind
+cluster. After a few moments, the cluster reports a status of **Running** in the cluster details page.
 
 :::tip
 
@@ -158,12 +154,10 @@ In the event you need more detailed instructions on how to import a cluster into
 The next step is to deploy a Cluster Profile onto the cluster. For this tutorial, a cluster profile is provided for you
 to use that contains the Hello Universe pack and the Nginx pack.
 
-Copy the JSON below, open a web browser session, and navigate to your Palette UI session.
+Navigate back to the Palette UI. From the left **main menu**, select **Profiles** > **Import Cluster Profile**. Paste the following snippet into the text area.
 
 <PartialsComponent category="integrate-palette-mcp-agentic" name="cluster-profile-import" />
 
-On left **Main Menu** click on **Cluster Profiles**. This will direct you to the cluster profile list view. Click on the
-top-right **Import** button. Go ahead and paste the JSON into the text box.
 
 ![A view of the cluster profile import flow](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_cluster-profile-import.webp)
 
@@ -171,21 +165,19 @@ Click on **Validate** and **Confirm** to create the cluster profile.
 
 ### Deploy Cluster Profile
 
-Next, you will deploy the add-on cluster profile to the kind cluster. From the cluster profile list view page. Click on
-the row for the tutorial profile. This will take you to the details page. Click on **Deploy** in the top righthand
-corner.
+Next, you will deploy the add-on cluster profile to the kind cluster. From the cluster profile list view page, select the row for the tutorial profile. The details page appears.  Then, select **Deploy** .
 
 ![A view of the user deploying the add-on profile by selecting the tutorial cluster](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_deploy-cluster-profile.webp)
 
-You will be redirected to the cluster details page. Click on **Save** to deploy the cluster profile. After a few
-moments, the hello-universe application and Nginx application will be deployed. You can verify the pods are in the
+Palette redirects you to the cluster details page. Select **Save** to deploy the cluster profile. After a few
+moments, the hello-universe application and Nginx application are deployed. You can verify the pods are in the
 "running" state by issuing the following command.
 
 ```shell
 kubectl get pods --all-namespaces
 ```
 
-```shell {8,19}
+```shell {8,19} title="Example Output"
 NAMESPACE                          NAME                                                                 READY   STATUS    RESTARTS      AGE
 cert-manager                       cert-manager-74877f76bd-nwtg7                                        1/1     Running   2 (54m ago)   41h
 cert-manager                       cert-manager-cainjector-7f7664d9d8-qkrjg                             1/1     Running   4 (53m ago)   41h
@@ -246,17 +238,15 @@ There are a few key files in the agentic workflow:
 - `main.py` - The main entry point for the agentic workflow. This is the starting point for the agentic workflow.
 - `tools.py` - Custom tools for the agentic workflow. This is where you can add additional custom tools that are not
   part of an MCP server.
-- `agents/palette_profile_agent.py` -This agent is responsible for finding the cluster profile that contains the pack
-  you are looking for.
+- `agents/palette_profile_agent.py` -This agent is responsible for finding the cluster profiles that contain the selected pack.
 - `agents/active_cluster_agent.py` - This agent is responsible for identifying the active clusters in Palette that are
-  using the cluster profiles that contain the pack you are looking for.
+  using the cluster profiles that contain the selected pack.
 - `agents/reporter_agent.py` - This agent is responsible for reporting the results of the agentic workflow.
 - `agents/tagging_agent.py` - This agent is responsible for tagging the cluster profiles and the active clusters using
   the cluster profiles with the pack you are looking for.
 
 The agentic workflow is built using the [Langchain](https://langchain.readthedocs.io/en/stable/) framework. The workflow
-consists of four agents, each responsible for a different part. Below is a diagram of the showcasing the interaction
-between the agents and the Palette MCP.
+consists of four agents, each responsible for a different part. 
 
 ![A diagram of the agentic workflow](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_agentic-overview.webp)
 
