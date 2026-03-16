@@ -266,12 +266,12 @@ common when an MCP server does not have a tool that can perform the task the age
 for reporting the results of the agentic workflow, and it does not require any interaction with the Palette MCP or
 custom Python logic.
 
-Go ahead and open each agent Python file. Uncomment any code that is commented out. As you uncomment the code, take a
-moment to review the code and the comments to understand what the code is doing. You will notice a pattern of an init
-function that is used to initialize the agent and an "invoke" function that is used to start the agent.
+Open each agent Python file and uncomment all code that is commented out. As you uncomment the code, take a
+moment to review the comments to gain a deeper understanding. You will notice a pattern of an `init`
+function that is used to initialize the agent and an `invoke` function that is used to start the agent.
 
-Next, open the `main.py` file. This is the main entry point for the agentic workflow. Go ahead and uncomment the code
-for the `main` function. We also recommend you take a moment and review the code.
+Next, open the `main.py` file. This is the main entry point for the agentic workflow. Uncomment the code
+for the `main` function and review the code.
 
 <PartialsComponent category="integrate-palette-mcp-agentic" name="main-func" />
 
@@ -282,7 +282,7 @@ workflow by calling the agents in the correct order.
 
 In Langchain, you can define an MCP client using the
 [`MultiServerMCPClient`](https://docs.langchain.com/oss/python/langchain/mcp) class. By default, an MCP server
-connection will be stateless. This means that the connection is closed after each request. In a production environment,
+connection is stateless. This means that the connection is closed after each request. In a production environment,
 you may want to consider using a stateful connection by using the
 [`ClientSession`](https://docs.langchain.com/oss/python/langchain/mcp#stateful-sessions) class.
 
@@ -387,10 +387,9 @@ Options:
 Initializing MCP client...
 ```
 
-In a few moments, after finding the Nginx pack in your Palette environment, you will be prompted to enter the tags you
+Ater finding the Nginx pack in your Palette environment, the workflow prompts you to enter the tags you
 want to apply to the cluster profiles and the active clusters that are using the Nginx pack.
 
-```shell hideClipboard
 Matches found. Enter tags to apply to matched cluster profiles and active clusters.
 Supported formats:
   key:value  ->  nginx:found, date:2026-03-11
@@ -404,10 +403,8 @@ For example purposes, enter the following tags.
 nginx:found, review
 ```
 
-Upon completion, the results of the agentic workflow will be displayed in your terminal. The output will look similar to
-the following.
+Upon completion, the results of the agentic workflow are displayed in your terminal.
 
-```shell hideClipboard
 1) Summary
 
 Pack `nginx` was found in 3 of 14 scanned cluster profiles. Among 1 active cluster(s) scanned, 1 active cluster(s) were confirmed to be using one of the matched profiles; tagging succeeded for 1 active cluster and 2 non-system matched cluster profiles.
@@ -437,26 +434,25 @@ Pack `nginx` was found in 3 of 14 scanned cluster profiles. Among 1 active clust
 ## Review Results
 
 Return to your web browser session with the Palette UI and navigate to the **Cluster Profiles** page. Select the cluster
-profile you created called **tutorial-profile**. The cluster profile will now have the two tags `nginx:found` and
+profile you created called **tutorial-profile**. The cluster profile now has the two tags `nginx:found` and
 `review`.
 
 ![The cluster profile details page with the tutorial-profile cluster profile and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster-profile.webp)
 
-Next, navigate to left **Main Menu** and select **Clusters**. Select the cluster you created called
-**palette-mcp-agentic-tutorial**. The cluster will also have the two tags `nginx:found` and `review`.
+Next, navigate to left **main menu** and select **Clusters**. Select the 
+**palette-mcp-agentic-tutorial** cluster. The cluster  also has the two tags `nginx:found` and `review`.
 
 ![The cluster details page with the palette-mcp-agentic-tutorial cluster and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster.webp)
 
 ## Clean-up
 
-Use the following steps to clean-up the resources you created for this tutorial. Start by deleting the cluster you
-created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate to the left **Main Menu** and select
-**Clusters**. Select the cluster you created called **palette-mcp-agentic-tutorial**. Click on the **Settings** button
-to expand the drop-down menu and select **Delete Cluster**. Confirm the deletion by entering the cluster name when
+Use the following steps to clean up the resources you created for this tutorial. Start by deleting the cluster you
+created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate to the left **main menu** and select
+**Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. Then, select **Settings** > **Delete Cluster**. Confirm the deletion by entering the cluster name when
 prompted.
 
-Next, navigate to the left **Main Menu** and select **Cluster Profiles**. Select the cluster profile you created called
-**tutorial-profile**. Click on the **three-dot Menu** and select **Delete**. Confirm the deletion by entering the
+Next, navigate to the left **main menu** and select **Cluster Profiles**. Select the 
+**tutorial-profile** cluster profile. Then, select  the **three-dot Menu** > **Delete**. Confirm the deletion by entering the
 cluster profile name when prompted.
 
 The last step is to delete the Kind cluster you created. Issue the following command in your terminal.
@@ -465,9 +461,7 @@ The last step is to delete the Kind cluster you created. Issue the following com
 kind delete cluster --name palette-mcp-agentic-tutorial
 ```
 
-This will delete the Kind cluster you created.
 
-```shell hideClipboard
 Deleting cluster "palette-mcp-agentic-tutorial" ...
 Deleted nodes: ["palette-mcp-agentic-tutorial-control-plane"]
 ```
@@ -480,7 +474,7 @@ and tags the cluster profiles and active clusters that are using the pack. In th
 at least one cluster profile and one active cluster.
 
 To achieve this outcome, you used the Langchain framework to create four agents that are responsible for different
-parts. The more important aspect of this tutorial is that the agents use the Palette MCP server to interact with your
+parts. The most important aspect of this tutorial is that the agents use the Palette MCP server to interact with your
 Palette environment to find all the cluster profiles and active clusters that are using the specified pack.
 
 Without the Palette MCP server, you would have to implement custom logic to interact with the Palette API to find the
