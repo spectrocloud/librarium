@@ -288,7 +288,7 @@ Create a cluster template and attach the profile and policy you created in the p
 2. Select the **Templates** tab and select **Create Template**.
 3. Select **AWS IaaS** and select **Start AWS IaaS Configuration**.
 4. In the **Name** field, enter `cluster-template-aws`. Select **Next Step**.
-5. Select the plus icon next to **Maintenance Policy**. In the **Select a policy** drawer, locate and select
+5. Select the plus icon next to **Maintenance Policy**. In the **Select a policy** side drawer, locate and select
    `cluster-template-policy`. Select **Confirm**.
 6. Select the plus icon next to **Linked Profiles**. In the **Select a profile** drawer, select
    `cluster-template-profile-aws`. Select **Confirm**.
