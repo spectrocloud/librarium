@@ -257,12 +257,6 @@ In the slide panel that opens, copy the JSON for your cloud provider and paste i
 Click **Validate**. A _Validated successfully_ message should appear, indicating the profile is ready to import. Click
 **Confirm**.
 
-#### Verify the Import
-
-To verify the import, navigate to **Profiles** from the left **Main Menu** and select `cluster-template-profile-aws`.
-Review its pack layers to confirm they match the table above. Select the **Variables** tab and verify that
-`app_replicas` is listed, which is what a cluster template will assign a value to at deploy time.
-
 ### Create a Maintenance Policy
 
 A
