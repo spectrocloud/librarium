@@ -281,7 +281,6 @@ The policy appears in the **Policies** list and is ready to attach to a cluster 
 ### Create a Cluster Template
 
 A [cluster template](../../../cluster-templates/cluster-templates.md) links a cluster profile and maintenance policy.
-The linked profile version becomes immutable once attached, so changes to the profile require creating a new version.
 
 Create a cluster template and attach the profile and policy you created in the previous steps.
 
