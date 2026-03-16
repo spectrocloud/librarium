@@ -254,8 +254,8 @@ In the slide panel that opens, copy the JSON for your cloud provider and paste i
 
 </Tabs>
 
-Click **Validate**. A _Validated successfully_ message appears. Click
-**Confirm**.
+Click **Validate**. A _Validated successfully_ message appears. Click **Confirm**. The `cluster-template-profile-aws`
+cluster profile is created.
 
 ### Create a Maintenance Policy
 
