@@ -4,25 +4,29 @@ sidebar_label: "Integrate Palette MCP in an Agentic Workflow"
 title: "Integrate Palette MCP in an Agentic Workflow"
 description:
   "Learn how to integrate the Palette MCP server into an agentic workflow using Langchain. The workflow will identify
-  packs in cluster profiles that you want to upgrade or remove and tag cluster profiles using that instance of a pack,
-  along with deployed clusters using that cluster profil"
+  packs in cluster profiles that you want to upgrade or remove, and tag cluster profiles using that instance of a pack,
+  along with deployed clusters using that cluster profile"
 tags: ["ai", "palette-mcp", "tutorial"]
 toc_max_heading_level: 2
 category: ["tutorial"]
 ---
 
-The Palette MCP server can be used to help you power different AI use cases and workflows. In a previous tutorial,
-INSERT TUTORIAL LINK you learned how to deploy the Palette MCP server and how to use it by querying questions to a Large
-Language Model (LLM) and configuring the LLM to use the Palette MCP to answer questions. While this is a great way to
-use the Palette MCP server, it is not the only way. You can also use the Palette MCP server to power agentic workflows
-that can perform actions on your Palette environment.
+<!-- Tutorial Diagrams: https://app.excalidraw.com/s/172R1vSdAWD/99RvSdETLlo -->
 
-In this tutorial, you will learn how to integrate the Palette MCP server into an agentic workflow that identifies if a
-specific pack is present in your environment's cluster profiles and deployed clusters. If the pack is present, the
-workflow will tag the cluster profiles containing the pack, and any active clusters using cluster profiles containing
-the pack.
+The Palette MCP server can help you power various AI use cases and workflows. In the previous tutorial, you learned how
+to deploy the Palette MCP server and how to use it by querying questions to a Large Language Model (LLM) and configuring
+the LLM to use the Palette MCP to answer questions. While this is a great way to use the Palette MCP, it is not the only
+way. You can also use the Palette MCP to power agentic workflows that can perform actions on your Palette environment.
 
-![Palette MCP server in an agentic workflow](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_architecture.webp)
+In this tutorial, you will learn how to integrate the Palette MCP into an agentic workflow that identifies if a specific
+pack is present in your environment's cluster profiles and deployed clusters. If the pack is present, the workflow will
+ask you what tags you want to apply to the cluster profiles containing the pack and any active clusters using cluster
+profiles containing the pack. This will allow you to more readily identify the cluster profiles and active clusters that
+are using the pack.
+
+Below is a high-level diagram of the agentic workflow.
+
+![Palette MCP in an agentic workflow](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_architecture.webp)
 
 ## Prerequisites
 
@@ -30,19 +34,19 @@ the pack.
 - A Palette API key. Check out the
   [Create a Palette API Key ](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) guide to learn how to
   create a Palette API key. guide for further instructions.
+- An OpenAI API key. You can get your OpenAI API key from the
+  [OpenAI Platform site](https://platform.openai.com/api-keys).
 - Kind installed locally. Use the [Kind Installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
   guide to install Kind.
-- uv installed locally. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to
+- uv is installed locally. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to
   install uv.
-- git installed locally. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
+- git is installed locally. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
 - Internet access to clone the Palette tutorial repository and interact with OpenAI API.
 - A container runtime installed locally, such as [Docker](https://www.docker.com/products/docker-desktop/) or
   [Podman](https://podman.io/docs/installation).
-- The Palette MCP server deployed in your environment. Refer to the Setup Palette MCP server guide to learn how to
+- The Palette MCP server is deployed in your environment. Refer to the Setup Palette MCP server guide to learn how to
   deploy the Palette MCP server.
-- Helm installed locally. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
-- An OpenAI API key. You can get your OpenAI API key from the
-  [OpenAI Platform site](https://platform.openai.com/api-keys).
+- Helm is installed locally. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
 
 ## Setup
 
@@ -81,12 +85,6 @@ kind create cluster --name palette-mcp-agentic-tutorial
 
 This will start a Kind cluster named `palette-mcp-agentic`.
 
-Next, set the Kind cluster as the default cluster by issuing the following command.
-
-```bash
-kind use cluster palette-mcp-agentic
-```
-
 ```bash hideClipboard
 Creating cluster "palette-mcp-agentic-tutorial" ...
  ✓ Ensuring node image (kindest/node:v1.33.1) 🖼
@@ -113,15 +111,16 @@ helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metric
 :::tip
 
 To enable the metrics-server in a kind cluster, you need to set the `--kubelet-insecure-tls` argument. Otherwise, the
-metrics-server will not start due to the self-signed certificate SSL used by the kind cluster's Kubernetes API server.
+metrics-server will not start due to the self-signed SSL certificate used by the Kubernetes API server in the Kind
+cluster.
 
 :::
 
 ### Import Cluster
 
-You will use the freshly created Kind cluster to act as a Palette deployed cluster. Deploying an acutal cluster through
+You will use the freshly created Kind cluster to act as a Palette-deployed cluster. Deploying an actual cluster through
 Palette takes time and requires real infrastructure. To optimize the learning experience of this tutorial, you will use
-the Kind cluster to act as a Palette deployed cluster by importing it into Palette.
+the Kind cluster to act as a Palette-deployed cluster by importing it into Palette.
 
 Open up a web browser and log in to your Palette account. Navigate to the left **Main Menu** and select **Clusters**.
 From the cluster list page, click on **Import Cluster** in the top right corner.
@@ -140,12 +139,12 @@ with commands is displayed on the right side of the screen.
 
 ![A view of the cluster details page with the import instructions](/tutorials/ai/palette-mcp/ai_palette-mcp_import-instructions.webp)
 
-Go ahead and copy the command to your clipboard and issue it in your terminal window where created the Kind cluster.
-After a few moments, the cluster will report a status of **Running** in the cluster details page.
+Go ahead and copy the command to your clipboard, then paste it into your terminal window where you created the Kind
+cluster. After a few moments, the cluster will report a status of **Running** in the cluster details page.
 
 :::tip
 
-In the event you need more detailed instructions on how to import a cluster into Palette, Check out the the
+In the event you need more detailed instructions on how to import a cluster into Palette, check out the
 [Import a Cluster](../../../clusters/imported-clusters/cluster-import.md) guide.
 
 :::
@@ -153,9 +152,9 @@ In the event you need more detailed instructions on how to import a cluster into
 ### Import Cluster Profile
 
 The next step is to deploy a Cluster Profile onto the cluster. For this tutorial, a cluster profile is provided for you
-to use that contains the Hello Universe pack, and the Nginx pack. C
+to use that contains the Hello Universe pack and the Nginx pack.
 
-Copy the JSON below, open a web browser session and navigate to your Palette UI session.
+Copy the JSON below, open a web browser session, and navigate to your Palette UI session.
 
 <PartialsComponent category="integrate-palette-mcp-agentic" name="cluster-profile-import" />
 
@@ -168,18 +167,18 @@ Click on **Validate** and **Confirm** to create the cluster profile.
 
 ### Deploy Cluster Profile
 
-Next up, you will deploy the add-on cluster profile onto the kind cluster. From the cluster profile list view page.
-Click on the row for the tutorial profile. This will take you to the details page. Click on **Deploy** in the top
-righthand corner.
+Next, you will deploy the add-on cluster profile to the kind cluster. From the cluster profile list view page. Click on
+the row for the tutorial profile. This will take you to the details page. Click on **Deploy** in the top righthand
+corner.
 
 ![A view of the user deploying the add-on profile by selecting the tutorial cluster](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_deploy-cluster-profile.webp)
 
 You will be redirected to the cluster details page. Click on **Save** to deploy the cluster profile. After a few
-moments, the hello-universe application and nginx application will be deployed. You can verify the pods are are in the
-"running" state by issuing the following command:
+moments, the hello-universe application and Nginx application will be deployed. You can verify the pods are in the
+"running" state by issuing the following command.
 
 ```shell
-kubectl get pods -A
+kubectl get pods --all-namespaces
 ```
 
 ```shell {8,19}
@@ -205,12 +204,21 @@ nginx                              nginx-ingress-nginx-controller-5567d85c84-jd7
 palette-system                     palette-webhook-7bf445d996-tdj7j                                     1/1     Running   2 (54m ago)   37h
 ```
 
+:::info
+
+You may notice that in the cluster details page, the add-on cluster profile remains stuck in a "deploying" state. This
+is because the Nginx and Hello Universe both deploy Services that expect a LoadBalancer to be provisioned. Kind does not
+natively support the type, LoadBalancer, so the Services remain in a "deploying" state. You can ignore this and proceed
+with the tutorial.
+
+:::
+
 ## Create Agentic Workflow
 
-It's time to start on building out the agentic workflow. Open your favorite text editor and navigate to the
+It's time to start building out the agentic workflow. Open your favorite text editor and navigate to the
 **/agentic-workflow** directory.
 
-The following is the directory structure of the agentic workflow, exlcuding the `__pycache__` directory.
+The following is the directory structure of the agentic workflow, excluding the `__pycache__` directory.
 
 ```shell
 .
@@ -229,32 +237,34 @@ The following is the directory structure of the agentic workflow, exlcuding the 
 └── uv.lock
 ```
 
-There a few key files in the agentic workflow:
+There are a few key files in the agentic workflow:
 
 - `main.py` - The main entry point for the agentic workflow. This is the starting point for the agentic workflow.
-- `tools.py` - Custom tools for the agentic workflow. This is where you can add your custom tools.
-- `agents/palette_profile_agent.py` -This agent is responsible for finding the Palette Cluster Profile that contains the
-  pack you are looking for.
-- `agents/active_cluster_agent.py` - This agent is responsible for identifying the active cluster in the Palette that
-  are using Cluster Profile that contains the pack you are looking for.
+- `tools.py` - Custom tools for the agentic workflow. This is where you can add additional custom tools that are not
+  part of an MCP server.
+- `agents/palette_profile_agent.py` -This agent is responsible for finding the cluster profile that contains the pack
+  you are looking for.
+- `agents/active_cluster_agent.py` - This agent is responsible for identifying the active clusters in Palette that are
+  using the cluster profiles that contain the pack you are looking for.
 - `agents/reporter_agent.py` - This agent is responsible for reporting the results of the agentic workflow.
 - `agents/tagging_agent.py` - This agent is responsible for tagging the cluster profiles and the active clusters using
-  the Cluster Profiles with the pack you are looking for.
+  the cluster profiles with the pack you are looking for.
 
 The agentic workflow is built using the [Langchain](https://langchain.readthedocs.io/en/stable/) framework. The workflow
-is made up for four different agents that are responsible for different parts of the workflow.
+consists of four agents, each responsible for a different part. Below is a diagram of the showcasing the interaction
+between the agents and the Palette MCP.
 
 ![A diagram of the agentic workflow](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_agentic-overview.webp)
 
-Two of the agents, interact with the Palette MCP server to get the information they need to perform their tasks. One
-agent leverages custom Python logic to perform the tagging of the cluster profiles and the active clusters. The use of
-custom logic is common when an MCP server does not have a tool that can perform the task the agent needs. The final
-agent is responsible for reporting the results of the agentic workflow and it does not require any interaction with the
-Palette MCP server or custom Python logic.
+Two agents interact with the Palette MCP to obtain the information they need to perform their tasks. One agent leverages
+custom Python logic to perform the tagging of the cluster profiles and the active clusters. The use of custom logic is
+common when an MCP server does not have a tool that can perform the task the agent needs. The final agent is responsible
+for reporting the results of the agentic workflow, and it does not require any interaction with the Palette MCP or
+custom Python logic.
 
-Go ahead and open each of the agent Python files. Uncomment any code that is commented out. As you uncomment the code,
-take a moment and review the code and the comments to understand what the code is doing. You will notice a pattern of an
-init function that is used to initialize the agent and an "invoke" function that is used to start the agent.
+Go ahead and open each agent Python file. Uncomment any code that is commented out. As you uncomment the code, take a
+moment to review the code and the comments to understand what the code is doing. You will notice a pattern of an init
+function that is used to initialize the agent and an "invoke" function that is used to start the agent.
 
 <PartialsComponent category="integrate-palette-mcp-agentic" name="agents" />
 
@@ -263,12 +273,14 @@ for the `main` function. We also recommend you take a moment and review the code
 
 <PartialsComponent category="integrate-palette-mcp-agentic" name="main-func" />
 
-At a high level, the `main` function initializes the Palette MCP server, the agents, and the tools. It also orchestrates
-the workflow by calling the agents in the correct order.
+At a high level, the `main` function initializes the Palette MCP, the agents, and the tools. It also orchestrates the
+workflow by calling the agents in the correct order.
+
+## Initalize MCP Overview
 
 In Langchain, you can define an MCP client using the
-[`MultiServerMCPClient`](https://docs.langchain.com/oss/python/langchain/mcp) class. By default, the MCP server
-connection will be stateless. This means that after each request, the connection is closed. In a production environment,
+[`MultiServerMCPClient`](https://docs.langchain.com/oss/python/langchain/mcp) class. By default, an MCP server
+connection will be stateless. This means that the connection is closed after each request. In a production environment,
 you may want to consider using a stateful connection by using the
 [`ClientSession`](https://docs.langchain.com/oss/python/langchain/mcp#stateful-sessions) class.
 
@@ -283,9 +295,9 @@ mcp_client = MultiServerMCPClient(
 mcp_tools = await mcp_client.get_tools()
 ```
 
-The `build_palette_server_config` function is a helper function that builds the configuration for the Palette MCP
-server. The function is displayed below for your reference. The function is responsible for starting the Docker
-container that contains the Palette MCP.
+The `build_palette_server_config` function is a helper function that builds the configuration for the Palette MCP. The
+function is displayed below for your reference. The function is responsible for starting the Docker container that
+contains the Palette MCP.
 
 ```python
 def build_palette_server_config(
@@ -324,7 +336,7 @@ profile_finder_agent = await initialize_profile_finder_agent(
 
 Lastly, inside each agent, the agent is created using the
 [`create_agent`](https://docs.langchain.com/oss/python/langchain/agents#create_agent) function. This is where the agent
-is configured with the Large Language Model, tools, system prompt, and response format.
+is configured with the LLM, tools, system prompt, and response format.
 
 ```python {4}
 llm = ChatOpenAI(model=model)
@@ -354,15 +366,16 @@ variable. Use the following command to set the OpenAI API key as an environment 
 export OPENAI_API_KEY=<your-openai-api-key>
 ```
 
-Replace `<your-openai-api-key>` with your OpenAI API key. You can get your OpenAI API key from the OpenAI website.
+Replace `<your-openai-api-key>` with your OpenAI API key. You can get your OpenAI API key from the
+[OpenAI platform site](https://platform.openai.com/api-keys).
 
-Now you are ready to start the agentic workflow. In your terminal issue the following command.
+You are now ready to start the agentic workflow. In your terminal, issue the following command.
 
 ```shell
 uv run python main.py --pack nginx --log-level debug
 ```
 
-This will start the agentic workflow and search for the nginx pack in your Palette environment.
+This will start the agentic workflow and search for the Nginx pack in your Palette environment.
 
 ```shell hideClipboard
 Debug level: debug
@@ -373,8 +386,8 @@ Options:
 Initializing MCP client...
 ```
 
-In a few moments, after finding the nginx pack in your Palette environment, you will prompted to enter the tags you want
-to apply to the cluster profiles and the active clusters that are using the nginx pack.
+In a few moments, after finding the Nginx pack in your Palette environment, you will be prompted to enter the tags you
+want to apply to the cluster profiles and the active clusters that are using the Nginx pack.
 
 ```shell hideClipboard
 Matches found. Enter tags to apply to matched cluster profiles and active clusters.
@@ -391,7 +404,7 @@ nginx:found, review
 ```
 
 Upon completion, the results of the agentic workflow will be displayed in your terminal. The output will look similar to
-the following:
+the following.
 
 ```shell hideClipboard
 1) Summary
@@ -474,7 +487,6 @@ cluster profiles and active clusters that are using the pack. This would be more
 maintenance burden. By using the Palette MCP, you can instead leverage the power of LLMs and have them perform the
 required tasks through the Palette MCP server without having to implement custom logic.
 
-You can use the same pattern we introduced in this tutorial to create your own agentic workflows that leverage the
-Palette MCP server to interact with your Palette environment. Add custom tools if the Palette MCP server does not have a
-tool that can perform the task the agent needs. You can craft more complex agentic workflows to solve your business
-problems by combining the Palette MCP server with custom tools, other MCP servers, and custom logic.
+You can use the code in this tutorial as a starting point to create your own agentic workflows that leverage the Palette
+MCP server to interact with your Palette environment. You can craft more complex agentic workflows to solve your
+business problems by combining the Palette MCP server with custom tools, other MCP servers, and custom logic.
