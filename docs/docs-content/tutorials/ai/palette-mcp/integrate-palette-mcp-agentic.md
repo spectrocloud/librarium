@@ -34,14 +34,14 @@ Below is a high-level diagram of the agentic workflow.
 
   - Kind installed locally. Use the [Kind Installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
     guide to install Kind.
-  - uv is installed locally. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to
+  - uv installed locally. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to
     install uv.
-  - git is installed locally. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
+  - git installed locally. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
   - A container runtime installed locally, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
   - The Palette MCP server is deployed in your environment. Refer to the Setup Palette MCP server guide to learn how to
     deploy the Palette MCP server.
-  - Helm is installed locally. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
+  - Helm installed locally. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
 
 - A Palette account.
 - A Palette API key. Check out the
@@ -266,12 +266,12 @@ common when an MCP server does not have a tool that can perform the task the age
 for reporting the results of the agentic workflow, and it does not require any interaction with the Palette MCP or
 custom Python logic.
 
-Open each agent Python file and uncomment all code that is commented out. As you uncomment the code, take a
-moment to review the comments to gain a deeper understanding. You will notice a pattern of an `init`
-function that is used to initialize the agent and an `invoke` function that is used to start the agent.
+Open each agent Python file and uncomment all code that is commented out. As you uncomment the code, take a moment to
+review the comments to gain a deeper understanding. You will notice a pattern of an `init` function that is used to
+initialize the agent and an `invoke` function that is used to start the agent.
 
-Next, open the `main.py` file. This is the main entry point for the agentic workflow. Uncomment the code
-for the `main` function and review the code.
+Next, open the `main.py` file. This is the main entry point for the agentic workflow. Uncomment the code for the `main`
+function and review the code.
 
 <PartialsComponent category="integrate-palette-mcp-agentic" name="main-func" />
 
@@ -282,8 +282,8 @@ workflow by calling the agents in the correct order.
 
 In Langchain, you can define an MCP client using the
 [`MultiServerMCPClient`](https://docs.langchain.com/oss/python/langchain/mcp) class. By default, an MCP server
-connection is stateless. This means that the connection is closed after each request. In a production environment,
-you may want to consider using a stateful connection by using the
+connection is stateless. This means that the connection is closed after each request. In a production environment, you
+may want to consider using a stateful connection by using the
 [`ClientSession`](https://docs.langchain.com/oss/python/langchain/mcp#stateful-sessions) class.
 
 ```python
@@ -387,29 +387,29 @@ Options:
 Initializing MCP client...
 ```
 
-Ater finding the Nginx pack in your Palette environment, the workflow prompts you to enter the tags you
-want to apply to the cluster profiles and the active clusters that are using the Nginx pack.
+Ater finding the Nginx pack in your Palette environment, the workflow prompts you to enter the tags you want to apply to
+the cluster profiles and the active clusters that are using the Nginx pack.
 
-Matches found. Enter tags to apply to matched cluster profiles and active clusters.
-Supported formats:
-  key:value  ->  nginx:found, date:2026-03-11
-  single     ->  review
-Press Enter with no input to skip tagging.
-```
+Matches found. Enter tags to apply to matched cluster profiles and active clusters. Supported formats: key:value ->
+nginx:found, date:2026-03-11 single -> review Press Enter with no input to skip tagging.
+
+````
 
 For example purposes, enter the following tags.
 
 ```shell
 nginx:found, review
-```
+````
 
 Upon completion, the results of the agentic workflow are displayed in your terminal.
 
-1) Summary
+1. Summary
 
-Pack `nginx` was found in 3 of 14 scanned cluster profiles. Among 1 active cluster(s) scanned, 1 active cluster(s) were confirmed to be using one of the matched profiles; tagging succeeded for 1 active cluster and 2 non-system matched cluster profiles.
+Pack `nginx` was found in 3 of 14 scanned cluster profiles. Among 1 active cluster(s) scanned, 1 active cluster(s) were
+confirmed to be using one of the matched profiles; tagging succeeded for 1 active cluster and 2 non-system matched
+cluster profiles.
 
-2) Matching cluster profiles
+2. Matching cluster profiles
 
 - UID: `63dce2a01ffb92baccb5b5c0`
   - Name: `nginx-ingress`
@@ -421,7 +421,7 @@ Pack `nginx` was found in 3 of 14 scanned cluster profiles. Among 1 active clust
   - Name: `tutorial-profile`
   - Evidence: spec.published.packs includes pack name 'nginx' with version '1.14.3'.
 
-3) Active clusters using the matched cluster profiles
+3. Active clusters using the matched cluster profiles
 
 - UID: `69b1a2b54d0877725c4205e5`
   - Name: `palette-mcp-agentic-tutorial`
@@ -429,7 +429,8 @@ Pack `nginx` was found in 3 of 14 scanned cluster profiles. Among 1 active clust
   - Cluster profile name: `tutorial-profile`
 
 // ... remaining output removed for brevity ...
-```
+
+````
 
 ## Review Results
 
@@ -439,7 +440,7 @@ profile you created called **tutorial-profile**. The cluster profile now has the
 
 ![The cluster profile details page with the tutorial-profile cluster profile and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster-profile.webp)
 
-Next, navigate to left **main menu** and select **Clusters**. Select the 
+Next, navigate to left **main menu** and select **Clusters**. Select the
 **palette-mcp-agentic-tutorial** cluster. The cluster  also has the two tags `nginx:found` and `review`.
 
 ![The cluster details page with the palette-mcp-agentic-tutorial cluster and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster.webp)
@@ -451,7 +452,7 @@ created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate
 **Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. Then, select **Settings** > **Delete Cluster**. Confirm the deletion by entering the cluster name when
 prompted.
 
-Next, navigate to the left **main menu** and select **Cluster Profiles**. Select the 
+Next, navigate to the left **main menu** and select **Cluster Profiles**. Select the
 **tutorial-profile** cluster profile. Then, select  the **three-dot Menu** > **Delete**. Confirm the deletion by entering the
 cluster profile name when prompted.
 
@@ -459,11 +460,10 @@ The last step is to delete the Kind cluster you created. Issue the following com
 
 ```shell
 kind delete cluster --name palette-mcp-agentic-tutorial
-```
+````
 
+Deleting cluster "palette-mcp-agentic-tutorial" ... Deleted nodes: ["palette-mcp-agentic-tutorial-control-plane"]
 
-Deleting cluster "palette-mcp-agentic-tutorial" ...
-Deleted nodes: ["palette-mcp-agentic-tutorial-control-plane"]
 ```
 
 ## Wrap-up
@@ -485,3 +485,4 @@ required tasks through the Palette MCP server without having to implement custom
 You can use the code in this tutorial as a starting point to create your own agentic workflows that leverage the Palette
 MCP server to interact with your Palette environment. You can craft more complex agentic workflows to solve your
 business problems by combining the Palette MCP server with custom tools, other MCP servers, and custom logic.
+```
