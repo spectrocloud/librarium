@@ -36,9 +36,7 @@ a maintenance policy, and deploy clusters from it.
 
 ## Provision and Upgrade Clusters Using the Palette UI
 
-In this section, you will use the Palette UI to import a cluster profile, create a cluster template with a maintenance
-policy, and deploy two clusters from the same template. You will then release a new cluster profile version, update the
-template to reference it, and apply upgrades across both clusters.
+Use the Palette UI to complete each step in the sections below.
 
 <PartialsComponent category="cluster-templates" name="aws-example-note" />
 
