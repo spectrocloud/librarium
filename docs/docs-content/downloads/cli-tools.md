@@ -27,6 +27,7 @@ The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64
 
 | Palette Release <!-- palette-cli-version-table --> | Recommended CLI Version          | Download URL                                                           | Checksum (SHA256)                                                  |
 | -------------------------------------------------- | -------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 4.8.38                                             | 4.8.8                            | https://software.spectrocloud.com/palette-cli/v4.8.8/linux/cli/palette | `9eb15343d098594f637b5f7f8228d427853846a38ada7ceef26656d6b177cdea` |
 | <!-- cli-4.8.b --> 4.8.33                          | 4.8.7                            | https://software.spectrocloud.com/palette-cli/v4.8.7/linux/cli/palette | `7854f35a210a0ecc926aae80218f14e06a98b2d6b28841454299372ee674a5f9` |
 | <!-- cli-4-8-a --> 4.8.21                          | 4.8.5                            | https://software.spectrocloud.com/palette-cli/v4.8.5/linux/cli/palette | `6c5928a96498111126d17260dfeb3354b6793e87cfad1b8b1103ddaa4069807b` |
 | <!-- cli-4.8.0 --> 4.8.6                           | 4.8.2                            | https://software.spectrocloud.com/palette-cli/v4.8.2/linux/cli/palette | `926c80d0a62c2b22df31856cdb680475f9423c3c3ef7bf3a6008888589a28217` |

@@ -11,6 +11,69 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 16, 2026 - Release 4.8.39
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8310 -->
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) `/v1/internal` API endpoints to be
+  accessible without the required authentication.
+
+## March 13, 2026 - Component Updates {#component-updates-2026-11}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.38.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2173 -->
+
+- Fixed an issue that caused errors when attempting to modify the storage size of
+  [OCI registries](../registries-and-packs/registries/oci-registry/oci-registry.md) associated with running clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-263 -->
+
+- Fixed an issue that prevented
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) version 4.8.37
+  from deploying successfully on AWS due to a missing image in the Amazon Machine Image (AMI).
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3814 -->
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI              | CSI        | :white_check_mark: | :x:                | 1.56.0      |
+| Azure Disk                  | CSI        | :x:                | :white_check_mark: | 1.34.1      |
+| Cilium                      | CNI        | :white_check_mark: | :x:                | 1.19.1      |
+| GCE Persistent Disk CSI     | CSI        | :white_check_mark: | :x:                | 1.24.0      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.9      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.3      |
+| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 28.12.0     |
+| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 82.4.2      |
+| Traefik                     | Add-on     | :white_check_mark: | :x:                | 39.0.2      |
+
+## March 10, 2026 - Release 4.8.38
+
+The following component updates are applicable to this release:
+
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
+
+### Improvements
+
+- [Palette CLI](../automation/palette-cli/palette-cli.md) version 4.8.8 has been released to address
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121).
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10194 -->
+
+- Fixed an issue that caused duplicate images that were vulnerable to
+  [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/cve-2025-68121)  
+  to appear alongside newer, fixed images in Palette version 4.8.37.
+
 ## March 6, 2026 - Component Updates {#component-updates-2026-10}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.37.
@@ -72,6 +135,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.37.
 The following component updates are applicable to this release:
 
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Improvements
 
@@ -111,6 +175,12 @@ The following component updates are applicable to this release:
 
 - Palette now allows the use of tags to specify the placement of control planes on
   [MAAS LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md).
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.37 Palette release is 4.8.11.
+
+:::
 
 ### Bug Fixes
 
@@ -229,6 +299,7 @@ The following component updates are applicable to this release:
 
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -241,6 +312,7 @@ The following component updates are applicable to this release:
 
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
 
@@ -640,6 +712,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Improvements
 
@@ -851,6 +924,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -868,6 +942,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -903,6 +978,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Features
 
@@ -935,6 +1011,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1376,6 +1453,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1490,6 +1568,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 #### Features
 
@@ -1693,6 +1772,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1732,6 +1812,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1763,6 +1844,7 @@ The following component updates are applicable to this release:
 - [February 13, 2026 - Component Updates](#component-updates-2026-07) <!-- omit in toc -->
 - [February 27, 2026 - Component Updates](#component-updates-2026-09) <!-- omit in toc -->
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
+- [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 
 ### Security Notices
 

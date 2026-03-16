@@ -36,7 +36,8 @@ App Mode is available for the following Palette and VerteX platforms.
 
 | Platform                   | Supported | Version                                                                                                                                            |
 | -------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Palette SaaS               | ✅        | `v3.0.0` or greater.                                                                                                                               |
+| Palette US SaaS            | ✅        | `v3.0.0` or greater.                                                                                                                               |
+| Palette EU SaaS            | ✅        | `v4.6.0` or greater.                                                                                                                               |
 | Self-hosted Palette        | ✅        | `v3.4.0` or greater.                                                                                                                               |
 | Palette Airgap Self-hosted | :warning: | `v4.0.0` or greater. Container deployment based workflows are not supported for airgap environments.                                               |
 | VerteX                     | :warning: | `v4.0.0` or greater. Be aware that App Mode is not FIPS compliant. Container deployment based workflows are not supported for airgap environments. |
