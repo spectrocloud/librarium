@@ -56,7 +56,7 @@ The variable is marked `required`, so no cluster can be deployed without a value
 Log in to [Palette](https://console.spectrocloud.com). From the left **Main Menu**, select **Profiles** and click
 **Import Cluster Profile**.
 
-In the slide panel that opens, copy the JSON for your cloud provider and paste it into the text area.
+In the slide drawer that opens, paste the following JSON snippet for your cloud provider.
 
 <Tabs>
 
