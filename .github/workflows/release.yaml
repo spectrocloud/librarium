@@ -42,6 +42,8 @@ env:
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+  AWS_REGION: us-west-2
+  AWS_DEFAULT_REGION: us-west-2
 
 
 concurrency:
