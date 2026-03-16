@@ -19,7 +19,7 @@ In this tutorial, you will:
   to apply environment-specific settings
 - Update the template and upgrade both clusters
 
-You will complete this tutorial using the Palette UI. You will import a provided JSON cluster profile definition, create
+You will complete this tutorial using the Palette UI. You will import a cluster profile, create
 a cluster template with a maintenance policy, and deploy clusters from it.
 
 ## Prerequisites
