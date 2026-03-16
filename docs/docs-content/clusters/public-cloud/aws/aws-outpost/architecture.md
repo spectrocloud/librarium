@@ -23,7 +23,9 @@ These are some of the architectural highlights when using Palette with your AWS 
   provision the compute and storage capacity available on your Outposts server. This capacity configures the
   `c6id.metal` instance type on your on-premises environment.
 
-- Create a [subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet) in your VPC for your Outpost server to allow workloads running on the Outpost to communicate with resources in the VPC. A subnet is required per Outpost server.
+- Create a [subnet](https://docs.aws.amazon.com/outposts/latest/server-userguide/launch-instance.html#create-subnet) in
+  your VPC for your Outpost server to allow workloads running on the Outpost to communicate with resources in the VPC. A
+  subnet is required per Outpost server.
 
 - Launch an [Amazon Elastic Compute Cloud (EC2)](https://aws.amazon.com/ec2/) configured with your instance size,
   Outpost VPC, and subnet. Configure [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) using the
