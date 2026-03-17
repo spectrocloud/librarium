@@ -9,10 +9,9 @@ tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster
-in Palette using the provider images, Edge host, and cluster profile created in the previous tutorials.
+to a locally-managed Edge device using the provider images, Edge host, cluster profile, and cluster definition created in the previous tutorials.
 
-You will learn how to select the desired cluster profile, assign the registered Edge host to the cluster, configure the
-number of nodes, and verify the deployment was successful by accessing the demo application included in the cluster
+You will learn how to select the desired cluster definition, assign the registered Edge host to the cluster, and verify the deployment was successful by accessing the demo application included in the cluster
 profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
 ![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-cluster.webp)
@@ -25,15 +24,15 @@ profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
   Palette.
 - You have completed the [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial and have an Edge cluster
   profile created in Palette.
-- You have access to [Palette's UI](https://www.spectrocloud.com/get-started).
+- You have completed the [Build Cluster Definition](./build-cluster-definition.md) tutorial and have a cluster definition downloaded and accessible. 
 - You have a DHCP-enabled network with one available IP address on the same network as the Edge host. You will use this
   IP as the cluster's Virtual IP (VIP) address.
 
 ## Deploy Edge Cluster
 
-Log in to [Palette](https://console.spectrocloud.com/).
+Log in to locally-managed Edge device using the username and password defined in your `user-data` file.
 
-From the left main menu, select **Clusters**, then click **Create Cluster**. If you already have clusters deployed,
+From the left main menu, select **Cluster**, then click **Create Cluster**. If you already have clusters deployed,
 select **Add New Cluster** instead. Ensure you are in the **Default** project.
 
 Palette prompts you to select the cluster type. Select **Edge Native** and click the **Start Edge Native Configuration**
