@@ -32,19 +32,23 @@ profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
 Log in to locally-managed Edge device using the username and password defined in your `user-data` file.
 
-From the left main menu, select **Cluster**, then click **Create Cluster**. If you already have clusters deployed,
-select **Add New Cluster** instead. Ensure you are in the **Default** project.
+From the left main menu, select **Cluster**, then click **Create Cluster**. 
 
-Palette prompts you to select the cluster type. Select **Edge Native** and click the **Start Edge Native Configuration**
-button.
+Enter the `local-edge-cluster` in the **Cluster name** field, and click **Next** to proceed.
 
-In the **Basic Information** section, set the cluster name to `gs-edge-cluster`, add a brief cluster description, and
-assign the tag `env:edge`. Click **Next** to proceed.
+On the **Cluster Profile** page, click the upload button to browse and upload the cluster definition TGZ file.
 
-On the **Cluster setup type** window, choose **Cluster Profiles > Add Cluster Profile**. Select the `gs-profile` cluster
-profile you created earlier, and click **Confirm**.
+![Screenshot of the Upload button on the cluster config page](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_import-cluster_4.8.webp)
 
-Review the cluster profile layers and click **Next** to proceed.
+Verify that the **Imported Applications preview** matches the list of packs selected during [Edge Cluster Profile](./edge-cluster-profile.md) tutorial.
+
+![Screenshot of imported cluster definition](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_import-cluster-preview_4.8.webp)
+
+Click **Next** to proceed.
+
+On the **Cluster Config** page, enter the **Virtual IP Address (VIP)** that you will use for your network. The following image displays
+
+
 
 :::tip
 
