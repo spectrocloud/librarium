@@ -11,6 +11,15 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 17, 2026 - Release 4.7.38
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8318-->
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) `/v1/internal` API endpoints to be
+  accessible without the required authentication.
+
 ## March 13, 2026 - Release 4.7.37
 
 ### Improvements

@@ -44,8 +44,7 @@ resume sessions.
 ### Fix Availability
 
 Palette version 4.7.37 includes fixes for this vulnerability in both core images and third-party images, where
-available. Refer to the [Release Notes](../../release-notes/release-notes.md) page for further
-details.
+available. Refer to the [Release Notes](../../release-notes/release-notes.md) page for further details.
 
 ### Mitigations
 
