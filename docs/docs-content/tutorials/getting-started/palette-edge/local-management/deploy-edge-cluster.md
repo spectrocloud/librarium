@@ -46,10 +46,6 @@ Verify that the **Imported Applications preview** matches the list of packs sele
 
 Click **Next** to proceed.
 
-On the **Cluster Config** page, enter the **Virtual IP Address (VIP)** that you will use for your network. The following image displays
-
-
-
 :::tip
 
 We recommend enabling the overlay network configuration when using DHCP-enabled networks to ensure stable IP addresses
@@ -59,8 +55,10 @@ detailed configuration instructions, refer to the
 
 :::
 
-In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
-unused address on the same network as your Edge host.
+On the **Cluster Config** page, enter the **Virtual IP Address (VIP)** that you will use for your network. The following image displays
+the **Cluster Config** page with information provided for Network Time Protocol (NTP) and Virtual IP Address provided.
+
+![Screenshot of Cluster Config page](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-config-network_4-8.webp)
 
 :::tip
 
@@ -80,7 +78,7 @@ server list.
 
 Click **Next** to continue.
 
-In the **Nodes Config** section, provide the following details for the control plane pool. This tutorial deploys a
+In the **Node Config** section, provide the following details for the control plane pool. This tutorial deploys a
 single-node Edge cluster with no worker pool.
 
 | **Field**                               | **Value**                                                                                                                       |
@@ -93,23 +91,20 @@ single-node Edge cluster with no worker pool.
 
 The following image shows the Edge host selection in the control plane pool.
 
-![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
+![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_node-config_4-8.webp)
 
-Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
+Optionally, you can specific which network card to use for the Edge device by selecting Auto under NIC Name and choosing which specific NIC to use. 
 
-The **Cluster Settings** section provides advanced options for scheduled scans, scheduled backups, and cluster role
-binding. For this tutorial, you can use the default settings. Select **Validate** to continue.
+Next, select **Remove** to delete the worker pool and click **Review** to proceed with the deployment.
 
-The **Review** section allows you to review the cluster configuration. If everything looks correct, click **Finish
-Configuration** to deploy the cluster.
+The **Review** section allows you to review the cluster configuration. If everything looks correct, click **Deploy Cluster** to deploy the cluster.
 
 After you create the cluster, the Palette Edge host agent pulls the provider images you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial and starts the installation process.
 
-The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration.
+The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration. The Edge Host will also reboot multiple times, which will require you to log in and refresh the screen to see latest info. 
 
-You can track the installation progress in Palette. The cluster **Overview** page displays a summary of the deployment
-progress, while the **Events** tab provides detailed logs.
+You can track the installation progress in Edge Local UI. From the left menu, select **Cluster** to monitor the process on the Overview page. The **Events** tab provides detailed logs.
 
 ## Validate
 
