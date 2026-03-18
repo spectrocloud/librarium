@@ -386,16 +386,15 @@ the cluster profiles and the active clusters that are using the Nginx pack.
 Matches found. Enter tags to apply to matched cluster profiles and active clusters. Supported formats: key:value ->
 nginx:found, date:2026-03-11 single -> review Press Enter with no input to skip tagging.
 
-````
-
 For example purposes, enter the following tags.
 
 ```shell
 nginx:found, review
-````
+```
 
 Upon completion, the results of the agentic workflow are displayed in your terminal.
 
+```shell
 1. Summary
 
 Pack `nginx` was found in 3 of 14 scanned cluster profiles. Among 1 active cluster(s) scanned, 1 active cluster(s) were
@@ -422,19 +421,17 @@ cluster profiles.
   - Cluster profile name: `tutorial-profile`
 
 // ... remaining output removed for brevity ...
-
-````
+```
 
 ## Review Results
 
 Return to your web browser session with the Palette UI and navigate to the **Cluster Profiles** page. Select the cluster
-profile you created called **tutorial-profile**. The cluster profile now has the two tags `nginx:found` and
-`review`.
+profile you created called **tutorial-profile**. The cluster profile now has the two tags `nginx:found` and `review`.
 
 ![The cluster profile details page with the tutorial-profile cluster profile and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster-profile.webp)
 
-Next, navigate to left **main menu** and select **Clusters**. Select the
-**palette-mcp-agentic-tutorial** cluster. The cluster  also has the two tags `nginx:found` and `review`.
+Next, navigate to left **main menu** and select **Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. The
+cluster also has the two tags `nginx:found` and `review`.
 
 ![The cluster details page with the palette-mcp-agentic-tutorial cluster and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster.webp)
 
@@ -442,18 +439,18 @@ Next, navigate to left **main menu** and select **Clusters**. Select the
 
 Use the following steps to clean up the resources you created for this tutorial. Start by deleting the cluster you
 created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate to the left **main menu** and select
-**Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. Then, select **Settings** > **Delete Cluster**. Confirm the deletion by entering the cluster name when
-prompted.
+**Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. Then, select **Settings** > **Delete Cluster**.
+Confirm the deletion by entering the cluster name when prompted.
 
-Next, navigate to the left **main menu** and select **Cluster Profiles**. Select the
-**tutorial-profile** cluster profile. Then, select  the **three-dot Menu** > **Delete**. Confirm the deletion by entering the
-cluster profile name when prompted.
+Next, navigate to the left **main menu** and select **Cluster Profiles**. Select the **tutorial-profile** cluster
+profile. Then, select the **three-dot Menu** > **Delete**. Confirm the deletion by entering the cluster profile name
+when prompted.
 
 The last step is to delete the Kind cluster you created. Issue the following command in your terminal.
 
 ```shell
 kind delete cluster --name palette-mcp-agentic-tutorial
-````
+```
 
 Deleting cluster "palette-mcp-agentic-tutorial" ... Deleted nodes: ["palette-mcp-agentic-tutorial-control-plane"]
 
