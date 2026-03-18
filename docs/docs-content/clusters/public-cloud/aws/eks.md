@@ -79,8 +79,8 @@ guide for help with migrating workloads. For deprecation updates, refer to our
   <details>
   <summary>Configure IRSA for Amazon EBS CSI</summary>
 
-  Use the following steps to configure IRSA for the Amazon EBS CSI. For instances launched on Amazon Linux 2023, IMDSv2
-  is enforced by default, and IRSA is the
+  Use the following steps to configure IRSA for the Amazon EBS CSI. For instances launched on Amazon Linux 2023, AWS
+  Instance Metadata Service version 2 (IMDSv2) is enforced by default, and IRSA is the
   [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for providing IAM permissions to
   Amazon EBS CSI.
 
@@ -173,6 +173,22 @@ guide for help with migrating workloads. For deprecation updates, refer to our
       ```
 
   </details>
+
+- The EC2 instance hop limit must be increased to **2** to allow IMDSv2 responses to traverse the additional network
+  namespace hop introduced by containerized workloads.
+
+  Palette deploys EKS clusters using AL2023 AMIs by default, which enforce IMDSv2. IMDSv2 has a default hop limit of 1,
+  and this means containers running in non-host networking mode cannot reach the IMDSv2 service. This causes failures in
+  the AWS CSI driver and any pod that accesses AWS resources via IMDSv2.
+
+  A hop limit of 2 is also required by other EKS components, including the AWS Load Balancer Controller, which relies on
+  IMDS for metadata introspection.
+
+  We recommend applying this setting at the account level for each region you intend to deploy into. Account-level
+  changes only apply to newly launched instances, therefore, existing instances must be updated individually. Refer to
+  the AWS documentation for guidance on configuring the hop limit for
+  [new instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html) and
+  [existing instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-existing-instances.html).
 
 - Deploying EKS clusters with the <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> pack
   requires using the **Replace Kube-Proxy With EBPF** preset and configuring additional values in the Cilium layer of
