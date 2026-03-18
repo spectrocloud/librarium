@@ -151,16 +151,16 @@ Open a terminal window on the machine you used to build the artifacts in the
 Delete the Edge Installer ISO image and its checksum by issuing the following commands.
 
 ```bash
-rm build/palette-edge-installer.iso
-rm build/palette-edge-installer.iso.sha256
+rm build/palette-local-edge-installer.iso
+rm build/palette-local-edge-installer.iso.sha256
 ```
 
 Next, delete the provider images both locally and from the registry where you pushed them. Issue the following command
 to delete them locally, replacing `<registry-name>` with the name of your registry.
 
 ```bash
-docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial
-docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial_linux_amd64
+docker rmi <registry-name>/ubuntu:k3s-1.32.3-v4.8.8-local-edge
+docker rmi <registry-name>/ubuntu:k3s-1.32.3-v4.8.8-local-edge_linux_amd64
 ```
 
 ## Wrap-up
