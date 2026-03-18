@@ -141,7 +141,7 @@ To remove the Edge cluster, log in to Edge Local UI and select **Cluster** from 
 
 Select **Confirm** on the confirmation window. This process may take several minutes to complete and will reboot the Edge device multiple times.
 
-Once complete, log in to the Edge Local UI to verify the cluster is removed by navigating to **Cluster** from the left main menu.
+Once complete, log in to the Edge Local UI to verify the cluster and cluster profile are removed by navigating to **Cluster** from the left main menu.
 
 ### Edge Artifacts
 
@@ -166,7 +166,7 @@ docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial_linux_amd64
 ## Wrap-up
 
 In this tutorial, you learned how to deploy a single-node Edge cluster along with a demo application, using the Edge
-host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Edge
+host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Local Palette Edge
 Getting Started tutorial series.
 
 We encourage you to check out the [Additional Capabilities](../../additional-capabilities/additional-capabilities.md)
