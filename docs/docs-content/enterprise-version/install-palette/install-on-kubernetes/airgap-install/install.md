@@ -82,8 +82,10 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
   workload, modify the `storageClass` parameter. Check out the
   [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
   page to learn more about modifying StorageClasses.
-- An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you
-  must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
+
+- Palette deploys both a Traefik Ingress Controller and an Nginx Ingress Controller. Traefik is the default ingress
+  controller starting with Palette 4.8.c. If you already have an ingress controller deployed in the cluster, you must
+  set the `ingress.enabled` parameter to `false` in the `values.yaml` file.
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for Palette.
@@ -214,7 +216,24 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
+8.  Install the `spectro-mgmt-crds` chart. This chart contains Custom Resource Definitions (CRDs) required by Palette,
+    including Traefik CRDs, and must be installed before the main Palette Helm Chart.
+
+    ```shell
+    helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+    ```
+
+    ```shell hideClipboard title="Example output"
+    Release "spectro-mgmt-crds" does not exist. Installing it now.
+    NAME: spectro-mgmt-crds
+    LAST DEPLOYED: Mon Jan 29 16:35:00 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+9.  Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
     **values.yaml** file contains the default values for the Palette installation parameters. However, you must populate
     the following parameters before installing Palette. You can learn more about the parameters on the **values.yaml**
     file on the [Helm Configuration Reference](../palette-helm-ref.md) page.
@@ -681,11 +700,11 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-9.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+10. This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
-    eight.
+    nine.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -721,7 +740,7 @@ environment. Reach out to our support team if you need assistance.
 
     </details>
 
-10. Install the Palette Helm Chart using the following command.
+11. Install the Palette Helm Chart using the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -738,9 +757,9 @@ environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-11. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
-    `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_ state. The
-    installation takes two to three minutes to complete.
+12. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_
+    state. The installation takes two to three minutes to complete.
 
     ```shell
     kubectl get pods --all-namespaces --watch
@@ -753,12 +772,12 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-12. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+13. Create a DNS CNAME record that is mapped to the Palette `traefik-ingress-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
     ```shell
-    kubectl get service ingress-nginx-controller --namespace ingress-nginx \
+    kubectl get service traefik-ingress-controller --namespace ingress-traefik \
     --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
@@ -773,7 +792,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-13. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+14. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser, paste the custom domain URL in the address bar, and append the value `/system`.
 
     The first time you visit the Palette system console, a warning message about a not-trusted SSL certificate may
@@ -782,7 +801,7 @@ environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-14. Log in to the system console using the following default credentials. Refer to the
+15. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
@@ -797,7 +816,7 @@ environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-15. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+16. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
@@ -826,11 +845,12 @@ Use the following steps to validate the Palette installation.
    password. Enter a new password and save your changes. You will be redirected to the Palette system console.
 
 3. Open a terminal session and issue the following command to verify the Palette installation. The command should return
-   a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`, and `ui-system` namespaces.
+   a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and
+   `ui-system` namespaces.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   | grep -E '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
    ```
 
    Your output should look similar to the following.
@@ -867,7 +887,7 @@ Use the following steps to validate the Palette installation.
    hubble-system   user-5c9f6c6f4b-9dgqz                      Running
    hubble-system   user-5c9f6c6f4b-hxkj6                      Running
    ingress-nginx   ingress-nginx-controller-2txsv             Running
-   ingress-nginx   ingress-nginx-controller-55pk2             Running
+   ingress-nginx   ingress-nginx-controller-55pk2             Running <!-- ADD TRAEFIK -->
    ingress-nginx   ingress-nginx-controller-gmps9             Running
    jet-system      jet-6599b9856d-t9mr4                       Running
    ui-system       spectro-ui-76ffdf67fb-rkgx8                Running

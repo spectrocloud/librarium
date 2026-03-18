@@ -81,7 +81,26 @@ match your environment.
    TEST SUITE: None
    ```
 
-4. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
+4. Install or upgrade the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs)
+   required by Palette, including Traefik CRDs.
+
+   ```shell
+   helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+   ```
+
+   You should receive an output similar to the following.
+
+   ```shell
+   Release "spectro-mgmt-crds" has been upgraded. Happy Helming!
+   NAME: spectro-mgmt-crds
+   LAST DEPLOYED: Thu Feb 22 19:43:00 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
+
+5. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
    installation, you can reuse it for the upgrade. Alternatively, follow the
    [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
    `values.yaml`.
@@ -96,8 +115,8 @@ match your environment.
 
    :::
 
-5. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
-   `palette/values.yaml` file from step four.
+6. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
+   `palette/values.yaml` file from step five.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -116,8 +135,8 @@ match your environment.
    TEST SUITE: None
    ```
 
-6. If you are upgrading a Palette instance in an environment that requires network proxy configuration, upgrade the
-   reach-system chart with the following command. Point to the `palette/values.yaml` file from step four.
+7. If you are upgrading a Palette instance in an environment that requires network proxy configuration, upgrade the
+   reach-system chart with the following command. Point to the `palette/values.yaml` file from step five.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -136,7 +155,7 @@ match your environment.
    TEST SUITE: None
    ```
 
-7. Upgrade Palette with the following command.
+8. Upgrade Palette with the following command.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -155,7 +174,7 @@ match your environment.
    TEST SUITE: None
    ```
 
-8. Use the following command to track the upgrade process.
+9. Use the following command to track the upgrade process.
 
    ```shell
    kubectl get pods --all-namespaces --watch
@@ -168,7 +187,33 @@ match your environment.
    :::
 
    The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces `cp-system`,
-   `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` are in the **Ready** status.
+   `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready** status.
+
+10. This version of Palette uses Traefik as the primary ingress controller instead of Nginx. The upgrade creates a new
+    LoadBalancer service in the `ingress-traefik` namespace with a new external IP address or hostname. Update your DNS
+    records to point to the new Traefik LoadBalancer to ensure continued access to Palette.
+
+    :::warning
+
+    If you do not update your DNS records, Palette will be unreachable at its custom domain because Nginx no longer
+    serves traffic on the standard HTTPS port after the migration to Traefik.
+
+    :::
+
+    Use the following command to retrieve the new Traefik LoadBalancer address.
+
+    ```shell
+    kubectl get service traefik-ingress-controller --namespace ingress-traefik \
+    --output jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}'
+    ```
+
+    Update your DNS records for your Palette domain to resolve to the address returned by the previous command. The
+    specific steps to update DNS records depend on your DNS provider. After updating DNS, verify that your domain
+    resolves to the new address.
+
+    ```shell
+    nslookup <your-palette-domain>
+    ```
 
 ## Validate
 
@@ -194,11 +239,11 @@ match your environment.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   | grep -E '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
    ```
 
-   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`,
-   and `ui-system` namespaces. All deployments should have the status `Running`.
+   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`,
+   `ingress-nginx`, `jet-system`, and `ui-system` namespaces. All deployments should have the status `Running`.
 
    ```shell
    cp-system       spectro-cp-ui-689984f88d-54wsw             Running
