@@ -14,7 +14,7 @@ to a locally-managed Edge device using the provider images, Edge host, cluster p
 You will learn how to select the desired cluster definition, assign the registered Edge host to the cluster, and verify the deployment was successful by accessing the demo application included in the cluster
 profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
-![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-cluster.webp)
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_architecture-cluster_4-8.webp)
 
 ## Prerequisites
 
@@ -108,95 +108,40 @@ You can track the installation progress in Edge Local UI. From the left menu, se
 
 ## Validate
 
-From Palette's left main menu, select **Clusters**.
-
-Next, select your cluster to open its **Overview** tab.
+Log in to the Local UI, and select **Cluster** to open its **Overview** tab.
 
 Confirm that your cluster displays a **Running** status and is listed as **Healthy**.
 
-When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
+![A screenshot showing running and healthy status of cluster](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-running_4-8.webp)
+
+When the Hello Universe application is deployed and ready for network traffic, the Edge Local UI exposes the service URL in the
 **Services** field. Click the URL on port **:8080** to access the application's landing page.
 
-![A screenshot of the cluster's Overview tab](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-overview.webp)
+![A screenshot of the cluster's service ports](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-service-ports_4-8.webp)
 
 Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages to learn more about space. The
 statistics page offers information on visitor counts for your deployed cluster.
 
 ![A screenshot of the Hello Universe application.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
 
+When the Harbor application is deployed and ready for network traffic, the Edge Local UI exposes the service URL in the **Services** field. Click the URL on port **:30003** to access the application's landing page. You can log in to Harbor using the user `admin` and the password you set in the [Create Edge Profile](./edge-cluster-profile.md).
+
+![A screenshot of the Harbor Native Edge Config](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-habor-logged-in_4-8.webp)
+
 ## Clean Up
 
-You have successfully provisioned an Edge cluster with a three-tier demo application. Use the following steps to remove
+You have successfully provisioned an Edge cluster with a three-tier demo application and Harbor registry. Use the following steps to remove
 the resources created during this tutorial series.
 
 ### Cluster and Cluster Profile
 
-To remove the Edge cluster, log in to Palette and select **Clusters** from the left main menu. Select the
-`gs-edge-cluster` cluster to access its details page.
+To remove the Edge cluster, log in to Edge Local UI and select **Cluster** from the left main menu. Select **Delete Cluster** from the **Actions** drop-down.
 
-Next, click on **Settings** and select **Delete Cluster**.
+![A screenshot of the Actions menu options](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-delete_4-8.webp)
 
-Type the cluster name to proceed with the deletion. This process may take several minutes to complete.
+Select **Confirm** on the confirmation window. This process may take several minutes to complete and will reboot the Edge device multiple times.
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. To force delete a
-cluster, access the cluster’s details page, click **Settings**, then select **Force Delete Cluster**. Palette
-automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
-
-:::
-
-Once the cluster is deleted, proceed with the cluster profile deletion.
-
-From the left main menu, select **Profiles**. Select the `gs-profile` cluster profile, click on the three-dot menu, and
-select **Delete**. Confirm the selection to remove the cluster profile.
-
-### Edge Host
-
-After removing the Edge cluster and cluster profile, select **Clusters** from the left main menu, then select **Edge
-Hosts**.
-
-Locate the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial. Click on the three-dot menu
-and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This removes the Edge host from
-Palette but does not delete the underlying infrastructure.
-
-![A screenshot of the Edge Hosts page.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_delete-host.webp)
-
-<Tabs groupId="host">
-
-<TabItem label="VM Host" value="VM Host">
-
-If you used a VirtualBox VM as the Edge host, open the **VirtualBox** application on your host machine to delete the VM.
-
-Right-click the `edge-vm` VM and select **Stop**. Then, click **Power Off** to turn the machine off.
-
-Next, right-click the VM again and select **Remove**. Click **Delete all files** to delete the VM and its hard disk.
-
-</TabItem>
-
-<TabItem label="Bare Metal Host" value="Bare Metal Host">
-
-If you used a physical device as the Edge host, you can reset it to its post-initial setup state. This removes all
-workloads, content, and cluster definitions from the Edge host.
-
-To reset the Edge host, SSH into it and issue the following command.
-
-```shell
-grub2-editenv /oem/grubenv set next_entry=statereset
-```
-
-Next, reboot the host.
-
-```shell
-sudo reboot
-```
-
-Refer to [Reset Host via Terminal](../../../../clusters/edge/cluster-management/reset-host.md) for more information
-about Edge host resetting.
-
-</TabItem>
-
-</Tabs>
+Once complete, log in to the Edge Local UI to verify the cluster is removed by navigating to **Cluster** from the left main menu.
 
 ### Edge Artifacts
 
