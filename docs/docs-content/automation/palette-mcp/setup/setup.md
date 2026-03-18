@@ -7,7 +7,9 @@ sidebar_position: 0
 tags: ["ai", "mcp", "automation"]
 ---
 
-This section provides guides for installing the Palette MCP server on the most popular AI developer tools: [Cursor](https://cursor.com/get-started), [Claude Code](https://code.claude.com/docs/en/overview), and [Gemini CLI](https://geminicli.com/).
+This section provides guides for installing the Palette MCP server on the most popular AI developer tools:
+[Cursor](https://cursor.com/get-started), [Claude Code](https://code.claude.com/docs/en/overview), and
+[Gemini CLI](https://geminicli.com/).
 
 ## Resources
 
