@@ -57,8 +57,7 @@ The capacity creation may take a few hours.
 6. Select **Create subnet**.
 
 7. In the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html), execute the
-   following command to enable the subnet as a Local Network Interface (LNI) for anything with device index 1, allowing
-   Palette Edge to communicate with your server.
+   following command to enable the subnet as a [Local Network Interface (LNI)](https://docs.aws.amazon.com/outposts/latest/server-userguide/local-network-interface.html) for anything with device index 1. This allows instances on the Outpost server to connect to your on-premises network, which is required for Palette Edge communication.
 
    ```bash
    aws ec2 modify-subnet-attribute
