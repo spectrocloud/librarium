@@ -3,7 +3,7 @@ sidebar_label: "Add DNS Mapping"
 title: "Add DNS Mapping"
 description: "Learn how to add DNS mapping for a Private Cloud Gateway (PCG) deployed in a VMware vSphere environment."
 hide_table_of_contents: false
-sidebar_position: 15
+sidebar_position: 16
 tags: ["pcg"]
 ---
 
