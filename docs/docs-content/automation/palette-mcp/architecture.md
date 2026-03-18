@@ -7,13 +7,44 @@ sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
-A Model Context Protocol (MCP) server allows AI models to interact with external tools, data sources, and services in a
-structured and reliable way. AI models that are connected to MCP servers can perform real actions such as reading files,
-querying databases, or calling APIs, instead of only relying on their training data. Therefore, AI tools that are
-connected to MCP servers are useful in practical applications because they become active assistants, with capabilities
-far beyond generating text.
+The [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) is local-first MCP server, hosted in a
+container that is deployed on your machine or environment. The container communicates with the configured Palette
+instance and performs the required API operations.
 
-The Palette MCP server is a bespoke tool for interacting with the Palette API, allowing users to control resources using
-natural language. The Palette MCP server currently has the following capabilities:
+These are some of the architectural highlights when using the Palette MCP server.
 
--
+- Install an MCP tool on their local machine or environment. Popular tools are [Cursor](https://cursor.com/get-started),
+  [Claude Code](https://code.claude.com/docs/en/overview), and [Gemini CLI](https://geminicli.com/).
+
+- The Palette MCP server expects a handful parameters which enable it to connect to Palette. Refer to the
+  [Palette MCP Server Configuration](#palette-mcp-server-configuration) for all the configuration.
+
+- Configure the Palette MCP server as a custom MCP on your MCP tool, allow you to begin to use the custom tools that it
+  provides. The Palette MCP server starts up a local container from an image hosted in
+  [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/).
+
+- The MCP server is now ready to use. Queries communicate with the Palette API to perform the operations you instruct it
+  to perform.
+
+![Palette MCP server architecture](/palette-mcp_architecture_overview.webp)
+
+## Server Configuration
+
+The Palette MCP server provides the following configuration parameters.
+
+| **Parameter**                     | **Description**                                                                                                                                |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SPECTROCLOUD_DEFAULT_PROJECT_ID` | [Project ID](../../tenant-settings/projects/projects.md#project-id) for all server operations.                                                 |
+| `SPECTROCLOUD_APIKEY`             | [Palette API key](../../user-management/authentication/api-key/api-key.md) used for authentication.                                            |
+| `SPECTROCLOUD_HOST`               | API endpoint for your Palette installation. For example, api.spectrocloud.com.                                                                 |
+| `ALLOW_DANGEROUS_ACTIONS`         | Controls whether the MCP server is allowed to perform dangerous actions, such as resource deletion. Disabled by default, set to `1` to enable. |
+| `AUTO_GENERATE_MCP_TOOLS`         | Controls whether the server should automatically generate tools from the Palette API. Disabled by default, set to `1` to enable.               |
+
+:::warning
+
+`AUTO_GENERATE_MCP_TOOLS` is an experimental flag. It results in over 950 unique tools being loaded into the MCP server.
+Most models will not be able to handle this many tools and will only load a subset of the tools.
+
+Additionally, we cannot guarantee that the tools will work as expected as they are generated dynamically.
+
+:::
