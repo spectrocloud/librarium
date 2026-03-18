@@ -40,7 +40,7 @@ To configure an Edge host on your Outpost server, complete the following steps.
 
 3. Click the **Launch instance** button.
 
-4. In the **Application and OS Images (Amazon Machine Image)** section, select **Ubuntu**.
+4. In the **Application and OS Images (Amazon Machine Image)** section, select a Linux-based OS supported by agent mode (for example, **Ubuntu**).
 
 5. Verify that the **Instance type** is set to **c6id.metal**.
 
@@ -62,7 +62,11 @@ To configure an Edge host on your Outpost server, complete the following steps.
 10. Expand the **Advanced details** section.
 
 11. Populate the **User data - _optional_** field. You can upload a file containing the user data or enter the text
-    directly in the UI. Below is an example of a `user-data` file. It applies a custom Netplan configuration to the
+    directly in the UI.
+
+    You must configure the OS to enable the LNI to communicate on your local area network (LAN), just as you would for any on-premises system. Do not use **VPC > DHCP option sets** to configure the LNI, as it operates on your LAN rather than within the VPC.
+
+    Below is an example of a `user-data` file. It applies a custom Netplan configuration to the
     underlying OS.
 
     ```yaml
@@ -192,3 +196,8 @@ To configure an Edge host on your Outpost server, complete the following steps.
 5. Confirm your Edge host is listed as **Ready** and **HEALTHY**.
 
    ![Registered Edge Host in Palette](/configure-edge-on-aws-outpost_registered-edge-host.webp)
+
+## Next Steps
+
+Once an Edge host is registered with Palette, you can allocate the Edge host to a cluster. For more information, refer
+to [Create Cluster Definition](../../../edge/site-deployment/cluster-deployment.md).
