@@ -32,6 +32,19 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5509 -->
+
+- Palette now supports
+  [Microsoft Entra integration](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
+  and [Microsoft Entra Workload ID](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview?tabs=dotnet)
+  for Azure Kubernetes Service (AKS) clusters. This allows you to manage access to your AKS clusters using Microsoft
+  Entra ID identities and leverage Microsoft Entra Workload ID for secure authentication of applications hosted on your
+  AKS clusters. Both features need to be enabled in your Azure AKS cluster profiles. Refer to the following guides for
+  more information:
+
+  - [Enable Microsoft Entra ID for AKS](../clusters/public-cloud/azure/enable-iam-features-aks/enable-microsoft-entra-id-aks.md)
+  - [Enable Microsoft Entra Workload ID for AKS](../clusters/public-cloud/azure/enable-iam-features-aks/enable-microsoft-entra-workload-id-aks.md)
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9513 -->
 
 - API endpoints for AWS services in AWS Secret and Top Secret cloud regions can now be customized. Refer to our
