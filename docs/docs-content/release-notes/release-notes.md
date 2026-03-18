@@ -32,7 +32,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9963 -->
 
-- The `GET /v1/spectroclusters/{uid}` API now honors the `resolvePackValues` query parameter. Previously, it was implicitly treated as `true` when not specified. As a result, requests that omit `resolvePackValues` may now return unresolved pack values. Services that rely on resolved values must explicitly set `resolvePackValues=true`.
+- The `GET /v1/spectroclusters/{uid}` API now honors the `resolvePackValues` query parameter. Previously, it was
+  implicitly treated as `true` when not specified. As a result, requests that omit `resolvePackValues` may now return
+  unresolved pack values. Services that rely on resolved values must explicitly set `resolvePackValues=true`.
 
 #### Features
 
