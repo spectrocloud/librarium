@@ -143,6 +143,44 @@ Select **Confirm** on the confirmation window. This process may take several min
 
 Once complete, log in to the Edge Local UI to verify the cluster and cluster profile are removed by navigating to **Cluster** from the left main menu.
 
+### Edge Host
+
+<Tabs groupId="host">
+
+<TabItem label="VM Host" value="VM Host">
+
+If you used a VirtualBox VM as the Edge host, open the **VirtualBox** application on your host machine to delete the VM.
+
+Right-click the `edge-vm` VM and select **Stop**. Then, click **Power Off** to turn the machine off.
+
+Next, right-click the VM again and select **Remove**. Select **Delete the virtual machine and virtual hard disks** to delete the VM and its hard disk, and click **Remove**.
+
+</TabItem>
+
+<TabItem label="Bare Metal Host" value="Bare Metal Host">
+
+If you used a physical device as the Edge host, you can reset it to its post-initial setup state. This removes all
+workloads, content, and cluster definitions from the Edge host.
+
+To reset the Edge host, SSH into it and issue the following command.
+
+```shell
+grub2-editenv /oem/grubenv set next_entry=statereset
+```
+
+Next, reboot the host.
+
+```shell
+sudo reboot
+```
+
+Refer to [Reset Host via Terminal](../../../../clusters/edge/cluster-management/reset-host.md) for more information
+about Edge host resetting.
+
+</TabItem>
+
+</Tabs>
+
 ### Edge Artifacts
 
 Open a terminal window on the machine you used to build the artifacts in the
