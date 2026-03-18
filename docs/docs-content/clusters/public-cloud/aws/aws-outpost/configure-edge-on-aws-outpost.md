@@ -40,7 +40,8 @@ To configure an Edge host on your Outpost server, complete the following steps.
 
 3. Click the **Launch instance** button.
 
-4. In the **Application and OS Images (Amazon Machine Image)** section, select a Linux-based OS supported by agent mode (for example, **Ubuntu**).
+4. In the **Application and OS Images (Amazon Machine Image)** section, select a Linux-based OS supported by agent mode
+   (for example, **Ubuntu**).
 
 5. Verify that the **Instance type** is set to **c6id.metal**.
 
@@ -64,10 +65,11 @@ To configure an Edge host on your Outpost server, complete the following steps.
 11. Populate the **User data - _optional_** field. You can upload a file containing the user data or enter the text
     directly in the UI.
 
-    You must configure the OS to enable the LNI to communicate on your local area network (LAN), just as you would for any on-premises system. Do not use **VPC > DHCP option sets** to configure the LNI, as it operates on your LAN rather than within the VPC.
+    You must configure the OS to enable the LNI to communicate on your local area network (LAN), just as you would for
+    any on-premises system. Do not use **VPC > DHCP option sets** to configure the LNI, as it operates on your LAN
+    rather than within the VPC.
 
-    Below is an example of a `user-data` file. It applies a custom Netplan configuration to the
-    underlying OS.
+    Below is an example of a `user-data` file. It applies a custom Netplan configuration to the underlying OS.
 
     ```yaml
     #cloud-config
