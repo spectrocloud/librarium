@@ -9,12 +9,11 @@ tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster
-<<<<<<< HEAD
-to a locally managed Edge device using the provider images, Edge host, cluster profile, and cluster definition created in the previous tutorials.
-=======
-to a locally-managed Edge device using the provider images, Edge host, cluster profile, and cluster definition created
-in the previous tutorials.
->>>>>>> 0790d54e75630b5be39dabd9f0a5f57db3bb4e45
+<<<<<<< HEAD to a locally managed Edge device using the provider images, Edge host, cluster profile, and cluster
+definition created in the previous tutorials. ======= to a locally-managed Edge device using the provider images, Edge
+host, cluster profile, and cluster definition created in the previous tutorials.
+
+> > > > > > > 0790d54e75630b5be39dabd9f0a5f57db3bb4e45
 
 You will learn how to select the desired cluster definition, assign the registered Edge host to the cluster, and verify
 the deployment was successful by accessing the demo application included in the cluster profile,
@@ -113,12 +112,12 @@ Cluster** to deploy the cluster.
 After you create the cluster, the Palette Edge host agent pulls the provider images you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial and starts the installation process.
 
-<<<<<<< HEAD
-The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration. The Edge Host will also reboot multiple times, which will require you to log in and refresh the screen to display the latest info. 
-=======
-The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration. The Edge Host will
-also reboot multiple times, which will require you to log in and refresh the screen to see latest info.
->>>>>>> 0790d54e75630b5be39dabd9f0a5f57db3bb4e45
+<<<<<<< HEAD The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration. The Edge
+Host will also reboot multiple times, which will require you to log in and refresh the screen to display the latest
+info. ======= The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration. The
+Edge Host will also reboot multiple times, which will require you to log in and refresh the screen to see latest info.
+
+> > > > > > > 0790d54e75630b5be39dabd9f0a5f57db3bb4e45
 
 You can track the installation progress in Edge Local UI. From the left menu, select **Cluster** to monitor the process
 on the Overview page. The **Events** tab provides detailed logs.
