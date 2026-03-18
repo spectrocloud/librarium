@@ -17,8 +17,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8240 -->
 
-- Fixed an issue that caused DNS to stop working on [Edge clusters](../clusters/edge/edge.md) that have configured
-  [kube-vip](../clusters/edge/networking/kubevip.md) with the same virtual IP address as the host IP address.
+- Fixed an issue that caused DNS failures on [Edge clusters](../clusters/edge/edge.md) when
+  [kube-vip](../clusters/edge/networking/kubevip.md) was configured with the same IP address for both the virtual IP and host IP.
 
 ## March 16, 2026 - Release 4.8.39
 
