@@ -30,6 +30,10 @@ tags: ["release-notes"]
   [Crossplane](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette), and other API tools must
   specify `azs` for all new and existing AWS worker machine pool configurations to ensure successful provisioning.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9963 -->
+
+- The `GET /v1/spectroclusters/{uid}` API now honors the `resolvePackValues` query parameter. Previously, it was implicitly treated as `true` when not specified. As a result, requests that omit `resolvePackValues` may now return unresolved pack values. Services that rely on resolved values must explicitly set `resolvePackValues=true`.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9513 -->
