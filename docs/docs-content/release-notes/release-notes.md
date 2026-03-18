@@ -11,6 +11,31 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 18, 2026 - Release 4.8.40
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8240 -->
+
+- Fixed an issue that caused DNS failures on [Edge clusters](../clusters/edge/edge.md) when
+  [kube-vip](../clusters/edge/networking/kubevip.md) was configured with the same IP address for both the virtual IP and
+  host IP.
+
+## March 16, 2026 - Release 4.8.39
+
+### Improvements
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.39 is now
+  available.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8310 -->
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) `/v1/internal` API endpoints to be
+  accessible without the required authentication.
+
 ## March 13, 2026 - Component Updates {#component-updates-2026-11}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.38.
