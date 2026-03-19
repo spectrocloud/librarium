@@ -117,6 +117,13 @@ cluster profile. Harbor is required to manage local registries for locally manag
 | ------------- | ----------- | ---------------- | --------- |
 | Harbor        | 1.9.3       | Palette Registry | Registry  |
 
+Once you select the pack, Palette displays its `Readme` file, providing additional guidance on usage and configuration.
+This pack deploys the [Harbor Edge Native Config](../../../../integrations/harbor-edge-native-config.mdx) registry
+application.
+
+Under **Pack Details**, select **Values**, and enter your password value in the `harbor-config.password` field. The
+default user is `admin`.
+
 Click **Confirm & Create**.
 
 Next, click **Add New Pack** to include the add-on layers. Search for `Hello Universe` and add the following pack to

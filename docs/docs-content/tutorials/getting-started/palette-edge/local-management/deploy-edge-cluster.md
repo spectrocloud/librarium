@@ -5,17 +5,18 @@ description: "Get started with Kubernetes at the edge. Learn how to deploy an Ed
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster
-in Palette using the provider images, Edge host, and cluster profile created in the previous tutorials.
+This is the final tutorial in the Local Palette Edge Management series. It teaches you how to deploy an Edge Kubernetes
+cluster to a locally managed Edge device using the provider images, Edge host, cluster profile, and cluster definition
+created in the previous tutorials.
 
-You will learn how to select the desired cluster profile, assign the registered Edge host to the cluster, configure the
-number of nodes, and verify the deployment was successful by accessing the demo application included in the cluster
-profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
+You will learn how to select the desired cluster definition, assign the registered Edge host to the cluster, and verify
+the deployment was successful by accessing the demo application included in the cluster profile,
+[Hello Universe](https://github.com/spectrocloud/hello-universe).
 
-![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-cluster.webp)
+![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_architecture-cluster_4-8.webp)
 
 ## Prerequisites
 
@@ -25,27 +26,30 @@ profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
   Palette.
 - You have completed the [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial and have an Edge cluster
   profile created in Palette.
-- You have access to [Palette's UI](https://www.spectrocloud.com/get-started).
+- You have completed the [Build Cluster Definition](./build-cluster-definition.md) tutorial and have a cluster
+  definition downloaded and accessible.
 - You have a DHCP-enabled network with one available IP address on the same network as the Edge host. You will use this
   IP as the cluster's Virtual IP (VIP) address.
 
 ## Deploy Edge Cluster
 
-Log in to [Palette](https://console.spectrocloud.com/).
+Log in to Local UI (`https://<ip-of-edge:5080`) with the username and password you defined in the
+[Prepare User Data](./prepare-user-data.md) tutorial.
 
-From the left main menu, select **Clusters**, then click **Create Cluster**. If you already have clusters deployed,
-select **Add New Cluster** instead. Ensure you are in the **Default** project.
+From the left main menu, select **Cluster**, then click **Create Cluster**.
 
-Palette prompts you to select the cluster type. Select **Edge Native** and click the **Start Edge Native Configuration**
-button.
+Enter `local-edge-cluster` in the **Cluster name** field, and click **Next** to proceed.
 
-In the **Basic Information** section, set the cluster name to `gs-edge-cluster`, add a brief cluster description, and
-assign the tag `env:edge`. Click **Next** to proceed.
+On the **Cluster Profile** page, click the upload button to browse and upload the cluster definition TGZ file.
 
-On the **Cluster setup type** window, choose **Cluster Profiles > Add Cluster Profile**. Select the `gs-profile` cluster
-profile you created earlier, and click **Confirm**.
+![Screenshot of the Upload button on the cluster config page](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_import-cluster_4.8.webp)
 
-Review the cluster profile layers and click **Next** to proceed.
+Verify that the **Imported Applications preview** matches the list of packs selected when completing the
+[Edge Cluster Profile](./edge-cluster-profile.md) tutorial.
+
+![Screenshot of imported cluster definition](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_import-cluster-preview_4.8.webp)
+
+Click **Next** to proceed.
 
 :::tip
 
@@ -56,8 +60,10 @@ detailed configuration instructions, refer to the
 
 :::
 
-In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
-unused address on the same network as your Edge host.
+On the **Cluster Config** page, enter the **Virtual IP Address (VIP)** value . The following image displays the
+**Cluster Config** page with the **Network Time Protocol (NTP)** and **Virtual IP Address** values provided.
+
+![Screenshot of Cluster Config page](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-config-network_4-8.webp)
 
 :::tip
 
@@ -73,96 +79,86 @@ The output displays the IP addresses that are currently in use on your network.
 :::
 
 Optionally, you can also select an SSH key to access the cluster's nodes and specify a Network Time Protocol (NTP)
-server list.
+Optionally, you can also select the **SSH keys** to access the cluster's nodes and specify the **Network Time Protocol
+(NTP)** server list.
 
 Click **Next** to continue.
 
-In the **Nodes Config** section, provide the following details for the control plane pool. This tutorial deploys a
+In the **Node Config** section, provide the following details for the control plane pool. This tutorial deploys a
 single-node Edge cluster with no worker pool.
 
-| **Field**                               | **Value**                                                                                                                       |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| **Node pool name**                      | `control-plane-pool`                                                                                                            |
-| **Allow worker capability**             | Yes                                                                                                                             |
-| **Additional Labels (Optional)**        | None                                                                                                                            |
-| **Taints (Optional)**                   | None                                                                                                                            |
-| **Pool Configuration** > **Edge Hosts** | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. |
+| **Field**                                   | **Value**                                                                                                                       |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Node pool name**                          | `control-plane-pool`                                                                                                            |
+| **Allow worker capability**                 | Yes                                                                                                                             |
+| **Additional Labels (Optional)**            | None                                                                                                                            |
+| **Taints (Optional)**                       | None                                                                                                                            |
+| **Pool Configuration** > **Add Edge Hosts** | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. |
 
 The following image shows the Edge host selection in the control plane pool.
 
-![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
+![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_node-config_4-8.webp)
 
-Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
+Optionally, you can specify which Network Interface Card (NIC) to use for the Edge device by selecting **Auto** under
+**NIC Name** and choosing the NIC.
 
-The **Cluster Settings** section provides advanced options for scheduled scans, scheduled backups, and cluster role
-binding. For this tutorial, you can use the default settings. Select **Validate** to continue.
+Next, select **Remove** to delete the worker pool and click **Review** to proceed with the deployment.
 
-The **Review** section allows you to review the cluster configuration. If everything looks correct, click **Finish
-Configuration** to deploy the cluster.
+The **Review** section allows you to review the cluster configuration. If everything looks correct, select **Deploy
+Cluster**.
 
 After you create the cluster, the Palette Edge host agent pulls the provider images you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial and starts the installation process.
 
-The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration.
+The cluster deployment may take 15 to 30 minutes, depending on the host and cluster configuration. The Edge Host will
+also reboot multiple times, which will require you to log in and refresh the screen to display the latest info.
 
-You can track the installation progress in Palette. The cluster **Overview** page displays a summary of the deployment
-progress, while the **Events** tab provides detailed logs.
+You can track the installation progress in Edge Local UI. From the left menu, select **Cluster** to monitor the process
+on the Overview page. The **Events** tab provides detailed logs.
 
 ## Validate
 
-From Palette's left main menu, select **Clusters**.
-
-Next, select your cluster to open its **Overview** tab.
+Log in to the Local UI, and select **Cluster** to open its **Overview** tab.
 
 Confirm that your cluster displays a **Running** status and is listed as **Healthy**.
 
-When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
-**Services** field. Click the URL on port **:8080** to access the application's landing page.
+![A screenshot showing running and healthy status of cluster](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-running_4-8.webp)
 
-![A screenshot of the cluster's Overview tab](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-overview.webp)
+When the Hello Universe application is deployed and ready for network traffic, the Edge Local UI exposes the service URL
+in the **Services** section. Click the URL on port **:8080** to access the application's landing page.
+
+![A screenshot of the cluster's service ports](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-service-ports_4-8.webp)
 
 Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages to learn more about space. The
 statistics page offers information on visitor counts for your deployed cluster.
 
 ![A screenshot of the Hello Universe application.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
 
+When the Harbor application is deployed and ready for network traffic, the Edge Local UI exposes the service URL in the
+**Services** section. Click the URL on port **:30003** to access the application's landing page. You can log in to
+Harbor using the user `admin` and the password you set in the [Create Edge Profile](./edge-cluster-profile.md).
+
+![A screenshot of the Harbor Native Edge Config](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-habor-logged-in_4-8.webp)
+
 ## Clean Up
 
-You have successfully provisioned an Edge cluster with a three-tier demo application. Use the following steps to remove
-the resources created during this tutorial series.
+You have successfully provisioned an Edge cluster with a three-tier demo application and Harbor registry. Use the
+following steps to remove the resources created during this tutorial series.
 
 ### Cluster and Cluster Profile
 
-To remove the Edge cluster, log in to Palette and select **Clusters** from the left main menu. Select the
-`gs-edge-cluster` cluster to access its details page.
+To remove the Edge cluster, log in to Edge Local UI and select **Cluster** from the left main menu. Select **Delete
+Cluster** from the **Actions** drop-down.
 
-Next, click on **Settings** and select **Delete Cluster**.
+![A screenshot of the Actions menu options](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-delete_4-8.webp)
 
-Type the cluster name to proceed with the deletion. This process may take several minutes to complete.
+Select **Confirm** on the confirmation window. This process may take several minutes to complete and will reboot the
+Edge device multiple times.
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. To force delete a
-cluster, access the cluster’s details page, click **Settings**, then select **Force Delete Cluster**. Palette
-automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
-
-:::
-
-Once the cluster is deleted, proceed with the cluster profile deletion.
-
-From the left main menu, select **Profiles**. Select the `gs-profile` cluster profile, click on the three-dot menu, and
-select **Delete**. Confirm the selection to remove the cluster profile.
+Once complete, log in to the Edge Local UI to verify the cluster and cluster profile are removed by navigating to
+**Cluster** from the left main menu.
 
 ### Edge Host
-
-After removing the Edge cluster and cluster profile, select **Clusters** from the left main menu, then select **Edge
-Hosts**.
-
-Locate the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial. Click on the three-dot menu
-and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This removes the Edge host from
-Palette but does not delete the underlying infrastructure.
-
-![A screenshot of the Edge Hosts page.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_delete-host.webp)
 
 <Tabs groupId="host">
 
@@ -172,7 +168,8 @@ If you used a VirtualBox VM as the Edge host, open the **VirtualBox** applicatio
 
 Right-click the `edge-vm` VM and select **Stop**. Then, click **Power Off** to turn the machine off.
 
-Next, right-click the VM again and select **Remove**. Click **Delete all files** to delete the VM and its hard disk.
+Next, right-click the VM again and select **Remove**. Select **Delete the virtual machine and virtual hard disks** to
+delete the VM and its hard disk, and click **Remove**.
 
 </TabItem>
 
@@ -208,23 +205,23 @@ Open a terminal window on the machine you used to build the artifacts in the
 Delete the Edge Installer ISO image and its checksum by issuing the following commands.
 
 ```bash
-rm build/palette-edge-installer.iso
-rm build/palette-edge-installer.iso.sha256
+rm build/palette-local-edge-installer.iso
+rm build/palette-local-edge-installer.iso.sha256
 ```
 
 Next, delete the provider images both locally and from the registry where you pushed them. Issue the following command
 to delete them locally, replacing `<registry-name>` with the name of your registry.
 
 ```bash
-docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial
-docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial_linux_amd64
+docker rmi <registry-name>/ubuntu:k3s-1.32.3-v4.8.8-local-edge
+docker rmi <registry-name>/ubuntu:k3s-1.32.3-v4.8.8-local-edge_linux_amd64
 ```
 
 ## Wrap-up
 
 In this tutorial, you learned how to deploy a single-node Edge cluster along with a demo application, using the Edge
-host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Edge
-Getting Started tutorial series.
+host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Local
+Palette Edge Getting Started tutorial series.
 
 We encourage you to check out the [Additional Capabilities](../../additional-capabilities/additional-capabilities.md)
 section to explore other Palette functionalities, and the [Edge](../../../../clusters/edge/edge.md) documentation
