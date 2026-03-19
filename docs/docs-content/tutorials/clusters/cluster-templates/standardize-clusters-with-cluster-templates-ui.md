@@ -320,7 +320,7 @@ a value of `1`. Once that value is set, deploy a cluster from the `cluster-templ
 
 8. On the **Profile Config** page, set **Hello Universe Replicas** to `1`. Select **Next**.
 
-9. On the **Cluster Config** page, select the region and SSH Key Pair Name. Select **Next**.
+9. On the **Cluster Config** page, select the **Region** and **SSH Key Pair Name**. Select **Next**.
 
 10. In **Nodes Config**, under **control-plane-pool configuration > AWS Cloud Configuration**, select
     `General purpose - m4.2xlarge` as the Instance Type. Select an availability zone if required by your cloud region.
