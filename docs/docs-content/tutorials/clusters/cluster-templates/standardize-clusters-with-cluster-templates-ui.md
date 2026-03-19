@@ -307,8 +307,8 @@ From the left main menu, select **Clusters > Add New Cluster**. Select **AWS Iaa
 On the **Basic Information** page, enter `dev-cluster-aws` as the cluster name. Select the **Cloud Account** value, and
 then select **Next**.
 
-On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**. Select
-`cluster-template-aws`, and then select **Confirm**.
+On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**. Select `cluster-template-aws`,
+and then select **Confirm**.
 
 On the **Cluster Template** page, confirm the correct **Maintenance Policy** and **Linked Profiles** are configured,
 then select **Next**.
@@ -322,8 +322,8 @@ On the **Cluster Config** page, select the **Region** and **SSH Key Pair Name**.
 In **Nodes Config**, under **CONTROL-PLANE-POOL CONFIGURATION > Cloud Configuration**, select **General purpose >
 m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region.
 
-In **Nodes Config**, under **WORKER-POOL-CONFIGURATION > Cloud Configuration**, select **General purpose >
-m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region. Select **Next**.
+In **Nodes Config**, under **WORKER-POOL-CONFIGURATION > Cloud Configuration**, select **General purpose > m4.2xlarge**
+as the **Instance Type**. Select **Availability zones** if required by your cloud region. Select **Next**.
 
 On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster time zone** to **Etc/GMT**. Select
 **Validate**, then **Finish Configuration**.
