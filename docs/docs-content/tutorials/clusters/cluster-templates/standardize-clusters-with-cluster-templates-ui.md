@@ -299,7 +299,7 @@ The template appears in the **Templates** list and is ready to deploy clusters f
 
 ### Deploy a Dev Cluster from the Template
 
-The dev environment requires fewer replicas, so assign `app_replicas`, displayed as `Hello Universe Replicas` in the UI,
+The dev environment requires fewer replicas, so assign `app_replicas`, displayed as **Hello Universe Replicas** in the UI,
 a value of `1`. Once that value is set, deploy a cluster from the `cluster-template-aws` cluster template.
 
 1. From the left **Main Menu**, select **Clusters > Add New Cluster**.
