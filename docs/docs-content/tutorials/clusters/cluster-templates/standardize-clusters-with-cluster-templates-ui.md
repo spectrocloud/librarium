@@ -311,7 +311,7 @@ a value of `1`. Once that value is set, deploy a cluster from the `cluster-templ
 
 4. On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**.
 
-5. Select `cluster-template-aws` and select **Confirm**.
+5. Select `cluster-template-aws`, and then select **Confirm**.
 
 6. On the **Cluster Template** page, confirm the correct maintenance policy and linked profile are configured, and
    select **Next**.
