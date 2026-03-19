@@ -1,0 +1,29 @@
+---
+partial_category: palette-mcp
+partial_name: server-snippet
+---
+
+1. Paste the following snippet in the file, replacing the placeholders with your values. Ensure that you provide full
+   filepaths for the `kubeconfig` folder and `.env.mcp` file.
+
+   If you want to use Podman, replace the command with `"podman"`.
+
+   ```json {3,11,13}
+   "mcpServers": {
+       "palette": {
+       "command": "docker",
+       "args": [
+           "run",
+           "--rm",
+           "-i",
+           "--pull",
+           "always",
+           "--mount",
+           "type=bind,source=/<file-path>/kubeconfig,target=/tmp/kubeconfig",
+           "--env-file",
+           "/<file-path>/.env-mcp",
+           "public.ecr.aws/palette-ai/palette-mcp-server:latest"
+       ]
+       }
+   }
+   ```
