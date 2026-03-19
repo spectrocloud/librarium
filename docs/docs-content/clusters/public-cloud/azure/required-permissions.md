@@ -37,13 +37,6 @@ We support the following use cases:
 
 - [AKS Dynamic Placement](#aks-dynamic-placement) - Palette creates resources required for your AKS cluster.
 
-If you want to enable
-[Microsoft Entra ID integration](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
-for your AKS clusters, you need to assign the **Azure Kubernetes Service RBAC Cluster Admin** built-in role to the
-service principal you want to use with Palette. Review the
-[Microsoft Entra ID Integration - Prerequisites](./enable-iam-features-aks/enable-microsoft-entra-id-aks.md#prerequisites)
-section for more information.
-
 :::tip
 
 You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
@@ -53,6 +46,17 @@ You can use Palette CLI to verify you have setup the correct permissions. Check 
 
 Review the sections below to learn how to create a custom role in Azure and assign it to the service principal you want
 to use with Palette.
+
+## Microsoft Entra ID Integration
+
+If you want to enable
+[Microsoft Entra ID integration](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
+for your AKS clusters, you need to assign the **Azure Kubernetes Service RBAC Cluster Admin** built-in role to the
+service principal you want to use with Palette.
+
+Review the
+[Microsoft Entra ID Integration - Prerequisites](./enable-iam-features-aks/enable-microsoft-entra-id-aks.md#prerequisites)
+section for more information.
 
 ## IaaS
 

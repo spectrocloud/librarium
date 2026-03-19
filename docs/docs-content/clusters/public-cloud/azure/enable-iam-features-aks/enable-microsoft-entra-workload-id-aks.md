@@ -14,7 +14,7 @@ authentication of applications hosted on your AKS clusters.
 
 :::info
 
-These steps effectively cover the
+These steps effectively act as a replacement for the
 [Enable OIDC issuer and Microsoft Entra Workload ID on an AKS cluster](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster?tabs=new-cluster#enable-oidc-issuer-and-microsoft-entra-workload-id-on-an-aks-cluster)
 section of the Microsoft documentation.
 
@@ -139,4 +139,4 @@ Microsoft Entra Workload ID enabled.
   [Deploy a verification pod and test access](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster?tabs=new-cluster#deploy-a-verification-pod-and-test-access)
   section of the Microsoft documentation. You will need to have completed the rest of the Microsoft Entra Workload ID
   setup, including creating a managed identity, a Kubernetes service account, and a federated identity credential before
-  you can complete these steps.
+  you can complete these steps on your cluster.
