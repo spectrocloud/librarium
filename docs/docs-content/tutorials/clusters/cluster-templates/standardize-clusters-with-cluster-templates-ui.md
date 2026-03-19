@@ -317,6 +317,8 @@ On the **Cluster Profile** page, select **Next**.
 
 On the **Profile Config** page, set **Hello Universe Replicas** to `1`. Select **Next**.
 
+![Hello Universe Replicas](/hello-universe-replicas.webp)
+
 On the **Cluster Config** page, select the **Region** and **SSH Key Pair Name**. Select **Next**.
 
 In **Nodes Config**, under **CONTROL-PLANE-POOL CONFIGURATION > Cloud Configuration**, select **General purpose >
@@ -324,6 +326,8 @@ m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required
 
 In **Nodes Config**, under **WORKER-POOL-CONFIGURATION > Cloud Configuration**, select **General purpose > m4.2xlarge**
 as the **Instance Type**. Select **Availability zones** if required by your cloud region. Select **Next**.
+
+![Cluster Template Instance Type](/cluster-template-instance-type.webp)
 
 On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster time zone** to **Etc/GMT**. Select
 **Validate**, then **Finish Configuration**.
