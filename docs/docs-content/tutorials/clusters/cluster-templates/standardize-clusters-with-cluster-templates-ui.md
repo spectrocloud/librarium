@@ -326,7 +326,7 @@ a value of `1`. Once that value is set, deploy a cluster from the `cluster-templ
     **General purpose > m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region.
 
 11. In **Nodes Config**, under **WORKER-POOL-CONFIGURATION > Cloud Configuration**, select
-    `General purpose - m4.2xlarge` as the Instance Type. Select an availability zone if required by your cloud region.
+    **General purpose > m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region.
     Select **Next**.
 
 12. On the **Cluster Settings** page, under **Cluster Timezone**, set the cluster time zone to `Etc/GMT`. Select
