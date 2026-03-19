@@ -8,9 +8,9 @@ sidebar_position: 60
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-This is the final tutorial in the Local Palette Edge Management series. It teaches you how to deploy an Edge Kubernetes cluster
-to a locally managed Edge device using the provider images, Edge host, cluster profile, and cluster definition created
-in the previous tutorials.
+This is the final tutorial in the Local Palette Edge Management series. It teaches you how to deploy an Edge Kubernetes
+cluster to a locally managed Edge device using the provider images, Edge host, cluster profile, and cluster definition
+created in the previous tutorials.
 
 You will learn how to select the desired cluster definition, assign the registered Edge host to the cluster, and verify
 the deployment was successful by accessing the demo application included in the cluster profile,
@@ -59,9 +59,8 @@ detailed configuration instructions, refer to the
 
 :::
 
-On the **Cluster Config** page, enter the **Virtual IP Address (VIP)** value . The following
-image displays the **Cluster Config** page with the **Network Time Protocol (NTP)** and **Virtual IP
-Address** values provided.
+On the **Cluster Config** page, enter the **Virtual IP Address (VIP)** value . The following image displays the
+**Cluster Config** page with the **Network Time Protocol (NTP)** and **Virtual IP Address** values provided.
 
 ![Screenshot of Cluster Config page](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-config-network_4-8.webp)
 
@@ -79,31 +78,33 @@ The output displays the IP addresses that are currently in use on your network.
 :::
 
 Optionally, you can also select an SSH key to access the cluster's nodes and specify a Network Time Protocol (NTP)
-Optionally, you can also select the **SSH keys** to access the cluster's nodes and specify the **Network Time Protocol (NTP)**
-server list.
+Optionally, you can also select the **SSH keys** to access the cluster's nodes and specify the **Network Time Protocol
+(NTP)** server list.
 
 Click **Next** to continue.
 
 In the **Node Config** section, provide the following details for the control plane pool. This tutorial deploys a
 single-node Edge cluster with no worker pool.
 
-| **Field**                               | **Value**                                                                                                                       |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| **Node pool name**                      | `control-plane-pool`                                                                                                            |
-| **Allow worker capability**             | Yes                                                                                                                             |
-| **Additional Labels (Optional)**        | None                                                                                                                            |
-| **Taints (Optional)**                   | None                                                                                                                            |
+| **Field**                                   | **Value**                                                                                                                       |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Node pool name**                          | `control-plane-pool`                                                                                                            |
+| **Allow worker capability**                 | Yes                                                                                                                             |
+| **Additional Labels (Optional)**            | None                                                                                                                            |
+| **Taints (Optional)**                       | None                                                                                                                            |
 | **Pool Configuration** > **Add Edge Hosts** | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. |
 
 The following image shows the Edge host selection in the control plane pool.
 
 ![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_node-config_4-8.webp)
 
-Optionally, you can specify which Network Interface Card (NIC) to use for the Edge device by selecting **Auto** under **NIC Name** and choosing the NIC.
+Optionally, you can specify which Network Interface Card (NIC) to use for the Edge device by selecting **Auto** under
+**NIC Name** and choosing the NIC.
 
 Next, select **Remove** to delete the worker pool and click **Review** to proceed with the deployment.
 
-The **Review** section allows you to review the cluster configuration. If everything looks correct, select **Deploy Cluster**.
+The **Review** section allows you to review the cluster configuration. If everything looks correct, select **Deploy
+Cluster**.
 
 After you create the cluster, the Palette Edge host agent pulls the provider images you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial and starts the installation process.
@@ -133,8 +134,8 @@ statistics page offers information on visitor counts for your deployed cluster.
 ![A screenshot of the Hello Universe application.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
 
 When the Harbor application is deployed and ready for network traffic, the Edge Local UI exposes the service URL in the
-**Services** section. Click the URL on port **:30003** to access the application's landing page. You can log in to Harbor
-using the user `admin` and the password you set in the [Create Edge Profile](./edge-cluster-profile.md).
+**Services** section. Click the URL on port **:30003** to access the application's landing page. You can log in to
+Harbor using the user `admin` and the password you set in the [Create Edge Profile](./edge-cluster-profile.md).
 
 ![A screenshot of the Harbor Native Edge Config](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-habor-logged-in_4-8.webp)
 

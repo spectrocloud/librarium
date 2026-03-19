@@ -121,7 +121,8 @@ Once you select the pack, Palette displays its `Readme` file, providing addition
 This pack deploys the [Harbor Edge Native Config](../../../../integrations/harbor-edge-native-config.mdx) registry
 application.
 
-Under **Pack Details**, select **Values**, and enter your password value in the `harbor-config.password` field. The default user is `admin`.
+Under **Pack Details**, select **Values**, and enter your password value in the `harbor-config.password` field. The
+default user is `admin`.
 
 Click **Confirm & Create**.
 
