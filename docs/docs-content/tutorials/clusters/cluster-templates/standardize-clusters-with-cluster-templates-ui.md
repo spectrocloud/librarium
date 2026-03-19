@@ -306,7 +306,7 @@ a value of `1`. Once that value is set, deploy a cluster from the `cluster-templ
 
 2. Select **AWS IaaS > Start AWS IaaS Configuration**.
 
-3. On the **Basic Information** page, enter `dev-cluster-aws` as the cluster name. Select the cloud account and select
+3. On the **Basic Information** page, enter `dev-cluster-aws` as the cluster name. Select the **Cloud Account** value, and then select
    **Next**.
 
 4. On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**.
