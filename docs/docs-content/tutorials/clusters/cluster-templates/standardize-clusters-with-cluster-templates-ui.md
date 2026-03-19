@@ -332,7 +332,7 @@ a value of `1`. Once that value is set, deploy a cluster from the `cluster-templ
 12. On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster time zone** to **Etc/GMT**. Select
     **Validate**, then **Finish Configuration**.
 
-The cluster deployment may take 15 to 30 minutes. From the left **Main Menu**, select **Clusters** to monitor progress.
+The cluster deployment may take 15 to 30 minutes. From the left main menu, select **Clusters** to monitor progress.
 
 Once `dev-cluster-aws` has a **Running** status, validate the deployment.
 
