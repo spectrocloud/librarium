@@ -318,7 +318,7 @@ a value of `1`. Once that value is set, deploy a cluster from the `cluster-templ
 
 7. On the **Cluster Profile** page, select **Next**.
 
-8. On the **Profile Config** page, set `Hello Universe Replicas` to `1`. Select **Next**.
+8. On the **Profile Config** page, set **Hello Universe Replicas** to `1`. Select **Next**.
 
 9. On the **Cluster Config** page, select the region and SSH Key Pair Name. Select **Next**.
 
