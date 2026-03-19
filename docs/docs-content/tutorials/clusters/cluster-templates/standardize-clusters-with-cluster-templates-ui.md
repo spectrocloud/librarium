@@ -325,7 +325,7 @@ a value of `1`. Once that value is set, deploy a cluster from the `cluster-templ
 10. In **Nodes Config**, under **CONTROL-PLANE-POOL CONFIGURATION > Cloud Configuration**, select
     **General purpose > m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region.
 
-11. In **Nodes Config**, under **worker-plane-pool configuration > AWS Cloud Configuration**, select
+11. In **Nodes Config**, under **WORKER-POOL-CONFIGURATION > Cloud Configuration**, select
     `General purpose - m4.2xlarge` as the Instance Type. Select an availability zone if required by your cloud region.
     Select **Next**.
 
