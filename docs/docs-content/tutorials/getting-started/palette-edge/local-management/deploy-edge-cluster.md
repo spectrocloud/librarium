@@ -33,7 +33,8 @@ the deployment was successful by accessing the demo application included in the 
 
 ## Deploy Edge Cluster
 
-Log in to locally managed Edge device using the username and password defined in your `user-data` file.
+Log in to Local UI (`https://<ip-of-edge:5080`) with the username and password you defined in the
+[Prepare User Data](./prepare-user-data.md) tutorial.
 
 From the left main menu, select **Cluster**, then click **Create Cluster**.
 
@@ -55,7 +56,7 @@ Click **Next** to proceed.
 We recommend enabling the overlay network configuration when using DHCP-enabled networks to ensure stable IP addresses
 for the cluster. However, for education purposes, this tutorial does not use the overlay network. For production use or
 detailed configuration instructions, refer to the
-[Enable Overlay Network](../../../../clusters/edge/networking/vxlan-overlay.md) guide.
+[Configure networkd to Prepare Host for Overlay Network](../../../../deployment-modes/agent-mode/overlay-preparation.md) guide.
 
 :::
 
