@@ -302,44 +302,37 @@ The template appears in the **Templates** list and is ready to deploy clusters f
 The dev environment requires fewer replicas, so assign `app_replicas`, displayed as **Hello Universe Replicas** in the
 UI, a value of `1`. Once that value is set, deploy a cluster from the `cluster-template-aws` cluster template.
 
-1. From the left main menu, select **Clusters > Add New Cluster**.
+From the left main menu, select **Clusters > Add New Cluster**. Select **AWS IaaS > Start AWS IaaS Configuration**.
 
-2. Select **AWS IaaS > Start AWS IaaS Configuration**.
+On the **Basic Information** page, enter `dev-cluster-aws` as the cluster name. Select the **Cloud Account** value, and
+then select **Next**.
 
-3. On the **Basic Information** page, enter `dev-cluster-aws` as the cluster name. Select the **Cloud Account** value,
-   and then select **Next**.
+On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**. Select
+`cluster-template-aws`, and then select **Confirm**.
 
-4. On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**.
+On the **Cluster Template** page, confirm the correct **Maintenance Policy** and **Linked Profiles** are configured,
+then select **Next**.
 
-5. Select `cluster-template-aws`, and then select **Confirm**.
+On the **Cluster Profile** page, select **Next**.
 
-6. On the **Cluster Template** page, confirm the correct **Maintenance Policy** and **Linked Profiles** are configured,
-   then select **Next**.
+On the **Profile Config** page, set **Hello Universe Replicas** to `1`. Select **Next**.
 
-7. On the **Cluster Profile** page, select **Next**.
+On the **Cluster Config** page, select the **Region** and **SSH Key Pair Name**. Select **Next**.
 
-8. On the **Profile Config** page, set **Hello Universe Replicas** to `1`. Select **Next**.
+In **Nodes Config**, under **CONTROL-PLANE-POOL CONFIGURATION > Cloud Configuration**, select **General purpose >
+m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region.
 
-9. On the **Cluster Config** page, select the **Region** and **SSH Key Pair Name**. Select **Next**.
+In **Nodes Config**, under **WORKER-POOL-CONFIGURATION > Cloud Configuration**, select **General purpose >
+m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region. Select **Next**.
 
-10. In **Nodes Config**, under **CONTROL-PLANE-POOL CONFIGURATION > Cloud Configuration**, select **General purpose >
-    m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region.
-
-11. In **Nodes Config**, under **WORKER-POOL-CONFIGURATION > Cloud Configuration**, select **General purpose >
-    m4.2xlarge** as the **Instance Type**. Select **Availability zones** if required by your cloud region. Select
-    **Next**.
-
-12. On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster time zone** to **Etc/GMT**. Select
-    **Validate**, then **Finish Configuration**.
+On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster time zone** to **Etc/GMT**. Select
+**Validate**, then **Finish Configuration**.
 
 The cluster deployment may take 15 to 30 minutes. From the left main menu, select **Clusters** to monitor progress.
 
-Once `dev-cluster-aws` has a **Running** status, validate the deployment.
-
-1. Select `dev-cluster-aws`, and then select the **Profile** tab. Confirm it is using `cluster-template-profile-aws`.
-
-2. Select **Configure Values > Profiles Variables Configuration**. Confirm that **Hello Universe Replicas** is set to
-   `1` for this dev cluster.
+Once `dev-cluster-aws` has a **Running** status, validate the deployment. Select `dev-cluster-aws`, and then select the
+**Profile** tab. Confirm it is using `cluster-template-profile-aws`. Select **Configure Values > Profiles Variables
+Configuration**. Confirm that **Hello Universe Replicas** is set to `1` for this dev cluster.
 
 ### Deploy a Prod Cluster from the Template
 
