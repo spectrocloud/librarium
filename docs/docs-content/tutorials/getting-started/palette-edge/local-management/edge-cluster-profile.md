@@ -117,12 +117,11 @@ cluster profile. Harbor is required to manage local registries for locally manag
 | ------------- | ----------- | ---------------- | --------- |
 | Harbor        | 1.9.3       | Palette Registry | Registry  |
 
-Once you select the pack, Palette displays its README file, providing additional guidance on usage and configuration.
+Once you select the pack, Palette displays its `Readme` file, providing additional guidance on usage and configuration.
 This pack deploys the [Harbor Edge Native Config](../../../../integrations/harbor-edge-native-config.mdx) registry
 application.
 
-Under **Pack Details**, select **Values**, and change the value for `harbor-config.password` from `password: "" ` to
-`password: "<your-password>"`. The default user is `admin`.
+Under **Pack Details**, select **Values**, and enter your password value in the `harbor-config.password` field. The default user is `admin`.
 
 Click **Confirm & Create**.
 
