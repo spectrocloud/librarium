@@ -334,6 +334,8 @@ On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster 
 
 The cluster deployment may take 15 to 30 minutes. From the left main menu, select **Clusters** to monitor progress.
 
+#### Confirm the Deployment
+
 Once `dev-cluster-aws` has a **Running** status, confirm the deployment. Select `dev-cluster-aws`, and then select the
 **Profile** tab. Confirm it is using `cluster-template-profile-aws`. Select **Configure Values > Profiles Variables
 Configuration**. Confirm that **Hello Universe Replicas** is set to `1` for this dev cluster.
