@@ -82,20 +82,23 @@ guidance.
 
    :::warning
 
-   Do not remove the `securityProfile.workloadIdentity` block from an existing cluster profile to disable Workload ID.
-   Removing the block causes Azure to treat the value as `null`, which the Cluster API Provider Azure (CAPZ) admission
-   webhook rejects. This puts Palette into a reconciliation loop and blocks Day-2 operations with repeated
-   `ReconcileError` events. These events can happen even if the underlying Kubernetes cluster reports as healthy.
+   Do not remove the `managedControlPlane.*` block from an existing cluster profile to disable Workload ID or OIDC
+   issuer profile. Removing the block causes Azure to treat the value as `null`, which the Cluster API Provider Azure
+   (CAPZ) admission webhook rejects. This puts Palette into a reconciliation loop and blocks Day-2 operations with
+   repeated `ReconcileError` events. These events can happen even if the underlying Kubernetes cluster reports as
+   healthy.
 
-   To disable Workload ID on an existing cluster, explicitly set `enabled: false` instead.
+   The OIDC issuer profile cannot be disabled once enabled. To disable Workload ID on an existing cluster, explicitly
+   set `enabled: false` instead.
 
-   managedControlPlane: securityProfile: workloadIdentity: enabled: false
-
+   ```yaml title="Example"
+   managedControlPlane:
+     securityProfile:
+       workloadIdentity:
+         enabled: false
    ```
 
    :::
-
-   ```
 
 7. After making the necessary changes, click **Confirm Updates**.
 
