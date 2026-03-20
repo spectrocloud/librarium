@@ -30,6 +30,10 @@ tags: ["release-notes"]
   [Crossplane](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette), and other API tools must
   specify `azs` for all new and existing AWS worker machine pool configurations to ensure successful provisioning.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9642 -->
+
+- BREAKING CHANGE PLACEHOLDER
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9513 -->
