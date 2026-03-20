@@ -5,7 +5,7 @@ description: "Learn about Spectro Cloud Palette Edge."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on bare metal or virtual machines and deployed in remote locations.
