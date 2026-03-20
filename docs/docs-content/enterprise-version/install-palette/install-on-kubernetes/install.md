@@ -71,9 +71,12 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   workload, modify the `storageClass` parameter. Check out the
   [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
   page to learn more about modifying StorageClasses.
-- Palette deploys both a Traefik Ingress Controller and an Nginx Ingress Controller. Traefik is the default ingress
-  controller starting with Palette 4.8.c. If you already have an ingress controller deployed in the cluster, you must
-  set the `ingress.enabled` parameter to `false` in the `values.yaml` file.
+
+- Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default ingress
+  controller starting with Palette 4.8.c; Nginx, which is
+  [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
+  actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
+  `ingress.enabled` parameter to `false` in the `values.yaml` file.
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for Palette.
@@ -134,7 +137,8 @@ your environment. Reach out to our support team if you need assistance.
     ```
 
 4.  Install the `spectro-mgmt-crds` chart. This chart contains Custom Resource Definitions (CRDs) required by Palette,
-    including Traefik CRDs, and must be installed _before_ the main Palette Helm Chart.
+    including Traefik CRDs, and must be installed _before_ the main Palette Helm chart. When the chart is installed, the
+    custom resource types are registered with the Kubernetes API server; no pods are deployed.
 
     ```shell
     helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
@@ -160,7 +164,7 @@ your environment. Reach out to our support team if you need assistance.
     | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
     | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                          | string   |
     | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                          | boolean  |
+    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller. Set this to `false` if you already have an ingress controller deployed in the cluster.             | boolean  |
     | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment | object   |
 
     :::info
@@ -772,12 +776,12 @@ Use the following steps to validate the Palette installation.
    password. Enter a new password and save your changes. You will be redirected to the Palette system console.
 
 3. Open a terminal session and issue the following command to verify the Palette installation. The command should return
-   a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system`
-   namespaces.
+   a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `ingress-traefik`, `jet-system` , and
+   `ui-system` namespaces.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   | grep -E '^(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)\s'
    ```
 
    Your output should look similar to the following.
@@ -823,8 +827,12 @@ Use the following steps to validate the Palette installation.
     hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
     hubble-system        user-796c877b57-6rcdp                                      Running
     hubble-system        user-796c877b57-ptbg4                                      Running
-    ingress-nginx        ingress-nginx-controller-fjffp                             Running <!-- ADD TRAEFIK -->
-    ingress-nginx        ingress-nginx-controller-sz9gk                             Running
+    ingress-nginx        ingress-nginx-controller-m5z54                             Running
+    ingress-nginx        ingress-nginx-controller-qsf6m                             Running
+    ingress-nginx        ingress-nginx-controller-w64pz                             Running
+    ingress-traefik      traefik-ingress-controller-9dmzq                           Running
+    ingress-traefik      traefik-ingress-controller-tpwtf                           Running
+    ingress-traefik      traefik-ingress-controller-xz4jf                           Running
     jet-system           jet-555cdf78f5-4l2s2                                       Running
     ui-system            spectro-ui-8658f85c85-9lkhs                                Running
    ```

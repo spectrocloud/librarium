@@ -349,7 +349,8 @@ Palette VerteX upgrade.
     TEST SUITE: None
     ```
 
-15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step thirteen.
+15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step
+    thirteen.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -401,8 +402,8 @@ Palette VerteX upgrade.
     :::
 
     The upgrade usually takes up to five minutes. Palette VerteX is upgraded when the deployments in the namespaces
-    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the
-    **Ready** status.
+    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready**
+    status.
 
 18. This version of Palette VerteX uses Traefik as the primary ingress controller instead of Nginx. The upgrade creates
     a new LoadBalancer service in the `ingress-traefik` namespace with a new external IP address or hostname. Update
@@ -461,39 +462,42 @@ Palette VerteX upgrade.
    `ingress-nginx`, `jet-system`, and `ui-system` namespaces. All deployments should have the status `Running`.
 
    ```shell
-   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-   hubble-system   auth-85b748cbf4-6drkn                      Running
-   hubble-system   auth-85b748cbf4-dwhw2                      Running
-   hubble-system   cloud-fb74b8558-lqjq5                      Running
-   hubble-system   cloud-fb74b8558-zkfp5                      Running
-   hubble-system   configserver-685fcc5b6d-t8f8h              Running
-   hubble-system   event-68568f54c7-jzx5t                     Running
-   hubble-system   event-68568f54c7-w9rnh                     Running
-   hubble-system   foreq-6b689f54fb-vxjts                     Running
-   hubble-system   hashboard-897bc9884-pxpvn                  Running
-   hubble-system   hashboard-897bc9884-rmn69                  Running
-   hubble-system   hutil-6d7c478c96-td8q4                     Running
-   hubble-system   hutil-6d7c478c96-zjhk4                     Running
-   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-   hubble-system   mongo-0                                    Running
-   hubble-system   mongo-1                                    Running
-   hubble-system   mongo-2                                    Running
-   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-   hubble-system   packsync-28205220-bmzcg                    Succeeded
-   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-   hubble-system   system-686d77b947-8949z                    Running
-   hubble-system   system-686d77b947-cgzx6                    Running
-   hubble-system   timeseries-7865bc9c56-5q87l                Running
-   hubble-system   timeseries-7865bc9c56-scncb                Running
-   hubble-system   timeseries-7865bc9c56-sxmgb                Running
-   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-   ingress-nginx   ingress-nginx-controller-2txsv             Running
-   ingress-nginx   ingress-nginx-controller-55pk2             Running
-   ingress-nginx   ingress-nginx-controller-gmps9             Running
-   jet-system      jet-6599b9856d-t9mr4                       Running
-   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   cp-system        spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system    auth-85b748cbf4-6drkn                      Running
+   hubble-system    auth-85b748cbf4-dwhw2                      Running
+   hubble-system    cloud-fb74b8558-lqjq5                      Running
+   hubble-system    cloud-fb74b8558-zkfp5                      Running
+   hubble-system    configserver-685fcc5b6d-t8f8h              Running
+   hubble-system    event-68568f54c7-jzx5t                     Running
+   hubble-system    event-68568f54c7-w9rnh                     Running
+   hubble-system    foreq-6b689f54fb-vxjts                     Running
+   hubble-system    hashboard-897bc9884-pxpvn                  Running
+   hubble-system    hashboard-897bc9884-rmn69                  Running
+   hubble-system    hutil-6d7c478c96-td8q4                     Running
+   hubble-system    hutil-6d7c478c96-zjhk4                     Running
+   hubble-system    mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system    mongo-0                                    Running
+   hubble-system    mongo-1                                    Running
+   hubble-system    mongo-2                                    Running
+   hubble-system    msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system    oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system    packsync-28205220-bmzcg                    Succeeded
+   hubble-system    spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system    spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system    spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system    system-686d77b947-8949z                    Running
+   hubble-system    system-686d77b947-cgzx6                    Running
+   hubble-system    timeseries-7865bc9c56-5q87l                Running
+   hubble-system    timeseries-7865bc9c56-scncb                Running
+   hubble-system    timeseries-7865bc9c56-sxmgb                Running
+   hubble-system    user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system    user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx    ingress-nginx-controller-m5z54             Running
+   ingress-nginx    ingress-nginx-controller-qsf6m             Running
+   ingress-nginx    ingress-nginx-controller-w64pz             Running
+   ingress-traefik  traefik-ingress-controller-9dmzq           Running
+   ingress-traefik  traefik-ingress-controller-tpwtf           Running
+   ingress-traefik  traefik-ingress-controller-xz4jf           Running
+   jet-system       jet-6599b9856d-t9mr4                       Running
+   ui-system        spectro-ui-76ffdf67fb-rkgx8                Running
    ```

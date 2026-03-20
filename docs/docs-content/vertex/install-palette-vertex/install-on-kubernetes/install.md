@@ -80,9 +80,11 @@ has the necessary network connectivity for VerteX to operate successfully.
   [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
   page to learn more about modifying StorageClasses.
 
-- Palette VerteX deploys both a Traefik Ingress Controller and an Nginx Ingress Controller. Traefik is the default
-  ingress controller starting with Palette VerteX 4.8.c. If you already have an ingress controller deployed in the
-  cluster, you must set the `ingress.enabled` parameter to `false` in the `values.yaml` file.
+- Palette VerteX deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default
+  ingress controller starting with Palette VerteX 4.8.c; Nginx, which is
+  [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
+  actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
+  `ingress.enabled` parameter to `false` in the `values.yaml` file.
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for VerteX.
@@ -142,11 +144,14 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-4.  Install the `spectro-mgmt-crds` chart. This chart contains Custom Resource Definitions (CRDs) required by VerteX,
-    including Traefik CRDs, and must be installed before the main Palette VerteX Helm Chart.
+4.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+    Palette VerteX, including Traefik CRDs, and must be installed before the main Palette VerteX Helm chart. When the
+    chart is installed, the custom resource types are registered with the Kubernetes API server; no pods are deployed.
 
     ```shell
-    helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+    helm upgrade --install spectro-mgmt-crds \
+      extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
+      --values extras/spectro-mgmt-crds/values.yaml
     ```
 
     ```shell hideClipboard title="Example output"
@@ -168,7 +173,7 @@ your environment. Reach out to our support team if you need assistance.
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
     | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
     | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
+    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller. Set this to `false` if you already have an ingress controller deployed in the cluster.            | boolean  |
     | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
     :::info
@@ -776,41 +781,44 @@ Use the following steps to validate the VerteX installation.
    Your output should look similar to the following.
 
    ```shell hideClipboard
-   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-   hubble-system   auth-85b748cbf4-6drkn                      Running
-   hubble-system   auth-85b748cbf4-dwhw2                      Running
-   hubble-system   cloud-fb74b8558-lqjq5                      Running
-   hubble-system   cloud-fb74b8558-zkfp5                      Running
-   hubble-system   configserver-685fcc5b6d-t8f8h              Running
-   hubble-system   event-68568f54c7-jzx5t                     Running
-   hubble-system   event-68568f54c7-w9rnh                     Running
-   hubble-system   foreq-6b689f54fb-vxjts                     Running
-   hubble-system   hashboard-897bc9884-pxpvn                  Running
-   hubble-system   hashboard-897bc9884-rmn69                  Running
-   hubble-system   hutil-6d7c478c96-td8q4                     Running
-   hubble-system   hutil-6d7c478c96-zjhk4                     Running
-   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-   hubble-system   mongo-0                                    Running
-   hubble-system   mongo-1                                    Running
-   hubble-system   mongo-2                                    Running
-   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-   hubble-system   packsync-28205220-bmzcg                    Succeeded
-   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-   hubble-system   system-686d77b947-8949z                    Running
-   hubble-system   system-686d77b947-cgzx6                    Running
-   hubble-system   timeseries-7865bc9c56-5q87l                Running
-   hubble-system   timeseries-7865bc9c56-scncb                Running
-   hubble-system   timeseries-7865bc9c56-sxmgb                Running
-   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-   ingress-nginx   ingress-nginx-controller-2txsv             Running
-   ingress-nginx   ingress-nginx-controller-55pk2             Running
-   ingress-nginx   ingress-nginx-controller-gmps9             Running <!-- TRAEFIK OUTPUT -->
-   jet-system      jet-6599b9856d-t9mr4                       Running
-   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   cp-system        spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system    auth-85b748cbf4-6drkn                      Running
+   hubble-system    auth-85b748cbf4-dwhw2                      Running
+   hubble-system    cloud-fb74b8558-lqjq5                      Running
+   hubble-system    cloud-fb74b8558-zkfp5                      Running
+   hubble-system    configserver-685fcc5b6d-t8f8h              Running
+   hubble-system    event-68568f54c7-jzx5t                     Running
+   hubble-system    event-68568f54c7-w9rnh                     Running
+   hubble-system    foreq-6b689f54fb-vxjts                     Running
+   hubble-system    hashboard-897bc9884-pxpvn                  Running
+   hubble-system    hashboard-897bc9884-rmn69                  Running
+   hubble-system    hutil-6d7c478c96-td8q4                     Running
+   hubble-system    hutil-6d7c478c96-zjhk4                     Running
+   hubble-system    mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system    mongo-0                                    Running
+   hubble-system    mongo-1                                    Running
+   hubble-system    mongo-2                                    Running
+   hubble-system    msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system    oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system    packsync-28205220-bmzcg                    Succeeded
+   hubble-system    spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system    spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system    spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system    system-686d77b947-8949z                    Running
+   hubble-system    system-686d77b947-cgzx6                    Running
+   hubble-system    timeseries-7865bc9c56-5q87l                Running
+   hubble-system    timeseries-7865bc9c56-scncb                Running
+   hubble-system    timeseries-7865bc9c56-sxmgb                Running
+   hubble-system    user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system    user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx    ingress-nginx-controller-m5z54             Running
+   ingress-nginx    ingress-nginx-controller-qsf6m             Running
+   ingress-nginx    ingress-nginx-controller-w64pz             Running
+   ingress-traefik  traefik-ingress-controller-9dmzq           Running
+   ingress-traefik  traefik-ingress-controller-tpwtf           Running
+   ingress-traefik  traefik-ingress-controller-xz4jf           Running
+   jet-system       jet-6599b9856d-t9mr4                       Running
+   ui-system        spectro-ui-76ffdf67fb-rkgx8                Running
    ```
 
 ## Next Steps

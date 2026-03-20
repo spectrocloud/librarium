@@ -483,13 +483,16 @@ Choose one of the following options depending on whether you want to use a priva
 ## Install Palette
 
 Once your registries are set up and populated with the necessary images and packs, you are ready to install Palette on
-your EKS cluster. The installation process requires several Helm charts which _must_ be installed in the following
-order:
+your EKS cluster. The installation process requires several Helm charts, some which must be installed before others.
+Following is the recommended installation order:
 
-1. **Cert-Manager** - TLS certificate management, required by Palette.
-2. **Image Swap** - Webhook that rewrites image references to your public ECR at pod admission time.
-3. **Spectro-Mgmt-Crds** - Chart that contains Custom Resource Definitions (CRDs) required by Palette.
-4. **Palette Management Plane** - The main Palette application.
+1. **Cert-Manager** - TLS certificate management, required by Palette. Must be installed before Image Swap.
+2. **Image Swap** - Webhook that rewrites image references to your public ECR at pod admission time. Must be installed
+   before the Palette Management Plane.
+3. **Spectro-Mgmt-Crds** - Chart that contains Custom Resource Definitions (CRDs) required by Palette. Must be installed
+   before the Palette Management Plane. Can be installed at any point before the Palette Management Plane, as it
+   registers API types only and does not deploy pods.
+4. **Palette Management Plane** - The main Palette application. Must be installed last.
 
 ### Verify Environment Setup
 
@@ -677,8 +680,6 @@ Palette chart requires no image path changes.
 The `spectro-mgmt-crds` chart contains the CRDs required by Palette, including Traefik CRDs, and must be installed
 before the main Palette Helm chart. When the chart is installed, the custom resource types are registered with the
 Kubernetes API server; no pods are deployed.
-
-1.  Install the `spectro-mgmt-crds` chart.
 
     ```shell
     helm upgrade --install spectro-mgmt-crds \
