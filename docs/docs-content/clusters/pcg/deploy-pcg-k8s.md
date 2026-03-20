@@ -8,18 +8,26 @@ tags: ["pcg"]
 ---
 
 For infrastructure environments that the Palette CLI does not support, you can deploy a Private Cloud Gateway (PCG) to
-an existing Kubernetes cluster. This guide provides the steps to deploy a PCG to an existing Kubernetes cluster.
+an existing Kubernetes cluster.
 
 ## Supported Environments
 
 You can deploy a PCG onto an existing Kubernetes cluster that is not managed by Palette to the following environments:
 
 - AWS
-- Azure
-- Nutanix. Requires the registration of a Nutanix cloud. Refer to the
-  [Register Nutanix Cloud](../data-center/nutanix/register-nutanix-cloud.md) section for more information.
 
-### PCG Sizing
+- Azure
+
+- <TpBadge /> Nutanix
+
+  :::info
+
+  To select **Nutanix** as the PCG cloud type, you must
+  [Register Nutanix Cloud](../data-center/nutanix/register-nutanix-cloud.md) with Palette.
+
+  :::
+
+## PCG Sizing
 
 The following table provides the recommended sizing for the PCG based on the number of nodes, CPU, memory, storage, and
 the maximum concurrent cluster deployments. You can continue to deploy additional clusters once the current clusters
@@ -28,7 +36,7 @@ deployment batch is complete.
 We recommend using a minimum of 3 nodes for production environments. Single node clusters are better suited for
 development and testing environments.
 
-##### Single-Node Cluster
+### Single-Node Cluster
 
 | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
 | -------- | --------- | ------- | ---------- | ----------- | ------------------------------------------ |
@@ -36,7 +44,7 @@ development and testing environments.
 | Medium   | 1         | 8       | 8 GB       | 100 GB      | 4-6                                        |
 | Large    | 1         | 16      | 16 GB      | 120 GB      | 7-10                                       |
 
-##### High-Availability (HA) Cluster
+### High-Availability (HA) Cluster
 
 | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
 | -------- | --------- | ------- | ---------- | ----------- | ------------------------------------------ |
@@ -58,7 +66,7 @@ development and testing environments.
 
   :::
 
-- You need sufficient permissions to deploy the PCG services in the cluster. The
+- Sufficient permissions to deploy the PCG services in the cluster. The
   [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings)
   _cluster-admin_ and _admin_ have the necessary permissions to deploy the PCG services.
 
@@ -67,12 +75,12 @@ development and testing environments.
   - 4 vCPUs
   - 4 GB of memory
   - 60 GB of disk space
-  - 1 control plane node and 1 worker node. We recommend using a minimum of 3 nodes for production environments. Refer
-    to the [PCG Sizing](#pcg-sizing) section for more information.
-  - A Container Network Interface plugin installed.
-  - A Container Storage Interface plugin installed.
-  - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your Palette version. Refer
-    to the [Kubernetes Requirements](./pcg.md#kubernetes-requirements) section to find the required Kubernetes version.
+  - One control plane node with worker capabilities or three nodes for production environments. Refer to the
+    [PCG Sizing](#pcg-sizing) section for more information.
+  - A Container Network Interface (CNI) plugin installed.
+  - A Container Storage Interface (CSI) plugin installed.
+  - The Kubernetes cluster must use a version of Kubernetes that is compatible to your Palette version. Refer to the
+    [Kubernetes Requirements](./pcg.md#kubernetes-requirements) section to find the required Kubernetes version.
 
 - PCG IP address requirements:
 
@@ -85,7 +93,7 @@ development and testing environments.
 
 - If you want Palette to display cluster metrics, ensure that the
   [metrics server](https://github.com/kubernetes-sigs/metrics-server) is installed in the cluster. You can install the
-  metrics server by using the following command.
+  metrics server using the following command.
 
       ```shell
       kubectl apply --filename https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
@@ -95,26 +103,24 @@ development and testing environments.
 
 Use the following steps to install the PCG in your existing Kubernetes cluster.
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
-2. From the left **Main Menu**, select **Tenant Settings**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways** and click on **Add New Private Cloud
-   Gateway**.
+3. From the **Tenant Settings** menu, select **Private Cloud Gateways > Add New Private Cloud Gateway**.
 
-4. Select **Self Hosted** in the next window that Palette displays.
+4. On the **Private Cloud Gateway installation instructions** dialog, select **Self Hosted**.
 
-5. Provide a name for the PCG and use the **drop-down Menu** to select the target infrastructure provider. Click
-   **Confirm** to continue. You will be redirected to the Private Cloud Gateway Overview page.
+5. Enter a **Private cloud gateway** name and use the **Cloud type** drop-down menu to select the target infrastructure
+   provider. **Create** your PCG when finished. You are redirected to the Private Cloud Gateway **Overview** page.
 
-6. To install the Palette agent, copy the kubectl commands from the slide-out panel and execute them against your
+6. To install the Palette agent, copy the kubectl commands from the side drawer and execute them against your
    self-hosted cluster. Issue the commands in the order they are listed.
 
    ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/clusters_pcg_deploy-pcg-k8s_kubectl-cmds-view.webp)
 
-7. Close the slide-out panel when you have copied and issued both commands. The PCG Overview page **Cluster Status**
-   field will display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status**
-   field displays the status **Running**.
+7. Close the side drawer once you issue both commands. The **Cluster Status** field displays **Pending** while the PCG
+   is deploying. The deployment is complete when the **Cluster Status** field displays the status **Running**.
 
    :::tip
 
@@ -129,18 +135,21 @@ Use the following steps to install the PCG in your existing Kubernetes cluster.
 When deployed, the PCG registers itself with Palette. Use the steps below to verify if the PCG registration is
 successful.
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
-2. Navigate to the **left Main Menu** and select **Tenant Settings**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways**.
+3. From the **Tenant Settings** menu, select **Private Cloud Gateways**, and choose your PCG.
 
-4. Locate the PCG and verify it is installed and in the **Running** state.
+4. On the Private Cloud Gateway **Overview** screen, verify the **Cluster Status** is **Running**.
 
 ## Next Steps
 
-When the PCG is in the **Running** state, you can create a cloud account, toggle **Connect Private Cloud Gateway**, and
-select the PCG you just deployed. The option to use the PCG you deployed on an existing cluster is only available to the
-infrastructure provider you selected when you deployed the PCG. Clusters deployed to the cloud account with the
-**Connect Private Cloud Gateway** enabled will use the PCG you deployed to support cluster deployment and removal
-operations.
+Once your PCG is in the **Running** state, you can add an [AWS](../public-cloud/aws/add-aws-accounts.md),
+[Azure](../public-cloud/azure/azure-cloud.md), or [Nutanix](../data-center/nutanix/add-nutanix-cloud-account.md) cloud
+account to Palette with the **Connect Private Cloud Gateway** option toggled and your self-hosted PCG selected. You can
+then use the PCG to deploy and delete clusters in the cloud environment connected to the PCG.
+
+If you need to configure a proxy server for your PCG, refer to
+[Enable and Manage Proxy Configurations](./manage-pcg/configure-proxy.md). The proxy must be configured before deploying
+workload clusters through the PCG in order for the workload clusters to inherit the PCG's proxy configurations.
