@@ -932,8 +932,18 @@ Route 53 as an example.
       }'
     ```
 
-4.  Next, create the root domain record for the system console. The method depends on whether `<your-root-domain>` is
-    the zone apex (the same as the hosted zone name) or a subdomain within a larger zone.
+    ```json title="Example output" hideClipboard
+    {
+      "ChangeInfo": {
+        "Id": "/change/123456789ABCDEFGHIJK",
+        "Status": "PENDING",
+        "SubmittedAt": "2026-03-18T19:26:58.547000+00:00"
+      }
+    }
+    ```
+
+4.  Next, create the root domain record for the zone apex (the same as the hosted zone name) or a subdomain within a
+    larger zone.
 
     <Tabs groupId="root-domain-record">
 
@@ -951,7 +961,11 @@ Route 53 as an example.
           --output text
         ```
 
-    2.  Create the Alias record using the load balancer's hosted zone ID.
+        ```shell title="Example output" hideClipboard
+        HBDJNJ19D0277D
+        ```
+
+    2.  Create the Alias record
 
         ```shell
         aws route53 change-resource-record-sets \
@@ -970,6 +984,16 @@ Route 53 as an example.
               }
             }]
           }'
+        ```
+
+        ```json title="Example output" hideClipboard
+        {
+          "ChangeInfo": {
+            "Id": "/change/C0669446V5KE9GEIJFGW",
+            "Status": "PENDING",
+            "SubmittedAt": "2026-03-18T19:47:53.855000+00:00"
+          }
+        }
         ```
 
     </TabItem>
@@ -995,6 +1019,16 @@ Route 53 as an example.
               }
             }]
           }'
+        ```
+
+        ```json title="Example output" hideClipboard
+        {
+          "ChangeInfo": {
+            "Id": "/change/C08234719ABCDEF12345",
+            "Status": "PENDING",
+            "SubmittedAt": "2026-03-18T19:50:12.123000+00:00"
+          }
+        }
         ```
 
     </TabItem>

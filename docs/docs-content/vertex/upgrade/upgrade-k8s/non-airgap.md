@@ -78,8 +78,8 @@ match your environment.
    TEST SUITE: None
    ```
 
-4. Install or upgrade the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs)
-   required by VerteX, including Traefik CRDs.
+4. Install or upgrade the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required
+   by VerteX, including Traefik CRDs.
 
    ```shell
    helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
@@ -105,10 +105,14 @@ match your environment.
    :::warning
 
    Ensure that the `values.yaml` file is ready before proceeding. If you are using a self-hosted OCI registry, make sure
-   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links. Use
-   `/v2/` in your endpoints if your OCI registry supports the Docker Registry HTTP API V2 protocol; otherwise, container
-   image pulls will fail. For example:
-   `docker.io::harbor.example.org/v2/airgap-images/docker.io,gcr.io::harbor.example.org/v2/airgap-images/gcr.io`.
+   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
+
+   Include `/v2/` in your endpoints if you are using a
+   [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
+   Harbor proxy cache projects use `/v2/` as part of their internal URL routing for cached images. For all other
+   registries, omit `/v2/`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2/`
+   for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
+   `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io,gcr.io::harbor.example.org/v2/proxy-cache-project/gcr.io`.
 
    :::
 
@@ -184,8 +188,8 @@ match your environment.
    :::
 
    The upgrade usually takes up to five minutes. Palette VerteX is upgraded when the deployments in the namespaces
-   `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the
-   **Ready** status.
+   `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready**
+   status.
 
 10. This version of Palette VerteX uses Traefik as the primary ingress controller instead of Nginx. The upgrade creates
     a new LoadBalancer service in the `ingress-traefik` namespace with a new external IP address or hostname. Update
