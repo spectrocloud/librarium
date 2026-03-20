@@ -23,12 +23,12 @@ integration for your AKS clusters.
 - A Palette account with either Cluster Profile Admin or Cluster Profile Editor permissions depending on whether you are
   creating a new cluster profile or editing an existing one. Refer to
   [Cluster Profile Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
-  section for more information.
+ for more information.
 
 - The service principal associated with your Azure cloud account must have the built-in
-  [**Azure Kubernetes Service RBAC Cluster Admin**](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-rbac-cluster-admin)
+  [Azure Kubernetes Service RBAC Cluster Admin](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-rbac-cluster-admin)
   role assigned at the appropriate scope level. This is in addition to the [Required Permissions](../azure-cloud.md) for
-  cluster provisioning. Refer to the
+  cluster provisioning. Refer to
   [Steps to assign an Azure role](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-steps)
   for guidance.
 
@@ -47,7 +47,7 @@ integration for your AKS clusters.
 
 1. Log in to [Palette](https://console.palette.com).
 
-2. In the left main menu, click on **Profiles**.
+2. From the left main menu, select **Profiles**.
 
 3. Click on the cluster profile you want to edit or
    [create a new cluster profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
@@ -55,10 +55,9 @@ integration for your AKS clusters.
    - If editing an existing cluster profile,
      [create a new version of the cluster profile](../../../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
-   - If creating a new cluster profile, select the **Azure AKS** on the Cloud Type page, and add your profile layers as
-     needed. Create the cluster profile and then click on it from the **Profiles** page to edit the profile.
+   - If creating a new cluster profile, choose a cluster profile **Type** of **Infrastructure** or **Full**, and select **Azure AKS** for the cloud type. Add profile layers as needed. When you are finished creating the cluster profile, select it from the **Profiles** page to edit it.
 
-4. Click on the **Kubernetes** layer to edit the pack parameters.
+4. Click on the `kubernetes-aks` layer to edit the pack parameters.
 
 5. Under **Pack Details**, select **Values**.
 
@@ -80,7 +79,7 @@ integration for your AKS clusters.
    | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
    | `managedControlPlane.aadProfile.managed`              | Set to `true` to enable Microsoft Entra ID integration for your AKS clusters.                                                                                                                                                                                                                                                                                                                                       | `true`                                     |
    | `managedControlPlane.aadProfile.adminGroupObjectIDs`  | Provide a list of Microsoft Entra ID group object IDs for members that you want to receive `cluster-admin` Kubernetes role privileges. This is a required parameter when `managedControlPlane.aadProfile.managed` is set to `true`.                                                                                                                                                                                 | `["aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"]` |
-   | `managedControlPlane.aadProfile.disableLocalAccounts` | Set to `true` to disable local accounts for your AKS clusters. When set to true: <br /><br />- `az aks get-credentials --admin` no longer works. <br />- Only Microsoft Entra ID authentication is allowed. <br />- The cluster kubeconfig will be token-based and will be valid for ~1 hour. After that, you will need to [download the kubeconfig again from Palette](../../../cluster-management/kubeconfig.md). | `true`                                     |
+   | `managedControlPlane.aadProfile.disableLocalAccounts` | Set to `true` to disable local accounts for your AKS clusters. When set to true: <br /><br />- `az aks get-credentials --admin` no longer works. <br />- Only Microsoft Entra ID authentication is allowed. <br />- The cluster kubeconfig will be token-based and will be valid for approximately 1 hour. After that, you will need to [download the kubeconfig again from Palette](../../../cluster-management/kubeconfig.md). | `true`                                     |
 
 7. After making the necessary changes, click **Confirm Updates**.
 
@@ -105,7 +104,7 @@ Microsoft Entra ID integration enabled.
 
 1. Log in to [Palette](https://console.palette.com).
 
-2. In the left main menu, click **Clusters**.
+2. From the left main menu, select **Clusters**.
 
 3. Click on the AKS cluster you want to validate.
 

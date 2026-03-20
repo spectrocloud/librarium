@@ -38,7 +38,7 @@ tags: ["release-notes"]
   [Microsoft Entra integration](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
   and [Microsoft Entra Workload ID](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview?tabs=dotnet)
   for Azure Kubernetes Service (AKS) clusters. This allows you to manage access to your AKS clusters using Microsoft
-  Entra ID identities and leverage Microsoft Entra Workload ID for secure authentication of applications hosted on your
+  Entra ID identities and leverage Microsoft Entra Workload ID for securely authenticating applications hosted on your
   AKS clusters. Both features need to be enabled in your Azure AKS cluster profiles. Refer to the following guides for
   more information:
 
