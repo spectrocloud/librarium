@@ -9,7 +9,8 @@ sidebar_position: 20
 
 Palette provides support for
 [Microsoft Entra Workload ID](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview?tabs=dotnet) for
-Azure Kubernetes Service (AKS) clusters. This allows you to leverage Microsoft Entra Workload ID to securely authenticate applications hosted on your AKS clusters.
+Azure Kubernetes Service (AKS) clusters. This allows you to leverage Microsoft Entra Workload ID to securely
+authenticate applications hosted on your AKS clusters.
 
 :::info
 
@@ -33,12 +34,13 @@ guidance.
 - A Palette account with either Cluster Profile Admin or Cluster Profile Editor permissions depending on whether you are
   creating a new cluster profile or editing an existing one. Refer to
   [Cluster Profile Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
- for more information.
+  for more information.
 
 - Azure CLI installed and configured on your local machine. Refer to the
   [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) guide for instructions.
 
-  - You will need a minimum of read permissions on the cluster to be able to validate Microsoft Entra Workload ID is enabled.
+  - You will need a minimum of read permissions on the cluster to be able to validate Microsoft Entra Workload ID is
+    enabled.
 
 ## Enable Microsoft Entra Workload ID
 
@@ -52,7 +54,9 @@ guidance.
    - If editing an existing cluster profile,
      [create a new version of the cluster profile](../../../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
-   - If creating a new cluster profile, choose a cluster profile **Type** of **Infrastructure** or **Full**, and select **Azure AKS** for the cloud type. Add profile layers as needed. When you are finished creating the cluster profile, select it from the **Profiles** page to edit it.
+   - If creating a new cluster profile, choose a cluster profile **Type** of **Infrastructure** or **Full**, and select
+     **Azure AKS** for the cloud type. Add profile layers as needed. When you are finished creating the cluster profile,
+     select it from the **Profiles** page to edit it.
 
 4. Click on the `kubernetes-aks` layer to edit the pack parameters.
 
@@ -71,10 +75,10 @@ guidance.
 
    Review the following table for an explanation of these parameters.
 
-   | Parameter                                                      | Description                                                                                                                                                                                                                                                                                                                                                                  |
-   | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Parameter                                                      | Description                                                                                                                                                                                                                                                                                                                                                                      |
+   | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | `managedControlPlane.oidcIssuerProfile.enabled`                | Set to `true` to enable the OpenID Connect (OIDC) issuer profile for your AKS cluster. This exposes an OIDC endpoint for your AKS cluster, which is mandatory for Microsoft Entra Workload ID, although it must be enabled separately. Once enabled, this property cannot be disabled and any attempt to set it to `false` will be discarded in the control plane configuration. |
-   | `managedControlPlane.securityProfile.workloadIdentity.enabled` | Set to `true` to enable Microsoft Entra Workload ID for your AKS clusters. This installs a mutating webhook that automatically injects the necessary annotations and labels into your pods. This enables your pods to obtain service account tokens, which are exchanged for Microsoft Entra ID tokens that allow your applications to access Azure resources securely.      |
+   | `managedControlPlane.securityProfile.workloadIdentity.enabled` | Set to `true` to enable Microsoft Entra Workload ID for your AKS clusters. This installs a mutating webhook that automatically injects the necessary annotations and labels into your pods. This enables your pods to obtain service account tokens, which are exchanged for Microsoft Entra ID tokens that allow your applications to access Azure resources securely.          |
 
 7. After making the necessary changes, click **Confirm Updates**.
 
