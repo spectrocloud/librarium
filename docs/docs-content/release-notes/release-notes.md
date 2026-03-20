@@ -15,9 +15,9 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.8.6 - 4.8.40.
 
-| Component                                                                                             | Version |
-| ----------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.8.5   |
+| Component                                          | Version |
+| -------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md) | 4.8.5   |
 
 ### Bug Fixes
 
