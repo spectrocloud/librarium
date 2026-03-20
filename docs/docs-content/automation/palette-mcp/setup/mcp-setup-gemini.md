@@ -54,7 +54,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/Users/<user-name>/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/<user-name>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
    ```
 
-You can now use the Palette MCP server with your Cursor installation.
+You can now use the Palette MCP server with Gemini CLI.
 
 ## Validation
 
@@ -71,7 +71,7 @@ You can now use the Palette MCP server with your Cursor installation.
    your Palette clusters.
 
    ```shell title="Example Output"
-       ✦ I will list the active clusters in Palette to determine how many you have.
+   ✦ I will list the active clusters in Palette to determine how many you have.
    ╭─────────────────────────────────────────────────────────────────────────────────────────────╮
    │ ✓  gather_or_delete_clusters (palette MCP Server) {"active_only":true,"action":"list"}      │
    │                                                                                             │

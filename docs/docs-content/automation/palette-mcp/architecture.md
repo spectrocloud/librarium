@@ -38,13 +38,3 @@ The Palette MCP server provides the following configuration parameters.
 | `SPECTROCLOUD_APIKEY`             | [Palette API key](../../user-management/authentication/api-key/api-key.md) used for authentication.                                            |
 | `SPECTROCLOUD_HOST`               | API endpoint for your Palette installation. For example, api.spectrocloud.com.                                                                 |
 | `ALLOW_DANGEROUS_ACTIONS`         | Controls whether the MCP server is allowed to perform dangerous actions, such as resource deletion. Disabled by default, set to `1` to enable. |
-| `AUTO_GENERATE_MCP_TOOLS`         | Controls whether the server should automatically generate tools from the Palette API. Disabled by default, set to `1` to enable.               |
-
-:::warning
-
-`AUTO_GENERATE_MCP_TOOLS` is an experimental flag. It results in over 950 unique tools being loaded into the MCP server.
-Most models will not be able to handle this many tools and will only load a subset of the tools.
-
-Additionally, we cannot guarantee that the tools will work as expected as they are generated dynamically.
-
-:::
