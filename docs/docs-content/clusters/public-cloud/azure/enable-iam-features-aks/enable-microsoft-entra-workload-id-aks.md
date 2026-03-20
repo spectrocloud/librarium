@@ -87,9 +87,9 @@ guidance.
    webhook rejects. This puts Palette into a reconciliation loop and blocks Day-2 operations with repeated
    `ReconcileError` events. These events can happen even if the underlying Kubernetes cluster reports as healthy.
 
-   To disable Workload ID on an existing cluster, explicitly set `enabled` to `false` instead:
+   To disable Workload ID on an existing cluster, explicitly set `enabled: false` instead.
 
-   ```yaml
+   
    managedControlPlane:
      securityProfile:
        workloadIdentity:
