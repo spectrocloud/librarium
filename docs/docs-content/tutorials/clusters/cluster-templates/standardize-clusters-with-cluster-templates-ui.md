@@ -381,7 +381,7 @@ moments before opening the service URL to prevent the browser from caching an un
 
 The `dev-cluster-aws` cluster is serving the Hello Universe application.
 
-Repeat these steps for `prod-cluster-aws` to confirm it is also serving the Hello Universe application.
+Repeat these steps for `prod-cluster-aws` to confirm you can launch the Hello Universe application.
 
 ### Create a New Cluster Profile Version
 
