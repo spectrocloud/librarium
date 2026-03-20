@@ -363,7 +363,7 @@ Configuration**. Confirm that **Hello Universe Replicas** is set to `2` for this
 
 ### Validate the Deployments
 
-From the left main menu, select **Clusters > dev-cluster-aws**.
+From the left main menu, select **Clusters**, and then select **dev-cluster-aws**.
 
 When the application is deployed and ready for network traffic, indicated in the **Services** field, Palette exposes the
 service URL. Open the URL for port **:8080** to access the Hello Universe application.
