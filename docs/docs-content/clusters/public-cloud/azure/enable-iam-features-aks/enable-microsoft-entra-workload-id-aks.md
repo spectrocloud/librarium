@@ -75,10 +75,28 @@ guidance.
 
    Review the following table for an explanation of these parameters.
 
-   | Parameter                                                      | Description                                                                                                                                                                                                                                                                                                                                                                      |
-   | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `managedControlPlane.oidcIssuerProfile.enabled`                | Set to `true` to enable the OpenID Connect (OIDC) issuer profile for your AKS cluster. This exposes an OIDC endpoint for your AKS cluster, which is mandatory for Microsoft Entra Workload ID, although it must be enabled separately. Once enabled, this property cannot be disabled and any attempt to set it to `false` will be discarded in the control plane configuration. |
-   | `managedControlPlane.securityProfile.workloadIdentity.enabled` | Set to `true` to enable Microsoft Entra Workload ID for your AKS clusters. This installs a mutating webhook that automatically injects the necessary annotations and labels into your pods. This enables your pods to obtain service account tokens, which are exchanged for Microsoft Entra ID tokens that allow your applications to access Azure resources securely.          |
+   | Parameter                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `managedControlPlane.oidcIssuerProfile.enabled`                | Set to `true` to enable the OpenID Connect (OIDC) issuer profile for your AKS cluster. This exposes an OIDC endpoint for your AKS cluster, which is mandatory for Microsoft Entra Workload ID, although it must be enabled separately. <br /><br /> Once enabled, this property cannot be disabled and any attempt to set it to `false` will be discarded in the control plane configuration.                                                                  |
+   | `managedControlPlane.securityProfile.workloadIdentity.enabled` | Set to `true` to enable Microsoft Entra Workload ID for your AKS clusters. This installs a mutating webhook that automatically injects the necessary annotations and labels into your pods. This enables your pods to obtain service account tokens, which are exchanged for Microsoft Entra ID tokens that allow your applications to access Azure resources securely. <br /><br /> To disable Workload ID on an existing cluster, set this field to `false`. |
+
+   :::warning
+
+   Do not remove the `securityProfile.workloadIdentity` block from an existing cluster profile to disable Workload ID.
+   Removing the block causes Azure to treat the value as `null`, which the Cluster API Provider Azure (CAPZ) admission
+   webhook rejects. This puts Palette into a reconciliation loop and blocks Day-2 operations with repeated
+   `ReconcileError` events. These events can happen even if the underlying Kubernetes cluster reports as healthy.
+
+   To disable Workload ID on an existing cluster, explicitly set `enabled` to `false` instead:
+
+   ```yaml
+   managedControlPlane:
+     securityProfile:
+       workloadIdentity:
+         enabled: false
+   ```
+
+   :::
 
 7. After making the necessary changes, click **Confirm Updates**.
 

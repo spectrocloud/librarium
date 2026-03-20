@@ -37,6 +37,9 @@ integration for your AKS clusters.
   [Microsoft Entra ID documentation](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-manage-groups) for
   guidance on creating groups and obtaining their object IDs.
 
+  - The groups you specify cannot be changed after cluster creation, so ensure you have the correct group object IDs
+    before proceeding.
+
 - Azure CLI installed and configured on your local machine. This is required for validating that Microsoft Entra ID
   integration is active on your AKS clusters. Refer to the
   [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) guide for instructions.
@@ -82,6 +85,17 @@ integration for your AKS clusters.
    | `managedControlPlane.aadProfile.managed`              | Set to `true` to enable Microsoft Entra ID integration for your AKS clusters.                                                                                                                                                                                                                                                                                                                                                    | `true`                                     |
    | `managedControlPlane.aadProfile.adminGroupObjectIDs`  | Provide a list of Microsoft Entra ID group object IDs for members that you want to receive `cluster-admin` Kubernetes role privileges. This is a required parameter when `managedControlPlane.aadProfile.managed` is set to `true`.                                                                                                                                                                                              | `["aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"]` |
    | `managedControlPlane.aadProfile.disableLocalAccounts` | Set to `true` to disable local accounts for your AKS clusters. When set to true: <br /><br />- `az aks get-credentials --admin` no longer works. <br />- Only Microsoft Entra ID authentication is allowed. <br />- The cluster kubeconfig will be token-based and will be valid for approximately 1 hour. After that, you will need to [download the kubeconfig again from Palette](../../../cluster-management/kubeconfig.md). | `true`                                     |
+
+   :::warning
+
+   The `managedControlPlane.*` fields are immutable and must be finalized at cluster creation (Day-1). Once a cluster is
+   deployed, do not attempt to add, remove, or change these settings in the cluster profile.
+
+   If you do, the Cluster API Provider Azure (CAPZ) admission webhook will reject the change and Palette will enter a
+   reconciliation loop, blocking Day-2 operations and generating repeated `ReconcileError` events on the cluster. These
+   events can happen even if the underlying Kubernetes cluster reports as healthy.
+
+   :::
 
 7. After making the necessary changes, click **Confirm Updates**.
 
