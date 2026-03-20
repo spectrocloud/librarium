@@ -6,7 +6,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The

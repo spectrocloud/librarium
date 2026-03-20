@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 [Cluster profiles](../../../../../docs-content/profiles/profiles.md) are declarative, full-stack models that Palette

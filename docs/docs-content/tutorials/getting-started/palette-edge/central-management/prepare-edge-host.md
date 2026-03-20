@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual machines

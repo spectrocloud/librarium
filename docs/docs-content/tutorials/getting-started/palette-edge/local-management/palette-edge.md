@@ -8,13 +8,11 @@ sidebar_position: 0
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-This section gives you an overview of how to get started with Palette Edge. You will learn how Palette simplifies the
-deployment of Kubernetes clusters at the edge, along with all the steps required to deploy your first Edge cluster, such
-as building the necessary artifacts and preparing the host.
+This section gives you an overview of how to get started with locally managed Palette Edge. You will learn how to deploy your first locally managed Edge cluster, along with all the steps required to deploy your first locally managed Edge cluster, such as building the necessary artifacts and preparing the host.
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_roadmap.webp)
 
-Explore the following tutorials to learn how to deploy your first connected Edge cluster with Palette. Each tutorial is
+Explore the following tutorials to learn how to deploy your first locally managed Edge cluster. Each tutorial is
 designed to guide you step-by-step, building on the concepts introduced in the previous one.
 
 <!-- vale off -->
@@ -50,6 +48,12 @@ designed to guide you step-by-step, building on the concepts introduced in the p
       description: "Install the Palette agent on your Edge host and register the host with Palette.",
       buttonText: "Learn more",
       url: "/tutorials/getting-started/palette-edge/local-management/prepare-edge-host",
+    },
+        {
+      title: "Build Cluster Definition",
+      description: "Create the cluster definition file and upload it to your Edge host",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/palette-edge/local-management/build-cluster-definition",
     },
     {
       title: "Deploy Edge Cluster",

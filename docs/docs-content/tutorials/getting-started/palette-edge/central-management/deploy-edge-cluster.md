@@ -5,7 +5,7 @@ description: "Get started with Kubernetes at the edge. Learn how to deploy an Ed
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster
