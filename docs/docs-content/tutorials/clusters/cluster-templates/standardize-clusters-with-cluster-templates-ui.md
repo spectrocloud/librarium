@@ -342,6 +342,25 @@ Configuration**. Confirm that **Hello Universe Replicas** is set to `1` for this
 
 ### Deploy a Prod Cluster from the Template
 
+The prod environment requires more replicas than dev, so assign `app_replicas`, displayed as **Hello Universe Replicas**
+in the UI, a value of `2`. Once that value is set, deploy a prod cluster from the `cluster-template-aws` cluster
+template.
+
+Follow the same steps as the dev deployment, with two key differences.
+
+On the **Basic Information** page, enter `prod-cluster-aws` as the cluster name.
+
+On the **Profile Config** page, set **Hello Universe Replicas** to `2`.
+
+The cluster deployment may take another 15 to 30 minutes. From the left main menu, select **Clusters** to monitor
+progress.
+
+#### Confirm the Deployment
+
+Once `prod-cluster-aws` has a **Running** status, confirm the deployment. Select `prod-cluster-aws`, and then select the
+**Profile** tab. Confirm it is using `cluster-template-profile-aws`. Select **Configure Values > Profiles Variables
+Configuration**. Confirm that **Hello Universe Replicas** is set to `2` for this prod cluster.
+
 ### Validate the Deployments
 
 ### Create a New Cluster Profile Version
