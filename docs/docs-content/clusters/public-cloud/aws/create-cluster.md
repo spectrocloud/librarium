@@ -90,7 +90,8 @@ The following prerequisites must be met before deploying a cluster to AWS:
     for more information.
   - The AMI licenses match the licenses associated with the Host Resource Group.
   - The required IAM policy **PaletteHostResourceGroupsPolicy** is attached to your AWS IAM user or role used by
-    Palette. Review the [Host Resource Groups Policy](./required-iam-policies.md#host-resource-groups-policy) section
+    Palette. Review the
+    [Host Resource Groups Policy](./required-iam-policies/required-iam-policies.md#host-resource-groups-policy) section
     for more information.
 
 - If configuring the **Cert Manager** pack , ensure that you use version 1.19.1 or later. It is also important to

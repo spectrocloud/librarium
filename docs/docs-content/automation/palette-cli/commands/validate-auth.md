@@ -105,8 +105,9 @@ The interactive steps change depending on the cloud environment chosen.
 
 7. Choose the permission model to validate against. The `Comprehensive` model will check whether you have sufficient
    permissions for all Palette features. The `Minimal` model will only check for the privileges needed to create and
-   delete clusters. Refer to the [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) to
-   learn more about AWS permissions needed by Palette.
+   delete clusters. Refer to the
+   [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies/required-iam-policies.md) to learn
+   more about AWS permissions needed by Palette.
 
 8. You are prompted to answer `Will the cloud account be deploying EKS host clusters?`. Enter `y` if you want to check
    for sufficient permissions to deploy Amazon EKS clusters, or `n` if you do not.
@@ -393,10 +394,10 @@ Each plugin can report different types of validation failures. The resolution st
 plugin and failure type. Use the error output to identify and address each failure. The following table provides
 guidance for common failure scenarios.
 
-| **Plugin** | **Failure Message**                                                            | **Guidance**                                                                                                                                                                                                                                                                              |
-| ---------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **AWS**    | One or more required IAM permissions was not found, or a condition was not met | The IAM user or role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.  |
-| **Azure**  | Principal lacks required permissions. See failures for details.                | The service principal used by Palette is missing one or more required permissions. Refer to [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) for a comprehensive list of required permissions and attach the missing permissions or role assignments. |
+| **Plugin** | **Failure Message**                                                            | **Guidance**                                                                                                                                                                                                                                                                                                   |
+| ---------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AWS**    | One or more required IAM permissions was not found, or a condition was not met | The IAM user or role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies. |
+| **Azure**  | Principal lacks required permissions. See failures for details.                | The service principal used by Palette is missing one or more required permissions. Refer to [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) for a comprehensive list of required permissions and attach the missing permissions or role assignments.                      |
 
 <!-- Saving in case we add quota checks in the future
 

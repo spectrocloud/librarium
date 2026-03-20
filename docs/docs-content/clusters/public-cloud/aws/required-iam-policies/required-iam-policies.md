@@ -4,7 +4,6 @@ title: "Required IAM Policies"
 description: "A list of required IAM policies that Palette requires."
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "iam"]
-sidebar_position: 50
 ---
 
 Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. You must
@@ -34,7 +33,7 @@ learn more about AWS IAM limits in the
 :::
 
 You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
-[`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
+[`validate-auth`](../../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
 
 ## Core IAM Policies
 
@@ -299,7 +298,7 @@ supports the `manageCloudFormationStackManually` configuration.
 2. From the left main menu, select **Profiles**..
 
 3. Choose an existing cluster profile or
-   [create a new cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
+   [create a new cluster profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
 
 4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
    Pack** page.
@@ -329,7 +328,7 @@ supports the `manageCloudFormationStackManually` configuration.
 2. From the left main menu, select **Profiles**..
 
 3. Choose an existing cluster profile or
-   [create a new cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
+   [create a new cluster profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
 
 4. Once in the cluster profile overview with all the layers listed, select the Kubernetes layer to view the **Edit
    Pack** page.
