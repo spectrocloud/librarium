@@ -89,14 +89,13 @@ guidance.
 
    To disable Workload ID on an existing cluster, explicitly set `enabled: false` instead.
 
-   
-   managedControlPlane:
-     securityProfile:
-       workloadIdentity:
-         enabled: false
+   managedControlPlane: securityProfile: workloadIdentity: enabled: false
+
    ```
 
    :::
+
+   ```
 
 7. After making the necessary changes, click **Confirm Updates**.
 
