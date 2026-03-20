@@ -16,6 +16,8 @@ topics to learn more about managing a PCG.
 
 - [Enable and Manage Proxy Configurations](./configure-proxy.md)
 
+- [Proxy CA Certificates for Workload Clusters](./configure-proxy-ca-certs.md)
+
 - [Increase PCG Node Count](./scale-pcg-nodes.md)
 
 - [Delete a PCG](./remove-pcg.md)
