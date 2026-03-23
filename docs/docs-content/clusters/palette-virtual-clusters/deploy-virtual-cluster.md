@@ -26,7 +26,7 @@ Use the following steps to deploy a virtual cluster on connected and airgapped e
 - Attach any required policies in your cloud account that must be added to your virtual cluster deployment.
 
   - For AWS, refer to the
-    [Required IAM Policies](../public-cloud/aws/required-iam-policies/required-iam-policies.md#global-role-additional-policies)
+    [Required IAM Policies](../public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#global-role-additional-policies)
     documentation.
   - For Azure, no additional policies are required.
 
