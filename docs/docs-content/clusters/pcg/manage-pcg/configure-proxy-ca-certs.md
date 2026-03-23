@@ -70,8 +70,8 @@ certificate into pods.
 
 - An active PCG cluster with proxy configured. Refer to the appropriate installation guide for your environment:
 
-  - **Palette CLI** - [MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md),
-    [OpenStack](../deploy-pcg/openstack.md), or [Apache CloudStack](../deploy-pcg/cloudstack.md).
+  - **Palette CLI** - [MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md), or
+    [Apache CloudStack](../deploy-pcg/cloudstack.md).
   - **Existing Kubernetes cluster** - [Enable and Manage Proxy Configurations](./configure-proxy.md).
 
 - The proxy CA certificate in Privacy-Enhanced Mail (PEM) format. The certificate file must be named `ca.crt`.
