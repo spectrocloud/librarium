@@ -26,7 +26,7 @@ create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBS
 
 This is _not_ required when using [minimum permissions policies](./minimum-permissions-policies.md).
 
-To add additional node-level policies:
+Use the following steps to add node-level policies.
 
 1. Log in to Palette.
 2. Switch to the **Tenant Admin** project, and click on the **Tenant Settings** on the main menu.

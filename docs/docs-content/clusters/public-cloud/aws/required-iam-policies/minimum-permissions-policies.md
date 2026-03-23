@@ -83,7 +83,7 @@ The following are important points to be aware of.
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
   Break policy into multiple inline policies or create new managed policies.
 
-- The following IAM warning is expected and can be ignored:
+- The following IAM warning is expected and can be ignored.
 
   > These policies define some actions, resources, or conditions that do not provide permissions. _To grant access,
   > policies must have an action that has an applicable resource or condition_.
