@@ -330,7 +330,7 @@ Palette VerteX upgrade.
 
     :::
 
-14. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step thirteen.
+14. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step 13.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -350,7 +350,7 @@ Palette VerteX upgrade.
     ```
 
 15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step
-    thirteen.
+    13.
 
     ```shell
     helm upgrade --values palette/values.yaml \

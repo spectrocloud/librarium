@@ -715,7 +715,7 @@ environment. Reach out to our support team if you need assistance.
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
-    nine.
+    9.
 
     ```shell
     helm upgrade --values palette/values.yaml \

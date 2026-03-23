@@ -117,7 +117,7 @@ match your environment.
    :::
 
 6. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
-   `palette/values.yaml` file from step five.
+   `palette/values.yaml` file from step 5.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -137,7 +137,7 @@ match your environment.
    ```
 
 7. If you are upgrading a Palette VerteX instance in an environment that requires network proxy configuration, upgrade
-   the reach-system chart with the following command. Point to the `palette/values.yaml` file from step five.
+   the reach-system chart with the following command. Point to the `palette/values.yaml` file from step 5.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -191,7 +191,7 @@ match your environment.
    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready**
    status.
 
-   <PartialsComponent category="self-hosted" name="airgap-binary-execution" edition="Palette VerteX" />
+   <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 ## Validate
 

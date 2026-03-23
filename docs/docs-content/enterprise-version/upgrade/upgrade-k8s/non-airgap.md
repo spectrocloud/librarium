@@ -121,7 +121,7 @@ match your environment.
    :::
 
 6. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
-   `palette/values.yaml` file from step five.
+   `palette/values.yaml` file from step 5.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -141,7 +141,7 @@ match your environment.
    ```
 
 7. If you are upgrading a Palette instance in an environment that requires network proxy configuration, upgrade the
-   reach-system chart with the following command. Point to the `palette/values.yaml` file from step five.
+   reach-system chart with the following command. Point to the `palette/values.yaml` file from step 5.
 
    ```shell
    helm upgrade --values palette/values.yaml \
