@@ -24,8 +24,8 @@ advisories.
 
 A security issue was discovered in [`ingress-nginx`](https://github.com/kubernetes/ingress-NGINX), where certain
 combinations of Ingress annotations can be used to inject configurations into Nginx. This can lead to arbitrary code
-execution in the context of the `ingress-nginx` controller and the disclosure of Secrets accessible to the controller. In
-the default `ingress-nginx` installation, the controller can access all Secrets cluster-wide.
+execution in the context of the `ingress-nginx` controller and the disclosure of Secrets accessible to the controller.
+In the default `ingress-nginx` installation, the controller can access all Secrets cluster-wide.
 
 #### Affected Versions
 
