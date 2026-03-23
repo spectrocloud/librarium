@@ -368,7 +368,7 @@ From the left main menu, select **Clusters**, and then select **dev-cluster-aws*
 When the application is deployed and ready for network traffic, indicated in the **Services** field, Palette exposes the
 service URL. Open the URL for port **:8080** to launch the Hello Universe application.
 
-![Hello Universe service URL](/hello-universe-service-url.webp)
+![Screenshot showing how to find the Hello Universe service URL](/hello-universe-service-url.webp)
 
 :::warning
 
