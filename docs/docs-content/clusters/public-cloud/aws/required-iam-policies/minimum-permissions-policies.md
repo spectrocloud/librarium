@@ -13,20 +13,6 @@ The following policies are designed from the
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
 [Core IAM Policies](./core-iam-policies.md).
 
-<!-- prettier-ignore-start -->
-
-:::info
-
-If you want to use minimum permissions policies for deploying AWS Infrastructure as a Service (IaaS) clusters, you must use the
-<VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack for the
-Kubernetes layer of your cluster profiles.
-
-This requirement exists because only the PXK pack supports the `manageCloudFormationStackManually` property required to reference a manually created CloudFormation stack.
-
-:::
-
-<!-- prettier-ignore-end -->
-
 ## Step 1: Add Minimum Permissions Policies to IAM User or Role
 
 Create an IAM User or Role with at least one of the policies listed based on your use case.
@@ -92,23 +78,37 @@ The following are important points to be aware of.
 
 ## Step 2: Choose CloudFormation Stack Management Option
 
-Once you have created the IAM User or Role, there are two options for using minimum permissions policies depending on
-whether you want Palette to manage the CloudFormation stack for
-[Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws) automatically or if you
-want to manage it manually:
+Once you have created the IAM User or Role, there are two options for using minimum permissions policies:
 
-- If you want Palette to manage the CloudFormation stack automatically, add the additional policies listed in the
-  [Option 1: Automatic CloudFormation Stack Management](#option-1-automatic-cloudformation-stack-management) section.
+- _Option 1_ - If you want Palette to manage the CloudFormation stack automatically, add the additional policies listed
+  in the [Option 1: Automatic CloudFormation Stack Management](#option-1-automatic-cloudformation-stack-management)
+  section.
 
-- If you want to manage the CloudFormation stack manually, follow the steps in the
-  [Option 2: Manual CloudFormation Stack Management](#option-2-manual-cloudformation-stack-management) section to create
-  the stack and configure your cluster profiles to use it.
+- _Option 2_ - If you want to manage the CloudFormation stack manually and avoid adding additional permissions, follow
+  the steps in the [Option 2: Manual CloudFormation Stack Management](#option-2-manual-cloudformation-stack-management)
+  section to create the stack and configure your cluster profiles to use it.
+
+<!-- prettier-ignore-start -->
+
+  :::info
+
+  If you want to use option 2 for deploying AWS Infrastructure as a Service (IaaS) clusters, you must use the
+  <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack for the
+  Kubernetes layer of your cluster profiles.
+
+  Only the PXK pack supports the `manageCloudFormationStackManually` property required to reference a manually
+  created CloudFormation stack.
+
+  :::
+
+<!-- prettier-ignore-end -->
 
 ### Option 1: Automatic CloudFormation Stack Management
 
 Assign the following additional permissions policy on top of the minimum permissions policies to your IAM User or Role.
 These permissions allow Palette to manage the creation and lifecycle of the CloudFormation stack used for provisioning
-the required CAPA roles automatically.
+the required [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws) roles
+automatically.
 
 <PartialsComponent category="permissions" name="aws-cloudformation-stack-permissions" />
 
@@ -124,7 +124,8 @@ in the sections listed.
 #### Create CloudFormation Stacks for Palette
 
 When using the minimum permissions policies, you must manually create the CloudFormation stack that Palette uses to
-create the required CAPA roles.
+create the required [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws)
+roles.
 
 1. Create a file named `palette-cloudformation-input-template.yaml` and copy the contents of the following
    CloudFormation template. This template is used for creating the required CAPA roles.
