@@ -74,7 +74,7 @@ privileges, limit its access to Secrets, and monitor for suspicious Ingress chan
 - [NIST](https://nvd.nist.gov/vuln/detail/CVE-2026-4342)
 - [GitHub Security Advisory](https://github.com/kubernetes/kubernetes/issues/137893)
 
-<!-- NOTE: Security Advisory 11 was not posted publicly and was communicated to effected customers only-->
+<!-- NOTE: Security Advisory 11 was not posted publicly and was communicated to affected customers only-->
 
 ## Security Advisory 010 - Nginx ingress Configuration Injection Vulnerability
 
