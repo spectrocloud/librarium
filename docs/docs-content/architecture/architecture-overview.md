@@ -9,13 +9,20 @@ sidebar_position: 0
 
 Palette is available in three flexible deployment models:
 
-- **Multi-tenant SaaS**: The management plane is hosted in AWS across three regions (us-east-1, us-west-1, us-west-2)
-  and managed by Spectro Cloud. Each customer will occupy a tenant. The Spectro Cloud operation team controls when to
-  upgrade the management plane.
+- **US Multi-Tenant SaaS**: The management plane is hosted in Amazon Web Services (AWS) across three regions (us-east-1,
+  us-west-1, and us-west-2) and managed by Spectro Cloud. Each customer is treated as a unique tenant, with enforced
+  data isolation and access controls. Spectro Cloud controls when to upgrade the management plane.
 
-- **Dedicated SaaS**: The management plane is hosted in a cloud/region specified by the customer in Spectro Cloud’s
-  cloud account with a dedicated instance managed by Spectro Cloud. The customer can decide when to upgrade the
+- **EU Multi-Tenant SaaS**: The management plane is hosted in AWS across two regions (eu-west-1 and eu-central-1) and
+  managed by Spectro Cloud. Each customer is treated as a unique tenant, with enforced data isolation and access
+  controls. Spectro Cloud controls when to upgrade the management plane.
+
+- **US Dedicated SaaS**: The management plane is hosted in a US cloud/region specified by the customer in Spectro
+  Cloud’s cloud account with a dedicated instance managed by Spectro Cloud. The customer can decide when to upgrade the
   management plane.
+
+- **EU Dedicated SaaS**: The management plane is hosted in an EU cloud/region specified by the customer. The dedicated
+  instance is managed by Spectro Cloud, but the customer decides when to upgrade the management plane.
 
 - **Self-hosted**: The management plane is hosted in the customer’s environment. This environment can be a public cloud,
   data center, or bare metal devices.
