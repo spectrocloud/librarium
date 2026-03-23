@@ -116,7 +116,7 @@ match your environment.
    Harbor proxy cache projects use `/v2/` as part of their internal URL routing for cached images. For all other
    registries, omit `/v2/`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2/`
    for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
-   `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io,gcr.io::harbor.example.org/v2/proxy-cache-project/gcr.io`.
+   `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
 
    :::
 
@@ -194,31 +194,7 @@ match your environment.
    The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces `cp-system`,
    `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready** status.
 
-10. This version of Palette uses Traefik as the primary ingress controller instead of Nginx. The upgrade creates a new
-    LoadBalancer service in the `ingress-traefik` namespace with a new external IP address or hostname. Update your DNS
-    records to point to the new Traefik LoadBalancer to ensure continued access to Palette.
-
-    :::warning
-
-    If you do not update your DNS records, Palette will be unreachable at its custom domain because Nginx no longer
-    serves traffic on the standard HTTPS port after the migration to Traefik.
-
-    :::
-
-    Use the following command to retrieve the new Traefik LoadBalancer address.
-
-    ```shell
-    kubectl get service traefik-ingress-controller --namespace ingress-traefik \
-    --output jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}'
-    ```
-
-    Update your DNS records for your Palette domain to resolve to the address returned by the previous command. The
-    specific steps to update DNS records depend on your DNS provider. After updating DNS, verify that your domain
-    resolves to the new address.
-
-    ```shell
-    nslookup <your-palette-domain>
-    ```
+   <PartialsComponent category="self-hosted" name="airgap-binary-execution" edition="Palette" />
 
 ## Validate
 

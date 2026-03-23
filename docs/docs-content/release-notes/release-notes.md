@@ -38,7 +38,19 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9642 -->
 
-- BREAKING CHANGE PLACEHOLDER
+- Palette and Palette VerteX now use [Traefik](https://traefik.io/traefik/) as the default ingress controller for the
+  management plane, replacing the
+  [deprecated Nginx ingress controller](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/). While
+  both controllers are deployed simultaneously during this transition, Nginx acts as a fallback and does not actively
+  serve traffic.
+
+  If you have made custom modifications to the Nginx ingress configuration in your self-hosted environment, such as
+  custom annotations, load balancer settings, or TLS configurations, these customizations may not carry over
+  automatically and could affect your deployment. Review your ingress configuration before upgrading and contact
+  [Palette Support](https://support.spectrocloud.io) if you need assistance migrating custom ingress settings to
+  Traefik. For Helm chart installations, you must also update your DNS records to point to the new Traefik LoadBalancer
+  service after upgrading. Refer to the
+  [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
 
 #### Features
 

@@ -66,9 +66,7 @@ The following ports must be reachable from a network perspective for Palette sel
 
 Traefik is the default ingress controller starting with Palette 4.8.c; Nginx, which is
 [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
-actively serve traffic. Refer to
-[Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/)
-for more information.
+actively serve traffic.
 
 :::
 

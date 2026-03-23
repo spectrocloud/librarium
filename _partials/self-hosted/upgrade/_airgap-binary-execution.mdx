@@ -3,16 +3,29 @@ partial_category: self-hosted
 partial_name: airgap-binary-execution
 ---
 
-```shell hideClipboard title="Example output" {9-10}
-Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-Uncompressing Airgap Setup - Version 4.0.17  100%
-Setting up Packs
-- Pushing Pack cni-calico:3.25.1
-...
-Setting up Images
-- Pushing image docker.io/kindest/kindnetd:v20230227-15197099
-...
-Preparing Manifests Archive
-Manifests are available in /tmp/spectro-manifests-1696971110.zip.
-Setup Completed
+:::warning
+
+Beginning with {props.edition} version 4.8.c, Traefik as the primary ingress controller instead of Nginx. If upgrading to
+version 4.8.c or later, the upgrade creates a new LoadBalancer service in the `ingress-traefik` namespace with a new
+external IP address or hostname. Update your DNS records to point to the new Traefik LoadBalancer to ensure continued
+access to {props.edition}.
+
+If you do not update your DNS records, {props.edition} will be unreachable at its custom domain because Nginx no longer serves
+traffic on the standard HTTPS port after the migration to Traefik.
+
+Use the following command to retrieve the new Traefik LoadBalancer address.
+
+```shell
+kubectl get service traefik-ingress-controller --namespace ingress-traefik \
+--output jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}'
 ```
+
+Update your DNS records for your {props.edition} domain to resolve to the address returned by the previous command. The specific
+steps to update DNS records depend on your DNS provider. After updating DNS, verify that your domain resolves to the new
+address.
+
+```shell
+nslookup <your-palette-domain>
+```
+
+:::
