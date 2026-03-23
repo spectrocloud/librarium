@@ -41,8 +41,8 @@ jobs:
           fi
 
           # Download the latest Vale release for the detected architecture
-          latest_version=$(curl -s https://api.github.com/repos/errata-ai/vale/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-          wget https://github.com/errata-ai/vale/releases/download/$latest_version/vale_${latest_version:1}_$arch.tar.gz -O vale.tar.gz
+          latest_version=$(curl -s https://api.github.com/repos/vale-cli/vale/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+          wget https://github.com/vale-cli/vale/releases/download/$latest_version/vale_${latest_version:1}_$arch.tar.gz -O vale.tar.gz
 
           # Extract the binary
           tar -xzf vale.tar.gz
