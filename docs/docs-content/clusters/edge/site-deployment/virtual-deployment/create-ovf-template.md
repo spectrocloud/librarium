@@ -20,7 +20,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
   egrep --count '(vmx|svm)' /proc/cpuinfo
   ```
 
-  If the command returns `0`, the nested virtualization is not enabled. In this case, shut down the VM and open its
+  If the command returns `0`, nested virtualization is not enabled. In this case, shut down the VM and open its
   **Edit Settings** page. On the **Virtual Hardware** tab, expand the **CPU settings** section and enable the **Expose
   hardware-assisted virtualization to the guest OS** option. Then, power on the VM.
 
@@ -94,31 +94,29 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    Verify your Docker installation and the ability to run commands without `sudo`.
 
    ```shell
-   docker run hello-world
+   docker run hello-worldf
    ```
 
-   If you need a GUI, execute the following command.
+   :::tip
+   
+   If you receive a permission error, you may need to restart your VM so that your group membership is re-evaluated.
+   
+   :::
 
-   ```shell
-   sudo apt install x11-apps
-   ```
-
-3. Prepare your workspace and install optional helper tools.
-
-   Install `govc` (vCenter CLI).
+4. Install `govc` (vCenter CLI).
 
    ```shell
    curl --location "https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname --kernel-name)_$(uname --machine).tar.gz" \
      | sudo tar --extract --verbose --gzip --file - --directory /usr/local/bin govc
    ```
 
-4. (Optional) Install Zstandard (`zstd`) for compression support.
+5. (Optional) Install Zstandard (`zstd`) for compression support.
 
 ```shell
 sudo apt install zstd
 ```
 
-7. Create a workspace directory and clone the image builder repository.
+5. Create a workspace directory and clone the image builder repository.
 
    ```shell
    mkdir --parents ~/workspace
@@ -126,13 +124,13 @@ sudo apt install zstd
    git clone https://github.com/spectrocloud/stylus-image-builder.git
    ```
 
-8. Copy your Edge Installer ISO file to the `~/workspace/stylus-image-builder/` directory.
+6. Copy your Edge Installer ISO file to the `~/workspace/stylus-image-builder/` directory.
 
    ```shell
    cp <path-to-edge-installer-file>/<edge-installer-file-name>.iso ~/workspace/stylus-image-builder/
    ```
 
-9. Build a VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to VMs.
+7. Build a VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to VMs.
 
    ```shell
    cd ~/workspace/stylus-image-builder/
@@ -148,7 +146,7 @@ sudo apt install zstd
    The command generates a VMDK file in the `stylus-image-builder/images` folder. Rename the file to a preferred
    installer name. Ensure it retains the VMDK format.
 
-10. Transfer the VMDK to a datastore in your VMware environment.
+8. Transfer the VMDK to a datastore in your VMware environment.
 
     ```shell
     export GOVC_URL=https://<vcenter-address>
@@ -167,39 +165,36 @@ sudo apt install zstd
     export GOVC_INSECURE=1
     ```
 
-11. Log in to the vSphere Client.
+9. Log in to the vSphere Client.
 
-12. Navigate to **VMs and Templates**, then right-click on the desired folder under the datacenter where you want to
+10. Navigate to **VMs and Templates**, then right-click on the desired folder under the datacenter where you want to
     create the VM.
 
-13. Start the **New Virtual Machine** deployment wizard and choose the **Create a new virtual machine** option. Then
+11. Start the **New Virtual Machine** deployment wizard and choose the **Create a new virtual machine** option. Then
     choose **Next**.
 
-14. Name the VM and select a location for it, then choose **Next**.
+12. Name the VM and select a location for it, then choose **Next**.
 
-15. In the **Select a compute resource** window, choose a cluster that has access to the datastore containing the VMDK,
+13. In the **Select a compute resource** window, choose a cluster that has access to the datastore containing the VMDK,
     then choose **Next**.
 
-16. Select the storage where the VMDK is stored, then choose **Next**.
+14. Select the storage where the VMDK is stored, then choose **Next**.
 
-17. Keep the selected compatibility value **ESXi 7.0 U2 and later**, then choose **Next**.
+15. Keep the selected compatibility value **ESXi 7.0 U2 and later**, then choose **Next**.
 
-18. Select the **Guest OS Family** and **Guest OS Version** that correspond to the values in the `user-data` file used
+16. Select the **Guest OS Family** and **Guest OS Version** that correspond to the values in the `user-data` file used
     to build the Edge Installer ISO file. Choose **Next**.
 
-19. In the **Customize hardware** window, change the **SCSI controller** value to **LSI Logic SAS**.
+17. In the **Customize hardware** window, change the **SCSI controller** value to **LSI Logic SAS**.
 
-20. Delete the **New Hard disk** displayed by default. Then expand the **Add New Device** drop-down menu and choose
+18. Delete the **New Hard disk** displayed by default. Then expand the **Add New Device** drop-down menu and choose
     **Existing Hard Disk**. Navigate to the datastore folder that contains the uncompressed VMDK and select this VMDK.
 
-21. Finish the creation wizard and save the VM.
+19. Finish the creation wizard and save the VM.
 
-22. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template > Export OVF
-    Template**.
-
-You can ship this OVF template along with the Edge host to the physical site. Use the OVM template for the site
-installation.
-
+20. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template > Export OVF
+    Template**. You can ship the exported OVF package (OVF and VMDK files) to the physical site and use it to deploy Edge hosts.
+    
 ## Validate
 
 You can validate that the Edge host is ready for the on-site deployment by simulating an on-site deployment on one of
