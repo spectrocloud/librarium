@@ -11,7 +11,7 @@ toc_max_heading_level: 4
 The following policies are designed from the
 [principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
-[Core IAM Policies](./core-iam-policies.md).
+[Core Identity and Access Management (IAM) Policies](./core-iam-policies.md).
 
 ## Step 1: Add Minimum Permissions Policies to IAM User or Role
 
@@ -21,8 +21,8 @@ Create an IAM User or Role with at least one of the policies listed based on you
 
 <TabItem label="Minimum EKS Dynamic Permissions" value="minimum-eks-dynamic-permissions">
 
-The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
-for deploying AWS EKS clusters through Palette.
+The following policy allows Palette to operate and create Virtual Private Cloud (VPC) resources as needed while retaining minimal permissions
+for deploying Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) clusters through Palette.
 
 <PartialsComponent category="permissions" name="aws-eks-dynamic-permissions" />
 
@@ -40,7 +40,7 @@ AWS EKS clusters through Palette.
 <TabItem label="Minimum IaaS Dynamic Permissions" value="minimum-iaas-dynamic-permissions">
 
 The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
-for deploying AWS IaaS clusters through Palette.
+for deploying AWS Infrastructure as a Service (IaaS) clusters through Palette.
 
 <PartialsComponent category="permissions" name="aws-iaas-dynamic-permissions" />
 
@@ -49,7 +49,7 @@ for deploying AWS IaaS clusters through Palette.
 <TabItem label="Minimum IaaS Static Permissions" value="minimum-iaas-static-permissions">
 
 The following policy allows Palette to operate within an existing VPC while retaining minimal permissions for deploying
-AWS IaaS clusters through Palette.
+AWS Infrastructure as a Service (IaaS) clusters through Palette.
 
 <PartialsComponent category="permissions" name="aws-iaas-static-permissions" />
 
@@ -66,8 +66,8 @@ The following are important points to be aware of.
   [Additional IAM Policies for Specific Use Cases](./additional-iam-policies-specific-use-cases.md) section for more
   information.
 
-- These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
-  Break policy into multiple inline policies or create new managed policies.
+- These IAM policies cannot be used as inline policies because they exceed AWS's 2048 non-whitespace-character limit.
+  We recommend breaking the policy into multiple inline policies or creating new managed policies.
 
 - The following IAM warning is expected and can be ignored.
 
@@ -114,8 +114,7 @@ automatically.
 
 ### Option 2: Manual CloudFormation Stack Management
 
-After adding the minimum permissions policies to your IAM User or Role, you must perform the following additional steps
-in the sections listed.
+After adding the minimum permissions policies to your IAM User or Role, you must complete the additional steps outlined in the following sections:
 
 1. [Create CloudFormation Stacks for Palette](#create-cloudformation-stacks-for-palette).
 
@@ -206,7 +205,7 @@ supports the `manageCloudFormationStackManually` configuration.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Profiles**..
+2. From the left main menu, select **Profiles**.
 
 3. Choose an existing cluster profile or
    [create a new cluster profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
@@ -236,7 +235,7 @@ supports the `manageCloudFormationStackManually` configuration.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Profiles**..
+2. From the left main menu, select **Profiles**.
 
 3. Choose an existing cluster profile or
    [create a new cluster profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).

@@ -10,7 +10,7 @@ Palette requires proper Amazon Web Services (AWS) permissions to operate and per
 grant these permissions to the Identity and Access Management (IAM) User or Role that you use to connect your AWS
 account to Palette.
 
-There are two options for granting permissions to Palette:
+You have two options for granting permissions to Palette:
 
 - The [Core IAM Policies](./core-iam-policies.md) are a set of AWS-managed and customer-managed policies that grant
   broader permissions for Palette to operate. Using these policies reduces the prerequisites required compared to the
@@ -38,7 +38,7 @@ You can use Palette CLI to verify you have setup the correct permissions. Check 
 ## Roles and Policies
 
 Palette creates and attaches IAM roles and policies to the clusters it deploys. Depending on which type of cluster you
-deploy, either AWS EKS or IaaS (using EC2 instances), Palette creates and attaches different IAM roles and policies.
+deploy, either AWS Elastic Kubernetes Service (EKS) or Infrastructure as a Service (IaaS) using Elastic Compute Cloud (EC2) instances, Palette creates and attaches different IAM roles and policies.
 
 Select the tab below to review the IAM roles and policies attached to the cluster's IAM role and the node group's IAM
 role.
@@ -57,7 +57,7 @@ policies attached to the cluster's IAM role and the node group's IAM role.
 | **Policy Name**                    | **Type**    | **Attached to the cluster's IAM role?** | **Attached to the node group's IAM role?** | **Description**                                                                          |
 | ---------------------------------- | ----------- | --------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | AmazonEKSClusterPolicy             | AWS managed | ✅                                      | ❌                                         | Provides the cluster permission to manage compute resources.                             |
-| AmazonEC2ContainerRegistryReadOnly | AWS managed | ❌                                      | ✅                                         | Provides the node group permission to pull images from Amazon ECR.                       |
+| AmazonEC2ContainerRegistryReadOnly | AWS managed | ❌                                      | ✅                                         | Provides the node group permission to pull images from Amazon Elastic Container Registry (ECR).                       |
 | AmazonEKS_CNI_Policy               | AWS managed | ❌                                      | ✅                                         | Provides the node group permission to manage network resources.                          |
 | AmazonEKSWorkerNodePolicy          | AWS managed | ❌                                      | ✅                                         | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.            |
 | AmazonSSMManagedInstanceCore       | AWS managed | ❌                                      | ✅                                         | The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality. |
