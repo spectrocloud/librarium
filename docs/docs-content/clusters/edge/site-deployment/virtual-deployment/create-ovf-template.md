@@ -21,7 +21,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
   ```
 
   If the command returns `0`, the nested virtualization is not enabled. In this case, shut down the VM and open its
-  **Edit Settings** page. In the **Virtual Hardware** tab, expand the **CPU settings** section and enable the **Expose
+  **Edit Settings** page. On the **Virtual Hardware** tab, expand the **CPU settings** section and enable the **Expose
   hardware-assisted virtualization to the guest OS** option. Then, power on the VM.
 
 - Edge Installer ISO file. Check out the [build images](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide
