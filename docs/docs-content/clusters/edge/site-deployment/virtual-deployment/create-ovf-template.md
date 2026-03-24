@@ -20,8 +20,8 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
   egrep --count '(vmx|svm)' /proc/cpuinfo
   ```
 
-  If the command returns `0`, nested virtualization is not enabled. In this case, shut down the VM and open its
-  **Edit Settings** page. On the **Virtual Hardware** tab, expand the **CPU settings** section and enable the **Expose
+  If the command returns `0`, nested virtualization is not enabled. In this case, shut down the VM and open its **Edit
+  Settings** page. On the **Virtual Hardware** tab, expand the **CPU settings** section and enable the **Expose
   hardware-assisted virtualization to the guest OS** option. Then, power on the VM.
 
 - Edge Installer ISO file. Check out the [build images](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide
@@ -98,19 +98,19 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    ```
 
    :::tip
-   
+
    If you receive a permission error, you may need to restart your VM so that your group membership is re-evaluated.
-   
+
    :::
 
-4. Install `govc` (vCenter CLI).
+3. Install `govc` (vCenter CLI).
 
    ```shell
    curl --location "https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname --kernel-name)_$(uname --machine).tar.gz" \
      | sudo tar --extract --verbose --gzip --file - --directory /usr/local/bin govc
    ```
 
-5. (Optional) Install Zstandard (`zstd`) for compression support.
+4. (Optional) Install Zstandard (`zstd`) for compression support.
 
 ```shell
 sudo apt install zstd
@@ -148,22 +148,22 @@ sudo apt install zstd
 
 8. Transfer the VMDK to a datastore in your VMware environment.
 
-    ```shell
-    export GOVC_URL=https://<vcenter-address>
-    export GOVC_USERNAME=<vcenter-username>
-    export GOVC_PASSWORD=<vcenter-password>
-    govc datastore.upload -ds=<datastore-name> images/<installer-name>.vmdk <datastore-folder>/<installer-name>.vmdk
+   ```shell
+   export GOVC_URL=https://<vcenter-address>
+   export GOVC_USERNAME=<vcenter-username>
+   export GOVC_PASSWORD=<vcenter-password>
+   govc datastore.upload -ds=<datastore-name> images/<installer-name>.vmdk <datastore-folder>/<installer-name>.vmdk
 
-    # Create an uncompressed copy of the VMDK
-    govc datastore.cp -ds=<datastore-name> <datastore-folder>/<installer-name>.vmdk <datastore-folder>/<installer-name>-uncompressed.vmdk
-    ```
+   # Create an uncompressed copy of the VMDK
+   govc datastore.cp -ds=<datastore-name> <datastore-folder>/<installer-name>.vmdk <datastore-folder>/<installer-name>-uncompressed.vmdk
+   ```
 
-    If you are using test or development environments, you may need to enable the following option. However, we do not
-    recommend using it for production environments.
+   If you are using test or development environments, you may need to enable the following option. However, we do not
+   recommend using it for production environments.
 
-    ```shell
-    export GOVC_INSECURE=1
-    ```
+   ```shell
+   export GOVC_INSECURE=1
+   ```
 
 9. Log in to the vSphere Client.
 
@@ -193,8 +193,9 @@ sudo apt install zstd
 19. Finish the creation wizard and save the VM.
 
 20. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template > Export OVF
-    Template**. You can ship the exported template (OVF and VMDK files) to the physical site and use it to deploy Edge hosts.
-    
+    Template**. You can ship the exported template (OVF and VMDK files) to the physical site and use it to deploy Edge
+    hosts.
+
 ## Validate
 
 You can validate that the Edge host is ready for the on-site deployment by simulating an on-site deployment on one of
