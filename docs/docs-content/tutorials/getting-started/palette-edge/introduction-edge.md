@@ -17,7 +17,7 @@ your stack and add any necessary add-ons to support your workloads.
 reconfiguration, while supporting both single-node and multi-node clusters. Additionally, it ensures that clusters
 continue enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
 
-![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.webp)
+![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge_4-8.webp)
 
 ## Use Cases
 
