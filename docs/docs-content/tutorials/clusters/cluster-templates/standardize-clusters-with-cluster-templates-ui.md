@@ -390,7 +390,7 @@ version rather than editing version `1.0.0` in place. Both `dev-cluster-aws` and
 use `1.0.0`, and editing it directly would update them immediately. Instead, a new cluster profile version keeps both
 clusters on `1.0.0` until the new version is applied.
 
-In Palette, navigate to the left main menu and select **Profiles**. Select **cluster-template-profile-aws** from the
+In Palette, navigate to the left main menu and select **Profiles**. Select `cluster-template-profile-aws` from the
 profile list.
 
 The current version is displayed in the drop-down menu beside the profile name. The default version is **1.0.0**. Select
