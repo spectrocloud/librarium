@@ -118,7 +118,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    sudo apt install zstd
    ```
 
-   Create a workspace directory and clone the image builder repository.
+7. Create a workspace directory and clone the image builder repository.
 
    ```shell
    mkdir --parents ~/workspace
