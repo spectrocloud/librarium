@@ -76,7 +76,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    sudo apt install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 
-   Allow running Docker commands without `sudo`.
+2. Issue the following commands to set up the `docker` alias and run Docker without `sudo`. Refer to [Linux post-installation steps for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/) for more information. 
 
    ```shell
    # Create docker group if it does not exist
