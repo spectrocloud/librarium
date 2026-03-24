@@ -7,12 +7,13 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 30
 ---
 
-The following sections list additional Identity and Access Management (IAM) policies that may be required for specific use cases.
+The following sections list additional Identity and Access Management (IAM) policies that may be required for specific
+use cases.
 
 ## Controllers EKS Policy
 
-If you plan to deploy Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) host clusters, make sure to attach the **PaletteControllersEKSPolicy** on top of the
-[Core IAM](./core-iam-policies.md).
+If you plan to deploy Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) host clusters, make sure to attach the
+**PaletteControllersEKSPolicy** on top of the [Core IAM](./core-iam-policies.md).
 
 If you are using the [minimum permissions policies](./minimum-permissions-policies.md) for EKS (static or dynamic), this
 is _not_ required.
@@ -43,8 +44,8 @@ Use the following steps to add node-level policies.
 ## Host Resource Groups Policy
 
 If you plan to deploy AWS IaaS clusters on
-[Amazon Elastic Compute Cloud (EC2) Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html), you
-must attach the **PaletteHostResourceGroupsPolicy** on top of the [Core IAM](./core-iam-policies.md) or
+[Amazon Elastic Compute Cloud (EC2) Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html),
+you must attach the **PaletteHostResourceGroupsPolicy** on top of the [Core IAM](./core-iam-policies.md) or
 [Minimum Permissions](./minimum-permissions-policies.md) policies.
 
 <PartialsComponent category="permissions" name="aws-host-resource-groups-policy" />

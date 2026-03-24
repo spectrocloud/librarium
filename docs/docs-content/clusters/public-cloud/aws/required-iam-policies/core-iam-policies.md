@@ -7,8 +7,9 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 10
 ---
 
-The following four Identity and Access Management (IAM) policies include all the permissions needed for Palette to deploy and manage clusters on AWS.
-Make sure to attach these policies to the IAM User or Role that Palette uses to access your AWS account.
+The following four Identity and Access Management (IAM) policies include all the permissions needed for Palette to
+deploy and manage clusters on AWS. Make sure to attach these policies to the IAM User or Role that Palette uses to
+access your AWS account.
 
 - If you want to deploy AWS Elastic Kubernetes Service (EKS) clusters, make sure to also attach the
   **PaletteControllersEKSPolicy** on top of the core policies. Check out the
