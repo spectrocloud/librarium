@@ -781,7 +781,7 @@ Use the following steps to validate the Palette installation.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)\s'
    ```
 
    Your output should look similar to the following.

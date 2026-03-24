@@ -433,7 +433,7 @@ Palette upgrade.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
    ```
 
    The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`,
