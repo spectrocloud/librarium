@@ -193,7 +193,7 @@ sudo apt install zstd
 19. Finish the creation wizard and save the VM.
 
 20. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template > Export OVF
-    Template**. You can ship the exported OVF package (OVF and VMDK files) to the physical site and use it to deploy Edge hosts.
+    Template**. You can ship the exported template (OVF and VMDK files) to the physical site and use it to deploy Edge hosts.
     
 ## Validate
 
