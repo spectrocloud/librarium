@@ -112,10 +112,12 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
 
 4. (Optional) Install Zstandard (`zstd`) for compression support.
 
-```shell
-sudo apt install zstd
-```
-
+<!-- prettier-ignore-start -->
+   ```shell
+   sudo apt install zstd
+   ```
+<!-- prettier-ignore-end -->
+   
 5. Create a workspace directory and clone the image builder repository.
 
    ```shell
