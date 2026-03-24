@@ -182,7 +182,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
 
 12. Keep the selected compatibility value **ESXi 7.0 U2 and later**, then choose **Next**.
 
-13. Select **Guest OS Family** and **Guest OS Version** that correspond to the values in the `user-data` file used to
+13. Select the **Guest OS Family** and **Guest OS Version** that correspond to the values in the `user-data` file used to
     build the Edge Installer ISO file. Choose **Next**.
 
 14. In the **Customize hardware** window, change the **SCSI controller** value to **LSI Logic SAS**.
