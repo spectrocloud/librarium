@@ -165,7 +165,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    export GOVC_INSECURE=1
    ```
 
-6. Log in to vCenter UI.
+6. Log in to the vSphere Client.
 
 7. Navigate to **VMs and Templates**, then right-click on the desired folder under the datacenter where you want to
    create the VM.
