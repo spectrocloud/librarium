@@ -385,10 +385,9 @@ Repeat these steps for `prod-cluster-aws` to confirm you can launch the Hello Un
 
 ### Create a New Cluster Profile Version
 
-The Kubecost pack provides real-time cost visibility. To add it to the cluster profile, create a new cluster profile
-version rather than editing version `1.0.0` in place. Both `dev-cluster-aws` and `prod-cluster-aws` clusters currently
-use `1.0.0`, and editing it directly would update them immediately. Instead, a new cluster profile version keeps both
-clusters on `1.0.0` until the new version is applied.
+The Kubecost pack provides real-time cost visibility. We recommend creating a new cluster profile version for every
+change so clusters on other versions are unaffected. Create version `1.1.0` to add Kubecost. `dev-cluster-aws` and
+`prod-cluster-aws` remain on `1.0.0` for now.
 
 In Palette, navigate to the left main menu and select **Profiles**. Select `cluster-template-profile-aws` from the
 profile list.
