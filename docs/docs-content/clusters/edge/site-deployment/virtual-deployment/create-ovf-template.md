@@ -187,7 +187,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
 
 14. In the **Customize hardware** window, change the **SCSI controller** value to **LSI Logic SAS**.
 
-15. Delete the **New Hard disk** displayed by default. Then expand the **Add New Device** dropdown and choose **Existing
+15. Delete the **New Hard disk** displayed by default. Then expand the **Add New Device** drop-down menu and choose **Existing
     Hard Disk**. Navigate to the datastore folder that contains the uncompressed VMDK and select this VMDK.
 
 16. Finish the creation wizard and save the VM.
