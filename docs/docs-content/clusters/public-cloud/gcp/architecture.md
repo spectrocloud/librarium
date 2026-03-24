@@ -12,9 +12,9 @@ manage the entire lifecycle of any combination of new or existing, simple or com
 environments in GCP. Palette gives IT teams complete control, visibility, and production-scale efficiencies to provide
 developers with highly curated Kubernetes stacks and tools with enterprise-grade security.
 
-The following are some highlights of Palette-provisioned GCP clusters.
+## IaaS Architecture
 
-<br />
+The following are some architectural highlights of GCP clusters deployed by Palette:
 
 - Control plane nodes and worker nodes are placed within a single private subnet that spans different availability zones
   within a region.
@@ -25,4 +25,19 @@ The following are some highlights of Palette-provisioned GCP clusters.
 - The Kubernetes API server endpoint is exposed through a Global Load Balancer. Applications deployed into the cluster
   can use a Regional Load Balancer to expose internal Kubernetes services.
 
-  ![gcp_cluster_architecture.webp](/gcp_cluster_architecture.webp)
+![A GCP IaaS architecture diagram](/gcp_cluster_architecture.webp)
+
+## GKE Architecture
+
+The following are some architectural highlights of Google Kubernetes Engine (GKE) clusters deployed by Palette:
+
+- Cluster resources can be provisioned into new dedicated network infrastructure created automatically by Palette, or
+  into a shared VPC owned by another GCP project.
+
+- A GKE cluster can include multiple node pools, each with its own machine type and configuration, distributed across
+  multiple availability zones.
+
+- When Palette provisions the network, nodes can be configured to use only private IP addresses and access the internet
+  through Cloud NAT.
+
+![A GCP GKE architecture diagram](/clusters_gcp_architecture_gke-diagram.webp)
