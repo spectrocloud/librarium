@@ -17,7 +17,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
   nested virtualization must be enabled on this VM. Use the following command to check if it is enabled.
 
   ```shell
-  egrep -c '(vmx|svm)' /proc/cpuinfo
+  egrep --count '(vmx|svm)' /proc/cpuinfo
   ```
 
   If the command returns `0`, the nested virtualization is not enabled. In this case, shut down the VM and open its
@@ -110,7 +110,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
      | sudo tar --extract --verbose --gzip --file - --directory /usr/local/bin govc
    ```
 
-   (Optional) Install Zstandard (zstd) for compression support.
+   (Optional) Install Zstandard (`zstd`) for compression support.
 
    ```shell
    sudo apt install zstd
