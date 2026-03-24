@@ -13,8 +13,8 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
 
 ### Prerequisites
 
-- A VM with Ubuntu version 20.04 or later in your VMware environment. You will use this VM as the build server.
-  Nested virtualization must be enabled on this VM. Use the following command to check if it is enabled.
+- A VM with Ubuntu version 20.04 or later in your VMware environment. You will use this VM as the build server. Nested
+  virtualization must be enabled on this VM. Use the following command to check if it is enabled.
 
   ```shell
   egrep --count '(vmx|svm)' /proc/cpuinfo
@@ -112,11 +112,11 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
      | sudo tar --extract --verbose --gzip --file - --directory /usr/local/bin govc
    ```
 
- 6.  (Optional) Install Zstandard (`zstd`) for compression support.
+4. (Optional) Install Zstandard (`zstd`) for compression support.
 
-   ```shell
-   sudo apt install zstd
-   ```
+```shell
+sudo apt install zstd
+```
 
 7. Create a workspace directory and clone the image builder repository.
 
@@ -126,13 +126,13 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    git clone https://github.com/spectrocloud/stylus-image-builder.git
    ```
 
-4. Copy your Edge Installer ISO file to the `~/workspace/stylus-image-builder/` directory.
+8. Copy your Edge Installer ISO file to the `~/workspace/stylus-image-builder/` directory.
 
    ```shell
    cp <path-to-edge-installer-file>/<edge-installer-file-name>.iso ~/workspace/stylus-image-builder/
    ```
 
-5. Build a VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to VMs.
+9. Build a VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to VMs.
 
    ```shell
    cd ~/workspace/stylus-image-builder/
@@ -148,53 +148,53 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    The command generates a VMDK file in the `stylus-image-builder/images` folder. Rename the file to a preferred
    installer name. Ensure it retains the VMDK format.
 
-6. Transfer the VMDK to a datastore in your VMware environment.
+10. Transfer the VMDK to a datastore in your VMware environment.
 
-   ```shell
-   export GOVC_URL=https://<vcenter-address>
-   export GOVC_USERNAME=<vcenter-username>
-   export GOVC_PASSWORD=<vcenter-password>
-   govc datastore.upload -ds=<datastore-name> images/<installer-name>.vmdk <datastore-folder>/<installer-name>.vmdk
+    ```shell
+    export GOVC_URL=https://<vcenter-address>
+    export GOVC_USERNAME=<vcenter-username>
+    export GOVC_PASSWORD=<vcenter-password>
+    govc datastore.upload -ds=<datastore-name> images/<installer-name>.vmdk <datastore-folder>/<installer-name>.vmdk
 
-   # Create an uncompressed copy of the VMDK
-   govc datastore.cp -ds=<datastore-name> <datastore-folder>/<installer-name>.vmdk <datastore-folder>/<installer-name>-uncompressed.vmdk
-   ```
+    # Create an uncompressed copy of the VMDK
+    govc datastore.cp -ds=<datastore-name> <datastore-folder>/<installer-name>.vmdk <datastore-folder>/<installer-name>-uncompressed.vmdk
+    ```
 
-   If you are using test or development environments, you may need to enable the following option. However, we do not
-   recommend using it for production environments.
+    If you are using test or development environments, you may need to enable the following option. However, we do not
+    recommend using it for production environments.
 
-   ```shell
-   export GOVC_INSECURE=1
-   ```
+    ```shell
+    export GOVC_INSECURE=1
+    ```
 
-7. Log in to the vSphere Client.
+11. Log in to the vSphere Client.
 
-8. Navigate to **VMs and Templates**, then right-click on the desired folder under the datacenter where you want to
-   create the VM.
+12. Navigate to **VMs and Templates**, then right-click on the desired folder under the datacenter where you want to
+    create the VM.
 
-9. Start the **New Virtual Machine** deployment wizard and choose the **Create a new virtual machine** option. Then
-   choose **Next**.
+13. Start the **New Virtual Machine** deployment wizard and choose the **Create a new virtual machine** option. Then
+    choose **Next**.
 
-10. Name the VM and select a location for it, then choose **Next**.
+14. Name the VM and select a location for it, then choose **Next**.
 
-11. In the **Select a compute resource** window, choose a cluster that has access to the datastore containing the VMDK,
+15. In the **Select a compute resource** window, choose a cluster that has access to the datastore containing the VMDK,
     then choose **Next**.
 
-12. Select the storage where the VMDK is stored, then choose **Next**.
+16. Select the storage where the VMDK is stored, then choose **Next**.
 
-13. Keep the selected compatibility value **ESXi 7.0 U2 and later**, then choose **Next**.
+17. Keep the selected compatibility value **ESXi 7.0 U2 and later**, then choose **Next**.
 
-14. Select the **Guest OS Family** and **Guest OS Version** that correspond to the values in the `user-data` file used
+18. Select the **Guest OS Family** and **Guest OS Version** that correspond to the values in the `user-data` file used
     to build the Edge Installer ISO file. Choose **Next**.
 
-15. In the **Customize hardware** window, change the **SCSI controller** value to **LSI Logic SAS**.
+19. In the **Customize hardware** window, change the **SCSI controller** value to **LSI Logic SAS**.
 
-16. Delete the **New Hard disk** displayed by default. Then expand the **Add New Device** drop-down menu and choose
+20. Delete the **New Hard disk** displayed by default. Then expand the **Add New Device** drop-down menu and choose
     **Existing Hard Disk**. Navigate to the datastore folder that contains the uncompressed VMDK and select this VMDK.
 
-17. Finish the creation wizard and save the VM.
+21. Finish the creation wizard and save the VM.
 
-18. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template > Export OVF
+22. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template > Export OVF
     Template**.
 
 You can ship this OVF template along with the Edge host to the physical site. Use the OVM template for the site
