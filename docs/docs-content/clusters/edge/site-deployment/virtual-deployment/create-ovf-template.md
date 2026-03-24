@@ -13,8 +13,8 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
 
 ### Prerequisites
 
-- A VM with Ubuntu version 20.04 or greater in your VMware environment. You will use this VM as the build server. The
-  nested virtualization must be enabled on this VM. Use the following command to check if it is enabled.
+- A VM with Ubuntu version 20.04 or later in your VMware environment. You will use this VM as the build server.
+  Nested virtualization must be enabled on this VM. Use the following command to check if it is enabled.
 
   ```shell
   egrep --count '(vmx|svm)' /proc/cpuinfo
