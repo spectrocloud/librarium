@@ -112,7 +112,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
      | sudo tar --extract --verbose --gzip --file - --directory /usr/local/bin govc
    ```
 
-   (Optional) Install Zstandard (`zstd`) for compression support.
+ 6.  (Optional) Install Zstandard (`zstd`) for compression support.
 
    ```shell
    sudo apt install zstd
