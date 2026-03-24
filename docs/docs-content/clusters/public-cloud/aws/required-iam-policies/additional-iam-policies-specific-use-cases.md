@@ -13,9 +13,9 @@ use cases.
 ## Controllers EKS Policy
 
 If you plan to deploy Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) host clusters, make sure to attach the
-**PaletteControllersEKSPolicy** on top of the [Core IAM](./core-iam-policies.md).
+**PaletteControllersEKSPolicy** on top of the [Core IAM Policies](./core-iam-policies.md).
 
-If you are using the [minimum permissions policies](./minimum-permissions-policies.md) for EKS (static or dynamic), this
+If you are using the [Minimum Permissions Policies](./minimum-permissions-policies.md) for EKS (static or dynamic), this
 is _not_ required.
 
 <PartialsComponent category="permissions" name="aws-eks-controller-policy" />
@@ -25,7 +25,7 @@ is _not_ required.
 There may be situations where additional node-level policies must be added to your deployment. For instance, when you
 create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included.
 
-This is _not_ required when using [minimum permissions policies](./minimum-permissions-policies.md).
+This is _not_ required when using [Minimum Permissions Policies](./minimum-permissions-policies.md).
 
 Use the following steps to add node-level policies.
 
@@ -45,7 +45,7 @@ Use the following steps to add node-level policies.
 
 If you plan to deploy AWS IaaS clusters on
 [Amazon Elastic Compute Cloud (EC2) Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html),
-you must attach the **PaletteHostResourceGroupsPolicy** on top of the [Core IAM](./core-iam-policies.md) or
-[Minimum Permissions](./minimum-permissions-policies.md) policies.
+you must attach the **PaletteHostResourceGroupsPolicy** on top of the [Core IAM Policies](./core-iam-policies.md) or
+[Minimum Permissions Policies](./minimum-permissions-policies.md).
 
 <PartialsComponent category="permissions" name="aws-host-resource-groups-policy" />

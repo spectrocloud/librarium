@@ -11,7 +11,7 @@ toc_max_heading_level: 4
 The following policies are designed from the
 [principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
-[Core Identity and Access Management (IAM) Policies](./core-iam-policies.md).
+[Core IAM Policies](./core-iam-policies.md).
 
 ## Step 1: Add Minimum Permissions Policies to IAM User or Role
 
@@ -59,8 +59,6 @@ AWS Infrastructure as a Service (IaaS) clusters through Palette.
 </Tabs>
 
 :::warning
-
-The following are important points to be aware of.
 
 - These permissions specified do not include all the permissions required for all possible use cases and for taking full
   advantage of all Palette features. Additional permissions may be required based on the specific use case. Review the
