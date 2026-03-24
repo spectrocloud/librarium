@@ -27,3 +27,9 @@ partial_name: server-snippet
        }
    }
    ```
+   
+   :::warning
+
+   The `kubeconfig` folder you mount to the container will be wiped when the container is stopped and started again. The Palette MCP server automatically removes the kubeconfig files from its `/tmp/kubeconfig` folder when the container is stopped.
+
+   :::
