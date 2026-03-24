@@ -89,7 +89,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
    newgrp docker
    ```
 
-   Verify Docker installation.
+   Verify your Docker installation and the ability to run commands without `sudo`. 
 
    ```shell
    docker run hello-world
