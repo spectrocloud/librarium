@@ -194,7 +194,7 @@ match your environment.
    The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces `cp-system`,
    `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready** status.
 
-   <PartialsComponent category="self-hosted" name="airgap-binary-execution" edition="Palette" />
+   <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
 ## Validate
 

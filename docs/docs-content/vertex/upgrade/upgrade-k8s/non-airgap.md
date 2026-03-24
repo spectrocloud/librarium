@@ -78,8 +78,7 @@ match your environment.
    TEST SUITE: None
    ```
 
-4. Install or upgrade the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required
-   by VerteX, including Traefik CRDs.
+4. Upgrade the Spectro Management CRDs chart.
 
    ```shell
    helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
@@ -93,7 +92,7 @@ match your environment.
    LAST DEPLOYED: Thu Feb 22 19:43:00 2024
    NAMESPACE: default
    STATUS: deployed
-   REVISION: 1
+   REVISION: 2
    TEST SUITE: None
    ```
 

@@ -169,12 +169,12 @@ your environment. Reach out to our support team if you need assistance.
     parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the
     [Helm Configuration Reference](vertex-helm-ref.md) page.
 
-    | **Parameter**                             | **Description**                                                                                                                                               | **Type** |
-    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller. Set this to `false` if you already have an ingress controller deployed in the cluster.            | boolean  |
-    | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
+    | **Parameter**                             | **Description**                                                                                                                                                                                         | **Type** |
+    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                                                                    | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                                                                 | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set this to `false` if you already have an ingress controller deployed in the cluster. | boolean  |
+    | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment                                           | object   |
 
     :::info
 
@@ -626,8 +626,8 @@ your environment. Reach out to our support team if you need assistance.
 6.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
-    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
-    five. Make sure you configure the `reach-system.enable` section in the **values.yaml** file.
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in
+    step 5. Make sure you configure the `reach-system.enable` section in the **values.yaml** file.
 
     ```shell
     helm upgrade --values vertex/values.yaml \

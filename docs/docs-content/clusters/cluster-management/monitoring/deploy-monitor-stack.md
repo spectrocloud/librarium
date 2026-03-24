@@ -93,14 +93,14 @@ stack with or without authentication.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Prometheus Grafana
-    - **Pack Version**: 44.3.X or newer.
+    - **Pack Version**: 44.3.X or later
 
 9.  Next, select **Values** and expand the **Presets** drawer.
 
 10. Under **Remote Monitoring**, select **Enable**.
 
-11. Review the YAML configuration on the right. Locate the parameter `grafana.adminPassword`, and enter a password for
-    the default `admin` user.
+11. Review the YAML configuration. Locate the parameter `grafana.adminPassword`, and enter a password for the default
+    `admin` user.
 
         ```yaml {4}
         charts:
@@ -127,7 +127,7 @@ stack with or without authentication.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Spectro Cluster Metrics
-    - **Pack Version**: 3.3.X or newer
+    - **Pack Version**: 3.3.X or later
 
 15. Use the default values. Select **Confirm & Create**.
 
@@ -138,7 +138,7 @@ stack with or without authentication.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Spectro Grafana Dashboards
-    - **Pack Version**: 1.0.X or newer
+    - **Pack Version**: 1.0.X or later
 
 18. Use the default values. Select **Confirm & Create**.
 
@@ -151,10 +151,7 @@ stack with or without authentication.
     <PartialsComponent category="clusters" name="cluster-deployment-guides" />
 
 21. Once the cluster is deployed, navigate to the left main menu and select **Clusters**. Select your cluster and ensure
-    its status is **Running**.
-
-When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from
-Prometheus agents.
+    its status is **Running** and ready to receive information from Prometheus agents.
 
 #### Validate
 
@@ -187,7 +184,7 @@ The following diagram represents the infrastructure pattern you will use in this
 
 ![An architecture diagram that displays the network flow and infrastructure components](/clusters_monitoring_deploy-monitor-stack_https-architecture.webp)
 
-In this guide, the following domains are used to expose the monitoring stack:
+In this guide, the following domains are used to expose the monitoring stack.
 
 | **Domain**               | **Description**                                                    |
 | ------------------------ | ------------------------------------------------------------------ |
@@ -248,7 +245,7 @@ In this guide, the following domains are used to expose the monitoring stack:
     - **Pack Type**: Ingress
     - **Registry**: Public Repo
     - **Pack Name**: Traefik
-    - **Pack Version**: 39.0.X or newer
+    - **Pack Version**: 39.0.X or later
 
 9.  Use the default values. Select **Confirm & Create**.
 
@@ -259,14 +256,14 @@ In this guide, the following domains are used to expose the monitoring stack:
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Prometheus Grafana
-    - **Pack Version**: 44.3.X or newer.
+    - **Pack Version**: 44.3.X or later
 
 12. Next, select **Values** and expand the **Presets** drawer.
 
 13. Under **Remote Monitoring**, select **Enable**.
 
-14. Review the YAML configuration on the right. Locate the parameter `grafana.adminPassword`, and enter a password for
-    the default `admin` user.
+14. Review the YAML configuration. Locate the parameter `grafana.adminPassword`, and enter a password for the default
+    `admin` user.
 
     ```yaml {4}
     charts:
@@ -277,8 +274,8 @@ In this guide, the following domains are used to expose the monitoring stack:
             spectrocloud.com/connection: proxy
     ```
 
-15. Locate the `prometheus.ingress` section near the end of the file. Update the ingress configuration with the values
-    provided below. Replace the `hosts` parameter with your custom domain.
+15. Locate the `prometheus.ingress` section. Update the ingress configuration with the values provided below. Replace
+    the `hosts` parameter with your custom domain.
 
     ```yaml {13}
     charts:
@@ -298,7 +295,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 16. Next, update the `prometheus.service.type` parameter to `ClusterIP`.
 
-    ```yaml
+    ```yaml {5}
     charts:
       kube-prometheus-stack:
         prometheus:
@@ -322,7 +319,7 @@ learn more about the available options.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Spectro Cluster Metrics
-    - **Pack Version**: 3.3.X or newer
+    - **Pack Version**: 3.3.X or later
 
 19. Use the default values. Select **Confirm & Create**.
 
@@ -333,7 +330,7 @@ learn more about the available options.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Spectro Grafana Dashboards
-    - **Pack Version**: 1.0.X or newer
+    - **Pack Version**: 1.0.X or later
 
 22. Use the default values. Select **Confirm & Create**.
 
@@ -354,7 +351,7 @@ learn more about the available options.
 27. Open a terminal session and set the variable `KUBECONFIG` to point to kubeconfig file you downloaded.
 
     ```shell
-    export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
+    export KUBECONFIG=<path-to-kubeconfig>
     ```
 
 28. Create an `htpasswd` file for the user `agent` and assign a password. You can choose a different username if you
@@ -403,14 +400,13 @@ learn more about the available options.
 
     :::warning
 
-    The following steps can be complex, depending on your environment and your access. Discuss the remaining step with
+    The following steps can be complex, depending on your environment and your access. Discuss the remaining steps with
     your network administrator team if you need additional guidance.
 
     :::
 
 31. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the
-    CNAME record value. Use the table below to identify which mapping to use between the domain and each load balancer
-    hostname.
+    CNAME record value.
 
     Use the following commands to retrieve the load balancer hostname for each service.
 
@@ -422,6 +418,8 @@ learn more about the available options.
     kubectl get service traefik --namespace traefik --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
+    Use the following table to identify which mapping to use between the domain and each load balancer hostname.
+
     | **Service**                                         | **Domain**               | **CNAME Example Value**                                                   |
     | --------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------- |
     | `prometheus-operator-kube-prometheus-stack-grafana` | `monitoring.example.com` | `a702f8a14b9684a30b18b875d2cca997-1676466159.us-east-1.elb.amazonaws.com` |
@@ -432,8 +430,6 @@ learn more about the available options.
     For on-premises environments, use the default certificate manager used by your organization.
 
 33. Wait for the DNS changes to propagate.
-
-Your monitoring stack is now enabled with authentication and network encryption.
 
 #### Validate
 

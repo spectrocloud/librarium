@@ -136,9 +136,9 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-4.  Install the `spectro-mgmt-crds` chart. This chart contains Custom Resource Definitions (CRDs) required by Palette,
-    including Traefik CRDs, and must be installed _before_ the main Palette Helm chart. When the chart is installed, the
-    custom resource types are registered with the Kubernetes API server; no pods are deployed.
+4.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+    Palette, including Traefik CRDs, and must be installed _before_ the main Palette Helm chart. When the chart is
+    installed, the custom resource types are registered with the Kubernetes API server; no pods are deployed.
 
     ```shell
     helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
@@ -160,12 +160,12 @@ your environment. Reach out to our support team if you need assistance.
     following parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file
     in the [Helm Configuration Reference](palette-helm-ref.md) page.
 
-    | **Parameter**                             | **Description**                                                                                                                                                | **Type** |
-    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                          | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller. Set this to `false` if you already have an ingress controller deployed in the cluster.             | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment | object   |
+    | **Parameter**                             | **Description**                                                                                                                                                                                    | **Type** |
+    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                              | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                           | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set to `false` if you already have an ingress controller deployed in the cluster. | boolean  |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                     | object   |
 
     :::info
 

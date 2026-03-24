@@ -298,8 +298,7 @@ Palette VerteX upgrade.
     TEST SUITE: None
     ```
 
-12. Install or upgrade the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs)
-    required by VerteX, including Traefik CRDs.
+12. Upgrade the Spectro Management CRDs chart.
 
     ```shell
     helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
@@ -313,7 +312,7 @@ Palette VerteX upgrade.
     LAST DEPLOYED: Thu Feb 22 19:43:00 2024
     NAMESPACE: default
     STATUS: deployed
-    REVISION: 1
+    REVISION: 2
     TEST SUITE: None
     ```
 
@@ -349,8 +348,7 @@ Palette VerteX upgrade.
     TEST SUITE: None
     ```
 
-15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step
-    13.
+15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step 13.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -405,7 +403,7 @@ Palette VerteX upgrade.
     `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready**
     status.
 
-    <PartialsComponent category="self-hosted" name="airgap-binary-execution" edition="Palette VerteX" />
+    <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 ## Validate
 

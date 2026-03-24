@@ -46,10 +46,10 @@ tags: ["release-notes"]
 
   If you have made custom modifications to the Nginx ingress configuration in your self-hosted environment, such as
   custom annotations, load balancer settings, or TLS configurations, these customizations may not carry over
-  automatically and could affect your deployment. Review your ingress configuration before upgrading and contact
-  [Palette Support](https://support.spectrocloud.io) if you need assistance migrating custom ingress settings to
-  Traefik. For Helm chart installations, you must also update your DNS records to point to the new Traefik LoadBalancer
-  service after upgrading. Refer to the
+  automatically and could affect your deployment. Review your ingress configuration before upgrading and
+  [contact our Support team](https://support.spectrocloud.io) if you need assistance migrating custom ingress settings
+  to Traefik. For Helm chart installations, you must also update your DNS records to point to the new Traefik
+  LoadBalancer service after upgrading. Refer to the
   [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
 
 #### Features

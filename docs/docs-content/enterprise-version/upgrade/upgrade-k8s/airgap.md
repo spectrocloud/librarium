@@ -407,7 +407,7 @@ Palette upgrade.
     `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready**
     status.
 
-    <PartialsComponent category="self-hosted" name="airgap-binary-execution" edition="Palette" />
+    <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
 ## Validate
 

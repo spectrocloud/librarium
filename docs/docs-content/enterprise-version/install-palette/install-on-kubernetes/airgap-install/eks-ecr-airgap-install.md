@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Install on EKS with ECR"
+sidebar_label: "Install Palette on EKS with ECR Mirroring"
 title: "Install Palette on EKS with ECR Mirroring"
 description:
   "Learn how to install self-hosted Palette on an AWS EKS cluster in an airgap environment using ECR as your artifact
@@ -16,7 +16,9 @@ into your own Amazon Elastic Container Registry (ECR) so that your cluster never
 
 ## Prerequisites
 
-### EKS Infrastructure
+Before you begin, ensure you meet the following prerequisites.
+
+### AWS Infrastructure
 
 - An AWS account with permissions to create ECR repositories.
 
@@ -26,43 +28,45 @@ into your own Amazon Elastic Container Registry (ECR) so that your cluster never
 
 - A custom domain you control with the ability to create wildcard DNS records.
 
+### Jump Host
+
 - A jump host with network access to the EKS cluster.
 
-### Jump Host Tools
+- The following tools installed on your jump host:
 
-- The following tools installed on your jump host with network access to your EKS cluster:
-
-  - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) — Required to interact
+  - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required to interact
     with AWS ECR and EKS.
 
-  - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) — Required to connect to and manage your EKS cluster. Use
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) - Required to connect to and manage your EKS cluster. Use
     the following command to add your EKS cluster details to your kubeconfig at `$HOME/.kube/config`. Replace
-    `<region-code>` with the region of your cluster and `cluster-name` with the name of your cluster.
+    `<region-code>` with the region of your cluster and `<cluster-name>` with the name of your cluster.
 
         ```
         aws eks update-kubeconfig --region <region-code> --name <cluster-name>
         ```
 
-  - [Helm 3](https://helm.sh/docs/intro/install/) — Required to install the Palette Helm charts.
+  - [Helm 3](https://helm.sh/docs/intro/install/) - Required to install the Palette Helm charts.
 
-  - [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) — Required to copy container
+  - [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) - Required to copy container
     images between registries without a local Docker daemon.
 
-- The following artifacts from our support team:
+  - A text editor of your choice, such as `nano` or `vi` - Required to modify Palette Helm charts.
+
+- The following artifacts from our Support team:
 
   - Palette Helm charts, received as a `charts.zip` file. Refer to
     [Access Palette](../../../enterprise-version.md#access-palette) for instructions on how to request access.
 
   - The following artifact list files that correspond with your `<palette-version>`. If you require additional packs for
-    your workload clusters beyond what is supplied, contact our support team to receive updated files containing
+    your workload clusters beyond what is supplied, contact our Support team to receive updated files containing
     additional packs and images.
 
-        - `packs.txt` — List of pack names to mirror.
-        - `images.txt` — List of all container images to mirror.
+        - `packs.txt` - List of pack names to mirror.
+        - `images.txt` - List of all container images to mirror.
 
 ### Spectro Cloud ECR Credentials
 
-- The following Spectro Cloud ECR details from our support team. These values are used throughout the guide.
+- The following Spectro Cloud ECR details from our Support team. These values are used throughout the guide.
 
   | **Detail**               | **Placeholder**              |
   | ------------------------ | ---------------------------- |
@@ -75,12 +79,8 @@ into your own Amazon Elastic Container Registry (ECR) so that your cluster never
 
 ## Set Up Registries
 
-Create two base repositories: one for images (always public) and one for packs (public or private).
-
-| **Option**      | **Use when**                                        | **Authentication**                       |
-| --------------- | --------------------------------------------------- | ---------------------------------------- |
-| **Private ECR** | You want packs restricted to your AWS account       | Long-lived IAM Access Key and Secret Key |
-| **Public ECR**  | No compliance requirement, or you prefer simplicity | Not required                             |
+Create two base repositories: one for images (always public) and one for packs (public or private). Public ECRs do not
+require authentication, whereas private ECRs use long-lived IAM Access and Secret keys to restrict access.
 
 ### Create Public ECR and Mirror Images
 
@@ -91,7 +91,8 @@ Public ECR is globally accessible for pulls without authentication. However, AWS
 
 :::
 
-1. On your jump host, ensure your AWS CLI is configured with an identity that has permissions to create and push to ECR.
+1. On your jump host, ensure your AWS CLI is configured with an identity that has permission to create an ECR and push
+   images to an ECR.
 
    ```shell
    aws sts get-caller-identity
@@ -126,7 +127,7 @@ Public ECR is globally accessible for pulls without authentication. However, AWS
    ```
 
 4. Set the source and destination variables for Spectro Cloud's ECR. Replace each placeholder with the values provided
-   by our support team in the [Spectro Cloud ECR Credentials](#spectro-cloud-ecr-credentials) section.
+   by our Support team in the [Spectro Cloud ECR Credentials](#spectro-cloud-ecr-credentials) section.
 
    :::info
 
@@ -168,7 +169,7 @@ Public ECR is globally accessible for pulls without authentication. However, AWS
    2026/03/19 11:55:38 logged in via /Users/ubuntu/.docker/config.json
    ```
 
-7. Navigate to the directory containing the `images.txt` and `packs.txt` files received from our support team.
+7. Navigate to the directory containing the `images.txt` and `packs.txt` files received from our Support team.
 
    ```shell
    cd <images-and-packs-location>
@@ -203,7 +204,7 @@ Public ECR is globally accessible for pulls without authentication. However, AWS
    echo "All done"
    ```
 
-9. Verify the mirror completed by spot-checking a few images.
+9. Verify the image mirroring completed by spot-checking a few images.
 
    ```shell title="Example command"
    aws ecr-public describe-images \
@@ -240,7 +241,7 @@ Choose one of the following options depending on whether you want to use a priva
     for your packs, such as `spectro-packs`.
 
     ```shell
-    PACK_BASE_PATH=<pack-base-path>
+    PACK_BASE_PATH="<pack-base-path>"
     aws ecr-public create-repository \
       --repository-name $PACK_BASE_PATH \
       --region us-east-1
@@ -457,7 +458,7 @@ Choose one of the following options depending on whether you want to use a priva
      "$PACK_DEST_ECR/$PACK_BASE_PATH/spectro-manifests/manifest:$PALETTE_VERSION"
    ```
 
-7. Verify the manifest mirror completed.
+7. Verify the manifest mirroring completed.
 
    ```shell
    aws ecr list-images \
@@ -489,9 +490,8 @@ Following is the recommended installation order:
 1. **Cert-Manager** - TLS certificate management, required by Palette. Must be installed before Image Swap.
 2. **Image Swap** - Webhook that rewrites image references to your public ECR at pod admission time. Must be installed
    before the Palette Management Plane.
-3. **Spectro-Mgmt-Crds** - Chart that contains Custom Resource Definitions (CRDs) required by Palette. Must be installed
-   before the Palette Management Plane. Can be installed at any point before the Palette Management Plane, as it
-   registers API types only and does not deploy pods.
+3. **Spectro Management CRDs** - Chart that contains Custom Resource Definitions (CRDs) required by Palette. Can be
+   installed at any point before the Palette Management Plane, as it only registers API types and does not deploy pods.
 4. **Palette Management Plane** - The main Palette application. Must be installed last.
 
 ### Verify Environment Setup
@@ -551,11 +551,11 @@ Following is the recommended installation order:
 
 ### Install Cert-Manager
 
-Cert-Manager is installed first because Palette depends on it for TLS. Because Image Swap is not yet running,
-Cert-Manager image references must be explicitly set to their full public ECR paths in `values.yaml`.
+Cert-Manager must be installed first, as Palette depends on it for TLS. Because Image Swap is not yet running,
+Cert-Manager image references must be explicitly set to their full public ECR paths.
 
 1. Open `charts/extras/cert-manager/values.yaml` in a text editor and update all four image fields to their full public
-   ECR paths. Replace `<your-public-alias>` and `<image-base-path>` with your values. Do not change the existing
+   ECR paths. Replace `<your-public-alias>` and `<image-base-path>` with your values. Do _not_ change the existing
    `<image-tag>`, as it corresponds to the Palette version used for the Palette images in your public ECR.
 
    :::tip
@@ -614,10 +614,10 @@ Cert-Manager image references must be explicitly set to their full public ECR pa
 Image Swap is a
 [Kubernetes admission webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/).
 Once running, it intercepts every pod creation and rewrites image references to point to your public ECR. This means the
-Palette chart requires no image path changes.
+main Palette Helm chart requires no image path changes.
 
 1. Open `charts/extras/image-swap/image-swap/values.yaml` in a text editor and configure the following sections with the
-   necessary values. Do not change the existing `<image-tag>`, as it corresponds to the Palette version used for the
+   necessary values. Do _not_ change the existing `<image-tag>`, as it corresponds to the Palette version used for the
    Palette images in your public ECR.
 
    ```yaml
@@ -677,7 +677,7 @@ Palette chart requires no image path changes.
 
 ### Install Custom Resource Definitions
 
-The `spectro-mgmt-crds` chart contains the CRDs required by Palette, including Traefik CRDs, and must be installed
+The Spectro Management CRDs chart contains the CRDs required by Palette, including Traefik CRDs, and must be installed
 before the main Palette Helm chart. When the chart is installed, the custom resource types are registered with the
 Kubernetes API server; no pods are deployed.
 
@@ -690,11 +690,11 @@ Kubernetes API server; no pods are deployed.
 
 ### Install Palette
 
-Next, install Palette. Image Swap handles all image rewriting automatically, so no changes to image fields in
-`values.yaml` are needed.
+Finally, install Palette. Image Swap handles all image rewriting automatically, so no changes to the image fields in
+`charts/palette/values.yaml` are needed.
 
 1. Open `charts/palette/values.yaml` in a text editor and update the following sections. Do not change any other fields
-   unless instructed by our support team.
+   unless instructed by our Support team.
 
 2. Set the installation mode to airgap.
 
@@ -703,7 +703,7 @@ Next, install Palette. Image Swap handles all image rewriting automatically, so 
      installationMode: "airgap"
    ```
 
-3. Set the root domain. A wildcard DNS record `*.<your-root-domain>` must point to your ingress load balancer.
+3. Set the root domain. A wildcard DNS record (`*.<your-root-domain>`) must point to your ingress load balancer.
 
    ```yaml
    env:
@@ -721,14 +721,15 @@ Next, install Palette. Image Swap handles all image rewriting automatically, so 
    gp2    kubernetes.io/aws-ebs   Delete          WaitForFirstConsumer   false                  26h
    ```
 
-   Use the name of your preferred storage class in the following configuration.
+   Then use the name of your preferred storage class in the following configuration.
 
    ```yaml
    mongo:
-     storageClass: "<your-storage-class>"
+     storageClass: "<storage-class-name>"
    ```
 
-5. Configure the pack registry. This points to your ECR where you mirrored the packs and manifest.
+5. Configure the pack registry. This points to your public or private ECR configured in the
+   [Create Pack Registry and Mirror Packs and Manifest](#create-pack-registry-and-mirror-packs-and-manifest) section.
 
    <Tabs groupId="eks-pack-ecr">
 
@@ -766,8 +767,9 @@ Next, install Palette. Image Swap handles all image rewriting automatically, so 
 
    </Tabs>
 
-6. Configure the Image Swap section. These values must match what is configured in
-   `charts/extras/image-swap/image-swap/values.yaml`.
+6. Configure the Image Swap section. These values must match the `imageSwapImages` and `imageSwapConfig` blocks from
+   `charts/extras/image-swap/image-swap/values.yaml`, as configured in the [Install Image Swap](#install-image-swap)
+   section.
 
    ```yaml
    imageSwapImages:
@@ -778,8 +780,9 @@ Next, install Palette. Image Swap handles all image rewriting automatically, so 
      isEKSCluster: true
    ```
 
-7. Copy the `ociImageRegistry` section from `charts/extras/image-swap/image-swap/values.yaml` and replace the commented
-   out `ociImageRegistry` section in `charts/palette/values.yaml`.
+7. Copy the `ociImageRegistry` block from `charts/extras/image-swap/image-swap/values.yaml`, as configured in the
+   [Install Image Swap](#install-image-swap) section, and replace the commented out `ociImageRegistry` section in
+   `charts/palette/values.yaml`.
 
    ```yaml
    ociImageRegistry:
@@ -811,7 +814,7 @@ Next, install Palette. Image Swap handles all image rewriting automatically, so 
    ```
 
 10. Verify the installation is complete. Installation is complete when all pods in the `cp-system`, `hubble-system`,
-    `ingress-nginx`, `ingress-traefik`, `jet-system`, and `ui-system` namespaces are all in `Running` or `Completed`
+    `ingress-nginx`, `ingress-traefik`, `jet-system`, and `ui-system` namespaces are in a `Running` or `Completed`
     state.
 
     ```shell
@@ -950,11 +953,11 @@ Route 53 as an example.
 
     <TabItem label="Zone Apex (A Alias)" value="zone-apex">
 
-    If `<your-root-domain>` is the zone apex (for example, `docs-test.spectrocloud.com` in a hosted zone for
-    `docs-test.spectrocloud.com`), you cannot use a CNAME record, as DNS does not allow CNAMEs at the zone apex.
-    Instead, create a Route 53 **A** (Alias) record that points directly to the load balancer.
+    If `<your-root-domain>` is the zone apex (for example, `palette.example.com` in a hosted zone for
+    `palette.example.com`), you cannot use a CNAME record, as DNS does not allow CNAMEs at the zone apex. Instead,
+    create a Route 53 **A** (Alias) record that points directly to the load balancer.
 
-    1.  Find the load balancer's canonical hosted zone ID.
+    First, find the load balancer's canonical hosted zone ID.
 
         ```shell
         aws elbv2 describe-load-balancers \
@@ -966,7 +969,7 @@ Route 53 as an example.
         HBDJNJ19D0277D
         ```
 
-    2.  Create the Alias record
+    Then create the Alias record.
 
         ```shell
         aws route53 change-resource-record-sets \
@@ -1003,8 +1006,6 @@ Route 53 as an example.
 
     If `<your-root-domain>` is _not_ the zone apex (for example, `palette.example.com` in a hosted zone for
     `example.com`), you can use a standard CNAME record.
-
-    1.  Create a CNAME record for the root domain.
 
         ```shell
         aws route53 change-resource-record-sets \
@@ -1046,26 +1047,26 @@ and navigate to the Palette system console at `https://<your-root-domain>/system
 
 Once you have Palette installed, we recommend taking the following actions:
 
+- **Activate Installation** - Required within 30 days. Refer to
+  [Activate Palette](../../../activate-installation/activate-installation.md) for guidance.
+
 - **Provide Trusted SSL Certificate** - By default, self-hosted Palette uses a self-signed SSL certificate. If you are
   using a custom SSL certificate, you can
-  [add your SSL certificate files](../../../system-management/ssl-certificate-management.md), including your x509
-  certificate, key, and Certificate Authority (CA), through the system console.
+  [add your SSL certificate files](../../../system-management/ssl-certificate-management.md) through the system console.
 
-- **Set Up Tenants** — Tenants are isolated environments in Palette that contain their own clusters, users, and
+- **Set Up Tenants** - Tenants are isolated environments in Palette that contain their own clusters, users, and
   resources. You must [set up a tenant](../../../system-management/tenant-management.md) before you can deploy workload
   clusters.
 
-- **Activate Installation** — Required within 30 days. Refer to
-  [Activate Palette](../../../activate-installation/activate-installation.md) for guidance.
-
-- **Configure an AWS Cloud Account** - Add your AWS account to Palette to deploy IaaS and EKS clusters through your AWS
-  environment. EKS clusters support using
+- **Configure an AWS Cloud Account** - Add your AWS account to Palette to deploy AWS IaaS and EKS clusters through your
+  AWS environment. EKS clusters support using
   [EKS Pod Identity](../../../../clusters/public-cloud/aws/add-aws-accounts.md#eks-pod-identity) for authentication in
   addition to IAM users and dynamic Security Token Service (STS) credentials.
 
-- **Launch a Workload Cluster** — Refer to
+- **Launch a Workload Cluster** - Refer to
   [Create and Manage AWS EKS Cluster](../../../../clusters/public-cloud/aws/eks.md) for guidance on deploying EKS
-  clusters in Palette. We recommend launching a two-node EKS workload cluster so that Pod Disruption Budgets are
-  respected during Kubernetes upgrades, as Palette performs rolling upgrades. Refer to the
+  clusters in Palette. We recommend launching a two-node EKS workload cluster so that
+  [Pod Disruption Budgets](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) are respected during
+  Kubernetes upgrades, as Palette performs rolling upgrades. Refer to the
   [Amazon EKS managed node group update](https://docs.aws.amazon.com/eks/latest/userguide/update-managed-node-group.html)
   documentation for more information.

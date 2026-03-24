@@ -171,18 +171,12 @@ environment. Reach out to our support team if you need assistance.
 
     :::info
 
-    Use the following `mirrorRegistries` placeholder string to replace the respective values of your OCI registry.
-
     Include `/v2/` in your endpoints if you are using a
     [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
     Harbor proxy cache projects use `/v2/` as part of their internal URL routing for cached images. For all other
     registries, omit `/v2/`, as the container runtime automatically appends `/v2` when making API calls. Including
     `/v2/` for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For
     example: `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
-
-    ```yaml
-    docker.io::<oci-url>/<image-project>/docker.io,gcr.io::<oci-url>/<image-project>/gcr.io,ghcr.io::<oci-url>/<image-project>/ghcr.io,k8s.gcr.io::<oci-url>/<image-project>/k8s.gcr.io,registry.k8s.io::<oci-url>/<image-project>/registry.k8s.io,quay.io::<oci-url>/<image-project>/quay.io,us-docker.pkg.dev::<oci-url>/<image-project>/us-docker.pkg.dev"
-    ```
 
     :::
 
@@ -223,8 +217,8 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Install the `spectro-mgmt-crds` chart. This chart contains Custom Resource Definitions (CRDs) required by Palette,
-    including Traefik CRDs, and must be installed before the main Palette Helm Chart.
+8.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+    Palette, including Traefik CRDs, and must be installed before the main Palette Helm chart.
 
     ```shell
     helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
@@ -257,7 +251,7 @@ environment. Reach out to our support team if you need assistance.
     | `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io`. <br /><br /> **NOTE:** Include `/v2/` in your endpoints if you are using a [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project. Harbor proxy cache projects use `/v2/` as part of their internal URL routing for cached images. For all other registries, omit `/v2/`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2/` for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example: `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`. | string   |
     | `imageSwapImages`                   | The image swap configuration for Palette. If you are using an OCI registry, such as Harbor, replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | object   |
     | `imageSwapConfig.isEKSCluster`      | If you are NOT installing Palette on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | boolean  |
-    | `ingress.enabled`                   | Whether to install the Traefik or Nginx ingress controller. Set this to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | boolean  |
+    | `ingress.enabled`                   | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set this to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | boolean  |
     | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | object   |
 
     :::info
@@ -714,8 +708,8 @@ environment. Reach out to our support team if you need assistance.
 10. This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
-    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
-    9.
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in
+    step 9.
 
     ```shell
     helm upgrade --values palette/values.yaml \
