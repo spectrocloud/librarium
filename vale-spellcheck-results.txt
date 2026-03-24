@@ -1,1 +1,0 @@
-docs/docs-content/clusters/pcg/deploy-pcg-k8s.md:155:85:Vale.Spelling:Did you really mean 'PCG's'?
