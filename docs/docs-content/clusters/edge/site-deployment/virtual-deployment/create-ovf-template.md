@@ -175,7 +175,7 @@ environment. In the vCenter environment, you will convert the VMDK to a VM templ
 
 9. Name the VM and select a location for it, then choose **Next**.
 
-10. In the **Select a compute resource** window, choose a cluster that has access to the datastore used for storing the
+10. In the **Select a compute resource** window, choose a cluster that has access to the datastore containing the
     VMDK, then choose **Next**.
 
 11. Select the storage where the VMDK is stored, then choose **Next**.
