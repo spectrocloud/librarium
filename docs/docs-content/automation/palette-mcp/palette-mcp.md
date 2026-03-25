@@ -8,8 +8,8 @@ tags: ["ai", "mcp", "automation"]
 ---
 
 Model Context Protocol (MCP) servers allow AI models to interact with external tools, data sources, and services in a
-structured and reliable way. Models that are connected to MCP servers can perform real actions such as reading files,
-querying databases, or calling APIs, instead of only relying on their training data. Therefore, AI tools that are
+structured and reliable way. Models that are connected to MCP servers can perform actions such as read files,
+query databases, or call APIs, instead of only relying on their training data. AI tools
 connected to MCP servers are useful in practical applications because they become active assistants, with capabilities
 far beyond generating text.
 
@@ -17,12 +17,12 @@ The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) wra
 to use natural language perform actions on resources. The MCP server is a powerful automation tool that simplifies
 Palette operations that require multiple API operations through a single call.
 
-The Palette MCP server supports the following functionality:
+The Palette MCP server allows you to perform the following actions:
 
 - Gather information about clusters.
-- Delete a cluster.
+- Delete clusters.
 - Gather information about cluster profiles.
-- Delete a cluster profile.
+- Delete cluster profiles.
 - Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) or admin kubeconfig for a cluster.
 - Tag a variety of Palette resources.
 
