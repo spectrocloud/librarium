@@ -23,8 +23,9 @@ This guide provides examples of how to use the Palette MCP server.
 
 - Ensure the following software is installed locally on your workstation:
 
-  - The Palette MCP server configured and set up. Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or [Gemini](./setup/mcp-setup-gemini.md).
-    for further guidance.
+  - The Palette MCP server configured and set up. Refer to the applicable setup guide for
+    [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
+    [Gemini](./setup/mcp-setup-gemini.md). for further guidance.
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
@@ -47,34 +48,33 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    ```shell hideClipboard title="Example Output"
    From the current Palette MCP cluster profile list (41 profiles returned, next_continue_token is null, so this looks like the full set for the project right now), these cluster profiles include the env:prod tag:
 
-   | Name        | Version | UID                      | Other tags      |
-   | aws-profile | 1.2.0   | 69a87f1e87b2e7f87c200c48 | owner:test-user |
-   | aws-profile | 1.1.0   | 6985df9dc7fdcb36fea974df | owner:test-user |
-   | aws-profile | 1.0.0   | 671a4f3b218f768c3afe710  | owner:test-user |
+   | Name | Version | UID | Other tags | | aws-profile | 1.2.0 | 69a87f1e87b2e7f87c200c48 | owner:test-user | |
+   aws-profile | 1.1.0 | 6985df9dc7fdcb36fea974df | owner:test-user | | aws-profile | 1.0.0 | 671a4f3b218f768c3afe710 |
+   owner:test-user |
 
    Total: 3 profile versions (3 UIDs) with env:prod.
+
    ```
 
-3. Send a query asking for information about Palette clusters. For example, you can ask "Which Palette clusters are deployed
-   to AWS?" to list your [AWS clusters](../../clusters/public-cloud/aws/aws.md).
+3. Send a query asking for information about Palette clusters. For example, you can ask "Which Palette clusters are
+   deployed to AWS?" to list your [AWS clusters](../../clusters/public-cloud/aws/aws.md).
 
    ```shell hideClipboard title="Example Output"
    From the Palette cluster list (non-compact, full spec), cloudType: "aws" is what marks a cluster as deployed on AWS.
 
    Clusters on AWS
 
-   | Name             | UID                      | Region    | State   | Notes                      |
-   | aws-cluster-test | 69b959018db5c767205d0432 | us-east-1 | Running | `cloudConfigRef.kind: aws` |
-   | prod-cluster-aws | 69bd46f44e92b3a3b45aa01d | us-east-2 | Running | `cloudConfigRef.kind: aws` |
-   | dev-cluster-aws  | 69bd928584cffd9876481048 | us-east-2 | Running | `cloudConfigRef.kind: aws` |
+   | Name | UID | Region | State | Notes | | aws-cluster-test | 69b959018db5c767205d0432 | us-east-1 | Running |
+   `cloudConfigRef.kind: aws` | | prod-cluster-aws | 69bd46f44e92b3a3b45aa01d | us-east-2 | Running |
+   `cloudConfigRef.kind: aws` | | dev-cluster-aws | 69bd928584cffd9876481048 | us-east-2 | Running |
+   `cloudConfigRef.kind: aws` |
 
    Not AWS (same project, same list)
 
-   | Name         | cloudType |
-   | vsphere-test | vsphere   |
-   | maas-test    | maas      |
+   | Name | cloudType | | vsphere-test | vsphere | | maas-test | maas |
 
    So three Palette clusters in this project are deployed to AWS; the rest are vSphere or MAAS.
+
    ```
 
 ## Download Kubeconfig Files
@@ -111,7 +111,9 @@ The `getKubeconfig` tool downloads kubeconfig files.
    :::info
 
    Kubectl will only function correctly if you have added an Agent skill to your MCP tool that instructs it to use the
-   local kubeconfig file to connect to the cluster. Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or [Gemini](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP tool.
+   local kubeconfig file to connect to the cluster. Refer to the applicable setup guide for
+   [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
+   [Gemini](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP tool.
 
    :::
 
@@ -122,9 +124,9 @@ The `getKubeconfig` tool downloads kubeconfig files.
 
    Nodes:
 
-   | NAME                       | STATUS | ROLES         | AGE   | VERSION  |
-   | ip-10-0-1-158.ec2.internal | Ready  | control-plane | 7d22h | v1.32.13 |
-   | ip-10-0-1-248.ec2.internal | Ready  | <none>        | 7d22h | v1.32.13 |
+   | NAME | STATUS | ROLES | AGE | VERSION | | ip-10-0-1-158.ec2.internal | Ready | control-plane | 7d22h | v1.32.13 | |
+   ip-10-0-1-248.ec2.internal | Ready | <none> | 7d22h | v1.32.13 |
+
    ```
 
 ## Manage Resource Tags
@@ -135,38 +137,39 @@ The `manage_resource_tags` tool manages resource tags for cluster profiles, clus
 
 1. Open your MCP tool.
 
-2. Send a query related to resource tags. For example, you can say "Apply the `cloud:aws` tag to
-   `<cluster-name>`" to add a custom tag to your [AWS cluster](../../clusters/public-cloud/aws/aws.md).
+2. Send a query related to resource tags. For example, you can say "Apply the `cloud:aws` tag to `<cluster-name>`" to
+   add a custom tag to your [AWS cluster](../../clusters/public-cloud/aws/aws.md).
 
    Replace the placeholder with your cluster name.
 
    ```shell hideClipboard title="Example Output"
    Here’s what was done:
 
-   Change
-   PATCH /v1/spectroclusters/69b959018db5c767205d0432/metadata with merged labels so nothing else was removed.
+   Change PATCH /v1/spectroclusters/69b959018db5c767205d0432/metadata with merged labels so nothing else was removed.
    cloud:aws is stored as metadata label cloud = aws (normal Palette/Kubernetes style).
 
-   Result
-   Response: HTTP 204 (success).
+   Result Response: HTTP 204 (success).
 
    Verified
    aws-cluster-test labels are now:
 
-   {
-     "name": "cluster-name",
-     "labels": {
-       "cloud": "aws",
-       "owner": "test-user"
+   { "name": "cluster-name", 
+     "labels": { 
+       "cloud": "aws", 
+       "owner": "test-user" 
      }
    }
+
    ```
 
 ## Delete Clusters and Cluster Profiles
 
-The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gather_or_delete_clusters` tool deletes clusters.
+The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gather_or_delete_clusters` tool deletes
+clusters.
 
-1. Open the `.env-mcp` file you configured during MCP server setup in your preferred text editor. Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or [Gemini](./setup/mcp-setup-gemini.md) for more information. 
+1. Open the `.env-mcp` file you configured during MCP server setup in your preferred text editor. Refer to the
+   applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
+   [Gemini](./setup/mcp-setup-gemini.md) for more information.
 
    Enable dangerous actions to allow the MCP server to delete resources. Save and close the file.
 
@@ -188,7 +191,6 @@ The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gathe
    Response: HTTP 204
    Check: GET the same UID now returns 404 / ResourceNotFound, so the profile is gone from project Default.
 
-   If any cluster or template still referenced this profile, Palette would have blocked delete with a dependency error;204 means the API accepted the removal.
    ```
 
 4. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` cluster."
