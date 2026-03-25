@@ -34,34 +34,65 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
    claude
    ```
 
-6. Execute the following command to add the Palette MCP server to Claude Code, replacing the placeholders with your
+   ```shell hideClipboard title="Example Output"
+   Welcome to Claude Code
+
+   › What can I help you with?
+   ```
+
+6. Save the file paths for the kubeconfig folder and the `.env-mcp` file into two environment variables. Replace the
+   `<local-path>` placeholders with full paths.
+
+   ```shell
+   export ENV_MCP_PATH=/<local-path>/.palette/.env-mcp
+   export KUBECONFIG_PATH=/<local-path>/kubeconfig
+   ```
+
+7. Execute the following command to add the Palette MCP server to Claude Code, replacing the placeholders with your
    values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env.mcp` file.
 
    If you want to use Podman, replace the command with `"podman"`.
 
+   <Tabs groupId="mcp-setup">
+
+   <TabItem label="Docker" value="docker">
+
    ```shell
    claude mcp add --transport stdio palette -- \
        docker run --rm -i --pull always \
-       --mount type=bind,source=/<file-path>/kubeconfig,target=/tmp/kubeconfig \
-       --env-file /<file-path>/.env-mcp \
+       --mount type=bind,source=$KUBECONFIG_PATH,target=/tmp/kubeconfig \
+       --env-file $ENV_MCP_PATH \
        public.ecr.aws/palette-ai/palette-mcp-server:latest
    ```
 
-7. Navigate back to the terminal and execute the following to command to ensure that the MCP server was set up
-   successfully.
+   </TabItem>
+
+   <TabItem label="Podman" value="podman">
+
+   ```shell
+   claude mcp add --transport stdio palette -- \
+       podman run --rm -i --pull always \
+       --mount type=bind,source=$KUBECONFIG_PATH,target=/tmp/kubeconfig \
+       --env-file $ENV_MCP_PATH \
+       public.ecr.aws/palette-ai/palette-mcp-server:latest
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+8. Execute the following to command to ensure that the MCP server was set up successfully.
 
    ```shell
    claude mcp list
    ```
 
+   ```shell hideClipboard title="Example Output"
    palette: docker run --rm -i --pull always --mount type=bind,source=/<file-path>kubeconfig,target=/tmp/kubeconfig
    --env-file /<file-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
-
    ```
 
-   ```
-
-8. If you configured the path to your kubeconfig file, we recommend adding an
+9. If you configured the path to your kubeconfig file, we recommend adding an
    [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to enable Claude to use the
    downloaded kubeconfig files to access clusters.
 
@@ -85,6 +116,12 @@ You can now use the Palette MCP server with Claude Code.
 
    ```shell
    claude
+   ```
+
+   ```shell hideClipboard title="Example Output"
+   Welcome to Claude Code
+
+   › What can I help you with?
    ```
 
 2. Send a query about your Palette environment to check if your MCP server is connected to Palette.

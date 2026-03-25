@@ -19,9 +19,9 @@ Paste the following snippet in the file, replacing the placeholders with your lo
            "--pull",
            "always",
            "--mount",
-           "type=bind,source=/<file-path>/kubeconfig,target=/tmp/kubeconfig",
+           "type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig",
            "--env-file",
-           "/<file-path>/.env-mcp",
+           "/<local-path>/.palette/.env-mcp",
            "public.ecr.aws/palette-ai/palette-mcp-server:latest"
        ]
        }
