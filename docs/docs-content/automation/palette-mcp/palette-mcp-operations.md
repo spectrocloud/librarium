@@ -194,7 +194,6 @@ The `gather_or_delete_clusterprofiles` deletes cluster profiles. The `gather_or_
 4. Send a query to delete a Palette cluster. For example, you can ask "Delete the `<cluster-name>` cluster."
 
    ```shell hideClipboard title="Example Output"
-
    <cluster-name> was removed with:
 
    DELETE /v1/spectroclusters/69b959018db5c767205d0432
