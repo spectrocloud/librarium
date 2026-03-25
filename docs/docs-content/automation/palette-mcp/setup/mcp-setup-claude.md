@@ -1,27 +1,27 @@
 ---
-sidebar_label: "Setup the MCP Server with Claude Code"
-title: "Setup the MCP Server with Claude Code"
+sidebar_label: "Set Up MCP Server with Claude Code"
+title: "Set Up MCP Server with Claude Code"
 description: "Learn how to setup the Palette MCP server with Claude Code."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to setup the [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) with
+This guide covers how to set up the [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) with
 [Claude Code](https://code.claude.com/docs/en/overview).
 
 ## Prerequisites
 
-- Ensure the following software is installed locally on your workstation.
+- Ensure the following software is installed locally on your workstation:
 
-  - A container runtime, such as [Docker](https://www.docker.com/products/docker-desktop/) or
+  - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Claude Code. Refer to the [Quickstart](https://code.claude.com/docs/en/quickstart) page for further information.
+  - Claude Code. Refer to the [Claude Quickstart](https://code.claude.com/docs/en/quickstart) page for further information.
 
 - A Palette account.
 
 - A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
-  guide to learn how to create a Palette API key. guide for further instructions.
+  guide for more information.
 
 ## Setup
 
@@ -46,18 +46,18 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
        public.ecr.aws/palette-ai/palette-mcp-server:latest
    ```
 
-7. Navigate back to the terminal and execute the following to command to ensure that the MCP server has been set up
+7. Navigate back to the terminal and execute the following to command to ensure that the MCP server was set up
    successfully.
 
    ```shell
    claude mcp list
    ```
 
-   ```shell title="Example Output"
+   
    palette: docker run --rm -i --pull always --mount type=bind,source=/<file-path>kubeconfig,target=/tmp/kubeconfig --env-file /<file-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
    ```
 
-8. If you configured the path to your kubeconfig file in **Step 4**, we recommend adding an
+8. If you configured the path to your kubeconfig file, we recommend adding an
    [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to enable Claude to use the
    downloaded kubeconfig files to access clusters.
 
@@ -68,7 +68,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    touch <local-path>/CLAUDE.md
    ```
 
-   Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
+   Open the file in your preferred text editor and paste the following snippet into the file. Replace the `<local-path>`
    placeholder with the kubeconfig local path you configured in **Step 4**.
 
    <PartialsComponent category="palette-mcp" name="example-skill" />
@@ -83,13 +83,13 @@ You can now use the Palette MCP server with Claude Code.
    claude
    ```
 
-2. Send any query about your Palette environment to test out that your MCP server is successfully connected to Palette.
+2. Send a query about your Palette environment to check if your MCP server is connected to Palette.
 
-   For example, you can ask "Can you help me identify how many active clusters I have in Palette?" to learn more about
+   For example, you can ask "How many clusters do I have in Palette?" to learn more about
    your Palette clusters.
 
    ```shell title="Example Output"
-   ❯ Can you help me identify how many active clusters I have in Palette?
+   ❯ How many clusters do I have in Palette?
 
    ⏺ palette - gather_or_delete_clusters (MCP)(action: "list", active_only: true)
    ⎿  {
