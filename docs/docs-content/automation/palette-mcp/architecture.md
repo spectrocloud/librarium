@@ -11,7 +11,7 @@ The [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) is 
 server hosted in a container that is deployed on your machine or environment. The container communicates with the
 configured Palette instance and performs the required API operations.
 
-These are some of the architectural highlights when using the Palette MCP server.
+Here is an overview of how to configure and use the Palette MCP server.
 
 - Install an MCP tool on your local machine or environment. Popular tools are [Cursor](https://cursor.com/get-started),
   [Claude Code](https://code.claude.com/docs/en/overview), and [Gemini CLI](https://geminicli.com/).
