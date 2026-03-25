@@ -16,8 +16,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more
-    information.
+  - Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more information.
 
 - A Palette account.
 
@@ -47,10 +46,14 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    gemini mcp list
    ```
 
-   
    Configured MCP servers:
 
-   ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/<local-path>/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /<local-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
+   ✓ palette: docker run --rm -i --pull always --mount
+   type=bind,source=/<local-path>/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /<local-path>/.palette/.env-mcp
+   public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
+
+   ```
+
    ```
 
 10. If you configured the path to your kubeconfig file, we recommend adding an
@@ -64,8 +67,8 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
     touch <local-path>/.palette-guidance.md
     ```
 
-    Open the file in your preferred text editor and paste the following snippet into the file. Replace the `<local-path>`
-    placeholder with the kubeconfig local path you configured.
+    Open the file in your preferred text editor and paste the following snippet into the file. Replace the
+    `<local-path>` placeholder with the kubeconfig local path you configured.
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
@@ -89,77 +92,47 @@ You can now use the Palette MCP server with the Gemini CLI.
 
 2. Send a query about your Palette environment to check if your MCP server is connected to Palette.
 
-   For example, you can ask "How many clusters do I have in Palette?" to learn more about
-   your Palette clusters.
+   For example, you can ask "How many clusters do I have in Palette?" to learn more about your Palette clusters.
 
-   
    ✦ I will list the active clusters in Palette to determine how many you have.
-   ╭─────────────────────────────────────────────────────────────────────────────────────────────╮
-   │ ✓  gather_or_delete_clusters (palette MCP Server) {"active_only":true,"action":"list"}      │
-   │                                                                                             │
-   │ {                                                                                           │
-   │   "content": [                                                                              │
-   │     {                                                                                       │
-   │       "type": "text",                                                                       │
-   │       "text": "{\n  \"clusters\": {\n    \"items\": [\n      {\n        \"metadata\": {\n   │
-   │ \"annotations\": {\n            \"ownerUid\": \"65539867083a5585bb262c4f\",\n               │
-   │ \"permissions\":                                                                            │
-   │ \"cluster.adminKubeconfigDownload,cluster.create,cluster.delete,cluster.get,cluster.import, │
-   │ cluster.list,cluster.update,tag.update\",\n            \"projectUid\":                      │
-   │ \"xxx\",\n            \"scope\": \"project\",\n                        │
-   │ \"scopeVisibility\": \"16\",\n            \"tenantUid\": \"6342eaaffaa0813ea548ea04\"\n     │
-   │ },\n          \"creationTimestamp\": \"2026-03-17T13:37:05.071Z\",\n                        │
-   │ \"deletionTimestamp\": \"0001-01-01T00:00:00.000Z\",\n          \"labels\": {\n             │
-   │ \"owner\": \"xx\"\n          },\n          \"lastModifiedTimestamp\":           │
-   │ \"2026-03-17T13:46:48.273Z\",\n          \"name\": \"aws-cluster-test\",\n                  │
-   │ \"uid\": \"69b959018db5c767205d0432\"\n        },\n        \"specSummary\": {\n             │
-   │ \"archTypes\": [\n            \"amd64\"\n          ],\n          \"cloudAccountMeta\": {\n  │
-   │ \"name\": \"aws-deploy-user\",\n            \"uid\": \"6926f6f6d8b4acf80ad84b21\"\n         │
-   │ },\n          \"cloudConfig\": {\n            \"cloudType\": \"aws\",\n                     │
-   │ \"hybridMachinePools\": [],\n            \"machinePools\": [\n              {\n             │
-   │ \"cloudType\": \"aws\",\n                \"healthy\": 1,\n                                  │
-   │ \"infraProfileTemplate\": {\n                  \"packs\": null\n                },\n        │
-   │ \"isControlPlane\": true,\n                \"labels\": [\n                                  │
-   │ \"control-plane\"\n                ],\n                \"maintenanceMode\": 0,\n            │
-   │ \"size\": 1\n              },\n              {\n                \"cloudType\": \"aws\",\n   │
-   │ \"healthy\": 1,\n                \"infraProfileTemplate\": {\n                  \"packs\":  │
-   │ null\n                },\n                \"isControlPlane\": false,\n                      │
-   │ \"labels\": [\n                  \"worker\"\n                ],\n                           │
-   │ \"maintenanceMode\": 0,\n                \"size\": 1\n              }\n            ],\n     │
-   │ \"uid\": \"69b959018db5c7671e218e9d\"\n          },\n          \"clusterConfig\": {\n       │
-   │ \"hostClusterConfig\": {},\n            \"timezone\": \"Etc/UTC\"\n          },\n           │
-   │ \"clusterProfileTemplates\": [],\n          \"projectMeta\": {\n            \"name\":       │
-   │ \"Default\",\n            \"uid\": \"6342eab2faa0813ead9082e0\"\n          }\n        },\n  │
-   │ \"status\": {\n          \"clusterImport\": {\n            \"isBrownfield\": false\n        │
-   │ },\n          \"cost\": {\n            \"cloud\": {\n              \"compute\": 0,\n        │
-   │ \"storage\": 0,\n              \"total\": 0\n            },\n            \"total\": 0\n     │
-   │ },\n          \"fips\": {\n            \"mode\": \"none\"\n          },\n                   │
-   │ \"health\": {\n            \"agentVersion\": \"4.8.18/20260228.2209\",\n                    │
-   │ \"conditions\": [],\n            \"lastHeartBeatTimestamp\":                                │
-   │ \"2026-03-19T14:31:41.348Z\",\n            \"state\": \"Healthy\"\n          },\n           │
-   │ \"hourlyRate\": {\n            \"cloud\": {\n              \"compute\": 0,\n                │
-   │ \"storage\": 0,\n              \"total\": 0\n            },\n            \"total\": 0\n     │
-   │ },\n          \"location\": {\n            \"coordinates\": [\n              -76.015778,\n  │
-   │ 36.86314\n            ],\n            \"countryCode\": \"US\",\n                            │
-   │ \"countryName\": \"United States\",\n            \"regionCode\": \"VA\",\n                  │
-   │ \"regionName\": \"Virginia\"\n          },\n          \"metrics\": {\n            \"cpu\":  │
-   │ {\n              \"lastUpdatedTime\": \"2026-03-19T14:28:57.617Z\",\n                       │
-   │ \"limit\": 0,\n              \"request\": 0,\n              \"total\": 8000,\n              │
-   │ \"unit\": \"MilliCore\",\n              \"usage\": 30\n            },\n                     │
-   │ \"memory\": {\n              \"lastUpdatedTime\": \"2026-03-19T14:28:57.617Z\",\n           │
-   │ \"limit\": 0,\n              \"request\": 0,\n              \"total\": 32864312,\n          │
-   │ \"unit\": \"KiB\",\n              \"usage\": 1019114\n            }\n          },\n         │
-   │ \"notifications\": {\n            \"isAvailable\": false,\n                                 │
-   │ \"isTemplateVariableResolutionPending\": false\n          },\n          \"repave\": {},\n   │
-   │ \"state\": \"Running\",\n          \"virtual\": {\n            \"appDeployments\": null,\n  │
-   │ \"clusterGroup\": {},\n            \"hostCluster\": {},\n            \"lifecycleStatus\":   │
-   │ {},\n            \"virtualClusters\": []\n          }\n        }\n      }\n    ]\n  }\n}"   │
-   │     }                                                                                       │
-   │   ],                                                                                        │
-   │   "isError": false                                                                          │
-   │ }                                                                                           │
-   ╰─────────────────────────────────────────────────────────────────────────────────────────────╯
-   ✦ You have 1 active cluster in Palette: aws-cluster-test.
+   ╭─────────────────────────────────────────────────────────────────────────────────────────────╮ │ ✓
+   gather_or_delete_clusters (palette MCP Server) {"active_only":true,"action":"list"} │ │ │ │ { │ │ "content": [ │ │ {
+   │ │ "type": "text", │ │ "text": "{\n \"clusters\": {\n \"items\": [\n {\n \"metadata\": {\n │ │ \"annotations\": {\n
+   \"ownerUid\": \"65539867083a5585bb262c4f\",\n │ │ \"permissions\": │ │
+   \"cluster.adminKubeconfigDownload,cluster.create,cluster.delete,cluster.get,cluster.import, │ │
+   cluster.list,cluster.update,tag.update\",\n \"projectUid\": │ │ \"xxx\",\n \"scope\": \"project\",\n │ │
+   \"scopeVisibility\": \"16\",\n \"tenantUid\": \"6342eaaffaa0813ea548ea04\"\n │ │ },\n \"creationTimestamp\":
+   \"2026-03-17T13:37:05.071Z\",\n │ │ \"deletionTimestamp\": \"0001-01-01T00:00:00.000Z\",\n \"labels\": {\n │ │
+   \"owner\": \"xx\"\n },\n \"lastModifiedTimestamp\": │ │ \"2026-03-17T13:46:48.273Z\",\n \"name\":
+   \"aws-cluster-test\",\n │ │ \"uid\": \"69b959018db5c767205d0432\"\n },\n \"specSummary\": {\n │ │ \"archTypes\": [\n
+   \"amd64\"\n ],\n \"cloudAccountMeta\": {\n │ │ \"name\": \"aws-deploy-user\",\n \"uid\":
+   \"6926f6f6d8b4acf80ad84b21\"\n │ │ },\n \"cloudConfig\": {\n \"cloudType\": \"aws\",\n │ │ \"hybridMachinePools\":
+   [],\n \"machinePools\": [\n {\n │ │ \"cloudType\": \"aws\",\n \"healthy\": 1,\n │ │ \"infraProfileTemplate\": {\n
+   \"packs\": null\n },\n │ │ \"isControlPlane\": true,\n \"labels\": [\n │ │ \"control-plane\"\n ],\n
+   \"maintenanceMode\": 0,\n │ │ \"size\": 1\n },\n {\n \"cloudType\": \"aws\",\n │ │ \"healthy\": 1,\n
+   \"infraProfileTemplate\": {\n \"packs\": │ │ null\n },\n \"isControlPlane\": false,\n │ │ \"labels\": [\n
+   \"worker\"\n ],\n │ │ \"maintenanceMode\": 0,\n \"size\": 1\n }\n ],\n │ │ \"uid\": \"69b959018db5c7671e218e9d\"\n
+   },\n \"clusterConfig\": {\n │ │ \"hostClusterConfig\": {},\n \"timezone\": \"Etc/UTC\"\n },\n │ │
+   \"clusterProfileTemplates\": [],\n \"projectMeta\": {\n \"name\": │ │ \"Default\",\n \"uid\":
+   \"6342eab2faa0813ead9082e0\"\n }\n },\n │ │ \"status\": {\n \"clusterImport\": {\n \"isBrownfield\": false\n │ │ },\n
+   \"cost\": {\n \"cloud\": {\n \"compute\": 0,\n │ │ \"storage\": 0,\n \"total\": 0\n },\n \"total\": 0\n │ │ },\n
+   \"fips\": {\n \"mode\": \"none\"\n },\n │ │ \"health\": {\n \"agentVersion\": \"4.8.18/20260228.2209\",\n │ │
+   \"conditions\": [],\n \"lastHeartBeatTimestamp\": │ │ \"2026-03-19T14:31:41.348Z\",\n \"state\": \"Healthy\"\n },\n │
+   │ \"hourlyRate\": {\n \"cloud\": {\n \"compute\": 0,\n │ │ \"storage\": 0,\n \"total\": 0\n },\n \"total\": 0\n │ │
+   },\n \"location\": {\n \"coordinates\": [\n -76.015778,\n │ │ 36.86314\n ],\n \"countryCode\": \"US\",\n │ │
+   \"countryName\": \"United States\",\n \"regionCode\": \"VA\",\n │ │ \"regionName\": \"Virginia\"\n },\n \"metrics\":
+   {\n \"cpu\": │ │ {\n \"lastUpdatedTime\": \"2026-03-19T14:28:57.617Z\",\n │ │ \"limit\": 0,\n \"request\": 0,\n
+   \"total\": 8000,\n │ │ \"unit\": \"MilliCore\",\n \"usage\": 30\n },\n │ │ \"memory\": {\n \"lastUpdatedTime\":
+   \"2026-03-19T14:28:57.617Z\",\n │ │ \"limit\": 0,\n \"request\": 0,\n \"total\": 32864312,\n │ │ \"unit\": \"KiB\",\n
+   \"usage\": 1019114\n }\n },\n │ │ \"notifications\": {\n \"isAvailable\": false,\n │ │
+   \"isTemplateVariableResolutionPending\": false\n },\n \"repave\": {},\n │ │ \"state\": \"Running\",\n \"virtual\":
+   {\n \"appDeployments\": null,\n │ │ \"clusterGroup\": {},\n \"hostCluster\": {},\n \"lifecycleStatus\": │ │ {},\n
+   \"virtualClusters\": []\n }\n }\n }\n ]\n }\n}" │ │ } │ │ ], │ │ "isError": false │ │ } │
+   ╰─────────────────────────────────────────────────────────────────────────────────────────────╯ ✦ You have 1 active
+   cluster in Palette: aws-cluster-test.
+
+   ```
+
    ```
 
 ## Next Steps
