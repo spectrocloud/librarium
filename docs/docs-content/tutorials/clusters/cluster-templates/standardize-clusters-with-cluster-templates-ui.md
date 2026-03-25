@@ -415,7 +415,7 @@ Update the `cluster-template-aws` cluster template to reference profile version 
 From the left main menu, select **Cluster Configurations**. Select the **Templates** tab and select
 `cluster-template-aws`. Select the **Policies** tab.
 
-Under **Linked profiles**, locate `cluster-template-profile-aws` and select the version drop-down menu. Select `1.1.0`.
+Under **Linked profiles**, locate `cluster-template-profile-aws` and select `1.1.0` in the version drop-down menu.
 
 ![Select new profile version](/select-new-profile-version.webp)
 
