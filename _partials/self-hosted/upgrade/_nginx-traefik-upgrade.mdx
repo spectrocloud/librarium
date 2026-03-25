@@ -6,14 +6,14 @@ partial_name: nginx-traefik-upgrade
 :::warning
 
 Beginning with {props.edition} version 4.8.c, Traefik as the primary ingress controller instead of Nginx. If upgrading to
-version 4.8.c or later, the upgrade creates a new LoadBalancer service in the `ingress-traefik` namespace with a new
-external IP address or hostname. Update your DNS records to point to the new Traefik LoadBalancer to ensure continued
+version 4.8.c or later, the upgrade creates a new service of type `LoadBalancer` in the `ingress-traefik` namespace with a new
+external IP address or hostname. Update your DNS records to point to the new Traefik load balancer to ensure continued
 access to {props.edition}.
 
 If you do not update your DNS records, {props.edition} will be unreachable at its custom domain because Nginx no longer serves
 traffic on the standard HTTPS port after the migration to Traefik.
 
-Use the following command to retrieve the new Traefik LoadBalancer address.
+Use the following command to retrieve the new Traefik load balancer address.
 
 ```shell
 kubectl get service traefik-ingress-controller --namespace ingress-traefik \

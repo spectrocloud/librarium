@@ -49,7 +49,7 @@ tags: ["release-notes"]
   automatically and could affect your deployment. Review your ingress configuration before upgrading and
   [contact our Support team](https://support.spectrocloud.io) if you need assistance migrating custom ingress settings
   to Traefik. For Helm chart installations, you must also update your DNS records to point to the new Traefik
-  LoadBalancer service after upgrading. Refer to the
+  `LoadBalancer` service after upgrading. Refer to the
   [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
 
 #### Features

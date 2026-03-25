@@ -111,10 +111,10 @@ match your environment.
    Ensure that the `values.yaml` file is ready before proceeding. If you are using a self-hosted OCI registry, make sure
    that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
 
-   Include `/v2/` in your endpoints if you are using a
+   Include `/v2` in your endpoints if you are using a
    [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
-   Harbor proxy cache projects use `/v2/` as part of their internal URL routing for cached images. For all other
-   registries, omit `/v2/`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2/`
+   Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
+   registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
    for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
    `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
 

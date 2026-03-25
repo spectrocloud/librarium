@@ -693,8 +693,13 @@ Kubernetes API server; no pods are deployed.
 Finally, install Palette. Image Swap handles all image rewriting automatically, so no changes to the image fields in
 `charts/palette/values.yaml` are needed.
 
-1. Open `charts/palette/values.yaml` in a text editor and update the following sections. Do not change any other fields
-   unless instructed by our Support team.
+1. Open `charts/palette/values.yaml` in a text editor and update the following sections.
+
+   :::warning
+
+   Do not change any other fields unless instructed by our Support team.
+
+   :::
 
 2. Set the installation mode to airgap.
 
@@ -703,7 +708,8 @@ Finally, install Palette. Image Swap handles all image rewriting automatically, 
      installationMode: "airgap"
    ```
 
-3. Set the root domain. A wildcard DNS record (`*.<your-root-domain>`) must point to your ingress load balancer.
+3. Set the root domain. This domain will be used when creating a wildcard DNS record (`*.<your-root-domain>`) for your
+   `traefik-ingress-controller` load balancer.
 
    ```yaml
    env:
@@ -818,7 +824,7 @@ Finally, install Palette. Image Swap handles all image rewriting automatically, 
     state.
 
     ```shell
-    kubectl get pods --all-namespaces | grep -E '(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)'
+    kubectl get pods --all-namespaces | grep --extended-regexp '(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)'
     ```
 
     ```shell title="Example output" hideClipboard
@@ -877,7 +883,7 @@ Finally, install Palette. Image Swap handles all image rewriting automatically, 
 Palette requires two DNS records that point to the load balancer endpoint. You need both a wildcard record for
 organization subdomains (tenants) and a root domain record for the
 [system console](../../../system-management/system-management.md#access-the-system-console). The following steps use
-Route 53 as an example.
+[Amazon Route 53](https://aws.amazon.com/route53/) as an example.
 
 1.  Get the load balancer endpoint.
 

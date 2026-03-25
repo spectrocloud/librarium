@@ -429,7 +429,7 @@ learn more about the available options.
     manager service to generate a public certificate that you can attach to the load balancers with minimal overhead.
     For on-premises environments, use the default certificate manager used by your organization.
 
-33. Wait for the DNS changes to propagate.
+33. Wait for the DNS changes to propagate. This may take several minutes.
 
 #### Validate
 

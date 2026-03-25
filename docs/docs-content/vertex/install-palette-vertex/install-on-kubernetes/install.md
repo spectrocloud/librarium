@@ -81,7 +81,7 @@ has the necessary network connectivity for VerteX to operate successfully.
   page to learn more about modifying StorageClasses.
 
 - Palette VerteX deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default
-  ingress controller starting with Palette VerteX 4.8.c; Nginx, which is
+  ingress controller starting with Palette VerteX 4.8.c. Nginx, which is
   [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
   actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
   `ingress.enabled` parameter to `false` in the `values.yaml` file.
