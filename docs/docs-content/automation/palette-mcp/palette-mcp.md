@@ -24,7 +24,7 @@ The Palette MCP server allows you to perform the following actions:
 - Gather information about cluster profiles.
 - Delete cluster profiles.
 - Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) or admin kubeconfig for a cluster.
-- Tag a variety of Palette resources.
+- Add tags to a variety of Palette resources.
 
 ## Resources
 
