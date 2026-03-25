@@ -62,7 +62,7 @@ You can now use the Palette MCP server with Cursor.
 1. Open Cursor on your local machine.
 
 2. Open the Cursor Chat sidebar using the shortcut **CMD + L** or **CTRL + L**. Send a query about your Palette
-  environment to check if your MCP server is connected to Palette.
+   environment to check if your MCP server is connected to Palette.
 
    For example, you can ask "Can you help me identify how many active clusters I have in Palette?" to learn more about
    your Palette clusters.
