@@ -16,7 +16,8 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Claude Code. Refer to the [Claude Quickstart](https://code.claude.com/docs/en/quickstart) page for further information.
+  - Claude Code. Refer to the [Claude Quickstart](https://code.claude.com/docs/en/quickstart) page for further
+    information.
 
 - A Palette account.
 
@@ -53,8 +54,11 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
    claude mcp list
    ```
 
-   
-   palette: docker run --rm -i --pull always --mount type=bind,source=/<file-path>kubeconfig,target=/tmp/kubeconfig --env-file /<file-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
+   palette: docker run --rm -i --pull always --mount type=bind,source=/<file-path>kubeconfig,target=/tmp/kubeconfig
+   --env-file /<file-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
+
+   ```
+
    ```
 
 8. If you configured the path to your kubeconfig file, we recommend adding an
@@ -85,8 +89,7 @@ You can now use the Palette MCP server with Claude Code.
 
 2. Send a query about your Palette environment to check if your MCP server is connected to Palette.
 
-   For example, you can ask "How many clusters do I have in Palette?" to learn more about
-   your Palette clusters.
+   For example, you can ask "How many clusters do I have in Palette?" to learn more about your Palette clusters.
 
    ```shell title="Example Output"
    ❯ How many clusters do I have in Palette?
