@@ -14,23 +14,22 @@ partial_name: folder-setup
    touch ~/.palette/.env-mcp
    ```
 
-3. Open the `.env-mcp` file in your favorite text editor. Fill in the following information in the file, replacing the
-   placeholders with your values. Refer to the [Server Configuration](/automation/palette-mcp/architecture/#server-configuration) section for further details on the MCP server configuration values.
-
-   Fill in the Palette project ID, API key and API endpoint for your environment in the appropriate placeholders.
+3. Add the required MCP values to the `.env-mcp` file. Refer to the [Server Configuration](/automation/palette-mcp/architecture/#server-configuration) section for further details on the MCP server configuration values.
 
    ```shell
+   cat << EOF > ~/.palette/.env-mcp
    SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id>
    SPECTROCLOUD_APIKEY=<palette-api-key>
    SPECTROCLOUD_HOST=<palette-api-endpoint>
    ALLOW_DANGEROUS_ACTIONS=0
+   EOF
    ```
 
 4. Issue the following command to create a folder to store
-   [kubeconfig](/clusters/cluster-management/kubeconfig) files. This is an optional, but recommended step, as
-   it improves the user experience when retrieving Kubeconfig files.
+   [kubeconfig](/clusters/cluster-management/kubeconfig) files. This is an optional but recommended step, as
+   it improves the user experience when retrieving kubeconfig files.
 
-   You can use any folder on your machine for this configuration. Replace the `<local-path>` placeholder with your desired local path.
+   You can use any folder on your machine for this configuration. Replace `<local-path>` with your desired local path.
 
    ```shell
    mkdir -p <local-path>/kubeconfig
