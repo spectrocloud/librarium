@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Setup the MCP Server with Cursor"
-title: "Setup the MCP Server with Cursor"
+sidebar_label: "Set Up MCP Server with Cursor"
+title: "Set Up MCP Server with Cursor"
 description: "Learn how to setup the Palette MCP server with Cursor."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["ai", "mcp", "automation"]
 ---
 
@@ -12,16 +12,16 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
 ## Prerequisites
 
-- Ensure the following software is installed locally on your workstation.
+- Ensure the following software is installed locally on your workstation:
 
-  - A container runtime, such as [Docker](https://www.docker.com/products/docker-desktop/) or
+  - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Cursor. Refer to the [Download](https://cursor.com/get-started) page for further information.
+  - Cursor. Refer to the [Cursor Download](https://cursor.com/get-started) page for further information.
 
 - A Palette account.
 
 - A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
-  guide to learn how to create a Palette API key. guide for further instructions.
+  guide to learn how to create a Palette API key.
 
 ## Setup
 
@@ -36,7 +36,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 8. Save the `mcp.json` file and close it.
 
 9. Navigate to **Settings** > **Cursor Settings** > **Tools & MCP**. Ensure that the **palette** MCP server is set up
-   enabled and displays a green icon.
+   and enabled.
 
    ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
 
@@ -55,14 +55,14 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
-You can now use the Palette MCP server with your Cursor installation.
+You can now use the Palette MCP server with Cursor.
 
 ## Validation
 
 1. Open Cursor on your local machine.
 
-2. Start Cursor Chat sidebar using the shortcut **Cmd + L** or **Ctrl + L**. Send any query about your Palette
-   environment to test out that your MCP server is successfully connected to Palette.
+2. Open the Cursor Chat sidebar using the shortcut **CMD + L** or **CTRL + L**. Send a query about your Palette
+  environment to check if your MCP server is connected to Palette.
 
    For example, you can ask "Can you help me identify how many active clusters I have in Palette?" to learn more about
    your Palette clusters.
