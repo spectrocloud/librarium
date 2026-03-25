@@ -44,7 +44,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    profiles have the `env:prod` tag?" to learn which cluster profiles have been created with a particular
    [cluster profile tag](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
-   
+   ```shell hideClipboard title="Example Output"
    From the current Palette MCP cluster profile list (41 profiles returned, next_continue_token is null, so this looks like the full set for the project right now), these cluster profiles include the env:prod tag:
 
    | Name        | Version | UID                      | Other tags      |
@@ -58,7 +58,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
 3. Send a query asking for information about Palette clusters. For example, you can ask "Which Palette clusters are deployed
    to AWS?" to list your [AWS clusters](../../clusters/public-cloud/aws/aws.md).
 
-   
+   ```shell hideClipboard title="Example Output"
    From the Palette cluster list (non-compact, full spec), cloudType: "aws" is what marks a cluster as deployed on AWS.
 
    Clusters on AWS
@@ -85,21 +85,21 @@ The `getKubeconfig` tool downloads kubeconfig files.
 
 2. Send a query asking to download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for one of
    your running clusters. For example, you can ask "Please download the kubeconfig file for the `<cluster-name>` Palette
-   cluster and save it to the `/<local-path>/kubeconfig` folder."
+   cluster."
 
    Replace the placeholders with your cluster name and path to the kubeconfig folder you configured in the
    [Setup the Palette MCP Server](./setup/setup.md) section.
 
-   
+   ```shell hideClipboard title="Example Output"
    Here’s what was done:
 
    Saved file
-   Path: /<local-path>/kubeconfig/<cluster-name>.kubeconfig
+   Path: /Users/test-user/kubeconfig/aws-cluster-test.kubeconfig
    Permissions: 600 (rw-------)
-   The directory /<local-path>/kubeconfig was created if it didn’t exist.
+   The directory /Users/test-user/kubeconfig was created if it didn’t exist.
 
    Use it
-   export KUBECONFIG=/<local-path>/kubeconfig/<cluster-name>.kubeconfig
+   export KUBECONFIG=/Users/test-user/kubeconfig/aws-cluster-test.kubeconfig
    kubectl get nodes
    ```
 
@@ -115,7 +115,7 @@ The `getKubeconfig` tool downloads kubeconfig files.
 
    :::
 
-   
+   ```shell hideClipboard title="Example Output"
    Refreshed kubeconfig for aws-cluster-test via Palette MCP and ran:
     kubectl --kubeconfig="/<local-path/69b959018db5c767205d0432.kubeconfig" get nodes
     (with NO_PROXY including *.amazonaws.com so the request didn’t go through the local HTTP proxy).
@@ -138,7 +138,9 @@ The `manage_resource_tags` tool manages resource tags for cluster profiles, clus
 2. Send a query related to resource tags. For example, you can say "Apply the `cloud:aws` tag to
    `<cluster-name>`" to add a custom tag to your [AWS cluster](../../clusters/public-cloud/aws/aws.md).
 
-   
+   Replace the placeholder with your cluster name.
+
+   ```shell hideClipboard title="Example Output"
    Here’s what was done:
 
    Change
@@ -149,7 +151,7 @@ The `manage_resource_tags` tool manages resource tags for cluster profiles, clus
    Response: HTTP 204 (success).
 
    Verified
-   <cluster-name> labels are now:
+   aws-cluster-test labels are now:
 
    {
      "name": "cluster-name",
@@ -179,8 +181,8 @@ The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gathe
 
    Replace the placeholder with your cluster profile name.
 
-   
-   Deleted: <cluster-name>
+   ```shell hideClipboard title="Example Output"
+   Deleted: aws-cluster-test
    UID: 666344e38b80e3e7c6159e07 (version 1.0.0 — only that version existed in your default project).
    Request: DELETE /v1/clusterprofiles/666344e38b80e3e7c6159e07
    Response: HTTP 204
@@ -191,8 +193,10 @@ The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gathe
 
 4. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` cluster."
 
+   Replace the placeholder with your cluster name.
+
    ```shell hideClipboard title="Example Output"
-   <cluster-name> was removed with:
+   aws-cluster-test was removed with:
 
    DELETE /v1/spectroclusters/69b959018db5c767205d0432
 
