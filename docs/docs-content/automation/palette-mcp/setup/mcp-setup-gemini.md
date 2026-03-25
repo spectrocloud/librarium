@@ -1,28 +1,28 @@
 ---
-sidebar_label: "Setup the MCP Server with Gemini CLI"
-title: "Setup the MCP Server with Gemini CLI"
+sidebar_label: "Set Up MCP Server with Gemini CLI"
+title: "Set Up MCP Server with Gemini CLI"
 description: "Learn how to setup the Palette MCP server with Gemini CLI."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to setup the [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) with
+This guide covers how to setup the [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) with the
 [Gemini CLI](https://geminicli.com/).
 
 ## Prerequisites
 
-- Ensure the following software is installed locally on your workstation.
+- Ensure the following software is installed locally on your workstation:
 
-  - A container runtime, such as [Docker](https://www.docker.com/products/docker-desktop/) or
+  - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Gemini CLI. Refer to the [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) page for further
+  - Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more
     information.
 
 - A Palette account.
 
 - A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
-  guide to learn how to create a Palette API key. guide for further instructions.
+  guide to learn how to create a Palette API key.
 
 ## Setup
 
@@ -35,26 +35,25 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    gemini
    ```
 
-6. Open the `~/.gemini/settings.json` file in your favorite text editor.
+6. Open the `~/.gemini/settings.json` file in your preferred text editor.
 
 7. <PartialsComponent category="palette-mcp" name="server-snippet" />
 
 8. Save the `settings.json` file and close it.
 
-9. Navigate back to the terminal and execute the following to command to ensure that the MCP server has been set up
-   successfully.
+9. Return to the terminal and execute the following command to ensure the MCP server is properly set up.
 
    ```shell
    gemini mcp list
    ```
 
-   ```shell title="Example Output"
+   
    Configured MCP servers:
 
    ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/<local-path>/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /<local-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
    ```
 
-10. If you configured the path to your kubeconfig file in **Step 4**, we recommend adding an
+10. If you configured the path to your kubeconfig file, we recommend adding an
     [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded kubeconfig files to
     access clusters.
 
@@ -65,8 +64,8 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
     touch <local-path>/.palette-guidance.md
     ```
 
-    Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
-    placeholder with the kubeconfig local path you configured in **Step 4**.
+    Open the file in your preferred text editor and paste the following snippet into the file. Replace the `<local-path>`
+    placeholder with the kubeconfig local path you configured.
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
@@ -77,7 +76,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
     :::
 
-You can now use the Palette MCP server with Gemini CLI.
+You can now use the Palette MCP server with the Gemini CLI.
 
 ## Validation
 
@@ -88,12 +87,12 @@ You can now use the Palette MCP server with Gemini CLI.
    gemini
    ```
 
-2. Send any query about your Palette environment to test out that your MCP server is successfully connected to Palette.
+2. Send a query about your Palette environment to check if your MCP server is connected to Palette.
 
-   For example, you can ask "Can you help me identify how many active clusters I have in Palette?" to learn more about
+   For example, you can ask "How many clusters do I have in Palette?" to learn more about
    your Palette clusters.
 
-   ```shell title="Example Output"
+   
    ✦ I will list the active clusters in Palette to determine how many you have.
    ╭─────────────────────────────────────────────────────────────────────────────────────────────╮
    │ ✓  gather_or_delete_clusters (palette MCP Server) {"active_only":true,"action":"list"}      │
