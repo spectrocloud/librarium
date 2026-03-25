@@ -9,134 +9,196 @@ tags: ["edge", "tutorial"]
 ---
 
 In this guide, you will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and upload it to a vCenter
-environment. In the vCenter environment, you will convert the VMDK to a VM template, and export it out as an OVF
-template.
+environment. In the vCenter environment, you will convert the VMDK to a VM template and export it as an OVF template.
 
 ### Prerequisites
+
+- A VM with Ubuntu version 20.04 or later in your VMware environment. You will use this VM as the build server. Nested
+  virtualization must be enabled on this VM. Use the following command to check if it is enabled.
+
+  ```shell
+  egrep --count '(vmx|svm)' /proc/cpuinfo
+  ```
+
+  If the command returns `0`, nested virtualization is not enabled. In this case, shut down the VM and open its **Edit
+  Settings** page. On the **Virtual Hardware** tab, expand the **CPU settings** section and enable the **Expose
+  hardware-assisted virtualization to the guest OS** option. Then, power on the VM.
 
 - Edge Installer ISO file. Check out the [build images](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide
   to learn how to create an Edge Installer image or use the default Edge Installer image.
 
 - vCenter environment with sufficient resources and access privileges to complete the following actions:
-  - Upload files to a datastore.
-  - Ability to create VMs.
+
+  - Upload files to a datastore, including OVF and VMDK.
+  - Create VMs.
+
+- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
+  generate a new registration token. For detailed instructions, refer to the
+  [Create a Registration Token](../site-installation/create-registration-token.md) guide.
 
 ### Instructions
 
-1. Log in to the vCenter Server by using the vSphere Client.
-
-2. Prepare a build server by launching a VM with Ubuntu version 20.04 or greater in your VMware environment.
-
-3. Issue the following commands to prepare your server for VMDK creation.
+1. Prepare the build server for VMDK creation.
 
    ```shell
-   apt update
-   apt install qemu qemu-kvm \
-   libvirt-clients libvirt-daemon-system bridge-utils virt-manager
-   systemctl enable --now libvirtd systemctl enable --now virtlogd
-   mkdir -p /etc/apt/keyrings
-   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   # Update package index
+   sudo apt update
+
+   # Install virtualization stack
+   sudo apt install --yes qemu-system-x86 qemu-kvm \
+     libvirt-clients libvirt-daemon-system bridge-utils virt-manager \
+     ca-certificates curl
+
+   # Enable and start virtualization services (persist across reboots)
+   sudo systemctl enable --now libvirtd
+   sudo systemctl enable --now virtlogd
+
+   # Create directory for trusted Advanced Package Tool (APT) keyrings
+   sudo mkdir --parents /etc/apt/keyrings
+
+   # Download Docker's official GNU Privacy Guard (GPG) key
+   sudo curl --fail --silent --show-error --location https://download.docker.com/linux/ubuntu/gpg \
+     --output /etc/apt/keyrings/docker.asc
+
+   # Ensure the key is readable by APT
+   sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+   # Add Docker's official repository to APT sources
    echo \
-   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-   apt update
-   apt install docker-ce docker-ce-cli containerd.io
-   docker-compose-plugin
+     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+   # Refresh package index to include Docker repository
+   sudo apt update
+
+   # Install Docker engine, CLI, container runtime, and plugins
+   sudo apt install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 
-   If you need a Graphical User Interface (GUI), add `x11-apps` to the `apt install` command.
+2. Issue the following commands to set up the `docker` alias and run Docker without `sudo`. Refer to
+   [Linux post-installation steps for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/) for more
+   information.
 
    ```shell
-   apt install x11-apps
+   # Create docker group if it does not exist
+   sudo groupadd docker || true
+
+   # Add current user to docker group
+   sudo usermod --append --groups docker $USER
+
+   # Apply new group membership
+   newgrp docker
    ```
 
-4. You can add additional packages for content creation, compression, and preparing your workspace.
+   Verify your Docker installation and the ability to run commands without `sudo`.
 
    ```shell
-   curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$( uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
-   mkdir -p ~/workspace/
-   cd workspace/
+   docker run hello-worldf
+   ```
+
+   :::tip
+
+   If you receive a permission error, you may need to restart your VM so that your group membership is re-evaluated.
+
+   :::
+
+3. Install `govc` (vCenter CLI).
+
+   ```shell
+   curl --location "https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname --kernel-name)_$(uname --machine).tar.gz" \
+     | sudo tar --extract --verbose --gzip --file - --directory /usr/local/bin govc
+   ```
+
+4. (Optional) Install Zstandard (`zstd`) for compression support.
+
+   <!-- prettier-ignore-start -->
+
+   ```shell
+   sudo apt install zstd
+   ```
+
+   <!-- prettier-ignore-end -->
+
+5. Create a workspace directory and clone the image builder repository.
+
+   ```shell
+   mkdir --parents ~/workspace
+   cd ~/workspace
    git clone https://github.com/spectrocloud/stylus-image-builder.git
    ```
 
-   If you need ZSTD for compression or `govc` for interacting with vCenter, use the following command.
+6. Copy your Edge Installer ISO file to the `~/workspace/stylus-image-builder/` directory.
 
    ```shell
-   apt install zstd govc
+   cp <path-to-edge-installer-file>/<edge-installer-file-name>.iso ~/workspace/stylus-image-builder/
    ```
 
-5. Build the VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to virtual machines. Issue
-   the following commands on your build server.
+7. Build a VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to VMs.
 
    ```shell
    cd ~/workspace/stylus-image-builder/
    chmod +x entrypoint.sh
-   export ISO_URL=[your-installer-name].iso
-   export PALETTE_ENDPOINT=[your tenant].spectrocloud.com
-   export REGISTRATION_URL=[QR Code registration app link]
-   export EDGE_HOST_TOKEN=[token generated on Palette Portal]
+   export ISO_URL=<edge-installer-file-name>.iso
+   export PALETTE_ENDPOINT=<tenant>.spectrocloud.com
+   export EDGE_HOST_TOKEN=<palette-registration-token>
    export DISK_SIZE=100000M
    EMBED=false make docker-build
    nohup make vmdk &
    ```
 
-   :::info
+   The command generates a VMDK file in the `stylus-image-builder/images` folder. Rename the file to a preferred
+   installer name. Ensure it retains the VMDK format.
 
-   If you are using a _Tenant Registration Token_ for auto-registration, you can omit the environment variable
-   `REGISTRATION_URL`.
-
-   :::
-
-   A VMDK file was generated in the **stylus-image-builder/images** folder. Rename this VMDK to a preferred installer
-   name. Ensure the VMDK file retains the `.vmdk` extension.
-
-6. Transfer the VMDK to a datastore in your VMware environment. Review the commands below and ensure you replace the
-   placeholders with the respective values from your environment.
+8. Transfer the VMDK to a datastore in your VMware environment.
 
    ```shell
-   export GOVC_URL=https://[IP address OR the DNS of vCenter]
-   export GOVC_USERNAME=[vcenter username]
-   export GOVC_PASSWORD=[vcenter password]
-   govc datastore.upload -ds=[datastore name] images/[your-installer-name].vmdk [folder in datastore]]/[your-installer-name].vmdk
-   govc datastore.cp -ds=[datastore name] [folder in datastore]]/[your-installer-name].vmdk [folder in datastore]]/[your-installer-name]-uncompressed.vmdk
+   export GOVC_URL=https://<vcenter-address>
+   export GOVC_USERNAME=<vcenter-username>
+   export GOVC_PASSWORD=<vcenter-password>
+   govc datastore.upload -ds=<datastore-name> images/<installer-name>.vmdk <datastore-folder>/<installer-name>.vmdk
+
+   # Create an uncompressed copy of the VMDK
+   govc datastore.cp -ds=<datastore-name> <datastore-folder>/<installer-name>.vmdk <datastore-folder>/<installer-name>-uncompressed.vmdk
    ```
 
-   If you are using test or development environments, you may need to enable the following option. This environment
-   variable is not recommended for production environments.
+   If you are using test or development environments, you may need to enable the following option. However, we do not
+   recommend using it for production environments.
 
    ```shell
    export GOVC_INSECURE=1
    ```
 
-7. Create a VM from the VMDK by logging into your vCenter console in the UI.
+9. Log in to the vSphere Client.
 
-8. Navigate to the **Dataceter/Folder**, under the **VMs and Templates** section.
+10. Navigate to **VMs and Templates**, then right-click on the desired folder under the datacenter where you want to
+    create the VM.
 
-9. Start the **New Virtual** machine deployment wizard.
+11. Start the **New Virtual Machine** deployment wizard and choose the **Create a new virtual machine** option. Then
+    choose **Next**.
 
-10. Choose a cluster that has access to the datastore used for storing the VMDK. Choose the datastore where VMDK is
-    stored.
+12. Name the VM and select a location for it, then choose **Next**.
 
-11. Select **Ubuntu Linux (64)** as your guest OS version. This is required even though you will be launching an RHEL
-    based clusters
+13. In the **Select a compute resource** window, choose a cluster that has access to the datastore containing the VMDK,
+    then choose **Next**.
 
-12. Select the Hardware settings.
+14. Select the storage where the VMDK is stored, then choose **Next**.
 
-13. Delete the hard drive displayed by default. Add a new device of the type **Existing Hard Disk**. For this device
-    select the option **Datastore ISO file**.
+15. Keep the selected compatibility value **ESXi 7.0 U2 and later**, then choose **Next**.
 
-14. Navigate to the datastore folder with the uncompressed VMDK and select the VMDK.
+16. Select the **Guest OS Family** and **Guest OS Version** that correspond to the values in the `user-data` file used
+    to build the Edge Installer ISO file. Choose **Next**.
 
-15. Finish the creation wizard and save your virtual machine.
+17. In the **Customize hardware** window, change the **SCSI controller** value to **LSI Logic SAS**.
 
-16. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template** and **Convert to
-    Template**.
+18. Delete the **New Hard disk** displayed by default. Then expand the **Add New Device** drop-down menu and choose
+    **Existing Hard Disk**. Navigate to the datastore folder that contains the uncompressed VMDK and select this VMDK.
 
-17. Navigate to **VMs and Templates** and right-click on the newly created VM Template. Select **Export to OVF
-    Template**.
+19. Finish the creation wizard and save the VM.
 
-You can ship this OVF template along with the Edge host to the physical site. Use the OVM template for the site
-installation.
+20. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template > Export OVF
+    Template**. You can ship the exported template (OVF and VMDK files) to the physical site and use it to deploy Edge
+    hosts.
 
 ## Validate
 
