@@ -8,7 +8,9 @@ sidebar_position: 0
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-This section gives you an overview of how to get started with locally managed Palette Edge. You will learn how to deploy your first locally managed Edge cluster, along with all the steps required to deploy your first locally managed Edge cluster, such as building the necessary artifacts and preparing the host.
+This section gives you an overview of how to get started with locally managed Palette Edge. You will learn how to deploy
+your first locally managed Edge cluster, along with all the steps required to deploy your first locally managed Edge
+cluster, such as building the necessary artifacts and preparing the host.
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_roadmap.webp)
 
@@ -49,7 +51,7 @@ designed to guide you step-by-step, building on the concepts introduced in the p
       buttonText: "Learn more",
       url: "/tutorials/getting-started/palette-edge/local-management/prepare-edge-host",
     },
-        {
+    {
       title: "Build Cluster Definition",
       description: "Create the cluster definition file and upload it to your Edge host",
       buttonText: "Learn more",
