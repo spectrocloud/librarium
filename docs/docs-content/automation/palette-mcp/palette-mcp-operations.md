@@ -7,44 +7,44 @@ sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
-The Palette MCP server contains four tools that you can leverage for your Palette operations.
+The Palette MCP server contains the following tools that you can leverage for your Palette operations:
 
-- `gather_or_delete_clusterprofiles` fetches information about or deletes
+- `gather_or_delete_clusterprofiles` - Fetches information about or deletes
   [cluster profiles](../../profiles/profiles.md).
-- `gather_or_delete_clusters` fetches information about or deletes [clusters](../../clusters/clusters.md).
-- `getKubeconfig` downloads cluster [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) files.
-- `manage_resource_tags` manages resource tags for cluster profiles, clusters,
+- `gather_or_delete_clusters` - Fetches information about or deletes [clusters](../../clusters/clusters.md).
+- `getKubeconfig` - Downloads cluster [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) files.
+- `manage_resource_tags` - Manages resource tags for cluster profiles, clusters,
   [Edge hosts](../../clusters/edge/edge.md), [cluster templates](../../cluster-templates/cluster-templates.md), and
   [cluster templates policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
 
-This guide demonstrates examples of how to use the MCP server capabilities.
+This guide provides examples of how to use the Palette MCP server.
 
 ## Prerequisites
 
-- Ensure the following software is installed locally on your workstation.
+- Ensure the following software is installed locally on your workstation:
 
-  - The Palette MCP server configured and set up. Refer to the [Setup the Palette MCP Server](./setup/setup.md) section
+  - The Palette MCP server configured and set up. Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or [Gemini](./setup/mcp-setup-gemini.md).
     for further guidance.
 
-  - A container runtime, such as [Docker](https://www.docker.com/products/docker-desktop/) or
+  - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
 
 - A Palette account.
 
 - A Palette API key. Check out the [Create API Key](../../user-management/authentication/api-key/create-api-key.md)
-  guide to learn how to create a Palette API key. guide for further instructions.
+  guide for more information.
 
 ## List Clusters and Cluster Profiles
 
-The `gather_or_delete_clusterprofiles` lists cluster profiles. The `gather_or_delete_clusters` lists clusters.
+The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_or_delete_clusters` tool lists clusters.
 
 1. Open your MCP tool.
 
-2. Send a query asking information about Palette cluster profiles. For example, you can ask "Which Palette cluster
+2. Send a query asking for information about Palette cluster profiles. For example, you can ask "Which Palette cluster
    profiles have the `env:prod` tag?" to learn which cluster profiles have been created with a particular
    [cluster profile tag](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
-   ```shell hideClipboard title="Example Output"
+   
    From the current Palette MCP cluster profile list (41 profiles returned, next_continue_token is null, so this looks like the full set for the project right now), these cluster profiles include the env:prod tag:
 
    | Name        | Version | UID                      | Other tags      |
@@ -55,10 +55,10 @@ The `gather_or_delete_clusterprofiles` lists cluster profiles. The `gather_or_de
    Total: 3 profile versions (3 UIDs) with env:prod.
    ```
 
-3. Send a query asking information about Palette clusters. For example, you can ask "Which Palette clusters are deployed
+3. Send a query asking for information about Palette clusters. For example, you can ask "Which Palette clusters are deployed
    to AWS?" to list your [AWS clusters](../../clusters/public-cloud/aws/aws.md).
 
-   ```shell hideClipboard title="Example Output"
+   
    From the Palette cluster list (non-compact, full spec), cloudType: "aws" is what marks a cluster as deployed on AWS.
 
    Clusters on AWS
@@ -90,7 +90,7 @@ The `getKubeconfig` tool downloads kubeconfig files.
    Replace the placeholders with your cluster name and path to the kubeconfig folder you configured in the
    [Setup the Palette MCP Server](./setup/setup.md) section.
 
-   ```shell hideClipboard title="Example Output"
+   
    Here’s what was done:
 
    Saved file
@@ -103,7 +103,7 @@ The `getKubeconfig` tool downloads kubeconfig files.
    kubectl get nodes
    ```
 
-3. Instruct the MCP tool to connect to the cluster and list the nodes. For example, you can ask "Run kubectl and list
+3. Instruct the MCP tool to connect to the cluster and list the nodes. For example, you can say "Run kubectl and list
    the nodes of the `<cluster-name>` Palette cluster."
 
    Replace the placeholder with your cluster name.
@@ -111,12 +111,11 @@ The `getKubeconfig` tool downloads kubeconfig files.
    :::info
 
    Kubectl will only function correctly if you have added an Agent skill to your MCP tool that instructs it to use the
-   local kubeconfig file to connect to the cluster. Refer to the guides in the
-   [Setup the Palette MCP Server](./setup/setup.md) section to learn how to configure an agent skill for your MCP tool.
+   local kubeconfig file to connect to the cluster. Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or [Gemini](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP tool.
 
    :::
 
-   ```shell hideClipboard title="Example Output"
+   
    Refreshed kubeconfig for aws-cluster-test via Palette MCP and ran:
     kubectl --kubeconfig="/<local-path/69b959018db5c767205d0432.kubeconfig" get nodes
     (with NO_PROXY including *.amazonaws.com so the request didn’t go through the local HTTP proxy).
@@ -136,10 +135,10 @@ The `manage_resource_tags` tool manages resource tags for cluster profiles, clus
 
 1. Open your MCP tool.
 
-2. Send a query related to resource tags. For example, you can ask "Please apply the `cloud:aws` tag to
-   `<cluster-name>`." to add a custom tag to your [AWS cluster](../../clusters/public-cloud/aws/aws.md).
+2. Send a query related to resource tags. For example, you can say "Apply the `cloud:aws` tag to
+   `<cluster-name>`" to add a custom tag to your [AWS cluster](../../clusters/public-cloud/aws/aws.md).
 
-   ```shell hideClipboard title="Example Output"
+   
    Here’s what was done:
 
    Change
@@ -163,12 +162,11 @@ The `manage_resource_tags` tool manages resource tags for cluster profiles, clus
 
 ## Delete Clusters and Cluster Profiles
 
-The `gather_or_delete_clusterprofiles` deletes cluster profiles. The `gather_or_delete_clusters` deletes clusters.
+The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gather_or_delete_clusters` tool deletes clusters.
 
-1. Open the `.env-mcp` file you configured during MCP server setup in your favorite text editor. Refer to the
-   [Setup the Palette MCP Server](./setup/setup.md) section for further guidance.
+1. Open the `.env-mcp` file you configured during MCP server setup in your preferred text editor. Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or [Gemini](./setup/mcp-setup-gemini.md) for more information. 
 
-   Enable dangerous action to allow the MCP server to delete resources. Save and close the file.
+   Enable dangerous actions to allow the MCP server to delete resources. Save and close the file.
 
    ```shell
    ALLOW_DANGEROUS_ACTIONS=1
@@ -176,12 +174,12 @@ The `gather_or_delete_clusterprofiles` deletes cluster profiles. The `gather_or_
 
 2. Open your MCP tool.
 
-3. Send a query to delete a Palette cluster profile. For example, you can ask "Delete the `<cluster-profile-name>`
+3. Send a query to delete a Palette cluster profile. For example, you can say "Delete the `<cluster-profile-name>`
    cluster profile."
 
    Replace the placeholder with your cluster profile name.
 
-   ```shell hideClipboard title="Example Output"
+   
    Deleted: <cluster-name>
    UID: 666344e38b80e3e7c6159e07 (version 1.0.0 — only that version existed in your default project).
    Request: DELETE /v1/clusterprofiles/666344e38b80e3e7c6159e07
@@ -191,7 +189,7 @@ The `gather_or_delete_clusterprofiles` deletes cluster profiles. The `gather_or_
    If any cluster or template still referenced this profile, Palette would have blocked delete with a dependency error;204 means the API accepted the removal.
    ```
 
-4. Send a query to delete a Palette cluster. For example, you can ask "Delete the `<cluster-name>` cluster."
+4. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` cluster."
 
    ```shell hideClipboard title="Example Output"
    <cluster-name> was removed with:
