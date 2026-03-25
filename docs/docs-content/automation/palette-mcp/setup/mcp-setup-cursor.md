@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Setup the Palette MCP Server with Cursor"
-title: "Setup the Palette MCP Server with Cursor"
+sidebar_label: "Setup the MCP Server with Cursor"
+title: "Setup the MCP Server with Cursor"
 description: "Learn how to setup the Palette MCP server with Cursor."
 hide_table_of_contents: false
 sidebar_position: 10
@@ -40,6 +40,21 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
    ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
 
+10. If you configured the path to your kubeconfig file in **Step 4**, we recommend adding an
+    [Agent Skill](https://cursor.com/docs/skills) to enable Cursor to use the downloaded kubeconfig files to access
+    clusters.
+
+    Execute the following command to create a new file for your Palette skill.
+
+    ```shell
+    touch ~/.cursor/skills/palette-mcp-guidance.md
+    ```
+
+    Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
+    placeholder with the kubeconfig local path you configured in **Step 4**.
+
+    <PartialsComponent category="palette-mcp" name="example-skill" />
+
 You can now use the Palette MCP server with your Cursor installation.
 
 ## Validation
@@ -53,3 +68,8 @@ You can now use the Palette MCP server with your Cursor installation.
    your Palette clusters.
 
    ![Palette MCP query clusters](/mcp-setup-cursor_mcp_clusters_running.webp)
+
+## Next Steps
+
+Refer to the [Palette MCP Server Operations](../palette-mcp-operations.md) page for further examples on how to leverage
+the functionality of the MCP server.

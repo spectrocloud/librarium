@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Setup the Palette MCP Server with Gemini CLI"
-title: "Setup the Palette MCP Server with Gemini CLI"
+sidebar_label: "Setup the MCP Server with Gemini CLI"
+title: "Setup the MCP Server with Gemini CLI"
 description: "Learn how to setup the Palette MCP server with Gemini CLI."
 hide_table_of_contents: false
 sidebar_position: 30
@@ -51,8 +51,31 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    ```shell title="Example Output"
    Configured MCP servers:
 
-   ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/Users/<user-name>/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/<user-name>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
+   ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/<local-path>/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /<local-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
    ```
+
+10. If you configured the path to your kubeconfig file in **Step 4**, we recommend adding an
+    [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded kubeconfig files to
+    access clusters.
+
+    Execute the following command to create a guidance file on your local machine. Replace the `<local-path>`
+    placeholder with your local path.
+
+    ```shell
+    touch <local-path>/.palette-guidance.md
+    ```
+
+    Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
+    placeholder with the kubeconfig local path you configured in **Step 4**.
+
+    <PartialsComponent category="palette-mcp" name="example-skill" />
+
+    :::info
+
+    Gemini does not automatically load skills, so you will need to load this skill on every invocation using the
+    `gemini "$(cat /<local-path>/.palette-guidance.md)"` syntax.
+
+    :::
 
 You can now use the Palette MCP server with Gemini CLI.
 
@@ -139,3 +162,8 @@ You can now use the Palette MCP server with Gemini CLI.
    ╰─────────────────────────────────────────────────────────────────────────────────────────────╯
    ✦ You have 1 active cluster in Palette: aws-cluster-test.
    ```
+
+## Next Steps
+
+Refer to the [Palette MCP Server Operations](../palette-mcp-operations.md) page for further examples on how to leverage
+the functionality of the MCP server.

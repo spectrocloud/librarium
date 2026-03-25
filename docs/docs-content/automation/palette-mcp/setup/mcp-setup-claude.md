@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Setup the Palette MCP Server with Claude Code"
-title: "Setup the Palette MCP Server with Claude Code"
+sidebar_label: "Setup the MCP Server with Claude Code"
+title: "Setup the MCP Server with Claude Code"
 description: "Learn how to setup the Palette MCP server with Claude Code."
 hide_table_of_contents: false
 sidebar_position: 20
@@ -57,6 +57,22 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    palette: docker run --rm -i --pull always --mount type=bind,source=/<file-path>kubeconfig,target=/tmp/kubeconfig --env-file /<file-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
    ```
 
+8. If you configured the path to your kubeconfig file in **Step 4**, we recommend adding an
+   [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to enable Claude to use the
+   downloaded kubeconfig files to access clusters.
+
+   Execute the following command to create the `CLAUDE.md` file in your project if it does not exist. Replace the
+   `<local-path>` placeholder with your local path.
+
+   ```shell
+   touch <local-path>/CLAUDE.md
+   ```
+
+   Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
+   placeholder with the kubeconfig local path you configured in **Step 4**.
+
+   <PartialsComponent category="palette-mcp" name="example-skill" />
+
 You can now use the Palette MCP server with Claude Code.
 
 ## Validation
@@ -91,3 +107,8 @@ You can now use the Palette MCP server with Claude Code.
 
    It was created on 2026-03-17 and is owned by test-user. It has 2 machine pools (1 control plane node + 1 worker node).
    ```
+
+## Next Steps
+
+Refer to the [Palette MCP Server Operations](../palette-mcp-operations.md) page for further examples on how to leverage
+the functionality of the MCP server.

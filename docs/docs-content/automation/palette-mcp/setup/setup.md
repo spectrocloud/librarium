@@ -13,6 +13,6 @@ This section provides guides for installing the Palette MCP server on the most p
 
 ## Resources
 
-- [Setup the Palette MCP Server with Cursor](./mcp-setup-cursor.md)
-- [Setup the Palette MCP Server with Claude Code](./mcp-setup-claude.md)
-- [Setup the Palette MCP Server with Gemini CLI](./mcp-setup-gemini.md)
+- [Setup the MCP Server with Cursor](./mcp-setup-cursor.md)
+- [Setup the MCP Server with Claude Code](./mcp-setup-claude.md)
+- [Setup the MCP Server with Gemini CLI](./mcp-setup-gemini.md)
