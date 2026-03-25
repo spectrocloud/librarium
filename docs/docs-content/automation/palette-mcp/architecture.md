@@ -40,4 +40,5 @@ The Palette MCP server provides the following configuration parameters.
 
 ## Next Steps
 
-Refer to [Set Up the Palette MCP Server](./setup/setup.md) to get started with the MCP server.
+Refer to the applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
+[Gemini](./setup/mcp-setup-gemini.md).

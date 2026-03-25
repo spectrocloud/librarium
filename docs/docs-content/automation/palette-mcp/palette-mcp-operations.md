@@ -25,7 +25,7 @@ This guide provides examples of how to use the Palette MCP server.
 
   - The Palette MCP server configured and set up. Refer to the applicable setup guide for
     [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
-    [Gemini](./setup/mcp-setup-gemini.md). for further guidance.
+    [Gemini](./setup/mcp-setup-gemini.md).
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
@@ -53,7 +53,6 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    owner:test-user |
 
    Total: 3 profile versions (3 UIDs) with env:prod.
-
    ```
 
 3. Send a query asking for information about Palette clusters. For example, you can ask "Which Palette clusters are
@@ -74,7 +73,6 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    | Name | cloudType | | vsphere-test | vsphere | | maas-test | maas |
 
    So three Palette clusters in this project are deployed to AWS; the rest are vSphere or MAAS.
-
    ```
 
 ## Download Kubeconfig Files
@@ -87,8 +85,8 @@ The `getKubeconfig` tool downloads kubeconfig files.
    your running clusters. For example, you can ask "Please download the kubeconfig file for the `<cluster-name>` Palette
    cluster."
 
-   Replace the placeholders with your cluster name and path to the kubeconfig folder you configured in the
-   [Setup the Palette MCP Server](./setup/setup.md) section.
+   Replace the placeholders with your cluster name and path to the kubeconfig folder you configured in the MCP server
+   setup.
 
    ```shell hideClipboard title="Example Output"
    Here’s what was done:
@@ -126,7 +124,6 @@ The `getKubeconfig` tool downloads kubeconfig files.
 
    | NAME | STATUS | ROLES | AGE | VERSION | | ip-10-0-1-158.ec2.internal | Ready | control-plane | 7d22h | v1.32.13 | |
    ip-10-0-1-248.ec2.internal | Ready | <none> | 7d22h | v1.32.13 |
-
    ```
 
 ## Manage Resource Tags
@@ -159,7 +156,6 @@ The `manage_resource_tags` tool manages resource tags for cluster profiles, clus
        "owner": "test-user"
      }
    }
-
    ```
 
 ## Delete Clusters and Cluster Profiles
@@ -190,7 +186,6 @@ clusters.
    Request: DELETE /v1/clusterprofiles/666344e38b80e3e7c6159e07
    Response: HTTP 204
    Check: GET the same UID now returns 404 / ResourceNotFound, so the profile is gone from project Default.
-
    ```
 
 4. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` cluster."

@@ -28,5 +28,7 @@ The Palette MCP server allows you to perform the following actions:
 ## Resources
 
 - [Architecture](./architecture.md)
-- [Setup the Palette MCP Server](./setup/setup.md)
+- [Set Up MCP Server with Claude Code](./setup/mcp-setup-claude.md)
+- [Set Up MCP Server with Cursor](./setup/mcp-setup-cursor.md)
+- [Set Up MCP Server with Gemini CLI](./setup/mcp-setup-gemini.md).
 - [Palette MCP Server Operations](./palette-mcp-operations.md)
