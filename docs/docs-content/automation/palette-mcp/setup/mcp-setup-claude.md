@@ -94,17 +94,17 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
 9. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
    enable Claude to use the downloaded kubeconfig files to access clusters.
 
-Execute the following command to create the `CLAUDE.md` file in your project if it does not exist. Replace the
-`<local-path>` placeholder with your local path.
+   Execute the following command to create the `CLAUDE.md` file in your project if it does not exist. Replace the
+   `<local-path>` placeholder with your local path.
 
-```shell
-touch <local-path>/CLAUDE.md
-```
+   ```shell
+   touch <local-path>/CLAUDE.md
+   ```
 
-Open the file in your preferred text editor and paste the following snippet into the file. Replace the `<local-path>`
-placeholder with the kubeconfig local path you configured in **Step 4**.
+   Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`
+   placeholder with the kubeconfig local path you configured in **Step 4**.
 
-<PartialsComponent category="palette-mcp" name="example-skill" />
+   <PartialsComponent category="palette-mcp" name="example-skill" />
 
 You can now use the Palette MCP server with Claude Code.
 

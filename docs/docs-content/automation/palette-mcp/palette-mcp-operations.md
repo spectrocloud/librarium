@@ -48,9 +48,10 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    ```shell hideClipboard title="Example Output"
    From the current Palette MCP cluster profile list (41 profiles returned, next_continue_token is null, so this looks like the full set for the project right now), these cluster profiles include the env:prod tag:
 
-   | Name | Version | UID | Other tags | | aws-profile | 1.2.0 | 69a87f1e87b2e7f87c200c48 | owner:test-user | |
-   aws-profile | 1.1.0 | 6985df9dc7fdcb36fea974df | owner:test-user | | aws-profile | 1.0.0 | 671a4f3b218f768c3afe710 |
-   owner:test-user |
+   | Name.       | Version | UID                      | Other tags      |
+   | aws-profile | 1.2.0   | 69a87f1e87b2e7f87c200c48 | owner:test-user |
+   | aws-profile | 1.1.0   | 6985df9dc7fdcb36fea974df | owner:test-user |
+   | aws-profile | 1.0.0   | 671a4f3b218f768c3afe710  | owner:test-user |
 
    Total: 3 profile versions (3 UIDs) with env:prod.
    ```
@@ -63,16 +64,16 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
 
    Clusters on AWS
 
-   | Name | UID | Region | State | Notes | | aws-cluster-test | 69b959018db5c767205d0432 | us-east-1 | Running |
-   `cloudConfigRef.kind: aws` | | prod-cluster-aws | 69bd46f44e92b3a3b45aa01d | us-east-2 | Running |
-   `cloudConfigRef.kind: aws` | | dev-cluster-aws | 69bd928584cffd9876481048 | us-east-2 | Running |
-   `cloudConfigRef.kind: aws` |
+   | Name             | UID                      | Region    | State   | Notes                      |
+   | aws-cluster-test | 69b959018db5c767205d0432 | us-east-1 | Running | `cloudConfigRef.kind: aws` |
 
    Not AWS (same project, same list)
 
-   | Name | cloudType | | vsphere-test | vsphere | | maas-test | maas |
+   | Name         | cloudType |
+   | vsphere-test | vsphere   |
+   | maas-test    | maas      |
 
-   So three Palette clusters in this project are deployed to AWS; the rest are vSphere or MAAS.
+   So one Palette cluster in this project is deployed to AWS; the rest are vSphere or MAAS.
    ```
 
 ## Download Kubeconfig Files
@@ -122,8 +123,9 @@ The `getKubeconfig` tool downloads kubeconfig files.
 
    Nodes:
 
-   | NAME | STATUS | ROLES | AGE | VERSION | | ip-10-0-1-158.ec2.internal | Ready | control-plane | 7d22h | v1.32.13 | |
-   ip-10-0-1-248.ec2.internal | Ready | <none> | 7d22h | v1.32.13 |
+   | NAME                       | STATUS | ROLES         | AGE   | VERSION  |
+   | ip-10-0-1-158.ec2.internal | Ready  | control-plane | 7d22h | v1.32.13 |
+   | ip-10-0-1-248.ec2.internal | Ready  | <none>        | 7d22h | v1.32.13 |
    ```
 
 ## Manage Resource Tags

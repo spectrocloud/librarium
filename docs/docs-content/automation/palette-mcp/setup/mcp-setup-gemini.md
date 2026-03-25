@@ -92,6 +92,13 @@ You can now use the Palette MCP server with the Gemini CLI.
    gemini
    ```
 
+   ```shell hideClipboard title="Example Output"
+   Gemini CLI
+
+   Type your prompt or press Ctrl+C to exit.
+   >
+   ```
+
 2. Send a query about your Palette environment to check if your MCP server is connected to Palette.
 
    For example, you can ask "How many clusters do I have in Palette?" to learn more about your Palette clusters.
