@@ -153,10 +153,10 @@ The `manage_resource_tags` tool manages resource tags for cluster profiles, clus
    Verified
    aws-cluster-test labels are now:
 
-   { "name": "cluster-name", 
-     "labels": { 
-       "cloud": "aws", 
-       "owner": "test-user" 
+   { "name": "cluster-name",
+     "labels": {
+       "cloud": "aws",
+       "owner": "test-user"
      }
    }
 
