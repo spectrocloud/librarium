@@ -34,6 +34,13 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    gemini
    ```
 
+   ```shell hideClipboard title="Example Output"
+   Gemini CLI
+
+   Type your prompt or press Ctrl+C to exit.
+   >
+   ```
+
 6. Open the `~/.gemini/settings.json` file in your preferred text editor.
 
 7. <PartialsComponent category="palette-mcp" name="server-snippet" />
@@ -126,11 +133,6 @@ You can now use the Palette MCP server with the Gemini CLI.
    \"virtualClusters\": []\n }\n }\n }\n ]\n }\n}" │ │ } │ │ ], │ │ "isError": false │ │ } │
    ╰─────────────────────────────────────────────────────────────────────────────────────────────╯ ✦ You have 1 active
    cluster in Palette: aws-cluster-test.
-
-   ```
-
-   ```
-
    ```
 
 ## Next Steps
