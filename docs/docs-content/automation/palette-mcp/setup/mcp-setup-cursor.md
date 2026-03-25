@@ -40,9 +40,8 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
    ![Palette MCP setup success cursor](/mcp-setup-cursor_palette-mcp-success.webp)
 
-10. If you configured the path to your kubeconfig file in **Step 4**, we recommend adding an
-    [Agent Skill](https://cursor.com/docs/skills) to enable Cursor to use the downloaded kubeconfig files to access
-    clusters.
+10. We recommend adding an [Agent Skill](https://cursor.com/docs/skills) to enable Cursor to use the downloaded
+    kubeconfig files to access clusters.
 
     Execute the following command to create a new file for your Palette skill.
 
@@ -62,12 +61,20 @@ You can now use the Palette MCP server with Cursor.
 1. Open Cursor on your local machine.
 
 2. Open the Cursor Chat sidebar using the shortcut **CMD + L** or **CTRL + L**. Send a query about your Palette
-  environment to check if your MCP server is connected to Palette.
+   environment to check if your MCP server is connected to Palette.
 
-   For example, you can ask "Can you help me identify how many active clusters I have in Palette?" to learn more about
-   your Palette clusters.
+   For example, you can ask "How many clusters do I have in Palette?" to learn more about your Palette clusters.
 
-   ![Palette MCP query clusters](/mcp-setup-cursor_mcp_clusters_running.webp)
+   ```shell hideClipboard title="Example Output"
+   ❯ How many clusters do I have in Palette?
+
+   From your Palette account (via the Palette MCP gather_or_delete_clusters list call, limit 500, all clusters), you currently have 1 cluster.
+
+   | Name             | State   |
+   | aws-cluster-test | Running |
+
+   There was no next_continue_token, so this is the full list for the queried scope (default project/context your MCP uses).
+   ```
 
 ## Next Steps
 
