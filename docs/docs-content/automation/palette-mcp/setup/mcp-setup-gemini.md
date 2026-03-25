@@ -46,17 +46,13 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    gemini mcp list
    ```
 
+   ```shell hideClipboard title="Example Output"
    Configured MCP servers:
 
-   ✓ palette: docker run --rm -i --pull always --mount
-   type=bind,source=/<local-path>/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /<local-path>/.palette/.env-mcp
-   public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
-
+   ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
    ```
 
-   ```
-
-10. If you configured the path to your kubeconfig file, we recommend adding an
+10. We recommend adding an
     [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded kubeconfig files to
     access clusters.
 
@@ -94,6 +90,7 @@ You can now use the Palette MCP server with the Gemini CLI.
 
    For example, you can ask "How many clusters do I have in Palette?" to learn more about your Palette clusters.
 
+   ```shell hideClipboard title="Example Output"
    ✦ I will list the active clusters in Palette to determine how many you have.
    ╭─────────────────────────────────────────────────────────────────────────────────────────────╮ │ ✓
    gather_or_delete_clusters (palette MCP Server) {"active_only":true,"action":"list"} │ │ │ │ { │ │ "content": [ │ │ {

@@ -88,8 +88,8 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
    ```
 
    ```shell hideClipboard title="Example Output"
-   palette: docker run --rm -i --pull always --mount type=bind,source=/<file-path>kubeconfig,target=/tmp/kubeconfig
-   --env-file /<file-path>/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
+   palette: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/kubeconfig,target=/tmp/kubeconfig
+   --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
    ```
 
 9. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
