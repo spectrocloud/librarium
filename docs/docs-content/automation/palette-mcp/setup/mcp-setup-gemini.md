@@ -52,9 +52,8 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
    ✓ palette: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest (stdio) - Connected
    ```
 
-10. We recommend adding an
-    [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded kubeconfig files to
-    access clusters.
+10. We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded
+    kubeconfig files to access clusters.
 
     Execute the following command to create a guidance file on your local machine. Replace the `<local-path>`
     placeholder with your local path.
@@ -127,6 +126,8 @@ You can now use the Palette MCP server with the Gemini CLI.
    \"virtualClusters\": []\n }\n }\n }\n ]\n }\n}" │ │ } │ │ ], │ │ "isError": false │ │ } │
    ╰─────────────────────────────────────────────────────────────────────────────────────────────╯ ✦ You have 1 active
    cluster in Palette: aws-cluster-test.
+
+   ```
 
    ```
 
