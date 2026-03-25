@@ -410,6 +410,24 @@ Select **Save Changes** to finalize the new profile version.
 
 ### Update the Cluster Template to the New Profile Version
 
+Update the `cluster-template-aws` cluster template to reference profile version `1.1.0`.
+
+From the left main menu, select **Cluster Configurations**. Select the **Templates** tab and select
+`cluster-template-aws`. Select the **Policies** tab.
+
+Under **Linked profiles**, locate `cluster-template-profile-aws` and select `1.1.0` in the version drop-down menu.
+
+![Select new profile version](/select-new-profile-version.webp)
+
+Select **Review & Save**.
+
+In the **Changes Summary** dialog, select **Review changes in Editor**.
+
+Then, select **Apply Changes**.
+
+The cluster template now references profile version `1.1.0`. This does not trigger an upgrade. `dev-cluster-aws` and
+`prod-cluster-aws` remain on `1.0.0` until the maintenance policy initiates the upgrade.
+
 ### Upgrade Clusters
 
 ### Validate the Upgrades
