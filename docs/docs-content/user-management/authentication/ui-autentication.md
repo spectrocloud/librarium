@@ -9,8 +9,9 @@ tags: ["user-management", "authentication", "user-interface"]
 ---
 
 You can log into Palette SaaS platform by visiting the console URL at
-[https://console.spectrocloud.com](https://console.spectrocloud.com). If you are a user of a self-hosted Palette or
-Palette VerteX, then you should use the URL provided by your system administrator, such as `palette.abc-company.com.`
+[https://console.spectrocloud.com](https://console.spectrocloud.com). For Palette VerteX SaaS, log in at (??????) If you
+are a user of a self-hosted Palette or Palette VerteX, then you should use the URL provided by your system
+administrator, such as `palette.abc-company.com.`
 
 The Palette UI authentication method is the default authentication method for Palette. You can use the UI to sign up for
 a Palette account or sign in to an existing account. You can also use the UI to sign in to Palette using a third-party

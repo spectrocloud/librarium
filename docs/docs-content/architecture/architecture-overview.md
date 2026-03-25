@@ -7,29 +7,27 @@ hide_table_of_contents: false
 sidebar_position: 0
 ---
 
-Palette is available in three flexible deployment models:
+Palette and Palette VerteX support multiple deployment models. Availability depends on the edition and deployment
+geography.
 
-- **US Multi-Tenant SaaS**: The management plane is hosted in Amazon Web Services (AWS) across three regions (us-east-1,
-  us-west-1, and us-west-2) and managed by Spectro Cloud. Each customer is treated as a unique tenant, with enforced
-  data isolation and access controls. Spectro Cloud controls when to upgrade the management plane.
+## Deployment Models
 
-- **EU Multi-Tenant SaaS**: The management plane is hosted in AWS across two regions (eu-west-1 and eu-central-1) and
-  managed by Spectro Cloud. Each customer is treated as a unique tenant, with enforced data isolation and access
-  controls. Spectro Cloud controls when to upgrade the management plane.
+| **Deployment Model**  | **Description**                                                                                                                                                                                                                          |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Multi-Tenant SaaS** | The management plane is hosted in AWS and managed by Spectro Cloud. Each customer operates as an isolated tenant with enforced data isolation and access controls. Spectro Cloud controls management plane upgrades.                     |
+| **Dedicated SaaS**    | The management plane is hosted as a dedicated instance in a customer-selected cloud and region within Spectro Cloud’s cloud account. Spectro Cloud manages the instance, and the customer controls when to upgrade the management plane. |
+| **Self-Hosted**       | The management plane is hosted in the customer’s environment, such as on-premises VMware vSphere, OpenStack, bare metal, or a public cloud account owned by the customer.                                                                |
 
-- **US Dedicated SaaS**: The management plane is hosted in a US cloud/region specified by the customer in Spectro
-  Cloud’s cloud account with a dedicated instance managed by Spectro Cloud. The customer can decide when to upgrade the
-  management plane.
+### SaaS Region Availability
 
-- **EU Dedicated SaaS**: The management plane is hosted in an EU cloud/region specified by the customer. The dedicated
-  instance is managed by Spectro Cloud, but the customer decides when to upgrade the management plane.
-
-- **Self-hosted**: The management plane is hosted in the customer’s environment. It can be the customer’s on-prem VMware
-  vSphere, OpenStack, bare metal, or in a public cloud using the customer’s cloud account.
+| **Deployment Model**  | **Geography** | **Palette Regions**                       | **Palette VerteX Regions** |
+| --------------------- | ------------- | ----------------------------------------- | -------------------------- |
+| **Multi-Tenant SaaS** | US            | `us-east-1`, `us-west-1`, and `us-west-2` | `us-gov-west-1`            |
+| **Multi-Tenant SaaS** | EU            | `eu-central-1` and `eu-west-1`            | Not available              |
+| **Dedicated SaaS**    | US            | Customer decides                          | Not available              |
+| **Dedicated SaaS**    | EU            | Customer decides                          | Not available              |
 
 ![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.webp)
-
-<br />
 
 ## Product Security
 
@@ -37,8 +35,6 @@ At Spectro Cloud, we recognize the importance of robust security measures in tod
 As the provider of our cutting-edge SaaS and self-hosted Palette product, our commitment to safeguarding your data and
 ensuring the integrity of our services is paramount. Learn more about Palette security by reviewing the
 [Security](../security/security.md) section.
-
-<br />
 
 ## SaaS Architecture and Data Flow
 

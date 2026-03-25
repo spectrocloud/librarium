@@ -16,8 +16,8 @@ message is limited to 1300 characters, and only plain text is supported.
 :::warning
 
 The login banner message is only accessible when users attempt to log in to Palette through the tenant URL. Using the
-default Palette SaaS login URL of `https://console.spectrocloud.com` will not display the login banner message. Users of
-self-hosted Palette use the tenant URL defined during the Palette installation.
+default Palette SaaS URL (`https://console.spectrocloud.com`) or Palette VerteX SaaS URL (????) will not display the
+login banner message. Users of self-hosted Palette use the tenant URL defined during the Palette installation.
 
 Additionally, if you are using self-hosted Palette or VerteX and have a login banner configured at the system console,
 the tenant login banner will not be displayed, as the system console login banner takes precedence. Refer to the

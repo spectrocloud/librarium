@@ -18,8 +18,8 @@ having to log in again. This feature is available to self-hosted Palette, VerteX
   VerteX instances can create multiple tenants. Refer to the Palette
   [Tenant Management](../../enterprise-version/system-management/tenant-management.md) or the Vertex
   [Tenant Management](../../vertex/system-management/tenant-management.md) page for guidance on how to create tenants.
-  Users of Palette SaaS, contact our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com) for
-  additional tenants.
+  Users of Palette and Palette VerteX SaaS, contact our support team at
+  [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional tenants.
 
 ## Switch Tenant
 
