@@ -21,7 +21,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 - A Palette account.
 
 - A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
-  guide to learn how to create a Palette API key.
+  guide for more information.
 
 ## Setup
 

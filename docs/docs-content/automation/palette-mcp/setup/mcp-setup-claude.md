@@ -16,8 +16,7 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Claude Code. Refer to the [Claude Quickstart](https://code.claude.com/docs/en/quickstart) page for further
-    information.
+  - Claude Code. Refer to the [Claude Quickstart](https://code.claude.com/docs/en/quickstart) page for more information.
 
 - A Palette account.
 

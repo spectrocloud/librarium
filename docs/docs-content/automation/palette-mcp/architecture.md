@@ -19,8 +19,8 @@ Here is an overview of how to configure and use the Palette MCP server.
 - The Palette MCP server expects a handful parameters in order to connect to Palette. Refer to
   [Server Configuration](#server-configuration) for more information.
 
-- Configure the Palette MCP server as a custom MCP on your MCP tool, allowing you to begin to use the custom tools that
-  it provides. The Palette MCP server starts up a local container from an image hosted in
+- Configure the Palette MCP server as a custom MCP server in your MCP tool to use the tools it provides. The Palette MCP
+  server starts up a local container from an image hosted in
   [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/).
 
 - The MCP server is now ready to use. Your queries are sent to the Palette API to perform the requested operations.
