@@ -39,7 +39,7 @@ This guide provides examples of how to use the Palette MCP server.
 
 The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_or_delete_clusters` tool lists clusters.
 
-1. Open your MCP tool.
+1. Open your MCP client.
 
 2. Send a query asking for information about Palette cluster profiles. For example, you can ask "Which Palette cluster
    profiles have the `env:prod` tag?" to learn which cluster profiles have been created with a particular
@@ -85,7 +85,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
 
 The `getKubeconfig` tool downloads kubeconfig files.
 
-1. Open your MCP tool.
+1. Open your MCP client.
 
 2. Send a query asking to download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for one of
    your running clusters. For example, you can ask "Please download the kubeconfig file for the `<cluster-name>` Palette
