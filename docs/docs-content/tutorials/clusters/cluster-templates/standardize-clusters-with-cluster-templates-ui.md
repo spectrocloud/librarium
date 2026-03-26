@@ -430,6 +430,22 @@ The cluster template now references profile version `1.1.0`. This does not trigg
 
 ### Upgrade Clusters
 
+Trigger an upgrade on `cluster-template-aws` to apply profile version `1.1.0` to both clusters.
+
+From the left main menu, select **Cluster Configurations**. Select the **Templates** tab and select
+`cluster-template-aws`. Select the **Overview** tab.
+
+Select **Options > Upgrade now**.
+
+![Cluster template overview showing the Upgrade now option](/cluster-template-upgrade-now.webp)
+
+From the left main menu, select **Clusters**, then select either cluster to track the upgrade progress.
+
+The upgrade may take several minutes per cluster. Once complete, Palette marks the Kubecost layer with a green status
+indicator.
+
+![Kubecost layer with a green status indicator](/kubecost-green-status.webp)
+
 ### Validate the Upgrades
 
 ### Cleanup
