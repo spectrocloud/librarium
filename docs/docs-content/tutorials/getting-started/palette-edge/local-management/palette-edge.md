@@ -45,7 +45,7 @@ The meeting room whiteboard was filled. The discussion has highlighted some of t
 
 
 
-![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_roadmap.webp)
+![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-locally-edge-roadmap_4-8.webp)
 
 Explore the following tutorials to learn how to deploy your first locally managed Edge cluster. Each tutorial is
 designed to guide you step-by-step, building on the concepts introduced in the previous one.

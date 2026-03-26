@@ -37,14 +37,14 @@ Each location effectively will become a small, self-contained environment. At sc
 >
 >Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything centrally?" 
 
-The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that will be faced.
+The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that Spacetastic will face.
 
 >"We cannot manage these manually," Wren emphasizes. "Too many locations, too great a distance, none of us onsite." 
 >
 >Meera nodded in agreement, and added, "We also need to maintain our security stance. We cannot sacrifice this just to deploy."
 
 
-![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_roadmap.webp)
+![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge-roadmap_4-8.webp)
 
 Explore the following tutorials to learn how to deploy your first centrally managed Edge cluster with Palette. Each
 tutorial is designed to guide you step-by-step, building on the concepts introduced in the previous one.
