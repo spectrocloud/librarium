@@ -14,9 +14,35 @@ as building the necessary artifacts and preparing the host. The concepts you lea
 are centered around a fictional case study company. This approach gives you a solution focused approach, while
 introducing you to Palette workflows and capabilities.
 
-## 🧑‍🚀 Welcome to Spacetastic!
+## 🧑‍🚀 Spacetastic Journey Continues!
 
-<PartialsComponent category="getting-started" name="spacetastic-edge-intro" />
+Spacetastic's platform had reached a steady state. Clusters in the cloud were stable, updates were predictable, and operational overhead had dropped significantly. 
+
+The company is expanding into over 500 locations in the form of touch-screen kiosks. And this expansion has resulted into a new emerging requirement: applications needed to run closer to users. This means deploying infrastructure directly into schools, museums, airports, and other edge environments.
+
+While the environments were new, the requirements were familiar:
+
+- Consistent deployments across locations
+- Strong security posture
+- Minimal reliance on on-site expertise
+- The ability to roll out updates quickly and safely
+
+Each location effectively will become a small, self-contained environment. At scale, this introduces a new challenge: managing hundreds of distributed clusters without increasing operational complexity.
+
+>Anya and Wren came into the office, vibrating with excitement. "We're going physical!", Anya exclaimed. 
+>
+>Meera peered over their screen, with a quizzical look. "Define physical."
+>
+>Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud clusters."
+>
+>Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything centrally?" 
+
+The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that will be faced.
+
+>"We cannot manage these manually," Wren emphasizes. "Too many locations, too great a distance, none of us onsite." 
+>
+>Meera nodded in agreement, and added, "We also need to maintain our security stance. We cannot sacrifice this just to deploy."
+
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_roadmap.webp)
 
