@@ -24,7 +24,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.40.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3774 -->
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that caused <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack upgrades from version 1.16.2 to version 1.18.1 on to fail on [Edge clusters](../clusters/edge/edge.md).
+- Fixed an issue that caused <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack upgrades from version 1.16.2 to version 1.18.1 to fail on [Edge clusters](../clusters/edge/edge.md).
 
 <!-- prettier-ignore-end -->
 
