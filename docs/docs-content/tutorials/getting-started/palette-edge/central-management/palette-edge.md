@@ -12,7 +12,7 @@ This section gives you an overview of how to get started with Palette Edge. You 
 deployment of Kubernetes clusters at the edge, along with all the steps required to deploy your first Edge cluster, such
 as building the necessary artifacts and preparing the host. The concepts you learn about in the Getting Started section
 are centered around a fictional case study company. This approach gives you a solution focused approach, while
-introducing you to Palette workflows and capabilities.
+introducing you to centrally managed Palette Edge workflows and capabilities.
 
 ## 🧑‍🚀 Spacetastic Journey Continues!
 

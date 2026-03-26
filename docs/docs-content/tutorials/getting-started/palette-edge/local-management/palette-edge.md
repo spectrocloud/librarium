@@ -8,9 +8,42 @@ sidebar_position: 0
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-This section gives you an overview of how to get started with locally managed Palette Edge. You will learn how to deploy
-your first locally managed Edge cluster, along with all the steps required to deploy your first locally managed Edge
-cluster, such as building the necessary artifacts and preparing the host.
+This section gives you an overview of how to get started with locally managed Palette Edge. You will learn how Palette simplifies the
+deployment of Kubernetes clusters at the edge, along with all the steps required to deploy your first Edge cluster, such
+as building the necessary artifacts and preparing the host. The concepts you learn about in the Getting Started section
+are centered around a fictional case study company. This approach gives you a solution focused approach, while
+introducing you to locally managed Palette Edge workflows and capabilities.
+
+## 🧑‍🚀 Spacetastic Journey Continues!
+
+Spacetastic's platform had reached a steady state. Clusters in the cloud were stable, updates were predictable, and operational overhead had dropped significantly. 
+
+The company is expanding into over 500 locations in the form of touch-screen kiosks. And this expansion has resulted into a new emerging requirement: applications needed to run closer to users. This means deploying infrastructure directly into schools, museums, airports, and other edge environments.
+
+While the environments were new, the requirements were familiar:
+
+- Consistent deployments across locations
+- Strong security posture
+- Minimal reliance on on-site expertise
+- The ability to roll out updates quickly and safely
+
+Each location effectively will become a small, self-contained environment. At scale, this introduces a new challenge: managing hundreds of distributed clusters without increasing operational complexity.
+
+>Anya and Wren came into the office, vibrating with excitement. "We're going physical!", Anya exclaimed. 
+>
+>Meera peered over their screen, with a quizzical look. "Define physical."
+>
+>Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud clusters."
+>
+>Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything centrally?" 
+
+The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that will be faced.
+
+>"We cannot manage these manually," Wren emphasizes. "Too many locations, too great a distance, none of us onsite, and some of these sites have strict requirements not to be connected to the internet." 
+>
+>Meera nodded in agreement, and added, "So... no constant connection to Palette? That is a challenge. We also can't forget the need to maintain our security stance. We cannot sacrifice this just to deploy."
+
+
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_roadmap.webp)
 
@@ -47,7 +80,7 @@ designed to guide you step-by-step, building on the concepts introduced in the p
     },
     {
       title: "Prepare Edge Host",
-      description: "Install the Palette agent on your Edge host and register the host with Palette.",
+      description: "Install the Palette agent on your Edge host.",
       buttonText: "Learn more",
       url: "/tutorials/getting-started/palette-edge/local-management/prepare-edge-host",
     },
