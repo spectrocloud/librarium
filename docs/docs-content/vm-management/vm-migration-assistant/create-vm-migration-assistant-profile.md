@@ -24,11 +24,11 @@ Follow these steps to create a new add-on profile that will be applied to your e
 - If you using Ubuntu 24.04 (for example,
   <VersionedLink text="Ubuntu 24.04 for MaaS" url="/integrations/packs/?pack=ubuntu-maas" />) as your OS pack, you must
   set the `kernel.apparmor_restrict_unprivileged_userns=0` parameter and value in the
-  `/etc/sysctl.d/10-kubernetes-tuning.conf` file through the OS layer configuration in the cluster profile.
+  `/etc/sysctl.d/10-kubernetes-tuning.conf` file through the OS layer configuration in the cluster profile. Adding this
+  setting to the cluster profile ensures that the configuration persists after node restarts.
 
   This is required to allow the VM Migration Assistant to perform disk or image conversions without running into permission
-  issues related to unprivileged user namespaces. Adding this setting to the cluster profile ensures that the configuration
-  persists after node restarts.
+  issues related to unprivileged user namespaces. 
 
   <details>
 
@@ -51,7 +51,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
   7. Add the kernel parameter to the `kubeadmconfig.files` section. The following is an example YAML snippet to
      demonstrate how to add the parameter.
 
-     ```yaml title="Example YAML snippet to disable unprivileged user namespaces for Ubuntu 24.04" {3,7}
+     ```yaml title="Example" {3,7}
      kubeadmconfig:
        files:
          - targetPath: /etc/sysctl.d/10-kubernetes-tuning.conf
@@ -60,6 +60,9 @@ Follow these steps to create a new add-on profile that will be applied to your e
            content: |-
              kernel.apparmor_restrict_unprivileged_userns=0
      ```
+
+     If your cluster profile already has a configuration for the `10-kubernetes-tuning.conf` file, add the
+     `kernel.apparmor_restrict_unprivileged_userns=0` line to the existing content while ensuring proper YAML formatting.
 
   8. Click **Confirm Updates** to save the changes to the OS layer configuration.
 
@@ -74,11 +77,12 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 - If you using Kubernetes 1.33 or above, you must set the `device_ownership_from_security_context = true` parameter and
   value in the `/etc/containerd/conf.d/device-ownership.toml` file through the Kubernetes layer configuration in the
-  cluster profile.
+  cluster profile. Adding this setting to the cluster profile ensures that the configuration persists after node
+  restarts.
 
   Enable this setting so non-root Container Device Interface (CDI) pods can access block devices during block-volume
   transfer operations. From Kubernetes 1.33, containerd v2 is used as the container runtime, and this parameter is now
-  opt-in. Adding this setting to the cluster profile ensures that the configuration persists after node restarts.
+  opt-in.
 
   <details>
 
@@ -101,7 +105,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
   7. Add the device ownership parameter to the `kubeadmconfig.files` section. The following is an example YAML snippet
      to demonstrate how to add the parameter.
 
-     ```yaml title="Example YAML snippet to disable unprivileged user namespaces for Ubuntu 24.04" {3,7-8}
+     ```yaml title="Example" {3,7-8}
      kubeadmconfig:
        files:
          - targetPath: /etc/containerd/conf.d/device-ownership.toml
@@ -111,6 +115,9 @@ Follow these steps to create a new add-on profile that will be applied to your e
              [plugins."io.containerd.grpc.v1.cri"]
                device_ownership_from_security_context = true
      ```
+
+     If your cluster profile already has a configuration for the `device-ownership.toml` file, add the entry within
+     `content` to the existing content while ensuring proper YAML formatting.
 
   8. Click **Confirm Updates** to save the changes to the OS layer configuration.
 
