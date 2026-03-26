@@ -37,6 +37,8 @@ Each location effectively will become a small, self-contained environment. At sc
 >
 >Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything centrally?" 
 
+![centrally managed edge architecture for spacetastic](../../../../../../static/assets/docs/images/getting-started/getting-started_landing-edge-central_4-8.webp)
+
 The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that Spacetastic will face.
 
 >"We cannot manage these manually," Wren emphasizes. "Too many locations, too great a distance, none of us onsite." 
