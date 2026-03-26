@@ -26,7 +26,8 @@ Use the following steps to deploy a virtual cluster on connected and airgapped e
 - Attach any required policies in your cloud account that must be added to your virtual cluster deployment.
 
   - For AWS, refer to the
-    [Required IAM Policies](../public-cloud/aws/required-iam-policies.md#global-role-additional-policies) documentation.
+    [Required IAM Policies](../public-cloud/aws/required-iam-policies/additional-iam-policies-specific-use-cases.md#global-role-additional-policies)
+    documentation.
   - For Azure, no additional policies are required.
 
 - If you are deploying a virtual cluster on an airgapped self-hosted instance of Palette or Palette VerteX, you must
@@ -56,8 +57,9 @@ To add node-level policies:
 4. You can specify any additional policies to include in virtual clusters deployed with this cloud account.
 
    - For AWS, add the **AmazonEBSCSIDriver** policy so that the virtual clusters can access the underlying host
-     cluster's storage. Check out the [Palette required IAM policies](../public-cloud/aws/required-iam-policies.md)
-     documentation to learn more about additional IAM policies.
+     cluster's storage. Check out the
+     [Palette required IAM policies](../public-cloud/aws/required-iam-policies/required-iam-policies.md) documentation
+     to learn more about additional IAM policies.
 
 5. Confirm your changes.
 
