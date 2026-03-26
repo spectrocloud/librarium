@@ -46,7 +46,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    [cluster profile tag](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
    ```shell hideClipboard title="Example Output"
-   ⏺ palette - gather_or_delete_clusterprofiles (MCP)(action: "list", limit: 25, continue_token: "eyJvZmZzZXQiOjI1MCwiY291bnQiOjI2NSwidG9rZW4iOiIifQ==")
+   ⏺ palette - gather_or_delete_clusterprofiles (MCP)(action: "list", limit: 25, continue_token: "xxx")
 
    ⏺ Profiles explicitly tagged with env:aws:
 
