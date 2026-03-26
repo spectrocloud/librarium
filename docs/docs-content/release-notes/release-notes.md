@@ -11,13 +11,64 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March 20, 2026 - Component Updates {#component-updates-2026-12}
+## March 27, 2026 - Component Updates {#component-updates-2026-13}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.40.
 
 | Component                                          | Version |
 | -------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md) | 4.8.5   |
+| [Artifact Studio](../downloads/artifact-studio.md) | 4.8.6   |
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3774 -->
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack upgrades from version 1.16.2 to version 1.18.1 on to fail on [Edge clusters](../clusters/edge/edge.md).
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-274 -->
+
+- Fixed an issue that caused Kubernetes
+  [non-airgap self-Hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md)
+  version 4.8.13 installation failures due to an invalid Custom Resource Definition (CRD) schema.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3858 -->
+
+| Pack Name            | Layer      | Non-FIPS           | FIPS               | New Version |
+| -------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EFS           | CSI        | :white_check_mark: | :x:                | 2.3.1       |
+| Canonical Kubernetes | Kubernetes | :white_check_mark: | :x:                | 1.35        |
+| Canonical Kubernetes | Kubernetes | :white_check_mark: | :x:                | 1.34        |
+| Cilium               | CNI        | :x:                | :white_check_mark: | 1.19.1      |
+| ECK Stack            | Add-on     | :white_check_mark: | :x:                | 0.18.1      |
+| ECK Operator         | Add-on     | :white_check_mark: | :x:                | 3.3.1       |
+| External Secrets     | Add-on     | :white_check_mark: | :x:                | 2.1.0       |
+| Fluentbit            | Add-on     | :white_check_mark: | :x:                | 4.2.3       |
+| Longhorn             | CSI        | :white_check_mark: | :x:                | 1.11.1      |
+| Open Policy Agent    | Add-on     | :white_check_mark: | :x:                | 3.22.0      |
+| Open Observe         | Add-on     | :white_check_mark: | :x:                | 0.60.3-rev1 |
+| Reloader             | Add-on     | :white_check_mark: | :x:                | 1.4.14      |
+| RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.2      |
+| RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
+| RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.9      |
+| RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.13     |
+| Traefik              | Add-on     | :white_check_mark: | :x:                | 39.0.5      |
+| Trident              | CSI        | :white_check_mark: | :x:                | 26.02.0     |
+
+## March 20, 2026 - Component Updates {#component-updates-2026-12}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.40.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.8.5   |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.40  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.40  |
 
 ### Bug Fixes
 
