@@ -9,8 +9,9 @@ tags: ["ai", "mcp", "automation"]
 
 Model Context Protocol (MCP) servers allow AI models to interact with external tools, data sources, and services in a
 structured and reliable way. Models that are connected to MCP servers can perform actions such as read files, query
-databases, or call APIs, instead of only relying on their training data. AI tools connected to MCP servers are useful in
-practical applications because they become active assistants, with capabilities far beyond generating text.
+databases, or call APIs, instead of having to rely on custom logic authored by you, or dynamically generated code by the
+LLM itself. AI tools connected to MCP servers are useful in practical applications because they become active
+assistants, with capabilities far beyond generating text.
 
 The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) wraps around the Palette API, allowing you
 to use natural language perform actions on resources. The MCP server is a powerful automation tool that enables LLMs to

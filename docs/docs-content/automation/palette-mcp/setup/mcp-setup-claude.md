@@ -68,6 +68,14 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
 
    </Tabs>
 
+   :::warning
+
+   The `kubeconfig` folder you mount to the container will be wiped when the container is stopped and started again. The
+   Palette MCP server automatically removes the kubeconfig files from its `/tmp/kubeconfig` folder when the container is
+   stopped.
+
+   :::
+
    ```shell hideClipboard title="Example Output"
    Added stdio MCP server palette with command: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest to local config
    ```
@@ -98,11 +106,10 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
 9. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
    enable Claude to use the downloaded kubeconfig files to access clusters.
 
-   Execute the following command to create the `CLAUDE.md` file in your project if it does not exist. Replace the
-   `<local-path>` placeholder with your local path.
+   Execute the following command to create the `CLAUDE.md` file on your machine if it does not exist.
 
    ```shell
-   touch <local-path>/CLAUDE.md
+   touch ~/.claude/CLAUDE.md
    ```
 
    Open the file in your preferred editor and paste the following snippet into it. Replace the `<local-path>`

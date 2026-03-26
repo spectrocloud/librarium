@@ -17,7 +17,9 @@ The Palette MCP server contains the following tools that you can leverage for yo
   [Edge hosts](../../clusters/edge/edge.md), [cluster templates](../../cluster-templates/cluster-templates.md), and
   [cluster templates policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
 
-This guide provides examples of how to use the Palette MCP server.
+This guide provides examples of how to use the Palette MCP server using
+[Claude Code](https://code.claude.com/docs/en/overview) and the Claude Sonnet 4.6 model. You can use an MCP client and
+model suits your needs.
 
 ## Prerequisites
 

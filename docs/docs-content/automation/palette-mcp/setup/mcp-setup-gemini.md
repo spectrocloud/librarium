@@ -62,24 +62,16 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 10. We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded
     kubeconfig files to access clusters.
 
-    Execute the following command to create a guidance file on your local machine. Replace the `<local-path>`
-    placeholder with your local path.
+Execute the following command to create the `GEMINI.md` file on your machine if it does not exist.
 
     ```shell
-    touch <local-path>/.palette-guidance.md
+    touch ~/.gemini/GEMINI.md
     ```
 
     Open the file in your preferred text editor and paste the following snippet into the file. Replace the
     `<local-path>` placeholder with the kubeconfig local path you configured.
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
-
-    :::info
-
-    Gemini does not automatically load skills, so you will need to load this skill on every invocation using the
-    `gemini "$(cat /<local-path>/.palette-guidance.md)"` syntax.
-
-    :::
 
 You can now use the Palette MCP server with the Gemini CLI.
 
