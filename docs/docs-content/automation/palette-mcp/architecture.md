@@ -13,14 +13,15 @@ configured Palette instance and performs the required API operations.
 
 Here is an overview of how to configure and use the Palette MCP server.
 
-- Install an MCP client on your local machine or environment. Popular tools are [Cursor](https://cursor.com/get-started),
-  [Claude Code](https://code.claude.com/docs/en/overview), and [Gemini CLI](https://geminicli.com/).
+- Install an MCP client on your local machine or environment. Popular tools are
+  [Cursor](https://cursor.com/get-started), [Claude Code](https://code.claude.com/docs/en/overview), and
+  [Gemini CLI](https://geminicli.com/).
 
 - The Palette MCP server expects a handful parameters in order to connect to Palette. Refer to
   [Server Configuration](#server-configuration) for more information.
 
-- Configure the Palette MCP server as a custom MCP server in your MCP client to use the tools it provides. The Palette MCP
-  server starts up a local container from an image hosted in
+- Configure the Palette MCP server as a custom MCP server in your MCP client to use the tools it provides. The Palette
+  MCP server starts up a local container from an image hosted in
   [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/).
 
 - The MCP server is now ready to use. Your queries are sent to the Palette API to perform the requested operations.

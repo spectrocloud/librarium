@@ -13,7 +13,8 @@ databases, or call APIs, instead of only relying on their training data. AI tool
 practical applications because they become active assistants, with capabilities far beyond generating text.
 
 The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) wraps around the Palette API, allowing you
-to use natural language perform actions on resources. The MCP server is a powerful automation tool that enables LLMs to interact with Palette consistently without having to understand the complete Palette API.
+to use natural language perform actions on resources. The MCP server is a powerful automation tool that enables LLMs to
+interact with Palette consistently without having to understand the complete Palette API.
 
 The Palette MCP server allows you to perform the following actions:
 
