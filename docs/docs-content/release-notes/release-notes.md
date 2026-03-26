@@ -433,7 +433,7 @@ Review the active known issues that affect this Palette release on the [Known Is
   CloudFormation stack.
 
   For more details, refer to the
-  [Required IAM Policies for AWS Clusters](../clusters/public-cloud/aws/required-iam-policies.md) documentation.
+  [Required IAM Policies for AWS Clusters](../clusters/public-cloud/aws/required-iam-policies/required-iam-policies.md) documentation.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9205 -->
 
