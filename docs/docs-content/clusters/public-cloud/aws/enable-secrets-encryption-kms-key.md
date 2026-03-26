@@ -20,10 +20,12 @@ wizard's **Cluster Config** page for EKS.
 
 - An AWS account added to Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
-- IAM user or role has attached policies listed in [Required IAM Policies](required-iam-policies.md).
+- IAM user or role has attached policies listed in
+  [Required IAM Policies](required-iam-policies/required-iam-policies.md).
 
 - A **PaletteControllersEKSPolicy** created in AWS and attached to the IAM user or role that Palette is using. To create
-  this policy, refer to [Controllers EKS Policy](required-iam-policies.md#controllers-eks-policy).
+  this policy, refer to
+  [Controllers EKS Policy](required-iam-policies/additional-iam-policies-specific-use-cases.md#controllers-eks-policy).
 
 - An AWS KMS key created in the AWS region you intend to deploy cluster to with Palette.
 
