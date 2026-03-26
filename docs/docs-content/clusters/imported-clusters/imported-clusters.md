@@ -100,30 +100,30 @@ limitations:
     [Amazon EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md), which consist of
     edge hosts managed by Palette.
 
-- When interacting with imported EKS, GKE, or AKS clusters through the Palette API, use the IaaS endpoint. Refer to the
-  following tabs for examples.
+- When interacting with imported nfrastructure as a Service (IaaS) clusters through the Palette API, use the IaaS
+  endpoint. Refer to the following tabs for examples.
 
   <Tabs>
 
-  <TabItem value="Amazon EKS Example">
+  <TabItem value="AWS IaaS Example">
 
-  To update the imported Amazon EKS cluster configuration information, use
+  To update the imported AWS IaaS cluster configuration information, use
   [`/v1/cloudconfigs/aws/<configUid>/clusterConfig`](/api/v1/v-1-cloud-configs-aws-uid-cluster-config/) instead of
   `/v1/cloudconfigs/eks/<configUid>/clusterConfig`.
 
   </TabItem>
 
-  <TabItem value="GKE Example">
+  <TabItem value="Google IaaS Example">
 
-  To update the imported GKE cluster configuration information, use
+  To update the imported Google IaaS cluster configuration information, use
   [`/v1/cloudconfigs/gcp/<configUid>/clusterConfig`](/api/v1/v-1-cloud-configs-gcp-uid-cluster-config/) instead of
   `/v1/cloudconfigs/gke/<configUid>/clusterConfig`.
 
   </TabItem>
 
-  <TabItem value="AKS Example">
+  <TabItem value="Azure IaaS Example">
 
-  To update the imported AKS cluster configuration information, use
+  To update the imported Azure IaaS cluster configuration information, use
   [`/v1/cloudconfigs/azure/<configUid>/clusterConfig`](/api/v1/v-1-cloud-configs-azure-uid-cluster-config/) instead of
   `/v1/cloudconfigs/aks/<configUid>/clusterConfig`.
 
