@@ -100,7 +100,7 @@ limitations:
     [Amazon EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md), which consist of
     edge hosts managed by Palette.
 
-- When interacting with imported nfrastructure as a Service (IaaS) clusters through the Palette API, use the IaaS
+- When interacting with imported infrastructure as a Service (IaaS) clusters through the Palette API, use the IaaS
   endpoint. Refer to the following tabs for examples.
 
   <Tabs>
