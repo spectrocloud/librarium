@@ -62,6 +62,14 @@ is entirely optional and not required for Palette to operate appropriately.
 
 The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
 
+:::info
+
+Traefik is the default ingress controller starting with Palette 4.8.c. Nginx, which is
+[deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
+actively serve traffic.
+
+:::
+
 ### Management Platform
 
 | **Port**         | **Direction** | **Purpose**                                                                             |

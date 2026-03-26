@@ -137,16 +137,9 @@ following differences:
 
 Cluster profile variable values are assigned during the cluster deployment flow. Note that cluster templates can only be
 used to deploy new clusters. Certain Day-2 operations, such as attaching a cluster template to an existing cluster, are
-not supported. Additionally, once a cluster template is attached to a cluster, it cannot be detached. For additional
-information, refer to the cluster deployment guide for your applicable infrastructure environment.
+not supported. Additionally, once a cluster template is attached to a cluster, it cannot be detached.
 
-| **Public Cloud (IaaS)**                                              | **Public Cloud (Managed)**                                    | **Data Center**                                                                   | **Edge**                                                              |
-| -------------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md)           | [EKS](../clusters/public-cloud/aws/eks.md)                    | [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md)               | [Edge Native](../clusters/edge/site-deployment/cluster-deployment.md) |
-| [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) | [AKS](../clusters/public-cloud/azure/aks.md)                  | [MAAS LXD](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md)       | -                                                                     |
-| [GCP IaaS](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md)  | [GKE](../clusters/public-cloud/gcp/create-gcp-gke-cluster.md) | [Nutanix](../clusters/data-center/nutanix/create-manage-nutanix-cluster.md)       | -                                                                     |
-| -                                                                    | -                                                             | [Apache CloudStack](../clusters/data-center/cloudstack/cloudstack.md)             | -                                                                     |
-| -                                                                    | -                                                             | [VMware vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md) | -                                                                     |
+<PartialsComponent category="clusters" name="cluster-deployment-guides" />
 
 When a cluster is deployed using a cluster template, the cluster template is referenced above the cluster profiles on
 the cluster **Overview** tab, and the tab **Templates** appears. To view the cluster template attached to the cluster,

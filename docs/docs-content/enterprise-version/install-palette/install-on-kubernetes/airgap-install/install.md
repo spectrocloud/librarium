@@ -82,8 +82,12 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
   workload, modify the `storageClass` parameter. Check out the
   [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
   page to learn more about modifying StorageClasses.
-- An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you
-  must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
+
+- Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default ingress
+  controller starting with Palette 4.8.c. Nginx, which is
+  [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
+  actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
+  `ingress.enabled` parameter to `false` in the `values.yaml` file.
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for Palette.
@@ -167,13 +171,12 @@ environment. Reach out to our support team if you need assistance.
 
     :::info
 
-    Use the following `mirrorRegistries` placeholder string to replace the respective values of your OCI registry. Use
-    `/v2/` in your endpoints if your OCI registry supports the Docker Registry HTTP API V2 protocol; otherwise,
-    container image pulls will fail.
-
-    ```yaml
-    docker.io::OCI_URL/v2/IMAGE_PROJECT/docker.io,gcr.io::OCI_URL/v2/IMAGE_PROJECT/gcr.io,ghcr.io::OCI_URL/v2/IMAGE_PROJECT/ghcr.io,k8s.gcr.io::OCI_URL/v2/IMAGE_PROJECT/k8s.gcr.io,registry.k8s.io::OCI_URL/v2/IMAGE_PROJECT/registry.k8s.io,quay.io::OCI_URL/v2/IMAGE_PROJECT/quay.io,us-docker.pkg.dev::OCI_URL/v2/IMAGE_PROJECT/us-docker.pkg.dev"
-    ```
+    Include `/v2` in your endpoints if you are using a
+    [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
+    Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
+    registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
+    for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
+    `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
 
     :::
 
@@ -186,7 +189,7 @@ environment. Reach out to our support team if you need assistance.
       baseContentPath: "spectro-images"
       insecureSkipVerify: true
       caCert: ""
-      mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io,us-docker.pkg.dev::my-oci-registry.com/v2/spectro-images/us-docker.pkg.dev"
+      mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io,us-docker.pkg.dev::my-oci-registry.com/spectro-images/us-docker.pkg.dev"
     ```
 
 7.  Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
@@ -214,7 +217,24 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
+8.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+    Palette, including Traefik CRDs, and must be installed before the main Palette Helm chart.
+
+    ```shell
+    helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+    ```
+
+    ```shell hideClipboard title="Example output"
+    Release "spectro-mgmt-crds" does not exist. Installing it now.
+    NAME: spectro-mgmt-crds
+    LAST DEPLOYED: Mon Jan 29 16:35:00 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+9.  Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
     **values.yaml** file contains the default values for the Palette installation parameters. However, you must populate
     the following parameters before installing Palette. You can learn more about the parameters on the **values.yaml**
     file on the [Helm Configuration Reference](../palette-helm-ref.md) page.
@@ -222,17 +242,17 @@ environment. Reach out to our support team if you need assistance.
     Ensure you provide the proper `ociImageRegistry.mirrorRegistries` values if you are using a self-hosted OCI
     registry. You can find the placeholder string in the `ociImageRegistry` section of the **values.yaml** file.
 
-    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                             | **Type** |
-    | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                    | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                       | string   |
-    | `config.installationMode`           | The installation mode for Palette. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                                                                                                                                                                                                                                                                                                   | string   |
-    | `ociPackEcrRegistry`                | The OCI registry credentials for the Palette FIPS packs repository.                                                                                                                                                                                                                                                                                                                                                                                                         | object   |
-    | `ociImageRegistry`                  | The OCI registry credentials for the Palette images repository.                                                                                                                                                                                                                                                                                                                                                                                                             | object   |
-    | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to for image-swap `values.yaml`. Use `/v2/` in your endpoints if your OCI registry supports the Docker Registry HTTP API V2 protocol; otherwise, container image pulls will fail. For example: `docker.io::harbor.example.org/v2/airgap-images/docker.io,gcr.io::harbor.example.org/v2/airgap-images/gcr.io`. | string   |
-    | `imageSwapImages`                   | The image swap configuration for Palette. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                                                                                                                                                  | object   |
-    | `imageSwapConfig.isEKSCluster`      | If you are NOT installing Palette on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                                                                                                                                             | boolean  |
-    | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                       | boolean  |
-    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment.                                                                                                                                                                                                                                                                                                                      | object   |
+    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Type** |
+    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                    | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | string   |
+    | `config.installationMode`           | The installation mode for Palette. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | string   |
+    | `ociPackEcrRegistry`                | The OCI registry credentials for the Palette FIPS packs repository.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | object   |
+    | `ociImageRegistry`                  | The OCI registry credentials for the Palette images repository.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | object   |
+    | `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io`. <br /><br /> **NOTE:** Include `/v2` in your endpoints if you are using a [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project. Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2` for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example: `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`. | string   |
+    | `imageSwapImages`                   | The image swap configuration for Palette. If you are using an OCI registry, such as Harbor, replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | object   |
+    | `imageSwapConfig.isEKSCluster`      | If you are NOT installing Palette on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | boolean  |
+    | `ingress.enabled`                   | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set this to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | boolean  |
+    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | object   |
 
     :::info
 
@@ -352,7 +372,7 @@ environment. Reach out to our support team if you need assistance.
          baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
          insecureSkipVerify: true
          caCert: ""
-         mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io,us-docker.pkg.dev::my-oci-registry.com/v2/spectro-images/us-docker.pkg.dev"  # See instructions below.
+         mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io,us-docker.pkg.dev::my-oci-registry.com/spectro-images/us-docker.pkg.dev"  # See instructions below.
 
     # Instruction for mirrorRegistries.
     # ----------------------------------
@@ -564,7 +584,7 @@ environment. Reach out to our support team if you need assistance.
          baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
          insecureSkipVerify: false
          caCert: ""
-         mirrorRegistries: "docker.io::public.ecr.aws/123456789/v2/spectro-images/docker.io,gcr.io::public.ecr.aws/123456789/v2/spectro-images/gcr.io,ghcr.io::public.ecr.aws/123456789/v2/spectro-images/ghcr.io,k8s.gcr.io::public.ecr.aws/123456789/v2/spectro-images/k8s.gcr.io,registry.k8s.io::public.ecr.aws/123456789/v2/spectro-images/registry.k8s.io,quay.io::public.ecr.aws/123456789/v2/spectro-images/quay.io,us-docker.pkg.dev::public.ecr.aws/123456789/v2/spectro-images/us-docker.pkg.dev"  # See instructions below.
+         mirrorRegistries: "docker.io::public.ecr.aws/123456789/spectro-images/docker.io,gcr.io::public.ecr.aws/123456789/spectro-images/gcr.io,ghcr.io::public.ecr.aws/123456789/spectro-images/ghcr.io,k8s.gcr.io::public.ecr.aws/123456789/spectro-images/k8s.gcr.io,registry.k8s.io::public.ecr.aws/123456789/spectro-images/registry.k8s.io,quay.io::public.ecr.aws/123456789/spectro-images/quay.io,us-docker.pkg.dev::public.ecr.aws/123456789/spectro-images/us-docker.pkg.dev"  # See instructions below.
 
     # Instruction for mirrorRegistries.
     # ----------------------------------
@@ -675,17 +695,21 @@ environment. Reach out to our support team if you need assistance.
 
     :::warning
 
-    Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next
-    steps. For the parameter `ociImageRegistry.mirrorRegistries`, ensure a `/v2/` endpoint is used if your OCI registry
-    supports the Docker Registry protocol v2; otherwise, container pull images will fail.
+    Ensure you have configured the `values.yaml` file with the required parameters before proceeding to the next steps.
+    For the parameter `ociImageRegistry.mirrorRegistries`, include `/v2` in your endpoints if you are using a
+    [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
+    Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
+    registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
+    for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
+    `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
 
     :::
 
-9.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+10. This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
-    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
-    eight.
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in
+    step 9.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -721,7 +745,7 @@ environment. Reach out to our support team if you need assistance.
 
     </details>
 
-10. Install the Palette Helm Chart using the following command.
+11. Install the Palette Helm Chart using the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -738,9 +762,9 @@ environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-11. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
-    `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_ state. The
-    installation takes two to three minutes to complete.
+12. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_
+    state. The installation takes two to three minutes to complete.
 
     ```shell
     kubectl get pods --all-namespaces --watch
@@ -753,12 +777,12 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-12. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+13. Create a DNS CNAME record that is mapped to the Palette `traefik-ingress-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
     ```shell
-    kubectl get service ingress-nginx-controller --namespace ingress-nginx \
+    kubectl get service traefik-ingress-controller --namespace ingress-traefik \
     --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
@@ -773,7 +797,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-13. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+14. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser, paste the custom domain URL in the address bar, and append the value `/system`.
 
     The first time you visit the Palette system console, a warning message about a not-trusted SSL certificate may
@@ -782,7 +806,7 @@ environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-14. Log in to the system console using the following default credentials. Refer to the
+15. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
@@ -797,7 +821,7 @@ environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-15. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+16. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
@@ -826,51 +850,55 @@ Use the following steps to validate the Palette installation.
    password. Enter a new password and save your changes. You will be redirected to the Palette system console.
 
 3. Open a terminal session and issue the following command to verify the Palette installation. The command should return
-   a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`, and `ui-system` namespaces.
+   a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and
+   `ui-system` namespaces.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
    ```
 
    Your output should look similar to the following.
 
    ```shell hideClipboard
-   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-   hubble-system   auth-85b748cbf4-6drkn                      Running
-   hubble-system   auth-85b748cbf4-dwhw2                      Running
-   hubble-system   cloud-fb74b8558-lqjq5                      Running
-   hubble-system   cloud-fb74b8558-zkfp5                      Running
-   hubble-system   configserver-685fcc5b6d-t8f8h              Running
-   hubble-system   event-68568f54c7-jzx5t                     Running
-   hubble-system   event-68568f54c7-w9rnh                     Running
-   hubble-system   foreq-6b689f54fb-vxjts                     Running
-   hubble-system   hashboard-897bc9884-pxpvn                  Running
-   hubble-system   hashboard-897bc9884-rmn69                  Running
-   hubble-system   hutil-6d7c478c96-td8q4                     Running
-   hubble-system   hutil-6d7c478c96-zjhk4                     Running
-   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-   hubble-system   mongo-0                                    Running
-   hubble-system   mongo-1                                    Running
-   hubble-system   mongo-2                                    Running
-   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-   hubble-system   packsync-28205220-bmzcg                    Succeeded
-   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-   hubble-system   system-686d77b947-8949z                    Running
-   hubble-system   system-686d77b947-cgzx6                    Running
-   hubble-system   timeseries-7865bc9c56-5q87l                Running
-   hubble-system   timeseries-7865bc9c56-scncb                Running
-   hubble-system   timeseries-7865bc9c56-sxmgb                Running
-   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-   ingress-nginx   ingress-nginx-controller-2txsv             Running
-   ingress-nginx   ingress-nginx-controller-55pk2             Running
-   ingress-nginx   ingress-nginx-controller-gmps9             Running
-   jet-system      jet-6599b9856d-t9mr4                       Running
-   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   cp-system        spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system    auth-85b748cbf4-6drkn                      Running
+   hubble-system    auth-85b748cbf4-dwhw2                      Running
+   hubble-system    cloud-fb74b8558-lqjq5                      Running
+   hubble-system    cloud-fb74b8558-zkfp5                      Running
+   hubble-system    configserver-685fcc5b6d-t8f8h              Running
+   hubble-system    event-68568f54c7-jzx5t                     Running
+   hubble-system    event-68568f54c7-w9rnh                     Running
+   hubble-system    foreq-6b689f54fb-vxjts                     Running
+   hubble-system    hashboard-897bc9884-pxpvn                  Running
+   hubble-system    hashboard-897bc9884-rmn69                  Running
+   hubble-system    hutil-6d7c478c96-td8q4                     Running
+   hubble-system    hutil-6d7c478c96-zjhk4                     Running
+   hubble-system    mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system    mongo-0                                    Running
+   hubble-system    mongo-1                                    Running
+   hubble-system    mongo-2                                    Running
+   hubble-system    msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system    oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system    packsync-28205220-bmzcg                    Succeeded
+   hubble-system    spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system    spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system    spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system    system-686d77b947-8949z                    Running
+   hubble-system    system-686d77b947-cgzx6                    Running
+   hubble-system    timeseries-7865bc9c56-5q87l                Running
+   hubble-system    timeseries-7865bc9c56-scncb                Running
+   hubble-system    timeseries-7865bc9c56-sxmgb                Running
+   hubble-system    user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system    user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx    ingress-nginx-controller-m5z54             Running
+   ingress-nginx    ingress-nginx-controller-qsf6m             Running
+   ingress-nginx    ingress-nginx-controller-w64pz             Running
+   ingress-traefik  traefik-ingress-controller-9dmzq           Running
+   ingress-traefik  traefik-ingress-controller-tpwtf           Running
+   ingress-traefik  traefik-ingress-controller-xz4jf           Running
+   jet-system       jet-6599b9856d-t9mr4                       Running
+   ui-system        spectro-ui-76ffdf67fb-rkgx8                Running
    ```
 
 ## Next Steps
