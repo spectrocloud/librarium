@@ -107,6 +107,18 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4-8-c) for more details.
 
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-9 -->
+
+- Two new prerequisites have been added to the
+  [Create VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#prerequisites)
+  guide. These prerequisites cover the use of Ubuntu 24.04 and Kubernetes 1.33 (or later) whereby additional parameters
+  must be added to the OS and Kubernetes layers of the cluster profile to ensure the VM Migration Assistant functions
+  properly during disk or image conversions.
+
 ### Automation
 
 :::info
