@@ -13,7 +13,7 @@ The Palette MCP server contains the following tools that you can leverage for yo
   [cluster profiles](../../profiles/profiles.md).
 - `gather_or_delete_clusters` - Fetches information about or deletes [clusters](../../clusters/clusters.md).
 - `getKubeconfig` - Downloads cluster [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) files.
-- `manage_resource_tags` - Manages resource tags for cluster profiles, clusters,
+- `search_and_manage_resource_tags` - Manages resource tags for cluster profiles, clusters,
   [Edge hosts](../../clusters/edge/edge.md), [cluster templates](../../cluster-templates/cluster-templates.md), and
   [cluster templates policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
 
@@ -46,34 +46,39 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    [cluster profile tag](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
    ```shell hideClipboard title="Example Output"
-   From the current Palette MCP cluster profile list (41 profiles returned, next_continue_token is null, so this looks like the full set for the project right now), these cluster profiles include the env:prod tag:
+   ⏺ palette - gather_or_delete_clusterprofiles (MCP)(action: "list", limit: 25, continue_token: "eyJvZmZzZXQiOjI1MCwiY291bnQiOjI2NSwidG9rZW4iOiIifQ==")
 
-   | Name.       | Version | UID                      | Other tags      |
-   | aws-profile | 1.2.0   | 69a87f1e87b2e7f87c200c48 | owner:test-user |
-   | aws-profile | 1.1.0   | 6985df9dc7fdcb36fea974df | owner:test-user |
-   | aws-profile | 1.0.0   | 671a4f3b218f768c3afe710  | owner:test-user |
+   ⏺ Profiles explicitly tagged with env:aws:
 
-   Total: 3 profile versions (3 UIDs) with env:prod.
+   ┌─────────────────────┬─────────┬────────────────────────────────────────────────────────────────────┐
+   │        Name         │ Version │                             Other Tags                             │
+   ├─────────────────────┼─────────┼────────────────────────────────────────────────────────────────────┤
+   │ aws-profile-test    │ 1.3.0   │ —                                                                  │
+   ├─────────────────────┼─────────┼────────────────────────────────────────────────────────────────────┤
+   │ aws-profile-test    │ 1.2.0   │ —                                                                  │
+   ├─────────────────────┼─────────┼────────────────────────────────────────────────────────────────────┤
+   │ aws-profile-test    │ 1.1.0   │ —                                                                  │
+   └─────────────────────┴─────────┴────────────────────────────────────────────────────────────────────┘
    ```
 
 3. Send a query asking for information about Palette clusters. For example, you can ask "Which Palette clusters are
    deployed to AWS?" to list your [AWS clusters](../../clusters/public-cloud/aws/aws.md).
 
    ```shell hideClipboard title="Example Output"
-   From the Palette cluster list (non-compact, full spec), cloudType: "aws" is what marks a cluster as deployed on AWS.
+   ⏺ palette - gather_or_delete_clusters (MCP)(action: "list", compact: false)
 
-   Clusters on AWS
+   ⏺ You have 3 clusters deployed to AWS (cloud_type: aws):
+   ┌──────────────────┬─────────┐
+   │       Name       │  State  │
+   ├──────────────────┼─────────┤
+   │ prod-cluster-aws │ Running │
+   ├──────────────────┼─────────┤
+   │ dev-cluster-aws  │ Running │
+   ├──────────────────┼─────────┤
+   │ aws-cluster-test │ Running │
+   └──────────────────┴─────────┘
 
-   | Name             | UID                      | Region    | State   | Notes                      |
-   | aws-cluster-test | 69b959018db5c767205d0432 | us-east-1 | Running | `cloudConfigRef.kind: aws` |
-
-   Not AWS (same project, same list)
-
-   | Name         | cloudType |
-   | vsphere-test | vsphere   |
-   | maas-test    | maas      |
-
-   So one Palette cluster in this project is deployed to AWS; the rest are vSphere or MAAS.
+   The remaining clusters run on vSphere and MAAS.
    ```
 
 ## Download Kubeconfig Files
@@ -90,16 +95,13 @@ The `getKubeconfig` tool downloads kubeconfig files.
    setup.
 
    ```shell hideClipboard title="Example Output"
-   Here’s what was done:
+   ⏺ palette - getKubeconfig (MCP)(cluster_uid: "69c401bf35d56c1812c5a00f")
+   The kubeconfig for aws-cluster-test has been downloaded. As noted in the project instructions, the file is written inside the MCP container at /tmp/kubeconfig/69c401bf35d56c1812c5a00f.kubeconfig, which is synced to your machine at:
 
-   Saved file
-   Path: /Users/test-user/kubeconfig/aws-cluster-test.kubeconfig
-   Permissions: 600 (rw-------)
-   The directory /Users/test-user/kubeconfig was created if it didn’t exist.
+   /Users/test-user/.palette/kubeconfig
 
-   Use it
-   export KUBECONFIG=/Users/test-user/kubeconfig/aws-cluster-test.kubeconfig
-   kubectl get nodes
+   You can use it with:
+   kubectl --kubeconfig="$HOME/.palette/kubeconfig" get nodes
    ```
 
 3. Instruct the MCP tool to connect to the cluster and list the nodes. For example, you can say "Run kubectl and list
@@ -117,47 +119,38 @@ The `getKubeconfig` tool downloads kubeconfig files.
    :::
 
    ```shell hideClipboard title="Example Output"
-   Refreshed kubeconfig for aws-cluster-test via Palette MCP and ran:
-    kubectl --kubeconfig="/<local-path/69b959018db5c767205d0432.kubeconfig" get nodes
-    (with NO_PROXY including *.amazonaws.com so the request didn’t go through the local HTTP proxy).
+   ⏺ Bash(kubectl --kubeconfig="/Users/test-user/.palette/kubeconfig/69c401bf35d56c1812c5a00f.kubeconfig" get nodes)
 
-   Nodes:
-
-   | NAME                       | STATUS | ROLES         | AGE   | VERSION  |
-   | ip-10-0-1-158.ec2.internal | Ready  | control-plane | 7d22h | v1.32.13 |
-   | ip-10-0-1-248.ec2.internal | Ready  | <none>        | 7d22h | v1.32.13 |
+   ⏺ The aws-cluster-test cluster has 2 nodes:
+   ┌───────────────────────────┬───────────────────────────┬───────────────┬─────┬──────────┐
+   │           Name            │          Status           │     Role      │ Age │ Version  │
+   ├───────────────────────────┼───────────────────────────┼───────────────┼─────┼──────────┤
+   │ ip-10-0-1-11.ec2.internal │ Ready, SchedulingDisabled │ —             │ 22h │ v1.32.13 │
+   ├───────────────────────────┼───────────────────────────┼───────────────┼─────┼──────────┤
+   │ ip-10-0-1-31.ec2.internal │ Ready                     │ control-plane │ 22h │ v1.32.13 │
+   └───────────────────────────┴───────────────────────────┴───────────────┴─────┴──────────┘
+   The worker node has SchedulingDisabled (cordoned), meaning no new pods will be scheduled on it.
    ```
 
 ## Manage Resource Tags
 
-The `manage_resource_tags` tool manages resource tags for cluster profiles, clusters,
+The `search_and_manage_resource_tags` tool manages resource tags for cluster profiles, clusters,
 [Edge hosts](../../clusters/edge/edge.md), [cluster templates](../../cluster-templates/cluster-templates.md), and
 [cluster templates policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
 
 1. Open your MCP tool.
 
-2. Send a query related to resource tags. For example, you can say "Apply the `cloud:aws` tag to `<cluster-name>`" to
-   add a custom tag to your [AWS cluster](../../clusters/public-cloud/aws/aws.md).
+2. Send a query related to resource tags. For example, you can say "Apply the `cloud:aws` tag to the `<cluster-name>`
+   Palette cluster" to add a custom tag to an [AWS cluster](../../clusters/public-cloud/aws/aws.md).
 
    Replace the placeholder with your cluster name.
 
    ```shell hideClipboard title="Example Output"
-   Here’s what was done:
+   ⏺ palette - search_and_manage_resource_tags (MCP)(action: "create", resource_type: "spectroclusters", uid: "69c401bf35d56c1812c5a00f", tags: ["cloud:aws"])
 
-   Change PATCH /v1/spectroclusters/69b959018db5c767205d0432/metadata with merged labels so nothing else was removed.
-   cloud:aws is stored as metadata label cloud = aws (normal Palette/Kubernetes style).
-
-   Result Response: HTTP 204 (success).
-
-   Verified
-   aws-cluster-test labels are now:
-
-   { "name": "cluster-name",
-     "labels": {
-       "cloud": "aws",
-       "owner": "test-user"
-     }
-   }
+   ⏺ Done. The cloud:aws tag has been applied to aws-cluster-test. The cluster's tags are now:
+    - cloud:aws (new)
+    - owner:test-user
    ```
 
 ## Delete Clusters and Cluster Profiles
@@ -178,27 +171,30 @@ clusters.
 2. Open your MCP tool.
 
 3. Send a query to delete a Palette cluster profile. For example, you can say "Delete the `<cluster-profile-name>`
-   cluster profile."
+   Palette cluster profile."
 
    Replace the placeholder with your cluster profile name.
 
    ```shell hideClipboard title="Example Output"
-   Deleted: aws-cluster-test
-   UID: 666344e38b80e3e7c6159e07 (version 1.0.0 — only that version existed in your default project).
-   Request: DELETE /v1/clusterprofiles/666344e38b80e3e7c6159e07
-   Response: HTTP 204
-   Check: GET the same UID now returns 404 / ResourceNotFound, so the profile is gone from project Default.
+   ⏺ The aws-cluster-profile-test profile has uid 698bc897c7fdfaca31d7122f. This is a destructive action — confirming before proceeding: delete cluster profile aws-cluster-profile-test?
+
+   ❯ Yes
+
+   ⏺ palette - gather_or_delete_clusterprofiles (MCP)(action: "delete", uid: "698bc897c7fdfaca31d7122f")
+
+   ⏺ Done. The aws-cluster-profile-test cluster profile has been deleted.
    ```
 
-4. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` cluster."
+4. Send a query to delete a Palette cluster. For example, you can say "Delete the `<cluster-name>` Palette cluster."
 
    Replace the placeholder with your cluster name.
 
    ```shell hideClipboard title="Example Output"
-   aws-cluster-test was removed with:
+   ⏺ This will delete the running aws-cluster-test cluster (uid: 69c401bf35d56c1812c5a00f). This is irreversible — are you sure?
 
-   DELETE /v1/spectroclusters/69b959018db5c767205d0432
+   ❯ Yes
 
-   HTTP 204 — delete accepted.
-   Palette will keep tearing down cloud resources (nodes, load balancers, etc.) in the background. Confirm in the Palette UI that the cluster is gone or in Deleting; if anything sticks, use Palette’s force/cleanup options there.
+   ⏺ palette - gather_or_delete_clusters (MCP)(action: "delete", uid: "69c401bf35d56c1812c5a00f")
+
+   ⏺ Done. The aws-cluster-test cluster has been deleted.
    ```
