@@ -36,6 +36,19 @@ The following components have been updated for Palette version 4.8.6 - 4.8.40.
 
 ### Packs
 
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+The following community packs have been released:
+
+- <VersionedLink text="ECK Stack" url="/integrations/packs/?pack=elastic-stack" /> version 0.18.1
+- <VersionedLink text="ECK Operator" url="/integrations/packs/?pack=elastic-operator" /> version 3.3.1
+- <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 4.2.3
+- <VersionedLink text="Trident" url="/integrations/packs/?pack=csi-trident" /> version 26.02.0
+
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3858 -->
 
@@ -44,21 +57,16 @@ The following components have been updated for Palette version 4.8.6 - 4.8.40.
 | Amazon EFS           | CSI        | :white_check_mark: | :x:                | 2.3.1       |
 | Canonical Kubernetes | Kubernetes | :white_check_mark: | :x:                | 1.35        |
 | Canonical Kubernetes | Kubernetes | :white_check_mark: | :x:                | 1.34        |
-| Cilium               | CNI        | :x:                | :white_check_mark: | 1.19.1      |
-| ECK Stack            | Add-on     | :white_check_mark: | :x:                | 0.18.1      |
-| ECK Operator         | Add-on     | :white_check_mark: | :x:                | 3.3.1       |
 | External Secrets     | Add-on     | :white_check_mark: | :x:                | 2.1.0       |
-| Fluentbit            | Add-on     | :white_check_mark: | :x:                | 4.2.3       |
+| Harbor               | Add-on     | :white_check_mark: | :x:                | 1.18.2-rev1 |
 | Longhorn             | CSI        | :white_check_mark: | :x:                | 1.11.1      |
 | Open Policy Agent    | Add-on     | :white_check_mark: | :x:                | 3.22.0      |
-| Open Observe         | Add-on     | :white_check_mark: | :x:                | 0.60.3-rev1 |
 | Reloader             | Add-on     | :white_check_mark: | :x:                | 1.4.14      |
 | RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.2      |
 | RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
 | RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.9      |
 | RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.13     |
 | Traefik              | Add-on     | :white_check_mark: | :x:                | 39.0.5      |
-| Trident              | CSI        | :white_check_mark: | :x:                | 26.02.0     |
 
 ## March 20, 2026 - Component Updates {#component-updates-2026-12}
 
