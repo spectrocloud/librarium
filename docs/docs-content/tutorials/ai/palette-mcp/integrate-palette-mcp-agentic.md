@@ -452,7 +452,7 @@ created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate
 **Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. Then, select **Settings** > **Delete Cluster**.
 Confirm the deletion by entering the cluster name when prompted.
 
-Next, navigate to the left main menu and select **Cluster Profiles**. Select the **tutorial-profile** cluster profile.
+Next, navigate to the left main menu and select **Profiles**. Select the **tutorial-profile** cluster profile.
 Then, select the three-dot menu > **Delete**. Confirm the deletion by entering the cluster profile name when prompted.
 
 The last step is to delete the Kind cluster you created. Issue the following command in your terminal.
