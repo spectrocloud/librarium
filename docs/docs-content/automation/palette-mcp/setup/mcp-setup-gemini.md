@@ -63,7 +63,7 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 10. We recommend adding an [Agent Skill](https://geminicli.com/docs/cli/skills/) to enable Gemini to use the downloaded
     kubeconfig files to access clusters.
 
-Execute the following command to create the `GEMINI.md` file on your machine if it does not exist.
+    Execute the following command to create the `GEMINI.md` file on your machine if it does not exist.
 
     ```shell
     touch ~/.gemini/GEMINI.md
