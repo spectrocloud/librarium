@@ -466,7 +466,7 @@ export KUBECONFIG=<path-to-kubeconfig>
 ```
 
 Forward the Kubecost UI to your local machine. The Kubecost dashboard is not exposed externally by default. The
-following command makes it available locally on port **9090**.
+following command makes it available locally on port `9090`.
 
 ```shell
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
