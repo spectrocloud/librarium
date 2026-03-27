@@ -44,7 +44,8 @@ cluster, from infrastructure to applications, in a unified platform.
 Because Palette is provisioning and managing infrastructure for you, controller mode also requires that you provide
 Palette with all the necessary permissions and credentials to perform these actions. For more information on the
 required permissions, refer to the Required Permissions page for the corresponding infrastructure provider. For example,
-for AWS, refer to the [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) page.
+for AWS, refer to the
+[Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies/required-iam-policies.md) page.
 
 ## Appliance Mode
 
