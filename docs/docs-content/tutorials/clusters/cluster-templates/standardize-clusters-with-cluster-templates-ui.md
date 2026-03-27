@@ -459,8 +459,7 @@ users to issue kubectl commands against the host cluster.
 
 ![Download kubeconfig from cluster overview](/download-kubeconfig.webp)
 
-Open a terminal window and set the `KUBECONFIG` environment variable to point to the file you downloaded. Replace
-`~/Downloads/admin.dev-cluster-aws.kubeconfig` with the path to your file.
+Open a terminal window and set the `KUBECONFIG` environment variable to point to the file you downloaded. 
 
 ```shell
 export KUBECONFIG=~/Downloads/admin.dev-cluster-aws.kubeconfig
