@@ -16,13 +16,13 @@ introducing you to locally managed Palette Edge workflows and capabilities.
 
 ## 🧑‍🚀 Spacetastic Journey Continues!
 
-Spacetastic's platform had reached a steady state. Clusters in the cloud were stable, updates were predictable, and operational overhead had dropped significantly. 
+Our fictional example company, Spacetastic Ltd., has seen their platform reach a steady state. Clusters in the cloud were stable, updates were predictable, and operational overhead had dropped significantly. Everything has been going great since they first deployed [Palette](../../palette/aws/aws.md).
 
 The company is expanding into over 500 locations in the form of touch-screen kiosks. And this expansion has resulted into a new emerging requirement: applications needed to run closer to users. This means deploying infrastructure directly into schools, museums, airports, and other edge environments.
 
 While the environments were new, the requirements were familiar:
 
-- Consistent deployments across locations
+- Consistent deployments across locations while supporting local autonomy
 - Strong security posture
 - Minimal reliance on on-site expertise
 - The ability to roll out updates quickly and safely
