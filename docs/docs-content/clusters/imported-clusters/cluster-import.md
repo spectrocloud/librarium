@@ -37,13 +37,13 @@ Select the mode you want to use when importing a cluster into Palette.
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Click on **Add New Cluster** and select **Import Cluster** in the pop-up box.
+3. Click on **Import Cluster**.
 
 4. Fill out the required information and make your selections:
 
    - Cluster Name - The name of the cluster you want to import.
-   - Cloud Type - Select the infrastructure environment your cluster resides in.
-     - Choose **Amazon** for Amazon EKS, **Google Cloud** for GKE, and **Azure** for AKS.
+   - Cloud Type - Select the Infrastructure as a Service (IaaS) environment your cluster resides in.
+     - Choose **Amazon** for AWS IaaS, **Google Cloud** for GCP IaaS, and **Azure** for Azure IaaS clusters.
      - Select **Generic** if the environment list doesn't contain your specific environment, but be aware of the
        [limitations for generic clusters](./imported-clusters.md#generic-clusters).
    - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
@@ -146,13 +146,15 @@ You now have imported a cluster into Palette with full permissions.
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Click on **Add New Cluster** and select **Import Cluster** in the pop-up box.
+3. Click on **Import Cluster**.
 
 4. Fill out the required information and make the proper selections:
 
    - Cluster Name - The name of the cluster you want to import.
-   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment
-     list doesn't contain your specific environment but be aware of the limitations with generic clusters.
+   - Cloud Type - Select the Infrastructure as a Service (IaaS) environment your cluster resides in.
+     - Choose **Amazon** for AWS IaaS, **Google Cloud** for GCP IaaS, and **Azure** for Azure IaaS clusters.
+     - Select **Generic** if the environment list doesn't contain your specific environment. Be aware of the
+       [limitations for generic clusters](./imported-clusters.md#generic-clusters).
      - Host Path - Used to specify the Certificate Authority (CA) file path for the cluster. This is the location on the
        physical host machine where the CA file is stored.
    - Container Mount Path - Used to specify the container mount path where the CA file is mounted in the container.
