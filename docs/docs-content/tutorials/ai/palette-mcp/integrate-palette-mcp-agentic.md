@@ -39,7 +39,7 @@ Below is a high-level diagram of the agentic workflow.
 
   - git. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
 
-  - A container runtime installed locally, such as [Docker](https://www.docker.com/products/docker-desktop/) or
+  - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
 
   - The Palette MCP server is configured in your environment. Refer to the
@@ -129,8 +129,8 @@ API server.
 Use the freshly created Kind cluster to act as a Palette-deployed cluster, reducing deployment time and removing the
 need real infrastructure.
 
-Open up a web browser and log in to your Palette account. Navigate to the left **Main Menu** and select **Clusters**.
-From the cluster list page, click on **Import Cluster** in the top right corner.
+Open up a web browser and log in to your Palette account. Navigate to the left main menu and select **Clusters**. From
+the cluster list page, click on **Import Cluster** in the top right corner.
 
 ![A view of the cluster list page with the Import Cluster button](/tutorials/ai/palette-mcp/ai_palette-mcp_import-cluser-view.webp)
 
@@ -160,19 +160,19 @@ In the event you need more detailed instructions on how to import a cluster into
 The next step is to deploy a Cluster Profile onto the cluster. For this tutorial, a cluster profile is provided for you
 to use that contains the Hello Universe pack and the Nginx pack.
 
-Navigate back to the Palette UI. From the left **main menu**, select **Profiles** > **Import Cluster Profile**. Paste
-the following snippet into the text area.
+Navigate back to the Palette UI. From the left main menu, select **Profiles** > **Import Cluster Profile**. Paste the
+following snippet into the text area.
 
 <PartialsComponent category="integrate-palette-mcp-agentic" name="cluster-profile-import" />
 
 ![A view of the cluster profile import flow](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_cluster-profile-import.webp)
 
-Click on **Validate** and **Confirm** to create the cluster profile.
+Select **Validate** and **Confirm** to create the cluster profile.
 
 ### Deploy Cluster Profile
 
-Next, you will deploy the add-on cluster profile to the kind cluster. From the cluster profile list view page, select
-the row for the tutorial profile. The details page appears. Then, select **Deploy** .
+Next, deploy the add-on cluster profile to the kind cluster. From the cluster profile list view page, select the row for
+the tutorial profile. The details page appears. Then, select **Deploy**.
 
 ![A view of the user deploying the add-on profile by selecting the tutorial cluster](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_deploy-cluster-profile.webp)
 
@@ -388,8 +388,13 @@ Initializing MCP client...
 Ater finding the Nginx pack in your Palette environment, the workflow prompts you to enter the tags you want to apply to
 the cluster profiles and the active clusters that are using the Nginx pack.
 
-Matches found. Enter tags to apply to matched cluster profiles and active clusters. Supported formats: key:value ->
-nginx:found, date:2026-03-11 single -> review Press Enter with no input to skip tagging.
+```shell hideClipboard title="Workflow Output"
+Matches found. Enter tags to apply to matched cluster profiles and active clusters.
+Supported formats:
+  key:value -> nginx:found, date:2026-03-11
+  single -> review
+Press Enter with no input to skip tagging.
+```
 
 For example purposes, enter the following tags.
 
@@ -435,7 +440,7 @@ profile you created called **tutorial-profile**. The cluster profile now has the
 
 ![The cluster profile details page with the tutorial-profile cluster profile and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster-profile.webp)
 
-Next, navigate to left **main menu** and select **Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. The
+Next, navigate to left main menu and select **Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. The
 cluster also has the two tags `nginx:found` and `review`.
 
 ![The cluster details page with the palette-mcp-agentic-tutorial cluster and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster.webp)
@@ -443,13 +448,12 @@ cluster also has the two tags `nginx:found` and `review`.
 ## Clean-up
 
 Use the following steps to clean up the resources you created for this tutorial. Start by deleting the cluster you
-created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate to the left **main menu** and select
+created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate to the left main menu and select
 **Clusters**. Select the **palette-mcp-agentic-tutorial** cluster. Then, select **Settings** > **Delete Cluster**.
 Confirm the deletion by entering the cluster name when prompted.
 
-Next, navigate to the left **main menu** and select **Cluster Profiles**. Select the **tutorial-profile** cluster
-profile. Then, select the **three-dot Menu** > **Delete**. Confirm the deletion by entering the cluster profile name
-when prompted.
+Next, navigate to the left main menu and select **Cluster Profiles**. Select the **tutorial-profile** cluster profile.
+Then, select the three-dot menu > **Delete**. Confirm the deletion by entering the cluster profile name when prompted.
 
 The last step is to delete the Kind cluster you created. Issue the following command in your terminal.
 
@@ -457,8 +461,8 @@ The last step is to delete the Kind cluster you created. Issue the following com
 kind delete cluster --name palette-mcp-agentic-tutorial
 ```
 
+```shell title="Expected Output"
 Deleting cluster "palette-mcp-agentic-tutorial" ... Deleted nodes: ["palette-mcp-agentic-tutorial-control-plane"]
-
 ```
 
 ## Wrap-up
@@ -480,4 +484,3 @@ required tasks through the Palette MCP server without having to implement custom
 You can use the code in this tutorial as a starting point to create your own agentic workflows that leverage the Palette
 MCP server to interact with your Palette environment. You can craft more complex agentic workflows to solve your
 business problems by combining the Palette MCP server with custom tools, other MCP servers, and custom logic.
-```
