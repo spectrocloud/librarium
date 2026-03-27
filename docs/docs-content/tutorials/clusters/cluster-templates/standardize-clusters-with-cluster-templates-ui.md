@@ -452,8 +452,7 @@ indicator.
 
 Confirm that both clusters upgraded successfully and that Kubecost is deployed and accessible.
 
-From the left main menu, select **Clusters** and select `dev-cluster-aws`. Confirm it has a **Running** status. Select
-the **Profile** tab and confirm the version drop-downs show `1.1.0`.
+From the left main menu, select **Clusters**, then select `dev-cluster-aws`. Verify that the cluster status is **Running**. Select the **Profile** tab and confirm the version drop-downs display `1.1.0`.
 
 Select the **Overview** tab and download the kubeconfig file for `dev-cluster-aws`. This file enables you and other
 users to issue kubectl commands against the host cluster.
