@@ -485,3 +485,22 @@ Once you are done, stop the `kubectl port-forward` command by closing the termin
 Repeat the same Kubecost and cluster profile version checks for `prod-cluster-aws`.
 
 ### Cleanup
+
+Remove all of the resources you created for the tutorial.
+
+From the left main menu, select **Clusters**, then select `dev-cluster-aws`. Select **Settings** and choose **Delete
+Cluster**. Type the cluster name to confirm and select **OK**. The deletion process takes several minutes to complete.
+
+Repeat for `prod-cluster-aws`.
+
+<PartialsComponent category="clusters" name="force-delete-callout" />
+
+Once both clusters are deleted, delete the cluster template. From the left main menu, select **Cluster Configurations**.
+Select the **Templates** tab and select `cluster-template-aws`. Select **Settings** and choose **Delete**. Confirm the
+deletion.
+
+Next, delete the cluster profile. From the left main menu, select **Profiles**. Find `cluster-template-profile-aws` and
+select the **three-dot Menu**. Choose **Delete** and confirm. This removes all versions of the profile.
+
+Finally, delete the maintenance policy. From the left main menu, select **Cluster Configurations**. Select the
+**Policies** tab. Find `cluster-template-policy` and select the **three-dot Menu**. Choose **Delete** and confirm.
