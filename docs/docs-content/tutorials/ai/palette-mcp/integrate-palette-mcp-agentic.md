@@ -32,20 +32,25 @@ Below is a high-level diagram of the agentic workflow.
 
 - Ensure the following software is installed locally on your workstation.
 
-  - Kind installed locally. Use the [Kind Installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
-    guide to install Kind.
-  - uv installed locally. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to
-    install uv.
-  - git installed locally. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
+  - Kind. Use the [Kind Installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) guide to install
+    Kind.
+
+  - uv. Use the [uv Installation](https://docs.astral.sh/uv/getting-started/installation/) guide to install uv.
+
+  - git. Use the [git Installation](https://git-scm.com/downloads) guide to install git.
+
   - A container runtime installed locally, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - The Palette MCP server is deployed in your environment. Refer to the Setup Palette MCP server guide to learn how to
-    deploy the Palette MCP server.
-  - Helm installed locally. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
+
+  - The Palette MCP server is configured in your environment. Refer to the
+    [Palette MCP Server](../../../automation/palette-mcp/palette-mcp.md) section for more information.
+
+  - Helm. Use the [Helm Installation](https://helm.sh/docs/intro/install/) guide to install Helm.
 
 - A Palette account.
+
 - A Palette API key. Check out the
-  [Create a Palette API Key ](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) guide to learn how to
+  [Create a Palette API Key](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) guide to learn how to
   create a Palette API key. guide for further instructions.
 - An OpenAI API key. You can get your OpenAI API key from the
   [OpenAI Platform site](https://platform.openai.com/api-keys).
