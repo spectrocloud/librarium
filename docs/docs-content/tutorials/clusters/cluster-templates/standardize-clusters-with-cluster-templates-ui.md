@@ -481,6 +481,6 @@ the cost analyzer.
 
 Once you are done, stop the `kubectl port-forward` command by closing the terminal window it is executing from.
 
-Repeat the same cluster profile version and Kubecost checks for `prod-cluster-aws`.
+Repeat the same Kubecost and cluster profile version checks for `prod-cluster-aws`.
 
 ### Cleanup
