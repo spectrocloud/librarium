@@ -472,7 +472,7 @@ following command makes it available locally on port `9090`.
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
 ```
 
-Open a browser and navigate to `http://localhost:9090`. The Kubecost dashboard displays cost and resource data for your
+Open a browser window and navigate to `http://localhost:9090`. The Kubecost dashboard displays cost and resource data for your
 cluster. Read more about
 [navigating the Kubecost UI](https://www.ibm.com/docs/en/kubecost/self-hosted/3.x?topic=navigating-kubecost-ui) to make the most of
 the cost analyzer.
