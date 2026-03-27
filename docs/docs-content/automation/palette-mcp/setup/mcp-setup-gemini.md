@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to setup the [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) with the
+This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with the
 [Gemini CLI](https://geminicli.com/).
 
 ## Prerequisites
@@ -16,7 +16,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more information.
+  - The Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more information.
 
 - A Palette account.
 
@@ -27,8 +27,8 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
-5. Start the Gemini CLI in a terminal. Ensure that you trust the folders that the `.env-mcp` file is located in and
-   authenticate with Gemini CLI by following the prompts.
+5. Start the Gemini CLI in a terminal. Ensure that you trust the folder that the `.env-mcp` file is located in and
+   authenticate with the Gemini CLI by following the prompts.
 
    ```shell
    gemini
@@ -69,7 +69,7 @@ Execute the following command to create the `GEMINI.md` file on your machine if 
     ```
 
     Open the file in your preferred text editor and paste the following snippet into the file. Replace the
-    `<local-path>` placeholder with the kubeconfig local path you configured.
+    `<local-path>` placeholder with the kubeconfig local path you configured in **Step 4**.
 
     <PartialsComponent category="palette-mcp" name="example-skill" />
 
@@ -77,8 +77,8 @@ You can now use the Palette MCP server with the Gemini CLI.
 
 ## Validation
 
-1. Start the Gemini CLI in a terminal. Ensure that you trust the folders that the `.env-mcp` file is located in and
-   authenticate with Gemini CLI by following the prompts.
+1. Start the Gemini CLI in a terminal. Ensure that you trust the folder that the `.env-mcp` file is located in and
+   authenticate with the Gemini CLI by following the prompts.
 
    ```shell
    gemini

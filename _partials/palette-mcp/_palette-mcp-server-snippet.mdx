@@ -30,6 +30,6 @@ Paste the following snippet in the file, replacing the placeholders with your lo
    
    :::warning
 
-   The `kubeconfig` folder you mount to the container will be wiped when the container is stopped and started again. The Palette MCP server automatically removes the kubeconfig files from its `/tmp/kubeconfig` folder when the container is stopped.
+   The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The Palette MCP server automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
 
    :::

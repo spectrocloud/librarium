@@ -7,7 +7,7 @@ sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to set up the [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) with
+This guide covers how to set up the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
 [Claude Code](https://code.claude.com/docs/en/overview).
 
 ## Prerequisites
@@ -28,9 +28,8 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
 <PartialsComponent category="palette-mcp" name="folder-setup" />
 
 5. Execute the following command to add the Palette MCP server to Claude Code, replacing the placeholders with your
-   values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env.mcp` file in the placeholders.
+   values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env.mcp` file.
 
-   If you want to use Podman, replace the command with `"podman"`.
 
    <Tabs groupId="mcp-setup">
 
@@ -62,9 +61,8 @@ This guide covers how to set up the [Palette MCP Server](https://github.com/spec
 
    :::warning
 
-   The `kubeconfig` folder you mount to the container will be wiped when the container is stopped and started again. The
-   Palette MCP server automatically removes the kubeconfig files from its `/tmp/kubeconfig` folder when the container is
-   stopped.
+   The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The
+   Palette MCP server automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
 
    :::
 

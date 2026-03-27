@@ -7,7 +7,7 @@ sidebar_position: 20
 tags: ["ai", "mcp", "automation"]
 ---
 
-This guide covers how to setup the [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) with
+This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
 [Cursor](https://cursor.com/get-started).
 
 ## Prerequisites
@@ -16,7 +16,7 @@ This guide covers how to setup the [Palette MCP Server](https://github.com/spect
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - Cursor. Refer to the [Cursor Download](https://cursor.com/get-started) page for further information.
+  - Cursor. Refer to the [Cursor Download](https://cursor.com/get-started) page for more information.
 
 - A Palette account.
 
