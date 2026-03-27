@@ -121,6 +121,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.40.
 The following component updates are applicable to this release:
 
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -135,6 +136,7 @@ The following component updates are applicable to this release:
 The following component updates are applicable to this release:
 
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Improvements
 
@@ -267,6 +269,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Improvements
 
@@ -432,6 +435,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -446,6 +450,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
 
@@ -847,6 +852,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1060,6 +1066,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1079,6 +1086,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1116,6 +1124,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Features
 
@@ -1150,6 +1159,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1593,6 +1603,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1709,6 +1720,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 #### Features
 
@@ -1914,6 +1926,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1955,6 +1968,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1988,6 +2002,7 @@ The following component updates are applicable to this release:
 - [March 6, 2026 - Component Updates](#component-updates-2026-10) <!-- omit in toc -->
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
+- [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 
 ### Security Notices
 
