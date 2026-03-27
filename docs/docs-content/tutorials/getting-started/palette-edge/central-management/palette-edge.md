@@ -46,6 +46,9 @@ The requirements of the application haven't changed: they still deploy to a sing
 >The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that Spacetastic will face. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a distance, none of us onsite." 
 >
 >Meera nodded in agreement, and added, "We also need to maintain our security stance. With these being deployed remotely, it makes me nervous that security will be more difficult."
+>
+>
+>"Team, I think Palette might have the answer we need. Let's take a look," says Kai with a determined look.
 
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge-roadmap_4-8.webp)

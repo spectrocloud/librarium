@@ -46,6 +46,8 @@ The requirements of the application haven't changed: they still deploy to a sing
 >The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that Spacetastic will face. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a distance, none of us onsite, and some of these sites have strict requirements not to be connected to the internet." 
 >
 >Meera nodded in agreement, and added, "So... no constant connection to Palette? That is a challenge. We also can't forget the need to maintain our security stance. With these being deployed remotely, it makes me nervous that security will be more difficult."
+>
+>"Team, I think Palette might have the answer we need. Let's take a look," says Kai with a determined look.
 
 
 
