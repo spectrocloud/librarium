@@ -15,9 +15,11 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.8.6 - 4.8.40.
 
-| Component                                          | Version |
-| -------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md) | 4.8.6   |
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.8.6   |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.7.38  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.7.38  |
 
 ### Bug Fixes
 
