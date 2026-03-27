@@ -43,8 +43,8 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
 
 1. Open your MCP client.
 
-2. Send a query asking for information about your Palette cluster profiles. For example, you can ask "Which Palette cluster
-   profiles have the `env:prod` tag?" to learn which cluster profiles have been created with a particular
+2. Send a query asking for information about your Palette cluster profiles. For example, you can ask "Which Palette
+   cluster profiles have the `env:prod` tag?" to learn which cluster profiles have been created with a particular
    [cluster profile tag](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
    ```shell hideClipboard title="Example Output"
@@ -114,8 +114,8 @@ The `getKubeconfig` tool downloads kubeconfig files.
 
    Kubectl will only function correctly if you have added an Agent Skill to your MCP client that instructs it to use the
    local kubeconfig file to connect to the cluster. Refer to the applicable setup guide for
-   [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
-   the [Gemini CLI](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP client.
+   [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
+   [Gemini CLI](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP client.
 
    :::
 
@@ -160,8 +160,8 @@ The `gather_or_delete_clusterprofiles` tool deletes cluster profiles. The `gathe
 clusters.
 
 1. Open the `.env-mcp` file you configured during MCP server setup in your preferred text editor. Refer to the
-   applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
-   the [Gemini CLI](./setup/mcp-setup-gemini.md) for more information.
+   applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
+   [Gemini CLI](./setup/mcp-setup-gemini.md) for more information.
 
    Enable dangerous actions to allow the MCP server to delete resources. Save and close the file.
 

@@ -16,7 +16,8 @@ This guide covers how to setup the [Palette MCP server](https://github.com/spect
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - The Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more information.
+  - The Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more
+    information.
 
 - A Palette account.
 

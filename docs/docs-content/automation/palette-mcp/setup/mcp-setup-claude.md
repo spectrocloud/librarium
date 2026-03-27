@@ -30,7 +30,6 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
 5. Execute the following command to add the Palette MCP server to Claude Code, replacing the placeholders with your
    values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env.mcp` file.
 
-
    <Tabs groupId="mcp-setup">
 
    <TabItem label="Docker" value="docker">
@@ -61,8 +60,8 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
 
    :::warning
 
-   The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The
-   Palette MCP server automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
+   The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The Palette MCP server
+   automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
 
    :::
 
