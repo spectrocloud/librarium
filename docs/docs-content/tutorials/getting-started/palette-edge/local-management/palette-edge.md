@@ -41,18 +41,20 @@ Each location effectively will become a small, self-contained environment. At sc
 
 ![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-discussion_4-8.webp)
 
-The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that will be faced.
+The requirements of the application haven't changed: they still deploy to a single cloud provider, they rely on Kubernetes for the reliability and scalability of their systems, and they still must ensure the systems are secure, patched regularly, scalable, and meet a reliability SLA of at least 99% uptime. 
 
->"We cannot manage these manually," Wren emphasizes. "Too many locations, too great a distance, none of us onsite, and some of these sites have strict requirements not to be connected to the internet." 
+>The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that Spacetastic will face. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a distance, none of us onsite, and some of these sites have strict requirements not to be connected to the internet." 
 >
->Meera nodded in agreement, and added, "So... no constant connection to Palette? That is a challenge. We also can't forget the need to maintain our security stance. We cannot sacrifice this just to deploy."
+>Meera nodded in agreement, and added, "So... no constant connection to Palette? That is a challenge. We also can't forget the need to maintain our security stance. With these being deployed remotely, it makes me nervous that security will be more difficult."
 
 
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-locally-edge-roadmap_4-8.webp)
 
-Explore the following tutorials to learn how to deploy your first locally managed Edge cluster. Each tutorial is
-designed to guide you step-by-step, building on the concepts introduced in the previous one.
+## Get Started
+
+In this section, you learn how to deploy your first locally managed Edge cluster with Palette. Each
+tutorial is designed to guide you step-by-step, building on the concepts introduced in the previous one.
 
 <!-- vale off -->
 

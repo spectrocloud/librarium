@@ -16,9 +16,9 @@ introducing you to centrally managed Palette Edge workflows and capabilities.
 
 ## 🧑‍🚀 Spacetastic Journey Continues!
 
-Spacetastic's platform had reached a steady state. Clusters in the cloud were stable, updates were predictable, and operational overhead had dropped significantly. 
+Our fictional example company, Spacetastic Ltd., has seen their platform reach a steady state. Clusters in the cloud were stable, updates were predictable, and operational overhead had dropped significantly. Everything has been going great since they first deployed [Palette](../../palette/aws/aws.md).
 
-The company is expanding into over 500 locations in the form of touch-screen kiosks. And this expansion has resulted into a new emerging requirement: applications needed to run closer to users. This means deploying infrastructure directly into schools, museums, airports, and other edge environments.
+The company is expanding into over 500 locations in the form of informational kiosks. And this expansion has resulted into a new emerging requirement: applications needed to run closer to users. This means deploying infrastructure directly into schools, museums, airports, and other edge environments.
 
 While the environments were new, the requirements were familiar:
 
@@ -41,16 +41,18 @@ Each location effectively will become a small, self-contained environment. At sc
 
 ![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-stickies_4-8.webp)
 
-The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that Spacetastic will face.
+The requirements of the application haven't changed: they still deploy to a single cloud provider, they rely on Kubernetes for the reliability and scalability of their systems, and they still must ensure the systems are secure, patched regularly, scalable, and meet a reliability SLA of at least 99% uptime. 
 
->"We cannot manage these manually," Wren emphasizes. "Too many locations, too great a distance, none of us onsite." 
+>The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that Spacetastic will face. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a distance, none of us onsite." 
 >
->Meera nodded in agreement, and added, "We also need to maintain our security stance. We cannot sacrifice this just to deploy."
+>Meera nodded in agreement, and added, "We also need to maintain our security stance. With these being deployed remotely, it makes me nervous that security will be more difficult."
 
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge-roadmap_4-8.webp)
 
-Explore the following tutorials to learn how to deploy your first centrally managed Edge cluster with Palette. Each
+## Get Started
+
+In this section, you learn how to deploy your first centrally managed Edge cluster with Palette. Each
 tutorial is designed to guide you step-by-step, building on the concepts introduced in the previous one.
 
 <!-- vale off -->
