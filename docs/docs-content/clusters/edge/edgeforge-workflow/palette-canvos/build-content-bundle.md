@@ -24,7 +24,7 @@ optimization.
 The diagram below displays the overarching steps to build the Edge installer ISO using a content bundle. The diagram
 also highlights the primary prerequisites to create a content bundle.
 
-![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching.webp)
+![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching_4-8.webp)
 
 ## Benefits of Content Bundle
 
