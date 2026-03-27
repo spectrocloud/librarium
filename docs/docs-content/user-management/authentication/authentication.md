@@ -23,16 +23,11 @@ programmatic purposes.
 
 ## UI Authentication
 
-<!-- vale off -->
+You can log in to the Palette SaaS platform by visiting the console URL at `http://console.spectrocloud.com`. For
+Palette VerteX SaaS, log in at `https://console.vertex.spectrocloud.com`. For self-hosted Palette or Palette VerteX, log
+in using the URL provided by your system administrator, such as `palette.abc-company.com`.
 
-You can log into Palette SaaS platform by visiting the console URL at
-[http://console.spectrocloud.com](https://console.spectrocloud.com). For VerteX SaaS, log in at (??????) If you are a
-user of a self-hosted Palette or Palette VerteX, then you should use the URL provided by your system administrator, such
-as `palette.abc-company.com.`
-
-To learn more the UI authentication, refer to the [UI Authentication](./ui-autentication.md) section.
-
-<!-- vale on -->
+To learn more about UI authentication, refer to the [UI Authentication](./ui-autentication.md) section.
 
 ## API Key
 

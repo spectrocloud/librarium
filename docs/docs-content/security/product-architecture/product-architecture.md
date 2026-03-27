@@ -19,24 +19,11 @@ can host and manage in a self-hosted environment.
 
 ### Deployment Models
 
-Palette supports three architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which includes support
-for air-gapped environments. These flexible deployment models allow us to adapt to existing requirements in terms of
-separating responsibilities and network restrictions.
+<PartialsComponent category="architecture" name="deployment-models" />
 
-| **Deployment Model**  | **Description**                                                                                                                                                                                                                          |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Multi-Tenant SaaS** | The management plane is hosted in AWS and managed by Spectro Cloud. Each customer operates as an isolated tenant with enforced data isolation and access controls. Spectro Cloud controls management plane upgrades.                     |
-| **Dedicated SaaS**    | The management plane is hosted as a dedicated instance in a customer-selected cloud and region within Spectro Cloud’s cloud account. Spectro Cloud manages the instance, and the customer controls when to upgrade the management plane. |
-| **Self-Hosted**       | The management plane is hosted in the customer’s environment, such as on-premises VMware vSphere, OpenStack, bare metal, or a public cloud account owned by the customer.                                                                |
+#### SaaS Region Availability
 
-### SaaS Region Availability
-
-| **Deployment Model**  | **Geography** | **Palette Regions**                       | **Palette VerteX Regions** |
-| --------------------- | ------------- | ----------------------------------------- | -------------------------- |
-| **Multi-Tenant SaaS** | US            | `us-east-1`, `us-west-1`, and `us-west-2` | `us-gov-west-1`            |
-| **Multi-Tenant SaaS** | EU            | `eu-central-1` and `eu-west-1`            | Not available              |
-| **Dedicated SaaS**    | US            | Customer decides                          | Not available              |
-| **Dedicated SaaS**    | EU            | Customer decides                          | Not available              |
+<PartialsComponent category="architecture" name="saas-regions" />
 
 ![A diagram of Palette deployment models](/architecture_architecture-overview-deployment-models.webp)
 

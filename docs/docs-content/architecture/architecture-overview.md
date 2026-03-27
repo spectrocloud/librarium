@@ -7,25 +7,20 @@ hide_table_of_contents: false
 sidebar_position: 0
 ---
 
-Palette and Palette VerteX support multiple deployment models. Availability depends on the edition and deployment
-geography.
+Palette provides a centralized management plane that orchestrates Kubernetes clusters across public clouds, private data
+centers, and edge environments. The management plane handles cluster provisioning, monitoring, and Day-2 operations,
+while a lightweight agent installed in each workload cluster enforces the desired state locally.
+
+This section covers the deployment models available for hosting the Palette management plane, the data flow between
+Palette and your workload clusters, and the internal communication mechanisms that keep the platform reliable at scale.
 
 ## Deployment Models
 
-| **Deployment Model**  | **Description**                                                                                                                                                                                                                          |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Multi-Tenant SaaS** | The management plane is hosted in AWS and managed by Spectro Cloud. Each customer operates as an isolated tenant with enforced data isolation and access controls. Spectro Cloud controls management plane upgrades.                     |
-| **Dedicated SaaS**    | The management plane is hosted as a dedicated instance in a customer-selected cloud and region within Spectro Cloud’s cloud account. Spectro Cloud manages the instance, and the customer controls when to upgrade the management plane. |
-| **Self-Hosted**       | The management plane is hosted in the customer’s environment, such as on-premises VMware vSphere, OpenStack, bare metal, or a public cloud account owned by the customer.                                                                |
+<PartialsComponent category="architecture" name="deployment-models" />
 
 ### SaaS Region Availability
 
-| **Deployment Model**  | **Geography** | **Palette Regions**                       | **Palette VerteX Regions** |
-| --------------------- | ------------- | ----------------------------------------- | -------------------------- |
-| **Multi-Tenant SaaS** | US            | `us-east-1`, `us-west-1`, and `us-west-2` | `us-gov-west-1`            |
-| **Multi-Tenant SaaS** | EU            | `eu-central-1` and `eu-west-1`            | Not available              |
-| **Dedicated SaaS**    | US            | Customer decides                          | Not available              |
-| **Dedicated SaaS**    | EU            | Customer decides                          | Not available              |
+<PartialsComponent category="architecture" name="saas-regions" />
 
 ![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.webp)
 
