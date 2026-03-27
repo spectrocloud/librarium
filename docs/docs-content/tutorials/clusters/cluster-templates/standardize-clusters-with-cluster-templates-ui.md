@@ -452,14 +452,15 @@ indicator.
 
 Confirm that both clusters upgraded successfully and that Kubecost is deployed and accessible.
 
-From the left main menu, select **Clusters**, then select `dev-cluster-aws`. Verify that the cluster status is **Running**. Select the **Profile** tab and confirm the version drop-downs display `1.1.0`.
+From the left main menu, select **Clusters**, then select `dev-cluster-aws`. Verify that the cluster status is
+**Running**. Select the **Profile** tab and confirm the version drop-downs display `1.1.0`.
 
 Select the **Overview** tab and download the kubeconfig file for `dev-cluster-aws`. This file enables you and other
 users to issue kubectl commands against the host cluster.
 
 ![Download kubeconfig from cluster overview](/download-kubeconfig.webp)
 
-Open a terminal window and set the `KUBECONFIG` environment variable to point to the file you downloaded. 
+Open a terminal window and set the `KUBECONFIG` environment variable to point to the file you downloaded.
 
 ```shell
 export KUBECONFIG=<path-to-kubeconfig>
@@ -472,10 +473,10 @@ following command makes it available locally on port `9090`.
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
 ```
 
-Open a browser window and navigate to `http://localhost:9090`. The Kubecost dashboard displays cost and resource data for your
-cluster. Read more about
-[navigating the Kubecost UI](https://www.ibm.com/docs/en/kubecost/self-hosted/3.x?topic=navigating-kubecost-ui) to make the most of
-the cost analyzer.
+Open a browser window and navigate to `http://localhost:9090`. The Kubecost dashboard displays cost and resource data
+for your cluster. Read more about
+[navigating the Kubecost UI](https://www.ibm.com/docs/en/kubecost/self-hosted/3.x?topic=navigating-kubecost-ui) to make
+the most of the cost analyzer.
 
 ![Image that shows the Kubecost UI](/getting-started/vmware/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
 
