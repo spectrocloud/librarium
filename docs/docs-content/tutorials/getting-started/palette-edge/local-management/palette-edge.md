@@ -27,6 +27,8 @@ While the environments were new, the requirements were familiar:
 - Minimal reliance on on-site expertise
 - The ability to roll out updates quickly and safely
 
+![locally managed edge architecture for spacetastic](../../../../../../static/assets/docs/images/getting-started/getting-started_landing-edge-local_4-8.webp)
+
 Each location effectively will become a small, self-contained environment. At scale, this introduces a new challenge: managing hundreds of distributed clusters without increasing operational complexity.
 
 >Anya and Wren came into the office, vibrating with excitement. "We're going physical!", Anya exclaimed. 
@@ -37,7 +39,7 @@ Each location effectively will become a small, self-contained environment. At sc
 >
 >Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything centrally?" 
 
-![locally managed edge architecture for spacetastic](../../../../../../static/assets/docs/images/getting-started/getting-started_landing-edge-local_4-8.webp)
+![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-discussion_4-8.webp)
 
 The meeting room whiteboard was filled. The discussion has highlighted some of the challenges that will be faced.
 
