@@ -462,7 +462,7 @@ users to issue kubectl commands against the host cluster.
 Open a terminal window and set the `KUBECONFIG` environment variable to point to the file you downloaded. 
 
 ```shell
-export KUBECONFIG=~/Downloads/admin.dev-cluster-aws.kubeconfig
+export KUBECONFIG=<path-to-kubeconfig>
 ```
 
 Forward the Kubecost UI to your local machine. The Kubecost dashboard is not exposed externally by default. The
