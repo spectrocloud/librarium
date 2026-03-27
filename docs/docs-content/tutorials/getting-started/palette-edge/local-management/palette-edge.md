@@ -14,6 +14,8 @@ Edge cluster, such as building the necessary artifacts and preparing the host. T
 Getting Started section are centered around a fictional case study company. This approach gives you a solution focused
 approach, while introducing you to locally managed Palette Edge workflows and capabilities.
 
+<!-- vale off -->
+
 ## 🧑‍🚀 Spacetastic Journey Continues!
 
 Our fictional example company, Spacetastic Ltd., has seen their platform reach a steady state. Clusters in the cloud
