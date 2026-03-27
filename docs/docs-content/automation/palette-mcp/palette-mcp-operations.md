@@ -12,22 +12,22 @@ The Palette MCP server contains the following tools that you can leverage for yo
 - `gather_or_delete_clusterprofiles` - Fetches information about or deletes
   [cluster profiles](../../profiles/profiles.md).
 - `gather_or_delete_clusters` - Fetches information about or deletes [clusters](../../clusters/clusters.md).
-- `getKubeconfig` - Downloads cluster [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) files.
+- `getKubeconfig` - Downloads cluster [kubeconfig](../../clusters/cluster-management/kubeconfig.md) files.
 - `search_and_manage_resource_tags` - Manages resource tags for cluster profiles, clusters,
   [Edge hosts](../../clusters/edge/edge.md), [cluster templates](../../cluster-templates/cluster-templates.md), and
   [cluster templates policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
 
 This guide provides examples of how to use the Palette MCP server using
 [Claude Code](https://code.claude.com/docs/en/overview) and the Claude Sonnet 4.6 model. You can use an MCP client and
-model suits your needs.
+model that suits your needs.
 
 ## Prerequisites
 
 - Ensure the following software is installed locally on your workstation:
 
   - The Palette MCP server configured and set up. Refer to the applicable setup guide for
-    [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
-    [Gemini](./setup/mcp-setup-gemini.md).
+    [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or the
+    [Gemini CLI](./setup/mcp-setup-gemini.md).
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
@@ -43,7 +43,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
 
 1. Open your MCP client.
 
-2. Send a query asking for information about Palette cluster profiles. For example, you can ask "Which Palette cluster
+2. Send a query asking for information about your Palette cluster profiles. For example, you can ask "Which Palette cluster
    profiles have the `env:prod` tag?" to learn which cluster profiles have been created with a particular
    [cluster profile tag](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md).
 
@@ -63,7 +63,7 @@ The `gather_or_delete_clusterprofiles` tool lists cluster profiles. The `gather_
    └─────────────────────┴─────────┴────────────────────────────────────────────────────────────────────┘
    ```
 
-3. Send a query asking for information about Palette clusters. For example, you can ask "Which Palette clusters are
+3. Send a query asking for information about your Palette clusters. For example, you can ask "Which Palette clusters are
    deployed to AWS?" to list your [AWS clusters](../../clusters/public-cloud/aws/aws.md).
 
    ```shell hideClipboard title="Example Output"
@@ -93,8 +93,7 @@ The `getKubeconfig` tool downloads kubeconfig files.
    your running clusters. For example, you can ask "Please download the kubeconfig file for the `<cluster-name>` Palette
    cluster."
 
-   Replace the placeholders with your cluster name and path to the kubeconfig folder you configured in the MCP server
-   setup.
+   Replace the placeholder with your cluster name.
 
    ```shell hideClipboard title="Example Output"
    ⏺ palette - getKubeconfig (MCP)(cluster_uid: "69c401bf35d56c1812c5a00f")
@@ -113,10 +112,10 @@ The `getKubeconfig` tool downloads kubeconfig files.
 
    :::info
 
-   Kubectl will only function correctly if you have added an Agent skill to your MCP tool that instructs it to use the
+   Kubectl will only function correctly if you have added an Agent Skill to your MCP client that instructs it to use the
    local kubeconfig file to connect to the cluster. Refer to the applicable setup guide for
    [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
-   [Gemini](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP tool.
+   the [Gemini CLI](./setup/mcp-setup-gemini.md) to learn how to configure an agent skill for your MCP client.
 
    :::
 
@@ -162,7 +161,7 @@ clusters.
 
 1. Open the `.env-mcp` file you configured during MCP server setup in your preferred text editor. Refer to the
    applicable setup guide for [Claude](./setup/mcp-setup-claude.md), [Cursor](./setup/mcp-setup-cursor.md), or
-   [Gemini](./setup/mcp-setup-gemini.md) for more information.
+   the [Gemini CLI](./setup/mcp-setup-gemini.md) for more information.
 
    Enable dangerous actions to allow the MCP server to delete resources. Save and close the file.
 
@@ -170,7 +169,7 @@ clusters.
    ALLOW_DANGEROUS_ACTIONS=1
    ```
 
-2. Open your MCP tool.
+2. Open your MCP client.
 
 3. Send a query to delete a Palette cluster profile. For example, you can say "Delete the `<cluster-profile-name>`
    Palette cluster profile."
