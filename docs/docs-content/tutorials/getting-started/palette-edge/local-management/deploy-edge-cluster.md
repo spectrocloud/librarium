@@ -231,12 +231,19 @@ section to learn more about Palette Edge.
 
 After going through the steps in the tutorial, Kai is confident in locally managed Palette Edge's capabilities.
 
->"What have you found out, Kai?" says Meera walking over to Kai's desk. 
+> "What have you found out, Kai?" says Meera walking over to Kai's desk.
 >
->"It was surprisingly simple to deploy and connect these Edge devices remotely, even if they are not managed directly by Palette," says Kai with a enthusiastic nod. "In fact, it feels no different than when we deployed our clusters to the Cloud. Even our security is covered through their pack updates and scanning capabilities. Relying on this kind of tooling is invaluable to security-conscious engineers like us."
+> "It was surprisingly simple to deploy and connect these Edge devices remotely, even if they are not managed directly
+> by Palette," says Kai with a enthusiastic nod. "In fact, it feels no different than when we deployed our clusters to
+> the Cloud. Even our security is covered through their pack updates and scanning capabilities. Relying on this kind of
+> tooling is invaluable to security-conscious engineers like us."
 
-"Excellent! These capabilities will be a great for expanding our existing systems at Spacetastic," says Meera with a big grin.
+"Excellent! These capabilities will be a great for expanding our existing systems at Spacetastic," says Meera with a big
+grin.
 
-"I'm so glad that we found a platform that can support everyone!" says Kai. "There is so much more to explore though. I will keep reading through the Getting Started section and find out what additional capabilities Palette provides."
+"I'm so glad that we found a platform that can support everyone!" says Kai. "There is so much more to explore though. I
+will keep reading through the Getting Started section and find out what additional capabilities Palette provides."
 
-"Good thinking, Kai," says Meera, nodding. "We should maximize all of Palette's features now that we have implemented it in production. We've got big ideas and goals on our company roadmap, so let's find out how Palette can help us deliver them."
+"Good thinking, Kai," says Meera, nodding. "We should maximize all of Palette's features now that we have implemented it
+in production. We've got big ideas and goals on our company roadmap, so let's find out how Palette can help us deliver
+them."

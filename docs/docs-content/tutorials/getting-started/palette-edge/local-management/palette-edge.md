@@ -8,17 +8,21 @@ sidebar_position: 0
 tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
-This section gives you an overview of how to get started with locally managed Palette Edge. You will learn how Palette simplifies the
-deployment of Kubernetes clusters at the edge, along with all the steps required to deploy your first Edge cluster, such
-as building the necessary artifacts and preparing the host. The concepts you learn about in the Getting Started section
-are centered around a fictional case study company. This approach gives you a solution focused approach, while
-introducing you to locally managed Palette Edge workflows and capabilities.
+This section gives you an overview of how to get started with locally managed Palette Edge. You will learn how Palette
+simplifies the deployment of Kubernetes clusters at the edge, along with all the steps required to deploy your first
+Edge cluster, such as building the necessary artifacts and preparing the host. The concepts you learn about in the
+Getting Started section are centered around a fictional case study company. This approach gives you a solution focused
+approach, while introducing you to locally managed Palette Edge workflows and capabilities.
 
 ## 🧑‍🚀 Spacetastic Journey Continues!
 
-Our fictional example company, Spacetastic Ltd., has seen their platform reach a steady state. Clusters in the cloud were stable, updates were predictable, and operational overhead had dropped significantly. Everything has been going great since they first deployed [Palette](../../palette/aws/aws.md).
+Our fictional example company, Spacetastic Ltd., has seen their platform reach a steady state. Clusters in the cloud
+were stable, updates were predictable, and operational overhead had dropped significantly. Everything has been going
+great since they first deployed [Palette](../../palette/aws/aws.md).
 
-The company is expanding into over 500 locations in the form of touch-screen kiosks. And this expansion has resulted into a new emerging requirement: applications needed to run closer to users. This means deploying infrastructure directly into schools, museums, airports, and other edge environments.
+The company is expanding into over 500 locations in the form of touch-screen kiosks. And this expansion has resulted
+into a new emerging requirement: applications needed to run closer to users. This means deploying infrastructure
+directly into schools, museums, airports, and other edge environments.
 
 While the environments were new, the requirements were familiar:
 
@@ -29,34 +33,41 @@ While the environments were new, the requirements were familiar:
 
 ![locally managed edge architecture for spacetastic](../../../../../../static/assets/docs/images/getting-started/getting-started_landing-edge-local_4-8.webp)
 
-Each location effectively will become a small, self-contained environment. At scale, this introduces a new challenge: managing hundreds of distributed clusters without increasing operational complexity.
+Each location effectively will become a small, self-contained environment. At scale, this introduces a new challenge:
+managing hundreds of distributed clusters without increasing operational complexity.
 
->Anya and Wren came into the office, vibrating with excitement. "We're going physical!", Anya exclaimed. 
+> Anya and Wren came into the office, vibrating with excitement. "We're going physical!", Anya exclaimed.
 >
->Meera peered over their screen, with a quizzical look. "Define physical."
+> Meera peered over their screen, with a quizzical look. "Define physical."
 >
->Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud clusters."
+> Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud
+> clusters."
 >
->Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything centrally?" 
+> Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we
+> treat edge like cloud -- just smaller -- and manage everything centrally?"
 
 ![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-discussion_4-8.webp)
 
-The requirements of the application haven't changed: they still deploy to a single cloud provider, they rely on Kubernetes for the reliability and scalability of their systems, and they still must ensure the systems are secure, patched regularly, scalable, and meet a reliability SLA of at least 99% uptime. 
+The requirements of the application haven't changed: they still deploy to a single cloud provider, they rely on
+Kubernetes for the reliability and scalability of their systems, and they still must ensure the systems are secure,
+patched regularly, scalable, and meet a reliability SLA of at least 99% uptime.
 
->The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that Spacetastic will face. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a distance, none of us onsite, and some of these sites have strict requirements not to be connected to the internet." 
+> The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that
+> Spacetastic will face. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a
+> distance, none of us onsite, and some of these sites have strict requirements not to be connected to the internet."
 >
->Meera nodded in agreement, and added, "So... no constant connection to Palette? That is a challenge. We also can't forget the need to maintain our security stance. With these being deployed remotely, it makes me nervous that security will be more difficult."
+> Meera nodded in agreement, and added, "So... no constant connection to Palette? That is a challenge. We also can't
+> forget the need to maintain our security stance. With these being deployed remotely, it makes me nervous that security
+> will be more difficult."
 >
->"Team, I think Palette might have the answer we need. Let's take a look," says Kai with a determined look.
-
-
+> "Team, I think Palette might have the answer we need. Let's take a look," says Kai with a determined look.
 
 ![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-locally-edge-roadmap_4-8.webp)
 
 ## Get Started
 
-In this section, you learn how to deploy your first locally managed Edge cluster with Palette. Each
-tutorial is designed to guide you step-by-step, building on the concepts introduced in the previous one.
+In this section, you learn how to deploy your first locally managed Edge cluster with Palette. Each tutorial is designed
+to guide you step-by-step, building on the concepts introduced in the previous one.
 
 <!-- vale off -->
 
