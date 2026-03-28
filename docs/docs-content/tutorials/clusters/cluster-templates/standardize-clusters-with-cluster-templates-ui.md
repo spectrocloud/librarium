@@ -504,3 +504,14 @@ select the three-dot menu. Choose **Delete** and confirm. This removes all versi
 
 Finally, delete the maintenance policy. From the left main menu, select **Cluster Configurations**. Select the
 **Policies** tab. Find `cluster-template-policy` and select the three-dot menu. Choose **Delete** and confirm.
+
+### Wrap-Up
+
+In this tutorial, you learned how to enforce consistent configuration and manage upgrades across multiple clusters.
+First, you created a cluster profile with a profile variable and a maintenance policy. Next, you combined them into a
+cluster template and deployed dev and prod clusters from it with environment-specific variable values. Then, you created
+a new profile version with Kubecost and updated the template to reference it. Finally, you upgraded both clusters
+simultaneously and validated the changes.
+
+We encourage you to check out the [Cluster Templates](../../../cluster-templates/cluster-templates.md) documentation to
+discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale.
