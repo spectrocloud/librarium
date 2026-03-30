@@ -25,7 +25,7 @@ great since they first deployed [Palette](../../palette/aws/aws.md).
 The company is expanding into over 500 locations through informational kiosks. This expansion means that applications
 need to run closer to users, directly into schools, museums, airports, and other edge environments.
 
-The team need a solution that fulfils the following requirements:
+The team needs a solution that fulfils the following requirements:
 
 - Consistent deployments across locations
 - Strong security posture
@@ -34,21 +34,20 @@ The team need a solution that fulfils the following requirements:
 
 ![centrally managed edge architecture for spacetastic](../../../../../../static/assets/docs/images/getting-started/getting-started_landing-edge-central_4-8.webp)
 
-Each location effectively becomed a small, self-contained environment. At scale, this introduces the challenge of
+Each location effectively becomes a small, self-contained environment. At scale, this introduces the challenge of
 managing hundreds of distributed clusters without increasing operational complexity.
 
 > Anya and Wren came into the office, vibrating with excitement. "We've got the funding and the expansion is going
 > ahead!", Anya announces.
 >
-> Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud
-> clusters."
+> Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud clusters."
 >
 > Kai nods knowingly. As a Platform Engineer, they recognize the challenges that come with rapid growth. "What if we
 > treat edge like cloud -- just smaller -- and manage everything centrally?"
 
 ![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-stickies_4-8.webp)
 
-The requirements of the application haven't changed. Spacetastic still deploy to a single cloud provider, they rely on
+The requirements of the application haven't changed. Spacetastic still deploys to a single cloud provider, they rely on
 Kubernetes for the reliability and scalability of their systems, and must ensure the systems are secure, patched
 regularly, scalable, and meet a reliability SLA of at least 99% uptime.
 
