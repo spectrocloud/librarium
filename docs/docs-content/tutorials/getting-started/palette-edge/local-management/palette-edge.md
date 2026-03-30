@@ -32,8 +32,6 @@ The team needs a solution the requirements were familiar:
 - Minimal reliance on on-site expertise
 - The ability to roll out updates quickly and safely
 
-![locally managed edge architecture for spacetastic](/getting-started/getting-started_landing-edge-local_4-8.webp)
-
 Each location effectively becomes a small, self-contained environment. At scale, this introduces the challenge of
 managing hundreds of distributed clusters without increasing operational complexity.
 
