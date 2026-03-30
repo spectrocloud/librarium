@@ -157,36 +157,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
-## March 27, 2026 - Component Updates {#component-updates-2026-13}
-
-The following components have been updated for Palette version 4.8.6 - 4.8.40.
-
-| Component                                                                                             | Version |
-| ----------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.8.6   |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.7.38  |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.7.38  |
-
-### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3774 -->
-<!-- prettier-ignore-start -->
-
-- Fixed an issue that caused <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack upgrades from version 1.16.2 to version 1.18.1 to fail on [Edge clusters](../clusters/edge/edge.md).
-
-<!-- prettier-ignore-end -->
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-274 -->
-
-- Fixed an issue that caused Kubernetes
-  [non-airgap self-Hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md)
-  version 4.8.13 installation failures due to an invalid Custom Resource Definition (CRD) schema.
-
 ### Packs
 
 #### Pack Notes
-
-<<<<<<< HEAD
 
 #### OS
 
@@ -220,7 +193,34 @@ The following components have been updated for Palette version 4.8.6 - 4.8.40.
 
 #### Deprecations and Removals
 
-=======
+## March 27, 2026 - Component Updates {#component-updates-2026-13}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.40.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.8.6   |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.7.38  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.7.38  |
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3774 -->
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack upgrades from version 1.16.2 to version 1.18.1 to fail on [Edge clusters](../clusters/edge/edge.md).
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-274 -->
+
+- Fixed an issue that caused Kubernetes
+  [non-airgap self-Hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md)
+  version 4.8.13 installation failures due to an invalid Custom Resource Definition (CRD) schema.
+
+### Packs
+
+#### Pack Notes
 
 <!-- prettier-ignore-start -->
 
