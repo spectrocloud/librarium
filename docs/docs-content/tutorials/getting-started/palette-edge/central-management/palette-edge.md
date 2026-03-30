@@ -40,7 +40,8 @@ managing hundreds of distributed clusters without increasing operational complex
 > Anya and Wren came into the office, vibrating with excitement. "We've got the funding and the expansion is going
 > ahead!", Anya announces.
 >
-> Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud clusters."
+> Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud
+> clusters."
 >
 > Kai nods knowingly. As a Platform Engineer, they recognize the challenges that come with rapid growth. "What if we
 > treat edge like cloud -- just smaller -- and manage everything centrally?"
