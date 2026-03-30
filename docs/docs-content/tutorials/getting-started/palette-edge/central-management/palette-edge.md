@@ -22,8 +22,8 @@ Our fictional example company, Spacetastic Ltd., has seen their platform reach a
 were stable, updates were predictable, and operational overhead had dropped significantly. Everything has been going
 great since they first deployed [Palette](../../palette/aws/aws.md).
 
-The company is expanding into over 500 locations through informational kiosks. This expansion means that applications need to run closer to users,
-directly into schools, museums, airports, and other edge environments.
+The company is expanding into over 500 locations through informational kiosks. This expansion means that applications
+need to run closer to users, directly into schools, museums, airports, and other edge environments.
 
 The team need a solution that fulfils the following requirements:
 
@@ -34,10 +34,11 @@ The team need a solution that fulfils the following requirements:
 
 ![centrally managed edge architecture for spacetastic](../../../../../../static/assets/docs/images/getting-started/getting-started_landing-edge-central_4-8.webp)
 
-Each location effectively becomed a small, self-contained environment. At scale, this introduces the challenge of 
+Each location effectively becomed a small, self-contained environment. At scale, this introduces the challenge of
 managing hundreds of distributed clusters without increasing operational complexity.
 
-> Anya and Wren came into the office, vibrating with excitement. "We've got the funding and the expansion is going ahead!", Anya announces.
+> Anya and Wren came into the office, vibrating with excitement. "We've got the funding and the expansion is going
+> ahead!", Anya announces.
 >
 > Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud
 > clusters."
@@ -48,15 +49,15 @@ managing hundreds of distributed clusters without increasing operational complex
 ![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-stickies_4-8.webp)
 
 The requirements of the application haven't changed. Spacetastic still deploy to a single cloud provider, they rely on
-Kubernetes for the reliability and scalability of their systems, and must ensure the systems are secure,
-patched regularly, scalable, and meet a reliability SLA of at least 99% uptime.
+Kubernetes for the reliability and scalability of their systems, and must ensure the systems are secure, patched
+regularly, scalable, and meet a reliability SLA of at least 99% uptime.
 
 > The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that
 > Spacetastic faces. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a
 > distance, none of us onsite."
 >
-> Meera nods in agreement and adds, "We also need to maintain our security stance. With these being deployed
-> remotely, it makes me nervous that security will be more difficult."
+> Meera nods in agreement and adds, "We also need to maintain our security stance. With these being deployed remotely,
+> it makes me nervous that security will be more difficult."
 >
 > "Team, I think Palette might have the answer we need. Let's take a look," says Kai with a determined look.
 
