@@ -210,7 +210,6 @@ Use the following steps to validate adding the new backup location.
 
 3. The **Backup Locations** page will display a list of all backup locations configured for the current project.
 
-
 ## Azure
 
 ### Prerequisites
