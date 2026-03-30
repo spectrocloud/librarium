@@ -152,4 +152,4 @@ then use the PCG to deploy and delete clusters in the cloud environment connecte
 
 If you need to configure a proxy server for your PCG, refer to
 [Enable and Manage Proxy Configurations](./manage-pcg/configure-proxy.md). The proxy must be configured before deploying
-workload clusters through the PCG in order for the workload clusters to inherit the PCG's proxy configurations.
+workload clusters through the PCG in order for the workload clusters to inherit the PCG proxy configurations.
