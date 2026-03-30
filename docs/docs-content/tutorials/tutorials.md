@@ -52,5 +52,11 @@ Check out the sections below to learn more about key Palette concepts.
       buttonText: "Learn more",
       url: "/tutorials/pde/",
     },
+    {
+      title: "AI",
+      description: "Learn how to use Palette's AI features.",
+      buttonText: "Learn more",
+      url: "/tutorials/ai/",
+    },
   ]}
 />
