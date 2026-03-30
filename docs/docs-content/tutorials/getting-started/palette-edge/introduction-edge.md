@@ -5,7 +5,7 @@ description: "Learn about Spectro Cloud Palette Edge."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on bare metal or virtual machines and deployed in remote locations.
@@ -17,7 +17,7 @@ your stack and add any necessary add-ons to support your workloads.
 reconfiguration, while supporting both single-node and multi-node clusters. Additionally, it ensures that clusters
 continue enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
 
-![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.webp)
+![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge_4-8.webp)
 
 ## Use Cases
 

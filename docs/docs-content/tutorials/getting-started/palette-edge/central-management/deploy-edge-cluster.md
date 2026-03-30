@@ -5,7 +5,7 @@ description: "Get started with Kubernetes at the edge. Learn how to deploy an Ed
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster
@@ -90,7 +90,7 @@ single-node Edge cluster with no worker pool.
 
 The following image shows the Edge host selection in the control plane pool.
 
-![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
+![A screenshot of the nodes config during cluster deployment.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
 
 Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
 
@@ -119,12 +119,12 @@ Confirm that your cluster displays a **Running** status and is listed as **Healt
 When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
 **Services** field. Click the URL on port **:8080** to access the application's landing page.
 
-![A screenshot of the cluster's Overview tab](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-overview.webp)
+![A screenshot of the cluster's Overview tab](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-overview.webp)
 
 Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages to learn more about space. The
 statistics page offers information on visitor counts for your deployed cluster.
 
-![A screenshot of the Hello Universe application.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
+![A screenshot of the Hello Universe application.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
 
 ## Clean Up
 
@@ -162,7 +162,7 @@ Locate the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.m
 and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This removes the Edge host from
 Palette but does not delete the underlying infrastructure.
 
-![A screenshot of the Edge Hosts page.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_delete-host.webp)
+![A screenshot of the Edge Hosts page.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_delete-host.webp)
 
 <Tabs groupId="host">
 
@@ -229,3 +229,24 @@ Getting Started tutorial series.
 We encourage you to check out the [Additional Capabilities](../../additional-capabilities/additional-capabilities.md)
 section to explore other Palette functionalities, and the [Edge](../../../../clusters/edge/edge.md) documentation
 section to learn more about Palette Edge.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+After going through the steps in the tutorial, Kai is confident in centrally managed Palette Edge's capabilities.
+
+> "What have you found out, Kai?" says Meera walking over to Kai's desk.
+>
+> "It was surprisingly simple to deploy and connect these Edge devices remotely," says Kai with a enthusiastic nod. "In
+> fact, it feels no different than when we deployed our clusters to the Cloud. Even our security is covered through pack
+> updates and scanning capabilities. Relying on this kind of tooling is invaluable to security-conscious engineers like
+> us."
+
+> "Excellent! These capabilities will be a great for expanding our existing systems at Spacetastic," says Meera with a
+> big grin.
+
+> "I'm so glad that we found a platform that can support everyone!" says Kai. "There is so much more to explore though.
+> I will keep reading through the Getting Started section and find out what additional capabilities Palette provides."
+
+> "Good thinking, Kai," says Meera, nodding. "We should maximize all of Palette's features now that we have implemented
+> it in production. We've got big ideas and goals on our company roadmap, so let's find out how Palette can help us
+> deliver them."

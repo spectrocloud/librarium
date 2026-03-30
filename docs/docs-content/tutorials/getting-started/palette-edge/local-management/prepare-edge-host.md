@@ -23,7 +23,7 @@ deployment. The following architectural diagram illustrates the workflow covered
 - Self-generation of the Host UID.
 - Accessing the Edge device with Local UI.
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-architecture-prepare_4-8.webp)
+![Palette Edge architecture diagram](/tutorials/local-edge/local-edge_prepare-edge-host_edge-architecture-prepare_4-8.webp)
 
 ## Prerequisites
 
@@ -63,7 +63,7 @@ In the **ISO Image** field, select the Edge installer ISO file you built in the
 Set the machine **Type** as **Linux**, the **OS Distribution** as **Ubuntu**, and the **Version** as **Ubuntu
 (64-bit)**, and click **Next**.
 
-![A screenshot of the VirtualBox VM configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-new-vm_4-8.webp)
+![A screenshot of the VirtualBox VM configuration.](/tutorials/local-edge/local-edge_prepare-edge-host_vb-new-vm_4-8.webp)
 
 Adjust the **Base Memory** to `8000 MB` and **Processors** to `2` CPU. Click **Next** to proceed.
 
@@ -83,7 +83,7 @@ Select the VM to adjust its network settings. Click **Settings**, then select **
 Change the **Attached to** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from
 the same network as the host. Click **OK**.
 
-![A screenshot of the VirtualBox VM network configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-network_4-8.webp)
+![A screenshot of the VirtualBox VM network configuration.](/tutorials/local-edge/local-edge_prepare-edge-host_vb-network_4-8.webp)
 
 Select the created VM and click **Start** to turn it on. The Edge installer bootstraps the Palette Edge installation
 onto the VM.
@@ -98,7 +98,7 @@ Select the Edge installer ISO and click **Remove Attachment** to remove it from 
 **Remove** and click **OK** to close the settings window. Leaving the installer ISO attached would cause the VM to boot
 from it again, restarting the installation process.
 
-![A screenshot of the VirtualBox VM storage configuration.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_vb-remove-iso_4-8.webp)
+![A screenshot of the VirtualBox VM storage configuration.](/tutorials/local-edge/local-edge_prepare-edge-host_vb-remove-iso_4-8.webp)
 
 </TabItem>
 
@@ -145,21 +145,21 @@ Power on the Edge device. It will automatically boot to **Palette eXtended Kuber
 generate an Edge Host UID. Wait until an IP address is assigned. The following image displays the Edge TUI on an Intel
 NUC device after the device has generated a Host UID and obtained an IP address.
 
-![Screenshot showing bare metal edge TUI](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
+![Screenshot showing bare metal edge TUI](/tutorials/local-edge/local-edge_prepare-edge-host_bm-tui_4-8.webp)
 
 Log in to Local UI (`https://<ip-of-edge:5080`) with the username and password you defined in the
 [Prepare User Data](./prepare-user-data.md) tutorial. The following image displays the Local UI login screen.
 
-![Screenshot showing Edge UI log in](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
+![Screenshot showing Edge UI log in](/tutorials/local-edge/local-edge_prepare-edge-host_edge-login_4-8.webp)
 
 The Edge host appears as **Not Configured** because no Edge cluster has been deployed. The following image displays a
 newly installed locally managed Edge host.
 
-![Screenshot showing Edge UI overview of the Edge device](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge-host_edge-not-config_4-8.webp)
+![Screenshot showing Edge UI overview of the Edge device](/tutorials/local-edge/local-edge_prepare-edge-host_edge-not-config_4-8.webp)
 
 Click **Settings** on the left main menu, and verify that the **Cluster management mode** is set to **Locally managed**.
 
-![Screenshot showing Edge UI settings value for cluster management mode](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_prepare-edge_local-only_4-8.webp)
+![Screenshot showing Edge UI settings value for cluster management mode](/tutorials/local-edge/local-edge_prepare-edge_local-only_4-8.webp)
 
 :::danger
 

@@ -6,7 +6,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The
@@ -23,7 +23,7 @@ This tutorial teaches you how to build the artifacts required for your Edge depl
 learn how to reference them in Edge [cluster profiles](../../../../profiles/profiles.md) and how they are used to
 install the Palette agent on hosts.
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
 
 ## Prerequisites
 
