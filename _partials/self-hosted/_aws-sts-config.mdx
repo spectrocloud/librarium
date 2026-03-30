@@ -63,8 +63,9 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    ```bash
    curl --request PUT \
     --url https://<palette-api-url>/v1/system/config/aws/sts/account \
-    --header "Authorization: $TOKEN" \
-    --data "$CONFIG_JSON"
+--header "Authorization: $TOKEN" \
+--header "Content-Type: application/json" \
+--data "$CONFIG_JSON"
    ```
 
    </TabItem>
@@ -74,8 +75,9 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    ```bash
    curl --request PUT \
     --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
-    --header "Authorization: $TOKEN" \
-    --data "$CONFIG_JSON"
+--header "Authorization: $TOKEN" \
+--header "Content-Type: application/json" \
+--data "$CONFIG_JSON"
    ```
 
    </TabItem>
