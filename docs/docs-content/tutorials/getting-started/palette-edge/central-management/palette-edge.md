@@ -41,7 +41,8 @@ managing hundreds of distributed clusters without increasing operational complex
 > Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud
 > clusters."
 >
-> Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "This is just like cloud -- just smaller. We have to ensure the same update procedures, including security patches, are maintained."
+> Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "This is just
+> like cloud -- just smaller. We have to ensure the same update procedures, including security patches, are maintained."
 
 ![spacetastic whiteboard discussion with stickie notes](/getting-started/getting-started_spacetastic-whiteboard-stickies_4-8.webp)
 
