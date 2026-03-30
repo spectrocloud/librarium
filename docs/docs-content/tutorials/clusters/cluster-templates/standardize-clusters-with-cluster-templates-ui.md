@@ -36,13 +36,9 @@ a maintenance policy, and deploy clusters from it.
 - kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for
   further guidance.
 
-## Provision and Upgrade Clusters Using the Palette UI
-
-Use the Palette UI to complete each step in the sections below.
-
 <PartialsComponent category="cluster-templates" name="aws-example-note" />
 
-### Import a Cluster Profile
+## Import a Cluster Profile
 
 In this section, you will import a cluster profile into Palette. This profile will be used to deploy two clusters: a
 development cluster running fewer application replicas and a production cluster running more.
@@ -259,7 +255,7 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
 Click **Validate**. Palette displays a _Validated successfully_ message. Click **Confirm**. The cluster profile is
 created.
 
-### Create a Maintenance Policy
+## Create a Maintenance Policy
 
 A
 [cluster template policy](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md)
@@ -280,7 +276,7 @@ Create a maintenance policy with a weekly Sunday midnight schedule and a four-ho
 
 The policy appears in the **Policies** list and is ready to attach to a cluster template.
 
-### Create a Cluster Template
+## Create a Cluster Template
 
 A [cluster template](../../../cluster-templates/cluster-templates.md) links a cluster profile and maintenance policy.
 
@@ -299,7 +295,7 @@ Create a cluster template and attach the profile and policy you created in the p
 
 The template appears in the **Templates** list and is ready to deploy clusters from.
 
-### Deploy a Dev Cluster from the Template
+## Deploy a Dev Cluster from the Template
 
 The dev environment requires fewer replicas, so assign `app_replicas`, displayed as **Hello Universe Replicas** in the
 UI, a value of `1`. Once that value is set, deploy a cluster from the `cluster-template-aws` cluster template.
@@ -336,13 +332,13 @@ On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster 
 
 The cluster deployment may take 15 to 30 minutes. From the left main menu, select **Clusters** to monitor progress.
 
-#### Confirm the Deployment
+### Confirm the Deployment
 
 Once `dev-cluster-aws` has a **Running** status, confirm the deployment. Select `dev-cluster-aws`, and then select the
 **Profile** tab. Confirm it is using `cluster-template-profile-aws`. Select **Configure Values > Profiles Variables
 Configuration**. Confirm that **Hello Universe Replicas** is set to `1` for this dev cluster.
 
-### Deploy a Prod Cluster from the Template
+## Deploy a Prod Cluster from the Template
 
 The prod environment requires more replicas than dev, so assign `app_replicas`, displayed as **Hello Universe Replicas**
 in the UI, a value of `2`. Once that value is set, deploy a prod cluster from the `cluster-template-aws` cluster
@@ -357,13 +353,13 @@ On the **Profile Config** page, set **Hello Universe Replicas** to `2`.
 The cluster deployment may take another 15 to 30 minutes. From the left main menu, select **Clusters** to monitor
 progress.
 
-#### Confirm the Deployment
+### Confirm the Deployment
 
 Once `prod-cluster-aws` has a **Running** status, confirm the deployment. Select `prod-cluster-aws`, and then select the
 **Profile** tab. Confirm it is using `cluster-template-profile-aws`. Select **Configure Values > Profiles Variables
 Configuration**. Confirm that **Hello Universe Replicas** is set to `2` for this prod cluster.
 
-### Validate the Deployments
+## Validate the Deployments
 
 From the left main menu, select **Clusters**, and then select **dev-cluster-aws**.
 
@@ -385,7 +381,7 @@ The `dev-cluster-aws` cluster is serving the Hello Universe application.
 
 Repeat these steps for `prod-cluster-aws` to confirm you can launch its Hello Universe application.
 
-### Create a New Cluster Profile Version
+## Create a New Cluster Profile Version
 
 The Kubecost pack provides real-time cost visibility. We recommend creating a new cluster profile version for every
 change so clusters on other versions are unaffected. Create version `1.1.0` to add Kubecost. `dev-cluster-aws` and
@@ -410,7 +406,7 @@ The cluster profile now includes the Kubecost (cost-analyzer) pack.
 
 Select **Save Changes** to finalize the new profile version.
 
-### Update the Cluster Template to the New Profile Version
+## Update the Cluster Template to the New Profile Version
 
 Update the `cluster-template-aws` cluster template to reference profile version `1.1.0`.
 
@@ -430,7 +426,7 @@ Then, select **Apply Changes**.
 The cluster template now references profile version `1.1.0`. This does not trigger an upgrade. `dev-cluster-aws` and
 `prod-cluster-aws` remain on `1.0.0` until the maintenance policy initiates the upgrade.
 
-### Upgrade Clusters
+## Upgrade Clusters
 
 Trigger an upgrade on `cluster-template-aws` to apply profile version `1.1.0` to both clusters.
 
@@ -448,7 +444,7 @@ indicator.
 
 ![Kubecost layer with a green status indicator](/kubecost-green-status.webp)
 
-### Validate the Upgrades
+## Validate the Upgrades
 
 Confirm that both clusters upgraded successfully and that Kubecost is deployed and accessible.
 
@@ -484,7 +480,7 @@ Once you are done, stop the `kubectl port-forward` command by closing the termin
 
 Repeat the same Kubecost and cluster profile version checks for `prod-cluster-aws`.
 
-### Cleanup
+## Cleanup
 
 Remove all of the resources you created for the tutorial.
 
@@ -505,7 +501,7 @@ select the three-dot menu. Choose **Delete** and confirm. This removes all versi
 Finally, delete the maintenance policy. From the left main menu, select **Cluster Configurations**. Select the
 **Policies** tab. Find `cluster-template-policy` and select the three-dot menu. Choose **Delete** and confirm.
 
-### Wrap-Up
+## Wrap-Up
 
 In this tutorial, you learned how to enforce consistent configuration and manage upgrades across multiple clusters. You
 created a cluster profile with a profile variable and a maintenance policy, then combined them into a cluster template
