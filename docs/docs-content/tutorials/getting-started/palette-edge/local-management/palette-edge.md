@@ -22,7 +22,8 @@ Our fictional example company, Spacetastic Ltd., has seen their platform reach a
 were stable, updates were predictable, and operational overhead had dropped significantly. Everything has been going
 great since they first deployed [Palette](../../palette/aws/aws.md).
 
-The company is expanding into over 500 locations in the form of informational kiosks. This expansion means that applications need to run closer to users, directly into schools, museums, airports and other edge environments.
+The company is expanding into over 500 locations in the form of informational kiosks. This expansion means that
+applications need to run closer to users, directly into schools, museums, airports and other edge environments.
 
 The team needs a solution the requirements were familiar:
 
@@ -33,17 +34,23 @@ The team needs a solution the requirements were familiar:
 
 ![locally managed edge architecture for spacetastic](/getting-started/getting-started_landing-edge-local_4-8.webp)
 
-Each location effectively becomes a small, self-contained environment. At scale, this introduces the challenge of managing hundreds of distributed clusters without increasing operational complexity.
+Each location effectively becomes a small, self-contained environment. At scale, this introduces the challenge of
+managing hundreds of distributed clusters without increasing operational complexity.
 
-> Anya and Wren came into the office, vibrating with excitement. "We've got the funding and the expansion is going ahead!", Anya announces.
+> Anya and Wren came into the office, vibrating with excitement. "We've got the funding and the expansion is going
+> ahead!", Anya announces.
 >
-> Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud clusters."
+> Wren, Founding Engineer, added, "We've partnered with over 500+ locations... And we can't treat these like cloud
+> clusters."
 >
-> Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything locally while still enforcing central standards?"
+> Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we
+> treat edge like cloud -- just smaller -- and manage everything locally while still enforcing central standards?"
 
 ![spacetastic whiteboard discussion with stickie notes](/getting-started/getting-started_spacetastic-whiteboard-discussion_4-8.webp)
 
-The requirements of the application haven't changed. Spacetastic still deploys to a single cloud provider, they rely on Kubernetes for the reliability and scalability of their systems, and must ensure the systems are secure, patched regularly, scalable, and meet a reliability SLA of at least 99% uptime.
+The requirements of the application haven't changed. Spacetastic still deploys to a single cloud provider, they rely on
+Kubernetes for the reliability and scalability of their systems, and must ensure the systems are secure, patched
+regularly, scalable, and meet a reliability SLA of at least 99% uptime.
 
 > The whiteboard is filled with sticky notes and diagrams. The discussion has highlighted some of the challenges that
 > Spacetastic faces. "We cannot manage these manually," Wren sighs with exhaustion. "Too many locations, too great a
