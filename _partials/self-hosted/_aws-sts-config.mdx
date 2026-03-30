@@ -56,18 +56,12 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
 4. Issue the following command to invoke the {props.edition} API to create and configure the AWS account to your instance.
 
-   :::info
-
-   To modify an existing AWS account, change `POST` to `PUT` in the curl statement.
-
-   :::
-
    <Tabs>
 
    <TabItem value="AWS">
 
    ```bash
-   curl --request POST \
+   curl --request PUT \
     --url https://<palette-api-url>/v1/system/config/aws/sts/account \
     --header "Authorization: $TOKEN" \
     --data "$CONFIG_JSON"
@@ -78,7 +72,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    <TabItem value="AWS GOV">
 
    ```bash
-   curl --request POST \
+   curl --request PUT \
     --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
     --header "Authorization: $TOKEN" \
     --data "$CONFIG_JSON"
