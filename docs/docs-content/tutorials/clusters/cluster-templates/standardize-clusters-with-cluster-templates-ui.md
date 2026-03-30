@@ -503,4 +503,4 @@ Next, delete the cluster profile. From the left main menu, select **Profiles**. 
 select the three-dot menu. Choose **Delete** and confirm. This removes all versions of the profile.
 
 Finally, delete the maintenance policy. From the left main menu, select **Cluster Configurations**. Select the
-**Policies** tab. Find `cluster-template-policy` and select the **three-dot Menu**. Choose **Delete** and confirm.
+**Policies** tab. Find `cluster-template-policy` and select the three-dot menu. Choose **Delete** and confirm.
