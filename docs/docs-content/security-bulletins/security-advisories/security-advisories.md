@@ -122,11 +122,12 @@ The risk is higher in environments where:
 
 #### Multi-tenant and Dedicated SaaS Deployments
 
-Multi-tenant & managed Dedicated SaaS clusters will be patched as part of the standard update process.
+Multi-tenant & managed Dedicated SaaS clusters have been patched as part of the standard update process to Palette
+version 4.8.c.
 
 #### Self-Hosted Palette Deployments
 
-A patch with the fixed version of Nginx controller is in progress. This advisory will be updated when that is available.
+The Nginx ingress controller versions 1.13.8, 1.14.4, and 1.15.0 are now available.
 
 #### Workload Clusters
 
