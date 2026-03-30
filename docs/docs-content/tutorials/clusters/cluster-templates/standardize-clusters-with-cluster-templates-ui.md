@@ -507,11 +507,10 @@ Finally, delete the maintenance policy. From the left main menu, select **Cluste
 
 ### Wrap-Up
 
-In this tutorial, you learned how to enforce consistent configuration and manage upgrades across multiple clusters.
-First, you created a cluster profile with a profile variable and a maintenance policy. Next, you combined them into a
-cluster template and deployed dev and prod clusters from it with environment-specific variable values. Then, you created
-a new profile version with Kubecost and updated the template to reference it. Finally, you upgraded both clusters
-simultaneously and validated the changes.
+In this tutorial, you learned how to enforce consistent configuration and manage upgrades across multiple clusters. You
+created a cluster profile with a profile variable and a maintenance policy, then combined them into a cluster template
+to deploy dev and prod clusters with environment-specific variable values. You then added Kubecost by creating a new
+profile version, updated the template to reference it, and upgraded both clusters simultaneously.
 
 We encourage you to check out the [Cluster Templates](../../../cluster-templates/cluster-templates.md) documentation to
 discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale.
