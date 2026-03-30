@@ -26,7 +26,7 @@ This tutorial teaches you how to create a cluster definition of the cluster prof
 [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial using the
 [Palette CLI](../../../../downloads/cli-tools.md#palette-cli).
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_content-bundle_content-bundle-architecture-diagram_4-8.webp)
+![Palette Edge architecture diagram](/tutorials/local-edge/local-edge_content-bundle_content-bundle-architecture-diagram_4-8.webp)
 
 ## Prerequisites
 

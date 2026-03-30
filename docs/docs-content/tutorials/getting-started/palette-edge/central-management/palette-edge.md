@@ -32,7 +32,7 @@ The team needs a solution that fulfils the following requirements:
 - Minimal reliance on on-site expertise
 - The ability to roll out updates quickly and safely
 
-![centrally managed edge architecture for spacetastic](../../../../../../static/assets/docs/images/getting-started/getting-started_landing-edge-central_4-8.webp)
+![centrally managed edge architecture for spacetastic](/getting-started/getting-started_landing-edge-central_4-8.webp)
 
 Each location effectively becomes a small, self-contained environment. At scale, this introduces the challenge of
 managing hundreds of distributed clusters without increasing operational complexity.
@@ -45,7 +45,7 @@ managing hundreds of distributed clusters without increasing operational complex
 > Kai nods knowingly. As a Platform Engineer, they recognize the challenges that come with rapid growth. "What if we
 > treat edge like cloud -- just smaller -- and manage everything centrally?"
 
-![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-stickies_4-8.webp)
+![spacetastic whiteboard discussion with stickie notes](/getting-started/getting-started_spacetastic-whiteboard-stickies_4-8.webp)
 
 The requirements of the application haven't changed. Spacetastic still deploys to a single cloud provider, they rely on
 Kubernetes for the reliability and scalability of their systems, and must ensure the systems are secure, patched
@@ -60,7 +60,7 @@ regularly, scalable, and meet a reliability SLA of at least 99% uptime.
 >
 > "Team, I think Palette might have the answer we need. Let's take a look," says Kai with a determined look.
 
-![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge-roadmap_4-8.webp)
+![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-edge-roadmap_4-8.webp)
 
 ## Get Started
 

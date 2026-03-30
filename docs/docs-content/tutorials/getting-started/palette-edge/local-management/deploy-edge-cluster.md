@@ -16,7 +16,7 @@ You will learn how to select the desired cluster definition, assign the register
 the deployment was successful by accessing the demo application included in the cluster profile,
 [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
-![Palette Edge architecture diagram](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_architecture-cluster_4-8.webp)
+![Palette Edge architecture diagram](/tutorials/local-edge/deploy-edge-cluster_architecture-cluster_4-8.webp)
 
 ## Prerequisites
 
@@ -42,12 +42,12 @@ Enter `local-edge-cluster` in the **Cluster name** field, and click **Next** to 
 
 On the **Cluster Profile** page, click the upload button to browse and upload the cluster definition TGZ file.
 
-![Screenshot of the Upload button on the cluster config page](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_import-cluster_4.8.webp)
+![Screenshot of the Upload button on the cluster config page](/tutorials/local-edge/deploy-edge-cluster_import-cluster_4.8.webp)
 
 Verify that the **Imported Applications preview** matches the list of packs selected when completing the
 [Edge Cluster Profile](./edge-cluster-profile.md) tutorial.
 
-![Screenshot of imported cluster definition](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_import-cluster-preview_4.8.webp)
+![Screenshot of imported cluster definition](/tutorials/local-edge/deploy-edge-cluster_import-cluster-preview_4.8.webp)
 
 Click **Next** to proceed.
 
@@ -63,7 +63,7 @@ detailed configuration instructions, refer to the
 On the **Cluster Config** page, enter the **Virtual IP Address (VIP)** value . The following image displays the
 **Cluster Config** page with the **Network Time Protocol (NTP)** and **Virtual IP Address** values provided.
 
-![Screenshot of Cluster Config page](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-config-network_4-8.webp)
+![Screenshot of Cluster Config page](/tutorials/local-edge/deploy-edge-cluster_cluster-config-network_4-8.webp)
 
 :::tip
 
@@ -97,7 +97,7 @@ single-node Edge cluster with no worker pool.
 
 The following image shows the Edge host selection in the control plane pool.
 
-![A screenshot of the nodes config during cluster deployment.](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_node-config_4-8.webp)
+![A screenshot of the nodes config during cluster deployment.](/tutorials/local-edge/deploy-edge-cluster_node-config_4-8.webp)
 
 Optionally, you can specify which Network Interface Card (NIC) to use for the Edge device by selecting **Auto** under
 **NIC Name** and choosing the NIC.
@@ -122,23 +122,23 @@ Log in to the Local UI, and select **Cluster** to open its **Overview** tab.
 
 Confirm that your cluster displays a **Running** status and is listed as **Healthy**.
 
-![A screenshot showing running and healthy status of cluster](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-running_4-8.webp)
+![A screenshot showing running and healthy status of cluster](/tutorials/local-edge/deploy-edge-cluster_cluster-running_4-8.webp)
 
 When the Hello Universe application is deployed and ready for network traffic, the Edge Local UI exposes the service URL
 in the **Services** section. Click the URL on port **:8080** to access the application's landing page.
 
-![A screenshot of the cluster's service ports](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-service-ports_4-8.webp)
+![A screenshot of the cluster's service ports](/tutorials/local-edge/deploy-edge-cluster_cluster-service-ports_4-8.webp)
 
 Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages to learn more about space. The
 statistics page offers information on visitor counts for your deployed cluster.
 
-![A screenshot of the Hello Universe application.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
+![A screenshot of the Hello Universe application.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
 
 When the Harbor application is deployed and ready for network traffic, the Edge Local UI exposes the service URL in the
 **Services** section. Click the URL on port **:30003** to access the application's landing page. You can log in to
 Harbor using the user `admin` and the password you set in the [Create Edge Profile](./edge-cluster-profile.md).
 
-![A screenshot of the Harbor Native Edge Config](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-habor-logged-in_4-8.webp)
+![A screenshot of the Harbor Native Edge Config](/tutorials/local-edge/deploy-edge-cluster_cluster-habor-logged-in_4-8.webp)
 
 ## Clean Up
 
@@ -150,7 +150,7 @@ following steps to remove the resources created during this tutorial series.
 To remove the Edge cluster, log in to Edge Local UI and select **Cluster** from the left main menu. Select **Delete
 Cluster** from the **Actions** drop-down.
 
-![A screenshot of the Actions menu options](../../../../../../static/assets/docs/images/tutorials/local-edge/deploy-edge-cluster_cluster-delete_4-8.webp)
+![A screenshot of the Actions menu options](/tutorials/local-edge/deploy-edge-cluster_cluster-delete_4-8.webp)
 
 Select **Confirm** on the confirmation window. This process may take several minutes to complete and will reboot the
 Edge device multiple times.

@@ -41,7 +41,7 @@ Each location effectively becomes a small, self-contained environment. At scale,
 >
 > Kai nods knowingly. As a Platform Engineer, they recognize the challenges that comes with rapid growth. "What if we treat edge like cloud -- just smaller -- and manage everything locally while still enforcing central standards?"
 
-![spacetastic whiteboard discussion with stickie notes](../../../../../../static/assets/docs/images/getting-started/getting-started_spacetastic-whiteboard-discussion_4-8.webp)
+![spacetastic whiteboard discussion with stickie notes](/getting-started/getting-started_spacetastic-whiteboard-discussion_4-8.webp)
 
 The requirements of the application haven't changed. Spacetastic still deploys to a single cloud provider, they rely on Kubernetes for the reliability and scalability of their systems, and must ensure the systems are secure, patched regularly, scalable, and meet a reliability SLA of at least 99% uptime.
 
@@ -55,7 +55,7 @@ The requirements of the application haven't changed. Spacetastic still deploys t
 >
 > "Team, I think Palette might have the answer we need. Let's take a look," says Kai with a determined look.
 
-![Palette Getting Started Roadmap](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-locally-edge-roadmap_4-8.webp)
+![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-locally-edge-roadmap_4-8.webp)
 
 ## Get Started
 

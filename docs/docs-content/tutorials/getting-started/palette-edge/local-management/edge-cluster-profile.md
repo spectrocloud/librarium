@@ -16,7 +16,7 @@ packs. [Packs](../../../../registries-and-packs/registries-and-packs.md) are a c
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
 integrations.
 
-![A screenshot of the Architecture Diagram, highlighting Cluster Profile.](../../../../../../static/assets/docs/images/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
+![A screenshot of the Architecture Diagram, highlighting Cluster Profile.](/getting-started/getting-started_introduction-edge_local-managed-cluster-profile-diagram_4-8.webp)
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
 a demo application that you can access on your browser. You will learn about cluster profile layers and how to reference
@@ -75,7 +75,7 @@ with the address of the provider image you pushed to the registry. For example, 
 
 The following image displays the OS layer with the custom manifest and registry credentials.
 
-![A screenshot of the BYOS values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_byos_4-8.webp)
+![A screenshot of the BYOS values.](/tutorials/local-edge/local-edge_cluster-profile_byos_4-8.webp)
 
 Click **Next Layer** to continue. Add the following Kubernetes layer to your cluster profile. Ensure the Kubernetes
 version matches the version used in the provider images.
@@ -91,7 +91,7 @@ Additionally, if needed, replace the predefined `cluster-cidr` and `service-cidr
 network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to `"100.64.64.0/18"`. This
 prevents any routing conflicts in the internal pod networking.
 
-![A screenshot of the BYOS values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_k3s-values_4-8.webp)
+![A screenshot of the BYOS values.](/tutorials/local-edge/local-edge_cluster-profile_k3s-values_4-8.webp)
 
 Click **Next Layer** to add the network layer. This tutorial uses Cilium as the example network layer.
 
@@ -172,7 +172,7 @@ dbPassword: "cGFzc3dvcmQ="
 authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 ```
 
-![A screenshot of the Hello Universe values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_hellouniverse-values_4-8.webp)
+![A screenshot of the Hello Universe values.](/tutorials/local-edge/local-edge_cluster-profile_hellouniverse-values_4-8.webp)
 
 Click **Confirm & Create** to save any alterations applied and add the pack to your cluster profile.
 
@@ -192,7 +192,7 @@ your cluster profile.
 
 The following image displays the MetalLB layer with a custom IP range.
 
-![A screenshot of the MetalLB values.](../../../../../../static/assets/docs/images/tutorials/local-edge/local-edge_cluster-profile_metallb-values_4-8.webp)
+![A screenshot of the MetalLB values.](/tutorials/local-edge/local-edge_cluster-profile_metallb-values_4-8.webp)
 
 Click **Confirm & Create** to save any alterations applied and add the pack to your cluster profile.
 
