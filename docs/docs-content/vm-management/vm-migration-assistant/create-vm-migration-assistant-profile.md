@@ -21,11 +21,10 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 <!-- prettier-ignore-start -->
 
-- If you using Ubuntu 24.04 (for example,
-  <VersionedLink text="Ubuntu 24.04 for MaaS" url="/integrations/packs/?pack=ubuntu-maas" />) as your OS pack, you must
-  set the `kernel.apparmor_restrict_unprivileged_userns=0` parameter and value in the
-  `/etc/sysctl.d/10-kubernetes-tuning.conf` file through the OS layer configuration in the cluster profile. Adding this
-  setting to the cluster profile ensures that the configuration persists after node restarts.
+- If you using an Ubuntu 24.04 pack such as 
+  <VersionedLink text="Ubuntu 24.04 for MaaS" url="/integrations/packs/?pack=ubuntu-maas" /> as your OS layer, you must
+  set `kernel.apparmor_restrict_unprivileged_userns=0` in the
+  `/etc/sysctl.d/10-kubernetes-tuning.conf` file through the OS layer configuration in the cluster profile to ensure that the configuration persists after node restarts.
 
   This is required to allow the VM Migration Assistant to perform disk or image conversions without running into permission
   issues related to unprivileged user namespaces. 
@@ -77,7 +76,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 - If you using Kubernetes 1.33 or above, you must set the `device_ownership_from_security_context = true` parameter and
   value in the `/etc/containerd/conf.d/device-ownership.toml` file through the Kubernetes layer configuration in the
-  cluster profile. Adding this setting to the cluster profile ensures that the configuration persists after node
+  cluster profile to ensure that the configuration persists after node
   restarts.
 
   Enable this setting so non-root Container Device Interface (CDI) pods can access block devices during block-volume
