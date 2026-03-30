@@ -61,7 +61,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    <TabItem value="AWS">
 
    ```bash
-   curl --request PUT \
+   curl --insecure --request PUT \
     --url https://<palette-api-url>/v1/system/config/aws/sts/account \
     --header "Authorization: $TOKEN" \
     --header "Content-Type: application/json" \
@@ -73,7 +73,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    <TabItem value="AWS GOV">
 
    ```bash
-   curl --request PUT \
+   curl --insecure --request PUT \
     --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
     --header "Authorization: $TOKEN" \
     --header "Content-Type: application/json" \
@@ -109,7 +109,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    <TabItem value="AWS">
 
    ```shell
-   curl --request GET \
+   curl --insecure --request GET \
      --url https://<palette-api-url>/v1/system/config/aws/sts/account \
      --header "Authorization: $TOKEN"
    ```
@@ -119,7 +119,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    <TabItem value="AWS GOV">
 
    ```shell
-   curl --request GET \
+   curl --insecure --request GET \
      --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
      --header "Authorization: $TOKEN"
    ```
