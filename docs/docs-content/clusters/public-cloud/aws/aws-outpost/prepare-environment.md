@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Prepare Environment"
 title: "Prepare Environment"
-description: "Learn how to prepare your AWS Outposts enviroment."
+description: "Learn how to prepare your AWS Outposts environment."
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "aws outposts"]
 sidebar_position: 20
