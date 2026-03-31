@@ -210,7 +210,9 @@ Use the following steps to validate adding the new backup location.
 
 3. The **Backup Locations** page will display a list of all backup locations configured for the current project.
 
-4. Search for the newly added backup location in the list. The presence of the backup location validates that you successfully added a new backup location.
+4. Search for the newly added backup location in the list. The presence of the backup location validates that you
+   successfully added a new backup location.
+
 ## Azure
 
 ### Prerequisites
