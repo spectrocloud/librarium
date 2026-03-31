@@ -171,6 +171,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
+- We have updated the Getting Started Palette Edge section, and it now includes guides on how to deploy locally managed Edge. Check out the Tutorials section to learn more. 
+
 ### Packs
 
 #### Pack Notes
