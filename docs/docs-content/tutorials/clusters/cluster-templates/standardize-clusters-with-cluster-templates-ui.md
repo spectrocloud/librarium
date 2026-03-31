@@ -256,8 +256,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
 
 </Tabs>
 
-Click **Validate**. A _Validated successfully_ message appears. Click **Confirm**. The `cluster-template-profile-aws`
-cluster profile is created.
+Click **Validate**. Palette displays a _Validated successfully_ message. Click **Confirm**. The cluster profile is
+created.
 
 ### Create a Maintenance Policy
 
@@ -312,8 +312,8 @@ then select **Next**.
 On the **Setup Type** page, select **Cluster Template** and **Select Cluster Template**. Select `cluster-template-aws`,
 and then select **Confirm**.
 
-On the **Cluster Template** page, confirm the correct **Maintenance Policy** and **Linked Profiles** are configured,
-then select **Next**.
+On the **Cluster Template** page, confirm that `cluster-template-policy` appears under **Maintenance Policy** and
+`cluster-template-profile-aws` appears under **Linked Profiles**. Select **Next**.
 
 On the **Cluster Profile** page, select **Next**.
 
@@ -383,7 +383,7 @@ moments before opening the service URL to prevent the browser from caching an un
 
 The `dev-cluster-aws` cluster is serving the Hello Universe application.
 
-Repeat these steps for `prod-cluster-aws` to confirm you can launch the Hello Universe application.
+Repeat these steps for `prod-cluster-aws` to confirm you can launch its Hello Universe application.
 
 ### Create a New Cluster Profile Version
 
@@ -404,7 +404,7 @@ Palette creates version `1.1.0` with the same packs as version `1.0.0`. Select *
 Search the **Palette Community Registry** for the **Kubecost** pack and select it. No changes to the default
 configuration are needed for this tutorial. Select **Confirm & Create**.
 
-The configuration stack now shows the Kubecost (cost-analyzer) pack.
+The cluster profile now includes the Kubecost (cost-analyzer) pack.
 
 ![Pack layers with Kubecost](/pack-layers-with-kubecost.webp)
 
