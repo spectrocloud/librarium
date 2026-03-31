@@ -291,7 +291,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
-- The Palette [Getting Started](../getting-started/getting-started.md) section has now been extended to cover the configuration and deployment
+- The Palette [Getting Started](../getting-started/getting-started.md) section has now been extended to cover the configuration and deployment of
   [locally managed Edge clusters](../tutorials/getting-started/palette-edge/local-management/palette-edge.md).
 
 ### Packs
