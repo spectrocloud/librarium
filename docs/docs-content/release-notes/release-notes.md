@@ -119,6 +119,13 @@ tags: ["release-notes"]
 - OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
   [data center environment](../clusters/data-center/data-center.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-1822 -->
+
+- [MinIO](https://www.min.io/) can no longer be added as a
+  [backup location](../clusters/cluster-management/backup-restore/backup-restore.md) through the Palette UI at **Tenant
+  Settings** > **Backup Locations**. Adding MinIO as a backup location via the [Palette API](/api/introduction/) is
+  still supported. This update does not affect the functionality of existing MiniIO backups.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5169 -->
@@ -189,6 +196,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-3559 -->
 
 - K3s is now supported for Edge devices with [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8394 -->
+
+- The ability to configure Edge host and network settings via the Palette Terminal User Interface (TUI) can now be
+  disabled by setting the `stylus.disableTui` flag to `true`. Edge host information is still displayed when TUI
+  interactions are disabled. This flag cannot be changed post-installation. Refer to
+  [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md) for more
+  information.
 
 #### Improvements
 
@@ -275,6 +290,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - Fixed an issue that prevented the `/v1/dashboard/spectroclusters/metadata` APIs from returning accurate creation, modification, and deletion timestamps.
 
 ### Docs and Education
+
+- A new [Getting Started tutorial](../getting-started/getting-started.md) for deploying
+  [locally managed Edge clusters](../tutorials/getting-started/palette-edge/local-management/palette-edge.md) is now
+  available.
 
 ### Packs
 
