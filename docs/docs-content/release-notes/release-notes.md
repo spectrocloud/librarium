@@ -123,7 +123,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - The ability to configure Edge host and network settings via the Palette Terminal User Interface (TUI) can now be
   disabled by setting the `stylus.disableTui` flag to `true`. Edge host information is still displayed when TUI
-  interactions are disabled. Refer to
+  interactions are disabled. This flag cannot be changed post-installation. Refer to
   [Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md) for more information.
 
 #### Improvements
