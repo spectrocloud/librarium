@@ -75,7 +75,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10214 -->
 
-- The Palette `nginx-ingress` controller has been updated to version 1.13.8 to address
+- The Palette Nginx ingress controller has been updated to version 1.13.8 to address
   [CVE-2026-3288](https://github.com/kubernetes/kubernetes/issues/137560). Refer to
   [Security Advisory 010 - Nginx Ingress Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-010---nginx-ingress-configuration-injection-vulnerability)
   for more information.
@@ -101,7 +101,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9762 -->
 
 - The Palette UI has been updated to reflect node deployment in the displayed
-  [node age](../clusters/cluster-management/node-pool.md), accurately reflecting node lifecycle.
+  [node pool](../clusters/cluster-management/node-pool.md) age, accurately reflecting node lifecycle.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9690 -->
 
@@ -135,7 +135,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5700 -->
 
-- Fixed an issue caused Palette to create an API server LoadBalancer security group with an inbound rule allowing
+- Fixed an issue that caused Palette to create an API server LoadBalancer security group with an inbound rule allowing
   traffic to `0.0.0.0/0` on [AWS IAAS clusters](../clusters/public-cloud/aws/create-cluster.md) configured with private
   API server LoadBalancer.
 
