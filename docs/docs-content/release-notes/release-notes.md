@@ -156,7 +156,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6011 -->
 
-- Fixed an issue that caused CrashLoopBackOff and OOMKilled errors when a large number of ConfigMaps are cleaned up using [etcd defragmentation](https://etcd.io/docs/v3.5/op-guide/maintenance/).
+- Fixed an issue that caused `CrashLoopBackOff` and `OOMKilled` errors when a large number of ConfigMaps are cleaned up using [etcd defragmentation](https://etcd.io/docs/v3.5/op-guide/maintenance/).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9952 -->
 
