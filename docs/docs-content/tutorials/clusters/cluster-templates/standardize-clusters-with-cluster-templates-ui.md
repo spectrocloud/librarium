@@ -265,7 +265,7 @@ recurring upgrade window.
 
 Create a maintenance policy with a weekly Sunday midnight schedule and a four-hour upgrade window.
 
-1. From the left **Main Menu**, select **Cluster Configurations**.
+1. From the left main menu, select **Cluster Configurations**.
 2. From the top-right of the **Policies** tab, select **Create Policy > Maintenance Policy**.
 3. In the **Name** field, enter `cluster-template-policy`.
 4. Select **Add Schedule** to open the schedule drawer.
