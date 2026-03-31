@@ -176,6 +176,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [locally managed Edge clusters](../tutorials/getting-started/palette-edge/local-management/palette-edge.md) is now
   available.
 
+- A new cluster deployment tutorial for
+  [standardizing cluster provisioning and upgrades with cluster templates](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+  using the Palette UI is now available.
+
 ### Packs
 
 #### Pack Notes
