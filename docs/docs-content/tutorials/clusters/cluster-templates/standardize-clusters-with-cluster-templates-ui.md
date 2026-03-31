@@ -297,6 +297,9 @@ The template appears in the **Templates** list and is ready to deploy clusters f
 
 ## Deploy Clusters from the Template
 
+Deploy a dev cluster and a prod cluster from `cluster-template-aws`, using profile variables to apply
+environment-specific replica counts.
+
 ### Deploy a Dev Cluster from the Template
 
 The dev environment requires fewer replicas, so assign `app_replicas`, displayed as **Hello Universe Replicas** in the
