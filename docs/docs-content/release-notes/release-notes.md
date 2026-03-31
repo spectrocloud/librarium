@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March 21, 2026 - Release 4.8.c {#release-notes-4-8-c}
+## April 5, 2026 - Release 4.8.c {#release-notes-4-8-c}
 
 ### Security Notices
 
