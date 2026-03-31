@@ -171,10 +171,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
-- We have updated the [Getting Started](../getting-started/getting-started.md)
-  [Palette Edge](../tutorials/getting-started/palette-edge/introduction-edge.md) section, and it now includes guides on
-  how to deploy [locally managed Edge](../tutorials/getting-started/palette-edge/local-management/palette-edge.md).
-  Check out the [Tutorials](../tutorials/tutorials.md) section to learn more.
+- A new [Getting Started tutorial](../getting-started/getting-started.md) for deploying [locally managed Edge clusters](../tutorials/getting-started/palette-edge/local-management/palette-edge.md) is now available.  
 
 ### Packs
 
