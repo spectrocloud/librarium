@@ -276,7 +276,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
-#### Deprecations and Removals
+#### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2690 -->
 
