@@ -623,13 +623,7 @@ Next, click **Settings** and select **Delete Cluster**.
 
 Type in the cluster name to proceed with the deletion. This process may take several minutes to complete.
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force
-delete, navigate to the cluster’s details page, click on **Settings**, then select **Force Delete Cluster**. Palette
-automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
-
-:::
+<PartialsComponent category="clusters" name="force-delete-callout" />
 
 After deleting your Edge cluster, proceed with the cluster profile deletion.
 
