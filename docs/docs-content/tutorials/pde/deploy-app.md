@@ -346,14 +346,7 @@ action. Type the cluster name to proceed with the delete step. Repeat this proce
 
 ![Delete a cluster view with arrow](/tutorials/deploy-app/devx_apps_deploy-apps_delete-cluster-view.webp)
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for **Force Delete**. To trigger a
-force delete, navigate to the respective cluster’s details page and click on **Settings**. Click on the **Force Delete
-Cluster** to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over
-24 hours.
-
-:::
+<PartialsComponent category="clusters" name="force-delete-callout" />
 
 <br />
 
@@ -1256,14 +1249,7 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 </Tabs>
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for **Force Delete**. To trigger a
-force delete, navigate to the respective cluster’s details page and click on **Settings**. Click on the **Force Delete
-Cluster** to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over
-24 hours.
-
-:::
+<PartialsComponent category="clusters" name="force-delete-callout" />
 
 ## Wrap-Up
 
