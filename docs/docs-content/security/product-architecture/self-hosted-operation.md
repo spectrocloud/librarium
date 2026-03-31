@@ -26,7 +26,6 @@ Chart. To learn more, review the
 
 The following points apply to self-hosted deployments:
 
-<br />
 
 - In deployments that require a proxy internet connection, both the Private Cloud Gateway (PCG) component and the
   management agent support SOCKS5 or HTTPS proxy.
