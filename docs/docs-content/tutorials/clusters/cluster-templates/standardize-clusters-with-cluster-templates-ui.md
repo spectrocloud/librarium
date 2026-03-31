@@ -51,8 +51,8 @@ This variable has no value in the profile itself. A cluster template assigns a v
 allows a development cluster and a production cluster to share the same profile while running different replica counts.
 The variable is marked `required`, so no cluster can be deployed without a value.
 
-Log in to [Palette](https://console.spectrocloud.com). From the left main menu, select **Profiles** and click
-**Import Cluster Profile**.
+Log in to [Palette](https://console.spectrocloud.com). From the left main menu, select **Profiles** and click **Import
+Cluster Profile**.
 
 In the slide drawer that opens, paste the following JSON snippet for your cloud provider.
 
