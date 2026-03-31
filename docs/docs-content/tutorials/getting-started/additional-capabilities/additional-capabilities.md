@@ -18,7 +18,7 @@ This section introduces you to some of Palette's additional capabilities, which 
   [Self-Hosted Palette](./self-hosted.md#self-hosted-palette).
 - Integrating virtual machine workloads into Kubernetes environments with [Virtual Machine Orchestrator](./vmo.md).
 
-![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette.webp)
+![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette_4-8.webp)
 
 The concepts you learn about in the Getting Started section are centered around a fictional case study company,
 Spacetastic Ltd.
