@@ -295,7 +295,9 @@ Create a cluster template and attach the profile and policy you created in the p
 
 The template appears in the **Templates** list and is ready to deploy clusters from.
 
-## Deploy a Dev Cluster from the Template
+## Deploy Clusters from the Template
+
+### Deploy a Dev Cluster from the Template
 
 The dev environment requires fewer replicas, so assign `app_replicas`, displayed as **Hello Universe Replicas** in the
 UI, a value of `1`. Once that value is set, deploy a cluster from the `cluster-template-aws` cluster template.
@@ -330,15 +332,11 @@ as the **Instance Type**. Select **Availability zones** if required by your clou
 On the **Cluster Settings** page, under **Cluster Timezone**, set the **Cluster time zone** to **Etc/GMT**. Select
 **Validate**, then **Finish Configuration**.
 
-The cluster deployment may take 15 to 30 minutes. From the left main menu, select **Clusters** to monitor progress.
+The cluster deployment may take 15 to 30 minutes. From the left main menu, select **Clusters** to monitor progress. Once
+`dev-cluster-aws` has a **Running** status, select it and go to the **Profile** tab. Confirm it is using
+`cluster-template-profile-aws` and that **Hello Universe Replicas** is set to `1`.
 
-### Confirm the Deployment
-
-Once `dev-cluster-aws` has a **Running** status, confirm the deployment. Select `dev-cluster-aws`, and then select the
-**Profile** tab. Confirm it is using `cluster-template-profile-aws`. Select **Configure Values > Profiles Variables
-Configuration**. Confirm that **Hello Universe Replicas** is set to `1` for this dev cluster.
-
-## Deploy a Prod Cluster from the Template
+### Deploy a Prod Cluster from the Template
 
 The prod environment requires more replicas than dev, so assign `app_replicas`, displayed as **Hello Universe Replicas**
 in the UI, a value of `2`. Once that value is set, deploy a prod cluster from the `cluster-template-aws` cluster
@@ -350,16 +348,11 @@ On the **Basic Information** page, enter `prod-cluster-aws` as the cluster name.
 
 On the **Profile Config** page, set **Hello Universe Replicas** to `2`.
 
-The cluster deployment may take another 15 to 30 minutes. From the left main menu, select **Clusters** to monitor
-progress.
+The cluster deployment may take 15 to 30 minutes. From the left main menu, select **Clusters** to monitor progress. Once
+`prod-cluster-aws` has a **Running** status, select it and go to the **Profile** tab. Confirm it is using
+`cluster-template-profile-aws` and that **Hello Universe Replicas** is set to `2`.
 
-### Confirm the Deployment
-
-Once `prod-cluster-aws` has a **Running** status, confirm the deployment. Select `prod-cluster-aws`, and then select the
-**Profile** tab. Confirm it is using `cluster-template-profile-aws`. Select **Configure Values > Profiles Variables
-Configuration**. Confirm that **Hello Universe Replicas** is set to `2` for this prod cluster.
-
-## Validate the Deployments
+### Validate the Deployments
 
 From the left main menu, select **Clusters**, and then select **dev-cluster-aws**.
 
@@ -426,7 +419,7 @@ Then, select **Apply Changes**.
 The cluster template now references profile version `1.1.0`. This does not trigger an upgrade. `dev-cluster-aws` and
 `prod-cluster-aws` remain on `1.0.0` until the maintenance policy initiates the upgrade.
 
-## Upgrade Clusters
+## Upgrade Clusters from the Template
 
 Trigger an upgrade on `cluster-template-aws` to apply profile version `1.1.0` to both clusters.
 
@@ -444,7 +437,7 @@ indicator.
 
 ![Kubecost layer with a green status indicator](/kubecost-green-status.webp)
 
-## Validate the Upgrades
+### Validate the Upgrades
 
 Confirm that both clusters upgraded successfully and that Kubecost is deployed and accessible.
 
