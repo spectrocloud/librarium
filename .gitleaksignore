@@ -815,6 +815,7 @@ eb60dbd05b07dd34f27d81f36d413da34e591402:docs/docs-content/automation/crossplane
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-aws-crossplane.md:generic-api-key:253
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-gcp-crossplane.md:generic-api-key:252
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-azure-crossplane.md:generic-api-key:252
+8108fb8719ed566077a276287631a048ab3e678e:docs/docs-content/tutorials/getting-started/palette-edge/local-management/edge-cluster-profile.md:generic-api-key:157
 367d734a33ee9dae2675d63f9806e912c16df27b:reports/docusaurus-upgrade-v3-9-1/18675762029/1/data/705bbb485292d07339acacfe2d0a7714ef66763f.markdown:private-key:549
 367d734a33ee9dae2675d63f9806e912c16df27b:reports/docusaurus-upgrade-v3-9-1/18675762029/1/data/e9a00c21f9ce736cb6adc1bdbef820574e1a48f6.markdown:private-key:559
 eb51d4673a4d0ff19d6d983b134eee659a80fcc1:reports/docusaurus-upgrade-v3-9-1/18666340888/1/data/705bbb485292d07339acacfe2d0a7714ef66763f.markdown:private-key:549
