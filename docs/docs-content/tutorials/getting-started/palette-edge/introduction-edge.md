@@ -5,7 +5,7 @@ description: "Learn about Spectro Cloud Palette Edge."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "locally-managed", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on bare metal or virtual machines and deployed in remote locations.
@@ -17,7 +17,7 @@ your stack and add any necessary add-ons to support your workloads.
 reconfiguration, while supporting both single-node and multi-node clusters. Additionally, it ensures that clusters
 continue enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
 
-![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.webp)
+![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge_4-8.webp)
 
 ## Use Cases
 
@@ -41,8 +41,9 @@ how you can leverage Palette Edge.
 ## Architecture
 
 Each Edge cluster consists of one or more nodes, with each node representing an individual Edge host. The Edge
-configuration begins with the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process,
-which builds two key artifacts:
+configuration begins with the
+[EdgeForge](../../../../docs-content/clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process, which builds two
+key artifacts:
 
 1. **Installer ISO**: A bootable ISO image that includes the required dependencies, such as the Palette Agent, and
    bootstraps the Edge installation process on the host.
@@ -50,16 +51,22 @@ which builds two key artifacts:
    required for the cluster. These images install a secure, immutable OS during the cluster deployment and are
    referenced during the cluster profile creation.
 
+<!-- vale-on -->
+
 After completing the build, you use the Installer ISO to install the Palette agent onto the Edge host. In connected
 environments, the host then registers itself with Palette using the registration token provided during the installer
-build. After registration, you can use the host as a node during the Edge cluster deployment. In disconnected
-environments, you can use [Local UI](../../../clusters/edge/local-ui/local-ui.md) to create and manage the cluster,
-which does not require a connection to Palette.
+build. After registration, you can use the host as a node during the Edge cluster deployment.
 
 ![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram.webp)
 
+In disconnected environments, you can use [Local UI](../../../clusters/edge/local-ui/local-ui.md) to create and manage
+the cluster, which does not require a connection to Palette.
+
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_local-managed-edgeforge-diagram_4-8.webp)
+
 ## Next Steps
 
-On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue to the
-[Prepare User Data](./prepare-user-data.md) tutorial to learn how to create a user data file, which is required for your
-first Edge deployment.
+On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue by choosing
+whether you are going to deploy [Central Edge Management](./central-management/palette-edge.md) or
+[Local Edge Management](./local-management/palette-edge.md) tutorial to learn how to create a user data file, which is
+required for your first Edge deployment.

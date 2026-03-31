@@ -7,14 +7,14 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
-This tutorial is the first in the [Edge Getting Started](./introduction-edge.md) series. You will learn how to create a
-[user data](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which is a configuration file that
+This tutorial is the first in the [Edge Getting Started](../introduction-edge.md) series. You will learn how to create a
+[user data](../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which is a configuration file that
 allows you to customize the Edge installation process on the host. The user data file is embedded into the Edge
-installer ISO during the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When the
-Edge host boots from the installer ISO, it applies the user data configuration to the host.
+installer ISO during the [EdgeForge](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When
+the Edge host boots from the installer ISO, it applies the user data configuration to the host.
 
 After creating the user data file, you will proceed to the next tutorial in this series, where you will learn how to
 build the required Edge artifacts. You will then install the Palette agent on your host and use it as a node to deploy
@@ -25,7 +25,7 @@ your first Edge cluster.
 To complete this tutorial, ensure the following prerequisites are in place.
 
 - A [Palette account](https://www.spectrocloud.com/get-started) with
-  [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+  [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 - A physical or virtual Linux machine with an AMD64 (also known as x86_64) processor architecture and the following
   minimum hardware configuration:
   - 4 CPUs
@@ -84,11 +84,12 @@ main configuration blocks:
 
   :::tip
 
-  Visit the [Edge Installer Configuration Reference](../../../clusters/edge/edge-configuration/installer-reference.md)
-  page for a complete list of configuration parameters, the
-  [Prepare User Data](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for more examples of user
-  data configurations, and the [Cloud Init Stages](../../../clusters/edge/edge-configuration/cloud-init.md) page for the
-  supported cloud init stages.
+  Visit the
+  [Edge Installer Configuration Reference](../../../../clusters/edge/edge-configuration/installer-reference.md) page for
+  a complete list of configuration parameters, the
+  [Prepare User Data](../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for more examples of user
+  data configurations, and the [Cloud Init Stages](../../../../clusters/edge/edge-configuration/cloud-init.md) page for
+  the supported cloud init stages.
 
   :::
 
@@ -140,7 +141,7 @@ parameter block to power off the host once the Edge installation completes.
 
 :::tip
 
-You can also use the [Appliance Studio](../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
+You can also use the [Appliance Studio](../../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
 Graphic User Interface (GUI) to help you create and validate your user data files.
 
 :::
@@ -211,7 +212,7 @@ install:
 
 From the `CanvOS` directory that contains your user data file, issue the following command to validate the configuration
 file. The validation also occurs automatically when you build the
-[Edge Installer ISO](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), ensuring the file follows the
+[Edge Installer ISO](../../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), ensuring the file follows the
 expected schema.
 
 ```shell
