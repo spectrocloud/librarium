@@ -98,6 +98,13 @@ tags: ["release-notes"]
 - OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
   [data center environment](../clusters/data-center/data-center.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-1822 -->
+
+- [MinIO](https://www.min.io/) can no longer be added as a
+  [backup location](../clusters/cluster-management/backup-restore/backup-restore.md) through the Palette UI at **Tenant
+  Settings** > **Backup Locations**. Adding MinIO as a backup location via the [Palette API](/api/introduction/) is
+  still supported. This update does not affect the functionality of existing MiniIO backups.
+
 ### Edge
 
 :::info

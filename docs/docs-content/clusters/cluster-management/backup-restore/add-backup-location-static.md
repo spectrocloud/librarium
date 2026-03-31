@@ -27,8 +27,6 @@ The following sections provide detailed instructions. Select the environment whe
 
 - [GCP](#gcp)
 
-- [MinIO](#minio)
-
 - [Azure](#azure)
 
 ## AWS
@@ -197,81 +195,6 @@ Use the following steps to validate adding the new backup location.
 5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message
    indicates a success, proceed to the next step. If the validation status message indicates an error, review the error
    message and verify the configurations you provided.
-
-6. Click on the **Create** button.
-
-You have completed configuring and adding a backup location to Palette with static credentials.
-
-### Validate
-
-Use the following steps to validate adding the new backup location.
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. Navigate to **Project Settings** and click on **Backup Locations**.
-
-3. The **Backup Locations** page will display a list of all backup locations configured for the current project.
-
-4. Search for the newly added backup location in the list. The presence of the backup location validates that you
-   successfully added a new backup location.
-
-## MinIO
-
-### Prerequisites
-
-- A MinIO account.
-
-- An S3-compliant bucket in the MinIO account.
-
-- IAM policy in your MinIO account to authorize a MinIO user to perform the required read and write operations on the
-  MinIO bucket. MinIO uses Policy-Based Access Control (PBAC) to control which IAM identities can access the resources
-  and what actions the IAM identities are authorized to perform on the specific resources. Refer to the
-  [MinIO Access Management](https://min.io/docs/minio/linux/administration/identity-access-management/policy-based-access-control.html#access-management)
-  guide to learn more about the IAM policy requirements.
-
-- A MinIO user assigned to the IAM policy defined above. You can learn more about MinIO access management in the
-  [MinIO object storage for Kubernetes](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html)
-  documentation.
-
-- An access key for the MinIO user. You can create an access key from the MinIO console. Refer to the
-  [MinIO official documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#access-keys)
-  to learn about creating access keys.
-
-- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
-  Privacy-Enhanced Mail (PEM) format to Palette. This is required if the MinIO endpoint is using a self-signed
-  certificate.
-
-### Add a MinIO Bucket
-
-1. Log in to [Palette](https://console.spectrocloud.com/).
-
-2. Navigate to the **Project Settings** and click on **Backup Locations**.
-
-3. Click on the **Add New Backup Location** button.
-
-4. Fill out the following input fields. Refer to the table below to learn more.
-
-   | **Field**               | **Value**                                                                                                                                                                       |
-   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Location Name**       | Provide a name of your choice.                                                                                                                                                  |
-   | **Location Provider**   | Select MinIO from the drop-down field.                                                                                                                                          |
-   | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions. This is required for endpoints using a self-signed certificate. |
-   | **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.                                                                                                                |
-   | **Region**              | The region where the MinIO server is configured. Example: `us-east-1`                                                                                                           |
-   | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000`                                                                                                     |
-   | **Force S3 path style** | This value is required for MinIO.                                                                                                                                               |
-
-   <br />
-
-   :::warning
-
-   Ensure you check the **Force S3 path style** checkbox. S3 path style is required by Velero to access the MinIO object
-   storage. Palette uses [Velero](https://velero.io/docs) to create backups.
-
-   :::
-
-5. Next, provide the access key for the MiniIO user. The access key has two parts - the _access key ID_ and the _secret
-   key_.
 
 6. Click on the **Create** button.
 
