@@ -215,7 +215,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8218 -->
 
-- Fixed an issue that caused [Edge cluster](../clusters/edge/edge.md) provisioning fails due to undetected corrupted ISO [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which should have been detected earlier in the provisioning process.
+- Fixed an issue that caused [Edge cluster](../clusters/edge/edge.md) provisioning to fail due to undetected corrupted ISO [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which should have been detected earlier in the provisioning process.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8223 -->
 
