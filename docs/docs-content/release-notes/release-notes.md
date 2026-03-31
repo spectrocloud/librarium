@@ -119,6 +119,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - K3s is now supported for Edge devices with [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8394 -->
+
+- The ability to configure Edge host and network settings via the Palette Terminal User Interface (TUI) can now be
+  disabled by setting the `stylus.disableTui` flag to `true`. Edge host information is still displayed when TUI
+  interactions are disabled. Refer to
+  [Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md) for more information.
+
 #### Improvements
 
 #### Bug Fixes
