@@ -265,14 +265,21 @@ recurring upgrade window.
 
 Create a maintenance policy with a weekly Sunday midnight schedule and a four-hour upgrade window.
 
-1. From the left main menu, select **Cluster Configurations**.
-2. From the top-right of the **Policies** tab, select **Create Policy > Maintenance Policy**.
-3. In the **Name** field, enter `cluster-template-policy`.
-4. Select **Add Schedule** to open the schedule drawer.
-5. In the **Name** field, enter `weekly-sunday`.
-6. From the **Schedule** drop-down menu, select **Every week on Sunday at midnight**.
-7. Set the **Upgrade window** to **4** hours.
-8. Select **Confirm**, then **Next**, then **Finalize**.
+From the left main menu, select **Cluster Configurations**.
+
+From the top-right of the **Policies** tab, select **Create Policy > Maintenance Policy**.
+
+In the **Name** field, enter `cluster-template-policy`.
+
+Select **Add Schedule** to open the schedule drawer.
+
+In the **Name** field, enter `weekly-sunday`.
+
+From the **Schedule** drop-down menu, select **Every week on Sunday at midnight**.
+
+Set the **Upgrade window** to **4** hours.
+
+Select **Confirm**, then **Next**, then **Finalize**.
 
 The policy appears in the **Policies** list and is ready to attach to a cluster template.
 
@@ -282,16 +289,23 @@ A [cluster template](../../../cluster-templates/cluster-templates.md) links a cl
 
 Create a cluster template and attach the profile and policy you created in the previous steps.
 
-1. From the left main menu, select **Cluster Configurations**.
-2. Select the **Templates** tab and select **Create Template**.
-3. Select **AWS IaaS** and select **Start AWS IaaS Configuration**.
-4. In the **Name** field, enter `cluster-template-aws`. Select **Next Step**.
-5. Select the plus icon next to **Maintenance Policy**. In the **Select a policy** side drawer, locate and select
-   `cluster-template-policy`. Select **Confirm**.
-6. Select the plus icon next to **Linked Profiles**. In the **Select a profile** drawer, select
-   `cluster-template-profile-aws`. Select **Confirm**.
-7. From the version drop-down menu, confirm version `1.0.0` is selected.
-8. Select **Next Step**, review the configuration, and select **Finalize**.
+From the left main menu, select **Cluster Configurations**.
+
+Select the **Templates** tab and select **Create Template**.
+
+Select **AWS IaaS** and select **Start AWS IaaS Configuration**.
+
+In the **Name** field, enter `cluster-template-aws`. Select **Next Step**.
+
+Select the plus icon next to **Maintenance Policy**. In the **Select a policy** side drawer, locate and select
+`cluster-template-policy`. Select **Confirm**.
+
+Select the plus icon next to **Linked Profiles**. In the **Select a profile** drawer, select
+`cluster-template-profile-aws`. Select **Confirm**.
+
+From the version drop-down menu, confirm version `1.0.0` is selected.
+
+Select **Next Step**, review the configuration, and select **Finalize**.
 
 The template appears in the **Templates** list and is ready to deploy clusters from.
 
