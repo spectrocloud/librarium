@@ -48,7 +48,7 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 [appliance mode](../deployment-modes/appliance-mode/appliance-mode.md). Refer to
-[Palette Edge Getting Started](../tutorials/getting-started/palette-edge/palette-edge.md) for further guidance.
+[Palette Edge Getting Started](../tutorials/getting-started/palette-edge/introduction-edge.md) for further guidance.
 
 :::
 
