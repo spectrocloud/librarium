@@ -113,8 +113,8 @@ for your Palette Edge deployment.
 
     :::warning
 
-    Only the static STIG content included in the CanvOS repository is validated by Spectro Cloud. Using a different or newer
-    STIG version is not validated and may result in issues during cluster creation or operation.
+    Only the static STIG content included in the CanvOS repository is validated by Spectro Cloud. Using a different or
+    newer STIG version is not validated and may result in issues during cluster creation or operation.
 
     :::
 
@@ -214,7 +214,6 @@ for your Palette Edge deployment.
 9.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
     architecture (`ARCH=amd64`). Replace the placeholders with the desired values.
 
-
     <Tabs group="fips-compliance">
 
     <TabItem value="Non-FIPS">
@@ -256,7 +255,7 @@ for your Palette Edge deployment.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
 
-11. Prepare the `user-data` file. Refer to
+10. Prepare the `user-data` file. Refer to
     [Prepare User Data and Argument Files](../prepare-user-data.md#prepare-user-data) for instructions. Additionally,
     you must configure firewall rules. Expand the applicable sections below to display the list of required
     configurations.
@@ -512,7 +511,7 @@ for your Palette Edge deployment.
 
     :::
 
-12. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
+11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
     option.
 
     ```yaml
@@ -522,7 +521,7 @@ for your Palette Edge deployment.
       extra_cmdline: "fips=1 selinux=0"
     ```
 
-13. Once the `user-data` file is ready, issue the following command to build the ISO image.
+12. Once the `user-data` file is ready, issue the following command to build the ISO image.
 
     ```bash
      sudo ./earthly.sh iso
