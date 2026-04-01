@@ -141,7 +141,7 @@ for your Palette Edge deployment.
     If you skip this step, the build uses the STIG content available in the system repositories at build time and
     generates remediation dynamically. As a result, different STIG versions may be applied across builds.
 
-7.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
+6.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
     `<base-image-name>` with the desired image name.
 
     <Tabs group="fips-compliance">
@@ -171,7 +171,7 @@ for your Palette Edge deployment.
     Building 510.1s (41/41) FINISHED
     ```
 
-8.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
+7.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
 
     ```bash
     docker images | grep <base-image-name>
@@ -182,7 +182,7 @@ for your Palette Edge deployment.
     <base-image-name>:latest                                              29814a348637        1.9GB             0B
     ```
 
-9.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
+8.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
     as an example. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
     prompted.
 
@@ -206,8 +206,9 @@ for your Palette Edge deployment.
     docker push <registry>/<base-image-name>:<tag>
     ```
 
-10.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
+9.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
     architecture (`ARCH=amd64`). Replace the placeholders with the desired values.
+
 
     <Tabs group="fips-compliance">
 
