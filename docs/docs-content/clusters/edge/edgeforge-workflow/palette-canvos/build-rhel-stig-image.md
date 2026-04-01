@@ -475,8 +475,8 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
 
         :::
 
-11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel
-    boot option.
+11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
+    option.
 
     ```yaml
     #cloud-config
