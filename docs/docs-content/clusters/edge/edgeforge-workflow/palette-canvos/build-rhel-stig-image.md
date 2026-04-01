@@ -11,8 +11,9 @@ tags: ["edge", "rhel", "stig"]
 [Security Technical Implementation Guides (STIGs)](https://access.redhat.com/compliance/disa-stig?utm_source=chatgpt.com)
 are standardized security hardening guidelines developed by the Defense Information Systems Agency (DISA) to help secure
 OS and applications in regulated environments. With Palette Edge, you can build Red Hat Enterprise Linux (RHEL) 9
-STIG-compliant images for your Edge hosts using the EdgeForge workflow. In this guide, you will use the CanvOS utility
-to build a RHEL 9 STIG-based ISO image for your Edge deployment.
+STIG-compliant images for your Edge hosts using the EdgeForge workflow.
+
+In this guide, you will use the CanvOS utility to build a base RHEL 9 STIG image and then build an ISO image based on it for your Palette Edge deployment.
 
 ## Limitations
 
@@ -139,7 +140,7 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
 
     <Tabs group="fips-compliance">
 
-    <TabItem value="non-FIPS">
+    <TabItem value="Non-FIPS">
 
     ```bash
     bash rhel-stig/build.sh.rhel9 <username> <password> <base-image-name> false
@@ -204,7 +205,7 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
 
     <Tabs group="fips-compliance">
 
-    <TabItem value="non-FIPS">
+    <TabItem value="Non-FIPS">
 
     ```bash
     cat << EOF > .arg
@@ -243,7 +244,7 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
 
-10. Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../prepare-user-data.md) for
+10. Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../prepare-user-data.md#prepare-user-data) for
     instructions. Additionally, you must configure firewall rules. Expand the applicable sections below to display the
     list of required configurations.
 
@@ -383,86 +384,104 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
        <details>
 
            <summary>Example</summary>
-           ```yaml
-           stages:
-            boot:
-                - name: "configure firewalld baseline for k8s"
-                commands:
+            #cloud-config
+            stylus:
+              site:
+                paletteEndpoint: api.spectrocloud.com
+                edgeHostToken: <your-registration-token>
+            
+            install:
+              poweroff: true
+            
+            stages:
+              initramfs:
+                - name: Create user and assign to sudo group
+                  users:
+                    kairos:
+                      groups:
+                        - sudo
+                      passwd: kairos
+            
+              boot:
+                - name: configure firewalld baseline for k8s
+                  commands:
                     - |-
-                    firewall-cmd --set-default-zone=k8s || true
-                    firewall-cmd --reload || true
-            network.after:
-                - name: "configure firewalld for k8s"
-                commands:
+                      firewall-cmd --set-default-zone=k8s || true
+                      firewall-cmd --reload || true
+            
+              network.after:
+                - name: configure firewalld for k8s
+                  commands:
                     - |-
-                    firewall-cmd --permanent --new-zone=k8s || true
-                    firewall-cmd --reload
-                    firewall-cmd --permanent --zone=k8s --add-service=ssh
-                    firewall-cmd --permanent --zone=k8s --add-forward
-                    firewall-cmd --permanent --zone=k8s --add-masquerade
-                    firewall-cmd --permanent --zone=k8s --add-source=192.168.0.0/16
-                    firewall-cmd --zone=k8s --add-source=10.10.0.0/16 --permanent
-                    firewall-cmd --permanent --zone=k8s --add-port=6443/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=4443/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=6444/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=7472/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=7473/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=2379-2380/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=10250/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=10259/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=10257/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=30000-32767/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=30000-32767/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=2381/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=7946/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=9100/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=8472/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=5355/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=12345/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=4789/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=179/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=4240/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=4244-4245/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=51871/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=5473/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=6783-6784/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=6783-6784/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=9500-9506/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=10000-12000/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=443/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=6789/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=3300/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=6800-7300/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=7480/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=9283/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=8443/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=8500/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=9345/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=7946/tcp
-                    firewall-cmd --permanent --zone=k8s --add-protocol=4
-                    firewall-cmd --permanent --zone=k8s --add-port=3000/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=6060/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=9090/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=9091/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=8080/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=9094/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=9094/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=9093/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=9093/udp
-                    firewall-cmd --permanent --zone=k8s --add-port=80/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=10254/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=8200-8202/tcp
-                    firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
-                    firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
-                    firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
-                    # Critical: bind the active/default-route interface to k8s zone
-                    IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
-                    if [ -n "$IFACE" ]; then
-                        firewall-cmd --zone=public --remove-interface="$IFACE" || true
-                        firewall-cmd --zone=k8s --change-interface="$IFACE"
-                    fi
-                    firewall-cmd --set-default-zone=k8s
-                    firewall-cmd --reload
+                      firewall-cmd --permanent --new-zone=k8s || true
+                      firewall-cmd --reload
+                      firewall-cmd --permanent --zone=k8s --add-service=ssh
+                      firewall-cmd --permanent --zone=k8s --add-forward
+                      firewall-cmd --permanent --zone=k8s --add-masquerade
+                      firewall-cmd --permanent --zone=k8s --add-source=192.168.0.0/16
+                      firewall-cmd --zone=k8s --add-source=10.10.0.0/16 --permanent
+                      firewall-cmd --permanent --zone=k8s --add-port=6443/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=4443/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=6444/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=7472/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=7473/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=2379-2380/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=10250/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=10259/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=10257/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=30000-32767/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=30000-32767/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=2381/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=7946/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=9100/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=8472/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=5355/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=12345/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=4789/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=179/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=4240/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=4244-4245/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=51871/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=5473/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=6783-6784/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=6783-6784/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=9500-9506/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=10000-12000/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=443/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=6789/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=3300/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=6800-7300/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=7480/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=9283/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=8443/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=8500/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=9345/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=7946/tcp
+                      firewall-cmd --permanent --zone=k8s --add-protocol=4
+                      firewall-cmd --permanent --zone=k8s --add-port=3000/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=6060/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=9090/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=9091/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=8080/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=9094/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=9094/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=9093/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=9093/udp
+                      firewall-cmd --permanent --zone=k8s --add-port=80/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=10254/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=8200-8202/tcp
+                      firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
+                      firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
+                      firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
+            
+                      IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
+                      if [ -n "$IFACE" ]; then
+                          firewall-cmd --zone=public --remove-interface="$IFACE" || true
+                          firewall-cmd --zone=k8s --change-interface="$IFACE"
+                      fi
+            
+                      firewall-cmd --set-default-zone=k8s
+                      firewall-cmd --reload
            ```
 
        </details>
@@ -475,7 +494,7 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
 
         :::
 
-11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
+12. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
     option.
 
     ```yaml
@@ -485,7 +504,7 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
       extra_cmdline: "fips=1 selinux=0"
     ```
 
-12. Once the `user-data` file is ready, issue the following command to build the ISO image.
+13. Once the `user-data` file is ready, issue the following command to build the ISO image.
 
     ```bash
      sudo ./earthly.sh iso
