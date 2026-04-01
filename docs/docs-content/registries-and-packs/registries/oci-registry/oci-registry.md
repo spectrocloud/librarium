@@ -13,26 +13,27 @@ hosting the following type of artifacts; Helm Charts, Zarf packages, and Packs.
 
 Registries that comply with the OCI specification and support basic authentication are supported, although you can also
 add registries that do not require authentication. OCI-compliant registries with basic authentication are labeled as
-**Basic**. Palette also supports certain third-party registry providers, such as AWS ECR.
+**Basic**. Palette also supports certain third-party registry providers, such as Amazon Web Services Elastic Container
+Registry (AWS ECR) and Azure Container Registry (ACR).
 
 ## Supported OCI Registries
 
 The following table describes the types of OCI registries that are supported.
 
-| **Provider** | **Description**                  | **No Authentication** | **Basic** | **AWS ECR** |
-| ------------ | -------------------------------- | --------------------- | --------- | ----------- |
-| Helm         | OCI-based Helm Chart registries. | ✅                    | ✅        | ✅          |
-| Zarf         | OCI-based Zarf registries.       | ❌                    | ✅        | ❌          |
-| Packs        | OCI-based Packs registries.      | ❌                    | ✅        | ✅          |
+| **Provider** | **Description**                  | **No Authentication** | **Basic (includes ACR)** | **AWS ECR** |
+| ------------ | -------------------------------- | --------------------- | ------------------------ | ----------- |
+| Helm         | OCI-based Helm Chart registries. | ✅                    | ✅                       | ✅          |
+| Zarf         | OCI-based Zarf registries.       | ❌                    | ✅                       | ❌          |
+| Packs        | OCI-based Packs registries.      | ❌                    | ✅                       | ✅          |
 
 ## Limitations
 
-- Automatic synchronization is not supported for Zarf registries.
+- GitHub Container Registry (GHCR) is not officially supported at this time. To add a Helm chart from GHCR, you must
+  create a separate OCI Helm registry in Palette for each chart. Refer to [Add OCI Helm Registry](./add-oci-helm.md) for
+  more information.
 
 - OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic
   synchronization, re-register the OCI Helm registry.
-
-<br />
 
 To add an OCI registry to Palette, refer to the respective guide for the OCI-type registry located in the
 [Resources](#resources) section.
@@ -47,10 +48,14 @@ system level scope, refer to the
 
 :::
 
+## OCI Packs Registry Configuration by Provider
+
+<PartialsComponent category="oci-registry-configuration" name="oci-packs-registry-configuration-by-provider" />
+
 ## Resources
 
 - [Add OCI Helm Registry](./add-oci-helm.md)
 
 - [Add OCI Packs Registry](./add-oci-packs.md)
 
-- [Add OCI Zarf Registry](./oci-registry.md)
+- [Add OCI Zarf Registry](./add-oci-zarf.md)

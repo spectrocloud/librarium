@@ -315,6 +315,10 @@ config:
     mirrorRegistries: ""
 ```
 
+### OCI Packs Registry Configuration by Provider
+
+<PartialsComponent category="oci-registry-configuration" name="oci-packs-registry-configuration-by-provider" />
+
 ### Image Swap Configuration
 
 You can configure Palette to use image swap to download the required images. This is an advanced configuration option,

@@ -9,210 +9,240 @@ sidebar_position: 14
 tags: ["pcg", "proxy"]
 ---
 
-You can add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed into an existing Kubernetes
-cluster. By default, a PCG deployed to an existing Kubernetes cluster does not have a proxy configuration. If your
-infrastructure environment requires a proxy configuration, use the instructions in this guide to add and manage proxy
-configurations for a PCG deployed in a Kubernetes cluster and to ensure workload clusters deployed through Palette
-inherit the proxy configuration from the PCG cluster.
+You can add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed into an
+[existing Kubernetes cluster](../deploy-pcg-k8s.md). By default, a PCG deployed to an existing Kubernetes cluster does
+not have a proxy configuration. If your infrastructure environment requires a proxy configuration, you must manually add
+and configure it using the [Reach system](../architecture.md#reach-system) Helm chart, which is included in the umbrella
+Palette Helm chart. This ensures workload clusters deployed through Palette inherit proxy configurations from the PCG
+cluster.
 
-:::info
+:::warning
 
-Workload clusters deployed through Palette will inherit proxy configuration from the PCG cluster. The PCG is not used as
-a network proxy for deployed workload clusters and does not provide internet connectivity for the workload clusters.
-Individual workload clusters must have their own proxy configurations to access the internet.
+This guide applies only to PCGs deployed to an [existing Kubernetes cluster](../deploy-pcg-k8s.md). If you deployed a
+PCG through the [Palette CLI](../pcg.md#supported-environments), the Reach system and Cert Manager are automatically
+installed during PCG provisioning. Refer to the respective platform installation guide for
+[MAAS](../deploy-pcg/maas.md), [VMware vSphere](../deploy-pcg/vmware.md), or
+[Apache CloudStack](../deploy-pcg/cloudstack.md) for instructions on how to configure proxy settings during the CLI
+installation process.
 
 :::
 
-Use the following steps to add and manage proxy configurations for a PCG.
-
 ## Prerequisites
 
-- A PCG is deployed into an active and healthy Kubernetes cluster. Refer to
+- An existing PCG deployed into an active and healthy Kubernetes cluster. Refer to
   [Deploy a PCG to an Existing Kubernetes Cluster](../deploy-pcg-k8s.md) for additional guidance.
 
-  :::warning
+- The kubeconfig file for the Kubernetes cluster where the PCG is deployed.
 
-  If you deployed a [PCG through the Palette CLI](../pcg.md#supported-environments), refer to the respective platform
-  installation guide for instructions on how to configure proxy settings during the installation process through the
-  CLI.
+- Admin access to the Kubernetes cluster where the PCG is deployed.
 
-  :::
-
-- The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The kubeconfig file is used to authenticate
-  with the Kubernetes cluster and deploy the Reach service.
-
-- Admin access to the Kubernetes cluster where the PCG is deployed. The Reach Helm Chart will create a namespace,
-  service accounts, and roles in the cluster.
-
-- The extract utilities `zip` and `tar` are installed in the system you are using to deploy the Helm chart.
-
-- Palette tenant administrator access.
+- The extract utilities `zip` and `tar` installed on the system you are using to deploy the Helm chart.
 
 - Proxy configuration details, such as the proxy URL, port, and authentication credentials.
 
 - The deployed PCG must have network connectivity to the proxy server.
 
 - The Kubernetes cluster where the PCG is deployed must have the proxy configuration. This includes any Certificate
-  Authority (CA) certificates that are required to authenticate with the proxy server. This step varies depending on the
-  platform where the Kubernetes cluster is deployed. Some platforms, such as managed Kubernetes services, may require
-  additional steps. Below is a list of helpful links to set up proxy configurations for some common Kubernetes
-  platforms:
+  Authority (CA) certificates required to authenticate with the proxy server. This step varies by platform. Below is a
+  list of helpful links to set up proxy configurations for some common Kubernetes platforms:
 
-  - [Amazon EKS](https://repost.aws/knowledge-center/eks-http-proxy-containerd-automation)
-  - [Azure AKS](https://learn.microsoft.com/en-us/azure/aks/http-proxy)
-  - [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/installing-and-configuring-vsphere-supervisor/configuring-and-managing-a-supervisor-cluster/configuring-http-proxy-settings-in-vsphere-with-tanzu.html)
+  - [AWS EKS](https://repost.aws/knowledge-center/eks-http-proxy-containerd-automation)
+  - [AKS](https://learn.microsoft.com/en-us/azure/aks/http-proxy)
 
     :::warning
 
-    This feature has only been tested on AWS, Azure, and VMware vSphere. If you are using a different cloud provider,
-    contact our support team for additional guidance.
+    This feature has only been tested on AWS and Azure. If you are using a different cloud provider, contact our Support
+    team for additional guidance.
 
     :::
 
-- Download the Reach Helm Chart provided by our support team. The Reach Helm Chart is used to deploy the Reach service
-  into the Kubernetes cluster where the PCG is deployed. The Reach service is used to manage proxy configurations for
-  the PCG. Contact our support team to obtain the Reach Helm Chart.
+- If the proxy server uses a CA certificate, the certificate file must be named `ca.crt` and be in Privacy-Enhanced Mail
+  (PEM) format.
 
-- `cert-manager` is not already deployed in the Kubernetes cluster where the PCG is deployed. The reason for this is
-  that you will deploy `cert-manager` as part of the enablement steps.
-
-  :::info
-
-  If `cert-manager` is already deployed, you can continue to use the service but make sure you edit the deployment to
-  use the `- --feature-gates=AdditionalCertificateOutputFormats=true` flag. Otherwise, the Reach service cannot manage
-  the proxy configurations.
-
-  :::
+- Access to the Palette Helm chart compatible with your Palette version. Refer to
+  [Access Palette](../../../self-hosted-setup/palette/palette.md#access-palette) for instructions on how to request
+  access to the Palette Helm chart.
 
 ## Enable Proxy
 
-1. Open a terminal session and navigate to the folder where you downloaded the Reach Helm Chart zip file.
+1. Open a terminal session and navigate to the directory where you downloaded the Palette Helm chart.
 
-2. Unzip the zip file you received from the support team.
-
-   ```shell
-   unzip release-*.zip -d palette
-   ```
-
-3. Navigate to the release folder.
+2. Unzip the Palette Helm chart.
 
    ```shell
-   cd palette/charts/release-*/
+   unzip charts.zip -d palette
    ```
 
-4. Deploy `cert-manager` to the Kubernetes cluster where the PCG is deployed. Use the following command to deploy the
-   `cert-manager` Helm Chart.
+3. Navigate to the `cert-manager` folder.
 
    ```shell
-   helm upgrade --values extras/cert-manager/values.yaml \
-   cert-manager extras/cert-manager/cert-manager-*.tgz --install
+   cd extras/cert-manager/
    ```
 
-5. Next, navigate to the reach-system folder and extract the Reach Helm Chart.
+4. Deploy the `cert-manager` Helm chart to the Kubernetes cluster where the PCG is deployed.
 
    ```shell
-   cd extras/reach-system/ && tar -xvzf reach-system-*.tgz
+   helm upgrade --values values.yaml \
+   cert-manager cert-manager-*.tgz --install
    ```
 
-6. Open the **reach-system/values.yaml** file in a text editor. Fill out the following YAML fields with the proxy
-   configuration details:
-
-   | Field Name                              | Description                                                                                                                                                                                                                                                                                                                                      |
-   | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | `reachSystem.enabled`                   | Set this field to `true` to enable the Reach service.                                                                                                                                                                                                                                                                                            |
-   | `reachSystem.proxySettings.http_proxy`  | The HTTP proxy URL, including the port number.                                                                                                                                                                                                                                                                                                   |
-   | `reachSystem.proxySettings.https_proxy` | The HTTPS proxy URL, including the port number.                                                                                                                                                                                                                                                                                                  |
-   | `reachSystem.proxySettings.no_proxy`    | A comma-separated list of URLs that should bypass the proxy.                                                                                                                                                                                                                                                                                     |
-   | `reachSystem.proxySettings.ca_crt_path` | The path to the CA certificate file used to authenticate the proxy server. Make sure the CA certificate is in the PEM format. If you do not have a CA certificate, leave this field empty.                                                                                                                                                       |
-   | `reachSystem.scheduleOnControlPlane`    | Specifies whether to schedule the reach system on the control plane. Due to node affinity configurations, you must set `scheduleOnControlPlane: false` for managed clusters deployed to [Azure AKS](../../public-cloud/azure/aks.md), [AWS EKS](../../public-cloud/aws/eks.md), and [GCP GKE](../../public-cloud/gcp/create-gcp-gke-cluster.md). |
-
-   <br />
-
-   :::info
-
-   A note on the `no_proxy` field: The `no_proxy` field is a comma-separated list of URLs that should bypass the proxy.
-   Depending on your environment, you may need to add additional URLs to this list. The list provided in the code
-   snippet below is a generic list that should work for most environments. The IP address `169.254.169.254,` is required
-   to be added to the `no_proxy` list. Otherwise, pods will not be able to start up successfully.
-
-   ```
-   aks.io,.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,.privatelink.eastus.azmk8s.io,.azure.com,.aks.io,.capz.io,.spectrocloud.com,gcr.io,windows.net,.windows.net,.microsoftonline.com,.amazonaws.com,.gcr.io,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net
-   ```
-
-   :::
-
-   The following is an example of a filled-out **values.yaml** file.
-
-   ```yaml hideClipboard
-   reachSystem:
-     enabled: true
-     proxySettings:
-       http_proxy: "http://172.16.0.4:1080"
-       https_proxy: "https://172.16.0.4:1080"
-       no_proxy: ".aks.io,.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,.privatelink.eastus.azmk8s.io,.azure.com,.aks.io,.capz.io,.spectrocloud.com,gcr.io,windows.net,.windows.net,.microsoftonline.com,.amazonaws.com,.gcr.io,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net"
-       ca_crt_path: "proxy-ca-cert.pem"
-   ```
-
-7. Save the **values.yaml** file.
-
-8. Deploy the Reach service into the Kubernetes cluster where the PCG is deployed using the Reach Helm Chart. Use the
-   following command to deploy the Reach service.
-
-   ```shell
-   helm upgrade --values reach-system/values.yaml reach-system reach-system-*.tgz --install
-   ```
-
-   ```shell hideClipboard
-   WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /Users/ubuntu/.kube/config
-   WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /Users/ubuntu/.kube/config
-   Release "reach-system" does not exist. Installing it now.
-   NAME: reach-system
-   LAST DEPLOYED: Mon Jul 15 15:17:58 2024
+   ```shell hideClipboard title="Example output"
+   Release "cert-manager" does not exist. Installing it now.
+   NAME: cert-manager
+   LAST DEPLOYED: Mon Mar  9 13:34:02 2026
    NAMESPACE: default
    STATUS: deployed
    REVISION: 1
    TEST SUITE: None
    ```
 
-Once the Reach service is deployed, the PCG will use the proxy configuration in the Reach Helm Chart. If the cloud
-account is configured to use the PCG, the proxy configuration will be inherited by the workload clusters deployed
-through Palette.
+5. Next, navigate to the `reach-system` folder and extract the Reach Helm chart.
+
+   ```shell
+   cd ../reach-system/ && tar -xvzf reach-system-*.tgz
+   ```
+
+   ```shell hideClipboard title="Example output"
+   x reach-system/
+   x reach-system/crds/
+   x reach-system/Chart.yaml
+   x reach-system/.helmignore
+   x reach-system/templates/
+   x reach-system/values.yaml
+   x reach-system/templates/webhooks.yaml
+   x reach-system/templates/deployment.yaml
+   x reach-system/templates/service.yaml
+   x reach-system/templates/certificates.yaml
+   x reach-system/templates/rbac.yaml
+   x reach-system/templates/namespace.yaml
+   x reach-system/templates/configmap.yaml
+   x reach-system/templates/secret.yaml
+   x reach-system/crds/reach-system.yaml
+   ```
+
+6. Open the `reach-system/values.yaml` file in a text editor. Configure the following YAML fields with your proxy
+   details.
+
+   | Field Name                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `reachSystem.enabled`                   | Set to `true` to enable the Reach service.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+   | `reachSystem.proxySettings.http_proxy`  | The HTTP proxy URL, including the port number.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+   | `reachSystem.proxySettings.https_proxy` | The HTTPS proxy URL, including the port number.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   | `reachSystem.proxySettings.no_proxy`    | A comma-separated list of URLs that should bypass the proxy. The IP address `169.254.169.254` is required; otherwise, pods cannot start.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+   | `reachSystem.proxySettings.ca_crt_path` | (Optional) Provide the filepath on the installer host to the proxy’s CA certificate file. This certificate must be present at the indicated filepath on each node of the PCG cluster in order to be added to the node trust store. The CA certificate file _must_ be named `ca.crt`. Example: `/usr/local/share/ca-certificates/ca.crt`. <br /><br /> **NOTE**: Proxy CA certificates are _not_ automatically propagated to workload clusters using the PCG; these certificates must be added at either the tenant level or cluster profile OS layer. Refer to the [Configure Proxy CA Certificates for Workload Clusters](./configure-proxy-ca-certs.md) guide for more information. |
+   | `reachSystem.scheduleOnControlPlane`    | Specifies whether to schedule the Reach system on the control plane. Due to node affinity configurations, you must set `scheduleOnControlPlane: false` for managed clusters deployed to [AKS](../../public-cloud/azure/aks.md), [AWS EKS](../../public-cloud/aws/eks.md), and [GCP GKE](../../public-cloud/gcp/create-gcp-gke-cluster.md).                                                                                                                                                                                                                                                                                                                                            |
+
+   :::tip
+
+   The `no_proxy` list provided in the following code snippet is a generic list that works for most environments.
+   Depending on your environment, you may need to add additional URLs to this list. The IP address `169.254.169.254` is
+   required; otherwise, pods cannot start.
+
+   ```
+   .aks.io,.amazonaws.com,.eks.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,gcr.io,windows.net,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net
+   ```
+
+   :::
+
+   ```yaml hideClipboard title="Example values.yaml file"
+   reachSystem:
+     enabled: true
+     proxySettings:
+       http_proxy: "http://172.16.0.4:1080"
+       https_proxy: "https://172.16.0.4:1080"
+       no_proxy: ".aks.io,.amazonaws.com,.eks.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,gcr.io,windows.net,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net"
+       ca_crt_path: "/usr/local/share/ca-certificates/ca.crt"
+     manager:
+       image: "us-docker.pkg.dev/palette-images/palette/spectro-reach:4.8.2"
+     kube_rbac_proxy:
+       image: "us-docker.pkg.dev/palette-images-fips/palette/kube-rbac-proxy:v0.19.1-spectro-4.7.0"
+     scheduleOnControlPlane: true
+
+     imagePullSecret:
+       create: false # Set it as true if using  ImagePullSecret for Private registry Authentication
+       dockerConfigJson: "" # Provide base64 encoded dockerconfigjson value here
+   ```
+
+7. Save the `values.yaml` file.
+
+8. Deploy the Reach service into the Kubernetes cluster where the PCG is deployed using the `reach-system` Helm chart.
+
+   ```shell
+   helm upgrade --values reach-system/values.yaml reach-system reach-system-*.tgz --install
+   ```
+
+   ```shell hideClipboard title="Example output"
+   Release "reach-system" does not exist. Installing it now.
+   NAME: reach-system
+   LAST DEPLOYED: Mon Mar  9 14:05:55 2026
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
+
+Once the Reach service is deployed, the PCG uses the proxy configuration in the Reach Helm chart. If the cloud account
+is configured to use the PCG, the workload cluster deployed through the PCG inherits the PCG the proxy configuration.
+
+:::info
+
+If your proxy server uses a CA certificate, workload cluster nodes and pods need additional configuration to trust the
+proxy. Refer to [Configure Proxy CA Certificates for Workload Clusters](./configure-proxy-ca-certs.md) for instructions
+on configuring node-level and pod-level CA certificate trust.
+
+:::
 
 ## Validate
 
 Use the following steps to validate that the Reach service is deployed and that the proxy configuration is enabled for
 the PCG.
 
-1. Open a terminal session.
-
-2. Issue the following command against the Kubernetes cluster where the PCG is deployed. Verify that the pods are active
-   and healthy.
+1. Open a terminal session and run the following command on the Kubernetes cluster where the PCG is deployed. Verify
+   that the pods are active and healthy.
 
    ```shell
    kubectl get pods --namespace reach-system
    ```
 
-   The output should display the Reach service pods in the **Running** status.
-
-   ```shell hideClipboard
+   ```shell hideClipboard title="Example output"
    NAME                                                READY   STATUS    RESTARTS   AGE
    reach-controller-manager-995c74db5-frb5j            2/2     Running   0          2m
    ```
 
-3. After configuring your cloud account to use the PCG, you can verify that the deployed workload clusters inherit the
-   proxy configuration from the PCG. To verify the proxy configuration is inherited by the workload clusters, deploy a
-   workload cluster through Palette. SSH into a node in the workload cluster and issue the following command to verify
-   the proxy configuration is inherited.
+2. If you have not already, add your [AWS](../../public-cloud/aws/add-aws-accounts/add-aws-accounts.md),
+   [Azure](../../public-cloud/azure/azure-cloud.md), or
+   [Nutanix](../../data-center/nutanix/add-nutanix-cloud-account.md) cloud account to Palette with the **Connect Private
+   Cloud Gateway** option toggled and your self-hosted PCG selected.
+
+3. Deploy a workload cluster through the PCG. Refer to the appropriate guide for information on deploying clusters to
+   your environment:
+
+   - [AWS IaaS](../../public-cloud/aws/create-cluster.md)
+   - [AWS EKS](../../public-cloud/aws/eks.md)
+   - [Azure](../../public-cloud/azure/create-azure-cluster.md)
+   - [AKS](../../public-cloud/azure/aks.md)
+   - [Nutanix](../../data-center/nutanix/create-manage-nutanix-cluster.md)
+
+4. SSH into a node in the workload cluster. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) and
+   [SSH Usernames](../../cluster-management/ssh/ssh-usernames.md) guides for information on accessing cluster nodes.
+
+   ```shell
+   ssh -i <private-key-path> <username>@<dns-or-ip-address>
+   ```
+
+   ```shell hideClipboard title="Example command"
+   ssh -i ~/.ssh/spectro2026.pem ubuntu@10.10.149.37
+   ```
+
+5. Run the following command to verify that the workload cluster inherited the proxy configuration.
 
    ```shell
    cat /etc/systemd/system/containerd.service.d/http-proxy.conf
    ```
 
-   The output will display the proxy configuration details. Below is an example of the output.
-
-   ```shell hideClipboard
+   ```shell hideClipboard title="Example output"
    [Service]
    Environment="HTTP_PROXY=http://172.16.0.4:1080"
    Environment="HTTPS_PROXY=https://172.16.0.4:1080"
-   Environment="NO_PROXY=.aks.io,.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,.privatelink.eastus.azmk8s.io,.azure.com,.aks.io,.capz.io,.spectrocloud.com,gcr.io,windows.net,.windows.net,.microsoftonline.com,.amazonaws.com,.gcr.io,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net"
+   Environment="NO_PROXY=..aks.io,.amazonaws.com,.eks.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,gcr.io,windows.net,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net"
    ```

@@ -334,7 +334,7 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/S
 
 - An AWS Secret or Top Secret account configured for CAP/SCAP access. Your CAP/SCAP administrator must provide the
   target Agency, Account, and CAP/SCAP role values. The CAP/SCAP role must be assigned the
-  [required IAM policies](../required-iam-policies.md).
+  [required IAM policies](../required-iam-policies/required-iam-policies.md).
 
 - A Non-Person Entity (NPE) (service identity) provisioned and authorized to access the target Agency, Account, and
   CAP/SCAP role.

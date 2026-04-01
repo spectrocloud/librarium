@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Cluster Deployment"
-title: "Troubleshooting steps for errors during a cluster deployment"
+title: "Troubleshooting Steps for Errors During Cluster Deployment"
 description: "Troubleshooting steps for errors during a cluster deployment."
 icon: ""
 hide_table_of_contents: false
@@ -9,6 +9,129 @@ tags: ["troubleshooting", "cluster-deployment"]
 ---
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
+
+## Scenario - Insufficient Resources for `palette-controller-manager` and `cluster-management-agent` Pods
+
+Palette deploys system components such as `palette-controller-manager` and `cluster-management-agent` to each workload
+cluster. These components have default resource limits that are sufficient for most workloads. However, clusters with a
+large number of nodes, packs, or workloads can cause these components to exceed their limits, resulting in `OOMKilled`
+errors and `CrashLoopBackOff` states.
+
+Beginning with Palette version 4.8.x, you can add the `palette-agent-config` manifest pack as an add-on layer to adjust
+resource requirements for these system components. When this pack is included in a cluster profile, Palette installs it
+before all other packs, ensuring that the updated resource configuration is in place before resource-intensive workloads
+begin.
+
+### Debug Steps
+
+1.  Log in to [Palette](https://console.spectrocloud.com).
+
+2.  From the left main menu, select **Profiles**.
+
+3.  Select an existing **Full** or **Add-on** cluster profile, or create a new one. If creating a new, standalone
+    profile for resource requirements, select the **Add-on** type.
+
+4.  Select **Add Manifest** to add a new manifest layer.
+
+5.  In the **Layer name** field, enter `palette-agent-config`.
+
+    :::warning
+
+    The manifest layer must be named `palette-agent-config` verbatim; otherwise, Palette does not assign the layer
+    special install priority.
+
+    :::
+
+6.  Select **New manifest**. Assign an applicable name to the manifest and select the blue check mark. An empty editor
+    displays on the right side of the screen.
+
+7.  Paste the following YAML into the editor. The snippet displays the default resource requirements for the
+    `cluster-management-agent` pod and the `manager` container in the `palette-controller-manager` pod. Adjust the
+    resource `requests` and `limits` according to your cluster requirements.
+
+    :::tip
+
+    The `palette-controller-manager` pod also contains `atop-manager` and `kube-rbac-proxy` containers. To configure
+    resource requirements for these containers, add the appropriate `atop-manager` or `kube-rbac-proxy` entry to the
+    `containers` map using the same format as `manager`.
+
+    :::
+
+    ```yaml {9-10,16-17}
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: palette-agent-config
+      namespace: "cluster-{{ .spectro.system.cluster.uid }}"
+    data:
+      resource.cluster-management-agent: |
+        {
+          "requests": { "cpu": "0.1", "memory": "100Mi" },        
+          "limits": { "cpu": "500m", "memory": "512Mi" }
+        }
+      resource.palette-controller-manager: |
+        {
+          "containers": {
+            "manager": {
+              "requests": { "cpu": "100m", "memory": "100Mi" },
+              "limits": { "cpu": "3", "memory": "1000Mi" }
+            }
+          }
+        }
+    ```
+
+8.  Select **Confirm & Create** to save the manifest.
+
+9.  Select **Save Changes** to create or update the cluster profile.
+
+10. Use the cluster profile to deploy a new cluster or
+    [update an existing cluster](../clusters/cluster-management/cluster-updates.md).
+
+    When Palette deploys a new cluster, it installs the `palette-agent-config` manifest pack first before downloading
+    and installing other packs. If you need to update the requests and limits on an existing cluster, change the
+    appropriate resource values in the cluster profile, and update your cluster. If Palette detects updated resource
+    requirements, it deletes the existing `cluster-management-agent` and `palette-controller-manager` pods and deploys
+    new pods with the updated values.
+
+11. To verify your cluster is using the latest resources requirements,
+    [connect to your cluster using the kubectl CLI](../clusters/cluster-management/palette-webctl.md), and issue the
+    following command. Replace `<cluster-namespace>` with the namespace of your cluster.
+
+        ```shell
+        kubectl describe deployment cluster-management-agent palette-controller-manager \
+          --namespace <cluster-namespace> | grep --after-context 3 "Limits\|Requests"
+        ```
+
+        The output displays the updated resource requirements for the `cluster-management-agent` pod and the `manager` and `atop-manager` containers, which are part of the `palette-controller-manager` pod. By default, the `kube-rbac-proxy` container does not define resource requests or limits and therefore does not appear in the output.
+
+        ```shell title="Example output" hideClipboard
+            Limits:
+              cpu:                11
+              ephemeral-storage:  512Mi
+              memory:             1111Mi
+            Requests:
+              cpu:                1
+              ephemeral-storage:  64Mi
+              memory:             111Mi
+        --
+            Limits:
+              cpu:                44
+              ephemeral-storage:  5Gi
+              memory:             4444Mi
+            Requests:
+              cpu:                1
+              ephemeral-storage:  256Mi
+              memory:             444Mi
+        --
+            Limits:
+              cpu:                3
+              ephemeral-storage:  5Gi
+              memory:             1000Mi
+            Requests:
+              cpu:                100m
+              ephemeral-storage:  256Mi
+              memory:             100Mi
+        ```
 
 ## Scenario - EKS Worker Nodes Configured with Autoscaler Fail to Upgrade
 

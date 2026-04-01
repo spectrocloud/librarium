@@ -1296,6 +1296,13 @@ let redirects = [
     from: "/vertex/system-management/tenant-management/",
     to: "/self-hosted-setup/vertex/system-management/tenant-management/",
   },
+
+  // End of self-hosted sidebar refactor
+
+  {
+    from: `/clusters/cluster-groups/vcluster-upgrade/`,
+    to: `/clusters/cluster-groups/vcluster-upgrades/`,
+  },
 ];
 
 if (packRedirects.length > 0) {

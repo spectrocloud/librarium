@@ -17,7 +17,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
   [Create API Key](../../user-management/authentication/api-key/create-api-key.md) page for instructions on creating an
   API key.
 - A public [AWS](https://repost.aws/knowledge-center/create-and-activate-aws-account) cloud account with the required
-  [IAM Policies](../../clusters/public-cloud/aws/required-iam-policies.md).
+  [IAM Policies](../../clusters/public-cloud/aws/required-iam-policies/required-iam-policies.md).
 - An SSH key pair available in the region where you want to deploy the cluster. Check out the AWS
   [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) page for
   guidance.

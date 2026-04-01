@@ -13,6 +13,138 @@ additional details regarding vulnerabilities and offering remediation steps.
 Refer to the [Archived Security Advisories](./archived-security-advisories.md) page for a list of addressed security
 advisories.
 
+## Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability
+
+- **Release Date**: March 23, 2026
+- **Last Updated**: March 23, 2026
+- **Severity**: HIGH (CVSS 8.8)
+- **CVEs**: [CVE-2026-4342](https://github.com/kubernetes/kubernetes/issues/137893)
+
+### Summary
+
+A security issue was discovered in [`ingress-nginx`](https://github.com/kubernetes/ingress-NGINX), where certain
+combinations of Ingress annotations can be used to inject configurations into Nginx. This can lead to arbitrary code
+execution in the context of the `ingress-nginx` controller and the disclosure of Secrets accessible to the controller.
+In the default `ingress-nginx` installation, the controller can access all Secrets cluster-wide.
+
+#### Affected Versions
+
+The following Nginx versions are affected by [CVE-2026-4342](https://github.com/kubernetes/kubernetes/issues/137893):
+
+- v1.15.0
+- v1.14.0 - v1.14.4
+- v1.13.0 - v1.13.8
+
+#### Affected Deployments
+
+<!-- prettier-ignore-start -->
+
+- **Palette Enterprise and Palette VerteX environments** - All multi-tenant SaaS, dedicated SaaS, self-hosted, and
+  appliance-based deployments earlier than version 4.8.40.
+- **Workload Clusters** - All workload clusters using the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack with an affected Nginx version.
+
+<!-- prettier-ignore-end -->
+
+### Impact
+
+An attacker with the ability to create or modify Ingress resources can exploit this vulnerability to inject arbitrary
+Nginx configurations, leading to remote code execution in the `ingress-nginx` controller and the potential exposure of
+Kubernetes Secrets.
+
+### Fix Availability
+
+<!-- prettier-ignore-start -->
+
+- **Multi-Tenant and Dedicated SaaS Deployments** - All SaaS environments will be patched as part of the standard update
+  process. No action is required.
+- **Self-Hosted Deployments** - A patch with the fixed version of the `ingress-nginx` controller is in progress. This
+  advisory will be updated when the patch is available; at that time, users should update to the latest version
+  containing the fix.
+- **Workload Clusters** - An updated pack with the fixed version of the `ingress-nginx` controller is in progress. Upgrade
+  your workload clusters to use the latest version of the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack as soon as a patched version of the pack is available. If using vendor-managed ingress add-ons, follow your cloud provider's patch guidance.
+
+<!-- prettier-ignore-end -->
+
+### Mitigation
+
+Restrict Ingress creation to trusted users, disable or block unsafe annotations (such as snippet directives), and
+enforce admission policies to validate Ingress configurations. Additionally, minimize `ingress-nginx` controller
+privileges, limit its access to Secrets, and monitor for suspicious Ingress changes.
+
+## Resources
+
+- [NIST](https://nvd.nist.gov/vuln/detail/CVE-2026-4342)
+- [GitHub Security Advisory](https://github.com/kubernetes/kubernetes/issues/137893)
+
+<!-- NOTE: Security Advisory 11 was not posted publicly and was communicated to affected customers only-->
+
+## Security Advisory 010 - Nginx Ingress Configuration Injection Vulnerability
+
+- **Release Date**: March 10, 2026
+- **Last Updated**: March 10, 2026
+- **Severity**: HIGH
+- **CVEs**: [CVE-2026-3288](https://github.com/kubernetes/kubernetes/issues/137560)
+
+### Summary
+
+A vulnerability has been identified in the Kubernetes `ingress-nginx` controller where the
+`nginx.ingress.kubernetes.io/rewrite-target` Ingress annotation can be exploited to inject arbitrary Nginx configuration
+directives.
+
+Successful exploitation may result in:
+
+- Arbitrary code execution in the `ingress-nginx` controller context.
+- Disclosure of Kubernetes Secrets accessible to the controller.
+- Compromise of workloads exposed through the ingress controller.
+
+This vulnerability only affects environments using the `ingress-nginx` controller.
+
+### Affected Deployments
+
+- All workload clusters using the Nginx pack.
+- All Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted).
+
+### Impact
+
+An attacker with the ability to create or modify an Ingress resource may be able to:
+
+- Inject malicious configuration into Nginx.
+- Execute arbitrary code within the ingress controller pod.
+- Access or exfiltrate Kubernetes Secrets accessible to the controller (potentially cluster-wide).
+
+The risk is higher in environments where:
+
+- Users have Ingress write privileges.
+- The ingress controller has broad RBAC permissions.
+- Secrets are accessible across namespaces.
+
+### Recommended Actions
+
+#### Multi-tenant and Dedicated SaaS Deployments
+
+Multi-tenant & managed Dedicated SaaS clusters will be patched as part of the standard update process.
+
+#### Self-Hosted Palette Deployments
+
+A patch with the fixed version of Nginx controller is in progress. This advisory will be updated when that is available.
+
+#### Workload Clusters
+
+Apply `ingress-nginx` updates as soon as patched images are available. If using vendor-managed ingress add-ons, follow
+cloud provider patch guidance.
+
+### Mitigation
+
+- Apply a temporary policy to block `nginx.ingress.kubernetes.io/rewrite-target` via admission control until patched for
+  workload clusters using the vulnerable version.
+- Restrict Ingress creation permissions to trusted administrators.
+- Reduce ingress controller RBAC permissions where feasible.
+
+### Resources
+
+- [CVE-2026-3288](https://github.com/kubernetes/kubernetes/issues/137560)
+- [Ingress-Nginx Controller Upgrade](https://kubernetes.github.io/ingress-nginx/deploy/upgrade/)
+
 ## Security Advisory 009 - crypto/tls TLS Session Resumption
 
 - **Release Date**: February 5, 2026
@@ -45,8 +177,8 @@ resume sessions.
 
 ### Fix Availability
 
-An updated release containing a patched Go runtime is in development. This advisory will be updated when fixed versions
-become available.
+Palette version 4.8.38 includes fixes for this vulnerability in both core images and third-party images, where
+available. Refer to the [Release Notes](../../release-notes/release-notes.md) page for further details.
 
 ### Mitigations
 
@@ -58,7 +190,7 @@ ConfigMaps.
 
 - [CVE-2025-68121](https://nvd.nist.gov/vuln/detail/CVE-2025-68121)
 
-## Security Advisory 008 - Nginx ingress Vulnerabilities
+## Security Advisory 008 - Nginx Ingress Vulnerabilities
 
 - **Release Date**: February 3, 2026
 - **Last Updated**: February 3, 2026

@@ -166,13 +166,7 @@ the delete step. The deletion process takes several minutes to complete.
 
 <br />
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force
-delete, navigate to the cluster’s details page, click on **Settings**, then select **Force Delete Cluster**. Palette
-automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
-
-:::
+<PartialsComponent category="clusters" name="force-delete-callout" />
 
 <br />
 
