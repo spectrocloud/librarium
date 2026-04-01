@@ -117,6 +117,16 @@ for your Palette Edge deployment.
     bash rhel-stig/scripts/update-stig-content.sh <stig-content-version>
     ```
 
+    :::tip
+
+    You can find the latest STIG content version via GitHub API using the following command (requires jq).
+
+    ```bash
+    curl --silent https://api.github.com/repos/ComplianceAsCode/content/releases/latest | jq --raw-output .tag_name
+    ```
+
+    :::
+
     Verify that the command generates static remediation artifacts `ssg-rhel9-ds.xml` and `stig-fix.sh` in the `static`
     directory. These files are copied into the image during the build.
 
@@ -131,7 +141,7 @@ for your Palette Edge deployment.
     If you skip this step, the build uses the STIG content available in the system repositories at build time and
     generates remediation dynamically. As a result, different STIG versions may be applied across builds.
 
-6.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
+7.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
     `<base-image-name>` with the desired image name.
 
     <Tabs group="fips-compliance">
@@ -161,7 +171,7 @@ for your Palette Edge deployment.
     Building 510.1s (41/41) FINISHED
     ```
 
-7.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
+8.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
 
     ```bash
     docker images | grep <base-image-name>
@@ -172,7 +182,7 @@ for your Palette Edge deployment.
     <base-image-name>:latest                                              29814a348637        1.9GB             0B
     ```
 
-8.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
+9.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
     as an example. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
     prompted.
 
@@ -196,7 +206,7 @@ for your Palette Edge deployment.
     docker push <registry>/<base-image-name>:<tag>
     ```
 
-9.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
+10.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
     architecture (`ARCH=amd64`). Replace the placeholders with the desired values.
 
     <Tabs group="fips-compliance">
@@ -240,7 +250,7 @@ for your Palette Edge deployment.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
 
-10. Prepare the `user-data` file. Refer to
+11. Prepare the `user-data` file. Refer to
     [Prepare User Data and Argument Files](../prepare-user-data.md#prepare-user-data) for instructions. Additionally,
     you must configure firewall rules. Expand the applicable sections below to display the list of required
     configurations.
@@ -496,7 +506,7 @@ for your Palette Edge deployment.
 
     :::
 
-11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
+12. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
     option.
 
 ```yaml
