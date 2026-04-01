@@ -250,280 +250,282 @@ for your Palette Edge deployment.
     you must configure firewall rules. Expand the applicable sections below to display the list of required
     configurations.
 
-       <details>
+        <details>
 
-            <summary>Kubernetes Core</summary>
-            | **Port / Range** | **Protocol** | **Direction** | **Description** | **Notes** |
-            | ---------------- | ------------ | ------------- | -------------------------------- | ------------- |
-            | 6443 | Transmission Control Protocol (TCP)| Inbound | API server | |
-            | 6444 | TCP | Inbound | Alternative API server (RKE2 or K3s)| |
-            | 9345 | TCP | Both | RKE2 supervisor API | RKE2-specific |
-            | 2379–2380 | TCP | Inbound | etcd client and peer API | |
-            | 2381 | TCP | Inbound | etcd metrics endpoint | |
-            | 10250 | TCP | Both | Kubelet API | |
-            | 10257 | TCP| Inbound | kube-controller-manager (secure) | |
-            | 10259 | TCP | Inbound | kube-scheduler (secure) | |
-            | 30000–32767| TCP / User Datagram Protocol (UDP) | Inbound | NodePort service range | |
+             <summary>Kubernetes Core</summary>
+             | **Port / Range** | **Protocol** | **Direction** | **Description** | **Notes** |
+             | ---------------- | ------------ | ------------- | -------------------------------- | ------------- |
+             | 6443 | Transmission Control Protocol (TCP)| Inbound | API server | |
+             | 6444 | TCP | Inbound | Alternative API server (RKE2 or K3s)| |
+             | 9345 | TCP | Both | RKE2 supervisor API | RKE2-specific |
+             | 2379–2380 | TCP | Inbound | etcd client and peer API | |
+             | 2381 | TCP | Inbound | etcd metrics endpoint | |
+             | 10250 | TCP | Both | Kubelet API | |
+             | 10257 | TCP| Inbound | kube-controller-manager (secure) | |
+             | 10259 | TCP | Inbound | kube-scheduler (secure) | |
+             | 30000–32767| TCP / User Datagram Protocol (UDP) | Inbound | NodePort service range | |
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>CNI: Cilium, Calico, Flannel, Weave</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**                 | **Notes**                 |
-           | ---------------- | ------------ | ------------- | ------------------------------- | ------------------------- |
-           | 8472             | UDP          | Both          | Virtual Extensible Local Area Network (VXLAN) overlay                   | Cilium, Flannel           |
-           | 4789             | UDP          | Both          | VXLAN overlay (alternative port)        | Calico, Flannel           |
-           | 179              | TCP          | Both          | Border Gateway Protocol (BGP) peering                     | Calico, Cilium            |
-           | 4240             | TCP          | Both          | Cilium health checks            | Cilium                    |
-           | 4244             | TCP          | Both          | Hubble server (flow visibility) | Cilium                    |
-           | 4245             | TCP          | Both          | Hubble Relay                    | Cilium                    |
-           | 51871            | UDP          | Both          | WireGuard tunnel                | Cilium or Flannel if enabled |
-           | 5473             | TCP          | Both          | Calico Typha proxy              | Calico                    |
-           | 9099             | TCP          | Inbound       | Felix health check              | Calico                    |
-           | 6783–6784        | TCP / UDP      | Both          | Weave Net control and data plane  | Weave               |
-           | 12345            | UDP          | Both          | Weave Net gossip protocol (node communication)| Weave                 |
-           | Protocol 4       | IP in IP (IPIP)         | Both          | IPIP encapsulation          | Calico IPIP mode          |
+            <summary>CNI: Cilium, Calico, Flannel, Weave</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**                 | **Notes**                 |
+            | ---------------- | ------------ | ------------- | ------------------------------- | ------------------------- |
+            | 8472             | UDP          | Both          | Virtual Extensible Local Area Network (VXLAN) overlay                   | Cilium, Flannel           |
+            | 4789             | UDP          | Both          | VXLAN overlay (alternative port)        | Calico, Flannel           |
+            | 179              | TCP          | Both          | Border Gateway Protocol (BGP) peering                     | Calico, Cilium            |
+            | 4240             | TCP          | Both          | Cilium health checks            | Cilium                    |
+            | 4244             | TCP          | Both          | Hubble server (flow visibility) | Cilium                    |
+            | 4245             | TCP          | Both          | Hubble Relay                    | Cilium                    |
+            | 51871            | UDP          | Both          | WireGuard tunnel                | Cilium or Flannel if enabled |
+            | 5473             | TCP          | Both          | Calico Typha proxy              | Calico                    |
+            | 9099             | TCP          | Inbound       | Felix health check              | Calico                    |
+            | 6783–6784        | TCP / UDP      | Both          | Weave Net control and data plane  | Weave               |
+            | 12345            | UDP          | Both          | Weave Net gossip protocol (node communication)| Weave                 |
+            | Protocol 4       | IP in IP (IPIP)         | Both          | IPIP encapsulation          | Calico IPIP mode          |
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>MetalLB</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**               | **Notes**           |
-           | ---------------- | ------------ | ------------- | ----------------------------- | ------------------- |
-           | 7472             | TCP          | Inbound       | Speaker Prometheus metrics    |                     |
-           | 7473             | TCP          | Inbound       | Controller Prometheus metrics |                     |
-           | 7946             | TCP/UDP      | Both          | memberlist (Layer 2 speaker coordination)|                     |
-           | 179              | TCP          | Both          | BGP mode (upstream router)    | Shared with CNI BGP |
+            <summary>MetalLB</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**               | **Notes**           |
+            | ---------------- | ------------ | ------------- | ----------------------------- | ------------------- |
+            | 7472             | TCP          | Inbound       | Speaker Prometheus metrics    |                     |
+            | 7473             | TCP          | Inbound       | Controller Prometheus metrics |                     |
+            | 7946             | TCP/UDP      | Both          | memberlist (Layer 2 speaker coordination)|                     |
+            | 179              | TCP          | Both          | BGP mode (upstream router)    | Shared with CNI BGP |
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>Longhorn</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**                     | **Notes**                  |
-           | ---------------- | ------------ | ------------- | ----------------------------------- | -------------------------- |
-           | 9500             | TCP          | Both          | Manager API and manager–replica communication |                            |
-           | 9501             | TCP          | Both          | Conversion Webhook                  | v1.5.0+                    |
-           | 9502             | TCP          | Both          | Admission Webhook                   | v1.5.0+                    |
-           | 9503             | TCP          | Both          | Recovery Backend                    | v1.5.0+                    |
-           | 9504             | TCP          | Both          | Instance Manager (data plane)       |                            |
-           | 9505             | TCP          | Both          | Share Manager (shared read/write access via a Network File System (NFS))             |                            |
-           | 9506             | TCP          | Both          | Backing Image Manager               |                            |
-           | 10000–12000      | TCP          | Both          | Instance manager pod replication    | Required per Longhorn documenttion |
-           | 8080             | TCP          | Inbound       | Longhorn UI      | Via Ingress or port-forward   |
+            <summary>Longhorn</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**                     | **Notes**                  |
+            | ---------------- | ------------ | ------------- | ----------------------------------- | -------------------------- |
+            | 9500             | TCP          | Both          | Manager API and manager–replica communication |                            |
+            | 9501             | TCP          | Both          | Conversion Webhook                  | v1.5.0+                    |
+            | 9502             | TCP          | Both          | Admission Webhook                   | v1.5.0+                    |
+            | 9503             | TCP          | Both          | Recovery Backend                    | v1.5.0+                    |
+            | 9504             | TCP          | Both          | Instance Manager (data plane)       |                            |
+            | 9505             | TCP          | Both          | Share Manager (shared read/write access via a Network File System (NFS))             |                            |
+            | 9506             | TCP          | Both          | Backing Image Manager               |                            |
+            | 10000–12000      | TCP          | Both          | Instance manager pod replication    | Required per Longhorn documenttion |
+            | 8080             | TCP          | Inbound       | Longhorn UI      | Via Ingress or port-forward   |
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>Rook-Ceph</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**                                     |
-           | ---------------- | ------------ | ------------- | --------------------------------------------------- |
-           | 6789             | TCP          | Both          | Ceph Monitor (Messenger v1)                         |
-           | 3300             | TCP          | Both          | Ceph Monitor (Messenger v2)                         |
-           | 6800–7300        | TCP          | Both          | Object Storage Daemon (OSD) ports (up to 3 per OSD) |
-           | 7480             | TCP          | Inbound       | Reliable Autonomic Distributed Object Store (RADOS) Gateway (RGW) object storage endpoint over Hypertext Transfer Protocol (HTTP)|
-           | 9283             | TCP          | Inbound       | Ceph Manager Prometheus metrics                     |
-           | 8443             | TCP          | Inbound       | Ceph dashboard over Hypertext Transfer Protocol Secure (HTTPS)|
+            <summary>Rook-Ceph</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**                                     |
+            | ---------------- | ------------ | ------------- | --------------------------------------------------- |
+            | 6789             | TCP          | Both          | Ceph Monitor (Messenger v1)                         |
+            | 3300             | TCP          | Both          | Ceph Monitor (Messenger v2)                         |
+            | 6800–7300        | TCP          | Both          | Object Storage Daemon (OSD) ports (up to 3 per OSD) |
+            | 7480             | TCP          | Inbound       | Reliable Autonomic Distributed Object Store (RADOS) Gateway (RGW) object storage endpoint over Hypertext Transfer Protocol (HTTP)|
+            | 9283             | TCP          | Inbound       | Ceph Manager Prometheus metrics                     |
+            | 8443             | TCP          | Inbound       | Ceph dashboard over Hypertext Transfer Protocol Secure (HTTPS)|
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>Prometheus, Grafana, Alertmanager</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**                                                                   |           |
-           | ---------------- | ------------ | ------------- | --------------------------------------------------------------------------------- | --------- |
-           | 9090             | TCP          | Inbound       | Prometheus server UI and API |
-           | 9091             | TCP          | Inbound       | Pushgateway                                                                       |           |
-           | 9093             | TCP          | Inbound       | Alertmanager HTTP endpoint                                                        |           |
-           | 9094             | TCP/UDP      | Both          | Alertmanager cluster high availability (HA) mesh                                  |           |
-           | 9100             | TCP          | Inbound       | Node Exporter metrics endpoint                                                    |           |
-           | 3000             | TCP          | Inbound       | Grafana UI                                                                        |           |
-           | 6060             | TCP          | Inbound       | Profiling endpoint (`pprof`)                                                      |           |
+            <summary>Prometheus, Grafana, Alertmanager</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**                                                                   |           |
+            | ---------------- | ------------ | ------------- | --------------------------------------------------------------------------------- | --------- |
+            | 9090             | TCP          | Inbound       | Prometheus server UI and API |
+            | 9091             | TCP          | Inbound       | Pushgateway                                                                       |           |
+            | 9093             | TCP          | Inbound       | Alertmanager HTTP endpoint                                                        |           |
+            | 9094             | TCP/UDP      | Both          | Alertmanager cluster high availability (HA) mesh                                  |           |
+            | 9100             | TCP          | Inbound       | Node Exporter metrics endpoint                                                    |           |
+            | 3000             | TCP          | Inbound       | Grafana UI                                                                        |           |
+            | 6060             | TCP          | Inbound       | Profiling endpoint (`pprof`)                                                      |           |
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>Nginx Ingress</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**                   |
-           | ---------------- | ------------ | ------------- | --------------------------------- |
-           | 80               | TCP          | Inbound       | HTTP ingress                      |
-           | 443              | TCP          | Inbound       | HTTPS ingress                     |
-           | 8443             | TCP          | Inbound       | Admission webhook                 |
-           | 10254            | TCP          | Inbound       | Health check and metrics endpoint |
+            <summary>Nginx Ingress</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**                   |
+            | ---------------- | ------------ | ------------- | --------------------------------- |
+            | 80               | TCP          | Inbound       | HTTP ingress                      |
+            | 443              | TCP          | Inbound       | HTTPS ingress                     |
+            | 8443             | TCP          | Inbound       | Admission webhook                 |
+            | 10254            | TCP          | Inbound       | Health check and metrics endpoint |
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>Vault</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**                                             | **Notes**  |
-           | ---------------- | ------------ | ------------- | ----------------------------------------------------------- | ---------- |
-           | 8200             | TCP          | Inbound       | Vault API and UI                                            |            |
-           | 8201             | TCP          | Both          | Vault cluster communication (Raft and HA) |            |
-           | 8202             | TCP          | Both          | Vault replication (disaster recovery (DR) and performance)  | Enterprise |
+            <summary>Vault</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**                                             | **Notes**  |
+            | ---------------- | ------------ | ------------- | ----------------------------------------------------------- | ---------- |
+            | 8200             | TCP          | Inbound       | Vault API and UI                                            |            |
+            | 8201             | TCP          | Both          | Vault cluster communication (Raft and HA) |            |
+            | 8202             | TCP          | Both          | Vault replication (disaster recovery (DR) and performance)  | Enterprise |
 
-       </details>
+        </details>
 
-       <details>
+        <details>
 
-           <summary>Misc, System</summary>
-           | **Port / Range** | **Protocol** | **Direction** | **Description**                                                                                       | **Notes**                 |
-           | ---------------- | ------------ | ------------- | ----------------------------------------------------------------------------------------------------- | ------------------------- |
-           | 22               | TCP          | Inbound       | Secure Shell (SSH)                                                                                    |                           |
-           | 5080             | TCP          | Inbound       | Local UI                                                                                              |                           |
-           | 8500             | TCP          | Inbound       | Consul HTTP API                                                                                       | If used                   |
-           | 5355             | UDP          | Both          | Link-Local Multicast Name Resolution (LLMNR) and Multicast Domain Name System (mDNS) (`systemd-resolved`) | Can usually be restricted |
-           | Protocol 4       | IPIP         | Both          | IP-in-IP encapsulation                                                                                | Calico IPIP mode          |
+            <summary>Misc, System</summary>
+            | **Port / Range** | **Protocol** | **Direction** | **Description**                                                                                       | **Notes**                 |
+            | ---------------- | ------------ | ------------- | ----------------------------------------------------------------------------------------------------- | ------------------------- |
+            | 22               | TCP          | Inbound       | Secure Shell (SSH)                                                                                    |                           |
+            | 5080             | TCP          | Inbound       | Local UI                                                                                              |                           |
+            | 8500             | TCP          | Inbound       | Consul HTTP API                                                                                       | If used                   |
+            | 5355             | UDP          | Both          | Link-Local Multicast Name Resolution (LLMNR) and Multicast Domain Name System (mDNS) (`systemd-resolved`) | Can usually be restricted |
+            | Protocol 4       | IPIP         | Both          | IP-in-IP encapsulation                                                                                | Calico IPIP mode          |
 
-       </details>
+        </details>
 
-        The following example shows how to configure `firewalld` in `user-data` to create a dedicated `k8s` zone and open the ports and protocols required for Kubernetes and commonly used add-ons.
+         The following example shows how to configure `firewalld` in `user-data` to create a dedicated `k8s` zone and open the ports and protocols required for Kubernetes and commonly used add-ons.
 
-       <details>
-   <summary>Example</summary>
- 
-   ```yaml
-    #cloud-config
-    stylus:
-      site:
-        paletteEndpoint: api.spectrocloud.com
-        edgeHostToken: <your-registration-token>
+        <details>
 
-            install:
-              poweroff: true
+    <summary>Example</summary>
 
-            stages:
-              initramfs:
-                - name: Create user and assign to sudo group
-                  users:
-                    kairos:
-                      groups:
-                        - sudo
-                      passwd: kairos
+````yaml
+ #cloud-config
+ stylus:
+   site:
+     paletteEndpoint: api.spectrocloud.com
+     edgeHostToken: <your-registration-token>
 
-              boot:
-                - name: configure firewalld baseline for k8s
-                  commands:
-                    - |-
-                      firewall-cmd --set-default-zone=k8s || true
-                      firewall-cmd --reload || true
+         install:
+           poweroff: true
 
-              network.after:
-                - name: configure firewalld for k8s
-                  commands:
-                    - |-
-                      firewall-cmd --permanent --new-zone=k8s || true
-                      firewall-cmd --reload
-                      firewall-cmd --permanent --zone=k8s --add-service=ssh
-                      firewall-cmd --permanent --zone=k8s --add-forward
-                      firewall-cmd --permanent --zone=k8s --add-masquerade
-                      firewall-cmd --permanent --zone=k8s --add-source=192.168.0.0/16
-                      firewall-cmd --zone=k8s --add-source=10.10.0.0/16 --permanent
-                      firewall-cmd --permanent --zone=k8s --add-port=6443/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=4443/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=6444/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=7472/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=7473/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=2379-2380/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=10250/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=10259/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=10257/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=30000-32767/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=30000-32767/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=2381/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=7946/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=9100/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=8472/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=5355/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=12345/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=4789/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=179/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=4240/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=4244-4245/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=51871/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=5473/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=6783-6784/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=6783-6784/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=9500-9506/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=10000-12000/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=443/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=6789/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=3300/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=6800-7300/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=7480/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=9283/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=8443/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=8500/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=9345/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=7946/tcp
-                      firewall-cmd --permanent --zone=k8s --add-protocol=4
-                      firewall-cmd --permanent --zone=k8s --add-port=3000/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=6060/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=9090/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=9091/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=8080/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=9094/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=9094/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=9093/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=9093/udp
-                      firewall-cmd --permanent --zone=k8s --add-port=80/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=10254/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=8200-8202/tcp
-                      firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
-                      firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
-                      firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
+         stages:
+           initramfs:
+             - name: Create user and assign to sudo group
+               users:
+                 kairos:
+                   groups:
+                     - sudo
+                   passwd: kairos
 
-                      IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
-                      if [ -n "$IFACE" ]; then
-                          firewall-cmd --zone=public --remove-interface="$IFACE" || true
-                          firewall-cmd --zone=k8s --change-interface="$IFACE"
-                      fi
+           boot:
+             - name: configure firewalld baseline for k8s
+               commands:
+                 - |-
+                   firewall-cmd --set-default-zone=k8s || true
+                   firewall-cmd --reload || true
 
-                      firewall-cmd --set-default-zone=k8s
-                      firewall-cmd --reload
-           ```
+           network.after:
+             - name: configure firewalld for k8s
+               commands:
+                 - |-
+                   firewall-cmd --permanent --new-zone=k8s || true
+                   firewall-cmd --reload
+                   firewall-cmd --permanent --zone=k8s --add-service=ssh
+                   firewall-cmd --permanent --zone=k8s --add-forward
+                   firewall-cmd --permanent --zone=k8s --add-masquerade
+                   firewall-cmd --permanent --zone=k8s --add-source=192.168.0.0/16
+                   firewall-cmd --zone=k8s --add-source=10.10.0.0/16 --permanent
+                   firewall-cmd --permanent --zone=k8s --add-port=6443/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=4443/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=6444/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=7472/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=7473/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=2379-2380/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=10250/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=10259/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=10257/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=30000-32767/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=30000-32767/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=2381/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=7946/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=9100/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=8472/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=5355/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=12345/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=4789/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=179/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=4240/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=4244-4245/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=51871/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=5473/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=6783-6784/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=6783-6784/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=9500-9506/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=10000-12000/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=443/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=6789/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=3300/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=6800-7300/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=7480/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=9283/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=8443/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=8500/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=9345/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=7946/tcp
+                   firewall-cmd --permanent --zone=k8s --add-protocol=4
+                   firewall-cmd --permanent --zone=k8s --add-port=3000/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=6060/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=9090/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=9091/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=8080/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=9094/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=9094/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=9093/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=9093/udp
+                   firewall-cmd --permanent --zone=k8s --add-port=80/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=10254/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=8200-8202/tcp
+                   firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
+                   firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
+                   firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
 
-       </details>
+                   IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
+                   if [ -n "$IFACE" ]; then
+                       firewall-cmd --zone=public --remove-interface="$IFACE" || true
+                       firewall-cmd --zone=k8s --change-interface="$IFACE"
+                   fi
 
-        :::warning
+                   firewall-cmd --set-default-zone=k8s
+                   firewall-cmd --reload
+        ```
 
-        Configure the firewall through `user-data`, as some rules are required during cluster registration. If you add them later (for example, in a cluster profile), overlay clusters may fail to come up.
+    </details>
 
-        The example configuration is not exhaustive. Depending on the packs and applications deployed in the cluster, you may need to allow additional ports, protocols, or rich rules. Refer to the documentation for those components to determine the required network settings.
+     :::warning
 
-        :::
+     Configure the firewall through `user-data`, as some rules are required during cluster registration. If you add them later (for example, in a cluster profile), overlay clusters may fail to come up.
+
+     The example configuration is not exhaustive. Depending on the packs and applications deployed in the cluster, you may need to allow additional ports, protocols, or rich rules. Refer to the documentation for those components to determine the required network settings.
+
+     :::
 
 11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
-    option.
+ option.
 
-    ```yaml
-    #cloud-config
-    install:
-    grub_options:
-      extra_cmdline: "fips=1 selinux=0"
-    ```
+ ```yaml
+ #cloud-config
+ install:
+ grub_options:
+   extra_cmdline: "fips=1 selinux=0"
+ ```
 
 12. Once the `user-data` file is ready, issue the following command to build the ISO image.
 
-    ```bash
-     sudo ./earthly.sh iso
-    ```
+ ```bash
+  sudo ./earthly.sh iso
+ ```
 
-    The build process takes some time to finish.
+ The build process takes some time to finish.
 
-    ```bash hideClipboard {2}
-    # Output condensed for readability
-    ===================== Earthly Build SUCCESS =====================
-    Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
-    ```
+ ```bash hideClipboard {2}
+ # Output condensed for readability
+ ===================== Earthly Build SUCCESS =====================
+ Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+ ```
 
-    You can find the ISO image in the `build` folder.
+ You can find the ISO image in the `build` folder.
 
 ## Validate
 
 You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that
 creates a bootable device will validate the ISO image before the flash process.
+````
