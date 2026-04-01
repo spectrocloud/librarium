@@ -382,7 +382,7 @@ for your Palette Edge deployment.
 
         <summary>Example</summary>
 
-        ````yaml
+        ```yaml
         #cloud-config
         stylus:
           site:
