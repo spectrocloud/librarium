@@ -107,7 +107,10 @@ for your Palette Edge deployment.
     git checkout <newest-available-tag>
     ```
 
-5. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image. The static STIG content included in the repository is validated by Spectro Cloud. Using a different or newer STIG version is not validated and may result in issues during cluster creation or operation.
+5.  (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content
+    version before building the base RHEL 9 STIG image. The static STIG content included in the repository is validated
+    by Spectro Cloud. Using a different or newer STIG version is not validated and may result in issues during cluster
+    creation or operation.
 
     ```bash
     bash rhel-stig/scripts/update-stig-content.sh <stig-content-version>
@@ -127,7 +130,7 @@ for your Palette Edge deployment.
     If you skip this step, the build uses the STIG content available in the system repositories at build time and
     generates remediation dynamically. As a result, different STIG versions may be applied across builds.
 
-7.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
+6.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
     `<base-image-name>` with the desired image name.
 
     <Tabs group="fips-compliance">
@@ -157,7 +160,7 @@ for your Palette Edge deployment.
     Building 510.1s (41/41) FINISHED
     ```
 
-8.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
+7.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
 
     ```bash
     docker images | grep <base-image-name>
@@ -168,7 +171,7 @@ for your Palette Edge deployment.
     <base-image-name>:latest                                              29814a348637        1.9GB             0B
     ```
 
-9.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
+8.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
     as an example. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
     prompted.
 
@@ -192,8 +195,9 @@ for your Palette Edge deployment.
     docker push <registry>/<base-image-name>:<tag>
     ```
 
-10.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
+9.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
     architecture (`ARCH=amd64`). Replace the placeholders with the desired values.
+
 
     <Tabs group="fips-compliance">
 
@@ -478,7 +482,7 @@ for your Palette Edge deployment.
                     firewall-cmd --set-default-zone=k8s
                     firewall-cmd --reload
         ```
-    
+
         </details>
 
     :::warning
@@ -486,35 +490,37 @@ for your Palette Edge deployment.
     Configure the firewall through `user-data`, as some rules are required during cluster registration. If you add them
     later (for example, in a cluster profile), overlay clusters may fail to come up.
 
-    The provided firewall configuration is an example. You may not need all listed ports. Add, remove, or modify rules based on your cluster profile, enabled packs, and application requirements. Refer to the documentation for those components to determine the required network settings.
+    The provided firewall configuration is an example. You may not need all listed ports. Add, remove, or modify rules
+    based on your cluster profile, enabled packs, and application requirements. Refer to the documentation for those
+    components to determine the required network settings.
 
     :::
 
 12. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
     option.
 
-  ```yaml
-  #cloud-config
-  install:
-  grub_options:
-    extra_cmdline: "fips=1 selinux=0"
-  ```
+```yaml
+#cloud-config
+install:
+grub_options:
+  extra_cmdline: "fips=1 selinux=0"
+```
 
 12. Once the `user-data` file is ready, issue the following command to build the ISO image.
 
-  ```bash
-   sudo ./earthly.sh iso
-  ```
+```bash
+ sudo ./earthly.sh iso
+```
 
-  The build process takes some time to finish.
-  
-  ```bash hideClipboard {2}
-  # Output condensed for readability
-  ===================== Earthly Build SUCCESS =====================
-  Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
-  ```
-  
-  You can find the ISO image in the `build` folder.
+The build process takes some time to finish.
+
+```bash hideClipboard {2}
+# Output condensed for readability
+===================== Earthly Build SUCCESS =====================
+Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+```
+
+You can find the ISO image in the `build` folder.
 
 ## Validate
 
