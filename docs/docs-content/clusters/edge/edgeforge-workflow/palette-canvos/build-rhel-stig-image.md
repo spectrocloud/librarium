@@ -138,7 +138,7 @@ for your Palette Edge deployment.
     If you skip this step, the build uses the STIG content available in the system repositories at build time and
     generates remediation dynamically. As a result, different STIG versions may be applied across builds.
 
-7.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
+6.  Build the base RHEL 9 STIG image. Replace `<username>` and `<password>` with your Red Hat credentials and
     `<base-image-name>` with the desired image name.
 
     <Tabs group="fips-compliance">
@@ -168,7 +168,7 @@ for your Palette Edge deployment.
     Building 510.1s (41/41) FINISHED
     ```
 
-8.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
+7.  Confirm the RHEL 9 STIG image was built successfully. Replace `<base-image-name>` with the image name.
 
     ```bash
     docker images | grep <base-image-name>
@@ -179,7 +179,7 @@ for your Palette Edge deployment.
     <base-image-name>:latest                                              29814a348637        1.9GB             0B
     ```
 
-9.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
+8.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
     as an example. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
     prompted.
 
@@ -203,8 +203,9 @@ for your Palette Edge deployment.
     docker push <registry>/<base-image-name>:<tag>
     ```
 
-10.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
+9.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
     architecture (`ARCH=amd64`). Replace the placeholders with the desired values.
+
 
     <Tabs group="fips-compliance">
 
@@ -395,10 +396,10 @@ for your Palette Edge deployment.
            site:
              paletteEndpoint: api.spectrocloud.com
              edgeHostToken: <your-registration-token>
-        
+
                  install:
                    poweroff: true
-        
+
                  stages:
                    initramfs:
                      - name: Create user and assign to sudo group
@@ -407,14 +408,14 @@ for your Palette Edge deployment.
                            groups:
                              - sudo
                            passwd: kairos
-        
+
                    boot:
                      - name: configure firewalld baseline for k8s
                        commands:
                          - |-
                            firewall-cmd --set-default-zone=k8s || true
                            firewall-cmd --reload || true
-        
+
                    network.after:
                      - name: configure firewalld for k8s
                        commands:
@@ -479,52 +480,55 @@ for your Palette Edge deployment.
                            firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
                            firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
                            firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
-        
+
                            IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
                            if [ -n "$IFACE" ]; then
                                firewall-cmd --zone=public --remove-interface="$IFACE" || true
                                firewall-cmd --zone=k8s --change-interface="$IFACE"
                            fi
-        
+
                            firewall-cmd --set-default-zone=k8s
                            firewall-cmd --reload
                 ```
 
         </details>
 
-     :::warning
+    :::warning
 
-     Configure the firewall through `user-data`, as some rules are required during cluster registration. If you add them later (for example, in a cluster profile), overlay clusters may fail to come up.
+    Configure the firewall through `user-data`, as some rules are required during cluster registration. If you add them
+    later (for example, in a cluster profile), overlay clusters may fail to come up.
 
-     The example configuration is not exhaustive. Depending on the packs and applications deployed in the cluster, you may need to allow additional ports, protocols, or rich rules. Refer to the documentation for those components to determine the required network settings.
+    The example configuration is not exhaustive. Depending on the packs and applications deployed in the cluster, you
+    may need to allow additional ports, protocols, or rich rules. Refer to the documentation for those components to
+    determine the required network settings.
 
-     :::
+    :::
 
-11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
- option.
+12. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
+    option.
 
- ```yaml
- #cloud-config
- install:
- grub_options:
-   extra_cmdline: "fips=1 selinux=0"
- ```
+```yaml
+#cloud-config
+install:
+grub_options:
+  extra_cmdline: "fips=1 selinux=0"
+```
 
 12. Once the `user-data` file is ready, issue the following command to build the ISO image.
 
- ```bash
-  sudo ./earthly.sh iso
- ```
+```bash
+ sudo ./earthly.sh iso
+```
 
- The build process takes some time to finish.
+The build process takes some time to finish.
 
- ```bash hideClipboard {2}
- # Output condensed for readability
- ===================== Earthly Build SUCCESS =====================
- Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
- ```
+```bash hideClipboard {2}
+# Output condensed for readability
+===================== Earthly Build SUCCESS =====================
+Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+```
 
- You can find the ISO image in the `build` folder.
+You can find the ISO image in the `build` folder.
 
 ## Validate
 
