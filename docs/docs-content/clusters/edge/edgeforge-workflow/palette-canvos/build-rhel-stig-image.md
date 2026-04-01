@@ -384,7 +384,8 @@ for your Palette Edge deployment.
         The following example shows how to configure `firewalld` in `user-data` to create a dedicated `k8s` zone and open the ports and protocols required for Kubernetes and commonly used add-ons.
 
        <details>
-
+         
+           ```yaml
            <summary>Example</summary>
             #cloud-config
             stylus:
@@ -485,7 +486,7 @@ for your Palette Edge deployment.
                       firewall-cmd --set-default-zone=k8s
                       firewall-cmd --reload
            ```
-
+    
        </details>
 
         :::warning
@@ -496,7 +497,7 @@ for your Palette Edge deployment.
 
         :::
 
-11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
+12. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
     option.
 
     ```yaml
@@ -506,7 +507,7 @@ for your Palette Edge deployment.
       extra_cmdline: "fips=1 selinux=0"
     ```
 
-12. Once the `user-data` file is ready, issue the following command to build the ISO image.
+13. Once the `user-data` file is ready, issue the following command to build the ISO image.
 
     ```bash
      sudo ./earthly.sh iso
