@@ -113,7 +113,7 @@ for your Palette Edge deployment.
 
     :::warning
 
-    The static STIG content included in the CanvOS repository is validated y Spectro Cloud. Using a different or newer
+    Only the static STIG content included in the CanvOS repository is validated by Spectro Cloud. Using a different or newer
     STIG version is not validated and may result in issues during cluster reation or operation.
 
     :::
