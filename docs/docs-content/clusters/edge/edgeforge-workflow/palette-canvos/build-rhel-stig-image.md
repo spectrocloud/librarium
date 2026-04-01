@@ -198,7 +198,6 @@ for your Palette Edge deployment.
 9.  Issue the command below to create an `.arg` file. Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64
     architecture (`ARCH=amd64`). Replace the placeholders with the desired values.
 
-
     <Tabs group="fips-compliance">
 
     <TabItem value="Non-FIPS">
@@ -240,7 +239,7 @@ for your Palette Edge deployment.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
 
-11. Prepare the `user-data` file. Refer to
+10. Prepare the `user-data` file. Refer to
     [Prepare User Data and Argument Files](../prepare-user-data.md#prepare-user-data) for instructions. Additionally,
     you must configure firewall rules. Expand the applicable sections below to display the list of required
     configurations.
@@ -496,7 +495,7 @@ for your Palette Edge deployment.
 
     :::
 
-12. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
+11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel boot
     option.
 
 ```yaml
