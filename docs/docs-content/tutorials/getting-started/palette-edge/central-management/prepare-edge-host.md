@@ -7,7 +7,7 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual machines
@@ -144,7 +144,8 @@ using the registration token provided in the `user-data` file during the
 
 You can provide site-specific Edge installer configuration user data if you need to apply new values or override default
 values from the Edge installer user data you created during the EdgeForge process. Refer to
-[Apply Site User Data](../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for more information.
+[Apply Site User Data](../../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for more
+information.
 
 :::
 
@@ -174,7 +175,8 @@ using the registration token provided in the `user-data` file during the
 
 You can provide site-specific Edge installer configuration user data if you need to apply new values or override default
 values from the Edge installer user data you created during the EdgeForge process. Refer to
-[Apply Site User Data](../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for more information.
+[Apply Site User Data](../../../../clusters/edge/site-deployment/site-installation/site-user-data.md) for more
+information.
 
 :::
 

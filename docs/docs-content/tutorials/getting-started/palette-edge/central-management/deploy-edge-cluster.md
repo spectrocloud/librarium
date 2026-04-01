@@ -5,7 +5,7 @@ description: "Get started with Kubernetes at the edge. Learn how to deploy an Ed
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["getting-started", "tutorial", "edge"]
+tags: ["getting-started", "tutorial", "centrally-managed", "edge"]
 ---
 
 This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster
@@ -52,7 +52,7 @@ Review the cluster profile layers and click **Next** to proceed.
 We recommend enabling the overlay network configuration when using DHCP-enabled networks to ensure stable IP addresses
 for the cluster. However, for education purposes, this tutorial does not use the overlay network. For production use or
 detailed configuration instructions, refer to the
-[Enable Overlay Network](../../../clusters/edge/networking/vxlan-overlay.md) guide.
+[Enable Overlay Network](../../../../clusters/edge/networking/vxlan-overlay.md) guide.
 
 :::
 
@@ -140,13 +140,7 @@ Next, click on **Settings** and select **Delete Cluster**.
 
 Type the cluster name to proceed with the deletion. This process may take several minutes to complete.
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. To force delete a
-cluster, access the cluster’s details page, click **Settings**, then select **Force Delete Cluster**. Palette
-automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
-
-:::
+<PartialsComponent category="clusters" name="force-delete-callout" />
 
 Once the cluster is deleted, proceed with the cluster profile deletion.
 
@@ -193,8 +187,8 @@ Next, reboot the host.
 sudo reboot
 ```
 
-Refer to [Reset Host via Terminal](../../../clusters/edge/cluster-management/reset-host.md) for more information about
-Edge host resetting.
+Refer to [Reset Host via Terminal](../../../../clusters/edge/cluster-management/reset-host.md) for more information
+about Edge host resetting.
 
 </TabItem>
 
@@ -226,6 +220,27 @@ In this tutorial, you learned how to deploy a single-node Edge cluster along wit
 host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Edge
 Getting Started tutorial series.
 
-We encourage you to check out the [Additional Capabilities](../additional-capabilities/additional-capabilities.md)
-section to explore other Palette functionalities, and the [Edge](../../../clusters/edge/edge.md) documentation section
-to learn more about Palette Edge.
+We encourage you to check out the [Additional Capabilities](../../additional-capabilities/additional-capabilities.md)
+section to explore other Palette functionalities, and the [Edge](../../../../clusters/edge/edge.md) documentation
+section to learn more about Palette Edge.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+After going through the steps in the tutorial, Kai is confident in centrally managed Palette Edge's capabilities.
+
+> "What have you found out, Kai?" says Meera walking over to Kai's desk.
+>
+> "It was surprisingly simple to deploy and connect these Edge devices remotely," says Kai with a enthusiastic nod. "In
+> fact, it feels no different than when we deployed our clusters to the Cloud. Even our security is covered through pack
+> updates and scanning capabilities. Relying on this kind of tooling is invaluable to security-conscious engineers like
+> us."
+
+> "Excellent! These capabilities will be a great for expanding our existing systems at Spacetastic," says Meera with a
+> big grin.
+
+> "I'm so glad that we found a platform that can support everyone!" says Kai. "There is so much more to explore though.
+> I will keep reading through the Getting Started section and find out what additional capabilities Palette provides."
+
+> "Good thinking, Kai," says Meera, nodding. "We should maximize all of Palette's features now that we have implemented
+> it in production. We've got big ideas and goals on our company roadmap, so let's find out how Palette can help us
+> deliver them."
