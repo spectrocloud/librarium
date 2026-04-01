@@ -278,8 +278,8 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
            | 51871            | UDP          | Both          | WireGuard tunnel                | Cilium or Flannel if enabled |
            | 5473             | TCP          | Both          | Calico Typha proxy              | Calico                    |
            | 9099             | TCP          | Inbound       | Felix health check              | Calico                    |
-           | 6783–6784        | TCP / UDP      | Both          | Weave Net control and data plane  | Weave Container Network Interface  (CNI)               |
-           | 12345            | UDP          | Both          | Weave Net gossip protocol (node communication)| Weave CNI                 |
+           | 6783–6784        | TCP / UDP      | Both          | Weave Net control and data plane  | Weave               |
+           | 12345            | UDP          | Both          | Weave Net gossip protocol (node communication)| Weave                 |
            | Protocol 4       | IP in IP (IPIP)         | Both          | IPIP encapsulation          | Calico IPIP mode          |
 
        </details>
