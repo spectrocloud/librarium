@@ -78,8 +78,9 @@ for your Palette Edge deployment.
 
   - [Docker Engine](https://docs.docker.com/engine/install/) with BuildKit enabled (default in Docker 23+; set
     `DOCKER_BUILDKIT=1` for older versions)
-  - (Optional) [Earthly](https://earthly.dev/)
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  - (Optional) [Earthly](https://earthly.dev/)
+  - (Optional, required for step 5) `cmake`, `make`, `openscap-utils`, `openscap-scanner`, `python3`, `pip`
 
 ## Build RHEL 9 STIG-based Images
 
