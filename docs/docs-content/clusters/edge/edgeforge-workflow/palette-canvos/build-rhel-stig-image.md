@@ -456,7 +456,7 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
                     firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
                     firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
                     # Critical: bind the active/default-route interface to k8s zone
-                    IFACE="$(ip -o route show default | awk '{print $5; exit}')"
+                    IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
                     if [ -n "$IFACE" ]; then
                         firewall-cmd --zone=public --remove-interface="$IFACE" || true
                         firewall-cmd --zone=k8s --change-interface="$IFACE"
@@ -476,7 +476,7 @@ to build a RHEL 9 STIG-based ISO image for your Edge deployment.
         :::
 
 11. (Optional) To enable FIPS, add the following to your `user-data` `cloud-config` to set the required kernel
-    bootoption.
+    boot option.
 
     ```yaml
     #cloud-config
