@@ -4,12 +4,11 @@ partial_name: deployment-models
 ---
 
 Palette and Palette VerteX support three architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which
-includes support for airgapped environments. These flexible deployment models allow us to adapt to existing requirements
-in terms of separating responsibilities and network restrictions. Model availability depends the edition of Palette and
+includes support for airgapped environments. With these flexible deployment models, we can work within your existing requirements for responsibility separation and network restrictions. Model availability depends on the edition of Palette (Palette or Palette VerteX) and
 the location of the deployment (US or EU).
 
 | **Deployment Model**  | **Description**                                                                                                                                                                                                                          |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Multi-Tenant SaaS** | The management plane is hosted in AWS and managed by Spectro Cloud. Each customer operates as an isolated tenant with enforced data isolation and access controls. Spectro Cloud controls management plane upgrades.                     |
 | **Dedicated SaaS**    | The management plane is hosted as a dedicated instance in a customer-selected cloud and region within Spectro Cloud's cloud account. Spectro Cloud manages the instance, and the customer controls when to upgrade the management plane. |
-| **Self-Hosted**       | The management plane is hosted in the customer's environment. This environment can be a public cloud or data center, or bare metal devices.                                                                                              |
+| **Self-Hosted**       | The management plane is hosted in the customer's environment. This environment can be a public cloud, a data center, or bare metal devices. This model supports airgapped environments.                                                                                              |
