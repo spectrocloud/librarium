@@ -127,7 +127,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md) for more
   information.
 
-- Palette now supports building [RHEL 9 STIG-compliant images](../clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image.md) for use in Edge deployments.
+- Palette now supports building
+  [RHEL 9 STIG-compliant images](../clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image.md) for use in
+  Edge deployments.
 
 #### Improvements
 
