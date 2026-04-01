@@ -502,7 +502,7 @@ for your Palette Edge deployment.
 
     :::warning
 
-    Configure the firewall through `user-data`, as some rules are required during cluster registration. If you add them
+    Configure the firewall through `user-data`, as some rules are required during overlay cluster creation. If you add them
     later (for example, in a cluster profile), overlay clusters may fail to come up.
 
     The provided firewall configuration is an example. You may not need all listed ports. Add, remove, or modify rules
