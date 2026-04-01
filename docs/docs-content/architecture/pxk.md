@@ -40,7 +40,7 @@ registry used by CNCF distributions. These images include all essential componen
 
 The FIPS-compliant variants of PXK and PXK-E, used in Palette VerteX, do not use upstream images directly. Instead, they
 use images recompiled with FIPS-compliant cryptographic libraries. For more information, refer to
-[FIPS-Compliant Components](../vertex/fips/fips-compliant-components.md).
+[FIPS-Compliant Clusters](../self-hosted-setup/vertex/fips.md#fips-compliant-clusters).
 
 <!-- prettier-ignore-start -->
 

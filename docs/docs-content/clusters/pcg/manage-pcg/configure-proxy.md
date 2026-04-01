@@ -60,7 +60,7 @@ installation process.
   (PEM) format.
 
 - Access to the Palette Helm chart compatible with your Palette version. Refer to
-  [Access Palette](../../../enterprise-version/enterprise-version.md#access-palette) for instructions on how to request
+  [Access Palette](../../../self-hosted-setup/palette/palette.md#access-palette) for instructions on how to request
   access to the Palette Helm chart.
 
 ## Enable Proxy
@@ -209,7 +209,7 @@ the PCG.
    reach-controller-manager-995c74db5-frb5j            2/2     Running   0          2m
    ```
 
-2. If you have not already, add your [AWS](../../public-cloud/aws/add-aws-accounts.md),
+2. If you have not already, add your [AWS](../../public-cloud/aws/add-aws-accounts/add-aws-accounts.md),
    [Azure](../../public-cloud/azure/azure-cloud.md), or
    [Nutanix](../../data-center/nutanix/add-nutanix-cloud-account.md) cloud account to Palette with the **Connect Private
    Cloud Gateway** option toggled and your self-hosted PCG selected.

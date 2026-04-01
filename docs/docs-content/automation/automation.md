@@ -12,8 +12,9 @@ tags: ["automation"]
 This section contains documentation and guides for tools essential in automating tasks with Palette:
 
 - Palette CLI - Enables users to interact with Palette and create and manage resources, such as projects, virtual
-  clusters, and more. The Palette CLI is the primary method for installing a
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) instance and deploying a
+  clusters, and more. The Palette CLI is the primary method for installing
+  [self-hosted Palette](../self-hosted-setup/palette/palette.md) and
+  [Palette VerteX](../self-hosted-setup/vertex/vertex.md), as well as deploying a
   [Private Cloud Gateway](../clusters/pcg/pcg.md).
 
 - Palette Go SDK - Enables developers to interact with Palette APIs for automated resource management using Go.

@@ -11,9 +11,8 @@ The `ec` command installs a self-hosted Palette Enterprise Cluster (EC) in your 
 conducted through an interactive wizard that guides you through the various install configurations available. A local
 kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to
 install kind or any other dependencies. The CLI includes all the required dependencies to set up the kind cluster. You
-can use the `ec` command to install a
-[self-hosted Palette](../../../enterprise-version/install-palette/install-palette.md) instance or a self-hosted
-[VerteX](../../../vertex/install-palette-vertex/install-palette-vertex.md) instance.
+can use the `ec` command to install [self-hosted Palette](../../../self-hosted-setup/palette/palette.md) or
+[Palette VerteX](../../../self-hosted-setup/vertex/vertex.md).
 
 ## Subcommands
 

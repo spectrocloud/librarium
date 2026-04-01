@@ -3,36 +3,34 @@ partial_category: self-hosted
 partial_name: scar-migration-prerequisites
 ---
 
-- A deployed self-hosted {props.edition} <PaletteVertexUrlMapper
+- A self-hosted {props.version} <PaletteVertexUrlMapper
     edition={props.edition}
-    text="cluster"
-    palettePath="/install-palette"
-    vertexPath="/install-palette-vertex"
-  /> that uses a customer-managed SCAR to host {props.edition}
+    text="instance"
+    url=""
+  /> that uses a customer-managed SCAR to host {props.version}
   manifests.
-- Access to the {props.edition} cluster kubeconfig file to verify the SCAR endpoint.
+- Access to the {props.version} cluster kubeconfig file to verify the SCAR endpoint.
 
   :::tip
 
-  If you deployed {props.edition} using the Palette CLI, you can download the kubeconfig file from the {props.edition} cluster details
+  If you deployed {props.version} using the Palette CLI, you can download the kubeconfig file from the {props.version} cluster details
   page in the system console. Navigate to the **Enterprise Cluster Migration** page and click on the **Admin
-  Kubeconfig** link to download the kubeconfig file. If you deployed {props.edition} to an existing Kubernetes cluster, contact
+  Kubeconfig** link to download the kubeconfig file. If you deployed {props.version} to an existing Kubernetes cluster, contact
   your cluster administrator to obtain the kubeconfig file. For instructions on using the kubeconfig file to access your
   cluster, refer to the <VersionedLink text="Access Cluster with CLI" url="/clusters/cluster-management/palette-webctl"/>.
 
   :::
 
-- Access to the file server that hosts the {props.edition} manifests.
+- Access to the file server that hosts the {props.version} manifests.
 - Ensure the Kubernetes cluster has a Container Storage Interface (CSI) available and at least 10 GB of free space. The Specman service requires this to create a Persistent Volume Claim (PVC) for storing content.
-- The {props.edition} cluster must have been upgraded to version `4.5.15` or later. This is required for the SCAR migration to
+- Your {props.version} instance must be version 4.5.15 or later. This is required for the SCAR migration to
   function properly.
-- Access to the {props.edition} system console.
+- Access to the {props.version} <PaletteVertexUrlMapper edition={props.edition} text="system console" url="/system-management/#system-console" /> .
 - Ensure the following software is installed and available in the environment hosting the file server. For example, if
-  you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
+  you deployed an airgapped instance of {props.version} to VMware using an <PaletteVertexUrlMapper
     edition={props.edition}
     text="OVA"
-    palettePath="/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
-    vertexPath="/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    url="/supported-environments/vmware/setup/airgap/ova/"
   />, these tools must be available on your airgap support VM.
 
   - [tar](https://www.gnu.org/software/tar/)

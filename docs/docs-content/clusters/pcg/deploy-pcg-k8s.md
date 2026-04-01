@@ -145,10 +145,11 @@ successful.
 
 ## Next Steps
 
-Once your PCG is in the **Running** state, you can add an [AWS](../public-cloud/aws/add-aws-accounts.md),
-[Azure](../public-cloud/azure/azure-cloud.md), or [Nutanix](../data-center/nutanix/add-nutanix-cloud-account.md) cloud
-account to Palette with the **Connect Private Cloud Gateway** option toggled and your self-hosted PCG selected. You can
-then use the PCG to deploy and delete clusters in the cloud environment connected to the PCG.
+Once your PCG is in the **Running** state, you can add an
+[AWS](../public-cloud/aws/add-aws-accounts/add-aws-accounts.md), [Azure](../public-cloud/azure/azure-cloud.md), or
+[Nutanix](../data-center/nutanix/add-nutanix-cloud-account.md) cloud account to Palette with the **Connect Private Cloud
+Gateway** option toggled and your self-hosted PCG selected. You can then use the PCG to deploy and delete clusters in
+the cloud environment connected to the PCG.
 
 If you need to configure a proxy server for your PCG, refer to
 [Enable and Manage Proxy Configurations](./manage-pcg/configure-proxy.md). The proxy must be configured before deploying

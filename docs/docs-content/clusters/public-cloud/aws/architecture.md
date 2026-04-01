@@ -100,7 +100,8 @@ authentication mechanism that allows Kubernetes pods to assume IAM roles with te
 credentials. This eliminates the need for long-lived AWS credentials, addressing security concerns in highly regulated
 environments where organizations cannot use long-lived credentials.
 
-Find out how to implement EKS Pod Identity in the [Register and Manage AWS Accounts](./add-aws-accounts.md) guide.
+Find out how to implement EKS Pod Identity in the
+[Register and Manage AWS Accounts](./add-aws-accounts/add-aws-accounts.md) guide.
 
 #### Limitations
 

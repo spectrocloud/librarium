@@ -22,7 +22,7 @@ Review the following table to determine which pack binaries you need to download
 
 You must SSH into your Palette VerteX airgap support VM to download and install the binary. You must also provide the
 username and password for the support team's private repository. Reach out to our support team to
-[obtain the credentials](../../vertex/vertex.md#access-palette-vertex).
+[obtain the credentials](../../self-hosted-setup/vertex/vertex.md#access-palette-vertex).
 
 The following example shows how to download the `airgap-vertex-pack-cni-calico-3.25.1.bin` binary. Replace `XXXX` with
 your username and `YYYY` with your password.

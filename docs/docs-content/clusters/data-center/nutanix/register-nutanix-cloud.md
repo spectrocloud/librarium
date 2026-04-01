@@ -26,8 +26,8 @@ default Cluster API (CAPI) version, and use APIs to register a Nutanix cloud to 
 
 - A Palette account with system console access. The user with this privilege is the
   [system administrator](../../../glossary-all.md#system-administrator) of the self-hosted
-  [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or
-  [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
+  [Palette](../../../self-hosted-setup/palette/palette.md) or
+  [Palette VerteX](../../../self-hosted-setup/vertex/vertex.md) instance.
 
 - A Nutanix logo downloaded. Review logo requirements in [Register the Cloud](#register-the-cloud).
 
@@ -210,7 +210,7 @@ cloud to Palette. Alternatively, you can use an API platform such as [Postman](h
 - You have completed the steps in [Customize YAML Configuration Files](#customize-yaml-configuration-files).
 
 - Only an
-  [Operations Administrator](../../../enterprise-version/system-management/account-management/account-management.md#operations-administrator)
+  [Operations Administrator](../../../self-hosted-setup/palette/system-management/account-management/account-management.md#operations-administrator)
   is allowed to register a Nutanix cloud.
 
 - The logo file must not exceed 100 KB in size. To ensure image quality, ensure at least one dimension in either width

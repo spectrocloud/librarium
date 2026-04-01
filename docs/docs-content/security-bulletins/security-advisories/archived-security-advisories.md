@@ -35,8 +35,8 @@ when running on a non-FIPS-compliant OS or Kubernetes cluster, may allow negotia
 algorithms.
 
 Self-hosted instances that meet the
-[FIPS prerequisite](../../vertex/install-palette-vertex/install-on-kubernetes/install.md#prerequisites) as outlined in
-our user documentation are not affected by this vulnerability.
+[FIPS prerequisite](../../self-hosted-setup/vertex/supported-environments/kubernetes/install/non-airgap.md#prerequisites)
+as outlined in our user documentation are not affected by this vulnerability.
 
 ### Recommended Actions
 
@@ -147,9 +147,14 @@ the patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
   for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
-- Refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
-  [Palette VerteX](../../vertex/upgrade/upgrade.md) upgrade guides for guidance on upgrading the version for all
-  connected and airgapped Palette Enterprise and Palette VerteX clusters.
+- Refer to the appropriate upgrade guide for guidance on upgrading the version for all connected and airgapped Palette
+  Enterprise and Palette VerteX clusters.
+  - [Palette Enterprise - Kubernetes](../../self-hosted-setup/palette/supported-environments/kubernetes/upgrade/upgrade.md)
+  - [Palette Enterprise - VMware vSphere](../../self-hosted-setup/palette/supported-environments/vmware/upgrade/upgrade.md)
+  - [Palette Enterprise - Palette Management Appliance](../../self-hosted-setup/palette/supported-environments/management-appliance/upgrade.md)
+  - [Palette VerteX - Kubernetes](../../self-hosted-setup/vertex/supported-environments/kubernetes/upgrade/upgrade.md)
+  - [Palette VerteX - VMware vSphere](../../self-hosted-setup/vertex/supported-environments/vmware/upgrade/upgrade.md)
+  - [Palette VerteX - Palette Management Appliance](../../self-hosted-setup/vertex/supported-environments/management-appliance/upgrade.md)
 
 ## Security Advisory 001 - Nginx Vulnerability
 
@@ -211,8 +216,14 @@ This vulnerability affects both workload clusters and Palette deployments.
 
 - Connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6 must apply the latest patch to automatically
   upgrade the `ingress-nginx-controller` DaemonSet to version `1.11.5`. For guidance on upgrading your Palette version,
-  refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
-  [VerteX](../../vertex/upgrade/upgrade.md) upgrade guide.
+  refer to the appropriate upgrade guide:
+
+  - [Palette Enterprise - Kubernetes](../../self-hosted-setup/palette/supported-environments/kubernetes/upgrade/upgrade.md)
+  - [Palette Enterprise - VMware vSphere](../../self-hosted-setup/palette/supported-environments/vmware/upgrade/upgrade.md)
+  - [Palette Enterprise - Palette Management Appliance](../../self-hosted-setup/palette/supported-environments/management-appliance/upgrade.md)
+  - [Palette VerteX - Kubernetes](../../self-hosted-setup/vertex/supported-environments/kubernetes/upgrade/upgrade.md)
+  - [Palette VerteX - VMware vSphere](../../self-hosted-setup/vertex/supported-environments/vmware/upgrade/upgrade.md)
+  - [Palette VerteX - Palette Management Appliance](../../self-hosted-setup/vertex/supported-environments/management-appliance/upgrade.md)
 
   :::warning
 

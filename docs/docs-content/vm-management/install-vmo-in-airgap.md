@@ -13,9 +13,8 @@ instance of Palette and Palette VerteX.
 
 ## Prerequisites
 
-- An existing airgap instance of Palette or Palette VerteX. Refer to the
-  [Self-Hosted Palette Installation](../enterprise-version/install-palette/install-palette.md) and
-  [Palette VerteX Installation](../vertex/install-palette-vertex/install-palette-vertex.md) guides for more information.
+- An existing self-hosted, airgapped instance of [Palette](../self-hosted-setup/palette/palette.md) or
+  [Palette VerteX](../self-hosted-setup/vertex/vertex.md).
 
   :::info
 
@@ -25,8 +24,9 @@ instance of Palette and Palette VerteX.
 
   :::
 
-- At least one tenant created for your airgap instance of Palette or Palette VerteX. Refer to
-  [Tenant Management](../enterprise-version/system-management/tenant-management.md) for more information.
+- At least one tenant created for your airgap instance of Palette or Palette VerteX. Refer to the appropriate
+  [Tenant Management guide for self-hosted Palette](../self-hosted-setup/palette/system-management/tenant-management.md)
+  or [Palette VerteX](../self-hosted-setup/vertex/system-management/tenant-management.md) for more information.
 
 - Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
