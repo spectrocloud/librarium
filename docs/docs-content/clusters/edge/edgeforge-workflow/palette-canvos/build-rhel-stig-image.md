@@ -395,10 +395,10 @@ for your Palette Edge deployment.
           site:
             paletteEndpoint: api.spectrocloud.com
             edgeHostToken: <your-registration-token>
-        
+
           install:
             poweroff: true
-        
+
           stages:
             initramfs:
               - name: Create user and assign to sudo group
@@ -407,14 +407,14 @@ for your Palette Edge deployment.
                     groups:
                       - sudo
                     passwd: kairos
-        
+
             boot:
               - name: configure firewalld baseline for k8s
                 commands:
                   - |-
                     firewall-cmd --set-default-zone=k8s || true
                     firewall-cmd --reload || true
-        
+
             network.after:
               - name: configure firewalld for k8s
                 commands:
@@ -479,13 +479,13 @@ for your Palette Edge deployment.
                     firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
                     firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
                     firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
-        
+
                     IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
                     if [ -n "$IFACE" ]; then
                         firewall-cmd --zone=public --remove-interface="$IFACE" || true
                         firewall-cmd --zone=k8s --change-interface="$IFACE"
                     fi
-        
+
                     firewall-cmd --set-default-zone=k8s
                     firewall-cmd --reload
                 ```
