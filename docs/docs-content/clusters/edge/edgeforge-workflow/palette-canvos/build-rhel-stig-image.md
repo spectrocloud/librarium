@@ -384,14 +384,14 @@ for your Palette Edge deployment.
         The following example shows how to configure `firewalld` in `user-data` to create a dedicated `k8s` zone and open the ports and protocols required for Kubernetes and commonly used add-ons.
 
        <details>
-       <summary>Example</summary>
-     
-       ```yaml
-        #cloud-config
-        stylus:
-          site:
-            paletteEndpoint: api.spectrocloud.com
-            edgeHostToken: <your-registration-token>
+   <summary>Example</summary>
+ 
+   ```yaml
+    #cloud-config
+    stylus:
+      site:
+        paletteEndpoint: api.spectrocloud.com
+        edgeHostToken: <your-registration-token>
 
             install:
               poweroff: true
