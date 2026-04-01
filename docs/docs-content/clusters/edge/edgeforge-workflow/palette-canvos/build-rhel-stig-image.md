@@ -390,104 +390,104 @@ for your Palette Edge deployment.
         <summary>Example</summary>
 
         ````yaml
-         #cloud-config
-         stylus:
-           site:
-             paletteEndpoint: api.spectrocloud.com
-             edgeHostToken: <your-registration-token>
-
-                 install:
-                   poweroff: true
-
-                 stages:
-                   initramfs:
-                     - name: Create user and assign to sudo group
-                       users:
-                         kairos:
-                           groups:
-                             - sudo
-                           passwd: kairos
-
-                   boot:
-                     - name: configure firewalld baseline for k8s
-                       commands:
-                         - |-
-                           firewall-cmd --set-default-zone=k8s || true
-                           firewall-cmd --reload || true
-
-                   network.after:
-                     - name: configure firewalld for k8s
-                       commands:
-                         - |-
-                           firewall-cmd --permanent --new-zone=k8s || true
-                           firewall-cmd --reload
-                           firewall-cmd --permanent --zone=k8s --add-service=ssh
-                           firewall-cmd --permanent --zone=k8s --add-forward
-                           firewall-cmd --permanent --zone=k8s --add-masquerade
-                           firewall-cmd --permanent --zone=k8s --add-source=192.168.0.0/16
-                           firewall-cmd --zone=k8s --add-source=10.10.0.0/16 --permanent
-                           firewall-cmd --permanent --zone=k8s --add-port=6443/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=4443/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=6444/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=7472/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=7473/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=2379-2380/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=10250/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=10259/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=10257/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=30000-32767/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=30000-32767/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=2381/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=7946/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=9100/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=8472/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=5355/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=12345/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=4789/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=179/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=4240/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=4244-4245/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=51871/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=5473/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=6783-6784/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=6783-6784/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=9500-9506/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=10000-12000/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=443/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=6789/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=3300/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=6800-7300/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=7480/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=9283/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=8443/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=8500/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=9345/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=7946/tcp
-                           firewall-cmd --permanent --zone=k8s --add-protocol=4
-                           firewall-cmd --permanent --zone=k8s --add-port=3000/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=6060/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=9090/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=9091/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=8080/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=9094/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=9094/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=9093/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=9093/udp
-                           firewall-cmd --permanent --zone=k8s --add-port=80/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=10254/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=8200-8202/tcp
-                           firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
-                           firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
-                           firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
-
-                           IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
-                           if [ -n "$IFACE" ]; then
-                               firewall-cmd --zone=public --remove-interface="$IFACE" || true
-                               firewall-cmd --zone=k8s --change-interface="$IFACE"
-                           fi
-
-                           firewall-cmd --set-default-zone=k8s
-                           firewall-cmd --reload
+        #cloud-config
+        stylus:
+          site:
+            paletteEndpoint: api.spectrocloud.com
+            edgeHostToken: <your-registration-token>
+        
+          install:
+            poweroff: true
+        
+          stages:
+            initramfs:
+              - name: Create user and assign to sudo group
+                users:
+                  kairos:
+                    groups:
+                      - sudo
+                    passwd: kairos
+        
+            boot:
+              - name: configure firewalld baseline for k8s
+                commands:
+                  - |-
+                    firewall-cmd --set-default-zone=k8s || true
+                    firewall-cmd --reload || true
+        
+            network.after:
+              - name: configure firewalld for k8s
+                commands:
+                  - |-
+                    firewall-cmd --permanent --new-zone=k8s || true
+                    firewall-cmd --reload
+                    firewall-cmd --permanent --zone=k8s --add-service=ssh
+                    firewall-cmd --permanent --zone=k8s --add-forward
+                    firewall-cmd --permanent --zone=k8s --add-masquerade
+                    firewall-cmd --permanent --zone=k8s --add-source=192.168.0.0/16
+                    firewall-cmd --zone=k8s --add-source=10.10.0.0/16 --permanent
+                    firewall-cmd --permanent --zone=k8s --add-port=6443/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=4443/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=6444/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=7472/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=7473/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=2379-2380/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=10250/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=10259/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=10257/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=30000-32767/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=30000-32767/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=2381/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=7946/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=9100/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=8472/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=5355/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=12345/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=4789/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=179/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=4240/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=4244-4245/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=51871/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=5473/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=6783-6784/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=6783-6784/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=9500-9506/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=10000-12000/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=443/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=6789/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=3300/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=6800-7300/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=7480/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=9283/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=8443/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=8500/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=9345/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=7946/tcp
+                    firewall-cmd --permanent --zone=k8s --add-protocol=4
+                    firewall-cmd --permanent --zone=k8s --add-port=3000/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=6060/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=9090/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=9091/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=8080/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=9094/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=9094/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=9093/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=9093/udp
+                    firewall-cmd --permanent --zone=k8s --add-port=80/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=10254/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=8200-8202/tcp
+                    firewall-cmd --permanent --zone=k8s --add-port=5080/tcp
+                    firewall-cmd --zone=k8s --add-source=100.64.192.0/23 --permanent
+                    firewall-cmd --zone=k8s --add-rich-rule='rule family="ipv4" source address="0.0.0.0/0" destination address="255.255.255.255" protocol value="udp" accept' --permanent
+        
+                    IFACE="$(ip --oneline route show default | awk '{print $5; exit}')"
+                    if [ -n "$IFACE" ]; then
+                        firewall-cmd --zone=public --remove-interface="$IFACE" || true
+                        firewall-cmd --zone=k8s --change-interface="$IFACE"
+                    fi
+        
+                    firewall-cmd --set-default-zone=k8s
+                    firewall-cmd --reload
                 ```
 
         </details>
