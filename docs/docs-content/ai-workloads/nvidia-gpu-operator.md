@@ -1,0 +1,134 @@
+---
+sidebar_label: "NVIDIA GPU Operator Pack"
+title: "Add the NVIDIA GPU Operator Pack to a Cluster"
+description:
+  "Add the nvidia-gpu-operator-ai pack to a Palette cluster profile to enable GPU workloads on your cluster nodes."
+tags: ["gpu", "nvidia", "ai workloads", "cuda", "packs", "gpu operator"]
+sidebar_position: 10
+---
+
+You can use the
+[`nvidia-gpu-operator-ai`](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai) pack to enable
+Graphics Processing Unit (GPU) workloads on your Palette-managed clusters. This guide covers how to add the pack to a
+cluster profile and verify that GPU workloads can run on your nodes.
+
+## Prerequisites
+
+- A Palette account with permissions to create and manage cluster profiles and clusters.
+- The `nvidia-gpu-operator-ai` pack (version 25.10.x) available in your Palette registry.
+- A cluster deployed on VMs with GPU passthrough, VMs with NVIDIA vGPUs, or bare metal.
+- At least one node equipped with a discrete NVIDIA GPU. Embedded products such as NVIDIA Jetson are not supported.
+- A supported operating system and Kubernetes version. Refer to the
+  [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
+  page for details.
+- [containerd](https://containerd.io/) or [CRI-O](https://cri-o.io/) container runtime.
+
+![NVIDIA GPU Operator architecture](/ai-workloads/nvidia-gpu-operator_architecture.webp)
+
+## Add the Pack to a Cluster Profile
+
+1. Log in to [Palette](https://console.spectrocloud.com) and select **Profiles** from the left main menu.
+
+2. Create a new cluster profile or open an existing one.
+
+3. Select **Add New Pack**.
+
+4. Search for `nvidia gpu operator` and select the **Nvidia GPU Operator** pack.
+
+5. Select pack version **25.10.x**.
+
+6. Review the pack values. The defaults work for most deployments. For customization options and known limitations,
+   refer to the [pack page](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai).
+
+7. Select **Confirm & Create** to return to the cluster profile overview page, and then select **Save Changes**.
+
+## Deploy the Cluster
+
+Attach the profile to a new or existing cluster, then deploy or update the cluster. Initial driver compilation on GPU
+nodes can take several minutes.
+
+## Validate
+
+### Verify GPU Node Labels
+
+Filter for nodes labeled with `pci-10de.present=true`, which Node Feature Discovery (NFD) applies to any node where it
+detects an NVIDIA Peripheral Component Interconnect (PCI) device.
+
+```bash
+kubectl get nodes -l feature.node.kubernetes.io/pci-10de.present=true
+```
+
+GPU node(s) should appear in the output.
+
+Confirm that the node advertises allocatable GPUs.
+
+```bash
+kubectl describe node <gpu-node-name> | grep nvidia.com/gpu
+```
+
+The value of `nvidia.com/gpu` indicates the number of GPUs available for scheduling on that node.
+
+```text hideClipboard
+nvidia.com/gpu:  1
+```
+
+### Run a GPU Workload Test
+
+Save the following pod manifest to a file named `gpu-test.yaml`.
+
+```yaml title="gpu-test.yaml"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-test
+spec:
+  restartPolicy: OnFailure
+  containers:
+    - name: cuda-vector-add
+      image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.2.1"
+      resources:
+        limits:
+          nvidia.com/gpu: 1
+```
+
+```bash
+kubectl apply -f gpu-test.yaml
+```
+
+Wait for the pod to complete.
+
+```bash
+kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/gpu-test --timeout=120s
+```
+
+Then retrieve the logs.
+
+```bash
+kubectl logs gpu-test
+```
+
+Expected output:
+
+```text hideClipboard
+[Vector addition of 50000 elements]
+Copy input data from the host memory to the CUDA device
+CUDA kernel launch with 196 blocks of 256 threads
+Copy output data from the CUDA device to the host memory
+Test PASSED
+Done
+```
+
+Clean up the test pod.
+
+```bash
+kubectl delete pod gpu-test
+```
+
+## Next Steps
+
+Now that GPU workloads can run on your cluster, you can review the
+[pack page](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai) for the full list of
+configurable values.
+
+For a deeper reference on the operator itself, including advanced configuration and known limitations, refer to the
+[NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html). T
