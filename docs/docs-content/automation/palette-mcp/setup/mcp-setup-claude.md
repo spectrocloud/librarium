@@ -7,6 +7,10 @@ sidebar_position: 10
 tags: ["ai", "mcp", "automation"]
 ---
 
+:::preview
+
+:::
+
 This guide covers how to set up the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
 [Claude Code](https://code.claude.com/docs/en/overview).
 

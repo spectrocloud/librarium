@@ -7,6 +7,10 @@ sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
+:::preview
+
+:::
+
 This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with the
 [Gemini CLI](https://geminicli.com/).
 

@@ -7,6 +7,10 @@ sidebar_position: 30
 tags: ["ai", "mcp", "automation"]
 ---
 
+:::preview
+
+:::
+
 The Palette MCP server contains the following tools that you can leverage for your Palette operations:
 
 - `gather_or_delete_clusterprofiles` - Fetches information about or deletes

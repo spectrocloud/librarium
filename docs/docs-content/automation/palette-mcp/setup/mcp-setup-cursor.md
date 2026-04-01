@@ -7,6 +7,10 @@ sidebar_position: 20
 tags: ["ai", "mcp", "automation"]
 ---
 
+:::preview
+
+:::
+
 This guide covers how to setup the [Palette MCP server](https://github.com/spectrocloud/palette-mcp-server) with
 [Cursor](https://cursor.com/get-started).
 
