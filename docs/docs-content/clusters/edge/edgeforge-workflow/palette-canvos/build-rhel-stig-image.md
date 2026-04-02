@@ -76,8 +76,8 @@ for your Palette Edge deployment.
 
 - The following software installed on the Linux machine:
 
-  - [Docker Engine](https://docs.docker.com/engine/install/) with BuildKit enabled (default in Docker 23+; set
-    `DOCKER_BUILDKIT=1` for older versions)
+  - [Docker Engine](https://docs.docker.com/engine/install/) with BuildKit enabled. Default in Docker 23+; set
+    `DOCKER_BUILDKIT=1` for older versions.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   - (Optional) [Earthly](https://earthly.dev/)
   - (Optional, required for step 5) `cmake`, `make`, `openscap-utils`, `openscap-scanner`, `python3`, `pip`
