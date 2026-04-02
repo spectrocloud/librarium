@@ -369,8 +369,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/smallstep/pkcs7                                                             | v0.1.1                                            | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/soheilhy/cmux                                                               | v0.1.5                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/spf13/cobra                                                                 | v1.10.2                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/spf13/pflag                                                                 | v1.0.9                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/spf13/pflag                                                                 | v1.0.10                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/spf13/pflag                                                                 | v1.0.9                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/StackExchange/wmi                                                           | v0.0.0-20190523213315-cbe66965904d                | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/stefanberger/go-pkcs11uri                                                   | v0.0.0-20230803200340-78284954bff6                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/stoewer/go-strcase                                                          | v1.3.0                                            | [MIT](https://opensource.org/license/mit/)                  |
@@ -407,8 +407,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | go.etcd.io/etcd/pkg/v3                                                                 | v3.6.8                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.etcd.io/etcd/server/v3                                                              | v3.6.8                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.etcd.io/gofail                                                                      | v0.2.0                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| go.etcd.io/raft/v3                                                                     | v3.6.0-beta.0.0.20260116184858-6d944ca211ee       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.etcd.io/raft/v3                                                                     | v3.6.0                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go.etcd.io/raft/v3                                                                     | v3.6.0-beta.0.0.20260116184858-6d944ca211ee       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opencensus.io                                                                       | v0.24.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opentelemetry.io/auto/sdk                                                           | v1.2.1                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | go.opentelemetry.io/collector/component                                                | v1.48.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -491,9 +491,9 @@ Processing Standards (FIPS) compliant version of PXK.
 | google.golang.org/genproto/googleapis/rpc                                              | v0.0.0-20241015192408-796eee8c2d53                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | google.golang.org/grpc                                                                 | v1.79.3                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | google.golang.org/grpc                                                                 | v1.69.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| google.golang.org/protobuf                                                             | v1.36.7                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | google.golang.org/protobuf                                                             | v1.36.12-0.20260120151049-f2248ac996af            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | google.golang.org/protobuf                                                             | v1.36.11                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| google.golang.org/protobuf                                                             | v1.36.7                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | gopkg.in/evanphx/json-patch.v4                                                         | v4.13.0                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | gopkg.in/go-jose/go-jose.v2                                                            | v2.6.3                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | gopkg.in/inf.v0                                                                        | v0.9.1                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
