@@ -32,7 +32,7 @@ for your Palette Edge deployment.
     validation checks, resulting in false negatives.
 
   - Kairos-based images do not include all STIG-recommended packages (for example, AIDE and USBGuard). These components
-    are not required for Kubernetes operation, but you can add them by
+    are not required for Kubernetes operations, but you can add them by
     [customizing the Dockerfile](../palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts#instructions-1).
     However, only the modules included by default are verified by Spectro Cloud.
 
