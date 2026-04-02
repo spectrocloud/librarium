@@ -13,8 +13,8 @@ are standardized security hardening guidelines developed by the Defense Informat
 OS and applications in regulated environments. With Palette Edge, you can build Red Hat Enterprise Linux (RHEL) 9
 STIG-compliant images for your Edge hosts using the EdgeForge workflow.
 
-In this guide, you will use the CanvOS utility to build a base RHEL 9 STIG image, then create an ISO image from it
-for your Palette Edge deployment.
+In this guide, you will use the CanvOS utility to build a base RHEL 9 STIG image, then create an ISO image from it for
+your Palette Edge deployment.
 
 ## Limitations
 
@@ -187,8 +187,8 @@ for your Palette Edge deployment.
     <base-image-name>:latest                                              29814a348637        1.9GB             0B
     ```
 
-8.  After you have built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
-    as an example. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
+8.  After you have built the image, push it to a remote container registry so Earthly can access it. This guide uses
+    Docker as an example. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
     prompted.
 
     ```bash
