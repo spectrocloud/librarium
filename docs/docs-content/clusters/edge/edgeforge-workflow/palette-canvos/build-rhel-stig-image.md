@@ -506,8 +506,8 @@ your Palette Edge deployment.
     them later, such as in a cluster profile, overlay clusters may fail to come up.
 
     The provided firewall configuration is an example. You may not need all listed ports. Add, remove, or modify rules
-    based on your cluster profile, enabled packs, and application requirements. Refer to the official documentation for those
-    components to determine the required network settings.
+    based on your cluster profile, enabled packs, and application requirements. Refer to the official documentation for
+    those components to determine the required network settings.
 
     :::
 
