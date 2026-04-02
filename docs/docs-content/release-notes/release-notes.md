@@ -320,9 +320,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [standardizing cluster provisioning and upgrades with cluster templates](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
   using the Palette UI is now available.
 
-- The [AWS Outposts](../clusters/public-cloud/aws/aws-outpost/aws-outpost.md) section provides guidance about how Palette
-  supports deployment of [Edge hosts](../clusters/public-cloud/aws/aws-outpost/configure-edge-on-aws-outpost.md) on
-  [AWS Outposts](https://aws.amazon.com/outposts/).
+- The [AWS Outposts](../clusters/public-cloud/aws/aws-outpost/aws-outpost.md) section provides guidance about how
+  Palette supports deployment of [Edge hosts](../clusters/public-cloud/aws/aws-outpost/configure-edge-on-aws-outpost.md)
+  on [AWS Outposts](https://aws.amazon.com/outposts/).
 
 ### Packs
 
