@@ -152,11 +152,11 @@ up Keycloak as an OIDC provider for Palette.
 
 11. Fill out the following fields with the instructions provided in the table.
 
-    | **Field**                           | **Description**                                                                                                                                                                                                                    |
-    | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Root URL**                        | Your Palette URL. For Palette SaaS, this value is prefixed with your tenant name. For example, `https://docs-test.console.spectrocloud.com`. For self-hosted Palette, or VerteX, this value is the URL of your Palette deployment. |
-    | **Valid Redirect URIs**             | The callback URL you copied from the Palette SSO configuration page.                                                                                                                                                               |
-    | **Valid post logout redirect URIs** | The logout URL you copied from the Palette SSO configuration page.                                                                                                                                                                 |
+    | **Field**                           | **Description**                                                                                                                                                                                                                        |
+    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Root URL**                        | Your Palette URL. For SaaS deployments, this value is prefixed with your tenant name. For example, `https://docs-test.console.spectrocloud.com`. For self-hosted Palette, or VerteX, this value is the URL of your Palette deployment. |
+    | **Valid Redirect URIs**             | The callback URL you copied from the Palette SSO configuration page.                                                                                                                                                                   |
+    | **Valid post logout redirect URIs** | The logout URL you copied from the Palette SSO configuration page.                                                                                                                                                                     |
 
 12. Click on **Save** to save the client configuration.
 

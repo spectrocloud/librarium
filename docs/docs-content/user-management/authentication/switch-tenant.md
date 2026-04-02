@@ -14,12 +14,12 @@ having to log in again. This feature is available to self-hosted Palette, VerteX
 
 - You must have a user account in the tenant you want to switch to.
 
-- At least two tenants must be available in the Palette instance. System administrators for self-hosted Palette or
-  VerteX instances can create multiple tenants. Refer to the Palette
-  [Tenant Management](../../enterprise-version/system-management/tenant-management.md) or the Vertex
-  [Tenant Management](../../vertex/system-management/tenant-management.md) page for guidance on how to create tenants.
-  Users of Palette SaaS, contact our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com) for
-  additional tenants.
+- At least two tenants must be available in the Palette instance.
+  - System administrators for self-hosted Palette and Palette VerteX can create tenants through the system console.
+    Refer to the applicable [self-hosted Palette](../../enterprise-version/system-management/tenant-management.md) or
+    [Palette VerteX Tenant Management](../../vertex/system-management/tenant-management.md) page for more information.
+  - For Palette and Palette VerteX SaaS, contact our Support team at
+    [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional tenants.
 
 ## Switch Tenant
 

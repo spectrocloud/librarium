@@ -28,7 +28,7 @@ guide for help with migrating workloads. For deprecation updates, refer to our
 
 ## Limitations
 
-- You must use [self-hosted Palette VerteX](../../../vertex/vertex.md) to deploy clusters in
+- You must use [Palette VerteX](../../../vertex/vertex.md) to deploy EKS clusters in
   [AWS Secret or Top Secret cloud](./add-aws-accounts.md#aws-secret-cloud-sc2s-and-top-secret-cloud-c2s). Multi-tenant
   Palette SaaS, dedicated Palette SaaS, and self-hosted Palette instances are not supported.
 
