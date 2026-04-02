@@ -124,7 +124,7 @@ for your Palette Edge deployment.
 
     :::tip
 
-    You can find the latest STIG content version via GitHub API using the following command (requires jq).
+    You can find the latest STIG content version via the GitHub API using the following command (requires jq).
 
     ```bash
     curl --silent https://api.github.com/repos/ComplianceAsCode/content/releases/latest | jq --raw-output .tag_name
