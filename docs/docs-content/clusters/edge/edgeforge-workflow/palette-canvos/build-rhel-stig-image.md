@@ -13,7 +13,7 @@ are standardized security hardening guidelines developed by the Defense Informat
 OS and applications in regulated environments. With Palette Edge, you can build Red Hat Enterprise Linux (RHEL) 9
 STIG-compliant images for your Edge hosts using the EdgeForge workflow.
 
-In this guide, you will use the CanvOS utility to build a base RHEL 9 STIG image and then build an ISO image based on it
+In this guide, you will use the CanvOS utility to build a base RHEL 9 STIG image, then create an ISO image from it
 for your Palette Edge deployment.
 
 ## Limitations
