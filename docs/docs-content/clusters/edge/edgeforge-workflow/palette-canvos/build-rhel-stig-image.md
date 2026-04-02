@@ -55,7 +55,7 @@ for your Palette Edge deployment.
 
 - Valid Red Hat subscription credentials (username and password).
 
-- A Palette registration token for pairing Edge hosts with Palette. You need tenant admin access to Palette to generate
+- A Palette registration token for pairing Edge hosts with Palette. You need Tenant Admin access to Palette to generate
   a new registration token. For detailed instructions, refer to the
   [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
 
