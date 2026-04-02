@@ -24,7 +24,7 @@ allows administrators to access tenant settings. Refer to
 information.
 
 Because the Tenant Admin role can modify tenant-wide security configuration and access controls, it is considered the
-top-level administrative account.
+top-level administrative role, representing the highest level of privilege within a tenant.
 
 ### Separation of Duties
 
@@ -73,6 +73,15 @@ When configuring SAML-based SSO, apply the following secure authentication pract
 
 - Restrict access to authorized users or groups defined in your IdP.
 
+:::warning
+
+If your IdP becomes unavailable, SSO-authenticated users cannot log in. We recommend maintaining at least one local
+Palette account with Tenant Admin privileges as a backup for emergency access. Secure this account with a strong
+password, store the credentials in a secure vault, and monitor its usage through
+[audit logs](../audit-logs/audit-logs.md). Do not use this account for daily operations.
+
+:::
+
 #### Limit Tenant Admin Assignments
 
 Restrict Tenant Admin privileges to users responsible for tenant-wide configuration and security management. Perform
@@ -118,6 +127,14 @@ The default policy includes:
 
 - Expiration of 365 days.
 
+:::warning
+
+If your tenant does not use SSO, passwords are the sole authentication factor. We strongly recommend configuring a
+password policy that exceeds the defaults, including a longer minimum length, shorter expiration, and regex that
+enforces strong passwords.
+
+:::
+
 #### API Key Management
 
 Palette supports API keys for programmatic access. API key characteristics include the following:
@@ -126,7 +143,14 @@ Palette supports API keys for programmatic access. API key characteristics inclu
 
 - Lost keys must be recreated.
 
-- Keys grant permissions equivalent to the creating user.
+- Keys inherit the permissions of the creating user. For example, if a Tenant Admin creates an API key, that key has
+  Tenant Admin-level access.
+
+- When a local user is deleted, API keys created by that user are automatically removed. However, API keys created by
+  SSO users (OIDC or SAML) are not automatically removed when the user is removed from the IdP. You must manually revoke
+  and delete these keys. You can automate this process using the
+  [Palette API](../user-management/authentication/api-key/delete-api-key.md#api) or
+  [Palette SDK](../user-management/authentication/api-key/delete-api-key.md#sdk).
 
 Tenant admins can view and manage tenant API keys. We recommend the following practices:
 
