@@ -150,38 +150,50 @@ tags: ["release-notes"]
   containers, leading to unnecessary restarts.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9867 -->
+
 <!-- prettier-ignore-start -->
+
 - Fixed an issue that prevented Palette from refreshing authentication tokens on <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> configured with [Palette OIDC](../user-management/saml-sso/saml-sso.md#palette-oidc-and-pxk).
+
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6011 -->
 
-- Fixed an issue that caused `CrashLoopBackOff` and `OOMKilled` errors when a large number of ConfigMaps are cleaned up using [etcd defragmentation](https://etcd.io/docs/v3.5/op-guide/maintenance/).
+- Fixed an issue that caused `CrashLoopBackOff` and `OOMKilled` errors when a large number of ConfigMaps are cleaned up
+  using [etcd defragmentation](https://etcd.io/docs/v3.5/op-guide/maintenance/).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9952 -->
 
-- Fixed an issue that caused Palette to fail to fetch [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) pack manifests that contain forward slashes in the pack name.
+- Fixed an issue that caused Palette to fail to fetch
+  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) pack manifests that contain forward slashes in the
+  pack name.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9981 -->
 
-- Fixed an issue that caused concurrent [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) edits across Palette browser tabs to lead to pack manifest UID corruption and accidental deletion of source manifests.
+- Fixed an issue that caused concurrent [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) edits across
+  Palette browser tabs to lead to pack manifest UID corruption and accidental deletion of source manifests.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10139 -->
 
-- Fixed an issue that caused [pack registry synchronization](../registries-and-packs/registries/registries.md#synchronization) to lock when a manual sync operation is triggered at the same time as a scheduled sync.
+- Fixed an issue that caused
+  [pack registry synchronization](../registries-and-packs/registries/registries.md#synchronization) to lock when a
+  manual sync operation is triggered at the same time as a scheduled sync.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6149 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6182 -->
 
-- Fixed an issue that caused Palette [cluster imports](../clusters/imported-clusters/cluster-import.md) to fail for OpenShift clusters.
+- Fixed an issue that caused Palette [cluster imports](../clusters/imported-clusters/cluster-import.md) to fail for
+  OpenShift clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10238 -->
 
-- Fixed an issue that caused the [Palette API](/api/introduction) to allow invalid manifest UIDs to be accepted by name, leading to orphaned manifests and cluster errors.
+- Fixed an issue that caused the [Palette API](/api/introduction) to allow invalid manifest UIDs to be accepted by name,
+  leading to orphaned manifests and cluster errors.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6224 -->
 
-- Fixed an issue that prevented Palette from correctly applying required tags to EC2 nodes during Kubernetes upgrades of [EKS clusters](../clusters/public-cloud/aws/eks.md).
+- Fixed an issue that prevented Palette from correctly applying required tags to EC2 nodes during Kubernetes upgrades of
+  [EKS clusters](../clusters/public-cloud/aws/eks.md).
 
 ### Edge
 
@@ -211,31 +223,39 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8144 -->
 
-- Fixed an issue that prevented [Local UI](../clusters/edge/local-ui/local-ui.md) from enforcing Kubernetes label length validation.
+- Fixed an issue that prevented [Local UI](../clusters/edge/local-ui/local-ui.md) from enforcing Kubernetes label length
+  validation.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8218 -->
 
-- Fixed an issue that caused [Edge cluster](../clusters/edge/edge.md) provisioning to fail due to undetected corrupted ISO [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which should have been detected earlier in the provisioning process.
+- Fixed an issue that caused [Edge cluster](../clusters/edge/edge.md) provisioning to fail due to undetected corrupted
+  ISO [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which should have
+  been detected earlier in the provisioning process.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8223 -->
 
-- Fixed an issue that caused registry passwords marked as sensitive cluster pack values in the Palette UI to be rendered in clear text when viewed using kubectl.
+- Fixed an issue that caused registry passwords marked as sensitive cluster pack values in the Palette UI to be rendered
+  in clear text when viewed using kubectl.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8225 -->
 
-- Fixed an issue that caused Edge nodes hosting a [Palette VerteX](../vertex/vertex.md) management cluster to be unable to communicate with workload clusters after a power outage.
+- Fixed an issue that caused Edge nodes hosting a [Palette VerteX](../vertex/vertex.md) management cluster to be unable
+  to communicate with workload clusters after a power outage.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8241 -->
 
-- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display a blank value for the **Date & Time** field of audit log events related to user login actions.
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display a blank value for the **Date &
+  Time** field of audit log events related to user login actions.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8270 -->
 
-- Fixed an issue that caused Edge control plane nodes to unregister themselves after rotating the node that is the current [kube-vip](https://kube-vip.io/) holder.
+- Fixed an issue that caused Edge control plane nodes to unregister themselves after rotating the node that is the
+  current [kube-vip](https://kube-vip.io/) holder.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8301 -->
 
-- Fixed an issue that caused nameserver limits exceeded log messages due to incorrectly created duplicate DNS server entries on [Edge clusters](../clusters/edge/edge.md) configured with static IP.
+- Fixed an issue that caused nameserver limits exceeded log messages due to incorrectly created duplicate DNS server
+  entries on [Edge clusters](../clusters/edge/edge.md) configured with static IP.
 
 ### VerteX
 
@@ -287,48 +307,53 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9876 -->
 
-- Fixed an issue that prevented the `/v1/dashboard/spectroclusters/metadata` APIs from returning accurate creation, modification, and deletion timestamps.
+- Fixed an issue that prevented the `/v1/dashboard/spectroclusters/metadata` APIs from returning accurate creation,
+  modification, and deletion timestamps.
 
 ### Docs and Education
 
-- The Palette [Getting Started](../getting-started/getting-started.md) section has now been extended to cover the configuration and deployment of
+- The Palette [Getting Started](../getting-started/getting-started.md) section has now been extended to cover the
+  configuration and deployment of
   [locally managed Edge clusters](../tutorials/getting-started/palette-edge/local-management/palette-edge.md).
 
 ### Packs
 
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3865 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3875 -->
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI              | CSI        | :white_check_mark: | :x:                | 1.57.1      |
+| Flannel                     | CNI        | :x:                | :white_check_mark: | 0.28.1      |
+| Flux2                       | Add-on     | :white_check_mark: | :x:                | 2.18.2      |
+| Harbor                      | Add-on     | :white_check_mark: | :x:                | 1.18.3      |
+| Istio                       | Add-on     | :white_check_mark: | :x:                | 1.29.1      |
+| Karpenter                   | Add-on     | :white_check_mark: | :x:                | 1.10.0      |
+| Kong                        | Add-on     | :white_check_mark: | :x:                | 3.1.0       |
+| Nginx                       | Add-on     | :white_check_mark: | :x:                | 1.13.9      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.6      |
+| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 82.12.0     |
+| OpenTelemetry               | Add-on     | :white_check_mark: | :x:                | 0.145.0     |
+| Open Observe                | Add-on     | :white_check_mark: | :x:                | 0.60.3-rev1 |
+| vSphere CSI                 | CSI        | :white_check_mark: | :x:                | 3.7.0       |
+
 #### Pack Notes
 
-#### OS
+<!-- prettier-ignore-start -->
 
-| Pack Name | New Version |
-| --------- | ----------- |
+- The <VersionedLink text="Trivy" url="/integrations/packs/?pack=trivy" /> version 0.21.1 community pack has been released.
 
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
+<!-- prettier-ignore-end -->
 
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3822 -->
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated and should no longer be used to provision new clusters. We recommend using an alternative ingress controller, such as <VersionedLink text="Kgateway" url="/integrations/packs/?pack=kgateway" /> or <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" />.
+
+<!-- prettier-ignore-end -->
 
 ## March 27, 2026 - Component Updates {#component-updates-2026-13}
 
