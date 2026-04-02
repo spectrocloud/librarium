@@ -45,11 +45,11 @@ your Palette Edge deployment.
 
 - The RHEL 9 STIG implementation in Palette Edge only supports the following Kubernetes distributions:
 
-  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> (the
-    `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS)
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - the
+    `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS.
 
-  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> (the
-    `K8S_DISTRIBUTION=rke2` value in the `.arg` file)
+  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> - the
+    `K8S_DISTRIBUTION=rke2` value in the `.arg` file.
 
 ## Prerequisites
 
