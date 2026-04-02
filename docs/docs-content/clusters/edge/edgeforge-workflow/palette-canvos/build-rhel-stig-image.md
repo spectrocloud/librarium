@@ -187,7 +187,7 @@ for your Palette Edge deployment.
     <base-image-name>:latest                                              29814a348637        1.9GB             0B
     ```
 
-8.  After you built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
+8.  After you have built the image, push it to a remote container registry so Earthly can access it. This guide uses Docker
     as an example. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when
     prompted.
 
