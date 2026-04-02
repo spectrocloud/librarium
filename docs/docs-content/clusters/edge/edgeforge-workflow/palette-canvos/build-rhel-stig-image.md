@@ -524,7 +524,7 @@ for your Palette Edge deployment.
 12. Once the `user-data` file is ready, issue the following command to build the ISO image.
 
     ```bash
-     sudo ./earthly.sh iso
+    sudo ./earthly.sh iso
     ```
 
     The build process takes some time to finish.
