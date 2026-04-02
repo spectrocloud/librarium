@@ -17,14 +17,9 @@
   "paths": {
     "/v1/edge-mgmt/cluster": {
       "get": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
         "description": "Get the details of the cluster.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Get the details of the cluster.",
         "operationId": "v1ClusterConfig",
@@ -53,17 +48,17 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      },
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "post": {
         "description": "Creates a cluster with the provided cluster configuration",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Creates a cluster with the provided cluster configuration",
         "operationId": "v1CreateCluster",
@@ -90,17 +85,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "delete": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "delete": {
         "description": "Delete a cluster",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Delete a cluster",
         "operationId": "v1DeleteCluster",
@@ -123,17 +118,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "patch": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "patch": {
         "description": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
         "operationId": "v1PatchCluster",
@@ -161,19 +156,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/applications": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/applications": {
+      "get": {
         "description": "list the details of the cluster’s packs.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "list the details of the cluster’s packs.",
         "operationId": "v1ClusterApplications",
@@ -202,19 +197,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/certificates": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/certificates": {
+      "get": {
         "description": "Get Cluster Certificates Info",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Get Cluster Certificates Info",
         "operationId": "v1CertificateDetails",
@@ -237,19 +232,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/details": {
+      "get": {
         "description": "Get Edge Cluster details",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Get Edge Cluster details",
         "operationId": "v1ClusterGet",
@@ -272,19 +267,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/events": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/events": {
+      "get": {
         "description": "List cluster events",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "List cluster events",
         "operationId": "v1GetClusterEvents",
@@ -314,18 +309,18 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/pair": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair": {
+      "post": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Creates a pairing request",
         "operationId": "v1ClusterPair",
@@ -352,18 +347,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/pair/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/details": {
+      "get": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Get all existing pairing requests",
         "operationId": "v1ClusterPairDetails",
@@ -386,18 +381,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/pair/reject": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/reject": {
+      "post": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Rejects a pairing request",
         "operationId": "v1ClusterPairReject",
@@ -420,18 +415,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/pair/verify-connection": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/verify-connection": {
+      "post": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Verifies whether all cluster hosts are able to connect to palette",
         "operationId": "v1ClusterPairVerifyConnection",
@@ -464,19 +459,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/profiles": {
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/profiles": {
+      "put": {
         "description": "Updates a cluster with the provided cluster configuration",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Updates a cluster with the provided cluster configuration",
         "operationId": "v1UpdateClusterProfiles",
@@ -503,19 +498,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/profiles/variables/validate": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/profiles/variables/validate": {
+      "post": {
         "description": "Validate cluster profile variables",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Validate cluster profile variables",
         "operationId": "v1ValidateClusterProfileVariables",
@@ -542,19 +537,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/registry/content/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/registry/content/details": {
+      "get": {
         "description": "Get Harbor Content Details",
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "List existing Harbor Content Details",
         "operationId": "v1HarborContentsDetails",
@@ -565,19 +560,19 @@
               "$ref": "#/definitions/v1HarborContentsDetails"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/registry/content/sync-status/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/registry/content/sync-status/details": {
+      "get": {
         "description": "Get Harbor Content Sync Status",
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "List Harbor Content Sync Status",
         "operationId": "v1HarborContentsSyncStatusDetails",
@@ -588,19 +583,19 @@
               "$ref": "#/definitions/v1HarborContentsSyncStatus"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/registry/health": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/registry/health": {
+      "get": {
         "description": "Gets the harbor health status",
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "Gets the harbor health status",
         "operationId": "V1HarborHealth",
@@ -617,19 +612,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/renew-certificates": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/renew-certificates": {
+      "post": {
         "description": "Renew Cluster Certificates",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Renew Cluster Certificates",
         "operationId": "v1RenewCerts",
@@ -646,19 +641,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/settings": {
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/settings": {
+      "put": {
         "description": "Update cluster settings",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Update cluster settings",
         "operationId": "v1EdgeNativeClusterSettings",
@@ -691,19 +686,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/cluster/{clusterName}": {
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/cluster/{clusterName}": {
+      "put": {
         "description": "Updates a cluster with the provided cluster configuration",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Updates a cluster with the provided cluster configuration",
         "operationId": "v1UpdateClusterConfig",
@@ -743,17 +738,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "patch": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "patch": {
         "description": "Patch a cluster with the provided cluster configuration",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Patch a cluster with the provided cluster configuration",
         "operationId": "v1PatchClusterConfig",
@@ -793,19 +788,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/archive/embedded/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/embedded/details": {
+      "get": {
         "description": "parses the cluster-config archive.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "parses the preloaded cluster-config archive if it was included in the ISO.",
         "operationId": "V1ClusterConfigArchiveEmbedded",
@@ -822,19 +817,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/archive/overridden/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/overridden/details": {
+      "get": {
         "description": "parses the cluster-config archive if it was uploaded as a standalone configuration.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "parses the cluster-config archive if it exists.",
         "operationId": "v1ClusterConfigArchiveOverriden",
@@ -851,19 +846,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/archive/update": {
-      "delete": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/update": {
+      "delete": {
         "description": "Delete or reject the cluster update archive",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Delete or reject the cluster update archive",
         "operationId": "v1DeleteClusterUpdateArchive",
@@ -880,19 +875,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/archive/update/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/update/details": {
+      "get": {
         "description": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
         "operationId": "v1ClusterConfigArchiveUpdate",
@@ -909,18 +904,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/current/machinepools": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools": {
+      "get": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Fetch the cluster node pool details including edge host details.",
         "operationId": "v1MachinePoolDetail",
@@ -945,16 +940,16 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "post": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Create a machine pool",
         "operationId": "v1ClusterMachinePoolCreate",
@@ -987,18 +982,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}": {
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}": {
+      "put": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Update machine pools",
         "operationId": "v1ClusterMachinePoolUpdate",
@@ -1044,16 +1039,16 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "delete": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "delete": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Delete machine pools",
         "operationId": "v1ClusterMachinePoolDelete",
@@ -1085,16 +1080,16 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "patch": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "patch": {
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Patch machine pools",
         "operationId": "v1ClusterMachinePoolPatch",
@@ -1140,19 +1135,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}/nodes/{nodeName}": {
-      "delete": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}/nodes/{nodeName}": {
+      "delete": {
         "description": "Delete a node from the machine pool",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Delete a machine pool node",
         "operationId": "v1ClusterMachinePoolNodeDelete",
@@ -1191,19 +1186,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/clusters/current/nodes": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/nodes": {
+      "get": {
         "description": "Get K8s Cluster Nodes",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "A list of the K8s Cluster Nodes",
         "operationId": "v1ClusterNodes",
@@ -1220,19 +1215,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/connectivity/ping": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/connectivity/ping": {
+      "get": {
         "description": "Ping an endpoint",
         "tags": [
-          "edge-mgmt"
+          "troubleshoot"
         ],
         "summary": "Ping an endpoint",
         "operationId": "v1PingHost",
@@ -1256,19 +1251,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/connectivity/traceroute": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/connectivity/traceroute": {
+      "get": {
         "description": "Display route that IP packets take to a network host",
         "tags": [
-          "edge-mgmt"
+          "troubleshoot"
         ],
         "summary": "Display route that IP packets take to a network host",
         "operationId": "v1TraceRouteHost",
@@ -1292,19 +1287,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current": {
+      "get": {
         "description": "Get edge host details",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Get edge host info",
         "operationId": "v1EdgeHostInfo",
@@ -1327,19 +1322,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/actions/content/signing-public-key": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/content/signing-public-key": {
+      "get": {
         "description": "Get the base64 encoded key used to verify the signed content.",
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "Get the public key used to verify the signed content.",
         "operationId": "V1GetContentSigningPublicKey",
@@ -1368,19 +1363,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/actions/reboot": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/reboot": {
+      "post": {
         "description": "Reboot edge host",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Reboot edge host",
         "operationId": "v1EdgeHostActionReboot",
@@ -1397,19 +1392,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/actions/reset": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/reset": {
+      "post": {
         "description": "Reset edge host",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Reset edge host",
         "operationId": "v1EdgeHostActionReset",
@@ -1432,19 +1427,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/actions/shutdown": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/shutdown": {
+      "post": {
         "description": "Shutdown edge host",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Shutdown edge host",
         "operationId": "v1EdgeHostActionShutdown",
@@ -1461,22 +1456,22 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/actions/upload-clusterconfig": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/upload-clusterconfig": {
+      "post": {
         "description": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
         "consumes": [
           "multipart/form-data"
         ],
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
         "operationId": "V1ClusterConfigUpload",
@@ -1508,22 +1503,22 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/actions/upload-content": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/actions/upload-content": {
+      "post": {
         "description": "Uploads an archive file and extracts it to the required location on the edge host.",
         "consumes": [
           "multipart/form-data"
         ],
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "Uploads an archive file and extracts it to the required location on the edge host.",
         "operationId": "V1ContentUpload",
@@ -1555,18 +1550,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/audits": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits": {
+      "get": {
         "tags": [
-          "edge-mgmt"
+          "audit"
         ],
         "summary": "Retrieves the list of audit logs",
         "operationId": "v1Audits",
@@ -1650,23 +1645,23 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/audits/download": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits/download": {
+      "get": {
         "description": "Download audit logs as a single compressed file",
         "produces": [
           "application/x-tar",
           "application/json"
         ],
         "tags": [
-          "edge-mgmt"
+          "audit"
         ],
         "summary": "Download audit logs",
         "operationId": "v1AuditDownload",
@@ -1702,18 +1697,18 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/audits/filters": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits/filters": {
+      "get": {
         "tags": [
-          "edge-mgmt"
+          "audit"
         ],
         "summary": "Retrieves the list of filter options to display on audit ui page",
         "operationId": "v1AuditFilter",
@@ -1724,19 +1719,19 @@
               "$ref": "#/definitions/v1AuditFilterObect"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/configurations": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/configurations": {
+      "get": {
         "description": "Get edge host configurations.",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Get edge host configurations.",
         "operationId": "V1EdgeHostConfigurationsGet",
@@ -1759,16 +1754,16 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      },
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "put": {
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Update Edge Host configurations",
         "operationId": "V1EdgeHostConfigurationsUpdate",
@@ -1808,19 +1803,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/configurations/status": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/configurations/status": {
+      "get": {
         "description": "Edge host configurations status",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Edge host configurations status",
         "operationId": "v1EdgeHostConfigurationStatus",
@@ -1837,23 +1832,23 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/download-logs": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/download-logs": {
+      "get": {
         "description": "Downloads the logs of the edge host as a tar file.",
         "produces": [
           "application/x-tar",
           "application/json"
         ],
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Download edge host Logs",
         "operationId": "v1EdgeHostDownloadLogs",
@@ -1877,19 +1872,19 @@
               "$ref": "#/definitions/v1NotFoundResponseWithMessage"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/error-logs": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/error-logs": {
+      "get": {
         "description": "List last 'logCount' edge host error logs",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "List last 'logCount' edge host error logs",
         "operationId": "V1EdgeHostErrorLogs",
@@ -1921,19 +1916,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/file-download/files": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/file-download/files": {
+      "get": {
         "description": "Lists all the first level files from the '/var/log/files' directory.\n",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "List custom files from the '/var/log/files' directory",
         "operationId": "v1EdgeHostListCustomFiles",
@@ -1962,23 +1957,23 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/file-download/{filePath}": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/file-download/{filePath}": {
+      "get": {
         "description": "Downloads a file from the `/var/log/files` directory. The file path is expected to be relative to the `/var/log/files` directory.\n",
         "produces": [
           "application/octet-stream",
           "application/json"
         ],
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Download a custom file from the user-defined or default directory",
         "operationId": "v1EdgeHostCustomFileDownload",
@@ -2023,19 +2018,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/generate-logs": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs": {
+      "post": {
         "description": "Start edge host log collection",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Start edge host log collection",
         "operationId": "v1EdgeHostGenerateLogs",
@@ -2052,19 +2047,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/generate-logs-status": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs-status": {
+      "get": {
         "description": "Edge host log collection status",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Edge host log collection status",
         "operationId": "v1EdgeHostGenerateLogsStatus",
@@ -2081,18 +2076,18 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/link": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link": {
+      "post": {
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Link edge host to another edge host",
         "operationId": "v1EdgeHostLink",
@@ -2125,18 +2120,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/link/generate-token": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link/generate-token": {
+      "post": {
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Generate a link token for linking edge hosts",
         "operationId": "v1EdgeHostLinkGenerateToken",
@@ -2153,18 +2148,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/link/status": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link/status": {
+      "get": {
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Get the status of the edge host link",
         "operationId": "v1EdgeHostLinkStatus",
@@ -2187,18 +2182,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/unlink": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/unlink": {
+      "post": {
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Unlink edge host from other edge hosts",
         "operationId": "v1EdgeHostUnlink",
@@ -2229,18 +2224,18 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/uploaded-content/details": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/uploaded-content/details": {
+      "get": {
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Get metadata of last uploaded content archive file",
         "operationId": "v1UploadedContentDetails",
@@ -2263,19 +2258,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/edgehosts/current/userdata": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/userdata": {
+      "get": {
         "description": "Get edge host userdata",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Get edge host userdata",
         "operationId": "v1GetEdgeHostUserdata",
@@ -2292,17 +2287,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "put": {
         "description": "Update edge host userdata",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Update edge host userdata",
         "operationId": "v1PutEdgeHostUserdata",
@@ -2329,17 +2324,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "post": {
         "description": "Update edge host userdata",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Update edge host userdata",
         "operationId": "v1PostEdgeHostUserdata",
@@ -2366,19 +2361,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/events/lifecycle": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/events/lifecycle": {
+      "get": {
         "description": "Get life cycle events of cluster and edge host",
         "tags": [
-          "edge-mgmt"
+          "events"
         ],
         "summary": "Get life cycle events of cluster and edge host",
         "operationId": "v1GetLifecycleEvents",
@@ -2395,19 +2390,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/bonds": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/bonds": {
+      "get": {
         "description": "List network bond interfaces",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "List bonds",
         "operationId": "V1NetworkBonds",
@@ -2424,19 +2419,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/bonds/{name}": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/bonds/{name}": {
+      "get": {
         "description": "Retrieve a bond interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Get bond",
         "operationId": "V1NetworkBond",
@@ -2455,6 +2450,12 @@
               "$ref": "#/definitions/v1Bond"
             }
           },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "404": {
             "description": "(empty)",
             "schema": {
@@ -2467,17 +2468,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "put": {
         "description": "Create or update a bond interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Create or update bond",
         "operationId": "V1NetworkBondUpdate",
@@ -2516,23 +2517,29 @@
               "$ref": "#/definitions/v1Error"
             }
           },
+          "429": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "post": {
         "description": "Create a bond interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Create bond",
         "operationId": "V1NetworkBondCreate",
@@ -2565,23 +2572,29 @@
               "$ref": "#/definitions/v1Error"
             }
           },
+          "429": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "delete": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "delete": {
         "description": "Delete a bond interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Delete bond",
         "operationId": "V1NetworkBondDelete",
@@ -2600,7 +2613,19 @@
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
             }
           },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "429": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
@@ -2612,19 +2637,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/bridges": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/bridges": {
+      "get": {
         "description": "List all bridge interfaces",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "List bridges",
         "operationId": "V1NetworkBridges",
@@ -2641,19 +2666,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/bridges/{name}": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/bridges/{name}": {
+      "get": {
         "description": "Retrieve a bridge interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Get bridge",
         "operationId": "V1NetworkBridge",
@@ -2672,6 +2697,12 @@
               "$ref": "#/definitions/v1Bridge"
             }
           },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "404": {
             "description": "(empty)",
             "schema": {
@@ -2684,17 +2715,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "put": {
         "description": "Create or update a bridge interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Create or update bridge",
         "operationId": "V1NetworkBridgeUpdate",
@@ -2733,23 +2764,29 @@
               "$ref": "#/definitions/v1Error"
             }
           },
+          "429": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "post": {
         "description": "Create a bridge interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Create bridge",
         "operationId": "V1NetworkBridgeCreate",
@@ -2782,23 +2819,29 @@
               "$ref": "#/definitions/v1Error"
             }
           },
+          "429": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "delete": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "delete": {
         "description": "Delete a bridge interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Delete bridge",
         "operationId": "V1NetworkBridgeDelete",
@@ -2817,7 +2860,19 @@
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
             }
           },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "429": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
@@ -2829,19 +2884,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/config-options": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/config-options": {
+      "get": {
         "description": "Get valid configuration options for network components",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Get network config options",
         "operationId": "V1NetworkConfigOptions",
@@ -2858,19 +2913,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/interfaces": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces": {
+      "get": {
         "description": "List network interfaces (NICs)",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "List NICs",
         "operationId": "V1NetworkInterfaces",
@@ -2887,19 +2942,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/interfaces/{name}": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces/{name}": {
+      "get": {
         "description": "Get one network interface",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Get NIC",
         "operationId": "V1NetworkInterface",
@@ -2918,6 +2973,12 @@
               "$ref": "#/definitions/v1NicSummary"
             }
           },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "404": {
             "description": "(empty)",
             "schema": {
@@ -2930,19 +2991,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/interfaces/{name}/config": {
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/interfaces/{name}/config": {
+      "put": {
         "description": "Update a network interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Update NIC config",
         "operationId": "V1NetworkInterfaceUpdate",
@@ -2975,25 +3036,31 @@
               "$ref": "#/definitions/v1Error"
             }
           },
+          "429": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/vlans": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/vlans": {
+      "get": {
         "description": "List VLAN interfaces",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "List VLANs",
         "operationId": "V1NetworkVLANs",
@@ -3010,19 +3077,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/network/vlans/{name}": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/network/vlans/{name}": {
+      "get": {
         "description": "Retrieve a VLAN interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Get VLAN",
         "operationId": "V1NetworkVLAN",
@@ -3041,6 +3108,12 @@
               "$ref": "#/definitions/v1VLAN"
             }
           },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "404": {
             "description": "(empty)",
             "schema": {
@@ -3053,17 +3126,17 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "put": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "put": {
         "description": "Create or update a VLAN interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Create or update VLAN",
         "operationId": "V1NetworkVLANUpdate",
@@ -3102,23 +3175,29 @@
               "$ref": "#/definitions/v1Error"
             }
           },
+          "429": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "post": {
         "description": "Create a VLAN interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Create VLAN",
         "operationId": "V1NetworkVLANCreate",
@@ -3151,23 +3230,29 @@
               "$ref": "#/definitions/v1Error"
             }
           },
+          "429": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      },
-      "delete": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "delete": {
         "description": "Delete a VLAN interface configuration",
         "tags": [
-          "edge-mgmt"
+          "network"
         ],
         "summary": "Delete VLAN",
         "operationId": "V1NetworkVLANDelete",
@@ -3186,7 +3271,19 @@
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
             }
           },
+          "400": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "404": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "429": {
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Error"
@@ -3198,19 +3295,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
-      }
-    },
-    "/v1/edge-mgmt/settings": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/edge-mgmt/settings": {
+      "get": {
         "description": "Get general settings",
         "tags": [
-          "edge-mgmt"
+          "settings"
         ],
         "summary": "Get general settings",
         "operationId": "v1Settings",
@@ -3227,19 +3324,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/ping": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/ping": {
+      "get": {
         "description": "Ping Service",
         "tags": [
-          "ping"
+          "troubleshoot"
         ],
         "summary": "Ping Service",
         "operationId": "V1Ping",
@@ -3256,19 +3353,19 @@
               "$ref": "#/definitions/apiError"
             }
           }
-        }
-      }
-    },
-    "/v1/users/current": {
-      "get": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/users/current": {
+      "get": {
         "description": "Get current logged in user's information",
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Get current logged in user's information",
         "operationId": "V1CurrentUser",
@@ -3285,17 +3382,17 @@
               "$ref": "#/definitions/v1InternalServerError"
             }
           }
-        }
-      },
-      "patch": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      },
+      "patch": {
         "description": "Patches the current logged in user's configuration",
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Patches the current logged in user's configuration",
         "operationId": "v1PatchCurrentUser",
@@ -3322,14 +3419,19 @@
               "$ref": "#/definitions/v1Error"
             }
           }
-        }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       }
     },
     "/v1/users/default/login": {
       "post": {
         "description": "Authenticates the user with the specified credentials",
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Authenticates the user with the specified credentials",
         "operationId": "V1UserLogin",
@@ -3381,13 +3483,8 @@
     },
     "/v1/users/default/logout": {
       "post": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Logs out the user from the system",
         "operationId": "V1UserLogout",
@@ -3413,19 +3510,19 @@
               "$ref": "#/definitions/v1InternalServerError"
             }
           }
-        }
-      }
-    },
-    "/v1/users/default/password/reset": {
-      "post": {
+        },
         "security": [
           {
             "Authorization": []
           }
-        ],
+        ]
+      }
+    },
+    "/v1/users/default/password/reset": {
+      "post": {
         "description": "Resets the user's password",
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Resets the user's password",
         "operationId": "V1UserPasswordReset",
@@ -3458,13 +3555,18 @@
               "$ref": "#/definitions/v1Unauthorized"
             }
           }
-        }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       }
     },
     "/v1/users/default/token/renewal": {
       "post": {
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Refreshes the authentication token of the user",
         "operationId": "V1UserTokenRenewal",
@@ -5105,7 +5207,7 @@
           "$ref": "#/definitions/v1UpdateStrategy"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       }
@@ -5233,7 +5335,7 @@
       "type": "object",
       "properties": {
         "addresses": {
-          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- \u003e 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -6468,7 +6570,7 @@
       "description": "Unauthorized"
     },
     "v1UpdateStrategy": {
-      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1",
+      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut =\u003e maxSurge=1, maxUnavailable=0 ScaleIn =\u003e maxSurge=0, maxUnavailable=1",
       "type": "object",
       "properties": {
         "type": {
@@ -6776,11 +6878,40 @@
         "immutable": {
           "type": "boolean"
         },
+        "inputType": {
+          "description": "Type of input",
+          "type": "string",
+          "enum": [
+            "text",
+            "dropdown",
+            "multiline"
+          ]
+        },
         "isSensitive": {
           "type": "boolean"
         },
         "name": {
           "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "default": {
+                "type": "boolean"
+              },
+              "description": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
         },
         "regex": {
           "type": "string"
@@ -6801,24 +6932,5 @@
       "name": "Authorization",
       "in": "header"
     }
-  },
-  "tags": [
-    {
-      "name": "edge-mgmt",
-      "x-displayName": "Edge Mgmt"
-    },
-    {
-      "name": "ping",
-      "x-displayName": "Ping"
-    },
-    {
-      "name": "users",
-      "x-displayName": "Users"
-    }
-  ],
-  "servers": [
-    {
-      "url": "https://edge-host-ip:5080"
-    }
-  ]
+  }
 }
