@@ -123,15 +123,15 @@ your Palette Edge deployment.
     ```
 
     <details>
-    
+
     <summary> How to check the latest STIG content version </summary>
-    
+
     You can find the latest STIG content version via the GitHub API using the following command (requires jq).
-    
+
     ```bash
     curl --silent https://api.github.com/repos/ComplianceAsCode/content/releases/latest | jq --raw-output .tag_name
     ```
-    
+
     </details>
 
     Verify that the command generates static remediation artifacts `ssg-rhel9-ds.xml` and `stig-fix.sh` in the `static`
