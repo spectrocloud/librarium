@@ -128,11 +128,6 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-5169 -->
-
-- Fixed an issue that caused a race condition during MachineDeployment of custom clouds, resulting in the creation of
-  incorrectly configured machine pools.
-
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5700 -->
 
 - Fixed an issue that caused Palette to create an API server LoadBalancer security group with an inbound rule allowing
@@ -195,6 +190,11 @@ tags: ["release-notes"]
 - Fixed an issue that prevented Palette from correctly applying required tags to EC2 nodes during Kubernetes upgrades of
   [EKS clusters](../clusters/public-cloud/aws/eks.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3815 -->
+
+- Fixed an issue that prevented the Palette UI from modifying the **Allow worker capability** on control plane
+  [node pools](../clusters/pcg/manage-pcg/create-manage-node-pool.md) after the cluster has deployed.
+
 ### Edge
 
 :::info
@@ -220,8 +220,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Palette now supports building
   [RHEL 9 STIG-compliant images](../clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image.md) for use in
   Edge deployments.
-
-#### Improvements
 
 #### Bug Fixes
 
@@ -260,6 +258,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Fixed an issue that caused nameserver limits exceeded log messages due to incorrectly created duplicate DNS server
   entries on [Edge clusters](../clusters/edge/edge.md) configured with static IP.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8424 -->
+
+- Fixed an issue that prevented [Local UI](../clusters/edge/local-ui/local-ui.md) from displaying the subnet column in
+  the **Network Configurations** pane.
 
 ### VerteX
 
