@@ -7,29 +7,22 @@ hide_table_of_contents: false
 sidebar_position: 0
 ---
 
-Palette is available in three flexible deployment models:
+Palette provides a centralized management plane that orchestrates Kubernetes clusters across public clouds, private data
+centers, and edge environments. The management plane handles cluster provisioning, monitoring, and Day-2 operations,
+while a lightweight agent installed in each workload cluster enforces the desired state locally.
 
-- **US Multi-Tenant SaaS**: The management plane is hosted in Amazon Web Services (AWS) across three regions (us-east-1,
-  us-west-1, and us-west-2) and managed by Spectro Cloud. Each customer is treated as a unique tenant, with enforced
-  data isolation and access controls. Spectro Cloud controls when to upgrade the management plane.
+This section covers the deployment models available for hosting the Palette management plane, the data flow between
+Palette and your workload clusters, and the internal communication mechanisms that keep the platform reliable at scale.
 
-- **EU Multi-Tenant SaaS**: The management plane is hosted in AWS across two regions (eu-west-1 and eu-central-1) and
-  managed by Spectro Cloud. Each customer is treated as a unique tenant, with enforced data isolation and access
-  controls. Spectro Cloud controls when to upgrade the management plane.
+## Deployment Models
 
-- **US Dedicated SaaS**: The management plane is hosted in a US cloud/region specified by the customer in Spectro
-  Cloud’s cloud account with a dedicated instance managed by Spectro Cloud. The customer can decide when to upgrade the
-  management plane.
+<PartialsComponent category="architecture" name="deployment-models" />
 
-- **EU Dedicated SaaS**: The management plane is hosted in an EU cloud/region specified by the customer. The dedicated
-  instance is managed by Spectro Cloud, but the customer decides when to upgrade the management plane.
+### SaaS Region Availability
 
-- **Self-hosted**: The management plane is hosted in the customer’s environment. This environment can be a public cloud,
-  data center, or bare metal devices.
+<PartialsComponent category="architecture" name="saas-regions" />
 
 ![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.webp)
-
-<br />
 
 ## Product Security
 
@@ -37,8 +30,6 @@ At Spectro Cloud, we recognize the importance of robust security measures in tod
 As the provider of our cutting-edge SaaS and self-hosted Palette product, our commitment to safeguarding your data and
 ensuring the integrity of our services is paramount. Learn more about Palette security by reviewing the
 [Security](../security/security.md) section.
-
-<br />
 
 ## SaaS Architecture and Data Flow
 
