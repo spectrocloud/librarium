@@ -109,7 +109,7 @@ tags: ["release-notes"]
   [EKS clusters](../clusters/public-cloud/aws/eks.md).
 
 - [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.44 is now
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.c is now
   available.
 
 #### Deprecations and Removals
