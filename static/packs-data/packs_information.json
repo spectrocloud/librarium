@@ -1090,5 +1090,21 @@
   {
     "name": "network-operator",
     "description": "NVIDIA Network Operator is a Kubernetes operator that simplifies the deployment and management of NVIDIA networking components on Kubernetes clusters. It provides a way to define and manage the various components of a NVIDIA networking deployment, including network plugins, GPU resource allocation, and monitoring."
+  },
+  {
+    "name": "openshift-byoi",
+    "description": "The OpenShift Bring Your Own Operating System (BYOOS) is a pack that allows you to deploy OpenShift clusters using your own installer. This pack is designed for users who want to have more control over the installation process and customize their OpenShift deployment according to their specific requirements."
+  },
+  {
+    "name": "openshift",
+    "description": "OpenShift is Red Hat's enterprise Kubernetes platform. It provides a comprehensive set of tools and services for building, deploying, and managing containerized applications in a secure and scalable environment. OpenShift includes features such as integrated CI/CD pipelines, developer tools, and support for hybrid cloud deployments."
+  },
+  {
+    "name": "ovn-kubernetes",
+    "description": "OVN-Kubernetes is a network plugin for Kubernetes that provides a scalable and flexible networking solution. It leverages the Open Virtual Network (OVN) to create a virtual network overlay, enabling communication between pods across different nodes in the cluster. OVN-Kubernetes supports advanced networking features such as network policies, load balancing, and multi-tenancy."
+  },
+  {
+    "name": "hypershift-operator",
+    "description": "Hypershift Operator is a Kubernetes operator that simplifies the deployment and management of Hypershift clusters on Kubernetes. It provides a way to define and manage the various components of a Hypershift deployment, including cluster provisioning, scaling, and monitoring."
   }
 ]

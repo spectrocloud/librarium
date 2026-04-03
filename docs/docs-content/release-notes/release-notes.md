@@ -332,22 +332,28 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3865 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3875 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3629 -->
 
-| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
-| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Amazon EBS CSI              | CSI        | :white_check_mark: | :x:                | 1.57.1      |
-| Flannel                     | CNI        | :x:                | :white_check_mark: | 0.28.1      |
-| Flux2                       | Add-on     | :white_check_mark: | :x:                | 2.18.2      |
-| Harbor                      | Add-on     | :white_check_mark: | :x:                | 1.18.3      |
-| Istio                       | Add-on     | :white_check_mark: | :x:                | 1.29.1      |
-| Karpenter                   | Add-on     | :white_check_mark: | :x:                | 1.10.0      |
-| Kong                        | Add-on     | :white_check_mark: | :x:                | 3.1.0       |
-| Nginx                       | Add-on     | :white_check_mark: | :x:                | 1.13.9      |
-| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.6      |
-| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 82.12.0     |
-| OpenTelemetry               | Add-on     | :white_check_mark: | :x:                | 0.145.0     |
-| Open Observe                | Add-on     | :white_check_mark: | :x:                | 0.60.3-rev1 |
-| vSphere CSI                 | CSI        | :white_check_mark: | :x:                | 3.7.0       |
+| Pack Name           | Layer      | Non-FIPS           | FIPS               | New Version |
+| ------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI      | CSI        | :white_check_mark: | :x:                | 1.57.1      |
+| BYOOS (OpenShift)   | OS         | :white_check_mark: | :x:                | 1.0.0       |
+| Flannel             | CNI        | :x:                | :white_check_mark: | 0.28.1      |
+| OVN-Kubernetes      | CNI        | :white_check_mark: | :x:                | 4.20.13     |
+| Flux2               | Add-on     | :white_check_mark: | :x:                | 2.18.2      |
+| Harbor              | Add-on     | :white_check_mark: | :x:                | 1.18.3      |
+| HyperShift Operator | Add-on     | :white_check_mark: | :x:                | 4.20.0      |
+| HyperShift Operator | Add-on     | :white_check_mark: | :x:                | 4.19.0      |
+| Istio               | Add-on     | :white_check_mark: | :x:                | 1.29.1      |
+| Karpenter           | Add-on     | :white_check_mark: | :x:                | 1.10.0      |
+| Kong                | Add-on     | :white_check_mark: | :x:                | 3.1.0       |
+| Nginx               | Add-on     | :white_check_mark: | :x:                | 1.13.9      |
+| Prometheus Operator | Add-on     | :white_check_mark: | :x:                | 82.12.0     |
+| OpenTelemetry       | Add-on     | :white_check_mark: | :x:                | 0.145.0     |
+| Open Observe        | Add-on     | :white_check_mark: | :x:                | 0.60.3-rev1 |
+| OpenShift           | Kubernetes | :white_check_mark: | :x:                | 4.20.13     |
+| OpenShift           | Kubernetes | :white_check_mark: | :x:                | 4.19.7      |
+| vSphere CSI         | CSI        | :white_check_mark: | :x:                | 3.7.0       |
 
 #### Pack Notes
 
