@@ -199,7 +199,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.c Palette release is 4.8.17.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.c Palette release is 4.8.18.
 
 :::
 
