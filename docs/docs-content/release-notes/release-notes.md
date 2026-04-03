@@ -279,8 +279,6 @@ The following community packs have been released:
 | RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.13     |
 | Traefik              | Add-on     | :white_check_mark: | :x:                | 39.0.5      |
 
-> > > > > > > master
-
 ## March 20, 2026 - Component Updates {#component-updates-2026-12}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.40.
