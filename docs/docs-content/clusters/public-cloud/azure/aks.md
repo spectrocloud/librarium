@@ -49,6 +49,16 @@ explains how you can create an Azure AKS cluster managed by Palette.
   [Enable SSO with Microsoft Entra ID](../../../user-management/saml-sso/palette-sso-with-entra-id.md) guide for more
   information.
 
+- To enable
+  [Microsoft Entra integration for AKS](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
+  or
+  [Microsoft Entra Workload ID for AKS](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview?tabs=dotnet),
+  you need to configure your cluster profile with the appropriate settings. Review the following guides for more
+  information:
+
+  - [Enable Microsoft Entra ID for AKS](./enable-iam-features-aks/enable-microsoft-entra-id-aks.md)
+  - [Enable Microsoft Entra Workload ID for AKS](./enable-iam-features-aks/enable-microsoft-entra-workload-id-aks.md)
+
 - Optionally, a Virtual Network (VNet). If you do not provide a VNet, Palette creates one for you with compute, network,
   and storage resources in Azure when it provisions Kubernetes clusters.
 

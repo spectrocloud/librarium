@@ -21,7 +21,7 @@ keywords: ["self-hosted", "palette", "feature-flags"]
 
 ## Enable a Feature
 
-<PartialsComponent category="self-hosted" name="feature-flags-enablement" edition="palette" />
+<PartialsComponent category="self-hosted" name="feature-flags-enablement" edition="palette" version="Palette" />
 
 ## Validate
 
