@@ -44,6 +44,7 @@ necessary actions to avoid any disruptions in your environment.
 
 | <!-- prettier-ignore-start --> The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now
 deprecated. We recommend using an alternative ingress controller, such as
+
 <VersionedLink text="Kgateway" url="/integrations/packs/?pack=kgateway" /> or
 <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" />. Refer to the
 [Ingress NGINX Retirement: What You Need to Know](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/)
