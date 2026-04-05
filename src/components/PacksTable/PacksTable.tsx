@@ -40,7 +40,7 @@ const formatCloudType = (type: string): string => {
     maas: "MaaS",
     gcp: "GCP",
     edge: "Edge",
-    openstack: "OpenStack",
+    "apache-cloudstack": "CloudStack",
     "edge-native": "Edge",
     aks: "AKS",
     gke: "GKE",

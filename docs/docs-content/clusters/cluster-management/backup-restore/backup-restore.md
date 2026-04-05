@@ -59,8 +59,6 @@ object storage solutions as backup locations.
 
 - Google Cloud Platform (GCP) bucket
 
-- MinIO S3 bucket
-
 - Azure blob storage
 
 :::info
@@ -86,7 +84,6 @@ Review the table below to learn more about what cloud providers and credentials 
 | -------------------- | ------------------------------ | ------------------------------- |
 | AWS                  | ✅                             | ✅                              |
 | GCP                  | ✅                             | ❌                              |
-| MinIO                | ✅                             | ❌                              |
 | Azure                | ✅                             | ❌                              |
 
 To learn more about adding a backup location, check out the

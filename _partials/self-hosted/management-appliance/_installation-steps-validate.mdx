@@ -24,7 +24,7 @@ partial_name: installation-steps-validate
 
    ```bash
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep --extended-regexp '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)\s'
    ```
 
    Your output should look similar to the following.
@@ -70,6 +70,9 @@ partial_name: installation-steps-validate
    ingress-nginx    ingress-nginx-controller-m5z54          Running
    ingress-nginx    ingress-nginx-controller-qsf6m          Running
    ingress-nginx    ingress-nginx-controller-w64pz          Running
+   ingress-traefik  traefik-ingress-controller-9dmzq        Running    
+   ingress-traefik  traefik-ingress-controller-tpwtf        Running
+   ingress-traefik  traefik-ingress-controller-xz4jf        Running     
    jet-system       jet-856db6655-k87k8                     Running
    ui-system        spectro-ui-bcff7f675-lds2l              Running
    ```

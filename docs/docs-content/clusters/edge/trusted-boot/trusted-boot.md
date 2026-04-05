@@ -38,7 +38,7 @@ encrypted.
 
 ## Limitation
 
-- Trusted Boot is only supported in environments that use Ubuntu 24.04 as the OS and RKE2 as the Kubernetes
+- Trusted Boot is only supported in environments that use Ubuntu 24.04 as the OS and RKE2 or K3s as the Kubernetes
   distribution.
 
 ## Next Steps
