@@ -11,7 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+<<<<<<< HEAD
 ## March 21, 2026 - Release 4.8.c {#release-notes-4-8-c}
+=======
+## April 5, 2026 - Release 4.8.47 {#release-notes-4-8-c}
+>>>>>>> f246b151b (sunday stuff)
 
 ### Security Notices
 
@@ -91,6 +95,19 @@ tags: ["release-notes"]
 - The **Options** button on the [cluster template](../cluster-templates/cluster-templates.md) **Overview** tab has been
   renamed **Actions**.
 
+<<<<<<< HEAD
+=======
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9762 -->
+
+- The Palette UI has been updated to reflect node deployment in the displayed
+  [node pool](../clusters/cluster-management/node-pool.md) age, accurately reflecting node lifecycle.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9690 -->
+
+- The Palette UI has been updated to accurately display node name and subnet ID of
+  [EKS clusters](../clusters/public-cloud/aws/eks.md).
+
+>>>>>>> f246b151b (sunday stuff)
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5880 -->
@@ -109,7 +126,11 @@ tags: ["release-notes"]
 
 :::info
 
+<<<<<<< HEAD
 The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.c Palette release is 4.8.c.
+=======
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.47 Palette release is 4.8.18.
+>>>>>>> f246b151b (sunday stuff)
 
 :::
 
