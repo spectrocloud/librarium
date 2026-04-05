@@ -47,5 +47,12 @@ Explore the tutorials below to learn how to deploy Palette clusters in public cl
       buttonText: "Learn more",
       url: "/tutorials/clusters/pcg/deploy-app-pcg/",
     },
+    {
+      title: "Standardize Clusters with Cluster Templates",
+      description:
+        "Learn how to standardize cluster provisioning, apply maintenance windows, and roll out upgrades using cluster templates.",
+      buttonText: "Learn more",
+      url: "/tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui/",
+    },
   ]}
 />
