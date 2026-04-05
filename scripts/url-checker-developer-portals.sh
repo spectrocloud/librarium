@@ -13,7 +13,6 @@ DEVELOPER_PORTAL_LINKS=(
     "www\.gnu\.org",
     "socket\.dev",
     "www\.freedesktop\.org",
-    "docs\.openstack\.org",
     "upwind\.io",
     "wiz\.io",
     "linux\.die\.net",

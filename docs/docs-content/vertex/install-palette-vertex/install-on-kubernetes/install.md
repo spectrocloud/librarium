@@ -79,8 +79,12 @@ has the necessary network connectivity for VerteX to operate successfully.
   workload, modify the `storageClass` parameter. Check out the
   [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
   page to learn more about modifying StorageClasses.
-- An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you
-  must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
+
+- Palette VerteX deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default
+  ingress controller starting with Palette VerteX 4.8.47. Nginx, which is
+  [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
+  actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
+  `ingress.enabled` parameter to `false` in the `values.yaml` file.
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for VerteX.
@@ -141,17 +145,37 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-4.  Open the **values.yaml** in the **vertex/spectro-mgmt-plane** folder with a text editor of your choice. The
-    **values.yaml** contains the default values for the VerteX installation parameters. However, you must populate the
-    following parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file
-    in the [Helm Configuration Reference](vertex-helm-ref.md) page.
+4.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+    Palette VerteX, including Traefik CRDs, and must be installed before the main Palette VerteX Helm chart. When the
+    chart is installed, the custom resource types are registered with the Kubernetes API server; no pods are deployed.
 
-    | **Parameter**                             | **Description**                                                                                                                                               | **Type** |
-    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
+    ```shell
+    helm upgrade --install spectro-mgmt-crds \
+      extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
+      --values extras/spectro-mgmt-crds/values.yaml
+    ```
+
+    ```shell hideClipboard title="Example output"
+    Release "spectro-mgmt-crds" does not exist. Installing it now.
+    NAME: spectro-mgmt-crds
+    LAST DEPLOYED: Mon Jan 29 16:35:00 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+5.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
+    contains the default values for the VerteX installation parameters. However, you must populate the following
+    parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the
+    [Helm Configuration Reference](vertex-helm-ref.md) page.
+
+    | **Parameter**                             | **Description**                                                                                                                                                                                         | **Type** |
+    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                                                                    | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                                                                 | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set this to `false` if you already have an ingress controller deployed in the cluster. | boolean  |
+    | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment                                           | object   |
 
     :::info
 
@@ -617,11 +641,11 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-5.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+6.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
-    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
-    four. Make sure you configure the `reach-system.enable` section in the **values.yaml** file.
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in
+    step 5. Make sure you configure the `reach-system.enable` section in the **values.yaml** file.
 
     ```shell
     helm upgrade --values vertex/values.yaml \
@@ -657,7 +681,7 @@ your environment. Reach out to our support team if you need assistance.
 
     </details>
 
-6.  Install the Palette Helm Chart using the following command.
+7.  Install the VerteX Helm Chart using the following command.
 
     ```shell
      helm upgrade --values vertex/values.yaml \
@@ -674,9 +698,9 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-7.  Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
-    `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
-    installation takes between two to three minutes to complete.
+8.  Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
+    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_
+    state. The installation takes between two to three minutes to complete.
 
     ```shell
     kubectl get pods --all-namespaces --watch
@@ -689,12 +713,12 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Create a DNS CNAME record that is mapped to the VerteX `ingress-nginx-controller` load balancer. You can use the
+9.  Create a DNS CNAME record that is mapped to the VerteX `traefik-ingress-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
     ```shell
-    kubectl get service ingress-nginx-controller --namespace ingress-nginx \
+    kubectl get service traefik-ingress-controller --namespace ingress-traefik \
     --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
@@ -709,7 +733,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-9.  Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
+10. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
     system console, open a web browser and paste the custom domain URL in the address bar and append the value
     `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
     Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
@@ -721,7 +745,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.webp)
 
-10. Log in to the system console using the following default credentials. Refer to the
+11. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
@@ -736,7 +760,7 @@ your environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-11. After login, a summary page is displayed. VerteX is installed with a self-signed SSL certificate. To assign a
+12. After login, a summary page is displayed. VerteX is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to VerteX. You can upload the files using the VerteX system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
@@ -764,52 +788,55 @@ Use the following steps to validate the VerteX installation.
    password. Enter a new password and save your changes. You will be redirected to the VerteX system console.
 
 3. Open a terminal session and issue the following command to verify the VerteX installation. The command should return
-   a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system`
-   namespaces.
+   a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and
+   `ui-system` namespaces.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
    ```
 
    Your output should look similar to the following.
 
    ```shell hideClipboard
-   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-   hubble-system   auth-85b748cbf4-6drkn                      Running
-   hubble-system   auth-85b748cbf4-dwhw2                      Running
-   hubble-system   cloud-fb74b8558-lqjq5                      Running
-   hubble-system   cloud-fb74b8558-zkfp5                      Running
-   hubble-system   configserver-685fcc5b6d-t8f8h              Running
-   hubble-system   event-68568f54c7-jzx5t                     Running
-   hubble-system   event-68568f54c7-w9rnh                     Running
-   hubble-system   foreq-6b689f54fb-vxjts                     Running
-   hubble-system   hashboard-897bc9884-pxpvn                  Running
-   hubble-system   hashboard-897bc9884-rmn69                  Running
-   hubble-system   hutil-6d7c478c96-td8q4                     Running
-   hubble-system   hutil-6d7c478c96-zjhk4                     Running
-   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-   hubble-system   mongo-0                                    Running
-   hubble-system   mongo-1                                    Running
-   hubble-system   mongo-2                                    Running
-   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-   hubble-system   packsync-28205220-bmzcg                    Succeeded
-   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-   hubble-system   system-686d77b947-8949z                    Running
-   hubble-system   system-686d77b947-cgzx6                    Running
-   hubble-system   timeseries-7865bc9c56-5q87l                Running
-   hubble-system   timeseries-7865bc9c56-scncb                Running
-   hubble-system   timeseries-7865bc9c56-sxmgb                Running
-   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-   ingress-nginx   ingress-nginx-controller-2txsv             Running
-   ingress-nginx   ingress-nginx-controller-55pk2             Running
-   ingress-nginx   ingress-nginx-controller-gmps9             Running
-   jet-system      jet-6599b9856d-t9mr4                       Running
-   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   cp-system        spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system    auth-85b748cbf4-6drkn                      Running
+   hubble-system    auth-85b748cbf4-dwhw2                      Running
+   hubble-system    cloud-fb74b8558-lqjq5                      Running
+   hubble-system    cloud-fb74b8558-zkfp5                      Running
+   hubble-system    configserver-685fcc5b6d-t8f8h              Running
+   hubble-system    event-68568f54c7-jzx5t                     Running
+   hubble-system    event-68568f54c7-w9rnh                     Running
+   hubble-system    foreq-6b689f54fb-vxjts                     Running
+   hubble-system    hashboard-897bc9884-pxpvn                  Running
+   hubble-system    hashboard-897bc9884-rmn69                  Running
+   hubble-system    hutil-6d7c478c96-td8q4                     Running
+   hubble-system    hutil-6d7c478c96-zjhk4                     Running
+   hubble-system    mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system    mongo-0                                    Running
+   hubble-system    mongo-1                                    Running
+   hubble-system    mongo-2                                    Running
+   hubble-system    msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system    oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system    packsync-28205220-bmzcg                    Succeeded
+   hubble-system    spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system    spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system    spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system    system-686d77b947-8949z                    Running
+   hubble-system    system-686d77b947-cgzx6                    Running
+   hubble-system    timeseries-7865bc9c56-5q87l                Running
+   hubble-system    timeseries-7865bc9c56-scncb                Running
+   hubble-system    timeseries-7865bc9c56-sxmgb                Running
+   hubble-system    user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system    user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx    ingress-nginx-controller-m5z54             Running
+   ingress-nginx    ingress-nginx-controller-qsf6m             Running
+   ingress-nginx    ingress-nginx-controller-w64pz             Running
+   ingress-traefik  traefik-ingress-controller-9dmzq           Running
+   ingress-traefik  traefik-ingress-controller-tpwtf           Running
+   ingress-traefik  traefik-ingress-controller-xz4jf           Running
+   jet-system       jet-6599b9856d-t9mr4                       Running
+   ui-system        spectro-ui-76ffdf67fb-rkgx8                Running
    ```
 
 ## Next Steps
