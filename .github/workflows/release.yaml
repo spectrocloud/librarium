@@ -9,11 +9,11 @@ name: Release to Production
 
 
 on:
-  # schedule:
-  #   - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
-  #   - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
-  #   - cron: '0 20 * * 6' # At 12:00 PM PST (8 PM UTC next day), Saturday - Due to Security Buletin Publication
-  #   - cron: '0 20 * * 0' # At 12:00 PM PST (8 PM UTC next day),  Sunday - Due to Security Buletin Publication
+  schedule:
+    - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
+    - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
+    - cron: '0 20 * * 6' # At 12:00 PM PST (8 PM UTC next day), Saturday - Due to Security Buletin Publication
+    - cron: '0 20 * * 0' # At 12:00 PM PST (8 PM UTC next day),  Sunday - Due to Security Buletin Publication
   workflow_dispatch:
     inputs:
       useGitHubHostedLargeRunner:
