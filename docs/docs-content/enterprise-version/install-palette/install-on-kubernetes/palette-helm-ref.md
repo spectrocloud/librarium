@@ -374,7 +374,7 @@ grpc:
 
 ## Ingress
 
-Beginning with 4.8.c, Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the
+Beginning with 4.8.47, Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the
 default ingress controller and handles traffic routing to the Palette control plane. Nginx, which is
 [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
 actively serve traffic. The `ingress.type` parameter determines which one serves as the primary ingress controller. If

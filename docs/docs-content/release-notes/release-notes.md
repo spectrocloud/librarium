@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 5, 2026 - Release 4.8.c {#release-notes-4-8-c}
+## April 5, 2026 - Release 4.8.47 {#release-notes-4-8-c}
 
 ### Security Notices
 
@@ -108,10 +108,6 @@ tags: ["release-notes"]
 - The Palette UI has been updated to accurately display node name and subnet ID of
   [EKS clusters](../clusters/public-cloud/aws/eks.md).
 
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.8.c is now
-  available.
-
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5880 -->
@@ -199,7 +195,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.c Palette release is 4.8.18.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.47 Palette release is 4.8.18.
 
 :::
 

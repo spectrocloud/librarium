@@ -123,7 +123,7 @@ The risk is higher in environments where:
 #### Multi-tenant and Dedicated SaaS Deployments
 
 Multi-tenant & managed Dedicated SaaS clusters have been patched as part of the standard update process to Palette
-version 4.8.c.
+version 4.8.47.
 
 #### Self-Hosted Palette Deployments
 

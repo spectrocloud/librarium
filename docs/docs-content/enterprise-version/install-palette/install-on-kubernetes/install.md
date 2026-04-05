@@ -73,7 +73,7 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   page to learn more about modifying StorageClasses.
 
 - Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default ingress
-  controller starting with Palette 4.8.c. Nginx, which is
+  controller starting with Palette 4.8.47. Nginx, which is
   [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
   actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
   `ingress.enabled` parameter to `false` in the `values.yaml` file.
