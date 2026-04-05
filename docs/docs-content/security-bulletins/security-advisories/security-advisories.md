@@ -127,7 +127,7 @@ version 4.8.47.
 
 #### Self-Hosted Palette Deployments
 
-A patch with the fixed version of Nginx controller is in progress. This advisory will be updated when that is available.
+The Nginx ingress controller versions 1.13.8, 1.14.4, and 1.15.0 are now available.
 
 #### Workload Clusters
 

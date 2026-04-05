@@ -23,6 +23,7 @@ import { faTowerObservation } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { faBrain } from '@fortawesome/free-solid-svg-icons';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -52,6 +53,7 @@ export const fontAwesomeIcons = {
   "lock": faLock,
   "gears": faGears,
   "screwdriver-wrench": faScrewdriverWrench,
+  "brain": faBrain,
   "flag": faFlag,
   "eye-slash": faEyeSlash
 };

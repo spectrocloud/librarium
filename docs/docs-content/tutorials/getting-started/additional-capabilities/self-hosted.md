@@ -23,8 +23,9 @@ access to any outside service is not possible.
 ## Palette VerteX
 
 Palette VerteX offers a simple, flexible, and secure way for government and regulated industries to deploy and manage
-Kubernetes workloads containing sensitive and classified information. It is available as a self-hosted platform offering
-that you can install in your data center or public cloud provider.
+Kubernetes workloads containing sensitive and classified information. It is available as a multi-tenant SaaS deployment
+in the AWS `us-gov-west-1` region as well as self-hosted platform offering that you can install in your public cloud or
+data center, or on bare metal devices.
 
 Palette VerteX is fully proven in operational environments as it has a Technology Readiness Level (TRL) 9 designation,
 making it suitable for use in high-security production environments up to Impact Levels (IL) 5, 6, and 6+. It enables
