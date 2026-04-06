@@ -12,8 +12,7 @@ installation, carefully review the [Prerequisites](#prerequisites) section.
 
 ## Prerequisites
 
-- A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
-  page for guidance.
+- A Palette API key. Refer to the Create API Key page for guidance.
 
   :::warning
 
@@ -23,20 +22,18 @@ installation, carefully review the [Prerequisites](#prerequisites) section.
 
   :::
 
-- Download and install the Palette CLI from the [Downloads](../../../downloads/cli-tools.md#palette-cli) page. Refer to
-  the [Palette CLI Install](../../../automation/palette-cli/install-palette-cli.md) guide to learn more.
+- Download and install the Palette CLI from the Downloads page. Refer to the Palette CLI Install guide to learn more.
 
 - You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
   between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
-  Refer to the [Palette CLI Encryption](../../../automation/palette-cli/palette-cli.md#encryption) section for more
-  information.
+  Refer to the Palette CLI Encryption section for more information.
 
 The following system requirements must be met to install a PCG in OpenStack:
 
 - PCG IP address requirements:
 
-  - One IP address for a single-node PCG or three IP addresses for a three-node PCG. Refer to the
-    [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing.
+  - One IP address for a single-node PCG or three IP addresses for a three-node PCG. Refer to the PCG Sizing section for
+    more information on sizing.
   - One IP address reserved for cluster repave operations.
   - One IP address for the Virtual IP (VIP).
   - DNS can resolve the domain `api.spectrocloud.com`.
@@ -44,9 +41,8 @@ The following system requirements must be met to install a PCG in OpenStack:
 - An x86 Linux environment with a Docker daemon installed and a connection to Palette and the OpenStack endpoint. The
   Palette CLI installation must be invoked on an up-to-date Linux system with the x86-64 architecture.
 
-- An Open Stack SSH Key Pair. Refer to the
-  [Configure access and security for instances](https://docs.openstack.org/horizon/latest/user/configure-access-and-security-for-instances.html)
-  guide to learn how to create an SSH key pair.
+- An Open Stack SSH Key Pair. Refer to the Configure access and security for instances guide to learn how to create an
+  SSH key pair.
 
 - An OpenStack user account with the required permissions to deploy the PCG. Review the
   [OpenStack Cloud Account Permissions](#openstack-cloud-account-permissions) section to learn more about the required
@@ -372,5 +368,5 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
 ## Next Steps
 
 After you have successfully deployed the PCG into your OpenStack environment, you can deploy Kubernetes clusters in your
-OpenStack environment through Palette. Check out the [Deploying an OpenStack Cluster](../../data-center/openstack.md)
-guide to learn how to deploy a Kubernetes cluster in OpenStack that is managed by Palette.
+OpenStack environment through Palette. Check out the Deploying an OpenStack Cluster guide to learn how to deploy a
+Kubernetes cluster in OpenStack that is managed by Palette.

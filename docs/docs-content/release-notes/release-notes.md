@@ -11,6 +11,368 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 5, 2026 - Release 4.8.47 {#release-notes-4-8-c}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4-8-c}
+
+#### Breaking Changes {#breaking-changes-4-8-c}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9963 -->
+
+- At least one availability zone is now required for dynamically placed
+  [AWS IaaS clusters](../clusters/public-cloud/aws/create-cluster.md) when deploying or modifying worker machine pools
+  using the [Palette API](/api/introduction/). Users of
+  [Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs),
+  [Crossplane](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette), and other API tools must
+  specify `azs` for all new and existing AWS worker machine pool configurations to ensure successful provisioning.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10017 -->
+
+- The `GET /v1/spectroclusters/{uid}` API now honors the `resolvePackValues` query parameter. Previously, it was
+  implicitly treated as `true` when not specified. As a result, requests that omit `resolvePackValues` may now return
+  unresolved pack values. Services that rely on resolved values must explicitly set `resolvePackValues=true`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9118 -->
+
+- Palette and Palette VerteX now use [Traefik](https://traefik.io/traefik/) as the default ingress controller for the
+  management plane, replacing the
+  [deprecated Nginx ingress controller](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/). While
+  both controllers are deployed simultaneously during this transition, Nginx acts as a fallback and does not actively
+  serve traffic.
+
+  If you have made custom modifications to the Nginx ingress configuration in your self-hosted environment, such as
+  custom annotations, load balancer settings, or TLS configurations, these customizations may not carry over
+  automatically and could affect your deployment. Review your ingress configuration before upgrading and
+  [contact our Support team](https://support.spectrocloud.io) if you need assistance migrating custom ingress settings
+  to Traefik. For installations configured to use DNS, you must also update your records to point to the new Traefik
+  `LoadBalancer` service after upgrading. Refer to the
+  [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5509 -->
+
+- Palette now supports
+  [Microsoft Entra integration](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
+  and [Microsoft Entra Workload ID](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview?tabs=dotnet)
+  for Azure Kubernetes Service (AKS) clusters. This allows you to manage access to your AKS clusters using Microsoft
+  Entra ID identities and leverage Microsoft Entra Workload ID for securely authenticating applications hosted on your
+  AKS clusters. Both features need to be enabled in your Azure AKS cluster profiles. Refer to the following guides for
+  more information:
+
+  - [Enable Microsoft Entra ID for AKS](../clusters/public-cloud/azure/enable-iam-features-aks/enable-microsoft-entra-id-aks.md)
+  - [Enable Microsoft Entra Workload ID for AKS](../clusters/public-cloud/azure/enable-iam-features-aks/enable-microsoft-entra-workload-id-aks.md)
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9513 -->
+
+- API endpoints for AWS services in AWS Secret and Top Secret cloud regions can now be customized. Refer to our
+  [Feature Flags](../vertex/system-management/feature-flags.md#customize-aws-secret-and-top-secret-endpoints) guide for
+  more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10214 -->
+
+- The Palette Nginx ingress controller has been updated to version 1.13.8 to address
+  [CVE-2026-3288](https://github.com/kubernetes/kubernetes/issues/137560). Refer to
+  [Security Advisory 010 - Nginx Ingress Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-010---nginx-ingress-configuration-injection-vulnerability)
+  for more information.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5984 -->
+
+- It is now possible to use dynamic credentials for backup locations when the IAM user or role for backup locations
+  differs from the one used for cluster deployment, and the cluster deployment uses static credentials in AWS. The IAM
+  user or role must be added to the trust policy of the backup location IAM role for this to work. For more details,
+  refer to the
+  [Add Backup Location with Dynamic Credentials](../clusters/cluster-management/backup-restore/add-backup-location-dynamic.md)
+  and
+  [Troubleshooting clusters](../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+  guides.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9573 -->
+
+- The **Options** button on the [cluster template](../cluster-templates/cluster-templates.md) **Overview** tab has been
+  renamed **Actions**.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9762 -->
+
+- The Palette UI has been updated to reflect node deployment in the displayed
+  [node pool](../clusters/cluster-management/node-pool.md) age, accurately reflecting node lifecycle.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9690 -->
+
+- The Palette UI has been updated to accurately display node name and subnet ID of
+  [EKS clusters](../clusters/public-cloud/aws/eks.md).
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5880 -->
+
+- OpenStack is no longer supported in Palette. We recommend migrating your workloads to another supported
+  [data center environment](../clusters/data-center/data-center.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-1822 -->
+
+- [MinIO](https://www.min.io/) can no longer be added as a
+  [backup location](../clusters/cluster-management/backup-restore/backup-restore.md) through the Palette UI at **Tenant
+  Settings** > **Backup Locations**. Adding MinIO as a backup location via the [Palette API](/api/introduction/) is
+  still supported. This update does not affect the functionality of existing MiniIO backups.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5700 -->
+
+- Fixed an issue that caused Palette to create an API server LoadBalancer security group with an inbound rule allowing
+  traffic to `0.0.0.0/0` on [AWS IAAS clusters](../clusters/public-cloud/aws/create-cluster.md) configured with private
+  API server LoadBalancer.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9414 -->
+
+- Fixed an issue that caused cluster update event messages to be published intermittently, causing delays in
+  [cluster profile update](../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) deployment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9496 -->
+
+- Fixed an issue that caused [cluster liveness probes](../clusters/cluster-management/health-alerts.md) on multiple
+  containers, leading to unnecessary restarts.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9867 -->
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that prevented Palette from refreshing authentication tokens on <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> configured with [Palette OIDC](../user-management/saml-sso/saml-sso.md#palette-oidc-and-pxk).
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6011 -->
+
+- Fixed an issue that caused `CrashLoopBackOff` and `OOMKilled` errors when a large number of ConfigMaps are cleaned up
+  using [etcd defragmentation](https://etcd.io/docs/v3.5/op-guide/maintenance/).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9952 -->
+
+- Fixed an issue that caused Palette to fail to fetch
+  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) pack manifests that contain forward slashes in the
+  pack name.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9981 -->
+
+- Fixed an issue that caused concurrent [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) edits across
+  Palette browser tabs to lead to pack manifest UID corruption and accidental deletion of source manifests.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10139 -->
+
+- Fixed an issue that caused
+  [pack registry synchronization](../registries-and-packs/registries/registries.md#synchronization) to lock when a
+  manual sync operation is triggered at the same time as a scheduled sync.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6149 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6182 -->
+
+- Fixed an issue that caused Palette [cluster imports](../clusters/imported-clusters/cluster-import.md) to fail for
+  OpenShift clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10238 -->
+
+- Fixed an issue that caused the [Palette API](/api/introduction) to allow invalid manifest UIDs to be accepted by name,
+  leading to orphaned manifests and cluster errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6224 -->
+
+- Fixed an issue that prevented Palette from correctly applying required tags to EC2 nodes during Kubernetes upgrades of
+  [EKS clusters](../clusters/public-cloud/aws/eks.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3815 -->
+
+- Fixed an issue that prevented the Palette UI from modifying the **Allow worker capability** on control plane
+  [node pools](../clusters/pcg/manage-pcg/create-manage-node-pool.md) after the cluster has deployed.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.8.47 Palette release is 4.8.18.
+
+:::
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-3559 -->
+
+- K3s is now supported for Edge devices with [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8394 -->
+
+- The ability to configure Edge host and network settings via the Palette Terminal User Interface (TUI) can now be
+  disabled by setting the `stylus.disableTui` flag to `true`. Edge host information is still displayed when TUI
+  interactions are disabled. This flag cannot be changed post-installation. Refer to
+  [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md) for more
+  information.
+
+- Palette now supports building
+  [RHEL 9 STIG-compliant images](../clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image.md) for use in
+  Edge deployments.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8144 -->
+
+- Fixed an issue that prevented [Local UI](../clusters/edge/local-ui/local-ui.md) from enforcing Kubernetes label length
+  validation.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8218 -->
+
+- Fixed an issue that caused [Edge cluster](../clusters/edge/edge.md) provisioning to fail due to undetected corrupted
+  ISO [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which should have
+  been detected earlier in the provisioning process.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8223 -->
+
+- Fixed an issue that caused registry passwords marked as sensitive cluster pack values in the Palette UI to be rendered
+  in clear text when viewed using kubectl.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8225 -->
+
+- Fixed an issue that caused Edge nodes hosting a [Palette VerteX](../vertex/vertex.md) management cluster to be unable
+  to communicate with workload clusters after a power outage.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8241 -->
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to display a blank value for the **Date &
+  Time** field of audit log events related to user login actions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8270 -->
+
+- Fixed an issue that caused Edge control plane nodes to unregister themselves after rotating the node that is the
+  current [kube-vip](https://kube-vip.io/) holder.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8301 -->
+
+- Fixed an issue that caused nameserver limits exceeded log messages due to incorrectly created duplicate DNS server
+  entries on [Edge clusters](../clusters/edge/edge.md) configured with static IP.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8424 -->
+
+- Fixed an issue that prevented [Local UI](../clusters/edge/local-ui/local-ui.md) from displaying the subnet column in
+  the **Network Configurations** pane.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-8-c) for more details.
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-9 -->
+
+- Two new prerequisites have been added to the
+  [Create VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#prerequisites)
+  guide. These prerequisites cover the use of Ubuntu 24.04 and Kubernetes 1.33 (or later) whereby additional parameters
+  must be added to the OS and Kubernetes layers of the cluster profile to ensure the VM Migration Assistant functions
+  properly during disk or image conversions.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+- Terraform version 0.28.4 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.28.4 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+#### Improvements
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2690 -->
+
+- The `/kubeconfig` [API endpoint](/api/introduction) has now been deprecated. Use the `/kubeconfigclient` API endpoint
+  to download kubeconfig files instead.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9876 -->
+
+- Fixed an issue that prevented the `/v1/dashboard/spectroclusters/metadata` APIs from returning accurate creation,
+  modification, and deletion timestamps.
+
+### Docs and Education
+
+- The Palette [Getting Started](../getting-started/getting-started.md) section has now been extended to cover the
+  configuration and deployment of
+  [locally managed Edge clusters](../tutorials/getting-started/palette-edge/local-management/palette-edge.md).
+
+- A new cluster deployment tutorial for
+  [standardizing cluster provisioning and upgrades with cluster templates](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+  using the Palette UI is now available.
+
+- The [AWS Outposts](../clusters/public-cloud/aws/aws-outpost/aws-outpost.md) section provides guidance about how
+  Palette supports deployment of [Edge hosts](../clusters/public-cloud/aws/aws-outpost/configure-edge-on-aws-outpost.md)
+  on [AWS Outposts](https://aws.amazon.com/outposts/).
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3865 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3875 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3629 -->
+
+| Pack Name           | Layer      | Non-FIPS           | FIPS               | New Version |
+| ------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI      | CSI        | :white_check_mark: | :x:                | 1.57.1      |
+| BYOOS (OpenShift)   | OS         | :white_check_mark: | :x:                | 1.0.0       |
+| Flannel             | CNI        | :x:                | :white_check_mark: | 0.28.1      |
+| OVN-Kubernetes      | CNI        | :white_check_mark: | :x:                | 4.20.13     |
+| Flux2               | Add-on     | :white_check_mark: | :x:                | 2.18.2      |
+| Harbor              | Add-on     | :white_check_mark: | :x:                | 1.18.3      |
+| HyperShift Operator | Add-on     | :white_check_mark: | :x:                | 4.20.0      |
+| HyperShift Operator | Add-on     | :white_check_mark: | :x:                | 4.19.0      |
+| Istio               | Add-on     | :white_check_mark: | :x:                | 1.29.1      |
+| Karpenter           | Add-on     | :white_check_mark: | :x:                | 1.10.0      |
+| Kong                | Add-on     | :white_check_mark: | :x:                | 3.1.0       |
+| Kubernetes (AKS)    | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35        |
+| Nginx               | Add-on     | :white_check_mark: | :x:                | 1.13.9      |
+| Prometheus Operator | Add-on     | :white_check_mark: | :x:                | 82.12.0     |
+| OpenTelemetry       | Add-on     | :white_check_mark: | :x:                | 0.145.0     |
+| Open Observe        | Add-on     | :white_check_mark: | :x:                | 0.60.3-rev1 |
+| OpenShift           | Kubernetes | :white_check_mark: | :x:                | 4.20.13     |
+| OpenShift           | Kubernetes | :white_check_mark: | :x:                | 4.19.7      |
+| vSphere CSI         | CSI        | :white_check_mark: | :x:                | 3.7.0       |
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Trivy" url="/integrations/packs/?pack=trivy" /> version 0.21.1 community pack has been released.
+
+<!-- prettier-ignore-end -->
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3822 -->
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack is now deprecated and should no longer be used to provision new clusters. We recommend using an alternative ingress controller, such as <VersionedLink text="Kgateway" url="/integrations/packs/?pack=kgateway" /> or <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" />.
+
+<!-- prettier-ignore-end -->
+
 ## March 27, 2026 - Component Updates {#component-updates-2026-13}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.40.

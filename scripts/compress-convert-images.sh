@@ -18,8 +18,15 @@ if [[ -n "$non_webp_files" ]]; then
     # Iterate over each non-WebP file and call webpconvert
     while IFS= read -r file; do
         echo "Converting $file to WebP format..."
-        webpconvert "$file"
+        webpconvert "$file" || npx webpconvert "$file"
     done <<< "$non_webp_files"
+
+    if [[ -n "$not_converted_files" ]]; then
+        echo "Warning: Some files were not converted to WebP format."
+        echo "Non-converted files:"
+        echo "$not_converted_files"
+        exit 1
+    fi
 
     echo "Removing original images and renaming WebP images..."
     find static/assets/docs/images/ -type f \( -name "*.png.webp" -o -name "*.png" -o -name "*.jpg.webp" -o -name "*.jpg" -o -name "*.jpeg.webp" -o -name "*.jpeg" \) | while IFS= read -r file; do

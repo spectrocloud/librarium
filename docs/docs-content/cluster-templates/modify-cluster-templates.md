@@ -65,7 +65,7 @@ the template. This is caused when a cluster profile has been recently added to o
 the version of a cluster profile linked to a cluster template has been updated, but the upgrade window specified in the
 attached maintenance policy has not passed.
 
-To force cluster updates and bypass the scheduled maintenance window, select **Options > Upgrade now**. The **Upgrade
+To force cluster updates and bypass the scheduled maintenance window, select **Actions > Upgrade now**. The **Upgrade
 now** button is disabled while the upgrade is in progress.
 
 ![Manually updating clusters attached to a cluster template](/cluster-templates_modify-cluster-templates_upgrade-now.webp)
@@ -243,7 +243,7 @@ select the three-dot menu beside the profile, and **Replace** the profile with a
 
 If a cluster is currently deployed using the cluster template, the cluster will update during the next upgrade window
 specified in the linked maintenance policy. To force cluster updates and bypass the scheduled maintenance window,
-navigate to the **Overview** tab, and select **Options > Upgrade now**.
+navigate to the **Overview** tab, and select **Actions > Upgrade now**.
 
 <!-- prettier-ignore-start -->
 
@@ -306,7 +306,7 @@ your cluster template via cluster profiles.
 Until you verify a **New Value** for all variables in the cluster and all variables are in an **Assigned** state, the
 cluster will not update to the latest profile version, regardless of whether you wait until the next update window
 specified by the [maintenance policy](./create-cluster-template-policies/maintenance-policy.md) or initiate the update
-from the **Overview** tab using **Options > Upgrade now**.
+from the **Overview** tab using **Actions > Upgrade now**.
 
 Use the following procedure to modify variable values across a fleet of clusters deployed with the same cluster
 template.
@@ -337,7 +337,7 @@ template.
 
 7.  Once all variables have an **Assigned** value, you can proceed with cluster updates. Either wait until the next
     upgrade window specified in the linked maintenance policy, or force the updates by navigating to the **Overview**
-    tab and selecting **Options > Upgrade now**.
+    tab and selecting **Actions > Upgrade now**.
 
 #### Validate
 

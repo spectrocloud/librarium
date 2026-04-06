@@ -99,6 +99,15 @@ cloud account.
   }
   ```
 
+- If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used for
+  the backup location to allow the IAM principal (user or role) associated with those static credentials to assume it.
+  Check out the
+  [Troubleshooting clusters](../../../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+  guide for detailed instructions.
+
+  This is only applicable if you have created a separate IAM role for the backup location. If you are using the same IAM
+  role for both cluster deployment and backup location, this prerequisite does not apply.
+
 - If the S3 bucket is using a customer managed AWS Key Management Service (KMS) key for server-side encryption, ensure
   the Palette IAM role has the necessary permissions to access the KMS key. Otherwise, Palette will be unable to put
   objects in the S3 bucket, resulting in backup or restore failure. Check out the
@@ -244,45 +253,47 @@ multiple cloud accounts.
   [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
   additional guidance.
 
-<br />
+  ```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:CreateTags",
+          "ec2:CreateVolume",
+          "ec2:CreateSnapshot",
+          "ec2:DeleteSnapshot"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject",
+          "s3:DeleteObject",
+          "s3:PutObject",
+          "s3:AbortMultipartUpload",
+          "s3:ListMultipartUploadParts"
+        ],
+        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+      },
+      {
+        "Effect": "Allow",
+        "Action": ["s3:ListBucket"],
+        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+      }
+    ]
+  }
+  ```
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ec2:DescribeVolumes",
-        "ec2:DescribeSnapshots",
-        "ec2:CreateTags",
-        "ec2:CreateVolume",
-        "ec2:CreateSnapshot",
-        "ec2:DeleteSnapshot"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:DeleteObject",
-        "s3:PutObject",
-        "s3:AbortMultipartUpload",
-        "s3:ListMultipartUploadParts"
-      ],
-      "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
-    },
-    {
-      "Effect": "Allow",
-      "Action": ["s3:ListBucket"],
-      "Resource": ["arn:aws:s3:::BUCKET-NAME"]
-    }
-  ]
-}
-```
-
-<br />
+  - If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used
+    for the backup location to allow the IAM principal (user or role) associated with those static credentials to assume
+    the backup location IAM role. Check out the
+    [Troubleshooting clusters](../../../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+    guide for detailed instructions.
 
 ### Instructions
 

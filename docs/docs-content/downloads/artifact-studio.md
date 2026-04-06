@@ -137,7 +137,7 @@ Agent mode binaries cannot be downloaded at this time.
 <TabItem label="Controller Mode" value="controller">
 
 6. Select the appropriate cloud type to deploy your cluster on. Public clouds include **AWS**, **GCP**, and **Azure**.
-   Data centers include **MAAS**, **OpenStack**, and **vSphere**.
+   Data centers include **MAAS**, **CloudStack**, and **vSphere**.
 
 7. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible
    with your previous selections are displayed. Choose an operating system and use the **Select option** drop-down menu

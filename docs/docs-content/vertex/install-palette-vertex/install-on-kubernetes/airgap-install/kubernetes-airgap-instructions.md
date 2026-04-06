@@ -89,15 +89,15 @@ Complete the following steps before deploying the airgap VerteX installation.
    ```
 
    ```shell
-   curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap-fips/$VERSION/airgap-fips-v$VERSION.bin  \
-   --output airgap-fips-v$VERSION.bin
+   curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap-vertex/$VERSION/airgap-vertex-v$VERSION.bin  \
+   --output airgap-vertex-v$VERSION.bin
    ```
 
 7. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
    airgap setup binary you downloaded.
 
    ```shell
-   chmod +x airgap-fips-v$VERSION.bin
+   chmod +x airgap-vertex-v$VERSION.bin
    ```
 
 8. Copy or move the airgap binary to another Linux environment inside your airgap environment. Use any approved method
@@ -229,7 +229,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 12. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
 
     ```shell
-    ./airgap-fips-v$VERSION.bin
+    ./airgap-vertex-v$VERSION.bin
     ```
 
     Upon completion, a success message will be displayed. The output is condensed for brevity.
@@ -252,19 +252,19 @@ Complete the following steps before deploying the airgap VerteX installation.
     upload process. This step requires internet access, so you may have to download the binaries on a separate machine
     outside the airgap environment and transfer them to the airgap environment using an approved method.
 
-    In the example below, the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary permissions are updated to allow
+    In the example below, the `airgap-vertex-pack-cni-calico-3.25.1.bin` binary permissions are updated to allow
     execution and the binary is started.
 
-    ```shell
-    chmod +x airgap-fips-pack-amazon-linux-eks-1.0.0.bin && \
-    ./airgap-fips-pack-amazon-linux-eks-1.0.0.bin
+    ```shell title="Example command" hideClipboard
+    chmod +x airgap-vertex-pack-cni-calico-3.25.1.bin && \
+    ./airgap-vertex-pack-cni-calico-3.25.1.bin
     ```
 
-    ```shell hideClipboard
+    ```shell title="Example output" hideClipboard
       Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-      Uncompressing Airgap Pack - amazon-linux-eks Version 4.0.17  100%
+      Uncompressing Airgap Pack - cni-calico Version 3.25.1  100%
       Setting up Packs
-      - Pushing Pack amazon-linux-eks:1.0.0
+      - Pushing Pack cni-calico:3.25.1
       Setup Completed
     ```
 
