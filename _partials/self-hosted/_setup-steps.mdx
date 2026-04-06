@@ -268,6 +268,10 @@ partial_name: setup-steps
 
 18. Start the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry. Replace `<version>` with the version of the binary received from the support team.
 
+    <Tabs>
+
+    <TabItem value="palette" label="Palette"
+
     ```shell
     chmod +x airgap-<version>.bin && ./airgap-<version>.bin
     ```
@@ -275,8 +279,26 @@ partial_name: setup-steps
     Consider the following example for reference.
 
     ```shell
-    chmod +x airgap-4-4-14.bin && ./airgap-4-4-14.bin
+    chmod +x airgap-v4.4.14.bin && ./airgap-v4.4.14.bin
     ```
+
+    </TabItem>
+
+    <TabItem value="vertex" label="Palette VerteX">
+
+    ```shell
+    chmod +x airgap-vertex-<version>.bin && ./airgap-vertex-<version>.bin
+    ```
+    
+    Consider the following example for reference.
+
+    ```shell
+    chmod +x airgap-vertex-v4.4.14.bin && ./airgap-vertex-v4.4.14.bin
+    ```
+
+    </TabItem>
+
+    </Tabs>
 
     This step may take some time to complete. A `Setup Completed` message confirms it is finished.
 
