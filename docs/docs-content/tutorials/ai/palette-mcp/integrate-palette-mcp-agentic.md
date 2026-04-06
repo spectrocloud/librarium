@@ -276,7 +276,7 @@ function and review the code.
 At a high level, the `main` function initializes the Palette MCP, the agents, and the tools. It also orchestrates the
 workflow by calling the agents in the correct order.
 
-## Initalize MCP Overview
+## Initialize MCP Overview
 
 In Langchain, you can define an MCP client using the
 [`MultiServerMCPClient`](https://docs.langchain.com/oss/python/langchain/mcp) class. By default, an MCP server
@@ -385,8 +385,8 @@ Options:
 Initializing MCP client...
 ```
 
-Ater finding the Nginx pack in your Palette environment, the workflow prompts you to enter the tags you want to apply to
-the cluster profiles and the active clusters that are using the Nginx pack.
+After finding the Nginx pack in your Palette environment, the workflow prompts you to enter the tags you want to apply
+to the cluster profiles and the active clusters that are using the Nginx pack.
 
 ```shell hideClipboard title="Workflow Output"
 Matches found. Enter tags to apply to matched cluster profiles and active clusters.
