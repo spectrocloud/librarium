@@ -15,10 +15,10 @@ during the PCG installation process.
 
 :::info
 
-Other private cloud providers, such as MAAS and OpenStack, do not have the ability for you to create additional node
-pools. You can manage where compute nodes are deployed using the native placement capabilities provided by the private
-cloud provider, such as tags, availability zones, or regions. Unlike VMware vSphere, these other private cloud providers
-natively support IPAM and DHCP.
+Other private cloud providers, such as MAAS and Apache CloudStack, do not have the ability for you to create additional
+node pools. You can manage where compute nodes are deployed using the native placement capabilities provided by the
+private cloud provider, such as tags, availability zones, or regions. Unlike VMware vSphere, these other private cloud
+providers natively support IPAM and DHCP.
 
 :::
 

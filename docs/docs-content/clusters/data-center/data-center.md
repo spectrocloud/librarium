@@ -22,12 +22,12 @@ provided out-of-the-box or create a new one.
 ## Resources
 
 The following pages provide detailed instructions for setting up new workload clusters in various data center
-environments.
+environments:
 
 - [Canonical MAAS](maas/maas.md)
 
 - [Nutanix](nutanix/nutanix.md)
 
-- [OpenStack](openstack.md)
+- [Apache CloudStack](cloudstack/cloudstack.md)
 
-- [VMware](./vmware/vmware.md)
+- [VMware vSphere](./vmware/vmware.md)

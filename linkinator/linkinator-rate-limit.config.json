@@ -28,7 +28,6 @@
     "^https://www.gnu.org.*$$",
     "^https://socket.dev.*$$",
     "^https://www.freedesktop.org.*$$",
-    "^https://docs.openstack.org.*$$",
     "^https://(www\\.)?upwind\\.io.*$$",
     "^https://(www\\.)?wiz\\.io.*$$",
     "^https://cloudinit\\.readthedocs\\.io.*$$",

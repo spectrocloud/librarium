@@ -34,6 +34,7 @@ After an edit has been made, the new settings will apply after the host reboots.
   - `stylus.localUI.login.maxFailedAttemptsBeforeLockout`
   - `stylus.localUI.port`
   - `stylus.includeTui`
+  - `stylus.disableTui`
   - `stylus.debug`
   - `stylus.featureGate`
   - `stylus.trace`

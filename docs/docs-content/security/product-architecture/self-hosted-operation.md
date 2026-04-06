@@ -26,12 +26,10 @@ Chart. To learn more, review the
 
 The following points apply to self-hosted deployments:
 
-<br />
-
 - In deployments that require a proxy internet connection, both the Private Cloud Gateway (PCG) component and the
   management agent support SOCKS5 or HTTPS proxy.
 
 - You manage your own SSH public keys unless an agreement is in place for Spectro Cloud to maintain your environment.
 
-- Self-hosted Palette does not connect to Palette SaaS or send telemetry or customer data back to the Palette SaaS
-  platform.
+- Self-hosted Palette does not connect to Palette or Palette VerteX SaaS or send telemetry or customer data back to the
+  SaaS platform.

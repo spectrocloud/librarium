@@ -1,0 +1,35 @@
+---
+partial_category: palette-mcp
+partial_name: server-snippet
+---
+
+Paste the following snippet in the file, replacing the placeholders with your local path values. Ensure that you provide full
+   filepaths for the `kubeconfig` folder and `.env.mcp` file.
+
+   If you want to use Podman, replace the command `"docker"` with `"podman"`.
+
+   ```json {3,11,13}
+   "mcpServers": {
+       "palette": {
+       "command": "docker",
+       "args": [
+           "run",
+           "--rm",
+           "-i",
+           "--pull",
+           "always",
+           "--mount",
+           "type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig",
+           "--env-file",
+           "/<local-path>/.palette/.env-mcp",
+           "public.ecr.aws/palette-ai/palette-mcp-server:latest"
+       ]
+       }
+   }
+   ```
+   
+   :::warning
+
+   The `kubeconfig` folder you mount to the container is wiped whenever the container restarts. The Palette MCP server automatically removes the kubeconfig files from the `/tmp/kubeconfig` folder when the container stops.
+
+   :::

@@ -291,5 +291,5 @@ spectro version
 <!-- spectro-cli-version-output -->
 
 ```bash hideClipboard
-Spectro CLI Version 4.8.0 linux/amd64
+Spectro CLI Version 4.8.4 linux/amd64
 ```
