@@ -34,13 +34,15 @@ App Mode with Palette Dev Engine.
 
 App Mode is available for the following Palette and VerteX platforms.
 
-| Platform                   | Supported | Version                                                                                                                                            |
-| -------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Palette US SaaS            | ✅        | `v3.0.0` or greater.                                                                                                                               |
-| Palette EU SaaS            | ✅        | `v4.6.0` or greater.                                                                                                                               |
-| Self-hosted Palette        | ✅        | `v3.4.0` or greater.                                                                                                                               |
-| Palette Airgap Self-hosted | :warning: | `v4.0.0` or greater. Container deployment based workflows are not supported for airgap environments.                                               |
-| VerteX                     | :warning: | `v4.0.0` or greater. Be aware that App Mode is not FIPS compliant. Container deployment based workflows are not supported for airgap environments. |
+| **Deployment Method**          | **Connectivity** | **App Mode Support** | **Version**         | **Limitations**                                                                                                                                                                                                                                   |
+| ------------------------------ | ---------------- | -------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Palette US SaaS**            | -                | ✅                   | `v3.0.0` or greater | -                                                                                                                                                                                                                                                 |
+| **Palette EU SaaS**            | -                | ✅                   | `v4.6.0` or greater | -                                                                                                                                                                                                                                                 |
+| **Palette VerteX US SaaS**     | -                | :warning:            | `v4.8.0` or greater | - App Mode is not FIPS compliant.                                                                                                                                                                                                                 |
+| **Self-Hosted Palette**        | Non-Airgap       | ✅                   | `v3.4.0` or greater | -                                                                                                                                                                                                                                                 |
+| **Self-Hosted Palette**        | Airgap           | :warning:            | `v4.0.0` or greater | - [Container deployments](../profiles/app-profiles/create-app-profiles/container-deployment.md) are not supported in airgap environments, as they require connectivity to external container registries.                                          |
+| **Self-Hosted Palette VerteX** | Non-Airgap       | :warning:            | `v4.0.0` or greater | - App Mode is not FIPS compliant.                                                                                                                                                                                                                 |
+| **Self-Hosted Palette VerteX** | Airgap           | :warning:            | `v4.0.0` or greater | - App Mode is not FIPS compliant. <br /> - [Container deployments](../profiles/app-profiles/create-app-profiles/container-deployment.md) are not supported in airgap environments, as they require connectivity to external container registries. |
 
 ## Manage Resources
 

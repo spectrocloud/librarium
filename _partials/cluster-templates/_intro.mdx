@@ -1,0 +1,35 @@
+---
+partial_category: cluster-templates
+partial_name: intro
+---
+
+When you manage many Kubernetes clusters, configuring and upgrading them one by one does not scale. You need a way to
+apply the same configuration and upgrade rules across multiple clusters.
+
+Palette supports this workflow with cluster templates. Cluster templates let you reuse a cluster configuration, control
+when upgrades happen, and apply changes to multiple clusters at once.
+
+[Cluster templates](/cluster-templates) combine a
+[cluster profile](/profiles/cluster-profiles/create-cluster-profiles/) and one or more
+[cluster template policies](/cluster-templates/create-cluster-template-policies).
+
+- [Cluster profiles](/profiles/cluster-profiles/create-cluster-profiles/) define what a cluster runs. They
+  contain the software stack and infrastructure configuration.
+- [Cluster template policies](/cluster-templates/create-cluster-template-policies)
+  define how clusters created from a template are managed throughout their lifecycle, including when upgrades can run.
+
+Cluster profiles can include
+[cluster profile variables](/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/),
+which let you reuse the same profile while changing specific values per cluster, such as the worker node instance size
+or the number of application replicas.
+
+A [maintenance policy](/cluster-templates/create-cluster-template-policies/maintenance-policy) is one example
+of a cluster template policy. Maintenance policies define a maintenance window that controls when upgrades can run.
+Currently, maintenance policies are the only supported cluster template policy type in Palette.
+
+![Diagram of cluster template architecture](/profiles-policies-templates.webp)
+
+When you create clusters from the same template, they inherit the same base configuration and the same governance rules.
+For example, you can create **dev** and **prod** clusters from a single template. Both clusters run the same software
+stack and follow the same upgrade policy. You can assign different profile variable values to handle
+environment-specific requirements.

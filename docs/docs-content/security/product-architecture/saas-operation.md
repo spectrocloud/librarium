@@ -8,10 +8,10 @@ sidebar_position: 20
 tags: ["security"]
 ---
 
-Palette can be deployed as a multi-tenant SaaS system in which each tenant represents a customer. Palette SaaS
-infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public
-subnet. The [control plane and worker nodes](saas-operation.md#control-plane-and-worker-nodes) for the Kubernetes
-cluster are launched in the private network.
+Palette and Palette VerteX are deployed as a multi-tenant SaaS system, where each tenant represents a customer. The
+Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private
+and a public subnet. The [control plane and worker nodes](saas-operation.md#control-plane-and-worker-nodes) for the
+Kubernetes cluster are launched in the private network.
 
 ## Cloud Infrastructure Security
 

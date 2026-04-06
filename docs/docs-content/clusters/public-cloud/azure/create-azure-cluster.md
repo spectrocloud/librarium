@@ -27,8 +27,8 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
     :::
 
 - You must use Palette VerteX to deploy clusters in
-  [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud). Multi-tenant Palette SaaS and
-  self-hosted Palette instances are not supported.
+  [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud). Multi-tenant Palette SaaS, dedicated
+  Palette SaaS, and self-hosted Palette instances are not supported.
 
 - Clusters deployed in [Azure Government Secret cloud](./azure-cloud.md#azure-government-secret-cloud) must use
   [static placement](#static-placement-settings) and a
