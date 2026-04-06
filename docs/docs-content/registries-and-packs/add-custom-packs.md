@@ -41,7 +41,7 @@ attributes.
 | `layer`         | String    | True     | Relevant layer that this pack should be part of; such as `os`, `k8s`, `cni`, `csi`, `addon`.                                                                                                                                                                                                                                                                                             |
 | `addonType`     | String    | False    | The addon type must be set for packs that have the layer set to addon. The value must be one of the following: `logging`, `monitoring`, `load balancer`, `authentication`, `ingress`, `security`, `ai`, `app services`, `network`, `storage`, `registry`, `servicemesh`, or `system app`. Setting a relevant correct addon type ensures packs are organized correctly in the Palette UI. |
 | `version`       | String    | True     | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4.                                                                                                                                               |
-| `cloudTypes`    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: `all`, `aws`, `azure`, `gcp`, `vsphere`, `openstack`, `baremetal`, `maas`, `aks`, `eks`, `edge`, `edge-native`, and `coxedge`.                                                                                                                                                                            |
+| `cloudTypes`    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: `all`, `aws`, `azure`, `gcp`, `vsphere`, `apache-cloudstack`, `baremetal`, `maas`, `aks`, `eks`, `edge`, `edge-native`, and `coxedge`.                                                                                                                                                                    |
 | `group`         | String    | False    | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs.                                                                                                                                                                                                                                                                                                       |
 | `annotations`   | Array     | False    | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id.                                                                                                                                                                            |
 | `eol`           | String    | False    | End of life date for integration.                                                                                                                                                                                                                                                                                                                                                        |
@@ -80,7 +80,7 @@ The following is the JSON schema for packs. Review the schema to ensure your JSO
           "azure",
           "gcp",
           "vsphere",
-          "openstack",
+          "apache-cloudstack",
           "baremetal",
           "maas",
           "aks",
@@ -99,7 +99,7 @@ The following is the JSON schema for packs. Review the schema to ensure your JSO
         "azure",
         "gcp",
         "vsphere",
-        "openstack",
+        "apache-cloudstack",
         "baremetal",
         "maas",
         "aks",

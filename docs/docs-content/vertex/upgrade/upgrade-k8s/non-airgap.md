@@ -78,7 +78,25 @@ match your environment.
    TEST SUITE: None
    ```
 
-4. Prepare the Palette VerteX configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
+4. Upgrade the Spectro Management CRDs chart.
+
+   ```shell
+   helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+   ```
+
+   You should receive an output similar to the following.
+
+   ```shell
+   Release "spectro-mgmt-crds" has been upgraded. Happy Helming!
+   NAME: spectro-mgmt-crds
+   LAST DEPLOYED: Thu Feb 22 19:43:00 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 2
+   TEST SUITE: None
+   ```
+
+5. Prepare the Palette VerteX configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
    VerteX installation, you can reuse it for the upgrade. Alternatively, follow the
    [Kubernetes Installation Instructions](../../install-palette-vertex/install-on-kubernetes/install.md) to populate
    your `values.yaml`.
@@ -86,15 +104,19 @@ match your environment.
    :::warning
 
    Ensure that the `values.yaml` file is ready before proceeding. If you are using a self-hosted OCI registry, make sure
-   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links. Use
-   `/v2/` in your endpoints if your OCI registry supports the Docker Registry HTTP API V2 protocol; otherwise, container
-   image pulls will fail. For example:
-   `docker.io::harbor.example.org/v2/airgap-images/docker.io,gcr.io::harbor.example.org/v2/airgap-images/gcr.io`.
+   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
+
+   Include `/v2` in your endpoints if you are using a
+   [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
+   Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
+   registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
+   for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
+   `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
 
    :::
 
-5. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
-   `palette/values.yaml` file from step four.
+6. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
+   `palette/values.yaml` file from step 5.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -113,8 +135,8 @@ match your environment.
    TEST SUITE: None
    ```
 
-6. If you are upgrading a Palette VerteX instance in an environment that requires network proxy configuration, upgrade
-   the reach-system chart with the following command. Point to the `palette/values.yaml` file from step four.
+7. If you are upgrading a Palette VerteX instance in an environment that requires network proxy configuration, upgrade
+   the reach-system chart with the following command. Point to the `palette/values.yaml` file from step 5.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -133,7 +155,7 @@ match your environment.
    TEST SUITE: None
    ```
 
-7. Upgrade Palette VerteX with the following command.
+8. Upgrade Palette VerteX with the following command.
 
    ```shell
    helm upgrade --values palette/values.yaml \
@@ -152,7 +174,7 @@ match your environment.
    TEST SUITE: None
    ```
 
-8. Use the following command to track the upgrade process.
+9. Use the following command to track the upgrade process.
 
    ```shell
    kubectl get pods --all-namespaces --watch
@@ -165,7 +187,10 @@ match your environment.
    :::
 
    The upgrade usually takes up to five minutes. Palette VerteX is upgraded when the deployments in the namespaces
-   `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` are in the **Ready** status.
+   `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready**
+   status.
+
+   <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 ## Validate
 
@@ -191,46 +216,49 @@ match your environment.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
    ```
 
-   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`,
-   and `ui-system` namespaces. All deployments should have the status `Running`.
+   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`,
+   `ingress-nginx`, `jet-system`, and `ui-system` namespaces. All deployments should have the status `Running`.
 
    ```shell
-   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-   hubble-system   auth-85b748cbf4-6drkn                      Running
-   hubble-system   auth-85b748cbf4-dwhw2                      Running
-   hubble-system   cloud-fb74b8558-lqjq5                      Running
-   hubble-system   cloud-fb74b8558-zkfp5                      Running
-   hubble-system   configserver-685fcc5b6d-t8f8h              Running
-   hubble-system   event-68568f54c7-jzx5t                     Running
-   hubble-system   event-68568f54c7-w9rnh                     Running
-   hubble-system   foreq-6b689f54fb-vxjts                     Running
-   hubble-system   hashboard-897bc9884-pxpvn                  Running
-   hubble-system   hashboard-897bc9884-rmn69                  Running
-   hubble-system   hutil-6d7c478c96-td8q4                     Running
-   hubble-system   hutil-6d7c478c96-zjhk4                     Running
-   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-   hubble-system   mongo-0                                    Running
-   hubble-system   mongo-1                                    Running
-   hubble-system   mongo-2                                    Running
-   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-   hubble-system   packsync-28205220-bmzcg                    Succeeded
-   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-   hubble-system   system-686d77b947-8949z                    Running
-   hubble-system   system-686d77b947-cgzx6                    Running
-   hubble-system   timeseries-7865bc9c56-5q87l                Running
-   hubble-system   timeseries-7865bc9c56-scncb                Running
-   hubble-system   timeseries-7865bc9c56-sxmgb                Running
-   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-   ingress-nginx   ingress-nginx-controller-2txsv             Running
-   ingress-nginx   ingress-nginx-controller-55pk2             Running
-   ingress-nginx   ingress-nginx-controller-gmps9             Running
-   jet-system      jet-6599b9856d-t9mr4                       Running
-   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   cp-system        spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system    auth-85b748cbf4-6drkn                      Running
+   hubble-system    auth-85b748cbf4-dwhw2                      Running
+   hubble-system    cloud-fb74b8558-lqjq5                      Running
+   hubble-system    cloud-fb74b8558-zkfp5                      Running
+   hubble-system    configserver-685fcc5b6d-t8f8h              Running
+   hubble-system    event-68568f54c7-jzx5t                     Running
+   hubble-system    event-68568f54c7-w9rnh                     Running
+   hubble-system    foreq-6b689f54fb-vxjts                     Running
+   hubble-system    hashboard-897bc9884-pxpvn                  Running
+   hubble-system    hashboard-897bc9884-rmn69                  Running
+   hubble-system    hutil-6d7c478c96-td8q4                     Running
+   hubble-system    hutil-6d7c478c96-zjhk4                     Running
+   hubble-system    mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system    mongo-0                                    Running
+   hubble-system    mongo-1                                    Running
+   hubble-system    mongo-2                                    Running
+   hubble-system    msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system    oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system    packsync-28205220-bmzcg                    Succeeded
+   hubble-system    spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system    spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system    spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system    system-686d77b947-8949z                    Running
+   hubble-system    system-686d77b947-cgzx6                    Running
+   hubble-system    timeseries-7865bc9c56-5q87l                Running
+   hubble-system    timeseries-7865bc9c56-scncb                Running
+   hubble-system    timeseries-7865bc9c56-sxmgb                Running
+   hubble-system    user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system    user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx    ingress-nginx-controller-m5z54             Running
+   ingress-nginx    ingress-nginx-controller-qsf6m             Running
+   ingress-nginx    ingress-nginx-controller-w64pz             Running
+   ingress-traefik  traefik-ingress-controller-9dmzq           Running
+   ingress-traefik  traefik-ingress-controller-tpwtf           Running
+   ingress-traefik  traefik-ingress-controller-xz4jf           Running
+   jet-system       jet-6599b9856d-t9mr4                       Running
+   ui-system        spectro-ui-76ffdf67fb-rkgx8                Running
    ```
