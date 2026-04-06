@@ -24,8 +24,8 @@ You must SSH into your Palette VerteX airgap support VM to download and install 
 username and password for the support team's private repository. Reach out to our support team to
 [obtain the credentials](../../vertex/vertex.md#access-palette-vertex).
 
-The following example shows how to download the `airgap-vertex-pack-cni-calico-3.25.1.bin` binary. Replace `XXXX` with
-your username and `YYYY` with your password.
+The following example shows how to download the `airgap-vertex-pack-cni-calico-3.30.2.bin` binary. Replace `<username>`
+with your username and `<password>` with your password.
 
 1. In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to
    your private SSH key, username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
@@ -34,9 +34,7 @@ your username and `YYYY` with your password.
    ssh -i </path/to/private/key> <username>@<vm-ip-or-domain>
    ```
 
-   Consider the following command example for reference.
-
-   ```shell
+   ```shell title="Example command" hideClipboard
    ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
    ```
 
@@ -53,9 +51,13 @@ your username and `YYYY` with your password.
    <TabItem label="curl" value="curl">
 
    ```bash
-   curl --user 'XXXX:YYYY' \
-   https://software-private.spectrocloud.com/airgap-fips/packs/airgap-vertex-pack-cni-calico-3.25.1.bin \
-   --output airgap-vertex-pack-cni-calico-3.25.1.bin
+   curl --user '<username>:<password>' <download-link> \
+   --output <filename>
+   ```
+
+   ```bash title="Example command" hideClipboard
+   curl --user 'username:password' https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.30.2.bin  \
+   --output airgap-vertex-pack-cni-calico-3.30.2.bin
    ```
 
    </TabItem>
@@ -63,9 +65,15 @@ your username and `YYYY` with your password.
    <TabItem label="wget" value="wget">
 
    ```shell
-   wget --user='XXXX' --password='YYYY' \
-   --output-document=airgap-vertex-pack-cni-calico-3.25.1.bin \
-   https://software-private.spectrocloud.com/airgap-fips/packs/airgap-vertex-pack-cni-calico-3.25.1.bin
+   wget --user='<username>' --password='<password>' \
+   --output-document=<filename> \
+   <download-link>
+   ```
+
+   ```shell title="Example command" hideClipboard
+   wget --user='username' --password='password' \
+   --output-document airgap-vertex-pack-cni-calico-3.30.2.bin \
+   https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.30.2.bin
    ```
 
    </TabItem>
@@ -76,8 +84,11 @@ your username and `YYYY` with your password.
    binary name with the one you downloaded.
 
    ```bash
-   chmod +x airgap-vertex-pack-cni-calico-3.25.1.bin && \
-   ./airgap-vertex-pack-cni-calico-3.25.1.bin
+   chmod +x <filename> && ./<filename>
+   ```
+
+   ```bash title="Example command" hideClipboard
+   chmod +x airgap-vertex-pack-cni-calico-3.30.2.bin && ./airgap-vertex-pack-cni-calico-3.30.2.bin
    ```
 
 :::info
