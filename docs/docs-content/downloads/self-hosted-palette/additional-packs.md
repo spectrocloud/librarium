@@ -56,7 +56,7 @@ The following example shows how to download the `argo-cd-8.3.0.bin` binary. Repl
    ```
 
    ```bash title="Example command" hideClipboard
-   curl --user username:password https://software-private.spectrocloud.com/airgap/packs/argo-cd-8.3.0.bin  \
+   curl --user 'username:password' https://software-private.spectrocloud.com/airgap/packs/argo-cd-8.3.0.bin  \
    --output argo-cd-8.3.0.bin
    ```
 

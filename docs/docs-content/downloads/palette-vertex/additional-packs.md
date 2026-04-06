@@ -56,7 +56,7 @@ with your username and `<password>` with your password.
    ```
 
    ```bash title="Example command" hideClipboard
-   curl --user username:password https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.30.2.bin  \
+   curl --user 'username:password' https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.30.2.bin  \
    --output airgap-vertex-pack-cni-calico-3.30.2.bin
    ```
 
