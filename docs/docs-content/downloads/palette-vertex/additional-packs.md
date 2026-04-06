@@ -100,7 +100,8 @@ All binaries require the OCI environment variables to be set and for the registr
 ## Conformance Capabilities
 
 To perform [Compliance Scans](../../clusters/cluster-management/compliance-scan.md) in airgapped environments, you must
-upload the necessary conformance packs to your self-hosted OCI registry. These packs are bundled with the conformance binary. Download the **Palette Third Party Conformance** binary from
+upload the necessary conformance packs to your self-hosted OCI registry. These packs are bundled with the conformance
+binary. Download the **Palette Third Party Conformance** binary from
 [Artifact Studio](https://artifact-studio.spectrocloud.com/) and follow the [Usage Instructions](#usage-instructions) to
 upload the conformance packs to the OCI registry. Refer to our [Artifact Studio](../artifact-studio.md) guide for more
 information on how to use Artifact Studio.
