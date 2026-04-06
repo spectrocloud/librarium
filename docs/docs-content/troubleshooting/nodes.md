@@ -48,9 +48,81 @@ resulted in a node repave. The API payload is incomplete for brevity.
 
 For detailed information, review the cluster upgrades [page](../clusters/clusters.md).
 
-###
-
 ## Clusters
+
+### Scenario - IAM Role Assumption Failure with Static Credentials
+
+If backup or restore operations fail with `AccessDenied` errors when using static AWS credentials, the IAM role used for
+the backup location may have a trust policy that does not include the IAM principal (user or role) associated with those
+static credentials.
+
+When clusters are deployed using static AWS credentials and backup locations use STS role assumption, the backup role's
+trust policy must allow the static credential principal to assume it.
+
+To resolve this, update the backup location IAM role's trust policy to include the IAM principal used for static
+credentials.
+
+#### Debug Steps
+
+1. Identify the IAM principal associated with the static credentials. For example, if you are using AWS CLI with the
+   static credentials configured, you can run the following command to identify the IAM principal.
+
+   ```bash
+   aws sts get-caller-identity --profile static-credentials-profile --query '[UserId, Arn]' --output text
+   ```
+
+   ```shell hideClipboard title="Example Output"
+   ***************    arn:aws:iam::12345689012:user/organization/PaletteDeploymentUser
+   ```
+
+   Note the `UserId` for an IAM user, or the role `Arn` for an IAM role.
+
+2. Locate the IAM role created for your backups and update the trust policy to include the IAM principal identified in
+   the previous step.
+
+   In the following example, you replace `<IAM_USER_ID_OR_ROLE_ARN>` with the principal identified in the previous step.
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "<IAM_USER_ID_OR_ROLE_ARN>",
+           "Service": "ec2.amazonaws.com"
+         },
+         "Action": "sts:AssumeRole"
+       }
+     ]
+   }
+   ```
+
+3. To verify the fix, attempt to assume the backup role using the static credentials. Replace `<ACCOUNT_ID>` and
+   `<BACKUP_ROLE_NAME>` with your values.
+
+   ```bash
+   aws sts assume-role \
+     --role-arn arn:aws:iam::<ACCOUNT_ID>:role/<BACKUP_ROLE_NAME> \
+     --role-session-name test
+   ```
+
+   A successful response returns temporary credentials similar to the following output.
+
+   ```json hideClipboard title="Example Output"
+   {
+     "Credentials": {
+       "AccessKeyId": "*****",
+       "SecretAccessKey": "********",
+       "SessionToken": "********",
+       "Expiration": "2026-03-28T12:00:00+00:00"
+     },
+     "AssumedRoleUser": {
+       "AssumedRoleId": "********:test",
+       "Arn": "arn:aws:sts::<ACCOUNT_ID>:assumed-role/<BACKUP_ROLE_NAME>/test"
+     }
+   }
+   ```
 
 ### Scenario - Incorrect LoadBalancer `kubernetes` Created by Azure Cloud Controller Manager
 
