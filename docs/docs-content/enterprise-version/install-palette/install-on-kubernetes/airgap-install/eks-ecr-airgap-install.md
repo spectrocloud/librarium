@@ -963,7 +963,7 @@ organization subdomains (tenants) and a root domain record for the
     `palette.example.com`), you cannot use a CNAME record, as DNS does not allow CNAMEs at the zone apex. Instead,
     create a Route 53 **A** (Alias) record that points directly to the load balancer.
 
-    First, find the load balancer's canonical hosted zone ID.
+    First, find the canonical hosted zone ID of the load balancer.
 
         ```shell
         aws elbv2 describe-load-balancers \
