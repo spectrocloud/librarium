@@ -832,3 +832,6 @@ ad80752f350ceca696401a6084e1b23cfbbfa45f:reports/dependabot/npm_and_yarn/master/
 8ffa07b404750d9aa0101f74fcbe84fe8729f021:docs/docs-content/clusters/public-cloud/aws/aws-outpost/configure-edge-on-aws-outpost.md:generic-api-key:61
 03f54bb68137bcd98b06bf11c7a7b512e2d2b298:docs/docs-content/automation/palette-mcp/palette-mcp-operations.md:generic-api-key:49
 ea43e35d5748e7a3e2dcbb3011fd2ad4ac62ffe0:docs/docs-content/tutorials/clusters/cluster-templates/deploy-clusters-with-cluster-templates.md:generic-api-key:120
+34fe034a615e72f760a5198b8404b522b34bac82:docs/docs-content/tutorials/getting-started/palette-edge/local-management/edge-cluster-profile.md:generic-api-key:172
+fed329c5a17b1736ac730c992b4e23a75cd2a918:docs/docs-content/clusters/pcg/deploy-pcg/cloudstack.md:generic-api-key:182
+fed329c5a17b1736ac730c992b4e23a75cd2a918:docs/docs-content/clusters/pcg/deploy-pcg/cloudstack.md:generic-api-key:181
