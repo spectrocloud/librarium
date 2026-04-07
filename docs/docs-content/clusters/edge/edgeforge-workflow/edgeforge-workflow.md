@@ -148,67 +148,20 @@ how you can customize the OS used in an Edge deployment.
 
 ## Network Considerations
 
-In addition to the [Deployment Scenarios](#deployment-scenarios), network considerations have to be included. This will impact how Day-2 activites have to be managed. 
+In addition to the [Deployment Scenarios](#deployment-scenarios), network considerations have to be included. This impacts how Day-2 activities have to be planned and managed with regards to the behavior of the Edge device.
 
-- **Centrally Managed Edge cluster**:
+- **Centrally Managed Edge cluster**: This requires connection to Palette, and the internet or the registry via the network. Packs, charts (Helm/Helm OCI), raw manifests and container images will be downloaded as needed. If the registry cannot be reached or if images are missing, pod scheduling and cluster readiness will be blocked. 
 Edge host must reach Palette (registration, cluster assignment, profile updates).
 
-When the cluster profile changes or packs are missing, agent downloads pack files into the local packs directory.
+  If the edge host cannot reach the internet or remote pack registries, having local content bundle does not act as an automatic fallback for missing pack archives or Helm/Helm-OCI chart packs. Failed pack downloads are not retrieved from the bundle layout. If 'AlwaysPullImages' is disabled and image is available in local content bundle, the image from bundle is synced to containerd and available for use. So a staged bundle will still help as a fallback for images.
 
-Packs
-Source: Remote pack registries .
+- **Locally Managed Edge with Internet or site network access**: This requires connection to the internet or the registry via the network. The edge device will be managed locally. Packs, charts and manifests will be sourced from the uploaded cluster definition. Charts from private registries are extracted from the content bundle. Container images from the content bundle are synced to `containerd`. Any missing content bundle image is automatically downloaded from the internet or network accessible registry.
 
-Failure mode: If a required pack cannot be downloaded cluster processing fails and there is a periodic reconcile attempt to download the missing packs.
+  If a required pack is not available in the content bundle, it will not be downloaded from the internet or network accessed registry. To avoid wide-area pulls or to pin your cluster to a specific image set, upload content bundlesto the locally managed edge device.
 
-Charts (Helm / Helm OCI)
-Treated as packs with types Helm and Helm OCI (and related types). 
+- **Locally Managed Edge without Internet or site network access**: This does not have any connection to the internet or the registry via the network. Packs, charts, raw manifests and container images are always uploaded from the cluster definition and content bundle. If a required pack is not available in the bundle, it will not be downloaded from the internet or registry, and cluster readiness will be blocked.
 
-Raw manifests
-Downloaded as part of profile manifests, mainly inside pack downloads; not a single dedicated “manifest registry” separate from packs and Palette.
-
-Container images
-At runtime, pulls follow image references in pack values and registry-connect behavior (external registry, in-cluster Harbor/Zot, mapping rules).
-
-Failure mode: Unreachable registries or missing images block pod scheduling and cluster readiness; registry misconfiguration surfaces as pull/back-off errors.
-
-Local content bundle when centrally managed (not a pack/chart fallback)
-Packs/charts/manifests: If the edge host cannot reach the internet or remote pack registries, having local content bundle does not act as an automatic fallback for missing pack archives or Helm/Helm-OCI chart packs. Failed pack downloads are not retrieved from the bundle layout.
-
-Images: If 'AlwaysPullImages' is disabled and image is available in local content bundle, the image from bundle is synced to containerd and available for use. So a staged bundle will still help as a fallback for images.
-
-
-- **Locally Managed Edge with Internet or site network access**:
-Edge host can reach internet/registry.
-
-Packs
-Always from uploaded cluster-definition(spc.tgz).
-
-Failure mode: If a required pack is not available in the bundle, it will not be downloaded from internet/registry.
-
-Charts/Manifests 
-Same as packs(extracted from spc.tgz). Only charts from private registries are extracted from content-bundle(content.zst).
-
-Container images
-Images from bundle are synced to containerd and available for use. Any image missing in the bundle is automatically pulled from internet/registry.
-
-Pull path: If image references point to registries reachable from the site (internet or corporate), kubelet/containerd pulls normally; 
-
-Staged bundles: The content bundles can be uploaded to avoid wide-area pulls or to pin exact image sets.
-
-
-- **Locally Managed Edge without Internet or site network access**:
-  Edge host cannot reach internet/registry.
-Packs
-Always from uploaded cluster-definition(spc.tgz).
-
-Failure mode: If a required pack is not available in the bundle, it will not be downloaded from internet/registry.
-
-Charts/Manifests 
-Same as packs(extracted from spc.tgz). Only charts from private registries are extracted from content-bundle(content.zst).
-
-Container images
-Images from bundle are synced to containerd and available for use. Any image missing in the bundle cannot be pulled from internet/registry.
-
+  Container images from the content bundle are synced to `containerd`. If an image is missing, the bundle cannot be pulled from the internet or network accessible registry.
 
 ## Resources
 
