@@ -14,7 +14,7 @@ Each EdgeForge component plays a critical role in the [lifecycle](../edge-native
 Review the [Edge Artifacts](../edgeforge-workflow/edgeforge-workflow.md#edge-artifacts) section to learn more about each
 component.
 
-![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.webp)
+![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram_4-8.webp)
 
 ## Get Started
 
@@ -145,6 +145,70 @@ through the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-nati
 instructions in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about
 how you can customize the OS used in an Edge deployment.
 <!-- prettier-ignore-end -->
+
+## Network Considerations
+
+In addition to the [Deployment Scenarios](#deployment-scenarios), network considerations have to be included. This will impact how Day-2 activites have to be managed. 
+
+- **Centrally Managed Edge cluster**:
+Edge host must reach Palette (registration, cluster assignment, profile updates).
+
+When the cluster profile changes or packs are missing, agent downloads pack files into the local packs directory.
+
+Packs
+Source: Remote pack registries .
+
+Failure mode: If a required pack cannot be downloaded cluster processing fails and there is a periodic reconcile attempt to download the missing packs.
+
+Charts (Helm / Helm OCI)
+Treated as packs with types Helm and Helm OCI (and related types). 
+
+Raw manifests
+Downloaded as part of profile manifests, mainly inside pack downloads; not a single dedicated “manifest registry” separate from packs and Palette.
+
+Container images
+At runtime, pulls follow image references in pack values and registry-connect behavior (external registry, in-cluster Harbor/Zot, mapping rules).
+
+Failure mode: Unreachable registries or missing images block pod scheduling and cluster readiness; registry misconfiguration surfaces as pull/back-off errors.
+
+Local content bundle when centrally managed (not a pack/chart fallback)
+Packs/charts/manifests: If the edge host cannot reach the internet or remote pack registries, having local content bundle does not act as an automatic fallback for missing pack archives or Helm/Helm-OCI chart packs. Failed pack downloads are not retrieved from the bundle layout.
+
+Images: If 'AlwaysPullImages' is disabled and image is available in local content bundle, the image from bundle is synced to containerd and available for use. So a staged bundle will still help as a fallback for images.
+
+
+- **Locally Managed Edge with Internet or site network access**:
+Edge host can reach internet/registry.
+
+Packs
+Always from uploaded cluster-definition(spc.tgz).
+
+Failure mode: If a required pack is not available in the bundle, it will not be downloaded from internet/registry.
+
+Charts/Manifests 
+Same as packs(extracted from spc.tgz). Only charts from private registries are extracted from content-bundle(content.zst).
+
+Container images
+Images from bundle are synced to containerd and available for use. Any image missing in the bundle is automatically pulled from internet/registry.
+
+Pull path: If image references point to registries reachable from the site (internet or corporate), kubelet/containerd pulls normally; 
+
+Staged bundles: The content bundles can be uploaded to avoid wide-area pulls or to pin exact image sets.
+
+
+- **Locally Managed Edge without Internet or site network access**:
+  Edge host cannot reach internet/registry.
+Packs
+Always from uploaded cluster-definition(spc.tgz).
+
+Failure mode: If a required pack is not available in the bundle, it will not be downloaded from internet/registry.
+
+Charts/Manifests 
+Same as packs(extracted from spc.tgz). Only charts from private registries are extracted from content-bundle(content.zst).
+
+Container images
+Images from bundle are synced to containerd and available for use. Any image missing in the bundle cannot be pulled from internet/registry.
+
 
 ## Resources
 
