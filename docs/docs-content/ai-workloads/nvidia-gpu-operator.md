@@ -58,7 +58,7 @@ detects an NVIDIA Peripheral Component Interconnect (PCI) device.
 kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
 ```
 
-GPU node(s) should appear in the output.
+GPU nodes should appear in the output.
 
 Confirm that the node advertises allocatable GPUs.
 
