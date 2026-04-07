@@ -55,7 +55,7 @@ Filter for nodes labeled with `pci-10de.present=true`, which Node Feature Discov
 detects an NVIDIA Peripheral Component Interconnect (PCI) device.
 
 ```bash
-kubectl get nodes -l feature.node.kubernetes.io/pci-10de.present=true
+kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
 ```
 
 GPU node(s) should appear in the output.
@@ -92,7 +92,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f gpu-test.yaml
+kubectl apply --filename gpu-test.yaml
 ```
 
 Wait for the pod to complete.
