@@ -43,26 +43,37 @@ synchronization behavior of Helm registries.
 
 ## Default Registries
 
-Palette comes with a set of default registries that are available to all SaaS tenants, and non-airgap self-hosted
-Palette environments. The default registries are listed below:
+Palette comes with a set of default registries that are available to SaaS tenants and non-airgap self-hosted Palette
+environments. The default registries for Palette and Palette VerteX are listed in the following table.
 
-| **Name**                   | **Provider** | **Description**                                                                   | **URL**                                        | **Base Path**     |
-| -------------------------- | ------------ | --------------------------------------------------------------------------------- | ---------------------------------------------- | ----------------- |
-| Bitnami                    | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by Bitnami. | `https://charts.bitnami.com/bitnami`           | -                 |
-| Public Spectro Helm Repo   | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by us.      | `https://spectrocloud.github.io/helm-charts`   | -                 |
-| Public Repo                | Legacy Packs | A packs registry containing packs maintained and supported by us.                 | `https://registry.spectrocloud.com`            | -                 |
-| Palette Registry           | OCI          | A packs registry containing packs maintained and supported by us.                 | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `production`      |
-| Palette Registry FIPS      | OCI          | A packs registry containing FIPS packs maintained and supported by us.            | `415789037893.dkr.ecr.us-west-2.amazonaws.com` | `production-fips` |
-| Palette Community Registry | OCI          | A packs registry containing community packs.                                      | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `community`       |
+| **Name**                       | **Provider** | **Description**                                                                   | **URL**                                        | **Base Path**     |    **Palette**     | **Palette VerteX** |
+| ------------------------------ | ------------ | --------------------------------------------------------------------------------- | ---------------------------------------------- | ----------------- | :----------------: | :----------------: |
+| **Bitnami**                    | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by Bitnami. | `https://charts.bitnami.com/bitnami`           | -                 | :white_check_mark: |        :x:         |
+| **Public Spectro Helm Repo**   | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by us.      | `https://spectrocloud.github.io/helm-charts`   | -                 | :white_check_mark: |        :x:         |
+| **Public Repo**                | Legacy Packs | A packs registry containing packs maintained and supported by us.                 | `https://registry.spectrocloud.com`            | -                 | :white_check_mark: |        :x:         |
+| **Spectro Addon Repo**         | Legacy Packs | A packs registry containing add-on packs maintained and supported by us.          | `https://registry-addon.spectrocloud.com`      | -                 | :white_check_mark: |        :x:         |
+| **Palette Registry**           | OCI          | A packs registry containing packs maintained and supported by us.                 | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `production`      | :white_check_mark: |        :x:         |
+| **Palette Registry FIPS**      | OCI          | A packs registry containing FIPS packs maintained and supported by us.            | `415789037893.dkr.ecr.us-west-2.amazonaws.com` | `production-fips` |        :x:         | :white_check_mark: |
+| **Palette Community Registry** | OCI          | A packs registry containing community packs.                                      | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `community`       | :white_check_mark: |        :x:         |
 
 :::info
 
-Palette VerteX comes with a default OCI registry that only contains FIPS compliant packs. Non-FIPS compliant packs are
-not available in Palette VerteX by default and must explicitly be added to Palette VerteX. Refer to the
-[Use non-FIPS Packs](../../vertex/system-management/enable-non-fips-settings/enable-non-fips-settings.md) guide to learn
-how to add non-FIPS packs registries to Palette VerteX.
+- Palette VerteX comes with a default OCI registry that only contains FIPS compliant packs. Non-FIPS compliant packs are
+  not available in Palette VerteX by default and must explicitly be added to Palette VerteX. Refer to the
+  [Use non-FIPS Packs](../../vertex/system-management/enable-non-fips-settings/enable-non-fips-settings.md) guide to
+  learn how to add non-FIPS packs registries to Palette VerteX.
+
+- The Public Spectro Helm Repo is deprecated. Customers using packs from the Public Spectro Helm Repo in their clusters
+  should migrate to packs from a supported repository.
 
 :::
+
+Default registries cannot be edited. If there is not a three-dot menu beside the registry located at **Tenant
+Settings** > **Registries**, it is a default registry. A registry can only be edited through the three-dot menu if it is
+added manually. In the following image, the **Palette Registry** and **Palette Community Registry** are default
+registries in Palette SaaS; the other registries were added manually.
+
+    ![Default registries compared to manually added registries](/registries_default-registries.webp)
 
 ## Resources
 

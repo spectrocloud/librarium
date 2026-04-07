@@ -815,6 +815,7 @@ eb60dbd05b07dd34f27d81f36d413da34e591402:docs/docs-content/automation/crossplane
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-aws-crossplane.md:generic-api-key:253
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-gcp-crossplane.md:generic-api-key:252
 fce31b50e46a56eb11b095681f676c7a95203c5f:docs/docs-content/automation/crossplane/deploy-cluster-azure-crossplane.md:generic-api-key:252
+8108fb8719ed566077a276287631a048ab3e678e:docs/docs-content/tutorials/getting-started/palette-edge/local-management/edge-cluster-profile.md:generic-api-key:157
 367d734a33ee9dae2675d63f9806e912c16df27b:reports/docusaurus-upgrade-v3-9-1/18675762029/1/data/705bbb485292d07339acacfe2d0a7714ef66763f.markdown:private-key:549
 367d734a33ee9dae2675d63f9806e912c16df27b:reports/docusaurus-upgrade-v3-9-1/18675762029/1/data/e9a00c21f9ce736cb6adc1bdbef820574e1a48f6.markdown:private-key:559
 eb51d4673a4d0ff19d6d983b134eee659a80fcc1:reports/docusaurus-upgrade-v3-9-1/18666340888/1/data/705bbb485292d07339acacfe2d0a7714ef66763f.markdown:private-key:549
@@ -829,3 +830,8 @@ ad80752f350ceca696401a6084e1b23cfbbfa45f:reports/dependabot/npm_and_yarn/master/
 205e33cd2b66a5b83d4316ba2b91ca616ee8888f:reports/dependabot/npm_and_yarn/master/playwright/test-1.55.1/18470289450/1/data/ef19f44928bdddeac0171e582a562f4e2d2a8ae7.markdown:private-key:552
 61efe026f7b468822acae37da87738cb0e2951f5:docs/docs-content/clusters/public-cloud/aws/aws-outpost/configure-edge-on-aws-outpost.md:generic-api-key:101
 8ffa07b404750d9aa0101f74fcbe84fe8729f021:docs/docs-content/clusters/public-cloud/aws/aws-outpost/configure-edge-on-aws-outpost.md:generic-api-key:61
+03f54bb68137bcd98b06bf11c7a7b512e2d2b298:docs/docs-content/automation/palette-mcp/palette-mcp-operations.md:generic-api-key:49
+ea43e35d5748e7a3e2dcbb3011fd2ad4ac62ffe0:docs/docs-content/tutorials/clusters/cluster-templates/deploy-clusters-with-cluster-templates.md:generic-api-key:120
+34fe034a615e72f760a5198b8404b522b34bac82:docs/docs-content/tutorials/getting-started/palette-edge/local-management/edge-cluster-profile.md:generic-api-key:172
+fed329c5a17b1736ac730c992b4e23a75cd2a918:docs/docs-content/clusters/pcg/deploy-pcg/cloudstack.md:generic-api-key:181
+fed329c5a17b1736ac730c992b4e23a75cd2a918:docs/docs-content/clusters/pcg/deploy-pcg/cloudstack.md:generic-api-key:182

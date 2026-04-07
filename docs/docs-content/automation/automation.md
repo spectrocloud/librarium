@@ -24,9 +24,12 @@ This section contains documentation and guides for tools essential in automating
 - Palette Crossplane Provider - Allows users to use [Crossplane](https://docs.crossplane.io/) to provision and manage
   Palette resources through standard Kubernetes APIs.
 
+- Palette MCP Server - Enables users to interact with the Palette APIs using natural language.
+
 ## Resources
 
 - [Palette CLI](./palette-cli/palette-cli.md)
 - [Palette Go SDK](./palette-sdk/palette-sdk.md)
 - [Palette Terraform Provider](./terraform/terraform.md)
 - [Palette Crossplane Provider](./crossplane/crossplane.md)
+- [Palette MCP Server](./palette-mcp/palette-mcp.md)

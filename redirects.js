@@ -970,6 +970,10 @@ let redirects = [
     from: `/clusters/public-cloud/azure/azure-disk-encryption/`,
     to: `/clusters/public-cloud/azure/azure-disk-storage-sse/`,
   },
+  {
+    from: `/clusters/cluster-groups/vcluster-upgrade/`,
+    to: `/clusters/cluster-groups/vcluster-upgrades/`,
+  },
 ];
 
 if (packRedirects.length > 0) {
