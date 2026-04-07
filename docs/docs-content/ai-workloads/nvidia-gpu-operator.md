@@ -107,9 +107,7 @@ Then retrieve the logs.
 kubectl logs gpu-test
 ```
 
-Expected output:
-
-```text hideClipboard
+```text hideClipboard title="Expected output"
 [Vector addition of 50000 elements]
 Copy input data from the host memory to the CUDA device
 CUDA kernel launch with 196 blocks of 256 threads
