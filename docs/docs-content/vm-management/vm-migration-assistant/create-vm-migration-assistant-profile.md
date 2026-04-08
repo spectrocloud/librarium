@@ -21,13 +21,13 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 <!-- prettier-ignore-start -->
 
-- If you using an Ubuntu 24.04 pack such as 
-  <VersionedLink text="Ubuntu 24.04 for MaaS" url="/integrations/packs/?pack=ubuntu-maas" /> as your OS layer, you must
-  set `kernel.apparmor_restrict_unprivileged_userns=0` in the
-  `/etc/sysctl.d/10-kubernetes-tuning.conf` file through the OS layer configuration in the cluster profile to ensure that the configuration persists after node restarts.
+- If you using an Ubuntu 24.04 pack as your OS layer, such as
+  <VersionedLink text="Ubuntu 24.04 for MaaS" url="/integrations/packs/?pack=ubuntu-maas" />, you must set
+  `kernel.apparmor_restrict_unprivileged_userns=0` in the `/etc/sysctl.d/10-kubernetes-tuning.conf` file through the OS
+  layer configuration in the cluster profile to ensure that the configuration persists after node restarts.
 
-  This is required to allow the VM Migration Assistant to perform disk or image conversions without running into permission
-  issues related to unprivileged user namespaces. 
+  This is required to allow the VM Migration Assistant to perform disk or image conversions without running into
+  permission issues related to unprivileged user namespaces.
 
   <details>
 
@@ -61,7 +61,8 @@ Follow these steps to create a new add-on profile that will be applied to your e
      ```
 
      If your cluster profile already has a configuration for the `10-kubernetes-tuning.conf` file, add the
-     `kernel.apparmor_restrict_unprivileged_userns=0` line to the existing content while ensuring proper YAML formatting.
+     `kernel.apparmor_restrict_unprivileged_userns=0` line to the existing content while ensuring proper YAML
+     formatting.
 
   8. Click **Confirm Updates** to save the changes to the OS layer configuration.
 
@@ -74,13 +75,12 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 <!-- prettier-ignore-end -->
 
-- If you using Kubernetes 1.33 or above, you must set the `device_ownership_from_security_context = true` parameter and
-  value in the `/etc/containerd/conf.d/device-ownership.toml` file through the Kubernetes layer configuration in the
-  cluster profile to ensure that the configuration persists after node restarts.
+- If your OS pack or node image uses [containerd](https://containerd.io/) v2, you must set
+  `device_ownership_from_security_context = true` in the `/etc/containerd/conf.d/device-ownership.toml` file using the
+  Kubernetes layer of your cluster profile to ensure that the configuration persists after node restarts.
 
   Enable this setting so non-root Container Device Interface (CDI) pods can access block devices during block-volume
-  transfer operations. From Kubernetes 1.33, containerd v2 is used as the container runtime, and this parameter is now
-  opt-in.
+  transfer operations. Since containerd v2, this parameter is opt-in and must be set to true.
 
   <details>
 
