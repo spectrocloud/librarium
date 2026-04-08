@@ -10,41 +10,222 @@ tags: ["troubleshooting", "vmo"]
 
 The following are common scenarios that you may encounter when using Virtual Machine Orchestrator (VMO).
 
-## Scenario - Virtual Machine (VM) Migration Plans in Unknown State
+## Scenario - Virtual Machines Tab Does Not Load on Self-Hosted Palette
 
-When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate
-VMs to your VMO cluster, migration plans can enter an **Unknown** state if more VMs are selected for migration than the
-**Max concurrent virtual machine migrations** setting allows. This value determines the maximum number of VMs that can
-be migrated simultaneously across all active migration plans.
+On self-hosted Palette and Palette VerteX environments installed with Helm charts, the **Virtual Machines** tab may fail
+to load or display a cross-site content error. The VMO GUI may also get stuck on a loading screen.
 
-To avoid this scenario, we recommend setting an appropriate value for **Max concurrent virtual machine migrations**
-based on your workload and expected migration patterns. A higher value helps prevent migration plans from entering an
-**Unknown** state due to excessive concurrency.
+These issues are caused by two default ingress configurations that need to be adjusted for self-hosted environments:
 
-If migration plans do enter an **Unknown** state, use the following steps to resolve the issue.
+- **Content Security Policy (CSP)**: Three Traefik `Middleware` resources contain a `Content-Security-Policy` header
+  with `frame-ancestors` set to `https://*.spectrocloud.com`, which blocks the VMO GUI from loading when your Palette
+  instance uses a different domain.
+
+- **Rate limiting**: The `hubble-foreq-ingress-resource` `IngressRoute` may reference a rate-limit middleware with a
+  value that is too low, causing the VMO GUI to get stuck during loading.
+
+:::info
+
+If you are accessing Palette using only an IP address, you can skip the CSP fix and only apply the rate-limit fix.
+
+:::
 
 ### Debug Steps
 
-1. [Access the VM Migration Assistant service console](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
+#### VMO GUI Loading Screen (Rate-Limit Fix)
 
-2. From the left **Main Menu**, select **Overview**.
+1. Connect to your self-hosted Palette cluster using [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 
-3. In the **Overview** tab, locate the configurable settings for the migration controller.
+2. Verify that the `hubble-foreq-ingress-resource` IngressRoute references the `rate-limit-10000rps` middleware.
 
-   ![Migration Controller Settings](/vm-management_vm-migration-assistant_additional-configuration_overview-settings.webp)
+   ```shell
+   kubectl get ingressroute hubble-foreq-ingress-resource --namespace hubble-system --output yaml
+   ```
 
-4. Click the pencil icon next to the **Max concurrent virtual machine migrations** setting.
+   In the output, confirm that the `middlewares` section includes `rate-limit-10000rps`.
 
-5. In the pop-up window, increase the value based on the maximum number of VMs you expect to migrate concurrently across
-   all active migration plans.
+   ```yaml title="Example output" {26} hideClipboard
+   apiVersion: traefik.io/v1alpha1
+   kind: IngressRoute
+   metadata:
+      annotations:
+         meta.helm.sh/release-name: hubble
+         meta.helm.sh/release-namespace: default
+      creationTimestamp: "2026-04-07T15:03:54Z"
+      generation: 1
+      labels:
+         app: spectro
+         app.kubernetes.io/managed-by: Helm
+         module: hubble
+      name: hubble-foreq-ingress-resource
+      namespace: hubble-system
+      resourceVersion: "35952"
+      uid: d7435456-ac4f-4b84-8329-e7475e90f20b
+   spec:
+      entryPoints:
+      - web
+      - websecure
+      routes:
+      - kind: Rule
+         match: PathPrefix(`/v1/tenantApps`)
+         middlewares:
+         - name: foreq-security-headers
+         - name: rate-limit-10000rps
+         services:
+         - name: foreq-service
+            port: 443
+            scheme: https
+            serversTransport: foreq-service-https
+   ```
 
-   For example, if you expect to migrate a maximum of 25 VMs across all active migration plans, set this value to 25 or
-   more.
+   If it references a lower rate-limit middleware, such as `rate-limit-10rps`, update it to `rate-limit-10000rps`.
 
-6. Click **Save** after making the change.
+   ```shell
+   kubectl patch ingressroute hubble-foreq-ingress-resource --namespace hubble-system --type json \
+   --patch '[{"op": "replace", "path": "/spec/routes/0/middlewares/1/name", "value": "rate-limit-10000rps"}]'
+   ```
 
-You will now need to recreate any migration plans that are in an **Unknown** state, and start them again. Refer to
-[Create Migration Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) for guidance.
+3. Verify that the `rate-limit-10000rps` middleware exists and has the correct value.
+
+   ```shell
+   kubectl get middleware rate-limit-10000rps --namespace hubble-system --output yaml
+   ```
+
+   The output should show a `spec.rateLimit.average` of `10000`.
+
+   ```yaml title="Example output" hideClipboard {17}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+   metadata:
+     annotations:
+       meta.helm.sh/release-name: hubble
+       meta.helm.sh/release-namespace: default
+     creationTimestamp: "2026-04-07T15:03:54Z"
+     generation: 1
+     labels:
+       app.kubernetes.io/managed-by: Helm
+     name: rate-limit-10000rps
+     namespace: hubble-system
+     resourceVersion: "36011"
+     uid: 7d90e97c-ff6e-462d-8643-5d08db2bda7b
+   spec:
+     rateLimit:
+       average: 10000
+       burst: 20000
+       period: 1s
+   ```
+
+   If the middleware does not exist or has a different value, create or update it.
+
+   ```shell
+   cat <<EOF | kubectl apply --filename -
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+   metadata:
+   name: rate-limit-10000rps
+   namespace: hubble-system
+   spec:
+   rateLimit:
+      average: 10000
+      period: 1s
+      burst: 20000
+   EOF
+   ```
+
+#### Virtual Machines Tab Error (CSP Fix)
+
+The `Content-Security-Policy` `frame-ancestors` directive must include your Palette root domain to allow the VMO GUI to
+load in an iframe.
+
+1. Verify the current `Content-Security-Policy` value for the following `Middleware` resources.
+
+   ```shell
+   kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
+   kubectl get middleware cp-csp-frame-ancestors --namespace cp-system --output yaml
+   kubectl get middleware foreq-security-headers --namespace hubble-system --output yaml
+   ```
+
+   ```yaml title="Example output" hideClipboard {18}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+      metadata:
+      annotations:
+         meta.helm.sh/release-name: hubble
+         meta.helm.sh/release-namespace: default
+      creationTimestamp: "2026-04-07T15:03:54Z"
+      generation: 1
+      labels:
+         app.kubernetes.io/managed-by: Helm
+      name: ui-csp-frame-ancestors
+      namespace: ui-system
+      resourceVersion: "36023"
+      uid: 2f87aada-b8cf-454f-8c32-38be34b060bf
+   spec:
+      headers:
+         customResponseHeaders:
+            Content-Security-Policy: frame-ancestors 'self' https://*.spectrocloud.com
+   ```
+
+2. Update each `Middleware` resource by replacing `https://*.spectrocloud.com` with your root domain. Replace
+   `<rootDomain>` in the following commands with your Palette root domain.
+
+   :::tip
+
+   Use the following command to identify your root domain.
+
+   ```shell
+   kubectl get configmap root-domain-info --namespace hubble-system --output jsonpath='{.data.apiEndpoint}'
+   ```
+
+   :::
+
+   ```shell
+   kubectl patch middleware ui-csp-frame-ancestors --namespace ui-system --type merge \
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<rootDomain> https://<rootDomain>"}}}}'
+   ```
+
+   ```shell
+   kubectl patch middleware cp-csp-frame-ancestors --namespace cp-system --type merge \
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<rootDomain> https://<rootDomain>"}}}}'
+   ```
+
+   ```shell
+   kubectl patch middleware foreq-security-headers --namespace hubble-system --type merge \
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<rootDomain> https://<rootDomain>;"}}}}'
+   ```
+
+3. Verify the updated values.
+
+   ```shell
+   kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
+   kubectl get middleware cp-csp-frame-ancestors --namespace cp-system --output yaml
+   kubectl get middleware foreq-security-headers --namespace hubble-system --output yaml
+   ```
+
+   Each middleware should display a `Content-Security-Policy` header with
+   `frame-ancestors 'self' https://*.<rootDomain> https://<rootDomain>`.
+
+   ```yaml title="Example output" hideClipboard {18-19}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+   metadata:
+      annotations:
+         meta.helm.sh/release-name: hubble
+         meta.helm.sh/release-namespace: default
+      creationTimestamp: "2026-04-07T15:03:54Z"
+      generation: 2
+      labels:
+         app.kubernetes.io/managed-by: Helm
+      name: ui-csp-frame-ancestors
+      namespace: ui-system
+      resourceVersion: "83150"
+      uid: 2f87aada-b8cf-454f-8c32-38be34b060bf
+   spec:
+      headers:
+         customResponseHeaders:
+            Content-Security-Policy: frame-ancestors 'self' https://*.docs-test.spectrocloud.com
+            https://docs-test.spectrocloud.com
+   ```
 
 ## Scenario - Virtual Machines (VM) Stuck in a Migration Loop
 
@@ -95,48 +276,3 @@ Clusters with the VMO pack may experience VMs getting stuck in a continuous migr
    changes to take effect.
 
    :::
-
-## Scenario - OVA Imports Fail Due To Storage Class Attribute
-
-If you are importing an OVA file through the Palette CLI
-[VMO command](../automation/palette-cli/commands/vmo.md#import-ova), `import-ova`, and the import fails. It may be due
-to the VMO cluster using a `storageClass` with an unsupported volume bind mode, such as
-`volumeBindingMode: WaitForFirstConsumer`. To address this issue, use the following steps to update the `storageClass`
-attribute for the VMO cluster.
-
-### Debug Steps
-
-1. Log in to [Palette](https://console.spectrocloud.com)
-
-2. Navigate to the **left Main Menu** and select **Clusters**.
-
-3. Select your VMO cluster to access the cluster details page.
-
-4. Download the cluster's kubeconfig file by clicking the URL for the **Kubeconfig File**. For additional guidance,
-   check out the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) guide.
-
-5. Open a terminal session and export the kubeconfig file to your terminal session.
-
-   ```bash
-   export KUBECONFIG=/path/to/your/kubeconfig
-   ```
-
-6. Use [kubectl](https://kubernetes.io/docs/reference/kubectl/) to create a new _StorageClass_ with
-   `volumeBindingMode: Immediate`. Use the following command to create the new _StorageClass_.
-
-   ```bash
-    cat <<EOF | kubectl apply --filename -
-    apiVersion: storage.k8s.io/v1
-    kind: StorageClass
-    metadata:
-      name: immediate
-    provisioner: csi.vsphere.vmware.com
-    parameters:
-      fstype: ext4
-    reclaimPolicy: Delete
-    volumeBindingMode: Immediate
-    EOF
-   ```
-
-7. Select the new _StorageClass_ when prompted during the Palette CLI's OVA import process. You can learn more about the
-   OVA import process in the [VMO command](../automation/palette-cli/commands/vmo.md#import-ova) page.
