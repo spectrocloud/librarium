@@ -76,9 +76,8 @@ Follow these steps to create a new add-on profile that will be applied to your e
 <!-- prettier-ignore-end -->
 
 - If your OS pack or node image uses [containerd](https://containerd.io/) v2, you must set
-  `device_ownership_from_security_context = true` in the
-  `/etc/containerd/conf.d/device-ownership.toml` file using the Kubernetes layer of your cluster profile
-  to ensure that the configuration persists after node restarts.
+  `device_ownership_from_security_context = true` in the `/etc/containerd/conf.d/device-ownership.toml` file using the
+  Kubernetes layer of your cluster profile to ensure that the configuration persists after node restarts.
 
   Enable this setting so non-root Container Device Interface (CDI) pods can access block devices during block-volume
   transfer operations. Since containerd v2, this parameter is opt-in and must be set to true.
