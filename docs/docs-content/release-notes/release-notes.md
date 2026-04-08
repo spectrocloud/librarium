@@ -275,9 +275,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Two new prerequisites have been added to the
   [Create VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#prerequisites)
-  guide. These prerequisites cover the use of Ubuntu 24.04 and Kubernetes 1.33 (or later) whereby additional parameters
-  must be added to the OS and Kubernetes layers of the cluster profile to ensure the VM Migration Assistant functions
-  properly during disk or image conversions.
+  guide. These prerequisites cover the use of Ubuntu 24.04 and [containerd](https://containerd.io/) v2 whereby
+  additional parameters must be added to the OS and Kubernetes layers of the cluster profile to ensure the VM Migration
+  Assistant functions properly during disk or image conversions.
 
 ### Automation
 
