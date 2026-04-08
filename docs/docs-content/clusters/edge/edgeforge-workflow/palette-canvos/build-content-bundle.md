@@ -54,7 +54,7 @@ to learn how to migrate from the legacy pack to the **Registry Connect** pack.
 
 :::
 
-- Depending on the deployment method used, there are some [network failure considerations](../edgeforge-workflow.md) to keep in mind:
+- Depending on the deployment method used, there are some [network failure considerations](../edgeforge-workflow.md) to take into account:
   - For centrally managed Edge cluster if a required pack cannot be downloaded, the cluster processing fails. There is a periodic reconcile attempt to download the missing packs.
   - For locally managed Edge cluster with internet or local network resources, if a required pack is not available in the content bundle, it cannot be downloaded from the internet or local network accessible registry.
   - For locally managed Edge cluster with no internet or local network resources, if a required pack is not available in the content bundle, it cannot be downloaded from the internet or local network accessible registry.
