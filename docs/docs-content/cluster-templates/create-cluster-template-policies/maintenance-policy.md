@@ -192,4 +192,6 @@ regardless if clusters are deployed using the template. For more information, re
 [Modify Cluster Templates](../modify-cluster-templates.md) guide.
 
 For a full end-to-end example that includes creating a maintenance policy, cluster template, and deploying clusters,
-refer to the [Standardize Cluster Provisioning and Maintenance with Cluster Templates](../../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md) tutorial.
+refer to the
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates](../../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+tutorial.
