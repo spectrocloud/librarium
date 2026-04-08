@@ -69,7 +69,7 @@ jobs:
       run: cd scripts && ./netlify_add_branch.sh
 
     - name: Post Netlify progress
-      uses: actions/github-script@v7
+      uses: actions/github-script@v8
       with:
         script: |
                   const marker = "librarium-release-branch-pr";
