@@ -21,8 +21,6 @@ optimization.
 
 :::
 
-
-
 The diagram below displays the overarching steps to build the Edge installer ISO using a content bundle. The diagram
 also highlights the primary prerequisites to create a content bundle.
 
