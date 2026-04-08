@@ -71,7 +71,7 @@
     "react-select": "^5.10.2",
     "remark-gfm": "4.0.1",
     "sass": "^1.97.3",
-    "semver": "^7.7.1"
+    "semver": "^7.7.4"
   },
   "devDependencies": {
     "@argos-ci/cli": "^3.2.1",
@@ -89,7 +89,7 @@
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.46.3",
     "babel-jest": "^30.2.0",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.27.5",
@@ -108,7 +108,7 @@
     "prettier": "3.5.3",
     "semantic-release": "^24.2.8",
     "test-links": "^0.0.1",
-    "ts-jest": "^29.4.5",
+    "ts-jest": "^29.4.9",
     "typescript": "^5.7.2",
     "typescript-plugin-css-modules": "^5.2.0",
     "webpconvert": "^3.0.1",

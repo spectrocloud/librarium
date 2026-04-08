@@ -24,8 +24,8 @@ You must SSH into your Palette airgap support VM to download and install the bin
 and password for the support team's private repository. Reach out to our support team to
 [obtain the credentials](../../enterprise-version/enterprise-version.md#access-palette).
 
-The following example shows how to download the `airgap-pack-aws-alb-2.5.1.bin` binary. Replace `XXXX` with your
-username and `YYYY` with your password.
+The following example shows how to download the `argo-cd-8.3.0.bin` binary. Replace `<username>` with your username and
+`<password>` with your password.
 
 1. In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to
    your private SSH key, username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
@@ -34,9 +34,7 @@ username and `YYYY` with your password.
    ssh -i </path/to/private/key> <username>@<vm-ip-or-domain>
    ```
 
-   Consider the following command example for reference.
-
-   ```shell
+   ```shell title="Example command" hideClipboard
    ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
    ```
 
@@ -53,9 +51,13 @@ username and `YYYY` with your password.
    <TabItem label="curl" value="curl">
 
    ```bash
-   curl --user 'XXXX:YYYY' \
-   https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin \
-   --output airgap-pack-csi-aws-ebs-1.26.1.bin
+   curl --user '<username>:<password>' <download-link> \
+   --output <filename>
+   ```
+
+   ```bash title="Example command" hideClipboard
+   curl --user 'username:password' https://software-private.spectrocloud.com/airgap/packs/argo-cd-8.3.0.bin  \
+   --output argo-cd-8.3.0.bin
    ```
 
    </TabItem>
@@ -63,9 +65,15 @@ username and `YYYY` with your password.
    <TabItem label="wget" value="wget">
 
    ```shell
-   wget --user='XXXX' --password='YYYY' \
-   --output-document=airgap-pack-csi-aws-ebs-1.26.1.bin \
-   https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin
+   wget --user='<username>' --password='<password>' \
+   --output-document=<filename> \
+   <download-link>
+   ```
+
+   ```shell title="Example command" hideClipboard
+   wget --user='username' --password='password' \
+   --output-document argo-cd-8.3.0.bin \
+   https://software-private.spectrocloud.com/airgap/packs/argo-cd-8.3.0.bin
    ```
 
    </TabItem>
@@ -76,8 +84,11 @@ username and `YYYY` with your password.
    binary name with the one you downloaded.
 
    ```bash
-   chmod +x airgap-pack-csi-aws-ebs-1.26.1.bin && \
-   ./airgap-pack-csi-aws-ebs-1.26.1.bin
+   chmod +x <filename> && ./<filename>
+   ```
+
+   ```bash title="Example command" hideClipboard
+   chmod +x argo-cd-8.3.0.bin && ./argo-cd-8.3.0.bin
    ```
 
 :::info
@@ -88,8 +99,11 @@ All binaries require the OCI environment variables to be set and for the registr
 
 ## Conformance Capabilities
 
-In an airgap installation, you need to upload the conformance packs to the self-hosted OCI registry. The conformance
-binary contains the packs required to use the [Compliance Scan](../../clusters/cluster-management/compliance-scan.md)
-capabilities. The conformance binary can be found in the [Cluster Profile Packs](#cluster-profile-packs) table. The
-binary has the prefix `airgap-thirdparty-`. Follow the [Usage Instructions](#usage-instructions) to upload the
-conformance packs to the OCI registry.
+To perform [Compliance Scans](../../clusters/cluster-management/compliance-scan.md) in airgapped environments, you must
+upload the necessary conformance packs to your self-hosted OCI registry. These packs are bundled with the conformance
+binary. Download the **Palette Third Party Conformance** binary from
+[Artifact Studio](https://artifact-studio.spectrocloud.com/) and follow the [Usage Instructions](#usage-instructions) to
+upload the conformance packs to the OCI registry. Refer to our [Artifact Studio](../artifact-studio.md) guide for more
+information on how to use Artifact Studio.
+
+![Conformance pack download from Artifact Studio](/additional-packs_third-party-conformance-artifact-studio-download.webp)
