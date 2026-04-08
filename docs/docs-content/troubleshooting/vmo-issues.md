@@ -10,57 +10,50 @@ tags: ["troubleshooting", "vmo"]
 
 The following are common scenarios that you may encounter when using Virtual Machine Orchestrator (VMO).
 
-## Scenario - Virtual Machines Tab Does Not Load on Self-Hosted Palette
+## Scenario - VMO Loading Errors in Self-Hosted Palette
 
-On self-hosted Palette and Palette VerteX environments installed with Helm charts, the **Virtual Machines** tab may fail
-to load or display a cross-site content error. The VMO GUI may also get stuck on a loading screen.
-
-These issues are caused by two default ingress configurations that need to be adjusted for self-hosted environments:
-
-- **Content Security Policy (CSP)**: Three Traefik `Middleware` resources contain a `Content-Security-Policy` header
-  with `frame-ancestors` set to `https://*.spectrocloud.com`, which blocks the VMO GUI from loading when your Palette
-  instance uses a different domain.
-
-- **Rate limiting**: The `hubble-foreq-ingress-resource` `IngressRoute` may reference a rate-limit middleware with a
-  value that is too low, causing the VMO GUI to get stuck during loading.
-
-:::info
-
-If you are accessing Palette using only an IP address, you can skip the CSP fix and only apply the rate-limit fix.
-
-:::
+On [self-hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) and
+[Palette VerteX](../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) Helm-based
+installations, the cluster's **Virtual Machines** tab or the VMO Graphical User Interface (GUI) may fail to load.
 
 ### Debug Steps
 
-#### VMO GUI Loading Screen (Rate-Limit Fix)
+To fix these issues, you must adjust two default ingress configurations. If your self-hosted environment uses an IP
+address instead of a domain name, only the [Rate Limiting](#adjust-rate-limit) fix is applicable.
 
-1. Connect to your self-hosted Palette cluster using [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
+- [**Rate Limiting**](#adjust-rate-limit) - The `IngressRoute` resource `hubble-foreq-ingress-resource` may reference a
+  rate-limit `Middleware` resource with a value that is too low, causing the VMO GUI to get stuck when loading.
 
-2. Verify that the `hubble-foreq-ingress-resource` IngressRoute references the `rate-limit-10000rps` middleware.
+- [**Content Security Policy (CSP)**](#adjust-csp) - Three Traefik `Middleware` resources contain a
+  `Content-Security-Policy` header with `frame-ancestors` set to `https://*.spectrocloud.com`. This blocks the VMO GUI
+  from loading when your Palette instance uses a different domain name. This issue does not apply to self-hosted
+  environments that use an IP address instead of a domain name.
+
+#### Adjust Rate Limit
+
+1. Log in to your
+   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX system console](../vertex/system-management/system-management.md#access-the-system-console).
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. Verify that the `IngressRoute` resource `hubble-foreq-ingress-resource` references the `Middleware` resource
+   `rate-limit-10000rps`.
 
    ```shell
    kubectl get ingressroute hubble-foreq-ingress-resource --namespace hubble-system --output yaml
    ```
 
-   In the output, confirm that the `middlewares` section includes `rate-limit-10000rps`.
-
-   ```yaml title="Example output" {26} hideClipboard
-   apiVersion: traefik.io/v1alpha1
-   kind: IngressRoute
-   metadata:
-      annotations:
-         meta.helm.sh/release-name: hubble
-         meta.helm.sh/release-namespace: default
-      creationTimestamp: "2026-04-07T15:03:54Z"
-      generation: 1
-      labels:
-         app: spectro
-         app.kubernetes.io/managed-by: Helm
-         module: hubble
-      name: hubble-foreq-ingress-resource
-      namespace: hubble-system
-      resourceVersion: "35952"
-      uid: d7435456-ac4f-4b84-8329-e7475e90f20b
+   ```yaml title="Example output" {11} hideClipboard
+   ... # additional output omitted for readability
    spec:
       entryPoints:
       - web
@@ -78,20 +71,18 @@ If you are accessing Palette using only an IP address, you can skip the CSP fix 
             serversTransport: foreq-service-https
    ```
 
-   If it references a lower rate-limit middleware, such as `rate-limit-10rps`, update it to `rate-limit-10000rps`.
+   If it references a lower rate limit, such as `rate-limit-10rps`, update it to `rate-limit-10000rps`.
 
    ```shell
    kubectl patch ingressroute hubble-foreq-ingress-resource --namespace hubble-system --type json \
    --patch '[{"op": "replace", "path": "/spec/routes/0/middlewares/1/name", "value": "rate-limit-10000rps"}]'
    ```
 
-3. Verify that the `rate-limit-10000rps` middleware exists and has the correct value.
+6. Verify that the `Middleware` resource `rate-limit-10000rps` exists and has a `spec.rateLimit.average` of `10000`.
 
    ```shell
    kubectl get middleware rate-limit-10000rps --namespace hubble-system --output yaml
    ```
-
-   The output should show a `spec.rateLimit.average` of `10000`.
 
    ```yaml title="Example output" hideClipboard {17}
    apiVersion: traefik.io/v1alpha1
@@ -115,7 +106,8 @@ If you are accessing Palette using only an IP address, you can skip the CSP fix 
        period: 1s
    ```
 
-   If the middleware does not exist or has a different value, create or update it.
+   If the `Middleware` resource `rate-limit-10000rps` does not exist or has a different value, use the following command
+   to create or update it.
 
    ```shell
    cat <<EOF | kubectl apply --filename -
@@ -132,12 +124,29 @@ If you are accessing Palette using only an IP address, you can skip the CSP fix 
    EOF
    ```
 
-#### Virtual Machines Tab Error (CSP Fix)
+#### Adjust CSP
 
-The `Content-Security-Policy` `frame-ancestors` directive must include your Palette root domain to allow the VMO GUI to
-load in an iframe.
+:::info
 
-1. Verify the current `Content-Security-Policy` value for the following `Middleware` resources.
+This procedure does not apply to self-hosted environments that use an IP address instead of a domain name.
+
+:::
+
+1. Log in to your
+   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX system console](../vertex/system-management/system-management.md#access-the-system-console).
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. Verify the current `Content-Security-Policy` value for the following `Middleware` resources.
 
    ```shell
    kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
@@ -166,7 +175,7 @@ load in an iframe.
             Content-Security-Policy: frame-ancestors 'self' https://*.spectrocloud.com
    ```
 
-2. Update each `Middleware` resource by replacing `https://*.spectrocloud.com` with your root domain. Replace
+6. Update each applicable `Middleware` resource by replacing `https://*.spectrocloud.com` with your root domain. Replace
    `<rootDomain>` in the following commands with your Palette root domain.
 
    :::tip
@@ -194,16 +203,14 @@ load in an iframe.
    --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<rootDomain> https://<rootDomain>;"}}}}'
    ```
 
-3. Verify the updated values.
+7. Verify the updated values. Each `Middleware` resource should display a `Content-Security-Policy` header with
+   `frame-ancestors 'self' https://*.<rootDomain> https://<rootDomain>`.
 
    ```shell
    kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
    kubectl get middleware cp-csp-frame-ancestors --namespace cp-system --output yaml
    kubectl get middleware foreq-security-headers --namespace hubble-system --output yaml
    ```
-
-   Each middleware should display a `Content-Security-Policy` header with
-   `frame-ancestors 'self' https://*.<rootDomain> https://<rootDomain>`.
 
    ```yaml title="Example output" hideClipboard {18-19}
    apiVersion: traefik.io/v1alpha1
