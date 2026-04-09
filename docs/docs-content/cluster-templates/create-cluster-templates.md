@@ -150,3 +150,7 @@ select either the link or the **Template** tab.
 To make additional changes to your cluster template, refer to our
 [Modify Cluster Templates](./modify-cluster-templates.md) guide. If you no longer need your cluster template, you can
 [delete your cluster template](./delete-cluster-templates.md) as long as it is not attached to a cluster.
+
+For a full end-to-end example of deploying and upgrading multiple clusters using a cluster template, refer to the
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+tutorial.
