@@ -29,8 +29,10 @@ The following components have been updated for Palette version 4.8.6 - 4.8.47.
 
 <!-- Week 2026-15 Platform Solutions Update Approval Deck -->
 
-- New airgap [self-hosted Palette installations](../enterprise-version/install-palette/install-palette.md) must use
-  Ubuntu 24 for Palette version 4.8.47 or later. This requirement does not affect upgrades.
+- New
+  [airgap self-hosted Palette installations on VMware](../enterprise-version/install-palette/install-on-vmware/airgap-install/install.md)
+  must use Ubuntu 24.04 [OVAs](../downloads/self-hosted-palette/additional-ovas.md) for Palette version 4.8.47 or later.
+  This requirement does not affect upgrades.
 
   For new self-hosted Palette installations, we recommend using the **Palette management appliance ISO** available in
   [Artifact Studio](../downloads/artifact-studio.md).
