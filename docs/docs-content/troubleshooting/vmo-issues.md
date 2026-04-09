@@ -18,8 +18,8 @@ installations, the cluster's **Virtual Machines** tab or the VMO Graphical UI (G
 
 ### Debug Steps
 
-To fix these issues, you must adjust two default ingress configurations. If your self-hosted environment uses an Internet Protocol (IP)
-address instead of a domain name, only the [Rate Limiting](#adjust-rate-limit) fix is applicable.
+To fix these issues, you must adjust two default ingress configurations. If your self-hosted environment uses an
+Internet Protocol (IP) address instead of a domain name, only the [Rate Limiting](#adjust-rate-limit) fix is applicable.
 
 - [**Rate Limiting**](#adjust-rate-limit) - The `IngressRoute` resource `hubble-foreq-ingress-resource` may reference a
   rate-limit `Middleware` resource with a value that is too low, causing the VMO GUI to get stuck when loading.
