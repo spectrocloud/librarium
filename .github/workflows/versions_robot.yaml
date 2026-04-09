@@ -35,6 +35,7 @@ env:
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }} 
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  NODE_VERSION: "24"
 
 jobs:
   run-ci:
@@ -61,7 +62,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
