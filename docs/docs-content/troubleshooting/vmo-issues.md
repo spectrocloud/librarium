@@ -14,11 +14,11 @@ The following are common scenarios that you may encounter when using Virtual Mac
 
 On [self-hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) and
 [Palette VerteX](../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) Helm-based
-installations, the cluster's **Virtual Machines** tab or the VMO Graphical User Interface (GUI) may fail to load.
+installations, the cluster's **Virtual Machines** tab or the VMO Graphical UI (GUI) may fail to load.
 
 ### Debug Steps
 
-To fix these issues, you must adjust two default ingress configurations. If your self-hosted environment uses an IP
+To fix these issues, you must adjust two default ingress configurations. If your self-hosted environment uses an Internet Protocol (IP)
 address instead of a domain name, only the [Rate Limiting](#adjust-rate-limit) fix is applicable.
 
 - [**Rate Limiting**](#adjust-rate-limit) - The `IngressRoute` resource `hubble-foreq-ingress-resource` may reference a
@@ -33,7 +33,7 @@ address instead of a domain name, only the [Rate Limiting](#adjust-rate-limit) f
 
 1. Log in to your
    [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
-   [Palette VerteX system console](../vertex/system-management/system-management.md#access-the-system-console).
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
 
 2. From the left main menu, select **Enterprise Cluster**.
 
@@ -134,7 +134,7 @@ This procedure does not apply to self-hosted environments that use an IP address
 
 1. Log in to your
    [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
-   [Palette VerteX system console](../vertex/system-management/system-management.md#access-the-system-console).
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
 
 2. From the left main menu, select **Enterprise Cluster**.
 
@@ -176,7 +176,7 @@ This procedure does not apply to self-hosted environments that use an IP address
    ```
 
 6. Update each applicable `Middleware` resource by replacing `https://*.spectrocloud.com` with your root domain. Replace
-   `<rootDomain>` in the following commands with your Palette root domain.
+   `<root-domain>` in the following commands with your Palette root domain.
 
    :::tip
 
@@ -190,21 +190,21 @@ This procedure does not apply to self-hosted environments that use an IP address
 
    ```shell
    kubectl patch middleware ui-csp-frame-ancestors --namespace ui-system --type merge \
-   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<rootDomain> https://<rootDomain>"}}}}'
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<root-domain> https://<root-domain>"}}}}'
    ```
 
    ```shell
    kubectl patch middleware cp-csp-frame-ancestors --namespace cp-system --type merge \
-   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<rootDomain> https://<rootDomain>"}}}}'
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<root-domain> https://<root-domain>"}}}}'
    ```
 
    ```shell
    kubectl patch middleware foreq-security-headers --namespace hubble-system --type merge \
-   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<rootDomain> https://<rootDomain>;"}}}}'
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<root-domain> https://<root-domain>;"}}}}'
    ```
 
 7. Verify the updated values. Each `Middleware` resource should display a `Content-Security-Policy` header with
-   `frame-ancestors 'self' https://*.<rootDomain> https://<rootDomain>`.
+   `frame-ancestors 'self' https://*.<root-domain> https://<root-domain>`.
 
    ```shell
    kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
