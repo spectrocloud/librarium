@@ -24,7 +24,7 @@ tags: ["release-notes"]
   [Security Advisory 010 - Nginx Ingress Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-010---nginx-ingress-configuration-injection-vulnerability)
   and
   [Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-012---nginx-ingress-comment-based-configuration-injection-vulnerability)
-  for more information. accessible without the required authentication.
+  for more information.
 
 ### Bug Fixes
 
