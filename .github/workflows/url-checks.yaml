@@ -12,6 +12,9 @@ on:
 concurrency:
   group: url-${{ github.ref }}
   cancel-in-progress: true
+
+env:
+  NODE_VERSION: "24"
   
 name: Broken URL check
 jobs:
@@ -28,7 +31,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install Dependencies
         run: npm ci
