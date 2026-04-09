@@ -11,6 +11,28 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 9, 2026 - Release 4.7.39
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10217 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10375 -->
+
+- The Palette Nginx ingress controller has been updated to version 1.13.9 to address
+  [CVE-2026-3288](https://github.com/kubernetes/kubernetes/issues/137560) and
+  [CVE-2026-4342](https://github.com/kubernetes/kubernetes/issues/137893). Refer to
+  [Security Advisory 010 - Nginx Ingress Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-010---nginx-ingress-configuration-injection-vulnerability)
+  and
+  [Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-012---nginx-ingress-comment-based-configuration-injection-vulnerability)
+  for more information.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10428 -->
+
+- Fixed an issue that prevented the [Palette API](/api/introduction) from correctly listing
+  [AWS Regions](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html).
+
 ## March 17, 2026 - Release 4.7.38
 
 ### Bug Fixes
