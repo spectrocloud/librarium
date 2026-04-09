@@ -130,7 +130,7 @@ The Nginx ingress controller versions 1.13.8, 1.14.4, and 1.15.0 are now availab
 #### Workload Clusters
 
 Apply `ingress-nginx` updates as soon as patched images are available. If using vendor-managed ingress add-ons, follow
-cloud provider patch guidance.
+your cloud provider's patch guidance.
 
 ### Mitigation
 
