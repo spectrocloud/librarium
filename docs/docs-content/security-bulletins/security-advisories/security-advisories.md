@@ -53,13 +53,11 @@ Kubernetes Secrets.
 
 <!-- prettier-ignore-start -->
 
-- **Multi-Tenant and Dedicated SaaS Deployments** - All SaaS environments will be patched as part of the standard update
+- **Multi-Tenant and Dedicated SaaS Deployments** - All SaaS environments have been patched as part of the standard update
   process. No action is required.
-- **Self-Hosted Deployments** - A patch with the fixed version of the `ingress-nginx` controller is in progress. This
-  advisory will be updated when the patch is available; at that time, users should update to the latest version
-  containing the fix.
-- **Workload Clusters** - An updated pack with the fixed version of the `ingress-nginx` controller is in progress. Upgrade
-  your workload clusters to use the latest version of the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack as soon as a patched version of the pack is available. If using vendor-managed ingress add-ons, follow your cloud provider's patch guidance.
+- **Self-Hosted Deployments** - Palette version 4.7.39 has the fixed version of the `ingress-nginx` controller. Users should update their environments to this version..
+- **Workload Clusters** - Upgrade
+  your workload clusters to use the latest version of the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack. If using vendor-managed ingress add-ons, follow your cloud provider's patch guidance.
 
 <!-- prettier-ignore-end -->
 
