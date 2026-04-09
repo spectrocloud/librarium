@@ -24,6 +24,7 @@ env:
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+  NODE_VERSION: "24"
 
 jobs:
   build:
@@ -34,7 +35,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
