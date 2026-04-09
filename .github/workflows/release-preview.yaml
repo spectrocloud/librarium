@@ -31,6 +31,7 @@ env:
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   UNRELEASED_VERSION_BANNER: true
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+  NODE_VERSION: "24"
 
 
 concurrency:
@@ -49,7 +50,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
