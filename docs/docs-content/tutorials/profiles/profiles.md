@@ -35,5 +35,12 @@ profile variables.
       buttonText: "Learn more",
       url: "/tutorials/profiles/cluster-profile-variables/",
     },
+    {
+      title: "Standardize Clusters with Cluster Templates",
+      description:
+        "Learn how to use cluster profile variables and maintenance policies to standardize and manage a fleet of clusters.",
+      buttonText: "Learn more",
+      url: "/tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui/",
+    },
   ]}
 />
