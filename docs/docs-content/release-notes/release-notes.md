@@ -54,7 +54,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.47.
 
 | Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
 | --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Antrea                      | CNI        | :white_check_mark: | :x:                | 2.6.0       |
 | Antrea                      | CNI        | :white_check_mark: | :x:                | 2.6.1       |
 | Argo CD                     | Add-on     | :white_check_mark: | :x:                | 9.4.14      |
 | AWS EKS Pod Identity Agent  | Add-on     | :white_check_mark: | :x:                | 1.2.0       |
@@ -63,21 +62,15 @@ The following components have been updated for Palette version 4.8.6 - 4.8.47.
 | Cilium                      | CNI        | :x:                | :white_check_mark: | 1.19.1      |
 | Cilium                      | CNI        | :white_check_mark: | :x:                | 1.19.2      |
 | External Secrets            | Add-on     | :white_check_mark: | :x:                | 2.2.0       |
-| Flannel                     | CNI        | :x:                | :white_check_mark: | 0.28.2      |
-| OpenTelemetry               | Add-on     | :white_check_mark: | :x:                | 0.148.0     |
+| Flannel                     | CNI        | :white_check_mark: | :x:                | 0.28.2      |
+| Loki                        | Add-on     | :white_check_mark: | :x:                | 3.6.7       |
+| Nginx                       | Add-on     | :white_check_mark: | :x:                | 1.15.1      |
 | Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.35.2      |
 | Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.34.4      |
 | Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.33.8      |
 | Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.32.11     |
-| Portworx with Operator      | CSI        | :white_check_mark: | :x:                | 3.5.2       |
 
 #### Pack Notes
-
-<!-- prettier-ignore-start -->
-
-- The community pack <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 5.0.0 has been released.
-
-<!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3906 -->
 <!-- prettier-ignore-start -->
