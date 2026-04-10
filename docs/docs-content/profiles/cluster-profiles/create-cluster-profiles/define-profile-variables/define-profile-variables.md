@@ -64,7 +64,7 @@ For more information on how cluster profile variables interact with cluster temp
   Palette SaaS, but their values can be edited in [Local UI](../../../../clusters/edge/local-ui/local-ui.md) prior to
   deploying a cluster.
 
-- Dropdown and multiline input types are not supported in Local UI.
+- The multiline input type is limited to a maximum of 10,000 characters.
 
 ## Next Steps
 
