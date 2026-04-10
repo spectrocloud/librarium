@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 SLACK_WEBHOOK_URL="${SLACK_WEBHOOK_URL:-}"
+POST_SUCCESS_TO_SLACK="${POST_SUCCESS_TO_SLACK:-false}"
 REPORT_FILE="${REPORT_FILE:-${REPO_ROOT}/versioned_links_report.json}"
 
 BROKEN_LINK_COUNT=0
@@ -23,16 +24,12 @@ repo_root = Path(sys.argv[1]).resolve()
 source_file = sys.argv[2]
 rel_url = sys.argv[3]
 
-# Strip fragment and query
 rel_url = rel_url.split("#", 1)[0].split("?", 1)[0]
-
-# Normalize repeated slashes
 rel_url = re.sub(r'(?<!:)/{2,}', '/', rel_url)
 
 source_path = (repo_root / source_file).resolve()
 docs_root = (repo_root / "docs" / "docs-content").resolve()
 
-# First pass: resolve relative to the source file
 target = (source_path.parent / rel_url).resolve()
 
 def clean_relative_path(value: str) -> str:
@@ -43,7 +40,6 @@ def clean_relative_path(value: str) -> str:
         cleaned = cleaned[2:]
     return cleaned
 
-# If the resolved path escapes docs_root, re-anchor it
 try:
     target.relative_to(docs_root)
 except ValueError:
@@ -61,11 +57,11 @@ PY
 target_exists() {
   local target="$1"
 
-  if [[ -e "$target" ]]; then return 0; fi
-  if [[ -e "${target}.md" ]]; then return 0; fi
-  if [[ -e "${target}.mdx" ]]; then return 0; fi
-  if [[ -e "${target}/index.md" ]]; then return 0; fi
-  if [[ -e "${target}/index.mdx" ]]; then return 0; fi
+  [[ -e "$target" ]] && return 0
+  [[ -e "${target}.md" ]] && return 0
+  [[ -e "${target}.mdx" ]] && return 0
+  [[ -e "${target}/index.md" ]] && return 0
+  [[ -e "${target}/index.mdx" ]] && return 0
 
   return 1
 }
@@ -82,9 +78,7 @@ while IFS= read -r item; do
   rel_url=$(echo "$item" | jq -r '.url // empty')
   line=$(echo "$item" | jq -r '.line // 0')
 
-  if [[ -z "$source_file" || -z "$rel_url" ]]; then
-    continue
-  fi
+  [[ -z "$source_file" || -z "$rel_url" ]] && continue
 
   if [[ "$source_file" == deprecated/* || "$source_file" == */deprecated/* ]]; then
     continue
@@ -108,18 +102,23 @@ while IFS= read -r item; do
   fi
 done < <(jq -c '.[]' "$REPORT_FILE")
 
+# Final message construction
 if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
   COMMENT=":information_source: No relative (./ or ../) links found.
 
 Source: :github: - librarium"
+
 elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-  COMMENT=":tada: All relative links resolved successfully.
+  COMMENT=":partyblob: All relative links resolved successfully.
 
 Checked: ${CHECKED_LINK_COUNT}
 
 Source: :github: - librarium"
+
 else
-  COMMENT="${COMMENT}
+  COMMENT=":old-man-yells-markdown: Broken relative links detected!
+
+${COMMENT}
 
 Total checked: ${CHECKED_LINK_COUNT}
 Broken: ${BROKEN_LINK_COUNT}
@@ -127,9 +126,12 @@ Broken: ${BROKEN_LINK_COUNT}
 Source: :github: - librarium"
 fi
 
+# Slack logic
 if [[ -n "$SLACK_WEBHOOK_URL" ]]; then
-  jq -n --arg text "$COMMENT" '{text: $text}' | \
-    curl -s -X POST -H 'Content-type: application/json' --data @- "$SLACK_WEBHOOK_URL"
+  if [[ "$BROKEN_LINK_COUNT" -gt 0 || "$POST_SUCCESS_TO_SLACK" == "true" ]]; then
+    jq -n --arg text "$COMMENT" '{text: $text}' | \
+      curl -s -X POST -H 'Content-type: application/json' --data @- "$SLACK_WEBHOOK_URL"
+  fi
 else
   echo -e "$COMMENT"
 fi
