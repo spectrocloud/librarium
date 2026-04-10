@@ -39,6 +39,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
+  [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  types.
+
 #### Bug Fixes
 
 ### VerteX
