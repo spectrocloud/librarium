@@ -1,16 +1,18 @@
 ---
 sidebar_label: "NVIDIA GPU Operator Pack"
-title: "Add the NVIDIA GPU Operator Pack to a Cluster"
+title: "Enable AI Workloads with the NVIDIA GPU Operator Pack"
 description:
-  "Add the nvidia-gpu-operator-ai pack to a Palette cluster profile to enable GPU workloads on your cluster nodes."
+  "Add the nvidia-gpu-operator-ai pack to a Palette cluster profile to simplify GPU infrastructure management and enable
+  AI workloads on your cluster nodes."
 tags: ["gpu", "nvidia", "ai workloads", "cuda", "packs", "gpu operator"]
 sidebar_position: 10
 ---
 
 You can use the
-[`nvidia-gpu-operator-ai`](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai) pack to enable
-Graphics Processing Unit (GPU) workloads on your Palette-managed clusters. This guide covers how to add the pack to a
-cluster profile and verify that GPU workloads can run on your nodes.
+[`nvidia-gpu-operator-ai`](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai) pack to
+simplify the provisioning and management of GPU infrastructure for AI workloads on your Palette-managed clusters. This
+pack bundles the GPU Operator alongside supporting components for driver management, node labeling, and monitoring.
+Follow this guide to add the pack to a cluster profile and verify that GPU workloads can run on your nodes.
 
 ## Prerequisites
 
@@ -37,8 +39,9 @@ cluster profile and verify that GPU workloads can run on your nodes.
 
 5. Select pack version **25.10.x**.
 
-6. Review the pack values. The defaults work for most deployments. For customization options and known limitations,
-   refer to the [pack page](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai).
+6. Review the pack values. The defaults work for most deployments. For customization options and additional bundled
+   capabilities, refer to the
+   [pack page](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai).
 
 7. Select **Confirm & Create** to return to the cluster profile overview page, and then select **Save Changes**.
 
@@ -129,4 +132,7 @@ Now that GPU workloads can run on your cluster, you can review the
 configurable values.
 
 For a deeper reference on the operator itself, including advanced configuration and known limitations, refer to the
-[NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html). T
+[NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html).
+
+If you are building AI platforms on top of GPU-enabled Palette infrastructure, refer to
+[PaletteAI](https://docs.palette-ai.com/) for deploying and managing AI workloads on GPU-enabled clusters.

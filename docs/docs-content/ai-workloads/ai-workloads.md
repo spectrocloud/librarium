@@ -13,7 +13,7 @@ nodes are ready to schedule GPU workloads without manual setup.
 These guides cover how to provision and configure the infrastructure needed to run AI workloads on your Palette-managed
 clusters and devices.
 
-For a higher level AI platform experience built on top of that infrastructure, see
+For a higher level AI platform experience built on top of that infrastructure, refer to
 [PaletteAI](https://docs.palette-ai.com/) for deploying and operating AI platforms on GPU-enabled clusters.
 
 ## Resources
