@@ -130,3 +130,7 @@ template, you must have the following resources created in Palette:
 
 Once you have the following resources, refer to our [Create Cluster Templates](./create-cluster-templates.md) guide to
 learn how to create a cluster template and deploy clusters using cluster templates.
+
+For a full end-to-end example of deploying and upgrading multiple clusters using a cluster template, refer to the
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+tutorial.
