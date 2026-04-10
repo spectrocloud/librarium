@@ -17,6 +17,8 @@ concurrency:
   group: test-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  NODE_VERSION: "24"
 jobs:
   run-ci:
     runs-on: ubuntu-latest
@@ -39,7 +41,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
