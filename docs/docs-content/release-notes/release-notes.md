@@ -27,11 +27,9 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
-- Red Hat Enterprise Linux (RHEL) 8.x support has been deprecated, including FIPS-enabled configurations. Use RHEL 9.x
-  or RHEL 10.x instead.
+-  Support for Red Hat Enterprise Linux (RHEL) 8.x in [EdgeForge](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) has been deprecated, including FIPS-enabled configurations. Use RHEL 9.x or RHEL 10.x instead.
 
-- Ubuntu 20.04 support has been deprecated, including FIPS-enabled configurations. Use Ubuntu 24.04, as it is FIPS 140-3
-  compliant.
+- Support for Ubuntu 20.04 in [EdgeForge](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) has been deprecated, including FIPS-enabled configurations. Use Ubuntu 24.04, as it is FIPS 140-3 compliant.
 
 ### Edge
 
