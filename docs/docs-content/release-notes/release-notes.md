@@ -11,7 +11,76 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 10, 2026 - Component Updates {#component-updates-2026-15}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.47.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.8.8   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.28.5  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.28.5  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.7.39  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.7.39  |
+
+### Breaking Changes
+
+<!-- Week 2026-15 Platform Solutions Update Approval Deck -->
+
+- New
+  [airgap self-hosted Palette installations on VMware](../enterprise-version/install-palette/install-on-vmware/airgap-install/install.md)
+  must use Ubuntu 24.04 [OVAs](../downloads/self-hosted-palette/additional-ovas.md) for Palette version 4.8.47 or later.
+  This requirement does not apply to existing installations being upgraded.
+
+  For new self-hosted Palette installations, we recommend using the **Palette management appliance ISO** available in
+  [Artifact Studio](../downloads/artifact-studio.md).
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2125 -->
+
+- The
+  [`spectrocloud_cluster_maas` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  now supports HyperShift and OpenShift control-plane hosting configuration through the `hyper_shift_config` field.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3901 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3659 -->
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Antrea                      | CNI        | :white_check_mark: | :x:                | 2.6.1       |
+| Argo CD                     | Add-on     | :white_check_mark: | :x:                | 9.4.14      |
+| AWS EKS Pod Identity Agent  | Add-on     | :white_check_mark: | :x:                | 1.2.0       |
+| Azure CNI                   | CNI        | :white_check_mark: | :white_check_mark: | 1.7.9-1     |
+| Cilium                      | CNI        | :x:                | :white_check_mark: | 1.19.1      |
+| Cilium                      | CNI        | :white_check_mark: | :x:                | 1.19.2      |
+| External Secrets            | Add-on     | :white_check_mark: | :x:                | 2.2.0       |
+| Flannel                     | CNI        | :white_check_mark: | :x:                | 0.28.2      |
+| Loki                        | Add-on     | :white_check_mark: | :x:                | 3.6.7       |
+| Nginx                       | Add-on     | :white_check_mark: | :x:                | 1.15.1      |
+| Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.35.2      |
+| Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.34.4      |
+| Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.33.8      |
+| Palette Optimized Canonical | Kubernetes | :white_check_mark: | :x:                | 1.32.11     |
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3906 -->
+<!-- prettier-ignore-start -->
+
+- The  <VersionedLink text="Azure CNI" url="/integrations/packs/?pack=cni-azure" /> version 1.7.9-1 now supports Cilium 
+configuration as the data plane and network policy engine.
+
+<!-- prettier-ignore-end -->
+
 ## April 5, 2026 - Release 4.8.47 {#release-notes-4-8-c}
+
+The following component updates are applicable to this release:
+
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -486,6 +555,7 @@ The following component updates are applicable to this release:
 
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -501,6 +571,7 @@ The following component updates are applicable to this release:
 
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Improvements
 
@@ -634,6 +705,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Improvements
 
@@ -800,6 +872,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -815,6 +888,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
 
@@ -1217,6 +1291,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1431,6 +1506,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1451,6 +1527,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1489,6 +1566,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Features
 
@@ -1524,6 +1602,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -1968,6 +2047,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Improvements
 
@@ -2085,6 +2165,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 #### Features
 
@@ -2291,6 +2372,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -2333,6 +2415,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Improvements
 
@@ -2367,6 +2450,7 @@ The following component updates are applicable to this release:
 - [March 13, 2026 - Component Updates](#component-updates-2026-11) <!-- omit in toc -->
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
 
 ### Security Notices
 
