@@ -158,8 +158,8 @@ impacts how Day-2 activities have to be planned and managed with regards to the 
 
   If the Edge host cannot reach the internet or remote pack registries, having a local content bundle does not act as an
   automatic fallback for missing pack archives or Helm/Helm-OCI chart packs. Failed pack downloads are not retrieved
-  from the bundle layout. If 'AlwaysPullImages' is disabled and the image is available in the local content bundle, it is
-  synced to `containerd` and becomes available for use. A staged bundle can help as a fallback for a container image.
+  from the bundle layout. If 'AlwaysPullImages' is disabled and the image is available in the local content bundle, it
+  is synced to `containerd` and becomes available for use. A staged bundle can help as a fallback for a container image.
 
 - **Locally Managed Edge with Internet or site network access**: This requires a connection to the internet or the
   registry via the local network. No connection to Palette is needed. The Edge device is managed using the local Edge
