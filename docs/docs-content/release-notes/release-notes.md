@@ -47,7 +47,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.47.
 
 ### Packs
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3901 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3659 -->
@@ -58,7 +57,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.47.
 | Argo CD                     | Add-on     | :white_check_mark: | :x:                | 9.4.14      |
 | AWS EKS Pod Identity Agent  | Add-on     | :white_check_mark: | :x:                | 1.2.0       |
 | Azure CNI                   | CNI        | :white_check_mark: | :white_check_mark: | 1.7.9-1     |
-| Azure Linux                 | OS         | :white_check_mark: | :x:                | 3.0         |
 | Cilium                      | CNI        | :x:                | :white_check_mark: | 1.19.1      |
 | Cilium                      | CNI        | :white_check_mark: | :x:                | 1.19.2      |
 | External Secrets            | Add-on     | :white_check_mark: | :x:                | 2.2.0       |
