@@ -152,13 +152,13 @@ In addition to the [Deployment Scenarios](#deployment-scenarios), network consid
 impacts how Day-2 activities have to be planned and managed with regards to the behavior of the Edge device.
 
 - **Centrally Managed Edge cluster**: This requires connection to Palette, and the internet or the registry via the
-  network. Packs, charts (Helm/Helm OCI), raw manifests and container images will be downloaded as needed. If the
+  network. Packs, charts (Helm/Helm OCI), raw manifests, and container images will be downloaded as needed. If the
   registry cannot be reached or if images are missing, pod scheduling and cluster readiness will be blocked. The Edge
   host must reach Palette for registration, cluster assignment, and profile updates.
 
   If the Edge host cannot reach the internet or remote pack registries, having a local content bundle does not act as an
   automatic fallback for missing pack archives or Helm/Helm-OCI chart packs. Failed pack downloads are not retrieved
-  from the bundle layout. If 'AlwaysPullImages' is disabled and the image is available in local content bundle, it is
+  from the bundle layout. If 'AlwaysPullImages' is disabled and the image is available in the local content bundle, it is
   synced to `containerd` and becomes available for use. A staged bundle can help as a fallback for a container image.
 
 - **Locally Managed Edge with Internet or site network access**: This requires a connection to the internet or the
@@ -172,7 +172,7 @@ impacts how Day-2 activities have to be planned and managed with regards to the 
   bundles to the locally managed edge device.
 
 - **Locally Managed Edge without Internet or site network access**: This does not have any connection to the internet,
-  the registry via the local network, or Palette. Packs, charts, raw manifests and container images are always uploaded
+  the registry via the local network, or Palette. Packs, charts, raw manifests, and container images are always uploaded
   from the cluster definition and content bundle. If a required pack is not available in the bundle, it will not be
   downloaded from the internet or registry, and cluster readiness will be blocked.
 
