@@ -14,7 +14,7 @@ Each EdgeForge component plays a critical role in the [lifecycle](../edge-native
 Review the [Edge Artifacts](../edgeforge-workflow/edgeforge-workflow.md#edge-artifacts) section to learn more about each
 component.
 
-![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.webp)
+![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram_4-8.webp)
 
 ## Get Started
 
@@ -145,6 +145,39 @@ through the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-nati
 instructions in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about
 how you can customize the OS used in an Edge deployment.
 <!-- prettier-ignore-end -->
+
+## Network Considerations
+
+In addition to the [Deployment Scenarios](#deployment-scenarios), network considerations have to be included. This
+impacts how Day-2 activities have to be planned and managed with regards to the behavior of the Edge device.
+
+- **Centrally Managed Edge cluster**: This requires connection to Palette, and the internet or the registry via the
+  network. Packs, charts (Helm/Helm OCI), raw manifests, and container images will be downloaded as needed. If the
+  registry cannot be reached or if images are missing, pod scheduling and cluster readiness will be blocked. The Edge
+  host must reach Palette for registration, cluster assignment, and profile updates.
+
+  If the Edge host cannot reach the internet or remote pack registries, having a local content bundle does not act as an
+  automatic fallback for missing pack archives or Helm/Helm-OCI chart packs. Failed pack downloads are not retrieved
+  from the bundle layout. If 'AlwaysPullImages' is disabled and the image is available in the local content bundle, it
+  is synced to `containerd` and becomes available for use. A staged bundle can help as a fallback for a container image.
+
+- **Locally Managed Edge with Internet or site network access**: This requires a connection to the internet or the
+  registry via the local network. No connection to Palette is needed. The Edge device is managed using the local Edge
+  UI. Packs, charts, and manifests come from the uploaded cluster definition. Charts from private registries are
+  extracted from the content bundle. Container images in the content bundle are synced to `containerd`. If any content
+  bundle image is missing, it is downloaded automatically from the internet or a network-accessible registry.
+
+  If a required pack is missing from the content bundle, it cannot be downloaded from the internet or a
+  network-accessible registry. To avoid wide-area pulls or pin your cluster to a specific image set, upload content
+  bundles to the locally managed edge device.
+
+- **Locally Managed Edge without Internet or site network access**: This does not have any connection to the internet,
+  the registry via the local network, or Palette. Packs, charts, raw manifests, and container images are always uploaded
+  from the cluster definition and content bundle. If a required pack is not available in the bundle, it will not be
+  downloaded from the internet or registry, and cluster readiness will be blocked.
+
+  Container images from the content bundle are synced to `containerd`. If an image is missing, the bundle cannot be
+  pulled from the internet or network accessible registry.
 
 ## Resources
 
