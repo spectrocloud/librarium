@@ -13,6 +13,10 @@ tags: ["release-notes"]
 
 ## May 3, 2026 - Release 4.9.0 {#release-notes-4-9-0}
 
+The following component updates are applicable to this release:
+
+- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
