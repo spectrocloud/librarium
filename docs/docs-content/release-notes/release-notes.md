@@ -34,7 +34,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8400 -->
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that caused Edge hosts configured with <VersionedLink text="K3s" url="/integrations/packs/?pack=edge-k3s" />, <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" /> and [kube-vip](../clusters/edge/networking/kubevip.md) to experience unexpected IP takeover behavior and loss of etcd quorum due to a [kube-vip issue](https://github.com/kube-vip/kube-vip/issues/1016).
+- Fixed an issue that caused Edge hosts configured with <VersionedLink text="K3s" url="/integrations/packs/?pack=edge-k3s" />, <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" />, and [kube-vip](../clusters/edge/networking/kubevip.md) to experience unexpected IP takeover behavior and loss of etcd quorum due to a [kube-vip issue](https://github.com/kube-vip/kube-vip/issues/1016).
 
 <!-- prettier-ignore-end -->
 

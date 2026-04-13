@@ -170,14 +170,14 @@ to learn more about the ports used for communication.
             <summary> Microsoft Entra ID </summary>
 
             If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following configuration
-            template and add the configuration to your Kubernetes cluster profile layer. This configuration enables [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) for Kubernetes authorization.
+            template and add the configuration to your Kubernetes cluster profile layer. This configuration enables [Kubernetes Role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) for Kubernetes authorization.
 
                 ```yaml
                 managedControlPlane:
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                 ```
 
@@ -189,7 +189,7 @@ to learn more about the ports used for communication.
                     managed: true
                     enableAzureRBAC: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                 ```
 
@@ -203,7 +203,7 @@ to learn more about the ports used for communication.
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                     disableLocalAccounts: true
                 ```
