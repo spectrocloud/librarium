@@ -12,8 +12,8 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 ## Scenario - Traefik Ingress Controller Pods Crash on Amazon Linux 2 Nodes
 
-Traefik ingress controller DaemonSet pods may enter a `CrashLoopBackOff` state on deprecated Amazon Linux 2 (AL2)
-nodes in [self-hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) and
+Traefik ingress controller DaemonSet pods may enter a `CrashLoopBackOff` state on deprecated Amazon Linux 2 (AL2) nodes
+in [self-hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) and
 [Palette VerteX](../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) Helm-based
 installations. This is caused by the non-root security context `NET_BIND_SERVICE` Linux capability configured in the
 Traefik DaemonSet, which allows non-root processes to bind to privileged ports. The `NET_BIND_SERVICE` capability is
@@ -40,8 +40,8 @@ Amazon Linux 2023 (AL2023) as soon as possible and reverting this change afterwa
 
 3. On the **Overview** tab, download the **Kubernetes Config File**.
 
-4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster. From your terminal,
-   set the `KUBECONFIG` variable to the file path of the kubeconfig.
+4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster.
+   From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
 
    ```shell
    export KUBECONFIG=<path-to-kubeconfig>
