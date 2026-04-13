@@ -1,0 +1,16 @@
+---
+partial_category: self-hosted
+partial_name: install-on-kubernetes-al2
+---
+
+:::warning
+
+The Traefik ingress controller, which is installed by default beginning with {props.edition} version 4.8.47,
+configures the non-root security context `NET_BIND_SERVICE` Linux capability in the Traefik DaemonSet. This
+capability is not supported on deprecated Amazon Linux 2 (AL2) nodes, resulting in a `CrashLoopBackOff` state on
+`traefik-ingress-controller` pods. Refer to our
+[Troubleshooting - Traefik Ingress Controller Pods Crash on Amazon Linux 2 EKS Nodes](/troubleshooting/enterprise-install/#scenario---traefik-ingress-controller-pods-crash-on-amazon-linux-2-eks-nodes)
+guide for the workaround.
+
+:::
+
