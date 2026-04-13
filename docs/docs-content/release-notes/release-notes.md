@@ -11,6 +11,38 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 14, 2026 - Release 4.8.49
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10355 -->
+
+- The Palette Nginx ingress controller has been updated to version 1.13.9 to address
+  [CVE-2026-4342](https://github.com/kubernetes/kubernetes/issues/137893). Refer to
+  [Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-012---nginx-ingress-comment-based-configuration-injection-vulnerability)
+  for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6424 -->
+
+- [Azure AKS clusters](../clusters/public-cloud/azure/aks.md) now support
+  [Azure RBAC](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview) for Kubernetes authorization.
+  Refer to the [Deploy an Azure AKS Cluster](../clusters/public-cloud/azure/aks.md#deploy-an-azure-aks-cluster) guide
+  for more information.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8400 -->
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused Edge hosts configured with <VersionedLink text="K3s" url="/integrations/packs/?pack=edge-k3s" />, <VersionedLink text="Traefik" url="/integrations/packs/?pack=traefik" /> and [kube-vip](../clusters/edge/networking/kubevip.md) to experience unexpected IP takeover behavior and loss of etcd quorum due to a [kube-vip issue](https://github.com/kube-vip/kube-vip/issues/1016).
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8403 -->
+
+- Fixed an issue that caused the Palette UI to incorrectly display the **Override Kubeadm Configuration** toggle and
+  **Rolling update** options for Edge cluster configurations.
+
 ## April 10, 2026 - Component Updates {#component-updates-2026-15}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.47.
