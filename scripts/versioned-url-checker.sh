@@ -11,7 +11,7 @@ REPORT_FILE="${REPORT_FILE:-${REPO_ROOT}/versioned_links_report.json}"
 BROKEN_LINK_COUNT=0
 CHECKED_LINK_COUNT=0
 
-resolve_target_path() {
+resolve_target_candidates() {
   local source_file="$1"
   local rel_url="$2"
 
@@ -24,13 +24,24 @@ repo_root = Path(sys.argv[1]).resolve()
 source_file = sys.argv[2]
 rel_url = sys.argv[3]
 
-rel_url = rel_url.split("#", 1)[0].split("?", 1)[0]
-rel_url = re.sub(r'(?<!:)/{2,}', '/', rel_url)
+raw_url = rel_url.split("#", 1)[0].split("?", 1)[0].strip()
+raw_url = re.sub(r'(?<!:)/{2,}', '/', raw_url)
 
 source_path = (repo_root / source_file).resolve()
 docs_root = (repo_root / "docs" / "docs-content").resolve()
+partials_root = (repo_root / "_partials").resolve()
 
-target = (source_path.parent / rel_url).resolve()
+candidates = []
+seen = set()
+
+
+def add_candidate(path: Path) -> None:
+    normalized = path.resolve()
+    key = str(normalized)
+    if key not in seen:
+        seen.add(key)
+        candidates.append(normalized)
+
 
 def clean_relative_path(value: str) -> str:
     cleaned = value
@@ -38,19 +49,24 @@ def clean_relative_path(value: str) -> str:
         cleaned = cleaned[3:]
     while cleaned.startswith("./"):
         cleaned = cleaned[2:]
+    while cleaned.startswith("/"):
+        cleaned = cleaned[1:]
     return cleaned
 
-try:
-    target.relative_to(docs_root)
-except ValueError:
-    cleaned_rel_url = clean_relative_path(rel_url)
+if raw_url.startswith("./") or raw_url.startswith("../"):
+    add_candidate((source_path.parent / raw_url).resolve())
 
+cleaned_rel_url = clean_relative_path(raw_url)
+
+if cleaned_rel_url:
     if cleaned_rel_url.startswith("static/"):
-        target = (repo_root / cleaned_rel_url).resolve()
+        add_candidate((repo_root / cleaned_rel_url).resolve())
     else:
-        target = (docs_root / cleaned_rel_url).resolve()
+        add_candidate((docs_root / cleaned_rel_url).resolve())
+        add_candidate((partials_root / cleaned_rel_url).resolve())
 
-print(target)
+for candidate in candidates:
+    print(candidate)
 PY
 }
 
@@ -77,6 +93,7 @@ while IFS= read -r item; do
   source_file=$(echo "$item" | jq -r '.source_file // empty')
   rel_url=$(echo "$item" | jq -r '.url // empty')
   line=$(echo "$item" | jq -r '.line // 0')
+  match_type=$(echo "$item" | jq -r '.match_type // "unknown"')
 
   [[ -z "$source_file" || -z "$rel_url" ]] && continue
 
@@ -84,39 +101,46 @@ while IFS= read -r item; do
     continue
   fi
 
-  if [[ "$rel_url" != ./* && "$rel_url" != ../* ]]; then
+  if [[ "$rel_url" != ./* && "$rel_url" != ../* && "$rel_url" != /* ]]; then
     continue
   fi
 
   ((CHECKED_LINK_COUNT+=1))
 
-  resolved_path=$(resolve_target_path "$source_file" "$rel_url")
+  resolved_path=""
+  found_target="false"
 
-  if ! target_exists "$resolved_path"; then
+  while IFS= read -r candidate; do
+    [[ -z "$candidate" ]] && continue
+    resolved_path="$candidate"
+    if target_exists "$candidate"; then
+      found_target="true"
+      break
+    fi
+  done < <(resolve_target_candidates "$source_file" "$rel_url")
+
+  if [[ "$found_target" != "true" ]]; then
     ((BROKEN_LINK_COUNT+=1))
     COMMENT="${COMMENT}
 :file_folder: Source: ${source_file}:${line}
-:link: Relative Link: ${rel_url}
+:link: Link (${match_type}): ${rel_url}
 :red_circle: Missing target: ${resolved_path}
 "
   fi
 done < <(jq -c '.[]' "$REPORT_FILE")
 
-# Final message construction
 if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
-  COMMENT=":information_source: No relative (./ or ../) links found.
+  COMMENT=":information_source: No supported local links found.
 
 Source: :github: - librarium"
-
 elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-  COMMENT=":partyblob: All relative links resolved successfully.
+  COMMENT=":partyblob: All local links resolved successfully.
 
 Checked: ${CHECKED_LINK_COUNT}
 
 Source: :github: - librarium"
-
 else
-  COMMENT=":old-man-yells-markdown: Broken relative links detected!
+  COMMENT=":old-man-yells-markdown: Broken local links detected!
 
 ${COMMENT}
 
@@ -126,7 +150,6 @@ Broken: ${BROKEN_LINK_COUNT}
 Source: :github: - librarium"
 fi
 
-# Slack logic
 if [[ -n "$SLACK_WEBHOOK_URL" ]]; then
   if [[ "$BROKEN_LINK_COUNT" -gt 0 || "$POST_SUCCESS_TO_SLACK" == "true" ]]; then
     jq -n --arg text "$COMMENT" '{text: $text}' | \

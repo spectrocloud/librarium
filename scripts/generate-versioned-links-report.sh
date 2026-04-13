@@ -5,81 +5,67 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 OUTPUT_FILE="${OUTPUT_FILE:-${REPO_ROOT}/versioned_links_report.json}"
-TEMP_FILE="$(mktemp)"
 
-grep -rHnE '(\./|\.\./)' \
-  --include="*.md" \
-  --include="*.mdx" \
-  "${REPO_ROOT}/docs" "${REPO_ROOT}/_partials" > "$TEMP_FILE" || true
-
-echo "TEMP_FILE=$TEMP_FILE"
-wc -l "$TEMP_FILE"
-head -n 5 "$TEMP_FILE"
-
-python3 - "$TEMP_FILE" "$OUTPUT_FILE" "$REPO_ROOT" <<'PY'
+python3 - "$OUTPUT_FILE" "$REPO_ROOT" <<'PY'
 import json
 import re
 import sys
 from pathlib import Path
 
-inp, out, repo_root = sys.argv[1], sys.argv[2], Path(sys.argv[3]).resolve()
+out, repo_root = sys.argv[1], Path(sys.argv[2]).resolve()
+
+search_roots = [
+    repo_root / "docs",
+    repo_root / "_partials",
+]
 
 results = []
 seen = set()
 
-# Standard markdown links: [text](../foo.md) or [text](../../bar.md#anchor)
-md_link_pattern = re.compile(r'\]\(((?:\./|\.\./)[^)\s]*)\)')
+patterns = [
+    ("markdown", re.compile(r'\]\(((?:\./|\.\./|/)[^)\s]+)\)')),
+    ("html_href", re.compile(r'href=["\']((?:\./|\.\./|/)[^"\']+)["\']')),
+    ("mdx_to", re.compile(r'\bto=["\']((?:\./|\.\./|/)[^"\']+)["\']')),
+    ("versioned_link", re.compile(r'<VersionedLink\b[^>]*\burl=["\']((?:\./|\.\./|/)[^"\']+)["\']', re.DOTALL)),
+]
 
-# Optional: HTML href="../foo.md"
-html_href_pattern = re.compile(r'href=["\']((?:\./|\.\./)[^"\']+)["\']')
 
-# Optional: MDX Link to="../foo.md"
-mdx_to_pattern = re.compile(r'\bto=["\']((?:\./|\.\./)[^"\']+)["\']')
+def line_number_for_offset(text: str, offset: int) -> int:
+    return text.count("\n", 0, offset) + 1
 
-with open(inp, "r", encoding="utf-8") as f:
-    for raw in f:
-        raw = raw.rstrip("\n")
-        if not raw:
+
+for root in search_roots:
+    if not root.exists():
+        continue
+
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix not in {".md", ".mdx"}:
             continue
 
-        parts = raw.split(":", 2)
-        if len(parts) != 3:
-            continue
+        content = path.read_text(encoding="utf-8")
+        source_file_rel = str(path.resolve().relative_to(repo_root))
 
-        source_file, line, content = parts
+        for match_type, pattern in patterns:
+            for match in pattern.finditer(content):
+                url = match.group(1).split("#", 1)[0].strip()
+                if not url:
+                    continue
 
-        # Normalize to repo-relative path for cleaner JSON
-        try:
-            source_path = Path(source_file).resolve()
-            source_file_rel = str(source_path.relative_to(repo_root))
-        except Exception:
-            source_file_rel = source_file
+                line = line_number_for_offset(content, match.start(1))
+                key = (source_file_rel, line, url, match_type)
+                if key in seen:
+                    continue
+                seen.add(key)
 
-        matches = []
-        matches.extend(md_link_pattern.findall(content))
-        matches.extend(html_href_pattern.findall(content))
-        matches.extend(mdx_to_pattern.findall(content))
-
-        for match in matches:
-            url = match.split("#", 1)[0].strip()
-            if not url:
-                continue
-
-            key = (source_file_rel, line, url)
-            if key in seen:
-                continue
-            seen.add(key)
-
-            results.append({
-                "source_file": source_file_rel,
-                "url": url,
-                "line": int(line),
-            })
+                results.append({
+                    "source_file": source_file_rel,
+                    "url": url,
+                    "line": line,
+                    "match_type": match_type,
+                })
 
 with open(out, "w", encoding="utf-8") as f:
     json.dump(results, f, indent=2)
 
 print(f"Wrote {len(results)} entries to {out}")
 PY
-
-rm -f "$TEMP_FILE"
