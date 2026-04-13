@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 The following component updates are applicable to this release:
 
-- [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- TBA <!-- omit in toc -->
 
 ### Security Notices
 
