@@ -778,6 +778,8 @@ environment. Reach out to our support team if you need assistance.
     `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_
     state. The installation takes between two to three minutes to complete.
 
+    <PartialsComponent category="self-hosted" name="install-on-kubernetes-al2" edition="Palette VerteX" />
+
     ```shell
     kubectl get pods --all-namespaces --watch
     ```
