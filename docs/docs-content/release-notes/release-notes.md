@@ -27,6 +27,12 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+- Amazon Linux 2 (AL2) AMIs have been disabled in Palette. You will not be able to create new EKS clusters with AL2
+  worker nodes. For existing EKS clusters, you must create new worker nodes using AL2023 AMIs. Existing AL2 AMI worker
+  nodes will no longer receive bug fixes or security patches. Refer to our
+  [Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
+  guide for help with migrating workloads.
+
 - Support for Red Hat Enterprise Linux (RHEL) 8.x in Edge workflows has been deprecated, including FIPS-enabled
   configurations. Use RHEL 9.x or RHEL 10.x instead.
 
