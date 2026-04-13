@@ -33,6 +33,9 @@ tags: ["release-notes"]
   [Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
   guide for help with migrating workloads.
 
+  - In addition, Kubernetes upgrades to v1.33 and later are not supported on EKS clusters with AL2 worker nodes. If you
+    want to upgrade your cluster to v1.33 or later, you must first migrate your workloads to AL2023 worker nodes.
+
 - Support for Red Hat Enterprise Linux (RHEL) 8.x in Edge workflows has been deprecated, including FIPS-enabled
   configurations. Use RHEL 9.x or RHEL 10.x instead.
 

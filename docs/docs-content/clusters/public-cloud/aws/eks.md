@@ -19,6 +19,8 @@ are disabled in Palette. This means:
 - For new clusters, you cannot select AL2 AMIs for EKS worker nodes in Palette.
 - For existing clusters, you must create new worker nodes using AL2023 AMIs. Existing AL2 AMI worker nodes will no
   longer receive bug fixes or security patches.
+  - In addition, Kubernetes upgrades to v1.33 and later are not supported on EKS clusters with AL2 worker nodes. If you
+    want to upgrade your cluster to v1.33 or later, you must first migrate your workloads to AL2023 worker nodes.
 
 Refer to our
 [Scenario - Unable to Upgrade EKS Worker Nodes from AL2 to AL2023](../../../troubleshooting/cluster-deployment.md#scenario---unable-to-upgrade-eks-worker-nodes-from-al2-to-al2023)
