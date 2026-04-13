@@ -7,31 +7,37 @@ sidebar_position: 160
 tags: ["clusters", "cluster management", "kubectl"]
 ---
 
-You can access your Kubernetes cluster by using the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/).
-Palette automatically generates a **kubeconfig** file for your cluster that you can download and use to connect with
-your host cluster.
-
-## Access Cluster with CLI
+You can access your workload cluster using [kubectl](https://kubernetes.io/docs/reference/kubectl/). Palette
+automatically generates a kubeconfig file for your cluster that you can download and use to connect with your host
+cluster.
 
 Use the following steps to connect to your host cluster with the kubectl CLI.
 
 :::info
 
-If you are using Palette Virtual Machine (VM) Management, you can find steps on how to connect to your virtual machines
-with the [virtctl CLI](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) in the
+If you are using Palette Virtual Machine Orchestrator (VMO), you can connect to your VMs with the
+[virtctl CLI](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/). `virtctl` facilitates certain VM
+operations, including copying, pasting, or transferring files to and from VMs using Secure Copy Protocol (SCP). Refer to
+our in the
 [Access VM Cluster with virtctl](../../vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl.md)
-guide. The virtctl CLI facilitates some of the VM operations you will perform, such as copying, pasting, or transferring
-files to and from a virtual machine using Secure Copy Protocol (SCP).
+guide for more information.
 
 :::
 
-### Prerequisites
+## Prerequisites
 
-- Kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) for additional
-  guidance.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally.
 
-- A host cluster that is either publicly accessible OR a private host cluster that has the
-  <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> installed.
+<!-- prettier-ignore-start -->
+
+- A workload cluster that is either publicly accessible or a private workload cluster that has the
+<VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack installed.
+
+<!-- prettier-ignore-end -->
+
+- A user with the Cluster Admin role or a custom role with the `cluster.adminKubeconfigDownload` permission. Refer to
+  our [Project Roles](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) page for more
+  information.
 
 :::warning
 
@@ -40,31 +46,92 @@ kubelogin GitHub repository [README](https://github.com/int128/kubelogin#setup) 
 
 :::
 
-### Set up Kubectl
+## Access Cluster Using Kubeconfig
 
 1. Log in to [Palette](https://spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. From the left main menu, select **Clusters**.
 
-3. Select the host cluster you want to access.
+3. Select the workload cluster you want to access.
 
-4. From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes
-   Config File** row.
+4. From the cluster **Overview** tab, locate the **Kubeconfig File** or **Admin Kubeconfig File**. The available
+   kubeconfig files depend on your Palette permissions and whether OIDC is configured for your workload cluster. Refer
+   to our [Kubeconfig](./kubeconfig.md) guide for more information.
 
-5. Click on the kubeconfig link to download the file.
+5. Select the appropriate kubeconfig link to download the workload cluster's kubeconfig file.
 
-![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.webp)
+   ![Kubeconfig file location](/kubeconfig_workload-cluster_4-9.webp)
 
-6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
+   :::tip
 
-Example:
+   To copy the contents of the kubeconfig file to your clipboard instead of downloading the file, select the **Copy**
+   icon beside the kubeconfig link.
 
-```shell
-export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
+   :::
+
+6. Open a terminal session in an environment that has network access to the cluster. Set the `KUBECONFIG` environment
+   variable to the file path of the downloaded kubeconfig file.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+You can now issue kubectl commands against your workload cluster.
+
+## Validate
+
+Verify you have access to your workload cluster by issuing kubectl commands against it. For example, use the following
+command to view all pods in your cluster.
+
+```bash title="Example command"
+kubectl get pods --all-namespaces
 ```
 
-You can now issue kubectl commands against your host cluster.
-
-### Validate
-
-Verify you have access to your host cluster by issuing kubectl commands against it.
+```bash title="Example output" hideClipboard
+NAMESPACE                          NAME                                                               READY   STATUS      RESTARTS      AGE
+capi-webhook-system                capa-controller-manager-5bbffdf6bb-sz48f                           1/1     Running     0             8d
+capi-webhook-system                capi-controller-manager-7bb56fbdd4-qkstl                           1/1     Running     0             8d
+capi-webhook-system                capi-kubeadm-bootstrap-controller-manager-68647cc467-fx9ps         1/1     Running     0             8d
+capi-webhook-system                capi-kubeadm-control-plane-controller-manager-7ddbc67456-hm2hc     1/1     Running     0             8d
+cert-manager                       cert-manager-5649585bd4-d8xth                                      1/1     Running     0             11d
+cert-manager                       cert-manager-cainjector-7b58b7fb85-bj2p4                           1/1     Running     0             11d
+cert-manager                       cert-manager-webhook-6d4cc48554-g74rx                              1/1     Running     0             11d
+cluster-69ce7de27fc0dde9d7255fd8   capa-controller-manager-cf9fb4598-86zc6                            1/1     Running     0             8d
+cluster-69ce7de27fc0dde9d7255fd8   capi-controller-manager-678cd5bf56-fd6jr                           1/1     Running     0             8d
+cluster-69ce7de27fc0dde9d7255fd8   capi-kubeadm-bootstrap-controller-manager-7bf69dbdc4-4s57f         1/1     Running     0             8d
+cluster-69ce7de27fc0dde9d7255fd8   capi-kubeadm-control-plane-controller-manager-66c6dbd879-bz5gn     1/1     Running     0             8d
+cluster-69ce7de27fc0dde9d7255fd8   cluster-management-agent-6c97fc58df-hhgrb                          1/1     Running     0             8d
+cluster-69ce7de27fc0dde9d7255fd8   crony-6474bcb49-psws5                                              1/1     Running     0             8d
+cluster-69ce7de27fc0dde9d7255fd8   metrics-server-848b66dfd8-cp7s2                                    1/1     Running     0             11d
+cluster-69ce7de27fc0dde9d7255fd8   palette-controller-manager-58664d9585-m45sc                        3/3     Running     0             8d
+default                            gpu-test                                                           0/1     Completed   0             11d
+gpu-operator                       gpu-feature-discovery-5r5hk                                        1/1     Running     0             11d
+gpu-operator                       gpu-operator-6787c649b6-q6shc                                      1/1     Running     0             11d
+gpu-operator                       nvidia-container-toolkit-daemonset-6jbd5                           1/1     Running     0             11d
+gpu-operator                       nvidia-dcgm-exporter-9tnxl                                         1/1     Running     0             11d
+gpu-operator                       nvidia-device-plugin-daemonset-jq25s                               1/1     Running     0             11d
+gpu-operator                       nvidia-driver-daemonset-2htkb                                      1/1     Running     0             11d
+gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discovery9kfwz    1/1     Running     0             11d
+gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discoveryhj9ks    1/1     Running     0             11d
+gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discoveryqzg9f    1/1     Running     0             11d
+gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discoveryrlpjt    1/1     Running     0             11d
+gpu-operator                       nvidia-operator-validator-p2m8x                                    1/1     Running     0             11d
+kube-system                        aws-cloud-controller-manager-wlt8w                                 1/1     Running     0             8d
+kube-system                        calico-kube-controllers-f67c6f96-zzrkn                             1/1     Running     0             11d
+kube-system                        calico-node-95ltz                                                  1/1     Running     0             11d
+kube-system                        calico-node-sqr5h                                                  1/1     Running     0             11d
+kube-system                        coredns-674b8bbfcf-2bsw4                                           1/1     Running     0             11d
+kube-system                        coredns-674b8bbfcf-tfg7t                                           1/1     Running     0             11d
+kube-system                        ebs-csi-controller-55644f45c8-crp4x                                5/5     Running     0             11d
+kube-system                        ebs-csi-controller-55644f45c8-dm688                                5/5     Running     3 (11d ago)   11d
+kube-system                        ebs-csi-node-c8bnt                                                 3/3     Running     0             11d
+kube-system                        ebs-csi-node-mtk2k                                                 3/3     Running     0             11d
+kube-system                        etcd-ip-10-0-1-234.us-east-2.compute.internal                      1/1     Running     0             11d
+kube-system                        kube-apiserver-ip-10-0-1-234.us-east-2.compute.internal            1/1     Running     0             11d
+kube-system                        kube-controller-manager-ip-10-0-1-234.us-east-2.compute.internal   1/1     Running     0             11d
+kube-system                        kube-proxy-8hzmj                                                   1/1     Running     0             11d
+kube-system                        kube-proxy-zszpp                                                   1/1     Running     0             11d
+kube-system                        kube-scheduler-ip-10-0-1-234.us-east-2.compute.internal            1/1     Running     0             11d
+palette-system                     palette-webhook-5dc5d9f684-8nk2b                                   1/1     Running     0             8d
+palette-system                     palette-webhook-5dc5d9f684-nglbb                                   1/1     Running     0             8d
+```
