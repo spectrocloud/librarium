@@ -22,6 +22,7 @@ tags: ["release-notes"]
   [Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability](../security-bulletins/security-advisories/security-advisories.md#security-advisory-012---nginx-ingress-comment-based-configuration-injection-vulnerability)
   for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6412 -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6424 -->
 
 - [Azure AKS clusters](../clusters/public-cloud/azure/aks.md) now support
@@ -42,6 +43,30 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused the Palette UI to incorrectly display the **Override Kubeadm Configuration** toggle and
   **Rolling update** options for Edge cluster configurations.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10533 -->
+
+- Fixed an issue that caused [self-hosted Palette](../enterprise-version/enterprise-version.md) installs to fail when
+  post-install operations are slow to become ready.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8469 -->
+
+- Fixed an issue that prevented users from applying or removing [taints](../clusters/cluster-management/taints.md) on
+  individual nodes within a control plane pool.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8411 -->
+
+- Fixed an issue that prevented Palette from downloading Helm OCI packs whose charts are publicly accessible from
+  [Zot OCI registries](../registries-and-packs/registries/oci-registry/oci-registry.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6380 -->
+
+- Fixed an issue that prevented Palette from patching `MachineDeployment` objects during reconcile loops.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-3061 -->
+
+- Fixed an issue that prevented Palette from recovering after configuration errors in Helm charts have been resolved and
+  applied by users.
 
 ## April 10, 2026 - Component Updates {#component-updates-2026-15}
 
