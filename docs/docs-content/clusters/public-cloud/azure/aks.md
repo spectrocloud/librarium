@@ -196,7 +196,7 @@ to learn more about the ports used for communication.
             Additionally, if you want to disable
             [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
             `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
-            `managedControlPlane.aadProfile` section.
+            `managedControlPlane.aadProfile` section. Ensure that the service principle for the Azure cloud account configured in Palette is included in the list of `adminGroupObjectIDs`.
 
                 ```yaml {7}
                 managedControlPlane:
@@ -207,7 +207,6 @@ to learn more about the ports used for communication.
                       - <admin-group-object-id-2>
                     disableLocalAccounts: true
                 ```
-            </details>
 
             <details>
             <summary> OpenID Connect (OIDC)</summary>
