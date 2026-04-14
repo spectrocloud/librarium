@@ -38,9 +38,9 @@ guide for more information.
 <!-- prettier-ignore-end -->
 
 - Appropriate Palette permissions for the kubeconfig file you intend to use. Refer to
-  [Kubeconfig Permission Requirements](./kubeconfig.md#permission-requirements) for more information.
+  [Kubeconfig Permission Requirements](./kubeconfig.md#cluster-admin) for more information.
 
-## Access Cluster Using Kubeconfig
+## Access Cluster Using Kubeconfig {#access-cluster-with-cli}
 
 1. Log in to [Palette](https://spectrocloud.com).
 

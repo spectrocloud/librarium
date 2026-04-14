@@ -23,7 +23,7 @@ accessing the system console.
 
 :::
 
-## Types of Kubeconfig Files
+## Types of Kubeconfig Files {#kubeconfig-files}
 
 Palette provides up to two kubeconfig files for each workload cluster, depending on your cluster configuration and
 Palette permissions. These files are located at **Clusters** > **Overview** tab. Refer to our
@@ -53,7 +53,7 @@ available. Kubeconfig availability depends on OIDC configuration and your Palett
 
 :::
 
-## Permission Requirements
+## Permission Requirements {#cluster-admin}
 
 Palette has its own RBAC system that is separate from the
 [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) system in the cluster. Palette
@@ -78,7 +78,7 @@ the [Project Roles](../../user-management/palette-rbac/project-scope-roles-permi
 - **Admin Kubeconfig** - Requires the Cluster Admin role or a custom role with the `cluster.adminKubeconfigDownload`
   permission.
 
-## Kubeconfig Access
+## Kubeconfig Access {#kubeconfig-access-permissions}
 
 Use the following table to identify which kubeconfig files are available based on your Palette permissions and cluster
 configuration.
