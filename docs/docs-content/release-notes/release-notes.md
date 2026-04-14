@@ -27,6 +27,12 @@ The following component updates are applicable to this release:
 
 #### Features
 
+- The `iam:ListRoleTags` permission has been added to the
+  [Core IAM Policies](../clusters/public-cloud/aws/required-iam-policies/core-iam-policies.md) as part of the
+  **PaletteDeploymentPolicy**. This permission allows Palette to list the tags associated with IAM roles, which is
+  necessary for the IAM Roles for Service Accounts (IRSA) tag feature. Customers who are enabling IRSA roles must ensure
+  that this permission is included in their IAM policies to avoid any issues with role tagging and management.
+
 #### Improvements
 
 #### Deprecations and Removals
