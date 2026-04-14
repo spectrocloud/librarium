@@ -18,6 +18,8 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+  
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
@@ -35,6 +37,7 @@ env:
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN:  ${{ secrets.DSO_AUTH_TOKEN }}
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+  NODE_VERSION: "24"
 
 jobs:
   run-ci:
@@ -79,7 +82,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
@@ -88,10 +91,13 @@ jobs:
         run: make format
 
       - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: ./.github/actions/commit-changes
         with:
-          commit_message: "ci: auto-formatting prettier issues"
+          method: git
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
+          commit_message: "ci: auto-formatting prettier issues"
+          file_regex: ".*"
 
   build:
     name: Build
@@ -104,7 +110,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
@@ -125,3 +131,40 @@ jobs:
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Post PR Comment (success)
+        if: ${{ github.event_name == 'pull_request' && success() }}
+        uses: actions/github-script@v8
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        with:
+          script: |
+            const issue_number =  Number(process.env.PR_NUMBER || context.payload.pull_request?.number || context.issue?.number);
+            if (!issue_number) {
+              core.info("No PR number in context; skipping PR comment.");
+              return;
+            }
+            const body = `✅ CI checks passed for commit ${{ github.sha }}.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body,
+            });
+
+      - name: Post PR Comment (failure)
+        if: ${{ github.event_name == 'pull_request' && failure() }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const issue_number = Number(process.env.PR_NUMBER || context.payload.pull_request?.number || context.issue?.number);
+            if (!issue_number) {
+              core.info("No PR number in context; skipping PR comment.");
+              return;
+            }
+            const body = `❌ CI checks failed for commit ${{ github.sha }}.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body,
+            });

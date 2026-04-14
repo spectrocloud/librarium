@@ -27,6 +27,7 @@ env:
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  NODE_VERSION: "24"
 
 jobs:
   backport:
@@ -59,7 +60,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Determine branch name
@@ -77,13 +78,14 @@ jobs:
         run: make api
 
 
-      - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v7
+      - name: Commit and push changes
+        uses: ./.github/actions/commit-changes
         with:
-          commit_message: "ci: auto-formatting API changes"
-          file_pattern: '*.json **.json **/*.json'
-          disable_globbing: true
+          method: git
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
+          commit_message: "ci: auto-formatting API changes"
+          file_regex: "\\.json$"
 
       - name: Slack Notification
         if: ${{ failure() }}
@@ -96,8 +98,41 @@ jobs:
           SLACK_MESSAGE: ' The PR for branch ${{env.GITHUB_BRANCH}} failed when attempting to format the API. Review the GitHub Actions logs for more details.'
 
       - name: Post Netlify progress
-        uses: mshick/add-pr-comment@v2
+        uses: actions/github-script@v8
         with:
-          message: |
-              🤖 The API has been formated and is ready for merging.
-          refresh-message-position: false
+          script: |
+                          const marker = "librarium-api-format";
+                          const body = `<!-- librarium-api-format -->
+                          🤖 The API has been formated and is ready for merging.`;
+                          const owner = context.repo.owner;
+                          const repo = context.repo.repo;
+                          const issue_number = context.issue.number;
+            
+                          // List recent comments and find one containing our marker
+                          const comments = await github.paginate(github.rest.issues.listComments, {
+                            owner, repo, issue_number, per_page: 100,
+                          });
+            
+                          const existing = comments
+                            .filter(c => c?.body && c.body.includes(`<!-- $librarium-api-format -->`))
+                            .sort((a,b) => new Date(b.created_at) - new Date(a.created_at))[0];
+            
+                          const refresh = false;
+                          const updateOnly = false;
+            
+                          if (existing && refresh) {
+                            await github.rest.issues.deleteComment({
+                              owner, repo, comment_id: existing.id,
+                            });
+                            await github.rest.issues.createComment({
+                              owner, repo, issue_number, body,
+                            });
+                          } else if (existing) {
+                            await github.rest.issues.updateComment({
+                              owner, repo, comment_id: existing.id, body,
+                            });
+                          } else if (!updateOnly) {
+                            await github.rest.issues.createComment({
+                              owner, repo, issue_number, body,
+                            });
+                          }

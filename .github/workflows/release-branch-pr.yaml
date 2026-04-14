@@ -33,6 +33,7 @@ env:
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+  NODE_VERSION: "24"
 
 
 concurrency:
@@ -51,7 +52,7 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v6
       with:
-        node-version: "22"
+        node-version: ${{ env.NODE_VERSION }}
         cache: "npm"
 
     - name: Determine branch name
@@ -69,12 +70,43 @@ jobs:
       run: cd scripts && ./netlify_add_branch.sh
 
     - name: Post Netlify progress
-      uses: mshick/add-pr-comment@v2
+      uses: actions/github-script@v8
       with:
-        message: |
-            🤖 Netlify configured to enable preview build for branch:  ${{env.GITHUB_BRANCH}} . Subsequent commits will automatically trigger a Netlify build preview.
-        refresh-message-position: false
-
+        script: |
+                  const marker = "librarium-release-branch-pr";
+                  const body = `<!-- librarium-release-branch-pr -->
+                  🤖 Netlify configured to enable preview build for branch:  ${{env.GITHUB_BRANCH}} . Subsequent commits will automatically trigger a Netlify build preview.`;
+                  const owner = context.repo.owner;
+                  const repo = context.repo.repo;
+                  const issue_number = context.issue.number;
+          
+                  const comments = await github.paginate(github.rest.issues.listComments, {
+                    owner, repo, issue_number, per_page: 100,
+                  });
+          
+                  const existing = comments
+                    .filter(c => c?.body && c.body.includes(`<!-- librarium-release-branch-pr -->`))
+                    .sort((a,b) => new Date(b.created_at) - new Date(a.created_at))[0];
+          
+                  const refresh = false;
+                  const updateOnly = false;
+          
+                  if (existing && refresh) {
+                    await github.rest.issues.deleteComment({
+                      owner, repo, comment_id: existing.id,
+                    });
+                    await github.rest.issues.createComment({
+                      owner, repo, issue_number, body,
+                    });
+                  } else if (existing) {
+                    await github.rest.issues.updateComment({
+                      owner, repo, comment_id: existing.id, body,
+                    });
+                  } else if (!updateOnly) {
+                    await github.rest.issues.createComment({
+                      owner, repo, issue_number, body,
+                    });
+                  }
     - name: Build
       run: |
         touch .env

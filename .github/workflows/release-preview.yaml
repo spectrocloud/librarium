@@ -31,6 +31,7 @@ env:
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   UNRELEASED_VERSION_BANNER: true
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+  NODE_VERSION: "24"
 
 
 concurrency:
@@ -49,7 +50,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
@@ -96,11 +97,73 @@ jobs:
 
 
       - name: Post Netlify URL
-        uses: mshick/add-pr-comment@v2
+        uses: actions/github-script@v8
         with:
-          message: |
-              🚀 docs-latest.spectrocloud.com preview deployed succesfully for commit ${{ github.sha }}. Click [here](https://docs-latest.spectrocloud.com) to preview the changes.
-          message-failure: |
-              👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
-          refresh-message-position: true
-          update-only: false
+          script: |
+            const marker = "librarium-release-preview";
+            const body = `<!-- ${marker} -->
+            🚀 docs-latest.spectrocloud.com preview deployed successfully for commit ${context.sha}. Click [here](https://docs-latest.spectrocloud.com) to preview the changes.`;
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // On push events, there is no context.issue.number. Find a PR tied to this commit.
+            const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner,
+              repo,
+              commit_sha: context.sha,
+            });
+
+            const pr = prs.data?.[0];
+            const issue_number = pr?.number;
+
+            if (!issue_number) {
+              core.info("No PR associated with this commit; skipping PR comment.");
+              return;
+            }
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner, repo, issue_number, per_page: 100,
+            });
+
+            const existing = comments
+              .filter(c => c?.body && c.body.includes(`<!-- ${marker} -->`))
+              .sort((a,b) => new Date(b.created_at) - new Date(a.created_at))[0];
+
+            const refresh = true;
+            const updateOnly = false;
+
+            if (existing && refresh) {
+              await github.rest.issues.deleteComment({ owner, repo, comment_id: existing.id });
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            } else if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else if (!updateOnly) {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
+      - name: Post PR Comment (failure)
+        if: ${{ failure() }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const body = `<!-- librarium-release-preview-failure -->
+            👎 Uh oh! The Preview failed to deploy for commit ${context.sha}. Please check the logs for more information.`;
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner,
+              repo,
+              commit_sha: context.sha,
+            });
+
+            const pr = prs.data?.[0];
+            const issue_number = pr?.number;
+
+            if (!issue_number) {
+              core.info("No PR associated with this commit; skipping PR comment.");
+              return;
+            }
+
+            await github.rest.issues.createComment({ owner, repo, issue_number, body });
