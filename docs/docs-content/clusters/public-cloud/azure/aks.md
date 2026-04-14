@@ -208,6 +208,8 @@ to learn more about the ports used for communication.
                     disableLocalAccounts: true
                 ```
 
+            </details>
+
             <details>
             <summary> OpenID Connect (OIDC)</summary>
 
