@@ -7,18 +7,16 @@ sidebar_position: 160
 tags: ["clusters", "cluster management", "kubectl"]
 ---
 
-You can access your workload cluster using [kubectl](https://kubernetes.io/docs/reference/kubectl/). Palette
-automatically generates a kubeconfig file for your cluster that you can download and use to connect with your host
-cluster.
-
-Use the following steps to connect to your host cluster with the kubectl CLI.
+Palette generates [kubeconfig](./kubeconfig.md) files that you can download and use to connect to your workload cluster
+with the [kubectl](https://kubernetes.io/docs/reference/kubectl/) CLI. This guide walks you through downloading a
+kubeconfig file and verifying access to your cluster.
 
 :::info
 
 If you are using Palette Virtual Machine Orchestrator (VMO), you can connect to your VMs with the
 [virtctl CLI](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/). `virtctl` facilitates certain VM
 operations, including copying, pasting, or transferring files to and from VMs using Secure Copy Protocol (SCP). Refer to
-our in the
+our
 [Access VM Cluster with virtctl](../../vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl.md)
 guide for more information.
 
@@ -28,6 +26,10 @@ guide for more information.
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally.
 
+  - If your workload cluster has OIDC configured and you download the **Kubeconfig File**, you must also install
+    [kubelogin](https://github.com/int128/kubelogin) on the machine where you run `kubectl`; otherwise, `kubectl`
+    commands issued against the cluster will fail.
+
 <!-- prettier-ignore-start -->
 
 - A workload cluster that is either publicly accessible or a private workload cluster that has the
@@ -35,16 +37,8 @@ guide for more information.
 
 <!-- prettier-ignore-end -->
 
-- A user with the Cluster Admin role or a custom role with the `cluster.adminKubeconfigDownload` permission. Refer to
-  our [Project Roles](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) page for more
-  information.
-
-:::warning
-
-If you are using [OIDC](./cluster-rbac.md) with your host cluster, you will need the kubelogin plugin. Refer to the
-kubelogin GitHub repository [README](https://github.com/int128/kubelogin#setup) for installation guidance.
-
-:::
+- Appropriate Palette permissions for the kubeconfig file you intend to use. Refer to
+  [Kubeconfig Permission Requirements](./kubeconfig.md#permission-requirements) for more information.
 
 ## Access Cluster Using Kubeconfig
 
@@ -76,11 +70,11 @@ kubelogin GitHub repository [README](https://github.com/int128/kubelogin#setup) 
    export KUBECONFIG=<path-to-kubeconfig>
    ```
 
-You can now issue kubectl commands against your workload cluster.
+You can now issue `kubectl` commands against your workload cluster.
 
 ## Validate
 
-Verify you have access to your workload cluster by issuing kubectl commands against it. For example, use the following
+Verify you have access to your workload cluster by issuing `kubectl` commands against it. For example, use the following
 command to view all pods in your cluster.
 
 ```bash title="Example command"
@@ -105,17 +99,6 @@ cluster-69ce7de27fc0dde9d7255fd8   crony-6474bcb49-psws5                        
 cluster-69ce7de27fc0dde9d7255fd8   metrics-server-848b66dfd8-cp7s2                                    1/1     Running     0             11d
 cluster-69ce7de27fc0dde9d7255fd8   palette-controller-manager-58664d9585-m45sc                        3/3     Running     0             8d
 default                            gpu-test                                                           0/1     Completed   0             11d
-gpu-operator                       gpu-feature-discovery-5r5hk                                        1/1     Running     0             11d
-gpu-operator                       gpu-operator-6787c649b6-q6shc                                      1/1     Running     0             11d
-gpu-operator                       nvidia-container-toolkit-daemonset-6jbd5                           1/1     Running     0             11d
-gpu-operator                       nvidia-dcgm-exporter-9tnxl                                         1/1     Running     0             11d
-gpu-operator                       nvidia-device-plugin-daemonset-jq25s                               1/1     Running     0             11d
-gpu-operator                       nvidia-driver-daemonset-2htkb                                      1/1     Running     0             11d
-gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discovery9kfwz    1/1     Running     0             11d
-gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discoveryhj9ks    1/1     Running     0             11d
-gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discoveryqzg9f    1/1     Running     0             11d
-gpu-operator                       nvidia-gpu-operator-ai-gpu-operator-node-feature-discoveryrlpjt    1/1     Running     0             11d
-gpu-operator                       nvidia-operator-validator-p2m8x                                    1/1     Running     0             11d
 kube-system                        aws-cloud-controller-manager-wlt8w                                 1/1     Running     0             8d
 kube-system                        calico-kube-controllers-f67c6f96-zzrkn                             1/1     Running     0             11d
 kube-system                        calico-node-95ltz                                                  1/1     Running     0             11d
