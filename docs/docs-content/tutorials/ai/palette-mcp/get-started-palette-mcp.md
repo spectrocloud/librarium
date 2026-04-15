@@ -28,7 +28,7 @@ directly communicates with the Palette API. The Palette MCP Server downloads the
 client to gather information about the cluster using the [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 command line tool.
 
-![MCP Server operation overview](/tutorials/ai/get-started-palette-mcp_mcp-overview.webp)
+![MCP Server operation overview](/tutorials/ai/palette-mcp/get-started-palette-mcp_mcp-overview.webp)
 
 ## MCP Server Capabilities
 
@@ -88,7 +88,7 @@ Navigate to the left **Main Menu** and select **Clusters**. The cluster deployme
 Deployment time varies depending on the cloud provider, cluster profile, cluster size, and node pool configurations
 provided.
 
-![Deployed cluster](/tutorials/ai/get-started-palette-mcp_deployed-cluster.webp)
+![Deployed cluster](/tutorials/ai/palette-mcp/get-started-palette-mcp_deployed-cluster.webp)
 
 Palette indicates that the cluster is deployed successfully, but the Hello Universe add-on is unable to deploy
 succesfully.
@@ -218,7 +218,7 @@ update. Review the changes and select **Apply Changes**.
 
 Wait for Palette to reconcile and apply the changes. All layers of the cluster are now successfully deployed.
 
-![Healthy cluster](/tutorials/ai/get-started-palette-mcp_deployed-cluster-healthy.webp)
+![Healthy cluster](/tutorials/ai/palette-mcp/get-started-palette-mcp_deployed-cluster-healthy.webp)
 
 Download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI.
 This file enables you and other users to issue kubectl commands against the host cluster.
