@@ -16,7 +16,7 @@ advisories.
 ## Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability
 
 - **Release Date**: March 23, 2026
-- **Last Updated**: April 14, 2026
+- **Last Updated**: April 15, 2026
 - **Severity**: HIGH (CVSS 8.8)
 - **CVEs**: [CVE-2026-4342](https://github.com/kubernetes/kubernetes/issues/137893)
 
@@ -57,7 +57,7 @@ Kubernetes Secrets.
 
 - **Multi-Tenant and Dedicated SaaS Deployments** - All SaaS environments have been patched as part of the standard update
   process. No action is required.
-- **Self-Hosted Deployments** - Palette version 4.8.49 has the fixed version of the `ingress-nginx` controller. Users should update their environments to this version.
+- **Self-Hosted Deployments** - Palette version 4.8.51 has the fixed version of the `ingress-nginx` controller. Users should update their environments to this version.
 - **Workload Clusters** - Upgrade
   your workload clusters to use the latest version of the <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> pack. If using vendor-managed ingress add-ons, follow your cloud provider's patch guidance.
 
