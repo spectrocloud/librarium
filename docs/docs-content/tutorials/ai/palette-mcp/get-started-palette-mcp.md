@@ -8,18 +8,19 @@ toc_max_heading_level: 2
 category: ["tutorial"]
 ---
 
-<YOLO THE INTRO HERE>
+YOLO THE INTRO HERE
 
 ## Prerequisites
 
 - Ensure the following software is installed locally on your workstation:
 
+  - The Palette MCP server configured and set up. Refer to the applicable setup guide for
+    [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
+    [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
+    [Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md).
+
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
-  - The Gemini CLI. Refer to [Get started with Gemini CLI](https://geminicli.com/docs/get-started/) for more
-    information.
-  - The Palette MCP server is configured in your environment. Refer to the
-    [Set Up MCP Server with Gemini CLI](../../../automation/palette-mcp/palette-mcp.md) guide for more information.
 
 - A Palette account.
 
@@ -32,7 +33,8 @@ In this section, you will import a cluster profile into Palette. This profile wi
 
 :::warning
 
-For learning purposes, there is an error in these cluster profiles. Avoid using them in workloads outside this tutorial.
+For learning purposes, there are two errors in these cluster profiles. Avoid using them in workloads outside this
+tutorial.
 
 :::
 
@@ -46,7 +48,8 @@ For learning purposes, there is an error in these cluster profiles. Avoid using 
 | Kubernetes    | `kubernetes`     | `1.33.9`    |
 | Network       | `cni-calico`     | `3.31.4`    |
 | Storage       | `csi-aws-ebs`    | `1.57.1`    |
-| App Services  | `hello-universe` | `1.3.1`     |
+| App Services  | `hello-universe` | `invalid`   |
+| Monitoring    | `cost-analyzer`  | `1.103.3`   |
 
 </TabItem>
 
@@ -58,7 +61,8 @@ For learning purposes, there is an error in these cluster profiles. Avoid using 
 | Kubernetes    | `kubernetes`       | `1.33.9`    |
 | Network       | `cni-calico-azure` | `3.31.4`    |
 | Storage       | `csi-azure`        | `1.34.2`    |
-| App Services  | `hello-universe`   | `1.3.1`     |
+| App Services  | `hello-universe`   | `invalid`   |
+| Monitoring    | `cost-analyzer`    | `1.103.3`   |
 
 </TabItem>
 
@@ -175,6 +179,24 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
               "isSyncSupported": true
             }
           }
+        },
+        {
+          "name": "cost-analyzer",
+          "type": "oci",
+          "layer": "addon",
+          "version": "1.103.3",
+          "tag": "1.103.3",
+          "values": "pack:\n  # The namespace (on the target cluster) in which the pack will be deployed.\n  # When the namespace is not found, a new namespace will be created with the name specified.\n  namespace: \"kubecost\"\n  content:\n    charts:\n      - repo: https://kubecost.github.io/cost-analyzer/\n        name: cost-analyzer\n        version: 1.103.3   \n    images:\n      - image: gcr.io/kubecost1/frontend:prod-1.103.3\n      - image: gcr.io/kubecost1/cost-model:prod-1.103.3\n      - image: quay.io/prometheus/prometheus:v2.35.0\n\ncharts:\n  cost-analyzer:  \n    global:\n      grafana:\n        enabled: false\n        proxy: false\n\n    nodeSelector: {}\n\n    tolerations: []\n    #  - key: \"key\"\n    #    operator: \"Equal|Exists\"\n    #    value: \"value\"\n    #    effect: \"NoSchedule|PreferNoSchedule|NoExecute(1.6 only)\"\n\n    affinity: {}\n\n    # If true, creates a PriorityClass to be used by the cost-analyzer pod\n    priority:\n      enabled: false\n      # value: 1000000\n\n    # If true, enable creation of NetworkPolicy resources.\n    networkPolicy:\n      enabled: false\n\n    podSecurityPolicy:\n      enabled: false\n\n    kubecostFrontend:\n      image: gcr.io/kubecost1/frontend\n      imagePullPolicy: Always\n      resources:\n        requests:\n          cpu: \"10m\"\n          memory: \"55Mi\"\n        #limits:\n        #  cpu: \"100m\"\n        #  memory: \"256Mi\"\n      \n    kubecostModel:\n      image: gcr.io/kubecost1/cost-model\n      imagePullPolicy: Always\n      warmCache: true\n      warmSavingsCache: true\n      etl: true\n      # The total number of days the ETL storage will build\n      etlStoreDurationDays: 120\n      maxQueryConcurrency: 5\n      # utcOffset represents a timezone in hours and minutes east (+) or west (-)\n      # of UTC, itself, which is defined as +00:00.\n      # See the tz database of timezones to look up your local UTC offset:\n      # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\n      utcOffset: \"+00:00\"\n      resources:\n        requests:\n          cpu: \"200m\"\n          memory: \"55Mi\"\n        #limits:\n        #  cpu: \"800m\"\n        #  memory: \"256Mi\"\n\n    serviceAccount:\n      create: true # Set this to false if you're bringing your own service account.\n      annotations: {}\n      # name: kc-test\n\n    # Define persistence volume for cost-analyzer\n    persistentVolume:\n      size: 32Gi\n      dbSize: 32.0Gi\n      enabled: true # Note that setting this to false means configurations will be wiped out on pod restart.\n      # storageClass: \"-\" #\n      # existingClaim: kubecost-cost-analyzer # a claim in the same namespace as kubecost\n\n    ingress:\n      enabled: false\n      # className: nginx\n      annotations:\n        kubernetes.io/ingress.class: nginx\n        # kubernetes.io/tls-acme: \"true\"\n      paths: [\"/\"] # There's no need to route specifically to the pods-- we have an nginx deployed that handles routing\n      hosts:\n        - cost-analyzer.local\n      tls: []\n      #  - secretName: cost-analyzer-tls\n      #    hosts:\n      #      - cost-analyzer.local\n\n    service:\n      type: ClusterIP\n      port: 8080\n      targetPort: 8080\n      # nodePort:\n      labels: {}\n      annotations: {}\n\n    prometheus:\n      server:\n        # If clusterIDConfigmap is defined, instead use user-generated configmap with key CLUSTER_ID\n        # to use as unique cluster ID in kubecost cost-analyzer deployment.\n        # This overrides the cluster_id set in prometheus.server.global.external_labels.\n        # NOTE: This does not affect the external_labels set in prometheus config.\n        # clusterIDConfigmap: cluster-id-configmap\n        resources: {}\n        # limits:\n        #   cpu: 500m\n        #   memory: 512Mi\n        # requests:\n        #   cpu: 500m\n        #   memory: 512Mi\n        global:\n          scrape_interval: 1m\n          scrape_timeout: 10s\n          evaluation_interval: 1m\n          external_labels:\n            cluster_id: cluster-one # Each cluster should have a unique ID\n        persistentVolume:\n          size: 32Gi\n          enabled: true\n        extraArgs:\n          query.max-concurrency: 1\n          query.max-samples: 100000000\n        tolerations: []\n        #  - key: \"key\"\n        #    operator: \"Equal|Exists\"\n        #    value: \"value\"\n        #    effect: \"NoSchedule|PreferNoSchedule|NoExecute(1.6 only)\"\n\n      configmapReload:\n        prometheus:\n          ## If false, the configmap-reload container will not be deployed\n          ##\n          enabled: false\n\n          ## configmap-reload container name\n          ##\n          name: configmap-reload\n          ## configmap-reload container image\n          ##\n          ## Additional configmap-reload container arguments\n          ##\n          extraArgs: {}\n          ## Additional configmap-reload volume directories\n          ##\n          extraVolumeDirs: []\n          ## Additional configmap-reload mounts\n          ##\n          extraConfigmapMounts: []\n            # - name: prometheus-alerts\n            #   mountPath: /etc/alerts.d\n            #   subPath: \"\"\n            #   configMap: prometheus-alerts\n            #   readOnly: true\n          ## configmap-reload resource requests and limits\n          ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/\n          ##\n          resources: {}\n        \n      kube-state-metrics:\n        disabled: false\n      nodeExporter:\n        enabled: false",
+          "registry": {
+            "metadata": {
+              "uid": "64eaff5630402973c4e1856a",
+              "name": "Palette Community Registry",
+              "kind": "oci",
+              "isPrivate": true,
+              "providerType": "pack",
+              "isSyncSupported": true
+            }
+          }
         }
       ]
     },
@@ -278,7 +300,25 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "layer": "addon",
           "version": "1.3.1",
           "tag": "1.3.1",
-          "values": "# spectrocloud.com/enabled-presets: Backend:disable-api\npack:\n  content:\n    images:\n      - image: ghcr.io/spectrocloud/hello-universe:1.3.2\n      - image: ghcr.io/spectrocloud/hello-universe:1.3.2-proxy\n      - image: ghcr.io/spectrocloud/hello-universe-api:1.1.1\n      - image: ghcr.io/spectrocloud/hello-universe-db:1.1.0\n  spectrocloud.com/install-priority: \"0\"\n\nmanifests:\n  hello-universe:\n    images:\n      hellouniverse: ghcr.io/spectrocloud/hello-universe:1.3.2\n    apiEnabled: false\n    namespace: hello-universe\n    port: 8080\n    replicas: 1",
+          "values": "# spectrocloud.com/enabled-presets: Backend:disable-api\npack:\n  content:\n    images:\n      - image: ghcr.io/spectrocloud/hello-universe:1.3.2\n      - image: ghcr.io/spectrocloud/hello-universe:1.3.2-proxy\n      - image: ghcr.io/spectrocloud/hello-universe-api:1.1.1\n      - image: ghcr.io/spectrocloud/hello-universe-db:1.1.0\n  spectrocloud.com/install-priority: \"0\"\n\nmanifests:\n  hello-universe:\n    images:\n      hellouniverse: ghcr.io/spectrocloud/hello-universe:invalid\n    apiEnabled: false\n    namespace: hello-universe\n    port: 8080\n    replicas: 1",
+          "registry": {
+            "metadata": {
+              "uid": "64eaff5630402973c4e1856a",
+              "name": "Palette Community Registry",
+              "kind": "oci",
+              "isPrivate": true,
+              "providerType": "pack",
+              "isSyncSupported": true
+            }
+          }
+        },
+        {
+          "name": "cost-analyzer",
+          "type": "oci",
+          "layer": "addon",
+          "version": "1.103.3",
+          "tag": "1.103.3",
+          "values": "pack:\n  # The namespace (on the target cluster) in which the pack will be deployed.\n  # When the namespace is not found, a new namespace will be created with the name specified.\n  namespace: \"kubecost\"\n  content:\n    charts:\n      - repo: https://kubecost.github.io/cost-analyzer/\n        name: cost-analyzer\n        version: 1.103.3   \n    images:\n      - image: gcr.io/kubecost1/frontend:prod-1.103.3\n      - image: gcr.io/kubecost1/cost-model:prod-1.103.3\n      - image: quay.io/prometheus/prometheus:v2.35.0\n\ncharts:\n  cost-analyzer:  \n    global:\n      grafana:\n        enabled: false\n        proxy: false\n\n    nodeSelector: {}\n\n    tolerations: []\n    #  - key: \"key\"\n    #    operator: \"Equal|Exists\"\n    #    value: \"value\"\n    #    effect: \"NoSchedule|PreferNoSchedule|NoExecute(1.6 only)\"\n\n    affinity: {}\n\n    # If true, creates a PriorityClass to be used by the cost-analyzer pod\n    priority:\n      enabled: false\n      # value: 1000000\n\n    # If true, enable creation of NetworkPolicy resources.\n    networkPolicy:\n      enabled: false\n\n    podSecurityPolicy:\n      enabled: false\n\n    kubecostFrontend:\n      image: gcr.io/kubecost1/frontend\n      imagePullPolicy: Always\n      resources:\n        requests:\n          cpu: \"10m\"\n          memory: \"55Mi\"\n        #limits:\n        #  cpu: \"100m\"\n        #  memory: \"256Mi\"\n      \n    kubecostModel:\n      image: gcr.io/kubecost1/cost-model\n      imagePullPolicy: Always\n      warmCache: true\n      warmSavingsCache: true\n      etl: true\n      # The total number of days the ETL storage will build\n      etlStoreDurationDays: 120\n      maxQueryConcurrency: 5\n      # utcOffset represents a timezone in hours and minutes east (+) or west (-)\n      # of UTC, itself, which is defined as +00:00.\n      # See the tz database of timezones to look up your local UTC offset:\n      # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\n      utcOffset: \"+00:00\"\n      resources:\n        requests:\n          cpu: \"200m\"\n          memory: \"55Mi\"\n        #limits:\n        #  cpu: \"800m\"\n        #  memory: \"256Mi\"\n\n    serviceAccount:\n      create: true # Set this to false if you're bringing your own service account.\n      annotations: {}\n      # name: kc-test\n\n    # Define persistence volume for cost-analyzer\n    persistentVolume:\n      size: 32Gi\n      dbSize: 32.0Gi\n      enabled: true # Note that setting this to false means configurations will be wiped out on pod restart.\n      # storageClass: \"-\" #\n      # existingClaim: kubecost-cost-analyzer # a claim in the same namespace as kubecost\n\n    ingress:\n      enabled: false\n      # className: nginx\n      annotations:\n        kubernetes.io/ingress.class: nginx\n        # kubernetes.io/tls-acme: \"true\"\n      paths: [\"/\"] # There's no need to route specifically to the pods-- we have an nginx deployed that handles routing\n      hosts:\n        - cost-analyzer.local\n      tls: []\n      #  - secretName: cost-analyzer-tls\n      #    hosts:\n      #      - cost-analyzer.local\n\n    service:\n      type: ClusterIP\n      port: 8080\n      targetPort: 8080\n      # nodePort:\n      labels: {}\n      annotations: {}\n\n    prometheus:\n      server:\n        # If clusterIDConfigmap is defined, instead use user-generated configmap with key CLUSTER_ID\n        # to use as unique cluster ID in kubecost cost-analyzer deployment.\n        # This overrides the cluster_id set in prometheus.server.global.external_labels.\n        # NOTE: This does not affect the external_labels set in prometheus config.\n        # clusterIDConfigmap: cluster-id-configmap\n        resources: {}\n        # limits:\n        #   cpu: 500m\n        #   memory: 512Mi\n        # requests:\n        #   cpu: 500m\n        #   memory: 512Mi\n        global:\n          scrape_interval: 1m\n          scrape_timeout: 10s\n          evaluation_interval: 1m\n          external_labels:\n            cluster_id: cluster-one # Each cluster should have a unique ID\n        persistentVolume:\n          size: 32Gi\n          enabled: true\n        extraArgs:\n          query.max-concurrency: 1\n          query.max-samples: 100000000\n        tolerations: []\n        #  - key: \"key\"\n        #    operator: \"Equal|Exists\"\n        #    value: \"value\"\n        #    effect: \"NoSchedule|PreferNoSchedule|NoExecute(1.6 only)\"\n\n      configmapReload:\n        prometheus:\n          ## If false, the configmap-reload container will not be deployed\n          ##\n          enabled: false\n\n          ## configmap-reload container name\n          ##\n          name: configmap-reload\n          ## configmap-reload container image\n          ##\n          ## Additional configmap-reload container arguments\n          ##\n          extraArgs: {}\n          ## Additional configmap-reload volume directories\n          ##\n          extraVolumeDirs: []\n          ## Additional configmap-reload mounts\n          ##\n          extraConfigmapMounts: []\n            # - name: prometheus-alerts\n            #   mountPath: /etc/alerts.d\n            #   subPath: \"\"\n            #   configMap: prometheus-alerts\n            #   readOnly: true\n          ## configmap-reload resource requests and limits\n          ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/\n          ##\n          resources: {}\n        \n      kube-state-metrics:\n        disabled: false\n      nodeExporter:\n        enabled: false",
           "registry": {
             "metadata": {
               "uid": "64eaff5630402973c4e1856a",
@@ -304,6 +344,110 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
 Click **Validate**. Palette displays a _Validated successfully_ message. Click **Confirm**. The cluster profile is
 created.
 
+## Deploy a Cluster
+
+Next, you will deploy a cluster using the imported cluster profile. From the left main menu, select **Profiles**. Then,
+select the row for the tutorial profile. The details page appears. Then, select **Deploy**. Select **OK** in the
+**Create a new cluster?** dialog.
+
+Fill in the required cluster information and configuration deploy cluster wizard. Refer to the
+[Deploy a Cluster to Amazon Web Services (AWS)](../../getting-started/palette/aws/aws.md) or
+[Deploy a Cluster to Microsoft Azure](../../getting-started/palette/azure/azure.md) sections for more information on
+cluster creation.
+
+Navigate to the left **Main Menu** and select **Clusters**. The cluster deployment process can take 15 to 30 minutes.
+Deployment time varies depending on the cloud provider, cluster profile, cluster size, and node pool configurations
+provided.
+
+![Deployed cluster](/tutorials/ai/get-started-palette-mcp_deployed-cluster.webp)
+
+Palette indicates that the cluster is deployed successfully, but the Hello Universe add-on is unable to deploy
+succesfully.
+
+## Debug the Cluster
+
+The cluster you have deployed does not succesfully deploy the Hello Universe add-on application. In this section, uou
+will use the Palette MCP server investigate and debug these errors.
+
+Open your MCP client.
+
+Send a query asking to download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for one of
+your running clusters. For example, you can ask "Download the kubeconfig file for the `<cluster-name>` Palette cluster."
+Replace the placeholder with your cluster name.
+
+```shell title="Example Output"
+❯ Download the kubeconfig file for the `get-started-palette-mcp-cluster` Palette cluster.
+
+⏺ I'll first find the cluster UID by listing clusters, then download the kubeconfig.
+
+  Called palette (ctrl+o to expand)
+
+⏺ Found the cluster. Now let me load and call the getKubeconfig tool.
+
+  Called palette (ctrl+o to expand)
+
+⏺ The kubeconfig for get-started-palette-mcp-cluster has been downloaded successfully.
+
+  As noted in the CLAUDE.md instructions, the file was written inside the MCP container at /tmp/kubeconfig/69df9741978d9f786aacf13a.kubeconfig, which is synced to
+  your host machine at $HOME/.palette/kubeconfig.
+
+  To use it with kubectl:
+
+  export KUBECONFIG="$HOME/.palette/kubeconfig"
+  kubectl get nodes
+
+  Or per-command:
+
+  kubectl --kubeconfig="$HOME/.palette/kubeconfig" get pods -A
+```
+
+Investigate if there any failing pods or deployments on your cluster. For example, you can ask "Run kubectl to connect
+to the `<cluster-name>` Palette cluster and list any failing pods or deployments." Replace the placeholder with your
+cluster name.
+
+```shell title="Example Output"
+❯ Run kubectl to connect to the `get-started-palette-mcp-cluster` Palette  cluster and list any failing pods or deployments.
+
+⏺ The kubeconfig path is a directory. Let me find the actual file.
+  Listed 1 directory (ctrl+o to expand)
+
+⏺ Bash(KUBECONFIG="$HOME/.palette/kubeconfig/69df9741978d9f786aacf13a.kubeconfig" kubectl get pods -A --field-selector=status.phase!=Running,status.phase!=Succeeded 2>…)
+
+  ⎿  NAMESPACE        NAME                                         READY   STATUS             RESTARTS   AGE
+     hello-universe   hello-universe-deployment-84ff79b6cc-42ggl   0/1     ImagePullBackOff   0          19m
+
+⏺ Bash(KUBECONFIG="$HOME/.palette/kubeconfig/69df9741978d9f786aacf13a.kubeconfig" kubectl describe pod -n hello-universe hello-universe-deployment-84ff79b6cc-42ggl 2>&…)
+  ⎿      Environment:  <none>
+         Mounts: /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-84hpm (ro)
+     … +29 lines (ctrl+o to expand)
+
+⏺ Here's a summary of what's failing:
+
+  Failing Pod
+  - Namespace: hello-universe
+  - Pod: hello-universe-deployment-84ff79b6cc-42ggl
+  - Status: ImagePullBackOff
+
+  Root Cause
+  The pod is trying to pull a container image with an invalid tag:
+  ghcr.io/spectrocloud/hello-universe:invalid
+  The tag invalid does not exist in the registry, so Kubernetes can't pull it and the pod never starts.
+
+  Affected Deployment
+
+  - hello-universe/hello-universe-deployment — 0/1 ready (0 available replicas)
+
+  All other deployments across the cluster are healthy (READY matches desired count). The only issue is the bad image tag in the hello-universe deployment.
+```
+
+The Palette MCP server idenfities that the cluster profile provides an invalid image tag for the Hello Universe
+deployment.
+
+Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser. From the left main menu, select
+**Profiles**. Then, select the row for the tutorial profile.
+
+Select the **Hello Universe** pack layer. View the configuration of the pack values.
+
 The `hello-universe` pack sets the image tag used for deploying the
 [`hello-universe` application](https://github.com/spectrocloud/hello-universe) in the
 `manifests.hello-universe.images.hellouniverse` field of the `hello-universe` add-on pack. The configured image tag does
@@ -320,9 +464,30 @@ manifests:
     replicas: 1
 ```
 
-## Deploy a Cluster
+Change the `manifests.hello-universe.images.hellouniverse` field to the valid
+`ghcr.io/spectrocloud/hello-universe:1.3.1` tag.
 
-## Connect and Debug the Cluster
+```yaml {4}
+manifests:
+  hello-universe:
+    images:
+      hellouniverse: ghcr.io/spectrocloud/hello-universe:1.3.1
+    apiEnabled: false
+    namespace: hello-universe
+    port: 8080
+    replicas: 1
+```
+
+Select **Confirm Updates** and then **Save Changes**.
+
+From the left main menu, select **Clusters**. Then, select the row for the tutorial cluster.
+
+The cluster has a pending update for for the fixed cluster profile. Select **Updates** to apply the cluster profile
+update. Review the changes and select **Apply Changes**.
+
+Wait for Palette to reconcile and apply the changes. All layers of the cluster are now successfully deployed.
+
+![Healthy cluster](/tutorials/ai/get-started-palette-mcp_deployed-cluster-healthy.webp)
 
 ## Cleanup
 
