@@ -7,9 +7,77 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 SLACK_WEBHOOK_URL="${SLACK_WEBHOOK_URL:-}"
 POST_SUCCESS_TO_SLACK="${POST_SUCCESS_TO_SLACK:-false}"
 REPORT_FILE="${REPORT_FILE:-${REPO_ROOT}/versioned_links_report.json}"
+PACKS_DATA_FILE="${PACKS_DATA_FILE:-${REPO_ROOT}/.docusaurus/packs-integrations/api_pack_response.json}"
+STRICT_PACK_VALIDATION="${STRICT_PACK_VALIDATION:-true}"
 
 BROKEN_LINK_COUNT=0
 CHECKED_LINK_COUNT=0
+VALIDATED_DYNAMIC_PACK_COUNT=0
+BROKEN_DYNAMIC_PACK_COUNT=0
+
+validate_known_dynamic_pack_link() {
+  local url="$1"
+  local packs_data_file="$2"
+  local strict_pack_validation="$3"
+
+  python3 - "$url" "$packs_data_file" "$strict_pack_validation" <<'PY'
+import json
+import sys
+from pathlib import Path
+from urllib.parse import urlparse, parse_qs
+
+url = sys.argv[1].strip()
+packs_data_file = Path(sys.argv[2])
+strict_pack_validation = sys.argv[3].strip().lower() == "true"
+
+parsed = urlparse(url)
+path = parsed.path.rstrip("/")
+query = parse_qs(parsed.query)
+pack_values = [value.strip() for value in query.get("pack", []) if value.strip()]
+
+if path != "/integrations/packs":
+    print("NOT_DYNAMIC_PACK_LINK")
+    sys.exit(0)
+
+if not pack_values:
+    print("PACK_QUERY_MISSING")
+    sys.exit(0)
+
+pack_slug = pack_values[0]
+
+if not packs_data_file.is_file():
+    if strict_pack_validation:
+        print(f"PACK_DATA_MISSING:{pack_slug}:{packs_data_file}")
+    else:
+        print(f"PACK_VALIDATION_SKIPPED:{pack_slug}:{packs_data_file}")
+    sys.exit(0)
+
+try:
+    with packs_data_file.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+except Exception as exc:
+    if strict_pack_validation:
+        print(f"PACK_DATA_UNREADABLE:{pack_slug}:{exc}")
+    else:
+        print(f"PACK_VALIDATION_SKIPPED:{pack_slug}:{exc}")
+    sys.exit(0)
+
+pack_map = data.get("packMDMap", {})
+if not isinstance(pack_map, dict):
+    if strict_pack_validation:
+        print(f"PACK_DATA_INVALID:{pack_slug}:packMDMap missing or invalid")
+    else:
+        print(f"PACK_VALIDATION_SKIPPED:{pack_slug}:packMDMap missing or invalid")
+    sys.exit(0)
+
+valid_pack_names = set(pack_map.keys())
+
+if pack_slug in valid_pack_names:
+    print(f"PACK_OK:{pack_slug}")
+else:
+    print(f"PACK_MISSING:{pack_slug}")
+PY
+}
 
 resolve_target_candidates() {
   local source_file="$1"
@@ -107,6 +175,83 @@ while IFS= read -r item; do
 
   ((CHECKED_LINK_COUNT+=1))
 
+  pack_validation_result="$(validate_known_dynamic_pack_link "$rel_url" "$PACKS_DATA_FILE" "$STRICT_PACK_VALIDATION")"
+
+  case "$pack_validation_result" in
+    PACK_OK:*)
+      ((VALIDATED_DYNAMIC_PACK_COUNT+=1))
+      continue
+      ;;
+    PACK_MISSING:*)
+      ((BROKEN_LINK_COUNT+=1))
+      ((BROKEN_DYNAMIC_PACK_COUNT+=1))
+      pack_slug="${pack_validation_result#PACK_MISSING:}"
+      COMMENT="${COMMENT}
+:file_folder: Source: ${source_file}:${line}
+:link: Link (${match_type}): ${rel_url}
+:red_circle: Invalid pack slug: ${pack_slug}
+:package: Packs data source: ${PACKS_DATA_FILE}
+"
+      continue
+      ;;
+    PACK_QUERY_MISSING)
+      ((BROKEN_LINK_COUNT+=1))
+      ((BROKEN_DYNAMIC_PACK_COUNT+=1))
+      COMMENT="${COMMENT}
+:file_folder: Source: ${source_file}:${line}
+:link: Link (${match_type}): ${rel_url}
+:red_circle: Missing required pack query parameter for /integrations/packs/
+"
+      continue
+      ;;
+    PACK_DATA_MISSING:*)
+      ((BROKEN_LINK_COUNT+=1))
+      ((BROKEN_DYNAMIC_PACK_COUNT+=1))
+      pack_context="${pack_validation_result#PACK_DATA_MISSING:}"
+      COMMENT="${COMMENT}
+:file_folder: Source: ${source_file}:${line}
+:link: Link (${match_type}): ${rel_url}
+:red_circle: Pack validation data file not found (${pack_context})
+"
+      continue
+      ;;
+    PACK_DATA_UNREADABLE:*)
+      ((BROKEN_LINK_COUNT+=1))
+      ((BROKEN_DYNAMIC_PACK_COUNT+=1))
+      pack_context="${pack_validation_result#PACK_DATA_UNREADABLE:}"
+      COMMENT="${COMMENT}
+:file_folder: Source: ${source_file}:${line}
+:link: Link (${match_type}): ${rel_url}
+:red_circle: Pack validation data file could not be read (${pack_context})
+"
+      continue
+      ;;
+    PACK_DATA_INVALID:*)
+      ((BROKEN_LINK_COUNT+=1))
+      ((BROKEN_DYNAMIC_PACK_COUNT+=1))
+      pack_context="${pack_validation_result#PACK_DATA_INVALID:}"
+      COMMENT="${COMMENT}
+:file_folder: Source: ${source_file}:${line}
+:link: Link (${match_type}): ${rel_url}
+:red_circle: Pack validation data is invalid (${pack_context})
+"
+      continue
+      ;;
+    PACK_VALIDATION_SKIPPED:*)
+      ;;
+    NOT_DYNAMIC_PACK_LINK)
+      ;;
+    *)
+      ((BROKEN_LINK_COUNT+=1))
+      COMMENT="${COMMENT}
+:file_folder: Source: ${source_file}:${line}
+:link: Link (${match_type}): ${rel_url}
+:red_circle: Unexpected pack validation result: ${pack_validation_result}
+"
+      continue
+      ;;
+  esac
+
   resolved_path=""
   found_target="false"
 
@@ -137,6 +282,8 @@ elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
   COMMENT=":partyblob: All local links resolved successfully.
 
 Checked: ${CHECKED_LINK_COUNT}
+Validated dynamic packs: ${VALIDATED_DYNAMIC_PACK_COUNT}
+Broken dynamic packs: ${BROKEN_DYNAMIC_PACK_COUNT}
 
 Source: :github: - librarium"
 else
@@ -145,6 +292,8 @@ else
 ${COMMENT}
 
 Total checked: ${CHECKED_LINK_COUNT}
+Validated dynamic packs: ${VALIDATED_DYNAMIC_PACK_COUNT}
+Broken dynamic packs: ${BROKEN_DYNAMIC_PACK_COUNT}
 Broken: ${BROKEN_LINK_COUNT}
 
 Source: :github: - librarium"
