@@ -27,6 +27,13 @@ The following component updates are applicable to this release:
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7485 -->
+
+- Kubeconfig file contents for workload clusters can now be copied to the clipboard by selecting the **Copy** icon
+  beside the **Kubeconfig File** or **Admin Kubeconfig File** download link. Refer to our
+  [Kubeconfig](../clusters/cluster-management/kubeconfig.md) and
+  [Kubectl](../clusters/cluster-management/palette-webctl.md) guides for more information.
+
 #### Improvements
 
 #### Deprecations and Removals
