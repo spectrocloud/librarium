@@ -375,7 +375,7 @@ Send a query asking to download the [kubeconfig](../../../clusters/cluster-manag
 your running clusters. For example, you can ask "Download the kubeconfig file for the `<cluster-name>` Palette cluster."
 Replace the placeholder with your cluster name.
 
-```shell title="Example Output"
+```shell hideClipboard title="Example Output"
 ❯ Download the kubeconfig file for the `get-started-palette-mcp-cluster` Palette cluster.
 
 ⏺ I'll first find the cluster UID by listing clusters, then download the kubeconfig.
@@ -405,7 +405,7 @@ Investigate if there any failing pods or deployments on your cluster. For exampl
 to the `<cluster-name>` Palette cluster and list any failing pods or deployments." Replace the placeholder with your
 cluster name.
 
-```shell title="Example Output"
+```shell hideClipboard title="Example Output"
 ❯ Run kubectl to connect to the `get-started-palette-mcp-cluster` Palette  cluster and list any failing pods or deployments.
 
 ⏺ The kubeconfig path is a directory. Let me find the actual file.
@@ -489,6 +489,156 @@ Wait for Palette to reconcile and apply the changes. All layers of the cluster a
 
 ![Healthy cluster](/tutorials/ai/get-started-palette-mcp_deployed-cluster-healthy.webp)
 
+Download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI.
+This file enables you and other users to issue kubectl commands against the host cluster.
+
+Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
+Issue the following command, replacing the placeholder `<local-path>/admin.<cluster-name>.kubeconfig` with the path to
+your kubeconfig file.
+
+```shell
+export KUBECONFIG=<local-path>/admin.<cluster-name>.kubeconfig
+```
+
+Forward the Kubecost UI to your local network, as described in
+[Navigating the Kubecost UI](https://www.ibm.com/docs/en/kubecost/self-hosted/3.x?topic=navigating-kubecost-ui). The
+Kubecost dashboard is not exposed externally by default, so the command below will allow you to access it locally on
+port **9090**. If port 9090 is already taken on your machine, you can choose a different one.
+
+```shell
+kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+```
+
+Open your browser window and navigate to `http://localhost:9090`. The Kubecost UI does not display succesfully. There is
+another issue with the deployed cluster profile. Navigate back to your terminal and check the output of the port-forward
+command. The output shows that it cannot connect to port `9090`.
+
+```shell hideClipboard title="Example Output"
+kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+Forwarding from 127.0.0.1:9090 -> 9090
+Forwarding from [::1]:9090 -> 9090
+Handling connection for 9090
+E0415 15:42:50.279509   35707 portforward.go:409] an error occurred forwarding 9090 -> 9090: error forwarding port 9090 to pod f9a0eb6a998a66293c374695a291d64d4ef96dfa93a1bd7c29c74cc60139c675, uid : failed to execute portforward in network namespace "/var/run/netns/cni-86d3ee8d-8794-adcf-b7f4-961cc63aafe4": failed to connect to localhost:9090 inside namespace "f9a0eb6a998a66293c374695a291d64d4ef96dfa93a1bd7c29c74cc60139c675", IPv4: dial tcp4 127.0.0.1:9090: connect: connection refused IPv6 dial tcp6 [::1]:9090: connect: connection refused
+E0415 15:42:50.284677   35707 portforward.go:347] error creating error stream for port 9090 -> 9090: EOF
+error: lost connection to pod
+```
+
+Navigate back to your MCP client.
+
+Send a query asking the Palette MCP server to investigate why the port-forward command does not work as expected. For
+example, you can ask "Investigate why the following command
+`kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090` fails to connect to a pod in the
+`<cluster-name>` Palette cluster." Replace the placeholder with your cluster name.
+
+```shell hideClipboard title="Example Output"
+❯ Investigate why the following command `kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090` fails to connect to a pod in the `get-started-palette-mcp-cluster` Palette cluster.
+
+⏺ I'll investigate this step by step — first getting the kubeconfig for the cluster, then examining the deployment and pods.
+
+⏺ Let me start by getting the kubeconfig for the cluster using the Palette MCP tools.
+
+⏺ Agent(Get kubeconfig for Palette cluster)
+  ⎿  Done (4 tool uses · 17.6k tokens · 29s)
+  (ctrl+o to expand)
+
+⏺ Good, kubeconfig is ready. Now let me investigate the kubecost deployment and pods.
+
+⏺ Bash(KUBECONFIG="$HOME/.palette/kubeconfig/69df9741978d9f786aacf13a.kubeconfig" kubectl get pods -n kubecost 2>&1 && echo "---" &&
+      KUBECONFIG="$HOME/.palette/kubecon…)
+  ⎿  NAME                                                              READY   STATUS    RESTARTS   AGE
+     cost-analyzer-cost-analyzer-7fbcd75b49-wn5x9                      2/2     Running   0          53m
+     cost-analyzer-cost-analyzer-kube-state-metrics-79d95b67d8-qls2q   1/1     Running   0          53m
+     … +6 lines (ctrl+o to expand)
+
+⏺ The pods are running fine. Let me check what ports the cost-analyzer container exposes and verify port 9090.
+
+⏺ Port 9090 is exposed by cost-model container. Let me now try the port-forward and capture the exact error.
+
+⏺ Found the root cause. The error shows connection refused when trying to connect to localhost:9090 inside the pod's network namespace. Let me verify what the cost-model container is actually listening on.
+
+⏺ Now I have the full picture. Here's the diagnosis:
+
+  Root Cause
+  The port-forward fails because port 9090 is not listening inside the cost-analyzer-cost-analyzer deployment. The error from kubectl is explicit:
+
+  failed to connect to localhost:9090 inside namespace "...": connection refused
+
+  Here's what's actually listening across the kubecost deployments:
+  ┌───────────────────────────────────────────────┬────────────────────────────────┬──────────────────┐
+  │                  Deployment                   │           Container            │      Ports       │
+  ├───────────────────────────────────────────────┼────────────────────────────────┼──────────────────┤
+  │ cost-analyzer-cost-analyzer                   │ cost-model                     │ 8080, 8443, 9003 │
+  ├───────────────────────────────────────────────┼────────────────────────────────┼──────────────────┤
+  │ cost-analyzer-cost-analyzer                   │ cost-analyzer-frontend (nginx) │ 8080             │
+  ├───────────────────────────────────────────────┼────────────────────────────────┼──────────────────┤
+  │ cost-analyzer-cost-analyzer-prometheus-server │ prometheus                     │ 9090 ✓           │
+  └───────────────────────────────────────────────┴────────────────────────────────┴──────────────────┘
+  Port 9090 belongs to the Prometheus server deployment, not the cost-analyzer deployment. The Helm chart declares port 9090 in the cost-analyzer-cost-analyzer
+  container spec, but the running application does not bind to it — it uses port 9003 (cost-model API) and 8080 (nginx UI frontend) instead. This is a change in
+  newer Kubecost versions where the UI and API were split.
+
+  Fix
+
+  Depending on what you want to access:
+
+  Kubecost UI (nginx frontend):
+  kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090:8080
+  Then open http://localhost:9090.
+
+  Kubecost cost-model API:
+  kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9003
+
+  Prometheus directly:
+  kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer-prometheus-server 9090
+```
+
+Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser. From the left main menu, select
+**Profiles**. Then, select the row for the tutorial profile.
+
+Select the **Kubecost** pack layer. View the configuration of the pack values. The cluster profile has configured the
+pack to expose the service on port 8080. The solution identified by the Palette MCP server is correct.
+
+```yaml {4}
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+  # nodePort:
+  labels: {}
+  annotations: {}
+```
+
+Navigate back to your terminal window and change the port forward command to forward the service port 8080, as suggested
+by the response from your MCP client.
+
+```shell
+kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+```
+
+Navigate back to your browser window and view`http://localhost:9090`. The Kubecost now successfully appears and UI
+provides you with a variety of cost visualization tools.
+
+![Image that shows the Kubecost UI](/getting-started/getting-started_update-k8s-cluster_kubecost-ui.webp)
+
+Once you are done exploring locally, you can stop the `kubectl port-forward` command by closing the terminal window it
+is executing from.
+
 ## Cleanup
+
+Use the following steps to remove all the resources you created for the tutorial.
+
+To remove the cluster, navigate to the left **Main Menu** and click on **Clusters**. Select the tutorial cluster to
+access its details page.
+
+Click on **Settings** to expand the menu, and select **Delete Cluster**.
+
+You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
+the delete step. The deletion process takes several minutes to complete.
+
+<PartialsComponent category="clusters" name="force-delete-callout" />
+
+Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you
+created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
+selection to remove the cluster profile.
 
 ## Wrap-up
