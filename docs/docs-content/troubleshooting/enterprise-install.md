@@ -10,6 +10,128 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - Traefik Ingress Controller Pods Crash on Amazon Linux 2 Nodes
+
+Traefik ingress controller DaemonSet pods may enter a `CrashLoopBackOff` state on deprecated Amazon Linux 2 (AL2) nodes
+in [self-hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) and
+[Palette VerteX](../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) Helm-based
+installations. This is caused by the non-root security context `NET_BIND_SERVICE` Linux capability configured in the
+Traefik DaemonSet, which allows non-root processes to bind to privileged ports. The `NET_BIND_SERVICE` capability is
+incompatible with the older kernel and `containerd` versions included with AL2.
+
+To fix this issue, modify the Traefik ingress controller DaemonSet to run as the root user. This allows Traefik
+processes to bind to privileged ports without needing the `NET_BIND_SERVICE` capability.
+
+:::warning
+
+This workaround changes the Traefik ingress controller to run as the root user. We recommend upgrading AL2 nodes to
+Amazon Linux 2023 (AL2023) as soon as possible and reverting this change afterward. For more information, refer to
+[Upgrade from Amazon Linux 2 to Amazon Linux 2023](https://docs.aws.amazon.com/eks/latest/userguide/al2023.html).
+
+:::
+
+### Debug Steps
+
+1. Log in to your
+   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster.
+   From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. Verify that the Traefik DaemonSet pods are in a `CrashLoopBackOff` state on AL2 nodes.
+
+   ```bash
+   kubectl get pods --namespace ingress-traefik
+   ```
+
+   ```bash title="Example output" hideClipboard
+   NAME                               READY   STATUS             RESTARTS         AGE
+   traefik-ingress-controller-dkjs5   0/1     CrashLoopBackOff   25 (4m43s ago)   107m
+   traefik-ingress-controller-nltlh   0/1     CrashLoopBackOff   25 (5m2s ago)    107m
+   traefik-ingress-controller-vctdm   0/1     CrashLoopBackOff   25 (4m40s ago)   107m
+   ```
+
+6. Confirm the error by checking the logs of a crashing pod. Replace `<pod-name>` with the name of the affected pod. If
+   the output contains `listen tcp :80: bind: permission denied`, the issue is caused by the non-root security context.
+
+   ```bash
+   kubectl logs <pod-name> --namespace ingress-traefik
+   ```
+
+   ```bash title="Example output" hideClipboard {3}
+   ... # additional output omitted for readability
+
+   2026-04-13T14:41:51Z ERR Command error error="command traefik error: error while building entryPoint web: building listener: error opening listener: listen tcp :80: bind: permission denied"
+   ```
+
+7. Edit the Traefik DaemonSet.
+
+   ```bash
+   kubectl edit daemonset traefik-ingress-controller --namespace ingress-traefik
+   ```
+
+8. Locate the pod-level `securityContext` section under `spec.template.spec`. Set `runAsNonRoot: false` and change the
+   user and group process IDs from `65532` to `0`.
+
+   ```yaml hideClipboard
+   spec:
+     template:
+       spec:
+         securityContext:
+           fsGroup: 0
+           runAsGroup: 0
+           runAsNonRoot: false
+           runAsUser: 0
+   ```
+
+9. Locate the container-level `securityContext` section under `spec.template.spec.containers` for the `controller`
+   container. Set `securityContext.runAsUser: 0` and `allowPrivilegeEscalation: true`.
+
+   ```yaml hideClipboard {4,11}
+   containers:
+     - name: controller
+       securityContext:
+         allowPrivilegeEscalation: true
+         capabilities:
+           add:
+             - NET_BIND_SERVICE
+           drop:
+             - ALL
+         readOnlyRootFilesystem: true
+         runAsUser: 0
+   ```
+
+10. Save and close the editor. Kubernetes performs a rolling update of the DaemonSet.
+
+11. Verify that all Traefik pods are running.
+
+    ```bash
+    kubectl get pods --namespace ingress-traefik --output wide
+    ```
+
+    ```bash title="Example output" hideClipboard
+    NAME                               READY   STATUS    RESTARTS   AGE
+    traefik-ingress-controller-pfktw   1/1     Running   0          14s
+    traefik-ingress-controller-w4nkq   1/1     Running   0          14s
+    traefik-ingress-controller-w9k8l   1/1     Running   0          14s
+    ```
+
+12. Confirm that Traefik is serving traffic by checking the logs of a pod on an AL2 node. Replace `<pod-name>` with the
+    name of the pod running on an AL2 node. The logs should no longer contain `permission denied` errors.
+
+    ```bash
+    kubectl logs <pod-name> --namespace ingress-traefik
+    ```
+
 ## Scenario - MongoDB Replica Pods Crash during Palette Upgrade
 
 When upgrading a self-hosted Palette instance from 4.8.35 to 4.8.37, MongoDB replica pods may crash with a
