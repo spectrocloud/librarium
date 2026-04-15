@@ -90,12 +90,11 @@ provided.
 
 ![Deployed cluster](/tutorials/ai/palette-mcp/get-started-palette-mcp_deployed-cluster.webp)
 
-Palette indicates that the cluster is deployed successfully, but the Hello Universe add-on is unable to deploy
-succesfully.
+Palette indicates that the cluster is deployed, but the Hello Universe add-on is unable to apply.
 
 ## Debug the Cluster
 
-The cluster you have deployed does not succesfully deploy the Hello Universe add-on application. In this section, uou
+The cluster you have deployed does not successfully deploy the Hello Universe add-on application. In this section, you
 will use the Palette MCP server investigate and debug these errors.
 
 Open your MCP client.
@@ -171,7 +170,7 @@ and investigate the failures.
   All other deployments across the cluster are healthy (READY matches desired count). The only issue is the bad image tag in the hello-universe deployment.
 ```
 
-The Palette MCP server idenfities that the cluster profile provides an invalid image tag for the Hello Universe
+The Palette MCP server identifies that the cluster profile provides an invalid image tag for the Hello Universe
 deployment.
 
 Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser. From the left main menu, select
@@ -213,8 +212,8 @@ Select **Confirm Updates** and then **Save Changes**.
 
 From the left main menu, select **Clusters**. Then, select the row for the tutorial cluster.
 
-The cluster has a pending update for for the fixed cluster profile. Select **Updates** to apply the cluster profile
-update. Review the changes and select **Apply Changes**.
+The cluster has a pending update for the fixed cluster profile. Select **Updates** to apply the cluster profile update.
+Review the changes and select **Apply Changes**.
 
 Wait for Palette to reconcile and apply the changes. All layers of the cluster are now successfully deployed.
 
@@ -240,9 +239,11 @@ port **9090**. If port 9090 is already taken on your machine, you can choose a d
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
 ```
 
-Open your browser window and navigate to `http://localhost:9090`. The Kubecost UI does not display succesfully. There is
-another issue with the deployed cluster profile. Navigate back to your terminal and check the output of the port-forward
-command. The output shows that it cannot connect to port `9090`.
+Open your browser window and navigate to `http://localhost:9090`. The Kubecost UI does not load. There is another issue
+with the deployed cluster profile.
+
+Navigate back to your terminal and check the output of the port-forward command. The log lines show that kubectl cannot
+connect to port `9090`.
 
 ```shell hideClipboard title="Example Output"
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
