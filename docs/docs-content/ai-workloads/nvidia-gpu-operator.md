@@ -8,11 +8,10 @@ tags: ["gpu", "nvidia", "ai workloads", "cuda", "packs", "gpu operator"]
 sidebar_position: 10
 ---
 
-You can use the
-[NVIDIA GPU Operator](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai) pack to
-simplify the provisioning and management of GPU infrastructure for AI workloads on your Palette-managed clusters. This
-pack bundles the GPU Operator alongside supporting components for driver management, node labeling, and monitoring.
-Follow this guide to add the pack to a cluster profile and verify that GPU workloads can run on your nodes.
+You can use the [NVIDIA GPU Operator](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai)
+pack to simplify the provisioning and management of GPU infrastructure for AI workloads on your Palette-managed
+clusters. This pack bundles the GPU Operator alongside supporting components for driver management, node labeling, and
+monitoring. Follow this guide to add the pack to a cluster profile and verify that GPU workloads can run on your nodes.
 
 ## Prerequisites
 
