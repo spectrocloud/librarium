@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 20
 sidebar_label: "Integrate Palette MCP in an Agentic Workflow"
 title: "Integrate Palette MCP in an Agentic Workflow"
 description:

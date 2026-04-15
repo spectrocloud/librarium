@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 10
 sidebar_label: "Get Started with the Palette MCP Server"
 title: "Get Started with the Palette MCP Server"
 description: "Learn how to use the Palette MCP Server to connect to and debug cluster deployments."
@@ -8,7 +8,34 @@ toc_max_heading_level: 2
 category: ["tutorial"]
 ---
 
-YOLO THE INTRO HERE
+The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) provides an abstraction layer over the
+Palette API, allowing you to interact with Kubernetes resources through natural language. It interprets user intent,
+translates it into appropriate API requests, and returns structured responses that are easy for LLMs to process. By
+handling the complexity of the underlying API, it allows language models to interact with Palette in a consistent and
+reliable way without requiring that users have a detailed knowledge of the API itself.
+
+In this tutorial, you will learn how to use the Palette MCP server to debug cluster deployment issues. You will begin by
+importing a cluster profile which has some deliberate errors and use this profile to create a new Palette cluster. Then,
+you will use the Palette MCP server to debug these errors and ensure that your cluster works as expected.
+
+This tutorial uses [Amazon Web Services](https://aws.amazon.com) and
+[Claude Code](https://code.claude.com/docs/en/overview) with the Claude Sonnet 4.6 model. You can use a cloud provider
+and MCP client that suits your needs to follow along.
+
+Below is a high-level diagram of the MCP server workflow. Your MCP client interacts with the Palette MCP server, which
+directly communicates with the Palette API. The Palette MCP Server downloads the
+[kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for your cluster, which is then used by the MCP
+client to gather information about the cluster using the [kubectl](https://kubernetes.io/docs/reference/kubectl/)
+command line tool.
+
+![MCP Server operation overview](/tutorials/ai/get-started-palette-mcp_mcp-overview.webp)
+
+## MCP Server Capabilities
+
+<PartialsComponent category="palette-mcp" name="mcp-tools" />
+
+Refer to the [Palette MCP Server Operations](../../../automation/palette-mcp/palette-mcp-operations.md) page to learn
+what operations the MCP server provides.
 
 ## Prerequisites
 
@@ -21,6 +48,9 @@ YOLO THE INTRO HERE
 
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
+
+  - Kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) for
+    additional guidance.
 
 - A Palette account.
 
@@ -373,7 +403,8 @@ Open your MCP client.
 
 Send a query asking to download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for one of
 your running clusters. For example, you can ask "Download the kubeconfig file for the `<cluster-name>` Palette cluster."
-Replace the placeholder with your cluster name.
+Replace the placeholder with your cluster name. The Palette MCP server uses the `getKubeconfig` tool to download the
+kubeconfig file for you cluster from Palette.
 
 ```shell hideClipboard title="Example Output"
 ❯ Download the kubeconfig file for the `get-started-palette-mcp-cluster` Palette cluster.
@@ -403,7 +434,8 @@ Replace the placeholder with your cluster name.
 
 Investigate if there any failing pods or deployments on your cluster. For example, you can ask "Run kubectl to connect
 to the `<cluster-name>` Palette cluster and list any failing pods or deployments." Replace the placeholder with your
-cluster name.
+cluster name. Your MCP client uses the previously downloaded kubeconfig file to connect to your cluster using kubectl
+and investigate the failures.
 
 ```shell hideClipboard title="Example Output"
 ❯ Run kubectl to connect to the `get-started-palette-mcp-cluster` Palette  cluster and list any failing pods or deployments.
@@ -528,7 +560,8 @@ Navigate back to your MCP client.
 Send a query asking the Palette MCP server to investigate why the port-forward command does not work as expected. For
 example, you can ask "Investigate why the following command
 `kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090` fails to connect to a pod in the
-`<cluster-name>` Palette cluster." Replace the placeholder with your cluster name.
+`<cluster-name>` Palette cluster." Replace the placeholder with your cluster name. Your MCP client uses the downloaded
+kubeconfig file to connect to your cluster using kubectl and investigate the cause of the error.
 
 ```shell hideClipboard title="Example Output"
 ❯ Investigate why the following command `kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090` fails to connect to a pod in the `get-started-palette-mcp-cluster` Palette cluster.
@@ -642,3 +675,11 @@ created and click on the **three-dot Menu** to display the **Delete** button. Se
 selection to remove the cluster profile.
 
 ## Wrap-up
+
+In this tutorial, you imported a cluster profile that had two errors and deployed a cluster using this cluster profile.
+Then, you used the Palette MCP Server to debug the cluster, understand the cause of the errors, and identify fixes to
+the errors encountered. This is a common engineering workflow that can be greatly streamlined using the MCP Server.
+
+The Palette MCP Server has many more capabilities than those we have explored in this tutorial. We encourage you to
+check out [Integrate Palette MCP in an Agentic Workflow](./integrate-palette-mcp-agentic.md) tutorial to explore a more
+advanced usecase for the tools in the MCP server.
