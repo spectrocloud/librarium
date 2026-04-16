@@ -1,0 +1,130 @@
+name: URL checks
+
+on:
+  schedule:
+    - cron: '0 14 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: url-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "24"
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+
+jobs:
+  url-checks:
+    name: Broken URL check
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: checkout
+        name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: URL Checker
+        run: make verify-url-links-ci
+
+      - name: URL Rate Limit Checker
+        run: make verify-rate-limited-links-ci
+
+      - name: Check for Broken Developer Portal Links
+        run: make verify-developer-portal-links
+        env:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Post Comment
+        run: |
+          cd scripts
+          ./url-checker.sh
+        env:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The url-checks job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+
+  versioned-url-check:
+    name: Versioned URL check
+    runs-on: ubuntu-latest
+    needs: url-checks
+    if: ${{ always() }}
+
+    steps:
+      - id: checkout
+        name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Docusaurus (generate pack data)
+        run: |
+          touch .env
+          make build-ci
+
+      - name: Generate versioned links report
+        run: bash scripts/generate-versioned-links-report.sh
+
+      - name: Check versioned relative links
+        run: bash scripts/versioned-url-checker.sh
+        env:
+          PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+          REPORT_FILE: ${{ github.workspace }}/versioned_links_report.json
+          PACKS_DATA_FILE: ${{ github.workspace }}/.docusaurus/packs-integrations/api_pack_response.json
+          DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRACTIONS }}
+          DISABLE_SECURITY_INTEGRATIONS: "false"
+          SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+          STRICT_PACK_VALIDATION: "true"
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The versioned-url-check job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
