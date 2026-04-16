@@ -10,11 +10,7 @@ Palette supports AI workloads across data center and Edge environments. To enabl
 curated packs that handle GPU driver installation, node feature detection, and runtime integration. This means your
 nodes are ready to schedule GPU workloads without manual setup.
 
-These guides cover how to provision and configure the infrastructure needed to run AI workloads on your Palette-managed
-clusters and devices.
-
-For a higher level AI platform experience built on top of that infrastructure, refer to
-[PaletteAI](https://docs.palette-ai.com/) for deploying and operating AI platforms on GPU-enabled clusters.
+These guides cover how to provision and configure the infrastructure needed to run AI workloads on your Palette-managed clusters and devices. For an elevated AI platform experience, where platform engineers deploy and manage GPU-enabled clusters and application engineers independently deploy AI/ML applications and models on those clusters, refer to our [PaletteAI](https://docs.palette-ai.com/) documentation.
 
 ## Resources
 
