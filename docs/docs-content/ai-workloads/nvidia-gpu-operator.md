@@ -20,8 +20,10 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 - <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack version
   25.10.0 or later available in a Palette-registered registry. Refer to [link] for information on adding registries to
   Palette.
-- A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal servers with GPUs
-- At least one node equipped with a dedicated NVIDIA graphics card (discrete GPU). Embedded products such as NVIDIA Jetson are not supported.
+- A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal
+  servers with GPUs
+- At least one node equipped with a dedicated NVIDIA graphics card (discrete GPU). Embedded products such as NVIDIA
+  Jetson are not supported.
 - A supported OS and Kubernetes version. Refer to the
   [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
   page for details.
@@ -130,9 +132,13 @@ kubectl delete pod gpu-test
 ## Next Steps
 
 Once you have verified GPU workloads can run on your cluster, you can review the
-<VersionedLink text="NVIDIA GPU Operator" url="integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page for a full list of configurable values and make the necessary modifications to fit your needs.
 
-For additional information on the GPU Operator itself, including advanced configurations and known limitations, refer to the
-[NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html).
+<VersionedLink text="NVIDIA GPU Operator" url="integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page for a full
+list of configurable values and make the necessary modifications to fit your needs.
 
-If you plan on regularly running GPU-intensive applications on clusters, such as AI/ML applications and models, consider using [PaletteAI](https://docs.palette-ai.com/) to streamline the deployment and management of GPU-enabled clusters and create predefined, reusable application bundles that application engineers use to deploy workloads as needed. 
+For additional information on the GPU Operator itself, including advanced configurations and known limitations, refer to
+the [NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html).
+
+If you plan on regularly running GPU-intensive applications on clusters, such as AI/ML applications and models, consider
+using [PaletteAI](https://docs.palette-ai.com/) to streamline the deployment and management of GPU-enabled clusters and
+create predefined, reusable application bundles that application engineers use to deploy workloads as needed.
