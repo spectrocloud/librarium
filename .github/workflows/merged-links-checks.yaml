@@ -11,6 +11,18 @@ concurrency:
 
 env:
   NODE_VERSION: "24"
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
 jobs:
   url-checks:
@@ -82,9 +94,15 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Build Docusaurus (generate pack data)
+        run: |
+          touch .env
+          make build-ci
 
       - name: Generate versioned links report
         run: bash scripts/generate-versioned-links-report.sh
@@ -92,7 +110,13 @@ jobs:
       - name: Check versioned relative links
         run: bash scripts/versioned-url-checker.sh
         env:
+          PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
           REPORT_FILE: ${{ github.workspace }}/versioned_links_report.json
+          PACKS_DATA_FILE: ${{ github.workspace }}/.docusaurus/packs-integrations/api_pack_response.json
+          DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRACTIONS }}
+          DISABLE_SECURITY_INTEGRATIONS: "false"
+          SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+          STRICT_PACK_VALIDATION: "true"
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
 
       - name: Failure Slack Notification
