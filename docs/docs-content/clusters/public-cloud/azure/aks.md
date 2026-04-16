@@ -170,28 +170,40 @@ to learn more about the ports used for communication.
             <summary> Microsoft Entra ID </summary>
 
             If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following configuration
-            template and add the configuration to your Kubernetes cluster profile layer.
+            template and add the configuration to your Kubernetes cluster profile layer. This configuration enables [Kubernetes Role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) for Kubernetes authorization.
 
                 ```yaml
                 managedControlPlane:
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                 ```
 
-                Additionally, if you want to disable
-                [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
-                `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
-                `managedControlPlane.aadProfile` section.
+            Alternatively, you can set `enableAzureRBAC: true` to use [Azure RBAC](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview) for Kubernetes authorization. This setting is disabled by default. Add the following configuration to your Kubernetes cluster profile layer.
+
+                ```yaml {4}
+                managedControlPlane:
+                  aadProfile:
+                    managed: true
+                    enableAzureRBAC: true
+                    adminGroupObjectIDs:
+                      - <admin-group-object-id-1>
+                      - <admin-group-object-id-2>
+                ```
+
+            Additionally, if you want to disable
+            [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
+            `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
+            `managedControlPlane.aadProfile` section. Ensure that the service principle for the Azure cloud account configured in Palette is included in the list of `adminGroupObjectIDs`.
 
                 ```yaml {7}
                 managedControlPlane:
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                     disableLocalAccounts: true
                 ```

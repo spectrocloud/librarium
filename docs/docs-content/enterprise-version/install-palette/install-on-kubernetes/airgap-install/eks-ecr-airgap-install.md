@@ -823,6 +823,8 @@ Finally, install Palette. Image Swap handles all image rewriting automatically, 
     `ingress-nginx`, `ingress-traefik`, `jet-system`, and `ui-system` namespaces are in a `Running` or `Completed`
     state.
 
+    <PartialsComponent category="self-hosted" name="install-on-kubernetes-al2" edition="Palette" />
+
     ```shell
     kubectl get pods --all-namespaces | grep --extended-regexp '(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)'
     ```
