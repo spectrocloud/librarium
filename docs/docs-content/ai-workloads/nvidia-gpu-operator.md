@@ -29,7 +29,7 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 ![NVIDIA GPU Operator architecture](/ai-workloads/nvidia-gpu-operator_architecture.webp)
 
-## Add the Pack to a Cluster Profile
+## Create Add-on Cluster Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com) and select **Profiles** from the left main menu.
 
