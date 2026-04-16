@@ -73,7 +73,7 @@ kubectl describe node <gpu-node-name> | grep nvidia.com/gpu
 
 The value of `nvidia.com/gpu` indicates the number of GPUs available for scheduling on that node.
 
-```text hideClipboard
+```text hideClipboard title="Example output"
 nvidia.com/gpu:  1
 ```
 
