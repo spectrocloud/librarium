@@ -20,11 +20,11 @@ installations, the cluster's **Virtual Machines** tab or the VMO Graphical UI (G
 To fix these issues, you must adjust two default ingress configurations:
 
 - [**Rate Limiting**](#adjust-rate-limit) - The `Ingress` resource `hubble-foreq-ingress-resource` may have a
-  `limit-rps` annotation with a value that is too low, causing the VMO GUI to get stuck when loading. This issue does
-  not apply to environments installed with the [Palette CLI](../automation/palette-cli/palette-cli.md) or environments
-  installed with the
-  [Palette Helm chart](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) beginning
-  with Palette version 4.6.23.
+  `limit-rps` annotation with a value that is too low, causing the VMO GUI to get stuck when loading. Beginning with
+  Palette version 4.5.20, this issue does not apply to self-hosted environments installed with the
+  [Palette CLI](../automation/palette-cli/palette-cli.md). Beginning with Palette version 4.6.23, this issue does not
+  apply to self-hosted environments installed with the
+  [Palette Helm chart](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md).
 
 - [**Content Security Policy (CSP)**](#adjust-csp) - The root cause is a `Content-Security-Policy` header with
   `frame-ancestors` set to `https://*.spectrocloud.com`, which blocks the VMO GUI from loading when your Palette
@@ -37,11 +37,11 @@ To fix these issues, you must adjust two default ingress configurations:
 
 This procedure does not apply to the following self-hosted environments:
 
-- Environments installed with the [Palette CLI](../automation/palette-cli/palette-cli.md).
+- Beginning with Palette version 4.5.20, self-hosted environments installed with the
+  [Palette CLI](../automation/palette-cli/palette-cli.md).
 
-- Environments installed with the
-  [Palette Helm chart](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) beginning
-  with Palette version 4.6.23.
+- Beginning with Palette version 4.6.23, self-hosted environments installed with the
+  [Palette Helm chart](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md).
 
 :::
 
