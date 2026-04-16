@@ -21,8 +21,6 @@ The following components have been updated for Palette version 4.8.6 - 4.8.51.
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.51  |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.51  |
 
-### Bug Fixes
-
 ### Packs
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
