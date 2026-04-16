@@ -12,25 +12,17 @@ The following are common scenarios that you may encounter when using Virtual Mac
 
 ## Scenario - VMO Loading Errors in Self-Hosted Palette
 
-On [self-hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) and
-[Palette VerteX](../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) Helm-based
-installations, the cluster's **Virtual Machines** tab or the VMO Graphical UI (GUI) may fail to load.
+On [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
+installations, the cluster's **Virtual Machines** tab or the VMO Graphical UI (GUI) may fail to load. This issue applies
+to all installation methods but does not apply to self-hosted environments that use an IP address instead of a domain
+name.
+
+The root cause is a `Content-Security-Policy` header with `frame-ancestors` set to `https://*.spectrocloud.com`, which
+blocks the VMO GUI from loading when your Palette instance uses a different domain name. This header is present in both
+Traefik Middleware resources and Nginx Ingress annotations, depending on the version of Palette you are running.
 
 ### Debug Steps
 
-To fix these issues, you must adjust two default ingress configurations. If your self-hosted environment uses an
-Internet Protocol (IP) address instead of a domain name, only the [Rate Limiting](#adjust-rate-limit) fix is applicable.
-
-- [**Rate Limiting**](#adjust-rate-limit) - The `IngressRoute` resource `hubble-foreq-ingress-resource` may reference a
-  rate-limit `Middleware` resource with a value that is too low, causing the VMO GUI to get stuck when loading.
-
-- [**Content Security Policy (CSP)**](#adjust-csp) - Three Traefik `Middleware` resources contain a
-  `Content-Security-Policy` header with `frame-ancestors` set to `https://*.spectrocloud.com`. This blocks the VMO GUI
-  from loading when your Palette instance uses a different domain name. This issue does not apply to self-hosted
-  environments that use an IP address instead of a domain name.
-
-#### Adjust Rate Limit
-
 1. Log in to your
    [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
    [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
@@ -45,108 +37,11 @@ Internet Protocol (IP) address instead of a domain name, only the [Rate Limiting
    export KUBECONFIG=<path-to-kubeconfig>
    ```
 
-5. Verify that the `IngressRoute` resource `hubble-foreq-ingress-resource` references the `Middleware` resource
-   `rate-limit-10000rps`.
+<Tabs>
 
-   ```shell
-   kubectl get ingressroute hubble-foreq-ingress-resource --namespace hubble-system --output yaml
-   ```
+<TabItem label="Traefik (>= 4.8.37)" value="traefik">
 
-   ```yaml title="Example output" {11} hideClipboard
-   ... # additional output omitted for readability
-   spec:
-      entryPoints:
-      - web
-      - websecure
-      routes:
-      - kind: Rule
-         match: PathPrefix(`/v1/tenantApps`)
-         middlewares:
-         - name: foreq-security-headers
-         - name: rate-limit-10000rps
-         services:
-         - name: foreq-service
-            port: 443
-            scheme: https
-            serversTransport: foreq-service-https
-   ```
-
-   If it references a lower rate limit, such as `rate-limit-10rps`, update it to `rate-limit-10000rps`.
-
-   ```shell
-   kubectl patch ingressroute hubble-foreq-ingress-resource --namespace hubble-system --type json \
-   --patch '[{"op": "replace", "path": "/spec/routes/0/middlewares/1/name", "value": "rate-limit-10000rps"}]'
-   ```
-
-6. Verify that the `Middleware` resource `rate-limit-10000rps` exists and has a `spec.rateLimit.average` of `10000`.
-
-   ```shell
-   kubectl get middleware rate-limit-10000rps --namespace hubble-system --output yaml
-   ```
-
-   ```yaml title="Example output" hideClipboard {17}
-   apiVersion: traefik.io/v1alpha1
-   kind: Middleware
-   metadata:
-     annotations:
-       meta.helm.sh/release-name: hubble
-       meta.helm.sh/release-namespace: default
-     creationTimestamp: "2026-04-07T15:03:54Z"
-     generation: 1
-     labels:
-       app.kubernetes.io/managed-by: Helm
-     name: rate-limit-10000rps
-     namespace: hubble-system
-     resourceVersion: "36011"
-     uid: 7d90e97c-ff6e-462d-8643-5d08db2bda7b
-   spec:
-     rateLimit:
-       average: 10000
-       burst: 20000
-       period: 1s
-   ```
-
-   If the `Middleware` resource `rate-limit-10000rps` does not exist or has a different value, use the following command
-   to create or update it.
-
-   ```shell
-   cat <<EOF | kubectl apply --filename -
-   apiVersion: traefik.io/v1alpha1
-   kind: Middleware
-   metadata:
-   name: rate-limit-10000rps
-   namespace: hubble-system
-   spec:
-   rateLimit:
-      average: 10000
-      period: 1s
-      burst: 20000
-   EOF
-   ```
-
-#### Adjust CSP
-
-:::info
-
-This procedure does not apply to self-hosted environments that use an IP address instead of a domain name.
-
-:::
-
-1. Log in to your
-   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
-   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
-
-2. From the left main menu, select **Enterprise Cluster**.
-
-3. On the **Overview** tab, download the **Kubernetes Config File**.
-
-4. From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
-
-   ```shell
-   export KUBECONFIG=<path-to-kubeconfig>
-   ```
-
-5. Verify the current `Content-Security-Policy` value for the following `Middleware` resources.
+5. Verify the current `Content-Security-Policy` value for the following Traefik `Middleware` resources.
 
    ```shell
    kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
@@ -233,6 +128,102 @@ This procedure does not apply to self-hosted environments that use an IP address
             Content-Security-Policy: frame-ancestors 'self' https://*.docs-test.spectrocloud.com
             https://docs-test.spectrocloud.com
    ```
+
+</TabItem>
+
+<TabItem label="Nginx (< 4.8.37)" value="nginx">
+
+5. Verify the current `Content-Security-Policy` value in the `configuration-snippet` annotation of the following Nginx
+   `Ingress` resources.
+
+   ```shell
+   kubectl get ingress optic-ingress-resource --namespace ui-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress spectro-cp-ingress-resource --namespace cp-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress hubble-foreq-ingress-resource --namespace hubble-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```text title="Example output" hideClipboard
+   more_set_headers "Content-Security-Policy: frame-ancestors 'self' https://*.spectrocloud.com";
+   proxy_ssl_name $proxy_host;
+   ```
+
+6. Update the `configuration-snippet` annotation on each Ingress resource by replacing `https://*.spectrocloud.com` with
+   your root domain. Replace `<root-domain>` in the following commands with your Palette root domain.
+
+   :::tip
+
+   Use the following command to identify your root domain.
+
+   ```shell
+   kubectl get configmap root-domain-info --namespace hubble-system --output jsonpath='{.data.apiEndpoint}'
+   ```
+
+   :::
+
+   ```shell
+   kubectl annotate ingress optic-ingress-resource --namespace ui-system --overwrite \
+   nginx.ingress.kubernetes.io/configuration-snippet=$'more_set_headers "Content-Security-Policy: frame-ancestors \'self\' https://*.<root-domain> https://<root-domain>";
+   proxy_ssl_name $proxy_host;'
+   ```
+
+   ```shell
+   kubectl annotate ingress spectro-cp-ingress-resource --namespace cp-system --overwrite \
+   nginx.ingress.kubernetes.io/configuration-snippet=$'more_set_headers "Content-Security-Policy: frame-ancestors \'self\' https://*.<root-domain> https://<root-domain>";
+   proxy_ssl_name $proxy_host;'
+   ```
+
+   ```shell
+   kubectl annotate ingress hubble-foreq-ingress-resource --namespace hubble-system --overwrite \
+   nginx.ingress.kubernetes.io/configuration-snippet=$'proxy_ssl_name $proxy_host;
+   add_header Content-Security-Policy "frame-ancestors \'self\' https://*.<root-domain> https://<root-domain>;";
+   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+   add_header X-Content-Type-Options "nosniff" always;
+   add_header X-XSS-Protection "1; mode=block" always;
+   add_header Referrer-Policy "same-origin" always;'
+   ```
+
+   :::warning
+
+   The `hubble-foreq-ingress-resource` has additional security headers in its `configuration-snippet` annotation. The
+   command above preserves all existing headers. Do not remove them.
+
+   :::
+
+7. Verify the updated values. Each Ingress resource should display a `Content-Security-Policy` header with
+   `frame-ancestors 'self' https://*.<root-domain> https://<root-domain>` in its `configuration-snippet` annotation.
+
+   ```shell
+   kubectl get ingress optic-ingress-resource --namespace ui-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress spectro-cp-ingress-resource --namespace cp-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress hubble-foreq-ingress-resource --namespace hubble-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```text title="Example output" hideClipboard
+   more_set_headers "Content-Security-Policy: frame-ancestors 'self' https://*.docs-test.spectrocloud.com https://docs-test.spectrocloud.com";
+   proxy_ssl_name $proxy_host;
+   ```
+
+</TabItem>
+
+</Tabs>
 
 ## Scenario - Virtual Machine (VM) Migration Plans in Unknown State
 
