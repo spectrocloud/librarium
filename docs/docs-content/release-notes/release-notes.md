@@ -27,6 +27,13 @@ The following component updates are applicable to this release:
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2726 -->
+
+- The `iam:ListRoleTags` permission has been added to the
+  [Core IAM Policies](../clusters/public-cloud/aws/required-iam-policies/core-iam-policies.md) as part of the
+  **PaletteDeploymentPolicy**. This permission allows Palette to propagate tags to IAM Roles for Service Accounts (IRSA)
+  roles it creates.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7485 -->
 
 - Kubeconfig file contents for workload clusters can now be copied to the clipboard by selecting the **Copy** icon
