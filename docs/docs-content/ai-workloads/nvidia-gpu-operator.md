@@ -106,7 +106,7 @@ Wait for the pod to complete.
 kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/gpu-test --timeout=120s
 ```
 
-Then retrieve the logs.
+4. Retrieve the logs from the `gpu-test` pod to ensure the test was successful.
 
 ```bash
 kubectl logs gpu-test
