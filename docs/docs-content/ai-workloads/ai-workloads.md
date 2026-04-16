@@ -6,7 +6,7 @@ hide_table_of_contents: false
 tags: ["ai workloads", "gpu", "nvidia", "edge", "machine learning"]
 ---
 
-Palette supports AI workloads across data center and edge environments. To enable GPU workloads, Palette provides
+Palette supports AI workloads across data center and Edge environments. To enable GPU workloads, Palette provides
 curated packs that handle GPU driver installation, node feature detection, and runtime integration. This means your
 nodes are ready to schedule GPU workloads without manual setup.
 
