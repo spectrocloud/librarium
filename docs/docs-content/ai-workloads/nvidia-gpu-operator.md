@@ -22,7 +22,7 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
   Palette.
 - A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal servers with GPUs
 - At least one node equipped with a dedicated NVIDIA graphics card (discrete GPU). Embedded products such as NVIDIA Jetson are not supported.
-- A supported operating system and Kubernetes version. Refer to the
+- A supported OS and Kubernetes version. Refer to the
   [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
   page for details.
 - [containerd](https://containerd.io/) or [CRI-O](https://cri-o.io/) container runtime.
