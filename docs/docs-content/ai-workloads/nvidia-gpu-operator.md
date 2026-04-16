@@ -16,7 +16,9 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 ## Prerequisites
 
-- A Palette account with permissions to create and manage cluster profiles and clusters.
+- A Palette account with permissions to create and manage cluster profiles and clusters. Refer to
+  <VersionedLink text="Roles and Permissions" url="/user-management/palette-rbac/resource-scope-roles-permissions" />
+  for details.
 - <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack version
   25.10.0 or later available in a Palette-registered registry. Refer to [link] for information on adding registries to
   Palette.
