@@ -129,12 +129,10 @@ kubectl delete pod gpu-test
 
 ## Next Steps
 
-Now that GPU workloads can run on your cluster, you can review the
-[pack page](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai) for the full list of
-configurable values.
+Once you have verified GPU workloads can run on your cluster, you can review the
+<VersionedLink text="NVIDIA GPU Operator" url="integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page for a full list of configurable values and make the necessary modifications to fit your needs.
 
-For a deeper reference on the operator itself, including advanced configuration and known limitations, refer to the
+For additional information on the GPU Operator itself, including advanced configurations and known limitations, refer to the
 [NVIDIA GPU Operator documentation](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html).
 
-If you are building AI platforms on top of GPU-enabled Palette infrastructure, refer to
-[PaletteAI](https://docs.palette-ai.com/) for deploying and managing AI workloads on GPU-enabled clusters.
+If you plan on regularly running GPU-intensive applications on clusters, such as AI/ML applications and models, consider using [PaletteAI](https://docs.palette-ai.com/) to streamline the deployment and management of GPU-enabled clusters and create predefined, reusable application bundles that application engineers use to deploy workloads as needed. 
