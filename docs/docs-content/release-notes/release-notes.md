@@ -31,7 +31,8 @@ The following component updates are applicable to this release:
 
 - The `iam:ListRoleTags` permission has been added to the
   [Core IAM Policies](../clusters/public-cloud/aws/required-iam-policies/core-iam-policies.md) as part of the
-  **PaletteDeploymentPolicy**. This permission allows Palette to propagate tags to IAM Roles for Service Accounts (IRSA) roles it creates.
+  **PaletteDeploymentPolicy**. This permission allows Palette to propagate tags to IAM Roles for Service Accounts (IRSA)
+  roles it creates.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7485 -->
 
