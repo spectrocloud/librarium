@@ -20,7 +20,7 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 - <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack version
   25.10.0 or later available in a Palette-registered registry. Refer to [link] for information on adding registries to
   Palette.
-- A cluster deployed on VMs with GPU passthrough, VMs with NVIDIA vGPUs, or bare metal.
+- A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal servers with GPUs
 - At least one node equipped with a discrete NVIDIA GPU. Embedded products such as NVIDIA Jetson are not supported.
 - A supported operating system and Kubernetes version. Refer to the
   [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
