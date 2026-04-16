@@ -29,7 +29,6 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 - A supported OS and Kubernetes version. Refer to the
   [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
   page for details.
-- [containerd](https://containerd.io/) or [CRI-O](https://cri-o.io/) container runtime.
 
 ![NVIDIA GPU Operator architecture](/ai-workloads/nvidia-gpu-operator_architecture.webp)
 
