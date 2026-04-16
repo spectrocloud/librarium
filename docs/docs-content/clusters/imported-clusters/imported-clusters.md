@@ -8,71 +8,63 @@ sidebar_custom_props:
 tags: ["clusters", "imported clusters"]
 ---
 
-Existing Kubernetes clusters not deployed through Palette can be imported into Palette for visibility, limited Day -2
-management, and additional capabilities such as application lifecycle management. You can import Kubernetes clusters
-from various infrastructure providers, such as public and private clouds and bare-metal environments.
+You can import existing Kubernetes clusters that were not deployed through Palette for visibility, limited Day-2
+management, and additional capabilities such as application lifecycle management. Palette supports importing clusters
+from various infrastructure providers, including public and private clouds and bare-metal environments.
 
-Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality
-because Palette understands how to interact with the infrastructure provider's API. Refer to [Limitations](#limitations)
-for details on what functionality may be missing from generic or cloud-specific clusters when imported.
+Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters provide greater visibility
+into the underlying infrastructure, such as networking details, availability zones, and instance metadata, because
+Palette understands how to interact with the infrastructure provider's API. Refer to [Limitations](#limitations) for
+details on what functionality may differ between generic and cloud-specific imported clusters.
 
-The generic type is for a cluster that is deployed in an environment where Palette lacks integration with the underlying
-infrastructure provider's API. Palette can support basic operations for generic clusters, such as reporting metrics,
-conducting scans, scheduling backups, and applying and managing add-on profiles. However, Day-2 activities are not
-supported in generic clusters.
+The generic type is for clusters deployed in environments where Palette does not have integration with the underlying
+infrastructure provider's API. Palette supports basic operations for generic clusters, such as reporting metrics,
+conducting scans, scheduling backups, and applying and managing add-on profiles. Day-2 activities are not supported in
+generic clusters.
 
-Refer to the [Supported Infrastructure Providers](imported-clusters.md#supported-infrastructure-providers) section to
-learn more about supported infrastructure environments.
+Refer to the [Supported Infrastructure Providers](#supported-infrastructure-providers) section to learn more about
+supported infrastructure environments.
 
-To get started with a cluster import, refer to the [Import a Cluster](cluster-import.md) guide to learn more.
+To get started, refer to the [Import a Cluster](cluster-import.md) guide.
 
 ## Import Modes
 
-To determine Palette's control over the imported cluster, you can choose the management mode you prefer. Refer to the
-table below for more information on each mode.
+When importing a cluster, you choose the management mode that determines the level of control Palette has over the
+cluster.
 
-| Mode            | Description                                                                                                                                                                                            |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Read-only       | This mode allows you to access information about the cluster, such as event logs, cost, and health checks. The read-only mode does not support Day-2 activities, nor custom HTTP proxy configurations. |
-| Full Permission | This mode provides full cluster management, depending on the cluster, generic, or cloud-specific. This mode also supports the ability to deploy add-on cluster profiles.                               |
+| **Mode**        | **Description**                                                                                                                                                      |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Read-only       | Provides access to cluster information such as event logs, cost, and health checks. This mode does not support Day-2 activities or custom HTTP proxy configurations. |
+| Full Permission | Provides full cluster management capabilities based on the cluster type (generic or cloud-specific). This mode also supports deploying add-on cluster profiles.      |
 
 ## Supported Infrastructure Providers
 
 The following infrastructure providers are supported for cluster imports. If an environment is not listed below, select
 the **Generic** type when importing a cluster.
 
-| Infrastructure Provider | Type           |
-| ----------------------- | -------------- |
-| AWS                     | Cloud Specific |
-| Azure                   | Cloud Specific |
-| Google Cloud Platform   | Cloud Specific |
-| VMware                  | Cloud Specific |
-| OpenShift               | Cloud Specific |
-| AWS EKS-Anywhere        | Cloud Specific |
-| Generic                 | Generic        |
-
-<br />
+| **Infrastructure Provider** | **Type**       |
+| --------------------------- | -------------- |
+| AWS IaaS                    | Cloud Specific |
+| Azure IaaS                  | Cloud Specific |
+| GCP IaaS                    | Cloud Specific |
+| Generic                     | Generic        |
 
 ### Self-Hosted Support
 
-Self-hosted Palette also supports importing clusters. You must ensure network connectivity is available between the
-target import cluster and the Palette instance.
-
-<br />
+Self-hosted Palette also supports importing clusters. Ensure network connectivity is available between the target import
+cluster and the Palette instance.
 
 ## Limitations
 
 ### All Imported Clusters
 
-A few restrictions apply to all cluster imports that you need to be aware of before importing a cluster.
+The following restrictions apply to all imported clusters.
 
-| Limitation                 | Description                                                                                                                                                                                                                                                                                                    |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Full Cluster Profile usage | You cannot use a full cluster profile. You are limited to using add-on profiles when deploying cluster profiles to imported clusters. This does not include full cluster profiles that are specifically created for [EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md). |
-| Kubeconfig file access     | You cannot download the cluster's kubeconfig file from Palette. You must use the underlying infrastructure provider to access the kubeconfig file.                                                                                                                                                             |
-| HTTP Proxy Configuration   | You cannot configure HTTP proxy settings for imported clusters in **Read-only** mode. Import the cluster using **Full Permission** mode.                                                                                                                                                                       |
-
-<br />
+| **Limitation**             | **Description**                                                                                                                                                                                                                                                  |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Full Cluster Profile usage | You cannot use a full cluster profile. Only add-on profiles are supported for imported clusters. This does not include full cluster profiles specifically created for [EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md). |
+| Kubeconfig file access     | You cannot download the kubeconfig file from Palette. Use the underlying infrastructure provider to access the kubeconfig file.                                                                                                                                  |
+| HTTP Proxy Configuration   | You cannot configure HTTP proxy settings for imported clusters in **Read-only** mode. Import the cluster using **Full Permission** mode.                                                                                                                         |
 
 :::warning
 
@@ -81,17 +73,19 @@ operations that require Palette to have knowledge of the underlying infrastructu
 
 :::
 
-<br />
-
 ### Generic Clusters
 
-- Palette displays limited metadata for imported generic clusters when compared with cloud-specific clusters. The
-  metadata displayed for generic clusters are `region` and `instance type`.
+- AWS EKS-Anywhere, OpenShift, and VMware vSphere clusters are not supported.
+
+- Palette displays limited metadata for imported generic clusters compared with cloud-specific clusters. At the cluster
+  configuration level, only `region` is available. At the machine pool level, only basic compute specifications such as
+  CPU, memory, and disk size are available.
 
 ### Cloud-Specific Clusters
 
-Imported Cloud-specific clusters provide a similar experience as Palette deployed clusters but with the following
-limitations:
+Imported cloud-specific clusters provide a similar experience to Palette-deployed clusters, with better visibility into
+infrastructure details such as VPC IDs, availability zones, subnets, and security groups. However, the following
+limitations apply:
 
 - Palette cannot manage [node groups/pools](../cluster-management/node-pool.md) for imported cloud-specific clusters
   because it does not provision the nodes directly.
@@ -133,13 +127,13 @@ limitations:
 
 ## Delete Imported Cluster
 
-You can remove a cluster by following the standard cluster removal steps. Refer to the
-[Delete a Cluster](../cluster-management/remove-clusters.md) for instructions. Be aware that Palette will not delete the
-actual cluster. Palette will remove the link to the imported cluster and instruct the Palette agent to remove itself
-from the cluster and all of the agent's dependencies that were installed during the import process. To delete the
-cluster, you must manually perform the delete action in the hosting infrastructure provider.
+You can remove a cluster by following the standard cluster removal steps. Refer to
+[Delete a Cluster](../cluster-management/remove-clusters.md) for instructions. Palette does not delete the actual
+cluster. Instead, Palette removes the link to the imported cluster and instructs the Palette agent to remove itself and
+all of its dependencies that were installed during the import process. To delete the cluster, you must manually delete
+it through the hosting infrastructure provider.
 
-## Resources
+## Next Steps
 
 - [Import a Cluster](cluster-import.md)
 
