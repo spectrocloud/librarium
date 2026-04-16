@@ -14,6 +14,6 @@ These guides cover how to provision and configure the infrastructure needed to r
 
 ## Resources
 
-- [Enable AI Workloads with the NVIDIA GPU Operator Pack](./nvidia-gpu-operator.md): Add the NVIDIA GPU Operator pack to
+- [Enable AI Workloads with the NVIDIA GPU Operator Pack](./nvidia-gpu-operator.md) - Add the <VersionedLink text="NVIDIA GPU Operator" url="integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack to
   a Palette cluster profile to provision GPU nodes for AI workloads.
-- [PaletteAI](https://docs.palette-ai.com/): Deploy and manage AI platforms on GPU-enabled Palette infrastructure.
+- [PaletteAI](https://docs.palette-ai.com/) - Provision and manage GPU-optimized infrastructure and clusters, allowing application teams to deploy curated AI/ML applications and models as needed.
