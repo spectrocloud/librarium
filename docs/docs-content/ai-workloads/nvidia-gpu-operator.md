@@ -112,7 +112,7 @@ kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/gpu-test --timeout=1
 kubectl logs gpu-test
 ```
 
-```text hideClipboard title="Expected output"
+```text hideClipboard title="Example output"
 [Vector addition of 50000 elements]
 Copy input data from the host memory to the CUDA device
 CUDA kernel launch with 196 blocks of 256 threads
