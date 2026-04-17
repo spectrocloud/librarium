@@ -26,8 +26,8 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 [Roles and Permissions](/user-management/palette-rbac/resource-scope-roles-permissions) for details.
 <!-- prettier-ignore-start -->
 - <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack version
-    25.10.0 or later available in a Palette-registered registry. Refer to [Registries](/registries-and-packs/registries/) for information on adding registries to
-    Palette.
+    25.10.0 or later available in a Palette-registered registry. Refer to [Registries](/registries-and-packs/registries/) for
+    information on adding registries to Palette.
   <!-- prettier-ignore-end -->
 - A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal
   servers with GPUs. If you do not have a cluster yet, refer to [Clusters](/clusters/) for deployment guides.
@@ -62,10 +62,13 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 7. Select a **Pack Version** of **25.10.0** or later.
 
-8. Review the pack **Values**. The default values and parameters are sufficient for most deployments. For additional
-   customization options and bundled capabilities, refer to the
+<!-- prettier-ignore-start -->
 
-   <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page.
+8. Review the pack **Values**. The default values and parameters are sufficient for most deployments. For additional
+customization options and bundled capabilities, refer to the
+  <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page.
+
+<!-- prettier-ignore-end -->
 
 9. Select **Confirm & Create** to return to the **Profile Layers** page. Select **Next**.
 
