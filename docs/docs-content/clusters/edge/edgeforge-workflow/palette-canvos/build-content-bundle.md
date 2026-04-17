@@ -176,21 +176,17 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --name <bundle-name>
     ```
 
-    Use the environment variable `INCLUDE_COMPLIANCE_IMAGES` set to `true` to include additional container images required for vulnerability and compliance scanning in the content bundle.
+    Use the environment variable `INCLUDE_COMPLIANCE_IMAGES` set to `true` to include additional container images
+    required for vulnerability and compliance scanning in the content bundle.
 
-    ```shell
-    INCLUDE_COMPLIANCE_IMAGES=true palette content build --arch <bundle-architecture> \
-     --project-id <project-id> \
-     --profiles <cluster-profile-id1,cluster-profile-id2...> \
-     --name <bundle-name>
-    ```
+    `shell     INCLUDE_COMPLIANCE_IMAGES=true palette content build --arch <bundle-architecture> \      --project-id <project-id> \      --profiles <cluster-profile-id1,cluster-profile-id2...> \      --name <bundle-name>     `
 
     :::warning
 
-    If your registry enforces image signature verification, we recommend omitting the `--arch` option.  
+    If your registry enforces image signature verification, we recommend omitting the `--arch` option.
     This is because image signatures are tied to the image's digest, and that digest depends on the manifest type.
 
-    When you sign a multi-architecture image, the signature is generated on its index manifest.  
+    When you sign a multi-architecture image, the signature is generated on its index manifest.
     If you later specify `--arch`, the CLI resolves each image to a single-architecture manifest, which produces a
     different digest.
 
