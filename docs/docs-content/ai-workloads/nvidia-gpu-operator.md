@@ -23,7 +23,8 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
   25.10.0 or later available in a Palette-registered registry. Refer to [link] for information on adding registries to
   Palette.
 - A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal
-  servers with GPUs
+  servers with GPUs. If you don't have a cluster yet, refer to
+  <VersionedLink text="Clusters" url="/clusters/" /> for deployment guides.
 - At least one node equipped with a dedicated NVIDIA graphics card (discrete GPU). Embedded products such as NVIDIA
   Jetson are not supported.
 - A supported OS and Kubernetes version. Refer to the
@@ -76,9 +77,9 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 ## Add Profile to Cluster
 
-Once you have created an add-on profile, you can attach it to your GPU-enabled cluster. If you added the NVIDIA GPU
-Operator pack to an existing full profile, you can update the cluster profile version to the version that includes your
-changes. The initial driver compilation on GPU nodes can take several minutes. Refer to
+Once you have created an add-on profile, attach it to your GPU-enabled cluster. If you added the NVIDIA GPU Operator
+pack to an existing full profile, update the cluster profile version to the version that includes your changes. The
+initial driver compilation on GPU nodes can take several minutes. Refer to
 
 <VersionedLink text="Update a Cluster" url="/clusters/cluster-management/cluster-updates/" /> for more information.
 
@@ -100,84 +101,85 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
 3. Choose your GPU-enabled cluster from the **Clusters** table.
 
 4. Download the kubeconfig file for your cluster and configure kubectl to use it. Refer to
+
    <VersionedLink text="Access Cluster with CLI" url="/clusters/cluster-management/kubeconfig/" /> for guidance.
 
-```bash
-export KUBECONFIG=<path-to-kubeconfig>
-```
+   ```bash
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
 
 5. Search for nodes with the label `feature.node.kubernetes.io/pci-10de.present=true`.
 
-```bash
-kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
-```
+   ```bash
+   kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
+   ```
 
-GPU nodes should appear in the output.
+   GPU nodes should appear in the output.
 
-```text hideClipboard title="Example output"
-NAME                    STATUS   ROLES    AGE   VERSION
-gpu-worker-node-name    Ready    <none>   11m   v1.33.6
-```
+   ```text hideClipboard title="Example output"
+   NAME                    STATUS   ROLES    AGE   VERSION
+   gpu-worker-node-name    Ready    <none>   11m   v1.33.6
+   ```
 
 6. Confirm that the node advertises allocatable GPUs.
 
-```bash
-kubectl describe node <gpu-node-name> | grep nvidia.com/gpu
-```
+   ```bash
+   kubectl describe node <gpu-node-name> | grep nvidia.com/gpu
+   ```
 
-The value of `nvidia.com/gpu` indicates the number of GPUs available for scheduling on that node.
+   The value of `nvidia.com/gpu` indicates the number of GPUs available for scheduling on that node.
 
-```text hideClipboard title="Example output"
-nvidia.com/gpu:  1
-```
+   ```text hideClipboard title="Example output"
+   nvidia.com/gpu:  1
+   ```
 
 ### Run a GPU Workload Test
 
 1. Deploy a test pod using the standard NVIDIA CUDA vector addition sample to confirm the node can run GPU workloads.
 
-```bash
-cat << EOF | kubectl apply --filename -
-apiVersion: v1
-kind: Pod
-metadata:
-  name: gpu-test
-spec:
-  restartPolicy: OnFailure
-  containers:
-    - name: cuda-vector-add
-      image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.2.1"
-      resources:
-        limits:
-          nvidia.com/gpu: 1
-EOF
-```
+   ```bash
+   cat << EOF | kubectl apply --filename -
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: gpu-test
+   spec:
+     restartPolicy: OnFailure
+     containers:
+       - name: cuda-vector-add
+         image: "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.2.1"
+         resources:
+           limits:
+             nvidia.com/gpu: 1
+   EOF
+   ```
 
 2. Wait for the pod to complete.
 
-```bash
-kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/gpu-test --timeout=120s
-```
+   ```bash
+   kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/gpu-test --timeout=120s
+   ```
 
 3. Retrieve the logs from the `gpu-test` pod to ensure the test was successful.
 
-```bash
-kubectl logs gpu-test
-```
+   ```bash
+   kubectl logs gpu-test
+   ```
 
-```text hideClipboard title="Example output"
-[Vector addition of 50000 elements]
-Copy input data from the host memory to the CUDA device
-CUDA kernel launch with 196 blocks of 256 threads
-Copy output data from the CUDA device to the host memory
-Test PASSED
-Done
-```
+   ```text hideClipboard title="Example output"
+   [Vector addition of 50000 elements]
+   Copy input data from the host memory to the CUDA device
+   CUDA kernel launch with 196 blocks of 256 threads
+   Copy output data from the CUDA device to the host memory
+   Test PASSED
+   Done
+   ```
 
 4. Clean up the test pod.
 
-```bash
-kubectl delete pod gpu-test
-```
+   ```bash
+   kubectl delete pod gpu-test
+   ```
 
 ## Next Steps
 
