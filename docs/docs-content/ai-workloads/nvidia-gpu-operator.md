@@ -96,17 +96,14 @@ This filter is automatically applied using Node Feature Discovery (NFD) when a N
 
 3. Choose your GPU-enabled cluster from the **Clusters** table.
 
-4. From the cluster **Overview** tab, download the **Admin Kubeconfig File**. Refer to our [Kubeconfig] and [Kubectl]
-   guides for additional information.
+4. Download the kubeconfig file for your cluster and configure kubectl to use it. Refer to
+   <VersionedLink text="Access Cluster with CLI" url="/clusters/cluster-management/kubeconfig/" /> for guidance.
 
-5. Open a terminal session in an environment that has network access to the cluster. Set the `KUBECONFIG` environment
-   variable to the file path of the downloaded kubeconfig file.
-
-```
+```bash
 export KUBECONFIG=<path-to-kubeconfig>
 ```
 
-6. Search for nodes with the label `feature.node.kubernetes.io/pci-10de.present=true`.
+5. Search for nodes with the label `feature.node.kubernetes.io/pci-10de.present=true`.
 
 ```bash
 kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
@@ -114,7 +111,7 @@ kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
 
 GPU nodes should appear in the output.
 
-Confirm that the node advertises allocatable GPUs.
+6. Confirm that the node advertises allocatable GPUs.
 
 ```bash
 kubectl describe node <gpu-node-name> | grep nvidia.com/gpu
