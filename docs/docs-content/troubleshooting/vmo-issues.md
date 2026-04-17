@@ -39,7 +39,7 @@ Traefik Middleware resources or Nginx Ingress annotations, depending on the vers
 
 <Tabs>
 
-<TabItem label="Traefik (>= 4.8.37)" value="traefik">
+<TabItem label="Traefik (>= 4.8.47)" value="traefik">
 
 5. Verify the current `Content-Security-Policy` value for the following Traefik `Middleware` resources.
 
@@ -131,7 +131,7 @@ Traefik Middleware resources or Nginx Ingress annotations, depending on the vers
 
 </TabItem>
 
-<TabItem label="Nginx (< 4.8.37)" value="nginx">
+<TabItem label="Nginx (< 4.8.47)" value="nginx">
 
 5. Verify the current `Content-Security-Policy` value in the `configuration-snippet` annotation of the following Nginx
    `Ingress` resources.

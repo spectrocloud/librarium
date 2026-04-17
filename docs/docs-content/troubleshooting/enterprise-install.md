@@ -13,12 +13,13 @@ Refer to the following sections to troubleshoot errors encountered when installi
 ## Scenario - Errors in API Calls After Traefik Migration
 
 After the migration to [Traefik](https://traefik.io/traefik/) as the default ingress controller in Palette version
-4.8.37, Traefik `Middleware` configurations include a `maxResponseBodyBytes` limit. This limit can cause API calls to
+4.8.47, Traefik `Middleware` configurations include a `maxResponseBodyBytes` limit. This limit can cause API calls to
 fail with 500 errors when response bodies exceed the configured size.
 
 ### Debug Steps
 
-Self-hosted environments can patch the existing Traefik `Middleware` objects to remove the `maxResponseBodyBytes` limit.
+In self-hosted environments, you can patch the existing Traefik `Middleware` objects to remove the
+`maxResponseBodyBytes` limit.
 
 1. Log in to your
    [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
@@ -28,8 +29,8 @@ Self-hosted environments can patch the existing Traefik `Middleware` objects to 
 
 3. On the **Overview** tab, download the **Kubernetes Config File**.
 
-4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster.
-   From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
+4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster. Set
+   the `KUBECONFIG` variable to the file path of the kubeconfig.
 
    ```shell
    export KUBECONFIG=<path-to-kubeconfig>
@@ -88,7 +89,7 @@ Self-hosted environments can patch the existing Traefik `Middleware` objects to 
    middleware.traefik.io/body-size-20m patched
    ```
 
-7. Confirm the affected `Middleware` objects no longer contains `maxResponseBodyBytes`.
+7. Confirm the affected `Middleware` objects no longer contain `maxResponseBodyBytes`.
 
    ```shell
    kubectl get middleware body-size-5m --namespace hubble-system --output yaml
