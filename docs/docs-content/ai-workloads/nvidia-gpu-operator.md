@@ -111,6 +111,11 @@ kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
 
 GPU nodes should appear in the output.
 
+```text hideClipboard title="Example output"
+NAME                    STATUS   ROLES    AGE   VERSION
+gpu-worker-node-name    Ready    <none>   11m   v1.33.6
+```
+
 6. Confirm that the node advertises allocatable GPUs.
 
 ```bash
