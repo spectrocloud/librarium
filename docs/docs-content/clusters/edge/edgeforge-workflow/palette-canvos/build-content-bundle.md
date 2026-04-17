@@ -181,8 +181,15 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
         <!-- prettier-ignore-start -->
 
-        `shell     INCLUDE_COMPLIANCE_IMAGES=true \     palette content build --arch <bundle-architecture> \      --project-id <project-id> \      --profiles <cluster-profile-id1,cluster-profile-id2...> \      --name <bundle-name>     `
-    <!-- prettier-ignore-end -->
+        ```shell
+        INCLUDE_COMPLIANCE_IMAGES=true \
+        palette content build --arch <bundle-architecture> \
+         --project-id <project-id> \
+         --profiles <cluster-profile-id1,cluster-profile-id2...> \
+         --name <bundle-name>
+        ```
+    
+        <!-- prettier-ignore-end -->
 
         :::warning
 
@@ -212,7 +219,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
         :::
 
-13. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
+14. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In local Edge
     deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
     [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
