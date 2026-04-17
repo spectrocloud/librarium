@@ -98,7 +98,7 @@ In self-hosted environments, you can patch the existing Traefik `Middleware` obj
    kubectl get middleware body-size-20m --namespace hubble-system --output yaml
    ```
 
-   ```yaml title="Example output" hideClipboard
+   ```yaml title="Example output" hideClipboard {15-17}
    apiVersion: traefik.io/v1alpha1
    kind: Middleware
       metadata:
