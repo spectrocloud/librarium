@@ -130,9 +130,10 @@ nvidia.com/gpu:  1
 
 ### Run a GPU Workload Test
 
-1. Save the following pod manifest to a file named `gpu-test.yaml`.
+1. Deploy a test pod that runs a short GPU workload to confirm the node can run GPU-accelerated containers.
 
-```yaml title="gpu-test.yaml"
+```bash
+cat << EOF | kubectl apply --filename -
 apiVersion: v1
 kind: Pod
 metadata:
@@ -145,19 +146,16 @@ spec:
       resources:
         limits:
           nvidia.com/gpu: 1
+EOF
 ```
 
-```bash
-kubectl apply --filename gpu-test.yaml
-```
-
-Wait for the pod to complete.
+2. Wait for the pod to complete.
 
 ```bash
 kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/gpu-test --timeout=120s
 ```
 
-4. Retrieve the logs from the `gpu-test` pod to ensure the test was successful.
+3. Retrieve the logs from the `gpu-test` pod to ensure the test was successful.
 
 ```bash
 kubectl logs gpu-test
@@ -172,7 +170,7 @@ Test PASSED
 Done
 ```
 
-Clean up the test pod.
+4. Clean up the test pod.
 
 ```bash
 kubectl delete pod gpu-test
