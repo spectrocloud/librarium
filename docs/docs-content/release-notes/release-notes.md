@@ -105,6 +105,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+- The Palette CLI [`content build`](../automation/palette-cli/commands/content.md#build) command now supports the
+  environment variable `INCLUDE_COMPLIANCE_IMAGES`. When the variable is set to `true`, the resulting content bundle
+  includes additional container images required for compliance scanning.
+
 ### Docs and Education
 
 ### Packs
