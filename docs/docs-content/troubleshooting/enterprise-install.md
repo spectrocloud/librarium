@@ -12,9 +12,9 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 ## Scenario - Errors in API Calls After Traefik Migration
 
-After the migration to [Traefik](https://traefik.io/traefik/) as the default ingress controller in Palette version 4.8.37, Traefik `Middleware` configurations
-include a `maxResponseBodyBytes` limit. This limit can cause API calls to fail with 500 errors when response bodies
-exceed the configured size.
+After the migration to [Traefik](https://traefik.io/traefik/) as the default ingress controller in Palette version
+4.8.37, Traefik `Middleware` configurations include a `maxResponseBodyBytes` limit. This limit can cause API calls to
+fail with 500 errors when response bodies exceed the configured size.
 
 ### Debug Steps
 
