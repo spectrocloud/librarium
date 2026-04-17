@@ -43,15 +43,21 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
    :::tip
 
    Alternatively, if your GPU-enabled cluster was deployed using a
-   <VersionedLink text="full cluster profile" url="/profiles/cluster-profiles/create-cluster-profiles/create-full-profile/" />,
-   you can select it and add the NVIDIA GPU Operator as an additional pack to your cluster profile stack. We recommend
-   <VersionedLink text="creating a new cluster profile version" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/" />
+
+   <VersionedLink
+     text="full cluster profile"
+     url="/profiles/cluster-profiles/create-cluster-profiles/create-full-profile/"
+   />
+   , you can select it and add the NVIDIA GPU Operator as an additional pack to your cluster profile stack. We recommend
+   <VersionedLink
+     text="creating a new cluster profile version"
+     url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/"
+   />
    before making any changes.
 
    :::
 
-4. Enter a unique **Name** for the cluster profile and choose a cluster profile **Type** of **Add-on**. Select
-   **Next**.
+4. Enter a unique **Name** for the cluster profile and choose a cluster profile **Type** of **Add-on**. Select **Next**.
 
 5. On the **Profile Layers** step, select **Add New Pack**.
 
@@ -70,8 +76,10 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 ## Add Profile to Cluster
 
-Once you have created an add-on profile, you can attach it to your GPU-enabled cluster. If you added the NVIDIA GPU Operator pack to an existing full profile, you can update the cluster profile version to the version that includes your changes. The initial driver compilation on GPU nodes can take several minutes. Refer to [Update a Cluster] for more information.
-
+Once you have created an add-on profile, you can attach it to your GPU-enabled cluster. If you added the NVIDIA GPU
+Operator pack to an existing full profile, you can update the cluster profile version to the version that includes your
+changes. The initial driver compilation on GPU nodes can take several minutes. Refer to [Update a Cluster] for more
+information.
 
 ## Validate
 
