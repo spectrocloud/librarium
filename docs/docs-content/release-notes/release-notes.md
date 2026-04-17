@@ -26,21 +26,21 @@ The following components have been updated for Palette version 4.8.6 - 4.8.51.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3928-->
 
-| Pack Name              | Layer      | Non-FIPS           | FIPS               | New Version |
-| ---------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Amazon EBS CSI         | CSI        | :x:                | :white_check_mark: | 1.57.1      |
-| Falco                  | Add-on     | :white_check_mark: | :x:                | 6.3.0       |
-| Kgateway               | Add-on     | :white_check_mark: | :x:                | 2.2.2       |
-| Portworx with Operator | CSI        | :white_check_mark: | :x:                | 3.5.2       |
-| Postgres (Canonical)   | Add-on     | :white_check_mark: | :x:                | 1.29.0      |
-| Prometheus Agent       | Add-on     | :white_check_mark: | :x:                | 28.14.1     |
-| Prometheus Operator    | Add-on     | :white_check_mark: | :x:                | 82.14.1     |
-| RKE2                   | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.2      |
-| RKE2                   | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
-| OpenTelemetry          | Add-on     | :white_check_mark: | :x:                | 0.148.0     |
-| Open Observe           | Add-on     | :white_check_mark: | :x:                | 0.70.1      |
-| Traefik                | Add-on     | :white_check_mark: | :x:                | 39.0.7      |
-| Traefik                | Add-on     | :white_check_mark: | :x:                | 36.3.0      |
+| Pack Name            | Layer      | Non-FIPS           | FIPS               | New Version |
+| -------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI       | CSI        | :x:                | :white_check_mark: | 1.57.1      |
+| Falco                | Add-on     | :white_check_mark: | :x:                | 6.3.0       |
+| Harbor               | Add-on     | :white_check_mark: | :x:                | 1.18.3-rev1 |
+| Kgateway             | Add-on     | :white_check_mark: | :x:                | 2.2.2       |
+| Postgres (Canonical) | Add-on     | :white_check_mark: | :x:                | 1.29.0      |
+| Prometheus Agent     | Add-on     | :white_check_mark: | :x:                | 28.14.1     |
+| Prometheus Operator  | Add-on     | :white_check_mark: | :x:                | 82.14.1     |
+| RKE2                 | Kubernetes | :white_check_mark: | :x:                | 1.32.13     |
+| RKE2                 | Kubernetes | :white_check_mark: | :x:                | 1.32.9      |
+| OpenTelemetry        | Add-on     | :white_check_mark: | :x:                | 0.148.0     |
+| Open Observe         | Add-on     | :white_check_mark: | :x:                | 0.70.1      |
+| Traefik              | Add-on     | :white_check_mark: | :x:                | 39.0.7      |
+| Traefik              | Add-on     | :white_check_mark: | :x:                | 36.3.0      |
 
 #### Pack Notes
 
@@ -50,15 +50,12 @@ The following community packs have been released:
 
 - <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 5.0.0
 
-The following packs are now deprecated:
+The following packs are now removed:
 
 - <VersionedLink text="CentOS (AWS)" url="/integrations/packs/?pack=centos-aws" /> version 7.7
 - <VersionedLink text="CentOS (Azure)" url="/integrations/packs/?pack=centos-azure" /> version 7.7
 - <VersionedLink text="CentOS (GCP)" url="/integrations/packs/?pack=centos-gcp" /> version 7.7
 - <VersionedLink text="CentOS (vSphere)" url="/integrations/packs/?pack=centos-vsphere" /> version 7.7
-
-The following packs are now deleted:
-
 - <VersionedLink text="CentOS (GCP)" url="/integrations/packs/?pack=centos-gcp" /> version 8.0
 
 <!-- prettier-ignore-end -->
@@ -609,6 +606,8 @@ The following community packs have been released:
 | Longhorn             | CSI        | :white_check_mark: | :x:                | 1.11.1      |
 | Open Policy Agent    | Add-on     | :white_check_mark: | :x:                | 3.22.0      |
 | Reloader             | Add-on     | :white_check_mark: | :x:                | 1.4.14      |
+| RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.2      |
+| RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
 | RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.9      |
 | RKE2                 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.13     |
 | Traefik              | Add-on     | :white_check_mark: | :x:                | 39.0.5      |
