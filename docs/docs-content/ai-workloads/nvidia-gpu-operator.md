@@ -34,21 +34,32 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 ## Create Add-on Cluster Profile
 
-1. Log in to [Palette](https://console.spectrocloud.com) and select **Profiles** from the left main menu.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Create a new cluster profile or open an existing one.
+2. From the left main menu, select **Profiles**.
 
-3. Select **Add New Pack**.
+3. From the **Cluster Profiles** table, select **Add Cluster Profile**. 
+
+     :::tip
+     
+     Alternatively, if your GPU-enabled cluster was deployed using a [full cluster profile], you can select it and add the NVIDIA GPU Operator as an additional pack to your cluster profile stack. We recommend [creating a new cluster profile version] before making any changes. 
+     
+     :::
+
+4. Enter a unique **Name** for the cluster profile and choose a cluster profile **Type** of *Add-on**. Select **Next**.
+
+5. On the **Profile Layers** step, select **Add New Pack**.  
 
 4. Search for `nvidia gpu operator` and select the **Nvidia GPU Operator** pack.
 
-5. Select pack version **25.10.x**.
+5. Select a **Pack Version** of **25.10.0** or later.
 
-6. Review the pack values. The defaults work for most deployments. For customization options and additional bundled
-   capabilities, refer to the
-   [pack page](https://docs.spectrocloud.com/integrations/packs/?pack=nvidia-gpu-operator-ai).
+6. Review the pack **Values**. The default values and parameters are sufficient for most deployments. For  additional customization options and bundled
+   capabilities, refer to the <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page.
 
-7. Select **Confirm & Create** to return to the cluster profile overview page, and then select **Save Changes**.
+7. Select **Confirm & Create** to return to the **Profile Layers** page. Select **Next**.
+
+8. Review your cluster profile. If no changes are needed, select **Finish Configuration**.
 
 ## Deploy the Cluster
 
