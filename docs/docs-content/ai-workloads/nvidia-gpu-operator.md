@@ -99,8 +99,7 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
 3. Choose your GPU-enabled cluster from the **Clusters** table.
 
 4. Download the kubeconfig file for your cluster and configure kubectl to use it. Refer to
-
-   <VersionedLink text="Access Cluster with CLI" url="/clusters/cluster-management/kubeconfig/" /> for guidance.
+   [Access Cluster with CLI](/clusters/cluster-management/kubeconfig/) for guidance.
 
    ```bash
    export KUBECONFIG=<path-to-kubeconfig>
