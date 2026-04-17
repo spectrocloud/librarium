@@ -16,6 +16,7 @@ clusters and application engineers independently deploy AI/ML applications and m
 [PaletteAI](https://docs.palette-ai.com/) documentation.
 
 ## Resources
+
 <!-- prettier-ignore-start -->
 
 - [Enable AI Workloads with the NVIDIA GPU Operator Pack](./nvidia-gpu-operator.md) - Add the

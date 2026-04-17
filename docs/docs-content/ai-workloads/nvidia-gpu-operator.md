@@ -8,7 +8,6 @@ tags: ["gpu", "nvidia", "ai workloads", "cuda", "packs", "gpu operator"]
 sidebar_position: 10
 ---
 
-
 <!-- prettier-ignore-start -->
 
 You can use the <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack
@@ -18,7 +17,6 @@ alongside supporting components for driver management, node labeling, and monito
 to a cluster profile and verify that GPU workloads can run on your nodes.
 
 <!-- prettier-ignore-end -->
-
 
 ## Prerequisites
 
