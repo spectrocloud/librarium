@@ -86,7 +86,7 @@ changes. The initial driver compilation on GPU nodes can take several minutes. R
 
 ### Verify GPU Node Labels
 
-To verify your cluster is ready to run GPU workloads, verify the cluster nodes have the label `pci-10de.present=true`.
+To verify your cluster is ready to run GPU workloads, verify the cluster nodes have the label `feature.node.kubernetes.io/pci-10de.present=true`.
 This filter is automatically applied using Node Feature Discovery (NFD) when a NVIDIA Peripheral Component Interconnect
 (PCI) device is detected.
 
