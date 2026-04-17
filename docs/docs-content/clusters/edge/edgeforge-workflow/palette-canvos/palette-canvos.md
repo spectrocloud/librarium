@@ -553,7 +553,7 @@ required Edge artifacts.
         DEBIAN_FRONTEND=noninteractive apt-get install --yes libpam-pwquality && \
         apt-get clean && \
         rm --recursive --force /var/lib/apt/lists/*
-    
+
     # Configure password quality policy for pam_pwquality
     RUN printf '%s\n' \
         'minlen = 15' \
@@ -567,7 +567,7 @@ required Edge artifacts.
         'enforce_for_root' \
         'dictcheck = 0' \
         > /etc/security/pwquality.conf
-    
+
     # Ensure pam_pwquality is in the PAM stack for password changes
     RUN grep --quiet '^password.*pam_pwquality\.so' /etc/pam.d/common-password || \
         sed --in-place '/^password.*pam_unix\.so/i password requisite pam_pwquality.so retry=3' /etc/pam.d/common-password
