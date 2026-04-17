@@ -59,6 +59,7 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 8. Review the pack **Values**. The default values and parameters are sufficient for most deployments. For additional
    customization options and bundled capabilities, refer to the
+
    <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page.
 
 9. Select **Confirm & Create** to return to the **Profile Layers** page. Select **Next**.
