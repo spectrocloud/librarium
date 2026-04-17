@@ -118,7 +118,7 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
    gpu-worker-node-name    Ready    <none>   11m   v1.33.6
    ```
 
-6. Confirm that the node advertises allocatable GPUs.
+6. Confirm that the node advertises allocatable GPUs. Replace `<gpu-node-name>` with the GPU node. 
 
    ```bash
    kubectl describe node <gpu-node-name> | grep nvidia.com/gpu
