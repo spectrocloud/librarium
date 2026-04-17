@@ -84,6 +84,9 @@ changes. The initial driver compilation on GPU nodes can take several minutes. R
 
 ## Validate
 
+Confirm the GPU Operator is running correctly by verifying that GPU nodes are labeled and that a GPU workload can run
+successfully on the cluster.
+
 ### Verify GPU Node Labels
 
 To verify your cluster is ready to run GPU workloads, verify the cluster nodes have the label
