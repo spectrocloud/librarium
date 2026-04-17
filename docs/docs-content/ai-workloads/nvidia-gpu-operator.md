@@ -102,7 +102,9 @@ This filter is automatically applied using Node Feature Discovery (NFD) when a N
 5. Open a terminal session in an environment that has network access to the cluster. Set the `KUBECONFIG` environment
    variable to the file path of the downloaded kubeconfig file.
 
+```
 export KUBECONFIG=<path-to-kubeconfig>
+```
 
 6. Search for nodes with the label `feature.node.kubernetes.io/pci-10de.present=true`.
 
