@@ -50,8 +50,8 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
    :::
 
-4. Enter a unique **Name** for the cluster profile and choose a cluster profile **Type** of \*Add-on**. Select
-   **Next\*\*.
+4. Enter a unique **Name** for the cluster profile and choose a cluster profile **Type** of **Add-on**. Select
+   **Next**.
 
 5. On the **Profile Layers** step, select **Add New Pack**.
 
