@@ -87,7 +87,19 @@ changes. The initial driver compilation on GPU nodes can take several minutes. R
 ### Verify GPU Node Labels
 
 To verify your cluster is ready to run GPU workloads, verify the cluster nodes have the label `pci-10de.present=true`. This filter is automatically applied using Node Feature Discovery (NFD) when a NVIDIA Peripheral Component Interconnect (PCI) device is detected. 
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
+2. From the left main menu, select **Clusters**.
+
+3. Choose your GPU-enabled cluster from the **Clusters** table.
+
+4. From the cluster **Overview** tab, download the **Admin Kubeconfig File**. Refer to our [Kubeconfig] and [Kubectl] guides for additional information.
+
+5. Open a terminal session in an environment that has network access to the cluster. Set the `KUBECONFIG` environment variable to the file path of the downloaded kubeconfig file.
+
+export KUBECONFIG=<path-to-kubeconfig>
+
+6. Search for nodes with the label `feature.node.kubernetes.io/pci-10de.present=true`. 
 ```bash
 kubectl get nodes --selector feature.node.kubernetes.io/pci-10de.present=true
 ```
