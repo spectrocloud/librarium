@@ -93,7 +93,7 @@ The following flags are supported by the `build` subcommand.
 |            | `--tls-key`                          | The path to the TLS key file.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | string  |
 
 The `build` subcommand supports the environment variable `INCLUDE_COMPLIANCE_IMAGES`. When the variable is set to
-`true`, the resulting content bundle includes additional container images required for vulnerability and compliance
+`true`, the resulting content bundle includes additional container images required for compliance
 scanning.
 
 #### Examples
@@ -204,7 +204,7 @@ bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle
 ```
 
 You can use the environment variable `INCLUDE_COMPLIANCE_IMAGES` set to `true` to include additional container images
-required for vulnerability and compliance scanning in the content bundle. The following command creates a content bundle
+required for compliance scanning in the content bundle. The following command creates a content bundle
 named `example-bundle.tar.zst` that includes scan images using the cluster profiles specified with the `--profiles`
 flag.
 
