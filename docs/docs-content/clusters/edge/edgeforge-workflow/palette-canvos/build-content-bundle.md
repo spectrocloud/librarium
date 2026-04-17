@@ -216,7 +216,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
         :::
 
-14. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
+13. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In local Edge
     deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
     [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
