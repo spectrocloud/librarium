@@ -130,7 +130,7 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
    nvidia.com/gpu:  1
    ```
 
-### Run a GPU Workload Test
+### Run GPU Workload Test
 
 1. Deploy a test pod using the standard NVIDIA CUDA vector addition sample to confirm the node can run GPU workloads.
 
