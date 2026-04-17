@@ -38,28 +38,32 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 2. From the left main menu, select **Profiles**.
 
-3. From the **Cluster Profiles** table, select **Add Cluster Profile**. 
+3. From the **Cluster Profiles** table, select **Add Cluster Profile**.
 
-     :::tip
-     
-     Alternatively, if your GPU-enabled cluster was deployed using a [full cluster profile], you can select it and add the NVIDIA GPU Operator as an additional pack to your cluster profile stack. We recommend [creating a new cluster profile version] before making any changes. 
-     
-     :::
+   :::tip
 
-4. Enter a unique **Name** for the cluster profile and choose a cluster profile **Type** of *Add-on**. Select **Next**.
+   Alternatively, if your GPU-enabled cluster was deployed using a [full cluster profile], you can select it and add the
+   NVIDIA GPU Operator as an additional pack to your cluster profile stack. We recommend [creating a new cluster profile
+   version] before making any changes.
 
-5. On the **Profile Layers** step, select **Add New Pack**.  
+   :::
 
-4. Search for `nvidia gpu operator` and select the **Nvidia GPU Operator** pack.
+4. Enter a unique **Name** for the cluster profile and choose a cluster profile **Type** of \*Add-on**. Select
+   **Next\*\*.
 
-5. Select a **Pack Version** of **25.10.0** or later.
+5. On the **Profile Layers** step, select **Add New Pack**.
 
-6. Review the pack **Values**. The default values and parameters are sufficient for most deployments. For  additional customization options and bundled
-   capabilities, refer to the <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page.
+6. Search for `nvidia gpu operator` and select the **Nvidia GPU Operator** pack.
 
-7. Select **Confirm & Create** to return to the **Profile Layers** page. Select **Next**.
+7. Select a **Pack Version** of **25.10.0** or later.
 
-8. Review your cluster profile. If no changes are needed, select **Finish Configuration**.
+8. Review the pack **Values**. The default values and parameters are sufficient for most deployments. For additional
+   customization options and bundled capabilities, refer to the
+   <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack page.
+
+9. Select **Confirm & Create** to return to the **Profile Layers** page. Select **Next**.
+
+10. Review your cluster profile. If no changes are needed, select **Finish Configuration**.
 
 ## Deploy the Cluster
 
