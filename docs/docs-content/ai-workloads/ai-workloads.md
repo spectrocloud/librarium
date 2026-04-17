@@ -16,9 +16,13 @@ clusters and application engineers independently deploy AI/ML applications and m
 [PaletteAI](https://docs.palette-ai.com/) documentation.
 
 ## Resources
+<!-- prettier-ignore-start -->
 
 - [Enable AI Workloads with the NVIDIA GPU Operator Pack](./nvidia-gpu-operator.md) - Add the
   <VersionedLink text="NVIDIA GPU Operator" url="integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack to a Palette
   cluster profile to provision GPU nodes for AI workloads.
+
+<!-- prettier-ignore-end -->
+
 - [PaletteAI](https://docs.palette-ai.com/) - Provision and manage GPU-optimized infrastructure and clusters, allowing
   application teams to deploy curated AI/ML applications and models as needed.
