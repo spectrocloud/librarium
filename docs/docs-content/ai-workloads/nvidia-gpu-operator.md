@@ -130,7 +130,7 @@ nvidia.com/gpu:  1
 
 ### Run a GPU Workload Test
 
-Save the following pod manifest to a file named `gpu-test.yaml`.
+1. Save the following pod manifest to a file named `gpu-test.yaml`.
 
 ```yaml title="gpu-test.yaml"
 apiVersion: v1
