@@ -18,8 +18,7 @@ to all installation methods but does not apply to self-hosted environments that 
 name.
 
 The root cause is a `Content-Security-Policy` header with `frame-ancestors` set to `https://*.spectrocloud.com`, which
-blocks the VMO GUI from loading when your Palette instance uses a different domain name. This header is present in both
-Traefik Middleware resources and Nginx Ingress annotations, depending on the version of Palette you are running.
+blocks the VMO GUI from loading when your Palette instance uses a different domain name. This header can be present in Traefik Middleware resources or Nginx Ingress annotations, depending on the version of Palette you are running.
 
 ### Debug Steps
 
