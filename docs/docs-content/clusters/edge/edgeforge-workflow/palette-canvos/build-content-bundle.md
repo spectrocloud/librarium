@@ -177,7 +177,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
     ```
 
     Use the environment variable `INCLUDE_COMPLIANCE_IMAGES` set to `true` to include additional container images
-    required for vulnerability and compliance scanning in the content bundle.
+    required for compliance scanning in the content bundle.
 
     `shell     INCLUDE_COMPLIANCE_IMAGES=true palette content build --arch <bundle-architecture> \      --project-id <project-id> \      --profiles <cluster-profile-id1,cluster-profile-id2...> \      --name <bundle-name>     `
 
