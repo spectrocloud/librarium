@@ -151,7 +151,7 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
    EOF
    ```
 
-2. Wait for the pod to complete.
+2. Wait for the pod to be provisioned.
 
    ```bash
    kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/gpu-test --timeout=120s
