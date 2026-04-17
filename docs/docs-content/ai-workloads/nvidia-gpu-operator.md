@@ -118,7 +118,7 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
    gpu-worker-node-name    Ready    <none>   11m   v1.33.6
    ```
 
-6. Confirm that the node advertises allocatable GPUs. Replace `<gpu-node-name>` with the GPU node. 
+6. Confirm that the node advertises allocatable GPUs. Replace `<gpu-node-name>` with the GPU node.
 
    ```bash
    kubectl describe node <gpu-node-name> | grep nvidia.com/gpu
@@ -132,7 +132,9 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
 
 ### Run GPU Workload Test
 
-1. Deploy a test pod using the standard [NVIDIA CUDA vector addition sample](https://github.com/olcf-tutorials/vector_addition_cuda) to confirm the node can run GPU workloads.
+1. Deploy a test pod using the standard
+   [NVIDIA CUDA vector addition sample](https://github.com/olcf-tutorials/vector_addition_cuda) to confirm the node can
+   run GPU workloads.
 
    ```bash
    cat << EOF | kubectl apply --filename -
@@ -189,4 +191,3 @@ Once you have verified GPU workloads can run on your cluster, you can review the
 If you plan on regularly running GPU-intensive applications on clusters, such as AI/ML applications and models, consider
 using [PaletteAI](https://docs.palette-ai.com/) to streamline the deployment and management of GPU-enabled clusters and
 create predefined, reusable application bundles that application engineers use to deploy workloads as needed.
-
