@@ -79,6 +79,7 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 Once you have created an add-on profile, you can attach it to your GPU-enabled cluster. If you added the NVIDIA GPU
 Operator pack to an existing full profile, you can update the cluster profile version to the version that includes your
 changes. The initial driver compilation on GPU nodes can take several minutes. Refer to
+
 <VersionedLink text="Update a Cluster" url="/clusters/cluster-management/cluster-updates/" /> for more information.
 
 ## Validate
