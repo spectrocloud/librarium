@@ -102,12 +102,12 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
    - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
      custom configuration according to your environment.
 
-:::warning
+   :::warning
 
-We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
-settings can introduce misconfigurations. Carefully review the changes you make to a pack.
+   We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
+   settings can introduce misconfigurations. Carefully review the changes you make to a pack.
 
-:::
+   :::
 
 <!--prettier-ignore-start-->
 
