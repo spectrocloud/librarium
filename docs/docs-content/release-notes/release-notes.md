@@ -11,7 +11,60 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 17, 2026 - Component Updates {#component-updates-2026-16}
+
+The following components have been updated for Palette version 4.8.6 - 4.8.51.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.8.10  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.8.51  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.8.51  |
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3928-->
+
+| Pack Name            | Layer      | Non-FIPS           | FIPS               | New Version |
+| -------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI       | CSI        | :x:                | :white_check_mark: | 1.57.1      |
+| Falco                | Add-on     | :white_check_mark: | :x:                | 6.3.0       |
+| Harbor               | Add-on     | :white_check_mark: | :x:                | 1.18.3-rev1 |
+| Kgateway             | Add-on     | :white_check_mark: | :x:                | 2.2.2       |
+| Postgres (Canonical) | Add-on     | :white_check_mark: | :x:                | 1.29.0      |
+| Prometheus Agent     | Add-on     | :white_check_mark: | :x:                | 28.14.1     |
+| Prometheus Operator  | Add-on     | :white_check_mark: | :x:                | 82.14.1     |
+| RKE2                 | Kubernetes | :white_check_mark: | :x:                | 1.32.13     |
+| RKE2                 | Kubernetes | :white_check_mark: | :x:                | 1.32.9      |
+| OpenTelemetry        | Add-on     | :white_check_mark: | :x:                | 0.148.0     |
+| Open Observe         | Add-on     | :white_check_mark: | :x:                | 0.70.1      |
+| Traefik              | Add-on     | :white_check_mark: | :x:                | 39.0.7      |
+| Traefik              | Add-on     | :white_check_mark: | :x:                | 36.3.0      |
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+The following community packs have been released:
+
+- <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 5.0.0
+
+The following packs are now removed:
+
+- <VersionedLink text="CentOS (AWS)" url="/integrations/packs/?pack=centos-aws" /> version 7.7
+- <VersionedLink text="CentOS (Azure)" url="/integrations/packs/?pack=centos-azure" /> version 7.7
+- <VersionedLink text="CentOS (GCP)" url="/integrations/packs/?pack=centos-gcp" /> version 7.7
+- <VersionedLink text="CentOS (vSphere)" url="/integrations/packs/?pack=centos-vsphere" /> version 7.7
+- <VersionedLink text="CentOS (GCP)" url="/integrations/packs/?pack=centos-gcp" /> version 8.0
+
+<!-- prettier-ignore-end -->
+
 ## April 15, 2026 - Release 4.8.51
+
+The following component updates are applicable to this release:
+
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Improvements
 
@@ -138,6 +191,7 @@ configuration as the data plane and network policy engine.
 The following component updates are applicable to this release:
 
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -613,6 +667,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -629,6 +684,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Improvements
 
@@ -763,6 +819,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Improvements
 
@@ -930,6 +987,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -946,6 +1004,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 Review the active known issues that affect this Palette release on the [Known Issues](./known-issues.md) page.
 
@@ -1349,6 +1408,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Improvements
 
@@ -1564,6 +1624,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1585,6 +1646,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -1624,6 +1686,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Features
 
@@ -1660,6 +1723,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -2105,6 +2169,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Improvements
 
@@ -2223,6 +2288,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 #### Features
 
@@ -2430,6 +2496,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Bug Fixes
 
@@ -2473,6 +2540,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Improvements
 
@@ -2508,6 +2576,7 @@ The following component updates are applicable to this release:
 - [March 20, 2026 - Component Updates](#component-updates-2026-12) <!-- omit in toc -->
 - [March 27, 2026 - Component Updates](#component-updates-2026-13) <!-- omit in toc -->
 - [April 10, 2026 - Component Updates](#component-updates-2026-15) <!-- omit in toc -->
+- [April 17, 2026 - Component Updates](#component-updates-2026-16) <!-- omit in toc -->
 
 ### Security Notices
 
