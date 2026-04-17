@@ -42,9 +42,11 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
    :::tip
 
-   Alternatively, if your GPU-enabled cluster was deployed using a [full cluster profile], you can select it and add the
-   NVIDIA GPU Operator as an additional pack to your cluster profile stack. We recommend [creating a new cluster profile
-   version] before making any changes.
+   Alternatively, if your GPU-enabled cluster was deployed using a
+   <VersionedLink text="full cluster profile" url="/profiles/cluster-profiles/create-cluster-profiles/create-full-profile/" />,
+   you can select it and add the NVIDIA GPU Operator as an additional pack to your cluster profile stack. We recommend
+   <VersionedLink text="creating a new cluster profile version" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/" />
+   before making any changes.
 
    :::
 
