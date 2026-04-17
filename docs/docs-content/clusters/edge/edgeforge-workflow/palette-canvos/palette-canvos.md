@@ -528,8 +528,8 @@ required Edge artifacts.
    <Tabs groupId="os">
 
    <TabItem value="Ubuntu 22.04">
-   Ubuntu 22.04 does not include a password quality module by default. The example below uses `pam_cracklib`, which
-   enforces password rules directly in the PAM configuration.
+Ubuntu 22.04 does not include a password quality module by default. The example below uses `pam_cracklib`, which
+enforces password rules directly in the PAM configuration.
 
    ```dockerfile
    # Install pam_cracklib
@@ -542,7 +542,9 @@ required Edge artifacts.
    RUN grep --quiet '^password[[:space:]]\+requisite[[:space:]]\+pam_cracklib\.so' /etc/pam.d/common-password || \
        sed --in-place '/^password.*pam_unix\.so/i password requisite pam_cracklib.so retry=3 minlen=15 minclass=4 maxrepeat=3 maxclassrepeat=4 dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 enforce_for_root' /etc/pam.d/common-password
    ```
-   Alternatively, you can use `pam_pwquality`, which is the modern replacement for `pam_cracklib`, as shown in the following example.
+
+   Alternatively, you can use `pam_pwquality`, which is the modern replacement for `pam_cracklib`, as shown in the
+   following example.
 
    ```dockerfile
    # Install the PAM password quality module
@@ -571,8 +573,8 @@ required Edge artifacts.
    </TabItem>
 
    <TabItem value="RHEL 9">
-   RHEL 9 uses `pam_pwquality` by default. This module enforces password strength using policies defined in
-   `/etc/security/pwquality.conf`. You only need to configure the policy.
+RHEL 9 uses `pam_pwquality` by default. This module enforces password strength using policies defined in
+`/etc/security/pwquality.conf`. You only need to configure the policy.
 
    ```dockerfile
    # Configure password quality policy for pam_pwquality
@@ -591,7 +593,7 @@ required Edge artifacts.
    ```
 
    </TabItem>
-   </Tabs>
+</Tabs>
 
    View the `Dockerfile` to ensure the instructions you added are appended correctly.
 
