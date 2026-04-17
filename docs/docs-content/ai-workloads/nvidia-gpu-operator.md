@@ -25,8 +25,7 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 - A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal
   servers with GPUs. If you don't have a cluster yet, refer to
   <VersionedLink text="Clusters" url="/clusters/" /> for deployment guides.
-- At least one node equipped with a dedicated NVIDIA graphics card (discrete GPU). Embedded products such as NVIDIA
-  Jetson are not supported.
+- At least one node equipped with a dedicated NVIDIA GPU. Embedded products such as NVIDIA Jetson are not supported.
 - A supported OS and Kubernetes version. Refer to the
   [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
   page for details.
