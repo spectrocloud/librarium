@@ -18,6 +18,8 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 
 <!-- prettier-ignore-end -->
 
+![NVIDIA GPU Operator architecture](/ai-workloads/nvidia-gpu-operator_architecture.webp)
+
 ## Prerequisites
 
 - A Palette account with permissions to create and manage cluster profiles and clusters. Refer to
@@ -33,8 +35,6 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 - A supported OS and Kubernetes version. Refer to the
   [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
   page for details.
-
-![NVIDIA GPU Operator architecture](/ai-workloads/nvidia-gpu-operator_architecture.webp)
 
 ## Create Add-on Cluster Profile
 
