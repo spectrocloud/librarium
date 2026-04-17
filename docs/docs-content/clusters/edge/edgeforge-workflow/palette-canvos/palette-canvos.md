@@ -525,9 +525,9 @@ required Edge artifacts.
    You can also configure Pluggable Authentication Modules (PAM) policies in the `Dockerfile`. Below are examples for
    Ubuntu 22.04 and RHEL 9.
 
-   <Tabs groupId="os">
+      <Tabs groupId="os">
 
-   <TabItem value="Ubuntu 22.04">
+      <TabItem value="Ubuntu 22.04">
 Ubuntu 22.04 does not include a password quality module by default. The example below uses `pam_cracklib`, which
 enforces password rules directly in the PAM configuration.
 
@@ -570,9 +570,9 @@ enforces password rules directly in the PAM configuration.
        sed --in-place '/^password.*pam_unix\.so/i password requisite pam_pwquality.so retry=3' /etc/pam.d/common-password
    ```
 
-   </TabItem>
+      </TabItem>
 
-   <TabItem value="RHEL 9">
+      <TabItem value="RHEL 9">
 RHEL 9 uses `pam_pwquality` by default. This module enforces password strength using policies defined in
 `/etc/security/pwquality.conf`. You only need to configure the policy.
 
@@ -592,7 +592,7 @@ RHEL 9 uses `pam_pwquality` by default. This module enforces password strength u
         > /etc/security/pwquality.conf
    ```
 
-   </TabItem>
+      </TabItem>
 </Tabs>
 
    View the `Dockerfile` to ensure the instructions you added are appended correctly.
