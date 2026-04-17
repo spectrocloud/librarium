@@ -21,14 +21,14 @@ to a cluster profile and verify that GPU workloads can run on your nodes.
 ## Prerequisites
 
 - A Palette account with permissions to create and manage cluster profiles and clusters. Refer to
-  <VersionedLink text="Roles and Permissions" url="/user-management/palette-rbac/resource-scope-roles-permissions" />
-  for details.
+[Roles and Permissions](/user-management/palette-rbac/resource-scope-roles-permissions) for details.
+<!-- prettier-ignore-start -->
 - <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack version
-  25.10.0 or later available in a Palette-registered registry. Refer to [link] for information on adding registries to
-  Palette.
+    25.10.0 or later available in a Palette-registered registry. Refer to [Registries](/registries-and-packs/registries/) for information on adding registries to
+    Palette.
+  <!-- prettier-ignore-end -->
 - A Palette-managed cluster with nodes that are VMs with GPU passthrough enabled, VMs with NVIDIA vGPUs, or bare metal
-  servers with GPUs. If you do not have a cluster yet, refer to
-  <VersionedLink text="Clusters" url="/clusters/" /> for deployment guides.
+  servers with GPUs. If you do not have a cluster yet, refer to [Clusters](/clusters/) for deployment guides.
 - At least one node equipped with a dedicated NVIDIA GPU. Embedded products such as NVIDIA Jetson are not supported.
 - A supported OS and Kubernetes version. Refer to the
   [NVIDIA GPU Operator Platform Support](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html)
