@@ -130,7 +130,7 @@ nvidia.com/gpu:  1
 
 ### Run a GPU Workload Test
 
-1. Deploy a test pod that runs a short GPU workload to confirm the node can run GPU-accelerated containers.
+1. Deploy a test pod to confirm the node can run GPU workloads.
 
 ```bash
 cat << EOF | kubectl apply --filename -
