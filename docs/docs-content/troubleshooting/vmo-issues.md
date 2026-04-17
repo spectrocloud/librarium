@@ -59,7 +59,7 @@ Beginning with Palette version 4.5.20, this procedure does not apply to self-hos
    --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/limit-rps}'
    ```
 
-   If the value is `10` or another low number, update it to `10000`.
+   If the value is lower than `10000`, update it.
 
    ```shell
    kubectl annotate ingress hubble-foreq-ingress-resource --namespace hubble-system --overwrite \
