@@ -100,9 +100,11 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    :::info
 
-   The user `kairos` always exists in the OS. If you configured the username and password in your user data, you can use
-   this user to log in to the OS as well as Local UI. However, you cannot create this user during initial configuration
-   as this user already exists.
+   The kairos user always exists in the OS. If you configured a username and password in your user data, you can use this account to log in to both the OS and the Local UI.
+
+   Make sure the password has not expired. If you set the `stylus.site.users[*].passwordExpired` field in the user data, it must be a date in the future; otherwise, authentication will fail.
+   
+   Note that you cannot create this user during initial configuration as this user already exists.
 
    :::
 

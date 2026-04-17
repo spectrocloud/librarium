@@ -522,7 +522,78 @@ required Edge artifacts.
    Package Tool (APT). Interactive prompts cause the image build to fail. This guidance applies to all dependencies you
    add through the `Dockerfile`.
 
-   View the `Dockerfile` to ensure the instruction to install WireGuard is appended correctly.
+   You can also configure Pluggable Authentication Modules (PAM) policies in the `Dockerfile`. Below are examples for
+   Ubuntu 22.04 and RHEL 9.
+
+   <Tabs groupId="os">
+
+   <TabItem value="Ubuntu 22.04">
+   Ubuntu 22.04 does not include a password quality module by default. The example below uses `pam_cracklib`, which
+   enforces password rules directly in the PAM configuration.
+
+   ```dockerfile
+   # Install pam_cracklib
+   RUN apt-get update && \
+       DEBIAN_FRONTEND=noninteractive apt-get install --yes libpam-cracklib && \
+       apt-get clean && \
+       rm --recursive --force /var/lib/apt/lists/*
+
+   # Configure password quality policy for pam_cracklib
+   RUN grep --quiet '^password[[:space:]]\+requisite[[:space:]]\+pam_cracklib\.so' /etc/pam.d/common-password || \
+       sed --in-place '/^password.*pam_unix\.so/i password requisite pam_cracklib.so retry=3 minlen=15 minclass=4 maxrepeat=3 maxclassrepeat=4 dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 enforce_for_root' /etc/pam.d/common-password
+   ```
+   Alternatively, you can use `pam_pwquality`, which is the modern replacement for `pam_cracklib`, as shown in the following example.
+
+   ```dockerfile
+   # Install the PAM password quality module
+   RUN apt-get update && \
+       DEBIAN_FRONTEND=noninteractive apt-get install --yes libpam-pwquality && \
+       apt-get clean && \
+       rm --recursive --force /var/lib/apt/lists/*
+   # Configure password quality policy
+   RUN printf '%s\n' \
+       'minlen = 15' \
+       'minclass = 4' \
+       'maxrepeat = 3' \
+       'maxclassrepeat = 4' \
+       'dcredit = -1' \
+       'ucredit = -1' \
+       'lcredit = -1' \
+       'ocredit = -1' \
+       'enforce_for_root' \
+       'dictcheck = 0' \
+       > /etc/security/pwquality.conf
+   # Ensure pam_pwquality is in the PAM stack for password changes
+   RUN grep --quiet '^password.*pam_pwquality\.so' /etc/pam.d/common-password || \
+       sed --in-place '/^password.*pam_unix\.so/i password requisite pam_pwquality.so retry=3' /etc/pam.d/common-password
+   ```
+
+   </TabItem>
+
+   <TabItem value="RHEL 9">
+   RHEL 9 uses `pam_pwquality` by default. This module enforces password strength using policies defined in
+   `/etc/security/pwquality.conf`. You only need to configure the policy.
+
+   ```dockerfile
+   # Configure password quality policy for pam_pwquality
+   RUN printf '%s\n' \
+        'minlen = 15' \
+        'minclass = 4' \
+        'maxrepeat = 3' \
+        'maxclassrepeat = 4' \
+        'dcredit = -1' \
+        'ucredit = -1' \
+        'lcredit = -1' \
+        'ocredit = -1' \
+        'enforce_for_root' \
+        'dictcheck = 0' \
+        > /etc/security/pwquality.conf
+   ```
+
+   </TabItem>
+   </Tabs>
+
+   View the `Dockerfile` to ensure the instructions you added are appended correctly.
 
    ```bash
    cat Dockerfile
