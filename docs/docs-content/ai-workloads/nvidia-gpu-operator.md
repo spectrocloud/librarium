@@ -132,7 +132,7 @@ To verify your cluster is ready to run GPU workloads, verify the cluster nodes h
 
 ### Run GPU Workload Test
 
-1. Deploy a test pod using the standard NVIDIA CUDA vector addition sample to confirm the node can run GPU workloads.
+1. Deploy a test pod using the standard [NVIDIA CUDA vector addition sample](https://github.com/olcf-tutorials/vector_addition_cuda) to confirm the node can run GPU workloads.
 
    ```bash
    cat << EOF | kubectl apply --filename -
