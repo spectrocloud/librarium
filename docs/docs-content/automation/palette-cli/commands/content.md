@@ -92,6 +92,8 @@ The following flags are supported by the `build` subcommand.
 |            | `--tls-cert`                         | The path to the TLS certificate file.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | string  |
 |            | `--tls-key`                          | The path to the TLS key file.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | string  |
 
+The `build` subcommand supports the environment variable `INCLUDE_COMPLIANCE_IMAGES`. When the variable is set to `true`, the resulting content bundle includes additional container images required for vulnerability and compliance scanning.
+
 #### Examples
 
 The following example creates a content bundle named `example-bundle.tar.zst` using the cluster profiles specified by
@@ -190,6 +192,19 @@ already present in the first profile version.
 
 ```shell
 palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --name example-bundle --exclude-profiles 11121314151
+```
+
+```text hideClipBoard title="Example Output"
+-----------------------------
+Build Summary
+-----------------------------
+bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle.tar.zst
+```
+
+You can use the environment variable `INCLUDE_COMPLIANCE_IMAGES` set to `true` to include additional container images required for vulnerability and compliance scanning in the content bundle. The following command creates a content bundle named `example-bundle.tar.zst` that includes scan images using the cluster profiles specified with the `--profiles` flag.
+
+```shell
+INCLUDE_COMPLIANCE_IMAGES=true palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --name example-bundle
 ```
 
 ```text hideClipBoard title="Example Output"
