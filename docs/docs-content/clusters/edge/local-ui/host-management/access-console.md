@@ -22,8 +22,8 @@ This page guides you through how access the console, and log in, and manage your
 
 - Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
 
-- The password is not expired. If you provided the `stylus.site.users[*].passwordExpiry` value in the user data, it
-  must be a future date.
+- The password is not expired. If you provided the `stylus.site.users[*].passwordExpiry` value in the user data, it must
+  be a future date.
 
 ### Instructions
 
