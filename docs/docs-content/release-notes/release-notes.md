@@ -115,8 +115,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - A new [Enable AI Workloads with the NVIDIA GPU Operator Pack](../ai-workloads/nvidia-gpu-operator.md) guide is now
   available. Follow it to verify that GPU workloads can run in your clusters.
-  
-  
 
 ### Packs
 
