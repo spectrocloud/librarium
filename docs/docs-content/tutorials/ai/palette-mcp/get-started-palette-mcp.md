@@ -444,7 +444,7 @@ Investigate why the following command `kubectl port-forward --namespace kubecost
   kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer-prometheus-server 9090
 ```
 
-Navigate back to your terminal window and change the port forward command to forward the service port 8080 to connet to
+Navigate back to your terminal window and change the port forward command to forward the service port 8080 to connect to
 the Kubecost UI, as suggested by the response from your MCP client.
 
 ```shell
