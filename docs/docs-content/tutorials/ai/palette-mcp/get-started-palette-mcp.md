@@ -9,10 +9,10 @@ category: ["tutorial"]
 ---
 
 The [Palette MCP Server](https://github.com/spectrocloud/palette-mcp-server) provides an abstraction layer over the
-Palette API, allowing you to interact with Kubernetes resources through natural language. It interprets user intent,
-translates it into appropriate API requests, and returns structured responses for LLMs to process. By handling the
-complexity of the underlying API, it allows language models to interact with Palette in a consistent and reliable way
-without requiring that users have a detailed knowledge of the API itself.
+Palette API, allowing you to interact with Palette resources through natural language. It interprets user intent,
+translates it into appropriate API requests, and returns structured responses for Large Language Models (LLMs) to
+process. By handling the complexity of the underlying API, it allows LLMs to interact with Palette in a consistent and
+reliable way without requiring that users have a detailed knowledge of the API itself.
 
 In this tutorial, you will learn how to use the Palette MCP server to debug cluster deployment issues. You will begin by
 importing a cluster profile which has some deliberate errors and use this profile to create a new Palette cluster. Then,
@@ -21,6 +21,16 @@ you will use the Palette MCP server to debug these errors and ensure that your c
 This tutorial uses [Amazon Web Services](https://aws.amazon.com) and
 [Claude Code](https://code.claude.com/docs/en/overview) with the Claude Sonnet 4.6 model. You can use a cloud provider
 and MCP client that suits your needs to follow along.
+
+:::info
+
+The [Palette MCP Server](../../../automation/palette-mcp/palette-mcp.md) can be used with any MCP client to investigate
+and modify Palette resources. Refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
+[Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
+[Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md) setup guides to learn how to configure it with
+these popular MCP clients.
+
+:::
 
 Below is a high-level diagram of the MCP server workflow. Your MCP client interacts with the Palette MCP server, which
 directly communicates with the Palette API. The Palette MCP Server downloads the
@@ -46,6 +56,9 @@ what operations the MCP server provides.
     [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
     [Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md).
 
+  - Enable `ALLOW_DANGEROUS_ACTIONS` on the Palette MCP Server. Refer to the
+    [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) for more information.
+
   - A container engine, such as [Docker](https://www.docker.com/products/docker-desktop/) or
     [Podman](https://podman.io/docs/installation).
 
@@ -53,6 +66,10 @@ what operations the MCP server provides.
     additional guidance.
 
 - A Palette account.
+
+  - Permissions to download kubeconfig files. Refer to
+    [Kubeconfig Access Permissions](../../../clusters/cluster-management/kubeconfig.md#kubeconfig-access-permissions)
+    for more information.
 
 - A Palette API key. Check out the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   guide for more information.
@@ -99,10 +116,25 @@ will use the Palette MCP server investigate and debug these errors.
 
 Open your MCP client.
 
-Send a query asking to download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for one of
-your running clusters. For example, you can ask "Download the kubeconfig file for the `<cluster-name>` Palette cluster."
-Replace the placeholder with your cluster name. The Palette MCP server uses the `getKubeconfig` tool to download the
-kubeconfig file for you cluster from Palette.
+:::warning
+
+Ensure that you follow all of the steps in the MCP server setup guides before proceeding with the tutorial. You must
+configure the `kubeconfig` folder, `.env.mcp` file, and an agent skill for cluster access to through the MCP client to
+succeed.
+
+Refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
+[Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
+[Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md) setup guides
+
+:::
+
+Send a prompt asking to download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for one of
+your running clusters. Replace the placeholder with your cluster name and submit the following prompt. The Palette MCP
+server uses the `getKubeconfig` tool to download the kubeconfig file for you cluster from Palette.
+
+```shell title="Example Prompt"
+Download the kubeconfig file for the `<cluster-name>` Palette cluster.
+```
 
 ```shell hideClipboard title="Example Output"
 ❯ Download the kubeconfig file for the `get-started-palette-mcp-cluster` Palette cluster.
@@ -130,10 +162,13 @@ kubeconfig file for you cluster from Palette.
   kubectl --kubeconfig="$HOME/.palette/kubeconfig" get pods -A
 ```
 
-Investigate if there any failing pods or deployments on your cluster. For example, you can ask "Run kubectl to connect
-to the `<cluster-name>` Palette cluster and list any failing pods or deployments." Replace the placeholder with your
-cluster name. Your MCP client uses the previously downloaded kubeconfig file to connect to your cluster using kubectl
-and investigate the failures.
+Investigate if there any failing pods or deployments on your cluster. Replace the placeholder with your cluster name and
+submit the following prompt. Your MCP client uses the previously downloaded kubeconfig file to connect to your cluster
+using kubectl and investigate the failures.
+
+```shell title="Example Prompt"
+Run kubectl to connect to the `<cluster-name>` Palette cluster and list any failing pods or deployments.
+```
 
 ```shell hideClipboard title="Example Output"
 ❯ Run kubectl to connect to the `get-started-palette-mcp-cluster` Palette  cluster and list any failing pods or deployments.
@@ -171,7 +206,89 @@ and investigate the failures.
 ```
 
 The Palette MCP server identifies that the cluster profile provides an invalid image tag for the Hello Universe
-deployment.
+deployment. Replace the placeholder with your cluster name and submit the following prompt to learn more about the
+`hello-universe` YAML configuration.
+
+```shell title="Example Prompt"
+Show the YAML configuration of the hello-universe-deployment in `<cluster-name>` Palette cluster.
+```
+
+```shell hideClipboard title="Example Output"
+❯ Show the YAML configuration of the hello-universe-deployment in `get-started-palette-mcp-cluster` Palette cluster.
+
+⏺ I need to find the UID for get-started-palette-mcp-cluster. Let me list clusters.
+  Called palette (ctrl+o to expand)
+
+⏺ Bash(kubectl --kubeconfig="$HOME/.palette/kubeconfig/69e5fa2b08e508cba60edbb8.kubeconfig" get deployment hello-universe-deployment -n hello-universe -o yaml 2>&1)
+  ⎿  apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+     … +65 lines (ctrl+o to expand)
+
+⏺ Here is the YAML configuration of hello-universe-deployment in get-started-palette-mcp-cluster:
+
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-04-20T10:22:42Z"
+    generation: 1
+    name: hello-universe-deployment
+    namespace: hello-universe
+    uid: fb7fa05f-606d-4577-9e70-fad3b0dd5f1b
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: hello-universe
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: hello-universe
+      spec:
+        containers:
+        - image: ghcr.io/spectrocloud/hello-universe:invalid
+          imagePullPolicy: IfNotPresent
+          name: hello-universe
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        terminationGracePeriodSeconds: 30
+  status:
+    replicas: 1
+    unavailableReplicas: 1
+    updatedReplicas: 1
+
+  Warning — deployment is broken:
+
+  ┌─────────────┬────────┬────────────────────────────┐
+  │  Condition  │ Status │           Reason           │
+  ├─────────────┼────────┼────────────────────────────┤
+  │ Available   │ False  │ MinimumReplicasUnavailable │
+  ├─────────────┼────────┼────────────────────────────┤
+  │ Progressing │ False  │ ProgressDeadlineExceeded   │
+  └─────────────┴────────┴────────────────────────────┘
+
+  - Image: ghcr.io/spectrocloud/hello-universe:invalid — the :invalid tag does not exist, causing the pod to fail to pull the image.
+  - The deployment timed out after 10 minutes (progressDeadlineSeconds: 600) with 0 available replicas — the app is completely down on this cluster.
+```
+
+The MCP client identifies that the YAML for the Hello Universe pack has incorrectly set the image tag.
 
 Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser. From the left main menu, select
 **Profiles**. Then, select the row for the tutorial profile.
@@ -180,22 +297,8 @@ Select the **Hello Universe** pack layer. View the configuration of the pack val
 
 The `hello-universe` pack sets the image tag used for deploying the
 [`hello-universe` application](https://github.com/spectrocloud/hello-universe) in the
-`manifests.hello-universe.images.hellouniverse` field of the `hello-universe` add-on pack. The configured image tag does
-not exist.
-
-```yaml {4}
-manifests:
-  hello-universe:
-    images:
-      hellouniverse: ghcr.io/spectrocloud/hello-universe:invalid
-    apiEnabled: false
-    namespace: hello-universe
-    port: 8080
-    replicas: 1
-```
-
-Change the `manifests.hello-universe.images.hellouniverse` field to the valid
-`ghcr.io/spectrocloud/hello-universe:1.3.1` tag.
+`manifests.hello-universe.images.hellouniverse` field of the `hello-universe` add-on pack. Change the
+`manifests.hello-universe.images.hellouniverse` field to the valid `ghcr.io/spectrocloud/hello-universe:1.3.1` tag.
 
 ```yaml {4}
 manifests:
@@ -219,15 +322,29 @@ Wait for Palette to reconcile and apply the changes. All layers of the cluster a
 
 ![Healthy cluster](/tutorials/ai/palette-mcp/get-started-palette-mcp_deployed-cluster-healthy.webp)
 
-Download the [kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI.
-This file enables you and other users to issue kubectl commands against the host cluster.
+Navigate back to your MCP client.
 
-Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
-Issue the following command, replacing the placeholder `<local-path>/admin.<cluster-name>.kubeconfig` with the path to
-your kubeconfig file.
+Retrieve the path to the downloaded kubeconfig file. Replace the placeholder with your cluster name and submit the
+following prompt. Your MCP client returns the path of the previously downloaded kubeconfig file.
+
+```shell title="Example Prompt"
+Return the local path of the downloaded kubeconfig file for `<cluster-name>` Palette cluster.
+```
+
+```shell hideClipboard title="Example Output"
+❯ Return the local path of the downloaded kubeconfig file for `get-started-palette-mcp-cluster` Palette cluster.
+
+  Listed 1 directory (ctrl+o to expand)
+
+⏺ The local path is:
+  ~/.palette/kubeconfig/69df9741978d9f786aacf13a.kubeconfig
+```
+
+Open a terminal window and set the environment variable `KUBECONFIG` to the local path returned by the MCP client. Issue
+the following command, replacing the placeholder with the path to your kubeconfig file.
 
 ```shell
-export KUBECONFIG=<local-path>/admin.<cluster-name>.kubeconfig
+export KUBECONFIG=<local-path>/<file-name>.kubeconfig
 ```
 
 Forward the Kubecost UI to your local network, as described in
@@ -257,11 +374,13 @@ error: lost connection to pod
 
 Navigate back to your MCP client.
 
-Send a query asking the Palette MCP server to investigate why the port-forward command does not work as expected. For
-example, you can ask "Investigate why the following command
-`kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090` fails to connect to a pod in the
-`<cluster-name>` Palette cluster." Replace the placeholder with your cluster name. Your MCP client uses the downloaded
+Send a prompt asking the Palette MCP server to investigate why the port-forward command does not work as expected.
+Replace the placeholder with your cluster name and submit the following prompt. Your MCP client uses the downloaded
 kubeconfig file to connect to your cluster using kubectl and investigate the cause of the error.
+
+```shell title="Example Prompt"
+Investigate why the following command `kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090` fails to connect to a pod in the `<cluster-name>` Palette cluster.
+```
 
 ```shell hideClipboard title="Example Output"
 ❯ Investigate why the following command `kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090` fails to connect to a pod in the `get-started-palette-mcp-cluster` Palette cluster.
@@ -325,24 +444,8 @@ kubeconfig file to connect to your cluster using kubectl and investigate the cau
   kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer-prometheus-server 9090
 ```
 
-Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser. From the left main menu, select
-**Profiles**. Then, select the row for the tutorial profile.
-
-Select the **Kubecost** pack layer. View the configuration of the pack values. The cluster profile has configured the
-pack to expose the service on port 8080. The solution identified by the Palette MCP server is correct.
-
-```yaml {4}
-service:
-  type: ClusterIP
-  port: 8080
-  targetPort: 8080
-  # nodePort:
-  labels: {}
-  annotations: {}
-```
-
-Navigate back to your terminal window and change the port forward command to forward the service port 8080, as suggested
-by the response from your MCP client.
+Navigate back to your terminal window and change the port forward command to forward the service port 8080 to connet to
+the Kubecost UI, as suggested by the response from your MCP client.
 
 ```shell
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
@@ -360,19 +463,60 @@ is executing from.
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, navigate to the left **Main Menu** and click on **Clusters**. Select the tutorial cluster to
-access its details page.
+:::warning
 
-Click on **Settings** to expand the menu, and select **Delete Cluster**.
+Ensure that you enable `ALLOW_DANGEROUS_ACTIONS` on the Palette MCP Server before proceeding with this section. Refer to
+the [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) for more information.
 
-You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
-the delete step. The deletion process takes several minutes to complete.
+:::
+
+Navigate to your MCP client.
+
+Send a prompt asking the Palette MCP server to delete the cluster. Replace the placeholder with your cluster name and
+submit the following prompt.
+
+```shell title="Example Prompt"
+Delete the `<cluster-name>` Palette cluster.
+```
+
+```shell hideClipboard title="Example Output"
+❯ Delete the `get-started-palette-mcp-cluster` Palette cluster.
+
+⏺ This will permanently delete the get-started-palette-mcp-cluster cluster (UID: 69e5fa2b08e508cba60edbb8). This action is irreversible. Are you sure you want to proceed?
+
+❯ Yes
+  Called palette (ctrl+o to expand)
+
+⏺ Cluster get-started-palette-mcp-cluster has been successfully deleted.
+```
+
+Navigate back to the Palette UI. From the left main menu, select **Clusters**. Then, select the row for the tutorial
+cluster. Wait for Palette to finish deleting the cluster. This may take some time.
 
 <PartialsComponent category="clusters" name="force-delete-callout" />
 
-Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you
-created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
-selection to remove the cluster profile.
+Once the tutorial cluster is deleted, navigate back to your MCP client.
+
+Send a prompt asking the Palette MCP server to delete the tutorial cluster profile. Replace the placeholder with your
+cluster profile name and submit the following prompt.
+
+```shell title="Example Prompt"
+Delete the `<cluster-profile-name>` Palette cluster profile.
+```
+
+```shell hideClipboard title="Example Output"
+❯ Delete the `get-started-palette-mcp-aws` Palette cluster profile.
+
+⏺ I'll look up the cluster profile first to get its UID.
+  Called palette (ctrl+o to expand)
+
+⏺ Found it — UID 69de31e540f19df7ae05a3e6. This will permanently delete the get-started-palette-mcp-aws cluster profile. Are you sure you want to proceed?
+
+❯ Yes
+  Called palette (ctrl+o to expand)
+
+⏺ Cluster profile get-started-palette-mcp-aws has been successfully deleted.
+```
 
 ## Wrap-up
 
