@@ -120,11 +120,9 @@ Open your MCP client.
 
 Ensure that you follow all of the steps in the MCP server setup guides before proceeding with the tutorial. You must
 configure the `kubeconfig` folder, `.env.mcp` file, and an agent skill for cluster access to through the MCP client to
-succeed.
-
-Refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
+succeed. Refer to the [Claude](../../../automation/palette-mcp/setup/mcp-setup-claude.md),
 [Cursor](../../../automation/palette-mcp//setup/mcp-setup-cursor.md), or the
-[Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md) setup guides
+[Gemini CLI](../../../automation/palette-mcp/setup/mcp-setup-gemini.md) pages for more information.
 
 :::
 
@@ -448,7 +446,7 @@ Navigate back to your terminal window and change the port forward command to for
 the Kubecost UI, as suggested by the response from your MCP client.
 
 ```shell
-kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090:8080
 ```
 
 Navigate back to your browser window and view`http://localhost:9090`. The Kubecost now successfully appears and UI
@@ -466,7 +464,8 @@ Use the following steps to remove all the resources you created for the tutorial
 :::warning
 
 Ensure that you enable `ALLOW_DANGEROUS_ACTIONS` on the Palette MCP Server before proceeding with this section. Refer to
-the [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) for more information.
+the [Server Configuration](../../../automation/palette-mcp/architecture.md#server-configuration) page for more
+information.
 
 :::
 
