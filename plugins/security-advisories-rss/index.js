@@ -59,7 +59,7 @@ function isWithinLastMonths(date, months) {
 function extractAdvisories(markdown, siteUrl, pagePath, monthsBack) {
   const items = [];
 
-  const advisoryRegex = /^##\s+(Security Advisory[^\n]+)\n([\s\S]*?)(?=^##\s+Security Advisory|\Z)/gm;
+  const advisoryRegex = /^##\s+(Security Advisory[^\n]+)\n([\s\S]*?)(?=^##\s+Security Advisory|\s*$)/gm;
 
   let match;
   while ((match = advisoryRegex.exec(markdown)) !== null) {
