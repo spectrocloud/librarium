@@ -13,6 +13,12 @@ additional details regarding vulnerabilities and offering remediation steps.
 Refer to the [Archived Security Advisories](./archived-security-advisories.md) page for a list of addressed security
 advisories.
 
+:::tip Stay Informed
+Subscribe to receive updates when new security advisories are published.
+
+👉 [Security Advisories RSS Feed](/security-advisories.xml)
+:::
+
 ## Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability
 
 - **Release Date**: March 23, 2026
