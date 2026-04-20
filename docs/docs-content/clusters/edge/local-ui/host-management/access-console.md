@@ -80,7 +80,7 @@ expired and is not intended as the primary method for updating passwords.
 
 :::warning
 
-If you you populated the `stylus.site.users[*].passwordExpiry` field value in the user data, change the password from
+If you populated the `stylus.site.users[*].passwordExpiry` field value in the user data, change the password from
 Local UI or when TUI prompts you to change it. Otherwise, the expiry date is not cleared.
 
 :::
