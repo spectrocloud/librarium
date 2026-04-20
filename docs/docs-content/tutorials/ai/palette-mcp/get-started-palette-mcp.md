@@ -44,7 +44,8 @@ command line tool.
 
 <PartialsComponent category="palette-mcp" name="mcp-tools" />
 
-Refer to the [Palette MCP Server Operations](../../../automation/palette-mcp/palette-mcp-operations.md) page for more information and example use cases.
+Refer to the [Palette MCP Server Operations](../../../automation/palette-mcp/palette-mcp-operations.md) page for more
+information and example use cases.
 
 ## Prerequisites
 
@@ -91,22 +92,21 @@ created.
 
 ## Deploy a Cluster
 
-Next, you will deploy a cluster using the imported cluster profile. From the left main menu, select **Profiles**, and choose the appropriate `get-started-palette-mcp-aws` or `get-started-palette-mcp-azure` cluster profile. The details page appears. Then, select **Deploy**. Select **OK** in the
-**Create a new cluster?** dialog window.
+Next, you will deploy a cluster using the imported cluster profile. From the left main menu, select **Profiles**, and
+choose the appropriate `get-started-palette-mcp-aws` or `get-started-palette-mcp-azure` cluster profile. The details
+page appears. Then, select **Deploy**. Select **OK** in the **Create a new cluster?** dialog window.
 
-Proceed through the **Deploy cluster profile** wizard, filling in the required cluster information and configurations. Refer to the
-[Deploy a Cluster to Amazon Web Services (AWS)](../../getting-started/palette/aws/aws.md) or
+Proceed through the **Deploy cluster profile** wizard, filling in the required cluster information and configurations.
+Refer to the [Deploy a Cluster to Amazon Web Services (AWS)](../../getting-started/palette/aws/aws.md) or
 [Deploy a Cluster to Microsoft Azure](../../getting-started/palette/azure/azure.md) sections for more information on
 cluster creation.
 
-Navigate to the left main menu and select **Clusters** to monitor the state of your deployment.
-Deployment time varies depending on the cloud provider, cluster profile, cluster size, and node pool configurations
-provided.
+Navigate to the left main menu and select **Clusters** to monitor the state of your deployment. Deployment time varies
+depending on the cloud provider, cluster profile, cluster size, and node pool configurations provided.
 
 Palette indicates that the cluster is deployed, but the **Hello Universe** add-on pack cannot be applied.
 
 ![Deployed cluster](/tutorials/ai/palette-mcp/get-started-palette-mcp_deployed-cluster.webp)
-
 
 ## Debug the Cluster
 
@@ -159,9 +159,9 @@ Download the kubeconfig file for the `<cluster-name>` Palette cluster.
   kubectl --kubeconfig="$HOME/.palette/kubeconfig" get pods -A
 ```
 
-Investigate if there are any failing pods or deployments on your cluster. Replace the placeholder with your cluster name and
-submit the following prompt. Your MCP client uses the previously downloaded kubeconfig file to connect to your cluster
-using kubectl and investigate the failures.
+Investigate if there are any failing pods or deployments on your cluster. Replace the placeholder with your cluster name
+and submit the following prompt. Your MCP client uses the previously downloaded kubeconfig file to connect to your
+cluster using kubectl and investigate the failures.
 
 ```shell title="Example Prompt"
 Run kubectl to connect to the `<cluster-name>` Palette cluster and list any failing pods or deployments.
@@ -287,7 +287,9 @@ Show the YAML configuration of the hello-universe-deployment in `<cluster-name>`
 
 The MCP client identifies that the YAML for the Hello Universe pack has incorrectly set the image tag.
 
-Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser.  From the left main menu, select **Profiles**, and choose the appropriate `get-started-palette-mcp-aws` or `get-started-palette-mcp-azure` cluster profile.
+Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser. From the left main menu, select
+**Profiles**, and choose the appropriate `get-started-palette-mcp-aws` or `get-started-palette-mcp-azure` cluster
+profile.
 
 Select the `hello-universe` pack layer. View the configuration of the pack values.
 
@@ -440,8 +442,8 @@ Investigate why the following command `kubectl port-forward --namespace kubecost
   kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer-prometheus-server 9090
 ```
 
-Navigate back to your terminal window and change the port forward command to forward service port 8080 to connect to
-the Kubecost UI, as suggested by the response from your MCP client.
+Navigate back to your terminal window and change the port forward command to forward service port 8080 to connect to the
+Kubecost UI, as suggested by the response from your MCP client.
 
 ```shell
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090:8080
@@ -452,8 +454,8 @@ provides you with a variety of cost visualization tools.
 
 ![Image that shows the Kubecost UI](/getting-started/getting-started_update-k8s-cluster_kubecost-ui.webp)
 
-Once you are done exploring the UI, you can stop the `kubectl port-forward` command by closing the terminal window it
-is executing from.
+Once you are done exploring the UI, you can stop the `kubectl port-forward` command by closing the terminal window it is
+executing from.
 
 ## Cleanup
 
@@ -521,6 +523,6 @@ In this tutorial, you imported a cluster profile that had two errors and deploye
 Then, you used the Palette MCP server to debug the cluster, understand the cause of the errors, and identify fixes to
 the errors encountered. This is a common engineering workflow that can be greatly streamlined using the MCP server.
 
-The Palette MCP server has many more capabilities than those explored in this tutorial. We encourage you to
-check out the [Integrate Palette MCP in an Agentic Workflow](./integrate-palette-mcp-agentic.md) tutorial to explore a more
+The Palette MCP server has many more capabilities than those explored in this tutorial. We encourage you to check out
+the [Integrate Palette MCP in an Agentic Workflow](./integrate-palette-mcp-agentic.md) tutorial to explore a more
 advanced usecase for the tools in the MCP server.
