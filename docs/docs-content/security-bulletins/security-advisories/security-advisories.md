@@ -16,7 +16,7 @@ advisories.
 :::tip Stay Informed
 Subscribe to receive updates when new security advisories are published.
 
-👉 [Security Advisories RSS Feed](/security-advisories.xml)
+👉 [Security Advisories RSS Feed](../../../../build/security-advisories.xml)
 :::
 
 ## Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability
