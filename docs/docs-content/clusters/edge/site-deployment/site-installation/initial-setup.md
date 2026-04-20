@@ -104,7 +104,7 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
    this account to log in to both the OS and the Local UI.
 
    Make sure the password has not expired. If you set the `stylus.site.users[*].passwordExpiry` field in the user data,
-   it must be a date in the future; otherwise, authentication will fail.
+   it must be a date in the future; otherwise, authentication fails.
 
    Note that you cannot create this user during initial configuration as this user already exists.
 
