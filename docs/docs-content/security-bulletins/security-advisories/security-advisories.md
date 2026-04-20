@@ -15,11 +15,9 @@ advisories.
 
 :::tip 
 
-Stay Informed! 
+Stay Informed and <VersionedLink text="subscribe" url="/security-advisories.xml" /> to receive updates when new security advisories are published.
 
-Subscribe to receive updates when new security advisories are published.
 
-<VersionedLink text="Security Advisories RSS Feed" url="/security-advisories.xml" />
 
 :::
 
