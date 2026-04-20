@@ -13,8 +13,7 @@ additional details regarding vulnerabilities and offering remediation steps.
 Refer to the [Archived Security Advisories](./archived-security-advisories.md) page for a list of addressed security
 advisories.
 
-:::tip Stay Informed
-Subscribe to receive updates when new security advisories are published.
+:::tip Stay Informed Subscribe to receive updates when new security advisories are published.
 
 <VersionedLink text="Security Advisories RSS Feed" url="/security-advisories.xml" />
 :::
