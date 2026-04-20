@@ -42,9 +42,7 @@ function slugifyHeading(text) {
  */
 function parseDateFromLine(line) {
   const normalized = line.replace(/\*\*/g, "").trim();
-  const match = normalized.match(
-    /^(Release Date|Last Updated|Last Update)\s*:\s*(.+)$/i
-  );
+  const match = normalized.match(/^(Release Date|Last Updated|Last Update)\s*:\s*(.+)$/i);
   if (!match) return null;
 
   const parsed = new Date(match[2].trim());
@@ -55,15 +53,9 @@ function parseDateFromLine(line) {
  * Resolve advisory date with priority
  */
 function resolveItemDate(metadataLines) {
-  const lastUpdatedLine = metadataLines.find((l) =>
-    /^Last Updated:\s*/i.test(l)
-  );
-  const lastUpdateLine = metadataLines.find((l) =>
-    /^Last Update:\s*/i.test(l)
-  );
-  const releaseDateLine = metadataLines.find((l) =>
-    /^Release Date:\s*/i.test(l)
-  );
+  const lastUpdatedLine = metadataLines.find((l) => /^Last Updated:\s*/i.test(l));
+  const lastUpdateLine = metadataLines.find((l) => /^Last Update:\s*/i.test(l));
+  const releaseDateLine = metadataLines.find((l) => /^Release Date:\s*/i.test(l));
 
   return (
     (lastUpdatedLine && parseDateFromLine(lastUpdatedLine)) ||
@@ -95,14 +87,9 @@ function extractAdvisories(markdown, siteUrl, pagePath, monthsBack) {
   function flushCurrentAdvisory() {
     if (!currentTitle) return;
 
-    const firstSubheadingIndex = currentLines.findIndex((line) =>
-      /^###\s+/.test(line)
-    );
+    const firstSubheadingIndex = currentLines.findIndex((line) => /^###\s+/.test(line));
 
-    const metadataLinesRaw =
-      firstSubheadingIndex >= 0
-        ? currentLines.slice(0, firstSubheadingIndex)
-        : currentLines;
+    const metadataLinesRaw = firstSubheadingIndex >= 0 ? currentLines.slice(0, firstSubheadingIndex) : currentLines;
 
     const metadataBlock = metadataLinesRaw.join("\n").trim();
 
@@ -177,44 +164,29 @@ module.exports = function securityAdvisoriesRssPlugin(context, options) {
   const opts = {
     docsRoot: options.docsRoot || ".",
     advisorySourceFile:
-      options.advisorySourceFile ||
-      "docs/docs-content/security-bulletins/security-advisories/security-advisories.md",
+      options.advisorySourceFile || "docs/docs-content/security-bulletins/security-advisories/security-advisories.md",
     feedFileName: options.feedFileName || "security-advisories.xml",
     pagePath: options.pagePath || "/security-bulletins/security-advisories/",
     feedTitle: options.feedTitle || "Spectro Cloud Security Advisories",
-    feedDescription:
-      options.feedDescription ||
-      "RSS feed for Spectro Cloud security advisories (last 6 months).",
+    feedDescription: options.feedDescription || "RSS feed for Spectro Cloud security advisories (last 6 months).",
     monthsBack: options.monthsBack ?? 6,
-    copyright:
-      options.copyright ||
-      `Copyright ${new Date().getFullYear()} Spectro Cloud`,
+    copyright: options.copyright || `Copyright ${new Date().getFullYear()} Spectro Cloud`,
   };
 
   return {
     name: "security-advisories-rss-plugin",
 
     async postBuild({ outDir }) {
-      const sourcePath = path.resolve(
-        opts.docsRoot,
-        opts.advisorySourceFile
-      );
+      const sourcePath = path.resolve(opts.docsRoot, opts.advisorySourceFile);
 
       if (!fs.existsSync(sourcePath)) {
-        throw new Error(
-          `[security-advisories-rss-plugin] Source file not found: ${sourcePath}`
-        );
+        throw new Error(`[security-advisories-rss-plugin] Source file not found: ${sourcePath}`);
       }
 
       const markdown = fs.readFileSync(sourcePath, "utf8");
       const normalizedPagePath = path.posix.join(baseUrl, opts.pagePath);
 
-      const advisories = extractAdvisories(
-        markdown,
-        siteUrl,
-        normalizedPagePath,
-        opts.monthsBack
-      );
+      const advisories = extractAdvisories(markdown, siteUrl, normalizedPagePath, opts.monthsBack);
 
       const feed = new Feed({
         id: new URL(normalizedPagePath, siteUrl).toString(),
@@ -222,10 +194,7 @@ module.exports = function securityAdvisoriesRssPlugin(context, options) {
         description: opts.feedDescription,
         link: new URL(normalizedPagePath, siteUrl).toString(),
         language: "en",
-        favicon: new URL(
-          path.posix.join(baseUrl, "img/favicon.png"),
-          siteUrl
-        ).toString(),
+        favicon: new URL(path.posix.join(baseUrl, "img/favicon.png"), siteUrl).toString(),
         copyright: opts.copyright,
         updated: advisories[0]?.date || new Date(),
         generator: "Docusaurus security advisories RSS plugin",
@@ -244,9 +213,7 @@ module.exports = function securityAdvisoriesRssPlugin(context, options) {
       const outputPath = path.join(outDir, opts.feedFileName);
       fs.writeFileSync(outputPath, feed.rss2(), "utf8");
 
-      console.log(
-        `[security-advisories-rss-plugin] wrote ${advisories.length} items to ${outputPath}`
-      );
+      console.log(`[security-advisories-rss-plugin] wrote ${advisories.length} items to ${outputPath}`);
     },
   };
 };
