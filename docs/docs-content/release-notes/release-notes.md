@@ -116,6 +116,14 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - A new [Enable AI Workloads with the NVIDIA GPU Operator Pack](../ai-workloads/nvidia-gpu-operator.md) guide is now
   available. Follow it to verify that GPU workloads can run in your clusters.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2598 -->
+
+- <TpBadge /> The [Palette MCP Server](../automation/palette-mcp/palette-mcp.md) allows you to use Large Language Models
+  (LLMs) to interact with the Palette API. Refer to the [Get Started with the Palette MCP
+  Server](../tutorials/ai/palette-mcp/get-started-palette-mcp.md) and [Integrate Palette MCP in an Agentic
+  Workflow](../tutorials/ai/palette-mcp/integrate-palette-mcp-agentic.md) tutorials to learn how to incorporate the
+  Palette MCP server into your workflows.
+
 ### Packs
 
 #### Pack Notes
