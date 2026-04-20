@@ -103,21 +103,20 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
    The user `kairos` always exists in the OS. If you configured a username and password in your user data, you can use
    this account to log in to both the OS and the Local UI.
 
-   Make sure the password has not expired. If you set the `stylus.site.users[*].passwordExpiry` field in the user data,
-   it must be a date in the future; otherwise, authentication fails.
+   If the password is expired, for example when `stylus.site.users[*].passwordExpiry` is set to a past date in user data, the TUI prompts for a password change.
 
    Note that you cannot create this user during initial configuration as this user already exists.
 
    :::
 
-5. The terminal displays a console for you to provide hostname and network configurations to the Edge host.
+6. The terminal displays a console for you to provide hostname and network configurations to the Edge host.
 
    ![A terminal user interface showing displaying network configuration options](/clusters_site-installation_initial-setup_tui_4.8.webp)
 
    Check the existing hostname and, optionally, change it to a new one. Use the **TAB** key or the up and down arrow
    keys to switch between fields. When you make a change, press **ENTER** to apply the change.
 
-6. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
+7. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
    automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
    block of an adapter's possible IP address is displayed in the **Network Adapter** screen without selecting an
    individual adapter.
@@ -134,19 +133,19 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    :::
 
-7. On the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
+8. On the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
    logically segment network traffic on the same physical network interface, providing network isolation and enhanced
    traffic management. If you assign a VLAN ID, the Edge host tags all outgoing packets from that adapter with the
    specified VLAN identifier.
 
-8. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
+9. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
    largest size, in bytes, of a packet that can be sent over a network interface without needing to be fragmented. Press
    **ENTER** to apply the change.
 
-9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
+10. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
    specify a search domain. Press **ENTER** to apply the change.
 
-10. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
+11. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
     configuration.
 
 ## Validate
