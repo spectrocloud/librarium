@@ -74,11 +74,11 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ## Change User Password
 
-You can change the password of an OS user through Local UI, through the terminal, or through the Palette API. The TUI prompts for a password change when the password is expired and is not intended as the primary method for updating passwords.
+You can change the password of an OS user through Local UI, through the terminal, or through the Palette API. The [TUI](../../site-deployment/site-installation/initial-setup.md) prompts for a password change when the password is expired and is not intended as the primary method for updating passwords.
 
 :::warning
 
-If you you populated the `stylus.site.users[*].passwordExpiry` field value in the user data, change the password from Local UI or when [TUI](../../site-deployment/site-installation/initial-setup.md) prompts you to change it. Otherwise, the expiry date is not cleared.
+If you you populated the `stylus.site.users[*].passwordExpiry` field value in the user data, change the password from Local UI or when TUI prompts you to change it. Otherwise, the expiry date is not cleared.
 
 :::
 
