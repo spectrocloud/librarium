@@ -146,7 +146,7 @@ API to update the password.
 
 4. Enter your current password to authenticate.
 
-5. Enter your new password and hit **Enter**. Enter the new password again to confirm. If you configured a Pluggable
+5. Enter your new password and press **ENTER**. Enter the new password again to confirm. If you configured a Pluggable
    Authentication Modules (PAM) policy, the new password must comply with it. Otherwise, the terminal returns an error.
 
 </TabItem>
