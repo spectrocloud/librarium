@@ -10,6 +10,7 @@ tags: ["release-notes"]
 ---
 
 <ReleaseNotesVersions />
+
 ## May 3, 2026 - Release 4.9.0 {#release-notes-4-9-0}
 
 The following component updates are applicable to this release:
