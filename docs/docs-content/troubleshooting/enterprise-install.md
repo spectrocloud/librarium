@@ -10,6 +10,114 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - Errors in API Calls After Traefik Migration
+
+After the migration to [Traefik](https://traefik.io/traefik/) as the default ingress controller in Palette version
+4.8.47, Traefik `Middleware` configurations include a `maxResponseBodyBytes` limit. This limit can cause API calls to
+fail with 500 errors when response bodies exceed the configured size.
+
+### Debug Steps
+
+In self-hosted environments, you can patch the existing Traefik `Middleware` objects to remove the
+`maxResponseBodyBytes` limit.
+
+1. Log in to your
+   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster. Set
+   the `KUBECONFIG` variable to the file path of the kubeconfig.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. Inspect the following `Middleware` objects to view the current buffer for `maxResponseBodyBytes`. Each object has a
+   different limit.
+
+   ```shell
+   kubectl get middleware body-size-5m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-10m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-15m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-20m --namespace hubble-system --output yaml
+   ```
+
+   ```yaml title="Example output" hideClipboard {18}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+   metadata:
+     annotations:
+       meta.helm.sh/release-name: hubble
+       meta.helm.sh/release-namespace: default
+     creationTimestamp: "2026-04-17T12:59:00Z"
+     generation: 1
+     labels:
+       app.kubernetes.io/managed-by: Helm
+     name: body-size-5m
+     namespace: hubble-system
+     resourceVersion: "38882"
+     uid: 3681d06e-925f-4a7a-ab94-9666e9cc6d57
+   spec:
+     buffering:
+       maxRequestBodyBytes: 5242880
+       maxResponseBodyBytes: 5242880
+   ```
+
+6. Remove `maxResponseBodyBytes` from the affected `Middleware` objects.
+
+   ```shell
+   kubectl patch middleware body-size-5m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+
+   kubectl patch middleware body-size-10m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+   kubectl patch middleware body-size-15m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+
+   kubectl patch middleware body-size-20m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+   ```
+
+   ```shell title="Example output" hideClipboard
+   middleware.traefik.io/body-size-5m patched
+   middleware.traefik.io/body-size-10m patched
+   middleware.traefik.io/body-size-15m patched
+   middleware.traefik.io/body-size-20m patched
+   ```
+
+7. Confirm the affected `Middleware` objects no longer contain `maxResponseBodyBytes`.
+
+   ```shell
+   kubectl get middleware body-size-5m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-10m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-15m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-20m --namespace hubble-system --output yaml
+   ```
+
+   ```yaml title="Example output" hideClipboard {15-17}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+      metadata:
+      annotations:
+         meta.helm.sh/release-name: hubble
+         meta.helm.sh/release-namespace: default
+      creationTimestamp: "2026-04-17T12:59:00Z"
+      generation: 2
+      labels:
+         app.kubernetes.io/managed-by: Helm
+      name: body-size-5m
+      namespace: hubble-system
+      resourceVersion: "38882"
+      uid: 3681d06e-925f-4a7a-ab94-9666e9cc6d57
+   spec:
+      buffering:
+         maxRequestBodyBytes: 5242880
+   ```
+
 ## Scenario - Traefik Ingress Controller Pods Crash on Amazon Linux 2 Nodes
 
 Traefik ingress controller DaemonSet pods may enter a `CrashLoopBackOff` state on deprecated Amazon Linux 2 (AL2) nodes

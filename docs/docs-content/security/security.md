@@ -22,7 +22,12 @@ You can find all security bulletins in the [Security Bulletins](../security-bull
 
 :::
 
-<br />
+## Spectro Cloud Trust Center
+
+The [Spectro Cloud Trust Center](https://app.vanta.com/spectrocloud.com/trust/qz5el1qr2n9wqz8xyipley) provides an
+overview of our security, privacy, and compliance practices. It serves as a centralized location for information data
+protection, data controls, and the security standards we adhere to. You can use this resource to review relevant
+documentation, certifications, and policy summaries related to our platform.
 
 ## Security-Aware Culture
 
@@ -31,16 +36,12 @@ software security, as they are the first line of defense through secure coding p
 Worldwide Application Security Project (OWASP) Top 10 training to understand, identify and mitigate the most critical
 security risks and vulnerabilities that affect web applications.
 
-<br />
-
 ## Product Security
 
 Palette uses a micro services-based architecture, and we take steps to ensure each service is secured. Product
 functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes
 cluster, called a management cluster, that Palette hosts and manages in SaaS mode or that users can host and manage in a
 self-hosted environment. Learn more by reviewing [Secure Product Architecture](product-architecture).
-
-<br />
 
 ## Compliance & Standards
 
@@ -49,20 +50,14 @@ our customers. We ensure our software complies with all relevant laws and regula
 update our compliance efforts to stay current with emerging regulations and requirements. To learn about our product
 certifications, check out the [Compliance](../legal-licenses/compliance.md) reference.
 
-<br />
-
 ## Transparency
 
 We list any Common Vulnerabilities and Exposure (CVE) issues that affect Palette or any part of its infrastructure in
 our [Security Bulletins](../security-bulletins/security-bulletins.md) along with the fix applied and any workarounds.
 
-<br />
-
 ## Report Security Issues
 
 Please contact our Security team at security@spectrocloud.com to report any security issues.
-
-<br />
 
 ## Resources
 
