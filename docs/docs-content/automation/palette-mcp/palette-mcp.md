@@ -32,9 +32,8 @@ The Palette MCP server allows you to perform the following actions:
 
 :::tip
 
-Check out the
-[Integrate Palette MCP in an Agentic Workflow](../../tutorials/ai/palette-mcp/integrate-palette-mcp-agentic.md) tutorial
-for a hands-on demonstration of how to integrate the Palette MCP server into an agentic workflow using Langchain.
+Check out the tutorials in the [AI](../../tutorials/ai/ai.md) section to learn how to incorporate the Palette MCP server
+into your workflows.
 
 :::
 
