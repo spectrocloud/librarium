@@ -75,7 +75,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   types.
-- Pluggable Authentication Modules (PAM)-based policy enforcement is now enabled, including password expiry checks. The `stylus.site.users[*].passwordExpiry` field has been added to [user data](../clusters/edge/edge-configuration/installer-reference.md). For examples of configuring PAM via the Dockerfile, refer to [Build Edge Artifacts - Advanced workflow](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts).
+- Pluggable Authentication Modules (PAM)-based policy enforcement is now enabled, including password expiry checks. The
+  `stylus.site.users[*].passwordExpiry` field has been added to
+  [user data](../clusters/edge/edge-configuration/installer-reference.md). For examples of configuring PAM via the
+  Dockerfile, refer to
+  [Build Edge Artifacts - Advanced workflow](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts).
 
 #### Bug Fixes
 
