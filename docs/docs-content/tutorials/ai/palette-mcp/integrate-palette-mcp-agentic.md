@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 20
 sidebar_label: "Integrate Palette MCP in an Agentic Workflow"
 title: "Integrate Palette MCP in an Agentic Workflow"
 description:
@@ -445,7 +445,7 @@ cluster also has the two tags `nginx:found` and `review`.
 
 ![The cluster details page with the palette-mcp-agentic-tutorial cluster and the nginx:found and review tags](/tutorials/ai/palette-mcp/ai_palette-mcp_integrate-palette-mcp-agentic_tagged-cluster.webp)
 
-## Clean-up
+## Cleanup
 
 Use the following steps to clean up the resources you created for this tutorial. Start by deleting the cluster you
 created called **palette-mcp-agentic-tutorial**. To delete the cluster, navigate to the left main menu and select
