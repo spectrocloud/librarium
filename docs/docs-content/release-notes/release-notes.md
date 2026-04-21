@@ -75,9 +75,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   types.
-- Pluggable Authentication Modules (PAM) policy enforcement is now enabled, including password expiry checks, which can be set using the 
-  `stylus.site.users[*].passwordExpiry` [user data](../clusters/edge/edge-configuration/installer-reference.md) field.
-   For examples of configuring PAM via the
+- Pluggable Authentication Modules (PAM) policy enforcement is now enabled, including password expiry checks, which can
+  be set using the `stylus.site.users[*].passwordExpiry`
+  [user data](../clusters/edge/edge-configuration/installer-reference.md) field. For examples of configuring PAM via the
   Dockerfile, refer to
   [Build Edge Artifacts - Advanced workflow](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts).
 - Edge workflows have been updated to Kairos v4.0.3. A [known issue](known-issues.md) prevents this update from applying
