@@ -7,7 +7,7 @@ sidebar_position: 20
 tags: ["clusters", "imported clusters"]
 ---
 
-Clusters imported in read-only mode can be migrated to full-permission mode at any time. Migrating upgrades the Palette
+Clusters imported in read-only mode can be migrated to full permission mode at any time. Migrating upgrades the Palette
 agent's Role-Based Access Control (RBAC) permissions, which enables additional Day-2 operations such as deploying add-on
 profiles, configuring RBAC bindings, running compliance scans, and scheduling backups. The agent also automatically
 installs a metrics server if one is not already present on the cluster. For a full comparison of what each mode
@@ -73,6 +73,7 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
 
    ```shell
    export KUBECONFIG=<path-to-kubeconfig>
+   kubectl config use-context <context-name>
    ```
 
 7. Paste the command you copied in your terminal to start the migration.
@@ -119,7 +120,7 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
 
 ![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.webp)
 
-You have successfully migrated a read-only mode cluster to full-permissions mode.
+You have successfully migrated a read-only mode cluster to full permission mode.
 
 ## Validate
 
@@ -134,6 +135,6 @@ You have successfully migrated a read-only mode cluster to full-permissions mode
 
 ## Next Steps
 
-Imported clusters in full-permissions mode allow you to manage more Day-2 activities through Palette. You can also
+Imported clusters in full permission mode allow you to perform additional Day-2 activities through Palette. You can also
 deploy add-on cluster profiles to build upon your cluster's current functionality. Refer to the
 [Attach an Add-on Profile](attach-add-on-profile.md) guide to learn more.

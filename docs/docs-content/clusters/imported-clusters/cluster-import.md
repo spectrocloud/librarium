@@ -8,12 +8,12 @@ tags: ["clusters", "imported clusters"]
 ---
 
 When importing a cluster into Palette, you can select the mode you want Palette to use when managing the cluster. You
-can choose between **Read-only mode** or **Full Permissions mode**. Refer to
+can choose between read-only mode or full permission mode. Refer to
 [Imported Clusters](imported-clusters.md#import-modes) to learn more about each mode.
 
-## Full Permissions Mode
+## Full Permission Mode
 
-Full Permission mode grants the Palette agent broad Role-Based Access Control (RBAC) access to your cluster. This
+Full permission mode grants the Palette agent broad Role-Based Access Control (RBAC) permissions to your cluster. This
 enables Day-2 operations such as deploying add-on profiles, configuring RBAC bindings and namespaces, running compliance
 scans, and scheduling backups. The agent also automatically installs a metrics server if one is not already present on
 the cluster.
@@ -24,7 +24,7 @@ the cluster.
 
   - Use Kubernetes version 1.19.x or later.
   - Have network access to Palette SaaS or your self-hosted Palette instance.
-  - Have `admin` or `cluster-admin` permissions.
+  - Have `cluster-admin` permissions.
 
 - Your local workstation must have [kubectl](https://kubernetes.io/docs/tasks/tools/) installed and configured to access
   your imported cluster.
@@ -40,14 +40,14 @@ the cluster.
 4. On the **Import Cluster** page, complete the following information as applicable. The fields vary depending on the
    **Cloud Type** selected.
 
-   | **Field**                           | **Description**                                                                                                                                                                                                                                                                                                    | **Cloud Type** |
-   | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-   | **Cluster Name**                    | Enter a unique display name for the cluster you want to import.                                                                                                                                                                                                                                                    | All            |
-   | **Cloud Type**                      | Select the infrastructure environment your cluster resides in. Supported options include **AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**. Select **Generic** for all other environments. Refer to [Imported Clusters](./imported-clusters.md#supported-infrastructure-providers) for more information. | All            |
-   | **Proxy (Optional)**                | Specify a network proxy address or DNS value.                                                                                                                                                                                                                                                                      | Generic        |
-   | **No Proxy (Optional)**             | Specify a no proxy address or DNS value.                                                                                                                                                                                                                                                                           | Generic        |
-   | **Host Path (Optional)**            | Specify the Certificate Authority (CA) file path on the physical host machine where the CA file is stored.                                                                                                                                                                                                         | All            |
-   | **Container Mount Path (Optional)** | Specify the container path where the CA file is mounted in the container.                                                                                                                                                                                                                                          | All            |
+   | **Field**                           | **Description**                                                                                                                                                                                                                                                                                                                                                                          | **Cloud Type** |
+   | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+   | **Cluster Name**                    | Enter a unique display name for the cluster you want to import.                                                                                                                                                                                                                                                                                                                          | All            |
+   | **Cloud Type**                      | The infrastructure environment your cluster resides in. The cloud type determines what infrastructure metadata Palette displays. Supported options include **AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**. Select **Generic** if your provider is not listed. Refer to [Imported Clusters](./imported-clusters.md#supported-infrastructure-providers) for more information. | All            |
+   | **Proxy (Optional)**                | The address of an HTTP proxy server that the Palette agent uses for outbound traffic to reach Palette.                                                                                                                                                                                                                                                                                   | Generic        |
+   | **No Proxy (Optional)**             | A comma-separated list of hosts, IP addresses, or Classless Inter-Domain Routing (CIDR) ranges that bypass the proxy specified in the **Proxy** field.                                                                                                                                                                                                                                   | Generic        |
+   | **Host Path (Optional)**            | The file path on the host machine to a custom Certificate Authority (CA) certificate. Use this if the Palette agent must trust a CA that is not in the default trust store, such as when connecting to a self-hosted Palette instance that uses an internal CA or when traffic passes through a TLS-intercepting proxy.                                                                  | All            |
+   | **Container Mount Path (Optional)** | The path inside the Palette agent container where the CA certificate specified in the **Host Path** field is mounted.                                                                                                                                                                                                                                                                    | All            |
 
 5. Select **Full Permission mode**, then **Create & Open Cluster Instance** to start the import.
 
@@ -83,28 +83,7 @@ the cluster.
    The Palette agent requires a metrics server that implements the Kubernetes Metrics API (`metrics.k8s.io`) to display
    resource utilization data such as CPU and memory usage. In **Full Permission mode**, the agent automatically detects
    whether a metrics server is present and installs one if none is found. If your cluster already has a metrics server,
-   such as one provided by a managed Kubernetes service like EKS, GKE, or AKS, the agent uses the existing one.
-
-   To verify if your cluster has the Kubernetes Metrics API installed, run the following command.
-
-   ```shell
-   kubectl get apiservices | grep metrics
-   ```
-
-   ```shell title="Example output" hideClipboard
-    v1beta1.metrics.k8s.io              kube-system/metrics-server   True        33m
-   ```
-
-   To verify the Kubernetes Metrics API is responding, run the following command.
-
-   ```shell
-   kubectl top nodes
-   ```
-
-   ```shell title="Example output" hideClipboard
-   NAME                                   CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)
-   import-cluster-palette-control-plane   212m         2%       1607Mi          20%
-   ```
+   the agent uses the existing one.
 
    :::
 
@@ -124,13 +103,19 @@ You now have imported a cluster into Palette with full permissions.
 4. On the cluster **Overview** tab, verify your cluster has a **Cluster Status** of **Running** and a **Health** status
    of **Healthy**.
 
-5. It may take several minutes for metrics data to be populated. WHEN IT DOES, SCREENSHOT??????
+5. It may take several minutes for Palette to populate metrics data. Metrics data appears in the following locations:
+
+   - **Overview** tab - **Metrics Real-Time** section
+   - **Usage & Costs** tab
+   - **Workloads** tab
+
+     ![Workloads tab showing metrics](/cluster-import_workloads.webp)
 
 ## Read-Only Mode
 
-Read-Only mode imports your cluster with limited RBAC permissions. The Palette agent observes the cluster and reports
+Read-only mode imports your cluster with limited RBAC permissions. The Palette agent observes the cluster and reports
 health, event logs, cost, and workload data, but does not modify workloads or infrastructure. You can
-[migrate to Full Permission mode](migrate-full-permissions.md) at any time.
+[migrate to full permission mode](migrate-full-permissions.md) at any time.
 
 ### Prerequisites
 
@@ -144,9 +129,9 @@ health, event logs, cost, and workload data, but does not modify workloads or in
 
 :::info
 
-The cluster does not require a network proxy to communicate with Palette. Network proxy configurations are not supported
-in read-only mode. Use **Full Permissions mode** if you need to configure a network proxy. Refer to
-[Imported Clusters](imported-clusters.md#import-modes) to learn more about each mode.
+Network proxy configuration is not supported in read-only mode. If your cluster requires a network proxy to communicate
+with Palette, use full permission mode. Refer to [Imported Clusters](imported-clusters.md#import-modes) to learn more
+about each mode.
 
 :::
 
@@ -161,14 +146,14 @@ in read-only mode. Use **Full Permissions mode** if you need to configure a netw
 4. On the **Import Cluster** page, complete the following information as applicable. The fields vary depending on the
    **Cloud Type** selected.
 
-   | **Field**                           | **Description**                                                                                                                                                                                                                                                                                                    | **Cloud Type** |
-   | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-   | **Cluster Name**                    | Enter a unique display name for the cluster you want to import.                                                                                                                                                                                                                                                    | All            |
-   | **Cloud Type**                      | Select the infrastructure environment your cluster resides in. Supported options include **AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**. Select **Generic** for all other environments. Refer to [Imported Clusters](./imported-clusters.md#supported-infrastructure-providers) for more information. | All            |
-   | **Proxy (Optional)**                | Specify a network proxy address or DNS value.                                                                                                                                                                                                                                                                      | Generic        |
-   | **No Proxy (Optional)**             | Specify a no proxy address or DNS value.                                                                                                                                                                                                                                                                           | Generic        |
-   | **Host Path (Optional)**            | Specify the Certificate Authority (CA) file path on the physical host machine where the CA file is stored.                                                                                                                                                                                                         | All            |
-   | **Container Mount Path (Optional)** | Specify the container path where the CA file is mounted in the container.                                                                                                                                                                                                                                          | All            |
+   | **Field**                           | **Description**                                                                                                                                                                                                                                                                                                                                                                          | **Cloud Type** |
+   | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+   | **Cluster Name**                    | Enter a unique display name for the cluster you want to import.                                                                                                                                                                                                                                                                                                                          | All            |
+   | **Cloud Type**                      | The infrastructure environment your cluster resides in. The cloud type determines what infrastructure metadata Palette displays. Supported options include **AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**. Select **Generic** if your provider is not listed. Refer to [Imported Clusters](./imported-clusters.md#supported-infrastructure-providers) for more information. | All            |
+   | **Proxy (Optional)**                | The address of an HTTP proxy server that the Palette agent uses for outbound traffic to reach Palette.                                                                                                                                                                                                                                                                                   | Generic        |
+   | **No Proxy (Optional)**             | A comma-separated list of hosts, IP addresses, or Classless Inter-Domain Routing (CIDR) ranges that bypass the proxy specified in the **Proxy** field.                                                                                                                                                                                                                                   | Generic        |
+   | **Host Path (Optional)**            | The file path on the host machine to a custom Certificate Authority (CA) certificate. Use this if the Palette agent must trust a CA that is not in the default trust store, such as when connecting to a self-hosted Palette instance that uses an internal CA or when traffic passes through a TLS-intercepting proxy.                                                                  | All            |
+   | **Container Mount Path (Optional)** | The path inside the Palette agent container where the CA certificate specified in the **Host Path** field is mounted.                                                                                                                                                                                                                                                                    | All            |
 
 5. Select **Read-only mode**, then **Create & Open Cluster Instance** to start the import.
 
@@ -178,10 +163,9 @@ in read-only mode. Use **Full Permissions mode** if you need to configure a netw
    ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.webp)
 
 7. (Optional) Palette uses a metrics server that implements the Kubernetes Metrics API (`metrics.k8s.io`) to display
-   resource utilization data such as CPU and memory usage. In **Read-only mode**, the agent does not have permission to
-   install a metrics server automatically. If your cluster does not already have a metrics server, such as one provided
-   by a managed Kubernetes service like EKS, GKE, or AKS, you can install one manually. Any implementation that serves
-   the Kubernetes Metrics API is compatible.
+   resource utilization data such as CPU and memory usage. In read-only mode, the Palette agent does not have permission
+   to install a metrics server automatically. If your cluster does not already have a metrics server, you can install
+   one manually. Any implementation that serves the Kubernetes Metrics API is compatible.
 
    To verify if your cluster has the Kubernetes Metrics API installed, run the following command.
 
@@ -204,10 +188,9 @@ in read-only mode. Use **Full Permissions mode** if you need to configure a netw
    import-cluster-palette-control-plane   212m         2%       1607Mi          20%
    ```
 
-   If your cluster does not have a metrics server installed, you can copy the command from the drawer to install the
-   Bitnami metrics-server chart or use the following command to install the Kubernetes metrics-server chart. The
-   `--kubelet-insecure-tls` flag is required for clusters that use self-signed kubelet certificates, which is common for
-   self-managed clusters. Managed Kubernetes services such as EKS, GKE, and AKS typically do not require this flag.
+   If your cluster does not have a metrics server installed, you can use the following command to install the Kubernetes
+   metrics-server Helm chart. The `--kubelet-insecure-tls` flag is required for clusters that use self-signed kubelet
+   certificates, which is common for self-managed clusters.
 
    ```shell
    helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
@@ -284,6 +267,13 @@ guidance.
 
 4. On the cluster **Overview** tab, verify your cluster has a **Cluster Status** of **Running** and a **Health** status
    of **Healthy**.
+
+5. It may take several minutes for Palette to populate metrics data. Metrics data appears in the following locations:
+
+   - **Overview** tab - **Metrics Real-Time** section
+   - **Usage & Costs** tab
+
+     ![Usage & Costs tab showing metrics](/cluster-import_usage-costs.webp)
 
 ## Next Steps
 
