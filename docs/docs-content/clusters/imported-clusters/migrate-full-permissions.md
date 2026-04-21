@@ -79,7 +79,7 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
 7. Paste the command you copied in your terminal to start the migration.
 
    ```shell title="Example command" hideClipboard
-   kubectl apply -f https://api.dev.spectrocloud.com/v1/spectroclusters/69e67ccb13d6a6578fc2bdd3/import/manifest
+   kubectl apply --filename https://api.dev.spectrocloud.com/v1/spectroclusters/69e67ccb13d6a6578fc2bdd3/import/manifest
    ```
 
    ```hideClipboard shell title="Example output"

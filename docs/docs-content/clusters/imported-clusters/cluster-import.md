@@ -189,7 +189,7 @@ about each mode.
    ```
 
    If your cluster does not have a metrics server installed, you can use the following command to install the Kubernetes
-   metrics-server Helm chart. The `--kubelet-insecure-tls` flag is required for clusters that use self-signed kubelet
+   metrics-server Helm chart. The `--kubelet-insecure-tls` flag is required for clusters that use self-signed Kubelet
    certificates, which is common for self-managed clusters.
 
    ```shell
