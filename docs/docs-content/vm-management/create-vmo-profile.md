@@ -86,14 +86,21 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 
 6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
-   **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check
-   out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
-   Changing the default may require some additional configuration.
+7. Review the **Access** configuration panel at right. The pack provides three access modes.
 
-   The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired. Ensure
-   that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-   separately in your cluster profile if you select this option.
+   The `charts.virtual-machine-orchestrator.service.type` field configures how the Virtual Machine Orchestrator is
+   exposed and accessed.
+
+   - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
+     Spectro VM Dashboard from anywhere. Check out the
+     <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
+     the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
+   - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
+     that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+     separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service type,
+     which cannot be overridden.
+   - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
+     custom configuration according to your environment.
 
    :::warning
 
@@ -150,14 +157,20 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
 <!-- prettier-ignore -->
-7.  Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
-    **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
-    Changing the default may require some additional configuration. Check out the
-    <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
+7.  Review the **Access** configuration panel at right. The pack provides three access modes.
 
-    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
-    Ensure that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-    separately in your cluster profile if you select this option.
+    The `charts.virtual-machine-orchestrator.service.type` field configures how the Virtual Machine Orchestrator is exposed and accessed.
+
+    - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
+      Spectro VM Dashboard from anywhere. Check out the
+      <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
+      the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
+    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
+      that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+      separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service type,
+      which cannot be overridden.
+    - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
+      custom configuration according to your environment.
 
 8.  If you are using PKX-E, no change is required and you can skip this step.
 
@@ -268,14 +281,21 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7.  Review the **Access** configuration panel on the right. The default setting is **Proxied**, which automatically adds
-    the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
-    Check out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn
-    more.
+7.  Review the **Access** configuration panel at right. The pack provides three access modes.
 
-    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
-    Ensure that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" />
-    pack separately in your cluster profile if you select this option.
+    The `charts.virtual-machine-orchestrator.service.type` field configures how the Virtual Machine Orchestrator is
+    exposed and accessed.
+
+    - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
+      Spectro VM Dashboard from anywhere. Check out the
+      <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
+      the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
+    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
+      that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+      separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service
+      type, which cannot be overridden.
+    - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
+      custom configuration according to your environment.
 
     :::warning
 

@@ -80,6 +80,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
    For examples of configuring PAM via the
   Dockerfile, refer to
   [Build Edge Artifacts - Advanced workflow](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts).
+- Edge workflows have been updated to Kairos v4.0.3. A [known issue](known-issues.md) prevents this update from applying
+  to [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain
+  on Kairos v3.5.9. This does not impact functionality.
 
 #### Bug Fixes
 
@@ -110,7 +113,24 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+- The Palette CLI [`content build`](../automation/palette-cli/commands/content.md#build) command now supports the
+  environment variable `INCLUDE_COMPLIANCE_IMAGES`. When the variable is set to `true`, the resulting content bundle
+  includes additional container images required for compliance scanning.
+
 ### Docs and Education
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2527 -->
+
+- A new [Enable AI Workloads with the NVIDIA GPU Operator Pack](../ai-workloads/nvidia-gpu-operator.md) guide is now
+  available. Follow it to verify that GPU workloads can run in your clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2598 -->
+
+- <TpBadge /> The [Palette MCP Server](../automation/palette-mcp/palette-mcp.md) allows you to use Large Language Models
+  (LLMs) to interact with the Palette API. Refer to the [Get Started with the Palette MCP
+  Server](../tutorials/ai/palette-mcp/get-started-palette-mcp.md) and [Integrate Palette MCP in an Agentic
+  Workflow](../tutorials/ai/palette-mcp/integrate-palette-mcp-agentic.md) tutorials to learn how to incorporate the
+  Palette MCP server into your workflows.
 
 ### Packs
 
