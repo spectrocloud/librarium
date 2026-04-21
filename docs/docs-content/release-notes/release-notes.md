@@ -45,8 +45,8 @@ The following component updates are applicable to this release:
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
 
-- The **Context** field on the cluster **Overview** tab now contains a hyperlink to the cluster's parent project.
-  This link is available from the Tenant Admin scope only.
+- The **Context** field on the cluster **Overview** tab now contains a hyperlink to the cluster's parent project. This
+  link is available from the Tenant Admin scope only.
 
 #### Deprecations and Removals
 
