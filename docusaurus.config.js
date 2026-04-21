@@ -353,6 +353,14 @@ const config = {
         },
         items: [
           {
+            to: "/",
+            type: "docSidebar",
+            sidebarId: "docSidebar",
+            label: "Docs",
+            position: "left",
+            activeBaseRegex: "^(?!/api/).*$",
+          },
+          {
             to: "/tutorials",
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
