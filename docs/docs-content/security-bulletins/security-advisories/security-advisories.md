@@ -8,6 +8,14 @@ hide_table_of_contents: false
 tags: ["security", "cve", "advisories"]
 ---
 
+:::tip
+
+Stay informed and <VersionedLink text="subscribe" url="/security-advisories.xml" /> to receive updates when new security
+advisories are published.
+
+:::
+
+
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 

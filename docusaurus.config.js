@@ -311,6 +311,16 @@ const config = {
         redirects: [...redirects],
       },
     ],
+    [
+      require.resolve("./plugins/security-advisories-rss"),
+      {
+        docsRoot: __dirname,
+        advisorySourceFile: "docs/docs-content/security-bulletins/security-advisories/security-advisories.md",
+        feedFileName: "security-advisories.xml",
+        pagePath: "/security-bulletins/security-advisories/",
+        monthsBack: 6,
+      },
+    ],
   ].filter(Boolean),
   scripts: process.env.NODE_ENV === "production" ? allScripts : localScripts,
   themes: ["docusaurus-theme-openapi-docs"],
