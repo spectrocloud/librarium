@@ -55,4 +55,4 @@ modes and limitations to be aware of.
 
 - [Import Modes](../../../clusters/imported-clusters/imported-clusters.md#import-modes)
 
-- [Cluster Import Limitations](../../../clusters/imported-clusters/imported-clusters.md#limitations)
+- [Cluster Import Limitations](../../../clusters/imported-clusters/imported-clusters.md#import-modes)
