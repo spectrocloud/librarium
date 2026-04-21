@@ -11,6 +11,13 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+:::tip
+
+Stay informed and <VersionedLink text="subscribe" url="/security-advisories.xml" /> to receive updates when new security
+advisories are published.
+
+:::
+
 ## Security Advisory 005 - `runc` Container Vulnerabilities Affecting Kubernetes Cluster Runtimes
 
 - **Release Date**: November 5, 2025
