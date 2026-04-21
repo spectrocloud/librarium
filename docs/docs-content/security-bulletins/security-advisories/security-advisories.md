@@ -11,8 +11,10 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+<!-- Commenting out Archived Security Advisories as they don't exist in Version 4.7
+
 Refer to the [Archived Security Advisories](./archived-security-advisories.md) page for a list of addressed security
-advisories.
+advisories. -->
 
 :::tip
 
