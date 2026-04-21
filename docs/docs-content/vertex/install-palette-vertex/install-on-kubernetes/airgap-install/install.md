@@ -62,6 +62,8 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
   - A minimum of three worker nodes or three untainted control plane nodes.
 
+  - AMD64 (also known as x86_64) architecture. ARM-based nodes are not supported.
+
 - The following network ports must be accessible for VerteX to operate successfully.
 
   - TCP/443: Inbound and outbound to and from the VerteX management cluster.
