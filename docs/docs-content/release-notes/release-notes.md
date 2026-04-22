@@ -48,7 +48,7 @@ The following component updates are applicable to this release:
 - The **Cloud Type** options for [imported clusters](../clusters/imported-clusters/imported-clusters.md) have been
   updated for clarity (**AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**). Users should now select **Generic**
   when importing AWS EKS-Anywhere, OpenShift, and VMware vSphere clusters.
-  
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
 
 - The **Context** field on the cluster **Overview** tab now contains a hyperlink to the cluster's parent project. This

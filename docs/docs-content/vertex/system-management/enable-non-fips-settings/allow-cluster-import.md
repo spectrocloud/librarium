@@ -48,7 +48,3 @@ modes and limitations to be aware of.
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
 3. Click on **Add New Cluster**. The **Import Cluster** option is now displayed on the **Create a New Cluster** page.
-
-
-
-
