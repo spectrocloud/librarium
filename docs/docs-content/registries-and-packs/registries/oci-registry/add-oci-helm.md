@@ -224,14 +224,14 @@ registry you are adding.
 7. Enable **Synchronization** for the registry. Synchronization is required for GHCR. For more information, refer to the
    [Helm Registry - Synchronization Behavior](../helm-charts.md#synchronization-behavior) section.
 
-8. In the **Endpoint** field, enter the appropriate endpoint depending on whether the repository is owned by an
+8. In the **Endpoint** field, enter the appropriate endpoint depending on whether the Helm chart package is owned by an
    individual user or organization.
 
    <Tabs>
 
    <TabItem value="user" label="User">
 
-   Replace `<username>` with the username of the repository owner.
+   Replace `<username>` with the GitHub username that owns the package.
 
    ```shell
    ghcr.io/users/<username>
@@ -241,7 +241,7 @@ registry you are adding.
 
    <TabItem value="organization" label="Organization">
 
-   Replace `<organization>` with the organization name of the repository owner.
+   Replace `<organization>` with the GitHub organization name that owns the package.
 
    ```shell
    ghcr.io/orgs/<organization>
@@ -251,7 +251,7 @@ registry you are adding.
 
    </Tabs>
 
-9. ENDPOINT SUFFIX?????
+9. Leave the **Endpoint Suffix** blank.
 
 10. Enter the **Base Content Path** for the Helm charts you want Palette to index. This is the GitHub repository that
     the Helm chart is linked to. You can specify multiple base paths by pressing the **ENTER** key after each path.
