@@ -13,10 +13,6 @@ tags: ["release-notes"]
 
 ## May 3, 2026 - Release 4.9.0 {#release-notes-4-9-0}
 
-The following component updates are applicable to this release:
-
-- TBA <!-- omit in toc -->
-
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
@@ -48,6 +44,11 @@ The following component updates are applicable to this release:
   GHCRs to Palette and
   [Add a Helm Chart](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md) for
   how to use GHCR-sourced Helm charts in your clusters.
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2774 -->
+
+- The `compute.zoneOperations.get` and `compute.zoneOperations.list` permissions have been added to GCP
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md). These permissions allow Palette to
+  optimize the cluster creation process.
 
 #### Improvements
 
