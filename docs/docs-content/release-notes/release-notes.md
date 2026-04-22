@@ -13,10 +13,6 @@ tags: ["release-notes"]
 
 ## May 3, 2026 - Release 4.9.0 {#release-notes-4-9-0}
 
-The following component updates are applicable to this release:
-
-- TBA <!-- omit in toc -->
-
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
@@ -40,6 +36,12 @@ The following component updates are applicable to this release:
   beside the **Kubeconfig File** or **Admin Kubeconfig File** download link. Refer to our
   [Kubeconfig](../clusters/cluster-management/kubeconfig.md) and
   [Kubectl](../clusters/cluster-management/palette-webctl.md) guides for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2774 -->
+
+- The `compute.zoneOperations.get` and `compute.zoneOperations.list` permissions have been added to GCP
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md). These permissions allow Palette to
+  optimize the cluster creation process.
 
 #### Improvements
 
