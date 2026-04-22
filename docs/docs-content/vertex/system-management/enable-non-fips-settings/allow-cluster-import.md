@@ -49,10 +49,6 @@ modes and limitations to be aware of.
 
 3. Click on **Add New Cluster**. The **Import Cluster** option is now displayed on the **Create a New Cluster** page.
 
-## Resources
 
-- [Import a Cluster](../../../clusters/imported-clusters/cluster-import.md)
 
-- [Import Modes](../../../clusters/imported-clusters/imported-clusters.md#import-modes)
 
-- [Cluster Import Limitations](../../../clusters/imported-clusters/imported-clusters.md#import-modes)
