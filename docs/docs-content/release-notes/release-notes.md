@@ -18,7 +18,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10545 -->
 
 - Fixed an issue that caused [Palette API](/api/category/palette-api-v1/) calls related to packs, registries, and
-  cluster profiles to fail with 500 errors when response bodies exceed the configured size.
+  cluster profiles to fail with Error 500 when response bodies exceed the configured size.
 
 ## April 17, 2026 - Component Updates {#component-updates-2026-16}
 
