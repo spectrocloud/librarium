@@ -118,7 +118,7 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
 
 8. The drawer disappears, and the **Profile**, **Workloads**, **Scan**, and **Backups** tabs are unlocked.
 
-![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.webp)
+              ![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.webp)
 
 You have successfully migrated a read-only mode cluster to full permission mode.
 
@@ -130,8 +130,7 @@ You have successfully migrated a read-only mode cluster to full permission mode.
 
 3. From the **Clusters** table, select your imported cluster.
 
-4. On the cluster **Overview** tab, verify your cluster has a **Cluster Status** of **Running** and a **Health** status
-   of **Healthy**.
+4. Verify that you can interact with the **Profile**, **Workloads**, **Scan**, and **Backups** tabs. The **Migrate To Full Permissions** button should also no longer be available. 
 
 ## Next Steps
 
