@@ -8,44 +8,42 @@ toc_max_heading_level: 2
 sidebar_position: 10
 ---
 
-You can add an OCI type Helm registry to Palette and use the Helm Charts in your cluster profiles.
+You can add OCI registries containing Helm charts to Palette and use those Helm charts in your cluster profiles.
 
 ## Limitations
 
-- GitHub Container Registry (GHCR) is not officially supported at this time. To add a Helm chart from GHCR, you must
-  create a separate OCI Helm registry in Palette for each chart. Refer to the
-  [Add OCI Helm Registry - GHCR](#add-oci-helm-registry) section for more information.
+- Anonymous authentication is not supported for GitHub Container Registry (GHCR).
 
 ## Prerequisites
 
+Certain prerequisites apply to all OCI Helm registries, while others are specific to Amazon Elastic Container Registry
+(ECR) or GHCR.
+
+<Tabs groupId="registry">
+
+<TabItem value="basic" label="Basic">
+
 - Tenant admin access to Palette.
 
-- If the registry uses basic authentication, credentials to access the OCI registry. If you are using an Amazon Elastic
-  Container Registry (ECR), you must have the AWS credentials to an IAM user or add a trust relationship to an IAM role
-  so that Palette can access the registry.
+- Credentials to access the OCI registry.
+
+- If your OCI registry uses a self-signed certificate, or a certificate that is not signed by a trusted certificate
+  authority (CA), you will need the certificate to add the registry to Palette.
 
 <PartialsComponent category="registries-and-packs" name="acr-prerequisite-oci" />
 
-- If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
-  authority (CA), you will need the certificate to add the registry to Palette.
+</TabItem>
 
-- If you are using an Amazon ECR and your [Palette](../../../enterprise-version/enterprise-version.md) or
-  [Palette VerteX](../../../vertex/vertex.md) instance is installed in an airgapped environment or an environment with
-  limited internet access, you must whitelist the S3 endpoint that corresponds to the region of your Amazon ECR. This is
-  because image layers are stored in S3, not the registry. The S3 endpoint uses the following format. Replace `<region>`
-  with the region your ECR is hosted in.
+<TabItem value="aws" label="Amazon ECR">
 
-  ```shell
-  prod-<region>-starport-layer-bucket.s3.<region>.amazonaws.com
-  ```
+- Tenant admin access to Palette.
 
-  ```shell hideClipboard title="Example S3 endpoint"
-  prod-us-east-1-starport-layer-bucket.s3.us-east-1.amazonaws.com
-  ```
+- AWS credentials to an IAM user or a trust relationship to an Identity Access Management (IAM) role so that Palette can
+  access the registry.
 
-- If you are using an Amazon ECR, ensure you have the following Identity Access Management (IAM) permissions attached to
-  the IAM user or IAM role that Palette will use to access the registry. You can reduce the `Resource` scope from `*` to
-  the specific Amazon Resource Name (ARN) of the ECR you are using.
+- Ensure you have the following IAM permissions attached to the IAM user or IAM role that Palette will use to access the
+  registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the ECR you are
+  using.
 
   ```json
   {
@@ -86,6 +84,36 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
     ]
   }
   ```
+
+- If your [Palette](../../../enterprise-version/enterprise-version.md) or [Palette VerteX](../../../vertex/vertex.md)
+  instance is installed in an airgapped environment or an environment with limited internet access, you must whitelist
+  the S3 endpoint that corresponds to the region of your Amazon ECR. This is because image layers are stored in S3, not
+  the registry. The S3 endpoint uses the following format. Replace `<region>` with the region your ECR is hosted in.
+
+  ```shell
+  prod-<region>-starport-layer-bucket.s3.<region>.amazonaws.com
+  ```
+
+  ```shell hideClipboard title="Example S3 endpoint"
+  prod-us-east-1-starport-layer-bucket.s3.us-east-1.amazonaws.com
+  ```
+
+</TabItem>
+
+<TabItem value="GHCR" label="GHCR">
+
+- Tenant admin access to Palette.
+
+- A GitHub account (user or organization) and a Personal Access Token (PAT) that has the appropriate OAuth scope for
+  GHCR. Refer to
+  [Working with the Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+  for additional information.
+
+- Helm charts (packages) uploaded to GHCR must be linked to a repository in order to be indexed by Palette.
+
+</TabItem>
+
+</Tabs>
 
 ## Add OCI Helm Registry
 
@@ -173,7 +201,7 @@ registry you are adding.
 
     :::
 
-11. Keep the default **TLS Configuration** settings.
+11. Keep the default **TLS Configuration** settings. Amazon ECR uses certificates signed by well-known CAs.
 
 12. Select **Confirm** to add the registry.
 
@@ -193,17 +221,50 @@ registry you are adding.
 
 6. For **OCI Authentication Type**, select **Basic**.
 
-7. Ensure **Synchronization** is disabled. For more information, refer to the
+7. Enable **Synchronization** for the registry. Synchronization is required for GHCR. For more information, refer to the
    [Helm Registry - Synchronization Behavior](../helm-charts.md#synchronization-behavior) section.
 
-8. Enter the Helm chart endpoint, omitting the `oci://` scheme and ending with `/charts`. For example, for the endpoint
-   `oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator`, enter `ghcr.io/controlplaneio-fluxcd/charts`.
+8. In the **Endpoint** field, enter the appropriate endpoint depending on whether the repository is owned by an
+   individual user or organization.
 
-9. Leave the **Username** and **Password** fields empty.
+   <Tabs>
 
-10. Keep the default **TLS Configuration** settings.
+   <TabItem value="user" label="User">
 
-11. Select **Confirm** to add the registry.
+   Replace `<username>` with the username of the repository owner.
+
+   ```shell
+   ghcr.io/users/<username>
+   ```
+
+   </TabItem>
+
+   <TabItem value="organization" label="Organization">
+
+   Replace `<organization>` with the organization name of the repository owner.
+
+   ```shell
+   ghcr.io/orgs/<organization>
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+9. ENDPOINT SUFFIX?????
+
+10. Enter the **Base Content Path** for the Helm charts you want Palette to index. This is the GitHub repository that
+    the Helm chart is linked to. You can specify multiple base paths by pressing the **ENTER** key after each path.
+    Providing multiple base paths is useful when Helm charts are stored in different repositories.
+
+11. In the **Username** field, enter your GitHub username or organization. A username is required for authentication,
+    but the user or organization does not need to be associated with the repository where the Helm chart is stored.
+
+12. In the **Password or Token** field, enter the PAT associated with the entered **Username**.
+
+13. Keep the default **TLS Configuration** settings. GHCR uses certificates signed by well-known CAs.
+
+14. Select **Confirm** to add the registry.
 
 </TabItem>
 
@@ -215,15 +276,14 @@ Use the following steps to validate that the OCI registry is added to Palette co
 
 1. Log in to the [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Profiles**.
+2. From the left main menu, select **Profiles** > **Add Cluster Profile**.
 
-3. Click **Add Cluster Profile**.
+3. In the **Add a new cluster profile** wizard, enter a unique **Name** for the cluster profile. Choose a **Type** of
+   **Add-on** and select **Next**.
 
-4. Enter a unique **Name** for the cluster profile and choose the type **Add-on**. Select **Next**.
+4. On the **Profile Layers** wizard step, select **Add Helm Chart** > **Public Packs**.
 
-5. On the **Profile Layers** screen, select **Add Helm Chart > Public Packs**. For GHCR, select **Private Packs**.
-
-6. Verify the Helm chart registry you added is displayed in the **Registry** drop-down menu.
+5. Verify the Helm chart registry you added is displayed in the **Registry** drop-down.
 
 ## Next Steps
 

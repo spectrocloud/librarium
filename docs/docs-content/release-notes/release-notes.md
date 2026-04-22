@@ -41,6 +41,14 @@ The following component updates are applicable to this release:
   [Kubeconfig](../clusters/cluster-management/kubeconfig.md) and
   [Kubectl](../clusters/cluster-management/palette-webctl.md) guides for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9357 -->
+
+- GitHub Container Registry (GHCR) is now a supported OCI registry in Palette. Refer to
+  [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) for details on how to add
+  GHCRs to Palette and
+  [Add a Helm Chart](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md) for
+  how to use GHCR-sourced Helm charts in your clusters.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
