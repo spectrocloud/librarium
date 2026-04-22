@@ -27,6 +27,20 @@ The following component updates are applicable to this release:
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2726 -->
+
+- The `iam:ListRoleTags` permission has been added to the
+  [Core IAM Policies](../clusters/public-cloud/aws/required-iam-policies/core-iam-policies.md) as part of the
+  **PaletteDeploymentPolicy**. This permission allows Palette to propagate tags to IAM Roles for Service Accounts (IRSA)
+  roles it creates.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7485 -->
+
+- Kubeconfig file contents for workload clusters can now be copied to the clipboard by selecting the **Copy** icon
+  beside the **Kubeconfig File** or **Admin Kubeconfig File** download link. Refer to our
+  [Kubeconfig](../clusters/cluster-management/kubeconfig.md) and
+  [Kubectl](../clusters/cluster-management/palette-webctl.md) guides for more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10373 -->
@@ -34,6 +48,11 @@ The following component updates are applicable to this release:
 - The **Cloud Type** options for [imported clusters](../clusters/imported-clusters/imported-clusters.md) have been
   updated for clarity (**AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**). Users should now select **Generic**
   when importing AWS EKS-Anywhere, OpenShift, and VMware vSphere clusters.
+  
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
+
+- The **Context** field on the cluster **Overview** tab now contains a hyperlink to the cluster's parent project. This
+  link is available from the Tenant Admin scope only.
 
 #### Deprecations and Removals
 
@@ -67,6 +86,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   types.
+- Pluggable Authentication Modules (PAM) policy enforcement is now enabled, including password expiry checks, which can
+  be set using the `stylus.site.users[*].passwordExpiry`
+  [user data](../clusters/edge/edge-configuration/installer-reference.md) field. For examples of configuring PAM via the
+  Dockerfile, refer to
+  [Build Edge Artifacts - Advanced workflow](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts).
+- Edge workflows have been updated to Kairos v4.0.3. A [known issue](known-issues.md) prevents this update from applying
+  to [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain
+  on Kairos v3.5.9. This does not impact functionality.
 
 #### Bug Fixes
 
@@ -97,7 +124,24 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Improvements
 
+- The Palette CLI [`content build`](../automation/palette-cli/commands/content.md#build) command now supports the
+  environment variable `INCLUDE_COMPLIANCE_IMAGES`. When the variable is set to `true`, the resulting content bundle
+  includes additional container images required for compliance scanning.
+
 ### Docs and Education
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2527 -->
+
+- A new [Enable AI Workloads with the NVIDIA GPU Operator Pack](../ai-workloads/nvidia-gpu-operator.md) guide is now
+  available. Follow it to verify that GPU workloads can run in your clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2598 -->
+
+- <TpBadge /> The [Palette MCP Server](../automation/palette-mcp/palette-mcp.md) allows you to use Large Language Models
+  (LLMs) to interact with the Palette API. Refer to the [Get Started with the Palette MCP
+  Server](../tutorials/ai/palette-mcp/get-started-palette-mcp.md) and [Integrate Palette MCP in an Agentic
+  Workflow](../tutorials/ai/palette-mcp/integrate-palette-mcp-agentic.md) tutorials to learn how to incorporate the
+  Palette MCP server into your workflows.
 
 ### Packs
 
