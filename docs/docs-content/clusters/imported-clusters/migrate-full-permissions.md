@@ -29,15 +29,16 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
 
 3. Select your imported read-only cluster from the **Clusters** table.
 
-4. On the cluster **Overview** tab, select **Migrate To Full Permissions**. Select **OK** to begin the migration
-   process.
+4. On the cluster **Overview** tab, select **Migrate To Full Permissions**. 
 
    ![The cluster details view highlighting migrate button](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page.webp)
 
-5. Copy the command displayed in the drawer. The command is customized for your cluster, as it contains the assigned
+5. Select **OK** to begin the migration process. 
+
+6. Copy the command displayed in the drawer. The command is customized for your cluster, as it contains the assigned
    cluster ID.
 
-6. Open a terminal on your local workstation and verify you are in the correct
+7. Open a terminal on your local workstation and verify you are in the correct
    [Kubernetes context](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_config/).
 
    ```shell
@@ -76,7 +77,7 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
    kubectl config use-context <context-name>
    ```
 
-7. Paste the command you copied in your terminal to start the migration.
+8. Paste the command you copied in your terminal to start the migration.
 
    ```shell title="Example command" hideClipboard
    kubectl apply --filename https://api.dev.spectrocloud.com/v1/spectroclusters/69e67ccb13d6a6578fc2bdd3/import/manifest
@@ -116,7 +117,7 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
    secret/hubble-secrets configured
    ```
 
-8. The drawer disappears, and the **Profile**, **Workloads**, **Scan**, and **Backups** tabs are unlocked.
+9. The drawer disappears, and the **Profile**, **Workloads**, **Scan**, and **Backups** tabs are unlocked.
 
               ![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.webp)
 
