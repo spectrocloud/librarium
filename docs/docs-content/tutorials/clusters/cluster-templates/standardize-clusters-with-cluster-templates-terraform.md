@@ -8,41 +8,12 @@ description:
 tags: ["cluster templates", "tutorial", "terraform", "profiles", "aws", "azure"]
 ---
 
-When you manage many Kubernetes clusters, configuring and upgrading them one by one does not scale. You need a way to
-apply the same configuration and upgrade rules across multiple clusters.
-
-Palette supports this workflow with cluster templates. Cluster templates let you reuse a cluster configuration, control
-when upgrades happen, and apply changes to multiple clusters at once.
-
-[Cluster templates](../../../cluster-templates/cluster-templates.md) combine a
-[cluster profile](../../../../../profiles/cluster-profiles/create-cluster-profiles/) and one or more
-[cluster template policies](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
-
-- [Cluster profiles](../../../../../profiles/cluster-profiles/create-cluster-profiles/) define what a cluster runs. They
-  contain the software stack and infrastructure configuration.
-- [Cluster template policies](../../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md)
-  define how clusters created from a template are managed throughout their lifecycle, including when upgrades can run.
-
-Cluster profiles can include
-[cluster profile variables](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/),
-which let you reuse the same profile while changing specific values per cluster, such as the worker node instance size
-or the number of application replicas.
-
-A [maintenance policy](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) is one example
-of a cluster template policy. Maintenance policies define a maintenance window that controls when upgrades can run.
-Currently, maintenance policies are the only supported cluster template policy type in Palette.
-
-![Diagram of cluster template architecture](/profiles-policies-templates.webp)
-
-When you create clusters from the same template, they inherit the same base configuration and the same governance rules.
-For example, you can create **dev** and **prod** clusters from a single template. Both clusters run the same software
-stack and follow the same upgrade policy. You can assign different profile variable values to handle
-environment-specific requirements.
+<PartialsComponent category="cluster-templates" name="intro" />
 
 In this tutorial, you will:
 
 - Create a cluster profile, a cluster template policy, and a cluster template that uses them together
-- Deploy two clusters (**dev** and **prod**) from the same template
+- Deploy two clusters (`dev` and `prod`) from the same template
 - Use
   [cluster profile variables](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
   to apply environment-specific settings
@@ -62,16 +33,11 @@ maintenance policy, and deploy clusters from it.
 - Ensure that the
   [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries) is available
   in your Palette environment.
+- kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for
+  further guidance.
 - Terraform version 1.x installed.
 - A [Palette API key](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) set as an environment
   variable.
-
-## Provision and Upgrade Clusters
-
-In this section, you will define and manage your cluster infrastructure as code using Terraform. You will configure the
-Terraform provider, create a cluster profile, configure a cluster template with a maintenance policy, and deploy two
-clusters from the same template. You will then release a new cluster profile version, update the template to reference
-it, and apply upgrades across both clusters.
 
 <PartialsComponent category="cluster-templates" name="aws-example-note" />
 
@@ -93,7 +59,7 @@ pwd
 /workspace/terraform/cluster-templates-tf
 ```
 
-### Configure the Terraform Provider
+## Configure the Terraform Provider
 
 The directory contains files that configure the Spectro Cloud provider and point it at your Palette project. Review each
 file before running any commands.
@@ -179,7 +145,7 @@ deploy-azure = false # Set to true to deploy to Azure.
 `data.tf` resolves the Palette project, registries, and packs that `cluster_profiles.tf` references. The project lookup
 runs first, so if authentication fails or the project does not exist, Terraform stops before creating any resources.
 
-#### Set API Key Environment Variable
+### Set API Key Environment Variable
 
 Terraform authenticates to Palette using your API key. Export it as an environment variable so the provider picks it up
 automatically.
@@ -198,7 +164,7 @@ echo $SPECTROCLOUD_APIKEY
 abcd1234efgh5678...
 ```
 
-#### Check Terraform Version
+### Check Terraform Version
 
 Confirm that Terraform 1.x is installed.
 
@@ -211,7 +177,7 @@ Terraform v1.x.x
 on darwin_arm64
 ```
 
-#### Initialize the Working Directory
+### Initialize the Working Directory
 
 Initialize the working directory to download the Spectro Cloud provider.
 
@@ -225,7 +191,7 @@ Terraform has been successfully initialized!
 
 Successful initialization confirms the provider plugin was downloaded and the working directory is ready.
 
-### Create a Cluster Profile
+## Create a Cluster Profile
 
 `cluster_profiles.tf` declares two cluster profiles: one for AWS and one for Azure. The `count` meta-argument on each
 resource reads `var.deploy-aws` or `var.deploy-azure` and resolves to either `1` or `0`, so only the matching resource
@@ -243,7 +209,7 @@ declared in the `profile_variables` block with `required = true`. Each cluster t
 supply a value for `app_replicas`, which is what allows dev and prod clusters to run different replica counts while
 sharing the same profile.
 
-### Create a Maintenance Policy
+## Create a Maintenance Policy
 
 `maintenance_policy.tf` defines a
 [maintenance policy](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) that controls
@@ -263,7 +229,7 @@ resource "spectrocloud_cluster_config_policy" "maintenance" {
 }
 ```
 
-### Create a Cluster Template
+## Create a Cluster Template
 
 `cluster_templates.tf` defines a [cluster template](../../../cluster-templates/create-cluster-templates.md) that links
 the cluster profile and maintenance policy. `context = "project"` scopes the template to the current Palette project
@@ -290,7 +256,12 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 }
 ```
 
-### Deploy a Dev Cluster with a Variable Value
+## Deploy Clusters from the Template
+
+Deploy a dev cluster and a prod cluster from the cluster template, using profile variables to apply environment-specific
+replica counts.
+
+### Deploy a Dev Cluster from the Template
 
 `clusters.tf` defines a dev cluster that uses the AWS cluster template. The `cluster_template` block links the cluster
 to the template. The nested `cluster_profile` block is needed to override the variable value for the profile within that
@@ -434,16 +405,18 @@ deployment.
 
 3. Select the `hello-universe` pack and confirm that the `app_replicas` variable is set to `1`.
 
-### Deploy a Prod Cluster with a Different Variable Value
+### Deploy a Prod Cluster from the Template
 
 ### Validate the Deployments
 
-### Create a New Cluster Profile Version
+## Create a New Cluster Profile Version
 
-### Update the Cluster Template to the New Profile Version
+## Update the Cluster Template to the New Profile Version
 
-### Upgrade Clusters
+## Upgrade Clusters from the Template
 
 ### Validate the Upgrades
 
-### Cleanup
+## Cleanup
+
+## Wrap-Up
