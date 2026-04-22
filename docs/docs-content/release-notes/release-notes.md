@@ -11,6 +11,15 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April XX, 2026 - Release 4.8.52
+
+## Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10545 -->
+
+- Fixed an issue that caused [Palette API](/api/category/palette-api-v1/) calls related to packs, registries, and
+  cluster profiles to fail with 500 errors when response bodies exceed the configured size.
+
 ## April 17, 2026 - Component Updates {#component-updates-2026-16}
 
 The following components have been updated for Palette version 4.8.6 - 4.8.51.
