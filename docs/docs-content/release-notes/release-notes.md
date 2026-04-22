@@ -43,6 +43,11 @@ The following component updates are applicable to this release:
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
+
+- The **Context** field on the cluster **Overview** tab now contains a hyperlink to the cluster's parent project. This
+  link is available from the Tenant Admin scope only.
+
 #### Deprecations and Removals
 
 - Amazon Linux 2 (AL2) AMIs have been disabled in Palette. You will not be able to create new EKS clusters with AL2
