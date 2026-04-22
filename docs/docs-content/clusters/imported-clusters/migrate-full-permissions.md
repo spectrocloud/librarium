@@ -65,7 +65,6 @@ tags: ["clusters", "imported clusters"]
    customresourcedefinition.apiextensions.k8s.io/gcpcloudconfigs.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/maascloudconfigs.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/nestedcloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/openstackcloudconfigs.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/packs.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/spectroclusters.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/vspherecloudconfigs.cluster.spectrocloud.com created

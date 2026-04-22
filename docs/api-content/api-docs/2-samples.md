@@ -71,19 +71,19 @@ want to deploy the cluster, such as public cloud or on-prem.
 
 The following table outlines all available provider options.
 
-| **Provider**                                   | **Value**     |
-| ---------------------------------------------- | ------------- |
-| **Azure IaaS**                                 | `azure`       |
-| **Azure AKS**                                  | `aks`         |
-| **AWS IaaS**                                   | `aws`         |
-| **AWS EKS**                                    | `eks`         |
-| **GCP IaaS**                                   | `gcp`         |
-| **GCP GKE**                                    | `gke`         |
-| **MAAS** (Canonical)                           | `maas`        |
-| **VMware vSphere**                             | `vsphere`     |
-| **Openstack**                                  | `openstack`   |
-| **Edge Native**                                | `edge-native` |
-| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`     |
+| **Provider**                                   | **Value**           |
+| ---------------------------------------------- | ------------------- |
+| **Azure IaaS**                                 | `azure`             |
+| **Azure AKS**                                  | `aks`               |
+| **AWS IaaS**                                   | `aws`               |
+| **AWS EKS**                                    | `eks`               |
+| **GCP IaaS**                                   | `gcp`               |
+| **GCP GKE**                                    | `gke`               |
+| **MAAS** (Canonical)                           | `maas`              |
+| **VMware vSphere**                             | `vsphere`           |
+| **Apache CloudStack**                          | `apache-cloudstack` |
+| **Edge Native**                                | `edge-native`       |
+| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`           |
 
 Set the provider as an environment variable. For example, issue the following command to set Azure IaaS as the provider.
 
@@ -123,7 +123,7 @@ curl --location "https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?Proje
 ```js
 const apiKey = process.env.API_KEY;
 const projectID = process.env.PROJECT_ID;
-const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws", "aks", "openstack"
+const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws" or "aks"
 
 // Build the request URL
 const url = `https://api.spectrocloud.com/v1/spectroclusters/${provider}?ProjectUid=${projectID}`;
@@ -244,7 +244,7 @@ def send_request():
     # Get the required environment variables
     apiKey = os.environ['API_KEY']
     projectID = os.environ['PROJECT_ID']
-    provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws", "aks", "openstack"
+    provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws" or "aks"
 
     # Build the request URL
     url = f"https://api.spectrocloud.com/v1/spectroclusters/{provider}?ProjectUid={projectID}"
@@ -1648,22 +1648,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 You can download the kubeconfig file of a host cluster. To download the kubeconfig file, you need to provide the cluster
 UID.
 
-**Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{uid}/assets/kubeconfig`
-
-<br />
+**Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{uid}/assets/kubeconfigclient`
 
 ```shell
 export CLUSTER_ID="Your Cluster ID"
 ```
-
-<br />
 
 <Tabs>
 
 <TabItem label="cURL" value="cluster-kubeconfig-curl">
 
 ```shell
- curl --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfig" \
+ curl --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfigclient" \
  --header 'Accept: application/octet-stream' \
  --header "projectUid: $PROJECT_ID" \
  --header "apiKey: $API_KEY"
@@ -1678,7 +1674,7 @@ const apiKey = process.env.API_KEY;
 const projectID = process.env.PROJECT_ID;
 const clusterID = process.env.CLUSTER_ID;
 
-const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}/assets/kubeconfig?frp=true`;
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}/assets/kubeconfigclient`;
 const headers = {
   Accept: "application/octet-stream",
   projectUid: projectID,
@@ -1715,7 +1711,7 @@ func main() {
     clusterID := os.Getenv("CLUSTER_ID")
 
     // Build the request URL
-    url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s/assets/kubeconfig?frp=true", clusterID)
+    url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s/assets/kubeconfigclient", clusterID)
 
     // Create a new HTTP request
     req, err := http.NewRequest("GET", url, nil)
@@ -1769,7 +1765,7 @@ def main():
     cluster_id = os.environ.get("CLUSTER_ID")
 
     # Build the request URL
-    url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}/assets/kubeconfig?frp=true"
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}/assets/kubeconfigclient"
 
     # Define headers for the request
     headers = {
@@ -1810,7 +1806,7 @@ async fn main() -> Result<(), reqwest::Error> {
     let cluster_id = env::var("CLUSTER_ID").unwrap();
 
     // Build the request URL
-    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}/assets/kubeconfig?frp=true", cluster_id);
+    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}/assets/kubeconfigclient", cluster_id);
 
     // Define headers for the request
     let mut headers = HeaderMap::new();

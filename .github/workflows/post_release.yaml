@@ -26,6 +26,7 @@ env:
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
+  NODE_VERSION: "24"
 
 jobs:
 
@@ -39,7 +40,7 @@ jobs:
       - name: Setup Node.js Environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Install Dependencies
@@ -63,7 +64,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build Packs
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: "build-packs"
           path: |
@@ -73,7 +74,7 @@ jobs:
           retention-days: 7
 
       - name: Upload Built Security Bulletins
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: "security-bulletins"
           path: .docusaurus/security-bulletins/default/data.json

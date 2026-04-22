@@ -11,7 +11,10 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
     branches: ["version-*", "backport/version-*"]
 
-
+permissions:
+  contents: write
+  issues: write
+  
 concurrency:
   group: versions-robot-${{ github.ref }}
   cancel-in-progress: true
@@ -32,19 +35,18 @@ env:
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }} 
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  NODE_VERSION: "24"
 
 jobs:
   run-ci:
-    # runs-on: ubuntu-latest
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
     if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
     steps:
-      # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
-      # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
-      # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
+      # If the condition above is not met (e.g. PR is draft), this job is skipped.
+      # Since this job is in the critical path, skipping it will prevent downstream jobs from running.
       - run: exit 0
 
   robots-txt:
@@ -60,7 +62,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - run: npm ci
@@ -99,30 +101,69 @@ jobs:
       - name: Auto Format (Prettier)
         run: make format
 
+      - name: Detect changes
+        id: changes
+        shell: bash
+        run: |
+          if git status --porcelain | awk '{print $2}' | grep -Eq '\.(js|txt)$'; then
+            echo "detected=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "detected=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Commit Changes
         id: commit
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: ./.github/actions/commit-changes
         with:
-          file_pattern: '*.js *.txt **.txt **.js **/*.txt **/*.js'
-          disable_globbing: true
-          commit_message: "ci: adding missing robots.txt or updating noindex in docusaurus.config.js"
+          method: git
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
+          commit_message: "ci: adding missing robots.txt or updating noindex in docusaurus.config.js"
+          file_regex: "\\.(js|txt)$"
 
       - name: Slack Notification
-        if: ${{ failure() }}
+        if: ${{ failure() && github.event.pull_request.head.repo.fork == false }}
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: ' The PR for version branch ${{env.GITHUB_BRANCH}} failed when attempting add a robot.txt file or update the docusaurus.config.js. Review the GitHub Actions logs for more details.'
+          SLACK_MESSAGE: " The PR for version branch ${{env.GITHUB_BRANCH}} failed when attempting add a robot.txt file or update the docusaurus.config.js. Review the GitHub Actions logs for more details."
         
       - name: Post Netlify progress
-        if: ${{ steps.commit.conclusion == 'success' && steps.commit.outputs.changes_detected == 'true' }}
-        uses: mshick/add-pr-comment@v2
+        if: ${{ steps.changes.outputs.detected == 'true' && github.event.pull_request.head.repo.fork == false }}
+        uses: actions/github-script@v8
         with:
-          message: |
-              🤖 A robot.txt file was auto-generated or the docusaurus.config.js was updated and commited to the branch. All version braches require a robot.txt file.
-          refresh-message-position: false
+          script: |
+            const marker = "librarium-versions-robot";
+            const body = `<!-- ${marker} -->
+            🤖 A robots.txt file was auto-generated or the docusaurus.config.js was updated and committed to the branch. All version branches require a robots.txt file.`;
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue_number = context.issue.number;
+
+            // List recent comments and find one containing our marker
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number,
+              per_page: 100,
+            });
+
+            const existing = comments
+              .filter((c) => c?.body && c.body.includes(`<!-- ${marker} -->`))
+              .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0];
+
+            const refresh = false;
+            const updateOnly = false;
+
+            if (existing && refresh) {
+              await github.rest.issues.deleteComment({ owner, repo, comment_id: existing.id });
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            } else if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else if (!updateOnly) {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
           

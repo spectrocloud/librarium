@@ -614,13 +614,7 @@ A successful execution of `terraform destroy` will output the following.
 Destroy complete! Resources: 3 destroyed.
 ```
 
-:::info
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force delete. To trigger a force
-delete action, navigate to the cluster’s details page and click on **Settings**. Click on **Force Delete Cluster** to
-delete the cluster. Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
-
-:::
+<PartialsComponent category="clusters" name="force-delete-callout" />
 
 If you are using the tutorial container, type `exit` in your terminal session and press the **Enter** key. Next, issue
 the following command to stop and remove the container.

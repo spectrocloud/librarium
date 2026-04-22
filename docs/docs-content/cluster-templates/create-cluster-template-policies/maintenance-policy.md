@@ -190,3 +190,8 @@ you can [create a cluster template](../create-cluster-templates.md) to deploy a 
 Alternatively, you can use any existing maintenance policy to replace one currently linked to a cluster template,
 regardless if clusters are deployed using the template. For more information, refer to our
 [Modify Cluster Templates](../modify-cluster-templates.md) guide.
+
+For a full end-to-end example that includes creating a maintenance policy, cluster template, and deploying clusters,
+refer to the
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates](../../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+tutorial.

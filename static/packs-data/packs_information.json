@@ -220,10 +220,6 @@
     "description": "NFS subdir external provisioner is an automatic provisioner that use your existing and already configured NFS server to support dynamic provisioning of Kubernetes Persistent Volumes via Persistent Volume Claims."
   },
   {
-    "name": "csi-openstack-cinder",
-    "description": "The Cinder CSI Driver is a CSI Specification compliant driver used by Container Orchestrators to manage the lifecycle of OpenStack Cinder Volumes."
-  },
-  {
     "name": "csi-portworx-aws",
     "description": "The Portworx CSI Driver provides a standardized way to manage storage resources in containerized environments. This driver supports the full range of Portworx features and most of the CSI specifications, facilitating seamless integration and management of storage across different platforms."
   },
@@ -568,6 +564,14 @@
     "description": "KubeVirt is a virtual machine management add-on that allows the management of virtual machine workloads alongside container workloads within a Kubernetes cluster."
   },
   {
+    "name": "kubevirt-csi-driver",
+    "description": "KubeVirt CSI Driver is a component that enables the use of Container Storage Interface (CSI) drivers with KubeVirt virtual machines, allowing them to consume persistent storage."
+  },
+  {
+    "name": "kubevirt-csi-driver-infra",
+    "description": "KubeVirt CSI Driver Infra provides the necessary infrastructure components for the KubeVirt CSI Driver, ensuring seamless integration and operation within the Kubernetes cluster."
+  },
+  {
     "name": "kubevirt-cdi",
     "description": "The KubeVirt Containerized Data Importer (CDI) provides facilities for enabling Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs via DataVolumes."
   },
@@ -860,6 +864,10 @@
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
   {
+    "name": "ubuntu-cloudstack",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
     "name": "ubuntu-eks",
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
@@ -872,11 +880,11 @@
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
   {
-    "name": "ubuntu-edge",
+    "name": "ubuntu-maas-ck8s",
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
   {
-    "name": "ubuntu-openstack",
+    "name": "ubuntu-edge",
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
   {
@@ -1030,5 +1038,73 @@
   {
     "name": "kubeflow-training-operator",
     "description": "Kubeflow Training Operator is a Kubernetes operator that simplifies the deployment and management of machine learning training jobs on Kubernetes. It provides a way to define and manage the various components of a Kubeflow training pipeline, including training jobs, serving models, and managing data."
+  },
+  {
+    "name": "traefik",
+    "description": "Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy. It integrates with Kubernetes to provide dynamic routing, SSL termination, and load balancing for your applications."
+  },
+  {
+    "name": "cni-antrea",
+    "description": "Antrea is a Kubernetes networking solution intended to be Kubernetes native. It operates at Layer 3/4 to provide networking and security services for a Kubernetes cluster, leveraging Open vSwitch as the networking data plane."
+  },
+  {
+    "name": "cni-nvidia-ovn",
+    "description": "The NVIDIA OVN CNI plugin is a Container Network Interface (CNI) plugin that integrates NVIDIA's GPU capabilities with the Open Virtual Network (OVN) to provide high-performance networking for GPU-accelerated workloads in Kubernetes clusters."
+  },
+  {
+    "name": "tigera-operator",
+    "description": "The Tigera Operator is a Kubernetes operator that simplifies the deployment and management of Calico, a popular open-source networking and network security solution for Kubernetes clusters. The operator automates the installation, configuration, and maintenance of Calico components, ensuring that your cluster's networking is secure and efficient."
+  },
+  {
+    "name": "twistlock",
+    "description": "Twistlock is a comprehensive cloud-native security platform that provides vulnerability management, compliance, and runtime defense for containerized applications and Kubernetes environments."
+  },
+  {
+    "name": "cert-manager",
+    "description": "cert-manager adds certificates and certificate issuers as resource types in Kubernetes clusters, simplifying obtaining, renewing, and using those certificates. It can issue certificates from various supported sources, including Let’s Encrypt, HashiCorp Vault, Venafi, and private PKI. It also takes care of the certificate validity and attempts to renew certificates before expiry."
+  },
+  {
+    "name": "csi-vsphere-noprovisioner",
+    "description": "Dummy CSI pack for use in vSphere clusters where you don't want to install any CSI. It only installs the vSphere Cloud Provider, which is required to get the cluster initialized."
+  },
+  {
+    "name": "custom-csi",
+    "description": "Dummy CSI available for AWS, EKS, and custom clouds."
+  },
+  {
+    "name": "cloudcasa",
+    "description": "CloudCasa is a cloud-native backup and recovery solution designed for Kubernetes environments. It provides a simple and efficient way to protect your Kubernetes applications and data, ensuring that you can recover quickly in the event of a disaster or data loss."
+  },
+  {
+    "name": "dpf-operator",
+    "description": "Nvidia DPF Operator is a Kubernetes operator that simplifies the deployment and management of NVIDIA Data Processing Framework (DPF) on Kubernetes clusters. It provides a way to define and manage the various components of a DPF deployment, including data processing pipelines, GPU resource allocation, and monitoring."
+  },
+  {
+    "name": "dpf-deployment",
+    "description": "Nvidia DPF Operator is a Kubernetes operator that simplifies the deployment and management of NVIDIA Data Processing Framework (DPF) on Kubernetes clusters. It provides a way to define and manage the various components of a DPF deployment, including data processing pipelines, GPU resource allocation, and monitoring."
+  },
+  {
+    "name": "nvidia-dpf-prereqs",
+    "description": "Installs the prerequisites for the Nvidia DPF Operator."
+  },
+  {
+    "name": "network-operator",
+    "description": "NVIDIA Network Operator is a Kubernetes operator that simplifies the deployment and management of NVIDIA networking components on Kubernetes clusters. It provides a way to define and manage the various components of a NVIDIA networking deployment, including network plugins, GPU resource allocation, and monitoring."
+  },
+  {
+    "name": "openshift-byoi",
+    "description": "The OpenShift Bring Your Own Operating System (BYOOS) is a pack that allows you to deploy OpenShift clusters using your own installer. This pack is designed for users who want to have more control over the installation process and customize their OpenShift deployment according to their specific requirements."
+  },
+  {
+    "name": "openshift",
+    "description": "OpenShift is Red Hat's enterprise Kubernetes platform. It provides a comprehensive set of tools and services for building, deploying, and managing containerized applications in a secure and scalable environment. OpenShift includes features such as integrated CI/CD pipelines, developer tools, and support for hybrid cloud deployments."
+  },
+  {
+    "name": "ovn-kubernetes",
+    "description": "OVN-Kubernetes is a network plugin for Kubernetes that provides a scalable and flexible networking solution. It leverages the Open Virtual Network (OVN) to create a virtual network overlay, enabling communication between pods across different nodes in the cluster. OVN-Kubernetes supports advanced networking features such as network policies, load balancing, and multi-tenancy."
+  },
+  {
+    "name": "hypershift-operator",
+    "description": "Hypershift Operator is a Kubernetes operator that simplifies the deployment and management of Hypershift clusters on Kubernetes. It provides a way to define and manage the various components of a Hypershift deployment, including cluster provisioning, scaling, and monitoring."
   }
 ]

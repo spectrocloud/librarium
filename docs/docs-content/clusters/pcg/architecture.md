@@ -10,13 +10,20 @@ tags: ["pcg"]
 
 A Private Cloud Gateway (PCG) facilitates communication between Palette and your infrastructure environment. The PCG is
 necessary in environments where Palette does not have direct network access. Many infrastructure environments are placed
-in a private network that blocks connections originating externally. The PCG connects to Palette, and acts as an
-endpoint, allowing you to target the environment when deploying clusters in Palette.
+in a private network that blocks connections that originate from external sources. The PCG connects to Palette and acts
+as an endpoint, allowing you to target the environment when deploying clusters in Palette.
 
 When installed, the PCG registers with the self-hosted or SaaS Palette instance you specify, enabling secure
 communication between the Palette management plane and the private cloud environment. The PCG enables the deployment and
 removal of Kubernetes clusters in private cloud environments through the Palette user interface, API, CLI, or Terraform
 provider.
+
+:::info
+
+The PCG is not used as a network proxy for deployed workload clusters and does not route traffic on their behalf.
+Workload clusters connect to the proxy server directly.
+
+:::
 
 ![An architecture diagram of PCG](/clusters_pcg_architecture_overview_diagram.webp)
 
@@ -59,31 +66,54 @@ updates to ensure compatibility with Palette.
 
 If you are installing the PCG through the Palette CLI, you can provide the proxy server details during installation. The
 proxy server details are saved as environment variables (`HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY`) and are propagated
-to all PCG cluster nodes, as well as the nodes of all tenant workload clusters deployed with the PCG. The provided proxy
+to all PCG cluster nodes, as well as the nodes of all workload clusters deployed with the PCG. The provided proxy
 servers are then used by the PCG and workload clusters to access the internet.
 
-You can also provide Certificate Authority (CA) certificates for the proxy server during installation. However, proxy CA
-certificates are only propagated to each PCG cluster node; they are not propagated to the nodes of tenant clusters.
+You can also provide Certificate Authority (CA) certificates for the proxy server during installation. The certificate
+file must be named `ca.crt` and be in PEM format. Proxy CA certificates are only propagated to PCG cluster nodes; they
+are not propagated to workload cluster nodes.
 
 Proxy CA certificates must be added to workload clusters at either the tenant level or the cluster profile level in the
-OS layer.
+OS layer. To make the CA certificate available to pods inside workload clusters, you can use the `podMount`
+configuration in the OS layer of your cluster profile. Refer to
+[Configure Proxy CA Certificates for Workload Clusters](./manage-pcg/configure-proxy-ca-certs.md) for instructions on
+configuring both node-level and pod-level CA certificate trust.
 
-- If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed
-  Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster
-  nodes.
-
-- If configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected
-  with the CA certificate.
-
-For guidance on configuring proxy CA certificates, refer to appropriate Palette CLI PCG deployment guide for
-[MAAS](./deploy-pcg/maas.md), [OpenStack](./deploy-pcg/openstack.md), [VMware vSphere](./deploy-pcg/vmware.md), or
+For guidance on configuring proxy CA certificates during PCG installation, refer to the appropriate Palette CLI PCG
+deployment guide for [MAAS](./deploy-pcg/maas.md), [VMware vSphere](./deploy-pcg/vmware.md), or
 [Apache CloudStack](./deploy-pcg/cloudstack.md).
 
 #### Existing Kubernetes Cluster
 
 A PCG installed onto an existing Kubernetes cluster will inherit the proxy server configuration from the underlying
-Kubernetes cluster. Contact your Kubernetes administrator for the proxy server details and guidance on configuring the
-underlying Kubernetes cluster to use a proxy server if needed.
+Kubernetes cluster. To configure a proxy on a PCG installed on an existing Kubernetes cluster using the
+[Reach system](#reach-system), refer to our [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md) guide.
+
+### Reach System
+
+The Reach system is a Kubernetes
+[mutating admission webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)
+that automatically injects proxy configurations into pods at creation time. It is deployed in the `reach-system`
+namespace on every Palette CLI-provisioned PCG and can be manually installed on PCGs deployed to an existing Kubernetes
+cluster. When deployed, the Reach system creates the following resources:
+
+- **Two Custom Resource Definitions (CRDs)** - _ClusterPodPreset_ (cluster-scoped) and _PodPreset_ (namespace-scoped).
+  These resources define the environment variables, volumes, and volume mounts to inject into matching pods.
+
+- **MutatingWebhookConfiguration** - Intercepts pod creation requests and applies the preset configurations.
+
+When Palette configures the Reach system with proxy settings, it creates ClusterPodPreset resources that inject the
+`HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables into all matching pods across the cluster.
+Namespace-scoped PodPreset resources are also created to append namespace-specific entries to the `NO_PROXY` list, so
+that in-cluster service discovery traffic bypasses the proxy.
+
+The Reach system also supports injecting volumes and volume mounts into pods. This capability is used to mount
+Certificate Authority (CA) certificates into pods so they can trust the proxy server. For more information about
+configuring proxy CA certificates for workload clusters, refer to
+[Configure Proxy CA Certificates for Workload Clusters](./manage-pcg/configure-proxy-ca-certs.md).
+
+For PCGs deployed to an existing Kubernetes cluster, you must manually install the Reach system using a Helm chart.
+Refer to [Enable and Manage Proxy Configurations](./manage-pcg/configure-proxy.md) for more information.
 
 ## Cluster Lifecycle Support
 
@@ -210,6 +240,6 @@ The following table explains the different use cases for when a PCG or a System 
 
 To use the System Private Gateway with a self-hosted Palette instance, you must toggle the **Use System Private
 Gateway** option while registering a private cloud account with Palette. This option is only available from the Palette
-user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
+user interface for private cloud environments such as MAAS, Apache CloudStack, and VMware vSphere.
 
 ![View of the cloud account registration screen with the system PCG check box highlighted](/clusters_pcg_architecture_system-pcg-ui.webp)

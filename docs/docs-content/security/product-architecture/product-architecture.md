@@ -17,28 +17,15 @@ functionality is broken down logically into isolated services within containers.
 cluster, called a management cluster, which Palette hosts and manages in Software as a Service (SaaS) mode or that users
 can host and manage in a self-hosted environment.
 
-Palette supports three architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which includes support
-for air-gapped environments. These flexible deployment models allow us to adapt to existing requirements in terms of
-separating responsibilities and network restrictions.
+### Deployment Models
 
-<br />
+<PartialsComponent category="architecture" name="deployment-models" />
 
-- **Multi-tenant SaaS**: The management plane is hosted in AWS across three regions that we manage: us-east-1,
-  us-west-1, and us-west-2. Each customer occupies a tenant in our multi-tenant cloud environment. Our Operations team
-  controls when to upgrade the management plane.
+#### SaaS Region Availability
 
-- **Dedicated SaaS**: The management plane is hosted in a cloud or region that you specify in our Spectro Cloud cloud
-  account with a dedicated instance that we manage. In this scenario, you decide when to upgrade the management plane.
-
-- **Self-hosted**: The management plane is hosted in your environment. It can be on-prem VMware vSphere, OpenStack, bare
-  metal, in a public cloud that manages your compute instances, or a managed Kubernetes cluster such as Amazon Elastic
-  Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE).
-
-<br />
+<PartialsComponent category="architecture" name="saas-regions" />
 
 ![A diagram of Palette deployment models](/architecture_architecture-overview-deployment-models.webp)
-
-<br />
 
 Palette’s robust security measures safeguard your data and ensure the integrity of our services. We adhere to
 industry-leading standards and continuously refine our practices to provide the highest level of security. Palette
@@ -51,26 +38,24 @@ Palette's security controls ensure data protection in SaaS operation at the mana
 self-hosted operation, you must ensure security controls in your environment. Find out more about self-hosted deployment
 in [Self-Hosted Operation](self-hosted-operation.md).
 
-## Multi-tenancy
+## Multi-Tenancy
 
-Palette is a multi-tenant SaaS platform in which every tenant represents a customer. We ensure tenant isolation through
-the following design principles and techniques:
+Palette and Palette VerteX have multi-tenant SaaS platforms, where every tenant represents a customer. We ensure tenant
+isolation through the following design principles and techniques:
 
-<br />
-
-- **Network isolation**: Tenant clusters are created in the tenant’s public cloud accounts or in private data centers.
+- **Network Isolation** - Tenant clusters are created in the tenant’s public cloud accounts or in private data centers.
   Customers cannot intercept network traffic in other tenant clusters. Access to tenant cluster APIs through the
   cluster’s kubeconfig file is restricted to the tenant.
 
-- **Data isolation**: Palette applies a tenant filter to every operation to ensure users' access is restricted to their
+- **Data Isolation** - Palette applies a tenant filter to every operation to ensure users' access is restricted to their
   own tenant.
 
-- **Tenant Data Encryption**: Tenant data is encrypted, and all message communication uses tenant-specific channels.
+- **Tenant Data Encryption** - Tenant data is encrypted, and all message communication uses tenant-specific channels.
 
-- **Audit Policies**: We record all actions taken on the platform and provide a comprehensive report for tracking
+- **Audit Policies** - We record all actions taken on the platform and provide a comprehensive report for tracking
   purposes.
 
-- **Noisy Neighbor Prevention**: In the SaaS deployment model, we use AWS Load Balancers and AWS CloudFront with a web
+- **Noisy Neighbor Prevention** - In the SaaS deployment model, we use AWS Load Balancers and AWS CloudFront with a web
   application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS
   Shield Standard, which defends against the most common and frequently occurring network and transport layer
   Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant
@@ -80,19 +65,14 @@ the following design principles and techniques:
 
 Palette fully supports RBAC and two authentication modes:
 
-<br />
+- **Local Authentication and Password Policy** - With local authentication, a user email serves as the ID, and a
+  password is compared with the one-way hash stored in the database to authenticate users to a tenant. The platform
+  administrator can set password policy to control the requirements for password length, rule, and expiration.
 
-- _Local authentication_ and _password policy_ <br />
-
-  With local authentication, a user email serves as the ID, and a password is compared with the one-way hash stored in
-  the database to authenticate users to a tenant. The platform administrator can set password policy to control the
-  requirements for password length, rule, and expiration.
-
-- _Single Sign-On (SSO)_ and _Multi-Factor Authentication (MFA)_ <br />
-
-  In these modes, the tenant is configured to have Security Assertion Markup Language (SAML) 2.0 Identify Provider (IDP)
-  integrations. If the IDP requires MFA, you are redirected to the IDP’s authentication page. SSO can also automatically
-  map a user to one or more user groups in the tenant.
+- **Single Sign-On (SSO) and Multi-Factor Authentication (MFA)** - In these modes, the tenant is configured to have
+  Security Assertion Markup Language (SAML) 2.0 Identify Provider (IDP) integrations. If the IDP requires MFA, you are
+  redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the
+  tenant.
 
 ## API Security
 

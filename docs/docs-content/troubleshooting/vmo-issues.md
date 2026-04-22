@@ -10,6 +10,221 @@ tags: ["troubleshooting", "vmo"]
 
 The following are common scenarios that you may encounter when using Virtual Machine Orchestrator (VMO).
 
+## Scenario - VMO Loading Errors in Self-Hosted Palette
+
+On [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
+installations, the cluster's **Virtual Machines** tab or the VMO Graphical UI (GUI) may fail to load. This issue applies
+to all installation methods but does not apply to self-hosted environments that use an IP address instead of a domain
+name.
+
+The root cause is a `Content-Security-Policy` header with `frame-ancestors` set to `https://*.spectrocloud.com`, which
+blocks the VMO GUI from loading when your Palette instance uses a different domain name. This header can be present in
+Traefik Middleware resources or Nginx Ingress annotations, depending on the version of Palette you are running.
+
+### Debug Steps
+
+1. Log in to your
+   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+<Tabs>
+
+<TabItem label="Traefik (>= 4.8.47)" value="traefik">
+
+5. Verify the current `Content-Security-Policy` value for the following Traefik `Middleware` resources.
+
+   ```shell
+   kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
+   kubectl get middleware cp-csp-frame-ancestors --namespace cp-system --output yaml
+   kubectl get middleware foreq-security-headers --namespace hubble-system --output yaml
+   ```
+
+   ```yaml title="Example output" hideClipboard {18}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+      metadata:
+      annotations:
+         meta.helm.sh/release-name: hubble
+         meta.helm.sh/release-namespace: default
+      creationTimestamp: "2026-04-07T15:03:54Z"
+      generation: 1
+      labels:
+         app.kubernetes.io/managed-by: Helm
+      name: ui-csp-frame-ancestors
+      namespace: ui-system
+      resourceVersion: "36023"
+      uid: 2f87aada-b8cf-454f-8c32-38be34b060bf
+   spec:
+      headers:
+         customResponseHeaders:
+            Content-Security-Policy: frame-ancestors 'self' https://*.spectrocloud.com
+   ```
+
+6. Update each applicable `Middleware` resource by replacing `https://*.spectrocloud.com` with your root domain. Replace
+   `<root-domain>` in the following commands with your Palette root domain.
+
+   :::tip
+
+   Use the following command to identify your root domain.
+
+   ```shell
+   kubectl get configmap root-domain-info --namespace hubble-system --output jsonpath='{.data.apiEndpoint}'
+   ```
+
+   :::
+
+   ```shell
+   kubectl patch middleware ui-csp-frame-ancestors --namespace ui-system --type merge \
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<root-domain> https://<root-domain>"}}}}'
+   ```
+
+   ```shell
+   kubectl patch middleware cp-csp-frame-ancestors --namespace cp-system --type merge \
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<root-domain> https://<root-domain>"}}}}'
+   ```
+
+   ```shell
+   kubectl patch middleware foreq-security-headers --namespace hubble-system --type merge \
+   --patch '{"spec":{"headers":{"customResponseHeaders":{"Content-Security-Policy":"frame-ancestors '\''self'\'' https://*.<root-domain> https://<root-domain>;"}}}}'
+   ```
+
+7. Verify the updated values. Each `Middleware` resource should display a `Content-Security-Policy` header with
+   `frame-ancestors 'self' https://*.<root-domain> https://<root-domain>`.
+
+   ```shell
+   kubectl get middleware ui-csp-frame-ancestors --namespace ui-system --output yaml
+   kubectl get middleware cp-csp-frame-ancestors --namespace cp-system --output yaml
+   kubectl get middleware foreq-security-headers --namespace hubble-system --output yaml
+   ```
+
+   ```yaml title="Example output" hideClipboard {18-19}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+   metadata:
+      annotations:
+         meta.helm.sh/release-name: hubble
+         meta.helm.sh/release-namespace: default
+      creationTimestamp: "2026-04-07T15:03:54Z"
+      generation: 2
+      labels:
+         app.kubernetes.io/managed-by: Helm
+      name: ui-csp-frame-ancestors
+      namespace: ui-system
+      resourceVersion: "83150"
+      uid: 2f87aada-b8cf-454f-8c32-38be34b060bf
+   spec:
+      headers:
+         customResponseHeaders:
+            Content-Security-Policy: frame-ancestors 'self' https://*.docs-test.spectrocloud.com
+            https://docs-test.spectrocloud.com
+   ```
+
+</TabItem>
+
+<TabItem label="Nginx (< 4.8.47)" value="nginx">
+
+5. Verify the current `Content-Security-Policy` value in the `configuration-snippet` annotation of the following Nginx
+   `Ingress` resources.
+
+   ```shell
+   kubectl get ingress optic-ingress-resource --namespace ui-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress spectro-cp-ingress-resource --namespace cp-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress hubble-foreq-ingress-resource --namespace hubble-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```text title="Example output" hideClipboard
+   more_set_headers "Content-Security-Policy: frame-ancestors 'self' https://*.spectrocloud.com";
+   proxy_ssl_name $proxy_host;
+   ```
+
+6. Update the `configuration-snippet` annotation on each Ingress resource by replacing `https://*.spectrocloud.com` with
+   your root domain. Replace `<root-domain>` in the following commands with your Palette root domain.
+
+   :::tip
+
+   Use the following command to identify your root domain.
+
+   ```shell
+   kubectl get configmap root-domain-info --namespace hubble-system --output jsonpath='{.data.apiEndpoint}'
+   ```
+
+   :::
+
+   ```shell
+   kubectl annotate ingress optic-ingress-resource --namespace ui-system --overwrite \
+   nginx.ingress.kubernetes.io/configuration-snippet=$'more_set_headers "Content-Security-Policy: frame-ancestors \'self\' https://*.<root-domain> https://<root-domain>";
+   proxy_ssl_name $proxy_host;'
+   ```
+
+   ```shell
+   kubectl annotate ingress spectro-cp-ingress-resource --namespace cp-system --overwrite \
+   nginx.ingress.kubernetes.io/configuration-snippet=$'more_set_headers "Content-Security-Policy: frame-ancestors \'self\' https://*.<root-domain> https://<root-domain>";
+   proxy_ssl_name $proxy_host;'
+   ```
+
+   ```shell
+   kubectl annotate ingress hubble-foreq-ingress-resource --namespace hubble-system --overwrite \
+   nginx.ingress.kubernetes.io/configuration-snippet=$'proxy_ssl_name $proxy_host;
+   add_header Content-Security-Policy "frame-ancestors \'self\' https://*.<root-domain> https://<root-domain>;";
+   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+   add_header X-Content-Type-Options "nosniff" always;
+   add_header X-XSS-Protection "1; mode=block" always;
+   add_header Referrer-Policy "same-origin" always;'
+   ```
+
+   :::warning
+
+   The `hubble-foreq-ingress-resource` has additional security headers in its `configuration-snippet` annotation. The
+   command above preserves all existing headers. Do not remove them.
+
+   :::
+
+7. Verify the updated values. Each Ingress resource should display a `Content-Security-Policy` header with
+   `frame-ancestors 'self' https://*.<root-domain> https://<root-domain>` in its `configuration-snippet` annotation.
+
+   ```shell
+   kubectl get ingress optic-ingress-resource --namespace ui-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress spectro-cp-ingress-resource --namespace cp-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```shell
+   kubectl get ingress hubble-foreq-ingress-resource --namespace hubble-system \
+   --output jsonpath='{.metadata.annotations.nginx\.ingress\.kubernetes\.io/configuration-snippet}'
+   ```
+
+   ```text title="Example output" hideClipboard
+   more_set_headers "Content-Security-Policy: frame-ancestors 'self' https://*.docs-test.spectrocloud.com https://docs-test.spectrocloud.com";
+   proxy_ssl_name $proxy_host;
+   ```
+
+</TabItem>
+
+</Tabs>
+
 ## Scenario - Virtual Machine (VM) Migration Plans in Unknown State
 
 When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate

@@ -24,3 +24,11 @@ docs/docs-content/clusters/public-cloud/aws/eks.md:285:84:Vale.Spelling:Did you 
 docs/docs-content/clusters/public-cloud/aws/eks.md:323:16:Vale.Spelling:Did you really mean 'Nodepool'?
 docs/docs-content/release-notes/release-notes.md:470:19:Vale.Spelling:Did you really mean 'Loadbalancer'?
 docs/docs-content/user-management/saml-sso/palette-sso-with-okta.md:44:34:Vale.Spelling:Did you really mean 'userinfo'?
+docs/docs-content/user-management/saml-sso/encrypt-saml-assertions.md:93:84:Vale.Spelling:Did you really mean 'Addons'?
+docs/docs-content/user-management/saml-sso/encrypt-saml-assertions.md:197:6:Vale.Spelling:Did you really mean 'user_metadata'?
+docs/docs-content/vertex/system-management/feature-flags.md:57:8:Vale.Spelling:Did you really mean 'iam'?
+docs/docs-content/vertex/system-management/feature-flags.md:58:8:Vale.Spelling:Did you really mean 'sts'?
+docs/docs-content/vertex/system-management/feature-flags.md:59:8:Vale.Spelling:Did you really mean 'ecr'?
+docs/docs-content/vertex/system-management/feature-flags.md:61:8:Vale.Spelling:Did you really mean 'elasticloadbalancing'?
+docs/docs-content/vertex/system-management/feature-flags.md:62:8:Vale.Spelling:Did you really mean 'cloudformation'?
+docs/docs-content/vertex/system-management/feature-flags.md:64:8:Vale.Spelling:Did you really mean 'ssm'?

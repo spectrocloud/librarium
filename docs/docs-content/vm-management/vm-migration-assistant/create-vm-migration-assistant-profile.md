@@ -14,8 +14,117 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
   [Permissions](../../user-management/palette-rbac/permissions.md#operations) documentation for more information.
+
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
+
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
+
+<!-- prettier-ignore-start -->
+
+- If you using an Ubuntu 24.04 pack as your OS layer, such as
+  <VersionedLink text="Ubuntu 24.04 for MaaS" url="/integrations/packs/?pack=ubuntu-maas" />, you must set
+  `kernel.apparmor_restrict_unprivileged_userns=0` in the `/etc/sysctl.d/10-kubernetes-tuning.conf` file through the OS
+  layer configuration in the cluster profile to ensure that the configuration persists after node restarts.
+
+  This is required to allow the VM Migration Assistant to perform disk or image conversions without running into
+  permission issues related to unprivileged user namespaces.
+
+  <details>
+
+  <summary> How to add the kernel parameter to your cluster profile </summary>
+
+  1. Log in to [Palette](https://console.spectrocloud.com/).
+
+  2. From the left main menu, select **Profiles**.
+
+  3. Find and select the cluster profile linked to your VMO cluster.
+
+  4. Create a new version of the cluster profile. Refer to the
+     [Version Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
+     documentation for guidance on creating a new version of your cluster profile.
+
+  5. In the new version of your cluster profile, select the OS layer to view the **Edit Pack** page.
+
+  6. Under **Pack Details**, select **Values** to view the YAML editor.
+
+  7. Add the kernel parameter to the `kubeadmconfig.files` section. The following is an example YAML snippet to
+     demonstrate how to add the parameter.
+
+     ```yaml title="Example" {3,7}
+     kubeadmconfig:
+       files:
+         - targetPath: /etc/sysctl.d/10-kubernetes-tuning.conf
+           targetOwner: "root:root"
+           targetPermissions: "0644"
+           content: |-
+             kernel.apparmor_restrict_unprivileged_userns=0
+     ```
+
+     If your cluster profile already has a configuration for the `10-kubernetes-tuning.conf` file, add the
+     `kernel.apparmor_restrict_unprivileged_userns=0` line to the existing content while ensuring proper YAML
+     formatting.
+
+  8. Click **Confirm Updates** to save the changes to the OS layer configuration.
+
+  9. On the cluster profile page, click **Save Changes**.
+
+  10. Use the cluster profile to deploy a new cluster or
+      [update an existing cluster](../../clusters/cluster-management/cluster-updates.md).
+
+  </details>
+
+<!-- prettier-ignore-end -->
+
+- If your OS pack or node image uses [containerd](https://containerd.io/) v2, you must set
+  `device_ownership_from_security_context = true` in the `/etc/containerd/conf.d/device-ownership.toml` file using the
+  Kubernetes layer of your cluster profile to ensure that the configuration persists after node restarts.
+
+  Enable this setting so non-root Container Device Interface (CDI) pods can access block devices during block-volume
+  transfer operations. Since containerd v2, this parameter is opt-in and must be set to true.
+
+  <details>
+
+  <summary> How to add the device ownership parameter to your cluster profile </summary>
+
+  1. Log in to [Palette](https://console.spectrocloud.com/).
+
+  2. From the left main menu, select **Profiles**.
+
+  3. Find and select the cluster profile linked to your VMO cluster.
+
+  4. Create a new version of the cluster profile. Refer to the
+     [Version Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
+     documentation for guidance on creating a new version of your cluster profile.
+
+  5. In the new version of your cluster profile, select the Kubernetes layer to view the **Edit Pack** page.
+
+  6. Under **Pack Details**, select **Values** to view the YAML editor.
+
+  7. Add the device ownership parameter to the `kubeadmconfig.files` section. The following is an example YAML snippet
+     to demonstrate how to add the parameter.
+
+     ```yaml title="Example" {3,7-8}
+     kubeadmconfig:
+       files:
+         - targetPath: /etc/containerd/conf.d/device-ownership.toml
+           targetOwner: "root:root"
+           targetPermissions: "0644"
+           content: |
+             [plugins."io.containerd.grpc.v1.cri"]
+               device_ownership_from_security_context = true
+     ```
+
+     If your cluster profile already has a configuration for the `device-ownership.toml` file, add the entry within
+     `content` to the existing content while ensuring proper YAML formatting.
+
+  8. Click **Confirm Updates** to save the changes to the OS layer configuration.
+
+  9. On the cluster profile page, click **Save Changes**.
+
+  10. Use the cluster profile to deploy a new cluster or
+      [update an existing cluster](../../clusters/cluster-management/cluster-updates.md).
+
+  </details>
 
 ## Create the Profile
 
@@ -28,7 +137,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 4. Fill out the basic information and ensure you select **Add-on** for the type. Click on **Next** to continue.
 
 5. Select **Add New Pack**. In the next window that displays, enter **Virtual Machine Migration Assistant** in the
-   **Filter by name** search bar. The pack is in the **Palette Community Registry**. Select the pack when it appears.
+   **Filter by name** search bar. The pack is in the **Public Repo** registry. Select the pack when it appears.
 
 6. Palette displays the YAML file in the editor on the right. You can edit the YAML as needed. Review the following
    service console parameters and adjust to your requirements as needed.

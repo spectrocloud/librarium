@@ -276,7 +276,9 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using stati
 />
 
 - The **AwsSecretPartition** [feature flag](../../../vertex/system-management/feature-flags.md) enabled in the Palette
-  VerteX [system console](../../../vertex/system-management/system-management.md).
+  VerteX [system console](../../../vertex/system-management/system-management.md). If your airgapped environment uses
+  custom API endpoints for AWS services, ensure you
+  [customize your AWS endpoints](../../../vertex/system-management/feature-flags.md#customize-aws-secret-and-top-secret-endpoints).
 
 - The Certificate Authority (CA) certificate (root, intermediate, or chain of trust) for your AWS Secret or Top Secret
   cloud account in PEM-encoded format.
@@ -328,11 +330,13 @@ Use the steps below to add an AWS Secret or Top Secret cloud account using CAP/S
 - A Palette VerteX account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
 
 - The **AwsSecretPartition** [feature flag](../../../vertex/system-management/feature-flags.md) enabled in the Palette
-  VerteX [system console](../../../vertex/system-management/system-management.md).
+  VerteX [system console](../../../vertex/system-management/system-management.md). If your airgapped environment uses
+  custom API endpoints for AWS services, ensure you
+  [customize your AWS endpoints](../../../vertex/system-management/feature-flags.md#customize-aws-secret-and-top-secret-endpoints).
 
 - An AWS Secret or Top Secret account configured for CAP/SCAP access. Your CAP/SCAP administrator must provide the
   target Agency, Account, and CAP/SCAP role values. The CAP/SCAP role must be assigned the
-  [required IAM policies](./required-iam-policies.md).
+  [required IAM policies](./required-iam-policies/required-iam-policies.md).
 
 - A Non-Person Entity (NPE) (service identity) provisioned and authorized to access the target Agency, Account, and
   CAP/SCAP role.

@@ -57,26 +57,25 @@ information about your cluster template:
 
 - List of linked cluster profiles and their packs
 
+- Next upgrade time (in Coordinated Universal Time (UTC), converted to each cluster's time zone)
+
 The option to manually trigger cluster updates is available only if a cluster template is linked to a cluster _and_
 there is a discrepancy between the cluster profile variable versions used in the cluster and the versions referenced in
 the template. This is caused when a cluster profile has been recently added to or removed from the cluster template, or
 the version of a cluster profile linked to a cluster template has been updated, but the upgrade window specified in the
 attached maintenance policy has not passed.
 
-To force cluster updates and bypass the scheduled maintenance window, select **Options > Upgrade now**. The **Upgrade
+To force cluster updates and bypass the scheduled maintenance window, select **Actions > Upgrade now**. The **Upgrade
 now** button is disabled while the upgrade is in progress.
 
 ![Manually updating clusters attached to a cluster template](/cluster-templates_modify-cluster-templates_upgrade-now.webp)
 
 :::warning
 
-- If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
-  Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
-  select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
-  each variable before attempting the upgrade again.
-
-- If your changes require a cluster repave, the repave occurs during the next upgrade window; no
-  [repave approval](../clusters/cluster-management/node-pool.md#approve-cluster-repave) is required.
+If there are any pending variable assignments, the banner **[N] cluster(s) pending variable assignment** is displayed.
+Even if you attempt to force an upgrade, any clusters with pending variable assignments will _not_ be updated when you
+select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
+each variable before attempting the upgrade again.
 
 :::
 
@@ -149,6 +148,19 @@ Selecting **Review & Save** opens the **Review changes** dialog. The items displ
 | :white_check_mark:             | :x:                   | :white_check_mark:   | **Review & Save**    | - [Profile Variable Changes](#profile-variable-changes)                                            |
 | :white_check_mark:             | :white_check_mark:    | :x:                  | **Review & Save**    | - [Modified Packs](#modified-packs)                                                                |
 | :white_check_mark:             | :white_check_mark:    | :white_check_mark:   | **Review & Save**    | - [Modified Packs](#modified-packs) <br /> - [Profile Variable Changes](#profile-variable-changes) |
+
+<!-- prettier-ignore-start -->
+
+:::warning
+
+Cluster profile changes that modify operating system (OS) or Kubernetes configurations for clusters linked to a cluster
+template (including packs that modify these configurations, such as the
+<VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack) require a
+[cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the next upgrade window.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ###### Modified Packs
 
@@ -231,7 +243,9 @@ select the three-dot menu beside the profile, and **Replace** the profile with a
 
 If a cluster is currently deployed using the cluster template, the cluster will update during the next upgrade window
 specified in the linked maintenance policy. To force cluster updates and bypass the scheduled maintenance window,
-navigate to the **Overview** tab, and select **Options > Upgrade now**.
+navigate to the **Overview** tab, and select **Actions > Upgrade now**.
+
+<!-- prettier-ignore-start -->
 
 :::warning
 
@@ -240,10 +254,14 @@ navigate to the **Overview** tab, and select **Options > Upgrade now**.
   select **Upgrade now**. Navigate to the [**Variable values**](#variable-values-tab) tab and assign a **New Value** to
   each variable before attempting the upgrade again.
 
-- If your changes require a cluster repave, the repave occurs during the next upgrade window; no
-  [repave approval](../clusters/cluster-management/node-pool.md#approve-cluster-repave) is required.
+- Cluster profile changes that modify operating system (OS) or Kubernetes configurations for clusters linked to a cluster
+  template (including packs that modify these configurations, such as the
+  <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack) require a
+  [cluster repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). Once you save your cluster profile changes, all clusters attached to the template are automatically repaved during the next upgrade window.
 
 :::
+
+<!-- prettier-ignore-end -->
 
 ### Variable Values Tab
 
@@ -288,7 +306,7 @@ your cluster template via cluster profiles.
 Until you verify a **New Value** for all variables in the cluster and all variables are in an **Assigned** state, the
 cluster will not update to the latest profile version, regardless of whether you wait until the next update window
 specified by the [maintenance policy](./create-cluster-template-policies/maintenance-policy.md) or initiate the update
-from the **Overview** tab using **Options > Upgrade now**.
+from the **Overview** tab using **Actions > Upgrade now**.
 
 Use the following procedure to modify variable values across a fleet of clusters deployed with the same cluster
 template.
@@ -319,7 +337,7 @@ template.
 
 7.  Once all variables have an **Assigned** value, you can proceed with cluster updates. Either wait until the next
     upgrade window specified in the linked maintenance policy, or force the updates by navigating to the **Overview**
-    tab and selecting **Options > Upgrade now**.
+    tab and selecting **Actions > Upgrade now**.
 
 #### Validate
 

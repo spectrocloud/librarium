@@ -17,7 +17,9 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
-  AWS_DEFAULT_REGION: us-east-1
+  AWS_REGION: us-west-2
+  AWS_DEFAULT_REGION: us-west-2
+  NODE_VERSION: "24"
 
 jobs:
   build:
@@ -27,7 +29,7 @@ jobs:
       - name: 'Set up Node.js 24' # Required for google-github-actions/setup-gcloud@v3
         uses: actions/setup-node@v6
         with:
-          node-version: '24'      
+          node-version: ${{ env.NODE_VERSION }}     
           
       - name: Retrieve Credentials
         id: import-secrets

@@ -24,12 +24,16 @@ be validated via signatures. These artifact bundles replace the self-extracting 
 environments with a more familiar Zstandard compressed format (`zst`) that can be moved and manipulated with the Palette
 CLI.
 
-There are four main artifact areas:
+Following are the main use cases:
 
 - Install Palette Enterprise (content bundle, ISO, or Helm chart).
 - Install Palette VerteX (content bundle, ISO, or Helm chart).
-- Create a pack bundle to download.
+- Create and download pack bundles.
 - Browse the pack catalog to download individual packs.
+- Download [PaletteAI profile bundles](https://docs.palette-ai.com/docs/what-is-paletteai/concepts/profile-bundles/) and
+  explore available Nvidia AI resources to incorporate in your profile bundles. Refer to the
+  [PaletteAI documentation](https://docs.palette-ai.com/) and [product page](https://www.palette-ai.com/) to learn more
+  about PaletteAI.
 
 :::preview
 
@@ -133,7 +137,7 @@ Agent mode binaries cannot be downloaded at this time.
 <TabItem label="Controller Mode" value="controller">
 
 6. Select the appropriate cloud type to deploy your cluster on. Public clouds include **AWS**, **GCP**, and **Azure**.
-   Data centers include **MAAS**, **OpenStack**, and **vSphere**.
+   Data centers include **MAAS**, **CloudStack**, and **vSphere**.
 
 7. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible
    with your previous selections are displayed. Choose an operating system and use the **Select option** drop-down menu

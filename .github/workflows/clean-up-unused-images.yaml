@@ -1,5 +1,5 @@
 # This workflow removed unused images from the repository and creates a PR to clean them up.
-# The workflow runs on the first day of every month at 2 am UTC.
+# The workflow runs on the first day of every month at 12PM UTC.
 # Any image that is not referenced in the repository is considered unused.
 # This workflow supports on-demand execution using the workflow_dispatch event.
 
@@ -7,8 +7,8 @@ name: Clean Up Unused Images
 
 on:
   schedule:
-    # On the first of every month at 2 am
-    - cron: '0 2 1 * *'
+    # On the first of every month at 12 PM UTC
+    - cron: '0 12 1 * *'
   workflow_dispatch:
 
 concurrency:
@@ -23,6 +23,7 @@ jobs:
       ALGOLIA_APP_ID: "123456789"
       ALGOLIA_INDEX_NAME: "123456789"
       ALGOLIA_SEARCH_KEY: "123456789"
+      NODE_VERSION: "24"
 
     steps:
       - name: Retrieve Credentials
@@ -44,7 +45,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
       
       - run: npm ci
 

@@ -65,10 +65,14 @@ To use Trusted Boot, your Edge host must meet the following additional requireme
 
 ## Virtual Machine Orchestrator (VMO)
 
-To operate VMO on edge clusters, the CPUs of the constituent Edge hosts must have the following virtualization
-technologies.
+To operate VMO on Edge clusters, the CPUs of the constituent Edge hosts must have the following virtualization
+technologies:
 
 - Intel: Intel Virtualization Technology for x86 (VT-d) or Intel Virtualization Technology for Directed I/O (VT-x)
 - AMD: AMD Virtualization (AMD-V)
 
 For more information, refer to [Virtual Machine Orchestrator](../../vm-management/vm-management.md).
+
+VMO requires virtual local area network (VLAN) interfaces, bridges, and bonds to be present on Edge hosts. You can
+[configure these network interfaces in Local UI](local-ui/host-management/configure-network-interfaces.md). This
+eliminates the need for external tools such as MAAS.

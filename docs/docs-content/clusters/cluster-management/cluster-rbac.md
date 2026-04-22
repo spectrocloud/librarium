@@ -131,7 +131,7 @@ Kubernetes. The alternative to default cluster roles is to create a role by usin
 <!-- prettier-ignore -->
 If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role
 binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more,
-review <VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=kubernetes-aws" />.
+review <VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=kubernetes" />.
 
 ### Enablement
 

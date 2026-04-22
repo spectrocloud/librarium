@@ -10,6 +10,762 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - Errors in API Calls After Traefik Migration
+
+After the migration to [Traefik](https://traefik.io/traefik/) as the default ingress controller in Palette version
+4.8.47, Traefik `Middleware` configurations include a `maxResponseBodyBytes` limit. This limit can cause API calls to
+fail with 500 errors when response bodies exceed the configured size.
+
+### Debug Steps
+
+In self-hosted environments, you can patch the existing Traefik `Middleware` objects to remove the
+`maxResponseBodyBytes` limit.
+
+1. Log in to your
+   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster. Set
+   the `KUBECONFIG` variable to the file path of the kubeconfig.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. Inspect the following `Middleware` objects to view the current buffer for `maxResponseBodyBytes`. Each object has a
+   different limit.
+
+   ```shell
+   kubectl get middleware body-size-5m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-10m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-15m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-20m --namespace hubble-system --output yaml
+   ```
+
+   ```yaml title="Example output" hideClipboard {18}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+   metadata:
+     annotations:
+       meta.helm.sh/release-name: hubble
+       meta.helm.sh/release-namespace: default
+     creationTimestamp: "2026-04-17T12:59:00Z"
+     generation: 1
+     labels:
+       app.kubernetes.io/managed-by: Helm
+     name: body-size-5m
+     namespace: hubble-system
+     resourceVersion: "38882"
+     uid: 3681d06e-925f-4a7a-ab94-9666e9cc6d57
+   spec:
+     buffering:
+       maxRequestBodyBytes: 5242880
+       maxResponseBodyBytes: 5242880
+   ```
+
+6. Remove `maxResponseBodyBytes` from the affected `Middleware` objects.
+
+   ```shell
+   kubectl patch middleware body-size-5m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+
+   kubectl patch middleware body-size-10m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+   kubectl patch middleware body-size-15m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+
+   kubectl patch middleware body-size-20m --namespace hubble-system --type='json' \
+   -p='[{"op":"remove","path":"/spec/buffering/maxResponseBodyBytes"}]'
+   ```
+
+   ```shell title="Example output" hideClipboard
+   middleware.traefik.io/body-size-5m patched
+   middleware.traefik.io/body-size-10m patched
+   middleware.traefik.io/body-size-15m patched
+   middleware.traefik.io/body-size-20m patched
+   ```
+
+7. Confirm the affected `Middleware` objects no longer contain `maxResponseBodyBytes`.
+
+   ```shell
+   kubectl get middleware body-size-5m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-10m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-15m --namespace hubble-system --output yaml
+   kubectl get middleware body-size-20m --namespace hubble-system --output yaml
+   ```
+
+   ```yaml title="Example output" hideClipboard {15-17}
+   apiVersion: traefik.io/v1alpha1
+   kind: Middleware
+      metadata:
+      annotations:
+         meta.helm.sh/release-name: hubble
+         meta.helm.sh/release-namespace: default
+      creationTimestamp: "2026-04-17T12:59:00Z"
+      generation: 2
+      labels:
+         app.kubernetes.io/managed-by: Helm
+      name: body-size-5m
+      namespace: hubble-system
+      resourceVersion: "38882"
+      uid: 3681d06e-925f-4a7a-ab94-9666e9cc6d57
+   spec:
+      buffering:
+         maxRequestBodyBytes: 5242880
+   ```
+
+## Scenario - Traefik Ingress Controller Pods Crash on Amazon Linux 2 Nodes
+
+Traefik ingress controller DaemonSet pods may enter a `CrashLoopBackOff` state on deprecated Amazon Linux 2 (AL2) nodes
+in [self-hosted Palette](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) and
+[Palette VerteX](../vertex/install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) Helm-based
+installations. This is caused by the non-root security context `NET_BIND_SERVICE` Linux capability configured in the
+Traefik DaemonSet, which allows non-root processes to bind to privileged ports. The `NET_BIND_SERVICE` capability is
+incompatible with the older kernel and `containerd` versions included with AL2.
+
+To fix this issue, modify the Traefik ingress controller DaemonSet to run as the root user. This allows Traefik
+processes to bind to privileged ports without needing the `NET_BIND_SERVICE` capability.
+
+:::warning
+
+This workaround changes the Traefik ingress controller to run as the root user. We recommend upgrading AL2 nodes to
+Amazon Linux 2023 (AL2023) as soon as possible and reverting this change afterward. For more information, refer to
+[Upgrade from Amazon Linux 2 to Amazon Linux 2023](https://docs.aws.amazon.com/eks/latest/userguide/al2023.html).
+
+:::
+
+### Debug Steps
+
+1. Log in to your
+   [self-hosted Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal session in an environment that has network access to the affected self-hosted management cluster.
+   From your terminal, set the `KUBECONFIG` variable to the file path of the kubeconfig.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. Verify that the Traefik DaemonSet pods are in a `CrashLoopBackOff` state on AL2 nodes.
+
+   ```bash
+   kubectl get pods --namespace ingress-traefik
+   ```
+
+   ```bash title="Example output" hideClipboard
+   NAME                               READY   STATUS             RESTARTS         AGE
+   traefik-ingress-controller-dkjs5   0/1     CrashLoopBackOff   25 (4m43s ago)   107m
+   traefik-ingress-controller-nltlh   0/1     CrashLoopBackOff   25 (5m2s ago)    107m
+   traefik-ingress-controller-vctdm   0/1     CrashLoopBackOff   25 (4m40s ago)   107m
+   ```
+
+6. Confirm the error by checking the logs of a crashing pod. Replace `<pod-name>` with the name of the affected pod. If
+   the output contains `listen tcp :80: bind: permission denied`, the issue is caused by the non-root security context.
+
+   ```bash
+   kubectl logs <pod-name> --namespace ingress-traefik
+   ```
+
+   ```bash title="Example output" hideClipboard {3}
+   ... # additional output omitted for readability
+
+   2026-04-13T14:41:51Z ERR Command error error="command traefik error: error while building entryPoint web: building listener: error opening listener: listen tcp :80: bind: permission denied"
+   ```
+
+7. Edit the Traefik DaemonSet.
+
+   ```bash
+   kubectl edit daemonset traefik-ingress-controller --namespace ingress-traefik
+   ```
+
+8. Locate the pod-level `securityContext` section under `spec.template.spec`. Set `runAsNonRoot: false` and change the
+   user and group process IDs from `65532` to `0`.
+
+   ```yaml hideClipboard
+   spec:
+     template:
+       spec:
+         securityContext:
+           fsGroup: 0
+           runAsGroup: 0
+           runAsNonRoot: false
+           runAsUser: 0
+   ```
+
+9. Locate the container-level `securityContext` section under `spec.template.spec.containers` for the `controller`
+   container. Set `securityContext.runAsUser: 0` and `allowPrivilegeEscalation: true`.
+
+   ```yaml hideClipboard {4,11}
+   containers:
+     - name: controller
+       securityContext:
+         allowPrivilegeEscalation: true
+         capabilities:
+           add:
+             - NET_BIND_SERVICE
+           drop:
+             - ALL
+         readOnlyRootFilesystem: true
+         runAsUser: 0
+   ```
+
+10. Save and close the editor. Kubernetes performs a rolling update of the DaemonSet.
+
+11. Verify that all Traefik pods are running.
+
+    ```bash
+    kubectl get pods --namespace ingress-traefik --output wide
+    ```
+
+    ```bash title="Example output" hideClipboard
+    NAME                               READY   STATUS    RESTARTS   AGE
+    traefik-ingress-controller-pfktw   1/1     Running   0          14s
+    traefik-ingress-controller-w4nkq   1/1     Running   0          14s
+    traefik-ingress-controller-w9k8l   1/1     Running   0          14s
+    ```
+
+12. Confirm that Traefik is serving traffic by checking the logs of a pod on an AL2 node. Replace `<pod-name>` with the
+    name of the pod running on an AL2 node. The logs should no longer contain `permission denied` errors.
+
+    ```bash
+    kubectl logs <pod-name> --namespace ingress-traefik
+    ```
+
+## Scenario - MongoDB Replica Pods Crash during Palette Upgrade
+
+When upgrading a self-hosted Palette instance from 4.8.35 to 4.8.37, MongoDB replica pods may crash with a
+`CrashLoopBackOff` error. This may be due to MongoDB replication lag or a cluster split-brain state, resulting in a
+stuck upgrade.
+
+### Debug Steps
+
+Use the following troubleshooting steps to check your Palette installation.
+
+#### Replication Lag
+
+Follow the steps outlined in the
+[Check the Replication Lag](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#check-the-replication-lag)
+guide.
+
+#### Split Brain
+
+1. Ensure that you have `kubectl` and `jq` installed on your local machine.
+
+2. Log in to your self-hosted Palette instance System Console.
+
+3. From the left main menu, click **Enterprise Cluster**.
+
+4. On the cluster details page, scroll down to the **Kubernetes Config File** field and download the kubeconfig file.
+
+5. Save the following script to the `mongo-diagnose.sh` file.
+
+   ```shell
+
+   #!/usr/bin/env bash
+   # =============================================================================
+   # mongo-diagnose.sh — MongoDB Replica Set health checker for Palette/Vertex
+   #
+   # Usage:
+   #   ./mongo-diagnose.sh --kubeconfig /path/to/kubeconfig.conf
+   #   ./mongo-diagnose.sh                            # uses current KUBECONFIG / context
+   #   ./mongo-diagnose.sh --platform palette         # force no-TLS mode
+   #   ./mongo-diagnose.sh --platform vertex          # force TLS mode
+   #   ./mongo-diagnose.sh -k /path/to/cfg -n hubble-system
+   #
+   # Platform detection (auto if --platform not given):
+   #   vertex  — MongoDB uses mTLS (secret 'mongo-tls' present in namespace)
+   #   palette — MongoDB uses no TLS (plain auth only)
+   #
+   # What it checks:
+   #   1. MongoDB pod statuses (CrashLoopBackOff, restarts, readiness)
+   #   2. Replica set status (primary, member health, optime lag)
+   #   3. Oplog divergence detection (fassert 51121 — rolling-update collision)
+   #   4. PVC state (Bound / Terminating / Pending)
+   #   5. PodDisruptionBudget health
+   #   6. Downstream Init-blocked pods
+   #
+   # Exit codes:  0 = healthy | 1 = degraded | 2 = critical
+   #
+   # Requirements: kubectl, jq (brew install jq)
+   # =============================================================================
+
+   set -uo pipefail
+
+   # ── colours ───────────────────────────────────────────────────────────────────
+   RED='\033[0;31m'; YEL='\033[1;33m'; GRN='\033[0;32m'
+   CYN='\033[0;36m'; BOLD='\033[1m'; RST='\033[0m'
+
+   ok()   { echo -e "${GRN}  ✔  ${1}${RST}"; }
+   warn() { echo -e "${YEL}  ⚠  ${1}${RST}"; }
+   fail() { echo -e "${RED}  ✘  ${1}${RST}"; }
+   info() { echo -e "${CYN}  ➜  ${1}${RST}"; }
+   hdr()  { echo -e "\n${BOLD}${1}${RST}"; printf '  '; printf '─%.0s' {1..62}; echo; }
+
+   NAMESPACE="hubble-system"
+   PLATFORM=""      # auto-detect if empty; or "palette" | "vertex"
+   EXIT_CODE=0
+
+   # ── args ──────────────────────────────────────────────────────────────────────
+   while [[ $# -gt 0 ]]; do
+   case "$1" in
+      --kubeconfig|-k) export KUBECONFIG="$2"; shift 2 ;;
+      --namespace|-n)  NAMESPACE="$2";          shift 2 ;;
+      --platform|-p)
+         PLATFORM="${2,,}"   # lowercase
+         if [[ "$PLATFORM" != "palette" && "$PLATFORM" != "vertex" ]]; then
+         echo -e "${RED}ERROR: --platform must be 'palette' or 'vertex'${RST}"
+         exit 1
+         fi
+         shift 2 ;;
+      --help|-h)
+         sed -n '2,/^# ===/p' "$0" | grep '^#' | sed 's/^# \?//'
+         exit 0 ;;
+      *) echo "Unknown arg: $1  (try --help)"; exit 1 ;;
+   esac
+   done
+
+   KCL="kubectl -n ${NAMESPACE}"
+
+   # ── check deps ────────────────────────────────────────────────────────────────
+   for dep in kubectl jq; do
+   if ! command -v "$dep" &>/dev/null; then
+      echo -e "${RED}ERROR: '${dep}' not found in PATH. Install it and retry.${RST}"
+      exit 2
+   fi
+   done
+
+   # ── verify cluster connectivity (live API call, not cached cluster-info) ──────
+   if ! kubectl get --raw /healthz &>/dev/null 2>&1; then
+   echo -e "${RED}ERROR: Cannot reach the Kubernetes API server.${RST}"
+   echo -e "${YEL}       Current context: $(kubectl config current-context 2>/dev/null || echo '(unknown)')${RST}"
+   echo -e "${YEL}       Tip: run with --kubeconfig /path/to/your.conf${RST}"
+   echo -e "${YEL}       e.g. ./mongo-diagnose.sh -k ~/Downloads/mykubeconfig.conf${RST}"
+   exit 2
+   fi
+
+   # ── platform auto-detection ───────────────────────────────────────────────────
+   if [[ -z "$PLATFORM" ]]; then
+   if $KCL get secret mongo-tls &>/dev/null; then
+      PLATFORM="vertex"
+   else
+      PLATFORM="palette"
+   fi
+   PLATFORM_SRC="(auto-detected)"
+   else
+   PLATFORM_SRC="(explicit)"
+   fi
+
+   echo -e "\n${BOLD}╔══════════════════════════════════════════════════════════════╗${RST}"
+   echo -e "${BOLD}║       MongoDB Replica Set Diagnostic — Palette/Vertex        ║${RST}"
+   echo -e "${BOLD}╚══════════════════════════════════════════════════════════════╝${RST}"
+   echo -e "  Namespace : ${CYN}${NAMESPACE}${RST}"
+   echo -e "  Platform  : ${CYN}${PLATFORM} ${PLATFORM_SRC}${RST}"
+   echo -e "  TLS mode  : ${CYN}$([ "$PLATFORM" = "vertex" ] && echo "enabled (mTLS)" || echo "disabled (plain auth)")$  {RST}"
+   echo -e "  Kubeconfig: ${CYN}${KUBECONFIG:-"(current context)"}${RST}"
+   echo -e "  Timestamp : ${CYN}$(date -u +"%Y-%m-%dT%H:%M:%SZ")${RST}"
+
+   # ── helper: get mongo pods ────────────────────────────────────────────────────
+   get_mongo_pods() {
+   $KCL get pods -l role=mongo --no-headers 2>/dev/null
+   }
+
+   # ── helper: run mongosh on a pod (TLS or plain based on platform) ─────────────
+   run_mongosh() {
+   local pod="$1" eval_str="$2"
+
+   if [[ "$PLATFORM" == "vertex" ]]; then
+      # Vertex: mTLS — combine cert+key, then connect with full TLS flags
+      $KCL exec "$pod" -c mongo -- bash -c \
+         "cat /var/mongodb/tls/tls.crt /var/mongodb/tls/tls.key > /tmp/mc.pem 2>/dev/null
+         PASS=\$(printenv MONGODB_INITDB_ROOT_PASSWORD)
+         mongosh --quiet --tls \
+            --tlsCAFile /var/mongodb/tls/ca.crt \
+            --tlsCertificateKeyFile /tmp/mc.pem \
+            --tlsAllowInvalidCertificates \
+            -u root -p \"\$PASS\" --authenticationDatabase admin \
+            --eval '${eval_str}' 2>/dev/null" 2>/dev/null
+   else
+      # Palette: no TLS — env var is MONGO_INITDB_ROOT_PASSWORD, db arg style
+      $KCL exec "$pod" -c mongo -- bash -c \
+         "PASS=\$(printenv MONGO_INITDB_ROOT_PASSWORD)
+         mongosh --quiet \
+            -u root -p \"\$PASS\" admin \
+            --eval '${eval_str}' 2>/dev/null" 2>/dev/null
+   fi
+   }
+
+   # ══════════════════════════════════════════════════════════════════════════════
+   # STEP 1 — Pod Status
+   # ══════════════════════════════════════════════════════════════════════════════
+   hdr "STEP 1 — MongoDB Pod Status"
+
+   CRASH_PODS=()
+   RUNNING_PODS=()
+
+   while IFS= read -r line; do
+   [[ -z "$line" ]] && continue
+   NAME=$(echo "$line"     | awk '{print $1}')
+   READY=$(echo "$line"    | awk '{print $2}')
+   STATUS=$(echo "$line"   | awk '{print $3}')
+   RESTARTS=$(echo "$line" | awk '{print $4}')
+   AGE=$(echo "$line"      | awk '{print $5}')
+
+   case "$STATUS" in
+      Running)
+         ok "$NAME  ready=$READY  restarts=$RESTARTS  age=$AGE"
+         RUNNING_PODS+=("$NAME")
+         ;;
+      CrashLoopBackOff|Error|OOMKilled)
+         fail "$NAME  ready=$READY  restarts=$RESTARTS  status=${STATUS}  age=$AGE"
+         CRASH_PODS+=("$NAME")
+         EXIT_CODE=2
+         ;;
+      Init:*|PodInitializing)
+         warn "$NAME  ready=$READY  status=${STATUS}  age=$AGE  (still initializing)"
+         [[ $EXIT_CODE -lt 1 ]] && EXIT_CODE=1
+         ;;
+      *)
+         warn "$NAME  ready=$READY  status=${STATUS}  restarts=$RESTARTS  age=$AGE"
+         [[ $EXIT_CODE -lt 1 ]] && EXIT_CODE=1
+         ;;
+   esac
+   done < <(get_mongo_pods)
+
+   if [[ ${#RUNNING_PODS[@]} -eq 0 && ${#CRASH_PODS[@]} -eq 0 ]]; then
+   fail "No MongoDB pods found in namespace '${NAMESPACE}' with label role=mongo"
+   echo -e "${YEL}  Verify the namespace: kubectl get pods -n ${NAMESPACE} -l role=mongo${RST}"
+   EXIT_CODE=2
+   fi
+
+   # ── 1a. Crash log analysis ────────────────────────────────────────────────────
+   if [[ ${#CRASH_PODS[@]} -gt 0 ]]; then
+   hdr "STEP 1a — Crash Log Analysis"
+
+   for POD in "${CRASH_PODS[@]}"; do
+      info "Scanning crash logs: $POD"
+      LOG=$($KCL logs "$POD" -c mongo --previous --tail=150 2>/dev/null || \
+            $KCL logs "$POD" -c mongo --tail=150 2>/dev/null            || echo "")
+
+      if echo "$LOG" | grep -q "51121\|Common point must be at least stable timestamp"; then
+         fail "${POD} → fassert 51121 confirmed — oplog divergence (rolling-update primary collision)"
+         COMMON=$(echo "$LOG" | grep -oE '"commonPoint":\{"t":[0-9]+,"i":[0-9]+\}' | head -1)
+         STABLE=$(echo "$LOG" | grep -oE '"stableTimestamp":\{"t":[0-9]+,"i":[0-9]+\}' | head -1)
+         [[ -n "$COMMON" ]] && info "  commonPoint    : $COMMON"
+         [[ -n "$STABLE" ]] && info "  stableTimestamp: $STABLE"
+         echo -e "  ${YEL}  Fix: delete PVC + pod to force resync from healthy primary${RST}"
+      elif echo "$LOG" | grep -q "OplogStartMissing\|sync source.*diverged\|diverged"; then
+         fail "${POD} → Oplog divergence (OplogStartMissing)"
+      elif echo "$LOG" | grep -q "fassert\|FASSERT"; then
+         FASSERT=$(echo "$LOG" | grep -m1 "fassert\|FASSERT" || true)
+         fail "${POD} → Fatal assertion: ${FASSERT}"
+      elif echo "$LOG" | grep -q "WiredTiger\|WT_ERROR"; then
+         fail "${POD} → WiredTiger storage error — possible PVC corruption"
+      elif [[ -z "$LOG" ]]; then
+         warn "${POD} → No logs available (pod may not have started)"
+      else
+         warn "${POD} → Crashing — no known pattern matched. Last lines:"
+         echo "$LOG" | tail -5 | sed 's/^/         /'
+      fi
+   done
+   fi
+
+   # ══════════════════════════════════════════════════════════════════════════════
+   # STEP 2 — Replica Set Status
+   # ══════════════════════════════════════════════════════════════════════════════
+   hdr "STEP 2 — Replica Set Status"
+
+   if [[ ${#RUNNING_PODS[@]} -eq 0 ]]; then
+   fail "No running pod available to query rs.status()"
+   EXIT_CODE=2
+   else
+   QUERY_POD="${RUNNING_PODS[0]}"
+   info "Querying via ${QUERY_POD}"
+
+   RS_RAW=$(run_mongosh "$QUERY_POD" \
+      'var s=rs.status(); var o=s.optimes||{};
+      JSON.stringify({
+         set:s.set, ok:s.ok, myState:s.myState, term:s.term+"",
+         lastCommittedT: (o.lastCommittedOpTime&&o.lastCommittedOpTime.ts)?o.lastCommittedOpTime.ts.t+"":"0",
+         appliedT:       (o.appliedOpTime&&o.appliedOpTime.ts)?o.appliedOpTime.ts.t+"":"0",
+         members:s.members.map(function(m){return{
+            name:m.name.split(".")[0], state:m.stateStr, health:m.health,
+            uptime:m.uptime, lastHBMsg:m.lastHeartbeatMessage||"",
+            syncSrc:(m.syncSourceHost||"").split(".")[0],
+            optimeT:m.optime&&m.optime.ts?m.optime.ts.t+"":"0"
+         }})
+      })' 2>/dev/null || echo "")
+
+   if [[ -z "$RS_RAW" ]]; then
+      fail "Could not retrieve rs.status() — auth failure or MongoDB not ready"
+      EXIT_CODE=2
+   else
+      RS_SET=$(echo "$RS_RAW"  | jq -r '.set')
+      RS_TERM=$(echo "$RS_RAW" | jq -r '.term')
+      COMMITTED=$(echo "$RS_RAW" | jq -r '.lastCommittedT')
+      APPLIED=$(echo "$RS_RAW"   | jq -r '.appliedT')
+      LAG_SECS=$(( ${APPLIED:-0} - ${COMMITTED:-0} ))
+
+      PRIMARY_COUNT=$(echo "$RS_RAW" | jq '[.members[] | select(.state=="PRIMARY")] | length')
+      HEALTHY_COUNT=$(echo "$RS_RAW" | jq '[.members[] | select(.health==1)] | length')
+      TOTAL_COUNT=$(echo "$RS_RAW"   | jq '.members | length')
+
+      info "ReplicaSet: ${RS_SET}  term=${RS_TERM}  members=${TOTAL_COUNT}  healthy=${HEALTHY_COUNT}"
+      echo ""
+
+      # print member table
+      printf "  %-14s  %-12s  %9s  %s\n" "POD" "STATE" "UPTIME" "SYNC_SOURCE"
+      printf "  %-14s  %-12s  %9s  %s\n" "--------------" "------------" "---------" "-----------"
+      while IFS= read -r member; do
+         M_NAME=$(echo "$member"   | jq -r '.name')
+         M_STATE=$(echo "$member"  | jq -r '.state')
+         M_HEALTH=$(echo "$member" | jq -r '.health')
+         M_UP=$(echo "$member"     | jq -r '.uptime')
+         M_SRC=$(echo "$member"    | jq -r '.syncSrc')
+         M_HB=$(echo "$member"     | jq -r '.lastHBMsg')
+
+         STATE_COL="$GRN"
+         [[ "$M_STATE" != "PRIMARY" && "$M_STATE" != "SECONDARY" ]] && STATE_COL="$RED"
+         HEALTH_COL="$GRN"; [[ "$M_HEALTH" != "1" ]] && HEALTH_COL="$RED"
+
+         printf "  ${HEALTH_COL}%-14s${RST}  ${STATE_COL}%-12s${RST}  %9ss  ←%s\n" \
+         "$M_NAME" "$M_STATE" "$M_UP" "${M_SRC:-—}"
+         if [[ -n "$M_HB" && "$M_HB" != "null" ]]; then
+         echo -e "  ${YEL}              hb: ${M_HB:0:90}${RST}"
+         fi
+      done < <(echo "$RS_RAW" | jq -c '.members[]')
+
+      echo ""
+
+      # primary check
+      if [[ "$PRIMARY_COUNT" -eq 0 ]]; then
+         fail "NO PRIMARY elected — replica set cannot accept writes"
+         EXIT_CODE=2
+      elif [[ "$PRIMARY_COUNT" -eq 1 ]]; then
+         ok "Primary elected (term ${RS_TERM})"
+      else
+         fail "Multiple primaries detected (${PRIMARY_COUNT}) — split-brain!"
+         EXIT_CODE=2
+      fi
+
+      # healthy member count
+      if [[ "$HEALTHY_COUNT" -lt 2 ]]; then
+         fail "Only ${HEALTHY_COUNT}/${TOTAL_COUNT} members healthy — below majority, writes blocked"
+         EXIT_CODE=2
+      elif [[ "$HEALTHY_COUNT" -lt "$TOTAL_COUNT" ]]; then
+         warn "${HEALTHY_COUNT}/${TOTAL_COUNT} members healthy — degraded but majority maintained"
+         [[ $EXIT_CODE -lt 1 ]] && EXIT_CODE=1
+      else
+         ok "All ${TOTAL_COUNT}/${TOTAL_COUNT} members healthy"
+      fi
+
+      # uncommitted oplog lag (sign of a long-solo-primary run)
+      if [[ $LAG_SECS -gt 300 ]]; then
+         warn "Uncommitted oplog lag: ${LAG_SECS}s — primary has writes not yet majority-acknowledged"
+         [[ $EXIT_CODE -lt 1 ]] && EXIT_CODE=1
+      elif [[ $LAG_SECS -gt 0 ]]; then
+         info "Minor uncommitted lag: ${LAG_SECS}s (normal during catch-up)"
+      else
+         ok "lastCommittedOpTime == appliedOpTime — no uncommitted lag"
+      fi
+   fi
+   fi
+
+   # ══════════════════════════════════════════════════════════════════════════════
+   # STEP 3 — PVC Status
+   # ══════════════════════════════════════════════════════════════════════════════
+   hdr "STEP 3 — PersistentVolumeClaim Status"
+
+   PVC_LINES=$($KCL get pvc -l role=mongo --no-headers 2>/dev/null)
+
+   if [[ -z "$PVC_LINES" ]]; then
+   warn "No MongoDB PVCs found"
+   else
+   while IFS= read -r line; do
+      [[ -z "$line" ]] && continue
+      PVC_NAME=$(echo "$line"   | awk '{print $1}')
+      PVC_STATUS=$(echo "$line" | awk '{print $2}')
+      PVC_SIZE=$(echo "$line"   | awk '{print $4}')
+      PVC_AGE=$(echo "$line"    | awk '{print $NF}')
+
+      case "$PVC_STATUS" in
+         Bound)       ok   "${PVC_NAME}  status=Bound  size=${PVC_SIZE}  age=${PVC_AGE}" ;;
+         Terminating) warn "${PVC_NAME}  status=Terminating — pod still holds PV (will clear on pod delete)"
+                     [[ $EXIT_CODE -lt 1 ]] && EXIT_CODE=1 ;;
+         Pending)     fail "${PVC_NAME}  status=Pending — storage provisioner may be stuck"
+                     EXIT_CODE=2 ;;
+         *)           warn "${PVC_NAME}  status=${PVC_STATUS}" ;;
+      esac
+   done < <(echo "$PVC_LINES")
+   fi
+
+   # ══════════════════════════════════════════════════════════════════════════════
+   # STEP 4 — PodDisruptionBudget
+   # ══════════════════════════════════════════════════════════════════════════════
+   hdr "STEP 4 — PodDisruptionBudget"
+
+   # Try common PDB names
+   PDB_JSON=""
+   for pdb_name in mongo-pdb mongodb-pdb mongo; do
+   PDB_JSON=$($KCL get pdb "$pdb_name" -o json 2>/dev/null || echo "")
+   [[ -n "$PDB_JSON" ]] && break
+   done
+
+   if [[ -z "$PDB_JSON" ]]; then
+   warn "No MongoDB PDB found (tried: mongo-pdb, mongodb-pdb, mongo)"
+   else
+   CURR=$(echo "$PDB_JSON"    | jq '.status.currentHealthy')
+   DESIRED=$(echo "$PDB_JSON" | jq '.status.desiredHealthy')
+   ALLOWED=$(echo "$PDB_JSON" | jq '.status.disruptionsAllowed')
+   MAX_UNA=$(echo "$PDB_JSON" | jq -r '.spec.maxUnavailable // "N/A"')
+   PDB_NAME=$(echo "$PDB_JSON" | jq -r '.metadata.name')
+
+   info "PDB '${PDB_NAME}': maxUnavailable=${MAX_UNA}  desiredHealthy=${DESIRED}"
+   if [[ "$CURR" -ge "$DESIRED" ]]; then
+      ok "${CURR}/${DESIRED} pods healthy — ${ALLOWED} disruption(s) currently allowed"
+   else
+      warn "${CURR}/${DESIRED} healthy — disruptionsAllowed=${ALLOWED} (rolling updates will stall)"
+      [[ $EXIT_CODE -lt 1 ]] && EXIT_CODE=1
+   fi
+   fi
+
+   # ══════════════════════════════════════════════════════════════════════════════
+   # STEP 5 — Downstream Init-blocked or Crashed Services
+   # ══════════════════════════════════════════════════════════════════════════════
+   hdr "STEP 5 — Downstream Services"
+
+   INIT_LINES=$($KCL get pods --no-headers 2>/dev/null \
+   | grep -v "^mongo" \
+   | grep -E "Init:|PodInitializing|CrashLoopBackOff" || true)
+
+   INIT_COUNT=$(echo "$INIT_LINES" | grep -c . || true)
+
+   if [[ "$INIT_COUNT" -gt 0 ]]; then
+   warn "${INIT_COUNT} non-MongoDB pod(s) still blocked (Init / CrashLoop):"
+   echo "$INIT_LINES" | awk '{printf "    %-50s  %s\n", $1, $3}'
+   [[ $EXIT_CODE -lt 1 ]] && EXIT_CODE=1
+   else
+   ok "All downstream services are running"
+   fi
+
+   # ══════════════════════════════════════════════════════════════════════════════
+   # FINAL VERDICT
+   # ══════════════════════════════════════════════════════════════════════════════
+   hdr "DIAGNOSIS SUMMARY"
+
+   case $EXIT_CODE in
+   0)
+      echo -e "${GRN}${BOLD}  ✔  HEALTHY — MongoDB RS is fully operational${RST}"
+      ;;
+   1)
+      echo -e "${YEL}${BOLD}  ⚠  DEGRADED — RS operational but has warnings${RST}"
+      echo -e "${YEL}      Review warnings above. No immediate data risk.${RST}"
+      ;;
+   2)
+      echo -e "${RED}${BOLD}  ✘  CRITICAL — MongoDB RS requires immediate action${RST}"
+      echo ""
+      if [[ ${#CRASH_PODS[@]} -gt 0 ]]; then
+         echo -e "${YEL}  Likely cause : Oplog divergence (rolling-update primary collision)${RST}"
+         echo -e "${YEL}  Recommended fix (wipes crashed nodes and resyncs from healthy primary):${RST}"
+         echo ""
+         for POD in "${CRASH_PODS[@]}"; do
+         echo -e "    ${CYN}kubectl delete pvc mongo-data-${POD} -n ${NAMESPACE}${RST}"
+         done
+         for POD in "${CRASH_PODS[@]}"; do
+         echo -e "    ${CYN}kubectl delete pod ${POD} -n ${NAMESPACE}${RST}"
+         done
+         echo ""
+         echo -e "  ${RED}⚠  Verify the healthy primary holds all committed data before running.${RST}"
+      fi
+      ;;
+   esac
+
+   echo ""
+   exit $EXIT_CODE
+
+   ```
+
+6. Execute the script with local path to the kubeconfig file you downloaded.
+
+   ```shell
+   ./mongo-diagnose.sh --kubeconfig /path/to/kubeconfig.conf
+   ```
+
+   ```shell hideClipboard "Example Output"
+   STEP 1 — MongoDB Pod Status
+   ✘  mongo-0  ready=0/1  restarts=12  status=CrashLoopBackOff  age=1h
+   ✔  mongo-1  ready=1/1   restarts=0  age=10d
+   ✔  mongo-2  ready=1/1   restarts=0  age=10d
+
+   STEP 1a — Crash Log Analysis
+   ➜ Scanning crash logs: mongo-0
+   ✘ mongo-0 → fassert 51121 confirmed — oplog divergence (rolling-update primary collision)
+   commonPoint    : "commonPoint":{"t":1681234567,"i":1}
+   stableTimestamp: "stableTimestamp":{"t":1681230000,"i":1}
+   Fix: delete PVC + pod to force resync from healthy primary
+
+   STEP 2 — Replica Set Status
+   ➜ Querying via mongo-1
+
+   ReplicaSet: rs0  term=4  members=3  healthy=2
+
+   POD              STATE         UPTIME      SYNC_SOURCE
+   --------------   ------------  ---------   -----------
+   mongo-1          PRIMARY       900000s     ←—
+   mongo-2          SECONDARY     890000s     ←mongo-1
+   mongo-0          RECOVERING    0s          ←mongo-1
+   hb: the sync source has diverged
+
+   ✔  Primary elected (term 4)
+   ✘  Only 2/3 members healthy — below majority, writes blocked   <-- (script may mark critical)
+   ⚠  Uncommitted oplog lag: 3600s — primary has writes not yet majority-acknowledged
+
+   STEP 3 — PersistentVolumeClaim Status
+   ✔  mongo-pvc-mongo-1  status=Bound  size=20Gi  age=10d
+   ✔  mongo-pvc-mongo-2  status=Bound  size=20Gi  age=10d
+   ✔  mongo-pvc-mongo-0  status=Bound  size=20Gi  age=1h
+
+   STEP 4 — PodDisruptionBudget
+   ➜ PDB 'mongo': maxUnavailable=1  desiredHealthy=2
+   ✔  2/2 pods healthy — 0 disruption(s) currently allowed
+
+   STEP 5 — Downstream Services
+   ✔  All downstream services are running
+
+   DIAGNOSIS SUMMARY
+
+   ✘  CRITICAL — MongoDB RS requires immediate action
+
+   Likely cause : Oplog divergence (rolling-update primary collision)
+   Recommended fix (wipes crashed nodes and resyncs from healthy primary):
+
+   kubectl delete pvc mongo-data-mongo-0 -n hubble-system
+   kubectl delete pod mongo-0 -n hubble-system
+
+   ⚠  Verify the healthy primary holds all committed data before running.
+   ```
+
+7. Promote a healthy node to primary. Refer to
+   [Force a Self-Managed Replica Set Member to Become Primary](https://www.mongodb.com/docs/manual/tutorial/force-member-to-be-primary/)
+   for further guidance.
+
+8. Delete persistent volume claims and the unhealthy pods.
+
+   ```shell
+   kubectl delete pvc <mongo-pod-pvc> --namespace hubble-system
+   kubectl delete pod <mongo-pod> --namespace hubble-system
+   ```
+
+Palette recreates all resources with the correct configuration.
+
 ## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 
 When attempting to upgrade the VerteX Management Appliance, the `linstor-satellite.*` and `linstor-csi-node.*` pods may

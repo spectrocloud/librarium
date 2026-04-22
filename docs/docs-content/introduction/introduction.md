@@ -25,7 +25,7 @@ specific needs, with granular governance and enterprise-grade security.
 
 Make sure to check out the [Getting Started](../getting-started/getting-started.md) section to learn how you can use
 Palette to deploy and update your Kubernetes clusters. This section contains hands-on tutorials for Amazon Web Services
-(AWS), Microsoft Azure and Google Cloud Platform (GCP).
+(AWS), Microsoft Azure, Google Cloud Platform (GCP), and VMware.
 
 :::
 
@@ -59,7 +59,7 @@ Palette has the richest coverage in supported environments that includes:
 
 - Public Clouds: AWS, Azure, and Google Cloud. Palette supports both IaaS and managed Kubernetes services AWS EKS, Azure
   AKS, and Google GKE.
-- Data Centers: VMware, Nutanix, and OpenStack
+- Data Centers: VMware vSphere, Nutanix, and Apache CloudStack
 - Bare Metal: Canonical MAAS
 - Edge
 

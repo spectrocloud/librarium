@@ -49,6 +49,16 @@ explains how you can create an Azure AKS cluster managed by Palette.
   [Enable SSO with Microsoft Entra ID](../../../user-management/saml-sso/palette-sso-with-entra-id.md) guide for more
   information.
 
+- To enable
+  [Microsoft Entra integration for AKS](https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id)
+  or
+  [Microsoft Entra Workload ID for AKS](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview?tabs=dotnet),
+  you need to configure your cluster profile with the appropriate settings. Review the following guides for more
+  information:
+
+  - [Enable Microsoft Entra ID for AKS](./enable-iam-features-aks/enable-microsoft-entra-id-aks.md)
+  - [Enable Microsoft Entra Workload ID for AKS](./enable-iam-features-aks/enable-microsoft-entra-workload-id-aks.md)
+
 - Optionally, a Virtual Network (VNet). If you do not provide a VNet, Palette creates one for you with compute, network,
   and storage resources in Azure when it provisions Kubernetes clusters.
 
@@ -160,28 +170,40 @@ to learn more about the ports used for communication.
             <summary> Microsoft Entra ID </summary>
 
             If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following configuration
-            template and add the configuration to your Kubernetes cluster profile layer.
+            template and add the configuration to your Kubernetes cluster profile layer. This configuration enables [Kubernetes Role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) for Kubernetes authorization.
 
                 ```yaml
                 managedControlPlane:
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                 ```
 
-                Additionally, if you want to disable
-                [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
-                `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
-                `managedControlPlane.aadProfile` section.
+            Alternatively, you can set `enableAzureRBAC: true` to use [Azure RBAC](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview) for Kubernetes authorization. This setting is disabled by default. Add the following configuration to your Kubernetes cluster profile layer.
+
+                ```yaml {4}
+                managedControlPlane:
+                  aadProfile:
+                    managed: true
+                    enableAzureRBAC: true
+                    adminGroupObjectIDs:
+                      - <admin-group-object-id-1>
+                      - <admin-group-object-id-2>
+                ```
+
+            Additionally, if you want to disable
+            [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
+            `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
+            `managedControlPlane.aadProfile` section. Ensure that the service principle for the Azure cloud account configured in Palette is included in the list of `adminGroupObjectIDs`.
 
                 ```yaml {7}
                 managedControlPlane:
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                     disableLocalAccounts: true
                 ```

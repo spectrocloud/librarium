@@ -24,7 +24,7 @@ optimization.
 The diagram below displays the overarching steps to build the Edge installer ISO using a content bundle. The diagram
 also highlights the primary prerequisites to create a content bundle.
 
-![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching.webp)
+![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching_4-8.webp)
 
 ## Benefits of Content Bundle
 
@@ -53,6 +53,15 @@ Refer to
 to learn how to migrate from the legacy pack to the **Registry Connect** pack.
 
 :::
+
+- Depending on the deployment method used, there are some [network failure considerations](../edgeforge-workflow.md) to
+  take into account:
+  - For a centrally managed Edge cluster, if a required pack cannot be downloaded, the cluster processing fails. There
+    is a periodic reconciliation attempt to download the missing packs.
+  - For a locally managed Edge cluster with internet or local network resources, if a required pack is not available in
+    the content bundle, it cannot be downloaded from the internet or a local network accessible registry.
+  - For a locally managed Edge cluster with no internet or local network resources, if a required pack is not available
+    in the content bundle, it cannot be downloaded from the internet or a local network accessible registry.
 
 <!-- prettier-ignore-start -->
 - You can configure built-in registry packs or your own custom OCI registry. Both configurations require the **Registry
@@ -136,18 +145,15 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 5. Log in to the [Palette](https://console.spectrocloud.com) console.
 
-6. Select the project you want to deploy the Edge host to and copy the project ID. You can find the project ID at the
-   top right side corner of the landing page below the user drop-down menu.
+6. Select the project you want to deploy the Edge host to.
 
-7. Navigate to the left main menu and select **Profiles**.
+7. <PartialsComponent category="projects" name="project-id-copy" />
 
-8. Use the **Cloud Types** drop-down menu and select **Edge Native**.
+8. From the left main menu, select **Profiles**.
 
-9. Click on the cluster profile you want to include in the content bundle.
+9. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-10. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-    value in the URL. Repeat this step for all the cluster profiles whose images you want to include in the content
-    bundle.
+10. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
 11. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
     authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
@@ -187,7 +193,6 @@ require a local Harbor registry. Built-in registries must be configured using ei
     The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
     in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
     bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
-
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
     :::tip
@@ -280,22 +285,15 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 4. Log in to [Palette](https://console.spectrocloud.com).
 
-5. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the user drop-down menu.
+5. Select the project you want to deploy the Edge host to.
 
-6. Navigate to the left main menu and select **Profiles**.
+6. <PartialsComponent category="projects" name="project-id-copy" />
 
-7. Use the **Cloud Types** drop-down menu and select **Edge Native**.
+7. From the left main menu, select **Profiles**.
 
-8. Click on the cluster profile you want to include in the content bundle.
+8. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-9. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Refer to the [Project](../../../../tenant-settings/projects/projects.md#project-id) page for
-   details. Repeat this step for all the cluster profiles you want to specify in the content bundle.
-
-   ```text
-   https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
-   ```
+9. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
 10. (Optional) If your cluster profile uses images or helm charts that are hosted on private registries that require
     authentication, you must provide a JSON file that contains the necessary credentials to access the registry.
@@ -376,7 +374,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
     }
     ```
 
-    For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
+    For Google Artifact Registry (GAR) access, you need to set the username field to `"_json_key"` and set the password
     to an JSON object containing the following fields.
 
     | Field                         | Description                                                                                         |
@@ -392,13 +390,13 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
     | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
 
-    For example, the following is a valid set of credentials for a GCR registry.
+    For example, the following is a valid set of credentials for a GAR registry.
 
     ```json
     {
       "image": [
         {
-          "endpoint": "gcr.io",
+          "endpoint": "us-docker.pkg.dev",
           "username": "_json_key",
           "password": {
             "type": "service_account",
@@ -433,7 +431,13 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --palette-endpoint <PALETTE_API_ENDPOINT> \
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
-     --private-key <PRIVATE_KEY_PATH>
+    ./palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
+    --palette-endpoint <palette-api-endpoint > \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
+    --private-key <private-key-path>
     ```
 
     | Flag                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -471,7 +475,14 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
      --cluster-definition-name <CLUSTER_DEFINITION_FILENAME> \
-     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
+    ./palette-edge build --api-key <api-key> \
+    --project-id <project-id> \
+    --cluster-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
+    --palette-endpoint <palette-api-endpoint> \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
+    --cluster-definition-name <cluster-definition-filename> \
+    --cluster-definition-profile-ids <cluster-profile-ids>
     ```
 
     Compared with the previous command, this command has two additional flags.

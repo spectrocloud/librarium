@@ -12,10 +12,6 @@ with only two nodes instead of three. In two-node HA clusters, Palette overcomes
 utilizing Postgres as the backend storage with [Kine](https://github.com/k3s-io/kine). Kine is only used in two-node
 clusters.
 
-:::preview
-
-:::
-
 ## Architecture Overview
 
 In a typical Kubernetes cluster, a cluster achieves high availability through the backend key-value store
@@ -52,7 +48,8 @@ change the number of nodes.
   [Deployment Modes](../../../deployment-modes/deployment-modes.md).
 - Two-node clusters can only have exactly two nodes in the control plane pool. You cannot adjust the number of the nodes
   in the control plane pool after cluster creation.
-- Two-node clusters only support K3s. Other Kubernetes distributions are not supported.
+- Two-node clusters only support K3s and Palette Optimized Canonical Kubernetes. Other Kubernetes distributions are not
+  supported.
 
 ## Use Cases
 

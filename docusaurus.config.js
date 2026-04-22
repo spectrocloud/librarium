@@ -84,6 +84,8 @@ const allScripts = [
     "data-modal-full-screen-on-mobile": "false",
     "data-modal-lock-scroll": "false",
     "data-modal-inner-position-left": "auto",
+    "data-mcp-enabled": "true",
+    "data-mcp-server-url": "https://spectro-cloud.mcp.kapa.ai",
     async: true,
   },
   {
@@ -304,7 +306,7 @@ const config = {
     [
       pluginPacksAndIntegrationsData,
       {
-        repositories: ["Palette Registry", "Public Repo", "Palette Community Registry"],
+        repositories: ["Palette Registry", "Public Repo", "Spectro Addon Repo", "Palette Community Registry"],
       },
     ],
     pluginImportFontAwesomeIcons,
@@ -335,6 +337,16 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [...redirects],
+      },
+    ],
+    [
+      require.resolve("./plugins/security-advisories-rss"),
+      {
+        docsRoot: __dirname,
+        advisorySourceFile: "docs/docs-content/security-bulletins/security-advisories/security-advisories.md",
+        feedFileName: "security-advisories.xml",
+        pagePath: "/security-bulletins/security-advisories/",
+        monthsBack: 6,
       },
     ],
   ].filter(Boolean),
@@ -378,6 +390,14 @@ const config = {
           srcDark: getDarkLogoPath(),
         },
         items: [
+          {
+            to: "/",
+            type: "docSidebar",
+            sidebarId: "docSidebar",
+            label: "Docs",
+            position: "left",
+            activeBaseRegex: "^(?!/api/).*$",
+          },
           {
             to: "/tutorials",
             type: "docSidebar",
