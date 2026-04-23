@@ -48,14 +48,9 @@ The following components have been updated for Palette version 4.8.6 - 4.8.51.
 | GCE Persistent Disk CSI      | CSI        | :white_check_mark: | :x:                | 1.25.1      |
 | Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.11.1      |
 | Kong                         | Add-on     | :white_check_mark: | :x:                | 3.2.0       |
-| Portworx with Operator       | CSI        | :white_check_mark: | :x:                | 3.6.0       |
-| Portworx with Operator       | CSI        | :white_check_mark: | :x:                | 3.5.2       |
 | Reloader                     | Add-on     | :white_check_mark: | :x:                | 2.2.11      |
 | Rook Ceph                    | CSI        | :white_check_mark: | :x:                | 1.19.4      |
 | RKE2                         | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
-| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.33.9      |
-| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.32.13     |
-| Spectro Proxy                | Add-on     | :x:                | :white_check_mark: | 1.5.6       |
 
 ## April 17, 2026 - Component Updates {#component-updates-2026-16}
 
