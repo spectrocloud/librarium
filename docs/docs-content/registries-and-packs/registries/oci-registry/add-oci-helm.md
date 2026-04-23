@@ -8,7 +8,8 @@ toc_max_heading_level: 2
 sidebar_position: 10
 ---
 
-You can add Open Container Initiative (OCI) registries containing Helm charts to Palette and use those Helm charts in your cluster profiles.
+You can add Open Container Initiative (OCI) registries containing Helm charts to Palette and use those Helm charts in
+your cluster profiles.
 
 ## Limitations
 
@@ -254,8 +255,8 @@ registry you are adding.
 9. Leave the **Endpoint Suffix** blank. This field is not applicable to GHCR. Any data entered in this field is ignored.
 
 10. Enter the **Base Content Path** for the Helm charts you want Palette to index. This is the GitHub repository that
-    the Helm chart is linked to. You can specify multiple base paths by pressing **ENTER** after each path.
-    Providing multiple base paths is useful when Helm charts are stored in different repositories.
+    the Helm chart is linked to. You can specify multiple base paths by pressing **ENTER** after each path. Providing
+    multiple base paths is useful when Helm charts are stored in different repositories.
 
 11. In the **Username** field, enter your GitHub username or organization. A username is required for authentication,
     but the user or organization does not need to be associated with the repository where the Helm chart is stored.
