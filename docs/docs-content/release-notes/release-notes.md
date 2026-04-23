@@ -139,6 +139,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   Workflow](../tutorials/ai/palette-mcp/integrate-palette-mcp-agentic.md) tutorials to learn how to incorporate the
   Palette MCP server into your workflows.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-765 -->
+
+- The [Security Advisories](../security-bulletins/security-advisories/security-advisories.md) page now can be followed using your favorite [RSS](https://docs.spectrocloud.com/security-advisories.xml) feed application. 
+
 ### Packs
 
 #### Pack Notes
