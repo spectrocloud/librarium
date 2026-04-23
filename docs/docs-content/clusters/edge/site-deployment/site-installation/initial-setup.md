@@ -33,6 +33,8 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
   you attempt to update pre-existing network settings via the TUI, a new configuration is created alongside the existing
   one. To manage pre-existing configurations, use the original configuration method, such as `systemd-networkd`,
   Netplan, or NetworkManager.
+- The TUI does not support password changes for the root user. If the root password is expired, update it from the
+  terminal using a privileged user account, for example with `sudo passwd root`.
 
 ## Prerequisites
 
