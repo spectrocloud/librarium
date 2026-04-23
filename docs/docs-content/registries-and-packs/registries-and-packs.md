@@ -55,9 +55,9 @@ multiple registries.
 
 ## Default Registry
 
-The default pack registry is Spectro Cloud's OCI Palette Registry. It consists of several packs for creating a cluster
-profile and launch a Kubernetes cluster with their choice of integrations. Palette maintains all packs in this pack
-registry and takes care of upgrading packs in the pack registry whenever required.
+The default pack registry is Spectro Cloud's OCI Palette Registry. It contains several packs for creating a cluster
+profile and launching a Kubernetes cluster with a wide choice of integrations. Palette maintains all packs in this
+registry and is responsible for upgrading them whenever required.
 
 ## Custom Pack Registry
 
