@@ -30,6 +30,15 @@ Currently, maintenance policies are the only supported cluster template policy t
 ![Diagram of cluster template architecture](/profiles-policies-templates.webp)
 
 When you create clusters from the same template, they inherit the same base configuration and the same governance rules.
-For example, you can create **dev** and **prod** clusters from a single template. Both clusters run the same software
+For example, you can create dev and prod clusters from a single template. Both clusters run the same software
 stack and follow the same upgrade policy. You can assign different profile variable values to handle
 environment-specific requirements.
+
+In this tutorial, you will:
+
+- Create a cluster profile, a cluster template policy, and a cluster template that uses them together
+- Deploy two clusters (dev and prod) from the same template
+- Use
+  [cluster profile variables](/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
+  to apply environment-specific settings
+- Update the template and upgrade both clusters
