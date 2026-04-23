@@ -29,7 +29,7 @@ The following components have been updated for Palette version 4.8.6 - 4.8.51.
 
 - The
   [`spectrocloud_cluster_eks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
-  now provides validation for the `count`, `min` and `max` fields. When autoscaling is enabled by setting `min` and
+  now provides validation for the `count`, `min`, and `max` fields. When autoscaling is enabled by setting `min` and
   `max` to positive values, `count` must equal to `min`.
 
 ### Packs
