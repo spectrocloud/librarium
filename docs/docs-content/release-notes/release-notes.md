@@ -67,6 +67,23 @@ tags: ["release-notes"]
 - Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. Use Ubuntu
   24.04, as it is FIPS 140-3 compliant.
 
+- Ingress Nginx, a
+  [deprecated Kubernetes project](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), is now
+  deprecated in Palette. Traefik is the default ingress controller for Palette management clusters starting with Palette
+  4.8.47. For self-hosted Palette environments
+  [installed using Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install.md), set
+  `ingress.type` to `traefik` to avoid service disruptions. Refer to
+  [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
+  more information.
+
+  If you have made custom modifications to the Ingress Nginx configuration in your self-hosted environment, such as
+  custom annotations, load balancer settings, or TLS configurations, these customizations may not carry over
+  automatically and could affect your deployment. Review your ingress configuration before upgrading and
+  [contact our Support team](https://support.spectrocloud.io/) if you need assistance migrating custom ingress settings
+  to Traefik. For installations configured to use DNS, you must also update your records to point to the new Traefik
+  `LoadBalancer` service after upgrading. Refer to the
+  [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
+
 ### Edge
 
 :::info
