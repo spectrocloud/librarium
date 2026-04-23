@@ -10,15 +10,6 @@ tags: ["cluster templates", "tutorial", "profiles", "aws", "azure"]
 
 <PartialsComponent category="cluster-templates" name="intro" />
 
-In this tutorial, you will:
-
-- Create a cluster profile, a cluster template policy, and a cluster template that uses them together
-- Deploy two clusters (dev and prod) from the same template
-- Use
-  [cluster profile variables](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
-  to apply environment-specific settings
-- Update the template and upgrade both clusters
-
 You will complete this tutorial using the Palette UI. You will import a cluster profile, create a cluster template with
 a maintenance policy, and deploy clusters from it.
 
