@@ -38,7 +38,7 @@ and Helm charts are applied to the Kubernetes clusters after deployment. The fol
 | ------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `pack.json`   | Mandatory                | Pack metadata. Must follow JSON syntax and provide the following: <br/ > - A pack name in the `name` field. For example, `"name": "hello-universe"` <br / > - A pack version in the `version` field. For example,`"version": "1.3.1"` <br /> - For manifest-based packs, paths to manifest files in the `kubeManifests` field. For example, `"kubeManifests": ["manifests/hello-universe.yaml"]` <br /> - For Helm chart-based files, paths to chart files in the `charts` field. For example, `"charts": [ "charts/fluent-bit-0.57.0.tgz"]` |
 | `values.yaml` | Mandatory                | Pack configuration. Must follow YAML syntax and provide default values to mandatory parameters exposed from the underlying charts or manifests.                                                                                                                                                                                                                                                                                                                                                                                              |
-| `charts/`     | Mandatory                | Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack. Must follow [Helm chart file structure](https://helm.sh/docs/topics/charts/#the-chart-file-structure).                                                                                                                                                                                                                                                                                                                                           |
+| `charts/`     | Mandatory                | Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack. Must follow [Helm chart file structure](https://helm.sh/docs/topics/charts/#the-chart-file-structure) and contain a `.tgz` file with the compressed Helm chart files.                                                                                                                                                                                                                                                                            |
 | `manifests/`  | Mandatory                | Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack. Must contain valid [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/#describing-a-kubernetes-object).                                                                                                                                                                                                                                                                                                     |
 | `logo.png`    | Optional                 | Contains the pack logo.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `README.md`   | Optional                 | The pack description.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -55,20 +55,18 @@ multiple registries.
 
 ## Default Registry
 
-The default pack registry is Spectro Cloud's public pack registry. It consists of several packs that make it easy for a
+The default pack registry is Spectro Cloud's OCI Palette Registry. It consists of several packs that make it easy for a
 user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Palette
 maintains all packs in this pack registry and takes care of upgrading packs in the pack registry whenever required.
 
 ## Custom Pack Registry
 
-Users can set up a custom pack registry using a Docker image provided by Spectro Cloud to upload and maintain custom
-packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the pack registry. Custom
-registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
+Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
+Users can use [ORAS](https://oras.land/docs/) to upload and maintain custom packs in custom registries. Refer to the
+[Deploy a Custom Pack](../tutorials/packs-registries/deploy-pack.md) tutorial for further information.
 
 ## Spectro CLI
 
 The Spectro Cloud Command Line Interface (CLI) is a tool to interact with a Spectro Cloud pack registry. You can use the
 CLI to upload and download packs. The CLI must authenticate with the pack registry before executing any CLI commands.
 Review the [Spectro Cloud CLI](spectro-cli-reference.md) reference page for usage instructions.
-
-<br />
