@@ -249,8 +249,8 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 
 ## Deploy Clusters from the Template
 
-Deploy a dev cluster and a prod cluster from `tf-cluster-template-aws`, using profile variables to apply environment-specific
-replica counts.
+Deploy a dev cluster and a prod cluster from `tf-cluster-template-aws`, using profile variables to apply
+environment-specific replica counts.
 
 ### Deploy a Dev Cluster from the Template
 
