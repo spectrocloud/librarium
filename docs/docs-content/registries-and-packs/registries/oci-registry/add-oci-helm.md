@@ -251,7 +251,7 @@ registry you are adding.
 
    </Tabs>
 
-9. Leave the **Endpoint Suffix** blank.
+9. Leave the **Endpoint Suffix** blank. This field is not applicable to GHCR. Any data entered in this field is ignored.
 
 10. Enter the **Base Content Path** for the Helm charts you want Palette to index. This is the GitHub repository that
     the Helm chart is linked to. You can specify multiple base paths by pressing the **ENTER** key after each path.
