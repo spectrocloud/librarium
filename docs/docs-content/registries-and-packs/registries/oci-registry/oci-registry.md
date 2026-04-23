@@ -18,7 +18,7 @@ add registries that do not require authentication. OCI-compliant registries with
 
 ## Supported Authentication Methods
 
-The following table describes the different authentication methods supported based on the type of OCI registry.
+The following table describes the authentication methods supported for each OCI registry type.
 
 | **Provider** | **Description**                 | **No Authentication** | **Basic (includes ACR)** |   **Amazon ECR**   |
 | ------------ | ------------------------------- | :-------------------: | :----------------------: | :----------------: |
@@ -49,7 +49,7 @@ method, it is available to all projects within the tenant.
 
 If you are using self-hosted Palette or Palette VerteX, you can also add an OCI registry at the system level through the
 [system console](../../../enterprise-version/system-management/system-management.md#access-the-system-console). All
-tenants, and all projects within those tenants, can use the OCI registry once it is added at the system level. To learn
+tenants and all projects within those tenants can use the OCI registry once it is added at the system level. To learn
 how to add an OCI through the system console, refer to the appropriate
 [Palette](../../../enterprise-version/system-management/add-registry.md) or
 [Palette Vertex](../../../vertex/system-management/add-registry.md) guide.
