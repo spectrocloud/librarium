@@ -9,28 +9,26 @@ sidebar_position: 70
 
 Palette supports the configuration of multiple Open Container Initiative (OCI) registries. You can add a private OCI
 registry to Palette and use OCI artifacts in your cluster profiles. Palette only supports custom OCI registries that are
-hosting the following type of artifacts; Helm Charts, Zarf packages, and Packs.
+hosting the following type of artifacts: Helm charts, Zarf packages, and Packs.
 
 Registries that comply with the OCI specification and support basic authentication are supported, although you can also
 add registries that do not require authentication. OCI-compliant registries with basic authentication are labeled as
 **Basic**. Palette also supports certain third-party registry providers, such as Amazon Web Services Elastic Container
-Registry (AWS ECR) and Azure Container Registry (ACR).
+Registry (AWS ECR), Azure Container Registry (ACR), and GitHub Container Registry (GHCR).
 
 ## Supported OCI Registries
 
 The following table describes the types of OCI registries that are supported.
 
-| **Provider** | **Description**                  | **No Authentication** | **Basic (includes ACR)** | **AWS ECR** |
-| ------------ | -------------------------------- | --------------------- | ------------------------ | ----------- |
-| Helm         | OCI-based Helm Chart registries. | ✅                    | ✅                       | ✅          |
-| Zarf         | OCI-based Zarf registries.       | ❌                    | ✅                       | ❌          |
-| Packs        | OCI-based Packs registries.      | ❌                    | ✅                       | ✅          |
+| **Provider** | **Description**                 | **No Authentication** | **Basic (includes ACR)** |    **AWS ECR**     |      **GHCR**      |
+| ------------ | ------------------------------- | :-------------------: | :----------------------: | :----------------: | :----------------: |
+| **Helm**     | OCI-based Helm Chart registries |  :white_check_mark:   |    :white_check_mark:    | :white_check_mark: | :white_check_mark: |
+| **Zarf**     | OCI-based Zarf registries       |          :x:          |    :white_check_mark:    |        :x:         |        :x:         |
+| **Packs**    | OCI-based Packs registries      |          :x:          |    :white_check_mark:    | :white_check_mark: |        :x:         |
 
 ## Limitations
 
-- GitHub Container Registry (GHCR) is not officially supported at this time. To add a Helm chart from GHCR, you must
-  create a separate OCI Helm registry in Palette for each chart. Refer to [Add OCI Helm Registry](./add-oci-helm.md) for
-  more information.
+- Anonymous authentication is not supported for GHCR.
 
 - OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic
   synchronization, re-register the OCI Helm registry.
