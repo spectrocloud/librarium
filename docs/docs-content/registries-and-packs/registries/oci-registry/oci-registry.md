@@ -42,29 +42,31 @@ The following OCI registries have been verified by Palette. Other OCI registries
 - Harbor
 - JFrog Artifactory
 
-## Limitations
+## Project-Level vs. System-Level Registries
 
-- OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic
-  synchronization, re-register the OCI Helm registry.
+OCI registries are typically added at the project level from the Tenant Admin scope. When a registry is added using this
+method, it is available to all projects within the tenant.
 
-To add an OCI registry to Palette, refer to the respective guide for the OCI-type registry located in the
-[Resources](#resources) section.
-
-:::tip
-
-If you are using self-hosted Palette or Palette VerteX, you can add an OCI registry at the system level scope. All
-tenants can use the OCI registry once it is added to the system-level scope. To learn how to add an OCI registry at the
-system level scope, refer to the
-[Self-Hosted Add Registry](../../../enterprise-version/system-management/add-registry.md) guide or the
-[VerteX Add Registry](../../../vertex/system-management/add-registry.md) guide.
-
-:::
+If you are using self-hosted Palette or Palette VerteX, you can also add an OCI registry at the system level through the
+[system console](../../../enterprise-version/system-management/system-management.md#access-the-system-console). All
+tenants, and all projects within those tenants, can use the OCI registry once it is added at the system level. To learn
+how to add an OCI through the system console, refer to the appropriate
+[Palette](../../../enterprise-version/system-management/add-registry.md) or
+[Palette Vertex](../../../vertex/system-management/add-registry.md) guide.
 
 ## OCI Packs Registry Configuration by Provider
 
 <PartialsComponent category="oci-registry-configuration" name="oci-packs-registry-configuration-by-provider" />
 
-## Resources
+## Limitations
+
+- OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic
+  synchronization, you must re-register the OCI Helm registry with Palette.
+
+## Next Steps
+
+Review the appropriate guide to add an OCI registry to Palette based on the type of content you want to expose in
+Palette. If your registry contains multiple content types that you want to use, you must add the registry for each type.
 
 - [Add OCI Helm Registry](./add-oci-helm.md)
 
