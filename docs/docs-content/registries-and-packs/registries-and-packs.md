@@ -61,8 +61,8 @@ maintains all packs in this pack registry and takes care of upgrading packs in t
 
 ## Custom Pack Registry
 
-Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
-Users can use [ORAS](https://oras.land/docs/) to upload and maintain custom packs in custom registries. Refer to the
+Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations. Use
+[ORAS](https://oras.land/docs/) to upload and maintain custom packs in custom registries. Refer to the
 [Deploy a Custom Pack](../tutorials/packs-registries/deploy-pack.md) tutorial for further information.
 
 ## Spectro CLI
