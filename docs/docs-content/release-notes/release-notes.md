@@ -67,6 +67,8 @@ tags: ["release-notes"]
 - Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. Use Ubuntu
   24.04, as it is FIPS 140-3 compliant.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
+
 - Ingress Nginx, a
   [deprecated Kubernetes project](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), is now
   deprecated in Palette. Traefik is the default ingress controller for Palette management clusters starting with Palette
