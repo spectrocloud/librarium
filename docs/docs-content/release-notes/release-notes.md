@@ -142,8 +142,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 <!-- https://spectrocloud.atlassian.net/browse/DOC-765 -->
 
 - The [Security Advisories](../security-bulletins/security-advisories/security-advisories.md) page can now be followed
-  using our [Security Advisories RSS feed](https://docs.spectrocloud.com/security-advisories.xml). Subscribe to it
-  using your favorite application.
+  using our [Security Advisories RSS feed](https://docs.spectrocloud.com/security-advisories.xml). Subscribe to it using
+  your favorite application.
 
 ### Packs
 
