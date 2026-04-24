@@ -15,18 +15,73 @@ Palette supports creating and managing OpenShift clusters on MAAS bare-metal ser
 plane components as pods. OpenShift workload clusters are then provisioned with their worker nodes on bare-metal MAAS
 hosts, while their control planes are hosted on the HyperShift host cluster.
 
-Prior to creating OpenShift workload clusters, a custom built
+Prior to creating OpenShift workload clusters, you must build a custom
 [Red Hat Enterprise Linux CoreOS (RHCOS)](https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/architecture/architecture-rhcos)
-image is required to be compatible with MAAS deployment.
+image that is compatible with MAAS deployment.
 
 This guide covers three sequential tasks that enable you to create and manage OpenShift clusters on MAAS using
 HyperShift:
 
-1. Building and importing a MAAS-compatible RHCOS image.
-2. Creating a HyperShift host cluster.
-3. Creating OpenShift workload clusters that use the HyperShift hosted control plane.
+1. Build and import a MAAS-compatible RHCOS image.
+2. Create a HyperShift cluster to host the OpenShift control plane pods.
+3. Create OpenShift workload clusters that use the HyperShift hosted control plane.
 
-## 1. Create MAAS-Compatible RHCOS Image
+## Limitations - WIP
+
+### HyperShift Host Cluster
+
+<!-- prettier-ignore-start -->
+
+- **Host cluster type**: The HyperShift host cluster must be a
+  <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> MAAS
+  cluster deployed using Palette. Using a [Private Cloud Gateway (PCG)](../../pcg/pcg.md) as the HyperShift host is not
+  supported.
+
+<!-- prettier-ignore-end -->
+
+- **Multus**: Multus Container Network Interface (CNI) for Virtual Local Area Network (VLAN) isolation between workload
+  clusters on the host cluster is not supported.
+
+- **OpenShift Addon Support**: It is not possible to install additional addon layers on OpenShift workload clusters
+  through Palette. If you need to install addons such as MetalLB or Piraeus, we recommend using the
+  [OperatorHub](https://operatorhub.io/). The OperatorHub is accessed through the OpenShift console of your workload
+  cluster. Addons installed through the OperatorHub are managed directly through the OpenShift console and are not
+  visible in Palette.
+
+### OpenShift Workload Clusters
+
+- **OS layer**: Only the Bring Your Own OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built
+  specifically for MAAS using the process described in this guide. Standard MAAS OS images are not compatible with
+  OpenShift.
+
+- **CNI**: OVN-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-K CNI pack is not
+  supported. The CNI layer of the workload cluster profile must use the dummy CNI pack.
+
+- **OIDC**: Configuring an external OIDC provider is not supported via Palette.
+
+- **Autoscaler**: Cluster autoscaler is not supported.
+
+- **NTP**: NTP server configuration for workload cluster nodes is not available through Palette.
+
+- **OS patching**: Palette-managed OS patching is not supported for RHCOS nodes. CoreOS updates are applied through
+  OpenShift's Machine Config Operator.
+
+- **Security and compliance scans**: Palette security scans are not supported.
+
+- **Backup and restore**: Palette-managed backup and restore is not supported.
+
+- **Maintenance mode**: Putting individual workload cluster nodes into Palette maintenance mode is not supported.
+
+### Both Cluster Types
+
+- **Infrastructure as code**: Terraform and Crossplane are not supported.
+
+- **Version skew**: Palette does not validate version compatibility between the HyperShift Operator on the host cluster
+  and the OpenShift version on workload clusters. You must ensure these are compatible before deploying or upgrading.
+  Refer to the [HyperShift Versioning Support](https://hypershift-docs.netlify.app/reference/versioning-support/)
+  documentation for guidance.
+
+## 1. Build and Import MAAS-Compatible RHCOS Image
 
 RHCOS is incompatible with the standard MAAS/[Curtin](https://canonical.com/blog/customising-maas-installs) deployment
 process out of the box. MAAS deploys machines using a two-stage boot process in which Curtin writes and validates the
@@ -115,13 +170,18 @@ configuration for RHCOS, which is applied on first boot.
 3. Use the following command to create the MAAS-ready RHCOS image. This appends a new partition (p5) to the RHCOS raw
    image and injects the Ubuntu rootfs and Curtin hooks.
 
-   - Replace `<path-to-rhcos-raw-image>` with the path to your RHCOS raw image downloaded in the prerequisites step. For
-     example, `./images/rhcos-4.20.13-x86_64-metal.x86_64.raw.gz`.
+   - Replace `<path-to-rhcos-raw-image>` with the path to your RHCOS raw image downloaded in the prerequisites step.
 
-   ```bash
+   ```bash title="Template"
    sudo ./create-maas-image.sh \
      ./ubuntu2404-rootfs \
      <path-to-rhcos-raw-image>
+   ```
+
+   ```bash title="Example"
+   sudo ./create-maas-image.sh \
+     ./ubuntu2404-rootfs \
+     ./images/rhcos-4.20.13-x86_64-metal.x86_64.raw.gz
    ```
 
    <details>
@@ -172,14 +232,16 @@ configuration for RHCOS, which is applied on first boot.
 5. Use the following command to import the new image into MAAS.
 
    - Replace `<maas-ready-rhcos-image-filepath>` with the path to the new RHCOS image created in the previous step.
-   - Replace `<openshift-version>` with the OpenShift version that matches your RHCOS image, for example `4.20.13`.
+   - Replace `<image-name>` with a descriptive name for the image as it will appear in the MAAS boot resources list.
+   - Replace `<operating-system>` with the OS name to associate with the image in MAAS.
+   - Replace `<release-version>` with the OS version to associate with the image in MAAS.
 
-   ```bash title="Import image into MAAS"
+   ```bash title="Template"
    ./import-maas-image.sh \
      <maas-ready-rhcos-image-filepath> \
-     rhcos-<openshift-version>-with-ubuntu \
-     openshift \
-     <openshift-version>
+     <image-name> \
+     <operating-system> \
+     <release-version>
    ```
 
    ```bash title="Example"
@@ -191,34 +253,49 @@ configuration for RHCOS, which is applied on first boot.
    ```
 
    The script logs into MAAS using the `default` profile, uploads the image as a `ddgz` resource, and triggers a
-   boot-resources import. The image will then appear in the MAAS boot resources list.
+   boot-resources import. The image will then appear in the MAAS boot resources list. Partition cleanup is handled
+   automatically during deployment, no manual disk management is required.
 
-   :::info
+### Validate
 
-   - The MAAS credentials set in step 4 are required. The `deploy-ignition-config` Curtin hook uses them to authenticate
-     against the MAAS metadata endpoint and fetch the Ignition configuration during deployment.
-   - Partition cleanup is handled automatically. No manual disk management is required after deployment.
+<Tabs groupId="validate-image">
 
-   :::
-
-### Validate - TBC
-
-To confirm the image was imported successfully, use the following steps.
+<TabItem label="MAAS UI" value="maas-ui">
 
 1. Log in to your MAAS server web interface.
 
-2. Navigate to **Images** in the top navigation bar.
+2. From the left sidebar, navigate to **Images**.
 
-3. In the **Custom** images section, locate the image and verify it appears with the name and version you specified
-   during import — for example, `rhcos-4.20.13-with-ubuntu`.
+3. Locate the image and verify it appears with the name you specified during import. The name will appear under the
+   **Release Title** column. For example, `rhcos-4.20.13-with-ubuntu`.
 
-4. Confirm the image status is **Synced** or **Complete**.
+   The image may appear in the **Other** category if the image metadata does not match any existing categories.
+
+4. Confirm the image status is **Synced**.
+
+</TabItem>
+
+<TabItem label="MAAS CLI" value="maas-cli">
+
+Use the following command to list all boot resources and confirm your image is present. Replace `<openshift-version>`
+with the OpenShift version that matches your RHCOS image.
+
+```bash
+maas default boot-resources read | grep "rhcos-<openshift-version>-with-ubuntu"
+```
+
+If the image was imported successfully, the command returns a JSON entry containing the image name. No output indicates
+the image was not found.
+
+</TabItem>
+
+</Tabs>
 
 ## 2. Create HyperShift Host Cluster
 
-The HyperShift host cluster is a standard PXK MAAS cluster with the HyperShift Operator installed as a system app. It
-runs the OpenShift control plane components as pods for all downstream OpenShift workload clusters. You must deploy this
-host cluster before creating any OpenShift workload clusters.
+The HyperShift host cluster is a MAAS cluster with the HyperShift Operator installed as a system app. It runs the
+OpenShift control plane components as pods for all downstream OpenShift workload clusters. You must deploy this host
+cluster in Palette before creating any OpenShift workload clusters.
 
 ### Prerequisites
 
@@ -234,13 +311,18 @@ host cluster before creating any OpenShift workload clusters.
 - The **OpenShift** feature flag enabled in the
   [system console](../../../enterprise-version/system-management/feature-flags.md).
 
-- A cluster profile for the HyperShift host cluster configured with the following layers:
+- The [Cluster Admin](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role in Palette.
 
-  - **Palette eXtended Kubernetes (PXK)** for the Kubernetes layer.
-  - The **HyperShift Operator** added as a System App layer in the cluster profile. The HyperShift Operator manages the
-    lifecycle of the hosted OpenShift control planes.
-  - Any compatible OS image available in your MAAS environment for the OS layer.
-  - Any supported CNI for the network layer.
+  - You may also need the
+    [Cluster Profile Admin](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+    role if you have not yet created a cluster profile for the HyperShift host cluster.
+
+- A cluster profile for the HyperShift host cluster configured with the following packs:
+
+  - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> for
+    the **Kubernetes** layer.
+  - <VersionedLink text="HyperShift Operator" url="/integrations/packs/?pack=spectro-hypershift-operator&tab=main" />
+    added as a **System App** layer.
 
   Refer to [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) for guidance on creating cluster
   profiles.
@@ -255,42 +337,51 @@ host cluster before creating any OpenShift workload clusters.
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu**, select **Clusters**, and click **Add New Cluster**.
+3. From the left main menu, select **Clusters**, and click **Add New Cluster**.
 
-4. In the **Data Center** section, select **MAAS**.
+4. In the **Data Center** section, select **MAAS**, then click **Start MAAS Configuration**.
 
-5. In the bottom-right corner, click **Start MAAS Configuration**.
+5. Enter the basic information for your cluster, including the **Cluster Name**, **Description**, and **Tags**.
 
-6. Enter the basic information for your cluster, including the **Cluster Name**, **Description**, and **Tags**. Click
-   **Next**.
+   From the **Cloud Account** drop-down menu, select your MAAS cloud account.
 
-7. From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
+   Click **Next** when done.
 
-8. Select the HyperShift host cluster profile and click **Next**.
+6. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9. Select a **Domain** from the drop-down menu. Click **Next**.
+7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+
+8. On the **Cluster Config** step, select a domain from the **Domains** drop-down menu. You can also specify **NTP
+   Servers**.
 
    :::warning
 
-   We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time.
-   If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
-   **Cluster Config** step.
+   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have
+   the correct time. If no NTP servers are specified, it could lead to time drift issues.
 
    :::
 
-10. Configure the control plane and worker node pools. The following input fields apply to MAAS node pools. For a
-    description of input fields common across target platforms, refer to
-    [Node Pools](../../cluster-management/node-pool.md). Click **Next** when done.
+9. Click the **Host HyperShift-based control planes** toggle to enable this cluster to deploy HyperShift control planes
+   for OpenShift workload clusters. Click **Next** when done.
 
-    | **Parameter**          | **Description**                                                                                                                                                                                                                                               |
-    | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Resource Pool**      | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those with at least the specified CPU and Memory.                                                                                              |
-    | **Availability Zones** | Specify the Availability Zones for the node pool.                                                                                                                                                                                                             |
-    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
+10. On the **Nodes Config** step, configure the control plane and, optionally, worker node pools.
 
-11. Review the cluster settings and click **Next**.
+    The following input fields apply to MAAS node pools. For a description of input fields common across target
+    platforms, refer to [Node Pools](../../cluster-management/node-pool.md). Click **Next** when done.
 
-12. Select **Validate** to review your cluster configuration.
+    #### Cloud Configuration
+
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                      |
+    | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource pool**      | The [MAAS resource pool](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-resource-pools) from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **Minimum CPU** and **Minimum Memory** selected. |
+    | **Minimum CPU**        | The minimum number of CPU cores required for servers in this node pool.                                                                                                                                                                                                                              |
+    | **Minimum Memory**     | The minimum amount of memory required for servers in this node pool.                                                                                                                                                                                                                                 |
+    | **Availability zones** | Specify the [Availability Zones (AZs)](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-availability-zones) for the node pool.                                                                                                                                            |
+    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags-flexible-labels) documentation.                        |
+
+11. <PartialsComponent category="clusters" name="cluster-settings" />
+
+12. Select **Validate** to review your cluster configuration and settings.
 
 13. If no changes are needed, select **Finish Configuration** to deploy the host cluster.
 
@@ -300,67 +391,98 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 ### Validate
 
-Use the following steps to confirm your HyperShift host cluster is running.
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu**, select **Clusters**. The **Clusters** page lists all clusters that Palette manages.
+3. From the left main menu, select **Clusters**. The **Clusters** page lists all clusters that Palette manages.
 
 4. Select the HyperShift host cluster. On the **Overview** tab, confirm the **Cluster Status** is **Running** and the
    **Health** status is **Healthy**.
 
-5. On the **Add-ons** tab, confirm the HyperShift Operator system app is installed and in a healthy state.
+5. In the **Cluster Profiles** section, confirm the **HyperShift Operator** system app is installed and in a healthy
+   state (green icon).
 
-Do not proceed to create OpenShift workload clusters until the host cluster is fully running and the HyperShift Operator
-is healthy.
+## 3. Create OpenShift Workload Cluster with HyperShift Control Plane
 
-## 3. Create MAAS OpenShift Workload Cluster with HyperShift Control Plane
-
-OpenShift workload clusters use a hosted control plane model — their Kubernetes control plane components run as pods in
-the HyperShift host cluster, while worker nodes are provisioned as bare-metal MAAS hosts. Each workload cluster requires
-a dedicated OpenShift cluster profile that uses BYOOS for the OS layer (to reference the MAAS-compatible RHCOS image
-built in the first section of this guide).
+OpenShift workload clusters use a hosted control plane model where their Kubernetes control plane components run as pods
+in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal MAAS hosts.
 
 ### Prerequisites
 
-- The HyperShift host cluster created in the previous section must be in **Running** state with the HyperShift Operator
-  healthy.
-
 - The MAAS-compatible RHCOS image imported in the
-  [first section](#create-maas-compatible-red-hat-enterprise-linux-coreos-image) of this guide must be available in your
-  MAAS environment.
+  [1. Build and Import MAAS-Compatible RHCOS Image](#1-build-and-import-maas-compatible-rhcos-image) of this guide must
+  be available in your MAAS environment.
 
-- A cluster profile for your OpenShift workload clusters configured with the following infrastructure layers:
+- The HyperShift host cluster created in the [2. Create HyperShift Host Cluster](#2-create-hypershift-host-cluster)
+  section must be in **Running** state with the HyperShift Operator healthy.
 
-  - **Bring Your Own OS (BYOOS)** pack for the OS layer. Set the following parameters in the pack values.
+- The [Cluster Admin](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role in Palette.
 
-    | Parameter              | Description                                                                                                                             | Example value               |
-    | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-    | `pack.osImageOverride` | The name of the MAAS image imported in the previous section. This should match the name specified in the `import-maas-image.sh` script. | `rhcos-4.20.13-with-ubuntu` |
-    | `pack.osName`          | The OS name specified during import.                                                                                                    | `openshift`                 |
-    | `pack.osVersion`       | The OS version specified during import.                                                                                                 | `4.20.13`                   |
+  - You may also need the
+    [Cluster Profile Admin](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+    role if you have not yet created a cluster profile for OpenShift workload clusters.
 
-  - **OpenShift** pack for the Kubernetes layer. Ensure the OpenShift version is compatible with the HyperShift Operator
-    version installed on the host cluster. Refer to the
-    [HyperShift version support matrix](https://hypershift-docs.netlify.app/reference/support-matrix/) for version
-    compatibility details.
+- A cluster profile for your OpenShift workload clusters configured with the following packs:
 
-    :::warning
+  - <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack for the OS
+    layer. Set the following parameters in the pack values.
 
-    Version skew between the HyperShift Operator on the host cluster and the OpenShift version on the workload cluster
-    can cause deployment or upgrade failures. Validate version compatibility before deploying.
+    | Parameter              | Description                                                                                                                                                                                                                                           | Example value               |
+    | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+    | `pack.osImageOverride` | The name of the MAAS image imported in the [1. Build and Import MAAS-Compatible RHCOS Image](#1-build-and-import-maas-compatible-rhcos-image) section. This should match the `<image-name>` parameter specified in the `import-maas-image.sh` script. | `rhcos-4.20.13-with-ubuntu` |
+    | `pack.osName`          | The value of the `<operating-system>` parameter during import.                                                                                                                                                                                        | `openshift`                 |
+    | `pack.osVersion`       | The value of the `<release-version>` parameter specified during import.                                                                                                                                                                               | `4.20.13`                   |
 
-    :::
+  - <VersionedLink text="OpenShift" url="/integrations/packs/?pack=openshift&tab=main" /> pack for the Kubernetes layer.
+    Ensure the OpenShift version is compatible with the HyperShift Operator version installed on the host cluster. Refer
+    to the [HyperShift Operator (HO) Versioning
+    Support](https://hypershift-docs.netlify.app/reference/versioning-support/#ho) documentation for guidance.
 
-  - A **CNI** layer using the dummy CNI pack. OVN-Kubernetes is configured automatically by the OpenShift pack and does
-    not require a separate CNI configuration.
+    - Ensure to set the Red Hat OpenShift pull secret in the `cluster.pullSecret` parameter of the OpenShift pack
+      values. This is required for the OpenShift installer to pull necessary images from Red Hat's container registry.
+      Obtain your pull secret from the
+      [Red Hat OpenShift Cluster Manager](https://console.redhat.com/openshift/install/pull-secret). The pull secret
+      must be in Base64-encoded format.
 
-  - **Local Path Provisioner** pack for the storage layer.
+      <details>
 
-- An image pull secret for Red Hat's container registry must be available. Add this as part of your cluster profile
-  configuration so Palette can pass it to the OpenShift installer during provisioning.
+      <summary> Example command to Base64 encode the pull secret </summary>
+
+      In this example, the pull secret is stored in a file named `pull-secret.txt`. The command reads the pull secret
+      from the file, encodes it in Base64 format, and sets it as the `OPENSHIFT_PULL_SECRET` environment variable. The
+      `--wrap 0` option for `base64` ensures that the output is a single line, which is necessary for proper formatting
+      in the OpenShift pack values.
+
+      ```bash title="Base64 encode pull secret"
+      export OPENSHIFT_PULL_SECRET=$(cat pull-secret.txt | base64 --wrap 0)
+      echo $OPENSHIFT_PULL_SECRET
+      ```
+
+      </details>
+
+    - It is recommended to add the `cluster.controlPlaneHighAvailability` parameter to the OpenShift pack values and set
+      it to `true`. This parameter is not present by default and must be added manually.
+
+      ```yaml title="Example OpenShift pack values with control plane HA enabled" {4}
+      pack:
+      ...
+      cluster:
+        controlPlaneHighAvailability: true
+        ...
+      ```
+
+      - When `cluster.controlPlaneHighAvailability` is `true`, the hosted control plane runs in HA mode with multiple
+        replicas of API server, etcd, and other components. This allows PodDisruptionBudgets (PDBs) to maintain
+        availability during node repave, and drain operations can proceed without issues.
+      - When `cluster.controlPlaneHighAvailability` is `false` or not set, the hosted control plane runs with a single
+        replica (non-HA). In this configuration, a node repave or any other operation that drains the node hosting that
+        control plane replica can remain blocked because the PDB prevents eviction of the control plane pod. The typical
+        symptom is that the repaving node remains in `Deleting` or `Draining` state until the drain is able to complete.
+
+  - <VersionedLink text="OVN-Kubernetes CNI" url="/integrations/packs/?pack=ovn-kubernetes-cni" /> pack for the
+    Container Network Interface (CNI) layer. This is used as a dummy CNI pack since the CNI is configured automatically
+    by the **OpenShift** pack and a dedicated CNI pack is not supported for HyperShift workload clusters.
 
 ### Enablement
 
@@ -368,74 +490,79 @@ built in the first section of this guide).
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu**, select **Clusters**, and click **Add New Cluster**.
+3. From the left main menu, select **Clusters**, and click **Add New Cluster**.
 
-4. In the **Data Center** section, select **MAAS**.
+4. In the **Data Center** section, select **MAAS**, then click **Start MAAS Configuration**.
 
-5. In the bottom-right corner, click **Start MAAS Configuration**.
+5. Enter the basic information for your cluster, including the **Cluster Name**, **Description**, and **Tags**.
 
-6. Enter the basic information for your cluster, including the **Cluster Name**, **Description**, and **Tags**. Click
-   **Next**.
+   From the **Cloud Account** drop-down menu, select your MAAS cloud account.
 
-7. From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
+   Click **Next** when done.
 
-8. Select the OpenShift workload cluster profile and click **Next**.
+6. <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9. Select a **Domain** from the drop-down menu. Click **Next**.
+7. <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-10. Configure the worker node pool. Because the OpenShift control plane is hosted in the HyperShift host cluster, you
-    only configure worker nodes here. Click **Next** when done.
+8. On the **Cluster Config** step, select a domain from the **Domains** drop-down menu. You can also specify **NTP
+   Servers**.
 
-    | **Parameter**          | **Description**                                                                                                                                                                                                                                                      |
-    | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Host Cluster**       | From the drop-down menu, select the HyperShift host cluster that will run the control plane for this workload cluster.                                                                                                                                               |
-    | **Resource Pool**      | The MAAS resource pool from which to select available bare-metal servers for the worker nodes.                                                                                                                                                                       |
-    | **Availability Zones** | Specify the Availability Zones for the worker node pool.                                                                                                                                                                                                             |
-    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy worker nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
+   :::warning
 
-    :::info
+   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have
+   the correct time. If no NTP servers are specified, it could lead to time drift issues.
 
-    The OpenShift control plane is managed by the HyperShift Operator on the host cluster. Palette does not provision
-    separate control plane nodes for OpenShift workload clusters. Only worker node pools are configured here.
+   :::
 
-    :::
+9. Select a **HyperShift host cluster** from the drop-down menu. This should match the name of the HyperShift host
+   cluster you created in the [2. Create HyperShift Host Cluster](#2-create-hypershift-host-cluster) section. This
+   associates the workload cluster with the selected host cluster.
 
-11. Review the cluster settings and click **Next**.
+10. On the **Nodes Config** step, configure the worker node pools. As the OpenShift control plane is hosted in the
+    HyperShift host cluster, you only configure worker nodes here.
 
-12. Select **Validate** to review your cluster configuration.
+    The following input fields apply to MAAS worker node pools. For a description of input fields common across target
+    platforms, refer to [Node Pools](../../cluster-management/node-pool.md). Click **Next** when done.
+
+    #### Cloud Configuration
+
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                      |
+    | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource pool**      | The [MAAS resource pool](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-resource-pools) from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **Minimum CPU** and **Minimum Memory** selected. |
+    | **Minimum CPU**        | The minimum number of CPU cores required for servers in this node pool.                                                                                                                                                                                                                              |
+    | **Minimum Memory**     | The minimum amount of memory required for servers in this node pool.                                                                                                                                                                                                                                 |
+    | **Availability zones** | Specify the [Availability Zones (AZs)](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-availability-zones) for the node pool.                                                                                                                                            |
+    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags-flexible-labels) documentation.                        |
+
+11. On the **Cluster Settings** page, configure additional options as needed. If you are deploying your workload cluster
+    using [cluster templates](../../../cluster-templates/cluster-templates.md), a **Cluster Timezone** is required.
+
+    | **Left Menu Item**   | **Additional Information**                                                                                                                                                                                                                                                                                                                                                                       |
+    | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Cluster Timezone** | Specify the time zone where your cluster is being deployed. The time zone is used in [maintenance policies](../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) to determine when updates are rolled out to clusters deployed with [cluster templates](../../../cluster-templates/cluster-templates.md).                                                          |
+    | **RBAC**             | Map a set of users or groups to a Kubernetes RBAC role. This is required when custom OIDC is configured. Refer to the following guides for more information: <br />- [Create Role Bindings](../../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> |
+    | **Location**         | Specify the location of your cluster by entering the address in the search bar and selecting one of the options in the drop-down. For example, **London, Greater London, England, United Kingdom**. This is used for display purposes and does not impact cluster functionality.                                                                                                                 |
+
+12. Select **Validate** to review your cluster configuration and settings.
 
 13. If no changes are needed, select **Finish Configuration** to deploy the workload cluster.
 
 Palette communicates the cluster configuration to the HyperShift Operator on the host cluster, which provisions the
-OpenShift hosted control plane. Worker nodes are simultaneously provisioned on MAAS bare-metal hosts, bootstrapped using
-Ignition, and joined to the workload cluster. Provisioning may take several minutes.
+OpenShift hosted control plane. Worker nodes are simultaneously provisioned on MAAS bare-metal hosts and joined to the
+workload cluster. Provisioning may take several minutes.
 
 ### Validate
-
-Use the following steps to confirm your OpenShift workload cluster is running.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu**, select **Clusters**. The **Clusters** page lists all clusters that Palette manages.
+3. From the left main menu, select **Clusters**. The **Clusters** page lists all clusters that Palette manages.
 
 4. Select the OpenShift workload cluster. On the **Overview** tab, confirm the **Cluster Status** is **Running** and the
    **Health** status is **Healthy**.
 
-5. Confirm that the expected number of worker nodes are present and in a **Ready** state under the **Nodes** tab.
-
-To further verify the cluster, you can download the kubeconfig from the cluster **Overview** tab and use `oc` or
-`kubectl` to inspect the cluster:
-
-```bash
-oc get nodes
-oc get clusteroperators
-```
-
-All cluster operators should report as **Available** with no **Degraded** or **Progressing** conditions.
-
-## Next Steps
+## Next Steps - WIP
 
 Now that you have deployed a HyperShift host cluster and an OpenShift workload cluster, you can start deploying
 applications to your OpenShift cluster. Consider the following next steps:
@@ -452,8 +579,3 @@ applications to your OpenShift cluster. Consider the following next steps:
   [Create MAAS OpenShift Workload Cluster](#create-maas-openshift-workload-cluster-with-hypershift-control-plane)
   section for each additional cluster, ensuring that the host cluster has sufficient capacity to run the additional
   control plane pods.
-
-- **Known limitations**: Some Day-2 operations — including OS patching, security and compliance scans, backup and
-  restore, OIDC, autoscaler, and NTP configuration — are not supported for OpenShift workload clusters in this release
-  due to OpenShift's opinionated lifecycle management. Operations that fall outside Palette's control plane are deferred
-  to OpenShift's native tooling.
