@@ -43,6 +43,20 @@ tags: ["release-notes"]
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md). These permissions allow Palette to
   optimize the cluster creation process.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5801 -->
+
+- Palette now supports the option to skip worker node upgrades on
+  [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md) and
+  [VMware vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md) clusters. For example, if you have
+  worker pools running critical databases or real-time processing services, you can enable this option to maintain
+  service continuity during control plane upgrades, then schedule
+  [worker node updates](../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade) during planned
+  maintenance windows.
+
+  The version difference between the control plane and worker nodes must not exceed the
+  [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
+  enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
