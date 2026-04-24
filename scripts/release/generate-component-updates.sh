@@ -16,6 +16,8 @@ if ! check_env "RELEASE_DATE" ||
    ! check_env "RELEASE_COMPONENT_WEEK" ||  
    ! check_env "RELEASE_COMPONENT_START_VERSION" ||  
    ! check_env "RELEASE_COMPONENT_END_VERSION" ||  
+   ! check_env "RELEASE_MANAGEMENT_APPLIANCE" ||  
+   ! check_env "RELEASE_ARTIFACT_STUDIO" ||  
    ! check_env "RELEASE_TERRAFORM_VERSION" ; then
     echo "‼️  Skipping component updates in $RELEASE_NOTES_FILE due to missing environment variables. ‼️"
     exit 0
