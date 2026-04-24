@@ -1,0 +1,51 @@
+---
+partial_category: packs
+partial_name: pack-structure
+---
+
+<Tabs>
+
+<TabItem label="Manifests-based pack" value="add_on_packs_manifests">
+
+```bash hideClipboard
+.
+├── pack.json           # Mandatory.
+├── values.yaml         # Mandatory.
+├── manifests           # Mandatory.
+    ├── manifest-1.yaml
+    ├── manifest-2.yaml
+│   └── manifest-3.yaml
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
+```
+
+</TabItem>
+
+<TabItem label="Helm charts-based pack" value="add_on_packs_helm_charts">
+
+```bash hideClipboard
+.
+├── pack.json           # Mandatory.
+├── values.yaml         # Mandatory. Pack-level values.yaml file.
+├── charts              # Mandatory.
+│   ├── chart-1         # Can have nested charts.
+│   │   ├── Chart.yaml
+│   │   ├── templates
+│   │   │   ├── template-1.yaml
+│   │   │   └── template-2.yaml
+│   │   └── values.yaml # Chart-level values.yaml file.
+│   ├── chart-1.tgz
+│   ├── chart-2
+│   │   ├── Chart.yaml
+│   │   ├── templates
+│   │   │   ├── template-1.yaml
+│   │   │   └── template-2.yaml
+│   │   └── values.yaml # Chart-level values.yaml file.
+│   └── chart-2.tgz
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
+```
+
+</TabItem>
+
+</Tabs>
