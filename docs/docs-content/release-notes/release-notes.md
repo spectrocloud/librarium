@@ -37,20 +37,20 @@ The following components have been updated for Palette version 4.8.6 - 4.8.51.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3788 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3950 -->
 
-| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| Amazon EBS CSI               | CSI        | :white_check_mark: | :x:                | 1.58.0      |
-| Amazon EFS                   | CSI        | :white_check_mark: | :x:                | 3.0.0       |
-| Argo CD                      | Add-on     | :white_check_mark: | :x:                | 9.5.0       |
-| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.2.1       |
-| Calico                       | CNI        | :white_check_mark: | :x:                | 3.31.5      |
-| Cilium Tetragon              | Add-on     | :white_check_mark: | :x:                | 1.6.1       |
-| GCE Persistent Disk CSI      | CSI        | :white_check_mark: | :x:                | 1.25.1      |
-| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.11.1      |
-| Kong                         | Add-on     | :white_check_mark: | :x:                | 3.2.0       |
-| Reloader                     | Add-on     | :white_check_mark: | :x:                | 2.2.11      |
-| Rook Ceph                    | CSI        | :white_check_mark: | :x:                | 1.19.4      |
-| RKE2                         | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.5      |
+| Pack Name                    | Layer      | Non-FIPS           | FIPS | New Version |
+| ---------------------------- | ---------- | ------------------ | ---- | ----------- |
+| Amazon EBS CSI               | CSI        | :white_check_mark: | :x:  | 1.58.0      |
+| Amazon EFS                   | CSI        | :white_check_mark: | :x:  | 3.0.0       |
+| Argo CD                      | Add-on     | :white_check_mark: | :x:  | 9.5.0       |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:  | 3.2.1       |
+| Calico                       | CNI        | :white_check_mark: | :x:  | 3.31.5      |
+| Cilium Tetragon              | Add-on     | :white_check_mark: | :x:  | 1.6.1       |
+| GCE Persistent Disk CSI      | CSI        | :white_check_mark: | :x:  | 1.25.1      |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:  | 1.11.1      |
+| Kong                         | Add-on     | :white_check_mark: | :x:  | 3.2.0       |
+| Reloader                     | Add-on     | :white_check_mark: | :x:  | 2.2.11      |
+| Rook Ceph                    | CSI        | :white_check_mark: | :x:  | 1.19.4      |
+| RKE2                         | Kubernetes | :white_check_mark: | :x:  | 1.34.5      |
 
 ## April 17, 2026 - Component Updates {#component-updates-2026-16}
 
