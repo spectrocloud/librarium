@@ -33,6 +33,8 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
   you attempt to update pre-existing network settings via the TUI, a new configuration is created alongside the existing
   one. To manage pre-existing configurations, use the original configuration method, such as `systemd-networkd`,
   Netplan, or NetworkManager.
+- The TUI does not support changing the root user's password. If the root password has expired, update it from the
+  terminal using a privileged user account, for example, with `sudo passwd root`.
 
 ## Prerequisites
 
@@ -100,9 +102,13 @@ automatically. To launch the setup manually, issue the command `/opt/spectroclou
 
    :::info
 
-   The user `kairos` always exists in the OS. If you configured the username and password in your user data, you can use
-   this user to log in to the OS as well as Local UI. However, you cannot create this user during initial configuration
-   as this user already exists.
+   The user `kairos` always exists in the OS. If you configured a username and password in your user data, you can use
+   this account to log in to both the OS and the Local UI.
+
+   If the password is expired, for example, when `stylus.site.users[*].passwordExpiry` is set to a past date in user
+   data, the TUI prompts for a password change.
+
+   Note that you cannot create this user during initial configuration as this user already exists.
 
    :::
 

@@ -13,6 +13,10 @@ of creating cluster profile variables, adding them to profile layers, and deploy
 
 ## Create a Cluster Profile Variable
 
+### Limitations
+
+- The multiline input type is limited to a maximum of 10,000 characters.
+
 ### Prerequisites
 
 - The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
@@ -54,15 +58,6 @@ guide to learn how to create a cluster profile.
 
 7.  Select the **Input type** of the variable. You can choose between **Text**, **Dropdown**, and **Multiline**. The
     default input type is **Text**.
-
-    :::info
-
-    The dropdown and multiline input types are currently not supported in
-    [Local UI](../../../../clusters/edge/local-ui/local-ui.md).
-
-    Additionally, the multiline input type is limited to a maximum of 10,000 characters.
-
-    :::
 
 8.  Select the data format for the variable. The following table describes available data formats.
 
