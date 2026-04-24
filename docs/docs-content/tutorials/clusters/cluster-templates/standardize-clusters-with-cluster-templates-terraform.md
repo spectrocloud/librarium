@@ -400,6 +400,26 @@ deployment.
 
 ### Validate the Deployments
 
+From the left main menu, select **Clusters**, and then select **tf-dev-cluster**.
+
+When the application is deployed and ready for network traffic, indicated in the **Services** field, Palette exposes the
+service URL. Open the URL for port **:8080** to launch the Hello Universe application.
+
+![Screenshot showing how to find the Hello Universe service URL](/hello-universe-service-url.webp)
+
+:::warning
+
+It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few
+moments before opening the service URL to prevent the browser from caching an unresolved DNS request.
+
+:::
+
+![Hello Universe application](/hello-universe-1-3-0.webp)
+
+The `tf-dev-cluster` cluster is serving the Hello Universe application.
+
+Repeat these steps for `tf-prod-cluster` to confirm you can launch its Hello Universe application.
+
 ## Create a New Cluster Profile Version
 
 ## Update the Cluster Template to the New Profile Version
