@@ -150,52 +150,7 @@ Building a custom pack involves defining specific files. As outlined in the
 pack: using manifest files or Helm charts. The file structure differs for manifest-based packs and Helm chart-based
 packs. Below is the reference file structure for each.
 
-<Tabs>
-
-<TabItem label="Manifests-based pack" value="add_on_packs_manifests">
-
-```bash hideClipboard
-.
-├── pack.json           # Mandatory.
-├── values.yaml         # Mandatory.
-├── manifests           # Mandatory.
-    ├── manifest-1.yaml
-    ├── manifest-2.yaml
-│   └── manifest-3.yaml
-├── logo.png            # Mandatory.
-└── README.md           # Optional.
-```
-
-</TabItem>
-
-<TabItem label="Helm charts-based pack" value="add_on_packs_helm_charts">
-
-```bash hideClipboard
-.
-├── pack.json           # Mandatory.
-├── values.yaml         # Mandatory. Pack-level values.yaml file.
-├── charts              # Mandatory.
-│   ├── chart-1         # Can have nested charts.
-│   │   ├── Chart.yaml
-│   │   ├── templates
-│   │   │   ├── template-1.yaml
-│   │   │   └── template-2.yaml
-│   │   └── values.yaml # Chart-level values.yaml file.
-│   ├── chart-1.tgz
-│   ├── chart-2
-│   │   ├── Chart.yaml
-│   │   ├── templates
-│   │   │   ├── template-1.yaml
-│   │   │   └── template-2.yaml
-│   │   └── values.yaml # Chart-level values.yaml file.
-│   └── chart-2.tgz
-├── logo.png            # Mandatory.
-└── README.md           # Optional.
-```
-
-</TabItem>
-
-</Tabs>
+<PartialsComponent category="packs" name="pack-structure" />
 
 For your convenience, we provide you with the manifest-based pack files for the Hello Universe application. These files
 are located in the **packs/hello-universe-pack** folder.
