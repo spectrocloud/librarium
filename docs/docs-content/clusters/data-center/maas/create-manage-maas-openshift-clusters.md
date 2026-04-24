@@ -576,6 +576,6 @@ applications to your OpenShift cluster. Consider the following next steps:
 
 - **Additional workload clusters**: You can create multiple OpenShift workload clusters on the same HyperShift host
   cluster. Repeat the steps in the
-  [Create MAAS OpenShift Workload Cluster](#create-maas-openshift-workload-cluster-with-hypershift-control-plane)
-  section for each additional cluster, ensuring that the host cluster has sufficient capacity to run the additional
-  control plane pods.
+  [Create MAAS OpenShift Workload Cluster](#3-create-openshift-workload-cluster-with-hypershift-control-plane) section
+  for each additional cluster, ensuring that the host cluster has sufficient capacity to run the additional control
+  plane pods.
