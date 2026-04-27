@@ -458,6 +458,240 @@ Repeat these steps for `tf-prod-cluster` to confirm you can launch its Hello Uni
 
 ## Create a New Cluster Profile Version
 
+The Kubecost pack provides real-time cost visibility. We recommend creating a new cluster profile version for every
+change so clusters on other versions are unaffected. Create version `1.1.0` to add Kubecost. `tf-dev-cluster` and
+`tf-prod-cluster` remain on `1.0.0` for now.
+
+The Spectro Cloud Terraform provider models each `spectrocloud_cluster_profile` resource as one profile version.
+Creating a new resource with the same `name` but a different `version` registers it as a new version of the same profile
+in Palette.
+
+Set `create_new_profile_version` to `true` in `terraform.tfvars` when you are ready to create v1.1.0.
+
+```hcl title="terraform.tfvars" hideClipboard {6}
+##############################
+# Hello Universe Configuration
+##############################
+app_port = 8080 # The cluster port number on which the service will listen for incoming traffic.
+
+create_new_profile_version = true # Set to true to create cluster profile version 1.1.0 with Kubecost.
+```
+
+The v1.0.0 profile and the clusters that reference it remain unaffected.
+
+### Review the New Profile Version Code
+
+`data.tf` includes a new data source for the `cost-analyzer` pack that is fetched only when `create_new_profile_version`
+is `true`.
+
+```hcl hideClipboard
+data "spectrocloud_pack" "kubecost" {
+  count        = var.create_new_profile_version ? 1 : 0
+  name         = "cost-analyzer"
+  version      = "1.103.3"
+  registry_uid = data.spectrocloud_registry.community_registry.id
+}
+```
+
+The `cluster_profiles.tf` file includes a new v1.1.0 profile resource that is only created when both `deploy-aws` and
+`create_new_profile_version` are `true`. Version 1.1.0 includes the same five packs as v1.0.0 and adds Kubecost as a
+sixth.
+
+<Tabs>
+
+<TabItem label="AWS" value="aws">
+
+```hcl hideClipboard
+resource "spectrocloud_cluster_profile" "aws_profile_v110" {
+  count = (var.deploy-aws && var.create_new_profile_version) ? 1 : 0
+
+  name        = "tf-cluster-template-profile-aws"
+  description = "Cluster profile for the cluster templates tutorial"
+  cloud       = "aws"
+  type        = "cluster"
+  version     = "1.1.0"
+
+  pack {
+    name   = data.spectrocloud_pack.aws_ubuntu.name
+    tag    = data.spectrocloud_pack.aws_ubuntu.version
+    uid    = data.spectrocloud_pack.aws_ubuntu.id
+    values = data.spectrocloud_pack.aws_ubuntu.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.aws_k8s.name
+    tag    = data.spectrocloud_pack.aws_k8s.version
+    uid    = data.spectrocloud_pack.aws_k8s.id
+    values = data.spectrocloud_pack.aws_k8s.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.aws_cni.name
+    tag    = data.spectrocloud_pack.aws_cni.version
+    uid    = data.spectrocloud_pack.aws_cni.id
+    values = data.spectrocloud_pack.aws_cni.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.aws_csi.name
+    tag    = data.spectrocloud_pack.aws_csi.version
+    uid    = data.spectrocloud_pack.aws_csi.id
+    values = data.spectrocloud_pack.aws_csi.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.hellouniverse.name
+    tag    = data.spectrocloud_pack.hellouniverse.version
+    uid    = data.spectrocloud_pack.hellouniverse.id
+    values = templatefile("manifests/values-hello-universe.yaml", {
+      port = var.app_port
+    })
+    type   = "oci"
+  }
+
+  pack {
+    name = data.spectrocloud_pack.kubecost[0].name
+    tag  = data.spectrocloud_pack.kubecost[0].version
+    uid  = data.spectrocloud_pack.kubecost[0].id
+    type = "oci"
+  }
+
+  profile_variables {
+    variable {
+      name          = "app_replicas"
+      display_name  = "Hello Universe Replicas"
+      format        = "number"
+      description   = "Number of replicas for the hello-universe workload"
+      default_value = "1"
+      required      = true
+    }
+  }
+}
+```
+
+</TabItem>
+
+<TabItem label="Azure" value="azure">
+
+```hcl hideClipboard
+resource "spectrocloud_cluster_profile" "azure_profile_v110" {
+  count = (var.deploy-azure && var.create_new_profile_version) ? 1 : 0
+
+  name        = "tf-cluster-template-profile-azure"
+  description = "Cluster profile for the cluster templates tutorial"
+  cloud       = "azure"
+  type        = "cluster"
+  version     = "1.1.0"
+
+  pack {
+    name   = data.spectrocloud_pack.azure_ubuntu.name
+    tag    = data.spectrocloud_pack.azure_ubuntu.version
+    uid    = data.spectrocloud_pack.azure_ubuntu.id
+    values = data.spectrocloud_pack.azure_ubuntu.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.azure_k8s.name
+    tag    = data.spectrocloud_pack.azure_k8s.version
+    uid    = data.spectrocloud_pack.azure_k8s.id
+    values = data.spectrocloud_pack.azure_k8s.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.azure_cni.name
+    tag    = data.spectrocloud_pack.azure_cni.version
+    uid    = data.spectrocloud_pack.azure_cni.id
+    values = data.spectrocloud_pack.azure_cni.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.azure_csi.name
+    tag    = data.spectrocloud_pack.azure_csi.version
+    uid    = data.spectrocloud_pack.azure_csi.id
+    values = data.spectrocloud_pack.azure_csi.values
+    type   = "spectro"
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.hellouniverse.name
+    tag    = data.spectrocloud_pack.hellouniverse.version
+    uid    = data.spectrocloud_pack.hellouniverse.id
+    values = templatefile("manifests/values-hello-universe.yaml", {
+      port = var.app_port
+    })
+    type   = "oci"
+  }
+
+  pack {
+    name = data.spectrocloud_pack.kubecost[0].name
+    tag  = data.spectrocloud_pack.kubecost[0].version
+    uid  = data.spectrocloud_pack.kubecost[0].id
+    type = "oci"
+  }
+
+  profile_variables {
+    variable {
+      name          = "app_replicas"
+      display_name  = "Hello Universe Replicas"
+      format        = "number"
+      description   = "Number of replicas for the hello-universe workload"
+      default_value = "1"
+      required      = true
+    }
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### Apply the New Profile Version
+
+With `create_new_profile_version` set to `true`, issue a `terraform plan` to preview the changes. Terraform will report
+one new resource to add.
+
+```shell
+terraform plan
+```
+
+```text hideClipboard title="Expected output"
+Plan: 1 to add, 0 to change, 0 to destroy.
+```
+
+Apply the changes to create the new profile version in Palette.
+
+```shell
+terraform apply -auto-approve
+```
+
+```bash hideClipboard title="Expected output"
+spectrocloud_cluster_profile.aws_profile_v110[0]: Creating...
+spectrocloud_cluster_profile.aws_profile_v110[0]: Creation complete after 2s [id=<profile-id>]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+### Validate
+
+In Palette, navigate to the left main menu and select **Profiles**. Select `tf-cluster-template-profile-aws` from the
+profile list. Select the version drop-down beside the profile name and confirm that version `1.1.0` now appears
+alongside `1.0.0`.
+
+Select `1.1.0` and confirm the Kubecost (cost-analyzer) pack appears in the pack list.
+
+![Pack layers with Kubecost](/pack-layers-with-kubecost.webp)
+
+The `tf-dev-cluster` and `tf-prod-cluster` clusters are still referencing profile version `1.0.0` and are unaffected by
+this change.
+
 ## Update the Cluster Template to the New Profile Version
 
 ## Upgrade Clusters from the Template
