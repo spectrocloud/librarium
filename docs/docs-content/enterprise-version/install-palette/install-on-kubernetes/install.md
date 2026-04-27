@@ -73,10 +73,20 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   page to learn more about modifying StorageClasses.
 
 - Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default ingress
-  controller starting with Palette 4.8.47. Nginx, which is
-  [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
-  actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
-  `ingress.enabled` parameter to `false` in the `values.yaml` file.
+  controller starting with Palette 4.8.47. Ingress Nginx acts as a fallback and does not actively serve traffic. If you
+  already have an ingress controller deployed in the cluster, you must set the `ingress.enabled` parameter to `false` in
+  the `values.yaml` file.
+
+  :::warning
+
+  Ingress Nginx is a
+  [deprecated Kubernetes project](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) and is also
+  [deprecated in Palette](../../../release-notes/announcements.md#deprecations). It will be removed in a future release.
+  If you are deploying an ingress controller as part of your Palette installation, set `ingress.type` to `traefik` to
+  avoid service disruptions. Refer to [Helm Configuration Reference](../install-on-kubernetes/palette-helm-ref.md) for
+  more information.
+
+  :::
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for Palette.
@@ -160,12 +170,12 @@ your environment. Reach out to our support team if you need assistance.
     following parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file
     in the [Helm Configuration Reference](palette-helm-ref.md) page.
 
-    | **Parameter**                             | **Description**                                                                                                                                                                                    | **Type** |
-    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                              | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                           | object   |
-    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set to `false` if you already have an ingress controller deployed in the cluster. | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                     | object   |
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | **Type** |
+    | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set to `false` if you already have an ingress controller deployed in the cluster. <br /><br /> **WARNING:** Ingress Nginx is a [deprecated Kubernetes project](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) and is also [deprecated in Palette](../../../release-notes/announcements.md#deprecations). It will be removed in a future release. If you are deploying an ingress controller as part of your Palette installation, set `ingress.type` to `traefik` to avoid service disruptions. Refer to [Helm Configuration Reference](../install-on-kubernetes/palette-helm-ref.md) for more information. | boolean  |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | object   |
 
     :::info
 
