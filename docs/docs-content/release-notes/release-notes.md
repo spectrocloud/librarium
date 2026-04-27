@@ -95,10 +95,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
 
-- Ingress Nginx, a
-  [deprecated Kubernetes project](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), is now
-  deprecated in Palette. Traefik is the default ingress controller for Palette management clusters starting with Palette
-  4.8.47. For self-hosted Palette environments
+- The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
+  Palette management plane services is now [deprecated](./announcements.md#deprecations). Traefik replaced Nginx as the
+  default management cluster ingress controller starting with Palette 4.8.47. For self-hosted Palette environments
   [installed using Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md),
   set `ingress.type` to `traefik` to avoid service disruptions. Refer to
   [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
