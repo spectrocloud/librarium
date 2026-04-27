@@ -28,8 +28,10 @@ Palette VerteX.
 Beginning with Palette version 4.9.0, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
 must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
-[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette). UI
-functionality remains in place for Palette VerteX.
+[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+however, these methods will be removed in an
+[upcoming release](../../../release-notes/announcements.md#upcoming-breaking-changes). To continue deploying and
+managing clusters using AWS GovCloud, use [Palette VerteX](../../../vertex/vertex.md) instead.
 
 :::
 
@@ -152,7 +154,10 @@ credentials, as well as EKS Pod Identity.
 Beginning with Palette version 4.9.0, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
 must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
-[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette).
+[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+however, these methods will be removed in an
+[upcoming release](../../../release-notes/announcements.md#upcoming-breaking-changes). To continue deploying and
+managing clusters using AWS GovCloud, use [Palette VerteX](../../../vertex/vertex.md) instead.
 
 The procedures in this section apply to the Palette VerteX UI only.
 
@@ -199,7 +204,6 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
   category="clusters-aws-account-setup"
   name="aws-dynamic-credentials-prerequisites"
   edition="Palette VerteX"
-  stsGuides="vertex"
 />
 
 #### Enablement
@@ -209,10 +213,9 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
   name="aws-dynamic-credentials-enablement-1"
   partition="AWS US Gov"
   edition="Palette VerteX"
-  stsGuides="vertex"
 />
 
-9. <PartialsComponent
+1. <PartialsComponent
      category="clusters-aws-account-setup"
      name="aws-static-dynamic-credentials-enablement-2"
      edition="Palette VerteX"

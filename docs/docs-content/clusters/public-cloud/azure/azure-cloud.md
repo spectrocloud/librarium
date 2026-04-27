@@ -23,11 +23,13 @@ The following table summarizes which Azure clouds and cluster types are supporte
 
 :::warning
 
-Beginning with Palette version 4.9.0, Azure Government Cloud is disabled in the Palette UI. To use Azure Government
-Cloud in Palette, you must do so via the [Palette API](/api/category/palette-api-v1/),
+Beginning with Palette version 4.9.0, Azure Government cloud is disabled in the Palette UI. To use Azure Government
+cloud in Palette, you must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
-[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette). UI
-functionality remains in place for Palette VerteX.
+[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+however, these methods will be removed in an
+[upcoming release](../../../release-notes/announcements.md#upcoming-breaking-changes). To continue deploying and
+managing clusters using Azure Government cloud, use [Palette VerteX](../../../vertex/vertex.md) instead.
 
 :::
 
@@ -93,10 +95,13 @@ in environments that meet FedRAMP and other compliance standards.
 
 :::warning
 
-Beginning with Palette version 4.9.0, Azure Government Cloud is disabled in the Palette UI. To use Azure Government
-Cloud in Palette, you must do so via the [Palette API](/api/category/palette-api-v1/),
+Beginning with Palette version 4.9.0, Azure Government cloud is disabled in the Palette UI. To use Azure Government
+cloud in Palette, you must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
-[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette).
+[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+however, these methods will be removed in an
+[upcoming release](../../../release-notes/announcements.md#upcoming-breaking-changes). To continue deploying and
+managing clusters using Azure Government cloud, use [Palette VerteX](../../../vertex/vertex.md) instead.
 
 The procedures in this section apply to the Palette VerteX UI only.
 

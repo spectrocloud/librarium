@@ -28,8 +28,10 @@ tags: ["release-notes"]
   Palette UI. To use AWS GovCloud or Azure Government cloud in Palette, you must do so via the
   [Palette API](/api/category/palette-api-v1/),
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette). UI
-  functionality remains in place for Palette VerteX.
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+  however, these methods will be removed in an [upcoming release](./announcements.md#upcoming-breaking-changes). To
+  continue deploying and managing clusters using AWS GovCloud or Azure Government cloud, we recommend using
+  [Palette VerteX](../vertex/vertex.md) instead.
 
 #### Features
 
