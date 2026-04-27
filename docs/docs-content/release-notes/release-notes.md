@@ -21,6 +21,18 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4-9-0}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10236 -->
+
+- [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud) and
+  [Azure Government cloud](../clusters/public-cloud/azure/azure-cloud.md#azure-government-cloud) are now disabled in the
+  Palette UI. To use AWS GovCloud or Azure Government cloud in Palette, you must do so via the
+  [Palette API](/api/category/palette-api-v1/),
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+  however, these methods will be removed in an [upcoming release](./announcements.md#upcoming-breaking-changes). To
+  continue deploying and managing clusters using AWS GovCloud or Azure Government cloud, we recommend using
+  [Palette VerteX](../vertex/vertex.md) instead.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2726 -->
@@ -83,10 +95,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
 
-- Ingress Nginx, a
-  [deprecated Kubernetes project](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), is now
-  deprecated in Palette. Traefik is the default ingress controller for Palette management clusters starting with Palette
-  4.8.47. For self-hosted Palette environments
+- The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
+  Palette management plane services is now [deprecated](./announcements.md#deprecations). Traefik replaced Nginx as the
+  default management cluster ingress controller starting with Palette 4.8.47. For self-hosted Palette environments
   [installed using Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md),
   set `ingress.type` to `traefik` to avoid service disruptions. Refer to
   [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
