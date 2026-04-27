@@ -382,7 +382,7 @@ controller. If your cluster already uses an ingress controller, set `ingress.ena
 :::warning
 
 The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
-Palette management plane services is now [deprecated](../release-notes/announcements.md#deprecations) and will be
+Palette management plane services is now [deprecated](../../../release-notes/announcements.md#deprecations) and will be
 removed in a future release. To avoid service disruptions, set `ingress.type` to `traefik`.
 
 :::

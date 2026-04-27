@@ -88,9 +88,9 @@ has the necessary network connectivity for VerteX to operate successfully.
   :::warning
 
   The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
-  Palette management plane services is now [deprecated](../release-notes/announcements.md#deprecations) and will be
-  removed in a future release. If you are deploying an ingress controller as part of your Palette VerteX installation,
-  set `ingress.type` to `traefik` to avoid service disruptions. Refer to
+  Palette management plane services is now [deprecated](../../../release-notes/announcements.md#deprecations) and will
+  be removed in a future release. If you are deploying an ingress controller as part of your Palette VerteX
+  installation, set `ingress.type` to `traefik` to avoid service disruptions. Refer to
   [Helm Configuration Reference](../install-on-kubernetes/vertex-helm-ref.md) for more information.
 
   :::

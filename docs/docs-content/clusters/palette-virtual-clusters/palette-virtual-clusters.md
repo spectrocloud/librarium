@@ -50,7 +50,7 @@ distribution.
 | Memory (per request)  | 4 GiB       | 3 GiB                 | 4 GiB                        |
 | Storage (per request) | 2 GiB       | 0 GiB                 | 2 GiB                        |
 
-:::info
+:::warning
 
 Palette upgrades on K3s virtual clusters may get stuck if the cluster does not have enough resources to accommodate
 additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources before
