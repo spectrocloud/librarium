@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -9,11 +9,16 @@ POST_SUCCESS_TO_SLACK="${POST_SUCCESS_TO_SLACK:-false}"
 REPORT_FILE="${REPORT_FILE:-${REPO_ROOT}/versioned_links_report.json}"
 PACKS_DATA_FILE="${PACKS_DATA_FILE:-${REPO_ROOT}/.docusaurus/packs-integrations/api_pack_response.json}"
 STRICT_PACK_VALIDATION="${STRICT_PACK_VALIDATION:-true}"
+MAX_SLACK_SAMPLE_ITEMS="${MAX_SLACK_SAMPLE_ITEMS:-10}"
+MAX_SLACK_CHARS="${MAX_SLACK_CHARS:-3500}"
 
 BROKEN_LINK_COUNT=0
 CHECKED_LINK_COUNT=0
 VALIDATED_DYNAMIC_PACK_COUNT=0
 BROKEN_DYNAMIC_PACK_COUNT=0
+SAMPLED_BROKEN_COUNT=0
+
+SLACK_DETAILS=""
 
 validate_known_dynamic_pack_link() {
   local url="$1"
@@ -24,7 +29,7 @@ validate_known_dynamic_pack_link() {
 import json
 import sys
 from pathlib import Path
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import parse_qs, urlparse
 
 url = sys.argv[1].strip()
 packs_data_file = Path(sys.argv[2])
@@ -150,18 +155,76 @@ target_exists() {
   return 1
 }
 
+append_slack_detail() {
+  local source_file="$1"
+  local line="$2"
+  local match_type="$3"
+  local rel_url="$4"
+  local reason="$5"
+
+  if (( SAMPLED_BROKEN_COUNT >= MAX_SLACK_SAMPLE_ITEMS )); then
+    return
+  fi
+
+  SLACK_DETAILS+="\n• ${source_file}:${line} | ${match_type} | ${rel_url}\n  ${reason}\n"
+  ((SAMPLED_BROKEN_COUNT+=1))
+}
+
+build_slack_message() {
+  local status_emoji="$1"
+  local headline="$2"
+  local message
+
+  message="${status_emoji} ${headline}
+
+Checked: ${CHECKED_LINK_COUNT}
+Broken: ${BROKEN_LINK_COUNT}
+Validated dynamic packs: ${VALIDATED_DYNAMIC_PACK_COUNT}
+Broken dynamic packs: ${BROKEN_DYNAMIC_PACK_COUNT}"
+
+  if (( BROKEN_LINK_COUNT > 0 )) && [[ -n "$SLACK_DETAILS" ]]; then
+    message+="
+
+Sample broken links (first ${SAMPLED_BROKEN_COUNT} of ${BROKEN_LINK_COUNT}):${SLACK_DETAILS}"
+  fi
+
+  if (( BROKEN_LINK_COUNT > MAX_SLACK_SAMPLE_ITEMS )); then
+    message+="
+Full details are available in ${REPORT_FILE}."
+  fi
+
+  message+="
+
+Source: :github: - librarium"
+
+  if (( ${#message} > MAX_SLACK_CHARS )); then
+    message="${message:0:MAX_SLACK_CHARS}
+
+...[truncated]
+
+Source: :github: - librarium"
+  fi
+
+  printf '%s' "$message"
+}
+
+post_to_slack() {
+  local text="$1"
+
+  printf '%s' "$text" | jq -Rs '{text: .}' | \
+    curl -sS --fail -X POST -H 'Content-type: application/json' --data @- "$SLACK_WEBHOOK_URL" >/dev/null
+}
+
 if [[ ! -f "$REPORT_FILE" ]]; then
-  echo "Error: Report file '$REPORT_FILE' not found"
+  echo "Error: Report file '$REPORT_FILE' not found" >&2
   exit 1
 fi
 
-COMMENT=":loudspeaker: Relative Links Report :spectro:\n"
-
 while IFS= read -r item; do
-  source_file=$(echo "$item" | jq -r '.source_file // empty')
-  rel_url=$(echo "$item" | jq -r '.url // empty')
-  line=$(echo "$item" | jq -r '.line // 0')
-  match_type=$(echo "$item" | jq -r '.match_type // "unknown"')
+  source_file=$(printf '%s' "$item" | jq -r '.source_file // empty')
+  rel_url=$(printf '%s' "$item" | jq -r '.url // empty')
+  line=$(printf '%s' "$item" | jq -r '.line // 0')
+  match_type=$(printf '%s' "$item" | jq -r '.match_type // "unknown"')
 
   [[ -z "$source_file" || -z "$rel_url" ]] && continue
 
@@ -186,55 +249,34 @@ while IFS= read -r item; do
       ((BROKEN_LINK_COUNT+=1))
       ((BROKEN_DYNAMIC_PACK_COUNT+=1))
       pack_slug="${pack_validation_result#PACK_MISSING:}"
-      COMMENT="${COMMENT}
-:file_folder: Source: ${source_file}:${line}
-:link: Link (${match_type}): ${rel_url}
-:red_circle: Invalid pack slug: ${pack_slug}
-:package: Packs data source: ${PACKS_DATA_FILE}
-"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Invalid pack slug: ${pack_slug}"
       continue
       ;;
     PACK_QUERY_MISSING)
       ((BROKEN_LINK_COUNT+=1))
       ((BROKEN_DYNAMIC_PACK_COUNT+=1))
-      COMMENT="${COMMENT}
-:file_folder: Source: ${source_file}:${line}
-:link: Link (${match_type}): ${rel_url}
-:red_circle: Missing required pack query parameter for /integrations/packs/
-"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing required pack query parameter for /integrations/packs/"
       continue
       ;;
     PACK_DATA_MISSING:*)
       ((BROKEN_LINK_COUNT+=1))
       ((BROKEN_DYNAMIC_PACK_COUNT+=1))
       pack_context="${pack_validation_result#PACK_DATA_MISSING:}"
-      COMMENT="${COMMENT}
-:file_folder: Source: ${source_file}:${line}
-:link: Link (${match_type}): ${rel_url}
-:red_circle: Pack validation data file not found (${pack_context})
-"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Pack validation data file not found (${pack_context})"
       continue
       ;;
     PACK_DATA_UNREADABLE:*)
       ((BROKEN_LINK_COUNT+=1))
       ((BROKEN_DYNAMIC_PACK_COUNT+=1))
       pack_context="${pack_validation_result#PACK_DATA_UNREADABLE:}"
-      COMMENT="${COMMENT}
-:file_folder: Source: ${source_file}:${line}
-:link: Link (${match_type}): ${rel_url}
-:red_circle: Pack validation data file could not be read (${pack_context})
-"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Pack validation data file could not be read (${pack_context})"
       continue
       ;;
     PACK_DATA_INVALID:*)
       ((BROKEN_LINK_COUNT+=1))
       ((BROKEN_DYNAMIC_PACK_COUNT+=1))
       pack_context="${pack_validation_result#PACK_DATA_INVALID:}"
-      COMMENT="${COMMENT}
-:file_folder: Source: ${source_file}:${line}
-:link: Link (${match_type}): ${rel_url}
-:red_circle: Pack validation data is invalid (${pack_context})
-"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Pack validation data is invalid (${pack_context})"
       continue
       ;;
     PACK_VALIDATION_SKIPPED:*)
@@ -243,11 +285,7 @@ while IFS= read -r item; do
       ;;
     *)
       ((BROKEN_LINK_COUNT+=1))
-      COMMENT="${COMMENT}
-:file_folder: Source: ${source_file}:${line}
-:link: Link (${match_type}): ${rel_url}
-:red_circle: Unexpected pack validation result: ${pack_validation_result}
-"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Unexpected pack validation result: ${pack_validation_result}"
       continue
       ;;
   esac
@@ -266,20 +304,16 @@ while IFS= read -r item; do
 
   if [[ "$found_target" != "true" ]]; then
     ((BROKEN_LINK_COUNT+=1))
-    COMMENT="${COMMENT}
-:file_folder: Source: ${source_file}:${line}
-:link: Link (${match_type}): ${rel_url}
-:red_circle: Missing target: ${resolved_path}
-"
+    append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing target: ${resolved_path}"
   fi
 done < <(jq -c '.[]' "$REPORT_FILE")
 
 if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
-  COMMENT=":information_source: No supported local links found.
+  CONSOLE_MESSAGE=":information_source: No supported local links found.
 
 Source: :github: - librarium"
 elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-  COMMENT=":partyblob: All local links resolved successfully.
+  CONSOLE_MESSAGE=":partyblob: All local links resolved successfully.
 
 Checked: ${CHECKED_LINK_COUNT}
 Validated dynamic packs: ${VALIDATED_DYNAMIC_PACK_COUNT}
@@ -287,23 +321,30 @@ Broken dynamic packs: ${BROKEN_DYNAMIC_PACK_COUNT}
 
 Source: :github: - librarium"
 else
-  COMMENT=":old-man-yells-markdown: Broken local links detected!
+  CONSOLE_MESSAGE=":old-man-yells-markdown: Broken local links detected.
 
-${COMMENT}
-
-Total checked: ${CHECKED_LINK_COUNT}
+Checked: ${CHECKED_LINK_COUNT}
+Broken: ${BROKEN_LINK_COUNT}
 Validated dynamic packs: ${VALIDATED_DYNAMIC_PACK_COUNT}
 Broken dynamic packs: ${BROKEN_DYNAMIC_PACK_COUNT}
-Broken: ${BROKEN_LINK_COUNT}
+Sampled in Slack: ${SAMPLED_BROKEN_COUNT}
+Full detail: ${REPORT_FILE}
 
 Source: :github: - librarium"
 fi
 
 if [[ -n "$SLACK_WEBHOOK_URL" ]]; then
   if [[ "$BROKEN_LINK_COUNT" -gt 0 || "$POST_SUCCESS_TO_SLACK" == "true" ]]; then
-    jq -n --arg text "$COMMENT" '{text: $text}' | \
-      curl -s -X POST -H 'Content-type: application/json' --data @- "$SLACK_WEBHOOK_URL"
+    if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
+      SLACK_MESSAGE="$(build_slack_message ":information_source:" "No supported local links found.")"
+    elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
+      SLACK_MESSAGE="$(build_slack_message ":partyblob:" "All local links resolved successfully.")"
+    else
+      SLACK_MESSAGE="$(build_slack_message ":old-man-yells-markdown:" "Broken local links detected.")"
+    fi
+
+    post_to_slack "$SLACK_MESSAGE"
   fi
 else
-  echo -e "$COMMENT"
+  echo -e "$CONSOLE_MESSAGE"
 fi
