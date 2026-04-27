@@ -8,7 +8,10 @@ SLACK_WEBHOOK_URL="${SLACK_WEBHOOK_URL:-}"
 POST_SUCCESS_TO_SLACK="${POST_SUCCESS_TO_SLACK:-false}"
 REPORT_FILE="${REPORT_FILE:-${REPO_ROOT}/versioned_links_report.json}"
 PACKS_DATA_FILE="${PACKS_DATA_FILE:-${REPO_ROOT}/.docusaurus/packs-integrations/api_pack_response.json}"
-STRICT_PACK_VALIDATION="${STRICT_PACK_VALIDATION:-true}"
+
+# Default to false for local runs to avoid requiring packs data.
+# CI should set STRICT_PACK_VALIDATION=true to enforce pack validation.
+STRICT_PACK_VALIDATION="${STRICT_PACK_VALIDATION:-false}"
 MAX_SLACK_SAMPLE_ITEMS="${MAX_SLACK_SAMPLE_ITEMS:-10}"
 MAX_SLACK_CHARS="${MAX_SLACK_CHARS:-3500}"
 
@@ -101,45 +104,9 @@ raw_url = rel_url.split("#", 1)[0].split("?", 1)[0].strip()
 raw_url = re.sub(r'(?<!:)/{2,}', '/', raw_url)
 
 source_path = (repo_root / source_file).resolve()
-docs_root = (repo_root / "docs" / "docs-content").resolve()
-partials_root = (repo_root / "_partials").resolve()
-
-candidates = []
-seen = set()
-
-
-def add_candidate(path: Path) -> None:
-    normalized = path.resolve()
-    key = str(normalized)
-    if key not in seen:
-        seen.add(key)
-        candidates.append(normalized)
-
-
-def clean_relative_path(value: str) -> str:
-    cleaned = value
-    while cleaned.startswith("../"):
-        cleaned = cleaned[3:]
-    while cleaned.startswith("./"):
-        cleaned = cleaned[2:]
-    while cleaned.startswith("/"):
-        cleaned = cleaned[1:]
-    return cleaned
 
 if raw_url.startswith("./") or raw_url.startswith("../"):
-    add_candidate((source_path.parent / raw_url).resolve())
-
-cleaned_rel_url = clean_relative_path(raw_url)
-
-if cleaned_rel_url:
-    if cleaned_rel_url.startswith("static/"):
-        add_candidate((repo_root / cleaned_rel_url).resolve())
-    else:
-        add_candidate((docs_root / cleaned_rel_url).resolve())
-        add_candidate((partials_root / cleaned_rel_url).resolve())
-
-for candidate in candidates:
-    print(candidate)
+    print((source_path.parent / raw_url).resolve())
 PY
 }
 
@@ -166,7 +133,10 @@ append_slack_detail() {
     return
   fi
 
-  SLACK_DETAILS+="\n• ${source_file}:${line} | ${match_type} | ${rel_url}\n  ${reason}\n"
+  SLACK_DETAILS+="
+• ${source_file}:${line} | ${match_type} | ${rel_url}
+  ${reason}
+"
   ((SAMPLED_BROKEN_COUNT+=1))
 }
 
@@ -232,7 +202,16 @@ while IFS= read -r item; do
     continue
   fi
 
-  if [[ "$rel_url" != ./* && "$rel_url" != ../* && "$rel_url" != /* ]]; then
+  # Only validate:
+  # 1) true relative file links: ./... and ../...
+  # 2) known dynamic pack links: /integrations/packs?...
+  # Root-relative site routes and root-relative assets like /getting-started/ or /foo.webp
+  # are intentionally skipped here because they are site routes/assets, not direct repo paths.
+  if [[ "$rel_url" != ./* && "$rel_url" != ../* && "$rel_url" != /integrations/packs* ]]; then
+    continue
+  fi
+  # Skip directory-style links (Docusaurus routes)
+  if [[ "$rel_url" == */ ]]; then
     continue
   fi
 
@@ -280,6 +259,7 @@ while IFS= read -r item; do
       continue
       ;;
     PACK_VALIDATION_SKIPPED:*)
+      continue
       ;;
     NOT_DYNAMIC_PACK_LINK)
       ;;
@@ -290,30 +270,24 @@ while IFS= read -r item; do
       ;;
   esac
 
-  resolved_path=""
-  found_target="false"
+resolved_path="$(resolve_target_candidates "$source_file" "$rel_url" | head -n 1)"
 
-  while IFS= read -r candidate; do
-    [[ -z "$candidate" ]] && continue
-    resolved_path="$candidate"
-    if target_exists "$candidate"; then
-      found_target="true"
-      break
-    fi
-  done < <(resolve_target_candidates "$source_file" "$rel_url")
+if [[ -z "$resolved_path" ]]; then
+  ((BROKEN_LINK_COUNT+=1))
+  append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Could not resolve relative path"
+elif ! target_exists "$resolved_path"; then
+  ((BROKEN_LINK_COUNT+=1))
+  append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing target: ${resolved_path}"
+fi
 
-  if [[ "$found_target" != "true" ]]; then
-    ((BROKEN_LINK_COUNT+=1))
-    append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing target: ${resolved_path}"
-  fi
 done < <(jq -c '.[]' "$REPORT_FILE")
 
 if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
-  CONSOLE_MESSAGE=":information_source: No supported local links found.
+  CONSOLE_MESSAGE=":information_source: No supported relative file links or dynamic pack links found.
 
 Source: :github: - librarium"
 elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-  CONSOLE_MESSAGE=":partyblob: All local links resolved successfully.
+  CONSOLE_MESSAGE=":partyblob: All checked relative file links and dynamic pack links resolved successfully.
 
 Checked: ${CHECKED_LINK_COUNT}
 Validated dynamic packs: ${VALIDATED_DYNAMIC_PACK_COUNT}
@@ -321,7 +295,7 @@ Broken dynamic packs: ${BROKEN_DYNAMIC_PACK_COUNT}
 
 Source: :github: - librarium"
 else
-  CONSOLE_MESSAGE=":old-man-yells-markdown: Broken local links detected.
+  CONSOLE_MESSAGE=":old-man-yells-markdown: Broken relative file links or dynamic pack links detected.
 
 Checked: ${CHECKED_LINK_COUNT}
 Broken: ${BROKEN_LINK_COUNT}
@@ -336,11 +310,11 @@ fi
 if [[ -n "$SLACK_WEBHOOK_URL" ]]; then
   if [[ "$BROKEN_LINK_COUNT" -gt 0 || "$POST_SUCCESS_TO_SLACK" == "true" ]]; then
     if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
-      SLACK_MESSAGE="$(build_slack_message ":information_source:" "No supported local links found.")"
+      SLACK_MESSAGE="$(build_slack_message ":information_source:" "No supported relative file links or dynamic pack links found.")"
     elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-      SLACK_MESSAGE="$(build_slack_message ":partyblob:" "All local links resolved successfully.")"
+      SLACK_MESSAGE="$(build_slack_message ":partyblob:" "All checked relative file links and dynamic pack links resolved successfully.")"
     else
-      SLACK_MESSAGE="$(build_slack_message ":old-man-yells-markdown:" "Broken local links detected.")"
+      SLACK_MESSAGE="$(build_slack_message ":old-man-yells-markdown:" "Broken relative file links or dynamic pack links detected.")"
     fi
 
     post_to_slack "$SLACK_MESSAGE"
