@@ -525,4 +525,4 @@ the errors encountered. This is a common engineering workflow that can be greatl
 
 The Palette MCP server has many more capabilities than those explored in this tutorial. We encourage you to check out
 the [Integrate Palette MCP in an Agentic Workflow](./integrate-palette-mcp-agentic.md) tutorial to explore a more
-advanced usecase for the tools in the MCP server.
+advanced use case for the tools in the MCP server.
