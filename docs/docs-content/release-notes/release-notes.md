@@ -55,6 +55,20 @@ tags: ["release-notes"]
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md). These permissions allow Palette to
   optimize the cluster creation process.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5801 -->
+
+- Palette now supports the option to skip worker node upgrades on
+  [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md) and
+  [VMware vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md) clusters. For example, if you have
+  worker pools running critical databases or real-time processing services, you can enable this option to maintain
+  service continuity during control plane upgrades, then schedule
+  [worker node updates](../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade) during planned
+  maintenance windows.
+
+  The version difference between the control plane and worker nodes must not exceed the
+  [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
+  enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
@@ -78,6 +92,25 @@ tags: ["release-notes"]
 
 - Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. Use Ubuntu
   24.04, as it is FIPS 140-3 compliant.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
+
+- Ingress Nginx, a
+  [deprecated Kubernetes project](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), is now
+  deprecated in Palette. Traefik is the default ingress controller for Palette management clusters starting with Palette
+  4.8.47. For self-hosted Palette environments
+  [installed using Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md),
+  set `ingress.type` to `traefik` to avoid service disruptions. Refer to
+  [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
+  more information.
+
+  If you have made custom modifications to the Ingress Nginx configuration in your self-hosted environment, such as
+  custom annotations, load balancer settings, or Transport Layer Security (TLS) configurations, these customizations may
+  not carry over automatically and could affect your deployment. Review your ingress configuration before upgrading and
+  [contact our Support team](https://support.spectrocloud.io/) if you need assistance migrating custom ingress settings
+  to Traefik. For installations configured to use DNS, you must also update your records to point to the new Traefik
+  `LoadBalancer` service after upgrading. Refer to the
+  [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
 
 ### Edge
 
