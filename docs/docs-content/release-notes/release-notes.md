@@ -21,6 +21,16 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4-9-0}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10236 -->
+
+- [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud) and
+  [Azure Government cloud](../clusters/public-cloud/azure/azure-cloud.md#azure-government-cloud) are now disabled in the
+  Palette UI. To use AWS GovCloud or Azure Government cloud in Palette, you must do so via the
+  [Palette API](/api/category/palette-api-v1/),
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette). UI
+  functionality remains in place for Palette VerteX.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2726 -->
