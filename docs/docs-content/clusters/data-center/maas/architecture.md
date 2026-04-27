@@ -18,7 +18,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
   machines created by MAAS. Bare metal typically provides near-native performance, while LXD VMs improve consolidation
   and resource utilization with minimal additional overhead.
 
-![Network flow from an architectural perspective of how MAAS LXD works with Palette](/clusters_data-center_maas_arch-diagram-maas-lxd_mk.webp)
+  ![Network flow from an architectural perspective of how MAAS LXD works with Palette](/clusters_data-center_maas_arch-diagram-maas-lxd_mk.webp)
 
 - A Private Cloud Gateway (PCG) that you install in a MAAS cloud using a local installer facilitates communication
   between Palette and MAAS. The PCG is necessary in MAAS environments where Palette does not have direct network access
@@ -39,7 +39,16 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
   ![Network flow from an architectural perspective of how MAAS works with Palette](/clusters_data-center_maas_arch-diagram-new-4-7-b.webp)
 
-Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
+  Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
+
+- You can deploy a HyperShift host cluster on MAAS that is used to host control planes for OpenShift workload clusters.
+  Once the HyperShift host cluster is deployed, you can deploy OpenShift workload clusters on it. The following diagram
+  illustrates how HyperShift and OpenShift work with Palette and MAAS.
+
+  _Architecture image TBA_
+
+  Refer to the [Create and Manage MAAS OpenShift Clusters](./create-manage-maas-openshift-clusters.md) guide for more
+  information.
 
 ## Limitations
 
