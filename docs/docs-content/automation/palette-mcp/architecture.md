@@ -97,7 +97,7 @@ When using the Palette MCP server, we recommend the following security best prac
 - Review the `ALLOW_DANGEROUS_ACTIONS` parameter and set it to `1` if you need to perform dangerous actions, such as
   delete. By default, dangerous actions are disabled.
 - When configuring the mount path for the kubeconfig files, we recommend using a dedicated folder on your machine for
-  this configuration. Avoid using an existing folder that is used for other purposes, including maintaing other
+  this configuration. Avoid using an existing folder that is used for other purposes, including maintaining other
   kubeconfig files.
 - Use a `.env` file when configuring the Palette MCP server. You can set the environment variables through the
   `--environment` flag or the `-e` flag but that exposes the secrets to the command line and potentially in logs.
