@@ -55,16 +55,16 @@ be audited through the [Palette audit logs](../../audit-logs/audit-logs.md). Whe
 the user that is associated with the API key used by the Palette MCP server.
 
 An important note to keep in mind about accessing kubeconfig files. If the user's API key has permissions to retrieve
-the [admin kubeconfig file](../../clusters/cluster-management/kubeconfig.md#admin-kubeconfig) for a cluster, then the
-MCP server will be able to retrieve the admin kubeconfig file for the cluster.
+the [admin kubeconfig file](../../clusters/cluster-management/kubeconfig.md) for a cluster, then the MCP server will be
+able to retrieve the admin kubeconfig file for the cluster.
 
 :::tip
 
 You can control whether a user can access the Kubeconfig files for a cluster by assigning the appropriate
 [Palette role](../../user-management/palette-rbac/project-scope-roles-permissions.md) to the user. For example, avoid
 assigning the cluster admin role to the user. Refer to the
-[Kubeconfig Access Permissions](../../clusters/cluster-management/kubeconfig.md#kubeconfig-access-permissions) section
-to learn more about how to control access to the kubeconfig files for a cluster.
+[Kubeconfig Access Permissions](../../clusters/cluster-management/kubeconfig.md) section to learn more about how to
+control access to the kubeconfig files for a cluster.
 
 :::
 
