@@ -50,6 +50,16 @@ distribution.
 | Memory (per request)  | 4 GiB       | 3 GiB                 | 4 GiB                        |
 | Storage (per request) | 2 GiB       | 0 GiB                 | 2 GiB                        |
 
+:::info
+
+Palette upgrades on K3s virtual clusters may get stuck if the cluster does not have enough resources to accommodate
+additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources before
+commencing an upgrade. Refer to
+[Scenario - Adjust Virtual Clusters Limits Before Palette Upgrades](../../troubleshooting/palette-dev-engine.md#scenario---adjust-virtual-clusters-limits-before-palette-upgrades)
+for more information.
+
+:::
+
 ## Network Connectivity
 
 Virtual clusters support two network endpoint types: Load Balancer and Ingress. The network endpoint type determines how
