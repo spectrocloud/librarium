@@ -115,10 +115,23 @@ persist_partial_files () {
 }
 
 # Function to find legacy domain from archiveVersions.json
-# Outputs: a single matching legacy domain
-# $1 - release version, example: v4.5.3
-# $2 - worktree path
-# $3 - archiveVersions.json path
+#
+# Purpose:
+# - Map a release version to the correct legacy documentation domain
+#
+# What this does:
+# - Extracts major and minor version from the release (e.g. 4.7.10 → 4.7)
+# - Matches against archiveVersions.json entries like "v4.7.x"
+# - Ignores patch version intentionally
+# - Returns the first matching legacy domain URL
+#
+# Notes:
+# - If no match is found, function returns non-zero
+# - Used to rewrite links to legacy documentation paths
+#
+# Params:
+# $1 - release version, example: 4.7.10
+# $2 - archiveVersions.json path
 find_legacy_domain() {
   local release_version=$1
   local archive_versions_path=$2
@@ -146,12 +159,37 @@ find_legacy_domain() {
 }
 
 # Function to add breaking changes body to the partials file
+#
+# Purpose:
+# - Append processed breaking change content to the correct partial file
+#
+# What this does:
+# - Determines which partial file to write to (release or component updates)
+# - Resolves the appropriate legacy domain for link rewriting
+# - Preserves empty lines as-is
+
+# Process each markdown link on the line independently
+#
+#   What this does:
+    # - Extracts link text and target from markdown links
+    # - Removes optional titles and surrounding angle brackets
+    # - Skips external URLs and image assets
+    # - Normalizes internal links for legacy documentation:
+    #   • strips leading ./, ../, or /
+    #   • removes fragments (#...) and file extensions (.md/.mdx)
+    #   • removes duplicate trailing path segments (e.g. foo/foo.md)
+# - Rewrites internal links to use legacy documentation paths
+#
+# Notes:
+# - External URLs and image assets are not modified
+# - Link normalization is required to match legacy doc structure
+#
 # Params:
 # $1 - release number, example: 4.0.0
-# $2 - component updates identifier, example: component-updates-october-2025-41
-# $3 - component updates range, example: 4.7.21 - 4.7.23
-# $4 - body text of the breaking change
-# $5 - worktree path
+# $2 - component updates identifier
+# $3 - component updates range
+# $4 - body text line
+# $5 - worktree path
 # $6 - breaking changes partials path
 # $7 - archiveVersions.json path
 add_breaking_changes_body() {

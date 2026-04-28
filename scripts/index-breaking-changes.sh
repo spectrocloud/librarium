@@ -12,6 +12,11 @@ BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
 ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
 ARCHIVE_FILE_PATH="$DOCS_ROOT/archiveVersions.json"
 
+# Worktree strategy:
+# - Each version branch is processed in an isolated git worktree
+# - All file reads and transformations happen inside that worktree
+# - Generated files must be copied back to the main repo explicitly
+# - Worktrees are cleaned up after execution
 # Where to place worktrees (unique per run)
 WORKTREES_DIR="$(mktemp -d -t librarium-worktrees-XXXXXX)"
 echo "ℹ️ Using worktrees dir: $WORKTREES_DIR"
@@ -23,8 +28,15 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# If ALL_VERSIONS_PATH file and BREAKING_CHANGES_PARTIALS_PATH directory already exist, skip the entire script.
-# This is to speed up local development where we don't need to re-index every time.
+# If ALL_VERSIONS_PATH file and BREAKING_CHANGES_PARTIALS_PATH directory already exist,
+# skip the entire script.
+#
+# Purpose:
+# - Speed up local development by avoiding reprocessing all branches
+#
+# Notes:
+# - This may hide changes if stale output already exists
+# - Delete these artifacts to force a full re-run
 if [ -f "$ALL_VERSIONS_PATH" ] && [ -d "$BREAKING_CHANGES_PARTIALS_PATH" ]; then
   echo "ℹ️ $ALL_VERSIONS_PATH file and $BREAKING_CHANGES_PARTIALS_PATH directory already exist. Skipping breaking change indexing."
   exit 0
@@ -72,13 +84,35 @@ for branch in $branches; do
   component_updates_identifier=""
   component_updates_title=""
   release_number=""
+    # Buffer handling for VersionedLink processing
+  #
+  # Purpose:
+  # - Collapse adjacent <VersionedLink> lines into a single logical line
+  #
+  # What this does:
+  # - Accumulates VersionedLink lines into a buffer
+  # - Flushes the buffer when encountering:
+  #   • normal text lines
+  #   • blank lines
+  #   • section boundaries
+  #
+  # Notes:
+  # - Required to preserve correct formatting in generated partials
   # Variable to hold the current buffer text so that we can collapse versioned links on same line.
   buffer=""
   in_code_section=false
   partial_created=false
   # Read the release notes file line by line.
   while IFS= read -r line; do
-    # If the line is an H2 that contains "Release", we extract the number and begin processing.
+    # Detect release heading and extract version
+    #
+    # What this does:
+    # - Removes markdown anchor fragments (e.g. {#...})
+    # - Extracts the version from headings like:
+    #   • "## Release 4.7.10"
+    #   • "## Release 4.7.8 - 4.7.10"
+    # - Always selects the final version in a range
+    # - Resets component updates tracking for the new release
     if echo "$line" | grep -q "##.*Release"; then
       # If we were already processing a file, copy it to the current working directory.
       if [ "$partial_created" == "true" ]; then
@@ -126,6 +160,17 @@ for branch in $branches; do
       continue
     fi
 
+    # Detect component updates version range
+    #
+    # What this does:
+    # - Matches the exact sentence describing component update versions
+    # - Extracts a single version or version range (e.g. 4.7.21 - 4.7.23)
+    #
+    # Notes:
+    # - This match is intentionally strict
+    # - The phrasing must remain unchanged or this will fail
+    # - No alternative reliable identifier exists for this line
+
     # THIS PHRASING MUST MATCH EXACTLY TO CATCH THE COMPONENT UPDATES RANGE.
     # I HAVE NO OTHER WAY TO UNIQUELY IDENTIFY THIS LINE.
     if [ -n "$component_updates_identifier" ] && echo "$line" | grep -qE '^The following components have been updated for Palette version [0-9]+(\.[0-9]+){2}([[:space:]]*[-–—][[:space:]]*[0-9]+(\.[0-9]+){2})?\.$'; then
@@ -136,6 +181,13 @@ for branch in $branches; do
       continue 
     fi
 
+    # Enter breaking changes section for a release
+    #
+    # What this does:
+    # - Activates breaking changes processing mode
+    # - Creates the corresponding partial file
+    # - All subsequent lines are processed until another heading is encountered
+    #
     # Find any breaking changes headings if we have detected the version heading.
     # Breaking changes MUST be H3 or more.
     if [ -n "$release_number" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking Changes'; then
@@ -176,6 +228,14 @@ for branch in $branches; do
         continue
       fi
 
+      # Handle code block boundaries
+      #
+      # What this does:
+      # - Toggles code section mode on/off
+      # - Prevents line collapsing and whitespace normalization inside code blocks
+      #
+      # Notes:
+      # - Code blocks must be preserved exactly as written
       # If we are in breaking changes and the line starts a code block don't collapse or strip spaces.
       if echo "$line" | grep -q '^[[:space:]]*```'; then
         # Toggle in_code_section
@@ -195,6 +255,10 @@ for branch in $branches; do
         continue
       fi
 
+      # Skip prettier ignore markers
+      #
+      # Purpose:
+      # - These are formatting directives and should not appear in generated output
       # If the line is prettier-ignore-start or prettier-ignore-end skip it.
       if echo "$line" | grep -q '^[[:space:]]*<!-- prettier-ignore-start -->'; then
         continue
@@ -246,6 +310,13 @@ for branch in $branches; do
   # Remove the worktree to keep the workspace small
   git worktree remove --force "$wt_path"
 done
+
+# Final output cleanup
+#
+# What this does:
+# - Normalizes spacing in generated partials
+# - Removes trailing comma from versions.json
+# - Finalizes JSON array structure
 
 clean_files "$BREAKING_CHANGES_PARTIALS_PATH"
 
