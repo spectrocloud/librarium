@@ -27,6 +27,12 @@ The following component updates are applicable to this release:
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4778 -->
+
+- Deployment of OpenShift clusters on MAAS using HyperShift host clusters is now supported. Refer to the
+  [Create and Manage MAAS OpenShift Clusters](../clusters/data-center/maas/create-manage-maas-openshift-clusters.md)
+  guide for more information.
+
 #### Improvements
 
 #### Deprecations and Removals

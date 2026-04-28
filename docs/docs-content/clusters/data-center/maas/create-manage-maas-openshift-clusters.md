@@ -61,13 +61,14 @@ MAAS. Specific limitations for each cluster type are detailed in the respective 
 
 ### OpenShift Workload Clusters
 
-- Only the Bring Your Own OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built specifically for
-  MAAS using the process described in the
+- Only the Bring Your Own Openshift OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built
+  specifically for MAAS using the process described in the
   [1. Build and Import MAAS-Compatible RHCOS Image](#1-build-and-import-maas-compatible-rhcos-image) section. Standard
   MAAS OS images are not compatible with OpenShift.
 
 - OVN-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-Kubernetes CNI pack is not
-  supported. The CNI layer of the workload cluster profile must use the passthrough CNI pack.
+  supported. The CNI layer of the workload cluster profile must use the OVN-Kubernetes CNI pack as a passthrough as
+  mentioned in the [prerequisites](#prerequisites-2) for creating OpenShift workload clusters.
 
 - Some Day 1 operations are not available through Palette, such as configuring an external OIDC provider or NTP servers.
 
@@ -418,8 +419,8 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 
 - A cluster profile for your OpenShift workload clusters configured with the following packs:
 
-  - <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack for the OS
-    layer. Set the following parameters in the pack values.
+  - <VersionedLink text="Bring Your Own Openshift OS (BYOOS)" url="/integrations/packs/?pack=openshift-byoi" /> pack for
+    the OS layer. Set the following parameters in the pack values.
 
     | Parameter              | Description                                                                                                                                                                                                                                           | Example value               |
     | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
@@ -474,8 +475,9 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
         symptom is that the repaving node remains in `Deleting` or `Draining` state until the drain is able to complete.
 
   - <VersionedLink text="OVN-Kubernetes CNI" url="/integrations/packs/?pack=ovn-kubernetes-cni" /> pack for the
-    Container Network Interface (CNI) layer. This is used as a dummy CNI pack since the CNI is configured automatically
-    by the **OpenShift** pack and a dedicated CNI pack is not supported for HyperShift workload clusters.
+    Container Network Interface (CNI) layer. This is used as a passthrough CNI pack since the CNI is configured
+    automatically by the **OpenShift** pack and a dedicated CNI pack is not supported for OpenShift workload clusters
+    hosted on HyperShift.
 
 ### Enablement
 
