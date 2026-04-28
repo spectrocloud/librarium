@@ -302,13 +302,13 @@ The template appears in the **Templates** list and is ready to deploy clusters f
 
 ## Deploy Clusters from the Template
 
-Deploy a dev cluster and a prod cluster from `cluster-template-aws`, using profile variables to apply
+Deploy a development cluster and a production cluster from `cluster-template-aws`, using profile variables to apply
 environment-specific replica counts.
 
-### Deploy a Dev Cluster from the Template
+### Deploy a Development Cluster from the Template
 
-The dev environment requires fewer replicas, so assign `app_replicas`, displayed as **Hello Universe Replicas** in the
-UI, a value of `1`. Once that value is set, deploy a cluster from the `cluster-template-aws` cluster template.
+The development environment requires fewer replicas, so assign `app_replicas`, displayed as **Hello Universe Replicas**
+in the UI, a value of `1`. Once that value is set, deploy a cluster from the `cluster-template-aws` cluster template.
 
 From the left main menu, select **Clusters > Add New Cluster**. Select **AWS IaaS > Start AWS IaaS Configuration**.
 
@@ -344,13 +344,13 @@ The cluster deployment may take 15 to 30 minutes. From the left main menu, selec
 `dev-cluster-aws` has a **Running** status, select it and go to the **Profile** tab. Confirm it is using
 `cluster-template-profile-aws` and that **Hello Universe Replicas** is set to `1`.
 
-### Deploy a Prod Cluster from the Template
+### Deploy a Production Cluster from the Template
 
-The prod environment requires more replicas than dev, so assign `app_replicas`, displayed as **Hello Universe Replicas**
-in the UI, a value of `2`. Once that value is set, deploy a prod cluster from the `cluster-template-aws` cluster
-template.
+The production environment requires more replicas than development, so assign `app_replicas`, displayed as **Hello
+Universe Replicas** in the UI, a value of `2`. Once that value is set, deploy a production cluster from the
+`cluster-template-aws` cluster template.
 
-Follow the same steps as the dev deployment, with two key differences.
+Follow the same steps as the development deployment, with two key differences.
 
 On the **Basic Information** page, enter `prod-cluster-aws` as the cluster name.
 
@@ -506,8 +506,8 @@ Finally, delete the maintenance policy. From the left main menu, select **Cluste
 
 In this tutorial, you learned how to enforce consistent configuration and manage upgrades across multiple clusters. You
 created a cluster profile with a profile variable and a maintenance policy, then combined them into a cluster template
-to deploy dev and prod clusters with environment-specific variable values. You then added Kubecost by creating a new
-profile version, updated the template to reference it, and upgraded both clusters simultaneously.
+to deploy development and production clusters with environment-specific variable values. You then added Kubecost by
+creating a new profile version, updated the template to reference it, and upgraded both clusters simultaneously.
 
 We encourage you to check out the [Cluster Templates](../../../cluster-templates/cluster-templates.md) documentation to
 discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale.
