@@ -45,13 +45,13 @@ git fetch --prune --no-tags --depth=1 origin \
 # Leave this commented. To be used when doing local testing. 
 # branches="version-4-7 version-4-8"
 
-# Remove files for repeatable runs.
-rm -rf $BREAKING_CHANGES_PARTIALS_PATH
-rm -f $ALL_VERSIONS_PATH
-touch $ALL_VERSIONS_PATH
-echo "[" >> $ALL_VERSIONS_PATH
+# Remove files for repeatable runs. Linus added quotes to avoid issues with blank spaces
+rm -rf "$BREAKING_CHANGES_PARTIALS_PATH"
+rm -f "$ALL_VERSIONS_PATH"
+touch "$ALL_VERSIONS_PATH"
+echo "[" >> "$ALL_VERSIONS_PATH"
 # Create the directory in the main repo if it doesn't exist
-mkdir -p $BREAKING_CHANGES_PARTIALS_PATH
+mkdir -p "$BREAKING_CHANGES_PARTIALS_PATH"
 
 for branch in $branches; do
   echo "ℹ️ Checking branch: $branch"
@@ -247,10 +247,10 @@ for branch in $branches; do
   git worktree remove --force "$wt_path"
 done
 
-clean_files $BREAKING_CHANGES_PARTIALS_PATH
+clean_files "$BREAKING_CHANGES_PARTIALS_PATH"
 
 # Remove the last comma from the ALL_VERSIONS_PATH file
-sed '$s/,\s*$//' $ALL_VERSIONS_PATH > temp && mv temp $ALL_VERSIONS_PATH
-echo "]" >> $ALL_VERSIONS_PATH
+sed '$s/,\s*$//' "$ALL_VERSIONS_PATH" > temp && mv temp $ALL_VERSIONS_PATH
+echo "]" >> "$ALL_VERSIONS_PATH"
 git worktree prune
 echo "✅ All branches checked."
