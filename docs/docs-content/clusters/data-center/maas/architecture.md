@@ -41,9 +41,9 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
   Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
 
-- You can deploy a HyperShift host cluster on MAAS that is used to host control planes for OpenShift workload clusters.
-  Once the HyperShift host cluster is deployed, you can deploy OpenShift workload clusters on it. The following diagram
-  illustrates how HyperShift and OpenShift work with Palette and MAAS.
+- You can deploy OpenShift workload clusters on MAAS by using a HyperShift host cluster. The HyperShift host cluster is
+  used to host control planes as pods for the OpenShift workload clusters. The following diagram illustrates how
+  HyperShift and OpenShift work with Palette and MAAS.
 
   _Architecture image TBA_
 
@@ -59,15 +59,16 @@ cluster backups with [volume snapshots](../../cluster-management/backup-restore/
 
 Palette provides the following distributions for MAAS environments.
 
-| Name                              | Kubernetes Distribution | OS                              | CNIs                                                                                                                         | CSIs                                                                                                                         |
-| --------------------------------- | ----------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Palette eXtended Kubernetes (PXK) | CNCF                    | Ubuntu, BYOOS                   | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
-| Canonical Kubernetes              | Canonical Kubernetes    | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
+| Name                              | Kubernetes Distribution      | OS                              | CNIs                                                                                                                         | CSIs                                                                                                                         |
+| --------------------------------- | ---------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Palette eXtended Kubernetes (PXK) | CNCF                         | Ubuntu, BYOOS                   | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
+| Canonical Kubernetes              | Canonical Kubernetes         | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
+| OpenShift                         | OpenShift Container Platform | BYOOS                           | TBC                                                                                                                          | Local Path Provisioner                                                                                                       |
 
 :::preview
 
-The **Canonical Kubernetes** pack for deployments in MAAS environments is a Tech Preview feature and is subject to
-change. Do not use this feature in production workloads.
+The **Canonical Kubernetes** and **OpenShift** packs for deployments in MAAS environments are Tech Preview features and
+are subject to change. Do not use these features in production workloads.
 
 :::
 

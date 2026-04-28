@@ -26,60 +26,53 @@ HyperShift:
 2. Create a HyperShift cluster to host the OpenShift control plane pods.
 3. Create OpenShift workload clusters that use the HyperShift hosted control plane.
 
-## Limitations - WIP
+## Limitations
+
+The following limitations apply broadly to both HyperShift host clusters and OpenShift workload clusters deployed on
+MAAS. Specific limitations for each cluster type are detailed in the respective sections.
+
+- Terraform and Crossplane are not supported as deployment methods.
+
+- Palette does not validate version compatibility between the HyperShift Operator on the host cluster and the OpenShift
+  version on workload clusters. You must ensure these are compatible before deploying or upgrading. Refer to the
+  [HyperShift Versioning Support](https://hypershift-docs.netlify.app/reference/versioning-support/) documentation for
+  guidance.
 
 ### HyperShift Host Cluster
 
 <!-- prettier-ignore-start -->
 
-- **Host cluster type**: The HyperShift host cluster must be a
-  <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> MAAS
-  cluster deployed using Palette. Using a [Private Cloud Gateway (PCG)](../../pcg/pcg.md) as the HyperShift host is not
-  supported.
+- Using a [Private Cloud Gateway (PCG)](../../pcg/pcg.md) as the HyperShift host is not supported. As mentioned in
+  the [prerequisites](#prerequisites-1) for the HyperShift host cluster, it must be a
+  <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+  MAAS cluster deployed using Palette.
 
 <!-- prettier-ignore-end -->
 
-- **Multus**: Multus Container Network Interface (CNI) for Virtual Local Area Network (VLAN) isolation between workload
-  clusters on the host cluster is not supported.
+- Multus Container Network Interface (CNI) is not supported.
 
-- **OpenShift Addon Support**: It is not possible to install additional addon layers on OpenShift workload clusters
-  through Palette. If you need to install addons such as MetalLB or Piraeus, we recommend using the
-  [OperatorHub](https://operatorhub.io/). The OperatorHub is accessed through the OpenShift console of your workload
-  cluster. Addons installed through the OperatorHub are managed directly through the OpenShift console and are not
-  visible in Palette.
+- It is not possible to install additional addon layers on OpenShift workload clusters through Palette. If you need to
+  install addons such as MetalLB, we recommend using the [OperatorHub](https://operatorhub.io/). The OperatorHub is
+  accessed through the OpenShift console of your workload cluster. Addons installed through the OperatorHub are managed
+  directly through the OpenShift console and are not visible in Palette.
+
+- The HyperShift host cluster cannot be deleted if there are any workload clusters using it as a host. You must delete
+  all associated workload clusters before deleting the host cluster.
 
 ### OpenShift Workload Clusters
 
-- **OS layer**: Only the Bring Your Own OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built
-  specifically for MAAS using the process described in this guide. Standard MAAS OS images are not compatible with
-  OpenShift.
+- Only the Bring Your Own OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built specifically for
+  MAAS using the process described in the
+  [1. Build and Import MAAS-Compatible RHCOS Image](#1-build-and-import-maas-compatible-rhcos-image) section. Standard
+  MAAS OS images are not compatible with OpenShift.
 
-- **CNI**: OVN-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-K CNI pack is not
-  supported. The CNI layer of the workload cluster profile must use the dummy CNI pack.
+- OVN-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-Kubernetes CNI pack is not
+  supported. The CNI layer of the workload cluster profile must use the passthrough CNI pack.
 
-- **OIDC**: Configuring an external OIDC provider is not supported via Palette.
+- Some Day 1 operations are not available through Palette, such as configuring an external OIDC provider or NTP servers.
 
-- **Autoscaler**: Cluster autoscaler is not supported.
-
-- **NTP**: NTP server configuration for workload cluster nodes is not available through Palette.
-
-- **OS patching**: Palette-managed OS patching is not supported for RHCOS nodes. CoreOS updates are applied through
-  OpenShift's Machine Config Operator.
-
-- **Security and compliance scans**: Palette security scans are not supported.
-
-- **Backup and restore**: Palette-managed backup and restore is not supported.
-
-- **Maintenance mode**: Putting individual workload cluster nodes into Palette maintenance mode is not supported.
-
-### Both Cluster Types
-
-- **Infrastructure as code**: Terraform and Crossplane are not supported.
-
-- **Version skew**: Palette does not validate version compatibility between the HyperShift Operator on the host cluster
-  and the OpenShift version on workload clusters. You must ensure these are compatible before deploying or upgrading.
-  Refer to the [HyperShift Versioning Support](https://hypershift-docs.netlify.app/reference/versioning-support/)
-  documentation for guidance.
+- Some Day 2 operations are not available through Palette, such as OS patching, security and compliance scans, backup
+  and restore, and maintenance mode.
 
 ## 1. Build and Import MAAS-Compatible RHCOS Image
 
@@ -277,11 +270,11 @@ configuration for RHCOS, which is applied on first boot.
 
 <TabItem label="MAAS CLI" value="maas-cli">
 
-Use the following command to list all boot resources and confirm your image is present. Replace `<openshift-version>`
-with the OpenShift version that matches your RHCOS image.
+Use the following command to list all boot resources and confirm your image is present. Replace `<image-name>` with the
+name of the image you specified during import. For example, `rhcos-4.20.13-with-ubuntu`.
 
 ```bash
-maas default boot-resources read | grep "rhcos-<openshift-version>-with-ubuntu"
+maas default boot-resources read | grep "<image-name>"
 ```
 
 If the image was imported successfully, the command returns a JSON entry containing the image name. No output indicates
@@ -299,7 +292,7 @@ cluster in Palette before creating any OpenShift workload clusters.
 
 ### Prerequisites
 
-- A [MAAS account registered in Palette](register-manage-maas-cloud-accounts.md). All MAAS-registered Palette accounts
+- A [MAAS account registered in Palette](./register-manage-maas-cloud-accounts.md). All MAAS-registered Palette accounts
   must use either a System Private Gateway or Private Cloud Gateway (PCG) to connect to the MAAS environment. For more
   information on which to use, refer to the MAAS [Architecture](./architecture.md) guide.
 
@@ -562,20 +555,16 @@ workload cluster. Provisioning may take several minutes.
 4. Select the OpenShift workload cluster. On the **Overview** tab, confirm the **Cluster Status** is **Running** and the
    **Health** status is **Healthy**.
 
-## Next Steps - WIP
+## Next Steps
 
 Now that you have deployed a HyperShift host cluster and an OpenShift workload cluster, you can start deploying
 applications to your OpenShift cluster. Consider the following next steps:
 
-- **Day-2 operations**: Palette supports scaling and Kubernetes upgrades for both the HyperShift host cluster and
-  OpenShift workload clusters. Refer to [Manage Clusters](../../cluster-management/cluster-management.md) for available
-  Day-2 cluster management tasks.
-
-- **Backup and restore**: To protect your workloads, review the
-  [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) guide.
-
-- **Additional workload clusters**: You can create multiple OpenShift workload clusters on the same HyperShift host
-  cluster. Repeat the steps in the
+- You can create multiple OpenShift workload clusters on the same HyperShift host cluster. Repeat the steps in the
   [Create MAAS OpenShift Workload Cluster](#3-create-openshift-workload-cluster-with-hypershift-control-plane) section
   for each additional cluster, ensuring that the host cluster has sufficient capacity to run the additional control
   plane pods.
+
+- Refer to [Manage Clusters](../../cluster-management/cluster-management.md) for Day-2 cluster management tasks, but
+  ensure that you have reviewed the [Limitations](#limitations) section of this guide as some management tasks are not
+  supported for HyperShift-hosted OpenShift clusters.
