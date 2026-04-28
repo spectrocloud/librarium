@@ -1,19 +1,52 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# ------------------------------------------------------------------------------
+# Script: versioned-url-checker.sh
+#
+# Purpose:
+# - Validate relative file links and dynamic pack links found in a report file
+# - Detect broken links and summarize results
+# - Optionally send a Slack notification with sampled failures
+#
+# High-level flow:
+# - Read JSON report of extracted links
+# - Filter supported link types
+# - Validate:
+#   • relative file links (./, ../)
+#   • dynamic pack links (/integrations/packs?pack=...)
+# - Track counts and sample failures
+# - Output results to console or Slack
+#
+# Note: if running locally for testing, please ensure that you are in the root of 
+# librarium, and you run generate-versioned-links-report.sh first. Ensure to delete 
+# the versioned_links_report.json after you've completed local testing.
+# ------------------------------------------------------------------------------
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+# ------------------------------------------------------------------------------
+# Config / environment variables
+# ------------------------------------------------------------------------------
 
 SLACK_WEBHOOK_URL="${SLACK_WEBHOOK_URL:-}"
 POST_SUCCESS_TO_SLACK="${POST_SUCCESS_TO_SLACK:-false}"
 REPORT_FILE="${REPORT_FILE:-${REPO_ROOT}/versioned_links_report.json}"
 PACKS_DATA_FILE="${PACKS_DATA_FILE:-${REPO_ROOT}/.docusaurus/packs-integrations/api_pack_response.json}"
 
-# Default to false for local runs to avoid requiring packs data.
-# CI should set STRICT_PACK_VALIDATION=true to enforce pack validation.
+# Controls whether missing/invalid pack data should fail validation
+# - false (default): skip validation locally
+# - true (CI): enforce strict validation
 STRICT_PACK_VALIDATION="${STRICT_PACK_VALIDATION:-false}"
+
+# Slack formatting limits. You can adjust this up or down as needed.
 MAX_SLACK_SAMPLE_ITEMS="${MAX_SLACK_SAMPLE_ITEMS:-10}"
 MAX_SLACK_CHARS="${MAX_SLACK_CHARS:-3500}"
+
+# ------------------------------------------------------------------------------
+# Counters / state
+# ------------------------------------------------------------------------------
 
 BROKEN_LINK_COUNT=0
 CHECKED_LINK_COUNT=0
@@ -23,6 +56,28 @@ SAMPLED_BROKEN_COUNT=0
 
 SLACK_DETAILS=""
 
+# ------------------------------------------------------------------------------
+# Function: validate_known_dynamic_pack_link
+#
+# Purpose:
+# - Validate links of the form:
+#     /integrations/packs?pack=<slug>
+#
+# What this does:
+# - Confirms the URL matches the expected path
+# - Extracts the "pack" query parameter
+# - Loads pack data JSON
+# - Verifies the pack slug exists
+#
+# Output:
+# - Prints a status string (consumed by caller), e.g.:
+#   PACK_OK:<slug>
+#   PACK_MISSING:<slug>
+#   PACK_QUERY_MISSING
+#   PACK_DATA_MISSING / UNREADABLE / INVALID
+#   PACK_VALIDATION_SKIPPED
+#   NOT_DYNAMIC_PACK_LINK
+# ------------------------------------------------------------------------------
 validate_known_dynamic_pack_link() {
   local url="$1"
   local packs_data_file="$2"
@@ -87,6 +142,17 @@ else:
 PY
 }
 
+# ------------------------------------------------------------------------------
+# Function: resolve_target_candidates
+#
+# Purpose:
+# - Resolve a relative link (./ or ../) into an absolute filesystem path
+#
+# What this does:
+# - Normalizes the URL (removes query/fragment, duplicate slashes)
+# - Resolves it relative to the source file location
+# - Outputs candidate path(s)
+# ------------------------------------------------------------------------------
 resolve_target_candidates() {
   local source_file="$1"
   local rel_url="$2"
@@ -110,6 +176,17 @@ if raw_url.startswith("./") or raw_url.startswith("../"):
 PY
 }
 
+# ------------------------------------------------------------------------------
+# Function: target_exists
+#
+# Purpose:
+# - Check if a resolved target exists in the repo
+#
+# What this checks:
+# - exact file
+# - .md / .mdx variants
+# - index.md / index.mdx in directory
+# ------------------------------------------------------------------------------
 target_exists() {
   local target="$1"
 
@@ -122,6 +199,15 @@ target_exists() {
   return 1
 }
 
+# ------------------------------------------------------------------------------
+# Function: append_slack_detail
+#
+# Purpose:
+# - Add a formatted broken link entry to Slack sample output
+#
+# Notes:
+# - Only includes up to MAX_SLACK_SAMPLE_ITEMS entries
+# ------------------------------------------------------------------------------
 append_slack_detail() {
   local source_file="$1"
   local line="$2"
@@ -140,6 +226,17 @@ append_slack_detail() {
   ((SAMPLED_BROKEN_COUNT+=1))
 }
 
+# ------------------------------------------------------------------------------
+# Function: build_slack_message
+#
+# Purpose:
+# - Construct final Slack message text
+#
+# What this includes:
+# - Summary counts
+# - Sample of broken links (if any)
+# - Truncation to MAX_SLACK_CHARS
+# ------------------------------------------------------------------------------
 build_slack_message() {
   local status_emoji="$1"
   local headline="$2"
@@ -178,6 +275,12 @@ Source: :github: - librarium"
   printf '%s' "$message"
 }
 
+# ------------------------------------------------------------------------------
+# Function: post_to_slack
+#
+# Purpose:
+# - Send message to Slack webhook
+# ------------------------------------------------------------------------------
 post_to_slack() {
   local text="$1"
 
@@ -185,38 +288,53 @@ post_to_slack() {
     curl -sS --fail -X POST -H 'Content-type: application/json' --data @- "$SLACK_WEBHOOK_URL" >/dev/null
 }
 
+# ------------------------------------------------------------------------------
+# Main execution
+# ------------------------------------------------------------------------------
+
+# Validate report file exists
 if [[ ! -f "$REPORT_FILE" ]]; then
   echo "Error: Report file '$REPORT_FILE' not found" >&2
   exit 1
 fi
 
+# ------------------------------------------------------------------------------
+# Process each link entry from report JSON
+# ------------------------------------------------------------------------------
 while IFS= read -r item; do
   source_file=$(printf '%s' "$item" | jq -r '.source_file // empty')
   rel_url=$(printf '%s' "$item" | jq -r '.url // empty')
   line=$(printf '%s' "$item" | jq -r '.line // 0')
   match_type=$(printf '%s' "$item" | jq -r '.match_type // "unknown"')
 
+  # Skip invalid entries
   [[ -z "$source_file" || -z "$rel_url" ]] && continue
 
+  # Skip deprecated content
   if [[ "$source_file" == deprecated/* || "$source_file" == */deprecated/* ]]; then
     continue
   fi
 
   # Only validate:
-  # 1) true relative file links: ./... and ../...
-  # 2) known dynamic pack links: /integrations/packs?...
-  # Root-relative site routes and root-relative assets like /getting-started/ or /foo.webp
-  # are intentionally skipped here because they are site routes/assets, not direct repo paths.
+  # - relative file links (./, ../)
+  # - dynamic pack links
+  # Skip:
+  # - root-relative site routes (/foo)
+  # - assets
   if [[ "$rel_url" != ./* && "$rel_url" != ../* && "$rel_url" != /integrations/packs* ]]; then
     continue
   fi
-  # Skip directory-style links (Docusaurus routes)
+
+  # Skip directory-style routes
   if [[ "$rel_url" == */ ]]; then
     continue
   fi
 
   ((CHECKED_LINK_COUNT+=1))
 
+  # --------------------------------------------------------------------------
+  # Dynamic pack validation
+  # --------------------------------------------------------------------------
   pack_validation_result="$(validate_known_dynamic_pack_link "$rel_url" "$PACKS_DATA_FILE" "$STRICT_PACK_VALIDATION")"
 
   case "$pack_validation_result" in
@@ -234,28 +352,13 @@ while IFS= read -r item; do
     PACK_QUERY_MISSING)
       ((BROKEN_LINK_COUNT+=1))
       ((BROKEN_DYNAMIC_PACK_COUNT+=1))
-      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing required pack query parameter for /integrations/packs/"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing required pack query parameter"
       continue
       ;;
-    PACK_DATA_MISSING:*)
+    PACK_DATA_MISSING:*|PACK_DATA_UNREADABLE:*|PACK_DATA_INVALID:*)
       ((BROKEN_LINK_COUNT+=1))
       ((BROKEN_DYNAMIC_PACK_COUNT+=1))
-      pack_context="${pack_validation_result#PACK_DATA_MISSING:}"
-      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Pack validation data file not found (${pack_context})"
-      continue
-      ;;
-    PACK_DATA_UNREADABLE:*)
-      ((BROKEN_LINK_COUNT+=1))
-      ((BROKEN_DYNAMIC_PACK_COUNT+=1))
-      pack_context="${pack_validation_result#PACK_DATA_UNREADABLE:}"
-      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Pack validation data file could not be read (${pack_context})"
-      continue
-      ;;
-    PACK_DATA_INVALID:*)
-      ((BROKEN_LINK_COUNT+=1))
-      ((BROKEN_DYNAMIC_PACK_COUNT+=1))
-      pack_context="${pack_validation_result#PACK_DATA_INVALID:}"
-      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Pack validation data is invalid (${pack_context})"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Pack validation data issue"
       continue
       ;;
     PACK_VALIDATION_SKIPPED:*)
@@ -265,12 +368,40 @@ while IFS= read -r item; do
       ;;
     *)
       ((BROKEN_LINK_COUNT+=1))
-      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Unexpected pack validation result: ${pack_validation_result}"
+      append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Unexpected validation result"
       continue
       ;;
   esac
 
-resolved_path="$(resolve_target_candidates "$source_file" "$rel_url" | head -n 1)"
+  # --------------------------------------------------------------------------
+  # Relative file validation
+  # --------------------------------------------------------------------------
+  resolved_path="$(resolve_target_candidates "$source_file" "$rel_url" | head -n 1)"
+
+  # --------------------------------------------------------------------------
+  # Debugging block for testing. To use, uncomment the debugging lines and comment
+  # out the Production validation logic.
+  # --------------------------------------------------------------------------
+
+
+#   echo "DEBUG rel_url=$rel_url"
+#   echo "DEBUG resolved_path=$resolved_path"
+
+#   if [[ -z "$resolved_path" ]]; then
+#     echo "DEBUG branch=empty_resolved_path"
+#     ((BROKEN_LINK_COUNT+=1))
+#     append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Could not resolve relative path"
+#   elif ! target_exists "$resolved_path"; then
+#     echo "DEBUG branch=target_missing"
+#     ((BROKEN_LINK_COUNT+=1))
+#     append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing target: ${resolved_path}"
+#   else
+#     echo "DEBUG branch=target_exists"
+#   fi
+
+# done < <(jq -c '.[]' "$REPORT_FILE")
+
+# Production validation logic (active)
 
 if [[ -z "$resolved_path" ]]; then
   ((BROKEN_LINK_COUNT+=1))
@@ -279,15 +410,18 @@ elif ! target_exists "$resolved_path"; then
   ((BROKEN_LINK_COUNT+=1))
   append_slack_detail "$source_file" "$line" "$match_type" "$rel_url" "Missing target: ${resolved_path}"
 fi
-
 done < <(jq -c '.[]' "$REPORT_FILE")
+
+# ------------------------------------------------------------------------------
+# Final result summary
+# ------------------------------------------------------------------------------
 
 if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
   CONSOLE_MESSAGE=":information_source: No supported relative file links or dynamic pack links found.
 
 Source: :github: - librarium"
 elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-  CONSOLE_MESSAGE=":partyblob: All checked relative file links and dynamic pack links resolved successfully.
+  CONSOLE_MESSAGE=":partyblob: All links resolved successfully.
 
 Checked: ${CHECKED_LINK_COUNT}
 Validated dynamic packs: ${VALIDATED_DYNAMIC_PACK_COUNT}
@@ -295,7 +429,7 @@ Broken dynamic packs: ${BROKEN_DYNAMIC_PACK_COUNT}
 
 Source: :github: - librarium"
 else
-  CONSOLE_MESSAGE=":old-man-yells-markdown: Broken relative file links or dynamic pack links detected.
+  CONSOLE_MESSAGE=":old-man-yells-markdown: Broken links detected.
 
 Checked: ${CHECKED_LINK_COUNT}
 Broken: ${BROKEN_LINK_COUNT}
@@ -307,14 +441,17 @@ Full detail: ${REPORT_FILE}
 Source: :github: - librarium"
 fi
 
+# ------------------------------------------------------------------------------
+# Slack or console output
+# ------------------------------------------------------------------------------
 if [[ -n "$SLACK_WEBHOOK_URL" ]]; then
   if [[ "$BROKEN_LINK_COUNT" -gt 0 || "$POST_SUCCESS_TO_SLACK" == "true" ]]; then
     if [[ "$CHECKED_LINK_COUNT" -eq 0 ]]; then
-      SLACK_MESSAGE="$(build_slack_message ":information_source:" "No supported relative file links or dynamic pack links found.")"
+      SLACK_MESSAGE="$(build_slack_message ":information_source:" "No supported links found.")"
     elif [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-      SLACK_MESSAGE="$(build_slack_message ":partyblob:" "All checked relative file links and dynamic pack links resolved successfully.")"
+      SLACK_MESSAGE="$(build_slack_message ":partyblob:" "All links resolved successfully.")"
     else
-      SLACK_MESSAGE="$(build_slack_message ":old-man-yells-markdown:" "Broken relative file links or dynamic pack links detected.")"
+      SLACK_MESSAGE="$(build_slack_message ":old-man-yells-markdown:" "Broken links detected.")"
     fi
 
     post_to_slack "$SLACK_MESSAGE"
