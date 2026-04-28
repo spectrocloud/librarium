@@ -197,8 +197,8 @@ Pack versions are defined in `data.tf`. To use a different version, update the `
 `replicas` to `{{.spectro.var.app_replicas}}`, a
 [cluster profile variable](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
 declared in the `profile_variables` block with `required = true`. Each cluster template that uses this profile must
-supply a value for `app_replicas`, which is what allows dev and prod clusters to run different replica counts while
-sharing the same profile.
+supply a value for `app_replicas`, which is what allows development and production clusters to run different replica
+counts while sharing the same profile.
 
 ## Create a Maintenance Policy
 
@@ -249,14 +249,15 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 
 ## Deploy Clusters from the Template
 
-Deploy a dev cluster and a prod cluster from `tf-cluster-template-aws`, using profile variables to apply
+Deploy a development cluster and a production cluster from `tf-cluster-template-aws`, using profile variables to apply
 environment-specific replica counts.
 
-### Deploy a Dev Cluster from the Template
+### Deploy a Development Cluster from the Template
 
-`clusters.tf` defines a dev cluster that uses the AWS cluster template. The `cluster_template` block links the cluster
-to the template. The nested `cluster_profile` block is needed to override the variable value for the profile within that
-template, scoped to just this cluster. `app_replicas` is set to `"1"`, without changing the shared template or profile.
+`clusters.tf` defines a development cluster that uses the AWS cluster template. The `cluster_template` block links the
+cluster to the template. The nested `cluster_profile` block is needed to override the variable value for the profile
+within that template, scoped to just this cluster. `app_replicas` is set to `"1"`, without changing the shared template
+or profile.
 
 ```hcl title="clusters.tf" hideClipboard
 resource "spectrocloud_cluster_aws" "dev_cluster" {
@@ -284,10 +285,10 @@ resource "spectrocloud_cluster_aws" "dev_cluster" {
 }
 ```
 
-### Deploy a Prod Cluster from the Template
+### Deploy a Production Cluster from the Template
 
-`clusters.tf` also defines a prod cluster using the same template. The only difference is `app_replicas` is set to
-`"2"`, giving the prod environment more replicas without changing the shared template or profile.
+`clusters.tf` also defines a production cluster using the same template. The only difference is `app_replicas` is set to
+`"2"`, giving the production environment more replicas without changing the shared template or profile.
 
 ```hcl title="clusters.tf" hideClipboard
 resource "spectrocloud_cluster_aws" "prod_cluster" {
