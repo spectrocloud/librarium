@@ -197,8 +197,8 @@ Pack versions are defined in `data.tf`. To use a different version, update the `
 `replicas` to `{{.spectro.var.app_replicas}}`, a
 [cluster profile variable](../../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
 declared in the `profile_variables` block with `required = true`. Each cluster template that uses this profile must
-supply a value for `app_replicas`, which is what allows dev and prod clusters to run different replica counts while
-sharing the same profile.
+supply a value for `app_replicas`, which is what allows development and production clusters to run different replica
+counts while sharing the same profile.
 
 ## Create a Maintenance Policy
 
@@ -249,14 +249,15 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 
 ## Deploy Clusters from the Template
 
-Deploy a dev cluster and a prod cluster from `tf-cluster-template-aws`, using profile variables to apply
+Deploy a development cluster and a production cluster from `tf-cluster-template-aws`, using profile variables to apply
 environment-specific replica counts.
 
-### Deploy a Dev Cluster from the Template
+### Deploy a Development Cluster from the Template
 
-`clusters.tf` defines a dev cluster that uses the AWS cluster template. The `cluster_template` block links the cluster
-to the template. The nested `cluster_profile` block is needed to override the variable value for the profile within that
-template, scoped to just this cluster. `app_replicas` is set to `"1"`, without changing the shared template or profile.
+`clusters.tf` defines a development cluster that uses the AWS cluster template. The `cluster_template` block links the
+cluster to the template. The nested `cluster_profile` block is needed to override the variable value for the profile
+within that template, scoped to just this cluster. `app_replicas` is set to `"1"`, without changing the shared template
+or profile.
 
 ```hcl title="clusters.tf" hideClipboard
 resource "spectrocloud_cluster_aws" "dev_cluster" {
@@ -284,7 +285,38 @@ resource "spectrocloud_cluster_aws" "dev_cluster" {
 }
 ```
 
-Run `terraform test` to verify the configuration. The tests use a mock provider, so no credentials are required.
+### Deploy a Production Cluster from the Template
+
+`clusters.tf` also defines a production cluster using the same template. The only difference is `app_replicas` is set to
+`"2"`, giving the production environment more replicas without changing the shared template or profile.
+
+```hcl title="clusters.tf" hideClipboard
+resource "spectrocloud_cluster_aws" "prod_cluster" {
+  count = var.deploy-aws ? 1 : 0
+
+  name             = "tf-prod-cluster"
+  cluster_timezone = "UTC"
+  cloud_account_id = data.spectrocloud_cloudaccount_aws.account[0].id
+
+  cloud_config {
+    region       = var.aws-region
+    ssh_key_name = var.aws-key-pair-name
+  }
+
+  cluster_template {
+    id = spectrocloud_cluster_config_template.aws_template[0].id
+
+    cluster_profile {
+      id = spectrocloud_cluster_profile.aws_profile[0].id
+      variables = {
+        "app_replicas" = "2"
+      }
+    }
+  }
+}
+```
+
+Run `terraform test` to verify the full configuration. The tests use a mock provider, so no credentials are required.
 
 ```bash
 terraform test
@@ -309,7 +341,7 @@ your environment.
 Ensure that `aws-cloud-account-name` matches the name of the AWS cloud account registered in Palette. The SSH key pair
 specified in `aws-key-pair-name` must exist in the same region as `aws-region`.
 
-```hcl {4,6,7,8,14,22} title="terraform.tfvars"
+```hcl {4,6,7,8,15,23} title="terraform.tfvars"
 ###########################
 # AWS Deployment Settings
 ###########################
@@ -336,8 +368,8 @@ aws_worker_nodes = {
 }
 ```
 
-Issue the `plan` command to preview the changes. This also confirms that Terraform can authenticate to Palette and that
-your project exists.
+Issue the `plan` command to preview all resources. This also confirms that Terraform can authenticate to Palette and
+that your project exists.
 
 ```bash
 terraform plan
@@ -351,6 +383,9 @@ data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
   # spectrocloud_cluster_aws.dev_cluster[0] will be created
   + resource "spectrocloud_cluster_aws" "dev_cluster" { ... }
 
+  # spectrocloud_cluster_aws.prod_cluster[0] will be created
+  + resource "spectrocloud_cluster_aws" "prod_cluster" { ... }
+
   # spectrocloud_cluster_config_policy.maintenance will be created
   + resource "spectrocloud_cluster_config_policy" "maintenance" { ... }
 
@@ -360,11 +395,11 @@ data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
   # spectrocloud_cluster_profile.aws_profile[0] will be created
   + resource "spectrocloud_cluster_profile" "aws_profile" { ... }
 
-Plan: 4 to add, 0 to change, 0 to destroy.
+Plan: 5 to add, 0 to change, 0 to destroy.
 ```
 
 If `Read complete` appears in the output, Terraform successfully authenticated and found your Palette project. A plan of
-`4 to add` confirms all resources are ready to be created.
+`5 to add` confirms all resources are ready to be created.
 
 Issue the `apply` command to create all resources in Palette.
 
@@ -380,23 +415,24 @@ spectrocloud_cluster_profile.aws_profile[0]: Creation complete after 2s [id=<pro
 spectrocloud_cluster_config_template.aws_template[0]: Creating...
 spectrocloud_cluster_config_template.aws_template[0]: Creation complete after 1s [id=<template-id>]
 spectrocloud_cluster_aws.dev_cluster[0]: Creating...
+spectrocloud_cluster_aws.prod_cluster[0]: Creating...
 spectrocloud_cluster_aws.dev_cluster[0]: Still creating... [10s elapsed]
+spectrocloud_cluster_aws.prod_cluster[0]: Still creating... [10s elapsed]
 ...
 spectrocloud_cluster_aws.dev_cluster[0]: Creation complete after Xm Ys [id=<cluster-id>]
+spectrocloud_cluster_aws.prod_cluster[0]: Creation complete after Xm Ys [id=<cluster-id>]
 
-Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
 ```
 
-The cluster deployment may take 15 to 30 minutes. Log in to [Palette](https://console.spectrocloud.com) and confirm the
-deployment.
+The cluster deployments may take 15 to 30 minutes each. Navigate to [Palette](https://console.spectrocloud.com) and from
+the left main menu, select **Clusters** to monitor progress. Once `tf-dev-cluster` has a **Running** status, select it
+and go to the **Profile** tab. Confirm it is using `tf-cluster-template-profile-aws`. Select the **Hello Universe**
+pack, then select **Configure Values** and confirm that `app_replicas` is set to `1`.
 
-1. From the left **Main Menu**, select **Clusters**. Confirm that `tf-dev-cluster` has a **Running** status.
-
-2. Select `tf-dev-cluster` and click the **Profile** tab. Confirm it is using `tf-cluster-template-profile-aws`.
-
-3. Select the `hello-universe` pack and confirm that the `app_replicas` variable is set to `1`.
-
-### Deploy a Prod Cluster from the Template
+Once `tf-prod-cluster` has a **Running** status, select it and go to the **Profile** tab. Confirm it is using
+`tf-cluster-template-profile-aws`. Select the **Hello Universe** pack, then select **Configure Values** and confirm that
+`app_replicas` is set to `2`.
 
 ### Validate the Deployments
 
