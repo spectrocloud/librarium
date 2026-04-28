@@ -10,7 +10,7 @@ RELEASE_NOTES_PATH="docs/docs-content/release-notes/release-notes.md"
 OLD_RELEASE_NOTES_PATH="docs/docs-content/release-notes.md"
 BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
 ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
-ARCHIVE_FILE_PATH="archiveVersions.json"
+ARCHIVE_FILE_PATH="$DOCS_ROOT/archiveVersions.json"
 
 # Where to place worktrees (unique per run)
 WORKTREES_DIR="$(mktemp -d -t librarium-worktrees-XXXXXX)"
@@ -37,10 +37,13 @@ git fetch --prune --no-tags --depth=1 origin \
   '+refs/heads/version-*:refs/remotes/origin/version-*'
 
 # Get remote version branches (no locals, no HEAD), exclude version-3-4
-branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
-  | grep -v '^HEAD$' \
-  | grep -v '^version-3-4$' \
-  | sort -u)"
+ branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
+   | grep -v '^HEAD$' \
+   | grep -v '^version-3-4$' \
+   | sort -u)"
+
+# Leave this commented. To be used when doing local testing. 
+# branches="version-4-7 version-4-8"
 
 # Remove files for repeatable runs.
 rm -rf $BREAKING_CHANGES_PARTIALS_PATH

@@ -120,29 +120,29 @@ persist_partial_files () {
 # $2 - worktree path
 # $3 - archiveVersions.json path
 find_legacy_domain() {
-  release_version=$1
-  wt_path=$2
-  archive_versions_path=$3
-  popd >/dev/null  # leave the worktree to look up file
+  local release_version=$1
+  local archive_versions_path=$2
 
   # release_version like "4.7.10"
-  local release_maj; release_maj=$(echo "$release_version" | cut -d . -f1)
-  local release_min; release_min=$(echo "$release_version" | cut -d . -f2)
+  local release_maj
+  local release_min
+  release_maj=$(echo "$release_version" | cut -d . -f1)
+  release_min=$(echo "$release_version" | cut -d . -f2)
 
-  # Read key/value as TSV (array) and keep the loop in the current shell
+  # name like "v4.7.x" or "v3.4.x and prior"
   while IFS=$'\t' read -r name url; do
-    # name like "v4.7.x" or "v3.4.x and prior"
-    local entry_maj; entry_maj=$(echo "$name" | cut -d . -f1 | sed 's/^v//')
-    local entry_min; entry_min=$(echo "$name" | cut -d . -f2)
+    local entry_maj
+    local entry_min
+    entry_maj=$(echo "$name" | cut -d . -f1 | sed 's/^v//')
+    entry_min=$(echo "$name" | cut -d . -f2)
 
     if [[ "$release_maj" == "$entry_maj" && "$release_min" == "$entry_min" ]]; then
-      echo "$url"
-      return 0   # exits the surrounding function as intended
+      printf '%s\n' "$url"
+      return 0
     fi
   done < <(jq -r 'to_entries[] | [.key, .value] | @tsv' "$archive_versions_path")
 
-  pushd "$wt_path" >/dev/null # re-enter the worktree
-
+  return 1
 }
 
 # Function to add breaking changes body to the partials file
@@ -164,81 +164,85 @@ add_breaking_changes_body() {
   archive_file_path=$7
   filename=""
   legacy_domain=""
+
   if [ -n "$release_number" ]; then
     replaced=$(echo "$release_number" | tr '.' '_')
     filename="$breaking_changes_partials_path/br_$replaced.mdx"
-    legacy_domain=$(find_legacy_domain "$release_number" "$wt_path" "$archive_file_path")
+    legacy_domain=$(find_legacy_domain "$release_number" "$archive_file_path")
   fi
+
   if [ -n "$component_updates_identifier" ]; then
     filename="$breaking_changes_partials_path/br_component_updates_$component_updates_identifier.mdx"
-    first_version=$(echo "$component_updates_range" | grep -Eo '^[0-9]+(\.[0-9]+){2}')
-    legacy_domain=$(find_legacy_domain "$first_version" "$wt_path" "$archive_file_path")
+
+    if [ -n "$component_updates_range" ]; then
+      first_version=$(echo "$component_updates_range" | grep -Eo '^[0-9]+(\.[0-9]+){2}')
+      if [ -n "$first_version" ]; then
+        legacy_domain=$(find_legacy_domain "$first_version" "$archive_file_path" || true)
+      fi
+    fi
   fi
 
   # If line is empty just append it and return
   if [ -z "$new_line" ]; then
-    echo >> "$filename"   # ensures file ends with a newline
+    echo >> "$filename"
     return
   fi
 
-  # Extract link text: [text](...)
-  link_text=$(
-    printf '%s\n' "$new_line" \
-    | grep -E '\[[^]]+\]\([^)]*\)' \
-    | sed -n -E 's/.*\[([^]]*)\]\(((<[^>]+>)|([^ )][^)]*))( "([^"]*)")?\).*/\1/p'
-  )
+  # Process each markdown link on the line independently
+  while IFS= read -r match; do
+    [ -z "$match" ] && continue
 
-  # Extract URL (supports <angle-bracket URLs> and optional "title")
-  link_url=$(
-    printf '%s\n' "$new_line" \
-    | grep -E '\[[^]]+\]\([^)]*\)' \
-    | sed -n -E 's/.*\[[^]]*\]\(((<[^>]+>)|([^ )][^)]*))( "([^"]*)")?\).*/\1/p' \
-    | sed -E 's/^<([^>]+)>$/\1/'   # drop angle brackets if present
-  )
+    link_text=$(
+      printf '%s\n' "$match" \
+      | sed -n -E 's/^\[([^]]+)\]\(.*\)$/\1/p'
+    )
 
-  if [ -z "$link_text" ] || [ -z "$link_url" ]; then
-    # No links found, just append the line as is
-    echo "$new_line" >> "$filename"
-    return
-  fi
+    raw_target=$(
+      printf '%s\n' "$match" \
+      | sed -n -E 's/^\[[^]]+\]\((.*)\)$/\1/p'
+    )
 
-  if [[ $link_url == http* || $link_url == *.webp ]]; then
-    # It's an external image link, just append the line as is
-    echo "$new_line" >> "$filename"
-    return
-  fi
+    [ -z "$link_text" ] && continue
+    [ -z "$raw_target" ] && continue
 
-  # Start the link replacement process
-  # prefix: everything before the first occurrence of "[$link_text]"
-  prefix="${new_line%%[[]"$link_text"[]]*}"
-  # suffix: everything after the first occurrence of "$link_url)"
-  suffix="${new_line#*"$link_url")}"
-  clean_link="$link_url"
+    # Remove optional title at the end:  path "title"   or   <path> "title"
+    link_url=$(printf '%s\n' "$raw_target" | sed -E 's/[[:space:]]+"[^"]*"$//')
 
-  # Strip leading ./, ../ or /
-  [[ $clean_link == ../* ]] && clean_link="${clean_link:3}"
-  [[ $clean_link == /*  ]] && clean_link="${clean_link:1}"
-  # append /release-notes to link in this case since it is relative to release notes folder
-  [[ $clean_link == ./* ]] && clean_link="release-notes/${clean_link:2}"
+    # Remove surrounding angle brackets if present
+    link_url=$(printf '%s\n' "$link_url" | sed -E 's/^<([^>]+)>$/\1/')
 
-  # Drop #fragment
-  clean_link="${clean_link%%#*}"
+    [ -z "$link_url" ] && continue
 
-  # Drop .md / .mdx extensions
-  clean_link="${clean_link%.md}"
-  clean_link="${clean_link%.mdx}"
+    # Leave external URLs and image assets unchanged
+    if [[ $link_url == http* || $link_url == *.webp ]]; then
+      continue
+    fi
 
-  # Remove duplicate last segment if it equals previous (e.g., foo/foo.md)
-  IFS='/' read -r -a segments <<< "$clean_link"
-  len=${#segments[@]}
-  if (( len >= 2 )) && [[ "${segments[len-1]}" == "${segments[len-2]}" ]]; then
-    unset 'segments[len-1]'
-    clean_link=$(IFS='/'; echo "${segments[*]}")
-  fi
+    clean_link="$link_url"
 
-  replacement="[$link_text]($legacy_domain/$clean_link)"
-  # Rebuild the line
-  new_line="${prefix}${replacement}${suffix}"
+    # Strip leading ./, ../ or /
+    [[ $clean_link == ../* ]] && clean_link="${clean_link#../}"
+    [[ $clean_link == /*  ]] && clean_link="${clean_link#/}"
+    [[ $clean_link == ./* ]] && clean_link="release-notes/${clean_link#./}"
+
+    # Drop #fragment
+    clean_link="${clean_link%%#*}"
+
+    # Drop .md / .mdx extensions
+    clean_link="${clean_link%.md}"
+    clean_link="${clean_link%.mdx}"
+
+    # Remove duplicate last segment if it equals previous (e.g. foo/foo.md)
+    IFS='/' read -r -a segments <<< "$clean_link"
+    len=${#segments[@]}
+    if (( len >= 2 )) && [[ "${segments[$((len-1))]}" == "${segments[$((len-2))]}" ]]; then
+      unset 'segments[$((len-1))]'
+      clean_link=$(IFS='/'; echo "${segments[*]}")
+    fi
+
+    replacement="[$link_text]($legacy_domain/$clean_link)"
+    new_line="${new_line//"$match"/$replacement}"
+  done < <(printf '%s\n' "$new_line" | grep -oE '\[[^]]+\]\([^)]*\)')
 
   echo "$new_line" >> "$filename"
 }
