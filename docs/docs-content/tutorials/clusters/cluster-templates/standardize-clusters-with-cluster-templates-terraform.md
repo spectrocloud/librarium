@@ -424,7 +424,7 @@ spectrocloud_cluster_aws.prod_cluster[0]: Creation complete after Xm Ys [id=<clu
 Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
 ```
 
-The cluster deployments may take 15 to 30 minutes each. From the left main menu, select **Clusters** to monitor
+The cluster deployments may take 15 to 30 minutes each. Navigate to [Palette](https://console.spectrocloud.com) and from the left main menu, select **Clusters** to monitor
 progress. Once `tf-dev-cluster` has a **Running** status, select it and go to the **Profile** tab. Confirm it is using
 `tf-cluster-template-profile-aws`. Select the **Hello Universe** pack, then select **Configure Values** and confirm that
 `app_replicas` is set to `1`.
