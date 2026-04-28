@@ -21,6 +21,18 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4-9-0}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10236 -->
+
+- [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud) and
+  [Azure Government cloud](../clusters/public-cloud/azure/azure-cloud.md#azure-government-cloud) are now disabled in the
+  Palette UI. To use AWS GovCloud or Azure Government cloud in Palette, you must do so via the
+  [Palette API](/api/category/palette-api-v1/),
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+  however, these methods will be removed in an [upcoming release](./announcements.md#upcoming-breaking-changes). To
+  continue deploying and managing clusters using AWS GovCloud or Azure Government cloud, we recommend using
+  [Palette VerteX](../vertex/vertex.md) instead.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2726 -->
@@ -37,6 +49,13 @@ tags: ["release-notes"]
   [Kubeconfig](../clusters/cluster-management/kubeconfig.md) and
   [Kubectl](../clusters/cluster-management/palette-webctl.md) guides for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9357 -->
+
+- GitHub Container Registry (GHCR) is now a supported Open Container Initiative (OCI) Helm registry in Palette. Refer to
+[Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) for details on how to add GHCRs
+to Palette and
+[Add a Helm Chart](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md) for
+how to use GHCR-sourced Helm charts in your clusters.
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2774 -->
 
 - The `compute.zoneOperations.get` and `compute.zoneOperations.list` permissions have been added to GCP
@@ -50,6 +69,20 @@ tags: ["release-notes"]
   for [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) authentication. Refer to the
   [Configure EKS Pod Identity for ECR Registries](../clusters/public-cloud/aws/enable-pod-identity-ecr.md) guide for
   more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5801 -->
+
+- Palette now supports the option to skip worker node upgrades on
+  [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md) and
+  [VMware vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md) clusters. For example, if you have
+  worker pools running critical databases or real-time processing services, you can enable this option to maintain
+  service continuity during control plane upgrades, then schedule
+  [worker node updates](../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade) during planned
+  maintenance windows.
+
+  The version difference between the control plane and worker nodes must not exceed the
+  [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette
+  enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
 #### Improvements
 
@@ -74,6 +107,24 @@ tags: ["release-notes"]
 
 - Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. Use Ubuntu
   24.04, as it is FIPS 140-3 compliant.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
+
+- The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
+  Palette management plane services is now [deprecated](./announcements.md#deprecations). Traefik replaced Nginx as the
+  default management cluster ingress controller starting with Palette 4.8.47. For self-hosted Palette environments
+  [installed using Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md),
+  set `ingress.type` to `traefik` to avoid service disruptions. Refer to
+  [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
+  more information.
+
+  If you have made custom modifications to the Ingress Nginx configuration in your self-hosted environment, such as
+  custom annotations, load balancer settings, or Transport Layer Security (TLS) configurations, these customizations may
+  not carry over automatically and could affect your deployment. Review your ingress configuration before upgrading and
+  [contact our Support team](https://support.spectrocloud.io/) if you need assistance migrating custom ingress settings
+  to Traefik. For installations configured to use DNS, you must also update your records to point to the new Traefik
+  `LoadBalancer` service after upgrading. Refer to the
+  [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
 
 ### Edge
 
@@ -134,8 +185,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2527 -->
-
 - A new [Enable AI Workloads with the NVIDIA GPU Operator Pack](../ai-workloads/nvidia-gpu-operator.md) guide is now
   available. Follow it to verify that GPU workloads can run in your clusters.
 
@@ -183,8 +232,5 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | --------- | ----------- |
 
 #### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
 
 #### Deprecations and Removals
