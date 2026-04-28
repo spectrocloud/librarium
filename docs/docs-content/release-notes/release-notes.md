@@ -43,6 +43,14 @@ tags: ["release-notes"]
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md). These permissions allow Palette to
   optimize the cluster creation process.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10389 -->
+
+- Palette now supports
+  [EKS Pod Identity](https://aws.amazon.com/blogs/containers/amazon-eks-pod-identity-a-new-way-for-applications-on-eks-to-obtain-iam-credentials/)
+  for [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) authentication. Refer to the
+  [Configure EKS Pod Identity for ECR Registries](../clusters/public-cloud/aws/enable-pod-identity-ecr.md) guide for
+  more information.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->

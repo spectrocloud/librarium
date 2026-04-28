@@ -10,7 +10,7 @@ sidebar_position: 50
 Palette supports
 [EKS Pod Identity](https://aws.amazon.com/blogs/containers/amazon-eks-pod-identity-a-new-way-for-applications-on-eks-to-obtain-iam-credentials/)
 for [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) authentication. The EKS Pod Identity Agent
-generates authentication tokens are generated using temporary, automatically-rotated credentials, eliminating the need
+generates authentication tokens are generated using temporary, automatically rotated credentials, eliminating the need
 for static AWS access keys.
 
 :::warning
@@ -92,7 +92,7 @@ the[Register and Manage AWS Accounts](./add-aws-accounts.md) guide for more info
     ```
 
 3.  Execute the following command to add the permissions defined in the `ecr-permissions-policy.json` file to your
-    `spectro-hubble` EKS Pod Identity association. Replace <hubble-role-name> with the ARN of your pod identity
+    `spectro-hubble` EKS Pod Identity association. Replace `<hubble-role-name>` with the ARN of your pod identity
     association from **Step 1**.
 
     ```shell
@@ -129,8 +129,8 @@ the[Register and Manage AWS Accounts](./add-aws-accounts.md) guide for more info
 6.  Issue the following command to restart the Specman service in order to apply all updates.
 
     ```shell
-    kubectl rollout restart statefulset specman -n hubble-system
-    kubectl rollout status statefulset specman -n hubble-system
+    kubectl rollout restart statefulset specman --namespace hubble-system
+    kubectl rollout status statefulset specman --namespace hubble-system
     ```
 
     ```shell hideClipboard title="Example Output"
@@ -161,10 +161,10 @@ the[Register and Manage AWS Accounts](./add-aws-accounts.md) guide for more info
 
     ```shell
      helm upgrade palette spectro-mgmt-plane-<version>.tgz \
-      -f values.yaml -n hubble-system
+      -f values.yaml --namespace hubble-system
 
-     kubectl rollout restart deployment cloud -n hubble-system
-     kubectl rollout restart statefulset specman -n hubble-system
+     kubectl rollout restart deployment cloud --namespace hubble-system
+     kubectl rollout restart statefulset specman --namespace hubble-system
     ```
 
     ```shell hideClipboard title="Example Output"
@@ -197,5 +197,5 @@ the[Register and Manage AWS Accounts](./add-aws-accounts.md) guide for more info
 4. Execute the following command to view the log lines of the Specman service. Ensure that there are no errors.
 
    ```shell
-   kubectl logs specman-0 -n hubble-system --tail=10
+   kubectl logs specman-0 --namespace hubble-system --tail=10
    ```
