@@ -45,33 +45,34 @@ The Palette MCP server provides the following configuration parameters.
 
 ## Security
 
-The Palette MCP server is deployed as a container image that is hosted in your infrastructure environment. Any credentials or
-secrets you provide to the Palette MCP server are stored in the container at runtime and in the configuration file that
-initializes the container.
+The Palette MCP server is deployed as a container image that is hosted in your infrastructure environment. Any
+credentials or secrets you provide to the Palette MCP server are stored in the container at runtime and in the
+configuration file that initializes the container.
 
 The Palette MCP server uses a Palette API key to authenticate with the Palette API. This means that the MCP server has
 the same permissions as the API key used to authenticate with the Palette API. Actions performed by the MCP server can
 be audited through the [Palette audit logs](../../audit-logs/audit-logs.md). When reviewing the audit logs, search for
 the user that is associated with the API key used by the Palette MCP server.
 
-
 :::info
 
-If the user's API key has permissions to retrieve
-the [admin kubeconfig file](../../clusters/cluster-management/kubeconfig.md) for a cluster, the MCP server can also retrieve the admin kubeconfig file.
+If the user's API key has permissions to retrieve the
+[admin kubeconfig file](../../clusters/cluster-management/kubeconfig.md) for a cluster, the MCP server can also retrieve
+the admin kubeconfig file.
 
 You can control whether a user can access a cluster's kubeconfig files by assigning the appropriate
-[Palette role](../../user-management/palette-rbac/project-scope-roles-permissions.md) to the user. For example, to restrict access to the admin kubeconfig file, avoid
-assigning the cluster admin role to the user. Refer to the
+[Palette role](../../user-management/palette-rbac/project-scope-roles-permissions.md) to the user. For example, to
+restrict access to the admin kubeconfig file, avoid assigning the cluster admin role to the user. Refer to the
 [Kubeconfig Access Permissions](../../clusters/cluster-management/kubeconfig.md) section to learn more about how to
 control access to kubeconfig files.
 
 :::
 
-The Palette MCP server uses the transport protocol `stdio` to communicate with the configured MCP client. With `stdio`, the MCP server communicates by sending direct JSON-Remote Procedure Call (RPC) messages to the MCP client
-in the local compute environment instead of sending requests over the network. Communication between the Palette MCP server and the Palette API is encrypted using
-Transport Layer Security (TLS). We recommend reviewing the MCP protocol's documentation on
-[transport mechanisms](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) to learn more about
+The Palette MCP server uses the transport protocol `stdio` to communicate with the configured MCP client. With `stdio`,
+the MCP server communicates by sending direct JSON-Remote Procedure Call (RPC) messages to the MCP client in the local
+compute environment instead of sending requests over the network. Communication between the Palette MCP server and the
+Palette API is encrypted using Transport Layer Security (TLS). We recommend reviewing the MCP protocol's documentation
+on [transport mechanisms](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) to learn more about
 the security of the transport protocol.
 
 ### Prompt Injection
@@ -91,15 +92,16 @@ serious concern when an LLM service is exposed on behalf of other users who prov
 When using the Palette MCP server, we recommend the following security best practices:
 
 - Use a dedicated API key for the Palette MCP server.
-- In a production environment, use a dedicated user where you manage the role permissions for the Palette
-  MCP server.
+- In a production environment, use a dedicated user where you manage the role permissions for the Palette MCP server.
 - Review the `ALLOW_DANGEROUS_ACTIONS` parameter and set it to `1` if you need to perform dangerous actions, such as
   delete. By default, dangerous actions are disabled.
-- Use a dedicated folder on your machine when configuring the mount path for kubeconfig files. Avoid using an existing folder that is used for other purposes, including maintaining other
-  kubeconfig files.
-- Use a `.env` file when configuring the Palette MCP server. Setting the environment variables using the `-e` or `--environment` flag in the terminal exposes secrets to the command line and potentially logs.
+- Use a dedicated folder on your machine when configuring the mount path for kubeconfig files. Avoid using an existing
+  folder that is used for other purposes, including maintaining other kubeconfig files.
+- Use a `.env` file when configuring the Palette MCP server. Setting the environment variables using the `-e` or
+  `--environment` flag in the terminal exposes secrets to the command line and potentially logs.
 - Rotate the Palette API key for the Palette MCP server regularly. To rotate the API key, you can create a new API key
-  and update the `.env-mcp` file with the new API key. If you used inline `-e` or `--environment` flags, you must update the API key provided to the flags.
+  and update the `.env-mcp` file with the new API key. If you used inline `-e` or `--environment` flags, you must update
+  the API key provided to the flags.
 - Use an LLM you trust or that has enterprise controls related to data protection and privacy.
 
 ## Next Steps
