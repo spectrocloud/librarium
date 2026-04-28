@@ -105,8 +105,8 @@ Certain prerequisites apply to all OCI Helm registries, while others are specifi
 
 - Tenant admin access to Palette.
 
-- A GitHub account (user or organization) and a classic Personal Access Token (PAT) that has the appropriate OAuth scope for
-  GHCR. Fine-grained tokens are not supported. Refer to
+- A GitHub account (user or organization) and a classic Personal Access Token (PAT) that has the appropriate OAuth scope
+  for GHCR. Fine-grained tokens are not supported. Refer to
   [Working with the Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
   for additional information.
 
