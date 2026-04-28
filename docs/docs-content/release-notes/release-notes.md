@@ -86,7 +86,11 @@ how to use GHCR-sourced Helm charts in your clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6100 -->
 
-- Velero has been upgraded to version 1.8.0, which is used internally by Palette for backing up and restoring clusters. Existing clusters with backups configured will be automatically updated to Velero version 1.8.0, ensuring continuous access to backup and restore functionality. Refer to the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup and restore tools in Palette.
+- Velero has been upgraded to version 1.8.0, which is used internally by Palette for backing up and restoring clusters.
+  Existing clusters with backups configured will be automatically updated to Velero version 1.8.0, ensuring continuous
+  access to backup and restore functionality. Refer to the
+  [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
+  and restore tools in Palette.
 
 #### Deprecations and Removals
 
@@ -129,18 +133,21 @@ how to use GHCR-sourced Helm charts in your clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10575 -->
 
-- The `/clusterprofiles`[API endpoint](/api/introduction) is now deprecated. Use the `/dashboard/clusterprofiles` endpoint instead, which includes improved data retrieval capabilities. 
+- The `/clusterprofiles`[API endpoint](/api/introduction) is now deprecated. Use the `/dashboard/clusterprofiles`
+  endpoint instead, which includes improved data retrieval capabilities.
 
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10647 -->
 
-- Fixed an issue that prevented clusters from being deployed when gRPC ports are blocked and WebSocket is used as a fallback. 
+- Fixed an issue that prevented clusters from being deployed when gRPC ports are blocked and WebSocket is used as a
+  fallback.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10634 -->
 
-- Fixed an issue that prevented clusters from being deployed or managed using [cluster templates](../cluster-templates/cluster-templates.md) if the cluster was scoped to a project
-  different from the one the template was created in.
+- Fixed an issue that prevented clusters from being deployed or managed using
+  [cluster templates](../cluster-templates/cluster-templates.md) if the cluster was scoped to a project different from
+  the one the template was created in.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6470 -->
 
@@ -161,8 +168,7 @@ how to use GHCR-sourced Helm charts in your clusters.
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10431 -->
 
 - Fixed an issue that caused the Palette UI to crash when creating or editing
-  [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) with empty or missing
-  version fields.
+  [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) with empty or missing version fields.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10381 -->
 
@@ -171,8 +177,9 @@ how to use GHCR-sourced Helm charts in your clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6311 -->
 
-- Fixed an issue that caused the Velero Helm release to fail when enabling [cluster
-  backups](../clusters/cluster-management/backup-restore/backup-restore.md) using Azure as the backup storage location.
+- Fixed an issue that caused the Velero Helm release to fail when enabling
+  [cluster backups](../clusters/cluster-management/backup-restore/backup-restore.md) using Azure as the backup storage
+  location.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6310 -->
 
@@ -187,14 +194,13 @@ how to use GHCR-sourced Helm charts in your clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6217 -->
 
-- Fixed an issue that caused EKS Pod Identity job failures in
-  clusters using [image swap](../clusters/cluster-management/image-swap.md).
+- Fixed an issue that caused EKS Pod Identity job failures in clusters using
+  [image swap](../clusters/cluster-management/image-swap.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9996 -->
 
 - Fixed an issue that caused repeated false pack update notifications on
-  [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) when no changes were made to the pack or
-  profile.
+  [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) when no changes were made to the pack or profile.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4372 -->
 
@@ -253,9 +259,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10334 -->
 
-- Fixed an issue that caused upgrading
-  [self-hosted Palette VerteX](../vertex/vertex.md) installations earlier than 4.6.12 to fail due to legacy MongoDB
-  values.
+- Fixed an issue that caused upgrading [self-hosted Palette VerteX](../vertex/vertex.md) installations earlier than
+  4.6.12 to fail due to legacy MongoDB values.
 
 ### Automation
 
