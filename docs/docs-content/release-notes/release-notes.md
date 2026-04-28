@@ -132,7 +132,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  types.
+  types. A [known issue](./known-issues.md) prevents locally managed Edge clusters that use cluster profiles containing
+  profile variables with the **Dropdown** input type from scaling.
 - Pluggable Authentication Modules (PAM) policy enforcement is now enabled, including password expiry checks, which can
   be set using the `stylus.site.users[*].passwordExpiry`
   [user data](../clusters/edge/edge-configuration/installer-reference.md) field. For examples of configuring PAM via the
