@@ -159,8 +159,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
-<!-- https://spectrocloud.atlassian.net/browse/DOC-2527 -->
-
 - A new [Enable AI Workloads with the NVIDIA GPU Operator Pack](../ai-workloads/nvidia-gpu-operator.md) guide is now
   available. Follow it to verify that GPU workloads can run in your clusters.
 
@@ -208,8 +206,5 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | --------- | ----------- |
 
 #### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
 
 #### Deprecations and Removals
