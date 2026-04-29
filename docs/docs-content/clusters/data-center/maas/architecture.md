@@ -47,8 +47,9 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
   _Architecture image TBA_
 
-  Refer to the [Create and Manage MAAS OpenShift Clusters](./create-manage-maas-openshift-clusters.md) guide for more
-  information.
+  Refer to the
+  [Create and Manage MAAS OpenShift Clusters with HyperShift](./create-manage-maas-openshift-clusters-hypershift/create-manage-maas-openshift-clusters-hypershift.md)
+  guide for more information.
 
 ## Limitations
 
@@ -63,7 +64,7 @@ Palette provides the following distributions for MAAS environments.
 | --------------------------------- | ---------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Palette eXtended Kubernetes (PXK) | CNCF                         | Ubuntu, BYOOS                   | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
 | Canonical Kubernetes              | Canonical Kubernetes         | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
-| OpenShift                         | OpenShift Container Platform | BYOOS                           | TBC                                                                                                                          | Local Path Provisioner                                                                                                       |
+| OpenShift                         | OpenShift Container Platform | BYOOS                           | OVN-Kubernetes CNI (passthrough)                                                                                             | Local Path Provisioner                                                                                                       |
 
 :::preview
 
