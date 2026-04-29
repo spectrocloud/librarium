@@ -52,30 +52,29 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 
        - Set `manifests.volume-snapshot-class.deletionPolicy` to the `Retain` value to allow volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality.
 
-       ```yaml hideClipboard {5}
-       volume-snapshot-class:
-          create: true
-          name: "spectro-volume-snapshot-class"
-          driver: ""
-          deletionPolicy: "Retain"
-       ```
+          ```yaml hideClipboard {5}
+          volume-snapshot-class:
+             create: true
+             name: "spectro-volume-snapshot-class"
+             driver: ""
+             deletionPolicy: "Retain"
+          ```
 
        - Add the following snippet under the `manifests.volume-snapshot-class` field if you are using <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> as your CSI layer on a cluster deployed to a MAAS environment.
 
-       ```yaml
-       extraLabels:
-          pod-security.kubernetes.io/enforce: privileged
-          pod-security.kubernetes.io/audit: privileged
-          pod-security.kubernetes.io/warn: privileged
-       ```
+          ```yaml
+          extraLabels:
+             pod-security.kubernetes.io/enforce: privileged
+             pod-security.kubernetes.io/audit: privileged
+             pod-security.kubernetes.io/warn: privileged
+          ```
 
        - Set `snapshotter.forceEnable` to `true` to run the snapshotter sidecar regardless of whether the required snapshot CRDs are installed.
 
-       ```yaml
-       snapshotter:
-          forceEnable: true
-       ```
-
+          ```yaml
+          snapshotter:
+             forceEnable: true
+          ```
    :::
 
 ### Enablement
