@@ -10,14 +10,14 @@ sidebar_position: 50
 Palette supports
 [EKS Pod Identity](https://aws.amazon.com/blogs/containers/amazon-eks-pod-identity-a-new-way-for-applications-on-eks-to-obtain-iam-credentials/)
 for [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) authentication. The EKS Pod Identity Agent
-generates authentication tokens using temporary, automatically rotated credentials, eliminating the need
-for static AWS access keys.
+generates authentication tokens using temporary, automatically rotated credentials, eliminating the need for static AWS
+access keys.
 
 :::warning
 
 Pod Identity for ECR authentication is only supported when the registry is hosted in the same AWS account as the EKS
-management cluster. Use static or dynamic access credentials for registries in different AWS accounts. Refer to
-the [Register and Manage AWS Accounts](./add-aws-accounts.md) guide for more information.
+management cluster. Use static or dynamic access credentials for registries in different AWS accounts. Refer to the
+[Register and Manage AWS Accounts](./add-aws-accounts.md) guide for more information.
 
 :::
 
@@ -103,7 +103,8 @@ the [Register and Manage AWS Accounts](./add-aws-accounts.md) guide for more inf
     ```
 
 4.  The Spectro Manifest (Specman) service requires its own pod identity association to synchronize manifests directly
-    from ECR using OCI Registry As Storage (ORAS). Execute the following command to use the same IAM role as the `spectro-hubble` association.
+    from ECR using OCI Registry As Storage (ORAS). Execute the following command to use the same IAM role as the
+    `spectro-hubble` association.
 
     - Replace `<eks-cluster-name>` with the name of your Amazon EKS Cluster.
     - Replace `<aws-account-id>` with your AWS account ID.
