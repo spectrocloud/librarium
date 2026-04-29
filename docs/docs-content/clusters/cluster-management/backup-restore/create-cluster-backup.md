@@ -44,7 +44,7 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 - An active cluster in Palette.
 
 <!-- prettier-ignore -->
-- If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more
+- If you want to include volume snapshots in the backup, ensure that your Container Storage Interface (CSI) driver supports volume snapshots. For more
   information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Volume Snapshots](backup-restore.md#volume-snapshots) section for more information.
 
    :::warning
@@ -69,7 +69,7 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
              pod-security.kubernetes.io/warn: privileged
           ```
 
-       - Set `snapshotter.forceEnable` to `true` to run the snapshotter sidecar regardless of whether the required snapshot CRDs are installed.
+       - Set `snapshotter.forceEnable` to `true` to run the snapshotter sidecar regardless of whether the required snapshot Custom Resource Definitions (CRDs) are installed.
 
           ```yaml
           snapshotter:
