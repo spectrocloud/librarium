@@ -142,23 +142,20 @@ management cluster. Use static or dynamic access credentials for registries in d
 
 7.  Edit the `values.yaml` file for your
     [self-hosted Palette](../../../enterprise-version/install-palette/install-on-kubernetes/install.md) or
-    [VerteX](../../../vertex/install-palette-vertex/install-on-kubernetes/install.md) installation.
+    [VerteX](../../../vertex/install-palette-vertex/install-on-kubernetes/install.md) installation. Set the following
+    fields and values.
 
          ```yaml
          config:
              ociPackEcrRegistry:
-              endpoint: "<aws-account-id>.dkr.ecr.<region>.amazonaws.com"
-              name: "<registry-name>"
               accessKey: ""
               secretKey: ""
-              baseContentPath: "<base-content-path>"
-              isPrivate: true
-              insecureSkipVerify: false
-              caCert: ""
               credentialType: "pod-identity"
          ```
 
-8.  Issue the following command to apply changes.
+8.  Issue the following command to apply changes. Replace the `<version>` with the Palette release version installed on
+    your Palette or VerteX environment. If you are unsure, you can retrieve the version using the
+    `helm list --namespace hubble-system` command.
 
     ```shell
      helm upgrade palette spectro-mgmt-plane-<version>.tgz \
