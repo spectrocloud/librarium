@@ -11,14 +11,14 @@ tags: ["clusters", "cluster management", "headlamp"]
 
 :::
 
-[Headlamp](https://headlamp.dev/) is an open-source, web-based interface for Kubernetes that provides a clear and
+[Headlamp](https://headlamp.dev/) is an open source, web-based interface for Kubernetes that provides a clear and
 intuitive way to interact with cluster resources without relying solely on command-line tools. It allows you to explore
 workloads, inspect configurations, and monitor the state of their applications through an intuitive dashboard.
 
 ## Supported Cluster Types
 
 - Public Cloud
-  - Infrastructure as a Service (IaaS):
+  - IaaS:
     - AWS
     - Azure
     - GCP
