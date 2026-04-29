@@ -40,17 +40,6 @@ MAAS. Specific limitations for each cluster type are detailed in the respective 
 
 ### HyperShift Host Cluster
 
-<!-- prettier-ignore-start -->
-
-- Using a [Private Cloud Gateway (PCG)](../../pcg/pcg.md) as the HyperShift host is not supported. As mentioned in
-  the [prerequisites](#prerequisites-1) for the HyperShift host cluster, it must be a
-  <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
-  MAAS cluster deployed using Palette.
-
-<!-- prettier-ignore-end -->
-
-- Multus Container Network Interface (CNI) is not supported.
-
 - It is not possible to install additional addon layers on OpenShift workload clusters through Palette. If you need to
   install addons such as MetalLB, we recommend using the [OperatorHub](https://operatorhub.io/). The OperatorHub is
   accessed through the OpenShift console of your workload cluster. Addons installed through the OperatorHub are managed
@@ -302,7 +291,7 @@ cluster in Palette before creating any OpenShift workload clusters.
   - If you are using a self-hosted Palette or Palette VerteX instance with a direct connection to your MAAS environment,
     you can use Palette's [System Private Gateway](../../pcg/architecture.md#system-private-gateway).
 
-- The **OpenShift** feature flag enabled in the
+- The **HypershiftOpenshiftCluster** feature flag enabled in the Palette
   [system console](../../../enterprise-version/system-management/feature-flags.md).
 
 - The [Cluster Admin](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role in Palette.
@@ -474,10 +463,9 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
         control plane replica can remain blocked because the PDB prevents eviction of the control plane pod. The typical
         symptom is that the repaving node remains in `Deleting` or `Draining` state until the drain is able to complete.
 
-  - <VersionedLink text="OVN-Kubernetes CNI" url="/integrations/packs/?pack=ovn-kubernetes-cni" /> pack for the
-    Container Network Interface (CNI) layer. This is used as a passthrough CNI pack since the CNI is configured
-    automatically by the **OpenShift** pack and a dedicated CNI pack is not supported for OpenShift workload clusters
-    hosted on HyperShift.
+  - <VersionedLink text="OVN-Kubernetes CNI" url="/integrations/packs/?pack=ovn-kubernetes-cni" /> pack for the Network
+    layer. This is used as a passthrough CNI pack since the CNI is configured automatically by the **OpenShift** pack
+    and a dedicated CNI pack is not supported for OpenShift workload clusters hosted on HyperShift.
 
 ### Enablement
 
@@ -568,5 +556,5 @@ applications to your OpenShift cluster. Consider the following next steps:
   plane pods.
 
 - Refer to [Manage Clusters](../../cluster-management/cluster-management.md) for Day-2 cluster management tasks, but
-  ensure that you have reviewed the [Limitations](#limitations) section of this guide as some management tasks are not
-  supported for HyperShift-hosted OpenShift clusters.
+  ensure that you have reviewed the [Limitations](#openshift-workload-clusters) section of this guide as some management
+  tasks are not supported for HyperShift-hosted OpenShift clusters.
