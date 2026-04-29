@@ -122,6 +122,8 @@ storage:
     secure: false|true
     accesskey: SAMPLEACCESSKEY
     secretkey: SUPERSECRET
+    host: OPTIONAL_MINIO_HOST_IF_USING
+    port: OPTIONAL_MINIO_PORT_IF_USING
 ```
 
 You can also use ephemeral storage. We recommend using ephemeral storage for testing purposes. Production environments
