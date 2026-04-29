@@ -170,28 +170,40 @@ to learn more about the ports used for communication.
             <summary> Microsoft Entra ID </summary>
 
             If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following configuration
-            template and add the configuration to your Kubernetes cluster profile layer.
+            template and add the configuration to your Kubernetes cluster profile layer. This configuration enables [Kubernetes Role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) for Kubernetes authorization.
 
                 ```yaml
                 managedControlPlane:
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                 ```
 
-                Additionally, if you want to disable
-                [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
-                `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
-                `managedControlPlane.aadProfile` section.
+            Alternatively, you can set `enableAzureRBAC: true` to use [Azure RBAC](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview) for Kubernetes authorization. This setting is disabled by default. Add the following configuration to your Kubernetes cluster profile layer.
+
+                ```yaml {4}
+                managedControlPlane:
+                  aadProfile:
+                    managed: true
+                    enableAzureRBAC: true
+                    adminGroupObjectIDs:
+                      - <admin-group-object-id-1>
+                      - <admin-group-object-id-2>
+                ```
+
+            Additionally, if you want to disable
+            [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
+            `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
+            `managedControlPlane.aadProfile` section. Ensure that the service principle for the Azure cloud account configured in Palette is included in the list of `adminGroupObjectIDs`.
 
                 ```yaml {7}
                 managedControlPlane:
                   aadProfile:
                     managed: true
                     adminGroupObjectIDs:
-                      - <admin-group-object-id>
+                      - <admin-group-object-id-1>
                       - <admin-group-object-id-2>
                     disableLocalAccounts: true
                 ```
@@ -333,8 +345,6 @@ to learn more about the ports used for communication.
     | **Number of nodes in the pool**       | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
     | **Additional Labels**                 | Optional node labels in the key-value format. To learn more, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | **Additional Annotations (Optional)** | Additional Kubernetes [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to assign to each worker node.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-    | **Override Kubeadm Configuration**    | Adjust kubelet arguments for [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) or pre-kubeadm commands to meet specific operational or environment requirements for your worker nodes. This option is disabled by default. When enabled, the **Configure Kubeadm** button appears.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Configure Kubeadm**                 | Available only when **Override Kubeadm Configuration** is enabled. Select this option to override `kubeadmconfig.kubeletExtraArgs` and `kubeadmconfig.preKubeadmConfig` commands configured in the Kubernetes layer of your cluster profile. Any changes made post-cluster deployment will trigger a cluster repave.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
     | **Taints**                            | You can apply optional taint labels to a worker node pool. Review the [Node Pool](../../cluster-management/node-pool.md) and [Taints and Tolerations](../../cluster-management/taints.md) guides to learn more.<br/><br/>Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />- **NoSchedule**—Pods are not scheduled onto nodes with this taint.<br />- **PreferNoSchedule**—Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />- **NoExecute** — New pods that do not tolerate the taint will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the taint. |
 
     #### Worker Node Pool Cloud Configuration

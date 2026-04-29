@@ -61,6 +61,8 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
   - A minimum of three worker nodes or three untainted control plane nodes.
 
+  - AMD64 (also known as x86_64) architecture. ARM-based nodes are not supported.
+
 - The following network ports must be accessible for Palette to operate successfully.
 
   - TCP/443: Inbound and outbound to and from the Palette management cluster.
@@ -84,10 +86,19 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
   page to learn more about modifying StorageClasses.
 
 - Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default ingress
-  controller starting with Palette 4.8.47. Nginx, which is
-  [deprecated](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/), acts as a fallback and does not
-  actively serve traffic. If you already have an ingress controller deployed in the cluster, you must set the
-  `ingress.enabled` parameter to `false` in the `values.yaml` file.
+  controller starting with Palette 4.8.47. Ingress Nginx acts as a fallback and does not actively serve traffic. If you
+  already have an ingress controller deployed in the cluster, you must set the `ingress.enabled` parameter to `false` in
+  the `values.yaml` file.
+
+  :::warning
+
+  The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
+  Palette management plane services is now [deprecated](../../../../release-notes/announcements.md#deprecations) and
+  will be removed in a future release. If you are deploying an ingress controller as part of your Palette installation,
+  set `ingress.type` to `traefik` to avoid service disruptions. Refer to
+  [Helm Configuration Reference](../palette-helm-ref.md) for more information.
+
+  :::
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for Palette.
@@ -251,7 +262,7 @@ environment. Reach out to our support team if you need assistance.
     | `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io`. <br /><br /> **NOTE:** Include `/v2` in your endpoints if you are using a [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project. Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2` for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example: `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`. | string   |
     | `imageSwapImages`                   | The image swap configuration for Palette. If you are using an OCI registry, such as Harbor, replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | object   |
     | `imageSwapConfig.isEKSCluster`      | If you are NOT installing Palette on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | boolean  |
-    | `ingress.enabled`                   | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set this to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | boolean  |
+    | `ingress.enabled`                   | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set to `false` if you already have an ingress controller deployed in the cluster. <br /><br /> **WARNING:** The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by Palette management plane services is now [deprecated](../../../../release-notes/announcements.md#deprecations) and will be removed in a future release. If you are deploying an ingress controller as part of your Palette installation, set `ingress.type` to `traefik` to avoid service disruptions. Refer to [Helm Configuration Reference](../palette-helm-ref.md) for more information.                                                                                                                                                                            | boolean  |
     | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | object   |
 
     :::info
@@ -765,6 +776,8 @@ environment. Reach out to our support team if you need assistance.
 12. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_
     state. The installation takes two to three minutes to complete.
+
+    <PartialsComponent category="self-hosted" name="install-on-kubernetes-al2" edition="Palette" />
 
     ```shell
     kubectl get pods --all-namespaces --watch

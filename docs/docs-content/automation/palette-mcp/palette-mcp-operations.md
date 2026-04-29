@@ -11,15 +11,7 @@ tags: ["ai", "mcp", "automation"]
 
 :::
 
-The Palette MCP server contains the following tools that you can leverage for your Palette operations:
-
-- `gather_or_delete_clusterprofiles` - Fetches information about or deletes
-  [cluster profiles](../../profiles/profiles.md).
-- `gather_or_delete_clusters` - Fetches information about or deletes [clusters](../../clusters/clusters.md).
-- `getKubeconfig` - Downloads cluster [kubeconfig](../../clusters/cluster-management/kubeconfig.md) files.
-- `search_and_manage_resource_tags` - Manages resource tags for cluster profiles, clusters,
-  [Edge hosts](../../clusters/edge/edge.md), [cluster templates](../../cluster-templates/cluster-templates.md), and
-  [cluster templates policies](../../cluster-templates/create-cluster-template-policies/create-cluster-template-policies.md).
+<PartialsComponent category="palette-mcp" name="mcp-tools" />
 
 This guide provides examples of how to use the Palette MCP server using
 [Claude Code](https://code.claude.com/docs/en/overview) and the Claude Sonnet 4.6 model. You can use an MCP client and
