@@ -23,3 +23,7 @@ in a private network.
 - [Register and Manage MAAS Cloud Accounts](register-manage-maas-cloud-accounts.md)
 
 - [Create and Manage MAAS Cluster](create-manage-maas-clusters.md)
+
+- [Create and Manage MAAS LXD Clusters](create-manage-maas-lxd-clusters.md)
+
+- [Create and Manage MAAS OpenShift Clusters](create-manage-maas-openshift-clusters.md)
