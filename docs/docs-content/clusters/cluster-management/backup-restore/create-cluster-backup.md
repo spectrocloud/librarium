@@ -73,7 +73,7 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 
        ```yaml
        snapshotter:
-        forceEnable: true
+          forceEnable: true
        ```
 
    :::
