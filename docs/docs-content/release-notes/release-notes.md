@@ -205,6 +205,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10660 -->
+
+- <TpBadge> Headlamp is now available. It provides a web-based Kubernetes UI for cluster management and monitoring.
+
 #### OS
 
 | Pack Name | New Version |
