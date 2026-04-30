@@ -240,7 +240,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
 2. In the **Create pack bundle** section, select **Browse Packs**.
 
-   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs-4-7-45.webp)
+   ![Image showing where to download individual packs](/downloads/downloads_artifact-studio-browse-packs-4-7-45.webp)
 
 3. On the left menu, choose any applicable pack filters, such as **Product**, product **Version**, **Cloud type**, and
    **Layer type**. Beside the search bar are additional filters: infrastructure type (**AMD64** or **ARM64**), and FIPS
@@ -250,7 +250,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
    your results further. Use the **Select option** drop-down menu to choose the desired version of your pack. Once
    selected, the pack appears in the **Selected items** pane on the right.
 
-   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-ind-packs-dl-4-7-2025-45.webp)
+   ![Image showing download of multiple packs](/downloads/downloads_artifact-studio-ind-packs-dl-4-7-2025-45.webp)
 
 5. Repeat step 4 until you have added all necessary packs. When finished, select the **I'm not a robot** reCAPTCHA
    checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the
@@ -279,12 +279,12 @@ information on how to verify the authenticity and integrity of your bundles, ref
 3. From the top menu, choose any applicable filters beside the search bar, such as **Use Case**, **Palette Version**,
    **Tags**, and **Environment**. Use the **Search** bar to filter your results further.
 
-   ![Image showing Profile Hub search and filter options](../../../static/assets/docs/images/downloads/downloads_artifact-studio_browse-stacks-4-8-13.webp)
+   ![Image showing Profile Hub search and filter options](/downloads/downloads_artifact-studio_browse-stacks-4-8-13.webp)
 
 4. Select **View details** to display more information about a specific stack. To review what packs comprise a specific
    stack, click on the **Packs & Dependencies**. Click on **Version History** to review changes to a specific stack.
 
-   ![Image showing details of a specific stack](../../../static/assets/docs/images/downloads/downloads_artifact-studio_view-details-stacks-4-8-13.webp)
+   ![Image showing details of a specific stack](/downloads/downloads_artifact-studio_view-details-stacks-4-8-13.webp)
 
 5. Select the check box of each stack you want to download. Once selected, the stack appears in the **Selected
    Profiles** pane on the right.
