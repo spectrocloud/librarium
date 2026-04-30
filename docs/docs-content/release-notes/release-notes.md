@@ -260,5 +260,3 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - <TpBadge /> Headlamp is now available. It provides a web-based Kubernetes UI for cluster management and monitoring.
   Refer to the [Headlamp](../clusters/cluster-management/headlamp.md) guide for more information.
-
-#### Deprecations and Removals
