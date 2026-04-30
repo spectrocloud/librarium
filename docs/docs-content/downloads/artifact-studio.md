@@ -34,6 +34,8 @@ Following are the main use cases:
   explore available Nvidia AI resources to incorporate in your profile bundles. Refer to the
   [PaletteAI documentation](https://docs.palette-ai.com/) and [product page](https://www.palette-ai.com/) to learn more
   about PaletteAI.
+- Download [ready-to-use validated stacks](https://artifact-studio.spectrocloud.com/profiles-hub) to help you get
+  started immediately.
 
 :::preview
 
@@ -238,7 +240,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
 2. In the **Create pack bundle** section, select **Browse Packs**.
 
-   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs-4-7-45.webp)
+   ![Image showing where to download individual packs](/downloads/downloads_artifact-studio-browse-packs-4-7-45.webp)
 
 3. On the left menu, choose any applicable pack filters, such as **Product**, product **Version**, **Cloud type**, and
    **Layer type**. Beside the search bar are additional filters: infrastructure type (**AMD64** or **ARM64**), and FIPS
@@ -248,7 +250,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
    your results further. Use the **Select option** drop-down menu to choose the desired version of your pack. Once
    selected, the pack appears in the **Selected items** pane on the right.
 
-   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-ind-packs-dl-4-7-2025-45.webp)
+   ![Image showing download of multiple packs](/downloads/downloads_artifact-studio-ind-packs-dl-4-7-2025-45.webp)
 
 5. Repeat step 4 until you have added all necessary packs. When finished, select the **I'm not a robot** reCAPTCHA
    checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the
@@ -265,6 +267,41 @@ information on how to verify the authenticity and integrity of your bundles, ref
    :::
 
 To download additional packs, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For
+information on how to verify the authenticity and integrity of your bundles, refer to the
+[Verify Signatures](#verify-signatures) section.
+
+## Download a Validated Stack
+
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
+
+2. In the **Profiles Hub** section, select **Explore Profiles Hub**.
+
+3. From the top menu, choose any applicable filters beside the search bar, such as **Use Case**, **Palette Version**,
+   **Tags**, and **Environment**. Use the **Search** bar to filter your results further.
+
+   ![Image showing Profile Hub search and filter options](/downloads/downloads_artifact-studio_browse-stacks-4-8-13.webp)
+
+4. Select **View details** to display more information about a specific stack. To review what packs comprise a specific
+   stack, click on the **Packs & Dependencies**. Click on **Version History** to review changes to a specific stack.
+
+   ![Image showing details of a specific stack](/downloads/downloads_artifact-studio_view-details-stacks-4-8-13.webp)
+
+5. Select the check box of each stack you want to download. Once selected, the stack appears in the **Selected
+   Profiles** pane on the right.
+
+6. Repeat step 5 until you have added all necessary stacks. When finished, select the **I'm not a robot** reCAPTCHA
+   checkbox, and select **Download Profile** or **Download packs**. Not all stacks will have packs to download.
+   Alternatively, you can **Copy all URLs** so that you can download the applicable files later in an alternate manner
+   of your choosing, such as via `curl`.
+
+   :::tip
+
+   Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.spectrocloud.com/) to
+   allow for multiple artifact downloads.
+
+   :::
+
+To download additional stacks, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For
 information on how to verify the authenticity and integrity of your bundles, refer to the
 [Verify Signatures](#verify-signatures) section.
 

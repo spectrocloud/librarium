@@ -63,6 +63,14 @@ how to use GHCR-sourced Helm charts in your clusters.
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md). These permissions allow Palette to
   optimize the cluster creation process.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10389 -->
+
+- Palette now supports
+  [EKS Pod Identity](https://aws.amazon.com/blogs/containers/amazon-eks-pod-identity-a-new-way-for-applications-on-eks-to-obtain-iam-credentials/)
+  for [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) authentication. Refer to the
+  [Configure EKS Pod Identity for ECR Registries](../clusters/public-cloud/aws/enable-pod-identity-ecr.md) guide for
+  more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5801 -->
 
 - Palette now supports the option to skip worker node upgrades on
@@ -78,6 +86,12 @@ how to use GHCR-sourced Helm charts in your clusters.
   enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold.
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10373 -->
+
+- The **Cloud Type** options for [imported clusters](../clusters/imported-clusters/imported-clusters.md) have been
+  updated for clarity (**AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**). Users should now select **Generic**
+  when importing AWS EKS-Anywhere, OpenShift, and VMware vSphere clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-7095 -->
 
@@ -223,8 +237,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  types.
-
+  types. A [known issue](./known-issues.md) prevents locally managed Edge clusters that use cluster profiles containing
+  profile variables with the **Dropdown** input type from scaling.
+  
 <!-- https://spectrocloud.atlassian.net//browse/PE-8122 -->
 <!-- https://spectrocloud.atlassian.net//browse/PE-7779 -->
 
@@ -308,6 +323,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 ### Packs
 
 #### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10660 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2729 -->
+
+- <TpBadge /> Headlamp is now available. It provides a web-based Kubernetes UI for cluster management and monitoring.
+  Refer to the [Headlamp](../clusters/cluster-management/headlamp.md) guide for more information.
 
 #### OS
 
