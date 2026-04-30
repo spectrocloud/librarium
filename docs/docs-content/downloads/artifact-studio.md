@@ -279,7 +279,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
    ![Image showing Profile Hub search and filter options](../../../static/assets/docs/images/downloads/downloads_artifact-studio_browse-stacks-4-8-13.webp)
 
-4. Select **View details** to see more information about a specific pack. To review what packs comprise a specific stack, click on the **Packs & Dependencies**. Click on **Version History** to review changes to a specific stack. 
+4. Select **View details** to display more information about a specific stack. To review what packs comprise a specific stack, click on the **Packs & Dependencies**. Click on **Version History** to review changes to a specific stack. 
 
    ![Image showing details of a specific stack](../../../static/assets/docs/images/downloads/downloads_artifact-studio_view-details-stacks-4-8-13.webp)
 
