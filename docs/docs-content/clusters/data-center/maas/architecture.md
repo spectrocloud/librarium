@@ -45,7 +45,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
   used to host control planes as pods for the OpenShift workload clusters. The following diagram illustrates how
   HyperShift and OpenShift work with Palette and MAAS.
 
-  _Architecture image TBA_
+  ![Illustration of HyperShift and OpenShift architecture with Palette and MAAS](/data-center-clusters_maas_architecture_hypershift-openshift-4-9.webp)
 
   Refer to the
   [Create and Manage MAAS OpenShift Clusters with HyperShift](./create-manage-maas-openshift-clusters-hypershift/create-manage-maas-openshift-clusters-hypershift.md)
