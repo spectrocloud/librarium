@@ -127,7 +127,9 @@ for information on the fix version and the date the issue was resolved.
 [Virtual Machine Orchestrator](../vm-management/vm-management.md) Day-2 operations, such as VM start, stop, restart, and
 migrate, do not complete when triggered using the [Palette API](/api/introduction) on environments using 4.8.33. |
 February 24, 2026 | Virtual Machine Orchestrator | 4.8.35 | |
+
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2504 --> EKS clusters configured with mismatched Classless
+
 Inter-Domain Routing (CIDR) values and NodePool customization using AWS Launch Templates have nodes with incorrect
 `kubelet` CIDR and `clusterDNS` values. Create a new node and restart the pods scheduled on affected nodes so that they
 are rescheduled onto a healthy node. | January 30, 2026 | Clusters | 4.8.25 | | Edge hosts using encrypted persistent
@@ -204,6 +206,7 @@ on existing Azure US Government clusters. | May 31, 2025 | Clusters | 4.6.36 | |
 31, 2025 | Clusters | 4.6.33 | | Configuring
 [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) on existing
 [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) causes errors. | May 31, 2025 | Clusters | 4.6.33 | |
+
 <!-- prettier-ignore-start -->
 <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> versions 1.31.x
 and 1.32.x do not support GCP. Clusters with this configuration fail to deploy. <!-- prettier-ignore-end--> | May 31,
