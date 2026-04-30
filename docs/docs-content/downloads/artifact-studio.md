@@ -34,6 +34,7 @@ Following are the main use cases:
   explore available Nvidia AI resources to incorporate in your profile bundles. Refer to the
   [PaletteAI documentation](https://docs.palette-ai.com/) and [product page](https://www.palette-ai.com/) to learn more
   about PaletteAI.
+- Download [ready-to-use validated stacks](https://artifact-studio.spectrocloud.com/profiles-hub) to help you get started immediately. 
 
 :::preview
 
