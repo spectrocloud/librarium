@@ -159,7 +159,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/DataDog/datadog-agent/pkg/opentelemetry-mapping-go/otlp/attributes                 | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/DataDog/datadog-agent/pkg/proto                                                    | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/DataDog/datadog-agent/pkg/remoteconfig/state                                       | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/DataDog/datadog-agent/pkg/template                                                 | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| <!-- VERIFIED --> github.com/DataDog/datadog-agent/pkg/template                               | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/DataDog/datadog-agent/pkg/trace                                                    | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | <!-- VERIFIED --> github.com/DataDog/datadog-agent/pkg/trace/log                              | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | <!-- VERIFIED --> github.com/DataDog/datadog-agent/pkg/trace/otel                             | v0.77.0                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -260,7 +260,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/hashicorp/go-multierror                                                            | v1.1.1                                            | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
 | github.com/hashicorp/go-rootcerts                                                             | v1.0.2                                            | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
 | github.com/hashicorp/go-version                                                               | v1.8.0                                            | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
-| github.com/hashicorp/golang-lru/v2                                                            | v2.0.7                                            | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
+| <!-- VERIFIED --> github.com/hashicorp/golang-lru/v2                                          | v2.0.7                                            | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
 | github.com/hashicorp/nomad/api                                                                | v0.0.0-20250909143645-a3b86c697f38                | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)           |
 | github.com/inconshreveable/mousetrap                                                          | v1.1.0                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/infobloxopen/go-trees                                                              | v0.0.0-20200715205103-96a057b8dfb9                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -272,7 +272,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/jonboulle/clockwork                                                                | v0.5.0                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/josharian/intern                                                                   | v1.0.0                                            | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/josharian/native                                                                   | v1.1.0                                            | [MIT](https://opensource.org/license/mit/)                  |
-| github.com/jpillora/backoff                                                                   | v1.0.0                                            | [MIT](https://opensource.org/license/mit/)                  |
+| <!-- VERIFIED --> github.com/jpillora/backoff                                                 | v1.0.0                                            | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/json-iterator/go                                                                   | v1.1.12                                           | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/klauspost/compress                                                                 | v1.18.5                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | <!-- VERIFIED --> github.com/klauspost/compress                                               | v1.18.4                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -324,7 +324,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/monochromegane/go-gitignore                                                        | v0.0.0-20200626010858-205db1a8cc00                | [MIT](https://opensource.org/license/mit/)                  |
 | github.com/mrunalp/fileutils                                                                  | v0.5.1                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/munnerz/goautoneg                                                                  | v0.0.0-20191010083416-a7dc8b61c822                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
-| github.com/mwitkow/go-conntrack                                                               | v0.0.0-20190716064945-2f068394615f                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| <!-- VERIFIED --> github.com/mwitkow/go-conntrack                                             | v0.0.0-20190716064945-2f068394615f                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/mxk/go-flowrate                                                                    | v0.0.0-20140419014527-cca7078d478f                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/networkplumbing/go-nft                                                             | v0.4.0                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/NYTimes/gziphandler                                                                | v1.1.1                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
