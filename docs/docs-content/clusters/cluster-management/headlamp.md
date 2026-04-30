@@ -51,20 +51,20 @@ Due to an [active known issue](../../release-notes/known-issues.md#active-known-
 
 3.  Select **Add New Pack**. The search field appears.
 
-4.  Search for and select the **Headlamp** pack. 
+4.  Search for and select the **Headlamp** pack.
 
     ![Image of the pack search screen with Headlamp shown](/headlamp_select-headlamp-pack.webp)
-    
-    Leave the default configuration and select **Confirm & Create**. Select
-    **Next** and **Finish Configuration** to create your add-on cluster profile.
+
+    Leave the default configuration and select **Confirm & Create**. Select **Next** and **Finish Configuration** to
+    create your add-on cluster profile.
 
 5.  From the left main menu, select **Clusters**. Select the cluster you want to provision Headlamp on.
 
 6.  Select the **Profile** tab and select the **+** button in the **Addon Layers** section. The list of add-on cluster
     profile versions appears.
 
-7.  Select the add-on cluster profile you created in Step 4. Then, select **Confirm** and **Save** to apply the
-    profile to your cluster. Review any cluster profile changes that may appear.
+7.  Select the add-on cluster profile you created in Step 4. Then, select **Confirm** and **Save** to apply the profile
+    to your cluster. Review any cluster profile changes that may appear.
 
 8.  Select the **Overview** tab. Palette marks the add-on layer containing Headlamp with a green circle once it
     completes the deployment process.
