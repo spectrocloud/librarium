@@ -34,7 +34,8 @@ Following are the main use cases:
   explore available Nvidia AI resources to incorporate in your profile bundles. Refer to the
   [PaletteAI documentation](https://docs.palette-ai.com/) and [product page](https://www.palette-ai.com/) to learn more
   about PaletteAI.
-- Download [ready-to-use validated stacks](https://artifact-studio.spectrocloud.com/profiles-hub) to help you get started immediately. 
+- Download [ready-to-use validated stacks](https://artifact-studio.spectrocloud.com/profiles-hub) to help you get
+  started immediately.
 
 :::preview
 
@@ -275,7 +276,8 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
 2. In the **Profiles Hub** section, select **Explore Profiles Hub**.
 
-3. From the top menu, choose any applicable filters beside the search bar, such as **Use Case**, **Palette Version**, **Tags**, and **Environment**. Use the **Search** bar to filter your results further.
+3. From the top menu, choose any applicable filters beside the search bar, such as **Use Case**, **Palette Version**,
+   **Tags**, and **Environment**. Use the **Search** bar to filter your results further.
 
    ![Image showing Profile Hub search and filter options](../../../static/assets/docs/images/downloads/downloads_artifact-studio_browse-stacks-4-8-13.webp)
 
@@ -283,11 +285,13 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
    ![Image showing details of a specific stack](../../../static/assets/docs/images/downloads/downloads_artifact-studio_view-details-stacks-4-8-13.webp)
 
-5. Select the check box of each stack you want to download. Once selected, the stack appears in the **Selected Profiles** pane on the right.
+5. Select the check box of each stack you want to download. Once selected, the stack appears in the **Selected
+   Profiles** pane on the right.
 
 6. Repeat step 5 until you have added all necessary stacks. When finished, select the **I'm not a robot** reCAPTCHA
-   checkbox, and select **Download Profile** or **Download packs**. Not all stacks will have packs to download. Alternatively, you can **Copy all URLs** so that you can download the
-   applicable files later in an alternate manner of your choosing, such as via `curl`.
+   checkbox, and select **Download Profile** or **Download packs**. Not all stacks will have packs to download.
+   Alternatively, you can **Copy all URLs** so that you can download the applicable files later in an alternate manner
+   of your choosing, such as via `curl`.
 
    :::tip
 
