@@ -18,19 +18,18 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 ## Limitations
 
 - It is not possible to install additional addon layers on OpenShift workload clusters through Palette. If you need to
-  install addons such as MetalLB, we recommend using the [OperatorHub](https://operatorhub.io/). The OperatorHub is
-  accessed through the OpenShift console of your workload cluster. Addons installed through the OperatorHub are managed
-  directly through the OpenShift console and are not visible in Palette.
+  install addons such as MetalLB and Piraeus, we recommend using the [OperatorHub](https://operatorhub.io/). The
+  OperatorHub is accessed through the OpenShift console of your workload cluster. Addons installed through the
+  OperatorHub are managed directly through the OpenShift console and are not visible in Palette.
 
-- Only the Bring Your Own Openshift OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built
-  specifically for MAAS using the process described in
-  [Build and Import MAAS-Compatible RHCOS Image](./build-import-rhcos-image.md). Standard MAAS OS images are not
-  compatible with OpenShift.
+- Only the Bring Your Own OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built specifically for
+  MAAS using the process described in [Build and Import MAAS-Compatible RHCOS Image](./build-import-rhcos-image.md).
+  Standard MAAS OS images are not compatible with OpenShift.
 
-- OVN-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-Kubernetes CNI pack is not
-  supported. The CNI layer of the workload cluster profile must use the OVN-Kubernetes CNI pack as a passthrough as
-  mentioned in the [prerequisites](./create-openshift-workload-cluster.md#prerequisites) for creating OpenShift workload
-  clusters.
+- OVN-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-Kubernetes Container Network
+  Interface (CNI) pack is not supported. The CNI layer of the workload cluster profile must use the OVN-Kubernetes CNI
+  pack as a passthrough as mentioned in the [prerequisites](./create-openshift-workload-cluster.md#prerequisites) for
+  creating OpenShift workload clusters.
 
 - Some Day 1 operations are not available through Palette, such as configuring an external OIDC provider or NTP servers.
 
@@ -55,8 +54,8 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 
 - A cluster profile for your OpenShift workload clusters configured with the following packs:
 
-  - <VersionedLink text="Bring Your Own Openshift OS (BYOOS)" url="/integrations/packs/?pack=openshift-byoi" /> pack for
-    the OS layer. Set the following parameters in the pack values.
+  - <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack for the OS
+    layer. Set the following parameters in the pack values.
 
     | Parameter              | Description                                                                                                                                                                                                          | Example value               |
     | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
@@ -113,6 +112,11 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
   - <VersionedLink text="OVN-Kubernetes CNI" url="/integrations/packs/?pack=ovn-kubernetes-cni" /> pack for the Network
     layer. This is used as a passthrough CNI pack since the CNI is configured automatically by the **OpenShift** pack
     and a dedicated CNI pack is not supported for OpenShift workload clusters hosted on HyperShift.
+
+  - The <VersionedLink text="Local Path Provisioner" url="/integrations/packs/?pack=local-path-provisioner" /> pack is
+    the only validated pack for the Storage layer. As mentioned in the [Limitations](#limitations) section, if you wish
+    to use a different Container Storage Interface (CSI), you can install it through the OperatorHub in the OpenShift
+    console after cluster deployment.
 
 ## Enablement
 

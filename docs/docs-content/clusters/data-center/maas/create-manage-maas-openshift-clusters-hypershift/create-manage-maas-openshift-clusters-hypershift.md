@@ -39,6 +39,9 @@ MAAS. Specific limitations for each cluster type are detailed in their respectiv
   [HyperShift Versioning Support](https://hypershift-docs.netlify.app/reference/versioning-support/) documentation for
   guidance.
 
-- Federal Information Processing Standards (FIPS) support is not currently available for the
-  <VersionedLink text="HyperShift Operator" url="/integrations/packs/?pack=spectro-hypershift-operator&tab=main" /> and
-  <VersionedLink text="OpenShift" url="/integrations/packs/?pack=openshift&tab=main" /> packs.
+- The HyperShift-hosted OpenShift model is not currently supported on [Palette VerteX](../../../../vertex/vertex.md).
+
+  - Federal Information Processing Standards (FIPS) support is not currently available for the
+    <VersionedLink text="HyperShift Operator" url="/integrations/packs/?pack=spectro-hypershift-operator&tab=main" />
+    and
+    <VersionedLink text="OpenShift" url="/integrations/packs/?pack=openshift&tab=main" /> packs.
