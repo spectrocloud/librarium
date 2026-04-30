@@ -93,7 +93,7 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
     - It is recommended to add the `cluster.controlPlaneHighAvailability` parameter to the OpenShift pack values and set
       it to `true`. This parameter is not present by default and must be added manually.
 
-      ```yaml title="Example OpenShift pack values with control plane HA enabled" {4}
+      ```yaml hideClipboard title="Example OpenShift pack values with control plane HA enabled" {4}
       pack:
       ...
       cluster:

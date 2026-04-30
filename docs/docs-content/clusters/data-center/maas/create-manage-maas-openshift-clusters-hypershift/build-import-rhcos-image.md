@@ -65,7 +65,7 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
   Download and extract the archive before proceeding. The archive contains the following files and scripts used in this
   guide.
 
-  ```shell
+  ```shell hideClipboard
   build-rootfs.sh
   create-maas-image.sh
   import-maas-image.sh
@@ -73,9 +73,9 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
   curtin/deploy-ignition-config
   ```
 
-- The official RHCOS raw image for your target OpenShift version, downloaded from the Red Hat mirror. For example:
+- The official RHCOS raw image for your target OpenShift version, downloaded from the Red Hat mirror.
 
-  ```text
+  ```text title="Example RHCOS image URL"
   https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.20/4.20.13/rhcos-4.20.13-x86_64-metal.x86_64.raw.gz
   ```
 
@@ -97,11 +97,11 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
    ```
 
    The script runs `debootstrap` for Ubuntu 24.04 (Noble), installs `cloud-init`, `netplan.io`, `python3-cffi`, and
-   `python3-ply`, cleans apt caches, and outputs the rootfs to `./ubuntu2404-rootfs/`. This directory is copied into the
-   extra partition in the next step.
+   `python3-ply`, cleans apt caches, and outputs the root filesystem directory to `./ubuntu2404-rootfs/`. This directory
+   is copied into the extra partition in the next step.
 
 3. Use the following command to create the MAAS-ready RHCOS image. This appends a new partition (p5) to the RHCOS raw
-   image and injects the Ubuntu rootfs and Curtin hooks.
+   image and injects the Ubuntu root filesystem directory and Curtin hooks.
 
    - Replace `<path-to-rhcos-raw-image>` with the path to your RHCOS raw image downloaded in the prerequisites step.
 
@@ -111,7 +111,7 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
      <path-to-rhcos-raw-image>
    ```
 
-   ```bash title="Example"
+   ```bash hideClipboard title="Example"
    sudo ./create-maas-image.sh \
      ./ubuntu2404-rootfs \
      ./images/rhcos-4.20.13-x86_64-metal.x86_64.raw.gz
@@ -127,23 +127,23 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
    4. Relocates the GPT backup header.
    5. Creates a new partition p5 after p4.
    6. Formats p5 as ext4.
-   7. Copies the Ubuntu rootfs into p5.
+   7. Copies the Ubuntu root filesystem directory into p5.
    8. Copies the Curtin scripts into `/curtin`.
    9. Compresses the new raw image to `*-with-ubuntu.raw.gz`.
 
    The resulting partition layout is as follows:
 
-   | Partition | Contents                                       |
-   | --------- | ---------------------------------------------- |
-   | p3        | RHCOS boot                                     |
-   | p4        | RHCOS root                                     |
-   | p5        | Ubuntu fake rootfs (Curtin validation + hooks) |
+   | Partition | Contents                                                |
+   | --------- | ------------------------------------------------------- |
+   | p3        | RHCOS boot                                              |
+   | p4        | RHCOS root                                              |
+   | p5        | Ubuntu fake root filesystem (Curtin validation + hooks) |
 
    </details>
 
    The original input image remains unchanged and the output image is saved alongside the original input image.
 
-   ```text title="Example output image path"
+   ```text hideClipboard title="Example output image path"
    ./images/rhcos-4.20.13-x86_64-metal.x86_64-with-ubuntu.raw.gz
    ```
 
@@ -157,7 +157,7 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
 
    :::warning
 
-   MAAS OAuth credentials are sensitive. Do not hardcode credentials in the deploy scripts. Using environment variables
+   MAAS OAuth credentials are sensitive. Do not add credentials to the deploy scripts. Using environment variables
    allows the deploy scripts to read credentials securely without exposing them in code or logs.
 
    :::
@@ -177,7 +177,7 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
      <release-version>
    ```
 
-   ```bash title="Example"
+   ```bash hideClipboard title="Example"
    ./import-maas-image.sh \
      ./images/rhcos-4.20.13-x86_64-metal.x86_64-with-ubuntu.raw.gz \
      rhcos-4.20.13-with-ubuntu \
