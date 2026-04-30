@@ -269,6 +269,37 @@ To download additional packs, select **Artifact Studio Home** in the top-left co
 information on how to verify the authenticity and integrity of your bundles, refer to the
 [Verify Signatures](#verify-signatures) section.
 
+## Download a Validated Stack
+
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
+
+2. In the **Profiles Hub** section, select **Explore Profiles Hub**.
+
+3. From the top menu, choose any applicable filters beside the search bar, such as **Use Case**, **Palette Version**, **Tags**, and **Environment**. Use the **Search** bar to filter your results further.
+
+   ![Image showing Profile Hub search and filter options](../../../static/assets/docs/images/downloads/downloads_artifact-studio_browse-stacks-4-8-13.webp)
+
+4. Select **View details** to see more information about a specific pack. To review what packs comprise a specific stack, click on the **Packs & Dependencies**. Click on **Version History** to review changes to a specific stack. 
+
+   ![Image showing details of a specific stack](../../../static/assets/docs/images/downloads/downloads_artifact-studio_view-details-stacks-4-8-13.webp)
+
+5. Select the check box of each stack you want to download. Once selected, the stack appears in the **Selected Profiles** pane on the right.
+
+6. Repeat step 5 until you have added all necessary stacks. When finished, select the **I'm not a robot** reCAPTCHA
+   checkbox, and select **Download Profile** or **Download packs**. Not all stacks will have packs to download. Alternatively, you can **Copy all URLs** so that you can download the
+   applicable files later in an alternate manner of your choosing, such as via `curl`.
+
+   :::tip
+
+   Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.spectrocloud.com/) to
+   allow for multiple artifact downloads.
+
+   :::
+
+To download additional stacks, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For
+information on how to verify the authenticity and integrity of your bundles, refer to the
+[Verify Signatures](#verify-signatures) section.
+
 ## Verify Signatures
 
 All ZST bundles and ISO files downloaded from Artifact Studio are signed. An additional `.sig.bin` file accompanies each
