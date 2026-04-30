@@ -1106,5 +1106,57 @@
   {
     "name": "hypershift-operator",
     "description": "Hypershift Operator is a Kubernetes operator that simplifies the deployment and management of Hypershift clusters on Kubernetes. It provides a way to define and manage the various components of a Hypershift deployment, including cluster provisioning, scaling, and monitoring."
+  },
+  {
+    "name": "headlamp",
+    "description": "Headlamp is a web-based Kubernetes dashboard that provides a user-friendly interface for managing and monitoring Kubernetes clusters. It offers features such as real-time metrics, resource visualization, and cluster management tools, making it easier for users to interact with their Kubernetes environments."
+  },
+  {
+    "name": "oauth2-proxy",
+    "description": "OAuth2 Proxy is a reverse proxy and static file server that provides authentication using providers such as Google, GitHub, and other OAuth2 providers. It is commonly used to secure web applications and APIs by requiring users to authenticate before accessing the resources."
+  },
+  {
+    "name": "sedai-smart-agent",
+    "description": "Sedai Smart Agent is a lightweight agent that collects and forwards telemetry data from Kubernetes clusters to the Sedai platform. It provides insights into cluster performance, resource utilization, and application behavior, enabling proactive monitoring and optimization."
+  },
+  {
+    "name": "csi-gluster",
+    "description": "CSI Gluster is a Container Storage Interface (CSI) driver for GlusterFS, enabling Kubernetes clusters to use GlusterFS as a persistent storage backend. It provides features such as dynamic provisioning, volume resizing, and snapshot support, making it easier to manage storage in Kubernetes environments."
+  },
+  {
+    "name": "csi-hitachi-hspc",
+    "description": "CSI Hitachi HSPC is a Container Storage Interface (CSI) driver for Hitachi Storage Platform Controller (HSPC), enabling Kubernetes clusters to use Hitachi storage as a persistent storage backend. It provides features such as dynamic provisioning, volume resizing, and snapshot support, making it easier to manage storage in Kubernetes environments."
+  },
+  {
+    "name": "csi-openstack-cinder",
+    "description": "CSI OpenStack Cinder is a Container Storage Interface (CSI) driver for OpenStack Cinder, enabling Kubernetes clusters to use OpenStack storage as a persistent storage backend. It provides features such as dynamic provisioning, volume resizing, and snapshot support, making it easier to manage storage in Kubernetes environments."
+  },
+  {
+    "name": "osmo",
+    "description": "OSMO is a Container Storage Interface (CSI) driver for OSMO, enabling Kubernetes clusters to use OSMO storage as a persistent storage backend. It provides features such as dynamic provisioning, volume resizing, and snapshot support, making it easier to manage storage in Kubernetes environments."
+  },
+  {
+    "name": "osmo-backend-operator",
+    "description": "OSMO Backend Operator is a Kubernetes operator that manages the deployment and lifecycle of OSMO backend components. It ensures that the OSMO storage backend is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "osmo-robotic-rack",
+    "description": "OSMO Robotic Rack is a Kubernetes operator that manages the deployment and lifecycle of OSMO robotic rack components. It ensures that the OSMO robotic rack is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "osmo-router",
+    "description": "OSMO Router is a Kubernetes operator that manages the deployment and lifecycle of OSMO router components. It ensures that the OSMO router is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "osmo-service",
+    "description": "OSMO Service is a Kubernetes operator that manages the deployment and lifecycle of OSMO service components. It ensures that the OSMO service is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "osmo-web-ui",
+    "description": "OSMO Web UI is a Kubernetes operator that manages the deployment and lifecycle of OSMO web UI components. It ensures that the OSMO web UI is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "veeamkasten",
+    "description": "Veeam Kasten is a Kubernetes operator that manages the deployment and lifecycle of Veeam Kasten components. It ensures that the Veeam Kasten is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
   }
 ]

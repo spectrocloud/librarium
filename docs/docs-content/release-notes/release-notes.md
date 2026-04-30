@@ -157,6 +157,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   to [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain
   on Kairos v3.5.9. This does not impact functionality.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-373 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) now configure the
+  `/opt/spectrocloud/bin` path into the management appliance ISO, reducing manual configuration.
+
 #### Bug Fixes
 
 ### VerteX
@@ -190,11 +196,18 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   environment variable `INCLUDE_COMPLIANCE_IMAGES`. When the variable is set to `true`, the resulting content bundle
   includes additional container images required for compliance scanning.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-255 -->
+
+- The [Artifact Studio](../downloads/artifact-studio.md) UI has been refactored to refer to VerteX as
+  [Palette VerteX](../vertex/vertex.md).
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2207 -->
 
-- Fixed an that caused unnecessary in place updates on the [`spectrocloud_sso` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/sso) when configuration had not changed.
+- Fixed an that caused unnecessary in place updates on the
+  [`spectrocloud_sso` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/sso)
+  when configuration had not changed.
 
 ### Docs and Education
 
@@ -243,6 +256,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10660 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2729 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4022 -->
 
 - <TpBadge /> Headlamp is now available. It provides a web-based Kubernetes UI for cluster management and monitoring.
   Refer to the [Headlamp](../clusters/cluster-management/headlamp.md) guide for more information.
