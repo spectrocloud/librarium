@@ -20,7 +20,10 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
   parameter value will result in errors until you return the value to its original configuration.
 
-- (Dedicated SaaS and self-hosted environments only) On Azure IaaS clusters created prior to Palette version 4.6.32, scaling worker node pools does not attach newly created nodes to an outbound load balancer after upgrading to Palette version 4.6.32 or later and the cluster's Palette Agent version to 4.6.7 or later. Upgrade to Palette version 4.7.20 or later before attempting to perform Day-2 scaling or repave operations.
+- (Dedicated SaaS and self-hosted environments only) On Azure IaaS clusters created prior to Palette version 4.6.32,
+  scaling worker node pools does not attach newly created nodes to an outbound load balancer after upgrading to Palette
+  version 4.6.32 or later and the cluster's Palette Agent version to 4.6.7 or later. Upgrade to Palette version 4.7.20
+  or later before attempting to perform Day-2 scaling or repave operations.
 
 ### Azure Government Secret Limitations
 

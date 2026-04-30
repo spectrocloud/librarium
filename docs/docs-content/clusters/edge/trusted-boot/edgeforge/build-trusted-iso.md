@@ -72,8 +72,8 @@ This document guides you through the process of producing Edge Installer ISOs th
    :::info
 
    - It is not necessary to include `AUTO_ENROLL_SECUREBOOT_KEYS=true`. If you do not include it, you will need to
-   manually confirm the enrollment of the keys during install time. For more information, refer to
-   [Installation with Trusted Boot](..//deployment-day2/install.md).
+     manually confirm the enrollment of the keys during install time. For more information, refer to
+     [Installation with Trusted Boot](..//deployment-day2/install.md).
 
    - <PartialsComponent category="clusters-edge" name="uki-kairos-limitation" />
 
