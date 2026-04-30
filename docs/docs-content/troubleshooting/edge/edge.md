@@ -139,7 +139,7 @@ This will resolve the issue, ensuring CoreDNS and cluster DNS services operate a
 
 ## Scenario - `x509: certificate signed by unknown authority` Errors during Agent Mode Cluster Creation
 
-Agent mode Edge cluster creation may fail with logs showing the following error.
+Agent mode Edge cluster creation may fail with logs showing the following error. This issue was resolved in Palette version 4.7.20.
 
 ```shell
 failed calling webhook "pod-registry.spectrocloud.com": tls: failed to verify certificate:

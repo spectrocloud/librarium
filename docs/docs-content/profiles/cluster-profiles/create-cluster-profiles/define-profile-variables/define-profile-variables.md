@@ -66,6 +66,8 @@ For more information on how cluster profile variables interact with cluster temp
 
 - The multiline input type is limited to a maximum of 10,000 characters.
 
+- Dropdown profile variables are not supported with airgapped [Local UI clusters](../../../../clusters/edge/local-ui/local-ui.md).
+
 ## Next Steps
 
 Refer to the [Create Cluster Profile Variables](./create-cluster-profile-variables.md) guide to learn how to begin using

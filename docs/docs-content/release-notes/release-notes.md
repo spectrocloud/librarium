@@ -146,16 +146,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  types. A [known issue](./known-issues.md) prevents locally managed Edge clusters that use cluster profiles containing
-  profile variables with the **Dropdown** input type from scaling.
+  types. Dropdown profile variables are not supported for airgapped Local UI clusters.
 - Pluggable Authentication Modules (PAM) policy enforcement is now enabled, including password expiry checks, which can
   be set using the `stylus.site.users[*].passwordExpiry`
   [user data](../clusters/edge/edge-configuration/installer-reference.md) field. For examples of configuring PAM via the
   Dockerfile, refer to
   [Build Edge Artifacts - Advanced workflow](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts).
-- Edge workflows have been updated to Kairos v4.0.3. A [known issue](known-issues.md) prevents this update from applying
-  to [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain
-  on Kairos v3.5.9. This does not impact functionality.
+- Edge workflows have been updated to Kairos v4.0.3. Due to upstream changes, this update does not apply to [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain on Kairos v3.5.9. This does not impact functionality.
 
 #### Bug Fixes
 

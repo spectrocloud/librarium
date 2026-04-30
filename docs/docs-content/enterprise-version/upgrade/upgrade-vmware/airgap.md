@@ -25,6 +25,10 @@ If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
+## Limitations
+
+- When upgrading airgapped self-hosted Palette to version 4.6.32, the IPAM controller may report an `Exhausted IP Pools` error despite having available IP addresses, preventing the cluster from upgrading. This is due to a race condition in CAPV version 1.12.0, which may lead to an orphaned IP claim. To resolve this, delete the orphaned IP claim and re-run the upgrade. Refer to [Scenario - IP Pool Exhausted During Airgapped Upgrade](../../../troubleshooting/enterprise-install.md#scenario---ip-pool-exhausted-during-airgapped-upgrade) for additional information.
+
 ## Prerequisites
 
 - Access to the Palette system console.

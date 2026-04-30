@@ -34,6 +34,8 @@ guide for help with migrating workloads.
   [AWS Secret or Top Secret cloud](./add-aws-accounts.md#aws-secret-cloud-sc2s-and-top-secret-cloud-c2s). Multi-tenant
   Palette SaaS, dedicated Palette SaaS, and self-hosted Palette instances are not supported.
 
+- Day-2 [node pool](../../cluster-management/node-pool.md) operations cannot be performed on EKS clusters deployed prior to Palette version 4.7.3 that have both **Enable Nodepool Customization** enabled and Amazon Linux 2023 (AL2023) [node labels](../../cluster-management/node-labels.md). You must create a new node pool with the desired [Amazon Machine Image (AMI) and node pool customizations](#cloud-configuration-settings) and migrate existing workloads to the new node pool. For an example of how to migrate workloads, refer to the [AWS Scale, Upgrade, and Secure Clusters](../../../tutorials/getting-started/palette/aws/scale-secure-cluster.md#scale-a-cluster) guide. 
+
 ## Prerequisites
 
 - Access to an AWS cloud account.
