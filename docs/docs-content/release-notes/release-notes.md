@@ -239,7 +239,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   types. A [known issue](./known-issues.md) prevents locally managed Edge clusters that use cluster profiles containing
   profile variables with the **Dropdown** input type from scaling.
-  
+
 <!-- https://spectrocloud.atlassian.net//browse/PE-8122 -->
 <!-- https://spectrocloud.atlassian.net//browse/PE-7779 -->
 
