@@ -256,6 +256,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   to [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain
   on Kairos v3.5.9. This does not impact functionality.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-373 -->
+
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) ISOs now include
+  `/opt/spectrocloud/bin` in the default `PATH`, making kubectl and Helm immediately available for debugging and
+  operations.
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8328 -->
@@ -301,6 +308,19 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   environment variable `INCLUDE_COMPLIANCE_IMAGES`. When the variable is set to `true`, the resulting content bundle
   includes additional container images required for compliance scanning.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-255 -->
+
+- The [Artifact Studio](../downloads/artifact-studio.md) UI has been refactored to refer to VerteX as
+  [Palette VerteX](../vertex/vertex.md).
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2207 -->
+
+- Fixed an issue that caused unnecessary in place updates on the
+  [`spectrocloud_sso` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/sso)
+  when configuration had not changed.
+
 ### Docs and Education
 
 - A new [Enable AI Workloads with the NVIDIA GPU Operator Pack](../ai-workloads/nvidia-gpu-operator.md) guide is now
@@ -322,39 +342,33 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3974 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3980 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4002 -->
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Calico                      | CNI        | :x:                | :white_check_mark: | 3.31.5      |
+| Calico Network Policy       | Add-on     | :white_check_mark: | :x:                | 3.31.5      |
+| Cilium                      | CNI        | :white_check_mark: | :x:                | 1.19.3      |
+| External Secrets            | Add-on     | :white_check_mark: | :x:                | 2.3.0       |
+| Flannel                     | CNI        | :white_check_mark: | :x:                | 0.28.4      |
+| Flux2                       | Add-on     | :white_check_mark: | :x:                | 2.18.3      |
+| Istio                       | Add-on     | :white_check_mark: | :x:                | 1.29.2      |
+| OpenTelemetry               | Add-on     | :white_check_mark: | :x:                | 0.149.0     |
+| Open Observe                | Add-on     | :white_check_mark: | :x:                | 0.70.3      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.3      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.6      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.10     |
+| Prometheus Agent            | Add-on     | :white_check_mark: | :x:                | 29.2.1      |
+| Prometheus Operator         | Add-on     | :white_check_mark: | :x:                | 83.5.0      |
+| vSphere CSI                 | CSI        | :x:                | :white_check_mark: | 3.7.0       |
+
 #### Pack Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10660 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2729 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4022 -->
 
 - <TpBadge /> Headlamp is now available. It provides a web-based Kubernetes UI for cluster management and monitoring.
   Refer to the [Headlamp](../clusters/cluster-management/headlamp.md) guide for more information.
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-#### Deprecations and Removals
