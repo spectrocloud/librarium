@@ -6,26 +6,27 @@ partial_name: folder-setup
 
 1. Open a terminal session on your local machine.
 
-2. Issue the following command to create the `.env-mcp` file in your home directory under the `.palette` folder. This
-   file is used to save the secrets you need to configure the Palette MCP server.
+2. (Optional) Create an `.env-mcp` file to save the secrets you need to configure the Palette MCP server. You can choose to pass secrets directly to the MCP server as variables, but using the `.env-mcp` file is a more secure and manageable approach.
 
-   ```shell
-   mkdir -p ~/.palette
-   touch ~/.palette/.env-mcp
-   ```
+    1. Issue the following command to create the `.env-mcp` file in your home directory under the `.palette` folder.
+ 
+       ```shell
+       mkdir -p ~/.palette
+       touch ~/.palette/.env-mcp
+       ```
+ 
+    2. Add the required MCP values to the `.env-mcp` file. Refer to the [Server Configuration](/automation/palette-mcp/architecture/#server-configuration) section for further details on the MCP server configuration values.
+ 
+       ```shell {2,3,4}
+       cat << EOF > ~/.palette/.env-mcp
+       SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id>
+       SPECTROCLOUD_APIKEY=<palette-api-key>
+       SPECTROCLOUD_HOST=<palette-api-endpoint>
+       ALLOW_DANGEROUS_ACTIONS=0
+       EOF
+       ```
 
-3. Add the required MCP values to the `.env-mcp` file. Refer to the [Server Configuration](/automation/palette-mcp/architecture/#server-configuration) section for further details on the MCP server configuration values.
-
-   ```shell
-   cat << EOF > ~/.palette/.env-mcp
-   SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id>
-   SPECTROCLOUD_APIKEY=<palette-api-key>
-   SPECTROCLOUD_HOST=<palette-api-endpoint>
-   ALLOW_DANGEROUS_ACTIONS=0
-   EOF
-   ```
-
-4. Issue the following command to create a folder to store
+3. Issue the following command to create a folder to store
    [kubeconfig](/clusters/cluster-management/kubeconfig) files. This step improves the user experience when retrieving kubeconfig files.
 
    You can use any folder on your machine for this configuration. Replace `<local-path>` with your desired local path.
