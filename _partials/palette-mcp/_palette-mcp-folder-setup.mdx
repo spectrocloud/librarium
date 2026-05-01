@@ -25,9 +25,13 @@ partial_name: folder-setup
    SPECTROCLOUD_HOST=<palette-api-endpoint>
    ALLOW_DANGEROUS_ACTIONS=0
    EOF
-   ```
+2. (Optional) Create an `.env-mcp` file to save the secrets you need to configure the Palette MCP server. You can choose to pass secrets directly to the MCP server as variables, but using the `.env-mcp` file is a more secure and manageable approach.
 
-4. Issue the following command to create a folder to store
+          1. Issue the following command to create the `.env-mcp` file in your home directory under the `.palette` folder.
+
+           
+
+3. Issue the following command to create a folder to store
    [kubeconfig](/clusters/cluster-management/kubeconfig) files. This step improves the user experience when retrieving kubeconfig files.
 
    You can use any folder on your machine for this configuration. Replace `<local-path>` with your desired local path.
