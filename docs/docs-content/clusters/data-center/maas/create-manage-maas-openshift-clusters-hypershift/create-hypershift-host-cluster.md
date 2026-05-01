@@ -38,7 +38,9 @@ cluster in Palette before creating any OpenShift workload clusters.
 - The [Cluster Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role in
   Palette.
 
-  - If you have not yet created a cluster profile for the HyperShift host cluster, you also need the [Cluster Profile Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) role.
+  - If you have not yet created a cluster profile for the HyperShift host cluster, you also need the
+    [Cluster Profile Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+    role.
 
 - A cluster profile for the HyperShift host cluster configured with the following packs:
 
@@ -79,7 +81,8 @@ cluster in Palette before creating any OpenShift workload clusters.
 
    :::warning
 
-   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure the cluster nodes maintain accurate time. If no NTP servers are specified, it can lead to time drift.
+   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure the cluster nodes maintain
+   accurate time. If no NTP servers are specified, it can lead to time drift.
 
    :::
 
@@ -127,5 +130,6 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 ## Next Steps
 
-Now that the HyperShift host cluster is running, you can [create OpenShift workload clusters](./create-openshift-workload-cluster.md) that use it to host their
-control plane components.
+Now that the HyperShift host cluster is running, you can
+[create OpenShift workload clusters](./create-openshift-workload-cluster.md) that use it to host their control plane
+components.

@@ -26,12 +26,13 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
   MAAS using the process described in [Build and Import MAAS-Compatible RHCOS Image](./build-import-rhcos-image.md).
   Standard MAAS OS images are not compatible with OpenShift.
 
-- Open Virtual Networking (OVN)-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-Kubernetes Container Network
-  Interface (CNI) pack is not supported. The CNI layer of the workload cluster profile must use the OVN-Kubernetes CNI
-  pack as a passthrough as mentioned in the [prerequisites](./create-openshift-workload-cluster.md#prerequisites) for
-  creating OpenShift workload clusters.
+- Open Virtual Networking (OVN)-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-Kubernetes
+  Container Network Interface (CNI) pack is not supported. The CNI layer of the workload cluster profile must use the
+  OVN-Kubernetes CNI pack as a passthrough as mentioned in the
+  [prerequisites](./create-openshift-workload-cluster.md#prerequisites) for creating OpenShift workload clusters.
 
-- Some Day 1 operations are not available through Palette, such as configuring an external OpenID Connect (OIDC) provider or Network Time Protocol (NTP) servers.
+- Some Day 1 operations are not available through Palette, such as configuring an external OpenID Connect (OIDC)
+  provider or Network Time Protocol (NTP) servers.
 
 - Some Day 2 operations are not available through Palette, such as OS patching, security and compliance scans, backup
   and restore, and maintenance mode.
@@ -48,18 +49,20 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 - The [Cluster Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role in
   Palette.
 
-  -   - If you have not yet created a cluster profile for the HyperShift host cluster, you also need the [Cluster Profile Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) role.
+  - - If you have not yet created a cluster profile for the HyperShift host cluster, you also need the
+      [Cluster Profile Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+      role.
 
 - A cluster profile for your OpenShift workload clusters configured with the following packs:
 
   - <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack for the OS
     layer. Set the following parameters in the pack values.
 
-    | Parameter              | Description                                                                                                                                                                                                          | Example value               |
-    | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+    | Parameter              | Description                                                                                                                                                                                                                                | Example value               |
+    | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
     | `pack.osImageOverride` | The name of the MAAS image imported when following the [Build and Import MAAS-Compatible RHCOS Image](./build-import-rhcos-image.md) guide. This should match the `<image-name>` parameter specified in the `import-maas-image.sh` script. | `rhcos-4.20.13-with-ubuntu` |
-    | `pack.osName`          | The value of the `<operating-system>` parameter specified during import.                                                                                                                                                       | `openshift`                 |
-    | `pack.osVersion`       | The value of the `<release-version>` parameter specified during import.                                                                                                                                              | `4.20.13`                   |
+    | `pack.osName`          | The value of the `<operating-system>` parameter specified during import.                                                                                                                                                                   | `openshift`                 |
+    | `pack.osVersion`       | The value of the `<release-version>` parameter specified during import.                                                                                                                                                                    | `4.20.13`                   |
 
   - <VersionedLink text="OpenShift" url="/integrations/packs/?pack=openshift&tab=main" /> pack for the Kubernetes layer.
     Ensure the OpenShift version is compatible with the HyperShift Operator version installed on the host cluster. Refer
@@ -88,8 +91,8 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 
       </details>
 
-    - We recommend to add the `cluster.controlPlaneHighAvailability` parameter to the OpenShift pack values and set
-      it to `true`. This parameter is not present by default and must be added manually.
+    - We recommend to add the `cluster.controlPlaneHighAvailability` parameter to the OpenShift pack values and set it
+      to `true`. This parameter is not present by default and must be added manually.
 
       ```yaml hideClipboard title="Example OpenShift pack values with control plane HA enabled" {4}
       pack:
@@ -111,10 +114,10 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
     layer. This is used as a passthrough CNI pack since the CNI is configured automatically by the **OpenShift** pack
     and a dedicated CNI pack is not supported for OpenShift workload clusters hosted on HyperShift.
 
-  - The <VersionedLink text="Local Path Provisioner" url="/integrations/packs/?pack=csi-local-path-provisioner" /> pack is
-    the only validated pack for the Storage layer. As mentioned in the [Limitations](#limitations) section, if you wish
-    to use a different Container Storage Interface (CSI), you can install it through the OperatorHub in the OpenShift
-    console after cluster deployment.
+  - The <VersionedLink text="Local Path Provisioner" url="/integrations/packs/?pack=csi-local-path-provisioner" /> pack
+    is the only validated pack for the Storage layer. As mentioned in the [Limitations](#limitations) section, if you
+    wish to use a different Container Storage Interface (CSI), you can install it through the OperatorHub in the
+    OpenShift console after cluster deployment.
 
 ## Enablement
 
@@ -141,13 +144,14 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 
    :::warning
 
-    Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure the cluster nodes maintain accurate time. If no NTP servers are specified, it can lead to time drift.
+   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure the cluster nodes maintain
+   accurate time. If no NTP servers are specified, it can lead to time drift.
 
    :::
 
 9. Select a **HyperShift host cluster** from the drop-down menu. This should match the name of the HyperShift host
-   cluster you created when following the [Create HyperShift Host Cluster](./create-hypershift-host-cluster.md) guide. This associates the
-   workload cluster with the selected host cluster.
+   cluster you created when following the [Create HyperShift Host Cluster](./create-hypershift-host-cluster.md) guide.
+   This associates the workload cluster with the selected host cluster.
 
 10. On the **Nodes Config** step, configure the worker node pools. As the OpenShift control plane is hosted in the
     HyperShift host cluster, you only configure worker nodes here.
@@ -163,16 +167,16 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
     | **Minimum CPU**        | The minimum number of CPU cores required for servers in this node pool.                                                                                                                                                                                                                              |
     | **Minimum Memory**     | The minimum amount of memory required for servers in this node pool.                                                                                                                                                                                                                                 |
     | **Availability zones** | Specify the [Availability Zones (AZs)](https://canonical.com/maas/docs/how-to-manage-machine-groups#p-19384-manage-availability-zones) for the node pool.                                                                                                                                            |
-    | **Tags**               | Specify the MAAS machine tags so Palette can deploy nodes to the MAAS machines that match them. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags-flexible-labels) documentation.                        |
+    | **Tags**               | Specify the MAAS machine tags so Palette can deploy nodes to the MAAS machines that match them. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags-flexible-labels) documentation.                                            |
 
 11. On the **Cluster Settings** page, configure additional options as needed. If you are deploying your workload cluster
     using [cluster templates](../../../../cluster-templates/cluster-templates.md), a **Cluster Timezone** is required.
 
-    | **Left Menu Item**   | **Additional Information**                                                                                                                                                                                                                                                                                                                                                                          |
-    | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Cluster Timezone** | Specify the time zone where you deploy your cluster. The time zone is used in [maintenance policies](../../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) to determine when updates are rolled out to clusters deployed with [cluster templates](../../../../cluster-templates/cluster-templates.md).                                                       |
+    | **Left Menu Item**   | **Additional Information**                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Cluster Timezone** | Specify the time zone where you deploy your cluster. The time zone is used in [maintenance policies](../../../../cluster-templates/create-cluster-template-policies/maintenance-policy.md) to determine when updates are rolled out to clusters deployed with [cluster templates](../../../../cluster-templates/cluster-templates.md).                                                                                                           |
     | **RBAC**             | Map a set of users or groups to a Kubernetes Role-Based Access Control (RBAC) role. This is required when custom OpenID Connect (OIDC) is configured. Refer to the following guides for more information: <br />- [Create Role Bindings](../../../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> |
-    | **Location**         | Specify the location of your cluster by entering the address in the search bar and selecting one of the options in the drop-down. For example, **London, Greater London, England, United Kingdom**. This is used for display purposes and does not impact cluster functionality.                                                                                                                    |
+    | **Location**         | Specify the location of your cluster by entering the address in the search bar and selecting one of the options in the drop-down. For example, **London, Greater London, England, United Kingdom**. This is used for display purposes and does not impact cluster functionality.                                                                                                                                                                 |
 
 12. Select **Validate** to review your cluster configuration and settings.
 

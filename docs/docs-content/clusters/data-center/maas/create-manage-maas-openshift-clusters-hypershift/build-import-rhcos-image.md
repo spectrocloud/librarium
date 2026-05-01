@@ -226,5 +226,6 @@ the image was not found.
 
 ## Next Steps
 
-Now that the MAAS-compatible RHCOS image is imported, you can proceed to [create the HyperShift host cluster](./create-hypershift-host-cluster.md) that will
-run the OpenShift control plane components.
+Now that the MAAS-compatible RHCOS image is imported, you can proceed to
+[create the HyperShift host cluster](./create-hypershift-host-cluster.md) that will run the OpenShift control plane
+components.
