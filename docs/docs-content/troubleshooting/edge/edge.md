@@ -137,49 +137,6 @@ forwards DNS queries to itself, creating a recursive loop.
 
 This will resolve the issue, ensuring CoreDNS and cluster DNS services operate as expected.
 
-## Scenario - `x509: certificate signed by unknown authority` Errors during Agent Mode Cluster Creation
-
-Agent mode Edge cluster creation may fail with logs showing the following error. This issue was resolved in Palette
-version 4.7.20.
-
-```shell
-failed calling webhook "pod-registry.spectrocloud.com": tls: failed to verify certificate:
-x509: certificate signed by unknown authority ("Spectro Cloud")
-http: TLS handshake error ... remote error: tls: bad certificate
-```
-
-As a result, core components such as CNI, Harbor, and cluster controllers never start. All pods remain in **Pending** or
-**Failed** state. In the Local UI, packs display **Invalid date** in the **Started On** and **Completed On** fields.
-
-This issue occurs when the `stylus-webhook` agent admission webhook and its Transport Layer Security (TLS)
-`stylus-webhook-tls` secret are temporarily mismatched due to a timing issue during cluster bootstrap. As a result, the
-Kubernetes API server rejects the certificate as signed by an unknown authority, causing admission requests to fail.
-
-### Debug Steps
-
-1. Issue the following command on all cluster nodes to stop the Palette Agent operator service.
-
-   ```bash
-   systemctl stop spectro-stylus-operator
-   ```
-
-2. Issue the following commands on one of the control plane nodes to remove the mismatched webhook resources.
-
-   ```bash
-   kubectl delete secret --namespace spectro-system stylus-webhook-tls
-   kubectl delete svc --namespace spectro-system stylus-webhook
-   kubectl delete MutatingWebhookConfiguration stylus-webhook
-   ```
-
-3. Issue the following command on all cluster nodes to restart the Palette Agent operator service and regenerate a new,
-   consistent set of webhook resources.
-
-   ```bash
-   systemctl restart spectro-stylus-operator
-   ```
-
-This will resolve the issue, and cluster creation will proceed as expected.
-
 ## Scenario - `content-length: 0` Errors during Content Synchronization
 
 Unintended or non-graceful reboots during content bundle push operations can cause inconsistency in the primary
