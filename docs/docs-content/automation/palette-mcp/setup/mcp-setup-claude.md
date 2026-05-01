@@ -41,26 +41,21 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
 
    <TabItem label=".env.mcp File" value="env_file">
 
+   ```shell {2}
    claude mcp add --transport stdio palette -- \
     docker run --rm -i --pull always \
     --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
     --env-file /<local-path>/.palette/.env-mcp \
     public.ecr.aws/palette-ai/palette-mcp-server:latest
-
-   ````
+   ```
 
    </TabItem>
-
-   <TabItem label="Podman with env.mcp file" value="podman_env_file">
-
-   ```shell
-   claude mcp add --transport stdio palette -- \
 
    <TabItem label="Environment Variables" value="env_vars">
 
    Replace the environment variable values in the snippet below with your own values.
 
-   ```shell {4,5,6}
+   ```shell {2,4,5,6}
    claude mcp add --transport stdio palette -- \
        docker run --rm -i --pull always \
        --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
@@ -69,7 +64,7 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
        -e SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id> \
        -e ALLOW_DANGEROUS_ACTIONS=0 \
        public.ecr.aws/palette-ai/palette-mcp-server:latest
-   ````
+   ```
 
    </TabItem>
 
