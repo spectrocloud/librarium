@@ -653,8 +653,7 @@ resource "spectrocloud_cluster_profile" "azure_profile_v110" {
 
 </Tabs>
 
-Issue the `terraform plan` command to preview the changes. Terraform reports
-one new resource to add.
+Issue the `terraform plan` command to preview the changes. Terraform reports one new resource to add.
 
 ```shell
 terraform plan
