@@ -22,7 +22,7 @@ Limitations:
   `Fatal: can't open lock file /run/xtables.lock: Is a directory`. For Edge cluster deployments, use
   <VersionedLink text="Calico CNI pack version 3.30.2-rev2" url="/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&tab=custom" />,
   which contains the fix for this issue.
-- Calico fails to start when IPv6 is enabled on hosts running specific kernel versions due to missing or incompatible kernel modules required for `ip6tables` `MARK` support. Affected kernel versions include 5.15.0-127 and 5.15.0-128 (generic), 6.8.0-57 and 6.8.0-58 (generic), and 6.8.0-1022. To resolve this issue, use a different CNI, disable IPv6, or use an unaffected kernel version. Refer to [Scenario - Calico Fails to Start When IPv6 is Enabled](troubleshooting/pack-issues/#scenario---calico-fails-to-start-when-ipv6-is-enabled) for debug steps.
+- Calico fails to start when IPv6 is enabled on hosts running specific kernel versions due to missing or incompatible kernel modules required for `ip6tables` `MARK` support. Affected kernel versions include 5.15.0-127 and 5.15.0-128 (generic), 6.8.0-57 and 6.8.0-58 (generic), and 6.8.0-1022. To resolve this issue, use a different CNI, disable IPv6, or use an unaffected kernel version. Refer to [Scenario - Calico Fails to Start When IPv6 is Enabled](/troubleshooting/pack-issues/#scenario---calico-fails-to-start-when-ipv6-is-enabled) for debug steps.
   
 :::
 <!-- prettier-ignore-end -->
