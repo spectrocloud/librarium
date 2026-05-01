@@ -3,7 +3,7 @@ sidebar_label: "Register and Manage MAAS Cloud Accounts"
 title: "Register and Manage MAAS Cloud Accounts"
 description: "Learn how to register and manage your MAAS cloud accounts in Palette."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["data center", "maas"]
 ---
 
