@@ -653,8 +653,6 @@ resource "spectrocloud_cluster_profile" "azure_profile_v110" {
 
 </Tabs>
 
-### Apply the New Profile Version
-
 With `create_new_profile_version` set to `true`, issue a `terraform plan` to preview the changes. Terraform will report
 one new resource to add.
 
