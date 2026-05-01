@@ -15,11 +15,11 @@ sidebar_position: 10
 Red Hat Enterprise Linux CoreOS (RHCOS) is incompatible with the standard
 MAAS/[Curtin](https://canonical.com/blog/customising-maas-installs) deployment process out of the box. MAAS deploys
 machines using a two-stage boot process in which Curtin writes and validates the target OS disk image. Curtin expects a
-traditional Linux root filesystem layout including:
+traditional Linux root filesystem layout, including:
 
-- a `/curtin` directory.
-- `cloud-init` as the machine configuration tool.
-- a standard filesystem structure.
+- a `/curtin` directory
+- `cloud-init` as the machine configuration tool
+- a standard filesystem structure
 
 None of these are provided natively by RHCOS. In addition, RHCOS uses
 [Ignition](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/composing_installing_and_managing_rhel_for_edge_images/assembly_using-the-ignition-tool-for-the-rhel-for-edge-simplified-installer-images_composing-installing-managing-rhel-for-edge-images)
@@ -46,7 +46,7 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
   - `mkfs.ext4`
   - `e2label`
   - `gzip` / `gunzip`
-  - Root privileges (`sudo`)
+  - root privileges (`sudo`)
 
 - The MAAS CLI (`maas-cli`) installed on your build host.
 
@@ -157,7 +157,7 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
 
    :::warning
 
-   MAAS OAuth credentials are sensitive. Do not add credentials to the deploy scripts. Using environment variables
+   Keep your MAAS OAuth credentials secure. Do not add credentials to the deploy scripts. Using environment variables
    allows the deploy scripts to read credentials securely without exposing them in code or logs.
 
    :::
@@ -199,7 +199,7 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
 
 2. From the left sidebar, navigate to **Images**.
 
-3. Locate the image and verify it appears with the name you specified during import. The name will appear under the
+3. Locate the image and verify it appears with the name you specified during import. The name appears under the
    **Release Title** column. For example, `rhcos-4.20.13-with-ubuntu`.
 
    The image may appear in the **Other** category if the image metadata does not match any existing categories.
@@ -226,7 +226,5 @@ the image was not found.
 
 ## Next Steps
 
-Now that the MAAS-compatible RHCOS image is imported, you can proceed to create the HyperShift host cluster that will
+Now that the MAAS-compatible RHCOS image is imported, you can proceed to [create the HyperShift host cluster](./create-hypershift-host-cluster.md) that will
 run the OpenShift control plane components.
-
-- [Create HyperShift Host Cluster](./create-hypershift-host-cluster.md)

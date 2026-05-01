@@ -38,9 +38,7 @@ cluster in Palette before creating any OpenShift workload clusters.
 - The [Cluster Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role in
   Palette.
 
-  - You may also need the
-    [Cluster Profile Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
-    role if you have not yet created a cluster profile for the HyperShift host cluster.
+  - If you have not yet created a cluster profile for the HyperShift host cluster, you also need the [Cluster Profile Admin](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) role.
 
 - A cluster profile for the HyperShift host cluster configured with the following packs:
 
@@ -62,7 +60,7 @@ cluster in Palette before creating any OpenShift workload clusters.
 
 2. Ensure you are in the correct project scope.
 
-3. From the left main menu, select **Clusters**, and click **Add New Cluster**.
+3. From the left main menu, select **Clusters** and click **Add New Cluster**.
 
 4. In the **Data Center** section, select **MAAS**, then click **Start MAAS Configuration**.
 
@@ -81,8 +79,7 @@ cluster in Palette before creating any OpenShift workload clusters.
 
    :::warning
 
-   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have
-   the correct time. If no NTP servers are specified, it could lead to time drift issues.
+   Although optional, we recommend specifying Network Time Protocol (NTP) servers to ensure the cluster nodes maintain accurate time. If no NTP servers are specified, it can lead to time drift.
 
    :::
 
@@ -108,7 +105,7 @@ cluster in Palette before creating any OpenShift workload clusters.
 
 12. Select **Validate** to review your cluster configuration and settings.
 
-13. If no changes are needed, select **Finish Configuration** to deploy the host cluster.
+13. If no changes are needed, **Finish Configuration** to deploy the host cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
@@ -130,7 +127,5 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 ## Next Steps
 
-Now that the HyperShift host cluster is running, you can create OpenShift workload clusters that use it to host their
+Now that the HyperShift host cluster is running, you can [create OpenShift workload clusters](./create-openshift-workload-cluster.md) that use it to host their
 control plane components.
-
-- [Create OpenShift Workload Cluster with HyperShift Control Plane](./create-openshift-workload-cluster.md)
