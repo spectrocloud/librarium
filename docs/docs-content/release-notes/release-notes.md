@@ -35,6 +35,13 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4778 -->
+
+- <TpBadge /> Deployment of OpenShift clusters on MAAS using HyperShift host clusters is now supported. Refer to the
+  [Create and Manage MAAS OpenShift
+  Clusters](../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/create-manage-maas-openshift-clusters-hypershift.md)
+  guide for more information.
+
 <!-- https://spectrocloud.atlassian.net//browse/PCP-5570 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2726 -->
 
@@ -53,10 +60,11 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9357 -->
 
 - GitHub Container Registry (GHCR) is now a supported Open Container Initiative (OCI) Helm registry in Palette. Refer to
-[Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) for details on how to add GHCRs
-to Palette and
-[Add a Helm Chart](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md) for
-how to use GHCR-sourced Helm charts in your clusters.
+  [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) for details on how to add
+  GHCRs to Palette and
+  [Add a Helm Chart](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md) for
+  how to use GHCR-sourced Helm charts in your clusters.
+
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2774 -->
 
 - The `compute.zoneOperations.get` and `compute.zoneOperations.list` permissions have been added to GCP
