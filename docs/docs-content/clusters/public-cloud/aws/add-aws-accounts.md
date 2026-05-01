@@ -25,7 +25,7 @@ Palette VerteX.
 
 :::warning
 
-Beginning with Palette version 4.9.0, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
+Beginning with Palette version 4.9.5, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
 must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
 [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
@@ -151,7 +151,7 @@ credentials, as well as EKS Pod Identity.
 
 :::warning
 
-Beginning with Palette version 4.9.0, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
+Beginning with Palette version 4.9.5, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
 must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
 [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
