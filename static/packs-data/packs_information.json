@@ -1113,7 +1113,7 @@
   },
   {
     "name": "oauth2-proxy",
-    "description": "OAuth2 Proxy is a reverse proxy and static file server that provides authentication using providers such as Google, GitHub, and other OAuth2 providers. It is commonly used to secure web applications and APIs by requiring users to authenticate before accessing the resources."
+    "description": "OAuth2 Proxy is a reverse proxy and static file server that provides authentication using Google, GitHub, and other OAuth2 providers. It is commonly used to secure web applications and APIs by requiring users to authenticate before accessing the resources."
   },
   {
     "name": "sedai-smart-agent",
