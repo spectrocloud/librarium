@@ -4,9 +4,13 @@ partial_name: server-snippet
 ---
 
 Paste the following snippet in the file, replacing the placeholders with your local path values. Ensure that you provide full
-   filepaths for the `kubeconfig` folder and `.env.mcp` file.
+   filepaths for the `kubeconfig` folder and `.env.mcp` file, if you have configured one.
 
-   If you want to use Podman, replace the command `"docker"` with `"podman"`.
+   If you want to use Podman, replace the command `"docker"` with `"podman"`. 
+
+   <Tabs>
+
+    <TabItem label="Using .env-mcp file" value="env_file">
 
    ```json {3,11,13}
    "mcpServers": {
@@ -27,6 +31,40 @@ Paste the following snippet in the file, replacing the placeholders with your lo
        }
    }
    ```
+
+    </TabItem>
+
+    <TabItem label="Using environment variables" value="env_variables">
+
+    Replace the environment variable values in the snippet below with your own values.
+   
+    ```json {11,13,15}
+    "mcpServers": {
+        "palette": {
+        "command": "docker",
+        "args": [
+            "run",
+            "-i",
+            "--mount",
+            "type=bind,source=/FILE_PATH_REPLACE_ME/kubeconfig,target=/tmp/kubeconfig",
+            "--rm",
+            "-e",
+            "SPECTROCLOUD_HOST=<palette-api-endpoint>",
+            "-e",
+            "SPECTROCLOUD_APIKEY=<palette-api-key>",
+            "-e",
+            "SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id>",
+            "-e",
+            "ALLOW_DANGEROUS_ACTIONS=0",
+            "public.ecr.aws/palette-ai/palette-mcp-server:latest"
+        ]
+        }
+    }
+    ```
+
+    </TabItem>
+
+   </Tabs>
    
    :::warning
 
