@@ -35,7 +35,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
   SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of
   Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
-  The diagram below illustrates how MAAS works with Palette using a PCG.
+  The following diagram illustrates how MAAS works with Palette using a PCG.
 
   ![Network flow from an architectural perspective of how MAAS works with Palette](/clusters_data-center_maas_arch-diagram-new-4-7-b.webp)
 
