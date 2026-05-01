@@ -72,7 +72,7 @@ jobs:
           cache: "npm"
 
       - name: Post PR Comment
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.issues.createComment({
@@ -276,7 +276,7 @@ jobs:
         echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
     - name: Post Report URL Comment
-      uses: actions/github-script@v8
+      uses: actions/github-script@v9
       with:
         script: |
           await github.rest.issues.createComment({
