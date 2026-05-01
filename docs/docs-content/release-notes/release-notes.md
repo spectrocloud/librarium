@@ -35,6 +35,14 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4778 -->
+
+- <TpBadge /> Deployment of OpenShift clusters on MAAS using HyperShift host clusters is now supported. Refer to the
+  [Create and Manage MAAS OpenShift
+  Clusters](../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/create-manage-maas-openshift-clusters-hypershift.md)
+  guide for more information.
+
+<!-- https://spectrocloud.atlassian.net//browse/PCP-5570 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2726 -->
 
 - The `iam:ListRoleTags` permission has been added to the
@@ -52,10 +60,11 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9357 -->
 
 - GitHub Container Registry (GHCR) is now a supported Open Container Initiative (OCI) Helm registry in Palette. Refer to
-[Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) for details on how to add GHCRs
-to Palette and
-[Add a Helm Chart](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md) for
-how to use GHCR-sourced Helm charts in your clusters.
+  [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md) for details on how to add
+  GHCRs to Palette and
+  [Add a Helm Chart](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md) for
+  how to use GHCR-sourced Helm charts in your clusters.
+
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2774 -->
 
 - The `compute.zoneOperations.get` and `compute.zoneOperations.list` permissions have been added to GCP
@@ -99,6 +108,8 @@ how to use GHCR-sourced Helm charts in your clusters.
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net//browse/PCP-5494 -->
+
 - Amazon Linux 2 (AL2) AMIs have been disabled in Palette. You will not be able to create new EKS clusters with AL2
   worker nodes. For existing EKS clusters, you must create new worker nodes using AL2023 AMIs. Existing AL2 AMI worker
   nodes will no longer receive bug fixes or security patches. Refer to our
@@ -107,6 +118,8 @@ how to use GHCR-sourced Helm charts in your clusters.
 
   - In addition, Kubernetes upgrades to v1.33 and later are not supported on EKS clusters with AL2 worker nodes. If you
     want to upgrade your cluster to v1.33 or later, you must first migrate your workloads to AL2023 worker nodes.
+
+<!-- https://spectrocloud.atlassian.net//browse/PE-8280 -->
 
 - Support for Red Hat Enterprise Linux (RHEL) 8.x in Edge workflows has been deprecated, including FIPS-enabled
   configurations. Use RHEL 9.x or RHEL 10.x instead.
@@ -132,6 +145,81 @@ how to use GHCR-sourced Helm charts in your clusters.
   `LoadBalancer` service after upgrading. Refer to the
   [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10575 -->
+
+- The `/clusterprofiles`[API endpoint](/api/introduction) is now deprecated. Use the `/dashboard/clusterprofiles`
+  endpoint instead, which includes improved data retrieval capabilities.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10647 -->
+
+- Fixed an issue that prevented clusters from being deployed when gRPC ports are blocked and WebSocket is used as a
+  fallback.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10634 -->
+
+- Fixed an issue that prevented clusters from being deployed or managed using
+  [cluster templates](../cluster-templates/cluster-templates.md) if the cluster was scoped to a project different from
+  the one the template was created in.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6470 -->
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue in [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
+  that caused workload clusters deployed with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.34.3 or later to fail
+  to pull images through configured [registry mirrors](../enterprise-version/system-management/registry-override.md). 
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10556 -->
+
+- Fixed an issue that caused [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) updates to fail with
+  `Manifest <UID> is not found in the project` errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10448 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10431 -->
+
+- Fixed an issue that caused the Palette UI to crash when creating or editing
+  [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) with empty or missing version fields.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10381 -->
+
+- Fixed an issue that caused the **Save Changes** button to remain disabled when editing an imported
+  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) containing an empty manifest.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6311 -->
+
+- Fixed an issue that caused the Velero Helm release to fail when enabling
+  [cluster backups](../clusters/cluster-management/backup-restore/backup-restore.md) using Azure as the backup storage
+  location.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6310 -->
+
+- Fixed an issue that prevented
+  [backup storage location](../clusters/cluster-management/backup-restore/backup-restore.md) credential and
+  configuration updates from being propagated to workload clusters, causing backups to fail.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10285 -->
+
+- Fixed an issue that caused creating or updating [VMware vSphere](../clusters/data-center/vmware/vmware.md) node pools
+  after initial cluster deployment to lose cluster-level datacenter, folder, and image template folder settings.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6217 -->
+
+- Fixed an issue that caused EKS Pod Identity job failures in clusters using
+  [image swap](../clusters/cluster-management/image-swap.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9996 -->
+
+- Fixed an issue that caused repeated false pack update notifications on
+  [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) when no changes were made to the pack or profile.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4372 -->
+
+- Fixed an issue that caused cluster status fields to display Go pointer values instead of actual values.
+
 ### Edge
 
 :::info
@@ -144,19 +232,35 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net//browse/PE-7582 -->
+<!-- https://spectrocloud.atlassian.net//browse/PE-7583 -->
+
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   types. Dropdown profile variables are not supported for airgapped Local UI clusters.
+
+<!-- https://spectrocloud.atlassian.net//browse/PE-8122 -->
+<!-- https://spectrocloud.atlassian.net//browse/PE-7779 -->
+
 - Pluggable Authentication Modules (PAM) policy enforcement is now enabled, including password expiry checks, which can
   be set using the `stylus.site.users[*].passwordExpiry`
   [user data](../clusters/edge/edge-configuration/installer-reference.md) field. For examples of configuring PAM via the
   Dockerfile, refer to
   [Build Edge Artifacts - Advanced workflow](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts).
+
+<!-- https://spectrocloud.atlassian.net//browse/PE-8215 -->
+<!-- https://spectrocloud.atlassian.net//browse/PE-8512 -->
+
 - Edge workflows have been updated to Kairos v4.0.3. Due to upstream changes, this update does not apply to
   [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain on
   Kairos v3.5.9. This does not impact functionality.
 
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8328 -->
+
+- Fixed an issue that caused nodes deleted via `kubectl` to remain visible in the Palette UI, resulting in duplicate
+  entries when the node rejoined the cluster.
 
 ### VerteX
 
@@ -164,6 +268,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4-9-0) for more details.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10334 -->
+
+- Fixed an issue that caused upgrading [self-hosted Palette VerteX](../vertex/vertex.md) installations earlier than
+  4.6.12 to fail due to legacy MongoDB values.
 
 ### Automation
 
@@ -213,8 +324,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 #### Pack Notes
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10660 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2729 -->
 
 - <TpBadge /> Headlamp is now available. It provides a web-based Kubernetes UI for cluster management and monitoring.
+  Refer to the [Headlamp](../clusters/cluster-management/headlamp.md) guide for more information.
 
 #### OS
 
