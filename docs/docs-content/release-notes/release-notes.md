@@ -98,14 +98,6 @@ how to use GHCR-sourced Helm charts in your clusters.
 - The **Context** field on the cluster **Overview** tab now contains a hyperlink to the cluster's parent project. This
   link is available from the Tenant Admin scope only.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-6100 -->
-
-- Velero has been upgraded to version 1.8.0, which is used internally by Palette for backing up and restoring clusters.
-  Existing clusters with backups configured will be automatically updated to Velero version 1.8.0, ensuring continuous
-  access to backup and restore functionality. Refer to the
-  [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
-  and restore tools in Palette.
-
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net//browse/PCP-5494 -->
@@ -168,7 +160,7 @@ how to use GHCR-sourced Helm charts in your clusters.
 <!-- prettier-ignore-start -->
 
 - Fixed an issue in [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
-  that caused workload clusters deployed with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.34.3+ to fail
+  that caused workload clusters deployed with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.34.3 or later to fail
   to pull images through configured [registry mirrors](../enterprise-version/system-management/registry-override.md). 
 
 <!-- prettier-ignore-end -->
