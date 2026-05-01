@@ -34,20 +34,20 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
 4. Execute the following command to add the Palette MCP server to Claude Code, replacing the placeholders with your
    values. Ensure that you provide full filepaths for the `kubeconfig` folder and `.env.mcp` file, if you have
    configured one.
-   
+
    If you want to use Podman, replace the command `docker` with `podman`.
 
    <Tabs groupId="mcp-setup">
 
    <TabItem label=".env.mcp File" value="env_file">
 
-   
    claude mcp add --transport stdio palette -- \
-       docker run --rm -i --pull always \
-       --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
-       --env-file /<local-path>/.palette/.env-mcp \
-       public.ecr.aws/palette-ai/palette-mcp-server:latest
-   ```
+    docker run --rm -i --pull always \
+    --mount type=bind,source=/<local-path>/kubeconfig,target=/tmp/kubeconfig \
+    --env-file /<local-path>/.palette/.env-mcp \
+    public.ecr.aws/palette-ai/palette-mcp-server:latest
+
+   ````
 
    </TabItem>
 
@@ -69,7 +69,7 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
        -e SPECTROCLOUD_DEFAULT_PROJECT_ID=<palette-project-id> \
        -e ALLOW_DANGEROUS_ACTIONS=0 \
        public.ecr.aws/palette-ai/palette-mcp-server:latest
-   ```
+   ````
 
    </TabItem>
 
@@ -86,7 +86,7 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
    Added stdio MCP server palette with command: docker run --rm -i --pull always --mount type=bind,source=/Users/test-user/.palette/kubeconfig,target=/tmp/kubeconfig --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest to local config
    ```
 
-6. Execute the following to command to ensure that the MCP server was set up successfully.
+5. Execute the following to command to ensure that the MCP server was set up successfully.
 
    ```shell
    claude mcp list
@@ -97,7 +97,7 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
    --env-file /Users/test-user/.palette/.env-mcp public.ecr.aws/palette-ai/palette-mcp-server:latest - ✓ Connected
    ```
 
-7. Start Claude Code. Ensure that you authenticate with Claude by following the prompts.
+6. Start Claude Code. Ensure that you authenticate with Claude by following the prompts.
 
    ```shell
    claude
@@ -109,7 +109,7 @@ This guide covers how to set up the [Palette MCP server](https://github.com/spec
    ›
    ```
 
-8. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
+7. We recommend adding an [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to
    enable Claude to use the downloaded kubeconfig files to access clusters.
 
    Execute the following command to create the `CLAUDE.md` file on your machine if it does not exist.
