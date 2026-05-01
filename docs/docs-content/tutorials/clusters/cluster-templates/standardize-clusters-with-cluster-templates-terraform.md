@@ -481,8 +481,8 @@ create_new_profile_version = true # Set to true to create cluster profile versio
 
 ### Review the New Profile Version Code
 
-`data.tf` includes a new data source for the `cost-analyzer` pack that is fetched only when `create_new_profile_version`
-is `true`.
+`data.tf` includes a new data source for the Kubecost pack (`cost-analyzer`) that Terraform fetches only when
+`create_new_profile_version` is `true`.
 
 ```hcl hideClipboard
 data "spectrocloud_pack" "kubecost" {
