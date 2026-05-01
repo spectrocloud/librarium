@@ -132,7 +132,7 @@ jobs:
         
       - name: Post Netlify progress
         if: ${{ steps.changes.outputs.detected == 'true' && github.event.pull_request.head.repo.fork == false }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const marker = "librarium-versions-robot";

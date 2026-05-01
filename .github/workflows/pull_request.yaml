@@ -133,7 +133,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Post PR Comment (success)
         if: ${{ github.event_name == 'pull_request' && success() }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
@@ -153,7 +153,7 @@ jobs:
 
       - name: Post PR Comment (failure)
         if: ${{ github.event_name == 'pull_request' && failure() }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const issue_number = Number(process.env.PR_NUMBER || context.payload.pull_request?.number || context.issue?.number);

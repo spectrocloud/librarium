@@ -98,7 +98,7 @@ jobs:
           SLACK_MESSAGE: ' The PR for branch ${{env.GITHUB_BRANCH}} failed when attempting to format the API. Review the GitHub Actions logs for more details.'
 
       - name: Post Netlify progress
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
                           const marker = "librarium-api-format";
