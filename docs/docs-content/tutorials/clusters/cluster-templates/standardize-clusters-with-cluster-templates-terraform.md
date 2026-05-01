@@ -460,14 +460,13 @@ Repeat these steps for `tf-prod-cluster` to confirm you can launch its Hello Uni
 
 In this section, you will create a new cluster profile version that adds the Kubecost pack for real-time cost
 visibility. The configuration adds a new `spectrocloud_cluster_profile` resource with `version = "1.1.0"` and the same
-`name` as the existing profile. 
+`name` as the existing profile.
 
 The Spectro Cloud Terraform provider models each `spectrocloud_cluster_profile` resource as one profile version.
 Creating a new resource with the same `name` but a different `version` registers it as a new version of the same profile
 in Palette.
 
-`tf-dev-cluster` and `tf-prod-cluster` remain on `1.0.0` until you explicitly upgrade
-them.
+`tf-dev-cluster` and `tf-prod-cluster` remain on `1.0.0` until you explicitly upgrade them.
 
 Set `create_new_profile_version` to `true` in `terraform.tfvars` after the initial clusters are deployed.
 
