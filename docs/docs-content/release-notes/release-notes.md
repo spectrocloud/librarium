@@ -159,7 +159,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-373 -->
 
-- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) ISOs now include `/opt/spectrocloud/bin` in the default `PATH`, making kubectl and Helm immediately available for debugging and operations.
+- The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) ISOs now include
+  `/opt/spectrocloud/bin` in the default `PATH`, making kubectl and Helm immediately available for debugging and
+  operations.
 
 #### Bug Fixes
 
