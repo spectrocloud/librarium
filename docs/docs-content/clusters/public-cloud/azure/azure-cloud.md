@@ -23,7 +23,7 @@ The following table summarizes which Azure clouds and cluster types are supporte
 
 :::warning
 
-Beginning with Palette version 4.9.0, Azure Government cloud is disabled in the Palette UI. To use Azure Government
+Beginning with Palette version 4.9.5, Azure Government cloud is disabled in the Palette UI. To use Azure Government
 cloud in Palette, you must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
 [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
@@ -95,7 +95,7 @@ in environments that meet FedRAMP and other compliance standards.
 
 :::warning
 
-Beginning with Palette version 4.9.0, Azure Government cloud is disabled in the Palette UI. To use Azure Government
+Beginning with Palette version 4.9.5, Azure Government cloud is disabled in the Palette UI. To use Azure Government
 cloud in Palette, you must do so via the [Palette API](/api/category/palette-api-v1/),
 [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
 [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);

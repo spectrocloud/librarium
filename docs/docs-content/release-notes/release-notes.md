@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 3, 2026 - Release 4.9.0 {#release-notes-4-9-0}
+## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
 
 ### Security Notices
 
@@ -224,7 +224,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.0 Palette release is 4.9.0.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.5 Palette release is 4.9.4.
 
 :::
 
@@ -293,11 +293,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 4.9.0 of the
+- Terraform version 0.29.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.9.0 of the
+- Crossplane version 0.29.0 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
@@ -354,7 +354,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Flannel                     | CNI        | :white_check_mark: | :x:                | 0.28.4      |
 | Flux2                       | Add-on     | :white_check_mark: | :x:                | 2.18.3      |
 | Istio                       | Add-on     | :white_check_mark: | :x:                | 1.29.2      |
-| OpenTelemetry               | Add-on     | :white_check_mark: | :x:                | 0.149.0     |
 | Open Observe                | Add-on     | :white_check_mark: | :x:                | 0.70.3      |
 | Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.3      |
 | Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.6      |
@@ -371,3 +370,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - <TpBadge /> Headlamp is now available. It provides a web-based Kubernetes UI for cluster management and monitoring.
   Refer to the [Headlamp](../clusters/cluster-management/headlamp.md) guide for more information.
+
+- The <VersionedLink text="KubeVirt" url="/integrations/packs/?pack=kubevirt" /> and
+  <VersionedLink text="KubeVirt-CDI" url="/integrations/packs/?pack=kubevirt-cdi" /> packs are now deprecated.
