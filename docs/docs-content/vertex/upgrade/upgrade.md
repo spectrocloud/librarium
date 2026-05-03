@@ -74,7 +74,7 @@ health status of MongoDB ReplicaSet members, refer to our
 
 :::info
 
-After upgrading to 4.8.8, the Palette management cluster will appear to be **Unhealthy** in the Palette UI due to
+After upgrading to 4.8.8, the Palette VerteX management cluster will appear to be **Unhealthy** in the Palette VerteX UI due to
 `mongodb-key-manager-manifest` errors. The cluster functionality is not affected and will return to **Healthy** after a
 few hours.
 
