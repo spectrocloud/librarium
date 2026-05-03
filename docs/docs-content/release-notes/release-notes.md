@@ -237,8 +237,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  types. A [known issue](./known-issues.md) prevents locally managed Edge clusters that use cluster profiles containing
-  profile variables with the **Dropdown** input type from scaling.
+  types. Dropdown profile variables are not supported for airgapped Local UI clusters.
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-8122 -->
 <!-- https://spectrocloud.atlassian.net//browse/PE-7779 -->
@@ -252,9 +251,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net//browse/PE-8215 -->
 <!-- https://spectrocloud.atlassian.net//browse/PE-8512 -->
 
-- Edge workflows have been updated to Kairos v4.0.3. A [known issue](known-issues.md) prevents this update from applying
-  to [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain
-  on Kairos v3.5.9. This does not impact functionality.
+- Edge workflows have been updated to Kairos v4.0.3. Due to upstream changes, this update does not apply to
+  [Unified Kernel Image (UKI)-based Trusted Boot images](../clusters/edge/trusted-boot/trusted-boot.md), which remain on
+  Kairos v3.5.9. This does not impact functionality.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-373 -->
 

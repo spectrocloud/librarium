@@ -16,12 +16,18 @@ supplied them with site-specific `user-data`, and can either keep them as they a
 more information about EdgeForge and site user data, refer to
 [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md) and [Apply Site User Data](./site-user-data.md).
 
-:::warning
+## Upgrade Notes
 
-When upgrading an Edge host from an Agent version earlier than 4.3, the initial TUI configuration wizard does not start
-automatically. To launch the setup manually, issue the command `/opt/spectrocloud/bin/palette-tui` in the terminal.
+- The TUI introduced in Palette version 4.8.6 (CanvOS version 4.8.1) does not start automatically on Edge hosts upgraded
+  directly from Palette versions prior to 4.6.32 (CanvOS versions earlier than 4.6.21). To fix this issue, reboot the
+  hosts, or issue the following command on each host:
 
-:::
+  - **Appliance mode** - `systemctl restart palette-tui`
+  - **Agent mode** - `systemctl restart spectro-palette-tui`
+
+- When upgrading an Edge host from an Agent version earlier than 4.3, the initial TUI configuration wizard does not
+  start automatically. To launch the setup manually, issue the command `/opt/spectrocloud/bin/palette-tui` in the
+  terminal.
 
 ## Limitations
 

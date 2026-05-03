@@ -17,6 +17,8 @@ of creating cluster profile variables, adding them to profile layers, and deploy
 
 - The multiline input type is limited to a maximum of 10,000 characters.
 
+- Dropdown profile variables are not for airgapped [Local UI clusters](../../../../clusters/edge/local-ui/local-ui.md).
+
 ### Prerequisites
 
 - The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to

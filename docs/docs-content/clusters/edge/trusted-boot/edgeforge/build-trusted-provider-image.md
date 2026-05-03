@@ -14,6 +14,10 @@ For more information about Kairos, refer to [Kairos documentation](https://kairo
 Since provider images contain the OS, which is a part of the boot process, the provider image needs to be signed by a
 key that is in the Signature Database (DB). This is important both during installation and upgrades.
 
+## Limitations
+
+- <PartialsComponent category="clusters-edge" name="uki-kairos-limitation" />
+
 ## Prerequisites
 
 - A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge
