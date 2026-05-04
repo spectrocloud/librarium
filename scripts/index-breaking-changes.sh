@@ -44,7 +44,7 @@ if [ -f "$ALL_VERSIONS_PATH" ] && [ -d "$BREAKING_CHANGES_PARTIALS_PATH" ]; then
   exit 0
 fi
 
-wget -qO "$TEMP_ARCHIVE_FILE" "$ARCHIVE_GH_PATH"
+wget -qO "$TEMP_ARCHIVE_FILE" "$ARCHIVE_GH_PATH" || { echo "❌ Failed to fetch archiveVersions.json from master: $ARCHIVE_GH_PATH"; exit 1; }
 echo "Saved master archiveVersions.json to $TEMP_ARCHIVE_FILE"
 
 # Fetch all branches from the remote
