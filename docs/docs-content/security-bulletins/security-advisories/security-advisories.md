@@ -67,7 +67,6 @@ Spectro Cloud strongly recommends patching all underlying host operating systems
 
 ### Mitigation
 
-
 1. Apply vendor kernel patches immediately
    - Upgrade to patched kernel versions where available
 2. Reboot nodes after patching
@@ -77,7 +76,6 @@ Spectro Cloud strongly recommends patching all underlying host operating systems
    - Restrict AF_ALG access
 
 ### References
-
 
 - [NIST NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)
 - [Red Hat Advisory](https://access.redhat.com/security/vulnerabilities/RHSB-2026-02)
