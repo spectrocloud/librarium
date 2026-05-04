@@ -78,7 +78,6 @@ Spectro Cloud strongly recommends patching all underlying host operating systems
 
 ### References
 
-For detailed guidance on this Advisory, see
 
 - [NIST NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)
 - [Red Hat Advisory](https://access.redhat.com/security/vulnerabilities/RHSB-2026-02)
