@@ -67,7 +67,6 @@ Spectro Cloud strongly recommends patching all underlying host operating systems
 
 ### Mitigation
 
-Spectro Cloud recommends customers:
 
 1. Apply vendor kernel patches immediately
    - Upgrade to patched kernel versions where available
