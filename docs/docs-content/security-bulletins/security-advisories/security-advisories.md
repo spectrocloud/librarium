@@ -40,7 +40,7 @@ scenarios.
 
 ### Applicable Systems
 
-The issue is reported in the Linux kernel crypto subsystem (`algif_aead` / AF_ALG interface).
+The issue is reported in the Linux kernel Crypto subsystem (`algif_aead` / AF_ALG interface).
 
 Spectro Cloud platform components do not require this kernel module and do not need this to be loaded. Kubernetes
 workload clusters also do not need this module to function.
