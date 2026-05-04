@@ -11,6 +11,40 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May XX, 2026 - Release 4.8.X
+
+## Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8589 -->
+
+- Fixed an issue that caused Palette to register `429` rate limit errors due to excessive calls on the `/v1/edgehosts`
+  [API endpoint](/api/category/palette-api-v1/).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10605 -->
+
+- The dependencies of the `imageswap` Palette image was updated to the latest versions, ensuring that it has the latest
+  security patches.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6564 -->
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused Azure IaaS clusters using <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.13 or earlier get stuck when upgrading to a PXK version in the 1.33.x series.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8590 -->
+
+- Fixed an issue that prevented Edge hosts using <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> from upgrading version 1.34.5 to version 1.35.2 due to `content.sh` failing silently with exit code `127`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8590 -->
+
+- Fixed an issue that prevented Edge hosts using <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> from upgrading due to stale revision files in the persistent `OverlayFS` layer.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10656 -->
+
+- Fixed an issue that prevented clusters from being deployed when gRPC ports are blocked and WebSocket is used as a
+  fallback.
+
 ## April 28, 2026 - Release 4.8.52
 
 ## Bug Fixes
