@@ -32,3 +32,4 @@ docs/docs-content/vertex/system-management/feature-flags.md:59:8:Vale.Spelling:D
 docs/docs-content/vertex/system-management/feature-flags.md:61:8:Vale.Spelling:Did you really mean 'elasticloadbalancing'?
 docs/docs-content/vertex/system-management/feature-flags.md:62:8:Vale.Spelling:Did you really mean 'cloudformation'?
 docs/docs-content/vertex/system-management/feature-flags.md:64:8:Vale.Spelling:Did you really mean 'ssm'?
+docs/docs-content/clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/create-openshift-workload-cluster.md:106:95:Vale.Spelling:Did you really mean 'PDBs'?
