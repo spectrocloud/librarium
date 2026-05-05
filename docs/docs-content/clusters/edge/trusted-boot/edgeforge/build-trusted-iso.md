@@ -14,6 +14,8 @@ This document guides you through the process of producing Edge Installer ISOs th
 - Trusted Boot is only supported for clusters with a connection to a Palette instance. Therefore, you cannot set
   `managementMode` to `local` in the `user-data` file.
 
+- <PartialsComponent category="clusters-edge" name="uki-kairos-limitation" />
+
 ## Prerequisites
 
 - A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge
@@ -69,9 +71,11 @@ This document guides you through the process of producing Edge Installer ISOs th
 
    :::info
 
-   It is not necessary to include `AUTO_ENROLL_SECUREBOOT_KEYS=true`. If you do not include it, you will need to
-   manually confirm the enrollment of the keys during install time. For more information, refer to
-   [Installation with Trusted Boot](..//deployment-day2/install.md).
+   - It is not necessary to include `AUTO_ENROLL_SECUREBOOT_KEYS=true`. If you do not include it, you will need to
+     manually confirm the enrollment of the keys during install time. For more information, refer to
+     [Installation with Trusted Boot](..//deployment-day2/install.md).
+
+   - <PartialsComponent category="clusters-edge" name="uki-kairos-limitation" />
 
    :::
 

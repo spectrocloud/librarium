@@ -20,6 +20,67 @@ advisories are published.
 
 :::
 
+## Security Advisory 013 - Linux Kernel "Copy Fail" Privilege Escalation Vulnerability
+
+- **Release Date**: May 4, 2026
+- **Last Updated**: May 4, 2026
+- **Severity**: HIGH
+- **CVE**: [CVE-2026-31431](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)
+
+### Summary
+
+Spectro Cloud is aware of a high-severity Linux kernel vulnerability, CVE-2026-31431. This issue allows an unprivileged
+local user to escalate privileges to root on affected systems.
+
+The vulnerability impacts a wide range of Linux distributions commonly used in cloud, Kubernetes, and containerized
+environments.
+
+A public proof-of-concept (PoC) exploit is available, and the vulnerability has been observed in active exploitation
+scenarios.
+
+### Applicable Systems
+
+The issue is reported in the Linux kernel Crypto subsystem (`algif_aead` / AF_ALG interface).
+
+Spectro Cloud platform components do not require this kernel module and do not need this to be loaded. Kubernetes
+workload clusters also do not need this module to function.
+
+However, customer-managed nodes and workloads running affected Linux kernels can be modified to load the affected kernel
+module even if not enabled by default.
+
+### Impact
+
+Successful exploitation allows:
+
+- Local privilege escalation to root
+- Potential container escape
+- Compromise of multi-tenant Kubernetes environments
+- Lateral movement across nodes and workloads
+
+### Recommended Actions
+
+Spectro Cloud strongly recommends patching all underlying host operating systems used in:
+
+- Kubernetes clusters
+- Managed node pools
+- Edge and on-prem deployments
+
+### Mitigation
+
+1. Apply vendor kernel patches immediately
+   - Upgrade to patched kernel versions where available
+2. Reboot nodes after patching
+   - Ensures vulnerable kernel components are unloaded
+3. Apply temporary mitigations if patching is delayed
+   - Disable or block the `algif_aead` module
+   - Restrict AF_ALG access
+
+### References
+
+- [NIST NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)
+- [Red Hat Advisory](https://access.redhat.com/security/vulnerabilities/RHSB-2026-02)
+- [Canonical Advisory](https://ubuntu.com/security/CVE-2026-31431)
+
 ## Security Advisory 012 - Nginx Ingress Comment-Based Configuration Injection Vulnerability
 
 - **Release Date**: March 23, 2026
@@ -228,8 +289,7 @@ Nginx controller has been deprecated by the upstream provider, and we are in the
 controller. Until the migration to Traefik ingress is complete, we will be upgrading Nginx controller to version 1.13.7,
 which will remediate this vulnerability.
 
-Palette version 4.8.27 uses Nginx controller version 1.13.7. Refer to the
-[release notes](../../release-notes/release-notes.md#february-5-2026---release-4827) for further information.
+Palette version 4.8.27 uses Nginx controller version 1.13.7.
 
 ### Affected Deployments
 
