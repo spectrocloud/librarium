@@ -4,6 +4,7 @@ title: "Create and Manage MAAS Clusters"
 description: "Learn how to create and manage MAAS clusters in Palette."
 hide_table_of_contents: false
 tags: ["data center", "maas"]
+sidebar_position: 20
 ---
 
 Palette supports creating and managing Kubernetes clusters deployed to a MAAS account. This section guides you on how to
