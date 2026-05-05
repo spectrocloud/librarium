@@ -42,7 +42,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10656 -->
 
-- Fixed an issue that prevented clusters from being deployed when gRPC Remote Procedure Call (gRPC) ports are blocked, and WebSocket is used as a
+- Fixed an issue that prevented clusters from being deployed when gRPC Remote Procedure Call (gRPC) ports are blocked due to firewall policies, and WebSocket is used as a
   fallback.
 
 ## April 28, 2026 - Release 4.8.52
