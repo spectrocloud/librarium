@@ -11,6 +11,22 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May XX, 2026 - Release 4.9.X
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8509 -->
+
+- Fixed an issue that caused Palette to register `429` rate limit errors due to excessive calls on the `/v1/edgehosts`
+  [API endpoint](/api/category/palette-api-v1/).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6560 -->
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused Azure IaaS clusters using <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.13 or earlier to get stuck when upgrading to a PXK version in 1.33.x series.
+
+<!-- prettier-ignore-end -->
+
 ## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
 
 ### Security Notices
