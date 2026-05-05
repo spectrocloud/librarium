@@ -23,6 +23,18 @@ Palette VerteX.
 | <TpBadge /> [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/)         |          :x:           | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: |           :x:            |         :x:          |        :white_check_mark:        |
 | <TpBadge /> [AWS Top Secret Cloud](https://aws.amazon.com/federal/top-secret-cloud/) |          :x:           | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: |           :x:            |         :x:          |        :white_check_mark:        |
 
+:::warning
+
+Beginning with Palette version 4.9.5, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
+must do so via the [Palette API](/api/category/palette-api-v1/),
+[Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
+[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+however, these methods will be removed in an
+[upcoming release](../../../release-notes/announcements.md#upcoming-breaking-changes). To continue deploying and
+managing clusters using AWS GovCloud, use [Palette VerteX](../../../vertex/vertex.md) instead.
+
+:::
+
 ## AWS Commercial Cloud
 
 This section provides guidance on how to add an AWS Commercial cloud account to Palette or Palette VerteX using static
@@ -73,6 +85,7 @@ Use the steps below to add an AWS cloud account using dynamic Security Token Ser
   category="clusters-aws-account-setup"
   name="aws-dynamic-credentials-prerequisites"
   edition="Palette or Palette VerteX"
+  stsGuides="both"
 />
 
 #### Enablement
@@ -82,6 +95,7 @@ Use the steps below to add an AWS cloud account using dynamic Security Token Ser
   name="aws-dynamic-credentials-enablement-1"
   partition="AWS"
   option="or Palette VerteX"
+  stsGuides="both"
 />
 
 9. <PartialsComponent category="clusters-aws-account-setup" name="aws-static-dynamic-credentials-enablement-2" />
@@ -113,7 +127,12 @@ Use the steps below to add an AWS cloud account using dynamic Security Token Ser
 
 #### Enablement
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-enablement" partition="AWS" />
+<PartialsComponent
+  category="eks-pod-identity"
+  name="eks-pod-identity-enablement"
+  partition="AWS"
+  edition="Palette or Palette VerteX"
+/>
 
 #### Validate
 
@@ -127,8 +146,22 @@ Use the steps below to add an AWS cloud account using dynamic Security Token Ser
 ## AWS GovCloud
 
 Palette and Palette VerteX support deploying Kubernetes clusters to [AWS GovCloud](https://aws.amazon.com/govcloud-us/).
-This section provides guidance on how to add an AWS GovCloud account to Palette using static or dynamic access
+This section provides guidance on how to add an AWS GovCloud account to Palette VerteX using static or dynamic access
 credentials, as well as EKS Pod Identity.
+
+:::warning
+
+Beginning with Palette version 4.9.5, AWS GovCloud is disabled in the Palette UI. To use AWS GovCloud in Palette, you
+must do so via the [Palette API](/api/category/palette-api-v1/),
+[Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), or
+[Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette);
+however, these methods will be removed in an
+[upcoming release](../../../release-notes/announcements.md#upcoming-breaking-changes). To continue deploying and
+managing clusters using AWS GovCloud, use [Palette VerteX](../../../vertex/vertex.md) instead.
+
+The procedures in this section apply to the Palette VerteX UI only.
+
+:::
 
 ### Static Access Credentials
 
@@ -139,7 +172,7 @@ Use the steps below to add an AWS GovCloud account using static access credentia
 <PartialsComponent
   category="clusters-aws-account-setup"
   name="aws-static-credentials-prerequisites"
-  edition="Palette or Palette VerteX"
+  edition="Palette VerteX"
 />
 
 #### Enablement
@@ -148,22 +181,18 @@ Use the steps below to add an AWS GovCloud account using static access credentia
   category="clusters-aws-account-setup"
   name="aws-static-credentials-enablement-1"
   partition="AWS US Gov"
-  edition="Palette or Palette VerteX"
+  edition="Palette VerteX"
 />
 
 6. <PartialsComponent
      category="clusters-aws-account-setup"
      name="aws-static-dynamic-credentials-enablement-2"
-     edition="Palette or Palette VerteX"
+     edition="Palette VerteX"
    />
 
 #### Validate
 
-<PartialsComponent
-  category="clusters-aws-account-setup"
-  name="aws-account-setup-validate"
-  edition="Palette or Palette VerteX"
-/>
+<PartialsComponent category="clusters-aws-account-setup" name="aws-account-setup-validate" edition="Palette VerteX" />
 
 ### Dynamic Access Credentials
 
@@ -174,7 +203,7 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
 <PartialsComponent
   category="clusters-aws-account-setup"
   name="aws-dynamic-credentials-prerequisites"
-  edition="Palette or Palette VerteX"
+  edition="Palette VerteX"
 />
 
 #### Enablement
@@ -183,22 +212,18 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
   category="clusters-aws-account-setup"
   name="aws-dynamic-credentials-enablement-1"
   partition="AWS US Gov"
-  edition="Palette or Palette VerteX"
+  edition="Palette VerteX"
 />
 
-9. <PartialsComponent
+1. <PartialsComponent
      category="clusters-aws-account-setup"
      name="aws-static-dynamic-credentials-enablement-2"
-     edition="Palette or Palette VerteX"
+     edition="Palette VerteX"
    />
 
 #### Validate
 
-<PartialsComponent
-  category="clusters-aws-account-setup"
-  name="aws-account-setup-validate"
-  edition="Palette or Palette VerteX"
-/>
+<PartialsComponent category="clusters-aws-account-setup" name="aws-account-setup-validate" edition="Palette VerteX" />
 
 ### EKS Pod Identity
 
@@ -206,11 +231,16 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
 
 #### Limitations
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS US Gov" />
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS" />
 
 #### Prerequisites
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-prerequisites" partition="AWS US Gov" />
+<PartialsComponent
+  category="eks-pod-identity"
+  name="eks-pod-identity-prerequisites"
+  partition="AWS US Gov"
+  edition="Palette VerteX"
+/>
 
 #### Enablement
 
@@ -218,7 +248,7 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
   category="eks-pod-identity"
   name="eks-pod-identity-enablement"
   partition="AWS US Gov"
-  edition="Palette or Palette VerteX"
+  edition="Palette VerteX"
 />
 
 #### Validate
@@ -227,7 +257,7 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
   category="eks-pod-identity"
   name="eks-pod-identity-validate"
   partition="AWS US Gov"
-  edition="Palette or Palette VerteX"
+  edition="Palette VerteX"
 />
 
 ## AWS Secret Cloud (SC2S) and Top Secret Cloud (C2S)

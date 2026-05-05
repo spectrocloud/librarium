@@ -21,8 +21,7 @@ For guidance on adding Open Container Initiative (OCI)-based Helm chart registri
 
 <PartialsComponent category="profiles" name="create-profile-enablement" edition="Add-on" />
 
-5. From the **Add Helm Chart** drop-down menu, choose **Public packs** or **Private packs**. For GitHub Container
-   Registry (GHCR), select **Private packs**.
+5. From the **Add Helm Chart** drop-down menu, choose **Public packs** or **Private packs**.
 
 <Tabs groupId="registry-type">
 
@@ -40,11 +39,6 @@ For guidance on adding Open Container Initiative (OCI)-based Helm chart registri
 
 6. To add a chart from a _private_ registry, on the **Profile Layers** page, select a **Registry** from the drop-down
    menu. Next, select **Chart name** and **Chart version**.
-
-   For GHCR, enter the chart name and version _exactly_ as they appear in the endpoint. For example, for an endpoint of
-   `oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator:0.39.0`, enter `flux-operator` for the **Chart name** and
-   `0.39.0` for the **Chart version**. For more information on adding Helm charts from GHCR in Palette, refer to our
-   [Add OCI Helm Registry](../../../../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide.
 
 7. (Optional) If desired, specify the layer [install order](./create-addon-profile.md#install-order).
 
@@ -90,11 +84,6 @@ For guidance on adding Open Container Initiative (OCI)-based Helm chart registri
 
 5. To add a chart from a _private_ registry, on the **Profile Layers** page, select a **Registry** from the drop-down
    menu. Next, select **Chart name** and **Chart version**.
-
-   For GHCR, enter the chart name and version _exactly_ as they appear in the endpoint. For example, for an endpoint of
-   `oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator:0.39.0`, enter `flux-operator` for the **Chart name** and
-   `0.39.0` for the **Chart version**. For more information on adding Helm charts from GHCR in Palette, refer to our
-   [Add OCI Helm Registry](../../../../registries-and-packs/registries/oci-registry/add-oci-helm.md) guide.
 
 6. (Optional) If desired, specify the layer [install order](./create-addon-profile.md#install-order).
 

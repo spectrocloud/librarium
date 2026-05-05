@@ -36,10 +36,12 @@ software verified through cryptographic signatures. In the event that an Edge de
 release the key to decrypt the disk encryption if the boot process is tampered with, ensuring your user data remains
 encrypted.
 
-## Limitation
+## Limitations
 
 - Trusted Boot is only supported in environments that use Ubuntu 24.04 as the OS and RKE2 or K3s as the Kubernetes
   distribution.
+
+- <PartialsComponent category="clusters-edge" name="uki-kairos-limitation" />
 
 ## Next Steps
 

@@ -14,6 +14,12 @@ partial_name: pcg-initial-installation
 3.  Issue the following command to authenticate your Palette CLI installation with Palette. When prompted, enter the required information. Refer to
     the table below for information about each parameter.
 
+    :::warning
+
+    For environments with SSO enabled, use the command `palette login --console-url <endpoint>` and specify the organization-specific endpoint. If the `--console-url` flag is omitted, the PCG cannot be deployed.
+
+    :::
+
     ```shell
     palette login
     ```
