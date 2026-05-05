@@ -452,6 +452,12 @@ IS_UKI=true
 The `.arg` file specifies `IS_UKI` to be true which tells the EdgeForge to build a Unified Kernel Image (UKI) required
 for Trusted Boot. In addition, it also specifies the OS version and distribution, as well as the Kubernetes version.
 
+:::info
+
+<PartialsComponent category="clusters-edge" name="uki-kairos-limitation" />
+
+:::
+
 ### Two-Node Mode
 
 Palette Edge allows you to provision highly available clusters with
