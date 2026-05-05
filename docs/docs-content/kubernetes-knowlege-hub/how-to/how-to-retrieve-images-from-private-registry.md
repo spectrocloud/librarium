@@ -226,5 +226,5 @@ To learn more about Kubernetes and how to use it to deploy your application, che
 deploying apps to Kubernetes. You can also read about
 [how to deploy a stateless frontend application](/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app) on
 Kubernetes or join our
-[slack channel](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-1mw0cgosi-hZJDF_1QU77vF~qNJoPNUQ). Learn
+[slack channel](https://spectrocloudcommunity.slack.com/join/shared_invite/zt-g8gfzrhf-cKavsGD_myOh30K24pImLA). Learn
 from other Kubernetes users and get to know fellow community members.
