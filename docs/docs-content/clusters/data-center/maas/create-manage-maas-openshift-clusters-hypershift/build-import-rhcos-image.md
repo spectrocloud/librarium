@@ -38,8 +38,8 @@ image is required before you can deploy OpenShift workload clusters on MAAS usin
 
   - `debootstrap`
   - `rsync`
-  - `losetup` (util-linux)
-  - `sgdisk` (gdisk)
+  - `losetup` (`util-linux`)
+  - `sgdisk` (`gdisk`)
   - `kpartx`
   - `partprobe`
   - `udevadm`
