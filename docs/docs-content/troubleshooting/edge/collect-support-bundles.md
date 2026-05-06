@@ -29,7 +29,7 @@ available, includes Kubernetes data accessible locally on that host.
 - The following tools are available on the host:
   - `journalctl`
   - `systemctl`
-- - You have root privileges to run the `support-bundle-edge.sh` script.
+- You have root privileges to run the `support-bundle-edge.sh` script.
 
 ## Run the Script to Collect Edge Host Logs
 
