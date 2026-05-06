@@ -45,7 +45,7 @@ CANDIDATES_LINK=$(curl -s --fail-with-body \
 ')
 
 if [[ -z "$CANDIDATES_LINK" ]]; then
-  echo "No 'List of candidates' link found" >&2
+  echo "❌  No 'List of candidates' link found" >&2
   exit 1
 fi
 
@@ -110,6 +110,8 @@ Rules:
 - Preserve the same order as the issue keys provided.
 - If an issue has insufficient detail, write a conservative generic fix phrase.
 - Include links to relevant documentation if applicable.
+- Use active voice and avoid passive constructions.
+- Use positive language, focusing on the improvement rather than the problem.
 
 Example:
 <!-- https://spectrocloud.atlassian.net/browse/PE-8328 -->
