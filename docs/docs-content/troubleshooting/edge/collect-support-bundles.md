@@ -17,9 +17,8 @@ available, includes Kubernetes data accessible locally on that host.
 
 ## Prerequisites
 
-- You are connected to the host you want to troubleshoot using SSH (Secure Shell),
-  [remote shell](../../clusters/edge/cluster-management/remote-shell.md), direct terminal access, or another connection
-  method.
+- You are connected to the host you want to troubleshoot using SSH (Secure Shell), direct terminal access, or another
+  connection method.
 - The following tools are available on the host:
   - `journalctl`
   - `systemctl`
