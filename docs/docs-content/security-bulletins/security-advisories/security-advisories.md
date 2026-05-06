@@ -65,6 +65,9 @@ Spectro Cloud strongly recommends patching all underlying host operating systems
 - Managed node pools
 - Edge and on-prem deployments
 
+For guidance on patching cluster nodes, refer to the [OS Patching](../../clusters/cluster-management/os-patching.md)
+documentation.
+
 ### Mitigation
 
 1. Apply vendor kernel patches immediately
