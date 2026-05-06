@@ -124,7 +124,7 @@ Follow the steps below on every Edge host you want to troubleshoot.
 
 3.  Copy the file to your local computer. Run the command on the machine to which you want to copy the file.
 
-    ```bash hideClipboard title="Template"
+    ```bash title="Template"
     scp <user>@<host-ip-address>:<path-to-file> <local-destination-directory>
     ```
 
