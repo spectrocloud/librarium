@@ -101,8 +101,8 @@ Kubernetes resource.
 <TabItem value="vm-manual" label="Evacuate VMs Manually">
 
 1. Obtain the kubeconfig file from Palette, and set the `KUBECONFIG` environment variable to access it so you can issue
-   kubectl commands to the cluster. For more information, refer to
-   [Set up Kubectl](../../clusters/cluster-management/palette-webctl.md#set-up-kubectl).
+   kubectl commands to the cluster. For more information, refer to our
+   [Kubectl](../../clusters/cluster-management/palette-webctl.md) guide.
 
 2. Issue the following command to mark the node as _un-schedulable_. This alerts the Kubernetes scheduler not to
    schedule any new pods on that node but allows existing pods on the node to continue to operate.

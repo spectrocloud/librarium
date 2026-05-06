@@ -18,7 +18,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
   machines created by MAAS. Bare metal typically provides near-native performance, while LXD VMs improve consolidation
   and resource utilization with minimal additional overhead.
 
-![Network flow from an architectural perspective of how MAAS LXD works with Palette](/clusters_data-center_maas_arch-diagram-maas-lxd_mk.webp)
+  ![Network flow from an architectural perspective of how MAAS LXD works with Palette](/clusters_data-center_maas_arch-diagram-maas-lxd_mk.webp)
 
 - A Private Cloud Gateway (PCG) that you install in a MAAS cloud using a local installer facilitates communication
   between Palette and MAAS. The PCG is necessary in MAAS environments where Palette does not have direct network access
@@ -35,11 +35,21 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
   SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of
   Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
-  The diagram below illustrates how MAAS works with Palette using a PCG.
+  The following diagram illustrates how MAAS works with Palette using a PCG.
 
   ![Network flow from an architectural perspective of how MAAS works with Palette](/clusters_data-center_maas_arch-diagram-new-4-7-b.webp)
 
-Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
+  Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
+
+- You can deploy OpenShift workload clusters on MAAS by using a HyperShift host cluster. The HyperShift host cluster is
+  used to host control planes as pods for the OpenShift workload clusters. The following diagram illustrates how
+  HyperShift and OpenShift work with Palette and MAAS.
+
+  ![Illustration of HyperShift and OpenShift architecture with Palette and MAAS](/data-center-clusters_maas_architecture_hypershift-openshift-4-9.webp)
+
+  Refer to the
+  [Create and Manage MAAS OpenShift Clusters with HyperShift](./create-manage-maas-openshift-clusters-hypershift/create-manage-maas-openshift-clusters-hypershift.md)
+  guide for more information.
 
 ## Limitations
 
@@ -50,15 +60,16 @@ cluster backups with [volume snapshots](../../cluster-management/backup-restore/
 
 Palette provides the following distributions for MAAS environments.
 
-| Name                              | Kubernetes Distribution | OS                              | CNIs                                                                                                                         | CSIs                                                                                                                         |
-| --------------------------------- | ----------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Palette eXtended Kubernetes (PXK) | CNCF                    | Ubuntu, BYOOS                   | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
-| Canonical Kubernetes              | Canonical Kubernetes    | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
+| Name                              | Kubernetes Distribution      | OS                              | CNIs                                                                                                                         | CSIs                                                                                                                         |
+| --------------------------------- | ---------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Palette eXtended Kubernetes (PXK) | CNCF                         | Ubuntu, BYOOS                   | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
+| Canonical Kubernetes              | Canonical Kubernetes         | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
+| OpenShift                         | OpenShift Container Platform | BYOOS                           | OVN-Kubernetes CNI (passthrough)                                                                                             | Local Path Provisioner                                                                                                       |
 
 :::preview
 
-The **Canonical Kubernetes** pack for deployments in MAAS environments is a Tech Preview feature and is subject to
-change. Do not use this feature in production workloads.
+The **Canonical Kubernetes** and **OpenShift** packs for deployments in MAAS environments are Tech Preview features and
+are subject to change. Do not use these features in production workloads.
 
 :::
 

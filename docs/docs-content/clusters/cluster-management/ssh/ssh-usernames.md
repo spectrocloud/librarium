@@ -75,7 +75,7 @@ guidance on building custom images.
 
 - For images built using the [Kubernetes Image Builder](../../../byoos/image-builder/build-image.md), the SSH username
   is defined as the value for `ssh_username` in the corresponding OS JSON file. For example, the
-  [Amazon Linux 2 JSON](https://github.com/kubernetes-sigs/image-builder/blob/main/images/capi/packer/ami/amazon-2.json#L11)
+  [Amazon Linux 2023 JSON](https://github.com/kubernetes-sigs/image-builder/blob/main/images/capi/packer/ami/amazon-2023.json)
   sets the `ssh_username` value as `ec2-user`.
 
   If `ssh_username` is not defined in the OS JSON, then `root` is set by the **Bring Your Own OS (BYOOS)** pack.

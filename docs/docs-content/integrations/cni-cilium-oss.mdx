@@ -19,8 +19,9 @@ tags: ["packs", "cilium", "network"]
 
 :::warning
 
-If you are using Bring Your Own Operating System (BYOOS), then HWE (Hardware Enabled) Kernel or a Kernel that supports
+- If you are using Bring Your Own Operating System (BYOOS), then HWE (Hardware Enabled) Kernel or a Kernel that supports
 [eBPF](https://ebpf.io/) modules needs to be provisioned.
+- Cilium may fail to start on MAAS machines that are configured with a `br0` interface and are part of a <VersionedLink text="Canonical Kubernetes" url="/integrations/packs/?pack=kubernetes-ck8s" /> cluster, displaying errors like `daemon creation failed: failed to detect devices: unable to determine direct routing device. Use --direct-routing-device to specify it`. This happens because Canonical Kubernetes supports setting various Cilium annotations, but it lacks some fields required for the MAAS `br0` network configuration due to [a limitation in `k8s-snap`](https://github.com/canonical/k8s-snap/issues/1740). For this reason, we recommend you avoid using MAAS machines with a `br0` interface when provisioning Canonical Kubernetes clusters. Instead, choose machines whose primary interface is directly connected to the MAAS-managed subnet or LAN.                                                                                                                                                                                                                                                                     
 
 :::
 

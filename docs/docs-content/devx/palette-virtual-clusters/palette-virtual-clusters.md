@@ -25,33 +25,26 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 3. Select the `Palette Virtual Clusters` from the **left Main Menu**, click `+ Palette Virtual Clusters,` and provide
    the following information to the app creation wizard.
+
    - Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual
      cluster.
    - Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
    - Provide the resource limit in terms of CPU, memory, and storage.
 
-<br />
-
-| Palette Virtual Cluster Resource | Default | Minimum Limit |
-| -------------------------------- | ------- | ------------- |
-| CPU (per request)                | 4       | 3             |
-| Memory (per request)             | 4 GiB   | 3 GiB         |
-| Storage (per request)            | 2 GiB   | 0 GiB         |
-
-<br />
+     | **Resource Type**     | **Default** | **K3s Minimum Limit** | **Kubernetes Minimum Limit** |
+     | --------------------- | ----------- | --------------------- | ---------------------------- |
+     | CPU (per request)     | 4           | 4                     | 4                            |
+     | Memory (per request)  | 4 GiB       | 3 GiB                 | 4 GiB                        |
+     | Storage (per request) | 2 GiB       | 0 GiB                 | 2 GiB                        |
 
 4. Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within
    the next few minutes.
-
-<br />
 
 ### Resource Tracking for Palette Virtual Clusters
 
 Palette users can track the available resources within a Cluster Group while launching a virtual cluster. The UI color
 codes give a rough estimation of available CPU, memory, and storage within the selected Cluster Group. The
 interpretations are as follows:
-
-<br />
 
 - **Grey**: Resources are already in use.
 
@@ -73,8 +66,6 @@ Group. Users can use this information to plan resource utilization per available
 Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users to
 optimize resource utilization by pausing the virtual clusters not in use. This adds significant flexibility in managing
 operating costs and resource management for the Palette Virtual Clusters.
-
-<br />
 
 ### System and Resource Impact
 
@@ -103,3 +94,13 @@ provisioned successfully within existing groups, even across Palette updates.
 If you want to use the latest version of vCluster on your virtual clusters, you must upgrade your cluster group. This
 process must be performed in [cluster mode](../../deployment-modes/deployment-modes.md). Refer to
 [Upgrade Cluster Groups](../../clusters/cluster-groups/vcluster-upgrades.md) for guidance.
+
+:::warning
+
+Palette upgrades on K3s virtual clusters may get stuck if the cluster does not have enough resources to accommodate
+additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources before
+commencing an upgrade. Refer to
+[Scenario - Adjust Virtual Clusters Limits Before Palette Upgrades](../../troubleshooting/palette-dev-engine.md#scenario---adjust-virtual-clusters-limits-before-palette-upgrades)
+for more information.
+
+:::

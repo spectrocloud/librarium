@@ -3,9 +3,9 @@ partial_category: eks-pod-identity
 partial_name: eks-pod-identity-prerequisites
 ---
 
-- Self-hosted Palette or Palette VerteX deployed on an Amazon EKS cluster with Kubernetes version 1.24 or later.
+- Self-hosted {props.edition} deployed on an Amazon EKS cluster with Kubernetes version 1.24 or later.
 
-  - A ConfigMap named `palette-global-config` must exist in the `kube-system` namespace with a `managementClusterName` key set to the EKS management cluster's name where Palette or Palette VerteX is deployed.
+  - A ConfigMap named `palette-global-config` must exist in the `kube-system` namespace with a `managementClusterName` key set to the EKS management cluster's name where {props.edition} is deployed.
 
     If this key is missing, the fallback mechanism will obtain the cluster's name using IMDS and EC2 tags, but for this to work, the cluster must have only [EKS managed node groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html) with a CNI plugin that does not block IMDS access from pods.
 
@@ -13,7 +13,7 @@ partial_name: eks-pod-identity-prerequisites
 
     <summary> Click to display kubectl commands to check for and create the ConfigMap </summary>
 
-    1. Log in to the Local UI of the leader host of the Palette or Palette VerteX management cluster.
+    1. Log in to the Local UI of the leader host of the {props.edition} management cluster.
 
     2. On the **Cluster** page, under **Environment**, click on the **Admin Kubeconfig File** to download it to your local machine.
 
@@ -42,7 +42,7 @@ partial_name: eks-pod-identity-prerequisites
        ```
 
     5. If the ConfigMap does not exist, use the following kubectl command to create it. Replace
-       `<eks-management-cluster-name>` with the name of your EKS management cluster where Palette or Palette VerteX is deployed.
+       `<eks-management-cluster-name>` with the name of your EKS management cluster where {props.edition} is deployed.
 
        ```bash
        kubectl create configmap palette-global-config \
@@ -59,10 +59,10 @@ partial_name: eks-pod-identity-prerequisites
 - Access to the Amazon EKS cluster's kubeconfig file. You must be able to use `kubectl` to perform validation steps on
   the cluster.
 
-- A Palette account with [tenant admin](/tenant-settings/) access.
+- A {props.edition} account with [tenant admin](/tenant-settings/) access.
 
 - If you need your workload clusters to access AWS resources in the same AWS account as the EKS management cluster, three [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) must be created for
-  Palette and two of its services.
+  {props.edition} and two of its services.
   
   The following table lists the IAM roles that must be created. Create them in the order shown as some roles are referenced by others.
 

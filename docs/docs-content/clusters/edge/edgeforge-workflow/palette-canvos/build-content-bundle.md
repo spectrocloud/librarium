@@ -66,7 +66,7 @@ to learn how to migrate from the legacy pack to the **Registry Connect** pack.
 <!-- prettier-ignore-start -->
 - You can configure built-in registry packs or your own custom OCI registry. Both configurations require the **Registry
   Connect** pack. The **Registry Connect** pack does not
-require a local Harbor registry. Built-in registries must be configured using either the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack. Custom registries allow you to configure [custom packs](../../../../registries-and-packs/add-custom-packs.md). For more information, refer to [Deploy Cluster with External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md)
+require a local Harbor registry. Built-in registries must be configured using either the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the <VersionedLink text="Zot" url="/integrations/packs/?pack=zot-registry" /> pack. Custom registries allow you to configure [custom packs](../../../../registries-and-packs/add-custom-packs.md). For more information, refer to [Deploy Cluster with External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md)
   and [Deploy with Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
 <!-- prettier-ignore-end -->
@@ -110,48 +110,48 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 <TabItem value="Palette CLI" label="Palette CLI">
 
-1. Download the Palette CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to find
-   a compatible CLI version and replace `<palette-cli-version>` with the selected version.
+1.  Download the Palette CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to
+    find a compatible CLI version and replace `<palette-cli-version>` with the selected version.
 
-   ```shell
-   VERSION=<palette-cli-version>
-   wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
-   chmod +x palette
-   ```
+    ```shell
+    VERSION=<palette-cli-version>
+    wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
+    chmod +x palette
+    ```
 
-2. Use the following command to move the `palette` binary to the **/usr/local/bin** directory to make the binary
-   available in your system $PATH. This will allow you to issue the `palette` command from any directory in your
-   development environment.
+2.  Use the following command to move the `palette` binary to the **/usr/local/bin** directory to make the binary
+    available in your system $PATH. This will allow you to issue the `palette` command from any directory in your
+    development environment.
 
-   ```bash
-   mv palette /usr/local/bin
-   ```
+    ```bash
+    mv palette /usr/local/bin
+    ```
 
-3. Verify that the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
+3.  Verify that the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
 
-   ```bash
-   palette version
-   ```
+    ```bash
+    palette version
+    ```
 
-   ```hideClipboard text
-   Palette CLI version: [version number]
-   ```
+    ```hideClipboard text
+    Palette CLI version: [version number]
+    ```
 
-4. Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
+4.  Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
 
-   ```shell
-   palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
-   ```
+    ```shell
+    palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
+    ```
 
-5. Log in to the [Palette](https://console.spectrocloud.com) console.
+5.  Log in to the [Palette](https://console.spectrocloud.com) console.
 
-6. Select the project you want to deploy the Edge host to.
+6.  Select the project you want to deploy the Edge host to.
 
-7. <PartialsComponent category="projects" name="project-id-copy" />
+7.  <PartialsComponent category="projects" name="project-id-copy" />
 
-8. From the left main menu, select **Profiles**.
+8.  From the left main menu, select **Profiles**.
 
-9. Use the **Cloud Types** drop-down menu and select **Edge Native**.
+9.  Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
 10. <PartialsComponent category="profiles" name="cluster-profile-id-copy" content="content bundle" />
 
@@ -169,40 +169,52 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 12. Issue the following command to create the content bundle. Replace the placeholder values with your actual values.
 
-    ```shell
-    palette content build --arch <bundle-architecture> \
-     --project-id <project-id> \
-     --profiles <cluster-profile-id1,cluster-profile-id2...> \
-     --name <bundle-name>
-    ```
+        ```shell
+        palette content build --arch <bundle-architecture> \
+         --project-id <project-id> \
+         --profiles <cluster-profile-id1,cluster-profile-id2...> \
+         --name <bundle-name>
+        ```
 
-    :::warning
+        Use the environment variable `INCLUDE_COMPLIANCE_IMAGES` set to `true` to include additional container images
+        required for compliance scanning in the content bundle.
 
-    If your registry enforces image signature verification, we recommend omitting the `--arch` option.  
-    This is because image signatures are tied to the image's digest, and that digest depends on the manifest type.
+        <!-- prettier-ignore -->
+        ```shell
+        INCLUDE_COMPLIANCE_IMAGES=true \
+        palette content build --arch <bundle-architecture> \
+          --project-id <project-id> \
+          --profiles <cluster-profile-id1,cluster-profile-id2...> \
+          --name <bundle-name>
+        ```
 
-    When you sign a multi-architecture image, the signature is generated on its index manifest.  
-    If you later specify `--arch`, the CLI resolves each image to a single-architecture manifest, which produces a
-    different digest.
+        :::warning
 
-    As a result, Cosign will fail to verify the signature if it was originally created for the multi-arch image.
-    However, if you omit `--arch`, the Palette CLI will pull the image as-is, preserving their existing signature.
+        If your registry enforces image signature verification, we recommend omitting the `--arch` option.
+        This is because image signatures are tied to the image's digest, and that digest depends on the manifest type.
 
-    :::
+        When you sign a multi-architecture image, the signature is generated on its index manifest.
+        If you later specify `--arch`, the CLI resolves each image to a single-architecture manifest, which produces a
+        different digest.
 
-    The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
-    in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
-    bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
-    [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
+        As a result, Cosign will fail to verify the signature if it was originally created for the multi-arch image.
+        However, if you omit `--arch`, the Palette CLI will pull the image as-is, preserving their existing signature.
 
-    :::tip
+        :::
 
-    You can use the `--existing-bundles` flag with the `build` command to include existing `.tar.zst` bundle archives as
-    part of the content bundle build. This avoids the need to redownload images, charts, and raw files that are already
-    present in local bundles. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build)
-    CLI command page for a complete list of available flags and examples.
+        The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
+        in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
+        bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
+        [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
-    :::
+        :::tip
+
+        You can use the `--existing-bundles` flag with the `build` command to include existing `.tar.zst` bundle archives as
+        part of the content bundle build. This avoids the need to redownload images, charts, and raw files that are already
+        present in local bundles. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build)
+        CLI command page for a complete list of available flags and examples.
+
+        :::
 
 13. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In local Edge

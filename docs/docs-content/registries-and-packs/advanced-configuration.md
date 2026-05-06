@@ -75,7 +75,7 @@ docker run -d \
     -e REGISTRY_LOG_LEVEL=debug \
     -e REGISTRY_AUTH=htpasswd \
     -e REGISTRY_AUTH_HTPASSWD_REALM="My Enterprise Realm" \
-    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.8.7
+    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.9.1
 ```
 
 Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server
@@ -89,7 +89,7 @@ docker run -d \
     -p 443:5000 \
     --name spectro-registry \
     --volume $(pwd)/myconfig.yml:/etc/myconfig.yml \
-    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.8.7 \
+    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.9.1 \
     serve /etc/spectropaxconfig/myconfig.yml
 ```
 
@@ -122,6 +122,8 @@ storage:
     secure: false|true
     accesskey: SAMPLEACCESSKEY
     secretkey: SUPERSECRET
+    host: OPTIONAL_MINIO_HOST_IF_USING
+    port: OPTIONAL_MINIO_PORT_IF_USING
 ```
 
 You can also use ephemeral storage. We recommend using ephemeral storage for testing purposes. Production environments

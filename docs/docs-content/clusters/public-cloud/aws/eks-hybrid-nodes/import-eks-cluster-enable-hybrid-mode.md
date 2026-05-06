@@ -15,8 +15,8 @@ hybrid mode, and configure a Container Network Interface (CNI) add-on cluster pr
 
 The following limitations apply after importing an existing Amazon EKS cluster.
 
-- The [general limitations](../../../imported-clusters/imported-clusters.md#limitations) apply for imported clusters and
-  cloud-specific clusters.
+- The [general limitations](../../../imported-clusters/imported-clusters.md#import-modes) apply for imported clusters
+  and cloud-specific clusters.
 - You cannot download the cluster's kubeconfig file from Palette. You must use AWS to access the kubeconfig file.
 - [Cilium](https://docs.cilium.io/en/stable/overview/intro/) must be used as the CNI, as outlined in the
   [Import Amazon EKS Cluster and Enable Hybrid Mode](#import-amazon-eks-cluster-and-enable-hybrid-mode) steps.

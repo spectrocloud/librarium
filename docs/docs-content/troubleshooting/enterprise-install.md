@@ -14,7 +14,7 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 After the migration to [Traefik](https://traefik.io/traefik/) as the default ingress controller in Palette version
 4.8.47, Traefik `Middleware` configurations include a `maxResponseBodyBytes` limit. This limit can cause API calls to
-fail with 500 errors when response bodies exceed the configured size.
+fail with 500 errors when response bodies exceed the configured size. This issue was resolved in Palette version 4.8.52.
 
 ### Debug Steps
 

@@ -44,30 +44,37 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 - An active cluster in Palette.
 
 <!-- prettier-ignore -->
-- If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more
+- If you want to include volume snapshots in the backup, ensure that your Container Storage Interface (CSI) driver supports volume snapshots. For more
   information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Volume Snapshots](backup-restore.md#volume-snapshots) section for more information.
 
    :::warning
-   
-   Ensure that `manifests.volume-snapshot-class.deletionPolicy` is set to the `Retain` value if you have configured <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> as a layer in your cluster profile. This setting allows volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality. 
+   Ensure that you provide the following configurations if you have the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> as a layer in your cluster profile:
 
-   ```yaml hideClipboard {5}
-   volume-snapshot-class:
-      create: true
-      name: "spectro-volume-snapshot-class"
-      driver: ""
-      deletionPolicy: "Retain"
-   ```
+       - Set `manifests.volume-snapshot-class.deletionPolicy` to the `Retain` value to allow volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality.
 
-   Additionally, you must add the following snippet under the `manifests.volume-snapshot-class` field if you are using <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> as your CSI layer on a cluster deployed to a MAAS environment. These labels ensure that the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack installs correctly.
+          ```yaml hideClipboard {5}
+          volume-snapshot-class:
+             create: true
+             name: "spectro-volume-snapshot-class"
+             driver: ""
+             deletionPolicy: "Retain"
+          ```
 
-   ```yaml
-   extraLabels:
-      pod-security.kubernetes.io/enforce: privileged
-      pod-security.kubernetes.io/audit: privileged
-      pod-security.kubernetes.io/warn: privileged
-   ```
+       - Add the following snippet under the `manifests.volume-snapshot-class` field if you are using <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> as your CSI layer on a cluster deployed to a MAAS environment.
 
+          ```yaml
+          extraLabels:
+             pod-security.kubernetes.io/enforce: privileged
+             pod-security.kubernetes.io/audit: privileged
+             pod-security.kubernetes.io/warn: privileged
+          ```
+
+       - Set `snapshotter.forceEnable` to `true` to run the snapshotter sidecar regardless of whether the required snapshot Custom Resource Definitions (CRDs) are installed.
+
+          ```yaml
+          snapshotter:
+             forceEnable: true
+          ```
    :::
 
 ### Enablement

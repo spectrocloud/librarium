@@ -10,7 +10,8 @@ RELEASE_NOTES_PATH="docs/docs-content/release-notes/release-notes.md"
 OLD_RELEASE_NOTES_PATH="docs/docs-content/release-notes.md"
 BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
 ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
-ARCHIVE_FILE_PATH="$DOCS_ROOT/archiveVersions.json"
+ARCHIVE_GH_PATH="https://raw.githubusercontent.com/spectrocloud/librarium/refs/heads/master/archiveVersions.json"
+TEMP_ARCHIVE_FILE="$DOCS_ROOT/archiveVersions_temp.json"
 
 # Worktree strategy:
 # - Each version branch is processed in an isolated git worktree
@@ -25,6 +26,7 @@ cleanup() {
   echo "🧹 Cleaning up worktrees..."
   git worktree prune || true
   rm -rf "$WORKTREES_DIR" || true
+  rm -f "$TEMP_ARCHIVE_FILE" || true
 }
 trap cleanup EXIT
 
@@ -41,6 +43,9 @@ if [ -f "$ALL_VERSIONS_PATH" ] && [ -d "$BREAKING_CHANGES_PARTIALS_PATH" ]; then
   echo "ℹ️ $ALL_VERSIONS_PATH file and $BREAKING_CHANGES_PARTIALS_PATH directory already exist. Skipping breaking change indexing."
   exit 0
 fi
+
+wget -qO "$TEMP_ARCHIVE_FILE" "$ARCHIVE_GH_PATH" || { echo "❌ Failed to fetch archiveVersions.json from master: $ARCHIVE_GH_PATH"; exit 1; }
+echo "Saved master archiveVersions.json to $TEMP_ARCHIVE_FILE"
 
 # Fetch all branches from the remote
 # Pull *only* version-* branches into refs/remotes/origin/, shallow, skip tags,
@@ -210,10 +215,10 @@ for branch in $branches; do
       if [ -z "$line" ]; then
         # Flush the buffer if it has content.
         if [ -n "$buffer" ]; then
-          add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
+          add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$TEMP_ARCHIVE_FILE"
           buffer=""
         fi
-        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
+        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$TEMP_ARCHIVE_FILE"
         continue
       fi
 
@@ -222,7 +227,7 @@ for branch in $branches; do
         in_breaking_changes=false
         # Flush the buffer if it has content.
         if [ -n "$buffer" ]; then
-          add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
+          add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$TEMP_ARCHIVE_FILE"
           buffer=""
         fi
         continue
@@ -245,13 +250,13 @@ for branch in $branches; do
           in_code_section="true"
         fi
 
-        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
+        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$TEMP_ARCHIVE_FILE"
         continue
       fi
 
       # Don't strip any spacing or collapse lines while we are in the code section.
       if $in_code_section; then
-        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
+        add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$line" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$TEMP_ARCHIVE_FILE"
         continue
       fi
 
@@ -287,7 +292,7 @@ for branch in $branches; do
         else 
           # Not a VersionedLink line so we need to flush the buffer if it has content.
           if [ -n "$buffer" ]; then
-            add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$ARCHIVE_FILE_PATH"
+            add_breaking_changes_body "$release_number" "$component_updates_identifier" "$component_updates_range" "$buffer" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$TEMP_ARCHIVE_FILE"
             buffer=""
           fi
           # Normal line. Set the line as the buffer so it is ready for the next versioned link.
@@ -301,7 +306,7 @@ for branch in $branches; do
 
   # If we finished the file and have a left over partial, copy it to the current working directory.
   if [ "$partial_created" == "true" ]; then
-    persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT"
+    persist_partial_files "$release_number" "$component_updates_identifier" "$wt_path" "$BREAKING_CHANGES_PARTIALS_PATH" "$DOCS_ROOT" "$TEMP_ARCHIVE_FILE"
     partial_created=false
   fi
 

@@ -22,6 +22,9 @@ This page guides you through how access the console, and log in, and manage your
 
 - Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
 
+- The password is not expired. If you provided the `stylus.site.users[*].passwordExpiry` value in the user data, it must
+  be a future date.
+
 ### Instructions
 
 1. Ensure the Edge host is powered on.
@@ -71,7 +74,16 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ## Change User Password
 
-You can change the password of an OS user through Local UI, through the terminal, or through the Palette API.
+You can change the password of an OS user through Local UI, through the terminal, or through the Palette API. The
+[TUI](../../site-deployment/site-installation/initial-setup.md) prompts for a password change when the password is
+expired and is not intended as the primary method for updating passwords.
+
+:::warning
+
+If you populated the `stylus.site.users[*].passwordExpiry` field value in the user data, change the password from Local
+UI or when TUI prompts you to change it. Otherwise, the expiry date is not cleared.
+
+:::
 
 ### Prerequisites
 
@@ -125,7 +137,8 @@ API to update the password.
 
 3. Click **Update password**.
 
-4. Provide your existing credentials and enter the new password.
+4. Provide your existing credentials and enter the new password. If you configured a Pluggable Authentication Modules
+   (PAM) policy, the new password must comply with it. Otherwise, Local UI returns an error.
 
 </TabItem>
 
@@ -142,7 +155,8 @@ API to update the password.
 
 4. Enter your current password to authenticate.
 
-5. Enter your new password and hit **Enter**. Enter the new password again to confirm.
+5. Enter your new password and press **ENTER**. Enter the new password again to confirm. If you configured a Pluggable
+   Authentication Modules (PAM) policy, the new password must comply with it. Otherwise, the terminal returns an error.
 
 </TabItem>
 
@@ -185,6 +199,9 @@ API to update the password.
    }'
    --header 'Authorization: *******'
    ```
+
+   If you configured a Pluggable Authentication Modules (PAM) policy, the new password must comply with it. Otherwise,
+   the command returns an error with `"code":"401"`.
 
    For more information about the API endpoint, refer to [Reset User Password](/api/edge-v1/v-1-user-password-reset/).
 

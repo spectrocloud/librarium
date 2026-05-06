@@ -256,5 +256,5 @@ In this tutorial, you containerized a stateless React-based app and deployed it 
 Dockerfile, building a Docker image, creating a Kubernetes deployment, and creating a Kubernetes service.
 
 To learn more about Kubernetes, you can join our
-[slack channel](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-1mw0cgosi-hZJDF_1QU77vF~qNJoPNUQ). Learn
+[slack channel](https://spectrocloudcommunity.slack.com/join/shared_invite/zt-g8gfzrhf-cKavsGD_myOh30K24pImLA). Learn
 from other Kubernetes users and get to know fellow community members.

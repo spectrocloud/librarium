@@ -291,14 +291,11 @@ apply when you have selected a custom
 [Amazon Machine Image (AMI) Type](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) for worker node
 pools.
 
-You can configure both Amazon Linux 2 (AL2) and Amazon Linux 2023 (AL2023) worker nodes using the `nodeCustomization`
-section. The configuration options differ between the two AMI types, as described in the following sections.
-
 :::info
 
 The `nodeCustomization` section is not included by default in the Kubernetes pack manifest. You can add it to your
 manifest in the top-level of the YAML file. Ensure it is not nested under any other section. Examples are provided in
-the following sections for the Amazon Linux 2 and Amazon Linux 2023 AMI types.
+the [Configure Amazon Linux 2023 AMI Nodes](#configure-amazon-linux-2023-ami-nodes) section.
 
 :::
 
@@ -306,42 +303,6 @@ the following sections for the Amazon Linux 2 and Amazon Linux 2023 AMI types.
 
 Any Day-2 additions or changes to the `nodeCustomization` section will invoke a
 [worker node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
-
-### Configure Amazon Linux 2 AMI Nodes
-
-If you have selected an AL2 AMI for one or more of your worker node groups, you can provide additional configuration and
-command overrides as described in the following table.
-
-| Parameter             | Description                                                                                                                                                                                                                                                                                       |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `preKubeadmCommands`  | A list of shell commands to execute before the `kubeadm` command is executed. These commands are issued on each worker node before they are bootstrapped to the cluster.                                                                                                                          |
-| `postKubeadmCommands` | A list of shell commands to execute after the `kubeadm` command is executed. These commands are issued on each worker node after they are bootstrapped to the cluster. This can be useful for additional setup or configuration tasks that need to be performed after the node joins the cluster. |
-
-<details>
-
-<summary> Example </summary>
-
-```yaml
-## EKS settings
-managedControlPlane:
----
-managedMachinePool:
----
-nodeCustomization:
-  al2:
-    preKubeadmCommands:
-      - |
-        echo "[pre-kubeadm] ===== Setting sysctl params =====" | tee --append /var/log/kube_bootstrap.log
-        sysctl --write net.bridge.bridge-nf-call-iptables=1
-        sysctl --write net.ipv4.ip_forward=1
-    postKubeadmCommands:
-      - |
-        echo "[post-kubeadm] ===== Pulling troubleshooting tools =====" | tee --append /var/log/kube_bootstrap.log
-        crictl pull public.ecr.aws/aws-observability/aws-for-fluent-bit:latest
-        echo "[post-kubeadm] Done." | tee --append /var/log/kube_bootstrap.log
-```
-
-</details>
 
 ### Configure Amazon Linux 2023 AMI Nodes
 
@@ -481,29 +442,6 @@ nodeCustomization:
 ```
 
 </details>
-
-### Node Customization Layout for AL2 and AL2023 Combined
-
-<br />
-
-```yaml
-## EKS settings
-managedControlPlane:
-...
-managedMachinePool:
-...
-nodeCustomization:
-  al2:
-    preKubeadmCommands:
-      - |
-        ...
-    postKubeadmCommands:
-      - |
-        ...
-  al2023:
-    userDataScript: |
-    ...
-```
 
 ## Required IAM Permissions for Configuration
 

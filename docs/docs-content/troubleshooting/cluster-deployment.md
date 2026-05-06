@@ -199,13 +199,16 @@ This is due to significant changes between AL2 and AL2023, including differences
 bootstrapping prior to joining an EKS cluster. Refer to the
 [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/al2023.html) for more details.
 
+In addition, Kubernetes upgrades to v1.33 and later are not supported on EKS clusters with AL2 worker nodes. If you want
+to upgrade your cluster to v1.33 or later, you must first migrate your workloads to AL2023 worker nodes.
+
 You can use the following debug steps for existing clusters that were deployed using AL2 worker nodes and need to be
 upgraded to AL2023 worker nodes.
 
 :::info
 
-After January 10, 2026, you can only create node pools with the AL2023 AMI type in Palette. If AL2 is needed, consider
-using custom AMIs. Ensure you have accounted for this change in any of your automation, such as Terraform, API, etc.
+AL2 AMIs are disabled in Palette. If AL2 is needed, consider using custom AMIs. Ensure you have accounted for this
+change in any of your automation, such as Terraform, API, etc.
 
 :::
 
