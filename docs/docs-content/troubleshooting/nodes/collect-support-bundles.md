@@ -65,12 +65,12 @@ diagnostics.
 
    If the script runs successfully, it creates a file in the directory specified by the `--directory` flag. If you do
    not specify `--directory`, the script saves the file in the current working directory by default. The file name
-   follows the pattern `<cluster name>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`. If the script is unable to determine the cluster
+   follows the pattern `<cluster-name>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`. If the script is unable to determine the cluster
    name, it defaults to `spectro-cluster`. One of the messages the terminal displays contains the name of the created
    file.
 
    ```bash hideClipboard title="Example output"
-   Logs are archived in spectro-cluster-2025-05-13_16_50_50.tar.gz
+   Logs are archived in spectro-cluster-2025-05-13_16_58_20.tar.gz
    ```
 
 3. Copy the file to your local computer. Run the command on the machine to which you want to copy the file.
