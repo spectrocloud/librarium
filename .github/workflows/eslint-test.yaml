@@ -12,6 +12,7 @@ on:
       - "utils/**"
       - "package.json"
       - "package-lock.json"
+      - "eslint.config.js"
 
 concurrency:
   group: test-${{ github.ref }}

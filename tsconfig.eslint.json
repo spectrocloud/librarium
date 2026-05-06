@@ -7,7 +7,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "./.eslintrc.js",
+    "./eslint.config.js",
     "*.d.ts",
     "visuals/**/*.ts",
     "playwright.config.ts",

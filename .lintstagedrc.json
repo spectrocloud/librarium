@@ -1,1 +1,1 @@
-{ "_.ts": ["prettier --write", "eslint"], "_.html": ["eslint", "prettier --write"], "*.scss": "prettier --write" }
+{ "*.{ts,tsx,js,jsx}": ["prettier --write", "eslint"], "*.mdx": ["prettier --write", "eslint"], "*.html": ["eslint", "prettier --write"], "*.scss": "prettier --write" }
