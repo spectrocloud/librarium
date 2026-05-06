@@ -37,6 +37,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8591 -->
 
 - Fixed an issue that prevented Edge hosts using <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> from upgrading due to stale revision files in the persistent `OverlayFS` layer.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8606 -->
 
 - Fixed an issue that caused Edge hosts using <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> to become inaccessible after certificate renewal.
