@@ -25,7 +25,25 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused Azure IaaS clusters using <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.13 or earlier to get stuck when upgrading to a PXK version in 1.33.x series.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
+
+- Fixed an issue that caused Edge hosts using <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> to become inaccessible after certificate renewal.
+
 <!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
+
+- Fixed an issue that caused adding Edge worker node pools using [Local UI](../clusters/edge/local-ui/local-ui.md) to
+  fail to join the Kubernetes cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
+
+- The dependencies of the `mongo-enterprise` Palette image were updated to the latest versions, ensuring that it has the
+  latest security patches.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
+
+- The Spectro Cloud Ubuntu images now support ARM64 architectures.
 
 ## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
 
