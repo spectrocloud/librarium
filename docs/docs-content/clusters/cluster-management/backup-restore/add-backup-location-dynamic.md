@@ -102,7 +102,7 @@ cloud account.
 - If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used for
   the backup location to allow the IAM principal (user or role) associated with those static credentials to assume it.
   Check out the
-  [Troubleshooting clusters](../../../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+  [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
   guide for detailed instructions.
 
   This is only applicable if you have created a separate IAM role for the backup location. If you are using the same IAM
@@ -292,7 +292,7 @@ multiple cloud accounts.
   - If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used
     for the backup location to allow the IAM principal (user or role) associated with those static credentials to assume
     the backup location IAM role. Check out the
-    [Troubleshooting clusters](../../../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+    [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
     guide for detailed instructions.
 
 ### Instructions

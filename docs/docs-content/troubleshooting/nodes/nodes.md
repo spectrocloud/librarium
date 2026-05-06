@@ -46,7 +46,7 @@ resulted in a node repave. The API payload is incomplete for brevity.
 ]
 ```
 
-For detailed information, review the cluster upgrades [page](../clusters/clusters.md).
+For detailed information, review the cluster upgrades [page](../../clusters/clusters.md).
 
 ## Clusters
 
@@ -231,7 +231,7 @@ data:
 
 ### OS Patch Fails
 
-When conducting [OS Patching](../clusters/cluster-management/os-patching.md), sometimes the patching process can time
+When conducting [OS Patching](../../clusters/cluster-management/os-patching.md), sometimes the patching process can time
 out and fail. This issue is due to some OS patches requiring GRUB packages. GRUB updates often require user prompts, and
 if a user prompt is required during the OS patching process, the patching process will fail.
 
@@ -352,7 +352,7 @@ workload cluster, you can follow the steps below.
 
 2. Set up your terminal session to use the kubeconfig file for your Kubernetes workload cluster. You can find the
    kubeconfig for your cluster in the Palette UI by visiting the cluster's details page. Check out the
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
    guidance on how to set up your terminal session to use the kubeconfig file.
 
 3. Issue the following command to list the CRDs in your target cluster.
@@ -382,7 +382,7 @@ resources. Manually delete the `nats-system` namespace to remove any remaining N
 
 2. Set up your terminal session to use the kubeconfig file for your Kubernetes workload cluster. You can find the
    kubeconfig for your cluster in the Palette UI by visiting the cluster's details page. Check out the
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
    guidance on how to set up your terminal session to use the kubeconfig file.
 
 3. Issue the following command to list the namespaces in your cluster.
