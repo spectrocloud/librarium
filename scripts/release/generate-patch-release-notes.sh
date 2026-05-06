@@ -91,10 +91,31 @@ done
 
 echo "ℹ️  Candidate issues found: ${ISSUE_KEYS[*]}."
 
-QUESTION="Summarise ${ISSUE_KEYS[*]} into 1 phrase each.
-Use the following example for the format
+QUESTION=$(cat <<EOF
+Write release-note bug-fix entries for these Jira issues:
+
+${ISSUE_KEYS[*]}
+
+Rules:
+- Output only Markdown.
+- One bullet per Jira issue.
+- Keep each bullet to one concise sentence.
+- Start each item with the Jira link comment:
+  <!-- https://spectrocloud.atlassian.net/browse/ISSUE-KEY -->
+- Use customer-facing language.
+- Prefer "Fixed..." phrasing.
+- Do not mention internal implementation details unless needed.
+- Do not include issue titles, statuses, assignees, CVSS scores, or metadata.
+- Deduplicate duplicate issues.
+- Preserve the same order as the issue keys provided.
+- If an issue has insufficient detail, write a conservative generic fix phrase.
+- Include links to relevant documentation if applicable.
+
+Example:
 <!-- https://spectrocloud.atlassian.net/browse/PE-8328 -->
-- Fixed an issue that caused nodes deleted via \`kubectl\` to remain visible in the Palette UI, resulting in duplicate entries when the node rejoined the cluster."
+- Fixed an issue that caused nodes deleted via \`kubectl\` to remain visible in the Palette UI, resulting in duplicate entries when the node rejoined the cluster.
+EOF
+)
 
 BUG_FIXES_BODY=$(
   curl -sS --fail-with-body \
