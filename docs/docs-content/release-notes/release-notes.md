@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 9, 2026 - Component Updates {#component-updates-2026-19}
+## May 8, 2026 - Component Updates {#component-updates-2026-19}
 
 The following components have been updated for Palette version 4.9.5.
 
