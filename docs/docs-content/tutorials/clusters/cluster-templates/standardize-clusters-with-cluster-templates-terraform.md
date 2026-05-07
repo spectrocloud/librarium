@@ -784,17 +784,6 @@ spectrocloud_cluster_config_template.aws_template[0]: Modifications complete aft
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 ```
 
-### Validate the Template Update
-
-In Palette, navigate to the left main menu and select **Cluster Configurations**. Select the **Templates** tab and
-select `tf-cluster-template-aws`. Select the **Policies** tab.
-
-Under **Linked profiles**, confirm that `tf-cluster-template-profile-aws` now shows version `1.1.0`.
-
-![Select new profile version](/select-new-profile-version.webp)
-
-`tf-dev-cluster` and `tf-prod-cluster` are still running profile version `1.0.0` and are unaffected by this change.
-
 ## Upgrade Clusters from the Template
 
 ### Validate the Upgrades
