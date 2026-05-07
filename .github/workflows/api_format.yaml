@@ -42,42 +42,51 @@ jobs:
     steps:
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.4.0
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0 as of May 6, 2026
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
           roleId: ${{ secrets.VAULT_ROLE_ID }}
           secretId: ${{ secrets.VAULT_SECRET_ID }}
+          # Security: keep Vault secrets scoped to this step's outputs instead of exporting them to every later step.
+          exportEnv: false
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
 
       - name: Checkout Code
-        uses: actions/checkout@v6
+              # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v6
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 as of May 6, 2026
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Determine branch name
         id: extract_branch
+        # Security: pass GitHub context values through env so untrusted branch names are data, not shell source text.
+        # printf avoids echo edge cases and prevents newline injection into GITHUB_ENV.
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          REF_NAME: ${{ github.ref_name }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "GITHUB_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            printf 'GITHUB_BRANCH=%s\n' "$HEAD_REF" >> "$GITHUB_ENV"
           else
-            echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+            printf 'GITHUB_BRANCH=%s\n' "$REF_NAME" >> "$GITHUB_ENV"
           fi
 
       - run: npm ci
 
       - name: Format API
         run: make api
-
-
       - name: Commit and push changes
         uses: ./.github/actions/commit-changes
         with:
@@ -89,7 +98,8 @@ jobs:
 
       - name: Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3 as of May 6, 2026
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -98,7 +108,8 @@ jobs:
           SLACK_MESSAGE: ' The PR for branch ${{env.GITHUB_BRANCH}} failed when attempting to format the API. Review the GitHub Actions logs for more details.'
 
       - name: Post Netlify progress
-        uses: actions/github-script@v8
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8 as of May 6, 2026
         with:
           script: |
                           const marker = "librarium-api-format";
