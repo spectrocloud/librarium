@@ -695,14 +695,15 @@ In this section, you will update the cluster template to reference profile versi
 profile version to use for the next upgrade cycle. Updating the template does not trigger an upgrade. `tf-dev-cluster`
 and `tf-prod-cluster` remain on `1.0.0` until the maintenance policy initiates an upgrade.
 
-In `cluster_templates.tf`, the `cluster_profile` block assigns a different profile ID depending on the values of two
-boolean variables. When both are `true`, the template references `v1.1.0`. Otherwise, it references `v1.0.0`.
+In `cluster_templates.tf`, the `cluster_profile` block assigns a different profile ID depending on the values of
+`create_new_profile_version` and `update_template_profile_version`. When both are `true`, the template references
+`v1.1.0`. Otherwise, it references `v1.0.0`.
 
 <Tabs>
 
 <TabItem label="AWS" value="aws">
 
-```hcl
+```hcl{9}
 resource "spectrocloud_cluster_config_template" "aws_template" {
   count = var.deploy-aws ? 1 : 0
 
@@ -725,7 +726,7 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 
 <TabItem label="Azure" value="azure">
 
-```hcl
+```hcl{9}
 resource "spectrocloud_cluster_config_template" "azure_template" {
   count = var.deploy-azure ? 1 : 0
 
