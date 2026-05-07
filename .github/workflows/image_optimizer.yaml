@@ -5,7 +5,14 @@
 # Image Optimizer docs: https://github.com/calibreapp/image-actions
 name: image_optimizer
 
-on:
+# Principle of least privilege:
+# Default GITHUB_TOKEN only needs read access for this workflow
+permissions:
+  contents: read
+  pull-requests: read
+
+# Quoted to avoid YAML parsers (like Visual Studio) misinterpreting `on` as a boolean
+"on":
   pull_request:
     paths:
       - "**.jpg"
@@ -13,6 +20,7 @@ on:
       - "**.png"
       - "**.webp"
 
+# Prevent duplicate runs on the same branch
 concurrency:
   group: image-${{ github.ref }}
   cancel-in-progress: true
@@ -23,39 +31,50 @@ jobs:
     defaults:
       run:
         shell: bash
+    # Skip draft PRs to avoid wasting CI resources
     if: ${{ !github.event.pull_request.draft }}
     steps:
-      # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
-      # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
-      # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
+      # No-op job used as a gate (keeps structure consistent with other workflows)
       - run: exit 0
-
-
 
   image-optimizer:
     name: Image Optimization
     needs: [run-ci]
-    runs-on: 
-      group: 'Doc Runners'
+    runs-on:
+      group: "Doc Runners"
       labels: docbot
+    # Skip draft PRs here as well
     if: ${{ !github.event.pull_request.draft }}
     steps:
-
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.4.0
+        # Pin to a commit SHA to prevent upstream action tampering
+        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
           roleId: ${{ secrets.VAULT_ROLE_ID }}
           secretId: ${{ secrets.VAULT_SECRET_ID }}
+
+          # SECURITY: Do NOT export secrets as environment variables
+          # Prevents accidental leakage into later steps or logs
+          exportEnv: false
+
+          # Fetch GitHub token from Vault and expose ONLY as step output
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        # Pin to SHA to prevent supply-chain attacks on actions
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v6 # v6
 
       - name: Compress Images
-        uses: calibreapp/image-actions@main
+        # Third-party action also pinned for the same reason
+        uses: calibreapp/image-actions@e2cc8db5d49c849e00844dfebf01438318e96fa2 # main
+
         with:
+          # Pass token via step output (not env) to limit exposure
+          # VS Code/YAML may warn here due to SHA pinning; input is valid
           githubToken: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+
+          # Avoid processing unnecessary directories
           ignorePaths: "node_modules/**,build"
