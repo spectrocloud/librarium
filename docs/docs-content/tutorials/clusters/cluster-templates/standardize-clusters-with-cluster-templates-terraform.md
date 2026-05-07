@@ -749,7 +749,6 @@ resource "spectrocloud_cluster_config_template" "azure_template" {
 
 </Tabs>
 
-### Apply the Template Update
 
 In `terraform.tfvars`, set `update_template_profile_version` to `true`.
 
