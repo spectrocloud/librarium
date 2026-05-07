@@ -42,14 +42,14 @@ The following components have been updated for Palette version 4.9.5.
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-413 -->
 
 - Fixed an issue that caused
-  [Palette VerteX in an airgap VMware vSphere environment](../vertex/install-palette-vertex/install-on-vmware/airgap-install/airgap-install.md)
-  installations to fail due to OVA download timeout errors.
+  [Palette VerteX installations in an airgap VMware vSphere environment](../vertex/install-palette-vertex/install-on-vmware/airgap-install/airgap-install.md)
+  to fail due to OVA download timeout errors.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-418 -->
 
-- Fixed an issue caused
-  [Palette VerteX in an airgap VMware vSphere environment](../vertex/install-palette-vertex/install-on-vmware/airgap-install/airgap-install.md)
-  installations to fail due to incorrect CoreDNS configuration.
+- Fixed an issue that caused
+  [Palette VerteX installations in an airgap VMware vSphere environment](../vertex/install-palette-vertex/install-on-vmware/airgap-install/airgap-install.md)
+  to fail due to incorrect CoreDNS configuration.
 
 ### Packs
 
