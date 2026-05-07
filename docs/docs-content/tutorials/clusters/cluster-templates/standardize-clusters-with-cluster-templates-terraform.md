@@ -703,7 +703,7 @@ In `cluster_templates.tf`, the `cluster_profile` block assigns a different profi
 
 <TabItem label="AWS" value="aws">
 
-```hcl{9}
+```hcl {9}
 resource "spectrocloud_cluster_config_template" "aws_template" {
   count = var.deploy-aws ? 1 : 0
 
@@ -726,7 +726,7 @@ resource "spectrocloud_cluster_config_template" "aws_template" {
 
 <TabItem label="Azure" value="azure">
 
-```hcl{9}
+```hcl {9}
 resource "spectrocloud_cluster_config_template" "azure_template" {
   count = var.deploy-azure ? 1 : 0
 
