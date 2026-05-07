@@ -691,6 +691,100 @@ this change.
 
 ## Update the Cluster Template to the New Profile Version
 
+In this section, you will update the cluster template to reference profile version `1.1.0`. This tells Palette which
+profile version to use for the next upgrade cycle. Updating the template does not trigger an upgrade. `tf-dev-cluster`
+and `tf-prod-cluster` remain on `1.0.0` until the maintenance policy initiates an upgrade.
+
+In `cluster_templates.tf`, the `cluster_profile` block assigns a different profile ID depending on the values of
+`create_new_profile_version` and `update_template_profile_version`. When both are `true`, the template references
+`v1.1.0`. Otherwise, it references `v1.0.0`.
+
+<Tabs>
+
+<TabItem label="AWS" value="aws">
+
+```hcl {9}
+resource "spectrocloud_cluster_config_template" "aws_template" {
+  count = var.deploy-aws ? 1 : 0
+
+  name       = "tf-cluster-template-aws"
+  cloud_type = "aws"
+  context    = "project"
+
+  cluster_profile {
+    id = (var.create_new_profile_version && var.update_template_profile_version) ? spectrocloud_cluster_profile.aws_profile_v110[0].id : spectrocloud_cluster_profile.aws_profile[0].id
+  }
+
+  policy {
+    id   = spectrocloud_cluster_config_policy.maintenance.id
+    kind = "maintenance"
+  }
+}
+```
+
+</TabItem>
+
+<TabItem label="Azure" value="azure">
+
+```hcl {9}
+resource "spectrocloud_cluster_config_template" "azure_template" {
+  count = var.deploy-azure ? 1 : 0
+
+  name       = "tf-cluster-template-azure"
+  cloud_type = "azure"
+  context    = "project"
+
+  cluster_profile {
+    id = (var.create_new_profile_version && var.update_template_profile_version) ? spectrocloud_cluster_profile.azure_profile_v110[0].id : spectrocloud_cluster_profile.azure_profile[0].id
+  }
+
+  policy {
+    id   = spectrocloud_cluster_config_policy.maintenance.id
+    kind = "maintenance"
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+In `terraform.tfvars`, set `update_template_profile_version` to `true`.
+
+```hcl title="terraform.tfvars" hideClipboard
+update_template_profile_version = true
+```
+
+Issue the `terraform plan` command to preview the changes.
+
+```shell
+terraform plan
+```
+
+Terraform reports one in-place update to the cluster template resource.
+
+```text hideClipboard title="Expected output"
+# spectrocloud_cluster_config_template.aws_template[0] will be updated in-place
+  ~ resource "spectrocloud_cluster_config_template" "aws_template" {
+      ...
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+```
+
+Apply the changes to update the cluster template in Palette.
+
+```shell
+terraform apply -auto-approve
+```
+
+```bash hideClipboard title="Expected output"
+spectrocloud_cluster_config_template.aws_template[0]: Modifying...
+spectrocloud_cluster_config_template.aws_template[0]: Modifications complete after 2s
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+```
+
 ## Upgrade Clusters from the Template
 
 ### Validate the Upgrades
