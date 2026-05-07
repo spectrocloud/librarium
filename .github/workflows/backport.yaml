@@ -12,6 +12,11 @@ on:
   pull_request_target:
     types: ["labeled", "closed"]
 
+# Principle of least privilege: this workflow writes with the Vault PAT below,
+# so the default GITHUB_TOKEN can remain read-only.
+permissions:
+  contents: read
+  pull-requests: read
 
 env:
   GITHUB_BRANCH: ${{ github.ref_name }} 
@@ -24,8 +29,7 @@ jobs:
       github.event.pull_request.merged == true
       && contains(github.event.pull_request.labels.*.name, 'auto-backport')
       && (
-        (github.event.action == 'labeled' && github.event.label.name == 'auto-backport')
-        || (github.event.action == 'closed')
+        (github.event.action == 'labeled' && github.event.label.name == 'auto-backport') || (github.event.action == 'closed')
       )
     outputs:
       BEFORE_BACKPORTS: ${{ steps.count_prs.outputs.pr_count }}
@@ -33,12 +37,15 @@ jobs:
 
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.4.0
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0 as of May 6, 2026
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
           roleId: ${{ secrets.VAULT_ROLE_ID }}
           secretId: ${{ secrets.VAULT_SECRET_ID }}
+                    # Security: keep Vault secrets scoped to this step's outputs instead of exporting them to every later step.
+          exportEnv: false
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Count PRs created by vault-token-factory-spectrocloud
@@ -54,13 +61,18 @@ jobs:
 
       - name: Determine branch name
         id: extract_branch
+        # Security: pass GitHub context values through env so untrusted branch names are data, not shell source text.
+        # printf avoids echo edge cases and prevents newline injection into GITHUB_ENV.
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          REF_NAME: ${{ github.ref_name }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ "${{ github.event_name }}" = "pull_request_target" ]; then
-            echo "GITHUB_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+          if [ "$EVENT_NAME" = "pull_request_target" ]; then
+            printf 'GITHUB_BRANCH=%s\n' "$HEAD_REF" >> "$GITHUB_ENV"
           else
-            echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+            printf 'GITHUB_BRANCH=%s\n' "$REF_NAME" >> "$GITHUB_ENV"
           fi
-
       - name: Check for backport labels
         id: check_labels
         run: |-
@@ -71,7 +83,8 @@ jobs:
 
 
       - name: Backport Action
-        uses: sqren/backport-github-action@v11.0.0
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: sqren/backport-github-action@9460b7102fea25466026ce806c9ebf873ac48721 # v11.0.0 as of May 6, 2026
         with:
         # We are using a PAT token through our Vault Operator to address the issue of PR workflows not being triggered.
         # Refer to issue https://github.com/sqren/backport-github-action/issues/79 for more details.
@@ -116,7 +129,8 @@ jobs:
 
       - name: Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3 as of May 6, 2026
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"

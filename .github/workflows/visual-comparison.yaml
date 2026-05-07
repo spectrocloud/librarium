@@ -48,11 +48,18 @@ jobs:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
       # As of 8/8/2022, there is no way to enforce this behavior in GitHub Actions CI.
-      - run: |
-          echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
-          echo "GITHUB_HEAD_REF: ${{ github.head_ref }}"
-          echo "GITHUB_REF_NAME: ${{ github.ref_name }}"
-          echo "HTML_REPORT_URL_PATH ${{ env.HTML_REPORT_URL_PATH }}"
+      - name: Log refs
+        # Security: pass GitHub context values through env so branch names are logged as data, not shell source text.
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+          REF_NAME: ${{ github.ref_name }}
+          HTML_REPORT_URL_PATH_VALUE: ${{ env.HTML_REPORT_URL_PATH }}
+        run: |
+          printf 'GITHUB_BASE_REF: %s\n' "$BASE_REF"
+          printf 'GITHUB_HEAD_REF: %s\n' "$HEAD_REF"
+          printf 'GITHUB_REF_NAME: %s\n' "$REF_NAME"
+          printf 'HTML_REPORT_URL_PATH %s\n' "$HTML_REPORT_URL_PATH_VALUE"
           exit 0
 
 
@@ -63,16 +70,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
 
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v6
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 as of May 6, 2026
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Post PR Comment
-        uses: actions/github-script@v8
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8 as of May 6, 2026
         with:
           script: |
             await github.rest.issues.createComment({
@@ -83,7 +93,8 @@ jobs:
             });
 
       - name: Install Dependencies
-        uses: Wandalen/wretry.action@v3
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
         with: 
             command: npm ci
             attempt_limit: 3
@@ -128,16 +139,19 @@ jobs:
         shardTotal: [4]
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v6
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v6
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 as of May 6, 2026
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Install Dependencies
-        uses: Wandalen/wretry.action@v3
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
         with: 
             command: npm ci
             attempt_limit: 3
@@ -147,10 +161,12 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Download Build
-        uses: Wandalen/wretry.action@v3
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
         with: 
           attempt_limit: 3
-          action: actions/download-artifact@v8
+          # Security: pin nested third-party action refs as well; wretry will call this exact commit.
+          action: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8 as of May 6, 2026
           with: |
             name: build
             path: build
@@ -163,7 +179,8 @@ jobs:
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
 
       - name: Upload blob report to GitHub Actions Artifacts
-        uses: actions/upload-artifact@v7
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7 as of May 6, 2026
         with:
           name: blob-report-${{ matrix.shardIndex }}
           path: blob-report
@@ -176,23 +193,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v6
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
 
     - name: Setup Node.js environment
-      uses: actions/setup-node@v6
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 as of May 6, 2026
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: "npm"
 
     - name: Install Dependencies
-      uses: Wandalen/wretry.action@v3
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3 as of May 6, 2026
       with: 
           command: npm ci
           attempt_limit: 3
           attempt_delay: 60000 # 1 minute
     
     - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v8
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8 as of May 6, 2026
       with:
         path: all-blob-reports
         pattern: blob-report-*
@@ -202,7 +223,8 @@ jobs:
       run: npx playwright merge-reports --reporter html ./all-blob-reports
 
     - name: Upload Report
-      uses: actions/upload-artifact@v7
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7 as of May 6, 2026
       id: report
       with:
         name: "report"
@@ -220,7 +242,8 @@ jobs:
     steps: 
 
     - name: Checkout GitHub Pages Branch
-      uses: actions/checkout@v6
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
       with:
         ref: gh-pages  
 
@@ -231,13 +254,19 @@ jobs:
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
     - name: Sanitize branch name for path
+      # Security: pass untrusted branch names through env and write env values with printf.
+      env:
+        HEAD_REF: ${{ github.head_ref }}
+        RUN_ID: ${{ github.run_id }}
+        RUN_ATTEMPT: ${{ github.run_attempt }}
       run: |
-        BRANCH_SAFE=$(echo "${{ github.head_ref }}" | sed 's/\//-/g')
-        echo "BRANCH_SAFE=$BRANCH_SAFE" >> $GITHUB_ENV
-        echo "HTML_REPORT_URL_PATH=reports/$BRANCH_SAFE/${{ github.run_id }}/${{ github.run_attempt }}" >> $GITHUB_ENV
+        BRANCH_SAFE=$(printf '%s' "$HEAD_REF" | sed 's/\//-/g')
+        printf 'BRANCH_SAFE=%s\n' "$BRANCH_SAFE" >> "$GITHUB_ENV"
+        printf 'HTML_REPORT_URL_PATH=reports/%s/%s/%s\n' "$BRANCH_SAFE" "$RUN_ID" "$RUN_ATTEMPT" >> "$GITHUB_ENV"
 
     - name: Download zipped HTML report
-      uses: actions/download-artifact@v8
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8 as of May 6, 2026
       with:
         name: report
         path: ${{ env.HTML_REPORT_URL_PATH }}
@@ -276,7 +305,8 @@ jobs:
         echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
     - name: Post Report URL Comment
-      uses: actions/github-script@v8
+      # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+      uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8 as of May 6, 2026
       with:
         script: |
           await github.rest.issues.createComment({
