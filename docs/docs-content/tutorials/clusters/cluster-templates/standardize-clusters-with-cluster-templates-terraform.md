@@ -695,7 +695,6 @@ In this section, you will update the cluster template to reference profile versi
 profile version to use for the next upgrade cycle. Updating the template does not trigger an upgrade. `tf-dev-cluster`
 and `tf-prod-cluster` remain on `1.0.0` until the maintenance policy initiates an upgrade.
 
-### Review the Updated Template Code
 
 In `cluster_templates.tf`, the `cluster_profile` block assigns a different profile ID depending on the values of two
 boolean variables. When both are `true`, the template references `v1.1.0`. Otherwise, it references `v1.0.0`.
