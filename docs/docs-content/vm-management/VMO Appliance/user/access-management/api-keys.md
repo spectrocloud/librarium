@@ -117,7 +117,7 @@ the next request because IAM resolves through the same record.
 ## Token format
 
 ```
-vmok_a3k9pqr2x7m4_NjQwMjU2OTQyZTYxNjE5MjVkOWI1MjkyZjE4Y2RmZjA=
+vmok_abcdefghijkl_123456789abcdefghijklmnopqrstuvxyz1234567890
 └──┘ └──────────┘ └──────────────────────────────────────────┘
 prefix    keyID                       secret
 ```
@@ -182,7 +182,7 @@ permissions live.
 Send the token as a standard `Authorization: Bearer` header:
 
 ```bash
-curl -H "Authorization: Bearer vmok_a3k9pqr2x7m4_b8h2nv5fz9wt6yqe4cju3rks7xpdmgbc" \
+curl -H "Authorization: Bearer <key>" \
      https://<vmo-url>/api/v1/vms
 ```
 
