@@ -10,7 +10,8 @@ JIRA_DOMAIN=https://spectrocloud.atlassian.net/
 RELEASE_NOTES_FILE="docs/docs-content/release-notes/release-notes.md"
 PATCH_NOTES_TEMPLATE_FILE="scripts/release/templates/patch-release-notes.md"
 PATCH_NOTES_OUTPUT_FILE="scripts/release/patch-release-notes-output.md"
-
+MAX_RETRIES=5
+SLEEP_SECONDS=2
 
 if ! check_env "JIRA_EMAIL"; then
     echo "‼️  JIRA_EMAIL environment variable is not set. Please set it in your .env file. ‼️"
@@ -128,18 +129,34 @@ Example:
 EOF
 )
 
-BUG_FIXES_BODY=$(
-  curl -sS --fail-with-body \
-    --request POST \
-    --url https://api.super.work/v1/super \
-    --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --data "$(jq -n --arg question "$QUESTION" '{question: $question}')" \
-  | jq -r '.answer // empty'
-)
+BUG_FIXES_BODY=""
+
+for ((i=1; i<=MAX_RETRIES; i++)); do
+  echo "Attempt Super POST call $i/$MAX_RETRIES..."
+
+  RESPONSE=$(
+    curl -sS --fail-with-body \
+      --request POST \
+      --url https://api.super.work/v1/super \
+      --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
+      --header "Content-Type: application/json" \
+      --data "$(jq -n --arg question "$QUESTION" '{question: $question}')" \
+  )
+
+  BUG_FIXES_BODY=$(echo "$RESPONSE" | jq -r '.answer // empty')
+
+  if [[ -n "$BUG_FIXES_BODY" ]]; then
+    echo "✅ Successfully retrieved bug fixes"
+    break
+  fi
+
+  echo "⚠️ Empty response, retrying in ${SLEEP_SECONDS}s..." >&2
+  sleep "$SLEEP_SECONDS"
+  SLEEP_SECONDS=$((SLEEP_SECONDS * 2))  # exponential backoff
+done
 
 if [[ -z "$BUG_FIXES_BODY" ]]; then
-  echo "❌ BUG_FIXES_BODY is empty" >&2
+  echo "❌ Failed to retrieve BUG_FIXES_BODY after $MAX_RETRIES attempts" >&2
   exit 1
 fi
 
