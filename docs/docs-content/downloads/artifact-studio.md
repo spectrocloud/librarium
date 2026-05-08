@@ -59,7 +59,30 @@ representative or [open a support ticket](https://support.spectrocloud.io/).
 
 2. In the **PaletteAI Studio** section, select either **Explore solutions** for AI/ML solutions for production, or **Explore NVIDIA AI Essentials** for NVIDIA specific AI solutions. 
 
-3. In the **Explore solutions** section, 
+3. In the **Explore solutions** section, from the top menu, choose any applicable filters beside the search bar, such as **Type**, **Infrastructure**, and **Environment**. Use the **Search** bar to filter your results further.
+
+   To access exclusive reference architectures, solutions, and curated stacks, click **Unlock with access key** and enter your access key. If you do not have an access key, reach out to your Spectro Cloud representative or partner to request access. 
+
+   ![Image showing details of exclusive content](/downloads/downloads_artifact-studio_privateAI_exclusive-content-4-9.webp)
+
+4. Select **View details** to display more information about a specific stack. 
+
+5. Select the check box of each stack you want to download. Once selected, the stack appears in the **Selected Profiles** pane on the right.
+
+6. Repeat step 5 until you have added all necessary stacks. When finished, select the **I'm not a robot** reCAPTCHA
+   checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the applicable files later in an alternate manner
+   of your choosing, such as via `curl`.
+
+   :::tip
+
+   Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.spectrocloud.com/) to
+   allow for multiple artifact downloads.
+
+   :::
+
+To download additional stacks, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For
+information on how to verify the authenticity and integrity of your bundles, refer to the [Verify Signatures](#verify-signatures) section.
+
 
 ## Download Palette Enterprise
 
