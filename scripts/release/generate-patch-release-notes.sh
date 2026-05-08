@@ -10,6 +10,7 @@ JIRA_DOMAIN=https://spectrocloud.atlassian.net/
 RELEASE_NOTES_FILE="docs/docs-content/release-notes/release-notes.md"
 PATCH_NOTES_TEMPLATE_FILE="scripts/release/templates/patch-release-notes.md"
 PATCH_NOTES_OUTPUT_FILE="scripts/release/patch-release-notes-output.md"
+SUPER_ASSISTANT_ID="8fxCluEt-1T6w_" # ID for the assistant configured to write patch release notes based on Jira issues
 MAX_RETRIES=5
 SLEEP_SECONDS=2
 
@@ -102,30 +103,9 @@ echo "ℹ️  Candidate issues found: ${ISSUE_KEYS[*]}."
 echo "ℹ️  New issues to include in release notes: ${NEW_ISSUE_KEYS[*]}."
 
 QUESTION=$(cat <<EOF
-Write release-note bug-fix entries for these Jira issues:
+Generate patch release notes for these tickets:
 
 ${NEW_ISSUE_KEYS[*]}
-
-Rules:
-- Output only Markdown.
-- One bullet per Jira issue.
-- Keep each bullet to one concise sentence.
-- Start each item with the Jira link comment:
-  <!-- https://spectrocloud.atlassian.net/browse/ISSUE-KEY -->
-- Use customer-facing language.
-- Prefer "Fixed..." phrasing.
-- Do not mention internal implementation details unless needed.
-- Do not include issue titles, statuses, assignees, CVSS scores, or metadata.
-- Deduplicate duplicate issues.
-- Preserve the same order as the issue keys provided.
-- If an issue has insufficient detail, write a conservative generic fix phrase.
-- Include links to relevant documentation if applicable.
-- Use active voice and avoid passive constructions.
-- Use positive language, focusing on the improvement rather than the problem.
-
-Example:
-<!-- https://spectrocloud.atlassian.net/browse/PE-8328 -->
-- Fixed an issue that caused nodes deleted via \`kubectl\` to remain visible in the Palette UI, resulting in duplicate entries when the node rejoined the cluster.
 EOF
 )
 
@@ -140,13 +120,13 @@ for ((i=1; i<=MAX_RETRIES; i++)); do
       --url https://api.super.work/v1/super \
       --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
       --header "Content-Type: application/json" \
-      --data "$(jq -n --arg question "$QUESTION" '{question: $question}')" \
+      --data "$(jq -n --arg question "$QUESTION" --arg assistantID "$SUPER_ASSISTANT_ID" '{question: $question, assistantId: $assistantID}')" \
   )
 
   BUG_FIXES_BODY=$(echo "$RESPONSE" | jq -r '.answer // empty')
 
   if [[ -n "$BUG_FIXES_BODY" ]]; then
-    echo "✅ Successfully retrieved bug fixes"
+    echo "✅ Successfully retrieved bug fixes body from Super API."
     break
   fi
 
