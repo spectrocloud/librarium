@@ -17,7 +17,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8614 -->
 
-- The [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) now supports changing the root user's password.
+- The [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) now supports changing the root
+  user's password.
 
 ### Bug Fixes
 
