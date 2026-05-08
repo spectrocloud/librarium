@@ -46,6 +46,21 @@ Following are the main use cases:
 Access to Artifact Studio is available to all Spectro Cloud customers. To gain access, contact your Spectro Cloud
 representative or [open a support ticket](https://support.spectrocloud.io/).
 
+## Download PaletteAI Studio stacks
+
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
+
+   :::tip
+
+   If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+   [open a support ticket](https://support.spectrocloud.io/).
+
+   :::
+
+2. In the **PaletteAI Studio** section, select either **Explore solutions** for AI/ML solutions for production, or **Explore NVIDIA AI Essentials** for NVIDIA specific AI solutions. 
+
+3. In the **Explore solutions** section, 
+
 ## Download Palette Enterprise
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
