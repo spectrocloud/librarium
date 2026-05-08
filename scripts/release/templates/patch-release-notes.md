@@ -1,4 +1,4 @@
 ## {{RELEASE_DATE}} - Release {{RELEASE_PATCH}}
 
-## Bug Fixes
+### Bug Fixes
 {{BUG_FIXES_BODY}}

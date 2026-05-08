@@ -89,12 +89,21 @@ for id in $(echo "$ISSUE_RESPONSE" | jq -r '.issues[].id'); do
   ISSUE_KEYS+=("$key")
 done
 
+# Filter out issues that are already in the release notes
+NEW_ISSUE_KEYS=()
+for key in "${ISSUE_KEYS[@]}"; do
+  if ! grep -q "$key" "$RELEASE_NOTES_FILE"; then
+    NEW_ISSUE_KEYS+=("$key")
+  fi
+done
+
 echo "ℹ️  Candidate issues found: ${ISSUE_KEYS[*]}."
+echo "ℹ️  New issues to include in release notes: ${NEW_ISSUE_KEYS[*]}."
 
 QUESTION=$(cat <<EOF
 Write release-note bug-fix entries for these Jira issues:
 
-${ISSUE_KEYS[*]}
+${NEW_ISSUE_KEYS[*]}
 
 Rules:
 - Output only Markdown.
@@ -133,6 +142,54 @@ if [[ -z "$BUG_FIXES_BODY" ]]; then
   echo "❌ BUG_FIXES_BODY is empty" >&2
   exit 1
 fi
+
+release_notes_header="## $RELEASE_DATE - Release $RELEASE_PATCH"
+
+if grep -qF "$release_notes_header" "$RELEASE_NOTES_FILE"; then
+  echo "ℹ️ Release notes for $RELEASE_PATCH already exist in $RELEASE_NOTES_FILE" >&2
+  echo "ℹ️ Appending new bug fixes to existing release notes section for $RELEASE_PATCH."
+
+  # Find exact release notes header line
+  start_line=$(
+    awk -v header="$release_notes_header" '
+      $0 == header { print NR; exit }
+    ' "$RELEASE_NOTES_FILE"
+  )
+
+  # Find next H2 header after current header
+  next_header_line=$(
+    awk -v start="$start_line" '
+      NR > start && /^## [^#]/ { print NR; exit }
+    ' "$RELEASE_NOTES_FILE"
+  )
+
+  # If no next H2, insert at end of file
+  if [[ -z "$next_header_line" ]]; then
+    next_header_line=$(( $(wc -l < "$RELEASE_NOTES_FILE") + 1 ))
+  fi
+
+  tmp_text_file="$(mktemp)"
+  printf '%s' "$BUG_FIXES_BODY" > "$tmp_text_file"
+
+  awk -v insert_line="$next_header_line" -v text_file="$tmp_text_file" '
+    NR == insert_line {
+      print ""
+      while ((getline line < text_file) > 0) {
+        print line
+      }
+      close(text_file)
+    }
+    { print }
+  ' "$RELEASE_NOTES_FILE" > "${RELEASE_NOTES_FILE}.tmp" \
+    && mv "${RELEASE_NOTES_FILE}.tmp" "$RELEASE_NOTES_FILE"
+
+  rm -f "$tmp_text_file"
+
+  exit 0
+
+fi
+
+echo "ℹ️ Release notes for $RELEASE_PATCH do not already exist in $RELEASE_NOTES_FILE" >&2
 
 generate_parameterised_file_local_vars \
   "$PATCH_NOTES_TEMPLATE_FILE" \
