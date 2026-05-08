@@ -10,6 +10,51 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Cluster Nodes Fail to Become `Ready` on Kubernetes v1.35.x
+
+On Edge clusters configured with Kubernetes v1.35.x, hosts running OSes that default to cgroup v1, such as Ubuntu 20.04
+and earlier and RHEL 7–8, may cause kubelet to fail to start, with nodes entering a restart loop.
+
+To resolve this issue, configure the host operating system to use cgroup v2.
+
+### Debug Steps
+
+#### Enable Cgroup v2 in User Data When Deploying a New Cluster
+
+When provisioning a new cluster, add the following parameter in the `user-data` file.
+
+```yaml
+#cloud-config
+install:
+  grub_options:
+    extra_cmdline: "systemd.unified_cgroup_hierarchy=1"
+```
+
+This ensures nodes boot with cgroup v2 enabled.
+
+#### Enable Cgroup v2 in Provider Image When Upgrading to Kubernetes v1.35.x
+
+Build a new provider image with cgroup v2 enabled by uncommenting the following line in the Dockerfile.
+
+```dockerfile
+RUN sed -i 's|\(set baseCmd="[^"]*\)"|\1 systemd.unified_cgroup_hierarchy=1"|' \
+    /etc/cos/bootargs.cfg
+```
+
+This makes cgroup v2 the default for all nodes created from the image.
+
+#### Verification
+
+After applying either method, verify that cgroup v2 is enabled by issuing the following command on any cluster node.
+
+```bash
+stat -fc %T /sys/fs/cgroup
+```
+
+```bash hideClipboard title="Expected output"
+cgroup2fs
+```
+
 ## Scenario - Edge Host Reset Fails with Encrypted Persistent Partition
 
 Edge hosts using encrypted persistent partitions may fail to complete a reset. A limitation in Kairos version 3.5.3
