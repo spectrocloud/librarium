@@ -65,7 +65,6 @@ The following components have been updated for Palette version 4.9.5.
 | Amazon EFS                   | CSI        | :white_check_mark: | :x:                | 3.0.1       |
 | AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.22.2      |
 | Azure Disk                   | CSI        | :white_check_mark: | :x:                | 1.34.3      |
-| Crossplane                   | Add-on     | :white_check_mark: | :x:                | 2.2.1       |
 | K3s                          | Kubernetes | :white_check_mark: | :x:                | 1.35.3      |
 | K3s                          | Kubernetes | :white_check_mark: | :x:                | 1.34.6      |
 | K3s                          | Kubernetes | :white_check_mark: | :x:                | 1.33.10     |
@@ -83,6 +82,7 @@ The following components have been updated for Palette version 4.9.5.
 
 - The following community packs have been released:
 
+  - <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> version 2.2.1
   - <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 5.0.3
   - <VersionedLink text="ECK Operator" url="/integrations/packs/?pack=elastic-operator" /> version 3.3.2
   - <VersionedLink text="ECK Stack" url="/integrations/packs/?pack=elastic-stack" /> version 0.18.2
