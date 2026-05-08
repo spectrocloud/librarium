@@ -19,7 +19,7 @@ To resolve this issue, configure the host operating system to use cgroup v2.
 
 ### Debug Steps
 
-#### Enable Cgroup v2 in User Data When Deploying a New Cluster
+#### Enable cgroup v2 in User Data When Deploying a New Cluster
 
 When provisioning a new cluster, add the following parameter in the `user-data` file.
 
@@ -32,7 +32,7 @@ install:
 
 This ensures nodes boot with cgroup v2 enabled.
 
-#### Enable Cgroup v2 in Provider Image When Upgrading to Kubernetes v1.35.x
+#### Enable cgroup v2 in Provider Image When Upgrading to Kubernetes v1.35.x
 
 Build a new provider image with cgroup v2 enabled by uncommenting the following line in the Dockerfile.
 
@@ -48,7 +48,7 @@ This makes cgroup v2 the default for all nodes created from the image.
 After applying either method, verify that cgroup v2 is enabled by issuing the following command on any cluster node.
 
 ```bash
-stat -fc %T /sys/fs/cgroup
+stat --file-system --format=%T /sys/fs/cgroup
 ```
 
 ```bash hideClipboard title="Expected output"
