@@ -1,4 +1,13 @@
-# Quick Start
+---
+sidebar_label: "Getting Started"
+title: "Getting Started"
+description: "Learn about Palette VMO Appliance and how to quickly get started."
+hide_table_of_contents: false
+sidebar_position: 0
+tags: ["vmo", "vmo appliance", "getting started"]
+---
+
+# Getting Started
 
 This guide walks you through accessing VMO Manager, logging in, viewing the dashboard, and creating your first virtual machine in about five minutes.
 
