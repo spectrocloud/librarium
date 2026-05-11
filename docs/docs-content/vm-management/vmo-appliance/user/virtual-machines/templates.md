@@ -93,7 +93,7 @@ When importing, if a template with the same name and namespace already exists:
 
 ### Importing Templates Across Clusters
 
-Imported templates may reference a CPU model that the current cluster does not expose (for example, importing an Intel-era template into an AMD cluster). VMO Manager preserves the original CPU model value rather than dropping it — when you open the imported template or create a VM from it, the Hardware step's **CPU Model** dropdown shows `<ModelName> (unsupported in current cluster)`. An inline warning indicates the model is not available on any node, and VMs using it may fail to schedule. Pick a supported model from the dropdown before creating the VM, or add a node that provides the required CPU features. See [Creating VMs](creating#step-5-hardware) for details on the CPU Model field.
+Imported templates may reference a CPU model that the current cluster does not expose (for example, importing an Intel-era template into an AMD cluster). VMO Manager preserves the original CPU model value rather than dropping it — when you open the imported template or create a VM from it, the Hardware step's **CPU Model** dropdown shows `<ModelName> (unsupported in current cluster)`. An inline warning indicates the model is not available on any node, and VMs using it may fail to schedule. Pick a supported model from the dropdown before creating the VM, or add a node that provides the required CPU features. See [Creating VMs](creating.md#step-5-hardware) for details on the CPU Model field.
 
 ---
 

@@ -4,7 +4,7 @@ This guide walks through the VM creation wizard and batch creation options in VM
 
 ## Overview
 
-The VM creation wizard guides you through seven steps: **Source**, **Compute**, **Storage**, **Network**, **Hardware**, **Lifecycle**, and **Review**. Each step configures a different aspect of the virtual machine. The wizard supports creating VMs from [templates](templates), [golden images](../image-catalog/golden-images), ISOs, or blank disks.
+The VM creation wizard guides you through seven steps: **Source**, **Compute**, **Storage**, **Network**, **Hardware**, **Lifecycle**, and **Review**. Each step configures a different aspect of the virtual machine. The wizard supports creating VMs from [templates](./templates.md), [golden images](../image-catalog/golden-images.md), ISOs, or blank disks.
 
 > **Tip:** Use the **Advanced** button to open the YAML preview drawer. The preview updates live as you change selections in each step.
 
@@ -54,7 +54,7 @@ Configure CPU, memory, and runtime behavior.
 
 ### Instance Type vs Custom
 
-See [Instance Types & Preferences](instance-types) for details on available compute profiles.
+See [Instance Types & Preferences](./instance-types.md) for details on available compute profiles.
 
 | Mode | Description |
 |------|-------------|
@@ -195,7 +195,7 @@ Optional lifecycle policies and cloud-init configuration.
 
 Select a **VmSnapshotPolicy** to attach to the VM after creation. The policy defines automatic snapshot schedules (interval, retention count, time window). VMs created from a template inherit the template's snapshot policy annotation if one is set.
 
-> **Note:** Snapshot policies are created under **Workloads > Snapshot Policies**. See [Snapshots & Clones](snapshots) for details on creating policies. You can also create a new policy from the Lifecycle step if you have permission.
+> **Note:** Snapshot policies are created under **Workloads > Snapshot Policies**. See [Snapshots & Clones](snapshots.md) for details on creating policies. You can also create a new policy from the Lifecycle step if you have permission.
 
 ### Cloud-Init
 

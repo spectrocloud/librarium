@@ -1,6 +1,6 @@
 # Platform Overview
 
-This document describes the VMO Manager platform architecture, including all components and how they connect. The platform is designed for air-gapped, FIPS-compliant environments with a single ingress and path-based routing. See also: [Auth & Deployment Modes](auth-modes), [Security Model](security), and [Data Flow & Persistence](data-flow).
+This document describes the VMO Manager platform architecture, including all components and how they connect. The platform is designed for air-gapped, FIPS-compliant environments with a single ingress and path-based routing. See also: [Auth & Deployment Modes](auth-modes.md), [Security Model](security.md), and [Data Flow & Persistence](data-flow.md).
 
 ## Architecture Diagram
 

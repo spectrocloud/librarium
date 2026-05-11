@@ -1,6 +1,6 @@
 # Golden Images
 
-A golden image is a sealed, reusable base disk image. Build golden images to standardize OS installations and create VMs from [templates](../virtual-machines/templates) with consistent configurations. See also: [Customization Templates](image-templates) for seal scripts and [Packages](packages) for guest agent installation.
+A golden image is a sealed, reusable base disk image. Build golden images to standardize OS installations and create VMs from [templates](./image-templates.md) with consistent configurations. See also: [Customization Templates](./image-templates.md) for seal scripts and [Packages](./packages.md) for guest agent installation.
 
 ## Overview
 
@@ -9,7 +9,7 @@ The golden image workflow:
 1. **Upload ISO** — Upload an OS installation ISO to the cluster.
 2. **Create blank DataVolume** — Provision storage for the OS disk.
 3. **Create builder VM** — A temporary VM that boots from the blank disk and the ISO.
-4. **Boot with ISO and auto-install** — Use an auto-install script (cloud-init for Linux, Autounattend.xml for Windows) to automate installation.
+4. **Boot with ISO and auto-install** — Use an auto-install script (`cloud-init` for Linux, `Autounattend.xml` for Windows) to automate installation.
 5. **Install OS** — Complete the installation via VNC or let auto-install finish.
 6. **Finalize** — Run a seal script to generalize the image, eject install media, and shut down cleanly. The resulting DataVolume is the golden image.
 7. **Create VMs** — Create VmTemplates from the golden image, then create VMs from those templates.

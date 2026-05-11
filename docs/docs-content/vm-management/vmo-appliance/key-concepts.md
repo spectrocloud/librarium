@@ -10,7 +10,7 @@ VMO Manager manages a subset of Kubernetes namespaces. A namespace is considered
 - The VMO namespace (e.g., `vm-dashboard`)
 - The golden images namespace (e.g., `vmo-golden-images`)
 
-Resource lists default to **All Namespaces**, showing resources across all managed namespaces. You can filter by a specific namespace using the namespace dropdown. Per-namespace counts help you understand resource distribution. See [Namespaces](../infrastructure/namespaces) for managing and creating namespaces.
+Resource lists default to **All Namespaces**, showing resources across all managed namespaces. You can filter by a specific namespace using the namespace dropdown. Per-namespace counts help you understand resource distribution. See [Namespaces](..vmo-appliance/user/infrastructure/namespaces.md) for managing and creating namespaces.
 
 > **Tip:** When creating VMs or other resources, choose a managed namespace. Namespaces without the VMO label may not appear in dropdowns.
 
@@ -26,7 +26,7 @@ A **VmTemplate** is a Kubernetes Custom Resource (CRD) that defines a reusable V
 
 Templates let you standardize VM configurations and create multiple VMs from the same base. When creating a VM, you can select a template in the Source step; the wizard pre-fills settings from the template.
 
-Templates are stored as CRDs under `kubevirt.io` and managed by VMO Manager. They appear in **Workloads > Templates**. See [Templates](../virtual-machines/templates) for details on creating and managing templates.
+Templates are stored as CRDs under `kubevirt.io` and managed by VMO Manager. They appear in **Workloads > Templates**. See [Templates](..vmo-appliance/user/virtual-machines/templates.md) for details on creating and managing templates.
 
 ## Golden Images
 
@@ -37,7 +37,7 @@ A **golden image** is a sealed, reusable base disk image. Unlike a one-off DataV
 3. Create a VmTemplate that references the golden image DataVolume.
 4. Create VMs from the template; each VM gets a clone of the golden image.
 
-Golden images live in a dedicated namespace (e.g., `vmo-golden-images`) and are listed under **Image Catalog > Golden Images**. See [Golden Images](../image-catalog/golden-images) for the full lifecycle walkthrough.
+Golden images live in a dedicated namespace (e.g., `vmo-golden-images`) and are listed under **Image Catalog > Golden Images**. See [Golden Images](..vmo-appliance/user/image-catalog/golden-images.md) for the full lifecycle walkthrough.
 
 ## Feature Flags
 
@@ -47,7 +47,7 @@ Feature flags control the availability of experimental and stable features. Admi
 - **Admin-toggleable:** Only users with `vmo:features:write` can change feature flags.
 - **Stable vs experimental:** Stable features are enabled by default; experimental features are disabled by default.
 
-Feature-gated UI elements (tabs, buttons, wizards) are hidden when the corresponding flag is disabled. The backend also checks flags for feature-gated API endpoints. See [Feature Flags](../system/feature-flags) for the complete list of available flags.
+Feature-gated UI elements (tabs, buttons, wizards) are hidden when the corresponding flag is disabled. The backend also checks flags for feature-gated API endpoints. See [Feature Flags](..vmo-appliance/user/system/feature-flags.md)  for the complete list of available flags.
 
 ## IAM Roles vs Kubernetes RBAC Roles
 
@@ -64,7 +64,7 @@ IAM roles are **application-level** roles that define what users can do in VMO M
 | **Operator** | Day-to-day ops | templates, dashboards (r+w), packages (r), audit, system, monitoring, storage (r) |
 | **Viewer** | Read-only | templates, packages (r), dashboards (r+w own), system health (r), networks, namespaces (r) |
 
-Group-to-role mappings (e.g., `cluster-admins` to Platform Admin) are configured in **Settings > IAM Roles**. See [IAM Roles & Permissions](../access-management/iam-roles) for details.
+Group-to-role mappings (e.g., `cluster-admins` to Platform Admin) are configured in **Settings > IAM Roles**. See [IAM Roles & Permissions](../vmo-appliance/user/access-management/iam-roles.md) for details.
 
 ### Kubernetes RBAC ClusterRoles (K8s-Level)
 
@@ -77,7 +77,7 @@ Kubernetes ClusterRoles define what users can do against the Kubernetes API. VMO
 | `spectro-vmo-user` | Operate VMs (start/stop/console) but not create/delete |
 | `spectro-vmo-viewer` | Read-only all VMO resources |
 
-Access policies map IAM roles to these ClusterRoles and optionally scope them to specific namespaces. The flow is: **OIDC Group -> IAM Role -> K8s ClusterRole -> Namespace**. See [Access Policies](../access-management/access-policies) for how to configure this mapping.
+Access policies map IAM roles to these ClusterRoles and optionally scope them to specific namespaces. The flow is: **OIDC Group -> IAM Role -> K8s ClusterRole -> Namespace**. See [Access Policies](../vmo-appliance/user/access-management/access-policies.md) for how to configure this mapping.
 
 ## CRD-Based Persistence
 
@@ -88,7 +88,7 @@ All persistent state in VMO Manager is stored in **Kubernetes Custom Resource De
 - **Branding assets** — Stored in ConfigMaps
 - **Sessions, uploads, serve tokens** — Held in-memory per replica (HA uses sticky sessions)
 
-CRDs are managed by a dedicated Helm chart (`vmo-manager-crds`) with an independent upgrade lifecycle. See [Data Flow & Persistence](../architecture/data-flow) for the full architecture. This design ensures:
+CRDs are managed by a dedicated Helm chart (`vmo-manager-crds`) with an independent upgrade lifecycle. See [Data Flow & Persistence](../architecture/data-flow.md) for the full architecture. This design ensures:
 
 - No external database dependency
 - Native Kubernetes backup and restore

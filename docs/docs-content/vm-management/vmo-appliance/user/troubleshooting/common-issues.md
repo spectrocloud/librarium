@@ -67,7 +67,7 @@ kubectl get pvc -n vmo-golden-images
 
 **Fix:**
 
-1. Add the CDI upload proxy CA to the trusted CA store: Settings > Certificates > Add Trusted CA. Upload the PEM for the CA that signed the CDI upload proxy certificate. See [Certificates](../system/certificates) for details.
+1. Add the CDI upload proxy CA to the trusted CA store: Settings > Certificates > Add Trusted CA. Upload the PEM for the CA that signed the CDI upload proxy certificate. See [Certificates](../system/certificates.md) for details.
 2. Alternatively, configure CDI to use cert-manager-issued certificates signed by the platform CA so they are trusted automatically.
 3. Restart the VMO Manager pod after adding a trusted CA.
 
@@ -91,7 +91,7 @@ kubectl get secret -n cdi cdi-uploadproxy-server-cert -o jsonpath='{.data.tls\.c
 
 **Fix:**
 
-1. **Auto-install script:** Review the auto-install script for the customization template (see [Customization Templates](../image-catalog/image-templates)). Ensure package names are correct and the script exits successfully. Test with a minimal script (e.g., `touch /tmp/done`) to isolate script vs. ISO issues.
+1. **Auto-install script:** Review the auto-install script for the customization template (see [Customization Templates](../image-catalog/image-templates.md)). Ensure package names are correct and the script exits successfully. Test with a minimal script (e.g., `touch /tmp/done`) to isolate script vs. ISO issues.
 2. **ISO compatibility:** Verify the ISO is for the correct architecture (amd64) and is a supported OS. Check that cloud-init or the installer can run unattended.
 3. **Builder VM:** Inspect the builder VM via VNC or console. Check cloud-init logs (`/var/log/cloud-init-output.log`) for errors.
 4. **Network:** Ensure the builder VM can reach package repositories (or use air-gapped packages if applicable).
@@ -117,7 +117,7 @@ kubectl logs -n vmo-golden-images -l <builder-label>  # if applicable
 
 **Fix:**
 
-1. **NAD:** Verify the NAD exists in the VM's namespace and matches the network specified in the VM spec (see [Networking](../infrastructure/networking)). Check `kubectl get nad -n <namespace>`.
+1. **NAD:** Verify the NAD exists in the VM's namespace and matches the network specified in the VM spec (see [Networking](../infrastructure/networking.md)). Check `kubectl get nad -n <namespace>`.
 2. **MetalLB:** For L2 mode, ensure MetalLB has an IP pool and the service is correctly configured. Check MetalLB controller logs.
 3. **DHCP:** Ensure a DHCP server is available on the network the VM is attached to. For bare-metal or bridge networks, the DHCP server may be external to the cluster.
 4. **Multus:** Verify Multus is installed and the CNI config is correct. Check `kubectl get network-attachment-definitions`.
@@ -142,7 +142,7 @@ kubectl get nad -n <namespace>
 
 **Fix:**
 
-1. **Session key:** Ensure `SESSION_KEY` is stable across pod restarts (see [Configuration Reference](../system/configuration)). In Helm deployments, set it via a secret or values so it persists. If the key changes, all users must log in again.
+1. **Session key:** Ensure `SESSION_KEY` is stable across pod restarts (see [Configuration Reference](../system/configuration.md)). In Helm deployments, set it via a secret or values so it persists. If the key changes, all users must log in again.
 2. **Clear cookies:** Clear cookies for the platform domain, including `vmo-sid` and `vmo-auth-retry`. Try an incognito/private window.
 3. **OIDC callback:** Verify `BASE_URL` and `OIDC_ISSUER_URL` match the actual URLs. Ensure the OIDC client in Keycloak has the correct redirect URI.
 4. **State parameter:** If the callback URL is bookmarked or stale, the state parameter may be expired. Use a fresh login link from the main page.
@@ -169,7 +169,7 @@ kubectl get nad -n <namespace>
 1. **Keycloak client settings:** In Keycloak admin, open the VMO client and verify **Settings > Logout Settings**:
    - **Backchannel Logout URL** is set to `<VMO base URL>/auth/backchannel-logout`.
    - **Backchannel Logout Session Required** is ON.
-   See [Authentication > Back-channel Logout](../architecture/auth-modes#back-channel-logout) for details.
+   See [Authentication > Back-channel Logout](../architecture/auth-modes.md#back-channel-logout) for details.
 2. **Network path:** If Keycloak runs outside the cluster, confirm it can reach VMO's ingress. Test with `curl` from a host that shares Keycloak's network path. In-cluster Keycloak can reach VMO's Service directly.
 3. **HA deployments:** Sessions are pod-local. Either reduce the session TTL or enable sticky sessions at the ingress so a user consistently returns to the same replica. A future release will centralize session state.
 
@@ -194,7 +194,7 @@ kubectl get nad -n <namespace>
 **Verification:**
 
 - Confirm local auth is enabled: Settings > Local Users should be visible when logged in as the local admin.
-- See [Local Auth](../access-management/local-auth) for full setup details.
+- See [Local Auth](../access-management/local-auth.md) for full setup details.
 
 ---
 
@@ -209,7 +209,7 @@ kubectl get nad -n <namespace>
 
 **Fix:**
 
-1. **IAM role:** Verify the user's group is mapped to a VMO role that has the required permission. Check Settings > Access Management > IAM Roles and the group-to-role mapping. See [IAM Roles & Permissions](../access-management/iam-roles).
+1. **IAM role:** Verify the user's group is mapped to a VMO role that has the required permission. Check Settings > Access Management > IAM Roles and the group-to-role mapping. See [IAM Roles & Permissions](../access-management/iam-roles.md).
 2. **K8s RBAC:** Ensure the user's group has a ClusterRoleBinding or RoleBinding to the appropriate ClusterRole (e.g., `spectro-vmo-admin` for full access). Check `kubectl get clusterrolebindings` and `kubectl get rolebindings -A`.
 3. **Access policy:** If using VMO access policies, ensure the policy grants the correct scope (cluster vs. namespace) and permissions.
 
@@ -265,7 +265,7 @@ kubectl get nodes -l cpu-model-migration.node.kubevirt.io/<ModelName>=true
 
 **Fix:**
 
-1. Configure `EXTERNAL_METRICS_URL` for long-range queries (e.g., `http://victoria-metrics.monitoring.svc.cluster.local:8428`). See [Monitoring & Dashboards](../system/monitoring) for configuration details.
+1. Configure `EXTERNAL_METRICS_URL` for long-range queries (e.g., `http://victoria-metrics.monitoring.svc.cluster.local:8428`). See [Monitoring & Dashboards](../system/monitoring.md) for configuration details.
 2. For short-range charts, ensure the OTel collector is correctly configured and metrics are flowing (see OTel troubleshooting above).
 3. Select a shorter time range (e.g., "Last 5 minutes") to test with ring-buffer data.
 

@@ -27,7 +27,7 @@ This guide walks you through accessing VMO Manager, logging in, viewing the dash
     2. Enter the local admin username (default: `admin`) and password.
     3. The password is typically set via the `LOCAL_ADMIN_PASSWORD` environment variable during initial deployment.
 
-    > **Tip:** Local auth is intended for Day 0 bootstrap. Configure Keycloak for production use. See [Local Auth](/docs/access-management/local-auth) for details.
+    > **Tip:** Local auth is intended for Day 0 bootstrap. Configure Keycloak for production use. See [Local Auth](./user/access-management/local-auth.md) for details.
 
     </TabItem>
 
@@ -109,7 +109,7 @@ Select a template or golden image, then set the VM **name** and **namespace**. T
 
 :::tip
 
-Use the YAML drawer to inspect or edit the full VirtualMachine spec before creating. For a detailed walkthrough of each wizard step, see [Creating VMs](/docs/virtual-machines/creating).
+Use the YAML drawer to inspect or edit the full VirtualMachine spec before creating. For a detailed walkthrough of each wizard step, see [Creating VMs](./user/virtual-machines/creating.md).
 
 :::
 

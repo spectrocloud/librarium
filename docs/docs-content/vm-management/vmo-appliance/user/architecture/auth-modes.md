@@ -84,7 +84,7 @@ Local admin accounts are available before Keycloak is configured, providing Day 
 - Local sessions use the pod's service account token for Kubernetes API access (not a user-scoped OIDC token)
 - A `must-change-password` flag forces password change on first login
 
-> **Note:** Local auth is intended for initial setup. Configure Keycloak for production use to get per-user identity, group-based access, and SSO. See [Local Auth](../access-management/local-auth) for setup details.
+> **Note:** Local auth is intended for initial setup. Configure Keycloak for production use to get per-user identity, group-based access, and SSO. See [Local Auth](../access-management/local-auth.md) for setup details.
 
 ## Session Management
 
