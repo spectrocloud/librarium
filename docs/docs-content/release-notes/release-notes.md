@@ -20,6 +20,12 @@ tags: ["release-notes"]
 - The [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) now supports changing the root
   user's password.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8545 -->
+
+- Dropdown profile variables are now supported with airgapped
+  [Local UI clusters](../clusters/edge/local-ui/local-ui.md).
+
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8509 -->
@@ -38,12 +44,6 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-end -->
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
-<!-- https://spectrocloud.atlassian.net/browse/PE-8545 -->
-
-- Fixed an issue that caused [Day-2 scaling](../clusters/edge/local-ui/cluster-management/scale-cluster.md) to fail for
-  locally managed Edge clusters that use cluster profiles containing profile variables with the **Dropdown** input type.
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
 
 - The dependencies of the `mongo-enterprise` Palette image were updated to the latest versions, ensuring that it has the
@@ -51,7 +51,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
 
-- The Spectro Cloud Ubuntu images were rebuilt to ensure that they contain the latest security patches. .
+- The Spectro Cloud Ubuntu images were rebuilt to ensure that they contain the latest security patches.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
 
@@ -368,9 +368,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  types. Dropdown profile variables are not supported for airgapped Local UI clusters. A
-  [known issue](./known-issues.md) prevents locally managed Edge clusters that use cluster profiles containing profile
-  variables with the **Dropdown** input type from scaling.
+  types. Dropdown profile variables are not supported for airgapped Local UI clusters.
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-8122 -->
 <!-- https://spectrocloud.atlassian.net//browse/PE-7779 -->
