@@ -45,16 +45,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v6
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "npm" 
-
-      - run: |
-          echo "CURRENT_STEP=npm ci" >> $GITHUB_ENV
-          npm ci
       
       - name: Execute Script to Generate Patch Release Notes
         run: |
