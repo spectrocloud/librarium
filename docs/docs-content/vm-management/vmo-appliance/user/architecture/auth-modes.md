@@ -94,7 +94,7 @@ Local admin accounts are available before Keycloak is configured, providing Day 
 | **Encryption** | AES-256-GCM (FIPS-approved) |
 | **Storage** | In-memory per replica (HA uses sticky sessions) |
 | **TTL** | Enforced server-side; expired sessions are rejected |
-| **Consent banner** | Optional STIG consent banner shown before login (see [Branding](../system/branding)) |
+| **Consent banner** | Optional STIG consent banner shown before login (see [Branding](../system/branding.md)) |
 
 ## Auth Summary
 
