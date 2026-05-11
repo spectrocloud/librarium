@@ -67,7 +67,7 @@ jobs:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           # Create a new branch
-          branch_name="${{ env.JIRA_TICKET }}-generate-patch-release-notes-$(date +%Y%m%d%H%M%S)"
+          branch_name="${{ env.JIRA_TICKET }}-generate-patch-notes-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
           # Commit and push the changes
