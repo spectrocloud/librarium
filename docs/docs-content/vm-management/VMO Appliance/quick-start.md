@@ -1,55 +1,57 @@
 ---
-sidebar_label: "Getting Started"
-title: "Getting Started"
+sidebar_label: "Quick Start"
+title: "Quick Start"
 description: "Learn about Palette VMO Appliance and how to quickly get started."
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vmo", "vmo appliance", "getting started"]
+tags: ["vmo", "vmo appliance", "quick start"]
 ---
 
-# Getting Started
+# Quick Start
 
 This guide walks you through accessing VMO Manager, logging in, viewing the dashboard, and creating your first virtual machine in about five minutes.
 
 ## Access the Platform
 
-VMO Manager is typically accessed via a single platform URL. In production, this is the Traefik LoadBalancer IP or hostname (for example, `https://10.100.1.50` or `https://vmo.example.com`).
+1. Navigate to the VMO Manager IP address using your browser. A DNS hostname is not required. 
 
-> **Note:** VMO Manager works with bare IP addresses. A DNS hostname is not required.
+2. Log in to the VMO Appliance.
 
-Open your browser and navigate to the platform URL. You will be redirected to the login flow.
+    <Tabs>
 
-## Login
+    <TabItem label="Local Auth (Day-0)" value="local-auth">
 
-### OIDC (Keycloak)
+    Before Keycloak is configured, you can use local admin accounts:
 
-When Keycloak is configured, the platform uses OIDC for authentication:
+    1. Navigate to `/local-login`.
+    2. Enter the local admin username (default: `admin`) and password.
+    3. The password is typically set via the `LOCAL_ADMIN_PASSWORD` environment variable during initial deployment.
 
-1. Click **Login** or navigate to the platform URL.
-2. You are redirected to the Keycloak login page.
-3. Enter your username and password.
-4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
+    > **Tip:** Local auth is intended for Day 0 bootstrap. Configure Keycloak for production use. See [Local Auth](/docs/access-management/local-auth) for details.
 
-### Local Auth (Day 0)
+    </TabItem>
 
-Before Keycloak is configured, you can use local admin accounts:
+    <TabItem label="OIDC using Keycloak" value="keycloak">
 
-1. Navigate to `/local-login`.
-2. Enter the local admin username (default: `admin`) and password.
-3. The password is typically set via the `LOCAL_ADMIN_PASSWORD` environment variable during initial deployment.
+    When Keycloak is configured, the platform uses OIDC for authentication:
 
-> **Tip:** Local auth is intended for Day 0 bootstrap. Configure Keycloak for production use. See [Local Auth](/docs/access-management/local-auth) for details.
+    1. Click **Login** or navigate to the platform URL.
+    2. You are redirected to the Keycloak login page.
+    3. Enter your username and password.
+    4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
 
-## Dashboard Overview
+    </TabItem>
+
+    </Tabs>
 
 After login, the **Dashboard** (`/`) is the default landing page. It opens to the **Virtual Machines** tab, which contains a set of resizable, drag-to-reorder widgets:
 
-- **VM Summary** — KPI cards showing Total, Running, Stopped, Issues, Transitional, and Namespace counts. Click a card to navigate to the filtered VM list.
-- **Resource Summary** — CPU and memory cluster utilization plus quick links to Data Volumes and Networks.
-- **Charts** — VM status distribution, namespace breakdown, OS type and flavor breakdowns.
-- **Issues** — VMs currently in an error or unhealthy state.
-- **Events** — Recent Kubernetes events across monitored namespaces.
-- **Metrics** — PromQL-based time-series panels for CPU, memory, and network (requires an external metrics backend).
+    - **VM Summary** — KPI cards showing Total, Running, Stopped, Issues, Transitional, and Namespace counts. Click a card to navigate to the filtered VM list.
+    - **Resource Summary** — CPU and memory cluster utilization plus quick links to Data Volumes and Networks.
+    - **Charts** — VM status distribution, namespace breakdown, OS type and flavor breakdowns.
+    - **Issues** — VMs currently in an error or unhealthy state.
+    - **Events** — Recent Kubernetes events across monitored namespaces.
+    - **Metrics** — PromQL-based time-series panels for CPU, memory, and network (requires an external metrics backend).
 
 ### Auto-Refresh and Pause
 
@@ -67,77 +69,55 @@ Use the sidebar to navigate to other sections such as Workloads, Image Catalog, 
 
 ## Create Your First VM
 
-The VM creation wizard guides you through seven steps. Follow these steps to create a simple VM:
+The VM creation wizard guides you the following steps to create a simple VM.
 
-### 1. Source
+1. Select where the source VM disk:
 
-Choose where the VM disk comes from:
-
-- **Template** — Use an existing VmTemplate (recommended for first-time users)
-- **Golden Image** — Use a sealed base disk image
-- **ISO** — Attach an ISO for installation
-- **Blank** — Create an empty disk
+    - **Template** — Use an existing VmTemplate (recommended for first-time users)
+    - **Golden Image** — Use a sealed base disk image
+    - **ISO** — Attach an ISO for installation
+    - **Blank** — Create an empty disk
 
 Select a template or golden image, then set the VM **name** and **namespace**. The name must follow Kubernetes DNS-1123 rules (lowercase, alphanumeric, hyphens).
 
-### 2. Compute
+2. Configure CPU and memory:
 
-Configure CPU and memory:
+    - **Instance Type** — Pick a predefined size (e.g., `u1.small`, `cx1.medium`)
+    - **Custom** — Set CPU cores and memory manually
 
-- **Instance Type** — Pick a predefined size (e.g., `u1.small`, `cx1.medium`)
-- **Custom** — Set CPU cores and memory manually
+3. Configure the root disk:
 
-### 3. Storage
+    - **Size** — Set the disk size (e.g., 20 Gi)
+    - **Storage Class** — Use the cluster default or select another
+    - **Boot order** — Choose disk, CD-ROM, or network as first boot device
 
-Configure the root disk:
+4. Add network interfaces:
 
-- **Size** — Set the disk size (e.g., 20 Gi)
-- **Storage Class** — Use the cluster default or select another
-- **Boot order** — Choose disk, CD-ROM, or network as first boot device
+    - Select a **Network Attachment Definition** (NAD) for each interface
+    - Optionally configure static IPs via cloud-init
 
-### 4. Network
+5. Select optional advanced settings, such as firmware, TPM, RNG, tablet devices, and node placement. For a basic VM, this step can be skipped. 
 
-Add network interfaces:
+    - Firmware (EFI, Secure Boot)
+    - TPM, RNG, tablet devices
+    - Node placement (node selector, tolerations)
 
-- Select a **Network Attachment Definition** (NAD) for each interface
-- Optionally configure static IPs via cloud-init
+6. Select optional lifecycle settings, such as **Run strategy** (Always, RerunOnFailure, Manual, or Halted), **Eviction strategy** (LiveMigrate or None), and **Snapshot policy**. For a basic VM, this step can be skipped. 
 
-### 5. Hardware
 
-Optional advanced settings:
+7. Review the summary and YAML preview. Click **Create** to provision the VM.
 
-- Firmware (EFI, Secure Boot)
-- TPM, RNG, tablet devices
-- Node placement (node selector, tolerations)
+:::tip
 
-You can skip this step for a basic VM.
+Use the YAML drawer to inspect or edit the full VirtualMachine spec before creating. For a detailed walkthrough of each wizard step, see [Creating VMs](/docs/virtual-machines/creating).
 
-### 6. Lifecycle
+:::
 
-Optional lifecycle settings:
-
-- **Run strategy** — Always, RerunOnFailure, Manual, or Halted
-- **Eviction strategy** — LiveMigrate or None
-- **Snapshot policy** — Attach a scheduled snapshot policy
-
-You can skip this step for a basic VM.
-
-### 7. Review
-
-Review the summary and YAML preview. Click **Create** to provision the VM.
-
-> **Tip:** Use the YAML drawer to inspect or edit the full VirtualMachine spec before creating. For a detailed walkthrough of each wizard step, see [Creating VMs](/docs/virtual-machines/creating).
-
-## Verify the VM Is Running
+## Validation
 
 1. Go to **Workloads > Virtual Machines** (`/vms`).
 2. Find your VM in the list. The status column shows **Running** when the VM is started.
 3. Click the VM name to open the detail page.
-
-## Open the VNC Console
-
-1. On the VM detail page, open the **Console** tab.
-2. Click **Open VNC Console**.
-3. A new tab opens with a noVNC-based remote console. You can interact with the VM as if you were at its keyboard.
-
-> **Note:** The VNC console requires the VM to be running. If the VM is stopped, start it first from the Overview tab or VM list. See [Managing VMs](/docs/virtual-machines/managing) for all available VM actions.
+4. On the VM detail page, open the **Console** tab. The VNC console requires the VM to be running. If the VM is stopped, start it first from the Overview tab or VM list.
+5. Click **Open VNC Console**.
+6. A new tab opens with a noVNC-based remote console. You can interact with the VM as if you were at its keyboard.
