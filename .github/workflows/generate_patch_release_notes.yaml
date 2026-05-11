@@ -59,10 +59,9 @@ jobs:
       - name: Execute Script to Generate Patch Release Notes
         run: |
           echo "CURRENT_STEP=Generating patch release notes" >> $GITHUB_ENV
-          JIRA_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
+          PATCH_RELEASE_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
 
-      - name: Create a PR with the Updated Permissions
-        if: ${{ env.CHANGES_DETECTED  == 'true'}}
+      - name: Create a PR with generated patch release notes
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |

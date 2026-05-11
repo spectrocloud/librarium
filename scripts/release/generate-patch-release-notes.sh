@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Enable error handling
-set -e
+set -euo pipefail
 
 # Import utility functions
 source scripts/release/utilities.sh
