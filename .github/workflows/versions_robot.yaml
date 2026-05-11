@@ -142,7 +142,7 @@ jobs:
       - name: Post Netlify progress
         if: ${{ steps.changes.outputs.detected == 'true' && github.event.pull_request.head.repo.fork == false }}
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v8 as of May 6, 2026
+        uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9 as of May 10, 2026
         with:
           script: |
             const marker = "librarium-versions-robot";
