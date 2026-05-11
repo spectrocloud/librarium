@@ -18,6 +18,7 @@ env:
   SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
   JIRA_TICKET: ${{ github.event_name == 'push' && 'DOC-2815' || github.event.inputs.jira_ticket }}
+  BASE_BRANCH: "doc-2813-generate-patch-rl-notes"
 
 jobs:
   generate_release_notes:
@@ -37,7 +38,7 @@ jobs:
         uses: actions/checkout@v6
         with: 
           repository: spectrocloud/librarium
-          ref: "master"
+          ref: ${{ env.BASE_BRANCH }}
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
   
       - name: Set Git User
@@ -78,7 +79,7 @@ jobs:
           pr_body='
           ## Describe the Change
           This PR adds the patch release notes for the Jira ticket `${{ env.JIRA_TICKET }}` to the `release-notes.md` file.'
-          output=$(gh pr create --base "master" --title "docs: add patch release notes for ${{ env.JIRA_TICKET }}" --body "$pr_body")
+          output=$(gh pr create --base "${{ env.BASE_BRANCH }}" --title "docs: add patch release notes for ${{ env.JIRA_TICKET }}" --body "$pr_body")
           pr_url=$(echo "$output" | grep -o "https://[^ ]*")
           echo "PR successfully created $pr_url."
 
@@ -89,7 +90,7 @@ jobs:
         if: ${{ env.GITHUB_PATCH_RELEASE_NOTES_PR  != ''}}
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
@@ -99,7 +100,7 @@ jobs:
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
