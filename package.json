@@ -75,7 +75,7 @@
     "semver": "^7.7.4"
   },
   "devDependencies": {
-    "@argos-ci/cli": "^3.2.1",
+    "@argos-ci/cli": "^4.2.0",
     "@argos-ci/playwright": "^6.4.2",
     "@playwright/test": "^1.56.0",
     "@semantic-release/changelog": "^6.0.1",
