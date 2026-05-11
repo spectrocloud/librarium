@@ -19,6 +19,9 @@ env:
   NODE_VERSION: "24"
   JIRA_TICKET: ${{ github.event_name == 'push' && 'DOC-2815' || github.event.inputs.jira_ticket }}
   BASE_BRANCH: "doc-2813-generate-patch-rl-notes"
+  ALGOLIA_APP_ID: "123456789"
+  ALGOLIA_INDEX_NAME: "123456789"
+  ALGOLIA_SEARCH_KEY: "123456789"
 
 jobs:
   generate_release_notes:
@@ -45,10 +48,18 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm" 
+
+      - run: |
+          npm ci
       
       - name: Execute Script to Generate Patch Release Notes
         run: |
-          echo "CURRENT_STEP=Generating patch release notes" >> $GITHUB_ENV
           PATCH_RELEASE_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
 
       - name: Create a PR with generated patch release notes
