@@ -23,8 +23,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-8545 -->
 
-- Dropdown profile variables are now supported with airgapped
-  [Local UI clusters](../clusters/edge/local-ui/local-ui.md).
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports dropdown profile variables for locally managed Edge clusters.
 
 ### Bug Fixes
 
