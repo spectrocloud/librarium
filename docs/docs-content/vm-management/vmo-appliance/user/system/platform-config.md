@@ -1,6 +1,6 @@
 # Platform Configuration
 
-VMO Manager uses a layered configuration system that combines environment variables, admin overrides, and built-in defaults. This page describes how configuration is resolved, how to view and change values, and how to export or import configuration bundles. For the complete list of all configuration keys with current live values, see [Configuration Reference](configuration).
+VMO Manager uses a layered configuration system that combines environment variables, admin overrides, and built-in defaults. This page describes how configuration is resolved, how to view and change values, and how to export or import configuration bundles. For the complete list of all configuration keys with current live values, see [Configuration Reference](configuration.md).
 
 ## Config Layering
 
