@@ -39,9 +39,10 @@ tags: ["release-notes"]
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8545 -->
 
-- Fixed an issue that caused adding Edge worker node pools using [Local UI](../clusters/edge/local-ui/local-ui.md) to
-  fail to join the Kubernetes cluster.
+- Fixed an issue that caused [Day-2 scaling](../clusters/edge/local-ui/cluster-management/scale-cluster.md) to fail for
+  locally managed Edge clusters that use cluster profiles containing profile variables with the **Dropdown** input type.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
 
@@ -50,7 +51,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
 
-- The Spectro Cloud Ubuntu images now support ARM64 architectures.
+- The Spectro Cloud Ubuntu images were rebuilt to ensure that they contain the latest security patches. .
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
 
@@ -367,7 +368,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports multiline and dropdown
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  types. Dropdown profile variables are not supported for airgapped Local UI clusters.
+  types. Dropdown profile variables are not supported for airgapped Local UI clusters. A
+  [known issue](./known-issues.md) prevents locally managed Edge clusters that use cluster profiles containing profile
+  variables with the **Dropdown** input type from scaling.
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-8122 -->
 <!-- https://spectrocloud.atlassian.net//browse/PE-7779 -->
