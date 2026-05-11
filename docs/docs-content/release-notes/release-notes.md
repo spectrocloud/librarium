@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May XX, 2026 - Release 4.9.X
+## May 11, 2026 - Release 4.9.6
 
 ### Improvements
 
@@ -52,7 +52,91 @@ tags: ["release-notes"]
 
 - The Spectro Cloud Ubuntu images now support ARM64 architectures.
 
+## May 8, 2026 - Component Updates {#component-updates-2026-19}
+
+The following components have been updated for Palette version 4.9.5.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.1  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.1  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.6   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.6   |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.54  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.54  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.7.40  |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.7.40  |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-404 -->
+
+- The Palette AI [Artifact Studio](../downloads/artifact-studio.md) is now available at
+  [https://artifact-studio.spectrocloud.com/palette-ai-studio](https://artifact-studio.spectrocloud.com/palette-ai-studio).
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2228 -->
+
+- Fixed an issue that caused the Terraform plan operation of the
+  [`spectrocloud_cluster_eks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  to fail when the `eks_launch_template` block is added inside `machine_pool`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-413 -->
+
+- Fixed an issue that caused
+  [Palette VerteX installations in an airgap VMware vSphere environment](../vertex/install-palette-vertex/install-on-vmware/airgap-install/airgap-install.md)
+  to fail due to OVA download timeout errors.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-418 -->
+
+- Fixed an issue that caused
+  [Palette VerteX installations in an airgap VMware vSphere environment](../vertex/install-palette-vertex/install-on-vmware/airgap-install/airgap-install.md)
+  to fail due to incorrect CoreDNS configuration.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3972 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3977 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3973 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4019 -->
+
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI               | CSI        | :white_check_mark: | :x:                | 1.59.0      |
+| Amazon EBS CSI               | CSI        | :x:                | :white_check_mark: | 1.58.0      |
+| Amazon EFS                   | CSI        | :white_check_mark: | :x:                | 3.0.1       |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.22.2      |
+| Azure Disk                   | CSI        | :white_check_mark: | :x:                | 1.34.3      |
+| K3s                          | Kubernetes | :white_check_mark: | :x:                | 1.35.3      |
+| K3s                          | Kubernetes | :white_check_mark: | :x:                | 1.34.6      |
+| K3s                          | Kubernetes | :white_check_mark: | :x:                | 1.33.10     |
+| Palette Optimized RKE2       | Kubernetes | :white_check_mark: | :white_check_mark: | 1.35.3      |
+| Palette Optimized RKE2       | Kubernetes | :white_check_mark: | :white_check_mark: | 1.34.6      |
+| Palette Optimized RKE2       | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.10     |
+| Traefik                      | Add-on     | :white_check_mark: | :x:                | 39.0.8      |
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3705 -->
+<!-- prettier-ignore-start -->
+
+- The debug logs for the <VersionedLink text="Local Path Provisioner" url="/integrations/packs/?pack=csi-local-path-provisioner" /> pack version 0.32 were disabled.
+
+- The following community packs have been released:
+
+  - <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> version 2.2.1
+  - <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 5.0.3
+  - <VersionedLink text="ECK Operator" url="/integrations/packs/?pack=elastic-operator" /> version 3.3.2
+  - <VersionedLink text="ECK Stack" url="/integrations/packs/?pack=elastic-stack" /> version 0.18.2
+
+<!-- prettier-ignore-end -->
+
 ## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
+
+The following component updates are applicable to this release:
+
+- [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
 
 ### Security Notices
 
