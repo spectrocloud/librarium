@@ -7,12 +7,17 @@ on:
       jira_ticket:
         description: "The Jira ticket for the patch release (e.g., DOC-2815)"
         required: true
-        default: ""
+  push:
+    branches:
+      - doc-2813-generate-patch-rl-notes
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+  JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+  SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
-
+  JIRA_TICKET: ${{ github.event_name == 'push' && 'DOC-2815' || github.event.inputs.jira_ticket }}
 
 jobs:
   generate_release_notes:
@@ -49,3 +54,54 @@ jobs:
       - run: |
           echo "CURRENT_STEP=npm ci" >> $GITHUB_ENV
           npm ci
+      
+      - name: Execute Script to Generate Patch Release Notes
+        run: |
+          echo "CURRENT_STEP=Generating patch release notes" >> $GITHUB_ENV
+          JIRA_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
+
+      - name: Create a PR with the Updated Permissions
+        if: ${{ env.CHANGES_DETECTED  == 'true'}}
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          # Create a new branch
+          branch_name="${{ env.JIRA_TICKET }}-generate-patch-release-notes-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$branch_name"
+
+          # Commit and push the changes
+          git add docs/docs-content/release-notes/release-notes.md
+          git commit -m "docs: add patch release notes for ${{ env.JIRA_TICKET }}"
+          git push origin $branch_name
+
+          # Create the pull request
+          pr_body='
+          ## Describe the Change
+          This PR adds the patch release notes for the Jira ticket `${{ env.JIRA_TICKET }}` to the `release-notes.md` file.'
+          output=$(gh pr create --base "master" --title "docs: add patch release notes for ${{ env.JIRA_TICKET }}" --body "$pr_body")
+          pr_url=$(echo "$output" | grep -o "https://[^ ]*")
+          echo "PR successfully created $pr_url."
+
+          # Save the PR URL as an environment variable
+          echo "GITHUB_PATCH_RELEASE_NOTES_PR=$pr_url" >> $GITHUB_ENV
+
+      - name: Success Slack Notification
+        if: ${{ env.GITHUB_PATCH_RELEASE_NOTES_PR  != ''}}
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'A new PR with updated patch release notes was created for Jira ticket `${{ env.JIRA_TICKET }}`. Please review ${{env.GITHUB_PATCH_RELEASE_NOTES_PR}} for more details.'
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The generate patch release notes job for Jira ticket `${{ env.JIRA_TICKET }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+          
