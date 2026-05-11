@@ -29,11 +29,14 @@ if ! check_env "SUPER_API_TOKEN"; then
     exit 1
 fi
 
-read -p "Specify ticket to generate patch release notes for (for example, DOC-2815): " patch_release_ticket
-echo "Generating patch release notes for $patch_release_ticket ..."
+if [[ -z "${PATCH_RELEASE_TICKET:-}" ]]; then
+  read -p "Specify ticket to generate patch release notes for (for example, DOC-2815): " PATCH_RELEASE_TICKET
+fi
+
+echo "Generating patch release notes for $PATCH_RELEASE_TICKET ..."
 
 CANDIDATES_LINK=$(curl -s --fail-with-body \
-  --url "${JIRA_DOMAIN}/rest/api/3/issue/${patch_release_ticket}?fields=description" \
+  --url "${JIRA_DOMAIN}/rest/api/3/issue/${PATCH_RELEASE_TICKET}?fields=description" \
   --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
   --header "Accept: application/json" | jq -r '
   .fields.description.content[]
@@ -193,6 +196,7 @@ generate_parameterised_file_local_vars \
   "$PATCH_NOTES_OUTPUT_FILE" \
   "RELEASE_DATE" \
   "RELEASE_PATCH" \
+  "PATCH_RELEASE_TICKET" \
   "BUG_FIXES_BODY"
 
 insert_file_after "<ReleaseNotesVersions />" $PATCH_NOTES_OUTPUT_FILE $RELEASE_NOTES_FILE

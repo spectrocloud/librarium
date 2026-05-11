@@ -1,0 +1,51 @@
+
+name: "Generate Patch Release Notes"
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira_ticket:
+        description: "The Jira ticket for the patch release (e.g., DOC-2815)"
+        required: true
+        default: ""
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NODE_VERSION: "24"
+
+
+jobs:
+  generate_release_notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.4.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Checkout Librarium Repository
+        uses: actions/checkout@v6
+        with: 
+          repository: spectrocloud/librarium
+          ref: "master"
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+  
+      - name: Set Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm" 
+
+      - run: |
+          echo "CURRENT_STEP=npm ci" >> $GITHUB_ENV
+          npm ci
