@@ -360,7 +360,7 @@ The following component updates are applicable to this release:
   refer to the
   [Add Backup Location with Dynamic Credentials](../clusters/cluster-management/backup-restore/add-backup-location-dynamic.md)
   and
-  [Troubleshooting clusters](../troubleshooting/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+  [Troubleshooting clusters](../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
   guides.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9573 -->
