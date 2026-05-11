@@ -23,7 +23,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-8545 -->
 
-- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports dropdown profile variables for locally managed Edge clusters.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports dropdown profile variables for locally managed Edge
+  clusters.
 
 ### Bug Fixes
 
