@@ -69,7 +69,12 @@ JQL=$(printf '%b' "${JQL_ENCODED//%/\\x}")
 JQL=${JQL//+/ }
 
 END_DATE=$(printf '%s' "$JQL" | sed -n 's/.*duedate <= "\([^"]*\)".*/\1/p')
-RELEASE_DATE=$(date -j -f "%Y-%m-%d" "$END_DATE" +"%B %-d, %Y")
+# Try parsing with BSD date first (macOS), fallback to GNU date (Linux)
+if date -j -f "%Y-%m-%d" "$END_DATE" +"%B %-d, %Y" >/dev/null 2>&1; then
+  RELEASE_DATE=$(date -j -f "%Y-%m-%d" "$END_DATE" +"%B %-d, %Y")
+else
+  RELEASE_DATE=$(date -d "$END_DATE" +"%B %-d, %Y")
+fi
 RELEASE_PATCH=$(printf '%s' "$JQL" | sed -n 's/.*fixVersion IN (\([^)]*\)).*/\1/p')
 echo "ℹ️  Extracted release date: $RELEASE_DATE."
 echo "ℹ️  Extracted release patch: $RELEASE_PATCH."
