@@ -52,6 +52,11 @@ tags: ["release-notes"]
 
 - The Spectro Cloud Ubuntu images now support ARM64 architectures.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
+
+- The dependencies of the Palette agent were updated to the latest versions, ensuring that it has the latest security
+  patches.
+
 ## May 8, 2026 - Component Updates {#component-updates-2026-19}
 
 The following components have been updated for Palette version 4.9.5.
