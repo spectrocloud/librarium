@@ -11,6 +11,52 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 11, 2026 - Release 4.9.6
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8614 -->
+
+- The [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) now supports changing the root
+  user's password.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8509 -->
+
+- Fixed an issue that caused Palette to register `429` rate limit errors due to excessive calls on the `/v1/edgehosts`
+  [API endpoint](/api/category/palette-api-v1/).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6560 -->
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused Azure IaaS clusters using <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.13 or earlier to get stuck when upgrading to a PXK version in 1.33.x series.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
+
+- Fixed an issue that caused Edge hosts using <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> to become inaccessible after certificate renewal.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
+
+- Fixed an issue that caused adding Edge worker node pools using [Local UI](../clusters/edge/local-ui/local-ui.md) to
+  fail to join the Kubernetes cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
+
+- The dependencies of the `mongo-enterprise` Palette image were updated to the latest versions, ensuring that it has the
+  latest security patches.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
+
+- The Spectro Cloud Ubuntu images now support ARM64 architectures.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
+
+- The dependencies of the Palette agent were updated to the latest versions, ensuring that it has the latest security
+  patches.
+
 ## May 8, 2026 - Component Updates {#component-updates-2026-19}
 
 The following components have been updated for Palette version 4.9.5.
