@@ -20,6 +20,12 @@ tags: ["release-notes"]
 - The [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) now supports changing the root
   user's password.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8545 -->
+
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports dropdown profile variables for locally managed Edge
+  clusters.
+
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8509 -->
@@ -38,11 +44,6 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-end -->
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
-
-- Fixed an issue that caused adding Edge worker node pools using [Local UI](../clusters/edge/local-ui/local-ui.md) to
-  fail to join the Kubernetes cluster.
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
 
 - The dependencies of the `mongo-enterprise` Palette image were updated to the latest versions, ensuring that it has the
@@ -50,7 +51,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
 
-- The Spectro Cloud Ubuntu images now support ARM64 architectures.
+- The Spectro Cloud Ubuntu images were rebuilt to ensure that they contain the latest security patches.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
 
