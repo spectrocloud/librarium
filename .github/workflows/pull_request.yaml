@@ -141,7 +141,7 @@ jobs:
       - name: Post PR Comment (success)
         if: ${{ github.event_name == 'pull_request' && success() }}
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v8 as of May 6, 2026
+        uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9 as of May 10, 2026
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
