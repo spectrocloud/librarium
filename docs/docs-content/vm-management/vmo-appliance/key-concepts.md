@@ -10,7 +10,7 @@ VMO Manager manages a subset of Kubernetes namespaces. A namespace is considered
 - The VMO namespace (e.g., `vm-dashboard`)
 - The golden images namespace (e.g., `vmo-golden-images`)
 
-Resource lists default to **All Namespaces**, showing resources across all managed namespaces. You can filter by a specific namespace using the namespace dropdown. Per-namespace counts help you understand resource distribution. See [Namespaces](..vmo-appliance/user/infrastructure/namespaces.md) for managing and creating namespaces.
+Resource lists default to **All Namespaces**, showing resources across all managed namespaces. You can filter by a specific namespace using the namespace dropdown. Per-namespace counts help you understand resource distribution. See [Namespaces](./user/infrastructure/namespaces.md) for managing and creating namespaces.
 
 > **Tip:** When creating VMs or other resources, choose a managed namespace. Namespaces without the VMO label may not appear in dropdowns.
 
@@ -26,7 +26,7 @@ A **VmTemplate** is a Kubernetes Custom Resource (CRD) that defines a reusable V
 
 Templates let you standardize VM configurations and create multiple VMs from the same base. When creating a VM, you can select a template in the Source step; the wizard pre-fills settings from the template.
 
-Templates are stored as CRDs under `kubevirt.io` and managed by VMO Manager. They appear in **Workloads > Templates**. See [Templates](..vmo-appliance/user/virtual-machines/templates.md) for details on creating and managing templates.
+Templates are stored as CRDs under `kubevirt.io` and managed by VMO Manager. They appear in **Workloads > Templates**. See [Templates](./user/virtual-machines/templates.md) for details on creating and managing templates.
 
 ## Golden Images
 
@@ -37,7 +37,7 @@ A **golden image** is a sealed, reusable base disk image. Unlike a one-off DataV
 3. Create a VmTemplate that references the golden image DataVolume.
 4. Create VMs from the template; each VM gets a clone of the golden image.
 
-Golden images live in a dedicated namespace (e.g., `vmo-golden-images`) and are listed under **Image Catalog > Golden Images**. See [Golden Images](..vmo-appliance/user/image-catalog/golden-images.md) for the full lifecycle walkthrough.
+Golden images live in a dedicated namespace (e.g., `vmo-golden-images`) and are listed under **Image Catalog > Golden Images**. See [Golden Images](./user/image-catalog/golden-images.md) for the full lifecycle walkthrough.
 
 ## Feature Flags
 
@@ -47,7 +47,7 @@ Feature flags control the availability of experimental and stable features. Admi
 - **Admin-toggleable:** Only users with `vmo:features:write` can change feature flags.
 - **Stable vs experimental:** Stable features are enabled by default; experimental features are disabled by default.
 
-Feature-gated UI elements (tabs, buttons, wizards) are hidden when the corresponding flag is disabled. The backend also checks flags for feature-gated API endpoints. See [Feature Flags](..vmo-appliance/user/system/feature-flags.md)  for the complete list of available flags.
+Feature-gated UI elements (tabs, buttons, wizards) are hidden when the corresponding flag is disabled. The backend also checks flags for feature-gated API endpoints. See [Feature Flags](./user/system/feature-flags.md)  for the complete list of available flags.
 
 ## IAM Roles vs Kubernetes RBAC Roles
 
