@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May XX, 2026 - Release 4.8.X
+## May 11, 2026 - Release 4.8.54
 
 ## Bug Fixes
 
@@ -46,8 +46,13 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10656 -->
 
-- Fixed an issue that prevented clusters from being deployed when gRPC Remote Procedure Call (gRPC) ports are blocked due to firewall policies, and WebSocket is used as a
-  fallback.
+- Fixed an issue that prevented clusters from being deployed when gRPC Remote Procedure Call (gRPC) ports are blocked
+  due to firewall policies, and WebSocket is used as a fallback.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10763 -->
+
+- The dependencies of the `mongodb-enterprise-server` Palette image were updated to the latest versions, ensuring that
+  it has the latest security patches.
 
 ## April 28, 2026 - Release 4.8.52
 
