@@ -64,7 +64,7 @@ IAM roles are **application-level** roles that define what users can do in VMO M
 | **Operator** | Day-to-day ops | templates, dashboards (r+w), packages (r), audit, system, monitoring, storage (r) |
 | **Viewer** | Read-only | templates, packages (r), dashboards (r+w own), system health (r), networks, namespaces (r) |
 
-Group-to-role mappings (e.g., `cluster-admins` to Platform Admin) are configured in **Settings > IAM Roles**. See [IAM Roles & Permissions](../vmo-appliance/user/access-management/iam-roles.md) for details.
+Group-to-role mappings (e.g., `cluster-admins` to Platform Admin) are configured in **Settings > IAM Roles**. See [IAM Roles & Permissions](./user/access-management/iam-roles.md) for details.
 
 ### Kubernetes RBAC ClusterRoles (K8s-Level)
 
@@ -77,7 +77,7 @@ Kubernetes ClusterRoles define what users can do against the Kubernetes API. VMO
 | `spectro-vmo-user` | Operate VMs (start/stop/console) but not create/delete |
 | `spectro-vmo-viewer` | Read-only all VMO resources |
 
-Access policies map IAM roles to these ClusterRoles and optionally scope them to specific namespaces. The flow is: **OIDC Group -> IAM Role -> K8s ClusterRole -> Namespace**. See [Access Policies](../vmo-appliance/user/access-management/access-policies.md) for how to configure this mapping.
+Access policies map IAM roles to these ClusterRoles and optionally scope them to specific namespaces. The flow is: **OIDC Group -> IAM Role -> K8s ClusterRole -> Namespace**. See [Access Policies](./user/access-management/access-policies.md) for how to configure this mapping.
 
 ## CRD-Based Persistence
 
@@ -88,7 +88,7 @@ All persistent state in VMO Manager is stored in **Kubernetes Custom Resource De
 - **Branding assets** — Stored in ConfigMaps
 - **Sessions, uploads, serve tokens** — Held in-memory per replica (HA uses sticky sessions)
 
-CRDs are managed by a dedicated Helm chart (`vmo-manager-crds`) with an independent upgrade lifecycle. See [Data Flow & Persistence](../architecture/data-flow.md) for the full architecture. This design ensures:
+CRDs are managed by a dedicated Helm chart (`vmo-manager-crds`) with an independent upgrade lifecycle. See [Data Flow & Persistence](./user/architecture/data-flow.md) for the full architecture. This design ensures:
 
 - No external database dependency
 - Native Kubernetes backup and restore
