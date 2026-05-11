@@ -79,7 +79,7 @@ jobs:
 
     - name: Post Netlify progress
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-      uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8 as of May 6, 2026
+      uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v8 as of May 6, 2026
       with:
         script: |
                   const marker = "librarium-release-branch-pr";
