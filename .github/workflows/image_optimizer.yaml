@@ -45,7 +45,7 @@ jobs:
       - name: Retrieve Credentials
         id: import-secrets
         # Pin to a commit SHA to prevent upstream action tampering
-        uses: hashicorp/vault-action@3.4.0 # v3.4.0
+        uses: hashicorp/vault-action@v3.4.0 # v3.4.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
