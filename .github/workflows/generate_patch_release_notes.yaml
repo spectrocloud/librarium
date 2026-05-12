@@ -7,6 +7,9 @@ on:
       jira_ticket:
         description: "The Jira ticket for the patch release (e.g., DOC-2815)"
         required: true
+    base_branch:
+      description: "The base branch for the patch release PR (default: master)"
+      required: true
   push:
     branches:
       - doc-2813-generate-patch-rl-notes
@@ -18,7 +21,7 @@ env:
   SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
   JIRA_TICKET: ${{ github.event_name == 'push' && 'DOC-2815' || github.event.inputs.jira_ticket }}
-  BASE_BRANCH: "doc-2813-generate-patch-rl-notes"
+  BASE_BRANCH: ${{ github.event_name == 'push' && 'doc-2813-generate-patch-rl-notes' || github.event.inputs.base_branch }}
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_INDEX_NAME: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
@@ -26,6 +29,12 @@ env:
 jobs:
   generate_release_notes:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
     steps:
       - name: Retrieve Credentials
         id: import-secrets
