@@ -787,7 +787,143 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 
 ## Upgrade Clusters from the Template
 
+In this section, you will trigger an immediate upgrade of both clusters attached to `tf-cluster-template-aws`.
+`tf-dev-cluster` and `tf-prod-cluster` will move from profile version `1.0.0` to `1.1.0`.
+
+In `cluster_templates.tf`, the `upgrade_now` argument is set to the value of `upgrade_now_timestamp`. When this value
+changes, Palette immediately upgrades all clusters attached to the template.
+
+<Tabs>
+
+<TabItem label="AWS" value="aws">
+
+```hcl {17}
+resource "spectrocloud_cluster_config_template" "aws_template" {
+  count = var.deploy-aws ? 1 : 0
+
+  name       = "tf-cluster-template-aws"
+  cloud_type = "aws"
+  context    = "project"
+
+  cluster_profile {
+    id = (var.create_new_profile_version && var.update_template_profile_version) ? spectrocloud_cluster_profile.aws_profile_v110[0].id : spectrocloud_cluster_profile.aws_profile[0].id
+  }
+
+  policy {
+    id   = spectrocloud_cluster_config_policy.maintenance.id
+    kind = "maintenance"
+  }
+
+  upgrade_now = var.upgrade_now_timestamp != "" ? var.upgrade_now_timestamp : null
+}
+```
+
+</TabItem>
+
+<TabItem label="Azure" value="azure">
+
+```hcl {17}
+resource "spectrocloud_cluster_config_template" "azure_template" {
+  count = var.deploy-azure ? 1 : 0
+
+  name       = "tf-cluster-template-azure"
+  cloud_type = "azure"
+  context    = "project"
+
+  cluster_profile {
+    id = (var.create_new_profile_version && var.update_template_profile_version) ? spectrocloud_cluster_profile.azure_profile_v110[0].id : spectrocloud_cluster_profile.azure_profile[0].id
+  }
+
+  policy {
+    id   = spectrocloud_cluster_config_policy.maintenance.id
+    kind = "maintenance"
+  }
+
+  upgrade_now = var.upgrade_now_timestamp != "" ? var.upgrade_now_timestamp : null
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+In `terraform.tfvars`, set `upgrade_now_timestamp` to the current time in RFC3339 format.
+
+```hcl title="terraform.tfvars" hideClipboard
+upgrade_now_timestamp = "2026-05-12T14:30:00Z"
+```
+
+Issue the `terraform plan` command to preview the changes.
+
+```shell
+terraform plan
+```
+
+Terraform reports one update to the cluster template resource.
+
+```text hideClipboard title="Expected output"
+# spectrocloud_cluster_config_template.aws_template[0] will be updated in-place
+  ~ resource "spectrocloud_cluster_config_template" "aws_template" {
+      + upgrade_now = "2026-05-12T14:30:00Z"
+        ...
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+```
+
+Apply the changes to trigger the upgrade.
+
+```shell
+terraform apply -auto-approve
+```
+
+```bash hideClipboard title="Expected output"
+spectrocloud_cluster_config_template.aws_template[0]: Modifying...
+spectrocloud_cluster_config_template.aws_template[0]: Modifications complete after 3s
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+```
+
+The template update triggers an upgrade on both clusters attached to the template. `tf-dev-cluster` and
+`tf-prod-cluster` both begin moving from profile version `1.0.0` to `1.1.0`. The upgrade may take several minutes. In
+Palette, navigate to the left main menu and select **Clusters**, then select either cluster to track the upgrade
+progress. Once complete, Palette marks the Kubecost layer with a green status indicator.
+
+![Kubecost layer with a green status indicator](/kubecost-green-status.webp)
+
 ### Validate the Upgrades
+
+From the left main menu, select **Clusters**, then select `tf-dev-cluster`. Verify that the cluster status is
+**Running**. Select the **Profile** tab and confirm the version drop-downs display `1.1.0`.
+
+Select the **Overview** tab and download the kubeconfig file for `tf-dev-cluster`. This file enables you and other users
+to issue kubectl commands against the host cluster.
+
+![Download kubeconfig from cluster overview](/download-kubeconfig.webp)
+
+Open a terminal window and set the `KUBECONFIG` environment variable to point to the file you downloaded.
+
+```shell
+export KUBECONFIG=<path-to-kubeconfig>
+```
+
+Forward the Kubecost UI to your local machine. The Kubecost dashboard is not exposed externally by default. The
+following command makes it available locally on port `9090`.
+
+```shell
+kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+```
+
+Open a browser window and navigate to `http://localhost:9090`. The Kubecost dashboard displays cost and resource data
+for your cluster. Read more about
+[navigating the Kubecost UI](https://www.ibm.com/docs/en/kubecost/self-hosted/3.x?topic=navigating-kubecost-ui) to make
+the most of the cost analyzer.
+
+![Image that shows the Kubecost UI](/getting-started/vmware/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
+
+Once you are done, stop the `kubectl port-forward` command by closing the terminal window it is executing from.
+
+Repeat the same Kubecost and cluster profile version checks for `tf-prod-cluster`.
 
 ## Cleanup
 
