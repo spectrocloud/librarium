@@ -11,6 +11,48 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 10, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-2815 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
+
+- Fixed an issue where Spectro's Ubuntu mirror lacked ARM64 support and the FIPS builder did not provide ARM64 variants,
+  preventing ARM64-based deployments from functioning correctly.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8509 -->
+
+- Fixed an issue where Edge host agents made excessively frequent API calls (up to 10 requests per minute per host),
+  causing a high volume of HTTP 429 rate-limit errors and degraded platform availability in production environments.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
+
+- Fixed security vulnerabilities CVE-2026-40224 and CVE-2026-28390 by rebuilding the `palette-agent` container image
+  against the latest Ubuntu base image.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
+
+- Fixed security vulnerabilities CVE-2026-40224 and CVE-2026-28390 by rebuilding the MongoDB Enterprise image against
+  the latest Ubuntu base image.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6560 -->
+
+- Fixed an image pull failure that occurred when upgrading PXK from version 1.32.13 to 1.33.10 in Azure connected
+  environments, where Azure cloud controller manager and cloud node manager pods entered an `ImagePullBackOff` state.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
+
+- Fixed a deadlock in airgap Edge clusters using agent mode and Local UI where newly added scale-out node pool hosts
+  became permanently stuck in the `registration` phase due to a circular authorization dependency in the peer-link file
+  server.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
+
+- Fixed an issue where kube-vip became unauthorized and rendered the cluster inaccessible after certificate renewal on
+  kubeadm/PXKE clusters, by ensuring kube-vip restarts automatically following cert rotation.
+
 ## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
 
 ### Security Notices
