@@ -119,28 +119,36 @@ EOF
 
 BUG_FIXES_BODY=""
 
+BUG_FIXES_BODY=""
+
 for ((i=1; i<=MAX_RETRIES; i++)); do
   echo "Attempt Super POST call $i/$MAX_RETRIES..."
 
-  RESPONSE=$(
+  if RESPONSE=$(
     curl -sS --fail-with-body \
       --request POST \
       --url https://api.super.work/v1/super \
       --header "Authorization: Bearer ${SUPER_API_TOKEN}" \
       --header "Content-Type: application/json" \
-      --data "$(jq -n --arg question "$QUESTION" --arg assistantID "$SUPER_ASSISTANT_ID" '{question: $question, assistantId: $assistantID}')" \
-  )
+      --data "$(jq -n --arg question "$QUESTION" --arg assistantID "$SUPER_ASSISTANT_ID" '{question: $question, assistantId: $assistantID}')"
+  ); then
+    BUG_FIXES_BODY=$(echo "$RESPONSE" | jq -r '.answer // empty')
 
-  BUG_FIXES_BODY=$(echo "$RESPONSE" | jq -r '.answer // empty')
+    if [[ -n "$BUG_FIXES_BODY" ]]; then
+      echo "✅ Successfully retrieved bug fixes body from Super API."
+      break
+    fi
 
-  if [[ -n "$BUG_FIXES_BODY" ]]; then
-    echo "✅ Successfully retrieved bug fixes body from Super API."
-    break
+    echo "⚠️ Empty response, retrying in ${SLEEP_SECONDS}s..." >&2
+  else
+    echo "⚠️ Super API call failed, retrying in ${SLEEP_SECONDS}s..." >&2
   fi
 
-  echo "⚠️ Empty response, retrying in ${SLEEP_SECONDS}s..." >&2
-  sleep "$SLEEP_SECONDS"
-  SLEEP_SECONDS=$((SLEEP_SECONDS * 2))  # exponential backoff
+  if (( i < MAX_RETRIES )); then
+    sleep "$SLEEP_SECONDS"
+    SLEEP_SECONDS=$((SLEEP_SECONDS * 2))
+  fi
+
 done
 
 if [[ -z "$BUG_FIXES_BODY" ]]; then
