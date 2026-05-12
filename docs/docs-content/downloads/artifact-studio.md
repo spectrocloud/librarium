@@ -67,14 +67,14 @@ representative or [open a support ticket](https://support.spectrocloud.io/).
    enter your access key. If you do not have an access key, reach out to your Spectro Cloud representative or partner to
    request access.
 
-   ![Image showing details of exclusive content](../../../static/assets/docs/images/downloads/downloads_artifact-studio_privateai_exclusive-content-4-9.webp)
+   ![Image showing details of exclusive content](../../../static/assets/docs/images/downloads/downloads_artifact-studio_privai_exclusive-content-4-9.webp)
 
 4. Select **View details** to display more information about a specific stack.
 
 5. Select the check box of each stack you want to download. In each stack, select the version of the stack you want to
    use. Once selected, the stack appears in the **Selected Profiles** pane on the right.
 
-   ![Image showing details of selecting stack and version](../../../static/assets/docs/images/downloads/downloads_artifact-studio_privateai_select-stack-ver-4-9.webp)
+   ![Image showing details of selecting stack and version](../../../static/assets/docs/images/downloads/downloads_artifact-studio_privai_select-stack-ver-4-9.webp)
 
 6. Repeat step 5 until you have added all necessary stacks. When finished, select the **I'm not a robot** reCAPTCHA
    checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the
