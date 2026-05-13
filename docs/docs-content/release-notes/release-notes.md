@@ -11,6 +11,36 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 15, 2026 - Release 4.9.7
+
+<!-- PATCH RELEASE TICKET: DOC-2824 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8535 -->
+
+- The [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) now supports changing the root
+  user's password.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1603 -->
+
+- Fixed an issue in the [vCluster](https://www.vcluster.com/) template that caused vCluster deployments to fail for both
+  k3s and generic Kubernetes configurations.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6604 -->
+
+- Fixed an issue that caused
+  [MAAS Clusters Using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) to fail with "no
+  eligible LXD host found" due to storage availability being incorrectly parsed as zero, even when hosts had sufficient
+  free disk space.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8641 -->
+
+- Fixed an issue where Kubernetes and [kube-vip](https://kube-vip.io/) continue running with stale certificates after a
+  certificate renewal, by ensuring both services are restarted to pick up the updated certificates.
+
 ## May 11, 2026 - Release 4.9.6
 
 ### Improvements
