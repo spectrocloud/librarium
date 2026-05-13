@@ -283,7 +283,7 @@ or complete.
 
 ### Resources Tab
 
-The **Resources** tab displays the the total amount of CPU and memory resources that all VMs in the migration plan will
+The **Resources** tab displays the total amount of CPU and memory resources that all VMs in the migration plan will
 require in the target environment.
 
 ### Mappings tab
