@@ -20,7 +20,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8626 -->
 
 - Fixed an issue where Kubernetes and [kube-vip](https://kube-vip.io/) continue running with stale certificates after a
-  certificate renewal, by ensuring both services are restarted to pick up the updated certificates.
+  certificate renewal.
 
 ## May 11, 2026 - Release 4.8.54
 
