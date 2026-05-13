@@ -202,8 +202,8 @@ about each mode.
 
    The `--kubelet-insecure-tls` argument is required for clusters that use self-signed Kubelet certificates, which is
    common for self-managed clusters. If you do not use `--kubelet-insecure-tls` and you have self-signed Kubelet
-   certificates, the metrics API server will not respond, as indicated with the output `False (MissingEndpoints)`
-   when running the command `kubectl get apiservices | grep metrics`.
+   certificates, the metrics API server will not respond, as indicated with the output `False (MissingEndpoints)` when
+   running the command `kubectl get apiservices | grep metrics`.
 
    ```shell title="Example of a non-responsive metrics server" hideClipboard
    v1beta1.metrics.k8s.io    kube-system/metrics-server   False (MissingEndpoints)   7m26s
