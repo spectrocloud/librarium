@@ -167,6 +167,13 @@ about each mode.
    to install a metrics server automatically. If your cluster does not already have a metrics server, you can install
    one manually. Any implementation that serves the Kubernetes Metrics API is compatible.
 
+   :::warning
+
+   Without a metrics server, Palette cannot display cluster resource metrics. Other functionality such as event logs,
+   health checks, and cost data is not affected.
+
+   :::
+
    To verify if your cluster has the Kubernetes Metrics API installed, run the following command.
 
    ```shell
@@ -188,23 +195,28 @@ about each mode.
    import-cluster-palette-control-plane   212m         2%       1607Mi          20%
    ```
 
-   If your cluster does not have a metrics server installed, you can use the following command to install the Kubernetes
-   metrics-server Helm chart. The `--kubelet-insecure-tls` argument is required for clusters that use self-signed
-   Kubelet certificates, which is common for self-managed clusters.
-
-   ```shell
-   helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
-   helm install metrics-server metrics-server/metrics-server \
-      --namespace kube-system \
-      --set args='{--kubelet-insecure-tls}'
-   ```
+   If your cluster does not have a metrics server installed, use the **(Optional) Install the metrics server** commands
+   displayed in the drawer to install the Kubernetes metrics-server Helm chart.
 
    :::warning
 
-   Without a metrics server, Palette cannot display cluster resource metrics. Other functionality such as event logs,
-   health checks, and cost data is not affected.
+   The `--kubelet-insecure-tls` argument is required for clusters that use self-signed Kubelet certificates, which is
+   common for self-managed clusters. If you do not use `--kubelet-insecure-tls` and you have self-signed Kubelet
+   certificates, the metrics API server will not respond. This is indicated with the output `False (MissingEndpoints)`
+   when running the command `kubectl get apiservices | grep metrics`.
+
+   ```shell title="Example of a non-responsive metrics server" hideClipboard
+   v1beta1.metrics.k8s.io    kube-system/metrics-server   False (MissingEndpoints)   7m26s
+   ```
 
    :::
+
+   ```shell {4}
+   helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+   helm upgrade --install metrics-server metrics-server/metrics-server \
+      --namespace kube-system \
+      --set args='{--kubelet-insecure-tls}'
+   ```
 
 8. To install the Palette agent, run the command displayed in the drawer against the Kubernetes cluster you want to
    import. The command is customized for your cluster, as it contains the assigned cluster ID.

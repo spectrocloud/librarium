@@ -25,6 +25,12 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2788 -->
+
+- The metrics server commands for
+  [imported read-only clusters](../clusters/imported-clusters/cluster-import.md#read-only-mode) now use the
+  [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/) Helm chart instead of Bitnami.
+
 #### Deprecations and Removals
 
 ### Edge
