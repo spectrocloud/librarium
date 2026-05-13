@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 15, 2026 - Release 4.9.7
+## May 15, 2026 - Release 4.9.8
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -40,6 +40,11 @@ tags: ["release-notes"]
 
 - Fixed an issue where Kubernetes and [kube-vip](https://kube-vip.io/) continue running with stale certificates after a
   certificate renewal.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6633 -->
+
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) configured with static placement or
+  private endpoint access to fail to deploy due to EC2 permission errors.
 
 ## May 11, 2026 - Release 4.9.6
 
