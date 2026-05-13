@@ -24,12 +24,18 @@ add-on pack that can be added to your cluster profile and works alongside the
 
 <!-- prettier-ignore-end -->
 
+It provides a user-friendly interface to manage the migration process, including creating source providers, defining
+migration plans, and monitoring the status of migrations.
+
 ## Limitations
+
+These limitations apply generally to the VM Migration Assistant.
 
 - You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
 
 - You can migrate only VMs whose operating systems are present in the
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
+  [Verified Migrations](#verified-migrations) for a list of verified migration combinations.
 
 - Open Virtual Appliance (OVA) files are not supported as a provider type for migrations.
 

@@ -130,7 +130,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu** click **Profiles**.
+2. From the left main menu, click **Profiles**.
 
 3. Click on the **Add Cluster Profile** button.
 
@@ -163,7 +163,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 9. Click **Finish Configuration**.
 
-10. From the **Main Menu**, choose **Clusters** and select your VMO cluster.
+10. From the left main menu, select **Clusters** and select your VMO cluster.
 
 11. In the **Profile** tab, click **Add add-on profile (+)** and select the newly created profile. Click **Confirm**.
 
@@ -173,11 +173,11 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to **Profiles** from the left **Main Menu**.
+2. From the left main menu, select **Profiles**.
 
 3. Locate the newly created profile in the list.
 
-4. From the left **Main Menu**, click **Clusters** and select your cluster.
+4. From the left main menu, click **Clusters** and select your cluster.
 
 5. In the **Overview** tab, ensure that the cluster status and health is **Running** and **Healthy**.
 
