@@ -202,6 +202,44 @@ if grep -qF "$release_notes_header" "$RELEASE_NOTES_FILE"; then
 
 fi
 
+# If release notes section exists, extract existing tickets to compare with the list incoming from Jira.
+# If they are not included in ISSUE_KEYS, then we should remove them from the release notes to avoid having stale tickets in the release notes.
+if grep -qF "$release_notes_header" "$RELEASE_NOTES_FILE"; then
+  EXISTING_TICKETS=$(awk -v header="$release_notes_header" '
+    $0 == header { in_section=1; next }
+    in_section && /^## [^#]/ { exit }
+    in_section && /browse\/[A-Z]+-[0-9]+/ {
+      match($0, /browse\/([A-Z]+-[0-9]+)/, m)
+      print m[1]
+    }
+  ' "$RELEASE_NOTES_FILE")
+
+  MISSING_EXISTING_TICKETS=()
+
+  while IFS= read -r existing_ticket; do
+    [[ -z "$existing_ticket" ]] && continue
+
+    found=false
+    for issue_key in "${ISSUE_KEYS[@]}"; do
+      if [[ "$existing_ticket" == "$issue_key" ]]; then
+        found=true
+        break
+      fi
+    done
+
+    if [[ "$found" == false ]]; then
+      MISSING_EXISTING_TICKETS+=("$existing_ticket")
+    fi
+  done <<< "$EXISTING_TICKETS"
+
+  if (( ${#MISSING_EXISTING_TICKETS[@]} > 0 )); then
+    echo "⚠️ Existing release note tickets not in current candidate list: ${MISSING_EXISTING_TICKETS[*]}" >&2
+  fi
+
+  
+
+fi
+
 echo "ℹ️ Release notes for $RELEASE_PATCH do not already exist in $RELEASE_NOTES_FILE" >&2
 
 generate_parameterised_file_local_vars \
