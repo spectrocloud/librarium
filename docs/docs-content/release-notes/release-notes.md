@@ -11,6 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 19, 2026 - Release 4.8.x
+
+<!-- PATCH RELEASE TICKET: DOC-2826 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8626 -->
+
+- Fixed an issue where Kubernetes and [kube-vip](https://kube-vip.io/) continue running with stale certificates after a
+  certificate renewal, by ensuring both services are restarted to pick up the updated certificates.
+
 ## May 11, 2026 - Release 4.8.54
 
 ## Bug Fixes
