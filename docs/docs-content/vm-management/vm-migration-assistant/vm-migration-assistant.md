@@ -29,7 +29,7 @@ migration plans, and monitoring the status of migrations.
 
 ## Limitations
 
-These limitations apply generally to the VM Migration Assistant.
+The following are general limitations of the VM Migration Assistant.
 
 - You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
 
