@@ -44,7 +44,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 
 - Fixed an issue where a scale-out node pool host became permanently stuck in the registration phase due to a circular
-  authorization deadlock in the peer-link file server when using agent-mode with local UI. Additional context from Docs here.
+  authorization deadlock in the peer-link file server when using agent-mode with local UI. Additional context from Docs
+  here.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
 
