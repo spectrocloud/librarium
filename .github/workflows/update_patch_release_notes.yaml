@@ -13,7 +13,7 @@ env:
   JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
   SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
-  BASE_BRANCH: ${{ refs/pull/${{ github.event.issue.number }}/head }}
+  BASE_BRANCH: refs/pull/${{ github.event.issue.number }}/head 
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_INDEX_NAME: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
