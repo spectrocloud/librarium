@@ -252,7 +252,7 @@ Perform the following steps to change a setting.
 
 ### YAML Tab
 
-The **YAML** tab displays a YAML editor for the plan resource.
+The **YAML** tab displays a YAML code editor for the plan resource.
 
 View and edit the
 [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) YAML on this

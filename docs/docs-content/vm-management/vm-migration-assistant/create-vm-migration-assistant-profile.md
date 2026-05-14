@@ -45,7 +45,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
   5. In the new version of your cluster profile, select the OS layer to view the **Edit Pack** page.
 
-  6. Under **Pack Details**, select **Values** to view the YAML editor.
+  6. Under **Pack Details**, select **Values** to view the YAML code editor.
 
   7. Add the kernel parameter to the `kubeadmconfig.files` section. The following is an example YAML snippet to
      demonstrate how to add the parameter.
@@ -98,7 +98,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
   5. In the new version of your cluster profile, select the Kubernetes layer to view the **Edit Pack** page.
 
-  6. Under **Pack Details**, select **Values** to view the YAML editor.
+  6. Under **Pack Details**, select **Values** to view the YAML code editor.
 
   7. Add the device ownership parameter to the `kubeadmconfig.files` section. The following is an example YAML snippet
      to demonstrate how to add the parameter.
