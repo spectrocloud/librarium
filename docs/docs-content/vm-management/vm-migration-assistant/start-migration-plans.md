@@ -19,13 +19,17 @@ for detailed instructions.
 ### Prerequisites
 
 <!--prettier-ignore-->
-- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/>
+  pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md)
+  for guidance.
+
   - The VM Migration Assistant service console must be accessible from a web browser.
 
 - A cold migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
   guidance.
 
-- One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. 
+- One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the
+  [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
 
   - VMs operating Windows must be shut down at the virtualized OS level.
 
