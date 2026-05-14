@@ -20,35 +20,23 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
 
 - Fixed an issue where Spectro's Ubuntu mirror did not support ARM64 architecture and the FIPS builder lacked ARM64
-  variants.
-
+variants.
 <!-- https://spectrocloud.atlassian.net/browse/PE-8509 -->
-
 - Fixed an issue where edge hosts were making excessively frequent API calls, causing a high volume of 429 rate-limit
-  errors in production environments.
-
+errors in production environments.
 <!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
-
 - Fixed security vulnerabilities (CVE-2026-40224, CVE-2026-28390) by rebuilding the palette-agent image with the latest
-  Ubuntu base image.
-
+Ubuntu base image.
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
-
 - Fixed security vulnerabilities (CVE-2026-40224, CVE-2026-28390) by rebuilding the MongoDB Enterprise image with the
-  latest Ubuntu base image.
-
+latest Ubuntu base image.
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6560 -->
-
 - Fixed an image pull backoff error that occurred when upgrading from PXK 1.32.13 to 1.33.10 in connected Azure
-  environments.
-
+environments.
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
-
 - Fixed an issue where new edge hosts added to a scale-out node pool in agent-mode with local UI became permanently
-  stuck in the registration phase and could not join the cluster.
-
+stuck in the registration phase and could not join the cluster.
 <!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
-
 - Fixed an issue where kube-vip became inaccessible after certificate renewal due to an expired super-admin.conf on
   kubeadm/PXKE clusters.
 
