@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 <!-- PATCH RELEASE TICKET: DOC-2815 -->
 
-### Bug Fixes 
+### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
 
@@ -43,7 +43,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 
-- Changes made here.
+- Fixed an issue where a scale-out node pool host became permanently stuck in the registration phase due to a circular
+  authorization deadlock in the peer-link file server when using agent-mode with local UI.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
 
