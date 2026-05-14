@@ -32,7 +32,7 @@ advisories are published.
 ### Summary
 
 Spectro Cloud is aware of three high-severity Linux kernel vulnerabilities that allow local privilege escalation through
-improper handling of fragmented network packet data.
+improper handling of fragmented network packet data:
 
 - [CVE-2026-43284](https://nvd.nist.gov/vuln/detail/CVE-2026-43284) and
   [CVE-2026-43500](https://nvd.nist.gov/vuln/detail/CVE-2026-43500) - Collectively referred to as "Dirty Frag"
@@ -84,7 +84,7 @@ For guidance on patching cluster nodes, refer to [OS Patching](../../clusters/cl
 - [NIST NVD - CVE-2026-43284](https://nvd.nist.gov/vuln/detail/CVE-2026-43284)
 - [NIST NVD - CVE-2026-43500](https://nvd.nist.gov/vuln/detail/CVE-2026-43500)
 - [NIST NVD - CVE-2026-46300](https://nvd.nist.gov/vuln/detail/CVE-2026-46300)
-- [Ubuntu Advisory](https://ubuntu.com/blog/dirty-frag-linux-vulnerability-fixes-available)
+- [Ubuntu Advisory - Dirty Frag Linux kernel local privilege escalation vulnerability mitigations](https://ubuntu.com/blog/dirty-frag-linux-vulnerability-fixes-available)
 
 ## Security Advisory 013 - Linux Kernel "Copy Fail" Privilege Escalation Vulnerability
 
