@@ -11,6 +11,46 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 10, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-2815 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
+
+- Fixed an issue where Spectro's Ubuntu mirror did not support ARM64 and the FIPS builder lacked ARM64 variants.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8509 -->
+
+- Fixed an issue where edge hosts were making excessively frequent API calls, causing a high volume of 429 rate-limit
+  errors in production environments.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8564 -->
+
+- Fixed security vulnerabilities (CVE-2026-40224, CVE-2026-28390) in the palette-agent by rebuilding it against the
+  latest Ubuntu base image.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
+
+- Fixed security vulnerabilities (CVE-2026-40224, CVE-2026-28390) in the MongoDB Enterprise image by rebuilding it
+  against the latest Ubuntu base image.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6560 -->
+
+- Fixed an issue where pods experienced image pull back-off errors when upgrading from PXK 1.32.13 to 1.33.10 in
+  connected Azure environments.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
+
+- Fixed an issue where a new edge host added to a scale-out node pool in agent-mode with Local UI would remain
+  permanently stuck in the registration phase due to a circular authorization deadlock on the peer-link file server.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
+
+- Fixed an issue where kube-vip became unauthorized after certificate renewal, causing the cluster to become
+  inaccessible via kubeconfig.
+
 ## May 14, 2026 - Release 4.9.8
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
