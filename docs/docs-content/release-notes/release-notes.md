@@ -44,10 +44,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 
-- Fixed an issue in airgap Local UI agent-mode deployments where a new node added to a scale-out pool became permanently
-  stuck in the registration phase due to a circular authorization deadlock in the peer-link file server.
+- Adelina was here.
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8699 -->
 
 - Fixed an issue where kube-vip became unauthorized after certificate renewal on kubeadm/PXKE clusters, causing the
   cluster to become inaccessible.
