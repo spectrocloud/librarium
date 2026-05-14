@@ -14,9 +14,6 @@ tags: ["release-notes"]
 ## May 10, 2026 - Release 4.9.x
 
 <!-- PATCH RELEASE TICKET: DOC-2815 -->
-
-### Bug Fixes
-
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6259 -->
 
 - Fixed an issue where Spectro's Ubuntu mirror did not support ARM64 and the FIPS builder lacked ARM64 variants.
@@ -45,7 +42,7 @@ tags: ["release-notes"]
 
 - Changes made here.
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-8699 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
 
 - Fixed an issue where kube-vip became unauthorized after certificate renewal, causing the cluster to become
   inaccessible via kubeconfig.
