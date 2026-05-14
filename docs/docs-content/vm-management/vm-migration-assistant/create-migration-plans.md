@@ -542,7 +542,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    | **Plan namespace**   | The Kubernetes namespace for the migration plan. Select the same namespace that your [source provider](./create-source-providers.md#create-source-provider) was created in.                    | `myVmMigrationNamespace`                                    |
    | **Description**      | An optional description for your migration plan.                                                                                                                                               | `Migration plan to migrate VMs from vSphere to VMO cluster` |
    | **Source provider**  | Select the source provider for the VMs you want to migrate. This is the provider that you created in the [Create Source Providers](./create-source-providers.md#create-source-provider) guide. | `my-vsphere-provider`                                       |
-   | **Target provider**  | Select the target provider from the drop-down. By default, this will be your VMO cluster.                                                                                                      | `host`                                                      |
+   | **Target provider**  | Select the target provider from the drop-down. By default, this is your VMO cluster.                                                                                                      | `host`                                                      |
    | **Target namespace** | Select the target namespace from the drop-down. The target namespace is where the VMs will be located on your VMO cluster after migration.                                                     | `virtual-machines`                                          |
 
 4. Click **Next**.
@@ -562,9 +562,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
    | Setting              | Description                                                                                                                                                                                                                                                                                                                             | Example          |
    | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-   | **Source network**   | The source network is the network that the VM is currently connected to in the source environment.                                                                                                                                                                                                                                      | `VM-NETWORK`     |
-   | **Target network**   | The target network is the network that the VM will be connected to in the target environment. The available options are networks that exist in your target namespace. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used. | `default/vlan-2` |
-   | **Network map name** | Provide an optional name for the network map. This should be in lower case and not use spaces.                                                                                                                                                                                                                                          | `my-network-map` |
+   | **Source network**   | The network that the VM is currently connected to in the source environment.                                                                                                                                                                                                                                      | `VM-NETWORK`     |
+   | **Target network**   | The network that the VM will be connected to in the target environment. The available options are networks that exist in your target namespace. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used. | `default/vlan-2` |
+   | **Network map name** | Provide an optional name for the network map. This must be in lowercase and cannot use spaces.                                                                                                                                                                                                                                          | `my-network-map` |
 
    Click **Add network map** to add additional network maps if you have VMs connected to different networks.
 
@@ -580,23 +580,23 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
    | Setting              | Description                                                                                                                                                                                                       | Example                 |
    | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-   | **Source storage**   | The source storage is the storage domain or datastore that the VM disks are currently located on in the source environment.                                                                                       | `vsanDatastore`         |
-   | **Target storage**   | The target storage is the storage class or datastore that the VM disks will be located on in the target environment. The available options are storage classes or datastores that exist in your target namespace. | `spectro-storage-class` |
-   | **Storage map name** | Provide an optional name for the storage map. This should be in lower case and not use spaces.                                                                                                                    | `my-storage-map`        |
+   | **Source storage**   | The storage domain or datastore that the VM disks are currently located on in the source environment.                                                                                       | `vsanDatastore`         |
+   | **Target storage**   | The storage class or datastore that the VM disks will be located on in the target environment. The available options are storage classes or datastores that exist in your target namespace. | `spectro-storage-class` |
+   | **Storage map name** | Provide an optional name for the storage map. This must be in lowercase and cannot use spaces.                                                                                                                    | `my-storage-map`        |
 
    Click **Add storage map** to add additional storage maps if you have VMs with disks located on different storage
    domains or datastores.
 
 10. Click **Next**.
 
-11. For the **Migration type** step, choose whether this will be a warm or cold migration.
+11. For the **Migration type** step, choose whether this will be a warm or cold migration. Refer to [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of verified migration combinations.
 
     #### Migration Types
 
     | Type               | Description                                                                                                                                                                                                                                                                                        |
     | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Cold migration** | VMs are shut down prior to migration.                                                                                                                                                                                                                                                              |
-    | **Warm migration** | Active VMs are migrated while they are running, and are shut down during the final switchover. Ensure that [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html) is enabled on your VMs before starting a warm migration. |
+    | **Warm migration** | Active VMs are migrated while they are running and are shut down during the final switchover. Ensure that [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html) is enabled on your VMs before starting a warm migration. |
 
 12. Click **Next**.
 
@@ -607,11 +607,11 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
     | Setting                         | Description                                                                                                                                                                                                                                                                      |
     | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Use NBDE/Clevis**             | _Unsupported method_                                                                                                                                                                                                                                                             |
+    | **Use NBDE/Clevis**             | _Unsupported method_.                                                                                                                                                                                                                                                             |
     | **Disk decryption passphrases** | Provide a list of passphrases for [LUKS-encrypted devices](https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks) on the VMs you intend to migrate. Click **Add passphrase** to add additional passphrases. |
     | **Transfer Network**            | Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used.                                                           |
     | **Preserve static IPs**         | Choose whether to preserve the static IPs of the VMs migrated from vSphere. By default, network interfaces and their linked IPs are not preserved, so this option allows you to maintain the existing IP configuration.                                                          |
-    | **Root device**                 | Choose the root filesystem for the VM. By default, the first root device is chosen in multi-boot systems. You can specify a root device, for example, `/dev/sda1`, for multi-boot systems, but if it is not detected as a root device, the migration will fail.                  |
+    | **Root device**                 | Choose the root filesystem for the VM. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1` for multi-boot systems), but if it is not detected as a root device, the migration will fail.                  |
     | **Migrate shared disks**        | Choose whether to migrate shared disks. If you enable this option, ensure that your VMO cluster has access to the shared storage from the storage maps configured for the migration.                                                                                             |
 
 14. Click **Next**.
@@ -627,14 +627,14 @@ Follow this guide to create migration plans using the VM Migration Assistant.
     | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
     | **Hook runner image** | Specify a repository and tag for the hook runner image or custom image. The hook runner is a container that runs your pre-migration and post-migration hooks.                                         | `quay.io/myrepo/hooks:latest` |
     | **Service account**   | Specify a service account for the hook runner to use. The service account must exist in your target namespace.                                                                                        | `hook-runner-service-account` |
-    | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you are using a hook-runner image. |                               |
+    | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you enter a **Hook runner image**. |         N/A                      |
 
 16. Click **Next**.
 
 17. For the **Review and create** step, check that the following settings are configured to your requirements, and click
     **Create plan**.
 
-If you want to explore all additional plan settings, refer to the
+If you want to explore all additional plan settings, refer to
 [Additional Configuration - Plan Settings](./additional-configuration.md#plan-settings) for guidance.
 
 ## Validate
@@ -643,7 +643,7 @@ If you want to explore all additional plan settings, refer to the
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down menu to select your Kubernetes namespace for the migration,
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
    or select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details. You can use the table filters to help locate
@@ -658,5 +658,5 @@ If you want to explore all additional plan settings, refer to the
 - You can now start your migration plans in the VM Migration Assistant. Refer to the
   [Start Migration Plans](./start-migration-plans.md) guide to start migrations.
 
-- If you want to explore all additional plan settings, refer to the
+- If you want to explore all additional plan settings, refer to
   [Additional Configuration - Plan Settings](./additional-configuration.md#plan-settings) for guidance.
