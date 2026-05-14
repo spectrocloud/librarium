@@ -79,7 +79,7 @@ Click on a provider name to view its settings.
 
 Perform the following steps to change a setting.
 
-1. Click the pencil icon next to each value.
+1. Click the **Edit** icon next to each value.
 
 2. Adjust the value in the modal window.
 
@@ -101,7 +101,7 @@ Perform the following steps to change a setting.
 
 Perform the following steps to change a setting.
 
-1. Click the pencil icon next to each value.
+1. Click the **Edit** icon next to each value.
 
 2. Adjust the value in the modal window.
 
@@ -215,7 +215,7 @@ Settings cannot be changed for migration plans that are in progress or complete.
 
 Perform the following steps to change a setting.
 
-1. Click the pencil icon next to each value.
+1. Click the **Edit** icon next to each value.
 
 2. Adjust the value in the modal window.
 

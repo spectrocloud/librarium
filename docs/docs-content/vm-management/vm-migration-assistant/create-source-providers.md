@@ -350,8 +350,8 @@ Machines (VMs) that need to be migrated.
 
 5. Click **Create Provider**.
 
-6. On the provider details page, if you need to change a setting, click the pencil icon next to each value and adjust it
-   in the pop-up window. Click **Save** after making changes.
+6. On the provider details page, if you need to change a setting, click the **Edit** icon next to each value and adjust
+   it in the pop-up window. Click **Save** after making changes.
 
 If you want to explore additional settings, refer to
 [Additional Configuration - Provider Settings](./additional-configuration.md#provider-settings) for guidance.
