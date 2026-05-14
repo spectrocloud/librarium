@@ -34,7 +34,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10677 -->
 
-- Changes made here.
+- Fixed security vulnerabilities (CVE-2026-40224, CVE-2026-28390) by rebuilding the MongoDB Enterprise image with the
+  latest Ubuntu base image.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6560 -->
 
