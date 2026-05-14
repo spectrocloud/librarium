@@ -423,6 +423,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   `/opt/spectrocloud/bin` in the default `PATH`, making kubectl and Helm immediately available for debugging and
   operations.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8375 -->
+
+- kube-vip is now automatically disabled if the virtual IP (VIP) address assigned to the cluster during cluster creation
+  is the same as the Edge host's IP address (for example, in the case of single-node clusters).
+
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8328 -->
