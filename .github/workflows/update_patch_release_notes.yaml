@@ -20,7 +20,9 @@ env:
 
 jobs:
   update_release_notes:
-    if: github.event_name == 'push' || github.event_name == 'issue_comment'
+    if: >
+      github.event_name == 'issue_comment' ||
+      (github.event_name == 'push' && github.event.created == false)
     runs-on: ubuntu-latest
 
     permissions:
