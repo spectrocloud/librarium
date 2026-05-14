@@ -203,6 +203,17 @@ about each mode.
    Add the line `--set args='{--kubelet-insecure-tls}'` to the command if your cluster uses self-signed Kubelet
    certificates, which is common for self-managed clusters.
 
+   ```shell {4}
+   helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+   helm upgrade --install metrics-server metrics-server/metrics-server \
+      --namespace kube-system \
+      --set args='{--kubelet-insecure-tls}'
+   ```
+
+   If you do not use the `--kubelet-insecure-tls` argument and you have self-signed Kubelet certificates, the metrics
+   API server will not respond. This is indicated with the output `False (MissingEndpoints)` when running the command
+   `kubectl get apiservices | grep metrics`.
+
    ```shell title="Example of a non-responsive metrics server" hideClipboard
    v1beta1.metrics.k8s.io    kube-system/metrics-server   False (MissingEndpoints)   7m26s
    ```
