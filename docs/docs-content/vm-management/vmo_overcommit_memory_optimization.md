@@ -1,58 +1,31 @@
-
+---
 sidebar_label: "Overcommit & Memory Optimization"
 title: "VM Overcommitment & Memory Optimization"
 description: "Learn about Palette VMO pack and the architecture behind it."
 hide_table_of_contents: false
 sidebar_position: 1
 tags: ["vmo", "architecture"]
-
-
-## Overview
+---
 
 VMO enables higher VM density on existing infrastructure by leveraging memory and CPU overcommit techniques, per-VM optimizations, and kernel-level memory deduplication.
 
-This allows operators to run more virtual machines per host while reducing infrastructure costs.
+These functions allow operators to run more virtual machines per host while reducing infrastructure costs.
 
-:::tip 
+## Memory Overcommit
 
-VMO supports multiple memory optimization techniques today. Full memory ballooning support is not yet available, but is on the KubeVirt roadmap.
+Memory is typically the first resource that is constrained in VM-dense environments. By using overcommit strategies, you can increase VM density per host, reduce how much you spend on hardware, and improve overall resource utilization. There are trade-offs with memory overcommitment, including potential resource contention. However, this method requires workload awareness and regular monitoring. 
 
-:::
+Memory overcommit allows allocating more virtual memory to VMs than physically exists on a host. For example, if you have a host with 64GB of memory, and allocate 96GB of memory to the VMs running on that host, you are overcommitting by 24GB. This works because most VMs do not use peak memory simultaneously, and most virtualization platforms have internal memory optimizations in place to minimize contention between the VMs.
 
-## NewTitle
+### Memory Ballooning vs Memory Tiering
 
-Memory is typically the first resource constraint in VM-dense environments.
+Virtualization platforms have multiple ways of addressing how memory is used by VMs. Memory ballooning is one technique that reactively allows a hypervisor to reclaim unused memory from VMs dynamically using a guest driver that tricks the guest OS into freeing up memory not in use. This causes the Guest OS to leverage its local swap file, and could potentially introduce latency.
 
-Using overcommit strategies, you can:
+Memory tiering, using NVMes, is a newer, proactive mechanism that migrates inactive data to faster storage to free up memory. This feature is transparent to the VMs, and can help improve VM density. This feature requires [vSphere 9](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/memory-tiering-over-nvme.html).
 
-- Increase VM density per host  
-- Reduce hardware spend  
-- Improve overall resource utilization  
+:::warning
 
-:::caution Tradeoffs
-- Potential resource contention  
-- Requires workload awareness and monitoring  
-:::
-
-### Memory Overcommit
-
-Memory overcommit allows allocating more virtual memory to VMs than physically exists on a host.
-
-**Example:**
-- Host: 64 GB RAM  
-- Allocated: 96 GB across VMs (150%)
-
-This works because most VMs do not use peak memory simultaneously.
-
-
-
-### Memory Ballooning (Roadmap)
-
-Memory ballooning allows a hypervisor to reclaim unused memory from VMs dynamically using a guest driver.
-
-:::warn
-
-KubeVirt does not yet support balloon drivers. This is an upstream limitation, not a VMO-specific constraint.
+KubeVirt does not support [balloon drivers](https://kubevirt.io/user-guide/compute/node_overcommit/). This is an upstream limitation, not a VMO-specific constraint.
 
 :::
 
@@ -64,14 +37,12 @@ VMO is built on KubeVirt, where:
 - Memory is controlled via Kubernetes **requests and limits**  
 - No native VM-level dynamic memory reclaim exists today  
 
-## What VMO Supports Today
-
 ### Cluster-Level Configuration (VMO Pack)
 
 These settings apply to all VMs in a cluster.
 
 | Setting | Description | Default | Impact |
-|--|-|--|--|
+|--|--|--|--|
 | `cpuAllocationRatio` | Ratio of vCPUs to physical CPUs | 10:1 | Higher values increase density but may cause CPU contention |
 | `memoryOvercommit` | Percentage of memory allocation | 100% | Values >100% enable overcommit |
 
@@ -263,7 +234,7 @@ These features enable higher VM density and reduced infrastructure costs.
 ## Quick Reference
 
 | Feature | Scope | Configuration Location |
-|--|||
+|--|--|--|
 | CPU overcommit | Cluster | VMO Pack |
 | Memory overcommit | Cluster | VMO Pack |
 | KSM | Cluster | VMO Pack |
