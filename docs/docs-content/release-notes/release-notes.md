@@ -44,9 +44,10 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 
-- Changes made here.
+- Fixed an issue where new edge hosts added to a scale-out node pool in agent-mode with local UI became permanently
+  stuck in the registration phase and could not join the cluster.
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-8699 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
 
 - Fixed an issue where kube-vip became inaccessible after certificate renewal due to an expired super-admin.conf on
   kubeadm/PXKE clusters.
