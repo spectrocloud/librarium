@@ -43,14 +43,18 @@ KubeVirt does not support [balloon drivers](https://kubevirt.io/user-guide/compu
 
 :::
 
+## VMO Memory Efficiency Settings
+
 ### Cluster-Level Configuration (VMO Pack)
 
-These settings apply to all VMs in a cluster.
+
+The following settings apply to every VM on the cluster and are configured through the VMO pack values. 
 
 | Setting | Description | Default | Impact |
 |--|--|--|--|
 | `cpuAllocationRatio` | Ratio of vCPUs to physical CPUs | 10:1 | Higher values increase density but may cause CPU contention |
 | `memoryOvercommit` | Percentage of memory allocation | 100% | Values >100% enable overcommit |
+
 
 ### Example Configuration
 
@@ -69,15 +73,18 @@ additionalDevConfig:
 
 ### Per-VM Optimization Settings
 
-These settings are applied per VM or via VM templates.
+You can also do per-VM settings. These can be applied on individual VMs or, to ensure that all VMs created consistently get optimization settings, applied to the settings of a template and provision VMs from the template. This ensures standardize configurations, avoids per-VM manual tuning, and ensures consistency across deployments.  
 
 | Setting | Description | UI Support |
 |--|--|--|
-| `overcommitGuestOverhead` | Excludes hypervisor overhead from memory request | No |
-| `autoattachGraphicsDevice: false` | Enables headless mode (saves 16 MB per VM) | Yes |
-| `memory.guest > requests.memory` | Guest sees more memory than reserved | Partial |
+| `overcommitGuestOverhead` | Instructs KubeVirt not to charge the VM's memory request for hypervisor overhead (typically ~100–200 MB per VM). Allows tighter resource packing. | YAML only |
+| `autoattachGraphicsDevice: false` | Removes the virtual graphics/display device for VMs that don't need a console (headless servers). Saves exactly 16 MB per VM and also disables VNC access — appropriate for server workloads only. | Yes (UI toggle) |
+| `memory.guest > requests.memory` | The VM's guest OS "sees" more RAM than Kubernetes has reserved for the pod. Allows the guest to use more memory than formally requested, at the operator's discretion. | Partial (YAML) |
 
-```yaml title=”Example VM Configuration”
+# GET IMAGE OF autoattachGraphic
+
+
+```json title=”Example VM Configuration”
 spec:
   domain:
     resources:
@@ -88,8 +95,6 @@ spec:
     memory:
       guest: 6Gi
 ```
-
-To ensure that all VMs created consistently get optimization settings, apply the settings to a template and provision from the template. This ensures standardize configurations, avoids per-VM manual tuning, and ensures consistency across deployments.  
 
 ## Kernel Same-page Merging (KSM)
 
