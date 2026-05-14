@@ -7,9 +7,19 @@ sidebar_position: 1
 tags: ["vmo", "architecture"]
 ---
 
-VMO enables higher VM density on existing infrastructure by leveraging memory and CPU overcommit techniques, per-VM optimizations, and kernel-level memory deduplication.
+VMO enables higher VM density on existing infrastructure by leveraging memory overcommit and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication.
 
 These functions allow operators to run more virtual machines per host while reducing infrastructure costs.
+
+## Quick Reference
+
+| Feature | Scope | Configuration Location |
+|--|--|--|
+| [CPU pinning](#cpu-pinning-performance-optimization) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
+| [Memory overcommit](#memory-overcommit) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
+| KSM | Cluster | VMO Pack |
+| Headless mode | VM | UI |
+| Guest memory tuning | VM | YAML |
 
 ## Memory Overcommit
 
@@ -23,19 +33,15 @@ Virtualization platforms have multiple ways of addressing how memory is used by 
 
 Memory tiering, using NVMes, is a newer, proactive mechanism that migrates inactive data to faster storage to free up memory. This feature is transparent to the VMs, and can help improve VM density. This feature requires [vSphere 9](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/memory-tiering-over-nvme.html).
 
+### KubeVirt Constraint
+
+VMO is built on KubeVirt. This allows VMO to run VMs as Kubernetes pods. Memory for the VMs is controlled via Kubernetes through requests and limits. Currently, there is no native VM-level dynamic memory reclamation built into KubeVirt. 
+
 :::warning
 
 KubeVirt does not support [balloon drivers](https://kubevirt.io/user-guide/compute/node_overcommit/). This is an upstream limitation, not a VMO-specific constraint.
 
 :::
-
-### KubeVirt Constraint
-
-VMO is built on KubeVirt, where:
-
-- VMs run as Kubernetes pods  
-- Memory is controlled via Kubernetes **requests and limits**  
-- No native VM-level dynamic memory reclaim exists today  
 
 ### Cluster-Level Configuration (VMO Pack)
 
@@ -66,14 +72,12 @@ additionalDevConfig:
 These settings are applied per VM or via VM templates.
 
 | Setting | Description | UI Support |
-|--|-|--|
+|--|--|--|
 | `overcommitGuestOverhead` | Excludes hypervisor overhead from memory request | No |
 | `autoattachGraphicsDevice: false` | Enables headless mode (saves 16 MB per VM) | Yes |
 | `memory.guest > requests.memory` | Guest sees more memory than reserved | Partial |
 
-### Example VM Configuration
-
-```yaml
+```yaml title=”Example VM Configuration”
 spec:
   domain:
     resources:
@@ -84,13 +88,8 @@ spec:
     memory:
       guest: 6Gi
 ```
-### VM Templates
 
-You can embed overcommit settings into VM Templates to:
-
-- Standardize configurations  
-- Avoid per-VM manual tuning  
-- Ensure consistency across deployments  
+To ensure that all VMs created consistently get optimization settings, apply the settings to a template and provision from the template. This ensures standardize configurations, avoids per-VM manual tuning, and ensures consistency across deployments.  
 
 ## Kernel Same-page Merging (KSM)
 
@@ -231,12 +230,4 @@ VMO provides meaningful memory optimization today through:
 
 These features enable higher VM density and reduced infrastructure costs.
 
-## Quick Reference
 
-| Feature | Scope | Configuration Location |
-|--|--|--|
-| CPU overcommit | Cluster | VMO Pack |
-| Memory overcommit | Cluster | VMO Pack |
-| KSM | Cluster | VMO Pack |
-| Headless mode | VM | UI |
-| Guest memory tuning | VM | YAML |
