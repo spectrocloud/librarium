@@ -43,10 +43,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 
-- Fixed an issue where a new edge host added to a scale-out node pool in agent-mode with Local UI would remain
-  permanently stuck in the registration phase due to a circular authorization deadlock on the peer-link file server.
+- Manual changes here. 
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-8607 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8699 -->
 
 - Fixed an issue where kube-vip became unauthorized after certificate renewal, causing the cluster to become
   inaccessible via kubeconfig.
