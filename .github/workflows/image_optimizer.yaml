@@ -5,14 +5,7 @@
 # Image Optimizer docs: https://github.com/calibreapp/image-actions
 name: image_optimizer
 
-# Principle of least privilege:
-# Default GITHUB_TOKEN only needs read access for this workflow
-permissions:
-  contents: read
-  pull-requests: read
-
-# Quoted to avoid YAML parsers (like Visual Studio) misinterpreting `on` as a boolean
-"on":
+on:
   pull_request:
     paths:
       - "**.jpg"
@@ -34,8 +27,11 @@ jobs:
     # Skip draft PRs to avoid wasting CI resources
     if: ${{ !github.event.pull_request.draft }}
     steps:
-      # No-op job used as a gate (keeps structure consistent with other workflows)
+      # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
+      # Because this step is part of the critical path, omission of this step will result in remaining CI steps not getting executed.
+      # As of 8/8/2022 there is no way to enforce this behavior in GitHub Actions CI.
       - run: exit 0
+
 
   image-optimizer:
     name: Image Optimization
@@ -49,28 +45,22 @@ jobs:
       - name: Retrieve Credentials
         id: import-secrets
         # Pin to a commit SHA to prevent upstream action tampering
-        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
+        uses: hashicorp/vault-action@v3.4.0 # v3.4.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
           roleId: ${{ secrets.VAULT_ROLE_ID }}
           secretId: ${{ secrets.VAULT_SECRET_ID }}
-
-          # SECURITY: Do NOT export secrets as environment variables
-          # Prevents accidental leakage into later steps or logs
-          exportEnv: false
-
           # Fetch GitHub token from Vault and expose ONLY as step output
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Repository
         # Pin to SHA to prevent supply-chain attacks on actions
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v6 # v6
+        uses: actions/checkout@v6
 
       - name: Compress Images
         # Third-party action also pinned for the same reason
-        uses: calibreapp/image-actions@e2cc8db5d49c849e00844dfebf01438318e96fa2 # main
-
+        uses: calibreapp/image-actions@main # main
         with:
           # Pass token via step output (not env) to limit exposure
           # VS Code/YAML may warn here due to SHA pinning; input is valid
