@@ -200,17 +200,14 @@ about each mode.
 
    :::warning
 
-   Add the line `--set args='{--kubelet-insecure-tls}'` to the command if your cluster uses self-signed Kubelet certificates, which is
-   common for self-managed clusters. 
-   
-      
+   Add the line `--set args='{--kubelet-insecure-tls}'` to the command if your cluster uses self-signed Kubelet
+   certificates, which is common for self-managed clusters.
 
    ```shell title="Example of a non-responsive metrics server" hideClipboard
    v1beta1.metrics.k8s.io    kube-system/metrics-server   False (MissingEndpoints)   7m26s
    ```
 
    :::
-
 
 8. To install the Palette agent, run the command displayed in the drawer against the Kubernetes cluster you want to
    import. The command is customized for your cluster, as it contains the assigned cluster ID.
