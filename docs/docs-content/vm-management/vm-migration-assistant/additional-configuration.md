@@ -13,8 +13,9 @@ adjust settings for your migration controller, providers, and migration plans.
 
 ## Overview
 
-The **Overview** page of the VM Migration Assistant provides additional tuning and configuration options for your migration
-controller. It also displays metrics for your migrations and health of the operational pods used for migration.
+The **Overview** page of the VM Migration Assistant provides additional tuning and configuration options for your
+migration controller. It also displays metrics for your migrations and health of the operational pods used for
+migration.
 
 ![VM Migration Assistant - Overview Page](/vm-migration-assistant/additional-configuration_overview-page.webp)
 
@@ -48,8 +49,7 @@ Perform the following steps to change a setting.
 
 1. Click the **Edit** option next to **Settings**.
 
-2. Adjust each setting as desired in the modal window. The configurable parameters are described in the following
-   table.
+2. Adjust each setting as desired in the modal window. The configurable parameters are described in the following table.
 
    | Parameter                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Default Value |
    | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
@@ -58,7 +58,7 @@ Perform the following steps to change a setting.
    | **Controller main container memory limit**      | The memory limit (in mebibytes) allocated to the main container in the `forklift-controller` pod. Environments running many parallel migrations may need this limit raised above the default.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `800Mi`       |
    | **Controller inventory container memory limit** | The memory limit (in mebibytes) allocated to the inventory container in the `forklift-controller` pod. The inventory container's memory demand scales with the number of VMs and providers being tracked, so large environments may need this limit raised above the default.                                                                                                                                                                                                                                                                                                                                                                                                  | `1000Mi`      |
    | **Precopy interval**                            | _(Only applicable to warm migrations)_ The interval (in minutes) at which new Changed Block Tracking (CBT) snapshots are requested and transferred throughout the precopy stage. Shorter intervals reduce the amount of data transferred at cutover but consume the snapshot limit faster, which can cause warm migrations to fail if cutover is not triggered in time.                                                                                                                                                                                                                                                                                                        | `60min`       |
-   | **Snapshot polling interval**                   | _(Only applicable to warm migrations)_ The frequency at which the migration controller polls check whether a snapshot creation or removal operation has completed. A shorter interval means the controller detects completed snapshots sooner and can proceed to the next step faster, at the cost of slightly increased API call frequency against the source provider.                                                                                                                                                                                                                                                                                                    | `10s`         |
+   | **Snapshot polling interval**                   | _(Only applicable to warm migrations)_ The frequency at which the migration controller polls check whether a snapshot creation or removal operation has completed. A shorter interval means the controller detects completed snapshots sooner and can proceed to the next step faster, at the cost of slightly increased API call frequency against the source provider.                                                                                                                                                                                                                                                                                                       | `10s`         |
    | **Controller transfer network**                 | Choose a network for the host provider to use for disk transfer during migrations. Using a dedicated network for transfers helps avoid saturating the default pod network. If no network is selected, the pod network is used by default, which may not be optimal for large disk transfers.                                                                                                                                                                                                                                                                                                                                                                                   | `None`        |
 
 3. Click **Save** after making changes.
@@ -83,14 +83,14 @@ Perform the following steps to change a setting.
 
 2. Adjust the value in the modal window.
 
-   The configurable settings are described in the following table. These are defined when you perform the
-   steps in [Create Source Providers](./create-source-providers.md).
+   The configurable settings are described in the following table. These are defined when you perform the steps in
+   [Create Source Providers](./create-source-providers.md).
 
    | Setting                  | Description                                                                                                                                                                                                                                                                                                                                                     |
    | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **URL**                  | Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Fully Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                                                                                               |
    | **VDDK init image**      | Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. Specify the value without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`.                                                                                                                                                       |
-   | **External web UI link** | Your vSphere / ESXi UI endpoint. You can specify an FQDN or an IP address. For example, `https://vcenter.mycompany.com/ui`.                                                                                                                                                                                                        |
+   | **External web UI link** | Your vSphere / ESXi UI endpoint. You can specify an FQDN or an IP address. For example, `https://vcenter.mycompany.com/ui`.                                                                                                                                                                                                                                     |
    | **Convert Disk**         | When enabled, disk conversion is handled using `virt-v2v`. For example, if you're migrating from VMware to Virtual Machine Orchestrator (VMO), `virt-v2v` can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. |
 
 3. Click **Save** after making changes.
@@ -107,9 +107,9 @@ Perform the following steps to change a setting.
 
    The configurable settings are described in the following table.
 
-   | Setting                      | Description                                                                                                                                                                                                                                                               |
-   | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Default Transfer Network** |  _Use the [Settings Tab](#settings-tab) on the [Overview](#overview) page to adjust this setting at the controller level. This prevents changes from being overridden._ <br /> <br /> Select a default migration network. If no network is selected, the pod network is used by default.  |
+   | Setting                      | Description                                                                                                                                                                                                                                                                             |
+   | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Default Transfer Network** | _Use the [Settings Tab](#settings-tab) on the [Overview](#overview) page to adjust this setting at the controller level. This prevents changes from being overridden._ <br /> <br /> Select a default migration network. If no network is selected, the pod network is used by default. |
 
 3. Click **Save** after making changes.
 
@@ -133,15 +133,15 @@ Perform the following steps to edit the provider credentials.
 
 2. In the modal window, update the value for each setting that you want to change.
 
-   The configurable settings are described in the following table. These are defined when you perform the
-   steps in [Create Source Providers](./create-source-providers.md).
+   The configurable settings are described in the following table. These are defined when you perform the steps in
+   [Create Source Providers](./create-source-providers.md).
 
    | Setting                              | Description                                                                                               |
    | ------------------------------------ | --------------------------------------------------------------------------------------------------------- |
    | **Username**                         | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                  |
    | **Password**                         | Your vSphere / ESXi account password.                                                                     |
    | **Certificate validation**           | **Configure certificate validation** for your vSphere / ESXi provider or **Skip certificate validation**. |
-   | **Configure certificate validation** | Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi.                                       |
+   | **Configure certificate validation** | Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi.               |
    | **Skip certificate validation**      | Enabling this option bypasses x509 CA verification.                                                       |
 
 3. Click **Save** after making changes.
@@ -219,15 +219,15 @@ Perform the following steps to change a setting.
 
 2. Adjust the value in the modal window.
 
-   The configurable settings are described in the following table. Some of these are defined when you
-   perform the steps in [Create Migration Plans](./create-migration-plans.md).
+   The configurable settings are described in the following table. Some of these are defined when you perform the steps
+   in [Create Migration Plans](./create-migration-plans.md).
 
    #### Defined at Plan Creation
 
    | Setting                 | Description                                                                                                                                                                                                                                                                                                              |
    | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
    | **Description**         | An optional description for your migration plan.                                                                                                                                                                                                                                                                         |
-   | **Migration type**      | Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when active VMs are migrated while they are running and are shut down during the final switchover.                                                                      |
+   | **Migration type**      | Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when active VMs are migrated while they are running and are shut down during the final switchover.                                                                       |
    | **Target namespace**    | Select the target namespace from the drop-down. The target namespace is where the VMs will be located on your VMO cluster after migration.                                                                                                                                                                               |
    | **Disk decryption**     | _The **Use network-bound disk encryption (NBDE/Clevis)** option is not supported._ <br /><br /> Provide a list of passphrases for [LUKS-encrypted devices](https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks) on the VMs you intend to migrate. |
    | **Shared disks**        | Choose whether to migrate shared disks. If you enable this option, ensure that your VMO cluster has access to the shared storage from the storage maps configured for the migration.                                                                                                                                     |
@@ -237,16 +237,16 @@ Perform the following steps to change a setting.
 
    #### Additional Configurable Settings
 
-   | Setting                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-   | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Setting                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+   | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Guest conversion mode**    | _This is defined at the Provider level with the **Convert disk** option, but can be overridden at the Plan level by using this setting._ <br /><br /> When enabled, disk conversion is handled using `virt-v2v`. For example, if you are migrating from VMware to VMO, `virt-v2v` can convert VMDK to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. |
-   | **VM target labels**         | Key-value pairs applied as [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to the migrated VMs in the target namespace. Labels are useful for organizing VMs by environment, tier, or owner, and can be referenced by selectors, network policies, and other Kubernetes resources to identify and manage groups of migrated VMs.                                                                                                                                       |
-   | **VM target affinity rules** | Defines [Kubernetes affinity and anti-affinity rules](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) for the migrated VMs. These rules control which nodes a VM can be scheduled on based on node labels or the presence of other VMs, and are useful for placement requirements such as pinning VMs to specific hardware or separating replicas across nodes for high availability.                                                                            |
-   | **PVC name template**        | A [Go template](https://pkg.go.dev/text/template) string used to generate names for the Persistent Volume Claims (PVCs) created for each VM disk during migration. The template can reference variables such as the VM name (`.VmName`) and disk index (`.DiskIndex`). If not specified, a default naming convention is used.                                                                                                                                                                                         |
-   | **Volume name template**     | A [Go template](https://pkg.go.dev/text/template) string used to generate names for the volumes (disk definitions) within each migrated VM. The template can reference variables such as the PVC name (`.PVCName`) and volume index (`.VolumeIndex`). If not specified, a default naming convention is used.                                                                                                                                                                                                          |
-   | **Network name template**    | A [Go template](https://pkg.go.dev/text/template) string used to generate names for the network interfaces attached to the migrated VMs. The template can reference variables such as the network name (`.NetworkName`) and network index (`.NetworkIndex`). If not specified, a default naming convention is used.                                                                                                                                                                                                   |
-   | **VM target power state**    | Specifies the desired power state of each VM after migration is complete. Options include powering the VM on, leaving it powered off, or matching the source VM's power state at the time of cutover.                                                                                                                                                                                                                                                                                                                 |
-   | **VM target node selector**  | A set of key-value label pairs used as a [Kubernetes node selector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) to constrain which nodes the migrated VMs can be scheduled on. Only nodes matching all specified labels are eligible to run the migrated VMs. Use this to target specific hardware or node groups, such as nodes with GPU resources or a particular availability zone.                                                                                     |
+   | **VM target labels**         | Key-value pairs applied as [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to the migrated VMs in the target namespace. Labels are useful for organizing VMs by environment, tier, or owner, and can be referenced by selectors, network policies, and other Kubernetes resources to identify and manage groups of migrated VMs.                                                                                  |
+   | **VM target affinity rules** | Defines [Kubernetes affinity and anti-affinity rules](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) for the migrated VMs. These rules control which nodes a VM can be scheduled on based on node labels or the presence of other VMs, and are useful for placement requirements such as pinning VMs to specific hardware or separating replicas across nodes for high availability.                       |
+   | **PVC name template**        | A [Go template](https://pkg.go.dev/text/template) string used to generate names for the Persistent Volume Claims (PVCs) created for each VM disk during migration. The template can reference variables such as the VM name (`.VmName`) and disk index (`.DiskIndex`). If not specified, a default naming convention is used.                                                                                                                                    |
+   | **Volume name template**     | A [Go template](https://pkg.go.dev/text/template) string used to generate names for the volumes (disk definitions) within each migrated VM. The template can reference variables such as the PVC name (`.PVCName`) and volume index (`.VolumeIndex`). If not specified, a default naming convention is used.                                                                                                                                                     |
+   | **Network name template**    | A [Go template](https://pkg.go.dev/text/template) string used to generate names for the network interfaces attached to the migrated VMs. The template can reference variables such as the network name (`.NetworkName`) and network index (`.NetworkIndex`). If not specified, a default naming convention is used.                                                                                                                                              |
+   | **VM target power state**    | Specifies the desired power state of each VM after migration is complete. Options include powering the VM on, leaving it powered off, or matching the source VM's power state at the time of cutover.                                                                                                                                                                                                                                                            |
+   | **VM target node selector**  | A set of key-value label pairs used as a [Kubernetes node selector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) to constrain which nodes the migrated VMs can be scheduled on. Only nodes matching all specified labels are eligible to run the migrated VMs. Use this to target specific hardware or node groups, such as nodes with GPU resources or a particular availability zone.                                |
 
 3. Click **Save** after making changes.
 
@@ -268,7 +268,8 @@ You can view the status of your VM migrations in the **Pipeline status** column 
 
 :::info
 
-If you only have one VM remaining in your plan, you must delete the plan instead. Deleting all VMs from a plan is not allowed.
+If you only have one VM remaining in your plan, you must delete the plan instead. Deleting all VMs from a plan is not
+allowed.
 
 :::
 
@@ -288,8 +289,8 @@ require in the target environment.
 
 ### Mappings tab
 
-The **Mappings** tab displays the network and storage mappings for the migration plan. These are defined
-when you perform the steps in [Create Migration Plans](./create-migration-plans.md).
+The **Mappings** tab displays the network and storage mappings for the migration plan. These are defined when you
+perform the steps in [Create Migration Plans](./create-migration-plans.md).
 
 #### Manage Mappings
 
@@ -304,8 +305,8 @@ when you perform the steps in [Create Migration Plans](./create-migration-plans.
 
 ### Hooks Tab
 
-The **Hooks** tab displays the migration hooks for the migration plan. These are defined when you perform
-the steps in [Create Migration Plans](./create-migration-plans.md).
+The **Hooks** tab displays the migration hooks for the migration plan. These are defined when you perform the steps in
+[Create Migration Plans](./create-migration-plans.md).
 
 #### Manage Hooks
 
@@ -318,7 +319,7 @@ the steps in [Create Migration Plans](./create-migration-plans.md).
    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
    | **Hook runner image** | Specify a repository and tag for the hook runner image or custom image. The hook runner is a container that runs your pre-migration and post-migration hooks.                                         | `quay.io/myrepo/hooks:latest` |
    | **Service account**   | Specify a service account for the hook runner to use. The service account must exist in your target namespace.                                                                                        | `hook-runner-service-account` |
-    | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you enter a **Hook runner image**. |         N/A                      |
+   | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you enter a **Hook runner image**. | N/A                           |
 
 3. Click **Save** after making changes.
 

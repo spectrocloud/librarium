@@ -40,7 +40,8 @@ Machines (VMs) that need to be migrated.
 
   - Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 
-- One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. 
+- One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the
+  [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
 
   - For cold migrations, ensure that VMs operating Windows are shut down at the guest OS level.
   - For warm migrations,
@@ -332,9 +333,9 @@ Machines (VMs) that need to be migrated.
    | **vSphere endpoint**                                                     | Select the type of endpoint to configure the connection. Choose **vCenter** if managing multiple hosts through a central server, or **ESXi** if connecting directly to a standalone host.                                                                                                                                                                                                                          |
    | **API endpoint URL**                                                     | Your vSphere / ESXi API endpoint for the software development kit (SDK). You can specify a Fully Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                                                                                                                                                  |
    | **Virtual Disk Development Kit (VDDK) setup**                            | Select the option to **Manually specify the VDDK image URL**. A VDDK image is required for VM migrations. Refer to the [Prerequisites](#prerequisites) for more information.                                                                                                                                                                                                                                       |
-   | **Upload a VDDK archive to generate the image URL**                      | _Unsupported method_.                                                                                                                                                                                                                                                                                                                                                                                               |
+   | **Upload a VDDK archive to generate the image URL**                      | _Unsupported method_.                                                                                                                                                                                                                                                                                                                                                                                              |
    | **Manually specify the VDDK image URL**                                  | Provide the registry URL to the VDDK image in the **VDDK init image** field. Specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`.                                                                                                                                                                                                        |
-   | **Use VMware Virtual Disk Development Kit (VDDK) async IO Optimization** | When enabled, this option uses asynchronous input/output operations to process multiple disk read/write requests simultaneously during VM migration, rather than sequentially. This can significantly improve disk transfer speeds, particularly for environments with high-latency storage or high-bandwidth networks, but increases memory usage on the VMware ESXi host's Network File Copy (NFC) server.                |
+   | **Use VMware Virtual Disk Development Kit (VDDK) async IO Optimization** | When enabled, this option uses asynchronous input/output operations to process multiple disk read/write requests simultaneously during VM migration, rather than sequentially. This can significantly improve disk transfer speeds, particularly for environments with high-latency storage or high-bandwidth networks, but increases memory usage on the VMware ESXi host's Network File Copy (NFC) server.       |
    | **Convert Disk**                                                         | When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. This option appears after the [Provider Credentials](#provider-credentials). |
 
    #### Provider Credentials
@@ -344,8 +345,8 @@ Machines (VMs) that need to be migrated.
    | **Username**                         | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                  |
    | **Password**                         | Your vSphere / ESXi account password.                                                                     |
    | **Certificate validation**           | **Configure certificate validation** for your vSphere / ESXi provider or **Skip certificate validation**. |
-   | **Configure certificate validation** | Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi.                                       |
-   | **Skip certificate validation**      | Enabling this option bypasses x509 CA verification.                               |
+   | **Configure certificate validation** | Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi.               |
+   | **Skip certificate validation**      | Enabling this option bypasses x509 CA verification.                                                       |
 
 5. Click **Create Provider**.
 
@@ -361,8 +362,8 @@ If you want to explore additional settings, refer to
 
 2. From the left main menu, select **Providers**.
 
-3. All namespaces are displayed by default. If you want to view a specific namespace, use the **Namespace** drop-down
-   in the top-left corner to select your Kubernetes namespace for the migration.
+3. All namespaces are displayed by default. If you want to view a specific namespace, use the **Namespace** drop-down in
+   the top-left corner to select your Kubernetes namespace for the migration.
 
 4. Find your provider in the table and click the provider name to view its details. You can use the table filters to
    help locate your provider if needed.
