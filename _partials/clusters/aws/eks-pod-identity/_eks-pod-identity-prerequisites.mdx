@@ -204,6 +204,29 @@ partial_name: eks-pod-identity-prerequisites
             "kms:GetKeyRotationStatus"
           ],
           "Resource": "*"
+        },
+        {
+          "Sid": "AllowECRRead",
+          "Effect": "Allow",
+          "Action": [
+            "ecr:GetAuthorizationToken",
+            "ecr:BatchCheckLayerAvailability",
+            "ecr:GetDownloadUrlForLayer",
+            "ecr:BatchGetImage",
+            "ecr:DescribeRepositories",
+            "ecr:DescribeImages",
+            "ecr:DescribeImageScanFindings",
+            "ecr:ListRepositories",
+            "ecr:ListImages",
+            "ecr:GetRepositoryPolicy",
+            "ecr:GetLifecyclePolicy",
+            "ecr:GetLifecyclePolicyPreview",
+            "ecr:DescribeImageReplicationStatus",
+            "ecr:DescribeRegistry",
+            "ecr:GetRegistryPolicy",
+            "ecr:GetRegistryScanningConfiguration"
+          ],
+          "Resource": "*"
         }
       ]
     }
@@ -580,6 +603,29 @@ partial_name: eks-pod-identity-prerequisites
             "kms:DescribeKey",
             "kms:GetKeyPolicy",
             "kms:GetKeyRotationStatus"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Sid": "AllowECRRead",
+          "Effect": "Allow",
+          "Action": [
+            "ecr:GetAuthorizationToken",
+            "ecr:BatchCheckLayerAvailability",
+            "ecr:GetDownloadUrlForLayer",
+            "ecr:BatchGetImage",
+            "ecr:DescribeRepositories",
+            "ecr:DescribeImages",
+            "ecr:DescribeImageScanFindings",
+            "ecr:ListRepositories",
+            "ecr:ListImages",
+            "ecr:GetRepositoryPolicy",
+            "ecr:GetLifecyclePolicy",
+            "ecr:GetLifecyclePolicyPreview",
+            "ecr:DescribeImageReplicationStatus",
+            "ecr:DescribeRegistry",
+            "ecr:GetRegistryPolicy",
+            "ecr:GetRegistryScanningConfiguration"
           ],
           "Resource": "*"
         }
