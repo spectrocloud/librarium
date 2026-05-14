@@ -43,7 +43,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8525 -->
 
-- Manual changes here. 
+- Manual changes here.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8699 -->
 
