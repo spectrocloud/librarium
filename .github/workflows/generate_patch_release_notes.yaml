@@ -10,9 +10,6 @@ on:
     base_branch:
       description: "The base branch for the patch release PR (default: master)"
       required: true
-  push:
-    branches:
-      - doc-2813-generate-patch-rl-notes
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -20,8 +17,8 @@ env:
   JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
   SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
-  JIRA_TICKET: ${{ github.event_name == 'push' && 'DOC-2815' || github.event.inputs.jira_ticket }}
-  BASE_BRANCH: ${{ github.event_name == 'push' && 'doc-2813-generate-patch-rl-notes' || github.event.inputs.base_branch }}
+  JIRA_TICKET: ${{ github.event.inputs.jira_ticket }}
+  BASE_BRANCH: ${{ github.event.inputs.base_branch }}
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_INDEX_NAME: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
