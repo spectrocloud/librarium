@@ -126,12 +126,12 @@ the cluster.
 
    In particular, pay attention to the following arguments.
 
-   | **Argument**       | **Description**                                                                                       | **Allowed Values**                   |
-   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
-   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
-   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`                               |
-   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`                             |
-   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`                              |
+   | **Argument**       | **Description**                                                                                       | **Allowed Values**                       |
+   | ------------------ | ----------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`                                   |
+   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`, `k3s`, `kubeadm`, `kubeadm-fips` |
+   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`                                 |
+   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `24.04`                                  |
 
 8. Issue the following command to build the provider image.
 

@@ -38,19 +38,21 @@ encrypted.
 
 ## Supported Clusters
 
-The following table lists the various cluster combinations that support Trusted Boot.
+The following table lists the supported configurations for clusters deployed on Trusted Boot-enabled Edge hosts.
 
 :::info
 
-The **FIPS** column is based on the cluster's Kubernetes pack, not the host OS.
+The **FIPS** column indicates whether the Kubernetes distribution has FIPS-compliant packs available. A fully
+FIPS-compliant deployment also requires a FIPS-hardened OS image built from the
+[FIPS base image](../edgeforge-workflow/palette-canvos/fips.md).
 
 :::
 
-| **Distribution**                                                        |    **OS**    |     **Local**      |    **Central**     |  **Single Node**   |   **Multi-Node**   |    **Non-FIPS**    |      **FIPS**      |
-| ----------------------------------------------------------------------- | :----------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| <VersionedLink text="K3s" url="/integrations/packs/?pack=edge-k3s" />   | Ubuntu 24.04 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |        :x:         |
-| <VersionedLink text="PXK-E" url="/integrations/packs/?pack=edge-k8s" /> | Ubuntu 24.04 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| <VersionedLink text="RKE2" url="/integrations/packs/?pack=edge-rke2" /> | Ubuntu 24.04 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **Distribution**                                                        |    **OS**    |     **Local**      |    **Central**     |  **Single Node**   |   **Multi-Node**   |    **Non-FIPS**    |      **FIPS**      |    **Overlay**     |
+| ----------------------------------------------------------------------- | :----------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| <VersionedLink text="K3s" url="/integrations/packs/?pack=edge-k3s" />   | Ubuntu 24.04 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |        :x:         | :white_check_mark: |
+| <VersionedLink text="PXK-E" url="/integrations/packs/?pack=edge-k8s" /> | Ubuntu 24.04 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| <VersionedLink text="RKE2" url="/integrations/packs/?pack=edge-rke2" /> | Ubuntu 24.04 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 ## Limitations
 

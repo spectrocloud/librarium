@@ -17,10 +17,12 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
 ## Limitations
 
-- FIPS-compliant Edge installer does not work with secure boot. You need to disable secure boot first before installing
-  Palette on your device. The process to disable secure boot varies by device, but generally, you can press F2 upon
-  powering up the Edge host, and find the option to disable secure boot in the Basic Input/Output System (BIOS)
-  interface.
+- If you are not using [Trusted Boot](../../trusted-boot/trusted-boot.md), you must disable the device's Unified
+  Extensible Firmware Interface (UEFI) Secure Boot before installing the FIPS-compliant Edge installer. The FIPS
+  installer ISO is not signed with the device's factory Secure Boot keys, so the device firmware rejects it with a
+  `Bad Shim Signature` error. The process to disable Secure Boot varies by device, but generally, you can press **F2**
+  upon powering up the Edge host and find the option to disable Secure Boot in the Basic Input/Output System (BIOS)
+  interface. This limitation does not apply when using Trusted Boot, which enrolls its own Secure Boot keys.
 
 ## Prerequisites
 
