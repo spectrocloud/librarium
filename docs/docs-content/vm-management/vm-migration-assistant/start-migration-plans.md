@@ -35,8 +35,8 @@ for detailed instructions.
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
-   or select **All Namespaces**.
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration, or
+   select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details. You can use the table filters to help locate
    your plan if needed.
@@ -59,8 +59,8 @@ for detailed instructions.
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
-   or select **All Namespaces**.
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration, or
+   select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details. You can use the table filters to help locate
    your plan if needed.
@@ -78,8 +78,8 @@ for detailed instructions.
 9. From the left main menu, select **Clusters**. Then, choose the VMO cluster that you migrated your VMs to. The
    **Overview** tab appears.
 
-10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down.
-    Your migrated VMs appear.
+10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down. Your
+    migrated VMs appear.
 
 11. For each migrated VM, click on the three-dot menu and select **Start**. Your VMs are now ready to use.
 
@@ -107,8 +107,8 @@ for detailed instructions.
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
-   or select **All Namespaces**.
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration, or
+   select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details.
 
@@ -124,8 +124,8 @@ for detailed instructions.
    You can also click the **>** icon next to the **Migration resources** to view the Kubernetes resources created for
    the migration of that VM.
 
-9. Monitor the migration progress until the **Pipeline status** shows **Waiting** and the **Migration progress**
-   section shows **Paused**. This indicates that the migration is ready for the final cutover to be initiated.
+9. Monitor the migration progress until the **Pipeline status** shows **Waiting** and the **Migration progress** section
+   shows **Paused**. This indicates that the migration is ready for the final cutover to be initiated.
 
    ![Ready for Cutover](/vm-migration-assistant/start-migration-plans_schedule-cutover.webp)
 
@@ -152,8 +152,8 @@ completed. The target VM is then created and powered on on the destination VMO c
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
-   or select **All Namespaces**.
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration, or
+   select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details. You can use the table filters to help locate
    your plan if needed.
@@ -169,8 +169,8 @@ completed. The target VM is then created and powered on on the destination VMO c
 9. From the left main menu, select **Clusters**. Then, choose the VMO cluster that you migrated your VMs to. The
    **Overview** tab appears.
 
-10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down.
-    Your migrated VMs appear with a **Running** status.
+10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down. Your
+    migrated VMs appear with a **Running** status.
 
     ![Running VM in VMO](/vm-migration-assistant/start-migration-plans_running-vm-vmo.webp)
 
