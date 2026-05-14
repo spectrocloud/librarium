@@ -25,7 +25,7 @@ for detailed instructions.
 - A cold migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
   guidance.
 
-- One or more VMs hosted in VMware vSphere.
+- One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. 
 
   - VMs operating Windows must be shut down at the virtualized OS level.
 
@@ -35,7 +35,7 @@ for detailed instructions.
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down menu to select your Kubernetes namespace for the migration,
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
    or select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details. You can use the table filters to help locate
@@ -59,7 +59,7 @@ for detailed instructions.
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down menu to select your Kubernetes namespace for the migration,
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
    or select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details. You can use the table filters to help locate
@@ -69,7 +69,7 @@ for detailed instructions.
 
 6. Click on the **Virtual Machines** tab.
 
-7. In the table, check that the **Pipeline status** column displays as **Succeeded** for each VM.
+7. In the table, check that the **Pipeline status** column shows **Succeeded** for each VM.
 
    ![Successful VM Migration](/vm-migration-assistant/start-migration-plans_succeeded-vm-tab.webp)
 
@@ -78,7 +78,7 @@ for detailed instructions.
 9. From the left main menu, select **Clusters**. Then, choose the VMO cluster that you migrated your VMs to. The
    **Overview** tab appears.
 
-10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down menu.
+10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down.
     Your migrated VMs appear.
 
 11. For each migrated VM, click on the three-dot menu and select **Start**. Your VMs are now ready to use.
@@ -107,7 +107,7 @@ for detailed instructions.
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down menu to select your Kubernetes namespace for the migration,
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
    or select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details.
@@ -124,15 +124,15 @@ for detailed instructions.
    You can also click the **>** icon next to the **Migration resources** to view the Kubernetes resources created for
    the migration of that VM.
 
-9. Monitor the migration progress until the **Pipeline status** shows as **Waiting** and the **Migration progress**
+9. Monitor the migration progress until the **Pipeline status** shows **Waiting** and the **Migration progress**
    section shows **Paused**. This indicates that the migration is ready for the final cutover to be initiated.
 
    ![Ready for Cutover](/vm-migration-assistant/start-migration-plans_schedule-cutover.webp)
 
 10. Click **Schedule cutover**.
 
-11. In the pop-up window, click on the calendar icon and select a cutover date in the calendar. Next, click on the clock
-    icon and select a cutover time from the drop-down menu.
+11. In the modal window, click on the calendar icon and select a cutover date in the calendar. Next, click on the clock
+    icon and select a cutover time from the drop-down.
 
     :::warning
 
@@ -152,24 +152,24 @@ completed. The target VM is then created and powered on on the destination VMO c
 
 2. From the left main menu, select **Migration plans**.
 
-3. In the top-left corner, use the **Namespace** drop-down menu to select your Kubernetes namespace for the migration,
+3. In the top-left corner, use the **Namespace** drop-down to select your Kubernetes namespace for the migration,
    or select **All Namespaces**.
 
 4. Find your plan in the table and click the plan name to view its details. You can use the table filters to help locate
    your plan if needed.
 
-5. On the **Details** tab, under **Plan details: Status**, check that the status displays as **Complete**.
+5. On the **Details** tab, under **Plan details: Status**, check that the status is **Complete**.
 
 6. Click on the **Virtual Machines** tab.
 
-7. In the table, check that the **Pipeline status** column displays as **Succeeded** for each VM.
+7. In the table, check that the **Pipeline status** column shows **Succeeded** for each VM.
 
 8. Log in to [Palette](https://console.spectrocloud.com).
 
 9. From the left main menu, select **Clusters**. Then, choose the VMO cluster that you migrated your VMs to. The
    **Overview** tab appears.
 
-10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down menu.
+10. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down.
     Your migrated VMs appear with a **Running** status.
 
     ![Running VM in VMO](/vm-migration-assistant/start-migration-plans_running-vm-vmo.webp)

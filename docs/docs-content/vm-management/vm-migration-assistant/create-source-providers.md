@@ -372,7 +372,7 @@ If you want to explore additional settings, refer to
 
    ![Provider Ready Status](/vm-migration-assistant/create-source-providers_provider-ready.webp)
 
-   If the provider status is not **Ready**, check the **Conditions** section in the **Details** tab for any failed
+   If the provider status is not **Ready**, check the **Conditions** section of the **Details** tab for any failed
    conditions.
 
 ## Next Steps
@@ -380,5 +380,5 @@ If you want to explore additional settings, refer to
 - You can now create migration plans in the VM Migration Assistant. Refer to the
   [Create Migration Plans](./create-migration-plans.md) guide to start creating your plans.
 
-- If you want to explore additional provider settings, refer to the
+- If you want to explore additional provider settings, refer to
   [Additional Configuration - Provider Settings](./additional-configuration.md#provider-settings) for guidance.
