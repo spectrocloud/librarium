@@ -11,6 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 10, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-2815 -->
+
+### Bug Fixes
+
+{{BUG_FIXES_BODY}}
+
 ## May 3, 2026 - Release 4.9.5 {#release-notes-4-9-0}
 
 ### Security Notices
