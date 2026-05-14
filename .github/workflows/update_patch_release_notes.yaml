@@ -3,6 +3,9 @@ name: Update patch release notes
 on:
   issue_comment:
     types: [created]
+  push:
+    branches:
+      - '*-generate-patch-notes-*'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
