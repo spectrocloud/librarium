@@ -25,9 +25,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-442 -->
 
-- The [Artifact Studio](../downloads/artifact-studio.md) pack version dropdown now has expanded version information,
-  distinguishing between the pack component version and the Palette compatibility version. A tooltip now also help users
-  differentiate between the two version types.
+- The [Artifact Studio](../downloads/artifact-studio.md) pack version dropdown now displays expanded version information,
+  distinguishing between the pack component version and the Palette compatibility version. A tooltip also helps users clarify the difference between these version types.
 
 ### Packs
 
