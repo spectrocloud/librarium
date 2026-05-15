@@ -20,6 +20,61 @@ generate_parameterised_file() {
     done
 }
 
+# Local version of the above function that only replaces specified variables, to avoid unintended replacements
+# Params: 
+# $1 - template file, input file
+# $2 - parameterised, output file
+generate_parameterised_file_local_vars() {
+  local template_file="$1"
+  local output_file="$2"
+  shift 2
+
+  cp "$template_file" "$output_file"
+
+  local var placeholder value_file tmp_file
+
+  for var in "$@"; do
+    placeholder="{{${var}}}"
+
+    if ! grep -qF "$placeholder" "$output_file"; then
+      echo "Warning: placeholder not found: $placeholder" >&2
+      continue
+    fi
+
+    value_file="$(mktemp)"
+    tmp_file="$(mktemp)"
+
+    printf '%s' "${!var}" > "$value_file"
+
+    awk -v placeholder="$placeholder" -v value_file="$value_file" '
+      BEGIN {
+        replacement = ""
+        sep = ""
+
+        while ((getline line < value_file) > 0) {
+          replacement = replacement sep line
+          sep = "\n"
+        }
+
+        close(value_file)
+      }
+
+      {
+        while ((pos = index($0, placeholder)) > 0) {
+          before = substr($0, 1, pos - 1)
+          after = substr($0, pos + length(placeholder))
+          $0 = before replacement after
+        }
+
+        print
+      }
+    ' "$output_file" > "$tmp_file"
+
+    mv "$tmp_file" "$output_file"
+    rm -f "$value_file"
+  done
+}
+
 # Utility function to place a source file into a target file after the first line that contains the search param
 # Params: 
 # $1 - search term, example: linux/cli/palette
