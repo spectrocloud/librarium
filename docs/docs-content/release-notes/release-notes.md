@@ -32,20 +32,28 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 ### Packs
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4060 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4097 -->
 
-| Pack Name                    | Layer  | Non-FIPS           | FIPS | New Version |
-| ---------------------------- | ------ | ------------------ | ---- | ----------- |
-| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:  | 3.3.0       |
-| Cilium Tetragon              | Add-on | :white_check_mark: | :x:  | 1.7.0       |
-| External Secrets             | Add-on | :white_check_mark: | :x:  | 2.4.1       |
-| Harbor                       | Add-on | :white_check_mark: | :x:  | 1.19.0      |
-| Karpenter                    | Add-on | :white_check_mark: | :x:  | 1.12.0      |
-| Open Policy Agent            | Add-on | :white_check_mark: | :x:  | 3.22.2      |
-| Traefik                      | Add-on | :white_check_mark: | :x:  | 40.0.0      |
+| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.3.0       |
+| Cilium Tetragon              | Add-on     | :white_check_mark: | :x:                | 1.7.0       |
+| External Secrets             | Add-on     | :white_check_mark: | :x:                | 2.4.1       |
+| Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.19.0      |
+| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.12.0      |
+| Open Policy Agent            | Add-on     | :white_check_mark: | :x:                | 3.22.2      |
+| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.34.5      |
+| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.33.11     |
+| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.32.13     |
+| Traefik                      | Add-on     | :white_check_mark: | :x:                | 40.0.0      |
 
 #### Pack Notes
 
 ## May 14, 2026 - Release 4.9.8
+
+The following component updates are applicable to this release:
+
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -81,6 +89,10 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
   private endpoint access to fail to deploy due to EC2 permission errors.
 
 ## May 11, 2026 - Release 4.9.6
+
+The following component updates are applicable to this release:
+
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 ### Improvements
 
@@ -207,6 +219,7 @@ The following components have been updated for Palette version 4.9.5.
 The following component updates are applicable to this release:
 
 - [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 ### Security Notices
 
