@@ -17,7 +17,7 @@ These functions allow operators to run more virtual machines per host while redu
 |--|--|--|
 | [CPU pinning](#cpu-pinning-performance-optimization) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
 | [Memory overcommit](#memory-overcommit) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
-| KSM | Cluster | VMO Pack |
+| [KSM](#kernel-same-page-merging-ksm) | Cluster | VMO Pack |
 | Headless mode | VM | UI |
 | Guest memory tuning | VM | YAML |
 
@@ -35,7 +35,7 @@ Memory tiering, using NVMes, is a newer, proactive mechanism that migrates inact
 
 ### KubeVirt Constraint
 
-VMO is built on KubeVirt. This allows VMO to run VMs as Kubernetes pods. Memory for the VMs is controlled via Kubernetes through requests and limits. Currently, there is no native VM-level dynamic memory reclamation built into KubeVirt. 
+VMO is built on KubeVirt. This allows VMO to run VMs as Kubernetes pods. Memory for the VMs is controlled via Kubernetes requests and limits. Currently, there is no native VM-level dynamic memory reclamation built into KubeVirt. 
 
 :::warning
 
@@ -46,7 +46,6 @@ KubeVirt does not support [balloon drivers](https://kubevirt.io/user-guide/compu
 ## VMO Memory Efficiency Settings
 
 ### Cluster-Level Configuration (VMO Pack)
-
 
 The following settings apply to every VM on the cluster and are configured through the VMO pack values. 
 
@@ -100,24 +99,19 @@ spec:
 
 ### What KSM Does
 
-KSM is a Linux kernel feature that merges identical memory pages across VMs.
-
-This is especially effective when multiple VMs run the same OS image.
-
-### Benefits
-
-- Reduces actual memory usage  
-- Improves efficiency of overcommit  
-- Enables higher VM density  
-
-### Tradeoffs
-
-- Additional CPU overhead from memory scanning  
+[Kernel Same-page Merging (KSM)](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_tuning_and_optimization_guide/chap-ksm) is a Linux kernel feature allows de-duplication of infrequently updated memory pages across VMs, and merges those to free memory. This is especially effective when multiple VMs run the same OS image with the same application behavior. This feature can result in additional CPU overhead from memory scanning.
 
 ## Configure KSM
 
-### All Nodes
+You can configure KSM to run on all nodes or specific nodes. Utilize the following to enable it under `additionalConfig` in the VMO pack.
 
+:::warning
+
+The setting is for `additionalConfig` and not `additionalDevConfig`.
+
+:::
+
+|Deployment Option | VMO Pack Configuration |
 ```yaml
 additionalConfig:
   ksmConfiguration:
