@@ -10,6 +10,7 @@ on:
     base_branch:
       description: "The base branch for the patch release PR (default: master)"
       required: true
+      default: "master"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
