@@ -17,7 +17,7 @@ These functions allow operators to run more virtual machines per host while redu
 |--|--|--|
 | [CPU pinning](#cpu-pinning-performance-optimization) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
 | [Memory overcommit](#memory-overcommit) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
-| [KSM](#kernel-same-page-merging-ksm) | Cluster | VMO Pack |
+| [KSM](#kernel-same-page-merging-ksm) | [Cluster](#configure-ksm) | VMO Pack |
 | Headless mode | VM | UI |
 | Guest memory tuning | VM | YAML |
 
@@ -25,7 +25,7 @@ These functions allow operators to run more virtual machines per host while redu
 
 Memory is typically the first resource that is constrained in VM-dense environments. By using overcommit strategies, you can increase VM density per host, reduce how much you spend on hardware, and improve overall resource utilization. There are trade-offs with memory overcommitment, including potential resource contention. However, this method requires workload awareness and regular monitoring. 
 
-Memory overcommit allows allocating more virtual memory to VMs than physically exists on a host. For example, if you have a host with 64GB of memory, and allocate 96GB of memory to the VMs running on that host, you are overcommitting by 24GB. This works because most VMs do not use peak memory simultaneously, and most virtualization platforms have internal memory optimizations in place to minimize contention between the VMs.
+Memory overcommit allows allocating more virtual memory to VMs than physically exists on a host. For example, if you have a host with 64GB of memory, and allocate 96GB of memory to the VMs running on that host, you are overcommitting by 32GB. This works because most VMs do not use peak memory simultaneously, and most virtualization platforms have internal memory optimizations in place to minimize contention between the VMs.
 
 ### Memory Ballooning vs Memory Tiering
 
@@ -97,13 +97,11 @@ spec:
 
 ## Kernel Same-page Merging (KSM)
 
-### What KSM Does
-
 [Kernel Same-page Merging (KSM)](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_tuning_and_optimization_guide/chap-ksm) is a Linux kernel feature allows de-duplication of infrequently updated memory pages across VMs, and merges those to free memory. This is especially effective when multiple VMs run the same OS image with the same application behavior. This feature can result in additional CPU overhead from memory scanning.
 
-## Configure KSM
+### Configure KSM
 
-You can configure KSM to run on all nodes or specific nodes. Utilize the following to enable it under `additionalConfig` in the VMO pack.
+You can configure KSM to run on all nodes or specific nodes. When enabling this feature, `virt-handler` enables KSM. The nodes are labelled `kubevirt.io/ksm-enabled=true` so they are discoverable, and schedulable on KSM-enabled nodes.
 
 :::warning
 
@@ -111,15 +109,14 @@ The setting is for `additionalConfig` and not `additionalDevConfig`.
 
 :::
 
-|Deployment Option | VMO Pack Configuration |
+Utilize the following to enable KSM on all nodes under `additionalConfig` in the VMO pack.
 ```yaml
 additionalConfig:
   ksmConfiguration:
     nodeLabelSelector: {}
 ```
 
-### Specific Nodes
-
+Utilize the following to enable KSM on specific nodes under `additionalConfig` in the VMO pack.
 ```yaml
 additionalConfig:
   ksmConfiguration:
@@ -127,64 +124,62 @@ additionalConfig:
       matchLabels:
         node-role.kubernetes.io/worker: ""
 ```
-### What Happens After Enabling
-
-- KubeVirt enables KSM via `virt-handler`  
-- Nodes are labeled:
-  - `kubevirt.io/ksm-enabled=true`  
-
-- You can target these nodes:
-
-```yaml
-nodeSelector:
-  kubevirt.io/ksm-enabled: "true"
-```
 
 ## CPU Pinning (Performance Optimization)
 
-### When to Use CPU Pinning
+CPU Pinning, or CPU affinity, is the technique of dedicating one or more host Physical CPU (PCPU) cores to a specific workload, preventing the operating system scheduler from migrating that workload. This eliminates the performance-degrading effects of context switching, cache misses, and resource contention.
 
-Use CPU pinning for:
+In a virtualized KubeVirt environment, this is achieved by integrating the VMI specification with the underlying host resource management provided by the Kubelet. The goal is to provide host-level performance characteristics to the guest Virtual Machine (VM).
 
-- High-performance workloads  
-- Latency-sensitive applications  
+| Setting | Value | Impact |
+|---------|-------|--------|
+| `cpu-manager-policy` | `static` | Enables the CPU Manager to reserve exclusive CPU cores for Guaranteed QoS pods. |
+| `cpu-manager-policy-options` | `full-pcpus-only=true` | Ensures that only full physical cores (PCPUs) are allocated, preventing allocation of individual hyper-threads (HT) from the same core to different workloads, thereby maintaining cache isolation. |
+| `memory-manager-policy` | `static` | Enables memory alignment with the dedicated CPU resources (NUMA affinity). |
+| `topology-manager-policy` |  `single-numa-node` | CRITICAL: Forces all resources (CPU, memory, devices) required by a pod/VMI to be allocated from a single NUMA node to minimize inter-node latency. |
+| `topology-manager-scope` | `pod` | Applies the single-numa-node policy at the VMI (Pod) level. |
+| `reserved-memory` | `0:memory=<reservedMemory>Mi` | Defines a configurable reserved memory region on a specific NUMA node (e.g., node 0) for the operating system and Kubelet operations, protecting system stability. |
 
-### How It Works
 
-CPU pinning dedicates physical CPU cores to a VM, eliminating:
+### Enable KubeVirt Feature Gates
 
-- Context switching  
-- Cache misses  
-- CPU contention  
+The KubeVirt operator configuration must explicitly enable features that allow the virtualization layer to interact with the Kubelet's advanced resource managers. Specifically, enable `NUMA` and `CPUManager`. 
 
-:::info Requirement
-CPU pinning requires **Guaranteed QoS** (requests = limits).
-:::
 
-## Configuration Overview
+### VirtualMachineInstance (VMI) Specification
 
-### 1. Kubelet Configuration
+Kubernetes QoS: The VMI must have a Guaranteed QoS class (i.e., requests == limits for both CPU and Memory) to be eligible for static CPU management.
 
-| Setting | Value |
-|--||
-| `cpu-manager-policy` | `static` |
-| `topology-manager-policy` | `single-numa-node` |
+Resource Availability: The host node must have sufficient free, unreserved CPU and memory resources on a single NUMA node to satisfy the VMI's requirements.
 
-### 2. Enable KubeVirt Feature Gates
+The VMI manifest defines the exact CPU topology and resource requirements that trigger the CPU pinning mechanism. To achieve Guaranteed QoS and subsequent pinning, the VMI must specify requests and limits for CPU and memory that are equal and integral.
 
-- `NUMA`  
-- `CPUManager`  
-
-### 3. VM Specification
 
 ```yaml
-resources:
-  limits:
-    cpu: 3
-    memory: 8Gi
-  requests:
-    cpu: 3
-    memory: 8Gi
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstance
+spec:
+  domain:
+    cpu:
+      dedicatedCpuPlacement: true
+      numa:
+        guestMappingPassthrough: {}
+      model: host-passthrough
+      cores: 2
+      sockets: 1
+      threads: 1
+    memory:
+      hugepages:
+        pageSize: 2Mi
+    resources:
+      limits:
+        cpu: 3
+        memory: 8Gi
+      requests:
+        cpu: 3
+        memory: 8Gi
+.....
+
 ```
 
 :::tip 
