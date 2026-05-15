@@ -389,7 +389,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-#### Features
 
 #### Improvements
 
