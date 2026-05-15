@@ -21,7 +21,7 @@ These functions allow operators to run more virtual machines per host while redu
 | Headless mode | VM | UI |
 | Guest memory tuning | VM | YAML |
 
-## Memory Overcommit
+### Memory Overcommit
 
 Memory is typically the first resource that is constrained in VM-dense environments. By using overcommit strategies, you can increase VM density per host, reduce how much you spend on hardware, and improve overall resource utilization. There are trade-offs with memory overcommitment, including potential resource contention. However, this method requires workload awareness and regular monitoring. 
 
@@ -43,32 +43,22 @@ KubeVirt does not support [balloon drivers](https://kubevirt.io/user-guide/compu
 
 :::
 
-## VMO Memory Efficiency Settings
-
 ### Cluster-Level Configuration (VMO Pack)
 
 The following settings apply to every VM on the cluster and are configured through the VMO pack values. 
 
 | Setting | Description | Default | Impact |
 |--|--|--|--|
-| `cpuAllocationRatio` | Ratio of vCPUs to physical CPUs | 10:1 | Higher values increase density but may cause CPU contention |
-| `memoryOvercommit` | Percentage of memory allocation | 100% | Values >100% enable overcommit |
+| `cpuAllocationRatio` | Controls ratio of vCPUs to physical CPUs | 10:1 (default) | Higher ratios allow more VMs per host at the cost of potential CPU contention. |
+| `memoryOvercommit` | Sets the percentage of memory overcommit cluster-wide | 100% (default - no overcommit) | Values >100% enable overcommit percentage per host |
 
-
-### Example Configuration
+In the example below, the `cpuAllocationRatio` is set to 12 VMs to one PCPU, and `memoryOvercommit` is configured for 1.5x of the physical RAM per host.
 
 ```yaml
 additionalDevConfig:
   cpuAllocationRatio: 12
   memoryOvercommit: 150
 ```
-
-:::tip
-
-- Predictable workloads  
-- Non-latency-sensitive applications
-
-:::
 
 ### Per-VM Optimization Settings
 
