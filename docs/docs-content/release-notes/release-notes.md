@@ -33,6 +33,8 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
+
 - [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) are now deprecated in Palette
   and Palette VerteX. We recommend that customers deploy their workloads to
   [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
