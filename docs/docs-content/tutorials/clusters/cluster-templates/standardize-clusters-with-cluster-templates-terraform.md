@@ -787,8 +787,8 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 
 ## Upgrade Clusters from the Template
 
-In this section, trigger an immediate upgrade of both clusters attached to `tf-cluster-template-aws`.
-`tf-dev-cluster` and `tf-prod-cluster` move from profile version `1.0.0` to `1.1.0`.
+In this section, trigger an immediate upgrade of both clusters attached to `tf-cluster-template-aws`. `tf-dev-cluster`
+and `tf-prod-cluster` move from profile version `1.0.0` to `1.1.0`.
 
 In `cluster_templates.tf`, the `upgrade_now` argument is set to the value of `upgrade_now_timestamp`. When this value
 changes, Palette immediately upgrades all clusters attached to the template.
@@ -885,9 +885,9 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 ```
 
 The template update triggers an upgrade on both clusters attached to the template. `tf-dev-cluster` and
-`tf-prod-cluster` both move from profile version `1.0.0` to `1.1.0`. The upgrade may take several minutes. In
-Palette, navigate to the left main menu and select **Clusters**, then select either cluster to track the upgrade
-progress. Once complete, Palette marks the Kubecost layer with a green status indicator.
+`tf-prod-cluster` both move from profile version `1.0.0` to `1.1.0`. The upgrade may take several minutes. In Palette,
+navigate to the left main menu and select **Clusters**, then select either cluster to track the upgrade progress. Once
+complete, Palette marks the Kubecost layer with a green status indicator.
 
 ![Kubecost layer with a green status indicator](/kubecost-green-status.webp)
 
