@@ -17,7 +17,9 @@ env:
 
 jobs:
   update_release_notes:
-    if: github.event_name == 'issue_comment'
+    if: >
+      github.event.issue.pull_request &&
+      github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     permissions:
@@ -38,12 +40,9 @@ jobs:
           else
             echo "run=false" >> $GITHUB_OUTPUT
           fi
-
-      - name: Stop if not triggered
-        if: steps.check.outputs.run != 'true'
-        run: exit 0
       
       - name: Retrieve Credentials
+        if: steps.check.outputs.run == 'true'
         id: import-secrets
         uses: hashicorp/vault-action@v3.4.0
         with:
@@ -54,6 +53,7 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Librarium Repository
+        if: steps.check.outputs.run == 'true'
         uses: actions/checkout@v6
         with: 
           repository: spectrocloud/librarium
@@ -61,20 +61,25 @@ jobs:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
       
       - name: Set Git User
+        if: steps.check.outputs.run == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Setup Node.js environment
+        if: steps.check.outputs.run == 'true'
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm" 
 
-      - run: |
+      - name: Install Dependencies
+        if: steps.check.outputs.run == 'true'
+        run: |
           npm ci
 
       - name: Extract patch release ticket
+        if: steps.check.outputs.run == 'true'
         id: extract_ticket
         run: |
           TICKET=$(grep -m1 -E '<!-- PATCH RELEASE TICKET: [A-Z]+-[0-9]+ -->' docs/docs-content/release-notes/release-notes.md \
@@ -88,12 +93,13 @@ jobs:
           echo "JIRA_TICKET=$TICKET" >> "$GITHUB_ENV"      
       
       - name: Execute Script to Generate Patch Release Notes
-        if: ${{ env.JIRA_TICKET  != ''}}
+        if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
         run: |
           PATCH_RELEASE_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
 
 
       - name: Commit changes
+        if: steps.check.outputs.run == 'true'
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
@@ -108,7 +114,7 @@ jobs:
           git push
 
       - name: Comment on PR if commit fails
-        if: failure() && github.event.issue.pull_request
+        if: steps.check.outputs.run == 'true' && failure() && github.event.issue.pull_request
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
