@@ -7,10 +7,10 @@ on:
       jira_ticket:
         description: "The Jira ticket for the patch release (e.g., DOC-2815)"
         required: true
-    base_branch:
-      description: "The base branch for the patch release PR (default: master)"
-      required: true
-      default: "master"
+      base_branch:
+        description: "The base branch for the patch release PR (default: master)"
+        required: true
+        default: "master"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
