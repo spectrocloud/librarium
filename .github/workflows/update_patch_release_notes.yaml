@@ -1,0 +1,117 @@
+name: Update patch release notes
+
+on:
+  issue_comment:
+    types: [created]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+  JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+  SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
+  NODE_VERSION: "24"
+  BASE_BRANCH: ${{ format('refs/pull/{0}/head', github.event.issue.number) }}
+  ALGOLIA_APP_ID: "123456789"
+  ALGOLIA_INDEX_NAME: "123456789"
+  ALGOLIA_SEARCH_KEY: "123456789"
+
+jobs:
+  update_release_notes:
+    if: github.event_name == 'issue_comment'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Check trigger condition
+        id: check
+        shell: bash
+        run: |
+          BODY="${{ github.event.comment.body }}"
+          BODY_LOWER=$(echo "$BODY" | tr '[:upper:]' '[:lower:]')
+
+          if [[ "$BODY_LOWER" == *"update patch release notes"* ]]; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Stop if not triggered
+        if: steps.check.outputs.run != 'true'
+        run: exit 0
+      
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.4.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Checkout Librarium Repository
+        uses: actions/checkout@v6
+        with: 
+          repository: spectrocloud/librarium
+          ref: ${{ env.BASE_BRANCH }}
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+      
+      - name: Set Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm" 
+
+      - run: |
+          npm ci
+
+      - name: Extract patch release ticket
+        id: extract_ticket
+        run: |
+          TICKET=$(grep -m1 -E '<!-- PATCH RELEASE TICKET: [A-Z]+-[0-9]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*PATCH RELEASE TICKET: ([A-Z]+-[0-9]+).*/\1/')
+
+          if [[ -z "$TICKET" ]]; then
+            echo "❌ No PATCH RELEASE TICKET found" >&2
+            exit 1
+          fi
+
+          echo "JIRA_TICKET=$TICKET" >> "$GITHUB_ENV"      
+      
+      - name: Execute Script to Generate Patch Release Notes
+        if: ${{ env.JIRA_TICKET  != ''}}
+        run: |
+          PATCH_RELEASE_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
+
+
+      - name: Commit changes
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          git add docs/docs-content/release-notes/release-notes.md
+
+          if git diff --cached --quiet; then
+            echo "ℹ️  No release notes changes to commit."
+            exit 0
+          fi
+
+          git commit -m "docs: update patch release notes"
+          git push
+
+      - name: Comment on PR if commit fails
+        if: failure() && github.event.issue.pull_request
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          gh api \
+            repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
+            -f body="❌ Failed to update patch release notes. Please check the workflow logs."
