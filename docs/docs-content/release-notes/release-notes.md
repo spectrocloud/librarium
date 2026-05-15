@@ -17,7 +17,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 
 | Component                                                                                             | Version |
 | ----------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.0   |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.1  |
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.8   |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.8   |
 
@@ -42,9 +42,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 | Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.19.0      |
 | Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.12.0      |
 | Open Policy Agent            | Add-on     | :white_check_mark: | :x:                | 3.22.2      |
-| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.34.5      |
-| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.33.11     |
-| RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.32.13     |
 | Traefik                      | Add-on     | :white_check_mark: | :x:                | 40.0.0      |
 
 ## May 14, 2026 - Release 4.9.8
