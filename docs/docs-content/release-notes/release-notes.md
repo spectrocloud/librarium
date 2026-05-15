@@ -431,7 +431,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-7582 -->
