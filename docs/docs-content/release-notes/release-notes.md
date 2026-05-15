@@ -11,7 +11,44 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 15, 2026 - Component Updates {#component-updates-2026-20}
+
+The following components have been updated for Palette version 4.9.5 - 4.9.8.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.1   |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.8   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.8   |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-442 -->
+
+- The [Artifact Studio](../downloads/artifact-studio.md) pack version dropdown now displays expanded version
+  information, distinguishing between the pack component version and the Palette compatibility version. A tooltip also
+  helps users clarify the difference between these version types.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4060 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4097 -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS | New Version |
+| ---------------------------- | ------ | ------------------ | ---- | ----------- |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:  | 3.3.0       |
+| Cilium Tetragon              | Add-on | :white_check_mark: | :x:  | 1.7.0       |
+| External Secrets             | Add-on | :white_check_mark: | :x:  | 2.4.1       |
+| Harbor                       | Add-on | :white_check_mark: | :x:  | 1.19.0      |
+| Karpenter                    | Add-on | :white_check_mark: | :x:  | 1.12.0      |
+| Open Policy Agent            | Add-on | :white_check_mark: | :x:  | 3.22.2      |
+| Traefik                      | Add-on | :white_check_mark: | :x:  | 40.0.0      |
+
 ## May 14, 2026 - Release 4.9.8
+
+The following component updates are applicable to this release:
+
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -47,6 +84,10 @@ tags: ["release-notes"]
   private endpoint access to fail to deploy due to EC2 permission errors.
 
 ## May 11, 2026 - Release 4.9.6
+
+The following component updates are applicable to this release:
+
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 ### Improvements
 
@@ -173,6 +214,7 @@ The following components have been updated for Palette version 4.9.5.
 The following component updates are applicable to this release:
 
 - [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 ### Security Notices
 
