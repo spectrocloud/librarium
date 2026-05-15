@@ -225,7 +225,7 @@ your Palette Edge deployment.
     IMAGE_REGISTRY=<image-registry>
     OS_DISTRIBUTION=rhel
     IMAGE_REPO=<image-repository>
-    K8S_DISTRIBUTION=<k8s-distribution>
+    K8S_DISTRIBUTION=<k8s-distribution> # the supported values are `rke2` and `kubeadm`
     K8S_VERSION=<k8s-version>
     ARCH=amd64
     BASE_IMAGE=<base-image-name>
@@ -242,7 +242,7 @@ your Palette Edge deployment.
     IMAGE_REGISTRY=<image-registry>
     OS_DISTRIBUTION=rhel
     IMAGE_REPO=<image-repository>
-    K8S_DISTRIBUTION=<k8s-distribution>
+    K8S_DISTRIBUTION=<k8s-distribution> # the supported values are `rke2` and `kubeadm-fips`
     K8S_VERSION=<k8s-version>
     FIPS_ENABLED=true
     ARCH=amd64
