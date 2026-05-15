@@ -374,6 +374,10 @@ generate-component-updates: ## Generate component updates only
 	./scripts/release/generate-component-updates.sh
 	make -s format > /dev/null 2>&1
 
+generate-patch-release-notes: ## Generate patch release notes only
+	./scripts/release/generate-patch-release-notes.sh
+	make -s format > /dev/null 2>&1
+
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-downloads.sh
@@ -407,6 +411,9 @@ init-release:
 	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "export RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
 	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "export RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
 	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "export RELEASE_PCG_KUBERNETES_VERSION=" >> .env
+	grep -q "^export JIRA_EMAIL=" .env || echo "export JIRA_EMAIL=" >> .env
+	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
+	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
 
 ###@ Aloglia Indexing
 
