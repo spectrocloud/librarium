@@ -47,8 +47,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 | RKE2                         | Kubernetes | :x:                | :white_check_mark: | 1.32.13     |
 | Traefik                      | Add-on     | :white_check_mark: | :x:                | 40.0.0      |
 
-#### Pack Notes
-
 ## May 14, 2026 - Release 4.9.8
 
 The following component updates are applicable to this release:
