@@ -17,7 +17,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 
 | Component                                                                                             | Version |
 | ----------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.1  |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.1   |
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.8   |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.8   |
 
@@ -34,15 +34,15 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4060 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4097 -->
 
-| Pack Name                    | Layer      | Non-FIPS           | FIPS               | New Version |
-| ---------------------------- | ---------- | ------------------ | ------------------ | ----------- |
-| AWS Application Loadbalancer | Add-on     | :white_check_mark: | :x:                | 3.3.0       |
-| Cilium Tetragon              | Add-on     | :white_check_mark: | :x:                | 1.7.0       |
-| External Secrets             | Add-on     | :white_check_mark: | :x:                | 2.4.1       |
-| Harbor                       | Add-on     | :white_check_mark: | :x:                | 1.19.0      |
-| Karpenter                    | Add-on     | :white_check_mark: | :x:                | 1.12.0      |
-| Open Policy Agent            | Add-on     | :white_check_mark: | :x:                | 3.22.2      |
-| Traefik                      | Add-on     | :white_check_mark: | :x:                | 40.0.0      |
+| Pack Name                    | Layer  | Non-FIPS           | FIPS | New Version |
+| ---------------------------- | ------ | ------------------ | ---- | ----------- |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:  | 3.3.0       |
+| Cilium Tetragon              | Add-on | :white_check_mark: | :x:  | 1.7.0       |
+| External Secrets             | Add-on | :white_check_mark: | :x:  | 2.4.1       |
+| Harbor                       | Add-on | :white_check_mark: | :x:  | 1.19.0      |
+| Karpenter                    | Add-on | :white_check_mark: | :x:  | 1.12.0      |
+| Open Policy Agent            | Add-on | :white_check_mark: | :x:  | 3.22.2      |
+| Traefik                      | Add-on | :white_check_mark: | :x:  | 40.0.0      |
 
 ## May 14, 2026 - Release 4.9.8
 
