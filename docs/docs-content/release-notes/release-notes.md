@@ -11,6 +11,40 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 16, 2026 - Component Updates {#component-updates-2026-20}
+
+The following components have been updated for Palette version 4.9.5 - 4.9.8.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.0   |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.8   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.8   |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-442 -->
+
+- The [Artifact Studio](../downloads/artifact-studio.md) pack version dropdown now has expanded version information,
+  distinguishing between the pack component version and the Palette compatibility version. A tooltip now also help users
+  differentiate between the two version types.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4060 -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS | New Version |
+| ---------------------------- | ------ | ------------------ | ---- | ----------- |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:  | 3.3.0       |
+| Cilium Tetragon              | Add-on | :white_check_mark: | :x:  | 1.7.0       |
+| External Secrets             | Add-on | :white_check_mark: | :x:  | 2.4.1       |
+| Harbor                       | Add-on | :white_check_mark: | :x:  | 1.19.0      |
+| Karpenter                    | Add-on | :white_check_mark: | :x:  | 1.12.0      |
+| Open Policy Agent            | Add-on | :white_check_mark: | :x:  | 3.22.2      |
+| Traefik                      | Add-on | :white_check_mark: | :x:  | 40.0.0      |
+
+#### Pack Notes
+
 ## May 14, 2026 - Release 4.9.8
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
