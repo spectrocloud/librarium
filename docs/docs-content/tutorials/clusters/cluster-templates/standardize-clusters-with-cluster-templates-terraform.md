@@ -787,7 +787,7 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 
 ## Upgrade Clusters from the Template
 
-In this section, you will trigger an immediate upgrade of both clusters attached to `tf-cluster-template-aws`.
+In this section, trigger an immediate upgrade of both clusters attached to `tf-cluster-template-aws`.
 `tf-dev-cluster` and `tf-prod-cluster` will move from profile version `1.0.0` to `1.1.0`.
 
 In `cluster_templates.tf`, the `upgrade_now` argument is set to the value of `upgrade_now_timestamp`. When this value
