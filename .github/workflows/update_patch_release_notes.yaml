@@ -19,7 +19,7 @@ jobs:
   update_release_notes:
     if: >
       github.event.issue.pull_request &&
-      github.actor != 'github-actions[bot]'
+      !endsWith(github.actor, '[bot]')
     runs-on: ubuntu-latest
 
     permissions:
