@@ -34,7 +34,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-9692 -->
 
 - The ability to **Force sync** [registries](../registries-and-packs/registries/registries.md) has been added to
-  **Tenant Settings** > **Registries**. Use this option to interrupt and restart ongoing synchronization processes that have been in progress for at least one hour.
+  **Tenant Settings** > **Registries**. Use this option to interrupt and restart ongoing synchronization processes that
+  have been in progress for at least one hour.
 
 #### Deprecations and Removals
 
