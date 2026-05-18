@@ -36,10 +36,14 @@ Check out the [Self-Hosted Add Registry](../../enterprise-version/system-managem
 
 ## Synchronization
 
-Registries are automatically synchronized with Palette every 24 hours. Helm registries are different as you can choose
-to disable synchronization. When you disable synchronization, you must manually synchronize the Helm registry with
-Palette. Refer to the [Helm Registry](helm-charts.md#synchronization-behavior) resource to learn more about the
-synchronization behavior of Helm registries.
+Registries are automatically synchronized with Palette every 24 hours and can also be synced manually from the Tenant
+Admin scope (**Tenant Settings** > **Registries** > three-dot menu > **Sync**). You can interrupt and restart an ongoing
+synchronization process using the **Force sync** option if the synchronization has been in progress for at least one
+hour.
+
+Automatic synchronization is optional for Helm registries. When you disable synchronization, you must manually
+synchronize the Helm registry with Palette. Refer to the [Helm Registry](helm-charts.md#synchronization-behavior)
+resource to learn more about the synchronization behavior of Helm registries.
 
 ## Default Registries
 
