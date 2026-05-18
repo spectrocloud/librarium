@@ -42,8 +42,8 @@ synchronization process using the **Force sync** option if the synchronization h
 hour.
 
 Automatic synchronization is optional for Helm registries. When you disable synchronization, you must manually
-synchronize the Helm registry with Palette. Refer to the [Helm Registry](helm-charts.md#synchronization-behavior)
-resource to learn more about the synchronization behavior of Helm registries.
+synchronize the Helm registry with Palette. Refer to [Helm Registry](helm-charts.md#synchronization-behavior)
+to learn more about the synchronization behavior of Helm registries.
 
 ## Default Registries
 
