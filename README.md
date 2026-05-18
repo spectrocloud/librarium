@@ -4,7 +4,6 @@
 
 ![Spectro Cloud logo with docs inline](/static/img/spectrocloud-logo-light.svg)
 
-
 Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire
 README.
 
