@@ -31,6 +31,12 @@ tags: ["release-notes"]
   [imported read-only clusters](../clusters/imported-clusters/cluster-import.md#read-only-mode) now use the
   [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/) Helm chart instead of Bitnami.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9692 -->
+
+- The ability to **Force sync** [registries](../registries-and-packs/registries/registries.md) has been added to
+  **Tenant Settings** > **Registries**. Use this option to interrupt and restart ongoing synchronization processes that
+  have been in progress for at least one hour.
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
