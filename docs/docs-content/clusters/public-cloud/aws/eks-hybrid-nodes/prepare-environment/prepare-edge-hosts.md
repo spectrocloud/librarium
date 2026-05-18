@@ -540,7 +540,7 @@ required Edge artifacts.
    IMAGE_REGISTRY=spectrocloud
    OS_DISTRIBUTION=ubuntu
    IMAGE_REPO=ubuntu
-   OS_VERSION=22
+   OS_VERSION=22.04
    K8S_DISTRIBUTION=nodeadm
    K8S_VERSION=1.30.0
    ISO_NAME=palette-edge-installer

@@ -55,6 +55,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-3561 -->
+
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> is now supported for Trusted Boot. Refer to the [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) page for a list of supported configurations for clusters deployed on Trusted Boot-enabled Edge hosts.
+
+<!-- prettier-ignore-end -->
+
 #### Improvements
 
 #### Bug Fixes
