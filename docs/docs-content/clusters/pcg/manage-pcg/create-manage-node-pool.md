@@ -13,17 +13,16 @@ use Dynamic Host Configuration Protocol (DHCP).
 
 By default, Palette creates a PCG with a single node pool definition based on the values provided during the
 installation process. The default node pool created during the installation is reserved for the PCG cluster and cannot
-be used by other clusters. A secondary IPAM node pool is required if you select static placement during the PCG
-installation process.
+be used by other clusters.
 
 You can also create additional node pools to meet the requirements of your workloads, such as defining different node
 pools for different workloads, better managing IP address utilization, or providing additional capacity.
 
-When deploying clusters, IPAM node pools can be assigned as follows:
+IPAM node pools can be assigned when deploying the following types of clusters: 
 
-- [VMware vSphere Clusters](../../data-center/vmware/create-manage-vmware-clusters.md) — Assign the node pool to both
-  control plane and worker pools that use static placement. Refer to
-- [MAAS LXD Workload Clusters](../../data-center/maas/create-manage-maas-lxd-clusters.md) — Assign the node pool to the
+- [VMware vSphere Clusters](../../data-center/vmware/create-manage-vmware-clusters.md) - Assign the node pool to both
+  control plane and worker pools that use static placement.
+- [MAAS LXD Workload Clusters](../../data-center/maas/create-manage-maas-lxd-clusters.md) - Assign the node pool to the
   control plane pool only. The control plane pool must have **Use LXD VMs** enabled. IPAM node pools cannot be assigned
   to MAAS worker pools.
 
@@ -40,16 +39,16 @@ CloudStack, such as tags, availability zones, and regions.
 
 ## IP Allocation in Clusters
 
-When a cluster is deployed using an IPAM node pool, Palette reserves additional IP addresses beyond the number of nodes
+When a cluster is deployed using an IPAM node pool, Palette reserves additional IP addresses
 to support cluster operations. The number of extra IPs reserved depends on the machine pool type:
 
-- **Control Plane Pool** - Two additional IPs are reserved for infrastructure components such as the Cluster API (CAPI)
+- **Control Plane Pool** - Two additional IPs are reserved for infrastructure components, including the Cluster API (CAPI)
   bootstrap VM and the Kubernetes API load balancer.
 - **Worker Pool** - One additional IP is reserved for **Expand First** and **Custom** rolling updates. If the worker
   pool uses the **Contract First** rolling update strategy, no additional IP is reserved.
 
 If you do not have a sufficient number of IP addresses available, the cluster will not be deployed. For example, if you
-plan to use the node pool for a cluster with one control plane node and three worker nodes using the default rolling
+plan to use the node pool for a cluster with one control plane node and three worker nodes using the default **Expand First** rolling
 update strategy, you need at least seven IP addresses available: three for the control plane pool (one node + two extra)
 and four for the worker pool (three nodes + one extra).
 
@@ -63,7 +62,11 @@ disabled or the **Maximum size** of the worker pool is reduced, the original num
 To release the IP addresses, you must
 [delete the worker node pool](../../cluster-management/node-pool.md#delete-a-node-pool).
 
-## Prerequisites
+## Create IPAM Node Pool
+
+Take the following steps to create an IPAM node pool for a PCG deployed in a VMware vSphere or MAAS environment.
+
+### Prerequisites
 
 - A PCG is installed, active, and in a healthy state. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) for
   instructions on how to install a PCG.
@@ -72,7 +75,7 @@ To release the IP addresses, you must
 
 - An IP address range or subnet available for the node pool.
 
-## Create a PCG Node Pool
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant administrator.
 
@@ -131,7 +134,7 @@ You can edit and resize your node pool at any time by selecting the three-dot me
 **Edit**. For more information on how IP addresses are allocated, refer to
 [IP Allocation in Clusters](#ip-allocation-in-clusters).
 
-## Validate
+### Validate
 
 Use the following steps to validate that the node pool was created.
 
