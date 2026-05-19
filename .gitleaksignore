@@ -835,3 +835,4 @@ ea43e35d5748e7a3e2dcbb3011fd2ad4ac62ffe0:docs/docs-content/tutorials/clusters/cl
 34fe034a615e72f760a5198b8404b522b34bac82:docs/docs-content/tutorials/getting-started/palette-edge/local-management/edge-cluster-profile.md:generic-api-key:172
 fed329c5a17b1736ac730c992b4e23a75cd2a918:docs/docs-content/clusters/pcg/deploy-pcg/cloudstack.md:generic-api-key:181
 fed329c5a17b1736ac730c992b4e23a75cd2a918:docs/docs-content/clusters/pcg/deploy-pcg/cloudstack.md:generic-api-key:182
+ffe4ebe529b16d9481541a8adffe6fd40284e9ba:docs/docs-content/vm-management/VMO Appliance/user/access-management/api-keys.md:curl-auth-header:185
