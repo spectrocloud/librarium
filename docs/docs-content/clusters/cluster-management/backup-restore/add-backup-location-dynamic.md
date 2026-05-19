@@ -126,6 +126,14 @@ cloud account.
 
   :::
 
+- If you are using an EKS workload cluster, you must also have:
+
+  - The AWS CLI configured with credentials that have permission to update IAM role trust policies.
+  - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
+    [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) guide for installation
+    instructions.
+  - The name and AWS region of your EKS cluster.
+
 ### Instructions
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -193,6 +201,171 @@ cloud account.
 You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
 AWS STS to authenticate Palette with the S3 bucket in the same AWS account you deploy your Kubernetes cluster.
 
+If you are using an EKS workload cluster, complete the following steps to authorize Velero pods to access the backup
+location.
+
+12. Retrieve the OIDC issuer URL for the EKS cluster. Replace `[CLUSTER-NAME]` and `[REGION]` with your cluster name and
+    AWS region.
+
+    ```shell
+    aws eks describe-cluster \
+      --name [CLUSTER-NAME] \
+      --region [REGION] \
+      --query "cluster.identity.oidc.issuer" \
+      --output text
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    https://oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE
+    ```
+
+    Record the ID value at the end of the URL. The ID follows the last `/` in the path. You will need this value in the
+    following steps.
+
+13. Confirm the OIDC provider is registered in IAM.
+
+    ```shell
+    aws iam list-open-id-connect-providers
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    {
+        "OpenIDConnectProviderList": [
+            {
+                "Arn": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+            }
+        ]
+    }
+    ```
+
+    Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 12
+    is not in the output, run the following command to register it. Replace `[CLUSTER-NAME]` and `[REGION]` with your
+    values.
+
+    ```shell
+    eksctl utils associate-iam-oidc-provider \
+      --cluster [CLUSTER-NAME] \
+      --region [REGION] \
+      --approve
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
+    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
+    ```
+
+    For additional guidance, refer to the
+    [Creating an IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+    guide in the AWS documentation.
+
+14. Retrieve the current trust policy of the backup IAM role and save it to a local file. Replace `[ROLE-NAME]` with the
+    name of your backup IAM role.
+
+    ```shell
+    aws iam get-role \
+      --role-name [ROLE-NAME] \
+      --query 'Role.AssumeRolePolicyDocument' \
+      --output json > trust-policy.json
+    ```
+
+    No output is displayed. The current trust policy is saved to `trust-policy.json` in the current directory.
+
+15. Open `trust-policy.json` and add the following statement to the `Statement` array. Use the table below to identify
+    the values to substitute for each placeholder before adding the statement to the file.
+
+    | Placeholder        | Description                                      |
+    | ------------------ | ------------------------------------------------ |
+    | `[AWS-ACCOUNT-ID]` | Your AWS account ID                              |
+    | `[REGION]`         | The AWS region where the EKS cluster is deployed |
+    | `[OIDC-ID]`        | The OIDC ID from step 12                         |
+
+    ```json
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::[AWS-ACCOUNT-ID]:oidc-provider/oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringLike": {
+          "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:sub": "system:serviceaccount:*:velero-server"
+        },
+        "StringEquals": {
+          "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+    ```
+
+    The `StringLike` condition uses a wildcard (`*`) for the namespace because Palette generates a unique namespace for
+    each cluster's Velero installation in the format `cluster-<hash>`.
+
+    :::info
+
+    If you share one backup IAM role across multiple EKS clusters, use `StringEquals` with the specific namespace and
+    add one statement per cluster. This limits role assumption to the `velero-server` pod in a specific namespace on
+    each cluster. To determine the Velero namespace for a given cluster, run `kubectl get namespaces` on that cluster
+    and look for a namespace in the format `cluster-<hash>`.
+
+    :::
+
+    After adding the new statement, the trust policy must include both the existing Palette trust statement and the new
+    IRSA statement. The following example shows the expected result. Use the table below to identify the values to
+    substitute for each placeholder.
+
+    | Placeholder                   | Description                                                                   |
+    | ----------------------------- | ----------------------------------------------------------------------------- |
+    | `[AWS-ACCOUNT-ID-OF-PALETTE]` | The Palette AWS account ID, displayed in the backup location wizard           |
+    | `[YOUR-EXTERNAL-ID]`          | The external ID generated by Palette, displayed in the backup location wizard |
+    | `[AWS-ACCOUNT-ID]`            | Your AWS account ID                                                           |
+    | `[REGION]`                    | The AWS region where the EKS cluster is deployed                              |
+    | `[OIDC-ID]`                   | The OIDC ID from step 12                                                      |
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
+          },
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringEquals": {
+              "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
+            }
+          }
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Federated": "arn:aws:iam::[AWS-ACCOUNT-ID]:oidc-provider/oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]"
+          },
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Condition": {
+            "StringLike": {
+              "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:sub": "system:serviceaccount:*:velero-server"
+            },
+            "StringEquals": {
+              "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:aud": "sts.amazonaws.com"
+            }
+          }
+        }
+      ]
+    }
+    ```
+
+16. Apply the updated trust policy to the backup IAM role. Replace `[ROLE-NAME]` with the name of your backup IAM role.
+
+    ```shell
+    aws iam update-assume-role-policy \
+      --role-name [ROLE-NAME] \
+      --policy-document file://trust-policy.json
+    ```
+
+    A successful update returns no output.
+
 ### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -203,6 +376,11 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
 
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you
    successfully added a new backup location.
+
+5. If you are using an EKS workload cluster, confirm the backup location status displays as **Available**. If the status
+   displays as **Unavailable** and the error details include
+   `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
+   and AWS account ID are correct.
 
 ## Multiple Cloud Accounts with AWS STS
 
@@ -294,6 +472,14 @@ multiple cloud accounts.
     the backup location IAM role. Check out the
     [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
     guide for detailed instructions.
+
+- If you are using an EKS workload cluster in AWS Account A, you must also have:
+
+  - The AWS CLI configured with credentials that have permission to update IAM role trust policies in AWS Account B.
+  - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
+    [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) guide for installation
+    instructions.
+  - The name and AWS region of your EKS cluster.
 
 ### Instructions
 
@@ -430,6 +616,179 @@ for a deep dive into the IAM trust policies.
 You now have a backup location for Palette to use to store the backup of your clusters or workspaces. This backup
 location is using AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
 
+If you are using an EKS workload cluster in AWS Account A, complete the following steps to authorize Velero pods to
+access the backup location.
+
+14. Retrieve the OIDC issuer URL for the EKS cluster in AWS Account A. Replace `[CLUSTER-NAME]` and `[REGION]` with your
+    cluster name and AWS region.
+
+    ```shell
+    aws eks describe-cluster \
+      --name [CLUSTER-NAME] \
+      --region [REGION] \
+      --query "cluster.identity.oidc.issuer" \
+      --output text
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    https://oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE
+    ```
+
+    Record the ID value at the end of the URL. The ID follows the last `/` in the path. You will need this value in the
+    following steps.
+
+15. Confirm the OIDC provider is registered in IAM in AWS Account A.
+
+    ```shell
+    aws iam list-open-id-connect-providers
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    {
+        "OpenIDConnectProviderList": [
+            {
+                "Arn": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+            }
+        ]
+    }
+    ```
+
+    Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 14
+    is not in the output, run the following command to register it. Replace `[CLUSTER-NAME]` and `[REGION]` with your
+    values.
+
+    ```shell
+    eksctl utils associate-iam-oidc-provider \
+      --cluster [CLUSTER-NAME] \
+      --region [REGION] \
+      --approve
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
+    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
+    ```
+
+    For additional guidance, refer to the
+    [Creating an IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+    guide in the AWS documentation.
+
+16. Switch to AWS Account B. Retrieve the current trust policy of the backup IAM role and save it to a local file.
+    Replace `[ROLE-NAME]` with the name of your backup IAM role.
+
+    ```shell
+    aws iam get-role \
+      --role-name [ROLE-NAME] \
+      --query 'Role.AssumeRolePolicyDocument' \
+      --output json > trust-policy.json
+    ```
+
+    No output is displayed. The current trust policy is saved to `trust-policy.json` in the current directory.
+
+17. Open `trust-policy.json` and add the following statement to the `Statement` array. Use the table below to identify
+    the values to substitute for each placeholder before adding the statement to the file.
+
+    | Placeholder                      | Description                                      |
+    | -------------------------------- | ------------------------------------------------ |
+    | `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` | The AWS account ID for AWS Account A             |
+    | `[REGION]`                       | The AWS region where the EKS cluster is deployed |
+    | `[OIDC-ID]`                      | The OIDC ID from step 14                         |
+
+    ```json
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:oidc-provider/oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringLike": {
+          "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:sub": "system:serviceaccount:*:velero-server"
+        },
+        "StringEquals": {
+          "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+    ```
+
+    The `StringLike` condition uses a wildcard (`*`) for the namespace because Palette generates a unique namespace for
+    each cluster's Velero installation in the format `cluster-<hash>`.
+
+    :::info
+
+    If you share one backup IAM role across multiple EKS clusters, use `StringEquals` with the specific namespace and
+    add one statement per cluster. This limits role assumption to the `velero-server` pod in a specific namespace on
+    each cluster. To determine the Velero namespace for a given cluster, run `kubectl get namespaces` on that cluster
+    and look for a namespace in the format `cluster-<hash>`.
+
+    :::
+
+    After adding the new statement, the trust policy in AWS Account B must include the existing Palette and Account A
+    trust statements from step 9, plus the new IRSA statement. The following example shows the expected result. Use the
+    table below to identify the values to substitute for each placeholder.
+
+    | Placeholder                      | Description                                                                   |
+    | -------------------------------- | ----------------------------------------------------------------------------- |
+    | `[AWS-ACCOUNT-ID-OF-PALETTE]`    | The Palette AWS account ID, displayed in the backup location wizard           |
+    | `[YOUR-EXTERNAL-ID]`             | The external ID generated by Palette, displayed in the backup location wizard |
+    | `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` | The AWS account ID for AWS Account A                                          |
+    | `[REGION]`                       | The AWS region where the EKS cluster is deployed                              |
+    | `[OIDC-ID]`                      | The OIDC ID from step 14                                                      |
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
+          },
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringEquals": {
+              "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
+            }
+          }
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
+          },
+          "Action": "sts:AssumeRole"
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Federated": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:oidc-provider/oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]"
+          },
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Condition": {
+            "StringLike": {
+              "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:sub": "system:serviceaccount:*:velero-server"
+            },
+            "StringEquals": {
+              "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:aud": "sts.amazonaws.com"
+            }
+          }
+        }
+      ]
+    }
+    ```
+
+18. Apply the updated trust policy to the backup IAM role in AWS Account B. Replace `[ROLE-NAME]` with the name of your
+    backup IAM role.
+
+    ```shell
+    aws iam update-assume-role-policy \
+      --role-name [ROLE-NAME] \
+      --policy-document file://trust-policy.json
+    ```
+
+    A successful update returns no output.
+
 ### Validate
 
 Use the following steps to validate adding the new backup location.
@@ -442,6 +801,11 @@ Use the following steps to validate adding the new backup location.
 
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you have
    successfully added a new backup location.
+
+5. If you are using an EKS workload cluster, confirm the backup location status displays as **Available**. If the status
+   displays as **Unavailable** and the error details include
+   `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
+   and AWS account ID are correct.
 
 ## Next Steps
 
