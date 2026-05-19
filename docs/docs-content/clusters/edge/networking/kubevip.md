@@ -12,7 +12,7 @@ You can use kube-vip to provide a virtual IP address for your cluster and use it
 address.
 
 Kube-vip supports DHCP environments and can request additional IP address from the DHCP server automatically. Using
-kube-vip, you can expose services inside your cluster externally with a virtual IP address even if you do not have
+kube-vip, you can expose services inside your cluster externally with a virtual IP (VIP) address even if you do not have
 control over your host's network. Kube-vip can also act as a load balancer for both your control plane and Kubernetes
 services of type `LoadBalancer`.
 
@@ -41,9 +41,11 @@ these values when deploying a cluster or performing Day-2 cluster operations.
 
 :::warning
 
-Do not modify the default `address` value. Changing this value makes the cluster inaccessible. If no value is provided
-for the `vip_ddns` variable, it defaults to `false` if the `address` is a valid IP address and `true` if it is a domain
-name.
+- Do not modify the default `address` value. Changing this value makes the cluster inaccessible. If no value is provided
+  for the `vip_ddns` variable, it defaults to `false` if the `address` is a valid IP address and `true` if it is a
+  domain name.
+- If the VIP address assigned to the cluster during cluster creation is the same as the Edge host's IP address (for
+  example, in the case of single-node clusters), kube-vip is disabled automatically.
 
 :::
 
