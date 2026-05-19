@@ -9,7 +9,7 @@ tags: ["vmo", "vmo appliance", "quick start"]
 
 # Quick Start
 
-This guide walks you through accessing VMO Manager, logging in, viewing the dashboard, and creating your first virtual machine in about five minutes.
+This guide walks you through accessing VM Launchpad, logging in, viewing the dashboard, and creating your first virtual machine in about five minutes.
 
 ## Access the Platform
 
