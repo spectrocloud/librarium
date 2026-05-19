@@ -7,19 +7,19 @@ sidebar_position: 1
 tags: ["vmo", "architecture"]
 ---
 
-VMO enables higher VM density on existing infrastructure by leveraging memory overcommit and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication.
+Virtual Machine Orchestrator (VMO) enables higher VM density on existing infrastructure by leveraging memory overcommit and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication.
 
-These functions allow operators to run more virtual machines per host while reducing infrastructure costs.
+This ability allows operators to run more virtual machines per host while reducing physical infrastructure costs. To help achieve higher density and resource optimization, there are five features you can use. 
 
 ## Quick Reference
 
 | Feature | Scope | Configuration Location |
 |--|--|--|
-| [CPU pinning](#cpu-pinning-performance-optimization) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
 | [Memory overcommit](#memory-overcommit) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
 | [KSM](#kernel-same-page-merging-ksm) | [Cluster](#configure-ksm) | VMO Pack |
-| Headless mode | VM | UI |
-| Guest memory tuning | VM | YAML |
+| [CPU pinning](#cpu-pinning-performance-optimization) | [Cluster](#cluster-level-configuration-vmo-pack) | VMO Pack |
+| [Headless mode](#headless-mode) | VM | UI |
+| [Guest memory tuning](#per-vm-optimization-settings) | VM | YAML |
 
 ### Memory Overcommit
 
@@ -32,6 +32,12 @@ Memory overcommit allows allocating more virtual memory to VMs than physically e
 Virtualization platforms have multiple ways of addressing how memory is used by VMs. Memory ballooning is one technique that reactively allows a hypervisor to reclaim unused memory from VMs dynamically using a guest driver that tricks the guest OS into freeing up memory not in use. This causes the Guest OS to leverage its local swap file, and could potentially introduce latency.
 
 Memory tiering, using NVMes, is a newer, proactive mechanism that migrates inactive data to faster storage to free up memory. This feature is transparent to the VMs, and can help improve VM density. This feature requires [vSphere 9](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-resource-management/memory-tiering-over-nvme.html).
+
+:::info
+
+Memory tiering has different names, depending on the virtualization platform. This may be called memory overcommit acceleration, swap-to-fast storage, or persistent/storage-class memory. Check with your virtualization vendor to determine what features are available for proactive memory management.
+
+:::
 
 ### KubeVirt Constraint
 
@@ -67,11 +73,10 @@ You can also do per-VM settings. These can be applied on individual VMs or, to e
 | Setting | Description | UI Support |
 |--|--|--|
 | `overcommitGuestOverhead` | Instructs KubeVirt not to charge the VM's memory request for hypervisor overhead (typically ~100–200 MB per VM). Allows tighter resource packing. | YAML only |
-| `autoattachGraphicsDevice: false` | Removes the virtual graphics/display device for VMs that don't need a console (headless servers). Saves exactly 16 MB per VM and also disables VNC access — appropriate for server workloads only. | Yes (UI toggle) |
+| `autoattachGraphicsDevice: false` | Removes the virtual graphics/display device for VMs that don't need a console (headless mode servers). Saves exactly 16 MB per VM and also disables VNC access — appropriate for server workloads only. | Yes (UI toggle) |
 | `memory.guest > requests.memory` | The VM's guest OS "sees" more RAM than Kubernetes has reserved for the pod. Allows the guest to use more memory than formally requested, at the operator's discretion. | Partial (YAML) |
 
-# GET IMAGE OF autoattachGraphic
-
+The following is an example of per-VM memory configuration.
 
 ```json title=”Example VM Configuration”
 spec:
@@ -84,6 +89,12 @@ spec:
     memory:
       guest: 6Gi
 ```
+
+### Headless mode
+
+Enabling **Headless mode** can save 16MB by disabling the graphical device. However, this also disables VNC access to the VM. 
+
+![Diagram from VMO CPU memory overcommitment doc](/vm-management_vmo_optimization_headless-mode-ui-4-9.webp)
 
 ## Kernel Same-page Merging (KSM)
 
@@ -117,9 +128,17 @@ additionalConfig:
 
 ## CPU Pinning (Performance Optimization)
 
-CPU Pinning, or CPU affinity, is the technique of dedicating one or more host Physical CPU (PCPU) cores to a specific workload, preventing the operating system scheduler from migrating that workload. This eliminates the performance-degrading effects of context switching, cache misses, and resource contention.
+CPU Pinning, or CPU affinity, is the technique of dedicating one or more host physical CPU (PCPU) cores to a specific workload, preventing the operating system scheduler from migrating that workload. This eliminates the performance-degrading effects of context switching, cache misses, and resource contention.
 
-In a virtualized KubeVirt environment, this is achieved by integrating the VMI specification with the underlying host resource management provided by the Kubelet. The goal is to provide host-level performance characteristics to the guest Virtual Machine (VM).
+In a virtualized KubeVirt environment, this is achieved by integrating the VMI specification with the underlying host resource management provided by the Kubelet. The goal is to provide host-level performance characteristics to the guest Virtual Machine (VM). To implement CPU pinning, there are three main components that need to be adjusted: 
+
+- the [kubelet](#adjust-the-kubelet)
+- the [KubeVirt feature gates](#enable-kubevirt-feature-gates)
+- the [VMI specification](#virtualmachineinstance-vmi-specification)
+
+### Adjust the Kubelet
+
+The Kubelet on the host node must be configured to enable static, exclusive resource allocation. This sets the foundation for a Guaranteed Quality-of-Service (QoS) environment.
 
 | Setting | Value | Impact |
 |---------|-------|--------|
@@ -130,11 +149,9 @@ In a virtualized KubeVirt environment, this is achieved by integrating the VMI s
 | `topology-manager-scope` | `pod` | Applies the single-numa-node policy at the VMI (Pod) level. |
 | `reserved-memory` | `0:memory=<reservedMemory>Mi` | Defines a configurable reserved memory region on a specific NUMA node (e.g., node 0) for the operating system and Kubelet operations, protecting system stability. |
 
-
 ### Enable KubeVirt Feature Gates
 
-The KubeVirt operator configuration must explicitly enable features that allow the virtualization layer to interact with the Kubelet's advanced resource managers. Specifically, enable `NUMA` and `CPUManager`. 
-
+The KubeVirt operator configuration must explicitly enable features that allow the virtualization layer to interact with the Kubelet's advanced resource managers. Specifically, enable `NUMA` and `CPUManager`.
 
 ### VirtualMachineInstance (VMI) Specification
 
@@ -180,38 +197,6 @@ Requests and limits must be equal to achieve Guaranteed QoS.
 
 ## Best Practices
 
-- Start with conservative overcommit (120–150%)  
-- Use KSM for homogeneous workloads  
-- Enable headless mode for server workloads  
+There are some general best practises to keep in mind. It is best to start with conservative overcommit (120–150%) for memory. You can increase this gradually overtime. You should also enable headless mode for server workloads to meanfully reduce memory usage. KSM for homogeneous workloads can further increase these benefits.
 
-### Monitor
-
-- Memory pressure  
-- OOM (Out-of-Memory) events  
-
-### Avoid Overcommit For
-
-- Real-time applications  
-- Memory-intensive databases  
-
-## Limitations & Roadmap
-
-- No support for memory ballooning today  
-- Dependent on KubeVirt roadmap  
-
-Future improvements may include:
-
-- Dynamic memory reclaim  
-- Enhanced observability  
-
-## Summary
-
-VMO provides meaningful memory optimization today through:
-
-- Cluster-level overcommit  
-- Per-VM tuning  
-- Kernel Same-page Merging (KSM)  
-
-These features enable higher VM density and reduced infrastructure costs.
-
-
+It is important to monitor the environment for memory pressure and Out-of-Memory (OOM) events. Additionally, real-time applications and memory-intensive databases may not benefit from these adjustments.
