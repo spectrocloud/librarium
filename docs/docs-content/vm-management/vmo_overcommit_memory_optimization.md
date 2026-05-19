@@ -187,7 +187,7 @@ foundation for a Guaranteed Quality-of-Service (QoS) environment.
 
 ### Enable KubeVirt Feature Gates
 
-The KubeVirt operator configuration must explicitly enable features that allow the virtualization layer to interact with
+The KubeVirt operator configuration must explicitly enable [features](https://kubevirt.io/user-guide/cluster_admin/activating_feature_gates/) that allow the virtualization layer to interact with
 the Kubelet's advanced resource managers. Specifically, enable `NUMA` and `CPUManager`.
 
 ### VirtualMachineInstance (VMI) Specification
