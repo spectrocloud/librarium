@@ -26,9 +26,6 @@ IPAM node pools can be assigned when deploying the following types of clusters:
   control plane pool only. The control plane pool must have **Use LXD VMs** enabled. IPAM node pools cannot be assigned
   to MAAS worker pools.
 
-This guide provides instructions on how to create an IPAM node pool for a PCG deployed in a VMware vSphere or MAAS
-environment.
-
 :::info
 
 You cannot create IPAM node pools for Apache CloudStack through Palette. Apache CloudStack natively supports IPAM and
