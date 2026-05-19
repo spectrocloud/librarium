@@ -189,8 +189,7 @@ the Kubelet's advanced resource managers. Specifically, enable `NUMA` and `CPUMa
 
 The VMI manifest defines the exact CPU topology and resource requirements that trigger the CPU pinning mechanism. To
 achieve Guaranteed QoS and subsequent pinning, the VMI requests must equal limits for both CPU and Memory. In addition,
-the host node must have sufficient free, unreserved CPU and memory resources on a single NUMA node to satisfy the VMI's
-requirements.
+the host node must have sufficient free, unreserved CPU and memory resources on a single NUMA node to satisfy the VMI requirements.
 
 ```yaml
 apiVersion: kubevirt.io/v1
