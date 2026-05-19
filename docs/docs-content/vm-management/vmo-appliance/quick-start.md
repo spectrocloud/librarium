@@ -27,7 +27,11 @@ This guide walks you through accessing VMO Manager, logging in, viewing the dash
     2. Enter the local admin username (default: `admin`) and password.
     3. The password is typically set via the `LOCAL_ADMIN_PASSWORD` environment variable during initial deployment.
 
-    > **Tip:** Local auth is intended for Day 0 bootstrap. Configure Keycloak for production use. See [Local Auth](./user/access-management/local-auth.md) for details.
+    :::tip
+    
+    Local auth is intended for Day 0 bootstrap. Configure Keycloak for production use. See [Local Auth](./user/access-management/local-auth.md) for details.
+
+    :::
 
     </TabItem>
 

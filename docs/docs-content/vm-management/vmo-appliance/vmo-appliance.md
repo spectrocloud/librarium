@@ -1,8 +1,8 @@
 ---
-sidebar_label: "VMO Appliance"
-title: "VMO Appliance"
-description: "Learn about Palette VMO Appliance"
+sidebar_label: "VM Launchpad Appliance"
+title: "VM Launchpad Appliance"
+description: "Learn about Palette VM Launchpad Appliance"
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vmo", "vmo appliance", "quick start"]
+tags: ["vmo", "vm launchpad appliance", "quick start"]
 ---
