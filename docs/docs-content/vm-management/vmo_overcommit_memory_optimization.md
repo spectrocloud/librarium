@@ -25,21 +25,16 @@ help achieve higher density and resource optimization, there are five features y
 
 ### Memory Overcommit
 
-Memory is typically the first resource that is constrained in VM-dense environments. By using overcommit strategies, you
-can increase VM density per host, reduce how much you spend on hardware, and improve overall resource utilization. There
-are trade-offs with memory overcommitment, including potential resource contention. However, this method requires
-workload awareness and regular monitoring.
+Memory is typically the first resource constrained in VM-dense environments. Overcommit strategies can increase VM density per host, reduce hardware costs, and improve overall resource utilization. However, memory overcommitment introduces trade-offs, including potential resource contention, and requires workload awareness and regular monitoring.
 
 Memory overcommit allows allocating more virtual memory to VMs than physically exists on a host. For example, if you
-have a host with 64GB of memory, and allocate 96GB of memory to the VMs running on that host, you are overcommitting by
-32GB. This works because most VMs do not use peak memory simultaneously, and most virtualization platforms have internal
+have a host with 64 GB of memory, and allocate 96 GB of memory to the VMs running on that host, you are overcommitting by
+32 GB. This works because most VMs do not use peak memory simultaneously, and most virtualization platforms have internal
 memory optimizations in place to minimize contention between the VMs.
 
 ### Memory Ballooning vs Memory Tiering
 
-Virtualization platforms have multiple ways of addressing how memory is used by VMs. Memory ballooning is one technique
-that reactively allows a hypervisor to reclaim unused memory from VMs dynamically using a guest driver that tricks the
-guest OS into freeing up memory not in use. This causes the Guest OS to leverage its local swap file, and could
+Virtualization platforms have multiple ways of addressing how memory is used by VMs. Memory ballooning is a technique that enables a hypervisor to dynamically reclaim unused memory from VMs by using a guest driver that causes the guest OS to release unneeded memory. This causes the Guest OS to leverage its local swap file, and could
 potentially introduce latency.
 
 Memory tiering, using NVMes, is a newer, proactive mechanism that migrates inactive data to faster storage to free up
@@ -93,7 +88,7 @@ standardize configurations, avoids per-VM manual tuning, and ensures consistency
 | Setting                           | Description                                                                                                                                                                                             | UI Support      |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `overcommitGuestOverhead`         | Instructs KubeVirt not to charge the VM's memory request for hypervisor overhead (typically ~100–200 MB per VM). Allows tighter resource packing.                                                       | YAML only       |
-| `autoattachGraphicsDevice: false` | Removes the virtual graphics/display device for VMs that don't need a console (headless mode servers). Saves exactly 16 MB per VM and also disables VNC access — appropriate for server workloads only. | Yes (UI toggle) |
+| `autoattachGraphicsDevice: false` | Removes the virtual graphics/display device for VMs that don't need a console (headless mode servers). Saves exactly 16 MB per VM and also disables VNC access. This setting is appropriate for server workloads only. | Yes (UI toggle) |
 | `memory.guest > requests.memory`  | The VM's guest OS "sees" more RAM than Kubernetes has reserved for the pod. Allows the guest to use more memory than formally requested, at the operator's discretion.                                  | Partial (YAML)  |
 
 The following is an example of per-VM memory configuration.
@@ -112,7 +107,7 @@ spec:
 
 ### Headless mode
 
-Enabling **Headless mode** can save 16MB by disabling the graphical device. However, this also disables VNC access to
+Enabling **Headless mode** can save 16 MB by disabling the graphical device. However, this also disables VNC access to
 the VM.
 
 ![Diagram from VMO CPU memory overcommitment doc](/vm-management_vmo_optimization_headless-mode-ui-4-9.webp)
@@ -127,7 +122,7 @@ This feature can result in additional CPU overhead from memory scanning.
 ### Configure KSM
 
 You can configure KSM to run on all nodes or specific nodes. When enabling this feature, `virt-handler` enables KSM. The
-nodes are labelled `kubevirt.io/ksm-enabled=true` so they are discoverable, and schedulable on KSM-enabled nodes.
+nodes are labelled `kubevirt.io/ksm-enabled=true` so they are discoverable, and can be scheduled on KSM-enabled nodes.
 
 :::warning
 
@@ -155,13 +150,12 @@ additionalConfig:
 
 ## CPU Pinning (Performance Optimization)
 
-CPU Pinning, or CPU affinity, is the technique of dedicating one or more host physical CPU (PCPU) cores to a specific
+CPU Pinning, or CPU affinity, is the technique of dedicating one or more host Physical CPU (PCPU) cores to a specific
 workload, preventing the operating system scheduler from migrating that workload. This eliminates the
 performance-degrading effects of context switching, cache misses, and resource contention.
 
 In a virtualized KubeVirt environment, this is achieved by integrating the VMI specification with the underlying host
-resource management provided by the Kubelet. The goal is to provide host-level performance characteristics to the guest
-Virtual Machine (VM). To implement CPU pinning, there are three main components that need to be adjusted:
+resource management provided by the Kubelet. The goal is to provide host-level performance characteristics to the VM. To implement CPU pinning, three main components need to be adjusted:
 
 - the [kubelet](#adjust-the-kubelet)
 - the [KubeVirt feature gates](#enable-kubevirt-feature-gates)
@@ -175,11 +169,11 @@ foundation for a Guaranteed Quality-of-Service (QoS) environment.
 | Setting                      | Value                         | Impact                                                                                                                                                                                              |
 | ---------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cpu-manager-policy`         | `static`                      | Enables the CPU Manager to reserve exclusive CPU cores for Guaranteed QoS pods.                                                                                                                     |
-| `cpu-manager-policy-options` | `full-pcpus-only=true`        | Ensures that only full physical cores (PCPUs) are allocated, preventing allocation of individual hyper-threads (HT) from the same core to different workloads, thereby maintaining cache isolation. |
+| `cpu-manager-policy-options` | `full-pcpus-only=true`        | Ensures that only full physical cores (PCPUs) are allocated, preventing allocation of individual hyper-threads from the same core to different workloads, thereby maintaining cache isolation. |
 | `memory-manager-policy`      | `static`                      | Enables memory alignment with the dedicated CPU resources (NUMA affinity).                                                                                                                          |
 | `topology-manager-policy`    | `single-numa-node`            | CRITICAL: Forces all resources (CPU, memory, devices) required by a pod/VMI to be allocated from a single NUMA node to minimize inter-node latency.                                                 |
 | `topology-manager-scope`     | `pod`                         | Applies the single-numa-node policy at the VMI (Pod) level.                                                                                                                                         |
-| `reserved-memory`            | `0:memory=<reservedMemory>Mi` | Defines a configurable reserved memory region on a specific NUMA node (e.g., node 0) for the operating system and Kubelet operations, protecting system stability.                                  |
+| `reserved-memory`            | `0:memory=<reservedMemory>Mi` | Defines a configurable reserved memory region on a specific NUMA node (for example, node 0) for the operating system and Kubelet operations, protecting system stability.                                  |
 
 ### Enable KubeVirt Feature Gates
 
@@ -188,15 +182,10 @@ the Kubelet's advanced resource managers. Specifically, enable `NUMA` and `CPUMa
 
 ### VirtualMachineInstance (VMI) Specification
 
-Kubernetes QoS: The VMI must have a Guaranteed QoS class (i.e., requests == limits for both CPU and Memory) to be
-eligible for static CPU management.
-
-Resource Availability: The host node must have sufficient free, unreserved CPU and memory resources on a single NUMA
+The VMI manifest defines the exact CPU topology and resource requirements that trigger the CPU pinning mechanism. To
+achieve Guaranteed QoS and subsequent pinning, the VMI requests must equal limits for both CPU and Memory. In addition, the host node must have sufficient free, unreserved CPU and memory resources on a single NUMA
 node to satisfy the VMI's requirements.
 
-The VMI manifest defines the exact CPU topology and resource requirements that trigger the CPU pinning mechanism. To
-achieve Guaranteed QoS and subsequent pinning, the VMI must specify requests and limits for CPU and memory that are
-equal and integral.
 
 ```yaml
 apiVersion: kubevirt.io/v1
@@ -233,9 +222,9 @@ Requests and limits must be equal to achieve Guaranteed QoS.
 
 ## Best Practices
 
-There are some general best practises to keep in mind. It is best to start with conservative overcommit (120–150%) for
-memory. You can increase this gradually overtime. You should also enable headless mode for server workloads to meanfully
-reduce memory usage. KSM for homogeneous workloads can further increase these benefits.
+Keep a few general best practices to keep in mind. It is best to start with conservative overcommit (120–150%) for
+memory, and increase it gradually overtime. Enable headless mode for server workloads to meaningfully
+reduce memory usage, and KSM for homogeneous workloads can further increase these benefits.
 
-It is important to monitor the environment for memory pressure and Out-of-Memory (OOM) events. Additionally, real-time
+It is important to monitor the environment for memory pressure and Out-Of-Memory (OOM) events. Additionally, real-time
 applications and memory-intensive databases may not benefit from these adjustments.
