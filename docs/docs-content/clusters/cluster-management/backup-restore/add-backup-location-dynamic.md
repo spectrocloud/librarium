@@ -164,15 +164,6 @@ cloud account.
 6. Log in to your AWS Account and create a new IAM role. Attach the IAM policy specified in the
    [Prerequisites](#prerequisites) section. Use the following configuration while creating the IAM role.
 
-| **AWS Console Field** | **Value**                                                                           |
-| --------------------- | ----------------------------------------------------------------------------------- |
-| Trusted entity type   | Select _AWS account_                                                                |
-| AWS account           | Select the **Another AWS account** radio button.                                    |
-| AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
-| Options               | Select the **Require external ID** checkbox.                                        |
-| External ID           | Use the one displayed in Palette. Palette generates the external ID.                |
-| Permissions policies  | Attach the IAM policy defined in the [Prerequisites](#prerequisites) section above. |
-| Role name             | Provide a name of your choice.                                                      |
    | **AWS Console Field** | **Value**                                                                           |
    | --------------------- | ----------------------------------------------------------------------------------- |
    | Trusted entity type   | Select _AWS account_                                                                |
@@ -186,13 +177,13 @@ cloud account.
 
 <br />
 
-   ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
+![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role.
 
 <br />
 
-   ![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
+![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. Copy the IAM role Amazon Resource Name (ARN)
 
@@ -210,8 +201,8 @@ cloud account.
 You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
 AWS STS to authenticate Palette with the S3 bucket in the same AWS account you deploy your Kubernetes cluster.
 
-If you are using an EKS workload cluster, complete the following steps to authorize Velero pods to access the backup
-location.
+<details>
+<summary>EKS workload clusters: Authorize Velero pods to access the backup location</summary>
 
 12. Retrieve the OIDC issuer URL for the EKS cluster. Replace `[CLUSTER-NAME]` and `[REGION]` with your cluster name and
     AWS region.
@@ -375,6 +366,13 @@ location.
 
     A successful update returns no output.
 
+17. In Palette, navigate to **Project Settings** > **Backup Locations** and find the backup location. Confirm the status
+    displays as **Available**. If the status displays as **Unavailable** and the error details include
+    `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
+    and AWS account ID are correct.
+
+</details>
+
 ### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -385,11 +383,6 @@ location.
 
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you
    successfully added a new backup location.
-
-5. If you are using an EKS workload cluster, confirm the backup location status displays as **Available**. If the status
-   displays as **Unavailable** and the error details include
-   `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
-   and AWS account ID are correct.
 
 ## Multiple Cloud Accounts with AWS STS
 
@@ -484,7 +477,9 @@ multiple cloud accounts.
 
 - If you are using an EKS workload cluster in AWS Account A, you must also have:
 
-  - The AWS CLI configured with credentials that have permission to update IAM role trust policies in AWS Account B.
+  - The AWS CLI configured with credentials for AWS Account A that have permission to describe EKS clusters and list IAM
+    OIDC providers.
+  - The AWS CLI configured with credentials for AWS Account B that have permission to update IAM role trust policies.
   - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
     [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) guide for installation
     instructions.
@@ -625,11 +620,11 @@ for a deep dive into the IAM trust policies.
 You now have a backup location for Palette to use to store the backup of your clusters or workspaces. This backup
 location is using AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
 
-If you are using an EKS workload cluster in AWS Account A, complete the following steps to authorize Velero pods to
-access the backup location.
+<details>
+<summary>EKS workload clusters: Authorize Velero pods to access the backup location</summary>
 
-14. Retrieve the OIDC issuer URL for the EKS cluster in AWS Account A. Replace `[CLUSTER-NAME]` and `[REGION]` with your
-    cluster name and AWS region.
+14. Ensure your AWS CLI is configured for AWS Account A, then retrieve the OIDC issuer URL for the EKS cluster. Replace
+    `[CLUSTER-NAME]` and `[REGION]` with your cluster name and AWS region.
 
     ```shell
     aws eks describe-cluster \
@@ -798,6 +793,13 @@ access the backup location.
 
     A successful update returns no output.
 
+19. In Palette, navigate to **Project Settings** > **Backup Locations** and find the backup location. Confirm the status
+    displays as **Available**. If the status displays as **Unavailable** and the error details include
+    `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
+    and AWS account ID are correct.
+
+</details>
+
 ### Validate
 
 Use the following steps to validate adding the new backup location.
@@ -810,11 +812,6 @@ Use the following steps to validate adding the new backup location.
 
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you have
    successfully added a new backup location.
-
-5. If you are using an EKS workload cluster, confirm the backup location status displays as **Available**. If the status
-   displays as **Unavailable** and the error details include
-   `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
-   and AWS account ID are correct.
 
 ## Next Steps
 
