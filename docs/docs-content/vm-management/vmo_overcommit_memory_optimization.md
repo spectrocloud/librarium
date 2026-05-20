@@ -15,24 +15,24 @@ To help achieve higher density and resource optimization, there are several feat
 
 ## Optimization Features
 
-VMO provides optimization at two levels:
+VMO provides memory optimization at two levels:
 
-- **Cluster level** - Memory overcommit, KSM, and CPU pinning control how physical resources are shared across all VMs.
+- **Cluster level** - Memory overcommit, Kernel Same-Page Merging (KSM), and CPU pinning control how physical resources are shared across all VMs.
 - **Individual VM level** - Guest memory tuning and headless mode reduce per-VM overhead.
 
-| Feature                                              | Scope                                     | Advantages                                          | Disadvantages                               |
-| ---------------------------------------------------- | ----------------------------------------- | --------------------------------------------------- | ------------------------------------------- |
-| [Memory overcommit](#memory-overcommit)              | [Cluster](#cluster-level-memory-settings) | Low VM density due to unused reserved memory.       | Risk of contention under peak load.         |
-| [KSM](#kernel-same-page-merging-ksm)                 | [Cluster](#configure-ksm)                 | Duplicate memory pages across similar VMs           | CPU overhead from continuous page scanning. |
-| [CPU pinning](#cpu-pinning-performance-optimization) | [Cluster](#cluster-level-memory-settings) | Unpredictable latency from CPU scheduling.          | Pinned cores are unavailable to other VMs.  |
-| [Headless mode](#headless-mode)                      | VM                                        | Frees up wasted memory on unused graphical devices. | No VNC console access.                      |
-| [Guest memory tuning](#per-vm-guest-memory-settings) | VM                                        | Rigid memory allocation that ignores actual usage.  | Guest may experience pressure under load.   |
+| Feature                                              | Scope                                     | Advantages                                                                  | Disadvantages                                            |
+| ---------------------------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [Memory overcommit](#memory-overcommit)              | [Cluster](#cluster-level-memory-settings) | Increases VM density by reclaiming unused reserved memory.                   | Risks resource contention under peak load.               |
+| [Kernel Same-Page Merging (KSM)](#kernel-same-page-merging)                     | [Cluster](#ksm-configuration)             | Reduces memory consumption by merging duplicate pages across similar VMs.   | Adds CPU overhead from continuous page scanning.         |
+| [CPU pinning](#cpu-pinning-performance-optimization)                          | [Cluster](#cluster-level-memory-settings) | Eliminates unpredictable latency by dedicating cores to specific workloads. | Removes pinned cores from the shared scheduling pool.    |
+| [Headless mode](#ui-configuration-headless-mode)                      | VM                                        | Frees up wasted memory on unused graphical devices.                         | Disables Virtual Network Computing (VNC) console access to the VM.                   |
+| [Guest memory tuning](#per-vm-guest-memory-settings) | VM                                        | Allows guests to use more memory than formally reserved by Kubernetes.      | Exposes the guest to memory pressure under contention.   |
 
 ### Memory Overcommit
 
 Memory is typically the first resource constrained in VM-dense environments. Memory overcommit allows allocating more
-virtual memory to VMs than physically exists on a host. For example, if you have a host with 64 GB of memory, and
-allocate 96 GB of memory to the VMs running on that host, you are overcommitting by 32 GB. This works because most VMs
+virtual memory to VMs than physically exists on a host. For example, if you have a host with 64 GB of memory and
+you allocate 96 GB of memory to the VMs running on that host, you are overcommitting by 32 GB. This works because most VMs
 do not use peak memory simultaneously, and most virtualization platforms have internal memory optimizations in place to
 minimize contention between the VMs.
 
@@ -61,13 +61,11 @@ acceleration, swap-to-fast storage, or persistent/storage-class memory.
 ### VMO Memory Handling
 
 VMO is built on [KubeVirt](https://kubevirt.io/), which runs VMs as Kubernetes pods. Memory for VMs is controlled
-through [Kubernetes requests and limits
-(https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/). Because of this architecture, there is
+through [Kubernetes requests and limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/). Because of this architecture, there is
 no native VM-level dynamic memory reclamation. Additionally, KubeVirt does not support
 [balloon drivers](https://kubevirt.io/user-guide/compute/node_overcommit/).
 
-Instead, VMO provides memory optimization through cluster-wide overcommit ratios, per-VM guest memory tuning, and Kernel
-Same-Page Merging (KSM).
+Instead, VMO provides memory optimization through cluster-wide overcommit ratios, per-VM guest memory tuning, and KSM.
 
 ### Cluster-Level Memory Settings
 
@@ -94,10 +92,10 @@ inherit consistent optimization settings.
 
 #### YAML Configuration
 
-| Setting                              | Description                                                                                                                                       | Location |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `overcommitGuestOverhead`            | Instructs KubeVirt not to charge the VM's memory request for hypervisor overhead (typically ~100–200 MB per VM). Allows tighter resource packing. | YAML     |
-| `memory.guest` and `requests.memory` | The VM's guest OS can use more RAM than Kubernetes has reserved for the pod, at the operator's discretion.                                        | YAML     |
+| Setting                              | Description                                                                                                                                       | 
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | 
+| `overcommitGuestOverhead`            | Instructs KubeVirt not to charge the VM's memory request for hypervisor overhead (typically ~100–200 MB per VM). Allows tighter resource packing.  |
+| `memory.guest` and `requests.memory` | The VM's guest OS can use more RAM than Kubernetes has reserved for the pod, at the operator's discretion.                                        | 
 
 The following is an example of per-VM memory configuration. In this example, Kubernetes reserves 4 Gi for the pod, but
 the guest OS sees 6 Gi of available memory.
@@ -114,26 +112,26 @@ spec:
       guest: 6Gi
 ```
 
-#### Headless Mode
+#### UI Configuration (Headless Mode)
 
 Enabling headless mode removes the virtual graphics device from a VM, saving 16 MB of memory per VM. This also disables
 VNC console access, so it is appropriate only for server workloads that do not require a graphical console.
 
-You can enable headless mode through the Palette UI when creating or editing a VM.
+You can enable headless mode through the VMO UI when creating or editing a VM.
 
 ![Diagram from VMO CPU memory overcommitment doc](/vm-management_vmo_optimization_headless-mode-ui-4-9.webp)
 
 ## Kernel Same-Page Merging (KSM)
 
-[Kernel Same-page Merging (KSM)](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_tuning_and_optimization_guide/chap-ksm)
-is a Linux kernel feature allows deduplication of infrequently updated memory pages across VMs, and merges those to free
-memory. This is especially effective when multiple VMs run the same OS image with the same application behavior. This
+[KSM](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/virtualization_tuning_and_optimization_guide/chap-ksm)
+is a Linux kernel feature allows deduplication of infrequently updated memory pages across VMs and merges those to free
+memory. This is especially effective when multiple VMs run the same OS image with the same application behavior. However, this
 feature can result in additional CPU overhead from memory scanning.
 
 ### Configure KSM
 
 You can configure KSM to run on all nodes or specific nodes. When enabling this feature, `virt-handler` enables KSM. The
-nodes are labelled `kubevirt.io/ksm-enabled=true` so they are discoverable, and can be scheduled on KSM-enabled nodes.
+nodes are labelled `kubevirt.io/ksm-enabled=true` so they are discoverable and can be scheduled on KSM-enabled nodes.
 
 :::warning
 
@@ -161,17 +159,17 @@ additionalConfig:
 
 ## CPU Pinning (Performance Optimization)
 
-CPU pinning, or CPU affinity, is the technique of dedicating one or more host physical CPU cores to a specific workload,
+CPU pinning (also known as CPU affinity) is the technique of dedicating one or more host physical CPU cores to a specific workload,
 preventing the OS scheduler from migrating that workload. This eliminates the performance-degrading effects of context
 switching, cache misses, and resource contention.
 
-In a virtualized KubeVirt environment, this is achieved by integrating the VirtualMachineInstance (VMI) specification
+In a virtualized KubeVirt environment, this is achieved by integrating the Virtual Machine Instance (VMI) specification
 with the underlying host resource management provided by the Kubelet. The goal is to provide host-level performance
 characteristics to the VM. To implement CPU pinning, you must adjust the following components:
 
 - [Kubelet](#adjust-the-kubelet)
-- [KubeVirt feature gates](#enable-kubevirt-feature-gates)
-- [VMI specification](#virtualmachineinstance-vmi-specification)
+- [KubeVirt Feature Gates](#enable-kubevirt-feature-gates)
+- [VMI Specification](#virtual-machine-instance-vmi-specification)
 
 ### Adjust the Kubelet
 
@@ -190,13 +188,12 @@ foundation for a Guaranteed Quality-of-Service (QoS) environment.
 ### Enable KubeVirt Feature Gates
 
 The KubeVirt operator configuration must explicitly enable
-[features](https://kubevirt.io/user-guide/cluster_admin/activating_feature_gates/) that allow the virtualization layer
+[feature gates](https://kubevirt.io/user-guide/cluster_admin/activating_feature_gates/) that allow the virtualization layer
 to interact with the Kubelet's advanced resource managers. Specifically, enable `NUMA` and `CPUManager`.
 
-### VirtualMachineInstance (VMI) Specification
+### Virtual Machine Instance (VMI) Specification
 
-The VMI manifest defines the exact CPU topology and resource requirements that trigger the CPU pinning mechanism. To
-achieve Guaranteed QoS and subsequent pinning, the VMI requests must equal limits for both CPU and memory. In addition,
+The `VirtualMachineInstance` manifest defines the exact CPU topology and resource requirements that trigger the CPU pinning mechanism. To achieve Guaranteed QoS and enable pinning, the VMI `resources.requests` values for CPU and memory must be the same as the CPU and memory values listed in `resources.limits`. In addition,
 the host node must have sufficient free, unreserved CPU and memory resources on a single NUMA node to satisfy the VMI
 requirements.
 
@@ -227,11 +224,6 @@ spec:
 
 ```
 
-:::tip
-
-Requests and limits must be equal to achieve Guaranteed QoS.
-
-:::
 
 ## Best Practices
 
@@ -254,6 +246,3 @@ Consider the following guidance when planning overcommit and optimization strate
 - **Avoid overcommitting memory for real-time or database workloads** - Applications with consistent high memory
   utilization do not benefit from overcommit and may experience instability.
 
-## Resources
-
-[Over-Commit Resources to Enhance VM Performance](./create-manage-vm/advanced-topics/vm-oversubscription.md)
