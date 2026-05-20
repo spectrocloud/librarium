@@ -186,7 +186,7 @@ cloud account.
 
 <br />
 
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
+   ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role.
 
