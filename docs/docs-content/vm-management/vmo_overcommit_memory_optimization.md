@@ -19,25 +19,25 @@ VMO provides optimization at two levels:
 - **Cluster level** - Memory overcommit, KSM, and CPU pinning control how physical resources are shared across all VMs.
 - **Individual VM level** - Guest memory tuning and headless mode reduce per-VM overhead.
 
-| Feature                                                    | Scope                                              | Advantages                                    | Disadvantages                              |
-| ---------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------- | ------------------------------------------ |
-| [Memory overcommit](#memory-overcommit)                    | [Cluster](#cluster-level-memory-settings)          | Low VM density due to unused reserved memory. | Risk of contention under peak load.        |
-| [KSM](#kernel-same-page-merging-ksm)                       | [Cluster](#configure-ksm) | Duplicate memory pages across similar VMs          | CPU overhead from continuous page scanning.   |
-| [CPU pinning](#cpu-pinning-performance-optimization)       | [Cluster](#cluster-level-memory-settings)          | Unpredictable latency from CPU scheduling.    | Pinned cores are unavailable to other VMs. |
-| [Headless mode](#headless-mode)                            | VM                                                 | Frees up wasted memory on unused graphical devices.    | No VNC console access.                     | 
-| [Guest memory tuning](#per-vm-guest-memory-settings)       | VM                                                 | Rigid memory allocation that ignores actual usage. | Guest may experience pressure under load.     |
+| Feature                                              | Scope                                     | Advantages                                          | Disadvantages                               |
+| ---------------------------------------------------- | ----------------------------------------- | --------------------------------------------------- | ------------------------------------------- |
+| [Memory overcommit](#memory-overcommit)              | [Cluster](#cluster-level-memory-settings) | Low VM density due to unused reserved memory.       | Risk of contention under peak load.         |
+| [KSM](#kernel-same-page-merging-ksm)                 | [Cluster](#configure-ksm)                 | Duplicate memory pages across similar VMs           | CPU overhead from continuous page scanning. |
+| [CPU pinning](#cpu-pinning-performance-optimization) | [Cluster](#cluster-level-memory-settings) | Unpredictable latency from CPU scheduling.          | Pinned cores are unavailable to other VMs.  |
+| [Headless mode](#headless-mode)                      | VM                                        | Frees up wasted memory on unused graphical devices. | No VNC console access.                      |
+| [Guest memory tuning](#per-vm-guest-memory-settings) | VM                                        | Rigid memory allocation that ignores actual usage.  | Guest may experience pressure under load.   |
 
 ### Memory Overcommit
 
-Memory is typically the first resource constrained in VM-dense environments. Memory overcommit allows allocating more virtual memory to VMs than physically exists on a host. For example, if you
-have a host with 64 GB of memory, and allocate 96 GB of memory to the VMs running on that host, you are overcommitting
-by 32 GB. This works because most VMs do not use peak memory simultaneously, and most virtualization platforms have
-internal memory optimizations in place to minimize contention between the VMs.
- 
-Overcommit strategies can increase VM
-density per host, reduce hardware costs, and improve overall resource utilization. However, memory overcommitment
-introduces trade-offs, including potential resource contention, and requires workload awareness and regular monitoring.
+Memory is typically the first resource constrained in VM-dense environments. Memory overcommit allows allocating more
+virtual memory to VMs than physically exists on a host. For example, if you have a host with 64 GB of memory, and
+allocate 96 GB of memory to the VMs running on that host, you are overcommitting by 32 GB. This works because most VMs
+do not use peak memory simultaneously, and most virtualization platforms have internal memory optimizations in place to
+minimize contention between the VMs.
 
+Overcommit strategies can increase VM density per host, reduce hardware costs, and improve overall resource utilization.
+However, memory overcommitment introduces trade-offs, including potential resource contention, and requires workload
+awareness and regular monitoring.
 
 ### Traditional Memory Handling
 
@@ -252,7 +252,6 @@ Consider the following guidance when planning overcommit and optimization strate
 
 - **Avoid overcommitting memory for real-time or database workloads** - Applications with consistent high memory
   utilization do not benefit from overcommit and may experience instability.
-
 
 ## Resources
 
