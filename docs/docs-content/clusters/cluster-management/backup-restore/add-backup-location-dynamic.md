@@ -192,7 +192,7 @@ cloud account.
 
 <br />
 
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
+   ![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. Copy the IAM role Amazon Resource Name (ARN)
 
