@@ -92,6 +92,16 @@ additionalDevConfig:
 You can apply per-VM memory settings to individual VMs or to a VM template so that all VMs provisioned from the template
 inherit consistent optimization settings.
 
+```json title="Example Per-VM Overcommit" {5}
+spec:
+  terminationGracePeriodSeconds: 30
+  domain:
+    resources:
+      overcommitGuestOverhead: true
+      requests:
+        memory: 1024M
+```
+
 #### YAML Configuration
 
 | Setting                              | Description                                                                                                                                       |
