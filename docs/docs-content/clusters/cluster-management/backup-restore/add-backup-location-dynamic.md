@@ -173,7 +173,16 @@ cloud account.
 | External ID           | Use the one displayed in Palette. Palette generates the external ID.                |
 | Permissions policies  | Attach the IAM policy defined in the [Prerequisites](#prerequisites) section above. |
 | Role name             | Provide a name of your choice.                                                      |
-| Role description      | Provide an optional description.                                                    |
+   | **AWS Console Field** | **Value**                                                                           |
+   | --------------------- | ----------------------------------------------------------------------------------- |
+   | Trusted entity type   | Select _AWS account_                                                                |
+   | AWS account           | Select the **Another AWS account** radio button.                                    |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
+   | Options               | Select the **Require external ID** checkbox.                                        |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID.                |
+   | Permissions policies  | Attach the IAM policy defined in the [Prerequisites](#prerequisites) section above. |
+   | Role name             | Provide a name of your choice.                                                      |
+   | Role description      | Provide an optional description.                                                    |
 
 <br />
 
