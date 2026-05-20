@@ -20,12 +20,12 @@ VMO provides optimization at two levels:
 - **Individual VM level** - Guest memory tuning and headless mode reduce per-VM overhead.
 
 | Feature                                                    | Scope                                              | Advantages                                    | Disadvantages                              |
-| ---------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------- | ------------------------------------------ | --- |
+| ---------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------- | ------------------------------------------ |
 | [Memory overcommit](#memory-overcommit)                    | [Cluster](#cluster-level-memory-settings]          | Low VM density due to unused reserved memory. | Risk of contention under peak load.        |
-| [KSM](#kernel-same-page-merging) [Cluster](#configure-ksm) | Duplicate memory pages across similar VMs          | CPU overhead from continuous page scanning.   |
+| [KSM](#kernel-same-page-merging-ksm)                       | [Cluster](#configure-ksm) | Duplicate memory pages across similar VMs          | CPU overhead from continuous page scanning.   |
 | [CPU pinning](#cpu-pinning-performance-optimization)       | [Cluster](#cluster-level-memory-settings]          | Unpredictable latency from CPU scheduling.    | Pinned cores are unavailable to other VMs. |
-| [Headless mode](#headless-mode)                            | VM                                                 | Wasted memory on unused graphical devices.    | No VNC console access.                     | VM  |
-| [Guest memory tuning](#per-vm-guest-memory-settings)       | Rigid memory allocation that ignores actual usage. | Guest may experience pressure under load.     |
+| [Headless mode](#headless-mode)                            | VM                                                 | Wasted memory on unused graphical devices.    | No VNC console access.                     | 
+| [VM Guest memory tuning](#per-vm-guest-memory-settings)       | Rigid memory allocation that ignores actual usage. | Guest may experience pressure under load.     |
 
 ### Memory Overcommit
 
