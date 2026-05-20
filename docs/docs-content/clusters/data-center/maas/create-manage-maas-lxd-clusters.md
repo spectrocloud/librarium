@@ -164,8 +164,8 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
     ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
-12. Configure the control plane and worker node pools. The following input fields apply to MAAS node pools. For a detailed
-    list of input fields that are common across environments and their usage, refer to our
+12. Configure the control plane and worker node pools. The following input fields apply to MAAS node pools. For a
+    detailed list of input fields that are common across environments and their usage, refer to our
     [Node Pools](../../cluster-management/node-pool.md#node-pool-configuration-settings) guide. Select **Next** when
     finished.
 
