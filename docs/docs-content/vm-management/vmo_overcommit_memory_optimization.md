@@ -9,8 +9,9 @@ tags: ["vmo", "architecture"]
 
 Virtual Machine Orchestrator (VMO) enables higher VM density on existing infrastructure by leveraging memory overcommit
 and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication. These methods allow
-operators to run more virtual machines per host while reducing physical infrastructure costs. To help achieve higher
-density and resource optimization, there are several features you can use.
+operators to run more VMs per host while reducing physical infrastructure costs. 
+
+To help achieve higher density and resource optimization, there are several features you can use.
 
 ## Optimization Features
 
