@@ -54,7 +54,7 @@ node + two extra) and four for the worker pool (three nodes + one extra).
 If autoscaling is enabled when deploying
 [VMware vSphere clusters](../../data-center/vmware/create-manage-vmware-clusters.md) using an IPAM node pool with
 [static placement configured](../deploy-pcg/vmware.md#static-placement-configuration), the **Maximum size** determines
-the number of IP addresses automatically reserved for worker nodes. During day-2 operations, even if autoscaler is
+the number of IP addresses automatically reserved for worker nodes. During Day-2 operations, even if autoscaler is
 disabled or the **Maximum size** of the worker pool is reduced, the original number of IP addresses remains allocated.
 To release the IP addresses, you must
 [delete the worker node pool](../../cluster-management/node-pool.md#delete-a-node-pool).
