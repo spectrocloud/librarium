@@ -224,7 +224,6 @@ spec:
 
 ```
 
-
 ## Best Practices
 
 Consider the following guidance when planning overcommit and optimization strategies:
@@ -245,4 +244,3 @@ Consider the following guidance when planning overcommit and optimization strate
 
 - **Avoid overcommitting memory for real-time or database workloads** - Applications with consistent high memory
   utilization do not benefit from overcommit and may experience instability.
-
