@@ -37,6 +37,11 @@ tags: ["release-notes"]
   **Tenant Settings** > **Registries**. Use this option to interrupt and restart ongoing synchronization processes that
   have been in progress for at least one hour.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8010 -->
+
+- A list of available and allocated IP addresses is now displayed for VMware vSphere
+  [IP Address Management (IPAM) node pools](../clusters/pcg/manage-pcg/create-manage-node-pool.md).
+
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
