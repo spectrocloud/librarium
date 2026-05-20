@@ -202,7 +202,7 @@ You now have a backup location for Palette to store the backup of your clusters 
 AWS STS to authenticate Palette with the S3 bucket in the same AWS account you deploy your Kubernetes cluster.
 
 <details>
-<summary>EKS workload clusters: Authorize Velero pods to access the backup location</summary>
+<summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
 
 12. Retrieve the OIDC issuer URL for the EKS cluster. Replace `[CLUSTER-NAME]` and `[REGION]` with your cluster name and
     AWS region.
@@ -621,7 +621,7 @@ You now have a backup location for Palette to use to store the backup of your cl
 location is using AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
 
 <details>
-<summary>EKS workload clusters: Authorize Velero pods to access the backup location</summary>
+<summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
 
 14. Ensure your AWS CLI is configured for AWS Account A, then retrieve the OIDC issuer URL for the EKS cluster. Replace
     `[CLUSTER-NAME]` and `[REGION]` with your cluster name and AWS region.
