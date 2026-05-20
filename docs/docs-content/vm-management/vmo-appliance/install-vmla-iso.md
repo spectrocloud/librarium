@@ -14,8 +14,7 @@ instance of Palette and Palette VerteX.
 ## Prerequisites
 
 - An existing airgap instance of Palette or Palette VerteX. Refer to the
-  [Self-Hosted Palette Installation](../enterprise-version/install-palette/install-palette.md) and
-  [Palette VerteX Installation](../vertex/install-palette-vertex/install-palette-vertex.md) guides for more information.
+ guides for more information.
 
   :::info
 
@@ -26,7 +25,7 @@ instance of Palette and Palette VerteX.
   :::
 
 - At least one tenant created for your airgap instance of Palette or Palette VerteX. Refer to
-  [Tenant Management](../enterprise-version/system-management/tenant-management.md) for more information.
+  Tenant Management for more information.
 
 - Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
@@ -53,14 +52,14 @@ instance of Palette and Palette VerteX.
    sudo --login
    ```
 
-3. Refer to the [Palette Additional Packs](../downloads/self-hosted-palette/additional-packs.md) page to download and
+3. Refer to the Palette Additional Packs page to download and
    install the **airgap-pack-virtual-machine-orchestrator** and **airgap-pack-spectro-proxy** packs. You will need these
    packs for both Proxied and Direct network configuration.
 
 4. If you are planning to deploy VMs with direct network access, repeat step three to install a load balancer pack of
-   your choice. We recommend installing <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb" />
+   your choice. We recommend installing 
    (**airgap-pack-lb-metallb**), which you can find in
-   [Palette Additional Packs](../downloads/self-hosted-palette/additional-packs.md).
+   Palette Additional Packs.
 
 5. Log in to the Palette system console.
 
@@ -68,7 +67,7 @@ instance of Palette and Palette VerteX.
 
 7. Select the **three-dots Menu** of **spectro-packs** and click **Sync**.
 
-   ![Palette system console displaying options for the spectro-packs registries.](/vm-management_install-vmo-in-airgap_sync-packs.webp)
+ 
 
    Once the sync is finished, the newly uploaded packs will be available for use in the tenants that belong to your
    airgapped instance of Palette or Palette VerteX.
@@ -79,9 +78,9 @@ instance of Palette and Palette VerteX.
 
 2. From the left **Main Menu**, select **Profiles** and click **Add Cluster Profile**.
 
-3. Follow the [Create a VMO Profile](./create-vmo-profile.md) guide to start creating a VMO add-on profile.
+3. Follow the [Create a VMO Profile] guide to start creating a VMO add-on profile.
 
 4. If the Virtual Machine Orchestrator, Spectro Proxy, and, if applicable, your load balancer packs are available to add
    to a cluster profile, then the installation is successful.
 
-   ![Profile creation view with the uploaded packs for a self-hosted tenant.](/vm-management_install-vmo-in-airgap_validate-packs.webp)
+
