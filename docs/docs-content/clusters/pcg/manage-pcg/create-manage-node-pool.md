@@ -18,7 +18,7 @@ be used by other clusters.
 You can also create additional node pools to meet the requirements of your workloads, such as defining different node
 pools for different workloads, better managing IP address utilization, or providing additional capacity.
 
-IPAM node pools can be assigned when deploying the following types of clusters: 
+IPAM node pools can be assigned when deploying the following types of clusters:
 
 - [VMware vSphere Clusters](../../data-center/vmware/create-manage-vmware-clusters.md) - Assign the node pool to both
   control plane and worker pools that use static placement.
@@ -36,18 +36,18 @@ CloudStack, such as tags, availability zones, and regions.
 
 ## IP Allocation in Clusters
 
-When a cluster is deployed using an IPAM node pool, Palette reserves additional IP addresses
-to support cluster operations. The number of extra IPs reserved depends on the machine pool type:
+When a cluster is deployed using an IPAM node pool, Palette reserves additional IP addresses to support cluster
+operations. The number of extra IPs reserved depends on the machine pool type:
 
-- **Control Plane Pool** - Two additional IPs are reserved for infrastructure components, including the Cluster API (CAPI)
-  bootstrap VM and the Kubernetes API load balancer.
+- **Control Plane Pool** - Two additional IPs are reserved for infrastructure components, including the Cluster API
+  (CAPI) bootstrap VM and the Kubernetes API load balancer.
 - **Worker Pool** - One additional IP is reserved for **Expand First** and **Custom** rolling updates. If the worker
   pool uses the **Contract First** rolling update strategy, no additional IP is reserved.
 
 If you do not have a sufficient number of IP addresses available, the cluster will not be deployed. For example, if you
-plan to use the node pool for a cluster with one control plane node and three worker nodes using the default **Expand First** rolling
-update strategy, you need at least seven IP addresses available: three for the control plane pool (one node + two extra)
-and four for the worker pool (three nodes + one extra).
+plan to use the node pool for a cluster with one control plane node and three worker nodes using the default **Expand
+First** rolling update strategy, you need at least seven IP addresses available: three for the control plane pool (one
+node + two extra) and four for the worker pool (three nodes + one extra).
 
 ### VMware vSphere Autoscaling
 
@@ -118,7 +118,6 @@ Take the following steps to create an IPAM node pool for a PCG deployed in a VMw
 
 8. Select **Confirm** to create the node pool.
 
-
 ### Validate
 
 Use the following steps to validate that the node pool was created.
@@ -137,21 +136,22 @@ Use the following steps to validate that the node pool was created.
 
 ## Edit IPAM Node Pool
 
-Edit and resize your node pool at any time by selecting the three-dot menu beside the node pool and selecting
-**Edit**.  You can edit all fields except the node pool **Name**.
+Edit and resize your node pool at any time by selecting the three-dot menu beside the node pool and selecting **Edit**.
+You can edit all fields except the node pool **Name**.
 
-For VMware vSphere node pools, the **Allocated IPs** column displays the total
-number of allocated and available IP addresses in the node pool based on the range or subnet provided. Select **N IPs allocated, N IPs available** for a breakdown of all IP addresses in the pool and their statuses. When you
-create a node pool, all IP addresses are initially **Free**; as clusters are provisioned using the node pool, individual
-IP addresses are **Allocated** for use. For more information on how IP addresses are allocated, refer to
+For VMware vSphere node pools, the **Allocated IPs** column displays the total number of allocated and available IP
+addresses in the node pool based on the range or subnet provided. Select **N IPs allocated, N IPs available** for a
+breakdown of all IP addresses in the pool and their statuses. When you create a node pool, all IP addresses are
+initially **Free**; as clusters are provisioned using the node pool, individual IP addresses are **Allocated** for use.
+For more information on how IP addresses are allocated, refer to
 [IP Allocation in Clusters](#ip-allocation-in-clusters).
 
 ![Viewing allocated IP addresses for a node pool](/create-manage-node-pool_allocated-ips.webp)
 
 ## Delete IPAM Node Pool
 
-Delete your node pool by selecting the three-dot menu beside the node pool and selecting
-**Delete**. You cannot delete a node pool if any IP address within the pool is being used in a cluster.
+Delete your node pool by selecting the three-dot menu beside the node pool and selecting **Delete**. You cannot delete a
+node pool if any IP address within the pool is being used in a cluster.
 
 ## Next Steps
 
