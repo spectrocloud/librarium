@@ -59,7 +59,7 @@ disabled or the **Maximum size** of the worker pool is reduced, the original num
 To release the IP addresses, you must
 [delete the worker node pool](../../cluster-management/node-pool.md#delete-a-node-pool).
 
-## Create IPAM Node Pool
+## Create IPAM Node Pools
 
 Take the following steps to create an IPAM node pool for a PCG deployed in a VMware vSphere or MAAS environment.
 
@@ -134,7 +134,7 @@ Use the following steps to validate that the node pool was created.
 
 6. Locate the recently created node pool. For VMware vSphere node pools, review the **Allocated IPs**.
 
-## Edit IPAM Node Pool
+## Edit IPAM Node Pools
 
 Edit and resize your node pool at any time by selecting the three-dot menu beside the node pool and selecting **Edit**.
 You can edit all fields except the node pool **Name**.
@@ -143,12 +143,13 @@ For VMware vSphere node pools, the **Allocated IPs** column displays the total n
 addresses in the node pool based on the range or subnet provided. Select **N IPs allocated, N IPs available** for a
 breakdown of all IP addresses in the pool and their statuses. When you create a node pool, all IP addresses are
 initially **Free**; as clusters are provisioned using the node pool, individual IP addresses are **Allocated** for use.
+
 For more information on how IP addresses are allocated, refer to
 [IP Allocation in Clusters](#ip-allocation-in-clusters).
 
 ![Viewing allocated IP addresses for a node pool](/create-manage-node-pool_allocated-ips.webp)
 
-## Delete IPAM Node Pool
+## Delete IPAM Node Pools
 
 Delete your node pool by selecting the three-dot menu beside the node pool and selecting **Delete**. You cannot delete a
 node pool if any IP address within the pool is being used in a cluster.
