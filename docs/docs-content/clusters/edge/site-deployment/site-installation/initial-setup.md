@@ -39,8 +39,6 @@ more information about EdgeForge and site user data, refer to
   you attempt to update pre-existing network settings via the TUI, a new configuration is created alongside the existing
   one. To manage pre-existing configurations, use the original configuration method, such as `systemd-networkd`,
   Netplan, or NetworkManager.
-- The TUI does not support changing the root user's password. If the root password has expired, update it from the
-  terminal using a privileged user account, for example, with `sudo passwd root`.
 
 ## Prerequisites
 
