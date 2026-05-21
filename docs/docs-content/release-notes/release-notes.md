@@ -23,6 +23,8 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4787 -->
+
 - <TpBadge /> Palette now supports overriding Cluster API (CAPI) properties on AWS IaaS and Azure AKS clusters. This
   allows you to configure advanced provider-specific settings not natively exposed by Palette by supplying YAML that
   targets the underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
