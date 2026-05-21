@@ -114,14 +114,17 @@ construct valid override YAML, follow the steps below.
 
 1. Start with the top-level key.
 
-   Use the CAPI Kind for your target resource, converted to camelCase (see [Key Format](#key-format)):
+   Use the CAPI Kind for your target resource, converted to [camelCase](#key-format):
 
    ```yaml hideClipboard
    awsCluster:
-   azureManagedControlPlane:
    ```
 
-2. Add `spec`
+   ```yaml hideClipboard
+   azureManagedMachinePool:
+   ```
+
+2. Add `spec`.
 
    All configurable properties sit under `spec`. Your YAML always begins with the top-level key followed by `spec`.
 
@@ -175,7 +178,7 @@ construct valid override YAML, follow the steps below.
 
    Some Spec structs embed another struct with `json:",inline"`. This promotes the embedded struct's fields to the same
    level — no additional key is needed. For example, `AzureManagedControlPlaneSpec` embeds
-   `AzureManagedControlPlaneClassSpec` inline:
+   `AzureManagedControlPlaneClassSpec` inline.
 
    ```go hideClipboard title="AzureManagedControlPlaneSpec excerpt"
    type AzureManagedControlPlaneSpec struct {
