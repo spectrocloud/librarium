@@ -129,6 +129,7 @@ cloud account.
 - If you are using an EKS workload cluster, you must also have:
 
   - The AWS CLI configured with credentials that have permission to update IAM role trust policies.
+  - `kubectl` configured to access your EKS cluster.
   - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
     [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) guide for installation
     instructions.
@@ -366,10 +367,31 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
 
     A successful update returns no output.
 
-17. In Palette, navigate to **Project Settings** > **Backup Locations** and find the backup location. Confirm the status
-    displays as **Available**. If the status displays as **Unavailable** and the error details include
-    `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
-    and AWS account ID are correct.
+17. Confirm the backup location is available. First, find the Velero namespace on your cluster. Palette generates a
+    unique namespace for each cluster's Velero installation in the format `cluster-<hash>`.
+
+    ```shell
+    kubectl get namespaces | grep cluster-
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    cluster-6a02ef3b8cd2144fbadd2eff   Active   10m
+    ```
+
+    Then check the BackupStorageLocation status. Replace `[NAMESPACE]` with the namespace from the previous command.
+
+    ```shell
+    kubectl get backupstoragelocation -n [NAMESPACE]
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    NAME              PHASE       LAST VALIDATED   AGE   DEFAULT
+    your-backup-location   Available   20s              2m    true
+    ```
+
+    The BackupStorageLocation re-validates approximately every minute. If the status shows `Unavailable` and the error
+    details include `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and
+    confirm the OIDC ID and AWS account ID are correct.
 
 </details>
 
@@ -480,6 +502,7 @@ multiple cloud accounts.
   - The AWS CLI configured with credentials for AWS Account A that have permission to describe EKS clusters and list IAM
     OIDC providers.
   - The AWS CLI configured with credentials for AWS Account B that have permission to update IAM role trust policies.
+  - `kubectl` configured to access your EKS cluster.
   - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
     [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) guide for installation
     instructions.
@@ -793,10 +816,31 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
 
     A successful update returns no output.
 
-19. In Palette, navigate to **Project Settings** > **Backup Locations** and find the backup location. Confirm the status
-    displays as **Available**. If the status displays as **Unavailable** and the error details include
-    `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and confirm the OIDC ID
-    and AWS account ID are correct.
+19. Confirm the backup location is available. First, find the Velero namespace on your cluster. Palette generates a
+    unique namespace for each cluster's Velero installation in the format `cluster-<hash>`.
+
+    ```shell
+    kubectl get namespaces | grep cluster-
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    cluster-6a02ef3b8cd2144fbadd2eff   Active   10m
+    ```
+
+    Then check the BackupStorageLocation status. Replace `[NAMESPACE]` with the namespace from the previous command.
+
+    ```shell
+    kubectl get backupstoragelocation -n [NAMESPACE]
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    NAME              PHASE       LAST VALIDATED   AGE   DEFAULT
+    your-backup-location   Available   20s              2m    true
+    ```
+
+    The BackupStorageLocation re-validates approximately every minute. If the status shows `Unavailable` and the error
+    details include `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and
+    confirm the OIDC ID and AWS account ID are correct.
 
 </details>
 
