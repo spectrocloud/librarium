@@ -130,9 +130,9 @@ cloud account.
 
   - The AWS CLI configured with credentials that have permission to update IAM role trust policies.
   - `kubectl` configured to access your EKS cluster.
-  - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
-    [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) guide for installation
-    instructions.
+  - `eksctl` (optional). Required only if the EKS cluster's OpenID Connect (OIDC) provider is not already registered in
+    IAM. Refer to the [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
+    guide for installation instructions.
   - The name and AWS region of your EKS cluster.
 
 ### Instructions
@@ -311,8 +311,8 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
     :::
 
     After adding the new statement, the trust policy must include both the existing Palette trust statement and the new
-    IRSA statement. The following example shows the expected result. Use the table below to identify the values to
-    substitute for each placeholder.
+    IAM Roles for Service Accounts (IRSA) statement. The following example shows the expected result. Use the table
+    below to identify the values to substitute for each placeholder.
 
     | Placeholder                   | Description                                                                   |
     | ----------------------------- | ----------------------------------------------------------------------------- |
@@ -500,7 +500,7 @@ multiple cloud accounts.
 - If you are using an EKS workload cluster in AWS Account A, you must also have:
 
   - The AWS CLI configured with credentials for AWS Account A that have permission to describe EKS clusters and list IAM
-    OIDC providers.
+    OpenID Connect (OIDC) providers.
   - The AWS CLI configured with credentials for AWS Account B that have permission to update IAM role trust policies.
   - `kubectl` configured to access your EKS cluster.
   - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
@@ -752,8 +752,8 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     :::
 
     After adding the new statement, the trust policy in AWS Account B must include the existing Palette and Account A
-    trust statements from step 9, plus the new IRSA statement. The following example shows the expected result. Use the
-    table below to identify the values to substitute for each placeholder.
+    trust statements from step 9, plus the new IAM Roles for Service Accounts (IRSA) statement. The following example
+    shows the expected result. Use the table below to identify the values to substitute for each placeholder.
 
     | Placeholder                      | Description                                                                   |
     | -------------------------------- | ----------------------------------------------------------------------------- |
