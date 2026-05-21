@@ -54,13 +54,6 @@ You supply a raw YAML string that describes the properties you want to set on th
 applies this as an [RFC 7396 JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7396) to the CAPI object it has
 already built. Palette converts the YAML to JSON before applying the merge patch.
 
-:::info
-
-Override values always take precedence over values that Palette sets natively as it is applied last in the merge patch
-process. If there are any conflicts between override and native values, the override value wins.
-
-:::
-
 The YAML you provide maps directly to the specification of the target CAPI object. For example, if you want to set the
 control plane load balancer type with additional cluster tags on an AWS IaaS cluster, you would provide override YAML
 that maps to `awsCluster.spec`.
@@ -76,10 +69,17 @@ awsCluster:
       owner: qa
 ```
 
+:::info
+
+Override values always take precedence over values that Palette sets natively as it is applied last in the merge patch
+process. If there are any conflicts between override and native values, the override value wins.
+
+:::
+
 ### Key Format
 
-The top-level key is always the camelCase form of the CAPI Kind. All nested keys follow the same camelCase convention
-and are often defined by the `json` struct tags in the provider's Go types.
+The top-level key is always the camelCase form of the CAPI Kind. All nested keys are derived from the `json` struct tag
+in the provider's Go types, or the camelCase form of the field name if no `json` tag is present.
 
 The following table lists example top-level keys and nested keys.
 
@@ -92,7 +92,7 @@ The following table lists example top-level keys and nested keys.
 
 You can discover the available CAPI Kind and nested keys and their structure by reviewing the
 [reference docs](#supported-providers) for the target CAPI provider. For example, to find the key for control plane load
-balancer type on AWS, review the `AWSCluster` API types and look for the relevant field:
+balancer type on AWS, review the `AWSCluster` API types and look for the relevant field.
 
 ```go hideClipboard title="ControlPlaneLoadBalancer excerpt from AWSCluster API types"
 type AWSClusterSpec struct {
@@ -107,9 +107,103 @@ type AWSClusterSpec struct {
 Refer to [References and Examples](#references-and-examples) for more example override YAML snippets and their
 corresponding CAPI fields.
 
-### How to Discover CAPI Override Fields
+### Override YAML Structure
 
-_TBA - May be covered by [Key Format](#key-format)._
+The structure of your override YAML maps directly to the Go struct definitions in the provider's types files. To
+construct valid override YAML, follow the steps below.
+
+1. Start with the top-level key.
+
+   Use the CAPI Kind for your target resource, converted to camelCase (see [Key Format](#key-format)):
+
+   ```yaml hideClipboard
+   awsCluster:
+   azureManagedControlPlane:
+   ```
+
+2. Add `spec`
+
+   All configurable properties sit under `spec`. Your YAML always begins with the top-level key followed by `spec`.
+
+3. Locate the field in the Spec struct.
+
+   Open the provider's types file and find the Spec struct for your resource. For example, `AWSClusterSpec` in
+   `awscluster_types.go`. Find the field you want to set and read its `json` struct tag for the key name.
+
+   ```go hideClipboard title="AWSClusterSpec excerpt"
+   type AWSClusterSpec struct {
+       // AdditionalTags is an optional set of tags to add to AWS resources.
+       // +optional
+       AdditionalTags Tags `json:"additionalTags,omitempty"`
+   }
+   ```
+
+   This maps to the following override YAML.
+
+   ```yaml hideClipboard
+   awsCluster:
+     spec:
+       additionalTags:
+         key: value
+   ```
+
+4. Follow nested struct references.
+
+   When a field's type is another struct, navigate into that struct to find its fields. For example,
+   `ControlPlaneLoadBalancer` in `AWSClusterSpec` is of type `*AWSLoadBalancerSpec`:
+
+   ```go hideClipboard title="AWSClusterSpec and AWSLoadBalancerSpec excerpts"
+   // AWSClusterSpec
+   ControlPlaneLoadBalancer *AWSLoadBalancerSpec `json:"controlPlaneLoadBalancer,omitempty"`
+
+   // AWSLoadBalancerSpec
+   type AWSLoadBalancerSpec struct {
+       CrossZoneLoadBalancing bool `json:"crossZoneLoadBalancing"`
+   }
+   ```
+
+   This maps to the following override YAML.
+
+   ```yaml hideClipboard
+   awsCluster:
+     spec:
+       controlPlaneLoadBalancer:
+         crossZoneLoadBalancing: true
+   ```
+
+5. Handle inline struct embeddings.
+
+   Some Spec structs embed another struct with `json:",inline"`. This promotes the embedded struct's fields to the same
+   level — no additional key is needed. For example, `AzureManagedControlPlaneSpec` embeds
+   `AzureManagedControlPlaneClassSpec` inline:
+
+   ```go hideClipboard title="AzureManagedControlPlaneSpec excerpt"
+   type AzureManagedControlPlaneSpec struct {
+       AzureManagedControlPlaneClassSpec `json:",inline"`
+       ...
+   }
+   ```
+
+   Fields defined in `AzureManagedControlPlaneClassSpec` appear directly under `azureManagedControlPlane.spec`, without
+   an additional nesting key.
+
+   <details>
+
+   <summary> Note on `AWSMachineTemplate` nesting </summary>
+
+   `AWSMachineTemplate` has an extra level of nesting compared to other resources. The spec wraps a `template`, which
+   contains a nested `spec` holding the actual machine configuration (`AWSMachineSpec`). All pool-level AWS overrides
+   use this structure.
+
+   ```yaml hideClipboard
+   awsMachineTemplate:
+     spec:
+       template:
+         spec:
+           instanceType: m5.xlarge
+   ```
+
+   </details>
 
 ### Cluster-Level vs. Pool-Level Override
 
