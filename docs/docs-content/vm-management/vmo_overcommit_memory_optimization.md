@@ -9,7 +9,9 @@ tags: ["vmo", "architecture"]
 
 Virtual Machine Orchestrator (VMO) enables higher VM density on existing infrastructure by leveraging memory overcommit
 and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication. These methods allow
-operators to run more VMs per host while reducing physical infrastructure costs. For more information on memory and overcommit in VMO, refer to to the [Over-Commit Resources to Enhance VM Performance](./create-manage-vm/advanced-topics/vm-oversubscription.md) page. 
+operators to run more VMs per host while reducing physical infrastructure costs. For more information on memory and
+overcommit in VMO, refer to to the
+[Over-Commit Resources to Enhance VM Performance](./create-manage-vm/advanced-topics/vm-oversubscription.md) page.
 
 To help achieve higher density and resource optimization, there are several features you can use.
 
@@ -135,10 +137,10 @@ You can enable headless mode through the VMO UI when creating or editing a VM.
 
 ## Kernel Same-Page Merging (KSM)
 
-[KSM](https://docs.kernel.org/admin-guide/mm/ksm.html)
-is a Linux kernel feature allows deduplication of infrequently updated memory pages across VMs and merges those to free
-memory. This is especially effective when multiple VMs run the same OS image with the same application behavior.
-However, this feature can result in additional CPU overhead from memory scanning.
+[KSM](https://docs.kernel.org/admin-guide/mm/ksm.html) is a Linux kernel feature allows deduplication of infrequently
+updated memory pages across VMs and merges those to free memory. This is especially effective when multiple VMs run the
+same OS image with the same application behavior. However, this feature can result in additional CPU overhead from
+memory scanning.
 
 ### Configure KSM
 
