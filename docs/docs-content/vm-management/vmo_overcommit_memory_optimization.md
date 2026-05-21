@@ -10,7 +10,7 @@ tags: ["vmo", "architecture"]
 Virtual Machine Orchestrator (VMO) enables higher VM density on existing infrastructure by leveraging memory overcommit
 and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication. These methods allow
 operators to run more VMs per host while reducing physical infrastructure costs. For more information on memory and
-overcommit in VMO, refer to to the
+overcommit in VMO, refer to the
 [Over-Commit Resources to Enhance VM Performance](./create-manage-vm/advanced-topics/vm-oversubscription.md) page.
 
 To help achieve higher density and resource optimization, there are several features you can use.
