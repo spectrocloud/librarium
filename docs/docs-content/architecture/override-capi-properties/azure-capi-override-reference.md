@@ -61,16 +61,70 @@ azureManagedMachinePool:
       updated: "true"
 ```
 
+### Encryption
+
+#### Host Encryption
+
+Host encryption encrypts the OS and temporary disks on the underlying VM host using platform-managed keys. It is
+configured at the pool level using the `enableEncryptionAtHost` field on `AzureManagedMachinePool`.
+
+:::caution
+
+`enableEncryptionAtHost` is immutable and must be set when the node pool is first created. It cannot be enabled or
+disabled on an existing pool.
+
+:::
+
+```yaml title="Enable host encryption on a node pool"
+azureManagedMachinePool:
+  spec:
+    enableEncryptionAtHost: true
+```
+
+<!-- #### Disk Encryption Sets
+
+CAPZ v1.18.0 does not expose a first-class `diskEncryptionSetID` field for AKS node pools. The supported workaround is
+to use the `asoManagedClustersAgentPoolPatches` field on `AzureManagedMachinePool`, which applies a JSON merge patch
+directly to the underlying Azure Service Operator (ASO) `ManagedClustersAgentPool` resource.
+
+:::caution
+
+The `asoManagedClustersAgentPoolPatches` and `asoManagedClusterPatches` fields are intended for advanced use only.
+Misconfiguration that conflicts with CAPZ's normal operation is possible. Test changes in a non-production environment
+before applying them to a production cluster.
+
+:::
+
+```yaml title="Enable disk encryption set on a node pool"
+azureManagedMachinePool:
+  spec:
+    asoManagedClustersAgentPoolPatches:
+      - '{"spec": {"diskEncryptionSetID":
+        "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/diskEncryptionSets/<disk-encryption-set-name>"}}'
+```
+
+To apply a disk encryption set at the cluster level, use the equivalent `asoManagedClusterPatches` field on
+`AzureManagedControlPlane`:
+
+```yaml title="Enable disk encryption set at the cluster level"
+azureManagedControlPlane:
+  spec:
+    asoManagedClusterPatches:
+      - '{"spec": {"diskEncryptionSetID":
+        "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/diskEncryptionSets/<disk-encryption-set-name>"}}'
+``` -->
+
 ### Known Immutable Fields
 
 The following fields become immutable after an AKS cluster is created. Attempting to disable them via override after
 they have been enabled will result in an error. You must revert the override change to clear the error and allow the
 cluster to reconcile.
 
-| Field               | CAPI Kind                  | Notes                            |
-| ------------------- | -------------------------- | -------------------------------- |
-| `aadProfile`        | `AzureManagedControlPlane` | Cannot be disabled once enabled. |
-| `oidcIssuerProfile` | `AzureManagedControlPlane` | Cannot be disabled once enabled. |
+| Field                    | CAPI Kind                  | Notes                                                            |
+| ------------------------ | -------------------------- | ---------------------------------------------------------------- |
+| `aadProfile`             | `AzureManagedControlPlane` | Cannot be disabled once enabled.                                 |
+| `oidcIssuerProfile`      | `AzureManagedControlPlane` | Cannot be disabled once enabled.                                 |
+| `enableEncryptionAtHost` | `AzureManagedMachinePool`  | Must be set at node pool creation. Cannot be changed afterwards. |
 
 ### Unsupported First-Class Properties
 
