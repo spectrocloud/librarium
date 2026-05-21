@@ -110,7 +110,7 @@ corresponding CAPI fields.
 ### Override YAML Structure
 
 The structure of your override YAML maps directly to the Go struct definitions in the provider's types files. To
-construct valid override YAML, follow the steps below.
+construct valid override YAML, use the following steps.
 
 1. Start with the top-level key.
 
