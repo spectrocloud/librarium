@@ -104,7 +104,7 @@ azureManagedMachinePool:
 ```
 
 To apply a disk encryption set at the cluster level, use the equivalent `asoManagedClusterPatches` field on
-`AzureManagedControlPlane`:
+`AzureManagedControlPlane`.
 
 ```yaml title="Enable disk encryption set at the cluster level"
 azureManagedControlPlane:
