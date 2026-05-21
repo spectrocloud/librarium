@@ -389,9 +389,9 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
     your-backup-location   Available   20s              2m    true
     ```
 
-    The BackupStorageLocation re-validates approximately every minute. If the status shows `Unavailable` and the error
-    details include `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and
-    confirm the OIDC ID and AWS account ID are correct.
+    A status of `Available` confirms that the trust policy is correctly configured. If the status shows `Unavailable`,
+    check the error details. An `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403` error indicates a
+    trust policy misconfiguration. Confirm the OIDC ID and AWS account ID are correct.
 
 </details>
 
@@ -838,9 +838,9 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     your-backup-location   Available   20s              2m    true
     ```
 
-    The BackupStorageLocation re-validates approximately every minute. If the status shows `Unavailable` and the error
-    details include `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403`, review the trust policy and
-    confirm the OIDC ID and AWS account ID are correct.
+    A status of `Available` confirms that the trust policy is correctly configured. If the status shows `Unavailable`,
+    check the error details. An `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403` error indicates a
+    trust policy misconfiguration. Confirm the OIDC ID and AWS account ID are correct.
 
 </details>
 
