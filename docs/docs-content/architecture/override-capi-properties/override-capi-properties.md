@@ -104,6 +104,9 @@ type AWSClusterSpec struct {
 }
 ```
 
+Refer to [References and Examples](#references-and-examples) for more example override YAML snippets and their
+corresponding CAPI fields.
+
 ### How to Discover CAPI Override Fields
 
 _TBA - May be covered by [Key Format](#key-format)._
