@@ -381,7 +381,7 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
     Then check the BackupStorageLocation status. Replace `[NAMESPACE]` with the namespace from the previous command.
 
     ```shell
-    kubectl get backupstoragelocation -n [NAMESPACE]
+    kubectl get backupstoragelocation --namespace [NAMESPACE]
     ```
 
     ```shell hideClipboard title="Expected output"
@@ -830,7 +830,7 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     Then check the BackupStorageLocation status. Replace `[NAMESPACE]` with the namespace from the previous command.
 
     ```shell
-    kubectl get backupstoragelocation -n [NAMESPACE]
+    kubectl get backupstoragelocation --namespace [NAMESPACE]
     ```
 
     ```shell hideClipboard title="Expected output"
