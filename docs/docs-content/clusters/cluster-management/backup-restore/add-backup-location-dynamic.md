@@ -249,8 +249,8 @@ EKS workload clusters require an additional trust policy update to support IAM R
 
     ```shell
     eksctl utils associate-iam-oidc-provider \
-      --cluster [CLUSTER-NAME] \
-      --region [REGION] \
+      --cluster <cluster-name> \
+      --region <region> \
       --approve
     ```
 
