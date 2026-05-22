@@ -280,9 +280,9 @@ EKS workload clusters require an additional trust policy update to support IAM R
 
     | Placeholder        | Description                                      |
     | ------------------ | ------------------------------------------------ |
-    | `[AWS-ACCOUNT-ID]` | Your AWS account ID                              |
-    | `[REGION]`         | The AWS region where the EKS cluster is deployed |
-    | `[OIDC-ID]`        | The OIDC ID from step 12                         |
+    | `<aws-account-id>` | Your AWS account ID                              |
+    | `<region>`         | The AWS region where the EKS cluster is deployed |
+    | `<oidc-id>`        | The OIDC ID from step 12                         |
 
     ```json
     {
