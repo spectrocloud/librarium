@@ -60,7 +60,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 | [ECK Operator](/integrations/packs/?pack=elastic-operator) | Add-on | 3.4.0       |
 | [ECK Stack](/integrations/packs/?pack=elastic-stack)       | Add-on | 0.19.0      |
 
-#### Pack Notes
 
 ## May 15, 2026 - Component Updates {#component-updates-2026-20}
 
