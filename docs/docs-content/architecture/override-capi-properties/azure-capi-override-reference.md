@@ -81,7 +81,7 @@ azureManagedMachinePool:
     enableEncryptionAtHost: true
 ```
 
-<!-- #### Disk Encryption Sets
+#### Disk Encryption Sets
 
 CAPZ v1.18.0 does not expose a first-class `diskEncryptionSetID` field for AKS node pools. The supported workaround is
 to use the `asoManagedClustersAgentPoolPatches` field on `AzureManagedMachinePool`, which applies a JSON merge patch
@@ -95,24 +95,6 @@ before applying them to a production cluster.
 
 :::
 
-```yaml title="Enable disk encryption set on a node pool"
-azureManagedMachinePool:
-  spec:
-    asoManagedClustersAgentPoolPatches:
-      - '{"spec": {"diskEncryptionSetID":
-        "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/diskEncryptionSets/<disk-encryption-set-name>"}}'
-```
-
-To apply a disk encryption set at the cluster level, use the equivalent `asoManagedClusterPatches` field on
-`AzureManagedControlPlane`.
-
-```yaml title="Enable disk encryption set at the cluster level"
-azureManagedControlPlane:
-  spec:
-    asoManagedClusterPatches:
-      - '{"spec": {"diskEncryptionSetID":
-        "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/diskEncryptionSets/<disk-encryption-set-name>"}}'
-``` -->
 
 ### Known Immutable Fields
 

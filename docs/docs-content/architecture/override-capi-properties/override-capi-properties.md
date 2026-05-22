@@ -17,7 +17,7 @@ provision and manage Kubernetes clusters. When provisioning a cluster, Palette p
 properties supported by the underlying CAPI objects. For most use cases, this is sufficient. However, some advanced or
 provider-specific configurations exist in the CAPI provider spec but are not surfaced in the Palette UI or API.
 
-You can override these properties by supplying arbitrary YAML directly targeting the underlying CAPI provider objects at
+You can override these properties by supplying YAML directly targeting the underlying CAPI provider objects at
 both the cluster level and the node pool level. This allows you to configure any property supported by the CAPI provider
 version in use, without waiting for Palette to add native support for each field.
 
@@ -225,22 +225,14 @@ Before overriding CAPI properties, review the following behaviors that apply whe
 
 :::caution
 
-Using an override on an existing cluster may trigger a
+Overriding CAPI properties on an existing cluster is likely to trigger a
 [node pool repave](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration), which will
 temporarily reduce cluster capacity. Plan override changes during a maintenance window.
 
+- **AKS** — Any override change triggers a rolling upgrade, even for parameters that would otherwise support inline
+  updates.
+
 :::
-
-The following behaviors apply when you update an existing cluster with an override:
-
-- **Infrastructure as a Service (IaaS) clusters** — Any override change produces a new machine template hash,
-  automatically triggering a rolling update.
-
-- **Managed Kubernetes clusters** — Override changes are detected via a stored hash annotation. A repave warning is
-  always shown when you apply an override since the impact cannot be predicted in advance.
-
-  - **AKS** — Any override change triggers a rolling upgrade, even for parameters that would otherwise support inline
-    updates.
 
 ### Override Always Wins
 
@@ -267,7 +259,7 @@ validate whether a field is immutable, so it is your responsibility to check the
 provider API documentation before applying an override to an existing cluster.
 
 If you attempt to update an immutable field, behavior depends on the cloud provider. The provider may return an error,
-which Palette surfaces as a `Warning` cluster event (see [Error Handling](#error-handling)), or it may silently accept
+which Palette surfaces as a `Warning` cluster event (see [Error Handling](#error-handling)), or the cloud provider may silently accept
 the value without applying it.
 
 ### Palette UI does not Reflect Overridden Values
