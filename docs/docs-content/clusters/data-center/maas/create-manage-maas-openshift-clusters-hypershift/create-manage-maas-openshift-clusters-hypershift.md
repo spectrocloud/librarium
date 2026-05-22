@@ -16,14 +16,14 @@ Palette supports creating and managing OpenShift clusters on MAAS bare-metal ser
 plane components as pods. OpenShift workload clusters are then provisioned with their worker nodes on bare-metal MAAS
 hosts, while their control planes are hosted on the HyperShift host cluster.
 
-Prior to creating OpenShift workload clusters, you must build a custom
+Prior to creating OpenShift workload clusters, you must prepare and import a MAAS-compatible
 [Red Hat Enterprise Linux CoreOS (RHCOS)](https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/architecture/architecture-rhcos)
-image that is compatible with MAAS deployment.
+or [CentOS Stream CoreOS (SCOS)](https://cloud.centos.org/centos/scos/) image.
 
 This section covers three sequential tasks that enable you to create and manage OpenShift clusters on MAAS using
 HyperShift:
 
-1. [Build and import a MAAS-compatible RHCOS image.](./build-import-rhcos-image.md)
+1. [Prepare a CoreOS image.](./prepare-coreos-image.md)
 2. [Create a HyperShift cluster to host the OpenShift control plane pods.](./create-hypershift-host-cluster.md)
 3. [Create OpenShift workload clusters that use the HyperShift hosted control plane.](./create-openshift-workload-cluster.md)
 
