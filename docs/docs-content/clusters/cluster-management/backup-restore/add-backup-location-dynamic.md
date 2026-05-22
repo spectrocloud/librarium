@@ -206,9 +206,6 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
 EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
 the section below.
 
-EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
-the section below.
-
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
 
