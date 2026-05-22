@@ -19,15 +19,6 @@ explains how you can create an Azure AKS cluster managed by Palette.
   Scale Sets (VMSS) in Azure Government regions and cannot be used for AKS node pools in Azure Government deployments.
   This is an Azure platform constraint.
 
-- Changing a node pool's instance type from a Generation 1 (Gen 1) to a Generation 2 (Gen 2) variant, or vice versa, on
-  an active AKS cluster triggers a
-  [node pool repave](../../cluster-management/node-pool.md#repave-behavior-and-configuration). Review the repave
-  warnings Palette displays before confirming Day-2 instance type changes.
-
-  - For further upgrade guidance, review the
-    [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2). This covers supported
-    size families and the required UEFI-based boot architecture.
-
 - When integrating with private Domain Name System (DNS) zones, AKS clusters created by Palette use a user-assigned
   managed identity instead of a system-assigned managed identity. This identity must have the
   [`Microsoft.Network/privateDnsZones/read` permission](https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/networking#microsoftnetwork)
