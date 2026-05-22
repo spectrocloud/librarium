@@ -305,7 +305,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
     The `StringLike` condition uses a wildcard (`*`) for the namespace because Palette generates a unique namespace for
     each cluster's Velero installation in the format `cluster-<hash>`.
 
-    :::info
+    :::tip
 
     If you share one backup IAM role across multiple EKS clusters, use `StringEquals` with the specific namespace and
     add one statement per cluster. This limits role assumption to the `velero-server` pod in a specific namespace on
