@@ -507,7 +507,7 @@ multiple cloud accounts.
     OIDC providers.
   - The AWS CLI configured with credentials for AWS Account B that have permission to update IAM role trust policies.
   - `kubectl` configured to access your EKS cluster.
-  - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
+  - (Optional) `eksctl`. Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
     [Installing or updating eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) guide for installation
     instructions.
   - The name and AWS region of your EKS cluster.
