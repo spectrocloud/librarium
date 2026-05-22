@@ -177,15 +177,11 @@ cloud account.
    | Role name             | Provide a name of your choice.                                                      |
    | Role description      | Provide an optional description.                                                    |
 
-<br />
-
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
+   ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role.
 
-<br />
-
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
+   ![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. Copy the IAM role Amazon Resource Name (ARN)
 
@@ -544,92 +540,83 @@ multiple cloud accounts.
    [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
    guide to learn how to create an IAM role. Use the following configuration while creating the IAM role.
 
-| **AWS Console Field**   | **Value**                                                                           |
-| ----------------------- | ----------------------------------------------------------------------------------- |
-| **Trusted entity type** | Select the **AWS account** option.                                                  |
-| **AWS account**         | Select the **Another AWS account** radio button.                                    |
-| **AWS Account ID**      | Use the one displayed in Palette, which is Palette's account ID.                    |
-| **Options**             | Select the **Require external ID** checkbox.                                        |
-| External ID             | Use the one displayed in Palette. Palette generates the external ID.                |
-| Permissions policies    | Attach the IAM policy defined in the [Prerequisites section](#prerequisites) above. |
-| Role name               | Provide a name of your choice.                                                      |
-| Role description        | Provide an optional description.                                                    |
+   | **AWS Console Field**   | **Value**                                                                           |
+   | ----------------------- | ----------------------------------------------------------------------------------- |
+   | **Trusted entity type** | Select the **AWS account** option.                                                  |
+   | **AWS account**         | Select the **Another AWS account** radio button.                                    |
+   | **AWS Account ID**      | Use the one displayed in Palette, which is Palette's account ID.                    |
+   | **Options**             | Select the **Require external ID** checkbox.                                        |
+   | External ID             | Use the one displayed in Palette. Palette generates the external ID.                |
+   | Permissions policies    | Attach the IAM policy defined in the [Prerequisites section](#prerequisites) above. |
+   | Role name               | Provide a name of your choice.                                                      |
+   | Role description        | Provide an optional description.                                                    |
 
-<br />
-
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
+   ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role in AWS Account B.
 
-<br />
-
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
+   ![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. In the IAM role's **Trust relationships** section, a relationship will already be defined for Palette so that Palette
    can assume this role under specified conditions.
 
 9. Edit the existing trust policy of the newly created IAM role in AWS Account B. Append the following permission to the
    existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace
-   the `<account-id-for-aws-account-a>` placeholder with the AWS account ID for AWS Account A. <br /> <br />
+   the `<account-id-for-aws-account-a>` placeholder with the AWS account ID for AWS Account A.
 
-<br />
+   ```json
+   {
+     "Effect": "Allow",
+     "Principal": {
+       "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
+     },
+     "Action": "sts:AssumeRole"
+   }
+   ```
 
-```json
-{
-  "Effect": "Allow",
-  "Principal": {
-    "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
-  },
-  "Action": "sts:AssumeRole"
-}
-```
+   If you want to establish a trust relationship with a specific IAM role in AWS Account A, say _SpectroCloudRole_, you
+   can use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
 
-    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say *SpectroCloudRole*, you can use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
+   Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one
+   for Palette and another for AWS Account A.
 
-Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
-Palette and another for the AWS Account A. <br />
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {
+           "StringEquals": {
+             "sts:ExternalId": "<your-external-id>"
+           }
+         }
+       },
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
+         },
+         "Action": "sts:AssumeRole"
+       }
+     ]
+   }
+   ```
 
-<br />
+   In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you
+   used while creating the IAM role.
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "<your-external-id>"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
+   :::info
 
-In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you used
-while creating the IAM role.
+   Check out
+   [How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
+   for a deep dive into the IAM trust policies.
 
-<br />
-
-:::info
-
-Check out
-[How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
-for a deep dive into the IAM trust policies.
-
-:::
+   :::
 
 10. Copy the IAM role ARN from AWS Account B.
 
