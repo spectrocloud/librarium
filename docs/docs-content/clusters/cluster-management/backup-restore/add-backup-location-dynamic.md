@@ -315,7 +315,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
     :::
 
     After adding the new statement, the trust policy must include both the existing Palette trust statement and the new
-    IAM Roles for Service Accounts (IRSA) statement. The following example shows the expected result. Use the table
+    IRSA statement. The following example shows the expected result. Use the table
     below to identify the values to substitute for each placeholder.
 
     | Placeholder                   | Description                                                                   |
