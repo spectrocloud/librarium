@@ -58,8 +58,8 @@ cloud account.
 
 - An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces.
 
-- The following Identity and Access Management (IAM) policy must be created in your AWS Account. Replace the `BUCKET-NAME` placeholder in the policy
-  below with your bucket name. Refer to the
+- The following Identity and Access Management (IAM) policy must be created in your AWS Account. Replace the
+  `BUCKET-NAME` placeholder in the policy below with your bucket name. Refer to the
   [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
   additional guidance.
 
@@ -167,7 +167,7 @@ cloud account.
 
    | **AWS Console Field** | **Value**                                                                           |
    | --------------------- | ----------------------------------------------------------------------------------- |
-   | Trusted entity type   | Select **AWS account**.                                                               |
+   | Trusted entity type   | Select **AWS account**.                                                             |
    | AWS account           | Select the **Another AWS account** radio button.                                    |
    | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
    | Options               | Select the **Require external ID** checkbox.                                        |
