@@ -572,7 +572,7 @@ multiple cloud accounts.
 
 9. Edit the existing trust policy of the newly created IAM role in AWS Account B. Append the following permission to the
    existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace
-   the `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` placeholder with the AWS account ID for AWS Account A. <br /> <br />
+   the `<account-id-for-aws-account-a>` placeholder with the AWS account ID for AWS Account A. <br /> <br />
 
 <br />
 
