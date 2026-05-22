@@ -580,7 +580,7 @@ multiple cloud accounts.
 {
   "Effect": "Allow",
   "Principal": {
-    "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
+    "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
   },
   "Action": "sts:AssumeRole"
 }
