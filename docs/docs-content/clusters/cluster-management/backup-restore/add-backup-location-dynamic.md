@@ -202,9 +202,11 @@ cloud account.
 You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
 AWS STS to authenticate Palette with the S3 bucket in the same AWS account you deploy your Kubernetes cluster.
 
-EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand the section below.
+EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
+the section below.
 
-EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand the section below.
+EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
+the section below.
 
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
@@ -244,8 +246,8 @@ EKS workload clusters require an additional trust policy update to support IAM R
     ```
 
     Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 12
-    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with your
-    values.
+    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with
+    your values.
 
     ```shell
     eksctl utils associate-iam-oidc-provider \
@@ -315,8 +317,8 @@ EKS workload clusters require an additional trust policy update to support IAM R
     :::
 
     After adding the new statement, the trust policy must include both the existing Palette trust statement and the new
-    IRSA statement. The following example shows the expected result. Use the table
-    below to identify the values to substitute for each placeholder.
+    IRSA statement. The following example shows the expected result. Use the table below to identify the values to
+    substitute for each placeholder.
 
     | Placeholder                   | Description                                                                   |
     | ----------------------------- | ----------------------------------------------------------------------------- |
@@ -685,8 +687,8 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     ```
 
     Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 14
-    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with your
-    values.
+    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with
+    your values.
 
     ```shell
     eksctl utils associate-iam-oidc-provider \
@@ -756,8 +758,8 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     :::
 
     After adding the new statement, the trust policy in AWS Account B must include the existing Palette and Account A
-    trust statements from step 9, plus the new IRSA statement. The following example
-    shows the expected result. Use the table below to identify the values to substitute for each placeholder.
+    trust statements from step 9, plus the new IRSA statement. The following example shows the expected result. Use the
+    table below to identify the values to substitute for each placeholder.
 
     | Placeholder                      | Description                                                                   |
     | -------------------------------- | ----------------------------------------------------------------------------- |
