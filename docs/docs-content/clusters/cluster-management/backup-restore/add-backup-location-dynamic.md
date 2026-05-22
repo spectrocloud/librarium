@@ -576,7 +576,7 @@ multiple cloud accounts.
    }
    ```
 
-   If you want to establish a trust relationship with a specific IAM role in AWS Account A, say _SpectroCloudRole_, you
+   If you want to establish a trust relationship with a specific IAM role in AWS Account A, say `SpectroCloudRole`, you
    can use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
 
    Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one
