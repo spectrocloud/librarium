@@ -35,7 +35,7 @@ tags: ["release-notes"]
 
   - For further upgrade guidance, review the
     [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2). This covers supported
-    size families and the required UEFI-based boot architecture.
+    size families and the move to UEFI-based boot architecture.
 
 #### Improvements
 
