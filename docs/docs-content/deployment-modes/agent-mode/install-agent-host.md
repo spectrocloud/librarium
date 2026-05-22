@@ -24,16 +24,13 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - The following table presents the verified combinations of host architecture and cluster profile layers.
 
-  | Host Architecture | OS                                | Kubernetes                                 | Container Network Interface (CNI) | Verified           |
-  | ----------------- | --------------------------------- | ------------------------------------------ | --------------------------------- | ------------------ |
-  | AMD64             | Ubuntu                            | Palette eXtended Kubernetes - Edge (PXK-E) | Calico                            | :white_check_mark: |
-  | AMD64             | Ubuntu                            | K3s                                        | Flannel                           | :white_check_mark: |
-  | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            | :white_check_mark: |
+  | Host Architecture | OS                                | Kubernetes                                 | Container Network Interface (CNI) |
+  | ----------------- | --------------------------------- | ------------------------------------------ | --------------------------------- |
+  | AMD64             | Ubuntu                            | Palette eXtended Kubernetes - Edge (PXK-E) | Calico                            |
+  | AMD64             | Ubuntu                            | K3s                                        | Flannel                           |
+  | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            |
 
 - Clusters with Flannel CNI are not verified for local management mode deployments.
-
-- Agent mode is only supported on Linux distributions that have
-  [`systemd`](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
 
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
@@ -42,7 +39,9 @@ Palette. You will then create a cluster profile and use the registered host to d
   and CanvOS version 4.6.21 or later, which support local management mode, the agent may be downgraded if your cluster
   uses a content bundle built against a Palette instance older than 4.6.32. This results in deployment failure.
 
-## Prerequisites
+## Install Palette Agent
+
+### Prerequisites
 
 - A physical or virtual host with SSH access, access to the internet, and connection to Palette. For local management
   mode deployments, the host does not need to have a connection to Palette and may have limited access to the internet.
@@ -113,7 +112,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   <summary>Rocky Linux 8 Configurations</summary>
 
-  ### Configure rsync
+  #### Configure rsync
 
   1. Enable SELinux to allow full rsync access.
 
@@ -165,7 +164,7 @@ Palette. You will then create a cluster profile and use the registered host to d
      semodule --install rsync_dac_override.pp
      ```
 
-  ### Enable cgroup V2
+  #### Enable cgroup V2
 
   7.  Issue the following command to check if your kernel supports cgroup v2.
 
@@ -217,7 +216,7 @@ Palette. You will then create a cluster profile and use the registered host to d
       sudo reboot
       ```
 
-  ### Configure firewalld (Cilium Only)
+  #### Configure firewalld (Cilium Only)
 
   12. (Optional) If you are using Cilium and have `firewalld` enabled, put the following commands into a shell script.
 
@@ -305,7 +304,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   </details>
 
-## Install Palette Agent
+### Enablement
 
 <Tabs groupId="env">
 
@@ -556,44 +555,6 @@ Palette. You will then create a cluster profile and use the registered host to d
    automatic registration with Palette. The host will be registered in the same project where the registration token was
    created.
 
-10. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
-
-11. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
-
-12. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
-    the left **Main Menu**.
-
-13. Click on **Add Cluster Profile**.
-
-14. In the **Basic Information** section, assign a profile name, a description, and tags. Select the type as **Full**
-    and click **Next**.
-
-15. Select **Edge Native** as the **Cloud Type** and click **Next**.
-
-16. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
-    **2.1.0** to the OS layer.
-
-17. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
-
-    ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
-
-18. Click **Next Layer** to continue.
-
-19. Complete the cluster profile creation process by filling out the remaining layers.
-
-20. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
-    deploy a cluster using your registered host as a cluster node.
-
-:::warning
-
-If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
-**kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
-from accessing it and properly managing the cluster. Refer to the
-[Edge Troubleshooting Guide](../../troubleshooting/edge/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags)
-for guidance.
-
-:::
-
 </TabItem>
 
 <TabItem value="Local Management Mode">
@@ -747,63 +708,164 @@ building a custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as wel
 
 7. Reboot the host. The host will automatically start the installation process once it reboots.
 
-8. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+</TabItem>
 
-9. Select **Profiles** from the left **Main Menu**.
+</Tabs>
 
-10. Click on **Add Cluster Profile**.
+### Validate
 
-11. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
-    **Full** and click **Next**.
+<Tabs groupId="env">
 
-12. Select **Edge Native** as the **Cloud Type** and click **Next**.
+<TabItem value="Central Management Mode">
 
-13. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
-    **2.1.0** to the OS layer.
+To verify the Palette agent was installed, you can confirm the Edge host is registered with your Palette instance
+through the Palette UI or issue `palette-agent` commands directly against the host.
 
-14. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+[UI STEPS STILL NEEDED]
 
-    ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
+1. Use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to your private SSH
+   key and `<host-ip-or-domain>` with the host's IP address or hostname.
 
-15. Click **Next Layer** to continue.
+   ```shell
+   ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+   ```
 
-16. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
-    `enable-admission-plugins`:
+2. Create a symbolic link to the Palette agent binary.
 
-    ```yaml {7}
-    kube-apiserver-arg:
-      - anonymous-auth=true
-      - profiling=false
-      - disable-admission-plugins=AlwaysAdmit
-      - default-not-ready-toleration-seconds=60
-      - default-unreachable-toleration-seconds=60
-      - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
-    ```
+```shell
+sudo ln --symbolic /opt/spectrocloud/bin/palette-agent /usr/local/bin/palette-agent
+```
 
-17. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
+3. Verify the Palette agent version.
+
+```shell
+palette-agent version
+```
+
+```shell title="Example output"
+version: v4.9.a
+build: release
+fips:
+```
+
+</TabItem>
+
+<TabItem value="Local Management Mode">
+
+To verify the Palette agent was installed, you can either access
+[Local UI](../../clusters/edge/local-ui/host-management/access-console.md) using the IP address of your Edge host or
+issue `palette-agent` commands directly against the host.
+
+1. Use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to your private SSH
+   key and `<host-ip-or-domain>` with the host's IP address or hostname.
+
+   ```shell
+   ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+   ```
+
+2. Create a symbolic link to the Palette agent binary.
+
+   ```shell
+   sudo ln --symbolic /opt/spectrocloud/bin/palette-agent /usr/local/bin/palette-agent
+   ```
+
+3. Verify the Palette agent version.
+
+   ```shell
+   palette-agent version
+   ```
+
+   ```shell title="Example output" hideClipboard
+   version: v4.9.a
+   build: release
+   fips:
+   ```
+
+</TabItem>
+
+</Tabs>
+
+## Create Edge Native Cluster Profile
+
+### Prerequisites
+
+### Enablement
+
+<Tabs groupId="env">
+
+<TabItem value="Central Management Mode">
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Clusters**.
+
+3. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
+
+4. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
+   the left **Main Menu**.
+
+5. Click on **Add Cluster Profile**.
+
+6. In the **Basic Information** section, assign a profile name, a description, and tags. Select the type as **Full** and
+   click **Next**.
+
+7. Select **Edge Native** as the **Cloud Type** and click **Next**.
+
+8. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+   **2.1.0** to the OS layer.
+
+9. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+
+   ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
+
+10. Click **Next Layer** to continue.
+
+11. Complete the cluster profile creation process by filling out the remaining layers.
+
+</TabItem>
+
+<TabItem value="Local Management Mode">
+
+1. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+
+2. Select **Profiles** from the left **Main Menu**.
+
+3. Click on **Add Cluster Profile**.
+
+4. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as **Full**
+   and click **Next**.
+
+5. Select **Edge Native** as the **Cloud Type** and click **Next**.
+
+6. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+   **2.1.0** to the OS layer.
+
+7. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+
+   ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
+
+8. Click **Next Layer** to continue.
+
+9. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
+   `enable-admission-plugins`:
+
+   ```yaml {7}
+   kube-apiserver-arg:
+     - anonymous-auth=true
+     - profiling=false
+     - disable-admission-plugins=AlwaysAdmit
+     - default-not-ready-toleration-seconds=60
+     - default-unreachable-toleration-seconds=60
+     - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
+   ```
+
+10. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
     sure you include the **Harbor Edge-Native Config** pack. This pack is required for clusters in local management
     mode.
 
-18. Follow the steps in
-    [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
-    a cluster definition of your profile. You will use this cluster definition later when you create the cluster in
-    Local UI.
+</TabItem>
 
-19. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
-
-    Follow the steps in
-    [Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) to build a
-    content bundle for your cluster profile. The content bundle will contain all the artifacts required to create your
-    cluster and it will allow you to create a cluster even if your host has no access to an external image registry.
-
-20. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
-
-21. Follow the steps in
-    [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to upload the
-    content bundle to your host.
-
-22. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
-    the cluster definition you exported previously to create a cluster.
+</Tabs>
 
 :::warning
 
@@ -815,11 +877,235 @@ for guidance.
 
 :::
 
+### Validate
+
+[Make sure profile is there]
+
+## Uninstall Palette Agent
+
+Beginning with Palette agent version 4.9.a, you can uninstall
+
+The `palette-agent uninstall` command removes the Palette Edge Agent and all associated resources from an Edge host. The
+uninstallation process is the same for centrally managed and locally managed Edge hosts.
+
+The following table lists the available flags for `palette-agent uninstall`.
+
+| **Flag**               | **Description**                                                                                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--force`              | Skip the interactive confirmation prompt. Required for non-interactive or automated use.                                                        |
+| `--dry-run`            | Display every step that would run without modifying anything on the host.                                                                       |
+| `--stylus-root <path>` | Override the value of `STYLUS_ROOT` instead of reading it from `/etc/spectro/environment`. Use when the environment file is missing or corrupt. |
+
+### Limitations
+
+- Not every file or directory that the agent or the Kubernetes distribution it provisioned created is guaranteed to be
+  removed. Some artifacts may remain on the host filesystem after the uninstall completes.
+
+- The uninstall is designed to leave the host in a state where a fresh `palette-agent install` succeeds, not to
+  guarantee a pristine host. If you need a clean host, reimage the machine instead of relying on uninstall alone.
+
+### Prerequisites
+
+- Palette agent installed on a centrally or locally managed Edge host.
+
+- Root access to the Edge host.
+
+[IT DOESN'T LOOK LIKE THERE IS ANY PROTECTION FOR UNINSTALLING FROM AN ACTIVE CLUSTER?]
+
+### Enablement
+
+<Tabs groupId="env">
+
+<TabItem value="Central Management Mode">
+
+1. Use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to your private SSH
+   key and `<host-ip-or-domain>` with the host's IP address or hostname.
+
+   ```shell
+   ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+   ```
+
+2. Issue the uninstall command as root. Without flags, the command prompts for confirmation before making changes. Refer
+   to the [table](#uninstall-palette-agent) for additional information on flag usage.
+
+   ```shell
+   sudo palette-agent uninstall
+   ```
+
+   The command displays a step-by-step progress log as each cleanup task runs. The uninstall performs the following
+   ordered steps. A failure in one step does not prevent subsequent steps from running.
+
+   | Step | Description                                                                                                                                                |
+   | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | 1    | Load the environment configuration from `/etc/spectro/environment`.                                                                                        |
+   | 2    | Stop and disable all `spectro*` systemd services.                                                                                                          |
+   | 3    | Reload systemd.                                                                                                                                            |
+   | 4    | Stop bundle mount units to release bind-mounted paths.                                                                                                     |
+   | 5    | Reset node state so upstream services know the host is being decommissioned.                                                                               |
+   | 6    | Remove Kubernetes binaries and related paths (`kubelet`, `kubectl`, `kubeadm`, `/opt/cni`, `/opt/containerd`, and others).                                 |
+   | 7    | Remove `spectro*` systemd unit files from `/etc/systemd/system` and `/run/systemd/system`.                                                                 |
+   | 8    | Remove Spectro runtime files (`/run/stylus`, `/etc/spectro`).                                                                                              |
+   | 9    | Remove stylus root directories (`/opt/spectrocloud`, `/oem`, `/system/oem`, bundle-mount directories, and log files), then prune empty parent directories. |
+
+   On hosts that use a custom install root, all cleanup runs at both the absolute host path and the rooted path under
+   `STYLUS_ROOT`.
+
+   ```shell title="Example output" hideClipboard
+   time="2026-05-22T18:14:58Z" level=info msg="Creating new cached handler with duration: 30s" version=v4.10.0-260521
+   This will permanently remove the Palette Edge Agent and all associated files. Continue? [y/N]: y
+    +  Load environment configuration [0ms]
+    +  Stop spectro services (/etc/systemd) [2.4s]
+    +  Stop spectro services (/run/systemd) [0ms]
+    +  Reload systemd daemon [300ms]
+    +  Stop bundle mount units [146ms]
+    +  Reset node state [0ms]
+    +  Remove Kubernetes binaries [0ms]
+    +  Remove spectro unit files [0ms]
+    +  Remove spectro runtime files [0ms]
+    +  Remove stylus root directories [171ms]
+
+    All 10 tasks completed successfully (3.03s)
+   ```
+
+</TabItem>
+
+<TabItem value="Local Management Mode">
+
+1. Use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to your private SSH
+   key and `<host-ip-or-domain>` with the host's IP address or hostname.
+
+   ```shell
+   ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+   ```
+
+2. Issue the uninstall command as root. Without flags, the command prompts for confirmation before making changes. Refer
+   to the [table](#uninstall-palette-agent) for additional information on flag usage.
+
+   ```shell
+   sudo palette-agent uninstall
+   ```
+
+   The command displays a step-by-step progress log as each cleanup task runs. The uninstall performs the following
+   ordered steps. A failure in one step does not prevent subsequent steps from running.
+
+   | Step | Description                                                                                                                                                |
+   | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | 1    | Load the environment configuration from `/etc/spectro/environment`.                                                                                        |
+   | 2    | Stop and disable all `spectro*` systemd services.                                                                                                          |
+   | 3    | Reload systemd.                                                                                                                                            |
+   | 4    | Stop bundle mount units to release bind-mounted paths.                                                                                                     |
+   | 5    | Reset node state so upstream services know the host is being decommissioned.                                                                               |
+   | 6    | Remove Kubernetes binaries and related paths (`kubelet`, `kubectl`, `kubeadm`, `/opt/cni`, `/opt/containerd`, and others).                                 |
+   | 7    | Remove `spectro*` systemd unit files from `/etc/systemd/system` and `/run/systemd/system`.                                                                 |
+   | 8    | Remove Spectro runtime files (`/run/stylus`, `/etc/spectro`).                                                                                              |
+   | 9    | Remove stylus root directories (`/opt/spectrocloud`, `/oem`, `/system/oem`, bundle-mount directories, and log files), then prune empty parent directories. |
+
+   On hosts that use a custom install root, all cleanup runs at both the absolute host path and the rooted path under
+   `STYLUS_ROOT`.
+
+   ```shell title="Example output" hideClipboard
+   time="2026-05-22T18:14:58Z" level=info msg="Creating new cached handler with duration: 30s" version=v4.10.0-260521
+   This will permanently remove the Palette Edge Agent and all associated files. Continue? [y/N]: y
+    +  Load environment configuration [0ms]
+    +  Stop spectro services (/etc/systemd) [2.4s]
+    +  Stop spectro services (/run/systemd) [0ms]
+    +  Reload systemd daemon [300ms]
+    +  Stop bundle mount units [146ms]
+    +  Reset node state [0ms]
+    +  Remove Kubernetes binaries [0ms]
+    +  Remove spectro unit files [0ms]
+    +  Remove spectro runtime files [0ms]
+    +  Remove stylus root directories [171ms]
+
+    All 10 tasks completed successfully (3.03s)
+   ```
+
+The Edge host record remains in Palette after you uninstall the Palette agent. Even if you reinstall the Palette agent
+on the same Edge host, the host cannot be re-registered with Palette until you delete the old record. This is because
+the Palette agent derives its identity from the host's `/etc/machine-id` file, which is an OS-managed file that the
+uninstall does not remove. Because the same machine produces the same identity on reinstall, Palette rejects the new
+registration as a duplicate.
+
+To remove the Edge host from Palette:
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Clusters**.
+
+3. Select the **Edge Hosts** tab and locate the **Unhealthy** machine you uninstalled the Palette agent from.
+
+4. Select the three-dot menu beside the Edge host and choose **Delete**. Select **OK** to confirm the deletion.
+
 </TabItem>
 
 </Tabs>
 
-## Validate
+### Validate
+
+<Tabs groupId="env">
+
+<TabItem value="Central Management Mode">
+
+1. Use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to your private SSH
+   key and `<host-ip-or-domain>` with the host's IP address or hostname.
+
+   ```shell
+   ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+   ```
+
+2. Verify the Palette agent has been uninstalled by attempting to check the version.
+
+   ```shell
+   palette-agent version
+   ```
+
+   A missing Palette agent binary indicates the Palette agent was uninstalled.
+
+   ```shell title="Example output" hideClipboard
+   bash: /usr/local/bin/palette-agent: No such file or directory
+   ```
+
+</TabItem>
+
+<TabItem value="Local Management Mode">
+
+1. Use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to your private SSH
+   key and `<host-ip-or-domain>` with the host's IP address or hostname.
+
+   ```shell
+   ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+   ```
+
+2. Verify the Palette agent has been uninstalled by attempting to check the version.
+
+   ```shell
+   palette-agent version
+   ```
+
+   A missing Palette agent binary indicates the Palette agent was uninstalled.
+
+   ```shell title="Example output" hideClipboard
+   bash: /usr/local/bin/palette-agent: No such file or directory
+   ```
+
+3. Verify you can no longer access [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+
+</TabItem>
+
+</Tabs>
+
+## Reinstall Palette Agent
+
+### Prerequisites
+
+- The required hardware and software dependencies needed to [install the Palette agent](#prerequisites).
+
+-
+
+After you uninstall the Palette agent, you can reinstall it on the same host. The agent derives its identity from the
+host's `/etc/machine-id` file, which is an OS-managed file that the uninstall does not remove. Because the same machine
+produces the same identity on reinstall, Palette rejects the new registration as a duplicate unless you delete the
+existing Edge Host record first.
 
 <Tabs groupId="env">
 
@@ -827,31 +1113,87 @@ for guidance.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Select **Clusters** from the left **Main Menu**.
+2. From the left main menu, select **Clusters**, then select the **Edge Hosts** tab.
 
-3. Select the host cluster you created to view its details page.
+3. Locate the Edge Host entry for the machine and delete it.
 
-4. Verify that the cluster is listed as **Healthy** and has a **Running** status.
+4. Follow the steps in [Install Palette Agent](#install-palette-agent) to install the agent on the host. The host
+   registers as a new Edge Host.
+
+</TabItem>
+
+<TabItem value="Local Management Mode">
+
+1. Re-extract the agent installation package to the root folder.
+
+   ```shell
+   sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
+   ```
+
+2. Confirm that the user data file is present. If it is missing, re-create it before proceeding. Refer to the
+   [local management mode install steps](#install-palette-agent) for an example user data configuration.
+
+   ```shell
+   cat /var/lib/spectro/userdata
+   ```
+
+3. Run the install command using the staging binary that the tar extraction placed on disk.
+
+   ```shell
+   sudo /var/lib/spectro/stylus/opt/spectrocloud/bin/palette-agent install \
+       --source dir:/var/lib/spectro/stylus \
+       --config /var/lib/spectro/userdata
+   ```
+
+4. Reboot the host.
+
+   ```shell
+   sudo reboot
+   ```
+
+   After the host reboots, the Local UI info screen is displayed and the host is ready for use.
+
+</TabItem>
+
+</Tabs>
+
+## Next Steps
+
+20. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/cluster-deployment.md) guide
+    to deploy a cluster using your registered host as a cluster node.
 
 Alongside Palette, [Local UI](../../clusters/edge/local-ui/host-management/access-console.md) allows you to fully manage
 the lifecycle of your edge hosts. Refer to the
 [Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
 details on how to use these operations
 
-</TabItem>
-
-<TabItem value="Local Management Mode">
-
-1. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
-
-2. Select **Cluster** from the left **Main Menu**.
-
-3. Verify that your cluster is in a **Heathy** status.
+---
 
 Local UI allows you to fully manage the lifecycle of your edge hosts. Refer to the
 [Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
 details on how to use these operations.
 
-</TabItem>
+18. Follow the steps in
+    [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
+    a cluster definition of your profile. You will use this cluster definition later when you create the cluster in
+    Local UI.
 
-</Tabs>
+19. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
+
+Follow the steps in
+[Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) to build a
+content bundle for your cluster profile. The content bundle will contain all the artifacts required to create your
+cluster and it will allow you to create a cluster even if your host has no access to an external image registry.
+
+20. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+
+21. Follow the steps in
+    [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to upload the
+    content bundle to your host.
+
+22. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
+    the cluster definition you exported previously to create a cluster.
+
+```
+
+```
