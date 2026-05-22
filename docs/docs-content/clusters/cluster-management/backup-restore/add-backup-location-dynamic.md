@@ -504,7 +504,7 @@ multiple cloud accounts.
 - If you are using an EKS workload cluster in AWS Account A, you must also have:
 
   - The AWS CLI configured with credentials for AWS Account A that have permission to describe EKS clusters and list IAM
-    OpenID Connect (OIDC) providers.
+    OIDC providers.
   - The AWS CLI configured with credentials for AWS Account B that have permission to update IAM role trust policies.
   - `kubectl` configured to access your EKS cluster.
   - `eksctl` (optional). Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
