@@ -167,7 +167,7 @@ cloud account.
 
    | **AWS Console Field** | **Value**                                                                           |
    | --------------------- | ----------------------------------------------------------------------------------- |
-   | Trusted entity type   | Select _AWS account_                                                                |
+   | Trusted entity type   | Select **AWS account**.                                                               |
    | AWS account           | Select the **Another AWS account** radio button.                                    |
    | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
    | Options               | Select the **Require external ID** checkbox.                                        |
