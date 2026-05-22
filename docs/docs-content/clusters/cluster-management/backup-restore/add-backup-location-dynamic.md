@@ -255,8 +255,8 @@ EKS workload clusters require an additional trust policy update to support IAM R
     ```
 
     ```shell hideClipboard title="Expected output"
-    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
-    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
+    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster <cluster-name> in "<region>"
+    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster<cluster-name> in "<region>"
     ```
 
     For additional guidance, refer to the
