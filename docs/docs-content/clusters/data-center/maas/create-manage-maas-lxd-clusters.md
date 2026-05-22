@@ -97,7 +97,7 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
     | **SSH Keys (Optional)**    | Inject public Secure Shell (SSH) keys into `~/.ssh/authorized_keys` on each control plane and worker node, including LXD VMs. The list is populated using the keys in **Tenant Settings** or **Project Settings** > **Security** > **SSH Keys**. Select **Add Item** to [add additional keys](/clusters/cluster-management/ssh/ssh-keys/). |
     | **NTP Servers (Optional)** | Specify Network Time Protocol (NTP) servers for the cluster nodes. The servers you provide override the machine image defaults. We recommend specifying at least one NTP server to prevent time drift issues.                                                                                                                              |
 
-10. Activate the **Host LXD-Based Control Planes** switch to use this cluster as an LXD-based control plane (hypervisor)
+10. Click the **Host LXD-Based Control Planes** toggle to use this cluster as an LXD-based control plane (hypervisor)
     for running control plane components as LXD VMs. Select **Next**.
 
     ![Activating the Host LXD-Based Control Planes switch](/create-manage-maas-lxd-clusters_host-lxd-based-control-planes.webp)
