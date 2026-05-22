@@ -338,7 +338,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
           "Action": "sts:AssumeRole",
           "Condition": {
             "StringEquals": {
-              "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
+              "sts:ExternalId": "<your-external-id>"
             }
           }
         },
