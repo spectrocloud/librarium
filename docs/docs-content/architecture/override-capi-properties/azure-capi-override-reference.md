@@ -95,7 +95,6 @@ before applying them to a production cluster.
 
 :::
 
-
 ### Known Immutable Fields
 
 The following fields become immutable after an AKS cluster is created. Attempting to disable them via override after
