@@ -128,6 +128,12 @@ management.
    | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                    |
    | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host. |
 
+:::info
+
+Any day2 update in cluster-settings though will overwrite NTP values on all hosts and TUI values on all host will then reflect the overridden values. 
+
+:::
+
    Optionally, you can also enable network overlay, especially if your cluster will operate in an DHCP environment. For
    more information, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md). If you enable the overlay
    network, you need to specify a CIDR range to be used by the overlay network.
