@@ -7,7 +7,8 @@ hide_table_of_contents: false
 tags: ["architecture", "capi", "cluster api", "advanced configuration", "azure"]
 ---
 
-This page provides examples and references for overriding Cluster API (CAPI) properties on Azure clusters.
+This page provides examples and references for overriding Cluster API (CAPI) properties on Azure clusters using Cluster
+API for Azure (CAPZ).
 
 ## Azure AKS
 
@@ -83,17 +84,25 @@ azureManagedMachinePool:
 
 #### Disk Encryption Sets
 
-CAPZ v1.18.0 does not expose a first-class `diskEncryptionSetID` field for AKS node pools. The supported workaround is
-to use the `asoManagedClustersAgentPoolPatches` field on `AzureManagedMachinePool`, which applies a JSON merge patch
-directly to the underlying Azure Service Operator (ASO) `ManagedClustersAgentPool` resource.
+CAPZ v1.18.0 does not expose a first-class
+[Disk Encryption Set (DES)](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption) field for AKS node
+pools. The supported workaround is to use the `asoManagedClusterPatches` field on `AzureManagedControlPlane`, which
+applies a JSON merge patch directly to the underlying Azure Service Operator (ASO) `ManagedCluster` resource.
 
 :::caution
 
-The `asoManagedClustersAgentPoolPatches` and `asoManagedClusterPatches` fields are intended for advanced use only.
-Misconfiguration that conflicts with CAPZ's normal operation is possible. Test changes in a non-production environment
-before applying them to a production cluster.
+The `asoManagedClusterPatches` field is intended for advanced use only. Misconfiguration that conflicts with CAPZ's
+normal operation is possible. Test changes in a non-production environment before applying them to a production cluster.
 
 :::
+
+```yaml title="Enable disk encryption set at the cluster level"
+azureManagedControlPlane:
+  spec:
+    asoManagedClusterPatches:
+      - '{"spec": {"diskEncryptionSetReference":
+        "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/diskEncryptionSets/<disk-encryption-set-name>"}}'
+```
 
 ### Known Immutable Fields
 
