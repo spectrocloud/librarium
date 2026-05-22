@@ -382,7 +382,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
     cluster-6a02ef3b8cd2144fbadd2eff   Active   10m
     ```
 
-    Then check the BackupStorageLocation status. Replace `[NAMESPACE]` with the namespace from the previous command.
+    Then check the `backupstoragelocation` status. Replace `<namespace>` with the namespace from the previous command.
 
     ```shell
     kubectl get backupstoragelocation --namespace [NAMESPACE]
