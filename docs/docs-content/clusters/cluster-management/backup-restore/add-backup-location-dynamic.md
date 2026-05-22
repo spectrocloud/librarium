@@ -756,7 +756,7 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     :::
 
     After adding the new statement, the trust policy in AWS Account B must include the existing Palette and Account A
-    trust statements from step 9, plus the new IAM Roles for Service Accounts (IRSA) statement. The following example
+    trust statements from step 9, plus the new IRSA statement. The following example
     shows the expected result. Use the table below to identify the values to substitute for each placeholder.
 
     | Placeholder                      | Description                                                                   |
