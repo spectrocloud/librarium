@@ -93,7 +93,7 @@ cloud account.
       {
         "Effect": "Allow",
         "Action": ["s3:ListBucket"],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+        "Resource": ["arn:aws:s3:::<bucket-name>"]
       }
     ]
   }
