@@ -333,7 +333,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
+            "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
           },
           "Action": "sts:AssumeRole",
           "Condition": {
