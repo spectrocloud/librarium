@@ -288,7 +288,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
     {
       "Effect": "Allow",
       "Principal": {
-        "Federated": "arn:aws:iam::[AWS-ACCOUNT-ID]:oidc-provider/oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]"
+        "Federated": "arn:aws:iam::<aws-account-id>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<oidc-id>"
       },
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
