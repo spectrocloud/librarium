@@ -263,7 +263,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
     [Creating an IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
     guide in the AWS documentation.
 
-14. Retrieve the current trust policy of the backup IAM role and save it to a local file. Replace `[ROLE-NAME]` with the
+14. Retrieve the current trust policy of the backup IAM role and save it to a local file. Replace `<role-name>` with the
     name of your backup IAM role.
 
     ```shell
