@@ -26,8 +26,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5930 -->
 
 - Palette now supports deployment of
-  [Generation 2 (Gen 2) Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2) on Azure
-  Kubernetes Service (AKS) clusters. When you select an instance type that supports Gen 2 (for example,
+  [Generation 2 (Gen 2) Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2) on AKS clusters. When you select an instance type that supports Gen 2 (for example,
   `Standard_D8ds_v6`), Azure automatically provisions the nodes as Gen 2 VMs instead of Gen 1 VMs. Changing a node
   pool's instance type between Gen 1 and Gen 2 variants on a running cluster triggers a
   [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). For more

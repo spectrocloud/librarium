@@ -16,7 +16,7 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 - [Generation 2 (Gen 2) VM instance types](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2/),
   including the v5 and v6 series such as `Standard_D8ds_v5` and `Standard_D8ds_v6`, are not available as Virtual Machine
-  Scale Sets (VMSS) in Azure Government regions and cannot be used for AKS node pools in Azure Government deployments.
+  Scale Sets (VMSS) in Azure Government cloud and cannot be used for AKS node pools deployed in Azure Government cloud.
   This is an Azure platform constraint.
 
 - When integrating with private Domain Name System (DNS) zones, AKS clusters created by Palette use a user-assigned
