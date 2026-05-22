@@ -114,7 +114,7 @@ construct valid override YAML, use the following steps.
 
 1. Start with the top-level key.
 
-   Use the CAPI Kind for your target resource, converted to [camelCase](#key-format):
+   Use the CAPI Kind for your target resource, converted to [camelCase](#key-format).
 
    ```yaml hideClipboard
    awsCluster:
@@ -153,7 +153,7 @@ construct valid override YAML, use the following steps.
 4. Follow nested struct references.
 
    When a field's type is another struct, navigate into that struct to find its fields. For example,
-   `ControlPlaneLoadBalancer` in `AWSClusterSpec` is of type `*AWSLoadBalancerSpec`:
+   `ControlPlaneLoadBalancer` in `AWSClusterSpec` is of type `*AWSLoadBalancerSpec`.
 
    ```go hideClipboard title="AWSClusterSpec and AWSLoadBalancerSpec excerpts"
    // AWSClusterSpec
@@ -177,7 +177,7 @@ construct valid override YAML, use the following steps.
 5. Handle inline struct embeddings.
 
    Some Spec structs embed another struct with `json:",inline"`. This promotes the embedded struct's fields to the same
-   level — no additional key is needed. For example, `AzureManagedControlPlaneSpec` embeds
+   level and no additional key is needed. For example, `AzureManagedControlPlaneSpec` embeds
    `AzureManagedControlPlaneClassSpec` inline.
 
    ```go hideClipboard title="AzureManagedControlPlaneSpec excerpt"
@@ -229,7 +229,7 @@ Overriding CAPI properties on an existing cluster is likely to trigger a
 [node pool repave](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration), which will
 temporarily reduce cluster capacity. Plan override changes during a maintenance window.
 
-- **AKS** — Any override change triggers a rolling upgrade, even for parameters that would otherwise support inline
+- **AKS** - Any override change triggers a rolling upgrade, even for parameters that would otherwise support inline
   updates.
 
 :::
@@ -259,7 +259,7 @@ validate whether a field is immutable, so it is your responsibility to check the
 provider API documentation before applying an override to an existing cluster.
 
 If you attempt to update an immutable field, behavior depends on the cloud provider. The provider may return an error,
-which Palette surfaces as a `Warning` cluster event (see [Error Handling](#error-handling)), or the cloud provider may
+which Palette surfaces as a warning cluster event (refer to [Error Handling](#error-handling)), or the cloud provider may
 silently accept the value without applying it.
 
 ### Palette UI does not Reflect Overridden Values
@@ -286,7 +286,7 @@ The following table describes the guidelines for when we want to support a featu
 
 Palette only validates that the override YAML format is valid. It does not validate field names, types, or values
 against the CAPI provider schema, and it does not check whether a field is immutable. Invalid fields will produce
-Warning events on the cluster (see [Error Handling](#error-handling)).
+warning events on the cluster (refer to [Error Handling](#error-handling)).
 
 ### Error Handling
 
