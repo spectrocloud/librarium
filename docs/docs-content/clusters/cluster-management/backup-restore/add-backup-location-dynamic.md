@@ -88,7 +88,7 @@ cloud account.
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+        "Resource": ["arn:aws:s3:::<bucket-name>/*"]
       },
       {
         "Effect": "Allow",
