@@ -915,6 +915,22 @@ with any other IP addresses in the network.
 If available, you can optionally select an SSH key to remote into the host cluster and provide a Network Time Protocol
 (NTP) server list.
 
+:::warning
+
+Palette Edge supports two sources for Network Time Protocol (NTP) configuration:
+
+- Per-host configuration through installer `user-data` or the local TUI
+- Cluster-wide configuration through cluster settings
+
+Per-host NTP values can differ between hosts. For example, one host may use `<ntp-val-1>` while another uses `<ntp-val-2>`.
+
+Cluster settings do not display previously configured per-host NTP values. They only display the cluster-wide configuration.
+
+When a Day-2 cluster settings update modifies NTP configuration, the new values are applied to all hosts in the cluster and overwrite any existing per-host TUI or user-data configuration.
+
+This separation allows deployments where hosts temporarily require different NTP sources before cluster-wide standardization is applied.
+:::
+
 Click **Next** to continue.
 
 ### Nodes configuration
