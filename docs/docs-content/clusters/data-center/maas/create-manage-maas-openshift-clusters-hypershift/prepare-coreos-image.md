@@ -205,7 +205,7 @@ the image was not found.
    sudo ./build-rootfs.sh ./ubuntu2404-rootfs
    ```
 
-   The script runs `debootstrap` for Ubuntu 24.04 (Noble), installs `cloud-init`, `netplan.io`, `python3-cffi`, and
+   The script executes `debootstrap` for Ubuntu 24.04 (Noble), installs `cloud-init`, `netplan.io`, `python3-cffi`, and
    `python3-ply`, cleans apt caches, and outputs the root filesystem directory to `./ubuntu2404-rootfs/`. This directory
    is copied into the extra partition in the next step.
 
