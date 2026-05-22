@@ -831,7 +831,7 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     cluster-6a02ef3b8cd2144fbadd2eff   Active   10m
     ```
 
-    Then check the BackupStorageLocation status. Replace `[NAMESPACE]` with the namespace from the previous command.
+    Then check the `backupstoragelocation` status. Replace `<namespace>` with the namespace from the previous command.
 
     ```shell
     kubectl get backupstoragelocation --namespace [NAMESPACE]
