@@ -58,7 +58,7 @@ cloud account.
 
 - An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces.
 
-- The following IAM policy must be created in your AWS Account. Replace the `BUCKET-NAME` placeholder in the policy
+- The following Identity and Access Management (IAM) policy must be created in your AWS Account. Replace the `BUCKET-NAME` placeholder in the policy
   below with your bucket name. Refer to the
   [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
   additional guidance.
