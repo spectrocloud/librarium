@@ -66,56 +66,48 @@ section of the pack Additional Guidance for further information.
 
 5.  In the bottom-right corner, click **Start MAAS Configuration**.
 
-6.  Provide basic cluster information: **Cluster name**, **Description**, and **Tags**.
+6.  Complete the following information. Select **Next** when finished.
 
-7.  Select your MAAS cloud account from the **drop-down Menu** and click **Next**.
+    | **Field**         | **Description**                                                                                                                                                                                                                          |
+    | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Cluster Name**  | Enter a custom name for the cluster.                                                                                                                                                                                                     |
+    | **Description**   | (Optional) Provide context about the cluster.                                                                                                                                                                                            |
+    | **Tags**          | (Optional) Assign any desired cluster tags. You can use tags to filter and organize clusters in Palette. Example: `env:test`.                                                                                                            |
+    | **Cloud Account** | Select the appropriate MAAS account under which to deploy the cluster. If the account is not listed, select **Add New Account**, and follow the prompts to [add your MAAS account](./register-manage-maas-cloud-accounts.md) to Palette. |
 
-8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
+7.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-10. Select a domain from the **Domain drop-down Menu** and click **Next**.
+9.  Fill out the following fields on the **Cluster Config** step. Select **Next** when finished.
 
-    :::warning
+    | **Field**                         | **Description**                                                                                                                                                                                                                                                                                                                                                                                            |
+    | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Domains**                       | Register a DNS record in the selected domain for the deployed cluster. The DNS record links to the IP addresses of the control plane nodes.                                                                                                                                                                                                                                                                |
+    | **SSH Keys (Optional)**           | Inject public Secure Shell (SSH) keys into `~/.ssh/authorized_keys` on each control plane and worker node, including LXD VMs. The list is populated using the keys in **Tenant Settings** or **Project Settings** > **Security** > **SSH Keys**. Select **Add Item** to [add additional keys](/clusters/cluster-management/ssh/ssh-keys/).                                                                 |
+    | **NTP Servers (Optional)**        | Specify Network Time Protocol (NTP) servers for the cluster nodes. The servers you provide override the machine image defaults. We recommend specifying at least one NTP server to prevent time drift issues.                                                                                                                                                                                              |
+    | **Host LXD-Based Control Planes** | Activate to use this cluster as an LXD-based control plane (hypervisor) for running control plane components as LXD VMs. To create a workload cluster that leverages MAAS LXD or use an existing host LXD-based control plane, leave this option disabled. Refer to [Create and Manage MAAS Clusters Using LXD VMs](create-manage-maas-lxd-clusters.md) for more information on leveraging LXD in Palette. |
 
-    We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time.
-    If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
-    **Cluster Config** step.
+10. Configure the control plane and, optionally, worker node pools.
 
-    :::
+    The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields
+    that are common across environments and their usage, refer to our
+    [Node Pools](../../cluster-management/node-pool.md#node-pool-configuration-settings) guide. Select **Next** when
+    finished.
 
-11. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
-    node pools. For a description of input fields that are common across target platforms refer to the
-    [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                                              |
+    | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource pool**      | The MAAS resource pool from which to deploy nodes.                                                                                                                                                                                                                                                                                           |
+    | **Minimum CPU**        | Only select machines from the **Resource pool** that have at least the specified amount of CPU.                                                                                                                                                                                                                                              |
+    | **Minimum Memory**     | Only select machines from the **Resource pool** that have at least the specified amount of memory.                                                                                                                                                                                                                                           |
+    | **Availability zones** | The MAAS zones in which to deploy nodes. Palette distributes nodes across the selected zones for high availability.                                                                                                                                                                                                                          |
+    | **Tags**               | Controls which MAAS machines to use for the node pool based on [MAAS tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags). If you specify multiple tags, Palette only selects machines that have _all_ of the specified tags. <br /> <br /> **WARNING:** Modifying tags on an existing node pool triggers a node repave. |
 
-    #### Control Plane Pool configuration
+11. <PartialsComponent category="clusters" name="cluster-settings" />
 
-    - Cloud configuration:
+12. Select **Validate** to review your cluster configurations and settings.
 
-      - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available
-        servers to only those that have at least the amount of CPU and Memory selected.
-
-    - Tags - You can specify tags to dynamically place nodes in a pool by using MAAS automatic tags. Specify the tag
-      values that you want to apply to all nodes in the node pool. To learn more about MAAS automatic tags, refer to the
-      [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags)
-      documentation.
-
-    #### Worker Pool configuration
-
-    - Cloud configuration:
-
-      - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available
-        servers to only those that have at least the amount of CPU and Memory selected.
-
-      - Tags: Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the
-        provided tags. To learn more about MAAS tags, refer to the
-        [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation.
-
-12. <PartialsComponent category="clusters" name="cluster-settings" />
-
-13. Select **Validate** to review your cluster configurations and settings.
-
-14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+13. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the

@@ -37,6 +37,10 @@ tags: ["release-notes"]
     [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2). This covers supported
     size families and the move to UEFI-based boot architecture.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5897 -->
+
+- SSH key injection is now supported for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md).
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2788 -->
