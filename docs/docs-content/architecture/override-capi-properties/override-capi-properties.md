@@ -259,8 +259,8 @@ validate whether a field is immutable, so it is your responsibility to check the
 provider API documentation before applying an override to an existing cluster.
 
 If you attempt to update an immutable field, behavior depends on the cloud provider. The provider may return an error,
-which Palette surfaces as a warning cluster event (refer to [Error Handling](#error-handling)), or the cloud provider may
-silently accept the value without applying it.
+which Palette surfaces as a warning cluster event (refer to [Error Handling](#error-handling)), or the cloud provider
+may silently accept the value without applying it.
 
 ### Palette UI does not Reflect Overridden Values
 
