@@ -361,7 +361,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
     }
     ```
 
-16. Apply the updated trust policy to the backup IAM role. Replace `[ROLE-NAME]` with the name of your backup IAM role.
+16. Apply the updated trust policy to the backup IAM role. Replace `<role-name>` with the name of your backup IAM role.
 
     ```shell
     aws iam update-assume-role-policy \
