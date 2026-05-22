@@ -214,8 +214,8 @@ EKS workload clusters require an additional trust policy update to support IAM R
 
     ```shell
     aws eks describe-cluster \
-      --name [CLUSTER-NAME] \
-      --region [REGION] \
+      --name <cluster-name> \
+      --region <region> \
       --query "cluster.identity.oidc.issuer" \
       --output text
     ```
