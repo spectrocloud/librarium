@@ -647,6 +647,9 @@ for a deep dive into the IAM trust policies.
 You now have a backup location for Palette to use to store the backup of your clusters or workspaces. This backup
 location is using AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
 
+EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
+the section below.
+
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
 
