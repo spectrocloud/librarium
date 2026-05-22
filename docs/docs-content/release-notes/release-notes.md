@@ -11,6 +11,55 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 22, 2026 - Component Updates {#component-updates-2026-21}
+
+The following components have been updated for Palette version 4.9.5 - 4.9.8.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.2   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.2  |
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2240 -->
+
+- Fixed a Terraform issue where `terraform apply` failed to reconcile add-on cluster profile drift in clusters when the
+  add-on cluster profile is managed in Terraform but updated in the Palette UI.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3910 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4071 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4073 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4074 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4075 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4099 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4105 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4110 -->
+
+| Pack Name                                                                | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------------------------------------------------------ | ------ | ------------------ | ------------------ | ----------- |
+| [Amazon EBS CSI](/integrations/packs/?pack=csi-aws-ebs)                  | CSI    | :white_check_mark: | :x:                | 1.60.0      |
+| [Amazon EFS](/integrations/packs/?pack=csi-aws-efs)                      | CSI    | :white_check_mark: | :x:                | 3.1.0       |
+| [Calico Network Policy](/integrations/packs/?pack=calico-network-policy) | Add-on | :white_check_mark: | :x:                | 3.32.0      |
+| [ExternalDNS](/integrations/packs/?pack=external-dns)                    | Add-on | :white_check_mark: | :x:                | 0.21.0      |
+| [GCE Persistent Disk CSI](/integrations/packs/?pack=csi-gcp-driver)      | CSI    | :white_check_mark: | :x:                | 1.25.2      |
+| [Spectro Proxy](/integrations/packs/?pack=spectro-proxy)                 | Add-on | :x:                | :white_check_mark: | 1.5.6       |
+| [Tigera Operator](/integrations/packs/?pack=tigera-operator)             | CNI    | :white_check_mark: | :x:                | 3.32.0      |
+| [Traefik](/integrations/packs/?pack=traefik)                             | Add-on | :white_check_mark: | :x:                | 40.2.0      |
+
+#### Community Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4095 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4096 -->
+
+| Pack Name                                                  | Layer  | New Version |
+| ---------------------------------------------------------- | ------ | ----------- |
+| [ECK Operator](/integrations/packs/?pack=elastic-operator) | Add-on | 3.4.0       |
+| [ECK Stack](/integrations/packs/?pack=elastic-stack)       | Add-on | 0.19.0      |
+
 ## May 15, 2026 - Component Updates {#component-updates-2026-20}
 
 The following components have been updated for Palette version 4.9.5 - 4.9.8.
@@ -48,7 +97,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 
 The following component updates are applicable to this release:
 
-- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -87,7 +137,8 @@ The following component updates are applicable to this release:
 
 The following component updates are applicable to this release:
 
-- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
 
 ### Improvements
 
@@ -214,7 +265,8 @@ The following components have been updated for Palette version 4.9.5.
 The following component updates are applicable to this release:
 
 - [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
-- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -328,7 +380,10 @@ The following component updates are applicable to this release:
   configurations. Use RHEL 9.x or RHEL 10.x instead.
 
 - Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. Use Ubuntu
-  24.04, as it is FIPS 140-3 compliant.
+- Support for Ubuntu 20.04 in Edge workflows has been deprecated. We recommend using either Ubuntu 22.04 (when requiring
+  FIPS 140-3 certification) or Ubuntu 24.04 (when FIPS 140-3 compliance is sufficient). Ubuntu 24.04 FIPS certification
+  is still in progress at the vendor-level and cannot be relied upon to meet auditory compliance until certification is
+  reached.”
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
 
