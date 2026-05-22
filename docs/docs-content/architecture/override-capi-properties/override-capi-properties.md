@@ -17,9 +17,9 @@ provision and manage Kubernetes clusters. When provisioning a cluster, Palette p
 properties supported by the underlying CAPI objects. For most use cases, this is sufficient. However, some advanced or
 provider-specific configurations exist in the CAPI provider spec but are not surfaced in the Palette UI or API.
 
-You can override these properties by supplying YAML directly targeting the underlying CAPI provider objects at
-both the cluster level and the node pool level. This allows you to configure any property supported by the CAPI provider
-version in use, without waiting for Palette to add native support for each field.
+You can override these properties by supplying YAML directly targeting the underlying CAPI provider objects at both the
+cluster level and the node pool level. This allows you to configure any property supported by the CAPI provider version
+in use, without waiting for Palette to add native support for each field.
 
 :::warning
 
@@ -259,8 +259,8 @@ validate whether a field is immutable, so it is your responsibility to check the
 provider API documentation before applying an override to an existing cluster.
 
 If you attempt to update an immutable field, behavior depends on the cloud provider. The provider may return an error,
-which Palette surfaces as a `Warning` cluster event (see [Error Handling](#error-handling)), or the cloud provider may silently accept
-the value without applying it.
+which Palette surfaces as a `Warning` cluster event (see [Error Handling](#error-handling)), or the cloud provider may
+silently accept the value without applying it.
 
 ### Palette UI does not Reflect Overridden Values
 
@@ -290,9 +290,13 @@ Warning events on the cluster (see [Error Handling](#error-handling)).
 
 ### Error Handling
 
-If Palette cannot apply the override, it logs a `Warning` cluster event that identifies the problematic field paths. The
+If Palette cannot apply the override, it logs a warning cluster event that identifies the problematic field paths. The
 cluster continues to reconcile using the pre-override object, so a bad override value does not stall provisioning or
 updates.
+
+```shell hideClipboard title="Example warning event for invalid override field"
+Failed to get/apply cloudconfig from hubble. admission webhook "vawscloudconfig.kb.io" denied the request: cluster API override on pool "control-plane-pool" has invalid fields under key "awsMachineTemplate": error unmarshaling JSON: while decoding JSON: json: unknown field "deviceNam"
+```
 
 ## References and Examples
 
