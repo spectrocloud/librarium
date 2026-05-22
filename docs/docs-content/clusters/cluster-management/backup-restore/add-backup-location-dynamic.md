@@ -147,7 +147,7 @@ cloud account.
 
    ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.webp)
 
-4. Fill out the input fields listed in the table.
+4. Fill out the input fields listed in the table below.
 
    | **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                     |
    | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -156,7 +156,7 @@ cloud account.
    | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                               |
    | **S3 Bucket**           | The name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                      |
    | **Region**              | Region where the S3 bucket is hosted. You can check region codes in the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                |
-   | **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and enable the **Force S3 path style** checkbox. |
+   | **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and select the **Force S3 path style** checkbox. |
 
 5. Next, choose the **STS** authentication method. When you choose the STS authentication method, you must create a new
    IAM role and provide its Amazon Resource Name (ARN) to Palette. Check out the
@@ -397,13 +397,15 @@ the section below.
 
 ### Validate
 
+Use the following steps to validate adding the new backup location.
+
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. Navigate to **Project Settings** and click on **Backup Locations**.
 
 3. The **Backup Locations** page will display a list of all backup locations configured for the current project.
 
-4. Search for the newly added backup location in the list. The presence of the backup location validates that you
+4. Search for the newly added backup location in the list. The presence of the backup location validates that you have
    successfully added a new backup location.
 
 ## Multiple Cloud Accounts with AWS STS
@@ -480,20 +482,20 @@ multiple cloud accounts.
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+        "Resource": ["arn:aws:s3:::<bucket-name>/*"]
       },
       {
         "Effect": "Allow",
         "Action": ["s3:ListBucket"],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+        "Resource": ["arn:aws:s3:::<bucket-name>"]
       }
     ]
   }
   ```
 
-- If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used
-  for the backup location to allow the IAM principal (user or role) associated with those static credentials to assume
-  the backup location IAM role. Check out the
+- If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used for
+  the backup location to allow the IAM principal (user or role) associated with those static credentials to assume the
+  backup location IAM role. Check out the
   [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
   guide for detailed instructions.
 
@@ -540,16 +542,16 @@ multiple cloud accounts.
    [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
    guide to learn how to create an IAM role. Use the following configuration while creating the IAM role.
 
-   | **AWS Console Field**   | **Value**                                                                           |
-   | ----------------------- | ----------------------------------------------------------------------------------- |
-   | **Trusted entity type** | Select the **AWS account** option.                                                  |
-   | **AWS account**         | Select the **Another AWS account** radio button.                                    |
-   | **AWS Account ID**      | Use the one displayed in Palette, which is Palette's account ID.                    |
-   | **Options**             | Select the **Require external ID** checkbox.                                        |
-   | External ID             | Use the one displayed in Palette. Palette generates the external ID.                |
-   | Permissions policies    | Attach the IAM policy defined in the [Prerequisites section](#prerequisites) above. |
-   | Role name               | Provide a name of your choice.                                                      |
-   | Role description        | Provide an optional description.                                                    |
+   | **AWS Console Field** | **Value**                                                                           |
+   | --------------------- | ----------------------------------------------------------------------------------- |
+   | Trusted entity type   | Select the **AWS account** option.                                                  |
+   | AWS account           | Select the **Another AWS account** radio button.                                    |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
+   | Options               | Select the **Require external ID** checkbox.                                        |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID.                |
+   | Permissions policies  | Attach the IAM policy defined in the [Prerequisites section](#prerequisites) above. |
+   | Role name             | Provide a name of your choice.                                                      |
+   | Role description      | Provide an optional description.                                                    |
 
    ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
@@ -631,8 +633,8 @@ multiple cloud accounts.
 
 13. Click on the **Create** button.
 
-You now have a backup location for Palette to use to store the backup of your clusters or workspaces. This backup
-location is using AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
+You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
+AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
 
 EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
 the section below.
