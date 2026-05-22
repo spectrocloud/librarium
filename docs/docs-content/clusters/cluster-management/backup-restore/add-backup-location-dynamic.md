@@ -388,7 +388,7 @@ the section below.
     Then check the `backupstoragelocation` status. Replace `<namespace>` with the namespace from the previous command.
 
     ```shell
-    kubectl get backupstoragelocation --namespace [NAMESPACE]
+    kubectl get backupstoragelocation --namespace <namespace>
     ```
 
     ```shell hideClipboard title="Expected output"
@@ -587,7 +587,7 @@ multiple cloud accounts.
 }
 ```
 
-    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say *SpectroCloudRole*, you can use the `"arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:role/SpectroCloudRole"` ARN instead.
+    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say *SpectroCloudRole*, you can use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
 
 Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
 Palette and another for the AWS Account A. <br />
@@ -601,19 +601,19 @@ Palette and another for the AWS Account A. <br />
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
+        "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
       },
       "Action": "sts:AssumeRole",
       "Condition": {
         "StringEquals": {
-          "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
+          "sts:ExternalId": "<your-external-id>"
         }
       }
     },
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
+        "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
       },
       "Action": "sts:AssumeRole"
     }
@@ -621,7 +621,7 @@ Palette and another for the AWS Account A. <br />
 }
 ```
 
-In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you used
+In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you used
 while creating the IAM role.
 
 <br />
@@ -654,12 +654,12 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
 
 14. Ensure your AWS CLI is configured for AWS Account A, then retrieve the OIDC issuer URL for the EKS cluster. Replace
-    `[CLUSTER-NAME]` and `[REGION]` with your cluster name and AWS region.
+    `<cluster-name>` and `<region>` with your cluster name and AWS region.
 
     ```shell
     aws eks describe-cluster \
-      --name [CLUSTER-NAME] \
-      --region [REGION] \
+      --name <cluster-name> \
+      --region <region> \
       --query "cluster.identity.oidc.issuer" \
       --output text
     ```
@@ -693,14 +693,14 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
 
     ```shell
     eksctl utils associate-iam-oidc-provider \
-      --cluster [CLUSTER-NAME] \
-      --region [REGION] \
+      --cluster <cluster-name> \
+      --region <region> \
       --approve
     ```
 
     ```shell hideClipboard title="Expected output"
-    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
-    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster [CLUSTER-NAME] in "[REGION]"
+    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster <cluster-name> in "<region>"
+    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster <cluster-name> in "<region>"
     ```
 
     For additional guidance, refer to the
@@ -708,11 +708,11 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     guide in the AWS documentation.
 
 16. Switch to AWS Account B. Retrieve the current trust policy of the backup IAM role and save it to a local file.
-    Replace `[ROLE-NAME]` with the name of your backup IAM role.
+    Replace `<role-name>` with the name of your backup IAM role.
 
     ```shell
     aws iam get-role \
-      --role-name [ROLE-NAME] \
+      --role-name <role-name> \
       --query 'Role.AssumeRolePolicyDocument' \
       --output json > trust-policy.json
     ```
@@ -724,23 +724,23 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
 
     | Placeholder                      | Description                                      |
     | -------------------------------- | ------------------------------------------------ |
-    | `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` | The AWS account ID for AWS Account A             |
-    | `[REGION]`                       | The AWS region where the EKS cluster is deployed |
-    | `[OIDC-ID]`                      | The OIDC ID from step 14                         |
+    | `<account-id-for-aws-account-a>` | The AWS account ID for AWS Account A             |
+    | `<region>`                       | The AWS region where the EKS cluster is deployed |
+    | `<oidc-id>`                      | The OIDC ID from step 14                         |
 
     ```json
     {
       "Effect": "Allow",
       "Principal": {
-        "Federated": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:oidc-provider/oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]"
+        "Federated": "arn:aws:iam::<account-id-for-aws-account-a>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<oidc-id>"
       },
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringLike": {
-          "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:sub": "system:serviceaccount:*:velero-server"
+          "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:sub": "system:serviceaccount:*:velero-server"
         },
         "StringEquals": {
-          "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:aud": "sts.amazonaws.com"
+          "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:aud": "sts.amazonaws.com"
         }
       }
     }
@@ -764,11 +764,11 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
 
     | Placeholder                      | Description                                                                   |
     | -------------------------------- | ----------------------------------------------------------------------------- |
-    | `[AWS-ACCOUNT-ID-OF-PALETTE]`    | The Palette AWS account ID, displayed in the backup location wizard           |
-    | `[YOUR-EXTERNAL-ID]`             | The external ID generated by Palette, displayed in the backup location wizard |
-    | `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` | The AWS account ID for AWS Account A                                          |
-    | `[REGION]`                       | The AWS region where the EKS cluster is deployed                              |
-    | `[OIDC-ID]`                      | The OIDC ID from step 14                                                      |
+    | `<aws-account-id-of-palette>`    | The Palette AWS account ID, displayed in the backup location wizard           |
+    | `<your-external-id>`             | The external ID generated by Palette, displayed in the backup location wizard |
+    | `<account-id-for-aws-account-a>` | The AWS account ID for AWS Account A                                          |
+    | `<region>`                       | The AWS region where the EKS cluster is deployed                              |
+    | `<oidc-id>`                      | The OIDC ID from step 14                                                      |
 
     ```json
     {
@@ -777,34 +777,34 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
+            "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
           },
           "Action": "sts:AssumeRole",
           "Condition": {
             "StringEquals": {
-              "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
+              "sts:ExternalId": "<your-external-id>"
             }
           }
         },
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
+            "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
           },
           "Action": "sts:AssumeRole"
         },
         {
           "Effect": "Allow",
           "Principal": {
-            "Federated": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:oidc-provider/oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]"
+            "Federated": "arn:aws:iam::<account-id-for-aws-account-a>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<oidc-id>"
           },
           "Action": "sts:AssumeRoleWithWebIdentity",
           "Condition": {
             "StringLike": {
-              "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:sub": "system:serviceaccount:*:velero-server"
+              "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:sub": "system:serviceaccount:*:velero-server"
             },
             "StringEquals": {
-              "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:aud": "sts.amazonaws.com"
+              "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:aud": "sts.amazonaws.com"
             }
           }
         }
@@ -812,12 +812,12 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     }
     ```
 
-18. Apply the updated trust policy to the backup IAM role in AWS Account B. Replace `[ROLE-NAME]` with the name of your
+18. Apply the updated trust policy to the backup IAM role in AWS Account B. Replace `<role-name>` with the name of your
     backup IAM role.
 
     ```shell
     aws iam update-assume-role-policy \
-      --role-name [ROLE-NAME] \
+      --role-name <role-name> \
       --policy-document file://trust-policy.json
     ```
 
@@ -837,7 +837,7 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     Then check the `backupstoragelocation` status. Replace `<namespace>` with the namespace from the previous command.
 
     ```shell
-    kubectl get backupstoragelocation --namespace [NAMESPACE]
+    kubectl get backupstoragelocation --namespace <namespace>
     ```
 
     ```shell hideClipboard title="Expected output"
