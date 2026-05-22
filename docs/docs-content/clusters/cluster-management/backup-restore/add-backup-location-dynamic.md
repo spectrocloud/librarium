@@ -207,7 +207,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
 <details>
 <summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
 
-12. Retrieve the OIDC issuer URL for the EKS cluster. Replace `[CLUSTER-NAME]` and `[REGION]` with your cluster name and
+12. Retrieve the OIDC issuer URL for the EKS cluster. Replace `<cluster-name>` and `<region>` with your cluster name and
     AWS region.
 
     ```shell
