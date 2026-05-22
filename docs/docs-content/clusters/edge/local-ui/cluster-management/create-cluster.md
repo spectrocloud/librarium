@@ -128,6 +128,23 @@ management.
    | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                    |
    | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host. |
 
+   :::warning
+
+    Palette Edge supports two sources for Network Time Protocol (NTP) configuration:
+
+    - Per-host configuration through installer `user-data` or the local TUI
+    - Cluster-wide configuration through cluster settings
+
+    Per-host NTP values can differ between hosts. For example, one host may use `<ntp-val-1>` while another uses `<ntp-val-2>`.
+
+    Cluster settings do not display previously configured per-host NTP values. They only display the cluster-wide configuration.
+
+    When a Day-2 cluster settings update modifies NTP configuration, the new values are applied to all hosts in the cluster and overwrite any existing per-host TUI or user-data configuration.
+
+    This separation allows deployments where hosts temporarily require different NTP sources before cluster-wide standardization is applied.
+    :::
+   
+   
    Optionally, you can also enable network overlay, especially if your cluster will operate in an DHCP environment. For
    more information, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md). If you enable the overlay
    network, you need to specify a CIDR range to be used by the overlay network.
