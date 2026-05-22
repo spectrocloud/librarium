@@ -8,7 +8,7 @@ tags: ["architecture", "capi", "cluster api", "advanced configuration", "azure"]
 ---
 
 This page provides examples and references for overriding Cluster API (CAPI) properties on Azure clusters using Cluster
-API for Azure (CAPZ).
+API Provider Azure (CAPZ).
 
 ## Azure AKS
 
