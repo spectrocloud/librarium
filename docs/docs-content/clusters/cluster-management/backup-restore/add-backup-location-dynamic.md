@@ -268,7 +268,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
 
     ```shell
     aws iam get-role \
-      --role-name [ROLE-NAME] \
+      --role-name <role-name> \
       --query 'Role.AssumeRolePolicyDocument' \
       --output json > trust-policy.json
     ```
