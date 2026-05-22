@@ -25,8 +25,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2240 -->
 
-- Fixed a Terraform issue where `terraform apply` failed to reconcile add-on cluster profile drift in clusters when the add-on cluster profile is
-  managed in Terraform but updated in the Palette UI.
+- Fixed a Terraform issue where `terraform apply` failed to reconcile add-on cluster profile drift in clusters when the
+  add-on cluster profile is managed in Terraform but updated in the Palette UI.
 
 ### Packs
 
@@ -44,7 +44,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 | [Amazon EBS CSI](/integrations/packs/?pack=csi-aws-ebs)                  | CSI    | :white_check_mark: | :x:                | 1.60.0      |
 | [Amazon EFS](/integrations/packs/?pack=csi-aws-efs)                      | CSI    | :white_check_mark: | :x:                | 3.1.0       |
 | [Calico Network Policy](/integrations/packs/?pack=calico-network-policy) | Add-on | :white_check_mark: | :x:                | 3.32.0      |
-| [ExternalDNS](/integrations/packs/?pack=external-dns)                    | Add-on | :white_check_mark:  | :x:                | 0.21.0      |
+| [ExternalDNS](/integrations/packs/?pack=external-dns)                    | Add-on | :white_check_mark: | :x:                | 0.21.0      |
 | [GCE Persistent Disk CSI](/integrations/packs/?pack=csi-gcp-driver)      | CSI    | :white_check_mark: | :x:                | 1.25.2      |
 | [Spectro Proxy](/integrations/packs/?pack=spectro-proxy)                 | Add-on | :x:                | :white_check_mark: | 1.5.6       |
 | [Tigera Operator](/integrations/packs/?pack=tigera-operator)             | CNI    | :white_check_mark: | :x:                | 3.32.0      |
@@ -382,7 +382,10 @@ The following component updates are applicable to this release:
   configurations. Use RHEL 9.x or RHEL 10.x instead.
 
 - Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. Use Ubuntu
-- Support for Ubuntu 20.04 in Edge workflows has been deprecated. We recommend using either Ubuntu 22.04 (when requiring FIPS 140-3 certification) or Ubuntu 24.04 (when FIPS 140-3 compliance is sufficient). Ubuntu 24.04 FIPS certification is still in progress at the vendor-level and cannot be relied upon to meet auditory compliance until certification is reached.”
+- Support for Ubuntu 20.04 in Edge workflows has been deprecated. We recommend using either Ubuntu 22.04 (when requiring
+  FIPS 140-3 certification) or Ubuntu 24.04 (when FIPS 140-3 compliance is sufficient). Ubuntu 24.04 FIPS certification
+  is still in progress at the vendor-level and cannot be relied upon to meet auditory compliance until certification is
+  reached.”
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
 
