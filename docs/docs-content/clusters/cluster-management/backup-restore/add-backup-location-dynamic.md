@@ -685,7 +685,7 @@ location is using AWS STS to authenticate Palette with the S3 bucket in AWS Acco
     ```
 
     Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 14
-    is not in the output, run the following command to register it. Replace `[CLUSTER-NAME]` and `[REGION]` with your
+    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with your
     values.
 
     ```shell
