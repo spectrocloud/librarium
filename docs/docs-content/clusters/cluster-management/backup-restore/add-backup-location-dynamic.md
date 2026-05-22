@@ -244,7 +244,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
     ```
 
     Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 12
-    is not in the output, run the following command to register it. Replace `[CLUSTER-NAME]` and `[REGION]` with your
+    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with your
     values.
 
     ```shell
