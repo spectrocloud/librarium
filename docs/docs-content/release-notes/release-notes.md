@@ -44,7 +44,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 | [Amazon EBS CSI](/integrations/packs/?pack=csi-aws-ebs)                  | CSI    | :white_check_mark: | :x:                | 1.60.0      |
 | [Amazon EFS](/integrations/packs/?pack=csi-aws-efs)                      | CSI    | :white_check_mark: | :x:                | 3.1.0       |
 | [Calico Network Policy](/integrations/packs/?pack=calico-network-policy) | Add-on | :white_check_mark: | :x:                | 3.32.0      |
-| [ExternalDNS](/integrations/packs/?pack=external-dns)                    | Add-on | :white_check_mark  | :x:                | 0.21.0      |
+| [ExternalDNS](/integrations/packs/?pack=external-dns)                    | Add-on | :white_check_mark:  | :x:                | 0.21.0      |
 | [GCE Persistent Disk CSI](/integrations/packs/?pack=csi-gcp-driver)      | CSI    | :white_check_mark: | :x:                | 1.25.2      |
 | [Spectro Proxy](/integrations/packs/?pack=spectro-proxy)                 | Add-on | :x:                | :white_check_mark: | 1.5.6       |
 | [Tigera Operator](/integrations/packs/?pack=tigera-operator)             | CNI    | :white_check_mark: | :x:                | 3.32.0      |
