@@ -296,7 +296,7 @@ EKS workload clusters require an additional trust policy update to support IAM R
           "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:sub": "system:serviceaccount:*:velero-server"
         },
         "StringEquals": {
-          "oidc.eks.[REGION].amazonaws.com/id/[OIDC-ID]:aud": "sts.amazonaws.com"
+          "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:aud": "sts.amazonaws.com"
         }
       }
     }
