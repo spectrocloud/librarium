@@ -927,4 +927,73 @@ Repeat the same Kubecost and cluster profile version checks for `tf-prod-cluster
 
 ## Cleanup
 
+Run `terraform destroy` to remove all resources created during this tutorial. Terraform deletes resources in dependency
+order: clusters first, followed by the cluster template, profiles, and finally the maintenance policy.
+
+Issue `terraform plan -destroy` to preview the resources that Terraform removes.
+
+```shell
+terraform plan -destroy
+```
+
+```text hideClipboard title="Expected output"
+Plan: 0 to add, 0 to change, 6 to destroy.
+```
+
+Apply the destroy to remove all resources.
+
+```shell
+terraform destroy -auto-approve
+```
+
+```bash hideClipboard title="Expected output"
+spectrocloud_cluster_aws.dev_cluster[0]: Destroying...
+spectrocloud_cluster_aws.prod_cluster[0]: Destroying...
+spectrocloud_cluster_aws.dev_cluster[0]: Destruction complete after 20m0s
+spectrocloud_cluster_aws.prod_cluster[0]: Destruction complete after 22m0s
+spectrocloud_cluster_config_template.aws_template[0]: Destroying...
+spectrocloud_cluster_config_template.aws_template[0]: Destruction complete after 1s
+spectrocloud_cluster_profile.aws_profile_v110[0]: Destroying...
+spectrocloud_cluster_profile.aws_profile[0]: Destroying...
+spectrocloud_cluster_profile.aws_profile_v110[0]: Destruction complete after 1s
+spectrocloud_cluster_profile.aws_profile[0]: Destruction complete after 1s
+spectrocloud_cluster_config_policy.maintenance: Destroying...
+spectrocloud_cluster_config_policy.maintenance: Destruction complete after 1s
+
+Destroy complete! Resources: 6 destroyed.
+```
+
+Cluster deletion may take 15 to 30 minutes.
+
+:::info
+
+If a cluster is still deleting after 30 minutes, set `force_delete = true` on the affected cluster resource in
+`clusters.tf` and run `terraform apply -auto-approve`.
+
+Terraform waits 20 minutes for the cluster to delete naturally. If the deletion does not complete within that time,
+Terraform force-deletes the cluster from Palette.
+
+When a cluster is force-deleted, Palette does not clean up the underlying cloud resources. You must manually remove any
+remaining infrastructure.
+
+```hcl
+resource "spectrocloud_cluster_aws" "dev_cluster" {
+  count = var.deploy-aws ? 1 : 0
+  ...
+  force_delete = true
+}
+```
+
+:::
+
+Once `terraform destroy` completes, confirm in Palette that all resources are removed.
+
+From the left main menu, select **Clusters** and confirm that `tf-dev-cluster` and `tf-prod-cluster` no longer appear.
+
+From the left main menu, select **Cluster Configurations**. Select the **Templates** tab and confirm
+`tf-cluster-template-aws` no longer appears. Select the **Policies** tab and confirm `tf-maintenance-policy` no longer
+appears.
+
+From the left main menu, select **Profiles** and confirm `tf-cluster-template-profile-aws` no longer appears.
+
 ## Wrap-Up
