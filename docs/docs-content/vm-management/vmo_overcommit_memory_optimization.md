@@ -94,13 +94,8 @@ additionalDevConfig:
 You can apply per-VM memory settings to individual VMs or to a VM template so that all VMs provisioned from the template
 inherit consistent optimization settings.
 
-spec:
-  terminationGracePeriodSeconds: 30
-  domain:
-    resources:
-      overcommitGuestOverhead: true
-      requests:
-        memory: 1024M
+spec: terminationGracePeriodSeconds: 30 domain: resources: overcommitGuestOverhead: true requests: memory: 1024M
+
 ```
 
 #### YAML Configuration
@@ -135,10 +130,10 @@ You can enable headless mode through the VMO UI when creating or editing a VM.
 
 ## Kernel Same-Page Merging (KSM)
 
-[KSM](https://docs.kernel.org/admin-guide/mm/ksm.html) is a Linux kernel feature that allows deduplication of infrequently
-updated memory pages across VMs and merges those to free memory. This is especially effective when multiple VMs run the
-same OS image with the same application behavior. However, this feature can result in additional CPU overhead from
-memory scanning.
+[KSM](https://docs.kernel.org/admin-guide/mm/ksm.html) is a Linux kernel feature that allows deduplication of
+infrequently updated memory pages across VMs and merges those to free memory. This is especially effective when multiple
+VMs run the same OS image with the same application behavior. However, this feature can result in additional CPU
+overhead from memory scanning.
 
 ### Configure KSM
 
