@@ -927,7 +927,8 @@ Repeat the same Kubecost and cluster profile version checks for `tf-prod-cluster
 
 ## Cleanup
 
-Run `terraform destroy` to remove all resources created during this tutorial. Terraform deletes resources in dependency order: clusters first, followed by the cluster template, profiles, and finally the maintenance policy.
+Run `terraform destroy` to remove all resources created during this tutorial. Terraform deletes resources in dependency
+order: clusters first, followed by the cluster template, profiles, and finally the maintenance policy.
 
 Issue `terraform plan -destroy` to preview the resources that Terraform removes.
 
@@ -966,11 +967,14 @@ Cluster deletion may take 15 to 30 minutes.
 
 :::info
 
-If a cluster is still deleting after 30 minutes, set `force_delete = true` on the affected cluster resource in `clusters.tf` and run `terraform apply -auto-approve`. 
+If a cluster is still deleting after 30 minutes, set `force_delete = true` on the affected cluster resource in
+`clusters.tf` and run `terraform apply -auto-approve`.
 
-Terraform waits 20 minutes for the cluster to delete naturally. If the deletion does not complete within that time, Terraform force-deletes the cluster from Palette. 
+Terraform waits 20 minutes for the cluster to delete naturally. If the deletion does not complete within that time,
+Terraform force-deletes the cluster from Palette.
 
-When a cluster is force-deleted, Palette does not clean up the underlying cloud resources. You must manually remove any remaining infrastructure.
+When a cluster is force-deleted, Palette does not clean up the underlying cloud resources. You must manually remove any
+remaining infrastructure.
 
 ```hcl
 resource "spectrocloud_cluster_aws" "dev_cluster" {
