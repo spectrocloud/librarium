@@ -154,7 +154,7 @@ more information about EdgeForge and site user data, refer to
 
 10. In **NTP Configuration**, specify one or more NTP servers (for example, 0.pool.ntp.org,1.pool.ntp.org).
 
-:::info
+:::warning
 
 NTP values configured through the TUI or installer `user-data` apply only to the local host.
 
