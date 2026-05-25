@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Overcommit and Memory Optimization"
 title: "VM Overcommitment and Memory Optimization"
-description: "Learn about Palette VMO pack and the architecture behind it."
+description: "Learn about VMO Memory and CPU Overcommit and Optimization"
 hide_table_of_contents: false
 sidebar_position: 1
 tags: ["vmo", "architecture"]
@@ -168,6 +168,11 @@ additionalConfig:
       matchLabels:
         node-role.kubernetes.io/worker: ""
 ```
+:::warning
+
+Removing `ksmConfiguration` from the VMO pack disables KSM only on nodes managed by KubeVirt. Nodes where KSM was enabled externally remain unchanged and must be managed manually.
+
+:::
 
 ## CPU Pinning (Performance Optimization)
 
