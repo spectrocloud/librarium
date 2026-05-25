@@ -982,7 +982,7 @@ resource "spectrocloud_cluster_aws" "dev_cluster" {
 
 :::
 
-Once the destroy completes, confirm in Palette that all resources are removed.
+Once `terraform destroy` completes, confirm in Palette that all resources are removed.
 
 From the left main menu, select **Clusters** and confirm that `tf-dev-cluster` and `tf-prod-cluster` no longer appear.
 
