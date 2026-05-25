@@ -927,8 +927,7 @@ Repeat the same Kubecost and cluster profile version checks for `tf-prod-cluster
 
 ## Cleanup
 
-Run `terraform destroy` to remove all resources created during this tutorial. Terraform destroys them in the correct
-dependency order: clusters, the cluster template, profiles, and finally the maintenance policy.
+Run `terraform destroy` to remove all resources created during this tutorial. Terraform deletes resources in dependency order: clusters first, followed by the cluster template, profiles, and finally the maintenance policy.
 
 Issue `terraform plan -destroy` to preview the resources that Terraform removes.
 
