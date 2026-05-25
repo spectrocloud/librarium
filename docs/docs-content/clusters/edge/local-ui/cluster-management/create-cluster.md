@@ -145,8 +145,8 @@ management.
    cluster and overwrite any existing per-host TUI or user-data configuration.
 
    This separation allows deployments where hosts temporarily require different NTP sources before cluster-wide
-   standardization is applied. 
-   
+   standardization is applied.
+
    :::
 
    Optionally, you can also enable network overlay, especially if your cluster will operate in an DHCP environment. For

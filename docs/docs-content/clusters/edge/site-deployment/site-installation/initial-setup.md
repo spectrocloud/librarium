@@ -159,7 +159,7 @@ more information about EdgeForge and site user data, refer to
 NTP values configured through the TUI or installer `user-data` apply only to the local host.
 
 If cluster-wide NTP settings are later configured or updated through cluster settings, those values overwrite the
-host-specific configuration on all hosts in the cluster. 
+host-specific configuration on all hosts in the cluster.
 
 :::
 

@@ -580,7 +580,7 @@ When a Day-2 cluster settings update modifies NTP configuration, the new values 
 and overwrite any existing per-host TUI or user-data configuration.
 
 This separation allows deployments where hosts temporarily require different NTP sources before cluster-wide
-standardization is applied. 
+standardization is applied.
 
 :::
 
