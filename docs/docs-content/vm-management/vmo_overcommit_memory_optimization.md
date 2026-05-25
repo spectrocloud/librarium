@@ -166,7 +166,8 @@ additionalConfig:
 
 :::warning
 
-Removing `ksmConfiguration` from the VMO pack disables KSM only on nodes managed by KubeVirt. Nodes where KSM was enabled externally remain unchanged and must be managed manually.
+Removing `ksmConfiguration` from the VMO pack disables KSM only on nodes managed by KubeVirt. Nodes where KSM was
+enabled externally remain unchanged and must be managed manually.
 
 :::
 
