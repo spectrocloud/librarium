@@ -154,14 +154,14 @@ more information about EdgeForge and site user data, refer to
 
 10. In **NTP Configuration**, specify one or more NTP servers (for example, 0.pool.ntp.org,1.pool.ntp.org).
 
-:::warning
+   :::warning
 
-NTP values configured through the TUI or installer `user-data` apply only to the local host.
+   NTP values configured through the TUI or installer `user-data` apply only to the local host.
 
-If cluster-wide NTP settings are later configured or updated through cluster settings, those values overwrite the
-host-specific configuration on all hosts in the cluster.
+   If cluster-wide NTP settings are later configured or updated through cluster settings, those values overwrite the
+   host-specific configuration on all hosts in the cluster.
 
-:::
+   :::
 
 11. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
     configuration.
