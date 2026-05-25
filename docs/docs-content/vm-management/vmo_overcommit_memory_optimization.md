@@ -137,7 +137,8 @@ overhead from memory scanning.
 
 ### Configure KSM
 
-You can configure KSM to run on all nodes or on specific nodes. When you enable this feature, `virt-handler` enables KSM and labels the nodes with `kubevirt.io/ksm-enabled=true` so workloads can discover and schedule onto KSM-enabled nodes.
+You can configure KSM to run on all nodes or on specific nodes. When you enable this feature, `virt-handler` enables KSM
+and labels the nodes with `kubevirt.io/ksm-enabled=true` so workloads can discover and schedule onto KSM-enabled nodes.
 
 :::warning
 
