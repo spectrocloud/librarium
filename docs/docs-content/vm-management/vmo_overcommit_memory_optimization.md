@@ -94,7 +94,6 @@ additionalDevConfig:
 You can apply per-VM memory settings to individual VMs or to a VM template so that all VMs provisioned from the template
 inherit consistent optimization settings.
 
-```json title="Example Per-VM Overcommit" {5}
 spec:
   terminationGracePeriodSeconds: 30
   domain:
@@ -114,7 +113,6 @@ spec:
 The following is an example of per-VM memory configuration. In this example, Kubernetes reserves 4 Gi for the pod, but
 the guest OS sees 6 Gi of available memory.
 
-```json title=”Example VM Configuration”
 spec:
   domain:
     resources:
@@ -137,7 +135,7 @@ You can enable headless mode through the VMO UI when creating or editing a VM.
 
 ## Kernel Same-Page Merging (KSM)
 
-[KSM](https://docs.kernel.org/admin-guide/mm/ksm.html) is a Linux kernel feature allows deduplication of infrequently
+[KSM](https://docs.kernel.org/admin-guide/mm/ksm.html) is a Linux kernel feature that allows deduplication of infrequently
 updated memory pages across VMs and merges those to free memory. This is especially effective when multiple VMs run the
 same OS image with the same application behavior. However, this feature can result in additional CPU overhead from
 memory scanning.
