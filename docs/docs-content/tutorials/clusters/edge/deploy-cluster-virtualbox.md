@@ -563,6 +563,8 @@ The output displays the IP addresses that are currently in use on your network.
 
 Optionally, you can also select an SSH key to access the cluster's nodes and a Network Time Protocol (NTP) server list.
 
+<PartialsComponent category="clusters-edge" name="ntp-warning-edge" />
+
 Click **Next** to continue.
 
 In the **Nodes Config** section, specify what Edge hosts make up the Edge cluster. This tutorial deploys a single-node

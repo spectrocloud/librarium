@@ -78,9 +78,10 @@ The output displays the IP addresses that are currently in use on your network.
 
 :::
 
-Optionally, you can also select an SSH key to access the cluster's nodes and specify a Network Time Protocol (NTP)
 Optionally, you can also select the **SSH keys** to access the cluster's nodes and specify the **Network Time Protocol
 (NTP)** server list.
+
+<PartialsComponent category="clusters-edge" name="ntp-warning-edge" />
 
 Click **Next** to continue.
 
