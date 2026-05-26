@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 19, 2026 - Release 4.8.x
+## May 26, 2026 - Release 4.8.56
 
 <!-- PATCH RELEASE TICKET: DOC-2826 -->
 
@@ -21,6 +21,16 @@ tags: ["release-notes"]
 
 - Fixed an issue where Kubernetes and [kube-vip](https://kube-vip.io/) continue running with stale certificates after a
   certificate renewal.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6716 -->
+
+- Fixed multiple issues that caused [MAAS LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) to
+  be assigned to the wrong subnet, incorrectly placed in the same host, or have their storage incorrectly allocated.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8681 -->
+
+- Fixed an issue that caused the password age field to be incorrectly preserved after the
+  [Local UI](../clusters/edge/local-ui/local-ui.md) password is updated.
 
 ## May 11, 2026 - Release 4.8.54
 
