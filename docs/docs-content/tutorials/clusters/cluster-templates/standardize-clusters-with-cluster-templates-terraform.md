@@ -1005,7 +1005,7 @@ Kubecost by creating a new profile version, updating the cluster template to ref
 upgrade across both clusters with a single Terraform change.
 
 We encourage you to check out the [Cluster Templates](../../../cluster-templates/cluster-templates.md) documentation to
-discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale, and
-the [Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
-documentation to explore the full set of resources and data sources available for managing Palette infrastructure as
-code.
+discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale. You
+can also explore the
+[Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+documentation to see all available resources and data sources for managing Palette infrastructure as code.
