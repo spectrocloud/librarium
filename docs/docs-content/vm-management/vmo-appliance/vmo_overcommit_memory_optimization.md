@@ -164,7 +164,7 @@ additionalConfig:
         node-role.kubernetes.io/worker: ""
 ```
 
-![Image showing yaml settings for KubeVirt](../../../../static/assets/docs/images/vmo/vmo_vmo-app_optimization-kubervirt-example-4-9.webp)
+![Image showing yaml settings for KubeVirt](/vmo/vmo_vmo-app_optimization-kubervirt-example-4-9.webp)
 
 :::warning
 
