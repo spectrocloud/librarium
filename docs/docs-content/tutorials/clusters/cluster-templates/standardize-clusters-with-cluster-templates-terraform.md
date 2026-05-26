@@ -1008,4 +1008,4 @@ We encourage you to check out the [Cluster Templates](../../../cluster-templates
 discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale. You
 can also explore the
 [Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
-documentation to see all available resources and data sources for managing Palette infrastructure as code.
+documentation to view all available resources and data sources for managing Palette infrastructure as code.
