@@ -402,8 +402,6 @@ init-release:
 	grep -q "^# OTHER RELEASE UPDATES" .env || echo "\n# OTHER RELEASE UPDATES" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "export RELEASE_EDGE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "export RELEASE_EDGE_CLI_SHA=" >> .env
 	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
 	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "export RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
