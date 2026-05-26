@@ -229,12 +229,12 @@ Traefik Middleware resources or Nginx Ingress annotations, depending on the vers
 
 When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate
 VMs to your VMO cluster, migration plans can enter an **Unknown** state if more VMs are selected for migration than the
-**Max concurrent virtual machine migrations** setting allows. This value determines the maximum number of VMs that can
-be migrated simultaneously across all active migration plans.
+**Maximum concurrent VM migrations** setting allows. This value determines the maximum number of VMs that can be
+migrated simultaneously across all active migration plans.
 
-To avoid this scenario, we recommend setting an appropriate value for **Max concurrent virtual machine migrations**
-based on your workload and expected migration patterns. A higher value helps prevent migration plans from entering an
-**Unknown** state due to excessive concurrency.
+To avoid this scenario, we recommend setting an appropriate value for **Maximum concurrent VM migrations** based on your
+workload and expected migration patterns. A higher value helps prevent migration plans from entering an **Unknown**
+state due to excessive concurrency.
 
 If migration plans do enter an **Unknown** state, use the following steps to resolve the issue.
 
@@ -242,16 +242,14 @@ If migration plans do enter an **Unknown** state, use the following steps to res
 
 1. [Access the VM Migration Assistant service console](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
-2. From the left **Main Menu**, select **Overview**.
+2. From the left main menu, select **Overview**.
 
-3. In the **Overview** tab, locate the configurable settings for the migration controller.
+3. Select the **Settings** tab.
 
-   ![Migration Controller Settings](/vm-management_vm-migration-assistant_additional-configuration_overview-settings.webp)
+4. Click the **Edit** option next to **Settings**.
 
-4. Click the pencil icon next to the **Max concurrent virtual machine migrations** setting.
-
-5. In the pop-up window, increase the value based on the maximum number of VMs you expect to migrate concurrently across
-   all active migration plans.
+5. In the pop-up window, increase the value for **Maximum concurrent VM migrations** based on the maximum number of VMs
+   you expect to migrate concurrently across all active migration plans.
 
    For example, if you expect to migrate a maximum of 25 VMs across all active migration plans, set this value to 25 or
    more.

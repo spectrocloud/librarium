@@ -1,0 +1,6 @@
+## {{RELEASE_DATE}} - Release {{RELEASE_PATCH}}
+
+<!-- PATCH RELEASE TICKET: {{PATCH_RELEASE_TICKET}} -->
+
+### Bug Fixes
+{{SUPER_BUG_FIXES_BODY}}
