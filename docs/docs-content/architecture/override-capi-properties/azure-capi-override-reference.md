@@ -24,7 +24,6 @@ These examples demonstrate how to override CAPI properties using YAML directly t
 
 #### Cluster-Level
 
-```yaml title="Set auto-upgrade channel, enable OIDC issuer, and enable workload identity"
 azureManagedControlPlane:
   spec:
     autoUpgradeProfile:
@@ -44,7 +43,6 @@ azureManagedControlPlane:
 
 #### Pool-Level
 
-```yaml title="Set Max Pods, Kubelet disk type, and disable public IPs"
 azureManagedMachinePool:
   spec:
     maxPods: 30
@@ -66,10 +64,9 @@ azureManagedMachinePool:
 
 #### Host Encryption
 
-Host encryption encrypts the OS and temporary disks on the underlying VM host using platform-managed keys. It is
-configured at the pool level using the `enableEncryptionAtHost` field on `AzureManagedMachinePool`.
+Host encryption encrypts the OS and temporary disks on the underlying VM host using platform-managed keys. You can configure it at the pool level using the `enableEncryptionAtHost` field on `AzureManagedMachinePool`.
 
-:::caution
+:::warning
 
 `enableEncryptionAtHost` is immutable and must be set when the node pool is first created. It cannot be enabled or
 disabled on an existing pool.
@@ -89,10 +86,9 @@ CAPZ v1.18.0 does not expose a first-class
 pools. The supported workaround is to use the `asoManagedClusterPatches` field on `AzureManagedControlPlane`, which
 applies a JSON merge patch directly to the underlying Azure Service Operator (ASO) `ManagedCluster` resource.
 
-:::caution
+:::warning
 
-The `asoManagedClusterPatches` field is intended for advanced use only. Misconfiguration that conflicts with CAPZ's
-normal operation is possible. Test changes in a non-production environment before applying them to a production cluster.
+The `asoManagedClusterPatches` field is intended for advanced use only. To avoid misconfiguration that conflicts with CAPZ's normal operation, test changes in a non-production environment before applying them to a production cluster.
 
 :::
 
@@ -107,7 +103,7 @@ azureManagedControlPlane:
 ### Known Immutable Fields
 
 The following fields become immutable after an AKS cluster is created. Attempting to disable them via override after
-they have been enabled will result in an error. You must revert the override change to clear the error and allow the
+they have been enabled results in an error. You must revert the override change to clear the error and allow the
 cluster to reconcile.
 
 | Field                    | CAPI Kind                  | Notes                                                            |
@@ -125,7 +121,7 @@ Learn more about the difference between first-class properties and override prop
 
 :::
 
-The following properties have not been exposed as first-class properties in the
+The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 

@@ -72,7 +72,7 @@ Learn more about the difference between first-class properties and override prop
 
 :::
 
-The following properties have not been exposed as first-class properties in the
+The following properties are not exposed as first-class properties in the
 [supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
 override.
 
