@@ -104,7 +104,7 @@ SCOS version with minimal effort.
    ```
 
    Once the command completes, the image will appear in the MAAS boot resources list under the **Custom** or **Other**
-   category. Partition cleanup is handled automatically during deployment, no manual disk management is required.
+   category. Partition cleanup is handled automatically during deployment; no manual disk management is required.
 
 ### Validate
 
