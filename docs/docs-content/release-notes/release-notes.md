@@ -30,6 +30,20 @@ tags: ["release-notes"]
   targets the underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
   Properties](../architecture/override-capi-properties/override-capi-properties.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5930 -->
+
+- Palette now supports deployment of
+  [Generation 2 (Gen 2) Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2) on AKS
+  clusters. When you select an instance type that supports Gen 2 (for example, `Standard_D8ds_v6`), Azure automatically
+  provisions the nodes as Gen 2 VMs instead of Gen 1 VMs. Changing a node pool's instance type between Gen 1 and Gen 2
+  variants on a running cluster triggers a
+  [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). For more
+  information, refer to [Create and Manage Azure AKS Cluster](../clusters/public-cloud/azure/aks.md).
+
+  - For further upgrade guidance, review the
+    [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2). This covers supported
+    size families and the move to UEFI-based boot architecture.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5897 -->
 
 - SSH key injection is now supported for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md).
