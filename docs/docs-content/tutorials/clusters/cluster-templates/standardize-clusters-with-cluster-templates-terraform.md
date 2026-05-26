@@ -997,3 +997,15 @@ appears.
 From the left main menu, select **Profiles** and confirm `tf-cluster-template-profile-aws` no longer appears.
 
 ## Wrap-Up
+
+In this tutorial, you learned how to enforce consistent configuration and manage upgrades across multiple clusters using
+Terraform. You defined a cluster profile with a profile variable and a maintenance policy, then combined them into a
+cluster template to deploy development and production clusters with environment-specific replica counts. You then added
+Kubecost by creating a new profile version, updating the cluster template to reference it, and triggering an immediate
+upgrade across both clusters with a single Terraform change.
+
+We encourage you to check out the [Cluster Templates](../../../cluster-templates/cluster-templates.md) documentation to
+discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale. You
+can also explore the
+[Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+documentation to view all available resources and data sources for managing Palette infrastructure as code.
