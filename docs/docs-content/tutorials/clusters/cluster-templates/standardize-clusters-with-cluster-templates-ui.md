@@ -79,8 +79,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "name": "kubernetes",
           "type": "spectro",
           "layer": "k8s",
-          "version": "1.33.6",
-          "tag": "1.33.6",
+          "version": "1.35.2",
+          "tag": "1.35.2",
           "values": "",
           "registry": {
             "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
@@ -90,8 +90,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "name": "cni-calico",
           "type": "spectro",
           "layer": "cni",
-          "version": "3.31.2",
-          "tag": "3.31.2",
+          "version": "3.31.4",
+          "tag": "3.31.4",
           "values": "",
           "registry": {
             "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
@@ -101,8 +101,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "name": "csi-aws-ebs",
           "type": "spectro",
           "layer": "csi",
-          "version": "1.46.0",
-          "tag": "1.46.0",
+          "version": "1.59",
+          "tag": "1.59",
           "values": "",
           "registry": {
             "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
@@ -175,8 +175,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "name": "kubernetes",
           "type": "spectro",
           "layer": "k8s",
-          "version": "1.33.6",
-          "tag": "1.33.6",
+          "version": "1.35.2",
+          "tag": "1.35.2",
           "values": "",
           "registry": {
             "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
@@ -186,8 +186,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "name": "cni-calico-azure",
           "type": "spectro",
           "layer": "cni",
-          "version": "3.31.2",
-          "tag": "3.31.2",
+          "version": "3.31.4",
+          "tag": "3.31.4",
           "values": "",
           "registry": {
             "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
@@ -197,8 +197,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "name": "csi-azure",
           "type": "spectro",
           "layer": "csi",
-          "version": "1.31.2-rev2",
-          "tag": "1.31.2-rev2",
+          "version": "1.31.2",
+          "tag": "1.31.2",
           "values": "",
           "registry": {
             "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
