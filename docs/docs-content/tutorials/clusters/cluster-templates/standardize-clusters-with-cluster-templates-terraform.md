@@ -1002,7 +1002,7 @@ In this tutorial, you learned how to enforce consistent configuration and manage
 Terraform. You defined a cluster profile with a profile variable and a maintenance policy, then combined them into a
 cluster template to deploy development and production clusters with environment-specific replica counts. You then added
 Kubecost by creating a new profile version, updating the cluster template to reference it, and triggering an immediate
-upgrade across both clusters by applying a single Terraform change.
+upgrade across both clusters with a single Terraform change.
 
 We encourage you to check out the [Cluster Templates](../../../cluster-templates/cluster-templates.md) documentation to
 discover how other cluster governance and lifecycle capabilities can help you manage your cluster fleet at scale, and
