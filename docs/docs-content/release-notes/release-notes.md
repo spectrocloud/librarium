@@ -30,9 +30,36 @@ tags: ["release-notes"]
   targets the underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
   Properties](../architecture/override-capi-properties/override-capi-properties.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5897 -->
+
+- SSH key injection is now supported for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md).
+
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2788 -->
+
+- The metrics server commands for
+  [imported read-only clusters](../clusters/imported-clusters/cluster-import.md#read-only-mode) now use the
+  [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/) Helm chart instead of Bitnami.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9692 -->
+
+- The ability to **Force sync** [registries](../registries-and-packs/registries/registries.md) has been added to
+  **Tenant Settings** > **Registries**. Use this option to interrupt and restart ongoing synchronization processes that
+  have been in progress for at least one hour.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8010 -->
+
+- A list of available and allocated IP addresses is now displayed for VMware vSphere
+  [IP Address Management (IPAM) node pools](../clusters/pcg/manage-pcg/create-manage-node-pool.md).
+
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
+
+- [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) are now deprecated in Palette
+  and Palette VerteX. We recommend that customers deploy their workloads to
+  [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
 
 ### Edge
 
@@ -113,7 +140,83 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## May 15, 2026 - Component Updates {#component-updates-2026-20}
+
+The following components have been updated for Palette version 4.9.5 - 4.9.8.
+
+| Component                                                                                             | Version |
+| ----------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                    | 4.9.1   |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | 4.9.8   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | 4.9.8   |
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-442 -->
+
+- The [Artifact Studio](../downloads/artifact-studio.md) pack version dropdown now displays expanded version
+  information, distinguishing between the pack component version and the Palette compatibility version. A tooltip also
+  helps users clarify the difference between these version types.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4060 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4097 -->
+
+| Pack Name                    | Layer  | Non-FIPS           | FIPS | New Version |
+| ---------------------------- | ------ | ------------------ | ---- | ----------- |
+| AWS Application Loadbalancer | Add-on | :white_check_mark: | :x:  | 3.3.0       |
+| Cilium Tetragon              | Add-on | :white_check_mark: | :x:  | 1.7.0       |
+| External Secrets             | Add-on | :white_check_mark: | :x:  | 2.4.1       |
+| Harbor                       | Add-on | :white_check_mark: | :x:  | 1.19.0      |
+| Karpenter                    | Add-on | :white_check_mark: | :x:  | 1.12.0      |
+| Open Policy Agent            | Add-on | :white_check_mark: | :x:  | 3.22.2      |
+| Traefik                      | Add-on | :white_check_mark: | :x:  | 40.0.0      |
+
+## May 14, 2026 - Release 4.9.8
+
+The following component updates are applicable to this release:
+
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+
+<!-- PATCH RELEASE TICKET: DOC-2824 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8535 -->
+
+- The [Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md) now supports changing the root
+  user's password.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PPD-1603 -->
+
+- Fixed an issue in the [vCluster](https://www.vcluster.com/) template that caused vCluster deployments to fail for both
+  k3s and generic Kubernetes configurations.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6604 -->
+
+- Fixed an issue that caused
+  [MAAS Clusters Using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) to fail with "no
+  eligible LXD host found" due to storage availability being incorrectly parsed as zero, even when hosts had sufficient
+  free disk space.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8641 -->
+
+- Fixed an issue where Kubernetes and [kube-vip](https://kube-vip.io/) continue running with stale certificates after a
+  certificate renewal.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6633 -->
+
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) configured with static placement or
+  private endpoint access to fail to deploy due to EC2 permission errors.
+
 ## May 11, 2026 - Release 4.9.6
+
+The following component updates are applicable to this release:
+
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 ### Improvements
 
@@ -240,6 +343,7 @@ The following components have been updated for Palette version 4.9.5.
 The following component updates are applicable to this release:
 
 - [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
+- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -456,8 +560,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-#### Features
-
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net//browse/PE-7582 -->
@@ -489,6 +591,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) ISOs now include
   `/opt/spectrocloud/bin` in the default `PATH`, making kubectl and Helm immediately available for debugging and
   operations.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8375 -->
+
+- kube-vip is now automatically disabled if the virtual IP (VIP) address assigned to the cluster during cluster creation
+  is the same as the Edge host's IP address (for example, in the case of single-node clusters).
 
 #### Bug Fixes
 

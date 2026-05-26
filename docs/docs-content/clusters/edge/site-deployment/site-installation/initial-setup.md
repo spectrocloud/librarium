@@ -39,8 +39,6 @@ more information about EdgeForge and site user data, refer to
   you attempt to update pre-existing network settings via the TUI, a new configuration is created alongside the existing
   one. To manage pre-existing configurations, use the original configuration method, such as `systemd-networkd`,
   Netplan, or NetworkManager.
-- The TUI does not support changing the root user's password. If the root password has expired, update it from the
-  terminal using a privileged user account, for example, with `sudo passwd root`.
 
 ## Prerequisites
 
@@ -154,7 +152,18 @@ more information about EdgeForge and site user data, refer to
 9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
    specify a search domain. Press **ENTER** to apply the change.
 
-10. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
+10. In **NTP Configuration**, specify one or more NTP servers (for example, 0.pool.ntp.org,1.pool.ntp.org).
+
+:::warning
+
+NTP values configured through the TUI or installer `user-data` apply only to the local host.
+
+If cluster-wide NTP settings are later configured or updated through cluster settings, those values overwrite the
+host-specific configuration on all hosts in the cluster.
+
+:::
+
+11. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
     configuration.
 
 ## Validate

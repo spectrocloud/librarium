@@ -915,6 +915,8 @@ with any other IP addresses in the network.
 If available, you can optionally select an SSH key to remote into the host cluster and provide a Network Time Protocol
 (NTP) server list.
 
+<PartialsComponent category="clusters-edge" name="ntp-warning-edge" />
+
 Click **Next** to continue.
 
 ### Nodes configuration

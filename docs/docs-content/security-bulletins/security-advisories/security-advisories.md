@@ -20,6 +20,72 @@ advisories are published.
 
 :::
 
+## Security Advisory 014 - Linux Kernel "Dirty Frag" and "Fragnesia" Privilege Escalation Vulnerabilities
+
+- **Release Date**: May 14, 2026
+- **Last Updated**: May 14, 2026
+- **Severity**: HIGH
+- **CVEs**: [CVE-2026-43284](https://nvd.nist.gov/vuln/detail/CVE-2026-43284),
+  [CVE-2026-43500](https://nvd.nist.gov/vuln/detail/CVE-2026-43500), and
+  [CVE-2026-46300](https://nvd.nist.gov/vuln/detail/CVE-2026-46300)
+
+### Summary
+
+Spectro Cloud is aware of three high-severity Linux kernel vulnerabilities that allow local privilege escalation through
+improper handling of fragmented network packet data:
+
+- [CVE-2026-43284](https://nvd.nist.gov/vuln/detail/CVE-2026-43284) and
+  [CVE-2026-43500](https://nvd.nist.gov/vuln/detail/CVE-2026-43500) - Collectively referred to as "Dirty Frag"
+- [CVE-2026-46300](https://nvd.nist.gov/vuln/detail/CVE-2026-46300) - Known as "Fragnesia"
+
+These flaws allow an attacker to modify protected memory regions during packet decryption, potentially overwriting
+sensitive data and escalating privileges to root.
+
+A public proof-of-concept (PoC) exploit is available, which increases the risk of exploitation on unpatched systems.
+
+### Applicable Systems
+
+The vulnerabilities affect Linux kernel versions 4.10 through 7.x, with version-specific exposure varying by
+distribution. Systems with ESP/IPsec, RxRPC, or related networking modules available are especially at risk.
+
+Spectro Cloud's platform components do not require these kernel modules and do not need them to be loaded. Workload
+clusters also do not need these modules to function. However, customer-managed nodes and workloads running affected
+Linux kernels can be modified to load the affected kernel modules even if not enabled by default.
+
+### Impact
+
+An attacker with local access to a vulnerable system may:
+
+- Escalate privileges to root
+- Modify protected files or memory
+- Compromise the underlying host from a containerized workload
+
+Container isolation does not protect against this vulnerability, as exploitation targets the host kernel directly.
+Workloads with access to specific socket types or elevated capabilities are at higher risk.
+
+### Recommended Actions
+
+Spectro Cloud strongly recommends patching all underlying host operating systems used in:
+
+- Kubernetes clusters
+- Managed node pools
+- Edge and on-prem deployments
+
+For guidance on patching cluster nodes, refer to [OS Patching](../../clusters/cluster-management/os-patching.md).
+
+### Mitigation
+
+1. Apply vendor kernel patches immediately and upgrade to patched kernel versions where possible.
+2. Reboot nodes after patching to unload vulnerable kernel components.
+3. Apply runtime security controls to restrict unnecessary kernel network interfaces.
+
+### References
+
+- [NIST NVD - CVE-2026-43284](https://nvd.nist.gov/vuln/detail/CVE-2026-43284)
+- [NIST NVD - CVE-2026-43500](https://nvd.nist.gov/vuln/detail/CVE-2026-43500)
+- [NIST NVD - CVE-2026-46300](https://nvd.nist.gov/vuln/detail/CVE-2026-46300)
+- [Ubuntu Advisory - Dirty Frag Linux kernel local privilege escalation vulnerability mitigations](https://ubuntu.com/blog/dirty-frag-linux-vulnerability-fixes-available)
+
 ## Security Advisory 013 - Linux Kernel "Copy Fail" Privilege Escalation Vulnerability
 
 - **Release Date**: May 4, 2026
