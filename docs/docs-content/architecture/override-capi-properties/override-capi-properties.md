@@ -35,9 +35,9 @@ Overriding CAPI properties is currently supported for the following infrastructu
 for the listed provider API version.
 
 | Provider  | CAPI Implementation | Version                                                                                       | Reference Docs                                                                                                                                                                                                                                                                                                                                                                                 |
-| --------- | ------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS IaaS  | CAPA          | [v2.7.1](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.7.1)     | - [CAPA book](https://cluster-api-aws.sigs.k8s.io/) <br /> - [v2.7.1 AWSCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awscluster_types.go) <br /> - [v2.7.1 AWSMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awsmachinetemplate_types.go)                                    |
-| Azure AKS | CAPZ          | [v1.18.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.18.0) | - [CAPZ book](https://capz.sigs.k8s.io/) <br /> - [v1.18.0 AzureManagedControlPlane Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedcontrolplane_types.go) <br /> - [v1.18.0 AzureManagedMachinePool Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedmachinepool_types.go) |
+| --------- | ------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AWS IaaS  | CAPA                | [v2.7.1](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.7.1)     | - [CAPA book](https://cluster-api-aws.sigs.k8s.io/) <br /> - [v2.7.1 AWSCluster Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awscluster_types.go) <br /> - [v2.7.1 AWSMachineTemplate Types](https://github.com/kubernetes-sigs/cluster-api-provider-aws/blob/v2.7.1/api/v1beta2/awsmachinetemplate_types.go)                                    |
+| Azure AKS | CAPZ                | [v1.18.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.18.0) | - [CAPZ book](https://capz.sigs.k8s.io/) <br /> - [v1.18.0 AzureManagedControlPlane Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedcontrolplane_types.go) <br /> - [v1.18.0 AzureManagedMachinePool Types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremanagedmachinepool_types.go) |
 
 ## Supported Interfaces
 
@@ -50,11 +50,13 @@ Overriding CAPI properties can be implemented through the following Spectro Clou
 
 ## How Overrides Work
 
-You supply a raw YAML string that describes the properties you want to set on the underlying CAPI object. Palette converts the YAML to JSON and applies it as an [RFC 7396 JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7396) to the CAPI object it has already built.
+You supply a raw YAML string that describes the properties you want to set on the underlying CAPI object. Palette
+converts the YAML to JSON and applies it as an
+[RFC 7396 JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7396) to the CAPI object it has already built.
 
 The YAML you provide maps directly to the specification of the target CAPI object. For example, if you want to set the
-control plane load balancer type with additional cluster tags on an AWS IaaS cluster, provide an override YAML
-that maps to `awsCluster.spec`.
+control plane load balancer type with additional cluster tags on an AWS IaaS cluster, provide an override YAML that maps
+to `awsCluster.spec`.
 
 ```yaml hideClipboard title="Example AWSCluster override YAML"
 awsCluster:
@@ -76,7 +78,9 @@ process. If there are any conflicts between override and native values, the over
 
 ### Key Format
 
-The top-level key is always the camelCase form of the CAPI Kind. All nested keys are either based on the `json` struct tags in the provider's Go types or, if no `json` tag is present, they are derived from the camelCase version of the field name.
+The top-level key is always the camelCase form of the CAPI Kind. All nested keys are either based on the `json` struct
+tags in the provider's Go types or, if no `json` tag is present, they are derived from the camelCase version of the
+field name.
 
 The following table lists example top-level keys and nested keys.
 
@@ -192,8 +196,8 @@ construct valid override YAML, use the following steps.
    <summary> Note on `AWSMachineTemplate` nesting </summary>
 
    `AWSMachineTemplate` has an extra level of nesting compared to other resources. The spec wraps a `template`, which
-   contains another `spec` field that holds the actual machine configuration (`AWSMachineSpec`). All pool-level AWS overrides
-   use this structure.
+   contains another `spec` field that holds the actual machine configuration (`AWSMachineSpec`). All pool-level AWS
+   overrides use this structure.
 
    ```yaml hideClipboard
    awsMachineTemplate:
@@ -223,7 +227,8 @@ Before overriding CAPI properties, review the following behaviors that apply whe
 :::warning
 
 Overriding CAPI properties on an existing cluster is likely to trigger a
-[node pool repave](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration), which temporarily reduces cluster capacity. Plan override changes during a maintenance window.
+[node pool repave](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration), which temporarily
+reduces cluster capacity. Plan override changes during a maintenance window.
 
 - **AKS** - Any override change triggers a rolling upgrade, even for parameters that would otherwise support inline
   updates.
@@ -280,9 +285,9 @@ The following table describes the guidelines for when we want to support a featu
 
 ### No Semantic Validation
 
-Palette only checks that the override YAML format is valid. It does not validate field names, types, or values
-against the CAPI provider schema, and it does not check whether a field is immutable. Invalid fields produce
-warning events on the cluster (refer to [Error Handling](#error-handling)).
+Palette only checks that the override YAML format is valid. It does not validate field names, types, or values against
+the CAPI provider schema, and it does not check whether a field is immutable. Invalid fields produce warning events on
+the cluster (refer to [Error Handling](#error-handling)).
 
 ### Error Handling
 

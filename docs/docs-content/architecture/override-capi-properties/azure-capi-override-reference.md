@@ -24,31 +24,22 @@ These examples demonstrate how to override CAPI properties using YAML directly t
 
 #### Cluster-Level
 
-azureManagedControlPlane:
-  spec:
-    autoUpgradeProfile:
-      upgradeChannel: patch
-    oidcIssuerProfile:
-      enabled: true
-    securityProfile:
-      workloadIdentity:
-        enabled: true
-```
+azureManagedControlPlane: spec: autoUpgradeProfile: upgradeChannel: patch oidcIssuerProfile: enabled: true
+securityProfile: workloadIdentity: enabled: true
+
+````
 
 ```yaml title="Set DNS prefix for control plane FQDN"
 azureManagedControlPlane:
   spec:
     dnsPrefix: aksdemo-updated
-```
+````
 
 #### Pool-Level
 
-azureManagedMachinePool:
-  spec:
-    maxPods: 30
-    kubeletDiskType: OS
-    enableNodePublicIP: false
-```
+azureManagedMachinePool: spec: maxPods: 30 kubeletDiskType: OS enableNodePublicIP: false
+
+````
 
 ```yaml title="Set VM size, OS disk size, and node labels"
 azureManagedMachinePool:
@@ -58,13 +49,14 @@ azureManagedMachinePool:
     nodeLabels:
       env: test
       updated: "true"
-```
+````
 
 ### Encryption
 
 #### Host Encryption
 
-Host encryption encrypts the OS and temporary disks on the underlying VM host using platform-managed keys. You can configure it at the pool level using the `enableEncryptionAtHost` field on `AzureManagedMachinePool`.
+Host encryption encrypts the OS and temporary disks on the underlying VM host using platform-managed keys. You can
+configure it at the pool level using the `enableEncryptionAtHost` field on `AzureManagedMachinePool`.
 
 :::warning
 
@@ -88,7 +80,8 @@ applies a JSON merge patch directly to the underlying Azure Service Operator (AS
 
 :::warning
 
-The `asoManagedClusterPatches` field is intended for advanced use only. To avoid misconfiguration that conflicts with CAPZ's normal operation, test changes in a non-production environment before applying them to a production cluster.
+The `asoManagedClusterPatches` field is intended for advanced use only. To avoid misconfiguration that conflicts with
+CAPZ's normal operation, test changes in a non-production environment before applying them to a production cluster.
 
 :::
 
@@ -103,8 +96,8 @@ azureManagedControlPlane:
 ### Known Immutable Fields
 
 The following fields become immutable after an AKS cluster is created. Attempting to disable them via override after
-they have been enabled results in an error. You must revert the override change to clear the error and allow the
-cluster to reconcile.
+they have been enabled results in an error. You must revert the override change to clear the error and allow the cluster
+to reconcile.
 
 | Field                    | CAPI Kind                  | Notes                                                            |
 | ------------------------ | -------------------------- | ---------------------------------------------------------------- |
