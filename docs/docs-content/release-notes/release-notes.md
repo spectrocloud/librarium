@@ -64,6 +64,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8427 -->
+
+- The Palette agent can now be uninstalled from Edge hosts with Agent Mode using the `palette-agent uninstall` command.
+  Refer to our [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#uninstall-palette-agent)
+  guide for more information.
+
 #### Improvements
 
 #### Bug Fixes
