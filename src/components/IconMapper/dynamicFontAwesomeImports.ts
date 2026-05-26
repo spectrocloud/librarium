@@ -17,7 +17,6 @@ import { faShield } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faGavel } from '@fortawesome/free-solid-svg-icons';
 import { faTowerObservation } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
@@ -47,7 +46,6 @@ export const fontAwesomeIcons = {
   "warehouse": faWarehouse,
   "flag-checkered": faFlagCheckered,
   "palette": faPalette,
-  "bookmark": faBookmark,
   "gavel": faGavel,
   "tower-observation": faTowerObservation,
   "lock": faLock,
