@@ -112,6 +112,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
+#### Deprecations and Removals
+
+- The Palette Edge CLI has been deprecated and there will be no further releases. For continued functionality, use the
+  Palette CLI instead. Refer to the [Palette CLI documentation](../automation/palette-cli/palette-cli.md) for more
+  information.
+
 #### Features
 
 - Terraform version 4.9.a of the
