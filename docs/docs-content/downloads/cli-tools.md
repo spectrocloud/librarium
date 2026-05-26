@@ -11,10 +11,9 @@ tags: ["downloads", "palette-cli"]
 
 The following sections provide links to download the available CLI tools related to Palette and Spectro Cloud.
 
-The Palette CLI and Palette Edge CLI are tools that allow you to interact with Spectro Cloud's Palette platform
-programmatically. The Palette Edge CLI focuses specifically on Edge computing scenarios while the Palette CLI handles
-broader platform management. Refer to the [Palette CLI documentation](../automation/palette-cli/palette-cli.md) for
-guidance on installing and using the Palette CLI and Palette Edge CLI.
+The Palette CLI is a tool that allows you to interact with Spectro Cloud's Palette platform programmatically. Refer to
+the [Palette CLI documentation](../automation/palette-cli/palette-cli.md) for guidance on installing and using the
+Palette CLI.
 
 The Spectro CLI tool is a command-line interface to interact with a Palette legacy registry server. You can use the CLI
 to upload or download packs and perform other operations. Refer to the
@@ -51,36 +50,6 @@ The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64
 | 4.5.5                                              | 4.5.0                            | https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette  | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
 | 4.5.4                                              | 4.5.0                            | https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette  | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
 | 4.5.3                                              | 4.5.0                            | https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette  | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
-
-## Palette Edge CLI
-
-The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
-
-| Palette Release <!-- edge-version-table --> | CLI Version                | Download URL                                                            | Checksum (SHA256)                                                  |
-| ------------------------------------------- | -------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| <!-- edge-4.9.0 --> 4.9.5                   | 4.9.4                      | https://software.spectrocloud.com/stylus/v4.9.4/cli/linux/palette-edge  | `28c6ec3fe7b065d28554d738bcc5d87e655b4862bf3196ec30c3f527b8736321` |
-| <!-- edge-4-8-c --> 4.8.47                  | 4.8.18                     | https://software.spectrocloud.com/stylus/v4.8.18/cli/linux/palette-edge | `54f69d28e9cfd0f651c451ae2d008366cdb9da4be90ce2bcaccb743b488b3c73` |
-| <!-- edge-4.8.b --> 4.8.33                  | 4.8.10                     | https://software.spectrocloud.com/stylus/v4.8.10/cli/linux/palette-edge | `bc635479233dde1f5b966bb5d776a5f1fdeb9babe200666a8c8a1306546ce471` |
-| <!-- edge-4-8-a --> 4.8.21                  | 4.8.8                      | https://software.spectrocloud.com/stylus/v4.8.8/cli/linux/palette-edge  | `717325354dbf313aed2011d18b92f5906572749fb81ce8fe060c54ff25e38734` |
-| <!-- edge-4.8.0 --> 4.8.6                   | 4.8.1                      | https://software.spectrocloud.com/stylus/v4.8.1/cli/linux/palette-edge  | `112ff4671fa6e585504ecf53d07add5cd76533b6a648822638ae2e86afe39463` |
-| <!-- edge-4-7-c --> 4.7.27                  | 4.7.16                     | https://software.spectrocloud.com/stylus/v4.7.16/cli/linux/palette-edge | `49eda70a5e3d7b1d3b912288c130b03097929f0ab762a2b6dc45232016caa433` |
-| <!-- edge-4.7.b --> 4.7.20                  | 4.7.13                     | https://software.spectrocloud.com/stylus/v4.7.13/cli/linux/palette-edge | `888cca0cbc38cd7e2073662711922a5297c50f9cf0f1ddd78c31c02a475c159a` |
-| <!-- edge-4-7-a --> 4.7.13                  | 4.7.9                      | https://software.spectrocloud.com/stylus/v4.7.9/cli/linux/palette-edge  | `cbd12df60abe88a619d42589526af6df65367672f4b33300daff4c0c79126fe0` |
-| <!-- edge-4-7-0 --> 4.7.3                   | 4.7.2                      | https://software.spectrocloud.com/stylus/v4.7.2/cli/linux/palette-edge  | `8a68c6eacff423d48d48ce2d9420b98832dd65660ddc9115562a530d5c325ebc` |
-| <!-- edge-4.6.x --> 4.6.40                  | 4.6.24                     | https://software.spectrocloud.com/stylus/v4.6.24/cli/linux/palette-edge | `c90741bb2e959e8188337bd6ece73f67d6512c5f20e9c79a64b01aab9c0708de` |
-| <!-- edge-4.6.c --> 4.6.32                  | 4.6.21                     | https://software.spectrocloud.com/stylus/v4.6.21/cli/linux/palette-edge | `17e057172b8b2cd42cdc5aff0735dfdff6e864ec03b5404e18ae130bfd315b87` |
-| <!-- edge-4.6.b --> 4.6.23                  | <!-- edge-4.6.b --> 4.6.16 | https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge | `628c3668633943e9fd4b7859093948843d508494ec88b906f75aea9e80ec0f5f` |
-| <!-- edge-4.6.a --> 4.6.12                  | <!-- edge-4.6.a --> 4.6.9  | https://software.spectrocloud.com/stylus/v4.6.9/cli/linux/palette-edge  | `e50a5533316e96c8b145d8e0c1e2b3e9958350d4aed61e8292cd31b4e7fb4196` |
-| 4.6.6                                       | 4.6.3                      | https://software.spectrocloud.com/stylus/v4.6.3/cli/linux/palette-edge  | `639d325659b369b8e71e00d36763b6088ac1932dbdbd105bdf3c63051cfd500b` |
-| 4.5.21                                      | 4.5.15                     | https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge | `5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb` |
-| 4.5.20                                      | 4.5.14                     | https://software.spectrocloud.com/stylus/v4.5.14/cli/linux/palette-edge | `5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb` |
-| 4.5.15                                      | 4.5.11                     | https://software.spectrocloud.com/stylus/v4.5.11/cli/linux/palette-edge | `390b4693a91c938ef230ce329ec28f42c058f98fb77160685e9a885dd2083587` |
-| 4.5.11                                      | 4.5.7                      | https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge  | `abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1` |
-| 4.5.10                                      | 4.5.7                      | https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge  | `abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1` |
-| 4.5.8                                       | 4.5.7                      | https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge  | `abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1` |
-| 4.5.5                                       | 4.5.5                      | https://software.spectrocloud.com/stylus/v4.5.5/cli/linux/palette-edge  | `f93382a7ab92e9621f47d857252c2673b33de79735cf729fcb4b2fb24719d537` |
-| 4.5.4                                       | 4.5.3                      | https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge  | `9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28` |
-| 4.5.3                                       | 4.5.3                      | https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge  | `9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28` |
 
 ## Spectro Cloud CLI Tool
 
