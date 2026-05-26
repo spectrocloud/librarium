@@ -58,8 +58,8 @@ cloud account.
 
 - An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces.
 
-- The following IAM policy must be created in your AWS Account. Replace the `BUCKET-NAME` placeholder in the policy
-  below with your bucket name. Refer to the
+- The following Identity and Access Management (IAM) policy must be created in your AWS Account. Replace the
+  `<bucket-name>` placeholder in the policy below with your bucket name. Refer to the
   [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
   additional guidance.
 
@@ -88,12 +88,12 @@ cloud account.
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+        "Resource": ["arn:aws:s3:::<bucket-name>/*"]
       },
       {
         "Effect": "Allow",
         "Action": ["s3:ListBucket"],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+        "Resource": ["arn:aws:s3:::<bucket-name>"]
       }
     ]
   }
@@ -126,6 +126,16 @@ cloud account.
 
   :::
 
+- If you are using an EKS workload cluster, you must also have:
+
+  - The AWS CLI configured with credentials that have permission to update IAM role trust policies.
+  - `kubectl` configured to access your EKS cluster.
+  - (Optional) `eksctl`. Required only if the EKS cluster's OpenID Connect (OIDC) provider is not already registered in
+    IAM. Refer to the
+    [Install eksctl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#eksctl-install-update) guide
+    for installation instructions.
+  - The name and AWS region of your EKS cluster.
+
 ### Instructions
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -137,7 +147,7 @@ cloud account.
 
    ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.webp)
 
-4. Fill out the input fields listed in the table.
+4. Fill out the input fields listed in the table below.
 
    | **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                     |
    | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -146,7 +156,7 @@ cloud account.
    | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                               |
    | **S3 Bucket**           | The name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                      |
    | **Region**              | Region where the S3 bucket is hosted. You can check region codes in the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                |
-   | **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and enable the **Force S3 path style** checkbox. |
+   | **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and select the **Force S3 path style** checkbox. |
 
 5. Next, choose the **STS** authentication method. When you choose the STS authentication method, you must create a new
    IAM role and provide its Amazon Resource Name (ARN) to Palette. Check out the
@@ -156,26 +166,22 @@ cloud account.
 6. Log in to your AWS Account and create a new IAM role. Attach the IAM policy specified in the
    [Prerequisites](#prerequisites) section. Use the following configuration while creating the IAM role.
 
-| **AWS Console Field** | **Value**                                                                           |
-| --------------------- | ----------------------------------------------------------------------------------- |
-| Trusted entity type   | Select _AWS account_                                                                |
-| AWS account           | Select the **Another AWS account** radio button.                                    |
-| AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
-| Options               | Select the **Require external ID** checkbox.                                        |
-| External ID           | Use the one displayed in Palette. Palette generates the external ID.                |
-| Permissions policies  | Attach the IAM policy defined in the [Prerequisites](#prerequisites) section above. |
-| Role name             | Provide a name of your choice.                                                      |
-| Role description      | Provide an optional description.                                                    |
+   | **AWS Console Field** | **Value**                                                                           |
+   | --------------------- | ----------------------------------------------------------------------------------- |
+   | Trusted entity type   | Select **AWS account**.                                                             |
+   | AWS account           | Select the **Another AWS account** radio button.                                    |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
+   | Options               | Select the **Require external ID** checkbox.                                        |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID.                |
+   | Permissions policies  | Attach the IAM policy defined in the [Prerequisites](#prerequisites) section above. |
+   | Role name             | Provide a name of your choice.                                                      |
+   | Role description      | Provide an optional description.                                                    |
 
-<br />
-
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
+   ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role.
 
-<br />
-
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
+   ![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. Copy the IAM role Amazon Resource Name (ARN)
 
@@ -193,7 +199,205 @@ cloud account.
 You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
 AWS STS to authenticate Palette with the S3 bucket in the same AWS account you deploy your Kubernetes cluster.
 
+EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
+the section below.
+
+<details>
+<summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
+
+12. Retrieve the OIDC issuer URL for the EKS cluster. Replace `<cluster-name>` and `<region>` with your cluster name and
+    AWS region.
+
+    ```shell
+    aws eks describe-cluster \
+      --name <cluster-name> \
+      --region <region> \
+      --query "cluster.identity.oidc.issuer" \
+      --output text
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    https://oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE
+    ```
+
+    Record the ID value at the end of the URL. The ID follows the last `/` in the path. You will need this value in the
+    following steps.
+
+13. Confirm the OIDC provider is registered in IAM.
+
+    ```shell
+    aws iam list-open-id-connect-providers
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    {
+        "OpenIDConnectProviderList": [
+            {
+                "Arn": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+            }
+        ]
+    }
+    ```
+
+    Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 12
+    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with
+    your values.
+
+    ```shell
+    eksctl utils associate-iam-oidc-provider \
+      --cluster <cluster-name> \
+      --region <region> \
+      --approve
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster <cluster-name> in "<region>"
+    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster<cluster-name> in "<region>"
+    ```
+
+    For additional guidance, refer to the
+    [Creating an IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+    guide in the AWS documentation.
+
+14. Retrieve the current trust policy of the backup IAM role and save it to a local file. Replace `<role-name>` with the
+    name of your backup IAM role.
+
+    ```shell
+    aws iam get-role \
+      --role-name <role-name> \
+      --query 'Role.AssumeRolePolicyDocument' \
+      --output json > trust-policy.json
+    ```
+
+    No output is displayed. The current trust policy is saved to `trust-policy.json` in the current directory.
+
+15. Open `trust-policy.json` and add the following statement to the `Statement` array. Use the table below to identify
+    the values to substitute for each placeholder before adding the statement to the file.
+
+    | Placeholder        | Description                                      |
+    | ------------------ | ------------------------------------------------ |
+    | `<aws-account-id>` | Your AWS account ID                              |
+    | `<region>`         | The AWS region where the EKS cluster is deployed |
+    | `<oidc-id>`        | The OIDC ID from step 12                         |
+
+    ```json
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::<aws-account-id>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<oidc-id>"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringLike": {
+          "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:sub": "system:serviceaccount:*:velero-server"
+        },
+        "StringEquals": {
+          "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+    ```
+
+    The `StringLike` condition uses a wildcard (`*`) for the namespace because Palette generates a unique namespace for
+    each cluster's Velero installation in the format `cluster-<hash>`.
+
+    :::tip
+
+    If you share one backup IAM role across multiple EKS clusters, use `StringEquals` with the specific namespace and
+    add one statement per cluster. This limits role assumption to the `velero-server` pod in a specific namespace on
+    each cluster. To determine the Velero namespace for a given cluster, run `kubectl get namespaces` on that cluster
+    and look for a namespace in the format `cluster-<hash>`.
+
+    :::
+
+    After adding the new statement, the trust policy must include both the existing Palette trust statement and the new
+    IRSA statement. The following example shows the expected result. Use the table below to identify the values to
+    substitute for each placeholder.
+
+    | Placeholder                   | Description                                                                   |
+    | ----------------------------- | ----------------------------------------------------------------------------- |
+    | `<aws-account-id-of-palette>` | The Palette AWS account ID, displayed in the backup location wizard           |
+    | `<your-external-id>`          | The external ID generated by Palette, displayed in the backup location wizard |
+    | `<aws-account-id>`            | Your AWS account ID                                                           |
+    | `<region>`                    | The AWS region where the EKS cluster is deployed                              |
+    | `<oidc-id>`                   | The OIDC ID from step 12                                                      |
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
+          },
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringEquals": {
+              "sts:ExternalId": "<your-external-id>"
+            }
+          }
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Federated": "arn:aws:iam::<aws-account-id>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<oidc-id>"
+          },
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Condition": {
+            "StringLike": {
+              "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:sub": "system:serviceaccount:*:velero-server"
+            },
+            "StringEquals": {
+              "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:aud": "sts.amazonaws.com"
+            }
+          }
+        }
+      ]
+    }
+    ```
+
+16. Apply the updated trust policy to the backup IAM role. Replace `<role-name>` with the name of your backup IAM role.
+
+    ```shell
+    aws iam update-assume-role-policy \
+      --role-name <role-name> \
+      --policy-document file://trust-policy.json
+    ```
+
+    A successful update returns no output.
+
+17. Confirm the backup location is available. First, find the Velero namespace on your cluster. Palette generates a
+    unique namespace for each cluster's Velero installation in the format `cluster-<hash>`.
+
+    ```shell
+    kubectl get namespaces | grep cluster-
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    cluster-6a02ef3b8cd2144fbadd2eff   Active   10m
+    ```
+
+    Then check the `backupstoragelocation` status. Replace `<namespace>` with the namespace from the previous command.
+
+    ```shell
+    kubectl get backupstoragelocation --namespace <namespace>
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    NAME              PHASE       LAST VALIDATED   AGE   DEFAULT
+    your-backup-location   Available   20s              2m    true
+    ```
+
+    A status of `Available` confirms that the trust policy is correctly configured. If the status shows `Unavailable`,
+    check the error details. An `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403` error indicates a
+    trust policy misconfiguration. Confirm the OIDC ID and AWS account ID are correct.
+
+</details>
+
 ### Validate
+
+Use the following steps to validate adding the new backup location.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -201,7 +405,7 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
 
 3. The **Backup Locations** page will display a list of all backup locations configured for the current project.
 
-4. Search for the newly added backup location in the list. The presence of the backup location validates that you
+4. Search for the newly added backup location in the list. The presence of the backup location validates that you have
    successfully added a new backup location.
 
 ## Multiple Cloud Accounts with AWS STS
@@ -278,22 +482,33 @@ multiple cloud accounts.
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+        "Resource": ["arn:aws:s3:::<bucket-name>/*"]
       },
       {
         "Effect": "Allow",
         "Action": ["s3:ListBucket"],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+        "Resource": ["arn:aws:s3:::<bucket-name>"]
       }
     ]
   }
   ```
 
-  - If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used
-    for the backup location to allow the IAM principal (user or role) associated with those static credentials to assume
-    the backup location IAM role. Check out the
-    [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
-    guide for detailed instructions.
+- If you are using an IAM user or role with static credentials to deploy clusters, you must update the IAM role used for
+  the backup location to allow the IAM principal (user or role) associated with those static credentials to assume the
+  backup location IAM role. Check out the
+  [Troubleshooting clusters](../../../troubleshooting/nodes/nodes.md#scenario---iam-role-assumption-failure-with-static-credentials)
+  guide for detailed instructions.
+
+- If you are using an EKS workload cluster in AWS Account A, you must also have:
+
+  - The AWS CLI configured with credentials for AWS Account A that have permission to describe EKS clusters and list IAM
+    OIDC providers.
+  - The AWS CLI configured with credentials for AWS Account B that have permission to update IAM role trust policies.
+  - `kubectl` configured to access your EKS cluster.
+  - (Optional) `eksctl`. Required only if the EKS cluster's OIDC provider is not already registered in IAM. Refer to the
+    [Install eksctl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#eksctl-install-update) guide
+    for installation instructions.
+  - The name and AWS region of your EKS cluster.
 
 ### Instructions
 
@@ -327,92 +542,83 @@ multiple cloud accounts.
    [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
    guide to learn how to create an IAM role. Use the following configuration while creating the IAM role.
 
-| **AWS Console Field**   | **Value**                                                                           |
-| ----------------------- | ----------------------------------------------------------------------------------- |
-| **Trusted entity type** | Select the **AWS account** option.                                                  |
-| **AWS account**         | Select the **Another AWS account** radio button.                                    |
-| **AWS Account ID**      | Use the one displayed in Palette, which is Palette's account ID.                    |
-| **Options**             | Select the **Require external ID** checkbox.                                        |
-| External ID             | Use the one displayed in Palette. Palette generates the external ID.                |
-| Permissions policies    | Attach the IAM policy defined in the [Prerequisites section](#prerequisites) above. |
-| Role name               | Provide a name of your choice.                                                      |
-| Role description        | Provide an optional description.                                                    |
+   | **AWS Console Field** | **Value**                                                                           |
+   | --------------------- | ----------------------------------------------------------------------------------- |
+   | Trusted entity type   | Select the **AWS account** option.                                                  |
+   | AWS account           | Select the **Another AWS account** radio button.                                    |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                    |
+   | Options               | Select the **Require external ID** checkbox.                                        |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID.                |
+   | Permissions policies  | Attach the IAM policy defined in the [Prerequisites section](#prerequisites) above. |
+   | Role name             | Provide a name of your choice.                                                      |
+   | Role description      | Provide an optional description.                                                    |
 
-<br />
-
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
+   ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role in AWS Account B.
 
-<br />
-
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
+   ![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. In the IAM role's **Trust relationships** section, a relationship will already be defined for Palette so that Palette
    can assume this role under specified conditions.
 
 9. Edit the existing trust policy of the newly created IAM role in AWS Account B. Append the following permission to the
    existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace
-   the `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` placeholder with the AWS account ID for AWS Account A. <br /> <br />
+   the `<account-id-for-aws-account-a>` placeholder with the AWS account ID for AWS Account A.
 
-<br />
+   ```json
+   {
+     "Effect": "Allow",
+     "Principal": {
+       "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
+     },
+     "Action": "sts:AssumeRole"
+   }
+   ```
 
-```json
-{
-  "Effect": "Allow",
-  "Principal": {
-    "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
-  },
-  "Action": "sts:AssumeRole"
-}
-```
+   If you want to establish a trust relationship with a specific IAM role in AWS Account A, say `SpectroCloudRole`, you
+   can use the `"arn:aws:iam::<account-id-for-aws-account-a>:role/SpectroCloudRole"` ARN instead.
 
-    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say *SpectroCloudRole*, you can use the `"arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:role/SpectroCloudRole"` ARN instead.
+   Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one
+   for Palette and another for AWS Account A.
 
-Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
-Palette and another for the AWS Account A. <br />
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {
+           "StringEquals": {
+             "sts:ExternalId": "<your-external-id>"
+           }
+         }
+       },
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
+         },
+         "Action": "sts:AssumeRole"
+       }
+     ]
+   }
+   ```
 
-<br />
+   In your case, the `<aws-account-id-of-palette>` and `<your-external-id>` placeholders will contain the values you
+   used while creating the IAM role.
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
+   :::info
 
-In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you used
-while creating the IAM role.
+   Check out
+   [How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
+   for a deep dive into the IAM trust policies.
 
-<br />
-
-:::info
-
-Check out
-[How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
-for a deep dive into the IAM trust policies.
-
-:::
+   :::
 
 10. Copy the IAM role ARN from AWS Account B.
 
@@ -427,8 +633,212 @@ for a deep dive into the IAM trust policies.
 
 13. Click on the **Create** button.
 
-You now have a backup location for Palette to use to store the backup of your clusters or workspaces. This backup
-location is using AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
+You now have a backup location for Palette to store the backup of your clusters or workspaces. This backup location uses
+AWS STS to authenticate Palette with the S3 bucket in AWS Account B.
+
+EKS workload clusters require an additional trust policy update to support IAM Roles for Service Accounts (IRSA). Expand
+the section below.
+
+<details>
+<summary>EKS workload clusters: update the backup IAM role trust policy for IRSA</summary>
+
+14. Ensure your AWS CLI is configured for AWS Account A, then retrieve the OIDC issuer URL for the EKS cluster. Replace
+    `<cluster-name>` and `<region>` with your cluster name and AWS region.
+
+    ```shell
+    aws eks describe-cluster \
+      --name <cluster-name> \
+      --region <region> \
+      --query "cluster.identity.oidc.issuer" \
+      --output text
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    https://oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE
+    ```
+
+    Record the ID value at the end of the URL. The ID follows the last `/` in the path. You will need this value in the
+    following steps.
+
+15. Confirm the OIDC provider is registered in IAM in AWS Account A.
+
+    ```shell
+    aws iam list-open-id-connect-providers
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    {
+        "OpenIDConnectProviderList": [
+            {
+                "Arn": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+            }
+        ]
+    }
+    ```
+
+    Palette registers the OIDC provider automatically during EKS cluster provisioning. If the provider URL from step 14
+    is not present in the output, run the following command to register it. Replace `<cluster-name>` and `<region>` with
+    your values.
+
+    ```shell
+    eksctl utils associate-iam-oidc-provider \
+      --cluster <cluster-name> \
+      --region <region> \
+      --approve
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    2024-01-01 00:00:00 [ℹ]  will create IAM Open ID Connect provider for cluster <cluster-name> in "<region>"
+    2024-01-01 00:00:00 [✔]  created IAM Open ID Connect provider for cluster <cluster-name> in "<region>"
+    ```
+
+    For additional guidance, refer to the
+    [Creating an IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+    guide in the AWS documentation.
+
+16. Switch to AWS Account B. Retrieve the current trust policy of the backup IAM role and save it to a local file.
+    Replace `<role-name>` with the name of your backup IAM role.
+
+    ```shell
+    aws iam get-role \
+      --role-name <role-name> \
+      --query 'Role.AssumeRolePolicyDocument' \
+      --output json > trust-policy.json
+    ```
+
+    No output is displayed. The current trust policy is saved to `trust-policy.json` in the current directory.
+
+17. Open `trust-policy.json` and add the following statement to the `Statement` array. Use the table below to identify
+    the values to substitute for each placeholder before adding the statement to the file.
+
+    | Placeholder                      | Description                                      |
+    | -------------------------------- | ------------------------------------------------ |
+    | `<account-id-for-aws-account-a>` | The AWS account ID for AWS Account A             |
+    | `<region>`                       | The AWS region where the EKS cluster is deployed |
+    | `<oidc-id>`                      | The OIDC ID from step 14                         |
+
+    ```json
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::<account-id-for-aws-account-a>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<oidc-id>"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringLike": {
+          "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:sub": "system:serviceaccount:*:velero-server"
+        },
+        "StringEquals": {
+          "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+    ```
+
+    The `StringLike` condition uses a wildcard (`*`) for the namespace because Palette generates a unique namespace for
+    each cluster's Velero installation in the format `cluster-<hash>`.
+
+    :::tip
+
+    If you share one backup IAM role across multiple EKS clusters, use `StringEquals` with the specific namespace and
+    add one statement per cluster. This limits role assumption to the `velero-server` pod in a specific namespace on
+    each cluster. To determine the Velero namespace for a given cluster, run `kubectl get namespaces` on that cluster
+    and look for a namespace in the format `cluster-<hash>`.
+
+    :::
+
+    After adding the new statement, the trust policy in AWS Account B must include the existing Palette and Account A
+    trust statements from step 9, plus the new IRSA statement. The following example shows the expected result. Use the
+    table below to identify the values to substitute for each placeholder.
+
+    | Placeholder                      | Description                                                                   |
+    | -------------------------------- | ----------------------------------------------------------------------------- |
+    | `<aws-account-id-of-palette>`    | The Palette AWS account ID, displayed in the backup location wizard           |
+    | `<your-external-id>`             | The external ID generated by Palette, displayed in the backup location wizard |
+    | `<account-id-for-aws-account-a>` | The AWS account ID for AWS Account A                                          |
+    | `<region>`                       | The AWS region where the EKS cluster is deployed                              |
+    | `<oidc-id>`                      | The OIDC ID from step 14                                                      |
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::<aws-account-id-of-palette>:root"
+          },
+          "Action": "sts:AssumeRole",
+          "Condition": {
+            "StringEquals": {
+              "sts:ExternalId": "<your-external-id>"
+            }
+          }
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::<account-id-for-aws-account-a>:root"
+          },
+          "Action": "sts:AssumeRole"
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Federated": "arn:aws:iam::<account-id-for-aws-account-a>:oidc-provider/oidc.eks.<region>.amazonaws.com/id/<oidc-id>"
+          },
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Condition": {
+            "StringLike": {
+              "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:sub": "system:serviceaccount:*:velero-server"
+            },
+            "StringEquals": {
+              "oidc.eks.<region>.amazonaws.com/id/<oidc-id>:aud": "sts.amazonaws.com"
+            }
+          }
+        }
+      ]
+    }
+    ```
+
+18. Apply the updated trust policy to the backup IAM role in AWS Account B. Replace `<role-name>` with the name of your
+    backup IAM role.
+
+    ```shell
+    aws iam update-assume-role-policy \
+      --role-name <role-name> \
+      --policy-document file://trust-policy.json
+    ```
+
+    A successful update returns no output.
+
+19. Confirm the backup location is available. First, find the Velero namespace on your cluster. Palette generates a
+    unique namespace for each cluster's Velero installation in the format `cluster-<hash>`.
+
+    ```shell
+    kubectl get namespaces | grep cluster-
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    cluster-6a02ef3b8cd2144fbadd2eff   Active   10m
+    ```
+
+    Then check the `backupstoragelocation` status. Replace `<namespace>` with the namespace from the previous command.
+
+    ```shell
+    kubectl get backupstoragelocation --namespace <namespace>
+    ```
+
+    ```shell hideClipboard title="Expected output"
+    NAME              PHASE       LAST VALIDATED   AGE   DEFAULT
+    your-backup-location   Available   20s              2m    true
+    ```
+
+    A status of `Available` confirms that the trust policy is correctly configured. If the status shows `Unavailable`,
+    check the error details. An `operation error STS: AssumeRoleWithWebIdentity, StatusCode: 403` error indicates a
+    trust policy misconfiguration. Confirm the OIDC ID and AWS account ID are correct.
+
+</details>
 
 ### Validate
 

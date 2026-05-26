@@ -93,3 +93,6 @@ vale/styles/config/vocabularies/spectrocloud-vocab
 unused_images.json
 
 .secrets
+
+# Claude Code
+.mcp.json

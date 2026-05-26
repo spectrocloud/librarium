@@ -169,8 +169,27 @@ let redirects = [
     to: `/tags/tutorial/`,
   },
   {
-    from: `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app/`,
-    to: `/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app/`,
+    from: `/kubernetes-knowlege-hub/`,
+    to: `/tutorials/`,
+  },
+  {
+    from: `/kubernetes-knowlege-hub/how-to/`,
+    to: `/tutorials/`,
+  },
+  {
+    from: `/kubernetes-knowlege-hub/how-to/how-to-retrieve-images-from-private-registry/`,
+    to: `/registries-and-packs/registries/`,
+  },
+  {
+    from: `/kubernetes-knowlege-hub/tutorials/`,
+    to: `/tutorials/`,
+  },
+  {
+    from: [
+      `/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app/`,
+      `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app/`,
+    ],
+    to: `/tutorials/pde/deploy-app/`,
   },
   {
     from: `/devx/resource-quota/`,
@@ -226,7 +245,7 @@ let redirects = [
   },
   {
     from: `/knowledgebase/how-to/`,
-    to: `/tags/how-to/`,
+    to: `/tutorials/`,
   },
   {
     from: `/cluster-profiles/`,
@@ -973,6 +992,10 @@ let redirects = [
   {
     from: `/clusters/cluster-groups/vcluster-upgrade/`,
     to: `/clusters/cluster-groups/vcluster-upgrades/`,
+  },
+  {
+    from: "/clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/build-import-rhcos-image/",
+    to: "/clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/prepare-coreos-image/",
   },
 ];
 
