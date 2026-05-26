@@ -24,22 +24,33 @@ These examples demonstrate how to override CAPI properties using YAML directly t
 
 #### Cluster-Level
 
-azureManagedControlPlane: spec: autoUpgradeProfile: upgradeChannel: patch oidcIssuerProfile: enabled: true
-securityProfile: workloadIdentity: enabled: true
-
-````
+```yaml title="Enable OpenID Connect (OIDC) issuer and workload identity"
+azureManagedControlPlane:
+  spec:
+    autoUpgradeProfile:
+      upgradeChannel: patch
+    oidcIssuerProfile:
+      enabled: true
+    securityProfile:
+      workloadIdentity:
+        enabled: true
+```
 
 ```yaml title="Set DNS prefix for control plane FQDN"
 azureManagedControlPlane:
   spec:
     dnsPrefix: aksdemo-updated
-````
+```
 
 #### Pool-Level
 
-azureManagedMachinePool: spec: maxPods: 30 kubeletDiskType: OS enableNodePublicIP: false
-
-````
+```yaml title="Set max pods, OS disk type, and disable node public IPs"
+azureManagedMachinePool:
+  spec:
+    maxPods: 30
+    kubeletDiskType: OS
+    enableNodePublicIP: false
+```
 
 ```yaml title="Set VM size, OS disk size, and node labels"
 azureManagedMachinePool:
@@ -49,7 +60,7 @@ azureManagedMachinePool:
     nodeLabels:
       env: test
       updated: "true"
-````
+```
 
 ### Encryption
 
