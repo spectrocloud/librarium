@@ -11,9 +11,6 @@ This document guides you through the process of producing Edge Installer ISOs th
 
 ## Limitation
 
-- Trusted Boot is only supported for clusters with a connection to a Palette instance. Therefore, you cannot set
-  `managementMode` to `local` in the `user-data` file.
-
 - <PartialsComponent category="clusters-edge" name="uki-kairos-limitation" />
 
 ## Prerequisites
@@ -64,7 +61,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 
    ```
    OS_DISTRIBUTION=ubuntu
-   OS_VERSION=23.10
+   OS_VERSION=24.04
    IS_UKI=true
    AUTO_ENROLL_SECUREBOOT_KEYS=true
    ```

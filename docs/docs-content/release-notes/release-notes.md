@@ -23,11 +23,40 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4787 -->
+
+- <TpBadge /> Palette now supports overriding Cluster API (CAPI) properties on AWS IaaS and Azure AKS clusters. This
+  allows you to configure advanced provider-specific settings not natively exposed by Palette by supplying YAML that
+  targets the underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
+  Properties](../architecture/override-capi-properties/override-capi-properties.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5930 -->
+
+- Palette now supports deployment of
+  [Generation 2 (Gen 2) Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2) on AKS
+  clusters. When you select an instance type that supports Gen 2 (for example, `Standard_D8ds_v6`), Azure automatically
+  provisions the nodes as Gen 2 VMs instead of Gen 1 VMs. Changing a node pool's instance type between Gen 1 and Gen 2
+  variants on a running cluster triggers a
+  [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). For more
+  information, refer to [Create and Manage Azure AKS Cluster](../clusters/public-cloud/azure/aks.md).
+
+  - For further upgrade guidance, review the
+    [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2). This covers supported
+    size families and the move to UEFI-based boot architecture.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5897 -->
 
 - SSH key injection is now supported for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md).
 
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2822 -->
+
+- <TpBadge /> You can now use a pre-built Docker image to import a MAAS-compatible CentOS Stream CoreOS (SCOS) image
+  when [preparing the CoreOS
+  image](../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/prepare-coreos-image.md) required
+  for OpenShift workload clusters on MAAS using HyperShift. This provides a faster alternative to building a custom
+  RHCOS image from source.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2788 -->
 
@@ -66,9 +95,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8427 -->
 
-- The Palette agent can now be uninstalled from Edge hosts with Agent Mode using the `palette-agent uninstall` command.
+- The Palette agent can now be uninstalled from Edge hosts deployed with Agent Mode using the `palette-agent uninstall` command.
   Refer to our [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#uninstall-palette-agent)
   guide for more information.
+<!-- https://spectrocloud.atlassian.net/browse/PE-3561 -->
+
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> is now supported for Trusted Boot. Refer to the [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) page for a list of supported configurations for clusters deployed on Trusted Boot-enabled Edge hosts.
+
+<!-- prettier-ignore-end -->
 
 #### Improvements
 
@@ -88,6 +124,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
 
 :::
+
+#### Deprecations and Removals
+
+- The Palette Edge CLI has been deprecated and there will be no further releases. For continued functionality, use the
+  Palette CLI instead. Refer to the [Palette CLI documentation](../automation/palette-cli/palette-cli.md) for more
+  information.
 
 #### Features
 
@@ -139,6 +181,55 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## May 22, 2026 - Component Updates {#component-updates-2026-21}
+
+The following components have been updated for Palette version 4.9.5 - 4.9.8.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.2   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.2  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.2  |
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2240 -->
+
+- Fixed a Terraform issue where `terraform apply` failed to reconcile add-on cluster profile drift in clusters when the
+  add-on cluster profile is managed in Terraform but updated in the Palette UI.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3910 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4071 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4073 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4074 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4075 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4099 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4105 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4110 -->
+
+| Pack Name                                                                | Layer  | Non-FIPS           | FIPS               | New Version |
+| ------------------------------------------------------------------------ | ------ | ------------------ | ------------------ | ----------- |
+| [Amazon EBS CSI](/integrations/packs/?pack=csi-aws-ebs)                  | CSI    | :white_check_mark: | :x:                | 1.60.0      |
+| [Amazon EFS](/integrations/packs/?pack=csi-aws-efs)                      | CSI    | :white_check_mark: | :x:                | 3.1.0       |
+| [Calico Network Policy](/integrations/packs/?pack=calico-network-policy) | Add-on | :white_check_mark: | :x:                | 3.32.0      |
+| [ExternalDNS](/integrations/packs/?pack=external-dns)                    | Add-on | :white_check_mark: | :x:                | 0.21.0      |
+| [GCE Persistent Disk CSI](/integrations/packs/?pack=csi-gcp-driver)      | CSI    | :white_check_mark: | :x:                | 1.25.2      |
+| [Spectro Proxy](/integrations/packs/?pack=spectro-proxy)                 | Add-on | :x:                | :white_check_mark: | 1.5.6       |
+| [Tigera Operator](/integrations/packs/?pack=tigera-operator)             | CNI    | :white_check_mark: | :x:                | 3.32.0      |
+| [Traefik](/integrations/packs/?pack=traefik)                             | Add-on | :white_check_mark: | :x:                | 40.2.0      |
+
+#### Community Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4095 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4096 -->
+
+| Pack Name                                                  | Layer  | New Version |
+| ---------------------------------------------------------- | ------ | ----------- |
+| [ECK Operator](/integrations/packs/?pack=elastic-operator) | Add-on | 3.4.0       |
+| [ECK Stack](/integrations/packs/?pack=elastic-stack)       | Add-on | 0.19.0      |
+
 ## May 15, 2026 - Component Updates {#component-updates-2026-20}
 
 The following components have been updated for Palette version 4.9.5 - 4.9.8.
@@ -176,7 +267,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 
 The following component updates are applicable to this release:
 
-- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-2824 -->
 
@@ -215,7 +307,8 @@ The following component updates are applicable to this release:
 
 The following component updates are applicable to this release:
 
-- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
 
 ### Improvements
 
@@ -342,7 +435,8 @@ The following components have been updated for Palette version 4.9.5.
 The following component updates are applicable to this release:
 
 - [May 9, 2026 - Component Updates](#component-updates-2026-19) <!-- omit in toc -->
-- [May 17, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 15, 2026 - Component Updates](#component-updates-2026-20) <!-- omit in toc -->
+- [May 22, 2026 - Component Updates](#component-updates-2026-21) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -456,7 +550,10 @@ The following component updates are applicable to this release:
   configurations. Use RHEL 9.x or RHEL 10.x instead.
 
 - Support for Ubuntu 20.04 in Edge workflows has been deprecated, including FIPS-enabled configurations. Use Ubuntu
-  24.04, as it is FIPS 140-3 compliant.
+- Support for Ubuntu 20.04 in Edge workflows has been deprecated. We recommend using either Ubuntu 22.04 (when requiring
+  FIPS 140-3 certification) or Ubuntu 24.04 (when FIPS 140-3 compliance is sufficient). Ubuntu 24.04 FIPS certification
+  is still in progress at the vendor-level and cannot be relied upon to meet auditory compliance until certification is
+  reached.”
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10602 -->
 
