@@ -76,20 +76,98 @@ Ensure you are selecting the correct disk. The installation process will complet
 
 ## Configure Network Settings
 
-1.
+1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your VMO Appliance host. If you have
+   access to the VMO Appliance host terminal, the address of Local UI console is displayed on the terminal screen. If you have
+   changed the default port of the console, replace `5080` with Local UI port.
+
+2. You will be prompted to log in. Enter your username and password to log in.
+
+3. On the **Network interfaces** card, navigage to **Bridges** and click **Create**.
+
+4. **MAGIC**
 
 ## Creating VM Launchpad cluster
 
-1.
+1. 1. Log in to Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
+   refer to [Configure Network Settings](#configure-network-settings).
+
+2. From the left main menu, click **Cluster**.
+
+3. Click **Create cluster**.
+
+4. Fill out **Basic Information** such as cluster name and tag. Click **Next**.
+
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Cluster name | Name of the cluster.                                    |
+   | Tags         | Key-value pairs to provide metadata about your cluster. |
+
+5. The default **VMO Appliance full stack** profile will load. The following table explains what each pack in the profile is for. 
+
+   | Component |   Pack Name    | Purpose |
+   |-----------|---------|---------|
+   | **Edge Native BYOI** | `edge-native-byoi <version>`   | Native Ubuntu OS. |
+   | **Kubernetes** | `edge-k8s <version>`   | Kubernetes platform |
+   | **Cilium** | `cni-cilium-fips <version>`   |CNI and network policy. Multus support for VM networking. |
+   | **Piraeus/LINSTOR** | `piraeus-operator <version>`   | Storage backend. Provides StorageClass for VM disks (when used). |
+   | **Zot** | `zot-registry-fips <version>`   |OCI registry. Stores container images for air-gapped deployments. |
+   | **Registry Connect** | `registry-connect <version>`   | Enables seamless integration with OCI-compliant registries. |
+   | **Required config** | `required-config-1 <version>`   | Initial configuration before continuing |
+   | **MetalLB** | `lb-metallb-helm <version>`   |LoadBalancer implementation for bare-metal. Assigns the platform IP. |
+   | **Traefik** | `traefik <version>`   |Single ingress controller. TLS termination, path-based routing, LoadBalancer IP. |
+   | **Required config** | `required-config-2 <version>`   | Second configuration before continuing |
+   | **Keycloak** |`keycloak <version>`   | OIDC identity provider. Handles login, user/group management, and token issuance. Shared `k8s-oidc` client with K8s API and Headlamp. |
+   | **Headlamp** | `headlamp <version>`   |Kubernetes cluster explorer. Alternative UI for raw K8s resources. |
+   | **Victoria Metrics** | `victoria-metrics-cluster <version>`   |Optional long-term metrics storage. PromQL queries when `EXTERNAL_METRICS_URL` is configured. |
+   | **OTel Collector** | `opentelemetry <version>`   |Metrics pipeline. Receives OTLP from node-agent, forwards to VMO Manager or Victoria Metrics. |
+   | **VMO Manager** | `virtual-machine-orchestrator-v<version>`   | Primary UI and API gateway. Go backend + React frontend. Manages VMs, templates, golden images, access policies, config, and dashboards. |
+   | **VM Migration Assistant** | `vm-migration-assistant <version>`   | Provides the ability to migrate VMs from VMware vSphere to VMO. |
+
+   Additionally, within the **VMO Manager** the following services exist. 
+
+   | Component |       | Purpose |
+   |-----------|---------|---------|
+   | **cert-manager** |`virtual-machine-orchestrator-v<version>`   | Issues and renews TLS certificates. Single platform CA for all components. |
+   | **KubeVirt** | `virtual-machine-orchestrator-v<version>`   |Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
+   | **CDI** | `virtual-machine-orchestrator-v<version>`   |Containerized Data Importer. Handles disk image uploads, imports, and clones. |
+   
+   After you finish configuring the cluster profile, click **Next**.
+
+6. If your selected cluster profile has Cluster Profile Variables,
+   you are prompted to enter the values for those profile variables. Variables with default values are auto-populated.
+
+   Enter the values for the profile variables and click **Next**.
+
+7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
+   specify an NTP server and an SSH public key.
+
+   | Parameter                   | Description                                                                              |
+   | --------------------------- | ---------------------------------------------------------------------------------------- |
+   | Virtual IP Address (VIP)    | Provide the virtual IP address to be used by the cluster.                                |
+   | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                    |
+   | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host. |
+
+   Optionally, you can also enable network overlay, especially if your cluster will operate in an DHCP environment. For
+   more information, refer to [Enable Overlay Network]. If you enable the overlay
+   network, you need to specify a CIDR range to be used by the overlay network.
+
+8. In the **Node Config** step, you can specify configurations for worker pools and control plane pools. To assign a
+   host to a node pool, click **Add Edge Hosts** in the corresponding node pool and select the host to add to the pool.
+   For multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally,
+   you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
+   the control plane will be considered a leader node.
+
+   For more information about node pool configurations, refer to [Node pools].
+   After you finish configuration, click **Next**.
+
+9. Review your configurations and deploy the cluster. As your cluster begins to deploy, the status and details of the
+   deployment are displayed in the **Cluster** page. Use this page to track the deployment progress.
 
 
 ## Validate
 
-1. Log in to a tenant that belongs to your airgapped instance of Palette or Palette VerteX.
+1. 
 
-2. From the left **Main Menu**, select **Profiles** and click **Add Cluster Profile**.
+## Next Steps
 
-3. Follow the [Create a VMO Profile] guide to start creating a VMO add-on profile.
-
-4. If the Virtual Machine Orchestrator, Spectro Proxy, and, if applicable, your load balancer packs are available to add
-   to a cluster profile, then the installation is successful.
+Once you have built your VMO cluster, you can start deploying VMs by following the [Quick Start](quick-start.md) steps. 
