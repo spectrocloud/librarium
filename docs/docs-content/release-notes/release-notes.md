@@ -21,6 +21,19 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4-9-a}
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6185 -->
+
+- Palette now uses IAM Roles for Service Accounts (IRSA) instead of kube2iam for Velero backup operations on
+  [EKS clusters](../clusters/public-cloud/aws/eks.md) that use AWS Security Token Service (STS) credentials.
+
+  To prevent backup disruptions,
+  [pause agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on your EKS
+  clusters before upgrading to Palette 4.9.a and update the backup IAM role's trust policy by adding the EKS cluster's
+  OpenID Connect (OIDC) provider as a federated principal and allowing the `sts:AssumeRoleWithWebIdentity` action. Refer
+  to
+  [Add Backup Location using Dynamic Credentials](../clusters/cluster-management/backup-restore/add-backup-location-dynamic.md)
+  for detailed instructions on updating the trust policy.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-4787 -->
@@ -83,6 +96,75 @@ tags: ["release-notes"]
   and Palette VerteX. We recommend that customers deploy their workloads to
   [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
 
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10824 -->
+
+- Fixed an issue that caused strict YAML validators and GitOps tools to reject
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) deployment templates due to a duplicate
+  `securityContext` configuration block in the Helm chart.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6583 -->
+
+- Fixed an issue that caused scheduled [OS patching](../clusters/cluster-management/os-patching.md) to run only once
+  instead of on the configured recurring schedule.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10718 -->
+
+- Fixed an issue that caused the **Clusters** page to hang indefinitely when accessed by users with a
+  [custom tenant role](../user-management/palette-rbac/create-custom-role.md) that did not include virtual cluster
+  permissions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10636 -->
+
+- Fixed an issue that caused multi-line formatting in
+  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) and cluster description fields to be lost after
+  saving.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6498 -->
+
+- Fixed an issue that caused changes to additional security groups on
+  [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md) node pools to be silently ignored when replacing one
+  security group with another without changing the total count.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10599 -->
+
+- Fixed an issue that caused intermittent `no subscriber found` errors when performing
+  [MAAS cloud account](../clusters/data-center/maas/register-manage-maas-cloud-accounts.md) operations through a
+  [Private Cloud Gateway](../clusters/pcg/pcg.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10547 -->
+
+- Fixed an issue that caused the **Cluster Settings** > **Cluster Configuration** page to display a generic error when
+  attempting to display SSH key names for users whose role did not include the permission `sshKey.list`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6452 -->
+
+- Fixed an issue that caused [MAAS cluster](../clusters/data-center/maas/create-manage-maas-clusters.md) node pools
+  configured with multiple placement tags to match machines using only the last tag instead of all specified tags.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10527 -->
+
+- Fixed an issue that caused [EKS cluster](../clusters/public-cloud/aws/eks.md) add-on pack statuses to appear as not
+  ready in the Palette UI, even though the packs were deployed successfully and the cluster was running.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5840 -->
+
+- Fixed an issue that caused
+  [add-on Helm charts](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md)
+  that entered an `uninstalling` state to remain stuck indefinitely, preventing the pack from being redeployed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6478 -->
+
+- Fixed an issue that caused [virtual clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md)
+  deployed on EKS 1.34 and 1.35 host clusters to fail or have add-on packs permanently stuck in a not ready state.
+
+  <!-- https://spectrocloud.atlassian.net/browse/PCP-6453 -->
+
+- Fixed an issue that prevented [virtual clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md)
+  from being deployed on EKS host clusters when the Kubernetes version on the virtual cluster and host cluster did not
+  match.
+
 ### Edge
 
 :::info
@@ -101,9 +183,38 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- prettier-ignore-end -->
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-7637 -->
+
+- Network Time Protocol (NTP) values can now be configured per Edge host via
+  [user-data](../clusters/edge/edge-configuration/installer-reference.md) using `stylus.site.ntpServers`, the
+  [Edge TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md), or
+  [Local UI](../clusters/edge/local-ui/local-ui.md). NTP values used during cluster creation override the servers
+  configured on individual hosts.
+
 #### Improvements
 
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8716 -->
+
+- Fixed an issue on Edge clusters with [image swap](../clusters/cluster-management/image-swap.md) enabled that caused
+  cluster upgrade tasks to get stuck due to the image-swap webhook interfering with Kubernetes Job completion.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8570 -->
+
+- Fixed an issue that caused Kubernetes upgrades on [Edge clusters](../clusters/edge/edge.md) to fail when the host OS
+  root password had expired.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8507 -->
+
+- Fixed an issue that caused `systemd-networkd-wait-online.service` to fail on the first boot of
+  [Edge hosts](../clusters/edge/site-deployment/site-installation/site-installation.md) with `managementMode: local` and
+  `includeTui: true`, even after configuring network settings through the TUI.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7651 -->
+
+- Fixed an issue that allowed a Kubernetes upgrade to proceed on [Edge clusters](../clusters/edge/edge.md) even when a
+  previous upgrade had not completed successfully, potentially leaving the cluster in an inconsistent state.
 
 ### VerteX
 
@@ -122,17 +233,19 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2801 -->
+
 - The Palette Edge CLI has been deprecated and there will be no further releases. For continued functionality, use the
   Palette CLI instead. Refer to the [Palette CLI documentation](../automation/palette-cli/palette-cli.md) for more
   information.
 
 #### Features
 
-- Terraform version 4.9.a of the
+- Terraform version 0.29.3 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.9.a of the
+- Crossplane version 0.29.3 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
