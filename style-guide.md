@@ -1,4 +1,5 @@
 <!-- vale off -->
+# Spectro Cloud Internal Style Guide
 
 This document is maintained by the Spectro Cloud Documentation Team of writers chartered to set and maintain
 readability, usage, correctness, and consistency for Spectro Cloud’s documentation content.
@@ -7,55 +8,56 @@ For reference materials not covered in this guide, defer to the
 [Google Developer Documentation Style Guide](https://developers.google.com/style).
 
 - [Inclusive English for a Global Audience](#inclusive-english-for-a-global-audience)
-  - Simplified English
-  - Voice
-    - Active Voice
-    - Passive Voice
-  - Present Tense
-  - Simplicity Assumption
-  - Ableist Language
-  - Inclusive Software Interactions
-  - Real-World Names and Locations
-  - Gender
-  - Contractions
-  - Wordiness
-    - Angle Brackets (>)
-    - UI Elements as Verbs
-  - Latin Phrases
-- Grammar Guidance
-  - American Spelling
-  - Capitalization
-    - Headings
-    - Headline Style
-    - Acronyms and Initialisms
-  - Parentheses
-    - Clarifying Values or Examples
-    - List Items
-    - Optional Steps
-    - Parenthetical Expressions and Jargon
-    - Single and Plural Subjects
-  - Commas
-  - Prepositions
-  - Dialogue
-  - Numbers
-  - Lists
-  - Colons
-  - Computer Resources (Units of Measurement)
-- Other Style Choices
-  - Future Features
-  - Directionals
-  - Emoticons
-  - Text Formatting
-    - Commands & Parameters
-      - Command Output
-        - Lengthy Output
-    - Product UI Naming
-- Documentation UI Components
-  - Markdown Tables
-  - Admonitions
-  - Supplemental Information
-  - Next Steps
-  - Resources List
+  - [Simplified English](#simplified-english)
+  - [Voice](#voice)
+    - [Active Voice](#active-voice)
+    - [Passive Voice](#passive-voice)
+  - [Present Tense](#present-tense)
+  - [Simplicity Assumption](#simplicity-assumption)
+  - [Ableist Language](#ableist-language)
+  - [Inclusive Software Interactions](#inclusive-software-interactions)
+  - [Real-World Names and Locations](#real-world-names-and-locations)
+  - [Gender](#gender)
+  - [Contractions](#contractions)
+  - [Wordiness](#wordiness)
+    - [Angle Brackets (>)](#angle-brackets-)
+    - [UI Elements as Verbs](#ui-elements-as-verbs)
+  - [Latin Phrases](#latin-phrases)
+- [Grammar Guidance](#grammar-guidance)
+  - [American Spelling](#american-spelling)
+  - [Capitalization](#capitalization)
+    - [Headings](#headings)
+    - [Headline Style](#headline-style)
+    - [Acronyms and Initialisms](#acronyms-and-initialisms)
+  - [Parentheses](#parentheses)
+    - [Clarifying Values or Examples](#clarifying-values-or-examples)
+    - [List Items](#list-items)
+    - [Optional Steps](#optional-steps)
+    - [Parenthetical Expressions and Jargon](#parenthetical-expressions-and-jargon)
+    - [Single and Plural Subjects](#single-and-plural-subjects)
+  - [Commas](#commas)
+  - [Prepositions](#prepositions)
+  - [Dialogue](#dialogue)
+  - [Numbers](#numbers)
+  - [Lists](#lists)
+  - [Colons](#colons)
+  - [Computer Resources (Units of Measurement)](#computer-resources-units-of-measurement)
+- [Other Style Choices](#other-style-choices)
+  - [Future Features](#future-features)
+  - [Directionals](#directionals)
+  - [Emoticons](#emoticons)
+  - [Text Formatting](#text-formatting)
+    - [Commands & Parameters](#commands--parameters)
+      - [Command Output](#command-output)
+        - [Lengthy Output](#lengthy-output)
+    - [Product UI Naming](#product-ui-naming)
+- [Documentation UI Components](#documentation-ui-components)
+  - [Markdown Tables](#markdown-tables)
+  - [Admonitions](#admonitions)
+  - [Supplemental Information](#supplemental-information)
+  - [Next Steps](#supplemental-information)
+  - [Resources List](#resources-list)
+- [Image File Naming Standard](#image-file-naming-standard)
 
 # Inclusive English for a Global Audience
 
