@@ -101,8 +101,8 @@ In the slide drawer that opens, paste the following JSON snippet for your cloud 
           "name": "csi-aws-ebs",
           "type": "spectro",
           "layer": "csi",
-          "version": "1.59",
-          "tag": "1.59",
+          "version": "1.59.0",
+          "tag": "1.59.0",
           "values": "",
           "registry": {
             "metadata": { "name": "Public Repo", "kind": "oci", "isPrivate": false, "providerType": "pack" }
