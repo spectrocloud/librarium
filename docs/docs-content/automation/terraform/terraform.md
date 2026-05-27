@@ -61,7 +61,11 @@ README file to learn more about supported provider versions and other essential 
 
 For an end-to-end cluster provisioning example, refer to the [Getting Started](/getting-started/) tutorials and the
 [end-to-end examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e) available
-in the Spectro Cloud Terraform Provider GitHub repository.
+in the Spectro Cloud Terraform Provider GitHub repository. To learn how to use Terraform to standardize cluster
+provisioning, apply maintenance windows, and roll out upgrades across a fleet of clusters using cluster templates, refer
+to the
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates using Terraform](/tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-terraform/)
+tutorial.
 
 ## Resources
 
