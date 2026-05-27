@@ -26,7 +26,7 @@ These examples demonstrate how to override CAPI properties using YAML directly t
 ```yaml title="Set cluster tags"
 awsCluster:
   spec:
-    tags:
+    additionalTags:
       environment: production
       team: backend
 ```
