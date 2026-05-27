@@ -70,15 +70,12 @@ Use the passive voice when:
 | The node must be drained before the upgrade can proceed. | Emphasis on receiver of actor (what needs to be done, not who does it)            |
 | A new token is generated automatically.                  | Focus is on outcome, not actor                                                    |
 
-:::tip
-
-Below are some great resources to help you differentiate between active and passive voice:
-
-- [Active and Passive Voice Rules - Josh Jagran](https://www.jagranjosh.com/articles/active-and-passive-voice-rules-with-examples-1748263067-1)
-
-- [How to Move from Passive to Active Voice in Your Business Writing - For Dummies](https://www.dummies.com/article/business-careers-money/careers/general-careers/move-passive-active-voice-business-writing-242741/)
-
-:::
+> [!TIP]
+> Below are some great resources to help you differentiate between active and passive voice:
+> 
+> - [Active and Passive Voice Rules - Josh Jagran](https://www.jagranjosh.com/articles/active-and-passive-voice-rules-with-examples-1748263067-1)
+> 
+> - [How to Move from Passive to Active Voice in Your Business Writing - For Dummies](https://www.dummies.com/article/business-careers-money/careers/general-careers/move-passive-active-voice-business-writing-242741/)
 
 ## Present Tense
 
@@ -130,11 +127,8 @@ sentence, use the verb that makes the content the most clear.
 | "_Go_ to section 5" or "_Navigate_ to section 5."           | "_Jump_ to section 5."            |
 | "_Select_ the green button" or "_Choose_ the green button." | "_Click_ the green button."       |
 
-:::info
-
-“Run” in the context of “run a program” or “run a command” is widely understood and is generally considered inclusive.
-
-:::
+> [!NOTE]
+> “Run” in the context of “run a program” or “run a command” is widely understood and is generally considered inclusive.
 
 ## Real-World Names and Locations
 
