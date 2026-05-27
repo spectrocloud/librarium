@@ -314,16 +314,18 @@ Ensure you are selecting the correct disk. The installation process will complet
    network, you need to specify a CIDR range to be used by the overlay network.
 
 8. In the **Node Config** step, you can specify configurations for worker pools and control plane pools. To assign a
-   host to a node pool, click **Add Edge Hosts** in the corresponding node pool and select the host to add to the pool.
+   host to a node pool, click **Add Item** in the corresponding node pool and select the host to add to the pool.
    For multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally,
    you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
    the control plane will be considered a leader node.
 
-   For more information about node pool configurations, refer to [Node pools].
+   For more information about node pool configurations, refer to [Node pools](../../clusters/cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
 
 9. Review your configurations and deploy the cluster. As your cluster begins to deploy, the status and details of the
-   deployment are displayed in the **Cluster** page. Use this page to track the deployment progress.
+   deployment are displayed in the **Cluster** page. Use this page to track the deployment progress. The VM Launchpad host will reboot as part of the build process. 
+
+10. 
 
 
 ## Validate
