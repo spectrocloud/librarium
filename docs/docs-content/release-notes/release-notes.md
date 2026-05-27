@@ -140,6 +140,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Docs and Education
 
+- A new
+  [Standardize Cluster Provisioning and Maintenance with Cluster Templates using Terraform](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-terraform.md)
+  tutorial is now available. Follow it to learn how to use the Spectro Cloud Terraform provider to create cluster
+  templates, deploy standardized clusters, and manage lifecycle updates with infrastructure as code.
+
 ### Packs
 
 #### Pack Notes
