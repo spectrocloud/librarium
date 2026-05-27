@@ -52,6 +52,8 @@ Palette upgrade.
   the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
   version required for your Palette installation.
 
+<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+
 ## Upgrade
 
 :::info

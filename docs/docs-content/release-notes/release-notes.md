@@ -77,6 +77,30 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10226 -->
+
+- The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
+  Palette and Palette VerteX management plane services has been fully removed. Traefik, introduced in 4.8.c, is now the
+  sole management cluster ingress controller. The management plane removes leftover Nginx Deployments, Services,
+  Role-Based Access Control (RBAC), `IngressClass`, and the `nginx-tls` Secret automatically at startup, so most
+  installations require no manual cleanup. Enterprise installations keep the `ingress-nginx` namespace and the
+  `default-ssl-certificate` Secret in place because the cert-bridge introduced in 4.8.c continues to copy the uploaded
+  Transport Layer Security (TLS) certificate from that Secret into Traefik.
+
+  - **Google Kubernetes Engine (GKE) pre-upgrade requirement**: The principal running `helm upgrade` must hold the
+    `container.roles.delete`, `container.roleBindings.delete`, `container.clusterRoles.delete`, and
+    `container.clusterRoleBindings.delete` Cloud Identity and Access Management (IAM) permissions. Refer to the
+    [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
+  - **Recommended `values.yaml` hygiene**: The `ingress.type` and `ingress.ingress.internal` fields have been removed
+    from the Helm chart and are silently ignored if still present in your override file. We recommend removing both
+    fields. Refer to the
+    [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
+    the current set of supported parameters.
+  - **Recovery**: If `configserver` does not reach **Ready** after the upgrade due to leftover Nginx pods holding host
+    ports, refer to the
+    [Scenario - configserver Stuck on init-rootdomain-traefik After Upgrade to 4.9.a](../troubleshooting/palette-upgrade.md#scenario---configserver-stuck-on-init-rootdomain-traefik-after-upgrade-to-49a)
+    troubleshooting guide for the manual cleanup procedure.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
 
 - [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) are now deprecated in Palette

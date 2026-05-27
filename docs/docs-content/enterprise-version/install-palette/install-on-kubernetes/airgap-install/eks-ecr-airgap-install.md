@@ -820,13 +820,12 @@ Finally, install Palette. Image Swap handles all image rewriting automatically, 
    ```
 
 10. Verify the installation is complete. Installation is complete when all pods in the `cp-system`, `hubble-system`,
-    `ingress-nginx`, `ingress-traefik`, `jet-system`, and `ui-system` namespaces are in a `Running` or `Completed`
-    state.
+    `ingress-traefik`, `jet-system`, and `ui-system` namespaces are in a `Running` or `Completed` state.
 
     <PartialsComponent category="self-hosted" name="install-on-kubernetes-al2" edition="Palette" />
 
     ```shell
-    kubectl get pods --all-namespaces | grep --extended-regexp '(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)'
+    kubectl get pods --all-namespaces | grep --extended-regexp '(cp-system|hubble-system|ingress-traefik|jet-system|ui-system)'
     ```
 
     ```shell title="Example output" hideClipboard
@@ -870,9 +869,6 @@ Finally, install Palette. Image Swap handles all image rewriting automatically, 
     hubble-system      timeseries-55b4dd666-lkw6r                   1/1     Running     0               8m14s
     hubble-system      user-78dc58468d-cm2hk                        1/1     Running     0               8m13s
     hubble-system      user-78dc58468d-hqbzm                        1/1     Running     0               8m13s
-    ingress-nginx      ingress-nginx-controller-bgfcw               1/1     Running     1 (7m ago)      8m12s
-    ingress-nginx      ingress-nginx-controller-cb5zs               1/1     Running     0               8m11s
-    ingress-nginx      ingress-nginx-controller-z4x4w               1/1     Running     0               8m11s
     ingress-traefik    traefik-ingress-controller-9dmzq             1/1     Running     0               51m
     ingress-traefik    traefik-ingress-controller-tpwtf             1/1     Running     0               51m
     ingress-traefik    traefik-ingress-controller-xz4jf             1/1     Running     0               51m

@@ -38,6 +38,8 @@ remain operational.
   app="VerteX Management Appliance"
 />
 
+<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
+
 ## Upgrade Palette VerteX
 
 <PartialsComponent

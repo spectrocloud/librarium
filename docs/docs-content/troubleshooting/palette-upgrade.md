@@ -277,45 +277,221 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
    databaseUrl: "mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongo.hubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local"
    ```
 
-7. Click **Save** to apply the changes.
+## Scenario - configserver Stuck on init-rootdomain-traefik After Upgrade to 4.9.a
 
-8. Verify the system pods are starting correctly by issuing the following command.
+After upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or
+[Palette VerteX](../vertex/vertex.md) to version 4.9.a, the `configserver` pod may remain in `Init:CrashLoopBackOff` for
+the `init-rootdomain-traefik` init container. This happens when leftover Nginx ingress controller pods on the same nodes
+hold host ports 80, 443, and 9090, which prevents the new Traefik DaemonSet pods from scheduling. The automatic Nginx
+cleanup script that runs at `configserver` startup cannot run because `configserver` itself never reaches **Ready**, so
+the leftover Nginx resources must be removed manually.
+
+This scenario applies only to Enterprise installs of self-hosted Palette and Palette VerteX.
+
+:::warning
+
+Do not delete the `default-ssl-certificate` Secret in the `ingress-nginx` namespace, and do not delete the
+`ingress-nginx` namespace itself. The Enterprise cert-bridge continues to copy your uploaded Transport Layer Security
+(TLS) certificate from the `default-ssl-certificate` Secret into Traefik on every `configserver` restart. Deleting
+either resource breaks ingress TLS.
+
+:::
+
+### Debug Steps
+
+1. Connect to the cluster using the cluster's kubeconfig file. Refer to the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
+
+2. Verify that the `configserver` pod is in the `Init:CrashLoopBackOff` state and inspect the init container logs.
 
    ```shell
-   kubectl get pods --namespace=hubble-system
+   kubectl get pod --namespace hubble-system --selector component=configserver
    ```
 
-   ```hideClipboard text
-     NAME                                   READY   STATUS    RESTARTS   AGE
-     auth-64b88d97dd-5z7ph                  1/1     Running   0          31m
-     auth-64b88d97dd-bchr7                  1/1     Running   0          31m
-     cloud-b8796c57d-5r7d9                  1/1     Running   0          31m
-     cloud-b8796c57d-xpbx7                  1/1     Running   0          31m
-     configserver-778bd7c4c9-mrtc6          1/1     Running   0          31m
-     event-5869c6bd75-2n7jl                 1/1     Running   0          31m
-     event-5869c6bd75-xnvmj                 1/1     Running   0          31m
-     foreq-679c7b7f6b-2ts2v                 1/1     Running   0          31m
-     hashboard-9f865b6c8-c52bb              1/1     Running   0          31m
-     hashboard-9f865b6c8-rw6p4              1/1     Running   0          31m
-     hutil-54995bfd6b-sh4dt                 1/1     Running   0          31m
-     hutil-54995bfd6b-tlqbj                 1/1     Running   0          31m
-     memstore-7584fdd94f-479pj              1/1     Running   0          31m
-     mgmt-68c8dbfd58-8gxsx                  1/1     Running   0          31m
-     mongo-0                                2/2     Running   0          29m
-     mongo-1                                2/2     Running   0          30m
-     mongo-2                                2/2     Running   0          30m
-     msgbroker-7d7655559b-zxxfq             1/1     Running   0          31m
-     oci-proxy-6fdf95885f-qw58g             1/1     Running   0          31m
-     reloader-reloader-845cfd7fdf-2rq5t     1/1     Running   0          31m
-     spectrocluster-5c4cb4ff58-658w9        1/1     Running   0          31m
-     spectrocluster-5c4cb4ff58-fn8g5        1/1     Running   0          31m
-     spectrocluster-5c4cb4ff58-zvwfp        1/1     Running   0          31m
-     spectrocluster-jobs-5b54bf6bcf-mtgh8   1/1     Running   0          31m
-     system-6678d47874-464n6                1/1     Running   0          31m
-     system-6678d47874-rgn55                1/1     Running   0          31m
-     timeseries-6564699c7d-b6fnr            1/1     Running   0          31m
-     timeseries-6564699c7d-hvv94            1/1     Running   0          31m
-     timeseries-6564699c7d-jzmnl            1/1     Running   0          31m
-     user-866c7f779d-drf9w                  1/1     Running   0          31m
-     user-866c7f779d-rm4hw                  1/1     Running   0          31m
+   ```bash hideClipboard title="Expected output"
+   NAME                            READY   STATUS                  RESTARTS   AGE
+   configserver-685fcc5b6d-t8f8h   0/1     Init:CrashLoopBackOff   5          8m
    ```
+
+   ```shell
+   kubectl logs <configserver-pod> --namespace hubble-system --container init-rootdomain-traefik --previous | tail
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   level=fatal msg="not able to get the host ip. got NotFound: Resource 'websecure' not found of type 'pod'"
+   ```
+
+3. Confirm that the Traefik DaemonSet pods are stuck in `Pending` because the host ports are unavailable.
+
+   ```shell
+   kubectl get pods --namespace ingress-traefik
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   NAME                               READY   STATUS    RESTARTS   AGE
+   traefik-ingress-controller-dkjs5   0/1     Pending   0          8m
+   traefik-ingress-controller-nltlh   0/1     Pending   0          8m
+   ```
+
+   If the scheduler events for those pods show `didn't have free ports for the requested pod ports`, leftover Nginx pods
+   are holding host ports 80, 443, and 9090 on the same nodes.
+
+4. Delete the cluster-scoped Nginx resources.
+
+   ```shell
+   kubectl delete validatingwebhookconfiguration ingress-nginx-admission --ignore-not-found
+   kubectl delete clusterrole ingress-nginx ingress-nginx-admission --ignore-not-found
+   kubectl delete clusterrolebinding ingress-nginx ingress-nginx-admission --ignore-not-found
+   kubectl delete ingressclass nginx --ignore-not-found
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   validatingwebhookconfiguration.admissionregistration.k8s.io "ingress-nginx-admission" deleted
+   clusterrole.rbac.authorization.k8s.io "ingress-nginx" deleted
+   clusterrole.rbac.authorization.k8s.io "ingress-nginx-admission" deleted
+   clusterrolebinding.rbac.authorization.k8s.io "ingress-nginx" deleted
+   clusterrolebinding.rbac.authorization.k8s.io "ingress-nginx-admission" deleted
+   ingressclass.networking.k8s.io "nginx" deleted
+   ```
+
+5. Delete the Nginx resources inside the `ingress-nginx` namespace. Do not delete the namespace itself or the
+   `default-ssl-certificate` Secret.
+
+   ```shell
+   kubectl delete daemonset ingress-nginx-controller --namespace ingress-nginx --ignore-not-found
+   kubectl delete service ingress-nginx-controller --namespace ingress-nginx --ignore-not-found
+   kubectl delete service ingress-nginx-controller-admission --namespace ingress-nginx --ignore-not-found
+   kubectl delete configmap ingress-nginx-controller --namespace ingress-nginx --ignore-not-found
+   kubectl delete serviceaccount ingress-nginx ingress-nginx-admission --namespace ingress-nginx --ignore-not-found
+   kubectl delete role ingress-nginx ingress-nginx-admission --namespace ingress-nginx --ignore-not-found
+   kubectl delete rolebinding ingress-nginx ingress-nginx-admission --namespace ingress-nginx --ignore-not-found
+   kubectl delete secret ingress-nginx-admission --namespace ingress-nginx --ignore-not-found
+   kubectl delete lease ingress-nginx-leader --namespace ingress-nginx --ignore-not-found
+   kubectl delete certificate ingress-nginx-admission --namespace ingress-nginx --ignore-not-found
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   daemonset.apps "ingress-nginx-controller" deleted
+   service "ingress-nginx-controller" deleted
+   service "ingress-nginx-controller-admission" deleted
+   configmap "ingress-nginx-controller" deleted
+   serviceaccount "ingress-nginx" deleted
+   serviceaccount "ingress-nginx-admission" deleted
+   role.rbac.authorization.k8s.io "ingress-nginx" deleted
+   role.rbac.authorization.k8s.io "ingress-nginx-admission" deleted
+   rolebinding.rbac.authorization.k8s.io "ingress-nginx" deleted
+   rolebinding.rbac.authorization.k8s.io "ingress-nginx-admission" deleted
+   secret "ingress-nginx-admission" deleted
+   lease.coordination.k8s.io "ingress-nginx-leader" deleted
+   certificate.cert-manager.io "ingress-nginx-admission" deleted
+   ```
+
+6. Delete the legacy `nginx-tls` Secret and `nginx` Certificate from each application namespace.
+
+   ```shell
+   for ns in hubble-system ui-system cp-system; do
+     kubectl delete certificate nginx --namespace "$ns" --ignore-not-found
+     kubectl delete secret nginx-tls --namespace "$ns" --ignore-not-found
+   done
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   certificate.cert-manager.io "nginx" deleted
+   secret "nginx-tls" deleted
+   certificate.cert-manager.io "nginx" deleted
+   secret "nginx-tls" deleted
+   certificate.cert-manager.io "nginx" deleted
+   secret "nginx-tls" deleted
+   ```
+
+7. Verify that the cluster-scoped Nginx resources are gone and that the `ingress-nginx` namespace and
+   `default-ssl-certificate` Secret are preserved.
+
+   ```shell
+   kubectl get validatingwebhookconfiguration ingress-nginx-admission
+   kubectl get clusterrole ingress-nginx ingress-nginx-admission
+   kubectl get clusterrolebinding ingress-nginx ingress-nginx-admission
+   kubectl get ingressclass nginx
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   Error from server (NotFound): validatingwebhookconfigurations.admissionregistration.k8s.io "ingress-nginx-admission" not found
+   Error from server (NotFound): clusterroles.rbac.authorization.k8s.io "ingress-nginx" not found
+   Error from server (NotFound): clusterrolebindings.rbac.authorization.k8s.io "ingress-nginx" not found
+   Error from server (NotFound): ingressclasses.networking.k8s.io "nginx" not found
+   ```
+
+   ```shell
+   kubectl get namespace ingress-nginx
+   kubectl get secret default-ssl-certificate --namespace ingress-nginx
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   NAME            STATUS   AGE
+   ingress-nginx   Active   42d
+
+   NAME                      TYPE                DATA   AGE
+   default-ssl-certificate   kubernetes.io/tls   2      42d
+   ```
+
+8. Once the leftover Nginx pods are removed, the scheduler places the Traefik DaemonSet pods, `configserver` reaches
+   **Ready**, and the remaining automatic cleanup completes on the next `configserver` start. Confirm that the Traefik
+   pods are running and that `configserver` is **Ready**.
+
+   ```shell
+   kubectl get pods --namespace ingress-traefik
+   kubectl get pod --namespace hubble-system --selector component=configserver
+   ```
+
+   ```bash hideClipboard title="Expected output"
+   NAME                               READY   STATUS    RESTARTS   AGE
+   traefik-ingress-controller-9dmzq   1/1     Running   0          3m
+   traefik-ingress-controller-tpwtf   1/1     Running   0          3m
+   traefik-ingress-controller-xz4jf   1/1     Running   0          3m
+
+   NAME                            READY   STATUS    RESTARTS   AGE
+   configserver-685fcc5b6d-t8f8h   1/1     Running   0          2m
+   ```
+
+9. Click **Save** to apply the changes.
+
+10. Verify the system pods are starting correctly by issuing the following command.
+
+    ```shell
+    kubectl get pods --namespace=hubble-system
+    ```
+
+    ```hideClipboard text
+      NAME                                   READY   STATUS    RESTARTS   AGE
+      auth-64b88d97dd-5z7ph                  1/1     Running   0          31m
+      auth-64b88d97dd-bchr7                  1/1     Running   0          31m
+      cloud-b8796c57d-5r7d9                  1/1     Running   0          31m
+      cloud-b8796c57d-xpbx7                  1/1     Running   0          31m
+      configserver-778bd7c4c9-mrtc6          1/1     Running   0          31m
+      event-5869c6bd75-2n7jl                 1/1     Running   0          31m
+      event-5869c6bd75-xnvmj                 1/1     Running   0          31m
+      foreq-679c7b7f6b-2ts2v                 1/1     Running   0          31m
+      hashboard-9f865b6c8-c52bb              1/1     Running   0          31m
+      hashboard-9f865b6c8-rw6p4              1/1     Running   0          31m
+      hutil-54995bfd6b-sh4dt                 1/1     Running   0          31m
+      hutil-54995bfd6b-tlqbj                 1/1     Running   0          31m
+      memstore-7584fdd94f-479pj              1/1     Running   0          31m
+      mgmt-68c8dbfd58-8gxsx                  1/1     Running   0          31m
+      mongo-0                                2/2     Running   0          29m
+      mongo-1                                2/2     Running   0          30m
+      mongo-2                                2/2     Running   0          30m
+      msgbroker-7d7655559b-zxxfq             1/1     Running   0          31m
+      oci-proxy-6fdf95885f-qw58g             1/1     Running   0          31m
+      reloader-reloader-845cfd7fdf-2rq5t     1/1     Running   0          31m
+      spectrocluster-5c4cb4ff58-658w9        1/1     Running   0          31m
+      spectrocluster-5c4cb4ff58-fn8g5        1/1     Running   0          31m
+      spectrocluster-5c4cb4ff58-zvwfp        1/1     Running   0          31m
+      spectrocluster-jobs-5b54bf6bcf-mtgh8   1/1     Running   0          31m
+      system-6678d47874-464n6                1/1     Running   0          31m
+      system-6678d47874-rgn55                1/1     Running   0          31m
+      timeseries-6564699c7d-b6fnr            1/1     Running   0          31m
+      timeseries-6564699c7d-hvv94            1/1     Running   0          31m
+      timeseries-6564699c7d-jzmnl            1/1     Running   0          31m
+      user-866c7f779d-drf9w                  1/1     Running   0          31m
+      user-866c7f779d-rm4hw                  1/1     Running   0          31m
+    ```

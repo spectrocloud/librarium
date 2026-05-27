@@ -38,6 +38,8 @@ operational.
   app="Palette Management Appliance"
 />
 
+<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+
 ## Upgrade Palette
 
 <PartialsComponent

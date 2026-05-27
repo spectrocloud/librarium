@@ -1,0 +1,13 @@
+---
+partial_category: self-hosted
+partial_name: nginx-values-hygiene
+---
+
+:::info
+
+After upgrading {props.edition} to 4.9.a, the `ingress.type` and `ingress.ingress.internal` fields have been removed
+from the Helm chart. If you have either field in your `values.yaml` override file, the upgrade ignores them silently —
+no action is required for the upgrade to succeed. We recommend removing both fields from your override file as
+recommended hygiene.
+
+:::

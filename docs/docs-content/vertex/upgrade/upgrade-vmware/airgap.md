@@ -49,6 +49,8 @@ Palette VerteX upgrade.
 
 - A diff or text comparison tool of your choice.
 
+<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
+
 ## Upgrade
 
 :::info

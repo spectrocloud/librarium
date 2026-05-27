@@ -49,6 +49,10 @@ Palette upgrade.
   the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
   version required for your Palette installation.
 
+<PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette" />
+
+<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+
 ## Upgrade
 
 1.  Log in to the Linux environment from which you can access your self-hosted airgap Palette instance.
@@ -404,10 +408,9 @@ Palette upgrade.
     :::
 
     The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces
-    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system`, and `ui-system` are in the **Ready**
-    status.
+    `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` are in the **Ready** status.
 
-    <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+    <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette" />
 
 ## Validate
 
@@ -433,11 +436,11 @@ Palette upgrade.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|ingress-nginx|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|jet-system|ui-system)\s'
    ```
 
-   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`,
-   `ingress-nginx`, `jet-system`, and `ui-system` namespaces. All deployments should have the status `Running`.
+   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`,
+   and `ui-system` namespaces. All deployments should have the status `Running`.
 
    ```shell
    cp-system        spectro-cp-ui-689984f88d-54wsw             Running
@@ -470,9 +473,6 @@ Palette upgrade.
    hubble-system    timeseries-7865bc9c56-sxmgb                Running
    hubble-system    user-5c9f6c6f4b-9dgqz                      Running
    hubble-system    user-5c9f6c6f4b-hxkj6                      Running
-   ingress-nginx    ingress-nginx-controller-m5z54             Running
-   ingress-nginx    ingress-nginx-controller-qsf6m             Running
-   ingress-nginx    ingress-nginx-controller-w64pz             Running
    ingress-traefik  traefik-ingress-controller-9dmzq           Running
    ingress-traefik  traefik-ingress-controller-tpwtf           Running
    ingress-traefik  traefik-ingress-controller-xz4jf           Running

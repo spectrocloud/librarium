@@ -30,6 +30,8 @@ Palette VerteX upgrade.
 - Access to the Palette VerteX system console.
 - A diff or text comparison tool of your choice.
 
+<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
+
 ## Upgrade
 
 1. Log in to the Palette VerteX system console.
