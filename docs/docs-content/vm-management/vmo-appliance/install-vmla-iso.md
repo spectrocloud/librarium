@@ -82,9 +82,42 @@ Ensure you are selecting the correct disk. The installation process will complet
 
 2. You will be prompted to log in. Enter your username and password to log in.
 
-3. On the **Network interfaces** card, navigage to **Bridges** and click **Create**.
+3. On the **Network interfaces** card, navigage to **Bonds** and click **Create**.
 
-4. **MAGIC**
+4. Fill out **Create Bond**, and click **Confirm**.  
+
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Name         | Enter name for the bond.                                |
+   | Bond type    | Select **Static** or **DHCP** for IP address settings. For example, `bond0`.  |
+   | Member interfaces | Select one or more NICs for the bond.              |
+   | Bonding mode | Select the bonding mode for the bond. This should match your physical switch port configuration. |
+   | Link monitoring interval | Select time in milliseconds.                |
+   | MTU          | Leave default value or adjust to 9000 for jumbo frames  |
+   | DNS         | Enter one or more DNS server IP addresses               |
+   | IP Address (only with Static bond) | Enter the IP address for the bond |
+   | Subnet mask (only with Static bond)| Enter the subnet mask for the bond |
+   | Gateway (only with Static bond) | Enter the gateway IP address for the bond|
+
+   This change may result in losing connectivity to the Local UI. 
+
+5. On the **Network interfaces** card, navigage to **Bridges** and click **Create**.
+
+6. Fill out **Create Bond**, and click **Confirm**.  
+
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Name         | Enter name for the bridge.                                |
+   | Member interfaces | Select one or more bonds for the bridge.              |
+   | Config type    | Select **Static** or **DHCP** for IP address settings. For example, `br0`. |
+   | MTU          | Leave default value or adjust to 9000 for jumbo frames  |
+   | DNS         | Enter one or more DNS server IP addresses               |
+   | IP Address (only with Static bridge) | Enter the IP address for the bridge |
+   | Subnet mask (only with Static bridge)| Enter the subnet mask for the bridge |
+   | Gateway (only with Static bridge) | Enter the gateway IP address for the bridge|
+
+   This change may result in losing connectivity to the Local UI. 
+
 
 ## Creating VM Launchpad cluster
 
@@ -102,7 +135,7 @@ Ensure you are selecting the correct disk. The installation process will complet
    | Cluster name | Name of the cluster.                                    |
    | Tags         | Key-value pairs to provide metadata about your cluster. |
 
-5. The default **VMO Appliance full stack** profile will load. The following table explains what each pack in the profile is for. 
+5. The default **VMO Appliance full stack** profile will load. The following table explains what each pack in the profile is for.    After reviewing the cluster profile, click **Next**.
 
    | Component |   Pack Name    | Purpose |
    |-----------|---------|---------|
@@ -131,12 +164,141 @@ Ensure you are selecting the correct disk. The installation process will complet
    | **KubeVirt** | `virtual-machine-orchestrator-v<version>`   |Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
    | **CDI** | `virtual-machine-orchestrator-v<version>`   |Containerized Data Importer. Handles disk image uploads, imports, and clones. |
    
-   After you finish configuring the cluster profile, click **Next**.
+6. Fill out the **Profile Config** page, and click **Next**.
 
-6. If your selected cluster profile has Cluster Profile Variables,
-   you are prompted to enter the values for those profile variables. Variables with default values are auto-populated.
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Pod CIDR         | Leave the default value or enter a CIDR range for Kubernetes Pods network.|
+   | Service CIDR | Leave the default value or enter a CIDR range for Kubernetes Services network.|
+   | Ubuntu Pro Token (Optional) | Leave blank or enter an Ubuntu Pro token value|
+   | Reserved CPUS for kubelet and system | Leave the default value or to set which CPUs should be reserved for kubelet and OS use. |
+   | CSI Placement Count (Optional) | Leave the default or enter the number of replicas to be created for CSI volumes across nodes.|
+   | L2 Pod Announcement Interface | Enter the interface to send ARP pod Announcements on. For exmaple, `br0`.|
+   | OCI Pack Registry Username | Leave the default value or enter the username for the OCI Pack Registry.|
+   | Platform CA Certificate| Enter the base64 encoded value for your CA certificate. |
+   | Platform CA Private Key | Enter the base64 encoded value for your private key.|
+   | OIDC Login Username | Leave the default value or enter a username for the cluster admin OIDC login.|
+   | OIDC Login Email | Leave the default value or enter the email address to use for OIDC login. |
+   | Local Admin User Name | Leave the default value or enter the username to use for the local admin account. |
+   | VLAN range for VMs | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN. |
+   | Cluster runs on br0 (Optional) | Leave default or toggle to allow the cluster to run on `br0`. |
+   | VLANs on top of br0 | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN, and must always be included.|
+   | Victoria Metrics Data Retention Period | Leave the default or enter an appropriate value in (h)ours, (d)days, (w)eeks, months (there is no character value) or (y)ears. Minimum value is `24h`.  |
+   | Victoria Metrics Volume Storage Size (Optional) | Leave the default value or enter the size in gigabytes (`Gi`).|
+   | MetalLB interface | Leave the default value or enter the NIC that uses L2 advertisements.|
+   | MetalLB IP Address | Enter the IP address that the MetalLB will use.|
+   | Default Keycloak Admin Password | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
+   | Local Admin Password | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
+   | OIDC Login Password | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
+   | OCI Pack Registry Password | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
+   | Default Keycloak Admin Username (Optional) | Leave the default value or enter a username for the Keycloak admin login.|
+   | listorNodeInterface | Leave the default value or enter the NIC which node network interface to use for replication. |
+   | Storage Pool Drive | Leave the default value or enter the storage path to use.|
+  
+   <details>
 
-   Enter the values for the profile variables and click **Next**.
+      <summary>Generate Your own Self-Signed Certificates</summary>
+
+   If you do not have a certificate server you can generate your own self-signed certificates.
+
+   <Tabs>
+
+   <TabItem label="Mac" value="mac">
+
+   1. Open a terminal window and use the following command to generate a private key.
+
+      ```bash
+      openssl genrsa -out ca.key 4096
+      ```
+
+      This generates the file `ca.key`. This will be the private key and should be kept in a secure location.
+
+   2. Generate a self-signed CA certificate.
+
+      ```bash
+      openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+      ```
+
+      This generates the file `ca.crt`. This will be the CA certificate in PEM format.
+
+   4. You can generate the Base64 values by using the following commands.
+
+      ```bash
+      base64 -i ca.crt -o ca.crt.b64
+      base64 -i ca.key -o ca.key.b64
+      ```
+
+      Alternatively, if you want to print the base64 output to screen use the following commands.
+
+      ```bash
+      base64 < ca.crt
+      base64 < ca.key
+      ```
+
+   </TabItem>
+
+   <TabItem label="Linux" value="linux">
+
+   1. Open a terminal window and use the following command to generate a private key.
+
+      ```bash
+      openssl genrsa -out ca.key 4096
+      ```
+
+      This generates the file `ca.key`. This will be the private key and should be kept in a secure location.
+
+   2. Generate a self-signed CA certificate.
+
+      ```bash
+      openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+      ```
+      This generates the file `ca.crt`. This will be the CA certificate in PEM format.
+
+   4. You can generate the Base64 values by using the following commands. The `-w 0` flag disables line wrapping.
+
+      ```bash
+      base64 -w 0 ca.crt > ca.crt.b64
+      base64 -w 0 ca.key -o ca.key.b64
+      ```
+
+
+      Alternatively, if you want to print the base64 output to screen use the following commands. The `-w 0` flag disables line wrapping.
+
+      ```bash
+      base64 -w 0 < ca.crt
+      base64 -w 0 < ca.key
+      ```
+
+   </TabItem>
+
+   <TabItem label="Windows" value="windows">  
+
+   1. Open a terminal window and use the following command to generate a private key.
+
+      ```cmd
+      openssl genrsa -out ca.key 4096
+      ```
+
+      This generates the file `ca.key`. This will be the private key and should be kept in a secure location.
+
+   2. Generate a self-signed CA certificate.
+
+      ```cmd
+      openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+      ```
+
+      This generates the file `ca.crt`. This will be the CA certificate in PEM format.
+
+   4. You can generate the Base64 values by using the following commands. 
+
+      ```PowerShell
+      [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.crt"))
+      [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.key"))
+      ```
+
+   </TabItem>
+   </Tabs>
+   </details>
 
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
    specify an NTP server and an SSH public key.
