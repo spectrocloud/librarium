@@ -821,7 +821,7 @@ To use your Edge host as part of a cluster, you must create an Edge Native clust
 ### Prerequisites
 
 - A Palette account with the `clusterProfile.create` permission. Refer to our
-  [Cluster Profile Permissions](/user-management/palette-rbac/project-scope-roles-permissions/#cluster-profile/)
+  [Cluster Profile Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference guide for more information about roles and permissions.
 
 ### Enablement
