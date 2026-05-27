@@ -273,7 +273,22 @@ often overlooked. Some common offenders are listed below.
 
 ## Capitalization
 
+Capitalize the first word of a sentence and all proper nouns, such as product names. 
+
+| Good ✅| Bad ❌|
+| ------| ------|
+| A common container orchestration platform used in the industry is _Kubernetes_.| a common container orchestration platform used in the industry is _kubernetes_.|
+| Navigate to the _Palette_ console.| Navigate to the _palette_ console.|
+
 ### Headings
+
+Avoid using an acronym for the first time in a title or heading unless it is a keyword you need to place in the title or heading for Search Engine Optimization (SEO). If the first use of the acronym is in a title or heading, introduce the acronym (in parentheses, following the spelled-out term) in the following body text. Aim for descriptive headings and titles to help users navigate the page. From a user perspective, it's easier to navigate between pages and sections of a page if the headings and titles are unique.
+
+- If the heading is more in line with a task, such as our how-to docs and tutorials, start with the plain form of the task’s base form: _**Migrate** to Palette_.
+
+- If the heading is conceptual or non-task-based, then start with a noun: _**Migration** to Palette_.
+
+- Do not use verbs ending with _-ing_ (gerund).
 
 ### Headline Style
 
