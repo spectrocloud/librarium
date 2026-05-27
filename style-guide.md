@@ -180,7 +180,7 @@ sentence, use the verb that makes the content the most clear.
 | "_Select_ the green button" or "_Choose_ the green button." | "_Click_ the green button."       |
 
 > [!NOTE]
-
+>
 > “Run” in the context of “run a program” or “run a command” is widely understood and is generally considered inclusive.
 
 ## Real-World Names and Locations
