@@ -27,12 +27,6 @@ This guide walks you through accessing VM Launchpad, logging in, viewing the das
     2. Enter the local admin username (default: `admin`) and password.
     3. The password is typically set via the `LOCAL_ADMIN_PASSWORD` environment variable during initial deployment.
 
-    :::tip
-    
-    Local auth is intended for Day 0 bootstrap. Configure Keycloak for production use. See [Local Auth](./user/access-management/local-auth.md) for details.
-
-    :::
-
     </TabItem>
 
     <TabItem label="OIDC using Keycloak" value="keycloak">
@@ -113,7 +107,7 @@ Select a template or golden image, then set the VM **name** and **namespace**. T
 
 :::tip
 
-Use the YAML drawer to inspect or edit the full VirtualMachine spec before creating. For a detailed walkthrough of each wizard step, see [Creating VMs](./user/virtual-machines/creating.md).
+Use the YAML drawer to inspect or edit the full VirtualMachine spec before creating. For a detailed walkthrough of each wizard step, see [Creating VMs](./virtual-machines/creating.md).
 
 :::
 
