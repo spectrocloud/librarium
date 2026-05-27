@@ -193,5 +193,7 @@ regardless if clusters are deployed using the template. For more information, re
 
 For a full end-to-end example that includes creating a maintenance policy, cluster template, and deploying clusters,
 refer to the
-[Standardize Cluster Provisioning and Maintenance with Cluster Templates](../../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates using the Palette UI](../../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+or the
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates using Terraform](../../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-terraform.md)
 tutorial.

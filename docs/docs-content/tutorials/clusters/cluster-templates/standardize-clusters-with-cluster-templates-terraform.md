@@ -36,7 +36,7 @@ maintenance policy, and deploy clusters from it.
 
 Navigate to the **terraform/cluster-templates-tf** directory.
 
-```shell
+```bash
 cd terraform/cluster-templates-tf
 ```
 
@@ -380,8 +380,8 @@ aws_worker_nodes = {
 }
 ```
 
-Issue the `plan` command to preview all resources. This also confirms that Terraform can authenticate to Palette and
-that your project exists.
+Issue the `terraform plan` command to preview all resources. This also confirms that Terraform can authenticate to
+Palette and that your project exists.
 
 ```bash
 terraform plan
@@ -417,7 +417,7 @@ Plan: 5 to add, 0 to change, 0 to destroy.
 If `Read complete` appears in the output, Terraform successfully authenticated and found your Palette project. A plan of
 `5 to add` confirms all resources are ready to be created.
 
-Issue the `apply` command to create all resources in Palette.
+Issue the `terraform apply` command to create all resources in Palette.
 
 ```bash
 terraform apply -auto-approve
@@ -671,17 +671,17 @@ resource "spectrocloud_cluster_profile" "azure_profile_v110" {
 
 Issue the `terraform plan` command to preview the changes. Terraform reports one new resource to add.
 
-```shell
+```bash
 terraform plan
 ```
 
-```text hideClipboard title="Expected output"
+```bash hideClipboard title="Expected output"
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
 
 Apply the changes to create the new profile version in Palette.
 
-```shell
+```bash
 terraform apply -auto-approve
 ```
 
@@ -692,7 +692,7 @@ spectrocloud_cluster_profile.aws_profile_v110[0]: Creation complete after 2s [id
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-### Validate
+### Validate the New Profile Version
 
 In Palette, navigate to the left main menu and select **Profiles**. Select `tf-cluster-template-profile-aws` from the
 profile list. Select the version drop-down beside the profile name and confirm that version `1.1.0` now appears
@@ -773,13 +773,13 @@ update_template_profile_version = true
 
 Issue the `terraform plan` command to preview the changes.
 
-```shell
+```bash
 terraform plan
 ```
 
 Terraform reports one in-place update to the cluster template resource.
 
-```text hideClipboard title="Expected output"
+```bash hideClipboard title="Expected output"
 # spectrocloud_cluster_config_template.aws_template[0] will be updated in-place
   ~ resource "spectrocloud_cluster_config_template" "aws_template" {
       ...
@@ -790,7 +790,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 Apply the changes to update the cluster template in Palette.
 
-```shell
+```bash
 terraform apply -auto-approve
 ```
 
@@ -871,13 +871,13 @@ upgrade_now_timestamp = "2026-05-12T14:30:00Z"
 
 Issue the `terraform plan` command to preview the changes.
 
-```shell
+```bash
 terraform plan
 ```
 
 Terraform reports one update to the cluster template resource.
 
-```text hideClipboard title="Expected output"
+```bash hideClipboard title="Expected output"
 # spectrocloud_cluster_config_template.aws_template[0] will be updated in-place
   ~ resource "spectrocloud_cluster_config_template" "aws_template" {
       + upgrade_now = "2026-05-12T14:30:00Z"
@@ -889,7 +889,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 Apply the changes to trigger the upgrade.
 
-```shell
+```bash
 terraform apply -auto-approve
 ```
 
@@ -919,14 +919,14 @@ to issue kubectl commands against the host cluster.
 
 Open a terminal window and set the `KUBECONFIG` environment variable to point to the file you downloaded.
 
-```shell
+```bash
 export KUBECONFIG=<path-to-kubeconfig>
 ```
 
 Forward the Kubecost UI to your local machine. The Kubecost dashboard is not exposed externally by default. The
 following command makes it available locally on port `9090`.
 
-```shell
+```bash
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
 ```
 
@@ -948,17 +948,17 @@ order: clusters first, followed by the cluster template, profiles, and finally t
 
 Issue `terraform plan -destroy` to preview the resources that Terraform removes.
 
-```shell
+```bash
 terraform plan -destroy
 ```
 
-```text hideClipboard title="Expected output"
+```bash hideClipboard title="Expected output"
 Plan: 0 to add, 0 to change, 6 to destroy.
 ```
 
 Apply the destroy to remove all resources.
 
-```shell
+```bash
 terraform destroy -auto-approve
 ```
 
