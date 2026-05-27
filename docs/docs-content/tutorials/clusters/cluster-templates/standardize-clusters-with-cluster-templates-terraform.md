@@ -323,16 +323,28 @@ terraform test
 ```
 
 ```bash hideClipboard title="Expected output"
+tests/aws-replace.tftest.hcl... in progress
   run "verify_aws"... pass
+tests/aws-replace.tftest.hcl... tearing down
 tests/aws-replace.tftest.hcl... pass
+tests/aws.tftest.hcl... in progress
   run "verify_aws"... pass
+  run "verify_profile_v110_planned"... pass
+  run "verify_template_updated_to_v110"... pass
+tests/aws.tftest.hcl... tearing down
 tests/aws.tftest.hcl... pass
+tests/azure-replace.tftest.hcl... in progress
   run "verify_azure"... pass
+tests/azure-replace.tftest.hcl... tearing down
 tests/azure-replace.tftest.hcl... pass
+tests/azure.tftest.hcl... in progress
   run "verify_azure"... pass
+  run "verify_profile_v110_planned"... pass
+  run "verify_template_updated_to_v110"... pass
+tests/azure.tftest.hcl... tearing down
 tests/azure.tftest.hcl... pass
 
-Success! 4 passed, 0 failed.
+Success! 8 passed, 0 failed.
 ```
 
 Open `terraform.tfvars`. Set `deploy-aws` to `true` and replace each `REPLACE ME` placeholder with the correct value for
@@ -376,7 +388,11 @@ terraform plan
 ```
 
 ```bash hideClipboard title="Expected output"
+data.spectrocloud_registry.community_registry: Reading...
 data.spectrocloud_project.current: Reading...
+data.spectrocloud_cloudaccount_aws.account[0]: Reading...
+data.spectrocloud_registry.public_registry: Reading...
+data.spectrocloud_cloudaccount_aws.account[0]: Read complete after 0s [id=<account-id>]
 data.spectrocloud_project.current: Read complete after 0s [id=<project-id>]
 ...
 
