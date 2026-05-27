@@ -48,11 +48,18 @@ Explore the tutorials below to learn how to deploy Palette clusters in public cl
       url: "/tutorials/clusters/pcg/deploy-app-pcg/",
     },
     {
-      title: "Standardize Clusters with Cluster Templates",
+      title: "Standardize Clusters with Cluster Templates using the Palette UI",
       description:
-        "Learn how to standardize cluster provisioning, apply maintenance windows, and roll out upgrades using cluster templates.",
+        "Learn how to standardize cluster provisioning, apply maintenance windows, and roll out upgrades using cluster templates and the Palette UI.",
       buttonText: "Learn more",
       url: "/tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui/",
+    },
+    {
+      title: "Standardize Clusters with Cluster Templates using Terraform",
+      description:
+        "Learn how to standardize cluster provisioning, apply maintenance windows, and roll out upgrades using cluster templates and Terraform.",
+      buttonText: "Learn more",
+      url: "/tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-terraform/",
     },
   ]}
 />
