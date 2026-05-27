@@ -191,8 +191,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Local UI](../clusters/edge/local-ui/local-ui.md). NTP values used during cluster creation override the servers
   configured on individual hosts.
 
-#### Improvements
-
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8716 -->
@@ -248,8 +246,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - Crossplane version 0.29.3 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
-
-#### Improvements
 
 ### Docs and Education
 
