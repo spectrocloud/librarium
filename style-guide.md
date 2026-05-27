@@ -1,12 +1,61 @@
 <!-- vale off -->
 
-# Overview
-
 This document is maintained by the Spectro Cloud Documentation Team of writers chartered to set and maintain
 readability, usage, correctness, and consistency for Spectro Cloud’s documentation content.
 
 For reference materials not covered in this guide, defer to the
 [Google Developer Documentation Style Guide](https://developers.google.com/style).
+
+- [Inclusive English for a Global Audience](#inclusive-english-for-a-global-audience)
+  - Simplified English
+  - Voice
+    - Active Voice
+    - Passive Voice
+  - Present Tense
+  - Simplicity Assumption
+  - Ableist Language
+  - Inclusive Software Interactions
+  - Real-World Names and Locations
+  - Gender
+  - Contractions
+  - Wordiness
+    - Angle Brackets (>)
+    - UI Elements as Verbs
+  - Latin Phrases
+- Grammar Guidance
+  - American Spelling
+  - Capitalization
+    - Headings
+    - Headline Style
+    - Acronyms and Initialisms
+  - Parentheses
+    - Clarifying Values or Examples
+    - List Items
+    - Optional Steps
+    - Parenthetical Expressions and Jargon
+    - Single and Plural Subjects
+  - Commas
+  - Prepositions
+  - Dialogue
+  - Numbers
+  - Lists
+  - Colons
+  - Computer Resources (Units of Measurement)
+- Other Style Choices
+  - Future Features
+  - Directionals
+  - Emoticons
+  - Text Formatting
+    - Commands & Parameters
+      - Command Output
+        - Lengthy Output
+    - Product UI Naming
+- Documentation UI Components
+  - Markdown Tables
+  - Admonitions
+  - Supplemental Information
+  - Next Steps
+  - Resources List
 
 # Inclusive English for a Global Audience
 
@@ -70,11 +119,9 @@ Use the passive voice when:
 | The node must be drained before the upgrade can proceed. | Emphasis on receiver of actor (what needs to be done, not who does it)            |
 | A new token is generated automatically.                  | Focus is on outcome, not actor                                                    |
 
-> [!TIP]
-> Below are some great resources to help you differentiate between active and passive voice:
-> 
+> [!TIP] Below are some great resources to help you differentiate between active and passive voice:
+>
 > - [Active and Passive Voice Rules - Josh Jagran](https://www.jagranjosh.com/articles/active-and-passive-voice-rules-with-examples-1748263067-1)
-> 
 > - [How to Move from Passive to Active Voice in Your Business Writing - For Dummies](https://www.dummies.com/article/business-careers-money/careers/general-careers/move-passive-active-voice-business-writing-242741/)
 
 ## Present Tense
@@ -127,8 +174,8 @@ sentence, use the verb that makes the content the most clear.
 | "_Go_ to section 5" or "_Navigate_ to section 5."           | "_Jump_ to section 5."            |
 | "_Select_ the green button" or "_Choose_ the green button." | "_Click_ the green button."       |
 
-> [!NOTE]
-> “Run” in the context of “run a program” or “run a command” is widely understood and is generally considered inclusive.
+> [!NOTE] “Run” in the context of “run a program” or “run a command” is widely understood and is generally considered
+> inclusive.
 
 ## Real-World Names and Locations
 
@@ -143,19 +190,80 @@ and names. The Google Style Guide has a great list of
 
 ## Gender
 
+Use gender-neutral pronouns. Avoid the pronouns _he_, _him_, _his_, _she_, or _her_. The same applies to _he/she_ or
+_(s)he_ or other such punctuational approaches. Use the singular _they_. Better yet, engage the reader using _you_ or
+_your_, as shown in the second example below.
+
+| Good ✅                                                                                                                       | Bad ❌                                                                                                                      |
+| ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| In previous outages, one of the operators did not follow best practices. They merged source code directly to the main branch. | In previous outages, one of the operators did not follow best practices. He merged source code directly to the main branch. |
+| You can create and deploy custom images to most infrastructure providers using various tools.                                 | The user can create and deploy custom images to most infrastructure providers using various tools.                          |
+
 ## Contractions
+
+Avoid contractions (using an apostrophe is used to combine two words into one). For example, words such as _they’ve_ and
+_can't_ may be difficult for non-native English speakers to comprehend. Therefore, it is recommended to not use them.
+
+| Good ✅                                                                                                         | Bad ❌                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| You cannot scale down the number of nodes in a PCG.                                                             | You can’t scale down the number of nodes in a PCG.                                                            |
+| If you are using a built-in search feature, ensure it is case-insensitive.                                      | If you're using a built-in search feature, ensure it's case-insensitive.                                      |
+| Now that you have deployed a MAAS cluster, you can start developing and deploying applications to your cluster. | Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. |
 
 ## Wordiness
 
-### Angle Brackets (>)
+To reduce the length of sentences and make documentation more concise, use the following tactics when possible.
+
+### Angle Brackets (`>`)
+
+Angle brackets are a common documentation strategy for combining several small, related steps when there is little room
+for misinterpretation or confusion, allowing the reader to focus on what they need to do rather than get bogged down by
+transitional words (e.g. _then_, _next_). Use only if the elements are on the same screen or are within close proximity
+of one another.
+
+If the UI element does not have any text associated with it (e.g. _main menu_, _drop-down menu_) do not use angle
+brackets.
+
+| Good ✅                                                                  | Bad ❌                                                                           |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| On the cluster **Overview** tab, select **Settings > Cluster Settings**. | On the cluster **Overview** tab, select **Settings**, then **Cluster Settings**. |
+| From the left main menu, select **Cluster Profiles**.                    | Navigate to left main menu **> Cluster Profiles**.                               |
 
 ### UI Elements as Verbs
 
+Allow UI elements to be incorporated as verbs where appropriate. Do not substitute a UI element if it results in a
+grammatically incorrect sentence or causes you to change the text of the UI element.
+
+| Good ✅                                                                       | Bad ❌                                                                                                                                            |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Save** your changes.                                                        | Click **Save** to save your changes.                                                                                                              |
+| After you are finished modifying a profile layer, select **Confirm Updates**. | - After you are finished modifying a profile layer, Confirm Updates.<br>- After you are finished modifying a profile layer, Confirm your Updates. |
+
 ## Latin Phrases
+
+Avoid using the following Latin phrases, as their meaning is not understood by all.
+
+- _e.g_ (exempli gratia) - “For example”
+
+- _i.e._ (id est) - “In other words”
 
 # Grammar Guidance
 
+Like our users, Spectro Cloud is made up of individuals from a wide range of backgrounds. As a U.S.-based company, we
+use American English for our documentation, which has its own spelling and punctuation variations; however, there are
+certain exceptions, such as the Oxford comma. The following sections serve as a quick reference for certain grammar
+rules.
+
 ## American Spelling
+
+Always use American Spelling. While certain spelling variations are well known (e.g. _grey_ vs. _gray_), others are
+often overlooked. Some common offenders are listed below.
+
+- _Afterward_ (not _afterwards_)
+
+- _Forward_ and _backward_ (not _forwards_ and _backwards_)
+
+- _Toward_ (not _towards_)
 
 ## Capitalization
 
