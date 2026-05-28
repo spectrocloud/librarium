@@ -83,7 +83,7 @@ tags: ["release-notes"]
   Palette and Palette VerteX management plane services has been fully removed. Traefik, introduced in 4.8.47, is now the
   sole management cluster ingress controller. The management plane removes leftover Nginx Deployments, Services,
   Role-Based Access Control (RBAC), `IngressClass`, and the `nginx-tls` Secret automatically at startup, so most
-  installations require no manual cleanup. Enterprise installations keep the `ingress-nginx` namespace and the
+  installations require no manual cleanup. Self-hosted installations keep the `ingress-nginx` namespace and the
   `default-ssl-certificate` Secret in place because the cert-bridge introduced in 4.8.c continues to copy the uploaded
   Transport Layer Security (TLS) certificate from that Secret into Traefik.
 
