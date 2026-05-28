@@ -86,7 +86,7 @@ Take the following steps to install the Palette agent on an Edge host for the fi
 
   ```shell
   sudo apt-get update && \
-  sudo apt-get install -y --no-install-recommends \
+  sudo apt-get install --yes --no-install-recommends \
     bash \
     jq \
     zstd \
@@ -339,14 +339,15 @@ Take the following steps to install the Palette agent on an Edge host for the fi
 
 3. (Proxy only) For Edge hosts that use proxies to access the internet, export the proxy configurations in your current
    terminal session. We recommend exporting the variables both in uppercase and lowercase to ensure compatibility.
-   Replace `<httpProxyAddress>` and `<httpsProxyAddress>` with the address and port to your HTTP and HTTPS proxy
+   Replace `<http-proxy-address>` and `<https-proxy-address>` with the address and port of your HTTP and HTTPS proxy
    servers, respectively.
 
    ```shell
    export http_proxy=<httpProxyAddress>
-   export https_proxy=<httpsProxyAddress>
-   export HTTP_PROXY=<httpProxyAddress>
-   export HTTPS_PROXY=<httpsProxyAddress>
+  export http_proxy=<http-proxy-address>
+  export https_proxy=<https-proxy-address>
+  export HTTP_PROXY=<http-proxy-address>
+  export HTTPS_PROXY=<https-proxy-address>
    ```
 
 4. Issue the command below to create the `user-data` file and configure your host declaratively.
@@ -614,14 +615,17 @@ building a custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as wel
 
 2. (Proxy only) For Edge hosts that use proxies to access the internet, export the proxy configurations in your current
    terminal session. We recommend exporting the variables both in uppercase and lowercase to ensure compatibility.
-   Replace `<httpProxyAddress>` and `<httpsProxyAddress>` with the address and port to your HTTP and HTTPS proxy
+   Replace `<http-proxy-address>` and `<https-proxy-address>` with the address and port of your HTTP and HTTPS proxy
    servers, respectively.
 
    ```shell
    export http_proxy=<httpProxyAddress>
    export https_proxy=<httpsProxyAddress>
    export HTTP_PROXY=<httpProxyAddress>
-   export HTTPS_PROXY=<httpsProxyAddress>
+  export http_proxy=<http-proxy-address>
+  export https_proxy=<https-proxy-address>
+  export HTTP_PROXY=<http-proxy-address>
+  export HTTPS_PROXY=<https-proxy-address>
    ```
 
 3. Download the airgap agent installation package and save it as a TAR file. Replace `<architecture>` with the
@@ -786,6 +790,8 @@ To verify the Palette agent was installed, you can either access
 [Local UI](../../clusters/edge/local-ui/host-management/access-console.md) using the IP address of your Edge host or
 issue `palette-agent` commands directly against the host.
 
+#### Edge Host Terminal
+
 1. In your terminal, SSH into the Edge host, substituting the placeholders with the necessary values.
 
    ```shell
@@ -917,8 +923,8 @@ for guidance.
 
 ## Uninstall Palette Agent
 
-The `palette-agent uninstall` command removes the Palette agent and all associated resources from an Edge host. The
-uninstall removes agent binaries, systemd services, Kubernetes components, and runtime state, but some artifacts from
+The `palette-agent uninstall` command removes the Palette agent. The
+uninstall process removes agent binaries, systemd services, Kubernetes components, and runtime state, but some artifacts from
 the agent or the Kubernetes distribution it provisioned may remain on the filesystem.
 
 The following table lists the available flags for `palette-agent uninstall`.
@@ -927,7 +933,7 @@ The following table lists the available flags for `palette-agent uninstall`.
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--force`              | Skip the interactive confirmation prompt. Required for non-interactive or automated use.                                                                                                                                                                                            |
 | `--dry-run`            | Display every step that would run without modifying anything on the host.                                                                                                                                                                                                           |
-| `--stylus-root <path>` | Specify the directory where the Palette agent was originally installed. By default, the agent reads this value from `/etc/spectro/environment`. Use this flag if the environment file is missing or corrupt. Most installations use the default location and do not need this flag. |
+| `--stylus-root <path>` | Specify the directory where the Palette agent was originally installed. By default, the Palette agent reads this value from `/etc/spectro/environment`. Use this flag if the environment file is missing or corrupt. Most installations use the default location and do not need this flag. |
 
 ### Prerequisites
 
@@ -954,7 +960,7 @@ The following table lists the available flags for `palette-agent uninstall`.
    ```
 
 3. Issue the uninstall command as root. Without flags, the command prompts for confirmation before making changes. Refer
-   to the [table](#uninstall-palette-agent) for additional information on flag usage.
+   to the [table above](#uninstall-palette-agent) for additional information on flag usage.
 
    ```shell
    sudo palette-agent uninstall
@@ -1017,7 +1023,7 @@ To remove the Edge host from Palette:
    ```
 
 3. Issue the uninstall command as root. Without flags, the command prompts for confirmation before making changes. Refer
-   to the [table](#uninstall-palette-agent) for additional information on flag usage.
+   to the [table above](#uninstall-palette-agent) for additional information on flag usage.
 
    ```shell
    sudo palette-agent uninstall
@@ -1151,7 +1157,7 @@ re-exported or files extracted, depending on your management mode.
     export TOKEN=<your-palette-registration-token>
     ```
 
-3.  (Optional) The `user-data` file remains on the host after uninstalling the Palette agent. View the existing file and
+3.  (Optional) The `user-data` file remains on the host after uninstalling the Palette agent. Review the existing file and
     make changes if needed. Refer to the [central management mode install steps](#install-palette-agent) for an example
     user data configuration. For a full list of parameters and arguments, refer to
     [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md).
@@ -1244,7 +1250,7 @@ re-exported or files extracted, depending on your management mode.
    sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
    ```
 
-2. The file `/var/lib/spectro/userdata` remains on the host after uninstalling the Palette agent. View the existing file
+2. The file `/var/lib/spectro/userdata` remains on the host after uninstalling the Palette agent. Review the existing file
    and make changes if needed. Refer to the [local management mode install steps](#install-palette-agent) for an example
    user data configuration. For a full list of parameters and arguments, refer to
    [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md).
@@ -1384,11 +1390,10 @@ Follow the below guides in order to deploy your cluster.
 
 2.  [Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) - If your
     host has access to all the images referenced by your cluster profile, you may skip this guide. Otherwise, you must
-    build a content bundle that contains all the artifacts required to create your cluster, even if your host has no
-    access to an external image registry.
+    build a content bundle that contains all the artifacts required to create your cluster.
 
 3.  [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) - If you built a
-    content bundle, you must upload them to your Edge host.
+    content bundle, you must upload it to your Edge host.
 
 4.  [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) - Use your exported
     cluster definition (and content bundles, if necessary) to create a cluster using your Edge host.
