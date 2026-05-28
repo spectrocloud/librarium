@@ -277,7 +277,50 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
    databaseUrl: "mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongo.hubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local"
    ```
 
-## Scenario - configserver Stuck on init-rootdomain-traefik After Upgrade to 4.9.a
+7. Click **Save** to apply the changes.
+
+8. Verify the system pods are starting correctly by issuing the following command.
+
+   ```shell
+   kubectl get pods --namespace=hubble-system
+   ```
+
+   ```hideClipboard text
+     NAME                                   READY   STATUS    RESTARTS   AGE
+     auth-64b88d97dd-5z7ph                  1/1     Running   0          31m
+     auth-64b88d97dd-bchr7                  1/1     Running   0          31m
+     cloud-b8796c57d-5r7d9                  1/1     Running   0          31m
+     cloud-b8796c57d-xpbx7                  1/1     Running   0          31m
+     configserver-778bd7c4c9-mrtc6          1/1     Running   0          31m
+     event-5869c6bd75-2n7jl                 1/1     Running   0          31m
+     event-5869c6bd75-xnvmj                 1/1     Running   0          31m
+     foreq-679c7b7f6b-2ts2v                 1/1     Running   0          31m
+     hashboard-9f865b6c8-c52bb              1/1     Running   0          31m
+     hashboard-9f865b6c8-rw6p4              1/1     Running   0          31m
+     hutil-54995bfd6b-sh4dt                 1/1     Running   0          31m
+     hutil-54995bfd6b-tlqbj                 1/1     Running   0          31m
+     memstore-7584fdd94f-479pj              1/1     Running   0          31m
+     mgmt-68c8dbfd58-8gxsx                  1/1     Running   0          31m
+     mongo-0                                2/2     Running   0          29m
+     mongo-1                                2/2     Running   0          30m
+     mongo-2                                2/2     Running   0          30m
+     msgbroker-7d7655559b-zxxfq             1/1     Running   0          31m
+     oci-proxy-6fdf95885f-qw58g             1/1     Running   0          31m
+     reloader-reloader-845cfd7fdf-2rq5t     1/1     Running   0          31m
+     spectrocluster-5c4cb4ff58-658w9        1/1     Running   0          31m
+     spectrocluster-5c4cb4ff58-fn8g5        1/1     Running   0          31m
+     spectrocluster-5c4cb4ff58-zvwfp        1/1     Running   0          31m
+     spectrocluster-jobs-5b54bf6bcf-mtgh8   1/1     Running   0          31m
+     system-6678d47874-464n6                1/1     Running   0          31m
+     system-6678d47874-rgn55                1/1     Running   0          31m
+     timeseries-6564699c7d-b6fnr            1/1     Running   0          31m
+     timeseries-6564699c7d-hvv94            1/1     Running   0          31m
+     timeseries-6564699c7d-jzmnl            1/1     Running   0          31m
+     user-866c7f779d-drf9w                  1/1     Running   0          31m
+     user-866c7f779d-rm4hw                  1/1     Running   0          31m
+   ```
+
+## `configserver` Stuck on init-rootdomain-traefik After Upgrade to 4.9.a
 
 After upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or
 [Palette VerteX](../vertex/vertex.md) to version 4.9.a, the `configserver` pod may remain in `Init:CrashLoopBackOff` for
@@ -452,46 +495,3 @@ either resource breaks ingress TLS.
    NAME                            READY   STATUS    RESTARTS   AGE
    configserver-685fcc5b6d-t8f8h   1/1     Running   0          2m
    ```
-
-9. Click **Save** to apply the changes.
-
-10. Verify the system pods are starting correctly by issuing the following command.
-
-    ```shell
-    kubectl get pods --namespace=hubble-system
-    ```
-
-    ```hideClipboard text
-      NAME                                   READY   STATUS    RESTARTS   AGE
-      auth-64b88d97dd-5z7ph                  1/1     Running   0          31m
-      auth-64b88d97dd-bchr7                  1/1     Running   0          31m
-      cloud-b8796c57d-5r7d9                  1/1     Running   0          31m
-      cloud-b8796c57d-xpbx7                  1/1     Running   0          31m
-      configserver-778bd7c4c9-mrtc6          1/1     Running   0          31m
-      event-5869c6bd75-2n7jl                 1/1     Running   0          31m
-      event-5869c6bd75-xnvmj                 1/1     Running   0          31m
-      foreq-679c7b7f6b-2ts2v                 1/1     Running   0          31m
-      hashboard-9f865b6c8-c52bb              1/1     Running   0          31m
-      hashboard-9f865b6c8-rw6p4              1/1     Running   0          31m
-      hutil-54995bfd6b-sh4dt                 1/1     Running   0          31m
-      hutil-54995bfd6b-tlqbj                 1/1     Running   0          31m
-      memstore-7584fdd94f-479pj              1/1     Running   0          31m
-      mgmt-68c8dbfd58-8gxsx                  1/1     Running   0          31m
-      mongo-0                                2/2     Running   0          29m
-      mongo-1                                2/2     Running   0          30m
-      mongo-2                                2/2     Running   0          30m
-      msgbroker-7d7655559b-zxxfq             1/1     Running   0          31m
-      oci-proxy-6fdf95885f-qw58g             1/1     Running   0          31m
-      reloader-reloader-845cfd7fdf-2rq5t     1/1     Running   0          31m
-      spectrocluster-5c4cb4ff58-658w9        1/1     Running   0          31m
-      spectrocluster-5c4cb4ff58-fn8g5        1/1     Running   0          31m
-      spectrocluster-5c4cb4ff58-zvwfp        1/1     Running   0          31m
-      spectrocluster-jobs-5b54bf6bcf-mtgh8   1/1     Running   0          31m
-      system-6678d47874-464n6                1/1     Running   0          31m
-      system-6678d47874-rgn55                1/1     Running   0          31m
-      timeseries-6564699c7d-b6fnr            1/1     Running   0          31m
-      timeseries-6564699c7d-hvv94            1/1     Running   0          31m
-      timeseries-6564699c7d-jzmnl            1/1     Running   0          31m
-      user-866c7f779d-drf9w                  1/1     Running   0          31m
-      user-866c7f779d-rm4hw                  1/1     Running   0          31m
-    ```
