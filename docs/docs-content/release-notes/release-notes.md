@@ -55,8 +55,8 @@ tags: ["release-notes"]
 - <TpBadge /> You can now use a pre-built Docker image to import a MAAS-compatible CentOS Stream CoreOS (SCOS) image
   when [preparing the CoreOS
   image](../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/prepare-coreos-image.md) required
-  for OpenShift workload clusters on MAAS using HyperShift. This provides a faster alternative to building a custom
-  RHCOS image from source.
+  for OpenShift workload clusters on MAAS using HyperShift. This provides a faster alternative to building a custom Red
+  Hat Enterprise Linux CoreOS (RHCOS) image from source.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2788 -->
 

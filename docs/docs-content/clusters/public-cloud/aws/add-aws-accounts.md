@@ -231,7 +231,7 @@ Use the steps below to add an AWS GovCloud account using dynamic STS credentials
 
 #### Limitations
 
-<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS" />
+<PartialsComponent category="eks-pod-identity" name="eks-pod-identity-limitations" partition="AWS US Gov" />
 
 #### Prerequisites
 
