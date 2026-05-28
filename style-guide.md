@@ -701,11 +701,11 @@ To clarify that the second code block is output, use the following elements in t
 
 - `title=”Example Output”` - Creates a heading for the code block that is separated from the content with a ruler.
 
-<code>
-```bash hideClipboard title=”Example Output”
+````md
+```bash hideClipboard title="Example Output"
 <output-here>
 ```
-</code>
+````
 
 ##### Lengthy Output
 
@@ -729,13 +729,15 @@ kubectl get deployment cost-analyzer-cost-analyzer --namespace kubecost --output
 
 When referring to specific product user interface components, use the following approved terms.
 
-| Component| Spectro Cloud Term ✅| Example| | ---------| ---------------------| -------\
-| Side Navbar| left main menu| On the left main menu, select **Tenant Settings**.| | User Dropdown| **User Menu**| You
-can logout by navigating to the top right **User Menu**.| | Nested Navbar| <Feature> menu| Navigate to the left main
-menu and click on **Tenant Settings**. Next, on the **Tenant Settings** menu, click on **API Keys**.| | Three Dots|
-three-dot menu| Click on the three-dot menu.| | Drop Down Menu| drop-down menu| Click on the drop-down menu.|
+| Component      | Spectro Cloud Term ✅ | Example                                                                                                                        |
+| -------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Side Navbar    | left main menu        | On the left main menu, select **Tenant Settings**.                                                                             |
+| User Dropdown  | **User Menu**         | You can logout by navigating to the top right **User Menu**.                                                                   |
+| Nested Navbar  | <Feature> menu        | Navigate to the left main menu and click on **Tenant Settings**. Next, on the **Tenant Settings** menu, click on **API Keys**. |
+| Three Dots     | three-dot menu        | Click on the three-dot menu.                                                                                                   |
+| Drop Down Menu | drop-down menu        | Click on the drop-down menu.                                                                                                   |
 
-> [IMPORTANT!]
+> [!IMPORTANT]
 >
 > For UI elements that contains a symbol or emoji, only include the text. If the button only contains a symbol, then use
 > the symbol in the documentation.
