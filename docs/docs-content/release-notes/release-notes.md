@@ -112,8 +112,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10718 -->
 
 - Fixed an issue that caused the **Clusters** page to hang indefinitely when accessed by users with a
-  [custom tenant role](../user-management/palette-rbac/create-custom-role.md) that lacked virtual cluster
-  permissions.
+  [custom tenant role](../user-management/palette-rbac/create-custom-role.md) that lacked virtual cluster permissions.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10636 -->
 
@@ -145,8 +144,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10527 -->
 
-- Fixed an issue that caused [EKS cluster](../clusters/public-cloud/aws/eks.md) add-on packs to appear as not
-  ready in the Palette UI, even though the packs were deployed successfully and the cluster was running.
+- Fixed an issue that caused [EKS cluster](../clusters/public-cloud/aws/eks.md) add-on packs to appear as not ready in
+  the Palette UI, even though the packs were deployed successfully and the cluster was running.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5840 -->
 
