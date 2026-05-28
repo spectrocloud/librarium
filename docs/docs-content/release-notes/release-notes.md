@@ -55,8 +55,8 @@ tags: ["release-notes"]
 - <TpBadge /> You can now use a pre-built Docker image to import a MAAS-compatible CentOS Stream CoreOS (SCOS) image
   when [preparing the CoreOS
   image](../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/prepare-coreos-image.md) required
-  for OpenShift workload clusters on MAAS using HyperShift. This provides a faster alternative to building a custom
-  RHCOS image from source.
+  for OpenShift workload clusters on MAAS using HyperShift. This provides a faster alternative to building a custom Red
+  Hat Enterprise Linux CoreOS (RHCOS) image from source.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2788 -->
 
@@ -139,6 +139,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 #### Improvements
 
 ### Docs and Education
+
+- Documentation improvements have been made for EKS Pod Identity on the
+  [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) and
+  [Enable Pod Identity for ECR Authentication](../clusters/public-cloud/aws/enable-pod-identity-ecr.md) pages. This
+  includes clarifying the required permissions for the Palette IAM role when using
+  [Minimum Permissions Policies](../clusters/public-cloud/aws/required-iam-policies/minimum-permissions-policies.md) and
+  providing more detailed instructions for identifying the IAM role for ECR authentication.
 
 ### Packs
 
