@@ -773,7 +773,12 @@ Admonitions, also known as callouts, are formatted text blocks for providing use
 
 The picture below shows an example of what not to do.
 
-![A screenshot showing stacked admonitions.](/style-guide_admonitions.webp)
+![A screenshot showing stacked admonitions.](./static/assets/docs/images/style-guide_admonitions.webp)
+
+| Type| Guidance| Markdown Usage|
+| ----| --------| --------------|
+| Tip| ✅ Use when giving advice or a suggestion that could improve the reader’s product experience or action. <br><br>Example: <br><br>Use the --describe flag for additional information that displays the IP addresses. <br><br>❌ Avoid tips that span multiple sentences. Consider placing this information in the text or potentially in an info box.| <pre><code>:::tip <br><br>Insert text here<br><br>:::</code></pre>|
+| Note| > [!IMPORTANT]<br>>Not an approved admonition. Use Info instead. Insert text here| <pre><code>:::note <br><br>Insert text here<br><br>:::</code></pre>|
 
 ## Supplemental Information
 
