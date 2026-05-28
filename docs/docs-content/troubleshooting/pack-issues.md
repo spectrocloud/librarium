@@ -56,7 +56,7 @@ Use the following steps to manually configure OIDC for your clusters.
 
 :::info
 
-This issue was resolved with Palette version 4.7.13.
+This issue was resolved in Palette version 4.7.13.
 
 :::
 

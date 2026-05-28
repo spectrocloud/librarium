@@ -112,7 +112,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10718 -->
 
 - Fixed an issue that caused the **Clusters** page to hang indefinitely when accessed by users with a
-  [custom tenant role](../user-management/palette-rbac/create-custom-role.md) that did not include virtual cluster
+  [custom tenant role](../user-management/palette-rbac/create-custom-role.md) that lacked virtual cluster
   permissions.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10636 -->
@@ -131,12 +131,12 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused intermittent `no subscriber found` errors when performing
   [MAAS cloud account](../clusters/data-center/maas/register-manage-maas-cloud-accounts.md) operations through a
-  [Private Cloud Gateway](../clusters/pcg/pcg.md).
+  [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10547 -->
 
 - Fixed an issue that caused the **Cluster Settings** > **Cluster Configuration** page to display a generic error when
-  attempting to display SSH key names for users whose role did not include the permission `sshKey.list`.
+  attempting to show SSH key names for users whose role lacked the permission `sshKey.list`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6452 -->
 
@@ -145,7 +145,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10527 -->
 
-- Fixed an issue that caused [EKS cluster](../clusters/public-cloud/aws/eks.md) add-on pack statuses to appear as not
+- Fixed an issue that caused [EKS cluster](../clusters/public-cloud/aws/eks.md) add-on packs to appear as not
   ready in the Palette UI, even though the packs were deployed successfully and the cluster was running.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5840 -->
@@ -186,7 +186,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- https://spectrocloud.atlassian.net/browse/PE-7637 -->
 
 - Network Time Protocol (NTP) values can now be configured per Edge host via
-  [user-data](../clusters/edge/edge-configuration/installer-reference.md) using `stylus.site.ntpServers`, the
+  [user data](../clusters/edge/edge-configuration/installer-reference.md) using `stylus.site.ntpServers`, the
   [Edge TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md), or
   [Local UI](../clusters/edge/local-ui/local-ui.md). NTP values used during cluster creation override the servers
   configured on individual hosts.
