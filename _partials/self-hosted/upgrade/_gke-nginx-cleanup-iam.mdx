@@ -5,7 +5,7 @@ partial_name: gke-nginx-cleanup-iam
 
 :::warning
 
-If you are upgrading {props.edition} to 4.9.a on GKE, the principal that runs
+If your self-hosted {props.edition} environment is installed on a GKE cluster and you are upgrading Palette to version 4.9.a or later, the principal that runs
 `helm upgrade` must hold the following Cloud Identity and Access Management (IAM) permissions so the upgrade can
 prune leftover Nginx Role-Based Access Control (RBAC) resources:
 
