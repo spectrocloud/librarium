@@ -146,7 +146,7 @@ management cluster. Use static or dynamic access credentials for registries in d
     Hubble and Specman services.
 
     ```bash
-    kubectl get pods --namespace hubble-system -l component=cloud \
+    kubectl get pods --namespace hubble-system --selector component=cloud \
     --output jsonpath='{.items[0].spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
     ```
 
