@@ -320,7 +320,7 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
      user-866c7f779d-rm4hw                  1/1     Running   0          31m
    ```
 
-## `configserver` Stuck on init-rootdomain-traefik After Upgrade to 4.9.a
+## `configserver` Stuck on `init-rootdomain-traefik` After Upgrade to 4.9.a
 
 After upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or
 [Palette VerteX](../vertex/vertex.md) to version 4.9.a, the `configserver` pod may remain in `Init:CrashLoopBackOff` for
