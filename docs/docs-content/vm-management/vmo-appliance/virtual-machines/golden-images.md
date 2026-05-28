@@ -12,6 +12,10 @@ tags: ["vmo", "vm launchpad", "golden images"]
 
 A golden image is a sealed, reusable base system image. Build golden images to standardize OS installations and create VMs from [templates](./templates.md) with validated configurations. VMs built from templates can be further customized using [Customization Templates](./image-customization.md) for seal scripts and [Packages](./packages.md) for guest agent installation.
 
+The diagram below displays the overarching steps to build a golden image to use as a reference for a template. 
+
+![Screenshot of golden image workflow](/vmo/vm-management_vmo_golden-images_workflow-4-9.webp)
+
 ## Prerequisites
 
 - ISO of the OS 
@@ -41,7 +45,7 @@ A golden image is a sealed, reusable base system image. Build golden images to s
 
 1. Navigate to **Image Catalog > Golden Images**.
 
-2. Click **Build Golden Image** or **Upload ISO/Golden Image**.
+2. Click **Build Golden Image**.
 
 3. Fill out **Source** page and click **Next >**.
 
@@ -52,8 +56,6 @@ A golden image is a sealed, reusable base system image. Build golden images to s
    | Source ISO DataVolume | Select the ISO to use. |
    | Disk Size | Set the disk size in `GiB` or `TiB`. |
    | Storage Class | Select the storage class from the dropdown. |
-
-
 
 4. Fill out the **Compute** page and click **Next >**.
 
