@@ -108,13 +108,13 @@ Use “you” to address the user directly. Use “we” when providing recommen
 
 Use the passive voice when:
 
-* The actor is unknown, irrelevant, or implied.
+- The actor is unknown, irrelevant, or implied.
 
-* You want to emphasize the result over the person or system doing the action.
+- You want to emphasize the result over the person or system doing the action.
 
-* You are listing known limitations or system constraints.
+- You are listing known limitations or system constraints.
 
-* You are following a neutral, objective, or formal tone.
+- You are following a neutral, objective, or formal tone.
 
 | Acceptable ✅                                            | Why?                                                                              |
 | -------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -243,7 +243,7 @@ grammatically incorrect sentence or causes you to change the text of the UI elem
 | Good ✅                                                                       | Bad ❌                                                                                                                                            |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Save** your changes.                                                        | Click **Save** to save your changes.                                                                                                              |
-| After you are finished modifying a profile layer, select **Confirm Updates**. | - After you are finished modifying a profile layer, Confirm Updates.<br>- After you are finished modifying a profile layer, Confirm your Updates. |
+| After you are finished modifying a profile layer, select **Confirm Updates**. | • After you are finished modifying a profile layer, Confirm Updates.<br>• After you are finished modifying a profile layer, Confirm your Updates. |
 
 ## Latin Phrases
 
@@ -252,6 +252,12 @@ Avoid using the following Latin phrases, as their meaning is not understood by a
 - _e.g_ (exempli gratia) - “For example”
 
 - _i.e._ (id est) - “In other words”
+
+| Good ✅                                                                       | Bad ❌                                                                                                                                            |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| • Modification of kernel parameters (_for example_, `core_pattern`)| • Modification of kernel parameters (_e.g._, core_pattern)|
+| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster deployment.| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version at runtime (_i.e._, during the cluster deployment).|
+
 
 # Grammar Guidance
 
@@ -361,7 +367,7 @@ This procedure requires a physical or virtual Linux machine with an AMD64 or x86
 
 | Good ✅                                                                                                                   | Bad ❌                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| PXK-E - The `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS. | PXK-E (the `K8S_DISTRIBUTION=kubeadm value` in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS) |
+| • PXK-E - The `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS. | • PXK-E (the `K8S_DISTRIBUTION=kubeadm value` in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS) |
 
 ### Optional Steps
 
