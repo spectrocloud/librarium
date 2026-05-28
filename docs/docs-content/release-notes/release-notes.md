@@ -96,7 +96,7 @@ tags: ["release-notes"]
     fields. Refer to the
     [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
     the current set of supported parameters.
-  - **Recovery**: If `configserver` does not reach **Ready** after the upgrade due to leftover Nginx pods holding host
+  - **Recovery** - If `configserver` does not reach **Ready** after the upgrade due to leftover Nginx pods holding host
     ports, refer to the
     [configserver Stuck on init-rootdomain-traefik After Upgrade to 4.9.a](../troubleshooting/palette-upgrade.md#configserver-stuck-on-init-rootdomain-traefik-after-upgrade-to-49a)
     troubleshooting guide for the manual cleanup procedure.
