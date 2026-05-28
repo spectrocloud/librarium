@@ -773,25 +773,72 @@ Admonitions, also known as callouts, are formatted text blocks for providing use
 
 The picture below shows an example of what not to do.
 
-![A screenshot showing stacked admonitions.](./static/assets/docs/images/style-guide_admonitions.webp)
+![Example of stacked admonitions.](./static/assets/docs/images/style-guide_admonitions.webp)
 
-| Type | Guidance | Markdown Usage |
-| --- | --- | --- |
-| Tip | ✅ Use when giving advice or a suggestion that could improve the reader’s product experience or action.<br><br>**Example:**<br><br>Use the `--describe` flag for additional information that displays the IP addresses.<br><br>❌ Avoid tips that span multiple sentences. Consider placing this information in the text or potentially in an info box. | <pre><code>:::tip
+Use the following Markdown syntax and replace the admonition `<type>` as applicable.
 
-Insert text here
-
-:::</code></pre> |
-| Note | ⚠️ Not an approved admonition. Use **Info** instead. | <pre><code>:::note
+```md
+:::<type>
 
 Insert text here
 
-:::</code></pre> |
+:::
+```
+
+```md title="Example"
+:::warning
+
+Insert text here
+
+:::
+```
+
+| Type | Guidance |
+| --- | --- |
+| Tip | ✅ Use when giving advice or a suggestion that could improve the reader’s product experience or action. <br><br>**Example:**<br><br>Use the `--describe` flag for additional information that displays the IP addresses. <br><br>❌ Avoid tips that span multiple sentences. Consider placing this information in the text or potentially in an info box. |
+| Note | ⚠️ Not an approved admonition. Use **Info** instead. |
+| Information| ✅ Use when supplementary information is available to the reader and the information is neither critical to a procedure nor hinders comprehension. These should be brief and not exceed one paragraph. <br><br>Example: <br><br>For important guidelines on updating pack versions, review Update the Pack Version. <br><br>❌ Evaluate the content you are placing inside the info box. If it’s a warning, use the caution type. If it’s advice, then use the tip method. Info boxes should only be used to provide supplemental information.|
+| Caution| ⚠️ Deprecated. Use **Warning** instead.|
+| Warning | ✅ Use to warn users or to make them aware of something important. <br><br>Example: <br><br>Deploying a cluster with a single worker node and master node is not considered a highly available deployment. <br><br>❌ Do not use caution when sharing general information that is a better fit for info box. Also, if an action or side effect of an action is dangerous, then use danger instead.|
+| Danger| ✅ Use this when the user needs to be aware of an action or task with potentially dangerous side effects. Examples are node repaves, actions that could result in a data loss, or security vulnerabilities. Use this sparingly. <br><br>Example: <br><br>Disabling the certificate will allow HTTP connections and disable HTTPS. <br><br>❌ Do not use danger when caution suffices. Danger immediately draws the reader's attention and should not be used as an attention getter.|
+| Tech Preview| ✅ Use this custom admonition to indicate that a feature is in [Tech Preview](https://docs.google.com/document/d/1BFRW47agN7DIDhPuVC_TZZXeiGRFDF5I4x8bK0ZoI-Q/edit?tab=t.0#heading=h.77291pqftl9x). Place this admonition at the end of the intro section of the document. <br><br>You don't need to provide content for this admonition—it renders the same standardized message every time. However, if you need to deviate from the template text, you can provide a custom message.|
+| Further Guidance| ✅ Use this custom admonition to link to tutorials from other docs and also to provide further guidance within the tutorials.|
 
 ## Supplemental Information
 
+In scenarios where you have additional information that would benefit the reader but could potentially distract from the main flow of the document, you have a couple of options.  You could check if the information could be added as a section later or earlier in the document. You could expose the information, if deemed necessary enough, in another document or page. Or, consider using a `<details>` element.
+
+The `<details>` element creates a disclosure widget in which text is visible only when the widget is toggled into an "open" state. This can be useful in scenarios where the additional information is primarily beneficial in the present context but does not warrant a stand-alone section or page. Other good use cases are exposing lengthy code snippets.
+
+The screenshot below shows an example of details element.
+
+[!Example of details element](./static/assets/docs/images/style-guide_details-element.webp)
+
+Try to avoid overusing the `<details>` element as search, crawlers, and PDF generators are unable to handle the HTML element.
+
 ## Next Steps
+
+Where possible, conclude pages with a Next Steps section to guide users on what to do next. This is preferable to using [Resource Lists](#resources-list), as it provides direction rather than a list of out-of-context resources. Use a Level 2 heading for this section.
+
+[!Example of next steps](./static/assets/docs/images/style-guide_next-steps.webp)
 
 ## Resources List
 
+Use Resource Lists sparingly. Ideally, links to applicable documents and resources should be interwoven throughout the document so the reader can readily access them rather than being consolidated at the bottom. As you come across Resource Lists, consider removing them and creating a Next Steps section instead.
+
+A Resource List can be used in conjunction with [Next Steps](#next-steps). If creating or keeping a Resource List enhances the user experience, it should be the last section and use a Level 2 heading.
+
 # Image File Naming Standard
+
+The file name for images that are used in only one markdown file or partial is composed of the following sections.
+
+`<markdown-file-name>/<partial-name>_<image-description>.webp`
+
+Examples:
+
+- `clusters_pcg_architecture_system-pcg-ui`
+- `cluster-import_usage-costs.webp`
+
+Limit the image description to no more than three words to keep the file name concise, where possible.
+
+Place the images shared by more than one markdown file or partial in the `librarium/static/assets/docs/images/shared` directory. The file name of shared images follows the `<image-description>.webp` naming convention 
