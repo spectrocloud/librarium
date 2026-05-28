@@ -91,7 +91,7 @@ tags: ["release-notes"]
     `container.roles.delete`, `container.roleBindings.delete`, `container.clusterRoles.delete`, and
     `container.clusterRoleBindings.delete` Cloud Identity and Access Management (IAM) permissions. Refer to the
     [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) guide for details.
-  - **Recommended `values.yaml` hygiene** -  The `ingress.type` and `ingress.ingress.internal` fields have been removed
+  - **Recommended `values.yaml` hygiene** - The `ingress.type` and `ingress.ingress.internal` fields have been removed
     from the Helm chart and are silently ignored if still present in your override file. We recommend removing both
     fields. Refer to the
     [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
