@@ -273,18 +273,23 @@ often overlooked. Some common offenders are listed below.
 
 ## Capitalization
 
-Capitalize the first word of a sentence and all proper nouns, such as product names. 
+Capitalize the first word of a sentence and all proper nouns, such as product names.
 
-| Good ✅| Bad ❌|
-| ------| ------|
-| A common container orchestration platform used in the industry is _Kubernetes_.| a common container orchestration platform used in the industry is _kubernetes_.|
-| Navigate to the _Palette_ console.| Navigate to the _palette_ console.|
+| Good ✅                                                                         | Bad ❌                                                                          |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| A common container orchestration platform used in the industry is _Kubernetes_. | a common container orchestration platform used in the industry is _kubernetes_. |
+| Navigate to the _Palette_ console.                                              | Navigate to the _palette_ console.                                              |
 
 ### Headings
 
-Avoid using an acronym for the first time in a title or heading unless it is a keyword you need to place in the title or heading for Search Engine Optimization (SEO). If the first use of the acronym is in a title or heading, introduce the acronym (in parentheses, following the spelled-out term) in the following body text. Aim for descriptive headings and titles to help users navigate the page. From a user perspective, it's easier to navigate between pages and sections of a page if the headings and titles are unique.
+Avoid using an acronym for the first time in a title or heading unless it is a keyword you need to place in the title or
+heading for Search Engine Optimization (SEO). If the first use of the acronym is in a title or heading, introduce the
+acronym (in parentheses, following the spelled-out term) in the following body text. Aim for descriptive headings and
+titles to help users navigate the page. From a user perspective, it's easier to navigate between pages and sections of a
+page if the headings and titles are unique.
 
-- If the heading is more in line with a task, such as our how-to docs and tutorials, start with the plain form of the task’s base form: _**Migrate** to Palette_.
+- If the heading is more in line with a task, such as our how-to docs and tutorials, start with the plain form of the
+  task’s base form: _**Migrate** to Palette_.
 
 - If the heading is conceptual or non-task-based, then start with a noun: _**Migration** to Palette_.
 
@@ -292,7 +297,39 @@ Avoid using an acronym for the first time in a title or heading unless it is a k
 
 ### Headline Style
 
+Use title case for headings. Below are some helpful tips.
+
+- Capitalize the first and last words, nouns, pronouns, verbs, adjectives, adverbs, and subordinating conjunctions
+  (_if_, _because_, _as_, _that_, and so on).
+
+- Don't capitalize articles (_a_, _an_, _the_), coordinating conjunctions (_and_, _but_, _or_, _nor_), the _to_ in an
+  infinitive, and prepositions (_with_, _to_, _for_, _in_, _from_).
+
+- For hyphenated words, capitalize the first and subsequent elements unless they are articles, prepositions, and
+  coordinating conjunctions.
+
+| Good ✅                           | Bad ❌                             |
+| --------------------------------- | ---------------------------------- |
+| Deploy a Pack Registry Server     | Deploying A Pack Registry Server   |
+| Access Audit Logs                 | Accessing audit logs               |
+| Quick Start with Palette App Mode |  Quick start with Palette app mode |
+| The Command-Line Interface        | The command-line interface         |
+
 ### Acronyms and Initialisms
+
+Use title case when defining an acronym (an abbreviation pronounced as its own word) or initialism (an abbreviation
+pronounced as individual letters) that is a **proper noun**. If it is a common noun, use sentence case. Use the
+abbreviation on all subsequent uses.
+
+Use the same rules that apply to headline styles. Some acronyms are, by nature, written using camel case, such as,
+_IaaS_, _kCh_, and _SaaS_.
+
+> [!IMPORTANT]
+>
+> Certain acronyms and initialisms (such as _OS_, _CPU_, _IP_, and more) are considered industry standard and do not
+> need to be spelled out. Refer to the Vale file
+> [acronym-no-expand.yml](./packages/spectrocloud-docs-internal/styles/spectrocloud-docs-internal/acronym-no-expand.yml)
+> for a list of exceptions.
 
 ## Parentheses
 
