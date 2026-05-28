@@ -635,18 +635,18 @@ this formatting is accomplished by applying a different font treatment (such as 
 
 The following table covers the most common items that should be formatted.
 
-| Text Item                                                                                                                    | Format                                                                                                                                                                                                                                                                                                                                                                      | Examples                                                                                                                                                                                                                                                                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UI elements and interactions                                                                                                 | **Bold** <br><br>**NOTE:** UI elements that do not have text associated with them, such as _left main menu_, _three-dot menu_, and _drop-down menu_, are neither bolded nor treated as proper nouns.                                                                                                                                                                        | • On your **Cluster Profile** page, select **Settings > Edit Info**.<br><br>• From the left main menu, select **Clusters**.                                                                                                                                                                                                                                                           |
-| Emphasize words or reference a word                                                                                          | _Italics_                                                                                                                                                                                                                                                                                                                                                                   | • Don't use & (ampersand) as a conjunction. Use the word _and_ instead.                                                                                                                                                                                                                                                                                                               |
-| URLs (unlinked)                                                                                                              | `Monospace`                                                                                                                                                                                                                                                                                                                                                                 | • The API endpoint for your Palette installation. For example: `api.spectrocloud.com`.                                                                                                                                                                                                                                                                                                |
-| Directories, paths, and filenames (including full names of packs, images and image tags, pods, namespaces, containers, etc.) | `Monospace` <br><br>**NOTES**: <br><br>• If referring to the display name of a pack (or similar artifact or resource), use **bold** and enter it as it appears on the UI. If using a general reference, do not bold. <br><br>• If referring to an artifact or resource that is in the UI and uses kebab case (similar to how it would appear in a terminal), use monospace. | • Create the `user-data` file in your CanvOS directory. <br><br>• The following example shows a basic configuration for the FTP service, located at /etc/xinetd.d. <br><br>• Choose the **Hello Universe** pack. <br><br>• Select the `hello-universe` layer. <br><br>• Select the `vmo-getting-started-cp-b9spr` pod. <br><br>• The Hello Universe pack is a three-tier application. |
-| File types                                                                                                                   | ALL CAPS                                                                                                                                                                                                                                                                                                                                                                    | • The result is a content bundle that you can use to preload into your installer. The content bundle will be a ZST file. <br><br>• Make sure you download the correct Ubuntu ISO file.                                                                                                                                                                                                |
-| Error messages                                                                                                               | `Monospace`                                                                                                                                                                                                                                                                                                                                                                 | `The user does not have permission to perform this action.`                                                                                                                                                                                                                                                                                                                           |
-| Code examples and commands                                                                                                   | `Monospace` <br><br>**NOTE**: If the name of the program is the same as the command, such as `kubectl`, use monospace. If the program and command differ, such as _Zstandard_ and `zstd`, only use monospace when referring to a code example. If a command is hyperlinked, you do not need to use monospace.                                                               | • Run the command `kubectl get pods`. <br><br>• Zstandard must be installed on your host. <br><br>• [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) is a requirement.                                                                                                                                                                                            |
-| Text input                                                                                                                   | `Monospace`                                                                                                                                                                                                                                                                                                                                                                 | Enter `aws-profile-example` for the **Cluster profile**.                                                                                                                                                                                                                                                                                                                              |
-| Keys and keyboard combinations                                                                                               | **Bold** and ALL CAPS. Connect combinations with `+`.                                                                                                                                                                                                                                                                                                                       | Press **CTRL + D**.                                                                                                                                                                                                                                                                                                                                                                   |
-| Placeholder text                                                                                                             | `<monospace-kebab-case>` <br><br>**NOTE**: Terraform placeholder text is an exception.                                                                                                                                                                                                                                                                                      | Replace `<api-key>` with your Palette API key.                                                                                                                                                                                                                                                                                                                                        |
+| Text Item                                                                                                                    | Format                                                                                                                                                                                                                                                                                                                                                                      | Examples                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UI elements and interactions                                                                                                 | **Bold** <br><br>**NOTE:** UI elements that do not have text associated with them, such as _left main menu_, _three-dot menu_, and _drop-down menu_, are neither bolded nor treated as proper nouns.                                                                                                                                                                        | • On your **Cluster Profile** page, select **Settings > Edit Info**.<br><br>• From the left main menu, select **Clusters**.                                                                                                                                                                                                                                                             |
+| Emphasize words or reference a word                                                                                          | _Italics_                                                                                                                                                                                                                                                                                                                                                                   | • Don't use & (ampersand) as a conjunction. Use the word _and_ instead.                                                                                                                                                                                                                                                                                                                 |
+| URLs (unlinked)                                                                                                              | `Monospace`                                                                                                                                                                                                                                                                                                                                                                 | • The API endpoint for your Palette installation. For example: `api.spectrocloud.com`.                                                                                                                                                                                                                                                                                                  |
+| Directories, paths, and filenames (including full names of packs, images and image tags, pods, namespaces, containers, etc.) | `Monospace` <br><br>**NOTES**: <br><br>• If referring to the display name of a pack (or similar artifact or resource), use **bold** and enter it as it appears on the UI. If using a general reference, do not bold. <br><br>• If referring to an artifact or resource that is in the UI and uses kebab case (similar to how it would appear in a terminal), use monospace. | • Create the `user-data` file in your CanvOS directory. <br><br>• The following example shows a basic configuration for the FTP service, located at `/etc/xinetd.d.` <br><br>• Choose the **Hello Universe** pack. <br><br>• Select the `hello-universe` layer. <br><br>• Select the `vmo-getting-started-cp-b9spr` pod. <br><br>• The Hello Universe pack is a three-tier application. |
+| File types                                                                                                                   | ALL CAPS                                                                                                                                                                                                                                                                                                                                                                    | • The result is a content bundle that you can use to preload into your installer. The content bundle is a ZST file. <br><br>• Make sure you download the correct Ubuntu ISO file.                                                                                                                                                                                                       |
+| Error messages                                                                                                               | `Monospace`                                                                                                                                                                                                                                                                                                                                                                 | `The user does not have permission to perform this action.`                                                                                                                                                                                                                                                                                                                             |
+| Code examples and commands                                                                                                   | `Monospace` <br><br>**NOTE**: If the name of the program is the same as the command, such as `kubectl`, use monospace. If the program and command differ, such as _Zstandard_ and `zstd`, only use monospace when referring to a code example. If a command is hyperlinked, you do not need to use monospace.                                                               | • Run the command `kubectl get pods`. <br><br>• Zstandard must be installed on your host. <br><br>• [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) is a requirement.                                                                                                                                                                                              |
+| Text input                                                                                                                   | `Monospace`                                                                                                                                                                                                                                                                                                                                                                 | Enter `aws-profile-example` for the **Cluster profile**.                                                                                                                                                                                                                                                                                                                                |
+| Keys and keyboard combinations                                                                                               | **Bold** and ALL CAPS. Connect combinations with `+`.                                                                                                                                                                                                                                                                                                                       | Press **CTRL + D**.                                                                                                                                                                                                                                                                                                                                                                     |
+| Placeholder text                                                                                                             | `<monospace-kebab-case>` <br><br>**NOTE**: Terraform placeholder text is an exception.                                                                                                                                                                                                                                                                                      | Replace `<api-key>` with your Palette API key.                                                                                                                                                                                                                                                                                                                                          |
 
 ### Commands & Parameters
 
@@ -662,11 +662,92 @@ Always use the long form of a command, as it helps the reader better understand 
 
 #### Command Output
 
+Show the command output to help the reader follow along and validate they are receiving the expected output.
+
+```bash
+$ kind create cluster
+Creating cluster "kind" ...
+ ✓ Ensuring node image (kindest/node:v1.25.3) 🖼
+ ✓ Preparing nodes 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind
+
+Have a nice day! 👋
+```
+
+You can break up the command and output by using two code blocks. By breaking up the command from the output, you
+improve the reader experience because now the reader can copy the command without including the output.
+
+```bash
+kubectl get pods --namespace nginx
+```
+
+```bash
+NAME                  READY   STATUS    RESTARTS   AGE
+nginx-deployment-5f76d98944-6gwpj   1/1     Running   0          10m
+nginx-deployment-5f76d98944-gw8ns   1/1     Running   0          10m
+nginx-deployment-5f76d98944-t5km5   1/1     Running   0          10m
+```
+
+To clarify that the second code block is output, use the following elements in the code block header:
+
+- `hideClipboard` - Prevents the user from copying the code.
+
+- `title=”Example Output”` - Creates a heading for the code block that is separated from the content with a ruler.
+
+<code>
+```bash hideClipboard title=”Example Output”
+<output-here>
+```
+</code>
+
 ##### Lengthy Output
+
+If the output is too long, or large sections are irrelevant, you can omit extraneous sections using an ellipsis. Do not
+omit so much output that the user struggles to find what they’re looking for.
+
+```bash
+kubectl get deployment cost-analyzer-cost-analyzer --namespace kubecost --output yaml
+```
+
+```bash
+...
+      value: dns
+    image: gcr.io/kubecost1/frontend:prod-1.103.3
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 200
+```
 
 ### Product UI Naming
 
+When referring to specific product user interface components, use the following approved terms.
+
+| Component| Spectro Cloud Term ✅| Example| | ---------| ---------------------| -------\
+| Side Navbar| left main menu| On the left main menu, select **Tenant Settings**.| | User Dropdown| **User Menu**| You
+can logout by navigating to the top right **User Menu**.| | Nested Navbar| <Feature> menu| Navigate to the left main
+menu and click on **Tenant Settings**. Next, on the **Tenant Settings** menu, click on **API Keys**.| | Three Dots|
+three-dot menu| Click on the three-dot menu.| | Drop Down Menu| drop-down menu| Click on the drop-down menu.|
+
+> [IMPORTANT!]
+>
+> For UI elements that contains a symbol or emoji, only include the text. If the button only contains a symbol, then use
+> the symbol in the documentation.
+>
+> Example: Instead of **+ Add Cluster Profile**, write **Add Cluster Profile**.
+>
+> Example: + button. Write it as **+** and refer to the UI element context. “Click on the Addon Layers row **+**
+> button.”
+
 # Documentation UI Components
+
+For a list of available UI components, refer to the documentation’s repository [README](./README.md).
 
 ## Markdown Tables
 
