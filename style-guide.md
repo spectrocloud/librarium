@@ -529,8 +529,8 @@ Use numerals for units, measurements, and configurations.
 | _First_ drain the worker nodes.                                                                       | _1st_ drain the worker nodes.                                                                     |
 | _Three-fifths_ of the log report contains decipherable content.                                       | _3/5_ of the log report contains decipherable content.                                            |
 | The maximum size is _350,000_ items.                                                                  | The maximum size is _350000_ items.                                                               |
-| 5. Repeat steps _1 - 4_ for all Edge hosts.                                                           | Repeat steps _one through four_ for all Edge hosts.                                               |
-| 13. Repeat step _12_ for each pack you want to install.                                               | Repeat _step twelve_ for each pack you want to install.                                           |
+| 5. Repeat steps _1 - 4_ for all Edge hosts.                                                           | 5. Repeat steps _one through four_ for all Edge hosts.                                            |
+| 13. Repeat step _12_ for each pack you want to install.                                               | 13. Repeat _step twelve_ for each pack you want to install.                                       |
 | Set the timeout to _5_ seconds.                                                                       | Set the timeout to _five_ seconds.                                                                |
 | Allocate _100_ GB of storage to the VM.                                                               | Allocate _one hundred_ GB of storage to the VM.                                                   |
 
@@ -557,7 +557,7 @@ start a new sentence.
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Common use cases for enabling authentication:<br><br>• Prevent others from accessing other users' resources.<br><br>• Prevent abuse or spam from those not part of the community. | Common use cases for enabling authentication: Prevent others from accessing other users resources. Prevent abuse or spam from those not part of the community. |
 | This actually means that you may never need to manipulate ReplicaSet objects. Use a Deployment instead, and define your application in the spec section.                          | This actually means that you may never need to manipulate ReplicaSet objects: use a Deployment instead, and define your application in the spec section.       |
-| Issue the following command.<br><br><code>kubectl get pods</code>                                                                                                                 | Issue the following command: <br><br>kubectl get pods<code></code>                                                                                             |
+| Issue the following command.<br><br><code>kubectl get pods</code>                                                                                                                 | Issue the following command: <br><br><code>kubectl get pods</code>                                                                                             |
 
 ## Computer Resources (Units of Measurement)
 
@@ -597,13 +597,78 @@ readable.
 
 ## Future Features
 
+Avoid documenting features, products, or behaviors that are not available at present. Do not imply that a feature will
+be available at a later date.
+
+| Good ✅                                        | Bad ❌                                                                                       |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| MagicProduct supports JSON input files.        | MagicProduct supports JSON input files. In future releases, YAML file support will be added. |
+| Anonymous SMTP configuration is not supported. | Anonymous SMTP configuration will be available in a future release.                          |
+
 ## Directionals
+
+Avoid directing the user to previous parts of the document, if possible. Ideally, the user should be directed to content
+following the text. By avoiding forcing the reader to scroll back, you improve the user experience.
+
+| Good ✅                                                                          | Bad ❌                                                                         |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| The _following diagram_ displays the application architecture for this tutorial. | As seen in the _diagram above_, the application architecture is hosted on AWS. |
 
 ## Emoticons
 
+Do not use emoticons in headlines or text. Emoticons are great for conveying emotions and making the text more
+welcoming, but they come at the cost of making the text less formal. Our technical documentation is a place that all
+customers should trust. As a result, we want to convey as much professionalism as possible so that the text and its
+content are highly trusted.
+
+The exception to this rule is the usage of ✅ and ❌ in markdown tables. These two symbols help the reader scan the
+information faster and reduce the cognitive burden of interpreting the information.
+
+| Good ✅                                                                                                                   | Bad ❌                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| In this tutorial you will gain a basic understanding of how to migrate Kubernetes clusters to Palette’s management plane. | 👋 In this tutorial you will gain a basic understanding of how to migrate Kubernetes clusters to Palette’s management plane 🤖 |
+
 ## Text Formatting
 
+Some text should be formatted differently from the surrounding text to make the text stand out to the user. Usually,
+this formatting is accomplished by applying a different font treatment (such as **bold**, _italics_, or `monospace`).
+
+The following table covers the most common items that should be formatted.
+
+| Text Item| Format| Examples| | UI elements and interactions| **Bold**<br><br>**NOTE:** UI elements that do not have
+text associated with them, such as _left main menu_, _three-dot menu_, and _drop-down menu_, are neither bolded nor
+treated as proper nouns.| • On your **Cluster Profile** page, select **Settings > Edit Info**.<br><br>• From the left
+main menu, select **Clusters**.| | Emphasize words or reference a word| _Italics_| • Don't use & (ampersand) as a
+conjunction. Use the word _and_ instead.| | URLs (unlinked)| `Monospace`| • The API endpoint for your Palette
+installation. For example: `api.spectrocloud.com`.| | Directories, paths, and filenames (including full names of packs,
+images and image tags, pods, namespaces, containers, etc.)| `Monospace` <br><br>**NOTES**: <br><br>• If referring to the
+display name of a pack (or similar artifact or resource), use **bold** and enter it as it appears on the UI. If using a
+general reference, do not bold. <br><br>• If referring to an artifact or resource that is in the UI and uses kebab case
+(similar to how it would appear in a terminal), use monospace.| • Create the user-data file in your CanvOS directory.
+<br><br>• The following example shows a basic configuration for the FTP service, located at /etc/xinetd.d. <br><br>•
+Choose the Hello Universe pack. <br><br>• Select the hello-universe layer. <br><br>• Select the
+vmo-getting-started-cp-b9spr pod. <br><br>• The Hello Universe pack is a three-tier application.| | File types| ALL
+CAPS| The result is a content bundle that you can use to preload into your installer. The content bundle will be a ZST
+file. <br><br>• Make sure you download the correct Ubuntu ISO file.| | Error messages| `Monospace`|
+`The user does not have permission to perform this action.`| | Code examples and commands| `Monospace` <br><br>**NOTE**:
+If the name of the program is the same as the command, such as `kubectl`, use monospace. If the program and command
+differ, such as _Zstandard_ and `zstd`, only use monospace when referring to a code example. If a command is
+hyperlinked, you do not need to use monospace.| • Run the command `kubectl get pods`. <br><br>• Zstandard must be
+installed on your host. <br><br>• [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) is a
+requirement.| | Text input| `Monospace`| Enter `aws-profile-example` for the **Cluster profile**.| | Keys and keyboard
+combinations| **Bold** and ALL CAPS. Connect combinations with `+`.| Press **CTRL + D**.| | Placeholder text|
+`<monospace-kebab-case>` <br><br>**NOTE**: Terraform placeholder text is an exception.| Replace `<api-key>` with your
+Palette API key.|
+
 ### Commands & Parameters
+
+Always use the long form of a command, as it helps the reader better understand the command's actions.
+
+> [!IMPORTANT] Certain commands do not have long forms available.
+
+| Good ✅                                        | Bad ❌                                |
+| ---------------------------------------------- | ------------------------------------- |
+| `kubectl get pods --namespace service_banking` | `kubectl get pods -n service_banking` |
 
 #### Command Output
 
