@@ -349,9 +349,9 @@ Parentheses are often considered distracting or confusing. Only use them in cert
 Specify parameters, values, files, and similar data to clarify the actions a customer needs to take. Parentheses are not
 required if the context or next actions are clear.
 
-| Good ✅                                                                                   | Also Acceptable 👍                                                                                                                          |
-| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64 architecture (`ARCH=amd64`). | Configure the RHEL OS and the AMD64 architecture.<br><br><pre lang="sh"><code>export OS_DISTRIBUTION=rhel<br>export ARCH=amd64</code></pre> |
+| Good ✅ | Also Acceptable 👍 |
+| --- | --- |
+| Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64 architecture (`ARCH=amd64`). | Configure the RHEL OS and the AMD64 architecture.<br><br><code>export OS_DISTRIBUTION=rhel</code><br><code>export ARCH=amd64</code> |
 
 ### List Items
 
