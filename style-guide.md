@@ -834,7 +834,7 @@ The `<details>` element creates a disclosure widget in which text is visible onl
 "open" state. This can be useful in scenarios where the additional information is primarily beneficial in the present
 context but does not warrant a stand-alone section or page. Other good use cases are exposing lengthy code snippets.
 
-The screenshot below shows an example of `<details>` element.
+The screenshot below shows an example of a `<details>` element.
 
 ![Example of details element.](./static/assets/docs/images/style-guide_details-element.webp)
 
