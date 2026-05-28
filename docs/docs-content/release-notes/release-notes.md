@@ -98,7 +98,7 @@ tags: ["release-notes"]
     the current set of supported parameters.
   - **Recovery**: If `configserver` does not reach **Ready** after the upgrade due to leftover Nginx pods holding host
     ports, refer to the
-    [Scenario - configserver Stuck on init-rootdomain-traefik After Upgrade to 4.9.a](../troubleshooting/palette-upgrade.md#scenario---configserver-stuck-on-init-rootdomain-traefik-after-upgrade-to-49a)
+    [configserver Stuck on init-rootdomain-traefik After Upgrade to 4.9.a](../troubleshooting/palette-upgrade.md#configserver-stuck-on-init-rootdomain-traefik-after-upgrade-to-49a)
     troubleshooting guide for the manual cleanup procedure.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
