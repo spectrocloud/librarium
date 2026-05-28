@@ -1,3 +1,13 @@
+---
+sidebar_label: "Customizing Images"
+title: "Creating Scripts to Customize Images"
+description: "Learn how to install create customization scripts to use with Golden Images"
+icon: " "
+hide_table_of_contents: false
+sidebar_position: 10
+tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
+---
+
 # Customization Templates
 
 Customization templates define seal and generalize scripts used during golden image finalization. They prepare the OS for cloning by removing machine-specific data and ensuring each clone gets a unique identity.
