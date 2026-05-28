@@ -742,9 +742,9 @@ When referring to specific product user interface components, use the following 
 > For UI elements that contains a symbol or emoji, only include the text. If the button only contains a symbol, then use
 > the symbol in the documentation.
 >
-> Example: Instead of **+ Add Cluster Profile**, write **Add Cluster Profile**.
+> • Example: Instead of **+ Add Cluster Profile**, write **Add Cluster Profile**.
 >
-> Example: + button. Write it as **+** and refer to the UI element context. “Click on the Addon Layers row **+**
+> • Example: + button. Write it as **+** and refer to the UI element context. “Click on the Addon Layers row **+**
 > button.”
 
 # Documentation UI Components
@@ -753,7 +753,27 @@ For a list of available UI components, refer to the documentation’s repository
 
 ## Markdown Tables
 
+Tables make complex information easier to understand by presenting it in a clear structure. All table headings should be in **bold**.
+
+| Tables are sometimes useful for| Example|
+| -------------------------------| -------|
+| Data or values| Text formats and their associated HTML codes|
+| Simple instructions| User interface actions and their associated keyboard shortcuts|
+| Categories of things with examples| SKUs and the products|
+| Collections of things with two or more attributes| Event dates with times and locations|
+| Differentiation| A table can often display differentiation easier than it would be to use words.|
+
 ## Admonitions
+
+Admonitions, also known as callouts, are formatted text blocks for providing useful hints, highlighting potential problems, and informing readers about critical consequences. Use admonitions sparingly, as they can be distracting for the reader. The table provides guidance for when to use the various types of admonitions.
+
+> [!IMPORTANT]
+>
+> Do not add admonitions sequentially. In other words, don’t stack admonitions.
+
+The picture below shows an example of what not to do.
+
+![A screenshot showing stacked admonitions.](/style-guide_admonitions.webp)
 
 ## Supplemental Information
 
