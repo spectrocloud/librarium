@@ -108,13 +108,13 @@ Use “you” to address the user directly. Use “we” when providing recommen
 
 Use the passive voice when:
 
-- The actor is unknown, irrelevant, or implied.
+* The actor is unknown, irrelevant, or implied.
 
-- You want to emphasize the result over the person or system doing the action.
+* You want to emphasize the result over the person or system doing the action.
 
-- You are listing known limitations or system constraints.
+* You are listing known limitations or system constraints.
 
-- You are following a neutral, objective, or formal tone.
+* You are following a neutral, objective, or formal tone.
 
 | Acceptable ✅                                            | Why?                                                                              |
 | -------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -396,7 +396,7 @@ and initialisms, where you explain the term first and later reference it in pare
 | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | These images install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster deployment.            | These images install an immutable OS and software dependencies compatible with a specific Kubernetes version at runtime (i.e., during the cluster deployment). |
 | Palette replaces unhealthy nodes automatically to maintain the desired cluster state.                                                              | Palette repaves unhealthy nodes (replaces them with new ones that match the original configuration) automatically to maintain the desired cluster state.       |
-| - Maintenance Mode - Turn off scheduling (cordon) and migrate (drain) workloads to other healthy nodes in the cluster without service disruptions. | - Maintenance Mode - Cordon and drain nodes, migrating workloads to other healthy nodes in the cluster without service disruptions.                            |
+| Maintenance Mode - Turn off scheduling (cordon) and migrate (drain) workloads to other healthy nodes in the cluster without service disruptions. | Maintenance Mode - Cordon and drain nodes, migrating workloads to other healthy nodes in the cluster without service disruptions.                            |
 
 ### Single and Plural Subjects
 
@@ -409,7 +409,7 @@ In situations where an action or situation may affect one or more subjects, defa
 
 ## Commas
 
-**Use a comma** before the conjunction (and/or) in a list of three or more items (also known as the Oxford comma).
+**Use a comma** before the conjunction (_and_/_or_) in a list of three or more items (also known as the Oxford comma).
 
 | Good ✅                                                                                                                                         | Bad ❌                                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -511,7 +511,33 @@ The following table lists examples using dialogue tags.
 
 ## Numbers
 
+Spell out numbers zero through nine. Use numerals for 10 and above. Spell out ordinal numbers (e.g., _first_, _second_, _third_) and fractions.
+
+In how-to steps, if instructions refer to a specific step or steps, use numbers instead of spelling out the word. 
+
+Use numerals for units, measurements, and configurations.
+
+| Good ✅                                                | Bad ❌                                                 |
+| ------------------------------------------------------ | ------------------------------------------------------ |
+| The Kubernetes control plane should have at least _three_ nodes if configured to be highly-available.| The Kubernetes control plane should have at least _3_ nodes if configured to be highly-available.|
+| _First_ drain the worker nodes.| _1st_ drain the worker nodes.|
+| _Three-fifths_ of the log report contains decipherable content.| _3/5_ of the log report contains decipherable content.|
+| The maximum size is _350,000_ items.| The maximum size is _350000_ items.|
+| 5. Repeat steps _1 - 4_ for all Edge hosts.| Repeat steps _one through four_ for all Edge hosts.|
+| 13. Repeat step _12_ for each pack you want to install.| Repeat _step twelve_ for each pack you want to install.
+| Set the timeout to _5_ seconds.| Set the timeout to _five_ seconds.|
+| Allocate _100_ GB of storage to the VM.| 	Allocate _one hundred_ GB of storage to the VM.|
+
 ## Lists
+
+Use a numbered list when order matters, such as a procedure or when items are prioritized (such as a top 10 list); otherwise, use a bulleted list. Add a blank line between each item.
+
+Use sentence capitalization for each item in a list. The first word of each item must begin with a capital letter unless the first word is a proper noun that explicitly uses lowercase, such as library names.
+
+| Good ✅ | Bad ❌ |
+| --- | --- |
+| To sign in to the database:<br><br>1. From the **File Menu**, select **Open database**.<br>2. Under **Username**, enter your full name.<br>3. Enter your **Password**, and then select **OK**. | To sign in to the database:<br><br>* From the **File Menu**, select **Open database**.<br>* Under **Username**, enter your full name.<br>* Enter your **Password**, and then select **OK**. |
+| Ensure you have the following programs on your host before installing the Palette agent:<br><br>* `bash`<br>* `jq`<br>* Zstandard (`zstd`) | Ensure you have the following programs on your host before installing the Palette agent:<br><br>1. `bash`<br>2. `jq`<br>3. Zstandard (`zstd`) |
 
 ## Colons
 
