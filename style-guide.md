@@ -253,11 +253,10 @@ Avoid using the following Latin phrases, as their meaning is not understood by a
 
 - _i.e._ (id est) - “In other words”
 
-| Good ✅                                                                       | Bad ❌                                                                                                                                            |
-| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| • Modification of kernel parameters (_for example_, `core_pattern`)| • Modification of kernel parameters (_e.g._, core_pattern)|
-| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster deployment.| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version at runtime (_i.e._, during the cluster deployment).|
-
+| Good ✅                                                                                                                                 | Bad ❌                                                                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| • Modification of kernel parameters (_for example_, `core_pattern`)                                                                     | • Modification of kernel parameters (_e.g._, core_pattern)                                                                                                       |
+| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster deployment. | These images install an immutable OS and software dependencies compatible with a specific Kubernetes version at runtime (_i.e._, during the cluster deployment). |
 
 # Grammar Guidance
 
@@ -365,8 +364,8 @@ required if the context or next actions are clear.
 
 This procedure requires a physical or virtual Linux machine with an AMD64 or x86_64 processor architecture.
 
-| Good ✅                                                                                                                   | Bad ❌                                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Good ✅                                                                                                                     | Bad ❌                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | • PXK-E - The `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS. | • PXK-E (the `K8S_DISTRIBUTION=kubeadm value` in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS) |
 
 ### Optional Steps
@@ -398,11 +397,11 @@ information in an alternate manner.
 If introducing a lesser-known phrase that will be used throughout the page, you can use a similar approach to acronyms
 and initialisms, where you explain the term first and later reference it in parentheses.
 
-| Good ✅                                                                                                                                            | Bad ❌                                                                                                                                                         |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster deployment.            | These images install an immutable OS and software dependencies compatible with a specific Kubernetes version at runtime (i.e., during the cluster deployment). |
-| Palette replaces unhealthy nodes automatically to maintain the desired cluster state.                                                              | Palette repaves unhealthy nodes (replaces them with new ones that match the original configuration) automatically to maintain the desired cluster state.       |
-| Maintenance Mode - Turn off scheduling (cordon) and migrate (drain) workloads to other healthy nodes in the cluster without service disruptions. | Maintenance Mode - Cordon and drain nodes, migrating workloads to other healthy nodes in the cluster without service disruptions.                            |
+| Good ✅                                                                                                                                          | Bad ❌                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster deployment.          | These images install an immutable OS and software dependencies compatible with a specific Kubernetes version at runtime (i.e., during the cluster deployment). |
+| Palette replaces unhealthy nodes automatically to maintain the desired cluster state.                                                            | Palette repaves unhealthy nodes (replaces them with new ones that match the original configuration) automatically to maintain the desired cluster state.       |
+| Maintenance Mode - Turn off scheduling (cordon) and migrate (drain) workloads to other healthy nodes in the cluster without service disruptions. | Maintenance Mode - Cordon and drain nodes, migrating workloads to other healthy nodes in the cluster without service disruptions.                              |
 
 ### Single and Plural Subjects
 
@@ -517,37 +516,82 @@ The following table lists examples using dialogue tags.
 
 ## Numbers
 
-Spell out numbers zero through nine. Use numerals for 10 and above. Spell out ordinal numbers (e.g., _first_, _second_, _third_) and fractions.
+Spell out numbers zero through nine. Use numerals for 10 and above. Spell out ordinal numbers (e.g., _first_, _second_,
+_third_) and fractions.
 
-In how-to steps, if instructions refer to a specific step or steps, use numbers instead of spelling out the word. 
+In how-to steps, if instructions refer to a specific step or steps, use numbers instead of spelling out the word.
 
 Use numerals for units, measurements, and configurations.
 
-| Good ✅                                                | Bad ❌                                                 |
-| ------------------------------------------------------ | ------------------------------------------------------ |
-| The Kubernetes control plane should have at least _three_ nodes if configured to be highly-available.| The Kubernetes control plane should have at least _3_ nodes if configured to be highly-available.|
-| _First_ drain the worker nodes.| _1st_ drain the worker nodes.|
-| _Three-fifths_ of the log report contains decipherable content.| _3/5_ of the log report contains decipherable content.|
-| The maximum size is _350,000_ items.| The maximum size is _350000_ items.|
-| 5. Repeat steps _1 - 4_ for all Edge hosts.| Repeat steps _one through four_ for all Edge hosts.|
-| 13. Repeat step _12_ for each pack you want to install.| Repeat _step twelve_ for each pack you want to install.
-| Set the timeout to _5_ seconds.| Set the timeout to _five_ seconds.|
-| Allocate _100_ GB of storage to the VM.| 	Allocate _one hundred_ GB of storage to the VM.|
+| Good ✅                                                                                               | Bad ❌                                                                                            |
+| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| The Kubernetes control plane should have at least _three_ nodes if configured to be highly-available. | The Kubernetes control plane should have at least _3_ nodes if configured to be highly-available. |
+| _First_ drain the worker nodes.                                                                       | _1st_ drain the worker nodes.                                                                     |
+| _Three-fifths_ of the log report contains decipherable content.                                       | _3/5_ of the log report contains decipherable content.                                            |
+| The maximum size is _350,000_ items.                                                                  | The maximum size is _350000_ items.                                                               |
+| 5. Repeat steps _1 - 4_ for all Edge hosts.                                                           | Repeat steps _one through four_ for all Edge hosts.                                               |
+| 13. Repeat step _12_ for each pack you want to install.                                               | Repeat _step twelve_ for each pack you want to install.                                           |
+| Set the timeout to _5_ seconds.                                                                       | Set the timeout to _five_ seconds.                                                                |
+| Allocate _100_ GB of storage to the VM.                                                               | Allocate _one hundred_ GB of storage to the VM.                                                   |
 
 ## Lists
 
-Use a numbered list when order matters, such as a procedure or when items are prioritized (such as a top 10 list); otherwise, use a bulleted list. Add a blank line between each item.
+Use a numbered list when order matters, such as a procedure or when items are prioritized (such as a top 10 list);
+otherwise, use a bulleted list. Add a blank line between each item.
 
-Use sentence capitalization for each item in a list. The first word of each item must begin with a capital letter unless the first word is a proper noun that explicitly uses lowercase, such as library names.
+Use sentence capitalization for each item in a list. The first word of each item must begin with a capital letter unless
+the first word is a proper noun that explicitly uses lowercase, such as library names.
 
-| Good ✅ | Bad ❌ |
-| --- | --- |
-| To sign in to the database:<br><br>1. From the **File Menu**, select **Open database**.<br>2. Under **Username**, enter your full name.<br>3. Enter your **Password**, and then select **OK**. | To sign in to the database:<br><br>* From the **File Menu**, select **Open database**.<br>* Under **Username**, enter your full name.<br>* Enter your **Password**, and then select **OK**. |
-| Ensure you have the following programs on your host before installing the Palette agent:<br><br>* `bash`<br>* `jq`<br>* Zstandard (`zstd`) | Ensure you have the following programs on your host before installing the Palette agent:<br><br>1. `bash`<br>2. `jq`<br>3. Zstandard (`zstd`) |
+| Good ✅                                                                                                                                                                                                | Bad ❌                                                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| To sign in to the database:<br><br>1. From the **File Menu**, select **Open database**.<br><br>2. Under **Username**, enter your full name.<br><br>3. Enter your **Password**, and then select **OK**. | To sign in to the database:<br><br>• From the **File Menu**, select **Open database**.<br><br>• Under **Username**, enter your full name.<br><br>• Enter your **Password**, and then select **OK**. |
+| Ensure you have the following programs on your host before installing the Palette agent:<br><br>• `bash`<br><br>• `jq`<br><br>• Zstandard (`zstd`)                                                     | Ensure you have the following programs on your host before installing the Palette agent:<br><br>1. `bash`<br><br>2. `jq`<br><br>3. Zstandard (`zstd`)                                               |
 
 ## Colons
 
+Use a colon when you want to introduce a list. For instance, when listing several items you might write, "Make sure you
+bring the items Rita requested to the party: soda, board games, and a side dish." When in doubt, default to a period and
+start a new sentence.
+
+| Good ✅                                                                                                                                                                           | Bad ❌                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Common use cases for enabling authentication:<br><br>• Prevent others from accessing other users' resources.<br><br>• Prevent abuse or spam from those not part of the community. | Common use cases for enabling authentication: Prevent others from accessing other users resources. Prevent abuse or spam from those not part of the community. |
+| This actually means that you may never need to manipulate ReplicaSet objects. Use a Deployment instead, and define your application in the spec section.                          | This actually means that you may never need to manipulate ReplicaSet objects: use a Deployment instead, and define your application in the spec section.       |
+| Issue the following command.<br><br><code>kubectl get pods</code>                                                                                                                 | Issue the following command: <br><br>kubectl get pods<code></code>                                                                                             |
+
 ## Computer Resources (Units of Measurement)
+
+CPU is what’s known as a “dual noun,” meaning it can be a countable or uncountable noun depending on the context. Almost
+always, CPU is countable, as it refers to the number of processing units. Typically, it is not a unit of measurement
+(like MB, GB, and TB), which are uncountable nouns. However, in files, it is sometimes treated as a unit of measurement
+(`cpu: 4`) , which is where the confusion stems from.
+
+If CPU is the subject of a sentence, it is countable. When listed as a resource, it is also countable. Other resources,
+like GB, are never countable. (As an example, GB is a unit of measurement that stands for gigabytes; as a result, you
+never say GBs.)
+
+| Good ✅                                                                   | Bad ❌                                                                                                    |
+| ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Allocate 4 CPUs.                                                          | Set the amount of CPU to allocate to a container.<br><br>(_Amount_ is the subject, which is uncountable.) |
+| Prerequisites:<br><br>• 8 CPUs<br><br>• 16 GB RAM<br><br>• 150 GB storage |                                                                                                           |
+
+There are multiple ways to measure computer resources. Each of the below items means something different:
+
+- **m = milliCPU,** a unit of CPU. 1000m = 1 CPU.
+
+- **Mi (MiB) = mebibytes**, a unit of memory that is measured in base-2 (binary).
+
+- **MB = megabyte**, a unit of memory that is measured in base-10.
+
+- **Gi (GiB) = gibibyte**, a unit of storage that is measured in base-2 (binary).
+
+- **GB = gigabyte**, a unit of storage that is measured in base-10.
+
+Since they have different bases, the units are not interchangeable. For example, **1 Gi = 1.07 GB**.
+
+Whether to use MB/GB or Mi/Gi depends on the context. YAML files in Kubernetes allow both measurement units when
+defining resources. Use the one defined in the YAML file. If no YAML is provided, use MB/GB, as it is more human
+readable.
 
 # Other Style Choices
 
