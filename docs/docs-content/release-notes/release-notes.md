@@ -202,8 +202,6 @@ The following community packs have been released:
 
 <!-- prettier-ignore-end -->
 
-#### Deprecations and Removals
-
 ## May 22, 2026 - Component Updates {#component-updates-2026-21}
 
 The following components have been updated for Palette version 4.9.5 - 4.9.8.
