@@ -788,24 +788,34 @@ Insert text here
 :::
 ```
 
-```md title="Example"
+Examples:
+
+````md
+:::tip
+
+Insert text here
+
+:::
+
+```md
 :::warning
 
 Insert text here
 
 :::
 ```
+````
 
-| Type             | Guidance                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tip              | ✅ Use when giving advice or a suggestion that could improve the reader’s product experience or action. <br><br>**Example:**<br><br>Use the `--describe` flag for additional information that displays the IP addresses. <br><br>❌ Avoid tips that span multiple sentences. Consider placing this information in the text or potentially in an info box.                                                                                                                                                                                      |
-| Note             | ⚠️ Not an approved admonition. Use **Info** instead.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Information      | ✅ Use when supplementary information is available to the reader and the information is neither critical to a procedure nor hinders comprehension. These should be brief and not exceed one paragraph. <br><br>Example: <br><br>For important guidelines on updating pack versions, review Update the Pack Version. <br><br>❌ Evaluate the content you are placing inside the info box. If it’s a warning, use the caution type. If it’s advice, then use the tip method. Info boxes should only be used to provide supplemental information. |
-| Caution          | ⚠️ Deprecated. Use **Warning** instead.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Warning          | ✅ Use to warn users or to make them aware of something important. <br><br>Example: <br><br>Deploying a cluster with a single worker node and master node is not considered a highly available deployment. <br><br>❌ Do not use caution when sharing general information that is a better fit for info box. Also, if an action or side effect of an action is dangerous, then use danger instead.                                                                                                                                             |
-| Danger           | ✅ Use this when the user needs to be aware of an action or task with potentially dangerous side effects. Examples are node repaves, actions that could result in a data loss, or security vulnerabilities. Use this sparingly. <br><br>Example: <br><br>Disabling the certificate will allow HTTP connections and disable HTTPS. <br><br>❌ Do not use danger when caution suffices. Danger immediately draws the reader's attention and should not be used as an attention getter.                                                           |
-| Tech Preview     | ✅ Use this custom admonition to indicate that a feature is in [Tech Preview](https://docs.google.com/document/d/1BFRW47agN7DIDhPuVC_TZZXeiGRFDF5I4x8bK0ZoI-Q/edit?tab=t.0#heading=h.77291pqftl9x). Place this admonition at the end of the intro section of the document. <br><br>You don't need to provide content for this admonition—it renders the same standardized message every time. However, if you need to deviate from the template text, you can provide a custom message.                                                        |
-| Further Guidance | ✅ Use this custom admonition to link to tutorials from other docs and also to provide further guidance within the tutorials.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Type                                                                                                                                                                                                                                                                                                                                                                                                                   | Guidance                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tip / `tip`                                                                                                                                                                                                                                                                                                                                                                                                            | ✅ Use when giving advice or a suggestion that could improve the reader’s product experience or action. <br><br>**Example:**<br><br>Use the `--describe` flag for additional information that displays the IP addresses. <br><br>❌ Avoid tips that span multiple sentences. Consider placing this information in the text or potentially in an info box.                                                                                                                                                                                      |
+| Note                                                                                                                                                                                                                                                                                                                                                                                                                   | ⚠️ Not an approved admonition. Use **Info** instead.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Information / `info`                                                                                                                                                                                                                                                                                                                                                                                                   | ✅ Use when supplementary information is available to the reader and the information is neither critical to a procedure nor hinders comprehension. These should be brief and not exceed one paragraph. <br><br>Example: <br><br>For important guidelines on updating pack versions, review Update the Pack Version. <br><br>❌ Evaluate the content you are placing inside the info box. If it’s a warning, use the caution type. If it’s advice, then use the tip method. Info boxes should only be used to provide supplemental information. |
+| Caution                                                                                                                                                                                                                                                                                                                                                                                                                | ⚠️ Deprecated. Use **Warning** instead.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Warning / `warning` ✅ Use to warn users or to make them aware of something important. <br><br>Example: <br><br>Deploying a cluster with a single worker node and master node is not considered a highly available deployment. <br><br>❌ Do not use caution when sharing general information that is a better fit for info box. Also, if an action or side effect of an action is dangerous, then use danger instead. |
+| Danger / `danger`                                                                                                                                                                                                                                                                                                                                                                                                      | ✅ Use this when the user needs to be aware of an action or task with potentially dangerous side effects. Examples are node repaves, actions that could result in a data loss, or security vulnerabilities. Use this sparingly. <br><br>Example: <br><br>Disabling the certificate will allow HTTP connections and disable HTTPS. <br><br>❌ Do not use danger when caution suffices. Danger immediately draws the reader's attention and should not be used as an attention getter.                                                           |
+| Tech Preview / `preview`                                                                                                                                                                                                                                                                                                                                                                                               | ✅ Use this custom admonition to indicate that a feature is in [Tech Preview](https://docs.google.com/document/d/1BFRW47agN7DIDhPuVC_TZZXeiGRFDF5I4x8bK0ZoI-Q/edit?tab=t.0#heading=h.77291pqftl9x). Place this admonition at the end of the intro section of the document. <br><br>You don't need to provide content for this admonition—it renders the same standardized message every time. However, if you need to deviate from the template text, you can provide a custom message.                                                        |
+| Further Guidance / `further`                                                                                                                                                                                                                                                                                                                                                                                           | ✅ Use this custom admonition to link to tutorials from other docs and also to provide further guidance within the tutorials.                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ## Supplemental Information
 
@@ -820,7 +830,7 @@ context but does not warrant a stand-alone section or page. Other good use cases
 
 The screenshot below shows an example of details element.
 
-[!Example of details element](./static/assets/docs/images/style-guide_details-element.webp)
+![Example of details element.](./static/assets/docs/images/style-guide_details-element.webp)
 
 Try to avoid overusing the `<details>` element as search, crawlers, and PDF generators are unable to handle the HTML
 element.
@@ -831,7 +841,7 @@ Where possible, conclude pages with a Next Steps section to guide users on what 
 [Resource Lists](#resources-list), as it provides direction rather than a list of out-of-context resources. Use a Level
 2 heading for this section.
 
-[!Example of next steps](./static/assets/docs/images/style-guide_next-steps.webp)
+![Example of next steps.](./static/assets/docs/images/style-guide_next-steps.webp)
 
 ## Resources List
 
@@ -842,18 +852,41 @@ Lists, consider removing them and creating a Next Steps section instead.
 A Resource List can be used in conjunction with [Next Steps](#next-steps). If creating or keeping a Resource List
 enhances the user experience, it should be the last section and use a Level 2 heading.
 
+```md
+## Resources
+
+- [VM Management Packs and Profiles](/vm-management/vm-packs-profiles)
+
+- [Spectro VM Dashboard](/vm-management/vm-packs-profiles/vm-dashboard)
+
+- [Create Spectro VM Dashboard Profile](/vm-management/vm-packs-profiles/create-vm-dashboard-profile)
+
+- [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard)
+
+- [Create and Manage VMs](/vm-management/create-manage-vm)
+
+- [Deploy VM from a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
+
+- [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
+
+- [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
+
+- [VM Roles and Permissions](/vm-management/vm-roles-permissions)
+```
+
 # Image File Naming Standard
 
-The file name for images that are used in only one markdown file or partial is composed of the following sections.
+The file name format for images used in a single markdown file or partial is as follows.
 
 `<markdown-file-name>/<partial-name>_<image-description>.webp`
 
 Examples:
 
-- `clusters_pcg_architecture_system-pcg-ui`
+- `clusters_pcg_architecture_system-pcg-ui.webp`
 - `cluster-import_usage-costs.webp`
 
 Limit the image description to no more than three words to keep the file name concise, where possible.
 
-Place the images shared by more than one markdown file or partial in the `librarium/static/assets/docs/images/shared`
-directory. The file name of shared images follows the `<image-description>.webp` naming convention
+For images that are shared across multiple markdown files or partials, place them in the
+`librarium/static/assets/docs/images/shared` directory. The file name for shared images should follow the
+`<image-description>.webp` naming convention.
