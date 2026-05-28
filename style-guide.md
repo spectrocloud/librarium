@@ -308,12 +308,12 @@ Use title case for headings. Below are some helpful tips.
 - For hyphenated words, capitalize the first and subsequent elements unless they are articles, prepositions, and
   coordinating conjunctions.
 
-| Good ✅                           | Bad ❌                             |
-| --------------------------------- | ---------------------------------- |
-| Deploy a Pack Registry Server     | Deploying A Pack Registry Server   |
-| Access Audit Logs                 | Accessing audit logs               |
+| Good ✅                           | Bad ❌                            |
+| --------------------------------- | --------------------------------- |
+| Deploy a Pack Registry Server     | Deploying A Pack Registry Server  |
+| Access Audit Logs                 | Accessing audit logs              |
 | Quick Start with Palette App Mode | Quick start with Palette app mode |
-| The Command-Line Interface        | The command-line interface         |
+| The Command-Line Interface        | The command-line interface        |
 
 ### Acronyms and Initialisms
 
@@ -349,29 +349,33 @@ Parentheses are often considered distracting or confusing. Only use them in cert
 Specify parameters, values, files, and similar data to clarify the actions a customer needs to take. Parentheses are not
 required if the context or next actions are clear.
 
-| Good ✅ | Also Acceptable 👍 |
-| --- | --- |
-| Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64 architecture (`ARCH=amd64`). | Configure the RHEL OS and the AMD64 architecture.<br><br><code>export OS_DISTRIBUTION=rhel</code><br><code>export ARCH=amd64</code> |
-| Specify a remote repository using the standard address format (for example, `example.com/bundle/example-bundle.tar.zst`), or use the URI format (`file:///path/to/bundle`) for local repositories.| Specify a remote repository using the standard address format, such as `example.com/bundle/example-bundle.tar.zst`, or use the URI format for local repositories. For example, `file:///path/to/bundle`.|
-| This procedure requires a physical or virtual Linux machine with an AMD64 (x86_64) processor architecture.| This procedure requires a physical or virtual Linux machine with an AMD64 or x86_64 processor architecture.|
+| Good ✅                                                                                                                                                                                            | Also Acceptable 👍                                                                                                                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64 architecture (`ARCH=amd64`).                                                                                                          | Configure the RHEL OS and the AMD64 architecture.<br><br><code>export OS_DISTRIBUTION=rhel</code><br><code>export ARCH=amd64</code>                                                                      |
+| Specify a remote repository using the standard address format (for example, `example.com/bundle/example-bundle.tar.zst`), or use the URI format (`file:///path/to/bundle`) for local repositories. | Specify a remote repository using the standard address format, such as `example.com/bundle/example-bundle.tar.zst`, or use the URI format for local repositories. For example, `file:///path/to/bundle`. |
+| This procedure requires a physical or virtual Linux machine with an AMD64 (x86_64) processor architecture.                                                                                         | This procedure requires a physical or virtual Linux machine with an AMD64 or x86_64 processor architecture.                                                                                              |
 
 ### List Items
 
 This procedure requires a physical or virtual Linux machine with an AMD64 or x86_64 processor architecture.
 
-| Good ✅                           | Bad ❌                             |
-| --------------------------------- | ---------------------------------- |
-| PXK-E - The `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS.| PXK-E (the `K8S_DISTRIBUTION=kubeadm value` in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS)
+| Good ✅                                                                                                                   | Bad ❌                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| PXK-E - The `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS. | PXK-E (the `K8S_DISTRIBUTION=kubeadm value` in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS) |
 
 ### Optional Steps
 
-Preface optional steps with the text _(Optional)_. This allows customers to identify optional steps at a glance, preventing them from reading through or performing actions that may not be applicable to their situation (or worse, performing an action only to later realize they are not the intended audience, thus disrupting or compromising their workflow). 
+Preface optional steps with the text _(Optional)_. This allows customers to identify optional steps at a glance,
+preventing them from reading through or performing actions that may not be applicable to their situation (or worse,
+performing an action only to later realize they are not the intended audience, thus disrupting or compromising their
+workflow).
 
-If applicable, place the circumstance that makes the step optional **immediately** after _(Optional)_ so that customers can quickly decide to proceed with or skip the step.
+If applicable, place the circumstance that makes the step optional **immediately** after _(Optional)_ so that customers
+can quickly decide to proceed with or skip the step.
 
-| Good ✅                           | Bad ❌                             |
-| --------------------------------- | --------------------------------- |
-| 3. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh <stig-content-version></code> | |
+| Good ✅                                                                                                                                                                                                                                                          | Bad ❌ |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 3. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh <stig-content-version></code> |        |
 
 ### Parenthetical Expressions and Jargon
 
