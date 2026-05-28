@@ -328,12 +328,27 @@ _IaaS_, _kCh_, and _SaaS_.
 >
 > Certain acronyms and initialisms (such as _OS_, _CPU_, _IP_, and more) are considered industry standard and do not
 > need to be spelled out. Refer to the Vale file
-> [acronym-no-expand.yml](./packages/spectrocloud-docs-internal/styles/spectrocloud-docs-internal/acronym-no-expand.yml)
+> [acronym-no-expand.yml](https://github.com/spectrocloud/spectro-vale-pkg/blob/main/packages/spectrocloud-docs-internal/styles/spectrocloud-docs-internal/acronym-no-expand.yml)
 > for a list of exceptions.
 
 ## Parentheses
 
+Parentheses are often considered distracting or confusing. Only use them in certain situations.
+
+| Use Case| Allowed| | [Acronyms and initialisms](#acronyms-and-initialisms)| ✅| |
+[Clarifying values or examples](#clarifying-values-or-examples) (parameters, values, files, etc.)| ✅| |
+[List items](#list-items)| ❌| | [Optional steps](#optional-steps)| ✅| |
+[Parenthetical expressions and jargon](#parenthetical-expressions-and-jargon)| ⚠️ (depends)| |
+[Single and plural subjects](#single-and-plural-subjects)| ❌|
+
 ### Clarifying Values or Examples
+
+Specify parameters, values, files, and similar data to clarify the actions a customer needs to take. Parentheses are not
+required if the context or next actions are clear.
+
+| Good ✅                                                                                   | Also Acceptable 👍                                                                                                         |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Configure the RHEL OS (`OS_DISTRIBUTION=rhel`) and the AMD64 architecture (`ARCH=amd64`). | Configure the RHEL OS and the AMD64 architecture.<br/><br/>`sh<br/>export OS_DISTRIBUTION=rhel<br/>export ARCH=amd64<br/>` |
 
 ### List Items
 
