@@ -344,10 +344,10 @@ Take the following steps to install the Palette agent on an Edge host for the fi
 
    ```shell
    export http_proxy=<httpProxyAddress>
-  export http_proxy=<http-proxy-address>
-  export https_proxy=<https-proxy-address>
-  export HTTP_PROXY=<http-proxy-address>
-  export HTTPS_PROXY=<https-proxy-address>
+   export http_proxy=<http-proxy-address>
+   export https_proxy=<https-proxy-address>
+   export HTTP_PROXY=<http-proxy-address>
+   export HTTPS_PROXY=<https-proxy-address>
    ```
 
 4. Issue the command below to create the `user-data` file and configure your host declaratively.
@@ -622,10 +622,10 @@ building a custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as wel
    export http_proxy=<httpProxyAddress>
    export https_proxy=<httpsProxyAddress>
    export HTTP_PROXY=<httpProxyAddress>
-  export http_proxy=<http-proxy-address>
-  export https_proxy=<https-proxy-address>
-  export HTTP_PROXY=<http-proxy-address>
-  export HTTPS_PROXY=<https-proxy-address>
+   export http_proxy=<http-proxy-address>
+   export https_proxy=<https-proxy-address>
+   export HTTP_PROXY=<http-proxy-address>
+   export HTTPS_PROXY=<https-proxy-address>
    ```
 
 3. Download the airgap agent installation package and save it as a TAR file. Replace `<architecture>` with the
@@ -923,16 +923,16 @@ for guidance.
 
 ## Uninstall Palette Agent
 
-The `palette-agent uninstall` command removes the Palette agent. The
-uninstall process removes agent binaries, systemd services, Kubernetes components, and runtime state, but some artifacts from
-the agent or the Kubernetes distribution it provisioned may remain on the filesystem.
+The `palette-agent uninstall` command removes the Palette agent. The uninstall process removes agent binaries, systemd
+services, Kubernetes components, and runtime state, but some artifacts from the agent or the Kubernetes distribution it
+provisioned may remain on the filesystem.
 
 The following table lists the available flags for `palette-agent uninstall`.
 
-| **Flag**               | **Description**                                                                                                                                                                                                                                                                     |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--force`              | Skip the interactive confirmation prompt. Required for non-interactive or automated use.                                                                                                                                                                                            |
-| `--dry-run`            | Display every step that would run without modifying anything on the host.                                                                                                                                                                                                           |
+| **Flag**               | **Description**                                                                                                                                                                                                                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--force`              | Skip the interactive confirmation prompt. Required for non-interactive or automated use.                                                                                                                                                                                                    |
+| `--dry-run`            | Display every step that would run without modifying anything on the host.                                                                                                                                                                                                                   |
 | `--stylus-root <path>` | Specify the directory where the Palette agent was originally installed. By default, the Palette agent reads this value from `/etc/spectro/environment`. Use this flag if the environment file is missing or corrupt. Most installations use the default location and do not need this flag. |
 
 ### Prerequisites
@@ -1157,9 +1157,9 @@ re-exported or files extracted, depending on your management mode.
     export TOKEN=<your-palette-registration-token>
     ```
 
-3.  (Optional) The `user-data` file remains on the host after uninstalling the Palette agent. Review the existing file and
-    make changes if needed. Refer to the [central management mode install steps](#install-palette-agent) for an example
-    user data configuration. For a full list of parameters and arguments, refer to
+3.  (Optional) The `user-data` file remains on the host after uninstalling the Palette agent. Review the existing file
+    and make changes if needed. Refer to the [central management mode install steps](#install-palette-agent) for an
+    example user data configuration. For a full list of parameters and arguments, refer to
     [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md).
 
     ```shell
@@ -1250,9 +1250,9 @@ re-exported or files extracted, depending on your management mode.
    sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
    ```
 
-2. The file `/var/lib/spectro/userdata` remains on the host after uninstalling the Palette agent. Review the existing file
-   and make changes if needed. Refer to the [local management mode install steps](#install-palette-agent) for an example
-   user data configuration. For a full list of parameters and arguments, refer to
+2. The file `/var/lib/spectro/userdata` remains on the host after uninstalling the Palette agent. Review the existing
+   file and make changes if needed. Refer to the [local management mode install steps](#install-palette-agent) for an
+   example user data configuration. For a full list of parameters and arguments, refer to
    [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md).
 
    ```shell
