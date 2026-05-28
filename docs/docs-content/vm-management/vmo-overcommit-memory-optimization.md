@@ -11,7 +11,8 @@ Virtual Machine Orchestrator (VMO) enables higher VM density on existing infrast
 and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication. These methods allow
 operators to run more VMs per host while reducing physical infrastructure costs. For more information on memory and
 overcommit in VMO, refer to the
-[Over-Commit Resources to Enhance VM Performance](../create-manage-vm/advanced-topics/vm-oversubscription.md) page.
+[Over-Commit Resources to Enhance VM Performance](../vm-management/legacy-vmo/create-manage-vm/advanced-topics/vm-oversubscription.md)
+page.
 
 To help achieve higher density and resource optimization, there are several features you can use.
 
@@ -126,7 +127,7 @@ VNC console access, so it is appropriate only for server workloads that do not r
 
 You can enable headless mode through the VMO UI when creating or editing a VM.
 
-![Diagram from VMO CPU memory overcommitment doc](/vmo/vm-management_vmo_optimization_headless-mode-ui-4-9.webp)
+![Diagram from VMO CPU memory overcommitment doc](/vm-management_vmo_optimization_headless-mode-ui-4-9.webp)
 
 ## Kernel Same-Page Merging (KSM)
 
@@ -163,8 +164,6 @@ additionalConfig:
       matchLabels:
         node-role.kubernetes.io/worker: ""
 ```
-
-![Image showing yaml settings for KubeVirt](../../../../static/assets/docs/images/vmo/vmo_vmo-app_optimization-kubervirt-example-4-9.webp)
 
 :::warning
 

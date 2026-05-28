@@ -77,7 +77,7 @@ Palette VMO includes the following KubeVirt feature gates by default:
 - ExpandDisks
 - HotplugNICs
 - VMLiveUpdateFeatures
-- [CPU Hotplug](./create-manage-vm/enable-cpu-hotplug.md)
+- [CPU Hotplug](./legacy-vmo/create-manage-vm/enable-cpu-hotplug.md)
 
 For more information on KubeVirt feature gates, refer to the
 [KubeVirt Activating feature gates](https://kubevirt.io/user-guide/cluster_admin/activating_feature_gates/) guide.
@@ -115,4 +115,5 @@ spec:
 ## Next Steps
 
 Now that you understand the architecture behind Palette VMO, you can continue exploring it by reviewing our
-[Environment Setup](./environment-setup.md) and [Create a VMO Profile](./create-vmo-profile.md) pages.
+[Environment Setup](./legacy-vmo/environment-setup.md) and [Create a VMO Profile](./legacy-vmo/create-vmo-profile.md)
+pages.

@@ -34,15 +34,17 @@ You will benefit from Palette VMO in the following cases:
 
 To get started with Palette VMO, review the [Architecture](./architecture.md) page to learn about the components
 involved in enabling VMO for your infrastructure. If you want to use VMO in airgapped instances of self-hosted Palette
-or Palette VerteX, review the [Install VMO in Airgap Environments](./install-vmo-in-airgap.md) guide. Then, review the
-[Create a VMO Profile](./create-vmo-profile.md) guide to prepare everything you need to deploy your first VMO cluster.
+or Palette VerteX, review the [Install VMO in Airgap Environments](./legacy-vmo/install-vmo-in-airgap.md) guide. Then,
+review the [Create a VMO Profile](./legacy-vmo/create-vmo-profile.md) guide to prepare everything you need to deploy
+your first VMO cluster.
 
-Once your VMO cluster is up and healthy, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
-section for information on deploying VMs from existing Palette templates and performing standard VM operations. You can
-also learn how to migrate VMs from VMware vSphere to a VMO cluster using the
+Once your VMO cluster is up and healthy, refer to the
+[Create and Manage VMs](./legacy-vmo/create-manage-vm/create-manage-vm.md) section for information on deploying VMs from
+existing Palette templates and performing standard VM operations. You can also learn how to migrate VMs from VMware
+vSphere to a VMO cluster using the
 [Virtual Machine Migration Assistant](./vm-migration-assistant/vm-migration-assistant.md). Alternatively, review the
-[Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand how you can create VM and
-disk templates, manage the VM resources, and perform other advanced operations.
+[Advanced Topics](./legacy-vmo/create-manage-vm/advanced-topics/advanced-topics.md) section to understand how you can
+create VM and disk templates, manage the VM resources, and perform other advanced operations.
 
 Finally, refer to the [Role-based Access Control (RBAC)](./rbac/rbac.md) section for information on configuring roles
 and permissions for your VMs.
@@ -51,19 +53,19 @@ and permissions for your VMs.
 
 - [Architecture](./architecture.md)
 
-- [Overcommit and Memory Optimization](./vmo_overcommit_memory_optimization.md)
+- [Overcommit and Memory Optimization](./vmo-overcommit-memory-optimization.md)
 
-- [Install VMO in Airgap Environments](./install-vmo-in-airgap.md)
+- [Install VMO in Airgap Environments](./legacy-vmo/install-vmo-in-airgap.md)
 
-- [Create a VMO Profile](./create-vmo-profile.md)
+- [Create a VMO Profile](./legacy-vmo/create-vmo-profile.md)
 
-- [Configure Private CA Certificate to enable trust with Self-Hosted Palette or Palette VerteX](./configure-private-ca-certificate.md)
+- [Configure Private CA Certificate to enable trust with Self-Hosted Palette or Palette VerteX](./legacy-vmo/configure-private-ca-certificate.md)
 
-- [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
+- [Create and Manage VMs](./legacy-vmo/create-manage-vm/create-manage-vm.md)
 
-- [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md)
+- [Advanced Topics](./legacy-vmo/create-manage-vm/advanced-topics/advanced-topics.md)
 
-- [Import and Deploy OVAs to Palette VMO](./create-manage-vm/advanced-topics/deploy-import-ova.md)
+- [Import and Deploy OVAs to Palette VMO](./legacy-vmo/create-manage-vm/advanced-topics/deploy-import-ova.md)
 
 - [RBAC](./rbac/rbac.md)
 

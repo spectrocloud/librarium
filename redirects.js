@@ -228,14 +228,6 @@ let redirects = [
     to: `/vm-management/rbac/add-roles-and-role-bindings/`,
   },
   {
-    from: `/vm-management/vm-packs-profiles/vm-dashboard/`,
-    to: `/vm-management/create-manage-vm`,
-  },
-  {
-    from: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile/`,
-    to: `/vm-management/create-vmo-profile/`,
-  },
-  {
     from: `/knowledgebase/`,
     to: `/tags/`,
   },
@@ -992,6 +984,89 @@ let redirects = [
   {
     from: `/clusters/cluster-groups/vcluster-upgrade/`,
     to: `/clusters/cluster-groups/vcluster-upgrades/`,
+  },
+
+  // VM Launchpad Appliance > VMO Legacy Refactor
+
+  {
+    from: `/vm-management/environment-setup/`,
+    to: `/vm-management/legacy-vmo/environment-setup/`,
+  },
+  {
+    from: `/vm-management/install-vmo-in-airgap/`,
+    to: `/vm-management/legacy-vmo/install-vmo-in-airgap/`,
+  },
+  {
+    from: [`/vm-management/vm-packs-profiles/create-vm-dashboard-profile/`, `/vm-management/create-vmo-profile/`],
+    to: `/vm-management/legacy-vmo/create-vmo-profile/`,
+  },
+  {
+    from: `/vm-management/configure-console-base-address/`,
+    to: `/vm-management/legacy-vmo/configure-console-base-address/`,
+  },
+  {
+    from: `/vm-management/configure-private-ca-certificate/`,
+    to: `/vm-management/legacy-vmo/configure-private-ca-certificate/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/clone-vm/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/clone-vm/`,
+  },
+  {
+    from: [`/vm-management/vm-packs-profiles/vm-dashboard/`, `/vm-management/create-manage-vm/`],
+    to: `/vm-management/legacy-vmo/create-manage-vm/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/deploy-vm-from-template/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/deploy-vm-from-template/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/enable-cpu-hotplug/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/enable-cpu-hotplug/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/locate-vm-disks/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/locate-vm-disks/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/migrate-vm-to-different-node/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/migrate-vm-to-different-node/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/take-snapshot-of-vm/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/take-snapshot-of-vm/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/update-vm-configuration/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/update-vm-configuration/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/advanced-topics/access-cluster-with-virtctl/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/advanced-topics/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/advanced-topics/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/advanced-topics/create-disk-templates/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/advanced-topics/create-disk-templates/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/advanced-topics/create-vm-template/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/advanced-topics/create-vm-template/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/advanced-topics/deploy-import-ova/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/advanced-topics/deploy-import-ova/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/advanced-topics/migrate-vm-kubevirt/`,
+  },
+  {
+    from: `/vm-management/create-manage-vm/advanced-topics/vm-oversubscription/`,
+    to: `/vm-management/legacy-vmo/create-manage-vm/advanced-topics/vm-oversubscription/`,
   },
 ];
 
