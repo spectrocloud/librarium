@@ -80,7 +80,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10226 -->
 
 - The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
-  Palette and Palette VerteX management plane services has been fully removed. Traefik, introduced in 4.8.c, is now the
+  Palette and Palette VerteX management plane services has been fully removed. Traefik, introduced in 4.8.47, is now the
   sole management cluster ingress controller. The management plane removes leftover Nginx Deployments, Services,
   Role-Based Access Control (RBAC), `IngressClass`, and the `nginx-tls` Secret automatically at startup, so most
   installations require no manual cleanup. Enterprise installations keep the `ingress-nginx` namespace and the
