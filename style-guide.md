@@ -375,7 +375,7 @@ can quickly decide to proceed with or skip the step.
 
 | Good ✅                                                                                                                                                                                                                                                          | Bad ❌ |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| 3. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh <stig-content-version></code> |        |
+| 3. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh &lt;stig-content-version&gt;</code> |        |
 
 ### Parenthetical Expressions and Jargon
 
