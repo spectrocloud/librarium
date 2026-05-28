@@ -373,20 +373,141 @@ workflow).
 If applicable, place the circumstance that makes the step optional **immediately** after _(Optional)_ so that customers
 can quickly decide to proceed with or skip the step.
 
-| Good ✅                                                                                                                                                                                                                                                                                                                                                                                                                | Bad ❌                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 3. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh &lt;stig-content-version&gt;</code>                                                                                                                                                 | 3. To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh &lt;stig-content-version&gt;</code>                                                                                                                                                                               |
+| Good ✅                                                                                                                                                                                                                                                                                                                                                                                                                    | Bad ❌                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3. (Optional) To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh &lt;stig-content-version&gt;</code>                                                                                                                                                     | 3. To ensure reproducible builds and consistent compliance behavior, you can pin a specific STIG content version before building the base RHEL 9 STIG image <br><br><code>bash rhel-stig/scripts/update-stig-content.sh &lt;stig-content-version&gt;</code>                                                                                                                                                                                               |
 | 5. (Optional) _If you are using a self-hosted instance of Palette_, build the ISO using the corresponding CanvOS version. <br><br><code>curl --location --request GET 'https://&lt;palette-endpoint&gt;/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: &lt;api-key&gt;' \| jq --raw-output '.spec.latestVersion.content \| match("version: ([^\\n]+)").captures[0].string'</code> | 5. (Optional) Build the ISO using the corresponding CanvOS version. <br><br><code>curl --location --request GET 'https://&lt;palette-endpoint&gt;/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: &lt;api-key&gt;' \| jq --raw-output '.spec.latestVersion.content \| match("version: ([^\\n]+)").captures[0].string'</code><br><br>:::warning<br><br>This step only applies to self-hosted instances.<br><br>::: |
 
 ### Parenthetical Expressions and Jargon
 
+Avoid using parentheses, including the Latin phrase _i.e._ (id est), to include additional information or present
+information in an alternate manner.
+
+> [!TIP]
+>
+> If you are tempted to use parentheses as an alternate way to explain a concept, it is likely an indicator that you can
+> use the “simplified” version instead. Doing so makes the documentation more accessible to less-experienced users and
+> helps limit jargon.
+
+If introducing a lesser-known phrase that will be used throughout the page, you can use a similar approach to acronyms
+and initialisms, where you explain the term first and later reference it in parentheses.
+
+| Good ✅                                                                                                                                            | Bad ❌                                                                                                                                                         |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| These images install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster deployment.            | These images install an immutable OS and software dependencies compatible with a specific Kubernetes version at runtime (i.e., during the cluster deployment). |
+| Palette replaces unhealthy nodes automatically to maintain the desired cluster state.                                                              | Palette repaves unhealthy nodes (replaces them with new ones that match the original configuration) automatically to maintain the desired cluster state.       |
+| - Maintenance Mode - Turn off scheduling (cordon) and migrate (drain) workloads to other healthy nodes in the cluster without service disruptions. | - Maintenance Mode - Cordon and drain nodes, migrating workloads to other healthy nodes in the cluster without service disruptions.                            |
+
 ### Single and Plural Subjects
+
+In situations where an action or situation may affect one or more subjects, default to the plural form of the subject.
+
+| Good ✅                                                 | Bad ❌                                                    |
+| ------------------------------------------------------- | --------------------------------------------------------- |
+| The cluster _nodes_ will automatically scale down.      | The cluster _node(s)_ will automatically scale down.      |
+| _Users_ may want to disable health checks if necessary. | _User(s)_ may want to disable health checks if necessary. |
 
 ## Commas
 
+**Use a comma** before the conjunction (and/or) in a list of three or more items (also known as the Oxford comma).
+
+| Good ✅                                                                                                                                         | Bad ❌                                                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| With a unique approach to managing multiple clusters, Palette gives IT teams complete _control, visibility, and production-scale_ efficiencies. | With a unique approach to managing multiple clusters, Palette gives IT teams complete _control, visibility and production-scale_ efficiencies. |
+
+**Use a comma** after an introductory phrase.
+
+| Good ✅                                                                                                                                                      | Bad ❌                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _With Palette’s Cluster Profiles_, teams can define full-stack clusters that include both the Kubernetes infrastructure and any add-on application services. | _With Palette’s Cluster Profiles_ teams can define full-stack clusters that include both the Kubernetes infrastructure and any add-on application services. |
+
+**Use a comma** to join independent clauses with a conjunction, such as _and_, _or_, _but_, or _so_.
+
+| Good ✅                                                                                  | Bad ❌                                                                                  |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| From the left main menu, _select **Profiles**, and then select **Add Cluster Profile**_. | From the left main menu, _select **Profiles** and then select **Add Cluster Profile**_. |
+
+**Use a comma** between two or more adjectives before a noun when the order of adjectives can be reversed, or when you
+can use and instead of the comma without changing the meaning of your sentence.
+
+| Good ✅                                                                                 | Bad ❌                                                                                 |
+| --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Palette offers a _flexible, scalable_ solution that adapts to diverse enterprise needs. | Palette offers a _flexible scalable_ solution that adapts to diverse enterprise needs. |
+| Palette provides a _comprehensive enterprise_ management platform for Kubernetes.       | Palette provides a _comprehensive, enterprise_ management platform for Kubernetes.     |
+
+**Don’t use a comma** to join independent clauses without a conjunction. Instead, use a semicolon.
+
+| Good ✅                                                                                                           | Bad ❌                                                                                                            |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Palette streamlines cloud infrastructure _management; it ensures_ compliance and scalability across environments. | Palette streamlines cloud infrastructure _management, it ensures_ compliance and scalability across environments. |
+
+**Don’t use a comma** in a sentence where the verbs apply to a single subject.
+
+| Good ✅                                                                       | Bad ❌                                                                         |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Palette integrates with existing systems _and optimizes_ resource allocation. | Palette integrates with existing _systems, and optimizes_ resource allocation. |
+
 ## Prepositions
 
+Use the preposition _in_ to convey the notion of an enclosed space surrounded or closed off on all sides within which
+users interact.
+
+- Do something _in_ a dialog box.
+
+- Do something _in_ a pane.
+
+- Enter something _in_ a window.
+
+- Do something _in_ command mode.
+
+Use the preposition _on_ to convey the notion of being on the surface of an entity.
+
+- Do something _on_ a page.
+
+- Enter something _on_ a worksheet.
+
+- The document was published _on_ the site.
+
 ## Dialogue
+
+Dialogue is used in our Getting Started section, portraying the interactions of several characters involved a fictional
+case study. Often attached to dialogue are dialogue tags, which are used to either break dialogue into smaller pieces or
+add additional information.
+
+> “We need to find a way to better manage our Kubernetes clusters,” _Kai says with a groan._
+>
+> “I agree,” _says Meera,_ “but we can’t compromise on security.”
+>
+> “I don’t get it!” _Wren exclaims._ “Our current workflow works fine!”
+>
+> “Maybe we should look into Palette?” _suggests_ Anya.
+
+Dialogue tags limit the type of punctuation that can precede the closing quote. Usually, independent clauses (complete
+sentences) can end with a period (`.`); however, if a quote that would typically end with a period has a dialogue tag
+attached, the quote must end with a comma (`,`) instead. This rule does not apply to quotes without dialogue tags.
+
+| Good ✅                                                | Bad ❌                                                 |
+| ------------------------------------------------------ | ------------------------------------------------------ |
+| “I forgot to set my environment _variable,” says Kai._ | “I forgot to set my environment _variable.” says Kai_. |
+| “I forgot to set my environment _variable_.”           |                                                        |
+
+The following table lists the types of punctuation allowed with dialogue tags.
+
+| Allowed ✅ | Not Allowed ❌ |
+| ---------- | -------------- |
+| `,`        | `.`            |
+| `?`        | `:`            |
+| `!`        | `;`            |
+|            | `-`            |
+
+The following table lists examples using dialogue tags.
+
+| Good ✅                                                                                                                                              | Bad ❌                                                                                                                                                 |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| “We need to find a better way to manage our Kubernetes _clusters,” says Kai_.                                                                        | “We need to find a better way to manage our Kubernetes _clusters.” says Kai_.                                                                          |
+| _“I agree,” says Meera_, “but we can’t compromise on security.” <br><br>**OR** <br><br>“I agree,” says Meera. “But we can’t compromise on security.” | _“I agree.” says Meera_, “but we can’t compromise on security.” <br><br>**OR** <br><br>“_I agree.” says Meera_. “But we can’t compromise on security.” |
+| “_I don’t get it!” Wren exclaims_. “Our current workflow works fine!”                                                                                | “_I don’t get it.” Wren exclaims_. “Our current workflow works fine!”                                                                                  |
+| “Maybe we should look into _Palette?” suggests_ Anya.                                                                                                | “Maybe we should look into _Palette.” suggests_ Anya.                                                                                                  |
 
 ## Numbers
 
