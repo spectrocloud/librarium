@@ -886,6 +886,8 @@ The file name format for images used in a single markdown file or partial is as 
 
 `<markdown-file-name>/<partial-name>_<image-description>.webp`
 
+Underscores are used to separate sections, whereas dashes are used to break up words.
+
 Examples:
 
 - `configure-edge-on-aws-outpost_registered-edge-host.webp`
