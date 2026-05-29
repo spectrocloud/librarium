@@ -234,7 +234,6 @@ Ensure you are selecting the correct disk. The installation process will complet
       base64 < ca.crt
       base64 < ca.key
       ```
-
    </TabItem>
 
    <TabItem label="Linux" value="linux">

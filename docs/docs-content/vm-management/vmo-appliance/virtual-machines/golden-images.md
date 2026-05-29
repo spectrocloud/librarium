@@ -32,7 +32,7 @@ The diagram below displays the overarching steps to build a golden image to use 
    | ------------ | ------------------------------------------------------- |
    | DataVolume Name        | Enter a unique name for the ISO installer or disk image. |
    | Namespace        | Select the namespace from the dropdown, typically `vmo-golden-images`.|
-   | Storage Class | Select the storage class from the dropdown. |
+   | Storage Class | Select the storage class from the dropdown. You can also |
    | Volume Size | Set the DataVolume disk size in `GiB` or `TiB`. |
    | Image Type | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image. |
    | Image File | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
@@ -40,6 +40,24 @@ The diagram below displays the overarching steps to build a golden image to use 
    Large ISOs may take several minutes to upload. Progress is shown during the upload phase.
 
    ![Screenshot of iso upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
+
+## Create Blank DataVolume
+
+1. Navigate to **Infrastructure > Storage**
+
+2. Click **+ Create DataVolume**.
+
+3. Fill out **Source** page and click **Next >**.
+
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Source        | Select **Blank**. |
+   | Name       | Enter a unique name for the DataVolume image. |
+   | Namespace        | Select the namespace from the dropdown.|
+   | Storage Class | Select the storage class from the dropdown. |
+   | Size | Set the disk size in `MiB`, `GiB` or `TiB`. |
+   | Access Mode | From the dropdown, select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`.  |
+   | Volume Mode| From the dropdown, select `Block` or `Filesystem`. |
 
 ## Build a Golden Image
 
@@ -73,11 +91,9 @@ The diagram below displays the overarching steps to build a golden image to use 
    ![Screenshot of cloud-init and autoinstall page](/vmo/vm-management_vmo_golden-images_autoinstall-4-9.webp)
 
 
-### 2. Create Blank DataVolume
+6. 
 
-1. After uploading the ISO (or if you already have one), start the build flow.
-2. Create a **blank** DataVolume for the OS disk. Set the size (e.g., 50 Gi) and StorageClass.
-3. The blank DataVolume will hold the installed OS.
+   ![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
 
 ### 3. Create Builder VM
 
