@@ -33,7 +33,7 @@ The diagram below displays the overarching steps to build a golden image to use 
    | DataVolume Name        | Enter a unique name for the ISO installer or disk image. |
    | Namespace        | Select the namespace from the dropdown, typically `vmo-golden-images`.|
    | Storage Class | Select the storage class from the dropdown. |
-   | Volume Size | Set the disk size in `GiB` or `TiB`. |
+   | Volume Size | Set the DataVolume disk size in `GiB` or `TiB`. |
    | Image Type | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image. |
    | Image File | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
 

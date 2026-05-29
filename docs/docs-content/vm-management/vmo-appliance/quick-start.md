@@ -3,7 +3,7 @@ sidebar_label: "Quick Start"
 title: "Quick Start"
 description: "Learn about Palette VMO Appliance and how to quickly get started."
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 10
 tags: ["vmo", "vmo appliance", "quick start"]
 ---
 

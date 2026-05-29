@@ -4,7 +4,7 @@ title: "Install VM Launchpad"
 description: "Learn how to install VM Launchpad"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 0
 tags: ["vmo", "vm launchpad"]
 ---
 
