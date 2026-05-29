@@ -362,10 +362,10 @@ If you do not have a certificate server, you can generate your own self-signed c
    3. Enter your username and password.
    4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
 
-      </TabItem>
+         </TabItem>
 
-      </Tabs>
-   <!-- vale off -->
+         </Tabs>
+      <!-- vale off -->
 
 3. After login, the **Dashboard** is the default landing page.
 
