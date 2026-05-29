@@ -1,5 +1,5 @@
-
 <!-- vale off -->
+
 # Snapshots & Clones
 
 VMO Manager supports VM snapshots for point-in-time backups and VM cloning for duplicating VMs with new identities.
