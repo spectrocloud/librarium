@@ -7,7 +7,7 @@ sidebar_position: 5
 tags: ["vmo", "vmo appliance", "quick start"]
 ---
 
-# Creating Your First VM
+# Create Your First VM
 
 This guide walks you through the process of creating your first virtual machine.
 
