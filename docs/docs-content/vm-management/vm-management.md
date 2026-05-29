@@ -16,7 +16,7 @@ devices and bare metal servers in data centers.
 
 Palette VMO simplifies infrastructure management, improves resource utilization, and eliminates hypervisor costs.
 
-![A drawing of VMs deployed to Palette](/vm-mangement_vmo-diagram.webp)
+![A drawing of VMs deployed to Palette](/vmo/vm-mangement_vmo-diagram-4-9.webp)
 
 ## Use Cases
 
