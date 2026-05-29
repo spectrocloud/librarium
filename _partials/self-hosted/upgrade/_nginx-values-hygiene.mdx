@@ -1,0 +1,8 @@
+---
+partial_category: self-hosted
+partial_name: nginx-values-hygiene
+---
+
+**(4.8.47 - 4.9.8 to 4.9.14+)** The `ingress.type` and `ingress.ingress.internal` fields have been removed
+from the Palette Helm chart. Any references that remain in your override file are ignored; however, we recommend
+removing both fields for hygiene purposes.

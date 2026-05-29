@@ -96,6 +96,30 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10226 -->
+
+- The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
+  Palette and Palette VerteX management plane services has been fully removed. Traefik, introduced in 4.8.47, is now the
+  sole management cluster ingress controller. The management plane removes leftover Ingress Nginx objects automatically
+  at startup (such as Deployments, Services, Secrets, and more), preventing the need for manual cleanup. Self-hosted
+  installations retain the `ingress-nginx` namespace and `default-ssl-certificate` Secret due to the the cert-bridge
+  introduced in 4.8.47, which continues to copy the uploaded Transport Layer Security (TLS) certificate from that Secret
+  into Traefik.
+
+  - **Google Kubernetes Engine (GKE) pre-upgrade requirement** - The principal running `helm upgrade` must have the
+    `container.roles.delete`, `container.roleBindings.delete`, `container.clusterRoles.delete`, and
+    `container.clusterRoleBindings.delete` Cloud Identity and Access Management (IAM) permissions. Refer to
+    [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for details.
+  - **Recommended `values.yaml` hygiene** - The `ingress.type` and `ingress.ingress.internal` fields have been removed
+    from the Palette Helm chart. Any references that remain in your override file are ignored; however, we recommend
+    removing both fields for hygiene purposes. Refer to
+    [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
+    the current set of supported parameters.
+  - **Recovery** - If the `configserver` is not **Ready** after upgrading due to leftover Ingress Nginx pods holding
+    host ports, refer to our
+    [Troubleshooting](../troubleshooting/palette-upgrade.md#configserver-stuck-on-init-rootdomain-traefik-after-upgrade-to-4914)
+    guide for the manual cleanup procedure.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
 
 - [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) are now deprecated in Palette
