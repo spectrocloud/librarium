@@ -19,8 +19,10 @@ tags: ["packs", "azure-cni", "cni", "network"]
 
 :::warning
 
-Make sure to use Azure CNI with the Windows Operating System as the kubenet CNI is not available for the Windows
+- Make sure to use Azure CNI with the Windows OS as the kubenet CNI is not available for the Windows
 environment.
+
+- Windows node pools are not supported for AKS clusters using a Cilium network data plane (when `networkDataplane: cilium` is set in the Azure CNI pack values). Users requiring Cilium must select an **OS Type** of **Linux** when deploying node pools.
 
 :::
 
