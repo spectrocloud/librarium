@@ -1,98 +1,104 @@
 ---
-sidebar_label: "Quick Start"
-title: "Quick Start"
+sidebar_label: "Creating Your First VM"
+title: "Creating Your First VM"
 description: "Learn about Palette VMO Appliance and how to quickly get started."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 5
 tags: ["vmo", "vmo appliance", "quick start"]
 ---
 
-# Quick Start
+# Creating Your First VM
 
-This guide walks you through accessing VM Launchpad, logging in, viewing the dashboard, and creating your first virtual machine in about five minutes.
-
-## Access the Platform
-
-1. Navigate to the VMO Manager IP address using your browser. A DNS hostname is not required. 
-
-2. Log in to the VMO Appliance.
-
-    <Tabs>
-
-    <TabItem label="Local Auth (Day-0)" value="local-auth">
-
-    Before Keycloak is configured, you can use local admin accounts:
-
-    1. Navigate to `/local-login`.
-    2. Enter the local admin username (default: `admin`) and password.
-    3. The password is typically set via the `LOCAL_ADMIN_PASSWORD` environment variable during initial deployment.
-
-    </TabItem>
-
-    <TabItem label="OIDC using Keycloak" value="keycloak">
-
-    When Keycloak is configured, the platform uses OIDC for authentication:
-
-    1. Click **Login** or navigate to the platform URL.
-    2. You are redirected to the Keycloak login page.
-    3. Enter your username and password.
-    4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
-
-    </TabItem>
-
-    </Tabs>
+This guide walks you through the process of creating your first virtual machine.
 
 ## Create Your First VM
 
-The VM creation wizard guides you the following steps to create a simple VM.
+1. Log in to VM Launchpad.
 
-1. Select where the source VM disk:
+2. From the left-menu, select **Workloads > Virtual Machines**.
 
-    - **Template** — Use an existing VmTemplate (recommended for first-time users)
-    - **Golden Image** — Use a sealed base disk image
-    - **ISO** — Attach an ISO for installation
-    - **Blank** — Create an empty disk
+3. Click **+ Create VM**.
 
-Select a template or golden image, then set the VM **name** and **namespace**. The name must follow Kubernetes DNS-1123 rules (lowercase, alphanumeric, hyphens).
+   ![screenshot showing create vm button](/vmo/vm-management_vmo_first-vm-create-4-9.webp)
 
-2. Configure CPU and memory:
+4. Fill out **Source** page and click **Next >**.
 
-    - **Instance Type** — Pick a predefined size (e.g., `u1.small`, `cx1.medium`)
-    - **Custom** — Set CPU cores and memory manually
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Source | Defaults to Template. You can also select Image/ISO or Custom. |
+   | Namespace        | Select the namespace from the dropdown. You can also create a new namespace by clicking on **+New**.|
+   | Template | Select the template to use from the dropdown. |
+   | VM Name       | Enter a unique name for the golden image. This field only accepts lowercase, numbers and hyphens. The name must end with a letter or digit.|
+   | Batch Mode | Leave default or select the **Create multiple VMs** checkbox to create multiple VMs. |
+   | Preference | Leave default or select a specific OS type. |
+   | Labels | Leave default or enter a key and value pair. |
+   | Annotations | Leave default or enter a key and value pair. You can also check **Disable PCI Hole 64-bit** if you are running legacy Windows systems (Windows XP/Windows Server 2003)
 
-3. Configure the root disk:
+5. Fill out the **Compute** page and click **Next >**.
 
-    - **Size** — Set the disk size (e.g., 20 Gi)
-    - **Storage Class** — Use the cluster default or select another
-    - **Boot order** — Choose disk, CD-ROM, or network as first boot device
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Instance Type or Custom | Select Instance Type to choose a default CPU/Memory configuration. Select Custom when you want to configure your own CPU/Memory configuration. |
+   | Scheduling | Leave default or adjust **Eviction Strategy**, **Grace Period**, **Priority Class**, **Start Strategy**, **Node Selector**, **Tolerations** and **Affinity Rules**. |
 
-4. Add network interfaces:
+6. Fill out the **Storage** page and click **Next >**.
 
-    - Select a **Network Attachment Definition** (NAD) for each interface
-    - Optionally configure static IPs via cloud-init
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Root Disk | Leave default or adjust the disk size in `Gi`. You can also adjust the Storage Class. |
+   | Additional Disks | Leave default or click **+Add Disk** to add additional disks. |
+   | Boot Order | Leave default or select **Network** to do a PXE boot from network. |
 
-5. Select optional advanced settings, such as firmware, TPM, RNG, tablet devices, and node placement. For a basic VM, this step can be skipped. 
+7. On the **Network** page, leave the default set to NIC 1. You can add additional NICs by clicking **+ Add NIC**. 
 
-    - Firmware (EFI, Secure Boot)
-    - TPM, RNG, tablet devices
-    - Node placement (node selector, tolerations)
+   Additionally, you can adjust the NIC type to **Pod Network (masquerade)** or **Multus Network (bridge)**.
 
-6. Select optional lifecycle settings, such as **Run strategy** (Always, RerunOnFailure, Manual, or Halted), **Eviction strategy** (LiveMigrate or None), and **Snapshot policy**. For a basic VM, this step can be skipped. 
+   Under **DNS Settings**, optionally configure the VM hostname if this will be different than the VM Name, and the subdomain to use with the hostname.
 
+   Click **Next**.
 
-7. Review the summary and YAML preview. Click **Create** to provision the VM.
+6. (Optional) Fill out the **Hardware** page and click **Next >**.
+
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Firmware | Leave default or enable **UEFI/EFI Boot**. You can also configure the Machine Type, SMBIOS UUID, and SMBIOS Serial number. |
+   | CPU Advanced | Leave default. You can adjust the CPU Model to use Host Model (default) or host-passthrough. You can also enable **Dedicated CPU Placement** and **Isolate Emulator Thread**. Enabling **NUMA Topology Passthrough** allows the guest OS to use the host NUMA topology. Clicking **+ Add Feature** under CPU Features allows you to specify CPU features.|
+   | Devices | Leave default. You can also enable **Virtio RNG (random number generator)**, **Tablet Input Device (USB)**, **Headless (no graphics device)**, **TPM Device**, and **USB Redirection (Client Passthrough)** |
+   | Features | Leave default. You can disable **ACPI** and **APIC**. You can enabled **HyperV Enlightenments**. |
+   | Clock and Timers | Leave default. You can adjust Clock Mode to Utc or Timezone. **Timers** can have **PIT Timer**, **RTC Timer**, **HPET Timer**, and **HyperV Timer** enabled or disabled. |
+   | Memory | Leave default. You can enabled **Hugepages** and **Overcommit Guest Overhead**. |
+   | Security | Leave default. You can enable **Confidential Computing** and Launch Security options. |
+   | Host Devices| Leave default. Any GPU or PCI devices detected will be available to assign to the VM. If none appear, you can click **Refresh** under **Cluster Device Management**. You can also add devices manually by clicking **+ Register New Device Manually**. |
+
+7. (Optional) Fill out the **Lifecycle** page and click **Next >**.
+
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Snapshot Policy | Leave default. You can click **+ Create** to create a new snapshot policy. |
+   | Cloud-Init | Leave default. Click on **Cloud-Init Configuration** to manually adjust the cloud-init configuration and user-data files. You can optionally adjust the network settings in **Network Data**.  |
+
+8. Review the summary and YAML preview. Click **Create VM** to provision the VM. VM status will display as **Provisioning** for several minutes while the required resources are built and the image is pulled from the registry. If you did not enable the checkbox to start the VM automatically, VM status displays as **Stopped** until the VM is fully deployed.
 
 :::tip
 
-Use the YAML drawer to inspect or edit the full VirtualMachine spec before creating. For a detailed walkthrough of each wizard step, see [Creating VMs](./virtual-machines/creating.md).
+Use the **Advanced** button to inspect or edit the full VM Manifest before creating. 
+
+<!-- For a detailed walkthrough of each wizard step, see [Creating VMs](./virtual-machines/creating.md). -->
 
 :::
 
+
 ## Validation
 
-1. Go to **Workloads > Virtual Machines** (`/vms`).
+1. Go to **Workloads > Virtual Machines**.
+
 2. Find your VM in the list. The status column shows **Running** when the VM is started.
+
 3. Click the VM name to open the detail page.
+
 4. On the VM detail page, open the **Console** tab. The VNC console requires the VM to be running. If the VM is stopped, start it first from the Overview tab or VM list.
+
 5. Click **Open VNC Console**.
+
 6. A new tab opens with a noVNC-based remote console. You can interact with the VM as if you were at its keyboard.
+
