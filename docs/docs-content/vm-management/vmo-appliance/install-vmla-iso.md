@@ -202,15 +202,15 @@ disk.
    | listorNodeInterface                             | Leave the default value or enter the NIC which node network interface to use for replication.                                                          |
    | Storage Pool Drive                              | Leave the default value or enter the storage path to use.                                                                                              |
 
-   <details>
+      <details>
 
    <summary>Generate Your own Self-Signed Certificates</summary>
 
    If you do not have a certificate server you can generate your own self-signed certificates.
 
-   <Tabs>
+      <Tabs>
 
-   <TabItem label="Mac" value="mac">
+      <TabItem label="Mac" value="mac">
 
    1. Open a terminal window and use the following command to generate a private key.
 
@@ -244,7 +244,7 @@ disk.
 
       </TabItem>
 
-   <TabItem label="Linux" value="linux">
+      <TabItem label="Linux" value="linux">
 
    1. Open a terminal window and use the following command to generate a private key.
 
@@ -277,9 +277,9 @@ disk.
       base64 -w 0 < ca.key
       ```
 
-   </TabItem>
+      </TabItem>
 
-   <TabItem label="Windows" value="windows">
+      <TabItem label="Windows" value="windows">
 
    1. Open a terminal window and use the following command to generate a private key.
 
@@ -304,7 +304,7 @@ disk.
       [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.key"))
       ```
 
-   </TabItem>
+      </TabItem>
 </Tabs>
 </details>
 
