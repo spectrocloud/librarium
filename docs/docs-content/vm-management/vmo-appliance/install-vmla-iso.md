@@ -174,132 +174,132 @@ disk.
 6.  Fill out the **Profile Config** page, and click **Next**.
     <!-- vale off -->
 
-        | Parameter                                       | Description                                                                                                                                            |
-        | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-        | Pod CIDR                                        | Leave the default value or enter a CIDR range for Kubernetes Pods network.                                                                             |
-        | Service CIDR                                    | Leave the default value or enter a CIDR range for Kubernetes Services network.                                                                         |
-        | Ubuntu Pro Token (Optional)                     | Leave blank or enter an Ubuntu Pro token value                                                                                                         |
-        | Reserved CPUS for kubelet and system            | Leave the default value or to set which CPUs should be reserved for kubelet and OS use.                                                                |
-        | CSI Placement Count (Optional)                  | Leave the default or enter the number of replicas to be created for CSI volumes across nodes.                                                          |
-        | L2 Pod Announcement Interface                   | Enter the interface to send ARP pod Announcements on. For exmaple, `br0`.                                                                              |
-        | OCI Pack Registry Username                      | Leave the default value or enter the username for the OCI Pack Registry.                                                                               |
-        | Platform CA Certificate                         | Enter the base64 encoded value for your CA certificate.                                                                                                |
-        | Platform CA Private Key                         | Enter the base64 encoded value for your private key.                                                                                                   |
-        | OIDC Login Username                             | Leave the default value or enter a username for the cluster admin OIDC login.                                                                          |
-        | OIDC Login Email                                | Leave the default value or enter the email address to use for OIDC login.                                                                              |
-        | Local Admin User Name                           | Leave the default value or enter the username to use for the local admin account.                                                                      |
-        | VLAN range for VMs                              | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN.                                             |
-        | Cluster runs on br0 (Optional)                  | Leave default or toggle to allow the cluster to run on `br0`.                                                                                          |
-        | VLANs on top of br0                             | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN, and must always be included.                |
-        | Victoria Metrics Data Retention Period          | Leave the default or enter an appropriate value in (h)ours, (d)days, (w)eeks, months (there is no character value) or (y)ears. Minimum value is `24h`. |
-        | Victoria Metrics Volume Storage Size (Optional) | Leave the default value or enter the size in gigabytes (`Gi`).                                                                                         |
-        | MetalLB interface                               | Leave the default value or enter the NIC that uses L2 advertisements.                                                                                  |
-        | MetalLB IP Address                              | Enter the IP address that the MetalLB will use.                                                                                                        |
-        | Default Keycloak Admin Password                 | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                    |
-        | Local Admin Password                            | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                       |
-        | OIDC Login Password                             | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                              |
-        | OCI Pack Registry Password                      | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                 |
-        | Default Keycloak Admin Username (Optional)      | Leave the default value or enter a username for the Keycloak admin login.                                                                              |
-        | listorNodeInterface                             | Leave the default value or enter the NIC which node network interface to use for replication.                                                          |
-        | Storage Pool Drive                              | Leave the default value or enter the storage path to use.                                                                                              |
+   | Parameter                                       | Description                                                                                                                                            |
+   | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | Pod CIDR                                        | Leave the default value or enter a CIDR range for Kubernetes Pods network.                                                                             |
+   | Service CIDR                                    | Leave the default value or enter a CIDR range for Kubernetes Services network.                                                                         |
+   | Ubuntu Pro Token (Optional)                     | Leave blank or enter an Ubuntu Pro token value                                                                                                         |
+   | Reserved CPUS for kubelet and system            | Leave the default value or to set which CPUs should be reserved for kubelet and OS use.                                                                |
+   | CSI Placement Count (Optional)                  | Leave the default or enter the number of replicas to be created for CSI volumes across nodes.                                                          |
+   | L2 Pod Announcement Interface                   | Enter the interface to send ARP pod Announcements on. For exmaple, `br0`.                                                                              |
+   | OCI Pack Registry Username                      | Leave the default value or enter the username for the OCI Pack Registry.                                                                               |
+   | Platform CA Certificate                         | Enter the base64 encoded value for your CA certificate.                                                                                                |
+   | Platform CA Private Key                         | Enter the base64 encoded value for your private key.                                                                                                   |
+   | OIDC Login Username                             | Leave the default value or enter a username for the cluster admin OIDC login.                                                                          |
+   | OIDC Login Email                                | Leave the default value or enter the email address to use for OIDC login.                                                                              |
+   | Local Admin User Name                           | Leave the default value or enter the username to use for the local admin account.                                                                      |
+   | VLAN range for VMs                              | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN.                                             |
+   | Cluster runs on br0 (Optional)                  | Leave default or toggle to allow the cluster to run on `br0`.                                                                                          |
+   | VLANs on top of br0                             | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN, and must always be included.                |
+   | Victoria Metrics Data Retention Period          | Leave the default or enter an appropriate value in (h)ours, (d)days, (w)eeks, months (there is no character value) or (y)ears. Minimum value is `24h`. |
+   | Victoria Metrics Volume Storage Size (Optional) | Leave the default value or enter the size in gigabytes (`Gi`).                                                                                         |
+   | MetalLB interface                               | Leave the default value or enter the NIC that uses L2 advertisements.                                                                                  |
+   | MetalLB IP Address                              | Enter the IP address that the MetalLB will use.                                                                                                        |
+   | Default Keycloak Admin Password                 | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                    |
+   | Local Admin Password                            | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                       |
+   | OIDC Login Password                             | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                              |
+   | OCI Pack Registry Password                      | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                 |
+   | Default Keycloak Admin Username (Optional)      | Leave the default value or enter a username for the Keycloak admin login.                                                                              |
+   | listorNodeInterface                             | Leave the default value or enter the NIC which node network interface to use for replication.                                                          |
+   | Storage Pool Drive                              | Leave the default value or enter the storage path to use.                                                                                              |
 
-        <details>
+<details>
 
-<summary>Generate Your own Self-Signed Certificates</summary>
+   <summary>Generate Your own Self-Signed Certificates</summary>
 
-If you do not have a certificate server, you can generate your own self-signed certificates.
+      If you do not have a certificate server, you can generate your own self-signed certificates.
 
-<Tabs>
+   <Tabs>
 
-<TabItem label="Mac" value="mac">
+   <TabItem value="mac" label="Mac">
 
-1. Open a terminal window and use the following command to generate a private key.
+      1. Open a terminal window and use the following command to generate a private key.
 
-   ```bash
-   openssl genrsa -out ca.key 4096
-   ```
+      ```bash
+      openssl genrsa -out ca.key 4096
+      ```
 
-   This generates the file `ca.key`. This will be the private key and should be kept in a secure location.
+      This generates the file `ca.key`. This will be the private key and should be kept in a secure location.
 
-2. Generate a self-signed CA certificate.
+      2. Generate a self-signed CA certificate.
 
-   ```bash
-   openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
-   ```
+      ```bash
+      openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+      ```
 
-   This generates the file `ca.crt`. This will be the CA certificate in PEM format.
+      This generates the file `ca.crt`. This will be the CA certificate in PEM format.
 
-3. You can generate the Base64 values by using the following commands.
+      3. You can generate the Base64 values by using the following commands.
 
-   ```bash
-   base64 -i ca.crt -o ca.crt.b64
-   base64 -i ca.key -o ca.key.b64
-   ```
+      ```bash
+      base64 -i ca.crt -o ca.crt.b64
+      base64 -i ca.key -o ca.key.b64
+      ```
 
-   Alternatively, if you want to print the base64 output to screen use the following commands.
+      Alternatively, if you want to print the base64 output to screen use the following commands.
 
-   ```bash
-   base64 < ca.crt
-   base64 < ca.key
-   ```
+      ```bash
+      base64 < ca.crt
+      base64 < ca.key
+      ```
 
-</TabItem>
+   </TabItem>
 
-<TabItem label="Linux" value="linux">
+   <TabItem value="linux" label="Linux">
 
-1. Open a terminal window and use the following command to generate a private key.
+      1. Open a terminal window and use the following command to generate a private key.
 
-   ```bash
-   openssl genrsa -out ca.key 4096
-   ```
+      ```bash
+      openssl genrsa -out ca.key 4096
+      ```
 
-2. Generate a self-signed CA certificate.
+      2. Generate a self-signed CA certificate.
 
-   ```bash
-   openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
-   ```
+      ```bash
+      openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+      ```
 
-3. You can generate the Base64 values by using the following commands. The `-w 0` flag disables line wrapping.
+      3. You can generate the Base64 values by using the following commands. The `-w 0` flag disables line wrapping.
 
-   ```bash
-   base64 -w 0 ca.crt > ca.crt.b64
-   base64 -w 0 ca.key -o ca.key.b64
-   ```
+      ```bash
+      base64 -w 0 ca.crt > ca.crt.b64
+      base64 -w 0 ca.key -o ca.key.b64
+      ```
 
-   Alternatively, if you want to print the base64 output to screen use the following commands. The `-w 0` flag disables
-   line wrapping.
+      Alternatively, if you want to print the base64 output to screen use the following commands. The `-w 0` flag disables
+      line wrapping.
 
-   ```bash
-   base64 -w 0 < ca.crt
-   base64 -w 0 < ca.key
-   ```
+      ```bash
+      base64 -w 0 < ca.crt
+      base64 -w 0 < ca.key
+      ```
 
-</TabItem>
+   </TabItem>
 
-<TabItem label="Windows" value="windows">
+   <TabItem value="windows" label="Windows" >
 
-1. Open a terminal window and use the following command to generate a private key.
+      1. Open a terminal window and use the following command to generate a private key.
 
-   ```cmd
-   openssl genrsa -out ca.key 4096
-   ```
+      ```cmd
+      openssl genrsa -out ca.key 4096
+      ```
 
-2. Generate a self-signed CA certificate.
+      2. Generate a self-signed CA certificate.
 
-   ```cmd
-   openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
-   ```
+      ```cmd
+      openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+      ```
 
-3. You can generate the Base64 values by using the following commands.
+      3. You can generate the Base64 values by using the following commands.
 
-   ```powershell
-   [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.crt"))
-   [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.key"))
-   ```
+      ```powershell
+      [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.crt"))
+      [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.key"))
+      ```
 
-</TabItem>
+   </TabItem>
 
-</Tabs>
+   </Tabs>
 
 </details>
 <!-- vale on -->
@@ -340,9 +340,9 @@ If you do not have a certificate server, you can generate your own self-signed c
 
 2. Log in to the VMO Appliance.
 
-      <Tabs>
+   <Tabs>
 
-      <TabItem label="Local Auth (Day-0)" value="local-auth">
+   <TabItem value="local-auth" label="Local Auth (Day-0)">
 
    Before Keycloak is configured, you can use local admin accounts.
 
@@ -351,9 +351,9 @@ If you do not have a certificate server, you can generate your own self-signed c
    3. You will be prompted to enter a new password and confirm the new password.
    4. Click **Set New Password**
 
-      </TabItem>
+   </TabItem>
 
-      <TabItem label="OIDC using Keycloak" value="keycloak">
+   <TabItem value="keycloak" label="OIDC using Keycloak">
 
    When Keycloak is configured, the platform uses OIDC for authentication.
 
@@ -362,9 +362,9 @@ If you do not have a certificate server, you can generate your own self-signed c
    3. Enter your username and password.
    4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
 
-         </TabItem>
+   </TabItem>
 
-         </Tabs>
+   </Tabs>
       <!-- vale off -->
 
 3. After login, the **Dashboard** is the default landing page.
