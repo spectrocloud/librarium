@@ -92,13 +92,9 @@ Use the **Advanced** button to inspect or edit the full VM Manifest before creat
 
 1. Go to **Workloads > Virtual Machines**.
 
-2. Find your VM in the list. The status column shows **Running** when the VM is started.
+2. Find your VM in the list. The status column shows **Running** when the VM is started. If the VM is stopped, select the VM and click **Start**
 
 3. Click the VM name to open the detail page.
 
-4. On the VM detail page, open the **Console** tab. The VNC console requires the VM to be running. If the VM is stopped, start it first from the Overview tab or VM list.
-
-5. Click **Open VNC Console**.
-
-6. A new tab opens with a noVNC-based remote console. You can interact with the VM as if you were at its keyboard.
+4. On the VM detail page, click **Console**. A new tab opens with a noVNC-based remote console. You can interact with the VM as if you were at its keyboard.
 
