@@ -241,7 +241,8 @@ disk.
       base64 < ca.crt
       base64 < ca.key
       ```
-   </TabItem>
+
+      </TabItem>
 
    <TabItem label="Linux" value="linux">
 
@@ -304,8 +305,8 @@ disk.
       ```
 
    </TabItem>
-   </Tabs>
-   </details>
+</Tabs>
+</details>
 
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
    specify an NTP server and an SSH public key.

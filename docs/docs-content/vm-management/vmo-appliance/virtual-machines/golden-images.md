@@ -31,29 +31,25 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 3. Fill out the **Upload ISO/Disk Image** page and click **Upload**.
 
-<<<<<<< HEAD
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | DataVolume Name        | Enter a unique name for the ISO installer or disk image. |
-   | Namespace        | Select the namespace from the dropdown, typically `vmo-golden-images`.|
-   | Storage Class | Select the storage class from the dropdown. You can also |
-   | Volume Size | Set the DataVolume disk size in `GiB` or `TiB`. |
-   | Image Type | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image. |
-   | Image File | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
-=======
-   | Parameter       | Description                                                                                                                                    |
-   | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-   | DataVolume Name | Enter a unique name for the ISO installer or disk image.                                                                                       |
-   | Namespace       | Select the namespace from the dropdown, typically `vmo-golden-images`.                                                                         |
-   | Storage Class   | Select the storage class from the dropdown.                                                                                                    |
-   | Volume Size     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                                |
-   | Image Type      | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image.                                                        |
-   | Image File      | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
->>>>>>> 3f696dcda0dbdeef2779d1935af24bf8002ff520
+<<<<<<< HEAD | Parameter | Description | | ------------ | ------------------------------------------------------- | |
+DataVolume Name | Enter a unique name for the ISO installer or disk image. | | Namespace | Select the namespace from the
+dropdown, typically `vmo-golden-images`.| | Storage Class | Select the storage class from the dropdown. You can also | |
+Volume Size | Set the DataVolume disk size in `GiB` or `TiB`. | | Image Type | Select **ISO Installer** or **Golden
+Image**. A golden image is a pre-built disk image. | | Image File | Click **Choose File** or drag-and-drop the file. ISO
+Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. | ======= | Parameter |
+Description | | --------------- |
+----------------------------------------------------------------------------------------------------------------------------------------------
+| | DataVolume Name | Enter a unique name for the ISO installer or disk image. | | Namespace | Select the namespace from
+the dropdown, typically `vmo-golden-images`. | | Storage Class | Select the storage class from the dropdown. | | Volume
+Size | Set the DataVolume disk size in `GiB` or `TiB`. | | Image Type | Select **ISO Installer** or **Golden Image**. A
+golden image is a pre-built disk image. | | Image File | Click **Choose File** or drag-and-drop the file. ISO Installer
+supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
 
-   Large ISOs may take several minutes to upload. Progress is shown during the upload phase.
+> > > > > > > 3f696dcda0dbdeef2779d1935af24bf8002ff520
 
-   ![Screenshot of iso upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
+Large ISOs may take several minutes to upload. Progress is shown during the upload phase.
+
+![Screenshot of iso upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
 
 ## Create Blank DataVolume
 
@@ -63,15 +59,15 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 3. Fill out **Source** page and click **Next >**.
 
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | Source        | Select **Blank**. |
-   | Name       | Enter a unique name for the DataVolume image. |
-   | Namespace        | Select the namespace from the dropdown.|
-   | Storage Class | Select the storage class from the dropdown. |
-   | Size | Set the disk size in `MiB`, `GiB` or `TiB`. |
-   | Access Mode | From the dropdown, select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`.  |
-   | Volume Mode| From the dropdown, select `Block` or `Filesystem`. |
+   | Parameter     | Description                                                                    |
+   | ------------- | ------------------------------------------------------------------------------ |
+   | Source        | Select **Blank**.                                                              |
+   | Name          | Enter a unique name for the DataVolume image.                                  |
+   | Namespace     | Select the namespace from the dropdown.                                        |
+   | Storage Class | Select the storage class from the dropdown.                                    |
+   | Size          | Set the disk size in `MiB`, `GiB` or `TiB`.                                    |
+   | Access Mode   | From the dropdown, select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`. |
+   | Volume Mode   | From the dropdown, select `Block` or `Filesystem`.                             |
 
 ## Build a Golden Image
 
@@ -108,12 +104,13 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 <<<<<<< HEAD
 
-6. 
-=======
-### 2. Create Blank DataVolume
->>>>>>> 3f696dcda0dbdeef2779d1935af24bf8002ff520
+6.  =======
 
-   ![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
+### 2. Create Blank DataVolume
+
+> > > > > > > 3f696dcda0dbdeef2779d1935af24bf8002ff520
+
+![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
 
 ### 3. Create Builder VM
 
