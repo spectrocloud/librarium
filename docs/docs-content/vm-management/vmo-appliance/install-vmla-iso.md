@@ -8,41 +8,48 @@ sidebar_position: 0
 tags: ["vmo", "vm launchpad"]
 ---
 
-The VM Launchpad appliance is downloadable as a bootable ISO file and is a solution for installing Virtual Machine Orchestrator (VMO) as an Edge deployment. Once deployed, you can use the [Quick Start](./quick-start.md) guide to deploy your first VM. 
+The VM Launchpad appliance is downloadable as a bootable ISO file and is a solution for installing Virtual Machine
+Orchestrator (VMO) as an Edge deployment. Once deployed, you can use the [Quick Start](./quick-start.md) guide to deploy
+your first VM.
 
 ## Prerequisites
 
-- The network must be configured with a bridge network set to `br0`. 
+- The network must be configured with a bridge network set to `br0`.
 
 ## Hardware Resources
 
 The following sections list the hardware requirements for worker nodes and control plane nodes in a VMO cluster.
 
-| Component            | Minimum             | Recommended                                        | Comments               |
-| -------------------- | ------------------- | -------------------------------------------------- | ---------------------- | 
-| **CPU**              | Intel or AMD x64 CPU with 8 cores  | Intel or AMD x64 CPU with 8 cores             |              |
-| **RAM**              | 24 GB    | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.  |
-| **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                         | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.  |
-| **Storage Adapters** | 2 x 16 Gbps FC  | 2 x 16 Gbps FC                              | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
-| **Disks**            | Local disk of at least 500GB for the OS boot (SAN boot is supported)   | Local disk of 500 GB for the OS boot  | Boot from SAN requires special consideration due to the multi-path configuration.  |
+| Component            | Minimum                                                              | Recommended                                        | Comments                                                                                             |
+| -------------------- | -------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD x64 CPU with 8 cores                                    | Intel or AMD x64 CPU with 8 cores                  |                                                                                                      |
+| **RAM**              | 24 GB                                                                | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                       |
+| **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                                | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                      |
+| **Storage Adapters** | 2 x 16 Gbps FC                                                       | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
+| **Disks**            | Local disk of at least 500GB for the OS boot (SAN boot is supported) | Local disk of 500 GB for the OS boot               | Boot from SAN requires special consideration due to the multi-path configuration.                    |
 
 ## Limitations
 
-## Installing VM Launchpad 
+## Installing VM Launchpad
 
-1. Boot your VM Launchpad system from the ISO. 
+1. Boot your VM Launchpad system from the ISO.
 
-2. From the VM Launchpad Interactive Installer page, select the target disk for installation, and click **Enter** on your keyboard to go to the next screen.
+2. From the VM Launchpad Interactive Installer page, select the target disk for installation, and click **Enter** on
+   your keyboard to go to the next screen.
 
 :::danger
 
-Ensure you are selecting the correct disk. The installation process will completely erase all content on the target disk. 
+Ensure you are selecting the correct disk. The installation process will completely erase all content on the target
+disk.
 
 :::
 
-3. On the **Installation Options** page, you can select whether the installer should do **nothing**, **reboot**, or **poweroff** after installation is complete. Once installation is complete, remember to disconnect the ISO.
+3. On the **Installation Options** page, you can select whether the installer should do **nothing**, **reboot**, or
+   **poweroff** after installation is complete. Once installation is complete, remember to disconnect the ISO.
 
-4. When VM Launchpad system boots up, press **F2** to open the TUI. This allows you to create an OS user with the necessary permissions to operate VM Launchpad. Enter a username and password to create a new user and press the **ENTER** key to progress to the next screen.
+4. When VM Launchpad system boots up, press **F2** to open the TUI. This allows you to create an OS user with the
+   necessary permissions to operate VM Launchpad. Enter a username and password to create a new user and press the
+   **ENTER** key to progress to the next screen.
 
 5. The terminal displays a console for you to provide hostname and network configurations to the Edge host.
 
@@ -71,58 +78,57 @@ Ensure you are selecting the correct disk. The installation process will complet
    specify a search domain. Press **ENTER** to apply the change.
 
 10. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
-    configuration. Shortly after you finish configuration, the terminal screen will display the hostname and network information of your
-   Edge host. Verify that all displayed information is consistent with your configurations.
+    configuration. Shortly after you finish configuration, the terminal screen will display the hostname and network
+    information of your Edge host. Verify that all displayed information is consistent with your configurations.
 
 ## Configure Network Settings
 
-1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your VMO Appliance host. If you have
-   access to the VMO Appliance host terminal, the address of Local UI console is displayed on the terminal screen. If you have
-   changed the default port of the console, replace `5080` with Local UI port.
+1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your VMO Appliance host. If
+   you have access to the VMO Appliance host terminal, the address of Local UI console is displayed on the terminal
+   screen. If you have changed the default port of the console, replace `5080` with Local UI port.
 
 2. You will be prompted to log in. Enter your username and password to log in.
 
 3. On the **Network interfaces** card, navigage to **Bonds** and click **Create**.
 
-4. Fill out **Create Bond**, and click **Confirm**.  
+4. Fill out **Create Bond**, and click **Confirm**.
 
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | Name         | Enter name for the bond.                                |
-   | Bond type    | Select **Static** or **DHCP** for IP address settings. For example, `bond0`.  |
-   | Member interfaces | Select one or more NICs for the bond.              |
-   | Bonding mode | Select the bonding mode for the bond. This should match your physical switch port configuration. |
-   | Link monitoring interval | Select time in milliseconds.                |
-   | MTU          | Leave default value or adjust to 9000 for jumbo frames  |
-   | DNS         | Enter one or more DNS server IP addresses               |
-   | IP Address (only with Static bond) | Enter the IP address for the bond |
-   | Subnet mask (only with Static bond)| Enter the subnet mask for the bond |
-   | Gateway (only with Static bond) | Enter the gateway IP address for the bond|
+   | Parameter                           | Description                                                                                      |
+   | ----------------------------------- | ------------------------------------------------------------------------------------------------ |
+   | Name                                | Enter name for the bond.                                                                         |
+   | Bond type                           | Select **Static** or **DHCP** for IP address settings. For example, `bond0`.                     |
+   | Member interfaces                   | Select one or more NICs for the bond.                                                            |
+   | Bonding mode                        | Select the bonding mode for the bond. This should match your physical switch port configuration. |
+   | Link monitoring interval            | Select time in milliseconds.                                                                     |
+   | MTU                                 | Leave default value or adjust to 9000 for jumbo frames                                           |
+   | DNS                                 | Enter one or more DNS server IP addresses                                                        |
+   | IP Address (only with Static bond)  | Enter the IP address for the bond                                                                |
+   | Subnet mask (only with Static bond) | Enter the subnet mask for the bond                                                               |
+   | Gateway (only with Static bond)     | Enter the gateway IP address for the bond                                                        |
 
-   This change may result in losing connectivity to the Local UI. 
+   This change may result in losing connectivity to the Local UI.
 
 5. On the **Network interfaces** card, navigage to **Bridges** and click **Create**.
 
-6. Fill out **Create Bond**, and click **Confirm**.  
+6. Fill out **Create Bond**, and click **Confirm**.
 
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | Name         | Enter name for the bridge.                                |
-   | Member interfaces | Select one or more bonds for the bridge.              |
-   | Config type    | Select **Static** or **DHCP** for IP address settings. For example, `br0`. |
-   | MTU          | Leave default value or adjust to 9000 for jumbo frames  |
-   | DNS         | Enter one or more DNS server IP addresses               |
-   | IP Address (only with Static bridge) | Enter the IP address for the bridge |
-   | Subnet mask (only with Static bridge)| Enter the subnet mask for the bridge |
-   | Gateway (only with Static bridge) | Enter the gateway IP address for the bridge|
+   | Parameter                             | Description                                                                |
+   | ------------------------------------- | -------------------------------------------------------------------------- |
+   | Name                                  | Enter name for the bridge.                                                 |
+   | Member interfaces                     | Select one or more bonds for the bridge.                                   |
+   | Config type                           | Select **Static** or **DHCP** for IP address settings. For example, `br0`. |
+   | MTU                                   | Leave default value or adjust to 9000 for jumbo frames                     |
+   | DNS                                   | Enter one or more DNS server IP addresses                                  |
+   | IP Address (only with Static bridge)  | Enter the IP address for the bridge                                        |
+   | Subnet mask (only with Static bridge) | Enter the subnet mask for the bridge                                       |
+   | Gateway (only with Static bridge)     | Enter the gateway IP address for the bridge                                |
 
-   This change may result in losing connectivity to the Local UI. 
-
+   This change may result in losing connectivity to the Local UI.
 
 ## Creating VM Launchpad cluster
 
-1. Log in to Local UI by visiting the 5080 port of your VM Launchpad device's IP address or domain name. For more information,
-   refer to [Configure Network Settings](#configure-network-settings).
+1. Log in to Local UI by visiting the 5080 port of your VM Launchpad device's IP address or domain name. For more
+   information, refer to [Configure Network Settings](#configure-network-settings).
 
 2. From the left main menu, click **Cluster**.
 
@@ -135,69 +141,70 @@ Ensure you are selecting the correct disk. The installation process will complet
    | Cluster name | Name of the cluster.                                    |
    | Tags         | Key-value pairs to provide metadata about your cluster. |
 
-5. The default **VMO Appliance full stack** profile will load. The following table explains what each pack in the profile is for.    After reviewing the cluster profile, click **Next**.
+5. The default **VMO Appliance full stack** profile will load. The following table explains what each pack in the
+   profile is for. After reviewing the cluster profile, click **Next**.
 
-   | Component |   Pack Name    | Purpose |
-   |-----------|---------|---------|
-   | **Edge Native BYOI** | `edge-native-byoi <version>`   | Native Ubuntu OS. |
-   | **Kubernetes** | `edge-k8s <version>`   | Kubernetes platform |
-   | **Cilium** | `cni-cilium-fips <version>`   |CNI and network policy. Multus support for VM networking. |
-   | **Piraeus/LINSTOR** | `piraeus-operator <version>`   | Storage backend. Provides StorageClass for VM disks (when used). |
-   | **Zot** | `zot-registry-fips <version>`   |OCI registry. Stores container images for air-gapped deployments. |
-   | **Registry Connect** | `registry-connect <version>`   | Enables seamless integration with OCI-compliant registries. |
-   | **Required config** | `required-config-1 <version>`   | Initial configuration before continuing |
-   | **MetalLB** | `lb-metallb-helm <version>`   |LoadBalancer implementation for bare-metal. Assigns the platform IP. |
-   | **Traefik** | `traefik <version>`   |Single ingress controller. TLS termination, path-based routing, LoadBalancer IP. |
-   | **Required config** | `required-config-2 <version>`   | Second configuration before continuing |
-   | **Keycloak** |`keycloak <version>`   | OIDC identity provider. Handles login, user/group management, and token issuance. Shared `k8s-oidc` client with K8s API and Headlamp. |
-   | **Headlamp** | `headlamp <version>`   |Kubernetes cluster explorer. Alternative UI for raw K8s resources. |
-   | **Victoria Metrics** | `victoria-metrics-cluster <version>`   |Optional long-term metrics storage. PromQL queries when `EXTERNAL_METRICS_URL` is configured. |
-   | **OTel Collector** | `opentelemetry <version>`   |Metrics pipeline. Receives OTLP from node-agent, forwards to VMO Manager or Victoria Metrics. |
-   | **VMO Manager** | `virtual-machine-orchestrator-v<version>`   | Primary UI and API gateway. Go backend + React frontend. Manages VMs, templates, golden images, access policies, config, and dashboards. |
-   | **VM Migration Assistant** | `vm-migration-assistant <version>`   | Provides the ability to migrate VMs from VMware vSphere to VMO. |
+   | Component                  | Pack Name                                 | Purpose                                                                                                                                  |
+   | -------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Edge Native BYOI**       | `edge-native-byoi <version>`              | Native Ubuntu OS.                                                                                                                        |
+   | **Kubernetes**             | `edge-k8s <version>`                      | Kubernetes platform                                                                                                                      |
+   | **Cilium**                 | `cni-cilium-fips <version>`               | CNI and network policy. Multus support for VM networking.                                                                                |
+   | **Piraeus/LINSTOR**        | `piraeus-operator <version>`              | Storage backend. Provides StorageClass for VM disks (when used).                                                                         |
+   | **Zot**                    | `zot-registry-fips <version>`             | OCI registry. Stores container images for air-gapped deployments.                                                                        |
+   | **Registry Connect**       | `registry-connect <version>`              | Enables seamless integration with OCI-compliant registries.                                                                              |
+   | **Required config**        | `required-config-1 <version>`             | Initial configuration before continuing                                                                                                  |
+   | **MetalLB**                | `lb-metallb-helm <version>`               | LoadBalancer implementation for bare-metal. Assigns the platform IP.                                                                     |
+   | **Traefik**                | `traefik <version>`                       | Single ingress controller. TLS termination, path-based routing, LoadBalancer IP.                                                         |
+   | **Required config**        | `required-config-2 <version>`             | Second configuration before continuing                                                                                                   |
+   | **Keycloak**               | `keycloak <version>`                      | OIDC identity provider. Handles login, user/group management, and token issuance. Shared `k8s-oidc` client with K8s API and Headlamp.    |
+   | **Headlamp**               | `headlamp <version>`                      | Kubernetes cluster explorer. Alternative UI for raw K8s resources.                                                                       |
+   | **Victoria Metrics**       | `victoria-metrics-cluster <version>`      | Optional long-term metrics storage. PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                            |
+   | **OTel Collector**         | `opentelemetry <version>`                 | Metrics pipeline. Receives OTLP from node-agent, forwards to VMO Manager or Victoria Metrics.                                            |
+   | **VMO Manager**            | `virtual-machine-orchestrator-v<version>` | Primary UI and API gateway. Go backend + React frontend. Manages VMs, templates, golden images, access policies, config, and dashboards. |
+   | **VM Migration Assistant** | `vm-migration-assistant <version>`        | Provides the ability to migrate VMs from VMware vSphere to VMO.                                                                          |
 
-   Additionally, within the **VMO Manager** the following services exist. 
+   Additionally, within the **VMO Manager** the following services exist.
 
-   | Component |       | Purpose |
-   |-----------|---------|---------|
-   | **cert-manager** |`virtual-machine-orchestrator-v<version>`   | Issues and renews TLS certificates. Single platform CA for all components. |
-   | **KubeVirt** | `virtual-machine-orchestrator-v<version>`   |Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
-   | **CDI** | `virtual-machine-orchestrator-v<version>`   |Containerized Data Importer. Handles disk image uploads, imports, and clones. |
-   
+   | Component        |                                           | Purpose                                                                                            |
+   | ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------- |
+   | **cert-manager** | `virtual-machine-orchestrator-v<version>` | Issues and renews TLS certificates. Single platform CA for all components.                         |
+   | **KubeVirt**     | `virtual-machine-orchestrator-v<version>` | Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
+   | **CDI**          | `virtual-machine-orchestrator-v<version>` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
+
 6. Fill out the **Profile Config** page, and click **Next**.
 
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | Pod CIDR         | Leave the default value or enter a CIDR range for Kubernetes Pods network.|
-   | Service CIDR | Leave the default value or enter a CIDR range for Kubernetes Services network.|
-   | Ubuntu Pro Token (Optional) | Leave blank or enter an Ubuntu Pro token value|
-   | Reserved CPUS for kubelet and system | Leave the default value or to set which CPUs should be reserved for kubelet and OS use. |
-   | CSI Placement Count (Optional) | Leave the default or enter the number of replicas to be created for CSI volumes across nodes.|
-   | L2 Pod Announcement Interface | Enter the interface to send ARP pod Announcements on. For exmaple, `br0`.|
-   | OCI Pack Registry Username | Leave the default value or enter the username for the OCI Pack Registry.|
-   | Platform CA Certificate| Enter the base64 encoded value for your CA certificate. |
-   | Platform CA Private Key | Enter the base64 encoded value for your private key.|
-   | OIDC Login Username | Leave the default value or enter a username for the cluster admin OIDC login.|
-   | OIDC Login Email | Leave the default value or enter the email address to use for OIDC login. |
-   | Local Admin User Name | Leave the default value or enter the username to use for the local admin account. |
-   | VLAN range for VMs | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN. |
-   | Cluster runs on br0 (Optional) | Leave default or toggle to allow the cluster to run on `br0`. |
-   | VLANs on top of br0 | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN, and must always be included.|
-   | Victoria Metrics Data Retention Period | Leave the default or enter an appropriate value in (h)ours, (d)days, (w)eeks, months (there is no character value) or (y)ears. Minimum value is `24h`.  |
-   | Victoria Metrics Volume Storage Size (Optional) | Leave the default value or enter the size in gigabytes (`Gi`).|
-   | MetalLB interface | Leave the default value or enter the NIC that uses L2 advertisements.|
-   | MetalLB IP Address | Enter the IP address that the MetalLB will use.|
-   | Default Keycloak Admin Password | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
-   | Local Admin Password | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
-   | OIDC Login Password | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
-   | OCI Pack Registry Password | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character. |
-   | Default Keycloak Admin Username (Optional) | Leave the default value or enter a username for the Keycloak admin login.|
-   | listorNodeInterface | Leave the default value or enter the NIC which node network interface to use for replication. |
-   | Storage Pool Drive | Leave the default value or enter the storage path to use.|
-  
+   | Parameter                                       | Description                                                                                                                                            |
+   | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | Pod CIDR                                        | Leave the default value or enter a CIDR range for Kubernetes Pods network.                                                                             |
+   | Service CIDR                                    | Leave the default value or enter a CIDR range for Kubernetes Services network.                                                                         |
+   | Ubuntu Pro Token (Optional)                     | Leave blank or enter an Ubuntu Pro token value                                                                                                         |
+   | Reserved CPUS for kubelet and system            | Leave the default value or to set which CPUs should be reserved for kubelet and OS use.                                                                |
+   | CSI Placement Count (Optional)                  | Leave the default or enter the number of replicas to be created for CSI volumes across nodes.                                                          |
+   | L2 Pod Announcement Interface                   | Enter the interface to send ARP pod Announcements on. For exmaple, `br0`.                                                                              |
+   | OCI Pack Registry Username                      | Leave the default value or enter the username for the OCI Pack Registry.                                                                               |
+   | Platform CA Certificate                         | Enter the base64 encoded value for your CA certificate.                                                                                                |
+   | Platform CA Private Key                         | Enter the base64 encoded value for your private key.                                                                                                   |
+   | OIDC Login Username                             | Leave the default value or enter a username for the cluster admin OIDC login.                                                                          |
+   | OIDC Login Email                                | Leave the default value or enter the email address to use for OIDC login.                                                                              |
+   | Local Admin User Name                           | Leave the default value or enter the username to use for the local admin account.                                                                      |
+   | VLAN range for VMs                              | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN.                                             |
+   | Cluster runs on br0 (Optional)                  | Leave default or toggle to allow the cluster to run on `br0`.                                                                                          |
+   | VLANs on top of br0                             | Leave the default value or enter the VLANs that will be used. VLAN 1 is designated as default native VLAN, and must always be included.                |
+   | Victoria Metrics Data Retention Period          | Leave the default or enter an appropriate value in (h)ours, (d)days, (w)eeks, months (there is no character value) or (y)ears. Minimum value is `24h`. |
+   | Victoria Metrics Volume Storage Size (Optional) | Leave the default value or enter the size in gigabytes (`Gi`).                                                                                         |
+   | MetalLB interface                               | Leave the default value or enter the NIC that uses L2 advertisements.                                                                                  |
+   | MetalLB IP Address                              | Enter the IP address that the MetalLB will use.                                                                                                        |
+   | Default Keycloak Admin Password                 | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                    |
+   | Local Admin Password                            | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                       |
+   | OIDC Login Password                             | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                              |
+   | OCI Pack Registry Password                      | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                 |
+   | Default Keycloak Admin Username (Optional)      | Leave the default value or enter a username for the Keycloak admin login.                                                                              |
+   | listorNodeInterface                             | Leave the default value or enter the NIC which node network interface to use for replication.                                                          |
+   | Storage Pool Drive                              | Leave the default value or enter the storage path to use.                                                                                              |
+
    <details>
 
-      <summary>Generate Your own Self-Signed Certificates</summary>
+   <summary>Generate Your own Self-Signed Certificates</summary>
 
    If you do not have a certificate server you can generate your own self-signed certificates.
 
@@ -221,7 +228,7 @@ Ensure you are selecting the correct disk. The installation process will complet
 
       This generates the file `ca.crt`. This will be the CA certificate in PEM format.
 
-   4. You can generate the Base64 values by using the following commands.
+   3. You can generate the Base64 values by using the following commands.
 
       ```bash
       base64 -i ca.crt -o ca.crt.b64
@@ -252,17 +259,18 @@ Ensure you are selecting the correct disk. The installation process will complet
       ```bash
       openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
       ```
+
       This generates the file `ca.crt`. This will be the CA certificate in PEM format.
 
-   4. You can generate the Base64 values by using the following commands. The `-w 0` flag disables line wrapping.
+   3. You can generate the Base64 values by using the following commands. The `-w 0` flag disables line wrapping.
 
       ```bash
       base64 -w 0 ca.crt > ca.crt.b64
       base64 -w 0 ca.key -o ca.key.b64
       ```
 
-
-      Alternatively, if you want to print the base64 output to screen use the following commands. The `-w 0` flag disables line wrapping.
+      Alternatively, if you want to print the base64 output to screen use the following commands. The `-w 0` flag
+      disables line wrapping.
 
       ```bash
       base64 -w 0 < ca.crt
@@ -271,7 +279,7 @@ Ensure you are selecting the correct disk. The installation process will complet
 
    </TabItem>
 
-   <TabItem label="Windows" value="windows">  
+   <TabItem label="Windows" value="windows">
 
    1. Open a terminal window and use the following command to generate a private key.
 
@@ -289,7 +297,7 @@ Ensure you are selecting the correct disk. The installation process will complet
 
       This generates the file `ca.crt`. This will be the CA certificate in PEM format.
 
-   4. You can generate the Base64 values by using the following commands. 
+   3. You can generate the Base64 values by using the following commands.
 
       ```PowerShell
       [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.crt"))
@@ -297,8 +305,8 @@ Ensure you are selecting the correct disk. The installation process will complet
       ```
 
    </TabItem>
-   </Tabs>
-   </details>
+</Tabs>
+</details>
 
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
    specify an NTP server and an SSH public key.
@@ -310,76 +318,79 @@ Ensure you are selecting the correct disk. The installation process will complet
    | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host. |
 
    Optionally, you can also enable network overlay, especially if your cluster will operate in an DHCP environment. For
-   more information, refer to [Enable Overlay Network]. If you enable the overlay
-   network, you need to specify a CIDR range to be used by the overlay network.
+   more information, refer to [Enable Overlay Network]. If you enable the overlay network, you need to specify a CIDR
+   range to be used by the overlay network.
 
 8. In the **Node Config** step, you can specify configurations for worker pools and control plane pools. To assign a
-   host to a node pool, click **Add Item** in the corresponding node pool and select the host to add to the pool.
-   For multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally,
-   you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
-   the control plane will be considered a leader node.
+   host to a node pool, click **Add Item** in the corresponding node pool and select the host to add to the pool. For
+   multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally, you
+   must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in the
+   control plane will be considered a leader node.
 
-   For more information about node pool configurations, refer to [Node pools](../../clusters/cluster-management/node-pool.md).
-   After you finish configuration, click **Next**.
+   For more information about node pool configurations, refer to
+   [Node pools](../../clusters/cluster-management/node-pool.md). After you finish configuration, click **Next**.
 
 9. Review your configurations and deploy the cluster. As your cluster begins to deploy, the status and details of the
-   deployment are displayed in the **Cluster** page. Use this page to track the deployment progress. The VM Launchpad host will reboot as part of the build process. 
+   deployment are displayed in the **Cluster** page. Use this page to track the deployment progress. The VM Launchpad
+   host will reboot as part of the build process.
 
-10. Once the cluster is complete, you will see additional options on the left-side bar. 
+10. Once the cluster is complete, you will see additional options on the left-side bar.
 
-   ![screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
+![screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
 
 ## Validate
 
-1. Navigate to the VMO Manager IP address using your browser. A DNS hostname is not required. 
+1. Navigate to the VMO Manager IP address using your browser. A DNS hostname is not required.
 
 2. Log in to the VMO Appliance.
 
-    <Tabs>
+   <Tabs>
 
-    <TabItem label="Local Auth (Day-0)" value="local-auth">
+   <TabItem label="Local Auth (Day-0)" value="local-auth">
 
-    Before Keycloak is configured, you can use local admin accounts:
+   Before Keycloak is configured, you can use local admin accounts:
 
-    1. Navigate to `https://<VMO-Address>/local-login`.
-    2. Enter the local admin username (default: `admin`) and password.
-    3. You will be prompted to enter a new password and confirm the new password.
-    4. Click **Set New Password**
+   1. Navigate to `https://<VMO-Address>/local-login`.
+   2. Enter the local admin username (default: `admin`) and password.
+   3. You will be prompted to enter a new password and confirm the new password.
+   4. Click **Set New Password**
 
-    </TabItem>
+   </TabItem>
 
-    <TabItem label="OIDC using Keycloak" value="keycloak">
+   <TabItem label="OIDC using Keycloak" value="keycloak">
 
-    When Keycloak is configured, the platform uses OIDC for authentication:
+   When Keycloak is configured, the platform uses OIDC for authentication:
 
-    1. Click **Login** or navigate to the platform URL.
-    2. You are redirected to the Keycloak login page.
-    3. Enter your username and password.
-    4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
+   1. Click **Login** or navigate to the platform URL.
+   2. You are redirected to the Keycloak login page.
+   3. Enter your username and password.
+   4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
 
-    </TabItem>
+   </TabItem>
 
-    </Tabs>
+   </Tabs>
 
 3. After login, the **Dashboard** is the default landing page.
 
    ![screenshot of VMO dashboard](/vmo/vm-management_vmo_appliance-default-dashboard-4-9.webp)
 
-
    The **Dashboard** contains a set of resizable, drag-to-reorder widgets:
 
-    - **Overview** — KPI cards showing Total VMs, Running, Stopped, Issues, Transitional, and Namespace counts. Click on a card to navigate to the filtered VM list.
-    - **Resource Summary** — CPU and memory cluster utilization plus quick links to Data Volumes and Networks.
-    - **VM CPU USAGE (TOP 10)** — Defaults to Last 1H (hour) CPU usage by VMs.
-    - **VM MEMORY USAGE (TOP 10)** — Defaults to Last 1H (hour) memory usage by VMs.
-    - **VM NETWORK I/O** — Defaults to Last 1H (hour) network usage by VMs.
-    - **VM STATUS DISTRIBUTION** — Shows breakdown of healthy and unhealthy VMs.
-    - **VMS BY NAMESPACE** — Shows breakdown of VMs by running, stopped and other statuses.
-    - **VM NEEDING ATTENTION** — Displays list of unhealthy VMs.
+   - **Overview** — KPI cards showing Total VMs, Running, Stopped, Issues, Transitional, and Namespace counts. Click on
+     a card to navigate to the filtered VM list.
+   - **Resource Summary** — CPU and memory cluster utilization plus quick links to Data Volumes and Networks.
+   - **VM CPU USAGE (TOP 10)** — Defaults to Last 1H (hour) CPU usage by VMs.
+   - **VM MEMORY USAGE (TOP 10)** — Defaults to Last 1H (hour) memory usage by VMs.
+   - **VM NETWORK I/O** — Defaults to Last 1H (hour) network usage by VMs.
+   - **VM STATUS DISTRIBUTION** — Shows breakdown of healthy and unhealthy VMs.
+   - **VMS BY NAMESPACE** — Shows breakdown of VMs by running, stopped and other statuses.
+   - **VM NEEDING ATTENTION** — Displays list of unhealthy VMs.
 
    #### Auto-Refresh and Pause
 
-   The dashboard polls the API and metrics backend on a configurable interval (5 s, 15 s, or 30 s). Use the **interval selector** in the toolbar to change the cadence. Click the **Pause** button to stop all background polling immediately — useful when inspecting data or troubleshooting. Click **Resume** to restart polling.
+   The dashboard polls the API and metrics backend on a configurable interval (5 s, 15 s, or 30 s). Use the **interval
+   selector** in the toolbar to change the cadence. Click the **Pause** button to stop all background polling
+   immediately — useful when inspecting data or troubleshooting. Click **Resume** to restart polling.
 
    #### Customizing the Layout
 
@@ -393,4 +404,5 @@ Ensure you are selecting the correct disk. The installation process will complet
 
    ## Next Steps
 
-   Once you have built your VMO cluster, you can start deploying VMs by following the [Quick Start](quick-start.md) steps. 
+   Once you have built your VMO cluster, you can start deploying VMs by following the [Quick Start](quick-start.md)
+   steps.

@@ -10,15 +10,18 @@ tags: ["vmo", "vm launchpad", "golden images"]
 
 ## Create a Golden Image
 
-A golden image is a sealed, reusable base system image. Build golden images to standardize OS installations and create VMs from [templates](./templates.md) with validated configurations. VMs built from templates can be further customized using [Customization Templates](./image-customization.md) for seal scripts and [Packages](./packages.md) for guest agent installation.
+A golden image is a sealed, reusable base system image. Build golden images to standardize OS installations and create
+VMs from [templates](./templates.md) with validated configurations. VMs built from templates can be further customized
+using [Customization Templates](./image-customization.md) for seal scripts and [Packages](./packages.md) for guest agent
+installation.
 
-The diagram below displays the overarching steps to build a golden image to use as a reference for a template. 
+The diagram below displays the overarching steps to build a golden image to use as a reference for a template.
 
 ![Screenshot of golden image workflow](/vmo/vm-management_vmo_golden-images_workflow-4-9.webp)
 
 ## Prerequisites
 
-- ISO of the OS 
+- ISO of the OS
 
 ## Upload ISO/Disk Image
 
@@ -28,14 +31,14 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 3. Fill out the **Upload ISO/Disk Image** page and click **Upload**.
 
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | DataVolume Name        | Enter a unique name for the ISO installer or disk image. |
-   | Namespace        | Select the namespace from the dropdown, typically `vmo-golden-images`.|
-   | Storage Class | Select the storage class from the dropdown. |
-   | Volume Size | Set the DataVolume disk size in `GiB` or `TiB`. |
-   | Image Type | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image. |
-   | Image File | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
+   | Parameter       | Description                                                                                                                                    |
+   | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+   | DataVolume Name | Enter a unique name for the ISO installer or disk image.                                                                                       |
+   | Namespace       | Select the namespace from the dropdown, typically `vmo-golden-images`.                                                                         |
+   | Storage Class   | Select the storage class from the dropdown.                                                                                                    |
+   | Volume Size     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                                |
+   | Image Type      | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image.                                                        |
+   | Image File      | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
 
    Large ISOs may take several minutes to upload. Progress is shown during the upload phase.
 
@@ -49,29 +52,30 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 3. Fill out **Source** page and click **Next >**.
 
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | Golden Image Name        | Enter a unique name for the golden image. This field only accepts lowercase, numbers and hyphens. The name must end with a letter or digit. |
-   | Namespace        | Select the namespace from the dropdown, typically `vmo-golden-images`.|
-   | Source ISO DataVolume | Select the ISO to use. |
-   | Disk Size | Set the disk size in `GiB` or `TiB`. |
-   | Storage Class | Select the storage class from the dropdown. |
+   | Parameter             | Description                                                                                                                                 |
+   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Golden Image Name     | Enter a unique name for the golden image. This field only accepts lowercase, numbers and hyphens. The name must end with a letter or digit. |
+   | Namespace             | Select the namespace from the dropdown, typically `vmo-golden-images`.                                                                      |
+   | Source ISO DataVolume | Select the ISO to use.                                                                                                                      |
+   | Disk Size             | Set the disk size in `GiB` or `TiB`.                                                                                                        |
+   | Storage Class         | Select the storage class from the dropdown.                                                                                                 |
 
 4. Fill out the **Compute** page and click **Next >**.
 
-   | Parameter    | Description                                             |
-   | ------------ | ------------------------------------------------------- |
-   | Builder VM CPUs | Enter the number of CPUs for the Builder VM. |
-   | Builder VM Memory  | Set the Builder VM memory in `MiB` or `GiB`.|
-   | Networking | Open the Networking section, set the NIC name and select the Pod Network. You can optionally click **+ Add Interface** to add additional NICs.   |
-   | First Boot Device | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the VM Builder cannot boot from the primary disk, it will use **CD-ROM** automatically as a fall-back boot location. |
-   | SAdditional CD-ROM (optional) | Attach a second ISO to access driver files or response files. |
-   | Install Guest Agent | Leave default to auto-install the QEMU guest agent at first boot. |
+   | Parameter                     | Description                                                                                                                                                                                        |
+   | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Builder VM CPUs               | Enter the number of CPUs for the Builder VM.                                                                                                                                                       |
+   | Builder VM Memory             | Set the Builder VM memory in `MiB` or `GiB`.                                                                                                                                                       |
+   | Networking                    | Open the Networking section, set the NIC name and select the Pod Network. You can optionally click **+ Add Interface** to add additional NICs.                                                     |
+   | First Boot Device             | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the VM Builder cannot boot from the primary disk, it will use **CD-ROM** automatically as a fall-back boot location. |
+   | SAdditional CD-ROM (optional) | Attach a second ISO to access driver files or response files.                                                                                                                                      |
+   | Install Guest Agent           | Leave default to auto-install the QEMU guest agent at first boot.                                                                                                                                  |
 
-5. On the **Autoinstall (OPTIONAL)** page, select **Configure Autoinstall Script**. You can manually manually create a customization script using the **Editor**,use an existing **Template**, **Upload** a script, or fetch a script using an **URL**.  
+5. On the **Autoinstall (OPTIONAL)** page, select **Configure Autoinstall Script**. You can manually manually create a
+   customization script using the **Editor**,use an existing **Template**, **Upload** a script, or fetch a script using
+   an **URL**.
 
    ![Screenshot of cloud-init and autoinstall page](/vmo/vm-management_vmo_golden-images_autoinstall-4-9.webp)
-
 
 ### 2. Create Blank DataVolume
 
@@ -88,13 +92,16 @@ The diagram below displays the overarching steps to build a golden image to use 
    - Cloud-init with the auto-install script (Linux) or Autounattend.xml (Windows).
    - For Windows: the VirtIO drivers ISO auto-mounted from a shared RWX PVC.
 
-> **Note:** Active builder VMs are listed cluster-wide on the Golden Images tab, so builds started in any namespace (not only `vmo-golden-images`) appear in the progress view.
+> **Note:** Active builder VMs are listed cluster-wide on the Golden Images tab, so builds started in any namespace (not
+> only `vmo-golden-images`) appear in the progress view.
 
 ### 4. Boot and Install
 
 1. The builder VM boots from the ISO (or network, if configured).
-2. **Linux** — Cloud-init runs the auto-install script, which typically configures a preseed/ kickstart/ autoinstall response for unattended installation.
-3. **Windows** — Autounattend.xml provides unattended installation answers. The VirtIO drivers ISO is available as a second CD-ROM for loading drivers during installation.
+2. **Linux** — Cloud-init runs the auto-install script, which typically configures a preseed/ kickstart/ autoinstall
+   response for unattended installation.
+3. **Windows** — Autounattend.xml provides unattended installation answers. The VirtIO drivers ISO is available as a
+   second CD-ROM for loading drivers during installation.
 4. Open the **VNC console** to monitor progress or complete manual steps if needed.
 5. Wait for the OS installation to finish and the VM to reboot.
 
@@ -124,7 +131,8 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 ## Seal Scripts
 
-Seal scripts generalize the image so clones do not conflict (e.g., duplicate machine-ids, SSH host keys, or network config).
+Seal scripts generalize the image so clones do not conflict (e.g., duplicate machine-ids, SSH host keys, or network
+config).
 
 ### Linux (virt-sysprep style)
 
@@ -140,7 +148,8 @@ Built-in templates for Ubuntu/Debian and RHEL/CentOS/Fedora perform:
 
 ### Windows (sysprep)
 
-The Windows template runs sysprep with `/generalize /oobe /shutdown` to generalize the image. It may also install the QEMU guest agent from the VMO package server before sysprep.
+The Windows template runs sysprep with `/generalize /oobe /shutdown` to generalize the image. It may also install the
+QEMU guest agent from the VMO package server before sysprep.
 
 ---
 
@@ -148,10 +157,13 @@ The Windows template runs sysprep with `/generalize /oobe /shutdown` to generali
 
 Windows needs VirtIO drivers for disk and network when using VirtIO devices. VMO Manager provides:
 
-- **Auto-mount** — When creating a Windows builder VM, the VirtIO drivers ISO is automatically attached as a second CD-ROM. The ISO is served from a shared RWX PVC in the golden images namespace.
-- **DataVolume** — A `vmo-virtio-win` DataVolume is created in the golden images namespace. It is populated from the built-in VirtIO Windows ISO package or a configured source.
+- **Auto-mount** — When creating a Windows builder VM, the VirtIO drivers ISO is automatically attached as a second
+  CD-ROM. The ISO is served from a shared RWX PVC in the golden images namespace.
+- **DataVolume** — A `vmo-virtio-win` DataVolume is created in the golden images namespace. It is populated from the
+  built-in VirtIO Windows ISO package or a configured source.
 
-> **Note:** The VirtIO PVC must be ready before building Windows golden images. If the PVC is missing or pending, the builder may start without the drivers ISO. Ensure storage is configured and the VirtIO package is seeded.
+> **Note:** The VirtIO PVC must be ready before building Windows golden images. If the PVC is missing or pending, the
+> builder may start without the drivers ISO. Ensure storage is configured and the VirtIO package is seeded.
 
 ---
 
@@ -164,4 +176,5 @@ After finalizing a golden image:
 3. Complete the template wizard. The template will clone from the golden image when creating VMs.
 4. Create VMs from the template via **Workloads > Virtual Machines > Create VM**.
 
-Each VM receives a clone of the golden image. Cloud-init (if configured in the template) can set hostname, static IPs, and other per-VM settings at first boot.
+Each VM receives a clone of the golden image. Cloud-init (if configured in the template) can set hostname, static IPs,
+and other per-VM settings at first boot.
