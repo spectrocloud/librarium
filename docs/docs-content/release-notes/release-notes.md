@@ -94,14 +94,6 @@ tags: ["release-notes"]
 - A list of available and allocated IP addresses is now displayed for VMware vSphere
   [IP Address Management (IPAM) node pools](../clusters/pcg/manage-pcg/create-manage-node-pool.md).
 
-#### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PCOM-691 -->
-
-- Fixed an issue that prevented
-  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) version 4.9.8
-  from installing on Secure Boot hardened infrastructures.
-
 #### Deprecations and Removals
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
@@ -177,6 +169,12 @@ tags: ["release-notes"]
 - Fixed an issue that prevented [virtual clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md)
   from being deployed on EKS host clusters when the Kubernetes version on the virtual cluster and host cluster did not
   match.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-691 -->
+
+- Fixed an issue that prevented
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) version 4.9.8
+  from installing on Secure Boot hardened infrastructures.
 
 ### Edge
 
