@@ -61,6 +61,12 @@ tags: ["release-notes"]
 
 - SSH key injection is now supported for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PRM-2624 -->
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.14 are now
+  available.
+
 #### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2822 -->
@@ -164,6 +170,12 @@ tags: ["release-notes"]
   from being deployed on EKS host clusters when the Kubernetes version on the virtual cluster and host cluster did not
   match.
 
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-691 -->
+
+- Fixed an issue that prevented
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) version 4.9.8
+  from installing on Secure Boot hardened infrastructures.
+
 ### Edge
 
 :::info
@@ -246,6 +258,31 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2246 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2226 -->
+
+- The
+  [`spectrocloud_cluster_aks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
+  and
+  [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)
+  Terraform resources now support Cluster API property overrides using the `override_cluster_api_config` field.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2232 -->
+
+- The
+  [`spectrocloud_cluster_maas`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  Terraform resource now supports the injection of SSH keys into MAAS nodes using the `ssh_keys` field.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2242 -->
+
+- Fixed an issue that caused the
+  [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
+  Terraform resource to incorrectly reconcile VIP values after import.
+
 ### Docs and Education
 
 - A new
@@ -262,39 +299,36 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 ### Packs
 
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4115 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4101 -->
+
+| Pack Name                  | Layer  | Non-FIPS           | FIPS | New Version |
+| -------------------------- | ------ | ------------------ | ---- | ----------- |
+| Amazon EFS                 | CSI    | :white_check_mark: | :x:  | 3.2.0       |
+| Cilium                     | CNI    | :white_check_mark: | :x:  | 1.19.4      |
+| Headlamp                   | Add-on | :white_check_mark: | :x:  | 0.42.0      |
+| Karpenter                  | Add-on | :white_check_mark: | :x:  | 1.12.1      |
+| Portworx with Operator     | CSI    | :white_check_mark: | :x:  | 3.6.0       |
+| Volume Snapshot Controller | Add-on | :white_check_mark: | :x:  | 8.5.0-rev1  |
+
 #### Pack Notes
 
-#### OS
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4101 -->
 
-| Pack Name | New Version |
-| --------- | ----------- |
+<!-- prettier-ignore-start -->
 
-#### Kubernetes
+The <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> version 8.5.0-rev1 supports the [snapshot conversion webhook](https://github.com/kubernetes-csi/external-snapshotter/blob/master/deploy/kubernetes/webhook-example/README.md).
 
-| Pack Name | New Version |
-| --------- | ----------- |
+<!-- prettier-ignore-end -->
 
-#### CNI
+<!-- prettier-ignore-start -->
 
-| Pack Name | New Version |
-| --------- | ----------- |
+The following community packs have been released:
 
-#### CSI
+- <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 5.0.5
+- <VersionedLink text="Trident" url="/integrations/packs/?pack=csi-trident" /> version 26.02.1
 
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Deprecations and Removals
+<!-- prettier-ignore-end -->
 
 ## May 22, 2026 - Component Updates {#component-updates-2026-21}
 
