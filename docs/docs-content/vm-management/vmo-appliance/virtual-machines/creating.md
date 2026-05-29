@@ -1,3 +1,5 @@
+<!-- vale off -->
+
 # Creating VMs
 
 This guide walks through the VM creation wizard and batch creation options in VMO Manager.

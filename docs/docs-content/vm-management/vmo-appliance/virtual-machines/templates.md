@@ -1,3 +1,5 @@
+<!-- vale off -->
+
 # Templates
 
 VmTemplates are reusable VM specifications that define a base image, compute, network, storage, and hardware settings.

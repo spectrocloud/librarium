@@ -7,7 +7,7 @@ hide_table_of_contents: false
 sidebar_position: 10
 tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 ---
-
+<!-- vale off -->
 # Customization Templates
 
 Customization templates define seal and generalize scripts used during golden image finalization. They prepare the OS

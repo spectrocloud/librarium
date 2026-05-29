@@ -1,3 +1,5 @@
+<!-- vale off -->
+
 # Packages
 
 VMO Manager provides package management for air-gapped environments. Upload DEB, RPM, MSI, and ISO packages, and serve

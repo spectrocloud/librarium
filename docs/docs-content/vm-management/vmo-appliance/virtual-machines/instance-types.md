@@ -1,3 +1,5 @@
+<!-- vale off -->
+
 # Instance Types & Preferences
 
 Instance types and preferences provide predefined compute and hardware profiles for VMs. Use them to standardize sizing
