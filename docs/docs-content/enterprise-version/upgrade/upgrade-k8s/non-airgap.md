@@ -10,17 +10,25 @@ keywords: ["self-hosted", "enterprise"]
 
 This guide takes you through the process of upgrading a self-hosted Palette instance installed with Helm on Kubernetes.
 
-:::warning
+## Upgrade Notes
 
-Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
-minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
-details.
+### All Versions
 
-:::
+- Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
+  minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
+  details.
 
-If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
-Palette upgrade.
+- If your setup includes a PCG, you must also
+  [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+  Palette upgrade.
+
+### Specific Versions
+
+- <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette" />
+
+- <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette" />
+
+- <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
 ## Prerequisites
 
@@ -39,10 +47,6 @@ Palette upgrade.
 - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
   the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
   version required for your Palette installation.
-
-<PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette" />
-
-<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
 ## Upgrade
 
@@ -197,8 +201,6 @@ match your environment.
 
    The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces `cp-system`,
    `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` are in the **Ready** status.
-
-   <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette" />
 
 ## Validate
 

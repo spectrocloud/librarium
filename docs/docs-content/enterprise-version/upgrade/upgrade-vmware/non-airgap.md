@@ -12,17 +12,21 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 upgrading Palette to a new major version, you must first update it to the latest patch version of the latest minor
 version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
 
-:::warning
+## Upgrade Notes
 
-If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script
-to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+### All Versions
 
-:::
+- If your setup includes a PCG, you must also
+  [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+  Palette upgrade.
 
-If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
-Palette upgrade.
+### Specific Versions
+
+- <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+
+- **(pre-4.4.14 to 4.4.14+)** If you are upgrading from a Palette version that is older than 4.4.14, ensure that you
+  have executed the utility script to make the CNS mapping unique for the associated PVC. For more information, refer to
+  the [Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 ## Prerequisites
 
@@ -31,8 +35,6 @@ Palette upgrade.
 - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
   the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
   version required for your Palette installation.
-
-<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
 ## Upgrade
 

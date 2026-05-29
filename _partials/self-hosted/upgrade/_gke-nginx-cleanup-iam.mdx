@@ -3,10 +3,8 @@ partial_category: self-hosted
 partial_name: gke-nginx-cleanup-iam
 ---
 
-:::warning
-
-If your self-hosted {props.edition} environment is installed on a GKE cluster and you are upgrading Palette to version 4.9.a or later, the principal that runs
-`helm upgrade` must hold the following Cloud Identity and Access Management (IAM) permissions so the upgrade can
+**(pre-4.9.14 to 4.9.14+)** If your self-hosted {props.edition} environment is installed on a GKE cluster and you are upgrading Palette to version 4.9.14 or later, the principal that runs
+`helm upgrade` must have the following Cloud Identity and Access Management (IAM) permissions so the upgrade can
 prune leftover `ingress-nginx` Role-Based Access Control (RBAC) resources:
 
 - `container.roles.delete`
@@ -16,4 +14,3 @@ prune leftover `ingress-nginx` Role-Based Access Control (RBAC) resources:
 
 If the upgrade principal is missing these permissions, the upgrade fails to remove the deprecated `ingress-nginx` RBAC objects.
 
-:::

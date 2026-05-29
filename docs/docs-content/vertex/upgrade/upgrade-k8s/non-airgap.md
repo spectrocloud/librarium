@@ -11,17 +11,25 @@ keywords: ["self-hosted", "vertex"]
 This guide takes you through the process of upgrading a self-hosted Palette VerteX instance installed with Helm on
 Kubernetes.
 
-:::warning
+## Upgrade Notes
 
-Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
-latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
-for details.
+### All Versions
 
-:::
+- Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
+  latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
+  for details.
 
-If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
-Palette VerteX upgrade.
+- If your setup includes a PCG, you must also
+  [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+  Palette VerteX upgrade.
+
+### Specific Versions
+
+- <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette VerteX" />
+
+- <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette VerteX" />
+
+- <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 ## Prerequisites
 
@@ -36,10 +44,6 @@ Palette VerteX upgrade.
 
 - Access to the latest Palette VerteX Helm Chart. Refer to
   [Access Palette VerteX](../../vertex.md#access-palette-vertex) for more details.
-
-<PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette VerteX" />
-
-<PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 ## Upgrade
 
@@ -192,8 +196,6 @@ match your environment.
 
    The upgrade usually takes up to five minutes. Palette VerteX is upgraded when the deployments in the namespaces
    `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` are in the **Ready** status.
-
-   <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette VerteX" />
 
 ## Validate
 
