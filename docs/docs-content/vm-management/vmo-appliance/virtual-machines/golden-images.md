@@ -86,23 +86,21 @@ The diagram below displays the overarching steps to build a golden image to use 
    | Builder VM Memory             | Set the Builder VM memory in `MiB` or `GiB`.                                                                                                                                                       |
    | Networking                    | Open the Networking section, set the NIC name and select the Pod Network. You can optionally click **+ Add Interface** to add additional NICs.                                                     |
    | First Boot Device             | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the VM Builder cannot boot from the primary disk, it will use **CD-ROM** automatically as a fall-back boot location. |
-   | SAdditional CD-ROM (optional) | Attach a second ISO to access driver files or response files.                                                                                                                                      |
+   | Additional CD-ROM (optional) | Attach a second ISO to access driver files or response files.                                                                                                                                      |
    | Install Guest Agent           | Leave default to auto-install the QEMU guest agent at first boot.                                                                                                                                  |
 
-5. On the **Autoinstall (OPTIONAL)** page, select **Configure Autoinstall Script**. You can manually manually create a
+5. On the **Autoinstall (OPTIONAL)** page, select **Configure Autoinstall Script**. You can manually create a
    customization script using the **Editor**,use an existing **Template**, **Upload** a script, or fetch a script using
    an **URL**.
 
    ![Screenshot of cloud-init and autoinstall page](/vmo/vm-management_vmo_golden-images_autoinstall-4-9.webp)
 
-<<<<<<< HEAD
 
 6. 
-=======
-### 2. Create Blank DataVolume
->>>>>>> 3f696dcda0dbdeef2779d1935af24bf8002ff520
 
    ![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
+
+<!-- vale off -->
 
 ### 3. Create Builder VM
 
