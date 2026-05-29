@@ -42,29 +42,6 @@ This guide walks you through accessing VM Launchpad, logging in, viewing the das
 
     </Tabs>
 
-After login, the **Dashboard** (`/`) is the default landing page. It opens to the **Virtual Machines** tab, which contains a set of resizable, drag-to-reorder widgets:
-
-    - **VM Summary** — KPI cards showing Total, Running, Stopped, Issues, Transitional, and Namespace counts. Click a card to navigate to the filtered VM list.
-    - **Resource Summary** — CPU and memory cluster utilization plus quick links to Data Volumes and Networks.
-    - **Charts** — VM status distribution, namespace breakdown, OS type and flavor breakdowns.
-    - **Issues** — VMs currently in an error or unhealthy state.
-    - **Events** — Recent Kubernetes events across monitored namespaces.
-    - **Metrics** — PromQL-based time-series panels for CPU, memory, and network (requires an external metrics backend).
-
-### Auto-Refresh and Pause
-
-The dashboard polls the API and metrics backend on a configurable interval (5 s, 15 s, or 30 s). Use the **interval selector** in the toolbar to change the cadence. Click the **Pause** button to stop all background polling immediately — useful when inspecting data or troubleshooting. Click **Resume** to restart polling.
-
-### Customizing the Layout
-
-- **Drag** widget headers to reorder widgets within the grid.
-- **Resize** widgets from their bottom-right corner handle.
-- **Add / Remove widgets** using the **+** button in the toolbar to open the widget picker.
-- **Reset layout** returns all widgets to the default arrangement.
-- Layout changes are saved automatically and persist across sessions.
-
-Use the sidebar to navigate to other sections such as Workloads, Image Catalog, and Inventory.
-
 ## Create Your First VM
 
 The VM creation wizard guides you the following steps to create a simple VM.

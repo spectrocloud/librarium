@@ -121,7 +121,7 @@ Ensure you are selecting the correct disk. The installation process will complet
 
 ## Creating VM Launchpad cluster
 
-1. 1. Log in to Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
+1. Log in to Local UI by visiting the 5080 port of your VM Launchpad device's IP address or domain name. For more information,
    refer to [Configure Network Settings](#configure-network-settings).
 
 2. From the left main menu, click **Cluster**.
@@ -325,13 +325,72 @@ Ensure you are selecting the correct disk. The installation process will complet
 9. Review your configurations and deploy the cluster. As your cluster begins to deploy, the status and details of the
    deployment are displayed in the **Cluster** page. Use this page to track the deployment progress. The VM Launchpad host will reboot as part of the build process. 
 
-10. 
+10. Once the cluster is complete, you will see additional options on the left-side bar. 
 
+   ![screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
 
 ## Validate
 
-1. 
+1. Navigate to the VMO Manager IP address using your browser. A DNS hostname is not required. 
 
-## Next Steps
+2. Log in to the VMO Appliance.
 
-Once you have built your VMO cluster, you can start deploying VMs by following the [Quick Start](quick-start.md) steps. 
+    <Tabs>
+
+    <TabItem label="Local Auth (Day-0)" value="local-auth">
+
+    Before Keycloak is configured, you can use local admin accounts:
+
+    1. Navigate to `https://<VMO-Address>/local-login`.
+    2. Enter the local admin username (default: `admin`) and password.
+    3. You will be prompted to enter a new password and confirm the new password.
+    4. Click **Set New Password**
+
+    </TabItem>
+
+    <TabItem label="OIDC using Keycloak" value="keycloak">
+
+    When Keycloak is configured, the platform uses OIDC for authentication:
+
+    1. Click **Login** or navigate to the platform URL.
+    2. You are redirected to the Keycloak login page.
+    3. Enter your username and password.
+    4. After successful authentication, you are redirected back to VMO Manager with an encrypted session cookie.
+
+    </TabItem>
+
+    </Tabs>
+
+3. After login, the **Dashboard** is the default landing page.
+
+   ![screenshot of VMO dashboard](/vmo/vm-management_vmo_appliance-default-dashboard-4-9.webp)
+
+
+   The **Dashboard** contains a set of resizable, drag-to-reorder widgets:
+
+    - **Overview** — KPI cards showing Total VMs, Running, Stopped, Issues, Transitional, and Namespace counts. Click on a card to navigate to the filtered VM list.
+    - **Resource Summary** — CPU and memory cluster utilization plus quick links to Data Volumes and Networks.
+    - **VM CPU USAGE (TOP 10)** — Defaults to Last 1H (hour) CPU usage by VMs.
+    - **VM MEMORY USAGE (TOP 10)** — Defaults to Last 1H (hour) memory usage by VMs.
+    - **VM NETWORK I/O** — Defaults to Last 1H (hour) network usage by VMs.
+    - **VM STATUS DISTRIBUTION** — Shows breakdown of healthy and unhealthy VMs.
+    - **VMS BY NAMESPACE** — Shows breakdown of VMs by running, stopped and other statuses.
+    - **VM NEEDING ATTENTION** — Displays list of unhealthy VMs.
+
+   #### Auto-Refresh and Pause
+
+   The dashboard polls the API and metrics backend on a configurable interval (5 s, 15 s, or 30 s). Use the **interval selector** in the toolbar to change the cadence. Click the **Pause** button to stop all background polling immediately — useful when inspecting data or troubleshooting. Click **Resume** to restart polling.
+
+   #### Customizing the Layout
+
+   - **Drag** widget headers to reorder widgets within the grid.
+   - **Resize** widgets from their bottom-right corner handle.
+   - **Add / Remove widgets** using the **+** button in the toolbar to open the widget picker.
+   - **Reset layout** returns all widgets to the default arrangement.
+   - Layout changes are saved automatically and persist across sessions.
+
+   Use the sidebar to navigate to other sections such as Workloads, Image Catalog, and Inventory.
+
+   ## Next Steps
+
+   Once you have built your VMO cluster, you can start deploying VMs by following the [Quick Start](quick-start.md) steps. 
