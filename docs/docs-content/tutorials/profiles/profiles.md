@@ -36,11 +36,18 @@ profile variables.
       url: "/tutorials/profiles/cluster-profile-variables/",
     },
     {
-      title: "Standardize Clusters with Cluster Templates",
+      title: "Standardize Clusters with Cluster Templates using the Palette UI",
       description:
-        "Learn how to use cluster profile variables and maintenance policies to standardize and manage a fleet of clusters.",
+        "Learn how to use cluster profile variables and maintenance policies to standardize and manage a fleet of clusters using the Palette UI.",
       buttonText: "Learn more",
       url: "/tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui/",
+    },
+    {
+      title: "Standardize Clusters with Cluster Templates using Terraform",
+      description:
+        "Learn how to use cluster profile variables and maintenance policies to standardize and manage a fleet of clusters using Terraform.",
+      buttonText: "Learn more",
+      url: "/tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-terraform/",
     },
   ]}
 />

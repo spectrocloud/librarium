@@ -132,5 +132,7 @@ Once you have the following resources, refer to our [Create Cluster Templates](.
 learn how to create a cluster template and deploy clusters using cluster templates.
 
 For a full end-to-end example of deploying and upgrading multiple clusters using a cluster template, refer to the
-[Standardize Cluster Provisioning and Maintenance with Cluster Templates](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates using the Palette UI](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-ui.md)
+or the
+[Standardize Cluster Provisioning and Maintenance with Cluster Templates using Terraform](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-terraform.md)
 tutorial.
