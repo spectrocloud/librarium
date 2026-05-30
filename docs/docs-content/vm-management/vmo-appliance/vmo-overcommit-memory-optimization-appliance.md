@@ -3,7 +3,7 @@ sidebar_label: "Overcommit and Memory Optimization"
 title: "VM Overcommitment and Memory Optimization"
 description: "Learn about VMO Memory and CPU Overcommit and Optimization"
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 9
 tags: ["vmo", "architecture"]
 ---
 

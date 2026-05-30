@@ -4,8 +4,7 @@ title: "VMO Network Configuration Considerations"
 description: "Learn about VMO Network Configuration Considerations"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 0
-draft: true
+sidebar_position: 9
 tags: ["vmo", "vm launchpad", "networking", "design"]
 ---
 
