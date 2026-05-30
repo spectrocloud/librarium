@@ -34,12 +34,12 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
 
 The following sections list the hardware requirements for worker nodes and control plane nodes in a VMO cluster.
 
-| Component            | Minimum                                                              | Recommended                                        | Comments                                                                                             |
-| -------------------- | -------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **CPU**              | Intel or AMD x64 CPU with 8 cores                                    | Intel or AMD x64 CPU with 8 cores                  |                                                                                                      |
-| **RAM**              | 24 GB                                                                | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                       |
-| **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                                | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                      |
-| **Storage Adapters** | 2 x 16 Gbps FC                                                       | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
+| Component            | Minimum                                                               | Recommended                                        | Comments                                                                                             |
+| -------------------- | --------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD x64 CPU with 8 cores                                     | Intel or AMD x64 CPU with 8 cores                  |                                                                                                      |
+| **RAM**              | 24 GB                                                                 | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                       |
+| **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                                 | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                      |
+| **Storage Adapters** | 2 x 16 Gbps FC                                                        | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
 | **Disks**            | Local disk of at least 500 GB for the OS boot (SAN boot is supported) | Local disk of 500 GB for the OS boot               | Boot from SAN requires special consideration due to the multi-path configuration.                    |
 
 ## Limitations
@@ -189,7 +189,7 @@ The following sections list the hardware requirements for worker nodes and contr
     | **CDI**          | `virtual-machine-orchestrator-v<version>` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
 
 6.  Fill out the **Profile Config** page and select **Next**.
-    
+
 <!-- vale off -->
 
     | **Parameter**                              | **Description**                                                                                                                         |
