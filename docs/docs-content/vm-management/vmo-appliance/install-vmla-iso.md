@@ -189,7 +189,8 @@ The following sections list the hardware requirements for worker nodes and contr
     | **CDI**          | `virtual-machine-orchestrator-v<version>` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
 
 6.  Fill out the **Profile Config** page and select **Next**.
-    <!-- vale off -->
+    
+<!-- vale off -->
 
     | **Parameter**                              | **Description**                                                                                                                         |
     | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -249,8 +250,8 @@ The following sections list the hardware requirements for worker nodes and contr
     3. Generate the base64 values using the following commands.
 
        ```bash
-       base64 -i ca.crt -o ca.crt.b64
-       base64 -i ca.key -o ca.key.b64
+       base64 --ignore-garbage ca.crt -o ca.crt.b64
+       base64 --ignore-garbage ca.key -o ca.key.b64
        ```
 
        Alternatively, to print the base64 output to the screen, use the following commands.
@@ -283,16 +284,16 @@ The following sections list the hardware requirements for worker nodes and contr
     3. Generate the base64 values using the following commands. The `-w 0` flag disables line wrapping.
 
        ```bash
-       base64 -w 0 ca.crt > ca.crt.b64
-       base64 -w 0 ca.key > ca.key.b64
+       base64 --wrap 0 ca.crt > ca.crt.b64
+       base64 --wrap 0 ca.key > ca.key.b64
        ```
 
        Alternatively, to print the base64 output to the screen, use the following commands. The `-w 0` flag disables
        line wrapping.
 
        ```bash
-       base64 -w 0 < ca.crt
-       base64 -w 0 < ca.key
+       base64 --wrap 0 < ca.crt
+       base64 --wrap 0 < ca.key
        ```
 
     </TabItem>
@@ -327,7 +328,8 @@ The following sections list the hardware requirements for worker nodes and contr
     </Tabs>
 
     </details>
-    <!-- vale on -->
+
+<!-- vale on -->
 
 7.  On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
     and an SSH public key.

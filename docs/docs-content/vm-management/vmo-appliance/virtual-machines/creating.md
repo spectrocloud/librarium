@@ -8,6 +8,7 @@ sidebar_position: 10
 draft: true
 tags: ["vmo", "vm launchpad"]
 ---
+<!-- vale off -->
 
 This guide walks through the VM creation wizard and batch creation options in VMO Manager.
 

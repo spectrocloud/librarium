@@ -9,6 +9,8 @@ draft: true
 tags: ["vmo", "vm launchpad", "templates"]
 ---
 
+<!-- vale off -->
+
 VmTemplates are reusable VM specifications that define a base image, compute, network, storage, and hardware settings.
 Create VMs from templates to ensure consistency and speed up provisioning.
 

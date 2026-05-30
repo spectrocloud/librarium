@@ -8,6 +8,7 @@ sidebar_position: 10
 draft: true
 tags: ["vmo", "vm launchpad"]
 ---
+<!-- vale off -->
 
 This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations.
 
