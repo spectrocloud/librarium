@@ -122,12 +122,12 @@ poor TCP stream performance.
 For a four-NIC, two-bond configuration, the four physical network interfaces connect to the physical switch similar to
 the following example.
 
-| Physical port | Name in OS | Purpose                   | Switch port config   |
-| ------------- | ---------- | ------------------------- | -------------------- |
-| NIC 1, Port 1 | `enp1s0`   | PXEBoot for OS deployment and Management network   | Trunk (VLANs 0,10) |
-| NIC 1, Port 2 | `enp2s0`   | Management network        | Trunk (VLANs 0,10)   |
-| NIC 2, Port 1 | `enp1s1`   | Data network              | Trunk (VLANs 20-100) |
-| NIC 2, Port 2 | `enp2s1`   | Data network              | Trunk (VLANs 20-100) |
+| Physical port | Name in OS | Purpose                                          | Switch port config   |
+| ------------- | ---------- | ------------------------------------------------ | -------------------- |
+| NIC 1, Port 1 | `enp1s0`   | PXEBoot for OS deployment and Management network | Trunk (VLANs 0,10)   |
+| NIC 1, Port 2 | `enp2s0`   | Management network                               | Trunk (VLANs 0,10)   |
+| NIC 2, Port 1 | `enp1s1`   | Data network                                     | Trunk (VLANs 20-100) |
+| NIC 2, Port 2 | `enp2s1`   | Data network                                     | Trunk (VLANs 20-100) |
 
 The VLAN 0 (untagged/native) network for PXE boot can also be a tagged VLAN network (for example, VLAN 5). However, to
 ensure you can successfully PXE boot on that network, it is recommended to set the native VLAN on the switch port to

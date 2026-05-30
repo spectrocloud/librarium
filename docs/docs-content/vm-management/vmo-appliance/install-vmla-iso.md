@@ -361,7 +361,8 @@ The following sections list the hardware requirements for worker nodes and contr
 
 ## Validate
 
-1. From left-side menu in the VM Launchpad appliance, click **VM Orchestrator**. Alternatively, in your browser, you can navigate to the address you provided for MetalLB.
+1. From left-side menu in the VM Launchpad appliance, click **VM Orchestrator**. Alternatively, in your browser, you can
+   navigate to the address you provided for MetalLB.
 
 2. Log in to VMO Manager.
 
