@@ -7,7 +7,7 @@ sidebar_position: 5
 tags: ["vmo", "vmo appliance"]
 ---
 
-# Creating Your First VM
+# Create Your First VM
 
 This guide walks you through the process of creating your first virtual machine.
 
@@ -66,7 +66,7 @@ This guide walks you through the process of creating your first virtual machine.
    | CPU Advanced     | Leave default. You can adjust the CPU Model to use Host Model (default) or host-passthrough. You can also enable **Dedicated CPU Placement** and **Isolate Emulator Thread**. Enabling **NUMA Topology Passthrough** allows the guest OS to use the host NUMA topology. Clicking **+ Add Feature** under CPU Features allows you to specify CPU features. |
    | Devices          | Leave default. You can also enable **Virtio RNG (random number generator)**, **Tablet Input Device (USB)**, **Headless (no graphics device)**, **TPM Device**, and **USB Redirection (Client Passthrough)**                                                                                                                                               |
    | Features         | Leave default. You can disable **ACPI** and **APIC**. You can enabled **HyperV Enlightenments**.                                                                                                                                                                                                                                                          |
-   | Clock and Timers | Leave default. You can adjust Clock Mode to Utc or Timezone. **Timers** can have **PIT Timer**, **RTC Timer**, **HPET Timer**, and **HyperV Timer** enabled or disabled.                                                                                                                                                                                  |
+   | Clock and Timers | Leave default. You can adjust Clock Mode to `Utc` or `Timezone`. **Timers** can have **PIT Timer**, **RTC Timer**, **HPET Timer**, and **HyperV Timer** enabled or disabled.                                                                                                                                                                              |
    | Memory           | Leave default. You can enabled **Hugepages** and **Overcommit Guest Overhead**.                                                                                                                                                                                                                                                                           |
    | Security         | Leave default. You can enable **Confidential Computing** and Launch Security options.                                                                                                                                                                                                                                                                     |
    | Host Devices     | Leave default. Any GPU or PCI devices detected will be available to assign to the VM. If none appear, you can click **Refresh** under **Cluster Device Management**. You can also add devices manually by clicking **+ Register New Device Manually**.                                                                                                    |

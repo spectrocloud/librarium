@@ -27,7 +27,8 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
 
 ## Prerequisites
 
-- The network must be configured with a bridge network set to `br0`.
+- The network must be configured with a bridge network set to `br0`. For more details on network considerations, refer
+  to [VMO Network Configuration Considerations](./vmo-networking.md).
 
 ## Install VM Launchpad
 
@@ -129,7 +130,7 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
 
 ## Create VM Launchpad Cluster
 
-1.  Log in to Local UI at `https://<host-ip:5080`. For more information, refer to
+1.  Log in to Local UI at `https://<host-ip>:5080`. For more information, refer to
     [Configure Network Settings](#configure-network-settings).
 
 2.  From the left main menu, select **Cluster**.
@@ -149,15 +150,15 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
     | **Component**              | **Pack Name**                             | **Purpose**                                                                                                                           |
     | -------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
     | **Edge Native BYOI**       | `edge-native-byoi <version>`              | Native Ubuntu OS.                                                                                                                     |
-    | **Kubernetes**             | `edge-k8s <version>`                      | Kubernetes platform                                                                                                                   |
+    | **Kubernetes**             | `edge-k8s <version>`                      | Kubernetes platform.                                                                                                                  |
     | **Cilium**                 | `cni-cilium-fips <version>`               | CNI and network policy. Multus support for VM networking.                                                                             |
     | **Piraeus/LINSTOR**        | `piraeus-operator <version>`              | Storage backend. Provides StorageClass for VM disks (when used).                                                                      |
     | **Zot**                    | `zot-registry-fips <version>`             | OCI registry. Stores container images for airgapped deployments.                                                                      |
     | **Registry Connect**       | `registry-connect <version>`              | Enables seamless integration with OCI-compliant registries.                                                                           |
-    | **Required config**        | `required-config-1 <version>`             | Initial configuration before continuing                                                                                               |
+    | **Required config**        | `required-config-1 <version>`             | Initial configuration before continuing.                                                                                              |
     | **MetalLB**                | `lb-metallb-helm <version>`               | LoadBalancer implementation for bare-metal. Assigns the platform IP.                                                                  |
     | **Traefik**                | `traefik <version>`                       | Single ingress controller. TLS termination, path-based routing, LoadBalancer IP.                                                      |
-    | **Required config**        | `required-config-2 <version>`             | Second configuration before continuing                                                                                                |
+    | **Required config**        | `required-config-2 <version>`             | Second configuration before continuing.                                                                                               |
     | **Keycloak**               | `keycloak <version>`                      | OIDC identity provider. Handles login, user/group management, and token issuance. Shared `k8s-oidc` client with K8s API and Headlamp. |
     | **Headlamp**               | `headlamp <version>`                      | Kubernetes cluster explorer. Alternative UI for raw K8s resources.                                                                    |
     | **Victoria Metrics**       | `victoria-metrics-cluster <version>`      | Optional long-term metrics storage. PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                         |
@@ -174,143 +175,145 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
     | **CDI**          | `virtual-machine-orchestrator-v<version>` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
 
 6.  Fill out the **Profile Config** page and select **Next**.
+    <!-- vale off -->
 
-        | **Parameter**                                       | **Description**                                                                                                                                            |
-        | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-        | **Pod CIDR**                                        | CIDR range for Kubernetes Pods network.                                                                             |
-        | **Service CIDR**                                    | CIDR range for Kubernetes Services network.                                                                         |
-        | **Ubuntu Pro Token**                      | (Optional) Leave blank or enter an Ubuntu Pro token value.                                                                                                        |
-        | **Reserved CPUs for kubelet and system**            | CPUs to reserve for Kubelet and OS use.                                                                       |
-        | **CSI Placement Count**                   | (Optional) Number of replicas to be created for CSI volumes across nodes.                                                          |
-        | **L2 Pod Announcement Interface**                   | Interface to send ARP pod Announcements on. For example, `br0`.                                                                              |
-        | **OCI Pack Registry Username**                      | Username for the OCI Pack Registry.                                                                               |
-        | **Platform CA Certificate**                         | base64 encoded value for your CA certificate.                                                                                                |
-        | **Platform CA Private Key**                         | base64 encoded value for your private key.                                                                                                   |
-        | **OIDC Login Username**                             | Username for the cluster admin OIDC login.                                                                          |
-        | **OIDC Login Email**                                | Email address to use for OIDC login.                                                                              |
-        | **Local Admin User Name**                           | Username to use for the local admin account.                                                                      |
-        | **VLAN range for VMs**                              | VLANs to use for VMs. VLAN 1 is designated as default native VLAN.                                             |
-        | **Cluster runs on br0**                   | (Optional) Allow the cluster to run on `br0`.                                                                                          |
-        | **VLANs on top of br0**                             | VLANs to use on `br0`. VLAN 1 is designated as default native VLAN and must always be included.                |
-        | **Victoria Metrics Data Retention Period**          | Vlue in (h)ours, (d)days, (w)eeks, months (no character value) or (y)ears. Minimum value is `24h`. |
-        | **Victoria Metrics Volume Storage Size**  | (Optional) Size in gigabytes (`Gi`).                                                                                         |
-        | **MetalLB interface**                               | NIC that uses L2 advertisements.                                                                                  |
-        | **MetalLB IP Address**                              | IP address for MetalLB to use.                                                                                                        |
-        | **Default Keycloak Admin Password**                 | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                    |
-        | **Local Admin Password**                            | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                       |
-        | **OIDC Login Password**                             | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                              |
-        | **OCI Pack Registry Password**                      | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.                 |
-        | **Default Keycloak Admin Username**      | (Optional) Username for the Keycloak admin login.                                                                              |
-        | **LINSTOR Node Interface**                          | Node network interface to use for storage replication.                                                            |
-        | **Storage Pool Drive**                              | Storage path to use.                                                                                              |
+    | **Parameter**                              | **Description**                                                                                                                         |
+    | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Pod CIDR**                               | CIDR range for Kubernetes Pods network.                                                                                                 |
+    | **Service CIDR**                           | CIDR range for Kubernetes Services network.                                                                                             |
+    | **Ubuntu Pro Token**                       | (Optional) Leave blank or enter an Ubuntu Pro token value.                                                                              |
+    | **Reserved CPUs for kubelet and system**   | CPUs to reserve for kubelet and OS use.                                                                                                 |
+    | **CSI Placement Count**                    | (Optional) Number of replicas to be created for CSI volumes across nodes.                                                               |
+    | **L2 Pod Announcement Interface**          | Interface to send ARP pod announcements on. For example, `br0`.                                                                         |
+    | **OCI Pack Registry Username**             | Username for the OCI Pack Registry.                                                                                                     |
+    | **Platform CA Certificate**                | Base64 encoded value for your CA certificate.                                                                                           |
+    | **Platform CA Private Key**                | Base64 encoded value for your private key.                                                                                              |
+    | **OIDC Login Username**                    | Username for the cluster admin OIDC login.                                                                                              |
+    | **OIDC Login Email**                       | Email address to use for OIDC login.                                                                                                    |
+    | **Local Admin User Name**                  | Username to use for the local admin account.                                                                                            |
+    | **VLAN range for VMs**                     | VLANs to use for VMs. VLAN 1 is designated as default native VLAN.                                                                      |
+    | **Cluster runs on br0**                    | (Optional) Allow the cluster to run on `br0`.                                                                                           |
+    | **VLANs on top of br0**                    | VLANs to use on `br0`. VLAN 1 is designated as default native VLAN and must always be included.                                         |
+    | **Victoria Metrics Data Retention Period** | Value in (h)ours, (d)days, (w)eeks, months (no character value) or (y)ears. Minimum value is `24h`.                                     |
+    | **Victoria Metrics Volume Storage Size**   | (Optional) Size in gigabytes (`Gi`).                                                                                                    |
+    | **MetalLB interface**                      | NIC that uses L2 advertisements.                                                                                                        |
+    | **MetalLB IP Address**                     | IP address for MetalLB to use.                                                                                                          |
+    | **Default Keycloak Admin Password**        | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.    |
+    | **Local Admin Password**                   | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.       |
+    | **OIDC Login Password**                    | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.              |
+    | **OCI Pack Registry Password**             | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character. |
+    | **Default Keycloak Admin Username**        | (Optional) Username for the Keycloak admin login.                                                                                       |
+    | **LINSTOR Node Interface**                 | Node network interface to use for storage replication.                                                                                  |
+    | **Storage Pool Drive**                     | Storage path to use.                                                                                                                    |
 
-      <details>
+    <details>
 
-        <summary>Generate Your Own Self-Signed Certificates</summary>
+    <summary>Generate Your Own Self-Signed Certificates</summary>
 
-        If you do not have a certificate server, you can generate your own self-signed certificates.
+    If you do not have a certificate server, you can generate your own self-signed certificates.
 
-              <Tabs>
+    <Tabs>
 
-              <TabItem label="Mac" value="mac">
+    <TabItem value="mac" label="Mac">
 
-               1.  Open a terminal window and use the following command to generate a private key.
+    1. Open a terminal window and use the following command to generate a private key.
 
-                     ```bash
-                     openssl genrsa -out ca.key 4096
-                     ```
+       ```bash
+       openssl genrsa -out ca.key 4096
+       ```
 
-                     This generates the file `ca.key`. Store this private key in a secure location.
+       This generates the file `ca.key`. Store this private key in a secure location.
 
-               2.  Generate a self-signed CA certificate.
+    2. Generate a self-signed CA certificate.
 
-                     ```bash
-                     openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
-                     ```
+       ```bash
+       openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+       ```
 
-                     This generates the file `ca.crt`, which is the CA certificate in PEM format.
+       This generates the file `ca.crt`, the CA certificate in PEM format.
 
-               3.  Generate the base64 values using the following commands.
+    3. Generate the base64 values using the following commands.
 
-                     ```bash
-                     base64 -i ca.crt -o ca.crt.b64
-                     base64 -i ca.key -o ca.key.b64
-                     ```
+       ```bash
+       base64 -i ca.crt -o ca.crt.b64
+       base64 -i ca.key -o ca.key.b64
+       ```
 
-                     Alternatively, to print the base64 output to the screen, use the following commands.
+       Alternatively, to print the base64 output to the screen, use the following commands.
 
-                     ```bash
-                     base64 < ca.crt
-                     base64 < ca.key
-                     ```
+       ```bash
+       base64 < ca.crt
+       base64 < ca.key
+       ```
 
-               </TabItem>
+    </TabItem>
 
-               <TabItem label="Linux" value="linux">
+    <TabItem value="linux" label="Linux">
 
-               1.  Open a terminal window and use the following command to generate a private key.
+    1. Open a terminal window and use the following command to generate a private key.
 
-                     ```bash
-                     openssl genrsa -out ca.key 4096
-                     ```
+       ```bash
+       openssl genrsa -out ca.key 4096
+       ```
 
-                     This generates the file `ca.key`. Store this private key in a secure location.
+       This generates the file `ca.key`. Store this private key in a secure location.
 
-               2.  Generate a self-signed CA certificate.
+    2. Generate a self-signed CA certificate.
 
-                     ```bash
-                     openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
-                     ```
+       ```bash
+       openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+       ```
 
-                     This generates the file `ca.crt`, which is the CA certificate in PEM format.
+       This generates the file `ca.crt`, the CA certificate in PEM format.
 
-               3.  Generate the base64 values by using the following commands. The `-w 0` flag disables line wrapping.
+    3. Generate the base64 values using the following commands. The `-w 0` flag disables line wrapping.
 
-                     ```bash
-                     base64 -w 0 ca.crt > ca.crt.b64
-                     base64 -w 0 ca.key -o ca.key.b64
-                     ```
+       ```bash
+       base64 -w 0 ca.crt > ca.crt.b64
+       base64 -w 0 ca.key > ca.key.b64
+       ```
 
-                     Alternatively, to print the base64 output to the screen, use the following commands. The `-w 0` flag disables
-                     line wrapping.
+       Alternatively, to print the base64 output to the screen, use the following commands. The `-w 0` flag disables
+       line wrapping.
 
-                     ```bash
-                     base64 -w 0 < ca.crt
-                     base64 -w 0 < ca.key
-                     ```
+       ```bash
+       base64 -w 0 < ca.crt
+       base64 -w 0 < ca.key
+       ```
 
-               </TabItem>
+    </TabItem>
 
-               <TabItem label="Windows" value="windows">
+    <TabItem value="windows" label="Windows">
 
-               1.  Open a terminal window and use the following command to generate a private key.
+    1. Open a terminal window and use the following command to generate a private key.
 
-                     ```cmd
-                     openssl genrsa -out ca.key 4096
-                     ```
+       ```cmd
+       openssl genrsa -out ca.key 4096
+       ```
 
-                     This generates the file `ca.key`. Store this private key in a secure location.
+       This generates the file `ca.key`. Store this private key in a secure location.
 
-               2.  Generate a self-signed CA certificate.
+    2. Generate a self-signed CA certificate.
 
-                     ```cmd
-                     openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
-                     ```
+       ```cmd
+       openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+       ```
 
-                     This generates the file `ca.crt`, which is the CA certificate in PEM format.
+       This generates the file `ca.crt`, the CA certificate in PEM format.
 
-               3.  Generate the base64 values by using the following commands.
+    3. Generate the base64 values using the following commands.
 
-                           ```PowerShell
-                           [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.crt"))
-                           [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.key"))
-                           ```
+       ```powershell
+       [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.crt"))
+       [Convert]::ToBase64String([IO.File]::ReadAllBytes("ca.key"))
+       ```
 
-                </TabItem>
+    </TabItem>
 
-                </Tabs>
+    </Tabs>
 
     </details>
+    <!-- vale on -->
 
 7.  On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
     and an SSH public key.
@@ -348,7 +351,7 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
 
    <Tabs>
 
-   <TabItem label="Local Auth (Day-0)" value="local-auth">
+   <TabItem value="local-auth" label="Local Auth (Day-0)">
 
    Before Keycloak is configured, use local admin accounts.
 
@@ -359,7 +362,7 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
 
    </TabItem>
 
-   <TabItem label="OIDC using Keycloak" value="keycloak">
+   <TabItem value="keycloak" label="OIDC using Keycloak">
 
    When Keycloak is configured, VMO Manager uses OIDC for authentication.
 
@@ -371,22 +374,24 @@ Each device that you install the VM Launchpad Appliance ISO on must meet the fol
    </TabItem>
 
    </Tabs>
+   <!-- vale off -->
 
 3. After logging in, the **Dashboard** is the default landing page.
 
    ![screenshot of VMO dashboard](/vmo/vm-management_vmo_appliance-default-dashboard-4-9.webp)
 
-The **Dashboard** contains a set of resizable, drag-to-reorder widgets:
+   The **Dashboard** contains a set of adjustable, drag-to-reorder widgets.
 
-- **Overview** - Key Performance Indicator (KPI) cards showing **Total VMs**, **Running**, **Stopped**, **Issues**,
-  **Transitional**, and **Namespace** counts. Select a card to navigate to the filtered VM list.
-- **Resource Summary** - CPU and memory cluster utilization plus quick links to **Data Volumes** and **Networks**.
-- **VM CPU USAGE (TOP 10)** - Defaults to **Last 1H** (hour) CPU usage by VMs.
-- **VM MEMORY USAGE (TOP 10)** - Defaults to **Last 1H** (hour) memory usage by VMs.
-- **VM NETWORK I/O** - Defaults to **Last 1H** (hour) network usage by VMs.
-- **VM STATUS DISTRIBUTION** - Shows breakdown of healthy and unhealthy VMs.
-- **VMS BY NAMESPACE** - Shows breakdown of VMs by running, stopped, and other statuses.
-- **VM NEEDING ATTENTION** - Displays a list of unhealthy VMs.
+   | **Widget**                   | **Description**                                                                                                         |
+   | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+   | **Overview**                 | KPI cards showing Total VMs, Running, Stopped, Issues, Transitional, and Namespace counts. Select a card to filter VMs. |
+   | **Resource Summary**         | CPU and memory cluster utilization plus quick links to Data Volumes and Networks.                                       |
+   | **VM CPU USAGE (TOP 10)**    | Defaults to last 1 hour CPU usage by VMs.                                                                               |
+   | **VM MEMORY USAGE (TOP 10)** | Defaults to last 1 hour memory usage by VMs.                                                                            |
+   | **VM NETWORK I/O**           | Defaults to last 1 hour network usage by VMs.                                                                           |
+   | **VM STATUS DISTRIBUTION**   | Breakdown of healthy and unhealthy VMs.                                                                                 |
+   | **VMS BY NAMESPACE**         | Breakdown of VMs by running, stopped, and other statuses.                                                               |
+   | **VM NEEDING ATTENTION**     | List of unhealthy VMs.                                                                                                  |
 
 ### Auto-Refresh and Pause
 
@@ -396,13 +401,12 @@ is useful when inspecting data or troubleshooting. Select **Resume** to restart 
 
 ### Customize the Layout
 
-- Drag widget headers to reorder widgets within the grid.
-- Resize widgets from their bottom-right corner handle.
-- Select the **+** button in the toolbar to add or remove widgets.
-- Select **Reset layout** to return all widgets to the default arrangement.
-- Layout changes save automatically and persist across sessions.
+You can customize the interface by dragging widget headers to reorder widgets within the grid, resizing widgets from
+their bottom-right corner handle, and adding or removing widgets with the **+** button in the toolbar. Select **Reset
+Layout** to return all widgets to the default arrangement. Layout changes save automatically and persist across
+sessions.
 
-Use the sidebar to navigate to other sections such as **Workloads**, **Image Catalog**, and **Inventory**.
+<!-- vale on -->
 
 ## Next Steps
 

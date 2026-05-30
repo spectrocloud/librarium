@@ -9,6 +9,8 @@ draft: true
 tags: ["vmo", "vm launchpad", "golden images"]
 ---
 
+<!-- vale off -->
+
 ## Create a Golden Image
 
 A golden image is a sealed, reusable base system image. Build golden images to standardize OS installations and create
@@ -32,18 +34,36 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 3. Fill out the **Upload ISO/Disk Image** page and click **Upload**.
 
-   | Parameter       | Description                                                                                                                                    |
-   | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-   | DataVolume Name | Enter a unique name for the ISO installer or disk image.                                                                                       |
-   | Namespace       | Select the namespace from the dropdown, typically `vmo-golden-images`.                                                                         |
-   | Storage Class   | Select the storage class from the dropdown.                                                                                                    |
-   | Volume Size     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                                |
-   | Image Type      | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image.                                                        |
-   | Image File      | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
+| Parameter       | Description                                                                                                                                    |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| DataVolume Name | Enter a unique name for the ISO installer or disk image.                                                                                       |
+| Namespace       | Select the namespace from the dropdown, typically `vmo-golden-images`.                                                                         |
+| Storage Class   | Select the storage class from the dropdown. You can also                                                                                       |
+| Volume Size     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                                |
+| Image Type      | Select **ISO Installer** or **Golden Image**. A golden image is a pre-built disk image.                                                        |
+| Image File      | Click **Choose File** or drag-and-drop the file. ISO Installer supported file is `.iso`. Golden Image supported files are `.img` and `.qcow2`. |
 
-   Large ISOs may take several minutes to upload. Progress is shown during the upload phase.
+Large ISOs may take several minutes to upload. Progress is shown during the upload phase.
 
-   ![Screenshot of iso upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
+![Screenshot of iso upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
+
+## Create Blank DataVolume
+
+1. Navigate to **Infrastructure > Storage**
+
+2. Click **+ Create DataVolume**.
+
+3. Fill out **Source** page and click **Next >**.
+
+   | Parameter     | Description                                                                    |
+   | ------------- | ------------------------------------------------------------------------------ |
+   | Source        | Select **Blank**.                                                              |
+   | Name          | Enter a unique name for the DataVolume image.                                  |
+   | Namespace     | Select the namespace from the dropdown.                                        |
+   | Storage Class | Select the storage class from the dropdown.                                    |
+   | Size          | Set the disk size in `MiB`, `GiB` or `TiB`.                                    |
+   | Access Mode   | From the dropdown, select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`. |
+   | Volume Mode   | From the dropdown, select `Block` or `Filesystem`.                             |
 
 ## Build a Golden Image
 
@@ -63,16 +83,16 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 4. Fill out the **Compute** page and click **Next >**.
 
-   | Parameter                     | Description                                                                                                                                                                                        |
-   | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | Builder VM CPUs               | Enter the number of CPUs for the Builder VM.                                                                                                                                                       |
-   | Builder VM Memory             | Set the Builder VM memory in `MiB` or `GiB`.                                                                                                                                                       |
-   | Networking                    | Open the Networking section, set the NIC name and select the Pod Network. You can optionally click **+ Add Interface** to add additional NICs.                                                     |
-   | First Boot Device             | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the VM Builder cannot boot from the primary disk, it will use **CD-ROM** automatically as a fall-back boot location. |
-   | SAdditional CD-ROM (optional) | Attach a second ISO to access driver files or response files.                                                                                                                                      |
-   | Install Guest Agent           | Leave default to auto-install the QEMU guest agent at first boot.                                                                                                                                  |
+   | Parameter                    | Description                                                                                                                                                                                        |
+   | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Builder VM CPUs              | Enter the number of CPUs for the Builder VM.                                                                                                                                                       |
+   | Builder VM Memory            | Set the Builder VM memory in `MiB` or `GiB`.                                                                                                                                                       |
+   | Networking                   | Open the Networking section, set the NIC name and select the Pod Network. You can optionally click **+ Add Interface** to add additional NICs.                                                     |
+   | First Boot Device            | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the VM Builder cannot boot from the primary disk, it will use **CD-ROM** automatically as a fall-back boot location. |
+   | Additional CD-ROM (optional) | Attach a second ISO to access driver files or response files.                                                                                                                                      |
+   | Install Guest Agent          | Leave default to auto-install the QEMU guest agent at first boot.                                                                                                                                  |
 
-5. On the **Autoinstall (OPTIONAL)** page, select **Configure Autoinstall Script**. You can manually manually create a
+5. On the **Autoinstall (OPTIONAL)** page, select **Configure Autoinstall Script**. You can manually create a
    customization script using the **Editor**,use an existing **Template**, **Upload** a script, or fetch a script using
    an **URL**.
 
@@ -80,9 +100,9 @@ The diagram below displays the overarching steps to build a golden image to use 
 
 ### 2. Create Blank DataVolume
 
-1. After uploading the ISO (or if you already have one), start the build flow.
-2. Create a **blank** DataVolume for the OS disk. Set the size (e.g., 50 Gi) and StorageClass.
-3. The blank DataVolume will hold the installed OS.
+![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
+
+<!-- vale off -->
 
 ### 3. Create Builder VM
 

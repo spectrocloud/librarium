@@ -9,6 +9,8 @@ draft: true
 tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 ---
 
+<!-- vale off -->
+
 # Customization Templates
 
 Customization templates define seal and generalize scripts used during golden image finalization. They prepare the OS
