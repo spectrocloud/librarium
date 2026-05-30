@@ -5,6 +5,7 @@ description: "Learn how to install create customization scripts to use with Gold
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
+draft: true
 tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 ---
 

@@ -1,6 +1,13 @@
-<!-- vale off -->
-
-# Snapshots & Clones
+---
+sidebar_label: "Manage Snapshots"
+title: "Manage Snapshots"
+description: "Learn about how to take, manage, and restore snapshots in VMO Appliance Launchpad"
+icon: " "
+hide_table_of_contents: false
+sidebar_position: 10
+draft: true
+tags: ["vmo", "vm launchpad", "snapshots"]
+---
 
 VMO Manager supports VM snapshots for point-in-time backups and VM cloning for duplicating VMs with new identities.
 

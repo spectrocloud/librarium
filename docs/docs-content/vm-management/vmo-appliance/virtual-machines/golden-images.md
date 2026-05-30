@@ -5,6 +5,7 @@ description: "Learn how to install create golden images to use with VM Launchpad
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
+draft: true
 tags: ["vmo", "vm launchpad", "golden images"]
 ---
 

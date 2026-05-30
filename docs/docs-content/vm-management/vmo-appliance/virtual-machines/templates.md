@@ -1,6 +1,13 @@
-<!-- vale off -->
-
-# Templates
+---
+sidebar_label: "Manage Templates"
+title: "Manage Templates"
+description: "Learn about how to take and manage templates in VM Launchpad Appliance"
+icon: " "
+hide_table_of_contents: false
+sidebar_position: 10
+draft: true
+tags: ["vmo", "vm launchpad", "templates"]
+---
 
 VmTemplates are reusable VM specifications that define a base image, compute, network, storage, and hardware settings.
 Create VMs from templates to ensure consistency and speed up provisioning.

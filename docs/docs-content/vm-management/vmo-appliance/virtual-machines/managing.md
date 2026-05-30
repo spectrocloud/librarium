@@ -1,6 +1,13 @@
-<!-- vale off -->
-
-# Managing VMs
+---
+sidebar_label: "Manage VMs"
+title: "Manage VMs"
+description: "Learn about managing VMs in VM Launchpad Appliance"
+icon: " "
+hide_table_of_contents: false
+sidebar_position: 10
+draft: true
+tags: ["vmo", "vm launchpad"]
+---
 
 This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations.
 

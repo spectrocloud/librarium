@@ -1,6 +1,13 @@
-<!-- vale off -->
-
-# Packages
+---
+sidebar_label: "Manage Packages"
+title: "Manage Packages"
+description: "Learn about how to manage packages in airgapped VM Launchpad setups"
+icon: " "
+hide_table_of_contents: false
+sidebar_position: 10
+draft: true
+tags: ["vmo", "vm launchpad", "packages"]
+---
 
 VMO Manager provides package management for air-gapped environments. Upload DEB, RPM, MSI, and ISO packages, and serve
 them to VMs via a built-in APT/YUM-compatible repository.

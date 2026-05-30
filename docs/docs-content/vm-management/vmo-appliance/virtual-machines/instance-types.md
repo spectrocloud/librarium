@@ -1,6 +1,13 @@
-<!-- vale off -->
-
-# Instance Types & Preferences
+---
+sidebar_label: "Instance Types & Preferences"
+title: "Instance Types & Preferences"
+description: "Learn about instance types and preferences"
+icon: " "
+hide_table_of_contents: false
+sidebar_position: 10
+draft: true
+tags: ["vmo", "vm launchpad", "instance types", "preferences"]
+---
 
 Instance types and preferences provide predefined compute and hardware profiles for VMs. Use them to standardize sizing
 and reduce configuration errors.
