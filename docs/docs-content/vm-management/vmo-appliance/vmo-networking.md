@@ -1,6 +1,6 @@
 ---
-sidebar_label: "VMO Network Configuration Considerations"
-title: "VMO Network Configuration Considerations"
+sidebar_label: "Network Configuration Considerations"
+title: "Network Configuration Considerations"
 description: "Learn about VMO Network Configuration Considerations"
 icon: " "
 hide_table_of_contents: false
