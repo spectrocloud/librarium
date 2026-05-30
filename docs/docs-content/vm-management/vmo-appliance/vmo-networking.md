@@ -110,8 +110,8 @@ For a four-NIC, two-bond configuration, the four physical network interfaces con
 the following example.
 
 | Physical port | Name in OS | Purpose                   | Switch port config   |
-| ------------- | ---------- | ------------------------- | -------------------- | ------------------ |
-| NIC 1, Port 1 | `enp1s0`   | PXEBoot for OS deployment | Management network   | Trunk (VLANs 0,10) |
+| ------------- | ---------- | ------------------------- | -------------------- |
+| NIC 1, Port 1 | `enp1s0`   | PXEBoot for OS deployment and Management network   | Trunk (VLANs 0,10) |
 | NIC 1, Port 2 | `enp2s0`   | Management network        | Trunk (VLANs 0,10)   |
 | NIC 2, Port 1 | `enp1s1`   | Data network              | Trunk (VLANs 20-100) |
 | NIC 2, Port 2 | `enp2s1`   | Data network              | Trunk (VLANs 20-100) |

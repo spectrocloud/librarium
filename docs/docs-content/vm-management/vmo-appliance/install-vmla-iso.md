@@ -188,38 +188,38 @@ The following sections list the hardware requirements for worker nodes and contr
     | **KubeVirt**     | `virtual-machine-orchestrator-v<version>` | Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
     | **CDI**          | `virtual-machine-orchestrator-v<version>` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
 
-6.  Fill out the **Profile Config** page and select **Next**.
-    
+6. Fill out the **Profile Config** page and select **Next**.
+
 <!-- vale off -->
 
-    | **Parameter**                              | **Description**                                                                                                                         |
-    | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Pod CIDR**                               | CIDR range for Kubernetes Pods network.                                                                                                 |
-    | **Service CIDR**                           | CIDR range for Kubernetes Services network.                                                                                             |
-    | **Ubuntu Pro Token**                       | (Optional) Leave blank or enter an Ubuntu Pro token value.                                                                              |
-    | **Reserved CPUs for kubelet and system**   | CPUs to reserve for kubelet and OS use.                                                                                                 |
-    | **CSI Placement Count**                    | (Optional) Number of replicas to be created for CSI volumes across nodes.                                                               |
-    | **L2 Pod Announcement Interface**          | Interface to send ARP pod announcements on. For example, `br0`.                                                                         |
-    | **OCI Pack Registry Username**             | Username for the OCI Pack Registry.                                                                                                     |
-    | **Platform CA Certificate**                | Base64 encoded value for your CA certificate.                                                                                           |
-    | **Platform CA Private Key**                | Base64 encoded value for your private key.                                                                                              |
-    | **OIDC Login Username**                    | Username for the cluster admin OIDC login.                                                                                              |
-    | **OIDC Login Email**                       | Email address to use for OIDC login.                                                                                                    |
-    | **Local Admin User Name**                  | Username to use for the local admin account.                                                                                            |
-    | **VLAN range for VMs**                     | VLANs to use for VMs. VLAN 1 is designated as default native VLAN.                                                                      |
-    | **Cluster runs on br0**                    | (Optional) Allow the cluster to run on `br0`.                                                                                           |
-    | **VLANs on top of br0**                    | VLANs to use on `br0`. VLAN 1 is designated as default native VLAN and must always be included.                                         |
-    | **Victoria Metrics Data Retention Period** | Value in (h)ours, (d)days, (w)eeks, months (no character value) or (y)ears. Minimum value is `24h`.                                     |
-    | **Victoria Metrics Volume Storage Size**   | (Optional) Size in gigabytes (`Gi`).                                                                                                    |
-    | **MetalLB interface**                      | NIC that uses L2 advertisements.                                                                                                        |
-    | **MetalLB IP Address**                     | IP address for MetalLB to use.                                                                                                          |
-    | **Default Keycloak Admin Password**        | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.    |
-    | **Local Admin Password**                   | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.       |
-    | **OIDC Login Password**                    | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.              |
-    | **OCI Pack Registry Password**             | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character. |
-    | **Default Keycloak Admin Username**        | (Optional) Username for the Keycloak admin login.                                                                                       |
-    | **LINSTOR Node Interface**                 | Node network interface to use for storage replication.                                                                                  |
-    | **Storage Pool Drive**                     | Storage path to use.                                                                                                                    |
+      | **Parameter**                              | **Description**                                                                                                                         |
+      | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+      | **Pod CIDR**                               | CIDR range for Kubernetes Pods network.                                                                                                 |
+      | **Service CIDR**                           | CIDR range for Kubernetes Services network.                                                                                             |
+      | **Ubuntu Pro Token**                       | (Optional) Leave blank or enter an Ubuntu Pro token value.                                                                              |
+      | **Reserved CPUs for kubelet and system**   | CPUs to reserve for kubelet and OS use.                                                                                                 |
+      | **CSI Placement Count**                    | (Optional) Number of replicas to be created for CSI volumes across nodes.                                                               |
+      | **L2 Pod Announcement Interface**          | Interface to send ARP pod announcements on. For example, `br0`.                                                                         |
+      | **OCI Pack Registry Username**             | Username for the OCI Pack Registry.                                                                                                     |
+      | **Platform CA Certificate**                | Base64 encoded value for your CA certificate.                                                                                           |
+      | **Platform CA Private Key**                | Base64 encoded value for your private key.                                                                                              |
+      | **OIDC Login Username**                    | Username for the cluster admin OIDC login.                                                                                              |
+      | **OIDC Login Email**                       | Email address to use for OIDC login.                                                                                                    |
+      | **Local Admin User Name**                  | Username to use for the local admin account.                                                                                            |
+      | **VLAN range for VMs**                     | VLANs to use for VMs. VLAN 1 is designated as default native VLAN.                                                                      |
+      | **Cluster runs on br0**                    | (Optional) Allow the cluster to run on `br0`.                                                                                           |
+      | **VLANs on top of br0**                    | VLANs to use on `br0`. VLAN 1 is designated as default native VLAN and must always be included.                                         |
+      | **Victoria Metrics Data Retention Period** | Value in (h)ours, (d)days, (w)eeks, months (no character value) or (y)ears. Minimum value is `24h`.                                     |
+      | **Victoria Metrics Volume Storage Size**   | (Optional) Size in gigabytes (`Gi`).                                                                                                    |
+      | **MetalLB interface**                      | NIC that uses L2 advertisements.                                                                                                        |
+      | **MetalLB IP Address**                     | IP address for MetalLB to use.                                                                                                          |
+      | **Default Keycloak Admin Password**        | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.    |
+      | **Local Admin Password**                   | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.       |
+      | **OIDC Login Password**                    | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.              |
+      | **OCI Pack Registry Password**             | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character. |
+      | **Default Keycloak Admin Username**        | (Optional) Username for the Keycloak admin login.                                                                                       |
+      | **LINSTOR Node Interface**                 | Node network interface to use for storage replication.                                                                                  |
+      | **Storage Pool Drive**                     | Storage path to use.                                                                                                                    |
 
     <details>
 
@@ -361,7 +361,7 @@ The following sections list the hardware requirements for worker nodes and contr
 
 ## Validate
 
-1. In your browser, navigate to the VMO Manager IP address. A DNS hostname is not required.
+1. From left-side menu in the VM Launchpad appliance, click **VM Orchestrator**. Alternatively, in your browser, you can navigate to the address you provided for MetalLB.
 
 2. Log in to VMO Manager.
 
