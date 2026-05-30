@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Creating Your First VM"
-title: "Creating Your First VM"
-description: "Learn about Palette VMO Appliance and how to quickly get started."
+sidebar_label: "Create Your First VM"
+title: "Create Your First VM"
+description: "Learn about how to create your first VM with VM Launchpad Appliance."
 hide_table_of_contents: false
 sidebar_position: 5
-tags: ["vmo", "vmo appliance", "quick start"]
+tags: ["vmo", "vmo appliance"]
 ---
 
 # Creating Your First VM
