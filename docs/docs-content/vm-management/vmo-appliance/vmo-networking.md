@@ -17,7 +17,7 @@ For VMO, Multus is used, as it provides a way to achieve that. It also means the
 
 ## Two NICs, One Bond Configuration
 
-When limited to network interfaces, you can  
+When limited to network interfaces, you can configure your NICs similar to the following table.
 
 | Interface | Type | Consisting of | VLAN | CIDR | Gateway | 
 | --------| --------| --------| --------| --------| --------|
@@ -25,6 +25,8 @@ When limited to network interfaces, you can
 | `bond0.10` | VLAN | `bond0` | 10 | 172.16.0.0/22 | None | 
 | `bond0.20` | VLAN | `bond0` | 20 | 10.20.30.0/16 | 10.20.30.1 |
 | `br0` | Bridge | `bond0` | native | 192.168.0.0/22 | None |
+
+
 
 For the setup above, it is assumed that the physical servers (the worker nodes) are connected to the switch as follows: 
 
