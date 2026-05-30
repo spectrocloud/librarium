@@ -14,17 +14,19 @@ tags: ["vmo", "vm launchpad", "networking", "design"]
 
 Networking for the VMO use case requires some extra care compared to a regular Kubernetes cluster. That is because in
 most cases, VMs may need to be made accessible on existing VLANs. This requires bypassing the typical Kubernetes pod
-networking stack altogether. 
+networking stack altogether.
 
-For the VM Appliance, Cilium is used to provide a way to achieve that goal. It does mean that there are some requirements for the
-host network configuration and for the Kubernetes worker nodes in order to have valid network targets to bridge the VMs
-onto.
+For the VM Appliance, Cilium is used to provide a way to achieve that goal. It does mean that there are some
+requirements for the host network configuration and for the Kubernetes worker nodes in order to have valid network
+targets to bridge the VMs onto.
 
-This page examines either a two-NIC, one-bond network configuration deployment or a four-NIC, two-bond network configuration deployment. You can do alternative configurations but they must have a bridge of `br0` as a prerequisite. 
+This page examines either a two-NIC, one-bond network configuration deployment or a four-NIC, two-bond network
+configuration deployment. You can do alternative configurations but they must have a bridge of `br0` as a prerequisite.
 
 ## Two NICs, One Bond Configuration
 
-When network interfaces are limited, NICs can be configured with a single bond (`bond0`) and bridge (`br0`) that carry multiple VLANs. The following table and image present one possible example.
+When network interfaces are limited, NICs can be configured with a single bond (`bond0`) and bridge (`br0`) that carry
+multiple VLANs. The following table and image present one possible example.
 
 | Interface  | Type           | Consisting of     | VLAN   | CIDR           | Gateway    |
 | ---------- | -------------- | ----------------- | ------ | -------------- | ---------- |
@@ -43,7 +45,9 @@ following configuration.
 | NIC 1, Port 1 | `enp1s0`   | PXEBoot for OS deployment, Management network and Data network | Trunk (allowing 0,10, 20-100) |
 | NIC 1, Port 2 | `enp2s0`   | Management network and Data network                            | Trunk (allowing 0,10, 20-100) |
 
-VMs connected to `br0` cannot use VLANs 10 or 20 because traffic for those VLANs is intercepted by the `bond.10` and `bond.20` subinterfaces before it reaches the bridge. If virtual machines require access to the management VLAN (10) or data VLAN (20), update the configuration as shown in the following example and diagram.
+VMs connected to `br0` cannot use VLANs 10 or 20 because traffic for those VLANs is intercepted by the `bond.10` and
+`bond.20` subinterfaces before it reaches the bridge. If virtual machines require access to the management VLAN (10) or
+data VLAN (20), update the configuration as shown in the following example and diagram.
 
 | Interface  | Type   | Consisting of     | VLAN   | CIDR                     | Gateway |
 | ---------- | ------ | ----------------- | ------ | ------------------------ | ------- |
@@ -57,7 +61,10 @@ VMs connected to `br0` cannot use VLANs 10 or 20 because traffic for those VLANs
 We have defined VLAN 20 as a subinterface of br0 instead of on bond0. This configuration allows virtual machines to also
 run on VLAN 20 without conflict.
 
-To allow traffic on `br0.20`, configure the `charts.virtual-machine-orchestrator.vlanFiltering` section of the VMO layer in the Cluster Profile by setting `allowVlansOnSelf` to true and configure `allowedVlansOnSelf` to include both the VLAN IDs available to virtual machines and the VLAN IDs used by the host. If the Kubernetes nodes are connected directly to `br0` rather than a VLAN subinterface, also enable the `Run Cilium OnBridge (br0)` preset in the Cilium pack.
+To allow traffic on `br0.20`, configure the `charts.virtual-machine-orchestrator.vlanFiltering` section of the VMO layer
+in the Cluster Profile by setting `allowVlansOnSelf` to true and configure `allowedVlansOnSelf` to include both the VLAN
+IDs available to virtual machines and the VLAN IDs used by the host. If the Kubernetes nodes are connected directly to
+`br0` rather than a VLAN subinterface, also enable the `Run Cilium OnBridge (br0)` preset in the Cilium pack.
 
 ## Four NICs, Two Bond Configuration
 
@@ -80,8 +87,8 @@ Either of these options can be chosen, depending on the network equipment used. 
 VLAN for end-user access to Kubernetes services, which is not shared with VLANs used by VMs.
 
 While it is possible to share the same VLAN for VMs and Kubernetes, special considerations must be taken into account if
-this VLAN also has the default gateway. The following network configuration on the host, using a total of four NICs in two
-bonds, is suitable for the setup described above.
+this VLAN also has the default gateway. The following network configuration on the host, using a total of four NICs in
+two bonds, is suitable for the setup described above.
 
 | Interface      | Type           | Consisting of     | VLAN   | CIDR           | Gateway    |
 | -------------- | -------------- | ----------------- | ------ | -------------- | ---------- |
