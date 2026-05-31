@@ -777,7 +777,7 @@ through the Palette UI or issue `palette-agent` commands directly against the ho
    ```
 
    ```shell title="Example output" hideClipboard
-   version: v4.9.a
+   version: v4.9.10
    build: release
    fips:
    ```
@@ -811,7 +811,7 @@ issue `palette-agent` commands directly against the host.
    ```
 
    ```shell title="Example output" hideClipboard
-   version: v4.9.a
+   version: v4.9.10
    build: release
    fips:
    ```
@@ -1318,7 +1318,7 @@ through the Palette UI or issue `palette-agent` commands directly against the ho
    ```
 
    ```shell title="Example output" hideClipboard
-   version: v4.9.a
+   version: v4.9.10
    build: release
    fips:
    ```
@@ -1350,7 +1350,7 @@ issue `palette-agent` commands directly against the host.
    ```
 
    ```shell title="Example output" hideClipboard
-   version: v4.9.a
+   version: v4.9.10
    build: release
    fips:
    ```
