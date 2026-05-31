@@ -993,6 +993,10 @@ let redirects = [
     from: `/clusters/cluster-groups/vcluster-upgrade/`,
     to: `/clusters/cluster-groups/vcluster-upgrades/`,
   },
+  {
+    from: "/clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/build-import-rhcos-image/",
+    to: "/clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/prepare-coreos-image/",
+  },
 ];
 
 if (packRedirects.length > 0) {

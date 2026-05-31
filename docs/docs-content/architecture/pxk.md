@@ -3,6 +3,7 @@ sidebar_label: "Palette eXtended Kubernetes"
 title: "Palette eXtended Kubernetes"
 description: "An overview of Palette eXtended Kubernetes and how it's different from the upstream Kubeadm."
 hide_table_of_contents: false
+sidebar_position: 60
 ---
 
 <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> is a customized

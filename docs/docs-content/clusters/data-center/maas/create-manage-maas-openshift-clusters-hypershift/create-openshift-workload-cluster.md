@@ -22,9 +22,9 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
   OperatorHub is accessed through the OpenShift console of your workload cluster. Add-ons installed through the
   OperatorHub are managed directly through the OpenShift console and are not visible in Palette.
 
-- Only the Bring Your Own OS (BYOOS) pack is supported for the OS layer. The RHCOS image must be built specifically for
-  MAAS using the process described in [Build and Import MAAS-Compatible RHCOS Image](./build-import-rhcos-image.md).
-  Standard MAAS OS images are not compatible with OpenShift.
+- Only the Bring Your Own OS (BYOOS) pack is supported for the OS layer. The CoreOS image must be prepared specifically
+  for MAAS using the process described in [Prepare CoreOS image](./prepare-coreos-image.md). Standard MAAS OS images are
+  not compatible with OpenShift.
 
 - Open Virtual Networking (OVN)-Kubernetes is configured automatically by the OpenShift pack. A dedicated OVN-Kubernetes
   Container Network Interface (CNI) pack is not supported. The CNI layer of the workload cluster profile must use the
@@ -39,9 +39,8 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
 
 ## Prerequisites
 
-- The MAAS-compatible RHCOS image imported in
-  [Build and Import MAAS-Compatible RHCOS Image](./build-import-rhcos-image.md) must be available in your MAAS
-  environment.
+- The MAAS-compatible CoreOS image imported in [Prepare CoreOS image](./prepare-coreos-image.md) must be available in
+  your MAAS environment.
 
 - The HyperShift host cluster created in [Create HyperShift Host Cluster](./create-hypershift-host-cluster.md) must be
   in the **Running** state with the HyperShift Operator healthy.
@@ -58,11 +57,11 @@ in the HyperShift host cluster. Worker nodes are then provisioned as bare-metal 
   - <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack for the OS
     layer. Set the following parameters in the pack values.
 
-    | Parameter              | Description                                                                                                                                                                                                                                | Example value               |
-    | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
-    | `pack.osImageOverride` | The name of the MAAS image imported when following the [Build and Import MAAS-Compatible RHCOS Image](./build-import-rhcos-image.md) guide. This should match the `<image-name>` parameter specified in the `import-maas-image.sh` script. | `rhcos-4.20.13-with-ubuntu` |
-    | `pack.osName`          | The value of the `<operating-system>` parameter specified during import.                                                                                                                                                                   | `openshift`                 |
-    | `pack.osVersion`       | The value of the `<release-version>` parameter specified during import.                                                                                                                                                                    | `4.20.13`                   |
+    | Parameter              | Description                                                                                                                                                                             | Example values                                 |
+    | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+    | `pack.osImageOverride` | The name of the MAAS image imported when following the [Prepare CoreOS image](./prepare-coreos-image.md) guide. This should match the `<image-name>` parameter specified during import. | `rhcos-4.20.13-with-ubuntu` <br /> `scos-10.0` |
+    | `pack.osName`          | The value of the `<operating-system>` parameter specified during import.                                                                                                                | `openshift` <br /> `scos`                      |
+    | `pack.osVersion`       | The value of the `<release-version>` parameter specified during import.                                                                                                                 | `4.20.13` <br /> `10.0.20250628-0`             |
 
   - <VersionedLink text="OpenShift" url="/integrations/packs/?pack=openshift&tab=main" /> pack for the Kubernetes layer.
     Ensure the OpenShift version is compatible with the HyperShift Operator version installed on the host cluster. Refer

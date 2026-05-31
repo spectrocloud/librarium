@@ -9,30 +9,30 @@ keywords: ["self-hosted", "enterprise"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette instance installed on VMware vSphere.
-Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
-minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
-details.
 
-:::warning
+## Upgrade Notes
 
-If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script
-to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+### All Versions
 
-:::
+- If your setup includes a PCG, you must also
+  [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+  Palette upgrade.
+- Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
+  minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
+  details.
 
-If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
-Palette upgrade.
+### Specific Versions
 
-## Limitations
-
-- When upgrading airgapped self-hosted Palette to version 4.6.32, the IPAM controller may report an `Exhausted IP Pools`
-  error despite having available IP addresses, preventing the cluster from upgrading. This is due to a race condition in
-  CAPV version 1.12.0, which may lead to an orphaned IP claim. To resolve this, delete the orphaned IP claim and re-run
-  the upgrade. Refer to
+- <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+- **(pre-4.6.32 to 4.6.32)** When upgrading airgapped self-hosted Palette to version 4.6.32, the IPAM controller may
+  report an `Exhausted IP Pools` error despite having available IP addresses, preventing the cluster from upgrading.
+  This is due to a race condition in CAPV version 1.12.0, which may lead to an orphaned IP claim. To resolve this,
+  delete the orphaned IP claim and re-run the upgrade. Refer to
   [Scenario - IP Pool Exhausted During Airgapped Upgrade](../../../troubleshooting/enterprise-install.md#scenario---ip-pool-exhausted-during-airgapped-upgrade)
   for additional information.
+- **(pre-4.4.14 to 4.4.14+)** If you are upgrading from a Palette version that is older than 4.4.14, ensure that you
+  have executed the utility script to make the CNS mapping unique for the associated PVC. For more information, refer to
+  the [Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 ## Prerequisites
 
