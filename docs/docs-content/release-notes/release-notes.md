@@ -11,6 +11,355 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4-9-a}
+
+#### Breaking Changes {#breaking-changes-4-9-a}
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6185 -->
+
+- Palette now uses IAM Roles for Service Accounts (IRSA) instead of kube2iam for Velero backup operations on
+  [EKS clusters](../clusters/public-cloud/aws/eks.md) that use AWS Security Token Service (STS) credentials.
+
+  To prevent backup disruptions,
+  [pause agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on your EKS
+  clusters before upgrading to Palette 4.9.14 and update the backup IAM role's trust policy by adding the EKS cluster's
+  OpenID Connect (OIDC) provider as a federated principal and allowing the `sts:AssumeRoleWithWebIdentity` action. Refer
+  to
+  [Add Backup Location using Dynamic Credentials](../clusters/cluster-management/backup-restore/add-backup-location-dynamic.md)
+  for detailed instructions on updating the trust policy.
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4787 -->
+
+- <TpBadge /> Palette now supports overriding Cluster API (CAPI) properties on AWS IaaS and Azure AKS clusters. This
+  allows you to configure advanced provider-specific settings not natively exposed by Palette by supplying YAML that
+  targets the underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
+  Properties](../architecture/override-capi-properties/override-capi-properties.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5930 -->
+
+- Palette now supports deployment of
+  [Generation 2 (Gen 2) Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2) on AKS
+  clusters. When you select an instance type that supports Gen 2 (for example, `Standard_D8ds_v6`), Azure automatically
+  provisions the nodes as Gen 2 VMs instead of Gen 1 VMs. Changing a node pool's instance type between Gen 1 and Gen 2
+  variants on a running cluster triggers a
+  [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). For more
+  information, refer to [Create and Manage Azure AKS Cluster](../clusters/public-cloud/azure/aks.md).
+
+  - For further upgrade guidance, review the
+    [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2). This covers supported
+    size families and the move to UEFI-based boot architecture.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5897 -->
+
+- SSH key injection is now supported for [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PRM-2624 -->
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.14 are now
+  available.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2822 -->
+
+- <TpBadge /> You can now use a pre-built Docker image to import a MAAS-compatible CentOS Stream CoreOS (SCOS) image
+  when [preparing the CoreOS
+  image](../clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/prepare-coreos-image.md) required
+  for OpenShift workload clusters on MAAS using HyperShift. This provides a faster alternative to building a custom Red
+  Hat Enterprise Linux CoreOS (RHCOS) image from source.
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2788 -->
+
+- The metrics server commands for
+  [imported read-only clusters](../clusters/imported-clusters/cluster-import.md#read-only-mode) now use the
+  [Kubernetes Metrics Server](https://kubernetes-sigs.github.io/metrics-server/) Helm chart instead of Bitnami.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9692 -->
+
+- The ability to **Force sync** [registries](../registries-and-packs/registries/registries.md) has been added to
+  **Tenant Settings** > **Registries**. Use this option to interrupt and restart ongoing synchronization processes that
+  have been in progress for at least one hour.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-8010 -->
+
+- A list of available and allocated IP addresses is now displayed for VMware vSphere
+  [IP Address Management (IPAM) node pools](../clusters/pcg/manage-pcg/create-manage-node-pool.md).
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10226 -->
+
+- The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
+  Palette and Palette VerteX management plane services has been fully removed. Traefik, introduced in 4.8.47, is now the
+  sole management cluster ingress controller. The management plane removes leftover Ingress Nginx objects automatically
+  at startup (such as Deployments, Services, Secrets, and more), preventing the need for manual cleanup. Self-hosted
+  installations retain the `ingress-nginx` namespace and `default-ssl-certificate` Secret due to the the cert-bridge
+  introduced in 4.8.47, which continues to copy the uploaded Transport Layer Security (TLS) certificate from that Secret
+  into Traefik.
+
+  - **Google Kubernetes Engine (GKE) pre-upgrade requirement** - The principal running `helm upgrade` must have the
+    `container.roles.delete`, `container.roleBindings.delete`, `container.clusterRoles.delete`, and
+    `container.clusterRoleBindings.delete` Cloud Identity and Access Management (IAM) permissions. Refer to
+    [Upgrade Palette on Kubernetes](../enterprise-version/upgrade/upgrade-k8s/non-airgap.md) for details.
+  - **Recommended `values.yaml` hygiene** - The `ingress.type` and `ingress.ingress.internal` fields have been removed
+    from the Palette Helm chart. Any references that remain in your override file are ignored; however, we recommend
+    removing both fields for hygiene purposes. Refer to
+    [Helm Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) for
+    the current set of supported parameters.
+  - **Recovery** - If the `configserver` is not **Ready** after upgrading due to leftover Ingress Nginx pods holding
+    host ports, refer to our
+    [Troubleshooting](../troubleshooting/palette-upgrade.md#configserver-stuck-on-init-rootdomain-traefik-after-upgrade-to-4914)
+    guide for the manual cleanup procedure.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8669 -->
+
+- [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) are now deprecated in Palette
+  and Palette VerteX. We recommend that customers deploy their workloads to
+  [EKS clusters](../clusters/public-cloud/aws/eks.md) instead.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10824 -->
+
+- Fixed an issue that caused strict YAML validators and GitOps tools to reject
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) deployment templates due to a duplicate
+  `securityContext` configuration block in the Helm chart.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6583 -->
+
+- Fixed an issue that caused scheduled [OS patching](../clusters/cluster-management/os-patching.md) to run only once
+  instead of on the configured recurring schedule.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10718 -->
+
+- Fixed an issue that caused the **Clusters** page to hang indefinitely when accessed by users with a
+  [custom tenant role](../user-management/palette-rbac/create-custom-role.md) that lacked virtual cluster permissions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10636 -->
+
+- Fixed an issue that caused multi-line formatting in
+  [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) and cluster description fields to be lost after
+  saving.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6498 -->
+
+- Fixed an issue that caused changes to additional security groups on
+  [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md) node pools to be silently ignored when replacing one
+  security group with another without changing the total count.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10599 -->
+
+- Fixed an issue that caused intermittent `no subscriber found` errors when performing
+  [MAAS cloud account](../clusters/data-center/maas/register-manage-maas-cloud-accounts.md) operations through a
+  [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10547 -->
+
+- Fixed an issue that caused the **Cluster Settings** > **Cluster Configuration** page to display a generic error when
+  attempting to show SSH key names for users whose role lacked the permission `sshKey.list`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6452 -->
+
+- Fixed an issue that caused [MAAS cluster](../clusters/data-center/maas/create-manage-maas-clusters.md) node pools
+  configured with multiple placement tags to match machines using only the last tag instead of all specified tags.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10527 -->
+
+- Fixed an issue that caused [EKS cluster](../clusters/public-cloud/aws/eks.md) add-on packs to appear as not ready in
+  the Palette UI, even though the packs were deployed successfully and the cluster was running.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5840 -->
+
+- Fixed an issue that caused
+  [add-on Helm charts](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-helm-addon.md)
+  that entered an `uninstalling` state to remain stuck indefinitely, preventing the pack from being redeployed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6478 -->
+
+- Fixed an issue that caused [virtual clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md)
+  deployed on EKS 1.34 and 1.35 host clusters to fail or have add-on packs permanently stuck in a not ready state.
+
+  <!-- https://spectrocloud.atlassian.net/browse/PCP-6453 -->
+
+- Fixed an issue that prevented [virtual clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md)
+  from being deployed on EKS host clusters when the Kubernetes version on the virtual cluster and host cluster did not
+  match.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-691 -->
+
+- Fixed an issue that prevented
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) version 4.9.8
+  from installing on Secure Boot hardened infrastructures.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.14 Palette release is 4.9.10.
+
+:::
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8427 -->
+
+- The Palette agent can now be uninstalled from Edge hosts deployed with Agent Mode using the `palette-agent uninstall`
+command. Refer to our
+[Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#uninstall-palette-agent) guide for more
+information.
+<!-- https://spectrocloud.atlassian.net/browse/PE-3561 -->
+
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> is now supported for Trusted Boot. Refer to the [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) page for a list of supported configurations for clusters deployed on Trusted Boot-enabled Edge hosts.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7637 -->
+
+- Network Time Protocol (NTP) values can now be configured per Edge host via
+  [user data](../clusters/edge/edge-configuration/installer-reference.md) using `stylus.site.ntpServers`, the
+  [Edge TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md), or
+  [Local UI](../clusters/edge/local-ui/local-ui.md). NTP values used during cluster creation override the servers
+  configured on individual hosts.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8716 -->
+
+- Fixed an issue on Edge clusters with [image swap](../clusters/cluster-management/image-swap.md) enabled that caused
+  cluster upgrade tasks to get stuck due to the image-swap webhook interfering with Kubernetes Job completion.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8570 -->
+
+- Fixed an issue that caused Kubernetes upgrades on [Edge clusters](../clusters/edge/edge.md) to fail when the host OS
+  root password had expired.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8507 -->
+
+- Fixed an issue that caused `systemd-networkd-wait-online.service` to fail on the first boot of
+  [Edge hosts](../clusters/edge/site-deployment/site-installation/site-installation.md) with `managementMode: local` and
+  `includeTui: true`, even after configuring network settings through the TUI.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7651 -->
+
+- Fixed an issue that allowed a Kubernetes upgrade to proceed on [Edge clusters](../clusters/edge/edge.md) even when a
+  previous upgrade had not completed successfully, potentially leaving the cluster in an inconsistent state.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-9-a) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2801 -->
+
+- The Palette Edge CLI has been deprecated and there will be no further releases. For continued functionality, use the
+  Palette CLI instead. Refer to the [Palette CLI documentation](../automation/palette-cli/palette-cli.md) for more
+  information.
+
+#### Features
+
+- Terraform version 0.29.3 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.29.3 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2246 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2226 -->
+
+- The
+  [`spectrocloud_cluster_aks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
+  and
+  [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)
+  Terraform resources now support Cluster API property overrides using the `override_cluster_api_config` field.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2232 -->
+
+- The
+  [`spectrocloud_cluster_maas`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+  Terraform resource now supports the injection of SSH keys into MAAS nodes using the `ssh_keys` field.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2242 -->
+
+- Fixed an issue that caused the
+  [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
+  Terraform resource to incorrectly reconcile VIP values after import.
+
+### Docs and Education
+
+- A new
+  [Standardize Cluster Provisioning and Maintenance with Cluster Templates using Terraform](../tutorials/clusters/cluster-templates/standardize-clusters-with-cluster-templates-terraform.md)
+  tutorial is now available. Follow it to learn how to use the Spectro Cloud Terraform provider to create cluster
+  templates, deploy standardized clusters, and manage lifecycle updates with infrastructure as code.
+
+- Documentation improvements have been made for EKS Pod Identity on the
+  [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) and
+  [Enable Pod Identity for ECR Authentication](../clusters/public-cloud/aws/enable-pod-identity-ecr.md) pages. This
+  includes clarifying the required permissions for the Palette IAM role when using
+  [Minimum Permissions Policies](../clusters/public-cloud/aws/required-iam-policies/minimum-permissions-policies.md) and
+  providing more detailed instructions for identifying the IAM role for ECR authentication.
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4115 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4101 -->
+
+| Pack Name                  | Layer  | Non-FIPS           | FIPS | New Version |
+| -------------------------- | ------ | ------------------ | ---- | ----------- |
+| Amazon EFS                 | CSI    | :white_check_mark: | :x:  | 3.2.0       |
+| Cilium                     | CNI    | :white_check_mark: | :x:  | 1.19.4      |
+| Headlamp                   | Add-on | :white_check_mark: | :x:  | 0.42.0      |
+| Karpenter                  | Add-on | :white_check_mark: | :x:  | 1.12.1      |
+| Portworx with Operator     | CSI    | :white_check_mark: | :x:  | 3.6.0       |
+| Volume Snapshot Controller | Add-on | :white_check_mark: | :x:  | 8.5.0-rev1  |
+
+#### Pack Notes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4101 -->
+
+<!-- prettier-ignore-start -->
+
+The <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> version 8.5.0-rev1 supports the [snapshot conversion webhook](https://github.com/kubernetes-csi/external-snapshotter/blob/master/deploy/kubernetes/webhook-example/README.md).
+
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+
+The following community packs have been released:
+
+- <VersionedLink text="Fluentbit" url="/integrations/packs/?pack=fluentbit" /> version 5.0.5
+- <VersionedLink text="Trident" url="/integrations/packs/?pack=csi-trident" /> version 26.02.1
+
+<!-- prettier-ignore-end -->
+
 ## May 22, 2026 - Component Updates {#component-updates-2026-21}
 
 The following components have been updated for Palette version 4.9.5 - 4.9.8.

@@ -58,6 +58,8 @@ health status of MongoDB ReplicaSet members, refer to our
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.8.56       |       4.9.14       | :white_check_mark: |
+|       4.8.52       |       4.9.14       | :white_check_mark: |
 |       4.8.52       |       4.9.5        | :white_check_mark: |
 |       4.8.33       |       4.9.5        | :white_check_mark: |
 |       4.8.25       |       4.9.5        | :white_check_mark: |
@@ -406,6 +408,8 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.8.56       |       4.9.14       | :white_check_mark: |
+|       4.8.52       |       4.9.14       | :white_check_mark: |
 |       4.8.52       |       4.9.5        | :white_check_mark: |
 |       4.8.51       |       4.9.5        | :white_check_mark: |
 |       4.8.47       |       4.9.5        | :white_check_mark: |
@@ -771,6 +775,8 @@ few hours.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.8.56       |       4.9.14       | :white_check_mark: |
+|       4.8.52       |       4.9.14       | :white_check_mark: |
 |       4.8.12       |       4.9.5        | :white_check_mark: |
 |       4.8.8        |       4.9.5        | :white_check_mark: |
 
