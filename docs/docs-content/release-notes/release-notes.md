@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 31, 2026 - Release 4.9.a {#release-notes-4-9-a}
+## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
 ### Security Notices
 
@@ -28,7 +28,7 @@ tags: ["release-notes"]
 
   To prevent backup disruptions,
   [pause agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on your EKS
-  clusters before upgrading to Palette 4.9.a and update the backup IAM role's trust policy by adding the EKS cluster's
+  clusters before upgrading to Palette 4.9.14 and update the backup IAM role's trust policy by adding the EKS cluster's
   OpenID Connect (OIDC) provider as a federated principal and allowing the `sts:AssumeRoleWithWebIdentity` action. Refer
   to
   [Add Backup Location using Dynamic Credentials](../clusters/cluster-management/backup-restore/add-backup-location-dynamic.md)
@@ -204,7 +204,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.a Palette release is 4.9.a.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.14 Palette release is 4.9.10.
 
 :::
 
