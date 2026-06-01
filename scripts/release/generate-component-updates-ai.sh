@@ -39,26 +39,6 @@ if ! check_env "RELEASE_DATE"; then
     exit 1
 fi
 
-if ! check_env "RELEASE_COMPONENT_YEAR"; then
-    echo "‼️  RELEASE_COMPONENT_YEAR environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
-fi
-
-if ! check_env "RELEASE_COMPONENT_WEEK"; then
-    echo "‼️  RELEASE_COMPONENT_WEEK environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
-fi
-
-if ! check_env "RELEASE_COMPONENT_START_VERSION"; then
-    echo "‼️  RELEASE_COMPONENT_START_VERSION environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
-fi
-
-if ! check_env "RELEASE_COMPONENT_END_VERSION"; then
-    echo "‼️  RELEASE_COMPONENT_END_VERSION environment variable is not set. Please set it in your .env file. ‼️"
-    exit 1
-fi
-
 if ! check_env "RELEASE_MANAGEMENT_APPLIANCE"; then
     echo "‼️  RELEASE_MANAGEMENT_APPLIANCE environment variable is not set. Please set it in your .env file. ‼️"
     exit 1
@@ -79,6 +59,34 @@ if [[ -z "${JIRA_TICKET:-}" ]]; then
 fi
 
 echo "ℹ️ Generating component updates for $JIRA_TICKET ..."
+
+JIRA_TITLE=$(
+  curl --fail-with-body \
+    --url "${JIRA_DOMAIN}/rest/api/3/issue/${JIRA_TICKET}?fields=summary" \
+    --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+    --header "Accept: application/json" \
+  | jq -r '.fields.summary'
+)
+# Extract the version from the JIRA title using regex. The version is expected to be in the format (YYYY-WW) where YYYY is the year and WW is the week number.
+VERSION=$(echo "$JIRA_TITLE" | sed -n 's/.*(\([0-9]\{4\}-[0-9]\{2\}\)).*/\1/p')
+RELEASE_COMPONENT_YEAR=${VERSION%%-*}
+RELEASE_COMPONENT_WEEK=${VERSION##*-}
+
+echo "ℹ️ JIRA ticket $JIRA_TICKET corresponds to year: $RELEASE_COMPONENT_YEAR, week: $RELEASE_COMPONENT_WEEK"
+
+# Extract the start and end versions for the component update from the release notes file. The start version is the last heading in the release notes file that matches the pattern "## .* - Release X.Y.Z" and the end version is the first heading that matches this pattern.
+RELEASE_COMPONENT_START_VERSION=$(
+  grep -E '^## .* - Release [0-9]+\.[0-9]+\.[0-9]+' "$RELEASE_NOTES_FILE" |
+  tail -n1 |
+  sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
+)
+RELEASE_COMPONENT_END_VERSION=$(
+  grep -m1 -E '^## .* - Release [0-9]+\.[0-9]+\.[0-9]+' "$RELEASE_NOTES_FILE" \
+  | sed -E 's/^## .* - Release ([0-9]+\.[0-9]+\.[0-9]+).*$/\1/'
+)
+
+echo "ℹ️ Release component start version: $RELEASE_COMPONENT_START_VERSION"
+echo "ℹ️ Release component end version: $RELEASE_COMPONENT_END_VERSION"
 
 # Fetch linked issues, excluding PRM- tickets and Pack Updates tickets
 LINKED_ISSUES=()
@@ -118,8 +126,18 @@ if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   ' "$RELEASE_NOTES_FILE")
 fi
 
-generate_parameterised_file $COMPONENT_UPDATES_CROSS_LINK_TEMPLATE_FILE $COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE
-generate_parameterised_file $COMPONENT_UPDATES_HEADING_TEMPLATE_FILE $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
+generate_parameterised_file_local_vars \
+  "$COMPONENT_UPDATES_CROSS_LINK_TEMPLATE_FILE" \
+  "$COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE" \
+  "RELEASE_DATE" \
+  "RELEASE_COMPONENT_YEAR" \
+  "RELEASE_COMPONENT_WEEK"
+generate_parameterised_file_local_vars \
+  "$COMPONENT_UPDATES_HEADING_TEMPLATE_FILE" \
+  "$COMPONENT_UPDATES_HEADING_OUTPUT_FILE" \
+  "RELEASE_DATE" \
+  "RELEASE_COMPONENT_YEAR" \
+  "RELEASE_COMPONENT_WEEK" \
 
 existing_notes=$(search_line "{#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK}" $RELEASE_NOTES_FILE)
 if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
@@ -127,16 +145,23 @@ if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
     echo "✅ Replaced component updates heading in $RELEASE_NOTES_FILE"
 fi
 
+echo "after component updates heading replacement"
+
 # Search all lines containing the component updates links and update them
-cross_link_regex="- \[.* - Component Updates\](#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK)"
-grep -n -- "$cross_link_regex" "$RELEASE_NOTES_FILE" \
-  | cut -d: -f1 \
-  | while IFS= read -r line_number; do
-      replace_line "$line_number" "$COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE" "$RELEASE_NOTES_FILE"
-    done
+anchor="#component-updates-${RELEASE_COMPONENT_YEAR}-${RELEASE_COMPONENT_WEEK}"
+awk -v anchor="$anchor" '
+  index($0, " - Component Updates](" anchor ")") { print NR }
+' "$RELEASE_NOTES_FILE" |
+while IFS= read -r line_number; do
+  replace_line "$line_number" "$COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE" "$RELEASE_NOTES_FILE"
+done
+
+echo "after component updates cross-link replacement"
 
 cleanup $COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE
 cleanup $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
+
+echo "after file cleanup"
 
 SUPER_QUESTION=""
 
