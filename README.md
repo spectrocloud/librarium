@@ -1443,8 +1443,11 @@ recognition, all environment variables used by these scripts are named using the
 
 #### Jira and Super API
 
-| `JIRA_EMAIL` | Jira email. | `name@spectrocloud.com` | | `JIRA_API_TOKEN` | Jira API token. | `XXX` | |
-`SUPER_API_TOKEN` | Super API token. | `XXX` |
+| **Environment Variable** | **Description**  | **Example Value**       |
+| ------------------------ | ---------------- | ----------------------- |
+| `JIRA_EMAIL`             | Jira email.      | `name@spectrocloud.com` |
+| `JIRA_API_TOKEN`         | Jira API token.  | `XXX`                   |
+| `SUPER_API_TOKEN`        | Super API token. | `XXX`                   |
 
 #### Release Notes
 
