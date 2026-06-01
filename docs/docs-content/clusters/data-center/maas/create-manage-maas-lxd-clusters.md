@@ -22,8 +22,9 @@ metal machines needed to run control planes and keeps virtualization overhead lo
   must use either a System Private Gateway or Private Cloud Gateway (PCG) to connect to the MAAS environment. For more
   information on which PCG to use, refer to our MAAS [Architecture](./architecture.md) guide.
 
-  - If you want to use a specific a static network range for the workload cluster, ensure you have configured an IP pool
-    on the [IP Address Management (IPAM)](../../pcg/manage-pcg/create-manage-node-pool.md) tab of the PCG.
+  - If you want to use a static network range for the workload cluster's control plane, ensure you have configured an IP
+    pool on the [IP Address Management (IPAM)](../../pcg/manage-pcg/create-manage-node-pool.md) tab of the PCG. The IP
+    pool must have **Restrict to a single cluster** enabled.
 
   - If your Palette instance does not have a direct connection to the MAAS environment, you must manually
     [deploy a PCG cluster](../../pcg/deploy-pcg/maas.md) to your MAAS environment.
@@ -75,49 +76,52 @@ are managed by the host cluster. The worker nodes are still deployed on bare-met
 
 5.  In the bottom-right corner, click **Start MAAS Configuration**.
 
-6.  Enter the basic information for your cluster, including the **Cluster name**, **Description**, and **Tags**.
+6.  Complete the following information. Select **Next** when finished.
 
-7.  From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
+    | **Field**         | **Description**                                                                                                                                                                                                                          |
+    | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Cluster Name**  | Enter a custom name for the cluster.                                                                                                                                                                                                     |
+    | **Description**   | (Optional) Provide context about the cluster.                                                                                                                                                                                            |
+    | **Tags**          | (Optional) Assign any desired cluster tags. You can use tags to filter and organize clusters in Palette. Example: `env:test`.                                                                                                            |
+    | **Cloud Account** | Select the appropriate MAAS account under which to deploy the cluster. If the account is not listed, select **Add New Account**, and follow the prompts to [add your MAAS account](./register-manage-maas-cloud-accounts.md) to Palette. |
 
-8.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
+7.  <PartialsComponent category="cluster-templates" name="profile-vs-template" />
 
-9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
+8.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-10. Select a **Domain** from the drop-down menu.
+9.  Fill out the following fields on the **Cluster Config** step.
 
-11. To use a MAAS bare metal host as a hypervisor for your control plane components, activate the **Host LXD-Based
-    Control Planes** switch. Select **Next**.
+    | **Field**                  | **Description**                                                                                                                                                                                                                                                                                                                            |
+    | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Domains**                | Register a DNS record in the selected domain for the deployed cluster. The DNS record links to the IP addresses of the control plane nodes.                                                                                                                                                                                                |
+    | **SSH Keys (Optional)**    | Inject public Secure Shell (SSH) keys into `~/.ssh/authorized_keys` on each control plane and worker node, including LXD VMs. The list is populated using the keys in **Tenant Settings** or **Project Settings** > **Security** > **SSH Keys**. Select **Add Item** to [add additional keys](/clusters/cluster-management/ssh/ssh-keys/). |
+    | **NTP Servers (Optional)** | Specify Network Time Protocol (NTP) servers for the cluster nodes. The servers you provide override the machine image defaults. We recommend specifying at least one NTP server to prevent time drift issues.                                                                                                                              |
 
-    ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+10. Click the **Host LXD-Based Control Planes** toggle to use this cluster as an LXD-based control plane (hypervisor)
+    for running control plane components as LXD VMs. Select **Next**.
 
-    :::warning
+    ![Activating the Host LXD-Based Control Planes switch](/create-manage-maas-lxd-clusters_host-lxd-based-control-planes.webp)
 
-    We recommend specifying Network Time Protocol (NTP) servers to ensure that the cluster nodes have the correct time.
-    If no NTP servers are specified, it could lead to time drift issues. You can specify this configuration in the
-    **Cluster Config** step.
-
-    :::
-
-12. Configure the control plane and, optionally, worker node pools.
+11. Configure the control plane and, optionally, worker node pools.
 
     The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields
     that are common across environments and their usage, refer to our
     [Node Pools](../../cluster-management/node-pool.md#node-pool-configuration-settings) guide. Select **Next** when
     finished.
 
-    #### Cloud Configuration
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                                              |
+    | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource pool**      | The MAAS resource pool from which to deploy nodes.                                                                                                                                                                                                                                                                                           |
+    | **Minimum CPU**        | Only select machines from the **Resource pool** that have at least the specified amount of CPU.                                                                                                                                                                                                                                              |
+    | **Minimum Memory**     | Only select machines from the **Resource pool** that have at least the specified amount of memory.                                                                                                                                                                                                                                           |
+    | **Availability zones** | The MAAS zones in which to deploy nodes. Palette distributes nodes across the selected zones for high availability.                                                                                                                                                                                                                          |
+    | **Tags**               | Controls which MAAS machines to use for the node pool based on [MAAS tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags). If you specify multiple tags, Palette only selects machines that have _all_ of the specified tags. <br /> <br /> **WARNING:** Modifying tags on an existing node pool triggers a node repave. |
 
-    | **Parameter**          | **Description**                                                                                                                                                                                                                                               |
-    | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Resource Pool**      | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **CPU** and **Memory** selected.                                                                        |
-    | **Availability zones** | Specify the Availability Zones.                                                                                                                                                                                                                               |
-    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
+12. <PartialsComponent category="clusters" name="cluster-settings" />
 
-13. <PartialsComponent category="clusters" name="cluster-settings" />
+13. Select **Validate** to review your cluster configurations and settings.
 
-14. Select **Validate** to review your cluster configurations and settings.
-
-15. If no changes are needed, select **Finish Configuration** to deploy your cluster.
+14. If no changes are needed, select **Finish Configuration** to deploy your cluster.
 
 To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Use the
@@ -156,31 +160,39 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 9.  <PartialsComponent category="profiles" name="cluster-profile-variables-deployment" />
 
-10. Select a **Domain** from the drop-down menu.
+10. Fill out the following fields on the **Cluster Config** step.
+
+    | **Field**                  | **Description**                                                                                                                                                                                                                                                                                                                            |
+    | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Domains**                | Register a DNS record in the selected domain for the deployed cluster. The DNS record links to the IP addresses of the control plane nodes.                                                                                                                                                                                                |
+    | **SSH Keys (Optional)**    | Inject public Secure Shell (SSH) keys into `~/.ssh/authorized_keys` on each control plane and worker node, including LXD VMs. The list is populated using the keys in **Tenant Settings** or **Project Settings** > **Security** > **SSH Keys**. Select **Add Item** to [add additional keys](/clusters/cluster-management/ssh/ssh-keys/). |
+    | **NTP Servers (Optional)** | Specify Network Time Protocol (NTP) servers for the cluster nodes. The servers you provide override the machine image defaults. We recommend specifying at least one NTP server to prevent time drift issues.                                                                                                                              |
 
 11. When creating a workload cluster that will leverage MAAS LXD or will use an existing host LXD-based control plane,
     leave the **Host LXD-Based Control Planes** option disabled. Select **Next**.
 
-    ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+    ![Activating the Host LXD-Based Control Planes switch](/create-manage-maas-lxd-clusters_host-lxd-based-control-planes.webp)
 
-12. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
-    node pools. For a detailed list of input fields that are common across environments and their usage, refer to our
+12. Configure the control plane and worker node pools. The following input fields apply to MAAS node pools. For a
+    detailed list of input fields that are common across environments and their usage, refer to our
     [Node Pools](../../cluster-management/node-pool.md#node-pool-configuration-settings) guide. Select **Next** when
     finished.
 
     #### Cloud Configuration
 
-    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                                                                              |
-    | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Use LXD VMs**        | Select this option if you want your worker nodes' control plane to be deployed on MAAS LXD VMs instead of a MAAS bare metal server. This option is only displayed if you have KVM or LXD enabled on MAAS and you did _not_ select **Host LXD-Based Control Planes** on step 11.                                                                                              |
-    | **Resource Pool**      | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **CPU** and **Memory** selected.                                                                                                                                                                                       |
-    | **Availability zones** | Specify the Availability Zones. These should match the same zones used by the Hosted LXD-Based Control Plane.                                                                                                                                                                                                                                                                |
-    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. If you are using a hosted LXD-based control plane, the resource pool, availability zones, and tags must match. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
-    | **Network Type**       | This option is only available when **Use LXD VMs** is enabled. Select **DHCP** or **Static IP**. For **Static IP**, select the **IP Address Management** drop-down menu, and choose the desired IP pool for the workload cluster.                                                                                                                                            |
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Use LXD VMs**        | Select this option to deploy the workload cluster's control plane nodes as LXD VMs instead of on bare metal MAAS servers. This option is only displayed if you have KVM or LXD enabled on MAAS and you did _not_ select **Host LXD-Based Control Planes** in step 11.                                                                                                                                                                                           |
+    | **Resource pool**      | The MAAS resource pool from which to deploy nodes.                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | **Minimum CPU**        | Only select machines from the **Resource pool** that have at least the specified amount of CPU.                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Minimum Memory**     | Only select machines from the **Resource pool** that have at least the specified amount of memory.                                                                                                                                                                                                                                                                                                                                                              |
+    | **Availability zones** | The MAAS zones in which to deploy nodes. Palette distributes nodes across the selected zones for high availability. These must match the same zones used by the hosted LXD-based control plane.                                                                                                                                                                                                                                                                 |
+    | **Tags**               | Control which MAAS machines to use for the node pool based on [MAAS tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags). If you specify multiple tags, Palette only selects machines that have _all_ of the specified tags. If you are using a hosted LXD-based control plane, the resource pool, availability zones, and tags must also match. <br /> <br /> **WARNING:** Modifying tags on an existing node pool triggers a node repave. |
+    | **Network Type**       | (Control plane pools only) Select **MAAS Automatic** or **Palette Static IP Pool**. For **Palette Static IP Pool**, select the **IP Address Management** drop-down and choose the desired [IPAM node pool](../../pcg/manage-pcg/create-manage-node-pool.md). The IP pool must have **Restrict to a single cluster** enabled. This option is only available when **Use LXD VMs** is enabled for the control plane pool.                                          |
 
     :::danger
 
-    Ensure that your **Resource Pool**, **Availability Zones**, and **Tags** selections match the same values used for
+    Ensure that your **Resource pool**, **Availability zones**, and **Tags** selections match the same values used for
     the host cluster nodes. Failure to do so may result in LXD VMs created on MAAS hosts that do not have LXD
     initialized, which can lead to cluster provisioning failures.
 

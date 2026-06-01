@@ -138,7 +138,7 @@ CUSTOM_TAG=$CUSTOM_TAG
 IMAGE_REGISTRY=spectrocloud
 OS_DISTRIBUTION=ubuntu
 IMAGE_REPO=ubuntu
-OS_VERSION=22
+OS_VERSION=22.04
 K8S_DISTRIBUTION=k3s
 ISO_NAME=palette-installer
 ARCH=amd64
@@ -562,6 +562,8 @@ The output displays the IP addresses that are currently in use on your network.
 :::
 
 Optionally, you can also select an SSH key to access the cluster's nodes and a Network Time Protocol (NTP) server list.
+
+<PartialsComponent category="clusters-edge" name="ntp-warning-edge" />
 
 Click **Next** to continue.
 

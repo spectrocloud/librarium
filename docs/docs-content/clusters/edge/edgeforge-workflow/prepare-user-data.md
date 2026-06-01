@@ -439,8 +439,8 @@ during the EdgeForge build process.
 
 ```
 IMAGE_REGISTRY=spectrocloud
-OS_DISTRIBUTION=Ubuntu
-OS_VERSION=22
+OS_DISTRIBUTION=ubuntu
+OS_VERSION=24.04
 IMAGE_REPO=ubuntu-secure
 CUSTOM_TAG=trusted-boot
 K8S_DISTRIBUTION=rke2
@@ -467,8 +467,8 @@ Therefore, you must specify `TWO_NODE=true` during the EdgeForge process in your
 
 ```
 IMAGE_REGISTRY=spectrocloud
-OS_DISTRIBUTION=Ubuntu
-OS_VERSION=22
+OS_DISTRIBUTION=ubuntu
+OS_VERSION=22.04
 IMAGE_REPO=ubuntu
 CUSTOM_TAG=two-node
 K8S_DISTRIBUTION=k3s

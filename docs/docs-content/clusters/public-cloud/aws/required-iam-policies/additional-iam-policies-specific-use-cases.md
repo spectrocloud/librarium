@@ -49,3 +49,42 @@ you must attach the **PaletteHostResourceGroupsPolicy** on top of the [Core IAM 
 [Minimum Permissions Policies](./minimum-permissions-policies.md).
 
 <PartialsComponent category="permissions" name="aws-host-resource-groups-policy" />
+
+## EKS Pod Identity with Minimum Permissions Policies
+
+:::info
+
+These permissions have been included in the prerequisites steps for enabling EKS Pod Identity in the
+[Add AWS Accounts](../add-aws-accounts.md) guide and are mentioned here for posterity and reference.
+
+:::
+
+If you are using [Minimum Permissions Policies](./minimum-permissions-policies.md) for EKS (static or dynamic) and you
+want to enable EKS Pod Identity, the following permissions policy must also be assigned to the IAM role or IAM target
+role created for Palette (for example, `SpectroCloudPaletteRole` or `SpectroCloudPaletteTargetRole`).
+
+<!-- prettier-ignore-start -->
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DescribeAddonVersions",
+        "eks:CreateAddon",
+        "eks:UpdateAddon"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["iam:PassRole"],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+<!-- prettier-ignore-end -->
