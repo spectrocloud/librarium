@@ -56,6 +56,7 @@ health status of MongoDB ReplicaSet members, refer to our
 
 **4.9**
 
+<!-- upgrade-paths:vmware-4.9:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.8.56       |       4.9.14       | :white_check_mark: |
@@ -71,7 +72,7 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.7.38       |       4.9.5        | :white_check_mark: |
 |       4.7.29       |       4.9.5        | :white_check_mark: |
 |       4.7.27       |       4.9.5        | :white_check_mark: |
-
+<!-- upgrade-paths:vmware-4.9:end -->
 **4.8**
 
 :::info
@@ -82,6 +83,7 @@ after a few hours.
 
 :::
 
+<!-- upgrade-paths:vmware-4.8:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.8.35       |       4.8.51       | :white_check_mark: |
@@ -163,9 +165,11 @@ after a few hours.
 |       4.7.27       |       4.8.12       | :white_check_mark: |
 |       4.7.27       |       4.8.9        | :white_check_mark: |
 |       4.7.27       |       4.8.8        | :white_check_mark: |
+<!-- upgrade-paths:vmware-4.8:end -->
 
 **4.7.x**
 
+<!-- upgrade-paths:vmware-4.7:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.7.21       |       4.7.27       | :white_check_mark: |
@@ -182,9 +186,11 @@ after a few hours.
 |       4.6.41       |       4.7.15       | :white_check_mark: |
 |       4.6.41       |       4.7.3        | :white_check_mark: |
 |       4.6.6        |       4.7.15       | :white_check_mark: |
+<!-- upgrade-paths:vmware-4.7:end -->
 
 **4.6.x**
 
+<!-- upgrade-paths:vmware-4.6:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.6.41       |       4.6.43       | :white_check_mark: |
@@ -328,9 +334,11 @@ after a few hours.
 |       4.4.24       |       4.6.28       | :white_check_mark: |
 |       4.4.24       |       4.6.24       | :white_check_mark: |
 |       4.4.24       |       4.6.23       | :white_check_mark: |
+<!-- upgrade-paths:vmware-4.6:end -->
 
 **4.5.x**
 
+<!-- upgrade-paths:vmware-4.5:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.5.21       |       4.5.23       | :white_check_mark: |
@@ -362,9 +370,11 @@ after a few hours.
 |       4.4.20       |       4.5.11       | :white_check_mark: |
 |       4.4.20       |       4.5.8        | :white_check_mark: |
 |       4.4.20       |       4.5.4        | :white_check_mark: |
+<!-- upgrade-paths:vmware-4.5:end -->
 
 **4.4.x**
 
+<!-- upgrade-paths:vmware-4.4:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.4.20       |       4.4.23       | :white_check_mark: |
@@ -388,9 +398,11 @@ after a few hours.
 |       4.3.6        |       4.4.14       | :white_check_mark: |
 |       4.3.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.6        | :white_check_mark: |
+<!-- upgrade-paths:vmware-4.4:end -->
 
 **4.3.x and Prior**
 
+<!-- upgrade-paths:vmware-4.3:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.2.13       |       4.3.6        | :white_check_mark: |
@@ -399,6 +411,7 @@ after a few hours.
 |       4.1.12       |       4.2.7        | :white_check_mark: |
 |       4.1.12       |       4.1.13       | :white_check_mark: |
 |       4.1.7        |       4.2.7        | :white_check_mark: |
+<!-- upgrade-paths:vmware-4.3:end -->
 
 </TabItem>
 
@@ -406,6 +419,7 @@ after a few hours.
 
 **4.9**
 
+<!-- upgrade-paths:kubernetes-4.9:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.8.56       |       4.9.14       | :white_check_mark: |
@@ -428,9 +442,11 @@ after a few hours.
 |       4.7.31       |       4.9.5        | :white_check_mark: |
 |       4.7.29       |       4.9.5        | :white_check_mark: |
 |       4.7.27       |       4.9.5        | :white_check_mark: |
+<!-- upgrade-paths:kubernetes-4.9:end -->
 
 **4.8**
 
+<!-- upgrade-paths:kubernetes-4.8:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.8.51       |       4.8.52       | :white_check_mark: |
@@ -547,9 +563,11 @@ after a few hours.
 |       4.7.27       |       4.8.12       | :white_check_mark: |
 |       4.7.27       |       4.8.9        | :white_check_mark: |
 |       4.7.27       |       4.8.8        | :white_check_mark: |
+<!-- upgrade-paths:kubernetes-4.8:end -->
 
 **4.7.x**
 
+<!-- upgrade-paths:kubernetes-4.7:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.7.16       |       4.7.20       | :white_check_mark: |
@@ -559,9 +577,11 @@ after a few hours.
 |       4.6.41       |       4.7.20       | :white_check_mark: |
 |       4.6.41       |       4.7.15       | :white_check_mark: |
 |       4.6.41       |       4.7.3        | :white_check_mark: |
+<!-- upgrade-paths:kubernetes-4.7:end -->
 
 **4.6.x**
 
+<!-- upgrade-paths:kubernetes-4.6:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.6.41       |       4.6.43       | :white_check_mark: |
@@ -705,9 +725,11 @@ after a few hours.
 |       4.4.24       |       4.6.28       | :white_check_mark: |
 |       4.4.24       |       4.6.24       | :white_check_mark: |
 |       4.4.24       |       4.6.23       | :white_check_mark: |
+<!-- upgrade-paths:kubernetes-4.6:end -->
 
 **4.5.x**
 
+<!-- upgrade-paths:kubernetes-4.5:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.5.21       |       4.5.23       | :white_check_mark: |
@@ -732,9 +754,11 @@ after a few hours.
 |       4.4.20       |       4.5.21       | :white_check_mark: |
 |       4.4.20       |       4.5.20       | :white_check_mark: |
 |       4.4.20       |       4.5.15       | :white_check_mark: |
+<!-- upgrade-paths:kubernetes-4.5:end -->
 
 **4.4.x**
 
+<!-- upgrade-paths:kubernetes-4.4:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.4.18       |       4.4.20       | :white_check_mark: |
@@ -752,9 +776,11 @@ after a few hours.
 |       4.4.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.6        | :white_check_mark: |
+<!-- upgrade-paths:kubernetes-4.4:end -->
 
 **4.3.x and Prior**
 
+<!-- upgrade-paths:kubernetes-4.3:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.2.13       |       4.3.6        | :white_check_mark: |
@@ -762,6 +788,7 @@ after a few hours.
 |       4.1.x        |       4.3.6        |        :x:         |
 |       4.1.12       |       4.2.7        | :white_check_mark: |
 |       4.1.7        |       4.2.7        | :white_check_mark: |
+<!-- upgrade-paths:kubernetes-4.3:end -->
 
 </TabItem>
 
@@ -773,15 +800,18 @@ after a few hours.
 
 **4.9**
 
+<!-- upgrade-paths:appliance-4.9:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.8.56       |       4.9.14       | :white_check_mark: |
 |       4.8.52       |       4.9.14       | :white_check_mark: |
 |       4.8.12       |       4.9.5        | :white_check_mark: |
 |       4.8.8        |       4.9.5        | :white_check_mark: |
+<!-- upgrade-paths:appliance-4.9:end -->
 
 **4.8**
 
+<!-- upgrade-paths:appliance-4.8:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.8.12       |       4.8.51       | :white_check_mark: |
@@ -814,14 +844,17 @@ after a few hours.
 |       4.7.27       |       4.8.21       | :white_check_mark: |
 |       4.7.27       |       4.8.12       | :white_check_mark: |
 |       4.7.27       |       4.8.8        | :white_check_mark: |
+<!-- upgrade-paths:appliance-4.8:end -->
 
 **4.7**
 
+<!-- upgrade-paths:appliance-4.7:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.7.15       |       4.7.27       | :white_check_mark: |
 |       4.7.3        |       4.7.27       |        :x:         |
 |       4.7.3        |       4.7.15       |        :x:         |
+<!-- upgrade-paths:appliance-4.7:end -->
 
 </TabItem>
 
