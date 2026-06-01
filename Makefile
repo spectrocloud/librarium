@@ -395,9 +395,6 @@ init-release:
 	grep -q "^export RELEASE_CANVOS=" .env || echo "export RELEASE_CANVOS=" >> .env
 	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
 	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
-	grep -q "^export RELEASE_COMPONENT_START_VERSION=" .env || echo "export RELEASE_COMPONENT_START_VERSION=" >> .env
-	grep -q "^export RELEASE_COMPONENT_END_VERSION=" .env || echo "export RELEASE_COMPONENT_END_VERSION=" >> .env
-	grep -q "^# OTHER RELEASE UPDATES" .env || echo "\n# OTHER RELEASE UPDATES" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
 	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "export RELEASE_EDGE_CLI_VERSION=" >> .env
