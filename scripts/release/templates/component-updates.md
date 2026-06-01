@@ -1,5 +1,7 @@
 ## {{RELEASE_DATE}} - Component Updates {#component-updates-{{RELEASE_COMPONENT_YEAR}}-{{RELEASE_COMPONENT_WEEK}}}
 
+<!--  COMPONENT UPDATES TICKET: {{JIRA_TICKET}} -->
+
 The following components have been updated for Palette version {{RELEASE_COMPONENT_START_VERSION}} - {{RELEASE_COMPONENT_END_VERSION}}.
 
 | Component | Version |
@@ -10,11 +12,11 @@ The following components have been updated for Palette version {{RELEASE_COMPONE
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | {{RELEASE_MANAGEMENT_APPLIANCE}} |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | {{RELEASE_MANAGEMENT_APPLIANCE}} |
 
-### Features
+<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
-### Improvements
+{{SUPER_COMPONENT_UPDATES_BODY}}
 
-### Bug Fixes
+<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
 ### Packs
 

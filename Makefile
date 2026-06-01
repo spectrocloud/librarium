@@ -371,7 +371,7 @@ generate-release-notes: ## Generate release notes only
 	make -s format > /dev/null 2>&1
 
 generate-component-updates: ## Generate component updates only
-	./scripts/release/generate-component-updates.sh
+	./scripts/release/generate-component-updates-ai.sh
 	make -s format > /dev/null 2>&1
 
 generate-patch-release-notes: ## Generate patch release notes only
