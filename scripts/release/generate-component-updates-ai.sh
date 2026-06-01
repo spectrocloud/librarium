@@ -127,14 +127,14 @@ if [[ -z "$COMPONENT_UPDATES_EXISTING_BODY" ]]; then
   SUPER_QUESTION=$(cat <<EOF
 Generate documentation for these tickets:
 
-${ISSUE_KEYS[*]}
+${LINKED_ISSUES[*]}
 EOF
 )
 else
   SUPER_QUESTION=$(cat <<EOF
 Generate documentation for these tickets:
 
-${ISSUE_KEYS[*]}
+${LINKED_ISSUES[*]}
 
 Existing documentation body for $JIRA_TICKET:
 $COMPONENT_UPDATES_EXISTING_BODY
@@ -244,8 +244,8 @@ generate_parameterised_file_local_vars \
   "$COMPONENT_UPDATES_TEMPLATE_FILE" \
   "$COMPONENT_UPDATES_OUTPUT_FILE" \
   "RELEASE_DATE" \
-  "RELEASE_YEAR" \
-  "RELEASE_WEEK" \
+  "RELEASE_COMPONENT_YEAR" \
+  "RELEASE_COMPONENT_WEEK" \
   "JIRA_TICKET" \
   "RELEASE_COMPONENT_START_VERSION" \
   "RELEASE_COMPONENT_END_VERSION" \
