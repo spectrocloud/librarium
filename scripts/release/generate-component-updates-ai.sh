@@ -118,6 +118,26 @@ if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   ' "$RELEASE_NOTES_FILE")
 fi
 
+generate_parameterised_file $COMPONENT_UPDATES_CROSS_LINK_TEMPLATE_FILE $COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE
+generate_parameterised_file $COMPONENT_UPDATES_HEADING_TEMPLATE_FILE $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
+
+existing_notes=$(search_line "{#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK}" $RELEASE_NOTES_FILE)
+if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
+    replace_line $existing_notes $COMPONENT_UPDATES_HEADING_OUTPUT_FILE $RELEASE_NOTES_FILE
+    echo "✅ Replaced component updates heading in $RELEASE_NOTES_FILE"
+fi
+
+# Search all lines containing the component updates links and update them
+cross_link_regex="- \[.* - Component Updates\](#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK)"
+grep -n -- "$cross_link_regex" "$RELEASE_NOTES_FILE" \
+  | cut -d: -f1 \
+  | while IFS= read -r line_number; do
+      replace_line "$line_number" "$COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE" "$RELEASE_NOTES_FILE"
+    done
+
+cleanup $COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE
+cleanup $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
+
 SUPER_QUESTION=""
 
 # Construct the Super API question
@@ -220,24 +240,6 @@ if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   exit 0
 fi
 
-generate_parameterised_file $COMPONENT_UPDATES_CROSS_LINK_TEMPLATE_FILE $COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE
-generate_parameterised_file $COMPONENT_UPDATES_HEADING_TEMPLATE_FILE $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
-
-existing_notes=$(search_line "{#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK}" $RELEASE_NOTES_FILE)
-if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
-    echo "ℹ️ Component updates for $RELEASE_COMPONENT_YEAR - $RELEASE_COMPONENT_WEEK have already been generated in $RELEASE_NOTES_FILE"
-    replace_line $existing_notes $COMPONENT_UPDATES_HEADING_OUTPUT_FILE $RELEASE_NOTES_FILE
-    echo "✅ Replaced component updates heading in $RELEASE_NOTES_FILE"
-fi
-
-# Search all lines containing the component updates links and update them
-cross_link_regex="- \[.* - Component Updates\](#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK)"
-grep -n -- "$cross_link_regex" "$RELEASE_NOTES_FILE" \
-  | cut -d: -f1 \
-  | while IFS= read -r line_number; do
-      replace_line "$line_number" "$COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE" "$RELEASE_NOTES_FILE"
-    done
-
 echo "ℹ️  Component updates for $JIRA_TICKET do not already exist in $RELEASE_NOTES_FILE" >&2
 
 generate_parameterised_file_local_vars \
@@ -258,7 +260,3 @@ insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $REL
 echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
 
 cleanup $COMPONENT_UPDATES_OUTPUT_FILE
-cleanup $COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE
-cleanup $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
-
-
