@@ -403,7 +403,7 @@ few hours.
 
 **4.3.x and Prior**
 
-<!-- upgrade-paths:vmware-4.3:start -->
+<!-- upgrade-paths:vmware-prior:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.2.13       |       4.3.6        | :white_check_mark: |
@@ -412,7 +412,7 @@ few hours.
 |       4.1.12       |       4.2.7        | :white_check_mark: |
 |       4.1.12       |       4.1.13       | :white_check_mark: |
 |       4.1.7        |       4.2.7        | :white_check_mark: |
-<!-- upgrade-paths:vmware-4.3:end -->
+<!-- upgrade-paths:vmware-prior:end -->
 
 </TabItem>
 
@@ -781,7 +781,7 @@ few hours.
 
 **4.3.x and Prior**
 
-<!-- upgrade-paths:kubernetes-4.3:start -->
+<!-- upgrade-paths:kubernetes-prior:start -->
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.2.13       |       4.3.6        | :white_check_mark: |
@@ -789,7 +789,7 @@ few hours.
 |       4.1.x        |       4.3.6        |        :x:         |
 |       4.1.12       |       4.2.7        | :white_check_mark: |
 |       4.1.7        |       4.2.7        | :white_check_mark: |
-<!-- upgrade-paths:kubernetes-4.3:end -->
+<!-- upgrade-paths:kubernetes-prior:end -->
 
 </TabItem>
 
