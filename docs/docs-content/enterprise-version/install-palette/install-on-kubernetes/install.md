@@ -74,20 +74,8 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
   page to learn more about modifying StorageClasses.
 
-- Palette deploys both a Traefik ingress controller and an Nginx ingress controller. Traefik is the default ingress
-  controller starting with Palette 4.8.47. Ingress Nginx acts as a fallback and does not actively serve traffic. If you
-  already have an ingress controller deployed in the cluster, you must set the `ingress.enabled` parameter to `false` in
-  the `values.yaml` file.
-
-  :::warning
-
-  The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by
-  Palette management plane services is now [deprecated](../../../release-notes/announcements.md#deprecations) and will
-  be removed in a future release. If you are deploying an ingress controller as part of your Palette installation, set
-  `ingress.type` to `traefik` to avoid service disruptions. Refer to
-  [Helm Configuration Reference](../install-on-kubernetes/palette-helm-ref.md) for more information.
-
-  :::
+- Palette uses Traefik as the ingress controller. If you already have an ingress controller deployed in the cluster, set
+  the `ingress.enabled` parameter to `false` in the `values.yaml` file.
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for Palette.
@@ -171,12 +159,12 @@ your environment. Reach out to our support team if you need assistance.
     following parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file
     in the [Helm Configuration Reference](palette-helm-ref.md) page.
 
-    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | **Type** |
-    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | object   |
-    | `ingress.enabled`                         | Whether to install the Traefik or Nginx ingress controller (determined by `type: "traefik"` or `type: "nginx"`). Set to `false` if you already have an ingress controller deployed in the cluster. <br /><br /> **WARNING:** The internal [Ingress Nginx](https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/) controller used by Palette management plane services is now [deprecated](../../../release-notes/announcements.md#deprecations) and will be removed in a future release. If you are deploying an ingress controller as part of your Palette installation, set `ingress.type` to `traefik` to avoid service disruptions. Refer to [Helm Configuration Reference](../install-on-kubernetes/palette-helm-ref.md) for more information. | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | object   |
+    | **Parameter**                             | **Description**                                                                                                                                                | **Type** |
+    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                          | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                       | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                           | boolean  |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment | object   |
 
     :::info
 
@@ -247,7 +235,7 @@ your environment. Reach out to our support team if you need assistance.
         password: "" # base64 encoded SMTP password
 
       env:
-        # rootDomain is a DNS record which will be mapped to the ingress-nginx-controller load balancer
+        # rootDomain is a DNS record which will be mapped to the traefik-ingress-controller load balancer
         # E.g., myfirstpalette.spectrocloud.com
         # - Mandatory if ingress.internal == false
         # - Optional if ingress.internal == true (leave empty)
@@ -345,17 +333,13 @@ your environment. Reach out to our support team if you need assistance.
     ingress:
       msgbroker:
         proxyBodySize: "15m" # Default proxy body size for msgbroker ingress
-      # When enabled nginx ingress controller would be installed
+      # When enabled, the Traefik ingress controller is installed.
       enabled: true
 
       ingress:
-        # Whether to front NGINX Ingress Controller with a cloud
-        # load balancer (internal == false) or use host network
-        internal: false
-
-        # Default SSL certificate and key for NGINX Ingress Controller (Optional)
+        # Default SSL certificate and key for the ingress controller (Optional)
         # A wildcard cert for config.env.rootDomain, e.g., *.myfirstpalette.spectrocloud.com
-        # If left blank, the NGINX ingress controller will generate a self-signed cert (when terminating TLS upstream of ingress-nginx-controller)
+        # If left blank, a self-signed cert is generated.
         certificate: ""
         key: ""
 
@@ -466,7 +450,7 @@ your environment. Reach out to our support team if you need assistance.
         password: "" # base64 encoded SMTP password
 
       env:
-        # rootDomain is a DNS record which will be mapped to the ingress-nginx-controller load balancer
+        # rootDomain is a DNS record which will be mapped to the traefik-ingress-controller load balancer
         # E.g., myfirstpalette.spectrocloud.com
         # - Mandatory if ingress.internal == false
         # - Optional if ingress.internal == true (leave empty)
@@ -564,17 +548,13 @@ your environment. Reach out to our support team if you need assistance.
     ingress:
       msgbroker:
         proxyBodySize: "15m" # Default proxy body size for msgbroker ingress
-      # When enabled nginx ingress controller would be installed
+      # When enabled, the Traefik ingress controller is installed.
       enabled: true
 
       ingress:
-        # Whether to front NGINX Ingress Controller with a cloud
-        # load balancer (internal == false) or use host network
-        internal: false
-
-        # Default SSL certificate and key for NGINX Ingress Controller (Optional)
+        # Default SSL certificate and key for the ingress controller (Optional)
         # A wildcard cert for config.env.rootDomain, e.g., *.myfirstpalette.spectrocloud.com
-        # If left blank, the NGINX ingress controller will generate a self-signed cert (when terminating TLS upstream of ingress-nginx-controller)
+        # If left blank, a self-signed cert is generated.
         certificate: ""
         key: ""
 
@@ -697,8 +677,8 @@ your environment. Reach out to our support team if you need assistance.
     ```
 
 8.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
-    `cp-system`, `hubble-system`, `ingress-traefik`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_
-    state. The installation takes between two to three minutes to complete.
+    `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` reach the _Ready_ state. The
+    installation takes between two to three minutes to complete.
 
     <PartialsComponent category="self-hosted" name="install-on-kubernetes-al2" edition="Palette" />
 
@@ -789,12 +769,12 @@ Use the following steps to validate the Palette installation.
    password. Enter a new password and save your changes. You will be redirected to the Palette system console.
 
 3. Open a terminal session and issue the following command to verify the Palette installation. The command should return
-   a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `ingress-traefik`, `jet-system` , and
-   `ui-system` namespaces.
+   a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system`
+   namespaces.
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep --extended-regexp '^(cp-system|hubble-system|ingress-nginx|ingress-traefik|jet-system|ui-system)\s'
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|jet-system|ui-system)\s'
    ```
 
    Your output should look similar to the following.
@@ -840,9 +820,6 @@ Use the following steps to validate the Palette installation.
     hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
     hubble-system        user-796c877b57-6rcdp                                      Running
     hubble-system        user-796c877b57-ptbg4                                      Running
-    ingress-nginx        ingress-nginx-controller-m5z54                             Running
-    ingress-nginx        ingress-nginx-controller-qsf6m                             Running
-    ingress-nginx        ingress-nginx-controller-w64pz                             Running
     ingress-traefik      traefik-ingress-controller-9dmzq                           Running
     ingress-traefik      traefik-ingress-controller-tpwtf                           Running
     ingress-traefik      traefik-ingress-controller-xz4jf                           Running

@@ -30,7 +30,7 @@ management cluster. Use static or dynamic access credentials for registries in d
 - Access to the Amazon EKS cluster's kubeconfig file. You must be able to use `kubectl` to perform validation steps on
   the cluster.
 
-- A Palette account with [tenant admin](/tenant-settings/) access.
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
 
 - AWS CLI must be installed and configured with the necessary permissions to access and update pod identity associations
   for your EKS cluster.
@@ -40,14 +40,16 @@ management cluster. Use static or dynamic access credentials for registries in d
 1.  Execute the following command to list the pod identity associations in your EKS cluster. Replace the
     `<eks-cluster-name>` with your cluster name and `<region>` with your AWS region.
 
-    Make a note of the ARN corresponding to `spectro-hubble`.
-
     ```shell
     aws eks list-pod-identity-associations \
     --cluster-name <eks-cluster-name> \
     --region <region> \
     --output table
     ```
+
+    Make a note of the `RoleArn` corresponding to the `spectro-hubble` service account. You only need the name of the
+    IAM role, which is the last part of the ARN after the final slash (`/`). For example, if your `RoleArn` is
+    `arn:aws:iam::123456789012:role/SpectroCloudHubbleRole`, the role name is `SpectroCloudHubbleRole`.
 
     ```shell hideClipboard title="Example Output"
     ----------------------------------------------------------------------------------------------------------------------------------
@@ -56,7 +58,7 @@ management cluster. Use static or dynamic access credentials for registries in d
     | AssociationId                 | Namespace               | ServiceAccount                |  RoleArn                             |
     +-------------------------------+-------------------------+------------------------------- +--------------------------------------+
     | a1b2c3d4-5678-90ab-cdef-11111 | kube-system             | aws-node                      |  arn:aws:iam::123456789012:role/AmazonEKS_CNI_Role |
-    | b2c3d4e5-6789-01bc-def0-22222 | hubble-system           | spectro-hubble                |  arn:aws:iam::123456789012:role/spectro-hubble-role |
+    | b2c3d4e5-6789-01bc-def0-22222 | hubble-system           | spectro-hubble                |  arn:aws:iam::123456789012:role/SpectroCloudHubbleRole |
     +-------------------------------+-------------------------+------------------------------- +--------------------------------------+
     ```
 
@@ -92,8 +94,8 @@ management cluster. Use static or dynamic access credentials for registries in d
     ```
 
 3.  Execute the following command to add the permissions defined in the `ecr-permissions-policy.json` file to your
-    `spectro-hubble` EKS Pod Identity association. Replace `<hubble-role-name>` with the ARN of your pod identity
-    association from **Step 1**.
+    `spectro-hubble` EKS Pod Identity association. Replace `<hubble-role-name>` with the role name identified in **Step
+    1** (for example, `SpectroCloudHubbleRole`).
 
     ```shell
     aws iam put-role-policy \
@@ -108,15 +110,15 @@ management cluster. Use static or dynamic access credentials for registries in d
 
     - Replace `<eks-cluster-name>` with the name of your Amazon EKS Cluster.
     - Replace `<aws-account-id>` with your AWS account ID.
-    - Replace `<identity-service-iam-role-name>` with the name of the IAM role created for the Palette identity service
-      . For example, `SpectroCloudIdentityRole`.
+    - Replace `<hubble-role-name>` with the role name identified in **Step 1** (for example, `SpectroCloudHubbleRole`).
+    - Replace `<region>` with your AWS region.
 
     ```shell
     aws eks create-pod-identity-association \
     --cluster-name <eks-cluster-name> \
     --namespace hubble-system \
     --service-account spectro-specman \
-    --role-arn arn:aws:iam::<aws-account-id>:role/<identity-service-iam-role-name> \
+    --role-arn arn:aws:iam::<aws-account-id>:role/<hubble-role-name> \
     --region <region>
     ```
 
@@ -140,7 +142,24 @@ management cluster. Use static or dynamic access credentials for registries in d
     partitioned roll out complete: 3 new pods have been updated...
     ```
 
-7.  Edit the `values.yaml` file for your
+7.  Issue the following commands to verify that EKS Pod Identity has set the required environment variables for the
+    Hubble and Specman services.
+
+    ```bash
+    kubectl get pods --namespace hubble-system --selector component=cloud \
+    --output jsonpath='{.items[0].spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
+    ```
+
+    ```bash
+    kubectl get pod specman-0 --namespace hubble-system \
+    --output jsonpath='{.spec.containers[0].env[*].name}' | tr ' ' '\n' | grep AWS_CONTAINER
+    ```
+
+    Both the `AWS_CONTAINER_CREDENTIALS_FULL_URI` and `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` environment variables
+    should be present in the output of both commands, indicating that Amazon EKS has injected the
+    [necessary configuration for EKS Pod Identity](https://docs.aws.amazon.com/sdkref/latest/guide/feature-container-credentials.html).
+
+8.  Edit the `values.yaml` file for your
     [self-hosted Palette](../../../enterprise-version/install-palette/install-on-kubernetes/install.md) or
     [VerteX](../../../vertex/install-palette-vertex/install-on-kubernetes/install.md) installation. Set the following
     fields and values.
@@ -153,16 +172,13 @@ management cluster. Use static or dynamic access credentials for registries in d
               credentialType: "pod-identity"
          ```
 
-8.  Issue the following command to apply changes. Replace the `<version>` with the Palette release version installed on
+9.  Issue the following command to apply changes. Replace the `<version>` with the Palette release version installed on
     your Palette or VerteX environment. If you are unsure, you can retrieve the version using the
     `helm list --namespace hubble-system` command.
 
     ```shell
-     helm upgrade palette spectro-mgmt-plane-<version>.tgz \
-      -f values.yaml --namespace hubble-system
-
-     kubectl rollout restart deployment cloud --namespace hubble-system
-     kubectl rollout restart statefulset specman --namespace hubble-system
+    helm upgrade palette spectro-mgmt-plane-<version>.tgz \
+    --values values.yaml --namespace hubble-system
     ```
 
     ```shell hideClipboard title="Example Output"
@@ -173,13 +189,23 @@ management cluster. Use static or dynamic access credentials for registries in d
     STATUS: deployed
     REVISION: 5
     TEST SUITE: None
+    ```
+
+10. Issue the following command to restart the `cloud` and `specman` services in order to apply all updates.
+
+    ```shell
+    kubectl rollout restart deployment cloud --namespace hubble-system
+    kubectl rollout restart statefulset specman --namespace hubble-system
+    ```
+
+    ```shell hideClipboard title="Example Output"
     deployment.apps/cloud restarted
     statefulset.apps/specman restarted
     ```
 
 ## Validation
 
-1. Log in to Palette as a [tenant admin](/tenant-settings/).
+1. Log in to Palette as a [tenant admin](../../../tenant-settings/tenant-settings.md).
 
 2. Navigate to **Tenant Settings** > **Registries**. The system ECR registry should show a valid timestamp in the **Last
    Synced** column. Registry packs are available for

@@ -54,7 +54,7 @@ nodes is critical, consider one of the following options:
 | Provider              | OS Pack    | SSH Username |
 | --------------------- | ---------- | ------------ |
 | **Apache CloudStack** | **Ubuntu** | `ubuntu`     |
-| **MAAS**              | **Ubuntu** | `ubuntu`     |
+| **MAAS**              | **Ubuntu** | `spectro`    |
 | **VMware vSphere**    | **Ubuntu** | `spectro`    |
 | **VMware vSphere**    | **CentOS** | `spectro`    |
 

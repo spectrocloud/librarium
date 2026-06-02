@@ -54,6 +54,12 @@ Use the following steps to manually configure OIDC for your clusters.
 
 ## Scenario - Pods with NamespaceLabels are Stuck on Deployment
 
+:::info
+
+This issue was resolved in Palette version 4.7.13.
+
+:::
+
 When deploying a workload cluster with packs that declare `namespaceLabels`, the associated Pods never start if the
 cluster was deployed via self-hosted [Palette](../enterprise-version/enterprise-version.md) or
 [Palette VerteX](../vertex/vertex.md) or if the `palette-agent` ConfigMap has `data.feature.workloads: disable`. This is
