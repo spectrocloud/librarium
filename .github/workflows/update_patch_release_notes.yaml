@@ -95,7 +95,8 @@ jobs:
       - name: Execute Script to Generate Patch Release Notes
         if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
         run: |
-          PATCH_RELEASE_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
+          touch .env
+          PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes
 
 
       - name: Commit changes

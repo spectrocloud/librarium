@@ -67,7 +67,8 @@ jobs:
       
       - name: Execute Script to Generate Patch Release Notes
         run: |
-          PATCH_RELEASE_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
+          touch .env
+          PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes
 
       - name: Create a PR with generated patch release notes
         env:

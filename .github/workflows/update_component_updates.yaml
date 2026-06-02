@@ -123,7 +123,8 @@ jobs:
       - name: Execute Script to Generate Component Updates
         if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
         run: |
-          JIRA_TICKET=${{ env.JIRA_TICKET }} RELEASE_DATE=${{ env.RELEASE_DATE }} RELEASE_MANAGEMENT_APPLIANCE=${{ env.RELEASE_MANAGEMENT_APPLIANCE }} RELEASE_ARTIFACT_STUDIO=${{ env.RELEASE_ARTIFACT_STUDIO }} RELEASE_TERRAFORM_VERSION=${{ env.RELEASE_TERRAFORM_VERSION }} make generate-component-updates
+          touch .env
+          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" make generate-component-updates
 
 
       - name: Commit changes
