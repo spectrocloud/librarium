@@ -59,6 +59,10 @@ if [[ -z "${JIRA_TICKET:-}" ]]; then
 fi
 
 echo "ℹ️ Generating component updates for $JIRA_TICKET ..."
+echo "ℹ️ Release date: $RELEASE_DATE"
+echo "ℹ️ Release management appliance: $RELEASE_MANAGEMENT_APPLIANCE"
+echo "ℹ️ Release artifact studio: $RELEASE_ARTIFACT_STUDIO"
+echo "ℹ️ Release terraform version: $RELEASE_TERRAFORM_VERSION"
 
 JIRA_TITLE=$(
   curl --fail-with-body \
@@ -145,8 +149,6 @@ if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
     echo "✅ Replaced component updates heading in $RELEASE_NOTES_FILE"
 fi
 
-echo "after component updates heading replacement"
-
 # Search all lines containing the component updates links and update them
 anchor="#component-updates-${RELEASE_COMPONENT_YEAR}-${RELEASE_COMPONENT_WEEK}"
 awk -v anchor="$anchor" '
@@ -156,12 +158,8 @@ while IFS= read -r line_number; do
   replace_line "$line_number" "$COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE" "$RELEASE_NOTES_FILE"
 done
 
-echo "after component updates cross-link replacement"
-
 cleanup $COMPONENT_UPDATES_CROSS_LINK_OUTPUT_FILE
 cleanup $COMPONENT_UPDATES_HEADING_OUTPUT_FILE
-
-echo "after file cleanup"
 
 SUPER_QUESTION=""
 
