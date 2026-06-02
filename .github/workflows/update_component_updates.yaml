@@ -88,8 +88,10 @@ jobs:
         run: |
           TICKET=$(grep -m1 -E '<!-- COMPONENT UPDATES TICKET: [A-Z]+-[0-9]+ -->' docs/docs-content/release-notes/release-notes.md \
             | sed -E 's/.*COMPONENT UPDATES TICKET: ([A-Z]+-[0-9]+).*/\1/')
-          DATE=$(grep -m1 -E '<!-- RELEASE DATE: [0-9]{4}-[0-9]{2}-[0-9]{2} -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE DATE: ([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/')
+          DATE=$(
+            grep -m1 -E '<!-- RELEASE DATE: [A-Za-z]+ [0-9]{1,2}, [0-9]{4} -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE DATE: ([A-Za-z]+ [0-9]{1,2}, [0-9]{4}).*/\1/'
+          )
           APPLIANCE=$(grep -m1 -E '<!-- RELEASE MANAGEMENT APPLIANCE: [A-Za-z0-9_-]+ -->' docs/docs-content/release-notes/release-notes.md \
             | sed -E 's/.*RELEASE MANAGEMENT APPLIANCE: ([A-Za-z0-9_-]+).*/\1/')
           ARTIFACT=$(grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9_-]+ -->' docs/docs-content/release-notes/release-notes.md \
