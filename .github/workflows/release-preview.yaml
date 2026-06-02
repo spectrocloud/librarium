@@ -97,7 +97,7 @@ jobs:
 
 
       - name: Post Netlify URL
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const marker = "librarium-release-preview";
@@ -143,7 +143,7 @@ jobs:
             }
       - name: Post PR Comment (failure)
         if: ${{ failure() }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const body = `<!-- librarium-release-preview-failure -->

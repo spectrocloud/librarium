@@ -55,6 +55,7 @@ jobs:
         run: |
           # Copy contents from vale-spellcheck.ini to .vale.ini
           cp vale-spellcheck.ini .vale.ini
+          mkdir -p vale/styles
           vale sync
 
       - name: Run Spellcheck

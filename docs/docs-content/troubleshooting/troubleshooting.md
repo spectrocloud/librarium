@@ -19,7 +19,7 @@ support team by opening up a ticket through our [support page](http://support.sp
 
 - [Enterprise Install](enterprise-install.md)
 
-- [Nodes & Clusters](nodes.md)
+- [Nodes & Clusters](./nodes/nodes.md)
 
 - [Kubernetes Debugging](kubernetes-tips.md)
 
