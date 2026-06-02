@@ -71,9 +71,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2242 -->
 
 - Fixed an issue where importing an existing Edge Native cluster into Terraform state did not correctly read the
-  `cloud_config.vip` value from Palette, causing `terraform plan` to report false drift and show the VIP as a pending
-  addition even when the Terraform configuration and Palette already matched.
-
+`cloud_config.vip` value from Palette, causing `terraform plan` to report false drift and show the VIP as a pending
+addition even when the Terraform configuration and Palette already matched.
 <!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
 ### Packs
