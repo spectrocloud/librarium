@@ -7,17 +7,17 @@ sidebar_position: 10
 tags: ["vmo", "Launchpad for VMs appliance", "quick start"]
 ---
 
-The Launchpad for VMs Appliance is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for bare
-metal and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you link
-together to form a cluster to create and managing VMs through a dedicated management UI.
+The Launchpad for VMs Appliance is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for
+bare metal and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you
+link together to form a cluster to create and managing VMs through a dedicated management UI.
 
-Unlike [legacy VMO](../legacy-vmo/legacy-vmo.md), the Launchpad for VMs Appliance does not require a connection Palette. It
-operates independently with its own identity management, storage configuration, and observability stack.
+Unlike [legacy VMO](../legacy-vmo/legacy-vmo.md), the Launchpad for VMs Appliance does not require a connection Palette.
+It operates independently with its own identity management, storage configuration, and observability stack.
 
 ## Use Cases
 
-The Launchpad for VMs Appliance addresses common challenges that organizations encounter when adopting VM orchestration on
-Kubernetes:
+The Launchpad for VMs Appliance addresses common challenges that organizations encounter when adopting VM orchestration
+on Kubernetes:
 
 - **No external control plane required** - The appliance is self-contained. You do not need to set up or connect to
   Palette before you can deploy and manage VMs. This is particularly useful for distributed sites, Edge locations,
@@ -84,7 +84,7 @@ passthrough.
 
 ## Next Steps
 
-1. Review the hardware requirements and follow the [Install Launchpad for VMs](./install-vmla-iso.md) guide to install the
-   appliance on your devices and create your cluster.
+1. Review the hardware requirements and follow the [Install Launchpad for VMs](./install-vmla-iso.md) guide to install
+   the appliance on your devices and create your cluster.
 
 2. Use the [Create Your First VM](./quick-start.md) guide to deploy your first VM from the management UI.
