@@ -141,7 +141,7 @@ generate_parameterised_file_local_vars \
   "$COMPONENT_UPDATES_HEADING_OUTPUT_FILE" \
   "RELEASE_DATE" \
   "RELEASE_COMPONENT_YEAR" \
-  "RELEASE_COMPONENT_WEEK" \
+  "RELEASE_COMPONENT_WEEK"
 
 existing_notes=$(search_line "{#component-updates-$RELEASE_COMPONENT_YEAR-$RELEASE_COMPONENT_WEEK}" $RELEASE_NOTES_FILE)
 if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
