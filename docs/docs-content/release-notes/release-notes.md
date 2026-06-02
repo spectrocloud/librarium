@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 20, 2026 - Component Updates {#component-updates-2026-22}
+## May 22, 2026 - Component Updates {#component-updates-2026-22}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2852 -->
 <!-- RELEASE DATE: May 22, 2026 -->
@@ -41,7 +41,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
   and Palette will display the appropriate repave warning. Coverage is available across the UI, API, Terraform, and
   Crossplane for both Palette and Vertex.
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-9999 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2226 -->
 
 - You can now pass through arbitrary CAPI and CAPx provider properties directly to cluster and node-level configurations
   for EKS and AKS clusters. This allows you to override any CAPI object property using a key/value configuration without
