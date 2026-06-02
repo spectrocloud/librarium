@@ -14,7 +14,7 @@ tags: ["release-notes"]
 ## May 20, 2026 - Component Updates {#component-updates-2026-22}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2852 -->
-<!-- RELEASE DATE: May 20, 2026 -->
+<!-- RELEASE DATE: May 22, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE: 4.9.8 -->
 <!-- RELEASE ARTIFACT STUDIO: 4.9.0 -->
 <!-- RELEASE TERRAFORM VERSION: 0.29.0 -->
@@ -41,7 +41,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
   and Palette will display the appropriate repave warning. Coverage is available across the UI, API, Terraform, and
   Crossplane for both Palette and Vertex.
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2226 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-9999 -->
 
 - You can now pass through arbitrary CAPI and CAPx provider properties directly to cluster and node-level configurations
   for EKS and AKS clusters. This allows you to override any CAPI object property using a key/value configuration without
@@ -56,7 +56,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.8.
   UI, API, Terraform, and Crossplane. SSH keys are injected into all control plane and worker nodes during provisioning
   via cloud-init (Day 0) and can be rotated and updated by the cluster management agent (Day 2). Multiple SSH keys can
   be configured per cluster, and keys are validated for proper format before cluster creation. This feature is supported
-  for both Palette and Vertex.
+  for both Palette and Vertex. Some updates made by Docs here.
 
 ### Bug Fixes
 
