@@ -20,7 +20,7 @@ advisories are published.
 
 :::
 
-## Security Advisory 15 - Exposure of Cluster-Scoped Service Credentials Through Manifest Endpoints
+## Security Advisory 015 - Exposure of Cluster-Scoped Service Credentials Through Manifest Endpoints
 
 - **Release Date**: June 2, 2026
 - **Last Updated**: June 2, 2026
