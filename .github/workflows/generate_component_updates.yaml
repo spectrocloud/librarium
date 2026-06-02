@@ -122,7 +122,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: 'A new PR with updated component updates was created for Jira ticket `${{ env.JIRA_TICKET }}`. Please review ${{env.GITHUB_COMPONENT_UPDATES_PR}} for more details.'
+          SLACK_MESSAGE: 'A new PR with component updates was created for Jira ticket `${{ env.JIRA_TICKET }}`. Please review ${{env.GITHUB_COMPONENT_UPDATES_PR}} for more details.'
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
