@@ -3,9 +3,6 @@ name: "Update Component Updates"
 on:
   issue_comment:
     types: [created]
-  push:
-    branches:
-      - 'DOC-2852-generate-component-updates-*'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -13,16 +10,16 @@ env:
   JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
   SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
-  BASE_BRANCH: ${{ github.event_name == 'issue_comment' && format('refs/pull/{0}/head', github.event.issue.number) || github.ref_name }}  
+  BASE_BRANCH: ${{ format('refs/pull/{0}/head', github.event.issue.number) }}  
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_INDEX_NAME: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
 
 jobs:
   update_component_updates:
-    # if: >
-    #   github.event.issue.pull_request &&
-    #   !endsWith(github.actor, '[bot]')
+    if: >
+      github.event.issue.pull_request &&
+      !endsWith(github.actor, '[bot]')
     runs-on: ubuntu-latest
 
     permissions:
@@ -35,15 +32,14 @@ jobs:
         id: check
         shell: bash
         run: |
-          # BODY="${{ github.event.comment.body }}"
-          # BODY_LOWER=$(echo "$BODY" | tr '[:upper:]' '[:lower:]')
+          BODY="${{ github.event.comment.body }}"
+          BODY_LOWER=$(echo "$BODY" | tr '[:upper:]' '[:lower:]')
 
-          # if [[ "$BODY_LOWER" == *"update component updates"* ]]; then
-          #   echo "run=true" >> $GITHUB_OUTPUT
-          # else
-          #   echo "run=false" >> $GITHUB_OUTPUT
-          # fi
-          echo "run=true" >> $GITHUB_OUTPUT
+          if [[ "$BODY_LOWER" == *"update component updates"* ]]; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT
+          fi
       
       - name: Retrieve Credentials
         if: steps.check.outputs.run == 'true'

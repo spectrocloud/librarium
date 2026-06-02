@@ -23,10 +23,6 @@ on:
         description: "The base branch for the component update PR (default: master)"
         required: true
         default: "master"
-  push:
-    branches:
-      - doc-2814-generate-component-updates
-
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,12 +30,12 @@ env:
   JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
   SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
-  JIRA_TICKET: ${{ github.event.inputs.jira_ticket || 'DOC-2852' }}
-  RELEASE_DATE: ${{ github.event.inputs.release_date || 'May 20, 2026' }}
-  RELEASE_MANAGEMENT_APPLIANCE: ${{ github.event.inputs.release_management_appliance || '4.9.8' }}
-  RELEASE_ARTIFACT_STUDIO: ${{ github.event.inputs.release_artifact_studio || '4.9.0' }}
-  RELEASE_TERRAFORM_VERSION: ${{ github.event.inputs.release_terraform_version || '0.29.0' }}
-  BASE_BRANCH: ${{ github.event.inputs.base_branch || github.ref_name }}
+  JIRA_TICKET: ${{ github.event.inputs.jira_ticket }}
+  RELEASE_DATE: ${{ github.event.inputs.release_date }}
+  RELEASE_MANAGEMENT_APPLIANCE: ${{ github.event.inputs.release_management_appliance }}
+  RELEASE_ARTIFACT_STUDIO: ${{ github.event.inputs.release_artifact_studio }}
+  RELEASE_TERRAFORM_VERSION: ${{ github.event.inputs.release_terraform_version }}
+  BASE_BRANCH: ${{ github.event.inputs.base_branch }}
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_INDEX_NAME: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
@@ -118,7 +114,7 @@ jobs:
         if: ${{ env.GITHUB_COMPONENT_UPDATES_PR  != ''}}
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
@@ -128,7 +124,7 @@ jobs:
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
