@@ -92,12 +92,18 @@ jobs:
             grep -m1 -E '<!-- RELEASE DATE: [A-Za-z]+ [0-9]{1,2}, [0-9]{4} -->' docs/docs-content/release-notes/release-notes.md \
             | sed -E 's/.*RELEASE DATE: ([A-Za-z]+ [0-9]{1,2}, [0-9]{4}).*/\1/'
           )
-          APPLIANCE=$(grep -m1 -E '<!-- RELEASE MANAGEMENT APPLIANCE: [A-Za-z0-9_-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE MANAGEMENT APPLIANCE: ([A-Za-z0-9_-]+).*/\1/')
-          ARTIFACT=$(grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9_-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9_-]+).*/\1/')
-          TERRAFORM=$(grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9_-]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9_-]+).*/\1/')
+          APPLIANCE=$(
+            grep -m1 -E '<!-- RELEASE MANAGEMENT APPLIANCE: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE MANAGEMENT APPLIANCE: ([A-Za-z0-9._-]+).*/\1/'
+          )
+          ARTIFACT=$(
+            grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9._-]+).*/\1/'
+          )
+          TERRAFORM=$(
+            grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9._-]+).*/\1/'
+          )
 
           if [[ -z "$TICKET" ]]; then
             echo "❌ No COMPONENT UPDATES TICKET found" >&2
