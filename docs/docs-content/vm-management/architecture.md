@@ -7,7 +7,12 @@ sidebar_position: 0
 tags: ["vmo", "architecture", "Launchpad for VMs"]
 ---
 
-[Launchpad for VMs](vmo-appliance/install-vmla-iso.md) is the recommended way to deploy a new Palette Virtual Machine Orchestrator (VMO) cluster on bare metal or Edge devices. The appliance uses a bootable ISO to install a preconfigured VMO environment on each node, so you can deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You can also deploy the Palette VMO pack as an [add-on cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md) on an existing data center or edge cluster.
+[Launchpad for VMs](vmo-appliance/install-vmla-iso.md) is the recommended way to deploy a new Palette Virtual Machine
+Orchestrator (VMO) cluster on bare metal or Edge devices. The appliance uses a bootable ISO to install a preconfigured
+VMO environment on each node, so you can deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes
+host cluster. You can also deploy the Palette VMO pack as an
+[add-on cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
+on an existing data center or edge cluster.
 
 ![Diagram that explains the architecture behind Palette VMO.](/vm-management_architecture_vmo-architecture-new.webp)
 
@@ -83,7 +88,8 @@ For more information on KubeVirt feature gates, review the
 
 Palette automatically assigns unique Media Access Control (MAC) addresses to VMs when you create them through the
 Palette UI, API, or [Terraform](../automation/terraform/terraform.md). The MAC address always starts with a prefix that
-is either `02`, `06`, `0A`, or `0E`. The next two octets are generated from a hash of the cluster GUID. Ensure the remaining three octets are unique for the scope of the VMO cluster. review
+is either `02`, `06`, `0A`, or `0E`. The next two octets are generated from a hash of the cluster GUID. Ensure the
+remaining three octets are unique for the scope of the VMO cluster. review
 [this guide](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/vsphere-networking/mac-addresses/mac-address-generation/range-based-mac-address-allocation.html)
 for more information on MAC address assignment in vCenter.
 
