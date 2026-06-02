@@ -1,10 +1,10 @@
 ---
 sidebar_label: "Create Your First VM"
 title: "Create Your First VM"
-description: "Learn about how to create your first VM with VM Launchpad Appliance."
+description: "Learn about how to create your first VM with Launchpad for VMs Appliance."
 hide_table_of_contents: false
 sidebar_position: 5
-tags: ["vmo", "vmo appliance"]
+tags: ["vmo", "launchpad for vms appliance"]
 ---
 
 # Create Your First VM
@@ -13,7 +13,7 @@ This guide walks you through the process of creating your first virtual machine.
 
 ## Create Your First VM
 
-1. Log in to VM Launchpad.
+1. Log in to Launchpad for VMs.
 
 2. From the left-menu, select **Workloads > Virtual Machines**.
 

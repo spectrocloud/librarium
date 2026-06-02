@@ -1,21 +1,21 @@
 ---
-sidebar_label: "Install VM Launchpad"
-title: "Install VM Launchpad"
-description: "Learn how to install the VM Launchpad Appliance on bare metal or Edge devices."
+sidebar_label: "Install Launchpad for VMs"
+title: "Install Launchpad for VMs"
+description: "Learn how to install the Launchpad for VMs Appliance on bare metal or Edge devices."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vmo", "vm launchpad"]
+tags: ["vmo", "Launchpad for VMs"]
 ---
 
-The VM Launchpad Appliance is a bootable ISO that you install on bare metal or Edge devices to create a cluster with
+The Launchpad for VMs Appliance is a bootable ISO that you install on bare metal or Edge devices to create a cluster with
 Virtual Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that will serve as a node in your
 VMO cluster, link the nodes together to form your cluster. After deploying your cluster, follow the
 [Create Your First VM](./quick-start.md) guide to deploy your first VM.
 
 ## Hardware Requirements
 
-Each device that you install the VM Launchpad Appliance ISO on must meet the following hardware requirements.
+Each device that you install the Launchpad for VMs Appliance ISO on must meet the following hardware requirements.
 
 | **Component**        | **Minimum**                                   | **Recommended**                                    | **Additional Information**                                                                                                                  |
 | -------------------- | --------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,11 +44,11 @@ The following sections list the hardware requirements for worker nodes and contr
 
 ## Limitations
 
-## Install VM Launchpad
+## Install Launchpad for VMs
 
-1. Boot your VM Launchpad device from the VM Launchpad appliance ISO.
+1. Boot your Launchpad for VMs device from the Launchpad for VMs appliance ISO.
 
-2. From the **VM Launchpad Interactive Installer** screen, select the disk to install the appliance on. Press **ENTER**
+2. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press **ENTER**
    to proceed to the next screen.
 
    :::danger
@@ -60,8 +60,8 @@ The following sections list the hardware requirements for worker nodes and contr
 3. On the **Installation Options** screen, select whether the installer should do **nothing**, **reboot**, or
    **poweroff** after the installation is complete. After installation is complete, disconnect the ISO.
 
-4. When the VM Launchpad system boots up, press **F2** to open the TUI. Create an OS user with the necessary permissions
-   to operate VM Launchpad by entering a username and password. Press **ENTER** to progress to the next screen.
+4. When the Launchpad for VMs system boots up, press **F2** to open the TUI. Create an OS user with the necessary permissions
+   to operate Launchpad for VMs by entering a username and password. Press **ENTER** to progress to the next screen.
 
 5. The terminal displays a console where you provide hostname and network configurations for the Edge host.
 
@@ -142,7 +142,7 @@ The following sections list the hardware requirements for worker nodes and contr
 
    :::
 
-## Create VM Launchpad Cluster
+## Create Launchpad for VMs Cluster
 
 1.  Log in to Local UI at `https://<host-ip>:5080`. For more information, refer to
     [Configure Network Settings](#configure-network-settings).
@@ -352,7 +352,7 @@ The following sections list the hardware requirements for worker nodes and contr
     [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
 
 9.  Review your configurations and deploy the cluster. The status and details of the deployment are displayed on the
-    **Cluster** page. Use this page to track deployment progress. The VM Launchpad host reboots as part of the build
+    **Cluster** page. Use this page to track deployment progress. The Launchpad for VMs host reboots as part of the build
     process.
 
 10. After the cluster deployment is complete, additional options appear in the left sidebar.
@@ -361,7 +361,7 @@ The following sections list the hardware requirements for worker nodes and contr
 
 ## Validate
 
-1. From left-side menu in the VM Launchpad appliance, click **VM Orchestrator**. Alternatively, in your browser, you can
+1. From left-side menu in the Launchpad for VMs appliance, click **VM Orchestrator**. Alternatively, in your browser, you can
    navigate to the address you provided for MetalLB.
 
 2. Log in to VMO Manager.

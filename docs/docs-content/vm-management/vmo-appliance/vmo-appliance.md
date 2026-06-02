@@ -1,22 +1,22 @@
 ---
-sidebar_label: "VM Launchpad Appliance"
-title: "VM Launchpad Appliance"
-description: "Learn about the VM Launchpad Appliance, a standalone VMO deployment for bare metal and edge devices."
+sidebar_label: "Launchpad for VMs Appliance"
+title: "Launchpad for VMs Appliance"
+description: "Learn about the Launchpad for VMs Appliance, a standalone VMO deployment for bare metal and edge devices."
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["vmo", "vm launchpad appliance", "quick start"]
+tags: ["vmo", "Launchpad for VMs appliance", "quick start"]
 ---
 
-The VM Launchpad Appliance is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for bare
+The Launchpad for VMs Appliance is a standalone deployment of Palette Virtual Machine Orchestrator (VMO) designed for bare
 metal and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you link
 together to form a cluster to create and managing VMs through a dedicated management UI.
 
-Unlike [legacy VMO](../legacy-vmo/legacy-vmo.md), the VM Launchpad Appliance does not require a connection Palette. It
+Unlike [legacy VMO](../legacy-vmo/legacy-vmo.md), the Launchpad for VMs Appliance does not require a connection Palette. It
 operates independently with its own identity management, storage configuration, and observability stack.
 
 ## Use Cases
 
-The VM Launchpad Appliance addresses common challenges that organizations encounter when adopting VM orchestration on
+The Launchpad for VMs Appliance addresses common challenges that organizations encounter when adopting VM orchestration on
 Kubernetes:
 
 - **No external control plane required** - The appliance is self-contained. You do not need to set up or connect to
@@ -37,7 +37,7 @@ Kubernetes:
 
 ## Key Capabilities
 
-The VM Launchpad Appliance includes the following capabilities beyond what is available in legacy VMO.
+The Launchpad for VMs Appliance includes the following capabilities beyond what is available in legacy VMO.
 
 ### Dedicated Management UI
 
@@ -84,7 +84,7 @@ passthrough.
 
 ## Next Steps
 
-1. Review the hardware requirements and follow the [Install VM Launchpad](./install-vmla-iso.md) guide to install the
+1. Review the hardware requirements and follow the [Install Launchpad for VMs](./install-vmla-iso.md) guide to install the
    appliance on your devices and create your cluster.
 
 2. Use the [Create Your First VM](./quick-start.md) guide to deploy your first VM from the management UI.
