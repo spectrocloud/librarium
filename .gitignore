@@ -94,5 +94,8 @@ unused_images.json
 
 .secrets
 
-# Claude Code
+# Local MCP Config
 .mcp.json
+
+# Claude Code
+.claude/
