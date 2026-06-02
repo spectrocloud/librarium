@@ -87,7 +87,7 @@ jobs:
       
       - name: Execute Script to Generate Component Updates
         run: |
-          JIRA_TICKET=${{ env.JIRA_TICKET }} RELEASE_DATE=${{ env.RELEASE_DATE }} RELEASE_MANAGEMENT_APPLIANCE=${{ env.RELEASE_MANAGEMENT_APPLIANCE }} RELEASE_ARTIFACT_STUDIO=${{ env.RELEASE_ARTIFACT_STUDIO }} RELEASE_TERRAFORM_VERSION=${{ env.RELEASE_TERRAFORM_VERSION }} make generate-component-updates
+          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" make generate-component-updates
 
       - name: Create a PR with generated component updates
         env:
