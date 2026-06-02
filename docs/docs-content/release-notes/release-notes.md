@@ -24,9 +24,9 @@ tags: ["release-notes"]
 | **Endpoint**                                | **Required Permissions**                                                                     |
 | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `/cluster/{uid}/manifest`                   | `cluster.delete` permission                                                                  |
-| `/v1/pcg/{uid}/services/ally/manifest`      | `cluster.delete` permission                                                                  |
+| `/v1/pcg/{uid}/services/ally/manifest`      | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
 | `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
-| `/v1/spectroclusters/{uid}/import/manifest` | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+| `/v1/spectroclusters/{uid}/import/manifest` | `cluster.delete` permission                                                                  |
 
 This change affects _new_ cluster import and PCG workflows, as well as any automation that retrieves manifests from the
 affected endpoints. As a result, the process of [importing clusters](../clusters/imported-clusters/cluster-import.md)
