@@ -126,18 +126,27 @@ jobs:
             exit 1
           fi
 
-          echo "JIRA_TICKET=$TICKET" >> "$GITHUB_ENV"  
-          echo "RELEASE_DATE=$DATE" >> "$GITHUB_ENV"
-          echo "RELEASE_MANAGEMENT_APPLIANCE=$APPLIANCE" >> "$GITHUB_ENV" 
-          echo "RELEASE_ARTIFACT_STUDIO=$ARTIFACT" >> "$GITHUB_ENV"
-          echo "RELEASE_TERRAFORM_VERSION=$TERRAFORM" >> "$GITHUB_ENV"
+          {
+            echo "JIRA_TICKET=$TICKET"
+            echo "RELEASE_DATE<<EOF"
+            echo "$DATE"
+            echo "EOF"
+            echo "RELEASE_MANAGEMENT_APPLIANCE=$APPLIANCE"
+            echo "RELEASE_ARTIFACT_STUDIO=$ARTIFACT"
+            echo "RELEASE_TERRAFORM_VERSION=$TERRAFORM"
+          } >> "$GITHUB_ENV"
       
       - name: Execute Script to Generate Component Updates
         if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
+        env:
+          JIRA_TICKET: ${{ env.JIRA_TICKET }}
+          RELEASE_DATE: ${{ env.RELEASE_DATE }}
+          RELEASE_MANAGEMENT_APPLIANCE: ${{ env.RELEASE_MANAGEMENT_APPLIANCE }}
+          RELEASE_ARTIFACT_STUDIO: ${{ env.RELEASE_ARTIFACT_STUDIO }}
+          RELEASE_TERRAFORM_VERSION: ${{ env.RELEASE_TERRAFORM_VERSION }}
         run: |
           touch .env
-          JIRA_TICKET="${{ env.JIRA_TICKET }}" RELEASE_DATE="${{ env.RELEASE_DATE }}" RELEASE_MANAGEMENT_APPLIANCE="${{ env.RELEASE_MANAGEMENT_APPLIANCE }}" RELEASE_ARTIFACT_STUDIO="${{ env.RELEASE_ARTIFACT_STUDIO }}" RELEASE_TERRAFORM_VERSION="${{ env.RELEASE_TERRAFORM_VERSION }}" make generate-component-updates
-
+          make generate-component-updates
 
       - name: Commit changes
         if: steps.check.outputs.run == 'true'
