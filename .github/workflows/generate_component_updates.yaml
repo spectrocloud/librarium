@@ -39,7 +39,7 @@ env:
   RELEASE_MANAGEMENT_APPLIANCE: ${{ github.event.inputs.release_management_appliance || '4.9.8' }}
   RELEASE_ARTIFACT_STUDIO: ${{ github.event.inputs.release_artifact_studio || '4.9.0' }}
   RELEASE_TERRAFORM_VERSION: ${{ github.event.inputs.release_terraform_version || '0.29.0' }}
-  BASE_BRANCH: ${{ github.event.inputs.base_branch || 'master' }}
+  BASE_BRANCH: ${{ github.event.inputs.base_branch || github.ref_name }}
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_INDEX_NAME: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
