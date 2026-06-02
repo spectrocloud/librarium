@@ -1,5 +1,5 @@
 
-name: "Generate Patch Release Notes"
+name: "Generate Component Updates"
 
 on:
   workflow_dispatch:
@@ -45,7 +45,7 @@ env:
   ALGOLIA_SEARCH_KEY: "123456789"
 
 jobs:
-  generate_release_notes:
+  generate_component_updates:
     runs-on: ubuntu-latest
 
     permissions:

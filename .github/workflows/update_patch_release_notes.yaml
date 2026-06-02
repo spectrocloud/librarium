@@ -1,4 +1,4 @@
-name: Update patch release notes
+name: "Update Patch Release Notes"
 
 on:
   issue_comment:
