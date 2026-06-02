@@ -71,7 +71,7 @@ your Edge deployment.
     ```
 
 5.  Issue the command below to create an `.arg` file. Configure the build to use the PXK-E (`kubeadm`) Kubernetes
-    distribution (`K8S_DISTRIBUTION=kubeadm`), the Ubuntu OS (`OS_DISTRIBUTION=ubuntu`) version 22 (`OS_VERSION=22`),
+    distribution (`K8S_DISTRIBUTION=kubeadm`), the Ubuntu OS (`OS_DISTRIBUTION=ubuntu`) version 22 (`OS_VERSION=22.04`),
     and the AMD64 architecture (`ARCH=amd64`). Replace `1.32.3` with the required PXK-E Kubernetes version and
     `custom-maas-image` with the desired MAAS image name. If you do not specify the MAAS image name, it defaults to
     `kairos-ubuntu-maas`.
@@ -79,7 +79,7 @@ your Edge deployment.
     ```bash
     cat << EOF > .arg
     OS_DISTRIBUTION=ubuntu
-    OS_VERSION=22
+    OS_VERSION=22.04
     K8S_DISTRIBUTION=kubeadm
     K8S_VERSION=1.32.3
     ARCH=amd64
