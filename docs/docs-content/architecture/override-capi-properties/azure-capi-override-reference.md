@@ -55,7 +55,7 @@ azureManagedMachinePool:
 ```yaml title="Set VM size, OS disk size, and node labels"
 azureManagedMachinePool:
   spec:
-    vmSize: Standard_D8s_v5
+    sku: Standard_D8s_v5
     osDiskSizeGB: 256
     nodeLabels:
       env: test

@@ -13,6 +13,26 @@ tags: ["release-notes"]
 
 ## June 5, 2026 - Release 4.9.x
 
+### Breaking Changes {#breaking-changes-4-9-x}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10828 -->
+
+- Authentication is now required for the following [Palette API](/api/introduction/) endpoints, which are used for
+  [imported clusters](../clusters/imported-clusters/imported-clusters.md) and
+  [Private Cloud Gateways (PCGs)](../clusters/pcg/pcg.md).
+
+| **Endpoint**                                | **Required Permissions**                                                                     |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `/cluster/{uid}/manifest`                   | `cluster.delete` permission                                                                  |
+| `/v1/pcg/{uid}/services/ally/manifest`      | `cluster.delete` permission                                                                  |
+| `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+| `/v1/spectroclusters/{uid}/import/manifest` | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+
+This change affects _new_ cluster import and PCG workflows, as well as any automation that retrieves manifests from the
+affected endpoints. As a result, the process of [importing clusters](../clusters/imported-clusters/cluster-import.md)
+and [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
+manifests to be downloaded locally before being applied.
+
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
 ### Security Notices
