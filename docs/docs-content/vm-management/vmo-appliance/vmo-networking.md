@@ -5,7 +5,7 @@ description: "Learn about VMO Network Configuration Considerations"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 9
-tags: ["vmo", "vm launchpad", "networking", "design"]
+tags: ["vmo", "launchpad for vms", "networking", "design"]
 ---
 
 <!-- vale off -->
