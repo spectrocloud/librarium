@@ -11,6 +11,80 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 20, 2026 - Component Updates {#component-updates-2026-22}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2852 -->
+<!-- RELEASE DATE: May 20, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.8 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.0 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.0 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.8.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.0   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.0  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.0  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.8   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.8   |
+
+<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2225 -->
+
+- You can now use Generation 2 Azure VMs for AKS cluster nodes in Palette. Gen 2 VMs offer UEFI-based boot, Secure Boot
+  and vTPM support, faster boot times, and larger OS disks. Support is available for all instance types that offer a Gen
+  2 variant, including Azure Linux 3 and Ubuntu. Changing the VM generation on an existing cluster triggers a repave,
+  and Palette will display the appropriate repave warning. Coverage is available across the UI, API, Terraform, and
+  Crossplane for both Palette and Vertex.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2226 -->
+
+- You can now pass through arbitrary CAPI and CAPx provider properties directly to cluster and node-level configurations
+  for EKS and AKS clusters. This allows you to override any CAPI object property using a key/value configuration without
+  requiring Palette to maintain a static list of supported fields. Day 2 updates that include passthrough changes
+  trigger a blanket repave warning. Misconfiguration errors are surfaced as clear, repeatable cluster events that
+  identify the offending properties without exposing sensitive data. Support is available across the UI, API, Terraform,
+  and Crossplane for both Palette and Vertex.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2232 -->
+
+- You can now configure SSH keys for MAAS cluster nodes, including bare metal machines and LXD VMs, through the Palette
+  UI, API, Terraform, and Crossplane. SSH keys are injected during cluster provisioning via cloud-init (Day 0) and can
+  be rotated and updated by the cluster-management-agent (Day 2). Multiple SSH keys can be configured per cluster. Keys
+  are validated for proper format before cluster creation and are injected to all nodes, including control plane and
+  worker nodes. Support is available for both Palette and Vertex.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-691 -->
+
+- Fixed a secureboot install regression in the piraeus-operator pack where the DRBD kernel module was being built on the
+  target node at install time (compile mode). Locally built modules are unsigned and cannot be loaded on
+  secureboot-enabled hosts, causing the `drbd-module-loader` init container to fail and blocking the entire appliance
+  install. The DRBD module is now reverted to `shipped_modules` mode, where pre-built, signed `.deb` packages are
+  shipped inside the `drbd-module-loader` image. The DRBD version remains unchanged at 4.9.8.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2242 -->
+
+- Fixed an issue in the Terraform provider where importing an existing Edge Native cluster did not correctly read the
+  `cloud_config.vip` value from Palette into Terraform state. After import, `terraform plan` incorrectly reported the
+  VIP as a pending addition even when the VIP was already configured in both the Terraform configuration and the Palette
+  UI. Importing an Edge Native cluster with a configured VIP now correctly writes the VIP into Terraform state, and
+  subsequent plan runs no longer show false drift for `cloud_config.vip`.
+
+<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Packs
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+
+#### Pack Notes
+
 ## May 22, 2026 - Component Updates {#component-updates-2026-21}
 
 The following components have been updated for Palette version 4.9.5 - 4.9.8.
