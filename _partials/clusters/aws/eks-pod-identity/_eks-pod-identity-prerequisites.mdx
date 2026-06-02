@@ -66,11 +66,11 @@ partial_name: eks-pod-identity-prerequisites
   
   The following table lists the IAM roles that must be created. Create them in the order shown as some roles are referenced by others.
 
-  | Service                  | IAM Role Name Example      |
-  | ------------------------ | -------------------------- |
-  | Palette                  | `SpectroCloudPaletteRole`         |
-  | Hubble service           | `SpectroCloudHubbleRole`   |
-  | Identity service         | `SpectroCloudIdentityRole` |
+  | Service                  | IAM Role Name Example      | Create Order |
+  | ------------------------ | -------------------------- | ------------- |
+  | Palette                  | `SpectroCloudPaletteRole`  | 1             |
+  | Hubble service           | `SpectroCloudHubbleRole`   | 2             |
+  | Identity service         | `SpectroCloudIdentityRole` | 3             |
 
   The following tabs provide guidance on the trust policies and permissions policies that must be assigned to each IAM role. Create these IAM roles in the same AWS account as the EKS management cluster that hosts Palette or Palette VerteX.
 
@@ -101,6 +101,13 @@ partial_name: eks-pod-identity-prerequisites
   - The [required IAM policies](/clusters/public-cloud/aws/required-iam-policies/) must be assigned to the IAM role created for Palette.
 
   - In addition to the required IAM policies, the following permissions policy must also be assigned to the IAM role created for Palette.
+  
+    If you are using [Core IAM Policies](/clusters/public-cloud/aws/required-iam-policies/core-iam-policies/), add the additional permissions policy in the Core IAM Policies tab. If you are using [Minimum IAM
+    Policies](/clusters/public-cloud/aws/required-iam-policies/minimum-permissions-policies/), add the additional permissions policy in the Minimum IAM Policies tab.
+
+    <Tabs groupId="core-or-minimum-iam-policies">
+
+    <TabItem label="Core IAM Policies" value="core-iam-policies">
 
     ```json
     {
@@ -112,6 +119,7 @@ partial_name: eks-pod-identity-prerequisites
             "eks:ListPodIdentityAssociations",
             "eks:CreatePodIdentityAssociation",
             "eks:DeletePodIdentityAssociation"
+
           ],
           "Resource": "*"
         },
@@ -123,6 +131,39 @@ partial_name: eks-pod-identity-prerequisites
       ]
     }
     ```
+
+    </TabItem>
+
+    <TabItem label="Minimum IAM Policies" value="minimum-iam-policies">
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "eks:ListPodIdentityAssociations",
+            "eks:CreatePodIdentityAssociation",
+            "eks:DeletePodIdentityAssociation",
+            "eks:DescribeAddonVersions",
+            "eks:CreateAddon",
+            "eks:UpdateAddon"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": ["iam:PassRole"],
+          "Resource": "*"
+        }
+      ]
+    }
+    ```
+
+    </TabItem>
+
+    </Tabs>
 
   </TabItem>
 
@@ -234,7 +275,10 @@ partial_name: eks-pod-identity-prerequisites
     ```
 
   - The following permissions policy must be assigned to the IAM role created for the identity service.
+  
+    You must use the ARN of the Palette IAM role in the `Resource` field of the `iam:GetRole` and `iam:PassRole` actions.
 
+    - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
     - Replace `<aws-account-id>` with your AWS account ID.
     - Replace `<role-name-for-palette-iam-role>` with the name of the IAM role created for Palette (for example, `SpectroCloudPaletteRole`).
 
@@ -273,7 +317,7 @@ partial_name: eks-pod-identity-prerequisites
             "iam:GetRole"
           ],
           "Resource": [
-            "arn:aws:iam::<aws-account-id>:role/<role-name-for-palette-iam-role>"
+            "arn:<partition>:iam::<aws-account-id>:role/<role-name-for-palette-iam-role>"
           ]
         },
         {
@@ -283,7 +327,7 @@ partial_name: eks-pod-identity-prerequisites
             "iam:PassRole"
           ],
           "Resource": [
-            "arn:aws:iam::<aws-account-id>:role/<role-name-for-palette-iam-role>"
+            "arn:<partition>:iam::<aws-account-id>:role/<role-name-for-palette-iam-role>"
           ]
         }
       ]
@@ -299,12 +343,12 @@ partial_name: eks-pod-identity-prerequisites
 
   The following table lists the IAM roles that must be created. Create them in the order shown as some roles are referenced by others.
 
-  | Service                     | IAM Role Name Example       | Where to Create Role                       |
-  | --------------------------- | --------------------------- | ------------------------------------------ |
-  | Identity service            | `SpectroCloudIdentityLocalRole`  | Same AWS account as EKS management cluster |
-  | Palette                     | `SpectroCloudPaletteTargetRole`          | Target AWS account for workload cluster resources |
-  | Hubble service              | `SpectroCloudHubbleTargetRole`    | Target AWS account for workload cluster resources |
-  | Hubble service | `SpectroCloudHubbleLocalRole` | Same AWS account as EKS management cluster |
+  | Service                     | IAM Role Name Example           | Where to Create Role                              | Create Order |
+  | --------------------------- | ------------------------------- | ------------------------------------------------- | ------------ |
+  | Identity service            | `SpectroCloudIdentityLocalRole` | Same AWS account as EKS management cluster        | 1            |
+  | Palette                     | `SpectroCloudPaletteTargetRole` | Target AWS account for workload cluster resources | 2            |
+  | Hubble service              | `SpectroCloudHubbleTargetRole`  | Target AWS account for workload cluster resources | 3            |
+  | Hubble service              | `SpectroCloudHubbleLocalRole`   | Same AWS account as EKS management cluster        | 4            |
 
 
   The following tabs provide guidance on the trust policies and permissions policies that must be assigned to each IAM role.
@@ -348,8 +392,9 @@ partial_name: eks-pod-identity-prerequisites
 
   - The following permissions policy must be assigned to the IAM local role created for the identity service.
 
+    - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
     - Replace `<target-aws-account-id>` with the AWS account ID where the workload cluster resources are located.
-    - Replace `<role-name-for-palette-iam-local-role>` with the name of the IAM role created for Palette in the target AWS account (for example, `SpectroCloudPaletteTargetRole`).
+    - Replace `<role-name-for-palette-iam-target-role>` with the name of the IAM role created for Palette in the target AWS account (for example, `SpectroCloudPaletteTargetRole`).
     - Replace `<aws-management-cluster-account-id>` with the AWS account ID where the EKS management cluster is deployed.
     - Replace `<role-name-for-identity-service-iam-local-role>` with the name of this IAM role created for the identity service (for example, `SpectroCloudIdentityLocalRole`).
 
@@ -391,8 +436,8 @@ partial_name: eks-pod-identity-prerequisites
             "sts:TagSession"
           ],
           "Resource": [
-            "arn:aws:iam::<target-aws-account-id>:role/<role-name-for-palette-iam-local-role>",
-            "arn:aws:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
+            "arn:<partition>:iam::<target-aws-account-id>:role/<role-name-for-palette-iam-target-role>",
+            "arn:<partition>:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
           ]
         }
       ]
@@ -407,6 +452,7 @@ partial_name: eks-pod-identity-prerequisites
     trust policy is the same as outlined in the
     [Amazon EKS documentation](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html#pod-id-association-create).
 
+    - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
     - Replace `<aws-management-cluster-account-id>` with the AWS account ID where the EKS management cluster is deployed.
     - Replace `<aws-management-cluster-region>` with the AWS region where the EKS management cluster is deployed.
     - Replace `<management-cluster-name>` with the name of the EKS management cluster.
@@ -421,7 +467,7 @@ partial_name: eks-pod-identity-prerequisites
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
+            "AWS": "arn:<partition>:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
           },
           "Action": "sts:AssumeRole",
           "Condition": {
@@ -433,7 +479,7 @@ partial_name: eks-pod-identity-prerequisites
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
+            "AWS": "arn:<partition>:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
           },
           "Action": "sts:AssumeRole",
           "Condition": {
@@ -445,7 +491,7 @@ partial_name: eks-pod-identity-prerequisites
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
+            "AWS": "arn:<partition>:iam::<aws-management-cluster-account-id>:role/<role-name-for-identity-service-iam-local-role>"
           },
           "Action": "sts:TagSession"
         },
@@ -464,6 +510,13 @@ partial_name: eks-pod-identity-prerequisites
   - The [required IAM policies](/clusters/public-cloud/aws/required-iam-policies/) must be assigned to the IAM target role created for Palette.
 
   - In addition to the required IAM policies, the following permissions policy must also be assigned to the IAM target role created for Palette.
+  
+    If you are using [Core IAM Policies](/clusters/public-cloud/aws/required-iam-policies/core-iam-policies/), add the additional permissions policy in the Core IAM Policies tab. If you are using [Minimum IAM
+    Policies](/clusters/public-cloud/aws/required-iam-policies/minimum-permissions-policies/), add the additional permissions policy in the Minimum IAM Policies tab.
+
+    <Tabs groupId="core-or-minimum-iam-policies">
+
+    <TabItem label="Core IAM Policies" value="core-iam-policies">
 
     ```json
     {
@@ -475,6 +528,7 @@ partial_name: eks-pod-identity-prerequisites
             "eks:ListPodIdentityAssociations",
             "eks:CreatePodIdentityAssociation",
             "eks:DeletePodIdentityAssociation"
+
           ],
           "Resource": "*"
         },
@@ -487,12 +541,46 @@ partial_name: eks-pod-identity-prerequisites
     }
     ```
 
+    </TabItem>
+
+    <TabItem label="Minimum IAM Policies" value="minimum-iam-policies">
+
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "eks:ListPodIdentityAssociations",
+            "eks:CreatePodIdentityAssociation",
+            "eks:DeletePodIdentityAssociation",
+            "eks:DescribeAddonVersions",
+            "eks:CreateAddon",
+            "eks:UpdateAddon"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": ["iam:PassRole"],
+          "Resource": "*"
+        }
+      ]
+    }
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
   </TabItem>
 
   <TabItem label="Hubble service IAM target role" value="hubble-service-iam-target-role">
 
   - The following trust policy must be assigned to the IAM target role created for the Hubble service. Replace the following templated values with your own values.
 
+    - `<partition>`: The appropriate AWS partition (for example, `aws` or `aws-us-gov`).
     - `<aws-management-cluster-account-id>`: The AWS account ID where the EKS management cluster is deployed.
     - `<aws-management-cluster-region>`: The AWS region where the EKS management cluster is deployed.
     - `<management-cluster-name>`: The name of the EKS management cluster.
@@ -506,7 +594,7 @@ partial_name: eks-pod-identity-prerequisites
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::<aws-management-cluster-account-id>:role/spectro-hubble-identity"
+            "AWS": "arn:<partition>:iam::<aws-management-cluster-account-id>:role/spectro-hubble-identity"
           },
           "Action": "sts:AssumeRole",
           "Condition": {
@@ -518,7 +606,7 @@ partial_name: eks-pod-identity-prerequisites
         {
           "Effect": "Allow",
           "Principal": {
-            "AWS": "arn:aws:iam::<aws-management-cluster-account-id>:role/spectro-hubble-identity"
+            "AWS": "arn:<partition>:iam::<aws-management-cluster-account-id>:role/spectro-hubble-identity"
           },
           "Action": "sts:TagSession"
         }
@@ -613,6 +701,7 @@ partial_name: eks-pod-identity-prerequisites
 
   - The following permissions policy must be assigned to the IAM local role created for Hubble service.
   
+    - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
     - Replace the `<target-aws-account-id>` placeholder with the AWS account ID where the workload cluster resources are located.
     - Replace the `<hubble-service-iam-target-role>` placeholder with the name of the IAM role created for the Hubble service in the target AWS account (for example, `SpectroCloudHubbleTargetRole`).
 
@@ -628,7 +717,7 @@ partial_name: eks-pod-identity-prerequisites
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:iam::<target-aws-account-id>:role/<hubble-service-iam-target-role>"
+        "arn:<partition>:iam::<target-aws-account-id>:role/<hubble-service-iam-target-role>"
       ],
       "Sid": "IAM"
     }
@@ -658,8 +747,8 @@ partial_name: eks-pod-identity-prerequisites
 
   Use the following AWS CLI command to create a pod identity association for the Palette Hubble service in the same AWS account as the EKS management cluster.
   
-  - Replace
-  `<eks-cluster-name>` with the name of your Amazon EKS cluster.
+  - Replace `<eks-cluster-name>` with the name of your Amazon EKS cluster.
+  - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
   - Replace `<aws-account-id>` with your AWS account ID.
   - Replace `<hubble-service-iam-role-name>` with the name of the IAM role created for the Palette Hubble service (for example, `SpectroCloudHubbleRole`).
 
@@ -670,12 +759,13 @@ partial_name: eks-pod-identity-prerequisites
   --cluster-name <eks-cluster-name> \
   --namespace hubble-system \
   --service-account spectro-hubble \
-  --role-arn arn:aws:iam::<aws-account-id>:role/<hubble-service-iam-role-name>
+  --role-arn arn:<partition>:iam::<aws-account-id>:role/<hubble-service-iam-role-name>
   ```
 
   Similarly, use the following AWS CLI command to create a pod identity association for the Palette identity service in the same AWS account as the EKS management cluster.
   
   - Replace `<eks-cluster-name>` with the name of your Amazon EKS Cluster.
+  - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
   - Replace `<aws-account-id>` with your AWS account ID.
   - Replace `<identity-service-iam-role-name>` with the name of the IAM role created for the Palette identity service (for example, `SpectroCloudIdentityRole`).
 
@@ -686,7 +776,7 @@ partial_name: eks-pod-identity-prerequisites
   --cluster-name <eks-cluster-name> \
   --namespace palette-identity \
   --service-account palette-identity \
-  --role-arn arn:aws:iam::<aws-account-id>:role/<identity-service-iam-role-name>
+  --role-arn arn:<partition>:iam::<aws-account-id>:role/<identity-service-iam-role-name>
   ```
 
   </TabItem>
@@ -696,6 +786,7 @@ partial_name: eks-pod-identity-prerequisites
   Use the following AWS CLI command to create a pod identity association for the Palette Hubble service that needs to access AWS resources in a different AWS account to the EKS management cluster.
   
   - Replace `<eks-cluster-name>` with the name of your Amazon EKS cluster.
+  - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
   - Replace `<aws-management-cluster-account-id>` with the AWS account ID where your EKS management cluster is located.
   - Replace `<hubble-service-iam-local-role-name>` with the name of the IAM role created for the Palette Hubble service (for example, `SpectroCloudHubbleLocalRole`).
   - Replace `<target-aws-account-id>` with the AWS account ID where the workload cluster resources are located.
@@ -708,13 +799,14 @@ partial_name: eks-pod-identity-prerequisites
   --cluster-name <eks-cluster-name> \
   --namespace hubble-system \
   --service-account spectro-hubble \
-  --role-arn arn:aws:iam::<aws-management-cluster-account-id>:role/<hubble-service-iam-local-role-name>
-  --target-role-arn arn:aws:iam::<target-aws-account-id>:role/<hubble-service-iam-target-role-name>
+  --role-arn arn:<partition>:iam::<aws-management-cluster-account-id>:role/<hubble-service-iam-local-role-name>
+  --target-role-arn arn:<partition>:iam::<target-aws-account-id>:role/<hubble-service-iam-target-role-name>
   ```
 
   Similarly, use the following AWS CLI command to create a pod identity association for the Palette identity service that needs to access AWS resources in a different AWS account to the EKS management cluster.
 
   - Replace `<eks-cluster-name>` with the name of your Amazon EKS Cluster.
+  - Replace the `<partition>` placeholder with the appropriate AWS partition (for example, `aws` or `aws-us-gov`).
   - Replace `<aws-management-cluster-account-id>` with the AWS account ID where your EKS management cluster is located.
   - Replace `<identity-service-iam-local-role-name>` with the name of the IAM role created for the Palette identity service (for example, `SpectroCloudIdentityLocalRole`).
 
@@ -725,7 +817,7 @@ partial_name: eks-pod-identity-prerequisites
   --cluster-name <eks-cluster-name> \
   --namespace palette-identity \
   --service-account palette-identity \
-  --role-arn arn:aws:iam::<aws-management-cluster-account-id>:role/<identity-service-iam-local-role-name>
+  --role-arn arn:<partition>:iam::<aws-management-cluster-account-id>:role/<identity-service-iam-local-role-name>
   ```
 
   </TabItem>

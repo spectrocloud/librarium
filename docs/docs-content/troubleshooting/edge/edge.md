@@ -95,6 +95,12 @@ stages:
 
 ## Scenario - Velero Restore Fails with `runAsNonRoot` Validation Error
 
+:::info
+
+This issue was resolved in Palette version 4.8.21.
+
+:::
+
 On Edge Native clusters, restores of security-hardened applications (such as Argo CD) may fail with the affected
 application pods stuck in the `Init:CreateContainerConfigError` state, showing
 `Error: container has runAsNonRoot and image has non-numeric user (cnb), cannot verify user is non-root` on the

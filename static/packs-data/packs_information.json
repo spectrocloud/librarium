@@ -1158,5 +1158,37 @@
   {
     "name": "veeamkasten",
     "description": "Veeam Kasten is a Kubernetes operator that manages the deployment and lifecycle of Veeam Kasten components. It ensures that the Veeam Kasten is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "haproxy-ingress",
+    "description": "HAProxy Ingress is a Kubernetes operator that manages the deployment and lifecycle of HAProxy Ingress components. It ensures that the HAProxy Ingress is properly configured, monitored, and maintained, providing a reliable ingress solution for Kubernetes clusters."
+  },
+  {
+    "name": "cni-custom",
+    "description": "CNI Custom is a Kubernetes operator that manages the deployment and lifecycle of CNI custom components. It ensures that the CNI custom is properly configured, monitored, and maintained, providing a reliable networking solution for Kubernetes clusters."
+  },
+  {
+    "name": "cni-nvidia-ovn-kubernetes",
+    "description": "CNI NVIDIA OVN Kubernetes is a Kubernetes operator that manages the deployment and lifecycle of CNI NVIDIA OVN Kubernetes components. It ensures that the CNI NVIDIA OVN Kubernetes is properly configured, monitored, and maintained, providing a reliable networking solution for Kubernetes clusters."
+  },
+  {
+    "name": "ovn-kubernetes-ocp",
+    "description": "OVN Kubernetes OCP is a Kubernetes operator that manages the deployment and lifecycle of OVN Kubernetes OCP components. It ensures that the OVN Kubernetes OCP is properly configured, monitored, and maintained, providing a reliable networking solution for Kubernetes clusters."
+  },
+  {
+    "name": "eks-pod-identity-agent",
+    "description": "Amazon EKS Pod Identity Agent is a Kubernetes operator that manages the deployment and lifecycle of EKS Pod Identity Agent components. It ensures that the EKS Pod Identity Agent is properly configured, monitored, and maintained, providing a reliable identity management solution for Kubernetes clusters."
+  },
+  {
+    "name": "weka-operator",
+    "description": "Weka Operator is a Kubernetes operator that manages the deployment and lifecycle of Weka Operator components. It ensures that the Weka Operator is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "weka-operator-addon",
+    "description": "Weka Operator is a Kubernetes operator that manages the deployment and lifecycle of Weka Operator components. It ensures that the Weka Operator is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
+  },
+  {
+    "name": "trident-operator",
+    "description": "Trident Operator is a Kubernetes operator that manages the deployment and lifecycle of Trident Operator components. It ensures that the Trident Operator is properly configured, monitored, and maintained, providing a reliable storage solution for Kubernetes clusters."
   }
 ]
