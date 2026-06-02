@@ -11,6 +11,31 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 7, 2026 - Release 4.7.40
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10606 -->
+
+- The dependencies of the `imageswap`, `tick`, `spectro-drive`, and `init-upgrade` Palette images were updated to the
+  latest versions, ensuring that they have the latest security patches.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6460 -->
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused Edge hosts using <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> version 1.29 or higher to crash due to KubeVip certificate related errors.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10737 -->
+
+- The dependencies of the `mongo-enterprise` Palette image were updated to the latest versions, ensuring that it has the
+  latest security patches.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6589 -->
+
+- The `mongodb-enterprise-server`, `mongodb-enterprise-server-init`, and `mongo-enterprise` now use MongoDB 7.0.30.
+
 ## April 9, 2026 - Release 4.7.39
 
 ### Improvements
