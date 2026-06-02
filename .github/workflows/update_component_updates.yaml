@@ -80,7 +80,6 @@ jobs:
 
       - name: Extract component updates variables
         if: steps.check.outputs.run == 'true'
-        id: extract_ticket
         run: |
           TICKET=$(grep -m1 -E '<!-- COMPONENT UPDATES TICKET: [A-Z]+-[0-9]+ -->' docs/docs-content/release-notes/release-notes.md \
             | sed -E 's/.*COMPONENT UPDATES TICKET: ([A-Z]+-[0-9]+).*/\1/')

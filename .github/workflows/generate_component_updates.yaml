@@ -129,4 +129,3 @@ jobs:
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
           SLACK_MESSAGE: 'The generate component updates job for Jira ticket `${{ env.JIRA_TICKET }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
- 
