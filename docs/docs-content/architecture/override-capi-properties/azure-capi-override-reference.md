@@ -62,6 +62,22 @@ azureManagedMachinePool:
       updated: "true"
 ```
 
+```yaml title="Set the node pool OS SKU to Azure Linux"
+azureManagedMachinePool:
+  spec:
+    asoManagedClustersAgentPoolPatches: # Applied by Palette by default; overriding is usually a no-op
+      - '{"spec":{"osSKU":"AzureLinux"}}' # AzureLinux (CBL-Mariner); other values include Ubuntu and Windows2022
+```
+
+:::info
+
+The OS SKU is also exposed as a first-class **OS SKU** field on the node pool, which is the recommended way to set it.
+Refer to [Create and Manage Azure AKS Cluster](../../clusters/public-cloud/azure/aks.md) for details.
+
+The OS SKU is immutable after the node pool is created, overriding it on an existing node pool has no effect.
+
+:::
+
 ### Encryption
 
 #### Host Encryption
