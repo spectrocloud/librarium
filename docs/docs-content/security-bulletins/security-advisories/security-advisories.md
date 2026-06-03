@@ -62,8 +62,8 @@ Several existing, in-place controls significantly reduce the practical impact of
 
 ### Fix Availability
 
-Spectro Cloud is preparing and validating fixes. Self-hosted customers are advised to upgrade their
-Palette version once a fixed release is available.
+Spectro Cloud is preparing and validating fixes. Self-hosted customers are advised to upgrade their Palette version once
+a fixed release is available.
 
 ### Recommended Actions
 
