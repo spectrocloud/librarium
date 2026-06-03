@@ -31,9 +31,10 @@ jobs:
       - name: Check trigger condition
         id: check
         shell: bash
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
-          BODY="${{ github.event.comment.body }}"
-          BODY_LOWER=$(echo "$BODY" | tr '[:upper:]' '[:lower:]')
+          BODY_LOWER=$(echo "$COMMENT_BODY" | tr '[:upper:]' '[:lower:]')
 
           if [[ "$BODY_LOWER" == *"update patch release notes"* ]]; then
             echo "run=true" >> $GITHUB_OUTPUT
