@@ -7,12 +7,15 @@ sidebar_position: 30
 tags: ["pcg"]
 ---
 
-For infrastructure environments that the Palette CLI does not support, you can deploy a Private Cloud Gateway (PCG) to
-an existing Kubernetes cluster.
+For infrastructure environments that the [Palette CLI](./deploy-pcg/deploy-pcg.md) does not support, you can deploy a
+Private Cloud Gateway (PCG) to an existing Kubernetes cluster. The PCG can be installed on any Kubernetes cluster that
+meets the [prerequisites](#prerequisites), regardless of the underlying infrastructure. For example, you can host the
+PCG on an EKS cluster, a self-managed cluster on EC2, or any other cluster that is not managed by Palette.
 
-## Supported Environments
+## Supported Cloud Types
 
-You can deploy a PCG onto an existing Kubernetes cluster that is not managed by Palette to the following environments:
+During PCG creation, you select a **Cloud type** that determines which cloud environment you can deploy workload
+clusters into through the PCG, including:
 
 - AWS
 
@@ -33,7 +36,7 @@ The following table provides the recommended sizing for the PCG based on the num
 the maximum concurrent cluster deployments. You can continue to deploy additional clusters once the current clusters
 deployment batch is complete.
 
-We recommend using a minimum of 3 nodes for production environments. Single node clusters are better suited for
+We recommend using a minimum of three nodes for production environments. Single node clusters are better suited for
 development and testing environments.
 
 ### Single-Node Cluster
@@ -79,7 +82,7 @@ development and testing environments.
     [PCG Sizing](#pcg-sizing) section for more information.
   - A Container Network Interface (CNI) plugin installed.
   - A Container Storage Interface (CSI) plugin installed.
-  - The Kubernetes cluster must use a version of Kubernetes that is compatible to your Palette version. Refer to the
+  - A version of Kubernetes that is compatible to your Palette version. Refer to the
     [Kubernetes Requirements](./pcg.md#kubernetes-requirements) section to find the required Kubernetes version.
 
 - PCG IP address requirements:
@@ -87,17 +90,24 @@ development and testing environments.
   - One IP address for a single-node PCG or three IP addresses for a three-node PCG. Refer to the
     [PCG Sizing](./deploy-pcg-k8s.md#pcg-sizing) section for more information on sizing.
   - One IP address reserved for cluster repave operations.
-  - One IP address for the Virtual IP (VIP).
+  - One IP address for the virtual IP (VIP).
   - DNS can resolve the domain `api.spectrocloud.com` or the domain that you have configured for a self-hosted Palette
     installation.
 
-- If you want Palette to display cluster metrics, ensure that the
+- (Optional) If you want Palette to display cluster metrics, ensure that the
   [metrics server](https://github.com/kubernetes-sigs/metrics-server) is installed in the cluster. You can install the
   metrics server using the following command.
 
-      ```shell
-      kubectl apply --filename https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-      ```
+  ```shell {4}
+  helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+  helm upgrade --install metrics-server metrics-server/metrics-server \
+   --namespace kube-system \
+   --set args='{--kubelet-insecure-tls}'
+  ```
+
+  Add the line `--set args='{--kubelet-insecure-tls}'` to the command if your cluster uses self-signed Kubelet
+  certificates, which is common for self-managed clusters. If you do not use the `--kubelet-insecure-tls` argument and
+  you have self-signed Kubelet certificates, the metrics API server will not respond.
 
 ## Install PCG
 
@@ -107,20 +117,28 @@ Use the following steps to install the PCG in your existing Kubernetes cluster.
 
 2. From the left main menu, select **Tenant Settings**.
 
-3. From the **Tenant Settings** menu, select **Private Cloud Gateways > Add New Private Cloud Gateway**.
+3. From the **Tenant Settings** menu, select **Private Cloud Gateways** > **Add New Private Cloud Gateway**.
 
-4. On the **Private Cloud Gateway installation instructions** dialog, select **Self Hosted**.
+4. On the **Private Cloud Gateway installation instructions** modal window, select **Self Hosted**.
 
 5. Enter a **Private cloud gateway** name and use the **Cloud type** drop-down menu to select the target infrastructure
-   provider. **Create** your PCG when finished. You are redirected to the Private Cloud Gateway **Overview** page.
+   provider.
 
-6. To install the Palette agent, copy the kubectl commands from the side drawer and execute them against your
-   self-hosted cluster. Issue the commands in the order they are listed.
+6. **Create** your PCG when finished. A set of instructions with commands is displayed on the drawer.
 
-   ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/clusters_pcg_deploy-pcg-k8s_kubectl-cmds-view.webp)
+   ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/deploy-pcg-k8s_kubectl-cmds-view.webp)
 
-7. Close the side drawer once you issue both commands. The **Cluster Status** field displays **Pending** while the PCG
-   is deploying. The deployment is complete when the **Cluster Status** field displays the status **Running**.
+7. Select **Download manifest**.
+
+8. Apply the downloaded manifests to your Kubernetes cluster using the appropriate download paths.
+
+   ```hideClipboard shell
+   kubectl apply --filename <path-to-download>/cluster-*-jet-manifest.yaml
+   kubectl apply --filename <path-to-download>/cluster-*-ally-manifest.yaml
+   ```
+
+9. When the agents initialize, the drawer disappears, and your **Cluster Status** transitions to **Running**. Within a
+   few minutes, your cluster's **Health** status changes to **Healthy**.
 
    :::tip
 

@@ -56,11 +56,12 @@ the cluster.
 
    ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_full-permissions-instructions.webp)
 
-7. To install the Palette agent, run the command displayed in the drawer against the Kubernetes cluster you want to
-   import. The command is customized for your cluster, as it contains the assigned cluster ID.
+7. Select **Download manifest**.
 
-   ```hideClipboard shell title="Example command"
-   kubectl apply --filename https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
+8. Apply the manifest to your Kubernetes cluster to install the Palette agent using the appropriate download path.
+
+   ```hideClipboard shell
+   kubectl apply --filename <path-to-download>/manifest.yaml
    ```
 
    ```hideClipboard shell title="Example output"
@@ -87,7 +88,7 @@ the cluster.
 
    :::
 
-8. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
+9. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
    **Running**. Within a few minutes, your cluster's **Health** status changes to **Healthy**.
 
 You now have imported a cluster into Palette with full permissions.
@@ -220,11 +221,12 @@ about each mode.
 
    :::
 
-8. To install the Palette agent, run the command displayed in the drawer against the Kubernetes cluster you want to
-   import. The command is customized for your cluster, as it contains the assigned cluster ID.
+8. Select **Download manifest**.
+
+9. Apply the manifest to your Kubernetes cluster to install the Palette agent using the appropriate download path.
 
    ```hideClipboard shell
-   kubectl apply --filename https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
+   kubectl apply --filename <path-to-download>/manifest.yaml
    ```
 
    ```hideClipboard shell title="Example output"
@@ -261,8 +263,8 @@ about each mode.
    secret/hubble-secrets created
    ```
 
-9. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
-   **Running**. Within a few minutes, your cluster's **Health** status changes to **Healthy**.
+10. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
+    **Running**. Within a few minutes, your cluster's **Health** status changes to **Healthy**.
 
 You now have imported a cluster into Palette in read-only mode. Keep in mind that a cluster imported in read-only mode
 has limited capabilities, indicated by the disabled tabs. You can migrate to full permissions anytime by clicking
