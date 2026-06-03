@@ -34,6 +34,8 @@ tags: ["release-notes"]
   [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
   manifests to be downloaded locally before being applied.
 
+### Features
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-5929 -->
 
 - Palette now supports selecting the node pool operating system for
