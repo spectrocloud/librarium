@@ -65,8 +65,8 @@ azureManagedMachinePool:
 ```yaml title="Set the node pool OS SKU to Azure Linux"
 azureManagedMachinePool:
   spec:
-    asoManagedClustersAgentPoolPatches: # Applied by Palette by default; overriding is usually a no-op
-      - '{"spec":{"osSKU":"AzureLinux"}}' # AzureLinux (CBL-Mariner); other values include Ubuntu and Windows2022
+    asoManagedClustersAgentPoolPatches:
+      - '{"spec":{"osSKU":"AzureLinux"}}' # Other values include Ubuntu and Windows2022
 ```
 
 :::info
