@@ -10,8 +10,7 @@ tags: ["vmo", "Launchpad for VMs"]
 
 The Launchpad for VMs Appliance is a bootable ISO that you install on bare metal or Edge devices to create a cluster
 with Virtual Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in
-your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster, create your first
-[golden image](./golden-images.md) as the first step toward deploying your first VM.
+your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster, [create your first VM](./quick-start.md).
 
 ## Hardware Requirements
 
@@ -62,7 +61,7 @@ The following table lists the hardware requirements for worker nodes and control
    permissions to operate Launchpad for VMs by entering a username and password. Press **ENTER** to progress to the next
    screen.
 
-5. The terminal displays a console where you provide hostname and network configuration for the Edge host.
+5. The terminal displays a console where you provide hostname and network configuration for the Launchpad host.
 
    Review the existing hostname and, optionally, change it. Use the **TAB** key or the up and down arrow keys to switch
    between fields. Press **ENTER** to apply each change.
@@ -77,7 +76,7 @@ The following table lists the hardware requirements for worker nodes and control
 
 7. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
    ID segments network traffic on the same physical network interface for network isolation. If you assign a VLAN ID,
-   the Edge host tags all outgoing packets from that adapter with the specified VLAN identifier.
+   the Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
 
 8. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
    interface can send without fragmentation. Press **ENTER** to apply the change.
@@ -88,7 +87,7 @@ The following table lists the hardware requirements for worker nodes and control
 10. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
 
 11. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
-    terminal screen displays the hostname and network information of your Edge host. Verify that all displayed
+    terminal screen displays the hostname and network information of your Launchpad host. Verify that all displayed
     information is consistent with your configurations.
 
 ## Configure Network Settings
@@ -259,7 +258,7 @@ The following table lists the hardware requirements for worker nodes and control
    | ------------------------------- | ------------------------------------------------------------------------------- |
    | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                   |
    | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                |
-   | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Edge host. |
+   | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Launchpad host. |
 
    Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay network,
    specify a CIDR range for the overlay network to use.
