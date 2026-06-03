@@ -13,7 +13,6 @@ tags: ["vmo", "vm launchpad", "templates"]
 VM templates are reusable VM specifications that define a base image, compute, network, storage, and hardware settings.
 Create VMs from templates to ensure consistency and speed up provisioning.
 
-
 ## Create Your First Template
 
 1. Navigate to **Workloads** > **Templates**.
@@ -38,7 +37,6 @@ Create VMs from templates to ensure consistency and speed up provisioning.
    - **Review**: Verify the settings and create the template.
 
 4. Select **Create Template**. Launchpad saves the template as a `VmTemplate` custom resource.
-
 
 ## Next Steps
 
