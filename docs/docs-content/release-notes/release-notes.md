@@ -48,6 +48,15 @@ tags: ["release-notes"]
     [cluster's Kubernetes version and default OS version](https://learn.microsoft.com/en-us/azure/aks/upgrade-os-version#supported-os-versions);
     Kubernetes version 1.32 and later provision Azure Linux 3.0.
 
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11029 -->
+
+- Fixed an issue that caused
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) upgrades or restores to
+  remove custom certificates and replace them with newly generated ones, causing connected Edge clusters to stop
+  reporting status to Palette.
+
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
 ### Security Notices
