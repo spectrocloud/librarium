@@ -10,7 +10,8 @@ tags: ["vmo", "Launchpad for VMs"]
 
 The Launchpad for VMs Appliance is a bootable ISO that you install on bare metal or Edge devices to create a cluster
 with Virtual Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in
-your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster, [create your first VM](./quick-start.md).
+your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster,
+[create your first VM](./quick-start.md).
 
 ## Hardware Requirements
 
@@ -254,10 +255,10 @@ The following table lists the hardware requirements for worker nodes and control
 7. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
    and an SSH public key.
 
-   | **Parameter**                   | **Description**                                                                 |
-   | ------------------------------- | ------------------------------------------------------------------------------- |
-   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                   |
-   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                |
+   | **Parameter**                   | **Description**                                                                      |
+   | ------------------------------- | ------------------------------------------------------------------------------------ |
+   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                        |
+   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                     |
    | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Launchpad host. |
 
    Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay network,
