@@ -17,12 +17,12 @@ jobs:
 
     steps:
       - name: Checkout Palette Samples Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with: 
           repository: spectrocloud/palette-samples
 
       - name: Set Up Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6
         with:
           go-version-file: "scripts/cluster-scanner/go.mod"
 
@@ -68,7 +68,7 @@ jobs:
 
       - name: Send Slack Notification
         if: ${{ success() && env.CLUSTERS_FOUND == 'true' }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: "good"
@@ -78,7 +78,7 @@ jobs:
 
       - name: Slack Notification on Failure
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: "danger"
