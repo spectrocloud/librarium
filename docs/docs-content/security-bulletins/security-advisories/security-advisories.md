@@ -20,6 +20,60 @@ advisories are published.
 
 :::
 
+## Security Advisory 015 - Exposure of Cluster-Scoped Service Credentials Through Manifest Endpoints
+
+- **Release Date**: June 3, 2026
+- **Last Updated**: June 3, 2026
+- **Severity**: HIGH
+
+### Summary
+
+Spectro Cloud has identified a security vulnerability affecting specific manifest-related API endpoints, which, under
+certain conditions, may expose cluster-scoped service credentials.
+
+The impact is architecturally isolated. Service credentials are restricted tokens that do not permit direct access to
+any management plane APIs. The issue is confined to the affected cluster, with no evidence of cross-tenant exposure.
+Spectro Cloud confirms that no administrative kubeconfig assets are exposed by this issue.
+
+Spectro Cloud is actively developing and validating remediation measures to enhance protections around the affected
+endpoints and their credential handling.
+
+### Affected Deployments
+
+All Palette Enterprise and Palette VerteX deployment methods (multi-tenant SaaS, dedicated SaaS, and self-hosted) are
+affected, specifically:
+
+- Clusters originally created outside of Palette and subsequently imported into or taken over by Palette
+- Private Cloud Gateways (PCGs) created using the Palette CLI
+
+All clusters created and continuously managed by Palette (workload clusters) are _not_ affected.
+
+### Impact
+
+Under specific conditions, the exposure of cluster-scoped service credentials could grant an attacker limited access to
+a subset of cluster-associated services. Crucially, this vulnerability does not provide direct access to core management
+functions or administrative assets.
+
+Several existing, in-place controls significantly reduce the practical impact of this issue:
+
+- Credentials are scoped and limited to a single cluster.
+- Authorization enforcement prevents access outside the associated environment.
+- Credentials are automatically invalidated upon deletion of the associated cluster or PCG.
+
+### Fix Availability
+
+Spectro Cloud is preparing and validating fixes. Self-hosted customers are advised to upgrade their Palette version once
+a fixed release is available.
+
+### Recommended Actions
+
+Customers are encouraged to implement the following actions to further reduce potential exposure:
+
+- Restrict network access to management interfaces and APIs.
+- Limit access exclusively to trusted administrative networks.
+- Actively monitor for unexpected or anomalous API activity.
+- Adhere to standard credential and cluster lifecycle management best practices.
+
 ## Security Advisory 014 - Linux Kernel "Dirty Frag" and "Fragnesia" Privilege Escalation Vulnerabilities
 
 - **Release Date**: May 14, 2026
