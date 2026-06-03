@@ -145,5 +145,4 @@ Large ISO files may take several minutes to upload. Palette displays progress du
 
 ## Next Steps
 
-Create a [template](./templates.md) from the golden image so you can deploy VMs with consistent machine IDs, SSH host
-keys, and network identity.
+After you deploy your first golden image, follow the [Create Your First Template](./templates.md) guide to deploy your first template.
