@@ -21,17 +21,32 @@ tags: ["release-notes"]
   [imported clusters](../clusters/imported-clusters/imported-clusters.md) and
   [Private Cloud Gateways (PCGs)](../clusters/pcg/pcg.md).
 
-| **Endpoint**                                | **Required Permissions**                                                                     |
-| ------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `/cluster/{uid}/manifest`                   | `cluster.delete` permission                                                                  |
-| `/v1/pcg/{uid}/services/ally/manifest`      | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
-| `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
-| `/v1/spectroclusters/{uid}/import/manifest` | `cluster.delete` permission                                                                  |
+  | **Endpoint**                                | **Required Permissions**                                                                     |
+  | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+  | `/cluster/{uid}/manifest`                   | `cluster.delete` permission                                                                  |
+  | `/v1/pcg/{uid}/services/ally/manifest`      | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/spectroclusters/{uid}/import/manifest` | `cluster.delete` permission                                                                  |
 
-This change affects _new_ cluster import and PCG workflows, as well as any automation that retrieves manifests from the
-affected endpoints. As a result, the process of [importing clusters](../clusters/imported-clusters/cluster-import.md)
-and [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
-manifests to be downloaded locally before being applied.
+  This change affects _new_ cluster import and PCG workflows, as well as any automation that retrieves manifests from
+  the affected endpoints. As a result, the process of
+  [importing clusters](../clusters/imported-clusters/cluster-import.md) and
+  [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
+  manifests to be downloaded locally before being applied.
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5929 -->
+
+- Palette now supports selecting the node pool operating system for
+  [Azure AKS clusters](../clusters/public-cloud/azure/aks.md) through a new **OS SKU** field. When the OS type is
+  **Linux**, you can choose **Ubuntu** or **Azure Linux**; when the OS type is **Windows**, the node pool uses **Windows
+  2022**.
+
+  - The OS SKU is set when the node pool is created and cannot be changed afterward. The OS version is selected
+    automatically based on the
+    [cluster's Kubernetes version and default OS version](https://learn.microsoft.com/en-us/azure/aks/upgrade-os-version#supported-os-versions);
+    Kubernetes version 1.32 and later provision Azure Linux 3.0.
 
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
