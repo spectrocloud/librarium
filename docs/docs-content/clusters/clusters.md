@@ -214,6 +214,10 @@ The following are some sample scenarios where the node health is considered as d
 
 - New node doesn't get ready in 30 minutes.
 
+These thresholds are the default Machine Health Check settings that Palette applies to every node pool. You can override
+these settings per node pool on PXK infrastructure clusters. For more information, refer to
+[Node Pool Configuration Settings](cluster-management/node-pool.md#node-pool-configuration-settings).
+
 ## Event Stream
 
 Palette maintains an event stream with low-level details of the various orchestration tasks being performed. This event
