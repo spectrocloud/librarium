@@ -193,64 +193,64 @@ The following table lists the hardware requirements for worker nodes and control
 
    a. In the **Networking** section, fill out the following fields.
 
-   | **Parameter**                        | **Description**                                                                   |
-   | ------------------------------------ | --------------------------------------------------------------------------------- |
-   | **Pod CIDR**                         | CIDR range for Kubernetes Pods network.                                           |
-   | **Service CIDR**                     | CIDR range for Kubernetes Services network.                                       |
-   | **MetalLB IP Address**               | IP address for MetalLB to use.                                                    |
-   | **Cilium and MetalLB interface**     | NIC that Cilium and MetalLB use for L2 advertisements.                            |
-   | **Enable VLAN Filtering (Optional)** | Enabled by default. VLAN filtering on the bridge interface restricts VLAN access. |
-   | **VLAN range for VMs**               | VLANs to use for VMs. VLAN 1 is designated as default native VLAN.                |
-   | **Bridge Interface**                 | Bridge interface that VMs use for cluster node connectivity.                      |
-   | **Cluster runs on br0**              | Optional. Allow the cluster to run on `br0`.                                      |
-   | **VLANs on top of br0**              | VLANs to use on `br0`. Include VLAN 1, the default native VLAN.                   |
+   | **Parameter**                        | **Description**                                                                                                                        |
+   | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.             |
+   | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.   |
+   | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                   |
+   | **Cilium and MetalLB interface**     | The physical network interface on each node used for cluster traffic and external service announcements.                               |
+   | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation. |
+   | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                           |
+   | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.              |
+   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the br0 bridge interface or a VLAN sub-interface of br0.                       |
+   | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces on `br0`. Include VLAN 1. For example, `1,10,20`.                                       |
 
    b. In the **OS & Metrics** section, fill out the following fields.
 
-   | **Parameter**                              | **Description**                                                      |
-   | ------------------------------------------ | -------------------------------------------------------------------- |
-   | **Ubuntu Pro Token**                       | Optional. Leave blank or enter an Ubuntu Pro token value.            |
-   | **Reserved CPUs for Kubelet and system**   | CPUs to reserve for Kubelet and OS use.                              |
-   | **Victoria Metrics Data Retention Period** | Value in hours, days, weeks, months, or years. Use `24h` or greater. |
-   | **Victoria Metrics Volume Storage Size**   | Optional. Size in gigabytes (`Gi`).                                  |
+   | **Parameter**                                       | **Description**                                                                                                                           |
+   | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Ubuntu Pro Token (Optional)**                     | Your Ubuntu Pro subscription token for Extended Security Maintenance (ESM) and compliance features. Leave blank without a subscription.   |
+   | **Reserved CPUs for Kubelet and system**            | CPU core IDs reserved for the OS and Kubernetes node agent (Kubelet). The system excludes these cores from workloads. For example, `0-3`. |
+   | **Victoria Metrics Data Retention Period**          | How long to store monitoring metrics before deletion. Use formats such as `30d` for days or `6w` for weeks.                               |
+   | **Victoria Metrics Volume Storage Size (Optional)** | Disk space allocated for storing monitoring metrics. Increase if you expect high cardinality or long retention. For example, `20Gi`.      |
 
    c. In the **Container & Registry** section, fill out the following fields.
 
-   | **Parameter**                  | **Description**                                                                                                              |
-   | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-   | **OCI Pack Registry Username** | Username for the OCI Pack Registry.                                                                                          |
-   | **OCI Pack Registry Password** | Initial password for OCI Pack Registry account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 symbol. |
+   | **Parameter**                  | **Description**                                                                  |
+   | ------------------------------ | -------------------------------------------------------------------------------- |
+   | **OCI Pack Registry Username** | Username to authenticate with the container image registry used by the platform. |
+   | **OCI Pack Registry Password** | Password for the container image registry. This value is stored securely.        |
 
    d. In the **OIDC** section, fill out the following fields.
 
-   | **Parameter**               | **Description**                                                                                                                                              |
-   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Platform CA Certificate** | Base64-encoded value for your CA certificate. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
-   | **Platform CA Private Key** | Base64-encoded value for your private key. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.    |
-   | **VMO OIDC Login Username** | Username for the cluster admin OIDC login.                                                                                                                   |
-   | **VMO OIDC Login email**    | Address to use for OIDC login.                                                                                                                               |
-   | **VMO Login Password**      | Initial password for OIDC account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 symbol.                                              |
+   | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
+   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Platform CA Certificate** | The root Certificate Authority certificate for your platform, encoded in Base64. Used to establish trust for OIDC and internal TLS. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.           |
+   | **Platform CA Private Key** | The private key corresponding to the Platform CA Certificate, encoded in Base64. Keep this secret because it signs all platform certificates. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
+   | **VMO OIDC Login Username** | Username for the initial VMO administrator account created in the OIDC provider (Keycloak).                                                                                                                                                                  |
+   | **VMO OIDC Login email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
+   | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
 
    e. In the **Keycloak Admin** section, fill out the following fields.
 
-   | **Parameter**                       | **Description**                                                                                                           |
-   | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-   | **Default Keycloak Admin Username** | Optional. Username for the Keycloak admin login.                                                                          |
-   | **Default Keycloak Admin Password** | Initial password for Keycloak admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 symbol. |
+   | **Parameter**                                  | **Description**                                                                                                                           |
+   | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
+   | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
    f. In the **Local Admin** section, fill out the following fields.
 
-   | **Parameter**                 | **Description**                                                                                                        |
-   | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-   | **VMO Local Admin User Name** | Username to use for the local admin account.                                                                           |
-   | **VMO Local Admin Password**  | Initial password for local admin account. Must have 6-64 characters, 1 uppercase, 1 lowercase, 1 number, and 1 symbol. |
+   | **Parameter**                 | **Description**                                                                                     |
+   | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+   | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
+   | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
 
    g. In the **Storage** section, fill out the following fields.
 
-   | **Parameter**                      | **Description**                                                                           |
-   | ---------------------------------- | ----------------------------------------------------------------------------------------- |
-   | **Storage Node Interface**         | Node network interface to use for storage replication.                                    |
-   | **Storage Volume Placement Count** | Optional. Number of replicas to create for storage volumes. Use values from one to three. |
+   | **Parameter**                                 | **Description**                                                                                                                                            |
+   | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface when possible.                |
+   | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
 
 7. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
    and an SSH public key.
