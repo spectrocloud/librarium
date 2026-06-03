@@ -161,7 +161,25 @@ search_line() {
 # $2 - source file to insert, example: parameterised file
 # $3 - target file to insert into, example: downloads file
 replace_line() {
-    sed -i '' "${1}r $2" "$3" && sed -i '' "${1}d" "$3"
+  local line_number="$1"
+  local source_file="$2"
+  local target_file="$3"
+  local tmp_file
+
+  tmp_file="$(mktemp)"
+
+  awk -v line_number="$line_number" -v source_file="$source_file" '
+    NR == line_number {
+      while ((getline line < source_file) > 0) {
+        print line
+      }
+      close(source_file)
+      next
+    }
+    { print }
+  ' "$target_file" > "$tmp_file"
+
+  mv "$tmp_file" "$target_file"
 }
 
 # Utility function to remove a file
