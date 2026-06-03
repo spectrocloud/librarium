@@ -141,4 +141,5 @@ Large ISO files may take several minutes to upload. Palette displays progress du
 
 ## Next Steps
 
-After you deploy your first golden image, follow the [Create Your First Template](./templates.md) guide to deploy your first template.
+After you deploy your first golden image, follow the [Create Your First Template](./templates.md) guide to deploy your
+first template.

@@ -21,13 +21,13 @@ Create VMs from templates to ensure consistency and speed up provisioning.
 
 3. The VM creation wizard opens in template mode. Complete the following steps:
 
-  | **Parameter**                | **Description**                                                                                  |
-  | ---------------------------- | ------------------------------------------------------------------------------------------------ |
-  | **Source** | Select the source DataVolume and namespace. Set the template name, display name, description, and guest OS.|
-  | **Storage** | Configure the root disk size, StorageClass, and boot order. |
-  | **Hardware** | Configure firmware, devices, and features. |
-  | **Lifecycle** | Configure an optional snapshot policy that is stored as a template annotation. |
-  | **Review** | Verify the settings and create the template. |
+| **Parameter** | **Description**                                                                                             |
+| ------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Source**    | Select the source DataVolume and namespace. Set the template name, display name, description, and guest OS. |
+| **Storage**   | Configure the root disk size, StorageClass, and boot order.                                                 |
+| **Hardware**  | Configure firmware, devices, and features.                                                                  |
+| **Lifecycle** | Configure an optional snapshot policy that is stored as a template annotation.                              |
+| **Review**    | Verify the settings and create the template.                                                                |
 
 4. Select **Create Template**. Launchpad saves the template as a `VmTemplate` custom resource.
 
