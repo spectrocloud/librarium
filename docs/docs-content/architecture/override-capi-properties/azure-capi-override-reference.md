@@ -71,8 +71,9 @@ azureManagedMachinePool:
 
 :::info
 
-The OS SKU is also exposed as a first-class **OS SKU** field on the node pool configuration in Palette, which is the recommended way to set it.
-Refer to [Create and Manage Azure AKS Cluster](../../clusters/public-cloud/azure/aks.md) for details.
+The OS SKU is also exposed as a first-class **OS SKU** field on the node pool configuration in Palette, which is the
+recommended way to set it. Refer to [Create and Manage Azure AKS Cluster](../../clusters/public-cloud/azure/aks.md) for
+details.
 
 The OS SKU is immutable after the node pool is created, overriding it on an existing node pool has no effect.
 
