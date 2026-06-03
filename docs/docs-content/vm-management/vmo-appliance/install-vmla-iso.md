@@ -345,4 +345,3 @@ sessions.
 ## Next Steps
 
 After you deploy your VMO cluster, use the following guide to [create your first VM](./quick-start.md).
-

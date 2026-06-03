@@ -100,17 +100,17 @@ Large ISO files may take several minutes to upload. Launchpad displays progress 
 
    ![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
 
-      1. The builder VM boots from the ISO file, or the network if you configured network boot.
-      
-         - For Linux, Cloud-init runs the autoinstall script. This script typically configures a preseed, kickstart, or
-         autoinstall response for unattended installation.
+   1. The builder VM boots from the ISO file, or the network if you configured network boot.
 
-         - For Windows, Autounattend.xml provides unattended installation answers. The VirtIO drivers ISO is available as a
-         second CD-ROM for loading drivers during installation.
+      - For Linux, Cloud-init runs the autoinstall script. This script typically configures a preseed, kickstart, or
+        autoinstall response for unattended installation.
 
-      2. Open the **VNC console** to monitor progress or complete manual steps.
+      - For Windows, Autounattend.xml provides unattended installation answers. The VirtIO drivers ISO is available as a
+        second CD-ROM for loading drivers during installation.
 
-      3. Wait for the OS installation to finish and the VM to reboot.
+   2. Open the **VNC console** to monitor progress or complete manual steps.
+
+   3. Wait for the OS installation to finish and the VM to reboot.
 
 7. When the OS is installed and ready, select **Finalize** on the builder VM.
 
