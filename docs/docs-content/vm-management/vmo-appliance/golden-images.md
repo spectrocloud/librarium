@@ -12,8 +12,8 @@ tags: ["vmo", "vm launchpad", "golden images"]
 
 ## Create Your First Golden Image
 
-A golden image is a sealed, reusable base system image. Golden images standardize OS installations and create
-VMs from [templates](./templates.md) with validated configurations. 
+A golden image is a sealed, reusable base system image. Golden images standardize OS installations and create VMs from
+[templates](./templates.md) with validated configurations.
 
 The following diagram displays the steps to build a golden image to use as a reference for a template.
 
@@ -99,7 +99,6 @@ Large ISO files may take several minutes to upload. Palette displays progress du
 
 ![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
 
-
       1. The builder VM boots from the ISO file, or the network if you configured network boot.
 
       2. For Linux, Cloud-init runs the autoinstall script. This script typically configures a preseed, kickstart, or
@@ -112,7 +111,6 @@ Large ISO files may take several minutes to upload. Palette displays progress du
 
       5. Wait for the OS installation to finish and the VM to reboot.
 
-
 7. When the OS is installed and ready, select **Finalize** on the builder VM.
 
 8. In the **Finalize** dialog, select a customization template for the seal script.
@@ -121,27 +119,25 @@ Large ISO files may take several minutes to upload. Palette displays progress du
 
    - **With Script** runs the selected customization template's seal script to generalize the image.
 
-3. For Linux, select a template such as **Ubuntu / Debian** or **RHEL / CentOS / Fedora**.
+9. For Linux, select a template such as **Ubuntu / Debian** or **RHEL / CentOS / Fedora**.
 
-4. For Windows, select **Windows**. This runs sysprep with `/generalize /oobe /shutdown`.
+10. For Windows, select **Windows**. This runs sysprep with `/generalize /oobe /shutdown`.
 
-5. Select **Finalize**. Palette completes the following actions:
+11. Select **Finalize**. Palette completes the following actions:
 
-   - Stops the VM.
+    - Stops the VM.
 
-   - Ejects the install media.
+    - Ejects the install media.
 
-   - Starts the VM to run the seal script, if you selected one.
+    - Starts the VM to run the seal script, if you selected one.
 
-   - Waits for the guest agent.
+    - Waits for the guest agent.
 
-   - Runs the seal script with cloud-init or a similar mechanism.
+    - Runs the seal script with cloud-init or a similar mechanism.
 
-   - Stops the VM again and removes the builder VM.
+    - Stops the VM again and removes the builder VM.
 
-6. When the process is complete, the DataVolume is a sealed golden image.
-
-
+12. When the process is complete, the DataVolume is a sealed golden image.
 
 ## Next Steps
 
