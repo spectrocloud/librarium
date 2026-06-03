@@ -5,6 +5,7 @@ description: "Learn how to create and manage templates in VM Launchpad."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 2
+draft: true
 tags: ["vmo", "vm launchpad", "templates"]
 ---
 

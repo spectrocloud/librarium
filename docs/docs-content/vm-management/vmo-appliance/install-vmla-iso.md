@@ -344,10 +344,5 @@ sessions.
 
 ## Next Steps
 
-After you deploy your VMO cluster, use the following guides to create your first VM.
+After you deploy your VMO cluster, use the following guide to [create your first VM](./quick-start.md).
 
-1. Create your first [golden image](./golden-images.md).
-
-2. Create your first [template](./templates.md).
-
-3. Create your first [VM](./quick-start.md).

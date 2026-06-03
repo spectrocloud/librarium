@@ -5,6 +5,7 @@ description: "Learn how to create your first golden image in VM Launchpad."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 1
+draft: true
 tags: ["vmo", "vm launchpad", "golden images"]
 ---
 
@@ -40,7 +41,7 @@ The following diagram displays the steps to build a golden image to use as a ref
 | Image Type      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                         |
 | Image File      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2. |
 
-Large ISO files may take several minutes to upload. Palette displays progress during the upload phase.
+Large ISO files may take several minutes to upload. Launchpad displays progress during the upload phase.
 
 ![Screenshot of ISO upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
 
@@ -97,19 +98,19 @@ Large ISO files may take several minutes to upload. Palette displays progress du
 
 6. Review the golden image build and start the build.
 
-![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
+   ![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
 
       1. The builder VM boots from the ISO file, or the network if you configured network boot.
-
-      2. For Linux, Cloud-init runs the autoinstall script. This script typically configures a preseed, kickstart, or
+      
+         - For Linux, Cloud-init runs the autoinstall script. This script typically configures a preseed, kickstart, or
          autoinstall response for unattended installation.
 
-      3. For Windows, Autounattend.xml provides unattended installation answers. The VirtIO drivers ISO is available as a
+         - For Windows, Autounattend.xml provides unattended installation answers. The VirtIO drivers ISO is available as a
          second CD-ROM for loading drivers during installation.
 
-      4. Open the **VNC console** to monitor progress or complete manual steps.
+      2. Open the **VNC console** to monitor progress or complete manual steps.
 
-      5. Wait for the OS installation to finish and the VM to reboot.
+      3. Wait for the OS installation to finish and the VM to reboot.
 
 7. When the OS is installed and ready, select **Finalize** on the builder VM.
 
@@ -123,7 +124,7 @@ Large ISO files may take several minutes to upload. Palette displays progress du
 
 10. For Windows, select **Windows**. This runs sysprep with `/generalize /oobe /shutdown`.
 
-11. Select **Finalize**. Palette completes the following actions:
+11. Select **Finalize**. Launchpad completes the following actions:
 
     - Stops the VM.
 
