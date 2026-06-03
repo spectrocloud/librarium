@@ -1464,7 +1464,7 @@ recognition, all environment variables used by these scripts are named using the
 | **Environment Variable**       | **Description**               | **Example Value** |
 | ------------------------------ | ----------------------------- | ----------------- |
 | `RELEASE_ARTIFACT_STUDIO`      | Artifact Studio version.      | `4.9.0`           |
-| `RELEASE_MANAGEMENT_APPLIANCE` | Management Appliacne version. | `4.9.8`           |
+| `RELEASE_MANAGEMENT_APPLIANCE` | Management Appliance version. | `4.9.8`           |
 
 #### Other Release Updates
 
