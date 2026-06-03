@@ -574,6 +574,24 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
    If you choose to use an existing storage map, select the **Storage map** from the drop-down.
 
+   :::warning
+
+   VMO clusters using a block-based Container Storage Interface (CSI), including VMO clusters deployed with the
+   [Launchpad for VMs appliance](../vmo-appliance/vmo-appliance.md), require explicit storage map settings for migrated
+   VM disks. Ensure the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
+
+   ```yaml {4-5}
+   spec:
+     map:
+       - destination:
+           accessMode: ReadWriteOnce
+           volumeMode: Filesystem
+           storageClass: vmo-sc
+         source:
+   ```
+
+   :::
+
    #### Use New Storage Map
 
    The following table describes the available settings for creating a new storage map.
