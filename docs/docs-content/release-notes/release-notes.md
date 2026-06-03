@@ -38,8 +38,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10734 -->
 
-- The `palette`, `ally`, `hubble`, `fusion`, `reach`, and `kube-rbac-proxy` images were rebuilt to ensure their
-  dependencies have the latest security fixes.
+- Several Palette images were rebuilt to ensure their dependencies have the latest security fixes.
 
 ### Bug Fixes
 
