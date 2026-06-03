@@ -22,8 +22,8 @@ advisories are published.
 
 ## Security Advisory 015 - Exposure of Cluster-Scoped Service Credentials Through Manifest Endpoints
 
-- **Release Date**: June 2, 2026
-- **Last Updated**: June 2, 2026
+- **Release Date**: June 3, 2026
+- **Last Updated**: June 3, 2026
 - **Severity**: HIGH
 
 ### Summary
@@ -45,7 +45,6 @@ affected, specifically:
 
 - Clusters originally created outside of Palette and subsequently imported into or taken over by Palette
 - Private Cloud Gateways (PCGs) created using the Palette CLI
-- PCGs installed on existing Kubernetes clusters
 
 All clusters created and continuously managed by Palette (workload clusters) are _not_ affected.
 
@@ -63,7 +62,7 @@ Several existing, in-place controls significantly reduce the practical impact of
 
 ### Fix Availability
 
-Spectro Cloud is preparing and validating fixes. Self-hosted and dedicated SaaS customers are advised to upgrade their
+Spectro Cloud is preparing and validating fixes. Self-hosted customers are advised to upgrade their
 Palette version once a fixed release is available.
 
 ### Recommended Actions
