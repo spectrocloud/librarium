@@ -28,8 +28,8 @@ tags: ["release-notes"]
   | `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
   | `/v1/spectroclusters/{uid}/import/manifest` | `cluster.delete` permission                                                                  |
 
-  This change affects _new_ cluster import and PCG workflows, as well as any automation that retrieves manifests from
-  the affected endpoints. As a result, the process of
+  This change does _not_ affect existing imported clusters and PCGs; it affects _new_ cluster import and PCG workflows,
+  as well as any automation that retrieves manifests from the affected endpoints. As a result, the process of
   [importing clusters](../clusters/imported-clusters/cluster-import.md) and
   [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
   manifests to be downloaded locally before being applied.
