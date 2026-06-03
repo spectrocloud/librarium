@@ -1,4 +1,4 @@
-name: "Update Patch Release Notes"
+name: "Update Component Updates"
 
 on:
   issue_comment:
@@ -10,13 +10,13 @@ env:
   JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
   SUPER_API_TOKEN: ${{ secrets.SUPER_API_TOKEN }}
   NODE_VERSION: "24"
-  BASE_BRANCH: ${{ format('refs/pull/{0}/head', github.event.issue.number) }}
+  BASE_BRANCH: ${{ format('refs/pull/{0}/head', github.event.issue.number) }}  
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_INDEX_NAME: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
 
 jobs:
-  update_release_notes:
+  update_component_updates:
     if: >
       github.event.issue.pull_request &&
       !endsWith(github.actor, '[bot]')
@@ -79,26 +79,70 @@ jobs:
         run: |
           npm ci
 
-      - name: Extract patch release ticket
+      - name: Extract component updates variables
         if: steps.check.outputs.run == 'true'
-        id: extract_ticket
         run: |
-          TICKET=$(grep -m1 -E '<!-- PATCH RELEASE TICKET: [A-Z]+-[0-9]+ -->' docs/docs-content/release-notes/release-notes.md \
-            | sed -E 's/.*PATCH RELEASE TICKET: ([A-Z]+-[0-9]+).*/\1/')
+          TICKET=$(grep -m1 -E '<!-- COMPONENT UPDATES TICKET: [A-Z]+-[0-9]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*COMPONENT UPDATES TICKET: ([A-Z]+-[0-9]+).*/\1/')
+          DATE=$(
+            grep -m1 -E '<!-- RELEASE DATE: [A-Za-z]+ [0-9]{1,2}, [0-9]{4} -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE DATE: ([A-Za-z]+ [0-9]{1,2}, [0-9]{4}).*/\1/'
+          )
+          APPLIANCE=$(
+            grep -m1 -E '<!-- RELEASE MANAGEMENT APPLIANCE: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE MANAGEMENT APPLIANCE: ([A-Za-z0-9._-]+).*/\1/'
+          )
+          ARTIFACT=$(
+            grep -m1 -E '<!-- RELEASE ARTIFACT STUDIO: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE ARTIFACT STUDIO: ([A-Za-z0-9._-]+).*/\1/'
+          )
+          TERRAFORM=$(
+            grep -m1 -E '<!-- RELEASE TERRAFORM VERSION: [A-Za-z0-9._-]+ -->' docs/docs-content/release-notes/release-notes.md \
+            | sed -E 's/.*RELEASE TERRAFORM VERSION: ([A-Za-z0-9._-]+).*/\1/'
+          )
 
           if [[ -z "$TICKET" ]]; then
-            echo "❌ No PATCH RELEASE TICKET found" >&2
+            echo "❌ No COMPONENT UPDATES TICKET found" >&2
+            exit 1
+          fi
+          if [[ -z "$DATE" ]]; then
+            echo "❌ No RELEASE DATE found" >&2
+            exit 1
+          fi
+          if [[ -z "$APPLIANCE" ]]; then
+            echo "❌ No RELEASE MANAGEMENT APPLIANCE found" >&2
+            exit 1
+          fi
+          if [[ -z "$ARTIFACT" ]]; then
+            echo "❌ No RELEASE ARTIFACT STUDIO found" >&2
+            exit 1
+          fi
+          if [[ -z "$TERRAFORM" ]]; then
+            echo "❌ No RELEASE TERRAFORM VERSION found" >&2
             exit 1
           fi
 
-          echo "JIRA_TICKET=$TICKET" >> "$GITHUB_ENV"      
+          {
+            echo "JIRA_TICKET=$TICKET"
+            echo "RELEASE_DATE<<EOF"
+            echo "$DATE"
+            echo "EOF"
+            echo "RELEASE_MANAGEMENT_APPLIANCE=$APPLIANCE"
+            echo "RELEASE_ARTIFACT_STUDIO=$ARTIFACT"
+            echo "RELEASE_TERRAFORM_VERSION=$TERRAFORM"
+          } >> "$GITHUB_ENV"
       
-      - name: Execute Script to Generate Patch Release Notes
+      - name: Execute Script to Generate Component Updates
         if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
+        env:
+          JIRA_TICKET: ${{ env.JIRA_TICKET }}
+          RELEASE_DATE: ${{ env.RELEASE_DATE }}
+          RELEASE_MANAGEMENT_APPLIANCE: ${{ env.RELEASE_MANAGEMENT_APPLIANCE }}
+          RELEASE_ARTIFACT_STUDIO: ${{ env.RELEASE_ARTIFACT_STUDIO }}
+          RELEASE_TERRAFORM_VERSION: ${{ env.RELEASE_TERRAFORM_VERSION }}
         run: |
           touch .env
-          PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes
-
+          make generate-component-updates
 
       - name: Commit changes
         if: steps.check.outputs.run == 'true'
@@ -112,7 +156,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "docs: update patch release notes"
+          git commit -m "docs: update component updates"
           git push
 
       - name: Comment on PR if commit fails
@@ -122,4 +166,4 @@ jobs:
         run: |
           gh api \
             repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
-            -f body="❌ Failed to update patch release notes. Please check the workflow logs."
+            -f body="❌ Failed to update component updates. Please check the workflow logs."
