@@ -31,11 +31,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 ### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
-
-- A new Azure Linux 3 OS pack for AKS and Azure infrastructure clusters is now available on Artifact Studio for both
-  Palette and Palette VerteX environments.
-
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
 
@@ -75,11 +70,9 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 ### Packs
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4123 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
 
 | Pack Name        | Layer  | Non-FIPS           | FIPS               | New Version |
 | ---------------- | ------ | ------------------ | ------------------ | ----------- |
-| Azure Linux 3    | OS     | :white_check_mark: | :white_check_mark: | 3.0         |
 | Amazon EBS CSI   | CSI    | :x:                | :white_check_mark: | 1.60.0      |
 | Azure Disk       | CSI    | :x:                | :white_check_mark: | 1.34.3      |
 | Calico           | CNI    | :white_check_mark: | :x:                | 3.32.0      |
