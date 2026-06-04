@@ -126,14 +126,14 @@ more information about EdgeForge and site user data, refer to
    Check the existing hostname and, optionally, change it to a new one. Use the **TAB** key or the up and down arrow
    keys to switch between fields. When you make a change, press **ENTER** to apply the change.
 
-6. In **Network Adapter**, choose the interface that the Edge host uses for management traffic. From the
-   **Management Interface** drop-down menu, select **None**, a network interface, or a VLAN sub-interface. The selected
-   interface handles Local UI access and host-to-host traffic. If you select **None**, the Edge host uses the network
-   interface associated with the default route.
+6. In **Network Adapter**, choose the interface that the Edge host uses for management traffic. From the **Management
+   Interface** drop-down menu, select **None**, a network interface, or a VLAN sub-interface. The selected interface
+   handles Local UI access and host-to-host traffic. If you select **None**, the Edge host uses the network interface
+   associated with the default route.
 
    Use the **TAB** key to switch between the **Management Interface** drop-down menu and the network adapter table. The
-   selected management interface persists after the Edge host reboots. After you complete the initial setup, the selected
-   interface is displayed as **Mgmt interface** on the Palette TUI landing page.
+   selected management interface persists after the Edge host reboots. After you complete the initial setup, the
+   selected interface is displayed as **Mgmt interface** on the Palette TUI landing page.
 
    ![updated screenshot of management interface](/clusters_site-installation_initial-setup_tui-management-interface_4.8.webp)
 
@@ -164,7 +164,7 @@ more information about EdgeForge and site user data, refer to
    **ENTER** to apply the change.
 
 10. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
-   specify a search domain. Press **ENTER** to apply the change.
+    specify a search domain. Press **ENTER** to apply the change.
 
 11. In **NTP Configuration**, specify one or more NTP servers (for example, 0.pool.ntp.org,1.pool.ntp.org).
 
