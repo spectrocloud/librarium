@@ -20,7 +20,7 @@ advisories are published.
 
 :::
 
-## Security Advisory 017- Debug/pprof Interface Exposure on Port 9443
+## Security Advisory 017 - Debug/pprof Interface Exposure on Port 9443
 
 - **Release Date**: June 4, 2026
 - **Last Updated**: June 4, 2026
@@ -30,20 +30,19 @@ advisories are published.
 
 Spectro Cloud has identified an issue where the
 [Go debugging and profiling interface (`debug/pprof`)](https://pkg.go.dev/net/http/pprof) may be accessible on port 9443
-within certain Stylus deployments. The exposed interface is intended for application debugging and performance analysis.
-If accessible, it can provide detailed runtime information about the process, including goroutine stacks, heap
-information, memory allocations, thread information, and CPU profiling data.
+within certain Stylus (Palette Edge agent) deployments. The exposed interface is intended for application debugging and
+performance analysis. If accessible, it can provide detailed runtime information about the process, including goroutine
+stacks, heap information, memory allocations, thread information, and CPU profiling data.
 
 Spectro Cloud is not aware of any evidence of active exploitation in customer environments at the time of publication.
 Spectro Cloud has identified the root cause and is developing a fix.
 
 ### Affected Deployments
 
-- [Edge Central clusters](../../clusters/edge/edge-native-lifecycle.md#central-clusters)
-- [Edge Local clusters](../../clusters/edge/edge-native-lifecycle.md#local-clusters)
-- Clusters deployed with
-  [Palette Management Appliance](../../enterprise-version/install-palette/palette-management-appliance.md) or
-  [VerteX Management Appliance](../../vertex/install-palette-vertex/vertex-management-appliance.md).
+- [Centrally managed Edge clusters](../../clusters/edge/edge-native-lifecycle.md#central-clusters)
+- [Locally managed Edge clusters](../../clusters/edge/edge-native-lifecycle.md#local-clusters)
+- Self-hosted [Palette Management Appliance](../../enterprise-version/install-palette/palette-management-appliance.md)
+  and [VerteX Management Appliance](../../vertex/install-palette-vertex/vertex-management-appliance.md) installations
 
 ### Impact
 
@@ -62,32 +61,22 @@ is limited to environments where the endpoint is reachable over the network.
 
 ### Recommended Actions
 
-Customers are encouraged to implement the following actions:
+Customers are encouraged to take the following actions:
 
-- Restrict network access to port 9443 to only required Kubernetes control-plane components.
+- Restrict network access to port 9443 to required Kubernetes control-plane components only.
 - Review firewall rules, security groups, and network policies to ensure the endpoint is not accessible from untrusted
   networks.
-- Monitor for unexpected access attempts to /debug/pprof/\* endpoints.
+- Block direct user or workload access where possible.
+- Apply network segmentation controls.
+- Monitor for unexpected access attempts to `/debug/pprof/*` endpoints.
 - Upgrade to a fixed release once remediation becomes available.
+
+### Fix Availability
 
 Spectro Cloud is currently backporting the remediation to supported Palette 4.8.x and 4.7.x releases. This advisory will
 be updated with the applicable fixed versions and upgrade guidance once those releases are available.
 
-Until a permanent fix is available, customers should:
-
-- Restrict access to the affected service
-- Limit connectivity to trusted Kubernetes components only.
-- Block direct user or workload access where possible.
-- Apply network segmentation controls
-- Use Kubernetes Network Policies, firewalls, or equivalent controls to restrict access to port 9443.
-- Monitor for suspicious activity
-
-### Fix Availability
-
-A fix is being worked on. This advisory will be updated when remediation details and affected version information become
-available.
-
-## Security Advisory 016- Upload Service Authentication Bypass
+## Security Advisory 016 - Upload Service Authentication Bypass
 
 - **Release Date**: June 4, 2026
 - **Last Updated**: June 4, 2026
@@ -95,53 +84,50 @@ available.
 
 ### Summary
 
-Spectro Cloud has identified and remediated a vulnerability in the
-[Edge Upload Service](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) that could allow
-unauthenticated users to upload content bundles to an affected edge host under certain deployment conditions. The issue
-was corrected in release 4.9.14. Refer to the [Release Notes](../../release-notes/release-notes.md) for more
-information.
+Spectro Cloud has identified and remediated a vulnerability that could allow unauthenticated users to
+[upload content bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to Edge hosts under
+certain conditions. The issue was corrected in release 4.9.14.
 
 The vulnerability resulted from an authentication validation logic error that could permit requests that did not provide
 valid authentication credentials to bypass intended access controls for the upload endpoint.
 
 ### Affected Deployments
 
-The following Palette and Edge deployments are affected:
-
-- **Palette Enterprise and Palette VerteX environments** - All multi-tenant SaaS, dedicated SaaS, self-hosted, and
-  appliance-based deployments earlier than version 4.9.14, containing the affected upload service implementation.
+This issue affects all multi-tenant SaaS, dedicated SaaS, self-hosted, and appliance-based deployments earlier than
+version 4.9.14.
 
 ### Impact
 
 A successful exploitation of this vulnerability could have allowed an unauthenticated actor with network access to the
-affected upload service endpoint to upload content bundles to the edge node. Depending on the deployment configuration
+affected upload service endpoint to upload content bundles to the Edge host. Depending on the deployment configuration
 and network exposure of the affected endpoint, an attacker may have been able to write files to locations used by the
-content management service. This could result in unauthorized modification of content stored on the affected edge
+content management service. This could result in unauthorized modification of content stored on the affected Edge
 system.
 
 Spectro Cloud has not identified evidence of active exploitation of this vulnerability in customer environments at the
 time of this advisory.
 
-### Recommended Actions
+### Fix Availability
 
 This issue has been fully remediated in release 4.9.14 for the Spectro Cloud managed SaaS solution.
 
-Customers are encouraged to implement the following actions:
+Spectro Cloud is currently backporting the remediation to support Palette and Palette VerteX 4.8.x and 4.7.x releases.
+This advisory will be updated with the applicable fixed versions, including the required Stylus (Palette Edge agent)
+releases, once those releases become available.
 
-- Self-hosted Palette Enterprise Edge deployments running affected versions should upgrade to 4.9.14 or a later
-  supported release as soon as possible.
-- Remediation of this vulnerability requires updates to both the Palette software and the edge host components.
-  Customers should ensure that affected edge hosts are upgraded to the corresponding Stylus Agent version containing the
-  fix.
-- Spectro Cloud is currently backporting the remediation to support Palette and Palette VerteX 4.8.x and 4.7.x releases.
-  This advisory will be updated with the applicable fixed versions, including the required Stylus Agent releases, once
-  those releases become available.
-- In addition, Spectro Cloud recommends reviewing system and application logs for unexpected upload activity.
+### Recommended Actions
+
+Customers are encouraged to take the following actions:
+
+- Upgrade self-hosted deployments to 4.9.14 or a later as soon as possible.
+- Upgrade both the Palette software and the Edge host components. Ensure that affected Edge hosts are upgraded to the
+  corresponding Stylus Agent version (4.9.10) containing the fix.
+- Review system and application logs for unexpected upload activity.
 
 ### References
 
-- [CWE-287: Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)
-- [CWE-306: Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)
+- [CWE-287 - Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)
+- [CWE-306 - Missing Authentication for Critical Function](https://cwe.mitre.org/data/definitions/306.html)
 - [OWASP Top 10 2021 A01 – Broken Access Control](https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/index.html)
 - [OWASP Top 10 2021 A07 – Identification and Authentication Failures](https://owasp.org/Top10/2021/A07_2021-Identification_and_Authentication_Failures/index.html)
 

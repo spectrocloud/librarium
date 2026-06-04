@@ -234,6 +234,14 @@ information.
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8523 -->
+
+- Fixed an issue that could allow unauthenticated users to
+  [upload content bundles](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to Edge hosts under
+  certain conditions. Refer to
+  [Security Advisory 016](../security-bulletins/security-advisories/security-advisories.md#security-advisory-016---upload-service-authentication-bypass)
+  for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8716 -->
 
 - Fixed an issue on Edge clusters with [image swap](../clusters/cluster-management/image-swap.md) enabled that caused
