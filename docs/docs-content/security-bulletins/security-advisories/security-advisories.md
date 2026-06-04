@@ -98,8 +98,7 @@ available.
 Spectro Cloud has identified and remediated a vulnerability in the
 [Edge Upload Service](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) that could allow
 unauthenticated users to upload content bundles to an affected edge host under certain deployment conditions. The issue
-was corrected in release 4.9.14. Refer to the
-[Release Notes](../../release-notes/release-notes.md#may-31-2026---release-4914-release-notes-4-9-a) for more
+was corrected in release 4.9.14. Refer to the [Release Notes](../../release-notes/release-notes.md) for more
 information.
 
 The vulnerability resulted from an authentication validation logic error that could permit requests that did not provide
