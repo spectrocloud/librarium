@@ -20,7 +20,7 @@ advisories are published.
 
 :::
 
-## Security Advisory 017 - Debug/pprof Interface Exposure on Port 9443
+## Security Advisory 017 - `debug/pprof` Interface Exposure on Port 9443
 
 - **Release Date**: June 4, 2026
 - **Last Updated**: June 4, 2026
@@ -86,7 +86,7 @@ be updated with the applicable fixed versions and upgrade guidance once those re
 
 Spectro Cloud has identified and remediated a vulnerability that could allow unauthenticated users to
 [upload content bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to Edge hosts under
-certain conditions. The issue was corrected in release 4.9.14.
+certain conditions. The issue was corrected in Palette version 4.9.14.
 
 The vulnerability resulted from an authentication validation logic error that could permit requests that did not provide
 valid authentication credentials to bypass intended access controls for the upload endpoint.
