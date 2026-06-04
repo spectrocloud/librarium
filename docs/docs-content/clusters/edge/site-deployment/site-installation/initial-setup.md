@@ -40,7 +40,8 @@ more information about EdgeForge and site user data, refer to
   one. To manage pre-existing configurations, use the original configuration method, such as `systemd-networkd`,
   Netplan, or NetworkManager.
 - The TUI management interface cannot be changed after cluster registration.
-- You cannot use the TUI to configure network bonds or bridges; you must use [Local UI](../../local-ui/host-management/configure-network-interfaces.md) instead. 
+- You cannot use the TUI to configure network bonds or bridges; you must use
+  [Local UI](../../local-ui/host-management/configure-network-interfaces.md) instead.
 
 ## Prerequisites
 
