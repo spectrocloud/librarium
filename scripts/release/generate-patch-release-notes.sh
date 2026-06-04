@@ -5,6 +5,7 @@ set -euo pipefail
 
 # Import utility functions
 source scripts/release/utilities.sh
+source .env
 
 JIRA_DOMAIN=https://spectrocloud.atlassian.net/
 RELEASE_NOTES_FILE="docs/docs-content/release-notes/release-notes.md"
