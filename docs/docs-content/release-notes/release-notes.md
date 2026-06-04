@@ -34,14 +34,14 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
 
 - A new Azure Linux 3 OS pack for AKS and Azure infrastructure clusters is now available on Artifact Studio for both
-  Palette and Vertex environments.
+  Palette and VerteX environments.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
 
 <!-- prettier-ignore-start -->
 
-- Added automated TLS certificate rotation for the <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> and <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" />  in edge clusters by integrating with `cert-manager`. Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime.
+- Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime for <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> and <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" />  in Edge clusters.
 
 <!-- prettier-ignore-end -->
 
@@ -66,9 +66,9 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
 
-- Fixed a Terraform issue where sensitive cluster profile variables caused perpetual plan differences after importing an
+- Fixed a Terraform issue where sensitive cluster profile variables caused perpetual plan differences after importing
   [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
-  resource.
+  resources.
 
 <!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
