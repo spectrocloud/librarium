@@ -39,6 +39,9 @@ more information about EdgeForge and site user data, refer to
   you attempt to update pre-existing network settings via the TUI, a new configuration is created alongside the existing
   one. To manage pre-existing configurations, use the original configuration method, such as `systemd-networkd`,
   Netplan, or NetworkManager.
+- The TUI management interface cannot be changed after cluster registration.
+- Use [Local UI](../../local-ui/host-management/configure-network-interfaces.md) to configure network bonds or bridges.
+  The TUI supports neither option.
 
 ## Prerequisites
 
@@ -123,10 +126,21 @@ more information about EdgeForge and site user data, refer to
    Check the existing hostname and, optionally, change it to a new one. Use the **TAB** key or the up and down arrow
    keys to switch between fields. When you make a change, press **ENTER** to apply the change.
 
-6. In **Network Adapter**, select a network adapter to configure. By default, the network adapters request an IP
-   automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
-   block of an adapter's possible IP address is displayed in the **Network Adapter** screen without selecting an
-   individual adapter.
+6. In **Network Adapter**, choose the interface that the Edge host uses for management traffic. From the
+   **Management Interface** drop-down menu, select **None**, a network interface, or a VLAN sub-interface. The selected
+   interface handles Local UI access and host-to-host traffic. If you select **None**, the Edge host uses the network
+   interface associated with the default route.
+
+   Use the **TAB** key to switch between the **Management Interface** drop-down menu and the network adapter table. The
+   selected management interface persists after the Edge host reboots. After you complete the initial setup, the selected
+   interface is displayed as **Mgmt interface** on the Palette TUI landing page.
+
+   ![updated screenshot of management interface](/clusters_site-installation_initial-setup_tui-management-interface_4.8.webp)
+
+7. From the network adapter table, select an adapter to configure its network settings. By default, network adapters
+   request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain
+   Routing (CIDR) block of an adapter's possible IP address is displayed in the **Network Adapter** screen without
+   selecting an individual adapter.
 
    On the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
    IP instead of DHCP. In Static IP mode, you need to provide a static IP address, subnet mask, as well as the address
@@ -140,19 +154,19 @@ more information about EdgeForge and site user data, refer to
 
    :::
 
-7. On the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
+8. On the configuration page of each network adapter, you can also specify the VLAN ID. A VLAN ID enables you to
    logically segment network traffic on the same physical network interface, providing network isolation and enhanced
    traffic management. If you assign a VLAN ID, the Edge host tags all outgoing packets from that adapter with the
    specified VLAN identifier.
 
-8. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
+9. Additionally, you can specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the
    largest size, in bytes, of a packet that can be sent over a network interface without needing to be fragmented. Press
    **ENTER** to apply the change.
 
-9. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
+10. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
    specify a search domain. Press **ENTER** to apply the change.
 
-10. In **NTP Configuration**, specify one or more NTP servers (for example, 0.pool.ntp.org,1.pool.ntp.org).
+11. In **NTP Configuration**, specify one or more NTP servers (for example, 0.pool.ntp.org,1.pool.ntp.org).
 
 :::warning
 
@@ -163,7 +177,7 @@ host-specific configuration on all hosts in the cluster.
 
 :::
 
-11. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
+12. After you are satisfied with the configurations, navigate to **Logout** and press **ENTER** to complete the
     configuration.
 
 ## Validate

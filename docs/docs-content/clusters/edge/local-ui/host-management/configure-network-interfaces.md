@@ -49,7 +49,8 @@ irrecoverable failures.
 
    The NIC currently used for Edge host management (Local UI access and registration) is not editable. This management
    NIC is locked by design to avoid breaking connectivity. You can identify it by the IP address used to access the
-   Local UI.
+   Local UI. The management NIC is selected during TUI initial setup. For more information, refer to
+   [Initial Edge Host Configuration with Palette TUI](../../site-deployment/site-installation/initial-setup.md).
 
    :::
 
