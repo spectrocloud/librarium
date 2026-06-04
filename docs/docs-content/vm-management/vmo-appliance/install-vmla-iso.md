@@ -22,7 +22,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 | **CPU**              | Intel or AMD64 CPU with 8 cores                                   | Intel or AMD64 CPU with 8 cores                    | -                                                                                                                                          |
 | **RAM**              | 24 GB                                                             | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                             |
 | **Network Adapters** | 2 x 1 Gbps (data + management)                                    | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                            |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10Gb Ethernet shared with data + management | 2 x 16 Gbps FC or 2 x 10Gb Ethernet dedicated      | Dedicated Storage Adapters, either Fiber Channel or Ethernet (eg iSCSI) will provide reliable access to external or cluster shared storage |
+| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated      | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
 | **Disks**            | Local disk of at least 500 GB for the OS boot                     | Local disk of at least 500 GB for the OS boot      | Storage Area Network (SAN) boot is supported. Booting from SAN requires planning due to the multi-path configuration.                      |
 
 ## Prerequisites
@@ -38,7 +38,7 @@ The following table lists the hardware requirements for worker nodes and control
 | **CPU**              | Intel or AMD x64 CPU with 8 cores                                     | Intel or AMD x64 CPU with 8 cores                  |                                                                                                                                            |
 | **RAM**              | 24 GB                                                                 | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                             |
 | **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                                 | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                            |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10Gb Ethernet shared with data + management     | 2 x 16 Gbps FC or 2 x 10Gb Ethernet dedicated      | Dedicated Storage Adapters, either Fiber Channel or Ethernet (eg iSCSI) will provide reliable access to external or cluster shared storage |
+| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management  | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
 | **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported. | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                       |
 
 ## Install Launchpad for VMs
@@ -192,7 +192,7 @@ The following table lists the hardware requirements for worker nodes and control
 
 7.  Fill out the following fields for each section.
 
-    ### Networking
+    ### Network Settings
 
     | **Parameter**                        | **Description**                                                                                                                                      |
     | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -204,7 +204,7 @@ The following table lists the hardware requirements for worker nodes and control
     | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                                         |
     | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                            |
     | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the br0 bridge interface or a VLAN sub-interface of br0.                                     |
-    | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or to be dynamically attached on `br0`. Include VLAN 1 and all VM VLANs also. For example, `1,10,20`. |
+    | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`.          |
 
     ### OS & Metrics
 
@@ -222,7 +222,7 @@ The following table lists the hardware requirements for worker nodes and control
     | **OCI Pack Registry Username** | Username to authenticate with the container image registry used by the platform. |
     | **OCI Pack Registry Password** | Password for the container image registry. This value is stored securely.        |
 
-    ### OIDC
+    ### OIDC Settings
 
     | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
     | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
