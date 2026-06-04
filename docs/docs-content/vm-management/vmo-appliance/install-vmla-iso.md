@@ -251,7 +251,7 @@ The following table lists the hardware requirements for worker nodes and control
 
     | **Parameter**                                 | **Description**                                                                                                                                            |
     | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface when possible.                |
+    | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface or bond when possible.                |
     | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
 
 8.  On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
