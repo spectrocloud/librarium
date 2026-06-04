@@ -27,8 +27,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 ## Prerequisites
 
-- Configure the network with a bridge network set to `br0`. For more information about network considerations, review
-  [VMO Network Configuration Considerations](./vmo-networking.md).
+<PartialsComponent category="vmo-appliance" name="install_prereqs" />
 
 ## Cluster Hardware Resources
 
