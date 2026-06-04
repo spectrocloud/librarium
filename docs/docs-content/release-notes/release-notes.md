@@ -53,8 +53,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2236 -->
 
-- Terraform cluster resources now support triggering manual control plane Kubernetes Public Key Infrastructure (PKI) certificates for Palette
-  clusters using the new `renew_k8s_certificates_now` field.
+- Terraform cluster resources now support triggering manual control plane Kubernetes Public Key Infrastructure (PKI)
+  certificates for Palette clusters using the new `renew_k8s_certificates_now` field.
 
 ### Bug Fixes
 
@@ -66,7 +66,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
 
-- Fixed a Terraform issue issue where imported [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
+- Fixed a Terraform issue issue where imported
+  [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
   resources would repeatedly show Terraform plan differences for sensitive cluster profile variables.
 
 <!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
