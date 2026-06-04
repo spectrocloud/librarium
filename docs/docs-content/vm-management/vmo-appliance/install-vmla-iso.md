@@ -17,13 +17,13 @@ your VMO cluster, and link the nodes together to form your cluster. After you de
 
 Each device where you install the Launchpad for VMs Appliance ISO must meet the following hardware requirements.
 
-| **Component**        | **Minimum**                                                       | **Recommended**                                    | **Additional Information**                                                                                                                 |
-| -------------------- | ----------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| **CPU**              | Intel or AMD64 CPU with 8 cores                                   | Intel or AMD64 CPU with 8 cores                    | -                                                                                                                                          |
-| **RAM**              | 24 GB                                                             | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                             |
-| **Network Adapters** | 2 x 1 Gbps (data + management)                                    | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                            |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated      | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                     | Local disk of at least 500 GB for the OS boot      | Storage Area Network (SAN) boot is supported. Booting from SAN requires planning due to the multi-path configuration.                      |
+| **Component**        | **Minimum**                                                          | **Recommended**                                    | **Additional Information**                                                                                                                        |
+| -------------------- | -------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD64 CPU with 8 cores                                      | Intel or AMD64 CPU with 8 cores                    | -                                                                                                                                                 |
+| **RAM**              | 24 GB                                                                | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
+| **Network Adapters** | 2 x 1 Gbps (data + management)                                       | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
+| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
+| **Disks**            | Local disk of at least 500 GB for the OS boot                        | Local disk of at least 500 GB for the OS boot      | Storage Area Network (SAN) boot is supported. Booting from SAN requires planning due to the multi-path configuration.                             |
 
 ## Prerequisites
 
@@ -33,13 +33,13 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 The following table lists the hardware requirements for worker nodes and control plane nodes in a VMO cluster.
 
-| **Component**        | **Minimum**                                                           | **Recommended**                                    | **Comments**                                                                                                                               |
-| -------------------- | --------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| **CPU**              | Intel or AMD x64 CPU with 8 cores                                     | Intel or AMD x64 CPU with 8 cores                  |                                                                                                                                            |
-| **RAM**              | 24 GB                                                                 | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                             |
-| **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                                 | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                            |
+| **Component**        | **Minimum**                                                           | **Recommended**                                    | **Comments**                                                                                                                                      |
+| -------------------- | --------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD x64 CPU with 8 cores                                     | Intel or AMD x64 CPU with 8 cores                  |                                                                                                                                                   |
+| **RAM**              | 24 GB                                                                 | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
+| **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                                 | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
 | **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management  | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported. | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                       |
+| **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported. | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                              |
 
 ## Install Launchpad for VMs
 
@@ -194,17 +194,17 @@ The following table lists the hardware requirements for worker nodes and control
 
     ### Network Settings
 
-    | **Parameter**                        | **Description**                                                                                                                                      |
-    | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                           |
-    | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.                 |
-    | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                                 |
-    | **Cilium and MetalLB interface**     | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                            |
-    | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.               |
-    | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                                         |
-    | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                            |
-    | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the br0 bridge interface or a VLAN sub-interface of br0.                                     |
-    | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`.          |
+    | **Parameter**                        | **Description**                                                                                                                           |
+    | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
+    | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
+    | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                      |
+    | **Cilium and MetalLB interface**     | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
+    | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
+    | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
+    | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                 |
+    | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the br0 bridge interface or a VLAN sub-interface of br0.                          |
+    | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
 
     ### OS & Metrics
 
