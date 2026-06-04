@@ -23,6 +23,15 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6526 -->
+
+- <TpBadge /> Overriding Cluster API (CAPI) properties is now supported on [AWS
+  EKS](../clusters/public-cloud/aws/eks.md), [Azure IaaS](../clusters/public-cloud/azure/aks.md), and
+  [CloudStack](../clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md) clusters. This allows you to
+  configure advanced provider-specific settings not natively exposed by Palette by supplying YAML that targets the
+  underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
+  Properties](../architecture/override-capi-properties/override-capi-properties.md).
+
 #### Improvements
 
 #### Deprecations and Removals

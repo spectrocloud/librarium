@@ -10,7 +10,76 @@ tags: ["architecture", "capi", "cluster api", "advanced configuration", "azure"]
 This page provides examples and references for overriding Cluster API (CAPI) properties on Azure clusters using Cluster
 API Provider Azure (CAPZ).
 
+## Azure IaaS
+
+Self-managed Azure IaaS clusters use the CAPZ self-managed path. Cluster-level overrides target the `AzureCluster`
+resource, and pool-level overrides target the `AzureMachineTemplate` resource.
+
+| Level   | CAPI Kind              | API References                                                                                                                                                 |
+| ------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| All     | -                      | [CAPZ Book - API Reference](https://capz.sigs.k8s.io/reference/reference) <br /> \*Use with caution as this reference guide is not semantically versioned.     |
+| Cluster | `AzureCluster`         | [v1.18.0 AzureCluster API types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azurecluster_types.go)                 |
+| Pool    | `AzureMachineTemplate` | [v1.18.0 AzureMachineTemplate API types](https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/v1.18.0/api/v1beta1/azuremachinetemplate_types.go) |
+
+### Examples
+
+These examples demonstrate how to override CAPI properties using YAML directly targeting the underlying CAPZ
+self-managed resources.
+
+#### Cluster-Level
+
+```yaml title="Set additional tags on the cluster"
+azureCluster:
+  spec:
+    additionalTags:
+      env: day0
+      owner: Anu
+```
+
+#### Pool-Level
+
+`AzureMachineTemplate` has an extra level of nesting. The spec wraps a `template`, which contains another `spec` field
+that holds the actual machine configuration. All pool-level Azure IaaS overrides use this structure.
+
+```yaml title="Set the VM size"
+azureMachineTemplate:
+  spec:
+    template:
+      spec:
+        vmSize: Standard_D4s_v3
+```
+
+```yaml title="Set the OS disk size"
+azureMachineTemplate:
+  spec:
+    template:
+      spec:
+        osDisk:
+          diskSizeGB: 128
+```
+
+### Unsupported First-Class Properties
+
+:::info
+
+Learn more about the difference between first-class properties and override properties in the
+[First-Class Support vs. Override](./override-capi-properties.md#first-class-support-vs-override) section.
+
+:::
+
+The following properties are not exposed as first-class properties in the
+[supported interfaces for Palette](./override-capi-properties.md#supported-interfaces) but can be configured using
+override.
+
+| CAPZ Resource Type     | Properties                                                                                                                                                                                                                                                                                                        |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AzureCluster`         | `bastionSpec`, `controlPlaneEnabled`, `controlPlaneEndpoint`, `extendedLocation`, `cloudProviderConfigOverrides`, `failureDomains`, `additionalTags`                                                                                                                                                              |
+| `AzureMachineTemplate` | `providerID`, `failureDomain`, `userAssignedIdentities`, `systemAssignedIdentityRole`, `dataDisks`, `additionalTags`, `additionalCapabilities`, `allocatePublicIP`, `enableIPForwarding`, `diagnostics`, `securityProfile.securityType`, `securityProfile.uefiSettings`, `additionalCapabilities.ultraSSDEnabled` |
+
 ## Azure AKS
+
+Azure AKS clusters use the CAPZ managed path. Cluster-level overrides target the `AzureManagedControlPlane` resource,
+and pool-level overrides target the `AzureManagedMachinePool` resource.
 
 | Level   | CAPI Kind                  | API References                                                                                                                                                         |
 | ------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
