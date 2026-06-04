@@ -34,7 +34,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
 
 - A new Azure Linux 3 OS pack for AKS and Azure infrastructure clusters is now available on Artifact Studio for both
-  Palette and VerteX environments.
+  Palette and Palette VerteX environments.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
@@ -53,7 +53,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2236 -->
 
-- The Terraform cluster resources now support triggering manual control plane Kubernetes PKI certificates for Palette
+- Terraform cluster resources now support triggering manual control plane Kubernetes Public Key Infrastructure (PKI) certificates for Palette
   clusters using the new `renew_k8s_certificates_now` field.
 
 ### Bug Fixes
@@ -66,9 +66,8 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
 
-- Fixed a Terraform issue where sensitive cluster profile variables caused perpetual plan differences after importing
-  [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
-  resources.
+- Fixed a Terraform issue issue where imported [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
+  resources would repeatedly show Terraform plan differences for sensitive cluster profile variables.
 
 <!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
