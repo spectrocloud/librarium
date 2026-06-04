@@ -11,6 +11,79 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 5, 2026 - Component Updates {#component-updates-2026-23}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2869 -->
+<!-- RELEASE DATE: June 5, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.x -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.3 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.4 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.14.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.3   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.4  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.4  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.x   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.x   |
+
+<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
+
+- Added a verified Azure Linux OS pack for AKS and Azure infrastructure clusters. The pack supports Azure Linux 3, FIPS,
+  airgap deployments, and is available on Artifact Studio for both Palette and Vertex environments. Pack versioning
+  handles both security patch and node image updates.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+
+- Automated TLS certificate rotation for the Zot registry in edge clusters by integrating with cert-manager.
+  Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime.
+  Applies to connected and airgap clusters, FIPS and non-FIPS.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
+
+- Automated TLS certificate rotation for the Harbor registry in edge clusters by integrating with cert-manager.
+  Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime.
+  Applies to connected and airgap clusters, FIPS and non-FIPS.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2215 -->
+
+- Added the `os_sku` field (optional, ForceNew) to the `machine_pool` block in the `spectrocloud_cluster_aks` Terraform
+  resource, allowing you to specify the OS SKU for AKS node pools.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2236 -->
+
+- Added support for triggering manual certificate renewal for Palette clusters via the Terraform provider, providing an
+  alternative to the UI and API workflows.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2173 -->
+
+- Fixed a Terraform issue where updating the `cluster_profile` list on `spectrocloud_cluster_eks` triggered an erroneous
+  deletion of the removed profile and incorrectly updated the Terraform state with the new profile ID even when the
+  apply failed.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
+
+- Fixed a Terraform drift issue where sensitive cluster profile variables caused perpetual plan differences after
+  importing an Edge Native cluster. The provider now correctly handles masked sensitive variable values returned by the
+  Palette API, preventing false drift on subsequent plans.
+
+<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Packs
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+
+#### Pack Notes
+
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
 ### Security Notices
