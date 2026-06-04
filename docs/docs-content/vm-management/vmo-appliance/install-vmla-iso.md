@@ -145,137 +145,139 @@ The following table lists the hardware requirements for worker nodes and control
 
 ## Create Launchpad for VMs Cluster
 
-1. Log in to Local UI at `https://<host-ip>:5080`. For more information, review
-   [Configure Network Settings](#configure-network-settings).
+1.  Log in to Local UI at `https://<host-ip>:5080`. For more information, review
+    [Configure Network Settings](#configure-network-settings).
 
-2. From the left main menu, select **Cluster**.
+2.  From the left main menu, select **Cluster**.
 
-3. Select **Create cluster**.
+3.  Select **Create cluster**.
 
-4. Fill out the **Basic Information** fields and select **Next**.
+4.  Fill out the **Basic Information** fields and select **Next**.
 
-   | **Parameter**    | **Description**                                         |
-   | ---------------- | ------------------------------------------------------- |
-   | **Cluster name** | Name of the cluster.                                    |
-   | **Tags**         | Key-value pairs to provide metadata about your cluster. |
+    | **Parameter**    | **Description**                                         |
+    | ---------------- | ------------------------------------------------------- |
+    | **Cluster name** | Name of the cluster.                                    |
+    | **Tags**         | Key-value pairs to provide metadata about your cluster. |
 
-5. The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile. After
-   you review the cluster profile, select **Next**.
+5.  The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile.
+    After you review the cluster profile, select **Next**.
 
-   | **Component**              | **Pack Name**                             | **Purpose**                                                                                                                               |
-   | -------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Edge Native BYOI**       | `edge-native-byoi <version>`              | Native Ubuntu OS.                                                                                                                         |
-   | **Kubernetes**             | `edge-k8s <version>`                      | Kubernetes platform.                                                                                                                      |
-   | **Cilium**                 | `cni-cilium-fips <version>`               | CNI and network policy. Multus support for VM networking.                                                                                 |
-   | **Piraeus**                | `piraeus-operator <version>`              | Storage backend. Provides StorageClass for VM disks.                                                                                      |
-   | **Zot**                    | `zot-registry-fips <version>`             | OCI registry. Stores container images for air-gapped deployments.                                                                         |
-   | **Registry Connect**       | `registry-connect <version>`              | Enables integration with OCI-compliant registries.                                                                                        |
-   | **Required config**        | `required-config-1 <version>`             | Initial configuration before continuing.                                                                                                  |
-   | **MetalLB**                | `lb-metallb-helm <version>`               | Loadbalancer implementation for bare metal. Assigns the platform IP address.                                                              |
-   | **Traefik**                | `traefik <version>`                       | Single ingress controller. Provides TLS termination, path-based routing, and the Loadbalancer IP address.                                 |
-   | **Required config**        | `required-config-2 <version>`             | Second configuration before continuing.                                                                                                   |
-   | **Keycloak**               | `keycloak <version>`                      | OIDC identity provider. Handles login, user and group management, and token issuance. Shared `k8s-oidc` client with K8s API and Headlamp. |
-   | **Headlamp**               | `headlamp <version>`                      | Kubernetes cluster explorer. Alternative UI for raw K8s resources.                                                                        |
-   | **Victoria Metrics**       | `victoria-metrics-cluster <version>`      | Optional long-term metrics storage. Supports PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                    |
-   | **OTel Collector**         | `opentelemetry <version>`                 | Metrics pipeline. Receives OTLP from node-agent, and forwards metrics to VMO Manager or Victoria Metrics.                                 |
-   | **VMO**                    | `virtual-machine-orchestrator-v<version>` | Primary UI and API gateway. Manages VMs, templates, golden images, access policies, configuration, and dashboards.                        |
-   | **VM Migration Assistant** | `vm-migration-assistant <version>`        | Migrates VMs from VMware vSphere to VMO.                                                                                                  |
+    | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                               |
+    | -------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Edge Native BYOI**       | `edge-native-byoi`             | Native Ubuntu OS.                                                                                                                         |
+    | **Kubernetes**             | `edge-k8s`                     | Kubernetes platform.                                                                                                                      |
+    | **Cilium**                 | `cni-cilium-fips`              | CNI and network policy. Multus support for VM networking.                                                                                 |
+    | **Piraeus**                | `piraeus-operator`             | Storage backend. Provides StorageClass for VM disks.                                                                                      |
+    | **Zot**                    | `zot-registry-fips`            | OCI registry. Stores container images for air-gapped deployments.                                                                         |
+    | **Registry Connect**       | `registry-connect`             | Enables integration with OCI-compliant registries.                                                                                        |
+    | **Required config**        | `required-config-1`            | Initial configuration before continuing.                                                                                                  |
+    | **MetalLB**                | `lb-metallb-helm`              | Loadbalancer implementation for bare metal. Assigns the platform IP address.                                                              |
+    | **Traefik**                | `traefik`                      | Single ingress controller. Provides TLS termination, path-based routing, and the Loadbalancer IP address.                                 |
+    | **Required config**        | `required-config-2`            | Second configuration before continuing.                                                                                                   |
+    | **Keycloak**               | `keycloak`                     | OIDC identity provider. Handles login, user and group management, and token issuance. Shared `k8s-oidc` client with K8s API and Headlamp. |
+    | **Headlamp**               | `headlamp`                     | Kubernetes cluster explorer. Alternative UI for raw K8s resources.                                                                        |
+    | **Victoria Metrics**       | `victoria-metrics-cluster`     | Optional long-term metrics storage. Supports PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                    |
+    | **OTel Collector**         | `opentelemetry`                | Metrics pipeline. Receives OTLP from node-agent, and forwards metrics to VMO Manager or Victoria Metrics.                                 |
+    | **VMO**                    | `virtual-machine-orchestrator` | Primary UI and API gateway. Manages VMs, templates, golden images, access policies, configuration, and dashboards.                        |
+    | **VM Migration Assistant** | `vm-migration-assistant`       | Migrates VMs from VMware vSphere to VMO.                                                                                                  |
 
-   Additionally, the **VMO Manager** pack bundles the following services.
+    Additionally, the **VMO Manager** pack bundles the following services.
 
-   | **Component**    | **Pack Name**                             | **Purpose**                                                                                        |
-   | ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------- |
-   | **cert-manager** | `virtual-machine-orchestrator-v<version>` | Issues and renews TLS certificates. Single platform CA for all components.                         |
-   | **KubeVirt**     | `virtual-machine-orchestrator-v<version>` | Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
-   | **CDI**          | `virtual-machine-orchestrator-v<version>` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
+    | **Component**    | **Pack Name**                  | **Purpose**                                                                                        |
+    | ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------- |
+    | **cert-manager** | `virtual-machine-orchestrator` | Issues and renews TLS certificates. Single platform CA for all components.                         |
+    | **KubeVirt**     | `virtual-machine-orchestrator` | Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
+    | **CDI**          | `virtual-machine-orchestrator` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
 
-6. Fill out the **Profile Config** page and select **Next**.
+6.  Fill out the **Profile Config** page and select **Next**.
 
-   a. In the **Networking** section, fill out the following fields.
+7.  Fill out the following fields for each section.
 
-   | **Parameter**                        | **Description**                                                                                                                        |
-   | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.             |
-   | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.   |
-   | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                   |
-   | **Cilium and MetalLB interface**     | The physical network interface on each node used for cluster traffic and external service announcements.                               |
-   | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation. |
-   | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                           |
-   | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.              |
-   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the br0 bridge interface or a VLAN sub-interface of br0.                       |
-   | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces on `br0`. Include VLAN 1. For example, `1,10,20`.                                       |
+    ### Networking
 
-   b. In the **OS & Metrics** section, fill out the following fields.
+    | **Parameter**                        | **Description**                                                                                                                        |
+    | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.             |
+    | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.   |
+    | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                   |
+    | **Cilium and MetalLB interface**     | The physical network interface on each node used for cluster traffic and external service announcements.                               |
+    | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation. |
+    | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                           |
+    | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.              |
+    | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the br0 bridge interface or a VLAN sub-interface of br0.                       |
+    | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces on `br0`. Include VLAN 1. For example, `1,10,20`.                                       |
 
-   | **Parameter**                                       | **Description**                                                                                                                           |
-   | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Ubuntu Pro Token (Optional)**                     | Your Ubuntu Pro subscription token for Extended Security Maintenance (ESM) and compliance features. Leave blank without a subscription.   |
-   | **Reserved CPUs for Kubelet and system**            | CPU core IDs reserved for the OS and Kubernetes node agent (Kubelet). The system excludes these cores from workloads. For example, `0-3`. |
-   | **Victoria Metrics Data Retention Period**          | How long to store monitoring metrics before deletion. Use formats such as `30d` for days or `6w` for weeks.                               |
-   | **Victoria Metrics Volume Storage Size (Optional)** | Disk space allocated for storing monitoring metrics. Increase if you expect high cardinality or long retention. For example, `20Gi`.      |
+    ### OS & Metrics
 
-   c. In the **Container & Registry** section, fill out the following fields.
+    | **Parameter**                                       | **Description**                                                                                                                           |
+    | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Ubuntu Pro Token (Optional)**                     | Your Ubuntu Pro subscription token for Extended Security Maintenance (ESM) and compliance features. Leave blank without a subscription.   |
+    | **Reserved CPUs for Kubelet and system**            | CPU core IDs reserved for the OS and Kubernetes node agent (Kubelet). The system excludes these cores from workloads. For example, `0-3`. |
+    | **Victoria Metrics Data Retention Period**          | How long to store monitoring metrics before deletion. Use formats such as `30d` for days or `6w` for weeks.                               |
+    | **Victoria Metrics Volume Storage Size (Optional)** | Disk space allocated for storing monitoring metrics. Increase if you expect high cardinality or long retention. For example, `20Gi`.      |
 
-   | **Parameter**                  | **Description**                                                                  |
-   | ------------------------------ | -------------------------------------------------------------------------------- |
-   | **OCI Pack Registry Username** | Username to authenticate with the container image registry used by the platform. |
-   | **OCI Pack Registry Password** | Password for the container image registry. This value is stored securely.        |
+    ### Container & Registry
 
-   d. In the **OIDC** section, fill out the following fields.
+    | **Parameter**                  | **Description**                                                                  |
+    | ------------------------------ | -------------------------------------------------------------------------------- |
+    | **OCI Pack Registry Username** | Username to authenticate with the container image registry used by the platform. |
+    | **OCI Pack Registry Password** | Password for the container image registry. This value is stored securely.        |
 
-   | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
-   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Platform CA Certificate** | The root Certificate Authority certificate for your platform, encoded in Base64. Used to establish trust for OIDC and internal TLS. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.           |
-   | **Platform CA Private Key** | The private key corresponding to the Platform CA Certificate, encoded in Base64. Keep this secret because it signs all platform certificates. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
-   | **VMO OIDC Login Username** | Username for the initial VMO administrator account created in the OIDC provider (Keycloak).                                                                                                                                                                  |
-   | **VMO OIDC Login email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
-   | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
+    ### OIDC
 
-   e. In the **Keycloak Admin** section, fill out the following fields.
+    | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
+    | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Platform CA Certificate** | The root Certificate Authority certificate for your platform, encoded in Base64. Used to establish trust for OIDC and internal TLS. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.           |
+    | **Platform CA Private Key** | The private key corresponding to the Platform CA Certificate, encoded in Base64. Keep this secret because it signs all platform certificates. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
+    | **VMO OIDC Login Username** | Username for the initial VMO administrator account created in the OIDC provider (Keycloak).                                                                                                                                                                  |
+    | **VMO OIDC Login email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
+    | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
 
-   | **Parameter**                                  | **Description**                                                                                                                           |
-   | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
-   | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
+    ### Keycloak Admin
 
-   f. In the **Local Admin** section, fill out the following fields.
+    | **Parameter**                                  | **Description**                                                                                                                           |
+    | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
+    | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
-   | **Parameter**                 | **Description**                                                                                     |
-   | ----------------------------- | --------------------------------------------------------------------------------------------------- |
-   | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
-   | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
+    ### Local Admin
 
-   g. In the **Storage** section, fill out the following fields.
+    | **Parameter**                 | **Description**                                                                                     |
+    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+    | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
+    | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
 
-   | **Parameter**                                 | **Description**                                                                                                                                            |
-   | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface when possible.                |
-   | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
+    ### Storage
 
-7. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
-   and an SSH public key.
+    | **Parameter**                                 | **Description**                                                                                                                                            |
+    | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface when possible.                |
+    | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
 
-   | **Parameter**                   | **Description**                                                                      |
-   | ------------------------------- | ------------------------------------------------------------------------------------ |
-   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                        |
-   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                     |
-   | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Launchpad host. |
+8.  On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
+    and an SSH public key.
 
-   Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay network,
-   specify a CIDR range for the overlay network to use.
+    | **Parameter**                   | **Description**                                                                      |
+    | ------------------------------- | ------------------------------------------------------------------------------------ |
+    | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                        |
+    | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                     |
+    | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Launchpad host. |
 
-8. On the **Node Config** step, configure worker pools and control plane pools. To assign a host to a node pool, select
-   **Add Item** in the corresponding node pool, and select the host to add. For multi-node clusters, keep the leader
-   node assigned to the control plane node pool. Ensure that you have an odd number of nodes in the control plane. After
-   the cluster is formed, every node in the control plane is considered a leader node.
+    Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay
+    network, specify a CIDR range for the overlay network to use.
 
-   For more information about node pool configurations, review
-   [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
+9.  On the **Node Config** step, configure worker pools and control plane pools. To assign a host to a node pool, select
+    **Add Item** in the corresponding node pool, and select the host to add. For multi-node clusters, keep the leader
+    node assigned to the control plane node pool. Ensure that you have an odd number of nodes in the control plane.
+    After the cluster is formed, every node in the control plane is considered a leader node.
 
-9. Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
-   Use this page to track deployment progress. The Launchpad for VMs host reboots as part of the build process.
+    For more information about node pool configurations, review
+    [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
 
-10. After the cluster deployment is complete, more options appear in the left sidebar.
+10. Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
+    Use this page to track deployment progress. The Launchpad for VMs host reboots as part of the build process.
+
+11. After the cluster deployment is complete, more options appear in the left sidebar.
 
     ![Screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
 
@@ -322,12 +324,12 @@ The following table lists the hardware requirements for worker nodes and control
    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
    | **Overview**                 | KPI cards that show Total VMs, Running, Stopped, Issues, Transitional, and Namespace counts. Select a card to filter VMs. |
    | **Resource Summary**         | CPU and memory cluster usage plus quick links to Data Volumes and Networks.                                               |
-   | **VM CPU USAGE (TOP 10)**    | Defaults to last 1 hour CPU usage by VMs.                                                                                 |
-   | **VM MEMORY USAGE (TOP 10)** | Defaults to last 1 hour memory usage by VMs.                                                                              |
-   | **VM NETWORK I/O**           | Defaults to last 1 hour network usage by VMs.                                                                             |
-   | **VM STATUS DISTRIBUTION**   | Breakdown of healthy and unhealthy VMs.                                                                                   |
-   | **VMS BY NAMESPACE**         | Breakdown of VMs by running, stopped, and other statuses.                                                                 |
-   | **VM NEEDING ATTENTION**     | List of unhealthy VMs.                                                                                                    |
+   | **VM CPU Usage (Top 10)**    | Defaults to last 1 hour CPU usage by VMs.                                                                                 |
+   | **VM Memory Usage (Top 10)** | Defaults to last 1 hour memory usage by VMs.                                                                              |
+   | **VM Network I/O**           | Defaults to last 1 hour network usage by VMs.                                                                             |
+   | **VM Status Distribution**   | Breakdown of healthy and unhealthy VMs.                                                                                   |
+   | **VMs by Namespace**         | Breakdown of VMs by running, stopped, and other statuses.                                                                 |
+   | **VM Needing Attention**     | List of unhealthy VMs.                                                                                                    |
 
 ### Auto-Refresh and Pause
 
