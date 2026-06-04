@@ -13,8 +13,6 @@ tags: ["release-notes"]
 
 ## May 26, 2026 - Release 4.8.56
 
-<!-- PATCH RELEASE TICKET: DOC-2826 -->
-
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8626 -->
