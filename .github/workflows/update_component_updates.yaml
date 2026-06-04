@@ -36,7 +36,7 @@ jobs:
         run: |
           BODY_LOWER=$(echo "$COMMENT_BODY" | tr '[:upper:]' '[:lower:]')
 
-          if [[ "$BODY_LOWER" == *"update patch release notes"* ]]; then
+          if [[ "$BODY_LOWER" == *"update component updates"* ]]; then
             echo "run=true" >> $GITHUB_OUTPUT
           else
             echo "run=false" >> $GITHUB_OUTPUT
