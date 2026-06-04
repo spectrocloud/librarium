@@ -26,8 +26,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 | [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.3   |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.4  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.4  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.9.x   |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.9.x   |
 
 <!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
@@ -35,54 +33,69 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
 
-- Added a verified Azure Linux OS pack for AKS and Azure infrastructure clusters. The pack supports Azure Linux 3, FIPS,
-  airgap deployments, and is available on Artifact Studio for both Palette and Vertex environments. Pack versioning
-  handles both security patch and node image updates.
+- A new Azure Linux 3 OS pack for AKS and Azure infrastructure clusters is now available on Artifact Studio for both
+  Palette and Vertex environments.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
-
-- Automated TLS certificate rotation for the Zot registry in edge clusters by integrating with cert-manager.
-  Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime.
-  Applies to connected and airgap clusters, FIPS and non-FIPS.
-
 <!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
 
-- Automated TLS certificate rotation for the Harbor registry in edge clusters by integrating with cert-manager.
-  Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime.
-  Applies to connected and airgap clusters, FIPS and non-FIPS.
+<!-- prettier-ignore-start -->
+
+- Added automated TLS certificate rotation for the <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> and <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" />  in edge clusters by integrating with `cert-manager`. Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime.
+
+<!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2215 -->
 
-- Added the `os_sku` field (optional, ForceNew) to the `machine_pool` block in the `spectrocloud_cluster_aks` Terraform
-  resource, allowing you to specify the OS SKU for AKS node pools.
+- The
+  [`spectrocloud_cluster_aks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
+  now allows you to specify the OS SKU for AKS node pools using the optional `os_sku` field in the `machine_pool` block.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2236 -->
 
-- Added support for triggering manual certificate renewal for Palette clusters via the Terraform provider, providing an
-  alternative to the UI and API workflows.
+- The Terraform cluster resources now support triggering manual control plane Kubernetes PKI certificates for Palette
+  clusters using the new `renew_k8s_certificates_now` field.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2173 -->
 
-- Fixed a Terraform issue where updating the `cluster_profile` list on `spectrocloud_cluster_eks` triggered an erroneous
-  deletion of the removed profile and incorrectly updated the Terraform state with the new profile ID even when the
-  apply failed.
+- Fixed a Terraform issue where updating the `cluster_profile` list on the
+  [`spectrocloud_cluster_eks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  triggered an erroneous deletion of the removed profile and incorrectly updated the Terraform state.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
 
-- Fixed a Terraform drift issue where sensitive cluster profile variables caused perpetual plan differences after
-  importing an Edge Native cluster. The provider now correctly handles masked sensitive variable values returned by the
-  Palette API, preventing false drift on subsequent plans.
+- Fixed a Terraform issue where sensitive cluster profile variables caused perpetual plan differences after importing an
+  [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
+  resource.
 
 <!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
 ### Packs
 
-| Pack Name | Layer | Non-FIPS | FIPS | New Version |
-| --------- | ----- | -------- | ---- | ----------- |
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4123 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3663 -->
+
+| Pack Name        | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------- | ------ | ------------------ | ------------------ | ----------- |
+| Azure Linux 3    | OS     | :white_check_mark: | :white_check_mark: | 3.0         |
+| Amazon EBS CSI   | CSI    | :x:                | :white_check_mark: | 1.60.0      |
+| Azure Disk       | CSI    | :x:                | :white_check_mark: | 1.34.3      |
+| Calico           | CNI    | :white_check_mark: | :x:                | 3.32.0      |
+| External Secrets | Add-on | :white_check_mark: | :x:                | 2.5.0       |
+| Flannel          | CNI    | :x:                | :white_check_mark: | 0.28.4      |
+| Istio            | Add-on | :white_check_mark: | :x:                | 1.30.0      |
+| Karpenter        | Add-on | :x:                | :white_check_mark: | 1.12.1      |
+| MetalLB          | Add-on | :white_check_mark: | :x:                | 0.16.1      |
 
 #### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> pack version 2.3.0 is now available in the Palette Community Registry.
+
+<!-- prettier-ignore-end -->
 
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
