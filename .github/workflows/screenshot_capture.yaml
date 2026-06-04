@@ -58,19 +58,21 @@ jobs:
           make build-ci
       
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build
-        if: ${{ env.BUILD_EXIT_CODE == '0' }}
+        if: ${{ env.BUILD_EXIT_CODE == '0' || steps.cached_packs.outputs['build-exit-code'] == '0' || steps.cached_cves.outputs['build-exit-code'] == '0' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: "build"

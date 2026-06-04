@@ -46,7 +46,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
+    if: ${{ !github.event.pull_request.draft && github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot-preview[bot]' }}
     steps:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
@@ -56,7 +56,7 @@ jobs:
   vale:
     name: Writing Checks
     needs: [run-ci]
-    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@main
+    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@68b85dba35e13d197b95b3c37fc8414887b4ff71 # main as of June 3, 2026
 
   prettier:
     name: Check Code Formatting
@@ -128,12 +128,14 @@ jobs:
           make build-ci
 
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:

@@ -1,4 +1,4 @@
-# This workflow is triggered when the "Release to Production" workflow is completed OR manually triggered.
+# This workflow is triggered by the "Release to Production" workflow OR manually triggered.
 # It triggers the Algolia DocSearch v3 crawler to reindex the documentation.
 # This workflow could be removed as the Algolia Crawler is also triggered automatically through it's UI admin panel.
 # However, in the event we have to stop using the Algolia DocSearch v3 crawler. We can revert to our own custom crawler and index by uncommenting the code below.
@@ -10,9 +10,7 @@
 name: Algolia Crawler
 
 on:
-  workflow_run:
-    workflows: ["Release to Production"]
-    types: [completed]
+  workflow_call:
   workflow_dispatch:
 
 env:
@@ -23,10 +21,9 @@ env:
 jobs:
   docsearch:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       # - name: Run scraper
       #   env:
@@ -41,7 +38,7 @@ jobs:
 
       - name: Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
