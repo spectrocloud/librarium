@@ -37,6 +37,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8655 -->
+
+- The Palette TUI now includes a **Management Interface** drop-down menu on the **Network Adapter** screen. You can use
+  this option during initial Edge host setup to pin Local UI and host-to-host traffic to a specific network adapter. For
+  more information, refer to
+  [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
+
 #### Improvements
 
 #### Bug Fixes
