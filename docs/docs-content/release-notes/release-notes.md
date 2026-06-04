@@ -66,7 +66,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
 
-- Fixed a Terraform issue issue where imported
+- Fixed a Terraform issue where imported
   [`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
   resources would repeatedly show Terraform plan differences for sensitive cluster profile variables.
 
