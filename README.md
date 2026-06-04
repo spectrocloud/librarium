@@ -1441,6 +1441,14 @@ The scripts update the following files.
 The following table provides an overview of all the environment variables and which pages they are used on. For ease of
 recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix.
 
+#### Jira and Super API
+
+| **Environment Variable** | **Description**  | **Example Value**       |
+| ------------------------ | ---------------- | ----------------------- |
+| `JIRA_EMAIL`             | Jira email.      | `name@spectrocloud.com` |
+| `JIRA_API_TOKEN`         | Jira API token.  | `XXX`                   |
+| `SUPER_API_TOKEN`        | Super API token. | `XXX`                   |
+
 #### Release Notes
 
 | **Environment Variable**    | **Description**                                       | **Example Value**  |
@@ -1453,12 +1461,10 @@ recognition, all environment variables used by these scripts are named using the
 
 #### Component Updates
 
-| **Environment Variable**          | **Description**                                                 | **Example Value** |
-| --------------------------------- | --------------------------------------------------------------- | ----------------- |
-| `RELEASE_COMPONENT_YEAR`          | The year of the component update.                               | `2025`            |
-| `RELEASE_COMPONENT_WEEK`          | The week number of the component update.                        | `39`              |
-| `RELEASE_COMPONENT_START_VERSION` | The first Palette version that the component update applies to. | `4.7.20`          |
-| `RELEASE_COMPONENT_END_VERSION`   | The last Palette version that the component update applies to.  | `4.7.21`          |
+| **Environment Variable**       | **Description**               | **Example Value** |
+| ------------------------------ | ----------------------------- | ----------------- |
+| `RELEASE_ARTIFACT_STUDIO`      | Artifact Studio version.      | `4.9.0`           |
+| `RELEASE_MANAGEMENT_APPLIANCE` | Management Appliance version. | `4.9.8`           |
 
 #### Other Release Updates
 
@@ -1478,9 +1484,10 @@ recognition, all environment variables used by these scripts are named using the
 
 - `make init-release` creates placeholders for all the release related environment variables in your `.env` file. Use
   the placeholders to fill in the values relevant to the Palette release.
-- `make generate-component-updates` creates only the component updates skeleton in the Palette release notes.
 - `make generate-release-notes` creates only the release notes changes for the Palette release.
 - `make generate-release` creates all Palette release related updates, excluding release notes.
+- `make generate-component-updates` creates component updates using Jira API and Super.
+- `make generate-patch-release-notes` creates patch release notes using Jira API and Super.
 - `make ci-local` installs or updates all node dependencies required to start and build the site locally. This command
   is preferred over `npm ci` as it prevents scripts from running during the installation process except for the Sharp
   module dependency.
