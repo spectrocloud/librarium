@@ -1447,7 +1447,8 @@ MAAS and VMware vSphere clusters will now be successfully provisioned on your se
 an additional script that configures the `linstor-lvm-storage` StorageClass. This script should only be executed for
 High Availability (HA) environments.
 
-If you accidentally used the script in a single-node environment, take the following steps to rollback the changes and restore your environment configuration.
+If you accidentally used the script in a single-node environment, take the following steps to rollback the changes and
+restore your environment configuration.
 
 ### Debug Steps
 
@@ -1472,8 +1473,8 @@ If you accidentally used the script in a single-node environment, take the follo
    kubectl get storageclass linstor-lvm-storage --output yaml > linstor-lvm-storage.yaml
    ```
 
-6. Use your preferred editor to modify the `linstor-lvm-storage.yaml`. Change value of the `placementCount` field to `1`.
-   The upgrade script will have set it to `3`.
+6. Use your preferred editor to modify the `linstor-lvm-storage.yaml`. Change value of the `placementCount` field to
+   `1`. The upgrade script will have set it to `3`.
 
    ```yaml {12}
    allowVolumeExpansion: true
