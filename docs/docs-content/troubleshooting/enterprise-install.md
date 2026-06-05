@@ -1475,7 +1475,7 @@ Use the following steps to rollback these changes and restore your environment c
 6. Use your preferred editor to modify the `linstor-lvm-storage.yaml`. Change value of the `placementCount` field to 1.
    The upgrade script will have set it to 3.
 
-   ```yaml {11}
+   ```yaml {12}
    allowVolumeExpansion: true
    apiVersion: storage.k8s.io/v1
    kind: StorageClass
@@ -1513,24 +1513,24 @@ Use the following steps to rollback these changes and restore your environment c
 
 <!-- prettier-ignore-end -->
 
-<Tabs>
+   <Tabs>
 
-<TabItem label="Palette" value="palette">
+   <TabItem label="Palette" value="palette">
 
 ```bash
 kubectl delete pack --namespace <cluster-namespace> zot-registry
 ```
 
-</TabItem>
+   </TabItem>
 
-<TabItem label="Palette VerteX" value="vertex">
+   <TabItem label="Palette VerteX" value="vertex">
 
 ```bash
 kubectl delete pack --namespace <cluster-namespace> zot-registry-fips
 ```
 
-</TabItem>
-</Tabs>
+   </TabItem>
+   </Tabs>
 
 10. Upload the content bundle for your current version of the management appliance to reinstall the Zot Registry pack.
     Refer to the [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide
