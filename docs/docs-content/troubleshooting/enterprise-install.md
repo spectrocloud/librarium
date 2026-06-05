@@ -1511,26 +1511,27 @@ Use the following steps to rollback these changes and restore your environment c
 
 9. Execute the following command to delete the <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> pack from the cluster. Replace the `cluster-namespace` placeholder with your own value.
 
-<!-- prettier-ignore-end -->
 
    <Tabs>
 
    <TabItem label="Palette" value="palette">
 
-```bash
-kubectl delete pack --namespace <cluster-namespace> zot-registry
-```
+   ```bash
+   kubectl delete pack --namespace <cluster-namespace> zot-registry
+   ```
 
    </TabItem>
 
    <TabItem label="Palette VerteX" value="vertex">
 
-```bash
-kubectl delete pack --namespace <cluster-namespace> zot-registry-fips
-```
+   ```bash
+   kubectl delete pack --namespace <cluster-namespace> zot-registry-fips
+   ```
 
    </TabItem>
    </Tabs>
+
+<!-- prettier-ignore-end -->
 
 10. Upload the content bundle for your current version of the management appliance to reinstall the Zot Registry pack.
     Refer to the [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide
