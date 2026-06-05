@@ -31,15 +31,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 ### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
-
-<!-- prettier-ignore-start -->
-
-- Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime for <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> and <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" />  in Edge clusters.
-
-<!-- prettier-ignore-end -->
-
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2215 -->
 
 - The
@@ -77,6 +68,7 @@ resources would repeatedly show Terraform plan differences for sensitive cluster
 | Calico           | CNI    | :white_check_mark: | :x:                | 3.32.0      |
 | External Secrets | Add-on | :white_check_mark: | :x:                | 2.5.0       |
 | Flannel          | CNI    | :x:                | :white_check_mark: | 0.28.4      |
+| Headlamp         | Add-on | :white_check_mark: | :x:                | 0.42.0-rev1 |
 | Istio            | Add-on | :white_check_mark: | :x:                | 1.30.0      |
 | Karpenter        | Add-on | :x:                | :white_check_mark: | 1.12.1      |
 | MetalLB          | Add-on | :white_check_mark: | :x:                | 0.16.1      |
