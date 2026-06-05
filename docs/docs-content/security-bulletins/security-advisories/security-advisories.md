@@ -20,17 +20,17 @@ advisories are published.
 
 :::
 
-## Security Advisory 017 - `debug/pprof` Interface Exposure on Port 9443
+## Security Advisory 017 - Improper Access Control for Debugging and Profiling Interface in Stylus
 
 - **Release Date**: June 4, 2026
-- **Last Updated**: June 4, 2026
+- **Last Updated**: June 5, 2026
 - **Severity**: HIGH
 
 ### Summary
 
 Spectro Cloud has identified an issue where the
-[Go debugging and profiling interface (`debug/pprof`)](https://pkg.go.dev/net/http/pprof) may be accessible on port 9443
-within certain Stylus (Palette Edge agent) deployments. The exposed interface is intended for application debugging and
+[Go debugging and profiling interface (`debug/pprof`)](https://pkg.go.dev/net/http/pprof) may be accessible on certain
+ports on Stylus (Palette Edge agent) deployments. The exposed interface is intended for application debugging and
 performance analysis. If accessible, it can provide detailed runtime information about the process, including goroutine
 stacks, heap information, memory allocations, thread information, and CPU profiling data.
 
@@ -63,7 +63,7 @@ is limited to environments where the endpoint is reachable over the network.
 
 Customers are encouraged to take the following actions:
 
-- Restrict network access to port 9443 to required Kubernetes control-plane components only.
+- Restrict network access to affected ports to required Kubernetes control-plane components only.
 - Review firewall rules, security groups, and network policies to ensure the endpoint is not accessible from untrusted
   networks.
 - Block direct user or workload access where possible.
