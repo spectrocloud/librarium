@@ -27,7 +27,17 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 ## Prerequisites
 
-<PartialsComponent category="vmo-appliance" name="install_prereqs" />
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
+  Launchpad for VMs installation process. This is optional but recommended for security and compliance purposes.
+
+- Configure the network with a bridge network set to `br0`. For more information about network considerations, review
+  [VMO Network Configuration Considerations](/vm-management/vmo-appliance/vmo-networking/).
+
+- A virtual IP address (VIP) must be available for the Launchpad for VMs management cluster. The Launchpad for VMs
+  installation process assigns the VIP and uses it for load balancing and high availability. The VIP must be accessible
+  to all nodes in the Launchpad for VMs management cluster.
+
+- <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Launchpad for VMs" />
 
 ## Cluster Hardware Resources
 
@@ -41,11 +51,13 @@ The following table lists the hardware requirements for worker nodes and control
 | **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management  | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
 | **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported. | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                              |
 
-## Install Launchpad for VMs
+## Install Launchpad for VMs {#install}
 
 1. Boot your Launchpad for VMs device from the Launchpad for VMs appliance ISO.
 
-2. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press
+2. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
+
+3. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press
    **ENTER** to proceed to the next screen.
 
    :::danger
@@ -54,19 +66,19 @@ The following table lists the hardware requirements for worker nodes and control
 
    :::
 
-3. On the **Installation Options** screen, select whether the installer should do **nothing**, **reboot**, or
+4. On the **Installation Options** screen, select whether the installer should do **nothing**, **reboot**, or
    **poweroff** after the installation is complete. After the installation is complete, disconnect the ISO.
 
-4. When the Launchpad for VMs system boots up, press **F2** to open the TUI. Create an OS user with the necessary
+5. When the Launchpad for VMs system boots up, press **F2** to open the TUI. Create an OS user with the necessary
    permissions to operate Launchpad for VMs by entering a username and password. Press **ENTER** to progress to the next
    screen.
 
-5. The terminal displays a console where you provide hostname and network configuration for the Launchpad host.
+6. The terminal displays a console where you provide hostname and network configuration for the Launchpad host.
 
    Review the existing hostname and, optionally, change it. Use the **TAB** key or the up and down arrow keys to switch
    between fields. Press **ENTER** to apply each change.
 
-6. In **Network Adapter**, select a network adapter to configure. By default, network adapters request an IP address
+7. In **Network Adapter**, select a network adapter to configure. By default, network adapters request an IP address
    automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
    block of each adapter's possible IP address appears on the **Network Adapter** screen.
 
@@ -74,19 +86,19 @@ The following table lists the hardware requirements for worker nodes and control
    IP mode, provide a static external IP address, subnet mask, and the default gateway address. A static external IP
    address removes the existing DHCP settings.
 
-7. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
+8. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
    ID segments network traffic on the same physical network interface for network isolation. If you assign a VLAN ID,
    the Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
 
-8. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
+9. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
    interface can send without fragmentation. Press **ENTER** to apply the change.
 
-9. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
-   search domain. Press **ENTER** to apply the change.
+10. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
+    search domain. Press **ENTER** to apply the change.
 
-10. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
+11. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
 
-11. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
+12. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
     terminal screen displays the hostname and network information of your Launchpad host. Verify that all displayed
     information is consistent with your configurations.
 
