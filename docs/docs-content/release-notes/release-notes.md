@@ -23,6 +23,12 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6803 -->
+
+- Palette now supports overriding Cluster API Machine Health Check (MHC) settings per node pool on Palette eXtended
+  Kubernetes (PXK) infrastructure clusters. This capability does not apply to EKS, AKS, or GKE clusters. For more
+  information, refer to [Node Pools](../clusters/cluster-management/node-pool.md).
+
 #### Improvements
 
 #### Deprecations and Removals
