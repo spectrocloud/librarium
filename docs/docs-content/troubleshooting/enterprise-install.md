@@ -1469,7 +1469,7 @@ Use the following steps to rollback these changes and restore your environment c
 5. Export the `linstor-lvm-storage` StorageClass configuration and save it to the `linstor-lvm-storage.yaml` YAML file.
 
    ```bash
-   kubectl get storageclass linstor-lvm-storage -o yaml > linstor-lvm-storage.yaml
+   kubectl get storageclass linstor-lvm-storage --output yaml > linstor-lvm-storage.yaml
    ```
 
 6. Use your preferred editor to modify the `linstor-lvm-storage.yaml`. Change value of the `placementCount` field to 1.
@@ -1495,7 +1495,7 @@ Use the following steps to rollback these changes and restore your environment c
    volumeBindingMode: WaitForFirstConsumer
    ```
 
-7. Navigate back to your termina. Execute the following command to delete the existing StorageClass.
+7. Navigate back to your terminal. Execute the following command to delete the existing StorageClass.
 
    ```bash
    kubectl delete storageclass linstor-lvm-storage
@@ -1504,7 +1504,7 @@ Use the following steps to rollback these changes and restore your environment c
 8. Execute the following command to create the StorageClass using the modified file.
 
    ```bash
-   kubectl apply -f linstor-lvm-storage.yaml
+   kubectl apply --file linstor-lvm-storage.yaml
    ```
 
 <!-- prettier-ignore-start -->
@@ -1532,6 +1532,6 @@ kubectl delete pack --namespace <cluster-namespace> zot-registry-fips
 </TabItem>
 </Tabs>
 
-10. Upload the content bundle for your current version of the management appliance to reinstalla the Zot Registry pack.
+10. Upload the content bundle for your current version of the management appliance to reinstall the Zot Registry pack.
     Refer to the [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide
     for further information.
