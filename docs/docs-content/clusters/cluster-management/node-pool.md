@@ -110,7 +110,7 @@ settings may not be available.
 | **Enable Autoscaler**                  | Scale the worker pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Public cloud (AWS, Azure, and GCP) IaaS clusters and private data center (VMware vSphere, Apache CloudStack, and MAAS) clusters use the Cluster API [autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) tool; Azure AKS uses the [Azure autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler?tabs=azure-cli) tool, which is based on the Cluster API autoscaler. <br/> <br/> **NOTE:** If autoscaling is enabled when deploying [VMware vSphere clusters](../data-center/vmware/create-manage-vmware-clusters.md) using an [IP Address Management (IPAM) node pool](../pcg/manage-pcg/create-manage-node-pool.md) with [static placement configured](../pcg/deploy-pcg/vmware.md#static-placement-configuration), the **Maximum size** determines the number of IP addresses automatically reserved for worker nodes. During day-2 operations, even if autoscaler is disabled or the **Maximum size** of the worker pool is reduced, the original number of IP addresses remains allocated. To release the IP addresses, you must [delete the worker node pool](#delete-a-node-pool). |
 | **Number of nodes in the pool**        | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | **Node repave interval**               | The time interval in seconds between repaves. The default value is 0 seconds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| **Skip worker node update (Optional)** | Enable this option to skip updating worker nodes during a cluster upgrade. The version difference between the control plane and worker nodes must not exceed the [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold. <br /><br /> This is useful for production workloads that require high availability or for nodes running critical applications that cannot tolerate downtime. For example, if you have a worker pool dedicated to running database instances or real-time processing services, enable this option to maintain service continuity while still allowing the control plane to receive security patches and feature updates. You can then schedule [worker node updates](../cluster-management/cluster-updates.md#trigger-worker-node-upgrade) during planned maintenance windows.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Skip worker node update (Optional)** | Enable this option to skip updating worker nodes during a cluster upgrade. The version difference between the control plane and worker nodes must not exceed the [N-3 minor version skew supported by Kubernetes](https://kubernetes.io/releases/version-skew-policy/). Palette enforces this during cluster profile updates and blocks you from updating if you attempt to exceed the N-3 threshold. <br /><br /> This is useful for production workloads that require high availability or for nodes running critical applications that cannot tolerate downtime. For example, if you have a worker pool dedicated to running database instances or real-time processing services, enable this option to maintain service continuity while still allowing the control plane to receive security patches and feature updates. You can then schedule [worker node updates](../cluster-management/cluster-updates.md#trigger-worker-node-upgrade) during planned maintenance windows. <br /><br /> For full details on supported cluster types, behavior during profile updates, and how to trigger the deferred worker upgrade, refer to [Skip Worker Node Update](#skip-worker-node-update).                                                                                                                                                                                                                                                                 |
 | **Additional Labels**                  | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Node Labels](./node-labels.md) guide.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Additional Annotations (Optional)**  | Additional Kubernetes [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to assign to each worker node.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Override Kubeadm Configuration**     | Adjust kubelet arguments for [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) or pre-kubeadm commands to meet specific operational or environment requirements for your worker nodes. This option is disabled by default. When enabled, the **Configure Kubeadm** button appears.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -130,6 +130,64 @@ Some features may not be available for all infrastructure providers. Review each
 configuration settings to learn more.
 
 :::
+
+## Skip Worker Node Update
+
+The **Skip worker node update (Optional)** toggle lets you upgrade the control plane of a cluster to a newer Kubernetes
+version while deferring the upgrade of one or more worker pools. This is supported on the following cluster types:
+
+- AWS IaaS clusters
+- MAAS clusters
+- VMware vSphere clusters
+- Connected Edge Native clusters (available in both Palette UI and Local UI)
+
+:::info
+
+For connected Edge Native clusters, this toggle is also available in the Local UI. Airgapped Edge clusters are not
+supported.
+
+:::
+
+### When to Use
+
+Enable this toggle when you want to advance the control plane (for example, to apply a security patch or LTS upgrade)
+without immediately repaving edge worker nodes. You can then schedule the worker pool upgrade during a planned
+maintenance window.
+
+### Behavior During Cluster Profile Updates
+
+When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
+do not have **Skip worker node update** enabled. Worker pools with the toggle enabled are skipped and stay at their
+current Kubernetes version.
+
+:::info
+
+Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/). If
+enabling **Skip worker node update** on a pool would cause it to fall more than three minor versions behind the control
+plane, Palette blocks the operation with a validation error.
+
+:::
+
+### Autoscaler Behavior
+
+New nodes added by the cluster autoscaler to a skipped worker pool run the pool's current Kubernetes version, not the
+control plane version.
+
+### Upgrade a Skipped Worker Pool
+
+To align a skipped worker pool with the control plane, disable the **Skip worker node update** toggle on that pool.
+Disabling the toggle triggers a repave of the worker pool to match the control plane's Kubernetes version.
+
+:::danger
+
+Disabling **Skip worker node update** triggers a repave of the worker pool. Ensure you are ready to repave before
+disabling the toggle.
+
+:::
+
+For step-by-step instructions, refer to [Trigger Worker Node Upgrade](cluster-updates.md#trigger-worker-node-upgrade).
+For Edge Native-specific upgrade behavior, refer to
+[Edge Cluster Upgrade Behavior](../edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
 
 ## Create a New Node Pool
 

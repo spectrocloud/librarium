@@ -141,6 +141,12 @@ management.
    the control plane will be considered a leader node.
 
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
+
+   Optionally, enable **Skip worker node update** on a worker pool to allow the control plane to be upgraded
+   independently of that pool. For details, refer to
+   [Skip Worker Node Update](../../../cluster-management/node-pool.md#skip-worker-node-update) and
+   [Edge Cluster Upgrade Behavior](../../cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
+
    After you finish configuration, click **Next**.
 
 9. Review your configurations and deploy the cluster. As your cluster begins to deploy, the status and details of the

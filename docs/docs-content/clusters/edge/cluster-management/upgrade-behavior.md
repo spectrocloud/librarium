@@ -123,3 +123,46 @@ Do not change to a different storage pack after provisioning a cluster. You can 
 pack, but if you want to use a different storage pack altogether, we recommend you create another cluster.
 
 :::
+
+## Decoupled Control Plane and Worker Node Upgrades
+
+Connected Edge Native clusters support upgrading the control plane independently from worker pools. You can enable the
+**Skip worker node update (Optional)** toggle on individual worker pools to defer their Kubernetes upgrade while the
+control plane advances.
+
+:::info
+
+This feature is only available for connected Edge Native clusters. Airgapped Edge clusters are not supported. The toggle
+is available in both Palette UI and Local UI.
+
+:::
+
+### How It Works
+
+When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
+do not have **Skip worker node update** enabled. Worker pools with the toggle enabled are skipped and stay at their
+current Kubernetes version.
+
+Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/). If
+enabling the toggle would cause a worker pool to fall more than three minor versions behind the control plane, Palette
+blocks the operation with a validation error.
+
+New nodes added by the cluster autoscaler to a skipped worker pool run the pool's current Kubernetes version, not the
+control plane version.
+
+### Upgrade a Skipped Worker Pool
+
+To align a skipped worker pool with the control plane, disable the **Skip worker node update** toggle on that pool.
+Disabling the toggle triggers a repave of the worker pool to match the control plane's Kubernetes version.
+
+:::danger
+
+Disabling **Skip worker node update** triggers a repave of the worker pool. Ensure you are ready to repave before
+disabling the toggle.
+
+:::
+
+For configuration details, refer to
+[Skip Worker Node Update](../../../clusters/cluster-management/node-pool.md#skip-worker-node-update). For step-by-step
+instructions to trigger the upgrade, refer to
+[Trigger Worker Node Upgrade](../../../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade).
