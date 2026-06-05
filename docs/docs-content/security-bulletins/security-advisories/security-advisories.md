@@ -29,7 +29,8 @@ advisories are published.
 ### Summary
 
 Spectro Cloud has identified an issue where the
-[Go debugging and profiling interface (`debug/pprof`)](https://pkg.go.dev/net/http/pprof) may be accessible on certain ports on Stylus (Palette Edge agent) deployments. The exposed interface is intended for application debugging and
+[Go debugging and profiling interface (`debug/pprof`)](https://pkg.go.dev/net/http/pprof) may be accessible on certain
+ports on Stylus (Palette Edge agent) deployments. The exposed interface is intended for application debugging and
 performance analysis. If accessible, it can provide detailed runtime information about the process, including goroutine
 stacks, heap information, memory allocations, thread information, and CPU profiling data.
 
