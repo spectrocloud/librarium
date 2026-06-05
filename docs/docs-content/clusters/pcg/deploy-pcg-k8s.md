@@ -113,40 +113,133 @@ development and testing environments.
 
 Use the following steps to install the PCG in your existing Kubernetes cluster.
 
-1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
+1.  Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
-2. From the left main menu, select **Tenant Settings**.
+2.  From the left main menu, select **Tenant Settings**.
 
-3. From the **Tenant Settings** menu, select **Private Cloud Gateways** > **Add New Private Cloud Gateway**.
+3.  From the **Tenant Settings** menu, select **Private Cloud Gateways** > **Add New Private Cloud Gateway**.
 
-4. On the **Private Cloud Gateway installation instructions** modal window, select **Self Hosted**.
+4.  On the **Private Cloud Gateway installation instructions** modal window, select **Self Hosted**.
 
-5. Enter a **Private cloud gateway** name and use the **Cloud type** drop-down menu to select the target infrastructure
-   provider.
+5.  Enter a **Private cloud gateway** name and use the **Cloud type** drop-down menu to select the target infrastructure
+    provider.
 
-6. **Create** your PCG when finished. A set of instructions with commands is displayed on the drawer.
+6.  **Create** your PCG when finished. A set of instructions with commands is displayed on the drawer.
 
-   ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/deploy-pcg-k8s_kubectl-cmds-view.webp)
+    ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/deploy-pcg-k8s_kubectl-cmds-view.webp)
 
-7. Select **Download manifest**.
+7.  Select **Download manifest**.
 
-8. Apply the downloaded manifests to your Kubernetes cluster using the appropriate download paths.
+    :::info
 
-   ```hideClipboard shell
-   kubectl apply --filename <path-to-download>/cluster-*-jet-manifest.yaml
-   kubectl apply --filename <path-to-download>/cluster-*-ally-manifest.yaml
-   ```
+    Once you select **Download manifest**, the cluster status transitions to **Importing**. If you close the drawer and
+    later discover the download was blocked or did not complete, the drawer will not reopen. In this case, you must
+    fetch the manifests using the [Palette API](/api/introduction/) endpoints `/v1/pcg/<pcg-uid>/services/jet/manifest`
+    and `/v1/pcg/<pcg-uid>/services/ally/manifest`.
 
-9. When the agents initialize, the drawer disappears, and your **Cluster Status** transitions to **Running**. Within a
-   few minutes, your cluster's **Health** status changes to **Healthy**.
+    :::
 
-   :::tip
+    <details>
 
-   You can provide network proxy configurations to your Kubernetes clusters deployed through Palette. To provide network
-   proxy configurations to your host clusters, update the PCG with the proxy server details. To learn more, check out
-   the [Proxy Configuration](./manage-pcg/configure-proxy.md) guide.
+    <summary>Retrieve Manifests Manually</summary>
 
-   :::
+    Replace the placeholders with the appropriate values.
+
+    | **Parameter**        | **Description**                                                                                                                                         |
+    | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `<palette-endpoint>` | The endpoint of your Palette instance.                                                                                                                  |
+    | `<cluster-uid>`      | The unique ID assigned to imported cluster being used as a PCG. Found at **Tenant Settings** > **Private Cloud Gateways** > **[PCG]** > **Cluster ID**. |
+    | `<pcg-uid>`          | The unique ID assigned to the PCG. Must be retrieved using the cluster UID.                                                                             |
+    | `<api-key>`          | Your [Palette API Key](/user-management/authentication/api-key/create-api-key/).                                                                        |
+    | `<jwt-token>`        | Your Palette [Authorization Token](/user-management/authentication/authorization-token/).                                                               |
+
+      <Tabs>
+
+      <TabItem label="API Key" value="api">
+
+        1. Fetch the `<pcg-uid>` associated with the `<cluster-uid>`.
+
+            ```bash
+            curl --silent --request GET \
+              "https://<palette-endpoint>/v1/overlords" \
+              --header "ApiKey: <api-key>" | \
+              jq -r --arg cid "<cluster-uid>" \
+              '.items[] | select(.spec.spectroClusterUid == $cid) | .metadata.uid'
+            ```
+
+        2. Retrieve the Jet manifest.
+
+            ```bash
+            curl --silent --show-error --request GET \
+                "https://<palette-endpoint>/v1/pcg/<pcg-uid>/services/jet/manifest" \
+                --header "ApiKey: <api-key>" \
+                --output "cluster-<pcg-uid>-jet-manifest.yaml"
+            ```
+
+        3. Retrieve the Ally manifest.
+
+            ```bash
+            curl --silent --show-error --request GET \
+              "https://<palette-endpoint>/v1/pcg/<pcg-uid>/services/ally/manifest" \
+              --header "ApiKey: <api-key>" \
+              --output "cluster-<pcg-uid>-ally-manifest.yaml"
+            ```
+
+      </TabItem>
+
+      <TabItem label="JWT Token" value="JWT">
+
+        1. Fetch the `<pcg-uid>` associated with the `<cluster-uid>`.
+
+            ```bash
+            curl --silent --request GET \
+              "https://<palette-endpoint>/v1/overlords" \
+              --header "Authorization: <jwt-token>" | \
+              jq -r --arg cid "<cluster-uid>" \
+              '.items[] | select(.spec.spectroClusterUid == $cid) | .metadata.uid'
+            ```
+
+        2. Retrieve the Jet manifest.
+
+            ```bash
+            curl --silent --show-error --request GET \
+                "https://<palette-endpoint>/v1/pcg/<pcg-uid>/services/jet/manifest" \
+                --header "Authorization: <jwt-token>" \
+                --output "cluster-<pcg-uid>-jet-manifest.yaml"
+            ```
+
+        3. Retrieve the Ally manifest.
+
+            ```bash
+            curl --silent --show-error --request GET \
+              "https://<palette-endpoint>/v1/pcg/<pcg-uid>/services/ally/manifest" \
+              --header "Authorization: <jwt-token>" \
+              --output "cluster-<pcg-uid>-ally-manifest.yaml"
+            ```
+
+      </TabItem>
+
+      </Tabs>
+
+    </details>
+
+8.  Apply the downloaded manifests to your Kubernetes cluster using the appropriate download paths.
+
+    ```shell
+    kubectl apply --filename "<path-to-download>/cluster-*-jet-manifest.yaml"
+    kubectl apply --filename "<path-to-download>/cluster-*-ally-manifest.yaml"
+    ```
+
+9.  When the agents initialize, the drawer disappears, and your **Cluster Status** transitions to **Running**. Within a
+    few minutes, your cluster's **Health** status changes to **Healthy**.
+
+    :::tip
+
+    You can provide network proxy configurations to your Kubernetes clusters deployed through Palette. To provide
+    network proxy configurations to your host clusters, update the PCG with the proxy server details. To learn more,
+    check out the [Proxy Configuration](./manage-pcg/configure-proxy.md) guide.
+
+    :::
 
 ## Validate
 
