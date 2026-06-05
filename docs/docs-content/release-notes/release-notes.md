@@ -11,6 +11,84 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 5, 2026 - Component Updates {#component-updates-2026-23}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2869 -->
+<!-- RELEASE DATE: June 5, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.x -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.3 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.4 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.14.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.3   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.4  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.4  |
+
+<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
+<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
+
+<!-- prettier-ignore-start -->
+
+- Certificates are now automatically renewed before expiration, eliminating manual intervention and service downtime for <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> and <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" />  in Edge clusters.
+
+<!-- prettier-ignore-end -->
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2215 -->
+
+- The
+  [`spectrocloud_cluster_aks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
+  now allows you to specify the OS SKU for AKS node pools using the optional `os_sku` field in the `machine_pool` block.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2236 -->
+
+- Terraform cluster resources now support triggering manual control plane Kubernetes Public Key Infrastructure (PKI)
+  certificates for Palette clusters using the new `renew_k8s_certificates_now` field.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2173 -->
+
+- Fixed a Terraform issue where updating the `cluster_profile` list on the
+  [`spectrocloud_cluster_eks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  triggered an erroneous deletion of the removed profile and incorrectly updated the Terraform state.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
+
+- Fixed a Terraform issue where imported
+[`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
+resources would repeatedly show Terraform plan differences for sensitive cluster profile variables.
+<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4123 -->
+
+| Pack Name        | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI   | CSI    | :x:                | :white_check_mark: | 1.60.0      |
+| Azure Disk       | CSI    | :x:                | :white_check_mark: | 1.34.3      |
+| Calico           | CNI    | :white_check_mark: | :x:                | 3.32.0      |
+| External Secrets | Add-on | :white_check_mark: | :x:                | 2.5.0       |
+| Flannel          | CNI    | :x:                | :white_check_mark: | 0.28.4      |
+| Istio            | Add-on | :white_check_mark: | :x:                | 1.30.0      |
+| Karpenter        | Add-on | :x:                | :white_check_mark: | 1.12.1      |
+| MetalLB          | Add-on | :white_check_mark: | :x:                | 0.16.1      |
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> pack version 2.3.0 is now available in the Palette Community Registry.
+
+<!-- prettier-ignore-end -->
+
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
 ### Security Notices
