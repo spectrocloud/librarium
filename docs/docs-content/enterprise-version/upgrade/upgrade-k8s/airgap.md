@@ -24,13 +24,13 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 
 ### Specific Versions
 
-- <PartialsComponent category="self-hosted" name="certificate-loss" />
-
 - <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette" />
 
 - <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette" />
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
+
+- <PartialsComponent category="self-hosted" name="certificate-loss" />
 
 ## Prerequisites
 
