@@ -144,6 +144,15 @@ jobs:
           touch .env
           make generate-component-updates
 
+      - name: Get PR branch
+        if: steps.check.outputs.run == 'true'
+        id: pr
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          BRANCH=$(gh pr view ${{ github.event.issue.number }} --json headRefName --jq .headRefName)
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
       - name: Commit changes
         if: steps.check.outputs.run == 'true'
         env:
@@ -157,7 +166,7 @@ jobs:
           fi
 
           git commit -m "docs: update component updates"
-          git push
+          git push origin HEAD:${{ steps.pr.outputs.branch }}
 
       - name: Comment on PR if commit fails
         if: steps.check.outputs.run == 'true' && failure() && github.event.issue.pull_request
