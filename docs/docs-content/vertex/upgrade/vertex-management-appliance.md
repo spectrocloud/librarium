@@ -29,6 +29,8 @@ remain operational.
 
 ## Upgrade Notes
 
+- <PartialsComponent category="self-hosted" name="certificate-loss" />
+
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette VerteX" />
 
 <PartialsComponent category="self-hosted" name="upgrade-palette-upgrade-notes" edition="Palette VerteX" />
