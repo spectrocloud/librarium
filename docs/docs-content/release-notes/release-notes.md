@@ -44,10 +44,16 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11046 -->
 
-- Fixed an issue that caused
-  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) upgrades or restores to
-  remove custom certificates and replace them with newly generated ones, causing connected Edge clusters to stop
-  reporting status to Palette.
+- Fixed an issue that caused custom Transport Layer Security (TLS) certificate loss when upgrading IP-based
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
+  environments installed using the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md),
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), or
+  [Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md). We recommend
+  customers upgrading to any Palette version between 4.8.47 - 4.9.14 back up their custom certificates prior to
+  initiating the upgrade. Refer to
+  [Scenario - Custom Certificate Handling During Upgrade](../troubleshooting/palette-upgrade.md#scenario---custom-certificate-replaced-after-upgrade)
+  for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8769 -->
 
