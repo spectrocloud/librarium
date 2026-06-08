@@ -46,7 +46,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
+    if: ${{ !github.event.pull_request.draft && github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot-preview[bot]' }}
     steps:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
@@ -56,7 +56,7 @@ jobs:
   vale:
     name: Writing Checks
     needs: [run-ci]
-    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@main
+    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@68b85dba35e13d197b95b3c37fc8414887b4ff71 # main as of June 3, 2026
 
   prettier:
     name: Check Code Formatting
@@ -66,7 +66,7 @@ jobs:
       - name: Retrieve Credentials
         id: import-secrets
          # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
-        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0 as of May 6, 2026
+        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # 4.0.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
@@ -128,12 +128,14 @@ jobs:
           make build-ci
 
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
