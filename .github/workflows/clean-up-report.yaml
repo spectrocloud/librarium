@@ -25,7 +25,7 @@ jobs:
     steps:
 
       - name: Checkout GitHub Pages Branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         
       - name: Remove Branch From Netlify
         run: cd scripts && ./netlify_remove_branch.sh 
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub Pages Branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           ref: gh-pages
 
@@ -46,25 +46,34 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Sanitize branch name for path
+        id: branch
+        env:
+          DELETED_REF: ${{ github.event.ref }}
         run: |
-          BRANCH_SAFE=$(echo "${{ github.event.ref }}" | sed 's/\//-/g')
-          echo "BRANCH_SAFE=$BRANCH_SAFE" >> $GITHUB_ENV
+          BRANCH_SAFE=$(printf '%s\n' "${DELETED_REF}" | sed 's/\//-/g')
+          printf 'branch-safe=%s\n' "$BRANCH_SAFE" >> "$GITHUB_OUTPUT"
 
       - name: Check for workflow reports
+        id: reports
+        env:
+          BRANCH_SAFE: ${{ steps.branch.outputs.branch-safe }}
         run: |
-          if [ -z "$(ls -A reports/${{ env.BRANCH_SAFE }})" ]; then
-            echo "BRANCH_REPORTS_EXIST="false"" >> $GITHUB_ENV
+          if [ -z "$(ls -A "reports/${BRANCH_SAFE}")" ]; then
+            printf 'exists=false\n' >> "$GITHUB_OUTPUT"
           else
-            echo "BRANCH_REPORTS_EXIST="true"" >> $GITHUB_ENV
+            printf 'exists=true\n' >> "$GITHUB_OUTPUT"
           fi
           
       - name: Delete reports from repo for branch
-        if: ${{ env.BRANCH_REPORTS_EXIST == 'true' }}
+        if: ${{ steps.reports.outputs.exists == 'true' }}
         timeout-minutes: 3
+        env:
+          BRANCH_SAFE: ${{ steps.branch.outputs.branch-safe }}
+          DELETED_REF: ${{ github.event.ref }}
         run: |
-          rm -rf reports/${{ env.BRANCH_SAFE }}
+          rm -rf "reports/${BRANCH_SAFE}"
           git add .
-          git commit -m "workflow: remove all reports for branch ${{ github.event.ref }}"
+          git commit -m "workflow: remove all reports for branch ${DELETED_REF}"
 
           while true; do
             git pull --rebase
