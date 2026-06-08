@@ -1,4 +1,4 @@
-# This workflow is triggered when a workflow run of the "Release to Production" workflow is completed or when manually triggered.
+# This workflow is triggered by the "Release to Production" workflow or when manually triggered.
 # The primary purpose of this workflow is to build the site, copy the packs data and upload it as artifacts.
 # The packs data can be used as a fallback when the Palette API cannot return a packs list.
 # The CVE data is also uploaded as an artifact. That way it can be used in the event the internal Security API is down.
@@ -8,9 +8,7 @@ name: Post Release Processing
 
 
 on:
-  workflow_run:
-    workflows: ["Release to Production"]
-    types: [completed]
+  workflow_call:
   workflow_dispatch:
 
 env:
@@ -35,10 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -52,19 +50,21 @@ jobs:
           make build-ci
       
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build Packs
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: "build-packs"
           path: |
@@ -74,7 +74,7 @@ jobs:
           retention-days: 7
 
       - name: Upload Built Security Bulletins
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: "security-bulletins"
           path: .docusaurus/security-bulletins/default/data.json
