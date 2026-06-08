@@ -230,8 +230,8 @@ the Spectro Cloud CLI:
    pack:
      content:
        images:
-         - docker.io/example-image:latest
-         - gcr.io/example-image-two:latest
+         - image: docker.io/example-image:latest
+         - image: gcr.io/example-image-two:latest
    ```
 
    If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
@@ -419,8 +419,8 @@ Spectro Cloud CLI.
    pack:
      content:
        images:
-         - docker.io/example-image:latest
-         - gcr.io/example-image-two:latest
+         - image: docker.io/example-image:latest
+         - image: gcr.io/example-image-two:latest
    ```
 
    If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
