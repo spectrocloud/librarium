@@ -1,4 +1,4 @@
-# This workflow is triggered when a workflow run of the "Release to Production" workflow is completed or when manually triggered.
+# This workflow is triggered by the "Release to Production" workflow or when manually triggered.
 # The primary purpose of this workflow is to take screenshots of the website using Playwright and upload them as artifacts.
 # The screenshots can be used to compare the visual appearance of the website before and after a release.
 # The workflow Visual Comparison uses these screenshots to generate a visual comparison report.
@@ -10,9 +10,7 @@ name: Screenshot Capture
 
 
 on:
-  workflow_run:
-    workflows: ["Release to Production"]
-    types: [completed]
+  workflow_call:
   workflow_dispatch:
 
 
@@ -40,10 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -60,20 +58,22 @@ jobs:
           make build-ci
       
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build
-        if: ${{ env.BUILD_EXIT_CODE == '0' }}
-        uses: actions/upload-artifact@v7
+        if: ${{ env.BUILD_EXIT_CODE == '0' || steps.cached_packs.outputs['build-exit-code'] == '0' || steps.cached_cves.outputs['build-exit-code'] == '0' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: "build"
           path: |
@@ -92,16 +92,16 @@ jobs:
         shardTotal: [4]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Install Dependencies
-        uses: Wandalen/wretry.action@v3
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3
         with: 
             command: npm ci
             attempt_limit: 3
@@ -111,10 +111,10 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: retry action
-        uses: Wandalen/wretry.action@v3
+        uses: Wandalen/wretry.action@e68c23e6309f2871ca8ae4763e7629b9c258e1ea # v3
         with: 
           attempt_limit: 3
-          action: actions/download-artifact@v8
+          action: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
           with: |
             name: build
             path: build
@@ -124,7 +124,7 @@ jobs:
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
 
       - name: Upload Screenshots
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         id: screenshots
         with:
           name: screenshots-${{ matrix.shardIndex }}
@@ -140,14 +140,14 @@ jobs:
     steps:
 
     - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v8
+      uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
       with:
         path: screenshots
         pattern: screenshots-*
         merge-multiple: true
 
     - name: Upload Screenshots
-      uses: actions/upload-artifact@v7
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
       id: screenshots
       with:
         name: "screenshots"
