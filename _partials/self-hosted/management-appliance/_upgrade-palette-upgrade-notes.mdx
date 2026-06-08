@@ -7,7 +7,14 @@ partial_name: upgrade-palette-upgrade-notes
   {props.version}. This script ensures the `linstor-lvm-storage` StorageClass has correct parameters and safely
   recreates the PVC while preserving data.
 
-  This script is _not_ required for single node deployments as it relates to high availability (HA) configurations only.
+  :::warning 
+  
+  Do _not_ execute this script for single-node deployments. This script applies to High Availability (HA) deployments only. 
+
+  If you have a single-node deployment and mistakenly executed the script, refer to the
+  <VersionedLink text="Scenario - Rollback Linstor High Availability Configuration on Single Node Environments" url="/troubleshooting/enterprise-install/#scenario---rollback-linstor-high-availability-configuration-on-single-node-environments"/> troubleshooting guide.
+
+  :::
 
   <details>
 

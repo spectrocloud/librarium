@@ -11,6 +11,10 @@ inputs:
   gh-token:
     description: "GitHub Token for authentication"
     required: true
+outputs:
+  build-exit-code:
+    description: "Exit code from the fallback build."
+    value: ${{ steps.build.outputs['build-exit-code'] }}
 
 runs:
   using: "composite"
@@ -50,9 +54,13 @@ runs:
       shell: bash
 
     - name: Build
+      id: build
       run: |
         rm -rf build
+        set +e
         npm run build
         exit_code=$?
-        echo "BUILD_EXIT_CODE=$$exit_code" >> $GITHUB_ENV
+        set -e
+        printf 'build-exit-code=%s\n' "$exit_code" >> "$GITHUB_OUTPUT"
+        exit "$exit_code"
       shell: bash
