@@ -173,8 +173,8 @@ Several existing, in-place controls significantly reduce the practical impact of
 
 ### Fix Availability
 
-Spectro Cloud is preparing and validating fixes. Self-hosted customers are advised to upgrade their Palette version once
-a fixed release is available.
+Palette and Palette VerteX version 4.8.58 has addressed this security advisory. Self-hosted customers are advised to
+upgrade their Palette version to 4.8.58 or later.
 
 ### Recommended Actions
 
