@@ -45,10 +45,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -77,19 +77,21 @@ jobs:
           echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
       
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Preview
-        if: ${{ env.BUILD_EXIT_CODE == '0' }}
+        if: ${{ env.BUILD_EXIT_CODE == '0' || steps.cached_packs.outputs['build-exit-code'] == '0' || steps.cached_cves.outputs['build-exit-code'] == '0' }}
         run: |
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs-latest.spectrocloud.com --delete
@@ -97,7 +99,7 @@ jobs:
 
 
       - name: Post Netlify URL
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             const marker = "librarium-release-preview";
@@ -143,7 +145,7 @@ jobs:
             }
       - name: Post PR Comment (failure)
         if: ${{ failure() }}
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
             const body = `<!-- librarium-release-preview-failure -->
