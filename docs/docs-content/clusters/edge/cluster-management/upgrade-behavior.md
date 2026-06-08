@@ -137,8 +137,6 @@ is available in both Palette UI and Local UI.
 
 :::
 
-### How It Works
-
 When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
 do not have **Skip worker node update** enabled. Worker pools with the toggle enabled are skipped and stay at their
 current Kubernetes version.
