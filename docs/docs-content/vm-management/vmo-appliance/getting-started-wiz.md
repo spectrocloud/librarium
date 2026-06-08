@@ -36,7 +36,8 @@ Complete the following required configuration steps before you [create your firs
 4. Select **Set Up a Storage Pool**. The appliance creates **Set Up a Storage Pool** during deployment, so the wizard
    marks it complete by default.
 
-5. To create more storage pools, select **+ Create Storage Pool**, enter the following values, and select **Create Storage Pool**. 
+5. To create more storage pools, select **+ Create Storage Pool**, enter the following values, and select **Create
+   Storage Pool**.
 
    | **Parameter**    | **Description**                                                                                   |
    | ---------------- | ------------------------------------------------------------------------------------------------- |
