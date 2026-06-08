@@ -128,11 +128,11 @@ guide for more information.
    - **HEC endpoint**: HEC URL retrieved from the Splunk console.
    - **Token**: HEC token retrieved from the Splunk console.
    - **Advanced Configuration** - Provide optional configuration for log routing and security.
-     - **Index** — Route logs to a specific Splunk index. Leave blank to use your token’s default.
-     - **Source** — Set a custom source identifier for easier filtering in Splunk searches. Leave blank to use the
+     - **Index** - Route logs to a specific Splunk index. Leave blank to use the token default.
+     - **Source** - Set a custom source identifier for easier filtering in Splunk searches. Leave blank to use the
        default.
-     - **Certificate** — Upload your server’s certificate if your Splunk instance uses a self-signed certificate.
-     - **TLS Verification** — Enabled by default. Disable if your endpoint uses a self-signed certificate and you choose
+     - **Certificate** - Upload your server’s certificate if your Splunk instance uses a self-signed certificate.
+     - **TLS Verification** - Enabled by default. Disable if your endpoint uses a self-signed certificate and you choose
        not to upload it.
 
    </TabItem>
