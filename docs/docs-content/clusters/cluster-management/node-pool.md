@@ -139,12 +139,11 @@ version while deferring the upgrade of one or more worker pools. This is support
 - AWS IaaS clusters
 - MAAS clusters
 - VMware vSphere clusters
-- Connected Edge Native clusters (available in both Palette UI and Local UI)
+- Connected Edge Native clusters
 
 :::info
 
-For connected Edge Native clusters, this toggle is also available in the Local UI. Locally managed Edge clusters are not
-supported.
+Locally managed Edge clusters are not supported.
 
 :::
 
