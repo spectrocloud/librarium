@@ -50,7 +50,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/) to
   prevent unsupported drift between the control plane and worker nodes. This enables smoother Kubernetes upgrade
   orchestration on without repaving every worker pool on each version bump. The toggle is available in both Palette
-  UI and Local UI. Airgapped Edge clusters are not supported. For more information, refer to
+  UI and Local UI. Locally managed Edge clusters are not supported. For more information, refer to
   [Skip Worker Node Update](../clusters/cluster-management/node-pool.md#skip-worker-node-update) and
   [Edge Cluster Upgrade Behavior](../clusters/edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
 
