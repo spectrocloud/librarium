@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June XX, 2026 - Release 4.7.X
+## June 8, 2026 - Release 4.7.43
 
 ### Breaking Changes {#breaking-changes-4-7-x}
 
