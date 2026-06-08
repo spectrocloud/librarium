@@ -24,12 +24,14 @@ concurrency:
 jobs:
   sync-gitleaksignore:
     runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: ${{ github.event.inputs.branch || github.ref_name }}
     
     steps:
     - name: Checkout current branch
-      uses: actions/checkout@v6
+      uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
       with:
-        ref: ${{ github.event.inputs.branch || github.ref_name }}
+        ref: ${{ env.BRANCH_NAME }}
 
     - name: Configure Git
       run: |
@@ -38,7 +40,6 @@ jobs:
 
     - name: Extract gitleaksignore entries from version branch
       run: |
-        echo "BRANCH_NAME=${{ github.event.inputs.branch || github.ref_name }}" >> $GITHUB_ENV
         cp .gitleaksignore version_ignore
 
         # Get master version of the file
@@ -56,19 +57,20 @@ jobs:
         echo "New entries to add:"
         cat to_add.txt || true
 
-    - name: Exit early if nothing to add  
+    - name: Exit early if nothing to add
+      id: check_sync
       run: |
         if [ ! -s to_add.txt ]; then
           echo "No new gitleaksignore entries to add to master."
-          echo "SHOULD_SYNC=false" >> $GITHUB_ENV
+          printf 'should-sync=false\n' >> "$GITHUB_OUTPUT"
           rm -f version_ignore master_ignore version_clean master_clean to_add.txt
           exit 0
         else
-          echo "SHOULD_SYNC=true" >> $GITHUB_ENV
+          printf 'should-sync=true\n' >> "$GITHUB_OUTPUT"
         fi
 
     - name: Update .gitleaksignore in master
-      if: ${{ env.SHOULD_SYNC == 'true' }}
+      if: ${{ steps.check_sync.outputs['should-sync'] == 'true' }}
       run: |
         # Create a new branch from master
         git checkout -b "gitleaks-sync-${{ github.run_id }}" origin/master
@@ -83,7 +85,8 @@ jobs:
         git push origin HEAD
 
     - name: Create a PR in master with new .gitleaksignore entries
-      if: ${{ env.SHOULD_SYNC == 'true' }}
+      if: ${{ steps.check_sync.outputs['should-sync'] == 'true' }}
+      id: create_pr
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -95,7 +98,7 @@ jobs:
         | tee /dev/stderr | grep -o 'https://[^ ]*')
 
         # Save the PR URL as an environment variable
-        echo "GITHUB_PR_URL=$pr_url" >> $GITHUB_ENV
+        printf 'pr-url=%s\n' "$pr_url" >> "$GITHUB_OUTPUT"
 
     - name: Cleanup temporary files
       if: always()
@@ -105,18 +108,18 @@ jobs:
         echo "Cleanup complete."
 
     - name: Success Slack Notification
-      if: success() && env.SHOULD_SYNC == 'true'
-      uses: rtCamp/action-slack-notify@v2.3.3
+      if: ${{ success() && steps.check_sync.outputs['should-sync'] == 'true' }}
+      uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
-        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review the [PR](${{ env.GITHUB_PR_URL }}) for more details."
+        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review the [PR](${{ steps.create_pr.outputs['pr-url'] }}) for more details."
     
     - name: Failure Slack Notification
       if: ${{ failure() }}
-      uses: rtCamp/action-slack-notify@v2.3.3
+      uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
