@@ -126,9 +126,9 @@ pack, but if you want to use a different storage pack altogether, we recommend y
 
 ## Decoupled Control Plane and Worker Node Upgrades
 
-Connected (centrally managed) Edge Native clusters support upgrading the control plane independently from worker pools. You can enable the
-**Skip worker node update (Optional)** toggle on individual worker pools to defer their Kubernetes upgrade while the
-control plane advances.
+Connected (centrally managed) Edge Native clusters support upgrading the control plane independently from worker pools.
+You can enable the **Skip worker node update (Optional)** toggle on individual worker pools to defer their Kubernetes
+upgrade while the control plane advances.
 
 :::info
 
