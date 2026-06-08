@@ -10,17 +10,21 @@ keywords: ["self-hosted", "enterprise", "airgap", "kubernetes"]
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette instance installed on Kubernetes.
 
-:::warning
+## Upgrade Notes
 
-Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
-minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
-details.
+### All Versions
 
-:::
+- Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
+  minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
+  details.
 
-If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
-Palette upgrade.
+- If your setup includes a PCG, you must also
+  [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+  Palette upgrade.
+
+### Specific Versions
+
+- <PartialsComponent category="self-hosted" name="certificate-loss" />
 
 ## Prerequisites
 

@@ -11,6 +11,59 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 8, 2026 - Release 4.8.58
+
+### Breaking Changes {#breaking-changes-4-8-x}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10828 -->
+
+- Authentication is now required for the following [Palette API](/api/introduction/) endpoints, which are used for
+  [imported clusters](../clusters/imported-clusters/imported-clusters.md) and
+  [Private Cloud Gateways (PCGs)](../clusters/pcg/pcg.md).
+
+  | **Endpoint**                                | **Required Permissions**                                                                     |
+  | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+  | `/cluster/{uid}/manifest`                   | `cluster.delete` permission                                                                  |
+  | `/v1/pcg/{uid}/services/ally/manifest`      | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/spectroclusters/{uid}/import/manifest` | `cluster.delete` permission                                                                  |
+
+  This change does _not_ affect existing imported clusters and PCGs; it affects _new_ cluster import and PCG workflows,
+  as well as any automation that retrieves manifests from the affected endpoints. As a result, the process of
+  [importing clusters](../clusters/imported-clusters/cluster-import.md) and
+  [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
+  manifests to be downloaded locally before being applied.
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10734 -->
+
+- Several Palette images were rebuilt to ensure their dependencies have the latest security fixes.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11046 -->
+
+- Fixed an issue that caused custom Transport Layer Security (TLS) certificate loss when upgrading IP-based
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
+  environments installed using the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md),
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), or
+  [Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md). We recommend
+  customers upgrading to any Palette version between 4.8.47 - 4.9.14 back up their custom certificates prior to
+  initiating the upgrade. Refer to
+  [Scenario - Custom Certificate Handling During Upgrade](../troubleshooting/palette-upgrade.md#scenario---custom-certificate-replaced-after-upgrade)
+  for more information.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8769 -->
+
+- Fixed an issue that caused `stylus-webhook` pod mutation operations to stall jobs indefinitely after completion.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8690 -->
+
+- Fixed an issue that caused the `cert-renewal` to fail to be triggered when
+  [local Edge clusters](../clusters/edge/edge-native-lifecycle.md#local-clusters) are restarted.
+
 ## May 26, 2026 - Release 4.8.56
 
 <!-- PATCH RELEASE TICKET: DOC-2826 -->
