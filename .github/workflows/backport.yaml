@@ -9,7 +9,7 @@
 name: Backport
 
 on:
-  pull_request_target:
+  pull_request:
     types: ["labeled", "closed"]
 
 # Principle of least privilege: this workflow writes with the Vault PAT below,
@@ -19,7 +19,7 @@ permissions:
   pull-requests: read
 
 env:
-  GITHUB_BRANCH: ${{ github.ref_name }} 
+  GITHUB_BRANCH: ${{ github.event.pull_request.head.ref }}
 
 jobs:
   backport:
@@ -52,32 +52,21 @@ jobs:
         id: count_prs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           PR_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
-            jq --arg n "${{ github.event.pull_request.number }}" '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]" and (.title | contains("(#\($n))")))] | length')
+            "https://api.github.com/repos/${REPOSITORY}/pulls?state=open&per_page=100" | \
+            jq --arg n "$PR_NUMBER" '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]" and (.title | contains("(#\($n))")))] | length')
           echo "Number of backport PRs created by vault-token-factory-spectrocloud for this PR: $PR_COUNT"
           echo "pr_count=$PR_COUNT" >> $GITHUB_OUTPUT
 
-      - name: Determine branch name
-        id: extract_branch
-        # Security: pass GitHub context values through env so untrusted branch names are data, not shell source text.
-        # printf avoids echo edge cases and prevents newline injection into GITHUB_ENV.
-        env:
-          HEAD_REF: ${{ github.head_ref }}
-          REF_NAME: ${{ github.ref_name }}
-          EVENT_NAME: ${{ github.event_name }}
-        run: |
-          if [ "$EVENT_NAME" = "pull_request_target" ]; then
-            printf 'GITHUB_BRANCH=%s\n' "$HEAD_REF" >> "$GITHUB_ENV"
-          else
-            printf 'GITHUB_BRANCH=%s\n' "$REF_NAME" >> "$GITHUB_ENV"
-          fi
       - name: Check for backport labels
         id: check_labels
+        env:
+          LABELS_JSON: ${{ toJSON(github.event.pull_request.labels.*.name) }}
         run: |-
-          labels='${{ toJSON(github.event.pull_request.labels.*.name) }}'
-          matched=$(echo "${labels}" | jq '. | map(select(startswith("backport-"))) | length')
+          matched=$(printf '%s\n' "${LABELS_JSON}" | jq '. | map(select(startswith("backport-"))) | length')
           echo "matched=$matched"
           echo "matched=$matched" >> $GITHUB_OUTPUT
 
@@ -105,13 +94,14 @@ jobs:
         id: verify_increment
         env:
           GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          BEFORE_BACKPORTS: ${{ steps.count_prs.outputs.pr_count }}
+          MATCHED: ${{ steps.check_labels.outputs.matched }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |-
-          BEFORE_BACKPORTS=${{ steps.count_prs.outputs.pr_count }}
           NEW_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
-            jq --arg n "${{ github.event.pull_request.number }}" '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]" and (.title | contains("(#\($n))")))] | length')
-
-          MATCHED=${{ steps.check_labels.outputs.matched }}
+            "https://api.github.com/repos/${REPOSITORY}/pulls?state=open&per_page=100" | \
+            jq --arg n "$PR_NUMBER" '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]" and (.title | contains("(#\($n))")))] | length')
 
           echo "Before Backports Count: $BEFORE_BACKPORTS"
           echo "New PR Count: $NEW_COUNT"
