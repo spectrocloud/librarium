@@ -53,11 +53,18 @@ The following table lists the hardware requirements for worker nodes and control
 
 ## Install Launchpad for VMs {#install}
 
-1. Boot your Launchpad for VMs device from the Launchpad for VMs appliance ISO.
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
-2. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
+2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
+   Artifacts**.
 
-3. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press
+3. **Download** the **VM Launchpad Appliance ISO**.
+
+4. Boot your device using the VM Launchpad appliance ISO.
+
+5. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
+
+6. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press
    **ENTER** to proceed to the next screen.
 
    :::danger
@@ -66,39 +73,53 @@ The following table lists the hardware requirements for worker nodes and control
 
    :::
 
-4. On the **Installation Options** screen, select whether the installer should do **nothing**, **reboot**, or
-   **poweroff** after the installation is complete. After the installation is complete, disconnect the ISO.
+7. On the **Installation Options** screen, select whether the installer should do **nothing**, **reboot**, or
+   **poweroff** after the installation is complete. Press **ENTER** to begin the installation process. After the
+   installation is complete, disconnect the ISO.
 
-5. When the Launchpad for VMs system boots up, press **F2** to open the TUI. Create an OS user with the necessary
-   permissions to operate Launchpad for VMs by entering a username and password. Press **ENTER** to progress to the next
-   screen.
+8. On the **GNU GRUB** screen, select **Palette eXtended Kubernetes Edge Registration**.
 
-6. The terminal displays a console where you provide hostname and network configuration for the Launchpad host.
+9. On the **Palette TUI** screen, press **F2** to begin configuring your Edge host.
 
-   Review the existing hostname and, optionally, change it. Use the **TAB** key or the up and down arrow keys to switch
-   between fields. Press **ENTER** to apply each change.
+10. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and
+    for SSH access to the node.
 
-7. In **Network Adapter**, select a network adapter to configure. By default, network adapters request an IP address
-   automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
-   block of each adapter's possible IP address appears on the **Network Adapter** screen.
+    | **Field**               | **Description**                                   |
+    | ----------------------- | ------------------------------------------------- |
+    | **Username**            | Provide a username to use for the account.        |
+    | **Password**            | Enter a password for the account.                 |
+    | **Confirm Password**    | Re-enter the password for confirmation.           |
+    | **Password Expiration** | (Optional) Set a date for the password to expire. |
 
-   On the configuration page for each adapter, you can switch the IP addressing scheme from DHCP to static IP. In static
-   IP mode, provide a static external IP address, subnet mask, and the default gateway address. A static external IP
-   address removes the existing DHCP settings.
+    Press **ENTER** to continue.
 
-8. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
-   ID segments network traffic on the same physical network interface for network isolation. If you assign a VLAN ID,
-   the Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
+11. In the Palette TUI, the available configuration options are displayed and are described in the next several steps.
+    Use the **TAB** key or the up and down arrow keys to switch between fields. When you make a change, press **ENTER**
+    to apply the change. Use **ESC** to go back.
 
-9. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
-   interface can send without fragmentation. Press **ENTER** to apply the change.
+12. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
-10. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
+13. In **Network Adapter**, select a network adapter to configure. By default, network adapters request an IP address
+    automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
+    block of each adapter's possible IP address appears on the **Network Adapter** screen.
+
+    On the configuration page for each adapter, you can switch the IP addressing scheme from DHCP to static IP. In
+    static IP mode, provide a static external IP address, subnet mask, and the default gateway address. A static
+    external IP address removes the existing DHCP settings.
+
+14. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
+    ID segments network traffic on the same physical network interface for network isolation. If you assign a VLAN ID,
+    the Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
+
+15. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
+    interface can send without fragmentation. Press **ENTER** to apply the change.
+
+16. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
     search domain. Press **ENTER** to apply the change.
 
-11. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
+17. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
 
-12. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
+18. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
     terminal screen displays the hostname and network information of your Launchpad host. Verify that all displayed
     information is consistent with your configurations.
 
@@ -110,7 +131,7 @@ The following table lists the hardware requirements for worker nodes and control
 
 2. Log in with the username and password you created during installation.
 
-3. On the **Network interfaces** card, navigate to **Bonds** and select **Create**.
+3. In the **Network interfaces** section, beside **Bonds**, select **Create**.
 
 4. Fill out the necessary fields on the **Create Bond** screen and select **Confirm**.
 
@@ -133,20 +154,21 @@ The following table lists the hardware requirements for worker nodes and control
 
    :::
 
-5. On the **Network interfaces** screen, navigate to **Bridges** and select **Create**.
+5. In the **Network interfaces** section, beside **Bridges**, select **Create**.
 
 6. Fill out the necessary fields on the **Create Bridge** screen and select **Confirm**.
 
-   | **Parameter**         | **Description**                                                |
-   | --------------------- | -------------------------------------------------------------- |
-   | **Name**              | Enter a name for the bridge. For example, `br0`.               |
-   | **Member interfaces** | Select one or more bonds for the bridge.                       |
-   | **Config type**       | Select **Static** or **DHCP** for IP address settings.         |
-   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.    |
-   | **DNS**               | Enter one or more DNS server IP addresses.                     |
-   | **IP Address**        | For static bridges only, enter the IP address for the bridge.  |
-   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge. |
-   | **Gateway**           | For static bridges only, enter the gateway IP address.         |
+   | **Parameter**         | **Description**                                                                                                                                   |
+   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**              | Enter a name for the bridge. For example, `br0`.                                                                                                  |
+   | **Member interfaces** | Select one or more bonds for the bridge.                                                                                                          |
+   | **Enable STP**        | Enable Spanning Tree Protocol (STP) to prevent network loops when the bridge has multiple member interfaces. Leave off for single-member bridges. |
+   | **Config type**       | Select **Static** or **DHCP** for IP address settings.                                                                                            |
+   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.                                                                                       |
+   | **DNS**               | Enter one or more DNS server IP addresses.                                                                                                        |
+   | **IP Address**        | For static bridges only, enter the IP address for the bridge.                                                                                     |
+   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge.                                                                                    |
+   | **Gateway**           | For static bridges only, enter the gateway IP address.                                                                                            |
 
    :::warning
 
@@ -155,9 +177,6 @@ The following table lists the hardware requirements for worker nodes and control
    :::
 
 ## Create Launchpad for VMs Cluster
-
-1.  Log in to Local UI at `https://<host-ip>:5080`. For more information, review
-    [Configure Network Settings](#configure-network-settings).
 
 2.  From the left main menu, select **Cluster**.
 
@@ -200,9 +219,8 @@ The following table lists the hardware requirements for worker nodes and control
     | **KubeVirt**     | `virtual-machine-orchestrator` | Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
     | **CDI**          | `virtual-machine-orchestrator` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
 
-6.  Fill out the **Profile Config** page and select **Next**.
-
-7.  Fill out the following fields for each section.
+6.  On the **Profile Config** wizard step, fill out the following fields for each section. Select **Next** when
+    finished.
 
     ### Network Settings
 
@@ -265,7 +283,7 @@ The following table lists the hardware requirements for worker nodes and control
     | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface or bond when possible.        |
     | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
 
-8.  On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
+7.  On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
     and an SSH public key.
 
     | **Parameter**                   | **Description**                                                                      |
@@ -277,7 +295,7 @@ The following table lists the hardware requirements for worker nodes and control
     Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay
     network, specify a CIDR range for the overlay network to use.
 
-9.  On the **Node Config** step, configure worker pools and control plane pools. To assign a host to a node pool, select
+8.  On the **Node Config** step, configure worker pools and control plane pools. To assign a host to a node pool, select
     **Add Item** in the corresponding node pool, and select the host to add. For multi-node clusters, keep the leader
     node assigned to the control plane node pool. Ensure that you have an odd number of nodes in the control plane.
     After the cluster is formed, every node in the control plane is considered a leader node.
@@ -285,10 +303,10 @@ The following table lists the hardware requirements for worker nodes and control
     For more information about node pool configurations, review
     [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
 
-10. Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
+9.  Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
     Use this page to track deployment progress. The Launchpad for VMs host reboots as part of the build process.
 
-11. After the cluster deployment is complete, more options appear in the left sidebar.
+10. After the cluster deployment is complete, more options appear in the left sidebar.
 
     ![Screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
 
