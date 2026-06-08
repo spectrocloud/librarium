@@ -1,0 +1,149 @@
+# This workflow is triggered on a pull request labeled with 'api-format'. 
+# The workflow invokes the make api command to format the API changes.
+# This is primarly used on pull requests created by engineering when providing the team with the latest API changes.
+# The workflow is also used to ensure the API changes are formatted correctly before merging into the target branch.
+# This workflow is not needed if you invoked the `make api` command locally before pushing the changes to the remote repository.
+
+name: API Format
+
+on:
+  pull_request:
+    types: ["labeled", "closed"]
+
+concurrency:
+  group: api-format-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GITHUB_BRANCH: ${{ github.ref_name }} 
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  NODE_VERSION: "24"
+
+jobs:
+  backport:
+    name: Format API PR
+    runs-on: ubuntu-latest
+    if: |
+      github.event.action == 'labeled'
+      && github.event.label.name == 'api-format'
+      && github.event.pull_request.draft == false
+  
+  
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          # Security: keep Vault secrets scoped to this step's outputs instead of exporting them to every later step.
+          exportEnv: false
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+
+      - name: Checkout Code
+              # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 as of May 6, 2026
+        with:
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Node.js environment
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 as of May 6, 2026
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Determine branch name
+        id: extract_branch
+        # Security: pass GitHub context values through env so untrusted branch names are data, not shell source text.
+        # printf avoids echo edge cases and prevents newline injection into GITHUB_ENV.
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          REF_NAME: ${{ github.ref_name }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            printf 'GITHUB_BRANCH=%s\n' "$HEAD_REF" >> "$GITHUB_ENV"
+          else
+            printf 'GITHUB_BRANCH=%s\n' "$REF_NAME" >> "$GITHUB_ENV"
+          fi
+
+      - run: npm ci
+
+      - name: Format API
+        run: make api
+      - name: Commit and push changes
+        uses: ./.github/actions/commit-changes
+        with:
+          method: git
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
+          commit_message: "ci: auto-formatting API changes"
+          file_regex: "\\.json$"
+
+      - name: Slack Notification
+        if: ${{ failure() }}
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3 as of May 6, 2026
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: ' The PR for branch ${{env.GITHUB_BRANCH}} failed when attempting to format the API. Review the GitHub Actions logs for more details.'
+
+      - name: Post Netlify progress
+        # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
+        uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9 as of May 10, 2026
+        with:
+          script: |
+                          const marker = "librarium-api-format";
+                          const body = `<!-- librarium-api-format -->
+                          🤖 The API has been formated and is ready for merging.`;
+                          const owner = context.repo.owner;
+                          const repo = context.repo.repo;
+                          const issue_number = context.issue.number;
+            
+                          // List recent comments and find one containing our marker
+                          const comments = await github.paginate(github.rest.issues.listComments, {
+                            owner, repo, issue_number, per_page: 100,
+                          });
+            
+                          const existing = comments
+                            .filter(c => c?.body && c.body.includes(`<!-- $librarium-api-format -->`))
+                            .sort((a,b) => new Date(b.created_at) - new Date(a.created_at))[0];
+            
+                          const refresh = false;
+                          const updateOnly = false;
+            
+                          if (existing && refresh) {
+                            await github.rest.issues.deleteComment({
+                              owner, repo, comment_id: existing.id,
+                            });
+                            await github.rest.issues.createComment({
+                              owner, repo, issue_number, body,
+                            });
+                          } else if (existing) {
+                            await github.rest.issues.updateComment({
+                              owner, repo, comment_id: existing.id, body,
+                            });
+                          } else if (!updateOnly) {
+                            await github.rest.issues.createComment({
+                              owner, repo, issue_number, body,
+                            });
+                          }
