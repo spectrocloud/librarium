@@ -50,7 +50,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
   trigger a blanket repave warning. Support is available across the UI, API, Terraform, and Crossplane for both Palette
   and Vertex. Some additional context provided by Docs.
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-9999 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2232 -->
 
 - You can now configure SSH keys for MAAS cluster nodes, including bare metal machines and LXD VMs, through the Palette
   UI, API, Terraform, and Crossplane. SSH keys are injected during cluster provisioning via cloud-init (Day 0) and can
@@ -69,10 +69,9 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2242 -->
 
 - Fixed an issue where importing an existing Edge Native cluster into Terraform state using the
-  `spectrocloud_cluster_edge_native` resource did not correctly read the `cloud_config.vip` value from Palette. This
-  caused `terraform plan` to report false drift, showing the VIP as a pending addition even when the Terraform
-  configuration and Palette already matched.
-
+`spectrocloud_cluster_edge_native` resource did not correctly read the `cloud_config.vip` value from Palette. This
+caused `terraform plan` to report false drift, showing the VIP as a pending addition even when the Terraform
+configuration and Palette already matched.
 <!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
 ### Packs
@@ -102,30 +101,45 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
 
 ### Improvements
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2215 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2225 -->
 
-- The
-  [`spectrocloud_cluster_aks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
-  now allows you to specify the OS SKU for AKS node pools using the optional `os_sku` field in the `machine_pool` block.
+- You can now use Generation 2 Azure VMs for AKS cluster nodes in Palette. Gen 2 VMs offer UEFI-based boot, Secure Boot
+  and vTPM support, faster boot times, and larger OS disks. Support is available for all instance types that offer a Gen
+  2 variant, including Azure Linux 3 and Ubuntu. Changing the VM generation on an existing cluster triggers a repave,
+  and Palette will display the appropriate repave warning. Coverage is available across the UI, API, Terraform, and
+  Crossplane for both Palette and Vertex.
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2236 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2226 -->
 
-- Terraform cluster resources now support triggering manual control plane Kubernetes Public Key Infrastructure (PKI)
-  certificates for Palette clusters using the new `renew_k8s_certificates_now` field.
+- You can now pass through custom CAPI and CAPx provider properties directly to cluster and node-level configurations
+  for EKS and AKS clusters. This allows you to override any CAPI object property using a key/value configuration without
+  requiring Palette to maintain a static list of supported fields. Misconfigurations are surfaced as clear, repeatable
+  cluster events that identify the offending passthrough properties. Day 2 updates that include passthrough changes
+  trigger a blanket repave warning. Support is available across the UI, API, Terraform, and Crossplane for both Palette
+  and Vertex. Some additional context provided by Docs.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2232 -->
+
+- You can now configure SSH keys for MAAS cluster nodes, including bare metal machines and LXD VMs, through the Palette
+  UI, API, Terraform, and Crossplane. SSH keys are injected during cluster provisioning via cloud-init (Day 0) and can
+  be rotated and updated by the cluster-management-agent (Day 2). Multiple SSH keys can be configured per cluster.
+  Support is available for both Palette and Vertex.
 
 ### Bug Fixes
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2173 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-691 -->
 
-- Fixed a Terraform issue where updating the `cluster_profile` list on the
-  [`spectrocloud_cluster_eks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
-  triggered an erroneous deletion of the removed profile and incorrectly updated the Terraform state.
+- Fixed a secureboot install regression in the piraeus-operator pack where the DRBD kernel module was built on the
+  target node at install time, producing an unsigned module that secureboot-enabled hosts refused to load. The module is
+  now shipped as a pre-built, signed image inside the `drbd-module-loader` container, restoring successful appliance
+  installs on hardened, STIG, and FIPS infrastructure.
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2242 -->
 
-- Fixed a Terraform issue where imported
-[`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
-resources would repeatedly show Terraform plan differences for sensitive cluster profile variables.
+- Fixed an issue where importing an existing Edge Native cluster into Terraform state using the
+`spectrocloud_cluster_edge_native` resource did not correctly read the `cloud_config.vip` value from Palette. This
+caused `terraform plan` to report false drift, showing the VIP as a pending addition even when the Terraform
+configuration and Palette already matched.
 <!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
 
 ### Packs
