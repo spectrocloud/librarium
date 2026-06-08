@@ -4,7 +4,7 @@ title: "Create Your First Golden Image"
 description: "Learn how to create your first golden image in VM Launchpad."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 1
+sidebar_position: 5
 draft: true
 tags: ["vmo", "vm launchpad", "golden images"]
 ---

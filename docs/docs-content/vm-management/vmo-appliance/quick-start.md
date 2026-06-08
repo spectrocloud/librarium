@@ -3,7 +3,7 @@ sidebar_label: "Create Your First VM"
 title: "Create Your First VM"
 description: "Learn how to create your first VM with the Launchpad for VMs Appliance."
 hide_table_of_contents: false
-sidebar_position: 5
+sidebar_position: 2
 tags: ["vmo", "launchpad for vms appliance"]
 ---
 
