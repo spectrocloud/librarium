@@ -12,8 +12,8 @@ on:
     branches: ["version-*", "backport/version-*"]
 
 permissions:
-  contents: write
-  issues: write
+  contents: read
+  issues: read
   
 concurrency:
   group: versions-robot-${{ github.ref }}
@@ -43,7 +43,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
+    if: ${{ !github.event.pull_request.draft && github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot-preview[bot]' }}
     steps:
       # If the condition above is not met (e.g. PR is draft), this job is skipped.
       # Since this job is in the critical path, skipping it will prevent downstream jobs from running.
@@ -53,6 +53,9 @@ jobs:
     name: Robots.txt Check
     needs: [run-ci]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
     steps:
       - name: Checkout Repository
         # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
