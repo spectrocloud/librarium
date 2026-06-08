@@ -37,6 +37,12 @@ tags: ["release-notes"]
   [MAAS clusters to LXD Virtual Machines (VMs)](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) has
   exited Tech Preview and is now ready for production workloads.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9407 -->
+
+- Palette now supports the configuration of audit trails with
+  [Splunk](https://help.splunk.com/en/splunk-observability-cloud/get-started). Refer to the
+  [Audit Logs](../audit-logs/audit-logs.md) guide for more information.
+
 #### Deprecations and Removals
 
 ### Edge
