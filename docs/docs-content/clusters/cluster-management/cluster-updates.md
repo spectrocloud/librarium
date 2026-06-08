@@ -161,13 +161,6 @@ workloads running on those nodes, so plan accordingly.
 
 ### Enablement
 
-:::info
-
-For connected Edge Native clusters, the same steps apply when using the Local UI. Log in to Local UI instead of Palette
-and follow the same steps on the **Nodes** tab.
-
-:::
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left main menu, select **Clusters**.
