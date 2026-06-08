@@ -48,9 +48,9 @@ The following components have been updated for Palette version 4.9.5 - 4.9.14.
   requiring Palette to maintain a static list of supported fields. Misconfigurations are surfaced as clear, repeatable
   cluster events that identify the offending passthrough properties. Day 2 updates that include passthrough changes
   trigger a blanket repave warning. Support is available across the UI, API, Terraform, and Crossplane for both Palette
-  and Vertex.
+  and Vertex. Some additional context provided by Docs.
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2232 -->
+<!-- https://spectrocloud.atlassian.net/browse/PLT-9999 -->
 
 - You can now configure SSH keys for MAAS cluster nodes, including bare metal machines and LXD VMs, through the Palette
   UI, API, Terraform, and Crossplane. SSH keys are injected during cluster provisioning via cloud-init (Day 0) and can
