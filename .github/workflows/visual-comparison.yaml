@@ -43,7 +43,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' && contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
+    if: ${{ !github.event.pull_request.draft && github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot-preview[bot]' && contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
     steps:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
@@ -106,19 +106,21 @@ jobs:
           make build-ci
       
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: "build"
           path: |
@@ -307,13 +309,23 @@ jobs:
     - name: Post Report URL Comment
       # Security: pin third-party actions to immutable commits; keep the original version in the comment for Dependabot/reviewers.
       uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9 as of May 10, 2026
+      env:
+        HEAD_REF: ${{ github.head_ref }}
+        RUN_ID: ${{ github.run_id }}
+        RUN_ATTEMPT: ${{ github.run_attempt }}
+        HTML_REPORT_URL_PATH: ${{ env.HTML_REPORT_URL_PATH }}
       with:
         script: |
+          const headRef = process.env.HEAD_REF;
+          const runId = process.env.RUN_ID;
+          const runAttempt = process.env.RUN_ATTEMPT;
+          const reportPath = process.env.HTML_REPORT_URL_PATH;
+
           await github.rest.issues.createComment({
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.pull_request.number,
-            body: `📋 Visual Report for branch ${{ github.head_ref }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
+            body: `📋 Visual Report for branch ${headRef} with CI run ${runId} and attempt ${runAttempt} is ready at https://spectrocloud.github.io/librarium/${reportPath}
 
             💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).`,
           });
