@@ -4,7 +4,7 @@
 name: Pre-merge Checks for Dependabot
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     branches: ["master"]
 
@@ -35,13 +35,13 @@ jobs:
   dependabot_build:
     name: Dependabot Build
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'dependabot-preview[bot]' }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -54,12 +54,14 @@ jobs:
           make build-ci
       
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
