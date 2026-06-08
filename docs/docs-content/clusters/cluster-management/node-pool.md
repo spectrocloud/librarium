@@ -143,7 +143,7 @@ version while deferring the upgrade of one or more worker pools. This is support
 
 :::info
 
-For connected Edge Native clusters, this toggle is also available in the Local UI. Airgapped Edge clusters are not
+For connected Edge Native clusters, this toggle is also available in the Local UI. Locally managed Edge clusters are not
 supported.
 
 :::

@@ -132,7 +132,7 @@ upgrade while the control plane advances.
 
 :::info
 
-This feature is only available for connected Edge Native clusters. Airgapped Edge clusters are not supported. The toggle
+This feature is only available for connected Edge Native clusters. Locally managed Edge clusters are not supported. The toggle
 is available in both Palette UI and Local UI.
 
 :::
