@@ -17,14 +17,14 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-<!-- https://spectrocloud.atlassian.net/browse/PE-8473 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9999-->
 
 - Fixed an issue where OS pack stages were not executed during Kubernetes upgrades on Edge clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8522 -->
 
 - Fixed a security vulnerability where the two-node liveness server exposed the database password without
-  authentication.
+  authentication. Additional content written by Docs.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8837 -->
 
