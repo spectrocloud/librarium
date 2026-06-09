@@ -11,31 +11,32 @@ tags: ["vmo", "Launchpad for VMs"]
 The Launchpad for VMs Appliance is a bootable ISO that you install on bare metal or Edge devices to create a cluster
 with Virtual Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in
 your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster,
-[create your first VM](./quick-start.md).
+log into Launchpad to do an [initial configuration](./getting-started-wiz.md), and [create your first VM](./quick-start.md).
 
 ## Hardware Requirements
 
 Each device where you install the Launchpad for VMs Appliance ISO must meet the following hardware requirements.
 
-| **Component**        | **Minimum**                                                          | **Recommended**                                    | **Additional Information**                                                                                                                        |
-| -------------------- | -------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CPU**              | Intel or AMD64 CPU with 8 cores                                      | Intel or AMD64 CPU with 8 cores                    | -                                                                                                                                                 |
-| **RAM**              | 24 GB                                                                | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
-| **Network Adapters** | 2 x 1 Gbps (data + management)                                       | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot                        | Local disk of at least 500 GB for the OS boot      | Storage Area Network (SAN) boot is supported. Booting from SAN requires planning due to the multi-path configuration.                             |
+| **Component**        | **Minimum**                                                            | **Recommended**                                    | **Additional Information**                                                                                                                        |
+| -------------------- | ---------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD64 CPU with 8 cores                                        | Intel or AMD64 CPU with 8 cores                    | -                                                                                                                                                 |
+| **RAM**              | 24 GB                                                                  | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
+| **Network Adapters** | 2 x 1 Gbps (data and management)                                       | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
+| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
+| **Disks**            | Local disk of at least 500 GB for the OS boot                          | Local disk of at least 500 GB for the OS boot      | Storage Area Network (SAN) boot is supported. Booting from SAN requires planning due to the multi-path configuration.                             |
 
 ## Prerequisites
 
 - If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
   Launchpad for VMs installation process. This is optional but recommended for security and compliance purposes.
 
-- Configure the network with a bridge network set to `br0`. For more information about network considerations, review
+- (Optional) Depending on your network infrastructure, configure the network with a bridge network set to `br0`. For
+  more information about network considerations, review
   [VMO Network Configuration Considerations](/vm-management/vmo-appliance/vmo-networking/).
 
-- A virtual IP address (VIP) must be available for the Launchpad for VMs management cluster. The Launchpad for VMs
-  installation process assigns the VIP and uses it for load balancing and high availability. The VIP must be accessible
-  to all nodes in the Launchpad for VMs management cluster.
+- Reserve a virtual IP address (VIP) for the Launchpad for VMs management cluster. The Launchpad for VMs installation
+  process assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the Launchpad for
+  VMs management cluster can access the VIP.
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Launchpad for VMs" />
 
@@ -43,13 +44,13 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 The following table lists the hardware requirements for worker nodes and control plane nodes in a VMO cluster.
 
-| **Component**        | **Minimum**                                                           | **Recommended**                                    | **Comments**                                                                                                                                      |
-| -------------------- | --------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CPU**              | Intel or AMD x64 CPU with 8 cores                                     | Intel or AMD x64 CPU with 8 cores                  |                                                                                                                                                   |
-| **RAM**              | 24 GB                                                                 | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
-| **Network Adapters** | 2 x 1 Gbps <br /> (data + management)                                 | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data + management  | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported. | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                              |
+| **Component**        | **Minimum**                                                            | **Recommended**                                    | **Comments**                                                                                                                                      |
+| -------------------- | ---------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CPU**              | Intel or AMD x64 CPU with 8 cores                                      | Intel or AMD x64 CPU with 8 cores                  |                                                                                                                                                   |
+| **RAM**              | 24 GB                                                                  | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
+| **Network Adapters** | 2 x 1 Gbps <br /> (data and management)                                | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
+| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
+| **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported.  | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                              |
 
 ## Install Launchpad for VMs {#install}
 
@@ -58,9 +59,9 @@ The following table lists the hardware requirements for worker nodes and control
 2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
    Artifacts**.
 
-3. **Download** the **VM Launchpad Appliance ISO**.
+3. **Download** the **Launchpad for VMs Appliance ISO**.
 
-4. Boot your device using the VM Launchpad appliance ISO.
+4. Boot your device using the Launchpad for VMs Appliance ISO.
 
 5. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
 
@@ -81,8 +82,8 @@ The following table lists the hardware requirements for worker nodes and control
 
 9. On the **Palette TUI** screen, press **F2** to begin configuring your Edge host.
 
-10. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and
-    for SSH access to the node.
+10. In the Palette TUI, provide credentials for the initial account. Use this account to log in to Local UI and access
+    the node through SSH.
 
     | **Field**               | **Description**                                   |
     | ----------------------- | ------------------------------------------------- |
@@ -93,9 +94,8 @@ The following table lists the hardware requirements for worker nodes and control
 
     Press **ENTER** to continue.
 
-11. In the Palette TUI, the available configuration options are displayed and are described in the next several steps.
-    Use the **TAB** key or the up and down arrow keys to switch between fields. When you make a change, press **ENTER**
-    to apply the change. Use **ESC** to go back.
+11. In the Palette TUI, the available configuration options appear. Use the **TAB** key or the up and down arrow keys to
+    switch between fields. When you make a change, press **ENTER** to apply the change. Use **ESC** to go back.
 
 12. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
@@ -125,15 +125,15 @@ The following table lists the hardware requirements for worker nodes and control
 
 ## Configure Network Settings
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VMO Appliance host.
-   If you have access to the VMO Appliance host terminal, the Local UI address is displayed on the terminal screen. If
-   you have changed the default port, replace `5080` with your configured Local UI port.
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your Launchpad for VMs
+   Appliance host. If you have access to the Launchpad for VMs Appliance host terminal, the Local UI address appears on
+   the terminal screen. If you have changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
 3. In the **Network interfaces** section, beside **Bonds**, select **Create**.
 
-4. Fill out the necessary fields on the **Create Bond** screen and select **Confirm**.
+4. Complete the fields on the **Create Bond** screen and select **Confirm**.
 
    | **Parameter**                | **Description**                                                                                |
    | ---------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -156,19 +156,19 @@ The following table lists the hardware requirements for worker nodes and control
 
 5. In the **Network interfaces** section, beside **Bridges**, select **Create**.
 
-6. Fill out the necessary fields on the **Create Bridge** screen and select **Confirm**.
+6. Complete the fields on the **Create Bridge** screen and select **Confirm**.
 
-   | **Parameter**         | **Description**                                                                                                                                   |
-   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**              | Enter a name for the bridge. For example, `br0`.                                                                                                  |
-   | **Member interfaces** | Select one or more bonds for the bridge.                                                                                                          |
-   | **Enable STP**        | Enable Spanning Tree Protocol (STP) to prevent network loops when the bridge has multiple member interfaces. Leave off for single-member bridges. |
-   | **Config type**       | Select **Static** or **DHCP** for IP address settings.                                                                                            |
-   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.                                                                                       |
-   | **DNS**               | Enter one or more DNS server IP addresses.                                                                                                        |
-   | **IP Address**        | For static bridges only, enter the IP address for the bridge.                                                                                     |
-   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge.                                                                                    |
-   | **Gateway**           | For static bridges only, enter the gateway IP address.                                                                                            |
+   | **Parameter**         | **Description**                                                                                                                                       |
+   | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**              | Enter a name for the bridge. For example, `br0`.                                                                                                      |
+   | **Member interfaces** | Select one or more bonds for the bridge.                                                                                                              |
+   | **Enable STP**        | Enable Spanning Tree Protocol (STP) to prevent network loops when the bridge has more than one member interface. Leave off for single-member bridges. |
+   | **Config type**       | Select **Static** or **DHCP** for IP address settings.                                                                                                |
+   | **MTU**               | Leave the default value or adjust to 9000 for jumbo frames.                                                                                           |
+   | **DNS**               | Enter one or more DNS server IP addresses.                                                                                                            |
+   | **IP Address**        | For static bridges only, enter the IP address for the bridge.                                                                                         |
+   | **Subnet mask**       | For static bridges only, enter the subnet mask for the bridge.                                                                                        |
+   | **Gateway**           | For static bridges only, enter the gateway IP address.                                                                                                |
 
    :::warning
 
@@ -178,137 +178,137 @@ The following table lists the hardware requirements for worker nodes and control
 
 ## Create Launchpad for VMs Cluster
 
-2.  From the left main menu, select **Cluster**.
+1. From the left main menu, select **Cluster**.
 
-3.  Select **Create cluster**.
+2. Select **Create cluster**.
 
-4.  Fill out the **Basic Information** fields and select **Next**.
+3. Complete the **Basic Information** fields and select **Next**.
 
-    | **Parameter**    | **Description**                                         |
-    | ---------------- | ------------------------------------------------------- |
-    | **Cluster name** | Name of the cluster.                                    |
-    | **Tags**         | Key-value pairs to provide metadata about your cluster. |
+   | **Parameter**    | **Description**                                         |
+   | ---------------- | ------------------------------------------------------- |
+   | **Cluster name** | Name of the cluster.                                    |
+   | **Tags**         | Key-value pairs to provide metadata about your cluster. |
 
-5.  The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile.
-    After you review the cluster profile, select **Next**.
+4. The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile. After
+   you review the cluster profile, select **Next**.
 
-    | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                               |
-    | -------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Edge Native BYOI**       | `edge-native-byoi`             | Native Ubuntu OS.                                                                                                                         |
-    | **Kubernetes**             | `edge-k8s`                     | Kubernetes platform.                                                                                                                      |
-    | **Cilium**                 | `cni-cilium-fips`              | CNI and network policy. Multus support for VM networking.                                                                                 |
-    | **Piraeus**                | `piraeus-operator`             | Storage backend. Provides StorageClass for VM disks.                                                                                      |
-    | **Zot**                    | `zot-registry-fips`            | OCI registry. Stores container images for air-gapped deployments.                                                                         |
-    | **Registry Connect**       | `registry-connect`             | Enables integration with OCI-compliant registries.                                                                                        |
-    | **Required config**        | `required-config-1`            | Initial configuration before continuing.                                                                                                  |
-    | **MetalLB**                | `lb-metallb-helm`              | Loadbalancer implementation for bare metal. Assigns the platform IP address.                                                              |
-    | **Traefik**                | `traefik`                      | Single ingress controller. Provides TLS termination, path-based routing, and the Loadbalancer IP address.                                 |
-    | **Required config**        | `required-config-2`            | Second configuration before continuing.                                                                                                   |
-    | **Keycloak**               | `keycloak`                     | OIDC identity provider. Handles login, user and group management, and token issuance. Shared `k8s-oidc` client with K8s API and Headlamp. |
-    | **Headlamp**               | `headlamp`                     | Kubernetes cluster explorer. Alternative UI for raw K8s resources.                                                                        |
-    | **Victoria Metrics**       | `victoria-metrics-cluster`     | Optional long-term metrics storage. Supports PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                    |
-    | **OTel Collector**         | `opentelemetry`                | Metrics pipeline. Receives OTLP from node-agent, and forwards metrics to VMO Manager or Victoria Metrics.                                 |
-    | **VMO**                    | `virtual-machine-orchestrator` | Primary UI and API gateway. Manages VMs, templates, golden images, access policies, configuration, and dashboards.                        |
-    | **VM Migration Assistant** | `vm-migration-assistant`       | Migrates VMs from VMware vSphere to VMO.                                                                                                  |
+   | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                                      |
+   | -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Edge Native BYOI**       | `edge-native-byoi`             | Native Ubuntu OS.                                                                                                                                |
+   | **Kubernetes**             | `edge-k8s`                     | Kubernetes platform.                                                                                                                             |
+   | **Cilium**                 | `cni-cilium-fips`              | CNI and network policy. Multus support for VM networking.                                                                                        |
+   | **Piraeus**                | `piraeus-operator`             | Storage backend. Provides StorageClass for VM disks.                                                                                             |
+   | **Zot**                    | `zot-registry-fips`            | OCI registry. Stores container images for air-gapped deployments.                                                                                |
+   | **Registry Connect**       | `registry-connect`             | Enables integration with OCI-compliant registries.                                                                                               |
+   | **Required config**        | `required-config-1`            | Initial configuration before continuing.                                                                                                         |
+   | **MetalLB**                | `lb-metallb-helm`              | Load balancer implementation for bare metal. Assigns the platform IP address.                                                                    |
+   | **Traefik**                | `traefik`                      | Single ingress controller. Provides TLS termination, path-based routing, and the load balancer IP address.                                       |
+   | **Required config**        | `required-config-2`            | Second configuration before continuing.                                                                                                          |
+   | **Keycloak**               | `keycloak`                     | OIDC identity provider. Handles login, user and group management, and token issuance. Shared `k8s-oidc` client with Kubernetes API and Headlamp. |
+   | **Headlamp**               | `headlamp`                     | Kubernetes cluster explorer. Alternative UI for raw Kubernetes resources.                                                                        |
+   | **Victoria Metrics**       | `victoria-metrics-cluster`     | Optional long-term metrics storage. Supports PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                           |
+   | **OTel Collector**         | `opentelemetry`                | Metrics pipeline. Receives OTLP from node-agent, and forwards metrics to VMO Manager or Victoria Metrics.                                        |
+   | **VMO**                    | `virtual-machine-orchestrator` | Primary UI and API gateway. Manages VMs, templates, golden images, access policies, configuration, and dashboards.                               |
+   | **VM Migration Assistant** | `vm-migration-assistant`       | Migrates VMs from VMware vSphere to VMO.                                                                                                         |
 
-    Additionally, the **VMO Manager** pack bundles the following services.
+   Additionally, the **VMO Manager** pack bundles the following services.
 
-    | **Component**    | **Pack Name**                  | **Purpose**                                                                                        |
-    | ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------- |
-    | **cert-manager** | `virtual-machine-orchestrator` | Issues and renews TLS certificates. Single platform CA for all components.                         |
-    | **KubeVirt**     | `virtual-machine-orchestrator` | Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
-    | **CDI**          | `virtual-machine-orchestrator` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
+   | **Component**    | **Pack Name**                  | **Purpose**                                                                                        |
+   | ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------- |
+   | **cert-manager** | `virtual-machine-orchestrator` | Issues and renews TLS certificates. Single platform CA for all components.                         |
+   | **KubeVirt**     | `virtual-machine-orchestrator` | Virtual machine runtime. Manages VirtualMachine, VirtualMachineInstance, and DataVolume resources. |
+   | **CDI**          | `virtual-machine-orchestrator` | Containerized Data Importer. Handles disk image uploads, imports, and clones.                      |
 
-6.  On the **Profile Config** wizard step, fill out the following fields for each section. Select **Next** when
-    finished.
+5. On the **Profile Config** wizard step, complete the following fields for each section. Select **Next** when finished.
 
-    ### Network Settings
+   ### Network Settings
 
-    | **Parameter**                        | **Description**                                                                                                                           |
-    | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
-    | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
-    | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                      |
-    | **Cilium and MetalLB interface**     | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
-    | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
-    | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
-    | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                 |
-    | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the br0 bridge interface or a VLAN sub-interface of br0.                          |
-    | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
+   | **Parameter**                        | **Description**                                                                                                                           |
+   | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
+   | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
+   | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                      |
+   | **Cilium and MetalLB interface**     | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
+   | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
+   | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
+   | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                 |
+   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                          |
+   | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
 
-    ### OS & Metrics
+   ### OS and Metrics
 
-    | **Parameter**                                       | **Description**                                                                                                                           |
-    | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Ubuntu Pro Token (Optional)**                     | Your Ubuntu Pro subscription token for Extended Security Maintenance (ESM) and compliance features. Leave blank without a subscription.   |
-    | **Reserved CPUs for Kubelet and system**            | CPU core IDs reserved for the OS and Kubernetes node agent (Kubelet). The system excludes these cores from workloads. For example, `0-3`. |
-    | **Victoria Metrics Data Retention Period**          | How long to store monitoring metrics before deletion. Use formats such as `30d` for days or `6w` for weeks.                               |
-    | **Victoria Metrics Volume Storage Size (Optional)** | Disk space allocated for storing monitoring metrics. Increase if you expect high cardinality or long retention. For example, `20Gi`.      |
+   | **Parameter**                                       | **Description**                                                                                                                           |
+   | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Ubuntu Pro Token (Optional)**                     | Your Ubuntu Pro subscription token for Extended Security Maintenance (ESM) and compliance features. Leave blank without a subscription.   |
+   | **Reserved CPUs for Kubelet and system**            | CPU core IDs reserved for the OS and Kubernetes node agent (Kubelet). The system excludes these cores from workloads. For example, `0-3`. |
+   | **Victoria Metrics Data Retention Period**          | How long to store monitoring metrics before deletion. Use formats such as `30d` for days or `6w` for weeks.                               |
+   | **Victoria Metrics Volume Storage Size (Optional)** | Disk space allocated for storing monitoring metrics. Increase if you expect high cardinality or long retention. For example, `20Gi`.      |
 
-    ### Container & Registry
+   ### Container and Registry
 
-    | **Parameter**                  | **Description**                                                                  |
-    | ------------------------------ | -------------------------------------------------------------------------------- |
-    | **OCI Pack Registry Username** | Username to authenticate with the container image registry used by the platform. |
-    | **OCI Pack Registry Password** | Password for the container image registry. This value is stored securely.        |
+   | **Parameter**                  | **Description**                                                                                                |
+   | ------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+   | **OCI Pack Registry Username** | Username to authenticate with the automatically deployed, local container image registry used by the platform. |
+   | **OCI Pack Registry Password** | Password for the automatically deployed, local container image registry. This value is stored securely.        |
 
-    ### OIDC Settings
+   ### OIDC Settings
 
-    | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
-    | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Platform CA Certificate** | The root Certificate Authority certificate for your platform, encoded in Base64. Used to establish trust for OIDC and internal TLS. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.           |
-    | **Platform CA Private Key** | The private key corresponding to the Platform CA Certificate, encoded in Base64. Keep this secret because it signs all platform certificates. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
-    | **VMO OIDC Login Username** | Username for the initial VMO administrator account created in the OIDC provider (Keycloak).                                                                                                                                                                  |
-    | **VMO OIDC Login email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
-    | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
+   | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
+   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Platform CA Certificate** | The root Certificate Authority certificate for your platform, encoded in Base64. Used to establish trust for OIDC and internal TLS. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**.           |
+   | **Platform CA Private Key** | The private key corresponding to the Platform CA Certificate, encoded in Base64. Keep this secret because it signs all platform certificates. You can also select **Generate** to populate both **Platform CA Certificate** and **Platform CA Private Key**. |
+   | **VMO OIDC Login Username** | Username for the initial VMO administrator account created in the OIDC provider (Keycloak).                                                                                                                                                                  |
+   | **VMO OIDC Login Email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
+   | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
 
-    ### Keycloak Admin
+   ### Keycloak Admin
 
-    | **Parameter**                                  | **Description**                                                                                                                           |
-    | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
-    | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
+   | **Parameter**                                  | **Description**                                                                                                                           |
+   | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
+   | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
-    ### Local Admin
+   ### Local Admin
 
-    | **Parameter**                 | **Description**                                                                                     |
-    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
-    | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
-    | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
+   | **Parameter**                 | **Description**                                                                                     |
+   | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+   | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
+   | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
 
-    ### Storage
+   ### Storage
 
-    | **Parameter**                                 | **Description**                                                                                                                                            |
-    | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface or bond when possible.        |
-    | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
+   | **Parameter**                                 | **Description**                                                                                                                                            |
+   | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Storage Node Interface**                    | The network interface on each node dedicated to storage replication traffic between nodes. Choose a high-bandwidth interface or bond when possible.        |
+   | **Storage Volume Placement Count (Optional)** | Number of copies of each storage volume maintained across different nodes for redundancy. Set to `3` for high availability, or `1` for single-node setups. |
 
-7.  On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
-    and an SSH public key.
+6. On the **Cluster Config** step, enter a virtual IP (VIP) address for your cluster. Optionally, specify an NTP server
+   and an SSH public key.
 
-    | **Parameter**                   | **Description**                                                                      |
-    | ------------------------------- | ------------------------------------------------------------------------------------ |
-    | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                        |
-    | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                     |
-    | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Launchpad host. |
+   | **Parameter**                   | **Description**                                                                      |
+   | ------------------------------- | ------------------------------------------------------------------------------------ |
+   | **Virtual IP Address (VIP)**    | Enter the virtual IP address for the cluster.                                        |
+   | **Network Time Protocol (NTP)** | Enter the IP address of an NTP server the cluster can reference.                     |
+   | **SSH Keys**                    | Enter the public key of an SSH key pair to use for connecting to the Launchpad host. |
 
-    Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay
-    network, specify a CIDR range for the overlay network to use.
+   Optionally, enable network overlay if your cluster operates in a DHCP environment. If you enable the overlay network,
+   specify a CIDR range for the overlay network to use.
 
-8.  On the **Node Config** step, configure worker pools and control plane pools. To assign a host to a node pool, select
-    **Add Item** in the corresponding node pool, and select the host to add. For multi-node clusters, keep the leader
-    node assigned to the control plane node pool. Ensure that you have an odd number of nodes in the control plane.
-    After the cluster is formed, every node in the control plane is considered a leader node.
+7. On the **Node Config** step, configure worker pools and control plane pools. To assign a host to a node pool, select
+   **Add Item** in the corresponding node pool, and select the host to add. For multi-node clusters, keep the leader
+   node assigned to the control plane node pool. Ensure that you have an odd number of nodes in the control plane. After
+   the cluster forms, every node in the control plane is considered a leader node.
 
-    For more information about node pool configurations, review
-    [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
+   For more information about node pool configurations, review
+   [Node Pools](../../clusters/cluster-management/node-pool.md). After you finish the configuration, select **Next**.
 
-9.  Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
-    Use this page to track deployment progress. The Launchpad for VMs host reboots as part of the build process.
+8. Review your configurations and deploy the cluster. The **Cluster** page displays the deployment status and details.
+   Use this page to track deployment progress. The Launchpad for VMs host reboots as part of the build process.
+   Depending on your infrastructure environment, the deployment might take up to 45 minutes.
 
-10. After the cluster deployment is complete, more options appear in the left sidebar.
+9. After the cluster deployment is complete, more options appear in the left main menu.
 
-    ![Screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
+   ![Screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
 
 ## Verify
 
@@ -330,14 +330,14 @@ The following table lists the hardware requirements for worker nodes and control
 
    </TabItem>
 
-   <TabItem value="keycloak" label="OIDC using Keycloak">
+   <TabItem value="keycloak" label="OIDC Using Keycloak">
 
    When Keycloak is configured, VMO Manager uses OIDC for authentication.
 
    1. Select **Login** or go to the platform URL.
    2. The browser redirects you to the Keycloak login page.
    3. Enter your username and password.
-   4. After successful authentication, the browser redirects you back to VMO Manager.
+   4. After authentication succeeds, the browser redirects you back to VMO Manager.
 
    </TabItem>
 
@@ -375,6 +375,5 @@ sessions.
 
 ## Next Steps
 
-After you deploy your VMO cluster, use the following guide to do an
-[initial configuration of Launchpad for VMs](./getting-started-wiz.md) and then
-[create your first VM](./quick-start.md).
+After you deploy your VMO cluster, [complete the initial configuration of Launchpad for VMs](./getting-started-wiz.md),
+and then [create your first VM](./quick-start.md).

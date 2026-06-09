@@ -1,16 +1,16 @@
 ---
-sidebar_label: "Legacy VMO"
-title: "Legacy VMO"
-description: "Learn about legacy VMO. If you are new to VMO, we recommend using the VM Launchpad Appliance instead."
+sidebar_label: "VMO Pack"
+title: "VMO Pack"
+description: "Learn about the VMO Pack. If you are new to VMO, we recommend using the VM Launchpad Appliance instead."
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vmo", "legacy"]
+tags: ["vmo", "vmo pack"]
 ---
 
 <!-- prettier-ignore-start -->
 
-Legacy Virtual Machine Orchestrator (VMO) is the original approach to running VMs on Palette-managed Kubernetes
-clusters. With legacy VMO, you use Palette to deploy the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
+Virtual Machine Orchestrator (VMO) Pack is the original approach to running VMs on Palette-managed Kubernetes
+clusters. With VMO Pack, you use Palette to deploy the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
 as an add-on cluster profile. The VMO pack bundles KubeVirt, Containerized Data Importer (CDI), Multus CNI, a snapshot controller, and the Spectro VM Dashboard into a single add-on.
 You can attach this add-on to Palette-managed clusters or [imported clusters](../../clusters/imported-clusters/imported-clusters.md) and then access the VM dashboard through the
 Palette console using the Spectro Proxy.
@@ -19,7 +19,7 @@ Palette console using the Spectro Proxy.
 
 We recommend using the [VM Launchpad Appliance](../vmo-appliance/vmo-appliance.md) for new VMO deployments. The
 appliance provides a dedicated VM management UI with built-in golden image workflows, snapshot policies, airgapped package
-management, and identity management capabilities that are not available in legacy VMO. Refer to the [Deployment Approaches table](../vm-management.md#deployment-approaches) for a comparison between VM Launchpad Appliance and Legacy VMO. 
+management, and identity management capabilities that are not available in Pack VMO. Refer to the [Deployment Approaches table](../vm-management.md#deployment-approaches) for a comparison between VM Launchpad Appliance and VMO Pack. 
 
 :::
 
@@ -27,7 +27,7 @@ management, and identity management capabilities that are not available in legac
 
 ## Use Cases
 
-Legacy VMO is appropriate in the following scenarios:
+VMO Pack is appropriate in the following scenarios:
 
 - You have existing VMO clusters deployed through Palette that you want to continue managing.
 

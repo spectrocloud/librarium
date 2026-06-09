@@ -39,9 +39,9 @@ VMO is designed for organizations that need to manage VM workloads on Kubernetes
 ## Deployment Approaches
 
 VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm-launchpad-appliance-recommended)
-(recommended) and [Legacy VMO](#legacy-vmo).
+(recommended) and [VMO Pack](#legacy-vmo).
 
-| **Capability**                         | **VM Launchpad Appliance**           | **Legacy VMO**                                                                         |
+| **Capability**                         | **VM Launchpad Appliance**           | **VMO Pack**                                                                         |
 | -------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
 | **Palette connection**                 | Not supported                        | Required for profile authoring; optional at runtime with locally managed Edge clusters |
 | **Deployment method**                  | Bootable ISO                         | Palette cluster profile or exported cluster definition                                 |
@@ -68,19 +68,19 @@ and regulated environments.
 If you are new to VMO, start with the VM Launchpad Appliance. Refer to
 [Install VM Launchpad](./vmo-appliance/install-vmla-iso.md) to get started.
 
-### Legacy VMO
+### VMO Pack
 
 <!-- prettier-ignore-start -->
 
-[Legacy VMO](./legacy-vmo/legacy-vmo.md) is the original approach to deploying VMO. You create a cluster through Palette
+[VMO Pack](./legacy-vmo/legacy-vmo.md) is the original approach to deploying VMO. You create a cluster through Palette
 and add the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
 to a curated [cluster profile](./legacy-vmo/create-vmo-profile.md). VM management is accessed through the Palette UI.
 
 <!-- prettier-ignore-end -->
 
-Legacy VMO remains fully supported. However, we recommend using the VM Launchpad Appliance for new deployments because
+VMO Pack remains fully supported. However, we recommend using the VM Launchpad Appliance for new deployments because
 it provides a dedicated VM management experience with standalone authentication, operational tooling, and capabilities
-that are not available in the legacy approach.
+that are not available in the pack approach.
 
 ## Next Steps
 
@@ -102,7 +102,7 @@ existing VMs from VMware vSphere to your VMO cluster.
 
 </TabItem>
 
-<TabItem label="Legacy VMO" value="legacy">
+<TabItem label="VMO Pack" value="pack">
 
 1. Review the [Architecture](./architecture.md) page to learn about the components involved in enabling VMO.
 

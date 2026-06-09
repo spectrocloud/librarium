@@ -17,9 +17,8 @@ To help achieve higher density and resource optimization, there are several feat
 
 :::info
 
-This page applies to clusters and VMs created using the VM Launchpad Appliance. For clusters and VMs created with legacy
-VMO using the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack,
-refer to our legacy [Overcommit and Memory Optimization](../legacy-vmo/create-manage-vm/vmo-overcommit-memory-optimization-legacy.md)
+This page applies to clusters and VMs created using the VM Launchpad Appliance. For clusters and VMs created with VMO Pack using the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack,
+refer to our VMO Pack [Overcommit and Memory Optimization](../legacy-vmo/create-manage-vm/vmo-overcommit-memory-optimization-legacy.md)
 guide.
 
 :::
