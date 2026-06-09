@@ -39,7 +39,7 @@ VMO is designed for organizations that need to manage VM workloads on Kubernetes
 ## Deployment Approaches
 
 VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm-launchpad-appliance-recommended)
-(recommended) and [VMO Pack](#legacy-vmo).
+(recommended) and [VMO Pack](#vmo-pack).
 
 | **Capability**                         | **VM Launchpad Appliance**           | **VMO Pack**                                                                           |
 | -------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
