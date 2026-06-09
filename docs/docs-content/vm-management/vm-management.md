@@ -41,7 +41,7 @@ VMO is designed for organizations that need to manage VM workloads on Kubernetes
 VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm-launchpad-appliance-recommended)
 (recommended) and [VMO Pack](#legacy-vmo).
 
-| **Capability**                         | **VM Launchpad Appliance**           | **VMO Pack**                                                                         |
+| **Capability**                         | **VM Launchpad Appliance**           | **VMO Pack**                                                                           |
 | -------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
 | **Palette connection**                 | Not supported                        | Required for profile authoring; optional at runtime with locally managed Edge clusters |
 | **Deployment method**                  | Bootable ISO                         | Palette cluster profile or exported cluster definition                                 |
@@ -78,9 +78,9 @@ to a curated [cluster profile](./legacy-vmo/create-vmo-profile.md). VM managemen
 
 <!-- prettier-ignore-end -->
 
-VMO Pack remains fully supported. However, we recommend using the VM Launchpad Appliance for new deployments because
-it provides a dedicated VM management experience with standalone authentication, operational tooling, and capabilities
-that are not available in the pack approach.
+VMO Pack remains fully supported. However, we recommend using the VM Launchpad Appliance for new deployments because it
+provides a dedicated VM management experience with standalone authentication, operational tooling, and capabilities that
+are not available in the pack approach.
 
 ## Next Steps
 

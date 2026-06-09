@@ -10,8 +10,8 @@ tags: ["vmo", "Launchpad for VMs"]
 
 The Launchpad for VMs Appliance is a bootable ISO that you install on bare metal or Edge devices to create a cluster
 with Virtual Machine Orchestrator (VMO) preconfigured. Install the appliance on each device that serves as a node in
-your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster,
-log into Launchpad to do an [initial configuration](./getting-started-wiz.md), and [create your first VM](./quick-start.md).
+your VMO cluster, and link the nodes together to form your cluster. After you deploy your cluster, log into Launchpad to
+do an [initial configuration](./getting-started-wiz.md), and [create your first VM](./quick-start.md).
 
 ## Hardware Requirements
 
@@ -232,7 +232,7 @@ The following table lists the hardware requirements for worker nodes and control
    | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
    | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
    | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                 |
-   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                          |
+   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                        |
    | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
 
    ### OS and Metrics
