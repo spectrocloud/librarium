@@ -1,0 +1,58 @@
+---
+partial_category: clusters-import
+partial_name: cluster-import-api
+---
+
+:::info
+
+Once you select **Download manifest**, the cluster status transitions to **Importing**. If you close the drawer and
+later discover the download was blocked or did not complete, the drawer will not reopen. In this case, you must
+fetch the manifest using the [Palette API](/api/introduction/) endpoint `/v1/spectroclusters/<uid>/import/manifest`.
+
+
+:::
+
+<details>
+
+<summary>Retrieve Manifest Manually</summary>
+
+Replace the placeholders in the following commands with the appropriate values.
+
+    | **Parameter**        | **Description**                                                                                                                                                                         |
+    | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `<palette-endpoint>` | The endpoint of your Palette instance.                                                                                                                                                  |
+    | `<cluster-uid>`      | The unique ID assigned to imported cluster. Found at **Clusters** > **[Cluster]** > **Cluster ID**.                                                                                     |
+    | `<api-key>`          | Your [Palette API Key](/user-management/authentication/api-key/create-api-key/).                                                                                                 |
+    | `<project-uid>`      | (Project scope only) The Palette project you are importing your cluster to. Found in the top-right on the **Project Overview**. This field is not applicable in the Tenant Admin scope. |
+    | `<jwt-token>`        | Your Palette [Authorization Token](/user-management/authentication/authorization-token/).                                                                                        |
+
+<Tabs>
+
+<TabItem label="API Key" value="api">
+
+        Omit the line `--header "ProjectUid: <project-uid>" \` if you are importing the cluster in the Tenant Admin scope.
+
+         ```bash {4}
+         curl --silent --show-error --request GET \
+            "https://<palette-endpoint>/v1/spectroclusters/<cluster-uid>/import/manifest" \
+            --header "ApiKey: <api-key>" \
+            --header "ProjectUid: <project-uid>" \
+            --output "cluster-<cluster-uid>-manifest.yaml"
+         ```
+
+</TabItem>
+
+<TabItem label="JWT Token" value="JWT">
+
+         ```bash
+         curl --silent --show-error --request GET \
+            "https://<palette-endpoint>/v1/spectroclusters/<cluster-uid>/import/manifest" \
+            --header "Authorization: <jwt-token>" \
+            --output "cluster-<cluster-uid>-manifest.yaml"
+         ```
+
+</TabItem>
+
+</Tabs>
+
+</details>
