@@ -11,6 +11,78 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 5, 2026 - Component Updates {#component-updates-2026-22}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2852 -->
+<!-- RELEASE DATE: June 5, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.8.6 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.3 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.4 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.16.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.3   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.4  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.4  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.6   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.6   |
+
+<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2225 -->
+
+- You can now use Generation 2 Azure VMs for AKS cluster nodes in Palette. Gen 2 VMs offer UEFI-based boot with Secure
+  Boot and vTPM support, faster boot times, and larger OS disks. Support is available for all instance types that offer
+  a Gen 2 variant, including Azure Linux 3 and Ubuntu. Changing the VM generation on an existing cluster triggers a
+  repave, and Palette will display the appropriate repave warning. Coverage is available across UI, API, Terraform, and
+  Crossplane for both Palette and Vertex.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2226 -->
+
+- You can now pass through arbitrary CAPI and CAPx provider properties at both the cluster and node pool level for EKS
+  and AKS clusters. This allows you to configure advanced infrastructure settings that are not natively exposed in
+  Palette without waiting for explicit platform support. Passthrough properties are applied on Day 0 and Day 2; Day 2
+  changes trigger a repave warning. Misconfigured passthrough values surface as clear, repeatable cluster events with
+  user-friendly error messages that identify the offending properties. Support is available across UI, API, Terraform,
+  and Crossplane for both Palette and Vertex.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2232 -->
+
+- You can now configure SSH keys for MAAS cluster nodes directly through Palette, with an experience consistent with
+  VMware clusters. SSH keys are injected into all control plane and worker nodes during provisioning via cloud-init and
+  can be rotated on Day 2 through the cluster-management-agent. Multiple SSH keys can be configured per cluster. Support
+  is available through the Palette UI, API, Terraform, and Crossplane for both bare metal and LXD VM nodes, on both
+  Palette and Vertex.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-691 -->
+
+- Fixed a secureboot install regression in the piraeus-operator pack where the DRBD kernel module was being compiled on
+  the target node at install time, producing unsigned modules that secureboot-enabled hosts refused to load. The module
+  is now shipped as pre-built, signed files inside the image, restoring successful appliance installs on hardened, STIG,
+  and FIPS infrastructure.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2242 -->
+
+- Fixed an issue in the `spectrocloud_cluster_edge_native` Terraform provider where importing an existing Edge Native
+  cluster did not correctly read the `cloud_config.vip` value from Palette into Terraform state, causing
+  `terraform plan` to report false drift and show the VIP as a pending addition even when the configuration and Palette
+  already matched.
+
+<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Packs
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+
+#### Pack Notes
+
 ## June 8, 2026 - Release 4.9.16
 
 ### Breaking Changes {#breaking-changes-4-9-x}
