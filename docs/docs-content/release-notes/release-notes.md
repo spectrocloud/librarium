@@ -11,6 +11,43 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 15, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-2887 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8473 -->
+
+- Fixed an issue where OS pack stages were not executed during Kubernetes upgrades on Edge clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8522 -->
+
+- Fixed a security vulnerability where the two-node liveness server exposed the database password without
+  authentication.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8837 -->
+
+- Fixed an issue where the debug profiling interface was unintentionally exposed on internal ports.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10939 -->
+
+- Fixed an issue where the message broker stopped functioning correctly, causing timeouts across the platform.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11067 -->
+
+- Fixed an issue where Hubble pods consumed excessive memory due to message broker connection handling after MTSaaS
+  deployment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11119 -->
+
+- Fixed an issue where redundant cluster status cache broadcasts caused excessive memory usage and unnecessary cross-pod
+  cache reloads.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11122 -->
+
+- Fixed in-product help links to correctly point to the support portal.
+
 ## June 8, 2026 - Release 4.9.16
 
 ### Breaking Changes {#breaking-changes-4-9-x}
