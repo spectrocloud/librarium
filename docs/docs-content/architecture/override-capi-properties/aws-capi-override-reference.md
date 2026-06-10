@@ -137,6 +137,102 @@ awsManagedMachinePool:
       maxUnavailable: 1
 ```
 
+### Node Pool AWS Tags
+
+You can apply AWS custom tags at the node pool level on EKS clusters by overriding the `additionalTags` field of the
+`AWSManagedMachinePool` resource. This is useful for cost allocation, ownership, and automation tags that need to differ
+per node pool, such as a per-customer or per-team tag on a dedicated pool.
+
+#### Cluster-Level and Node-Pool-Level Tags Are Additive
+
+EKS supports AWS tags at two levels, and the two sets are merged rather than replaced.
+
+| Level         | Override Target                         | Applies To                                                              |
+| ------------- | --------------------------------------- | ----------------------------------------------------------------------- |
+| **Cluster**   | `awsManagedControlPlane.additionalTags` | All resources that the cluster creates, including every node pool.      |
+| **Node pool** | `awsManagedMachinePool.additionalTags`  | Only the managed node group for that pool and its associated resources. |
+
+Node-pool-level tags are additive to the cluster-level tags. The resources for a node pool receive the union of both
+sets. If the same key is set at both levels, the node-pool value takes precedence.
+
+##### Example
+
+Consider the following example overrides.
+
+```yaml title="Cluster-level override"
+awsManagedControlPlane:
+  spec:
+    additionalTags:
+      env: prod
+```
+
+```yaml title="Node-pool-level override"
+awsManagedMachinePool:
+  spec:
+    additionalTags:
+      customer: spectro
+```
+
+The managed node group for that pool, and its associated Auto Scaling group, receive both tags:
+
+- `env: prod`
+- `customer: spectro`
+
+Other node pools that do not set `additionalTags` receive the cluster-level tag only (`env: prod`).
+
+#### Tag Propagation
+
+Tags resolved for a node pool are applied to the EKS managed node group and to the Auto Scaling group that backs it.
+Amazon EKS and EC2 Auto Scaling then propagate Auto Scaling group tags to the EC2 instances launched in the pool,
+according to the standard AWS tag-propagation rules.
+
+Cluster-level tags continue to apply to all cluster resources, such as the `AWSManagedControlPlane`, networking
+resources, and every node pool, regardless of any node-pool overrides.
+
+#### Add, Update, and Delete Tags
+
+The override YAML is the source of truth for the tags at each level. Palette reconciles the resolved tag set onto the
+node group and Auto Scaling group on each reconcile, so you manage tags by editing the override YAML.
+
+| Operation  | How to perform it                                                                                  |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| **Add**    | Add the key/value pair under `additionalTags`.                                                     |
+| **Update** | Change the value of an existing key under `additionalTags`.                                        |
+| **Delete** | Remove the key from `additionalTags`. The tag is removed from the resources on the next reconcile. |
+
+#### Supported Tag Formats
+
+Palette does not validate tag keys or values against AWS constraints. Tags must conform to the
+[AWS tag requirements](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html), such as the per-resource
+tag limit and the key and value length and character restrictions.
+
+Avoid the following reserved prefixes that AWS and EKS manage:
+
+- `aws:`
+- `kubernetes.io/`
+- `eks:`
+
+AWS rejects an invalid tag during reconciliation, and the failure surfaces as a warning cluster event. Refer to
+[Error Handling](./override-capi-properties.md#error-handling) for details.
+
+#### Day-0 and Day-2 Workflows
+
+You can set node-pool tags when you create a cluster (Day-0) or on a running cluster (Day-2).
+
+- **Day-0** - Provide the node-pool override YAML in the node pool configuration before you deploy the cluster. The
+  resolved tags are applied when the managed node group is created.
+
+- **Day-2** - Edit the node-pool override YAML on the running cluster. Palette reconciles the change onto the existing
+  node group.
+
+  :::warning
+
+  On EKS, any override change to a node pool, including a tag-only change, triggers a rolling upgrade (repave) of that
+  pool, which temporarily reduces pool capacity. Plan Day-2 tag changes during a maintenance window. Refer to
+  [Repave Behavior](./override-capi-properties.md#repave-behavior) for details.
+
+  :::
+
 ### Unsupported First-Class Properties
 
 :::info
