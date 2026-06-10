@@ -23,7 +23,7 @@ advisories are published.
 ## Security Advisory 017 - Improper Access Control for Debugging and Profiling Interface in Stylus
 
 - **Release Date**: June 4, 2026
-- **Last Updated**: June 5, 2026
+- **Last Updated**: June 10, 2026
 - **Severity**: HIGH
 
 ### Summary
@@ -73,12 +73,13 @@ Customers are encouraged to take the following actions:
 
 ### Fix Availability
 
-Palette and Palette VerteX version 4.8.58 has addressed this security advisory.
+Spectro Cloud is currently backporting the remediation to supported Palette 4.8.x and 4.7.x releases. This advisory will
+be updated with the applicable fixed versions and upgrade guidance once those releases are available.
 
 ## Security Advisory 016 - Upload Service Authentication Bypass
 
 - **Release Date**: June 4, 2026
-- **Last Updated**: June 4, 2026
+- **Last Updated**: June 10, 2026
 - **Severity**: CRITICAL
 
 ### Summary
@@ -110,7 +111,9 @@ time of this advisory.
 
 This issue has been fully remediated in release 4.9.14 for the Spectro Cloud managed SaaS solution.
 
-Palette and Palette VerteX version 4.8.58 has addressed this security advisory.
+Spectro Cloud is currently backporting the remediation to support Palette and Palette VerteX 4.8.x and 4.7.x releases.
+This advisory will be updated with the applicable fixed versions, including the required Stylus (Palette Edge agent)
+releases, once those releases become available.
 
 ### Recommended Actions
 
@@ -131,7 +134,7 @@ Customers are encouraged to take the following actions:
 ## Security Advisory 015 - Exposure of Cluster-Scoped Service Credentials Through Manifest Endpoints
 
 - **Release Date**: June 3, 2026
-- **Last Updated**: June 3, 2026
+- **Last Updated**: June 10, 2026
 - **Severity**: HIGH
 
 ### Summary
@@ -170,8 +173,8 @@ Several existing, in-place controls significantly reduce the practical impact of
 
 ### Fix Availability
 
-Palette and Palette VerteX version 4.8.58 has addressed this security advisory. Self-hosted customers are advised to
-upgrade their Palette version to 4.8.58 or later.
+Spectro Cloud is preparing and validating fixes. Self-hosted customers are advised to upgrade their Palette version once
+a fixed release is available.
 
 ### Recommended Actions
 
