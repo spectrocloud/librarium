@@ -35,11 +35,16 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
 
 5.  Select **OK** to begin the migration process.
 
-6.  Copy the command displayed in the drawer. The command is customized for your cluster, as it contains the assigned
-    cluster ID.
+6.  You are redirected to the imported cluster's **Overview** tab. A set of instructions with commands is displayed on
+    the drawer. You must issue the following commands to complete the import process.
 
-7.  Open a terminal on your local workstation and verify you are in the correct
-    [Kubernetes context](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_config/).
+7.  Select **Download manifest**.
+
+    <PartialsComponent category="clusters-import" name="cluster-import-api" />
+
+8.  Open a terminal on your local workstation and verify you are in the correct
+    [Kubernetes context](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_config/). Expand the following
+    section for guidance on changing your context.
 
     ```shell
     kubectl config current-context
@@ -48,6 +53,10 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
     ```shell title="Example output" hideClipboard
     kind-import-cluster-full
     ```
+
+    <details>
+
+    <summary>Switch Kubernetes Context</summary>
 
     If you are not in the correct Kubernetes context, switch to the proper context so you are interacting with the
     correct imported cluster when using kubectl. To do so, verify the contexts available in your current kubeconfig
@@ -77,10 +86,12 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
     kubectl config use-context <context-name>
     ```
 
-8.  Paste the command you copied in your terminal to start the migration.
+    </details>
 
-    ```shell title="Example command" hideClipboard
-    kubectl apply --filename https://api.dev.spectrocloud.com/v1/spectroclusters/69e67ccb13d6a6578fc2bdd3/import/manifest
+9.  Apply the manifest to your Kubernetes cluster using the appropriate download path to start the migration.
+
+    ```hideClipboard shell
+    kubectl apply --filename <path-to-download>/manifest.yaml
     ```
 
     ```hideClipboard shell title="Example output"
@@ -117,7 +128,7 @@ supports, refer to [Import Modes](imported-clusters.md#import-modes).
     secret/hubble-secrets configured
     ```
 
-9.  The drawer disappears, and the **Profile**, **Workloads**, **Scan**, and **Backups** tabs are unlocked.
+10. The drawer disappears, and the **Profile**, **Workloads**, **Scan**, and **Backups** tabs are unlocked.
 
               ![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.webp)
 
