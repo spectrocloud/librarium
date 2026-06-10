@@ -31,8 +31,8 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 
 ## Prerequisites
 
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
-  guidance.
+- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/legacy-vmo/create-vmo-profile.md)
+  for further guidance.
 
 - One or more VMs hosted in VMware vSphere.
 
@@ -42,7 +42,7 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 
 Use the `deploy-ova` subcommand to deploy an imported vSphere OVA to Palette VMO. The following flags are supported by
 the `deploy-ova` subcommand. Refer to the
-[Import and Deploy OVAs to Palette VMO](../../../vm-management/create-manage-vm/advanced-topics/deploy-import-ova.md)
+[Import and Deploy OVAs to Palette VMO](../../../vm-management/legacy-vmo/create-manage-vm/advanced-topics/deploy-import-ova.md)
 guide for further details on importing and deploying vSphere OVAs.
 
 | **Short Flag** | **Long Flag**   | **Description**                                                                                                                      | **Type** |
@@ -80,7 +80,7 @@ Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The foll
 `import-ova` subcommand. The OVA will be converted to the QCOW2 virtual disk storage format. This subcommand generates
 an OVA deployment configuration file. You can then either directly upload the imported image to a `DataVolume` or upload
 it a Docker image registry. Refer to the
-[Import and Deploy OVAs to Palette VMO](../../../vm-management/create-manage-vm/advanced-topics/deploy-import-ova.md)
+[Import and Deploy OVAs to Palette VMO](../../../vm-management/legacy-vmo/create-manage-vm/advanced-topics/deploy-import-ova.md)
 guide for further details on importing and deploying vSphere OVAs
 
 | **Short Flag** | **Long Flag**    | **Description**                                                               | **Type** |
@@ -129,7 +129,7 @@ palette vmo import-ova --skip-image
 ### Prerequisites
 
 Refer to
-[Migrate a VM to a VMO cluster using the Palette CLI](../../../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md#prerequisites)
+[Migrate a VM to a VMO cluster using the Palette CLI](../../../vm-management/legacy-vmo/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md#prerequisites)
 for a full list of prerequisites.
 
 ### Usage
@@ -139,7 +139,7 @@ supported by the `migrate-vm` subcommand. The migration consists of two phases. 
 to Persistent Volumes (PVs) in K8s using KubeVirt CDI and VMware Virtual Disk Development Kit (VDDK). Then, the guest OS
 on the root disk is made bootable and drivers are installed using [virt-v2v](https://libguestfs.org/virt-v2v.1.html).
 Refer to the
-[Migrate a VM to a VMO cluster using the Palette CLI](../../../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md)
+[Migrate a VM to a VMO cluster using the Palette CLI](../../../vm-management/legacy-vmo/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md)
 guide for further details on migrating a vSphere VM to Palette VMO.
 
 | **Short Flag** | **Long Flag**        | **Description**                                                                                                                | **Type** |

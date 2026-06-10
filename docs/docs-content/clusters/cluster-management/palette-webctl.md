@@ -17,7 +17,7 @@ If you are using Palette Virtual Machine Orchestrator (VMO), you can connect to 
 [virtctl CLI](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/). `virtctl` facilitates certain VM
 operations, including copying, pasting, or transferring files to and from VMs using Secure Copy Protocol (SCP). Refer to
 our
-[Access VM Cluster with virtctl](../../vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl.md)
+[Access VM Cluster with virtctl](../../vm-management/legacy-vmo/create-manage-vm/advanced-topics/access-cluster-with-virtctl.md)
 guide for more information.
 
 :::

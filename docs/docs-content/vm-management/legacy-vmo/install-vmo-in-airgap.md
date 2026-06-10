@@ -14,8 +14,9 @@ instance of Palette and Palette VerteX.
 ## Prerequisites
 
 - An existing airgap instance of Palette or Palette VerteX. Refer to the
-  [Self-Hosted Palette Installation](../enterprise-version/install-palette/install-palette.md) and
-  [Palette VerteX Installation](../vertex/install-palette-vertex/install-palette-vertex.md) guides for more information.
+  [Self-Hosted Palette Installation](../../enterprise-version/install-palette/install-palette.md) and
+  [Palette VerteX Installation](../../vertex/install-palette-vertex/install-palette-vertex.md) guides for more
+  information.
 
   :::info
 
@@ -26,7 +27,7 @@ instance of Palette and Palette VerteX.
   :::
 
 - At least one tenant created for your airgap instance of Palette or Palette VerteX. Refer to
-  [Tenant Management](../enterprise-version/system-management/tenant-management.md) for more information.
+  [Tenant Management](../../enterprise-version/system-management/tenant-management.md) for more information.
 
 - Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
@@ -53,14 +54,14 @@ instance of Palette and Palette VerteX.
    sudo --login
    ```
 
-3. Refer to the [Palette Additional Packs](../downloads/self-hosted-palette/additional-packs.md) page to download and
+3. Refer to the [Palette Additional Packs](../../downloads/self-hosted-palette/additional-packs.md) page to download and
    install the **airgap-pack-virtual-machine-orchestrator** and **airgap-pack-spectro-proxy** packs. You will need these
    packs for both Proxied and Direct network configuration.
 
 4. If you are planning to deploy VMs with direct network access, repeat step three to install a load balancer pack of
    your choice. We recommend installing <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb" />
    (**airgap-pack-lb-metallb**), which you can find in
-   [Palette Additional Packs](../downloads/self-hosted-palette/additional-packs.md).
+   [Palette Additional Packs](../../downloads/self-hosted-palette/additional-packs.md).
 
 5. Log in to the Palette system console.
 

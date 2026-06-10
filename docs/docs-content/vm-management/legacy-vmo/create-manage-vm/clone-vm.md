@@ -50,11 +50,11 @@ clone a VM for the following reasons:
 
 - Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use
   Palette's RoleBinding feature to associate users and groups with the role. Refer to the
-  [Create Role Bindings](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+  [Create Role Bindings](../../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 - A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one
   namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out
-  [Create a Namespace](../../clusters/cluster-management/namespace-management.md#create-a-namespace).
+  [Create a Namespace](../../../clusters/cluster-management/namespace-management.md#create-a-namespace).
 
 ## Clone a VM
 

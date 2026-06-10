@@ -3,7 +3,7 @@ sidebar_label: "Overcommit and Memory Optimization"
 title: "VM Overcommitment and Memory Optimization"
 description: "Learn about VMO Memory and CPU Overcommit and Optimization"
 hide_table_of_contents: false
-sidebar_position: 1
+sidebar_position: 99
 tags: ["vmo", "architecture"]
 ---
 
@@ -11,9 +11,20 @@ Virtual Machine Orchestrator (VMO) enables higher VM density on existing infrast
 and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication. These methods allow
 operators to run more VMs per host while reducing physical infrastructure costs. For more information on memory and
 overcommit in VMO, refer to the
-[Over-Commit Resources to Enhance VM Performance](./create-manage-vm/advanced-topics/vm-oversubscription.md) page.
+[Over-Commit Resources to Enhance VM Performance](./advanced-topics/vm-oversubscription.md) page.
 
 To help achieve higher density and resource optimization, there are several features you can use.
+
+<!-- prettier-ignore-start -->
+
+:::info
+
+This page applies to clusters and VMs created with VMO Pack using the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack.
+For clusters and VMs created using the VM Launchpad Appliance, refer to our VM Launchpad [Overcommit and Memory Optimization](../../vmo-appliance/vmo-overcommit-memory-optimization-appliance.md) guide.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ## Optimization Features
 
