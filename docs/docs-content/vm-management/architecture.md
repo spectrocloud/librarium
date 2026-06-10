@@ -7,10 +7,10 @@ sidebar_position: 0
 tags: ["vmo", "architecture", "Launchpad for VMs"]
 ---
 
-[Launchpad for VMs](vmo-appliance/install-vmla-iso.md) is the recommended way to deploy a new Palette Virtual Machine
-Orchestrator (VMO) cluster on bare metal or Edge devices. The appliance uses a bootable ISO to install a preconfigured
-VMO environment on each node, so you can deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes
-host cluster. You can also deploy the Palette VMO pack as an
+[Launchpad for VMs](launchpad-for-vms/install-vmla-iso.md) is the recommended way to deploy a new Palette Virtual
+Machine Orchestrator (VMO) cluster on bare metal or Edge devices. The appliance uses a bootable ISO to install a
+preconfigured VMO environment on each node, so you can deploy and manage Virtual Machines (VMs) alongside containers in
+a Kubernetes host cluster. You can also deploy the Palette VMO pack as an
 [add-on cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
 on an existing data center or edge cluster.
 
@@ -79,7 +79,7 @@ Palette VMO includes the following KubeVirt feature gates by default:
 - ExpandDisks
 - HotplugNICs
 - VMLiveUpdateFeatures
-- [CPU Hotplug](./legacy-vmo/create-manage-vm/enable-cpu-hotplug.md)
+- [CPU Hotplug](./vmo-pack/create-manage-vm/enable-cpu-hotplug.md)
 
 For more information on KubeVirt feature gates, review the
 [KubeVirt Activating feature gates](https://kubevirt.io/user-guide/cluster_admin/activating_feature_gates/) guide.
@@ -117,5 +117,4 @@ spec:
 ## Next Steps
 
 Now that you understand the architecture behind Palette VMO, you can continue exploring it by reviewing our
-[Environment Setup](./legacy-vmo/environment-setup.md) and [Create a VMO Profile](./legacy-vmo/create-vmo-profile.md)
-pages.
+[Environment Setup](./vmo-pack/environment-setup.md) and [Create a VMO Profile](./vmo-pack/create-vmo-profile.md) pages.

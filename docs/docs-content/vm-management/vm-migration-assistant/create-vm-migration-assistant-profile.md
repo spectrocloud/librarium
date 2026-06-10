@@ -15,7 +15,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
   [Permissions](../../user-management/palette-rbac/permissions.md#operations) documentation for more information.
 
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../legacy-vmo/create-vmo-profile.md) for further guidance.
+- A healthy VMO cluster. Refer to the [Create a VMO Profile](../vmo-pack/create-vmo-profile.md) for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 

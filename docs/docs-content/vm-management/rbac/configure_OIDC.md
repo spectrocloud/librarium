@@ -16,7 +16,7 @@ selected in the Kubernetes layer of the infrastructure profile.
 - A configured infrastructure cluster profile. For more information, review
   [Create a Cluster Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
 
-- A configured VMO add-on cluster profile. Refer to [Create the VMO Profile](../legacy-vmo/create-vmo-profile.md) for
+- A configured VMO add-on cluster profile. Refer to [Create the VMO Profile](../vmo-pack/create-vmo-profile.md) for
   guidance.
 
 ## Enable OIDC

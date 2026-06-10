@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Manage Snapshots"
 title: "Manage Snapshots"
-description: "Learn about how to take, manage, and restore snapshots in VMO Appliance Launchpad"
+description: "Learn about how to take, manage, and restore snapshots in Launchpad for VMs"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10

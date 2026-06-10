@@ -56,9 +56,9 @@ VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm
 
 ### VM Launchpad Appliance (Recommended)
 
-The [VM Launchpad Appliance](./vmo-appliance/vmo-appliance.md) is the recommended way to deploy VMO. It provides a
-standalone, bootable ISO that you install directly on bare metal or Edge devices. After installation, link your devices
-together to form a cluster with VMO preconfigured and ready to use. No connection to Palette is required.
+The [VM Launchpad Appliance](./launchpad-for-vms/launchpad-for-vms.md) is the recommended way to deploy VMO. It provides
+a standalone, bootable ISO that you install directly on bare metal or Edge devices. After installation, link your
+devices together to form a cluster with VMO preconfigured and ready to use. No connection to Palette is required.
 
 The appliance includes a purpose-built management UI designed specifically for VM operations, with built-in identity and
 access management, golden image workflows, airgapped package management, snapshot policies, and observability
@@ -66,15 +66,15 @@ dashboards. This self-contained approach is well suited for distributed sites, E
 and regulated environments.
 
 If you are new to VMO, start with the VM Launchpad Appliance. Refer to
-[Install VM Launchpad](./vmo-appliance/install-vmla-iso.md) to get started.
+[Install VM Launchpad](./launchpad-for-vms/install-vmla-iso.md) to get started.
 
 ### VMO Pack
 
 <!-- prettier-ignore-start -->
 
-[VMO Pack](./legacy-vmo/legacy-vmo.md) is the original approach to deploying VMO. You create a cluster through Palette
+[VMO Pack](./vmo-pack/vmo-pack.md) is the original approach to deploying VMO. You create a cluster through Palette
 and add the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
-to a curated [cluster profile](./legacy-vmo/create-vmo-profile.md). VM management is accessed through the Palette UI.
+to a curated [cluster profile](./vmo-pack/create-vmo-profile.md). VM management is accessed through the Palette UI.
 
 <!-- prettier-ignore-end -->
 
@@ -92,13 +92,13 @@ existing VMs from VMware vSphere to your VMO cluster.
 
 <TabItem label="VM Launchpad Appliance" value="appliance">
 
-1. Review the [VM Launchpad Appliance](./vmo-appliance/vmo-appliance.md) overview to learn about the appliance
+1. Review the [VM Launchpad Appliance](./launchpad-for-vms/launchpad-for-vms.md) overview to learn about the appliance
    architecture and capabilities.
 
-2. Follow the [Install VM Launchpad](./vmo-appliance/install-vmla-iso.md) guide to install the appliance on your devices
-   and create your cluster.
+2. Follow the [Install VM Launchpad](./launchpad-for-vms/install-vmla-iso.md) guide to install the appliance on your
+   devices and create your cluster.
 
-3. Use the [Create Your First VM](./vmo-appliance/quick-start.md) guide to deploy your first VM.
+3. Use the [Create Your First VM](./launchpad-for-vms/quick-start.md) guide to deploy your first VM.
 
 </TabItem>
 
@@ -106,15 +106,15 @@ existing VMs from VMware vSphere to your VMO cluster.
 
 1. Review the [Architecture](./architecture.md) page to learn about the components involved in enabling VMO.
 
-2. Follow the [Create a VMO Profile](./legacy-vmo/create-vmo-profile.md) guide to prepare everything you need to deploy
+2. Follow the [Create a VMO Profile](./vmo-pack/create-vmo-profile.md) guide to prepare everything you need to deploy
    your first VMO cluster. If you are using VMO in an airgapped environment, review the
-   [Install VMO in Airgap Environments](./legacy-vmo/install-vmo-in-airgap.md) guide first.
+   [Install VMO in Airgap Environments](./vmo-pack/install-vmo-in-airgap.md) guide first.
 
-3. Refer to the [Create and Manage VMs](./legacy-vmo/create-manage-vm/create-manage-vm.md) section for information on
+3. Refer to the [Create and Manage VMs](./vmo-pack/create-manage-vm/create-manage-vm.md) section for information on
    deploying VMs and performing standard VM operations.
 
-4. Review the [Advanced Topics](./legacy-vmo/create-manage-vm/advanced-topics/advanced-topics.md) section to learn how
-   to create VM and disk templates, manage VM resources, and perform other advanced operations.
+4. Review the [Advanced Topics](./vmo-pack/create-manage-vm/advanced-topics/advanced-topics.md) section to learn how to
+   create VM and disk templates, manage VM resources, and perform other advanced operations.
 
 </TabItem>
 
