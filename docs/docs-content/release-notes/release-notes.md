@@ -11,6 +11,58 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 8, 2026 - Release 4.9.16
+
+### Breaking Changes {#breaking-changes-4-9-x}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10828 -->
+
+- Authentication is now required for the following [Palette API](/api/introduction/) endpoints, which are used for
+  [imported clusters](../clusters/imported-clusters/imported-clusters.md) and
+  [Private Cloud Gateways (PCGs)](../clusters/pcg/pcg.md).
+
+  | **Endpoint**                                | **Required Permissions**                                                                     |
+  | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+  | `/cluster/{uid}/manifest`                   | `cluster.delete` permission                                                                  |
+  | `/v1/pcg/{uid}/services/ally/manifest`      | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/spectroclusters/{uid}/import/manifest` | `cluster.delete` permission                                                                  |
+
+  This change does _not_ affect existing imported clusters and PCGs; it affects _new_ cluster import and PCG workflows,
+  as well as any automation that retrieves manifests from the affected endpoints. As a result, the process of
+  [importing clusters](../clusters/imported-clusters/cluster-import.md) and
+  [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
+  manifests to be downloaded locally before being applied.
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5929 -->
+
+- Palette now supports selecting the node pool operating system for
+  [Azure AKS clusters](../clusters/public-cloud/azure/aks.md) through a new **OS SKU** field. When the OS type is
+  **Linux**, you can choose **Ubuntu** or **Azure Linux**; when the OS type is **Windows**, the node pool uses **Windows
+  2022**.
+
+  - The OS SKU is set when the node pool is created and cannot be changed afterward. The OS version is selected
+    automatically based on the
+    [cluster's Kubernetes version and default OS version](https://learn.microsoft.com/en-us/azure/aks/upgrade-os-version#supported-os-versions);
+    Kubernetes version 1.32 and later provision Azure Linux 3.0.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11029 -->
+
+- Fixed an issue that caused custom Transport Layer Security (TLS) certificate loss when upgrading IP-based
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
+  environments installed using the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md),
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), or
+  [Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md). We recommend
+  customers upgrading to any Palette version between 4.8.47 - 4.9.14 back up their custom certificates prior to
+  initiating the upgrade. Refer to
+  [Scenario - Custom Certificate Handling During Upgrade](../troubleshooting/palette-upgrade.md#scenario---custom-certificate-replaced-after-upgrade)
+  for more information.
+
 ## June 5, 2026 - Component Updates {#component-updates-2026-23}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2869 -->
