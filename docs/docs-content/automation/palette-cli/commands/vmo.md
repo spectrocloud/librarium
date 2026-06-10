@@ -31,8 +31,8 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 
 ## Prerequisites
 
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/vmo-pack/create-vmo-profile.md)
-  for further guidance.
+- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/vmo-pack/create-vmo-profile.md) for
+  further guidance.
 
 - One or more VMs hosted in VMware vSphere.
 

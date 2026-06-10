@@ -56,9 +56,9 @@ VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm
 
 ### VM Launchpad Appliance (Recommended)
 
-The [VM Launchpad Appliance](./launchpad-for-vms/launchpad-for-vms.md) is the recommended way to deploy VMO. It provides a
-standalone, bootable ISO that you install directly on bare metal or Edge devices. After installation, link your devices
-together to form a cluster with VMO preconfigured and ready to use. No connection to Palette is required.
+The [VM Launchpad Appliance](./launchpad-for-vms/launchpad-for-vms.md) is the recommended way to deploy VMO. It provides
+a standalone, bootable ISO that you install directly on bare metal or Edge devices. After installation, link your
+devices together to form a cluster with VMO preconfigured and ready to use. No connection to Palette is required.
 
 The appliance includes a purpose-built management UI designed specifically for VM operations, with built-in identity and
 access management, golden image workflows, airgapped package management, snapshot policies, and observability
@@ -95,8 +95,8 @@ existing VMs from VMware vSphere to your VMO cluster.
 1. Review the [VM Launchpad Appliance](./launchpad-for-vms/launchpad-for-vms.md) overview to learn about the appliance
    architecture and capabilities.
 
-2. Follow the [Install VM Launchpad](./launchpad-for-vms/install-vmla-iso.md) guide to install the appliance on your devices
-   and create your cluster.
+2. Follow the [Install VM Launchpad](./launchpad-for-vms/install-vmla-iso.md) guide to install the appliance on your
+   devices and create your cluster.
 
 3. Use the [Create Your First VM](./launchpad-for-vms/quick-start.md) guide to deploy your first VM.
 
@@ -113,8 +113,8 @@ existing VMs from VMware vSphere to your VMO cluster.
 3. Refer to the [Create and Manage VMs](./vmo-pack/create-manage-vm/create-manage-vm.md) section for information on
    deploying VMs and performing standard VM operations.
 
-4. Review the [Advanced Topics](./vmo-pack/create-manage-vm/advanced-topics/advanced-topics.md) section to learn how
-   to create VM and disk templates, manage VM resources, and perform other advanced operations.
+4. Review the [Advanced Topics](./vmo-pack/create-manage-vm/advanced-topics/advanced-topics.md) section to learn how to
+   create VM and disk templates, manage VM resources, and perform other advanced operations.
 
 </TabItem>
 

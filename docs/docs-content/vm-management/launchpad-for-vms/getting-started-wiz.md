@@ -21,9 +21,9 @@ This guide walks you through the **Getting Started** wizard.
 
 Complete the following required configuration steps before you [create your first VM](./quick-start.md).
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your Launchpad for VMs host.
-   If you have access to the Launchpad for VMs host terminal, the Local UI address is displayed on the terminal screen. If
-   you changed the default port, replace `5080` with your configured Local UI port.
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your Launchpad for VMs
+   host. If you have access to the Launchpad for VMs host terminal, the Local UI address is displayed on the terminal
+   screen. If you changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
