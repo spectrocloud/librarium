@@ -36,8 +36,8 @@ tags: ["release-notes"]
 
   - Using CAPI override, you can now apply AWS custom tags at the node pool level on EKS clusters. Node-pool tags are
     additive to cluster-level tags and propagate to the pool's managed node group and Auto Scaling group. For more
-    information, refer to [Node Pool AWS
-    Tags](../architecture/override-capi-properties/aws-capi-override-reference.md#node-pool-aws-tags).
+    information, refer to
+    [Node Pool AWS Tags](../architecture/override-capi-properties/aws-capi-override-reference.md#node-pool-aws-tags).
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6803 -->
 
