@@ -8,7 +8,7 @@ tags: ["architecture", "capi", "cluster api", "advanced configuration", "cloudst
 ---
 
 This page provides examples and references for overriding Cluster API (CAPI) properties on Apache CloudStack clusters
-using the Cluster API CloudStack (CAPC) provider.
+using the Cluster API Provider CloudStack (CAPC).
 
 ## CloudStack
 
