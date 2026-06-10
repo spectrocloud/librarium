@@ -32,7 +32,19 @@ tags: ["release-notes"]
   underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
   Properties](../architecture/override-capi-properties/override-capi-properties.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6803 -->
+
+- Palette now supports overriding Cluster API Machine Health Check (MHC) settings per node pool on Palette eXtended
+  Kubernetes (PXK) infrastructure clusters. This capability does not apply to EKS, AKS, or GKE clusters. For more
+  information, refer to [Node Pools](../clusters/cluster-management/node-pool.md).
+
 #### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-9172 -->
+
+- The deployment of
+  [MAAS clusters to LXD Virtual Machines (VMs)](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) has
+  exited Tech Preview and is now ready for production workloads.
 
 #### Deprecations and Removals
 
@@ -45,6 +57,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 :::
 
 #### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8655 -->
+
+- The Palette TUI now includes a **Management Interface** drop-down menu on the **Network Adapter** screen. You can use
+  this option during initial Edge host setup to pin Local UI and host-to-host traffic to a specific network adapter. For
+  more information, refer to
+  [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
 #### Improvements
 
