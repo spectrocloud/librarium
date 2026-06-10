@@ -199,11 +199,11 @@ The following table lists the hardware requirements for worker nodes and control
    you review the cluster profile, select **Next**.
 
    :::info
-   
+
    If your installation is using the [**Appliance ISO**](#install-launchpad-for-vms),
    [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
-   or [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4. 
-   
+   or [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
+
    :::
 
    | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                                      |
