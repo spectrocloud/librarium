@@ -54,11 +54,16 @@ The following table lists the hardware requirements for worker nodes and control
 
 ## Install Launchpad for VMs {#install}
 
-1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO. 
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO.
 
-2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show Artifacts**.
+2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
+   Artifacts**.
 
-3. **Download** the **Launchpad for VMs Appliance ISO**. You can download the Appliance with the Cluster Config already staged (**Appliance ISO with Content**) or,  if you have limited disk space for a virtual ISO, download a slim version of the ISO (**Appliance ISO**). Download the **Content bundle (including Ubuntu)** and [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+3. **Download** the **Launchpad for VMs Appliance ISO**. You can download the Appliance with the Cluster Config already
+   staged (**Appliance ISO with Content**) or, if you have limited disk space for a virtual ISO, download a slim version
+   of the ISO (**Appliance ISO**). Download the **Content bundle (including Ubuntu)** and
+   [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
+   or [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
 
 ![Screenshot of download screen from artifact studio](/vmo/vm-management_vmo_appliance-iso-download-4-9.webp)
 
@@ -190,11 +195,12 @@ The following table lists the hardware requirements for worker nodes and control
    | **Cluster name** | Name of the cluster.                                    |
    | **Tags**         | Key-value pairs to provide metadata about your cluster. |
 
-4. The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile. After you review the cluster profile, select **Next**.
-   
-   :::info
-   If your installation is using the [**Appliance ISO**](#install-launchpad-for-vms-install), [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
-   :::
+4. The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile. After
+   you review the cluster profile, select **Next**.
+
+   :::info If your installation is using the [**Appliance ISO**](#install-launchpad-for-vms-install),
+   [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
+   or [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4. :::
 
    | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                                      |
    | -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
