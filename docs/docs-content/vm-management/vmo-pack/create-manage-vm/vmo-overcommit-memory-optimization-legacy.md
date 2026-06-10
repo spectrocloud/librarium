@@ -3,13 +3,15 @@ sidebar_label: "Overcommit and Memory Optimization"
 title: "VM Overcommitment and Memory Optimization"
 description: "Learn about VMO Memory and CPU Overcommit and Optimization"
 hide_table_of_contents: false
-sidebar_position: 9
+sidebar_position: 99
 tags: ["vmo", "architecture"]
 ---
 
 Virtual Machine Orchestrator (VMO) enables higher VM density on existing infrastructure by leveraging memory overcommit
 and CPU optimization techniques, per-VM optimizations, and kernel-level memory deduplication. These methods allow
-operators to run more VMs per host while reducing physical infrastructure costs.
+operators to run more VMs per host while reducing physical infrastructure costs. For more information on memory and
+overcommit in VMO, refer to the
+[Over-Commit Resources to Enhance VM Performance](./advanced-topics/vm-oversubscription.md) page.
 
 To help achieve higher density and resource optimization, there are several features you can use.
 
@@ -17,9 +19,8 @@ To help achieve higher density and resource optimization, there are several feat
 
 :::info
 
-This page applies to clusters and VMs created using the VM Launchpad Appliance. For clusters and VMs created with VMO Pack using the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack,
-refer to our VMO Pack [Overcommit and Memory Optimization](../legacy-vmo/create-manage-vm/vmo-overcommit-memory-optimization-legacy.md)
-guide.
+This page applies to clusters and VMs created with VMO Pack using the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack.
+For clusters and VMs created using the VM Launchpad Appliance, refer to our VM Launchpad [Overcommit and Memory Optimization](../../launchpad-for-vms/vmo-overcommit-memory-optimization-appliance.md) guide.
 
 :::
 
@@ -136,7 +137,7 @@ VNC console access, so it is appropriate only for server workloads that do not r
 
 You can enable headless mode through the VMO UI when creating or editing a VM.
 
-![Diagram from VMO CPU memory overcommitment doc](/vmo/vm-management_vmo_optimization_headless-mode-ui-4-9.webp)
+![Diagram from VMO CPU memory overcommitment doc](/vm-management_vmo_optimization_headless-mode-ui-4-9.webp)
 
 ## Kernel Same-Page Merging (KSM)
 
@@ -173,8 +174,6 @@ additionalConfig:
       matchLabels:
         node-role.kubernetes.io/worker: ""
 ```
-
-![Image showing YAML settings for KubeVirt](/vmo/vmo_vmo-app_optimization-kubervirt-example-4-9.webp)
 
 :::warning
 

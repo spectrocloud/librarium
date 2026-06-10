@@ -32,7 +32,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 - (Optional) Depending on your network infrastructure, configure the network with a bridge network set to `br0`. For
   more information about network considerations, review
-  [VMO Network Configuration Considerations](/vm-management/vmo-appliance/vmo-networking/).
+  [VMO Network Configuration Considerations](/vm-management/launchpad-for-vms/vmo-networking/).
 
 - Reserve a virtual IP address (VIP) for the Launchpad for VMs management cluster. The Launchpad for VMs installation
   process assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the Launchpad for
@@ -65,7 +65,7 @@ The following table lists the hardware requirements for worker nodes and control
    [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
    or [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
 
-![Screenshot of download screen from artifact studio](/vmo/vm-management_vmo_appliance-iso-download-4-9.webp)
+![Screenshot of download screen from artifact studio](/vmo/vm-management_launchpad-for-vms_iso-download-4-9.webp)
 
 4. Boot your device using the Launchpad for VMs Appliance ISO.
 
@@ -322,7 +322,7 @@ The following table lists the hardware requirements for worker nodes and control
 
 9. After the cluster deployment is complete, more options appear in the left main menu.
 
-   ![Screenshot of appliance](/vmo/vm-management_vmo_appliance-install-4-9.webp)
+   ![Screenshot of appliance](/vmo/vm-management_launchpad-for-vms_install-4-9.webp)
 
 ## Verify
 
@@ -359,7 +359,7 @@ The following table lists the hardware requirements for worker nodes and control
 
 3. After you log in, the **Dashboard** is the default landing page.
 
-   ![Screenshot of VMO dashboard](/vmo/vm-management_vmo_appliance-default-dashboard-4-9.webp)
+   ![Screenshot of VMO dashboard](/vmo/vm-management_launchpad-for-vms_default-dashboard-4-9.webp)
 
    The **Dashboard** contains a set of adjustable, drag-to-reorder widgets.
 

@@ -111,4 +111,4 @@ After your ISO is uploaded, you are ready to deploy a VM.
 4. Select the **Console** tab to open a noVNC-based remote console. You can interact with the VM as if you were at its
    keyboard.
 
-   ![Screenshot of a running VM console](/vmo-appliance_quick-start_console.webp)
+   ![Screenshot of a running VM console](/launchpad-for-vms_quick-start_console.webp)

@@ -21,9 +21,9 @@ This guide walks you through the **Getting Started** wizard.
 
 Complete the following required configuration steps before you [create your first VM](./quick-start.md).
 
-1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your VMO Appliance host.
-   If you have access to the VMO Appliance host terminal, the Local UI address is displayed on the terminal screen. If
-   you changed the default port, replace `5080` with your configured Local UI port.
+1. In your browser, go to `https://<host-ip>:5080`. Replace `<host-ip>` with the IP address of your Launchpad for VMs
+   host. If you have access to the Launchpad for VMs host terminal, the Local UI address is displayed on the terminal
+   screen. If you changed the default port, replace `5080` with your configured Local UI port.
 
 2. Log in with the username and password you created during installation.
 
@@ -31,7 +31,7 @@ Complete the following required configuration steps before you [create your firs
    Guide** icon in the upper-right corner to reopen it. If the wizard is minimized, it appears in the lower-right
    corner.
 
-   ![Screenshot of the getting started icon](/vmo/vm-management_vmo_appliance-getstart-icon-4-9.webp)
+   ![Screenshot of the getting started icon](/vmo/vm-management_launchpad-for-vms_getstart-icon-4-9.webp)
 
 4. Select **Set Up a Storage Pool**. The appliance creates **Set Up a Storage Pool** during deployment, so the wizard
    marks it complete by default.
@@ -51,7 +51,7 @@ Complete the following required configuration steps before you [create your firs
 
    The following image shows the creation of an `LVM Thin` storage pool that uses the local host storage `/dev/sdb`.
 
-   ![Screenshot of getting started storage pool creation](/vmo/vm-management_vmo_appliance-getstart-storage-pool-4-9.webp)
+   ![Screenshot of getting started storage pool creation](/vmo/vm-management_launchpad-for-vms_getstart-storage-pool-4-9.webp)
 
 6. Select **Review Storage Policy** to display the default **Piraeus DRBD Performance Tuning** storage policy. You can
    add more policies here.
