@@ -25,7 +25,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 - At least one source provider for the VMs to be migrated. Refer to
   [Create Source Providers](./create-source-providers.md) for guidance.
 
-- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../legacy-vmo/create-vmo-profile.md)
+- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../vmo-pack/create-vmo-profile.md)
   for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
@@ -577,8 +577,8 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    :::warning
 
    VMO clusters using a block-based Container Storage Interface (CSI), including VMO clusters deployed with the
-   [Launchpad for VMs appliance](../vmo-appliance/vmo-appliance.md), require explicit storage map settings for migrated
-   VM disks. Ensure the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
+   [Launchpad for VMs appliance](../launchpad-for-vms/launchpad-for-vms.md), require explicit storage map settings for
+   migrated VM disks. Ensure the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
 
    ```yaml {4-5}
    spec:
