@@ -27,8 +27,6 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 ## Prerequisites
 
-- Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO. You can download the Appliance with the Cluster Config already staged (**Appliance ISO with Content**) or, if you have limited disk space for a virtual ISO, download a slim version of the ISO (**Appliance ISO**). You can later download the **Content bundle (including Ubuntu)** and [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or [Palette CLI](../../automation/palette-cli/commands/content.md#upload) later.
-
 - If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
   Launchpad for VMs installation process. This is optional but recommended for security and compliance purposes.
 
@@ -60,7 +58,7 @@ The following table lists the hardware requirements for worker nodes and control
 
 2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show Artifacts**.
 
-3. **Download** the **Launchpad for VMs Appliance ISO**. You can download the Appliance with the Cluster Config already staged (**Appliance ISO with Content**) or,  if you have limited disk space for a virtual ISO, download a slim version of the ISO (**Appliance ISO**). You can later download the **Content bundle (including Ubuntu)** and [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or [Palette CLI](../../automation/palette-cli/commands/content.md#upload) later.
+3. **Download** the **Launchpad for VMs Appliance ISO**. You can download the Appliance with the Cluster Config already staged (**Appliance ISO with Content**) or,  if you have limited disk space for a virtual ISO, download a slim version of the ISO (**Appliance ISO**). Download the **Content bundle (including Ubuntu)** and [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
 
 ![Screenshot of download screen from artifact studio](/vmo/vm-management_vmo_appliance-iso-download-4-9.webp)
 
@@ -192,10 +190,11 @@ The following table lists the hardware requirements for worker nodes and control
    | **Cluster name** | Name of the cluster.                                    |
    | **Tags**         | Key-value pairs to provide metadata about your cluster. |
 
-4. If your installation is using the [**Appliance ISO with Content**](#install-launchpad-for-vms-install), the default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile. After
-   you review the cluster profile, select **Next**.
+4. The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile. After you review the cluster profile, select **Next**.
    
-   If your Installation is using [**Appliance ISO**](#install-launchpad-for-vms-install), download the **Content bundle (including Ubuntu)** and [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or [Palette CLI](../../automation/palette-cli/commands/content.md#upload).The following table describes each pack in the profile. After you review the cluster profile, select **Next**.
+   :::info
+   If your installation is using the [**Appliance ISO**](#install-launchpad-for-vms-install), [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
+   :::
 
    | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                                      |
    | -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
