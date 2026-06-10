@@ -10,7 +10,7 @@ on:
 
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: dependabot-ci-${{ github.ref }}
   cancel-in-progress: true
 
 env:
