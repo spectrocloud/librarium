@@ -22,7 +22,7 @@ Machines (VMs) that need to be migrated.
 - The VM Migration Assistant service console must be accessible from a web browser.
 
 - A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the
-  [Create a VMO Profile](../legacy-vmo/create-vmo-profile.md) for further guidance.
+  [Create a VMO Profile](../vmo-pack/create-vmo-profile.md) for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
