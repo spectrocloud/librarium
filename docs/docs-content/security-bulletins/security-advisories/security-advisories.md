@@ -73,8 +73,9 @@ Customers are encouraged to take the following actions:
 
 ### Fix Availability
 
-Spectro Cloud is currently backporting the remediation to supported Palette 4.8.x and 4.7.x releases. This advisory will
-be updated with the applicable fixed versions and upgrade guidance once those releases are available.
+Palette and Palette VerteX version 4.9.16 has addressed this security advisory.
+
+Additionally, Palette and Palette VerteX 4.8.58 and 4.7.43 have addressed this security advisory.
 
 ## Security Advisory 016 - Upload Service Authentication Bypass
 
@@ -111,9 +112,7 @@ time of this advisory.
 
 This issue has been fully remediated in release 4.9.14 for the Spectro Cloud managed SaaS solution.
 
-Spectro Cloud is currently backporting the remediation to support Palette and Palette VerteX 4.8.x and 4.7.x releases.
-This advisory will be updated with the applicable fixed versions, including the required Stylus (Palette Edge agent)
-releases, once those releases become available.
+Additionally, Palette and Palette VerteX 4.8.58 and 4.7.43 have addressed this security advisory.
 
 ### Recommended Actions
 
@@ -173,8 +172,8 @@ Several existing, in-place controls significantly reduce the practical impact of
 
 ### Fix Availability
 
-Spectro Cloud is preparing and validating fixes. Self-hosted customers are advised to upgrade their Palette version once
-a fixed release is available.
+Palette and Palette VerteX version 4.9.16 has addressed this security advisory. Self-hosted customers are advised to
+upgrade to Palette version 4.9.16 or later.
 
 ### Recommended Actions
 

@@ -12,6 +12,144 @@ We recommend you review the [Release Notes](../release-notes/release-notes.md) a
 [Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
 address common issues that may occur during an upgrade.
 
+## Scenario - Custom Certificate Replaced After Upgrade
+
+If upgrading IP-based [self-hosted Palette](../enterprise-version/enterprise-version.md) or
+[Palette VerteX](../vertex/vertex.md) environments installed using the
+[Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md),
+[VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), or
+[Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) to any version
+between 4.8.47 - 4.9.14, Palette may replace custom Transport Security Layer (TLS) certificates with newly generated
+certificates. This results in Edge hosts and other clients that trusted the original, custom certificates to stop
+communicating with Palette.
+
+Before upgrading, we recommend backing up your existing certificates so that you can restore them through the system
+console.
+
+### Debug Steps
+
+1. Log in to the
+   [system console](../enterprise-version/system-management/system-management.md#access-the-system-console).
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal session in an environment that has network access to the cluster. Set the `KUBECONFIG` environment
+   variable to the file path of the downloaded kubeconfig file.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. Verify that the `default-ssl-certificate` Secret is present. For Palette versions 4.8.47 and later, the Secret is in
+   the `ingress-traefik` namespace; for versions earlier than 4.8.47, the Secret is in the `ingress-nginx` namespace.
+
+   <Tabs groupId="ingress-controller">
+
+   <TabItem value="traefik" label="Traefik">
+
+   ```shell
+   kubectl get secret default-ssl-certificate --namespace ingress-traefik
+   ```
+
+   </TabItem>
+
+   <TabItem value="nginx" label="Ingress Nginx">
+
+   ```shell
+   kubectl get secret default-ssl-certificate --namespace ingress-nginx
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   ```shell hideClipboard title="Example output"
+   NAME                      TYPE     DATA   AGE
+   default-ssl-certificate   Opaque   3      60d
+   ```
+
+6. Save a copy of your custom server certificate, private key, and Certificate Authority (CA) certificate.
+
+   <Tabs groupId="ingress-controller">
+
+   <TabItem value="traefik" label="Traefik">
+
+   ```shell
+   kubectl get secret default-ssl-certificate --namespace ingress-traefik --output yaml > default-ssl-certificate-backup.yaml
+   ```
+
+   </TabItem>
+
+   <TabItem value="nginx" label="Ingress Nginx">
+
+   ```shell
+   kubectl get secret default-ssl-certificate --namespace ingress-nginx --output yaml > default-ssl-certificate-backup.yaml
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+7. Upgrade Palette using your standard procedure.
+
+8. After the upgrade completes, compare the current `ca.crt`, `tls.crt`, and `tls.key` values with your backup.
+
+   <Tabs groupId="ingress-controller">
+
+   <TabItem value="traefik" label="Traefik">
+
+   ```shell
+   kubectl get secret default-ssl-certificate --namespace ingress-traefik --output yaml
+   ```
+
+   </TabItem>
+
+   <TabItem value="nginx" label="Ingress Nginx">
+
+   ```shell
+   kubectl get secret default-ssl-certificate --namespace ingress-nginx --output yaml
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   ```yaml hideClipboard title="Example output"
+   apiVersion: v1
+   data:
+     ca.crt: LS0tLS1CRUd... # output omitted for brevity
+     tls.crt: LS0tLS1CRUd... # output omitted for brevity
+     tls.key: LS0tLS1CRUd... # output omitted for brevity
+   kind: Secret
+   metadata:
+     creationTimestamp: "2026-04-06T22:28:08Z"
+     name: default-ssl-certificate
+     namespace: ingress-traefik
+     resourceVersion: "339401"
+     uid: de363cf1-431a-497d-8ccb-0cff1b1ab609
+   type: Opaque
+   ```
+
+9. If the certificate values do not match, re-upload the server certificate, private key, and CA certificate through the
+   system console. To do so, return to the system console in your web browser, and from the left main menu, select
+   **Administration**.
+
+10. Select the **System Address** tab.
+
+11. Copy and paste the values from your backed up file into the appropriate fields.
+
+    | **YAML Field** | **UI Field**                         |
+    | -------------- | ------------------------------------ |
+    | `tls.crt`      | **Certificate**                      |
+    | `tls.key`      | **Key**                              |
+    | `ca.crt`       | **Certificate Authority (Optional)** |
+
+12. Select **Update** to apply the certificate.
+
+13. Verify that connected Edge hosts and workload clusters resume reporting their status to Palette.
+
 ## `configserver` Stuck on `init-rootdomain-traefik` After Upgrade to 4.9.14+
 
 After upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or
