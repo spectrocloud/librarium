@@ -10,7 +10,7 @@ tags: ["vmo"]
 
 <!-- prettier-ignore -->
 The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack when you use the default
-profile configuration. To learn about pack components, refer to [Palette VMO](./vm-management.md).
+profile configuration. To learn about pack components, refer to [Palette VMO](../vm-management.md).
 
 ## Limitations
 
@@ -47,8 +47,8 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 :::warning
 
 We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
-[appliance mode](../deployment-modes/appliance-mode/appliance-mode.md). Refer to
-[Palette Edge Getting Started](../tutorials/getting-started/palette-edge/introduction-edge.md) for further guidance.
+[appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md). Refer to
+[Palette Edge Getting Started](../../tutorials/getting-started/palette-edge/introduction-edge.md) for further guidance.
 
 :::
 
@@ -263,7 +263,7 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 13. Review the profile and click **Finish Configuration**.
 
 14. Add the add-on profile when you create a cluster. For more information, refer to
-    [Create Cluster Definition](../clusters/edge/site-deployment/cluster-deployment.md).
+    [Create Cluster Definition](../../clusters/edge/site-deployment/cluster-deployment.md).
 
 </TabItem>
 
@@ -352,8 +352,8 @@ We recommend using Ubuntu 22.04 as the OS image for Edge clusters deployed in
 
 12. Review the profile and click **Finish Configuration**.
 
-13. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
-    tutorials.
+13. Apply the profile to your cluster. For more information, refer to the
+    [Getting Started](../../tutorials/getting-started/getting-started.md) tutorials.
 
 :::info
 
@@ -364,7 +364,7 @@ environment's **No Proxy** list.
    <details>
       <summary>Configure the **No Proxy** list</summary>
 
-      1. Download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file of the airgap support VM.
+      1. Download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file of the airgap support VM.
 
       2. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
@@ -461,8 +461,8 @@ You can validate the profile is created.
 
 You will need to configure roles and role bindings to give users access to clusters. You can use VM user roles and
 permissions or standard Kubernetes roles. For configuration guidance, refer to
-[Add Roles and Role Bindings](./rbac/add-roles-and-role-bindings.md). The
-[VM User Roles and Permissions](./rbac/vm-roles-permissions.md) reference lists Cluster Roles and equivalent Palette
+[Add Roles and Role Bindings](../rbac/add-roles-and-role-bindings.md). The
+[VM User Roles and Permissions](../rbac/vm-roles-permissions.md) reference lists Cluster Roles and equivalent Palette
 Roles.
 
 <!-- prettier-ignore-start -->
@@ -474,4 +474,4 @@ binding that maps individual users or groups assigned within the OIDC provider's
 
 ## Resources
 
-- [Add Roles and Role Bindings](./rbac/add-roles-and-role-bindings.md)
+- [Add Roles and Role Bindings](../rbac/add-roles-and-role-bindings.md)

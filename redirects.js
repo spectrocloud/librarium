@@ -228,14 +228,6 @@ let redirects = [
     to: `/vm-management/rbac/add-roles-and-role-bindings/`,
   },
   {
-    from: `/vm-management/vm-packs-profiles/vm-dashboard/`,
-    to: `/vm-management/create-manage-vm`,
-  },
-  {
-    from: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile/`,
-    to: `/vm-management/create-vmo-profile/`,
-  },
-  {
     from: `/knowledgebase/`,
     to: `/tags/`,
   },

@@ -14,10 +14,10 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
 
 ## Prerequisites
 
-- A self-hosted Palette installation. Refer to the [Self-Hosted Palette](../enterprise-version/enterprise-version.md) or
-  [Palette VerteX](../vertex/vertex.md) guides for installation instructions.
+- A self-hosted Palette installation. Refer to the [Self-Hosted Palette](../../enterprise-version/enterprise-version.md)
+  or [Palette VerteX](../../vertex/vertex.md) guides for installation instructions.
 
-- A workload cluster with VMO installed and configured. Refer to the [VMO](./vm-management.md) guide for details.
+- A workload cluster with VMO installed and configured. Refer to the [VMO](../vm-management.md) guide for details.
 
 <!--prettier-ignore-start-->
 
@@ -30,7 +30,7 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
 
 - Kubectl installed and access to the **kubeconfig** file for the VMO cluster. The file needs to be accessible from the
   machine where you perform the [Enablement Steps](#enablement-steps). Refer to the
-  [Kubectl](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide to learn how to set up
+  [Kubectl](../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide to learn how to set up
   `kubectl` and get the **kubeconfig** file for your VMO cluster.
 
 ## Enablement Steps
@@ -129,7 +129,7 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
 11. Click on the profile name to open the profile details.
 
 12. Create a new version of the profile. For more information, refer to
-    [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
+    [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
 13. Select the **virtual-machine-orchestrator** layer to view the **Edit pack** page.
 
