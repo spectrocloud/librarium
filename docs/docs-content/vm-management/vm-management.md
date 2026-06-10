@@ -2,69 +2,120 @@
 sidebar_label: "Virtual Machine Orchestrator"
 title: "Virtual Machine Orchestrator"
 description:
-  "Learn about the Palette's Virtual Machine Orchestrator solution for managing containerized and virtualized
-  applications."
+  "Learn about Palette Virtual Machine Orchestrator (VMO) for managing VMs alongside containers in Kubernetes clusters."
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "server"
 tags: ["vmo"]
 ---
 
-Palette Virtual Machine Orchestrator (VMO) provides a unified platform for deploying, managing, and scaling Virtual
-Machines (VMs) and containerized applications within Kubernetes clusters. Palette VMO supports deployment to edge
-devices and bare metal servers in data centers.
+Palette Virtual Machine Orchestrator (VMO) enables you to run and manage VMs alongside containers on Kubernetes. Instead
+of maintaining separate hypervisor and container platforms, VMO consolidates both workload types into a single
+infrastructure layer built on [KubeVirt](https://kubevirt.io/). You can deploy VMO on bare metal servers in data
+centers, at Edge locations, and in airgapped or regulated environments.
 
-Palette VMO simplifies infrastructure management, improves resource utilization, and eliminates hypervisor costs.
+With VMO, you can create, start, stop, migrate, snapshot, and clone VMs using the same Kubernetes cluster that runs your
+containerized applications. VMO handles the underlying infrastructure, including storage, networking, identity
+management, and observability, so you do not need to assemble and maintain separate tools for each concern.
 
-![A drawing of VMs deployed to Palette](/vm-mangement_vmo-diagram.webp)
+![A drawing of VMs deployed to Palette](/vmo/vm-mangement_vmo-diagram-4-9.webp)
 
 ## Use Cases
 
-You will benefit from Palette VMO in the following cases:
+VMO is designed for organizations that need to manage VM workloads on Kubernetes. Common scenarios include:
 
-- You are planning to gradually shift from VMs to containers and want to continue using both during the transition.
+- **Hypervisor consolidation** - Replace a traditional hypervisor with a Kubernetes-native VM runtime to reduce
+  licensing costs, simplify operations, and unify your infrastructure management.
 
-- Your established infrastructure combines containers and VMs, and you want to manage them more effectively.
+- **VM-to-container migration** - Run VMs and containers side by side during a gradual transition. Move workloads to
+  containers at your own pace without maintaining two separate platforms.
 
-- You are integrating new VM-based applications into an existing containerized infrastructure.
+- **Edge and distributed sites** - Deploy VMs at Edge locations and remote sites where a standalone, self-contained
+  platform is easier to operate than a centrally managed hypervisor.
 
-- You are managing edge locations with VM-based workloads and would like to stop using a hypervisor.
+- **Airgapped and regulated environments** - Run VMs in disconnected or compliance-sensitive environments with built-in
+  FIPS 140-3 support, airgapped package management, and standalone identity management.
 
-## Get Started
+## Deployment Approaches
 
-To get started with Palette VMO, review the [Architecture](./architecture.md) page to learn about the components
-involved in enabling VMO for your infrastructure. If you want to use VMO in airgapped instances of self-hosted Palette
-or Palette VerteX, review the [Install VMO in Airgap Environments](./install-vmo-in-airgap.md) guide. Then, review the
-[Create a VMO Profile](./create-vmo-profile.md) guide to prepare everything you need to deploy your first VMO cluster.
+VMO is available through two deployment approaches: [VM Launchpad Appliance](#vm-launchpad-appliance-recommended)
+(recommended) and [VMO Pack](#vmo-pack).
 
-Once your VMO cluster is up and healthy, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
-section for information on deploying VMs from existing Palette templates and performing standard VM operations. You can
-also learn how to migrate VMs from VMware vSphere to a VMO cluster using the
-[Virtual Machine Migration Assistant](./vm-migration-assistant/vm-migration-assistant.md). Alternatively, review the
-[Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand how you can create VM and
-disk templates, manage the VM resources, and perform other advanced operations.
+| **Capability**                         | **VM Launchpad Appliance**           | **VMO Pack**                                                                           |
+| -------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
+| **Palette connection**                 | Not supported                        | Required for profile authoring; optional at runtime with locally managed Edge clusters |
+| **Deployment method**                  | Bootable ISO                         | Palette cluster profile or exported cluster definition                                 |
+| **Golden image builder**               | Yes                                  | No                                                                                     |
+| **Snapshot policies**                  | Yes                                  | No                                                                                     |
+| **Airgapped package management**       | Yes                                  | No                                                                                     |
+| **Built-in identity management**       | Yes (OIDC, Keycloak, local accounts) | Palette-managed OIDC                                                                   |
+| **Observability (metrics dashboards)** | Built-in (OTel, PromQL)              | Requires external setup                                                                |
+| **VM Migration Assistant**             | Yes                                  | Yes                                                                                    |
+| **Cluster lifecycle management**       | Self-managed (Local UI)              | Palette-managed or self-managed (Local UI)                                             |
+| **Imported cluster support**           | No                                   | Yes                                                                                    |
 
-Finally, refer to the [Role-based Access Control (RBAC)](./rbac/rbac.md) section for information on configuring roles
-and permissions for your VMs.
+### VM Launchpad Appliance (Recommended)
 
-## Resources
+The [VM Launchpad Appliance](./vmo-appliance/vmo-appliance.md) is the recommended way to deploy VMO. It provides a
+standalone, bootable ISO that you install directly on bare metal or Edge devices. After installation, link your devices
+together to form a cluster with VMO preconfigured and ready to use. No connection to Palette is required.
 
-- [Architecture](./architecture.md)
+The appliance includes a purpose-built management UI designed specifically for VM operations, with built-in identity and
+access management, golden image workflows, airgapped package management, snapshot policies, and observability
+dashboards. This self-contained approach is well suited for distributed sites, Edge locations, airgapped environments,
+and regulated environments.
 
-- [Overcommit and Memory Optimization](./vmo_overcommit_memory_optimization.md)
+If you are new to VMO, start with the VM Launchpad Appliance. Refer to
+[Install VM Launchpad](./vmo-appliance/install-vmla-iso.md) to get started.
 
-- [Install VMO in Airgap Environments](./install-vmo-in-airgap.md)
+### VMO Pack
 
-- [Create a VMO Profile](./create-vmo-profile.md)
+<!-- prettier-ignore-start -->
 
-- [Configure Private CA Certificate to enable trust with Self-Hosted Palette or Palette VerteX](./configure-private-ca-certificate.md)
+[VMO Pack](./legacy-vmo/legacy-vmo.md) is the original approach to deploying VMO. You create a cluster through Palette
+and add the <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
+to a curated [cluster profile](./legacy-vmo/create-vmo-profile.md). VM management is accessed through the Palette UI.
 
-- [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
+<!-- prettier-ignore-end -->
 
-- [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md)
+VMO Pack remains fully supported. However, we recommend using the VM Launchpad Appliance for new deployments because it
+provides a dedicated VM management experience with standalone authentication, operational tooling, and capabilities that
+are not available in the pack approach.
 
-- [Import and Deploy OVAs to Palette VMO](./create-manage-vm/advanced-topics/deploy-import-ova.md)
+## Next Steps
 
-- [RBAC](./rbac/rbac.md)
+Take the following steps to get started with VMO. Once you have a VMO cluster, you can also explore the
+[Virtual Machine Migration Assistant](./vm-migration-assistant/vm-migration-assistant.md) to learn how you can migrate
+existing VMs from VMware vSphere to your VMO cluster.
 
-- [Virtual Machine Migration Assistant](./vm-migration-assistant/vm-migration-assistant.md)
+<Tabs>
+
+<TabItem label="VM Launchpad Appliance" value="appliance">
+
+1. Review the [VM Launchpad Appliance](./vmo-appliance/vmo-appliance.md) overview to learn about the appliance
+   architecture and capabilities.
+
+2. Follow the [Install VM Launchpad](./vmo-appliance/install-vmla-iso.md) guide to install the appliance on your devices
+   and create your cluster.
+
+3. Use the [Create Your First VM](./vmo-appliance/quick-start.md) guide to deploy your first VM.
+
+</TabItem>
+
+<TabItem label="VMO Pack" value="pack">
+
+1. Review the [Architecture](./architecture.md) page to learn about the components involved in enabling VMO.
+
+2. Follow the [Create a VMO Profile](./legacy-vmo/create-vmo-profile.md) guide to prepare everything you need to deploy
+   your first VMO cluster. If you are using VMO in an airgapped environment, review the
+   [Install VMO in Airgap Environments](./legacy-vmo/install-vmo-in-airgap.md) guide first.
+
+3. Refer to the [Create and Manage VMs](./legacy-vmo/create-manage-vm/create-manage-vm.md) section for information on
+   deploying VMs and performing standard VM operations.
+
+4. Review the [Advanced Topics](./legacy-vmo/create-manage-vm/advanced-topics/advanced-topics.md) section to learn how
+   to create VM and disk templates, manage VM resources, and perform other advanced operations.
+
+</TabItem>
+
+</Tabs>

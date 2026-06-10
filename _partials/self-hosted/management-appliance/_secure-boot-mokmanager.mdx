@@ -1,0 +1,89 @@
+---
+partial_category: self-hosted
+partial_name: secure-boot-mokmanager
+---
+
+(Secure Boot only) If you did not enroll the certificate through BIOS, expand the following section and complete the MokManager steps before you continue.
+
+<details>
+
+<summary>Enroll DRBD Signing Key with MokManager</summary>
+
+Before you begin, you need Spectro Cloud's `MOK.der` certificate file on the server. Skip to step 5 if you already have the certificate file at `/tmp/MOK.der`.
+
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+2. In the section for your appliance, use the drop-down to the appropriate appliance version. Then, select **Show Artifacts**. The artifact list appears.
+3. **Download** the **MOK Key for Secure Boot** file.
+4. Copy the certificate file to your server at `/tmp/MOK.der`.
+
+   ```bash
+   scp <downloaded-filename>.der <username>@<node-ip>:/tmp/MOK.der
+   ```
+
+5. On your server, copy `mmx64.efi` to the EFI boot partition. The appliance includes the file at `/usr/lib/shim/mmx64.efi`, but it may not be automatically copied to the EFI partition. MokManager needs this file at `EFI/boot/mmx64.efi` in order to launch at reboot. If your node uses a different disk, use `lsblk -f` to identify the FAT32 EFI partition, and replace `/dev/sda1` in the following code block with the correct partition.
+
+   ```bash {3}
+   MP=/tmp/cos_grub_fix
+   mkdir -p "$MP"
+   mount /dev/sda1 "$MP"
+   install -m 0755 /usr/lib/shim/mmx64.efi "$MP/EFI/boot/mmx64.efi"
+   ls -la "$MP/EFI/boot/"
+   sha256sum /usr/lib/shim/mmx64.efi "$MP/EFI/boot/mmx64.efi"
+   umount "$MP"
+   rmdir "$MP"
+   ```
+
+6. Verify both `sha256sum` outputs match. This confirms the copy is intact.
+7. Import the DRBD signing key.
+
+   ```bash
+   sudo mokutil --import /tmp/MOK.der
+   ```
+
+   :::tip
+
+   If `mokutil --import` returns `SKIP: already in db`, the DRBD key is already enrolled in firmware `db`, which causes
+   `mokutil` to skip the import. Remove the key from `db` first, using BIOS or `racadm bioscert delete`, and try again.
+
+   :::
+
+8. When prompted, set a temporary password. This password is only used once.
+9. Confirm the import is queued. The DRBD signing key appears in the output.
+
+   ```bash
+   sudo mokutil --list-new
+   ```
+
+10. Reboot the node.
+
+    ```bash
+    sudo reboot
+    ```
+
+11. When the system reboots, a blue MokManager screen appears. Select **Enroll MOK**.
+
+    :::tip
+
+    If the blue MokManager screen does not appear at reboot, confirm `mmx64.efi` is present at `\EFI\boot\mmx64.efi` on the ESP. Repeat step 5 if it is not.
+
+    :::
+
+12. Select **View key 0** and confirm it is the DRBD signing key.
+13. Select **Continue**.
+14. Select **Yes** to confirm enrollment.
+15. Enter the temporary password you set in step 8.
+16. Select **Reboot**. The system continues booting normally.
+17. After boot, confirm the key is enrolled in the MOK list and visible to the kernel.
+
+    ```bash
+    sudo mokutil --list-enrolled | grep -i "DRBD Module Signing"
+    ```
+
+18. Confirm the kernel has the key in its keyring. The DRBD signing key appears in at least one of these outputs.
+
+    ```bash
+    sudo keyctl list %:.machine 2>/dev/null | grep -i drbd
+    sudo keyctl list %:.platform 2>/dev/null | grep -i drbd
+    ```
+
+</details>

@@ -13,15 +13,16 @@ your virtual machines, without needing to navigate to **Clusters** > cluster **O
 ## Prerequisites
 
 - Access to [Palette](https://console.spectrocloud.com) multi-tenant SaaS or a dedicated SaaS installation. Learn more
-  about Palette installations on the [Deployment Architecture Overview](../architecture/architecture-overview.md) page.
+  about Palette installations on the [Deployment Architecture Overview](../../architecture/architecture-overview.md)
+  page.
 
-- A workload cluster with VMO installed and configured. Refer to the [VMO](./vm-management.md) guide for details.
+- A workload cluster with VMO installed and configured. Refer to the [VMO](../vm-management.md) guide for details.
   <!--prettier-ignore-start-->
 
   - The cluster must use the **Direct** preset on the
     <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" />
     layer.
-  - Ensure that the [VM User Roles and Permissions](./rbac/vm-roles-permissions.md) are configured for your Palette
+  - Ensure that the [VM User Roles and Permissions](../rbac/vm-roles-permissions.md) are configured for your Palette
     user.
 
 <!--prettier-ignore-end-->
@@ -33,8 +34,8 @@ your virtual machines, without needing to navigate to **Clusters** > cluster **O
 2. From the left main menu, select **Clusters**. The cluster list appears. Select the VMO cluster you previously
    deployed.
 
-3. From the cluster **Overview** tab, download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This
-   file allows you to connect to your deployed cluster.
+3. From the cluster **Overview** tab, download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
+   This file allows you to connect to your deployed cluster.
 
 4. Open a terminal session and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 

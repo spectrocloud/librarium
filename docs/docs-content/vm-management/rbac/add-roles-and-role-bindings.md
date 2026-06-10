@@ -20,7 +20,7 @@ learn more about role-based Access Control (RBAC) in Palette, review the
 ## Prerequisites
 
 - A cluster profile with the **Virtual Machine Orchestrator** add-on pack configured. Check out the
-  [Create a VMO Profile](../create-vmo-profile.md) guide to learn more.
+  [Create a VMO Profile](../legacy-vmo/create-vmo-profile.md) guide to learn more.
   <!-- prettier-ignore-start -->
 
   - Configure OpenID Connect (OIDC) at the Kubernetes layer of your cluster profile to allow you to create role bindings
@@ -154,5 +154,6 @@ You can verify role creation and role binding is successful by following the ste
 
 ## Next Steps
 
-Now you are ready to deploy a VM. Review the [Deploy VM From a Template](../create-manage-vm/deploy-vm-from-template.md)
-guide to get started with the deployment process.
+Now you are ready to deploy a VM. Review the
+[Deploy VM From a Template](../legacy-vmo/create-manage-vm/deploy-vm-from-template.md) guide to get started with the
+deployment process.
