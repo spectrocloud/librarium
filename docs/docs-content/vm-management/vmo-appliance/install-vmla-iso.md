@@ -52,7 +52,7 @@ The following table lists the hardware requirements for worker nodes and control
 | **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
 | **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported.  | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                              |
 
-## Install Launchpad for VMs
+## Install Launchpad for VMs {#install}
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO.
 
@@ -200,7 +200,7 @@ The following table lists the hardware requirements for worker nodes and control
 
    :::info
 
-   If your installation is using the [**Appliance ISO**](#install-launchpad-for-vms),
+   If your installation is using the [**Appliance ISO**](#install),
    [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
    or [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
 
