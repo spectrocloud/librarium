@@ -37,6 +37,14 @@ tags: ["release-notes"]
   [MAAS clusters to LXD Virtual Machines (VMs)](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) has
   exited Tech Preview and is now ready for production workloads.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10433 -->
+
+- The **Cluster Endpoint Access** tooltip for Amazon EKS clusters now clarifies how the **Private** option behaves. For
+  fully private endpoint access, use a self-hosted Private Cloud Gateway (PCG). If you select **Private** without a PCG,
+  Palette initially creates the cluster in **Private & Public** mode and changes it to **Private** after cluster
+  provisioning completes. For more information, refer to
+  [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md).
+
 #### Deprecations and Removals
 
 ### Edge
