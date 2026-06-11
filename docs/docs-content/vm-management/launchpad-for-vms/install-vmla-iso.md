@@ -266,8 +266,9 @@ The following table lists the hardware requirements for worker nodes and control
    | **OCI Pack Registry Password** | Password for the automatically deployed, local container image registry. This value is stored securely.        |
 
    :::warn
-   
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one number, and one special character.
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
 
    :::
 
@@ -282,11 +283,12 @@ The following table lists the hardware requirements for worker nodes and control
    | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
 
    :::warning
-   
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one number, and one special character.
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
 
    :::
-   
+
    ### Keycloak Admin
 
    | **Parameter**                                  | **Description**                                                                                                                           |
@@ -295,11 +297,11 @@ The following table lists the hardware requirements for worker nodes and control
    | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
    :::warning
-   
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one number, and one special character.
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
 
    :::
-
 
    ### Local Admin
 
@@ -309,8 +311,9 @@ The following table lists the hardware requirements for worker nodes and control
    | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
 
    :::warning
-   
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one number, and one special character.
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
 
    :::
 

@@ -61,8 +61,9 @@ Complete the following required configuration steps before you [create your firs
 8. Select **+ Create Storage Class**, enter the following values, and select **Create Storage Class**.
 
    :::info
-   
-   Benchmarking was performed using a single-replica storage class. We are continuing to run additional benchmarks with multiple replicas for each PVC setting, and will share updates as those results become available. 
+
+   Benchmarking was performed using a single-replica storage class. We are continuing to run additional benchmarks with
+   multiple replicas for each PVC setting, and will share updates as those results become available.
 
    :::
 
