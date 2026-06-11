@@ -1,4 +1,4 @@
-name: Update patch release notes
+name: "Update Patch Release Notes"
 
 on:
   issue_comment:
@@ -31,9 +31,10 @@ jobs:
       - name: Check trigger condition
         id: check
         shell: bash
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
-          BODY="${{ github.event.comment.body }}"
-          BODY_LOWER=$(echo "$BODY" | tr '[:upper:]' '[:lower:]')
+          BODY_LOWER=$(echo "$COMMENT_BODY" | tr '[:upper:]' '[:lower:]')
 
           if [[ "$BODY_LOWER" == *"update patch release notes"* ]]; then
             echo "run=true" >> $GITHUB_OUTPUT
@@ -44,7 +45,7 @@ jobs:
       - name: Retrieve Credentials
         if: steps.check.outputs.run == 'true'
         id: import-secrets
-        uses: hashicorp/vault-action@v3.4.0
+        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
@@ -54,7 +55,7 @@ jobs:
 
       - name: Checkout Librarium Repository
         if: steps.check.outputs.run == 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with: 
           repository: spectrocloud/librarium
           ref: ${{ env.BASE_BRANCH }}
@@ -68,7 +69,7 @@ jobs:
 
       - name: Setup Node.js environment
         if: steps.check.outputs.run == 'true'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm" 
@@ -95,8 +96,17 @@ jobs:
       - name: Execute Script to Generate Patch Release Notes
         if: steps.check.outputs.run == 'true' && env.JIRA_TICKET != ''
         run: |
-          PATCH_RELEASE_TICKET=${{ env.JIRA_TICKET }} make generate-patch-release-notes
+          touch .env
+          PATCH_RELEASE_TICKET="${{ env.JIRA_TICKET }}" make generate-patch-release-notes
 
+      - name: Get PR branch
+        if: steps.check.outputs.run == 'true'
+        id: pr
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          BRANCH=$(gh pr view ${{ github.event.issue.number }} --json headRefName --jq .headRefName)
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
       - name: Commit changes
         if: steps.check.outputs.run == 'true'
@@ -111,7 +121,7 @@ jobs:
           fi
 
           git commit -m "docs: update patch release notes"
-          git push
+          git push origin HEAD:${{ steps.pr.outputs.branch }}
 
       - name: Comment on PR if commit fails
         if: steps.check.outputs.run == 'true' && failure() && github.event.issue.pull_request

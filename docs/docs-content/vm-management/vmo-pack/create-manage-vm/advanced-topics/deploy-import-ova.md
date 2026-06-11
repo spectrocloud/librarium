@@ -12,14 +12,14 @@ VMware vSphere Virtual Machines (VMs) can be exported using the Open Virtual App
 to share configurations and create templates for their VMs. These important templates need to be converted into
 Kubernetes compatible formats before they can be used in a Kubernetes cluster.
 
-The [Palette CLI](../../../automation/palette-cli/palette-cli.md) provides the ability to import and deploy OVAs to
+The [Palette CLI](../../../../automation/palette-cli/palette-cli.md) provides the ability to import and deploy OVAs to
 Palette VMO.
 
 ## Limitations
 
 - You can import only OVAs whose operating systems are present in the
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
-  [Verified Migrations](../../vm-migration-assistant/vm-migration-assistant.md#verified-migrations) for a list of
+  [Verified Migrations](../../../vm-migration-assistant/vm-migration-assistant.md#verified-migrations) for a list of
   operating systems and migration combinations verified by Spectro Cloud.
 
 ## Prerequisites
@@ -36,7 +36,7 @@ Palette VMO.
 If you need to provision `Block` storage volumes during the VM deployment process, add the following custom
 configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more information,
 refer to
-[Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
+[Repave Behaviors and Configurations](../../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
 
 Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
 [live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
@@ -87,7 +87,7 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
 
 ## Enablement
 
-1. Download the [Kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file of the VMO cluster.
+1. Download the [Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) file of the VMO cluster.
 
 2. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
@@ -221,8 +221,8 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    virtctl scp <path-to-downloaded-kubeconfig-file> --identity-file <path-to-private-key> root@vmo-jh.default:/root
    ```
 
-7. Download the newest [Palette CLI](../../../downloads/cli-tools.md#palette-cli) binary. Copy the binary to the VM, in
-   the same way you copied the kubeconfig file. Replace the placeholders with local path to the downloaded binary and
+7. Download the newest [Palette CLI](../../../../downloads/cli-tools.md#palette-cli) binary. Copy the binary to the VM,
+   in the same way you copied the kubeconfig file. Replace the placeholders with local path to the downloaded binary and
    the path to your private key.
 
    ```shell

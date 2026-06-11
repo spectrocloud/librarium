@@ -13,8 +13,8 @@ node to another without any noticeable downtime.
 
 Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled
 as a feature gate. Live migration is enabled by default in the `feature-gates` section of the KubeVirt configuration
-file that is part of the **Virtual Machine Orchestrator** pack. Refer to [Feature Gates](../vm-management.md) for more
-information.
+file that is part of the **Virtual Machine Orchestrator** pack. Refer to [Feature Gates](../../vm-management.md) for
+more information.
 
 Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node
 is placed into maintenance or upgraded, all VM instances require a `LiveMigrate` eviction strategy.
@@ -61,9 +61,9 @@ Follow the instructions below to migrate VMs to a different node.
 
 ## Evacuate a Host
 
-Compute nodes can be placed into [maintenance mode](../../clusters/cluster-management/maintenance-mode.md) using Palette
-or manually using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and the
-`drain` command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware
+Compute nodes can be placed into [maintenance mode](../../../clusters/cluster-management/maintenance-mode.md) using
+Palette or manually using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and
+the `drain` command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware
 maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory
 maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the
 [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
@@ -102,7 +102,7 @@ Kubernetes resource.
 
 1. Obtain the kubeconfig file from Palette, and set the `KUBECONFIG` environment variable to access it so you can issue
    kubectl commands to the cluster. For more information, refer to our
-   [Kubectl](../../clusters/cluster-management/palette-webctl.md) guide.
+   [Kubectl](../../../clusters/cluster-management/palette-webctl.md) guide.
 
 2. Issue the following command to mark the node as _un-schedulable_. This alerts the Kubernetes scheduler not to
    schedule any new pods on that node but allows existing pods on the node to continue to operate.
@@ -155,7 +155,7 @@ You can validate evacuation completed by following the steps below.
 <TabItem group="kubectl" value="kubectl">
 
 1. Using kubectl, log in to a machine that has access to the Kubernetes cluster. For more information, refer to
-   [Access Cluster with Kubectl](../../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with Kubectl](../../../clusters/cluster-management/palette-webctl.md).
 
 2. Issue the following command to verify the pods are rescheduled on a different node by verifying the name and IP
    address of the new node changed.
@@ -174,4 +174,4 @@ You can validate evacuation completed by following the steps below.
 
 - [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
 
-- [Maintenance Mode](../../clusters/cluster-management/maintenance-mode.md)
+- [Maintenance Mode](../../../clusters/cluster-management/maintenance-mode.md)
