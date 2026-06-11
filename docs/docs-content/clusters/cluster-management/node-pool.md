@@ -148,7 +148,7 @@ Skipping worker node updates is supported for the following cluster types:
 ### Cluster Profile Upgrade Behavior
 
 When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
-do not have **Skip worker node update** enabled. Worker pools with the toggle enabled are skipped and stay at their
+do not have **Skip worker node update** enabled. Worker pools with the option enabled are skipped and stay at their
 current Kubernetes version.
 
 :::info
