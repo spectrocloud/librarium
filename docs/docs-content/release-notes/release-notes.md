@@ -35,7 +35,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.16.
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4166 -->
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that caused `ImagePullBackOff` errors in the <VersionedLink text="`csi-local-path-provisioner`" url="/integrations/packs/?pack=volume-snapshot-controller" /> FIPS pack version 0.0.32 due to incorrectly
+- Fixed an issue that caused `ImagePullBackOff` errors in the <VersionedLink text="csi-local-path-provisioner" url="/integrations/packs/?pack=volume-snapshot-controller" /> FIPS pack version 0.0.32 due to incorrectly
 referencing the non-FIPS `palette-images` image registry instead of the `palette-imagesfips` FIPS registry.
 
 <!-- prettier-ignore-end -->
