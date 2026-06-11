@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 15, 2026 - Release 4.7.x
+## June 15, 2026 - Release 4.7.45
 
 <!-- PATCH RELEASE TICKET: DOC-2889 -->
 
@@ -19,21 +19,23 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8856 -->
 
-- Fixed an authentication bypass vulnerability in the upload service that allowed unauthenticated requests to write
-  arbitrary files to the edge node's content directory.
+- Fixed an authentication bypass vulnerability in the Edge
+  [upload content bundles](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) operation that allowed
+  unauthenticated requests to upload arbitrary files to the edge node's content directory.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8859 -->
 
-- Fixed an issue where the debug/pprof interface was unintentionally exposed on port 9443, posing a security risk.
+- Fixed an issue that caused the `debug/pprof` profiling interface to be unintentionally exposed on ports `9443`,
+  `7443`, and `5082`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8861 -->
 
-- Fixed a security vulnerability in the two-node liveness server that exposed the database password over an
-  unauthenticated HTTP endpoint, allowing potential full compromise of the Kubernetes datastore.
+- Fixed an issue that caused the [two-node](../clusters/edge/architecture/two-node.md) liveness server to expose the
+  database password endpoint without authentication, TLS, or access controls.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11051 -->
 
-- Fixed manifest APIs to now require authentication, preventing unauthorized access to manifest endpoints.
+- Fixed manifest APIs to require authentication, preventing unauthenticated access to manifest endpoints.
 
 ## June 8, 2026 - Release 4.7.43
 
