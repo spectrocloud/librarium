@@ -144,17 +144,6 @@ Skipping worker node updates is supported for the following cluster types:
 - VMware vSphere clusters
 - Connected (centrally managed) Edge Native clusters
 
-:::info
-
-Locally managed Edge clusters are not supported.
-
-:::
-
-### When to Use
-
-Enable this toggle when you want to advance the control plane (for example, to apply a security patch or LTS upgrade)
-without immediately repaving edge worker nodes. You can then schedule the worker pool upgrade during a planned
-maintenance window.
 
 ### Behavior During Cluster Profile Updates
 
