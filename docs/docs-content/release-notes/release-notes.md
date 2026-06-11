@@ -11,6 +11,40 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 15, 2026 - Release 4.8.x
+
+<!-- PATCH RELEASE TICKET: DOC-2888 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8841 -->
+
+- Fixed an issue where edge cluster hosts did not upgrade the Stylus agent version after the initial deployment, even
+  when an upgrade was triggered through the Palette UI.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8854 -->
+
+- Fixed an authentication bypass vulnerability in the edge upload service that allowed unauthenticated requests to
+  upload arbitrary files to the edge node's content directory.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8860 -->
+
+- Fixed a security issue where the Go debug/pprof profiling interface was unintentionally exposed on port 9443 of edge
+  hosts.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8862 -->
+
+- Fixed a security vulnerability in the two-node liveness server that exposed the database password and cluster topology
+  endpoints without authentication or TLS.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11050 -->
+
+- Fixed manifest APIs to require authentication, preventing unauthenticated access to manifest endpoints.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11123 -->
+
+- Fixed the help links on the Palette home page to correctly point to the JSM Support Portal.
+
 ## June 8, 2026 - Release 4.8.58
 
 ### Breaking Changes {#breaking-changes-4-8-x}
