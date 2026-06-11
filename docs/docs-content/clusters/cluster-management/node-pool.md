@@ -167,7 +167,6 @@ control plane version.
 ### Upgrade a Skipped Worker Pool
 
 To sync the Kubernetes version of a skipped worker pool with the current Kubernetes control plane version, disable the **Skip worker node update** toggle on that pool.
-Disabling the toggle triggers a repave of the worker pool to match the control plane's Kubernetes version.
 
 :::danger
 
