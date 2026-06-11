@@ -367,7 +367,7 @@ trap cleanup EXIT
       fi
 
 
-      printf '| <VersionedLink text="`%s`" url="/integrations/packs/?pack=%s" /> | `%s` | %s | %s | %s |\n' \
+      printf '| <VersionedLink text="%s" url="/integrations/packs/?pack=%s" /> | `%s` | %s | %s | %s |\n' \
         "$pack_name" \
         "$pack_name_stripped_fips" \
         "$layer" \
