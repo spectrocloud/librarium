@@ -58,14 +58,14 @@ jobs:
     runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
           ref: "master"
 
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -81,12 +81,14 @@ jobs:
           make build-ci
 
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
@@ -94,7 +96,7 @@ jobs:
           slack-webhook: ${{ secrets.SLACK_PRIVATE_SECURITY_WEBHOOK }}
 
       - name: Upload to AWS
-        if: ${{ env.BUILD_EXIT_CODE == '0' }}
+        if: ${{ env.BUILD_EXIT_CODE == '0' || steps.cached_packs.outputs['build-exit-code'] == '0' || steps.cached_cves.outputs['build-exit-code'] == '0' }}
         run: |
           echo "CURRENT_STEP=Upload to AWS" >> $GITHUB_ENV
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs.spectrocloud.com --delete
@@ -102,8 +104,8 @@ jobs:
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
 
       - name: Slack Notification on Failure
-        if: ${{ failure() || env.BUILD_EXIT_CODE != '0' }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        if: ${{ failure() || (env.BUILD_EXIT_CODE != '0' && steps.cached_packs.outputs['build-exit-code'] != '0' && steps.cached_cves.outputs['build-exit-code'] != '0') }}
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -123,14 +125,14 @@ jobs:
       labels: docbot
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
           ref: "master"
 
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -147,12 +149,14 @@ jobs:
           make build-ci
       
       - name: Build with cached packs
+        id: cached_packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build with cached CVEs
+        id: cached_cves
         if: ${{ env.BUILD_EXIT_CODE == '7' }}
         uses: ./.github/actions/build-cached-cves
         with:
@@ -168,7 +172,7 @@ jobs:
 
       - name: Slack Notification on Failure
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -185,7 +189,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify Slack
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_USERNAME: "spectromate"
@@ -196,7 +200,7 @@ jobs:
             
       - name: Slack Notification on Failure
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -215,14 +219,14 @@ jobs:
     steps:
       - id: checkout
         name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.4.0
+        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
@@ -231,7 +235,7 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Setup Nodejs
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -250,7 +254,7 @@ jobs:
 
       - name: Slack Notification on Failure
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -259,3 +263,24 @@ jobs:
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
           SLACK_MESSAGE: "The release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+
+  post-release-processing:
+    name: "Post Release Processing"
+    needs: [release]
+    if: ${{ needs.release.result == 'success' }}
+    uses: ./.github/workflows/post_release.yaml
+    secrets: inherit
+
+  screenshot-capture:
+    name: "Screenshot Capture"
+    needs: [release]
+    if: ${{ needs.release.result == 'success' }}
+    uses: ./.github/workflows/screenshot_capture.yaml
+    secrets: inherit
+
+  algolia-crawler:
+    name: "Algolia Crawler"
+    needs: [release]
+    if: ${{ needs.release.result == 'success' }}
+    uses: ./.github/workflows/aloglia_crawler.yaml
+    secrets: inherit

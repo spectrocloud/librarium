@@ -139,6 +139,128 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Deprecations and Removals
 
+## June 8, 2026 - Release 4.9.16
+
+### Breaking Changes {#breaking-changes-4-9-x}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10828 -->
+
+- Authentication is now required for the following [Palette API](/api/introduction/) endpoints, which are used for
+  [imported clusters](../clusters/imported-clusters/imported-clusters.md) and
+  [Private Cloud Gateways (PCGs)](../clusters/pcg/pcg.md).
+
+  | **Endpoint**                                | **Required Permissions**                                                                     |
+  | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+  | `/cluster/{uid}/manifest`                   | `cluster.delete` permission                                                                  |
+  | `/v1/pcg/{uid}/services/ally/manifest`      | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/pcg/{uid}/services/jet/manifest`       | [Tenant Admin](../user-management/palette-rbac/tenant-scope-roles-permissions.md#admin) role |
+  | `/v1/spectroclusters/{uid}/import/manifest` | `cluster.delete` permission                                                                  |
+
+  This change does _not_ affect existing imported clusters and PCGs; it affects _new_ cluster import and PCG workflows,
+  as well as any automation that retrieves manifests from the affected endpoints. As a result, the process of
+  [importing clusters](../clusters/imported-clusters/cluster-import.md) and
+  [creating PCGs on existing Kubernetes clusters](../clusters/pcg/deploy-pcg-k8s.md) has been updated, requiring the
+  manifests to be downloaded locally before being applied.
+
+### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5929 -->
+
+- Palette now supports selecting the node pool operating system for
+  [Azure AKS clusters](../clusters/public-cloud/azure/aks.md) through a new **OS SKU** field. When the OS type is
+  **Linux**, you can choose **Ubuntu** or **Azure Linux**; when the OS type is **Windows**, the node pool uses **Windows
+  2022**.
+
+  - The OS SKU is set when the node pool is created and cannot be changed afterward. The OS version is selected
+    automatically based on the
+    [cluster's Kubernetes version and default OS version](https://learn.microsoft.com/en-us/azure/aks/upgrade-os-version#supported-os-versions);
+    Kubernetes version 1.32 and later provision Azure Linux 3.0.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11029 -->
+
+- Fixed an issue that caused custom Transport Layer Security (TLS) certificate loss when upgrading IP-based
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md)
+  environments installed using the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md),
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), or
+  [Helm charts](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md). We recommend
+  customers upgrading to any Palette version between 4.8.47 - 4.9.14 back up their custom certificates prior to
+  initiating the upgrade. Refer to
+  [Scenario - Custom Certificate Handling During Upgrade](../troubleshooting/palette-upgrade.md#scenario---custom-certificate-replaced-after-upgrade)
+  for more information.
+
+## June 5, 2026 - Component Updates {#component-updates-2026-23}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2869 -->
+<!-- RELEASE DATE: June 5, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.x -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.3 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.4 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.14.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.3   |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.4  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.4  |
+
+<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2215 -->
+
+- The
+  [`spectrocloud_cluster_aks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aks)
+  now allows you to specify the OS SKU for AKS node pools using the optional `os_sku` field in the `machine_pool` block.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2236 -->
+
+- Terraform cluster resources now support triggering manual control plane Kubernetes Public Key Infrastructure (PKI)
+  certificates for Palette clusters using the new `renew_k8s_certificates_now` field.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2173 -->
+
+- Fixed a Terraform issue where updating the `cluster_profile` list on the
+  [`spectrocloud_cluster_eks` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
+  triggered an erroneous deletion of the removed profile and incorrectly updated the Terraform state.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2249 -->
+
+- Fixed a Terraform issue where imported
+[`spectrocloud_cluster_edge_native`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_edge_native)
+resources would repeatedly show Terraform plan differences for sensitive cluster profile variables.
+<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->
+
+### Packs
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4123 -->
+
+| Pack Name        | Layer  | Non-FIPS           | FIPS               | New Version |
+| ---------------- | ------ | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI   | CSI    | :x:                | :white_check_mark: | 1.60.0      |
+| Azure Disk       | CSI    | :x:                | :white_check_mark: | 1.34.3      |
+| Calico           | CNI    | :white_check_mark: | :x:                | 3.32.0      |
+| External Secrets | Add-on | :white_check_mark: | :x:                | 2.5.0       |
+| Flannel          | CNI    | :x:                | :white_check_mark: | 0.28.4      |
+| Headlamp         | Add-on | :white_check_mark: | :x:                | 0.42.0-rev1 |
+| Istio            | Add-on | :white_check_mark: | :x:                | 1.30.0      |
+| Karpenter        | Add-on | :x:                | :white_check_mark: | 1.12.1      |
+| MetalLB          | Add-on | :white_check_mark: | :x:                | 0.16.1      |
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Crossplane" url="/integrations/packs/?pack=crossplane" /> pack version 2.3.0 is now available in the Palette Community Registry.
+
+<!-- prettier-ignore-end -->
+
 ## May 31, 2026 - Release 4.9.14 {#release-notes-4-9-a}
 
 ### Security Notices
@@ -361,6 +483,14 @@ information.
   configured on individual hosts.
 
 #### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8523 -->
+
+- Fixed an issue that could allow unauthenticated users to
+  [upload content bundles](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to Edge hosts under
+  certain conditions. Refer to
+  [Security Advisory 016](../security-bulletins/security-advisories/security-advisories.md#security-advisory-016---upload-service-authentication-bypass)
+  for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8716 -->
 
