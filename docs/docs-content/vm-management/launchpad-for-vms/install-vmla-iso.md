@@ -206,7 +206,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **Kubernetes**             | `edge-k8s`                     | Kubernetes platform.                                                                                                                             |
    | **Cilium**                 | `cni-cilium-fips`              | CNI and network policy. Multus support for VM networking.                                                                                        |
    | **Piraeus**                | `piraeus-operator`             | Storage backend. Provides StorageClass for VM disks.                                                                                             |
-   | **Piraeus Netiface**       | `piraeus-netface-builder`      | Storage replication network helper. Builds network interface for storage replication communication.        |
+   | **Piraeus Netiface**       | `piraeus-netface-builder`      | Storage replication network helper. Sets up network interface for storage replication communication.        |
    | **Zot**                    | `zot-registry-fips`            | OCI registry. Stores container images for air-gapped deployments.                                                                                |
    | **Registry Connect**       | `registry-connect`             | Enables integration with OCI-compliant registries.                                                                                               |
    | **Required config**        | `required-config-1`            | Initial configuration before continuing.                                                                                                         |
@@ -240,7 +240,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **Cluster Network Interface**     | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
    | **Restrict Allowed VLANs (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
    | **VM VLAN Range**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
-   | **VM Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                 |
+   | **VM Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. |
    | **Use br0 for Cluster Traffic (Optional)**              | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                        |
    | **Br0 VLAN Sub-Interface**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
 
