@@ -397,7 +397,7 @@ const config = {
             sidebarId: "docSidebar",
             label: "Docs",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/launchpad-for-ai/).*$",
           },
           {
             to: "/tutorials",
@@ -405,7 +405,15 @@ const config = {
             sidebarId: "tutorialSidebar",
             label: "Tutorials",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/launchpad-for-ai/).*$",
+          },
+          {
+            to: "/launchpad-for-ai",
+            type: "docSidebar",
+            sidebarId: "launchpadSidebar",
+            label: "Launchpad for AI",
+            position: "left",
+            activeBaseRegex: "^/launchpad-for-ai(/.*)?$",
           },
           {
             to: "/downloads",
@@ -413,7 +421,7 @@ const config = {
             sidebarId: "downloadsSidebar",
             label: "Downloads",
             position: "left",
-            activeBaseRegex: "^(?!/api/).*$",
+            activeBaseRegex: "^(?!/api/|/launchpad-for-ai/).*$",
           },
           {
             to: "/api/introduction",
