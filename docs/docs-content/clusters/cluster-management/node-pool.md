@@ -134,7 +134,10 @@ configuration settings to learn more.
 ## Skip Worker Node Update
 
 The **Skip worker node update (Optional)** toggle lets you upgrade the control plane of a cluster to a newer Kubernetes
-version while deferring the upgrade of one or more worker pools. This is supported on the following cluster types:
+version while deferring the upgrade of one or more worker pools. This is useful for scenarios where you want to apply a security patch or initiate an LTS upgrade without affecting or repaving worker nodes. You can then schedule the worker pool upgrade for a time that is convenient for you, such as during a scheduled maintenance window. 
+
+
+Skipping worker node updates is supported for the following cluster types:
 
 - AWS IaaS clusters
 - MAAS clusters
