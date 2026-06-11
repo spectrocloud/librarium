@@ -25,8 +25,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-8854 -->
 
 - Fixed an authentication bypass vulnerability in the Edge
-  [upload content bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) operation that
-  allowed unauthenticated requests to upload arbitrary files to the edge node's content directory.
+  [upload content bundles](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) operation that allowed
+  unauthenticated requests to upload arbitrary files to the edge node's content directory.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8860 -->
 
