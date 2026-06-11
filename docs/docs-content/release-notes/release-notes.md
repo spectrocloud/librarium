@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 15, 2026 - Release 4.8.x
+## June 15, 2026 - Release 4.8.61
 
 <!-- PATCH RELEASE TICKET: DOC-2888 -->
 
@@ -19,23 +19,24 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8841 -->
 
-- Fixed an issue where edge cluster hosts did not upgrade the Stylus agent version after the initial deployment, even
-  when an upgrade was triggered through the Palette UI.
+- Fixed an issue that prevented [Edge hosts](../clusters/edge/edge.md) from upgrading the Stylus agent version after
+  initial deployment.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8854 -->
 
-- Fixed an authentication bypass vulnerability in the edge upload service that allowed unauthenticated requests to
-  upload arbitrary files to the edge node's content directory.
+- Fixed an authentication bypass vulnerability in the Edge
+  [upload content bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) operation that
+  allowed unauthenticated requests to upload arbitrary files to the edge node's content directory.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8860 -->
 
-- Fixed a security issue where the Go debug/pprof profiling interface was unintentionally exposed on port 9443 of edge
-  hosts.
+- Fixed an issue that caused the `debug/pprof` profiling interface to be unintentionally exposed on ports `9443`,
+  `7443`, and `5082`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8862 -->
 
-- Fixed a security vulnerability in the two-node liveness server that exposed the database password and cluster topology
-  endpoints without authentication or TLS.
+- Fixed an issue that caused the [two-node](../clusters/edge/architecture/two-node.md) liveness server to expose the
+  database password endpoint without authentication, TLS, or access controls.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11050 -->
 
@@ -43,7 +44,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11123 -->
 
-- Fixed the help links on the Palette home page to correctly point to the JSM Support Portal.
+- The help links on the Palette home page now correctly point to the
+  [Spectro Cloud Support portal](https://spectrocloud.atlassian.net/servicedesk/customer/portal/6).
 
 ## June 8, 2026 - Release 4.8.58
 
