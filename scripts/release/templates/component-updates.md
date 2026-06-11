@@ -16,11 +16,11 @@ The following components have been updated for Palette version {{RELEASE_COMPONE
 | [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) | {{RELEASE_MANAGEMENT_APPLIANCE}} |
 | [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)        | {{RELEASE_MANAGEMENT_APPLIANCE}} |
 
-<!-- BEGIN COMPONENT UPDATES BODY: {{JIRA_TICKET}}. DO NOT DELETE.  -->
+<!-- BEGIN COMPONENT UPDATES BODY: {{JIRA_TICKET}}. DO NOT DELETE. -->
 
 {{SUPER_COMPONENT_UPDATES_BODY}}
 
-<!-- END COMPONENT UPDATES BODY: {{JIRA_TICKET}}. DO NOT DELETE.  -->
+<!-- END COMPONENT UPDATES BODY: {{JIRA_TICKET}}. DO NOT DELETE. -->
 
 ### Packs
 

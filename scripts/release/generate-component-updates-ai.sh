@@ -295,29 +295,31 @@ if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
 
   echo "✅ Component updates body updated for $JIRA_TICKET in $RELEASE_NOTES_FILE."
 
-  exit 0
 fi
 
-echo "ℹ️  Component updates for $JIRA_TICKET do not already exist in $RELEASE_NOTES_FILE" >&2
+if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
 
-generate_parameterised_file_local_vars \
-  "$COMPONENT_UPDATES_TEMPLATE_FILE" \
-  "$COMPONENT_UPDATES_OUTPUT_FILE" \
-  "RELEASE_DATE" \
-  "RELEASE_COMPONENT_YEAR" \
-  "RELEASE_COMPONENT_WEEK" \
-  "JIRA_TICKET" \
-  "RELEASE_COMPONENT_START_VERSION" \
-  "RELEASE_COMPONENT_END_VERSION" \
-  "RELEASE_ARTIFACT_STUDIO" \
-  "RELEASE_TERRAFORM_VERSION" \
-  "RELEASE_MANAGEMENT_APPLIANCE" \
-  "SUPER_COMPONENT_UPDATES_BODY"
+  echo "ℹ️  Component updates for $JIRA_TICKET do not already exist in $RELEASE_NOTES_FILE" >&2
 
-insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
-echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+  generate_parameterised_file_local_vars \
+    "$COMPONENT_UPDATES_TEMPLATE_FILE" \
+    "$COMPONENT_UPDATES_OUTPUT_FILE" \
+    "RELEASE_DATE" \
+    "RELEASE_COMPONENT_YEAR" \
+    "RELEASE_COMPONENT_WEEK" \
+    "JIRA_TICKET" \
+    "RELEASE_COMPONENT_START_VERSION" \
+    "RELEASE_COMPONENT_END_VERSION" \
+    "RELEASE_ARTIFACT_STUDIO" \
+    "RELEASE_TERRAFORM_VERSION" \
+    "RELEASE_MANAGEMENT_APPLIANCE" \
+    "SUPER_COMPONENT_UPDATES_BODY"
 
-cleanup $COMPONENT_UPDATES_OUTPUT_FILE
+  insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
+  echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+  cleanup $COMPONENT_UPDATES_OUTPUT_FILE
+
+fi
 
 # Process the Platone issues to generate the packs list in the release notes
 if (( ${#PLATONE_ISSUES[@]} == 0 )); then
@@ -333,6 +335,9 @@ cleanup() {
 trap cleanup EXIT
 
 {
+  echo ""
+  echo "<!-- prettier-ignore-start -->"
+  echo ""
   echo "| Pack Name | Layer | Non-FIPS | FIPS | New Version |"
   echo "| --------- | ----- | -------- | ---- | ----------- |"
 
@@ -347,6 +352,7 @@ trap cleanup EXIT
 
     if [[ "$issue_name" =~ ^\[([^]]+)\]\ ([^[:space:]]+)\ ([0-9]+\.[0-9]+\.[0-9]+)\ ·\ week\ ([0-9]{4}-[0-9]{2})\ ·\ ([^[:space:]]+)\ ·\ (FIPS|non-FIPS)$ ]]; then
       pack_name="${BASH_REMATCH[2]}"
+      pack_name_stripped_fips="${pack_name%-fips}"
       version="${BASH_REMATCH[3]}"
       layer="${BASH_REMATCH[5]}"
       variant="${BASH_REMATCH[6]}"
@@ -360,16 +366,23 @@ trap cleanup EXIT
         fips=":white_check_mark:"
       fi
 
-      printf '| `%s` | `%s` | %s | %s | %s |\n' \
+
+      printf '| <VersionedLink text="`%s`" url="/integrations/packs/?pack=%s" /> | `%s` | %s | %s | %s |\n' \
         "$pack_name" \
+        "$pack_name_stripped_fips" \
         "$layer" \
         "$non_fips" \
         "$fips" \
         "$version"
+
     else
       echo "⚠️ Skipping issue $issue because summary does not match expected format: $issue_name" >&2
     fi
   done
+
+  echo ""
+  echo "<!-- prettier-ignore-end -->"
+  echo ""
 } > "$PACKS_LIST_FILE"
 
 awk -v body_file="$PACKS_LIST_FILE" -v ticket="$JIRA_TICKET" '
