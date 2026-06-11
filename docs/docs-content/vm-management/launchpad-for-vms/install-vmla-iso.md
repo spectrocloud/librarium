@@ -40,18 +40,6 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Launchpad for VMs" />
 
-## Cluster Hardware Resources
-
-The following table lists the hardware requirements for worker nodes and control plane nodes in a VMO cluster.
-
-| **Component**        | **Minimum**                                                            | **Recommended**                                    | **Comments**                                                                                                                                      |
-| -------------------- | ---------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CPU**              | Intel or AMD x64 CPU with 8 cores                                      | Intel or AMD x64 CPU with 8 cores                  |                                                                                                                                                   |
-| **RAM**              | 24 GB                                                                  | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                                                                    |
-| **Network Adapters** | 2 x 1 Gbps <br /> (data and management)                                | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                                                                   |
-| **Storage Adapters** | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet shared with data and management | 2 x 16 Gbps FC or 2 x 10 Gbps ethernet dedicated   | Dedicated storage adapters, either Fiber Channel or ethernet (for example, iSCSI), provide reliable access to external or cluster shared storage. |
-| **Disks**            | Local disk of at least 500 GB for the OS boot. SAN boot is supported.  | Local disk of 500 GB for the OS boot               | Boot from SAN requires planning due to the multi-path configuration.                                                                              |
-
 ## Install Launchpad for VMs {#install}
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO.
@@ -80,9 +68,15 @@ The following table lists the hardware requirements for worker nodes and control
 
    :::
 
-7. On the **Installation Options** screen, select whether the installer should do **nothing**, **reboot**, or
-   **poweroff** after the installation is complete. Press **ENTER** to begin the installation process. After the
-   installation is complete, disconnect the ISO.
+7. On the **Installation Options** screen, select what the installer does after the installation completes. Press
+   **ENTER** to begin the installation process. After the installation completes, disconnect the ISO. The following
+   table describes the available options.
+
+   | **Option**   | **Description**                                 |
+   | ------------ | ----------------------------------------------- |
+   | **nothing**  | Keeps the system powered on after installation. |
+   | **reboot**   | Automatically reboots the system.               |
+   | **poweroff** | Powers off the system.                          |
 
 8. On the **GNU GRUB** screen, select **Palette eXtended Kubernetes Edge Registration**.
 
@@ -182,7 +176,7 @@ The following table lists the hardware requirements for worker nodes and control
 
    :::
 
-## Create Launchpad for VMs Cluster
+## Create Launchpad for VMs Cluster {#create-cluster}
 
 1. From the left main menu, select **Cluster**.
 
@@ -265,6 +259,13 @@ The following table lists the hardware requirements for worker nodes and control
    | **OCI Pack Registry Username** | Username to authenticate with the automatically deployed, local container image registry used by the platform. |
    | **OCI Pack Registry Password** | Password for the automatically deployed, local container image registry. This value is stored securely.        |
 
+   :::warn
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
+
+   :::
+
    ### OIDC Settings
 
    | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
@@ -275,6 +276,13 @@ The following table lists the hardware requirements for worker nodes and control
    | **VMO OIDC Login Email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
    | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
 
+   :::warning
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
+
+   :::
+
    ### Keycloak Admin
 
    | **Parameter**                                  | **Description**                                                                                                                           |
@@ -282,12 +290,26 @@ The following table lists the hardware requirements for worker nodes and control
    | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
    | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
+   :::warning
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
+
+   :::
+
    ### Local Admin
 
    | **Parameter**                 | **Description**                                                                                     |
    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
    | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
    | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
+
+   :::warning
+
+   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
+   number, and one special character.
+
+   :::
 
    ### Storage
 
