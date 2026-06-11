@@ -155,7 +155,7 @@ current Kubernetes version.
 
 Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/). If
 enabling **Skip worker node update** on a pool would cause it to fall more than three minor versions behind the control
-plane, Palette blocks the operation with a validation error.
+plane, Palette blocks the update.
 
 :::
 
