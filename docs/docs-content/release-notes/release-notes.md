@@ -11,6 +11,50 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 15, 2026 - Release 4.9.x
+
+<!-- PATCH RELEASE TICKET: DOC-2887 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8522 -->
+
+- Fixed a security vulnerability in the two-node liveness server where the database password endpoint was exposed
+  without authentication, TLS, or access controls.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11122 -->
+
+- Fixed in-product help links on the Palette home page to correctly point to the JSM Support Portal.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6888 -->
+
+- Fixed an issue where the built-in `ubuntu` user was removed during SSH key injection for MaaS clusters, breaking SSH
+  access for users relying on MaaS-registered SSH keys.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8473 -->
+
+- Fixed an issue where OS pack lifecycle stages were not executed during a Kubernetes upgrade due to the configuration
+  file being inaccessible inside the upgrade container.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8837 -->
+
+- Fixed an issue where the `debug/pprof` profiling interface was unintentionally exposed on ports 9443, 7443, and 5082.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10939 -->
+
+- Fixed an issue where the message broker stopped functioning as expected, causing timeouts and degraded platform
+  responsiveness.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11067 -->
+
+- Fixed excessive memory utilization in Hubble pods caused by high goroutine counts resulting from message broker call
+  patterns.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11119 -->
+
+- Fixed redundant cluster status cache broadcasts by limiting eviction to only when the cluster state actually changes,
+  significantly reducing unnecessary cross-pod cache reloads.
+
 ## June 8, 2026 - Release 4.9.16
 
 ### Breaking Changes {#breaking-changes-4-9-x}
