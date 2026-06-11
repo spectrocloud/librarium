@@ -11,6 +11,30 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 15, 2026 - Release 4.7.x
+
+<!-- PATCH RELEASE TICKET: DOC-2889 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8856 -->
+
+- Fixed an authentication bypass vulnerability in the upload service that allowed unauthenticated requests to write
+  arbitrary files to the edge node's content directory.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8859 -->
+
+- Fixed an issue where the debug/pprof interface was unintentionally exposed on port 9443, posing a security risk.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8861 -->
+
+- Fixed a security vulnerability in the two-node liveness server that exposed the database password over an
+  unauthenticated HTTP endpoint, allowing potential full compromise of the Kubernetes datastore.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11051 -->
+
+- Fixed manifest APIs to now require authentication, preventing unauthorized access to manifest endpoints.
+
 ## June 8, 2026 - Release 4.7.43
 
 ### Breaking Changes {#breaking-changes-4-7-x}
