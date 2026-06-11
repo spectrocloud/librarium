@@ -43,6 +43,14 @@ tags: ["release-notes"]
   [Splunk](https://help.splunk.com/en/splunk-observability-cloud/get-started). Refer to the
   [Audit Logs](../audit-logs/audit-logs.md) guide for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10433 -->
+
+- The **Cluster Endpoint Access** tooltip for Amazon EKS clusters now clarifies how the **Private** option behaves. For
+  fully private endpoint access, use a self-hosted Private Cloud Gateway (PCG). If you select **Private** without a PCG,
+  Palette initially creates the cluster in **Private & Public** mode and changes it to **Private** after cluster
+  provisioning completes. For more information, refer to
+  [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md).
+
 #### Deprecations and Removals
 
 ### Edge
