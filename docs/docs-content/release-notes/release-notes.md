@@ -63,6 +63,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8643 -->
+
+- Connected (centrally managed) Edge Native clusters now support upgrading the control plane independently from worker
+  pools. Enable the **Skip worker node update** toggle on a worker pool to defer its Kubernetes upgrade while the
+  control plane advances. Palette enforces the Kubernetes
+  [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/) to prevent unsupported drift between the
+  control plane and worker nodes. For more information, refer to
+  [Skip Worker Node Update](../clusters/cluster-management/node-pool.md#skip-worker-node-update) and
+  [Edge Cluster Upgrade Behavior](../clusters/edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8655 -->
 
 - The Palette TUI now includes a **Management Interface** drop-down menu on the **Network Adapter** screen. You can use
