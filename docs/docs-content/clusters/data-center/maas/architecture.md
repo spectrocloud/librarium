@@ -54,6 +54,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 ## Limitations
 
 The Canonical Kubernetes pack for deployments in MAAS environments does not support the following:
+
 - cluster backups with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
 - OIDC
 - NTP
