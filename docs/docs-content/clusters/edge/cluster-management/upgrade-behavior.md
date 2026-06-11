@@ -142,7 +142,7 @@ current Kubernetes version.
 
 Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/). If
 enabling the toggle would cause a worker pool to fall more than three minor versions behind the control plane, Palette
-blocks the operation with a validation error.
+blocks the upgrade.
 
 New nodes added by the cluster autoscaler to a skipped worker pool run the pool's current Kubernetes version, not the
 control plane version.
