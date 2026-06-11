@@ -47,11 +47,24 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
    Artifacts**.
 
-3. **Download** the **Launchpad for VMs Appliance ISO**. You can download the Appliance with the Cluster Config already
-   staged (**Appliance ISO with Content**) or, if you have limited disk space for a virtual ISO, download a slim version
-   of the ISO (**Appliance ISO**). Download the **Content bundle (including Ubuntu)** and
+3. **Download** the **Launchpad for VMs Appliance ISO**. The following table describes the installer options to download for installation. 
+
+   | **Artifact** | **Description**                                 |
+   | ------------ | ----------------------------------------------- |
+   | **Content bundle (including Ubuntu)**  | Content bundle to use with **Appliance ISO**. |
+   | **Appliance ISO**   | Smaller ISO without embedded content bundle. |
+   | **Appliance ISO with Content** | Full ISO with embedded content bundle.  |
+   | **MOK Key for Secure Boot** | MOK key to use for secure boot with MokManager. |
+
+   Download the **Content bundle (including Ubuntu)** and
    [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
    or [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+
+   :::info
+
+   Use the slim **Appliance ISO** and **Content bundle (including Ubuntu)** when you have limited network capacity for mounting ISOs and when you have greater network capacity to upload the content bundle after the initial install.
+
+   :::
 
 ![Screenshot of download screen from artifact studio](/vmo/vm-management_launchpad-for-vms_iso-download-4-9.webp)
 
