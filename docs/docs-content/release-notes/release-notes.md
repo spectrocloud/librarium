@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 15, 2026 - Release 4.9.x
+## June 15, 2026 - Release 4.9.18
 
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
@@ -19,41 +19,43 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8522 -->
 
-- Fixed a security vulnerability in the two-node liveness server where the database password endpoint was exposed
-  without authentication, TLS, or access controls.
+- Fixed an issue that caused the [two-node](../clusters/edge/architecture/two-node.md) liveness server to expose the
+  database password endpoint without authentication, TLS, or access controls.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11122 -->
 
-- Fixed in-product help links on the Palette home page to correctly point to the JSM Support Portal.
+- The help links on the Palette home page now correctly point to the
+  [Spectro Cloud Support portal](https://spectrocloud.atlassian.net/servicedesk/customer/portal/6).
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6888 -->
 
-- Fixed an issue where the built-in `ubuntu` user was removed during SSH key injection for MaaS clusters, breaking SSH
-  access for users relying on MaaS-registered SSH keys.
+- Fixed an issue that caused the removal of the built-in `ubuntu` user during SSH key injection for
+  [MAAS clusters](../clusters/data-center/maas/maas.md).
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8473 -->
 
-- Fixed an issue where OS pack lifecycle stages were not executed during a Kubernetes upgrade due to the configuration
-  file being inaccessible inside the upgrade container.
+- Fixed an issue that prevented the pack lifecycle stages from executing during a Kubernetes upgrade due to the
+  configuration file being inaccessible inside the upgrade container.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8837 -->
 
-- Fixed an issue where the `debug/pprof` profiling interface was unintentionally exposed on ports 9443, 7443, and 5082.
+- Fixed an issue that caused the `debug/pprof` profiling interface to be unintentionally exposed on ports `9443`,
+  `7443`, and `5082`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10939 -->
 
-- Fixed an issue where the message broker stopped functioning as expected, causing timeouts and degraded platform
-  responsiveness.
+- Fixed an issue that caused the Palette message broker to stop functioning as expected, leading to timeouts and
+  degraded platform responsiveness.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11067 -->
 
-- Fixed excessive memory utilization in Hubble pods caused by high goroutine counts resulting from message broker call
-  patterns.
+- Fixed an issue that caused excessive memory utilization in Hubble pods due to high goroutine counts resulting from
+  message broker call patterns.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11119 -->
 
-- Fixed redundant cluster status cache broadcasts by limiting eviction to only when the cluster state actually changes,
-  significantly reducing unnecessary cross-pod cache reloads.
+- Fixed redundant cluster status cache broadcasts by limiting eviction to cluster state changes, significantly reducing
+  unnecessary cache reloads.
 
 ## June 8, 2026 - Release 4.9.16
 
