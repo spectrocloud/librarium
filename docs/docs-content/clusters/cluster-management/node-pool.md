@@ -145,7 +145,7 @@ Skipping worker node updates is supported for the following cluster types:
 - Connected (centrally managed) Edge Native clusters
 
 
-### Behavior During Cluster Profile Updates
+### Cluster Profile Upgrade Behavior
 
 When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
 do not have **Skip worker node update** enabled. Worker pools with the toggle enabled are skipped and stay at their
