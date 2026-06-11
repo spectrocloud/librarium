@@ -68,9 +68,15 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::
 
-7. On the **Installation Options** screen, select whether the installer should do **nothing**, **reboot**, or
-   **poweroff** after the installation is complete. Press **ENTER** to begin the installation process. After the
-   installation is complete, disconnect the ISO.
+7. On the **Installation Options** screen, select what the installer does after the installation completes. Press **ENTER**
+   to begin the installation process. After the installation completes, disconnect the ISO. The following table describes
+   the available options.
+
+   | **Option**     | **Description**                                  |
+   | -------------- | ------------------------------------------------ |
+   | **nothing**    | Keeps the system powered on after installation.  |
+   | **reboot**     | Automatically reboots the system.                |
+   | **poweroff**   | Powers off the system.                           |
 
 8. On the **GNU GRUB** screen, select **Palette eXtended Kubernetes Edge Registration**.
 
