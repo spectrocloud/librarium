@@ -152,8 +152,12 @@ EKS supports AWS tags at two levels, and the two sets are merged rather than rep
 | **Cluster**   | `awsManagedControlPlane.additionalTags` | All resources that the cluster creates, including every node pool.      |
 | **Node pool** | `awsManagedMachinePool.additionalTags`  | Only the managed node group for that pool and its associated resources. |
 
+:::info
+
 Node-pool-level tags are additive to the cluster-level tags. The resources for a node pool receive the union of both
 sets. If the same key is set at both levels, the node-pool value takes precedence.
+
+:::
 
 ##### Example
 
