@@ -142,7 +142,7 @@ Skipping worker node updates is supported for the following cluster types:
 - AWS IaaS clusters
 - MAAS clusters
 - VMware vSphere clusters
-- Connected Edge Native clusters
+- Connected (centrally managed) Edge Native clusters
 
 :::info
 
