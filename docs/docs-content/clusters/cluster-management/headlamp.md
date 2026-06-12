@@ -7,10 +7,6 @@ sidebar_position: 215
 tags: ["clusters", "cluster management", "headlamp"]
 ---
 
-:::preview
-
-:::
-
 [Headlamp](https://headlamp.dev/) is an open source, web-based interface for Kubernetes that provides a clear and
 intuitive way to interact with cluster resources without relying solely on command-line tools. It allows you to explore
 workloads, inspect configurations, and monitor the state of their applications through an intuitive dashboard.
