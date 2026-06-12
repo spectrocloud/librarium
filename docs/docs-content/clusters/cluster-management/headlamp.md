@@ -28,16 +28,6 @@ workloads, inspect configurations, and monitor the state of their applications t
 - An OIDC (OpenID Connect) Identity Provider. For more information about using a custom OIDC, visit the page on
   [Security Assertion Markup Language (SAML) and OIDC Single Sign-On (SSO)](../../user-management/saml-sso/saml-sso.md#palette-oidc-and-pxk).
 
-<!-- prettier-ignore-start -->
-
-:::warning
-
-Due to an [active known issue](../../release-notes/known-issues.md#active-known-issues), Headlamp currently supports only the **Palette** OIDC Identity Provider option configured in the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack of your cluster profile.
-
-:::
-
-<!-- prettier-ignore-end -->
-
 ## Enablement
 
 1.  Log in to [Palette](https://console.spectrocloud.com/).
