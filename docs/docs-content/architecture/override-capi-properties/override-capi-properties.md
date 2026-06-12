@@ -76,6 +76,23 @@ process. If there are any conflicts between override and native values, the over
 
 :::
 
+### Where Overrides are Set
+
+The location where you set the override depends on the level of the CAPI object you want to target.
+
+For cluster scoped overrides:
+
+- **New clusters**: Set the override during the **Cluster Config** step.
+- **Existing clusters**: Set the override in the **Settings > Cluster Configuration** drawer for the cluster.
+
+For node pool scoped overrides:
+
+- **New clusters**: Set the override during the **Nodes Config** step.
+- **Existing clusters**: Navigate to the cluster's **Nodes** tab and click the **Edit** option for the relevant node
+  pool to set the override.
+
+You can set cluster and node pool overrides together on the same cluster.
+
 ### Key Format
 
 The top-level key is always the camelCase form of the CAPI Kind. All nested keys are either based on the `json` struct
