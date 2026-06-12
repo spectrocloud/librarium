@@ -226,15 +226,6 @@ construct valid override YAML, use the following steps.
 
    </details>
 
-### Cluster-Level vs. Pool-Level Override
-
-| Level       | Where it is set                   | What it targets                                                           | Top-Level Key Examples                          |
-| ----------- | --------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------- |
-| **Cluster** | Cluster-level cloud configuration | The primary cluster-scoped CAPI control plane or infrastructure resource. | `awsCluster`, `azureManagedControlPlane`        |
-| **Pool**    | Node pool configuration           | The CAPI machine pool or machine template object for that node pool.      | `awsMachineTemplate`, `azureManagedMachinePool` |
-
-Both levels can be used independently or together on the same cluster.
-
 ## Important Behaviors
 
 Before overriding CAPI properties, review the following behaviors that apply when you configure a cluster or node pool.
