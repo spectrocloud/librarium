@@ -80,7 +80,9 @@ process. If there are any conflicts between override and native values, the over
 
 The location where you set the override depends on the level of the CAPI object you want to target.
 
-For cluster scoped overrides:
+You can set cluster and node pool overrides together on the same cluster.
+
+#### Cluster Overrides
 
 <Tabs groupId="cluster-state">
 <TabItem label="New clusters" value="new">
@@ -95,7 +97,7 @@ Set the override in the **Settings > Cluster Configuration** drawer for the clus
 </TabItem>
 </Tabs>
 
-For node pool scoped overrides:
+#### Node Pool Overrides
 
 <Tabs groupId="cluster-state">
 <TabItem label="New clusters" value="new">
@@ -109,8 +111,6 @@ Navigate to the cluster's **Nodes** tab and click the **Edit** option for the re
 
 </TabItem>
 </Tabs>
-
-You can set cluster and node pool overrides together on the same cluster.
 
 ### Key Format
 
