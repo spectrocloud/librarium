@@ -58,7 +58,7 @@ referencing the non-FIPS `palette-images` image registry instead of the `palette
 | <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: | :x: | 3.6.1 |
 | <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: |  :x: | 0.28.5 |
 | <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `add-on` | :white_check_mark: | :x: | 40.3.0 |
-| <VersionedLink text="reloader" url="/integrations/packs/?pack=traefik" /> | `add-on` | :white_check_mark: | :x: | 1.4.17 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `add-on` | :white_check_mark: | :x: | 1.4.17 |
 
 <!-- prettier-ignore-end -->
 
