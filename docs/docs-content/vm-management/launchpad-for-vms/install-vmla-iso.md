@@ -273,7 +273,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **OCI Pack Registry Username** | Username to authenticate with the automatically deployed, local container image registry used by the platform. |
    | **OCI Pack Registry Password** | Password for the automatically deployed, local container image registry. This value is stored securely.        |
 
-   :::warn
+   :::warning
 
    Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
    number, and one special character.
