@@ -117,6 +117,14 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2905 -->
+
+<!-- prettier-ignore-start -->
+
+- Palette support for the <VersionedLink text="Headlamp" url="/integrations/packs/?pack=headlamp" /> pack has exited Tech Preview and is now ready for production workloads. Refer to the [Headlamp](../clusters/cluster-management/headlamp.md) guide for more information.
+
+<!-- prettier-ignore-end -->
+
 #### OS
 
 | Pack Name | New Version |
