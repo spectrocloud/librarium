@@ -11,6 +11,52 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 11, 2026 - Release 4.9.18
+
+<!-- PATCH RELEASE TICKET: DOC-2887 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8522 -->
+
+- Fixed an issue that caused the [two-node](../clusters/edge/architecture/two-node.md) liveness server to expose the
+  database password endpoint without authentication, TLS, or access controls.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11122 -->
+
+- The help links on the Palette home page now correctly point to the
+  [Spectro Cloud Support portal](https://spectrocloud.atlassian.net/servicedesk/customer/portal/6).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6888 -->
+
+- Fixed an issue that caused the removal of the built-in `ubuntu` user during SSH key injection for
+  [MAAS clusters](../clusters/data-center/maas/maas.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8473 -->
+
+- Fixed an issue that prevented the pack lifecycle stages from executing during a Kubernetes upgrade due to the
+  configuration file being inaccessible inside the upgrade container.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8837 -->
+
+- Fixed an issue that caused the `debug/pprof` profiling interface to be unintentionally exposed on ports `9443`,
+  `7443`, and `5082`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10939 -->
+
+- Fixed an issue that caused the Palette message broker to stop functioning as expected, leading to timeouts and
+  degraded platform responsiveness.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11067 -->
+
+- Fixed an issue that caused excessive memory utilization in Hubble pods due to high goroutine counts resulting from
+  message broker call patterns.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11119 -->
+
+- Fixed redundant cluster status cache broadcasts by limiting eviction to cluster state changes, significantly reducing
+  unnecessary cache reloads.
+
 ## June 8, 2026 - Release 4.9.16
 
 ### Breaking Changes {#breaking-changes-4-9-x}
