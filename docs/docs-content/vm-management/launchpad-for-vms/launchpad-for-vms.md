@@ -11,7 +11,7 @@ The Launchpad for VMs Appliance is a standalone deployment of Palette Virtual Ma
 bare metal and Edge environments. It provides a bootable ISO that you install directly on physical devices, which you
 link together to form a cluster to create and managing VMs through a dedicated management UI.
 
-Unlike [VMO Pack](../vmo-pack/vmo-pack.md), the Launchpad for VMs Appliance does not require a connection Palette. It
+Unlike [VMO Pack](../vmo-pack/vmo-pack.md), the Launchpad for VMs Appliance does not require a connection to Palette. It
 operates independently with its own identity management, storage configuration, and observability stack.
 
 ## Use Cases

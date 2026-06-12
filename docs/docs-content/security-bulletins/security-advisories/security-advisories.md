@@ -23,7 +23,7 @@ advisories are published.
 ## Security Advisory 017 - Improper Access Control for Debugging and Profiling Interface in Stylus
 
 - **Release Date**: June 4, 2026
-- **Last Updated**: June 10, 2026
+- **Last Updated**: June 15, 2026
 - **Severity**: HIGH
 
 ### Summary
@@ -75,13 +75,12 @@ Customers are encouraged to take the following actions:
 
 Palette and Palette VerteX version 4.9.16 has addressed this security advisory.
 
-Spectro Cloud is currently backporting the remediation to supported Palette 4.8.x and 4.7.x releases. This advisory will
-be updated with the applicable fixed versions and upgrade guidance once those releases are available.
+Additionally, this remediation was backported to Palette 4.8.61 and 4.7.45 releases.
 
 ## Security Advisory 016 - Upload Service Authentication Bypass
 
 - **Release Date**: June 4, 2026
-- **Last Updated**: June 10, 2026
+- **Last Updated**: June 15, 2026
 - **Severity**: CRITICAL
 
 ### Summary
@@ -113,8 +112,7 @@ time of this advisory.
 
 This issue has been fully remediated in release 4.9.14 for the Spectro Cloud managed SaaS solution.
 
-Spectro Cloud is currently backporting the remediation to supported Palette 4.8.x and 4.7.x releases. This advisory will
-be updated with the applicable fixed versions and upgrade guidance once those releases are available.
+Additionally, this remediation was backported to Palette 4.8.61 and 4.7.45 releases.
 
 ### Recommended Actions
 
@@ -135,7 +133,7 @@ Customers are encouraged to take the following actions:
 ## Security Advisory 015 - Exposure of Cluster-Scoped Service Credentials Through Manifest Endpoints
 
 - **Release Date**: June 3, 2026
-- **Last Updated**: June 10, 2026
+- **Last Updated**: June 15, 2026
 - **Severity**: HIGH
 
 ### Summary
@@ -177,8 +175,7 @@ Several existing, in-place controls significantly reduce the practical impact of
 Palette and Palette VerteX version 4.9.16 has addressed this security advisory. Self-hosted customers are advised to
 upgrade to Palette version 4.9.16 or later.
 
-Spectro Cloud is currently backporting the remediation to supported Palette 4.8.x and 4.7.x releases. This advisory will
-be updated with the applicable fixed versions and upgrade guidance once those releases are available.
+Additionally, this remediation was backported to Palette 4.8.61 and 4.7.45 releases.
 
 ### Recommended Actions
 
