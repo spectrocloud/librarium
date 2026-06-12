@@ -96,6 +96,13 @@ After your ISO is uploaded, you are ready to deploy a VM.
 9. On the **Network** wizard step, leave the default network configuration. The VM is assigned a pod network interface
    with masquerade mode by default. Select **Next**.
 
+   :::info
+
+   The file server is available on the **Pod Network (masquerade)** network. If you need to install QEMU or other
+   binaries, install them during the golden image build over the **Pod Network (masquerade)** network.
+
+   :::
+
 10. For this guide, no changes are needed to the **Hardware** and **Lifecycle** wizard steps. Select **Finish** to
     provision your VM.
 
