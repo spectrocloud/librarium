@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 15, 2026 - Release 4.9.18
+## June 11, 2026 - Release 4.9.18
 
 <!-- PATCH RELEASE TICKET: DOC-2887 -->
 
