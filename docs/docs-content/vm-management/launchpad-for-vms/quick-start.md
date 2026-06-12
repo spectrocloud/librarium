@@ -75,7 +75,7 @@ After your ISO is uploaded, you are ready to deploy a VM.
    | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
    | **Source**    | Select **Image/ISO**.                                                                                                                      |
    | **OS**        | Select **Linux**.                                                                                                                          |
-   | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                   |
+   | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                       |
    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
 
 4. Leave the **Batch Mode**, **VM Preference**, **Labels**, and **Annotations** sections as is. Select **Next**.
