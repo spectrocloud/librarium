@@ -364,11 +364,12 @@ for issue in "${PLATONE_ISSUES[@]}"; do
 done
 
 {
+  echo "<!-- prettier-ignore-start -->"
+  echo ""
   echo "| Pack Name | Layer | Non-FIPS | FIPS | New Version |"
   echo "| --------- | ----- | -------- | ---- | ----------- |"
-  echo "<!-- prettier-ignore-start -->"
 
-  sort -u "$TMP_PACKS" | awk -F'\t' '
+  awk -F'\t' '
   {
     key = $1 "|" $3
 
@@ -385,16 +386,29 @@ done
 
   END {
     for (key in pack) {
+      if (key in nonfips) {
+        nf = nonfips[key]
+      } else {
+        nf = ":x:"
+      }
+
+      if (key in fips) {
+        fp = fips[key]
+      } else {
+        fp = ":x:"
+      }
+
       printf "| <VersionedLink text=\"%s\" url=\"/integrations/packs/?pack=%s\" /> | `%s` | %s | %s | %s |\n",
         pack[key],
         pack[key],
         layer[key],
-        nonfips[key],
-        fips[key],
+        nf,
+        fp,
         version[key]
     }
-  }'
+  }' "$TMP_PACKS" | sort
 
+  echo ""
   echo "<!-- prettier-ignore-end -->"
   echo ""
 } > "$PACKS_LIST_FILE"
