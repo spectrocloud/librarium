@@ -87,7 +87,9 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
    :::warning
 
-   If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart the VM.
+   If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
+   memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
+   the VM.
 
    :::
 
@@ -123,7 +125,9 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
    :::info
 
-   When the VM is running, you can change the CPU core count, CPU thread count, or memory, but you must restart the VM to apply the change. You can change the number of CPU sockets without restarting the VM, but this causes the VM to live migrate to another node in the cluster.
+   When the VM is running, you can change the CPU core count, CPU thread count, or memory, but you must restart the VM
+   to apply the change. You can change the number of CPU sockets without restarting the VM, but this causes the VM to
+   live migrate to another node in the cluster.
 
    :::
 
