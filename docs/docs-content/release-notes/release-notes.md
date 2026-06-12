@@ -19,7 +19,7 @@ tags: ["release-notes"]
 <!-- RELEASE ARTIFACT STUDIO: 4.9.x -->
 <!-- RELEASE TERRAFORM VERSION: 0.29.5 -->
 
-The following components have been updated for Palette version 4.9.5 - 4.9.16.
+The following components have been updated for Palette version 4.9.5 - 4.9.18.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
