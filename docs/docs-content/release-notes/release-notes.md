@@ -50,15 +50,15 @@ referencing the non-FIPS `palette-images` image registry instead of the `palette
 
 | Pack Name | Layer | Non-FIPS | FIPS | New Version |
 | --------- | ----- | -------- | ---- | ----------- |
-| <VersionedLink text="volume-snapshot-controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> | `addon` | :white_check_mark: | :x:  | 8.6.0 |
-| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.34.4 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :x: | 0.28.5 |
 | <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.60.1 |
-| <VersionedLink text="csi-vsphere-csi" url="/integrations/packs/?pack=csi-vsphere-csi" /> | `csi` | :white_check_mark: | :x: | 3.7.1 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.34.4 |
 | <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.6.1 |
+| <VersionedLink text="csi-vsphere-csi" url="/integrations/packs/?pack=csi-vsphere-csi" /> | `csi` | :white_check_mark: | :x: | 3.7.1 |
 | <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: | :x: | 3.6.1 |
-| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: |  :x: | 0.28.5 |
-| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `add-on` | :white_check_mark: | :x: | 40.3.0 |
 | <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `add-on` | :white_check_mark: | :x: | 1.4.17 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `add-on` | :white_check_mark: | :x: | 40.3.0 |
+| <VersionedLink text="volume-snapshot-controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> | `addon` | :white_check_mark: | :x: | 8.6.0 |
 
 <!-- prettier-ignore-end -->
 
