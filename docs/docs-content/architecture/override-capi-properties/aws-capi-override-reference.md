@@ -137,6 +137,48 @@ awsManagedMachinePool:
       maxUnavailable: 1
 ```
 
+### Node Pool Launch Template
+
+You can customize the launch template of an EKS managed node group by overriding the `awsLaunchTemplate` field of the
+`AWSManagedMachinePool` resource. This lets you set properties such as a custom AMI, instance type, and additional
+volumes.
+
+:::warning
+
+Before you override `awsLaunchTemplate`, you must
+[Enable Nodepool Customization](../../clusters/public-cloud/aws/eks.md#cloud-configuration-settings). This option
+directs Palette to provision the node group with a custom, user-managed launch template. Without it, the node group uses
+a launch template that CAPA manages, and launch template fields are rejected.
+
+You can enable this option when you create the cluster (Day-0) or on an active cluster (Day-2). You do not need to
+supply any values for the optional fields that appear when you click the **Enable Nodepool Customization** toggle.
+
+:::
+
+When you reference a custom AMI through `awsLaunchTemplate.ami.id`, also set the pool's `amiType` to `CUSTOM`. AWS
+requires the node group AMI type to be `CUSTOM` whenever the launch template specifies an explicit image ID.
+
+```yaml title="Set a custom AMI, instance type, and data volume"
+awsManagedMachinePool:
+  spec:
+    amiType: CUSTOM
+    awsLaunchTemplate:
+      ami:
+        id: ami-00b365be53e09d355
+      instanceType: m5.2xlarge
+      nonRootVolumes:
+        - deviceName: /dev/sdf
+          size: 80
+          type: gp3
+```
+
+If you override `awsLaunchTemplate` while node pool customization is disabled, the override is rejected and a cluster
+event similar to the following appears.
+
+```shell hideClipboard title="Example cluster event when node pool customization is disabled"
+instanceType cannot be specified with a CAPA-managed launch template
+```
+
 ### Node Pool AWS Tags
 
 You can apply AWS custom tags at the node pool level on EKS clusters by overriding the `additionalTags` field of the
