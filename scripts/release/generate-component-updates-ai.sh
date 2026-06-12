@@ -333,7 +333,7 @@ TMP_PACKS="$(mktemp)"
 cleanup_tmp_packs() {
   rm -f "$PACKS_LIST_FILE" "$TMP_PACKS"
 }
-trap cleanup EXIT
+trap cleanup_tmp_packs EXIT
 
 for issue in "${PLATONE_ISSUES[@]}"; do
   issue_name=$(
