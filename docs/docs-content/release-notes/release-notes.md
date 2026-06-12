@@ -50,19 +50,65 @@ referencing the non-FIPS `palette-images` image registry instead of the `palette
 
 | Pack Name | Layer | Non-FIPS | FIPS | New Version |
 | --------- | ----- | -------- | ---- | ----------- |
-| <VersionedLink text="volume-snapshot-controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> | `addon` | :white_check_mark: |  | 8.6.0 |
-| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: |  | 1.34.4 |
-| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: |  | 1.60.1 |
-| <VersionedLink text="csi-vsphere-csi" url="/integrations/packs/?pack=csi-vsphere-csi" /> | `csi` | :white_check_mark: |  | 3.7.1 |
-| <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: |  | 3.6.1 |
-| <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: |  | 3.6.1 |
+| <VersionedLink text="volume-snapshot-controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> | `addon` | :white_check_mark: | :x:  | 8.6.0 |
+| <VersionedLink text="csi-azure" url="/integrations/packs/?pack=csi-azure" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.34.4 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.60.1 |
+| <VersionedLink text="csi-vsphere-csi" url="/integrations/packs/?pack=csi-vsphere-csi" /> | `csi` | :white_check_mark: | :x: | 3.7.1 |
+| <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.6.1 |
+| <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: | :x: | 3.6.1 |
 | <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: |  | 0.28.5 |
-| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` |  | :white_check_mark: | 1.60.1 |
-| <VersionedLink text="csi-azure-fips" url="/integrations/packs/?pack=csi-azure" /> | `csi` |  | :white_check_mark: | 1.34.4 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `add-on` | :white_check_mark: | :x: | 40.3.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=traefik" /> | `add-on` | :white_check_mark: | :x: | 1.4.17 |
 
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-2896. DO NOT DELETE. -->
+
+## June 11, 2026 - Release 4.9.18
+
+<!-- PATCH RELEASE TICKET: DOC-2887 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8522 -->
+
+- Fixed an issue that caused the [two-node](../clusters/edge/architecture/two-node.md) liveness server to expose the
+  database password endpoint without authentication, TLS, or access controls.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11122 -->
+
+- The help links on the Palette home page now correctly point to the
+  [Spectro Cloud Support portal](https://spectrocloud.atlassian.net/servicedesk/customer/portal/6).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6888 -->
+
+- Fixed an issue that caused the removal of the built-in `ubuntu` user during SSH key injection for
+  [MAAS clusters](../clusters/data-center/maas/maas.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8473 -->
+
+- Fixed an issue that prevented the pack lifecycle stages from executing during a Kubernetes upgrade due to the
+  configuration file being inaccessible inside the upgrade container.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8837 -->
+
+- Fixed an issue that caused the `debug/pprof` profiling interface to be unintentionally exposed on ports `9443`,
+  `7443`, and `5082`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10939 -->
+
+- Fixed an issue that caused the Palette message broker to stop functioning as expected, leading to timeouts and
+  degraded platform responsiveness.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11067 -->
+
+- Fixed an issue that caused excessive memory utilization in Hubble pods due to high goroutine counts resulting from
+  message broker call patterns.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11119 -->
+
+- Fixed redundant cluster status cache broadcasts by limiting eviction to cluster state changes, significantly reducing
+  unnecessary cache reloads.
 
 ## June 8, 2026 - Release 4.9.16
 
