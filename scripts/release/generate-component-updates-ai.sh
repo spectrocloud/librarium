@@ -92,7 +92,7 @@ RELEASE_COMPONENT_END_VERSION=$(
 echo "ℹ️ Release component start version: $RELEASE_COMPONENT_START_VERSION"
 echo "ℹ️ Release component end version: $RELEASE_COMPONENT_END_VERSION"
 
-# Fetch linked issues, excluding PRM- tickets and Pack Updates tickets
+# Fetch linked issues, excluding PRM- tickets, Platone and Pack Updates tickets
 LINKED_ISSUES=()
 while IFS= read -r issue; do
   LINKED_ISSUES+=("$issue")
@@ -106,6 +106,24 @@ done < <(
       | (.outwardIssue // .inwardIssue)
       | select(.key | startswith("PRM-") | not)
       | select(.fields.summary | contains("Pack Updates") | not)
+      | select(.fields.summary | contains("[Platone]") | not)
+      | .key
+    '
+)
+
+# Fetch only Platone tickets to create the packs list in the release notes
+PLATONE_ISSUES=()
+while IFS= read -r issue; do
+  PLATONE_ISSUES+=("$issue")
+done < <(
+  curl --fail-with-body \
+    --url "${JIRA_DOMAIN}/rest/api/3/issue/${JIRA_TICKET}?fields=issuelinks" \
+    --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+    --header "Accept: application/json" \
+  | jq -r '
+      .fields.issuelinks[]
+      | (.outwardIssue // .inwardIssue)
+      | select(.fields.summary | contains("[Platone]"))
       | .key
     '
 )
@@ -116,6 +134,7 @@ if (( ${#LINKED_ISSUES[@]} == 0 )); then
 fi
 
 echo "ℹ️  Linked issues retrieved: ${LINKED_ISSUES[*]}"
+echo "ℹ️  Platone issues retrieved: ${PLATONE_ISSUES[*]}"
 
 # Check if release notes section for this component update ticket already exists in the release notes file
 COMPONENT_UPDATES_EXISTING_BODY=""
@@ -123,11 +142,22 @@ COMPONENT_UPDATES_EXISTING_BODY=""
 if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   echo "⚠️  Release notes for $JIRA_TICKET already exist in $RELEASE_NOTES_FILE."
 
-  COMPONENT_UPDATES_EXISTING_BODY=$(awk -v ticket="$JIRA_TICKET" '
-    $0 ~ "<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->" { in_section=1; next }
-    in_section && $0 ~ "<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->" { exit }
-    in_section { print }
-  ' "$RELEASE_NOTES_FILE")
+  COMPONENT_UPDATES_EXISTING_BODY=$(
+    awk -v ticket="$JIRA_TICKET" '
+      $0 == "<!-- BEGIN COMPONENT UPDATES BODY: " ticket ". DO NOT DELETE. -->" {
+        in_section = 1
+        next
+      }
+
+      in_section && $0 == "<!-- END COMPONENT UPDATES BODY: " ticket ". DO NOT DELETE. -->" {
+        exit
+      }
+
+      in_section {
+        print
+      }
+    ' "$RELEASE_NOTES_FILE"
+  )
 fi
 
 generate_parameterised_file_local_vars \
@@ -227,21 +257,26 @@ if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
   tmp_body_file="$(mktemp)"
   printf '%s' "$SUPER_COMPONENT_UPDATES_BODY" > "$tmp_body_file"
 
-  awk -v body_file="$tmp_body_file" '
-    # When we hit the updates body marker, print it and inject new body
-    $0 ~ "<!-- BEGIN COMPONENT UPDATES BODY. DO NOT DELETE. -->" {
+  awk -v body_file="$tmp_body_file" -v ticket="$JIRA_TICKET" '
+    {
+      begin_marker = "<!-- BEGIN COMPONENT UPDATES BODY: " ticket ". DO NOT DELETE. -->"
+      end_marker = "<!-- END COMPONENT UPDATES BODY: " ticket ". DO NOT DELETE. -->"
+    }
+
+    # When we hit the ticket-specific updates body marker, print it and inject new body
+    $0 == begin_marker {
       print
       while ((getline line < body_file) > 0) {
         print line
       }
       close(body_file)
-      skip=1
+      skip = 1
       next
     }
 
-    # Skip old body until we hit the end marker
-    skip && $0 ~ "<!-- END COMPONENT UPDATES BODY. DO NOT DELETE. -->" {
-      skip=0
+    # Skip old body until we hit the ticket-specific end marker
+    skip && $0 == end_marker {
+      skip = 0
     }
 
     # Skip lines while in old body
@@ -260,26 +295,154 @@ if grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
 
   echo "✅ Component updates body updated for $JIRA_TICKET in $RELEASE_NOTES_FILE."
 
+fi
+
+if ! grep -qF "$JIRA_TICKET" "$RELEASE_NOTES_FILE"; then
+
+  echo "ℹ️  Component updates for $JIRA_TICKET do not already exist in $RELEASE_NOTES_FILE" >&2
+
+  generate_parameterised_file_local_vars \
+    "$COMPONENT_UPDATES_TEMPLATE_FILE" \
+    "$COMPONENT_UPDATES_OUTPUT_FILE" \
+    "RELEASE_DATE" \
+    "RELEASE_COMPONENT_YEAR" \
+    "RELEASE_COMPONENT_WEEK" \
+    "JIRA_TICKET" \
+    "RELEASE_COMPONENT_START_VERSION" \
+    "RELEASE_COMPONENT_END_VERSION" \
+    "RELEASE_ARTIFACT_STUDIO" \
+    "RELEASE_TERRAFORM_VERSION" \
+    "RELEASE_MANAGEMENT_APPLIANCE" \
+    "SUPER_COMPONENT_UPDATES_BODY"
+
+  insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
+  echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+  cleanup $COMPONENT_UPDATES_OUTPUT_FILE
+
+fi
+
+# Process the Platone issues to generate the packs list in the release notes
+if (( ${#PLATONE_ISSUES[@]} == 0 )); then
+  echo "ℹ️  No Platone issues found for ticket: $JIRA_TICKET. Nothing to do here." >&2
   exit 0
 fi
 
-echo "ℹ️  Component updates for $JIRA_TICKET do not already exist in $RELEASE_NOTES_FILE" >&2
+PACKS_LIST_FILE="$(mktemp)"
+TMP_PACKS="$(mktemp)"
 
-generate_parameterised_file_local_vars \
-  "$COMPONENT_UPDATES_TEMPLATE_FILE" \
-  "$COMPONENT_UPDATES_OUTPUT_FILE" \
-  "RELEASE_DATE" \
-  "RELEASE_COMPONENT_YEAR" \
-  "RELEASE_COMPONENT_WEEK" \
-  "JIRA_TICKET" \
-  "RELEASE_COMPONENT_START_VERSION" \
-  "RELEASE_COMPONENT_END_VERSION" \
-  "RELEASE_ARTIFACT_STUDIO" \
-  "RELEASE_TERRAFORM_VERSION" \
-  "RELEASE_MANAGEMENT_APPLIANCE" \
-  "SUPER_COMPONENT_UPDATES_BODY"
+cleanup_tmp_packs() {
+  rm -f "$PACKS_LIST_FILE" "$TMP_PACKS"
+}
+trap cleanup_tmp_packs EXIT
 
-insert_file_after "<ReleaseNotesVersions />" $COMPONENT_UPDATES_OUTPUT_FILE $RELEASE_NOTES_FILE
-echo "✅ Component updates generated and inserted into $RELEASE_NOTES_FILE."
+for issue in "${PLATONE_ISSUES[@]}"; do
+  issue_name=$(
+    curl --fail-with-body \
+      -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
+      -H "Accept: application/json" \
+      "${JIRA_DOMAIN}/rest/api/3/issue/$issue" \
+      | jq -r '.fields.summary'
+  )
 
-cleanup $COMPONENT_UPDATES_OUTPUT_FILE
+  if [[ "$issue_name" =~ ^\[([^]]+)\]\ ([^[:space:]]+)\ ([0-9]+\.[0-9]+\.[0-9]+)\ ·\ week\ ([0-9]{4}-[0-9]{2})\ ·\ ([^[:space:]]+)\ ·\ (non-FIPS|FIPS)$ ]]; then
+    pack_name="${BASH_REMATCH[2]}"
+    version="${BASH_REMATCH[3]}"
+    layer="${BASH_REMATCH[5]}"
+    variant="${BASH_REMATCH[6]}"
+
+    # Remove trailing -fips so FIPS/non-FIPS variants can be merged
+    normalized_pack="${pack_name%-fips}"
+
+    printf '%s\t%s\t%s\t%s\n' \
+      "$normalized_pack" \
+      "$layer" \
+      "$version" \
+      "$variant" >> "$TMP_PACKS"
+  else
+    echo "⚠️ Skipping issue $issue because summary does not match expected format: $issue_name" >&2
+  fi
+done
+
+{
+  echo "<!-- prettier-ignore-start -->"
+  echo ""
+  echo "| Pack Name | Layer | Non-FIPS | FIPS | New Version |"
+  echo "| --------- | ----- | -------- | ---- | ----------- |"
+
+  awk -F'\t' '
+  {
+    key = $1 "|" $3
+
+    pack[key] = $1
+    layer[key] = $2
+    version[key] = $3
+
+    if ($4 == "non-FIPS") {
+      nonfips[key] = ":white_check_mark:"
+    } else if ($4 == "FIPS") {
+      fips[key] = ":white_check_mark:"
+    }
+  }
+
+  END {
+    for (key in pack) {
+      if (key in nonfips) {
+        nf = nonfips[key]
+      } else {
+        nf = ":x:"
+      }
+
+      if (key in fips) {
+        fp = fips[key]
+      } else {
+        fp = ":x:"
+      }
+
+      printf "| <VersionedLink text=\"%s\" url=\"/integrations/packs/?pack=%s\" /> | `%s` | %s | %s | %s |\n",
+        pack[key],
+        pack[key],
+        layer[key],
+        nf,
+        fp,
+        version[key]
+    }
+  }' "$TMP_PACKS" | sort
+
+  echo ""
+  echo "<!-- prettier-ignore-end -->"
+  echo ""
+} > "$PACKS_LIST_FILE"
+
+awk -v body_file="$PACKS_LIST_FILE" -v ticket="$JIRA_TICKET" '
+  BEGIN {
+    begin_marker = "<!-- BEGIN PACKS LIST BODY: " ticket ". DO NOT DELETE. -->"
+    end_marker   = "<!-- END PACKS LIST BODY: " ticket ". DO NOT DELETE. -->"
+  }
+
+  $0 == begin_marker {
+    print
+    while ((getline line < body_file) > 0) {
+      print line
+    }
+    close(body_file)
+    skip = 1
+    next
+  }
+
+  skip && $0 == end_marker {
+    skip = 0
+    print
+    next
+  }
+
+  skip {
+    next
+  }
+
+  {
+    print
+  }
+  ' "$RELEASE_NOTES_FILE" > "${RELEASE_NOTES_FILE}.tmp" \
+    && mv "${RELEASE_NOTES_FILE}.tmp" "$RELEASE_NOTES_FILE"
+
+echo "✅ Packs list updated for $JIRA_TICKET in $RELEASE_NOTES_FILE."
