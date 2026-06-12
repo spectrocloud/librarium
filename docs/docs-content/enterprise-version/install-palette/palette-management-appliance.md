@@ -85,7 +85,9 @@ Follow the instructions to install Palette using the Palette Management Applianc
   app="Palette Management Appliance"
 />
 
-### Install Palette
+- <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Palette" />
+
+### Install Palette {#install}
 
 <PartialsComponent
   category="self-hosted"

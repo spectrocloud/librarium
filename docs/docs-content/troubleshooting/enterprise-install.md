@@ -1439,3 +1439,101 @@ resolve this issue, you must manually set these endpoints.
    ```
 
 MAAS and VMware vSphere clusters will now be successfully provisioned on your self-hosted Palette environment.
+
+## Scenario - Rollback Linstor High Availability Configuration on Single Node Environments
+
+[Palette Management Appliance](../enterprise-version/upgrade/palette-management-appliance.md) and
+[VerteX Management Appliance](../vertex/upgrade/vertex-management-appliance.md) upgrades from 4.7.27 require executing
+an additional script that configures the `linstor-lvm-storage` StorageClass. This script should only be executed for
+High Availability (HA) environments.
+
+If you accidentally used the script in a single-node environment, take the following steps to rollback the changes and
+restore your environment configuration.
+
+### Debug Steps
+
+1. Log in to Local UI of the leader node of your Palette management cluster. For example,
+   `https://<palette-leader-node-ip>:5080`.
+
+2. From the left main menu, click **Cluster**.
+
+3. On the **Overview** tab, within the **Environment** section, click the link for the **Admin Kubeconfig File** to
+   download the kubeconfig file.
+
+4. On your local machine, ensure you have `kubectl` installed and set the `KUBECONFIG` environment variable to point to
+   the downloaded kubeconfig file.
+
+   ```bash
+   export KUBECONFIG=/path/to/downloaded/kubeconfig/file
+   ```
+
+5. Export the `linstor-lvm-storage` StorageClass configuration and save it to the `linstor-lvm-storage.yaml` YAML file.
+
+   ```bash
+   kubectl get storageclass linstor-lvm-storage --output yaml > linstor-lvm-storage.yaml
+   ```
+
+6. Use your preferred editor to modify the `linstor-lvm-storage.yaml`. Change value of the `placementCount` field to
+   `1`. The upgrade script will have set it to `3`.
+
+   ```yaml {12}
+   allowVolumeExpansion: true
+   apiVersion: storage.k8s.io/v1
+   kind: StorageClass
+   metadata:
+     annotations:
+       helm.sh/hook: post-install,post-upgrade
+       kubectl.kubernetes.io/last-applied-configuration: |
+         {"allowVolumeExpansion":true,"apiVersion":"storage.k8s.io/v1","kind":"StorageClass","metadata":{"annotations":{"helm.sh/hook":"post-install,post-upgrade","storageclass.kubernetes.io/is-default-class":"false"},"name":"linstor-lvm-storage"},"parameters":{"placementCount":"3","resourceGroup":"lvm-ha","storagePool":"lvm-thin"},"provisioner":"linstor.csi.linbit.com","reclaimPolicy":"Delete","volumeBindingMode":"WaitForFirstConsumer"}
+       storageclass.kubernetes.io/is-default-class: "false"
+       name: linstor-lvm-storage
+   parameters:
+     placementCount: "1"
+     resourceGroup: lvm-ha
+     storagePool: lvm-thin
+   provisioner: linstor.csi.linbit.com
+   reclaimPolicy: Delete
+   volumeBindingMode: WaitForFirstConsumer
+   ```
+
+7. Navigate back to your terminal. Execute the following command to delete the existing StorageClass.
+
+   ```bash
+   kubectl delete storageclass linstor-lvm-storage
+   ```
+
+8. Create the StorageClass using the modified file.
+
+   ```bash
+   kubectl apply --file linstor-lvm-storage.yaml
+   ```
+
+<!-- prettier-ignore-start -->
+
+9. Delete the <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> pack from the cluster. Replace the `cluster-namespace` placeholder with your own value.
+
+
+   <Tabs>
+
+   <TabItem label="Palette" value="palette">
+
+   ```bash
+   kubectl delete pack --namespace <cluster-namespace> zot-registry
+   ```
+
+   </TabItem>
+
+   <TabItem label="Palette VerteX" value="vertex">
+
+   ```bash
+   kubectl delete pack --namespace <cluster-namespace> zot-registry-fips
+   ```
+
+   </TabItem>
+   </Tabs>
+
+<!-- prettier-ignore-end -->
+
+10. Upload the content bundle for your current version of the management appliance to reinstall the Zot Registry pack.
+    Refer to the [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide
+    for further information.
