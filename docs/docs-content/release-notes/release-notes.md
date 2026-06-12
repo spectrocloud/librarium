@@ -11,6 +11,32 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 11, 2026 - Release 4.7.45
+
+<!-- PATCH RELEASE TICKET: DOC-2889 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8856 -->
+
+- Fixed an authentication bypass vulnerability in the Edge
+  [upload content bundles](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) operation that allowed
+  unauthenticated requests to upload arbitrary files to the edge node's content directory.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8859 -->
+
+- Fixed an issue that caused the `debug/pprof` profiling interface to be unintentionally exposed on ports `9443`,
+  `7443`, and `5082`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8861 -->
+
+- Fixed an issue that caused the [two-node](../clusters/edge/architecture/two-node.md) liveness server to expose the
+  database password endpoint without authentication, TLS, or access controls.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11051 -->
+
+- Fixed manifest APIs to require authentication, preventing unauthenticated access to manifest endpoints.
+
 ## June 8, 2026 - Release 4.7.43
 
 ### Breaking Changes {#breaking-changes-4-7-x}
