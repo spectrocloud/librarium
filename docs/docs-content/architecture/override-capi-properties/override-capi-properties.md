@@ -76,6 +76,42 @@ process. If there are any conflicts between override and native values, the over
 
 :::
 
+### Where Overrides are Set
+
+The location where you set the override depends on the level of the CAPI object you want to target.
+
+You can set cluster and node pool overrides together on the same cluster.
+
+#### Cluster Overrides
+
+<Tabs groupId="cluster-state">
+<TabItem label="New clusters" value="new">
+
+Set the override during the **Cluster Config** step.
+
+</TabItem>
+<TabItem label="Existing clusters" value="existing">
+
+Set the override in the **Settings > Cluster Configuration** drawer for the cluster.
+
+</TabItem>
+</Tabs>
+
+#### Node Pool Overrides
+
+<Tabs groupId="cluster-state">
+<TabItem label="New clusters" value="new">
+
+Set the override during the **Nodes Config** step.
+
+</TabItem>
+<TabItem label="Existing clusters" value="existing">
+
+Navigate to the cluster's **Nodes** tab and click the **Edit** option for the relevant node pool to set the override.
+
+</TabItem>
+</Tabs>
+
 ### Key Format
 
 The top-level key is always the camelCase form of the CAPI Kind. All nested keys are either based on the `json` struct
@@ -208,15 +244,6 @@ construct valid override YAML, use the following steps.
    ```
 
    </details>
-
-### Cluster-Level vs. Pool-Level Override
-
-| Level       | Where it is set                   | What it targets                                                           | Top-Level Key Examples                          |
-| ----------- | --------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------- |
-| **Cluster** | Cluster-level cloud configuration | The primary cluster-scoped CAPI control plane or infrastructure resource. | `awsCluster`, `azureManagedControlPlane`        |
-| **Pool**    | Node pool configuration           | The CAPI machine pool or machine template object for that node pool.      | `awsMachineTemplate`, `azureManagedMachinePool` |
-
-Both levels can be used independently or together on the same cluster.
 
 ## Important Behaviors
 
