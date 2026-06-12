@@ -328,59 +328,73 @@ if (( ${#PLATONE_ISSUES[@]} == 0 )); then
 fi
 
 PACKS_LIST_FILE="$(mktemp)"
+TMP_PACKS="$(mktemp)"
 
 cleanup() {
-  rm -f "$PACKS_LIST_FILE"
+  rm -f "$PACKS_LIST_FILE" "$TMP_PACKS"
 }
 trap cleanup EXIT
 
+for issue in "${PLATONE_ISSUES[@]}"; do
+  issue_name=$(
+    curl -sS \
+      -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
+      -H "Accept: application/json" \
+      "${JIRA_DOMAIN}/rest/api/3/issue/$issue" \
+      | jq -r '.fields.summary'
+  )
+
+  if [[ "$issue_name" =~ ^\[([^]]+)\]\ ([^[:space:]]+)\ ([0-9]+\.[0-9]+\.[0-9]+)\ ·\ week\ ([0-9]{4}-[0-9]{2})\ ·\ ([^[:space:]]+)\ ·\ (non-FIPS|FIPS)$ ]]; then
+    pack_name="${BASH_REMATCH[2]}"
+    version="${BASH_REMATCH[3]}"
+    layer="${BASH_REMATCH[5]}"
+    variant="${BASH_REMATCH[6]}"
+
+    # Remove trailing -fips so FIPS/non-FIPS variants can be merged
+    normalized_pack="${pack_name%-fips}"
+
+    printf '%s\t%s\t%s\t%s\n' \
+      "$normalized_pack" \
+      "$layer" \
+      "$version" \
+      "$variant" >> "$TMP_PACKS"
+  else
+    echo "⚠️ Skipping issue $issue because summary does not match expected format: $issue_name" >&2
+  fi
+done
+
 {
-  echo ""
-  echo "<!-- prettier-ignore-start -->"
-  echo ""
   echo "| Pack Name | Layer | Non-FIPS | FIPS | New Version |"
   echo "| --------- | ----- | -------- | ---- | ----------- |"
+  echo "<!-- prettier-ignore-start -->"
 
-  for issue in "${PLATONE_ISSUES[@]}"; do
-    issue_name=$(
-      curl -sS \
-        -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
-        -H "Accept: application/json" \
-        "${JIRA_DOMAIN}/rest/api/3/issue/$issue" \
-        | jq -r '.fields.summary'
-    )
+  sort -u "$TMP_PACKS" | awk -F'\t' '
+  {
+    key = $1 "|" $3
 
-    if [[ "$issue_name" =~ ^\[([^]]+)\]\ ([^[:space:]]+)\ ([0-9]+\.[0-9]+\.[0-9]+)\ ·\ week\ ([0-9]{4}-[0-9]{2})\ ·\ ([^[:space:]]+)\ ·\ (FIPS|non-FIPS)$ ]]; then
-      pack_name="${BASH_REMATCH[2]}"
-      pack_name_stripped_fips="${pack_name%-fips}"
-      version="${BASH_REMATCH[3]}"
-      layer="${BASH_REMATCH[5]}"
-      variant="${BASH_REMATCH[6]}"
+    pack[key] = $1
+    layer[key] = $2
+    version[key] = $3
 
-      non_fips=""
-      fips=""
+    if ($4 == "non-FIPS") {
+      nonfips[key] = ":white_check_mark:"
+    } else if ($4 == "FIPS") {
+      fips[key] = ":white_check_mark:"
+    }
+  }
 
-      if [[ "$variant" == "non-FIPS" ]]; then
-        non_fips=":white_check_mark:"
-      else
-        fips=":white_check_mark:"
-      fi
+  END {
+    for (key in pack) {
+      printf "| <VersionedLink text=\"%s\" url=\"/integrations/packs/?pack=%s\" /> | `%s` | %s | %s | %s |\n",
+        pack[key],
+        pack[key],
+        layer[key],
+        nonfips[key],
+        fips[key],
+        version[key]
+    }
+  }'
 
-
-      printf '| <VersionedLink text="%s" url="/integrations/packs/?pack=%s" /> | `%s` | %s | %s | %s |\n' \
-        "$pack_name" \
-        "$pack_name_stripped_fips" \
-        "$layer" \
-        "$non_fips" \
-        "$fips" \
-        "$version"
-
-    else
-      echo "⚠️ Skipping issue $issue because summary does not match expected format: $issue_name" >&2
-    fi
-  done
-
-  echo ""
   echo "<!-- prettier-ignore-end -->"
   echo ""
 } > "$PACKS_LIST_FILE"
