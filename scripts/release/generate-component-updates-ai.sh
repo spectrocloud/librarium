@@ -323,21 +323,21 @@ fi
 
 # Process the Platone issues to generate the packs list in the release notes
 if (( ${#PLATONE_ISSUES[@]} == 0 )); then
-  echo "ℹ️  No Platone issues found for ticket: $JIRA_TICKET" >&2
-  exit 1
+  echo "ℹ️  No Platone issues found for ticket: $JIRA_TICKET. Nothing to do here." >&2
+  exit 0
 fi
 
 PACKS_LIST_FILE="$(mktemp)"
 TMP_PACKS="$(mktemp)"
 
-cleanup() {
+cleanup_tmp_packs() {
   rm -f "$PACKS_LIST_FILE" "$TMP_PACKS"
 }
 trap cleanup EXIT
 
 for issue in "${PLATONE_ISSUES[@]}"; do
   issue_name=$(
-    curl -sS \
+    curl --fail-with-body \
       -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
       -H "Accept: application/json" \
       "${JIRA_DOMAIN}/rest/api/3/issue/$issue" \
