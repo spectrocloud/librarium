@@ -99,27 +99,37 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 12. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
-13. In **Network Adapter**, select a network adapter to configure. By default, network adapters request an IP address
-    automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
-    block of each adapter's possible IP address appears on the **Network Adapter** screen.
+13. In **Network Adapter**, choose the interface that the Launchpad host uses for management traffic. Management traffic
+    includes Local UI access, communication between hosts, and content synchronization.
+
+    From the **Management Interface** drop-down menu, select **None**, a network interface, or a VLAN sub-interface. If
+    you select **None**, the Launchpad host uses the network interface associated with the default route.
+
+    You can configure the management interface in the Edge Installer `user-data` file. A selection made in the TUI
+    overrides the value from `user-data`. After initial setup, a selection made in Local UI overrides the value from the
+    TUI.
+
+14. From the network adapter table, select a network adapter to configure. By default, network adapters request an IP
+    address automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing
+    (CIDR) block of each adapter's possible IP address appears on the **Network Adapter** screen.
 
     On the configuration page for each adapter, you can switch the IP addressing scheme from DHCP to static IP. In
     static IP mode, provide a static external IP address, subnet mask, and the default gateway address. A static
     external IP address removes the existing DHCP settings.
 
-14. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
+15. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
     ID segments network traffic on the same physical network interface for network isolation. If you assign a VLAN ID,
     the Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
 
-15. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
+16. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
     interface can send without fragmentation. Press **ENTER** to apply the change.
 
-16. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
+17. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
     search domain. Press **ENTER** to apply the change.
 
-17. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
+18. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
 
-18. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
+19. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
     terminal screen displays the hostname and network information of your Launchpad host. Verify that all displayed
     information is consistent with your configurations.
 
@@ -131,9 +141,18 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 2. Log in with the username and password you created during installation.
 
-3. In the **Network interfaces** section, beside **Bonds**, select **Create**.
+3. If you need to change the interface used for management traffic, locate the **Management Interface** field and select
+   the interface to use. Local UI can override the management interface selected during TUI configuration.
 
-4. Complete the fields on the **Create Bond** screen and select **Confirm**.
+   :::warning
+
+   Changing the management interface may cause Local UI connectivity loss.
+
+   :::
+
+4. In the **Network interfaces** section, beside **Bonds**, select **Create**.
+
+5. Complete the fields on the **Create Bond** screen and select **Confirm**.
 
    | **Parameter**                | **Description**                                                                                |
    | ---------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -154,9 +173,9 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::
 
-5. In the **Network interfaces** section, beside **Bridges**, select **Create**.
+6. In the **Network interfaces** section, beside **Bridges**, select **Create**.
 
-6. Complete the fields on the **Create Bridge** screen and select **Confirm**.
+7. Complete the fields on the **Create Bridge** screen and select **Confirm**.
 
    | **Parameter**         | **Description**                                                                                                                                       |
    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -231,17 +250,26 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    ### Network Settings
 
-   | **Parameter**                        | **Description**                                                                                                                           |
-   | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
-   | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
-   | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                      |
-   | **Cilium and MetalLB interface**     | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
-   | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
-   | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
-   | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                 |
-   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                        |
-   | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
+   | **Parameter**                        | **Description**                                                                                                                                                                                                       |
+   | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                                                                                            |
+   | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.                                                                                  |
+   | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                                                                                                  |
+   | **Cilium and MetalLB interface**     | The physical network interface, bond, or bridge on each node used for Kubernetes cluster traffic and external service announcements. This setting does not control the management interface used for Local UI access. |
+   | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.                                                                                |
+   | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                                                                                                          |
+   | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                                                                                             |
+   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                                                                                                    |
+   | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`.                                                                             |
+
+   :::warning
+
+   Selecting a management interface or a Cilium and MetalLB interface does not change how the host routes network
+   traffic. If multiple adapters use the same subnet and each adapter has a default route, traffic may leave through a
+   different adapter than expected. For best results, place management and cluster traffic on separate subnets and
+   configure both interfaces explicitly.
+
+   :::
 
    ### OS and Metrics
 

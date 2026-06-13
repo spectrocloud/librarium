@@ -126,16 +126,29 @@ more information about EdgeForge and site user data, refer to
    Check the existing hostname and, optionally, change it to a new one. Use the **TAB** key or the up and down arrow
    keys to switch between fields. When you make a change, press **ENTER** to apply the change.
 
-6. In **Network Adapter**, choose the interface that the Edge host uses for management traffic. From the **Management
-   Interface** drop-down menu, select **None**, a network interface, or a VLAN sub-interface. The selected interface
-   handles Local UI access and host-to-host traffic. If you select **None**, the Edge host uses the network interface
-   associated with the default route.
+6. In **Network Adapter**, choose the interface that the Edge host uses for management traffic. Management traffic
+   includes Local UI access, communication between Edge hosts, and content synchronization.
+
+   From the **Management Interface** drop-down menu, select **None**, a network interface, or a VLAN sub-interface. If
+   you select **None**, the Edge host uses the network interface associated with the default route.
+
+   You can configure the management interface in the Edge Installer `user-data` file. A selection made in the TUI
+   overrides the value from `user-data`. After initial setup, a selection made in Local UI overrides the value from the
+   TUI.
 
    Use the **TAB** key to switch between the **Management Interface** drop-down menu and the network adapter table. The
    selected management interface persists after the Edge host reboots. After you complete the initial setup, the
    selected interface is displayed as **Mgmt interface** on the Palette TUI landing page.
 
    ![updated screenshot of management interface](/clusters_site-installation_initial-setup_tui-management-interface_4.8.webp)
+
+   :::info
+
+   The management interface controls Edge host management traffic only. To control Kubernetes cluster traffic, specify
+   `host.nicName` in the machine pool configuration. This interface is used for node IP selection, the Kubernetes
+   control plane API, etcd, and the cluster virtual IP address (VIP).
+
+   :::
 
 7. From the network adapter table, select an adapter to configure its network settings. By default, network adapters
    request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain
