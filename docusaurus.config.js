@@ -187,7 +187,7 @@ const config = {
             },
           },
           admonitions: {
-            keywords: ["preview", "further"],
+            keywords: ["preview", "further", "deprecated"],
             extendDefaults: true,
           },
           // exclude: ["api/v1/palette-apis-3-4"],

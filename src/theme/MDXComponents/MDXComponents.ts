@@ -10,6 +10,10 @@ import PacksInformation from "@site/src/components/PacksInformation/PacksInforma
 import AppTiers from "@site/src/components/Integrations/AppTiers/AppTiers";
 import PacksTable from "@site/src/components/PacksTable/PacksTable";
 import TOCInline from "@theme/TOCInline";
+import {
+  TechnicalPreviewReleaseNote as TpBadge,
+  DeprecatedReleaseNote as DeprecatedBadge,
+} from "@site/src/components/Badges";
 import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
 import PartialsComponent from "@site/src/components/PartialsComponent";
@@ -37,6 +41,8 @@ export default {
   AppTiers,
   PacksTable,
   TOCInline,
+  TpBadge,
+  DeprecatedBadge,
   SimpleCardGrid,
   ReleaseNotesVersions,
   PartialsComponent,
