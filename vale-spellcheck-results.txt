@@ -1,5 +1,0 @@
-docs/docs-content/release-notes/release-notes.md:105:86:Vale.Spelling:Did you really mean 'goroutine'?
-docs/docs-content/vm-management/launchpad-for-vms/quick-start.md:71:32:Vale.Spelling:Did you really mean 'vm'?
-docs/docs-content/vm-management/launchpad-for-vms/install-vmla-iso.md:96:8:Vale.Spelling:Did you really mean 'poweroff'?
-docs/docs-content/vm-management/launchpad-for-vms/install-vmla-iso.md:226:16:Vale.Spelling:Did you really mean 'Netiface'?
-docs/docs-content/troubleshooting/enterprise-install.md:1443:24:Vale.Spelling:Did you really mean 'Linstor'?
