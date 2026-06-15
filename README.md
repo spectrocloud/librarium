@@ -513,7 +513,7 @@ Result
 
 ![Result](/static/assets/docs/images/hide_copy_button.webp)
 
-### Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance
+### Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance / Deprecated
 
 For guidance on using admonitions in our docs, refer to
 [Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
@@ -613,6 +613,35 @@ import AdmonitionTypeFurtherGuidance from '@theme/Admonition/Type/FurtherGuidanc
 <AdmonitionTypeFurtherGuidance /> # Use instead of :::
 ```
 
+#### Deprecated
+
+The `:::deprecated` admonition is a custom admonition configured in `docusaurus.config.js` under `admonitions.keywords`.
+
+Unlike other admonition types, you do not need to enter content in the admonition block. By default, the Deprecated
+admonition generates the message, "This feature is deprecated and will no longer receive new updates. Refer to the
+Announcements page for additional information, as well as alternatives." This message is hardcoded using
+`src/theme/Admonition/Type/Deprecated.js`. However, if you need to deviate from the template text, you can provide a
+custom message.
+
+```mdx
+:::deprecated
+
+Some **content** with _Markdown_ `syntax`.
+
+:::
+```
+
+Like Tech Preview and Further Guidance, the Deprecated admonition is a custom admonition. To use this admonition in
+partials, import and reference it with JSX syntax.
+
+```mdx
+import AdmonitionTypeDeprecated from '@theme/Admonition/Type/Deprecated'; # Import below front matter
+
+<AdmonitionTypeDeprecated /> # Use instead of :::
+```
+
+Note that when used in partials, the default message cannot be overridden.
+
 ### Video
 
 To add a video, use the following syntax. Ensure you capitalize the letter "V":
@@ -635,6 +664,8 @@ The following badges are available for use:
 
 - Technical Preview Badge ![Technical Preview Badge](static/img/tech-preview-light.svg)
   ![Technical Preview Badge](static/img/tech-preview-dark.svg)
+- Deprecated Badge ![Deprecated Badge](static/img/deprecated-light.svg)
+  ![Deprecated Badge](static/img/deprecated-dark.svg)
 
 #### Technical Preview Badge
 
@@ -647,6 +678,17 @@ component will automatically display the badge in the correct color based on the
   feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
   types, apply validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile
   variables.
+```
+
+#### Deprecated Badge
+
+The deprecated badge is used to indicate that a feature is deprecated. The badge is intended for usage in the context of
+a list or table. The following is an example of how to use the deprecated badge. The component will automatically
+display the badge in the correct color based on the light theme (dark/light).
+
+```markdown
+- <DeprecatedBadge /> Edge site deployment via MAAS is deprecated and will no longer receive new updates. Refer to the
+  Announcements page for additional information, as well as alternatives.
 ```
 
 ### Simple Card Grid
