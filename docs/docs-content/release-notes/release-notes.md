@@ -69,7 +69,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6835 -->
 
-- The deployment of [Canonical Kubernetes on MAAS](../clusters/data-center/maas/architecture.md) has exited Tech Preview and is now ready for production workloads.
+- The deployment of [Canonical Kubernetes on MAAS](../clusters/data-center/maas/architecture.md) has exited Tech Preview
+  and is now ready for production workloads.
 
 #### Deprecations and Removals
 
