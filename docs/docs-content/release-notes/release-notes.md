@@ -23,6 +23,22 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6526 -->
+
+- <TpBadge /> Overriding Cluster API (CAPI) properties is now supported on [AWS
+  EKS](../clusters/public-cloud/aws/eks.md), [Azure IaaS](../clusters/public-cloud/azure/aks.md), and
+  [CloudStack](../clusters/data-center/cloudstack/create-manage-cloudstack-clusters.md) clusters. This allows you to
+  configure advanced provider-specific settings not natively exposed by Palette by supplying YAML that targets the
+  underlying CAPI provider objects directly. For more information, refer to [Override Cluster API (CAPI)
+  Properties](../architecture/override-capi-properties/override-capi-properties.md).
+
+  <!-- https://spectrocloud.atlassian.net/browse/DOC-2854 -->
+
+  - Using CAPI override, you can now apply AWS custom tags at the node pool level on EKS clusters. Node-pool tags are
+    additive to cluster-level tags and propagate to the pool's managed node group and Auto Scaling group. For more
+    information, refer to
+    [Node Pool AWS Tags](../architecture/override-capi-properties/aws-capi-override-reference.md#node-pool-aws-tags).
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6803 -->
 
 - Palette now supports overriding Cluster API Machine Health Check (MHC) settings per node pool on Palette eXtended
