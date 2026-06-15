@@ -67,6 +67,10 @@ tags: ["release-notes"]
   provisioning completes. For more information, refer to
   [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6835 -->
+
+- The deployment of [Canonical Kubernetes on MAAS](../clusters/data-center/maas/architecture.md) has exited Tech Preview and is now ready for production workloads.
+
 #### Deprecations and Removals
 
 ### Edge
