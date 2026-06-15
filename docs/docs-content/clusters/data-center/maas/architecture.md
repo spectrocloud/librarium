@@ -53,8 +53,13 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
 ## Limitations
 
-The Canonical Kubernetes pack for deployments in MAAS environments is a Tech Preview feature and does not support
-cluster backups with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
+The Canonical Kubernetes pack for deployments in MAAS environments does not support the following:
+
+- OpenID Connect (OIDC)
+- Network Time Protocol (NTP)
+- SSH key management
+- HashiCorp Cloud Platform (HCP) / Linux Container Daemon (LXD)
+- Cilium for Container Network Interface (CNI)
 
 ## Palette MAAS Distribution
 
@@ -65,13 +70,6 @@ Palette provides the following distributions for MAAS environments.
 | Palette eXtended Kubernetes (PXK) | CNCF                         | Ubuntu, BYOOS                   | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
 | Canonical Kubernetes              | Canonical Kubernetes         | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
 | OpenShift                         | OpenShift Container Platform | BYOOS                           | OVN-Kubernetes CNI (passthrough)                                                                                             | Local Path Provisioner                                                                                                       |
-
-:::preview
-
-The **Canonical Kubernetes** and **OpenShift** packs for deployments in MAAS environments are Tech Preview features and
-are subject to change. Do not use these features in production workloads.
-
-:::
 
 ## Custom API Server Endpoint for MAAS Clusters
 
