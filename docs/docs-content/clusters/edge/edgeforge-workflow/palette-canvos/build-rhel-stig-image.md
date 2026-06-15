@@ -8,9 +8,9 @@ sidebar_position: 70
 tags: ["edge", "rhel", "stig"]
 ---
 
-[Security Technical Implementation Guides (STIGs)](https://access.redhat.com/compliance/disa-stig?utm_source=chatgpt.com)
-are standardized security hardening guidelines developed by the Defense Information Systems Agency (DISA) to help secure
-OS and applications in regulated environments. With Palette Edge, you can build Red Hat Enterprise Linux (RHEL) 9
+[Security Technical Implementation Guides (STIGs)](https://access.redhat.com/compliance/disa-stig) are standardized
+security hardening guidelines developed by the Defense Information Systems Agency (DISA) to help secure OS and
+applications in regulated environments. With Palette Edge, you can build Red Hat Enterprise Linux (RHEL) 9
 STIG-compliant images for your Edge hosts using the EdgeForge workflow.
 
 In this guide, you will use the CanvOS utility to build a base RHEL 9 STIG image, then create an ISO image from it for
@@ -45,10 +45,10 @@ your Palette Edge deployment.
 
 - The RHEL 9 STIG implementation in Palette Edge only supports the following Kubernetes distributions:
 
-  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - the
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - The
     `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS.
 
-  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> - the
+  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> - The
     `K8S_DISTRIBUTION=rke2` value in the `.arg` file.
 
 ## Prerequisites
