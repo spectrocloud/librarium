@@ -47,19 +47,36 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
    Artifacts**.
 
-3. **Download** the **Launchpad for VMs Appliance ISO**. You can download the Appliance with the Cluster Config already
-   staged (**Appliance ISO with Content**) or, if you have limited disk space for a virtual ISO, download a slim version
-   of the ISO (**Appliance ISO**). Download the **Content bundle (including Ubuntu)** and
-   [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
-   or [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+3. The following table describes the installer options to download for installation.
+
+   | **Artifact**                          | **Description**                                 |
+   | ------------------------------------- | ----------------------------------------------- |
+   | **Content bundle (including Ubuntu)** | Content bundle to use with **Appliance ISO**.   |
+   | **Appliance ISO**                     | Smaller ISO without embedded content bundle.    |
+   | **Appliance ISO with Content**        | Full ISO with embedded content bundle.          |
+   | **MOK Key for Secure Boot**           | MOK key to use for secure boot with MokManager. |
+
+4. Download the **Appliance ISO with Content**. Or, download both **Appliance ISO** and **Content bundle (including
+   Ubuntu)**. Download **MOK Key for Secure Boot** if you use secure boot on your host.
+
+   If you have downloaded the **Content bundle (including Ubuntu)**,
+   [upload it using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or
+   [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
+
+   :::info
+
+   Use the slim **Appliance ISO** and **Content bundle (including Ubuntu)** when you have limited network capacity for
+   mounting ISOs and when you have greater network capacity to upload the content bundle after the initial install.
+
+   :::
 
 ![Screenshot of download screen from artifact studio](/vmo/vm-management_launchpad-for-vms_iso-download-4-9.webp)
 
-4. Boot your device using the Launchpad for VMs Appliance ISO.
+5. Boot your device using the Launchpad for VMs Appliance ISO.
 
-5. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
+6. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
 
-6. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press
+7. From the **Launchpad for VMs Interactive Installer** screen, select the disk to install the appliance on. Press
    **ENTER** to proceed to the next screen.
 
    :::danger
@@ -68,7 +85,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::
 
-7. On the **Installation Options** screen, select what the installer does after the installation completes. Press
+8. On the **Installation Options** screen, select what the installer does after the installation completes. Press
    **ENTER** to begin the installation process. After the installation completes, disconnect the ISO. The following
    table describes the available options.
 
@@ -78,11 +95,11 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **reboot**   | Automatically reboots the system.               |
    | **poweroff** | Powers off the system.                          |
 
-8. On the **GNU GRUB** screen, select **Palette eXtended Kubernetes Edge Registration**.
+9. On the **GNU GRUB** screen, select **Palette eXtended Kubernetes Edge Registration**.
 
-9. On the **Palette TUI** screen, press **F2** to begin configuring your Edge host.
+10. On the **Palette TUI** screen, press **F2** to begin configuring your Edge host.
 
-10. In the Palette TUI, provide credentials for the initial account. Use this account to log in to Local UI and access
+11. In the Palette TUI, provide credentials for the initial account. Use this account to log in to Local UI and access
     the node through SSH.
 
     | **Field**               | **Description**                                   |
@@ -94,12 +111,12 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
     Press **ENTER** to continue.
 
-11. In the Palette TUI, the available configuration options appear. Use the **TAB** key or the up and down arrow keys to
+12. In the Palette TUI, the available configuration options appear. Use the **TAB** key or the up and down arrow keys to
     switch between fields. When you make a change, press **ENTER** to apply the change. Use **ESC** to go back.
 
-12. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
+13. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
-13. In **Network Adapter**, select a network adapter to configure. By default, network adapters request an IP address
+14. In **Network Adapter**, select a network adapter to configure. By default, network adapters request an IP address
     automatically from the Dynamic Host Configuration Protocol (DHCP) server. The Classless Inter-Domain Routing (CIDR)
     block of each adapter's possible IP address appears on the **Network Adapter** screen.
 
@@ -107,19 +124,19 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
     static IP mode, provide a static external IP address, subnet mask, and the default gateway address. A static
     external IP address removes the existing DHCP settings.
 
-14. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
+15. (Optional) Specify a Virtual Local Area Network (VLAN) ID on the configuration page of each network adapter. A VLAN
     ID segments network traffic on the same physical network interface for network isolation. If you assign a VLAN ID,
     the Launchpad host tags all outgoing packets from that adapter with the specified VLAN identifier.
 
-15. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
+16. (Optional) Specify the MTU for your network adapter. The MTU defines the largest packet size, in bytes, that the
     interface can send without fragmentation. Press **ENTER** to apply the change.
 
-16. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
+17. In **DNS Configuration**, specify the IP addresses of the primary and secondary name servers. Optionally, specify a
     search domain. Press **ENTER** to apply the change.
 
-17. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
+18. In **NTP Configuration**, specify one or more NTP servers. For example, `0.pool.ntp.org` and `1.pool.ntp.org`.
 
-18. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
+19. After you confirm the configurations, navigate to **Logout** and press **ENTER** to complete the configuration. The
     terminal screen displays the hostname and network information of your Launchpad host. Verify that all displayed
     information is consistent with your configurations.
 
@@ -206,6 +223,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **Kubernetes**             | `edge-k8s`                     | Kubernetes platform.                                                                                                                             |
    | **Cilium**                 | `cni-cilium-fips`              | CNI and network policy. Multus support for VM networking.                                                                                        |
    | **Piraeus**                | `piraeus-operator`             | Storage backend. Provides StorageClass for VM disks.                                                                                             |
+   | **Piraeus Netiface**       | `piraeus-netface-builder`      | Storage replication network helper. Sets up the network interface for storage replication communication.                                         |
    | **Zot**                    | `zot-registry-fips`            | OCI registry. Stores container images for air-gapped deployments.                                                                                |
    | **Registry Connect**       | `registry-connect`             | Enables integration with OCI-compliant registries.                                                                                               |
    | **Required config**        | `required-config-1`            | Initial configuration before continuing.                                                                                                         |
@@ -231,17 +249,17 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    ### Network Settings
 
-   | **Parameter**                        | **Description**                                                                                                                           |
-   | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Pod CIDR**                         | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
-   | **Service CIDR**                     | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
-   | **MetalLB IP Address**               | A single unused IP address on your network that exposes cluster services externally.                                                      |
-   | **Cilium and MetalLB interface**     | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
-   | **Enable VLAN Filtering (Optional)** | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
-   | **VLAN range for VMs**               | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
-   | **Bridge Interface**                 | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network. Leave blank to auto-detect.                 |
-   | **Cluster runs on br0**              | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                        |
-   | **VLANs on top of br0**              | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
+   | **Parameter**                              | **Description**                                                                                                                           |
+   | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Pod Network Range**                      | IP address range assigned to internal Kubernetes pod networking. Change only if this conflicts with your existing network.                |
+   | **Service Network Range**                  | IP address range reserved for Kubernetes services, such as internal load balancers and DNS. Must not overlap with Pod Network Range.      |
+   | **Platform IP IP Address**                 | A single unused IP address on your network that exposes cluster services externally.                                                      |
+   | **Cluster Network Interface**              | The physical network interface, bond, or bridge on each node used for cluster traffic and external service announcements.                 |
+   | **Restrict Allowed VLANs (Optional)**      | When enabled, the bridge interface permits only VLANs listed in **VLAN range for VMs**. Disable unless you need strict VLAN isolation.    |
+   | **VM VLAN Range**                          | VLAN IDs that tenant VMs can use. Accepts individual IDs, such as `12` and `13`, or ranges, such as `15-20`.                              |
+   | **VM Bridge Interface**                    | The Linux bridge interface on cluster nodes that connects tenant VMs to the physical network.                                             |
+   | **Use br0 for Cluster Traffic (Optional)** | Enable if your Kubernetes cluster nodes communicate via the `br0` bridge interface or a VLAN sub-interface of br0.                        |
+   | **Br0 VLAN Sub-Interface**                 | List all VLAN IDs configured as sub-interfaces or dynamically attached on `br0`. Include VLAN 1 and all VM VLANs. For example, `1,10,20`. |
 
    ### OS and Metrics
 
@@ -259,7 +277,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **OCI Pack Registry Username** | Username to authenticate with the automatically deployed, local container image registry used by the platform. |
    | **OCI Pack Registry Password** | Password for the automatically deployed, local container image registry. This value is stored securely.        |
 
-   :::warn
+   :::warning
 
    Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
    number, and one special character.
@@ -346,7 +364,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    ![Screenshot of appliance](/vmo/vm-management_launchpad-for-vms_install-4-9.webp)
 
-## Verify
+## Validate
 
 1. From the left main menu in the Launchpad for VMs appliance, select **VM Orchestrator**. You can also go to the
    address you provided for MetalLB in your browser.

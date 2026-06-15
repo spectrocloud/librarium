@@ -24,7 +24,8 @@ steps to create a general-purpose VM (1 vCPU, 4 Gi memory) using an Ubuntu 24.04
 
 ## Upload ISO
 
-Before you can create a VM, upload the ISO installer to your cluster as a
+Before you can create a VM, you must upload the OS ISO installer that you will use as the base for the BM. These ISOs
+are uploaded as
 [KubeVirt Containerized Data Importer (CDI) DataVolume](https://kubevirt.io/user-guide/storage/containerized_data_importer/),
 which manages the storage and lifecycle of a VM disk image.
 
@@ -47,7 +48,7 @@ which manages the storage and lifecycle of a VM disk image.
 
    | **Parameter**       | **Description**                                                                                                                                                                                                               |
    | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **DataVolume Name** | Enter a unique name for the ISO installer. For this guide, use a descriptive name such as `ubuntu-2404-iso`.                                                                                                                  |
+   | **DataVolume Name** | Enter a unique name for the OS ISO installer. For this guide, use a descriptive name such as `ubuntu-2404-iso`.                                                                                                               |
    | **Namespace**       | Select the namespace to store your image in. The `vmo-golden-images` namespace is created by default during cluster deployment and is the recommended location for ISO installers and golden images.                          |
    | **Storage Class**   | Select a storage class from the drop-down menu. The Launchpad Appliance includes Piraeus/LINSTOR as the default storage backend, which creates storage classes during cluster deployment. Select the available storage class. |
    | **Volume Size**     | Set the disk capacity for the DataVolume that stores the uploaded ISO. The size must be large enough to hold the ISO file. Specify the value in GiB or TiB. For an Ubuntu 24.04 desktop ISO, 8 GiB is sufficient.             |
