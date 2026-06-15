@@ -55,12 +55,12 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
 The Canonical Kubernetes pack for deployments in MAAS environments does not support the following:
 
-- cluster backups with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
-- OIDC
-- NTP
+- Cluster backups with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
+- OpenID Connect (OIDC)
+- Network Time Protocol (NTP)
 - SSH key management
-- HCP/LXD
-- Cilium for CNI
+- HashiCorp Cloud Platform (HCP) / Linux Container Daemon (LXD)
+- Cilium for Container Network Interface (CNI)
 
 ## Palette MAAS Distribution
 
