@@ -56,7 +56,8 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **Appliance ISO with Content**        | Full ISO with embedded content bundle.          |
    | **MOK Key for Secure Boot**           | MOK key to use for secure boot with MokManager. |
 
-4. Download the **Appliance ISO with Content**. Or, download both **Appliance ISO** and **Content bundle (including Ubuntu)**. Download **MOK Key for Secure Boot** if you use secure boot on your host.
+4. Download the **Appliance ISO with Content**. Or, download both **Appliance ISO** and **Content bundle (including
+   Ubuntu)**. Download **MOK Key for Secure Boot** if you use secure boot on your host.
 
    If you have downloaded the **Content bundle (including Ubuntu)**,
    [upload it using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or
