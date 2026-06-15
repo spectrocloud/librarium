@@ -55,7 +55,14 @@ The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64
 
 ## Palette Edge CLI
 
-The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
+:::deprecated
+
+The Palette Edge CLI is deprecated and new image versions will no longer be published. We recommend using the
+[Palette CLI](/automation/palette-cli/) instead to create and manage content bundles. Refer to our
+[Build Content Bundle](/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/) guide for more
+information.
+
+:::
 
 | Palette Release <!-- edge-version-table --> | CLI Version                | Download URL                                                            | Checksum (SHA256)                                                  |
 | ------------------------------------------- | -------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |

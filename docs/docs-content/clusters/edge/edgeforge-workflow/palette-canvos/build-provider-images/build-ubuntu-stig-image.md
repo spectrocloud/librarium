@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Build Ubuntu 24.04 STIG-based Images"
-title: "Build Ubuntu 24.04 STIG-based Images"
+sidebar_label: "Build Ubuntu 24.04 STIG Images"
+title: "Build Ubuntu 24.04 STIG Images"
 description: "Learn how to build Ubuntu 24.04 STIG-based images for Edge hosts using the EdgeForge workflow."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 75
+sidebar_position: 40
 tags: ["edge", "ubuntu", "stig"]
 ---
 
@@ -13,12 +13,16 @@ hardening guidelines developed by the Defense Information Systems Agency (DISA) 
 applications in regulated environments. With Palette Edge, you can build Ubuntu 24.04 LTS STIG-hardened images for your
 Edge hosts using the EdgeForge workflow.
 
+In this guide, you will use the CanvOS utility to build a FIPS-enabled Ubuntu 24.04 base image with STIG hardening, then
+create an ISO image from it for your Palette Edge deployment.
+
+:::info
+
 Ubuntu 24.04 STIG hardening is integrated into the FIPS build process. By default, STIG remediation and US Government
 banners are applied automatically when you build a FIPS-enabled Ubuntu 24.04 image. You can control this behavior using
 environment variables `SKIP_STIG_BANNER` and `ENABLE_STIG` during the build.
 
-In this guide, you will use the CanvOS utility to build a FIPS-enabled Ubuntu 24.04 base image with STIG hardening, then
-create an ISO image from it for your Palette Edge deployment.
+:::
 
 ## Limitations
 
@@ -27,19 +31,19 @@ create an ISO image from it for your Palette Edge deployment.
   responsible for evaluating the remaining findings and applying additional hardening as needed for your environment.
 
   - Kairos-based systems use an
-    [A/B partitioning scheme](../../cluster-management/upgrade-behavior.md#ab-partitioning-in-upgrades) for system
+    [A/B partitioning scheme](../../../cluster-management/upgrade-behavior.md#ab-partitioning-in-upgrades) for system
     recovery and upgrades. This does not align with STIG partitioning requirements.
 
   - Mount points are managed by Kairos and cannot be adjusted to fully match STIG guidelines.
 
-  - [Federal Information Processing Standards (FIPS)](../palette-canvos/fips.md) mode is enabled in Palette Edge via
-    `user-data` configuration. Although the system operates in FIPS mode, it does not meet the criteria used by STIG
-    validation checks, resulting in false negatives.
+  - [Federal Information Processing Standards (FIPS)](../fips.md) mode is enabled in Palette Edge via `user-data`
+    configuration. Although the system operates in FIPS mode, it does not meet the criteria used by STIG validation
+    checks, resulting in false negatives.
 
   - Kairos-based images do not include all STIG-recommended packages (for example, AIDE and USBGuard). These components
     are not required for Kubernetes operations, but you can add them by
-    [customizing the Dockerfile](../palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts#instructions-1).
-    However, only the modules included by default are verified by Spectro Cloud.
+    [customizing the Dockerfile](../palette-canvos.md?difficulty=advanced_create_artifacts#instructions-1). However,
+    only the modules included by default are verified by Spectro Cloud.
 
   - IP forwarding (`net.ipv4.ip_forward` and `net.ipv4.conf.all.forwarding`) is enabled to support Kubernetes
     networking, which deviates from STIG requirements.
@@ -63,7 +67,7 @@ create an ISO image from it for your Palette Edge deployment.
 
 - A Palette registration token for pairing Edge hosts with Palette. You need Tenant Admin access to Palette to generate
   a new registration token. For detailed instructions, refer to the
-  [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
+  [Create Registration Token](../../../site-deployment/site-installation/create-registration-token.md) guide.
 
 - A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
   minimum hardware configuration:
@@ -77,14 +81,22 @@ create an ISO image from it for your Palette Edge deployment.
 - Access to a public or private image registry and permissions to push images. This page uses a public
   [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private
   registry, refer to the
-  [Deploy Cluster with a Private Provider Registry](../../site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  [Deploy Cluster with a Private Provider Registry](../../../site-deployment/deploy-custom-registries/deploy-private-registry.md)
   guide for instructions on how to configure the credentials.
 
 - The following software installed on the Linux machine:
 
-  - [Docker Engine](https://docs.docker.com/engine/install/) with BuildKit enabled. This is enabled by default beginning
-    with Docker version 23; set `DOCKER_BUILDKIT=1` for older versions.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+  - [Docker Engine](https://docs.docker.com/engine/install/) installed from the official Docker repository with BuildKit
+    enabled. Default in Docker 23+; set `DOCKER_BUILDKIT=1` for older versions.
+
+    :::warning
+
+    Do not use the snap-packaged Docker. The snap confinement causes GPG signature verification failures during the
+    Earthly build.
+
+    :::
 
 ## Build Ubuntu 24.04 STIG-based Images
 
@@ -189,7 +201,8 @@ create an ISO image from it for your Palette Edge deployment.
 
 10. Issue the command below to create an `.arg` file. Configure the Ubuntu OS (`OS_DISTRIBUTION=ubuntu`), version 24.04
     (`OS_VERSION=24.04`), and the AMD64 architecture (`ARCH=amd64`). Replace the remaining placeholders with the
-    necessary values. Refer to [Edge Artifact Build Configurations](./arg.md) for more information on `.arg` parameters.
+    necessary values. Refer to [Edge Artifact Build Configurations](../arg.md) for more information on `.arg`
+    parameters.
 
     ```bash
     cat << EOF > .arg
@@ -206,11 +219,11 @@ create an ISO image from it for your Palette Edge deployment.
     ```
 
     The supported `K8S_DISTRIBUTION` values for STIG and FIPS builds are `rke2` and `kubeadm-fips`. Refer to
-    [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
+    [Edge Artifact Build Configurations](../arg.md) for a complete list of supported configuration parameters.
 
 11. Prepare the `user-data` file. Refer to
-    [Prepare User Data and Argument Files](../prepare-user-data.md#prepare-user-data) for instructions. To enable FIPS
-    in kernel space, add the following to your `user-data` file.
+    [Prepare User Data and Argument Files](../../prepare-user-data.md#prepare-user-data) for instructions. To enable
+    FIPS in kernel space, add the following to your `user-data` file.
 
     ```yaml
     #cloud-config
@@ -227,38 +240,13 @@ create an ISO image from it for your Palette Edge deployment.
 
     The build process takes some time to finish.
 
-    ```bash hideClipboard
+    ```bash hideClipboard {2}
     # Output condensed for readability
     ===================== Earthly Build SUCCESS =====================
+    Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
     ```
 
     The ISO image is found in the `build` folder.
-
-## Run a Compliance Scan
-
-After deploying a cluster with the STIG-hardened image, you can run an OpenSCAP scan to evaluate STIG compliance on a
-running node. Remediation output is logged under `/var/log/stig-remediation/`.
-
-1. Connect to the Edge host via SSH.
-
-2. Run the following commands to evaluate STIG compliance.
-
-   ```bash
-   XCCDF="/var/log/stig-remediation/ssg-ubuntu2404-ds.xml"
-   oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_stig \
-     --report report.html "$XCCDF"
-   ```
-
-   :::info
-
-   If only `ssg-ubuntu2204-ds.xml` is present and the STIG profile is not available, you may need to rebuild the image
-   with network access so the build fetches the upstream Ubuntu 24.04 datastream. Alternatively, provide the
-   `ssg-ubuntu2404-ds.xml` file at `/tmp/stig-static/` during the Docker build for air-gapped environments.
-
-   :::
-
-3. Review the generated `report.html` file for compliance findings. Some failures are expected due to the platform
-   limitations described in the [Limitations](#limitations) section.
 
 ## Validate
 
