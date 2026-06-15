@@ -73,7 +73,9 @@ as K3s and RKE2, or other redirect mechanism that you implement on your own to c
    cd CanvOS
    ```
 
-3. View the available tags and use the latest available tag. This guide uses `v4.5.0` as an example.
+3. View the available tags and check out the CanvOS tag that corresponds to your Palette release. Refer to the
+   [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
+   Edge host version. This guide uses the tag `v4.5.0` as an example.
 
    ```shell
    git tag
