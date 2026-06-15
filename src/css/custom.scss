@@ -239,6 +239,10 @@ p img.markdown-image {
   background-color: var(--custom-byzantine-alert-bg-color);
 }
 
+.admonition-deprecated {
+  background-color: var(--custom-orange-alert-bg-color);
+}
+
 .desktop-only-display {
   @media (max-width: 768px) {
     display: none;
