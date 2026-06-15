@@ -75,7 +75,7 @@ After your ISO is uploaded, you are ready to deploy a VM.
    | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
    | **Source**    | Select **Image/ISO**.                                                                                                                      |
    | **OS**        | Select **Linux**.                                                                                                                          |
-   | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded the your ISO.                   |
+   | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                       |
    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
 
 4. Leave the **Batch Mode**, **VM Preference**, **Labels**, and **Annotations** sections as is. Select **Next**.
@@ -85,8 +85,16 @@ After your ISO is uploaded, you are ready to deploy a VM.
    Instance types are predefined CPU and memory profiles that standardize VM sizing. The `u1` prefix indicates
    general-purpose types with balanced CPU and memory.
 
+   :::warning
+
+   If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
+   memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
+   the VM.
+
+   :::
+
 6. Under **General Purpose**, select **u1.medium** (1 vCPU, 4 Gi memory). This instance type runs on hosts that meet the
-   minimum hardware requirements for VMO clusters.
+   minimum hardware requirements for Launchpad for VMs clusters.
 
 7. Leave the **Scheduling** section as is and select **Next**.
 
@@ -114,6 +122,14 @@ After your ISO is uploaded, you are ready to deploy a VM.
    **Running** after the VM starts.
 
 3. Select the VM to view its details, including IP address, the node the VM is running on, and metrics.
+
+   :::info
+
+   When the VM is running, you can change the CPU core count, CPU thread count, or memory, but you must restart the VM
+   to apply the change. You can change the number of CPU sockets without restarting the VM, but this causes the VM to
+   live migrate to another node in the cluster.
+
+   :::
 
 4. Select the **Console** tab to open a noVNC-based remote console. You can interact with the VM as if you were at its
    keyboard.
