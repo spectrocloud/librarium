@@ -68,8 +68,8 @@ Palette provides the following distributions for MAAS environments.
 
 :::preview
 
-The **Canonical Kubernetes** and **OpenShift** packs for deployments in MAAS environments are Tech Preview features and
-are subject to change. Do not use these features in production workloads.
+The **OpenShift** pack for deployment in MAAS environments is a Tech Preview feature and
+is subject to change. Do not use this feature in production workloads.
 
 :::
 
