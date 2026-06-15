@@ -40,7 +40,7 @@ VMs, this is the interface selected in the **Cilium and MetalLB interface** fiel
 
 Selecting a management interface or a cluster traffic interface does not change how the host routes network traffic. If
 multiple adapters use the same subnet and each adapter has a default route, traffic may leave through a different
-adapter than expected. This can cause control plane nodes to fail joining the cluster.
+adapter than expected. This may prevent control plane nodes from successfully joining the cluster.
 
 For best results, place management and cluster traffic on separate subnets and configure both interfaces explicitly.
 
