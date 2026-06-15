@@ -92,7 +92,9 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    git tag
    ```
 
-3. Check out the latest available tag. This guide uses the tag `v4.7.2` as an example.
+3. Check out the CanvOS tag that corresponds to your Palette release. Refer to the
+   [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
+   Edge host version. This guide uses the tag `v4.7.2` as an example.
 
    ```bash
    git checkout v4.7.2

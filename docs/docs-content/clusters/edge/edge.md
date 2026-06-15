@@ -79,6 +79,8 @@ specific challenges with additional software.
 
 - [Deployment Lifecycle](./edge-native-lifecycle.md)
 
+- [Edge Compatibility Matrix](edge-compatibility-matrix.md)
+
 - [Install Configuration](edge-configuration/edge-configuration.md)
 
 - [EdgeForge Workflow](edgeforge-workflow/edgeforge-workflow.md)

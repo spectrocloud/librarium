@@ -57,10 +57,7 @@ your Edge hosts come from a trusted source. For more information about content b
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
-   corresponding tag.
-
-   Otherwise, check out the newest available tag. This guide uses the tag v4.4.4 as an example.
+5. Check out the CanvOS tag that corresponds to your Palette release. This guide uses the tag `v4.4.4` as an example.
 
    ```
    git checkout v4.4.4
