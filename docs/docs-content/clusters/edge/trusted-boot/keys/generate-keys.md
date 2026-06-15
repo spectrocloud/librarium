@@ -84,7 +84,9 @@ difficult because there is no higher authority.
    git tag
    ```
 
-4. Check out the latest available tag that is v4.4.0 or later. This guide uses the tag v4.4.0 as an example.
+4. Check out the CanvOS tag that corresponds to your Palette release and is `v4.4.0` or later. Refer to the
+   [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
+   Edge host version. This guide uses the tag `v4.4.0` as an example.
 
    ```
    git checkout v4.4.0
@@ -167,7 +169,9 @@ your Edge host.
    git tag
    ```
 
-4. Check out the latest available tag that is v4.4.0 or later. This guide uses the tag v4.4.0 as an example.
+4. Check out the CanvOS tag that corresponds to your Palette release and is `v4.4.0` or later. Refer to the
+   [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
+   Edge host version. This guide uses the tag `v4.4.0` as an example.
 
    ```shell
    git checkout v4.4.0
