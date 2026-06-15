@@ -71,6 +71,13 @@ Palette provides the following distributions for MAAS environments.
 | Canonical Kubernetes              | Canonical Kubernetes         | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
 | OpenShift                         | OpenShift Container Platform | BYOOS                           | OVN-Kubernetes CNI (passthrough)                                                                                             | Local Path Provisioner                                                                                                       |
 
+:::preview
+
+The **OpenShift** pack for deployment in MAAS environments is a Tech Preview feature and is subject to change. Do not
+use this feature in production workloads.
+
+:::
+
 ## Custom API Server Endpoint for MAAS Clusters
 
 By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
