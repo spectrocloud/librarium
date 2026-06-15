@@ -42,7 +42,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 ## Install Launchpad for VMs {#install}
 
-1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO.
+1. Sign in to [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the **Launchpad for VMs** ISO.
 
 2. In the **Launchpad for VMs** section, use the drop-down to select the appropriate version, and select **Show
    Artifacts**.
