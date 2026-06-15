@@ -44,10 +44,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
-   corresponding tag.
-
-   Otherwise, check out the newest available tag. This guide uses `v4.4.0` tag as an example.
+5. Check out the CanvOS tag that corresponds to your Palette release. This guide uses the tag `v4.4.0` as an example.
 
    ```shell
    git checkout v4.4.0
