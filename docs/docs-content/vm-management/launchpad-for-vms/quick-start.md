@@ -68,7 +68,7 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
 2. Select **Create VM**.
 
-   ![screenshot showing create vm button](/vmo/vm-management_vmo_first-vm-create-4-9.webp)
+   ![screenshot showing create VM button](/vmo/vm-management_vmo_first-vm-create-4-9.webp)
 
 3. The **Create Virtual Machine** wizard opens. Complete the following fields on the **Source** wizard step.
 
