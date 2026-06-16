@@ -146,7 +146,7 @@ blocks the upgrade.
 
 Scale-up is not permitted while the toggle is enabled. Palette rejects scale-up requests on a pool with the toggle
 enabled, whether initiated manually or by the cluster autoscaler. To expand capacity, create a new worker pool and add
-edge hosts to it instead.
+Edge hosts to it instead.
 
 ### Upgrade a Skipped Worker Pool
 
