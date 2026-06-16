@@ -168,7 +168,7 @@ autoscaler join using the worker pool's current Kubernetes version, not the cont
 
 For connected Edge Native clusters, scale-up is not permitted while the toggle is enabled. Palette rejects scale-up
 requests on a pool with the toggle enabled, whether initiated manually or by the cluster autoscaler. To expand capacity,
-create a new worker pool and add edge hosts to it instead.
+create a new worker pool and add Edge hosts to it instead.
 
 ### Upgrade a Skipped Worker Pool
 
