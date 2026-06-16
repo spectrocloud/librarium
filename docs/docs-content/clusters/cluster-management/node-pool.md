@@ -159,10 +159,16 @@ plane, Palette blocks the update.
 
 :::
 
-### Autoscaler Behavior
+### Scaling Behavior
 
-New nodes added by the cluster autoscaler to a skipped worker pool run the pool's current Kubernetes version, not the
-control plane version.
+Scaling behavior for a worker pool with **Skip worker node update** enabled differs by cluster type.
+
+For AWS IaaS, MAAS, and VMware vSphere clusters, scale-up is permitted. New nodes added manually or by the cluster
+autoscaler join at the pool's current Kubernetes version, not the control plane version. Scale-down is not restricted.
+
+For connected Edge Native clusters, scale-up is not permitted while the toggle is enabled. Palette rejects scale-up
+requests on a pool with the toggle enabled, whether initiated manually or by the cluster autoscaler. To expand capacity,
+create a new worker pool and add edge hosts to it instead.
 
 ### Upgrade a Skipped Worker Pool
 
