@@ -144,8 +144,9 @@ Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/r
 enabling the toggle would cause a worker pool to fall more than three minor versions behind the control plane, Palette
 blocks the upgrade.
 
-New nodes added by the cluster autoscaler to a skipped worker pool run the pool's current Kubernetes version, not the
-control plane version.
+Scale-up is not permitted while the toggle is enabled. Palette rejects scale-up requests on a pool with the toggle
+enabled, whether initiated manually or by the cluster autoscaler. To expand capacity, create a new worker pool and add
+Edge hosts to it instead.
 
 ### Upgrade a Skipped Worker Pool
 
