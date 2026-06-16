@@ -100,6 +100,8 @@ existing VMs from VMware vSphere to your VMO cluster.
 
 3. Use the [Create Your First VM](./launchpad-for-vms/quick-start.md) guide to deploy your first VM.
 
+For more in-depth information, refer to the [VMs section](./launchpad-for-vms/virtual-machines.md) to learn about how to create and manage golden images, templates, and snapshots.
+
 </TabItem>
 
 <TabItem label="VMO Pack" value="pack">
