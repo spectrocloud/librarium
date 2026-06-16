@@ -5,7 +5,6 @@ description: "Learn about managing VMs in VM Launchpad Appliance"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
-draft: true
 tags: ["vmo", "vm launchpad"]
 ---
 
@@ -59,7 +58,7 @@ Open a row's context menu to access additional actions.
   subresource is unavailable.
 - **Restart** — Stops and then starts the VM. The guest receives a reboot signal when the QEMU guest agent is installed.
 
-:::note
+:::info
 
 Stop and restart require the VM to be running. For VMs with `runStrategy: Always`, stop temporarily sets the strategy to
 Halted.
@@ -101,7 +100,7 @@ The VNC console provides a browser-based remote desktop to the VM.
 - **Full Screen** — Use the full-screen control for a larger view.
 - **Reconnect** — If the connection drops, refresh or reopen the console to reconnect.
 
-:::note
+:::info
 
 The VNC console requires the VM to be running. If the VM is stopped, start it first from the Overview tab or VM list.
 
@@ -203,7 +202,7 @@ CPU **sockets** are handled differently from CPU cores and threads:
 - **Unchanged sockets** — Saves apply the patch with no side effects. Other compute-related edits (cores, threads,
   memory, firmware) still follow the standard "restart required" rule.
 
-:::note
+:::info
 
 The live migration on increase flow depends on the cluster supporting KubeVirt live migration, compatible storage, and a
 VM `evictionStrategy` that allows migration. If live migration fails after the patch succeeds, the VM keeps the new
