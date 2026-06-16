@@ -5,7 +5,6 @@ description: "Learn about how to take, manage, and restore snapshots in Launchpa
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
-draft: true
 tags: ["vmo", "vm launchpad", "snapshots"]
 ---
 

@@ -5,7 +5,6 @@ description: "Learn how to create customization scripts to use with golden image
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
-draft: true
 tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 ---
 

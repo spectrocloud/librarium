@@ -135,7 +135,7 @@ required VM operate or snapshot permissions.
 
 ### Configuration Tab
 
-Edit the VM through a form rather than raw YAML. See [Editing a VM](#editing-a-vm) for details.
+Edit the VM through a form rather than raw YAML. See Editing a VM for details.
 
 ### Console Tab
 
