@@ -31,8 +31,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
   Launchpad for VMs installation process. This is optional but recommended for security and compliance purposes.
 
 - (Optional) Depending on your network infrastructure, configure the network with a bridge network set to `br0`. For
-  more information about network considerations, review
-  [VMO Network Configuration Considerations](/vm-management/launchpad-for-vms/vmo-networking/).
+  more information about network considerations, review [VMO Network Configuration Considerations](./vmo-networking.md).
 
 - Reserve a virtual IP address (VIP) for the Launchpad for VMs management cluster. The Launchpad for VMs installation
   process assigns the VIP and uses it for load balancing and high availability. Ensure all nodes in the Launchpad for

@@ -5,11 +5,8 @@ description: "Learn how to create VMs using the VM Launchpad Appliance"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
-draft: true
 tags: ["vmo", "vm launchpad"]
 ---
-
-<!-- vale off -->
 
 This guide walks through the VM creation wizard and batch creation options in Launchpad.
 
