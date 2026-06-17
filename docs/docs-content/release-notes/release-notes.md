@@ -11,6 +11,42 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 11, 2026 - Release 4.8.60
+
+<!-- PATCH RELEASE TICKET: DOC-2888 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8841 -->
+
+- Fixed an issue that prevented [Edge hosts](../clusters/edge/edge.md) from upgrading the Stylus agent version after
+  initial deployment.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8854 -->
+
+- Fixed an authentication bypass vulnerability in the Edge
+  [upload content bundles](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) operation that allowed
+  unauthenticated requests to upload arbitrary files to the edge node's content directory.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8860 -->
+
+- Fixed an issue that caused the `debug/pprof` profiling interface to be unintentionally exposed on ports `9443`,
+  `7443`, and `5082`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8862 -->
+
+- Fixed an issue that caused the [two-node](../clusters/edge/architecture/two-node.md) liveness server to expose the
+  database password endpoint without authentication, TLS, or access controls.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11050 -->
+
+- Fixed manifest APIs to require authentication, preventing unauthenticated access to manifest endpoints.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11123 -->
+
+- The help links on the Palette home page now correctly point to the
+  [Spectro Cloud Support portal](https://spectrocloud.atlassian.net/servicedesk/customer/portal/6).
+
 ## June 8, 2026 - Release 4.8.58
 
 ### Breaking Changes {#breaking-changes-4-8-x}
