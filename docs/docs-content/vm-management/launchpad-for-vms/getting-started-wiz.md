@@ -62,8 +62,8 @@ Complete the following required configuration steps before you [create your firs
 
    :::info
 
-   Benchmarking was performed using a single-replica storage class. We are continuing to run additional benchmarks with
-   multiple replicas for each PVC setting, and will share updates as those results become available.
+   The initial benchmark used a single-replica storage class. The documentation team is testing extra replica counts for
+   each PVC setting and plans to share updates when results become available.
 
    :::
 
@@ -92,6 +92,13 @@ Complete the following required configuration steps before you [create your firs
     | **Tagged VLANs**       | Optional. Enter one or more comma-separated VLAN IDs.                                                                                                                       |
     | **IPAM Configuration** | Optional JSON.                                                                                                                                                              |
     | **Generated Config**   | Displays a preview of the NAD JSON.                                                                                                                                         |
+
+    :::info
+
+    If your environment doesn't display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and
+    select **Add Existing**.
+
+    :::
 
 12. Return to the **Getting Started** wizard, and select **Add Namespaces**.
 

@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Creating VMs"
-title: "Creating VMs"
+sidebar_label: "Create a VM"
+title: "Create a VM"
 description: "Learn how to create VMs using the VM Launchpad Appliance"
 icon: " "
 hide_table_of_contents: false
@@ -33,7 +33,8 @@ step.
 
 ## Create a Virtual Machine
 
-After your ISO is uploaded, you are ready to deploy a VM.
+After you upload an OS ISO or create a [template](./templates.md) from a [golden image](./golden-images.md), you can
+deploy a VM.
 
 1.  From the left main menu, select **Workloads** > **Virtual Machines**.
 
@@ -45,17 +46,19 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
     | **Parameter** | **Description**                                                                                                                            |
     | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Source**    | Select **Image/ISO**.                                                                                                                      |
-    | **OS**        | Select **Linux**.                                                                                                                          |
+    | **Source**    | Select **Template**, **Image/ISO**, or **Custom**.                                                                                         |
+    | **OS**        | Select **Linux** or **Windows**.                                                                                                           |
     | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                       |
+    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                      |
+    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing image or OS ISO file from the **Image/ISO** drop-down menu.                  |
     | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
 
-4.  Configure any additional **Source** options for your VM. Select **Next** when you complete this page.
+4.  Configure any extra **Source** options for your VM. Select **Next** when you complete this page.
 
     | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                             |
     | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Batch**         | Select **Create multiple VMs**. Under **Count**, enter the number of VMs to create. From the **Naming** drop-down menu, select the naming convention: `name-1, name-2` or `name01, name02`. Under **Start #**, enter the number where the naming convention begins.                                                                                                                                         |
-    | **VM Preference** | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions are available for Linux image/ISOs, and Windows preferences are available only for Windows image/ISOs.                                                                                                                                   |
+    | **VM Preference** | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux image/ISOs, and Windows preferences appear only for Windows image/ISOs.                                                                                                                                                 |
     | **Labels**        | Enter key-value pair labels to add to your VM.                                                                                                                                                                                                                                                                                                                                                              |
     | **Annotations**   | Enter key-value pair Kubernetes annotations to add to your VM. Select **Disable PCI Hole 64-bit** when you use legacy operating systems, such as Windows XP or Windows 2003. Launchpad sets the `kubevirt.io/disablePCIHole64: "true"` annotation on the VMI template spec. Refer to [Running legacy Windows versions](https://kubevirt.io/user-guide/user_workloads/legacy_windows/) for more information. |
 
@@ -69,7 +72,7 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
     :::warning
 
-    If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
+    If you select an instance type during VM creation, you can't change the CPU cores, CPU sockets, CPU threads, or
     memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
     the VM.
 
@@ -86,12 +89,12 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
 6.  In the **Scheduling** section, select the eviction strategy for the VM.
 
-    | **Parameter**         | **Description**                                                                                                        |
-    | --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-    | **Eviction Strategy** | From the drop-down menu, select **LiveMigrate**, **LiveMigrateIfPossible**, or **None**.                               |
-    | **Grace Period**      | Enter the number of seconds to allow a VM to shut down cleanly before it is forcefully terminated.                     |
-    | **Priority Class**    | Enter a priority class value. VMs with a higher priority number are scheduled before VMs with a lower priority number. |
-    | **Start Strategy**    | From the drop-down menu, select **Normal** or **Paused**.                                                              |
+    | **Parameter**         | **Description**                                                                                                               |
+    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+    | **Eviction Strategy** | From the drop-down menu, select **LiveMigrate**, **LiveMigrateIfPossible**, or **None**.                                      |
+    | **Grace Period**      | Enter the number of seconds to allow a VM to shut down cleanly before it is forcefully terminated.                            |
+    | **Priority Class**    | Enter a priority class value. Kubernetes schedules VMs with a higher priority number before VMs with a lower priority number. |
+    | **Start Strategy**    | From the drop-down menu, select **Normal** or **Paused**.                                                                     |
 
 <!-- Grace Period and Priority class from Kubevirt as per JH -->
 
@@ -101,16 +104,15 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
 8. Select the **Storage Class** from the drop-down menu.
 
-9. (Optional) Add **Additional Disks** by selecting **Add Disk**, and add **Additional CD-ROMs** by selecting **Add
-   CD-ROM**.
+9. (Optional) Add extra disks by selecting **Add Disk**, and add extra CD-ROMs by selecting **Add CD-ROM**.
 
-10. Select the **Boot Order** for the VM. By default, **Disk** is selected. Alternatively, you can boot from **CD-ROM**
-    or **Network**. Then select **Next**.
+10. Select the **Boot Order** for the VM. By default, **Disk** is selected. You can also boot from **CD-ROM** or
+    **Network**. Then select **Next**.
 
 11. On the **Network** wizard step, the VM has one interface assigned with the **Pod Network (masquerade)** mode by
-    default. This option provides outbound connectivity via NAT. Select **Add NIC** to add additional NICs as needed,
-    and select either **Pod Network (masquerade)** or **Multus Network (bridge)**. You can create additional Network
-    Attachment Definitions (NADs) in **Infrastructure** > **Networks**.
+    default. This option provides outbound connectivity via NAT. Select **Add NIC** to add extra NICs as needed, and
+    select either **Pod Network (masquerade)** or **Multus Network (bridge)**. You can create extra Network Attachment
+    Definition (NAD) resources in **Infrastructure** > **Networks**.
 
     Under **DNS Settings**, you can optionally define the Hostname and Subdomain for the VM.
 
@@ -125,7 +127,7 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
     :::
 
-12. For **Hardware** (optional), configure any advanced hardware settings required for the VM. This step can be skipped
+12. For **Hardware** (optional), configure any advanced hardware settings required for the VM. You can skip this step
     for basic VMs. Then select **Next**.
 
     <details>
@@ -144,16 +146,16 @@ After your ISO is uploaded, you are ready to deploy a VM.
     | **CPU Advanced**     | **NUMA Topology Passthrough** | Pass host NUMA topology to the guest.                                                                         |
     | **CPU Advanced**     | **CPU Features**              | Add require, force, disable, or forbid rules for specific CPU features.                                       |
     | **Devices**          | **Virtio RNG**                | Add a random number generator.                                                                                |
-    | **Devices**          | **Tablet Input**              | Add a USB tablet for pointer precision.                                                                       |
+    | **Devices**          | **Tablet Input**              | Add a USB input device for pointer precision.                                                                 |
     | **Devices**          | **Headless**                  | Create the VM without a graphics device.                                                                      |
-    | **Devices**          | **Video Type**                | Select VGA, Virtio, or Bochs.                                                                                 |
-    | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM can be ephemeral or persistent.                                        |
+    | **Devices**          | **Video Type**                | Select VGA, Virtio, or `Bochs`.                                                                               |
+    | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
     | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
-    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. These are usually enabled by default.                                                    |
-    | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and spinlocks.                                         |
+    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. Launchpad enables these settings by default.                                             |
+    | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`.                                       |
     | **Clock and Timers** | **Clock Mode**                | Select UTC or timezone.                                                                                       |
     | **Clock and Timers** | **Timers**                    | Configure PIT, RTC, HPET, or HyperV timers.                                                                   |
-    | **Memory**           | **Hugepages**                 | Enable hugepages and set the page size to 2Mi or 1Gi.                                                         |
+    | **Memory**           | **Hugepages**                 | Enable large memory pages and set the page size to 2Mi or 1Gi.                                                |
     | **Memory**           | **Overcommit Guest Overhead** | Exclude per-VM overhead from the memory request.                                                              |
     | **Security**         | **Confidential Computing**    | Select AMD SEV, SEV-SNP, or Intel TDX when supported by the cluster.                                          |
     | **Host Devices**     | **PCI or GPU passthrough**    | Attach PCI or GPU devices discovered and registered in KubeVirt. Use **Cluster Device Management** if needed. |
@@ -163,10 +165,11 @@ After your ISO is uploaded, you are ready to deploy a VM.
     :::info
 
     The **CPU Model** drop-down menu is populated dynamically from the cluster and lists only the models supported by at
-    least one schedulable worker node, discovered from KubeVirt's `cpu-model-migration.node.kubevirt.io/<Model>` node
-    labels. The discovered model list is cached for up to three minutes.
+    least one worker node that can schedule VMs, discovered from KubeVirt's
+    `cpu-model-migration.node.kubevirt.io/<Model>` node labels. The discovered model list is cached for up to three
+    minutes.
 
-    If a VM or template references a model the cluster does not expose, the drop-down menu preserves it as
+    If a VM or template references a model the cluster doesn't expose, the drop-down menu preserves it as
     `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. Launchpad also warns you when
     the selected CPU model is unavailable on all nodes or is available only on some nodes.
 
@@ -181,15 +184,15 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
     <summary>Display Snapshot Policy settings.</summary>
 
-    | **Setting**         | **Description**                                                                                                                   |
-    | ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-    | **Snapshot Policy** | Use **None (no snapshot policy)**, or select a snapshot policy to attach to the VM after creation.                                |
-    | **Create**          | Select **Create** to launch the **Create Snapshot Policy** mini-wizard.                                                           |
-    | **Display Name**    | Enter the user-facing name for the snapshot policy.                                                                               |
-    | **Resource Name**   | Enter the Kubernetes resource name for the snapshot policy.                                                                       |
-    | **Description**     | Enter an optional description for the snapshot policy.                                                                            |
-    | **Interval**        | Select the automatic snapshot interval. Intervals range from every hour to every seven days.                                      |
-    | **Max Retention**   | Enter the maximum number of snapshots to retain per VM. Shorter intervals and higher retention values can increase storage usage. |
+    | **Setting**         | **Description**                                                                                                         |
+    | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+    | **Snapshot Policy** | Use **None (no snapshot policy)**, or select a snapshot policy to attach to the VM after creation.                      |
+    | **Create**          | Select **Create** to launch the **Create Snapshot Policy** mini-wizard.                                                 |
+    | **Display Name**    | Enter the user-facing name for the snapshot policy.                                                                     |
+    | **Resource Name**   | Enter the Kubernetes resource name for the snapshot policy.                                                             |
+    | **Description**     | Enter an optional description for the snapshot policy.                                                                  |
+    | **Interval**        | Select the automatic snapshot interval. Intervals range from every hour to every seven days.                            |
+    | **Max Retention**   | Enter the number of snapshots to keep per VM. Shorter intervals and higher retention values can increase storage usage. |
 
     </details>
 
@@ -208,8 +211,8 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
     | **Setting**                         | **Description**                                                                                                                                                                                                                                                                                 |
     | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Datasource indicator**            | View the datasource used by the VM. A **Datasource: ConfigDrive (inherited from template)** badge appears when a template forces ConfigDrive.                                                                                                                                                   |
-    | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before the VM can be created. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                    |
+    | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                    |
+    | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                              |
     | **Use internal package repository** | Keep the internal VMO repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                                  |
     | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                      |
     | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
@@ -220,7 +223,7 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
     If you enable guest agent installation, upload the `qemu-guest-agent` package for your operating system and
     architecture to the internal repository under **Image Catalog** > **Packages** before launching the VM. Otherwise,
-    the agent installation fails. This reminder does not block VM creation.
+    the agent installation fails. This reminder doesn't block VM creation.
 
     :::
 
@@ -242,19 +245,19 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
     :::warning
 
-    Cloud-init runs only at first boot. Changes to user data or network data after the VM boots do not run again unless
+    Cloud-init runs only at first boot. Changes to user data or network data after the VM boots don't run again unless
     you issue the `cloud-init clean` command and reboot.
 
     :::
 
 14. Select **Finish** to provision your VM.
 
-## Validate
+## Verify
 
 1. From the left main menu of the Launchpad console, select **Workloads** > **Virtual Machines**.
 
-2. Locate your VM in the list. The status column displays **Provisioning** while the VM is being created and changes to
-   **Running** after the VM starts.
+2. Locate your VM in the list. The status column displays **Provisioning** during VM creation and changes to **Running**
+   after the VM starts.
 
 3. Select the VM to view its details, including IP address, the node the VM is running on, and metrics.
 
@@ -266,7 +269,6 @@ After your ISO is uploaded, you are ready to deploy a VM.
 
    :::
 
-4. Select the **Console** tab to open a noVNC-based remote console. You can interact with the VM as if you were at its
-   keyboard.
+4. Select the **Console** tab to open a noVNC-based remote console. Use the console to interact with the VM keyboard.
 
    ![Screenshot of a running VM console](/launchpad-for-vms_quick-start_console.webp)

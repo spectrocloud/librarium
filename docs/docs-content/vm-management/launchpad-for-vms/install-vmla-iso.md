@@ -69,7 +69,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::
 
-![Screenshot of download screen from artifact studio](/vmo/vm-management_launchpad-for-vms_iso-download-4-9.webp)
+   ![Screenshot of download screen from artifact studio](/vmo/vm-management_launchpad-for-vms_iso-download-4-9.webp)
 
 5. Boot your device using the Launchpad for VMs Appliance ISO.
 
@@ -216,24 +216,34 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::
 
-   | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                                      |
-   | -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Edge Native BYOI**       | `edge-native-byoi`             | Native Ubuntu OS.                                                                                                                                |
-   | **Kubernetes**             | `edge-k8s`                     | Kubernetes platform.                                                                                                                             |
-   | **Cilium**                 | `cni-cilium-fips`              | CNI and network policy. Multus support for VM networking.                                                                                        |
-   | **Piraeus**                | `piraeus-operator`             | Storage backend. Provides StorageClass for VM disks.                                                                                             |
-   | **Zot**                    | `zot-registry-fips`            | OCI registry. Stores container images for air-gapped deployments.                                                                                |
-   | **Registry Connect**       | `registry-connect`             | Enables integration with OCI-compliant registries.                                                                                               |
-   | **Required config**        | `required-config-1`            | Initial configuration before continuing.                                                                                                         |
-   | **MetalLB**                | `lb-metallb-helm`              | Load balancer implementation for bare metal. Assigns the platform IP address.                                                                    |
-   | **Traefik**                | `traefik`                      | Single ingress controller. Provides TLS termination, path-based routing, and the load balancer IP address.                                       |
-   | **Required config**        | `required-config-2`            | Second configuration before continuing.                                                                                                          |
-   | **Keycloak**               | `keycloak`                     | OIDC identity provider. Handles login, user and group management, and token issuance. Shared `k8s-oidc` client with Kubernetes API and Headlamp. |
-   | **Headlamp**               | `headlamp`                     | Kubernetes cluster explorer. Alternative UI for raw Kubernetes resources.                                                                        |
-   | **Victoria Metrics**       | `victoria-metrics-cluster`     | Optional long-term metrics storage. Supports PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                           |
-   | **OTel Collector**         | `opentelemetry`                | Metrics pipeline. Receives OTLP from node-agent, and forwards metrics to VMO Manager or Victoria Metrics.                                        |
-   | **VMO**                    | `virtual-machine-orchestrator` | Primary UI and API gateway. Manages VMs, templates, golden images, access policies, configuration, and dashboards.                               |
-   | **VM Migration Assistant** | `vm-migration-assistant`       | Migrates VMs from VMware vSphere to VMO.                                                                                                         |
+   <details>
+
+   <summary>Components list of Launchpad for VMs cluster.</summary>
+
+   <!-- vale off -->
+
+   | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                                       |
+   | -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Edge Native BYOI**       | `edge-native-byoi`             | Native Ubuntu OS.                                                                                                                                 |
+   | **Kubernetes**             | `edge-k8s`                     | Kubernetes platform.                                                                                                                              |
+   | **Cilium**                 | `cni-cilium-fips`              | CNI and network policy. Multus support for VM networking.                                                                                         |
+   | **Piraeus**                | `piraeus-operator`             | Storage backend. Provides StorageClass for VM disks.                                                                                              |
+   | **Zot**                    | `zot-registry-fips`            | OCI registry. Stores container images for air-gapped deployments.                                                                                 |
+   | **Registry Connect**       | `registry-connect`             | Enables integration with OCI-compliant registries.                                                                                                |
+   | **Required config**        | `required-config-1`            | Initial configuration before continuing.                                                                                                          |
+   | **MetalLB**                | `lb-metallb-helm`              | Load balancer implementation for bare metal. Assigns the platform IP address.                                                                     |
+   | **Traefik**                | `traefik`                      | Single ingress controller. Provides TLS termination, path-based routing, and the load balancer IP address.                                        |
+   | **Required config**        | `required-config-2`            | Second configuration before continuing.                                                                                                           |
+   | **Keycloak**               | `keycloak`                     | OIDC identity provider. Handles login, user, and group management, and token issuance. Shared `k8s-oidc` client with Kubernetes API and Headlamp. |
+   | **Headlamp**               | `headlamp`                     | Kubernetes cluster explorer. Alternative UI for raw Kubernetes resources.                                                                         |
+   | **Victoria Metrics**       | `victoria-metrics-cluster`     | Optional long-term metrics storage. Supports PromQL queries when `EXTERNAL_METRICS_URL` is configured.                                            |
+   | **OTel Collector**         | `opentelemetry`                | Metrics pipeline. Receives OTLP from node-agent and forwards metrics to VMO Manager, or Victoria Metrics.                                         |
+   | **VMO**                    | `virtual-machine-orchestrator` | Primary UI and API gateway. Manages VMs, templates, golden images, access policies, configuration, and dashboards.                                |
+   | **VM Migration Assistant** | `vm-migration-assistant`       | Migrates VMs from VMware vSphere to VMO.                                                                                                          |
+
+   <!-- vale on -->
+
+   </details>
 
    Additionally, the **VMO Manager** pack bundles the following services.
 
@@ -278,7 +288,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    :::warning
 
    Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and one special character.
+   number, and either `-` or `_`.
 
    :::
 
@@ -295,7 +305,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    :::warning
 
    Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and one special character.
+   number, and either `-` or `_`.
 
    :::
 
@@ -309,7 +319,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    :::warning
 
    Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and one special character.
+   number, and either `-` or `_`.
 
    :::
 
@@ -323,7 +333,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    :::warning
 
    Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and one special character.
+   number, and either `-` or `_`.
 
    :::
 
@@ -362,7 +372,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    ![Screenshot of appliance](/vmo/vm-management_launchpad-for-vms_install-4-9.webp)
 
-## Validate
+## Verify
 
 1. From the left main menu in the Launchpad for VMs appliance, select **VM Orchestrator**. You can also go to the
    address you provided for MetalLB in your browser.
@@ -382,7 +392,7 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    </TabItem>
 
-   <TabItem value="keycloak" label="OIDC Using Keycloak">
+   <TabItem value="oidc-auth" label="OIDC Using Keycloak">
 
    When Keycloak is configured, VMO Manager uses OIDC for authentication.
 
