@@ -360,7 +360,7 @@ Kubernetes.
 
     ```shell
     helm upgrade --values palette/values.yaml \
-    reach-system extras/reach-system/reach-system-\*.tgz --install
+    reach-system extras/reach-system/reach-system-*.tgz --install
     ```
 
     You should receive an output similar to the following.
@@ -379,7 +379,7 @@ Kubernetes.
 
     ```shell
     helm upgrade --values palette/values.yaml \
-    hubble palette/spectro-mgmt-plane-\*.tgz --install
+    hubble palette/spectro-mgmt-plane-*.tgz --install
     ```
 
     You should receive an output similar to the following.

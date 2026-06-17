@@ -104,34 +104,32 @@ underlying infrastructure provider and your Kubernetes distribution, you may nee
 your environment. Reach out to our support team if you need assistance.
 
 1.  Open a terminal session and navigate to the directory where you downloaded the Palette install zip file provided by
-    our support. Unzip the file to a directory named **palette-install**.
+    our support team. Unzip the file to a directory named `palette-install`.
 
     ```shell
     unzip charts.zip -d palette-install
     ```
 
-2.  Navigate to the **palette-install** directory.
+2.  Navigate to the `palette-install` directory.
 
     ```shell
     cd palette-install
     ```
 
-3.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
-    the one you downloaded, as the version number may be different.
+3.  Install Cert-Manager using the following command.
 
     ```shell
     helm upgrade --values extras/cert-manager/values.yaml \
     cert-manager extras/cert-manager/cert-manager-*.tgz --install
     ```
 
-    ```shell hideClipboard
+    ```shell hideClipboard title="Example output"
     Release "cert-manager" does not exist. Installing it now.
     NAME: cert-manager
-    LAST DEPLOYED: Fri Jan 30 18:40:57 2026
+    LAST DEPLOYED: Wed Jun 17 12:54:27 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
-    DESCRIPTION: Install complete
     TEST SUITE: None
     ```
 
@@ -146,52 +144,71 @@ your environment. Reach out to our support team if you need assistance.
     ```shell hideClipboard title="Example output"
     Release "spectro-mgmt-crds" does not exist. Installing it now.
     NAME: spectro-mgmt-crds
-    LAST DEPLOYED: Fri Jan 30 18:42:30 2026
+    LAST DEPLOYED: Wed Jun 17 12:55:23 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
-    DESCRIPTION: Install complete
     TEST SUITE: None
     ```
 
-5.  Open the **values.yaml** in the **palette/spectro-mgmt-plane** folder with a text editor of your choice. The
-    **values.yaml** contains the default values for the Palette installation parameters, however, you must populate the
-    following parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file
-    in the [Helm Configuration Reference](palette-helm-ref.md) page.
+5.  Open the file `values.yaml` in the `palette` directory with a text editor of your choice. This example uses Vim.
 
-    | **Parameter**                             | **Description**                                                                                                                                                | **Type** |
-    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                          | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                           | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment | object   |
+    ```shell
+    vim palette/values.yaml
+    ```
+
+6.  The file `values.yaml` contains the default values for the Palette installation parameters. You must populate the
+    following parameters before installing Palette. For a complete list of fields and additional information, refer to
+    [Helm Configuration Reference](palette-helm-ref.md) page.
+
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | **Type** |
+    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `global.imagePullSecret.dockerConfigJson` | The image pull secret provided by your Spectro Cloud customer support representative. This secret is required if you plan to pull images hosted in a Spectro Cloud-owned registry. If you omit this during installation, you must provide it through the system console. Refer to [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md) for more information. <br /><br />Alternately, if you plan to pull images from your own private registry, use the base64-encoded contents of your `config.json` containing the registry credentials. | string   |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | boolean  |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                                                      | object   |
+
+    ### Self-Hosted OCI Registries
+
+    The following parameters are required if you pull Palette images from a self-hosted OCI registry instead of a
+    Spectro Cloud-owned registry or AWS ECR.
+
+    | **Parameter**                       | **Description**                                                                                                                                                                                                                   | **Type** |
+    | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `ociImageRegistry`                  | Configure the registry endpoint, credentials, and `mirrorRegistries` values. Refer to the [Helm Configuration Reference](palette-helm-ref.md#oci-image-registry) page for parameter descriptions.                                 | object   |
+    | `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries in image swap format that maps public registry paths to your private registry. Refer to the [Helm Configuration Reference](palette-helm-ref.md#oci-image-registry) page for examples. | string   |
+    | `imageSwapImages`                   | The Image Swap init and webhook images. If you host these images in your OCI registry, replace the image paths with your registry URL and namespace or project.                                                                   | object   |
+    | `imageSwapConfig.isEKSCluster`      | Set to `true` if you are installing Palette on an Amazon EKS cluster. Set to `false` for all other Kubernetes distributions.                                                                                                      | boolean  |
 
     :::info
 
-    If you are installing Palette by pulling required images from a private mirror registry, you will need to provide
-    the credentials to your registry in the **values.yaml** file. For more information, refer to
-    [Helm Configuration Reference](palette-helm-ref.md#image-pull-secret).
+    Include `/v2` in your mirror registry endpoints if you are using a
+    [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
+    Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
+    registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
+    for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
+    `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
 
     :::
 
-    Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
-    following sections to review an example of the **values.yaml** file with the required parameters highlighted.
+7.  Save the completed `values.yaml` file. Expand the following sections to review an example of the `values.yaml` file
+    with the required parameters highlighted.
 
     <!-- prettier-ignore -->
     <Tabs>
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml {60,84-92}
+    ```yaml hideClipboard title="Example values.yaml" {60,84-92}
     #########################
     # Spectro Cloud Palette #
     #########################
 
     global:
       imagePullSecret:
-        create: false
         # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
-      dockerConfigJson: ""
+        dockerConfigJson: "abcdEFGhiJKlmnOPQrSTUVwX..."
 
     # MongoDB Configuration
     mongo:
@@ -212,7 +229,7 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: "" # leave empty to use the default storage class
 
     config:
-      installationMode: "central" #values can be connected or airgap.
+      installationMode: "connected" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -300,8 +317,8 @@ your environment. Reach out to our support team if you need assistance.
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
-        imageSwapInitImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.8.a-v2"
-        imageSwapImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap:v1.5.3-spectro-4.8.a-v2"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.9.0"
+        imageSwapImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap:v1.5.3-spectro-4.9.0"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -396,16 +413,15 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {61,76-83,95-103}
+    ```yaml hideClipboard title="Example values.yaml" {61,76-83,95-103}
     #########################
     # Spectro Cloud Palette #
     #########################
 
     global:
       imagePullSecret:
-        create: false
         # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
-        dockerConfigJson: ""
+        dockerConfigJson: "abcdEFGhiJKlmnOPQrSTUVwX..."
 
     # MongoDB Configuration
     mongo:
@@ -515,8 +531,8 @@ your environment. Reach out to our support team if you need assistance.
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
-        imageSwapInitImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.8.a-v2"
-        imageSwapImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap:v1.5.3-spectro-4.8.a-v2"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.9.0"
+        imageSwapImage: "us-docker.pkg.dev/palette-images/third-party/thewebroot/imageswap:v1.5.3-spectro-4.9.0"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -611,25 +627,35 @@ your environment. Reach out to our support team if you need assistance.
 
     </Tabs>
 
-    :::warning
+8.  (Self-hosted OCI registry only) If you configured `ociImageRegistry` in `values.yaml`, install the Image Swap Helm
+    chart before installing Palette. Image Swap rewrites pod image references to pull from your mirror registry. Palette
+    ignores the `mirrorRegistries` configuration unless the Image Swap chart is installed.
 
-    Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next
-    steps.
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    image-swap extras/image-swap/image-swap-*.tgz --install
+    ```
 
-    :::
+    ```shell hideClipboard title="Example output"
+    Release "image-swap" does not exist. Installing it now.
+    NAME: image-swap
+    LAST DEPLOYED: Wed Jun 17 14:44:13 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
 
-6.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
-    for Palette to access the internet. If you are not using a network proxy, skip to the next step.
-
-    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in
-    step 5. Make sure you configure the `reach-system.enable` section in the **values.yaml** file.
+9.  (Proxy environments only) If you are installing Palette in an environment where a network proxy must be configured
+    for Palette to access the internet, install the reach-system chart using the following command. Ensure you set
+    `reach-system.enabled` to `true` and configure `reach-system.proxySettings` in `values.yaml`.
 
     ```shell
     helm upgrade --values palette/values.yaml \
     reach-system extras/reach-system/reach-system-*.tgz --install
     ```
 
-    ```shell hideClipboard
+    ```shell hideClipboard title="Example output"
     Release "reach-system" does not exist. Installing it now.
     NAME: reach-system
     LAST DEPLOYED: Fri Jan 30 18:40:57 2026
@@ -641,7 +667,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <!-- prettier-ignore -->
     <details>
-    <summary>How to update containerd to use proxy configurations</summary>
+    <summary>Update containerd to use proxy configurations</summary>
 
     If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
     settings. You can do this by updating the containerd configuration file on each node in the cluster. The
@@ -658,25 +684,24 @@ your environment. Reach out to our support team if you need assistance.
 
     </details>
 
-7.  Install the Palette Helm Chart using the following command.
+10. Install the Palette Helm chart using the following command.
 
     ```shell
      helm upgrade --values palette/values.yaml \
      hubble palette/spectro-mgmt-plane-*.tgz --install
     ```
 
-    ```shell hideClipboard
+    ```shell hideClipboard title="Example output"
     Release "hubble" does not exist. Installing it now.
     NAME: hubble
-    LAST DEPLOYED: Fri Jan 30 18:46:53 2026
+    LAST DEPLOYED: Wed Jun 17 13:32:33 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
-    DESCRIPTION: Install complete
     TEST SUITE: None
     ```
 
-8.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+11. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -693,7 +718,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-9.  Create a DNS CNAME record that is mapped to the Palette `traefik-ingress-controller` load balancer. You can use the
+12. Create a DNS CNAME record that is mapped to the Palette `traefik-ingress-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -713,11 +738,10 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-10. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. system
-    console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`.
-    Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
-    Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
-    console.
+13. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. Open a web
+    browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name
+    in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load
+    balancer IP address with the appended value `/system` to access the system console.
 
     The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may
     appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning
@@ -725,7 +749,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-11. Log in to the system console using the following default credentials. Refer to the
+14. Log in to the system console using the default credentials. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements
 
@@ -734,13 +758,13 @@ your environment. Reach out to our support team if you need assistance.
     | Username      | `admin`   |
     | Password      | `admin`   |
 
-    After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
+    After logging in, you are prompted to create a new password. Enter a new password and save your changes. You will be
     redirected to the Palette system console. Use the username `admin` and your new password to log in to the system
     console. You can create additional system administrator accounts and assign roles to users in the system console.
     Refer to the [Account Management](../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-12. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+15. After logging in, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
@@ -754,78 +778,89 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the
-**values.yaml** file as you may need it for future upgrades.
+You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the `values.yaml`
+file, as you can refer to it for future upgrades.
 
 ## Validate
 
 Use the following steps to validate the Palette installation.
 
+<Tabs>
+
+<TabItem value="ui" label="UI">
+
 1. Open up a web browser and navigate to the Palette system console. To access the system console, open a web browser
    and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can also use
    the IP address of the load balancer.
 
-2. Log in using the credentials you received from our support team. After login, you will be prompted to create a new
-   password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+2. Log in using the default credentials. After logging in, you are prompted to create a new password. Enter a new
+   password and save your changes. You are redirected to the Palette system console.
 
-3. Open a terminal session and issue the following command to verify the Palette installation. The command should return
-   a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system`
-   namespaces.
+</TabItem>
 
-   ```shell
-   kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-   | grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|jet-system|ui-system)\s'
-   ```
+<TabItem value="terminal" label="Terminal">
 
-   Your output should look similar to the following.
+Open a terminal session and issue the following command to verify the Palette installation. The command should return a
+list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` namespaces.
 
-   ```shell hideClipboard
-    cp-system            spectro-cp-ui-78c9b7dcc5-q8ln4                             Running
-    hubble-system        auth-58bc56bc79-68lbg                                      Running
-    hubble-system        auth-58bc56bc79-r2md8                                      Running
-    hubble-system        cloud-8475845cff-dnq27                                     Running
-    hubble-system        cloud-8475845cff-v2cww                                     Running
-    hubble-system        configserver-74dd648bf5-6tvmv                              Running
-    hubble-system        event-68cfb57f6d-9dx5b                                     Running
-    hubble-system        event-68cfb57f6d-g5zrl                                     Running
-    hubble-system        event-68cfb57f6d-rz4sz                                     Running
-    hubble-system        foreq-6c75b84554-x4f7h                                     Running
-    hubble-system        hashboard-7b69cc685f-d8mmw                                 Running
-    hubble-system        hashboard-7b69cc685f-mbb57                                 Running
-    hubble-system        hutil-5456dfbdd7-68p4m                                     Running
-    hubble-system        hutil-5456dfbdd7-dllfj                                     Running
-    hubble-system        memstore-8654b49cfd-npqbv                                  Running
-    hubble-system        mgmt-55985b7ccb-gpvnr                                      Running
-    hubble-system        mongo-0                                                    Running
-    hubble-system        mongo-1                                                    Running
-    hubble-system        mongo-2                                                    Pending
-    hubble-system        mongodb-key-manager-helm-4z2mw                             Running
-    hubble-system        msgbroker-0                                                Running
-    hubble-system        msgbroker-1                                                Running
-    hubble-system        oci-proxy-787fd499d4-f772t                                 Running
-    hubble-system        specman-0                                                  Running
-    hubble-system        spectro-tunnel-69448888-qn7kk                              Running
-    hubble-system        spectrocluster-54fb864b48-8fhkr                            Running
-    hubble-system        spectrocluster-54fb864b48-9hkgg                            Running
-    hubble-system        spectrocluster-54fb864b48-w5dwr                            Running
-    hubble-system        spectrocluster-jobs-6ddfbddcd6-j9xb8                       Running
-    hubble-system        spectrocluster-reconciler-d448fc8cf-qr6bp                  Running
-    hubble-system        spectroclusterop-89968785d-6n48l                           Running
-    hubble-system        spectroclusterop-89968785d-gzd5w                           Running
-    hubble-system        spectrossh-d5fd6b49-wfcgc                                  Running
-    hubble-system        system-6f7767845d-lm5zn                                    Running
-    hubble-system        system-6f7767845d-xf2hl                                    Running
-    hubble-system        timeseries-6f5bf98c5c-fcqnh                                Running
-    hubble-system        timeseries-6f5bf98c5c-vmb5h                                Running
-    hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
-    hubble-system        user-796c877b57-6rcdp                                      Running
-    hubble-system        user-796c877b57-ptbg4                                      Running
-    ingress-traefik      traefik-ingress-controller-9dmzq                           Running
-    ingress-traefik      traefik-ingress-controller-tpwtf                           Running
-    ingress-traefik      traefik-ingress-controller-xz4jf                           Running
-    jet-system           jet-555cdf78f5-4l2s2                                       Running
-    ui-system            spectro-ui-8658f85c85-9lkhs                                Running
-   ```
+```shell
+kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+| grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|jet-system|ui-system)\s'
+```
+
+Your output should look similar to the following.
+
+```shell hideClipboard
+ cp-system            spectro-cp-ui-78c9b7dcc5-q8ln4                             Running
+ hubble-system        auth-58bc56bc79-68lbg                                      Running
+ hubble-system        auth-58bc56bc79-r2md8                                      Running
+ hubble-system        cloud-8475845cff-dnq27                                     Running
+ hubble-system        cloud-8475845cff-v2cww                                     Running
+ hubble-system        configserver-74dd648bf5-6tvmv                              Running
+ hubble-system        event-68cfb57f6d-9dx5b                                     Running
+ hubble-system        event-68cfb57f6d-g5zrl                                     Running
+ hubble-system        event-68cfb57f6d-rz4sz                                     Running
+ hubble-system        foreq-6c75b84554-x4f7h                                     Running
+ hubble-system        hashboard-7b69cc685f-d8mmw                                 Running
+ hubble-system        hashboard-7b69cc685f-mbb57                                 Running
+ hubble-system        hutil-5456dfbdd7-68p4m                                     Running
+ hubble-system        hutil-5456dfbdd7-dllfj                                     Running
+ hubble-system        memstore-8654b49cfd-npqbv                                  Running
+ hubble-system        mgmt-55985b7ccb-gpvnr                                      Running
+ hubble-system        mongo-0                                                    Running
+ hubble-system        mongo-1                                                    Running
+ hubble-system        mongo-2                                                    Pending
+ hubble-system        mongodb-key-manager-helm-4z2mw                             Running
+ hubble-system        msgbroker-0                                                Running
+ hubble-system        msgbroker-1                                                Running
+ hubble-system        oci-proxy-787fd499d4-f772t                                 Running
+ hubble-system        specman-0                                                  Running
+ hubble-system        spectro-tunnel-69448888-qn7kk                              Running
+ hubble-system        spectrocluster-54fb864b48-8fhkr                            Running
+ hubble-system        spectrocluster-54fb864b48-9hkgg                            Running
+ hubble-system        spectrocluster-54fb864b48-w5dwr                            Running
+ hubble-system        spectrocluster-jobs-6ddfbddcd6-j9xb8                       Running
+ hubble-system        spectrocluster-reconciler-d448fc8cf-qr6bp                  Running
+ hubble-system        spectroclusterop-89968785d-6n48l                           Running
+ hubble-system        spectroclusterop-89968785d-gzd5w                           Running
+ hubble-system        spectrossh-d5fd6b49-wfcgc                                  Running
+ hubble-system        system-6f7767845d-lm5zn                                    Running
+ hubble-system        system-6f7767845d-xf2hl                                    Running
+ hubble-system        timeseries-6f5bf98c5c-fcqnh                                Running
+ hubble-system        timeseries-6f5bf98c5c-vmb5h                                Running
+ hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
+ hubble-system        user-796c877b57-6rcdp                                      Running
+ hubble-system        user-796c877b57-ptbg4                                      Running
+ ingress-traefik      traefik-ingress-controller-9dmzq                           Running
+ ingress-traefik      traefik-ingress-controller-tpwtf                           Running
+ ingress-traefik      traefik-ingress-controller-xz4jf                           Running
+ jet-system           jet-555cdf78f5-4l2s2                                       Running
+ ui-system            spectro-ui-8658f85c85-9lkhs                                Running
+```
+
+</TabItem>
+
+</Tabs>
 
 ## Next Steps
 

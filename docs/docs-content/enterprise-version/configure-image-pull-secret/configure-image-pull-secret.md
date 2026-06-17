@@ -11,146 +11,117 @@ tags: ["self-hosted", "account", "image pull secret", "hardened images", "securi
 keywords: ["self-hosted", "palette", "image pull secret", "hardened images", "security"]
 ---
 
-Spectro Cloud is transitioning to security-hardened container images to strengthen the security posture of Palette and
-VerteX deployments. These images are hosted in private registries and require an image pull secret for authenticated
-access.
+Beginning in 4.9.b, Spectro Cloud is initiating the shift to security-hardened images. While images have a smaller
+attack surface compared to physical and virtual machines, security-hardened images are built to reduce the attack
+surface further by containing only the essential runtime components an application needs. They have strict Software
+Lifecycle Agreements (SLAs) that require the images to be regularly scanned for vulnerabilities, rebuilt, and patched,
+keeping the number of CVEs to a minimum. These images also contain artifacts such as Software Bill of Materials (SBOMs)
+and cryptographic signatures to verify the image has not been tampered with.
 
-An image pull secret is a credential that allows your Palette or VerteX instance to authenticate with private registries
-that host security-hardened images. Once configured, the secret is distributed to the management plane and all managed
-workload clusters so they can pull the required images.
+As a result of this transition, all images hosted Spectro Cloud's private repositories must now be authenticated and
+retrieved using
+[image pull secrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets-1). Like
+activation keys, these secrets are obtained from your Spectro Cloud customer support representative; they are intended
+for long-term use and only need to be configured once as part of your initial setup process. If you need to rotate the
+secret, whether due to a security incident or as part of your organization's security policy, contact support to request
+a new one.
 
-:::info
+Once configured, the secret is distributed to the management plane, PCGs, and all managed workload clusters so they can
+pull the required images.
 
-Configuring an image pull secret is optional in the current release. In a future release, providing an image pull secret
-will become mandatory for all self-hosted connected environments. We recommend configuring it now to prepare for the
-transition.
+:::warning
+
+As of 4.9.b, configuring an image pull secret is optional; however, it will be mandatory in an upcoming release.
+Therefore, we recommend configuring your image pull secret as soon as possible to avoid service disruptions. Refer to
+the [Announcements](../../release-notes/announcements.md#upcoming-breaking-changes) page for the latest updates.
 
 :::
 
-## Who Needs to Configure an Image Pull Secret
+## Image Pull Secret Requirements
 
-You need to configure an image pull secret if your Palette or VerteX instance is a self-hosted, connected deployment.
-The following environments do **not** require configuration:
+While pulling any image hosted in a Spectro Cloud-owned repository requires an image pull secret, this secret is
+preconfigured in certain Spectro Cloud-maintained environments.
 
-- **SaaS deployments** — Image pull secrets are managed automatically on the backend.
+### Configuration Required
 
-- **Airgapped or disconnected deployments** — Images are obtained through
-  [Artifact Studio](../../enterprise-version/install-palette/airgap.md) or a similar offline workflow, and the secret is
-  configured on the backend.
+Connected self-hosted Palette and Palette VerteX environments that pull images directly from Spectro Cloud-owned
+registries must have an image pull secret configured. This includes environments that do not use
+[mirror registries](../system-management/registry-override.md) or
+[image swap](../../clusters/cluster-management/image-swap.md) configurations to redirect image pulls to a private
+registry.
 
-- **Environments with configured mirror registries or image swaps** — Images are pulled from your own private registry,
+### Configuration Not Required
+
+The following environments do not require you to configure Spectro Cloud's image pull secret:
+
+- **SaaS deployments** — Image pull secrets are managed automatically on the backend. For multi-tenant SaaS, no action
+  is needed; for dedicated SaaS customers with access to the system console, consult with your customer support
+  representative.
+
+- **Airgapped self-hosted Palette and Palette VerteX environments** - Assets downloaded from
+  [Artifact Studio](../../downloads/artifact-studio.md) are automatically authenticated using Spectro Cloud's image pull
+  secret. When you upload the packs and images to your private registry, you can use your _personal_ image pull secret
+  to authenticate and retrieve the images from your private registry. [CHECKING WITH ANIRUDH IF THERE IS CURRENTLY A WAY
+  TO CONFIGURE AN IMAGE PULL SECRET OUTSIDE OF THE HELM INSTALL METHOD]
+
+- **Environments with configured mirror registries or image swaps** - Images are pulled from your own private registry,
   which bypasses the need for a Spectro Cloud image pull secret.
 
-- **Workload clusters that pull Spectro Cloud images from a private registry** — The secret is only needed when pulling
+- **Workload clusters that pull Spectro Cloud images from a private registry** - The secret is only needed when pulling
   directly from Spectro Cloud-hosted registries.
 
-## Request an Image Pull Secret
+## Configure Image Pull Secret During Installation
 
-Image pull secrets are issued by Spectro Cloud. Contact your Spectro Cloud support representative to request one. Your
-representative will generate the secret and provide it to you.
+Certain installation methods allow you to include the image pull secret during your Palette installation.
 
-Image pull secrets are intended for long-term use and typically require only a one-time configuration. If you need to
-rotate the secret, whether due to a security incident or as part of your organization's security policy, contact support
-to request a new one.
+- **Helm Chart** - Use the
+  [`global.imagePullSecret.dockerConfigJson`](../install-palette/install-on-kubernetes/palette-helm-ref.md#image-pull-secret)
+  field in your `palette/values.yaml` file.
 
-## Prerequisites
+- **Management Appliance** - Not supported. Configure the secret
+  [post-installation](#configure-image-pull-secret-post-installation) using the system console.
 
-- A self-hosted instance of Palette. For help installing Palette, refer to the
-  [Installation](../install-palette/install-palette.md) guide.
+- **Palette CLI** - [APPARENTLY WITH THE SPECTRO-MGMT PACK? I WASN'T AWARE YOU COULD MODIFY THAT WITH THE CLI? CONFIRM
+  WITH ANIRUDH]
+
+## Configure Image Pull Secret Post-Installation
+
+Alternatively, you can configure the image pull secret once Palette is installed. This method is the same for all
+installation methods.
+
+### Prerequisites
+
+- A self-hosted instance of Palette installed using the Palette CLI, Helm chart, or management appliance.
 
 - Access to the [system console](../system-management/system-management.md#access-the-system-console).
 
 - An image pull secret provided by Spectro Cloud support.
 
-## Configure the Image Pull Secret in the System Console
+### Enablement
 
-After you receive your image pull secret from Spectro Cloud support, use the system console to configure it.
-
-1. Log in to the Palette system console. Refer to the
-   [Access the System Console](../system-management/system-management.md#access-the-system-console) guide.
+1. Log in to the Palette [system console](../system-management/system-management.md#access-the-system-console). Refer to
+   the [Access the System Console](../system-management/system-management.md#access-the-system-console) guide.
 
 2. From the left main menu, select **Administration**.
 
-3. Select the **Docker Hardened Images** tab.
+3. Select the **Hardened Images** tab.
 
-4. In the **Image Pull Secret** field, paste the image pull secret you received from Spectro Cloud support.
+4. In the **Pull secret** field, paste the image pull secret you received from Spectro Cloud support.
 
-5. Select **Save**.
+5. Select **Validate and Save**.
 
-   Palette validates the secret immediately. If the secret is invalid or expired, the following error message is
-   displayed: _"The Image Pull Secret is invalid or expired. Please check it again. If an existing Image Pull Secret
-   exists, it was not replaced."_
+If the secret is valid, it is saved and distributed to the management plane, workload clusters, and PCGs. If you need to
+rotate your image pull secret for any reason, repeat these steps, and paste your new secret into the **Pull secret**
+field.
 
-   If the secret is valid, it is saved and distributed to the management plane and all managed workload clusters.
+### Validate
 
-## Configure the Image Pull Secret During Installation
-
-You can also provide the image pull secret during the initial Palette installation for certain deployment methods. This
-configures the secret at install time so that it is available when the system console first starts.
-
-### Helm Chart Installation
-
-If you install Palette using a Helm chart, provide the image pull secret in your `values.yaml` file. For more
-information, refer to the [Helm Configuration Reference](../install-palette/install-on-kubernetes/palette-helm-ref.md).
-
-<!-- TODO: Document the exact Helm value path once confirmed. The existing `global.imagePullSecret` is for mirror
-registries, not DHI. -->
-
-### Enterprise Cluster Installation
-
-If you install Palette using an Enterprise Cluster (EC), you can include the image pull secret in the `spectro-mgmt`
-pack values at install time.
-
-<!-- TODO: Confirm the exact pack value path for EC installs. -->
-
-:::warning
-
-If you installed Palette using an Enterprise Cluster and you configured the image pull secret in the `spectro-mgmt` pack
-values, you must also update the pack values during Palette upgrades. If you do not, the pack values overwrite the
-system-console-configured secret with an empty value, which results in an upgrade failure.
-
-This does not apply to Helm chart installations, where the system console manages the secret independently after the
-initial install.
-
-:::
-
-### Appliance Installation
-
-Day-0 configuration of the image pull secret during Appliance installation is not supported in the current release. If
-you deploy Palette using an Appliance, configure the image pull secret through the system console after installation
-completes.
-
-## Rotate an Image Pull Secret
-
-If you need to replace an existing image pull secret, for example due to a security incident or as part of a scheduled
-rotation, use the system console.
+[INCLUDE TERMINAL STEPS?]
 
 1. Log in to the Palette system console.
 
 2. From the left main menu, select **Administration**.
 
-3. Select the **Docker Hardened Images** tab.
+3. Select the **Hardened Images** tab.
 
-4. In the **Image Pull Secret** field, paste the new image pull secret.
-
-5. Select **Save**.
-
-   A confirmation dialog is displayed with the message: _"An Image Pull Secret is already configured. Updating it now
-   will replace it with the new one in Palette/VerteX and your workload clusters. Are you sure you want to proceed?"_
-
-6. Select **Confirm** to proceed with the rotation.
-
-   Palette validates the new secret. If valid, it replaces the previous secret and distributes the updated secret to the
-   management plane and all managed workload clusters.
-
-To request a new image pull secret, contact your Spectro Cloud support representative.
-
-## Validate
-
-1. Log in to the Palette system console.
-
-2. From the left main menu, select **Administration**.
-
-3. Select the **Docker Hardened Images** tab.
-
-4. Verify that the **Image Pull Secret** field displays a configured secret.
+4. Verify that the **Pull secret** field displays a masked secret.

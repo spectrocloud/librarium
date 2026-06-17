@@ -111,17 +111,17 @@ The following instructions are agnostic to the Kubernetes distribution you are u
 infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your
 environment. Reach out to our support team if you need assistance.
 
-1.  Open a terminal session and navigate to the directory where you downloaded the Palette installation zip file
-    provided by our support. Unzip the file to a directory named **palette-install**.
+1.  Open a terminal session and navigate to the directory where you downloaded the Palette install zip file provided by
+    our support team. Unzip the file to a directory named `palette-install`.
 
     ```shell
-    unzip release-*.zip -d palette-install
+    unzip charts.zip -d palette-install
     ```
 
-2.  Navigate to the release folder inside the **palette-install** directory.
+2.  Navigate to the `palette-install` directory.
 
     ```shell
-    cd palette-install/charts/release-*
+    cd palette-install
     ```
 
 3.  Open the file **extras/cert-manager/values.yaml** in a text editor and append the URL to your OCI registry, which
@@ -137,18 +137,17 @@ environment. Reach out to our support team if you need assistance.
       amceResolverImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
     ```
 
-4.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
-    the one you downloaded, as the version number may be different.
+4.  Install Cert-Manager using the following command.
 
     ```shell
     helm upgrade --values extras/cert-manager/values.yaml \
     cert-manager extras/cert-manager/cert-manager-*.tgz --install
     ```
 
-    ```shell hideClipboard
+    ```shell hideClipboard title="Example output"
     Release "cert-manager" does not exist. Installing it now.
     NAME: cert-manager
-    LAST DEPLOYED: Mon Jan 29 16:32:33 2024
+    LAST DEPLOYED: Wed Jun 17 12:54:27 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1

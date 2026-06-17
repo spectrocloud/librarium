@@ -114,62 +114,104 @@ The following instructions are agnostic to the Kubernetes distribution you are u
 infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your
 environment. Reach out to our support team if you need assistance.
 
-1.  Open a terminal session and navigate to the directory where you downloaded the VerteX installation zip file provided
-    by our support. Unzip the file to a directory named **vertex-install**.
+1.  Open a terminal session and navigate to the directory where you downloaded the Palette VerteX install ZIP file
+    provided by our support team. Unzip the file to a directory named `vertex-install`.
 
     ```shell
-    unzip release-*.zip -d vertex-install
+    unzip charts.zip -d vertex-install
     ```
 
-2.  Navigate to the release folder inside the **vertex-install** directory.
+2.  Navigate to the `vertex-install` directory.
 
     ```shell
-    cd vertex-install/charts/release-*
+    cd vertex-install
     ```
 
-3.  Open the file **extras/cert-manager/values.yaml** in a text editor and append the URL to your OCI registry, which
-    also includes the namespace or project that is hosting the Spectro Cloud images. The URL should be in the format
-    `<registry-url>/<namespace>`. In the example configuration below, the value `my-oci-registry.com/spectro-images` is
-    prefixed to each URL. Save the file after you have appended the URL.
+3.  Open the file `extras/cert-manager/values.yaml` with a text editor of your choice. This example uses Vim.
 
-    ```yaml hideClipboard
+    ```shell
+    vim extras/cert-manager/values.yaml
+    ```
+
+4.  Append `<your-registry-url>` to each image, along with the `<repository>` where you want to store your images.
+
+    ```yaml {2-5} hideClipboard title="Example output"
     image:
-      cainjectorImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
-      controllerImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
-      webhookImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
-      amceResolverImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
+      cainjectorImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
+      controllerImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
+      webhookImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
+      amceResolverImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
     ```
 
-4.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
-    the one you downloaded, as the version number may be different.
+    In the example below, we used `harbor.docs.spectro.dev` for the registry and `spectro-images` for the repository.
+
+    ```yaml {2-5} hideClipboard title="Example output"
+    image:
+      cainjectorImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
+      controllerImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
+      webhookImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
+      amceResolverImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
+    ```
+
+5.  Install Cert-Manager using the following command.
 
     ```shell
     helm upgrade --values extras/cert-manager/values.yaml \
     cert-manager extras/cert-manager/cert-manager-*.tgz --install
     ```
 
-    ```shell hideClipboard
+    ```shell hideClipboard title="Example output"
     Release "cert-manager" does not exist. Installing it now.
     NAME: cert-manager
-    LAST DEPLOYED: Mon Jan 29 16:32:33 2024
+    LAST DEPLOYED: Wed Jun 17 12:54:27 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
     TEST SUITE: None
     ```
 
-5.  Open the file **extras/image-swap/values.yaml** in a text editor and append the URL to your OCI registry that also
-    includes the namespace or project that is hosting the Spectro Cloud images.
+6.  Extract the image-swap TGZ file.
+
+    ```shell
+    tar -xvzf extras/image-swap/image-swap-*.tgz -C extras/image-swap
+    ```
+
+7.  Open the file `extras/image-swap/image-swap/values.yaml` with a text editor of your choice. This example uses Vim.
+
+    ```shell
+    vim extras/image-swap/image-swap/values.yaml
+    ```
+
+8.  Append the values you used for `<your-registry-url>` and `<repository>` used in step 4 to each image.
 
     ```yaml hideClipboard
     config:
       imageSwapImages:
-        imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
-        imageSwapImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
+        imageSwapInitImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap-init:v1.5.3-spectro-4.9.0"
+        imageSwapImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/third-party/thewebroot/imageswap:v1.5.3-spectro-4.9.0"
     ```
 
-6.  Update the `ociImageRegistry` section with the proper configuration values to your OCI registry. The
-    `ociImageRegistry` section should look similar to the following example.
+9.  (Non-EKS clusters only) If you are not installing Palette VerteX on an EKS cluster, set `isEKSCluster` to `false`.
+
+    ```yaml
+    imageSwapConfig:
+      isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
+    ```
+
+10. Update the `ociImageRegistry` section with the proper configuration values for your OCI registry. Use the same
+    `<your-registry-url>` and `<repository>` values used in steps 4 and 8.
+
+    ```yaml hideClipboard
+    ociImageRegistry:
+      endpoint: "<your-registry-url>"
+      name: "Airgap Images OCI"
+      password: ""
+      username: ""
+      baseContentPath: "<repository>"
+      insecureSkipVerify: true
+      caCert: ""
+      mirrorRegistries: "docker.io::<your-registry-url>/repository/docker.io,gcr.io::<your-registry-url>/<repository>/gcr.io,ghcr.io::<your-registry-url>/<repository>/ghcr.io,k8s.gcr.io::<your-registry-url>/<repository>/k8s.gcr.io,registry.k8s.io::<your-registry-url>/<repository>/registry.k8s.io,quay.io::<your-registry-url>/<repository>/quay.io,us-docker.pkg.dev::<your-registry-url>/<repository>/us-docker.pkg.dev"
+    ```
 
     :::info
 
@@ -178,31 +220,18 @@ environment. Reach out to our support team if you need assistance.
     Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
     registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
     for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
-    `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
+    `docker.io::<your-registry-url>/v2/<repository>/docker.io`.
 
     :::
 
-    ```yaml hideClipboard
-    ociImageRegistry:
-      endpoint: "my-oci-registry.com"
-      name: "Airgap Images OCI"
-      password: ""
-      username: ""
-      baseContentPath: "spectro-images"
-      insecureSkipVerify: true
-      caCert: ""
-      mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io,us-docker.pkg.dev::my-oci-registry.com/spectro-images/us-docker.pkg.dev"
-    ```
-
-7.  Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
-    configured in steps five through six.
+11. Install the image-swap Helm chart using the following command.
 
     ```shell
-    helm upgrade --values extras/image-swap/values.yaml \
+    helm upgrade --values extras/image-swap/image-swap/values.yaml \
     image-swap extras/image-swap/image-swap-*.tgz --install
     ```
 
-    ```shell hideClipboard
+    ```shell hideClipboard title="Example output"
     Release "image-swap" does not exist. Installing it now.
     NAME: image-swap
     LAST DEPLOYED: Mon Jan 29 17:04:23 2024
@@ -219,14 +248,14 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+12. Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
     VerteX, including Traefik CRDs, and must be installed before the main VerteX Helm Chart.
 
     ```shell
     helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
     ```
 
-    ```shell hideClipboard
+    ```shell hideClipboard title="Example output"
     Release "spectro-mgmt-crds" does not exist. Installing it now.
     NAME: spectro-mgmt-crds
     LAST DEPLOYED: Mon Jan 29 16:35:00 2024
@@ -236,7 +265,13 @@ environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-9.  Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
+13. Open the file `vertex/values.yaml` using a text editor of your choice. This example uses Vim.
+
+    ```shell
+    vim vertex/values.yaml
+    ```
+
+14. Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
     **values.yaml** file contains the default values for the VerteX installation parameters. However, you must populate
     the following parameters before installing VerteX. You can learn more about the parameters on the **values.yaml**
     file on the [Helm Configuration Reference](../vertex-helm-ref.md) page.
@@ -244,17 +279,18 @@ environment. Reach out to our support team if you need assistance.
     Ensure you provide the proper `ociImageRegistry.mirrorRegistries` values if you are using a self-hosted OCI
     registry. You can find the placeholder string in the `ociImageRegistry` section of the **values.yaml** file.
 
-    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Type** |
-    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                    | The URL name or IP address you will use for the VerteX installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | string   |
-    | `config.installationMode`           | The installation mode for VerteX. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | string   |
-    | `ociPackEcrRegistry`                | The OCI registry credentials for the VerteX FIPS packs repository.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | object   |
-    | `ociImageRegistry`                  | The OCI registry credentials for the VerteX images repository.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | object   |
-    | `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io`. <br /><br /> **NOTE:** Include `/v2` in your endpoints if you are using a [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project. Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2` for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example: `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`. | string   |
-    | `imageSwapImages`                   | The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | object   |
-    | `imageSwapConfig.isEKSCluster`      | If you are NOT installing VerteX on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | boolean  |
-    | `ingress.enabled`                   | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | boolean  |
-    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for VerteX to use a network proxy in your environment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | object   |
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Type** |
+    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `global.imagePullSecret.dockerConfigJson` | The base64-encoded contents of your `config.json` containing your registry credentials. Refer to [Helm Configuration Reference](../vertex-helm-ref.md#image-pull-secret) for more information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | string   |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | string   |
+    | `config.installationMode`                 | The installation mode for VerteX. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | string   |
+    | `ociPackEcrRegistry`                      | The OCI registry credentials for the VerteX FIPS packs repository.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | object   |
+    | `ociImageRegistry`                        | The OCI registry credentials for the VerteX images repository.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | object   |
+    | `ociImageRegistry.mirrorRegistries`       | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io`. <br /><br /> **NOTE:** Include `/v2` in your endpoints if you are using a [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project. Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2` for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example: `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`. | string   |
+    | `imageSwapImages`                         | The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | object   |
+    | `imageSwapConfig.isEKSCluster`            | If you are NOT installing VerteX on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | boolean  |
+    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | boolean  |
+    | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for VerteX to use a network proxy in your environment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | object   |
 
     :::info
 
@@ -708,7 +744,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-10. This step is only required if you are installing VerteX in an environment where a network proxy must be configured
+15. This step is only required if you are installing VerteX in an environment where a network proxy must be configured
     for VerteX to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in
@@ -748,7 +784,7 @@ environment. Reach out to our support team if you need assistance.
 
     </details>
 
-11. Install the VerteX Helm Chart using the following command.
+16. Install the VerteX Helm Chart using the following command.
 
     ```shell
     helm upgrade --values vertex/values.yaml \
@@ -765,7 +801,7 @@ environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-12. Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
+17. Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -782,7 +818,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-13. Create a DNS CNAME record that is mapped to the VerteX `traefik-ingress-controller` load balancer. You can use the
+18. Create a DNS CNAME record that is mapped to the VerteX `traefik-ingress-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -802,7 +838,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-14. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
+19. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
     system console, open a web browser, paste the custom domain URL in the address bar, and append the value `/system`.
 
     The first time you visit the VerteX system console, a warning message about a not-trusted SSL certificate may
@@ -811,7 +847,7 @@ environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.webp)
 
-15. Log in to the system console using the following default credentials. Refer to the
+20. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
@@ -826,7 +862,7 @@ environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-16. After login, a summary page is displayed. VerteX is installed with a self-signed SSL certificate. To assign a
+21. After login, a summary page is displayed. VerteX is installed with a self-signed SSL certificate. To assign a
     different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to VerteX. You can upload the files using the VerteX system console. Refer to the
     [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
