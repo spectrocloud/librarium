@@ -73,7 +73,7 @@ Customers are encouraged to take the following actions:
 
 ### Fix Availability
 
-Palette and Palette VerteX version 4.8.61 has addressed this security advisory.
+Palette and Palette VerteX version 4.8.60 has addressed this security advisory.
 
 ## Security Advisory 016 - Upload Service Authentication Bypass
 
@@ -110,7 +110,7 @@ time of this advisory.
 
 This issue has been fully remediated in release 4.9.14 for the Spectro Cloud managed SaaS solution.
 
-Additionally, Palette and Palette VerteX version 4.8.61 has addressed this security advisory.
+Additionally, Palette and Palette VerteX version 4.8.60 has addressed this security advisory.
 
 ### Recommended Actions
 
@@ -170,7 +170,7 @@ Several existing, in-place controls significantly reduce the practical impact of
 
 ### Fix Availability
 
-Palette and Palette VerteX version 4.8.61 has addressed this security advisory. Self-hosted customers are advised to
+Palette and Palette VerteX version 4.8.60 has addressed this security advisory. Self-hosted customers are advised to
 upgrade their Palette version.
 
 ### Recommended Actions
