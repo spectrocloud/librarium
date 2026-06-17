@@ -215,6 +215,7 @@ export default function PacksReadme() {
     const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
     const [fragmentIdentifier, setFragmentIdentifier] = useState<string>("");
     const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
+    const [packCves, setPackCves] = useState<ReactElement<any, any> | null>(null);
     const [packName, setPackName] = useState<string>("");
     const [selectedPackUid, setSelectedPackUid] = useState<string>("");
     const { colorMode } = useColorMode();
@@ -251,6 +252,23 @@ export default function PacksReadme() {
       };
       importComponent().catch((e) => {
         console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
+      });
+      const importCVEs = async () => {
+        try {
+          const module: MarkdownFile = await import(`../../../docs/docs-content/cves/${pckName}.mdx`);
+          const PackReadMeComponent = module.default;
+          setCustomReadme(
+            <div className={styles.customReadme}>
+              <PackReadMeComponent />
+            </div>
+          );
+        } catch (error) {
+          console.error("Error importing custom readme component for pack. Additional information follows: \n", error);
+          setCustomReadme(null);
+        }
+      };
+      importCVEs().catch((e) => {
+        console.error("Error importing CVE component for pack. Additional information follows: \n", e);
       });
     }, []);
 
@@ -332,6 +350,11 @@ export default function PacksReadme() {
           label: `Additional Details`,
           key: "custom",
           children: customReadme,
+        },
+        packCves && {
+          label: `Pack CVEs`,
+          key: "cves",
+          children: packCves,
         },
       ].filter(Boolean) as { label: string; key: string; children: JSX.Element }[];
       if (tabs.length > 1) {
