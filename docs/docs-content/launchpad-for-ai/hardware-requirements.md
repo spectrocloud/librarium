@@ -16,5 +16,3 @@ tags:
 
 This page is a placeholder for the full Launchpad for AI hardware requirements reference. Content will be added when
 ready.
-
-For minimum system requirements, see the [Launchpad for AI overview](./launchpad-for-ai.md#minimum-system-requirements).
