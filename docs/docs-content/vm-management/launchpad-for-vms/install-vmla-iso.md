@@ -49,12 +49,13 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 3. The following table describes the installer options to download for installation.
 
-   | **Artifact**                          | **Description**                                 |
-   | ------------------------------------- | ----------------------------------------------- |
-   | **Appliance ISO with Content**        | Full ISO with embedded content bundle.          |
-   | **MOK Key for Secure Boot**           | MOK key to use for secure boot with MokManager. |
+   | **Artifact**                   | **Description**                                 |
+   | ------------------------------ | ----------------------------------------------- |
+   | **Appliance ISO with Content** | Full ISO with embedded content bundle.          |
+   | **MOK Key for Secure Boot**    | MOK key to use for secure boot with MokManager. |
 
-4. Download the **Appliance ISO with Content**. Download **MOK Key for Secure Boot** if you use secure boot on your host.
+4. Download the **Appliance ISO with Content**. Download **MOK Key for Secure Boot** if you use secure boot on your
+   host.
 
 5. Boot your device using the Launchpad for VMs Appliance ISO.
 
