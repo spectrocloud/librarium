@@ -15,37 +15,38 @@ tags: ["release-notes"]
 
 <!-- COMPONENT UPDATES TICKET: DOC-2914 -->
 <!-- RELEASE DATE: June 19, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: 4.8.6 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.9.x -->
 <!-- RELEASE ARTIFACT STUDIO: 4.9.10 -->
-<!-- RELEASE TERRAFORM VERSION: 0.29.4 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.x -->
 
 The following components have been updated for Palette version 4.9.5 - 4.9.18.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.10  |
+| Component                                          | Version |
+| -------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md) | 4.9.10  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-2914. DO NOT DELETE. -->
 
 ### Improvements
 
+<!-- prettier-ignore-start -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4185 -->
 
-- Upgraded core appliance packs for the 4.9.b cycle, including Palette eXtended Kubernetes 1.34.8 or later, Calico
-  3.32.0 or later, Piraeus 2.10.7 or later, and Zot Registry 2.1.x (v2.1.17) or later. Both PAX and PAX-FIPS variants
-  are included.
+- The dependencies of [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) have been upgraded to the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" /> version 3.32.0, <VersionedLink text="Piraeus" url="/integrations/packs/?pack=piraeus-operator" /> version 2.10.7, and <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> version 0.1.117.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-4209 -->
 
-- The Registry Connect pack is now FIPS compliant for VMO Appliance deployments. The ubuntu-util image has been replaced
-  with a minimal image to reduce the attack surface.
+- The <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack version 0.2.0 is now FIPS compliant for [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) deployments.
+
+<!-- prettier-ignore-end -->
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-731 -->
 
-- Fixed an issue in Artifact Studio where ProfileBundle cards were not paginated, causing certain profile bundles (such
-  as vLLM Prod Stack) to be hidden unless explicitly searched for.
+- Fixed an issue in [Artifact Studio](../downloads/artifact-studio.md) that prevented profile bundle cards from being
+  correctly paginated and displayed.
 
 <!-- END COMPONENT UPDATES BODY: DOC-2914. DO NOT DELETE. -->
 
