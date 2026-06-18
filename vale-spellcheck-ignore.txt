@@ -32,3 +32,4 @@ docs/docs-content/vertex/system-management/feature-flags.md:59:8:Vale.Spelling:D
 docs/docs-content/vertex/system-management/feature-flags.md:61:8:Vale.Spelling:Did you really mean 'elasticloadbalancing'?
 docs/docs-content/vertex/system-management/feature-flags.md:62:8:Vale.Spelling:Did you really mean 'cloudformation'?
 docs/docs-content/vertex/system-management/feature-flags.md:64:8:Vale.Spelling:Did you really mean 'ssm'?
+docs/docs-content/vm-management/launchpad-for-vms/install-vmla-iso.md:96:8:Vale.Spelling:Did you really mean 'poweroff'?
