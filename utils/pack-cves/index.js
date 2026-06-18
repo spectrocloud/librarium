@@ -156,6 +156,7 @@ async function generateCVEs() {
   }
 
   await generateMarkdownForPackCVEs(GlobalCVEData);
+  await collatePackCVEFiles();
 }
 
 async function generateMarkdownForPackCVEs(GlobalCVEData) {
@@ -190,8 +191,6 @@ hide_table_of_contents: false
 toc_max_heading_level: 3
 tags: ["security", "packs", "cve"]
 ---
-
-# CVEs for ${packData.pack} ${packData.packVersion}
 
 ${packData.images
   .map((imageData) => {
@@ -232,12 +231,99 @@ ${rows || "| No HIGH/CRITICAL CVEs found | | | | |"}
   })
   .join("\n")}`;
 
-    const fileName = `${packData.pack}-${packData.packVersion}.mdx`;
+    const fileName = `${packData.pack}-${packData.packVersion.replace(/^v/, "")}.mdx`;
 
     await fs.writeFile(path.join(outputDir, fileName), content);
   }
 
   logger.success("All pack CVE markdown files generated.");
+}
+
+async function collatePackCVEFiles() {
+  const inputDir = "docs/docs-content/security-bulletins/pack-cves";
+  const outputDir = "docs/docs-content/security-bulletins/packs";
+
+  mkdirSync(outputDir, { recursive: true });
+
+  const files = await fs.readdir(inputDir);
+
+  const packFiles = files
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => {
+      const match = file.match(/^(.+)-([0-9]+\.[0-9]+\.[0-9]+)\.mdx$/);
+
+      if (!match) {
+        logger.warn(`Skipping file with unexpected name format: ${file}`);
+        return null;
+      }
+
+      return {
+        file,
+        pack: match[1],
+        version: match[2],
+      };
+    })
+    .filter(Boolean);
+
+  const groupedByPack = new Map();
+
+  for (const item of packFiles) {
+    if (!groupedByPack.has(item.pack)) {
+      groupedByPack.set(item.pack, []);
+    }
+
+    groupedByPack.get(item.pack).push(item);
+  }
+
+  for (const [pack, versions] of groupedByPack.entries()) {
+    versions.sort((a, b) => b.version.localeCompare(a.version, undefined, { numeric: true }));
+
+    const imports = versions
+      .map((item, index) => {
+        const componentName = `${pack.replace(/[^a-zA-Z0-9]/g, "")}V${index}`;
+        item.componentName = componentName;
+
+        return `import ${componentName} from "../pack-cves/${item.file}";`;
+      })
+      .join("\n");
+
+    const tabItems = versions
+      .map((item) => {
+        const label = item.version.replace(/\.\d+$/, ".x");
+
+        return `<TabItem label="${label}" value="${item.version}">
+
+<${item.componentName} />
+
+</TabItem>`;
+      })
+      .join("\n\n");
+
+    const content = `---
+sidebar_label: "${pack}"
+title: "CVEs for ${pack}"
+description: "CVEs found in images for ${pack}"
+sidebar_class_name: "hide-from-sidebar"
+hide_table_of_contents: false
+toc_max_heading_level: 3
+tags: ["security", "packs", "cve"]
+---
+
+${imports}
+
+## Versions Supported
+
+<Tabs queryString="parent">
+
+${tabItems}
+
+</Tabs>
+`;
+
+    await fs.writeFile(path.join(outputDir, `${pack}.mdx`), content);
+  }
+
+  logger.success("All collated pack CVE markdown files generated.");
 }
 
 generateCVEs().catch((error) => {

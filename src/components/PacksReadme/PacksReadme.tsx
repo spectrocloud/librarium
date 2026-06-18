@@ -255,16 +255,16 @@ export default function PacksReadme() {
       });
       const importCVEs = async () => {
         try {
-          const module: MarkdownFile = await import(`../../../docs/docs-content/cves/${pckName}.mdx`);
+          const module: MarkdownFile = await import(`../../../docs/docs-content/security-bulletins/packs/${pckName}.mdx`);
           const PackReadMeComponent = module.default;
-          setCustomReadme(
+          setPackCves(
             <div className={styles.customReadme}>
               <PackReadMeComponent />
             </div>
           );
         } catch (error) {
-          console.error("Error importing custom readme component for pack. Additional information follows: \n", error);
-          setCustomReadme(null);
+          console.error("Error importing custom cve component for pack. Additional information follows: \n", error);
+          setPackCves(null);
         }
       };
       importCVEs().catch((e) => {
