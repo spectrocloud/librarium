@@ -70,9 +70,7 @@ async function getPackCVEs(payload) {
     } catch (error) {
       logger.warn(
         `Failed to fetch CVEs for ${imageName}:${imageTag}: ${
-          error.response
-            ? `${error.response.status} - ${JSON.stringify(error.response.data)}`
-            : error.message
+          error.response ? `${error.response.status} - ${JSON.stringify(error.response.data)}` : error.message
         }`
       );
 
@@ -80,15 +78,11 @@ async function getPackCVEs(payload) {
     }
   }
 
-  const packsResponse = await callRateLimitAPI(() =>
-    api.get("https://dso.teams.spectrocloud.com/v1/packs?images")
-  );
+  const packsResponse = await callRateLimitAPI(() => api.get("https://dso.teams.spectrocloud.com/v1/packs?images"));
 
   const packs = packsResponse.data.packs || [];
 
-  const imageJobs = packs.flatMap((pack) =>
-    (pack.images || []).map((image) => ({ pack, image }))
-  );
+  const imageJobs = packs.flatMap((pack) => (pack.images || []).map((image) => ({ pack, image })));
 
   const results = (
     await runWithConcurrency(imageJobs, concurrency, async ({ pack, image }) => {
@@ -209,8 +203,7 @@ ${packData.images
           HIGH: 1,
         };
 
-        const severityDiff =
-          severityRank[a.severity] - severityRank[b.severity];
+        const severityDiff = severityRank[a.severity] - severityRank[b.severity];
 
         if (severityDiff !== 0) {
           return severityDiff;

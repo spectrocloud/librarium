@@ -3,7 +3,7 @@ const axiosRetry = require("axios-retry").default;
 const { pRateLimit } = require("p-ratelimit");
 require("dotenv").config();
 
-const PACK_CVES_URL= "https://dso.teams.spectrocloud.com";
+const PACK_CVES_URL = "https://dso.teams.spectrocloud.com";
 
 // Ensure that the authentication token is available in the environment
 const authToken = process.env.DSO_AUTH_TOKEN;
