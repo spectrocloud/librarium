@@ -76,7 +76,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.18.
 
 <!-- END PACKS LIST BODY: DOC-2914. DO NOT DELETE. -->
 
-#### Pack Notes
 
 ## June 12, 2026 - Component Updates {#component-updates-2026-24}
 
