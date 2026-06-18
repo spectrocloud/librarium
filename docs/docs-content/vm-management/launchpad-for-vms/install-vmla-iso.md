@@ -49,28 +49,13 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 3. The following table describes the installer options to download for installation.
 
-   | **Artifact**                          | **Description**                                 |
-   | ------------------------------------- | ----------------------------------------------- |
-   | **Content bundle (including Ubuntu)** | Content bundle to use with **Appliance ISO**.   |
-   | **Appliance ISO**                     | Smaller ISO without embedded content bundle.    |
-   | **Appliance ISO with Content**        | Full ISO with embedded content bundle.          |
-   | **MOK Key for Secure Boot**           | MOK key to use for secure boot with MokManager. |
+   | **Artifact**                   | **Description**                                 |
+   | ------------------------------ | ----------------------------------------------- |
+   | **Appliance ISO with Content** | Full ISO with embedded content bundle.          |
+   | **MOK Key for Secure Boot**    | MOK key to use for secure boot with MokManager. |
 
-4. Download the **Appliance ISO with Content**. Or, download both **Appliance ISO** and **Content bundle (including
-   Ubuntu)**. Download **MOK Key for Secure Boot** if you use secure boot on your host.
-
-   If you have downloaded the **Content bundle (including Ubuntu)**,
-   [upload it using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle) or
-   [Palette CLI](../../automation/palette-cli/commands/content.md#upload).
-
-   :::info
-
-   Use the slim **Appliance ISO** and **Content bundle (including Ubuntu)** when you have limited network capacity for
-   mounting ISOs and when you have greater network capacity to upload the content bundle after the initial install.
-
-   :::
-
-![Screenshot of download screen from artifact studio](/vmo/vm-management_launchpad-for-vms_iso-download-4-9.webp)
+4. Download the **Appliance ISO with Content**. Download **MOK Key for Secure Boot** if you use secure boot on your
+   host.
 
 5. Boot your device using the Launchpad for VMs Appliance ISO.
 
@@ -208,14 +193,6 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 4. The default **VMO Appliance full stack** profile loads. The following table describes each pack in the profile. After
    you review the cluster profile, select **Next**.
-
-   :::info
-
-   If your installation is using the [**Appliance ISO**](#install),
-   [upload the content bundle using Local UI](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md#upload-bundle)
-   or [Palette CLI](../../automation/palette-cli/commands/content.md#upload). Then continue with Step 4.
-
-   :::
 
    | **Component**              | **Pack Name**                  | **Purpose**                                                                                                                                      |
    | -------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
