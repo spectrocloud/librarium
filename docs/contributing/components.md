@@ -10,20 +10,20 @@ intergations use the `<Packs />` component, whereas the Service Tiers from App M
 To add a Pack to the list complete the following actions:
 
 - Add a new markdown page for the Pack.
-- In the frontmatter set the type to the following value: `type: "integration"`.
+- In the frontmatter, set the type to the following value: `type: "integration"`.
 - Populate the page with content.
 
 To add a Service to the Service List complete the following actions:
 
 - Add a new markdown page for the App Mode Service.
-- In the frontmatter set the type to the following value: `type: "appTier"`.
+- In the frontmatter, set the type to the following value: `type: "appTier"`.
 - Populate the page with content.
 
 ## Tabs component
 
-To use the tabs component you have to import it from the _shared_ folder
+To use the tabs component, you have to import it from the _shared_ folder.
 
-After that, you can use it like this
+After that, you can use it like this:
 
 ```js
 <Tabs queryString="platform">
@@ -36,19 +36,19 @@ After that, you can use it like this
 </Tabs>
 ```
 
-**Note**: If you want to navigate from one page to another(which has tabs) and default tab to specific key then you must
+**Note**: If you want to create a link to a page with tabs, and link to a specific tab, you must do the following:
 
-- provide an identifier to the `Tabs` component `<Tabs queryString="clusterType">...</Tabs>`
-- when creating the link to this page, include (in the query) the identifier provided and the **value** you want (eg:
-  /clusters?clusterType=aws#section1)
-- the values can be one of the tab panel keys
-- additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
+- Provide an identifier to the `Tabs` component `<Tabs queryString="clusterType">...</Tabs>`.
+- When creating the link to this page, include (in the query) the identifier provided and the **value** you want (eg:
+  `/clusters?clusterType=aws#section1`).
+- The values can be one of the tab panel keys.
+- Additionally, you may refer to different sections from the inner tab using the anchor points(using the #section-1).
 
 ## YouTube Video
 
-To use a Youtube video us the YouTube component.
+To embed a YouTube video, use the YouTube component.
 
-In your markdown file, use the component and ensure you specify a URL.
+For example:
 
 ```js
 <YouTube
@@ -110,23 +110,7 @@ _bottom_, _bottomLeft_, _leftBottom_, _left_, _leftTop_.
 
 - The tooltip icon can be customized by sending a [font awesome](https://fontawesome.com/icons?d=gallery) icon
 
-```js
-<Tooltip icon="atom">tooltip content</Tooltip>
-```
-
-- If needed, the icon can be replace with text or other html tags using the trigger property:
-
-```js
-<Tooltip trigger={<button>This is a button</button>}>
-  <h1>This is a h1 inside the tooltip</h1>
-</Tooltip>
-```
-
-- If used inside a paragraph or other md elements the entire "block" needs to be on the same line
-
-```js
-Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
-```
+  
 
 ## Video
 

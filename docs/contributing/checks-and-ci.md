@@ -4,11 +4,13 @@
 
 ## Netlify Previews
 
-By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
+By default, Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
 the [netlify.toml](../../netlify.toml) file, a custom script is used to determine if a Netlify preview should be
 created. The script is located in the [scripts/netlify.sh](../../scripts/netlify.sh) file. If you need to disable
 Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the
 [scripts/netlify.sh](../../scripts/netlify.sh) file.
+
+If you want to add a branch whereby any pull request to that branch will trigger a Netlify Preview, go to the [**Branches and deploy contexts** in Netlify](https://app.netlify.com/projects/docs-spectrocloud/configuration/deploys#branches-and-deploy-contexts) and click **Configure**. Add your branch to the **Additional branches** field, and click **Save**.
 
 ## Check Writing
 

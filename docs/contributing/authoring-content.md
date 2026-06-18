@@ -34,11 +34,11 @@ of the its sub pages.
 
 The **navigation** sidebar will be something across all pages.
 
-The **header** will have a search bar and some links to different other sections of the documentation (api)
+The **header** will include a search bar and links to different sections of the documentation (API).
 
-The page **content** will be displayed under the header and next to the sidebar. On it's right there will be a **table
+The page **content** will be displayed under the header and next to the sidebar. On the right, there will be a **table
 of contents** menu that will extract all of the headers inside the content and display them in a list. This will follow
-the user as he scroll the page. On top of the table of contents there will be a **github link** to the content of the
+the user as they scroll the page. On top of the table of contents, there will be a **GitHub link** to the content of the
 file. This can be used by users to submit changes to different sections of our documentation.
 
 ### Main Pages
@@ -62,6 +62,8 @@ sidebar_custom_props:
 
 #### Front Matter Attributes
 
+An exhaustive list of front matter attributes is available in the [Docusaurus documentation](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter).
+
 | attribute                                   | type    | description                                                                                             |
 | ------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
 | `sidebar_label`                             | string  | used as the label for navigation                                                                        |
@@ -77,7 +79,7 @@ sidebar_custom_props:
 
 ### Sub pages
 
-Create a folder using the **same name** of the main page. Inside of it use the same name convention
+Create a folder using the **same name** of the main page. Inside it, create a Markdown file with the same name convention
 (`<url-using-dashes>.md`) to create subpages.
 
 The index document for a folder follows the naming convention below. Here are some examples:
