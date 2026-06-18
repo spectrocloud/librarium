@@ -16,6 +16,8 @@ import { Redirect } from "react-router-dom";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import ReactMarkDown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { packCveImports } from "@site/src/generated/packCveImports";
+
 interface PackReadmeProps {
   customDescription: string;
   packUidMap: Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }>;
@@ -254,8 +256,15 @@ export default function PacksReadme() {
         console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
       });
       const importCVEs = async () => {
+        const importer = packCveImports[pckName];
+
+        if (!importer) {
+          setPackCves(null);
+          return;
+        }
+
         try {
-          const module: MarkdownFile = await import(`../../../docs/docs-content/security-bulletins/packs/${pckName}.mdx`);
+          const module = await importer();
           const PackReadMeComponent = module.default;
           setPackCves(
             <div className={styles.customReadme}>

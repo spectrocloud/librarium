@@ -157,6 +157,7 @@ async function generateCVEs() {
 
   await generateMarkdownForPackCVEs(GlobalCVEData);
   await collatePackCVEFiles();
+  await generatePackCVEImportMap();
 }
 
 async function generateMarkdownForPackCVEs(GlobalCVEData) {
@@ -324,6 +325,36 @@ ${tabItems}
   }
 
   logger.success("All collated pack CVE markdown files generated.");
+}
+
+async function generatePackCVEImportMap() {
+  const packsDir = "docs/docs-content/security-bulletins/packs";
+  const outputFile = "src/generated/packCveImports.ts";
+
+  mkdirSync(path.dirname(outputFile), { recursive: true });
+
+  const files = await fs.readdir(packsDir);
+
+  const imports = files
+    .filter((file) => file.endsWith(".mdx"))
+    .sort()
+    .map((file) => {
+      const packName = file.replace(/\.mdx$/, "");
+
+      return `  "${packName}": () => import("../../../docs/docs-content/security-bulletins/packs/${file}"),`;
+    })
+    .join("\n");
+
+  const content = `/* AUTO-GENERATED. DO NOT EDIT. */
+
+export const packCveImports: Record<string, () => Promise<any>> = {
+${imports}
+};
+`;
+
+  await fs.writeFile(outputFile, content);
+
+  logger.success("Generated pack CVE import map.");
 }
 
 generateCVEs().catch((error) => {

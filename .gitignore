@@ -53,6 +53,7 @@ static/security-data/data.json
 docs/docs-content/security-bulletins/pack-cves/*.mdx
 docs/docs-content/security-bulletins/packs/*.mdx
 static/security-pack-data/data.json
+src/generated/packCveImports.ts
 
 # Versions Content
 versions.json
