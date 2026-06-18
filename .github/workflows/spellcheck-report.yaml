@@ -22,7 +22,7 @@ jobs:
     steps:
       
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -55,6 +55,7 @@ jobs:
         run: |
           # Copy contents from vale-spellcheck.ini to .vale.ini
           cp vale-spellcheck.ini .vale.ini
+          mkdir -p vale/styles
           vale sync
 
       - name: Run Spellcheck
@@ -84,7 +85,7 @@ jobs:
 
       - name: Upload Vale Results
         if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: "vale-spellcheck-results"
           path: vale-spellcheck-results.txt
@@ -98,7 +99,7 @@ jobs:
 
       - name: Slack Notification No Vale Errors
         if: ${{ env.VALE_ERRORS_FOUND == 'false'}}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -110,7 +111,7 @@ jobs:
       
       - name: Slack Notification Vale Errors
         if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
@@ -122,7 +123,7 @@ jobs:
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}

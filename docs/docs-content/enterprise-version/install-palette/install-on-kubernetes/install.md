@@ -50,6 +50,8 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 
   - A minimum of three worker nodes or three untainted control plane nodes.
 
+  - AMD64 (also known as x86_64) architecture. ARM-based nodes are not supported.
+
 - The following network ports must be accessible for Palette to operate successfully.
 
   - TCP/443: Inbound and outbound to and from the Palette management cluster.
