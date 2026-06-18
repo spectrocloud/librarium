@@ -1440,7 +1440,7 @@ resolve this issue, you must manually set these endpoints.
 
 MAAS and VMware vSphere clusters will now be successfully provisioned on your self-hosted Palette environment.
 
-## Scenario - Rollback Linstor High Availability Configuration on Single Node Environments
+## Scenario - Rollback LINSTOR High Availability Configuration on Single Node Environments
 
 [Palette Management Appliance](../enterprise-version/upgrade/palette-management-appliance.md) and
 [VerteX Management Appliance](../vertex/upgrade/vertex-management-appliance.md) upgrades from 4.7.27 require executing
