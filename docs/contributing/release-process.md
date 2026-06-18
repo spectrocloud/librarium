@@ -2,6 +2,8 @@
 
 # Release Process
 
+The following section discusses the basics of creating a new documentation release based on an upcoming Palette release. Refer to our [Confluence Release Checklist](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1830420481/Release+Checklist) for additional details.
+
 ## Release
 
 To create a new release, use the following steps:
@@ -10,25 +12,27 @@ To create a new release, use the following steps:
 2. Create a commit using the following commit message `feat: updating documentation for `docs-rel-X-X`. Replace x-x with
    the upcoming release number.
 3. Push up the commit and create a new pull request (PR).
-4. Merge PRs related to the upcoming release into the `docs-rel-X-X` branch.
-5. Merge the release branch.
-6. Create a new branch from the `master` branch. Use the following naming pattern `version-X-X`. This brach is used for
-   versioning the documentation.
-7. Push the new version branch to the remote repository.
-8. Trigger a new build so that the new version is published.
+4. Merge PRs related to the upcoming release into the `docs-rel-X-X` branch. Apart from individual Jira tickets capturing product changes, use [release scripts](#palette-release#documentation) to populate values specific to each release. 
+5. Merge the release branch. 
+
+- If the branch `version-X-X` that corresponds to the current major-minor version of Palette already exists, add the labels auto-backport and backport-version-X-X, where version-X-X corresponds to the current major-minor version of Palette.
+
+- If no `version-X-X` branch that corresponds to the current major-minor of Palette exists, create a new `version-X-X` branch from the `master` used for versioning the documentation, and push the new version branch to the remote repository.
+
+8. Trigger a new release to publish the release.
 
 The semantic-release logic and the GitHub Actions in the [release.yaml](../../.github/workflows/release.yaml) will
 ensure the new release tag is created.
 
 > [!WARNING]
 >
-> Do not use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a version change. Use the commit
+> Unless merging a release branch, do not use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a version change. Use the commit
 > message prefix `docs: yourMessageHere` for regular documentation commits.
 
 ## Unreleased Version Banner
 
 The `UNRELEASED_VERSION_BANNER` environment variable is used to determine if the unreleased version banner should be
-displayed. The default value is `false`. If you want to display the unreleased version banner, set the
+displayed (for example, on [https://docs-latest.spectrocloud.com/release-notes/](https://docs-latest.spectrocloud.com/release-notes/). The default value is `false`. If you want to display the unreleased version banner, set the
 `UNRELEASED_VERSION_BANNER` environment variable to `true`.
 
 ```shell
@@ -54,8 +58,8 @@ The scripts update the following files.
 
 ### Environment Variables
 
-The following table provides an overview of all the environment variables and which pages they are used on. For ease of
-recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix.
+The following table provides an overview of all the environment variables and which pages they are used on. These variables are set in your local `.env` file and used for automatically populating certain pages with the necessary values. For ease of
+recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix. For more information on where to find these values, refer to the [Confluence Release Checklist](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1830420481/Release+Checklist) page. 
 
 #### Jira and Super API
 
