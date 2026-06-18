@@ -255,8 +255,12 @@ export default function PacksReadme() {
       importComponent().catch((e) => {
         console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
       });
+
+      type PackCveImportMap = Record<string, () => Promise<MarkdownFile>>;
+      const typedPackCveImports = packCveImports as PackCveImportMap;
+
       const importCVEs = async () => {
-        const importer = packCveImports[pckName];
+        const importer = typedPackCveImports[pckName];
 
         if (!importer) {
           setPackCves(null);
@@ -264,7 +268,7 @@ export default function PacksReadme() {
         }
 
         try {
-          const module: MarkdownFile = await importer();
+          const module = await importer();
           const PackReadMeComponent = module.default;
 
           setPackCves(

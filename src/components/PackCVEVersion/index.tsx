@@ -5,15 +5,33 @@ interface PackCVEVersionProps {
   version: string;
 }
 
+interface CVE {
+  cve: string;
+  severity: string;
+  package: string;
+  hasFix: boolean;
+  isImpacting: boolean;
+}
+
+interface ImageCVEData {
+  image: string;
+  tag: string;
+  cves: CVE[];
+}
+
+interface PackCVEData {
+  images: ImageCVEData[];
+}
+
 export default function PackCVEVersion({ pack, version }: PackCVEVersionProps) {
-  const [data, setData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [data, setData] = useState<PackCVEData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     let mounted = true;
 
-    async function loadData() {
+    async function loadData(): Promise<void> {
       try {
         const response = await fetch(`/generated/pack-cves/${pack}-${version}.json`);
 
@@ -21,7 +39,7 @@ export default function PackCVEVersion({ pack, version }: PackCVEVersionProps) {
           throw new Error(`Failed to fetch CVE data: ${response.status}`);
         }
 
-        const json = await response.json();
+        const json = (await response.json()) as PackCVEData;
 
         if (mounted) {
           setData(json);
@@ -37,7 +55,7 @@ export default function PackCVEVersion({ pack, version }: PackCVEVersionProps) {
       }
     }
 
-    loadData();
+    void loadData();
 
     return () => {
       mounted = false;
@@ -54,7 +72,7 @@ export default function PackCVEVersion({ pack, version }: PackCVEVersionProps) {
 
   return (
     <>
-      {data.images.map((imageData) => (
+      {data.images.map((imageData: ImageCVEData) => (
         <section key={`${imageData.image}:${imageData.tag}`}>
           <h2>
             {imageData.image}:{imageData.tag}
@@ -72,7 +90,7 @@ export default function PackCVEVersion({ pack, version }: PackCVEVersionProps) {
             </thead>
             <tbody>
               {imageData.cves.length > 0 ? (
-                imageData.cves.map((cve) => (
+                imageData.cves.map((cve: CVE) => (
                   <tr key={`${imageData.image}-${imageData.tag}-${cve.cve}-${cve.package}`}>
                     <td>{cve.cve}</td>
                     <td>{cve.severity}</td>
