@@ -10,9 +10,9 @@ To contribute, we recommend having the following software installed locally on y
 
 - [Docker](https://docs.docker.com/desktop/)
 
-- git configured and access to github repository
+- Git configured and access to the GitHub repository
 
-- Node.js v20 and npm.
+- Node.js v22 and npm.
 
 - [Vale](https://vale.sh/docs/vale-cli/installation/), version 3.6.0 or higher.
 
@@ -70,7 +70,6 @@ To exit from the local development Docker container. Press `Ctrl + Z`.
 Clone the repository and run the initialization script.
 
 ```sh
-cd Work
 git clone https://github.com/spectrocloud/librarium.git
 cd librarium
 make init

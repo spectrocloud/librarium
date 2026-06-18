@@ -69,7 +69,7 @@ CVE data is saved locally in the `.docusaurus/security-bulletins/default/data.js
 `make clean-security`. You can use the cached CVE artifact locally when you want to avoid the CVE download time. This
 flow also helps you when you don't have any local CVE data and we are experiencing an API outage.
 
-librarium provides the following commands which fetch cached CVE data to your local environment.
+Librarium provides the following commands that fetch cached CVE data into your local environment.
 
 | **Command**              | **Description**                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -160,7 +160,7 @@ data using `make clean-packs`. You can use the cached packs artifact locally whe
 data and you want to avoid the pack download time. This flow also helps you when you don't have any local packs data and
 we are experiencing an API outage.
 
-librarium provides the following commands which fetch cached packs to your local environment.
+Librarium provides the following commands, which fetch cached packs to your local environment.
 
 | **Command**               | **Description**                                                                                                                                    |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
