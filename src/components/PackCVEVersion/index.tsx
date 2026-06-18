@@ -1,6 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function PackCVEVersion({ data }) {
+interface PackCVEVersionProps {
+  pack: string;
+  version: string;
+}
+
+export default function PackCVEVersion({ pack, version }: PackCVEVersionProps) {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadData() {
+      try {
+        const response = await fetch(`/generated/pack-cves/${pack}-${version}.json`);
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch CVE data: ${response.status}`);
+        }
+
+        const json = await response.json();
+
+        if (mounted) {
+          setData(json);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error(err);
+
+        if (mounted) {
+          setError(true);
+          setLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      mounted = false;
+    };
+  }, [pack, version]);
+
+  if (loading) {
+    return <p>Loading CVEs...</p>;
+  }
+
+  if (error || !data) {
+    return <p>Unable to load CVE data.</p>;
+  }
+
   return (
     <>
       {data.images.map((imageData) => (

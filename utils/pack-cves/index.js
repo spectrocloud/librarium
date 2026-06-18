@@ -153,7 +153,7 @@ async function generateCVEs() {
 }
 
 async function generatePackCVEJsonFiles(GlobalCVEData) {
-  const outputDir = "src/generated/pack-cves";
+  const outputDir = "static/generated/pack-cves";
   mkdirSync(outputDir, { recursive: true });
 
   const packImages = GlobalCVEData.cves || [];
@@ -235,11 +235,9 @@ async function generatePackCVEMdxWrappers(GlobalCVEData) {
     const tabItems = versions
       .map((version) => {
         const label = version.replace(/\.\d+$/, ".x");
-        const jsonFile = `${pack}-${version}.json`;
-
         return `<TabItem label="${label}" value="${version}">
 
-<PackCVEVersion data={require("@site/src/generated/pack-cves/${jsonFile}")} />
+<PackCVEVersion pack="${pack}" version="${version}" />
 
 </TabItem>`;
       })
