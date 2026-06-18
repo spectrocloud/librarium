@@ -19,6 +19,7 @@ The recommended local development path uses Docker.
 
 1. Install the required software listed in the
    [Local Development](./docs/contributing/local-development.md#prerequisites) guide.
+
 2. Initialize the repository.
 
    ```shell
