@@ -287,9 +287,8 @@ override, Palette reverts the overridden fields to the values it manages nativel
 node pool, depending on which fields change.
 
 - A repave occurs if the reversion changes a field that Palette uses to decide when to repave a node pool. Palette
-  maintains a fixed, provider-specific list of repave-triggering fields. On AWS, these fields include the instance type,
-  SSH key name, root volume size, and AMI ID. On CloudStack, they include the compute offering, SSH key, template, and
-  networks.
+  maintains a fixed, provider-specific list of repave-triggering fields. For example, on AWS IaaS, these fields include the instance type,
+  SSH key name, root volume size, and AMI ID.
 
 - A repave does not occur if the reversion changes only fields that are not repave-triggering, such as metadata. For
   example, AWS additional tags and CloudStack details are not on the list, so reverting them does not trigger a repave.
