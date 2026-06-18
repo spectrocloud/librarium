@@ -74,8 +74,7 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 <!-- prettier-ignore-start -->
 
 4. Click **Add New Pack** and choose from either the
-   <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the
-   <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack.
+   <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the <VersionedLink text="Zot" url="/integrations/packs/?pack=zot-registry" /> pack.
 <!-- prettier-ignore-end-->
 
 5. Configure the credentials used to log in to the registry.

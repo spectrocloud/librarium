@@ -116,3 +116,10 @@ if you want to use a different CNI pack altogether, we recommend you create anot
 
 Changes made to the storage layer typically do not result in cluster repave or reboot and can be applied by restarting
 the related storage services.
+
+:::warning
+
+Do not change to a different storage pack after provisioning a cluster. You can make changes to the existing storage
+pack, but if you want to use a different storage pack altogether, we recommend you create another cluster.
+
+:::

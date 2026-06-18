@@ -292,8 +292,8 @@ Follow the steps below to create a custom pack.
    pack:
      content:
        images:
-         - docker.io/example-image:latest
-         - gcr.io/example-image-two:latest
+         - image: docker.io/example-image:latest
+         - image: gcr.io/example-image-two:latest
    ```
 
    If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an

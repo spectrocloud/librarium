@@ -51,6 +51,8 @@ and permissions for your VMs.
 
 - [Architecture](./architecture.md)
 
+- [Overcommit and Memory Optimization](./vmo_overcommit_memory_optimization.md)
+
 - [Install VMO in Airgap Environments](./install-vmo-in-airgap.md)
 
 - [Create a VMO Profile](./create-vmo-profile.md)

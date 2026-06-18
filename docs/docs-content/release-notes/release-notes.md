@@ -1067,7 +1067,7 @@ available. For more details, refer to the Terraform provider
   using the **certs** folder to pass proxy certificates to the CanvOS build process.
 - Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
   has been removed. This change primarily affects customers using Palette agents on versions older than 4.0, and the
-  NATS namespace must be [manually removed](../troubleshooting/nodes.md#scenario---remove-deprecated-nats-namespace)
+  NATS namespace must be [manually removed](../troubleshooting/nodes/nodes.md#scenario---remove-deprecated-nats-namespace)
   from affected clusters. To learn more about Palette's internal network architecture, refer to the
   [Network Ports](../architecture/networking-ports.md) page. If you are using network proxies, we recommend you review
   the [gRPC and Proxies](../architecture/grps-proxy.md) documentation for potential issues.
