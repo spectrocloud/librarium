@@ -24,10 +24,6 @@ The following components have been updated for Palette version 4.9.5 - 4.9.18.
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.10  |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.4  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.4  |
-| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.6   |
-| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.6   |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-2914. DO NOT DELETE. -->
 
