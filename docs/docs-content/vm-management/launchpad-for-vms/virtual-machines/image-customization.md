@@ -11,7 +11,7 @@ tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 <!-- vale off -->
 
 Customization templates define seal and generalize scripts used during golden image finalization. They prepare the OS
-for cloning by removing machine-specific data and ensuring each clone gets a unique identity.
+for cloning by removing machine-specific data and ensuring each clone gets a unique identity. Create custom customization templates for other Linux distributions (for example, Alpine, Arch, SUSE, and others), if you need to modify the seal logic, if you need additional cleanup or custom scripts, or for security hardening and compliance checks.
 
 ## What Are Customization Templates?
 
@@ -37,33 +37,29 @@ Launchpad seeds several built-in customization templates:
 
 Built-in templates cannot be deleted but can be used as references for custom templates.
 
-## Custom Templates
-
-Create custom customization templates for:
-
-- **Other Linux distributions** — Alpine, Arch, SUSE, and others.
-- **Modified seal logic** — Additional cleanup or custom scripts.
-- **Organization-specific steps** — Security hardening and compliance checks.
-
 ### Creating a Custom Template
 
-1. Navigate to **Image Catalog** > **Customization Templates**.
-2. Select **Create Customization Template**.
-3. Set:
+1. Navigate to **Image Catalog** > **Finalize Templates**.
+2. Select **Create Template**.
+3. Complete the following fields on the **Create Finalize Template** page and select **Create**.
 
-   - **Name** — Unique identifier.
-   - **OS Type** — `linux`, `windows`, `ubuntu`, `rhel`, or another supported value. Launchpad uses this value to filter
-     templates during finalization.
-   - **Script** — The shell script (Linux) or batch/PowerShell commands (Windows) to run during finalize.
+   | **Parameter** | **Description**                                                                                                                            |
+   | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Name** | Enter a unique name for the template. |
+   | **Description** | Enter a description for the template. |
+   | **OS Type** |`linux`, `windows`, `ubuntu`, `rhel`, or another supported value. Launchpad uses this value to filter templates during finalization. |
+   | **Script** | Select the option on how to add the script: **Editor**, **Template**, **Upload**, or **URL**. |
 
-4. Save. The customization template is available in the Finalize modal when the guest OS matches.
+The customization template is available on the **Finalize Template** page.
 
 ### Script Requirements
 
-- **Linux** — Bash script. Must complete successfully; avoid `set -e` if you need partial cleanup to succeed. The script
-  runs as root. End with `sync` and a clear completion message.
-- **Windows** — Batch or PowerShell. Must run sysprep or equivalent for generalization. The Windows built-in template
-  uses sysprep with `/generalize /oobe /shutdown`.
+| **OS** | **Description**                                                                                                                            |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Linux** | Bash script. Must complete successfully; avoid `set -e` if you need partial cleanup to succeed. The script
+  runs as root. End with `sync` and a clear completion message. |
+| **Windows** | Batch or PowerShell. Must run sysprep or equivalent for generalization. The Windows built-in template
+  uses sysprep with `/generalize /oobe /shutdown`. |
 
 ## Auto-Install Scripts
 
