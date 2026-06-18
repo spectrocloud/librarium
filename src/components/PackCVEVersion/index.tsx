@@ -5,7 +5,9 @@ export default function PackCVEVersion({ data }) {
     <>
       {data.images.map((imageData) => (
         <section key={`${imageData.image}:${imageData.tag}`}>
-          <h2>{imageData.image}:{imageData.tag}</h2>
+          <h2>
+            {imageData.image}:{imageData.tag}
+          </h2>
 
           <table>
             <thead>
@@ -23,7 +25,9 @@ export default function PackCVEVersion({ data }) {
                   <tr key={`${imageData.image}-${imageData.tag}-${cve.cve}-${cve.package}`}>
                     <td>{cve.cve}</td>
                     <td>{cve.severity}</td>
-                    <td><code>{cve.package}</code></td>
+                    <td>
+                      <code>{cve.package}</code>
+                    </td>
                     <td>{cve.hasFix ? "Yes" : "No"}</td>
                     <td>{cve.isImpacting ? "Yes" : "No"}</td>
                   </tr>

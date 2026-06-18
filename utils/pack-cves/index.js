@@ -230,9 +230,7 @@ async function generatePackCVEMdxWrappers(GlobalCVEData) {
   }
 
   for (const [pack, versionSet] of groupedByPack.entries()) {
-    const versions = Array.from(versionSet).sort((a, b) =>
-      b.localeCompare(a, undefined, { numeric: true })
-    );
+    const versions = Array.from(versionSet).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
 
     const tabItems = versions
       .map((version) => {
