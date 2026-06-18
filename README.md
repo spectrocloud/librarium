@@ -90,6 +90,7 @@ The content in this repository requires approval from the documentation team. Ap
 | [Generated Content and Integrations](./docs/contributing/generated-content.md) | API docs, security bulletins, packs, cached generated data, and the Kapa widget.        |
 | [Checks and CI](./docs/contributing/checks-and-ci.md)                          | Netlify previews, Vale, Prettier, spellcheck, and build exit codes.                     |
 | [Release Process](./docs/contributing/release-process.md)                      | Release branches, unreleased banners, Palette release automation, and release commands. |
+| [Style Guide](./style-guide.md)                                                | Spectro Cloud documentation style, grammar, formatting, and usage guidance.             |
 
 ## Repository References
 
@@ -101,3 +102,16 @@ The content in this repository requires approval from the documentation team. Ap
 | [static/assets/docs/images](./static/assets/docs/images/) | Documentation image assets.                                 |
 | [CODEOWNERS](./CODEOWNERS)                                | Pull request ownership and approval rules.                  |
 | [Makefile](./Makefile)                                    | Local development, validation, and release helper commands. |
+
+## Related GitHub Repositories
+
+| Repository                                                                                                    | Use it for                                                    |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [spectrocloud/librarium](https://github.com/spectrocloud/librarium)                                           | Spectro Cloud documentation source.                           |
+| [spectrocloud/spectro-vale-pkg](https://github.com/spectrocloud/spectro-vale-pkg)                             | Spectro Cloud Vale style rules.                               |
+| [spectrocloud/tutorials](https://github.com/spectrocloud/tutorials)                                           | Tutorial source and supporting examples.                      |
+| [spectrocloud/docs-assignments](https://github.com/spectrocloud/docs-assignments)                             | Documentation assignment tracking.                            |
+| [spectrocloud/docusaurus-versioning-template](https://github.com/spectrocloud/docusaurus-versioning-template) | Historical Docusaurus versioning reference and demo template. |
+| [spectrocloud/hello-universe](https://github.com/spectrocloud/hello-universe)                                 | Hello Universe sample application.                            |
+| [spectrocloud/hello-universe-api](https://github.com/spectrocloud/hello-universe-api)                         | Hello Universe API service.                                   |
+| [spectrocloud/hello-universe-db](https://github.com/spectrocloud/hello-universe-db)                           | Hello Universe database service.                              |

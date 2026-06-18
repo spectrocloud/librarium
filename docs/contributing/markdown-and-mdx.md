@@ -4,13 +4,14 @@
 
 ## Markdown Links and URLs
 
-Markdown links use file path references to link to other documentation pages. The markdown link is composed of the file
-path to the page in context from the current file. All references to a another documentation page must end with the
-`.md` extension. Docusaurus will automatically remove the `.md` extension from the URL during the compile. The file path
-is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
+Markdown links use path references to link to other documentation pages. The markdown link contains the path to the page
+in context from the current file. All references to another documentation page must end with the `.md` extension.
 
-The following example shows how to reference a page in various scenarios. Assume you have the following folder structure
-when reviewing the examples below:
+The build process automatically removes the `.md` extension from the URL during the compile. The path helps generate the
+correct URL for the page when versioning is enabled.
+
+The following example shows how to reference a page in common scenarios. Assume you have the following folder structure
+when reviewing the examples.
 
 ```shell
 .
@@ -27,17 +28,17 @@ when reviewing the examples below:
 
 ### Same Folder
 
-To link to a file in the same folder, you can use the following syntax:
+To link to a file in the same folder, use the following syntax.
 
 ```md
 ![Insert a description here](name_of_file.md)
 ```
 
-Because the file is in the same folder, you do not need to specify the path to the file. Docusaurus will automatically
-search the current folder for the file when compiling the markdown content.
+Because the file is in the same folder, you don't need to specify the path to the file.
 
-So, if you are in the file `grpc.md` and want to reference the file `ip-addresses.md`, you would use the following
-syntax:
+The build process automatically searches the current folder for the file when compiling the markdown content.
+
+For example, to reference `ip-addresses.md` from `grpc.md`, use the following syntax.
 
 ```md
 ![A list of all Palette public IP addresses](ip-addresses.md)
@@ -45,44 +46,49 @@ syntax:
 
 ### Different Folder
 
-If you want to link to a file in a different folder, you have to specify the path to the file from where the current
-markdown file is located.
+To link to a file in a different folder, use either a relative path from the current file or an absolute path from the
+`docs-content` root.
 
-If you are in the file `security.md` and want to reference the file `iam-permissions.md`, you have to use the following
-syntax:
+For example, to reference `iam-permissions.md` from `security.md`, use one of the following paths.
 
-```md
+```md title="Relative path"
 ![A list of all required IAM permissions for Palette](aws/iam-permissions.md)
 ```
 
-If you are in the file `grpc.md` and want to reference the file `iam-permissions.md`, you have to use the following
-syntax:
+```md title="Absolute path"
+![A list of all required IAM permissions for Palette](/aws/iam-permissions.md)
+```
 
-```md
+To reference `iam-permissions.md` from `grpc.md`, use one of the following paths.
+
+```md title="Relative path"
 ![A list of all required IAM permissions for Palette](../aws/iam-permissions.md)
+```
+
+```md title="Absolute path"
+![A list of all required IAM permissions for Palette](/aws/iam-permissions.md)
 ```
 
 ### A Heading in the Same File
 
-To link to a heading in the same file, you can use the following syntax:
+To link to a heading in the same file, use the following syntax.
 
 ```md
 [Link to a heading in the same file](#heading-name)
 ```
 
-The `#` symbol is used to reference a heading in the same file. The heading name must be in lowercase and spaces must be
-replaced with a `-` symbol. Docusaurs by default uses dashes to separate words in the URL.
+The `#` symbol references a heading in the same file. Use lowercase characters for the heading name, and replace spaces
+with a `-` symbol. The default behavior uses dashes to separate words in the URL.
 
 ### A Heading in a Different File
 
-To link to a heading in a different file, you can use the following syntax:
+To link to a heading in a different file, use the following syntax.
 
 ```md
 [Link to a heading in a different file](name_of_file.md#heading-name)
 ```
 
-For example, if you are in the file `grpc.md` and want to reference the heading `Palette gRPC API` in the file
-`security.md`, you would use the following syntax:
+For example, to reference the `Palette gRPC API` heading in `security.md` from `grpc.md`, use the following syntax.
 
 ```md
 [Link to a heading in a different file](../security.md#palette-grpc-api)
@@ -90,20 +96,57 @@ For example, if you are in the file `grpc.md` and want to reference the heading 
 
 The important thing to remember is that the `#` comes after the file name and before the heading name.
 
-### Exceptions
+### Linking to and from API Docs
 
-As of Docusarus `2.4.1`, the ability to link to documentation pages that belong to another plugin is unavailable. To
-work around this limitation, reference a documentation page by the URL path versus the file path.
+In Docusaurus, a **plugin** is a separate content system that owns its own source files, routes, and sidebar. Each
+plugin processes Markdown independently and maintains its own file-path-to-URL mapping.
+
+This repository configures two docs plugins in `docusaurus.config.js`.
+
+| Plugin                 | Source folder                | URL base | Content               |
+| ---------------------- | ---------------------------- | -------- | --------------------- |
+| Main docs (default)    | `docs/docs-content/`         | `/`      | Product documentation |
+| API docs (`id: "api"`) | `docs/api-content/api-docs/` | `/api`   | API reference         |
+
+> [!NOTE] Tutorials and Downloads have their own sidebars in the navbar, but they use the same plugin as the rest of the
+> product docs. Their folders live within `docs/docs-content/` and use the same URL base (`/`). The site shows a
+> different sidebar depending on which navbar item you select (configured in `sidebars.js` and `docusaurus.config.js`),
+> but Docusaurus still processes all of those pages as one plugin. That is why a tutorial can link to a product doc with
+> a path such as `../../profiles/profiles.md`, while a link to the API reference must use a URL path such as
+> `/api/introduction`.
+
+Path links with a `.md` extension only work **within the same plugin**. You can link from one product doc to another
+using the path syntax described above because the main docs plugin processes both files under `docs/docs-content/`.
+
+Docusaurus cannot resolve a `.md` path across plugins. For example, a link from `docs/docs-content/` to
+`docs/api-content/api-docs/1-introduction.md` doesn't work, even though both folders live under `docs/`. To link between
+plugins, use a **URL path** instead. Don't include a file extension in the link.
 
 ```md
-[Link to a page in another plugin](/api-content/authentication#api-key)
+<!-- From a page in docs/docs-content/ -->
+
+[Palette API introduction](/api/introduction)
+
+[API Key section](/api/introduction#api-key)
+
+[Palette API v1 endpoints](/api/category/palette-api-v1/)
 ```
 
-> [!WARNING] Be aware that this approach will break versioning. The user experience will be impacted as the user will be
-> redirected to the latest version of the page.
+The same rule applies in reverse. From a page under `docs/api-content/`, link back to product docs with a URL path.
 
-In future releases, Docusaurus will support linking pages from other Docusarus plugins. Once this feature is available,
-this documentation will be updated.
+```md
+<!-- From a page in docs/api-content/ -->
+
+[Create API Key](/user-management/authentication/api-key/create-api-key)
+```
+
+Use the route path the page appears at on the site, not the folder path in the repository. For example, use
+`/api/introduction`, not `/api-content/api-docs/1-introduction.md` or `/api-content/authentication`.
+
+> [!NOTE] Root-relative URL paths such as `/api/introduction` resolve against the current host. On a legacy deployment
+> such as [v4.8.x](https://version-4-8.legacy.docs.spectrocloud.com/), that link stays on the versioned site. Avoid
+> hard-coded links to `https://docs.spectrocloud.com/...` in content that must work on archived versions, because those
+> always point to the latest production site.
 
 ## Redirects
 
@@ -129,14 +172,14 @@ Alternately, issue the command `make format-images` to convert the images to web
 ![alt text](/clusterprofiles.png "cluster profiles example")
 ```
 
-You can add a directory to to the images folder.
+You can add a directory to the images folder.
 
 ```md
 ![alt text](/introduction/clusterprofiles.png "cluster profiles example")
 ```
 
-**Image Loading** Image size loading can be customised. You can provide eager-load to images in the first fold of the
-image with high priority as LCP (Largest contentful Paint) for the page will not be affected
+**Image Loading** Image size loading can be customized. You can provide eager-load to images in the first fold of the
+image with high priority so LCP (Largest Contentful Paint) for the page is not affected.
 
 ```md
 ![alt text eager-load](/clusterprofiles.png)
@@ -148,13 +191,21 @@ You can highlight specific lines in a block of code by using a
 [metadata string](https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-metadata-string) in the
 header of the code block.
 
-For example, using `
+For example, the following code block declaration highlights lines 1 and 3.
 
-### Hide ClipBoard Button
+````md
+```text {1,3}
+line one
+line two
+line three
+```
+````
+
+### Hide Clipboard Button
 
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
 value `hideClipboard` in the markdown declaration of the code blocks. This is useful for example output where the user
-does not need to copy or use the content.
+doesn't need to copy or use the content.
 
 Example ![Example](../../static/assets/docs/images/hide_copy_button_example.webp)
 
@@ -164,7 +215,7 @@ Result
 
 ## Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance / Deprecated
 
-For guidance on using admonitions in our docs, refer to the
+For guidance on using admonitions in the docs, refer to the
 [Spectro Cloud Internal Style Guide: Admonitions](../../style-guide.md#admonitions).
 
 To learn more about admonitions in Docusaurus, refer to the
@@ -216,10 +267,10 @@ Some **content** with _Markdown_ `syntax`.
 
 The `:::preview` admonition is a custom admonition configured in `docusaurus.config.js` under `admonitions.keywords`.
 
-Unlike other admonition types, you do not need to enter content in the admonition block. By default, the Tech Preview
-admonition generates the message, "This is a Tech Preview feature and is subject to change. Do not use this feature in
-production workloads." This message is hardcoded using `src/theme/Admonition/Type/TechPreview.js`. However, if you need
-to deviate from the template text, you can provide a custom message.
+Unlike other admonition types, you don't need to enter content in the admonition block. By default, the Tech Preview
+admonition generates the message, "This is a Tech Preview feature and is subject to change. Don't use this feature in
+production workloads." This message is hardcoded using `src/theme/Admonition/Type/TechPreview.js`. If you need to
+deviate from the template text, you can provide a custom message.
 
 ```mdx
 :::preview
@@ -229,9 +280,9 @@ Some **content** with _Markdown_ `syntax`.
 :::
 ```
 
-Files in `docs/docs-content` and `docs/api-content` are processed during the build phase. However, partials in the
-`_partials` directory are dynamically imported at runtime. Because of this, custom admonitions defined in
-`docusaurus.config.js` that are used in partials are not rendered, and the custom admonition is ignored.
+Files in `docs/docs-content` and `docs/api-content` are processed during the build phase. Partials in the `_partials`
+directory are dynamically imported at runtime. Because of this, custom admonitions defined in `docusaurus.config.js`
+that are used in partials are not rendered, and the custom admonition is ignored.
 
 As a workaround, when using custom admonitions in partials, import and reference the admonition with JSX syntax.
 

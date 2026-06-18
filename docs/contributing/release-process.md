@@ -3,21 +3,35 @@
 # Release Process
 
 The following section discusses the basics of creating a new documentation release based on an upcoming Palette release.
-Refer to our
+Refer to the
 [Confluence Release Checklist](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1830420481/Release+Checklist) for
-additional details.
+details.
 
 ## Release
 
-To create a new release, use the following steps:
+To create a new release, use the following steps.
 
-1. Create a release branch. Use the following naming pattern `docs-rel-X-X`
-2. Create a commit using the following commit message `feat: updating documentation for `docs-rel-X-X`. Replace x-x with
-   the upcoming release number.
-3. Push up the commit and create a new pull request (PR).
-4. Merge PRs related to the upcoming release into the `docs-rel-X-X` branch. Apart from individual Jira tickets
-   capturing product changes, use [release scripts](#palette-release#documentation) to populate values specific to each
-   release.
+1. Create a release branch. Use the following naming pattern `docs-rel-X-X-X`.
+
+2. Create a commit using the semantic-release syntax that matches the Palette release increment. Replace `X-X` with the
+   upcoming release number.
+
+   - For patch increments, use `fix: update documentation for docs-rel-X-X-X`.
+   - For minor increments, use `feat: update documentation for docs-rel-X-X-X`.
+   - For major increments, include `BREAKING CHANGE` in the commit message body or footer.
+
+   ```text
+   feat: update documentation for docs-rel-X-X-X
+
+   BREAKING CHANGE: update documentation for X.X.0
+   ```
+
+3. Push up the commit and create a new Pull Request (PR).
+
+4. Merge PRs related to the upcoming release into the `docs-rel-X-X-X` branch. Apart from individual issue-tracking
+   tickets capturing product changes, use [release scripts](#palette-release#documentation) to populate values specific
+   to each release.
+
 5. Merge the release branch.
 
 - If the branch `version-X-X` that corresponds to the current major-minor version of Palette already exists, add the
@@ -25,26 +39,26 @@ To create a new release, use the following steps:
   Palette.
 
 - If no `version-X-X` branch that corresponds to the current major-minor of Palette exists, create a new `version-X-X`
-  branch from the `master` used for versioning the documentation, and push the new version branch to the remote
+  branch from the source branch used for versioning the documentation, and push the new version branch to the remote
   repository.
 
-8. Trigger a new release to publish the release.
+6. Trigger a new release to publish the release.
 
-The semantic-release logic and the GitHub Actions in the [release.yaml](../../.github/workflows/release.yaml) will
-ensure the new release tag is created.
+The semantic-release logic and the GitHub Actions in the [release.yaml](../../.github/workflows/release.yaml) ensure the
+new release tag is created.
 
 > [!WARNING]
 >
-> Unless merging a release branch, do not use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a
+> Unless merging a release branch, don't use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a
 > version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.
 
 ## Unreleased Version Banner
 
-The `UNRELEASED_VERSION_BANNER` environment variable is used to determine if the unreleased version banner should be
-displayed (for example, on
+The `UNRELEASED_VERSION_BANNER` environment variable determines whether the unreleased version banner displays. For
+example, the banner can display on
 [https://docs-latest.spectrocloud.com/release-notes/](https://docs-latest.spectrocloud.com/release-notes/). The default
-value is `false`. If you want to display the unreleased version banner, set the `UNRELEASED_VERSION_BANNER` environment
-variable to `true`.
+value is `false`. To display the unreleased version banner, set the `UNRELEASED_VERSION_BANNER` environment variable to
+`true`.
 
 ```shell
 export UNRELEASED_VERSION_BANNER=true
@@ -69,20 +83,20 @@ The scripts update the following files.
 
 ### Environment Variables
 
-The following table provides an overview of all the environment variables and which pages they are used on. These
-variables are set in your local `.env` file and used for automatically populating certain pages with the necessary
-values. For ease of recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix.
-For more information on where to find these values, refer to the
+The following table provides an overview of all the environment variables and the pages that use them. Set these
+variables in your local `.env` file to automatically populate pages with the necessary values. For ease of recognition,
+these scripts use the `RELEASE_` prefix for all release-related environment variables. For more information on where to
+find these values, refer to the
 [Confluence Release Checklist](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1830420481/Release+Checklist)
 page.
 
-#### Jira and Super API
+#### Issue Tracker and Super API
 
-| **Environment Variable** | **Description**  | **Example Value**       |
-| ------------------------ | ---------------- | ----------------------- |
-| `JIRA_EMAIL`             | Jira email.      | `name@spectrocloud.com` |
-| `JIRA_API_TOKEN`         | Jira API token.  | `XXX`                   |
-| `SUPER_API_TOKEN`        | Super API token. | `XXX`                   |
+| **Environment Variable** | **Description**          | **Example Value**       |
+| ------------------------ | ------------------------ | ----------------------- |
+| `JIRA_EMAIL`             | Issue tracker email.     | `name@spectrocloud.com` |
+| `JIRA_API_TOKEN`         | Issue tracker API token. | `XXX`                   |
+| `SUPER_API_TOKEN`        | Super API token.         | `XXX`                   |
 
 #### Release Notes
 
@@ -121,8 +135,8 @@ page.
   the placeholders to fill in the values relevant to the Palette release.
 - `make generate-release-notes` creates only the release notes changes for the Palette release.
 - `make generate-release` creates all Palette release related updates, excluding release notes.
-- `make generate-component-updates` creates component updates using Jira API and Super.
-- `make generate-patch-release-notes` creates patch release notes using Jira API and Super.
+- `make generate-component-updates` creates component updates using the issue tracker API and Super.
+- `make generate-patch-release-notes` creates patch release notes using the issue tracker API and Super.
 - `make ci-local` installs or updates all node dependencies required to start and build the site locally. This command
   is preferred over `npm ci` as it prevents scripts from running during the installation process except for the Sharp
   module dependency.
