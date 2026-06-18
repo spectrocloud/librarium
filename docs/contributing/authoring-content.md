@@ -62,7 +62,8 @@ sidebar_custom_props:
 
 #### Front Matter Attributes
 
-An exhaustive list of front matter attributes is available in the [Docusaurus documentation](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter).
+An exhaustive list of front matter attributes is available in the
+[Docusaurus documentation](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter).
 
 | attribute                                   | type    | description                                                                                             |
 | ------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
@@ -79,8 +80,8 @@ An exhaustive list of front matter attributes is available in the [Docusaurus do
 
 ### Sub pages
 
-Create a folder using the **same name** of the main page. Inside it, create a Markdown file with the same name convention
-(`<url-using-dashes>.md`) to create subpages.
+Create a folder using the **same name** of the main page. Inside it, create a Markdown file with the same name
+convention (`<url-using-dashes>.md`) to create subpages.
 
 The index document for a folder follows the naming convention below. Here are some examples:
 

@@ -110,8 +110,6 @@ _bottom_, _bottomLeft_, _leftBottom_, _left_, _leftTop_.
 
 - The tooltip icon can be customized by sending a [font awesome](https://fontawesome.com/icons?d=gallery) icon
 
-  
-
 ## Video
 
 To add a video, use the following syntax. Ensure you capitalize the letter "V":
