@@ -22,8 +22,8 @@ Cloud-hosted AI is not the right fit for enterprises that need to keep data on-p
 regulatory compliance, and air-gapped network requirements, or to control latency and avoid per-token API costs.
 
 Building an on-premises AI stack from scratch means assembling GPU compute, OS, Kubernetes, an LLM inference runtime,
-authentication, role-based access control (RBAC), and observability. Launchpad for AI delivers the whole stack, pre-integrated, as a single bootable
-artifact.
+authentication, role-based access control (RBAC), and observability. Launchpad for AI delivers the whole stack,
+pre-integrated, as a single bootable artifact.
 
 ## What It Includes
 
