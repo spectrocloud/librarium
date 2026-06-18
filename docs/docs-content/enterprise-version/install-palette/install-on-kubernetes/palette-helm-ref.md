@@ -63,6 +63,12 @@ management plane, workload clusters, and PCGs. The secret serves the following p
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
 | `dockerConfigJson` | The values of the `config.json` file encoded in base64 as a single string, containing the registry URL and credentials for your image registry. For more information about the `config.json` file, refer to the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/containers/images/#config-json). | String   | `""`              |
 
+```yaml
+global:
+  imagePullSecret:
+    dockerConfigJson: ewoJImF1dGhzHsKCQkiaG9va3......MiOiAidHJ1ZSIKCX0KfQ # Base64 encoded config.json
+```
+
 :::info
 
 To obtain the base64-encoded version of your `config.json` file, use the following command. Replace
@@ -74,12 +80,6 @@ cat <path/to/.docker/config.json> | base64 | tr -d '\n'
 ```
 
 :::
-
-```yaml
-global:
-  imagePullSecret:
-    dockerConfigJson: ewoJImF1dGhzHsKCQkiaG9va3......MiOiAidHJ1ZSIKCX0KfQ # Base64 encoded config.json
-```
 
 ## MongoDB
 

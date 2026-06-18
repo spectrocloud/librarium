@@ -111,7 +111,7 @@ The following instructions are agnostic to the Kubernetes distribution you are u
 infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your
 environment. Reach out to our support team if you need assistance.
 
-1.  Open a terminal session and navigate to the directory where you downloaded the Palette install zip file provided by
+1.  Open a terminal session and navigate to the directory where you downloaded the Palette install ZIP file provided by
     our support team. Unzip the file to a directory named `palette-install`.
 
     ```shell

@@ -151,23 +151,23 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-5.  Open the file `values.yaml` in the `palette` directory with a text editor of your choice. This example uses Vim.
+5.  Open the file `palette/values.yaml` using a text editor of your choice. This example uses Vim.
 
     ```shell
     vim palette/values.yaml
     ```
 
-6.  The file `values.yaml` contains the default values for the Palette installation parameters. You must populate the
-    following parameters before installing Palette. For a complete list of fields and additional information, refer to
-    [Helm Configuration Reference](palette-helm-ref.md) page.
+6.  The file `palette/values.yaml` contains the default values for the Palette installation parameters. You must
+    populate the following parameters before installing Palette. For a complete list of fields and additional
+    information, refer to [Helm Configuration Reference](palette-helm-ref.md).
 
-    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | **Type** |
-    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `global.imagePullSecret.dockerConfigJson` | The image pull secret provided by your Spectro Cloud customer support representative. This secret is required if you plan to pull images hosted in a Spectro Cloud-owned registry. If you omit this during installation, you must provide it through the system console. Refer to [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md) for more information. <br /><br />Alternately, if you plan to pull images from your own private registry, use the base64-encoded contents of your `config.json` containing the registry credentials. | string   |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | object   |
-    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                                                      | object   |
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | **Type** |
+    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+    | `global.imagePullSecret.dockerConfigJson` | The image pull secret provided by your Spectro Cloud customer support representative. This secret is required if you plan to pull images hosted in a Spectro Cloud-owned registry. If you omit this during installation, you must provide it through the system console. Refer to [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md) for more information. <br /><br />Alternately, if you plan to pull images from your own private registry, use the base64-encoded contents of your `config.json` containing the registry credentials. Refer to [Helm Configuration Reference](palette-helm-ref.md#image-pull-secret) for more information. | string   |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | boolean  |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | object   |
 
     ### Self-Hosted OCI Registries
 
@@ -192,8 +192,8 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-7.  Save the completed `values.yaml` file. Expand the following sections to review an example of the `values.yaml` file
-    with the required parameters highlighted.
+7.  Save the completed `palette/values.yaml` file. Expand the following sections to review an example of the
+    `palette/values.yaml` file with the required parameters highlighted.
 
     <!-- prettier-ignore -->
     <Tabs>
@@ -627,9 +627,9 @@ your environment. Reach out to our support team if you need assistance.
 
     </Tabs>
 
-8.  (Self-hosted OCI registry only) If you configured `ociImageRegistry` in `values.yaml`, install the Image Swap Helm
-    chart before installing Palette. Image Swap rewrites pod image references to pull from your mirror registry. Palette
-    ignores the `mirrorRegistries` configuration unless the Image Swap chart is installed.
+8.  (Self-hosted OCI registry only) If you configured the [Self-Hosted OCI Registry](#self-hosted-oci-registries)
+    values, install the Image Swap Helm chart. Image Swap rewrites pod image references to pull from your mirror
+    registry. Palette ignores the `mirrorRegistries` configuration unless the Image Swap chart is installed.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -648,7 +648,7 @@ your environment. Reach out to our support team if you need assistance.
 
 9.  (Proxy environments only) If you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet, install the reach-system chart using the following command. Ensure you set
-    `reach-system.enabled` to `true` and configure `reach-system.proxySettings` in `values.yaml`.
+    `reach-system.enabled` to `true` and configure `reach-system.proxySettings` in `palette/values.yaml`.
 
     ```shell
     helm upgrade --values palette/values.yaml \
