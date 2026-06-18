@@ -107,8 +107,8 @@ this documentation will be updated.
 
 ## Redirects
 
-To add a redirect to an existing documentation page you must add an entry to the [redirects.js](../../redirects.js)
-file. Below is an example of what a redirect entry should look like.
+If a file already exists and you need to move it elsewhere, add a redirect entry that points from the old path to the new path using the [redirects.js](../../redirects.js)
+file. This ensures that anywhere old links are used, whether that be links embedded in the product or pages saved by customers, continue to work. Below is an example of what a redirect entry should look like.
 
 ```js
   {
@@ -120,8 +120,8 @@ file. Below is an example of what a redirect entry should look like.
 ## Images or other assets
 
 All images must reside in the [`static/assets/docs/images`](../../static/assets/docs/images/) folder. All images must be
-in webp format. You can save png, jpg, or jpeg to the directory. The commit hook will convert the images to webp format.
-Or issue the command `make format-images` to convert the images to webp format.
+in webp format. If you save png, jpg, or jpeg to the directory, the commit hook will convert the images to webp format.
+Alternately, issue the command `make format-images` to convert the images to webp format.
 
 ```md
 ![alt text](/clusterprofiles.png "cluster profiles example")
@@ -142,23 +142,16 @@ image with high priority as LCP (Largest contentful Paint) for the page will not
 
 ## Code Lines Highlighter
 
-You can highlight specific lines in a block of code by adding **coloredLines** prop.
+You can highlight specific lines in a block of code by using a [metadata string](https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-metadata-string) in the header of the code block.
 
-_Example_: ` ```js {2-4,5-7}`. This will color the lines from 2 to 4 and from 5 to 7.
+For example, using ` 
 
-_Components_:
 
-- `2-4` - lines interval to be colored
-- `,` - separator for different colored lines intervals
-
-Example
-
-https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comments
 
 ### Hide ClipBoard Button
 
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
-value `hideClipboard` in the markdown declaration of the code blocks.
+value `hideClipboard` in the markdown declaration of the code blocks. This is useful for example output where the user does not need to copy or use the content.
 
 Example ![Example](../../static/assets/docs/images/hide_copy_button_example.webp)
 
@@ -168,8 +161,8 @@ Result
 
 ## Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance / Deprecated
 
-For guidance on using admonitions in our docs, refer to
-[Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
+For guidance on using admonitions in our docs, refer to the
+[Spectro Cloud Internal Style Guide: Admonitions](../../style-guide.md#admonitions).
 
 To learn more about admonitions in Docusaurus, refer to the
 [Admonitions](https://docusaurus.io/docs/markdown-features/admonitions) guide.
