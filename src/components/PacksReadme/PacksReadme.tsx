@@ -17,7 +17,6 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import ReactMarkDown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { packCveImports } from "@site/src/generated/packCveImports";
-import ReactMarkdown from "react-markdown";
 
 interface PackReadmeProps {
   customDescription: string;

@@ -26,8 +26,6 @@ async function getPackCVEs(payload) {
   const concurrency = 20;
 
   async function getImageCVEs(pack, imageName, imageTag) {
-    logger.info(`Fetching CVEs for ${imageName}:${imageTag} from pack ${pack.name}...`);
-
     let results = [];
     let offset = 0;
     let iteration = 0;
@@ -155,7 +153,7 @@ async function generateCVEs() {
 }
 
 async function generateMarkdownForPackCVEs(GlobalCVEData) {
-  const outputDir = "docs/docs-content/security-bulletins/pack-cves";
+  const outputDir = "src/generated/pack-cves";
   mkdirSync(outputDir, { recursive: true });
 
   const packImages = GlobalCVEData.cves || [];
@@ -234,8 +232,8 @@ ${rows || "| No HIGH/CRITICAL CVEs found | | | | |"}
 }
 
 async function collatePackCVEFiles() {
-  const inputDir = "docs/docs-content/security-bulletins/pack-cves";
-  const outputDir = "docs/docs-content/security-bulletins/packs";
+  const inputDir = "src/generated/pack-cves";
+  const outputDir = "src/generated/packs";
 
   mkdirSync(outputDir, { recursive: true });
 
@@ -321,7 +319,7 @@ ${tabItems}
 }
 
 async function generatePackCVEImportMap() {
-  const packsDir = "docs/docs-content/security-bulletins/packs";
+  const packsDir = "src/generated/packs";
   const outputFile = "src/generated/packCveImports.ts";
 
   mkdirSync(path.dirname(outputFile), { recursive: true });
@@ -334,7 +332,7 @@ async function generatePackCVEImportMap() {
     .map((file) => {
       const packName = file.replace(/\.mdx$/, "");
 
-      return `  "${packName}": () => import("../../../docs/docs-content/security-bulletins/packs/${file}"),`;
+      return `  "${packName}": () => import("@site/src/generated/packs/${file}"),`;
     })
     .join("\n");
 
