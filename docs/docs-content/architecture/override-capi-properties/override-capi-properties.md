@@ -282,6 +282,17 @@ reduces cluster capacity. Plan override changes during a maintenance window.
 
 :::
 
+When you _disable_ the **Override Cluster API node pool configuration** toggle on a node pool that already has an
+override, Palette reverts the overridden fields to the values it manages natively. This might trigger a repave of the
+node pool, depending on which fields change.
+
+- A repave occurs if the reversion changes a field that Palette uses to decide when to repave a node pool. Palette
+  maintains a fixed, provider-specific list of repave-triggering fields. For example, on AWS IaaS, these fields include
+  the instance type, SSH key name, root volume size, and AMI ID.
+
+- A repave does not occur if the reversion changes only fields that are not repave-triggering, such as metadata. For
+  example, AWS additional tags and CloudStack details are not on the list, so reverting them does not trigger a repave.
+
 ### Override Always Wins
 
 Override values take precedence over values from all other input sources, such as:
