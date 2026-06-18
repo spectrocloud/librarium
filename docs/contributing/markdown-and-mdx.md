@@ -107,8 +107,10 @@ this documentation will be updated.
 
 ## Redirects
 
-If a file already exists and you need to move it elsewhere, add a redirect entry that points from the old path to the new path using the [redirects.js](../../redirects.js)
-file. This ensures that anywhere old links are used, whether that be links embedded in the product or pages saved by customers, continue to work. Below is an example of what a redirect entry should look like.
+If a file already exists and you need to move it elsewhere, add a redirect entry that points from the old path to the
+new path using the [redirects.js](../../redirects.js) file. This ensures that anywhere old links are used, whether that
+be links embedded in the product or pages saved by customers, continue to work. Below is an example of what a redirect
+entry should look like.
 
 ```js
   {
@@ -142,16 +144,17 @@ image with high priority as LCP (Largest contentful Paint) for the page will not
 
 ## Code Lines Highlighter
 
-You can highlight specific lines in a block of code by using a [metadata string](https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-metadata-string) in the header of the code block.
+You can highlight specific lines in a block of code by using a
+[metadata string](https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-metadata-string) in the
+header of the code block.
 
-For example, using ` 
-
-
+For example, using `
 
 ### Hide ClipBoard Button
 
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
-value `hideClipboard` in the markdown declaration of the code blocks. This is useful for example output where the user does not need to copy or use the content.
+value `hideClipboard` in the markdown declaration of the code blocks. This is useful for example output where the user
+does not need to copy or use the content.
 
 Example ![Example](../../static/assets/docs/images/hide_copy_button_example.webp)
 
