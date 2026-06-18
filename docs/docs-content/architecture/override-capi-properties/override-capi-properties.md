@@ -282,7 +282,7 @@ reduces cluster capacity. Plan override changes during a maintenance window.
 
 :::
 
-When you disable the **Override Cluster API node pool configuration** toggle on a node pool that already has an
+When you _disable_ the **Override Cluster API node pool configuration** toggle on a node pool that already has an
 override, Palette reverts the overridden fields to the values it manages natively. This might trigger a repave of the
 node pool, depending on which fields change.
 
