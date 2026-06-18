@@ -147,145 +147,101 @@ async function generateCVEs() {
     logger.info("Finished fetching pack CVEs data.");
   }
 
-  await generateMarkdownForPackCVEs(GlobalCVEData);
-  await collatePackCVEFiles();
+  await generatePackCVEJsonFiles(GlobalCVEData);
+  await generatePackCVEMdxWrappers(GlobalCVEData);
   await generatePackCVEImportMap();
 }
 
-async function generateMarkdownForPackCVEs(GlobalCVEData) {
+async function generatePackCVEJsonFiles(GlobalCVEData) {
   const outputDir = "src/generated/pack-cves";
   mkdirSync(outputDir, { recursive: true });
 
   const packImages = GlobalCVEData.cves || [];
-
-  const groupedByPack = new Map();
+  const groupedByPackVersion = new Map();
 
   for (const item of packImages) {
-    const packKey = `${item.pack}@${item.packVersion}`;
+    const version = item.packVersion.replace(/^v/, "");
+    const key = `${item.pack}@${version}`;
 
-    if (!groupedByPack.has(packKey)) {
-      groupedByPack.set(packKey, {
+    if (!groupedByPackVersion.has(key)) {
+      groupedByPackVersion.set(key, {
         pack: item.pack,
-        packVersion: item.packVersion,
+        version,
         images: [],
       });
     }
 
-    groupedByPack.get(packKey).images.push(item);
+    groupedByPackVersion.get(key).images.push({
+      image: item.image,
+      tag: item.tag,
+      cves: (item.cves || [])
+        .filter((cve) => ["CRITICAL", "HIGH"].includes(cve.severity))
+        .sort((a, b) => {
+          if (!!a.isImpacting !== !!b.isImpacting) {
+            return a.isImpacting ? -1 : 1;
+          }
+
+          const severityRank = {
+            CRITICAL: 0,
+            HIGH: 1,
+          };
+
+          const severityDiff = severityRank[a.severity] - severityRank[b.severity];
+
+          if (severityDiff !== 0) {
+            return severityDiff;
+          }
+
+          return (a.cve || "").localeCompare(b.cve || "");
+        })
+        .map((cve) => ({
+          cve: cve.cve,
+          severity: cve.severity,
+          package: cve.package || "",
+          hasFix: !!cve.hasFix,
+          isImpacting: !!cve.isImpacting,
+        })),
+    });
   }
 
-  for (const packData of groupedByPack.values()) {
-    const content = `---
-sidebar_label: "${packData.pack} ${packData.packVersion}"
-title: "CVEs for ${packData.pack} ${packData.packVersion}"
-description: "CVEs found in images for ${packData.pack} ${packData.packVersion}"
-sidebar_class_name: "hide-from-sidebar"
-hide_table_of_contents: false
-toc_max_heading_level: 3
-tags: ["security", "packs", "cve"]
----
-
-${packData.images
-  .map((imageData) => {
-    const rows = (imageData.cves || [])
-      // Only HIGH and CRITICAL
-      .filter((cve) => ["CRITICAL", "HIGH"].includes(cve.severity))
-      // Impacting first, then CRITICAL before HIGH, then CVE ID
-      .sort((a, b) => {
-        if (!!a.isImpacting !== !!b.isImpacting) {
-          return a.isImpacting ? -1 : 1;
-        }
-
-        const severityRank = {
-          CRITICAL: 0,
-          HIGH: 1,
-        };
-
-        const severityDiff = severityRank[a.severity] - severityRank[b.severity];
-
-        if (severityDiff !== 0) {
-          return severityDiff;
-        }
-
-        return (a.cve || "").localeCompare(b.cve || "");
-      })
-      .map((cve) => {
-        return `| ${cve.cve} | ${cve.severity || ""} | \`${cve.package || ""}\` | ${cve.hasFix ? "Yes" : "No"} | ${cve.isImpacting ? "Yes" : "No"} |`;
-      })
-      .join("\n");
-
-    return `## ${imageData.image}:${imageData.tag}
-
-| CVE | Severity | Package | Has Fix | Impacting |
-| --- | --- | --- | --- | --- |
-${rows || "| No HIGH/CRITICAL CVEs found | | | | |"}
-`;
-  })
-  .join("\n")}`;
-
-    const fileName = `${packData.pack}-${packData.packVersion.replace(/^v/, "")}.mdx`;
-
-    await fs.writeFile(path.join(outputDir, fileName), content);
+  for (const packData of groupedByPackVersion.values()) {
+    const fileName = `${packData.pack}-${packData.version}.json`;
+    await fs.writeFile(path.join(outputDir, fileName), JSON.stringify(packData, null, 2));
   }
 
-  logger.success("All pack CVE markdown files generated.");
+  logger.success("All pack CVE JSON files generated.");
 }
 
-async function collatePackCVEFiles() {
-  const inputDir = "src/generated/pack-cves";
+async function generatePackCVEMdxWrappers(GlobalCVEData) {
   const outputDir = "src/generated/packs";
-
   mkdirSync(outputDir, { recursive: true });
 
-  const files = await fs.readdir(inputDir);
-
-  const packFiles = files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => {
-      const match = file.match(/^(.+)-([0-9]+\.[0-9]+\.[0-9]+)\.mdx$/);
-
-      if (!match) {
-        logger.warn(`Skipping file with unexpected name format: ${file}`);
-        return null;
-      }
-
-      return {
-        file,
-        pack: match[1],
-        version: match[2],
-      };
-    })
-    .filter(Boolean);
-
+  const packImages = GlobalCVEData.cves || [];
   const groupedByPack = new Map();
 
-  for (const item of packFiles) {
+  for (const item of packImages) {
+    const version = item.packVersion.replace(/^v/, "");
+
     if (!groupedByPack.has(item.pack)) {
-      groupedByPack.set(item.pack, []);
+      groupedByPack.set(item.pack, new Set());
     }
 
-    groupedByPack.get(item.pack).push(item);
+    groupedByPack.get(item.pack).add(version);
   }
 
-  for (const [pack, versions] of groupedByPack.entries()) {
-    versions.sort((a, b) => b.version.localeCompare(a.version, undefined, { numeric: true }));
-
-    const imports = versions
-      .map((item, index) => {
-        const componentName = `${pack.replace(/[^a-zA-Z0-9]/g, "")}V${index}`;
-        item.componentName = componentName;
-
-        return `import ${componentName} from "../pack-cves/${item.file}";`;
-      })
-      .join("\n");
+  for (const [pack, versionSet] of groupedByPack.entries()) {
+    const versions = Array.from(versionSet).sort((a, b) =>
+      b.localeCompare(a, undefined, { numeric: true })
+    );
 
     const tabItems = versions
-      .map((item) => {
-        const label = item.version.replace(/\.\d+$/, ".x");
+      .map((version) => {
+        const label = version.replace(/\.\d+$/, ".x");
+        const jsonFile = `${pack}-${version}.json`;
 
-        return `<TabItem label="${label}" value="${item.version}">
+        return `<TabItem label="${label}" value="${version}">
 
-<${item.componentName} />
+<PackCVEVersion data={require("@site/src/generated/pack-cves/${jsonFile}")} />
 
 </TabItem>`;
       })
@@ -301,7 +257,9 @@ toc_max_heading_level: 3
 tags: ["security", "packs", "cve"]
 ---
 
-${imports}
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import PackCVEVersion from "@site/src/components/PackCVEVersion";
 
 ## Versions Supported
 
@@ -315,7 +273,7 @@ ${tabItems}
     await fs.writeFile(path.join(outputDir, `${pack}.mdx`), content);
   }
 
-  logger.success("All collated pack CVE markdown files generated.");
+  logger.success("All pack CVE MDX wrapper files generated.");
 }
 
 async function generatePackCVEImportMap() {

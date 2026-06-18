@@ -264,10 +264,12 @@ export default function PacksReadme() {
         }
 
         try {
-          const module = await importer();
+          const module: MarkdownFile = await importer();
+          const PackReadMeComponent = module.default;
+
           setPackCves(
             <div className={styles.customReadme}>
-              <ReactMarkDown remarkPlugins={[remarkGfm]}>{module.default}</ReactMarkDown>
+              <PackReadMeComponent />
             </div>
           );
         } catch (error) {
