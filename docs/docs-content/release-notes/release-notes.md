@@ -11,6 +11,76 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 19, 2026 - Component Updates {#component-updates-2026-25}
+
+<!-- COMPONENT UPDATES TICKET: DOC-2914 -->
+<!-- RELEASE DATE: June 19, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.8.6 -->
+<!-- RELEASE ARTIFACT STUDIO: 4.9.10 -->
+<!-- RELEASE TERRAFORM VERSION: 0.29.4 -->
+
+The following components have been updated for Palette version 4.9.5 - 4.9.18.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.9.10  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.29.4  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.29.4  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.8.6   |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.8.6   |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-2914. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4185 -->
+
+- Upgraded core appliance packs for the 4.9.b cycle, including Palette eXtended Kubernetes 1.34.8 or later, Calico
+  3.32.0 or later, Piraeus 2.10.7 or later, and Zot Registry 2.1.x (v2.1.17) or later. Both PAX and PAX-FIPS variants
+  are included.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4209 -->
+
+- The Registry Connect pack is now FIPS compliant for VMO Appliance deployments. The ubuntu-util image has been replaced
+  with a minimal image to reduce the attack surface.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-731 -->
+
+- Fixed an issue in Artifact Studio where ProfileBundle cards were not paginated, causing certain profile bundles (such
+  as vLLM Prod Stack) to be hidden unless explicitly searched for.
+
+<!-- END COMPONENT UPDATES BODY: DOC-2914. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-2914. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 9.5.21 |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.4.0 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :x: | 1.21.2 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :x: | :white_check_mark: | 3.32.0 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :x: | :white_check_mark: | 3.32.0 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :x: | :white_check_mark: | 0.28.5 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :x: | 1.61.1 |
+| <VersionedLink text="csi-vsphere-csi" url="/integrations/packs/?pack=csi-vsphere-csi" /> | `csi` | :x: | :white_check_mark: | 3.7.1 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.6.0 |
+| <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.1 |
+| <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :x: | 2.10.7 |
+| <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :x: | 2.10.7 |
+| <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.33.0 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.1.117 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-2914. DO NOT DELETE. -->
+
+#### Pack Notes
+
 ## June 12, 2026 - Component Updates {#component-updates-2026-24}
 
 <!-- COMPONENT UPDATES TICKET: DOC-2896 -->
