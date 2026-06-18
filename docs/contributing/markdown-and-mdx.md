@@ -166,7 +166,7 @@ Result
 
 ![Result](/static/assets/docs/images/hide_copy_button.webp)
 
-## Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance
+## Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance / Deprecated
 
 For guidance on using admonitions in our docs, refer to
 [Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
@@ -265,3 +265,31 @@ import AdmonitionTypeFurtherGuidance from '@theme/Admonition/Type/FurtherGuidanc
 
 <AdmonitionTypeFurtherGuidance /> # Use instead of :::
 ```
+
+### Deprecated
+
+The `:::deprecated` admonition is a custom admonition configured in `docusaurus.config.js` under `admonitions.keywords`.
+
+Unlike other admonition types, you do not need to enter content in the admonition block. By default, the Deprecated
+admonition generates the message, "This feature is deprecated and will no longer receive new updates. Refer to the
+Announcements page for additional information, as well as alternatives." This message is hardcoded using
+`src/theme/Admonition/Type/Deprecated.js`. However, you can provide a custom message when you need different text.
+
+```mdx
+:::deprecated
+
+Some **content** with _Markdown_ `syntax`.
+
+:::
+```
+
+Like Tech Preview and Further Guidance, the Deprecated admonition is a custom admonition. To use this admonition in
+partials, import and reference it with JSX syntax.
+
+```mdx
+import AdmonitionTypeDeprecated from '@theme/Admonition/Type/Deprecated'; # Import below front matter
+
+<AdmonitionTypeDeprecated /> # Use instead of :::
+```
+
+When you use the Deprecated admonition in partials, you cannot override the default message.

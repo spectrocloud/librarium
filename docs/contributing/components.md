@@ -150,6 +150,8 @@ The following badges are available for use:
 
 - Technical Preview Badge ![Technical Preview Badge](../../static/img/tech-preview-light.svg)
   ![Technical Preview Badge](../../static/img/tech-preview-dark.svg)
+- Deprecated Badge ![Deprecated Badge](../../static/img/deprecated-light.svg)
+  ![Deprecated Badge](../../static/img/deprecated-dark.svg)
 
 ### Technical Preview Badge
 
@@ -162,6 +164,16 @@ component will automatically display the badge in the correct color based on the
   feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
   types, apply validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile
   variables.
+```
+
+### Deprecated Badge
+
+Use the deprecated badge to indicate that a feature is deprecated. The badge is intended for list or table content. The
+component automatically displays the correct badge color for the active light or dark theme.
+
+```markdown
+- <DeprecatedBadge /> Edge site deployment via MAAS is deprecated and no longer receives updates. Refer to the
+  Announcements page for additional information and alternatives.
 ```
 
 ## Simple Card Grid
