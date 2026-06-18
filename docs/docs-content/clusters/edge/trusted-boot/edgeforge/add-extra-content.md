@@ -65,7 +65,9 @@ formation and after. Because the content is placed in the persistent partitions,
    git tag
    ```
 
-4. Check out the latest available tag. This guide uses **v4.4.0** tag as an example.
+4. Check out the CanvOS tag that corresponds to your Palette release. Refer to the
+   [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
+   Edge host version. This guide uses the tag **v4.4.0** as an example.
 
    ```shell
    git checkout v4.4.0
