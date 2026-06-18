@@ -34,6 +34,7 @@ const allScripts = [
     src: "https://widget.kapa.ai/kapa-widget.bundle.js",
     "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
     "data-project-name": "Spectro Cloud Docs AI",
+    "data-source-group-ids-include": "ebbf8a64-c913-453e-920d-27a278207da7",
     "data-project-color": "#3A9D99",
     "data-consent-required": "true",
     "data-consent-screen-title": "Privacy Notice",
@@ -186,7 +187,7 @@ const config = {
             },
           },
           admonitions: {
-            keywords: ["preview", "further"],
+            keywords: ["preview", "further", "deprecated"],
             extendDefaults: true,
           },
           // exclude: ["api/v1/palette-apis-3-4"],
@@ -321,6 +322,16 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [...redirects],
+      },
+    ],
+    [
+      require.resolve("./plugins/security-advisories-rss"),
+      {
+        docsRoot: __dirname,
+        advisorySourceFile: "docs/docs-content/security-bulletins/security-advisories/security-advisories.md",
+        feedFileName: "security-advisories.xml",
+        pagePath: "/security-bulletins/security-advisories/",
+        monthsBack: 6,
       },
     ],
   ].filter(Boolean),

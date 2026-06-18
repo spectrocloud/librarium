@@ -34,63 +34,18 @@ pack, it is essential to understand the pack structure.
 Each pack is a collection of files such as manifests, Helm charts, configuration files, and more. Kubernetes manifests
 and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical pack structure:
 
-| **Pack Name** | **Requirement** | **Description**                                                                              |
-| ------------- | --------------- | -------------------------------------------------------------------------------------------- |
-| `pack.json`   | mandatory       | Pack metadata.                                                                               |
-| `values.yaml` | mandatory       | Pack configuration, parameters exposed from the underlying charts or manifests.              |
-| `charts/`     | mandatory       | Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack.  |
-| `manifests/`  | mandatory       | Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack. |
-| `logo.png`    | optional        | Contains the pack logo.                                                                      |
-| `README.md`   | optional        | The pack description.                                                                        |
+| **File Name** | **Mandatory / Optional** | **Requirements**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pack.json`   | Mandatory                | Pack metadata. Must follow JSON syntax and provide the following: <br/ > - A pack name in the `name` field. For example, `"name": "hello-universe"` <br / > - A pack version in the `version` field. For example,`"version": "1.3.1"` <br /> - For manifest-based packs, paths to manifest files in the `kubeManifests` field. For example, `"kubeManifests": ["manifests/hello-universe.yaml"]` <br /> - For Helm chart-based files, paths to chart files in the `charts` field. For example, `"charts": [ "charts/fluent-bit-0.57.0.tgz"]` |
+| `values.yaml` | Mandatory                | Pack configuration. Must follow YAML syntax and provide default values to mandatory parameters exposed from the underlying charts or manifests.                                                                                                                                                                                                                                                                                                                                                                                              |
+| `charts/`     | Mandatory                | Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack. Must follow [Helm chart file structure](https://helm.sh/docs/topics/charts/#the-chart-file-structure) and contain a `.tgz` file with the compressed Helm chart files.                                                                                                                                                                                                                                                                            |
+| `manifests/`  | Mandatory                | Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack. Must contain valid [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/#describing-a-kubernetes-object).                                                                                                                                                                                                                                                                                                     |
+| `logo.png`    | Optional                 | Contains the pack logo.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `README.md`   | Optional                 | The pack description.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-Let's look at the examples below to better understand pack structure.
+The pack files must conform to the following directory structure.
 
-<Tabs queryString="pack-type">
-
-<TabItem label="Helm chart-based pack" value="helm-chart-pack">
-
-The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, which is made up of two charts:
-_istio-controlplane_ and _istio-operator_. Each chart has its **values.yaml** file. In this example, we have a
-pack-level **values.yaml** file and individual chart-level **values.yaml** files. <br/> <br/>
-
-```bash
-.
-├── charts/
-│   ├── istio-controlplane.tgz
-│   ├── istio-controlplane
-│   │   ├── Chart.yaml
-│   │   ├── templates/
-│   │   └── values.yaml
-│   ├── istio-operator.tgz
-│   └── istio-operator
-│       ├── Chart.yaml
-│       ├── templates/
-│       └── values.yaml
-├── logo.png
-├── pack.json
-└── values.yaml
-```
-
-</TabItem>
-
-<TabItem label="Manifest-based pack" value="manifest-pack">
-
-This example shows the structure of a Manifest-based pack, _kubeflow-1.2.0_, made up of **kubeflow-kfdef.yaml** and
-**kubeflow-operator.yaml** manifests.
-
-```bash
-.
-├── manifests/
-│   ├── kubeflow-kfdef.yaml
-│   └── kubeflow-operator.yaml
-├── logo.png
-├── pack.json
-└── values.yaml
-```
-
-</TabItem>
-
-</Tabs>
+<PartialsComponent category="packs" name="pack-structure" />
 
 ## Registries
 
@@ -100,20 +55,18 @@ multiple registries.
 
 ## Default Registry
 
-The default pack registry is Spectro Cloud's public pack registry. It consists of several packs that make it easy for a
-user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Palette
-maintains all packs in this pack registry and takes care of upgrading packs in the pack registry whenever required.
+The default pack registry is Spectro Cloud's OCI Palette Registry. It contains several packs for creating a cluster
+profile and launching a Kubernetes cluster with a wide choice of integrations. Palette maintains all packs in this
+registry and is responsible for upgrading them whenever required.
 
 ## Custom Pack Registry
 
-Users can set up a custom pack registry using a Docker image provided by Spectro Cloud to upload and maintain custom
-packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the pack registry. Custom
-registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
+Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations. Use
+[ORAS](https://oras.land/docs/) to upload and maintain custom packs in custom registries. Refer to the
+[Deploy a Custom Pack](../tutorials/packs-registries/deploy-pack.md) tutorial for further information.
 
 ## Spectro CLI
 
 The Spectro Cloud Command Line Interface (CLI) is a tool to interact with a Spectro Cloud pack registry. You can use the
 CLI to upload and download packs. The CLI must authenticate with the pack registry before executing any CLI commands.
 Review the [Spectro Cloud CLI](spectro-cli-reference.md) reference page for usage instructions.
-
-<br />
