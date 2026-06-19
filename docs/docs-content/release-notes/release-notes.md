@@ -21,9 +21,6 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.9.5 - 4.9.18.
 
-| Component                                          | Version |
-| -------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md) | 4.9.10  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-2914. DO NOT DELETE. -->
 
