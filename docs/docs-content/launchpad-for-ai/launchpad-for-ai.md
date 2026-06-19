@@ -18,25 +18,50 @@ your environment and per-token API costs become predictable infrastructure spend
 
 ## The Problem It Solves
 
-Cloud-hosted AI is not the right fit for enterprises that need to keep data on-premises whether to meet data residency,
+Cloud-hosted AI is not the right fit for enterprises that need to keep data on-premises, whether to meet data residency,
 regulatory compliance, and air-gapped network requirements, or to control latency and avoid per-token API costs.
 
 Building an on-premises AI stack from scratch means assembling GPU compute, OS, Kubernetes, an LLM inference runtime,
 authentication, Role-Based Access Control (RBAC), and observability. Launchpad for AI delivers the whole stack,
 pre-integrated, as a single bootable artifact.
 
+## Predictable AI Costs
+
+Cloud AI services bill per token, so costs scale directly with usage and become difficult to budget at enterprise scale.
+Running inference on-premises changes that billing model. Once the hardware is provisioned, inference cost is a fixed
+infrastructure line item regardless of token volume, making AI spend predictable and independent of how heavily the
+system is used.
+
 ## What It Includes
 
-| **Layer**             | **Technology**                                  | **Role**                                                                                                                                                                             |
-| --------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Operating system      | [Kairos](https://kairos.io) on Ubuntu 24.04     | An immutable Linux OS built for appliance deployments. The read-only runtime prevents configuration drift and keeps the appliance in a known, reproducible state.                    |
-| Orchestration         | Kubernetes                                      | Manages the lifecycle of containerized workloads on the appliance, including scheduling, scaling, and health recovery.                                                               |
-| Packaging             | Helm charts                                     | Bundles the stack's components as versioned units so individual layers can be updated independently.                                                                                 |
-| LLM inference runtime | vLLM                                            | Serves language models with high GPU throughput, designed for concurrent requests from multiple users.                                                                               |
-| Intelligent routing   | Routing by task type and data sensitivity       | Directs each request to the most appropriate model. Requests that involve private data or require low latency stay local. Other requests can route outbound when the network allows. |
-| Local models          | GLM, DeepSeek, Kimi                             | Open-weight models bundled with the appliance that run entirely on-premises, with no external API calls.                                                                             |
-| Platform services     | Authentication, RBAC, monitoring, observability | Controls access and surfaces health and usage data, so the appliance behaves as a managed enterprise system rather than a raw inference server.                                      |
-| GPU support           | NVIDIA                                          | Enables the parallel processing that large language models require to respond at production speed.                                                                                   |
+The appliance ships with the following pre-integrated components.
+
+| **Layer**             | **Technology**                                  |
+| --------------------- | ----------------------------------------------- |
+| Operating system      | [Kairos](https://kairos.io) on Ubuntu 24.04     |
+| Orchestration         | Kubernetes                                      |
+| LLM inference runtime | vLLM                                            |
+| Intelligent routing   | Routing by task type and data sensitivity       |
+| Local models          | GLM, DeepSeek, Kimi                             |
+| Platform services     | Authentication, RBAC, monitoring, observability |
+| GPU support           | NVIDIA                                          |
+
+The OS layer runs Kairos on Ubuntu 24.04, an immutable Linux distribution designed for appliance deployments. Its
+read-only runtime prevents configuration drift and keeps the appliance in a known, reproducible state. Kubernetes
+manages the lifecycle of containerized workloads on top, handling scheduling, scaling, and health recovery.
+
+vLLM serves language models with high GPU throughput and handles concurrent requests from multiple users. The appliance
+ships GLM, DeepSeek, and Kimi as local open-weight models that run entirely on-premises with no external API calls.
+NVIDIA GPU support provides the parallel processing that large language models require to respond at production speed.
+
+Intelligent routing directs each request to the most appropriate model. Requests that involve private data or require
+low latency stay local. Other requests can route outbound when the network allows.
+
+Platform services cover authentication, RBAC, monitoring, and observability. These surface health and usage data and
+ensure the appliance behaves as a managed enterprise system rather than a raw inference server.
+
+The stack is packaged as Helm charts, which bundle each component as a versioned unit. You can update individual layers
+independently without replacing the entire appliance image.
 
 ## Launchpad for AI or PaletteAI
 
