@@ -13,7 +13,6 @@ This guide explains how to set the default model on a running Launchpad for AI a
 the appliance uses for requests that do not name a model. For how the appliance routes requests, refer to
 [Architecture](./architecture.md).
 
-
 ## Prerequisites
 
 - A running Launchpad for AI appliance, with the admin console reachable and operator access.
