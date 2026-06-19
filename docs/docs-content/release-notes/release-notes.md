@@ -72,6 +72,13 @@ tags: ["release-notes"]
 - The deployment of [Canonical Kubernetes on MAAS](../clusters/data-center/maas/architecture.md) has exited Tech Preview
   and is now ready for production workloads.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-1826 -->
+
+- The **MinIO** backup location provider has been renamed to **S3 Compatible Storage** to reflect that it supports any
+  S3-compatible object storage, such as MinIO or NetApp StorageGRID. The **S3 URL** field is now labeled **Endpoint
+  URL**. Existing backup locations continue to work and appear under the new label with their settings preserved. For
+  more information, refer to [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md).
+
 #### Deprecations and Removals
 
 ### Edge
