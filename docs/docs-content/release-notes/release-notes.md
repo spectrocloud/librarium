@@ -81,6 +81,10 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2912 --> 
+
+- The `v1/projects` Palette [API endpoint](/api/introduction) is now deprecated. Use the `/v1/dashboard/projects` endpoint instead.
+
 ### Edge
 
 :::info
