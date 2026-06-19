@@ -133,6 +133,11 @@ async function generateCVEs() {
             operator: "in",
             options: ["CRITICAL", "HIGH"],
           },
+          {
+            field: "hasFix",
+            operator: "bool",
+            value: "true",
+          },
         ],
       },
     });
@@ -198,7 +203,6 @@ async function generatePackCVEJsonFiles(GlobalCVEData) {
           cve: cve.cve,
           severity: cve.severity,
           package: cve.package || "",
-          hasFix: !!cve.hasFix,
           isImpacting: !!cve.isImpacting,
         })),
     });
@@ -256,6 +260,14 @@ tags: ["security", "packs", "cve"]
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import PackCVEVersion from "@site/src/components/PackCVEVersion";
+
+:::info
+
+A CVE marked as **Impacting** indicates that the vulnerable package, binary, library, or component is present and actively used within the pack image. These CVEs require review and remediation planning as they may affect running workloads.
+
+CVEs that are not marked as **Impacting** are present in the image but are not currently believed to affect the pack's functionality based on Spectro Cloud's analysis.
+
+:::
 
 ## Versions Supported
 
