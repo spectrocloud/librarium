@@ -14,7 +14,7 @@ tags:
 <!-- TODO: populate this page with the confirmed model list from engineering -->
 
 This page is a placeholder for the full Launchpad for AI supported models reference. The recommended models are GLM,
-DeepSeek, and Kimi. Per-model sizes, minimum GPU video random access memory (VRAM), and supported quantization levels
+DeepSeek, and Kimi. Per-model sizes, minimum GPU Video Random Access Memory (VRAM), and supported quantization levels
 will be added when ready.
 
 ## Supported Models
