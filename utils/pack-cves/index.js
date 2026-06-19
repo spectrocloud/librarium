@@ -143,7 +143,6 @@ async function generateCVEs() {
     });
 
     packCVEs.set("cves", cves.data);
-
     GlobalCVEData = Object.fromEntries(packCVEs.entries());
 
     mkdirSync(dirname, { recursive: true });
@@ -233,19 +232,10 @@ async function generatePackCVEMdxWrappers(GlobalCVEData) {
     groupedByPack.get(item.pack).add(version);
   }
 
-  for (const [pack, versionSet] of groupedByPack.entries()) {
+  const sortedPacks = [...groupedByPack.entries()].sort(([packA], [packB]) => packA.localeCompare(packB));
+
+  for (const [pack, versionSet] of sortedPacks) {
     const versions = Array.from(versionSet).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
-
-    const tabItems = versions
-      .map((version) => {
-        const label = version.replace(/\.\d+$/, ".x");
-        return `<TabItem label="${label}" value="${version}">
-
-<PackCVEVersion pack="${pack}" version="${version}" />
-
-</TabItem>`;
-      })
-      .join("\n\n");
 
     const content = `---
 sidebar_label: "${pack}"
@@ -257,8 +247,6 @@ toc_max_heading_level: 3
 tags: ["security", "packs", "cve"]
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 import PackCVEVersion from "@site/src/components/PackCVEVersion";
 
 :::info
@@ -269,13 +257,25 @@ CVEs that are not marked as **Impacting** are present in the image but are not c
 
 :::
 
-## Versions Supported
+{(() => {
+  const availableVersions = ${JSON.stringify(versions)};
+  const selectedVersion = (props.selectedVersion || "").replace(/^v/, "");
 
-<Tabs queryString="parent">
+  if (!selectedVersion || !availableVersions.includes(selectedVersion)) {
+    return (
+      <p style={{ fontSize: "16px", paddingTop: "8px", paddingBottom: "8px" }}>
+        No pack CVEs available for the selected version.
+      </p>
+    );
+  }
 
-${tabItems}
-
-</Tabs>
+  return (
+    <PackCVEVersion
+      pack="${pack}"
+      version={selectedVersion}
+    />
+  );
+})()}
 `;
 
     await fs.writeFile(path.join(outputDir, `${pack}.mdx`), content);
@@ -304,7 +304,13 @@ async function generatePackCVEImportMap() {
 
   const content = `/* AUTO-GENERATED. DO NOT EDIT. */
 
-export const packCveImports: Record<string, () => Promise<any>> = {
+import type { ComponentType } from "react";
+
+export interface MarkdownFile {
+  default: ComponentType<{ selectedVersion?: string }>;
+}
+
+export const packCveImports: Record<string, () => Promise<MarkdownFile>> = {
 ${imports}
 };
 `;

@@ -255,6 +255,20 @@ export default function PacksReadme() {
       importComponent().catch((e) => {
         console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
       });
+    }, []);
+
+    useEffect(() => {
+      let pckName = "";
+
+      if (isBrowser) {
+        const searchParams = new URLSearchParams(window.location.search);
+        pckName = searchParams.get("pack") || "";
+      }
+
+      if (!pckName || !selectedVersion) {
+        setPackCves(null);
+        return;
+      }
 
       type PackCveImportMap = Record<string, () => Promise<MarkdownFile>>;
       const typedPackCveImports = packCveImports as PackCveImportMap;
@@ -273,7 +287,7 @@ export default function PacksReadme() {
 
           setPackCves(
             <div className={styles.customReadme}>
-              <PackReadMeComponent />
+              <PackReadMeComponent selectedVersion={selectedVersion} />
             </div>
           );
         } catch (error) {
@@ -281,10 +295,9 @@ export default function PacksReadme() {
           setPackCves(null);
         }
       };
-      importCVEs().catch((e) => {
-        console.error("Error importing CVE component for pack. Additional information follows: \n", e);
-      });
-    }, []);
+
+      void importCVEs();
+    }, [isBrowser, selectedVersion]);
 
     const packData: PackData = useMemo(() => {
       const pack = packs.find((pack) => pack.name === packName);
