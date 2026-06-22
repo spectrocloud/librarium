@@ -41,17 +41,17 @@ generalized golden image as the source.
 3. The VM creation wizard opens in template mode. Complete the following fields on the **Source** wizard step, and
    select **Next**.
 
-   | **Parameter**           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                   |
-   | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**                | Enter the hostname for the template. This name cannot contain more than 63 characters.                                                                                                                                                                                                                                                                                                                            |
-   | **Display Name**        | Enter the human-readable display name for the template.                                                                                                                                                                                                                                                                                                                                                           |
-   | **Source DV Namespace** | Select the namespace that contains the DataVolume.                                                                                                                                                                                                                                                                                                                                                                |
-   | **Source DataVolume**   | Select the DataVolume to use for the template, such as a golden image.                                                                                                                                                                                                                                                                                                                                            |
-   | **Guest OS**            | Select either Linux or Windows.                                                                                                                                                                                                                                                                                                                                                                                   |
-   | **Network Namespace**   | Select the namespace for the network.                                                                                                                                                                                                                                                                                                                                                                             |
-   | **VM Preference**       | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux **Guest OS** selection, and Windows preferences appear only for Windows **Guest OS** selection.                                                                                                                               |
-   | **Labels**              | Enter key-value pair labels to add to your template.                                                                                                                                                                                                                                                                                                                                                              |
-   | **Annotations**         | Enter key-value pair Kubernetes annotations to add to your template. Select **Disable PCI Hole 64-bit** when you use legacy operating systems, such as Windows XP or Windows 2003. Launchpad sets the `kubevirt.io/disablePCIHole64: "true"` annotation on the VMI template spec. Refer to [Running legacy Windows versions](https://kubevirt.io/user-guide/user_workloads/legacy_windows/) for more information. |
+   | **Parameter**           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                      |
+   | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**                | Enter the hostname for the template. This name cannot contain more than 63 characters.                                                                                                                                                                                                                                                                                                                               |
+   | **Display Name**        | Enter the human-readable display name for the template.                                                                                                                                                                                                                                                                                                                                                              |
+   | **Source DV Namespace** | Select the namespace that contains the DataVolume.                                                                                                                                                                                                                                                                                                                                                                   |
+   | **Source DataVolume**   | Select the DataVolume to use for the template, such as a golden image.                                                                                                                                                                                                                                                                                                                                               |
+   | **Guest OS**            | Select either Linux or Windows.                                                                                                                                                                                                                                                                                                                                                                                      |
+   | **Network Namespace**   | Select the namespace for the network.                                                                                                                                                                                                                                                                                                                                                                                |
+   | **VM Preference**       | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux **Guest OS** selection, and Windows preferences appear only for Windows **Guest OS** selection.                                                                                                                                  |
+   | **Labels**              | Enter key-value pair labels to add to your template.                                                                                                                                                                                                                                                                                                                                                                 |
+   | **Annotations**         | Enter key-value pair Kubernetes annotations to add to your template. Select **Disable PCI Hole 64-bit** when you use legacy operating systems, such as Windows XP or Windows 2003. VM Launchpad sets the `kubevirt.io/disablePCIHole64: "true"` annotation on the VMI template spec. Refer to [Running legacy Windows versions](https://kubevirt.io/user-guide/user_workloads/legacy_windows/) for more information. |
 
 4. On the **Compute** wizard step, select **Instance Type** to use predefined instance types, or select **Custom** to
    set CPU and memory resource options manually.
@@ -143,7 +143,7 @@ generalized golden image as the source.
     | **Devices**          | **Video Type**                | Select VGA, Virtio, or `Bochs`.                                                                               |
     | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
     | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
-    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. Launchpad enables these settings by default.                                             |
+    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. VM Launchpad enables these settings by default.                                          |
     | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`.                                       |
     | **Clock and Timers** | **Clock Mode**                | Select UTC or timezone.                                                                                       |
     | **Clock and Timers** | **Timers**                    | Configure PIT, RTC, HPET, or HyperV timers.                                                                   |
@@ -162,8 +162,8 @@ generalized golden image as the source.
     minutes.
 
     If a VM or template references a model the cluster does not expose, the drop-down menu preserves it as
-    `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. Launchpad also warns you when
-    the selected CPU model is unavailable on all nodes or is available only on some nodes.
+    `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. VM Launchpad also warns you
+    when the selected CPU model is unavailable on all nodes or is available only on some nodes.
 
     :::
 
@@ -201,13 +201,13 @@ generalized golden image as the source.
 
     <summary>Display Cloud-Init settings.</summary>
 
-    | **Setting**                         | **Description**                                                                                                                                                                                                                                                                                 |
-    | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                    |
-    | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                              |
-    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                            |
-    | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                      |
-    | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
+    | **Setting**                         | **Description**                                                                                                                                                                                                                                                                                    |
+    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                       |
+    | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                                 |
+    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                               |
+    | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                         |
+    | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, VM Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
 
     </details>
 
@@ -244,7 +244,7 @@ generalized golden image as the source.
 
 13. On the **Review** page, verify the settings for the template and edit as needed.
 
-14. Select **Create Template**. Launchpad saves the template as a `VmTemplate` custom resource.
+14. Select **Create Template**. VM Launchpad saves the template as a `VmTemplate` custom resource.
 
 Windows VMs follow the same template creation flow. You do not need to configure cloud-init for Windows templates.
 
@@ -256,7 +256,7 @@ Windows VMs follow the same template creation flow. You do not need to configure
 
    ![Screenshot of VM actions mention Save as Template](/vmo/vm-management_vmo_templates_save-vm-template-4-9.webp)
 
-3. On the **Save as a Template** page, review the configuration that Launchpad pre-fills from the VM.
+3. On the **Save as a Template** page, review the configuration that VM Launchpad pre-fills from the VM.
 
 4. Update any values that should differ from the source VM, enter an optional description, and select **Create
    Template**.
@@ -266,21 +266,21 @@ clone source. Use sealed and generalized golden images as template sources whene
 
 ## Template Generalization {#cross-namespace-disclosure}
 
-When a template generalizes the OS for cloning purposes, the workflow preserves certain fields, and removes others.
+When a template generalizes the OS for cloning purposes, the workflow preserves certain fields, and removes others. VM
 Launchpad copies the following fields from the source VM into the template.
 
-| **Field**                           | **Description**                                                                                                         |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| cloud-init                          | Inline `userData` and `networkData` values for NoCloud and ConfigDrive data sources.                                    |
-| Compute                             | CPU topology, memory, and instance type reference.                                                                      |
-| Firmware                            | Bootloader mode, Secure Boot, kernel boot, and ACPI settings. Launchpad removes per-VM firmware UUID and serial values. |
-| Preference                          | The `spec.preference` reference, when set.                                                                              |
-| Networks and disks                  | Interface bindings, NAD references, and disk topology.                                                                  |
-| Hardware                            | Devices, feature flags, clock settings, and timer settings.                                                             |
-| User-applied labels and annotations | Team tags, cost center labels, and other user metadata.                                                                 |
+| **Field**                           | **Description**                                                                                                            |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| cloud-init                          | Inline `userData` and `networkData` values for NoCloud and ConfigDrive data sources.                                       |
+| Compute                             | CPU topology, memory, and instance type reference.                                                                         |
+| Firmware                            | Bootloader mode, Secure Boot, kernel boot, and ACPI settings. VM Launchpad removes per-VM firmware UUID and serial values. |
+| Preference                          | The `spec.preference` reference, when set.                                                                                 |
+| Networks and disks                  | Interface bindings, NAD references, and disk topology.                                                                     |
+| Hardware                            | Devices, feature flags, clock settings, and timer settings.                                                                |
+| User-applied labels and annotations | Team tags, cost center labels, and other user metadata.                                                                    |
 
-The following table displays the fields that Launchpad removes. These fields can contain per-VM, security-sensitive, or
-namespace-bound values.
+The following table displays the fields that VM Launchpad removes. These fields can contain per-VM, security-sensitive,
+or namespace-bound values.
 
 | **Field**                    | **Description**                                                                     |
 | ---------------------------- | ----------------------------------------------------------------------------------- |
@@ -291,7 +291,7 @@ namespace-bound values.
 | Run strategy                 | The create-from-template flow decides whether the new VM starts automatically.      |
 | KubeVirt-managed metadata    | KubeVirt, CDI, and wizard breadcrumb annotations that do not represent user intent. |
 
-If Launchpad removes a field, the success dialog lists the removed fields so you can reattach anything required for
+If VM Launchpad removes a field, the success dialog lists the removed fields so you can reattach anything required for
 future VMs.
 
 :::warning
@@ -338,22 +338,22 @@ The export includes the full `VmTemplate` spec and metadata.
 
 6. Complete the import.
 
-When you import a template that references a CPU model the current cluster does not expose, Launchpad preserves the CPU
-model value. The **CPU Model** drop-down menu displays the model as unsupported and warns that VMs using it may fail to
-schedule. Select a supported CPU model before you create a VM, or add a node that provides the required CPU features.
+When you import a template that references a CPU model the current cluster does not expose, VM Launchpad preserves the
+CPU model value. The **CPU Model** drop-down menu displays the model as unsupported and warns that VMs using it may fail
+to schedule. Select a supported CPU model before you create a VM, or add a node that provides the required CPU features.
 
 ## Template Annotations
 
-The template wizard exposes user annotations in the Source step. Launchpad stores these annotations on the `VmTemplate`
-resource and carries them forward when users create VMs from the template.
+The template wizard exposes user annotations in the Source step. VM Launchpad stores these annotations on the
+`VmTemplate` resource and carries them forward when users create VMs from the template.
 
-Launchpad manages the following annotations, so users cannot edit them through the user annotations field.
+VM Launchpad manages the following annotations, so users cannot edit them through the user annotations field.
 
 | **Annotation**                                 | **Set By**                       | **Purpose**                                                                        |
 | ---------------------------------------------- | -------------------------------- | ---------------------------------------------------------------------------------- |
 | `vmo-manager.spectrocloud.com/snapshot-policy` | Lifecycle step                   | Identifies the snapshot policy to attach to VMs created from the template.         |
 | `kubevirt.io/disablePCIHole64`                 | **Disable PCI Hole 64** checkbox | Provides compatibility for legacy Windows guest operating systems on Q35 machines. |
-| `app.kubernetes.io/managed-by`                 | Launchpad                        | Marks the resource as managed by Launchpad.                                        |
+| `app.kubernetes.io/managed-by`                 | VM Launchpad                     | Marks the resource as managed by VM Launchpad.                                     |
 
 ## Best Practices
 

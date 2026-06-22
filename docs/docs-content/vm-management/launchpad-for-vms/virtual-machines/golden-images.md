@@ -30,8 +30,8 @@ The following diagram displays the steps to build a golden image to use as a ref
 
 ## Network Considerations
 
-The golden image builder VM uses the pod network with masquerade mode during the build. Launchpad serves packages and
-ISOs to the builder over the pod network. Launchpad does not support custom Network Attachment Definition (NAD)
+The golden image builder VM uses the pod network with masquerade mode during the build. VM Launchpad serves packages and
+ISOs to the builder over the pod network. VM Launchpad does not support custom Network Attachment Definition (NAD)
 networks, such as bridge networks, for the build workflow.
 
 After the build is complete, templates and VMs created from the golden image can use the pod network or a custom NAD.
@@ -53,7 +53,7 @@ After the build is complete, templates and VMs created from the golden image can
 | **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                         |
 | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2. |
 
-Large ISO files can take minutes to upload. Launchpad displays progress during the upload phase.
+Large ISO files can take minutes to upload. VM Launchpad displays progress during the upload phase.
 
 :::info
 
@@ -85,7 +85,7 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
    | **Access Mode**   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`.                                                               |
    | **Volume Mode**   | Select `Block` or `Filesystem`.                                                                                           |
 
-   Large ISO files may take a few minutes to upload. Launchpad displays the upload progress during the create phase.
+   Large ISO files may take a few minutes to upload. VM Launchpad displays the upload progress during the create phase.
 
 ## Create Blank DataVolume
 
@@ -183,7 +183,7 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
 10. For Windows, select **Windows**. This runs `sysprep` with `/generalize /oobe /shutdown`.
 
-11. Select **Finalize**. Launchpad completes the following actions:
+11. Select **Finalize**. VM Launchpad completes the following actions:
 
     - Stops the VM.
 

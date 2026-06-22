@@ -8,7 +8,7 @@ sidebar_position: 10
 tags: ["vmo", "vm launchpad"]
 ---
 
-This guide walks through the VM creation wizard and batch creation options in Launchpad.
+This guide walks through the VM creation wizard and batch creation options in VM Launchpad.
 
 ## Overview
 
@@ -55,12 +55,12 @@ deploy a VM.
 
 4.  Configure any extra **Source** options for your VM. Select **Next** when you complete this page.
 
-    | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                             |
-    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Batch**         | Select **Create multiple VMs**. Under **Count**, enter the number of VMs to create. From the **Naming** drop-down menu, select the naming convention: `name-1, name-2` or `name01, name02`. Under **Start #**, enter the number where the naming convention begins.                                                                                                                                         |
-    | **VM Preference** | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux image/ISOs, and Windows preferences appear only for Windows image/ISOs.                                                                                                                                                 |
-    | **Labels**        | Enter key-value pair labels to add to your VM.                                                                                                                                                                                                                                                                                                                                                              |
-    | **Annotations**   | Enter key-value pair Kubernetes annotations to add to your VM. Select **Disable PCI Hole 64-bit** when you use legacy operating systems, such as Windows XP or Windows 2003. Launchpad sets the `kubevirt.io/disablePCIHole64: "true"` annotation on the VMI template spec. Refer to [Running legacy Windows versions](https://kubevirt.io/user-guide/user_workloads/legacy_windows/) for more information. |
+    | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                |
+    | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Batch**         | Select **Create multiple VMs**. Under **Count**, enter the number of VMs to create. From the **Naming** drop-down menu, select the naming convention: `name-1, name-2` or `name01, name02`. Under **Start #**, enter the number where the naming convention begins.                                                                                                                                            |
+    | **VM Preference** | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux image/ISOs, and Windows preferences appear only for Windows image/ISOs.                                                                                                                                                    |
+    | **Labels**        | Enter key-value pair labels to add to your VM.                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Annotations**   | Enter key-value pair Kubernetes annotations to add to your VM. Select **Disable PCI Hole 64-bit** when you use legacy operating systems, such as Windows XP or Windows 2003. VM Launchpad sets the `kubevirt.io/disablePCIHole64: "true"` annotation on the VMI template spec. Refer to [Running legacy Windows versions](https://kubevirt.io/user-guide/user_workloads/legacy_windows/) for more information. |
 
 5.  On the **Compute** wizard step, select **Instance Type** to use predefined instance types, or select **Custom** to
     set CPU and memory resource options manually.
@@ -151,7 +151,7 @@ deploy a VM.
     | **Devices**          | **Video Type**                | Select VGA, Virtio, or `Bochs`.                                                                               |
     | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
     | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
-    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. Launchpad enables these settings by default.                                             |
+    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. VM Launchpad enables these settings by default.                                          |
     | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`.                                       |
     | **Clock and Timers** | **Clock Mode**                | Select UTC or timezone.                                                                                       |
     | **Clock and Timers** | **Timers**                    | Configure PIT, RTC, HPET, or HyperV timers.                                                                   |
@@ -170,8 +170,8 @@ deploy a VM.
     minutes.
 
     If a VM or template references a model the cluster does not expose, the drop-down menu preserves it as
-    `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. Launchpad also warns you when
-    the selected CPU model is unavailable on all nodes or is available only on some nodes.
+    `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. VM Launchpad also warns you
+    when the selected CPU model is unavailable on all nodes or is available only on some nodes.
 
     :::
 
@@ -209,13 +209,13 @@ deploy a VM.
 
     <summary>Display Cloud-Init settings.</summary>
 
-    | **Setting**                         | **Description**                                                                                                                                                                                                                                                                                 |
-    | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                    |
-    | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                              |
-    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                            |
-    | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                      |
-    | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
+    | **Setting**                         | **Description**                                                                                                                                                                                                                                                                                    |
+    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                       |
+    | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                                 |
+    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                               |
+    | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                         |
+    | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, VM Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
 
     </details>
 
