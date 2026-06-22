@@ -76,7 +76,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 - If you are provisioning a [two-node cluster](../architecture/two-node.md), ensure that you set the `TWO_NODE` argument
   to `true` when building the provider image you use to deploy the cluster. For more information, refer to
-  [Build Provider Images](../edgeforge-workflow/palette-canvos/build-provider-images.md).
+  [Build Provider Images](../edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md).
 
 - Network Time Protocol (NTP) servers are correctly configured in a multi-node cluster. All nodes must have their time
   synchronized.

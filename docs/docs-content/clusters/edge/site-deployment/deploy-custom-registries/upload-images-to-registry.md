@@ -151,6 +151,13 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
 
+:::deprecated
+
+The Palette Edge CLI is deprecated and new image versions will no longer be published. We recommend using the
+[Palette CLI](../../../../automation/palette-cli/palette-cli.md) instead to upload provider images to your registry.
+
+:::
+
 1. Download the Palette Edge CLI. Refer to the [Palette Components CLI Matrix](../../../../downloads/cli-tools.md) to
    find a compatible CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
