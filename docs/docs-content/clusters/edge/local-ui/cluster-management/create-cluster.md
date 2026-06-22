@@ -140,6 +140,15 @@ management.
    you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
    the control plane will be considered a leader node.
 
+   :::info
+
+   When `UseControlPlaneAsWorker` is disabled, Stylus reconciles the control-plane taint on control plane nodes. If you
+   need to remove the taint manually and keep it removed, add `DisableWorkerNodeCapReconcile` to `stylus.featureGate` in
+   the OS pack before creating the cluster. For more information, refer to
+   [Feature Gates](../../edge-configuration/installer-reference.md#feature-gates).
+
+   :::
+
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
 

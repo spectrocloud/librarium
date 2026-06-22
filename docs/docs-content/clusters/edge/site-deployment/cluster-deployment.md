@@ -108,6 +108,15 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     the **control-plane-pool** and the **worker-pool**. For more information about node pool configuration settings,
     refer to [Node Pools](../../cluster-management/node-pool.md).
 
+    :::info
+
+    When `UseControlPlaneAsWorker` is disabled, Stylus reconciles the control-plane taint on control plane nodes. If you
+    need to remove the taint manually and keep it removed, add `DisableWorkerNodeCapReconcile` to `stylus.featureGate`
+    in the OS pack before creating the cluster. For more information, refer to
+    [Feature Gates](../../edge-configuration/installer-reference.md#feature-gates).
+
+    :::
+
     Optionally, enable **Skip worker node update** on a worker pool to allow the control plane to be upgraded
     independently of that pool. For details, refer to
     [Skip Worker Node Update](../../cluster-management/node-pool.md#skip-worker-node-update) and

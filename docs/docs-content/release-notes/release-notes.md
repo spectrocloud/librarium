@@ -113,6 +113,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   more information, refer to
   [Initial Edge Host Configuration with Palette TUI](../clusters/edge/site-deployment/site-installation/initial-setup.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8897 -->
+
+- Edge clusters now support the `DisableWorkerNodeCapReconcile` feature gate. Add this value to `stylus.featureGate` in
+  the OS pack to prevent Stylus from reconciling the control-plane taint on control plane nodes when
+  `UseControlPlaneAsWorker` is disabled. For more information, refer to
+  [Feature Gates](../clusters/edge/edge-configuration/installer-reference.md#feature-gates).
+
 #### Improvements
 
 #### Bug Fixes

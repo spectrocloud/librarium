@@ -60,9 +60,17 @@ Using custom `stylus.path` values can lead to deployment issues in some configur
 enabled by default unless you include the feature in the parameter. The following table displays the available features
 you can enable using this parameter.
 
-| Value          | Description                                                                                                                                                                            |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `UserDataForm` | This value enables you to edit the installer user data after installation in Local UI. For more information, refer to [Edit User Data](../local-ui/host-management/edit-user-data.md). |
+| Value                           | Description                                                                                                                                                                                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `UserDataForm`                  | This value enables you to edit the installer user data after installation in Local UI. For more information, refer to [Edit User Data](../local-ui/host-management/edit-user-data.md).                                                            |
+| `DisableWorkerNodeCapReconcile` | Prevents Stylus from reconciling the control-plane taint on control plane nodes when `UseControlPlaneAsWorker` is disabled. Use this feature gate if you want to manually remove the control-plane taint and prevent Stylus from adding it again. |
+
+To enable multiple feature gates, provide a comma-separated list.
+
+```yaml
+stylus:
+  featureGate: "UserDataForm,DisableWorkerNodeCapReconcile"
+```
 
 ### Multiple External Registries
 
