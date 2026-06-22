@@ -116,11 +116,46 @@ your environment. Reach out to our support team if you need assistance.
     cd palette-install
     ```
 
-3.  Install Cert-Manager using the following command.
+    ### Cert-Manager Helm Chart
+
+3.  Open the file `extras/cert-manager/values.yaml` using a text editor of your choice. This example uses Vim.
 
     ```shell
-    helm upgrade --values extras/cert-manager/values.yaml \
-    cert-manager extras/cert-manager/cert-manager-*.tgz --install
+    vim extras/cert-manager/values.yaml
+    ```
+
+4.  If you plan to pull images from Spectro Cloud OCI registries, paste the image pull secret received from your
+    customer support representative into the `imagePullSecret.dockerConfigJson` field. It is not required if you plan to
+    use mirror registries or image swap.
+
+    Alternately, if you plan to pull images from a private registry that requires authentication, use the base64-encoded
+    contents of your `config.json` containing the registry credentials. Refer to
+    [Helm Configuration Reference](./palette-helm-ref.md#image-pull-secret) for more information.
+
+    :::info
+
+    If you omit the image pull secret during installation, you must provide it through the system console. Refer to
+    [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md)
+    for more information.
+
+    :::
+
+    ```yaml title="Example configuration" hideClipboard {5}
+    imagePullSecret:
+      # When true, render Secret spectro-image-pull-secret in the cert-manager namespace.
+      # Pods automatically reference that pull secret when create is true or the secret already exists (PEM-10596).
+      create: false
+      dockerConfigJson: "abcdEFGhiJKlmnOPQrSTUVwX..." # Used when create is true: base64-encoded dockerconfigjson
+    ```
+
+5.  Install the Cert-Manager Helm chart.
+
+    ```shell
+    helm upgrade --install cert-manager \
+      ./extras/cert-manager/cert-manager-*.tgz \
+      --namespace cert-manager \
+      --create-namespace \
+      --values ./extras/cert-manager/values.yaml
     ```
 
     ```shell hideClipboard title="Example output"
@@ -133,53 +168,72 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-4.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
-    Palette, including Traefik CRDs, and must be installed _before_ the main Palette Helm chart. When the chart is
+    ### Spectro Management CRDs Helm Chart
+
+6.  Install the Spectro Management CRDs chart. This chart contains Custom Resource Definitions (CRDs) required by
+    Palette, including Traefik CRDs, and must be installed before the main Palette Helm chart. When the chart is
     installed, the custom resource types are registered with the Kubernetes API server; no pods are deployed.
 
     ```shell
-    helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+    helm upgrade --install spectro-mgmt-crds \
+      extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
+      --values extras/spectro-mgmt-crds/values.yaml
     ```
 
     ```shell hideClipboard title="Example output"
     Release "spectro-mgmt-crds" does not exist. Installing it now.
     NAME: spectro-mgmt-crds
-    LAST DEPLOYED: Wed Jun 17 12:55:23 2026
+    LAST DEPLOYED: Wed Jun 17 21:17:39 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
     TEST SUITE: None
     ```
 
-5.  Open the file `palette/values.yaml` using a text editor of your choice. This example uses Vim.
+    ### Palette Helm Chart
+
+7.  Open the file `palette/values.yaml` using a text editor of your choice. This example uses Vim.
 
     ```shell
     vim palette/values.yaml
     ```
 
-6.  The file `palette/values.yaml` contains the default values for the Palette installation parameters. You must
+8.  The file `palette/values.yaml` contains the default values for the Palette installation parameters. You must
     populate the following parameters before installing Palette. For a complete list of fields and additional
-    information, refer to [Helm Configuration Reference](palette-helm-ref.md).
+    information, refer to [Helm Configuration Reference](./palette-helm-ref.md).
 
-    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | **Type** |
-    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-    | `global.imagePullSecret.dockerConfigJson` | The image pull secret provided by your Spectro Cloud customer support representative. This secret is required if you plan to pull images hosted in a Spectro Cloud-owned registry. If you omit this during installation, you must provide it through the system console. Refer to [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md) for more information. <br /><br />Alternately, if you plan to pull images from your own private registry, use the base64-encoded contents of your `config.json` containing the registry credentials. Refer to [Helm Configuration Reference](palette-helm-ref.md#image-pull-secret) for more information. | string   |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | object   |
-    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | object   |
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | **Type** |
+    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `global.imagePullSecret.dockerConfigJson` | If you plan to pull images from Spectro Cloud OCI registries (without mirror registries or image swap configured) or images from private registries that require authentication, paste your image pull secret here. This must match the image pull secret configured for [Cert-Manager](#cert-manager-helm-chart). If you omit the image pull secret during installation, you must provide it through the system console. Refer to [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md) for more information. | string   |
+    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | string   |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | object   |
+    | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                  | boolean  |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                        | object   |
+    | `mongo.storageClass`                      | If you do not have a default storage class in your cluster (the annotation `"storageclass.kubernetes.io/is-default-class":"true"`), enter the name of the storage class to use for your Palette installation.                                                                                                                                                                                                                                                                                                                                                                         | string   |
 
-    ### Self-Hosted OCI Registries
+    #### Self-Hosted OCI Registries
 
     The following parameters are required if you pull Palette images from a self-hosted OCI registry instead of a
-    Spectro Cloud-owned registry or AWS ECR.
+    Spectro Cloud OCI registry or AWS ECR.
 
-    | **Parameter**                       | **Description**                                                                                                                                                                                                                   | **Type** |
-    | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `ociImageRegistry`                  | Configure the registry endpoint, credentials, and `mirrorRegistries` values. Refer to the [Helm Configuration Reference](palette-helm-ref.md#oci-image-registry) page for parameter descriptions.                                 | object   |
-    | `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries in image swap format that maps public registry paths to your private registry. Refer to the [Helm Configuration Reference](palette-helm-ref.md#oci-image-registry) page for examples. | string   |
-    | `imageSwapImages`                   | The Image Swap init and webhook images. If you host these images in your OCI registry, replace the image paths with your registry URL and namespace or project.                                                                   | object   |
-    | `imageSwapConfig.isEKSCluster`      | Set to `true` if you are installing Palette on an Amazon EKS cluster. Set to `false` for all other Kubernetes distributions.                                                                                                      | boolean  |
+    :::tip
+
+    If you would prefer to keep your image swap values in a separate location, you can use the following table to
+    complete the `extras/image-swap/values.yaml` file instead.
+
+    ```shell
+    tar --extract --verbose --gzip --file extras/image-swap/image-swap-*.tgz --directory extras/
+    vim extras/image-swap/values.yaml
+    ```
+
+    :::
+
+    | **Parameter**                       | **Description**                                                                                                                                                                                                                     | **Type** |
+    | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `ociImageRegistry`                  | Configure the registry endpoint, credentials, and `mirrorRegistries` values. Refer to the [Helm Configuration Reference](./palette-helm-ref.md#oci-image-registry) page for parameter descriptions.                                 | object   |
+    | `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries in image swap format that maps public registry paths to your private registry. Refer to the [Helm Configuration Reference](./palette-helm-ref.md#oci-image-registry) page for examples. | string   |
+    | `imageSwapImages`                   | The Image Swap init and webhook images. If you host these images in your OCI registry, replace the image paths with your registry URL and namespace or project.                                                                     | object   |
+    | `imageSwapConfig.isEKSCluster`      | Set to `true` if you are installing Palette on an Amazon EKS cluster. Set to `false` for all other Kubernetes distributions.                                                                                                        | boolean  |
 
     :::info
 
@@ -192,7 +246,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-7.  Save the completed `palette/values.yaml` file. Expand the following sections to review an example of the
+9.  Save the completed `palette/values.yaml` file. Expand the following sections to review an example of the
     `palette/values.yaml` file with the required parameters highlighted.
 
     <!-- prettier-ignore -->
@@ -627,14 +681,34 @@ your environment. Reach out to our support team if you need assistance.
 
     </Tabs>
 
-8.  (Self-hosted OCI registry only) If you configured the [Self-Hosted OCI Registry](#self-hosted-oci-registries)
-    values, install the Image Swap Helm chart. Image Swap rewrites pod image references to pull from your mirror
-    registry. Palette ignores the `mirrorRegistries` configuration unless the Image Swap chart is installed.
+    ### Image Swap Helm Chart
+
+10. (Self-hosted OCI registry only) If you plan to use image swap for self-hosted OCI registries, install the Image Swap
+    Helm chart. Image Swap rewrites pod image references to pull from your mirror registry. Palette ignores the
+    `mirrorRegistries` configuration unless the Image Swap chart is installed. Choose the correct command based on
+    whether you added your image swap values to `palette/values.yaml` or `extras/image-swap/values.yaml`.
+
+    <Tabs>
+
+    <TabItem value="palette" label="palette/values.yaml">
 
     ```shell
     helm upgrade --values palette/values.yaml \
-    image-swap extras/image-swap/image-swap-*.tgz --install
+      image-swap extras/image-swap/image-swap-*.tgz --install
     ```
+
+    </TabItem>
+
+    <TabItem value="image-swap" label="image-swap/values.yaml" >
+
+    ```shell
+    helm upgrade --values extras/image-swap/values.yaml \
+      image-swap extras/image-swap/image-swap-*.tgz --install
+    ```
+
+    </TabItem>
+
+    </Tabs>
 
     ```shell hideClipboard title="Example output"
     Release "image-swap" does not exist. Installing it now.
@@ -646,13 +720,15 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-9.  (Proxy environments only) If you are installing Palette in an environment where a network proxy must be configured
-    for Palette to access the internet, install the reach-system chart using the following command. Ensure you set
-    `reach-system.enabled` to `true` and configure `reach-system.proxySettings` in `palette/values.yaml`.
+    ### Reach System Helm Chart
+
+11. (Proxy environments only) If you are installing Palette VerteX in an environment where a network proxy must be
+    configured for VerteX to access the internet, install the Reach System chart using the following command. Ensure you
+    set `reach-system.enabled` to `true` and configure `reach-system.proxySettings` in `vertex/values.yaml`.
 
     ```shell
-    helm upgrade --values palette/values.yaml \
-    reach-system extras/reach-system/reach-system-*.tgz --install
+    helm upgrade --values vertex/values.yaml \
+      reach-system extras/reach-system/reach-system-*.tgz --install
     ```
 
     ```shell hideClipboard title="Example output"
@@ -665,43 +741,49 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-    <!-- prettier-ignore -->
+    <!-- prettier-ignore-start -->
+
     <details>
-    <summary>Update containerd to use proxy configurations</summary>
 
-    If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
-    settings. You can do this by updating the containerd configuration file on each node in the cluster. The
-    configuration file is typically located at ` /etc/systemd/system/containerd.service.d/http-proxy.conf`. Below is an
-    example of the configuration file. Replace the values with your proxy settings. Ask your network administrator for
-    guidance.
+        <summary>Update containerd to use proxy configurations</summary>
 
-    ```
-    [Service]
-    Environment="HTTP_PROXY=http://example.com:9090"
-    Environment="HTTPS_PROXY=http://example.com:9090"
-    Environment="NO_PROXY=127.0.0.1,localhost,100.64.0.0/17,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,,.cluster.local"
-    ```
+        If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
+        settings. You can do this by updating the containerd configuration file on each node in the cluster. The
+        configuration file is typically located at ` /etc/systemd/system/containerd.service.d/http-proxy.conf`. Below is an
+        example of the configuration file. Replace the values with your proxy settings. Ask your network administrator for
+        guidance.
+
+        ```
+        [Service]
+        Environment="HTTP_PROXY=http://example.com:9090"
+        Environment="HTTPS_PROXY=http://example.com:9090"
+        Environment="NO_PROXY=127.0.0.1,localhost,100.64.0.0/17,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,,.cluster.local"
+        ```
 
     </details>
 
-10. Install the Palette Helm chart using the following command.
+    <!-- prettier-ignore-end -->
+
+    ### Installation
+
+12. Install the Palette Helm Chart using the following command.
 
     ```shell
-     helm upgrade --values palette/values.yaml \
-     hubble palette/spectro-mgmt-plane-*.tgz --install
+    helm upgrade --values palette/values.yaml \
+      hubble palette/spectro-mgmt-plane-*.tgz --install
     ```
 
     ```shell hideClipboard title="Example output"
     Release "hubble" does not exist. Installing it now.
     NAME: hubble
-    LAST DEPLOYED: Wed Jun 17 13:32:33 2026
+    LAST DEPLOYED: Wed Jun 17 21:41:31 2026
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
     TEST SUITE: None
     ```
 
-11. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+13. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -718,7 +800,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-12. Create a DNS CNAME record that is mapped to the Palette `traefik-ingress-controller` load balancer. You can use the
+14. Create a DNS CNAME record that is mapped to the Palette `traefik-ingress-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -738,7 +820,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-13. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. Open a web
+15. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. Open a web
     browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name
     in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load
     balancer IP address with the appended value `/system` to access the system console.
@@ -749,7 +831,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-14. Log in to the system console using the default credentials. Refer to the
+16. Log in to the system console using the default credentials. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements
 
@@ -764,7 +846,7 @@ your environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-15. After logging in, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+17. After logging in, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
@@ -783,7 +865,7 @@ file, as you can refer to it for future upgrades.
 
 ## Validate
 
-Use the following steps to validate the Palette installation.
+Use the following steps to validate your Palette installation.
 
 <Tabs>
 
@@ -800,63 +882,94 @@ Use the following steps to validate the Palette installation.
 
 <TabItem value="terminal" label="Terminal">
 
-Open a terminal session and issue the following command to verify the Palette installation. The command should return a
-list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` namespaces.
+1. Open a terminal session with access to the cluster you installed Palette on.
 
-```shell
-kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-| grep --extended-regexp '^(cp-system|hubble-system|ingress-traefik|jet-system|ui-system)\s'
-```
+2. Verify all pods in all namespaces are running.
 
-Your output should look similar to the following.
+   ```shell
+   kubectl get pods --all-namespaces
+   ```
 
-```shell hideClipboard
- cp-system            spectro-cp-ui-78c9b7dcc5-q8ln4                             Running
- hubble-system        auth-58bc56bc79-68lbg                                      Running
- hubble-system        auth-58bc56bc79-r2md8                                      Running
- hubble-system        cloud-8475845cff-dnq27                                     Running
- hubble-system        cloud-8475845cff-v2cww                                     Running
- hubble-system        configserver-74dd648bf5-6tvmv                              Running
- hubble-system        event-68cfb57f6d-9dx5b                                     Running
- hubble-system        event-68cfb57f6d-g5zrl                                     Running
- hubble-system        event-68cfb57f6d-rz4sz                                     Running
- hubble-system        foreq-6c75b84554-x4f7h                                     Running
- hubble-system        hashboard-7b69cc685f-d8mmw                                 Running
- hubble-system        hashboard-7b69cc685f-mbb57                                 Running
- hubble-system        hutil-5456dfbdd7-68p4m                                     Running
- hubble-system        hutil-5456dfbdd7-dllfj                                     Running
- hubble-system        memstore-8654b49cfd-npqbv                                  Running
- hubble-system        mgmt-55985b7ccb-gpvnr                                      Running
- hubble-system        mongo-0                                                    Running
- hubble-system        mongo-1                                                    Running
- hubble-system        mongo-2                                                    Pending
- hubble-system        mongodb-key-manager-helm-4z2mw                             Running
- hubble-system        msgbroker-0                                                Running
- hubble-system        msgbroker-1                                                Running
- hubble-system        oci-proxy-787fd499d4-f772t                                 Running
- hubble-system        specman-0                                                  Running
- hubble-system        spectro-tunnel-69448888-qn7kk                              Running
- hubble-system        spectrocluster-54fb864b48-8fhkr                            Running
- hubble-system        spectrocluster-54fb864b48-9hkgg                            Running
- hubble-system        spectrocluster-54fb864b48-w5dwr                            Running
- hubble-system        spectrocluster-jobs-6ddfbddcd6-j9xb8                       Running
- hubble-system        spectrocluster-reconciler-d448fc8cf-qr6bp                  Running
- hubble-system        spectroclusterop-89968785d-6n48l                           Running
- hubble-system        spectroclusterop-89968785d-gzd5w                           Running
- hubble-system        spectrossh-d5fd6b49-wfcgc                                  Running
- hubble-system        system-6f7767845d-lm5zn                                    Running
- hubble-system        system-6f7767845d-xf2hl                                    Running
- hubble-system        timeseries-6f5bf98c5c-fcqnh                                Running
- hubble-system        timeseries-6f5bf98c5c-vmb5h                                Running
- hubble-system        timeseries-6f5bf98c5c-xm8s6                                Running
- hubble-system        user-796c877b57-6rcdp                                      Running
- hubble-system        user-796c877b57-ptbg4                                      Running
- ingress-traefik      traefik-ingress-controller-9dmzq                           Running
- ingress-traefik      traefik-ingress-controller-tpwtf                           Running
- ingress-traefik      traefik-ingress-controller-xz4jf                           Running
- jet-system           jet-555cdf78f5-4l2s2                                       Running
- ui-system            spectro-ui-8658f85c85-9lkhs                                Running
-```
+   ```shell hideClipboard title="Example output"
+   NAMESPACE         NAME                                        READY   STATUS      RESTARTS       AGE
+   cert-manager      cert-manager-5fb779d887-mz2vb               1/1     Running     0              8m46s
+   cert-manager      cert-manager-cainjector-764f9646d4-7nhpq    1/1     Running     0              8m46s
+   cert-manager      cert-manager-webhook-85b8dbdddd-fkn6z       1/1     Running     0              8m46s
+   cp-system         spectro-cp-ui-5dffbcdc78-gk8st              1/1     Running     0              7m14s
+   hubble-system     auth-7f4c7ff9c-2clwp                        1/1     Running     0              6m8s
+   hubble-system     auth-7f4c7ff9c-j84bt                        1/1     Running     0              6m7s
+   hubble-system     cloud-8f8467c95-9r8bp                       1/1     Running     0              6m7s
+   hubble-system     cloud-8f8467c95-pvcv4                       1/1     Running     0              6m8s
+   hubble-system     configserver-5bc8f9fdcb-mbt66               1/1     Running     0              6m8s
+   hubble-system     event-5fbf6b7f44-bmzdk                      1/1     Running     0              6m8s
+   hubble-system     event-5fbf6b7f44-cxc58                      1/1     Running     0              6m7s
+   hubble-system     event-5fbf6b7f44-zhr9h                      1/1     Running     0              6m7s
+   hubble-system     foreq-8487bf9bbf-847vj                      1/1     Running     0              6m7s
+   hubble-system     hashboard-66f957cfdf-k48wn                  1/1     Running     0              6m7s
+   hubble-system     hashboard-66f957cfdf-pddx7                  1/1     Running     0              6m6s
+   hubble-system     hutil-7cc6975bb5-5mhjp                      1/1     Running     0              6m6s
+   hubble-system     hutil-7cc6975bb5-jwzr5                      1/1     Running     0              6m7s
+   hubble-system     memstore-7d59d65f67-j8lls                   1/1     Running     0              6m6s
+   hubble-system     mgmt-54fb5f487d-dj2tz                       1/1     Running     0              7m14s
+   hubble-system     mongo-0                                     2/2     Running     0              6m33s
+   hubble-system     mongo-1                                     2/2     Running     0              5m47s
+   hubble-system     mongo-2                                     2/2     Running     0              4m57s
+   hubble-system     mongodb-key-manager-helm-k6294              0/1     Completed   0              7m15s
+   hubble-system     msgbroker-0                                 1/1     Running     0              7m15s
+   hubble-system     msgbroker-1                                 1/1     Running     0              6m43s
+   hubble-system     oci-proxy-78cd749dc9-jfs86                  1/1     Running     0              6m6s
+   hubble-system     reloader-reloader-55d78d877b-7tnkq          1/1     Running     0              6m6s
+   hubble-system     specman-0                                   1/1     Running     0              6m2s
+   hubble-system     spectro-tunnel-74d559dd65-hlwch             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-6885954988-knrfq             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-6885954988-pb6pr             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-6885954988-xcvk9             1/1     Running     0              6m5s
+   hubble-system     spectrocluster-jobs-7dc76bf6c7-pjc7l        1/1     Running     0              6m5s
+   hubble-system     spectrocluster-reconciler-dcfd55ff5-gnfjg   1/1     Running     0              6m4s
+   hubble-system     spectroclusterop-58966f7f54-grznt           1/1     Running     0              6m4s
+   hubble-system     spectroclusterop-58966f7f54-jj9m6           1/1     Running     0              6m4s
+   hubble-system     spectrossh-589d975d4d-82vm2                 1/1     Running     0              6m4s
+   hubble-system     system-d48fdbc9-ffzq9                       1/1     Running     0              6m8s
+   hubble-system     system-d48fdbc9-sztrr                       1/1     Running     0              6m8s
+   hubble-system     timeseries-f465b4c99-8h8c7                  1/1     Running     0              6m4s
+   hubble-system     timeseries-f465b4c99-jlzlj                  1/1     Running     0              6m3s
+   hubble-system     timeseries-f465b4c99-z27d8                  1/1     Running     0              6m3s
+   hubble-system     user-697c6f8bf-fgwtp                        1/1     Running     0              6m3s
+   hubble-system     user-697c6f8bf-wcqxk                        1/1     Running     0              6m3s
+   ingress-traefik   traefik-ingress-controller-5dctd            1/1     Running     0              7m15s
+   ingress-traefik   traefik-ingress-controller-tx6st            1/1     Running     0              7m16s
+   ingress-traefik   traefik-ingress-controller-zf25w            1/1     Running     0              7m16s
+   jet-system        jet-796fc87c5d-vpvtz                        1/1     Running     0              4m1s
+   kube-system       aws-node-8xqnx                              2/2     Running     0              121m
+   kube-system       aws-node-gtr64                              2/2     Running     0              121m
+   kube-system       aws-node-h7pdv                              2/2     Running     0              121m
+   kube-system       coredns-566b9b9d-hck47                      1/1     Running     0              129m
+   kube-system       coredns-566b9b9d-jpnrs                      1/1     Running     0              129m
+   kube-system       ebs-csi-controller-7dfbb6bd58-nwcjl         6/6     Running     0              113m
+   kube-system       ebs-csi-controller-7dfbb6bd58-w8kxz         6/6     Running     0              113m
+   kube-system       ebs-csi-node-9r6fk                          3/3     Running     0              113m
+   kube-system       ebs-csi-node-vp744                          3/3     Running     0              113m
+   kube-system       ebs-csi-node-xb69v                          3/3     Running     0              113m
+   kube-system       kube-proxy-59qgr                            1/1     Running     0              121m
+   kube-system       kube-proxy-krrzd                            1/1     Running     0              121m
+   kube-system       kube-proxy-lbsgp                            1/1     Running     0              121m
+   ui-system         spectro-ui-56749c5f84-98m89                 1/1     Running     0              7m15s
+   ```
+
+3. Verify the `hubble` release is deployed.
+
+   ```shell
+   helm status hubble
+   ```
+
+   ```shell title="Example output" hideClipboard
+   NAME: hubble
+   LAST DEPLOYED: Thu Jun 18 18:33:18 2026
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
 
 </TabItem>
 

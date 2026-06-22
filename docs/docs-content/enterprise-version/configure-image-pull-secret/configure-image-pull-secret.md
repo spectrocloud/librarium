@@ -78,8 +78,12 @@ self-hosted Palette.
 You can add your image pull secret when installing self-hosted Palette and Palette VerteX using Helm charts or the
 Palette CLI.
 
+:::info
+
 Day-0 secret configuration is not supported for Palette Management Appliance installations. You must configure the
 secret [post-installation](#configure-image-pull-secret-post-installation) using the system console.
+
+:::
 
 #### Helm Chart Installations
 
@@ -97,10 +101,7 @@ For the full installation process, refer to the appropriate
 
 #### Palette CLI Installations
 
-[AWAITING INSTRUCTIONS FROM ZULFI]
-
-Configuring an image pull secret when installing self-hosted Palette using the Palette Management Appliance or Palette
-CLI is not supported.
+[AWAITING INSTRUCTIONS FROM ZULFI FOR CLI; VISH FOR PCG]
 
 ### Post-Installation
 

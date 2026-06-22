@@ -18,85 +18,38 @@ has the necessary network connectivity for VerteX to operate successfully.
 
 ## Prerequisites
 
-- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available.
+:::warning
 
-- [Helm](https://helm.sh/docs/intro/install/) is installed and available.
+Do not use a VerteX-managed Kubernetes cluster when installing VerteX. VerteX-managed clusters contain the VerteX agent
+and VerteX-created Kubernetes resources that will interfere with the installation of VerteX.
+
+:::
+
+### Kubernetes Cluster
+
+<PartialsComponent
+  category="self-hosted"
+  name="kubernetes-install-cluster-prereqs"
+  edition="vertex"
+  version="Palette VerteX"
+  helm="vertex"
+/>
+
+- (FIPS compliance only) The OS and Kubernetes cluster you are installing Palette VerteX onto must be FIPS-compliant.
+  Otherwise, Palette VerteX and its operations will not be FIPS-compliant.
+
+### Local Environment
 
 - Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using
   `kubectl` commands and have sufficient permissions to install VerteX. We recommend using a role with cluster-admin
   permissions to install VerteX.
 
+- The following software installed and available:
+
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+  - [Helm](https://helm.sh/docs/intro/install/)
+
 - Ensure `unzip` or a similar extraction utility is installed on your system.
-
-- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
-  the [Kubernetes Requirements](../install-palette-vertex.md#kubernetes-requirements) section to find the version
-  required for your Palette installation.
-
-- Ensure the Kubernetes cluster does not have Cert Manager installed. VerteX requires a unique Cert Manager
-  configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
-  uninstall it before installing VerteX.
-
-- Palette requires a Container Storage Interface (CSI) to create Persistent Volumes, which are used to store persistent
-  data. You may install any CSI that is compatible with your Kubernetes cluster.
-
-- If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
-  `hubble` with the permission `readWriteAnyDatabase`. Refer to the
-  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
-  database user in Atlas.
-
-- We recommend the following resources for VerteX. Refer to the
-  [VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
-
-  - 8 CPUs per node.
-
-  - 16 GB Memory per node.
-
-  - 110 GB Disk Space per node.
-
-  - A minimum of three worker nodes or three untainted control plane nodes.
-
-  - AMD64 (also known as x86_64) architecture. ARM-based nodes are not supported.
-
-- The following network ports must be accessible for VerteX to operate successfully.
-
-  - TCP/443: Inbound and outbound to and from the VerteX management cluster.
-
-  - TCP/6443: Outbound traffic from the VerteX management cluster to the deployed clusters' Kubernetes API server.
-
-- Ensure you have an SSL certificate that matches the domain name you will assign to VerteX. You will need this to
-  enable HTTPS encryption for VerteX. Reach out to your network administrator or security team to obtain the SSL
-  certificate. You need the following files:
-
-  - x509 SSL certificate file in base64 format.
-
-  - x509 SSL certificate key file in base64 format.
-
-  - x509 SSL certificate authority file in base64 format.
-
-- Ensure the OS and Kubernetes cluster you are installing VerteX onto is FIPS-compliant. Otherwise, VerteX and its
-  operations will not be FIPS-compliant.
-
-- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
-  annotation `storageclass.kubernetes.io/is-default-class` set to `true`.
-
-  ```shell
-  kubectl patch storageclass <storageclass-name> --patch '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
-  ```
-
-  To use another storage class for the Palette VerteX installation, you must set the preferred storage class name in the
-  `vertex/values.yaml` file using the `mongo.storageClass` parameter.
-
-- Palette VerteX uses Traefik as the ingress controller. If you already have an ingress controller deployed in the
-  cluster, set the `ingress.enabled` parameter to `false` in the `values.yaml` file.
-
-- A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
-  encryption for VerteX.
-
-- Ensure VerteX has access to the required domains and ports. Refer to the
-  [Required Domains](../install-palette-vertex.md#proxy-requirements) section for more information.
-
-- If you are installing VerteX behind a network proxy server, ensure you have the Certificate Authority (CA) certificate
-  file in the base64 format. You will need this to enable VerteX to communicate with the network proxy server.
 
 - Access to the VerteX Helm Charts. Refer to the [Access VerteX](../../vertex.md#access-palette-vertex) for instructions
   on how to request access to the Helm Chart.
@@ -107,12 +60,23 @@ has the necessary network connectivity for VerteX to operate successfully.
   [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md)
   for more information.
 
-:::warning
+### Other Prerequisites
 
-Do not use a VerteX-managed Kubernetes cluster when installing VerteX. VerteX-managed clusters contain the VerteX agent
-and VerteX-created Kubernetes resources that will interfere with the installation of VerteX.
+- If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
+  `hubble` with the permission `readWriteAnyDatabase`. Refer to the
+  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
+  database user in Atlas.
 
-:::
+- A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
+  encryption for VerteX.
+
+- (Proxy environments only) If you are installing VerteX behind a network proxy server, ensure VerteX has access to the
+  required domains and ports. Refer to the [Required Domains](../install-palette-vertex.md#proxy-requirements) section
+  for more information.
+
+- (Proxy environments only) If you are installing VerteX behind a network proxy server, ensure you have the Certificate
+  Authority (CA) certificate file in the base64 format. You will need this to enable VerteX to communicate with the
+  network proxy server.
 
 ## Install VerteX
 
@@ -225,7 +189,7 @@ your environment. Reach out to our support team if you need assistance.
     | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | string   |
     | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette VerteX FIPS packs. These credentials are provided by our support team.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | object   |
     | `ingress.enabled`                         | Whether to install the Traefik ingress controller. Set to `false` if you already have an ingress controller deployed in the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                  | boolean  |
-    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                        | object   |
+    | `reachSystem`                             | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette VerteX to use a network proxy in your environment                                                                                                                                                                                                                                                                                                                                                                                                                 | object   |
     | `mongo.storageClass`                      | If you do not have a default storage class in your cluster (the annotation `"storageclass.kubernetes.io/is-default-class":"true"`), enter the name of the storage class to use for your Palette VerteX installation.                                                                                                                                                                                                                                                                                                                                                                  | string   |
 
     #### Self-Hosted OCI Registries
@@ -1010,4 +974,4 @@ Use the following steps to validate your Palette VerteX installation.
 
 ## Next Steps
 
-<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="vertex" version="Palette VerteX" />
