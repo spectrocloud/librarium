@@ -90,10 +90,7 @@ Palette is not FIPS compliant. If you need a FIPS-compliant solution, you need t
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
-   corresponding tag.
-
-   Otherwise, check out the newest available tag. This guide uses `v4.4.12` as an example.
+5. Check out the CanvOS tag that corresponds to your Palette release. This guide uses the tag `v4.4.12` as an example.
 
    ```bash
    git tag
