@@ -33,7 +33,8 @@ multiple provider images, so you can use either one that matches the desired Kub
 your cluster profile.
 
 If you want to build the ISO image and the provider images individually, refer to
-[Build Provider Images](./build-provider-images.md) and [Build Installer ISO](./build-installer-iso.md).
+[Build Provider Images](./build-provider-images/build-provider-images.md) and
+[Build Installer ISO](./build-installer-iso.md).
 
 :::info
 
@@ -862,7 +863,7 @@ Palette-managed Edge clusters, we encourage you to check out the reference resou
 
 - [Build Installer ISO](./build-installer-iso.md)
 
-- [Build Provider Images](./build-provider-images.md)
+- [Build Provider Images](./build-provider-images/build-provider-images.md)
 
 - [Edge Artifact Build Configurations](./arg.md)
 

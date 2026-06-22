@@ -59,6 +59,15 @@ The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x
 version guidance, including CanvOS, Stylus, Edge host, and Palette Edge CLI deprecation details, refer to the
 [Edge Compatibility Matrix](../clusters/edge/edge-compatibility-matrix.md).
 
+:::deprecated
+
+The Palette Edge CLI is deprecated and new image versions will no longer be published. We recommend using the
+[Palette CLI](/automation/palette-cli/) instead to create and manage content bundles. Refer to our
+[Build Content Bundle](/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle/) guide for more
+information.
+
+:::
+
 | Palette Release <!-- edge-version-table --> | CLI Version                | Download URL                                                            | Checksum (SHA256)                                                  |
 | ------------------------------------------- | -------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | <!-- edge-4.9.0 --> 4.9.5                   | 4.9.4                      | https://software.spectrocloud.com/stylus/v4.9.4/cli/linux/palette-edge  | `28c6ec3fe7b065d28554d738bcc5d87e655b4862bf3196ec30c3f527b8736321` |
