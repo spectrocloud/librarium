@@ -115,8 +115,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8897 -->
 
-- Edge clusters now support the `DisableWorkerNodeCapReconcile` feature gate. For clusters with **Allow worker capability** disabled, add this value to `stylus.featureGate` in
-  the OS pack to prevent the Palette Edge node agent from automatically re-adding control plane taints to nodes in the control plane pool after the taint has been manually removed. For more information, refer to
+- Edge clusters now support the `DisableWorkerNodeCapReconcile` feature gate. For clusters with **Allow worker
+  capability** disabled, add this value to `stylus.featureGate` in the OS pack to prevent the Palette Edge node agent
+  from automatically re-adding control plane taints to nodes in the control plane pool after the taint has been manually
+  removed. For more information, refer to
   [Feature Gates](../clusters/edge/edge-configuration/installer-reference.md#feature-gates).
 
 #### Improvements

@@ -110,9 +110,10 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
     :::info
 
-       When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it is automatically added again by the Palette Edge node agent. To keep the taint removed, add `DisableWorkerNodeCapReconcile` to
-   `stylus.featureGate` in the OS pack before creating the cluster. For more
-    information, refer to [Feature Gates](../edge-configuration/installer-reference.md#feature-gates).
+        When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it is automatically added again by the Palette Edge node agent. To keep the taint removed, add `DisableWorkerNodeCapReconcile` to
+
+    `stylus.featureGate` in the OS pack before creating the cluster. For more information, refer to
+    [Feature Gates](../edge-configuration/installer-reference.md#feature-gates).
 
     :::
 
