@@ -21,8 +21,7 @@ The following diagram displays the steps to build a golden image to use as a ref
 
 - A running Launchpad for VMs deployment.
 - A user account with the platform administrator role.
-- An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image
-  Catalog** > **Golden Images**.
+- An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image Catalog** > **Golden Images**.
 - Required packages uploaded under **Image Catalog** > **Packages**. For airgap Windows builds, upload `virtio-win.iso`
   before you build the image.
 - An auto-install script and a seal script. **Image Catalog** includes built-in scripts, but you can provide your own
@@ -31,8 +30,8 @@ The following diagram displays the steps to build a golden image to use as a ref
 ## Network Considerations
 
 The golden image builder VM uses the pod network with masquerade mode during the build. Launchpad serves packages and
-ISOs to the builder over the pod network. Launchpad doesn't support custom Network Attachment Definition (NAD) networks,
-such as bridge networks, for the build workflow.
+ISOs to the builder over the pod network. Launchpad does not support custom Network Attachment Definition (NAD)
+networks, such as bridge networks, for the build workflow.
 
 After the build is complete, templates and VMs created from the golden image can use the pod network or a custom NAD.
 
@@ -57,12 +56,36 @@ Large ISO files can take minutes to upload. Launchpad displays progress during t
 
 :::info
 
-If your environment doesn't display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and select
+If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and select
 **Add Existing**.
 
 :::
 
 ![Screenshot of ISO upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
+
+## Create an ISO DataVolume from Infrastructure
+
+You can also create an ISO DataVolume from **Infrastructure** > **Storage** by uploading an ISO file or providing a URL.
+
+1. Navigate to **Infrastructure** > **Storage**.
+
+2. Select **Create DataVolume**.
+
+3. Fill out the **Source** page and select **Create**.
+
+   | **Parameter** | **Description**                                                                                                           |
+   | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
+   | Source        | Select the source type for the ISO, such as **Upload** or **URL**.                                                        |
+   | Image | Leave unchecked if you are uploading an ISO. Select if you are uploading a disk image as a boot disk. |
+   | Name          | Enter a unique name for the ISO DataVolume.                                                                               |
+   | Namespace     | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace. |
+   | Storage Class | Select the storage class from the drop-down menu.                                                                         |
+   | Size          | Set the disk size in `MiB`, `GiB`, or `TiB`.                                                                              |
+   | Access Mode   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`.                                                               |
+   | Volume Mode   | Select `Block` or `Filesystem`.                                                                                           |
+
+   Large ISO files may take several minutes to upload. VMO displays the upload progress during the
+   create phase.
 
 ## Create Blank DataVolume
 
@@ -79,7 +102,7 @@ If your environment doesn't display the default namespaces, navigate to **Infras
    | Namespace     | Select the namespace from the drop-down menu.               |
    | Storage Class | Select the storage class from the drop-down menu.           |
    | Size          | Set the disk size in `MiB`, `GiB`, or `TiB`.                |
-   | Access Mode   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`. |
+   | Access Mode   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`. For more information on these access modes, refer to [Kubernetes Persistent Volumes Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes). |
    | Volume Mode   | Select `Block` or `Filesystem`.                             |
 
 ## Build a Golden Image
@@ -94,7 +117,7 @@ If your environment doesn't display the default namespaces, navigate to **Infras
    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
    | Golden Image Name     | Enter a unique name for the golden image. This field accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
    | Namespace             | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace.                       |
-   | Source ISO DataVolume | Select the ISO to use.                                                                                                                          |
+   | Source ISO DataVolume | Select the ISO or data volume to use.                                                                                                                          |
    | Disk Size             | Set the disk size in `GiB` or `TiB`.                                                                                                            |
    | Storage Class         | Select the storage class from the drop-down menu.                                                                                               |
 
@@ -102,14 +125,14 @@ If your environment doesn't display the default namespaces, navigate to **Infras
 
 4. Fill out the **Compute** page and select **Next**.
 
-   | **Parameter**            | **Description**                                                                                                                                                                  |
-   | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | Builder VM CPUs          | Enter the number of CPUs for the builder VM.                                                                                                                                     |
-   | Builder VM Memory        | Set the builder VM memory in `MiB` or `GiB`.                                                                                                                                     |
-   | Networking               | Open the **Networking** section, set the NIC name, and select the pod network. To add more NICs, select **Add Interface**.                                                       |
-   | First Boot Device        | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the builder VM can't boot from the primary disk, it uses **CD-ROM** as the fallback boot location. |
-   | Second CD-ROM (optional) | Attach a second ISO file to access driver files or response files.                                                                                                               |
-   | Install Guest Agent      | Keep the default setting to automatically install the QEMU guest agent at first boot.                                                                                            |
+   | **Parameter**            | **Description**                                                                                                                                                                   |
+   | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Builder VM CPUs          | Enter the number of CPUs for the builder VM.                                                                                                                                      |
+   | Builder VM Memory        | Set the builder VM memory in `MiB` or `GiB`.                                                                                                                                      |
+   | Networking               | Open the **Networking** section, set the NIC name, and select the pod network. To add more NICs, select **Add Interface**.                                                        |
+   | First Boot Device        | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the builder VM cannot boot from the primary disk, it uses **CD-ROM** as the fallback boot location. |
+   | Second CD-ROM (optional) | Attach a second ISO file to access driver files or response files.                                                                                                                |
+   | Install Guest Agent      | Keep the default setting to automatically install the QEMU guest agent at first boot.                                                                                             |
 
    For Ubuntu builds, 4 vCPUs and 8 GB of memory provide enough resources for the build. Keep **Install Guest Agent**
    selected because the QEMU guest agent must run unless your seal script handles the operating system another way.
@@ -121,9 +144,11 @@ If your environment doesn't display the default namespaces, navigate to **Infras
    customization script using the **Editor**, use an existing **Template**, select **Upload** to upload a script, or
    provide a URL.
 
+   You can also select **Use airgap autoinstall template** to use an airgap version of the autoinstall script. 
+
    ![Screenshot of cloud-init and auto-install page](/vmo/vm-management_vmo_golden-images_autoinstall-4-9.webp)
 
-6. Review the golden image build and start the build.
+6. Select **Start Builder** to begin the build.
 
    ![Screenshot of golden image build](/vmo/vm-management_vmo_golden-images_build-4-9.webp)
 
@@ -135,10 +160,12 @@ If your environment doesn't display the default namespaces, navigate to **Infras
       - For Windows, Autounattend.xml provides unattended installation answers. The Virtio drivers ISO is available as a
         second CD-ROM for loading drivers during installation.
 
-   2. Open the **VNC console** to view progress or complete manual steps.
+   2. The builder process will open an **VNC Console** to allow you to complete any manual steps. If you select **Close**, you can continue to view the process or complete additional manual steps in the **VNC console** by selecting **Progress** > **Console**. Alternatively, for a larger resolution console, select **Console** action.
 
       For some Linux auto-install scripts, the console prompts you to confirm the installation. Type `yes` when
       prompted.
+
+   ![Screenshot of where to find progress button](/vmo/vm-management_vmo_golden-images_progress-console-4-9.webp)
 
    3. Wait for the OS installation to finish and the VM to reboot.
 
@@ -168,7 +195,8 @@ If your environment doesn't display the default namespaces, navigate to **Infras
 
     - Stops the VM again and removes the builder VM.
 
-12. When the process is complete, the DataVolume is a sealed golden image.
+12. When the process is complete, the DataVolume is a sealed golden image. The image appears under **Image Catalog** >
+    **Golden Images** and as a DataVolume under **Infrastructure** > **Storage**.
 
 ## Create a Template from the Golden Image
 
@@ -184,11 +212,30 @@ If your environment doesn't display the default namespaces, navigate to **Infras
    value that is not smaller than the disk size used to build the golden image.
 
 5. In the Lifecycle step, select **No** for installing the QEMU guest agent if the golden image already includes the
-   agent.
+   agent. For Ubuntu templates, use the cloud-init configuration to apply your own settings. You can create a cloud-init
+   configuration from the **Auto-install Script** page.
 
 6. Select **Create Template**.
 
-Windows VMs follow the same template and VM creation flow. You don't need to configure cloud-init for Windows VMs.
+Windows VMs follow the same template and VM creation flow. You do not need to configure cloud-init for Windows VMs.
+
+## Create a VM from the Golden Image
+
+You can create a VM from a template or directly from the golden image.
+
+1. Navigate to **Workloads** > **Virtual Machines**.
+
+2. Select **Create VM**.
+
+3. Choose one of the following options.
+
+   - To create the VM from a template, select the template you created from the golden image.
+
+   - To create the VM directly from the golden image, select the golden image and complete the VM configuration pages.
+     Provide the same compute, storage, network, hardware, and lifecycle information you provide when creating a
+     template.
+
+4. Select **Create VM**.
 
 ## Next Steps
 
