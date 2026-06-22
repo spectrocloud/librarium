@@ -26,9 +26,6 @@ reference pages to confirm that your appliance can support it.
 
 ## Add a Model
 
-Add a model from the _Fleet_ tab. The appliance selects the node and brings the model online for you. For how placement
-and provisioning work, refer to [Architecture](./architecture.md).
-
 1. From the left main menu, select **Orchestration**, and then select the **Fleet** tab.
 
 2. In the **Deploy new model** section, open the model drop-down menu and select the model to add.
@@ -40,6 +37,9 @@ and provisioning work, refer to [Architecture](./architecture.md).
    node with enough free GPUs, resolve that reason before you continue.
 
 5. Select **Deploy**, review the deployment summary, and then confirm.
+
+   The appliance selects the node and brings the model online for you. For how placement and provisioning work, refer to
+   [Architecture](./architecture.md).
 
 ### Verify the Model Is Available
 
