@@ -97,6 +97,11 @@ tags: ["release-notes"]
 - Fixed an issue where the expanded certificate list did not appear on the **View K8s Certificates** page for newly
   provisioned AWS and GCP clusters.
 
+<!-- https://spectrocloud.atlassian.net/browse/DOC-2912 -->
+
+- The `v1/projects` Palette [API endpoint](/api/introduction) is now deprecated. Use the `/v1/dashboard/projects`
+  endpoint instead.
+
 ### Edge
 
 :::info
