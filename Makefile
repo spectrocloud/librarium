@@ -47,6 +47,7 @@ initialize: ## Initialize the repository dependencies
 clean: clean-security ## Clean common artifacts
 	npm run clear && npm run clean-api-docs
 	rm -rfv build
+	rm -rfv src/generated
 
 deep-clean: ## Clean all artifacts
 	rm -rf node_modules build public .cache .docusaurus
