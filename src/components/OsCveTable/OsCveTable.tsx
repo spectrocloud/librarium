@@ -5,7 +5,7 @@ import Search from "../Technologies/Search";
 import { useColorMode } from "@docusaurus/theme-common";
 import type { ColumnsType } from "antd/es/table";
 import Admonition from "@theme/Admonition";
-import { Link } from "react-router-dom";
+import Link from "@docusaurus/Link";
 
 type OsCve = {
   uid: string;
