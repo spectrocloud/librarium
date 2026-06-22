@@ -30,8 +30,7 @@ as `serving · smoke-test passed`, so the console never shows a model as ready b
 The gateway routes each request to a model. A request that names a model uses that model, and a request that does not
 name a model falls back to the default model. When you change the default model, the gateway rebuilds its router in
 place. The gateway does not restart, and it does not drain requests that are in progress. Requests that the gateway
-already routed continue on their assigned model, and the new default applies only to later requests that do not name a
-model.
+already routed continue on their assigned model, and the new default applies only to later requests.
 
 ## Network Topology
 
