@@ -23,9 +23,9 @@ Before forming a cluster, the Edge hosts must be prepared and registered with Pa
 [EdgeForge workflow](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), which is responsible for building
 the required Edge artifacts, such as the
 [Installer ISO](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md) and
-[Provider Images](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md). Once these
-artifacts are built, you can use the Installer ISO to bootstrap the Edge installation on your Edge host and the Provider
-Images to create a cluster profile.
+[Provider Images](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-provider-images.md).
+Once these artifacts are built, you can use the Installer ISO to bootstrap the Edge installation on your Edge host and
+the Provider Images to create a cluster profile.
 
 This tutorial will help you understand how the different Edge components work together. You will build and test the Edge
 artifacts and deploy an Edge cluster without the need for a complex lab environment or separate physical devices.

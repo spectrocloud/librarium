@@ -1,16 +1,16 @@
 ---
-sidebar_label: "Build RHEL 9 STIG-based Images"
-title: "Build RHEL 9 STIG-based Images"
+sidebar_label: "Build RHEL 9 STIG Images"
+title: "Build RHEL 9 STIG Images"
 description: "Learn how to build RHEL 9 STIG-based Images."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 30
 tags: ["edge", "rhel", "stig"]
 ---
 
-[Security Technical Implementation Guides (STIGs)](https://access.redhat.com/compliance/disa-stig?utm_source=chatgpt.com)
-are standardized security hardening guidelines developed by the Defense Information Systems Agency (DISA) to help secure
-OS and applications in regulated environments. With Palette Edge, you can build Red Hat Enterprise Linux (RHEL) 9
+[Security Technical Implementation Guides (STIGs)](https://access.redhat.com/compliance/disa-stig) are standardized
+security hardening guidelines developed by the Defense Information Systems Agency (DISA) to help secure OS and
+applications in regulated environments. With Palette Edge, you can build Red Hat Enterprise Linux (RHEL) 9
 STIG-compliant images for your Edge hosts using the EdgeForge workflow.
 
 In this guide, you will use the CanvOS utility to build a base RHEL 9 STIG image, then create an ISO image from it for
@@ -22,19 +22,19 @@ your Palette Edge deployment.
   design and Kubernetes operational needs:
 
   - Kairos-based systems use an
-    [A/B partitioning scheme](../../cluster-management/upgrade-behavior.md#ab-partitioning-in-upgrades) for system
+    [A/B partitioning scheme](../../../cluster-management/upgrade-behavior.md#ab-partitioning-in-upgrades) for system
     recovery and upgrades. This does not align with STIG partitioning requirements.
 
   - Mount points are managed by Kairos and cannot be adjusted to fully match STIG guidelines.
 
-  - [Federal Information Processing Standards (FIPS)](../palette-canvos/fips.md) mode is enabled in Palette Edge via
-    `user-data` configuration. Although the system operates in FIPS mode, it does not meet the criteria used by STIG
-    validation checks, resulting in false negatives.
+  - [Federal Information Processing Standards (FIPS)](../fips.md) mode is enabled in Palette Edge via `user-data`
+    configuration. Although the system operates in FIPS mode, it does not meet the criteria used by STIG validation
+    checks, resulting in false negatives.
 
   - Kairos-based images do not include all STIG-recommended packages, for example, AIDE and USBGuard. These components
     are not required for Kubernetes operations, but you can add them by
-    [customizing the Dockerfile](../palette-canvos/palette-canvos.md?difficulty=advanced_create_artifacts#instructions-1).
-    However, only the modules included by default are verified by Spectro Cloud.
+    [customizing the Dockerfile](../palette-canvos.md?difficulty=advanced_create_artifacts#instructions-1). However,
+    only the modules included by default are verified by Spectro Cloud.
 
   - Security-Enhanced Linux (SELinux) is not enabled on Kairos-based systems.
 
@@ -45,10 +45,10 @@ your Palette Edge deployment.
 
 - The RHEL 9 STIG implementation in Palette Edge only supports the following Kubernetes distributions:
 
-  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - the
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - The
     `K8S_DISTRIBUTION=kubeadm` value in the `.arg` file for non-FIPS or `K8S_DISTRIBUTION=kubeadm-fips` for FIPS.
 
-  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> - the
+  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> - The
     `K8S_DISTRIBUTION=rke2` value in the `.arg` file.
 
 ## Prerequisites
@@ -57,7 +57,7 @@ your Palette Edge deployment.
 
 - A Palette registration token for pairing Edge hosts with Palette. You need Tenant Admin access to Palette to generate
   a new registration token. For detailed instructions, refer to the
-  [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
+  [Create Registration Token](../../../site-deployment/site-installation/create-registration-token.md) guide.
 
 - A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
   minimum hardware configuration:
@@ -71,15 +71,23 @@ your Palette Edge deployment.
 - Access to a public or private image registry and permissions to push images. This page uses a public
   [Docker Hub](https://www.docker.com/products/docker-hub/) registry as an example. If you need to use a private
   registry, refer to the
-  [Deploy Cluster with a Private Provider Registry](../../site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  [Deploy Cluster with a Private Provider Registry](../../../site-deployment/deploy-custom-registries/deploy-private-registry.md)
   guide for instructions on how to configure the credentials.
 
 - The following software installed on the Linux machine:
 
-  - [Docker Engine](https://docs.docker.com/engine/install/) with BuildKit enabled. Default in Docker 23+; set
-    `DOCKER_BUILDKIT=1` for older versions.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - (Optional) [Earthly](https://earthly.dev/)
+
+  - [Docker Engine](https://docs.docker.com/engine/install/) installed from the official Docker repository with BuildKit
+    enabled. Default in Docker 23+; set `DOCKER_BUILDKIT=1` for older versions.
+
+    :::warning
+
+    Do not use the snap-packaged Docker. The snap confinement causes GPG signature verification failures during the
+    Earthly build.
+
+    :::
+
   - (Optional, required for step 5) `cmake`, `make`, `openscap-utils`, `openscap-scanner`, `python3`, `pip`
 
 ## Build RHEL 9 STIG-based Images
@@ -257,10 +265,10 @@ your Palette Edge deployment.
 
     </Tabs>
 
-    Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
+    Refer to [Edge Artifact Build Configurations](../arg.md) for a complete list of supported configuration parameters.
 
 10. Prepare the `user-data` file. Refer to
-    [Prepare User Data and Argument Files](../prepare-user-data.md#prepare-user-data) for instructions. Additionally,
+    [Prepare User Data and Argument Files](../../prepare-user-data.md#prepare-user-data) for instructions. Additionally,
     you must configure firewall rules. Expand the applicable sections below to display the list of required
     configurations.
 

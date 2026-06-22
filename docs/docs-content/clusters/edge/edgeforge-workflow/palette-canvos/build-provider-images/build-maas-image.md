@@ -4,7 +4,7 @@ title: "Build MAAS Images"
 description: "Learn how to build the Palette MAAS Image using the EdgeForge utilities."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 35
+sidebar_position: 20
 tags: ["edge"]
 ---
 
@@ -19,12 +19,12 @@ your Edge deployment.
 
 - For MAAS-based deployments, the Kairos `install` stage in user data is not used. Any GRand Unified Bootloader (GRUB)
   configuration or mount customizations must be applied using other Kairos stages or overlay files. Refer to
-  [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md) for details on the available
-  stages.
+  [Edge Installer Configuration Reference](../../../edge-configuration/installer-reference.md) for details on the
+  available stages.
 
 ## Prerequisites
 
-- (Optional) A [Palette registration token](../../site-deployment/site-installation/create-registration-token.md) to
+- (Optional) A [Palette registration token](../../../site-deployment/site-installation/create-registration-token.md) to
   embed user data in the MAAS image. If you do not embed the user data, you must provide the user data, including a
   registration token, when deploying your MAAS host using the MAAS UI.
 
@@ -90,9 +90,9 @@ your Edge deployment.
     EOF
     ```
 
-    Refer to [Edge Artifact Build Configurations](./arg.md) for a complete list of supported configuration parameters.
+    Refer to [Edge Artifact Build Configurations](../arg.md) for a complete list of supported configuration parameters.
 
-6.  (Optional) Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../prepare-user-data.md)
+6.  (Optional) Prepare the `user-data` file. Refer to [Prepare User Data and Argument Files](../../prepare-user-data.md)
     for instructions. If you place the `user-data` file in the `CanvOS` repository root, it is embedded into the image
     at build time. You can also supply user data through the MAAS UI at deployment time instead of creating the
     `user-data` file in the `CanvOS` directory.
@@ -151,5 +151,5 @@ your Edge deployment.
 
 ## Next Steps
 
-Refer to [Deploy Edge Hosts on MAAS](../../site-deployment/maas-deployment.md) for step-by-step instructions on
+Refer to [Deploy Edge Hosts on MAAS](../../../site-deployment/maas-deployment.md) for step-by-step instructions on
 uploading the image to MAAS and deploying an Edge host using the MAAS UI.

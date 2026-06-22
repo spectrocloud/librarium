@@ -33,8 +33,8 @@ automated deployments across both physical and virtual infrastructure managed by
 
 - A [Palette account](https://www.spectrocloud.com/get-started).
 
-- A MAAS image created according to the [Build MAAS Images](../edgeforge-workflow/palette-canvos/build-maas-image.md)
-  guide.
+- A MAAS image created according to the
+  [Build MAAS Images](../edgeforge-workflow/palette-canvos/build-provider-images/build-maas-image.md) guide.
 
   - If you did not embed user data in the MAAS image, you need a
     [Palette registration token](site-installation/create-registration-token.md) to pair your Edge hosts with Palette.

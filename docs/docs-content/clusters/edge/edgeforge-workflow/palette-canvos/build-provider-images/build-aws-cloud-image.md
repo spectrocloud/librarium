@@ -4,7 +4,7 @@ title: "Build AWS Cloud Images"
 description: "Learn how to build EdgeForge images for AWS Cloud."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 10
 tags: ["edge"]
 ---
 
@@ -173,7 +173,7 @@ registration in AWS.
     EOF
     ```
 
-    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+    Refer to [Edge Artifact Build Configurations](../arg.md) for all available configuration parameters.
 
 14. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
     `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove the
