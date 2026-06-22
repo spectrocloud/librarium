@@ -2,14 +2,14 @@
 sidebar_label: "Create a User"
 title: "Create a User"
 description:
-  "How to create an admin user in the Launchpad for AI Console, assign a role, and verify the user can sign in."
+  "How to create a user account in the Launchpad for AI Console, assign a role, and verify the user can sign in."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["launchpad-for-ai", "how-to"]
 keywords: ["launchpad", "ai", "user", "create user", "role", "rbac", "operator", "auditor", "tenant-admin"]
 ---
 
-This guide explains how to create an admin user in the Launchpad for AI Console, assign a role, and verify the new user
+This guide explains how to create a user account in the Launchpad for AI Console, assign a role, and verify the new user
 can sign in.
 
 ## Prerequisites
