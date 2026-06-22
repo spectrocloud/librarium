@@ -40,9 +40,9 @@ environment variables `SKIP_STIG_BANNER` and `ENABLE_STIG` during the build.
     configuration. Although the system operates in FIPS mode, it does not meet the criteria used by STIG validation
     checks, resulting in false negatives.
 
-  - Kairos-based images do not include all STIG-recommended packages, for example, Advanced Intrusion Detection Environment (AIDE) and USBGuard. These components
-    are not required for Kubernetes operations, but you can add them by
-    [customizing the Dockerfile](../palette-canvos.md?difficulty=advanced_create_artifacts#instructions-1). However,
+  - Kairos-based images do not include all STIG-recommended packages, for example, Advanced Intrusion Detection
+    Environment (AIDE) and USBGuard. These components are not required for Kubernetes operations, but you can add them
+    by [customizing the Dockerfile](../palette-canvos.md?difficulty=advanced_create_artifacts#instructions-1). However,
     only the modules included by default are verified by Spectro Cloud.
 
   - IP forwarding (`net.ipv4.ip_forward` and `net.ipv4.conf.all.forwarding`) is enabled to support Kubernetes

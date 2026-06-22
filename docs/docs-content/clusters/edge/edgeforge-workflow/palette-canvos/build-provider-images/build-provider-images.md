@@ -19,8 +19,8 @@ into.
 The provider images are one of the critical artifacts you need to build during EdgeForge. The other artifact is the Edge
 Installer ISO. Both are required for Edge deployment. For education purposes, we provide separate instructions for
 building the installer ISO and the provider images. However, these two artifacts are often built together in a single
-step in practice. Refer to [Build Edge Artifacts](../palette-canvos.md) to learn how to build both
-artifacts at the same time.
+step in practice. Refer to [Build Edge Artifacts](../palette-canvos.md) to learn how to build both artifacts at the same
+time.
 
 :::
 
