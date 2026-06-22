@@ -154,7 +154,7 @@ Palette Edge CLI to download the images and upload them to the external registry
 :::deprecated
 
 The Palette Edge CLI is deprecated and new image versions will no longer be published. We recommend using the
-[Palette CLI](/automation/palette-cli/) instead to upload provider images to your registry.
+[Palette CLI](../../../../automation/palette-cli/palette-cli.md) instead to upload provider images to your registry.
 
 :::
 
