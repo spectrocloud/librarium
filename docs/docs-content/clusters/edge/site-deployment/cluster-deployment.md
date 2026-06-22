@@ -113,7 +113,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     When `UseControlPlaneAsWorker` is disabled, Stylus reconciles the control-plane taint on control plane nodes. If you
     need to remove the taint manually and keep it removed, add `DisableWorkerNodeCapReconcile` to `stylus.featureGate`
     in the OS pack before creating the cluster. For more information, refer to
-    [Feature Gates](../../edge-configuration/installer-reference.md#feature-gates).
+    [Feature Gates](../edge-configuration/installer-reference.md#feature-gates).
 
     :::
 
