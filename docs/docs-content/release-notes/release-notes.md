@@ -493,6 +493,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11038 -->
+
+- Palette now supports building
+  [Ubuntu 24.04 STIG-compliant images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-ubuntu-stig-image.md)
+  for use in Edge deployments.
+
 <!-- https://spectrocloud.atlassian.net/browse/PE-8427 -->
 
 - The Palette agent can now be uninstalled from Edge hosts deployed with Agent Mode using the `palette-agent uninstall`
