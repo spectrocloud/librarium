@@ -32,17 +32,36 @@ const limit = pRateLimit({
 
 axiosRetry(api, {
   retries: 3, // Retry up to 3 times
-  retryDelay: axiosRetry.exponentialDelay, // Exponential backoff starting with 1 second
-  retryCondition(error) {
-    // Retry based on status codes
-    switch (error.response?.status) {
-      case 500:
-      case 501:
-      case 429:
-        return true;
-      default:
-        return false;
+  retryDelay(retryCount, error) {
+    // Honor the server's Retry-After header on 429 responses when present.
+    const retryAfter = error.response?.headers?.["retry-after"];
+
+    if (retryAfter) {
+      const seconds = Number(retryAfter);
+
+      if (!Number.isNaN(seconds)) {
+        return seconds * 1000;
+      }
+
+      const dateMs = Date.parse(retryAfter);
+
+      if (!Number.isNaN(dateMs)) {
+        return Math.max(0, dateMs - Date.now());
+      }
     }
+
+    // Otherwise fall back to exponential backoff starting with 1 second.
+    return axiosRetry.exponentialDelay(retryCount, error);
+  },
+  retryCondition(error) {
+    // Retry on transient network errors and timeouts (POST requests are not
+    // retried on these by default).
+    if (axiosRetry.isNetworkError(error) || error.code === "ECONNABORTED") {
+      return true;
+    }
+
+    // Retry on transient server-side and rate-limit status codes.
+    return [500, 501, 502, 503, 504, 429].includes(error.response?.status);
   },
 });
 

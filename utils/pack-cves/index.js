@@ -21,7 +21,7 @@ async function runWithConcurrency(items, concurrency, handler) {
 }
 
 async function getPackCVEs(payload) {
-  const limit = 100;
+  const limit = 300;
   const maxIterations = 1000;
   const concurrency = 20;
 
@@ -164,7 +164,7 @@ async function generatePackCVEJsonFiles(GlobalCVEData) {
   const groupedByPackVersion = new Map();
 
   for (const item of packImages) {
-    const version = item.packVersion.replace(/^v/, "");
+    const version = item.packVersion;
     const key = `${item.pack}@${version}`;
 
     if (!groupedByPackVersion.has(key)) {
@@ -223,7 +223,7 @@ async function generatePackCVEMdxWrappers(GlobalCVEData) {
   const groupedByPack = new Map();
 
   for (const item of packImages) {
-    const version = item.packVersion.replace(/^v/, "");
+    const version = item.packVersion;
 
     if (!groupedByPack.has(item.pack)) {
       groupedByPack.set(item.pack, new Set());
@@ -259,7 +259,7 @@ CVEs that are not marked as **Impacting** are present in the image but are not c
 
 {(() => {
   const availableVersions = ${JSON.stringify(versions)};
-  const selectedVersion = (props.selectedVersion || "").replace(/^v/, "");
+  const selectedVersion = props.selectedVersion || "";
 
   if (!selectedVersion || !availableVersions.includes(selectedVersion)) {
     return (
