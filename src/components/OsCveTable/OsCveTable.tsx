@@ -51,7 +51,9 @@ const columns: ColumnsType<OsCve> = [
     dataIndex: "displayName",
     key: "displayName",
     sorter: (a, b) => a.displayName.localeCompare(b.displayName),
-    render: (text: string, record: OsCve) => <Link to={`./${record.uid}`}>{text}</Link>,
+    render: (text: string, record: OsCve) => (
+      <Link to={`pathname:///generated/security-bulletins/os-k8s/${record.uid.toLowerCase()}.html`}>{text}</Link>
+    ),
   },
   {
     title: "FIPS Compliant",
