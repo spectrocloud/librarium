@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run cves && npm run generate-partials && docusaurus start --host 0.0.0.0 --port 9000",
-    "build": "npm run generate-api-docs && npm run cves && npm run generate-partials && NODE_OPTIONS='--max-old-space-size=6144' GENERATE_SOURCEMAP=false docusaurus build",
+    "start": "npm run pack-cves && npm run cves && npm run generate-partials && docusaurus start --host 0.0.0.0 --port 9000",
+    "build": "npm run generate-api-docs && npm run pack-cves && npm run cves && npm run generate-partials && NODE_OPTIONS='--max-old-space-size=6144' GENERATE_SOURCEMAP=false docusaurus build",
     "swizzle": "docusaurus swizzle",
     "cves": "node utils/cves/index.js && npm run copy-cve-data ",
+    "pack-cves": "node utils/pack-cves/index.js && npm run copy-pack-cve-data ",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -24,6 +25,7 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
     "format-check": "prettier . --check",
+    "copy-pack-cve-data": "mkdir -p static/security-pack-data && cp .docusaurus/pack-cves/default/data.json static/security-pack-data/data.json",
     "copy-cve-data": "mkdir -p static/security-data && cp .docusaurus/security-bulletins/default/data.json static/security-data/data.json",
     "prepare": "husky"
   },
