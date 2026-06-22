@@ -21,7 +21,8 @@ The following diagram displays the steps to build a golden image to use as a ref
 
 - A running Launchpad for VMs deployment.
 - A user account with the platform administrator role.
-- An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image Catalog** > **Golden Images**.
+- An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image
+  Catalog** > **Golden Images**.
 - Required packages uploaded under **Image Catalog** > **Packages**. For airgap Windows builds, upload `virtio-win.iso`
   before you build the image.
 - An auto-install script and a seal script. **Image Catalog** includes built-in scripts, but you can provide your own
@@ -41,16 +42,16 @@ After the build is complete, templates and VMs created from the golden image can
 
 2. Select **Upload ISO/Golden Image**.
 
-3. Fill out the **Upload ISO/Disk Image** page and select **Upload**.
+3. Complete the **Upload ISO/Disk Image** page and select **Upload**.
 
-| **Parameter**   | **Description**                                                                                                                |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| DataVolume Name | Enter a unique name for the ISO installer or disk image.                                                                       |
-| Namespace       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace.      |
-| Storage Class   | Select the storage class from the drop-down menu.                                                                              |
-| Volume Size     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                |
-| Image Type      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                         |
-| Image File      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2. |
+| **Parameter**       | **Description**                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **DataVolume Name** | Enter a unique name for the ISO installer or disk image.                                                                       |
+| **Namespace**       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace.      |
+| **Storage Class**   | Select the storage class from the drop-down menu.                                                                              |
+| **Volume Size**     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                |
+| **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                         |
+| **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2. |
 
 Large ISO files can take minutes to upload. Launchpad displays progress during the upload phase.
 
@@ -71,21 +72,20 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
 2. Select **Create DataVolume**.
 
-3. Fill out the **Source** page and select **Create**.
+3. Complete the **Source** page and select **Create**.
 
-   | **Parameter** | **Description**                                                                                                           |
-   | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
-   | Source        | Select the source type for the ISO, such as **Upload** or **URL**.                                                        |
-   | Image | Leave unchecked if you are uploading an ISO. Select if you are uploading a disk image as a boot disk. |
-   | Name          | Enter a unique name for the ISO DataVolume.                                                                               |
-   | Namespace     | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace. |
-   | Storage Class | Select the storage class from the drop-down menu.                                                                         |
-   | Size          | Set the disk size in `MiB`, `GiB`, or `TiB`.                                                                              |
-   | Access Mode   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`.                                                               |
-   | Volume Mode   | Select `Block` or `Filesystem`.                                                                                           |
+   | **Parameter**     | **Description**                                                                                                           |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+   | **Source**        | Select the source type for the ISO, such as **Upload** or **URL**.                                                        |
+   | **Image**         | Leave unchecked when uploading an ISO. Select if you upload a disk image as a boot disk.                                  |
+   | **Name**          | Enter a unique name for the ISO DataVolume.                                                                               |
+   | **Namespace**     | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace. |
+   | **Storage Class** | Select the storage class from the drop-down menu.                                                                         |
+   | **Size**          | Set the disk size in `MiB`, `GiB`, or `TiB`.                                                                              |
+   | **Access Mode**   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`.                                                               |
+   | **Volume Mode**   | Select `Block` or `Filesystem`.                                                                                           |
 
-   Large ISO files may take several minutes to upload. VMO displays the upload progress during the
-   create phase.
+   Large ISO files may take a few minutes to upload. Launchpad displays the upload progress during the create phase.
 
 ## Create Blank DataVolume
 
@@ -93,17 +93,17 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
 2. Select **Create DataVolume**.
 
-3. Fill out the **Source** page and select **Next**.
+3. Complete the **Source** page and select **Next**.
 
-   | **Parameter** | **Description**                                             |
-   | ------------- | ----------------------------------------------------------- |
-   | Source        | Select **Blank**.                                           |
-   | Name          | Enter a unique name for the DataVolume image.               |
-   | Namespace     | Select the namespace from the drop-down menu.               |
-   | Storage Class | Select the storage class from the drop-down menu.           |
-   | Size          | Set the disk size in `MiB`, `GiB`, or `TiB`.                |
-   | Access Mode   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`. For more information on these access modes, refer to [Kubernetes Persistent Volumes Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes). |
-   | Volume Mode   | Select `Block` or `Filesystem`.                             |
+   | **Parameter**     | **Description**                                                                                                                                                                                                                              |
+   | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Source**        | Select **Blank**.                                                                                                                                                                                                                            |
+   | **Name**          | Enter a unique name for the DataVolume image.                                                                                                                                                                                                |
+   | **Namespace**     | Select the namespace from the drop-down menu.                                                                                                                                                                                                |
+   | **Storage Class** | Select the storage class from the drop-down menu.                                                                                                                                                                                            |
+   | **Size**          | Set the disk size in `MiB`, `GiB`, or `TiB`.                                                                                                                                                                                                 |
+   | **Access Mode**   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`. For more information on these access modes, refer to [Kubernetes Persistent Volumes Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes). |
+   | **Volume Mode**   | Select `Block` or `Filesystem`.                                                                                                                                                                                                              |
 
 ## Build a Golden Image
 
@@ -111,28 +111,28 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
 2. Select **Build Golden Image**.
 
-3. Fill out the **Source** page and select **Next**.
+3. Complete the **Source** page and select **Next**.
 
-   | **Parameter**         | **Description**                                                                                                                                 |
-   | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-   | Golden Image Name     | Enter a unique name for the golden image. This field accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
-   | Namespace             | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace.                       |
-   | Source ISO DataVolume | Select the ISO or data volume to use.                                                                                                                          |
-   | Disk Size             | Set the disk size in `GiB` or `TiB`.                                                                                                            |
-   | Storage Class         | Select the storage class from the drop-down menu.                                                                                               |
+   | **Parameter**             | **Description**                                                                                                                                 |
+   | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Golden Image Name**     | Enter a unique name for the golden image. This field accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
+   | **Namespace**             | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace.                       |
+   | **Source ISO DataVolume** | Select the ISO or data volume to use.                                                                                                           |
+   | **Disk Size**             | Set the disk size in `GiB` or `TiB`.                                                                                                            |
+   | **Storage Class**         | Select the storage class from the drop-down menu.                                                                                               |
 
    For Ubuntu images, use more than 20 GB for the golden image. For Windows images, use at least 50 GB.
 
-4. Fill out the **Compute** page and select **Next**.
+4. Complete the **Compute** page and select **Next**.
 
-   | **Parameter**            | **Description**                                                                                                                                                                   |
-   | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | Builder VM CPUs          | Enter the number of CPUs for the builder VM.                                                                                                                                      |
-   | Builder VM Memory        | Set the builder VM memory in `MiB` or `GiB`.                                                                                                                                      |
-   | Networking               | Open the **Networking** section, set the NIC name, and select the pod network. To add more NICs, select **Add Interface**.                                                        |
-   | First Boot Device        | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the builder VM cannot boot from the primary disk, it uses **CD-ROM** as the fallback boot location. |
-   | Second CD-ROM (optional) | Attach a second ISO file to access driver files or response files.                                                                                                                |
-   | Install Guest Agent      | Keep the default setting to automatically install the QEMU guest agent at first boot.                                                                                             |
+   | **Parameter**                | **Description**                                                                                                                                                                   |
+   | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Builder VM CPUs**          | Enter the number of CPUs for the builder VM.                                                                                                                                      |
+   | **Builder VM Memory**        | Set the builder VM memory in `MiB` or `GiB`.                                                                                                                                      |
+   | **Networking**               | Open the **Networking** section, set the NIC name, and select the pod network. To add more NICs, select **Add Interface**.                                                        |
+   | **First Boot Device**        | Select **Disk**, **CD-ROM**, or **Network (PXE)**. If you select **Disk** and the builder VM cannot boot from the primary disk, it uses **CD-ROM** as the fallback boot location. |
+   | **Second CD-ROM (optional)** | Attach a second ISO file to access driver files or response files.                                                                                                                |
+   | **Install Guest Agent**      | Keep the default setting to automatically install the QEMU guest agent at first boot.                                                                                             |
 
    For Ubuntu builds, 4 vCPUs and 8 GB of memory provide enough resources for the build. Keep **Install Guest Agent**
    selected because the QEMU guest agent must run unless your seal script handles the operating system another way.
@@ -144,7 +144,7 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
    customization script using the **Editor**, use an existing **Template**, select **Upload** to upload a script, or
    provide a URL.
 
-   You can also select **Use airgap autoinstall template** to use an airgap version of the autoinstall script. 
+   You can also select **Use airgap auto-install template** to use an airgap version of the auto-install script.
 
    ![Screenshot of cloud-init and auto-install page](/vmo/vm-management_vmo_golden-images_autoinstall-4-9.webp)
 
@@ -154,13 +154,15 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
    1. The builder VM boots from the ISO file, or the network if you configured network boot.
 
-      - For Linux, Cloud-init runs the auto-install script. This script typically provides unattended installation
+      - For Linux, cloud-init runs the auto-install script. This script typically provides unattended installation
         answers for `preseed`, kickstart, or auto-install workflows.
 
       - For Windows, Autounattend.xml provides unattended installation answers. The Virtio drivers ISO is available as a
         second CD-ROM for loading drivers during installation.
 
-   2. The builder process will open an **VNC Console** to allow you to complete any manual steps. If you select **Close**, you can continue to view the process or complete additional manual steps in the **VNC console** by selecting **Progress** > **Console**. Alternatively, for a larger resolution console, select **Console** action.
+   2. The builder process opens a **VNC Console** so you can complete manual steps. If you select **Close**, you can
+      continue to view the process or complete more manual steps in the **VNC console** by selecting **Progress** >
+      **Console**. For a larger resolution console, select the **Console** action.
 
       For some Linux auto-install scripts, the console prompts you to confirm the installation. Type `yes` when
       prompted.
@@ -198,46 +200,7 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 12. When the process is complete, the DataVolume is a sealed golden image. The image appears under **Image Catalog** >
     **Golden Images** and as a DataVolume under **Infrastructure** > **Storage**.
 
-## Create a Template from the Golden Image
-
-1. Navigate to **Workloads** > **Templates**.
-
-2. Select **Create Template**.
-
-3. In the Source step, select the golden image you created.
-
-4. Configure compute, storage, network, hardware, and lifecycle settings for VMs created from this template.
-
-   For Ubuntu templates, 2 vCPUs and 4 GB of memory make a reasonable starting point. Set the template disk size to a
-   value that is not smaller than the disk size used to build the golden image.
-
-5. In the Lifecycle step, select **No** for installing the QEMU guest agent if the golden image already includes the
-   agent. For Ubuntu templates, use the cloud-init configuration to apply your own settings. You can create a cloud-init
-   configuration from the **Auto-install Script** page.
-
-6. Select **Create Template**.
-
-Windows VMs follow the same template and VM creation flow. You do not need to configure cloud-init for Windows VMs.
-
-## Create a VM from the Golden Image
-
-You can create a VM from a template or directly from the golden image.
-
-1. Navigate to **Workloads** > **Virtual Machines**.
-
-2. Select **Create VM**.
-
-3. Choose one of the following options.
-
-   - To create the VM from a template, select the template you created from the golden image.
-
-   - To create the VM directly from the golden image, select the golden image and complete the VM configuration pages.
-     Provide the same compute, storage, network, hardware, and lifecycle information you provide when creating a
-     template.
-
-4. Select **Create VM**.
-
 ## Next Steps
 
-After you deploy the golden image and related template, follow the [Template Management](./templates.md) guide to manage
-VM templates.
+After you create a golden image, use it as the source for a [VM template](./templates.md) or create a
+[virtual machine](./creating.md) directly from the image.

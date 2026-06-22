@@ -33,7 +33,7 @@ step.
 
 ## Create a Virtual Machine
 
-After you upload an OS ISO or create a [template](./templates.md) from a [golden image](./golden-images.md), you can
+After you upload an OS ISO, create a [golden image](./golden-images.md), or create a [template](./templates.md), you can
 deploy a VM.
 
 1.  From the left main menu, select **Workloads** > **Virtual Machines**.
@@ -44,14 +44,14 @@ deploy a VM.
 
 3.  The **Create Virtual Machine** wizard opens. Complete the following fields on the **Source** wizard step.
 
-    | **Parameter** | **Description**                                                                                                                            |
-    | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Source**    | Select **Template**, **Image/ISO**, or **Custom**.                                                                                         |
-    | **OS**        | Select **Linux** or **Windows**.                                                                                                           |
-    | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                       |
-    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                      |
-    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing image or OS ISO file from the **Image/ISO** drop-down menu.                  |
-    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
+    | **Parameter** | **Description**                                                                                                                               |
+    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Source**    | Select **Template**, **Image/ISO**, or **Custom**.                                                                                            |
+    | **OS**        | Select **Linux** or **Windows**.                                                                                                              |
+    | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                          |
+    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                         |
+    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing golden image, disk image, or OS ISO file from the **Image/ISO** drop-down menu. |
+    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit.    |
 
 4.  Configure any extra **Source** options for your VM. Select **Next** when you complete this page.
 
@@ -72,7 +72,7 @@ deploy a VM.
 
     :::warning
 
-    If you select an instance type during VM creation, you can't change the CPU cores, CPU sockets, CPU threads, or
+    If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
     memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
     the VM.
 
@@ -110,7 +110,7 @@ deploy a VM.
     **Network**. Then select **Next**.
 
 11. On the **Network** wizard step, the VM has one interface assigned with the **Pod Network (masquerade)** mode by
-    default. This option provides outbound connectivity via NAT. Select **Add NIC** to add extra NICs as needed, and
+    default. This option provides outbound connectivity through NAT. Select **Add NIC** to add extra NICs as needed, and
     select either **Pod Network (masquerade)** or **Multus Network (bridge)**. You can create extra Network Attachment
     Definition (NAD) resources in **Infrastructure** > **Networks**.
 
@@ -169,7 +169,7 @@ deploy a VM.
     `cpu-model-migration.node.kubevirt.io/<Model>` node labels. The discovered model list is cached for up to three
     minutes.
 
-    If a VM or template references a model the cluster doesn't expose, the drop-down menu preserves it as
+    If a VM or template references a model the cluster does not expose, the drop-down menu preserves it as
     `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. Launchpad also warns you when
     the selected CPU model is unavailable on all nodes or is available only on some nodes.
 
@@ -213,7 +213,7 @@ deploy a VM.
     | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                    |
     | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                              |
-    | **Use internal package repository** | Keep the internal VMO repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                                  |
+    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                            |
     | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                      |
     | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
 
@@ -223,7 +223,7 @@ deploy a VM.
 
     If you enable guest agent installation, upload the `qemu-guest-agent` package for your operating system and
     architecture to the internal repository under **Image Catalog** > **Packages** before launching the VM. Otherwise,
-    the agent installation fails. This reminder doesn't block VM creation.
+    the agent installation fails. This reminder does not block VM creation.
 
     :::
 
@@ -245,7 +245,7 @@ deploy a VM.
 
     :::warning
 
-    Cloud-init runs only at first boot. Changes to user data or network data after the VM boots don't run again unless
+    Cloud-init runs only at first boot. Changes to user data or network data after the VM boots do not run again unless
     you issue the `cloud-init clean` command and reboot.
 
     :::

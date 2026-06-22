@@ -8,8 +8,8 @@ sidebar_position: 2
 tags: ["vmo", "vm launchpad", "templates"]
 ---
 
-VM templates define reusable VM specifications for base image, compute, network, storage, and hardware settings. Create
-VMs from templates to standardize provisioning across teams.
+VM templates in Launchpad for VMs define reusable VM specifications for base image, compute, network, storage, and
+hardware settings. Create VMs from templates to standardize provisioning across teams.
 
 ## Template Overview
 
@@ -29,6 +29,9 @@ template.
 
 ## Create a Template
 
+You can create a template from a golden image DataVolume or another source disk. For shared templates, use a sealed and
+generalized golden image as the source.
+
 1. Navigate to **Workloads** > **Templates**.
 
 2. Select **New Template** > **New VM Template** to start the template wizard. You can also select **Create User Data
@@ -40,10 +43,10 @@ template.
 
    | **Parameter**           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                   |
    | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**                | Enter the hostname for the template. This name can't contain more than 63 characters.                                                                                                                                                                                                                                                                                                                             |
+   | **Name**                | Enter the hostname for the template. This name cannot contain more than 63 characters.                                                                                                                                                                                                                                                                                                                            |
    | **Display Name**        | Enter the human-readable display name for the template.                                                                                                                                                                                                                                                                                                                                                           |
-   | **Source DV Namespace** | Select the namespace that contains the `DataVolume`.                                                                                                                                                                                                                                                                                                                                                              |
-   | **Source DataVolume**   | Select the `DataVolume` to use for the template.                                                                                                                                                                                                                                                                                                                                                                  |
+   | **Source DV Namespace** | Select the namespace that contains the DataVolume.                                                                                                                                                                                                                                                                                                                                                                |
+   | **Source DataVolume**   | Select the DataVolume to use for the template, such as a golden image.                                                                                                                                                                                                                                                                                                                                            |
    | **Guest OS**            | Select either Linux or Windows.                                                                                                                                                                                                                                                                                                                                                                                   |
    | **Network Namespace**   | Select the namespace for the network.                                                                                                                                                                                                                                                                                                                                                                             |
    | **VM Preference**       | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux **Guest OS** selection, and Windows preferences appear only for Windows **Guest OS** selection.                                                                                                                               |
@@ -60,7 +63,7 @@ template.
 
    :::warning
 
-   If you select an instance type during VM creation, you can't change the CPU cores, CPU sockets, CPU threads, or
+   If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
    memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
    the VM.
 
@@ -99,7 +102,7 @@ template.
    select **Next**.
 
 10. On the **Network** wizard step, the VM has one interface assigned with the **Pod Network (masquerade)** mode by
-    default. This option provides outbound connectivity via NAT. Select **Add NIC** to add extra NICs as needed, and
+    default. This option provides outbound connectivity through NAT. Select **Add NIC** to add extra NICs as needed, and
     select either **Pod Network (masquerade)** or **Multus Network (bridge)**. You can create extra Network Attachment
     Definition (NAD) resources in **Infrastructure** > **Networks**.
 
@@ -158,7 +161,7 @@ template.
     `cpu-model-migration.node.kubevirt.io/<Model>` node labels. The discovered model list is cached for up to three
     minutes.
 
-    If a VM or template references a model the cluster doesn't expose, the drop-down menu preserves it as
+    If a VM or template references a model the cluster does not expose, the drop-down menu preserves it as
     `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. Launchpad also warns you when
     the selected CPU model is unavailable on all nodes or is available only on some nodes.
 
@@ -202,7 +205,7 @@ template.
     | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                    |
     | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                              |
-    | **Use internal package repository** | Keep the internal VMO repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                                  |
+    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                            |
     | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                      |
     | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
 
@@ -212,7 +215,7 @@ template.
 
     If you enable guest agent installation, upload the `qemu-guest-agent` package for your operating system and
     architecture to the internal repository under **Image Catalog** > **Packages** before launching the VM. Otherwise,
-    the agent installation fails. This reminder doesn't block VM creation.
+    the agent installation fails. This reminder does not block VM creation.
 
     :::
 
@@ -234,7 +237,7 @@ template.
 
     :::warning
 
-    Cloud-init runs only at first boot. Changes to user data or network data after the VM boots don't run again unless
+    Cloud-init runs only at first boot. Changes to user data or network data after the VM boots do not run again unless
     you issue the `cloud-init clean` command and reboot.
 
     :::
@@ -243,17 +246,20 @@ template.
 
 14. Select **Create Template**. Launchpad saves the template as a `VmTemplate` custom resource.
 
+Windows VMs follow the same template creation flow. You do not need to configure cloud-init for Windows templates.
+
 ## Create a Template from an Existing VM
 
 1. Navigate to **Workloads** > **Virtual Machines**. Select the VM you want to create a template from.
 
-2. Select **Create Template** from the VM actions menu.
+2. Select the VM you want to use as a template and select **Save as Template** from the VM actions menu.
 
-3. Review the configuration that Launchpad pre-fills from the VM.
+   ![Screenshot of VM actions mention Save as Template](/vmo/vm-management_vmo_templates_save-vm-template-4-9.webp)
 
-4. On the **Save as a Template** wizard, enter an optional description.
+3. On the **Save as a Template** page, review the configuration that Launchpad pre-fills from the VM.
 
-5. Update any values that should differ from the source VM and select **Create Template**.
+4. Update any values that should differ from the source VM, enter an optional description, and select **Create
+   Template**.
 
 When you create a template from an existing VM, the template references the VM's root disk or source DataVolume as the
 clone source. Use sealed and generalized golden images as template sources whenever possible.
@@ -265,7 +271,7 @@ Launchpad copies the following fields from the source VM into the template.
 
 | **Field**                           | **Description**                                                                                                         |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Cloud-init                          | Inline `userData` and `networkData` values for NoCloud and ConfigDrive data sources.                                    |
+| cloud-init                          | Inline `userData` and `networkData` values for NoCloud and ConfigDrive data sources.                                    |
 | Compute                             | CPU topology, memory, and instance type reference.                                                                      |
 | Firmware                            | Bootloader mode, Secure Boot, kernel boot, and ACPI settings. Launchpad removes per-VM firmware UUID and serial values. |
 | Preference                          | The `spec.preference` reference, when set.                                                                              |
@@ -276,14 +282,14 @@ Launchpad copies the following fields from the source VM into the template.
 The following table displays the fields that Launchpad removes. These fields can contain per-VM, security-sensitive, or
 namespace-bound values.
 
-| **Field**                    | **Description**                                                                    |
-| ---------------------------- | ---------------------------------------------------------------------------------- |
-| Cloud-init Secret references | `userDataSecretRef` and `networkDataSecretRef` values.                             |
-| Access credentials           | SSH key injection that references the original VM creator's Secrets.               |
-| MAC addresses                | Interface MAC addresses that could collide when the template creates new VMs.      |
-| Hostname and subdomain       | Per-VM identity fields.                                                            |
-| Run strategy                 | The create-from-template flow decides whether the new VM starts automatically.     |
-| KubeVirt-managed metadata    | KubeVirt, CDI, and wizard breadcrumb annotations that don't represent user intent. |
+| **Field**                    | **Description**                                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| cloud-init Secret references | `userDataSecretRef` and `networkDataSecretRef` values.                              |
+| Access credentials           | SSH key injection that references the original VM creator's Secrets.                |
+| MAC addresses                | Interface MAC addresses that could collide when the template creates new VMs.       |
+| Hostname and subdomain       | Per-VM identity fields.                                                             |
+| Run strategy                 | The create-from-template flow decides whether the new VM starts automatically.      |
+| KubeVirt-managed metadata    | KubeVirt, CDI, and wizard breadcrumb annotations that do not represent user intent. |
 
 If Launchpad removes a field, the success dialog lists the removed fields so you can reattach anything required for
 future VMs.
@@ -295,22 +301,6 @@ and `networkData` values in cluster-scoped templates across namespaces. Before y
 embedded secrets, such as SSH private keys, passwords, and tokens.
 
 :::
-
-## Create VMs from Templates
-
-1. In the VM creation wizard, select **Template** as the source type.
-
-2. Select the namespace and template.
-
-3. Review the defaults that the template applies to compute, storage, network, and hardware settings.
-
-4. Override any values required for the new VM.
-
-5. Set the VM name and complete the wizard.
-
-If the template contains cloud-init data, the **Lifecycle** step pre-fills the **User Data** and **Network Data**
-fields. Edit these values to customize the new VM. If the template uses ConfigDrive, Launchpad displays a **ConfigDrive
-data source** indicator in the Lifecycle step.
 
 ## Edit Templates
 
@@ -348,8 +338,8 @@ The export includes the full `VmTemplate` spec and metadata.
 
 6. Complete the import.
 
-When you import a template that references a CPU model the current cluster doesn't expose, Launchpad preserves the CPU
-model value. The **CPU Model** dropdown displays the model as unsupported and warns that VMs using it may fail to
+When you import a template that references a CPU model the current cluster does not expose, Launchpad preserves the CPU
+model value. The **CPU Model** drop-down menu displays the model as unsupported and warns that VMs using it may fail to
 schedule. Select a supported CPU model before you create a VM, or add a node that provides the required CPU features.
 
 ## Template Annotations
@@ -357,7 +347,7 @@ schedule. Select a supported CPU model before you create a VM, or add a node tha
 The template wizard exposes user annotations in the Source step. Launchpad stores these annotations on the `VmTemplate`
 resource and carries them forward when users create VMs from the template.
 
-Launchpad manages the following annotations, so users can't edit them through the user annotations field.
+Launchpad manages the following annotations, so users cannot edit them through the user annotations field.
 
 | **Annotation**                                 | **Set By**                       | **Purpose**                                                                        |
 | ---------------------------------------------- | -------------------------------- | ---------------------------------------------------------------------------------- |
