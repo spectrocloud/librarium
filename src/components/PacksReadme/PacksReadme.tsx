@@ -16,6 +16,8 @@ import { Redirect } from "react-router-dom";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import ReactMarkDown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { packCveImports } from "@site/src/generated/packCveImports";
+
 interface PackReadmeProps {
   customDescription: string;
   packUidMap: Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }>;
@@ -215,6 +217,7 @@ export default function PacksReadme() {
     const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
     const [fragmentIdentifier, setFragmentIdentifier] = useState<string>("");
     const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
+    const [packCves, setPackCves] = useState<ReactElement<any, any> | null>(null);
     const [packName, setPackName] = useState<string>("");
     const [selectedPackUid, setSelectedPackUid] = useState<string>("");
     const { colorMode } = useColorMode();
@@ -253,6 +256,48 @@ export default function PacksReadme() {
         console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
       });
     }, []);
+
+    useEffect(() => {
+      let pckName = "";
+
+      if (isBrowser) {
+        const searchParams = new URLSearchParams(window.location.search);
+        pckName = searchParams.get("pack") || "";
+      }
+
+      if (!pckName || !selectedVersion) {
+        setPackCves(null);
+        return;
+      }
+
+      type PackCveImportMap = Record<string, () => Promise<MarkdownFile>>;
+      const typedPackCveImports = packCveImports as PackCveImportMap;
+
+      const importCVEs = async () => {
+        const importer = typedPackCveImports[pckName];
+
+        if (!importer) {
+          setPackCves(null);
+          return;
+        }
+
+        try {
+          const module = await importer();
+          const PackReadMeComponent = module.default;
+
+          setPackCves(
+            <div className={styles.customReadme}>
+              <PackReadMeComponent selectedVersion={selectedVersion} />
+            </div>
+          );
+        } catch (error) {
+          console.error("Error importing custom cve component for pack. Additional information follows: \n", error);
+          setPackCves(null);
+        }
+      };
+
+      void importCVEs();
+    }, [isBrowser, selectedVersion]);
 
     const packData: PackData = useMemo(() => {
       const pack = packs.find((pack) => pack.name === packName);
@@ -332,6 +377,11 @@ export default function PacksReadme() {
           label: `Additional Details`,
           key: "custom",
           children: customReadme,
+        },
+        packCves && {
+          label: `Pack CVEs`,
+          key: "cves",
+          children: packCves,
         },
       ].filter(Boolean) as { label: string; key: string; children: JSX.Element }[];
       if (tabs.length > 1) {
