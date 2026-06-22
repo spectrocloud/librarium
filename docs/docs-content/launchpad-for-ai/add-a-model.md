@@ -56,5 +56,5 @@ For why a model becomes routable only after its smoke test passes, refer to [Arc
 
 ## Next Steps
 
-To set which model handles requests that do not name a model, refer to
-[Set the Default Model](./set-the-default-model.md).
+If a request does not name a model, the appliance routes it to the default model. Refer to
+[Set the Default Model](./set-the-default-model.md) to learn how to configure the default.
