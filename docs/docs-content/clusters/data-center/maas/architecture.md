@@ -59,7 +59,8 @@ The Canonical Kubernetes pack for deployments in MAAS environments does not supp
 - Network Time Protocol (NTP)
 - SSH key management
 - HashiCorp Cloud Platform (HCP) / Linux Container Daemon (LXD)
-- Cilium for Container Network Interface (CNI)
+- Container Network Interface (CNI) plugins other than Cilium. Canonical Kubernetes on MAAS supports only the Cilium
+  CNI.
 
 ## Palette MAAS Distribution
 

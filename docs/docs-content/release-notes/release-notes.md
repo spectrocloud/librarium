@@ -72,6 +72,18 @@ tags: ["release-notes"]
 - The deployment of [Canonical Kubernetes on MAAS](../clusters/data-center/maas/architecture.md) has exited Tech Preview
   and is now ready for production workloads.
 
+<!-- prettier-ignore-start -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6725 -->
+
+- [Canonical Kubernetes clusters on MAAS](../clusters/data-center/maas/architecture.md) now support the <VersionedLink
+  text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack as a Container Network Interface
+  (CNI), available for Canonical Kubernetes 1.35 and later. You can manage Cilium declaratively in your cluster
+  profile instead of relying on the Cilium CNI bundled with the Canonical Kubernetes pack. For configuration steps, refer
+  to
+  [Configure Cilium for Canonical Kubernetes Clusters on MAAS](../integrations/cni-cilium-oss.mdx#configure-cilium-for-canonical-kubernetes-clusters-on-maas).
+
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-1826 -->
 
 - The **MinIO** backup location provider has been renamed to **S3 Compatible Storage** to reflect that it supports any
