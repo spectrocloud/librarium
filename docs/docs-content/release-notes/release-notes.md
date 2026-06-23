@@ -40,10 +40,17 @@ tags: ["release-notes"]
     [Node Pool AWS Tags](../architecture/override-capi-properties/aws-capi-override-reference.md#node-pool-aws-tags).
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6803 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6362 -->
 
 - Palette now supports overriding Cluster API Machine Health Check (MHC) settings per node pool on Palette eXtended
   Kubernetes (PXK) infrastructure clusters. This capability does not apply to EKS, AKS, or GKE clusters. For more
   information, refer to [Node Pools](../clusters/cluster-management/node-pool.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PRM-2688 -->
+
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+  [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.21 are now
+  available.
 
 #### Improvements
 
@@ -74,6 +81,7 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-start -->
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6725 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4971 -->
 
 - [Canonical Kubernetes clusters on MAAS](../clusters/data-center/maas/architecture.md) now support the <VersionedLink
   text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack as a Container Network Interface
@@ -85,11 +93,18 @@ tags: ["release-notes"]
 <!-- prettier-ignore-end -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-1826 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-1822 -->
 
 - The **MinIO** backup location provider has been renamed to **S3 Compatible Storage** to reflect that it supports any
   S3-compatible object storage, such as MinIO or NetApp StorageGRID. The **S3 URL** field is now labeled **Endpoint
   URL**. Existing backup locations continue to work and appear under the new label with their settings preserved. For
   more information, refer to [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10222 -->
+
+- Palette now provides the `/v1/tenants/{tenantUid}/idp/palette/config` [API endpoint](/api/introduction) that allows
+  tenant administrators to retrieve the Palette identity provider (IdP) configuration for their tenant in self-hosted
+  Palette environments.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6579 -->
 
@@ -99,6 +114,20 @@ tags: ["release-notes"]
   serving certificates for each control plane node. This applies to Palette eXtended Kubernetes (PXK), RKE2, K3s, and
   Canonical Kubernetes clusters. For more information, refer to
   [Renew Cluster PKI Certificates](../clusters/cluster-management/certificate-management.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5597 -->
+
+- Palette now publishes consistent cluster events for Container Network Interface (CNI) and Container Storage Interface
+  (CSI) pack installations and upgrades across all cloud types. Palette adds a CNI install success event to match the
+  existing CSI event, recording the source and target versions in a single upgrade event. For more information, refer to
+  [Event Stream](../clusters/clusters.md#event-stream).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-3570 -->
+
+- The [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) setting now
+  applies to all internal components of a Private Cloud Gateway (PCG), including those used to manage the PCG cluster
+  itself. This applies to
+  MAAS, vSphere, and self-hosted PCGs.
 
 #### Deprecations and Removals
 
@@ -114,6 +143,15 @@ tags: ["release-notes"]
 - The `v1/projects` Palette [API endpoint](/api/introduction) is now deprecated. Use the `/v1/dashboard/projects`
   endpoint instead.
 
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6439 -->
+
+- Fixed an issue that caused [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md) clusters using Cilium as the
+  Container Network Interface (CNI) to receive incorrect security group rules, which silently dropped cross-node pod
+  traffic and disrupted DNS resolution, pod-to-pod communication, and API server webhook calls. Palette now applies the
+  correct security group rules based on the configured CNI, with no manual security group changes required.
+
 ### Edge
 
 :::info
@@ -125,6 +163,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8643 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8173 -->
 
 - Connected (centrally managed) Edge Native clusters now support upgrading the control plane independently from worker
   pools. Enable the **Skip worker node update** toggle on a worker pool to defer its Kubernetes upgrade while the
@@ -135,6 +174,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   [Edge Cluster Upgrade Behavior](../clusters/edge/cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8655 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-8437 -->
 
 - The Palette TUI now includes a **Management Interface** drop-down menu on the **Network Adapter** screen. You can use
   this option during initial Edge host setup to pin Local UI and host-to-host traffic to a specific network adapter. For
@@ -160,6 +200,13 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4-9-b) for more details.
 
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10482 -->
+
+- The [system console](../vertex/system-management/system-management.md#system-console) now displays the installed
+  product version for Helm-based installations of Palette VerteX.
+
 ### Automation
 
 :::info
@@ -170,17 +217,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
-- Terraform version 4.9.b of the
+- Terraform version 0.29.6 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 4.9.b of the
+- Crossplane version 0.29.6 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
   now available.
 
 #### Improvements
-
-### Docs and Education
 
 ### Packs
 
