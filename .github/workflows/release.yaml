@@ -267,20 +267,20 @@ jobs:
   post-release-processing:
     name: "Post Release Processing"
     needs: [release]
-    if: ${{ needs.release.result == 'success' }}
+    if: ${{ always() && needs.release.result == 'success' }}
     uses: ./.github/workflows/post_release.yaml
     secrets: inherit
 
   screenshot-capture:
     name: "Screenshot Capture"
     needs: [release]
-    if: ${{ needs.release.result == 'success' }}
+    if: ${{ always() && needs.release.result == 'success' }}
     uses: ./.github/workflows/screenshot_capture.yaml
     secrets: inherit
 
   algolia-crawler:
     name: "Algolia Crawler"
     needs: [release]
-    if: ${{ needs.release.result == 'success' }}
+    if: ${{ always() && needs.release.result == 'success' }}
     uses: ./.github/workflows/aloglia_crawler.yaml
     secrets: inherit
