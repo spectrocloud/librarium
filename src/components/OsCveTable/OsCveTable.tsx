@@ -5,7 +5,7 @@ import Search from "../Technologies/Search";
 import { useColorMode } from "@docusaurus/theme-common";
 import type { ColumnsType } from "antd/es/table";
 import Admonition from "@theme/Admonition";
-import { Link } from "react-router-dom";
+import Link from "@docusaurus/Link";
 
 type OsCve = {
   uid: string;
@@ -51,7 +51,9 @@ const columns: ColumnsType<OsCve> = [
     dataIndex: "displayName",
     key: "displayName",
     sorter: (a, b) => a.displayName.localeCompare(b.displayName),
-    render: (text: string, record: OsCve) => <Link to={`./${record.uid}`}>{text}</Link>,
+    render: (text: string, record: OsCve) => (
+      <Link to={`pathname:///generated/security-bulletins/os-k8s/${record.uid.toLowerCase()}.html`}>{text}</Link>
+    ),
   },
   {
     title: "FIPS Compliant",
