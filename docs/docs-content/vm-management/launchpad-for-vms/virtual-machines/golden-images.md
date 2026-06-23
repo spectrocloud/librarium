@@ -173,11 +173,11 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
 7. When the OS is installed and ready, select **Finalize** on the builder VM.
 
-8. In the **Finalize** dialog, select a customization template for the seal script.
+8. In the **Finalize** dialog, select a finalization template for the seal script.
 
    - **None** stops the VM and keeps the image as-is. The image is not generalized.
 
-   - **With Script** runs the selected customization template's seal script to generalize the image.
+   - **With Script** runs the selected finalization template's seal script to generalize the image.
 
 9. For Linux, select a template such as **Ubuntu / Debian** or **RHEL / CentOS / Fedora**.
 
@@ -193,9 +193,12 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
     - Waits for the guest agent.
 
-    - Runs the seal script with cloud-init or a similar mechanism.
+    - Runs the finalization template script with cloud-init or a similar mechanism.
 
     - Stops the VM again and removes the builder VM.
+
+Refer to [finalization templates](./image-customization.md) for more information on using finalization scripts to seal
+the golden image.
 
 12. When the process is complete, the DataVolume is a sealed golden image. The image appears under **Image Catalog** >
     **Golden Images** and as a DataVolume under **Infrastructure** > **Storage**.
