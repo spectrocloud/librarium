@@ -25,7 +25,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 - At least one source provider for the VMs to be migrated. Refer to
   [Create Source Providers](./create-source-providers.md) for guidance.
 
-- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md)
+- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../vmo-pack/create-vmo-profile.md)
   for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
@@ -574,6 +574,24 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
    If you choose to use an existing storage map, select the **Storage map** from the drop-down.
 
+   :::warning
+
+   VMO clusters using a block-based Container Storage Interface (CSI), including VMO clusters deployed with the
+   [Launchpad for VMs appliance](../launchpad-for-vms/launchpad-for-vms.md), require explicit storage map settings for
+   migrated VM disks. Ensure the storage map contains `accessMode: ReadWriteOnce` and `volumeMode: Filesystem`.
+
+   ```yaml {4-5}
+   spec:
+     map:
+       - destination:
+           accessMode: ReadWriteOnce
+           volumeMode: Filesystem
+           storageClass: vmo-sc
+         source:
+   ```
+
+   :::
+
    #### Use New Storage Map
 
    The following table describes the available settings for creating a new storage map.
@@ -625,11 +643,11 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
     The following table describes the available settings for pre-migration and post-migration hooks.
 
-    | Setting               | Description                                                                                                                                                                                           | Example                       |
-    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-    | **Hook runner image** | Specify a repository and tag for the hook runner image or custom image. The hook runner is a container that runs your pre-migration and post-migration hooks.                                         | `quay.io/myrepo/hooks:latest` |
-    | **Service account**   | Specify a service account for the hook runner to use. The service account must exist in your target namespace.                                                                                        | `hook-runner-service-account` |
-    | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you enter a **Hook runner image**. | N/A                           |
+    | Setting               | Description                                                                                                                                                                                     | Example                       |
+    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+    | **Hook runner image** | Specify a repository and tag for the hook runner image or custom image. The hook runner is a container that runs your pre-migration and post-migration hooks.                                   | `quay.io/myrepo/hooks:latest` |
+    | **Service account**   | Specify a service account for the hook runner to use. The service account must exist in your target namespace.                                                                                  | `hook-runner-service-account` |
+    | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://docs.ansible.com/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you enter a **Hook runner image**. | N/A                           |
 
 16. Click **Next**.
 

@@ -30,6 +30,8 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 
 - <PartialsComponent category="self-hosted" name="nginx-traefik-upgrade" edition="Palette" />
 
+- <PartialsComponent category="self-hosted" name="certificate-loss" />
+
 ## Prerequisites
 
 - Access to the x86 Linux jumpbox or bastion host with connectivity to the target platform where you have installed

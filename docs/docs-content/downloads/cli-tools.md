@@ -55,7 +55,9 @@ The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64
 
 ## Palette Edge CLI
 
-The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
+The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture. For Edge component
+version guidance, including CanvOS, Stylus, Edge host, and Palette Edge CLI deprecation details, refer to the
+[Edge Compatibility Matrix](../clusters/edge/edge-compatibility-matrix.md).
 
 | Palette Release <!-- edge-version-table --> | CLI Version                | Download URL                                                            | Checksum (SHA256)                                                  |
 | ------------------------------------------- | -------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |

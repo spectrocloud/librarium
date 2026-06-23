@@ -56,11 +56,14 @@ the cluster.
 
    ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_full-permissions-instructions.webp)
 
-7. To install the Palette agent, run the command displayed in the drawer against the Kubernetes cluster you want to
-   import. The command is customized for your cluster, as it contains the assigned cluster ID.
+7. Select **Download manifest**.
 
-   ```hideClipboard shell title="Example command"
-   kubectl apply --filename https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
+   <PartialsComponent category="clusters-import" name="cluster-import-api" />
+
+8. Apply the manifest to your Kubernetes cluster to install the Palette agent using the appropriate download path.
+
+   ```shell
+   kubectl apply --filename <path-to-download>/manifest.yaml
    ```
 
    ```hideClipboard shell title="Example output"
@@ -87,7 +90,7 @@ the cluster.
 
    :::
 
-8. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
+9. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
    **Running**. Within a few minutes, your cluster's **Health** status changes to **Healthy**.
 
 You now have imported a cluster into Palette with full permissions.
@@ -137,132 +140,135 @@ about each mode.
 
 ### Import a Cluster
 
-1. Log in to [Palette](https://spectrocloud.com).
+1.  Log in to [Palette](https://spectrocloud.com).
 
-2. From the left main menu, select **Clusters**.
+2.  From the left main menu, select **Clusters**.
 
-3. Choose **Import Cluster**.
+3.  Choose **Import Cluster**.
 
-4. On the **Import Cluster** page, complete the following information as applicable. The fields vary depending on the
-   **Cloud Type** selected.
+4.  On the **Import Cluster** page, complete the following information as applicable. The fields vary depending on the
+    **Cloud Type** selected.
 
-   | **Field**                           | **Description**                                                                                                                                                                                                                                                                                                                                                                          | **Cloud Type** |
-   | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-   | **Cluster Name**                    | A unique display name for the cluster you want to import.                                                                                                                                                                                                                                                                                                                                | All            |
-   | **Cloud Type**                      | The infrastructure environment your cluster resides in. The cloud type determines what infrastructure metadata Palette displays. Supported options include **AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**. Select **Generic** if your provider is not listed. Refer to [Imported Clusters](./imported-clusters.md#supported-infrastructure-providers) for more information. | All            |
-   | **Proxy (Optional)**                | The address of an HTTP proxy server that the Palette agent uses for outbound traffic to reach Palette.                                                                                                                                                                                                                                                                                   | Generic        |
-   | **No Proxy (Optional)**             | A comma-separated list of hosts, IP addresses, or Classless Inter-Domain Routing (CIDR) ranges that bypass the proxy specified in the **Proxy** field.                                                                                                                                                                                                                                   | Generic        |
-   | **Host Path (Optional)**            | The file path on the host machine to a custom Certificate Authority (CA) certificate. Use this if the Palette agent must trust a CA that is not in the default trust store, such as when connecting to a self-hosted Palette instance that uses an internal CA or when traffic passes through a TLS-intercepting proxy.                                                                  | All            |
-   | **Container Mount Path (Optional)** | The path inside the Palette agent container where the CA certificate specified in the **Host Path** field is mounted.                                                                                                                                                                                                                                                                    | All            |
+    | **Field**                           | **Description**                                                                                                                                                                                                                                                                                                                                                                          | **Cloud Type** |
+    | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+    | **Cluster Name**                    | A unique display name for the cluster you want to import.                                                                                                                                                                                                                                                                                                                                | All            |
+    | **Cloud Type**                      | The infrastructure environment your cluster resides in. The cloud type determines what infrastructure metadata Palette displays. Supported options include **AWS IaaS**, **Azure IaaS**, **GCP IaaS**, and **Generic**. Select **Generic** if your provider is not listed. Refer to [Imported Clusters](./imported-clusters.md#supported-infrastructure-providers) for more information. | All            |
+    | **Proxy (Optional)**                | The address of an HTTP proxy server that the Palette agent uses for outbound traffic to reach Palette.                                                                                                                                                                                                                                                                                   | Generic        |
+    | **No Proxy (Optional)**             | A comma-separated list of hosts, IP addresses, or Classless Inter-Domain Routing (CIDR) ranges that bypass the proxy specified in the **Proxy** field.                                                                                                                                                                                                                                   | Generic        |
+    | **Host Path (Optional)**            | The file path on the host machine to a custom Certificate Authority (CA) certificate. Use this if the Palette agent must trust a CA that is not in the default trust store, such as when connecting to a self-hosted Palette instance that uses an internal CA or when traffic passes through a TLS-intercepting proxy.                                                                  | All            |
+    | **Container Mount Path (Optional)** | The path inside the Palette agent container where the CA certificate specified in the **Host Path** field is mounted.                                                                                                                                                                                                                                                                    | All            |
 
-5. Select **Read-only mode**, then **Create & Open Cluster Instance** to start the import.
+5.  Select **Read-only mode**, then **Create & Open Cluster Instance** to start the import.
 
-6. You are redirected to the imported cluster's **Overview** tab. A set of instructions with commands is displayed on
-   the drawer. You must issue the following commands to complete the import process.
+6.  You are redirected to the imported cluster's **Overview** tab. A set of instructions with commands is displayed on
+    the drawer. You must issue the following commands to complete the import process.
 
-   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.webp)
+    ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.webp)
 
-7. (Optional) Palette uses a metrics server that implements the Kubernetes Metrics API (`metrics.k8s.io`) to display
-   resource utilization data such as CPU and memory usage. In read-only mode, the Palette agent does not have permission
-   to install a metrics server automatically. If your cluster does not already have a metrics server, you can install
-   one manually. Any implementation that serves the Kubernetes Metrics API is compatible.
+7.  (Optional) Palette uses a metrics server that implements the Kubernetes Metrics API (`metrics.k8s.io`) to display
+    resource utilization data such as CPU and memory usage. In read-only mode, the Palette agent does not have
+    permission to install a metrics server automatically. If your cluster does not already have a metrics server, you
+    can install one manually. Any implementation that serves the Kubernetes Metrics API is compatible.
 
-   :::warning
+    :::warning
 
-   Without a metrics server, Palette cannot display cluster resource metrics. Other functionality such as event logs,
-   health checks, and cost data is not affected.
+    Without a metrics server, Palette cannot display cluster resource metrics. Other functionality such as event logs,
+    health checks, and cost data is not affected.
 
-   :::
+    :::
 
-   To verify if your cluster has the Kubernetes Metrics API installed, run the following command.
+    To verify if your cluster has the Kubernetes Metrics API installed, run the following command.
 
-   ```shell
-   kubectl get apiservices | grep metrics
-   ```
+    ```shell
+    kubectl get apiservices | grep metrics
+    ```
 
-   ```shell title="Example output" hideClipboard
-    v1beta1.metrics.k8s.io              kube-system/metrics-server   True        33m
-   ```
+    ```shell title="Example output" hideClipboard
+     v1beta1.metrics.k8s.io              kube-system/metrics-server   True        33m
+    ```
 
-   To verify the Kubernetes Metrics API is responding, run the following command.
+    To verify the Kubernetes Metrics API is responding, run the following command.
 
-   ```shell
-   kubectl top nodes
-   ```
+    ```shell
+    kubectl top nodes
+    ```
 
-   ```shell title="Example output" hideClipboard
-   NAME                                   CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)
-   import-cluster-palette-control-plane   212m         2%       1607Mi          20%
-   ```
+    ```shell title="Example output" hideClipboard
+    NAME                                   CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)
+    import-cluster-palette-control-plane   212m         2%       1607Mi          20%
+    ```
 
-   If your cluster does not have a metrics server installed, use the **(Optional) Install the metrics server** commands
-   displayed in the drawer to install the Kubernetes Metrics Server Helm chart.
+    If your cluster does not have a metrics server installed, use the **(Optional) Install the metrics server** commands
+    displayed in the drawer to install the Kubernetes Metrics Server Helm chart.
 
-   :::warning
+    :::warning
 
-   Add the line `--set args='{--kubelet-insecure-tls}'` to the command if your cluster uses self-signed Kubelet
-   certificates, which is common for self-managed clusters.
+    Add the line `--set args='{--kubelet-insecure-tls}'` to the command if your cluster uses self-signed Kubelet
+    certificates, which is common for self-managed clusters.
 
-   ```shell {4}
-   helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
-   helm upgrade --install metrics-server metrics-server/metrics-server \
-      --namespace kube-system \
-      --set args='{--kubelet-insecure-tls}'
-   ```
+    ```shell {4}
+    helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+    helm upgrade --install metrics-server metrics-server/metrics-server \
+       --namespace kube-system \
+       --set args='{--kubelet-insecure-tls}'
+    ```
 
-   If you do not use the `--kubelet-insecure-tls` argument and you have self-signed Kubelet certificates, the metrics
-   API server will not respond. This is indicated with the output `False (MissingEndpoints)` when running the command
-   `kubectl get apiservices | grep metrics`.
+    If you do not use the `--kubelet-insecure-tls` argument and you have self-signed Kubelet certificates, the metrics
+    API server will not respond. This is indicated with the output `False (MissingEndpoints)` when running the command
+    `kubectl get apiservices | grep metrics`.
 
-   ```shell title="Example of a non-responsive metrics server" hideClipboard
-   v1beta1.metrics.k8s.io    kube-system/metrics-server   False (MissingEndpoints)   7m26s
-   ```
+    ```shell title="Example of a non-responsive metrics server" hideClipboard
+    v1beta1.metrics.k8s.io    kube-system/metrics-server   False (MissingEndpoints)   7m26s
+    ```
 
-   :::
+    :::
 
-8. To install the Palette agent, run the command displayed in the drawer against the Kubernetes cluster you want to
-   import. The command is customized for your cluster, as it contains the assigned cluster ID.
+8.  Select **Download manifest**.
 
-   ```hideClipboard shell
-   kubectl apply --filename https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
-   ```
+    <PartialsComponent category="clusters-import" name="cluster-import-api" />
 
-   ```hideClipboard shell title="Example output"
-   namespace/cluster-69e680a5d312edd1d203acee created
-   customresourcedefinition.apiextensions.k8s.io/awscloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/azurecloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/cloudstackcloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/clusterprofiles.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/customcloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/edgecloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/edgenativecloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/gcpcloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/maascloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/nestedcloudconfigs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/packs.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/spectroclusters.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/vspherecloudconfigs.cluster.spectrocloud.com created
-   serviceaccount/palette-manager created
-   clusterrolebinding.rbac.authorization.k8s.io/palette-lite-cluster-admin-binding created
-   configmap/palette-version-info-g7bkcc8gf2 created
-   priorityclass.scheduling.k8s.io/palette-spectro-cluster-critical created
-   deployment.apps/palette-lite-controller-manager created
-   job.batch/palette-import-presetup-job created
-   serviceaccount/cluster-management-agent created
-   clusterrole.rbac.authorization.k8s.io/cma-lite-cluster-least-privilege-role created
-   clusterrolebinding.rbac.authorization.k8s.io/cma-lite-cluster-least-privilege-binding created
-   configmap/log-parser-config created
-   configmap/upgrade-info-5tgb8c4chb created
-   configmap/version-info-5hkbtbgh44 created
-   priorityclass.scheduling.k8s.io/spectro-cluster-critical created
-   deployment.apps/cluster-management-agent-lite created
-   configmap/cluster-info created
-   configmap/hubble-info created
-   secret/hubble-secrets created
-   ```
+9.  Apply the manifest to your Kubernetes cluster to install the Palette agent using the appropriate download path.
 
-9. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
-   **Running**. Within a few minutes, your cluster's **Health** status changes to **Healthy**.
+    ```shell
+    kubectl apply --filename <path-to-download>/manifest.yaml
+    ```
+
+    ```hideClipboard shell title="Example output"
+    namespace/cluster-69e680a5d312edd1d203acee created
+    customresourcedefinition.apiextensions.k8s.io/awscloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/azurecloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/cloudstackcloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/clusterprofiles.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/customcloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/edgecloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/edgenativecloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/gcpcloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/maascloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/nestedcloudconfigs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/packs.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/spectroclusters.cluster.spectrocloud.com created
+    customresourcedefinition.apiextensions.k8s.io/vspherecloudconfigs.cluster.spectrocloud.com created
+    serviceaccount/palette-manager created
+    clusterrolebinding.rbac.authorization.k8s.io/palette-lite-cluster-admin-binding created
+    configmap/palette-version-info-g7bkcc8gf2 created
+    priorityclass.scheduling.k8s.io/palette-spectro-cluster-critical created
+    deployment.apps/palette-lite-controller-manager created
+    job.batch/palette-import-presetup-job created
+    serviceaccount/cluster-management-agent created
+    clusterrole.rbac.authorization.k8s.io/cma-lite-cluster-least-privilege-role created
+    clusterrolebinding.rbac.authorization.k8s.io/cma-lite-cluster-least-privilege-binding created
+    configmap/log-parser-config created
+    configmap/upgrade-info-5tgb8c4chb created
+    configmap/version-info-5hkbtbgh44 created
+    priorityclass.scheduling.k8s.io/spectro-cluster-critical created
+    deployment.apps/cluster-management-agent-lite created
+    configmap/cluster-info created
+    configmap/hubble-info created
+    secret/hubble-secrets created
+    ```
+
+10. When the Palette agent completes initializing, the drawer disappears, and your **Cluster Status** transitions to
+    **Running**. Within a few minutes, your cluster's **Health** status changes to **Healthy**.
 
 You now have imported a cluster into Palette in read-only mode. Keep in mind that a cluster imported in read-only mode
 has limited capabilities, indicated by the disabled tabs. You can migrate to full permissions anytime by clicking

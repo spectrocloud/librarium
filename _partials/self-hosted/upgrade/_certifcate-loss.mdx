@@ -1,0 +1,10 @@
+---
+partial_category: self-hosted
+partial_name: certificate-loss
+---
+
+**(Any to 4.8.47 - 4.9.14)** If upgrading an IP-based environment to any version between 4.8.47 - 4.9.14, Palette may replace custom
+Transport Security Layer (TLS) certificates with newly generated certificates. This results in Edge hosts and other
+clients that trusted the original, custom certificates to stop communicating with Palette. Before upgrading, we recommend backing up your existing certificates 
+so that you can restore them through the system console. Refer to [Scenario - Custom Certificate Replaced After Upgrade](/troubleshooting/palette-upgrade/#scenario---custom-certificate-replaced-after-upgrade)
+for more information.

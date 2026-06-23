@@ -25,6 +25,8 @@ Kubernetes.
 
 ### Specific Versions
 
+- <PartialsComponent category="self-hosted" name="certificate-loss" />
+
 - <PartialsComponent category="self-hosted" name="gke-nginx-cleanup-iam" edition="Palette VerteX" />
 
 - <PartialsComponent category="self-hosted" name="nginx-values-hygiene" edition="Palette VerteX" />

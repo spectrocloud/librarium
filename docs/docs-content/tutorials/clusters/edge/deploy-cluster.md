@@ -145,8 +145,9 @@ View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 git tag --sort=v:refname
 ```
 
-Check out the desired tag. We recommend using a CanvOS minor version that matches or is older than Palette's minor
-version. This tutorial uses the tag `v4.7.16` as an example.
+Check out the CanvOS tag that corresponds to your Palette release. Refer to the
+[Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and Edge
+host version. This tutorial uses the tag `v4.7.16` as an example.
 
 ```bash
 git checkout v4.7.16
