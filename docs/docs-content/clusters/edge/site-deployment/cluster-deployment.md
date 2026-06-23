@@ -105,8 +105,24 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     NTP servers. Click on **Next**.
 
 9.  The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
-    the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
-    **Next**.
+    the **control-plane-pool** and the **worker-pool**. For more information about node pool configuration settings,
+    refer to [Node Pools](../../cluster-management/node-pool.md).
+
+    :::info
+
+        When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it is automatically added again by the Palette Edge node agent. To keep the taint removed, add `DisableWorkerNodeCapReconcile` to
+
+    `stylus.featureGate` in the OS pack before creating the cluster. For more information, refer to
+    [Feature Gates](../edge-configuration/installer-reference.md#feature-gates).
+
+    :::
+
+    Optionally, enable **Skip worker node update** on a worker pool to allow the control plane to be upgraded
+    independently of that pool. For details, refer to
+    [Skip Worker Node Update](../../cluster-management/node-pool.md#skip-worker-node-update) and
+    [Edge Cluster Upgrade Behavior](../cluster-management/upgrade-behavior.md#decoupled-control-plane-and-worker-node-upgrades).
+
+    When you have completed configuring the node pools, click on **Next**.
 
 10. (Optional) If you want to provision a [two-node high availability cluster](../architecture/two-node.md), check the
     **Enable Two-Node Capability** box to enable the two-node high availability architecture. This means you must have

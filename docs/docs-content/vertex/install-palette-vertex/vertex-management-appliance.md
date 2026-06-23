@@ -87,7 +87,9 @@ Follow the instructions to install Palette VerteX using the VerteX Management Ap
   app="VerteX Management Appliance"
 />
 
-### Install Palette VerteX
+- <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Palette VerteX" />
+
+### Install Palette VerteX {#install}
 
 <PartialsComponent
   category="self-hosted"

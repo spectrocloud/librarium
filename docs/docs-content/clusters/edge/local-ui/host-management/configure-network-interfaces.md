@@ -36,6 +36,31 @@ irrecoverable failures.
 
 - Credentials to log in to Local UI. You can log in with any OS user's credentials.
 
+## Configure the Management Interface
+
+The management interface handles Edge host management traffic, including Local UI access, communication between Edge
+hosts, and content synchronization. If no management interface is selected, the Edge host uses the network interface
+associated with the default route.
+
+You can configure the management interface in the Edge Installer `user-data` file. A selection made in the TUI overrides
+the value from `user-data`. After initial setup, a selection made in Local UI overrides the value from the TUI.
+
+1. Log in to Local UI.
+
+2. From the **Edge Host** page, locate the **Management Interface** field.
+
+3. Select the interface to use for management traffic.
+
+4. Click **Confirm** to save the change.
+
+:::warning
+
+Selecting a management interface does not change how the host routes network traffic. If multiple adapters use the same
+subnet and each adapter has a default route, traffic may leave through a different adapter than expected. For best
+results, place management and cluster traffic on separate subnets.
+
+:::
+
 ## Configure NICs
 
 1. Log in to Local UI.
@@ -47,9 +72,10 @@ irrecoverable failures.
 
    :::info
 
-   The NIC currently used for Edge host management (Local UI access and registration) is not editable. This management
-   NIC is locked by design to avoid breaking connectivity. You can identify it by the IP address used to access the
-   Local UI.
+   The interface currently used for Edge host management is not editable. This interface is locked by design to avoid
+   breaking connectivity. The active management interface can be configured through `user-data`, the TUI, or Local UI.
+   For more information, refer to
+   [Initial Edge Host Configuration with Palette TUI](../../site-deployment/site-installation/initial-setup.md).
 
    :::
 

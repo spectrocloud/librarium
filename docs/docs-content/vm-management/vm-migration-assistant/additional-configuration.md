@@ -315,11 +315,11 @@ The **Hooks** tab displays the migration hooks for the migration plan. These are
 2. You can enable or disable the hook using the toggle. If you enable the hook, additional settings are displayed as
    described in the following table.
 
-   | Setting               | Description                                                                                                                                                                                           | Example                       |
-   | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-   | **Hook runner image** | Specify a repository and tag for the hook runner image or custom image. The hook runner is a container that runs your pre-migration and post-migration hooks.                                         | `quay.io/myrepo/hooks:latest` |
-   | **Service account**   | Specify a service account for the hook runner to use. The service account must exist in your target namespace.                                                                                        | `hook-runner-service-account` |
-   | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you enter a **Hook runner image**. | N/A                           |
+   | Setting               | Description                                                                                                                                                                                     | Example                       |
+   | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+   | **Hook runner image** | Specify a repository and tag for the hook runner image or custom image. The hook runner is a container that runs your pre-migration and post-migration hooks.                                   | `quay.io/myrepo/hooks:latest` |
+   | **Service account**   | Specify a service account for the hook runner to use. The service account must exist in your target namespace.                                                                                  | `hook-runner-service-account` |
+   | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://docs.ansible.com/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you enter a **Hook runner image**. | N/A                           |
 
 3. Click **Save** after making changes.
 

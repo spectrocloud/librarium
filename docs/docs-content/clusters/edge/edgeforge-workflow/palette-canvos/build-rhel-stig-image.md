@@ -102,7 +102,9 @@ your Palette Edge deployment.
     git tag
     ```
 
-4.  Check out the newest available tag.
+4.  Check out the CanvOS tag that corresponds to your Palette release. Refer to the
+    [Edge Compatibility Matrix](/clusters/edge/edge-compatibility-matrix/) to identify the correct CanvOS, Stylus, and
+    Edge host version.
 
     ```bash
     git checkout <newest-available-tag>
