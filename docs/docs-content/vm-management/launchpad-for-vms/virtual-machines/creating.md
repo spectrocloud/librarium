@@ -58,7 +58,7 @@ deploy a VM.
     | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                |
     | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Batch**         | Select **Create multiple VMs**. Under **Count**, enter the number of VMs to create. From the **Naming** drop-down menu, select the naming convention: `name-1, name-2` or `name01, name02`. Under **Start #**, enter the number where the naming convention begins.                                                                                                                                            |
-    | **VM Preference** | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux image/ISOs, and Windows preferences appear only for Windows image/ISOs.                                                                                                                                                    |
+    | **VM Preference** | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux image/ISOs, and Windows preferences appear only for Windows image/ISOs. Refer to [VM Preferences](./instance-types.md#vm-preferences) for details.                                                                         |
     | **Labels**        | Enter key-value pair labels to add to your VM.                                                                                                                                                                                                                                                                                                                                                                 |
     | **Annotations**   | Enter key-value pair Kubernetes annotations to add to your VM. Select **Disable PCI Hole 64-bit** when you use legacy operating systems, such as Windows XP or Windows 2003. VM Launchpad sets the `kubevirt.io/disablePCIHole64: "true"` annotation on the VMI template spec. Refer to [Running legacy Windows versions](https://kubevirt.io/user-guide/user_workloads/legacy_windows/) for more information. |
 
@@ -69,6 +69,9 @@ deploy a VM.
     | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Instance Type** | Select a predefined CPU and memory profile. The `u1` prefix indicates general-purpose types with balanced CPU and memory.                                            |
     | **Custom**        | Set CPU and memory resources manually. Consider what the operating system and any applications running in the operating system need before you select custom values. |
+
+    For more about instance types, custom mode, and creating your own profiles, refer to
+    [Instance Types & Preferences](./instance-types.md).
 
     :::warning
 
@@ -164,14 +167,9 @@ deploy a VM.
 
     :::info
 
-    The **CPU Model** drop-down menu is populated dynamically from the cluster and lists only the models supported by at
-    least one worker node that can schedule VMs, discovered from KubeVirt's
-    `cpu-model-migration.node.kubevirt.io/<Model>` node labels. The discovered model list is cached for up to three
-    minutes.
-
-    If a VM or template references a model the cluster does not expose, the drop-down menu preserves it as
-    `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. VM Launchpad also warns you
-    when the selected CPU model is unavailable on all nodes or is available only on some nodes.
+    The **CPU Model** drop-down menu lists only the models the cluster supports and preserves unsupported values rather
+    than dropping them. Refer to [CPU Model Field](./instance-types.md#cpu-model-field) for details on dynamic
+    discovery, caching, and the unavailable-model warnings.
 
     :::
 
