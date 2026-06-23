@@ -22,8 +22,8 @@ advisories are published.
 
 ## Security Advisory 018 - Multiple Container Runtime Vulnerabilities
 
-- **Release Date**: June 23, 2026
-- **Last Updated**: June 23, 2026
+- **Release Date**: June 24, 2026
+- **Last Updated**: June 24, 2026
 - **CVEs**:
   - [CVE-2026-50195](#cve-2026-50195---improper-validation-during-container-restoration)
   - [CVE-2026-53488](#cve-2026-53488---improper-handling-of-container-image-metadata)
@@ -35,7 +35,7 @@ advisories are published.
 
 Multiple vulnerabilities have been identified in [containerd](https://github.com/containerd/containerd) that could allow
 attackers to achieve remote code execution, privilege escalation, information disclosure, denial of service, and bypass
-of Kubernetes security controls.
+Kubernetes security controls.
 
 The vulnerabilities affect multiple container runtime components responsible for image management, container
 restoration, resource access controls, logging, and workload lifecycle operations.
@@ -115,42 +115,33 @@ Successful exploitation could disrupt container management services and impact w
 
 ### Affected Deployments
 
-#### Workload Clusters
-
-- Managed Kubernetes clusters (EKS, AKS, GKE)
-- PXK clusters managed through Palette
-- RKE2 and K3s clusters managed through Palette
-- Palette Enterprise and Palette VerteX deployments
-
-#### SaaS Deployments
-
-- Self-hosted deployments
+- Workload Clusters
+  - Managed Kubernetes clusters (EKS, AKS, GKE)
+  - PXK clusters managed through Palette
+  - RKE2 and K3s clusters managed through Palette
+  - Palette Enterprise and Palette VerteX deployments
+- Palette Enterprise & Palette VerteX Deployments
+  - SaaS deployments
+  - Self hosted deployments
 
 ### Mitigation and Remediation
 
-#### SaaS Deployments
-
-- Multi-tenant and managed Dedicated SaaS clusters are being reviewed and patched as part of the standard update
-  process. Continuous compliance scans detect unpatched nodes.
-
-#### Self-Hosted Palette Enterprise and Palette VerteX Deployments
-
-- Deployments on cloud-managed Kubernetes, such as EKS, should update the clusters with the fixes provided by the cloud
-  vendor. This requires patching the OS on cluster nodes. For guidance on patching cluster nodes, refer to
-  [OS Patching](../../clusters/cluster-management/os-patching.md).
-- Deployments on customer infrastructure must upgrade to Kubernetes versions that include the patches.
-- Patched versions of the Palette Enterprise and Palette VerteX appliances downloaded from Artifact Studio will be
-  available in an upcoming release.
-
-#### Workload Clusters
-
-- Managed Kubernetes clusters (AKS, EKS, GKE) managed by Palette or VerteX should be updated with patches from the cloud
-  vendor as soon as they are available. This requires patching the OS on cluster nodes. For guidance on patching cluster
-  nodes, refer to [OS Patching](../../clusters/cluster-management/os-patching.md).
-- Patched OS images for other clusters will be available in an upcoming release. We advise all customers to upgrade to
-  the latest Kubernetes patch versions as soon as they are available.
-- Patches for Edge clusters will be available in an upcoming release. We advise all customers to upgrade the clusters to
-  the patched versions as soon as possible.
+- SaaS deployments
+  - Multi-tenant and dedicated SaaS clusters are being reviewed and patched as part of the standard update.
+- Self-Hosted Palette Enterprise and Palette VerteX Deployments
+  - Self-hosted installations deployed on managed Kubernetes clusters, such as EKS, should update the clusters with the
+    fixes provided by the cloud vendor.
+  - Deployments on customer infrastructure must upgrade to Kubernetes versions that include the patches.
+  - Patched versions of the Palette Enterprise and Palette VerteX appliances downloaded from Artifact Studio will be
+    available in an upcoming release.
+- Workload Clusters
+  - Managed Kubernetes clusters (AKS, EKS, GKE) managed by Palette or VerteX should be updated with patches from the
+    cloud vendor as soon as they are available. This requires patching the OS on cluster nodes. For guidance on patching
+    cluster nodes, refer to [OS Patching](../../clusters/cluster-management/os-patching.md).
+  - Patched OS images for other clusters will be available in an upcoming release. We advise all customers to upgrade to
+    the latest Kubernetes patch versions as soon as they are available.
+  - Patches for Edge clusters will be available in an upcoming release. We advise all customers to upgrade the clusters
+    to the patched versions as soon as possible.
 
 Until you can deploy patches, consider the following mitigations:
 
