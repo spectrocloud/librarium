@@ -21,6 +21,14 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4-9-b}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7017 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-7388 -->
+
+- Palette now validates the `ProjectUid` header on all [API](/api/introduction) requests. Requests that send a project
+  that does not exist or that you cannot access now return a validation error, such as `ResourceNotFound`,
+  `ProjectNotFoundInTenant`, or `ResourceAccessDenied`. To avoid errors, remove the `ProjectUid` header when accessing
+  tenant-level resources, or provide a valid project. Existing resources are not affected.
+
 #### Features
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6526 -->
@@ -126,17 +134,9 @@ tags: ["release-notes"]
 
 - The [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) setting now
   applies to all internal components of a Private Cloud Gateway (PCG), including those used to manage the PCG cluster
-  itself. This applies to
-  MAAS, vSphere, and self-hosted PCGs.
+  itself. This applies to MAAS, vSphere, and self-hosted PCGs.
 
 #### Deprecations and Removals
-
-#### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PCP-6832 -->
-
-- Fixed an issue where the expanded certificate list did not appear on the **View K8s Certificates** page for newly
-  provisioned AWS and GCP clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2912 -->
 
@@ -145,6 +145,11 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6832 -->
+
+- Fixed an issue where the expanded certificate list did not appear on the **View K8s Certificates** page for newly
+  provisioned AWS and GCP clusters.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6439 -->
 
 - Fixed an issue that caused [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md) clusters using Cilium as the
@@ -152,11 +157,64 @@ tags: ["release-notes"]
   traffic and disrupted DNS resolution, pod-to-pod communication, and API server webhook calls. Palette now applies the
   correct security group rules based on the configured CNI, with no manual security group changes required.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11206 -->
+
+- Fixed an issue where the **API Endpoint** field was disabled when adding a MAAS cloud account with a self-hosted
+  Private Cloud Gateway (PCG), which prevented you from entering the endpoint manually.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6928 -->
+
+- Fixed an issue where a scheduled [OS patch](../clusters/cluster-management/os-patching.md) could loop indefinitely and
+  leave a node cordoned. The patch no longer stalls on an unnecessary package signing key fetch, so it completes and the
+  node is returned to service.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4736 -->
+
+- Fixed an issue where the `apply-scheduled-os-patch` pod could continue to start after the **OS Patching Schedule** was
+  set to **Never**, which could leave a node cordoned. Setting the schedule to **Never** now removes the scheduled task.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6875 -->
+
+- Fixed an issue where the per-cluster `capa-controller-manager` pod was intermittently created without the EKS Pod
+  Identity credential environment variables when provisioning [Amazon EKS](../clusters/public-cloud/aws/eks.md) clusters
+  with a Pod Identity cloud account, which could stall provisioning with a VPC reconciliation failure.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6684 -->
+
+- Fixed an issue where EKS Pod Identity associations were not removed when workload clusters were deleted or pivoted,
+  which caused the list of associations to grow over time.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-5463 -->
+
+- Fixed an issue where [Amazon EKS](../clusters/public-cloud/aws/eks.md) cluster provisioning could stall at the worker
+  node launch phase because of a race condition while updating the `aws-node` DaemonSet.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6760 -->
+
+- Fixed an issue where the Palette agent could delete a Role-Based Access Control (RBAC) managed namespace during a
+  reconciliation cycle when a transient Kubernetes API error occurred, which briefly disrupted the workloads in that
+  namespace.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10088 -->
+
+- Fixed an issue where requests to retrieve cluster namespace information could time out and return an HTTP 500
+  `ClusterFeatureTimeoutError`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11112 -->
+
+- Fixed an issue where `GET /v1/cloudaccounts/azure/{uid}` returned a masked `tls.cert` value for `AzurePublicCloud`
+  accounts that were created without a certificate, causing false drift detection in the Terraform provider.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6887 -->
+
+- Fixed an issue where Helm-based cert-manager installations did not receive image-swap labels, which could prevent
+  container images from being redirected to a local registry in airgapped environments.
+
 ### Edge
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.b Palette release is 4.9.b.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.b Palette release is 4.9.15.
 
 :::
 
@@ -193,6 +251,23 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8682 -->
+
+- Fixed an issue where `k3s.service` could enter a permanent crash loop with a `no bootstrap data found in datastore`
+  error during the initial bootstrap of single-node Edge clusters.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-8691 -->
+
+- Fixed an issue where Day-2 updates to the `reconcile` stages in an Edge OS or Kubernetes pack did not reliably replace
+  the existing node configuration in `/oem/85_cluster_config.yaml`. Stale stage entries were retained and newly added
+  entries under an existing stage were dropped.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-7640 -->
+
+- Fixed an issue where reusing an Edge host for a new cluster could leave the cluster stuck in provisioning because RKE2
+  state from the previous cluster was not fully removed, which caused the leftover bootstrap data to conflict with the
+  new cluster token.
+
 ### VerteX
 
 #### Features
@@ -206,6 +281,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - The [system console](../vertex/system-management/system-management.md#system-console) now displays the installed
   product version for Helm-based installations of Palette VerteX.
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-4727 -->
+
+- Fixed an issue where deploying a FIPS-enabled [Amazon EKS](../clusters/public-cloud/aws/eks.md) cluster could fail
+  with a chart installation error because the `aws-node` service account in the `kube-system` namespace already existed
+  and could not be imported into the Helm release for the `cni-aws-vpc-eks-helm-fips` pack.
 
 ### Automation
 
