@@ -79,8 +79,8 @@ tags: ["release-notes"]
   text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack as a Container Network Interface
   (CNI), available for Canonical Kubernetes 1.35 and later. You can manage Cilium declaratively in your cluster
   profile instead of relying on the Cilium CNI bundled with the Canonical Kubernetes pack. For configuration steps, refer
-  to
-  [Configure Cilium for Canonical Kubernetes Clusters on MAAS](../integrations/cni-cilium-oss.mdx#configure-cilium-for-canonical-kubernetes-clusters-on-maas).
+  to <VersionedLink
+  text="Configure Cilium for Canonical Kubernetes Clusters on MAAS" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" />.
 
 <!-- prettier-ignore-end -->
 
