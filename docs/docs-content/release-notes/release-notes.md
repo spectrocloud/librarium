@@ -79,7 +79,23 @@ tags: ["release-notes"]
   URL**. Existing backup locations continue to work and appear under the new label with their settings preserved. For
   more information, refer to [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6579 -->
+
+- The **View K8s Certificates** page now displays every control plane PKI certificate that Palette includes in its
+  renewal cycle, instead of only the core API server and certificate authority (CA) entries. The expanded list adds the
+  kubeconfig-embedded client certificates, the etcd peer and health-check certificates, and the kubelet client and
+  serving certificates for each control plane node. This applies to Palette eXtended Kubernetes (PXK), RKE2, K3s, and
+  Canonical Kubernetes clusters. For more information, refer to
+  [Renew Cluster PKI Certificates](../clusters/cluster-management/certificate-management.md).
+
 #### Deprecations and Removals
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6832 -->
+
+- Fixed an issue where the expanded certificate list did not appear on the **View K8s Certificates** page for newly
+  provisioned AWS and GCP clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2912 -->
 
