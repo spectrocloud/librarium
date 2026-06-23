@@ -64,7 +64,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.18.
 | <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.6.0 |
 | <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.1 |
 | <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :x: | 2.10.7 |
-| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connext" /> | `addon` | :white_check_mark: | :x: | 0.2.0 |
+| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connect" /> | `addon` | :white_check_mark: | :x: | 0.2.0 |
 | <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :x: | 2.10.7 |
 | <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.33.0 |
 | <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.1.117 |
