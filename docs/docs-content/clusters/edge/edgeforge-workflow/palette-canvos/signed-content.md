@@ -100,7 +100,8 @@ your Edge hosts come from a trusted source. For more information about content b
    ```
 
 9. Finish the rest of the EdgeForge process to build either the installer ISO or provider images. For more information,
-   refer to [Build Installer ISO](./build-installer-iso.md) and [Build Provider Images](./build-provider-images.md).
+   refer to [Build Installer ISO](./build-installer-iso.md) and
+   [Build Provider Images](./build-provider-images/build-provider-images.md).
 
    :::info
 
