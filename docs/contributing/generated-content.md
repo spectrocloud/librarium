@@ -304,9 +304,8 @@ widget.
 
 Instead of having a central pop-up that blocks the rest of the site, we chose a dialogue window that appears on the
 side. It allows users to navigate to different pages while continuing the conversation. We did this by following the
-instructions on
-[Style the widget like a customer help chat](https://docs.kapa.ai/integrations/website-widget/tutorials/style-widget-like-help-chat).
-The entire implementation also only required changes to the configuration block.
+instructions on [Style the widget like a customer help chat](https://docs.kapa.ai/integrations/website-widget). The
+entire implementation also only required changes to the configuration block.
 
 #### Privacy Notice
 
