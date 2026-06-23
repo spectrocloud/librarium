@@ -116,6 +116,9 @@ async function generateCVEs() {
       await fs.writeFile(filename, JSON.stringify({}, null, 2));
     }
 
+    // Still emit an (empty) import map so the static import in PacksReadme.tsx resolves.
+    await generatePackCVEImportMap();
+
     return;
   }
 
@@ -289,6 +292,7 @@ async function generatePackCVEImportMap() {
   const outputFile = "src/generated/packCveImports.ts";
 
   mkdirSync(path.dirname(outputFile), { recursive: true });
+  mkdirSync(packsDir, { recursive: true });
 
   const files = await fs.readdir(packsDir);
 
