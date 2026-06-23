@@ -47,6 +47,7 @@ initialize: ## Initialize the repository dependencies
 clean: clean-security ## Clean common artifacts
 	npm run clear && npm run clean-api-docs
 	rm -rfv build
+	rm -rfv src/generated
 
 deep-clean: ## Clean all artifacts
 	rm -rf node_modules build public .cache .docusaurus
@@ -71,8 +72,8 @@ clean-packs: ## Clean supplemental packs and pack images
 
 clean-security: ## Clean security bulletins
 	rm -rf .docusaurus/security-bulletins/default/*.json
-	rm -rfv docs/docs-content/security-bulletins/reports/*.md 
-	rm -rfv docs/docs-content/security-bulletins/os-k8s/u*.mdx
+	rm -rfv static/generated/security-bulletins/reports/*.html
+	rm -rfv static/generated/security-bulletins/os-k8s/u*.html
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"

@@ -989,6 +989,21 @@ let redirects = [
     from: "/clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/build-import-rhcos-image/",
     to: "/clusters/data-center/maas/create-manage-maas-openshift-clusters-hypershift/prepare-coreos-image/",
   },
+
+  // Redirects for EdgeForge Provider Images
+
+  {
+    from: `/clusters/edge/edgeforge-workflow/palette-canvos/build-aws-cloud-image/`,
+    to: `/clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-aws-cloud-image/`,
+  },
+  {
+    from: `/clusters/edge/edgeforge-workflow/palette-canvos/build-maas-image/`,
+    to: `/clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-maas-image/`,
+  },
+  {
+    from: `/clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image/`,
+    to: `/clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-rhel-stig-image/`,
+  },
 ];
 
 if (packRedirects.length > 0) {
