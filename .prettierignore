@@ -16,8 +16,8 @@ static/apis/**/*.json
 # Troublesome files
 tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.*
-docs/docs-content/security-bulletins/cve-reports.md
-docs/docs-content/security-bulletins/reports/*.md
+static/generated/security-bulletins/cve-reports.md
+static/generated/security-bulletins/reports/*.html
 .eslintignore
 .prettierrc
 

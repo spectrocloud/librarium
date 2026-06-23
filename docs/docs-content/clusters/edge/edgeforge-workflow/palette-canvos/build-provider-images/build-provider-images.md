@@ -1,30 +1,45 @@
 ---
 sidebar_label: "Build Provider Images"
 title: "Build Provider Images"
-description: "Learn how to build provider images using the Palette Edge CLI and the EdgeForge utilities."
+description: "Learn how to build provider images using EdgeForge utilities."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 0
 tags: ["edge"]
 ---
 
-In this guide, you will use the CanvOS utility to build provider images for your Edge deployment. Provider images are
-Kairos-based images containing the OS and the desired Kubernetes versions. These images install an immutable Operating
-System (OS) and software dependencies compatible with a specific Kubernetes version during the cluster deployment. A
-provider image is used in the OS and the Kubernetes layer when creating a cluster profile. These container images are
-downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
+Provider images are Kairos-based container images containing the OS and the desired Kubernetes version. These images
+install an immutable OS and software dependencies compatible with a specific Kubernetes version during cluster
+deployment. A provider image is used in the OS and the Kubernetes layer when creating a cluster profile. These container
+images are downloaded during the installation by the Edge Installer and converted to disk images for the system to boot
+into.
 
 :::info
 
 The provider images are one of the critical artifacts you need to build during EdgeForge. The other artifact is the Edge
 Installer ISO. Both are required for Edge deployment. For education purposes, we provide separate instructions for
 building the installer ISO and the provider images. However, these two artifacts are often built together in a single
-step in practice. Refer to [Build Edge Artifacts](palette-canvos.md) for an how-to that covers how to build both
-artifacts at the same time.
+step in practice. Refer to [Build Edge Artifacts](../palette-canvos.md) to learn how to build both artifacts at the same
+time.
 
 :::
 
-## Prerequisites
+## Specialized Build Guides
+
+If you need security-hardened or platform-specific provider images, use one of the following guides instead of the
+generic procedure on this page:
+
+- [Build AWS Cloud Images](./build-aws-cloud-image.md)
+- [Build MAAS Images](./build-maas-image.md)
+- [Build RHEL 9 STIG Images](./build-rhel-stig-image.md)
+- [Build Ubuntu 24.04 STIG Images](./build-ubuntu-stig-image.md)
+
+## Build Custom Provider Images
+
+The following procedure builds standard provider images using any supported OS and Kubernetes distribution. Use this
+guide when you do not require [specialized configurations](#specialized-build-guides).
+
+### Prerequisites
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
   artifacts. You can issue the following command in the terminal to check your processor architecture.
@@ -54,7 +69,7 @@ artifacts at the same time.
 
   :::
 
-## Build Provider Images
+### Enablement
 
 1.  Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
@@ -119,7 +134,7 @@ artifacts at the same time.
     If RHEL is the base OS for your <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)"
     url="/integrations/packs/?pack=edge-k8s" /> cluster running Kubernetes v1.32.x or later, we recommend using RHEL 9.x
     to avoid a
-    [known kernel compatibility issue](../../../../troubleshooting/edge/edge.md#scenario--pxk-e-clusters-on-rhel-and-rocky-8-fail-kubernetes-initialization).
+    [known kernel compatibility issue](../../../../../troubleshooting/edge/edge.md#scenario--pxk-e-clusters-on-rhel-and-rocky-8-fail-kubernetes-initialization).
 
     :::
 
@@ -155,11 +170,11 @@ artifacts at the same time.
     If you want your host eligible to become part of a two-node high availability cluster, you must set `TWO_NODE` to
     `true`. This setting cannot be changed later. A two-node provider image cannot be used to provision regular etcd
     clusters. We recommend you clearly mark two-node provider images in the custom tag argument. For more information
-    about two-node high availability architecture, refer to [Two-Node Architecture](../../architecture/two-node.md).
+    about two-node high availability architecture, refer to [Two-Node Architecture](../../../architecture/two-node.md).
 
     :::
 
-    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+    Refer to [Edge Artifact Build Configurations](../arg.md) for all available configuration parameters.
 
 11. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
     `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove the
@@ -173,22 +188,22 @@ artifacts at the same time.
 
     If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
     provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
-    refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
+    refer to [Earthly Build Arguments](../../../edgeforge-workflow/palette-canvos/arg.md).
 
     :::warning
 
     These proxy settings are only configured for the build process itself, when your builder machine needs to pull
     certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
     deployed. To configure the proxy network settings for a host, refer to
-    [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
-    [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
+    [Configure HTTP Proxy](../../../local-ui/host-management/configure-proxy.md) or
+    [Configure Proxy in User Data](../../prepare-user-data.md#configure-proxy-settings-optional).
 
     :::
 
 13. (Optional) You can embed a public key in your provider image. If you choose to add a public key to your provider
     image, after you create a cluster with the provider image, only content that is signed by the corresponding private
     key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
-    For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
+    For more information, refer to [Embed Public Key in Edge Artifacts](../signed-content.md).
 
 14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
@@ -233,7 +248,7 @@ artifacts at the same time.
     docker push [REGISTRY-HOSTNAME]/ubuntu:k3s-1.28.2-v4.4.12-palette-learn
     ```
 
-## Validate
+### Validate
 
 1. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
    image tag value you used in the `.arg` file's `CUSTOM_TAG` argument.
@@ -252,8 +267,8 @@ artifacts at the same time.
 ## Next Steps
 
 Provider images are only one the artifacts you need to provision an Edge deployment. You also need to build the Edge
-Installer ISO that matches your provider image settings. Refer to [Build Edge Installer ISO](./build-installer-iso.md)
+Installer ISO that matches your provider image settings. Refer to [Build Edge Installer ISO](../build-installer-iso.md)
 for more information.
 
 If you have built both provider images and the installer ISO, refer to
-[Site Deployment](../../site-deployment/site-deployment.md) to learn how to deploy your Edge cluster.
+[Site Deployment](../../../site-deployment/site-deployment.md) to learn how to deploy your Edge cluster.
