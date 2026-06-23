@@ -72,8 +72,8 @@ clean-packs: ## Clean supplemental packs and pack images
 
 clean-security: ## Clean security bulletins
 	rm -rf .docusaurus/security-bulletins/default/*.json
-	rm -rfv docs/docs-content/security-bulletins/reports/*.md 
-	rm -rfv docs/docs-content/security-bulletins/os-k8s/u*.mdx
+	rm -rfv static/generated/security-bulletins/reports/*.html
+	rm -rfv static/generated/security-bulletins/os-k8s/u*.html
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
