@@ -180,7 +180,11 @@ export default function CveReportsTable() {
         key: "cve",
         sorter: (a, b) => a.metadata.cve.localeCompare(b.metadata.cve),
         render: (cve: string, record) => {
-          return <Link to={`/security-bulletins/reports/${record.metadata.uid.toLowerCase()}`}>{cve}</Link>;
+          return (
+            <Link to={`pathname:///generated/security-bulletins/reports/${record.metadata.uid.toLowerCase()}.html`}>
+              {cve}
+            </Link>
+          );
         },
       },
       {
