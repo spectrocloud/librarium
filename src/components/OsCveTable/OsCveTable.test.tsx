@@ -13,6 +13,7 @@ jest.mock("@docusaurus/theme-common", () => ({
 }));
 
 jest.mock("@theme/Admonition");
+jest.mock("@docusaurus/Link");
 
 const mockDataFile = {
   provider: [
