@@ -53,13 +53,21 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
 ## Limitations
 
+<!-- prettier-ignore-start -->
+
 The Canonical Kubernetes pack for deployments in MAAS environments does not support the following:
 
 - OpenID Connect (OIDC)
 - Network Time Protocol (NTP)
 - SSH key management
 - HashiCorp Cloud Platform (HCP) / Linux Container Daemon (LXD)
-- Cilium for Container Network Interface (CNI)
+- The <VersionedLink
+  text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack is available as a Container Network Interface
+  (CNI) for Canonical Kubernetes 1.35 and later. For configuration steps, refer
+  to <VersionedLink
+  text="Configure Cilium for Canonical Kubernetes Clusters on MAAS" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" />.
+
+<!-- prettier-ignore-end -->
 
 ## Palette MAAS Distribution
 
