@@ -113,7 +113,7 @@ jobs:
           PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
           REPORT_FILE: ${{ github.workspace }}/versioned_links_report.json
           PACKS_DATA_FILE: ${{ github.workspace }}/.docusaurus/packs-integrations/api_pack_response.json
-          DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRACTIONS }}
+          DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
           DISABLE_SECURITY_INTEGRATIONS: "false"
           SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
           STRICT_PACK_VALIDATION: "true"
