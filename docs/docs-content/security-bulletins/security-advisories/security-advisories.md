@@ -46,8 +46,8 @@ restoration, resource access controls, logging, and workload lifecycle operation
 - **CVSS Score**: 8.8
 
 A flaw in container restoration handling may allow a malicious actor with the ability to influence restoration
-operations to affect other workloads on the same node. Under certain conditions, successful exploitation could result
-in unauthorized code execution within other workloads.
+operations to affect other workloads on the same node. Under certain conditions, successful exploitation could result in
+unauthorized code execution within other workloads.
 
 #### Impact
 
