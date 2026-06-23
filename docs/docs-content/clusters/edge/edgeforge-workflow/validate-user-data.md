@@ -44,6 +44,13 @@ However, this process is also executed automatically when you build the Edge ins
 
 <TabItem value="Palette Edge CLI">
 
+:::deprecated
+
+The Palette Edge CLI is deprecated and new image versions will no longer be published. We recommend using the
+[Palette CLI](/automation/palette-cli/) CanvOS directory instead.
+
+:::
+
 From the directory where the Palette Edge CLI executable is present, issue the following command. Replace
 `<path-to-user-data>` with the path to your `user-data` file. Refer to [Downloads](../../../downloads/cli-tools.md) to
 download the Palette Edge CLI.

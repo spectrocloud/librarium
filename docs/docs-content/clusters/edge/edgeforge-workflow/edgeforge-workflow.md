@@ -24,7 +24,7 @@ To start building a custom Edge artifact, use the following guides:
 images to help you get started quickly. You can also refer to the following how-tos to learn how to build the Edge
 Installer ISO and provider images individually.
 
-- [Build Provider Images](./palette-canvos/build-provider-images.md).
+- [Build Provider Images](./palette-canvos/build-provider-images/build-provider-images.md).
 
 - [Build Installer ISO](./palette-canvos/build-installer-iso.md).
 
@@ -38,10 +38,10 @@ content bundles:
 The following table lists the combination of our guides you can follow to build Edge artifacts with or without preloaded
 content.
 
-| Edge Artifacts have preloaded content? | Option 1                                                                                                                                                                                                 | Option 2                                                   |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| No                                     | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md)                                                                    | [Build Edge Artifacts](./palette-canvos/palette-canvos.md) |
-| Yes                                    | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md) + [Build Content Bundle](./palette-canvos/build-content-bundle.md) |                                                            |
+| Edge Artifacts have preloaded content? | Option 1                                                                                                                                                                                                                     | Option 2                                                   |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| No                                     | [Build Provider Images](./palette-canvos/build-provider-images/build-provider-images.md) + [Build Installer ISO](./palette-canvos/build-installer-iso.md)                                                                    | [Build Edge Artifacts](./palette-canvos/palette-canvos.md) |
+| Yes                                    | [Build Provider Images](./palette-canvos/build-provider-images/build-provider-images.md) + [Build Installer ISO](./palette-canvos/build-installer-iso.md) + [Build Content Bundle](./palette-canvos/build-content-bundle.md) |                                                            |
 
 ## Edge Artifacts
 
@@ -185,7 +185,7 @@ impacts how Day-2 activities have to be planned and managed with regards to the 
 
 - [Build Edge Installer ISO](./palette-canvos/build-installer-iso.md)
 
-- [Build Provider Images](./palette-canvos/build-provider-images.md)
+- [Build Provider Images](./palette-canvos/build-provider-images/build-provider-images.md)
 
 - [Build Edge Artifacts](./palette-canvos/palette-canvos.md)
 
