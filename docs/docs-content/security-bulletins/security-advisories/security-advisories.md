@@ -25,11 +25,11 @@ advisories are published.
 - **Release Date**: June 23, 2026
 - **Last Updated**: June 23, 2026
 - **CVEs**:
-  - CVE-2026-50195
-  - CVE-2026-53488
-  - CVE-2026-53492
-  - CVE-2026-53489
-  - CVE-2026-47262
+  - [CVE-2026-50195](#cve-2026-50195---improper-validation-during-container-restoration)
+  - [CVE-2026-53488](#cve-2026-53488---improper-handling-of-container-image-metadata)
+  - [CVE-2026-53492](#cve-2026-53492---improper-validation-of-restoration-metadata)
+  - [CVE-2026-53489](#cve-2026-53489---arbitrary-host-file-read-via-symlinked-log-paths)
+  - [CVE-2026-47262](#cve-2026-47262---resource-exhaustion-leading-to-service-disruption)
 
 ### Overview
 
@@ -99,7 +99,7 @@ Successful exploitation could result in exposure of sensitive data.
 - Arbitrary host file read
 - Exposure of sensitive configuration or credential data
 
-### CVE-2026-47262 - Resource Exhaustion Leading to Service Disruption
+### CVE-2026-47262 - Resource Exhaustion Leading to Service Disruption
 
 - **Severity**: MEDIUM
 - **CVSS Score**: 6.8
