@@ -3,12 +3,52 @@ const { existsSync, mkdirSync } = require("node:fs");
 const { logger } = require("@docusaurus/logger");
 const fs = require("fs").promises;
 const path = require("path");
+const { marked } = require("marked");
 const { formatDateCveDetails } = require("../helpers/date");
-const { escapeMDXSpecialChars } = require("../helpers/string");
 const { generateMarkdownTable } = require("../helpers/affected-table");
 const { generateRevisionHistory } = require("../helpers/revision-history");
 const { generateCVEOfficialDetailsUrl } = require("../helpers/urls");
 const { generateCVEMap, generateOSK8sMarkdownTable } = require("../helpers/cveHelpers");
+
+// Escape characters that would break out of HTML text/attribute context.
+function escapeHtml(str) {
+  return String(str ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// Render a report's markdown body into a self-contained, styled HTML page.
+// The generated files live under static/ and are served as plain assets, so they
+// carry their own minimal styling rather than relying on the Docusaurus theme.
+function renderHtmlPage({ title, description, bodyMarkdown }) {
+  const body = marked.parse(bodyMarkdown);
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="${escapeHtml(description)}" />
+<title>${escapeHtml(title)}</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 880px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  h1 { border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #ccc; padding: 0.5rem 0.75rem; text-align: left; }
+  a { color: #1f7a78; }
+  code { background: rgba(135, 131, 120, 0.15); padding: 0.1rem 0.3rem; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>${escapeHtml(title)}</h1>
+${body}
+</body>
+</html>
+`;
+}
 
 async function getSecurityBulletins(payload) {
   const limit = 300;
@@ -221,19 +261,28 @@ async function generateCVEs() {
   await generateMarkdownForCVEs(GlobalCVEData);
 }
 
+const REPORTS_DIR = "static/generated/security-bulletins/reports/";
+const OS_K8S_DIR = "static/generated/security-bulletins/os-k8s/";
+
 async function generateMarkdownForCVEs(GlobalCVEData) {
   const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
   // To generate the Impact Product & Versions table we need to track all the instances of the same CVE
   // The following hashmap will store the data for each CVE and aggregate the impact data for each product
   const cveImpactMap = generateCVEMap(allCVEs);
 
+  // These output directories are git-ignored generated assets, so they may not exist on a
+  // fresh checkout. fs.writeFile does not create parent directories, so create them upfront
+  // to avoid every report write failing with ENOENT.
+  mkdirSync(REPORTS_DIR, { recursive: true });
+  mkdirSync(OS_K8S_DIR, { recursive: true });
+
   const markdownPromises = allCVEs.map((item) => {
     if (item.kind === "os") {
       // If the CVE is related to OS-K8s, use the OS-K8s specific markdown function
-      return generateOSK8sMarkdown(item, "docs/docs-content/security-bulletins/os-k8s/");
+      return generateOSK8sMarkdown(item, OS_K8S_DIR);
     } else {
       // Otherwise, use the standard CVE markdown function
-      return createCveMarkdown(item, cveImpactMap[item.metadata.cve], "docs/docs-content/security-bulletins/reports/");
+      return createCveMarkdown(item, cveImpactMap[item.metadata.cve], REPORTS_DIR);
     }
   });
 
@@ -261,38 +310,30 @@ async function generateOSK8sMarkdown(item, location) {
   // Generate a table of linked vulnerabilities
   const vulnerabilitiesTable = generateOSK8sMarkdownTable(item.spec.linkedVulnerabilities);
 
-  const content = `---
-sidebar_label: "${imageName}"
-title: "Security Notice for ${imageName}"
-description: "${summary}"
-sidebar_class_name: "hide-from-sidebar"
-hide_table_of_contents: false
-toc_max_heading_level: 2
-tags: ["security", "os-k8s", "cve"]
----
-
-This page provides a listing of vulnerabilities found in the image **${imageName}**.
+  const bodyMarkdown = `This page provides a listing of vulnerabilities found in the image **${imageName}**.
 
 ## Overview
 
-- **Summary**: ${summary}
+- **Summary**: ${escapeHtml(summary)}
 - **Initial Notice Published**: ${createdTimestamp}
 - **Last Updated**: ${lastModified}
 
 ## Linked Vulnerabilities
 
-<div class="auto-generated-os-linked-table">
-
 ${vulnerabilitiesTable}
-
-</div>
 
 ## Revision History
 
 ${generateRevisionHistory(item.spec.revision)}
 `;
 
-  const filePath = path.join(location, `${imageName}.mdx`);
+  const content = renderHtmlPage({
+    title: `Security Notice for ${imageName}`,
+    description: summary,
+    bodyMarkdown,
+  });
+
+  const filePath = path.join(location, `${imageName}.html`);
 
   return fs
     .writeFile(filePath, content)
@@ -319,17 +360,7 @@ function createCveMarkdown(item, cveImpactData, location) {
   let table = generateMarkdownTable(cveImpactData);
   let revisionHistory = generateRevisionHistory(revisions);
 
-  const content = `---
-sidebar_label: "${upperCaseCve}"
-title: "${upperCaseCve}"
-description: "Lifecycle of ${upperCaseCve}"
-sidebar_class_name: "hide-from-sidebar"
-hide_table_of_contents: false
-toc_max_heading_level: 2
-tags: ["security", "cve"]
----
-
-## CVE Details
+  const bodyMarkdown = `## CVE Details
 
 Visit the official vulnerability details page for [${upperCaseCve}](${generateCVEOfficialDetailsUrl(item.metadata.cve)}) to learn more.
 
@@ -341,12 +372,12 @@ ${formatDateCveDetails(item.metadata.advCreatedTimestamp)}
 
 ${formatDateCveDetails(item.metadata.advLastModifiedTimestamp)}
 
-${item.spec.assessment?.thirdParty?.dependentPackage != "" ? `## Third Party Dependency \n\n${item.spec.assessment.thirdParty.dependentPackage}` : "This CVE does not have a third party dependency."}
+${item.spec.assessment?.thirdParty?.dependentPackage != "" ? `## Third Party Dependency \n\n${escapeHtml(item.spec.assessment.thirdParty.dependentPackage)}` : "This CVE does not have a third party dependency."}
 
 
 ## NIST CVE Summary
 
-${escapeMDXSpecialChars(item.metadata.summary)}
+${escapeHtml(item.metadata.summary || "")}
 
 ## CVE Severity
 
@@ -354,7 +385,7 @@ ${escapeMDXSpecialChars(item.metadata.summary)}
 
 ## Our Official Summary
 
-${item.spec.assessment.justification ? escapeMDXSpecialChars(item.spec.assessment.justification) : "Investigation is ongoing to determine how this vulnerability affects our products."}
+${item.spec.assessment.justification ? escapeHtml(item.spec.assessment.justification) : "Investigation is ongoing to determine how this vulnerability affects our products."}
 
 ## Status
 
@@ -370,7 +401,13 @@ ${item.spec.impact.isImpacting ? table : "This CVE is non-impacting as the impac
 ${revisionHistory ? revisionHistory : "No revision history available."}
 `;
 
-  const filePath = path.join(location, `${uid}.md`);
+  const content = renderHtmlPage({
+    title: upperCaseCve,
+    description: `Lifecycle of ${upperCaseCve}`,
+    bodyMarkdown,
+  });
+
+  const filePath = path.join(location, `${uid}.html`);
 
   // Return a promise and include the CVE or file path in the error log
   return fs
