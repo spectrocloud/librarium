@@ -20,6 +20,145 @@ advisories are published.
 
 :::
 
+## Security Advisory 018 - Multiple Container Runtime Vulnerabilities
+
+- **Release Date**: June 24, 2026
+- **Last Updated**: June 24, 2026
+- **CVEs**:
+  - [CVE-2026-50195](#cve-2026-50195---improper-validation-during-container-restoration)
+  - [CVE-2026-53488](#cve-2026-53488---improper-handling-of-container-image-metadata)
+  - [CVE-2026-53492](#cve-2026-53492---improper-validation-of-restoration-metadata)
+  - [CVE-2026-53489](#cve-2026-53489---arbitrary-host-file-read-via-symlinked-log-paths)
+  - [CVE-2026-47262](#cve-2026-47262---resource-exhaustion-leading-to-service-disruption)
+
+### Overview
+
+Multiple vulnerabilities have been identified in [containerd](https://github.com/containerd/containerd) that could allow
+attackers to achieve remote code execution, privilege escalation, information disclosure, denial of service, and bypass
+Kubernetes security controls.
+
+The vulnerabilities affect multiple container runtime components responsible for image management, container
+restoration, resource access controls, logging, and workload lifecycle operations.
+
+### CVE-2026-50195 - Improper Validation During Container Restoration
+
+- **Severity**: HIGH
+- **CVSS Score**: 8.8
+
+A flaw in container restoration handling may allow a malicious actor with the ability to influence restoration
+operations to affect other workloads on the same node. Under certain conditions, successful exploitation could result in
+unauthorized code execution within other workloads.
+
+#### Impact
+
+- Cross-pod code execution
+- Compromise of workloads sharing a node
+- Potential lateral movement within a Kubernetes cluster
+
+### CVE-2026-53488 - Improper Handling of Container Image Metadata
+
+- **Severity**: HIGH
+- **CVSS Score**: 8.3
+
+A vulnerability in the processing of container image metadata could allow a specially crafted image to trigger
+unintended actions on an affected host. Successful exploitation may result in elevated access on the node.
+
+#### Impact
+
+- Arbitrary host command execution
+- Potential node compromise
+- Escalation from image author to node-level access
+
+None of the annotations required for exploitation are enabled by default on Palette deployments or workload clusters.
+
+### CVE-2026-53492 - Improper Validation of Restoration Metadata
+
+- **Severity**: MEDIUM
+- **CVSS Score**: 6.8
+
+A vulnerability affecting container restoration workflows may allow security controls governing device and resource
+access to be bypassed. Under certain circumstances, an attacker could gain access to resources that would otherwise be
+restricted.
+
+#### Impact
+
+- Unauthorized device access
+- Host mount injection
+- Bypass of Kubernetes device enforcement policies
+
+### CVE-2026-53489 - Arbitrary Host File Read via Symlinked Log Paths
+
+- **Severity**: MEDIUM
+- **CVSS Score**: 6.5
+
+A flaw in restoration-related file handling may allow unauthorized access to information stored on the host system.
+Successful exploitation could result in exposure of sensitive data.
+
+#### Impact
+
+- Arbitrary host file read
+- Exposure of sensitive configuration or credential data
+
+### CVE-2026-47262 - Resource Exhaustion Leading to Service Disruption
+
+- **Severity**: MEDIUM
+- **CVSS Score**: 6.8
+
+A vulnerability in image processing may allow an attacker to cause excessive resource consumption on an affected node.
+Successful exploitation could disrupt container management services and impact workload availability.
+
+#### Impact
+
+- Node-level denial of service
+- Container startup and management failures
+- Potential disruption of all workloads on the affected node
+
+### Affected Deployments
+
+- Workload Clusters
+  - Managed Kubernetes clusters (EKS, AKS, GKE)
+  - PXK clusters managed through Palette
+  - RKE2 and K3s clusters managed through Palette
+  - Palette Enterprise and Palette VerteX deployments
+- Palette Enterprise & Palette VerteX Deployments
+  - SaaS deployments
+  - Self hosted deployments
+
+### Mitigation and Remediation
+
+- SaaS deployments
+  - Multi-tenant and dedicated SaaS clusters are being reviewed and patched as part of the standard update.
+- Self-Hosted Palette Enterprise and Palette VerteX Deployments
+  - Self-hosted installations deployed on managed Kubernetes clusters, such as EKS, should update the clusters with the
+    fixes provided by the cloud vendor.
+  - Deployments on customer infrastructure must upgrade to Kubernetes versions that include the patches.
+  - Patched versions of the Palette Enterprise and Palette VerteX appliances downloaded from Artifact Studio will be
+    available in an upcoming release.
+- Workload Clusters
+  - Managed Kubernetes clusters (AKS, EKS, GKE) managed by Palette or VerteX should be updated with patches from the
+    cloud vendor as soon as they are available. This requires patching the OS on cluster nodes. For guidance on patching
+    cluster nodes, refer to [OS Patching](../../clusters/cluster-management/os-patching.md).
+  - Patched OS images for other clusters will be available in an upcoming release. We advise all customers to upgrade to
+    the latest Kubernetes patch versions as soon as they are available.
+  - Patches for Edge clusters will be available in an upcoming release. We advise all customers to upgrade the clusters
+    to the patched versions as soon as possible.
+
+Until you can deploy patches, consider the following mitigations:
+
+- Restrict the use of checkpoint and restore functionality to trusted administrators.
+- Disable checkpoint and restore if it is not required.
+- Disable the Container Device Interface (CDI) where device injection capabilities are not needed.
+- Enforce image provenance and only allow trusted container images from approved registries.
+- Implement image signing and verification controls.
+- Restrict node access and monitor for unexpected container restores.
+- Audit Kubernetes workloads for unauthorized device assignments, host mounts, and privileged execution.
+- Monitor containerd processes for abnormal memory consumption and unexpected restarts.
+
+### References
+
+- [GitHub Advisories](https://github.com/containerd/containerd/security/advisories?page=1)
+- [AWS Advisory](https://aws.amazon.com/security/security-bulletins/2026-046-aws/)
+
 ## Security Advisory 017 - Improper Access Control for Debugging and Profiling Interface in Stylus
 
 - **Release Date**: June 4, 2026
