@@ -76,8 +76,8 @@ deploy a VM.
     :::warning
 
     If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
-    memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
-    the VM.
+    memory individually. You can change the instance type after provisioning, but the new CPU and memory values do not
+    take effect until you restart the VM.
 
     :::
 

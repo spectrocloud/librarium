@@ -34,11 +34,11 @@ Launchpad stores finalization templates as CRDs and manages them under **Image C
 
 Launchpad includes built-in finalization templates.
 
-| **Template**               | **OS Type**     | **Description**                                                                                                                                          |
-| -------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **RHEL / CentOS / Fedora** | `rhel/centos`   | Generalize the RHEL family: cloud-init cleanup, unregister subscription-manager, remove SSH host keys, truncate machine-id.                              |
-| **Ubuntu / Debian**        | `ubuntu/debian` | Generalize Ubuntu or Debian: cloud-init cleanup, remove SSH host keys, truncate machine-id, clear logs and history.                                      |
-| **Windows**                | `windows`       | Generalize Windows: run `sysprep` with `/generalize /oobe /shutdown`. Also installs QEMU guest agent from the Launchpad package server before `sysprep`. |
+| **Template**               | **OS Type**     | **Description**                                                                                                                                                           |
+| -------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RHEL / CentOS / Fedora** | `rhel/centos`   | Generalize the RHEL family: cloud-init cleanup, unregister subscription-manager, remove SSH host keys, truncate machine-id.                                               |
+| **Ubuntu / Debian**        | `ubuntu/debian` | Generalize Ubuntu or Debian: cloud-init cleanup, remove SSH host keys, truncate machine-id, clear logs and history.                                                       |
+| **Windows**                | `windows`       | Generalize Windows: run `sysprep` with `/generalize /oobe /shutdown`. Also installs QEMU guest agent from the Launchpad [package server](./packages.md) before `sysprep`. |
 
 You can reference built-in templates when you create custom templates. Launchpad prevents deletion of built-in
 templates.
@@ -104,8 +104,40 @@ builder VM), not during finalization.
 | **Linux**   | Cloud-init YAML  | `preseed`, kickstart, or cloud-init `autoinstall` to automate OS installation.   |
 | **Windows** | Autounattend.xml | Unattended installation answers (product key, disk partitioning, user creation). |
 
-VM Launchpad manages auto-install scripts under **Image Catalog** > **Auto Install Scripts**. When building a golden
-image, you select an auto-install script to inject into the builder VM's cloud-init or to attach as Autounattend.xml.
+Launchpad manages auto-install scripts under **Image Catalog** > **Auto Install Scripts**. The page lists each script
+with its name, OS type, and description. When building a golden image, you select an auto-install script to inject into
+the builder VM's cloud-init or to attach as Autounattend.xml. Set a script as the OS default to auto-populate the
+builder for that OS.
+
+### Built-in Auto Install Scripts
+
+Launchpad includes built-in auto-install scripts.
+
+| **Script**                                 | **OS Type**       | **Description**                                                                                                                                                                                   |
+| ------------------------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RHEL / CentOS Kickstart**                | `RHEL / CentOS`   | Minimal Kickstart configuration for unattended RHEL or CentOS installation.                                                                                                                       |
+| **Ubuntu Autoinstall (Jammy-only)**        | `Ubuntu / Debian` | Cloud-init `autoinstall` configuration for unattended Ubuntu Server installation. The airgap variant targets Ubuntu 22.04 (Jammy) only, while the connected variant works across Ubuntu releases. |
+| **Windows Unattend (legacy)**              | `Windows`         | Basic Autounattend.xml for unattended Windows installation with OOBE bypass.                                                                                                                      |
+| **Windows 11 / Server 2022+ Autounattend** | `Windows`         | Autounattend.xml for unattended Windows 11 and Windows Server 2022 or newer installation, with EFI partitioning and OOBE bypass.                                                                  |
+
+You can reference or copy a built-in script when you create your own.
+
+### Create an Auto Install Script
+
+1. Navigate to **Image Catalog** > **Auto Install Scripts**.
+
+2. Select **Create Script**.
+
+3. Complete the following fields in the **Create Auto Install Script** dialog and select **Create**.
+
+   | **Parameter**    | **Description**                                                                                                                                                    |
+   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Name**         | Enter a unique name for the script.                                                                                                                                |
+   | **Description**  | Enter an optional description for the script.                                                                                                                      |
+   | **OS Type**      | Select the target OS, such as **RHEL / CentOS**, **Ubuntu / Debian**, or **Windows**. Select **Custom** for another OS.                                            |
+   | **OS Default**   | Select this option to set the script as the default for its OS type. Launchpad auto-populates the script in the builder when you build a golden image for that OS. |
+   | **Script**       | Select how to add the script: **Editor**, **Template**, **Upload**, or **URL**. Linux scripts use cloud-init YAML, and Windows scripts use Autounattend.xml.       |
+   | **Network Data** | Optionally provide Netplan network configuration to apply during installation.                                                                                     |
 
 ### How Templates and Auto-Install Work Together
 

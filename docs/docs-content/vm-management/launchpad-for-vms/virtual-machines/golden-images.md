@@ -23,8 +23,8 @@ The following diagram displays the steps to build a golden image to use as a ref
 - A user account with the platform administrator role.
 - An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image
   Catalog** > **Golden Images**.
-- Required packages uploaded under **Image Catalog** > **Packages**. For airgap Windows builds, upload `virtio-win.iso`
-  before you build the image.
+- Required [packages](./packages.md) uploaded under **Image Catalog** > **Packages**. For airgap Windows builds, upload
+  `virtio-win.iso` before you build the image.
 - An auto-install script and a seal script. **Image Catalog** includes built-in scripts, but you can provide your own
   scripts for custom operating system versions or hardening requirements.
 

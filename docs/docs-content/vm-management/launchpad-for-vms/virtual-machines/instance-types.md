@@ -171,14 +171,14 @@ administrator permissions.
 5. In the **CPU** section, configure the following settings. For field definitions, refer to
    [What VM Instance Types Define](#what-vm-instance-types-define) and [CPU Model Field](#cpu-model-field).
 
-   | Setting                            | Description                                                                                      |
-   | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | **Guest vCPUs**                    | The number of vCPUs exposed to the guest.                                                        |
-   | **CPU Model**                      | Select **Host Model (default)** or **host-passthrough**.                                         |
-   | **Max Sockets**                    | Enables CPU hot plug when set to a value greater than **Guest vCPUs**. Defaults to `auto`.       |
-   | **Dedicated CPU Placement**        | Pins the guest vCPUs to dedicated physical CPUs on the host.                                     |
-   | **Isolate Emulator Thread**        | Isolates the QEMU emulator thread onto its own CPU. Helpful for jitter-sensitive applications.   |
-   | **NUMA Guest Mapping Passthrough** | Passes the host NUMA topology to the guest. Can improve performance for NUMA-aware applications. |
+   | Setting                            | Description                                                                                                                                                                                                                       |
+   | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Guest vCPUs**                    | The number of vCPUs exposed to the guest.                                                                                                                                                                                         |
+   | **CPU Model**                      | Select **Host Model (default)** or **host-passthrough**.                                                                                                                                                                          |
+   | **Max Sockets**                    | Enables CPU hot plug when set to a value greater than **Guest vCPUs**. Defaults to `auto`. Refer to [CPU Socket Changes](./managing.md#cpu-socket-changes-directional-behavior) for the runtime behavior when you change sockets. |
+   | **Dedicated CPU Placement**        | Pins the guest vCPUs to dedicated physical CPUs on the host.                                                                                                                                                                      |
+   | **Isolate Emulator Thread**        | Isolates the QEMU emulator thread onto its own CPU. Helpful for jitter-sensitive applications.                                                                                                                                    |
+   | **NUMA Guest Mapping Passthrough** | Passes the host NUMA topology to the guest. Can improve performance for NUMA-aware applications.                                                                                                                                  |
 
 6. In the **Memory** section, configure the following settings.
 

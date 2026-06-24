@@ -29,8 +29,8 @@ template.
 
 ## Create a Template
 
-You can create a template from a golden image DataVolume or another source disk. For shared templates, use a sealed and
-generalized golden image as the source.
+You can create a template from a [golden image](./golden-images.md) DataVolume or another source disk. For shared
+templates, use a sealed and generalized golden image as the source.
 
 1. Navigate to **Workloads** > **Templates**.
 
@@ -61,11 +61,13 @@ generalized golden image as the source.
    | **Instance Type** | Select a predefined CPU and memory profile. The `u1` prefix indicates general-purpose types with balanced CPU and memory.                                            |
    | **Custom**        | Set CPU and memory resources manually. Consider what the operating system and any applications running in the operating system need before you select custom values. |
 
+   For more about instance types and preferences, refer to [Instance Types & Preferences](./instance-types.md).
+
    :::warning
 
    If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
-   memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
-   the VM.
+   memory individually. You can change the instance type after provisioning, but the new CPU and memory values do not
+   take effect until you restart the VM.
 
    :::
 
