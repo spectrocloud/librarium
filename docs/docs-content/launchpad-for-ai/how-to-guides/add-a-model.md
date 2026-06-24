@@ -5,18 +5,19 @@ description:
   "Step-by-step guidance for platform operators on how to add an LLM model to a running Launchpad for AI appliance and
   verify that it is serving."
 hide_table_of_contents: false
-sidebar_position: 15
+sidebar_position: 1
 tags: ["launchpad-for-ai", "models", "how-to"]
 ---
 
 This guide explains how to add a model to a running Launchpad for AI appliance and verify that the model is serving
 requests. For background on the appliance and how it routes requests, refer to
-[What is Launchpad for AI?](./launchpad-for-ai.md) and [Architecture](./architecture.md).
+[What is Launchpad for AI?](../launchpad-for-ai.md) and [Architecture](../explanation/architecture.md).
 
 Launchpad for AI provides a set of recommended models, including GLM, DeepSeek, and Kimi. You can deploy models beyond
 the recommended list, but any model must fit within the GPU resources available on the appliance. Before you select a
-model, check the [Supported LLM Models](./supported-models.md) and [Hardware Requirements](./hardware-requirements.md)
-reference pages to confirm that your appliance can support it.
+model, check the [Supported LLM Models](../reference/supported-models.md) and
+[Hardware Requirements](../reference/hardware-requirements.md) reference pages to confirm that your appliance can
+support it.
 
 ## Prerequisites
 
@@ -39,7 +40,7 @@ reference pages to confirm that your appliance can support it.
 5. Select **Deploy**, review the deployment summary, and then confirm.
 
    The appliance selects the node and brings the model online for you. For how placement and provisioning work, refer to
-   [Architecture](./architecture.md).
+   [Architecture](../explanation/architecture.md).
 
 ### Verify the Model Is Available
 
@@ -52,7 +53,8 @@ Confirm the model is serving before you route traffic to it.
 
 3. Confirm that the model detail reads `serving · smoke-test passed` and that the model is marked routable.
 
-For why a model becomes routable only after its smoke test passes, refer to [Architecture](./architecture.md).
+For why a model becomes routable only after its smoke test passes, refer to
+[Architecture](../explanation/architecture.md).
 
 ## Next Steps
 
