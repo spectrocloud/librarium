@@ -53,6 +53,15 @@ deploy a VM.
     | **Image/ISO** | If you select **Image/ISO** as the source, select an existing golden image, disk image, or OS ISO file from the **Image/ISO** drop-down menu. |
     | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit.    |
 
+    :::info
+
+    You can only select an ISO or golden image that resides in the **same namespace** as the VM you are creating. If the
+    source lives in a different namespace, it does not appear in the **Image/ISO** drop-down menu. To launch a VM from a
+    source in another namespace, create a [template](./templates.md) from the source first, then select it from the
+    **Template** drop-down menu.
+
+    :::
+
 4.  Configure any extra **Source** options for your VM. Select **Next** when you complete this page.
 
     | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                |

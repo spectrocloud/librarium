@@ -11,6 +11,12 @@ tags: ["vmo", "vm launchpad", "templates"]
 VM templates in Launchpad for VMs define reusable VM specifications for base image, compute, network, storage, and
 hardware settings. Create VMs from templates to standardize provisioning across teams.
 
+Templates are also the required mechanism for provisioning a VM across namespaces. When you create a VM, you can only
+select an ISO, golden image, or other source DataVolume that resides in the **same namespace** as the VM. If the source
+lives in a different namespace, it is not selectable, and the source list appears empty. Because templates are
+cluster-scoped, creating a template from the source lets you launch VMs from it in any namespace you can access. To use
+a [golden image](./golden-images.md) or ISO from one namespace in another namespace, create a template from it first.
+
 ## Template Overview
 
 A `VmTemplate` resource stores a reusable VM configuration with the following components.
