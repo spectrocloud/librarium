@@ -295,8 +295,11 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 12. Update the cert-manager chart using the following command.
 
     ```shell
-    helm upgrade --values extras/cert-manager/values.yaml \
-    cert-manager extras/cert-manager/cert-manager-*.tgz --install
+    helm upgrade --install cert-manager \
+      ./extras/cert-manager/cert-manager-*.tgz \
+      --namespace cert-manager \
+      --create-namespace \
+      --values ./extras/cert-manager/values.yaml
     ```
 
     ```shell hideClipboard title="Example output"
@@ -322,7 +325,8 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     basic `values.yaml` guidance. For a full list of parameters, refer to
     [Helm Configuration Reference](../../install-palette/install-on-kubernetes/palette-helm-ref.md).
 
-15. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step 14.
+15. (Self-hosted OCI registry only) If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+    with the following command. Point to the `palette/values.yaml` file from step 14.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -339,7 +343,9 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     TEST SUITE: None
     ```
 
-16. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step 14.
+16. (Proxy environments only) If you are upgrading a Palette instance in an environment where a network proxy must be
+    configured for Palette to access the internet, upgrade the reach-system chart with the following command. Point to
+    the `palette/values.yaml` file from step 14.
 
     ```shell
     helm upgrade --values palette/values.yaml \
