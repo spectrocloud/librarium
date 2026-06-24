@@ -37,8 +37,8 @@ agent and Palette-created Kubernetes resources that will interfere with the inst
 - An image pull secret from Spectro Cloud customer support, required to pull images from Spectro Cloud OCI registries.
   This is not required if you plan to use [mirror registries](../../system-management/registry-override.md) or
   [image swap](../../../clusters/cluster-management/image-swap.md) when pulling images. Refer to
-  [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md)
-  for more information.
+  [Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
+  more information.
 
 ### Other Prerequisites
 

@@ -40,8 +40,8 @@ tags: ["release-notes"]
   disruptions later.
 
   To obtain your image pull secret, contact your customer support representative. Refer to
-  [Configure Image Pull Secret](../enterprise-version/configure-image-pull-secret/configure-image-pull-secret.md) for
-  more information, including how to implement the image pull secret using the system console.
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md) for more
+  information, including how to implement the image pull secret using the system console.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6526 -->
 

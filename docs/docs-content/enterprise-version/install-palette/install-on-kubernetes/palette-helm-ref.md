@@ -41,8 +41,8 @@ The global block allows you to provide configurations that apply globally to the
 Spectro Cloud's image pull secret will be required in an upcoming release for any users pulling images from a Spectro
 Cloud-owned registry. This is a breaking change. We recommend obtaining your secret as soon as possible to avoid service
 disruptions. Refer to
-[Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md)
-for more information.
+[Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
+more information.
 
 :::
 
@@ -53,8 +53,8 @@ management plane, workload clusters, and PCGs. The secret serves the following p
 - **Spectro Cloud registry authentication** - Authenticates with Spectro Cloud's registries to pull security-hardened
   images. These images are used by the management plane, workload clusters, and PCGs. To obtain this secret, contact
   your Spectro Cloud customer support representative. Refer to
-  [Configure Image Pull Secret for Security-Hardened Images](../../configure-image-pull-secret/configure-image-pull-secret.md)
-  for more information.
+  [Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
+  more information.
 
 - **Private registry authentication** - If you host Palette images in your own private registry, the secret provides the
   credentials needed to pull those images.
