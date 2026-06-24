@@ -5,13 +5,13 @@ description:
   "Step-by-step guidance for platform operators on how to set the default model that handles unrouted requests on a
   running Launchpad for AI appliance."
 hide_table_of_contents: false
-sidebar_position: 16
+sidebar_position: 2
 tags: ["launchpad-for-ai", "models", "how-to"]
 ---
 
 This guide explains how to set the default model on a running Launchpad for AI appliance. If a request does not name a
 model, the appliance routes it to the default model. For how the appliance routes requests, refer to
-[Architecture](./architecture.md).
+[Architecture](../explanation/architecture.md).
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Set the default model from the _Control Room_. You can only select a model that 
 3. Select **Apply fix**, and then confirm.
 
 For what happens to requests that are in progress when you change the default model, refer to
-[Architecture](./architecture.md).
+[Architecture](../explanation/architecture.md).
 
 ## Next Steps
 
