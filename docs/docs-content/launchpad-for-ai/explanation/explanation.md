@@ -7,8 +7,8 @@ sidebar_position: 0
 tags: ["launchpad-for-ai", "explanation"]
 ---
 
-Explanatory and conceptual guides help you understand how and why Launchpad for AI works the way it does.
-They cover design decisions, component relationships, and trade-offs rather than walking you through tasks.
+Explanatory and conceptual guides help you understand how and why Launchpad for AI works the way it does. They cover
+design decisions, component relationships, and trade-offs rather than walking you through tasks.
 
 ## Contents
 

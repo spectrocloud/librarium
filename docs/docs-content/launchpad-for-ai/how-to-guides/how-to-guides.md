@@ -7,8 +7,8 @@ sidebar_position: 0
 tags: ["launchpad-for-ai", "how-to"]
 ---
 
-How-to guides get a specific job done on a running appliance. They assume you know what you want to accomplish and
-give you the steps to do it without teaching background concepts.
+How-to guides get a specific job done on a running appliance. They assume you know what you want to accomplish and give
+you the steps to do it without teaching background concepts.
 
 ## Contents
 

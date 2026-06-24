@@ -7,8 +7,8 @@ sidebar_position: 0
 tags: ["launchpad-for-ai", "tutorial"]
 ---
 
-Tutorials teach you a new skill by guiding you through a complete, working example from start to finish.
-Each tutorial ends with a working result you can build on.
+Tutorials teach you a new skill by guiding you through a complete, working example from start to finish. Each tutorial
+ends with a working result you can build on.
 
 ## Contents
 

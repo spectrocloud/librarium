@@ -15,8 +15,9 @@ requests. For background on the appliance and how it routes requests, refer to
 
 Launchpad for AI provides a set of recommended models, including GLM, DeepSeek, and Kimi. You can deploy models beyond
 the recommended list, but any model must fit within the GPU resources available on the appliance. Before you select a
-model, check the [Supported LLM Models](../reference/supported-models.md) and [Hardware Requirements](../reference/hardware-requirements.md)
-reference pages to confirm that your appliance can support it.
+model, check the [Supported LLM Models](../reference/supported-models.md) and
+[Hardware Requirements](../reference/hardware-requirements.md) reference pages to confirm that your appliance can
+support it.
 
 ## Prerequisites
 
@@ -52,7 +53,8 @@ Confirm the model is serving before you route traffic to it.
 
 3. Confirm that the model detail reads `serving · smoke-test passed` and that the model is marked routable.
 
-For why a model becomes routable only after its smoke test passes, refer to [Architecture](../explanation/architecture.md).
+For why a model becomes routable only after its smoke test passes, refer to
+[Architecture](../explanation/architecture.md).
 
 ## Next Steps
 
