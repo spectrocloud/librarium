@@ -4,7 +4,7 @@ title: "Launchpad for AI Architecture Overview"
 description:
   "An explanation of the Launchpad for AI architecture, including its component stack, data flow, and network topology."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 1
 tags: ["launchpad-for-ai", "architecture", "explanation"]
 keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow"]
 ---
