@@ -73,10 +73,10 @@ global:
 :::info
 
 To obtain the base64-encoded version of your `config.json` file, use the following command. Replace
-`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr --delete '\n'` removes new line characters
-and produces the output on a single line.
+`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr --delete '\n'` removes new line
+characters and produces the output on a single line.
 
-```
+````
 
 :::
 
@@ -114,7 +114,7 @@ mongo:
   memoryLimit: "4Gi"
   pvcSize: "20Gi"
   storageClass: ""
-```
+````
 
 ## Config
 
