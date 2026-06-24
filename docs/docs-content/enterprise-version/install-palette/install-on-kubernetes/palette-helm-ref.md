@@ -72,11 +72,9 @@ global:
 :::info
 
 To obtain the base64-encoded version of your `config.json` file, use the following command. Replace
-`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr -d '\n'` removes new line characters
+`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr --delete '\n'` removes new line characters
 and produces the output on a single line.
 
-```shell
-cat <path/to/.docker/config.json> | base64 | tr -d '\n'
 ```
 
 :::
