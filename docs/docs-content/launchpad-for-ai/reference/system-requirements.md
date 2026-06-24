@@ -3,7 +3,7 @@ sidebar_label: "System Requirements"
 title: "Launchpad for AI System Requirements"
 description: "Hardware, software, and network requirements for deploying Launchpad for AI."
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 1
 tags: ["launchpad-for-ai", "reference", "requirements"]
 keywords: ["launchpad", "ai", "system requirements", "hardware", "network", "prerequisites"]
 ---
