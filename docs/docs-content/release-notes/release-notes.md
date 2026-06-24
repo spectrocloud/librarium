@@ -152,10 +152,10 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6439 -->
 
-- Fixed an issue that caused [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md) clusters using Cilium as the
-  CNI to receive incorrect security group rules, which silently dropped cross-node pod
-  traffic and disrupted DNS resolution, pod-to-pod communication, and API server webhook calls. Palette now applies the
-  correct security group rules based on the configured CNI, with no manual security group changes required.
+- Fixed an issue that caused [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md) clusters using Cilium as the CNI
+  to receive incorrect security group rules, which silently dropped cross-node pod traffic and disrupted DNS resolution,
+  pod-to-pod communication, and API server webhook calls. Palette now applies the correct security group rules based on
+  the configured CNI, with no manual security group changes required.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11206 -->
 
@@ -264,9 +264,9 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-7640 -->
 
-- Fixed an issue where reusing an Edge host for a new cluster could leave the cluster stuck in provisioning because the RKE2
-  state from the previous cluster was not fully removed. This caused the leftover bootstrap data to conflict with the
-  new cluster token.
+- Fixed an issue where reusing an Edge host for a new cluster could leave the cluster stuck in provisioning because the
+  RKE2 state from the previous cluster was not fully removed. This caused the leftover bootstrap data to conflict with
+  the new cluster token.
 
 ### VerteX
 
