@@ -69,10 +69,6 @@ self-hosted Palette.
   helm="vertex"
 />
 
-#### Palette CLI Installations
-
-[AWAITING INSTRUCTIONS FROM ZULFI FOR CLI]
-
 ### Post-Installation
 
 <PartialsComponent
