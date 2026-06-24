@@ -92,6 +92,18 @@ tags: ["release-notes"]
 - The deployment of [Canonical Kubernetes on MAAS](../clusters/data-center/maas/architecture.md) has exited Tech Preview
   and is now ready for production workloads.
 
+<!-- prettier-ignore-start -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6725 -->
+
+- [Canonical Kubernetes clusters on MAAS](../clusters/data-center/maas/architecture.md) now support the <VersionedLink
+  text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack as a Container Network Interface
+  (CNI), available for Canonical Kubernetes 1.35 and later. You can manage Cilium declaratively in your cluster
+  profile instead of relying on the Cilium CNI bundled with the Canonical Kubernetes pack. For configuration steps, refer
+  to <VersionedLink
+  text="Configure Cilium for Canonical Kubernetes Clusters on MAAS" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" />.
+
+<!-- prettier-ignore-end -->
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-1826 -->
 
 - The **MinIO** backup location provider has been renamed to **S3 Compatible Storage** to reflect that it supports any
@@ -99,7 +111,23 @@ tags: ["release-notes"]
   URL**. Existing backup locations continue to work and appear under the new label with their settings preserved. For
   more information, refer to [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md).
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6579 -->
+
+- The **View K8s Certificates** page now displays every control plane PKI certificate that Palette includes in its
+  renewal cycle, instead of only the core API server and certificate authority (CA) entries. The expanded list adds the
+  kubeconfig-embedded client certificates, the etcd peer and health-check certificates, and the kubelet client and
+  serving certificates for each control plane node. This applies to Palette eXtended Kubernetes (PXK), RKE2, K3s, and
+  Canonical Kubernetes clusters. For more information, refer to
+  [Renew Cluster PKI Certificates](../clusters/cluster-management/certificate-management.md).
+
 #### Deprecations and Removals
+
+#### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-6832 -->
+
+- Fixed an issue where the expanded certificate list did not appear on the **View K8s Certificates** page for newly
+  provisioned AWS and GCP clusters.
 
 <!-- https://spectrocloud.atlassian.net/browse/DOC-2912 -->
 
@@ -271,7 +299,7 @@ The following components have been updated for Palette version 4.9.5 - 4.9.18.
 | <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.6.0 |
 | <VersionedLink text="istio" url="/integrations/packs/?pack=istio" /> | `addon` | :white_check_mark: | :x: | 1.30.1 |
 | <VersionedLink text="piraeus-operator" url="/integrations/packs/?pack=piraeus-operator" /> | `csi` | :white_check_mark: | :x: | 2.10.7 |
-| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connext" /> | `addon` | :white_check_mark: | :x: | 0.2.0 |
+| <VersionedLink text="registry-connect" url="/integrations/packs/?pack=registry-connect" /> | `addon` | :white_check_mark: | :x: | 0.2.0 |
 | <VersionedLink text="piraeus-operator-addon" url="/integrations/packs/?pack=piraeus-operator-addon" /> | `addon` | :white_check_mark: | :x: | 2.10.7 |
 | <VersionedLink text="vault" url="/integrations/packs/?pack=vault" /> | `addon` | :white_check_mark: | :x: | 0.33.0 |
 | <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.1.117 |
@@ -699,6 +727,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 :::
 
 #### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11038 -->
+
+- Palette now supports building
+  [Ubuntu 24.04 STIG-compliant images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-ubuntu-stig-image.md)
+  for use in Edge deployments.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8427 -->
 
