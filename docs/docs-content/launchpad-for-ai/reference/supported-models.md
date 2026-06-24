@@ -4,7 +4,7 @@ title: Supported Models
 description: >
   Reference list of the models supported on Launchpad for AI
 sidebar_label: Supported Models
-sidebar_position: 46
+sidebar_position: 3
 tags:
   - launchpad-for-ai
   - reference
