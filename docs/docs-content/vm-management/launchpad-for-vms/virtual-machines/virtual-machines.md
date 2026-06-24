@@ -13,14 +13,14 @@ configuration.
 
 ## Virtual Machine Workflows
 
-| **Workflow**                                                   | **Description**                                                                  |
-| -------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| [Create VMs](./creating.md)                                    | Create VMs from templates, golden images, ISOs, or blank disks.                  |
-| [Manage VMs](./managing.md)                                    | Start, stop, migrate, edit, diagnose, and delete VMs.                            |
-| [Instance Types & Preferences](./instance-types.md)            | Standardize compute sizing and hardware defaults.                                |
-| [Manage Snapshots](./snapshots.md)                             | Create snapshots, restore VMs, define snapshot policies, and clone VMs.          |
-| [Manage Packages](./packages.md)                               | Upload and serve packages for airgap guest agent and driver workflows.           |
-| [Finalization Templates](./image-customization.md)             | Create auto-install scripts and customization templates for golden image builds. |
+| **Workflow**                                        | **Description**                                                                  |
+| --------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [Create VMs](./creating.md)                         | Create VMs from templates, golden images, ISOs, or blank disks.                  |
+| [Manage VMs](./managing.md)                         | Start, stop, migrate, edit, diagnose, and delete VMs.                            |
+| [Instance Types & Preferences](./instance-types.md) | Standardize compute sizing and hardware defaults.                                |
+| [Manage Snapshots](./snapshots.md)                  | Create snapshots, restore VMs, define snapshot policies, and clone VMs.          |
+| [Manage Packages](./packages.md)                    | Upload and serve packages for airgap guest agent and driver workflows.           |
+| [Finalization Templates](./image-customization.md)  | Create auto-install scripts and customization templates for golden image builds. |
 
 ## Related Workflows
 
