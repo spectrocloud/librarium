@@ -5,7 +5,7 @@ description:
   "A step-by-step tutorial to deploy the Launchpad for AI appliance, form a cluster, configure a model, and run your
   first inference query."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 1
 tags: ["launchpad-for-ai", "tutorial"]
 keywords: ["launchpad", "ai", "get started", "tutorial", "deploy", "inference"]
 ---

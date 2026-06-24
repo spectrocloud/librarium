@@ -5,7 +5,7 @@ description: >
   Detailed hardware requirements for deploying Launchpad for AI, including per-model GPU VRAM needs and multi-node
   cluster sizing.
 sidebar_label: Hardware Requirements
-sidebar_position: 45
+sidebar_position: 2
 tags:
   - launchpad-for-ai
   - reference
