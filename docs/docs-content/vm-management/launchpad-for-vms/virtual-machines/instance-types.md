@@ -4,7 +4,7 @@ title: "Instance Types & Preferences"
 description: "Learn about instance types and preferences"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 5
 tags: ["vmo", "vm launchpad", "instance types", "preferences"]
 ---
 

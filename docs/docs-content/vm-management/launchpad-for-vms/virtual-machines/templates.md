@@ -4,7 +4,7 @@ title: "Template Management"
 description: "Learn how to manage templates in VM Launchpad."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 2
+sidebar_position: 4
 tags: ["vmo", "vm launchpad", "templates"]
 ---
 

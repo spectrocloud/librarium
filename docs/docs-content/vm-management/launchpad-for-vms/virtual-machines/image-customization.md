@@ -4,7 +4,7 @@ title: "Create Finalization Templates"
 description: "Learn how to create finalization templates and scripts for golden images."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 2
 tags: ["vmo", "vm launchpad", "golden images", "customization", "scripts"]
 ---
 

@@ -4,7 +4,7 @@ title: "Create a Golden Image"
 description: "Learn how to create a golden image in VM Launchpad."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 5
+sidebar_position: 3
 tags: ["vmo", "vm launchpad", "golden images"]
 ---
 

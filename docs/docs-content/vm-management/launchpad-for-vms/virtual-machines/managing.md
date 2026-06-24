@@ -4,7 +4,7 @@ title: "Manage VMs"
 description: "Learn about managing VMs in VM Launchpad Appliance"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 7
 tags: ["vmo", "vm launchpad"]
 ---
 

@@ -4,7 +4,7 @@ title: "Manage Packages"
 description: "Learn how to manage packages in airgap Launchpad for VMs environments."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 9
 tags: ["vmo", "vm launchpad", "packages"]
 ---
 

@@ -4,7 +4,7 @@ title: "Create a VM"
 description: "Learn how to create VMs using the VM Launchpad Appliance"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 6
 tags: ["vmo", "vm launchpad"]
 ---
 
