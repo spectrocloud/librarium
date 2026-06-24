@@ -270,3 +270,8 @@ deploy a VM.
 4. Select the **Console** tab to open a noVNC-based remote console. Use the console to interact with the VM keyboard.
 
    ![Screenshot of a running VM console](/launchpad-for-vms_quick-start_console.webp)
+
+## Next Steps
+
+After your VM is running, refer to [Manage VMs](./managing.md) for day-to-day operations, such as starting and stopping
+VMs, live migration, hot-plugging volumes, editing the VM, snapshots, and guest-agent diagnostics.

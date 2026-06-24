@@ -8,9 +8,8 @@ sidebar_position: 10
 tags: ["vmo", "vm launchpad"]
 ---
 
-<!-- vale off -->
-
-This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations in Launchpad.
+This guide covers the VM list page, VM actions, the VM detail page, and day-to-day operations in Launchpad. To provision
+new VMs, refer to [Create a VM](./creating.md).
 
 ## VM List Page
 
@@ -18,15 +17,11 @@ Navigate to **Workloads** > **Virtual Machines** (`/vms`) to see all virtual mac
 
 ### Default View
 
-- **All Namespaces** — The list defaults to showing VMs across all namespaces you can access. For users with
-  cluster-wide access (ClusterRoleBinding or VMO IAM role mapping), this means all managed namespaces. For OIDC users
-  with namespace-scoped RoleBindings granted through **Settings** > **Access Management**, only VMs in their permitted
-  namespaces appear. Use the namespace dropdown to filter further by a specific namespace or to see per-namespace
-  counts.
-- **Status Indicators** — Each VM shows its status: Running, Stopped, Pending, Failed, or other KubeVirt states. The
-  status reflects the `VirtualMachineInstance` (VMI) when the VM is running.
-- **Columns** — Name, namespace, status, node (when running), CPU, memory, run strategy, OS type, and other metadata.
-  The **Created** column is available but hidden by default. Use the column visibility control to show or hide columns.
+| **Element**           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **All Namespaces**    | The list defaults to showing VMs across all namespaces you can access. For users with cluster-wide access (ClusterRoleBinding or VMO IAM role mapping), this means all managed namespaces. For OIDC users with namespace-scoped RoleBindings granted through **Settings** > **Access Management**, only VMs in their permitted namespaces appear. Use the namespace dropdown to filter further by a specific namespace or to see per-namespace counts. |
+| **Status Indicators** | Each VM shows its status: Running, Stopped, Pending, Failed, or other KubeVirt states. The status reflects the `VirtualMachineInstance` (VMI) when the VM is running.                                                                                                                                                                                                                                                                                  |
+| **Columns**           | Name, namespace, status, node (when running), CPU, memory, run strategy, OS type, and other metadata. The **Created** column is available but hidden by default. Use the column visibility control to show or hide columns.                                                                                                                                                                                                                            |
 
 ### Filtering and Sorting
 
@@ -36,15 +31,17 @@ Navigate to **Workloads** > **Virtual Machines** (`/vms`) to see all virtual mac
 
 ### Actions from the List
 
-From the VM list, you can:
+From the VM list, you can perform the following actions:
 
-- **Start** — Start a stopped VM.
-- **Stop** — Gracefully stop a running VM.
-- **Restart** — Restart a running VM.
-- **Delete** — Delete the VM and its owned DataVolumes (with confirmation).
-- **Open Console** — Open the VNC console in a new tab (when the VM is running).
-- **Clone** — Create a copy of the VM with a new name and namespace.
-- **Create Template** — Create a VmTemplate from the VM.
+| **Action**          | **Description**                                              |
+| ------------------- | ------------------------------------------------------------ |
+| **Start**           | Start a stopped VM.                                          |
+| **Stop**            | Gracefully stop a running VM.                                |
+| **Restart**         | Restart a running VM.                                        |
+| **Delete**          | Delete the VM and its owned DataVolumes (with confirmation). |
+| **Open Console**    | Open the VNC console in a new tab (when the VM is running).  |
+| **Clone**           | Create a copy of the VM with a new name and namespace.       |
+| **Create Template** | Create a VmTemplate from the VM.                             |
 
 Open a row's context menu to access additional actions.
 
@@ -52,11 +49,11 @@ Open a row's context menu to access additional actions.
 
 ### Start, Stop, Restart
 
-- **Start** — Starts the VM. For VMs with `runStrategy: Manual` or `runStrategy: Halted`, this creates or resumes the
-  VMI.
-- **Stop** — Stops the VM. Sends a graceful shutdown signal to the guest. Falls back to a runStrategy patch if the stop
-  subresource is unavailable.
-- **Restart** — Stops and then starts the VM. The guest receives a reboot signal when the QEMU guest agent is installed.
+| **Action**  | **Description**                                                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Start**   | Starts the VM. For VMs with `runStrategy: Manual` or `runStrategy: Halted`, this creates or resumes the VMI.                           |
+| **Stop**    | Stops the VM. Sends a graceful shutdown signal to the guest. Falls back to a runStrategy patch if the stop subresource is unavailable. |
+| **Restart** | Stops and then starts the VM. The guest receives a reboot signal when the QEMU guest agent is installed.                               |
 
 :::info
 
@@ -75,10 +72,10 @@ Migration status can be viewed in the VM detail page or via the migrations API.
 
 ### Hot-Plug Volumes
 
-- **Add Volume** — Attach a new volume to a running VM. The volume must be a DataVolume or PVC. The disk appears in the
-  guest after attachment.
-- **Remove Volume** — Detach a volume from a running VM. The volume must support hot-unplug. Ensure the guest has
-  unmounted the disk before removing.
+| **Action**        | **Description**                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Add Volume**    | Attach a new volume to a running VM. The volume must be a DataVolume or PVC. The disk appears in the guest after attachment.    |
+| **Remove Volume** | Detach a volume from a running VM. The volume must support hot-unplug. Ensure the guest has unmounted the disk before removing. |
 
 Hot-plug requires the `HotplugVolumes` feature gate and appropriate storage configuration.
 
@@ -94,11 +91,12 @@ The VNC console provides a browser-based remote desktop to the VM.
 
 ### Console Features
 
-- **Paste** — Paste text from your machine into the VM. If your browser does not grant clipboard access automatically,
-  Launchpad displays a dialog where you can paste the text and select **Send**.
-- **Ctrl+Alt+Del** — Send the Ctrl+Alt+Del key combination to the VM.
-- **Full Screen** — Use the full-screen control for a larger view.
-- **Reconnect** — If the connection drops, refresh or reopen the console to reconnect.
+| **Feature**      | **Description**                                                                                                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Paste**        | Paste text from your machine into the VM. If your browser does not grant clipboard access automatically, Launchpad displays a dialog where you can paste the text and select **Send**. |
+| **Ctrl+Alt+Del** | Send the Ctrl+Alt+Del key combination to the VM.                                                                                                                                       |
+| **Full Screen**  | Use the full-screen control for a larger view.                                                                                                                                         |
+| **Reconnect**    | If the connection drops, refresh or reopen the console to reconnect.                                                                                                                   |
 
 :::info
 
@@ -124,17 +122,19 @@ required VM operate or snapshot permissions.
 
 ### Overview Tab
 
-- **Status** — Current VM and VMI status.
-- **Compute** — CPU, memory, run strategy, eviction strategy.
-- **Storage** — Root disk and additional disks with size and StorageClass.
-- **Network** — Interfaces and their types (pod network, Multus NAD).
-- **Node** — The node where the VMI is running (when running).
-- **Actions** — Start, stop, restart, migrate, clone, delete, open console.
-- **Metrics** — CPU, memory, storage I/O, and network charts when the cluster metrics pipeline is available.
+| **Section** | **Description**                                                                              |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| **Status**  | Current VM and VMI status.                                                                   |
+| **Compute** | CPU, memory, run strategy, eviction strategy.                                                |
+| **Storage** | Root disk and additional disks with size and StorageClass.                                   |
+| **Network** | Interfaces and their types (pod network, Multus NAD).                                        |
+| **Node**    | The node where the VMI is running (when running).                                            |
+| **Actions** | Start, stop, restart, migrate, clone, delete, open console.                                  |
+| **Metrics** | CPU, memory, storage I/O, and network charts when the cluster metrics pipeline is available. |
 
 ### Configuration Tab
 
-Edit the VM through a form rather than raw YAML. See Editing a VM for details.
+Edit the VM through a form rather than raw YAML. See [Editing a VM](#editing-a-vm) for details.
 
 ### Console Tab
 
@@ -142,10 +142,11 @@ Quick access to the VNC console. Same as opening the console from the Overview t
 
 ### Snapshots Tab
 
-- **Create Snapshot** — Create a `VirtualMachineSnapshot` of the VM. Snapshots capture the disk state at a point in
-  time.
-- **Restore** — Restore the VM from a snapshot. This replaces the current disk state with the snapshot contents.
-- **List** — View existing snapshots, their status, and creation time.
+| **Action**          | **Description**                                                                                   |
+| ------------------- | ------------------------------------------------------------------------------------------------- |
+| **Create Snapshot** | Create a `VirtualMachineSnapshot` of the VM. Snapshots capture the disk state at a point in time. |
+| **Restore**         | Restore the VM from a snapshot. This replaces the current disk state with the snapshot contents.  |
+| **List**            | View existing snapshots, their status, and creation time.                                         |
 
 ### Events Tab
 
@@ -183,9 +184,11 @@ required fields, such as disks or networks.
 
 The VM edit form groups settings into sections:
 
-- **Compute** — CPU, memory, run strategy, eviction strategy, resource requests/limits.
-- **Scheduling & Lifecycle** — Node selector, tolerations, priority class, termination grace period.
-- **Hardware** — Firmware, devices, features (when available in the form).
+| **Section**                | **Description**                                                         |
+| -------------------------- | ----------------------------------------------------------------------- |
+| **Compute**                | CPU, memory, run strategy, eviction strategy, resource requests/limits. |
+| **Scheduling & Lifecycle** | Node selector, tolerations, priority class, termination grace period.   |
+| **Hardware**               | Firmware, devices, features (when available in the form).               |
 
 Changes are applied when you save. The VM may need to be restarted for some changes to take effect, such as CPU cores,
 memory, or firmware.
@@ -194,13 +197,11 @@ memory, or firmware.
 
 CPU **sockets** are handled differently from CPU cores and threads:
 
-- **Increasing sockets on a running VM** — Launchpad saves the spec and then triggers a **live migration**
-  automatically. The VM keeps running; no restart is required. This works when KubeVirt's CPU hot-plug prerequisites are
-  met (a `maxSockets` value at least as large as the new socket count, which Launchpad ensures on save).
-- **Decreasing sockets** — Launchpad saves the spec, but the new socket count only takes effect after a **restart**. The
-  UI surfaces a banner and a toast reminding you to restart.
-- **Unchanged sockets** — Saves apply the patch with no side effects. Other compute-related edits (cores, threads,
-  memory, firmware) still follow the standard "restart required" rule.
+| **Change**                             | **Behavior**                                                                                                                                                                                                                                                                                  |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Increasing sockets on a running VM** | Launchpad saves the spec and then triggers a **live migration** automatically. The VM keeps running; no restart is required. This works when KubeVirt's CPU hot-plug prerequisites are met (a `maxSockets` value at least as large as the new socket count, which Launchpad ensures on save). |
+| **Decreasing sockets**                 | Launchpad saves the spec, but the new socket count only takes effect after a **restart**. The UI surfaces a banner and a toast reminding you to restart.                                                                                                                                      |
+| **Unchanged sockets**                  | Saves apply the patch with no side effects. Other compute-related edits (cores, threads, memory, firmware) still follow the standard "restart required" rule.                                                                                                                                 |
 
 :::info
 
@@ -238,9 +239,11 @@ diagnostics.
 
 The **Diagnose** action (or `/api/v1/vm/diagnose`) returns:
 
-- **Hostname** — Guest hostname.
-- **OS** — Guest operating system info.
-- **Agent Version** — QEMU guest agent version when available.
+| **Field**         | **Description**                          |
+| ----------------- | ---------------------------------------- |
+| **Hostname**      | Guest hostname.                          |
+| **OS**            | Guest operating system info.             |
+| **Agent Version** | QEMU guest agent version when available. |
 
 This helps verify that the guest agent is working and that the VM is correctly configured.
 
@@ -252,6 +255,6 @@ If the guest agent is not installed:
 - Some VM actions, such as graceful shutdown, may fall back to less graceful methods.
 - Guest diagnostics will be unavailable.
 
-Enable **Install QEMU Guest Agent** in the VM creation wizard (Review step, Cloud-Init section) to auto-inject
-installation via cloud-init. For existing VMs, install the guest agent manually from the package repository or use an
-image that already includes it.
+Enable **Install QEMU Guest Agent** in the [VM creation wizard](./creating.md) (Lifecycle step, Cloud-Init section) to
+auto-inject installation via cloud-init. For existing VMs, install the guest agent manually from the package repository
+or use an image that already includes it.
