@@ -97,7 +97,8 @@ install VerteX, this process does not apply.
    helm uninstall image-swap
    ```
 
-9. (Self-hosted OCI registry only) Issue the following commands to remove the remaining resources related to `image-swap`.
+9. (Self-hosted OCI registry only) Issue the following commands to remove the remaining resources related to
+   `image-swap`.
 
    ```shell
    kubectl delete ns imageswap-system
