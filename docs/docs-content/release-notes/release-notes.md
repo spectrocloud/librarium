@@ -25,23 +25,20 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-10563 -->
 
-- Spectro Cloud is transitioning to the exclusive use of security-hardened images for increased security posture. These
-  images have both a smaller size and attack surface, undergo regular security scans and strict patching schedules, and
-  contain cryptographic signatures to avoid tampering. As a result, retrieving images from Spectro Cloud-owned
-  registries will require a Spectro Cloud image pull secret. This secret is intended for long-term use and is configured
-  in the system console once as part of the initial setup process.
+- Spectro Cloud is transitioning to the use of security-hardened images. As a result, retrieving images from Spectro
+  Cloud OCI registries will require a Spectro Cloud image pull secret. This secret is intended for long-term use and is
+  configured once.
 
-  This change primarily affects connected self-hosted environments that do not configure mirror registries or image
-  swap; it does not apply to airgapped environments, which pull images from their own registries. Authentication is
-  automatically handled for SaaS environments and Artifact Studio downloads. While configuring an image pull secret is
-  not required for the current version of Palette, it is an
+  This change primarily affects non-airgap environments that do not configure mirror registries or image swap; it does
+  not apply to airgapped environments, which pull images from their own registries. While configuring an image pull
+  secret is not required for the current version of Palette, it is an
   [upcoming breaking change](./announcements.md#upcoming-breaking-changes) and will be mandated in a future release. We
-  recommend that affected environments request and configure an image pull secret as soon as possible to prevent service
-  disruptions later.
+  recommend that affected environments configure an image pull secret as soon as possible to prevent service disruptions
+  later.
 
   To obtain your image pull secret, contact your customer support representative. Refer to
   [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md) for more
-  information, including how to implement the image pull secret using the system console.
+  information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6526 -->
 
