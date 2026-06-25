@@ -271,13 +271,16 @@ Kubernetes.
 
     Append `<your-registry-url>` to each image, along with the `<repository>` where you want to store your images.
 
-    
-    image:
-      cainjectorImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
-      controllerImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
-      webhookImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
-      amceResolverImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
-    ```
+    image: cainjectorImage:
+    "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
+    controllerImage:
+    "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
+    webhookImage:
+    "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
+    amceResolverImage:
+    "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
+
+    ````
 
     In the example below, we used `harbor.docs.spectro.dev` for the registry and `spectro-images` for the repository.
 
@@ -287,7 +290,7 @@ Kubernetes.
       controllerImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
       webhookImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
       amceResolverImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
-    ```
+    ````
 
 11. Update the cert-manager chart using the following command.
 
