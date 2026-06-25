@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Adds (or updates) the current release's row in the Edge Compatibility Matrix
+# documentation page. Runs as part of `make generate-release`.
+#
+# Component versions are sourced automatically from the nickfury repo's
+# spectro_versions.txt at the release tag (see DOC-2911 / DOC-1978), falling back
+# to environment-provided values when nickfury cannot be reached. The release row
+# is rendered from a template and inserted at the top of the matrix table, or
+# replaced in place if a row for this release already exists.
+
 # Import utility functions
 source scripts/release/utilities.sh
 
@@ -10,6 +19,7 @@ EDGE_COMPATIBILITY_PARAMETERISED_FILE="scripts/release/edge-compatibility-matrix
 # nickfury is the source of truth for component versions (see DOC-2911 / DOC-1978).
 NICKFURY_REPO="spectrocloud/nickfury"
 NICKFURY_VERSIONS_PATH="release/spectro_versions.txt"
+# Rows to skip past the table header and its separator before inserting a new row.
 TABLE_OFFSET=2
 
 # RELEASE_NAME and RELEASE_VERSION are always required; the component versions can
@@ -59,6 +69,9 @@ if ! check_env "RELEASE_CANVOS" ||
     exit 0
 fi
 
+# Determine the value for the "Palette Edge CLI Status" column: a deprecation
+# notice if the Edge CLI is deprecated, otherwise the Edge CLI version (which
+# tracks the stylus/CanvOS version).
 if [[ "${RELEASE_EDGE_CLI_DEPRECATED}" == "true" ]]; then
     RELEASE_EDGE_CLI_STATUS="Deprecated. Use Palette CLI for supported workflows."
 elif [[ -n "${RELEASE_EDGE_CLI_VERSION}" ]]; then
@@ -74,10 +87,13 @@ if [[ ! -f "$EDGE_COMPATIBILITY_MATRIX_FILE" ]]; then
     exit 1
 fi
 
+# Render the release row from the template into an intermediate output file.
 generate_parameterised_file_local_vars \
     "$EDGE_COMPATIBILITY_TEMPLATE_FILE" "$EDGE_COMPATIBILITY_PARAMETERISED_FILE" \
     RELEASE_NAME RELEASE_VERSION RELEASE_CANVOS RELEASE_PALETTE_CLI_VERSION RELEASE_EDGE_CLI_STATUS
 
+# Check whether a row for this release already exists, then replace it in place;
+# otherwise insert the new row at the top of the matrix table.
 # Match the full anchor (including the closing " -->") so a shorter release name
 # such as "4-9-2" does not substring-match an existing "4-9-20" row.
 existing_entry=$(search_line "edge-compat-$RELEASE_NAME -->" "$EDGE_COMPATIBILITY_MATRIX_FILE")
