@@ -31,14 +31,25 @@ runs:
 
     - name: Download CVE Data
       run: |
-        # Find the latest CVE upload workflow.
-        run_id=$(gh run list --workflow="post_release.yaml" --limit 1 --status=success --json databaseId | jq -r '.[0].databaseId')
-        echo 'Fetching artifacts from run $run_id'
+        # Find the most recent runs that still have non-expired CVE artifacts.
+        # post_release.yaml runs as a reusable workflow, so its artifacts are filed under the
+        # caller (release.yaml), not under "post_release.yaml". Look each artifact up by name
+        # across all workflows rather than by workflow name, and skip expired ones so we never
+        # resolve a run whose artifacts have already passed their retention window.
+        sb_run=$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=security-bulletins&per_page=100" \
+          --jq '[.artifacts[] | select(.expired == false)] | sort_by(.created_at) | last | .workflow_run.id')
+        pc_run=$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=pack-cves&per_page=100" \
+          --jq '[.artifacts[] | select(.expired == false)] | sort_by(.created_at) | last | .workflow_run.id')
+        if [ -z "$sb_run" ] || [ "$sb_run" = "null" ] || [ -z "$pc_run" ] || [ "$pc_run" = "null" ]; then
+          echo "::error::No non-expired security-bulletins or pack-cves artifact found to fall back to."
+          exit 1
+        fi
+        echo "Fetching security-bulletins from run $sb_run and pack-cves from run $pc_run"
         # Remove any downloaded artifacts, should they exist.
         rm -rf ./downloaded_artifacts
-        # Download the latest artifact to a new dir.
-        gh run download ${run_id} --name security-bulletins --dir ./downloaded_artifacts/security-bulletins
-        gh run download ${run_id} --name pack-cves --dir ./downloaded_artifacts/pack-cves
+        # Download the latest artifacts to a new dir.
+        gh run download ${sb_run} --name security-bulletins --dir ./downloaded_artifacts/security-bulletins
+        gh run download ${pc_run} --name pack-cves --dir ./downloaded_artifacts/pack-cves
       shell: bash
       env:
         GH_TOKEN: ${{ inputs.gh-token }}
