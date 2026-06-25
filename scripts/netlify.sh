@@ -1,9 +1,14 @@
 #!/bin/bash
 
 ############################################
-# This script checks if a Netlify context is for branch-deploy. 
+# This script checks if a Netlify context is for branch-deploy.
 # Netlify branch-deploy contexts are only allowed for branches that match version-*. This script is used in the Netlify build settings to determine if a preview should be created.
 # This script is created to prevent both a build-preview and a branch-deploy preview from being created for the same branch at the same time.
+
+# DOC-2604: version-* branch-deploy builds are throttled to twice daily instead of running on every push/merge,
+# which previously produced many redundant builds during backports. Scheduled builds are triggered by the
+# netlify-version-release.yaml workflow via a Netlify build hook, which sets the INCOMING_HOOK_* environment
+# variables. A version-* branch-deploy build is therefore only allowed when it originates from that build hook.
 
 # In the CI/CD pipeline, the scripts netlify_add_branch.sh and netlify_remove_branch.sh are used to manage the allowed branches list in the Netlify build settings.
 # The allowed branches list is used to determine which branches are allowed to create a Netlify preview for the purpose on enabling the Netlify Collab drawer.
@@ -36,7 +41,16 @@ fi
 # Check if context is branch-deploy and current branch matches version-*
 if [[ "$context" == "branch-deploy" ]]; then
   if [[ "$current_branch" == version-* ]]; then
-    allowed=1
+    # DOC-2604: Only build version-* branches when the build is triggered by the scheduled
+    # Netlify build hook (which sets INCOMING_HOOK_TITLE). Skip plain push/merge builds so
+    # backport merges no longer trigger a build every time.
+    if [[ -n "$INCOMING_HOOK_TITLE" ]]; then
+      echo "Incoming hook detected ($INCOMING_HOOK_TITLE); scheduled version branch build allowed."
+      allowed=1
+    else
+      echo "Push/merge build on version branch; skipping (builds run twice daily via netlify-version-release.yaml)."
+      allowed=0
+    fi
   else
     allowed=0
   fi
