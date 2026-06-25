@@ -12,6 +12,6 @@ ends with a working result you can build on.
 
 ## Contents
 
-| **Tutorial**                    | **What you do**                                                                         |
-| ------------------------------- | --------------------------------------------------------------------------------------- |
-| [Get Started](./get-started.md) | Deploy the appliance, form a cluster, load a model, and run your first inference query. |
+| **Tutorial**                                 | **What you do**                                                                                        |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [Run Your First Model](./run-first-model.md) | Deploy a model on a running appliance and send your first inference prompt through the chat interface. |
