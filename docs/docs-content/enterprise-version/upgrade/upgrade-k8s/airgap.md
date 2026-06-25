@@ -328,7 +328,7 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     basic `values.yaml` guidance. For a full list of parameters, refer to
     [Helm Configuration Reference](../../install-palette/install-on-kubernetes/palette-helm-ref.md).
 
-15. (Self-hosted OCI registry only) If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+15. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
     with the following command. Point to the `palette/values.yaml` file from step 14.
 
     ```shell
@@ -346,7 +346,7 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     TEST SUITE: None
     ```
 
-16. (Proxy environments only) If you are upgrading a Palette instance in an environment where a network proxy must be
+16. _(Proxy environments only)_ If you are upgrading a Palette instance in an environment where a network proxy must be
     configured for Palette to access the internet, upgrade the reach-system chart with the following command. Point to
     the `palette/values.yaml` file from step 14.
 

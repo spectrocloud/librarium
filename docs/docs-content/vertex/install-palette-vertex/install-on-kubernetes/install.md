@@ -35,7 +35,7 @@ and VerteX-created Kubernetes resources that will interfere with the installatio
   helm="vertex"
 />
 
-- (FIPS compliance only) The OS and Kubernetes cluster you are installing Palette VerteX onto must be FIPS-compliant.
+- _(FIPS compliance only)_ The OS and Kubernetes cluster you are installing Palette VerteX onto must be FIPS-compliant.
   Otherwise, Palette VerteX and its operations will not be FIPS-compliant.
 
 ### Local Environment

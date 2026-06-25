@@ -117,7 +117,7 @@ match your environment.
     `values.yaml` guidance. For a full list of parameters, refer to
     [Helm Configuration Reference](../../install-palette/install-on-kubernetes/palette-helm-ref.md).
 
-6.  (Self-hosted OCI registry only) If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+6.  _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
     with the following command. Point to the `palette/values.yaml` file from step 5.
 
     ```shell
@@ -135,7 +135,7 @@ match your environment.
     TEST SUITE: None
     ```
 
-7.  (Proxy environments only) If you are upgrading a Palette instance in an environment where a network proxy must be
+7.  _(Proxy environments only)_ If you are upgrading a Palette instance in an environment where a network proxy must be
     configured for Palette to access the internet, upgrade the reach-system chart with the following command. Point to
     the `palette/values.yaml` file from step 5.
 

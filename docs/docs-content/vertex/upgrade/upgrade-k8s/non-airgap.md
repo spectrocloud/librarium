@@ -140,7 +140,7 @@ match your environment.
 
   :::
 
-6. (Self-hosted OCI registry only) If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+6. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
    with the following command. Point to the `vertex/values.yaml` file from step 5.
 
    ```shell
@@ -160,7 +160,7 @@ match your environment.
    TEST SUITE: None
    ```
 
-7. (Proxy environments only) If you are upgrading a Palette VerteX instance in an environment where a network proxy must
+7. _(Proxy environments only)_ If you are upgrading a Palette VerteX instance in an environment where a network proxy must
    be configured for Palette VerteX to access the internet, upgrade the reach-system chart with the following command.
    Point to the `vertex/values.yaml` file from step 5.
 
