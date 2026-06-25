@@ -170,6 +170,53 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+### Launchpad for VMs
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-654 -->
+
+#### Features
+
+- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports live updates
+  to running VMs. You can hot-plug memory and hot-update CPU sockets on a running VM without a reboot.
+
+- Running VMs can now be paused and resumed.
+- The appliance now displays live-migration progress so you can track a VM's migration between nodes.
+
+- VMs can now be created using custom YAML files.
+
+  <!-- https://spectrocloud.atlassian.net/browse/PVM-710 -->
+
+- VMs can now be created using golden images and templates across namespace boundaries using the **Create VM** flow.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-641 -->
+
+- MetalLB load-balancer images now use the hardened, distroless image variant.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-781 -->
+
+- The default password policy for the VMO Manager profile now requires a minimum of 15 characters, aligning with
+  Security Technical Implementation Guide (STIG) compliance.
+
+- VMO profile password fields now enforce complexity requirements at input time. passwords before submission.
+
+- Fixed an issue where users could delete the account they were currently signed in with.
+
+- The user-creation form now validates email format and rejects malformed email addresses.
+
+- VM instance types can now be changed after the VM is built using the edit-configuration flow.
+
+- The VM creation flow now surfaces the underlying **DataVolume** status, allowing you to monitor disk-provisioning
+  progress during VM creation.
+
+#### Bug Fixes
+
+- Fixed an issue where updating a VM's CPU sockets displayed a spurious "restart required" message for a change that
+  does not require a restart.
+
+- Fixed an issue where VMs that failed to start or be scheduled could not be deleted through the UI.
+
 ### VerteX
 
 #### Features
