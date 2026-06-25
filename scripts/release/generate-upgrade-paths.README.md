@@ -7,7 +7,7 @@ Regenerates the self-hosted **upgrade-path tables** in the Palette and VerteX
 [Release Artifacts](https://spectrocloud.atlassian.net/wiki/spaces/ENGINEERIN/pages/2087419998/Release+Artifacts)
 page.
 
-It rewrites only the content between marker comments, e.g.:
+It rewrites only the content between marker comments, for example:
 
 ```md
 <!-- upgrade-paths:vmware-4.9:start -->
