@@ -1,3 +1,5 @@
+<!-- vale off -->
+
 # generate-upgrade-paths.js
 
 Regenerates the self-hosted **upgrade-path tables** in the Palette and VerteX
@@ -23,11 +25,9 @@ Only matrix blocks for **version 4.6 and newer** are auto-managed
 
 Mirrors what the published docs show:
 
-| Confluence cell                       | Support column |
-| ------------------------------------- | -------------- |
-| `supported` / `verified` / `✅`        | ✅             |
-| `fails` / `not supported` / `❌` / `:cross_mark:` | ❌  |
-| `n/a` / `NA` / `In Progress` / blank  | _dropped_      |
+- `supported` / `verified` / `✅` → ✅
+- `fails` / `not supported` / `❌` / `:cross_mark:` → ❌
+- `n/a` / `NA` / `In Progress` / blank → _dropped_ (not published)
 
 ## Setup
 
