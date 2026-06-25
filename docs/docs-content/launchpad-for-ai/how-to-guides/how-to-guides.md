@@ -12,8 +12,8 @@ you the steps to do it without teaching background concepts.
 
 ## Contents
 
-| **Guide**                                           | **What you do**                                                              |
-| --------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Guide**                                           | **What you do**                                                                 |
+| --------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [Install the Appliance](./install-the-appliance.md) | Flash the installer ISO, boot the hardware, and bring up the appliance console. |
-| [Add a Model](./add-a-model.md)                     | Deploy a new LLM to the appliance fleet and verify it is serving.            |
-| [Set the Default Model](./set-the-default-model.md) | Configure which model handles requests that do not name a model explicitly.  |
+| [Add a Model](./add-a-model.md)                     | Deploy a new LLM to the appliance fleet and verify it is serving.               |
+| [Set the Default Model](./set-the-default-model.md) | Configure which model handles requests that do not name a model explicitly.     |
