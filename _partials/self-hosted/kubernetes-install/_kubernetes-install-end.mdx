@@ -53,13 +53,11 @@ Install the {props.version} Helm Chart using the following command.
     :::
 
 <li> Use the custom domain name or the IP address of the load balancer to visit the {props.version} system console. To access the
-    system console, open a web browser and paste the custom domain URL in the address bar and append the value
-    `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
-    Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
-    console. </li>
+    system console, open a web browser and paste the custom domain URL or the IP address of the load balancer in the address bar, and append the value
+    `/system`.</li>
 
-    The first time you visit the {props.version} system console, a warning message about a not-trusted SSL certificate may
-    appear. This is expected, as you still need to upload your SSL certificate to {props.version}. You can ignore this warning
+    The first time you visit the {props.version} system console, a warning message about a not-trusted TLS/SSL certificate may
+    appear. This is expected, as you still need to upload your TLS/SSL certificate to {props.version}. You can ignore this warning
     message and proceed.
 
     {props.edition === 'vertex'
@@ -89,8 +87,8 @@ Install the {props.version} Helm Chart using the following command.
         url="/system-management/account-management/"
       /> for more information.
 
-<li> After logging in, a summary page is displayed. {props.version} is installed with a self-signed SSL certificate. To assign a
-    different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
+<li> After logging in, a summary page is displayed. {props.version} is installed with a self-signed TLS/SSL certificate. To assign a
+    different TLS/SSL certificate, you must upload the SSL certificate, TLS/SSL certificate key, and TLS/SSL certificate authority
     files to {props.version}. You can upload the files using the {props.version} system console. Refer to
       <PaletteVertexUrlMapper
         edition={props.edition}

@@ -11,8 +11,8 @@ partial_name: kubernetes-install-cluster-prereqs
     vertexPath="/install-palette-vertex/#size-guidelines"
   /> for additional sizing information.
 
-  - A minimum of three AMD64 (x86_64) nodes. These can be worker nodes or three untainted control plane nodes. ARM-based
-    nodes are not supported.
+  - A minimum of three AMD64 (x86_64) nodes. These can be worker nodes or three untainted control plane nodes.
+    - ARM-based nodes are not supported.
 
   - 8 CPUs per node
 
@@ -24,16 +24,16 @@ partial_name: kubernetes-install-cluster-prereqs
 
   - **TCP/443** - Inbound and outbound to and from the {props.version} management cluster
 
-  - **TCP/6443** - Outbound traffic from the {props.version} management cluster to the deployed cluster's Kubernetes API server.
+  - **TCP/6443** - Outbound traffic from the {props.version} management cluster to the deployed workload cluster's Kubernetes API server.
 
-- The following SSL certificate files for the domain name you will assign to {props.version}. You must enable HTTPS
+- The following TLS/SSL certificate files for the domain name you will assign to {props.version}. You must enable HTTPS
   encryption for {props.version}. Reach out to your network administrator or security team to obtain these files:
 
-  - x509 SSL certificate file in base64 format
+  - x509 TLS/SSL certificate file in base64 format
 
-  - x509 SSL certificate key file in base64 format
+  - x509 TLS/SSL certificate key file in base64 format
 
-  - x509 SSL certificate authority file in base64 format
+  - x509 TLS/SSL certificate authority file in base64 format
 
 - The Kubernetes cluster must use a Kubernetes version compatible with your {props.version} version. Refer to
   <PaletteVertexUrlMapper

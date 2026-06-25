@@ -24,6 +24,8 @@ keywords: ["self-hosted", "palette", "image pull secret", "hardened images", "se
 Depending on how your environment retrieves images, you may or may not need to configure Spectro Cloud's image pull
 secret.
 
+Review the following sections to learn if your environment requires configuration.
+
 ### Configuration Required
 
 <PartialsComponent

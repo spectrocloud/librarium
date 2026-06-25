@@ -271,7 +271,7 @@ Kubernetes.
 
     Append `<your-registry-url>` to each image, along with the `<repository>` where you want to store your images.
 
-    ```yaml {2-5} hideClipboard title="Example output"
+    
     image:
       cainjectorImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
       controllerImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
