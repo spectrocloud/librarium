@@ -8,6 +8,8 @@ tags: ["launchpad-for-ai", "reference", "requirements"]
 keywords: ["launchpad", "ai", "system requirements", "hardware", "network", "prerequisites"]
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 Review the following requirements before deploying Launchpad for AI.
 
 ## Hardware Requirements
