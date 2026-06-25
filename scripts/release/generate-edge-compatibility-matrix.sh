@@ -12,6 +12,12 @@
 # Import utility functions
 source scripts/release/utilities.sh
 
+# Source environment variables from .env if present, so the script works when run
+# directly in a terminal that has not already sourced them.
+if [[ -f .env ]]; then
+    source .env
+fi
+
 # Define Edge Compatibility Matrix related files
 EDGE_COMPATIBILITY_MATRIX_FILE="${EDGE_COMPATIBILITY_MATRIX_FILE:-docs/docs-content/clusters/edge/edge-compatibility-matrix.md}"
 EDGE_COMPATIBILITY_TEMPLATE_FILE="scripts/release/templates/edge-compatibility-matrix.md"
