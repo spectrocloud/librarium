@@ -381,6 +381,7 @@ generate-patch-release-notes: ## Generate patch release notes only
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-downloads.sh
+	./scripts/release/generate-edge-compatibility-matrix.sh
 	./scripts/release/generate-advanced-configuration.sh
 	./scripts/release/generate-install-palette-cli.sh
 	./scripts/release/generate-kubernetes-palette-versions.sh
@@ -393,6 +394,8 @@ init-release:
 	grep -q "^export RELEASE_VERSION=" .env || echo "export RELEASE_VERSION=" >> .env
 	grep -q "^export RELEASE_DATE=" .env || echo "export RELEASE_DATE=" >> .env
 	grep -q "^export RELEASE_CANVOS=" .env || echo "export RELEASE_CANVOS=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "export RELEASE_EDGE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_DEPRECATED=" .env || echo "export RELEASE_EDGE_CLI_DEPRECATED=false" >> .env
 	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
 	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
@@ -409,6 +412,7 @@ init-release:
 	grep -q "^export JIRA_EMAIL=" .env || echo "export JIRA_EMAIL=" >> .env
 	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
 	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
+	grep -q "^export GITHUB_TOKEN=" .env || echo "export GITHUB_TOKEN=" >> .env
 
 ###@ Aloglia Indexing
 
