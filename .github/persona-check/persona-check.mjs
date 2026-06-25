@@ -118,18 +118,43 @@ function reviewFile(relPath, index) {
     maxBuffer: 20 * 1024 * 1024,
   });
 
+  // Combined output, last lines only — Impersonaid logs the real reason here.
+  const combined = `${result.stdout || ""}\n${result.stderr || ""}`.trim();
+  const tail = combined.split("\n").filter(Boolean).slice(-20).join("\n") || "no output";
+
   if (result.status !== 0) {
-    const detail = (result.stderr || result.stdout || "no output").trim().split("\n").slice(-5).join("\n");
-    return { relPath, ok: false, persona: "—", body: `Impersonaid run failed:\n\n\`\`\`\n${detail}\n\`\`\`` };
+    console.error(`[persona-check] ${relPath}: exit ${result.status}\n${combined}`);
+    return { relPath, ok: false, persona: "—", body: `Impersonaid exited with code ${result.status}:\n\n\`\`\`\n${tail}\n\`\`\`` };
   }
 
   const files = fs.readdirSync(outDir).filter((f) => f.endsWith(".md"));
   if (files.length === 0) {
-    return { relPath, ok: false, persona: "—", body: "Impersonaid produced no output file." };
+    // Impersonaid returns 0 even when it aborts early (missing/invalid API key,
+    // document-fetch failure, invalid request). Surface its output so the cause
+    // is visible instead of a bare "no output file".
+    console.error(`[persona-check] ${relPath}: no output file (exit 0)\n${combined}`);
+    return {
+      relPath,
+      ok: false,
+      persona: "—",
+      body:
+        "Impersonaid exited cleanly but wrote no output file. This usually means the run aborted early " +
+        "(missing/invalid API key, document fetch failure, or invalid request). Impersonaid output:\n\n" +
+        `\`\`\`\n${tail}\n\`\`\``,
+    };
   }
   const md = fs.readFileSync(path.join(outDir, files[0]), "utf8");
   return { relPath, ok: true, persona: extractPersona(md), body: extractResponse(md) };
 }
+
+console.log(
+  `[persona-check] provider=${provider} ` +
+    `model=${modelOverride || config.defaultModel?.[provider] || "(impersonaid default)"} ` +
+    `files=${selected.length} ` +
+    `CLAUDE_API_KEY=${!!process.env.CLAUDE_API_KEY} ` +
+    `ANTHROPIC_API_KEY=${!!process.env.ANTHROPIC_API_KEY} ` +
+    `OPENAI_API_KEY=${!!process.env.OPENAI_API_KEY}`,
+);
 
 const results = selected.map((f, i) => reviewFile(f.path, i));
 
