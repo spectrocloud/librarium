@@ -9,6 +9,8 @@ sidebar_position: 1
 tags: ["launchpad-for-ai", "models", "how-to"]
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 This guide explains how to add a model to a running Launchpad for AI appliance and verify that the model is serving
 requests. For background on the appliance and how it routes requests, refer to
 [What is Launchpad for AI?](../launchpad-for-ai.md) and [Architecture](../explanation/architecture.md).
