@@ -10,6 +10,8 @@ tags: ["launchpad-for-ai", "install", "how-to"]
 keywords: ["launchpad", "ai", "install", "appliance", "hardware", "iso", "edge", "local ui"]
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 This guide walks you through installing the Launchpad for AI appliance on bare hardware, from flashing the installer ISO
 to verifying that the appliance console is reachable. The step-by-step content for this guide is actively being drafted.
 Review the working outline at

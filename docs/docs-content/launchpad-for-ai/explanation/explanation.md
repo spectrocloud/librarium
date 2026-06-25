@@ -7,6 +7,8 @@ sidebar_position: 0
 tags: ["launchpad-for-ai", "explanation"]
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 Explanatory and conceptual guides help you understand how and why Launchpad for AI works the way it does. They cover
 design decisions, component relationships, and trade-offs rather than walking you through tasks.
 
