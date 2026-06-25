@@ -24,6 +24,11 @@ on:
     types: [labeled]
   issue_comment:
     types: [created]
+  # DEV ONLY — remove before merge. Lets the workflow + scripts run from the PR
+  # branch (pull_request_target/issue_comment always run the master copy). Safe
+  # only for same-repo branches; forks would expose secrets here.
+  pull_request:
+    types: [labeled]
 
 permissions:
   contents: read
@@ -36,7 +41,10 @@ env:
   IMPERSONAID_REF: "f9dcc665486dabcbe97052fbfbc53e5acc9e6e3c" # main branch commit (06-25-2026)
 
 concurrency:
-  group: persona-check-${{ github.event.pull_request.number || github.event.issue.number }}
+  # event_name is included so the DEV pull_request run is not cancelled by the
+  # master pull_request_target run (both fire on `labeled`). Drop the suffix when
+  # the DEV pull_request trigger is removed before merge.
+  group: persona-check-${{ github.event.pull_request.number || github.event.issue.number }}-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
@@ -45,6 +53,7 @@ jobs:
     # `/persona-check` comment on a PR (arbitrary users must not burn API budget).
     if: >
       (github.event_name == 'pull_request_target' && github.event.label.name == 'persona-check') ||
+      (github.event_name == 'pull_request' && github.event.label.name == 'persona-check') ||
       (github.event_name == 'issue_comment' &&
         github.event.issue.pull_request &&
         startsWith(github.event.comment.body, '/persona-check') &&
@@ -61,7 +70,7 @@ jobs:
             const event = context.eventName;
             let prNumber, trigger, body = "";
 
-            if (event === "pull_request_target") {
+            if (event === "pull_request_target" || event === "pull_request") {
               prNumber = context.payload.pull_request.number;
               trigger = `the \`${context.payload.label?.name}\` label`;
             } else {
