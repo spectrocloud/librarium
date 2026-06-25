@@ -411,6 +411,7 @@ init-release:
 	grep -q "^export JIRA_EMAIL=" .env || echo "export JIRA_EMAIL=" >> .env
 	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
 	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
+	grep -q "^export GITHUB_TOKEN=" .env || echo "export GITHUB_TOKEN=" >> .env
 
 ###@ Aloglia Indexing
 
