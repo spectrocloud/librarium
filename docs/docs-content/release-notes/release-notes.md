@@ -372,8 +372,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The
   [`spectrocloud_cluster_eks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
-  Terraform resource now supports custom AWS tags at the node pool level. Node pool tags are additive to cluster-level
-  tags.
+  Terraform resource now supports custom AWS tags at the node pool level. These tags are applied in addition to any cluster-level tags.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2275 -->
 
