@@ -86,7 +86,8 @@ scales and deployment models.
 
 - **Check hardware requirements:** Review the [Hardware Requirements](/launchpad-for-ai/reference/hardware-requirements)
   reference before procuring or preparing your hardware.
-- **Install the appliance:** Follow the [Install the Launchpad for AI Appliance](/launchpad-for-ai/how-to-guides/install-the-appliance)
-  guide to go from bare hardware to a running appliance with the UI accessible.
+- **Install the appliance:** Follow the
+  [Install the Launchpad for AI Appliance](/launchpad-for-ai/how-to-guides/install-the-appliance) guide to go from bare
+  hardware to a running appliance with the UI accessible.
 - **Run your first model:** Follow the [Run Your First Model](/launchpad-for-ai/tutorials/run-first-model) tutorial to
   deploy a model and send your first prompt.
