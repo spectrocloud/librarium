@@ -189,8 +189,41 @@ cleanup() {
     rm $1
 }
 
+# Utility function to fetch a single file's raw contents from a (private) GitHub
+# repository at a given ref, using a token-based REST call. Writes the raw file
+# body to stdout. Requires the GITHUB_TOKEN environment variable.
+# Params:
+# $1 - repository, example: spectrocloud/nickfury
+# $2 - ref (branch, tag, or SHA), example: v4.9.21
+# $3 - file path within the repo, example: release/spectro_versions.txt
+fetch_github_file() {
+    local repo="$1"
+    local ref="$2"
+    local path="$3"
+
+    if [[ -z "${GITHUB_TOKEN:-}" ]]; then
+        echo "🟠 GITHUB_TOKEN is empty or not set; cannot fetch $repo/$path." >&2
+        return 1
+    fi
+
+    curl -sfL \
+        -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+        -H "Accept: application/vnd.github.raw" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        "https://api.github.com/repos/${repo}/contents/${path}?ref=${ref}"
+}
+
+# Utility function to read a "key=value" line from text on stdin and return the
+# trimmed value of the first matching key.
+# Params:
+# $1 - key, example: stylus
+# Usage: printf '%s' "$contents" | get_keyed_value stylus
+get_keyed_value() {
+    grep -m1 -E "^${1}=" | cut -d= -f2- | tr -d '[:space:]'
+}
+
 # Utility function to verify the presence of an environment variable
-# Params: 
+# Params:
 # $1 - environment variable name
 check_env() {
     local var_name="$1"
