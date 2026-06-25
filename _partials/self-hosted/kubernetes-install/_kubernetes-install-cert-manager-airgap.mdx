@@ -12,7 +12,7 @@ Open the file `extras/cert-manager/values.yaml` using a text editor of your choi
 
 <li> Append `<your-registry-url>` to each image, along with the `<repository>` where you want to store your images. </li>
 
-    
+    ```yaml
     image:
       cainjectorImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
       controllerImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"

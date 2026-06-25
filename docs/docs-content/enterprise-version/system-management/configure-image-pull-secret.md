@@ -6,7 +6,7 @@ description:
   images."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 29
+sidebar_position: 35
 tags: ["self-hosted", "account", "image pull secret", "hardened images", "security"]
 keywords: ["self-hosted", "palette", "image pull secret", "hardened images", "security"]
 ---
