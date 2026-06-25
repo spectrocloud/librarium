@@ -1,0 +1,99 @@
+# This workflow triggers Netlify branch-deploy builds for the version-* documentation branches on a schedule.
+# Previously, every push/merge into a version branch (common during backports) triggered a Netlify build, resulting in many unnecessary builds.
+# To reduce builds and speed up backports, the scripts/netlify.sh ignore script now skips push/merge builds on version-* branches, and this workflow rebuilds them twice daily instead - mirroring the cadence of the production release.
+# The workflow lists the remote version-X-Y branches at runtime and POSTs to a Netlify build hook for each one, passing the branch via the trigger_branch query parameter. The build hook sets the INCOMING_HOOK_* environment variables, which scripts/netlify.sh uses to allow the scheduled build.
+# The workflow supports on-demand execution using the workflow_dispatch event.
+#
+# Prerequisite: a repository secret named NETLIFY_BUILD_HOOK_URL must be set to a Netlify build hook URL
+# (Site configuration > Build & deploy > Build hooks), e.g. https://api.netlify.com/build_hooks/<hook-id>.
+
+name: Netlify Version Branch Release
+
+on:
+  schedule:
+    - cron: '0 5 * * *'   # At 9:00 PM PST (5:00 AM UTC next day), every day
+    - cron: '0 21 * * *'  # At 2:00 PM PST (9:00 PM UTC), every day
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Optional single version-X-Y branch to build (e.g. version-4-9). Leave empty to build all version branches.'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: netlify-version-builds
+  cancel-in-progress: false
+
+jobs:
+  trigger-builds:
+    name: Trigger Netlify builds for version branches
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Trigger Netlify build hook per version branch
+        env:
+          NETLIFY_BUILD_HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+          # Optional single branch from a manual workflow_dispatch run; empty for scheduled runs.
+          INPUT_BRANCH: ${{ github.event.inputs.branch }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${NETLIFY_BUILD_HOOK_URL:-}" ]; then
+            echo "Error: NETLIFY_BUILD_HOOK_URL secret is not set."
+            exit 1
+          fi
+
+          if [ -n "${INPUT_BRANCH:-}" ]; then
+            # Manual run targeting a single branch. Validate the format before triggering.
+            if ! echo "$INPUT_BRANCH" | grep -qE '^version-[0-9]+-[0-9]+$'; then
+              echo "Error: '$INPUT_BRANCH' is not a valid version-X-Y branch name."
+              exit 1
+            fi
+            branches="$INPUT_BRANCH"
+          else
+            # List remote release branches matching version-X-Y. This intentionally excludes
+            # backport/version-* and other version-suffixed branches.
+            branches=$(git ls-remote --heads origin 'version-*' \
+              | sed 's#.*refs/heads/##' \
+              | grep -E '^version-[0-9]+-[0-9]+$' || true)
+          fi
+
+          if [ -z "$branches" ]; then
+            echo "No version-X-Y branches found; nothing to build."
+            exit 0
+          fi
+
+          echo "Triggering Netlify builds for the following branches:"
+          echo "$branches"
+
+          for branch in $branches; do
+            echo "Triggering build for $branch..."
+            http_code=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+              --request POST \
+              --data '{}' \
+              "${NETLIFY_BUILD_HOOK_URL}?trigger_branch=${branch}&trigger_title=scheduled-version-build")
+
+            if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
+              echo "  Successfully triggered build for $branch (HTTP $http_code)."
+            else
+              echo "  Failed to trigger build for $branch (HTTP $http_code)."
+              exit 1
+            fi
+          done
+
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The scheduled `${{ github.workflow }}` job failed to trigger Netlify version branch builds. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
