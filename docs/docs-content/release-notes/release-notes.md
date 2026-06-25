@@ -23,6 +23,23 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10563 -->
+
+- Spectro Cloud is transitioning to the use of security-hardened images. As a result, retrieving images from Spectro
+  Cloud OCI registries will require a Spectro Cloud image pull secret. This secret is intended for long-term use and is
+  configured once.
+
+  This change primarily affects non-airgap environments that do not configure mirror registries or image swap; it does
+  not apply to airgapped environments, which pull images from their own registries. While configuring an image pull
+  secret is not required for the current version of Palette, it is an
+  [upcoming breaking change](./announcements.md#upcoming-breaking-changes) and will be mandated in a future release. We
+  recommend that affected environments configure an image pull secret as soon as possible to prevent service disruptions
+  later.
+
+  To obtain your image pull secret, contact your customer support representative. Refer to
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md) for more
+  information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6526 -->
 
 - <TpBadge /> Overriding Cluster API (CAPI) properties is now supported on [AWS
