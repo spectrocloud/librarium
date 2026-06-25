@@ -41,7 +41,6 @@ tags: ["release-notes"]
   Properties](../architecture/override-capi-properties/override-capi-properties.md).
 
   <!-- https://spectrocloud.atlassian.net/browse/DOC-2854 -->
-
   - Using CAPI override, you can now apply AWS custom tags at the node pool level on EKS clusters. Node-pool tags are
     additive to cluster-level tags and propagate to the pool's managed node group and Auto Scaling group. For more
     information, refer to
@@ -288,14 +287,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   removed. For more information, refer to
   [Feature Gates](../clusters/edge/edge-configuration/installer-reference.md#feature-gates).
 
-#### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3667 -->
-<!-- https://spectrocloud.atlassian.net/browse/PAC-3668 -->
-
-- TLS certificates for the Zot and Harbor registries on Edge clusters are now automatically rotated using cert-manager,
-  removing the need for manual renewals and preventing service downtime caused by certificate expiration.
-
 #### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8682 -->
@@ -372,7 +363,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The
   [`spectrocloud_cluster_eks`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_eks)
-  Terraform resource now supports custom AWS tags at the node pool level. These tags are applied in addition to any cluster-level tags.
+  Terraform resource now supports custom AWS tags at the node pool level. These tags are applied in addition to any
+  cluster-level tags.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2275 -->
 
@@ -385,24 +377,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   clusters. This allows you to upgrade the control plane and worker nodes independently for Canonical Kubernetes (CK8s)
   and Palette eXtended Kubernetes Edge (PXK-E) clusters.
 
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2276 -->
-
-- The Spectro Cloud Terraform and Crossplane providers now manage the LXD-based control plane without a feature flag,
-  following its general availability.
-
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2235 -->
 
 - The Spectro Cloud Terraform provider now supports configuring audit log export to both Amazon CloudWatch and Splunk
   for Palette deployments. Refer to [Audit Logs](../audit-logs/audit-logs.md) for more information.
 
 #### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PLT-2258 -->
-
-- Fixed a drift issue where the `tls_cert` attribute was incorrectly read into the state for
-  [`spectrocloud_cloudaccount_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_azure)
-  resources configured with `cloud = "AzurePublicCloud"`, which caused Terraform to perpetually attempt to remove the
-  attribute.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2269 -->
 
