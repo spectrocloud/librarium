@@ -12,6 +12,8 @@ tags:
   - explanation
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 Launchpad for AI is a turnkey appliance for running large language models (LLMs) on your hardware. It deploys as an
 image with no Palette or PaletteAI dependency. Once a model is loaded, inference runs on the appliance, so data stays in
 your environment and per-token API costs become predictable infrastructure spend.

@@ -10,6 +10,8 @@ tags: ["launchpad-for-ai", "tutorial"]
 keywords: ["launchpad", "ai", "model", "inference", "chat", "prompt", "tutorial"]
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 This tutorial walks you through deploying a model on a running Launchpad for AI appliance and sending your first
 inference prompt. You log in to the appliance console, deploy a model through the **Cluster** view, wait for the model
 to pass its smoke test, and send a prompt from the built-in **Chat** interface. By the end, you have a model running on
