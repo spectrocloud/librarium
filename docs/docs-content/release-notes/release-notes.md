@@ -153,6 +153,57 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+### Launchpad for VMs
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-654 -->
+
+#### Features
+
+- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports live updates
+  to running virtual machines (VMs). You can hot-plug memory and hot-update CPU sockets on a running VM without a
+  reboot.
+
+- You can now pause and resume running VMs, and the appliance now displays live-migration progress so you can track a
+  VM's migration between nodes.
+
+- VM creation now supports defining a custom VM by supplying YAML directly.
+
+  <!-- https://spectrocloud.atlassian.net/browse/PVM-710 -->
+
+- You can now create a VM directly from a golden image across namespace boundaries using the **Create VM** flow, in
+  addition to deploying from a VM template.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-641 -->
+
+- MetalLB load-balancer images now use the hardened, distroless image variant.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-781 -->
+
+- The default password policy for the VMO Manager profile now requires a minimum of 15 characters, aligning with
+  Security Technical Implementation Guide (STIG) compliance.
+
+- VMO profile password fields now enforce complexity requirements at input time, so the form rejects noncompliant
+  passwords before submission.
+
+- You can no longer delete the user account you are currently signed in with. The appliance disables the delete action
+  for your own account.
+
+- The user-creation form now validates email format and rejects malformed email addresses.
+
+- You can now change a VM's instance type after the VM is built by using the edit-configuration flow.
+
+- The VM creation flow now surfaces the underlying **DataVolume** status, so you can monitor disk-provisioning progress
+  during VM creation.
+
+#### Bug Fixes
+
+- Fixed an issue where updating a VM's CPU sockets displayed a spurious "restart required" message for a change that
+  does not require a restart.
+
+- VMs that failed to start or that cannot be scheduled now display a **Delete** button so you can remove them.
+
 ### VerteX
 
 #### Features
