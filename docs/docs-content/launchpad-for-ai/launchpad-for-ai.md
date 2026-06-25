@@ -84,8 +84,8 @@ scales and deployment models.
 
 ## Next Steps
 
-- **Deploy the appliance:** Follow the [Get Started](/launchpad-for-ai/tutorials/get-started) tutorial for step-by-step
-  instructions.
+- **Run your first model:** Follow the [Run Your First Model](/launchpad-for-ai/tutorials/run-first-model) tutorial to
+  deploy a model and send your first prompt.
 - **Check hardware requirements:** Review the [Hardware Requirements](/launchpad-for-ai/reference/hardware-requirements)
   reference before procuring or preparing your hardware.
 - **Understand the architecture:** Read the [Architecture Overview](/launchpad-for-ai/explanation/architecture) for a
