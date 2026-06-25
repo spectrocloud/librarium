@@ -90,8 +90,8 @@ install VerteX, this process does not apply.
    kubectl delete clusterrole reach-proxy-role
    ```
 
-8. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, issue the following command to
-   remove the `image-swap` chart.
+8. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, issue the following command
+   to remove the `image-swap` chart.
 
    ```shell
    helm uninstall image-swap

@@ -67,10 +67,10 @@ to install Palette, this process does not apply.
    helm uninstall spectro-mgmt-crds
    ```
 
-6. _(Proxy environments only)_ If you installed Palette in an environment where a network proxy is configured for Palette
-   to access the internet, issue the following command to start uninstalling Reach. This will remove all resources
-   related to Reach that are managed by Helm. However, some resources created by Helm hooks are not managed by Helm and
-   will require additional manual intervention to remove.
+6. _(Proxy environments only)_ If you installed Palette in an environment where a network proxy is configured for
+   Palette to access the internet, issue the following command to start uninstalling Reach. This will remove all
+   resources related to Reach that are managed by Helm. However, some resources created by Helm hooks are not managed by
+   Helm and will require additional manual intervention to remove.
 
    ```shell
    helm uninstall reach-system
@@ -90,8 +90,8 @@ to install Palette, this process does not apply.
    kubectl delete clusterrole reach-proxy-role
    ```
 
-8. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, issue the following command to
-   remove the `image-swap` chart.
+8. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, issue the following command
+   to remove the `image-swap` chart.
 
    ```shell
    helm uninstall image-swap
