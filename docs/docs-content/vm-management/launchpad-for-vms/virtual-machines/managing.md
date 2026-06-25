@@ -64,6 +64,16 @@ Halted.
 
 :::
 
+### Pause and Unpause
+
+| **Action**  | **Description**                                                                                                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Pause**   | Suspends a running VM. The guest stops running, and Launchpad holds its CPU and memory state in memory. A paused VM continues to reserve its memory and compute. |
+| **Unpause** | Resumes a paused VM from the point where it was suspended.                                                                                                       |
+
+When you pause a VM, its status changes to **Paused** and the toolbar action changes to **Unpause**. Pause and unpause
+let you suspend a VM briefly without writing its state to disk or stopping the VM.
+
 ### Live Migration
 
 **Migrate** live-migrates the VM to another node. The VM continues running during migration with minimal downtime. This
@@ -270,6 +280,16 @@ expected. In-UI edits also require the `vmo:vm:operate` permission to trigger th
 not Operate permission receive a restart prompt instead.
 
 :::
+
+### Memory Hot-Plug
+
+You can increase the memory of a running VM without a restart when the VM has **Max Guest Memory** set to a value
+greater than its current **Guest Memory**. Launchpad applies the additional memory to the running guest, up to the **Max
+Guest Memory** ceiling.
+
+If **Max Guest Memory** is not configured, or you raise memory above that ceiling, the new memory takes effect only
+after you restart the VM. To configure the memory hot-plug ceiling on an instance type or preference, refer to
+[Instance Types & Preferences](./instance-types.md#vm-preferences).
 
 ## Delete a VM
 

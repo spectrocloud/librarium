@@ -44,21 +44,21 @@ deploy a VM.
 
 3.  The **Create Virtual Machine** wizard opens. Complete the following fields on the **Source** wizard step.
 
-    | **Parameter** | **Description**                                                                                                                               |
-    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Source**    | Select **Template**, **Image/ISO**, or **Custom**.                                                                                            |
-    | **OS**        | Select **Linux** or **Windows**.                                                                                                              |
-    | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                          |
-    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                         |
-    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing golden image, disk image, or OS ISO file from the **Image/ISO** drop-down menu. |
-    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit.    |
+    | **Parameter** | **Description**                                                                                                                                                                                                       |
+    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Source**    | Select the source for the VM: **Template**, **Image/ISO**, or **Custom**.                                                                                                                                             |
+    | **OS**        | Select **Linux** or **Windows**.                                                                                                                                                                                      |
+    | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                                                                                                  |
+    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                                                                                                 |
+    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing golden image, disk image, or OS ISO file from the **Image/ISO** drop-down menu.                                                                         |
+    | **Custom**    | If you select **Custom**, Launchpad creates a VM from scratch with no template, golden image, or ISO as its source. Configure the VM's compute, storage, and network settings manually in the following wizard steps. |
+    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit.                                                                            |
 
     :::info
 
-    You can only select an ISO or golden image that resides in the **same namespace** as the VM you are creating. If the
-    source lives in a different namespace, it does not appear in the **Image/ISO** drop-down menu. To launch a VM from a
-    source in another namespace, create a [template](./templates.md) from the source first, then select it from the
-    **Template** drop-down menu.
+    You can select a golden image from any namespace you can access, not only the namespace of the VM you are creating.
+    Launchpad provisions the VM directly from the golden image through the **Create VM** flow, so you no longer need to
+    create a [template](./templates.md) first to use a golden image across namespaces.
 
     :::
 
@@ -270,9 +270,10 @@ deploy a VM.
 
    :::info
 
-   When the VM is running, you can change the CPU core count, CPU thread count, or memory, but you must restart the VM
-   to apply the change. You can change the number of CPU sockets without restarting the VM, but this causes the VM to
-   live migrate to another node in the cluster.
+   When the VM is running, you can change the CPU core count or CPU thread count, but you must restart the VM to apply
+   the change. You can change the number of CPU sockets without restarting the VM, but this causes the VM to live
+   migrate to another node in the cluster. You can also increase memory without a restart when the VM has **Max Guest
+   Memory** set above its current memory. Refer to [Manage VMs](./managing.md#memory-hot-plug) for details.
 
    :::
 
