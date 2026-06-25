@@ -160,12 +160,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Features
 
 - The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports live updates
-  to running VMs. You can hot-plug memory and hot-update CPU sockets on a running VM without a
-  reboot.
+  to running VMs. You can hot-plug memory and hot-update CPU sockets on a running VM without a reboot.
 
 - Running VMs can now be paused and resumed.
-- The appliance now displays live-migration progress so you can track a
-  VM's migration between nodes.
+- The appliance now displays live-migration progress so you can track a VM's migration between nodes.
 
 - VMs can now be created using custom YAML files.
 
@@ -184,8 +182,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 - The default password policy for the VMO Manager profile now requires a minimum of 15 characters, aligning with
   Security Technical Implementation Guide (STIG) compliance.
 
-- VMO profile password fields now enforce complexity requirements at input time.
-  passwords before submission.
+- VMO profile password fields now enforce complexity requirements at input time. passwords before submission.
 
 - Fixed an issue where users could delete the account they were currently signed in with.
 
@@ -193,8 +190,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - VM instance types can now be changed after the VM is built using the edit-configuration flow.
 
-- The VM creation flow now surfaces the underlying **DataVolume** status, allowing you to monitor disk-provisioning progress
-  during VM creation.
+- The VM creation flow now surfaces the underlying **DataVolume** status, allowing you to monitor disk-provisioning
+  progress during VM creation.
 
 #### Bug Fixes
 
