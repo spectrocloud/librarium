@@ -9,6 +9,8 @@ tags: ["launchpad-for-ai", "architecture", "explanation"]
 keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow"]
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 This page explains how Launchpad for AI works, how its components interact, and what key decisions shaped the design.
 Use this page to build an understanding of the architecture before you deploy or operate Launchpad for AI.
 
