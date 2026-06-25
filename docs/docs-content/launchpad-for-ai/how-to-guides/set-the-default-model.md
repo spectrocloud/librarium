@@ -9,6 +9,8 @@ sidebar_position: 2
 tags: ["launchpad-for-ai", "models", "how-to"]
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 This guide explains how to set the default model on a running Launchpad for AI appliance. If a request does not name a
 model, the appliance routes it to the default model. For how the appliance routes requests, refer to
 [Architecture](../explanation/architecture.md).

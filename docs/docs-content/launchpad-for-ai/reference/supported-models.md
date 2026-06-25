@@ -11,6 +11,8 @@ tags:
   - models
 ---
 
+<PartialsComponent category="launchpad-for-ai" name="unreleased-banner" />
+
 <!-- TODO: populate this page with the confirmed model list from engineering -->
 
 This page is a placeholder for the full Launchpad for AI supported models reference. The recommended models are GLM,
