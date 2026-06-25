@@ -17,7 +17,8 @@
  * blocks are left untouched for hand maintenance.
  *
  * Usage:
- *   # Reads CONFLUENCE_* env vars (see confluence-upgrade.env)
+ *   # Reads CONFLUENCE_* env vars from .env (run `make init-release` once,
+ *   # fill in the values, then `source .env`).
  *   node scripts/release/generate-upgrade-paths.js --dry-run
  *   node scripts/release/generate-upgrade-paths.js --write
  *

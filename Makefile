@@ -412,6 +412,11 @@ init-release:
 	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
 	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
 	grep -q "^export GITHUB_TOKEN=" .env || echo "export GITHUB_TOKEN=" >> .env
+	grep -q "^# UPGRADE PATHS" .env || echo "\n# UPGRADE PATHS" >> .env
+	grep -q "^export CONFLUENCE_BASE_URL=" .env || echo "export CONFLUENCE_BASE_URL=https://spectrocloud.atlassian.net" >> .env
+	grep -q "^export CONFLUENCE_PAGE_ID=" .env || echo "export CONFLUENCE_PAGE_ID=2087419998" >> .env
+	grep -q "^export CONFLUENCE_EMAIL=" .env || echo "export CONFLUENCE_EMAIL=" >> .env
+	grep -q "^export CONFLUENCE_API_TOKEN=" .env || echo "export CONFLUENCE_API_TOKEN=" >> .env
 
 ###@ Aloglia Indexing
 

@@ -32,16 +32,21 @@ Mirrors what the published docs show:
 ## Setup
 
 Create an Atlassian API token at
-<https://id.atlassian.com/manage-profile/security/api-tokens> and export the
-credentials (a `confluence-upgrade.env` file kept **outside** the repo works
-well — never commit it):
+<https://id.atlassian.com/manage-profile/security/api-tokens>.
+
+The `CONFLUENCE_*` vars live in `.env` alongside the other release credentials.
+Run `make init-release` once to scaffold them (`CONFLUENCE_BASE_URL` and
+`CONFLUENCE_PAGE_ID` are pre-filled), then add your email and token:
 
 ```bash
-export CONFLUENCE_BASE_URL="https://spectrocloud.atlassian.net"
-export CONFLUENCE_PAGE_ID="2087419998"
-export CONFLUENCE_EMAIL="you@spectrocloud.com"
-export CONFLUENCE_API_TOKEN="..."
+make init-release
+# Edit .env and set:
+#   export CONFLUENCE_EMAIL=you@spectrocloud.com
+#   export CONFLUENCE_API_TOKEN=...
+source .env
 ```
+
+`.env` is git-ignored, so the credentials stay local and are never committed.
 
 ## Usage
 
