@@ -1,0 +1,23 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-local-prereqs
+---
+
+- Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using
+  `kubectl` commands and have sufficient permissions to install {props.version}. We recommend using a role with cluster-admin
+  permissions to install {props.version}.
+
+- The following software installed and available:
+
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+  - [Helm](https://helm.sh/docs/intro/install/)
+  - `unzip` or a similar extraction utility
+  - `vim`, `nano`, or a similar text editor
+
+- Access to the {props.version} Helm charts (`charts.zip`). Refer to 
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text={`Access ${props.version}`}
+    palettePath="/#access-palette"
+    vertexPath="/#access-palette-vertex"
+  /> for instructions on how to request access.

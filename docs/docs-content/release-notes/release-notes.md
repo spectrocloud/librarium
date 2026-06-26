@@ -31,6 +31,23 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-10563 -->
+
+- Spectro Cloud is transitioning to the use of security-hardened images. As a result, retrieving images from Spectro
+  Cloud OCI registries will require a Spectro Cloud image pull secret. This secret is intended for long-term use and is
+  configured once.
+
+  This change primarily affects non-airgap environments that do not configure mirror registries or image swap; it does
+  not apply to airgapped environments, which pull images from their own registries. While configuring an image pull
+  secret is not required for the current version of Palette, it is an
+  [upcoming breaking change](./announcements.md#upcoming-breaking-changes) and will be mandated in a future release. We
+  recommend that affected environments configure an image pull secret as soon as possible to prevent service disruptions
+  later.
+
+  To obtain your image pull secret, contact your customer support representative. Refer to
+  [Configure Image Pull Secret](../enterprise-version/system-management/configure-image-pull-secret.md) for more
+  information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-6526 -->
 
 - <TpBadge /> Overriding Cluster API (CAPI) properties is now supported on [AWS
@@ -311,6 +328,53 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - Fixed an issue where Canonical Kubernetes 1.35 was missing from the `k8s_version.json` file in CanvOS v4.8.18, which
   prevented building Canonical provider images for Edge deployments.
+
+### Launchpad for VMs
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-654 -->
+
+#### Features
+
+- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports live updates
+  to running VMs. You can hot-plug memory and hot-update CPU sockets on a running VM without a reboot.
+
+- Running VMs can now be paused and resumed.
+- The appliance now displays live-migration progress so you can track a VM's migration between nodes.
+
+- VMs can now be created using custom YAML files.
+
+  <!-- https://spectrocloud.atlassian.net/browse/PVM-710 -->
+
+- VMs can now be created using golden images and templates across namespace boundaries using the **Create VM** flow.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-641 -->
+
+- MetalLB load-balancer images now use the hardened, distroless image variant.
+
+<!-- https://spectrocloud.atlassian.net/browse/PVM-781 -->
+
+- The default password policy for the VMO Manager profile now requires a minimum of 15 characters, aligning with
+  Security Technical Implementation Guide (STIG) compliance.
+
+- VMO profile password fields now enforce complexity requirements at input time. passwords before submission.
+
+- Fixed an issue where users could delete the account they were currently signed in with.
+
+- The user-creation form now validates email format and rejects malformed email addresses.
+
+- VM instance types can now be changed after the VM is built using the edit-configuration flow.
+
+- The VM creation flow now surfaces the underlying **DataVolume** status, allowing you to monitor disk-provisioning
+  progress during VM creation.
+
+#### Bug Fixes
+
+- Fixed an issue where updating a VM's CPU sockets displayed a spurious "restart required" message for a change that
+  does not require a restart.
+
+- Fixed an issue where VMs that failed to start or be scheduled could not be deleted through the UI.
 
 ### VerteX
 

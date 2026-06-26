@@ -40,28 +40,35 @@ install VerteX, this process does not apply.
    kubectl config current-context
    ```
 
-2. Issue the following command to start uninstalling the Vertex management plane. This will only remove the resources
-   managed by Helm and the remaining resources will require additional manual intervention.
+2. Issue the following command to start uninstalling the Palette VerteX management plane. This will only remove the
+   resources managed by Helm. The remaining resources will require additional manual intervention.
 
    ```shell
    helm uninstall hubble
    ```
 
-3. Issue the following command to remove the namespace and custom resource definitions related to Vertex management
-   plane.
+3. Remove the namespace and custom resource definitions related to the Palette VerteX management plane.
 
    ```shell
-   kubectl delete namespace hubble-system || kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
+   kubectl delete namespace hubble-system
+   kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
    ```
 
-4. Issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the Helm
-   uninstall command will uninstall all related resources.
+4. Uninstall Cert Manager.
 
    ```shell
    helm uninstall cert-manager
+   kubectl delete namespace cert-manager
    ```
 
-5. (Optional) If you installed Reach, issue the following command to start uninstalling Reach. This will remove all
+5. Uninstall the Spectro Management CRDs chart.
+
+   ```shell
+   helm uninstall spectro-mgmt-crds
+   ```
+
+6. _(Proxy environments only)_ If you installed Palette VerteX in an environment where a network proxy is configured for
+   Palette VerteX to access the internet, issue the following command to start uninstalling Reach. This will remove all
    resources related to Reach that are managed by Helm. However, some resources created by Helm hooks are not managed by
    Helm and will require additional manual intervention to remove.
 
@@ -69,7 +76,7 @@ install VerteX, this process does not apply.
    helm uninstall reach-system
    ```
 
-6. (Optional) Issue the following commands to remove the remaining Reach system resources.
+7. _(Proxy environments only)_ Issue the following commands to remove the remaining Reach system resources.
 
    ```shell
    kubectl delete ns reach-system
@@ -83,13 +90,15 @@ install VerteX, this process does not apply.
    kubectl delete clusterrole reach-proxy-role
    ```
 
-7. (Optional) If you installed Image Swap, issue the following command to remove the `image-swap` chart.
+8. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, issue the following command
+   to remove the `image-swap` chart.
 
    ```shell
    helm uninstall image-swap
    ```
 
-8. (Optional) Issue the following commands to remove the remaining resources related to `image-swap`.
+9. _(Self-hosted OCI registry only)_ Issue the following commands to remove the remaining resources related to
+   `image-swap`.
 
    ```shell
    kubectl delete ns imageswap-system

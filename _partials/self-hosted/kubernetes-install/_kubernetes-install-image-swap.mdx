@@ -1,0 +1,38 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-image-swap
+---
+
+_(Self-hosted OCI registry only)_ If you plan to use image swap for self-hosted OCI registries, install the Image Swap
+    Helm chart. Image swap rewrites pod image references to pull from your mirror registry. {props.version} ignores the
+    `mirrorRegistries` configuration unless the Image Swap chart is installed. Choose the correct command based on
+    whether you added your image swap values to <code>{props.helm}/values.yaml</code> or `extras/image-swap/values.yaml`.
+
+    <Tabs>
+
+    <TabItem value={props.helm} label={`${props.helm}/values.yaml`}>
+
+    <CodeBlock language="shell">{`helm upgrade --values ${props.helm}/values.yaml \\\n  image-swap extras/image-swap/image-swap-*.tgz --install`}</CodeBlock>
+
+    </TabItem>
+
+    <TabItem value="image-swap" label="image-swap/values.yaml" >
+
+    ```shell
+    helm upgrade --values extras/image-swap/values.yaml \
+      image-swap extras/image-swap/image-swap-*.tgz --install
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    ```shell hideClipboard title="Example output"
+    Release "image-swap" does not exist. Installing it now.
+    NAME: image-swap
+    LAST DEPLOYED: Wed Jun 17 14:44:13 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
