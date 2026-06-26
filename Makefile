@@ -390,28 +390,33 @@ generate-release: ## Generate all release files except release notes
 	make -s format > /dev/null 2>&1
 
 init-release:
-	grep -q "^# RELEASE NOTES" .env || printf "\n# RELEASE NOTES\n" >> .env
-	grep -q "^export RELEASE_NAME=" .env || printf "export RELEASE_NAME=\n" >> .env
-	grep -q "^export RELEASE_VERSION=" .env || printf "export RELEASE_VERSION=\n" >> .env
-	grep -q "^export RELEASE_DATE=" .env || printf "export RELEASE_DATE=\n" >> .env
-	grep -q "^export RELEASE_CANVOS=" .env || printf "export RELEASE_CANVOS=\n" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || printf "export RELEASE_EDGE_CLI_VERSION=\n" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_DEPRECATED=" .env || printf "export RELEASE_EDGE_CLI_DEPRECATED=false\n" >> .env
-	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || printf "export RELEASE_TERRAFORM_VERSION=\n" >> .env
-	grep -q "^# COMPONENT UPDATES" .env || printf "\n# COMPONENT UPDATES\n" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || printf "export RELEASE_PALETTE_CLI_VERSION=\n" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || printf "export RELEASE_PALETTE_CLI_SHA=\n" >> .env
-	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || printf "export RELEASE_REGISTRY_VERSION=\n" >> .env
-	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || printf "export RELEASE_SPECTRO_CLI_VERSION=\n" >> .env
-	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || printf "export RELEASE_VMWARE_KUBERNETES_VERSION=\n" >> .env
-	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || printf "export RELEASE_VMWARE_OVA_URL=\n" >> .env
-	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || printf "export RELEASE_VMWARE_FIPS_OVA_URL=\n" >> .env
-	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || printf "export RELEASE_HIGHEST_KUBERNETES_VERSION=\n" >> .env
-	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || printf "export RELEASE_PCG_KUBERNETES_VERSION=\n" >> .env
-	grep -q "^export JIRA_EMAIL=" .env || printf "export JIRA_EMAIL=\n" >> .env
-	grep -q "^export JIRA_API_TOKEN=" .env || printf "export JIRA_API_TOKEN=\n" >> .env
-	grep -q "^export SUPER_API_TOKEN=" .env || printf "export SUPER_API_TOKEN=\n" >> .env
-	grep -q "^export GITHUB_TOKEN=" .env || printf "export GITHUB_TOKEN=\n" >> .env
+	grep -q "^# RELEASE NOTES" .env || echo "\n# RELEASE NOTES" >> .env
+	grep -q "^export RELEASE_NAME=" .env || echo "export RELEASE_NAME=" >> .env
+	grep -q "^export RELEASE_VERSION=" .env || echo "export RELEASE_VERSION=" >> .env
+	grep -q "^export RELEASE_DATE=" .env || echo "export RELEASE_DATE=" >> .env
+	grep -q "^export RELEASE_CANVOS=" .env || echo "export RELEASE_CANVOS=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "export RELEASE_EDGE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_DEPRECATED=" .env || echo "export RELEASE_EDGE_CLI_DEPRECATED=false" >> .env
+	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
+	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
+	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "export RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "export RELEASE_VMWARE_OVA_URL=" >> .env
+	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "export RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
+	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "export RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "export RELEASE_PCG_KUBERNETES_VERSION=" >> .env
+	grep -q "^export JIRA_EMAIL=" .env || echo "export JIRA_EMAIL=" >> .env
+	grep -q "^export JIRA_API_TOKEN=" .env || echo "export JIRA_API_TOKEN=" >> .env
+	grep -q "^export SUPER_API_TOKEN=" .env || echo "export SUPER_API_TOKEN=" >> .env
+	grep -q "^export GITHUB_TOKEN=" .env || echo "export GITHUB_TOKEN=" >> .env
+	grep -q "^# UPGRADE PATHS" .env || echo "\n# UPGRADE PATHS" >> .env
+	grep -q "^export CONFLUENCE_BASE_URL=" .env || echo "export CONFLUENCE_BASE_URL=https://spectrocloud.atlassian.net" >> .env
+	grep -q "^export CONFLUENCE_PAGE_ID=" .env || echo "export CONFLUENCE_PAGE_ID=2087419998" >> .env
+	grep -q "^export CONFLUENCE_EMAIL=" .env || echo "export CONFLUENCE_EMAIL=" >> .env
+	grep -q "^export CONFLUENCE_API_TOKEN=" .env || echo "export CONFLUENCE_API_TOKEN=" >> .env
 
 ###@ Aloglia Indexing
 
