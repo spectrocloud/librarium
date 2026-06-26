@@ -4,15 +4,31 @@
 
 ## Netlify Previews
 
-By default, Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
-the [netlify.toml](../../netlify.toml) file, a custom script is used to determine if a Netlify preview should be
-created. The script is located in the [scripts/netlify.sh](../../scripts/netlify.sh) file. If you need to disable
-Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the
-[scripts/netlify.sh](../../scripts/netlify.sh) file.
+By default, Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. The
+[netlify.toml](../../netlify.toml) file configures the [scripts/netlify.sh](../../scripts/netlify.sh) script as the
+Netlify `ignore` command, which determines whether a build proceeds based on the deploy context and the branch name.
+
+A separate allowed branches list, stored in the Netlify site build settings, controls which branches may create a
+preview that enables the Netlify Collab drawer. By default, only deploy previews that target the production branch are
+allowed. The [scripts/netlify_add_branch.sh](../../scripts/netlify_add_branch.sh) and
+[scripts/netlify_remove_branch.sh](../../scripts/netlify_remove_branch.sh) scripts manage this list through the Netlify
+API.
 
 If you want to add a branch whereby any pull request to that branch will trigger a Netlify Preview, go to the
 [**Branches and deploy contexts** in Netlify](https://app.netlify.com/projects/docs-spectrocloud/configuration/deploys#branches-and-deploy-contexts)
 and click **Configure**. Add your branch to the **Additional branches** field, and click **Save**.
+
+### Version Branch Builds
+
+Branches that match the `version-X-Y` pattern host the documentation for released Palette versions. To reduce the number
+of redundant builds during backports, Netlify does not build these branches on every push or merge. Instead, the
+[netlify-version-release.yaml](../../.github/workflows/netlify-version-release.yaml) workflow rebuilds them twice daily,
+mirroring the production release cadence. You can also trigger a build on demand from the **Actions** tab in GitHub by
+running the **Netlify Version Branch Release** workflow, optionally specifying a single `version-X-Y` branch.
+
+The [scripts/netlify.sh](../../scripts/netlify.sh) script enforces this behavior. It allows a `version-X-Y`
+branch-deploy build only when the build originates from the scheduled Netlify build hook, and it skips plain push or
+merge builds.
 
 ## Check Writing
 
