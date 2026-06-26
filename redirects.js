@@ -622,6 +622,10 @@ let redirects = [
     to: "/automation/palette-cli/commands/ec/",
   },
   {
+    from: "/automation/palette-cli/commands/validate-auth/",
+    to: "/automation/palette-cli/commands/",
+  },
+  {
     from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
     to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
