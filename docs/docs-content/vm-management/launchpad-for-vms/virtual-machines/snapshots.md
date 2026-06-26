@@ -25,7 +25,8 @@ later or use the snapshot as a source for clones.
 
 :::info
 
-If your storage backend supports online snapshots, you can leave the VM running. Otherwise, stop the VM first to ensure the snapshot is consistent.
+If your storage backend supports online snapshots, you can leave the VM running. Otherwise, stop the VM first to ensure
+the snapshot is consistent.
 
 :::
 
