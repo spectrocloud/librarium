@@ -135,8 +135,9 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
    - For Ubuntu builds, 4 vCPUs and 8 GB of memory provide enough resources for the build. Keep **Install Guest Agent**
      selected because the QEMU guest agent must run unless your seal script handles the operating system in another way.
 
-   - For Windows builds, use the built-in Windows Server 2022 auto-install script or provide your own `Autounattend.xml`.
-     In airgap environments, confirm that the Virtio Windows drivers ISO is uploaded before you start the build.
+   - For Windows builds, use the built-in Windows Server 2022 auto-install script or provide your own
+     `Autounattend.xml`. In airgap environments, confirm that the Virtio Windows drivers ISO is uploaded before you
+     start the build.
 
 5. On the **Auto-install (Optional)** page, select **Configure Auto-install Script**. You can manually create a
    customization script using the **Editor**, use an existing **Template**, select **Upload** to upload a script, or
@@ -195,7 +196,7 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
     - Stops the VM again and removes the builder VM.
 
-   Refer to [finalization templates](./image-customization.md) for more information on using finalization scripts to seal
+Refer to [finalization templates](./image-customization.md) for more information on using finalization scripts to seal
 the golden image.
 
 12. When the process is complete, the DataVolume is a sealed golden image. The image appears under **Image Catalog** >

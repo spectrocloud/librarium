@@ -30,8 +30,8 @@ preference.
 ### Built-in and Custom Instance Types
 
 Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`. Cluster
-administrators can add custom instance types through the Custom Resource Definition (CRD) or the Instance Types page under **Workloads** > **Instance
-Types**.
+administrators can add custom instance types through the Custom Resource Definition (CRD) or the Instance Types page
+under **Workloads** > **Instance Types**.
 
 ### Prefix Conventions
 
@@ -207,7 +207,7 @@ administrator permissions.
    | **IO Threads Policy**                | Controls disk I/O isolation. Set to **None** (default), `auto`, `shared`, or `supplementalPool`. Refer to [IO Thread Policy](https://kubevirt.io/user-guide/storage/disks_and_volumes/#iothreads). |
    | **AMD SEV (Confidential Computing)** | Enables memory encryption.                                                                                                                                                                         |
 
-9. _(Optional)_  Add **Labels** as key-value pairs to organize the resource.
+9. _(Optional)_ Add **Labels** as key-value pairs to organize the resource.
 
 10. Select **Create Instance Type** to save the instance type.
 
@@ -303,8 +303,8 @@ spec:
 
 #### Behavior
 
-| Field             | Create mode                                              | Edit mode                                                  |
-| ----------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
+| Field             | Create mode                                               | Edit mode                                                   |
+| ----------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
 | `metadata.name`   | Syncs into the name field when you select **Apply YAML**. | Ignored because Kubernetes does not allow in-place renames. |
 | `metadata.labels` | Applied to the form on **Apply YAML**.                    | Applied to the form on **Apply YAML**.                      |
 | `spec`            | Applied to the form on **Apply YAML**.                    | Applied to the form on **Apply YAML**.                      |
