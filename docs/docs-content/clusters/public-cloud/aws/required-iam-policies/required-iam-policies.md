@@ -32,9 +32,6 @@ learn more about AWS IAM limits in the
 
 :::
 
-You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
-[`validate-auth`](../../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
-
 ## Roles and Policies
 
 Palette creates and attaches IAM roles and policies to the clusters it deploys. Depending on which type of cluster you
