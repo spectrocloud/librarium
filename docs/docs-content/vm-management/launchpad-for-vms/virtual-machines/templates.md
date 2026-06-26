@@ -291,7 +291,7 @@ Launchpad copies the following fields from the source VM into the template.
 | Hardware                            | Devices, feature flags, clock settings, and timer settings.                                                                |
 | User-applied labels and annotations | Team tags, cost center labels, and other user metadata.                                                                    |
 
-#### Generalization Fields Removed 
+#### Generalization Fields Removed
 
 The following table displays the fields that VM Launchpad removes. These fields can contain per-VM, security-sensitive,
 or namespace-bound values.

@@ -24,7 +24,8 @@ The following diagram displays the steps to build a golden image to use as a ref
 - Required [packages](./packages.md) uploaded under **Image Catalog** > **Packages**. For airgap Windows builds, upload
   `virtio-win.iso` before you build the image.
 - An auto-install script and a seal script. **Image Catalog** includes built-in scripts, but you can provide your own
-  scripts for custom operating system versions or hardening requirements. Refer to [Finalize Templates](./image-customization.md) for more information about auto-install and seal scripts.
+  scripts for custom operating system versions or hardening requirements. Refer to
+  [Finalize Templates](./image-customization.md) for more information about auto-install and seal scripts.
 
 ## Network Considerations
 
@@ -42,15 +43,15 @@ After the build is complete, templates and VMs created from the golden image can
 
 3. Complete the **Upload ISO/Disk Image** page and select **Upload**.
 
-   | **Parameter**       | **Description**                                                                                                                |
-   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-   | **DataVolume Name** | Enter a unique name for the ISO installer or disk image.                                                                       |
-   | **Namespace**       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace. If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and select
-**Add Existing**.     |
-   | **Storage Class**   | Select the storage class from the drop-down menu.                                                                              |
-   | **Volume Size**     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                |
-   | **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                         |
-   | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2. |
+   | **Parameter**       | **Description**                                                                                                                                                                                                                                    |
+   | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **DataVolume Name** | Enter a unique name for the ISO installer or disk image.                                                                                                                                                                                           |
+   | **Namespace**       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace. If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and select |
+   | **Add Existing**.   |
+   | **Storage Class**   | Select the storage class from the drop-down menu.                                                                                                                                                                                                  |
+   | **Volume Size**     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                                                                                                                                    |
+   | **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                                                                                                                                             |
+   | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2.                                                                                                                     |
 
    Large ISO files can take minutes to upload. VM Launchpad displays progress during the upload phase.
 

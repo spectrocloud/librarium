@@ -62,8 +62,8 @@ Complete the following required configuration steps before you [create your firs
 
    :::info
 
-   The initial benchmark used a single-replica storage class. We are continuing to run additional benchmarks with multiple replicas for each PVC setting, and will share updates as those results become available. 
-   :::
+   The initial benchmark used a single-replica storage class. We are continuing to run additional benchmarks with
+   multiple replicas for each PVC setting, and will share updates as those results become available. :::
 
    | **Parameter**             | **Description**                                                                                                                                                        |
    | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
