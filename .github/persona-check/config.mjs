@@ -98,6 +98,8 @@ export default {
       '- `/persona-check persona="Site Reliability Engineer" question_key=getting-started`',
       "- `/persona-check provider=openai threshold=0`",
       "",
+      "_Re-running (re-applying the label or posting another `/persona-check` comment) updates this comment in place rather than posting a new one._",
+      "",
       "</details>",
     ].join("\n");
   },
