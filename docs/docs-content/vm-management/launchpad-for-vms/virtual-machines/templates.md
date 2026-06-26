@@ -132,7 +132,6 @@ templates, use a sealed and generalized golden image as the source.
 11. _(Optional)_ For **Hardware**, configure any advanced hardware settings required for the VM. You can skip this step
     for basic VMs. Then select **Next**.
 
-
     <details>
 
     <summary>Display optional advanced hardware settings.</summary>
