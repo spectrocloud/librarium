@@ -8,7 +8,7 @@ name: API Format
 
 on:
   pull_request:
-    types: ["labeled", "closed"]
+    types: ["labeled", "ready_for_review", "closed"]
 
 concurrency:
   group: api-format-${{ github.ref }}
@@ -33,10 +33,25 @@ jobs:
   backport:
     name: Format API PR
     runs-on: ubuntu-latest
+    # Run once per PR, regardless of whether the 'api-format' label was applied
+    # before or after the PR left draft state:
+    #   - 'labeled' branch: fires when the label is added to a non-draft PR.
+    #     The draft==false guard keeps it from running on drafts (and from
+    #     pushing auto-commits to work-in-progress branches).
+    #   - 'ready_for_review' branch: covers the case where the label was added
+    #     while the PR was still a draft. That 'labeled' event is skipped above,
+    #     so we (re)trigger when the PR is marked ready and the label is present.
+    # The draft guard on the 'labeled' branch is also what prevents a double run
+    # when a draft PR is labeled and then marked ready in sequence.
     if: |
-      github.event.action == 'labeled'
-      && github.event.label.name == 'api-format'
-      && github.event.pull_request.draft == false
+      (
+        github.event.action == 'labeled'
+        && github.event.label.name == 'api-format'
+        && github.event.pull_request.draft == false
+      ) || (
+        github.event.action == 'ready_for_review'
+        && contains(github.event.pull_request.labels.*.name, 'api-format')
+      )
   
   
     steps:
