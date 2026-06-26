@@ -170,6 +170,10 @@ const modelClause = overrodeModel
   ? ` using \`${provider}${effectiveModel ? ` / ${effectiveModel}` : ""}\``
   : "";
 
+// "YYYY-MM-DD HH:MM UTC" — the comment updates in place, so a stamp tells
+// reviewers when it last ran.
+const stamp = new Date().toISOString().replace("T", " ").replace(/:\d\d\.\d+Z$/, " UTC");
+
 const lines = [];
 lines.push(MARKER);
 lines.push("## 🤖 Persona check");
@@ -182,7 +186,7 @@ lines.push(
 );
 lines.push("");
 lines.push(
-  `<sub>Triggered by ${trigger}. Powered by [Impersonaid](https://github.com/spectrocloud/impersonaid). This is automated UX feedback, not a substitute for human review.</sub>`
+  `<sub>Last updated ${stamp} · Triggered by ${trigger}. Powered by [Impersonaid](https://github.com/spectrocloud/impersonaid). This is automated UX feedback, not a substitute for human review.</sub>`
 );
 lines.push("");
 

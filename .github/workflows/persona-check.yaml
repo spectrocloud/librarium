@@ -233,8 +233,10 @@ jobs:
             } else {
               const cfgPath = `${process.env.GITHUB_WORKSPACE}/.github/persona-check/config.mjs`;
               const cfg = (await import(pathToFileURL(cfgPath).href)).default;
+              const stamp = new Date().toISOString().replace("T", " ").replace(/:\d\d\.\d+Z$/, " UTC");
               body = `${marker}\n## 🤖 Persona check\n\n` +
                 "No changed `.md`/`.mdx` files met the review threshold.\n\n" +
+                `<sub>Last updated ${stamp}.</sub>\n\n` +
                 cfg.usage;
             }
 
