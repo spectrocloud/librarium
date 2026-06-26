@@ -75,4 +75,30 @@ export default {
     "3. A heading \"What could be improved or is missing\" followed by exactly 3 short bullet points.",
     "Keep each bullet to a single concise sentence. Base everything only on the page content.",
   ].join("\n"),
+
+  // Collapsible help block appended to every persona-check comment so reviewers
+  // can discover the overrides without leaving the PR. A getter so it can quote
+  // the live threshold default.
+  get usage() {
+    return [
+      "<details><summary>ℹ️ How to use persona-check</summary>",
+      "",
+      "Add the **`persona-check`** label, or comment **`/persona-check`** with optional overrides:",
+      "",
+      "- `provider=` — `anthropic` (default) or `openai`",
+      "- `model=` — a specific model (default: the provider's default)",
+      "- `persona=` — pin a persona by name (default: auto-selected per file)",
+      "- `question=\"...\"` — free-text question, or `question_key=` a preset (e.g. `getting-started`)",
+      "- `files=all` or `files=\"path/a.md,path/b.mdx\"` (default: changed docs above the threshold)",
+      `- \`threshold=\` — minimum changed lines to review (default: ${this.threshold})`,
+      "",
+      "Examples:",
+      "",
+      "- `/persona-check files=all`",
+      '- `/persona-check persona="Site Reliability Engineer" question_key=getting-started`',
+      "- `/persona-check provider=openai threshold=0`",
+      "",
+      "</details>",
+    ].join("\n");
+  },
 };

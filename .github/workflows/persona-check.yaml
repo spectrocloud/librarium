@@ -221,17 +221,21 @@ jobs:
         with:
           script: |
             const fs = require("fs");
+            const { pathToFileURL } = require("url");
             const marker = "<!-- persona-check -->";
             const prNumber = Number(process.env.PR_NUMBER);
             const count = Number(process.env.COUNT || "0");
 
             let body;
             if (count > 0) {
+              // persona-check.mjs already appended the usage block.
               body = fs.readFileSync(`${process.env.GITHUB_WORKSPACE}/persona-check-comment.md`, "utf8");
             } else {
-              body = `${marker}\n## 🤖 Persona check\n\nNo changed \`.md\`/\`.mdx\` files met the review threshold. ` +
-                "Comment `/persona-check files=all` to review every changed docs file, or " +
-                "`/persona-check threshold=0` to lower the bar.";
+              const cfgPath = `${process.env.GITHUB_WORKSPACE}/.github/persona-check/config.mjs`;
+              const cfg = (await import(pathToFileURL(cfgPath).href)).default;
+              body = `${marker}\n## 🤖 Persona check\n\n` +
+                "No changed `.md`/`.mdx` files met the review threshold.\n\n" +
+                cfg.usage;
             }
 
             const comments = await github.paginate(github.rest.issues.listComments, {

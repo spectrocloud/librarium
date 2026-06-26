@@ -60,7 +60,8 @@ function resolveBaseQuestion() {
   return config.questions[key] || config.questions[config.defaultQuestion];
 }
 
-const question = `${resolveBaseQuestion()}\n${config.formatSuffix}`;
+const baseQuestion = resolveBaseQuestion();
+const question = `${baseQuestion}\n${config.formatSuffix}`;
 
 // Pull the "## Simulation Response" body out of an Impersonaid output file.
 function extractResponse(md) {
@@ -161,17 +162,23 @@ const results = selected.map((f, i) => reviewFile(f.path, i));
 // ---------------------------------------------------------------------------
 // Build the aggregated comment body.
 // ---------------------------------------------------------------------------
-const modelLabel = modelOverride || config.defaultModel?.[provider] || `${provider} default`;
+// Only surface provider/model when the user overrode the defaults — otherwise
+// it is noise. effectiveModel is empty when relying on Impersonaid's default.
+const effectiveModel = modelOverride || config.defaultModel?.[provider] || "";
+const overrodeModel = provider !== config.defaultProvider || Boolean(modelOverride);
+const modelClause = overrodeModel
+  ? ` using \`${provider}${effectiveModel ? ` / ${effectiveModel}` : ""}\``
+  : "";
+
 const lines = [];
 lines.push(MARKER);
 lines.push("## 🤖 Persona check");
 lines.push("");
 lines.push(
-  `Reviewed **${results.length}** file${results.length === 1 ? "" : "s"} using ` +
-    `provider \`${provider}\` (model: \`${modelLabel}\`)` +
+  `Reviewed **${results.length}** file${results.length === 1 ? "" : "s"}${modelClause}.` +
     (personaInput && personaInput.toLowerCase() !== "auto"
-      ? `, persona \`${personaInput}\`.`
-      : ", persona auto-selected per file.")
+      ? ` Persona: \`${personaInput}\`.`
+      : " Persona auto-selected per file.")
 );
 lines.push("");
 lines.push(
@@ -185,11 +192,16 @@ for (const r of results) {
     : `⚠️ <code>${r.relPath}</code> — not reviewed`;
   lines.push(`<details><summary>${summary}</summary>`);
   lines.push("");
+  lines.push(`**Question asked:** ${baseQuestion}`);
+  lines.push("");
   lines.push(r.body);
   lines.push("");
   lines.push("</details>");
   lines.push("");
 }
+
+lines.push(config.usage);
+lines.push("");
 
 fs.writeFileSync(outputPath, lines.join("\n"));
 console.log(`Wrote persona-check comment for ${results.length} file(s) to ${outputPath}`);
