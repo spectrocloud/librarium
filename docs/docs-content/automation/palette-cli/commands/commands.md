@@ -35,9 +35,6 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`project`](project.md) - Manage Palette Projects.
 
-- [`validate-auth`](./validate-auth.md) - Validate access requirements to deploy Kubernetes clusters in target
-  environments.
-
 - [`vmo`](vmo.md) - Migrate, import and deploy VMs to Palette VMO.
 
 ## Global Flags
@@ -79,7 +76,5 @@ The Palette CLI supports the following environment variables.
 - [Project](project.md)
 
 - [Import](import.md)
-
-- [Validate-Auth](./validate-auth.md)
 
 - [VMO](vmo.md)
