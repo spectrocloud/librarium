@@ -16,14 +16,6 @@ Palette VerteX will be deployed.
 
 ## Prerequisites
 
-:::tip
-
-We recommend using the `--validate` flag with the `ec install` command to validate the installation. Check out the
-[Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
-for more information.
-
-:::
-
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment.
 
 - [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
@@ -166,14 +158,6 @@ Use the following steps to install Palette VerteX.
     ```bash
     palette ec install
     ```
-
-    You can also use the `--validate` flag to validate the installation prior to deployment. Refer to the
-    [Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
-    command for more information.
-
-        ```bash
-        palette ec install --validate
-        ```
 
 7.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
