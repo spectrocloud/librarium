@@ -95,7 +95,7 @@ Complete the following required configuration steps before you [create your firs
 
     :::info
 
-    If your environment doesn't display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and
+    If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and
     select **Add Existing**.
 
     :::

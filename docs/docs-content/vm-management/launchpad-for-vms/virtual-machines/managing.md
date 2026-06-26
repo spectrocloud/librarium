@@ -20,7 +20,7 @@ Navigate to **Workloads** > **Virtual Machines** (`/vms`) to view all virtual ma
 | **Element**           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **All Namespaces**    | The list defaults to showing VMs across all namespaces you can access. For users with cluster-wide access (ClusterRoleBinding or VMO IAM role mapping), this means all managed namespaces. For OIDC users with namespace-scoped RoleBindings granted through **Settings** > **Access Management**, only VMs in their permitted namespaces appear. Use the namespace dropdown to filter further by a specific namespace or to view per-namespace counts. |
-| **Status Indicators** | Each VM shows its status: Running, Stopped, Pending, Failed, or other KubeVirt states. The status reflects the Virtual Machine Instance (VMI) when the VM is running.                                                                                                                                                                                                                                                                                   |
+| **Status Indicators** | Each VM shows its status: **Running**, **Stopped**, **Pending**, **Failed**, or other KubeVirt states. The status reflects the Virtual Machine Instance (VMI) when the VM is running.                                                                                                                                                                                                                                                                                   |
 | **Columns**           | Name, namespace, status, node (when running), CPU, memory, run strategy, OS type, and other metadata. The **Created** column is available but hidden by default. Use the column visibility control to show or hide columns.                                                                                                                                                                                                                             |
 
 ![Screenshot of column selection option](/vmo/vm-management_vmo_managing_column-select-4-9.webp)
@@ -71,12 +71,11 @@ Halted.
 | **Pause**   | Suspends a running VM. The guest stops running, and Launchpad holds its CPU and memory state in memory. A paused VM continues to reserve its memory and compute. |
 | **Unpause** | Resumes a paused VM from the point where it was suspended.                                                                                                       |
 
-When you pause a VM, its status changes to **Paused** and the toolbar action changes to **Unpause**. Pause and unpause
-let you suspend a VM briefly without writing its state to disk or stopping the VM.
+**Pause** and **Unpause** let you briefly suspend a VM without writing its state to disk or stopping it.
 
 ### Live Migration
 
-**Migrate** live-migrates the VM to another node. The VM continues running during migration with minimal downtime. This
+**Migrate** [live-migrates](https://kubevirt.io/user-guide/compute/live_migration/) the VM to another node. The VM continues running during migration with minimal downtime. This
 requires the cluster to have live migration enabled and appropriate storage, such as shared storage or storage migration
 support.
 
@@ -112,7 +111,7 @@ The VNC console provides a browser-based remote desktop to the VM.
 
 :::info
 
-The VNC console requires the VM to be running. If the VM is stopped, start it first from the Overview tab or VM list.
+The VNC console requires the VM to be running. If the VM is stopped, start it first from the **Overview** tab or VM list.
 
 :::
 
@@ -221,7 +220,7 @@ entire spec. Changes are applied immediately to the cluster.
 
 :::warning
 
-Editing YAML directly can lead to invalid or inconsistent state. Prefer the Configuration form when possible.
+Editing YAML files directly may result in an invalid or inconsistent state. Use the Configuration form when possible.
 
 :::
 

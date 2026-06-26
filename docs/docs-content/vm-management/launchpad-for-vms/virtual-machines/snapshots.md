@@ -25,8 +25,7 @@ later or use the snapshot as a source for clones.
 
 :::info
 
-The VM should be stopped or running with supported storage. Some storage backends require the VM to be stopped for
-consistent snapshots.
+If your storage backend supports online snapshots, you can leave the VM running. Otherwise, stop the VM first to ensure the snapshot is consistent.
 
 :::
 
@@ -67,7 +66,7 @@ schedule and prunes old ones based on retention rules.
    | **Max Retention** | The number of snapshots to keep per VM. Older snapshots are pruned automatically. Required.                                                                        |
    | **Enabled**       | Enable or disable automatic snapshots for the policy. Enabled by default.                                                                                          |
 
-4. (Optional) Under **Advanced Options**, configure the following fields.
+4. _(Optional)_ Under **Advanced Options**, configure the following fields.
 
    | **Field**             | **Description**                                                                                                                                                      |
    | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

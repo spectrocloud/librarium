@@ -11,6 +11,8 @@ tags: ["vmo", "vm launchpad", "templates"]
 VM templates in Launchpad for VMs define reusable VM specifications for base image, compute, network, storage, and
 hardware settings. Create VMs from templates to standardize provisioning across teams.
 
+## Namespace Limitations
+
 Templates are also the required mechanism for provisioning a VM across namespaces. When you create a VM, you can only
 select an ISO, golden image, or other source DataVolume that resides in the **same namespace** as the VM. If the source
 lives in a different namespace, it is not selectable, and the source list appears empty. Because templates are
@@ -104,7 +106,7 @@ templates, use a sealed and generalized golden image as the source.
 
 7. Select the **Storage Class** from the drop-down menu.
 
-8. (Optional) Add extra disks by selecting **Add Disk**, and add extra CD-ROMs by selecting **Add CD-ROM**.
+8. _(Optional)_ Add extra disks by selecting **Add Disk**, and add extra CD-ROMs by selecting **Add CD-ROM**.
 
 9. Select the **Boot Order** for the VM. By default, **Disk** is selected. You can also boot from **Network**. Then
    select **Next**.
@@ -127,7 +129,7 @@ templates, use a sealed and generalized golden image as the source.
 
     :::
 
-11. For **Hardware** (optional), configure any advanced hardware settings required for the VM. You can skip this step
+11.  _(Optional)_ For **Hardware**, configure any advanced hardware settings required for the VM. You can skip this step
     for basic VMs. Then select **Next**.
 
     <details>
@@ -227,12 +229,12 @@ templates, use a sealed and generalized golden image as the source.
 
     :::
 
-    (Optional) Access the **Cloud-Init Editor** by selecting **Cloud-Init Configuration** under **User Data**. The
+    _(Optional)_ Access the **Cloud-Init Editor** by selecting **Cloud-Init Configuration** under **User Data**. The
     editor supports the following user data input modes.
 
     <details>
 
-    <summary>Display the Cloud-Init editor.</summary>
+    <summary>User data input modes</summary>
 
     | **Mode**     | **Description**                                                                                                                                                                                                                |
     | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
