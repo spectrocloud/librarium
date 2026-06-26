@@ -184,19 +184,19 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     the vendor-specific driver or command-line interface (CLI) installed on the Edge host. Multi-Instance GPU (MIG) data
     can only be retrieved for Nvidia devices with the `nvidia-smi` CLI installed.
 
-   ```yaml
-   #cloud-config
-   stages:
-     initramfs:
-       - users:
-           USERNAME:
-             passwd: ******
-             groups:
-               - sudo
-             ssh_authorized_keys:
-               - ssh-rsa AAAAB3N…
-         name: Create user and assign SSH key
-   ```
+```yaml
+#cloud-config
+stages:
+  initramfs:
+    - users:
+        USERNAME:
+          passwd: ******
+          groups:
+            - sudo
+          ssh_authorized_keys:
+            - ssh-rsa AAAAB3N…
+      name: Create user and assign SSH key
+```
 
 #### Configure Proxy Settings (Optional)
 
@@ -241,54 +241,54 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    installation is complete and before the restart happens. Otherwise, the Edge host might start the installation
    process again.
 
-    #### Configure Users
+   #### Configure Users
 
-11. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
-    host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
-    replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
-    the list of authorized keys for that user.
+8. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+   host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
+   replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
+   the list of authorized keys for that user.
 
-    ```yaml
-    #cloud-config
-    stages:
-      initramfs:
-        - users:
-            USERNAME:
-              passwd: ******
-              groups:
-                - sudo
-              ssh_authorized_keys:
-                - ssh-rsa AAAAB3N…
-          name: Create user and assign SSH key
-    ```
+   ```yaml
+   #cloud-config
+   stages:
+     initramfs:
+       - users:
+           USERNAME:
+             passwd: ******
+             groups:
+               - sudo
+             ssh_authorized_keys:
+               - ssh-rsa AAAAB3N…
+         name: Create user and assign SSH key
+   ```
 
-    #### Configure Proxy Settings (Optional)
+   #### Configure Proxy Settings (Optional)
 
-12. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
-    as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
-    configure proxy settings for your Edge host.
+9. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+   as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
+   configure proxy settings for your Edge host.
 
-    These settings are different from the proxy settings you provide to the `.arg` file. The settings in the `.arg` file
-    apply to the builder machine during the build process, while the settings in `user-data` apply to the Edge host
-    after installation.
+   These settings are different from the proxy settings you provide to the `.arg` file. The settings in the `.arg` file
+   apply to the builder machine during the build process, while the settings in `user-data` apply to the Edge host after
+   installation.
 
-    | Parameter                | Description                                                                           |
-    | ------------------------ | ------------------------------------------------------------------------------------- |
-    | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
-    | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
-    | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
+   | Parameter                | Description                                                                           |
+   | ------------------------ | ------------------------------------------------------------------------------------- |
+   | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
+   | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
+   | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
 
-    :::warning
+   :::warning
 
-    The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
-    automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
-    [Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
+   The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
+   automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+   [Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
 
-    :::
+   :::
 
-    #### Configure Post-Installation Behavior (Optional)
+   #### Configure Post-Installation Behavior (Optional)
 
-13. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
+10. You can use some parameters of the `install` block to configure what you would like the Edge host to do after
     installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen,
     but you can configure it to power off or restart automatically. For example, the following configuration instructs
     the Edge host to power off automatically post-installation.
