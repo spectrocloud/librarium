@@ -76,6 +76,12 @@ function extractPersona(md) {
   return m ? m[1].trim() : "unknown";
 }
 
+// Read the actual model name Impersonaid recorded in the output file header.
+function extractModel(md) {
+  const m = md.match(/^- \*\*Model\*\*:\s*(.+)$/m);
+  return m ? m[1].trim() : "";
+}
+
 function modelFlags() {
   const model = modelOverride || config.defaultModel?.[provider] || "";
   if (!model) return [];
@@ -145,7 +151,7 @@ function reviewFile(relPath, index) {
     };
   }
   const md = fs.readFileSync(path.join(outDir, files[0]), "utf8");
-  return { relPath, ok: true, persona: extractPersona(md), body: extractResponse(md) };
+  return { relPath, ok: true, persona: extractPersona(md), model: extractModel(md), body: extractResponse(md) };
 }
 
 console.log(
@@ -162,13 +168,11 @@ const results = selected.map((f, i) => reviewFile(f.path, i));
 // ---------------------------------------------------------------------------
 // Build the aggregated comment body.
 // ---------------------------------------------------------------------------
-// Only surface provider/model when the user overrode the defaults — otherwise
-// it is noise. effectiveModel is empty when relying on Impersonaid's default.
-const effectiveModel = modelOverride || config.defaultModel?.[provider] || "";
-const overrodeModel = provider !== config.defaultProvider || Boolean(modelOverride);
-const modelClause = overrodeModel
-  ? ` using \`${provider}${effectiveModel ? ` / ${effectiveModel}` : ""}\``
-  : "";
+// Prefer the actual model name Impersonaid reported; fall back to any override
+// or configured default, then a generic label if every run failed.
+const realModel = results.find((r) => r.model)?.model || modelOverride || config.defaultModel?.[provider] || `${provider} default`;
+// "(default)" when the user did not pin a model (and we have a real name to mark).
+const defaultMarker = !modelOverride && !/default/i.test(realModel) ? " (default)" : "";
 
 // "YYYY-MM-DD HH:MM UTC" — the comment updates in place, so a stamp tells
 // reviewers when it last ran.
@@ -179,7 +183,8 @@ lines.push(MARKER);
 lines.push("## 🤖 Persona check");
 lines.push("");
 lines.push(
-  `Reviewed **${results.length}** file${results.length === 1 ? "" : "s"}${modelClause}.` +
+  `Reviewed **${results.length}** file${results.length === 1 ? "" : "s"} using ` +
+    `provider \`${provider}\` (model: \`${realModel}\`${defaultMarker}).` +
     (personaInput && personaInput.toLowerCase() !== "auto"
       ? ` Persona: \`${personaInput}\`.`
       : " Persona auto-selected per file.")
@@ -197,6 +202,8 @@ for (const r of results) {
   lines.push(`<details><summary>${summary}</summary>`);
   lines.push("");
   lines.push(`**Question asked:** ${baseQuestion}`);
+  lines.push("");
+  lines.push(r.ok ? "**Answer:**" : "**Result:**");
   lines.push("");
   lines.push(r.body);
   lines.push("");
