@@ -218,10 +218,6 @@ about the rolling upgrade strategy.
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
-- A new command has been added to the Palette CLI. The command `validate-auth` can be used to validate you meet all
-  permissions required to deploy a target cluster into an infrastructure provider environment, such as AWS or Azure.
-  Refer to the [Validate-Auth](../automation/palette-cli/commands/validate-auth.md) reference page to learn more.
-
 #### Deprecations and Removals
 
 - The Terraform resource, `spectrocloud_cluster_import` is removed. To import a cluster deployed outside of the context
