@@ -1067,8 +1067,9 @@ available. For more details, refer to the Terraform provider
   using the **certs** folder to pass proxy certificates to the CanvOS build process.
 - Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
   has been removed. This change primarily affects customers using Palette agents on versions older than 4.0, and the
-  NATS namespace must be [manually removed](../troubleshooting/nodes/nodes.md#scenario---remove-deprecated-nats-namespace)
-  from affected clusters. To learn more about Palette's internal network architecture, refer to the
+  NATS namespace must be
+  [manually removed](../troubleshooting/nodes/nodes.md#scenario---remove-deprecated-nats-namespace) from affected
+  clusters. To learn more about Palette's internal network architecture, refer to the
   [Network Ports](../architecture/networking-ports.md) page. If you are using network proxies, we recommend you review
   the [gRPC and Proxies](../architecture/grps-proxy.md) documentation for potential issues.
 
@@ -1337,10 +1338,6 @@ Check out the [Palette CLI Downloads](../downloads/cli-tools.md) page to find th
   This improvement streamlines the user process of identifying and pulling the latest pack versions directly. Versions
   can still be defined explicitly. For more information, refer to the Spectro Cloud Terraform provider
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
-
-- The `--validate` flag of the Palette [EC](../automation/palette-cli/commands/ec.md) command now supports validation of
-  airgapped environments. Previously, only environments that had internet access were supported. Refer to the
-  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section for further information.
 
 - The Terraform OCI registry resource, `spectrocloud_registry_oci`, now supports Zarf and Pack
   [OCI Registry](../registries-and-packs/registries/oci-registry/oci-registry.md) types. Previously, only Helm
