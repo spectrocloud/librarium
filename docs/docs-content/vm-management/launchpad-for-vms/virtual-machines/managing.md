@@ -197,13 +197,11 @@ snapshot appears in the list with the following columns.
 | **Indications**   | Conditions captured with the snapshot, such as **Online** (taken while the VM was running) or `NoGuestAgent` (the QEMU guest agent was not available to quiesce the guest). |
 | **Actions**       | **Restore** the VM from the snapshot, or **Delete** the snapshot.                                                                                                           |
 
-:::warning
+#### Important Behaviors
 
 - The VM does not need to be stopped to take a snapshot; online snapshots are supported.
 - To restore a snapshot, the VM must be stopped first.
 - Restoring overwrites the current VM state. Consider taking a new snapshot before you restore.
-
-:::
 
 ### Events Tab
 

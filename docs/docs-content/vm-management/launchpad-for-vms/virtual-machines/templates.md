@@ -279,6 +279,8 @@ clone source. Use sealed and generalized golden images as template sources whene
 When a template generalizes the OS for cloning purposes, the workflow preserves certain fields, and removes others. VM
 Launchpad copies the following fields from the source VM into the template.
 
+#### Generalization Fields Added
+
 | **Field**                           | **Description**                                                                                                            |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | cloud-init                          | Inline `userData` and `networkData` values for NoCloud and ConfigDrive data sources.                                       |
@@ -288,6 +290,8 @@ Launchpad copies the following fields from the source VM into the template.
 | Networks and disks                  | Interface bindings, NAD references, and disk topology.                                                                     |
 | Hardware                            | Devices, feature flags, clock settings, and timer settings.                                                                |
 | User-applied labels and annotations | Team tags, cost center labels, and other user metadata.                                                                    |
+
+#### Generalization Fields Removed 
 
 The following table displays the fields that VM Launchpad removes. These fields can contain per-VM, security-sensitive,
 or namespace-bound values.
