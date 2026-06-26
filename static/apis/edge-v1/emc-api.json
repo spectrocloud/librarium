@@ -3056,6 +3056,82 @@
         ]
       }
     },
+    "/v1/edge-mgmt/network/management-interface": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get the currently selected management interface and the candidate list",
+        "operationId": "V1ManagementInterface",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ManagementInterface"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Set the management interface",
+        "operationId": "V1ManagementInterfaceUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ManagementInterfaceUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
     "/v1/edge-mgmt/network/vlans": {
       "get": {
         "description": "List VLAN interfaces",
@@ -3851,7 +3927,8 @@
           "type": "string",
           "enum": [
             "dhcp",
-            "static"
+            "static",
+            "none"
           ]
         },
         "vlanID": {
@@ -3969,7 +4046,8 @@
           "type": "string",
           "enum": [
             "dhcp",
-            "static"
+            "static",
+            "none"
           ]
         },
         "vlanID": {
@@ -4034,7 +4112,8 @@
           "type": "string",
           "enum": [
             "dhcp",
-            "static"
+            "static",
+            "none"
           ]
         }
       }
@@ -4103,7 +4182,8 @@
           "type": "string",
           "enum": [
             "dhcp",
-            "static"
+            "static",
+            "none"
           ]
         }
       }
@@ -5005,6 +5085,11 @@
           "description": "ControlPlaneEndpoint is the control plane endpoint, which can be an IP or FQDN",
           "$ref": "#/definitions/v1EdgeNativeControlPlaneEndPoint"
         },
+        "isTwoNodeCluster": {
+          "description": "Enable two-node high availability configuration (PostgreSQL-based instead of etcd)",
+          "type": "boolean",
+          "default": false
+        },
         "ntpServers": {
           "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
           "type": "array",
@@ -5207,6 +5292,15 @@
           "description": "size of the pool, number of machines",
           "type": "integer",
           "format": "int32"
+        },
+        "skipK8sUpgrade": {
+          "description": "Skip Kubernetes version upgrade validation for worker pools with N-3 version skew.\n- enabled: Bypasses version skew validation, allows Control Plane upgrade even when this worker pool is \u003e3 minor versions behind\n- disabled: Automatically upgrade worker pool to match Control Plane Kubernetes version\n",
+          "type": "string",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "x-omitempty": true
         },
         "taints": {
           "description": "master or worker taints",
@@ -5794,6 +5888,65 @@
         },
         "type": {
           "$ref": "#/definitions/v1ManagementMode"
+        }
+      }
+    },
+    "v1ManagementInterface": {
+      "type": "object",
+      "required": [
+        "selected",
+        "candidates"
+      ],
+      "properties": {
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ManagementInterfaceCandidate"
+          }
+        },
+        "selected": {
+          "description": "Name of the currently selected management interface. Empty string\nmeans no selection (default routing applies). Always present in\nthe response.\n",
+          "type": "string"
+        }
+      }
+    },
+    "v1ManagementInterfaceCandidate": {
+      "type": "object",
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "ipAddress": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "description": "Link state (e.g. up, down, dormant, unknown)",
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "nic",
+            "bond",
+            "vlan",
+            "bridge"
+          ]
+        }
+      }
+    },
+    "v1ManagementInterfaceUpdateRequest": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "Name of the interface to use as management interface. Must match an\nentry from the candidates list. Empty string clears the selection\nand reverts to default routing.\n",
+          "type": "string"
         }
       }
     },
