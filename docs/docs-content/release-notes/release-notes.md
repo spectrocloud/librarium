@@ -272,7 +272,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.b Palette release is 4.9.15.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.b Palette release is 4.9.19.
 
 :::
 

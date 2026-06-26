@@ -57,6 +57,16 @@ security analysis, resource tracking, and troubleshooting of the workload cluste
 
 <Tabs queryString="platform">
 
+<TabItem label="Splunk" value="splunk">
+
+Configure a HTTP Event Collector (HEC) in Splunk before configuring a Palette audit trail.
+
+Refer to the
+[Set up and use HTTP Event Collector in Splunk Web](https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/10.4/get-data-with-http-event-collector/set-up-and-use-http-event-collector-in-splunk-web)
+guide for more information.
+
+</TabItem>
+
 <TabItem label="Amazon CloudWatch" value="cloudwatch">
 Ensure that the IAM user or the ROOT user role created has the following IAM policy included for Amazon CloudWatch.
 
@@ -82,16 +92,6 @@ Ensure that the IAM user or the ROOT user role created has the following IAM pol
 
 </TabItem>
 
-<TabItem label="Splunk" value="splunk">
-
-Configure a HTTP Event Collector (HEC) in Splunk before configuring a Palette audit trail.
-
-Refer to the
-[Set up and use HTTP Event Collector in Splunk Web](https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/10.4/get-data-with-http-event-collector/set-up-and-use-http-event-collector-in-splunk-web)
-guide for more information.
-
-</TabItem>
-
 </Tabs>
 
 ### Enablement
@@ -107,20 +107,6 @@ guide for more information.
 
    <Tabs queryString="platform">
 
-   <TabItem label="Amazon CloudWatch" value="cloudwatch">
-
-   - **Audit Name**: Custom name to identify the logs.
-   - **Type**: Choice of monitoring service. Select **CloudWatch**.
-   - **Group**: The log group name obtained from CloudWatch logs for audit trail creation.
-   - **Region**: The region of the AWS account.
-   - **Credentials** : Use an **Access Key** and **Secret Access Key** to validate the AWS account for pushing the audit
-     trails from Palette.
-   - **STS**: Use Amazon's unique resource identifier, ARN, to validate the AWS account for pushing the audit trails
-     from Palette.
-   - **Stream (Optional)**: CloudWatch log stream for audit trail creation.
-
-   </TabItem>
-
    <TabItem label="Splunk" value="splunk">
 
    - **Audit Name**: Custom name to identify the logs.
@@ -134,6 +120,20 @@ guide for more information.
      - **Certificate**: Upload your server’s certificate if your Splunk instance uses a self-signed certificate.
      - **TLS Verification**: Enabled by default. Disable if your endpoint uses a self-signed certificate and you choose
        not to upload it.
+
+   </TabItem>
+
+   <TabItem label="Amazon CloudWatch" value="cloudwatch">
+
+   - **Audit Name**: Custom name to identify the logs.
+   - **Type**: Choice of monitoring service. Select **CloudWatch**.
+   - **Group**: The log group name obtained from CloudWatch logs for audit trail creation.
+   - **Region**: The region of the AWS account.
+   - **Credentials** : Use an **Access Key** and **Secret Access Key** to validate the AWS account for pushing the audit
+     trails from Palette.
+   - **STS**: Use Amazon's unique resource identifier, ARN, to validate the AWS account for pushing the audit trails
+     from Palette.
+   - **Stream (Optional)**: CloudWatch log stream for audit trail creation.
 
    </TabItem>
 
