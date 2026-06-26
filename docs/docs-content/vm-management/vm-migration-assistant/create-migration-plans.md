@@ -590,6 +590,18 @@ Follow this guide to create migration plans using the VM Migration Assistant.
          source:
    ```
 
+   If the target storage class resolves to `Block` volume mode by default, setting these fields in the storage map
+   alone may not be enough. In that case, create a dedicated storage class that uses the same provisioner and
+   parameters as your default storage class, and patch its `StorageProfile` to force `Filesystem` volume mode, then
+   map the source storage to it.
+
+   Note the following tradeoff: on block-based storage such as LINSTOR/DRBD, `Filesystem` mode is `ReadWriteOnce`
+   (`RWO`) only. VMs migrated this way **cannot be live-migrated**, because KubeVirt live migration requires
+   `ReadWriteMany` (`RWX`), which is only available in `Block` mode on this storage.
+
+   If migrations fail during guest conversion with an `nbdkit` block-size error, refer to
+   [Troubleshooting Launchpad for VMs](../launchpad-for-vms/troubleshooting.md#scenario---vm-migration-fails-during-guest-conversion-on-block-based-storage).
+
    :::
 
    #### Use New Storage Map
