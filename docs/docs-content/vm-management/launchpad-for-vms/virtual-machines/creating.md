@@ -13,7 +13,7 @@ This guide walks through the VM creation wizard and batch creation options in VM
 ## Overview
 
 The VM creation wizard guides you through seven steps: **Source**, **Compute**, **Storage**, **Network**, **Hardware**,
-**Lifecycle**, and **Review**. Each step configures a different aspect of the virtual machine. The wizard supports
+**Lifecycle**, and **Review**. The wizard supports
 creating VMs from [templates](./templates.md), [golden images](./golden-images.md), ISOs, or blank disks.
 
 :::tip

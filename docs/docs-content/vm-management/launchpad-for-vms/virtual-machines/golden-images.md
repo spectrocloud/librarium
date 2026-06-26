@@ -8,8 +8,6 @@ sidebar_position: 3
 tags: ["vmo", "vm launchpad", "golden images"]
 ---
 
-## Create a Golden Image
-
 A golden image is a sealed, reusable base system image. Golden images standardize OS installations and create VMs from
 [templates](./templates.md) with validated configurations.
 
@@ -44,16 +42,16 @@ After the build is complete, templates and VMs created from the golden image can
 
 3. Complete the **Upload ISO/Disk Image** page and select **Upload**.
 
-| **Parameter**       | **Description**                                                                                                                |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **DataVolume Name** | Enter a unique name for the ISO installer or disk image.                                                                       |
-| **Namespace**       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace.      |
-| **Storage Class**   | Select the storage class from the drop-down menu.                                                                              |
-| **Volume Size**     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                |
-| **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                         |
-| **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2. |
+   | **Parameter**       | **Description**                                                                                                                |
+   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+   | **DataVolume Name** | Enter a unique name for the ISO installer or disk image.                                                                       |
+   | **Namespace**       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace.      |
+   | **Storage Class**   | Select the storage class from the drop-down menu.                                                                              |
+   | **Volume Size**     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                |
+   | **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                         |
+   | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2. |
 
-Large ISO files can take minutes to upload. VM Launchpad displays progress during the upload phase.
+   Large ISO files can take minutes to upload. VM Launchpad displays progress during the upload phase.
 
 :::info
 
@@ -134,11 +132,11 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
    | **Second CD-ROM (optional)** | Attach a second ISO file to access driver files or response files.                                                                                                                |
    | **Install Guest Agent**      | Keep the default setting to automatically install the QEMU guest agent at first boot.                                                                                             |
 
-   For Ubuntu builds, 4 vCPUs and 8 GB of memory provide enough resources for the build. Keep **Install Guest Agent**
-   selected because the QEMU guest agent must run unless your seal script handles the operating system another way.
+   - For Ubuntu builds, 4 vCPUs and 8 GB of memory provide enough resources for the build. Keep **Install Guest Agent**
+     selected because the QEMU guest agent must run unless your seal script handles the operating system in another way.
 
-   For Windows builds, use the built-in Windows Server 2022 auto-install script or provide your own `Autounattend.xml`.
-   In airgap environments, confirm that the Virtio Windows drivers ISO is uploaded before you start the build.
+   - For Windows builds, use the built-in Windows Server 2022 auto-install script or provide your own `Autounattend.xml`.
+     In airgap environments, confirm that the Virtio Windows drivers ISO is uploaded before you start the build.
 
 5. On the **Auto-install (Optional)** page, select **Configure Auto-install Script**. You can manually create a
    customization script using the **Editor**, use an existing **Template**, select **Upload** to upload a script, or
@@ -167,7 +165,7 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
       For some Linux auto-install scripts, the console prompts you to confirm the installation. Type `yes` when
       prompted.
 
-   ![Screenshot of where to find progress button](/vmo/vm-management_vmo_golden-images_progress-console-4-9.webp)
+      ![Screenshot of where to find progress button](/vmo/vm-management_vmo_golden-images_progress-console-4-9.webp)
 
    3. Wait for the OS installation to finish and the VM to reboot.
 
@@ -197,7 +195,7 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
     - Stops the VM again and removes the builder VM.
 
-Refer to [finalization templates](./image-customization.md) for more information on using finalization scripts to seal
+   Refer to [finalization templates](./image-customization.md) for more information on using finalization scripts to seal
 the golden image.
 
 12. When the process is complete, the DataVolume is a sealed golden image. The image appears under **Image Catalog** >

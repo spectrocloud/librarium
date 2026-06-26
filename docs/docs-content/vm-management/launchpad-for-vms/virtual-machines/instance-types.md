@@ -30,7 +30,7 @@ preference.
 ### Built-in and Custom Instance Types
 
 Launchpad and KubeVirt ship with example instance types, such as `u1.small`, `u1.medium`, and `cx1.medium`. Cluster
-administrators can add custom instance types through the CRD or the Instance Types page under **Workloads** > **Instance
+administrators can add custom instance types through the Custom Resource Definition (CRD) or the Instance Types page under **Workloads** > **Instance
 Types**.
 
 ### Prefix Conventions
@@ -165,7 +165,7 @@ administrator permissions.
 
 3. In the **Name** field, enter a name for the instance type, such as `app-medium`.
 
-4. Optionally, to author the resource directly as YAML, select the `</>` toggle, edit the manifest, and select **Apply
+4. _(Optional)_ To author the resource directly as YAML, select the `</>` toggle, edit the manifest, and select **Apply
    YAML**. Refer to [YAML Drawer](#yaml-drawer) for details.
 
 5. In the **CPU** section, configure the following settings. For field definitions, refer to
@@ -193,21 +193,21 @@ administrator permissions.
 
    <!-- vale Vale.Terms = YES -->
 
-7. Optionally, in the **Devices** section, add devices.
+7. _(Optional)_ In the **Devices** section, add devices.
 
    | Device           | Description                                |
    | ---------------- | ------------------------------------------ |
    | **GPUs**         | Map the VM to GPUs on the host.            |
    | **Host Devices** | Add PCI passthrough or other host devices. |
 
-8. Optionally, in the **Advanced** section, configure the following settings.
+8. _(Optional)_ In the **Advanced** section, configure the following settings.
 
    | Setting                              | Description                                                                                                                                                                                        |
    | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **IO Threads Policy**                | Controls disk I/O isolation. Set to **None** (default), `auto`, `shared`, or `supplementalPool`. Refer to [IO Thread Policy](https://kubevirt.io/user-guide/storage/disks_and_volumes/#iothreads). |
    | **AMD SEV (Confidential Computing)** | Enables memory encryption.                                                                                                                                                                         |
 
-9. Optionally, add **Labels** as key-value pairs to organize the resource.
+9. _(Optional)_  Add **Labels** as key-value pairs to organize the resource.
 
 10. Select **Create Instance Type** to save the instance type.
 
@@ -225,7 +225,7 @@ Create a custom preference to define OS-specific hardware and device defaults, s
 
 3. In the **Name** field, enter a name for the preference, such as `rhel9-secure`.
 
-4. Optionally, to author the resource directly as YAML, select the `</>` toggle, edit the manifest, and select **Apply
+4. _(Optional)_ To author the resource directly as YAML, select the `</>` toggle, edit the manifest, and select **Apply
    YAML**. Refer to [YAML Drawer](#yaml-drawer) for details.
 
 5. In the **CPU** section, configure the following settings.
@@ -274,7 +274,7 @@ Create a custom preference to define OS-specific hardware and device defaults, s
 10. In the **Annotations** section, the **Descheduler eviction annotation** is enabled by default. It marks the VM as
     eligible for descheduler-initiated live migration to improve cluster balance.
 
-11. Optionally, add **Labels** as key-value pairs to organize the resource.
+11. _(Optional)_ Add **Labels** as key-value pairs to organize the resource.
 
 12. Select **Create Preference** to save the preference.
 
@@ -301,13 +301,13 @@ spec:
     guest: 8Gi
 ```
 
-**Behavior:**
+#### Behavior
 
 | Field             | Create mode                                              | Edit mode                                                  |
 | ----------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
-| `metadata.name`   | Syncs into the name field when you select **Apply YAML** | Ignored because Kubernetes does not allow in-place renames |
-| `metadata.labels` | Applied to the form on **Apply YAML**                    | Applied to the form on **Apply YAML**                      |
-| `spec`            | Applied to the form on **Apply YAML**                    | Applied to the form on **Apply YAML**                      |
+| `metadata.name`   | Syncs into the name field when you select **Apply YAML**. | Ignored because Kubernetes does not allow in-place renames. |
+| `metadata.labels` | Applied to the form on **Apply YAML**.                    | Applied to the form on **Apply YAML**.                      |
+| `spec`            | Applied to the form on **Apply YAML**.                    | Applied to the form on **Apply YAML**.                      |
 
 If the YAML contains syntax errors, the editor catches them before running Apply. An error message appears in the drawer
 footer, and the form does not change.
