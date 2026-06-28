@@ -1,5 +1,6 @@
 import MDXComponents from "@theme-original/MDXComponents";
 import customMdxComponents from "@site/src/components/mdx/index";
+import CodeBlock from "@theme/CodeBlock";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Tooltip from "@site/src/components/Tooltip/Tooltip";
@@ -30,6 +31,7 @@ import FullUrlLink from "@site/src/components/FullUrlLink";
 export default {
   ...MDXComponents,
   ...customMdxComponents,
+  CodeBlock,
   Accordion,
   AccordionPanel,
   Tabs,

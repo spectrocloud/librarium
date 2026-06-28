@@ -1,0 +1,62 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-cert-manager-non-airgap
+---
+
+Open the file `extras/cert-manager/values.yaml` using a text editor of your choice. This example uses Vim.
+
+    ```shell
+    vim extras/cert-manager/values.yaml
+    ```
+
+<li>  If you plan to pull images from Spectro Cloud OCI registries, paste the image pull secret received from your
+    customer support representative into the `imagePullSecret.dockerConfigJson` field. It is not required if you plan to
+    use mirror registries or image swap. </li>
+
+    Alternately, if you plan to pull images from a private registry that requires authentication, use the base64-encoded
+    contents of your `config.json` containing the registry credentials. Refer to
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Helm Configuration Reference"
+        palettePath="/install-palette/install-on-kubernetes/palette-helm-ref/"
+        vertexPath="/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/"
+    /> for more information.
+
+    :::info
+
+    If you omit the image pull secret during installation, you must provide it through the system console. Refer to
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Configure Image Pull Secret for Security-Hardened Images"
+        url="/configure-image-pull-secret"
+    /> for more information.
+
+    :::
+
+    ```yaml title="Example configuration" hideClipboard {5}
+    imagePullSecret:
+      # When true, render Secret spectro-image-pull-secret in the cert-manager namespace.
+      # Pods automatically reference that pull secret when create is true or the secret already exists.
+      create: false
+      dockerConfigJson: "abcdEFGhiJKlmnOPQrSTUVwX..." # Used when create is true: base64-encoded dockerconfigjson
+    ```
+
+<li>  Install the Cert-Manager Helm chart. </li>
+
+    ```shell
+    helm upgrade --install cert-manager \
+      ./extras/cert-manager/cert-manager-*.tgz \
+      --namespace cert-manager \
+      --create-namespace \
+      --values ./extras/cert-manager/values.yaml
+    ```
+
+    ```shell hideClipboard title="Example output"
+    Release "cert-manager" does not exist. Installing it now.
+    NAME: cert-manager
+    LAST DEPLOYED: Wed Jun 17 12:54:27 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
