@@ -111,6 +111,13 @@ done < <(
     '
 )
 
+if (( ${#LINKED_ISSUES[@]} == 0 )); then
+  echo "❌  No linked issues found for ticket: $JIRA_TICKET" >&2
+  exit 1
+fi
+
+echo "ℹ️  Linked issues retrieved: ${LINKED_ISSUES[*]}"
+
 # Fetch only Platone tickets to create the packs list in the release notes
 PLATONE_ISSUES=()
 while IFS= read -r issue; do
@@ -128,13 +135,56 @@ done < <(
     '
 )
 
-if (( ${#LINKED_ISSUES[@]} == 0 )); then
-  echo "❌  No linked issues found for ticket: $JIRA_TICKET" >&2
-  exit 1
+# Find the "Pack Updates" ticket linked to the component update ticket.
+PACK_UPDATES_TICKET=$(
+  curl --fail-with-body \
+    --url "${JIRA_DOMAIN}/rest/api/3/issue/${JIRA_TICKET}?fields=issuelinks" \
+    --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+    --header "Accept: application/json" \
+  | jq -r '
+      [ .fields.issuelinks[]
+        | (.outwardIssue // .inwardIssue)
+        | select(.fields.summary | contains("Pack Updates"))
+        | .key
+      ] | first // empty
+    '
+)
+
+# Fetch the child tickets of the Pack Updates ticket whose summary contains
+# "[Platone]" and add them to the Platone issues list, then dedupe.
+if [[ -n "$PACK_UPDATES_TICKET" ]]; then
+  echo "ℹ️ Pack Updates ticket linked to $JIRA_TICKET: $PACK_UPDATES_TICKET"
+  while IFS= read -r issue; do
+    [[ -n "$issue" ]] && PLATONE_ISSUES+=("$issue")
+  done < <(
+    curl --fail-with-body \
+      --get \
+      --url "${JIRA_DOMAIN}/rest/api/3/search/jql" \
+      --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+      --header "Accept: application/json" \
+      --data-urlencode "jql=parent = ${PACK_UPDATES_TICKET}" \
+      --data-urlencode "fields=summary" \
+      --data-urlencode "maxResults=100" \
+    | jq -r '
+        .issues[]
+        | select(.fields.summary | contains("[Platone]"))
+        | .key
+      '
+  )
+else
+  echo "⚠️ No Pack Updates ticket linked to $JIRA_TICKET." >&2
 fi
 
-echo "ℹ️  Linked issues retrieved: ${LINKED_ISSUES[*]}"
-echo "ℹ️  Platone issues retrieved: ${PLATONE_ISSUES[*]}"
+# Dedupe the combined Platone issues list.
+if (( ${#PLATONE_ISSUES[@]} > 0 )); then
+  DEDUPED_ISSUES=()
+  while IFS= read -r issue; do
+    [[ -n "$issue" ]] && DEDUPED_ISSUES+=("$issue")
+  done < <(printf '%s\n' "${PLATONE_ISSUES[@]}" | sort -u)
+  PLATONE_ISSUES=("${DEDUPED_ISSUES[@]}")
+fi
+
+echo "ℹ️ Platone issues retrieved: ${PLATONE_ISSUES[*]}"
 
 # Check if release notes section for this component update ticket already exists in the release notes file
 COMPONENT_UPDATES_EXISTING_BODY=""

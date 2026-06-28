@@ -37,13 +37,6 @@ We support the following use cases:
 
 - [AKS Dynamic Placement](#aks-dynamic-placement) - Palette creates resources required for your AKS cluster.
 
-:::tip
-
-You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
-[`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
-
-:::
-
 Review the sections below to learn how to create a custom role in Azure and assign it to the service principal you want
 to use with Palette.
 
