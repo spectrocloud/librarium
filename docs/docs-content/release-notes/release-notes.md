@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 28, 2026 - Release 4.9.21 {#release-notes-4.9.b}
+## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
 
 ### Security Notices
 
@@ -272,7 +272,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.b Palette release is 4.9.19.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.22 Palette release is 4.9.19.
 
 :::
 
