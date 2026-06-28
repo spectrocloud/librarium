@@ -73,9 +73,9 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PRM-2688 -->
 
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
+<!-- - [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) and
   [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md) version 4.9.21 are now
-  available.
+  available. -->
 
 <!-- https://spectrocloud.atlassian.net/browse/PRM-2688 -->
 
