@@ -123,3 +123,44 @@ Do not change to a different storage pack after provisioning a cluster. You can 
 pack, but if you want to use a different storage pack altogether, we recommend you create another cluster.
 
 :::
+
+## Decoupled Control Plane and Worker Node Upgrades
+
+Connected (centrally managed) Edge Native clusters support upgrading the control plane independently from worker pools.
+You can enable the **Skip worker node update (Optional)** toggle on individual worker pools to defer their Kubernetes
+upgrade while the control plane advances.
+
+:::info
+
+This feature is only available for connected Edge Native clusters. Locally managed Edge clusters are not supported.
+
+:::
+
+When a cluster profile update bumps the Kubernetes version, Palette upgrades the control plane and any worker pools that
+do not have **Skip worker node update** enabled. Worker pools with the toggle enabled are skipped and stay at their
+current Kubernetes version.
+
+Palette enforces the Kubernetes [N-3 minor version skew](https://kubernetes.io/releases/version-skew-policy/). If
+enabling the toggle would cause a worker pool to fall more than three minor versions behind the control plane, Palette
+blocks the upgrade.
+
+Scale-up is not permitted while the toggle is enabled. Palette rejects scale-up requests on a pool with the toggle
+enabled, whether initiated manually or by the cluster autoscaler. To expand capacity, create a new worker pool and add
+Edge hosts to it instead.
+
+### Upgrade a Skipped Worker Pool
+
+To sync the Kubernetes version of a skipped worker pool with the current Kubernetes control plane version, disable the
+**Skip worker node update** toggle on that pool.
+
+:::danger
+
+Disabling **Skip worker node update** triggers a repave of the worker pool. Ensure you are ready to repave before
+disabling the toggle.
+
+:::
+
+For configuration details, refer to
+[Skip Worker Node Update](../../../clusters/cluster-management/node-pool.md#skip-worker-node-update). For step-by-step
+instructions to trigger the upgrade, refer to
+[Trigger Worker Node Upgrade](../../../clusters/cluster-management/cluster-updates.md#trigger-worker-node-upgrade).

@@ -133,9 +133,18 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
 2. Log in with the username and password you created during installation.
 
-3. In the **Network interfaces** section, beside **Bonds**, select **Create**.
+3. If you need to change the interface used for management traffic, locate the **Management Interface** field and select
+   the interface to use. Local UI can override the management interface selected during TUI configuration.
 
-4. Complete the fields on the **Create Bond** screen and select **Confirm**.
+   :::warning
+
+   Changing the management interface may cause Local UI connectivity loss.
+
+   :::
+
+4. In the **Network interfaces** section, beside **Bonds**, select **Create**.
+
+5. Complete the fields on the **Create Bond** screen and select **Confirm**.
 
    | **Parameter**                | **Description**                                                                                |
    | ---------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -156,9 +165,9 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
 
    :::
 
-5. In the **Network interfaces** section, beside **Bridges**, select **Create**.
+6. In the **Network interfaces** section, beside **Bridges**, select **Create**.
 
-6. Complete the fields on the **Create Bridge** screen and select **Confirm**.
+7. Complete the fields on the **Create Bridge** screen and select **Confirm**.
 
    | **Parameter**         | **Description**                                                                                                                                       |
    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |

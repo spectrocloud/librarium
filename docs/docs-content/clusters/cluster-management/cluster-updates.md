@@ -145,17 +145,17 @@ You can follow these steps to validate all cluster update approaches.
 
 ## Trigger Worker Node Upgrade
 
-If you have enabled the [**Skip worker node update (Optional)**](./node-pool.md#worker-node-pool) option for worker
-nodes on an AWS IaaS, MAAS, or VMware vSphere cluster, you can manually trigger a worker node upgrade at any time after
-updating the control plane.
+If you have enabled the [**Skip worker node update (Optional)**](./node-pool.md#skip-worker-node-update) option for
+worker nodes on an AWS IaaS, MAAS, VMware vSphere, or connected Edge Native cluster, you can manually trigger a worker
+node upgrade at any time after updating the control plane.
 
 This action repaves the worker nodes to match the control plane's Kubernetes version. This may incur downtime for
 workloads running on those nodes, so plan accordingly.
 
 ### Prerequisites
 
-- An active AWS IaaS, MAAS, or VMware vSphere cluster in Palette with the **Skip worker node update (Optional)** option
-  enabled.
+- An active AWS IaaS, MAAS, VMware vSphere, or connected Edge Native cluster in Palette with the **Skip worker node
+  update (Optional)** option enabled.
 
 - The cluster control plane must be updated to a newer Kubernetes version within the supported N-3 minor version skew.
 
