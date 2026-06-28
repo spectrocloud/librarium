@@ -1008,6 +1008,17 @@ let redirects = [
     from: `/clusters/edge/edgeforge-workflow/palette-canvos/build-rhel-stig-image/`,
     to: `/clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images/build-rhel-stig-image/`,
   },
+
+  // Image Pull Secret
+
+  {
+    from: `/enterprise-version/configure-image-pull-secret/`,
+    to: `/enterprise-version/system-management/configure-image-pull-secret/`,
+  },
+  {
+    from: `/vertex/configure-image-pull-secret/`,
+    to: `/vertex/system-management/configure-image-pull-secret/`,
+  },
 ];
 
 if (packRedirects.length > 0) {
