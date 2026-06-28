@@ -250,50 +250,53 @@ Kubernetes.
 
     :::
 
-8.  Navigate to the directory with the Palette VerteX installation zip file. Unzip the file to a **palette-install**
-    directory.
+8.  Navigate to the directory where you downloaded the Palette VerteX install zip file provided by our support team.
+    Unzip the file to a directory named `vertex-install`.
 
     ```shell
-    unzip release-*.zip -d palette-install
+    unzip charts.zip -d vertex-install
     ```
 
-9.  Navigate to the release directory inside **palette-install**.
+9.  Navigate to the `vertex-install` directory.
 
     ```shell
-    cd palette-install/charts/release-*
+    cd vertex-install
     ```
 
-10. In a code editor of your choice, open the **extras/cert-manager/values.yaml** file and replace the
-    `cainjectorImage`,`controllerImage`, `webhookImage`, and `amceResolverImage` image URLs and with your OCI image
-    registry URL and the `/spectro-images/` namespace.
+10. Open the file `extras/cert-manager/values.yaml` with a text editor of your choice. This example uses Vim.
 
-    ```yaml {2-5}
-    image:
-      cainjectorImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
-      controllerImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
-      webhookImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
-      amceResolverImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
-
-    featureGates: "AdditionalCertificateOutputFormats=true"
+    ```shell
+    vim extras/cert-manager/values.yaml
     ```
 
-    Consider the following example for reference.
+    Append `<your-registry-url>` to each image, along with the `<repository>` where you want to store your images.
 
-    ```yaml {2-5}
+    ```yaml
     image:
-      cainjectorImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
-      controllerImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
-      webhookImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
-      amceResolverImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
+      cainjectorImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
+      controllerImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
+      webhookImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
+      amceResolverImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
+    ```
 
-    featureGates: "AdditionalCertificateOutputFormats=true"
+    In the example below, we used `harbor.docs.spectro.dev` for the registry and `spectro-images` for the repository.
+
+    ```yaml {2-5} hideClipboard title="Example output"
+    image:
+      cainjectorImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
+      controllerImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
+      webhookImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
+      amceResolverImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
     ```
 
 11. Update the cert-manager chart using the following command.
 
     ```shell
-    helm upgrade --values extras/cert-manager/values.yaml \
-    cert-manager extras/cert-manager/cert-manager-*.tgz --install
+    helm upgrade --install cert-manager \
+      ./extras/cert-manager/cert-manager-*.tgz \
+      --namespace cert-manager \
+      --create-namespace \
+      --values ./extras/cert-manager/values.yaml
     ```
 
     You should receive an output similar to the following.
@@ -311,7 +314,9 @@ Kubernetes.
 12. Upgrade the Spectro Management CRDs chart.
 
     ```shell
-    helm upgrade --install spectro-mgmt-crds extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz
+    helm upgrade --install spectro-mgmt-crds \
+      extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
+      --values extras/spectro-mgmt-crds/values.yaml
     ```
 
     You should receive an output similar to the following.
@@ -339,10 +344,11 @@ Kubernetes.
 
     :::
 
-14. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step 13.
+14. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+    with the following command. Point to the `vertex/values.yaml` file from step 13.
 
     ```shell
-    helm upgrade --values palette/values.yaml \
+    helm upgrade --values vertex/values.yaml \
     image-swap extras/image-swap/image-swap-*.tgz --install
     ```
 
@@ -358,11 +364,13 @@ Kubernetes.
     TEST SUITE: None
     ```
 
-15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step 13.
+15. _(Proxy environments only)_ If you are upgrading a Palette VerteX instance in an environment where a network proxy
+    must be configured for Palette VerteX to access the internet, upgrade the reach-system chart with the following
+    command. Point to the `vertex/values.yaml` file from step 13.
 
     ```shell
-    helm upgrade --values palette/values.yaml \
-    reach-system extras/reach-system/reach-system-\*.tgz --install
+    helm upgrade --values vertex/values.yaml \
+    reach-system extras/reach-system/reach-system-*.tgz --install
     ```
 
     You should receive an output similar to the following.
@@ -380,8 +388,8 @@ Kubernetes.
 16. Upgrade Palette VerteX with the following command.
 
     ```shell
-    helm upgrade --values palette/values.yaml \
-    hubble palette/spectro-mgmt-plane-\*.tgz --install
+    helm upgrade --values vertex/values.yaml \
+    hubble vertex/spectro-mgmt-plane-*.tgz --install
     ```
 
     You should receive an output similar to the following.

@@ -59,150 +59,133 @@ match your environment.
 
 :::
 
-1. Open a terminal session and navigate to the directory with the Palette installation zip file. Unzip the file to a
-   **palette-install** directory.
+1.  Open a terminal session and navigate to the directory where you downloaded the Palette install ZIP file provided by
+    our support. Unzip the file to a directory named `palette-install`.
 
-   ```shell
-   unzip release-*.zip -d palette-install
-   ```
+    ```shell
+    unzip charts.zip -d palette-install
+    ```
 
-2. Navigate to the release directory inside **palette-install**.
+2.  Navigate to the `palette-install` directory.
 
-   ```shell
-   cd palette-install/charts/release-*
-   ```
+    ```shell
+    cd palette-install
+    ```
 
-3. Update the cert-manager chart using the following command.
+3.  Update the cert-manager chart using the following command.
 
-   ```shell
-   helm upgrade --values extras/cert-manager/values.yaml \
-   cert-manager extras/cert-manager/cert-manager-*.tgz --install
-   ```
+    ```shell
+    helm upgrade --install cert-manager \
+      ./extras/cert-manager/cert-manager-*.tgz \
+      --namespace cert-manager \
+      --create-namespace \
+      --values ./extras/cert-manager/values.yaml
+    ```
 
-   You should receive an output similar to the following.
+    ```shell hideClipboard title="Example output"
+    Release "cert-manager" has been upgraded. Happy Helming!
+    NAME: cert-manager
+    LAST DEPLOYED: Wed Jun 17 14:54:45 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 2
+    TEST SUITE: None
+    ```
 
-   ```shell
-   Release "cert-manager" has been upgraded. Happy Helming!
-   NAME: cert-manager
-   LAST DEPLOYED: Thu Feb 22 19:42:33 2024
-   NAMESPACE: default
-   STATUS: deployed
-   REVISION: 2
-   TEST SUITE: None
-   ```
+4.  Upgrade the Spectro Management CRDs chart.
 
-4. Upgrade the Spectro Management CRDs chart.
+    ```shell
+    helm upgrade --install spectro-mgmt-crds \
+      extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
+      --values extras/spectro-mgmt-crds/values.yaml
+    ```
 
-   ```shell
-   helm upgrade --install spectro-mgmt-crds \
-     extras/spectro-mgmt-crds/spectro-mgmt-crds-*.tgz \
-     --values extras/spectro-mgmt-crds/values.yaml
-   ```
+    ```shell hideClipboard title="Example output"
+    Release "spectro-mgmt-crds" has been upgraded. Happy Helming!
+    NAME: spectro-mgmt-crds
+    LAST DEPLOYED: Wed Jun 17 14:55:28 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 2
+    TEST SUITE: None
+    ```
 
-   You should receive an output similar to the following.
+5.  Prepare the Palette configuration file `values.yaml`. If you saved your `values.yaml` used during the Palette
+    installation, you can refer to it when upgrading. Ensure you carry over any necessary configurations, such as root
+    domains, certificates, image-swap paths, and registries. Refer to
+    [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) for basic
+    `values.yaml` guidance. For a full list of parameters, refer to
+    [Helm Configuration Reference](../../install-palette/install-on-kubernetes/palette-helm-ref.md).
 
-   ```shell
-   Release "spectro-mgmt-crds" has been upgraded. Happy Helming!
-   NAME: spectro-mgmt-crds
-   LAST DEPLOYED: Thu Feb 22 19:43:00 2024
-   NAMESPACE: default
-   STATUS: deployed
-   REVISION: 2
-   TEST SUITE: None
-   ```
+6.  _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+    with the following command. Point to the `palette/values.yaml` file from step 5.
 
-5. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
-   installation, you can reuse it for the upgrade. Alternatively, follow the
-   [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
-   `values.yaml`.
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    image-swap extras/image-swap/image-swap-*.tgz --install
+    ```
 
-   :::warning
+    ```shell hideClipboard title="Example output"
+    Release "image-swap" has been upgraded. Happy Helming!
+    NAME: image-swap
+    LAST DEPLOYED: Thu Feb 22 19:44:13 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 2
+    TEST SUITE: None
+    ```
 
-   Ensure that the `values.yaml` file is ready before proceeding. If you are using a self-hosted OCI registry, make sure
-   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
+7.  _(Proxy environments only)_ If you are upgrading a Palette instance in an environment where a network proxy must be
+    configured for Palette to access the internet, upgrade the reach-system chart with the following command. Point to
+    the `palette/values.yaml` file from step 5.
 
-   Include `/v2` in your endpoints if you are using a
-   [Harbor registry with a proxy cache](https://goharbor.io/docs/2.1.0/administration/configure-proxy-cache/) project.
-   Harbor proxy cache projects use `/v2` as part of their internal URL routing for cached images. For all other
-   registries, omit `/v2`, as the container runtime automatically appends `/v2` when making API calls. Including `/v2`
-   for non-proxy-cache registries results in a doubled `/v2/v2/` path, which causes image pull failures. For example:
-   `docker.io::harbor.example.org/v2/proxy-cache-project/docker.io`.
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    reach-system extras/reach-system/reach-system-*.tgz --install
+    ```
 
-   :::
+    ```shell hideClipboard title="Example output"
+    Release "reach-system" has been upgraded. Happy Helming!
+    NAME: reach-system
+    LAST DEPLOYED: Thu Feb 22 19:47:10 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 2
+    TEST SUITE: None
+    ```
 
-6. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
-   `palette/values.yaml` file from step 5.
+8.  Upgrade Palette with the following command.
 
-   ```shell
-   helm upgrade --values palette/values.yaml \
-   image-swap extras/image-swap/image-swap-*.tgz --install
-   ```
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    hubble palette/spectro-mgmt-plane-*.tgz --install
+    ```
 
-   You should receive an output similar to the following.
+    ```shell hideClipboard title="Example output"
+      Release "hubble" has been upgraded. Happy Helming!
+      NAME: hubble
+      LAST DEPLOYED: Wed Jun 17 15:44:47 2026
+      NAMESPACE: default
+      STATUS: deployed
+      REVISION: 2
+      TEST SUITE: None
+    ```
 
-   ```shell
-   Release "image-swap" has been upgraded. Happy Helming!
-   NAME: image-swap
-   LAST DEPLOYED: Thu Feb 22 19:44:13 2024
-   NAMESPACE: default
-   STATUS: deployed
-   REVISION: 2
-   TEST SUITE: None
-   ```
+9.  Use the following command to track the upgrade process.
 
-7. If you are upgrading a Palette instance in an environment that requires network proxy configuration, upgrade the
-   reach-system chart with the following command. Point to the `palette/values.yaml` file from step 5.
+    ```shell
+    kubectl get pods --all-namespaces --watch
+    ```
 
-   ```shell
-   helm upgrade --values palette/values.yaml \
-   reach-system extras/reach-system/reach-system-\*.tgz --install
-   ```
+    :::tip
 
-   You should receive an output similar to the following.
+    For a more user-friendly experience, consider using [K9s](https://k9scli.io/) or a similar tool to track the
+    upgrade.
 
-   ```shell
-   Release "reach-system" has been upgraded. Happy Helming!
-   NAME: reach-system
-   LAST DEPLOYED: Thu Feb 22 19:47:10 2024
-   NAMESPACE: default
-   STATUS: deployed
-   REVISION: 2
-   TEST SUITE: None
-   ```
+    :::
 
-8. Upgrade Palette with the following command.
-
-   ```shell
-   helm upgrade --values palette/values.yaml \
-   hubble palette/spectro-mgmt-plane-\*.tgz --install
-   ```
-
-   You should receive an output similar to the following.
-
-   ```shell
-   Release "hubble" has been upgraded. Happy Helming!
-   NAME: hubble
-   LAST DEPLOYED: Thu Feb 22 20:05:24 2024
-   NAMESPACE: default
-   STATUS: deployed
-   REVISION: 2
-   TEST SUITE: None
-   ```
-
-9. Use the following command to track the upgrade process.
-
-   ```shell
-   kubectl get pods --all-namespaces --watch
-   ```
-
-   :::tip
-
-   For a more user-friendly experience, consider using [K9s](https://k9scli.io/) or a similar tool to track the upgrade.
-
-   :::
-
-   The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces `cp-system`,
-   `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` are in the **Ready** status.
+    The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces
+    `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` are in the **Ready** status.
 
 ## Validate
 
@@ -216,7 +199,7 @@ match your environment.
    `App Version` column of `cert-manager`, `image-swap`, `reach-system`, and `hubble` to verify that they have the
    expected versions.
 
-   ```shell
+   ```shell hideClipboard title="Example output"
    NAME        	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART                   	APP VERSION
    cert-manager	default  	2       	2024-02-22 19:42:33.776829 +0100 CET	deployed	cert-manager-1.11.0     	1.11.0
    image-swap  	default  	2       	2024-02-22 19:44:13.209592 +0100 CET	deployed	image-swap-v1.5.2-spectro-4.1.1	1.5.2
@@ -234,7 +217,7 @@ match your environment.
    The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`,
    and `ui-system` namespaces. All deployments should have the status `Running`.
 
-   ```shell
+   ```shell hideClipboard title="Example output"
    cp-system        spectro-cp-ui-689984f88d-54wsw             Running
    hubble-system    auth-85b748cbf4-6drkn                      Running
    hubble-system    auth-85b748cbf4-dwhw2                      Running

@@ -1,0 +1,18 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-begin
+---
+
+The following instructions are written agnostic to the Kubernetes distribution you are using. Depending on the
+underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match
+your environment. Reach out to our support team if you need assistance.
+
+1.  Open a terminal session and navigate to the directory where you downloaded the {props.version} install ZIP file
+    provided by our support team. Unzip the file to a directory named <code>{props.helm}-install</code>.
+
+    <CodeBlock language="shell">{`unzip charts.zip -d ${props.helm}-install`}</CodeBlock>
+
+
+2.  Navigate to the <code>{props.helm}-install</code> directory.
+
+    <CodeBlock language="shell">{`cd ${props.helm}-install`}</CodeBlock>
