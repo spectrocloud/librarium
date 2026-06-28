@@ -141,8 +141,8 @@ You can reference or copy a built-in script when you create your own.
 
 ### How Templates and Auto-Install Work Together
 
-1. **Build**: The [golden image builder VM](./golden-images.md#build-a-golden-image) boots with an ISO and auto-install
-   script. The OS installs unattended.
+1. **Build**: The [golden image builder VM](./golden-images.md#build-the-os) boots with an ISO and auto-install script.
+   The OS installs unattended.
 2. **Finalize**: After the OS is installed, you apply a finalization template. The seal script generalizes the image.
 
 Use auto-install scripts to install the OS. Use finalization templates to prepare the image for cloning.

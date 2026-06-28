@@ -11,7 +11,16 @@ tags: ["vmo", "vm launchpad", "golden images"]
 A golden image is a sealed, reusable base system image. Golden images standardize OS installations and create VMs from
 [templates](./templates.md) with validated configurations.
 
-The following diagram displays the steps to build a golden image to use as a reference for a template.
+Building a golden image involves the following phases:
+
+1. **[Prepare a source DataVolume](#prepare-a-source-datavolume)** - upload or create the ISO installer or disk image
+   that the builder VM boots from.
+2. **[Build the OS](#build-the-os)** - launch a builder VM and install the operating system.
+3. **[Finalize and seal the image](#finalize-and-seal-the-image)** - generalize the installed OS into a sealed, reusable
+   image.
+4. **[Use the golden image](#next-steps)** - create templates or VMs from the sealed image.
+
+The following diagram illustrates this workflow.
 
 ![Screenshot of golden image workflow](/vmo/vm-management_vmo_golden-images_workflow-4-9.webp)
 
@@ -35,7 +44,16 @@ networks, such as bridge networks, for the build workflow.
 
 After the build is complete, templates and VMs created from the golden image can use the pod network or a custom NAD.
 
-## Upload ISO/Disk Image
+## Prepare a Source DataVolume
+
+Before you build a golden image, prepare the source DataVolume that the builder VM boots from. Use one of the following
+methods.
+
+<Tabs>
+
+<TabItem value="upload-image-catalog" label="Upload via Image Catalog">
+
+Upload an ISO installer or a prebuilt disk image from **Image Catalog** > **Golden Images**.
 
 1. Navigate to **Image Catalog** > **Golden Images**.
 
@@ -43,23 +61,24 @@ After the build is complete, templates and VMs created from the golden image can
 
 3. Complete the **Upload ISO/Disk Image** page and select **Upload**.
 
-   | **Parameter**       | **Description**                                                                                                                                                                                                                                    |
-   | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **DataVolume Name** | Enter a unique name for the ISO installer or disk image.                                                                                                                                                                                           |
-   | **Namespace**       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace. If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and select |
-   | **Add Existing**.   |
-   | **Storage Class**   | Select the storage class from the drop-down menu.                                                                                                                                                                                                  |
-   | **Volume Size**     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                                                                                                                                    |
-   | **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                                                                                                                                             |
-   | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2.                                                                                                                     |
+   | **Parameter**       | **Description**                                                                                                                                                                                                                                                      |
+   | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **DataVolume Name** | Enter a unique name for the ISO installer or disk image.                                                                                                                                                                                                             |
+   | **Namespace**       | Select the namespace from the drop-down menu. Use `vmo-golden-images` unless your environment uses a different namespace. If your environment does not display the default namespaces, navigate to **Infrastructure** > **Namespaces**, and select **Add Existing**. |
+   | **Storage Class**   | Select the storage class from the drop-down menu.                                                                                                                                                                                                                    |
+   | **Volume Size**     | Set the DataVolume disk size in `GiB` or `TiB`.                                                                                                                                                                                                                      |
+   | **Image Type**      | Select **ISO Installer** or **Golden Image**. A golden image is a prebuilt disk image.                                                                                                                                                                               |
+   | **Image File**      | Select **Choose File** or drag and drop the file. ISO installer files use the ISO format. Golden image files use IMG or QCOW2.                                                                                                                                       |
 
    Large ISO files can take minutes to upload. VM Launchpad displays progress during the upload phase.
 
 ![Screenshot of ISO upload](/vmo/vm-management_vmo_golden-images_iso-upload-4-9.webp)
 
-## Create an ISO DataVolume from Infrastructure
+</TabItem>
 
-You can also create an ISO DataVolume from **Infrastructure** > **Storage** by uploading an ISO file or providing a URL.
+<TabItem value="create-from-infrastructure" label="Create from Infrastructure">
+
+Upload an ISO file or fetch one from a URL from **Infrastructure** > **Storage**.
 
 1. Navigate to **Infrastructure** > **Storage**.
 
@@ -80,7 +99,11 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
    Large ISO files may take a few minutes to upload. VM Launchpad displays the upload progress during the create phase.
 
-## Create Blank DataVolume
+</TabItem>
+
+<TabItem value="blank-datavolume" label="Blank DataVolume">
+
+Create an empty DataVolume from **Infrastructure** > **Storage**.
 
 1. Navigate to **Infrastructure** > **Storage**.
 
@@ -98,7 +121,11 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
    | **Access Mode**   | Select `ReadWriteOnce`, `ReadWriteMany`, or `ReadOnlyMany`. For more information on these access modes, refer to [Kubernetes Persistent Volumes Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes). |
    | **Volume Mode**   | Select `Block` or `Filesystem`.                                                                                                                                                                                                              |
 
-## Build a Golden Image
+</TabItem>
+
+</Tabs>
+
+## Build the OS
 
 1. Navigate to **Image Catalog** > **Golden Images**.
 
@@ -165,37 +192,40 @@ You can also create an ISO DataVolume from **Infrastructure** > **Storage** by u
 
    3. Wait for the OS installation to finish and the VM to reboot.
 
-7. When the OS is installed and ready, select **Finalize** on the builder VM.
+## Finalize and Seal the Image
 
-8. In the **Finalize** dialog, select a finalization template for the seal script.
+1. When the OS is installed and ready, select **Finalize** on the builder VM.
+
+2. In the **Finalize** dialog, select a finalization template for the seal script.
 
    - **None** stops the VM and keeps the image as-is. The image is not generalized.
 
-   - **With Script** runs the selected finalization template's seal script to generalize the image.
+   - **With Script** runs the selected finalization template's seal script to generalize the image. Select the template
+     for your operating system:
 
-9. For Linux, select a template such as **Ubuntu / Debian** or **RHEL / CentOS / Fedora**.
+     - For Linux, select a template such as **Ubuntu / Debian** or **RHEL / CentOS / Fedora**.
 
-10. For Windows, select **Windows**. This runs `sysprep` with `/generalize /oobe /shutdown`.
+     - For Windows, select **Windows**. This runs `sysprep` with `/generalize /oobe /shutdown`.
 
-11. Select **Finalize**. VM Launchpad completes the following actions:
+3. Select **Finalize**. VM Launchpad completes the following actions:
 
-    - Stops the VM.
+   - Stops the VM.
 
-    - Ejects the install media.
+   - Ejects the install media.
 
-    - Starts the VM to run the seal script, if you selected one.
+   - Starts the VM to run the seal script, if you selected one.
 
-    - Waits for the guest agent.
+   - Waits for the guest agent.
 
-    - Runs the finalization template script with cloud-init or a similar mechanism.
+   - Runs the finalization template script with cloud-init or a similar mechanism.
 
-    - Stops the VM again and removes the builder VM.
+   - Stops the VM again and removes the builder VM.
 
-Refer to [finalization templates](./image-customization.md) for more information on using finalization scripts to seal
-the golden image.
+   For more information on using finalization scripts to seal the golden image, refer to
+   [finalization templates](./image-customization.md).
 
-12. When the process is complete, the DataVolume is a sealed golden image. The image appears under **Image Catalog** >
-    **Golden Images** and as a DataVolume under **Infrastructure** > **Storage**.
+4. When the process is complete, the DataVolume is a sealed golden image. The image appears under **Image Catalog** >
+   **Golden Images** and as a DataVolume under **Infrastructure** > **Storage**.
 
 ## Next Steps
 

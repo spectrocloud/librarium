@@ -122,49 +122,94 @@ templates, use a sealed and generalized golden image as the source.
     IP/CIDR, gateway, and DNS for each VM. Use **Fill Down** to auto-increment IPs by incrementing the last octet (for
     example, `192.168.1.10/24` → `192.168.1.11/24`, `192.168.1.12/24`). Then select **Next**.
 
-    :::info
-
     The file server is available on the **Pod Network (masquerade)** network. If you need to install QEMU or other
     binaries, install them during the golden image build over the **Pod Network (masquerade)** network.
-
-    :::
 
 11. _(Optional)_ For **Hardware**, configure any advanced hardware settings required for the VM. You can skip this step
     for basic VMs. Then select **Next**.
 
-    <details>
+    <Tabs>
 
-    <summary>Display optional advanced hardware settings.</summary>
+    <TabItem value="firmware" label="Firmware">
 
-    | **Category**         | **Setting**                   | **Description**                                                                                               |
-    | -------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------- |
-    | **Firmware**         | **UEFI / EFI Boot**           | Enable UEFI instead of BIOS.                                                                                  |
-    | **Firmware**         | **Secure Boot**               | Requires EFI. Enables SMM.                                                                                    |
-    | **Firmware**         | **Persistent EFI Variables**  | Persist NVRAM. Requires the VMPersistentState feature gate.                                                   |
-    | **Firmware**         | **Machine Type**              | Override the default machine type, such as `q35`.                                                             |
-    | **Firmware**         | **SMBIOS**                    | Optionally configure UUID and serial values.                                                                  |
-    | **CPU Advanced**     | **CPU Model**                 | Select `host-passthrough` or `host-model`.                                                                    |
-    | **CPU Advanced**     | **Dedicated CPU Placement**   | Pin vCPUs to physical cores.                                                                                  |
-    | **CPU Advanced**     | **NUMA Topology Passthrough** | Pass host NUMA topology to the guest.                                                                         |
-    | **CPU Advanced**     | **CPU Features**              | Add require, force, disable, or forbid rules for specific CPU features.                                       |
-    | **Devices**          | **Virtio RNG**                | Add a random number generator.                                                                                |
-    | **Devices**          | **Tablet Input**              | Add a USB input device for pointer precision.                                                                 |
-    | **Devices**          | **Headless**                  | Create the template without a graphics device.                                                                |
-    | **Devices**          | **Video Type**                | Select VGA, Virtio, or `Bochs`.                                                                               |
-    | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
-    | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
-    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. VM Launchpad enables these settings by default.                                          |
-    | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`.                                       |
-    | **Clock and Timers** | **Clock Mode**                | Select UTC or timezone.                                                                                       |
-    | **Clock and Timers** | **Timers**                    | Configure PIT, RTC, HPET, or HyperV timers.                                                                   |
-    | **Memory**           | **Hugepages**                 | Enable large memory pages and set the page size to 2Mi or 1Gi.                                                |
-    | **Memory**           | **Overcommit Guest Overhead** | Exclude per-VM overhead from the memory request.                                                              |
-    | **Security**         | **Confidential Computing**    | Select AMD SEV, SEV-SNP, or Intel TDX when supported by the cluster.                                          |
-    | **Host Devices**     | **PCI or GPU passthrough**    | Attach PCI or GPU devices discovered and registered in KubeVirt. Use **Cluster Device Management** if needed. |
+    | **Setting**                  | **Description**                                             |
+    | ---------------------------- | ----------------------------------------------------------- |
+    | **UEFI / EFI Boot**          | Enable UEFI instead of BIOS.                                |
+    | **Secure Boot**              | Requires EFI. Enables SMM.                                  |
+    | **Persistent EFI Variables** | Persist NVRAM. Requires the VMPersistentState feature gate. |
+    | **Machine Type**             | Override the default machine type, such as `q35`.           |
+    | **SMBIOS**                   | Optionally configure UUID and serial values.                |
 
-    </details>
+    </TabItem>
 
-    :::info
+    <TabItem value="cpu-advanced" label="CPU Advanced">
+
+    | **Setting**                   | **Description**                                                         |
+    | ----------------------------- | ----------------------------------------------------------------------- |
+    | **CPU Model**                 | Select `host-passthrough` or `host-model`.                              |
+    | **Dedicated CPU Placement**   | Pin vCPUs to physical cores.                                            |
+    | **NUMA Topology Passthrough** | Pass host NUMA topology to the guest.                                   |
+    | **CPU Features**              | Add require, force, disable, or forbid rules for specific CPU features. |
+
+    </TabItem>
+
+    <TabItem value="devices" label="Devices">
+
+    | **Setting**         | **Description**                                                            |
+    | ------------------- | -------------------------------------------------------------------------- |
+    | **Virtio RNG**      | Add a random number generator.                                             |
+    | **Tablet Input**    | Add a USB input device for pointer precision.                              |
+    | **Headless**        | Create the template without a graphics device.                             |
+    | **Video Type**      | Select Default VGA, Virtio, VGA or Bochs.                                  |
+    | **TPM**             | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state. |
+    | **USB Redirection** | Enable client passthrough. Requires KubeVirt 0.44 or later.                |
+
+    </TabItem>
+
+    <TabItem value="features" label="Features">
+
+    | **Setting**               | **Description**                                                         |
+    | ------------------------- | ----------------------------------------------------------------------- |
+    | **ACPI** and **APIC**     | Enable ACPI or APIC. VM Launchpad enables these settings by default.    |
+    | **HyperV Enlightenments** | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`. |
+
+    </TabItem>
+
+    <TabItem value="clock-and-timers" label="Clock and Timers">
+
+    | **Setting**    | **Description**                             |
+    | -------------- | ------------------------------------------- |
+    | **Clock Mode** | Select UTC or timezone.                     |
+    | **Timers**     | Configure PIT, RTC, HPET, or HyperV timers. |
+
+    </TabItem>
+
+    <TabItem value="memory" label="Memory">
+
+    | **Setting**                   | **Description**                                                |
+    | ----------------------------- | -------------------------------------------------------------- |
+    | **Hugepages**                 | Enable large memory pages and set the page size to 2Mi or 1Gi. |
+    | **Overcommit Guest Overhead** | Exclude per-VM overhead from the memory request.               |
+
+    </TabItem>
+
+    <TabItem value="security" label="Security">
+
+    | **Setting**                | **Description**                                                      |
+    | -------------------------- | -------------------------------------------------------------------- |
+    | **Confidential Computing** | Select AMD SEV, SEV-SNP, or Intel TDX when supported by the cluster. |
+
+    </TabItem>
+
+    <TabItem value="host-devices" label="Host Devices">
+
+    | **Setting**                | **Description**                                                                                               |
+    | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
+    | **PCI or GPU passthrough** | Attach PCI or GPU devices discovered and registered in KubeVirt. Use **Cluster Device Management** if needed. |
+
+    </TabItem>
+
+    </Tabs>
 
     The **CPU Model** drop-down menu is populated dynamically from the cluster and lists only the models supported by at
     least one worker node that can schedule VMs, discovered from KubeVirt's
@@ -175,9 +220,9 @@ templates, use a sealed and generalized golden image as the source.
     `<ModelName> (unsupported in current cluster)` so the value is not silently dropped. VM Launchpad also warns you
     when the selected CPU model is unavailable on all nodes or is available only on some nodes.
 
-    :::
-
-12. On the **Lifecycle** page, configure snapshot policy and Cloud-Init settings.
+12. On the **Lifecycle** page, configure snapshot policy and Cloud-Init settings. Snapshot policies define automatic
+    snapshot schedules, including interval, retention count, and time window. VMs created from a template inherit the
+    template's snapshot policy annotation if one is set.
 
     The following table describes the snapshot policy options. Refer to [Snapshot Policies](./snapshots.md) for more
     information.
@@ -197,13 +242,6 @@ templates, use a sealed and generalized golden image as the source.
     | **Max Retention**   | Enter the number of snapshots to keep per VM. Shorter intervals and higher retention values can increase storage usage. |
 
     </details>
-
-    :::info
-
-    Snapshot policies define automatic snapshot schedules, including interval, retention count, and time window. VMs
-    created from a template inherit the template's snapshot policy annotation if one is set.
-
-    :::
 
     The following table describes the **Cloud-Init** options.
 
