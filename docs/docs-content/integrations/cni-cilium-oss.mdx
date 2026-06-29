@@ -159,6 +159,34 @@ You can work around the issue by using one of the two following methods:
 
 </Tabs>
 
+## Configure Cilium for Canonical Kubernetes Clusters on MAAS
+
+:::warning
+
+Existing Canonical Kubernetes 1.35 clusters that use Cilium CNI (Canonical K8s) pack carry a
+repave risk. Updating to a release that includes Cilium support does not start a new repave, but it does
+resume any repave that was previously intercepted. To avoid an unexpected repave, enable
+[Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md), allow any pending
+repaves to complete, and then resume agent upgrades.
+
+:::
+
+<VersionedLink text="Canonical Kubernetes" url="/integrations/packs/?pack=kubernetes-ck8s" /> clusters on MAAS support the
+Cilium pack as a Container Network Interface (CNI). This support is available for Canonical Kubernetes 1.35
+and later. Use the Cilium pack to model and manage Cilium declaratively in your cluster profile instead of relying on the
+Cilium CNI bundled with the Canonical Kubernetes pack.
+
+To configure the Cilium pack for a Canonical Kubernetes cluster, complete the following steps in the pack settings.
+
+1. In the **Presets** section, set the **Mode** to **Cluster Pool**.
+
+2. Set the pod CIDR range that the cluster pool uses. The following example uses the `192.168.0.0/16` range.
+
+   ```yaml
+   clusterPoolIPv4PodCIDRList:
+     - "192.168.0.0/16"
+   ```
+
 ## Terraform
 
 You can reference the Cilium pack in Terraform with the following data resource.

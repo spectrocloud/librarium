@@ -53,8 +53,21 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
 ## Limitations
 
-The Canonical Kubernetes pack for deployments in MAAS environments is a Tech Preview feature and does not support
-cluster backups with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
+<!-- prettier-ignore-start -->
+
+The Canonical Kubernetes pack for deployments in MAAS environments does not support the following:
+
+- OpenID Connect (OIDC)
+- Network Time Protocol (NTP)
+- SSH key management
+- HashiCorp Cloud Platform (HCP) / Linux Container Daemon (LXD)
+- The <VersionedLink
+  text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss" /> pack is available as a Container Network Interface
+  (CNI) for Canonical Kubernetes 1.35 and later. For configuration steps, refer
+  to <VersionedLink
+  text="Configure Cilium for Canonical Kubernetes Clusters on MAAS" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" />.
+
+<!-- prettier-ignore-end -->
 
 ## Palette MAAS Distribution
 
@@ -68,8 +81,8 @@ Palette provides the following distributions for MAAS environments.
 
 :::preview
 
-The **Canonical Kubernetes** and **OpenShift** packs for deployments in MAAS environments are Tech Preview features and
-are subject to change. Do not use these features in production workloads.
+The **OpenShift** pack for deployment in MAAS environments is a Tech Preview feature and is subject to change. Do not
+use this feature in production workloads.
 
 :::
 
