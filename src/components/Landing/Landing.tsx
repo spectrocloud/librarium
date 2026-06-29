@@ -1,6 +1,20 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fas, faCubes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowsRotate,
+  faBookOpen,
+  faBrain,
+  faChartLine,
+  faCode,
+  faCubes,
+  faDesktop,
+  faGears,
+  faGlobe,
+  faMicrochip,
+  faPlug,
+  faShieldHalved,
+  faWandMagicSparkles,
+} from "@fortawesome/free-solid-svg-icons";
 import { library, config, findIconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { IconDefinition, IconName } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -12,9 +26,24 @@ import styles from "./Landing.module.scss";
 // shrink once the JS-injected styles arrive.
 config.autoAddCss = false;
 
-// Register the entire free-solid icon set so any solid icon can be selected by
-// name from Markdown (for example, icon="rocket") without adding imports here.
-library.add(fas);
+// Register only the icons the landing page uses, so they can be selected by name
+// from Markdown (for example, icon="plug"). To use a new icon, import it above and
+// add it to this list.
+library.add(
+  faArrowsRotate,
+  faBookOpen,
+  faBrain,
+  faChartLine,
+  faCode,
+  faCubes,
+  faDesktop,
+  faGears,
+  faGlobe,
+  faMicrochip,
+  faPlug,
+  faShieldHalved,
+  faWandMagicSparkles
+);
 
 // Resolve a FontAwesome solid icon name to a definition, falling back to a generic icon.
 function resolveIcon(name?: string): IconDefinition {
