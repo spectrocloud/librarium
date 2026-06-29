@@ -19,7 +19,7 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8884 -->
 
-- The LocalTUI installation flow now detects Kairos partitions on all disks and blocks the install with a clear message
+- The Local TUI installation flow now detects Kairos partitions on all disks and blocks the install with a clear message
   identifying the affected disks, preventing unpredictable behavior from stale partitions.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
@@ -33,7 +33,7 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-9004 -->
 
 - Fixed an issue where Palette Agent upgrades were triggered on nodes in a multi-node cluster even when agent upgrades
-  were paused, caused by a missing or delayed run config at bootup that incorrectly forced an upgrade and introduced
+  were paused, caused by a missing or delayed run config at boot time that incorrectly forced an upgrade and introduced
   version skew across the cluster.
 
 ## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
