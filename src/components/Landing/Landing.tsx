@@ -1,10 +1,16 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas, faCubes } from "@fortawesome/free-solid-svg-icons";
-import { library, findIconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { library, config, findIconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { IconDefinition, IconName } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import VersionedLink from "../VersionedLink";
 import styles from "./Landing.module.scss";
+
+// Ship FontAwesome's CSS statically and stop the core from injecting it at runtime.
+// Otherwise the SVGs render at their intrinsic size on first paint and visibly
+// shrink once the JS-injected styles arrive.
+config.autoAddCss = false;
 
 // Register the entire free-solid icon set so any solid icon can be selected by
 // name from Markdown (for example, icon="rocket") without adding imports here.
