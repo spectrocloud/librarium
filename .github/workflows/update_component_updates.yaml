@@ -176,3 +176,12 @@ jobs:
           gh api \
             repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
             -f body="❌ Failed to update component updates. Please check the workflow logs."
+
+      - name: Comment on PR when job completes successfully
+        if: steps.check.outputs.run == 'true' && success() && github.event.issue.pull_request
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          gh api \
+            repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
+            -f body="✅ Component updates updated successfully."
