@@ -20,13 +20,37 @@ For the VM Appliance, Cilium is used to provide a way to achieve that goal. It d
 requirements for the host network configuration and for the Kubernetes worker nodes in order to have valid network
 targets to bridge the VMs onto.
 
-This page examines either a two-NIC, one-bond network configuration deployment or a four-NIC, two-bond network
-configuration deployment. You can do alternative configurations but they must have a bridge of `br0` as a prerequisite.
+This page examines a two-NIC, one-bond network configuration and a four-NIC, two-bond network configuration. You can use
+alternative configurations, but they must include a `br0` bridge.
+
+## Management and Cluster Traffic
+
+Launchpad for VMs hosts can use separate network interfaces for management traffic and Kubernetes cluster traffic.
+Management traffic includes Local UI access, communication between hosts, and content synchronization.
+
+You can configure the management interface in the Edge Installer `user-data` file. A selection made in the TUI overrides
+the value from `user-data`. After initial setup, a selection made in Local UI overrides the value from the TUI. If no
+management interface is selected, the host uses the network interface associated with the default route.
+
+Kubernetes cluster traffic uses the interface selected during cluster creation. This includes node IP selection,
+Kubernetes control plane traffic, etcd traffic, and traffic for the cluster virtual IP address (VIP). For Launchpad for
+VMs, this is the interface selected in the **Cilium and MetalLB interface** field.
+
+:::warning
+
+Selecting a management interface or a cluster traffic interface does not change how the host routes network traffic. If
+multiple adapters use the same subnet and each adapter has a default route, traffic may leave through a different
+adapter than expected. This may prevent control plane nodes from successfully joining the cluster.
+
+For best results, place management and cluster traffic on separate subnets and configure both interfaces explicitly.
+
+:::
 
 ## Two NICs, One Bond Configuration
 
 When network interfaces are limited, NICs can be configured with a single bond (`bond0`) and bridge (`br0`) that carry
-multiple VLANs. The following table and image present one possible example.
+multiple VLANs. This configuration assumes that you use two Fiber Channel adapters for storage. The following table and
+image present one possible example.
 
 | Interface  | Type           | Consisting of     | VLAN   | CIDR           | Gateway    |
 | ---------- | -------------- | ----------------- | ------ | -------------- | ---------- |

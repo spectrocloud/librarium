@@ -7,9 +7,8 @@ sidebar_custom_props:
   icon: "admin"
 ---
 
-The Spectro Cloud management platform application captures audit logs to track the user interaction with the application
-resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit
-logs.
+Palette captures audit logs to track user interaction with the application resources along with the timeline. For
+certain resources, the system-level modifications are also captured in the audit logs.
 
 The audit log contains information about the resource and the user who performed the action. The user or the system
 action on the resource is classified as _Create_, _Update_, and _Delete_. Every resource is categorized as a type that
@@ -24,10 +23,10 @@ across all projects and tenant actions. The project scope audits show the activi
 
 2.  Select a project to view project scope audit logs or select **Tenant Admin** to view tenant scope audit logs.
 
-    - Users must have the **Project Viewer** role with `audit.get` and `audit.list` permissions for the selected project
-      to access the audit logs.
-    - Users must have the **Tenant Admin** role or the `audit.get` and `audit.list` permissions at the tenant scope to
-      access the audit logs.
+    - The **Project Viewer** role with `audit.get` and `audit.list` permissions for the selected project are required to
+      access the project scope audit logs.
+    - The **Tenant Admin** role or the `audit.get` and `audit.list` permissions at the tenant scope are required to
+      access the tenant scope audit logs.
 
 3.  Navigate to the left main menu and select **Audit Logs**.
 
@@ -47,14 +46,28 @@ For certain resources, like cluster profiles, you can associate a custom update 
 event log. On a successful save of a cluster profile, you will be prompted to provide an update note about the changes
 made to the profile. This message will be shown when you select an audit log from the list.
 
-## Push Audit Trails to Amazon CloudWatch
+## Push Audit Trails to Amazon CloudWatch or Splunk
 
 You can push the compliance, management, operational, and risk audit logs to
-[Amazon CloudWatch](https://aws.amazon.com/cloudwatch/). This enables continuous monitoring, security analysis, resource
-tracking, and troubleshooting of the workload cluster using the event history.
+[Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) or
+[Splunk](https://help.splunk.com/en/splunk-observability-cloud/get-started). This enables continuous monitoring,
+security analysis, resource tracking, and troubleshooting of the workload cluster using the event history.
 
 ### Prerequisites
 
+<Tabs queryString="platform">
+
+<TabItem label="Splunk" value="splunk">
+
+Configure a HTTP Event Collector (HEC) in Splunk before configuring a Palette audit trail.
+
+Refer to the
+[Set up and use HTTP Event Collector in Splunk Web](https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/10.4/get-data-with-http-event-collector/set-up-and-use-http-event-collector-in-splunk-web)
+guide for more information.
+
+</TabItem>
+
+<TabItem label="Amazon CloudWatch" value="cloudwatch">
 Ensure that the IAM user or the ROOT user role created has the following IAM policy included for Amazon CloudWatch.
 
 ```json
@@ -77,6 +90,10 @@ Ensure that the IAM user or the ROOT user role created has the following IAM pol
 }
 ```
 
+</TabItem>
+
+</Tabs>
+
 ### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
@@ -88,8 +105,28 @@ Ensure that the IAM user or the ROOT user role created has the following IAM pol
 
 4. Fill in the following details.
 
+   <Tabs queryString="platform">
+
+   <TabItem label="Splunk" value="splunk">
+
    - **Audit Name**: Custom name to identify the logs.
-   - **Type**: Choice of monitoring service. Currently, CloudWatch is available.
+   - **Type**: Choice of monitoring service. Select **Splunk**.
+   - **HEC endpoint**: HEC URL retrieved from the Splunk console.
+   - **Token**: HEC token retrieved from the Splunk console.
+   - **Advanced Configuration**: Provide optional configuration for log routing and security.
+     - **Index**: Route logs to a specific Splunk index. Leave blank to use the token default.
+     - **Source**: Set a custom source identifier for easier filtering in Splunk searches. Leave blank to use the
+       default.
+     - **Certificate**: Upload your server’s certificate if your Splunk instance uses a self-signed certificate.
+     - **TLS Verification**: Enabled by default. Disable if your endpoint uses a self-signed certificate and you choose
+       not to upload it.
+
+   </TabItem>
+
+   <TabItem label="Amazon CloudWatch" value="cloudwatch">
+
+   - **Audit Name**: Custom name to identify the logs.
+   - **Type**: Choice of monitoring service. Select **CloudWatch**.
    - **Group**: The log group name obtained from CloudWatch logs for audit trail creation.
    - **Region**: The region of the AWS account.
    - **Credentials** : Use an **Access Key** and **Secret Access Key** to validate the AWS account for pushing the audit
@@ -98,7 +135,13 @@ Ensure that the IAM user or the ROOT user role created has the following IAM pol
      from Palette.
    - **Stream (Optional)**: CloudWatch log stream for audit trail creation.
 
-5. Select **Confirm** to complete the audit trail configuration. Audit trails can be edited and deleted using the
+   </TabItem>
+
+   </Tabs>
+
+5. Select **Validate** to verify your configuration.
+
+6. Select **Confirm** to complete the audit trail configuration. Audit trails can be edited and deleted using the
    **three-dot Menu**.
 
 ## Resources

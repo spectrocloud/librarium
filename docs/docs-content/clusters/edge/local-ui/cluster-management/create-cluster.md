@@ -140,6 +140,16 @@ management.
    you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
    the control plane will be considered a leader node.
 
+   :::info
+
+   When **Allow worker capability** is disabled, the Palette Edge node agent adds a taint to all nodes in the control
+   plane pool to prevent workloads from being scheduled on any control plane node. If you remove the taint manually, it
+   is automatically added again by the Palette Edge node agent. To keep the taint removed, add
+   `DisableWorkerNodeCapReconcile` to `stylus.featureGate` in the OS pack before creating the cluster. For more
+   information, refer to [Feature Gates](../../edge-configuration/installer-reference.md#feature-gates).
+
+   :::
+
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
 
