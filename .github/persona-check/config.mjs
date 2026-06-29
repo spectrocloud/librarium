@@ -41,6 +41,11 @@ export default {
   // File extensions eligible for review.
   extensions: [".md", ".mdx"],
 
+  // Safety cap on how many files a single run will review (each file is one LLM
+  // call). Applies to every selection mode, including `files=all`. Override
+  // per-run with `max_files=N`; `max_files=0` disables the cap.
+  maxFiles: 10,
+
   // ---------------------------------------------------------------------------
   // Questions (requirement #3)
   // ---------------------------------------------------------------------------
@@ -91,6 +96,7 @@ export default {
       "- `question=\"...\"` — free-text question, or `question_key=` a preset; see the [available question keys](https://github.com/spectrocloud/librarium/blob/master/.github/persona-check/config.mjs)",
       "- `files=all` or `files=\"path/a.md,path/b.mdx\"` (default: changed docs above the threshold)",
       `- \`threshold=\` — minimum changed lines to review (default: ${this.threshold})`,
+      `- \`max_files=\` — cap how many files are reviewed per run (default: ${this.maxFiles}; \`0\` = no limit)`,
       "",
       "Examples:",
       "",

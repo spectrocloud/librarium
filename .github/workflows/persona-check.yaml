@@ -93,7 +93,7 @@ jobs:
             core.setOutput("trigger", trigger);
 
             // Parse `key=value` overrides from the command line (comment only).
-            const out = { provider: "", model: "", persona: "", question: "", question_key: "", files: "", threshold: "" };
+            const out = { provider: "", model: "", persona: "", question: "", question_key: "", files: "", threshold: "", max_files: "" };
             const cmdLine = body.split("\n").find(l => l.trim().toLowerCase().startsWith("/persona-check")) || "";
             const arg = cmdLine.replace(/^\s*\/persona-check/i, "");
             const re = /(\w+)=(?:"([^"]*)"|'([^']*)'|(\S+))/g;
@@ -152,6 +152,7 @@ jobs:
           PR_NUMBER: ${{ steps.resolve.outputs.pr_number }}
           FILES_OVERRIDE: ${{ steps.resolve.outputs.files }}
           THRESHOLD_OVERRIDE: ${{ steps.resolve.outputs.threshold }}
+          MAX_FILES_OVERRIDE: ${{ steps.resolve.outputs.max_files }}
         with:
           script: |
             const fs = require("fs");
@@ -163,6 +164,8 @@ jobs:
             const filesOverride = (process.env.FILES_OVERRIDE || "").trim();
             const thrRaw = (process.env.THRESHOLD_OVERRIDE || "").trim();
             const threshold = thrRaw && !Number.isNaN(parseInt(thrRaw, 10)) ? parseInt(thrRaw, 10) : cfg.threshold;
+            const maxRaw = (process.env.MAX_FILES_OVERRIDE || "").trim();
+            const maxFiles = maxRaw && !Number.isNaN(parseInt(maxRaw, 10)) ? parseInt(maxRaw, 10) : cfg.maxFiles;
             const exts = cfg.extensions;
 
             const files = await github.paginate(github.rest.pulls.listFiles, {
@@ -189,10 +192,26 @@ jobs:
               }
             }
 
+            // Largest edits first, so the cap keeps the most substantial changes.
+            selected.sort((a, b) => b.changes - a.changes);
+
+            // Apply the per-run file cap (max_files=0 disables it). Files beyond
+            // the cap are dropped and reported so the truncation is never silent.
+            let capped = 0;
+            if (maxFiles > 0 && selected.length > maxFiles) {
+              const dropped = selected.slice(maxFiles);
+              capped = dropped.length;
+              selected = selected.slice(0, maxFiles);
+              for (const f of dropped) skipped.push(`${f.filename} (over the ${maxFiles}-file limit)`);
+            }
+
             const result = selected.map(f => ({ path: f.filename, additions: f.additions, deletions: f.deletions }));
             fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/selected.json`, JSON.stringify(result));
             core.setOutput("count", String(result.length));
-            core.info(`Selected ${result.length} file(s) for persona-check (threshold ${threshold}).`);
+            core.setOutput("capped", String(capped));
+            core.setOutput("cap", String(maxFiles));
+            core.info(`Selected ${result.length} file(s) for persona-check (threshold ${threshold}, max_files ${maxFiles}).`);
+            if (capped) core.warning(`${capped} file(s) skipped due to the ${maxFiles}-file limit. Use max_files= to raise it.`);
             if (skipped.length) core.info(`Skipped ${skipped.length}:\n- ${skipped.join("\n- ")}`);
 
       - name: Run persona review
@@ -209,6 +228,8 @@ jobs:
           PC_QUESTION: ${{ steps.resolve.outputs.question }}
           PC_QUESTION_KEY: ${{ steps.resolve.outputs.question_key }}
           PC_TRIGGER: ${{ steps.resolve.outputs.trigger }}
+          PC_CAPPED: ${{ steps.select.outputs.capped }}
+          PC_CAP: ${{ steps.select.outputs.cap }}
           CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node .github/persona-check/persona-check.mjs

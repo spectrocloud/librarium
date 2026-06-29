@@ -190,6 +190,19 @@ lines.push(
       : " Persona auto-selected per file.")
 );
 lines.push("");
+
+// Warn when files were dropped by the per-run cap so the omission is visible.
+const cappedCount = parseInt(env("PC_CAPPED", "0"), 10) || 0;
+if (cappedCount > 0) {
+  const cap = env("PC_CAP", "").trim();
+  lines.push(
+    `> ⚠️ **${cappedCount}** additional changed file${cappedCount === 1 ? "" : "s"} ` +
+      `${cappedCount === 1 ? "was" : "were"} not reviewed because the per-run limit` +
+      `${cap ? ` of ${cap}` : ""} was reached (the largest edits were reviewed first). ` +
+      "Re-run with `/persona-check max_files=<n>` to raise it (`0` = no limit).",
+  );
+  lines.push("");
+}
 lines.push(
   `<sub>Last updated ${stamp} · Triggered by ${trigger}. Powered by [Impersonaid](https://github.com/spectrocloud/impersonaid). This is automated UX feedback, not a substitute for human review.</sub>`
 );
