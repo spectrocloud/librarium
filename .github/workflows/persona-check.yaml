@@ -3,9 +3,10 @@ name: "Persona Check"
 # DOC-2473: run Impersonaid (spectrocloud/impersonaid) against changed docs and
 # post a succinct, persona-based UX review back to the PR.
 #
-# Triggers:
-#   - Applying the `persona-check` label to a PR  -> review with defaults.
-#   - Commenting `/persona-check [overrides]` on a PR -> review with overrides.
+# Triggers (prompt-first):
+#   - Applying the `persona-check` label -> posts a preview + help comment only
+#     (which files WOULD be reviewed). No LLM calls, no secrets used.
+#   - Commenting `/persona-check [overrides]` on a PR -> actually runs the review.
 #
 # Overrides (comment only), e.g.
 #   /persona-check provider=openai model=gpt-5-chat-latest persona="Site Reliability Engineer"
@@ -33,7 +34,7 @@ permissions:
 env:
   NODE_VERSION: "24"
   # Pinned Impersonaid commit (private repo, no tags). Bump deliberately.
-  IMPERSONAID_REF: "925ca64107e643298cbbfe06849f8cef591f5fbc" # main branch commit (06-22-2026)
+  IMPERSONAID_REF: "f9dcc665486dabcbe97052fbfbc53e5acc9e6e3c" # main branch commit (06-25-2026)
 
 concurrency:
   group: persona-check-${{ github.event.pull_request.number || github.event.issue.number }}
@@ -41,8 +42,9 @@ concurrency:
 
 jobs:
   persona-check:
-    # Run when: the `persona-check` label is applied, OR a trusted author posts a
-    # `/persona-check` comment on a PR (arbitrary users must not burn API budget).
+    # Run when: the `persona-check` label is applied (prompt mode — preview only),
+    # OR a trusted author posts a `/persona-check` comment (run mode — executes the
+    # review; arbitrary users must not burn API budget).
     if: >
       (github.event_name == 'pull_request_target' && github.event.label.name == 'persona-check') ||
       (github.event_name == 'issue_comment' &&
@@ -80,11 +82,16 @@ jobs:
               }
             }
 
+            // Applying the label only *prompts* (posts a preview + help, no LLM);
+            // a /persona-check comment actually *runs* the review.
+            const mode = event === "issue_comment" ? "run" : "prompt";
+
             core.setOutput("pr_number", String(prNumber));
             core.setOutput("trigger", trigger);
+            core.setOutput("mode", mode);
 
             // Parse `key=value` overrides from the command line (comment only).
-            const out = { provider: "", model: "", persona: "", question: "", question_key: "", files: "", threshold: "" };
+            const out = { provider: "", model: "", persona: "", question: "", question_key: "", files: "", threshold: "", max_files: "" };
             const cmdLine = body.split("\n").find(l => l.trim().toLowerCase().startsWith("/persona-check")) || "";
             const arg = cmdLine.replace(/^\s*\/persona-check/i, "");
             const re = /(\w+)=(?:"([^"]*)"|'([^']*)'|(\S+))/g;
@@ -97,6 +104,7 @@ jobs:
             for (const [k, v] of Object.entries(out)) core.setOutput(k, v);
 
       - name: Retrieve org GitHub token (for private Impersonaid checkout)
+        if: ${{ steps.resolve.outputs.mode == 'run' }}
         id: import-secrets
         uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
         with:
@@ -112,6 +120,7 @@ jobs:
 
       # Untrusted PR head content — read only as data, never executed.
       - name: Checkout PR head
+        if: ${{ steps.resolve.outputs.mode == 'run' }}
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           ref: refs/pull/${{ steps.resolve.outputs.pr_number }}/head
@@ -119,6 +128,7 @@ jobs:
           persist-credentials: false
 
       - name: Checkout Impersonaid
+        if: ${{ steps.resolve.outputs.mode == 'run' }}
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           repository: spectrocloud/impersonaid
@@ -128,11 +138,13 @@ jobs:
           persist-credentials: false
 
       - name: Setup Node.js
+        if: ${{ steps.resolve.outputs.mode == 'run' }}
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install Impersonaid dependencies
+        if: ${{ steps.resolve.outputs.mode == 'run' }}
         working-directory: impersonaid
         run: npm ci
 
@@ -143,6 +155,7 @@ jobs:
           PR_NUMBER: ${{ steps.resolve.outputs.pr_number }}
           FILES_OVERRIDE: ${{ steps.resolve.outputs.files }}
           THRESHOLD_OVERRIDE: ${{ steps.resolve.outputs.threshold }}
+          MAX_FILES_OVERRIDE: ${{ steps.resolve.outputs.max_files }}
         with:
           script: |
             const fs = require("fs");
@@ -154,6 +167,8 @@ jobs:
             const filesOverride = (process.env.FILES_OVERRIDE || "").trim();
             const thrRaw = (process.env.THRESHOLD_OVERRIDE || "").trim();
             const threshold = thrRaw && !Number.isNaN(parseInt(thrRaw, 10)) ? parseInt(thrRaw, 10) : cfg.threshold;
+            const maxRaw = (process.env.MAX_FILES_OVERRIDE || "").trim();
+            const maxFiles = maxRaw && !Number.isNaN(parseInt(maxRaw, 10)) ? parseInt(maxRaw, 10) : cfg.maxFiles;
             const exts = cfg.extensions;
 
             const files = await github.paginate(github.rest.pulls.listFiles, {
@@ -180,14 +195,58 @@ jobs:
               }
             }
 
+            // Largest edits first, so the cap keeps the most substantial changes.
+            selected.sort((a, b) => b.changes - a.changes);
+
+            // Apply the per-run file cap (max_files=0 disables it). Files beyond
+            // the cap are dropped and reported so the truncation is never silent.
+            let capped = 0;
+            if (maxFiles > 0 && selected.length > maxFiles) {
+              const dropped = selected.slice(maxFiles);
+              capped = dropped.length;
+              selected = selected.slice(0, maxFiles);
+              for (const f of dropped) skipped.push(`${f.filename} (over the ${maxFiles}-file limit)`);
+            }
+
             const result = selected.map(f => ({ path: f.filename, additions: f.additions, deletions: f.deletions }));
             fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/selected.json`, JSON.stringify(result));
             core.setOutput("count", String(result.length));
-            core.info(`Selected ${result.length} file(s) for persona-check (threshold ${threshold}).`);
+            core.setOutput("capped", String(capped));
+            core.setOutput("cap", String(maxFiles));
+            core.info(`Selected ${result.length} file(s) for persona-check (threshold ${threshold}, max_files ${maxFiles}).`);
+            if (capped) core.warning(`${capped} file(s) skipped due to the ${maxFiles}-file limit. Use max_files= to raise it.`);
             if (skipped.length) core.info(`Skipped ${skipped.length}:\n- ${skipped.join("\n- ")}`);
 
+            // Build the preview comment shown when the label is applied (prompt
+            // mode). No LLM calls happen — it just reports what *would* be reviewed.
+            const marker = "<!-- persona-check -->";
+            const stamp = new Date().toISOString().replace("T", " ").replace(/:\d\d\.\d+Z$/, " UTC");
+            const p = [marker, "## 🤖 Persona check — preview", ""];
+            p.push("The `persona-check` label is applied — **no review has run yet.** Comment `/persona-check` to run it (add overrides such as `files=all` or `provider=openai`).");
+            p.push("");
+            if (result.length) {
+              p.push(`**Would review ${result.length} file${result.length === 1 ? "" : "s"}** (threshold ${threshold}, cap ${maxFiles > 0 ? maxFiles : "none"}), largest changes first:`);
+              p.push("");
+              for (const f of selected) p.push(`- \`${f.filename}\` (${f.changes} changed lines)`);
+            } else {
+              p.push("**No changed `.md`/`.mdx` files currently meet the criteria.** Comment `/persona-check files=all` or `/persona-check threshold=0` to broaden the selection.");
+            }
+            p.push("");
+            if (capped) {
+              p.push(`> ⚠️ **${capped}** more file(s) would be skipped by the ${maxFiles}-file cap (largest kept). Raise it with \`/persona-check max_files=<n>\` (\`0\` = no limit).`);
+              p.push("");
+            }
+            if (skipped.length) {
+              p.push("<details><summary>Skipped files</summary>", "");
+              for (const s of skipped) p.push(`- ${s}`);
+              p.push("", "</details>", "");
+            }
+            p.push(`<sub>Last updated ${stamp}. This is a preview; no API calls were made.</sub>`, "");
+            p.push(cfg.usage);
+            fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/persona-check-preview.md`, p.join("\n"));
+
       - name: Run persona review
-        if: ${{ steps.select.outputs.count != '0' }}
+        if: ${{ steps.resolve.outputs.mode == 'run' && steps.select.outputs.count != '0' }}
         env:
           PC_IMPERSONAID_DIR: ${{ github.workspace }}/impersonaid
           PC_PR_DIR: ${{ github.workspace }}/pr
@@ -200,6 +259,8 @@ jobs:
           PC_QUESTION: ${{ steps.resolve.outputs.question }}
           PC_QUESTION_KEY: ${{ steps.resolve.outputs.question_key }}
           PC_TRIGGER: ${{ steps.resolve.outputs.trigger }}
+          PC_CAPPED: ${{ steps.select.outputs.capped }}
+          PC_CAP: ${{ steps.select.outputs.cap }}
           CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: node .github/persona-check/persona-check.mjs
@@ -209,20 +270,31 @@ jobs:
         env:
           PR_NUMBER: ${{ steps.resolve.outputs.pr_number }}
           COUNT: ${{ steps.select.outputs.count }}
+          MODE: ${{ steps.resolve.outputs.mode }}
         with:
           script: |
             const fs = require("fs");
+            const { pathToFileURL } = require("url");
             const marker = "<!-- persona-check -->";
             const prNumber = Number(process.env.PR_NUMBER);
             const count = Number(process.env.COUNT || "0");
+            const mode = process.env.MODE;
 
             let body;
-            if (count > 0) {
+            if (mode === "prompt") {
+              // Label was applied — post the preview/help, no review was run.
+              body = fs.readFileSync(`${process.env.GITHUB_WORKSPACE}/persona-check-preview.md`, "utf8");
+            } else if (count > 0) {
+              // persona-check.mjs already appended the usage block.
               body = fs.readFileSync(`${process.env.GITHUB_WORKSPACE}/persona-check-comment.md`, "utf8");
             } else {
-              body = `${marker}\n## 🤖 Persona check\n\nNo changed \`.md\`/\`.mdx\` files met the review threshold. ` +
-                "Comment `/persona-check files=all` to review every changed docs file, or " +
-                "`/persona-check threshold=0` to lower the bar.";
+              const cfgPath = `${process.env.GITHUB_WORKSPACE}/.github/persona-check/config.mjs`;
+              const cfg = (await import(pathToFileURL(cfgPath).href)).default;
+              const stamp = new Date().toISOString().replace("T", " ").replace(/:\d\d\.\d+Z$/, " UTC");
+              body = `${marker}\n## 🤖 Persona check\n\n` +
+                "No changed `.md`/`.mdx` files met the review threshold.\n\n" +
+                `<sub>Last updated ${stamp}.</sub>\n\n` +
+                cfg.usage;
             }
 
             const comments = await github.paginate(github.rest.issues.listComments, {
