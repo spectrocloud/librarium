@@ -31,7 +31,7 @@ slug: /
     icon="plug"
     title="Palette MCP Server"
     description="Connect AI agents and assistants to Palette and Palette VerteX with the Palette MCP server."
-    url="/automation/palette-mcp/palette-mcp"
+    url="/automation/palette-mcp"
   />
   <HeroPanel
     icon="book-open"
