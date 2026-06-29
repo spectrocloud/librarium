@@ -15,7 +15,6 @@ tags: ["release-notes"]
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
-
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8884 -->
@@ -25,16 +24,17 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
 
-- Custom UI wizard bundles can now be packaged via the [Palette CLI](../automation/palette-cli/palette-cli.md) and rendered in Local UI on Slim ISO-bootstrapped edge
-  hosts, enabling content authors to ship tailored configuration experiences alongside their edge content.
+- Custom UI wizard bundles can now be packaged via the [Palette CLI](../automation/palette-cli/palette-cli.md) and
+  rendered in Local UI on Slim ISO-bootstrapped edge hosts, enabling content authors to ship tailored configuration
+  experiences alongside their edge content.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9004 -->
 
-- Fixed an issue where Palette Agent upgrades were triggered on nodes in a multi-node cluster even when agent upgrades were
-  paused, caused by a missing or delayed run config at bootup that incorrectly forced an upgrade and introduced version
-  skew across the cluster.
+- Fixed an issue where Palette Agent upgrades were triggered on nodes in a multi-node cluster even when agent upgrades
+  were paused, caused by a missing or delayed run config at bootup that incorrectly forced an upgrade and introduced
+  version skew across the cluster.
 
 ## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
 
