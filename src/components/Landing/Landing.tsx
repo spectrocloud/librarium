@@ -1,35 +1,20 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLayerGroup,
-  faArrowsRotate,
-  faGlobe,
-  faCode,
-  faGears,
-  faChartLine,
-  faShieldHalved,
-  faCubes,
-  faWandMagicSparkles,
-  faDesktop,
-  faBrain,
-  faPlug,
-  faBookOpen,
-  faMicrochip,
-} from "@fortawesome/free-solid-svg-icons";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { fas, faCubes } from "@fortawesome/free-solid-svg-icons";
+import { library, findIconDefinition } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition, IconName } from "@fortawesome/fontawesome-svg-core";
 import VersionedLink from "../VersionedLink";
 import styles from "./Landing.module.scss";
 
-const ICONS: Record<string, IconDefinition> = {
-  layers: faLayerGroup,
-  lifecycle: faArrowsRotate,
-  globe: faGlobe,
-  developer: faCode,
-  operations: faGears,
-  executive: faChartLine,
-  security: faShieldHalved,
-  stack: faCubes,
-};
+// Register the entire free-solid icon set so any solid icon can be selected by
+// name from Markdown (for example, icon="rocket") without adding imports here.
+library.add(fas);
+
+// Resolve a FontAwesome solid icon name to a definition, falling back to a generic icon.
+function resolveIcon(name?: string): IconDefinition {
+  if (!name) return faCubes;
+  return findIconDefinition({ prefix: "fas", iconName: name as IconName }) ?? faCubes;
+}
 
 function isExternal(url: string): boolean {
   return url.startsWith("http");
@@ -53,25 +38,8 @@ function Button({ text, url, variant }: ButtonProps) {
   return <VersionedLink url={url} component={<span className={className}>{text}</span>} />;
 }
 
-// Icon keys usable in the HeroPanel `icon` prop from Markdown. Add new entries
-// here to make more icons selectable by name.
-const PANEL_ICONS: Record<string, IconDefinition> = {
-  paletteai: faWandMagicSparkles,
-  mcp: faPlug,
-  api: faBookOpen,
-  ai: faMicrochip,
-  brain: faBrain,
-  vm: faDesktop,
-  layers: faLayerGroup,
-  globe: faGlobe,
-  code: faCode,
-  gears: faGears,
-  security: faShieldHalved,
-  stack: faCubes,
-};
-
 interface HeroPanelProps {
-  // Icon key from PANEL_ICONS (for example, icon="mcp"). Falls back to a generic icon.
+  // Any FontAwesome free-solid icon name or alias (for example, icon="plug"). Falls back to a generic icon.
   icon?: string;
   title: string;
   description: string;
@@ -82,7 +50,7 @@ export function HeroPanel({ icon, title, description, url }: HeroPanelProps) {
   const card = (
     <div className={styles.panel}>
       <div className={styles.panelIcon}>
-        <FontAwesomeIcon icon={(icon && PANEL_ICONS[icon]) || faCubes} />
+        <FontAwesomeIcon icon={resolveIcon(icon)} />
       </div>
       <div className={styles.panelBody}>
         <span className={styles.panelTitle}>{title}</span>
@@ -147,7 +115,7 @@ export function LandingHero({
 }
 
 interface FeatureTileProps {
-  // Icon key from ICONS (for example, icon="stack"). Falls back to a generic icon.
+  // Any FontAwesome free-solid icon name or alias (for example, icon="stack"). Falls back to a generic icon.
   icon?: string;
   title: string;
   description: string;
@@ -158,7 +126,7 @@ export function FeatureTile({ icon, title, description, url }: FeatureTileProps)
   const tile = (
     <article className={styles.featureTile}>
       <div className={styles.featureIcon}>
-        <FontAwesomeIcon icon={(icon && ICONS[icon]) || faCubes} />
+        <FontAwesomeIcon icon={resolveIcon(icon)} />
       </div>
       <h3 className={styles.featureTitle}>{title}</h3>
       <p className={styles.featureDescription}>{description}</p>
@@ -201,9 +169,7 @@ export function CTABanner({
       </div>
       <div className={styles.ctaActions}>
         {primaryText && primaryUrl && <Button text={primaryText} url={primaryUrl} variant="primary" />}
-        {secondaryText && secondaryUrl && (
-          <Button text={secondaryText} url={secondaryUrl} variant="secondary" />
-        )}
+        {secondaryText && secondaryUrl && <Button text={secondaryText} url={secondaryUrl} variant="secondary" />}
       </div>
     </section>
   );

@@ -22,31 +22,31 @@ slug: /
   primaryUrl="/getting-started"
 >
   <HeroPanel
-    icon="paletteai"
+    icon="wand-magic-sparkles"
     title="PaletteAI"
     description="Build, deploy, and operate AI and ML workloads on Kubernetes with PaletteAI."
     url="https://docs.palette-ai.com/"
   />
   <HeroPanel
-    icon="mcp"
+    icon="plug"
     title="Palette MCP Server"
     description="Connect AI agents and assistants to Palette and Palette VerteX with the Palette MCP server."
     url="/automation/palette-mcp/palette-mcp"
   />
   <HeroPanel
-    icon="api"
+    icon="book-open"
     title="API Reference"
     description="Automate and integrate with Palette using the Palette and Edge REST APIs."
     url="/api/introduction"
   />
   <HeroPanel
-    icon="ai"
+    icon="microchip"
     title="AI Workloads"
     description="Run GPU-accelerated AI and ML workloads across data center and edge environments."
     url="/ai-workloads"
   />
   <HeroPanel
-    icon="vm"
+    icon="desktop"
     title="Launchpad for VMs"
     description="Run and manage virtual machines on bare metal and edge with the Launchpad for VMs Appliance."
     url="/vm-management/launchpad-for-vms"
@@ -63,13 +63,13 @@ slug: /
 
 <FeatureHighlights>
   <FeatureTile
-    icon="stack"
+    icon="cubes"
     title="Full-Stack Management"
     description="Build flexible stacks that span the OS, Kubernetes, networking, storage, and add-on services, then deploy and manage them as one unit."
     url="/profiles/cluster-profiles"
   />
   <FeatureTile
-    icon="lifecycle"
+    icon="arrows-rotate"
     title="Declarative Lifecycle"
     description="Drive consistency and repeatability across every cluster with profile-based, day 0 to day 2 management."
     url="/clusters"
@@ -81,7 +81,7 @@ slug: /
     url="/getting-started"
   />
   <FeatureTile
-    icon="security"
+    icon="shield-halved"
     title="Built for Regulated Industries"
     description="Palette VerteX integrates FIPS 140-3 cryptographic modules for government and public sector workloads."
     url="/vertex"
@@ -92,19 +92,19 @@ slug: /
 
 <FeatureHighlights>
   <FeatureTile
-    icon="developer"
+    icon="code"
     title="Developers"
     description="Get curated Kubernetes stacks with built-in GPU and AI tooling, and focus on shipping AI and cloud-native applications instead of configuring infrastructure."
     url="/clusters"
   />
   <FeatureTile
-    icon="operations"
+    icon="gears"
     title="IT Operations and SREs"
     description="Reuse full-stack Cluster Profiles to manage clusters consistently, with the governance and controls production demands."
     url="/profiles/cluster-profiles"
   />
   <FeatureTile
-    icon="executive"
+    icon="chart-line"
     title="IT Executives"
     description="Lower total cost of ownership and reduce operational risk with an open, enterprise-grade platform."
   />

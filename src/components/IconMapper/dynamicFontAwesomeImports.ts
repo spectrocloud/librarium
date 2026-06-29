@@ -25,6 +25,11 @@ import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { faBrain } from '@fortawesome/free-solid-svg-icons';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
+import { faPlug } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faMicrochip } from '@fortawesome/free-solid-svg-icons';
+import { faDesktop } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
@@ -53,5 +58,10 @@ export const fontAwesomeIcons = {
   "screwdriver-wrench": faScrewdriverWrench,
   "brain": faBrain,
   "flag": faFlag,
-  "eye-slash": faEyeSlash
+  "eye-slash": faEyeSlash,
+  "wand-magic-sparkles": faWandMagicSparkles,
+  "plug": faPlug,
+  "book-open": faBookOpen,
+  "microchip": faMicrochip,
+  "desktop": faDesktop
 };
