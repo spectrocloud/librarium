@@ -11,6 +11,16 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 29, 2026 - Release 4.9.23
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9014 -->
+
+- Fixed a bug that caused the Edge Agent version 4.9.19 to incorrectly enforce password strength validation on profile
+  variables for non-VMO Edge clusters, blocking cluster updates when weak passwords were present. Password strength
+  checks are now restricted to VMO profile variables only, restoring the update behavior from previous Palette versions.
+
 ## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
 
 ### Security Notices
