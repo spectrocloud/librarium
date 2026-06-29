@@ -88,7 +88,7 @@ export default {
     return [
       "<details><summary>ℹ️ How to use persona-check</summary>",
       "",
-      "Add the **`persona-check`** label, or comment **`/persona-check`** with optional overrides:",
+      "Applying the **`persona-check`** label posts this preview. Comment **`/persona-check`** to run a review, with optional overrides:",
       "",
       "- `provider=` — `anthropic` (default) or `openai`",
       "- `model=` — a specific model (default: the provider's default); see the [full list of available models](https://github.com/spectrocloud/impersonaid/blob/main/src/models/models.json)",
