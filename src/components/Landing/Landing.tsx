@@ -201,9 +201,7 @@ export function CTABanner({
       </div>
       <div className={styles.ctaActions}>
         {primaryText && primaryUrl && <Button text={primaryText} url={primaryUrl} variant="primary" />}
-        {secondaryText && secondaryUrl && (
-          <Button text={secondaryText} url={secondaryUrl} variant="secondary" />
-        )}
+        {secondaryText && secondaryUrl && <Button text={secondaryText} url={secondaryUrl} variant="secondary" />}
       </div>
     </section>
   );
