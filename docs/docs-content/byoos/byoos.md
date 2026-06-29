@@ -42,3 +42,28 @@ images for Palette and VerteX.
 - [Create Images with CAPI Image Builder](capi-image-builder/capi-image-builder.md)
 
 - <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" />
+
+{/* PERSONA-CHECK-TEST: temporary section, remove before merge (DOC-2473) */}
+
+## Choose Between Commercial and Open Source Images
+
+This section is temporary, made-up content added to test the persona-check workflow. When you bring
+your own operating system, you can use either a commercial distribution or an open source
+distribution. The right choice depends on your support requirements, compliance posture, and budget.
+
+Commercial distributions, such as a vendor-supported enterprise Linux, include paid support contracts
+and certified update channels. These distributions suit organizations that need a guaranteed response
+time for security patches and a clear chain of accountability for compliance audits.
+
+Open source distributions give you full control over the image contents and remove licensing costs.
+They suit teams that have the in-house expertise to maintain their own patch cadence and that prefer
+to avoid vendor lock-in.
+
+Consider the following factors before you decide:
+
+- **Support model**: Commercial images include vendor support, while open source images rely on
+  community resources or your own team.
+
+- **Patch cadence**: Confirm how quickly each option delivers security updates for your hardware.
+
+- **Compliance**: Verify that your chosen image can meet the controls required by your industry.
