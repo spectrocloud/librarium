@@ -1,0 +1,111 @@
+---
+partial_category: self-hosted
+partial_name: kubernetes-install-end
+---
+
+Install the {props.version} Helm Chart using the following command.
+
+    <CodeBlock language="shell">{`helm upgrade --values ${props.helm}/values.yaml \\\n  hubble ${props.helm}/spectro-mgmt-plane-*.tgz --install`}</CodeBlock>
+
+    ```shell hideClipboard title="Example output"
+    Release "hubble" does not exist. Installing it now.
+    NAME: hubble
+    LAST DEPLOYED: Wed Jun 17 21:41:31 2026
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+<li> Track the installation process using the command below. {props.version} is ready when the deployments in the namespaces
+    `cp-system`, `hubble-system`, `ingress-traefik`, `jet-system`, and `ui-system` reach the _Ready_ state. </li>
+
+    <PartialsComponent category="self-hosted" name="install-on-kubernetes-al2" edition={props.version} />
+
+    ```shell
+    kubectl get pods --all-namespaces --watch
+    ```
+
+    :::tip
+
+    For a more user-friendly experience, use the open source tool [k9s](https://k9scli.io/) to monitor the installation
+    process.
+
+    :::
+
+<li> Create a DNS CNAME record that is mapped to the {props.version} `traefik-ingress-controller` load balancer. You can use the
+    following command to retrieve the load balancer IP address. If you need assistance creating the DNS record, contact
+    your network administrator. </li>
+
+    ```shell
+    kubectl get service traefik-ingress-controller --namespace ingress-traefik \
+      --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+    ```
+
+    :::warning
+
+    If {props.version} has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access
+    {props.version} using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users
+    must log in using the tenant-specific subdomain. For example, if you create a tenant named `tenant1` and the domain
+    name you assigned to {props.version} is <code>{props.helm}.example.com</code>, the tenant URL will be <code>tenant1.{props.helm}.example.com</code>. We recommend you create an additional wildcard DNS record to map all tenant URLs to the {props.version} load balancer.
+    For example, <code>*.{props.helm}.example.com</code>.
+
+    :::
+
+<li> Use the custom domain name or the IP address of the load balancer to visit the {props.version} system console. To access the
+    system console, open a web browser and paste the custom domain URL or the IP address of the load balancer in the address bar, and append the value
+    `/system`.</li>
+
+    The first time you visit the {props.version} system console, a warning message about a not-trusted TLS/SSL certificate may
+    appear. This is expected, as you still need to upload your TLS/SSL certificate to {props.version}. You can ignore this warning
+    message and proceed.
+
+    {props.edition === 'vertex'
+      ? <img src="/vertex_install-on-kubernetes_install_system-console.webp" alt="Screenshot of the VerteX system console showing Username and Password fields." />
+      : <img src="/palette_installation_install-on-vmware_palette-system-console.webp" alt="Screenshot of the Palette system console showing Username and Password fields." />
+    }
+
+
+<li> Log in to the system console using the following default credentials. Refer to
+      <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="password requirements"
+        url="/system-management/account-management/credentials/#password-requirements-and-security"
+      /> guide for more information. </li>
+
+    | **Parameter** | **Value** |
+    | ------------- | --------- |
+    | Username      | `admin`   |
+    | Password      | `admin`   |
+
+    After logging in, you must create a new password. Once you create your password, you are redirected to the {props.version}
+    system console. Use the username `admin` and your new password to log in to the system console. You can create
+    additional system administrator accounts and assign roles to users in the system console. Refer to
+      <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Account Management"
+        url="/system-management/account-management/"
+      /> for more information.
+
+<li> After logging in, a summary page is displayed. {props.version} is installed with a self-signed TLS/SSL certificate. To assign a
+    different TLS/SSL certificate, you must upload the SSL certificate, TLS/SSL certificate key, and TLS/SSL certificate authority
+    files to {props.version}. You can upload the files using the {props.version} system console. Refer to
+      <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Configure HTTPS Encryption"
+        url="/system-management/ssl-certificate-management/"
+      /> for more information. </li>
+
+    :::warning
+
+    If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
+      <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Configure Reverse Proxy"
+        url="/system-management/reverse-proxy/"
+      /> guide for more information.
+
+    :::
+
+You now have a self-hosted instance of {props.version} installed in a Kubernetes cluster. Make sure you retain the `values.yaml`
+file, as you can refer to it for future upgrades.

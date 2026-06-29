@@ -253,54 +253,56 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 
     :::
 
-8.  Navigate to the directory with the Palette installation zip file. Unzip the file to a **palette-install** directory.
+8.  Navigate to the directory where you downloaded the Palette install zip file provided by our support team. Unzip the
+    file to a directory named `palette-install`.
 
     ```shell
-    unzip release-*.zip -d palette-install
+    unzip charts.zip -d palette-install
     ```
 
-9.  Navigate to the release directory inside **palette-install**.
+9.  Navigate to the `palette-install` directory.
 
     ```shell
-    cd palette-install/charts/release-*
+    cd palette-install
     ```
 
-10. In a code editor of your choice, open the **extras/cert-manager/values.yaml** file and replace the
-    `cainjectorImage`,`controllerImage`, `webhookImage`, and `amceResolverImage` image URLs and with your OCI image
-    registry URL and the `/spectro-images/` namespace.
+10. Open the file `extras/cert-manager/values.yaml` with a text editor of your choice. This example uses Vim.
 
-    ```yaml {2-5}
+    ```shell
+    vim extras/cert-manager/values.yaml
+    ```
+
+11. Append `<your-registry-url>` to each image, along with the `<repository>` where you want to store your images.
+
+    ```yaml
     image:
-      cainjectorImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
-      controllerImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
-      webhookImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
-      amceResolverImage: "<your-oci-registry-url>/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
-
-    featureGates: "AdditionalCertificateOutputFormats=true"
+      cainjectorImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
+      controllerImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
+      webhookImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
+      amceResolverImage: "<your-registry-url>/<repository>/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
     ```
 
-    Consider the following example for reference.
+    In the example below, we used `harbor.docs.spectro.dev` for the registry and `spectro-images` for the repository.
 
-    ```yaml {2-5}
+    ```yaml {2-5} hideClipboard title="Example output"
     image:
-      cainjectorImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
-      controllerImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
-      webhookImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
-      amceResolverImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
-
-    featureGates: "AdditionalCertificateOutputFormats=true"
+      cainjectorImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.19.3-spectro-4.8.b"
+      controllerImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.19.3-spectro-4.8.b"
+      webhookImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.19.3-spectro-4.8.b"
+      amceResolverImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
     ```
 
-11. Update the cert-manager chart using the following command.
+12. Update the cert-manager chart using the following command.
 
     ```shell
-    helm upgrade --values extras/cert-manager/values.yaml \
-    cert-manager extras/cert-manager/cert-manager-*.tgz --install
+    helm upgrade --install cert-manager \
+      ./extras/cert-manager/cert-manager-*.tgz \
+      --namespace cert-manager \
+      --create-namespace \
+      --values ./extras/cert-manager/values.yaml
     ```
 
-    You should receive an output similar to the following.
-
-    ```shell
+    ```shell hideClipboard title="Example output"
     Release "cert-manager" has been upgraded. Happy Helming!
     NAME: cert-manager
     LAST DEPLOYED: Thu Feb 22 19:42:33 2024
@@ -310,29 +312,28 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     TEST SUITE: None
     ```
 
-12. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
-    installation, you can reuse it for the upgrade. Alternatively, follow the
-    [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
-    `values.yaml`.
+13. Open the file `palette/values.yaml` with a text editor of your choice. This example uses Vim.
 
-    :::warning
+    ```shell
+    vim palette/values.yaml
+    ```
 
-    Ensure that the `values.yaml` file is ready before proceeding. Specifically, make sure that the `ociPackEcrRegistry`
-    and `ociImageRegistry` configurations include the parameters necessary to interact with your `spectro-images` and
-    `spectro-packs` repositories.
+14. Prepare the Palette configuration `palette/values.yaml` file. If you saved your `values.yaml` used during the
+    Palette installation, you can refer to it when upgrading. Ensure you carry over any necessary configurations, such
+    as root domains, certificates, image-swap paths, and registries. Refer to
+    [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/airgap-install/install.md) for
+    basic `values.yaml` guidance. For a full list of parameters, refer to
+    [Helm Configuration Reference](../../install-palette/install-on-kubernetes/palette-helm-ref.md).
 
-    :::
-
-13. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step 12.
+15. _(Self-hosted OCI registry only)_ If you use image swap for self-hosted OCI registries, upgrade the image-swap chart
+    with the following command. Point to the `palette/values.yaml` file from step 14.
 
     ```shell
     helm upgrade --values palette/values.yaml \
     image-swap extras/image-swap/image-swap-*.tgz --install
     ```
 
-    You should receive an output similar to the following.
-
-    ```shell
+    ```shell hideClipboard title="Example output"
     Release "image-swap" has been upgraded. Happy Helming!
     NAME: image-swap
     LAST DEPLOYED: Thu Feb 22 19:44:13 2024
@@ -342,16 +343,16 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     TEST SUITE: None
     ```
 
-14. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step 12.
+16. _(Proxy environments only)_ If you are upgrading a Palette instance in an environment where a network proxy must be
+    configured for Palette to access the internet, upgrade the reach-system chart with the following command. Point to
+    the `palette/values.yaml` file from step 14.
 
     ```shell
     helm upgrade --values palette/values.yaml \
-    reach-system extras/reach-system/reach-system-\*.tgz --install
+    reach-system extras/reach-system/reach-system-*.tgz --install
     ```
 
-    You should receive an output similar to the following.
-
-    ```shell
+    ```shell hideClipboard title="Example output"
     Release "reach-system" has been upgraded. Happy Helming!
     NAME: reach-system
     LAST DEPLOYED: Thu Feb 22 19:47:10 2024
@@ -361,7 +362,7 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     TEST SUITE: None
     ```
 
-15. Upgrade the Spectro Management CRDs chart.
+17. Upgrade the Spectro Management CRDs chart.
 
     ```shell
     helm upgrade --install spectro-mgmt-crds \
@@ -369,9 +370,7 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
       --values extras/spectro-mgmt-crds/values.yaml
     ```
 
-    You should receive an output similar to the following.
-
-    ```shell
+    ```shell hideClipboard title="Example output"
     Release "spectro-mgmt-crds" has been upgraded. Happy Helming!
     NAME: spectro-mgmt-crds
     LAST DEPLOYED: Thu Feb 22 19:43:00 2024
@@ -381,16 +380,14 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     TEST SUITE: None
     ```
 
-16. Upgrade Palette with the following command.
+18. Upgrade Palette with the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
-    hubble palette/spectro-mgmt-plane-\*.tgz --install
+    hubble palette/spectro-mgmt-plane-*.tgz --install
     ```
 
-    You should receive an output similar to the following.
-
-    ```shell
+    ```shell hideClipboard title="Example output"
     Release "hubble" has been upgraded. Happy Helming!
     NAME: hubble
     LAST DEPLOYED: Thu Feb 22 20:05:24 2024
@@ -400,7 +397,7 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     TEST SUITE: None
     ```
 
-17. Use the following command to track the upgrade process.
+19. Use the following command to track the upgrade process.
 
     ```shell
     kubectl get pods --all-namespaces --watch
