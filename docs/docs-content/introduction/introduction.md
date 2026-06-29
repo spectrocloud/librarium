@@ -78,7 +78,7 @@ slug: /
     icon="globe"
     title="AI Anywhere"
     description="Run GPU-accelerated AI and ML workloads on AWS, Azure, Google Cloud, VMware, Nutanix, bare metal, and edge."
-    url="/getting-started"
+    url="/ai-workloads"
   />
   <FeatureTile
     icon="shield-halved"
@@ -95,13 +95,11 @@ slug: /
     icon="code"
     title="Developers"
     description="Get curated Kubernetes stacks with built-in GPU and AI tooling, and focus on shipping AI and cloud-native applications instead of configuring infrastructure."
-    url="/clusters"
   />
   <FeatureTile
     icon="gears"
     title="IT Operations and SREs"
     description="Reuse full-stack Cluster Profiles to manage clusters consistently, with the governance and controls production demands."
-    url="/profiles/cluster-profiles"
   />
   <FeatureTile
     icon="chart-line"
