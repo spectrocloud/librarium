@@ -345,9 +345,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
-- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.8 is now available. If upgrading from version 4.9.3 to 4.9.8, a pre-upgrade script is required. To obtain a pre-upgrade script, contact your customer support representative.
+- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.8 is now available.
+  If upgrading from version 4.9.3 to 4.9.8, a pre-upgrade script is required. To obtain a pre-upgrade script, contact
+  your customer support representative.
 
-- The Launchpad for VMs Appliance now supports live updates to running VMs. You can hot-plug memory and hot-update CPU sockets on a running VM without a reboot.
+- The Launchpad for VMs Appliance now supports live updates to running VMs. You can hot-plug memory and hot-update CPU
+  sockets on a running VM without a reboot.
 
 - Running VMs can now be paused and resumed.
 
