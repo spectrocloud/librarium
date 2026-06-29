@@ -41,6 +41,11 @@ export default {
   // File extensions eligible for review.
   extensions: [".md", ".mdx"],
 
+  // Safety cap on how many files a single run will review (each file is one LLM
+  // call). Applies to every selection mode, including `files=all`. Override
+  // per-run with `max_files=N`; `max_files=0` disables the cap.
+  maxFiles: 10,
+
   // ---------------------------------------------------------------------------
   // Questions (requirement #3)
   // ---------------------------------------------------------------------------
@@ -75,4 +80,33 @@ export default {
     "3. A heading \"What could be improved or is missing\" followed by exactly 3 short bullet points.",
     "Keep each bullet to a single concise sentence. Base everything only on the page content.",
   ].join("\n"),
+
+  // Collapsible help block appended to every persona-check comment so reviewers
+  // can discover the overrides without leaving the PR. A getter so it can quote
+  // the live threshold default.
+  get usage() {
+    return [
+      "<details><summary>ℹ️ How to use persona-check</summary>",
+      "",
+      "Applying the **`persona-check`** label posts this preview. Comment **`/persona-check`** to run a review, with optional overrides:",
+      "",
+      "- `provider=` — `anthropic` (default) or `openai`",
+      "- `model=` — a specific model (default: the provider's default); see the [full list of available models](https://github.com/spectrocloud/impersonaid/blob/main/src/models/models.json)",
+      "- `persona=` — pin a persona by name (default: auto-selected per file)",
+      "- `question=\"...\"` — free-text question, or `question_key=` a preset; see the [available question keys](https://github.com/spectrocloud/librarium/blob/master/.github/persona-check/config.mjs)",
+      "- `files=all` or `files=\"path/a.md,path/b.mdx\"` (default: changed docs above the threshold)",
+      `- \`threshold=\` — minimum changed lines to review (default: ${this.threshold})`,
+      `- \`max_files=\` — cap how many files are reviewed per run (default: ${this.maxFiles}; \`0\` = no limit)`,
+      "",
+      "Examples:",
+      "",
+      "- `/persona-check files=all`",
+      '- `/persona-check persona="Site Reliability Engineer" question_key=getting-started`',
+      "- `/persona-check provider=openai threshold=0`",
+      "",
+      "_Re-running (re-applying the label or posting another `/persona-check` comment) updates this comment in place rather than posting a new one._",
+      "",
+      "</details>",
+    ].join("\n");
+  },
 };
