@@ -279,13 +279,6 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **OCI Pack Registry Username** | Username to authenticate with the automatically deployed, local container image registry used by the platform. |
    | **OCI Pack Registry Password** | Password for the automatically deployed, local container image registry. This value is stored securely.        |
 
-   :::warning
-
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and either `-` or `_`.
-
-   :::
-
    ### OIDC Settings
 
    | **Parameter**               | **Description**                                                                                                                                                                                                                                              |
@@ -296,13 +289,6 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **VMO OIDC Login Email**    | Address associated with the VMO administrator OIDC account.                                                                                                                                                                                                  |
    | **VMO Login Password**      | Password for the VMO administrator's OIDC login. This value is stored securely.                                                                                                                                                                              |
 
-   :::warning
-
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and either `-` or `_`.
-
-   :::
-
    ### Keycloak Admin
 
    | **Parameter**                                  | **Description**                                                                                                                           |
@@ -310,26 +296,12 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    | **Default Keycloak Admin Username (Optional)** | Username for the built-in Keycloak administrator account. Use this account to manage the identity provider directly. Defaults to `admin`. |
    | **Default Keycloak Admin Password**            | Password for the Keycloak administrator account. This value is stored securely.                                                           |
 
-   :::warning
-
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and either `-` or `_`.
-
-   :::
-
    ### Local Admin
 
    | **Parameter**                 | **Description**                                                                                     |
    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
    | **VMO Local Admin User Name** | Username for the local fallback administrator account used when OIDC authentication is unavailable. |
    | **VMO Local Admin Password**  | Password for the local fallback administrator account. This value is stored securely.               |
-
-   :::warning
-
-   Passwords must contain 6 to 64 characters and include at least one uppercase letter, one lowercase letter, one
-   number, and either `-` or `_`.
-
-   :::
 
    ### Storage
 

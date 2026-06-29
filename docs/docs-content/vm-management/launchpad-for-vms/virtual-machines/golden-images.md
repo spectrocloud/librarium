@@ -31,7 +31,7 @@ The following diagram illustrates this workflow.
 - An OS ISO file available as a DataVolume. You can upload the ISO from **Infrastructure** > **Storage** or **Image
   Catalog** > **Golden Images**.
 - Required [packages](./packages.md) uploaded under **Image Catalog** > **Packages**. For airgap Windows builds, upload
-  `virtio-win.iso` before you build the image.
+  `virtio-win.iso` before you build the image. Refer to [Windows virtio drivers](https://kubevirt.io/user-guide/user_workloads/windows_virtio_drivers/) for more information.
 - An auto-install script and a seal script. **Image Catalog** includes built-in scripts, but you can provide your own
   scripts for custom operating system versions or hardening requirements. Refer to
   [Finalize Templates](./image-customization.md) for more information about auto-install and seal scripts.
