@@ -13,20 +13,24 @@ sidebar_custom_props:
 slug: /
 ---
 
-<AskAI />
-
 <LandingHero
   eyebrow="Spectro Cloud Palette"
-  title="AI and Kubernetes at scale"
+  title="AI and Cloud-Native Architecture at Scale"
   subtitle="Build curated, full-stack clusters once, then deploy and scale AI, ML, and cloud-native workloads consistently across every environment, with the governance and security production demands."
-  primaryText="Get started"
-  primaryUrl="/getting-started"
+  primaryText="Learn More"
+  primaryUrl="/palette"
 >
   <HeroPanel
     icon="wand-magic-sparkles"
-    title="PaletteAI"
+    title="PaletteAI Platform"
     description="Build, deploy, and operate AI and ML workloads on Kubernetes with PaletteAI."
     url="https://docs.palette-ai.com/"
+  />
+  <HeroPanel
+    icon="brain"
+    title="Launchpad for AI"
+    description="Deploy and scale GPU-powered AI and ML workloads on Kubernetes with the Launchpad for AI."
+    url="/ai-workloads"
   />
   <HeroPanel
     icon="plug"
@@ -35,10 +39,10 @@ slug: /
     url="/automation/palette-mcp"
   />
   <HeroPanel
-    icon="book-open"
-    title="API Reference"
-    description="Automate and integrate with Palette using the Palette and Edge REST APIs."
-    url="/api/introduction"
+    icon="hdd"
+    title="Edge"
+    description="Deploy and manage Kubernetes clusters on Edge hosts in remote and isolated locations."
+    url="/clusters/edge"
   />
   <HeroPanel
     icon="microchip"
@@ -52,60 +56,63 @@ slug: /
     description="Run and manage virtual machines on bare metal and edge with the Launchpad for VMs Appliance."
     url="/vm-management/launchpad-for-vms"
   />
-  <HeroPanel
-    icon="brain"
-    title="Launchpad for AI"
-    description="Deploy and scale GPU-powered AI and ML workloads on Kubernetes with the Launchpad for AI."
-    url="/ai-workloads"
-  />
 </LandingHero>
 
-## What Makes Palette Different?
+## Installation and Deployment Modes
 
 <FeatureHighlights>
   <FeatureTile
-    icon="cubes"
-    title="Full-Stack Management"
-    description="Build flexible stacks that span the OS, Kubernetes, networking, storage, and add-on services, then deploy and manage them as one unit."
-    url="/profiles/cluster-profiles"
-  />
-  <FeatureTile
-    icon="arrows-rotate"
-    title="Declarative Lifecycle"
-    description="Drive consistency and repeatability across every cluster with profile-based, day 0 to day 2 management."
-    url="/clusters"
-  />
-  <FeatureTile
-    icon="globe"
-    title="AI Anywhere"
-    description="Run GPU-accelerated AI and ML workloads on AWS, Azure, Google Cloud, VMware, Nutanix, bare metal, and edge."
-    url="/ai-workloads"
+    icon="server"
+    title="Self-Hosted Palette"
+    description="Run Palette in your own environment with a self-hosted, airgap-capable installation."
+    url="/enterprise-version"
   />
   <FeatureTile
     icon="shield-halved"
-    title="Built for Regulated Industries"
-    description="Palette VerteX integrates FIPS 140-3 cryptographic modules for government and public sector workloads."
+    title="Palette VerteX"
+    description="Meet government and regulated-industry requirements with FIPS 140-3 validated Palette VerteX."
     url="/vertex"
+  />
+  <FeatureTile
+    icon="compact-disc"
+    title="Appliance Mode"
+    description="Build EdgeForge installer images and provision immutable edge hosts in appliance mode."
+    url="/deployment-modes/appliance-mode"
+  />
+  <FeatureTile
+    icon="robot"
+    title="Agent Mode"
+    description="Bring your own host and run edge clusters with zero-downtime operations in agent mode."
+    url="/deployment-modes/agent-mode"
   />
 </FeatureHighlights>
 
-## Who Benefits From Palette?
+## Developer Tools and Automation
 
 <FeatureHighlights>
   <FeatureTile
     icon="code"
-    title="Developers"
-    description="Get curated Kubernetes stacks with built-in GPU and AI tooling, and focus on shipping AI and cloud-native applications instead of configuring infrastructure."
+    title="API Reference"
+    description="Automate and integrate with Palette programmatically using the Palette REST API."
+    url="/api/introduction"
   />
   <FeatureTile
-    icon="gears"
-    title="IT Operations and SREs"
-    description="Reuse full-stack Cluster Profiles to manage clusters consistently, with the governance and controls production demands."
+    icon="layer-group"
+    title="Terraform"
+    description="Provision and manage Palette resources as code with the Palette Terraform provider."
+    url="/automation/terraform"
   />
   <FeatureTile
-    icon="chart-line"
-    title="IT Executives"
-    description="Lower total cost of ownership and reduce operational risk with an open, enterprise-grade platform."
+    icon="diagram-project"
+    title="Crossplane"
+    description="Manage Palette resources through standard Kubernetes APIs with the Palette Crossplane provider."
+    url="/automation/crossplane"
+  />
+  <FeatureTile
+    icon="boxes-stacked"
+    title="Artifact Studio"
+    description="Populate your registries with bundles, packs, and installers for self-hosted and airgapped environments."
+    url="/downloads/artifact-studio"
   />
 </FeatureHighlights>
 
