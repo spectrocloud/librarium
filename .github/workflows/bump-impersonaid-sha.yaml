@@ -1,0 +1,130 @@
+name: "Bump Impersonaid SHA"
+
+# DOC-2977: keep the persona-check action current with Impersonaid.
+#
+# persona-check pins Impersonaid to a commit SHA (`IMPERSONAID_REF` in
+# .github/workflows/persona-check.yaml), consumed by actions/checkout's `ref:`.
+# Dependabot cannot track a SHA held in an env var, so this scheduled job checks
+# spectrocloud/impersonaid `main` weekly and, when it has moved, opens a
+# reviewable PR bumping `IMPERSONAID_REF`. A human reviews and merges.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # weekly, Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: bump-impersonaid-sha
+  cancel-in-progress: false
+
+env:
+  TARGET_FILE: .github/workflows/persona-check.yaml
+  PR_BRANCH: chore/bump-impersonaid-sha
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Org-scoped token: required to read the PRIVATE spectrocloud/impersonaid,
+      # and used as the push/PR token so the resulting PR triggers normal CI
+      # (the default GITHUB_TOKEN would not).
+      - name: Retrieve org GitHub token
+        id: import-secrets
+        uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Checkout librarium (master)
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: master
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+
+      - name: Bump Impersonaid SHA and open PR if changed
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # Latest commit on Impersonaid's main branch (private repo → org token).
+          LATEST=$(gh api repos/spectrocloud/impersonaid/commits/main --jq .sha)
+          if [[ ! "$LATEST" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Could not resolve Impersonaid main SHA (got: '$LATEST')."
+            exit 1
+          fi
+
+          CURRENT=$(grep -E '^[[:space:]]*IMPERSONAID_REF:' "$TARGET_FILE" | grep -oE '[0-9a-f]{40}' | head -1)
+          if [[ -z "$CURRENT" ]]; then
+            echo "::error::Could not find IMPERSONAID_REF in $TARGET_FILE."
+            exit 1
+          fi
+
+          echo "Current: $CURRENT"
+          echo "Latest:  $LATEST"
+          if [[ "$LATEST" == "$CURRENT" ]]; then
+            echo "✅ IMPERSONAID_REF is already current — nothing to do."
+            exit 0
+          fi
+
+          # Replace the SHA and refresh the trailing comment (records when it was
+          # last bumped), preserving the leading indentation/key. Anchored so the
+          # `ref: ${{ env.IMPERSONAID_REF }}` usage line is never matched.
+          DATE=$(date -u +%F) # YYYY-MM-DD
+          sed -i -E "s|^([[:space:]]*IMPERSONAID_REF: ).*|\1\"${LATEST}\" # spectrocloud/impersonaid main, last bumped ${DATE}|" "$TARGET_FILE"
+
+          if git diff --quiet -- "$TARGET_FILE"; then
+            echo "::error::Expected a change but the file is unmodified."
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout -B "$PR_BRANCH"
+          git add "$TARGET_FILE"
+          git commit -m "chore: bump Impersonaid to ${LATEST:0:7}"
+          git push --force origin "$PR_BRANCH"
+
+          SHORT_OLD="${CURRENT:0:7}"
+          SHORT_NEW="${LATEST:0:7}"
+          BODY=$(cat <<EOF
+          Automated bump of the pinned Impersonaid commit used by the \`persona-check\` action.
+
+          - **From:** \`${SHORT_OLD}\` → **to:** \`${SHORT_NEW}\`
+          - Compare: https://github.com/spectrocloud/impersonaid/compare/${CURRENT}...${LATEST}
+
+          Updates \`IMPERSONAID_REF\` in \`${TARGET_FILE}\`. Review the Impersonaid changes above before merging.
+
+          _Opened automatically by the Bump Impersonaid SHA workflow (DOC-2977)._
+          EOF
+          )
+
+          EXISTING=$(gh pr list --head "$PR_BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$EXISTING" ]]; then
+            echo "🔄 Updated existing PR #$EXISTING (branch already pushed)."
+          else
+            gh pr create \
+              --base master \
+              --head "$PR_BRANCH" \
+              --title "chore: bump Impersonaid to ${SHORT_NEW}" \
+              --body "$BODY"
+          fi
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The Bump Impersonaid SHA job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
