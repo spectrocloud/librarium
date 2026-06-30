@@ -12,7 +12,8 @@ tags: ["vmo", "vm launchpad appliance", "infrastructure", "namespaces"]
 
 <!-- vale off -->
 
-Launchpad for VMs appliance UI allows you to create, manage, and edit Kubernetes namespaces. You can also apply Resource Quotas and Limit Ranges to those namespaces.
+Launchpad for VMs appliance UI allows you to create, manage, and edit Kubernetes namespaces. You can also apply Resource
+Quotas and Limit Ranges to those namespaces.
 
 ## Managed Namespaces
 
