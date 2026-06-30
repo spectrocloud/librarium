@@ -9,7 +9,7 @@ tags: ["vmo", "vm launchpad appliance", "infrastructure", "namespaces", "storage
 ---
 <!-- vale off -->
 
-Use the **Infrastructure** section to manage the foundational platform resources that virtual machines depend on: the
+The **Infrastructure** section allows users to manage the foundational platform resources that virtual machines depend on, such as the
 namespaces VMs run in, the storage that backs their disks, and the networks they attach to. Launchpad for VMs surfaces
 these Kubernetes constructs through dedicated UI workflows, while preserving direct access to the underlying resources
 when you need advanced configuration.
