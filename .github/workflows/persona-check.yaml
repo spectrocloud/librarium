@@ -222,10 +222,10 @@ jobs:
             const marker = "<!-- persona-check -->";
             const stamp = new Date().toISOString().replace("T", " ").replace(/:\d\d\.\d+Z$/, " UTC");
             const p = [marker, "## 🤖 Persona check — preview", ""];
-            p.push("The `persona-check` label is applied — **no review has run yet.** Comment `/persona-check` to run it (add overrides such as `files=all` or `provider=openai`).");
+            p.push("The `persona-check` label is applied — **no review has run yet.** Comment `/persona-check` to run it. See the **How to use** dropdown below to add overrides.");
             p.push("");
             if (result.length) {
-              p.push(`**Would review ${result.length} file${result.length === 1 ? "" : "s"}** (threshold ${threshold}, cap ${maxFiles > 0 ? maxFiles : "none"}), largest changes first:`);
+              p.push(`**Persona check would review ${result.length} file${result.length === 1 ? "" : "s"}** (docs with ${threshold}+ changed lines${maxFiles > 0 ? `, capped at ${maxFiles}` : ""}), largest changes first:`);
               p.push("");
               for (const f of selected) p.push(`- \`${f.filename}\` (${f.changes} changed lines)`);
             } else {
