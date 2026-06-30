@@ -50,7 +50,7 @@ You can quick-create namespaces from several pages without leaving the page:
 - **Networking**: when creating a NAD, you can create the target namespace first.
 - **Access policies**: when scoping access to a namespace, you can create it inline.
 
-Quick-create applies the `app.kubernetes.io/managed-by=vmo-manager` label so the namespace is immediately managed.
+Namespaces created through quick-create modal applies the `app.kubernetes.io/managed-by=vmo-manager` label so the namespace is immediately managed.
 
 ### Create from the Namespaces Page
 
@@ -78,15 +78,14 @@ Quick-create applies the `app.kubernetes.io/managed-by=vmo-manager` label so the
 
 6. Click **Create**.
 
-The namespace is created with the appliance labels set, and then any provided Quotas and Limit Range are applied as a
-follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit
-Namespace**.
+The namespace is created with the appliance labels set, and then any provided **Quotas** and **Limit Range** are applied as a
+follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit Namespace**.
 
 ### Adopt Existing Namespaces
 
 You can adopt a namespace that already exists in the cluster so that it falls under appliance management.
 
-1. Go to **Infrastructure > Namespaces**.
+1. Go to **Infrastructure** > **Namespaces**.
 2. Click **Add Existing**.
 3. Select one or more unmanaged namespaces from the list and click **Adopt Namespace**.
 
@@ -96,13 +95,14 @@ delete them from the appliance UI. Delete the underlying namespace with `kubectl
 
 ## Edit Namespaces
 
-Click Edit (pencil icon) in the row's actions column to open the unified modal in edit mode. You can update:
+Click Edit (pencil icon) in the row's actions column to open the unified modal in edit mode. The following table displays the fields that can be modified.
 
-- **Labels**: on the General tab. Appliance-reserved and Kubernetes system keys are filtered out automatically. Refer to
-  [Reserved Keys](#reserved-keys).
-- **Annotations**: on the General tab. Kubernetes system annotations are filtered out automatically.
-- **Resource Quotas**: on the Quotas tab. Clear a field to remove that cap.
-- **Limit Range**: on the Limit Range tab. Clear a field to remove that default.
+| Field               | Tab         | Details                                                                                                                 |
+| ------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Labels**          | General     | Appliance-reserved and Kubernetes system keys are filtered out automatically. Refer to [Reserved Keys](#reserved-keys). |
+| **Annotations**     | General     | Kubernetes system annotations are filtered out automatically.                                                           |
+| **Resource Quotas** | Quotas      | Clear a field to remove that cap.                                                                                       |
+| **Limit Range**     | Limit Range | Clear a field to remove that default.                                                                                   |
 
 :::warning
 
