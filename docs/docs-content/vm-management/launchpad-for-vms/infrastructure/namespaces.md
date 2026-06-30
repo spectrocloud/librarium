@@ -50,7 +50,8 @@ You can quick-create namespaces from several pages without leaving the page:
 - **Networking**: when creating a NAD, you can create the target namespace first.
 - **Access policies**: when scoping access to a namespace, you can create it inline.
 
-Namespaces created through quick-create modal applies the `app.kubernetes.io/managed-by=vmo-manager` label so the namespace is immediately managed.
+Namespaces created through quick-create modal applies the `app.kubernetes.io/managed-by=vmo-manager` label so the
+namespace is immediately managed.
 
 ### Create from the Namespaces Page
 
@@ -78,8 +79,9 @@ Namespaces created through quick-create modal applies the `app.kubernetes.io/man
 
 6. Click **Create**.
 
-The namespace is created with the appliance labels set, and then any provided **Quotas** and **Limit Range** are applied as a
-follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit Namespace**.
+The namespace is created with the appliance labels set, and then any provided **Quotas** and **Limit Range** are applied
+as a follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit
+Namespace**.
 
 ### Adopt Existing Namespaces
 
@@ -95,7 +97,8 @@ delete them from the appliance UI. Delete the underlying namespace with `kubectl
 
 ## Edit Namespaces
 
-Click Edit (pencil icon) in the row's actions column to open the unified modal in edit mode. The following table displays the fields that can be modified.
+Click Edit (pencil icon) in the row's actions column to open the unified modal in edit mode. The following table
+displays the fields that can be modified.
 
 | Field               | Tab         | Details                                                                                                                 |
 | ------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------- |
