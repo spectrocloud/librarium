@@ -18,8 +18,8 @@ model, the appliance routes it to the default model. For how the appliance route
 ## Prerequisites
 
 - A running Launchpad for AI appliance, with the admin console reachable and operator access.
-- The model you want to make default already added and serving. To add and verify a model, refer to
-  [Add a Model](./add-a-model.md).
+- The model you want to make default already deployed and serving. To deploy and verify a model, refer to
+  [Deploy a Model](./deploy-a-model.md).
 
 ## Set the Default Model
 
@@ -36,4 +36,4 @@ For what happens to requests that are in progress when you change the default mo
 
 ## Next Steps
 
-To add another model to the appliance, refer to [Add a Model](./add-a-model.md).
+To deploy another model to the appliance, refer to [Deploy a Model](./deploy-a-model.md).
