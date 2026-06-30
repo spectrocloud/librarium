@@ -16,7 +16,7 @@ Launchpad for VMs appliance UI allows you to create, manage, and edit Kubernetes
 
 ## Managed Namespaces
 
-A namespace is **managed** when it has the label `app.kubernetes.io/managed-by=vmo-manager`. For managed namespaces,
+A namespace is managed when it has the label `app.kubernetes.io/managed-by=vmo-manager`. For managed namespaces,
 Launchpad for VMs:
 
 - Lists them in dropdowns and filters.
@@ -28,14 +28,14 @@ with namespace-scoped RoleBindings (granted through **Settings > Access Manageme
 appear in dropdowns and filters. Users with cluster-wide access view all managed namespaces. You can filter by a
 specific namespace using the namespace dropdown.
 
-:::tip
+:::info
 
 When creating VMs or other resources, choose a managed namespace. Namespaces without the `vmo-manager` label may not
 appear in dropdowns.
 
 :::
 
-A second label, `vmo-manager.spectrocloud.com/origin=created`, distinguishes namespaces that Launchpad for VMs created
+A second label, `vmo-manager.spectrocloud.com/origin=created`, distinguishes namespaces created by a user
 (deletable from the UI) from namespaces that were **adopted** (only removable from appliance management; the underlying
 namespace remains in the cluster).
 
@@ -43,7 +43,7 @@ namespace remains in the cluster).
 
 ### Quick-Create Links
 
-From several pages, you can create a namespace without leaving the page:
+You can quick-create namespaces from several pages without leaving the page:
 
 - **VM creation**: the Namespace dropdown offers **Create namespace** when the desired namespace does not exist.
 - **Networking**: when creating a NAD, you can create the target namespace first.
@@ -53,23 +53,30 @@ Quick-create applies the `app.kubernetes.io/managed-by=vmo-manager` label so the
 
 ### Create from the Namespaces Page
 
-1. Go to **Infrastructure > Namespaces**.
-2. Click **Create Namespace**. A modal opens with three tabs:
-   - **General**: the namespace name, plus optional labels and annotations.
-   - **Quotas**: optional namespace-wide Resource Quota caps.
-   - **Limit Range**: optional per-container default requests and limits.
-3. On the **General** tab, enter a DNS-1123 compliant name (lowercase letters, digits, and hyphens; up to 63 characters;
+1. Navigate to **Infrastructure > Namespaces**.
+
+2. Click **Create Namespace**. A modal opens with three tabs described in the table below.
+
+   | Tab             | Description                                               |
+   | --------------- | --------------------------------------------------------- |
+   | **General**     | The namespace name, plus optional labels and annotations. |
+   | **Quotas**      | Optional namespace-wide Resource Quota caps.              |
+   | **Limit Range** | Optional per-container default requests and limits.       |
+
+3. On the **General** tab, enter a [DNS-1123 compliant name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names) (lowercase letters, digits, and hyphens; up to 63 characters;
    must start and end with an alphanumeric character). Validation runs as you type.
-4. Optionally add **Labels** and **Annotations**. Each is a key/value pair, and you can add multiple. Refer to
+
+4. (Optional) Enter in values for **Labels** and **Annotations**. Each is a key/value pair, and you can add multiple. Refer to
    [Reserved Keys](#reserved-keys) for keys Launchpad for VMs controls automatically.
-5. Optionally fill in **Quotas** and **Limit Range**. Refer to
+
+5. (Optional) Enter in values for **Quotas** and **Limit Range**. Refer to
    [Resource Quotas vs Limit Range](#resource-quotas-vs-limit-range). Empty fields are skipped, and the namespace is
    created without that constraint.
+
 6. Click **Create**.
 
 The namespace is created with the appliance labels set, and then any provided Quotas and Limit Range are applied as a
-follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit
-Namespace**.
+follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit Namespace**.
 
 ### Adopt Existing Namespaces
 
@@ -77,7 +84,7 @@ You can adopt a namespace that already exists in the cluster so that it falls un
 
 1. Go to **Infrastructure > Namespaces**.
 2. Click **Add Existing**.
-3. Select one or more unmanaged namespaces from the list and click **Adopt**.
+3. Select one or more unmanaged namespaces from the list and click **Adopt Namespace**.
 
 Adopted namespaces are labeled `app.kubernetes.io/managed-by=vmo-manager` but **not** marked with
 `vmo-manager.spectrocloud.com/origin=created`. You can remove them from appliance management (unadopt), but you cannot
@@ -85,7 +92,7 @@ delete them from the appliance UI. Delete the underlying namespace with `kubectl
 
 ## Edit Namespaces
 
-Click the **pencil icon** (Edit) in the row's actions column to open the unified modal in edit mode. You can update:
+Click Edit (pencil icon) in the row's actions column to open the unified modal in edit mode. You can update:
 
 - **Labels**: on the General tab. Appliance-reserved and Kubernetes system keys are filtered out automatically. Refer to
   [Reserved Keys](#reserved-keys).
@@ -135,7 +142,7 @@ Quotas and Limit Ranges are commonly confused. They control different scopes.
 | **Applied via**  | A `ResourceQuota` object                                      | A `LimitRange` object                                                   |
 | **What you set** | Total CPU/Memory requests and limits, total storage, max pods | Per-container default CPU/Memory request and limit                      |
 
-Use a **Resource Quota** to keep a noisy namespace from starving other workloads on the cluster. Use a **Limit Range**
+Use a **Resource Quota** to keep a resource-hungry namespace from starving other workloads on the cluster. Use a **Limit Range**
 to give containers reasonable defaults so that VMs and pods cannot accidentally schedule with no resources reserved.
 
 ### Quota Fields
