@@ -92,7 +92,7 @@ export default {
       "",
       "- `provider=` — `anthropic` (default) or `openai`",
       "- `model=` — a specific model (default: the provider's default); see the [full list of available models](https://github.com/spectrocloud/impersonaid/blob/main/src/models/models.json)",
-      "- `persona=` — pin a persona by name (default: auto-selected per file)",
+      "- `persona=` — pin a persona by name (default: auto-selected per file). Available: `Site Reliability Engineer`, `Product Evaluator`, `Platform Engineer` — see the [full list](https://github.com/spectrocloud/impersonaid/tree/main/personas)",
       "- `question=\"...\"` — free-text question, or `question_key=` a preset; see the [available question keys](https://github.com/spectrocloud/librarium/blob/master/.github/persona-check/config.mjs)",
       "- `files=all` or `files=\"path/a.md,path/b.mdx\"` (default: changed docs above the threshold)",
       `- \`threshold=\` — minimum changed lines to review (default: ${this.threshold})`,
