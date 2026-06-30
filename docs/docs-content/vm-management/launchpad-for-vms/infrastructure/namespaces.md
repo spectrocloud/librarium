@@ -36,9 +36,9 @@ appear in dropdowns.
 
 :::
 
-A second label, `vmo-manager.spectrocloud.com/origin=created`, distinguishes namespaces created by a user
-(deletable from the UI) from namespaces that were **adopted** (only removable from appliance management; the underlying
-namespace remains in the cluster).
+A second label, `vmo-manager.spectrocloud.com/origin=created`, distinguishes namespaces created by a user (deletable
+from the UI) from namespaces that were **adopted** (only removable from appliance management; the underlying namespace
+remains in the cluster).
 
 ## Create Namespaces
 
@@ -64,11 +64,13 @@ Quick-create applies the `app.kubernetes.io/managed-by=vmo-manager` label so the
    | **Quotas**      | Optional namespace-wide Resource Quota caps.              |
    | **Limit Range** | Optional per-container default requests and limits.       |
 
-3. On the **General** tab, enter a [DNS-1123 compliant name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names) (lowercase letters, digits, and hyphens; up to 63 characters;
-   must start and end with an alphanumeric character). Validation runs as you type.
+3. On the **General** tab, enter a
+   [DNS-1123 compliant name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names)
+   (lowercase letters, digits, and hyphens; up to 63 characters; must start and end with an alphanumeric character).
+   Validation runs as you type.
 
-4. (Optional) Enter in values for **Labels** and **Annotations**. Each is a key/value pair, and you can add multiple. Refer to
-   [Reserved Keys](#reserved-keys) for keys Launchpad for VMs controls automatically.
+4. (Optional) Enter in values for **Labels** and **Annotations**. Each is a key/value pair, and you can add multiple.
+   Refer to [Reserved Keys](#reserved-keys) for keys Launchpad for VMs controls automatically.
 
 5. (Optional) Enter in values for **Quotas** and **Limit Range**. Refer to
    [Resource Quotas vs Limit Range](#resource-quotas-vs-limit-range). Empty fields are skipped, and the namespace is
@@ -77,7 +79,8 @@ Quick-create applies the `app.kubernetes.io/managed-by=vmo-manager` label so the
 6. Click **Create**.
 
 The namespace is created with the appliance labels set, and then any provided Quotas and Limit Range are applied as a
-follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit Namespace**.
+follow-up step. If those follow-up calls fail, the namespace is still created, and you can retry from **Edit
+Namespace**.
 
 ### Adopt Existing Namespaces
 
@@ -143,8 +146,9 @@ Quotas and Limit Ranges are commonly confused. They control different scopes.
 | **Applied via**  | A `ResourceQuota` object                                      | A `LimitRange` object                                                   |
 | **What you set** | Total CPU/Memory requests and limits, total storage, max pods | Per-container default CPU/Memory request and limit                      |
 
-Use a **Resource Quota** to keep a resource-hungry namespace from starving other workloads on the cluster. Use a **Limit Range**
-to give containers reasonable defaults so that VMs and pods cannot accidentally schedule with no resources reserved.
+Use a **Resource Quota** to keep a resource-hungry namespace from starving other workloads on the cluster. Use a **Limit
+Range** to give containers reasonable defaults so that VMs and pods cannot accidentally schedule with no resources
+reserved.
 
 ### Quota Fields
 
