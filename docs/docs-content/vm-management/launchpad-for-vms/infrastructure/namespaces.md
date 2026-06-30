@@ -10,6 +10,8 @@ sidebar_position: 10
 tags: ["vmo", "vm launchpad appliance", "infrastructure", "namespaces"]
 ---
 
+<!-- vale off -->
+
 Launchpad for VMs creates, adopts, and edits Kubernetes namespaces, and applies Resource Quotas and Limit Ranges to
 them. This page describes how to manage namespaces from the appliance UI.
 

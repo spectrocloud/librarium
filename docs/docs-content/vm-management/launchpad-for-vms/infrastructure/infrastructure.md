@@ -7,6 +7,7 @@ hide_table_of_contents: false
 sidebar_position: 4
 tags: ["vmo", "vm launchpad appliance", "infrastructure", "namespaces", "storage", "networking"]
 ---
+<!-- vale off -->
 
 Use the **Infrastructure** section to manage the foundational platform resources that virtual machines depend on: the
 namespaces VMs run in, the storage that backs their disks, and the networks they attach to. Launchpad for VMs surfaces
