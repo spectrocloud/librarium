@@ -19,8 +19,6 @@ your hosts.
 ## Central Management Mode
 
 This version of agent mode requires internet access on the host to connect to a Palette instance.
-{/* PERSONA-CHECK-TEST: temporary minor edit, remove before merge (DOC-2473) */}
-The host must be able to reach your Palette endpoint over HTTPS on port 443.
 
 ### Latest
 
