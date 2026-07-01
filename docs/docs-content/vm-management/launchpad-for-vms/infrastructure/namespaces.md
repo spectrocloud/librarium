@@ -10,10 +10,9 @@ sidebar_position: 10
 tags: ["vmo", "vm launchpad appliance", "infrastructure", "namespaces"]
 ---
 
-<!-- vale off -->
 
-Launchpad for VMs appliance UI allows you to create, manage, and edit Kubernetes namespaces. You can also apply Resource
-Quotas and Limit Ranges to those namespaces.
+Virtual Machine Orchestrator (VMO) allows you to create, manage, and edit Kubernetes namespaces. You can also apply [Resource
+Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) and [Limit Ranges](https://kubernetes.io/docs/concepts/policy/limit-range/) to those namespaces.
 
 ## Managed Namespaces
 
@@ -22,23 +21,26 @@ Launchpad for VMs:
 
 - Lists them in dropdowns and filters.
 - Lets you edit labels, annotations, Resource Quotas, and Limit Ranges from a single modal.
-- Allows quick-create from various pages, such as VM creation and networking.
+Namespaces managed by VMO are denoted with the following labels:
+
+ | Label | Description |
+ | --- | --- |
+ | `app.kubernetes.io/managed-by=vmo-manager` | Applied to all labels managed by VMO, including those created in the UI | 
+ | `vmo-manager.spectrocloud.com/origin=created` | Distinguishes namespaces created by a user in VMO (deletable
+from the UI) from namespaces created automatically by the Launchpad for VMs appliance |
+
+Managed namespaces: 
+
+- Are listed in relevant drop-downs and filters.
+- Can be edited from a single modal.
+- Can be created on-the-fly from various pages (for example, **Workloads** > **Virtual Machines** > **Create VM**)
 
 Resource lists default to **All Namespaces**, showing resources across all namespaces you can access. For OIDC users
 with namespace scoped RoleBindings (granted through **Settings** > **Access Management**), only their permitted
-namespaces appear in dropdowns and filters. Users with cluster-wide access view all managed namespaces. You can filter
-by a specific namespace using the namespace dropdown.
+namespaces appear in drop-downs and filters. Users with cluster-wide access can view all managed namespaces. You can filter
+by a specific namespace using the namespace drop-down.
 
-:::info
 
-When creating VMs or other resources, choose a managed namespace. Namespaces without the `vmo-manager` label may not
-appear in dropdowns.
-
-:::
-
-A second label, `vmo-manager.spectrocloud.com/origin=created`, distinguishes namespaces created by a user (deletable
-from the UI) from namespaces that were **adopted** (only removable from appliance management; the underlying namespace
-remains in the cluster).
 
 ## Create Namespaces
 
