@@ -183,10 +183,3 @@ underlying namespace, use `kubectl` or similar tool.
    with a **VMO Status** of **Adopted**.
 3. Enter the namespace to remove from VMO, and select **Remove from VMO**. The namespace is required only if there are existing resources in the adopted namespace.
 
-:::info
-
-Adopted namespaces show a confirmation dialog listing existing VMs, DataVolumes, snapshots, services, and PVCs in the
-namespace before unadopting. The resources remain after the namespace is removed from appliance management; they are no
-longer surfaced in the UI.
-
-:::
