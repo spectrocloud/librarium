@@ -3,16 +3,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowsRotate,
   faBookOpen,
+  faBox,
+  faBoxesStacked,
   faBrain,
   faChartLine,
   faCode,
+  faCompactDisc,
   faCubes,
   faDesktop,
+  faDiagramProject,
   faGears,
   faGlobe,
+  faHardDrive,
+  faLayerGroup,
   faMicrochip,
+  faPalette,
   faPlug,
+  faRobot,
+  faServer,
   faShieldHalved,
+  faTerminal,
   faWandMagicSparkles,
 } from "@fortawesome/free-solid-svg-icons";
 import { library, config, findIconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -32,16 +42,26 @@ config.autoAddCss = false;
 library.add(
   faArrowsRotate,
   faBookOpen,
+  faBox,
+  faBoxesStacked,
   faBrain,
   faChartLine,
   faCode,
+  faCompactDisc,
   faCubes,
   faDesktop,
+  faDiagramProject,
   faGears,
   faGlobe,
+  faHardDrive,
+  faLayerGroup,
   faMicrochip,
+  faPalette,
   faPlug,
+  faRobot,
+  faServer,
   faShieldHalved,
+  faTerminal,
   faWandMagicSparkles
 );
 
@@ -167,7 +187,17 @@ export function FeatureTile({ icon, title, description, url }: FeatureTileProps)
       <p className={styles.featureDescription}>{description}</p>
     </article>
   );
-  return url ? <VersionedLink url={url} component={tile} /> : <div>{tile}</div>;
+  if (!url) {
+    return <div>{tile}</div>;
+  }
+  if (isExternal(url)) {
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        {tile}
+      </a>
+    );
+  }
+  return <VersionedLink url={url} component={tile} />;
 }
 
 interface FeatureHighlightsProps {

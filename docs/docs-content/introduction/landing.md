@@ -13,12 +13,12 @@ sidebar_custom_props:
 slug: /
 ---
 
+<AskAI />
+
 <LandingHero
   eyebrow="Spectro Cloud Palette"
   title="AI and Cloud-Native Architecture at Scale"
   subtitle="Build curated, full-stack clusters once, then deploy and scale AI, ML, and cloud-native workloads consistently across every environment, with the governance and security production demands."
-  primaryText="Learn More"
-  primaryUrl="/palette"
 >
   <HeroPanel
     icon="wand-magic-sparkles"
@@ -39,7 +39,7 @@ slug: /
     url="/automation/palette-mcp"
   />
   <HeroPanel
-    icon="hdd"
+    icon="hard-drive"
     title="Edge"
     description="Deploy and manage Kubernetes clusters on Edge hosts in remote and isolated locations."
     url="/clusters/edge"
@@ -58,7 +58,7 @@ slug: /
   />
 </LandingHero>
 
-## Installation and Deployment Modes
+## Palette Installation
 
 <FeatureHighlights>
   <FeatureTile
@@ -68,22 +68,22 @@ slug: /
     url="/enterprise-version"
   />
   <FeatureTile
+    icon="wand-magic-sparkles"
+    title="Self-Hosted PaletteAI"
+    description="Follow an end-to-end self-hosted setup, from appliance installation to deploying your first Profile Bundle."
+    url="https://docs.palette-ai.com/docs/installation-and-setup/self-hosted-quickstart/#complete-palette-setup"
+  />
+  <FeatureTile
     icon="shield-halved"
     title="Palette VerteX"
     description="Meet government and regulated-industry requirements with FIPS 140-3 validated Palette VerteX."
     url="/vertex"
   />
   <FeatureTile
-    icon="compact-disc"
-    title="Appliance Mode"
-    description="Build EdgeForge installer images and provision immutable edge hosts in appliance mode."
-    url="/deployment-modes/appliance-mode"
-  />
-  <FeatureTile
-    icon="robot"
-    title="Agent Mode"
-    description="Bring your own host and run edge clusters with zero-downtime operations in agent mode."
-    url="/deployment-modes/agent-mode"
+    icon="box"
+    title="Palette Management Appliance"
+    description="Deploy self-hosted Palette to your environment using the Palette Management Appliance."
+    url="/enterprise-version/install-palette/palette-management-appliance"
   />
 </FeatureHighlights>
 
@@ -109,16 +109,34 @@ slug: /
     url="/automation/crossplane"
   />
   <FeatureTile
+    icon="plug"
+    title="Palette MCP Server"
+    description="Connect AI agents and assistants to Palette and Palette VerteX with the Palette MCP server."
+    url="/automation/palette-mcp"
+  />
+  <FeatureTile
+    icon="terminal"
+    title="Palette CLI"
+    description="Manage and automate Palette resources from the command line with the Palette CLI."
+    url="/automation/palette-cli"
+  />
+  <FeatureTile
     icon="boxes-stacked"
     title="Artifact Studio"
     description="Populate your registries with bundles, packs, and installers for self-hosted and airgapped environments."
     url="/downloads/artifact-studio"
   />
+  <FeatureTile
+    icon="palette"
+    title="Palette AI Studio"
+    description="Deploy ready-to-use Profile Bundles for AI and ML applications, models, infrastructure, and full-stack use cases."
+    url="https://artifact-studio.spectrocloud.com/palette-ai-studio"
+  />
 </FeatureHighlights>
 
 <CTABanner
-  title="Ready to deploy your first cluster?"
-  description="Follow a hands-on tutorial and deploy your first cluster with Palette."
-  primaryText="Follow a tutorial"
+  title="Ready to get started with Palette?"
+  description="Follow a hands-on tutorial and deploy your first cluster."
+  primaryText="Learn More"
   primaryUrl="/tutorials"
 />
