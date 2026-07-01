@@ -136,8 +136,8 @@ as a follow-up step. If those follow-up calls fail, the namespace is still creat
 
 You can adopt a namespace that already exists in the cluster so that it can be managed by VMO.
 
-1. Go to **Infrastructure** > **Namespaces**.
-2. Click **Add Existing**.
+1. From the VMO left main menu, select **Infrastructure** > **Namespaces**.
+2. Select **Add Existing**.
 3. Select one or more unmanaged namespaces from the list and click **Adopt Namespace**.
 
 Adopted namespaces are labeled `app.kubernetes.io/managed-by=vmo-manager` but **not** marked with
@@ -146,25 +146,14 @@ delete them from the appliance UI. Delete the underlying namespace with `kubectl
 
 ## Edit Namespaces
 
-Click Edit (pencil icon) in the row's actions column to open the unified modal in edit mode. The following table
-displays the fields that can be modified.
+Editing an existing namespace uses a similar process as [creating a namespace](#create-namespaces). From the VMO left main menu, select **Infrastructure** > **Namespaces**, and select the **Edit** icon beside the namespace. Add, remove, and edit fields as necessary, selecting **Save changes** when finished. 
 
-| Field               | Tab         | Details                                                                                                                 |
-| ------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------- |
-| **Labels**          | General     | Appliance-reserved and Kubernetes system keys are filtered out automatically. Refer to [Reserved Keys](#reserved-keys). |
-| **Annotations**     | General     | Kubernetes system annotations are filtered out automatically.                                                           |
-| **Resource Quotas** | Quotas      | Clear a field to remove that cap.                                                                                       |
-| **Limit Range**     | Limit Range | Clear a field to remove that default.                                                                                   |
-
-:::warning
+:::info
 
 Namespace names are immutable. Kubernetes does not allow renaming a namespace, so the name field is shown but disabled
-in edit mode. To use a different name, create a new namespace, move resources over, and delete the old one.
+in edit mode. To use a different name, create a new namespace, move resources over, and delete the old namespace.
 
 :::
-
-Editing only writes labels and annotations you can control. Reserved keys, such as the appliance management labels and
-Kubernetes-owned keys like `kubernetes.io/metadata.name`, are preserved server-side regardless of what is sent.
 
 ## Actions Column and Context Menu
 
@@ -187,84 +176,6 @@ longer surfaced in the UI.
 
 :::
 
-## Resource Quotas vs Limit Range
 
-Quotas and Limit Ranges are commonly confused. They control different scopes.
 
-|                  | Resource Quota                                                | Limit Range                                                             |
-| ---------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| **Scope**        | The whole namespace                                           | Each individual container                                               |
-| **Effect**       | Hard cap on the **sum** across all pods                       | **Default** request/limit for containers that did not specify their own |
-| **Applied via**  | A `ResourceQuota` object                                      | A `LimitRange` object                                                   |
-| **What you set** | Total CPU/Memory requests and limits, total storage, max pods | Per-container default CPU/Memory request and limit                      |
 
-Use a **Resource Quota** to keep a resource-hungry namespace from starving other workloads on the cluster. Use a **Limit
-Range** to give containers reasonable defaults so that VMs and pods cannot accidentally schedule with no resources
-reserved.
-
-### Quota Fields
-
-On the **Quotas** tab, all fields are optional.
-
-| Field                 | What it caps                                                |
-| --------------------- | ----------------------------------------------------------- |
-| Total CPU Requests    | Sum of `requests.cpu` across all pods in the namespace.     |
-| Total CPU Limits      | Sum of `limits.cpu` across all pods.                        |
-| Total Memory Requests | Sum of `requests.memory`.                                   |
-| Total Memory Limits   | Sum of `limits.memory`.                                     |
-| Total Storage         | Sum of `requests.storage` across all PVCs in the namespace. |
-| Max Pods              | Maximum number of pods in the namespace.                    |
-
-CPU values use Kubernetes CPU units (`1`, `500m`, `1.5`). Memory and storage use binary suffixes (`128Mi`, `4Gi`).
-
-### Limit Range Fields
-
-On the **Limit Range** tab, all fields are optional.
-
-| Field                                | What it sets                                                     |
-| ------------------------------------ | ---------------------------------------------------------------- |
-| Default CPU Request per container    | `requests.cpu` for containers that did not specify their own.    |
-| Default CPU Limit per container      | `limits.cpu` for containers that did not specify their own.      |
-| Default Memory Request per container | `requests.memory` for containers that did not specify their own. |
-| Default Memory Limit per container   | `limits.memory` for containers that did not specify their own.   |
-
-If a workload already declares its own `resources.requests` or `resources.limits`, the Limit Range does not override it;
-it only fills in defaults.
-
-## Reserved Keys
-
-A small set of label and annotation keys is owned by either Launchpad for VMs or Kubernetes itself. These are
-server-controlled: the appliance silently strips them from any client-supplied input and preserves the canonical values.
-
-**Appliance-controlled labels** (always present on managed namespaces, never user-editable):
-
-- `app.kubernetes.io/managed-by`: always set to `vmo-manager`.
-- `vmo-manager.spectrocloud.com/origin`: `created` for namespaces the appliance created; absent for adopted namespaces.
-
-**Kubernetes-controlled keys** (any key matching these patterns, in either labels or annotations):
-
-- `kubernetes.io/...` and `*.kubernetes.io/...`
-- `k8s.io/...` and `*.k8s.io/...`
-- `pod-security.kubernetes.io/...` (pod security admission labels)
-
-The Edit modal hides these keys. If you need to set a `kubernetes.io/` key, use `kubectl edit namespace` directly.
-
-## Default Namespaces
-
-On bootstrap, Launchpad for VMs automatically labels the following namespaces as managed.
-
-| Namespace           | Purpose                                                 |
-| ------------------- | ------------------------------------------------------- |
-| `default`           | Default Kubernetes namespace.                           |
-| `vm-dashboard`      | The appliance's own namespace, or the configured value. |
-| `vmo-golden-images` | Dedicated namespace for golden image DataVolumes.       |
-
-These namespaces are labeled if they exist. If they do not exist, the bootstrap process may create them, or they are
-created by the Helm chart.
-
-:::info
-
-The exact namespace names depend on Helm values (`VMO_NAMESPACE`, `VMO_GOLDEN_IMAGES_NAMESPACE`). Refer to the platform
-configuration for your deployment.
-
-:::
