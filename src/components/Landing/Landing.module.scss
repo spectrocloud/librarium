@@ -77,7 +77,8 @@
 .heroCopy {
   flex: 1 1 auto;
   min-width: 0;
-  max-width: 720px;
+  // No hero button anymore, so the copy spans the full hero width.
+  max-width: none;
 }
 
 /* Hero product highlight panels, laid out in rows of three */

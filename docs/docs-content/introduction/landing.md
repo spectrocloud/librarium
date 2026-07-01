@@ -33,6 +33,18 @@ slug: /
     url="/ai-workloads"
   />
   <HeroPanel
+    icon="desktop"
+    title="Launchpad for VMs"
+    description="Run and manage virtual machines on bare metal and edge with the Launchpad for VMs Appliance."
+    url="/vm-management/launchpad-for-vms"
+  />
+  <HeroPanel
+    icon="microchip"
+    title="AI Workloads"
+    description="Run GPU-accelerated AI and ML workloads across data center and edge environments."
+    url="/ai-workloads"
+  />
+  <HeroPanel
     icon="plug"
     title="Palette MCP Server"
     description="Connect AI agents and assistants to Palette and Palette VerteX with the Palette MCP server."
@@ -44,21 +56,45 @@ slug: /
     description="Deploy and manage Kubernetes clusters on Edge hosts in remote and isolated locations."
     url="/clusters/edge"
   />
-  <HeroPanel
-    icon="microchip"
-    title="AI Workloads"
-    description="Run GPU-accelerated AI and ML workloads across data center and edge environments."
-    url="/ai-workloads"
-  />
-  <HeroPanel
-    icon="desktop"
-    title="Launchpad for VMs"
-    description="Run and manage virtual machines on bare metal and edge with the Launchpad for VMs Appliance."
-    url="/vm-management/launchpad-for-vms"
-  />
 </LandingHero>
 
-## Palette Installation
+## What Makes Palette Different?
+
+<FeatureHighlights>
+  <FeatureTile
+    icon="layer-group"
+    title="Full-Stack Management"
+    description="Build flexible stacks that span the OS, Kubernetes, networking, storage, and add-on services, then deploy and manage them as one unit."
+    url="/profiles/cluster-profiles"
+  />
+  <FeatureTile
+    icon="arrows-rotate"
+    title="Declarative Lifecycle"
+    description="Drive consistency and repeatability across every cluster with profile-based, day 0 to day 2 management."
+    url="/clusters"
+  />
+  <FeatureTile
+    icon="globe"
+    title="AI Anywhere"
+    description="Run GPU-accelerated AI and ML workloads on AWS, Azure, Google Cloud, VMware, Nutanix, bare metal, and edge."
+    url="/getting-started"
+  />
+  <FeatureTile
+    icon="shield-halved"
+    title="Built for Regulated Industries"
+    description="Palette VerteX integrates FIPS 140-3 cryptographic modules for government and public sector workloads."
+    url="/vertex"
+  />
+</FeatureHighlights>
+
+## Learn More
+
+Expand each section to explore Palette capabilities according to your usecase.
+
+<div className="landing-accordion">
+
+<Accordion>
+<AccordionPanel title="Palette Installation">
 
 <FeatureHighlights>
   <FeatureTile
@@ -87,7 +123,8 @@ slug: /
   />
 </FeatureHighlights>
 
-## Automate and Integrate
+</AccordionPanel>
+<AccordionPanel title="Automate and Integrate">
 
 <FeatureHighlights>
   <FeatureTile
@@ -116,7 +153,8 @@ slug: /
   />
 </FeatureHighlights>
 
-## Build with AI
+</AccordionPanel>
+<AccordionPanel title="Build with AI">
 
 <FeatureHighlights>
   <FeatureTile
@@ -132,6 +170,11 @@ slug: /
     url="https://artifact-studio.spectrocloud.com/palette-ai-studio"
   />
 </FeatureHighlights>
+
+</AccordionPanel>
+</Accordion>
+
+</div>
 
 <CTABanner
   title="Ready to get started with Palette?"

@@ -298,3 +298,91 @@ p img.markdown-image {
       no-repeat;
   }
 }
+
+// Landing page accordion (docs-content/introduction/landing.md)
+// Styled to match the FeatureTile boxes on the same page. Scoped to
+// .landing-accordion, a wrapper that only exists on the landing page, so
+// these overrides never affect the shared Accordion component elsewhere.
+.landing-accordion {
+  margin: 8px 0 24px;
+
+  .ant-collapse,
+  .ant-collapse > .ant-collapse-item {
+    background-color: transparent;
+    border: none;
+  }
+
+  // Each panel reads as one of the feature boxes: bordered, rounded card.
+  .ant-collapse > .ant-collapse-item {
+    margin-bottom: 20px;
+    border: 1px solid var(--simpleCardBorder) !important;
+    border-radius: 16px !important;
+    background-color: var(--ifm-background-color) !important;
+    overflow: hidden;
+    transition:
+      box-shadow 0.18s ease,
+      border-color 0.18s ease;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      border-color: var(--ifm-color-primary) !important;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Larger, bolder headers than the shared default.
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    align-items: center;
+    padding: 24px 28px !important;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ifm-font-color-base) !important;
+
+    &:hover {
+      color: var(--ifm-color-primary) !important;
+    }
+  }
+
+  .ant-collapse .ant-collapse-expand-icon {
+    font-size: 16px;
+  }
+
+  .ant-collapse-content {
+    border-top: 1px solid var(--simpleCardBorder);
+    background-color: transparent !important;
+  }
+
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: 20px 16px 28px !important;
+  }
+
+  // Neutralize the shared `.content` wrapper's horizontal padding so the grid
+  // keeps as much width as the previous full-width rows had.
+  .ant-collapse-content-box > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // Force four boxes onto one row inside a panel, matching the rows before they
+  // were collapsed. Only grids with four tiles are targeted, so the two-tile
+  // "Build with AI" panel stays adaptive via the default auto-fit grid.
+  .feature-grid:has(> :nth-child(4)) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  // Match the hero panels' responsive stepping down on smaller screens.
+  @media (max-width: 996px) {
+    .feature-grid:has(> :nth-child(4)) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .feature-grid:has(> :nth-child(4)) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

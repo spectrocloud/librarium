@@ -206,7 +206,9 @@ interface FeatureHighlightsProps {
 }
 
 export function FeatureHighlights({ children }: FeatureHighlightsProps) {
-  return <div className={styles.featureGrid}>{children}</div>;
+  // The stable `feature-grid` class (alongside the hashed module class) is a hook
+  // for landing-page-only global CSS, e.g. adjusting columns inside the accordion.
+  return <div className={`feature-grid ${styles.featureGrid}`}>{children}</div>;
 }
 
 interface CTABannerProps {
