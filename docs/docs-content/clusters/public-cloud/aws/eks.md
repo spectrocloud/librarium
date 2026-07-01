@@ -48,9 +48,19 @@ guide for help with migrating workloads.
 
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
-  - If you are using EKS Pod Identity to authenticate Palette with your AWS account, and you want users to access the
-    kubeconfig file of EKS workload clusters, you must add these users to the `iamAuthenticatorConfig.mapUsers` section
-    of the Kubernetes layer of your AWS EKS cluster profiles.
+  - If you are using EKS Pod Identity to authenticate Palette with your AWS account, you must configure the
+    `iamAuthenticatorConfig.mapUsers` section of the Kubernetes layer of your AWS EKS cluster profiles with at least one
+    user entry. This configuration is required for the EKS Pod Identity feature to operate correctly. It grants users
+    access to the kubeconfig file of EKS workload clusters and allows the Palette management cluster to access the
+    workload cluster.
+
+    :::warning
+
+    If you do not configure `iamAuthenticatorConfig` with a user entry, neither your users nor the Palette management
+    cluster can access the EKS cluster. As a result, the cluster becomes stuck during deletion, and its pod identity
+    associations are not cleaned up.
+
+    :::
 
     As per the following example, these users must be added to the `system:masters` group to have admin access to the
     cluster. Replace `<aws-account-id>`, `<username>`, and `<k8s-username>` with your AWS account ID, the IAM username,

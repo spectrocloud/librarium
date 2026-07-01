@@ -79,6 +79,10 @@ After your ISO is uploaded, you are ready to deploy a VM.
    | **Namespace** | Select the namespace that contains your ISO. For this guide, select `vmo-golden-images` where you uploaded your ISO.                       |
    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit. |
 
+   This guide creates the VM in the same namespace as the ISO. You can only select an ISO or golden image from the
+   namespace where the VM is created. To launch a VM in a different namespace than your ISO or golden image, create a
+   [template](./virtual-machines/templates.md) from the source first.
+
 4. Leave the **Batch Mode**, **VM Preference**, **Labels**, and **Annotations** sections as is. Select **Next**.
 
 5. On the **Compute** wizard step, select **Instance Type**.
@@ -89,8 +93,8 @@ After your ISO is uploaded, you are ready to deploy a VM.
    :::warning
 
    If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
-   memory. To change the instance type after provisioning, power off the VM, update the VM YAML file, and then restart
-   the VM.
+   memory individually. You can change the instance type after provisioning, but the new CPU and memory values do not
+   take effect until you restart the VM.
 
    :::
 

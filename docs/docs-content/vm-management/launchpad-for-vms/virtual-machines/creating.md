@@ -1,386 +1,287 @@
 ---
-sidebar_label: "Creating VMs"
-title: "Creating VMs"
+sidebar_label: "Create a VM"
+title: "Create a VM"
 description: "Learn how to create VMs using the VM Launchpad Appliance"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
-draft: true
+sidebar_position: 6
 tags: ["vmo", "vm launchpad"]
 ---
 
-<!-- vale off -->
-
-This guide walks through the VM creation wizard and batch creation options in VMO Manager.
+This guide walks through the VM creation wizard and batch creation options in VM Launchpad.
 
 ## Overview
 
 The VM creation wizard guides you through seven steps: **Source**, **Compute**, **Storage**, **Network**, **Hardware**,
-**Lifecycle**, and **Review**. Each step configures a different aspect of the virtual machine. The wizard supports
-creating VMs from [templates](../templates.md), [golden images](../golden-images.md), ISOs, or blank disks.
+**Lifecycle**, and **Review**. The wizard supports creating VMs from [templates](./templates.md),
+[golden images](./golden-images.md), ISOs, or blank disks.
 
-> **Tip:** Use the **Advanced** button to open the YAML preview drawer. The preview updates live as you change
-> selections in each step.
+:::tip
 
----
+Use the **Advanced** button to open the YAML preview drawer. The preview updates live as you change selections in each
+step.
 
-## Step 1: Source
+:::
 
-Choose where the VM disk comes from and set basic identity.
+## Prerequisites
 
-### Source Types
+- A cluster created using the Launchpad Appliance. Refer to [Install Launchpad for VMs](../install-vmla-iso.md) for
+  guidance.
 
-| Type            | Description                                                                                                                                                                                                                                                                                               |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Template**    | Use an existing VmTemplate. The template defines the base image, compute, network, and hardware. You can override some settings in later steps.                                                                                                                                                           |
-| **Image / ISO** | Select a DataVolume from the picker. `[Image]` entries are DataVolumes marked as golden images and are cloned into the rootdisk, so the VM boots directly into the OS. `[ISO]` entries are installer media and are attached as a CD-ROM; the rootdisk starts blank and the OS is installed on first boot. |
-| **Blank**       | Create an empty DataVolume. Use for PXE boot or manual installation.                                                                                                                                                                                                                                      |
+- Credentials to access the Launchpad UI hosted on your cluster. You can use either Keycloak OIDC credentials or local
+  admin credentials configured during cluster creation.
 
-### Identity
+## Create a Virtual Machine
 
-- **Namespace** — The Kubernetes namespace where the VM will be created. Must be a managed namespace (labeled
-  `app.kubernetes.io/managed-by=vmo-manager`).
-- **VM Name** — Must follow Kubernetes DNS-1123 rules: lowercase, alphanumeric, hyphens. No spaces or underscores.
-- **Guest OS** — Linux or Windows. Affects which VM preferences are shown (preferences are filtered by OS family).
+After you upload an OS ISO, create a [golden image](./golden-images.md), or create a [template](./templates.md), you can
+deploy a VM.
 
-### VM Preference (Optional)
+1.  From the left main menu, select **Workloads** > **Virtual Machines**.
 
-Optionally select a **VirtualMachineClusterPreference** for CPU topology, machine type, firmware, and device defaults.
-Preferences are filtered by the selected Guest OS. Linux preferences are hidden when Windows is selected, and vice
-versa.
+2.  Select **Create VM**.
 
-### Batch Mode
+    ![Screenshot showing Create VM button](/vmo/vm-management_vmo_first-vm-create-4-9.webp)
 
-Enable **Create multiple VMs** to provision several VMs in one operation:
+3.  The **Create Virtual Machine** wizard opens. Complete the following fields on the **Source** wizard step.
 
-- **Count** — Number of VMs to create (1–50).
-- **Naming** — Choose `name-1, name-2` (dash) or `name01, name02` (padded).
-- **Start #** — Starting index for the suffix (e.g., 1 for `name-1`, 0 for `name-0`).
+    | **Parameter** | **Description**                                                                                                                                                                                                       |
+    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Source**    | Select the source for the VM: **Template**, **Image/ISO**, or **Custom**.                                                                                                                                             |
+    | **OS**        | Select **Linux** or **Windows**.                                                                                                                                                                                      |
+    | **Namespace** | Select the namespace that contains your ISO.                                                                                                                                                                          |
+    | **Template**  | If you select **Template** as the source, select an existing `VmTemplate` image from the **Template** drop-down menu.                                                                                                 |
+    | **Image/ISO** | If you select **Image/ISO** as the source, select an existing golden image, disk image, or OS ISO file from the **Image/ISO** drop-down menu.                                                                         |
+    | **Custom**    | If you select **Custom**, Launchpad creates a VM from scratch with no template, golden image, or ISO as its source. Configure the VM's compute, storage, and network settings manually in the following wizard steps. |
+    | **VM Name**   | Enter a unique name for the VM. This field only accepts lowercase letters, numbers, and hyphens. The name must end with a letter or digit.                                                                            |
 
-Generated names are shown as you type. For example, with base name `web` and count 3, dash naming produces `web-1`,
-`web-2`, `web-3`.
+    :::info
 
-### Labels (Optional)
+    You can select a golden image from any namespace you can access, not only the namespace of the VM you are creating.
+    Launchpad provisions the VM directly from the golden image through the **Create VM** flow, so you no longer need to
+    create a [template](./templates.md) first to use a golden image across namespaces.
 
-Add Kubernetes labels to the VM. Labels use `key=value` format and must comply with label naming rules.
+    :::
 
----
+4.  Configure any extra **Source** options for your VM. Select **Next** when you complete this page.
 
-## Step 2: Compute
+    | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                |
+    | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Batch**         | Select **Create multiple VMs**. Under **Count**, enter the number of VMs to create. From the **Naming** drop-down menu, select the naming convention: `name-1, name-2` or `name01, name02`. Under **Start #**, enter the number where the naming convention begins.                                                                                                                                            |
+    | **VM Preference** | In the **Filter preferences** field, enter the operating system family name, or select the operating system family from the available options. Linux distributions appear for Linux image/ISOs, and Windows preferences appear only for Windows image/ISOs. Refer to [VM Preferences](./instance-types.md#vm-preferences) for details.                                                                         |
+    | **Labels**        | Enter key-value pair labels to add to your VM.                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Annotations**   | Enter key-value pair Kubernetes annotations to add to your VM. Select **Disable PCI Hole 64-bit** when you use legacy operating systems, such as Windows XP or Windows 2003. VM Launchpad sets the `kubevirt.io/disablePCIHole64: "true"` annotation on the VMI template spec. Refer to [Running legacy Windows versions](https://kubevirt.io/user-guide/user_workloads/legacy_windows/) for more information. |
 
-Configure CPU, memory, and runtime behavior.
+5.  On the **Compute** wizard step, select **Instance Type** to use predefined instance types, or select **Custom** to
+    set CPU and memory resource options manually.
 
-### Instance Type vs Custom
+    | **Mode**          | **Description**                                                                                                                                                      |
+    | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Instance Type** | Select a predefined CPU and memory profile. The `u1` prefix indicates general-purpose types with balanced CPU and memory.                                            |
+    | **Custom**        | Set CPU and memory resources manually. Consider what the operating system and any applications running in the operating system need before you select custom values. |
 
-See [Instance Types & Preferences](./instance-types.md) for details on available compute profiles.
+    For more about instance types, custom mode, and creating your own profiles, refer to
+    [Instance Types & Preferences](./instance-types.md).
 
-| Mode              | Description                                                                                                                                         |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Instance Type** | Select a predefined compute profile (e.g., `u1.small`, `cx1.medium`). CPU and memory are defined by the instance type. Recommended for consistency. |
-| **Custom**        | Set CPU cores and memory manually. Use for workloads that need specific sizing.                                                                     |
+    :::warning
 
-### Custom Mode Options
+    If you select an instance type during VM creation, you cannot change the CPU cores, CPU sockets, CPU threads, or
+    memory individually. You can change the instance type after provisioning, but the new CPU and memory values do not
+    take effect until you restart the VM.
 
-- **CPU Cores** — Guest-visible vCPU count.
-- **Memory** — Guest-visible memory in Gi or Mi.
-- **Run Strategy** — Always, RerunOnFailure, Manual, or Halted.
-- **Resource Requests & Limits** — Optional. Control Kubernetes resource reservations for overcommit and QoS. Set memory
-  requests lower than guest memory for overcommit.
-- **Scheduling** — Eviction strategy (LiveMigrate, LiveMigrateIfPossible, None), hostname, grace period, priority class,
-  node selector, and tolerations.
+    :::
 
-### Instance Type Mode
+    If you select **Custom**, configure the following parameters.
 
-When Instance Type is selected, CPU and memory come from the chosen `VirtualMachineClusterInstancetype`. Run strategy
-and eviction strategy are still configurable in the Scheduling section.
+    | **Parameter**                  | **Description**                                                                                                                        |
+    | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+    | **CPU Cores**                  | Enter the number of vCPUs for the VM. This value is visible to the guest operating system.                                             |
+    | **Memory**                     | Enter the amount of memory for the VM and select `Gi` for gigabytes or `Mi` for megabytes.                                             |
+    | **Run Strategy**               | From the drop-down menu, select **Always**, **RerunOnFailure**, **Manual**, or **Halted** for the VM default power behavior.           |
+    | **Resource Requests & Limits** | Optional. Control Kubernetes resource reservations for overcommit and QoS. Set memory requests lower than guest memory for overcommit. |
 
----
+6.  In the **Scheduling** section, select the eviction strategy for the VM.
 
-## Step 3: Storage
+    | **Parameter**         | **Description**                                                                                                               |
+    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+    | **Eviction Strategy** | From the drop-down menu, select **LiveMigrate**, **LiveMigrateIfPossible**, or **None**.                                      |
+    | **Grace Period**      | Enter the number of seconds to allow a VM to shut down cleanly before it is forcefully terminated.                            |
+    | **Priority Class**    | Enter a priority class value. Kubernetes schedules VMs with a higher priority number before VMs with a lower priority number. |
+    | **Start Strategy**    | From the drop-down menu, select **Normal** or **Paused**.                                                                     |
 
-Configure the root disk and additional disks.
+<!-- Grace Period and Priority class from Kubevirt as per JH -->
 
-### Root Disk
+7. On the **Storage** wizard step, verify that a root disk is configured. The root disk is automatically populated from
+   the ISO you selected in the **Source** step. Adjust the disk size in `Gi` or `Mi`. When you create a VM from a
+   template, this value overrides the template default value.
 
-- **Size** — Disk size in Gi or Mi. When creating from a template, this is an override (the template may define a
-  default).
-- **Storage Class** — Use cluster default or select a specific StorageClass.
+8. Select the **Storage Class** from the drop-down menu.
 
-### Additional Disks
+9. (Optional) Add extra disks by selecting **Add Disk**, and add extra CD-ROMs by selecting **Add CD-ROM**.
 
-Click **Add Disk** to attach extra data volumes. Each disk has a name, size (Gi), and optional Storage Class.
+10. Select the **Boot Order** for the VM. By default, **Disk** is selected. You can also boot from **CD-ROM** or
+    **Network**. Then select **Next**.
 
-### Boot Order
+11. On the **Network** wizard step, the VM has one interface assigned with the **Pod Network (masquerade)** mode by
+    default. This option provides outbound connectivity through NAT. Select **Add NIC** to add extra NICs as needed, and
+    select either **Pod Network (masquerade)** or **Multus Network (bridge)**. You can create extra Network Attachment
+    Definition (NAD) resources in **Infrastructure** > **Networks**.
 
-Choose the first boot device:
+    Under **DNS Settings**, you can optionally define the Hostname and Subdomain for the VM.
 
-- **Disk** — Boot from the root disk (typical for golden images and templates).
-- **CD-ROM** — Boot from an attached ISO (available when source is Image/ISO).
-- **Network** — PXE boot from the network.
+    When batch mode is enabled and you have bridge NICs, a **Batch Static IP Assignment** section appears. Enter
+    IP/CIDR, gateway, and DNS for each VM. Use **Fill Down** to auto-increment IPs by incrementing the last octet (for
+    example, `192.168.1.10/24` → `192.168.1.11/24`, `192.168.1.12/24`). Then select **Next**.
 
----
+    :::info
 
-## Step 4: Network
+    The file server is available on the **Pod Network (masquerade)** network. If you need to install QEMU or other
+    binaries, install them during the golden image build over the **Pod Network (masquerade)** network.
 
-Configure network interfaces.
+    :::
 
-### Default Interface
+12. For **Hardware** (optional), configure any advanced hardware settings required for the VM. You can skip this step
+    for basic VMs. Then select **Next**.
 
-By default, the VM has one interface using the **pod network** (masquerade). This provides outbound connectivity via
-NAT.
+    <details>
 
-### Additional NICs
+    <summary>Display optional advanced hardware settings.</summary>
 
-Click **Add NIC** to add interfaces. Each interface can be:
+    | **Category**         | **Setting**                   | **Description**                                                                                               |
+    | -------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------- |
+    | **Firmware**         | **UEFI / EFI Boot**           | Enable UEFI instead of BIOS.                                                                                  |
+    | **Firmware**         | **Secure Boot**               | Requires EFI. Enables SMM.                                                                                    |
+    | **Firmware**         | **Persistent EFI Variables**  | Persist NVRAM. Requires the VMPersistentState feature gate.                                                   |
+    | **Firmware**         | **Machine Type**              | Override the default machine type, such as `q35`.                                                             |
+    | **Firmware**         | **SMBIOS**                    | Optionally configure UUID and serial values.                                                                  |
+    | **CPU Advanced**     | **CPU Model**                 | Select `host-passthrough`, `host-model`, or a named model, such as `Skylake-Server` or `EPYC-Rome`.           |
+    | **CPU Advanced**     | **Dedicated CPU Placement**   | Pin vCPUs to physical cores.                                                                                  |
+    | **CPU Advanced**     | **NUMA Topology Passthrough** | Pass host NUMA topology to the guest.                                                                         |
+    | **CPU Advanced**     | **CPU Features**              | Add require, force, disable, or forbid rules for specific CPU features.                                       |
+    | **Devices**          | **Virtio RNG**                | Add a random number generator.                                                                                |
+    | **Devices**          | **Tablet Input**              | Add a USB input device for pointer precision.                                                                 |
+    | **Devices**          | **Headless**                  | Create the VM without a graphics device.                                                                      |
+    | **Devices**          | **Video Type**                | Select VGA, Virtio, or `Bochs`.                                                                               |
+    | **Devices**          | **TPM**                       | Add a Trusted Platform Module. The TPM uses ephemeral or persistent state.                                    |
+    | **Devices**          | **USB Redirection**           | Enable client passthrough. Requires KubeVirt 0.44 or later.                                                   |
+    | **Features**         | **ACPI** and **APIC**         | Enable ACPI or APIC. VM Launchpad enables these settings by default.                                          |
+    | **Features**         | **HyperV Enlightenments**     | Configure Windows VM settings, such as relaxed, VAPIC, and `spinlocks`.                                       |
+    | **Clock and Timers** | **Clock Mode**                | Select UTC or timezone.                                                                                       |
+    | **Clock and Timers** | **Timers**                    | Configure PIT, RTC, HPET, or HyperV timers.                                                                   |
+    | **Memory**           | **Hugepages**                 | Enable large memory pages and set the page size to 2Mi or 1Gi.                                                |
+    | **Memory**           | **Overcommit Guest Overhead** | Exclude per-VM overhead from the memory request.                                                              |
+    | **Security**         | **Confidential Computing**    | Select AMD SEV, SEV-SNP, or Intel TDX when supported by the cluster.                                          |
+    | **Host Devices**     | **PCI or GPU passthrough**    | Attach PCI or GPU devices discovered and registered in KubeVirt. Use **Cluster Device Management** if needed. |
 
-- **Pod Network (masquerade)** — Uses the default pod network.
-- **Multus Network (bridge)** — Attach to a Network Attachment Definition (NAD). Select the NAD from the dropdown. You
-  can create a new NAD from the wizard if you have permission.
+    </details>
 
-### Static IP (Bridge NICs)
+    :::info
 
-For bridge-type NICs, expand **Static IP configuration** to set:
+    The **CPU Model** drop-down menu lists only the models the cluster supports and preserves unsupported values rather
+    than dropping them. Refer to [CPU Model Field](./instance-types.md#cpu-model-field) for details on dynamic
+    discovery, caching, and the unavailable-model warnings.
 
-- **IP/CIDR** — e.g., `192.168.1.10/24`
-- **Gateway** — e.g., `192.168.1.1`
-- **DNS** — Comma-separated DNS server IPs
+    :::
 
-### Batch Static IP Assignment
+13. On the **Lifecycle** page, configure snapshot policy and Cloud-Init settings.
 
-When batch mode is enabled and you have bridge NICs, a **Batch Static IP Assignment** section appears. Enter IP/CIDR,
-gateway, and DNS for each VM. Use **Fill Down** to auto-increment IPs by incrementing the last octet (e.g.,
-`192.168.1.10/24` → `192.168.1.11/24`, `192.168.1.12/24`).
+    The following table describes the snapshot policy options. Refer to [Snapshot Policies](./snapshots.md) for more
+    information.
 
----
+    <details>
 
-## Step 5: Hardware
+    <summary>Display Snapshot Policy settings.</summary>
 
-Optional advanced hardware settings. This step can be skipped for basic VMs.
+    | **Setting**         | **Description**                                                                                                         |
+    | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+    | **Snapshot Policy** | Use **None (no snapshot policy)**, or select a snapshot policy to attach to the VM after creation.                      |
+    | **Create**          | Select **Create** to launch the **Create Snapshot Policy** mini-wizard.                                                 |
+    | **Display Name**    | Enter the user-facing name for the snapshot policy.                                                                     |
+    | **Resource Name**   | Enter the Kubernetes resource name for the snapshot policy.                                                             |
+    | **Description**     | Enter an optional description for the snapshot policy.                                                                  |
+    | **Interval**        | Select the automatic snapshot interval. Intervals range from every hour to every seven days.                            |
+    | **Max Retention**   | Enter the number of snapshots to keep per VM. Shorter intervals and higher retention values can increase storage usage. |
 
-### Firmware
+    </details>
 
-- **UEFI / EFI Boot** — Enable UEFI instead of BIOS.
-- **Secure Boot** — Requires EFI. Enables SMM.
-- **Persistent EFI Variables** — Persist NVRAM (requires VMPersistentState feature gate).
-- **Machine Type** — Override default (e.g., `q35`).
-- **SMBIOS** — Optional UUID and serial.
+    :::info
 
-### CPU Advanced
+    Snapshot policies define automatic snapshot schedules, including interval, retention count, and time window. VMs
+    created from a template inherit the template's snapshot policy annotation if one is set.
 
-- **CPU Model** — `host-passthrough`, `host-model`, or a named model (e.g., `Skylake-Server`, `EPYC-Rome`). The dropdown
-  is populated dynamically from the cluster and lists only the models supported by at least one schedulable worker node
-  (discovered from KubeVirt's `cpu-model-migration.node.kubevirt.io/<Model>` node labels). Two inline warnings may
-  appear:
+    :::
 
-  - _"This CPU model is not available on any cluster node. VMs may fail to schedule."_ — The selected model is not
-    supported by any node. Common after importing a template from a cluster with different CPU hardware.
-  - _"This model is not supported by all nodes. Live migration may be restricted."_ — The model is supported by some
-    nodes but not all, so live migration is constrained to the subset.
+    The following table describes the **Cloud-Init** options.
 
-  When a VM or template references a model the cluster does not expose, the dropdown preserves it as
-  `<ModelName> (unsupported in current cluster)` so the value is not silently dropped.
+    <details>
 
-  > **Refresh cadence:** The discovered model list is cached for up to 3 minutes. Adding, removing, or cordoning a
-  > worker node will reflect in the dropdown within one cache window (up to 3 minutes).
+    <summary>Display Cloud-Init settings.</summary>
 
-- **Dedicated CPU Placement** — Pin vCPUs to physical cores.
-- **NUMA Topology Passthrough** — Pass host NUMA topology to the guest.
-- **CPU Features** — Add require/force/disable/forbid for specific features.
+    | **Setting**                         | **Description**                                                                                                                                                                                                                                                                                    |
+    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Data source indicator**           | View the data source used by the VM. A **ConfigDrive data source inherited from template** badge appears when a template forces ConfigDrive.                                                                                                                                                       |
+    | **Install QEMU guest agent?**       | Select **Yes** or **No**. This field is required before VM creation. Select **Yes** to install the guest agent through cloud-init.                                                                                                                                                                 |
+    | **Use internal package repository** | Keep the internal Launchpad repository configured in the guest after the guest agent installation. This field appears only when guest agent installation is enabled.                                                                                                                               |
+    | **User Data**                       | Enter cloud-init user data with the **Cloud-Init Editor**. Linux cloud-init content typically begins with `#cloud-config`.                                                                                                                                                                         |
+    | **Network Data**                    | Optionally enter Netplan v2 YAML for interfaces, static IPs, routes, and nameservers at first boot. If you assigned static bridge IPs in the **Network** step, VM Launchpad automatically generates and merges network data on submit. Use the **Network Data** field only for advanced overrides. |
 
-### Devices
+    </details>
 
-- **Virtio RNG** — Random number generator.
-- **Tablet Input** — USB tablet for pointer precision.
-- **Headless** — No graphics device.
-- **Video Type** — VGA, Virtio, or Bochs.
-- **TPM** — Trusted Platform Module (ephemeral or persistent).
-- **USB Redirection** — Client passthrough (requires KubeVirt 0.44+).
+    :::warning
 
-### Features
+    If you enable guest agent installation, upload the `qemu-guest-agent` package for your operating system and
+    architecture to the internal repository under **Image Catalog** > **Packages** before launching the VM. Otherwise,
+    the agent installation fails. This reminder does not block VM creation.
 
-- **ACPI**, **APIC** — Usually enabled by default.
-- **HyperV Enlightenments** — For Windows VMs (relaxed, VAPIC, spinlocks).
+    :::
 
-### Clock and Timers
+    (Optional) Access the **Cloud-Init Editor** by selecting **Cloud-Init Configuration** under **User Data**. The
+    editor supports the following user data input modes.
 
-- **Clock Mode** — UTC or timezone.
-- **Timers** — PIT, RTC, HPET, HyperV timer configuration.
+    <details>
 
-### Memory
+    <summary>Display the Cloud-Init editor.</summary>
 
-- **Hugepages** — Enable and set page size (2Mi or 1Gi).
-- **Overcommit Guest Overhead** — Exclude per-VM overhead from memory request.
+    | **Mode**     | **Description**                                                                                                                                                                                                                |
+    | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Editor**   | Type or paste the payload directly.                                                                                                                                                                                            |
+    | **Template** | Select a cloud-init config from the **Auto-Install Scripts** catalog. The list is filtered to cloud-init entries only because auto-install installer scripts have no effect on a VM that boots from an already-installed disk. |
+    | **Upload**   | Load a `.yaml` or `.txt` file from your machine.                                                                                                                                                                               |
+    | **URL**      | Fetch the payload from a reachable URL. Your browser performs the fetch.                                                                                                                                                       |
 
-### Security
+    </details>
 
-- **Confidential Computing** — AMD SEV, SEV-SNP, or Intel TDX (when supported by the cluster).
+    :::warning
 
-### Host Devices
+    Cloud-init runs only at first boot. Changes to user data or network data after the VM boots do not run again unless
+    you issue the `cloud-init clean` command and reboot.
 
-Attach PCI or GPU devices for passthrough. Devices must be discovered and registered in KubeVirt. Use **Cluster Device
-Management** to register devices if you have admin permission.
+    :::
 
----
+14. Select **Finish** to provision your VM.
 
-## Step 6: Lifecycle
+## Validate
 
-Optional lifecycle policies and cloud-init configuration.
+1. From the left main menu of the Launchpad console, select **Workloads** > **Virtual Machines**.
 
-### Snapshot Policy
+2. Locate your VM in the list. The status column displays **Provisioning** during VM creation and changes to **Running**
+   after the VM starts.
 
-Select a **VmSnapshotPolicy** to attach to the VM after creation. The policy defines automatic snapshot schedules
-(interval, retention count, time window). VMs created from a template inherit the template's snapshot policy annotation
-if one is set.
+3. Select the VM to view its details, including IP address, the node the VM is running on, and metrics.
 
-> **Note:** Snapshot policies are created under **Workloads > Snapshot Policies**. See
-> [Snapshots & Clones](snapshots.md) for details on creating policies. You can also create a new policy from the
-> Lifecycle step if you have permission.
+   :::info
 
-### Cloud-Init
+   When the VM is running, you can change the CPU core count or CPU thread count, but you must restart the VM to apply
+   the change. You can change the number of CPU sockets without restarting the VM, but this causes the VM to live
+   migrate to another node in the cluster. You can also increase memory without a restart when the VM has **Max Guest
+   Memory** set above its current memory. Refer to [Manage VMs](./managing.md#memory-hot-plug) for details.
 
-Expand **Cloud-Init** to configure guest initialization. This section is collapsed by default.
+   :::
 
-- **Install QEMU Guest Agent** — When enabled (default), cloud-init is augmented to install the guest agent. Required
-  for VNC clipboard, guest agent diagnostics, and live migration features.
-- **User Data** — YAML or script. For Linux, typical content starts with `#cloud-config`.
+4. Select the **Console** tab to open a noVNC-based remote console. Use the console to interact with the VM keyboard.
 
-> **Warning:** Cloud-init runs only at first boot. Changes to user-data after the VM has booted do not re-run unless you
-> use `cloud-init clean` and reboot.
+   ![Screenshot of a running VM console](/launchpad-for-vms_quick-start_console.webp)
 
----
+## Next Steps
 
-## Step 7: Review
-
-Review the configuration before creating.
-
-### Summary Sections
-
-Each section (Source, Compute, Storage, Network, Hardware, Lifecycle) shows a summary. Click **Edit** to jump back to
-that step.
-
-### Cloud-Init Summary
-
-The Lifecycle summary section always appears in the Review step and shows whether QEMU Guest Agent is enabled and
-whether user-data or network-data has been configured. To edit these values, click **Edit** next to Lifecycle or
-navigate back to the Lifecycle step.
-
-### YAML Preview
-
-Click **Advanced** to open the YAML drawer. The preview shows the full `VirtualMachine` manifest and updates live as you
-change any step. The preview is read-only; use it to verify the final spec before creating.
-
-Cloud-init user-data and network-data — including network-data auto-generated from static bridge IPs — are reflected in
-the `cloudInitNoCloud` volume in the preview.
-
-### Validation
-
-Errors and warnings are shown at the top of the Review step. Fix any errors before creating. Warnings may indicate
-non-fatal issues (e.g., missing preference for selected OS).
-
----
-
-## Batch Creation
-
-When batch mode is enabled:
-
-1. Set the base VM name and count in Source.
-2. Configure network, storage, and compute as usual. Batch static IPs are configured per-NIC in Network.
-3. Click **Create** or **Finish**. The wizard creates each VM sequentially, applying per-VM names and static IPs from
-   the batch configuration.
-
-> **Tip:** Use **Fill Down** in the Batch Static IP Assignment table to quickly populate IPs for multiple VMs by
-> incrementing the last octet.
-
----
-
-## CSV Import
-
-For bulk creation from templates, use **CSV Import** instead of the wizard:
-
-1. In the Create VM modal, switch to the **CSV Import** tab.
-2. Download the example CSV to see the required format.
-3. Create a CSV with columns: `vmName`, `templateName`, `templateNamespace`, `namespace`, `cpuCores`, `memory`,
-   `diskSize`, `storageClass`, `runStrategy`, `guestOS`, `labels`.
-4. Drop the CSV file or click to browse.
-5. Review the parsed rows and click **Create** to provision all VMs.
-
-Required columns: `vmName`, `templateName`. Optional: `templateNamespace`, `namespace`, `cpuCores`, `memory`,
-`diskSize`, `storageClass`, `runStrategy`, `guestOS`, `labels`. Labels use `key=value;key2=value2` format.
-
----
-
-## Creating from Different Sources
-
-### From Template
-
-1. Select **Template** as the source type.
-2. Choose the namespace and template from the dropdowns.
-3. The wizard pre-fills compute, storage, network, and hardware from the template. Override as needed.
-4. Set the VM name and complete the remaining steps.
-
-### From ISO / Image
-
-1. Select **Image / ISO** as the source type.
-2. Choose a DataVolume from the dropdown. Each entry is prefixed with its type:
-   - **`[Image]`** — a pre-installed disk image. Selecting it clones the image into the VM's rootdisk. No CD-ROM is
-     attached; the VM boots directly into the OS.
-   - **`[ISO]`** — installer media. Selecting it attaches the ISO as a CD-ROM drive. The rootdisk starts blank and the
-     OS is installed on first boot.
-3. Set the VM name. In Storage, choose **CD-ROM** as the first boot device when installing from an `[ISO]`. For
-   `[Image]` sources the CD-ROM option is hidden automatically.
-4. Complete Compute, Network, Hardware, and Lifecycle.
-
-### From Blank Disk
-
-1. Select **Blank** as the source type.
-2. A blank DataVolume is created. Use **Network** as first boot device for PXE, or attach an ISO later.
-3. Complete the remaining steps.
-
-### From URL
-
-Creating a VM from a URL (importing a disk image from a remote URL) is supported via the DataVolume API. Use the generic
-CRD catalog or `kubectl` to create a DataVolume with `spec.source.http` or `spec.source.registry`, then create a VM from
-that DataVolume using the Image/ISO source type once the import completes.
-
----
-
-## Cloud-Init Configuration
-
-Cloud-init configures the guest OS at first boot. In the **Lifecycle step**, expand **Cloud-Init** to edit:
-
-- **User Data** — YAML or script. For Linux, typical content includes `#cloud-config` YAML with packages, users, and
-  runcmd.
-- **Network Data** — Optional. Network configuration (e.g., static IPs, routes).
-- **Install QEMU Guest Agent** — When enabled (default), cloud-init is augmented to install the guest agent from the VMO
-  package repository. Required for VNC clipboard, guest agent diagnostics, and live migration features.
-
-> **Warning:** Cloud-init runs only at first boot. Changes to user-data after the VM has booted do not re-run unless you
-> use cloud-init's `cloud-init clean` and reboot.
-
----
-
-## API Reference
-
-### Unified VM Creation Endpoint
-
-`POST /api/v1/vm/apply` is the recommended API endpoint for creating VMs programmatically. It accepts a full KubeVirt
-`VirtualMachine` manifest along with VMO-specific options (cloud-init, sysprep, guest agent installation, snapshot
-policy).
-
-**Dry-run validation:** Append `?dryRun=true` to validate the manifest without creating the VM. The endpoint returns
-validation results and the resolved manifest.
-
-The VM creation wizard uses this endpoint internally. The wizard UX is unchanged -- this is a backend improvement that
-enables more flexible programmatic VM creation.
-
-### Deprecated Endpoints
-
-The following endpoints still work but are deprecated in favor of `POST /api/v1/vm/apply`:
-
-| Endpoint                               | Replacement                                              |
-| -------------------------------------- | -------------------------------------------------------- |
-| `POST /api/v1/vm/create-from-template` | `POST /api/v1/vm/apply` with a template-derived manifest |
-| `POST /api/v1/vm/create-from-iso`      | `POST /api/v1/vm/apply` with an ISO source disk          |
-
-Existing integrations using the deprecated endpoints will continue to function. Migration to the unified endpoint is
-recommended for new integrations.
+After your VM is running, refer to [Manage VMs](./managing.md) for day-to-day operations, such as starting and stopping
+VMs, live migration, hot-plugging volumes, editing the VM, snapshots, and guest-agent diagnostics.

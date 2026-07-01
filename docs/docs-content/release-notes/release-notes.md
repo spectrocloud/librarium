@@ -38,6 +38,16 @@ tags: ["release-notes"]
 - Fixed an issue where upgrading Palette could also upgrade the Edge host agent on some nodes of a multi-node cluster
   even when [agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) were paused,
   leaving the cluster with mismatched agent versions across nodes and causing continuous pod restarts.
+  
+## June 29, 2026 - Release 4.9.23
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-9014 -->
+
+- Fixed a bug that caused the Edge Agent version 4.9.19 to incorrectly enforce password strength validation on profile
+  variables for non-VMO Edge clusters, blocking cluster updates when weak passwords were present. Password strength
+  checks are now restricted to VMO profile variables only, restoring the update behavior from previous Palette versions.
 
 ## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
 
@@ -363,10 +373,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Features
 
-- The [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) now supports live updates
-  to running VMs. You can hot-plug memory and hot-update CPU sockets on a running VM without a reboot.
+- [Launchpad for VMs Appliance](../vm-management/launchpad-for-vms/launchpad-for-vms.md) version 4.9.8 is now available.
+  If upgrading from version 4.9.3 to 4.9.8, a pre-upgrade script is required. To obtain the pre-upgrade script, contact
+  your customer support representative.
+
+- The Launchpad for VMs Appliance now supports live updates to running VMs. You can hot-plug memory and hot-update CPU
+  sockets on a running VM without a reboot.
 
 - Running VMs can now be paused and resumed.
+
 - The appliance now displays live-migration progress so you can track a VM's migration between nodes.
 
 - VMs can now be created using custom YAML files.
