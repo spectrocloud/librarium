@@ -25,9 +25,9 @@ Launchpad for VMs:
 - Allows quick-create from various pages, such as VM creation and networking.
 
 Resource lists default to **All Namespaces**, showing resources across all namespaces you can access. For OIDC users
-with namespace scoped RoleBindings (granted through **Settings** > **Access Management**), only their permitted namespaces
-appear in dropdowns and filters. Users with cluster-wide access view all managed namespaces. You can filter by a
-specific namespace using the namespace dropdown.
+with namespace scoped RoleBindings (granted through **Settings** > **Access Management**), only their permitted
+namespaces appear in dropdowns and filters. Users with cluster-wide access view all managed namespaces. You can filter
+by a specific namespace using the namespace dropdown.
 
 :::info
 
