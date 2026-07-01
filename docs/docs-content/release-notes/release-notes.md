@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 4, 2026 - Release 4.9.x
+## July 4, 2026 - Release 4.9.24
 
 <!-- PATCH RELEASE TICKET: DOC-2957 -->
 
@@ -19,22 +19,25 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8884 -->
 
-- The Local TUI installation flow now detects Kairos partitions on all disks and blocks the install with a clear message
-  identifying the affected disks, preventing unpredictable behavior from stale partitions.
+- While bootstrapping Edge hosts, the [TUI](/clusters/edge/site-deployment/site-installation/initial-setup) now checks
+  all disks for partitions left behind by previous installations, preventing stale partitions from causing unpredictable
+  installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen; disks to
+  wipe must be confirmed on the following screen.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
 
-- Custom UI wizard bundles can now be packaged via the [Palette CLI](../automation/palette-cli/palette-cli.md) and
-  rendered in Local UI on Slim ISO-bootstrapped edge hosts, enabling content authors to ship tailored configuration
-  experiences alongside their edge content.
+- Content authors can now bundle a custom UI into Edge content using the `--custom-ui` flag of the
+  [Palette CLI](../automation/palette-cli/palette-cli.md) `content build` command. When the content is uploaded to a
+  Slim ISO-bootstrapped Edge host, Local UI detects the bundle and renders the custom configuration screens, allowing
+  you to ship tailored configuration experiences alongside your Edge content.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9004 -->
 
-- Fixed an issue where Palette Agent upgrades were triggered on nodes in a multi-node cluster even when agent upgrades
-  were paused, caused by a missing or delayed run config at boot time that incorrectly forced an upgrade and introduced
-  version skew across the cluster.
+- Fixed an issue where upgrading Palette could also upgrade the Edge host agent on some nodes of a multi-node cluster
+  even when [agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) were paused,
+  leaving the cluster with mismatched agent versions across nodes and causing continuous pod restarts.
 
 ## June 28, 2026 - Release 4.9.22 {#release-notes-4.9.b}
 

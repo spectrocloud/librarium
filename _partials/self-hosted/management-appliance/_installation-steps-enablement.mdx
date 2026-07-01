@@ -22,9 +22,23 @@ partial_name: installation-steps-enablement
 
 5. Once the nodes have rebooted and entered the GRand Unified Bootloader (GRUB) menu, allow {props.version} to select the **Palette Edge Interactive Installer** boot option automatically.
 
+    :::danger
+
+    During the bootstrap process, the TUI performs a pre-installation check that checks all disks for partitions left behind by previous Kairos installations. This is necessary to prevent stale partitions from causing unpredictable installation behavior.
+    
+    If any disks are affected, they are pre-selected for wiping on the following screen. You can select additional disks as well. Carefully verify the selected disks on the following screen, as proceeding permanently deletes all data from the selected disks.
+
+    :::
+
 6. <PartialsComponent category="self-hosted" name="secure-boot-mokmanager" />
 
 7. Once the **Palette Edge Interactive Installer** window appears, select the target disk for installation.
+
+    :::danger
+
+    Ensure you select the correct disk. The installation process erases all content on the target disk.
+
+    :::
 
 8. Choose the post-installation action: **nothing**, **reboot**, or **poweroff**, then press **ENTER**.
 
