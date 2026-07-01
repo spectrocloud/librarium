@@ -21,7 +21,8 @@ tags: ["release-notes"]
 
 - While bootstrapping Edge hosts, the [TUI](/clusters/edge/site-deployment/site-installation/initial-setup) now checks
   all disks for partitions left behind by previous installations, preventing stale partitions from causing unpredictable
-  installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping disks is optional and must be confirmed on the following screen.
+  installation behavior. Affected disks are flagged and pre-selected for wiping on the prerequisites screen. Wiping
+  disks is optional and must be confirmed on the following screen.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-8912 -->
 

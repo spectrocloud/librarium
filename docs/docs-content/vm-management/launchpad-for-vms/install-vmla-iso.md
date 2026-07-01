@@ -62,12 +62,12 @@ Each device where you install the Launchpad for VMs Appliance ISO must meet the 
    :::danger
 
    During the bootstrap process, the TUI performs a pre-installation check that checks all disks for partitions left
-   behind by previous Kairos installations. This helps prevent stale partitions from causing unpredictable
-   installation behavior.
+   behind by previous Kairos installations. This helps prevent stale partitions from causing unpredictable installation
+   behavior.
 
-   If any disks are affected, they are pre-selected for wiping; you can select additional disks
-   as well. Wiping disks is optional and must be confirmed on the following screen. Carefully verify the selected disks, as proceeding permanently deletes all data from
-   the selected disks.
+   If any disks are affected, they are pre-selected for wiping; you can select additional disks as well. Wiping disks is
+   optional and must be confirmed on the following screen. Carefully verify the selected disks, as proceeding
+   permanently deletes all data from the selected disks.
 
    :::
 
