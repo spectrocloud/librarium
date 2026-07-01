@@ -87,7 +87,7 @@ slug: /
   />
 </FeatureHighlights>
 
-## Developer Tools and Automation
+## Automate and Integrate
 
 <FeatureHighlights>
   <FeatureTile
@@ -97,22 +97,10 @@ slug: /
     url="/api/introduction"
   />
   <FeatureTile
-    icon="layer-group"
-    title="Terraform"
-    description="Provision and manage Palette resources as code with the Palette Terraform provider."
-    url="/automation/terraform"
-  />
-  <FeatureTile
     icon="diagram-project"
-    title="Crossplane"
-    description="Manage Palette resources through standard Kubernetes APIs with the Palette Crossplane provider."
-    url="/automation/crossplane"
-  />
-  <FeatureTile
-    icon="plug"
-    title="Palette MCP Server"
-    description="Connect AI agents and assistants to Palette and Palette VerteX with the Palette MCP server."
-    url="/automation/palette-mcp"
+    title="Infrastructure as Code"
+    description="Provision and manage Palette resources as code with the Terraform and Crossplane providers."
+    url="/automation"
   />
   <FeatureTile
     icon="terminal"
@@ -125,6 +113,17 @@ slug: /
     title="Artifact Studio"
     description="Populate your registries with bundles, packs, and installers for self-hosted and airgapped environments."
     url="/downloads/artifact-studio"
+  />
+</FeatureHighlights>
+
+## Build with AI
+
+<FeatureHighlights>
+  <FeatureTile
+    icon="plug"
+    title="Palette MCP Server"
+    description="Connect AI agents and assistants to Palette and Palette VerteX with the Palette MCP server."
+    url="/automation/palette-mcp"
   />
   <FeatureTile
     icon="palette"
