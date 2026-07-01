@@ -48,7 +48,7 @@
     "@docusaurus/faster": "^3.9.2",
     "@docusaurus/plugin-client-redirects": "^3.9.2",
     "@docusaurus/plugin-ideal-image": "^3.9.2",
-    "@docusaurus/preset-classic": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.10.1",
     "@docusaurus/types": "^3.9.2",
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
