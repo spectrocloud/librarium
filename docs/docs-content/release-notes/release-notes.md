@@ -38,7 +38,7 @@ tags: ["release-notes"]
 - Fixed an issue where upgrading Palette could also upgrade the Edge host agent on some nodes of a multi-node cluster
   even when [agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) were paused,
   leaving the cluster with mismatched agent versions across nodes and causing continuous pod restarts.
-  
+
 ## June 29, 2026 - Release 4.9.23
 
 ### Bug Fixes
