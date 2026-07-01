@@ -1,1 +1,1 @@
-export { LandingHero, HeroPanel, FeatureHighlights, FeatureTile, CTABanner } from "./Landing";
+export { LandingHero, HeroPanel, FeatureHighlights, FeatureTile, FeatureList, FeatureItem, CTABanner } from "./Landing";

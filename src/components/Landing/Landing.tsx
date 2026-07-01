@@ -211,6 +211,37 @@ export function FeatureHighlights({ children }: FeatureHighlightsProps) {
   return <div className={`feature-grid ${styles.featureGrid}`}>{children}</div>;
 }
 
+interface FeatureItemProps {
+  // Any FontAwesome free-solid icon name or alias (for example, icon="layer-group"). Falls back to a generic icon.
+  icon?: string;
+  title: string;
+  description: string;
+}
+
+// A non-clickable feature entry rendered without card chrome (no border, background, or shadow).
+export function FeatureItem({ icon, title, description }: FeatureItemProps) {
+  return (
+    <div className={styles.featureItem}>
+      <div className={styles.featureItemIcon}>
+        <FontAwesomeIcon icon={resolveIcon(icon)} />
+      </div>
+      <div className={styles.featureItemBody}>
+        <h3 className={styles.featureItemTitle}>{title}</h3>
+        <p className={styles.featureItemDescription}>{description}</p>
+      </div>
+    </div>
+  );
+}
+
+interface FeatureListProps {
+  // FeatureItem elements laid out in a responsive grid without card styling.
+  children?: React.ReactNode;
+}
+
+export function FeatureList({ children }: FeatureListProps) {
+  return <div className={styles.featureList}>{children}</div>;
+}
+
 interface CTABannerProps {
   title: string;
   description: string;

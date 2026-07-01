@@ -309,6 +309,53 @@
   color: var(--simpleCardSubtle);
 }
 
+/* Feature list — non-clickable, no card chrome */
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 8px 0 24px;
+  padding: 24px 0 24px 40px;
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.featureItemIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 20px;
+  color: var(--ifm-color-primary);
+  background-color: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+}
+
+.featureItemBody {
+  min-width: 0;
+}
+
+.featureItemTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 4px 0 8px;
+  color: var(--ifm-font-color-base);
+}
+
+.featureItemDescription {
+  font-size: 15px;
+  line-height: 22px;
+  margin: 0;
+  color: var(--simpleCardSubtle);
+}
+
 /* CTA banner */
 .cta {
   display: flex;

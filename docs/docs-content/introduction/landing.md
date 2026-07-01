@@ -45,10 +45,10 @@ slug: /
     url="/ai-workloads"
   />
   <HeroPanel
-    icon="plug"
-    title="Palette MCP Server"
-    description="Connect AI agents and assistants to Palette and Palette VerteX with the Palette MCP server."
-    url="/automation/palette-mcp"
+    icon="palette"
+    title="Palette Platform"
+    description="Build, deploy, and manage full-stack Kubernetes clusters consistently across every environment with Palette."
+    url="/palette"
   />
   <HeroPanel
     icon="hard-drive"
@@ -60,32 +60,28 @@ slug: /
 
 ## What Makes Palette Different?
 
-<FeatureHighlights>
-  <FeatureTile
+<FeatureList>
+  <FeatureItem
     icon="layer-group"
     title="Full-Stack Management"
     description="Build flexible stacks that span the OS, Kubernetes, networking, storage, and add-on services, then deploy and manage them as one unit."
-    url="/profiles/cluster-profiles"
   />
-  <FeatureTile
+  <FeatureItem
     icon="arrows-rotate"
     title="Declarative Lifecycle"
     description="Drive consistency and repeatability across every cluster with profile-based, day 0 to day 2 management."
-    url="/clusters"
   />
-  <FeatureTile
+  <FeatureItem
     icon="globe"
     title="AI Anywhere"
     description="Run GPU-accelerated AI and ML workloads on AWS, Azure, Google Cloud, VMware, Nutanix, bare metal, and edge."
-    url="/getting-started"
   />
-  <FeatureTile
+  <FeatureItem
     icon="shield-halved"
     title="Built for Regulated Industries"
     description="Palette VerteX integrates FIPS 140-3 cryptographic modules for government and public sector workloads."
-    url="/vertex"
   />
-</FeatureHighlights>
+</FeatureList>
 
 ## Learn More
 
@@ -114,12 +110,6 @@ Expand each section to explore Palette capabilities according to your usecase.
     title="Palette VerteX"
     description="Meet government and regulated-industry requirements with FIPS 140-3 validated Palette VerteX."
     url="/vertex"
-  />
-  <FeatureTile
-    icon="box"
-    title="Palette Management Appliance"
-    description="Deploy self-hosted Palette to your environment using the Palette Management Appliance."
-    url="/enterprise-version/install-palette/palette-management-appliance"
   />
 </FeatureHighlights>
 
