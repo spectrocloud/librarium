@@ -16,8 +16,7 @@ Virtual Machine Orchestrator (VMO) allows you to create, manage, and edit Kubern
 
 ## Managed Namespaces
 
-Namespaces managed by VMO
-  are denoted with the following labels:
+Namespaces managed by VMO are denoted with the following labels:
 
 | Label                                         | Description                                                                                                                                        |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -146,14 +145,12 @@ You can adopt a namespace that already exists in the cluster so that it can be m
 Adopted namespaces are labeled `app.kubernetes.io/managed-by=vmo-manager` but **not** marked with
 `vmo-manager.spectrocloud.com/origin=created`.
 
-
 ## Edit Namespaces
 
 Editing an existing namespace uses a similar process as [creating a namespace](#create-namespaces).
 
-From the VMO left
-main menu, select **Infrastructure** > **Namespaces**, and select the **Edit** icon beside the namespace. Add, remove,
-and edit fields as necessary, selecting **Save changes** when finished.
+From the VMO left main menu, select **Infrastructure** > **Namespaces**, and select the **Edit** icon beside the
+namespace. Add, remove, and edit fields as necessary, selecting **Save changes** when finished.
 
 :::info
 
@@ -173,13 +170,14 @@ Take the following steps to delete a namespace created using the VMO UI.
 
 ### Unadopt Namespaces
 
-You can remove the ability to provision VMO-related resources in non-VMO managed namespaces by "unadopting" a namespace, but you cannot delete the namespace itself from the VMO UI. Unadopting a namespace does not remove any resources within the namespace.
+You can remove the ability to provision VMO-related resources in non-VMO managed namespaces by "unadopting" a namespace,
+but you cannot delete the namespace itself from the VMO UI. Unadopting a namespace does not remove any resources within
+the namespace.
 
-To delete the
-underlying namespace, use `kubectl` or similar tool.
+To delete the underlying namespace, use `kubectl` or similar tool.
 
 1. From the VMO left main menu, select **Infrastructure** > **Namespaces**.
 2. Right-click the namespace you want to unadopt and select **Remove from VMO**. This can only be done for namespaces
    with a **VMO Status** of **Adopted**.
-3. Enter the namespace to remove from VMO, and select **Remove from VMO**. The namespace is required only if there are existing resources in the adopted namespace.
-
+3. Enter the namespace to remove from VMO, and select **Remove from VMO**. The namespace is required only if there are
+   existing resources in the adopted namespace.
